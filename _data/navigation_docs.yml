@@ -1,0 +1,25 @@
+- title: App Development Tutorial
+  docs:
+  - docs/about
+  - docs/decide
+  - docs/idea
+  - docs/build
+  - docs/register
+
+- title: Feature examples
+  docs:
+  - docs/tutorials/hello-blockstack
+  - docs/tutorials/multi-player-storage
+
+- title: Reference
+  docs:
+  - apis/jsdocs/index
+  - docs/faq
+  - docs/glossary
+
+- title: Contributing
+  docs:
+  - docs/contribute
+  - docs/issues
+  - docs/pullrequest
+  - docs/community

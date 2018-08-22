@@ -1,0 +1,59 @@
+- title: Introduction
+  docs:
+  - naming/overview
+  - naming/why
+  - naming/architecture
+  - naming/howto
+
+- title: Tutorials
+  docs:
+  - naming/createspace
+  - naming/linkit
+  - naming/bldprofile
+  - naming/runsub
+
+- title: How to use BNS
+  docs:
+  - naming/namespaces
+  - naming/create
+  - naming/list
+  - naming/costregister
+  - naming/consensus
+
+- title: Resolve BNS Names
+  docs:
+  - naming/resolve
+  - naming/luzone
+  - naming/listnames
+  - naming/listhistory
+  - naming/luhistory
+  - naming/luhash
+
+- title: Register BNS Names
+  docs:
+  - naming/register
+  - naming/getfee
+  - naming/regname
+  - naming/gethash
+
+- title: Manage Names
+  docs:
+  - naming/mngover
+  - naming/transfer
+  - naming/update
+  - naming/revoke
+  - naming/renew
+
+- title: BNS Subdomains
+  docs:
+  - naming/subover
+  - naming/lifecycle
+  - naming/submng
+  - naming/subreg
+
+- title: BNS Forks
+  docs:
+  - naming/forkovr
+  - naming/forkset
+  - naming/did
+  - naming/encode

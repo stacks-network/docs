@@ -1,0 +1,23 @@
+- title: Introduction
+  docs:
+  - learn/overview
+  - learn/problems
+  - learn/tokens
+
+- title: Components
+  docs:
+  - learn/identity
+  - learn/profiles
+
+- title: Reference
+  docs:
+  - learn/faqs
+  - learn/glossary
+
+
+- title: Contributing
+  docs:
+  - learn/contribute
+  - learn/issues
+  - learn/pullrequest
+  - learn/community

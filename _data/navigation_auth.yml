@@ -1,0 +1,13 @@
+- title: Atlas Overview
+  docs:
+  - auth/overview
+  - auth/workings
+  - auth/compare
+
+- title: How to use
+  docs:
+  - auth/introduction
+  - auth/lookups
+  - auth/addnew
+  - auth/propagate
+  - auth/inventory

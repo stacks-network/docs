@@ -1,0 +1,18 @@
+- title: About
+  docs:
+  - gaia/overview
+  - gaia/control
+  - gaia/writeread
+  - gaia/access
+
+- title: Tutorials
+  docs:
+  - gaia/hello-gaia
+  - gaia/media
+  - gaia/sharing
+
+- title: How to
+  docs:
+  - gaia/run-hub
+  - gaia/configure
+  - gaia/test
