@@ -1,5 +1,5 @@
 {
-  "name": "Docs",
+  "name": "docs",
   "version": "1.0.0",
   "description": "Docs Jekyll theme.",
   "main": "index.js",
@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/"
   },
-  "author": "",
+  "author": "moxiegirl",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/"
@@ -34,5 +34,8 @@
     "ncp": "latest",
     "uglify-js": "^3.2.1",
     "watch": "^1.0.2"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }
