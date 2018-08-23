@@ -1,0 +1,16 @@
+# downstream content
+_core
+_browser
+_android
+_ios
+_gaia
+
+
+# OS or Editor folders
+.DS_Store
+node_modules
+
+# Jekyllg
+_site
+.sass-cache
+.jekyll-metadata
