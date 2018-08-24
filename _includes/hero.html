@@ -1,7 +1,9 @@
 <div class="uk-section section-hero" data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true">
     <div class="uk-container uk-container-small">
         {% if page.hero.image %}
-        <p class="hero-image uk-text-center"><img src="{{ site.post_assets | absolute_url }}{{ page.hero.image }}" alt="Hero"></p>
+        <!-- <p class="hero-image uk-text-center"><img src="{{ site.post_assets | absolute_url }}{{ page.hero.image }}" alt="Hero"></p> -->
+        <p class="hero-image uk-text-center"><img src="{{ site.post_assets | url }}{{ page.hero.image }}" alt="Hero"></p>
+
         {% endif %}
         <!-- <h1 class="uk-heading-hero uk-text-center uk-margin-remove-top">{{ page.hero.title }}</h1> -->
         {% if page.hero.subtitle %}<p class="subtitle uk-text-lead uk-text-center">{{ page.hero.subtitle }}</p>{% endif %}

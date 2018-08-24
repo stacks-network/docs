@@ -4,7 +4,8 @@
         <button class="uk-offcanvas-close" type="button" data-uk-close></button>
 
         <ul class="uk-nav uk-nav-default">
-            <li><a class="uk-logo uk-margin-small-bottom" href="{{ "/" | relative_url }}">{% if site.brand.image %}<img src="{{ site.post_assets | absolute_url }}{{ site.brand.image }}" alt="{{ site.brand.text }}">{% else %}{{ site.brand.text }}{% endif %}</a></li>
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="{{ "/" | relative_url }}">{% if site.brand.image %}<img src="{{ site.post_assets | absolute_url }}{{ site.brand.image }}" alt="{{ site.brand.text }}">{% else %}{{ site.brand.text }}{% endif %}</a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="{{ "/" | relative_url }}">{% if site.brand.image %}<img src="{{ site.post_assets }}{{ site.brand.image }}" alt="{{ site.brand.text }}">{% else %}{{ site.brand.text }}{% endif %}</a></li>
             {% for link in site.data.navigation_header %}
                 {% if link.url contains 'http' %}
                     {% assign domain = '' %}

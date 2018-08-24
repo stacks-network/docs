@@ -1,7 +1,9 @@
 {% if include.lightbox == 'true' %}
 <figure data-uk-lightbox="animation: slide">
-    <a class="uk-inline" href="{% if include.img contains 'http' %}{{ include.img }}{% else %}{{ site.post_assets | absolute_url }}{{ include.img }}{% endif %}"{% if include.caption %} caption="{{ include.caption }}"{% endif %}>
-        <img src="{% if include.img contains 'http' %}{{ include.img }}{% else %}{{ site.post_assets | absolute_url }}{{ include.img }}{% endif %}"{% if include.alt %} alt="{{ include.alt }}"{% endif %}>
+  <!-- <a class="uk-inline" href="{% if include.img contains 'http' %}{{ include.img }}{% else %}{{ site.post_assets | absolute_url }}{{ include.img }}{% endif %}"{% if include.caption %} caption="{{ include.caption }}"{% endif %}> -->
+    <a class="uk-inline" href="{% if include.img contains 'http' %}{{ include.img }}{% else %}{{ site.post_assets | url }}{{ include.img }}{% endif %}"{% if include.caption %} caption="{{ include.caption }}"{% endif %}>
+        <!-- <img src="{% if include.img contains 'http' %}{{ include.img }}{% else %}{{ site.post_assets | absolute_url }}{{ include.img }}{% endif %}"{% if include.alt %} alt="{{ include.alt }}"{% endif %}> -->
+        <img src="{% if include.img contains 'http' %}{{ include.img }}{% else %}{{ site.post_assets | url }}{{ include.img }}{% endif %}"{% if include.alt %} alt="{{ include.alt }}"{% endif %}>
         <div class="uk-position-center">
             <span data-uk-overlay-icon></span>
         </div>
@@ -10,7 +12,8 @@
 </figure>
 {% else %}
 <figure>
-    <img src="{% if include.img contains 'http' %}{{ include.img }}{% else %}{{ site.post_assets | absolute_url }}{{ include.img }}{% endif %}"{% if include.alt %} alt="{{ include.alt }}"{% endif %}>
+    <!-- <img src="{% if include.img contains 'http' %}{{ include.img }}{% else %}{{ site.post_assets | absolute_url }}{{ include.img }}{% endif %}"{% if include.alt %} alt="{{ include.alt }}"{% endif %}> -->
+    <img src="{% if include.img contains 'http' %}{{ include.img }}{% else %}{{ absolute_url }}{{ include.img }}{% endif %}"{% if include.alt %} alt="{{ include.alt }}"{% endif %}>
     {% if include.caption %}<figcaption data-uk-grid class="uk-flex-right"><span class="uk-width-auto">{{ include.caption }}</span></figcaption>{% endif %}
 </figure>
 {% endif %}
