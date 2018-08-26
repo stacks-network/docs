@@ -100,7 +100,7 @@ sass:
   style:            compressed
 
 collections:
-  apis:
+  android:
     output: true
   docs:
     output: true
