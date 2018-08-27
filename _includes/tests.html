@@ -1,0 +1,19 @@
+
+
+| **Input**    | **Result** |
+|--------------|------------|
+|`page.title` | {{ page.title }} |
+|`page.url` | {{ page.url }} |
+|`page.date` | {{ page.date }} |
+|`page.id` | {{ page.id }} |
+|`page.categories` | {{ page.categories }} |
+|`page.tags` | {{ page.tags }} |
+|`page.path` | {{ page.path }} |
+|`page.next` | {{ page.next }} |
+|`page.previous` | {{ page.previous }} |
+|`page.url | split` | {{ page.url | split: '/'}}
+|`page.id | split: '/' | last ` | {{ page.id | split: '/' | last }} |
+|`page.id | split: '/' | first ` | {{ page.id | split: '/' | first }} |
+|`page.id | split: '/' | 2 ` | {{ page.id | split: '/' | first }} |
+|`page.path | relative_url`   | {{ page.path | relative_url }}  |
+|`page.path | absolute_url`   | {{ page.path | absolute_url }}  |
