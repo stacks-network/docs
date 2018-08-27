@@ -1,0 +1,6 @@
+[Settings]
+ID = "2daa9486-d204-4dc7-857a-2bfcded10b91"
+
+
+[build]
+  publish: _site

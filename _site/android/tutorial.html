@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Blockstack Android SDK Tutorial (Pre-release) | Blockstack</title>
+<meta name="generator" content="Jekyll v3.5.0" />
+<meta property="og:title" content="Blockstack Android SDK Tutorial (Pre-release)" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Blockstack Android SDK Tutorial (Pre-release)" />
+<meta property="og:description" content="Blockstack Android SDK Tutorial (Pre-release)" />
+<link rel="canonical" href="http://localhost:4000/android/tutorial.html" />
+<meta property="og:url" content="http://localhost:4000/android/tutorial.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-27T11:40:45-07:00" />
+<script type="application/ld+json">
+{"description":"Blockstack Android SDK Tutorial (Pre-release)","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"http://localhost:4000/android/tutorial.html","headline":"Blockstack Android SDK Tutorial (Pre-release)","dateModified":"2018-08-27T11:40:45-07:00","datePublished":"2018-08-27T11:40:45-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/android/tutorial.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="http://localhost:4000/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="/assets/posts/logo.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js"></script>
+  
+</head>
+
+
+    <body>
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="http://localhost:4000/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a>
+
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            <script>
+            SimpleJekyllSearch({
+                searchInput: document.getElementById('searchBox'),
+                resultsContainer: document.getElementById('searchBox-results'),
+                noResultsText: '<li>No results found</li>',
+                searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+                json: '/search.json'
+            });
+            </script>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                    
+                        <h5>Introduction</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                        </ul>
+                    
+                        <h5>SDKs</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class="uk-active"><a href="/android/tutorial.html">Blockstack Android SDK Tutorial (Pre-release)</a></li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article class="uk-article">
+
+                    <h1 class="uk-article-title">Blockstack Android SDK Tutorial (Pre-release)</h1>
+
+                    
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2018-08-27T11:40:45-07:00" itemprop="datePublished">
+    
+    <a "target="_blank" href="https://github.com/moxiegirl/docs-new/blob/master/_android/tutorial.md" class="btn btn-default githubEditButton" role="button"><span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+ <span style="font-family:Wingdings">&#119;</span> Aug 27, 2018
+</time>
+
+                    </div>
+
+                    <div class="article-content">
+                        
+<p class="no_toc">This tutorial is written for readers who are new to either or both Blockstack
+and Android to create a decentralized application. It contains the following
+content:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#understand-the-sample-application-flow" id="markdown-toc-understand-the-sample-application-flow">Understand the sample application flow</a></li>
+  <li><a href="#set-up-your-environment" id="markdown-toc-set-up-your-environment">Set up your environment</a>    <ul>
+      <li><a href="#install-android-studio" id="markdown-toc-install-android-studio">Install Android Studio</a></li>
+      <li><a href="#do-you-have-npm" id="markdown-toc-do-you-have-npm">Do you have npm?</a></li>
+      <li><a href="#install-the-blockstack-test-rig" id="markdown-toc-install-the-blockstack-test-rig">Install the Blockstack test rig</a></li>
+      <li><a href="#use-npm-to-install-yeoman-and-the-blockstack-app-generator" id="markdown-toc-use-npm-to-install-yeoman-and-the-blockstack-app-generator">Use npm to install Yeoman and the Blockstack App Generator</a></li>
+    </ul>
+  </li>
+  <li><a href="#build-the-blockstack-hello-world" id="markdown-toc-build-the-blockstack-hello-world">Build the Blockstack hello-world</a>    <ul>
+      <li><a href="#generate-and-launch-your-hello-blockstack-application" id="markdown-toc-generate-and-launch-your-hello-blockstack-application">Generate and launch your hello-blockstack application</a></li>
+      <li><a href="#add-a-redirect-end-point-to-your-application" id="markdown-toc-add-a-redirect-end-point-to-your-application">Add a redirect end point to your application</a></li>
+    </ul>
+  </li>
+  <li><a href="#create-the-hello-android-project" id="markdown-toc-create-the-hello-android-project">Create the hello-android project</a>    <ul>
+      <li><a href="#create-a-simple-project" id="markdown-toc-create-a-simple-project">Create a simple project</a></li>
+      <li><a href="#run-the-app-in-an-emulator" id="markdown-toc-run-the-app-in-an-emulator">Run the app in an emulator</a></li>
+      <li><a href="#configure-your-application-with-the-blockstack-sdk" id="markdown-toc-configure-your-application-with-the-blockstack-sdk">Configure your application with the Blockstack SDK</a></li>
+      <li><a href="#add-a-simple-interface" id="markdown-toc-add-a-simple-interface">Add a simple interface</a></li>
+      <li><a href="#add-session--authentication-code" id="markdown-toc-add-session--authentication-code">Add session &amp; authentication code</a></li>
+      <li><a href="#run-the-final-app-in-the-emulator" id="markdown-toc-run-the-final-app-in-the-emulator">Run the final app in the emulator</a></li>
+    </ul>
+  </li>
+  <li><a href="#where-to-go-next" id="markdown-toc-where-to-go-next">Where to go next</a></li>
+</ul>
+
+<p>This tutorial was extensively tested using Android Studio 3.1 on a MacBook Air
+running High Sierra 10.13.4. If your environment is different, you may encounter
+slight or even major discrepancies when performing the procedures in this
+tutorial. Please <a href="https://slofile.com/slack/blockstack">join the Blockstack community
+Slack</a> and post questions or comments to
+the <code class="highlighter-rouge">#support</code> channel.</p>
+
+<p>Finally, this tutorial is written for all levels from the beginner to the most
+experienced. For best results, beginners should follow the guide as written. It
+is expected that the fast or furiously brilliant will skip ahead and improvise
+on this material at will. Fair journey one and all.</p>
+
+<p>If you prefer, you can skip working through the tutorial all together. Instead,
+you can <a href="images/helloandroid.zip">download the final project code</a> and import it
+into Android Studio to review it.</p>
+
+<h2 id="understand-the-sample-application-flow">Understand the sample application flow</h2>
+
+<p>When complete, the sample application is a simple <code class="highlighter-rouge">hello-world</code> display. It is
+intended for user on an Android phone.</p>
+
+<p><img src="images/final-app.png" alt="" /></p>
+
+<p>Only users with an existing <code class="highlighter-rouge">blockstack.id</code> can run your
+final sample application. When complete, users interact with the sample
+application by doing the following:</p>
+
+<p><img src="images/app-flow.png" alt="" /></p>
+
+<h2 id="set-up-your-environment">Set up your environment</h2>
+
+<p>This sample application has two code bases, a BlockStack <code class="highlighter-rouge">hello-blockstack</code>
+application and a <code class="highlighter-rouge">hello-andriod</code> Android application. Before you start
+developing the sample, there are a few elements you need in your environment.</p>
+
+<h3 id="install-android-studio">Install Android Studio</h3>
+
+<p>If you are an experienced Android developer and already have an Android
+development environment on your workstation, you can use that and skip this
+step. However, you will need to adjust the remaining instructions for your
+environment.</p>
+
+<p>Follow the installation instructions to download and <a href="https://developer.android.com/studio/install">Android Studio
+3.1</a> for your operating system.
+Depending on your network connection, this can take between 15-30 minutes.</p>
+
+<p><img src="images/studio-download.png" alt="" /></p>
+
+<h3 id="do-you-have-npm">Do you have npm?</h3>
+
+<p>The Blockstack code in this tutorial relies on the <code class="highlighter-rouge">npm</code> dependency manager.
+Before you begin, verify you have installed <code class="highlighter-rouge">npm</code> using the <code class="highlighter-rouge">which</code> command to
+verify.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>which npm
+/usr/local/bin/npm
+</code></pre>
+</div>
+
+<p>If you don’t find <code class="highlighter-rouge">npm</code> in your system, <a href="https://www.npmjs.com/get-npm">install
+it</a>.</p>
+
+<h3 id="install-the-blockstack-test-rig">Install the Blockstack test rig</h3>
+
+<p>Users interact with Blockstack-enabled applications through a web browser. You
+can BlockStack in test mode, on <code class="highlighter-rouge">localhost</code> or you can interact with completed
+apps through the Blockstack webapp which is available at
+[https://browser.blockstack.org/].</p>
+
+<p>If you have already installed Blockstack for testing locally and have an
+existing Blockstack ID, skip this section.  Otherwise, continue onto install
+BlockStack.</p>
+
+<ol>
+  <li>
+    <p>Go to  <a href="https://blockstack.org/install">Blockstack</a></p>
+
+    <p><img src="images/blockstack-install.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Install the version appropriate for your operating system.</p>
+  </li>
+</ol>
+
+<h3 id="use-npm-to-install-yeoman-and-the-blockstack-app-generator">Use npm to install Yeoman and the Blockstack App Generator</h3>
+
+<p>You use <code class="highlighter-rouge">npm</code> to install Yeoman. Yeoman is a generic scaffolding system that
+helps users rapidly start new projects and streamline the maintenance of
+existing projects.</p>
+
+<ol>
+  <li>
+    <p>Install Yeoman.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm install -g yo
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Install the Blockstack application generator.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm install -g generator-blockstack
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h2 id="build-the-blockstack-hello-world">Build the Blockstack hello-world</h2>
+
+<p>In this section, you build a Blockstack <code class="highlighter-rouge">hello-world</code> application. Then, you
+modify the <code class="highlighter-rouge">hello-world</code> to interact with the Android app via a redirect.</p>
+
+<h3 id="generate-and-launch-your-hello-blockstack-application">Generate and launch your hello-blockstack application</h3>
+
+<p>In this section, you build an initial React.js application called
+<code class="highlighter-rouge">hello-blockstack</code>.</p>
+
+<ol>
+  <li>
+    <p>Create a <code class="highlighter-rouge">hello-blockstack</code> directory.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> mkdir hello-blockstack
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Change into your new directory.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nb">cd </span>hello-blockstack
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Use Yeoman and the Blockstack application generator to create your initial <code class="highlighter-rouge">hello-blockstack</code> application.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> yo blockstack:react
+</code></pre>
+    </div>
+
+    <p>You should see several interactive prompts.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>yo blockstack:react
+ <span class="o">==========================================================================</span>
+ We are constantly looking <span class="k">for </span>ways to make yo better!
+ May we anonymously report usage statistics to improve the tool over <span class="nb">time</span>?
+ More info: https://github.com/yeoman/insight &amp; http://yeoman.io
+ <span class="o">==========================================================================</span> No
+
+      _-----_     ╭──────────────────────────╮
+     |       |    │      Welcome to the      │
+     |--<span class="o">(</span>o<span class="o">)</span>--|    │      Blockstack app      │
+     ---------    │        generator!        │
+     <span class="o">(</span> _U_ <span class="o">)</span>      ╰──────────────────────────╯
+     /___A___<span class="se">\ </span>  /
+      |  ~  |
+    __<span class="s1">'.___.'</span>__
+         |°  Y
+
+ ? Are you ready to build a Blockstack app <span class="k">in </span>React? <span class="o">(</span>Y/n<span class="o">)</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Respond to the prompts to populate the initial app.</p>
+
+    <p>After the process completes successfully, you see a prompt similar to the following:</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="o">[</span>fsevents] Success:
+ <span class="s2">"/Users/theuser/repos/hello-blockstack/node_modules/fsevents/lib/binding/Release/node-v59-darwin-x64/fse.node"</span>
+ is installed via remote npm notice created a lockfile as package-lock.json.
+ You should commit this file. added 1060 packages <span class="k">in </span>26.901s
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Run the initial application.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>npm start
+
+ &gt; hello-blockstack@0.0.0 start /Users/moxiegirl/repos/hello-blockstack
+ &gt; webpack-dev-server
+
+ Project is running at http://localhost:8080/
+ webpack output is served from /
+ 404s will fallback to /index.html
+ Hash: 4d2312ba236a4b95dc3a
+ Version: webpack 2.7.0
+ Time: 2969ms
+                                  Asset       Size  Chunks                    Chunk Names
+ ....
+   Child html-webpack-plugin <span class="k">for</span> <span class="s2">"index.html"</span>:
+      chunk    <span class="o">{</span>0<span class="o">}</span> index.html 541 kB <span class="o">[</span>entry] <span class="o">[</span>rendered]
+          <span class="o">[</span>0] ./~/lodash/lodash.js 540 kB <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
+          <span class="o">[</span>1] ./~/html-webpack-plugin/lib/loader.js!./src/index.html 533 bytes <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
+          <span class="o">[</span>2] <span class="o">(</span>webpack<span class="o">)</span>/buildin/global.js 509 bytes <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
+          <span class="o">[</span>3] <span class="o">(</span>webpack<span class="o">)</span>/buildin/module.js 517 bytes <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
+  webpack: Compiled successfully.
+</code></pre>
+    </div>
+
+    <p>The system opens a browser displaying your running application.</p>
+
+    <p><img src="images/blockstack-signin.png" alt="" /></p>
+
+    <p>At this point, the browser is running a Blockstack server on your local host.
+This is for testing your applications only.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Sign in with Blockstack</strong></p>
+
+    <p>The system displays a prompt allowing you to create a new Blockstack ID or restore an existing one.</p>
+
+    <p><img src="images/create-restore.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Follow the prompts appropriate to your situation.</p>
+
+    <p>If you are restoring an existing ID, you may see a prompt about your user
+ being nameless, ignore it. At this point you have only a single application
+ on your test server.  So, you should see this single application, with your
+ own <code class="highlighter-rouge">blockstack.id</code> display name, once you are signed in:</p>
+
+    <p><img src="images/running-app.png" alt="" /></p>
+  </li>
+</ol>
+
+<h3 id="add-a-redirect-end-point-to-your-application">Add a redirect end point to your application</h3>
+
+<p>When a user opens the webapp from the Blockstack browser on an Android phone,
+you want the web app to redirect the user to your Android application. The work
+you do here will allow it.</p>
+
+<ol>
+  <li>
+    <p>From the terminal command line, change directory to the root of your sample
+application directory.</p>
+  </li>
+  <li>
+    <p>Use the <code class="highlighter-rouge">touch</code> command to add a redirect endpoint to your application.</p>
+
+    <p>This endpoint on the web version of your app will redirect Android users back
+ to your mobile app.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>touch public/redirect.html
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Open <code class="highlighter-rouge">redirect.html</code> and add code to the endpoint.</p>
+
+    <div class="language-html highlighter-rouge"><pre class="highlight"><code> <span class="cp">&lt;!DOCTYPE html&gt;</span>
+ <span class="nt">&lt;html&gt;</span>
+ <span class="nt">&lt;head&gt;</span>
+   <span class="nt">&lt;title&gt;</span>Hello, Blockstack!<span class="nt">&lt;/title&gt;</span>
+   <span class="nt">&lt;script&gt;</span>
+   <span class="kd">function</span> <span class="nx">getParameterByName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+     <span class="kd">var</span> <span class="nx">match</span> <span class="o">=</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">'[?&amp;]'</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s1">'=([^&amp;]*)'</span><span class="p">).</span><span class="nx">exec</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span>
+     <span class="k">return</span> <span class="nx">match</span> <span class="o">&amp;&amp;</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\+</span><span class="sr">/g</span><span class="p">,</span> <span class="s1">' '</span><span class="p">));</span>
+   <span class="p">}</span>
+
+   <span class="kd">var</span> <span class="nx">authResponse</span> <span class="o">=</span> <span class="nx">getParameterByName</span><span class="p">(</span><span class="s1">'authResponse'</span><span class="p">)</span>
+   <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="s2">"myblockstackapp:"</span> <span class="o">+</span> <span class="nx">authResponse</span>
+   <span class="nt">&lt;/script&gt;</span>
+ <span class="nt">&lt;body&gt;</span>
+ <span class="nt">&lt;/body&gt;</span>
+ <span class="nt">&lt;/html&gt;</span>
+</code></pre>
+    </div>
+
+    <p>Blockstack apps are identified by their domain names.  The endpoint will
+ receive a get request with the query parameter <code class="highlighter-rouge">authResponse=XXXX</code> and
+ should redirect the browser to <code class="highlighter-rouge">myblockstackapp:XXXX</code>.</p>
+
+    <p><code class="highlighter-rouge">myblockstackapp:</code> is custom protocol handler. The handler should be unique
+ to your application. Your app’s web-based authentication uses this handler
+ to redirect the user back to your Android app. Later, you’ll add a reference
+ to this handler in your Android application.</p>
+  </li>
+  <li>Close and save the <code class="highlighter-rouge">redirect.html</code> file.</li>
+  <li>Ensure your Blockstack compiles successfully.</li>
+</ol>
+
+<h2 id="create-the-hello-android-project">Create the hello-android project</h2>
+
+<p>In this section, you’ll create an Android application in Android Studio.  You’ll
+run the application in the emulator to test it.</p>
+
+<h3 id="create-a-simple-project">Create a simple project</h3>
+
+<p>In this section, you create an inital project. You’ll validate the application’s
+iniatial state by creating an emulator to run it in. Open Android Studio and do the following:</p>
+
+<ol>
+  <li>
+    <p>Open Android Studio and choose <strong>Start a new Andriod Studio project</strong>.</p>
+
+    <p>If studio is already started, choose <strong>File &gt; New &gt; New Project</strong>.</p>
+  </li>
+  <li>
+    <p>Enter these fields in the <strong>Create Android Project</strong> page.</p>
+
+    <table>
+ <tr>
+   <th>Application Name</th>
+   <td><code>hello-android</code></td>
+ </tr>
+ <tr>
+   <th>Company domain</th>
+   <td><code><i>USERNAME</i>.example.com</code></td>
+ </tr>
+ <tr>
+   <th>Project location</th>
+   <td><code>/Users/<i>USERNAME</i>/AndroidStudioProjects/helloandroid</code></td>
+ </tr>
+ <tr>
+   <th>Include Kotlin support</th>
+   <td>Set (checked)</td>
+ </tr>
+ </table>
+  </li>
+  <li>Press <strong>Next</strong> to display <strong>Target Android Devices</strong>.</li>
+  <li>Check <strong>Phone and Tablet</strong>.</li>
+  <li>Choose API 27: Andriod 8.1 (Oreo) for the target version.</li>
+  <li>Press <strong>Next</strong>.</li>
+  <li>Choose <strong>Empty Activity</strong> and press <strong>Next</strong>.</li>
+  <li>
+    <p>Leave the <strong>Configure Activity</strong> dialog with its defaults.</p>
+
+    <p><img src="images/configure-activity.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Press <strong>Finish</strong>.</p>
+
+    <p>Android studio builds your initial project. This can take a bit the first time you do it.</p>
+
+    <p><img src="images/initial-build.png" alt="" /></p>
+  </li>
+</ol>
+
+<h3 id="run-the-app-in-an-emulator">Run the app in an emulator</h3>
+
+<p>In this section, you run the appliation and create an emulator when prompted.</p>
+
+<ol>
+  <li>
+    <p>Once the project is imported into studio, click the <code class="highlighter-rouge">app</code> module in the <strong>Project</strong> window.</p>
+  </li>
+  <li>
+    <p>Then, select <strong>Run &gt; Run</strong> (or click the green arrow  in the toolbar).</p>
+
+    <p>Studio prompts you to <strong>Select Deployment Target</strong>.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Create New Virtual Device</strong> and press <strong>OK</strong>.</p>
+
+    <p>Studio prompts you to <strong>Select Hardware</strong>.</p>
+  </li>
+  <li>
+    <p>Choose a Phone running Pixel XL.</p>
+
+    <p><img src="images/select-hdw.png" alt="" /></p>
+
+    <p>Studio prompts you for a system image.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Oreo</strong> which is API level 27 and press <strong>Next</strong>.</p>
+
+    <p><img src="images/oreo-api.png" alt="" /></p>
+
+    <p>Studio asks you to verify your new emulator configuration.</p>
+  </li>
+  <li>
+    <p>Press <strong>Finish</strong>.</p>
+
+    <p>The emulation takes a moment to build. Then, studio launches the emulation and opens your application.</p>
+
+    <p><img src="images/hello-andriod-1.png" alt="" /></p>
+  </li>
+</ol>
+
+<h3 id="configure-your-application-with-the-blockstack-sdk">Configure your application with the Blockstack SDK</h3>
+
+<p>Now that you have created your initial project and verified it running in an emulator, you are ready to begin configuring the application for use with Blockstack.</p>
+
+<ol>
+  <li>In studio, open the <code class="highlighter-rouge">AndroidManifest.xml</code> file.</li>
+  <li>
+    <p>Add an <code class="highlighter-rouge">&lt;intent-filter&gt;</code> with the custom handler for Blockstack.</p>
+
+    <pre><code class="language-XML"> &lt;intent-filter&gt;
+   &lt;action android:name="android.intent.action.VIEW" /&gt;
+   &lt;category android:name="android.intent.category.DEFAULT" /&gt;
+   &lt;category android:name="android.intent.category.BROWSABLE" /&gt;
+   &lt;data android:scheme="myblockstackapp" /&gt;
+  &lt;/intent-filter&gt;
+</code></pre>
+  </li>
+  <li>Open the Project’s <code class="highlighter-rouge">build.gradle</code> file.</li>
+  <li>
+    <p>Add the Jitpack repository <code class="highlighter-rouge">maven { url 'https://jitpack.io' }</code> to the <code class="highlighter-rouge">repositories</code> section.</p>
+
+    <p>When you finish, that section looks like this:</p>
+
+    <pre><code class="language-JS"> allprojects {
+   repositories {
+       google()
+       jcenter()
+       maven { url 'https://jitpack.io' }
+   }
+ }
+</code></pre>
+  </li>
+  <li>Open the Module <code class="highlighter-rouge">build.gradle</code> file.</li>
+  <li>
+    <p>Set the <code class="highlighter-rouge">defaultConfig minSdkVersion</code> to <code class="highlighter-rouge">19</code>.</p>
+
+    <p>When you are done, you should see (within your own username not <code class="highlighter-rouge">moxiegirl</code>):</p>
+
+    <pre><code class="language-JS">android {
+    compileSdkVersion 27
+        defaultConfig {
+            applicationId "com.example.moxiegirl.hello_android"
+            minSdkVersion 19
+            targetSdkVersion 27
+            versionCode 1
+            versionName "1.0"
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        }
+   ...
+}
+</code></pre>
+  </li>
+  <li>
+    <p>Below this, add the Blockstack Android SDK dependency to your project’s <code class="highlighter-rouge">dependencies</code> list:</p>
+
+    <p>When you are done you should see:</p>
+
+    <pre><code class="language-JS"> dependencies {
+     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+     implementation 'com.android.support:appcompat-v7:27.1.0'
+     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+     testImplementation 'junit:junit:4.12'
+     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+     implementation 'com.github.blockstack:blockstack-android:0.3.0'
+ }
+
+</code></pre>
+
+    <p><strong>NOTE</strong>: Ignore the warning on the appcompat` dependencies.</p>
+  </li>
+  <li>
+    <p>Sync your project.</p>
+
+    <p><img src="images/sync-project.png" alt="" /></p>
+
+    <p>Be sure to check the sync completed successfully.</p>
+
+    <p><img src="images/sync-success.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Run your app in the emulator.</p>
+
+    <p>You’ve made a lot of changes, make sure the emulator is still running
+correctly.</p>
+  </li>
+</ol>
+
+<h3 id="add-a-simple-interface">Add a simple interface</h3>
+
+<ol>
+  <li>
+    <p>Open the <code class="highlighter-rouge">app/res/layout/activity_main.xml</code> file.</p>
+
+    <p>The <code class="highlighter-rouge">activity_main.xml</code> file defines the graphical elements. Some elements are required before you can functionality to your <code class="highlighter-rouge">MainActivity.kt</code> code.</p>
+  </li>
+  <li>
+    <p>Replace the entire content of the file with the following code:</p>
+
+    <p>The new interface includes a <code class="highlighter-rouge">BlockstackSignInButton</code> which is provided by
+the SDK. This SDK includes a themed “Sign in with Blockstack” button
+(<code class="highlighter-rouge">BlockstackSignInButton</code>). You use this button in your here with the
+<code class="highlighter-rouge">org.blockstack.android.sdk.ui.BlockstackSignInButton</code> class.</p>
+
+    <pre><code class="language-XML"> &lt;?xml version="1.0" encoding="utf-8"?&gt;
+ &lt;android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity"&gt;
+
+ &lt;org.blockstack.android.sdk.ui.BlockstackSignInButton
+     android:id="@+id/signInButton"
+     android:layout_width="307dp"
+     android:layout_height="45dp"
+     android:layout_margin="4dp"
+     android:layout_marginEnd="185dp"
+     android:layout_marginStart="39dp"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     tools:layout_editor_absoluteY="16dp" /&gt;
+
+ &lt;TextView
+     android:id="@+id/userDataTextView"
+     android:layout_width="370dp"
+     android:layout_height="27dp"
+     tools:layout_editor_absoluteX="6dp"
+     tools:layout_editor_absoluteY="70dp" /&gt;
+
+ &lt;/android
+</code></pre>
+
+    <p>This codes adds a button and some text to your application.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Run &gt; Apply changes</strong>.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Run &gt; Run app</strong> in the emulator.</p>
+
+    <p>The emulator now contains a new interface with a button:</p>
+
+    <p><img src="images/new-interface.png" alt="" /></p>
+  </li>
+</ol>
+
+<h3 id="add-session--authentication-code">Add session &amp; authentication code</h3>
+
+<ol>
+  <li>Open the <code class="highlighter-rouge">MainActivity.kt</code> file.</li>
+  <li>
+    <p>Add some additional imports to the top below the <code class="highlighter-rouge">android.os.Bundle</code> import.</p>
+
+    <p>When you are done, your imports should appear as follows:</p>
+
+    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code>
+ <span class="k">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span>
+ <span class="k">import</span> <span class="nn">android.os.Bundle</span>
+
+ <span class="k">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span>
+ <span class="k">import</span> <span class="nn">android.view.View</span>
+ <span class="k">import</span> <span class="nn">kotlinx.android.synthetic.main.activity_main.*</span>
+ <span class="k">import</span> <span class="nn">org.blockstack.android.sdk.BlockstackSession</span>
+ <span class="k">import</span> <span class="nn">org.blockstack.android.sdk.Scope</span>
+ <span class="k">import</span> <span class="nn">org.blockstack.android.sdk.UserData</span>
+ <span class="k">import</span> <span class="nn">java.net.URI</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Add a variable for the Blockstack session before <code class="highlighter-rouge">onCreate</code>.</p>
+
+    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
+
+ <span class="k">private</span> <span class="kd">var</span> <span class="py">_blockstackSession</span><span class="p">:</span> <span class="n">BlockstackSession</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+
+
+ <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+     <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+     <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Replae the existing the <code class="highlighter-rouge">onCreate</code> function with the following:</p>
+
+    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+     <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+     <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
+
+     <span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">false</span>
+
+     <span class="kd">val</span> <span class="py">appDomain</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"https://flamboyant-darwin-d11c17.netlify.com"</span><span class="p">)</span>
+     <span class="kd">val</span> <span class="py">redirectURI</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"${appDomain}/redirect"</span><span class="p">)</span>
+     <span class="kd">val</span> <span class="py">manifestURI</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"${appDomain}/manifest.json"</span><span class="p">)</span>
+     <span class="kd">val</span> <span class="py">scopes</span> <span class="p">=</span> <span class="n">arrayOf</span><span class="p">(</span><span class="n">Scope</span><span class="p">.</span><span class="n">StoreWrite</span><span class="p">)</span>
+
+ <span class="kd">val</span> <span class="py">config</span> <span class="p">=</span> <span class="n">java</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">URI</span><span class="p">(</span><span class="s">"https://flamboyant-darwin-d11c17.netlify.com"</span><span class="p">).</span><span class="n">run</span> <span class="p">{</span>
+         <span class="n">org</span><span class="p">.</span><span class="n">blockstack</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">sdk</span><span class="p">.</span><span class="n">BlockstackConfig</span><span class="p">(</span>
+                 <span class="k">this</span><span class="p">,</span>
+                 <span class="n">redirectURI</span><span class="p">,</span>
+                 <span class="n">manifestURI</span><span class="p">,</span>
+                 <span class="n">scopes</span>
+     <span class="p">}</span>
+
+     <span class="n">_blockstackSession</span> <span class="p">=</span> <span class="n">BlockstackSession</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span>
+             <span class="n">onLoadedCallback</span> <span class="p">=</span> <span class="p">{</span>
+                 <span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">true</span>
+             <span class="p">})</span>
+
+
+     <span class="n">signInButton</span><span class="p">.</span><span class="n">setOnClickListener</span> <span class="p">{</span> <span class="n">view</span><span class="p">:</span> <span class="n">View</span> <span class="p">-&gt;</span>
+         <span class="n">blockstackSession</span><span class="p">().</span><span class="n">redirectUserToSignIn</span> <span class="p">{</span> <span class="n">userData</span> <span class="p">-&gt;</span>
+             <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="p">.</span><span class="n">hasValue</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="n">runOnUiThread</span> <span class="p">{</span>
+                     <span class="n">onSignIn</span><span class="p">(</span><span class="n">userData</span><span class="p">.</span><span class="n">value</span><span class="o">!!</span><span class="p">)</span>
+                 <span class="p">}</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">intent</span><span class="o">?.</span><span class="n">action</span> <span class="p">==</span> <span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_VIEW</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// handle the redirect from sign in
+</span>         <span class="n">handleAuthResponse</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre>
+    </div>
+
+    <p>This new <code class="highlighter-rouge">onCreate</code> does several things:</p>
+
+    <ul>
+      <li>Define the initial state for the <code class="highlighter-rouge">signInButton</code>.</li>
+      <li>Supply authentication information for connecting to your Blockstack app: <code class="highlighter-rouge">appDomain</code>, <code class="highlighter-rouge">redirectURI</code>, <code class="highlighter-rouge">manifestURI</code> and <code class="highlighter-rouge">scopes</code></li>
+      <li>Add a listener for the button click.</li>
+    </ul>
+
+    <p>Notice that the application in this example is a URI you have not set up.
+ Registering and application name takes time, so in time’s interest you’ll
+ use an existing app that is identical to the <code class="highlighter-rouge">hello-world</code> you created
+ earlier. For a produciton verison, you’ll need to replace <code class="highlighter-rouge">appDomain</code>,
+ <code class="highlighter-rouge">redirectURI</code>, <code class="highlighter-rouge">manifestURI</code> and <code class="highlighter-rouge">scopes</code> with values appropriate for your
+ app.</p>
+  </li>
+  <li>
+    <p>Add a private function to reflect when a user successfully signs in.</p>
+
+    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="k">private</span> <span class="k">fun</span> <span class="nf">onSignIn</span><span class="p">(</span><span class="n">userData</span><span class="p">:</span> <span class="n">UserData</span><span class="p">)</span> <span class="p">{</span>
+ 		<span class="n">userDataTextView</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="s">"Signed in as ${userData.decentralizedID}"</span>
+
+ 		<span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">false</span>
+
+ <span class="p">}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Handle sign in requests with an <code class="highlighter-rouge">onNewIntent</code> function if the activity was already opened when signing in</p>
+
+    <p>Retrieve the authentication token from the custom protocol handler call and
+ send it to the Blockstack session.</p>
+
+    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onNewIntent</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">?)</span> <span class="p">{</span>
+   <span class="k">super</span><span class="p">.</span><span class="n">onNewIntent</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+
+   <span class="k">if</span> <span class="p">(</span><span class="n">intent</span><span class="o">?.</span><span class="n">action</span> <span class="p">==</span> <span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_VIEW</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">handleAuthResponse</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Create a handler for the authentication response.</p>
+
+    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="k">private</span> <span class="k">fun</span> <span class="nf">handleAuthResponse</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">response</span> <span class="p">=</span> <span class="n">intent</span><span class="p">.</span><span class="n">dataString</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">authResponseTokens</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">':'</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">authResponseTokens</span><span class="p">.</span><span class="n">size</span> <span class="p">&gt;</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">val</span> <span class="py">authResponse</span> <span class="p">=</span> <span class="n">authResponseTokens</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+
+            <span class="n">blockstackSession</span><span class="p">().</span><span class="n">handlePendingSignIn</span><span class="p">(</span><span class="n">authResponse</span><span class="p">,</span> <span class="p">{</span> <span class="n">userData</span> <span class="p">-&gt;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="p">.</span><span class="n">hasValue</span><span class="p">)</span> <span class="p">{</span>
+                   <span class="c1">// The user is now signed in!
+</span>                   <span class="n">runOnUiThread</span> <span class="p">{</span>
+                      <span class="n">onSignIn</span><span class="p">(</span><span class="n">userData</span><span class="p">.</span><span class="n">value</span><span class="o">!!</span><span class="p">)</span>
+                   <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Add the convenience method to access the blockstack session.</p>
+
+    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="k">fun</span> <span class="nf">blockstackSession</span><span class="p">()</span> <span class="p">:</span> <span class="n">BlockstackSession</span> <span class="p">{</span>
+   <span class="kd">val</span> <span class="py">session</span> <span class="p">=</span> <span class="n">_blockstackSession</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">session</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">return</span> <span class="n">session</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+     <span class="k">throw</span> <span class="n">IllegalStateException</span><span class="p">(</span><span class="s">"No session."</span><span class="p">)</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Verify your final <code class="highlighter-rouge">MainActivity.kt</code> code looks like this:</p>
+
+    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
+
+     <span class="k">private</span> <span class="kd">var</span> <span class="py">_blockstackSession</span><span class="p">:</span> <span class="n">BlockstackSession</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+
+
+     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+         <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+         <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
+
+         <span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">false</span>
+
+         <span class="kd">val</span> <span class="py">appDomain</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"https://flamboyant-darwin-d11c17.netlify.com"</span><span class="p">)</span>
+         <span class="kd">val</span> <span class="py">redirectURI</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"${appDomain}/redirect"</span><span class="p">)</span>
+         <span class="kd">val</span> <span class="py">manifestURI</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"${appDomain}/manifest.json"</span><span class="p">)</span>
+         <span class="kd">val</span> <span class="py">scopes</span> <span class="p">=</span> <span class="n">arrayOf</span><span class="p">(</span><span class="n">Scope</span><span class="p">.</span><span class="n">StoreWrite</span><span class="p">)</span>
+
+         <span class="n">_blockstackSession</span> <span class="p">=</span> <span class="n">BlockstackSession</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">appDomain</span><span class="p">,</span> <span class="n">redirectURI</span><span class="p">,</span> <span class="n">manifestURI</span><span class="p">,</span> <span class="n">scopes</span><span class="p">,</span>
+                 <span class="n">onLoadedCallback</span> <span class="p">=</span> <span class="p">{</span><span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">true</span>
+                 <span class="p">})</span>
+
+
+         <span class="n">signInButton</span><span class="p">.</span><span class="n">setOnClickListener</span> <span class="p">{</span> <span class="n">view</span><span class="p">:</span> <span class="n">View</span> <span class="p">-&gt;</span>
+             <span class="n">blockstackSession</span><span class="p">().</span><span class="n">redirectUserToSignIn</span> <span class="p">{</span> <span class="n">userData</span> <span class="p">-&gt;</span>
+                 <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="p">.</span><span class="n">hasValue</span><span class="p">)</span> <span class="p">{</span>
+                     <span class="n">runOnUiThread</span> <span class="p">{</span>
+                         <span class="n">onSignIn</span><span class="p">(</span><span class="n">userData</span><span class="p">)</span>
+                     <span class="p">}</span>
+                 <span class="p">}</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">intent</span><span class="o">?.</span><span class="n">action</span> <span class="p">==</span> <span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_VIEW</span><span class="p">)</span> <span class="p">{</span>
+             <span class="n">handleAuthResponse</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+
+     <span class="k">private</span> <span class="k">fun</span> <span class="nf">onSignIn</span><span class="p">(</span><span class="n">userData</span><span class="p">:</span> <span class="n">UserData</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">userDataTextView</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="s">"Signed in as ${userData.decentralizedID}"</span>
+
+         <span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">false</span>
+
+     <span class="p">}</span>
+
+     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onNewIntent</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">?)</span> <span class="p">{</span>
+         <span class="k">super</span><span class="p">.</span><span class="n">onNewIntent</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+
+         <span class="k">if</span> <span class="p">(</span><span class="n">intent</span><span class="o">?.</span><span class="n">action</span> <span class="p">==</span> <span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_VIEW</span><span class="p">)</span> <span class="p">{</span>
+             <span class="n">handleAuthResponse</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+
+     <span class="k">private</span> <span class="k">fun</span> <span class="nf">handleAuthResponse</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">)</span> <span class="p">{</span>
+         <span class="kd">val</span> <span class="py">response</span> <span class="p">=</span> <span class="n">intent</span><span class="p">.</span><span class="n">dataString</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+             <span class="kd">val</span> <span class="py">authResponseTokens</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">':'</span><span class="p">)</span>
+
+             <span class="k">if</span> <span class="p">(</span><span class="n">authResponseTokens</span><span class="p">.</span><span class="n">size</span> <span class="p">&gt;</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="kd">val</span> <span class="py">authResponse</span> <span class="p">=</span> <span class="n">authResponseTokens</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+
+                 <span class="n">blockstackSession</span><span class="p">().</span><span class="n">handlePendingSignIn</span><span class="p">(</span><span class="n">authResponse</span><span class="p">,</span> <span class="p">{</span> <span class="n">userData</span> <span class="p">-&gt;</span>
+                     <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="p">.</span><span class="n">hasValue</span><span class="p">)</span> <span class="p">{</span>
+                         <span class="c1">// The user is now signed in!
+</span>                         <span class="n">runOnUiThread</span> <span class="p">{</span>
+                             <span class="n">onSignIn</span><span class="p">(</span><span class="n">userData</span><span class="p">.</span><span class="n">value</span><span class="o">!!</span><span class="p">)</span>
+                         <span class="p">}</span>
+                     <span class="p">}</span>
+                 <span class="p">})</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+
+     <span class="k">fun</span> <span class="nf">blockstackSession</span><span class="p">()</span> <span class="p">:</span> <span class="n">BlockstackSession</span> <span class="p">{</span>
+         <span class="kd">val</span> <span class="py">session</span> <span class="p">=</span> <span class="n">_blockstackSession</span>
+         <span class="k">if</span><span class="p">(</span><span class="n">session</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+             <span class="k">return</span> <span class="n">session</span>
+         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+             <span class="k">throw</span> <span class="n">IllegalStateException</span><span class="p">(</span><span class="s">"No session."</span><span class="p">)</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+
+
+ <span class="p">}</span>
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h3 id="run-the-final-app-in-the-emulator">Run the final app in the emulator</h3>
+
+<ol>
+  <li>Choose <strong>Run &gt; Apply changes</strong>.</li>
+  <li>Choose <strong>Run &gt; Run app</strong> in the emulator.</li>
+  <li>
+    <p>When you see the application open, choose <strong>Sign in with Blockstack</strong>.</p>
+
+    <p>The system prompts you how to open.</p>
+
+    <p><img src="images/chrome-prompt.png" alt="" /></p>
+  </li>
+  <li>Choose <strong>Chrome</strong> and click <strong>ALWAYS</strong>.</li>
+  <li>
+    <p>Move through the rest of the Chrome prompts.</p>
+
+    <p>The system presents you with your final application.</p>
+
+    <p><img src="images/final-app.png" alt="" /></p>
+  </li>
+  <li>Work through the Blockstack prompts to login.</li>
+</ol>
+
+<h2 id="where-to-go-next">Where to go next</h2>
+
+<p>Congratulations, you’ve completed your Android app using the new, pre-release
+Blockstack Android SDK. Thank you for trying this pre-release. Please let us
+know about your experience by tweeting to
+<a href="https://twitter.com/blockstack">@blockstack</a>.</p>
+
+<p>Learn more about Blockstack by <a href="https://blockstack.org/tutorials">trying another tutorial</a>.</p>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=Blockstack Android SDK Tutorial (Pre-release)&url=http://localhost:4000/android/tutorial.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fandroid%2Ftutorial.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+</div>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+                    <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+
+
+                    
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="http://localhost:4000/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="uk-margin-medium uk-text-small copyright">Blockstack</div>
+
+    </div>
+</footer>
+
+    
+
+    <!-- <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      /* A CSS selector that points to your search  box */
+      searchBox: {selector: '#searchBox'}
+   };
+</script>
+<script src="https://sitesearch360.com/cdn/sitesearch360-v11.min.js" async></script>
+ -->
+
+
+
+    </body>
+
+</html>
