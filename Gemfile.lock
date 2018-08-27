@@ -50,7 +50,7 @@ GEM
       ruby_dep (~> 1.2)
     mercenary (0.3.6)
     multipart-post (2.0.0)
-    octokit (4.9.0)
+    octokit (4.10.0)
       sawyer (~> 0.8.0, >= 0.5.3)
     pathutil (0.16.1)
       forwardable-extended (~> 2.6)
