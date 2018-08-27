@@ -197,7 +197,7 @@ Add the following code at the top of the post:
 * TOC
 {:toc}
 ```
-`{:.no_toc}` exludes `#### Sections in this article` title from indexing in table of contents
+`{:.no_toc}` excludes  the `#### Sections in this article` title from indexing in table of contents
 
 ### Responsive Videos
 Embed local videos:

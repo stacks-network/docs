@@ -9,23 +9,23 @@ layout: default
             <div class="sidebar-fixed-width uk-visible@m">
                 <div class="sidebar-docs uk-position-fixed">
                     {% for section in site.data.navigation_learn %}
-                    <h5>{{ section.title }}</h5>
-                    <ul class="uk-nav uk-nav-default doc-nav">
-                    {% for doc in section.docs %}
-                      {% assign doc_url = doc | prepend:"/" | append:"/" %}
-                      <!-- {% assign p =  site.docs | where:"url", doc_url | first %} -->
-                      {% for col in site.collections %}
-                        {% for item in col.docs %}
-                            {% if item.url == doc_url %}
-                                 {% assign doc_title = item.title %}
-                             {% else %}
-                               {% comment %}Do nothing{% endcomment %}
-                             {% endif %}
+                        <h5>{{ section.title }}</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        {% for doc in section.docs %}
+                            {% assign doc_url = doc | prepend:"/" | append:".html"%}
+                            <!-- {% assign p =  site.docs | where:"url", doc_url | first %} -->
+                            {% for col in site.collections %}
+                              {% for item in col.docs %}
+                                  {% if item.url == doc_url %}
+                                       {% assign doc_title = item.title %}
+                                   {% else %}
+                                     {% comment %}Do nothing{% endcomment %}
+                                   {% endif %}
+                              {% endfor %}
+                            {% endfor %}
+                            <li class="{% if doc_url == page.url %}uk-active{% endif %}"><a href="{{ doc_url }}">{{ doc_title }}</a></li>
                         {% endfor %}
-                      {% endfor %}
-                      <li class="{% if doc_url == page.url %}uk-active{% endif %}"><a href="{{ doc_url }}">{{ doc_title }}</a></li>
-                    {% endfor %}
-                    </ul>
+                        </ul>
                     {% endfor %}
                 </div>
             </div>

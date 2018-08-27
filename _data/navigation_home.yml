@@ -13,7 +13,7 @@
 - title: Build Apps and Earn Money
   desc: Learn how to build an application that earns with Blockstack.
   icon: settings
-  doc: docs/about
+  doc: android/tutorial
 
 - title: Use the Naming Service
   desc: Managing your account, create new users and exporting data

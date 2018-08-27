@@ -12,7 +12,7 @@ description:        Docs
 baseurl:            ""
 
 # Permalink URLs structure, for permalink style options see: https://jekyllrb.com/docs/permalinks/
-permalink:          /:title/
+# permalink:          /:title/
 
 # Site base hostname & protocol, e.g. http://example.com
 url:                "https://zbabystack.netlify.com"
@@ -86,11 +86,18 @@ post_assets:        /assets/posts/
 markdown:           kramdown
 highlighter:        rouge
 
-gems:
+plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-gist
   - jekyll-avatar
+  - jekyll-titles-from-headings
+
+titles_from_headings:
+  enabled:     true
+  strip_title: true
+  collections: true
+
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -102,7 +109,7 @@ sass:
 collections:
   android:
     output: true
-  docs:
+  core:
     output: true
   gaia:
     output: true
