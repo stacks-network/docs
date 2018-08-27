@@ -21,7 +21,7 @@ layout: default
         <div class="uk-child-width-1-{{ columns }}@m uk-grid-match uk-text-center uk-margin-medium-top" data-uk-grid>
         {% for item in site.data.navigation_home %}
             {% if item.title %}
-            {% assign doc_url = item.doc | prepend:"/" | append:"/" %}
+            {% assign doc_url = item.doc | prepend:"/" | append:".html" %}
             {% assign doc = site.docs | where:"url", doc_url | first %}
             <div>
                 <div class="uk-card uk-card-body uk-inline uk-border-rounded">
@@ -43,7 +43,7 @@ layout: default
 </div>
 {% endif %}
 
-{% comment %} ONLY include section if there are featured pages. {% endcomment %} 
+{% comment %} ONLY include section if there are featured pages. {% endcomment %}
 {% assign featured_exists = false %}
 {% for doc in site.docs %}
     {% if doc.tags contains page.featured.tag and featured_exists != false %}
