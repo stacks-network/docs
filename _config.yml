@@ -102,6 +102,10 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
+  - README.md
+  - THEME_README.md
+  - collections.json
+  - get-content.sh
 
 sass:
   style:            compressed
@@ -120,4 +124,6 @@ collections:
   newinternet:
     output: true
   auth:
+    output: true
+  ios:
     output: true
