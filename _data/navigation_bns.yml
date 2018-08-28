@@ -1,0 +1,24 @@
+- title: Overview
+  docs:
+  - core/naming/introduction
+  - core/naming/architecture
+  - core/naming/namespaces
+
+- title: Tutorials
+  docs:
+  - core/naming/creation_tutorial
+
+
+- title: How to use BNS
+  docs:
+  - core/naming/pickname
+  - core/naming/resolving
+  - core/naming/register
+  - core/naming/manage
+  - core/naming/subdomains
+
+- title: Other topics
+  docs:
+  - core/naming/forks
+  - core/naming/did
+  - core/naming/comparison

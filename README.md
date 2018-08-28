@@ -25,3 +25,7 @@ To deploy to Netlify:
     jeykll build
     ```
 2. Force add the `_site` directory.
+
+    ```
+    git push -f origin
+    ```
