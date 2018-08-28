@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Choose a name | Blockstack</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Choose a name" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Choose a name" />
+<meta property="og:description" content="Choose a name" />
+<link rel="canonical" href="https://zbabystack.netlify.com/core/naming/pickname.html" />
+<meta property="og:url" content="https://zbabystack.netlify.com/core/naming/pickname.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-28T14:54:31-07:00" />
+<script type="application/ld+json">
+{"description":"Choose a name","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/pickname.html","headline":"Choose a name","dateModified":"2018-08-28T14:54:31-07:00","datePublished":"2018-08-28T14:54:31-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/pickname.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="/assets/posts/logo.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js"></script>
+  
+</head>
+
+
+    <body>
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a>
+
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            <script>
+            SimpleJekyllSearch({
+                searchInput: document.getElementById('searchBox'),
+                resultsContainer: document.getElementById('searchBox-results'),
+                noResultsText: '<li>No results found</li>',
+                searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+                json: '/search.json'
+            });
+            </script>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                    
+                        <h5>Overview</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/introduction.html">Blockstack Naming Service (BNS)</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/architecture.html">Understand the Architecture</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/namespaces.html">Understand Namespaces</a></li>
+                        
+                        </ul>
+                    
+                        <h5>Tutorials</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/creation_tutorial.html">Creating a Namespace</a></li>
+                        
+                        </ul>
+                    
+                        <h5>How to use BNS</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class="uk-active"><a href="/core/naming/pickname.html">Choose a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/resolving.html">Resolve a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/register.html">Register a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/manage.html">Manage BNS Names</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/subdomains.html">BNS Subdomains</a></li>
+                        
+                        </ul>
+                    
+                        <h5>Other topics</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/forks.html">BNS Forks</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/did.html">DID Encoding for Subdomains</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/comparison.html">Naming system feature comparison</a></li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article class="uk-article">
+
+                    <h1 class="uk-article-title">Choose a name</h1>
+
+                    
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2018-08-28T14:54:31-07:00" itemprop="datePublished">
+    
+    <a "target="_blank" href="https://github.com/moxiegirl/docs-new/blob/master/_core/naming/pickname.md" class="btn btn-default githubEditButton" role="button"><span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+ <span style="font-family:Wingdings">&#119;</span> Aug 28, 2018
+</time>
+
+                    </div>
+
+                    <div class="article-content">
+                        
+<p class="no_toc">This section explains how to choose and create a namespace, it contains the
+following sections:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#intended-uses-for-a-namespace" id="markdown-toc-intended-uses-for-a-namespace">Intended uses for a namespace</a></li>
+  <li><a href="#list-all-namespaces-in-existence-reference" id="markdown-toc-list-all-namespaces-in-existence-reference">List all namespaces in existence (reference).</a></li>
+  <li><a href="#list-all-names-within-a-namespace-reference" id="markdown-toc-list-all-names-within-a-namespace-reference">List all names within a namespace (reference)</a></li>
+  <li><a href="#get-the-cost-to-register-a-namespace-reference" id="markdown-toc-get-the-cost-to-register-a-namespace-reference">Get the Cost to Register a Namespace (reference)</a></li>
+  <li><a href="#getting-the-current-consensus-hash-reference" id="markdown-toc-getting-the-current-consensus-hash-reference">Getting the Current Consensus Hash (reference)</a></li>
+  <li><a href="#create-a-namespace" id="markdown-toc-create-a-namespace">Create a namespace</a></li>
+</ul>
+
+<h2 id="intended-uses-for-a-namespace">Intended uses for a namespace</h2>
+
+<p>The intention is that each application can create its own BNS
+namespace for its own purposes.  Applications can use namespaces for things like:</p>
+
+<ul>
+  <li>Giving users a SSO system, where each user registers their public key under a
+username.  Blockstack applications do this with names in the <code class="highlighter-rouge">.id</code> namespace,
+for example.</li>
+  <li>Providing a subscription service, where each name is a 3rd party that provides
+a service for users to subscribe to.  For example, names in
+<code class="highlighter-rouge">.podcast</code> point to podcasts that users of the
+<a href="https://dotpodcast.co">DotPodcast</a> app can subscribe to.</li>
+  <li>Implementing software licenses, where each name corresponds to an access key.
+Unlike conventional access keys, access keys implemented as names
+can be sold and traded independently.  The licensing fee (paid as a name
+registration) would be set by the developer and sent to a developer-controlled
+blockchain address.</li>
+</ul>
+
+<p>Names within a namespace can serve any purpose the developer wants.  The ability
+to collect registration fees for 1 year after creating the namespace not only
+gives developers the incentive to get users to participate in the app, but also
+gives them a way to measure economic activity.</p>
+
+<p>Developers can query individual namespaces and look up names within them using
+the BNS API.</p>
+
+<h2 id="list-all-namespaces-in-existence-reference">List all namespaces in existence (<a href="https://core.blockstack.org/#namespace-operations-get-all-namespaces">reference</a>).</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl https://core.blockstack.org/v1/namespaces
+<span class="o">[</span>
+  <span class="s2">"id"</span>,
+  <span class="s2">"helloworld"</span>,
+  <span class="s2">"podcast"</span>
+<span class="o">]</span>
+</code></pre>
+</div>
+
+<h2 id="list-all-names-within-a-namespace-reference">List all names within a namespace (<a href="https://core.blockstack.org/#namespace-operations-get-all-namespaces">reference</a>)</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl https://core.blockstack.org/v1/namespaces/id/names?page<span class="o">=</span>0
+<span class="o">[</span>
+  <span class="s2">"0.id"</span>,
+  <span class="s2">"0000.id"</span>,
+  <span class="s2">"000000.id"</span>,
+  <span class="s2">"000001.id"</span>,
+  <span class="s2">"00000111111.id"</span>,
+  <span class="s2">"000002.id"</span>,
+  <span class="s2">"000007.id"</span>,
+  <span class="s2">"0011sro.id"</span>,
+  <span class="s2">"007_007.id"</span>,
+  <span class="s2">"00n3w5.id"</span>,
+  <span class="s2">"00r4zr.id"</span>,
+  <span class="s2">"00w1k1.id"</span>,
+  <span class="s2">"0101010.id"</span>,
+  <span class="s2">"01jack.id"</span>,
+  <span class="s2">"06nenglish.id"</span>,
+  <span class="s2">"08.id"</span>,
+  <span class="s2">"0cool_f.id"</span>,
+  <span class="s2">"0dadj1an.id"</span>,
+  <span class="s2">"0nelove.id"</span>,
+  <span class="s2">"0nename.id"</span>
+...
+<span class="o">]</span>
+</code></pre>
+</div>
+
+<p>Each page returns a batch of 100 names.</p>
+
+<h2 id="get-the-cost-to-register-a-namespace-reference">Get the Cost to Register a Namespace (<a href="https://core.blockstack.org/#price-checks-get-namespace-price">reference</a>)</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl https://core.blockstack.org/v1/prices/namespaces/test
+<span class="o">{</span>
+  <span class="s2">"satoshis"</span>: 40000000
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>If you want to register a namespace, please see the <a href="namespace_creation.md">namespace creation tutorial</a>.</p>
+
+<h2 id="getting-the-current-consensus-hash-reference">Getting the Current Consensus Hash (<a href="https://core.blockstack.org/#blockchain-operations-get-consensus-hash">reference</a>)</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl -sL https://core.blockstack.org/v1/blockchains/bitcoin/consensus
+<span class="o">{</span>
+  <span class="s2">"consensus_hash"</span>: <span class="s2">"98adf31989bd937576aa190cc9f5fa3a"</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>A recent consensus hash is required to create a <code class="highlighter-rouge">NAMESPACE_PREORDER</code> transaction.  The reference
+BNS clients do this automatically.  See the <a href="wire-format.md">transaction format</a>
+document for details on how the consensus hash is used to construct the
+transaction.</p>
+
+<h2 id="create-a-namespace">Create a namespace</h2>
+
+<p>There are four steps to creating a namespace:</p>
+
+<ol>
+  <li>
+    <p><strong>Send a <code class="highlighter-rouge">NAMESPACE_PREORDER</code> transaction</strong> (<a href="https://www.blocktrail.com/BTC/tx/5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28">live example</a>).
+This is the first step.  This registers the <em>salted hash</em> of the namespace with BNS nodes, and burns the
+requisite amount of cryptocurrency.  In addition, it proves to the
+BNS nodes that user has honored the BNS consensus rules by including
+a recent <em>consensus hash</em> in the transaction
+(see the section on <a href="#bns-forks">BNS forks</a> for details).</p>
+  </li>
+  <li>
+    <p><strong>Send a <code class="highlighter-rouge">NAMESPACE_REVEAL</code> transaction</strong> (<a href="https://www.blocktrail.com/BTC/tx/ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32">live example</a>).
+This is the second step.  This reveals the salt and the namespace ID (pairing it with its
+<code class="highlighter-rouge">NAMESPACE_PREORDER</code>), it reveals how long names last in this namespace before
+they expire or must be renewed, and it sets a <em>price function</em> for the namespace
+that determines how cheap or expensive names its will be.  The price function takes
+a name in this namespace as input, and outputs the amount of cryptocurrency the
+name will cost (i.e. by examining how long the name is, and whether or not it
+has any vowels or non-alphabet characters).  The namespace creator
+has the option to collect name registration fees for the first year of the
+namespace’s existence by setting a <em>namespace creator address</em>.</p>
+  </li>
+  <li>
+    <p><strong>Seed the namespace with <code class="highlighter-rouge">NAME_IMPORT</code> transactions</strong> (<a href="https://www.blocktrail.com/BTC/tx/c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312">live example</a>).
+Once the namespace has been revealed, the user has the option to populate it with a set of
+names.  Each imported name is given both an owner and some off-chain state.
+This step is optional—namespace creators are not required to import names.</p>
+  </li>
+  <li>
+    <p><strong>Send a <code class="highlighter-rouge">NAMESPACE_READY</code> transaction</strong> (<a href="https://www.blocktrail.com/BTC/tx/2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032">live example</a>).
+This is the final step of the process.  It <em>launches</em> the namespace, which makes it available to the
+public.  Once a namespace is ready, anyone can register a name in it if they
+pay the appropriate amount of cryptocurrency (according to the price funtion
+revealed in step 2).</p>
+  </li>
+</ol>
+
+<p>The reason for the <code class="highlighter-rouge">NAMESPACE_PREORDER/NAMESPACE_REVEAL</code> pairing is to prevent
+frontrunning.  The BNS consensus rules require a <code class="highlighter-rouge">NAMESPACE_REVEAL</code> to be
+paired with a previous <code class="highlighter-rouge">NAMESPACE_PREORDER</code> sent within the past 24 hours.
+If it did not do this, then a malicious actor could watch the blockchain network
+and race a victim to claim a namespace.</p>
+
+<p>Namespaces are created on a first-come first-serve basis.  If two people try to
+create the same namespace, the one that successfully confirms both the
+<code class="highlighter-rouge">NAMESPACE_PREORDER</code> and <code class="highlighter-rouge">NAMESPACE_REVEAL</code> wins.  The fee burned in the
+<code class="highlighter-rouge">NAMESPACE_PREORDER</code> is spent either way.</p>
+
+<p>Once the user issues the <code class="highlighter-rouge">NAMESPACE_PREORDER</code> and <code class="highlighter-rouge">NAMESPACE_REVEAL</code>, they have
+1 year before they must send the <code class="highlighter-rouge">NAMESPACE_READY</code> transaction.  If they do not
+do this, then the namespace they created disappears (along with all the names
+they imported).</p>
+
+<p>Developers wanting to create their own namespaces should read the <a href="namespace_creation.md">namespace
+creation</a> document.  It is highly recommended that
+developers follow this tutorial closely, given the large amount of
+cryptocurrency at stake.</p>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=Choose a name&url=https://zbabystack.netlify.com/core/naming/pickname.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fnaming%2Fpickname.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+</div>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+                    <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+
+
+                    
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="uk-margin-medium uk-text-small copyright">Blockstack</div>
+
+    </div>
+</footer>
+
+    
+
+    <!-- <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      /* A CSS selector that points to your search  box */
+      searchBox: {selector: '#searchBox'}
+   };
+</script>
+<script src="https://sitesearch360.com/cdn/sitesearch360-v11.min.js" async></script>
+ -->
+
+
+
+    </body>
+
+</html>

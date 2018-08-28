@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Understand the Architecture | Blockstack</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Understand the Architecture" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Understand the Architecture" />
+<meta property="og:description" content="Understand the Architecture" />
+<link rel="canonical" href="https://zbabystack.netlify.com/core/naming/architecture.html" />
+<meta property="og:url" content="https://zbabystack.netlify.com/core/naming/architecture.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-28T14:54:31-07:00" />
+<script type="application/ld+json">
+{"description":"Understand the Architecture","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/architecture.html","headline":"Understand the Architecture","dateModified":"2018-08-28T14:54:31-07:00","datePublished":"2018-08-28T14:54:31-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/architecture.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="/assets/posts/logo.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js"></script>
+  
+</head>
+
+
+    <body>
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a>
+
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            <script>
+            SimpleJekyllSearch({
+                searchInput: document.getElementById('searchBox'),
+                resultsContainer: document.getElementById('searchBox-results'),
+                noResultsText: '<li>No results found</li>',
+                searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+                json: '/search.json'
+            });
+            </script>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                    
+                        <h5>Overview</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/introduction.html">Blockstack Naming Service (BNS)</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class="uk-active"><a href="/core/naming/architecture.html">Understand the Architecture</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/namespaces.html">Understand Namespaces</a></li>
+                        
+                        </ul>
+                    
+                        <h5>Tutorials</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/creation_tutorial.html">Creating a Namespace</a></li>
+                        
+                        </ul>
+                    
+                        <h5>How to use BNS</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/pickname.html">Choose a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/resolving.html">Resolve a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/register.html">Register a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/manage.html">Manage BNS Names</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/subdomains.html">BNS Subdomains</a></li>
+                        
+                        </ul>
+                    
+                        <h5>Other topics</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/forks.html">BNS Forks</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/did.html">DID Encoding for Subdomains</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/comparison.html">Naming system feature comparison</a></li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article class="uk-article">
+
+                    <h1 class="uk-article-title">Understand the Architecture</h1>
+
+                    
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2018-08-28T14:54:31-07:00" itemprop="datePublished">
+    
+    <a "target="_blank" href="https://github.com/moxiegirl/docs-new/blob/master/_core/naming/architecture.md" class="btn btn-default githubEditButton" role="button"><span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+ <span style="font-family:Wingdings">&#119;</span> Aug 28, 2018
+</time>
+
+                    </div>
+
+                    <div class="article-content">
+                        
+<p>The BNS node is the heart of the system.  It is responsible for building up
+and replicating global name state.</p>
+
+<p>There are three parts to BNS that developers should be aware of.  They are:</p>
+
+<ul>
+  <li>
+    <p><strong>The BNS indexer</strong>.  This module crawls the blockchain and builds
+up its name database.  BNS indexers do not contain any private or sensitive
+state, and can be deployed publicly.  We maintain a fleet of them at
+<code class="highlighter-rouge">https://node.blockstack.org:6263</code> for developers to use to get started.</p>
+  </li>
+  <li>
+    <p><strong>The BNS API</strong>.  This module gives
+developers a <em>stable RESTful API</em> for interacting with the BNS network.
+We provide one for developers to experiment with at <code class="highlighter-rouge">https://core.blockstack.org</code>.</p>
+  </li>
+  <li>
+    <p><strong>BNS clients</strong>.  These communicate with the BNS API module in order to
+resolve names.  Internally, they generate and send transactions to register
+and modify names.</p>
+  </li>
+</ul>
+
+<p>The BNS indexer and BNS API comprise the <strong>BNS node</strong>.  An architectural schematic appears below.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>                      +-------------------------------------------------------+
+            RESTful   | +----------------+             +--------------------+ |
++--------+   API      | |                | private API |                    | |
+| client |&lt;------------&gt;| BNS API module |&lt;-----------&gt;| BNS indexer module | |
++--------+            | |                |             |                    | |
+    |                 | +----------------+             | +----------------+ | |
+    |                 |                                | | name database  | | |
+    |                 |                                | +----------------+ | |
+    |                 |                                +--------------------+ |
+    |                 | BNS node                                 ^            |
+    |                 +------------------------------------------|------------+
+    |                                                            |
+    |                                                            v
+    |       blockchain transactions                    +--------------------+
+    +-------------------------------------------------&gt;|   blockchain peer  |
+                                                       +--------------------+
+
+Figure 1: BNS architecture overview.  Clients talk to the BNS API module to
+resolve names, and generate and send blockchain transactions to register and
+modify names.   The API module talks to the indexer module and gives clients
+a stable, Web-accessible interface for resolving names.  The indexer module reads
+the blochchain via a blockchain peer, over the blockchain's peer network.
+
+Blockstack Core currently implements the API module and indexer module as separate
+daemons (`blockstack api` and `blockstack-core`, respectively).  However, this
+is an implementation detail, and may change in the future.
+</code></pre>
+</div>
+
+<p>The BNS indexer implements the blockchain consensus rules and network protocols.
+Its main responsibility is to build up and replicate all of the name state.  It does
+not have any public APIs of its own.</p>
+
+<p>The BNS API modules allows users and developers to resolve names via a RESTful
+interface.  Resolution can be done with vanilla <code class="highlighter-rouge">curl</code> or <code class="highlighter-rouge">wget</code>.
+BNS applications should use the BNS API module for name resolution.
+They should not attempt to talk to a BNS indexer directly, because its API is not stable and is not meant
+for consumption by any other process except for the API module.</p>
+
+<p>Registering and managing names require generating and sending blockchain
+transactions, which requires running a BNS client.  We provide two reference
+BNS clients:</p>
+
+<ul>
+  <li>The <a href="https://github.com/blockstack/blockstack-browser">Blockstack Browser</a> gives users
+and developers a graphical UI to resolve, register and manage names.  This is the recommended
+way to interact with BNS.</li>
+  <li>The <a href="https://blockstack.org/docs/#lookups">Blockstack CLI</a> gives developers low-level
+control over resolving, registering, and managing names.
+A new CLI that uses <a href="https://github.com/blockstack/blockstack.js">blockstack.js</a>
+is under development, and will replace the existing CLI program.</li>
+</ul>
+
+<p>We recommend that new developers use the <a href="https://github.com/blockstack/blockstack-browser">Blockstack
+Browser</a>.</p>
+
+<p>Developers who want to make their own client programs that do not use
+the reference client library code should read the
+<a href="wire-format.md">BNS transaction wire format</a> document for generating and
+sending their own transactions.</p>
+
+<p>The examples in this document focus on resolving names using <code class="highlighter-rouge">curl</code>.  We refer
+the reader to client-specific documentation for registering and managing names.</p>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=Understand the Architecture&url=https://zbabystack.netlify.com/core/naming/architecture.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fnaming%2Farchitecture.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+</div>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+                    <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+
+
+                    
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="uk-margin-medium uk-text-small copyright">Blockstack</div>
+
+    </div>
+</footer>
+
+    
+
+    <!-- <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      /* A CSS selector that points to your search  box */
+      searchBox: {selector: '#searchBox'}
+   };
+</script>
+<script src="https://sitesearch360.com/cdn/sitesearch360-v11.min.js" async></script>
+ -->
+
+
+
+    </body>
+
+</html>

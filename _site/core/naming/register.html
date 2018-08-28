@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Register a name | Blockstack</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Register a name" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Register a name" />
+<meta property="og:description" content="Register a name" />
+<link rel="canonical" href="https://zbabystack.netlify.com/core/naming/register.html" />
+<meta property="og:url" content="https://zbabystack.netlify.com/core/naming/register.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-28T14:54:31-07:00" />
+<script type="application/ld+json">
+{"description":"Register a name","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/register.html","headline":"Register a name","dateModified":"2018-08-28T14:54:31-07:00","datePublished":"2018-08-28T14:54:31-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/register.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="/assets/posts/logo.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js"></script>
+  
+</head>
+
+
+    <body>
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a>
+
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            <script>
+            SimpleJekyllSearch({
+                searchInput: document.getElementById('searchBox'),
+                resultsContainer: document.getElementById('searchBox-results'),
+                noResultsText: '<li>No results found</li>',
+                searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+                json: '/search.json'
+            });
+            </script>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                    
+                        <h5>Overview</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/introduction.html">Blockstack Naming Service (BNS)</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/architecture.html">Understand the Architecture</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/namespaces.html">Understand Namespaces</a></li>
+                        
+                        </ul>
+                    
+                        <h5>Tutorials</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/creation_tutorial.html">Creating a Namespace</a></li>
+                        
+                        </ul>
+                    
+                        <h5>How to use BNS</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/pickname.html">Choose a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/resolving.html">Resolve a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class="uk-active"><a href="/core/naming/register.html">Register a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/manage.html">Manage BNS Names</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/subdomains.html">BNS Subdomains</a></li>
+                        
+                        </ul>
+                    
+                        <h5>Other topics</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/forks.html">BNS Forks</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/did.html">DID Encoding for Subdomains</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/comparison.html">Naming system feature comparison</a></li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article class="uk-article">
+
+                    <h1 class="uk-article-title">Register a name</h1>
+
+                    
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2018-08-28T14:54:31-07:00" itemprop="datePublished">
+    
+    <a "target="_blank" href="https://github.com/moxiegirl/docs-new/blob/master/_core/naming/register.md" class="btn btn-default githubEditButton" role="button"><span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+ <span style="font-family:Wingdings">&#119;</span> Aug 28, 2018
+</time>
+
+                    </div>
+
+                    <div class="article-content">
+                        
+<p class="no_toc">This section explains registering BNS names and provides instructions for methods
+you can use to understandt the cost of namespace registration.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#understand-registration" id="markdown-toc-understand-registration">Understand registration</a></li>
+  <li><a href="#getting-a-names-registration-fee-reference" id="markdown-toc-getting-a-names-registration-fee-reference">Getting a Name’s Registration Fee (reference)</a></li>
+  <li><a href="#getting-the-current-consensus-hash-reference" id="markdown-toc-getting-the-current-consensus-hash-reference">Getting the Current Consensus Hash (reference)</a></li>
+  <li><a href="#registering-a-name" id="markdown-toc-registering-a-name">Registering a Name</a></li>
+</ul>
+
+<h2 id="understand-registration">Understand registration</h2>
+
+<p>Registering a BNS name costs cryptocurrency.  This cost comes from two sources:</p>
+
+<ul>
+  <li>
+    <p><strong>Transaction fees:</strong> These are the fees imposed by the cost of storing the
+transaction data to the blockchain itself.  They are independent of BNS, since
+all of the blockchain’s users are competing to have their transactions included
+in the next block.  The blockchain’s miners receive the transaction fee.</p>
+  </li>
+  <li>
+    <p><strong>Registration fees:</strong> Each BNS namespace imposes an <em>additional</em> fee on how
+much a name costs.  The registration fee is sent to the namespace creator
+during the first year that a namespace exists, and is sent to a burn address
+afterwards.  The registration fee is different for each name and is
+determined by the namespace itself, but can be queried in advance by the user.</p>
+  </li>
+</ul>
+
+<p>Registering a name takes two transactions.  They are:</p>
+
+<ul>
+  <li>
+    <p><strong><code class="highlighter-rouge">NAME_PREORDER</code> transaction</strong>:  This is the first transaction to be sent.
+It tells all BNS nodes the <em>salted hash</em> of the BNS name, and it pays the
+registration fee to the namespace owner’s designated address (or the burn
+address).  In addition, it proves to the BNS nodes that the client knows about
+the current state of the system by including a recent <em>consensus hash</em>
+in the transaction (see the section on <a href="#bns-forks">BNS forks</a> for details).</p>
+  </li>
+  <li>
+    <p><strong><code class="highlighter-rouge">NAME_REGISTRATION</code> transaction</strong>:  This is the second transaction to be
+sent.  It reveals the salt and the name to all BNS nodes, and assigns the name
+an initial public key hash and zone file hash</p>
+  </li>
+</ul>
+
+<p>The reason this process takes two transactions is to prevent front-running.
+The BNS consensus rules stipulate that a name can only be registered if its
+matching preorder transaction was sent in the last 24 hours.  Because a name
+must be preordered before it is registered, someone watching the blockchain’s
+peer network cannot race a victim to claim the name they were trying to
+register (i.e. the attacker would have needed to send a <code class="highlighter-rouge">NAME_PREORDER</code>
+transaction first, and would have had to have sent it no more than 24 hours
+ago).</p>
+
+<p>Registering a name on top of the Bitcoin blockchain takes 1-2 hours.  This is
+because you need to wait for the <code class="highlighter-rouge">NAME_PREORDER</code> transaction to be sufficiently
+confirmed before sending the <code class="highlighter-rouge">NAME_REGISTRATION</code> transaction.  The BNS nodes
+only register the name once both transactions have at least 6 confirmations
+(which itself usually takes about an hour).</p>
+
+<p>Names are registered on a first-come first-serve basis.
+If two different people try to register the same name at the same time, the
+person who completes the two-step process <em>earliest</em> will receive the name.  The
+other person’s <code class="highlighter-rouge">NAME_REGISTRATION</code> transaction will be ignored, since it will
+not be considered valid at this point.  The registration fee paid by the
+<code class="highlighter-rouge">NAME_PREORDER</code> will be lost.  However, this situation is rare in practice—
+as of early 2018, we only know of one confirmed instance in the system’s 3+ years
+of operation.</p>
+
+<p>Fully-qualified names can be between 3 and 37 characters long, and consist of
+the characters <code class="highlighter-rouge">a-z</code>, <code class="highlighter-rouge">0-9</code>, <code class="highlighter-rouge">+</code>, <code class="highlighter-rouge">-</code>, <code class="highlighter-rouge">_</code>, and <code class="highlighter-rouge">.</code>.  This is to prevent
+<a href="https://en.wikipedia.org/wiki/IDN_homograph_attack">homograph attacks</a>.
+<code class="highlighter-rouge">NAME_REGISTRATION</code> transactions that do not conform to this requirement will be
+ignored.</p>
+
+<h2 id="getting-a-names-registration-fee-reference">Getting a Name’s Registration Fee (<a href="https://core.blockstack.org/#price-checks-get-name-price">reference</a>)</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl -sL https://core.blockstack.org/v1/prices/names/helloworld.id | jq -r <span class="s2">".name_price"</span>
+<span class="o">{</span>
+  <span class="s2">"btc"</span>: 2.5e-05,
+  <span class="s2">"satoshis"</span>: 2500
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Note the use of <code class="highlighter-rouge">jq -r</code> to select the <code class="highlighter-rouge">"name_price"</code> field.  This API
+endpoint may return other ancilliary data regarding transaction fee estimation,
+but this is the only field guaranteed by this specification to be present.</p>
+
+<h2 id="getting-the-current-consensus-hash-reference">Getting the Current Consensus Hash (<a href="https://core.blockstack.org/#blockchain-operations-get-consensus-hash">reference</a>)</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl -sL https://core.blockstack.org/v1/blockchains/bitcoin/consensus
+<span class="o">{</span>
+  <span class="s2">"consensus_hash"</span>: <span class="s2">"98adf31989bd937576aa190cc9f5fa3a"</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The consensus hash must be included in the <code class="highlighter-rouge">NAME_PREORDER</code> transaction.  The BNS
+clients do this automatically.  See the <a href="wire-format.md">transaction format
+document</a> for details as to how to include this in the
+transaction.</p>
+
+<h2 id="registering-a-name">Registering a Name</h2>
+
+<p>Registration happens through a BNS client, such as the <a href="https://github.com/blockstack/blockstack-browser">Blockstack
+Browser</a> or
+<a href="https://github.com/blockstack/blockstack.js">blockstack.js</a>.
+The reference BNS clients manage a local Bitcoin wallet, calculate transaction fees
+dynamically and automatically, and broadcast both the <code class="highlighter-rouge">NAME_PREORDER</code> and
+<code class="highlighter-rouge">NAME_REGISTRATION</code> transactions at the right times.</p>
+
+<p>If you want to make your own registration client, you should see the
+<a href="wire-format.md">transaction format</a> document.</p>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=Register a name&url=https://zbabystack.netlify.com/core/naming/register.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fnaming%2Fregister.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+</div>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+                    <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+
+
+                    
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="uk-margin-medium uk-text-small copyright">Blockstack</div>
+
+    </div>
+</footer>
+
+    
+
+    <!-- <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      /* A CSS selector that points to your search  box */
+      searchBox: {selector: '#searchBox'}
+   };
+</script>
+<script src="https://sitesearch360.com/cdn/sitesearch360-v11.min.js" async></script>
+ -->
+
+
+
+    </body>
+
+</html>
