@@ -6,7 +6,8 @@
 
 - title: Tutorials
   docs:
-  - core/naming/creation_tutorial
+  - core/naming/tutorial_creation
+  - core/naming/tutorial_subdomains
 
 
 - title: How to use BNS

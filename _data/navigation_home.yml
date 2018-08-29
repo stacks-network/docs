@@ -23,7 +23,7 @@
 - title: Implement Authentication
   desc: Managing your account, creating new users and exporting data
   icon: cog
-  doc: auth/overview
+  doc: core/auth/overview
 
 - title: Implement Storage with GAIA
   desc: Backend storage drivers and interactions between developer APIs and the Gaia service.
