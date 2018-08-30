@@ -14,6 +14,11 @@ To run locally:
    bundle exec jekyll serve
    ```
 
+   Use this format to turn on production features:
+
+   ```
+   JEKYLL_ENV=production bundle exec jekyll serve
+   ```
 
 ## Deploy via Netlify
 
