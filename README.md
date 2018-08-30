@@ -22,7 +22,7 @@ To deploy to Netlify:
 1. Build the site.
 
     ```
-    jekyll build
+    JEKYLL_ENV=production jekyll build
     ```
 2. Force add the `_site` directory.
 
