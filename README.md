@@ -11,13 +11,13 @@ To run locally:
 3. Build and serve locally.
 
    ```
-   bundle exec jekyll serve
+   bundle exec jekyll serve --config _config.yml,staticman.yml
    ```
 
    Use this format to turn on production features:
 
    ```
-   JEKYLL_ENV=production bundle exec jekyll serve
+   JEKYLL_ENV=production bundle exec jekyll serve --config _config.yml,staticman.yml
    ```
 
 ## Deploy via Netlify
@@ -27,7 +27,7 @@ To deploy to Netlify:
 1. Build the site.
 
     ```
-    JEKYLL_ENV=production jekyll build
+    JEKYLL_ENV=production jekyll build --config _config.yml,staticman.yml
     ```
 2. Force add the `_site` directory.
 
