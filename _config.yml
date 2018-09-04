@@ -17,7 +17,7 @@ baseurl:            ""
 # Site base hostname & protocol, e.g. http://example.com
 url:                "https://zbabystack.netlify.com"
 
-
+repository: moxiegirl/docs.blockstack
 github_editme_path: moxiegirl/docs-new/blob/master
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
