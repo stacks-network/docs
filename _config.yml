@@ -18,6 +18,8 @@ baseurl:            ""
 url:                "https://zbabystack.netlify.com"
 
 repository: moxiegirl/docs.blockstack
+staticman:
+  branch: "master"
 github_editme_path: moxiegirl/docs-new/blob/master
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
@@ -62,8 +64,8 @@ footer:
     copyright:      Blockstack
 
 # Disqus comments shortname, requires Disqus account https://disqus.com/
-disqus:
-    shortname:      # 1234
+# disqus:
+#     shortname:      # 1234
 
 # Google analytics code, get your code here https://www.google.com/analytics/
 google_analytics:
@@ -109,6 +111,12 @@ exclude:
 
 sass:
   style:            compressed
+
+defaults:
+  - scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      comments: true
 
 collections:
   android:

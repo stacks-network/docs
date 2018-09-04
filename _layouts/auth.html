@@ -56,11 +56,12 @@ layout: default
 
                     {% include paginate-doc.html %}
 
-                    {% include related-auth.html %}
+                    <!-- {% include related-auth.html %} -->
 
-                    {% include comment__form.html %}
+                    {% if page.comments == true %}
+                      {% include comments.html %}
+                    {% endif %}
 
-                    {% include page__comments.html %}
                 </article>
 
                 <script>

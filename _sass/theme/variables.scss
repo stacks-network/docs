@@ -88,3 +88,17 @@ $navbar-nav-item-text-transform: none;
 $subnav-item-text-transform: none;
 
 $search-default-border:  darken($global-border, 15%);
+
+
+/* Forms */
+$border-color: $color-main;
+$form-background: mix(#fff, $border-color, 50%);
+$form-border-color: $border-color;
+$form-border-color-hover: mix(#000, $border-color, 10%);
+$form-border-color-focus: $color-main;
+$form-border-radius: 5px;
+$form-box-shadow: inset 0 1px 3px hsla(0, 0%, 0%, 0.06);
+$form-box-shadow-focus: $form-box-shadow,
+  0 0 5px rgba(mix(#000, $form-border-color-focus, 10%), 0.7);
+$form-font-family: $global-font-family;
+$form-font-size: $global-medium-font-size;
