@@ -1,7 +1,7 @@
 <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
     <div class="uk-container uk-container-small">
 
-        <div>
+        <!-- <div>
             <ul class="uk-subnav uk-flex-center">
                 {% for link in site.data.navigation_footer %}
                     {% if link.url contains 'http' %}
@@ -24,8 +24,8 @@
             <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
                 {% include social-networks.html %}
             </div>
-        </div>
-        <div class="uk-margin-medium uk-text-small copyright">{{ site.footer.copyright }}</div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright">&copy; {{ page.date | date: "%Y" }} {{ site.footer.copyright }}</div>
 
     </div>
 </footer>

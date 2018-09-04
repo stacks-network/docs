@@ -16,8 +16,8 @@ section:
     title:
 cta:
     title: Didn't find an answer to your question?
-    subtitle: Get in touch with us and we will be happy to respond!
-    button_text: Contact Us
+    subtitle:
+    button_text: Contact us!
     button_url: /contact/
 ---
 
