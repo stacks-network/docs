@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Use the Blockstack Authenticator | Blockstack</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Use the Blockstack Authenticator" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Use the Blockstack Authenticator" />
+<meta property="og:description" content="Use the Blockstack Authenticator" />
+<link rel="canonical" href="https://zbabystack.netlify.com/newinternet/browser-introduction.html" />
+<meta property="og:url" content="https://zbabystack.netlify.com/newinternet/browser-introduction.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-09-05T15:55:10-07:00" />
+<script type="application/ld+json">
+{"description":"Use the Blockstack Authenticator","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/newinternet/browser-introduction.html","headline":"Use the Blockstack Authenticator","dateModified":"2018-09-05T15:55:10-07:00","datePublished":"2018-09-05T15:55:10-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/newinternet/browser-introduction.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="/assets/posts/logo.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js"></script>
+  
+</head>
+
+
+    <body>
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a>
+
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                  <!--  -->
+                    
+                    
+                         <h5>Get started</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                      <li class="uk-active"><a href="/newinternet/browser-introduction.html">Use the Blockstack Authenticator</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                      <li class=""><a href="/newinternet/ids-introduction.html">Get and use a Blockstack ID</a></li>
+                    
+                    </ul>
+                    
+                  <!--  -->
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article class="uk-article">
+
+                    <h1 class="uk-article-title">Use the Blockstack Authenticator</h1>
+
+                    
+
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2018-09-05T15:55:10-07:00" itemprop="datePublished">
+    
+    <a "target="_blank" href="https://github.com/moxiegirl/docs-new/blob/master/_newinternet/browser-introduction.md" class="btn btn-default githubEditButton" role="button"><span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+ <span style="font-family:Wingdings">&#119;</span> Sep 5, 2018
+</time>
+
+                    </div>
+
+                    <div class="article-content">
+                        
+<p class="no_toc">lockstack Authenticator gives users the ability to explore and use the
+decentralized applications (dapps). The decentralized applications are a new way
+to interact with the internet. Dapps give users control of their data. Data
+about them personally, name, birthdate, phone number and data about what they do
+such as visiting a website or buying an item.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#understand-the-blockstack-authenticator" id="markdown-toc-understand-the-blockstack-authenticator">Understand the Blockstack Authenticator</a></li>
+  <li><a href="#using-the-authenticator-on-public-computers" id="markdown-toc-using-the-authenticator-on-public-computers">Using the Authenticator on public computers</a></li>
+  <li><a href="#install-the-client-edition" id="markdown-toc-install-the-client-edition">Install the client edition</a>    <ul>
+      <li><a href="#on-mac" id="markdown-toc-on-mac">On Mac</a></li>
+      <li><a href="#on-windows" id="markdown-toc-on-windows">On Windows</a></li>
+      <li><a href="#on-linux" id="markdown-toc-on-linux">On Linux</a></li>
+    </ul>
+  </li>
+  <li><a href="#uninstall-the-browser" id="markdown-toc-uninstall-the-browser">Uninstall the browser</a>    <ul>
+      <li><a href="#on-mac-1" id="markdown-toc-on-mac-1">On Mac</a></li>
+      <li><a href="#on-windows-1" id="markdown-toc-on-windows-1">On Windows</a></li>
+      <li><a href="#on-linux-1" id="markdown-toc-on-linux-1">On Linux</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="understand-the-blockstack-authenticator">Understand the Blockstack Authenticator</h2>
+
+<p>Through the Blockstack authemticator application you can create an identity. An identity
+represents you as you interact with others through Dapps.  The Blockstack
+authenticator is itself, a smiple Dapp. It allows you to:</p>
+
+<ul>
+  <li>create one or more identities</li>
+  <li>send and receive bitcoin</li>
+  <li>manage the storage of your profile and application data</li>
+  <li>find and launch Dapps</li>
+</ul>
+
+<p>There are editorions of the Blockstack Authenticator, the web edition is an
+application you access through your web browser by simply <a href="https://browser.blockstack.org/">visit the
+applications’ address</a> in your computer’s
+browser.  You can also install the authenticator as a client application on your
+computer.</p>
+
+<p>If all you want to do is create, manage, and fund an identity and then interact
+with Dapps, you can simply use the web edition. If you have concerns about net
+censorship, hightened security concerns, or develop a Dapp yourself, you may
+want to download and install the authenticator’s client edition.</p>
+
+<h2 id="using-the-authenticator-on-public-computers">Using the Authenticator on public computers</h2>
+
+<p>Before you use the web application, it is important to note that once you log
+into the application with the brower, your session does not expire until you
+choose <strong>Settings &gt; RESET BROWSER</strong>.  For this reason, you should be careful
+when using the authenticator on public computers.</p>
+
+<p>If you are in a library, for example, and log into the authenticator, simply
+closing the tab or even rebooting the computer does not log you out. Instead,
+you should be sure to choose <strong>Settings &gt; RESET BROWSER</strong> before leaving the web
+application.</p>
+
+<p>For more informatin about your identity and the authenticator, see <a href="ids-introduction.md">Get and use a Blockstack IDs</a>.</p>
+
+<h2 id="install-the-client-edition">Install the client edition</h2>
+
+<p>Remember, for most users the Blockstack Authenticator web application should
+suffice. You only need to install the client if you have additional, advanced
+concerns about Internet or identity. Though not required, some Dapp developrs
+may find it useful to install the client edition.</p>
+
+<p>The Blockstack Authenticator installer is a <em>multiple-context</em> installer. If you
+run it as a user, the installation is avalable only for that user. If you
+install as administrator, the installation installs for all users. To find an
+installer for your operating system, visit <a href="https://blockstack.org/install">the Blockstack install
+page</a>.</p>
+
+<h3 id="on-mac">On Mac</h3>
+
+<p>Installation requires that you have macOS High Sierra 10.12 or higher. Do the following to install:</p>
+
+<ol>
+  <li>Download the OSX installer from from &lt;a href=”https://blockstack.org/install” target=”_blank”&gt;the browser installation page&lt;/a&gt;.</li>
+  <li>
+    <p>Double-click the downloaded DMG file to launch the installer.</p>
+
+    <p><img src="images/ubuntu-browser.png" alt="" /></p>
+  </li>
+  <li>Drag the Blockstack.app to the <code class="highlighter-rouge">Applications</code> folder.</li>
+  <li>
+    <p>Double-click the Blockstack.app to launch it.</p>
+
+    <p>The system displays a notice about opening the file:</p>
+
+    <p><img src="images/dmg-notice.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Choose <strong>Open</strong>.</p>
+
+    <p>The system opens your default browser with the Blockstack Authenticator
+application, running from your machine (localhost). You’ll also see the
+Blockstack icon in your machine’s</p>
+
+    <p><img src="images/browser-on-mac.png" alt="" /></p>
+
+    <p>If you have loaded an identity already via the Blockstack web application,
+you are already logged into the local application:</p>
+
+    <p><img src="images/browser-on-mac-1.png" alt="" /></p>
+  </li>
+</ol>
+
+<h3 id="on-windows">On Windows</h3>
+
+<p>Installation requires that you have Windows 10 or higher. Do the following to
+install:</p>
+
+<ol>
+  <li>Download the Windows installer from from &lt;a href=”https://blockstack.org/install” target=”_blank”&gt;the browser installation page&lt;/a&gt;.</li>
+  <li>
+    <p>Double-click the installer package to launch it.</p>
+
+    <p><img src="images/windows-installer.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Open the Wiindows <strong>Start</strong> menu and click on the recently added <strong>Blockstack Authenticator</strong>.</p>
+
+    <p><img src="images/windows-start.png" alt="" /></p>
+
+    <p>The system displays a Windows Security Alert.</p>
+
+    <p><img src="images/windows-security.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Choose to <strong>Allow access</strong>.</p>
+
+    <p>The system opens in the Blockstack Authenticator application.</p>
+
+    <p><img src="images/windows-browser.png" alt="" /></p>
+  </li>
+</ol>
+
+<h3 id="on-linux">On Linux</h3>
+
+<p>The Blockstack installation on Linux requires Docker. Before installing
+Blockstack, &lt;a href=“https://docs.docker.com/install/” target=”_blank”&gt;install
+the version of Docker appropriate for your operating system&lt;/a&gt;.</p>
+
+<blockquote>
+  <p><strong>Note</strong>: The Blockstack script used in this procedure runs <code class="highlighter-rouge">docker</code> commands. Depending on how you installed and configure Dockered on your system, it may or may not be necessary to have <code class="highlighter-rouge">root</code> or <code class="highlighter-rouge">sudo</code> privileges.  For this reason, the commands below show the use of <code class="highlighter-rouge">sudo</code> when interacting with the script or the <code class="highlighter-rouge">docker</code> executable. If your installation allows running Docker with lower privileges, you can omit it.</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>Download the Linux installer from from &lt;a href=”https://blockstack.org/install” target=”_blank”&gt;the browser installation page&lt;/a&gt;.</p>
+
+    <p>This downloads a <code class="highlighter-rouge">Blockstack-for-Linux-v0.30.0.sh</code> script to your local drive.</p>
+  </li>
+  <li>
+    <p>Open a terminal and navigate to the directory containing the downloaded script.</p>
+
+    <p>When the script downloads, it is not executable.</p>
+  </li>
+  <li>
+    <p>Set the executable bit on the file.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>chmod u+x Blockstack-for-Linux-v0.309.0.0.sh
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Enter the command without any arguments to see the available subcommands.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo ./Blockstack-for-Linux-v0.309.0.0.sh
+ blockstack docker launcher commands:
+ Install-protocol-handler -&gt; install a protocol handler <span class="k">for </span>blockstack:// links
+ ...
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Use the script to <code class="highlighter-rouge">pull</code> the Blockstack Docker images you need.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo ./Blockstack-for-Linux-v0.309.0.0.sh pull
+</code></pre>
+    </div>
+
+    <p>Depending on your network speed, this can take some time.</p>
+  </li>
+  <li>
+    <p>Use the <code class="highlighter-rouge">docker image ls</code> command to confirm you have the image.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo docker image Is
+ REPOSITORY	TAG	IMAGE ID	CREATED
+ quay.io/blockstack/blockstack-browser	v0.30.0	ad05fd844f59	2 days ago
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Install the protocol handler</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span> sudo ./Blockstack-for-Linux-vO.30.0.sh install-protocol-handler 
+ Registering protocol handler
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Start the Blockstack containers.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo ./Blockstack-for-Linux-vO.30.0.sh start
+ c3092592e59abe3559fdb49d070a7aa5e99165c7d9f2flla20ecaf4e0dfc2f46 
+ cd92f61ae473d54398da987f5023f5462b29c03f08584ebb3c9fIbb4cd790c69 
+ Registering protocol handler
+</code></pre>
+    </div>
+
+    <p>The system launches the Blockstack Authenticator application for you.</p>
+
+    <p><img src="images/ubuntu-browser.png" alt="" /></p>
+  </li>
+</ol>
+
+<p>Until you stop the Blockstack containers, the application will continue to run
+on your system. To display the status of the Blockstack containers, you can use
+the <code class="highlighter-rouge">docker container ls</code> command.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo docker container ls --format <span class="s1">'{{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}'</span>
+</code></pre>
+</div>
+
+<p>Use <code class="highlighter-rouge">./Blockstack-for-Linux-vO.30.0.sh stop</code> to stop the Blockstack Authenticator and its containers.</p>
+
+<h2 id="uninstall-the-browser">Uninstall the browser</h2>
+
+<p>If you installed the browser using an installer, follow the instructions for
+your operating system.</p>
+
+<h3 id="on-mac-1">On Mac</h3>
+
+<ol>
+  <li>
+    <p>Quit the Blockstack application if it is running.</p>
+
+    <p><img src="images/quit-blockstack.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Check if you have a Blockstack device and eject it if you do.</p>
+
+    <p><img src="images/eject-blockstack.png" alt="" /></p>
+  </li>
+  <li>Use the Finder to open the <strong>Applications</strong> folder.</li>
+  <li>Locate the Blockstack application.</li>
+  <li>Open your <code class="highlighter-rouge">Applications</code> folder and locate the <strong>Blockstack.app</strong>.</li>
+  <li>Drag the appliation to the trash.</li>
+  <li>
+    <p>Delete the <code class="highlighter-rouge">/Users/USERNAME/Library/Application Support/Blockstack</code> folder.</p>
+
+    <p>From the command line:</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>rm -r /Users/moxiegirl/Library/Application<span class="se">\ </span>Support/Blockstack
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h3 id="on-windows-1">On Windows</h3>
+
+<ol>
+  <li>Open the <strong>Start</strong> menu.</li>
+  <li>Click <strong>Settings &gt; System</strong>.</li>
+  <li>
+    <p>Open for the <strong>Apps &amp; features</strong> item.</p>
+
+    <p><img src="images/eject-blockstack.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Locate the <strong>Blockstack Authenticator</strong> and choose <strong>Uninstall</strong>.</p>
+
+    <p><img src="images/browser-uninstall.png" alt="" /></p>
+  </li>
+</ol>
+
+<h3 id="on-linux-1">On Linux</h3>
+
+<p>Your Blockstack instalaltion relies on Docker containers and their associated
+images.  It also includes a supporting protocol handler you must remove.  If you
+installed Docker so that you can run Blockstack, you can uninstall Docker as well,
+but that is not explained here.</p>
+
+<p>Do the following to uninstall Blockstack:</p>
+
+<ol>
+  <li>
+    <p>Stop and remove the Docker containers if they are running.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo ./Blockstack-for-Linux-vO.30.0.sh stop
+ stopping the running blockstack-browser containers
+ 69a686799d4f
+ 56fc6189ff97
+ 69a686799d4f
+ 56fc6189ff97
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Remove the associated Blockstack images.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo docker image ls
+ REPOSITORY	                          TAG	    IMAGE ID	    CREATED
+ quay.io/blockstack/blockstack-browser	v0.30.0	ad05fd844f59	3 days ago
+ <span class="nv">$ </span>sudo docker image rm ad05fd844f59 
+ Untagged : quay.io/blockstack/blockstack- browser :vO.30.0
+ Untagged: quay.io/blockstack/blockstack-browser@sha256:b20c9514c56b99398fd4946af39e7537b807e85694943ac3b8807dlb3625833b
+ Deleted: Sha256:ad05fd844f5948blee06a0a09228df946478393c0a7588cbc65dlb8817f5b34e
+ Deleted: Sha256:7c3d0043f2ba01cf285f3fe09701b086c349b6380c2e42f25b31ac65c6626ec8
+ Deleted: sha256:54ea2aa7d7d000e7483f299eeca9e5466fa86231f4cd4cld3c3096d97e61c5df
+ Deleted: sha256:38e61054355adefc3c2de031462114a9946cfc0e44444a38a27d0f115aba0da2
+ ....
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Use the script to remove the protocol handler</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo ./Blockstack-for-Linux-vO.30.0.sh remove-protocol-handler
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Delete the script.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>rm Blockstack-for-Linux-vO.30.0.sh
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=Use the Blockstack Authenticator&url=https://zbabystack.netlify.com/newinternet/browser-introduction.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fnewinternet%2Fbrowser-introduction.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+</div>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+                    <!-- <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+ -->
+
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright">&copy; 2018 Blockstack</div>
+
+    </div>
+</footer>
+
+    
+
+    <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      /* A CSS selector that points to your search  box */
+      searchBox: {selector: '#searchBox'}
+   };
+</script>
+<script src="https://cdn.sitesearch360.com/sitesearch360-v11.min.js" async></script>
+
+
+
+    </body>
+
+</html>

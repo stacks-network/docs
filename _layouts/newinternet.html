@@ -8,11 +8,14 @@ layout: default
 
             <div class="sidebar-fixed-width uk-visible@m">
                 <div class="sidebar-docs uk-position-fixed">
+                  <!--  -->
                     {% for section in site.data.navigation_newinternet %}
-                    <h5>{{ section.title }}</h5>
+                    {% if section.title %}
+                         <h5>{{ section.title }}</h5>
+                    {% endif %}
                     <ul class="uk-nav uk-nav-default doc-nav">
                     {% for doc in section.docs %}
-                      {% assign doc_url = doc | prepend:"/" | append:"/" %}
+                      {% assign doc_url = doc | prepend:"/" | append:".html" %}
                       <!-- {% assign p =  site.docs | where:"url", doc_url | first %} -->
                       {% for col in site.collections %}
                         {% for item in col.docs %}
@@ -27,6 +30,7 @@ layout: default
                     {% endfor %}
                     </ul>
                     {% endfor %}
+                  <!--  -->
                 </div>
             </div>
 
@@ -37,6 +41,7 @@ layout: default
                     <h1 class="uk-article-title">{{ page.title | escape }}</h1>
 
                     {% if page.subtitle %}<p class="subtitle uk-text-lead uk-text-muted">{{ page.subtitle }}</p>{% endif %}
+
 
                     <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
                         {% include post-meta.html %}
@@ -51,9 +56,8 @@ layout: default
 
                     {% include paginate-doc.html %}
 
-                    {% include related-newinternet.html %}
+                    <!-- {% include related-auth.html %} -->
 
-                    {% if site.disqus.shortname %} {% include disqus_comments.html %} {% endif %}
                 </article>
 
                 <script>
