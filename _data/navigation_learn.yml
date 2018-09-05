@@ -1,7 +1,9 @@
-- title: Introduction
+- title: Try a tutorial
   docs:
+  - newinternet/hello-blockstack
+  - newinternet/multi-player-storage
 
-- title: SDKs
+- title: Work with an SDK
   docs:
   - android/tutorial
   - ios/tutorial

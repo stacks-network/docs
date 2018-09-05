@@ -8,7 +8,7 @@
 - title: Use the New Internet
   desc: Learn about the New Internet and its applications. Create an identity and learn how to use it.
   icon: settings
-  doc: newinternet/privacy
+  doc: newinternet/browser-introduction
 
 - title: Build Apps and Earn Money
   desc: Learn how to build an application that earns with Blockstack.

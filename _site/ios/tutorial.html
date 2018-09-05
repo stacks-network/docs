@@ -17,15 +17,15 @@
 <meta property="og:url" content="https://zbabystack.netlify.com/ios/tutorial.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-04T16:49:50-07:00" />
+<meta property="article:published_time" content="2018-09-05T15:55:10-07:00" />
 <script type="application/ld+json">
-{"description":"iOS SDK Tutorial (Pre-release)","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/ios/tutorial.html","headline":"iOS SDK Tutorial (Pre-release)","dateModified":"2018-09-04T16:49:50-07:00","datePublished":"2018-09-04T16:49:50-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/ios/tutorial.html"},"@context":"http://schema.org"}</script>
+{"description":"iOS SDK Tutorial (Pre-release)","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/ios/tutorial.html","headline":"iOS SDK Tutorial (Pre-release)","dateModified":"2018-09-05T15:55:10-07:00","datePublished":"2018-09-05T15:55:10-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/ios/tutorial.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
   <meta property="og:image" content="/assets/posts/logo.png"/>
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png" >
+  <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
   <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
   <script src="/assets/js/main.js"></script>
   
@@ -78,15 +78,6 @@
                     <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
                 </div>
             </div>
-            <script>
-            SimpleJekyllSearch({
-                searchInput: document.getElementById('searchBox'),
-                resultsContainer: document.getElementById('searchBox-results'),
-                noResultsText: '<li>No results found</li>',
-                searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
-                json: '/search.json'
-            });
-            </script>
             
 
             <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
@@ -109,12 +100,22 @@
             <div class="sidebar-fixed-width uk-visible@m">
                 <div class="sidebar-docs uk-position-fixed">
                     
-                        <h5>Introduction</h5>
+                        <h5>Try a tutorial</h5>
                         <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/newinternet/hello-blockstack.html">Hello, Blockstack Tutorial</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/newinternet/multi-player-storage.html">Manage Data with Gaia</a></li>
                         
                         </ul>
                     
-                        <h5>SDKs</h5>
+                        <h5>Work with an SDK</h5>
                         <ul class="uk-nav uk-nav-default doc-nav">
                         
                             
@@ -151,10 +152,10 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-09-04T16:49:50-07:00" itemprop="datePublished">
+<time datetime="2018-09-05T15:55:10-07:00" itemprop="datePublished">
     
     <a "target="_blank" href="https://github.com/moxiegirl/docs-new/blob/master/_ios/tutorial.md" class="btn btn-default githubEditButton" role="button"><span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Sep 4, 2018
+ <span style="font-family:Wingdings">&#119;</span> Sep 5, 2018
 </time>
 
                     </div>
@@ -208,8 +209,8 @@ into XCode to review it.</p>
 
 <h2 id="understand-the-sample-application-flow">Understand the sample application flow</h2>
 
-<p>When complete, the sample application is a simple <code class="highlighter-rouge">hello-world</code> display. It is
-intended for user on an iOS phone.</p>
+<p>When complete, the sample application is a simple <code class="highlighter-rouge">hello-world</code> display
+intended for use on an iOS phone.</p>
 
 <p><img src="images/final-app.png" alt="" /></p>
 
@@ -387,14 +388,15 @@ modify the <code class="highlighter-rouge">hello-world</code> to interact with t
 </code></pre>
     </div>
 
-    <p>The system opens a browser displaying your running application.</p>
+    <p>At this point, the browser is running a Blockstack server on your local host.
+Navigate to <code class="highlighter-rouge">https://localhost:8080</code> with your browser to display the
+application.</p>
   </li>
 </ol>
 
 <p><img src="images/blockstack-signin.png" alt="" /></p>
 
-<p>At this point, the browser is running a Blockstack server on your local host.
-   This is for testing your applications only.</p>
+<p>This local instances is for testing your applications only.</p>
 
 <ol>
   <li>
@@ -428,6 +430,13 @@ you do here will allow it.</p>
 application directory.</p>
   </li>
   <li>
+    <p>Create a <code class="highlighter-rouge">public</code> directory.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>mkdir public
+</code></pre>
+    </div>
+  </li>
+  <li>
     <p>Use the <code class="highlighter-rouge">touch</code> command to add a redirect endpoint to your application.</p>
 
     <p>This endpoint on the web version of your app will redirect iOS users back
@@ -451,7 +460,7 @@ to your mobile app.</p>
    <span class="p">}</span>
 
    <span class="kd">var</span> <span class="nx">authResponse</span> <span class="o">=</span> <span class="nx">getParameterByName</span><span class="p">(</span><span class="s1">'authResponse'</span><span class="p">)</span>
-   <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="s2">"myblockstackapp:"</span> <span class="o">+</span> <span class="nx">authResponse</span>
+   <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="s2">"myblockstackapp://?authResponse="</span> <span class="o">+</span> <span class="nx">authResponse</span>
    <span class="nt">&lt;/script&gt;</span>
  <span class="nt">&lt;body&gt;</span>
  <span class="nt">&lt;/body&gt;</span>
@@ -469,7 +478,11 @@ to your mobile app.</p>
  to this handler in your iOS application.</p>
   </li>
   <li>Close and save the <code class="highlighter-rouge">redirect.html</code> file.</li>
-  <li>Ensure your Blockstack compiles successfully.</li>
+  <li>
+    <p>Ensure your Blockstack app compiles successfully.</p>
+
+    <p>The <code class="highlighter-rouge">npm</code> process should detect and compile your change.</p>
+  </li>
 </ol>
 
 <h2 id="build-the-hello-blockstack-ios">Build the hello-blockstack-ios</h2>
@@ -487,7 +500,7 @@ menu items and therefore these procedures may be differœent on your version.</p
   <li>Choose <strong>Create new XCode project</strong>.</li>
   <li>Select <strong>iOS</strong>.</li>
   <li>
-    <p>Select <strong>Single View Page</strong>.</p>
+    <p>Select <strong>Single View App</strong>.</p>
 
     <p><img src="images/single-view-app.png" alt="" /></p>
   </li>
@@ -735,7 +748,7 @@ defines the graphical elements. Some elements are required before you can
 functionality to your  code.</p>
   </li>
   <li>
-    <p>Replace the <view> element with the following:</view></p>
+    <p>Within the <code class="highlighter-rouge">&lt;viewController&gt;</code>  element, replace the existing <code class="highlighter-rouge">&lt;view&gt;</code> subelement with the following:</p>
 
     <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;view</span> <span class="na">key=</span><span class="s">"view"</span> <span class="na">contentMode=</span><span class="s">"scaleToFill"</span> <span class="na">id=</span><span class="s">"8bC-Xf-vdC"</span><span class="nt">&gt;</span>
      <span class="nt">&lt;rect</span> <span class="na">key=</span><span class="s">"frame"</span> <span class="na">x=</span><span class="s">"0.0"</span> <span class="na">y=</span><span class="s">"0.0"</span> <span class="na">width=</span><span class="s">"375"</span> <span class="na">height=</span><span class="s">"667"</span><span class="nt">/&gt;</span>
@@ -835,7 +848,7 @@ functionality to your  code.</p>
 <p>Now, you are ready to connect your applicaiton with your Blockstack Web
 Application. Normally, after building your Web application you would have
 registred it with Blockstack and the app would be available on the Web. This
-example skips this registroation step and uses an example application we’ve
+example skips this registration step and uses an example application we’ve
 already created for you:</p>
 
 <p><code class="highlighter-rouge">https://heuristic-brown-7a88f8.netlify.com/redirect.html</code></p>

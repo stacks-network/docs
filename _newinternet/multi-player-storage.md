@@ -538,7 +538,7 @@ Update `Profile.jsx` again.
 
     After the application compiles, you should see the following:
 
-    ![Multi-reader storage authentication](/images/multi-player-storage-status.png)
+    ![Multi-reader storage authentication](images/multi-player-storage-status.png)
 
 
 At this point, you have a basic micro-blogging app that users can use to post and

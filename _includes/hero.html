@@ -19,17 +19,6 @@
                 </form>
                 <ul id="hero-search-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
             </div>
-
-            <script>
-            SimpleJekyllSearch({
-                searchInput: document.getElementById('hero-search'),
-                resultsContainer: document.getElementById('hero-search-results'),
-                noResultsText: '<li>No results found</li>',
-                searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
-                json: '/search.json'
-            });
-            </script>
-
         </div>
         {% endif %}
 

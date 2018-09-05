@@ -35,15 +35,6 @@
                     <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
                 </div>
             </div>
-            <script>
-            SimpleJekyllSearch({
-                searchInput: document.getElementById('searchBox'),
-                resultsContainer: document.getElementById('searchBox-results'),
-                noResultsText: '<li>No results found</li>',
-                searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
-                json: '/search.json'
-            });
-            </script>
             {% endunless %}
 
             <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
