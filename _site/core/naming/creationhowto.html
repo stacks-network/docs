@@ -6,20 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Understand the Architecture | Blockstack</title>
+<title>Creating a Namespace | Blockstack</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="Understand the Architecture" />
+<meta property="og:title" content="Creating a Namespace" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Understand the Architecture" />
-<meta property="og:description" content="Understand the Architecture" />
-<link rel="canonical" href="https://zbabystack.netlify.com/core/naming/architecture.html" />
-<meta property="og:url" content="https://zbabystack.netlify.com/core/naming/architecture.html" />
+<meta name="description" content="Creating a Namespace" />
+<meta property="og:description" content="Creating a Namespace" />
+<link rel="canonical" href="https://zbabystack.netlify.com/core/naming/creationhowto.html" />
+<meta property="og:url" content="https://zbabystack.netlify.com/core/naming/creationhowto.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-09-08T19:24:57-07:00" />
 <script type="application/ld+json">
-{"description":"Understand the Architecture","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/architecture.html","headline":"Understand the Architecture","dateModified":"2018-09-08T19:24:57-07:00","datePublished":"2018-09-08T19:24:57-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/architecture.html"},"@context":"http://schema.org"}</script>
+{"description":"Creating a Namespace","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/creationhowto.html","headline":"Creating a Namespace","dateModified":"2018-09-08T19:24:57-07:00","datePublished":"2018-09-08T19:24:57-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/creationhowto.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
@@ -111,7 +111,7 @@
                             
                             <!--  -->
                             
-                            <li class="uk-active"><a href="/core/naming/architecture.html">Understand the Architecture</a></li>
+                            <li class=""><a href="/core/naming/architecture.html">Understand the Architecture</a></li>
                         
                             
                             <!--  -->
@@ -146,7 +146,7 @@
                             
                             <!--  -->
                             
-                            <li class=""><a href="/core/naming/creationhowto.html">Creating a Namespace</a></li>
+                            <li class="uk-active"><a href="/core/naming/creationhowto.html">Creating a Namespace</a></li>
                         
                             
                             <!--  -->
@@ -197,7 +197,7 @@
 
                 <article class="uk-article">
 
-                    <h1 class="uk-article-title">Understand the Architecture</h1>
+                    <h1 class="uk-article-title">Creating a Namespace</h1>
 
                     
 
@@ -216,7 +216,7 @@
     
     
 
-<a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/architecture.md" class="btn btn-default githubEditButton" role="button">
+<a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/creationhowto.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
  <span style="font-family:Wingdings">&#119;</span> Sep 8, 2018
 </time>
@@ -225,99 +225,68 @@
 
                     <div class="article-content">
                         
-<p>The BNS node is the heart of the system.  It is responsible for building up
-and replicating global name state.</p>
+<p>There are four steps to creating a namespace:</p>
 
-<p>There are three parts to BNS that developers should be aware of.  They are:</p>
-
-<ul>
+<ol>
   <li>
-    <p><strong>The BNS indexer</strong>.  This module crawls the blockchain and builds
-up its name database.  BNS indexers do not contain any private or sensitive
-state, and can be deployed publicly.  We maintain a fleet of them at
-<code class="highlighter-rouge">https://node.blockstack.org:6263</code> for developers to use to get started.</p>
+    <p><strong>Send a <code class="highlighter-rouge">NAMESPACE_PREORDER</code> transaction</strong> (<a href="https://www.blocktrail.com/BTC/tx/5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28">live example</a>).
+This is the first step.  This registers the <em>salted hash</em> of the namespace with BNS nodes, and burns the
+requisite amount of cryptocurrency.  In addition, it proves to the
+BNS nodes that user has honored the BNS consensus rules by including
+a recent <em>consensus hash</em> in the transaction
+(see the section on <a href="#bns-forks">BNS forks</a> for details).</p>
   </li>
   <li>
-    <p><strong>The BNS API</strong>.  This module gives
-developers a <em>stable RESTful API</em> for interacting with the BNS network.
-We provide one for developers to experiment with at <code class="highlighter-rouge">https://core.blockstack.org</code>.</p>
+    <p><strong>Send a <code class="highlighter-rouge">NAMESPACE_REVEAL</code> transaction</strong> (<a href="https://www.blocktrail.com/BTC/tx/ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32">live example</a>).
+This is the second step.  This reveals the salt and the namespace ID (pairing it with its
+<code class="highlighter-rouge">NAMESPACE_PREORDER</code>), it reveals how long names last in this namespace before
+they expire or must be renewed, and it sets a <em>price function</em> for the namespace
+that determines how cheap or expensive names its will be.  The price function takes
+a name in this namespace as input, and outputs the amount of cryptocurrency the
+name will cost (i.e. by examining how long the name is, and whether or not it
+has any vowels or non-alphabet characters).  The namespace creator
+has the option to collect name registration fees for the first year of the
+namespace’s existence by setting a <em>namespace creator address</em>.</p>
   </li>
   <li>
-    <p><strong>BNS clients</strong>.  These communicate with the BNS API module in order to
-resolve names.  Internally, they generate and send transactions to register
-and modify names.</p>
+    <p><strong>Seed the namespace with <code class="highlighter-rouge">NAME_IMPORT</code> transactions</strong> (<a href="https://www.blocktrail.com/BTC/tx/c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312">live example</a>).
+Once the namespace has been revealed, the user has the option to populate it with a set of
+names.  Each imported name is given both an owner and some off-chain state.
+This step is optional—namespace creators are not required to import names.</p>
   </li>
-</ul>
+  <li>
+    <p><strong>Send a <code class="highlighter-rouge">NAMESPACE_READY</code> transaction</strong> (<a href="https://www.blocktrail.com/BTC/tx/2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032">live example</a>).
+This is the final step of the process.  It <em>launches</em> the namespace, which makes it available to the
+public.  Once a namespace is ready, anyone can register a name in it if they
+pay the appropriate amount of cryptocurrency (according to the price funtion
+revealed in step 2).</p>
+  </li>
+</ol>
 
-<p>The BNS indexer and BNS API comprise the <strong>BNS node</strong>.  An architectural schematic appears below.</p>
+<p>The reason for the <code class="highlighter-rouge">NAMESPACE_PREORDER/NAMESPACE_REVEAL</code> pairing is to prevent
+frontrunning.  The BNS consensus rules require a <code class="highlighter-rouge">NAMESPACE_REVEAL</code> to be
+paired with a previous <code class="highlighter-rouge">NAMESPACE_PREORDER</code> sent within the past 24 hours.
+If it did not do this, then a malicious actor could watch the blockchain network
+and race a victim to claim a namespace.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>                      +-------------------------------------------------------+
-            RESTful   | +----------------+             +--------------------+ |
-+--------+   API      | |                | private API |                    | |
-| client |&lt;------------&gt;| BNS API module |&lt;-----------&gt;| BNS indexer module | |
-+--------+            | |                |             |                    | |
-    |                 | +----------------+             | +----------------+ | |
-    |                 |                                | | name database  | | |
-    |                 |                                | +----------------+ | |
-    |                 |                                +--------------------+ |
-    |                 | BNS node                                 ^            |
-    |                 +------------------------------------------|------------+
-    |                                                            |
-    |                                                            v
-    |       blockchain transactions                    +--------------------+
-    +-------------------------------------------------&gt;|   blockchain peer  |
-                                                       +--------------------+
+<p>Namespaces are created on a first-come first-serve basis.  If two people try to
+create the same namespace, the one that successfully confirms both the
+<code class="highlighter-rouge">NAMESPACE_PREORDER</code> and <code class="highlighter-rouge">NAMESPACE_REVEAL</code> wins.  The fee burned in the
+<code class="highlighter-rouge">NAMESPACE_PREORDER</code> is spent either way.</p>
 
-Figure 1: BNS architecture overview.  Clients talk to the BNS API module to
-resolve names, and generate and send blockchain transactions to register and
-modify names.   The API module talks to the indexer module and gives clients
-a stable, Web-accessible interface for resolving names.  The indexer module reads
-the blochchain via a blockchain peer, over the blockchain's peer network.
+<p>Once the user issues the <code class="highlighter-rouge">NAMESPACE_PREORDER</code> and <code class="highlighter-rouge">NAMESPACE_REVEAL</code>, they have
+1 year before they must send the <code class="highlighter-rouge">NAMESPACE_READY</code> transaction.  If they do not
+do this, then the namespace they created disappears (along with all the names
+they imported).</p>
 
-Blockstack Core currently implements the API module and indexer module as separate
-daemons (`blockstack api` and `blockstack-core`, respectively).  However, this
-is an implementation detail, and may change in the future.
-</code></pre>
-</div>
-
-<p>The BNS indexer implements the blockchain consensus rules and network protocols.
-Its main responsibility is to build up and replicate all of the name state.  It does
-not have any public APIs of its own.</p>
-
-<p>The BNS API modules allows users and developers to resolve names via a RESTful
-interface.  Resolution can be done with vanilla <code class="highlighter-rouge">curl</code> or <code class="highlighter-rouge">wget</code>.
-BNS applications should use the BNS API module for name resolution.
-They should not attempt to talk to a BNS indexer directly, because its API is not stable and is not meant
-for consumption by any other process except for the API module.</p>
-
-<p>Registering and managing names require generating and sending blockchain
-transactions, which requires running a BNS client.  We provide two reference
-BNS clients:</p>
-
-<ul>
-  <li>The <a href="https://github.com/blockstack/blockstack-browser">Blockstack Browser</a> gives users
-and developers a graphical UI to resolve, register and manage names.  This is the recommended
-way to interact with BNS.</li>
-  <li>The <a href="https://blockstack.org/docs/#lookups">Blockstack CLI</a> gives developers low-level
-control over resolving, registering, and managing names.
-A new CLI that uses <a href="https://github.com/blockstack/blockstack.js">blockstack.js</a>
-is under development, and will replace the existing CLI program.</li>
-</ul>
-
-<p>We recommend that new developers use the <a href="https://github.com/blockstack/blockstack-browser">Blockstack
-Browser</a>.</p>
-
-<p>Developers who want to make their own client programs that do not use
-the reference client library code should read the
-<a href="wire-format.md">BNS transaction wire format</a> document for generating and
-sending their own transactions.</p>
-
-<p>The examples in this document focus on resolving names using <code class="highlighter-rouge">curl</code>.  We refer
-the reader to client-specific documentation for registering and managing names.</p>
+<p>Developers wanting to create their own namespaces should read the <a href="namespace_creation.md">namespace
+creation</a> document.  It is highly recommended that
+developers follow this tutorial closely, given the large amount of
+cryptocurrency at stake.</p>
 
                         <div class="share uk-text-center">
-    <a href="https://twitter.com/intent/tweet?text=Understand the Architecture&url=https://zbabystack.netlify.com/core/naming/architecture.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
-    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fnaming%2Farchitecture.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    <a href="https://twitter.com/intent/tweet?text=Creating a Namespace&url=https://zbabystack.netlify.com/core/naming/creationhowto.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fnaming%2Fcreationhowto.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
 </div>
 
                     </div>
