@@ -7,22 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>iOS SDK Tutorial (Pre-release) | Blockstack</title>
-<meta name="generator" content="Jekyll v3.8.3" />
+<meta name="generator" content="Jekyll v3.5.0" />
 <meta property="og:title" content="iOS SDK Tutorial (Pre-release)" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="iOS SDK Tutorial (Pre-release)" />
 <meta property="og:description" content="iOS SDK Tutorial (Pre-release)" />
-<link rel="canonical" href="https://zbabystack.netlify.com/ios/tutorial.html" />
-<meta property="og:url" content="https://zbabystack.netlify.com/ios/tutorial.html" />
+<link rel="canonical" href="http://localhost:4000/ios/tutorial.html" />
+<meta property="og:url" content="http://localhost:4000/ios/tutorial.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-05T15:55:10-07:00" />
+<meta property="article:published_time" content="2018-09-08T19:19:36-07:00" />
 <script type="application/ld+json">
-{"description":"iOS SDK Tutorial (Pre-release)","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/ios/tutorial.html","headline":"iOS SDK Tutorial (Pre-release)","dateModified":"2018-09-05T15:55:10-07:00","datePublished":"2018-09-05T15:55:10-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/ios/tutorial.html"},"@context":"http://schema.org"}</script>
+{"description":"iOS SDK Tutorial (Pre-release)","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"http://localhost:4000/ios/tutorial.html","headline":"iOS SDK Tutorial (Pre-release)","dateModified":"2018-09-08T19:19:36-07:00","datePublished":"2018-09-08T19:19:36-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/ios/tutorial.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
+  <!-- <meta property="og:image" content="http://localhost:4000/assets/posts/logo.png"/> -->
   <meta property="og:image" content="/assets/posts/logo.png"/>
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
@@ -41,7 +41,7 @@
     <div data-uk-navbar>
         <div class="uk-navbar-left">
 
-            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a> -->
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="http://localhost:4000/assets/posts/logo.png" alt="Docs"></a> -->
             <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a>
 
         </div>
@@ -152,10 +152,13 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-09-05T15:55:10-07:00" itemprop="datePublished">
+<time datetime="2018-09-08T19:19:36-07:00" itemprop="datePublished">
     
-    <a "target="_blank" href="https://github.com/moxiegirl/docs-new/blob/master/_ios/tutorial.md" class="btn btn-default githubEditButton" role="button"><span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Sep 5, 2018
+    
+
+<a "target="_blank" href="https://github.com/blockstack/blockstack-android/blob/master/docs/tutorial.md" class="btn btn-default githubEditButton" role="button">
+  <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+ <span style="font-family:Wingdings">&#119;</span> Sep 8, 2018
 </time>
 
                     </div>
@@ -185,11 +188,12 @@ Blockstack’s iOS SDK using the following content:</p>
       <li><a href="#install-blockstack-sdk-and-open-the-pod-project" id="markdown-toc-install-blockstack-sdk-and-open-the-pod-project">Install Blockstack SDK and open the pod project</a></li>
       <li><a href="#choose-a-custom-protocol-handler" id="markdown-toc-choose-a-custom-protocol-handler">Choose a custom protocol handler</a></li>
       <li><a href="#add-a-splash-screen" id="markdown-toc-add-a-splash-screen">Add a splash screen</a></li>
-      <li><a href="#add-a-mainstoryboard" id="markdown-toc-add-a-mainstoryboard">Add a Main.storyboard</a></li>
+      <li><a href="#update-the-mainstoryboard" id="markdown-toc-update-the-mainstoryboard">Update the Main.storyboard</a></li>
       <li><a href="#add-the-ui-variables-to-the-viewcontroller-file" id="markdown-toc-add-the-ui-variables-to-the-viewcontroller-file">Add the UI variables to the ViewController file.</a></li>
       <li><a href="#edit-the-viewcontrollerswift-file" id="markdown-toc-edit-the-viewcontrollerswift-file">Edit the ViewController.swift file</a></li>
     </ul>
   </li>
+  <li><a href="#troubleshooting-your-build-in-xcode" id="markdown-toc-troubleshooting-your-build-in-xcode">Troubleshooting your build in XCode</a></li>
 </ul>
 
 <p>This tutorial was extensively tested using XCode 9.3 on a MacBook Air
@@ -209,8 +213,8 @@ into XCode to review it.</p>
 
 <h2 id="understand-the-sample-application-flow">Understand the sample application flow</h2>
 
-<p>When complete, the sample application is a simple <code class="highlighter-rouge">hello-world</code> display
-intended for use on an iOS phone.</p>
+<p>When complete, the sample application is a simple <code class="highlighter-rouge">hello-world</code> intended for use
+on an iOS phone.</p>
 
 <p><img src="images/final-app.png" alt="" /></p>
 
@@ -256,11 +260,13 @@ it</a>.</p>
 <h3 id="install-the-cocoapods-160beta1-dependency-manager">Install the CocoaPods 1.6.0.beta.1 dependency manager</h3>
 
 <p>The sample application only runs on devices with iOS 11.0 or higher. You install
-the Blockstack iOS SDK through the CocoaPods dependency manager. You must use
-the <code class="highlighter-rouge">1.6.0.beta.1</code> version of CocoaPods or newer to avoid an incapability
-between Cocoapods and XCode.</p>
+the Blockstack iOS SDK through the CocoaPods. Cocoapods is a dependency manager
+for Swift and Objective-C Cocoa projects. It’s a simple, user friendly way to
+use libraries from the community in your project.</p>
 
-<p>Before starting the tutorial, confirm you have installed CocoaPods.</p>
+<p>You must use the <code class="highlighter-rouge">1.6.0.beta.1</code> version of CocoaPods or newer to avoid an
+incapability between Cocoapods and XCode. Before starting the tutorial, confirm
+you have installed CocoaPods.</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pod --version
 1.6.0.beta.1
@@ -388,17 +394,16 @@ modify the <code class="highlighter-rouge">hello-world</code> to interact with t
 </code></pre>
     </div>
 
-    <p>At this point, the browser is running a Blockstack server on your local host.
-Navigate to <code class="highlighter-rouge">https://localhost:8080</code> with your browser to display the
-application.</p>
+    <p>At this point, the browser is running a Blockstack server on your local host.</p>
   </li>
-</ol>
+  <li>
+    <p>Navigate to <code class="highlighter-rouge">https://localhost:8080</code> with your browser to display the
+application.</p>
 
-<p><img src="images/blockstack-signin.png" alt="" /></p>
+    <p><img src="images/blockstack-signin.png" alt="" /></p>
 
-<p>This local instances is for testing your applications only.</p>
-
-<ol>
+    <p>This local instances is for testing your applications only.</p>
+  </li>
   <li>
     <p>Choose <strong>Sign in with Blockstack</strong></p>
 
@@ -426,7 +431,7 @@ you do here will allow it.</p>
 
 <ol>
   <li>
-    <p>From the terminal command line, change directory to the root of your web
+    <p>From the terminal command line, change directory to your web
 application directory.</p>
   </li>
   <li>
@@ -734,7 +739,7 @@ the user back to your iOS app. In this example, you use <code class="highlighter
   </li>
 </ol>
 
-<h3 id="add-a-mainstoryboard">Add a Main.storyboard</h3>
+<h3 id="update-the-mainstoryboard">Update the Main.storyboard</h3>
 
 <p>Rather than have you build up your own UI, this section has you copy and paste a layout into the XML file source code for the <strong>Main.storyboard</strong> file.</p>
 
@@ -821,7 +826,7 @@ functionality to your  code.</p>
   <li>
     <p>Repeat this process with the storyboard’s purple <strong>hello-blockstack-ios</strong> label.</p>
 
-    <p>When you are done, your ViewController file contains the following variables:</p>
+    <p>When you are done, your ‘ViewController’ file contains the following variables:</p>
 
     <div class="language-swift highlighter-rouge"><pre class="highlight"><code> <span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
 
@@ -845,7 +850,7 @@ functionality to your  code.</p>
 
 <h3 id="edit-the-viewcontrollerswift-file">Edit the ViewController.swift file</h3>
 
-<p>Now, you are ready to connect your applicaiton with your Blockstack Web
+<p>Now, you are ready to connect your application with your Blockstack Web
 Application. Normally, after building your Web application you would have
 registred it with Blockstack and the app would be available on the Web. This
 example skips this registration step and uses an example application we’ve
@@ -868,103 +873,95 @@ this application in your mobile add for now. In XCode, do the following;</p>
     </div>
   </li>
   <li>
-    <p>Just before the <code class="highlighter-rouge">didReceiveMemoryWarning</code> function a private <code class="highlighter-rouge">updateUI</code> function.</p>
+    <p>Just before the <code class="highlighter-rouge">didReceiveMemoryWarning</code> function a private <code class="highlighter-rouge">updateUI()</code> function.</p>
 
     <p>This function takes care of loading the user data from Blockstack.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>private func updateUI() {
-  DispatchQueue.main.async {
- 		if Blockstack.shared.isSignedIn() {
- 			// Read user profile data
- 			let retrievedUserData = Blockstack.shared.loadUserData()
- 			print(retrievedUserData?.profile?.name as Any)
- 			let name = retrievedUserData?.profile?.name ?? "Nameless Person"
- 			self.nameLabel?.text = "Hello, \(name)"
- 			self.nameLabel?.isHidden = false
- 			self.signInButton?.setTitle("Sign Out", for: .normal)
- 		} else {
- 			self.signInButton?.setTitle("Sign into Blockstack", for: .normal)
- 		}
- 	}
- }
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">updateUI</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">async</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">isSignedIn</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// Read user profile data</span>
+            <span class="k">let</span> <span class="nv">retrievedUserData</span> <span class="o">=</span> <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">loadUserData</span><span class="p">()</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">retrievedUserData</span><span class="p">?</span><span class="o">.</span><span class="n">profile</span><span class="p">?</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="kt">Any</span><span class="p">)</span>
+            <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="n">retrievedUserData</span><span class="p">?</span><span class="o">.</span><span class="n">profile</span><span class="p">?</span><span class="o">.</span><span class="n">name</span> <span class="p">??</span> <span class="s">"Nameless Person"</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">nameLabel</span><span class="p">?</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"Hello, </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">"</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">nameLabel</span><span class="p">?</span><span class="o">.</span><span class="n">isHidden</span> <span class="o">=</span> <span class="kc">false</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">signInButton</span><span class="p">?</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"Sign Out"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"UI update SIGNED_IN"</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">nameLabel</span><span class="p">?</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"hello-blockstack-ios"</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">signInButton</span><span class="p">?</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"Sign into Blockstack"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"UI update SIGNED_OUT"</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
     </div>
+
+    <p>The function uses the <code class="highlighter-rouge">Blockstack.shared.isSignedIn()</code> method to determine if
+the user is already logged into Blockstack or not. It then uses the
+<code class="highlighter-rouge">Blockstack.shared.loadUserData()</code> method to load the user data and update
+the application display with the username.</p>
   </li>
   <li>
     <p>Replace the content of the <code class="highlighter-rouge">viewDidLoad()</code> function so that it calls this private function.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>  override func viewDidLoad() {
-     self.updateUI()
-}
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+    <span class="c1">// Do any additional setup after loading the view, typically from a nib.</span>
+    <span class="k">self</span><span class="o">.</span><span class="nf">updateUI</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre>
     </div>
   </li>
   <li>
-    <p>Add a <code class="highlighter-rouge">handleSignInSuccess()</code> function to handle sign in.</p>
+    <p>Create a ‘signIn()’ function that handles both sign in and out.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>  func handleSignInSuccess(userData: UserData) {
-      print(userData.profile?.name as Any)
+    <p>The function uses the <code class="highlighter-rouge">Blockstack.shared.signIn()</code> and
+<code class="highlighter-rouge">Blockstack.shared.signOut()</code> methods to sign the user into the application.</p>
 
-      self.updateUI()
-
-      // Check if signed in
-      // checkIfSignedIn()
-  }
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Add a <code class="highlighter-rouge">signOut()</code> function to handle signOut</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>@IBAction func signOut(_ sender: Any) {
-  // Sign user out
-  Blockstack.shared.signOut(redirectURI: "myBlockstackApp") { error in
-    if let error = error {
-      print("sign out failed, error: \(error)")
-    } else {
-      self.updateUI()
-      print("sign out success")
-    }
-   }
-     }
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Add a function to check if a user is signed in</p>
-
-    <div class="language-swift highlighter-rouge"><pre class="highlight"><code>  <span class="kd">func</span> <span class="nf">checkIfSignedIn</span><span class="p">()</span> <span class="p">{</span>
-      <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">isSignedIn</span><span class="p">()</span> <span class="p">?</span> <span class="nf">print</span><span class="p">(</span><span class="s">"currently signed in"</span><span class="p">)</span> <span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="s">"not signed in"</span><span class="p">)</span>
-  <span class="p">}</span>
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Put it all together with a signin buttonType</p>
-
-    <div class="language-swift highlighter-rouge"><pre class="highlight"><code>  <span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">signIn</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// Address of deployed example web app</span>
-  <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">signIn</span><span class="p">(</span><span class="nv">redirectURI</span><span class="p">:</span> <span class="s">"https://heuristic-brown-7a88f8.netlify.com/redirect.html"</span><span class="p">,</span>
-     <span class="nv">appDomain</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://heuristic-brown-7a88f8.netlify.com"</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span> <span class="n">authResult</span> <span class="k">in</span>
-     <span class="k">switch</span> <span class="n">authResult</span> <span class="p">{</span>
-     <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">userData</span><span class="p">):</span>
-       <span class="nf">print</span><span class="p">(</span><span class="s">"sign in success"</span><span class="p">)</span>
-       <span class="k">self</span><span class="o">.</span><span class="nf">handleSignInSuccess</span><span class="p">(</span><span class="nv">userData</span><span class="p">:</span> <span class="n">userData</span><span class="p">)</span>
-     <span class="k">case</span> <span class="o">.</span><span class="nv">cancelled</span><span class="p">:</span>
-       <span class="nf">print</span><span class="p">(</span><span class="s">"sign in cancelled"</span><span class="p">)</span>
-     <span class="k">case</span> <span class="o">.</span><span class="nf">failed</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
-       <span class="nf">print</span><span class="p">(</span><span class="s">"sign in failed, error: "</span><span class="p">,</span> <span class="n">error</span> <span class="p">??</span> <span class="s">"n/a"</span><span class="p">)</span>
-     <span class="p">}</span>
-      <span class="p">}</span>
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code> <span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">signIn</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">isSignedIn</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Currently signed in so signing out."</span><span class="p">)</span>
+        <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">signOut</span><span class="p">()</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">updateUI</span><span class="p">()</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Currently signed out so signing in."</span><span class="p">)</span>
+        <span class="c1">// Address of deployed example web app</span>
+        <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">signIn</span><span class="p">(</span><span class="nv">redirectURI</span><span class="p">:</span> <span class="s">"https://heuristic-brown-7a88f8.netlify.com/redirect.html"</span><span class="p">,</span>
+                                 <span class="nv">appDomain</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://heuristic-brown-7a88f8.netlify.com"</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span> <span class="n">authResult</span> <span class="k">in</span>
+                                    <span class="k">switch</span> <span class="n">authResult</span> <span class="p">{</span>
+                                    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">userData</span><span class="p">):</span>
+                                        <span class="nf">print</span><span class="p">(</span><span class="s">"Sign in SUCCESS"</span><span class="p">,</span> <span class="n">userData</span><span class="o">.</span><span class="n">profile</span><span class="p">?</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="kt">Any</span><span class="p">)</span>
+                                        <span class="k">self</span><span class="o">.</span><span class="nf">updateUI</span><span class="p">()</span>
+                                    <span class="k">case</span> <span class="o">.</span><span class="nv">cancelled</span><span class="p">:</span>
+                                        <span class="nf">print</span><span class="p">(</span><span class="s">"Sign in CANCELLED"</span><span class="p">)</span>
+                                    <span class="k">case</span> <span class="o">.</span><span class="nf">failed</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+                                        <span class="nf">print</span><span class="p">(</span><span class="s">"Sign in FAILED, error: "</span><span class="p">,</span> <span class="n">error</span> <span class="p">??</span> <span class="s">"n/a"</span><span class="p">)</span>
+                                    <span class="p">}</span>
+        <span class="p">}</span>
     <span class="p">}</span>
+
+ <span class="p">}</span>
 </code></pre>
     </div>
   </li>
 </ol>
 
+<h2 id="troubleshooting-your-build-in-xcode">Troubleshooting your build in XCode</h2>
+
+<p>XCode builds can retain old data. To ensure your builds are clean, try the following:</p>
+
+<ol>
+  <li>Reset the simulator by choosing <strong>Hardware -&gt; Erase all content and settings</strong> from the menu.</li>
+  <li>In XCode, clean the project by choosing <strong>Product &gt; Clean</strong> from the menu or  press ‘Command + Shift + K’ on your keyboard.</li>
+  <li>Clean the build folder by pressing ‘Command + Option + Shift + K’ on your keyboard.</li>
+  <li>Run the code on the simulator again.</li>
+</ol>
+
                         <div class="share uk-text-center">
-    <a href="https://twitter.com/intent/tweet?text=iOS SDK Tutorial (Pre-release)&url=https://zbabystack.netlify.com/ios/tutorial.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
-    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fios%2Ftutorial.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    <a href="https://twitter.com/intent/tweet?text=iOS SDK Tutorial (Pre-release)&url=http://localhost:4000/ios/tutorial.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fios%2Ftutorial.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
 </div>
 
                     </div>
@@ -1054,7 +1051,7 @@ this application in your mobile add for now. In XCode, do the following;</p>
         <button class="uk-offcanvas-close" type="button" data-uk-close></button>
 
         <ul class="uk-nav uk-nav-default">
-            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="http://localhost:4000/assets/posts/logo.png" alt="Docs"></a></li> -->
             <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
             
                 

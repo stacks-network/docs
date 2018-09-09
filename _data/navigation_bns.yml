@@ -13,6 +13,7 @@
 - title: How to use BNS
   docs:
   - core/naming/pickname
+  - core/naming/creationhowto
   - core/naming/resolving
   - core/naming/register
   - core/naming/manage

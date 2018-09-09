@@ -20,7 +20,7 @@ url:                "https://zbabystack.netlify.com"
 repository: moxiegirl/docs.blockstack
 staticman:
   branch: "master"
-github_editme_path: moxiegirl/docs-new/blob/master
+# github_editme_path: moxiegirl/docs-new/blob/master
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 
@@ -121,17 +121,19 @@ defaults:
 collections:
   android:
     output: true
+    basepath: "blockstack/blockstack-android/blob/master/docs"
   core:
     output: true
+    basepath: "blockstack/blockstack-core/blob/master/docs"
   gaia:
     output: true
-  learn:
+    basepath: "blockstack/gaia/blob/master/docs"
+  browser:
     output: true
-  naming:
-    output: true
+    basepath: "blockstack/blockstack-browser/blob/master/docs"
   newinternet:
     output: true
-  auth:
-    output: true
+    basepath: "moxiegirl/docs-new/blob/master/docs"
   ios:
     output: true
+    basepath: "blockstack/blockstack-ios/blob/master/docs"
