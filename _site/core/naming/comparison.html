@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://zbabystack.netlify.com/core/naming/comparison.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-08T19:24:57-07:00" />
+<meta property="article:published_time" content="2018-09-10T15:18:11-07:00" />
 <script type="application/ld+json">
-{"description":"Naming system feature comparison","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/comparison.html","headline":"Naming system feature comparison","dateModified":"2018-09-08T19:24:57-07:00","datePublished":"2018-09-08T19:24:57-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/comparison.html"},"@context":"http://schema.org"}</script>
+{"description":"Naming system feature comparison","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/comparison.html","headline":"Naming system feature comparison","dateModified":"2018-09-10T15:18:11-07:00","datePublished":"2018-09-10T15:18:11-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/comparison.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
@@ -118,9 +118,14 @@
                             
                             <li class=""><a href="/core/naming/namespaces.html">Understand Namespaces</a></li>
                         
+                            
+                            <!--  -->
+                            
+                            <li class="uk-active"><a href="/core/naming/comparison.html">Naming system feature comparison</a></li>
+                        
                         </ul>
                     
-                        <h5>Tutorials</h5>
+                        <h5>Tutorials & Cookbooks</h5>
                         <ul class="uk-nav uk-nav-default doc-nav">
                         
                             
@@ -132,6 +137,16 @@
                             <!--  -->
                             
                             <li class=""><a href="/core/naming/tutorial_subdomains.html">Subdomain Design and Implementation</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/search.html">How to build a Profile Search Index</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/openbazaar.html">How to link your OpenBazaar GUID to your Blockstack ID</a></li>
                         
                         </ul>
                     
@@ -170,7 +185,7 @@
                         
                         </ul>
                     
-                        <h5>Other topics</h5>
+                        <h5>Forks and Dids</h5>
                         <ul class="uk-nav uk-nav-default doc-nav">
                         
                             
@@ -183,10 +198,45 @@
                             
                             <li class=""><a href="/core/naming/did.html">Decentralized Identifiers (DIDs)</a></li>
                         
+                        </ul>
+                    
+                        <h5>Atlas</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
                             
                             <!--  -->
                             
-                            <li class="uk-active"><a href="/core/naming/comparison.html">Naming system feature comparison</a></li>
+                            <li class=""><a href="/core/atlas/overview.html">Overview of the Atlas network</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/atlas/howitworks.html">How Atlas Works</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/atlas/howtouse.html">How to Use the Atlas Network</a></li>
+                        
+                        </ul>
+                    
+                        <h5>Reference</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/common/javascript_ref.html">Blockstack Javascript Reference</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/common/core_ref.html">Blockstack CORE API</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/faq_technical.html">Blockstack Technical FAQ</a></li>
                         
                         </ul>
                     
@@ -212,23 +262,111 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-09-08T19:24:57-07:00" itemprop="datePublished">
+<time datetime="2018-09-10T15:18:11-07:00" itemprop="datePublished">
     
     
 
 <a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/comparison.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Sep 8, 2018
+ <span style="font-family:Wingdings">&#119;</span> Sep 10, 2018
 </time>
 
                     </div>
 
                     <div class="article-content">
                         
-<p>BNS is not the only naming system in wide-spread use, nor is it the only
-decentralized naming system that implements human-readable,
-globally-unique, and strongly-owned names.  The following feature table
-describes how BNS differs from other naming systems</p>
+<p class="no_toc">BNS is not the only naming system in wide-spread use, nor is it the only
+decentralized naming system that implements human-readable, globally-unique, and
+strongly-owned names. This page describes some other naming systems in
+comparison to Blockstack:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#blockstack-vs-dns" id="markdown-toc-blockstack-vs-dns">Blockstack vs DNS</a></li>
+  <li><a href="#blockstack-vs-namecoin" id="markdown-toc-blockstack-vs-namecoin">Blockstack vs Namecoin</a></li>
+  <li><a href="#blockstack-vs-ens" id="markdown-toc-blockstack-vs-ens">Blockstack vs ENS</a></li>
+  <li><a href="#summary-feature-comparison" id="markdown-toc-summary-feature-comparison">Summary feature comparison</a></li>
+</ul>
+
+<h2 id="blockstack-vs-dns">Blockstack vs DNS</h2>
+
+<p>Blockstack and DNS both implement naming systems, but in fundamentally
+different ways.  Blockstack <em>can be used</em> for resolving host names to IP
+addresses, but this is not its default use-case.  The <a href="blockstack_naming_service.md">Blockstack Naming
+Service</a> (BNS) instead behaves
+more like a decentralized
+<a href="https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol">LDAP</a> system for
+resolving user names to user data.</p>
+
+<p>While DNS and BNS handle different problems, they share some terminology and
+serialization formats.  However, it is important to recognize that this is the
+<em>only</em> thing they have in common—BNS has fundamentally different semantics
+than DNS:</p>
+
+<ul>
+  <li>
+    <p><strong>Zone files</strong>:  Blockstack stores a DNS zone file for each name.  However,
+the semantics of a BNS zone file are nothing like the semantics of a DNS zone
+file—the only thing they have in common is their format.
+A “standard” Blockstack zone files only have <code class="highlighter-rouge">URI</code> and <code class="highlighter-rouge">TXT</code> resource records
+that point to the user’s application data.  Moreover, a Blockstack ID has a
+<em>history</em> of zone files, and historic zone files can alter the way in which a
+Blockstack ID gets resolved (DNS has no such concept).  It is conceivable that an advanced
+user could add <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">AAAA</code> records to their Blockstack ID’s zone file,
+but these are not honored by any Blockstack software at this time.</p>
+  </li>
+  <li>
+    <p><strong>Subdomains</strong>:  Blockstack has the concept of a subdomain, but it is
+semantically very different from a DNS subdomain.  In Blockstack, a subdomain
+is a Blockstack ID whose state and transaction history are anchored to the
+blockchain, but stored within an on-chain Blockstack ID’s zone file history.
+Unlike DNS subdomains, a BNS subdomain has
+its own owner and is a first-class BNS name—all subdomains are resolvable,
+and only the subdomain’s owner can update the subdomain’s records.  The only thing BNS subdomains and DNS
+subdomains have in common is the name format (e.g. <code class="highlighter-rouge">foo.bar.baz</code> is a subdomain
+of <code class="highlighter-rouge">bar.baz</code> in both DNS and BNS).</p>
+  </li>
+</ul>
+
+<p>More details can be found in the <a href="https://blockstack.org/docs/blockstack-vs-dns">Blockstack vs
+DNS</a> document.  A feature
+comparison can be found at the end of the <a href="blockstack_naming_service.md">Blockstack Naming
+Service</a> document.</p>
+
+<h2 id="blockstack-vs-namecoin">Blockstack vs Namecoin</h2>
+
+<p>Namecoin also implements a decentralized naming service on top of a blockchain,
+just like BNS.  In fact, early versions of Blockstack were built on Namecoin.
+However, <a href="https://www.usenix.org/node/196209">it was discovered</a> that Namecoin’s
+merged mining with Bitcoin regularly placed it under the <em>de facto</em> control of a single
+miner.  This prompted a re-architecting of the system to be <em>portable</em> across
+blockchains, so that if Blockstack’s underlying blockchain (currently Bitcoin)
+ever became insecure, the system could migrate to a more secure blockchain.</p>
+
+<p>A feature comparison can be found at the end of the <a href="blockstack_naming_service.md">Blockstack Naming
+Service</a> document.</p>
+
+<h2 id="blockstack-vs-ens">Blockstack vs ENS</h2>
+
+<p>ENS also implements a decentralized naming system on top of a blockchain, but as
+a smart contract on Ethereum.  Like BNS, ENS is geared towards resolving names
+to off-chain state (ENS names resolve to a hash, for example).  Moreover, ENS is
+geared towards providing programmatic control over names with Turing-complete
+on-chain resolvers.</p>
+
+<p>BNS has a fundamentally different relationship with blockchains than ENS.
+WHereas ENS tries to use on-chain logic as much as possible, BNS
+tries to use the blockchain as little as possible.  BNS only uses it to store a
+database log for name operations (which are interpreted with an off-chain BNS
+node like Blockstack Core).  BNS name state and BNS subdomains reside entirely
+off-chain in the Atlas network.  This has allowed BNS to migrate from blockchain
+to blockchain in order to survive individual blockchain failures, and this has
+allowed BNS developers to upgrade its consensus rules without having to get the
+blockchain’s permission (see the <a href="https://blockstack.org/virtualchain_dccl2016.pdf">virtualchain
+paper</a> for details).</p>
+
+<h2 id="summary-feature-comparison">Summary feature comparison</h2>
+
+<p>The following feature table provides a quick summary how BNS differs from other naming systems</p>
 
 <table>
   <thead>
@@ -375,48 +513,6 @@ slightly more valuable.</p>
 
                     
 
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
 
 
 

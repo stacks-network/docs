@@ -1,9 +1,14 @@
 - title: Try a tutorial
   docs:
-  - newinternet/hello-blockstack
-  - newinternet/multi-player-storage
+  - browser/hello-blockstack
+  - browser/multi-player-storage
 
 - title: Work with an SDK
   docs:
   - android/tutorial
   - ios/tutorial
+
+- title: Reference
+  docs:
+  - core/faq_developer  
+  - common/javascript_ref

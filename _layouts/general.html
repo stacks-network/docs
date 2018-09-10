@@ -8,14 +8,11 @@ layout: default
 
             <div class="sidebar-fixed-width uk-visible@m">
                 <div class="sidebar-docs uk-position-fixed">
-                  <!--  -->
-                    {% for section in site.data.navigation_learn %}
-                    {% if section.title %}
-                         <h5>{{ section.title }}</h5>
-                    {% endif %}
+                    {% for section in site.data.navigation_general %}
+                    <h5>{{ section.title }}</h5>
                     <ul class="uk-nav uk-nav-default doc-nav">
                     {% for doc in section.docs %}
-                      {% assign doc_url = doc | prepend:"/" | append:".html" %}
+                      {% assign doc_url = doc | prepend:"/" | append:"/" %}
                       <!-- {% assign p =  site.docs | where:"url", doc_url | first %} -->
                       {% for col in site.collections %}
                         {% for item in col.docs %}
@@ -26,11 +23,10 @@ layout: default
                              {% endif %}
                         {% endfor %}
                       {% endfor %}
-                          <li class="{% if doc_url == page.url %}uk-active{% endif %}"><a href="{{ doc_url }}">{{ doc_title }}</a></li>
+                      <li class="{% if doc_url == page.url %}uk-active{% endif %}"><a href="{{ doc_url }}">{{ doc_title }}</a></li>
                     {% endfor %}
                     </ul>
                     {% endfor %}
-                  <!--  -->
                 </div>
             </div>
 
@@ -41,7 +37,6 @@ layout: default
                     <h1 class="uk-article-title">{{ page.title | escape }}</h1>
 
                     {% if page.subtitle %}<p class="subtitle uk-text-lead uk-text-muted">{{ page.subtitle }}</p>{% endif %}
-
 
                     <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
                         {% include post-meta.html %}
@@ -56,8 +51,9 @@ layout: default
 
                     {% include paginate-doc.html %}
 
-                    <!-- {% include related-learn.html %} -->
+                    {% include related-docs.html %}
 
+                    {% if site.disqus.shortname %} {% include disqus_comments.html %} {% endif %}
                 </article>
 
                 <script>

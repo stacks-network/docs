@@ -108,6 +108,8 @@ exclude:
   - THEME_README.md
   - collections.json
   - get-content.sh
+  - _core/aglio_templates
+  - _core/attic
 
 sass:
   style:            compressed
@@ -131,9 +133,9 @@ collections:
   browser:
     output: true
     basepath: "blockstack/blockstack-browser/blob/master/docs"
-  newinternet:
-    output: true
-    basepath: "moxiegirl/docs-new/blob/master/docs"
   ios:
     output: true
     basepath: "blockstack/blockstack-ios/blob/master/docs"
+  common:
+    output: true
+    basepath: "moxiegirl/docs.blockstack"

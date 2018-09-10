@@ -6,20 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Decentralized Identifiers (DIDs) | Blockstack</title>
+<title>How to link your OpenBazaar GUID to your Blockstack ID | Blockstack</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="Decentralized Identifiers (DIDs)" />
+<meta property="og:title" content="How to link your OpenBazaar GUID to your Blockstack ID" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Decentralized Identifiers (DIDs)" />
-<meta property="og:description" content="Decentralized Identifiers (DIDs)" />
-<link rel="canonical" href="https://zbabystack.netlify.com/core/naming/did.html" />
-<meta property="og:url" content="https://zbabystack.netlify.com/core/naming/did.html" />
+<meta name="description" content="How to link your OpenBazaar GUID to your Blockstack ID" />
+<meta property="og:description" content="How to link your OpenBazaar GUID to your Blockstack ID" />
+<link rel="canonical" href="https://zbabystack.netlify.com/core/naming/openbazaar.html" />
+<meta property="og:url" content="https://zbabystack.netlify.com/core/naming/openbazaar.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-09-10T15:18:11-07:00" />
 <script type="application/ld+json">
-{"description":"Decentralized Identifiers (DIDs)","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/did.html","headline":"Decentralized Identifiers (DIDs)","dateModified":"2018-09-10T15:18:11-07:00","datePublished":"2018-09-10T15:18:11-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/did.html"},"@context":"http://schema.org"}</script>
+{"description":"How to link your OpenBazaar GUID to your Blockstack ID","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/openbazaar.html","headline":"How to link your OpenBazaar GUID to your Blockstack ID","dateModified":"2018-09-10T15:18:11-07:00","datePublished":"2018-09-10T15:18:11-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/openbazaar.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
@@ -146,7 +146,7 @@
                             
                             <!--  -->
                             
-                            <li class=""><a href="/core/naming/openbazaar.html">How to link your OpenBazaar GUID to your Blockstack ID</a></li>
+                            <li class="uk-active"><a href="/core/naming/openbazaar.html">How to link your OpenBazaar GUID to your Blockstack ID</a></li>
                         
                         </ul>
                     
@@ -196,7 +196,7 @@
                             
                             <!--  -->
                             
-                            <li class="uk-active"><a href="/core/naming/did.html">Decentralized Identifiers (DIDs)</a></li>
+                            <li class=""><a href="/core/naming/did.html">Decentralized Identifiers (DIDs)</a></li>
                         
                         </ul>
                     
@@ -247,7 +247,7 @@
 
                 <article class="uk-article">
 
-                    <h1 class="uk-article-title">Decentralized Identifiers (DIDs)</h1>
+                    <h1 class="uk-article-title">How to link your OpenBazaar GUID to your Blockstack ID</h1>
 
                     
 
@@ -266,7 +266,7 @@
     
     
 
-<a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/did.md" class="btn btn-default githubEditButton" role="button">
+<a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/openbazaar.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
  <span style="font-family:Wingdings">&#119;</span> Sep 10, 2018
 </time>
@@ -275,110 +275,84 @@
 
                     <div class="article-content">
                         
-<p>BNS nodes are compliant with the emerging
-<a href="http://identity.foundation">Decentralized Identity Foundation</a> protocol
-specification for decentralized identifiers (DIDs).</p>
-
-<p>Each name in BNS has an associated DID.  The DID format for BNS is:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>    did:stack:v0:{address}-{index}
-</code></pre>
-</div>
-
-<p>Where:</p>
-<ul>
-  <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">address</span><span class="p">}</span></code> is an on-chain public key hash (e.g. a Bitcoin address).</li>
-  <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">index</span><span class="p">}</span></code> refers to the <code class="highlighter-rouge">nth</code> name this address created.</li>
-</ul>
-
-<p>For example, the DID for <code class="highlighter-rouge">personal.id</code> is
-<code class="highlighter-rouge">did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0</code>, because the name
-<code class="highlighter-rouge">personal.id</code> was the first-ever name created by
-<code class="highlighter-rouge">1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV</code>.</p>
-
-<p>As another example, the DID for <code class="highlighter-rouge">jude.id</code> is <code class="highlighter-rouge">did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-1</code>.
-Here, the address <code class="highlighter-rouge">16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg</code> had created one earlier
-name in history prior to this one (which happens to be <code class="highlighter-rouge">abcdefgh123456.id</code>).</p>
-
-<p>The purpose of a DID is to provide an eternal identifier for a public key.
-The public key may change, but the DID will not.</p>
-
-<p>Blockstack Core implements a DID method of its own
-in order to be compatible with other systems that use DIDs for public key resolution.
-In order for a DID to be resolvable, all of the following must be true for a
-name:</p>
-
-<ul>
-  <li>The name must exist</li>
-  <li>The name’s zone file hash must be the hash of a well-formed DNS zone file</li>
-  <li>The DNS zone file must be present in the BNS <a href="atlas_network.md">Atlas Network</a></li>
-  <li>The DNS zone file must contain a <code class="highlighter-rouge">URI</code> resource record that points to a signed
-JSON Web Token</li>
-  <li>The public key that signed the JSON Web Token (and is included with it) must
-hash to the address that owns the name</li>
-</ul>
-
-<p>Not all names will have DIDs that resolve to public keys.  However, names created by the <a href="https://github.com/blockstack/blockstack-browser">Blockstack
-Browser</a> will have DIDs that
-do.</p>
-
-<p>Developers can programmatically resolve DIDs via the Python API:</p>
-
-<pre><code class="language-Python">&gt;&gt;&gt; import blockstack
-&gt;&gt;&gt; blockstack.lib.client.resolve_DID('did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-1', hostport='https://node.blockstack.org:6263')
-{'public_key': '020fadbbcea0ff3b05f03195b41cd991d7a0af8bd38559943aec99cbdaf0b22cc8'}
-</code></pre>
-
-<p>A RESTful API is under development.</p>
-
-<h1 id="did-encoding-for-subdomains">DID Encoding for Subdomains</h1>
-
-<p>Every name and subdomain in BNS has a DID.  The encoding is slightly different
-for subdomains, so the software can determine which code-path to take.</p>
-
-<ul>
-  <li>
-    <p>For on-chain BNS names, the <code class="highlighter-rouge"><span class="p">{</span><span class="err">address</span><span class="p">}</span></code> is the same as the Bitcoin address
-that owns the name.  Currently, both version byte 0 and version byte 5
-addresses are supported (i.e. addresses starting with <code class="highlighter-rouge">1</code> or <code class="highlighter-rouge">3</code>, meaning <code class="highlighter-rouge">p2pkh</code> and
-<code class="highlighter-rouge">p2sh</code> addresses).</p>
-  </li>
-  <li>
-    <p>For off-chain BNS subdomains, the <code class="highlighter-rouge"><span class="p">{</span><span class="err">address</span><span class="p">}</span></code> has version byte 63 for
-subdomains owned by a single private key, and version byte 50 for subdomains
-owned by a m-of-n set of private keys.  That is, subdomain DID addresses start
-with <code class="highlighter-rouge">S</code> or <code class="highlighter-rouge">M</code>, respectively.</p>
+<ul class="no_toc" id="markdown-toc">
+  <li><a href="#step-1--advanced-mode" id="markdown-toc-step-1--advanced-mode">Step 1:  Advanced Mode</a></li>
+  <li><a href="#step-2--add-an-openbazaar-account" id="markdown-toc-step-2--add-an-openbazaar-account">Step 2:  Add an OpenBazaar Account</a></li>
+  <li><a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a>    <ul>
+      <li><a href="#profile-is-in-legacy-format" id="markdown-toc-profile-is-in-legacy-format">Profile is in legacy format</a></li>
+      <li><a href="#failed-to-broadcast-update-transaction" id="markdown-toc-failed-to-broadcast-update-transaction">Failed to broadcast update transaction</a></li>
+    </ul>
   </li>
 </ul>
 
-<p>The <code class="highlighter-rouge"><span class="p">{</span><span class="err">index</span><span class="p">}</span></code> field for a subdomain’s DID is distinct from the <code class="highlighter-rouge"><span class="p">{</span><span class="err">index</span><span class="p">}</span></code> field
-for a BNS name’s DID, even if the same created both names and subdomains.
-For example, the name <code class="highlighter-rouge">abcdefgh123456.id</code> has the DID <code class="highlighter-rouge">did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-0</code>,
-because it was the first name created by <code class="highlighter-rouge">16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg</code>.
-However, <code class="highlighter-rouge">16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg</code> <em>also</em> created <code class="highlighter-rouge">jude.statism.id</code>
-as its first subdomain name.  The DID for <code class="highlighter-rouge">jude.statism.id</code> is
-<code class="highlighter-rouge">did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0</code>.  Note that the address
-<code class="highlighter-rouge">SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i</code> encodes the same public key hash as the address
-<code class="highlighter-rouge">16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg</code> (the only difference between these two
-strings is that the first is base58check-encoded with version byte 0, and the
-second is encoded with version byte 63).</p>
+<p>If you don’t have the Blockstack CLI. Download and install it first. Instructions are <a href="https://github.com/blockstack/blockstack-cli/blob/master/README.md">here</a>. The rest of this tutorial assumes that you’ve already registered a name using the Blockstack CLI.</p>
 
-<p>You can see this play out in practice with the following code snippit:</p>
+<h2 id="step-1--advanced-mode">Step 1:  Advanced Mode</h2>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">blockstack</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">blockstack</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get_name_record</span><span class="p">(</span><span class="s">'jude.statism.id'</span><span class="p">,</span> <span class="n">hostport</span><span class="o">=</span><span class="s">'https://node.blockstack.org:6263'</span><span class="p">)[</span><span class="s">'address'</span><span class="p">]</span>
-<span class="s">u'16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg'</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">virtualchain</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">virtualchain</span><span class="o">.</span><span class="n">address_reencode</span><span class="p">(</span><span class="s">'16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg'</span><span class="p">,</span> <span class="n">version_byte</span><span class="o">=</span><span class="mi">63</span><span class="p">)</span>
-<span class="s">'SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i'</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">blockstack</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">resolve_DID</span><span class="p">(</span><span class="s">'did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0'</span><span class="p">,</span> <span class="n">hostport</span><span class="o">=</span><span class="s">'https://node.blockstack.org:6263'</span><span class="p">)</span>
-<span class="p">{</span><span class="s">'public_key'</span><span class="p">:</span> <span class="s">'020fadbbcea0ff3b05f03195b41cd991d7a0af8bd38559943aec99cbdaf0b22cc8'</span><span class="p">}</span>
+<p>The first step is to activate “advanced mode” in the CLI.  The command to do so is:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    $ blockstack set_advanced_mode on
 </code></pre>
 </div>
+
+<h2 id="step-2--add-an-openbazaar-account">Step 2:  Add an OpenBazaar Account</h2>
+
+<p>The second step is to create an OpenBazaar account for your profile (the <a href="https://onename.com">Onename</a> app also enabled to link your OpenBazaar GUID). The command to do so is:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    $ blockstack put_account "&lt;BLOCKSTACK ID&gt;" "openbazaar" "&lt;YOUR OB GUID&gt;" "&lt;URL TO YOUR STORE&gt;"
+</code></pre>
+</div>
+
+<p>The URL can be any valid URL; it won’t be used by OpenBazaar.  Here’s an example, using the name <code class="highlighter-rouge">testregistration001.id</code> and the GUID <code class="highlighter-rouge">0123456789abcdef</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    $ blockstack put_account "testregistration001.id" "openbazaar" "0123456789abcdef" "https://bazaarbay.org/@testregistration001"
+</code></pre>
+</div>
+
+<p>The update should be instantaneous.  You can verify that your store is present with <code class="highlighter-rouge">list_accounts</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    $ blockstack list_accounts "testregistration001.id"
+    {
+        "accounts": [
+            {
+                "contentUrl": "https://bazaarbay.org/@testregistration001.id",
+                "identifier": "0123456789abcdef",
+                "service": "openbazaar"
+            }
+        ]
+    }
+</code></pre>
+</div>
+
+<h1 id="troubleshooting">Troubleshooting</h1>
+
+<p>Common problems you might encounter.</p>
+
+<h2 id="profile-is-in-legacy-format">Profile is in legacy format</h2>
+
+<p>If you registered your blockstack ID before spring 2016, there’s a chance that your profile is still in a legacy format.  It will get migrated to the new format automatically if you update your profile on the <a href="https://onename.com">Onename</a> app.  However, you have to do this manually with the CLI.</p>
+
+<p>To do so, the command is:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    $ blockstack migrate &lt;YOUR BLOCKSTACK ID&gt;
+</code></pre>
+</div>
+
+<p>It will take a little over an hour to complete, but once finished, you’ll be able to manage your accounts with the above commands (and do so with no delays).</p>
+
+<h2 id="failed-to-broadcast-update-transaction">Failed to broadcast update transaction</h2>
+
+<p>This can happen during a <code class="highlighter-rouge">migrate</code> for one of a few reasons:</p>
+<ul>
+  <li>You do not have enough balance to pay the transaction fee (which is calculated dynamically).</li>
+  <li>Your payment address has unconfirmed transactions.</li>
+  <li>You can’t connect to a Bitcoin node.</li>
+</ul>
+
+<p>To determine what’s going on, you should try the command again by typing <code class="highlighter-rouge">BLOCKSTACK_DEBUG=1 blockstack ...</code> instead of <code class="highlighter-rouge">blockstack...</code>.</p>
 
                         <div class="share uk-text-center">
-    <a href="https://twitter.com/intent/tweet?text=Decentralized Identifiers (DIDs)&url=https://zbabystack.netlify.com/core/naming/did.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
-    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fnaming%2Fdid.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    <a href="https://twitter.com/intent/tweet?text=How to link your OpenBazaar GUID to your Blockstack ID&url=https://zbabystack.netlify.com/core/naming/openbazaar.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fnaming%2Fopenbazaar.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
 </div>
 
                     </div>

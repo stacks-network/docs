@@ -3,11 +3,14 @@
   - core/naming/introduction
   - core/naming/architecture
   - core/naming/namespaces
+  - core/naming/comparison
 
-- title: Tutorials
+- title: Tutorials & Cookbooks
   docs:
   - core/naming/tutorial_creation
   - core/naming/tutorial_subdomains
+  - core/naming/search
+  - core/naming/openbazaar
 
 
 - title: How to use BNS
@@ -19,8 +22,19 @@
   - core/naming/manage
   - core/naming/subdomains
 
-- title: Other topics
+- title: Forks and Dids
   docs:
   - core/naming/forks
   - core/naming/did
-  - core/naming/comparison
+
+- title: Atlas
+  docs:
+  - core/atlas/overview
+  - core/atlas/howitworks
+  - core/atlas/howtouse
+
+- title: Reference
+  docs:
+  - common/javascript_ref
+  - common/core_ref
+  - core/faq_technical

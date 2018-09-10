@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://zbabystack.netlify.com/android/tutorial.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-08T19:24:57-07:00" />
+<meta property="article:published_time" content="2018-09-10T15:18:11-07:00" />
 <script type="application/ld+json">
-{"description":"Android SDK Tutorial (Pre-release)","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/android/tutorial.html","headline":"Android SDK Tutorial (Pre-release)","dateModified":"2018-09-08T19:24:57-07:00","datePublished":"2018-09-08T19:24:57-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/android/tutorial.html"},"@context":"http://schema.org"}</script>
+{"description":"Android SDK Tutorial (Pre-release)","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/android/tutorial.html","headline":"Android SDK Tutorial (Pre-release)","dateModified":"2018-09-10T15:18:11-07:00","datePublished":"2018-09-10T15:18:11-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/android/tutorial.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
@@ -99,37 +99,60 @@
 
             <div class="sidebar-fixed-width uk-visible@m">
                 <div class="sidebar-docs uk-position-fixed">
+                  <!--  -->
                     
-                        <h5>Try a tutorial</h5>
-                        <ul class="uk-nav uk-nav-default doc-nav">
-                        
-                            
-                            <!--  -->
-                            
-                            <li class=""><a href="/newinternet/hello-blockstack.html">Hello, Blockstack Tutorial</a></li>
-                        
-                            
-                            <!--  -->
-                            
-                            <li class=""><a href="/newinternet/multi-player-storage.html">Manage Data with Gaia</a></li>
-                        
-                        </ul>
                     
-                        <h5>Work with an SDK</h5>
-                        <ul class="uk-nav uk-nav-default doc-nav">
-                        
-                            
-                            <!--  -->
-                            
-                            <li class="uk-active"><a href="/android/tutorial.html">Android SDK Tutorial (Pre-release)</a></li>
-                        
-                            
-                            <!--  -->
-                            
-                            <li class=""><a href="/ios/tutorial.html">iOS SDK Tutorial (Pre-release)</a></li>
-                        
-                        </ul>
+                         <h5>Try a tutorial</h5>
                     
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/browser/hello-blockstack.html">Hello, Blockstack Tutorial</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/browser/multi-player-storage.html">Manage Data with Gaia</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Work with an SDK</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class="uk-active"><a href="/android/tutorial.html">Android SDK Tutorial (Pre-release)</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/ios/tutorial.html">iOS SDK Tutorial (Pre-release)</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Reference</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/core/faq_developer.html">Developer FAQs</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/javascript_ref.html">Blockstack Javascript Reference</a></li>
+                    
+                    </ul>
+                    
+                  <!--  -->
                 </div>
             </div>
 
@@ -140,6 +163,7 @@
                     <h1 class="uk-article-title">Android SDK Tutorial (Pre-release)</h1>
 
                     
+
 
                     <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
                         
@@ -152,13 +176,13 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-09-08T19:24:57-07:00" itemprop="datePublished">
+<time datetime="2018-09-10T15:18:11-07:00" itemprop="datePublished">
     
     
 
 <a "target="_blank" href="https://github.com/blockstack/blockstack-android/blob/master/docs/tutorial.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Sep 8, 2018
+ <span style="font-family:Wingdings">&#119;</span> Sep 10, 2018
 </time>
 
                     </div>
@@ -226,7 +250,7 @@ application by doing the following:</p>
 
 <h2 id="set-up-your-environment">Set up your environment</h2>
 
-<p>This sample application has two code bases, a BlockStack <code class="highlighter-rouge">hello-blockstack</code>
+<p>This sample application has two code bases, a Blockstack <code class="highlighter-rouge">hello-blockstack</code>
 application and a <code class="highlighter-rouge">hello-andriod</code> Android application. Before you start
 developing the sample, there are a few elements you need in your environment.</p>
 
@@ -260,13 +284,13 @@ it</a>.</p>
 <h3 id="install-the-blockstack-test-rig">Install the Blockstack test rig</h3>
 
 <p>Users interact with Blockstack-enabled applications through a web browser. You
-can BlockStack in test mode, on <code class="highlighter-rouge">localhost</code> or you can interact with completed
+can Blockstack in test mode, on <code class="highlighter-rouge">localhost</code> or you can interact with completed
 apps through the Blockstack webapp which is available at
 [https://browser.blockstack.org/].</p>
 
 <p>If you have already installed Blockstack for testing locally and have an
 existing Blockstack ID, skip this section.  Otherwise, continue onto install
-BlockStack.</p>
+Blockstack.</p>
 
 <ol>
   <li>
@@ -582,6 +606,16 @@ iniatial state by creating an emulator to run it in. Open Android Studio and do 
 <ol>
   <li>In studio, open the <code class="highlighter-rouge">AndroidManifest.xml</code> file.</li>
   <li>
+    <p>Add the a <code class="highlighter-rouge">launchMode</code> to the <code class="highlighter-rouge">.MainActivity</code> definition.</p>
+
+    <pre><code class="language-XML"> &lt;activity android:name=".MainActivity" android:launchMode="singleTask"&gt;
+</code></pre>
+
+    <p>Blockstack requires that the activity that starts the sign-in process also
+handles the auth reponse token. This means that the activity needs to run in
+<code class="highlighter-rouge">singleTask</code> launch mode.</p>
+  </li>
+  <li>
     <p>Add an <code class="highlighter-rouge">&lt;intent-filter&gt;</code> with the custom handler for Blockstack.</p>
 
     <pre><code class="language-XML"> &lt;intent-filter&gt;
@@ -762,7 +796,7 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
     </div>
   </li>
   <li>
-    <p>Replae the existing the <code class="highlighter-rouge">onCreate</code> function with the following:</p>
+    <p>Replace the existing the <code class="highlighter-rouge">onCreate</code> function with the following:</p>
 
     <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
      <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
@@ -1021,51 +1055,9 @@ know about your experience by tweeting to
                     
 
 
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
 
 
-
-                    <div class="uk-margin-large-top">
+                    <!-- <div class="uk-margin-large-top">
     <h3>Related Articles</h3>
 
     
@@ -1076,9 +1068,8 @@ know about your experience by tweeting to
     
     </ul>
 </div>
+ -->
 
-
-                    
                 </article>
 
                 <script>

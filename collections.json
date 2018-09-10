@@ -8,6 +8,18 @@
     {
      "name": "core",
      "repo": "https://github.com/blockstack/blockstack-core"
-   }
+   },
+   {
+    "name": "browser",
+    "repo": "https://github.com/blockstack/blockstack-android"
+  },
+  {
+   "name": "ios",
+   "repo": "https://github.com/blockstack/blockstack-ios"
+ },
+ {
+  "name": "gaia",
+  "repo": "https://github.com/blockstack/blockstack-ios"
+  }
     ]
 }

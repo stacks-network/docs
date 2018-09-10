@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Get and use a Blockstack ID | Blockstack</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Get and use a Blockstack ID" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Get and use a Blockstack ID" />
+<meta property="og:description" content="Get and use a Blockstack ID" />
+<link rel="canonical" href="https://zbabystack.netlify.com/browser/ids-introduction.html" />
+<meta property="og:url" content="https://zbabystack.netlify.com/browser/ids-introduction.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-09-10T15:18:11-07:00" />
+<script type="application/ld+json">
+{"description":"Get and use a Blockstack ID","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/browser/ids-introduction.html","headline":"Get and use a Blockstack ID","dateModified":"2018-09-10T15:18:11-07:00","datePublished":"2018-09-10T15:18:11-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/browser/ids-introduction.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="/assets/posts/logo.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js"></script>
+  
+</head>
+
+
+    <body>
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a>
+
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                  <!--  -->
+                    
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class="uk-active"><a href="/browser/ids-introduction.html">Get and use a Blockstack ID</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/browser/browser-introduction.html">Use the Blockstack Browser</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/browser/faq_general.html">Users Frequently Asked Questions (FAQ)</a></li>
+                    
+                    </ul>
+                    
+                  <!--  -->
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article class="uk-article">
+
+                    <h1 class="uk-article-title">Get and use a Blockstack ID</h1>
+
+                    
+
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2018-09-10T15:18:11-07:00" itemprop="datePublished">
+    
+    
+
+<a "target="_blank" href="https://github.com/blockstack/blockstack-browser/blob/master/docs/ids-introduction.md" class="btn btn-default githubEditButton" role="button">
+  <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+ <span style="font-family:Wingdings">&#119;</span> Sep 10, 2018
+</time>
+
+                    </div>
+
+                    <div class="article-content">
+                        
+<p class="no_toc">Through the Blockstack browser you can create an identity. Your identity is a
+point of contact as you interact with others through Dapps. Others may be
+individual users or companies or software. Unless you allow it, none of these
+others have access to anything other than your identity label, for example
+<code class="highlighter-rouge">moxiegirl.id.blockstack</code>. To learn more about you, others must ask and you can
+choose to share – or not.</p>
+
+<p>This document explains one type of identity, the Blockstack ID. You learn how to
+create them, as well as when and how to restore them. It contains the following sections:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#understand-blockstack-ids" id="markdown-toc-understand-blockstack-ids">Understand Blockstack IDs</a></li>
+  <li><a href="#create-an-initial-blockstack-id" id="markdown-toc-create-an-initial-blockstack-id">Create an initial Blockstack ID</a></li>
+  <li><a href="#restore-a-blockstack-id" id="markdown-toc-restore-a-blockstack-id">Restore a Blockstack ID</a>    <ul>
+      <li><a href="#restore-with-a-recovery-key" id="markdown-toc-restore-with-a-recovery-key">Restore with a recovery key</a></li>
+      <li><a href="#restore-with-a-recovery-code-and-original-password" id="markdown-toc-restore-with-a-recovery-code-and-original-password">Restore with a recovery code and original password</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="understand-blockstack-ids">Understand Blockstack IDs</h2>
+
+<p>Interacting within the decentralized internet requires that you have at least
+one identity, though you can create several. Your identity is created through a
+registrar.  Blockstack maintains a registrar for creating identities that you
+can use to interact with distributed applications (Dapps).</p>
+
+<p>To use the Blockstack Browser or to develop a decentralized application you
+require a Blockstack ID, for example <code class="highlighter-rouge">moxiegirl.id.blockstack</code>. A Blockstack ID
+is a digital identity that is registered With Blockstack. Your personal data and
+storage are built around this ID. Decentralized applications that want to access
+your data need your identity and your permission.</p>
+
+<p>When you first sign up through the Blockstack browser, you create an initial
+human-readable identity in the <code class="highlighter-rouge">id.blockstack</code> domain. This initial identity has
+the format:</p>
+
+<p><em><code class="highlighter-rouge">USERNAME</code></em><code class="highlighter-rouge">.id.blockstack</code></p>
+
+<p>The <em><code class="highlighter-rouge">USERNAME</code></em> portion must be unique. You enter an email and password to
+create the initial identity. Blockstack uses the password to:</p>
+
+<ul>
+  <li>seed a <em>recovery code</em> an encrypted string, for example <code class="highlighter-rouge">36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5W1P0BwXxSTazJsUjOAmC55rFUWINqDqGccLio0iwzGclAhaHGZQ5M52</code></li>
+  <li>seed a <em>recovery key</em> which is a squence of words <code class="highlighter-rouge">applied binge crisp pictorial fiery dancing agreeable frogs light finish ping apple</code></li>
+</ul>
+
+<p>The email is provided to allow either Blockstack or a decentralized application
+to communicate information to you. In Blockstacks’ case, the email is used to
+send you reovery information.</p>
+
+<p>While Blockstack registers your human readable ID and the recovery key. <em>You</em> must
+record the:</p>
+
+<ul>
+  <li>recovery key</li>
+  <li>recovery code (in the order the words apepar)</li>
+  <li>initial password</li>
+</ul>
+
+<p>Blockstack does not store them, so it can’t give them to you later if they are
+lost.</p>
+
+<p>Your initial ID is created in the <code class="highlighter-rouge">id.blockstack</code> domain. The initial identity
+remains primary, and you need this primary ID and its associated information
+(recovery code, recovery key, and password) to use the browser again.</p>
+
+<p>Finally, the <code class="highlighter-rouge">id.blockstack</code> domain is sponsored by the Blockstack registrar and
+identities on it are free. Once you are using the Blockstack Browser, you can
+create additional identities outside of this domain and controlled by other
+registrars. Coin is required to purchase identities on other domains.</p>
+
+<h2 id="create-an-initial-blockstack-id">Create an initial Blockstack ID</h2>
+
+<p>To create an inititial Blockstack ID, do the following:</p>
+
+<ol>
+  <li>
+    <p>Open the <a href="https://browser.blockstack.org/sign-up?redirect=%2F">Blockstack web application in your browser</a>.</p>
+
+    <p>The application prompts you for an email address.</p>
+
+    <p><img src="images/create-id-0.png" alt="" /></p>
+
+    <p>Blockstack uses this email address to send you recovery information.</p>
+  </li>
+  <li>
+    <p>Enter an email address and press <strong>Next</strong>.</p>
+
+    <p>The application prompts you to enter a password. Blockstack users this
+password to encrypt your recovery code.  You must record and save this
+initial password.</p>
+
+    <p><strong>NOTE</strong>:The Blockstack team cannot restore your password for you.</p>
+  </li>
+  <li>
+    <p>Enter a password, confirm it, and press <strong>Next</strong>.</p>
+
+    <p><img src="images/create-id-1.png" alt="" /></p>
+
+    <p>The browser prompts you to register a unique username in the <code class="highlighter-rouge">id.blockstack</code>
+domain. This is your identity in the decentralized internet. The format of the id
+is:</p>
+
+    <p><em><code class="highlighter-rouge">username</code></em><code class="highlighter-rouge">.id.blockstack</code></p>
+
+    <p>You’ll use this initial ID to access the Blockstack Browser.</p>
+  </li>
+  <li>
+    <p>Enter a unique username and press <strong>Check Availability</strong>.</p>
+
+    <p><img src="images/create-id-2.png" alt="" /></p>
+
+    <p>When you choose an ID that is available, the system responds with the following:</p>
+
+    <p><img src="images/create-id-3.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Press <strong>Continue</strong>.</p>
+
+    <p>The system prompts you to save your <strong>recovery code</strong>. A recovery code is a
+sequence  of words.  These words allow you to recover an <code class="highlighter-rouge">id.blockstack</code>
+that you’ve created.  You should store the words along with their order, for
+example,  <code class="highlighter-rouge">#1 applied</code> and so forth.</p>
+  </li>
+  <li>
+    <p>Click <strong>I have written down all the words</strong> when you are done.</p>
+
+    <p>The system places you in the Blockstack browser.  You can begin exploring and
+using Dapps.</p>
+  </li>
+</ol>
+
+<h2 id="restore-a-blockstack-id">Restore a Blockstack ID</h2>
+
+<p>When you return to the Blockstack Browser, the browser prompts you to create a
+new Blockstack ID or restore an existing Blockstack ID. If you have a
+Blockstack identity, you can open the browser by restoring the identity. To
+restore an identity, there are two available methods.</p>
+
+<p>Method 1: Supply the identity recovery code (<code class="highlighter-rouge">36mWivFdy0YPH2z31E...</code>) and the
+password you provided when you <em>initially</em> created your identity. Method 2:
+Supply the recovery key which is a sequence of words (<code class="highlighter-rouge">applied binge ...</code>)</p>
+
+<p>If you loose either the recovery code or the password you provided when you
+<em>initially</em> created your identity, you can no longer use method 1 to restore
+your identity. If you lose the recovery key, you can no longer use method 2.
+Once you no longer have access to either method, your identity is estranged and
+not accessible by anyone.</p>
+
+<h3 id="restore-with-a-recovery-key">Restore with a recovery key</h3>
+
+<ol>
+  <li>Open the <a href="https://browser.blockstack.org/sign-up?redirect=%2F">Blockstack web application in your browser</a>.</li>
+  <li>
+    <p>Choose <strong>Restore a Blockstack ID</strong>.</p>
+
+    <p>The system displays a dialog where you can enter your recovery code or a
+recovery key.</p>
+  </li>
+  <li>
+    <p>Enter the recovery key.</p>
+
+    <p>The recovery key is a squence of words.</p>
+
+    <p><img src="images/recovery-code.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Press <strong>Next</strong>.</p>
+
+    <p>The system prompts you for an email address. This email can be one you
+entered previously or an entirely new one. Blockstack doesn’t store this
+address; it is used during your current Blockstack browser interaction to communicate
+important information with you.</p>
+  </li>
+  <li>
+    <p>Enter an email and press <strong>Next</strong>.</p>
+
+    <p>The system prompts you for an password and its confirmation. This password
+can be one you entered previously or an entirely new one. Write this password
+down. You can use the password during your current Blockstack browser
+interaction  to reveal your keychain or change your password. Blockstack does
+not store this information past the session.</p>
+  </li>
+  <li>
+    <p>Enter a password and press <strong>Next</strong>.</p>
+
+    <p>The system welcomes you back.</p>
+
+    <p><img src="images/welcome-back.png" alt="" /></p>
+
+    <p>At this point, you can go onto work with Dapps or you can review your recovery key.</p>
+  </li>
+</ol>
+
+<h3 id="restore-with-a-recovery-code-and-original-password">Restore with a recovery code and original password</h3>
+
+<ol>
+  <li>Open the <a href="https://browser.blockstack.org/sign-up?redirect=%2F">Blockstack web application in your browser</a>.</li>
+  <li>
+    <p>Choose <strong>Restore a Blockstack ID</strong>.</p>
+
+    <p>The system displays a dialog where you can enter your recovery code or a
+recovery key.</p>
+  </li>
+  <li>Enter your recovery code.</li>
+</ol>
+
+<p>The recovery code is an encrypted string.</p>
+
+<p><img src="images/recovery-code.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>Press <strong>Next</strong>.</p>
+
+    <p>The system prompts you for an email address. This email can be one you
+entered previously or an entirely new one. Blockstack doesn’t store this
+address; it is used during your current Blockstack browser interaction to
+communicate important information with you.</p>
+  </li>
+  <li>
+    <p>Enter an email and press <strong>Next</strong>.</p>
+
+    <p>The system prompts you for an password. This must be the password entered
+when you first created your identity. If you have forgetten this passowrd,
+Blockstack cannot provide it to you. Instead, you must switch to using your
+recovery key rather than your code to restore your identity.</p>
+  </li>
+  <li>
+    <p>Enter your origin password and press <strong>Next</strong>.</p>
+  </li>
+</ol>
+
+<p>The system welcomes you back.</p>
+
+<p><img src="images/welcome-back.png" alt="" /></p>
+
+<p>At this point, you can go work with Dapps or you can review your recovery key.</p>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=Get and use a Blockstack ID&url=https://zbabystack.netlify.com/browser/ids-introduction.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fbrowser%2Fids-introduction.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+</div>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+
+
+                    <!-- <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+ -->
+
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright">&copy; 2018 Blockstack</div>
+
+    </div>
+</footer>
+
+    
+
+    <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      /* A CSS selector that points to your search  box */
+      searchBox: {selector: '#searchBox'}
+   };
+</script>
+<script src="https://cdn.sitesearch360.com/sitesearch360-v11.min.js" async></script>
+
+
+
+    </body>
+
+</html>

@@ -8,7 +8,7 @@
 - title: Use the New Internet
   desc: Learn about the New Internet and its applications. Create an identity and learn how to use it.
   icon: settings
-  doc: newinternet/browser-introduction
+  doc: browser/browser-introduction
 
 - title: Build Apps and Earn Money
   desc: Learn how to build an application that earns with Blockstack.
@@ -23,7 +23,7 @@
 - title: Implement Authentication
   desc: Managing your account, creating new users and exporting data
   icon: cog
-  doc: core/auth/overview
+  doc: core/atlas/overview
 
 - title: Implement Storage with GAIA
   desc: Backend storage drivers and interactions between developer APIs and the Gaia service.
