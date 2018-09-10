@@ -6,20 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Decentralized Identifiers (DIDs) | Blockstack</title>
+<title>How to build a Profile Search Index | Blockstack</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="Decentralized Identifiers (DIDs)" />
+<meta property="og:title" content="How to build a Profile Search Index" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Decentralized Identifiers (DIDs)" />
-<meta property="og:description" content="Decentralized Identifiers (DIDs)" />
-<link rel="canonical" href="https://zbabystack.netlify.com/core/naming/did.html" />
-<meta property="og:url" content="https://zbabystack.netlify.com/core/naming/did.html" />
+<meta name="description" content="How to build a Profile Search Index" />
+<meta property="og:description" content="How to build a Profile Search Index" />
+<link rel="canonical" href="https://zbabystack.netlify.com/core/naming/search.html" />
+<meta property="og:url" content="https://zbabystack.netlify.com/core/naming/search.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-09-10T15:18:11-07:00" />
 <script type="application/ld+json">
-{"description":"Decentralized Identifiers (DIDs)","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/did.html","headline":"Decentralized Identifiers (DIDs)","dateModified":"2018-09-10T15:18:11-07:00","datePublished":"2018-09-10T15:18:11-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/did.html"},"@context":"http://schema.org"}</script>
+{"description":"How to build a Profile Search Index","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/search.html","headline":"How to build a Profile Search Index","dateModified":"2018-09-10T15:18:11-07:00","datePublished":"2018-09-10T15:18:11-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/search.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
@@ -141,7 +141,7 @@
                             
                             <!--  -->
                             
-                            <li class=""><a href="/core/naming/search.html">How to build a Profile Search Index</a></li>
+                            <li class="uk-active"><a href="/core/naming/search.html">How to build a Profile Search Index</a></li>
                         
                             
                             <!--  -->
@@ -196,7 +196,7 @@
                             
                             <!--  -->
                             
-                            <li class="uk-active"><a href="/core/naming/did.html">Decentralized Identifiers (DIDs)</a></li>
+                            <li class=""><a href="/core/naming/did.html">Decentralized Identifiers (DIDs)</a></li>
                         
                         </ul>
                     
@@ -247,7 +247,7 @@
 
                 <article class="uk-article">
 
-                    <h1 class="uk-article-title">Decentralized Identifiers (DIDs)</h1>
+                    <h1 class="uk-article-title">How to build a Profile Search Index</h1>
 
                     
 
@@ -266,7 +266,7 @@
     
     
 
-<a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/did.md" class="btn btn-default githubEditButton" role="button">
+<a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/search.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
  <span style="font-family:Wingdings">&#119;</span> Sep 10, 2018
 </time>
@@ -275,110 +275,208 @@
 
                     <div class="article-content">
                         
-<p>BNS nodes are compliant with the emerging
-<a href="http://identity.foundation">Decentralized Identity Foundation</a> protocol
-specification for decentralized identifiers (DIDs).</p>
+<p>The search subsystem for Blockstack Core creates an index for data associated
+with registered names in namespaces and makes that data searchable.</p>
 
-<p>Each name in BNS has an associated DID.  The DID format for BNS is:</p>
+<p>The search subsystem is currently meant to index the .id namespace but can
+be easily expanded to include other namespaces.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    did:stack:v0:{address}-{index}
+<p>Currently there are two types of indexes to handle search queries:</p>
+
+<ul>
+  <li>Substring search on usernames, full names, twitter_handle (powered by MongoDB)</li>
+  <li>Raw Lucene index which handles searching extended data e.g., bio.</li>
+</ul>
+
+<p>Search will currently return upto a max of 20 results (can be less depending on the query)
+with data that follows structure of <a href="https://github.com/blockstack/blockstack">blockstack IDs</a>:</p>
+
+<p>In early 2017, the search subsystem was ported over to the new API system, where support for search is provided by the endpoint:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://localhost:5000/search?query=&lt;SEARCH_PATTERN&gt;
 </code></pre>
 </div>
 
-<p>Where:</p>
-<ul>
-  <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">address</span><span class="p">}</span></code> is an on-chain public key hash (e.g. a Bitcoin address).</li>
-  <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">index</span><span class="p">}</span></code> refers to the <code class="highlighter-rouge">nth</code> name this address created.</li>
-</ul>
+<p>This document describes how to setup the search subsystem to respond at that endpoint.</p>
 
-<p>For example, the DID for <code class="highlighter-rouge">personal.id</code> is
-<code class="highlighter-rouge">did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0</code>, because the name
-<code class="highlighter-rouge">personal.id</code> was the first-ever name created by
-<code class="highlighter-rouge">1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV</code>.</p>
-
-<p>As another example, the DID for <code class="highlighter-rouge">jude.id</code> is <code class="highlighter-rouge">did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-1</code>.
-Here, the address <code class="highlighter-rouge">16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg</code> had created one earlier
-name in history prior to this one (which happens to be <code class="highlighter-rouge">abcdefgh123456.id</code>).</p>
-
-<p>The purpose of a DID is to provide an eternal identifier for a public key.
-The public key may change, but the DID will not.</p>
-
-<p>Blockstack Core implements a DID method of its own
-in order to be compatible with other systems that use DIDs for public key resolution.
-In order for a DID to be resolvable, all of the following must be true for a
-name:</p>
+<h1 id="installation">Installation</h1>
 
 <ul>
-  <li>The name must exist</li>
-  <li>The name’s zone file hash must be the hash of a well-formed DNS zone file</li>
-  <li>The DNS zone file must be present in the BNS <a href="atlas_network.md">Atlas Network</a></li>
-  <li>The DNS zone file must contain a <code class="highlighter-rouge">URI</code> resource record that points to a signed
-JSON Web Token</li>
-  <li>The public key that signed the JSON Web Token (and is included with it) must
-hash to the address that owns the name</li>
-</ul>
-
-<p>Not all names will have DIDs that resolve to public keys.  However, names created by the <a href="https://github.com/blockstack/blockstack-browser">Blockstack
-Browser</a> will have DIDs that
-do.</p>
-
-<p>Developers can programmatically resolve DIDs via the Python API:</p>
-
-<pre><code class="language-Python">&gt;&gt;&gt; import blockstack
-&gt;&gt;&gt; blockstack.lib.client.resolve_DID('did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-1', hostport='https://node.blockstack.org:6263')
-{'public_key': '020fadbbcea0ff3b05f03195b41cd991d7a0af8bd38559943aec99cbdaf0b22cc8'}
+  <li><strong>Step 1:</strong> First, make sure you have <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">virtualenv installed</a>.
+Then, setup the API and search subsystem:
+    <div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install -y mongodb memcached python-dev libmemcached-dev zlib1g-dev nginx
+$ sudo pip install uwsgi
+$ git clone https://github.com/blockstack/blockstack-core.git --branch api
+$ cd blockstack-core/
+$ sudo pip install .
+$ sudo pip install -r api/requirements.txt
+$ sudo mkdir /var/blockstack-search &amp;&amp; sudo chown $USER:$USER /var/blockstack-search
 </code></pre>
-
-<p>A RESTful API is under development.</p>
-
-<h1 id="did-encoding-for-subdomains">DID Encoding for Subdomains</h1>
-
-<p>Every name and subdomain in BNS has a DID.  The encoding is slightly different
-for subdomains, so the software can determine which code-path to take.</p>
-
-<ul>
-  <li>
-    <p>For on-chain BNS names, the <code class="highlighter-rouge"><span class="p">{</span><span class="err">address</span><span class="p">}</span></code> is the same as the Bitcoin address
-that owns the name.  Currently, both version byte 0 and version byte 5
-addresses are supported (i.e. addresses starting with <code class="highlighter-rouge">1</code> or <code class="highlighter-rouge">3</code>, meaning <code class="highlighter-rouge">p2pkh</code> and
-<code class="highlighter-rouge">p2sh</code> addresses).</p>
+    </div>
   </li>
   <li>
-    <p>For off-chain BNS subdomains, the <code class="highlighter-rouge"><span class="p">{</span><span class="err">address</span><span class="p">}</span></code> has version byte 63 for
-subdomains owned by a single private key, and version byte 50 for subdomains
-owned by a m-of-n set of private keys.  That is, subdomain DID addresses start
-with <code class="highlighter-rouge">S</code> or <code class="highlighter-rouge">M</code>, respectively.</p>
+    <p><strong>Step 2:</strong> Make sure you have Blockstack Core running locally (see <a href="https://github.com/blockstack/blockstack-core/blob/master/README.md#quick-start">instructions</a>). We highly
+recommend using a local node because the search subsystem issues thousands of calls to
+Blockstack Core for re-indexing and remote nodes can slow down performance.</p>
   </li>
+  <li><strong>Step 3:</strong> Fetch the data for the .id namespace and respective profiles. Note, you may want to redirect stderr to a file, as there is a lot of debug output.</li>
 </ul>
 
-<p>The <code class="highlighter-rouge"><span class="p">{</span><span class="err">index</span><span class="p">}</span></code> field for a subdomain’s DID is distinct from the <code class="highlighter-rouge"><span class="p">{</span><span class="err">index</span><span class="p">}</span></code> field
-for a BNS name’s DID, even if the same created both names and subdomains.
-For example, the name <code class="highlighter-rouge">abcdefgh123456.id</code> has the DID <code class="highlighter-rouge">did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-0</code>,
-because it was the first name created by <code class="highlighter-rouge">16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg</code>.
-However, <code class="highlighter-rouge">16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg</code> <em>also</em> created <code class="highlighter-rouge">jude.statism.id</code>
-as its first subdomain name.  The DID for <code class="highlighter-rouge">jude.statism.id</code> is
-<code class="highlighter-rouge">did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0</code>.  Note that the address
-<code class="highlighter-rouge">SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i</code> encodes the same public key hash as the address
-<code class="highlighter-rouge">16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg</code> (the only difference between these two
-strings is that the first is base58check-encoded with version byte 0, and the
-second is encoded with version byte 63).</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd api/
 
-<p>You can see this play out in practice with the following code snippit:</p>
+$ python -m search.fetch_data --fetch_namespace
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">blockstack</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">blockstack</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get_name_record</span><span class="p">(</span><span class="s">'jude.statism.id'</span><span class="p">,</span> <span class="n">hostport</span><span class="o">=</span><span class="s">'https://node.blockstack.org:6263'</span><span class="p">)[</span><span class="s">'address'</span><span class="p">]</span>
-<span class="s">u'16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg'</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">virtualchain</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">virtualchain</span><span class="o">.</span><span class="n">address_reencode</span><span class="p">(</span><span class="s">'16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg'</span><span class="p">,</span> <span class="n">version_byte</span><span class="o">=</span><span class="mi">63</span><span class="p">)</span>
-<span class="s">'SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i'</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">blockstack</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">resolve_DID</span><span class="p">(</span><span class="s">'did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0'</span><span class="p">,</span> <span class="n">hostport</span><span class="o">=</span><span class="s">'https://node.blockstack.org:6263'</span><span class="p">)</span>
-<span class="p">{</span><span class="s">'public_key'</span><span class="p">:</span> <span class="s">'020fadbbcea0ff3b05f03195b41cd991d7a0af8bd38559943aec99cbdaf0b22cc8'</span><span class="p">}</span>
+$ python -m search.fetch_data --fetch_profiles
 </code></pre>
 </div>
+
+<ul>
+  <li><strong>Step 4:</strong> Create the search index:</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>python -m search.basic_index --refresh
+</code></pre>
+</div>
+
+<ul>
+  <li><strong>Step 5:</strong> Enable search API endpoint:</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sed -i 's/SEARCH_API_ENDPOINT_ENABLED \= False/SEARCH_API_ENDPOINT_ENABLED \= True/' config.py
+</code></pre>
+</div>
+
+<h1 id="usage">Usage</h1>
+
+<p>You can quickly test the search index from the command line:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>python -m search.substring_search --search_name "Fred Wil"
+python -m search.substring_search --search_twitter fredwil
+</code></pre>
+</div>
+
+<p>You can also use the search API end-point:</p>
+
+<blockquote>
+  <p>curl -G {machine_ip}:port/search/name -d “query=muneeb”</p>
+</blockquote>
+
+<p>Sample Response:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"people"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://muneebali.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"@type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WebSite"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Muneeb Ali"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"addressLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York, NY"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"@type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostalAddress"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"contentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/dx3/muneeb"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"@type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImageObject"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cover"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"contentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/kd4/muneeb"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"@type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImageObject"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"avatar"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"@type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Person"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Co-founder of Blockstack. Interested in distributed systems and blockchains. Previously, PhD at Princeton."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"muneeb"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This blockchain ID is reserved for Muneeb Ali. If this is you, please email support@onename.com to claim it for free."</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reserved"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"muneebali"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"cover"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/97p/HHE.jpg"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"muneebali1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="enabling-elastic-search">Enabling Elastic Search</h2>
+
+<h3 id="requirements">Requirements:</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install mongodb
+sudo apt-get install memcached libmemcached-dev
+sudo apt-get install python2.7-dev
+pip install -r requirements.txt
+</code></pre>
+</div>
+
+<h3 id="elastic-search">Elastic Search</h3>
+
+<p>Elastic Search library is not in github and resides at unix/lib/elastic</p>
+
+<p>the current version we’re using is <em>0.90.2</em>. Download from:</p>
+
+<blockquote>
+  <p>wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.2.zip</p>
+</blockquote>
+
+<p>before installing pylimbmc make sure <a href="memcached.md">memcached</a> is installed.</p>
+
+<p>Ensure that mongodb and elastic search are running
+starting elastic search:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$elasticsearch (on mac)
+bin/elasticsearch -d (on linux)
+</code></pre>
+</div>
+
+<p>To test if elastic search is running:</p>
+
+<blockquote>
+  <p>curl -X GET http://localhost:9200/</p>
+</blockquote>
+
+<p>returns:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"ok"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Angler"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.90.2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"snapshot_build"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lucene_version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"4.3.1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Create Index:</p>
+
+<blockquote>
+  <p>python create_search_index.py –create_index</p>
+</blockquote>
 
                         <div class="share uk-text-center">
-    <a href="https://twitter.com/intent/tweet?text=Decentralized Identifiers (DIDs)&url=https://zbabystack.netlify.com/core/naming/did.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
-    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fnaming%2Fdid.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    <a href="https://twitter.com/intent/tweet?text=How to build a Profile Search Index&url=https://zbabystack.netlify.com/core/naming/search.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fnaming%2Fsearch.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
 </div>
 
                     </div>
