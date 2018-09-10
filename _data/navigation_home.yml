@@ -2,8 +2,8 @@
 
 - title: Evaluate Blockstack
   desc: Learn about the technology behind Blockstack. Understand the value it offers and how it provides it.
-  icon: settings
-  doc: learn/overview
+  icon: info
+  doc: common/construction
 
 - title: Use the New Internet
   desc: Learn about the New Internet and its applications. Create an identity and learn how to use it.
@@ -12,20 +12,20 @@
 
 - title: Build Apps and Earn Money
   desc: Learn how to build an application that earns with Blockstack.
-  icon: settings
+  icon: code
   doc: android/tutorial
 
 - title: Use the Naming Service
-  desc: Managing your account, create new users and exporting data
+  desc: Work with namespaces, zone files, and other advanced BNS topics.
   icon: cog
   doc: core/naming/introduction
 
-- title: Implement Authentication
-  desc: Managing your account, creating new users and exporting data
-  icon: cog
-  doc: core/atlas/overview
-
 - title: Implement Storage with GAIA
   desc: Backend storage drivers and interactions between developer APIs and the Gaia service.
-  icon: cog
-  doc: gaia/overview
+  icon: database
+  doc: common/construction
+
+- title: Blockstack Community
+  desc: Ask questions, view upcoming events, and get support.
+  icon: user
+  doc: common/community_ref
