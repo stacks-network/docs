@@ -11,7 +11,7 @@ Some accounts serve as social proofs, but they can contain any data the user wan
 ## Atlas
 
 A peer-to-peer network maintained by Blockstack Core nodes that stores each
-name's zone files and immutable data.  See [this document](atlas_network.md) for
+name's zone files and immutable data.  See [this document]({{ site.baseurl }}/atlas/overview.html) for
 details.
 
 ## Blockstack ID
@@ -29,7 +29,7 @@ A server that reads a blockchain with [virtualchain](https://github.com/blocksta
 ## Blockstack Naming Service (BNS)
 
 This is the naming protocol that Blockstack Core implements.  See [this
-document](blockstack_naming_service.md) for details.
+document]({{ site.baseurl }}/core/naming/introduction.html) for details.
 
 ## Consensus Hash
 
@@ -86,7 +86,7 @@ See the [wire format](wire-format.md) document for details.
 Analogous to a DNS TLD, it represents a grouping of names.  All names under the same namespace have the same pricing and lifetime rules.
 
 Anyone can create a namespace, but doing so is expensive by design.  See the
-[namespace creation](namespace_creation.md) tutorial for details.
+[namespace creation]({{ site.baseurl }}/core/naming/tutorial_creation.html) tutorial for details.
 
 ## Preorder
 

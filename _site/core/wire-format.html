@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Bitcoin wire format | Blockstack</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Bitcoin wire format" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Bitcoin wire format" />
+<meta property="og:description" content="Bitcoin wire format" />
+<link rel="canonical" href="https://zbabystack.netlify.com/core/wire-format.html" />
+<meta property="og:url" content="https://zbabystack.netlify.com/core/wire-format.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-09-10T17:28:25-07:00" />
+<script type="application/ld+json">
+{"description":"Bitcoin wire format","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/wire-format.html","headline":"Bitcoin wire format","dateModified":"2018-09-10T17:28:25-07:00","datePublished":"2018-09-10T17:28:25-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/wire-format.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="/assets/posts/logo.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js"></script>
+  
+</head>
+
+
+    <body>
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a>
+
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                    
+                        <h5>Overview</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/introduction.html">Blockstack Naming Service (BNS)</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/architecture.html">Understand the Architecture</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/namespaces.html">Understand Namespaces</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/comparison.html">Naming system feature comparison</a></li>
+                        
+                        </ul>
+                    
+                        <h5>Tutorials & Cookbooks</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/tutorial_creation.html">Create and Launch a Namespace</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/tutorial_subdomains.html">Subdomain Design and Implementation</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/search.html">How to build a Profile Search Index</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/openbazaar.html">How to link your OpenBazaar GUID to your Blockstack ID</a></li>
+                        
+                        </ul>
+                    
+                        <h5>How to use BNS</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/pickname.html">Choose a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/creationhowto.html">Creating a Namespace</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/resolving.html">Resolve a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/register.html">Register a name</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/manage.html">Manage BNS Names</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/subdomains.html">BNS Subdomains</a></li>
+                        
+                        </ul>
+                    
+                        <h5>Forks and Dids</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/forks.html">BNS Forks</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/naming/did.html">Decentralized Identifiers (DIDs)</a></li>
+                        
+                        </ul>
+                    
+                        <h5>Atlas</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/atlas/overview.html">Overview of the Atlas network</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/atlas/howitworks.html">How Atlas Works</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/atlas/howtouse.html">How to Use the Atlas Network</a></li>
+                        
+                        </ul>
+                    
+                        <h5>Reference</h5>
+                        <ul class="uk-nav uk-nav-default doc-nav">
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/common/javascript_ref.html">Blockstack Javascript Reference</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/common/core_ref.html">Blockstack CORE API</a></li>
+                        
+                            
+                            <!--  -->
+                            
+                            <li class=""><a href="/core/faq_technical.html">Blockstack Technical FAQ</a></li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article class="uk-article">
+
+                    <h1 class="uk-article-title">Bitcoin wire format</h1>
+
+                    
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2018-09-10T17:28:25-07:00" itemprop="datePublished">
+    
+    
+
+<a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/wire-format.md" class="btn btn-default githubEditButton" role="button">
+  <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+ <span style="font-family:Wingdings">&#119;</span> Sep 10, 2018
+</time>
+
+                    </div>
+
+                    <div class="article-content">
+                        
+<p class="no_toc">This page is for organizations who want to be able to create and send name operation transactions to the blockchain(s) Blockstack supports.
+It describes the transaction formats for the Bitcoin blockchain.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#transaction-format" id="markdown-toc-transaction-format">Transaction format</a></li>
+  <li><a href="#payload-format" id="markdown-toc-payload-format">Payload Format</a>    <ul>
+      <li><a href="#name_preorder" id="markdown-toc-name_preorder">NAME_PREORDER</a></li>
+      <li><a href="#name_registration" id="markdown-toc-name_registration">NAME_REGISTRATION</a></li>
+      <li><a href="#name_renewal" id="markdown-toc-name_renewal">NAME_RENEWAL</a></li>
+      <li><a href="#name_update" id="markdown-toc-name_update">NAME_UPDATE</a></li>
+      <li><a href="#name_transfer" id="markdown-toc-name_transfer">NAME_TRANSFER</a></li>
+      <li><a href="#name_revoke" id="markdown-toc-name_revoke">NAME_REVOKE</a></li>
+      <li><a href="#announce" id="markdown-toc-announce">ANNOUNCE</a></li>
+      <li><a href="#namespace_preorder" id="markdown-toc-namespace_preorder">NAMESPACE_PREORDER</a></li>
+      <li><a href="#namespace_reveal" id="markdown-toc-namespace_reveal">NAMESPACE_REVEAL</a></li>
+      <li><a href="#name_import" id="markdown-toc-name_import">NAME_IMPORT</a></li>
+      <li><a href="#namespace_ready" id="markdown-toc-namespace_ready">NAMESPACE_READY</a></li>
+    </ul>
+  </li>
+  <li><a href="#method-glossary" id="markdown-toc-method-glossary">Method Glossary</a></li>
+</ul>
+
+<h2 id="transaction-format">Transaction format</h2>
+
+<p>Each Bitcoin transaction for Blockstack contains signatures from two sets of keys: the name owner, and the payer.  The owner <code class="highlighter-rouge">scriptSig</code> and <code class="highlighter-rouge">scriptPubKey</code> fields are generated from the key(s) that own the given name.  The payer <code class="highlighter-rouge">scriptSig</code> and <code class="highlighter-rouge">scriptPubKey</code> fields are used to <em>subsidize</em> the operation.  The owner keys do not pay for any operations; the owner keys only control the minimum amount of BTC required to make the transaction standard.  The payer keys only pay for the transaction’s fees, and (when required) they pay the name fee.</p>
+
+<p>This construction is meant to allow the payer to be wholly separate from the owner.  The principal that owns the name can fund their own transactions, or they can create a signed transaction that carries out the desired operation and request some other principal (e.g. a parent organization) to actually pay for and broadcast the transaction.</p>
+
+<p>The general transaction layout is as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Inputs</strong></th>
+      <th><strong>Outputs</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Owner scriptSig (1)</td>
+      <td><code class="highlighter-rouge">OP_RETURN &lt;payload&gt;</code> (2)</td>
+    </tr>
+    <tr>
+      <td>Payment scriptSig</td>
+      <td>Owner scriptPubKey (3)</td>
+    </tr>
+    <tr>
+      <td>Payment scriptSig… (4)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>…                  (4)</td>
+      <td>… (5)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>(1) The owner <code class="highlighter-rouge">scriptSig</code> is <em>always</em> the first input.
+(2) The <code class="highlighter-rouge">OP_RETURN</code> script that describes the name operation is <em>always</em> the first output.
+(3) The owner <code class="highlighter-rouge">scriptPubKey</code> is <em>always</em> the second output.
+(4) The payer can use as many payment inputs as (s)he likes.
+(5) At most one output will be the “change” <code class="highlighter-rouge">scriptPubKey</code> for the payer.
+Different operations require different outputs.</p>
+
+<h2 id="payload-format">Payload Format</h2>
+
+<p>Each Blockstack transaction in Bitcoin describes the name operation within an <code class="highlighter-rouge">OP_RETURN</code> output.  It encodes name ownership, name fees, and payments as <code class="highlighter-rouge">scriptPubKey</code> outputs.  The specific operations are described below.</p>
+
+<p>Each <code class="highlighter-rouge">OP_RETURN</code> payload <em>always</em> starts with the two-byte string <code class="highlighter-rouge">id</code> (called the “magic” bytes in this document), followed by a one-byte <code class="highlighter-rouge">op</code> that describes the operation.</p>
+
+<h3 id="name_preorder">NAME_PREORDER</h3>
+
+<p>Op: <code class="highlighter-rouge">?</code></p>
+
+<p>Description:  This transaction commits to the <em>hash</em> of a name.  It is the first
+transaction of two transactions that must be sent to register a name in BNS.</p>
+
+<p>Example: <a href="https://www.blocktrail.com/BTC/tx/6730ae09574d5935ffabe3dd63a9341ea54fafae62fde36c27738e9ee9c4e889">6730ae09574d5935ffabe3dd63a9341ea54fafae62fde36c27738e9ee9c4e889</a></p>
+
+<p><code class="highlighter-rouge">OP_RETURN</code> wire format:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    0     2  3                                                  23             39
+    |-----|--|--------------------------------------------------|--------------|
+    magic op  hash_name(name.ns_id,script_pubkey,register_addr)   consensus hash
+</code></pre>
+</div>
+
+<p>Inputs:</p>
+<ul>
+  <li>Payment <code class="highlighter-rouge">scriptSig</code>’s</li>
+</ul>
+
+<p>Outputs:</p>
+<ul>
+  <li><code class="highlighter-rouge">OP_RETURN</code> payload</li>
+  <li>Payment <code class="highlighter-rouge">scriptPubkey</code> script for change</li>
+  <li><code class="highlighter-rouge">p2pkh</code> <code class="highlighter-rouge">scriptPubkey</code> to the burn address (0x00000000000000000000000000000000000000)</li>
+</ul>
+
+<p>Notes:</p>
+<ul>
+  <li><code class="highlighter-rouge">register_addr</code> is a base58check-encoded <code class="highlighter-rouge">ripemd160(sha256(pubkey))</code> (i.e. an address).  This address <strong>must not</strong> have been used before in the underlying blockchain.</li>
+  <li><code class="highlighter-rouge">script_pubkey</code> is either a <code class="highlighter-rouge">p2pkh</code> or <code class="highlighter-rouge">p2sh</code> compiled Bitcoin script for the payer’s address.</li>
+</ul>
+
+<h3 id="name_registration">NAME_REGISTRATION</h3>
+
+<p>Op: <code class="highlighter-rouge">:</code></p>
+
+<p>Description:  This transaction reveals the name whose hash was announced by a
+previous <code class="highlighter-rouge">NAME_PREORDER</code>.  It is the second of two transactions that must be
+sent to register a name in BNS.</p>
+
+<p>Example: <a href="https://www.blocktrail.com/BTC/tx/55b8b42fc3e3d23cbc0f07d38edae6a451dfc512b770fd7903725f9e465b2925">55b8b42fc3e3d23cbc0f07d38edae6a451dfc512b770fd7903725f9e465b2925</a></p>
+
+<p><code class="highlighter-rouge">OP_RETURN</code> wire format (2 variations allowed):</p>
+
+<p>Variation 1:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    0    2  3                             39
+    |----|--|-----------------------------|
+    magic op   name.ns_id (37 bytes)
+</code></pre>
+</div>
+
+<p>Variation 2:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    0    2  3                                  39                  59
+    |----|--|----------------------------------|-------------------|
+    magic op   name.ns_id (37 bytes, 0-padded)       value
+</code></pre>
+</div>
+
+<p>Inputs:</p>
+<ul>
+  <li>Payer <code class="highlighter-rouge">scriptSig</code>’s</li>
+</ul>
+
+<p>Outputs:</p>
+<ul>
+  <li><code class="highlighter-rouge">OP_RETURN</code> payload</li>
+  <li><code class="highlighter-rouge">scriptPubkey</code> for the owner’s address</li>
+  <li><code class="highlighter-rouge">scriptPubkey</code> for the payer’s change</li>
+</ul>
+
+<p>Notes:</p>
+
+<ul>
+  <li>Variation 1 simply registers the name.  Variation 2 will register the name and
+set a name value simultaneously.  This is used in practice to set a zone file
+hash for a name without the extra <code class="highlighter-rouge">NAME_UPDATE</code> transaction.</li>
+  <li>Both variations are supported.  Variation 1 was designed for the time when
+Bitcoin only supported 40-byte <code class="highlighter-rouge">OP_RETURN</code> outputs.</li>
+</ul>
+
+<h3 id="name_renewal">NAME_RENEWAL</h3>
+
+<p>Op: <code class="highlighter-rouge">:</code></p>
+
+<p>Description:  This transaction renews a name in BNS.  The name must still be
+registered and not expired, and owned by the transaction sender.</p>
+
+<p>Example: <a href="https://www.blocktrail.com/BTC/tx/e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65">e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65</a></p>
+
+<p><code class="highlighter-rouge">OP_RETURN</code> wire format (2 variations allowed):</p>
+
+<p>Variation 1:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    0    2  3                             39
+    |----|--|-----------------------------|
+    magic op   name.ns_id (37 bytes)
+</code></pre>
+</div>
+
+<p>Variation 2:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    0    2  3                                  39                  59
+    |----|--|----------------------------------|-------------------|
+    magic op   name.ns_id (37 bytes, 0-padded)       value
+</code></pre>
+</div>
+
+<p>Inputs:</p>
+
+<ul>
+  <li>Payer <code class="highlighter-rouge">scriptSig</code>’s</li>
+</ul>
+
+<p>Outputs:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">OP_RETURN</code> payload</li>
+  <li><code class="highlighter-rouge">scriptPubkey</code> for the owner’s addess.  This can be a different address than
+the current name owner (in which case, the name is renewed and transferred).</li>
+  <li><code class="highlighter-rouge">scriptPubkey</code> for the payer’s change</li>
+  <li><code class="highlighter-rouge">scriptPubkey</code> for the burn address (to pay the name cost)</li>
+</ul>
+
+<p>Notes:</p>
+
+<ul>
+  <li>This transaction is identical to a <code class="highlighter-rouge">NAME_REGISTRATION</code>, except for the presence of the fourth output that pays for the name cost (to the burn address).</li>
+  <li>Variation 1 simply renews the name.  Variation 2 will both renew the name and
+set a new name value (in practice, the hash of a new zone file).</li>
+  <li>Both variations are supported.  Variation 1 was designed for the time when
+Bitcoin only supported 40-byte <code class="highlighter-rouge">OP_RETURN</code> outputs.</li>
+  <li>This operation can be used to transfer a name to a new address by setting the
+second output (the first <code class="highlighter-rouge">scriptPubkey</code>) to be the <code class="highlighter-rouge">scriptPubkey</code> of the new
+owner key.</li>
+</ul>
+
+<h3 id="name_update">NAME_UPDATE</h3>
+
+<p>Op: <code class="highlighter-rouge">+</code></p>
+
+<p>Description:  This transaction sets the name state for a name to the given
+<code class="highlighter-rouge">value</code>.  In practice, this is used to announce new DNS zone file hashes to the <a href="/core/atlas/overview.html">Atlas
+network</a>.</p>
+
+<p>Example: <a href="https://www.blocktrail.com/BTC/tx/e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7">e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7</a></p>
+
+<p><code class="highlighter-rouge">OP_RETURN</code> wire format:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    0     2  3                                   19                      39
+    |-----|--|-----------------------------------|-----------------------|
+    magic op  hash128(name.ns_id,consensus hash)      zone file hash
+</code></pre>
+</div>
+
+<p>Note that <code class="highlighter-rouge">hash128(name.ns_id, consensus hash)</code> is the first 16 bytes of a SHA256 hash over the name concatenated to the hexadecimal string of the consensus hash (not the bytes corresponding to that hex string).
+See the <a href="#method-glossary">Method Glossary</a> below.</p>
+
+<p>Example: <code class="highlighter-rouge">hash128("jude.id" + "8d8762c37d82360b84cf4d87f32f7754") == "d1062edb9ec9c85ad1aca6d37f2f5793"</code>.</p>
+
+<p>Inputs:</p>
+<ul>
+  <li>owner <code class="highlighter-rouge">scriptSig</code></li>
+  <li>payment <code class="highlighter-rouge">scriptSig</code>’s</li>
+</ul>
+
+<p>Outputs:</p>
+<ul>
+  <li><code class="highlighter-rouge">OP_RETURN</code> payload</li>
+  <li>owner’s <code class="highlighter-rouge">scriptPubkey</code></li>
+  <li>payment <code class="highlighter-rouge">scriptPubkey</code> change</li>
+</ul>
+
+<h3 id="name_transfer">NAME_TRANSFER</h3>
+
+<p>Op: <code class="highlighter-rouge">&gt;</code></p>
+
+<p>Description:  This transaction changes the public key hash that owns the name in
+BNS.</p>
+
+<p>Example: <a href="https://www.blocktrail.com/BTC/tx/7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24">7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24</a></p>
+
+<p><code class="highlighter-rouge">OP_RETURN</code> wire format:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    0     2  3    4                   20              36
+    |-----|--|----|-------------------|---------------|
+    magic op keep  hash128(name.ns_id) consensus hash
+             data?
+</code></pre>
+</div>
+
+<p>Inputs:</p>
+
+<ul>
+  <li>Owner <code class="highlighter-rouge">scriptSig</code></li>
+  <li>Payment <code class="highlighter-rouge">scriptSig</code>’s</li>
+</ul>
+
+<p>Outputs:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">OP_RETURN</code> payload</li>
+  <li>new name owner’s <code class="highlighter-rouge">scriptPubkey</code></li>
+  <li>old name owner’s <code class="highlighter-rouge">scriptPubkey</code></li>
+  <li>payment <code class="highlighter-rouge">scriptPubkey</code> change</li>
+</ul>
+
+<p>Notes:</p>
+
+<ul>
+  <li>The <code class="highlighter-rouge">keep data?</code> byte controls whether or not the name’s 20-byte value is preserved.  This value is either <code class="highlighter-rouge">&gt;</code> to preserve it, or <code class="highlighter-rouge">~</code> to delete it.</li>
+</ul>
+
+<h3 id="name_revoke">NAME_REVOKE</h3>
+
+<p>Op: <code class="highlighter-rouge">~</code></p>
+
+<p>Description:  This transaction destroys a registered name.  Its name state value
+in BNS will be cleared, and no further transactions will be able to affect the
+name until it expires (if its namespace allows it to expire at all).</p>
+
+<p>Example: <a href="https://www.blocktrail.com/BTC/tx/eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f">eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f</a></p>
+
+<p><code class="highlighter-rouge">OP_RETURN</code> wire format:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    0    2  3                             39
+    |----|--|-----------------------------|
+    magic op   name.ns_id (37 bytes)
+</code></pre>
+</div>
+
+<p>Inputs:</p>
+
+<ul>
+  <li>owner <code class="highlighter-rouge">scriptSig</code></li>
+  <li>payment <code class="highlighter-rouge">scriptSig</code>’s</li>
+</ul>
+
+<p>Outputs:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">OP_RETURN</code> payload</li>
+  <li>owner <code class="highlighter-rouge">scriptPubkey</code></li>
+  <li>payment <code class="highlighter-rouge">scriptPubkey</code> change</li>
+</ul>
+
+<h3 id="announce">ANNOUNCE</h3>
+
+<p>Op: <code class="highlighter-rouge">#</code></p>
+
+<p>Description:  This transaction does not affect any names in BNS, but it allows a
+user to send a message to other BNS nodes.  In order for the message to be
+received, the following must be true:</p>
+
+<ul>
+  <li>The sender must have a BNS name</li>
+  <li>The BNS nodes must list the sender’s BNS name as being a “trusted message
+sender”</li>
+  <li>The message must have already been propagated through the <a href="/core/atlas/overview.html">Atlas
+network</a>.  This transaction references it by content hash.</li>
+</ul>
+
+<p><code class="highlighter-rouge">OP_RETURN</code> wire format:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    0    2  3                             23
+    |----|--|-----------------------------|
+    magic op   ripemd160(sha256(message))
+</code></pre>
+</div>
+
+<p>Inputs:</p>
+
+<ul>
+  <li>The payer <code class="highlighter-rouge">scriptSig</code>’s</li>
+</ul>
+
+<p>Outputs:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">OP_RETURN</code> payload</li>
+  <li>change <code class="highlighter-rouge">scriptPubKey</code></li>
+</ul>
+
+<p>Notes:</p>
+
+<ul>
+  <li>The payer key should be an owner key for an existing name, since Blockstack users can subscribe to announcements from specific name-owners.</li>
+</ul>
+
+<h3 id="namespace_preorder">NAMESPACE_PREORDER</h3>
+
+<p>Op: <code class="highlighter-rouge">*</code></p>
+
+<p>Description:  This transaction announces the <em>hash</em> of a new namespace.  It is the
+first of three transactions that must be sent to create a namespace.</p>
+
+<p>Example: <a href="https://www.blocktrail.com/BTC/tx/5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28">5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28</a></p>
+
+<p><code class="highlighter-rouge">OP_RETURN</code> wire format:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>   0     2   3                                         23               39
+   |-----|---|-----------------------------------------|----------------|
+   magic op  hash_name(ns_id,script_pubkey,reveal_addr)   consensus hash
+</code></pre>
+</div>
+
+<p>Inputs:</p>
+
+<ul>
+  <li>Namespace payer <code class="highlighter-rouge">scriptSig</code></li>
+</ul>
+
+<p>Outputs:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">OP_RETURN</code> payload</li>
+  <li>Namespace payer <code class="highlighter-rouge">scriptPubkey</code> change address</li>
+  <li><code class="highlighter-rouge">p2pkh</code> script to the burn address <code class="highlighter-rouge">1111111111111111111114oLvT2</code>, whose public key hash is 0x00000000000000000000000000000000</li>
+</ul>
+
+<p>Notes:</p>
+
+<ul>
+  <li>The <code class="highlighter-rouge">reveal_addr</code> field is the address of the namespace revealer public key.  The revealer private key will be used to generate <code class="highlighter-rouge">NAME_IMPORT</code> transactions.</li>
+</ul>
+
+<h3 id="namespace_reveal">NAMESPACE_REVEAL</h3>
+
+<p>Op: <code class="highlighter-rouge">&amp;</code></p>
+
+<p>Description:  This transaction reveals the namespace ID and namespace rules
+for a previously-anounced namespace hash (sent by a previous <code class="highlighter-rouge">NAMESPACE_PREORDER</code>).</p>
+
+<p>Example: <a href="https://www.blocktrail.com/BTC/tx/ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32">ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32</a></p>
+
+<p><code class="highlighter-rouge">OP_RETURN</code> wire format:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>   0     2   3        7     8     9    10   11   12   13   14    15    16    17       18        20                        39
+   |-----|---|--------|-----|-----|----|----|----|----|----|-----|-----|-----|--------|----------|-------------------------|
+   magic  op  life    coeff. base 1-2  3-4  5-6  7-8  9-10 11-12 13-14 15-16  nonalpha  version   namespace ID
+                                                     bucket exponents         no-vowel
+                                                                              discounts
+</code></pre>
+</div>
+
+<p>Inputs:</p>
+
+<ul>
+  <li>Namespace payer <code class="highlighter-rouge">scriptSig</code>s</li>
+</ul>
+
+<p>Outputs:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">OP_RETURN</code> payload</li>
+  <li>namespace revealer <code class="highlighter-rouge">scriptPubkey</code></li>
+  <li>namespace payer change <code class="highlighter-rouge">scriptPubkey</code></li>
+</ul>
+
+<p>Notes:</p>
+
+<ul>
+  <li>This transaction must be sent within 1 day of the <code class="highlighter-rouge">NAMESPACE_PREORDER</code></li>
+  <li>The second output (with the namespace revealer) <strong>must</strong> be a <code class="highlighter-rouge">p2pkh</code> script</li>
+  <li>The address of the second output <strong>must</strong> be the <code class="highlighter-rouge">reveal_addr</code> in the <code class="highlighter-rouge">NAMESPACE_PREORDER</code></li>
+</ul>
+
+<p>Pricing:</p>
+
+<p>The rules for a namespace are as follows:</p>
+
+<ul>
+  <li>a name can fall into one of 16 buckets, measured by length.  Bucket 16 incorporates all names at least 16 characters long.</li>
+  <li>the pricing structure applies a multiplicative penalty for having numeric characters, or punctuation characters.</li>
+  <li>the price of a name in a bucket is ((coeff) * (base) ^ (bucket exponent)) / ((numeric discount multiplier) * (punctuation discount multiplier))</li>
+</ul>
+
+<p>Example:</p>
+<ul>
+  <li>base = 10</li>
+  <li>coeff = 2</li>
+  <li>nonalpha discount: 10</li>
+  <li>no-vowel discount: 10</li>
+  <li>buckets 1, 2: 9</li>
+  <li>buckets 3, 4, 5, 6: 8</li>
+  <li>buckets 7, 8, 9, 10, 11, 12, 13, 14: 7</li>
+  <li>buckets 15, 16+:</li>
+</ul>
+
+<p>With the above example configuration, the following are true:</p>
+
+<ul>
+  <li>The price of “john” would be 2 * 10^8, since “john” falls into bucket 4 and has no punctuation or numerics.</li>
+  <li>The price of “john1” would be 2 * 10^6, since “john1” falls into bucket 5 but has a number (and thus receives a 10x discount)</li>
+  <li>The price of “john_1” would be 2 * 10^6, since “john_1” falls into bucket 6 but has a number and punctuation (and thus receives a 10x discount)</li>
+  <li>The price of “j0hn_1” would be 2 * 10^5, since “j0hn_1” falls into bucket 6 but has a number and punctuation and lacks vowels (and thus receives a 100x discount)</li>
+</ul>
+
+<h3 id="name_import">NAME_IMPORT</h3>
+
+<p>Op: <code class="highlighter-rouge">;</code></p>
+
+<p>Description:  This transaction registers a name and some name state into a
+namespace that has been revealed, but not been launched.  Only the namespace
+creator can import names.  See the <a href="/core/naming/tutorial_creation.html">namespace creation
+tutorial</a> for details.</p>
+
+<p>Example: <a href="https://www.blocktrail.com/BTC/tx/c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312">c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312</a></p>
+
+<p><code class="highlighter-rouge">OP_RETURN</code> wire format:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    0    2  3                             39
+    |----|--|-----------------------------|
+    magic op   name.ns_id (37 bytes)
+</code></pre>
+</div>
+
+<p>Inputs:</p>
+
+<ul>
+  <li>The namespace reveal <code class="highlighter-rouge">scriptSig</code> (with the namespace revealer’s public key), or one of its first 300 extended public keys</li>
+  <li>Any payment inputs</li>
+</ul>
+
+<p>Outputs:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">OP_RETURN</code> payload</li>
+  <li>recipient <code class="highlighter-rouge">scriptPubKey</code></li>
+  <li>zone file hash (using the 20-byte hash in a standard <code class="highlighter-rouge">p2pkh</code> script)</li>
+  <li>payment change <code class="highlighter-rouge">scriptPubKey</code></li>
+</ul>
+
+<p>Notes:</p>
+
+<ul>
+  <li>These transactions can only be sent between the <code class="highlighter-rouge">NAMESPACE_REVEAL</code> and <code class="highlighter-rouge">NAMESPACE_READY</code>.</li>
+  <li>The first <code class="highlighter-rouge">NAME_IMPORT</code> transaction <strong>must</strong> have a <code class="highlighter-rouge">scriptSig</code> input that matches the <code class="highlighter-rouge">NAMESPACE_REVEAL</code>’s second output (i.e. the reveal output).</li>
+  <li>Any subsequent <code class="highlighter-rouge">NAME_IMPORT</code> transactions <strong>may</strong> have a <code class="highlighter-rouge">scriptSig</code> input whose public key is one of the first 300 extended public keys from the <code class="highlighter-rouge">NAMESPACE_REVEAL</code>’s <code class="highlighter-rouge">scriptSig</code> public key.</li>
+</ul>
+
+<h3 id="namespace_ready">NAMESPACE_READY</h3>
+
+<p>Op: <code class="highlighter-rouge">!</code></p>
+
+<p>Description:  This transaction launches a namesapce.  Only the namespace creator
+can send this transaction.  Once sent, anyone can register names in the
+namespace.</p>
+
+<p>Example: <a href="https://www.blocktrail.com/BTC/tx/2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032">2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032</a></p>
+
+<p><code class="highlighter-rouge">OP_RETURN</code> wire format:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+   0     2  3  4           23
+   |-----|--|--|------------|
+   magic op  .  ns_id
+</code></pre>
+</div>
+
+<p>Inputs:</p>
+<ul>
+  <li>Namespace revealer’s <code class="highlighter-rouge">scriptSig</code>s</li>
+</ul>
+
+<p>Outputs:</p>
+<ul>
+  <li><code class="highlighter-rouge">OP_RETURN</code> payload</li>
+  <li>Change output to the namespace revealer’s <code class="highlighter-rouge">p2pkh</code> script</li>
+</ul>
+
+<p>Notes:</p>
+<ul>
+  <li>This transaction must be sent within 1 year of the corresponding <code class="highlighter-rouge">NAMESPACE_REVEAL</code> to be accepted.</li>
+</ul>
+
+<h2 id="method-glossary">Method Glossary</h2>
+
+<p>Some hashing primitives are used to construct the wire-format representation of each name operation.  They are enumerated here:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>B40_REGEX = '^[a-z0-9\-_.+]*$'
+
+def is_b40(s):
+    return isinstance(s, str) and re.match(B40_REGEX, s) is not None
+
+def b40_to_bin(s):
+    if not is_b40(s):
+        raise ValueError('{} must only contain characters in the b40 char set'.format(s))
+    return unhexlify(charset_to_hex(s, B40_CHARS))
+
+def hexpad(x):
+    return ('0' * (len(x) % 2)) + x
+
+def charset_to_hex(s, original_charset):
+    return hexpad(change_charset(s, original_charset, B16_CHARS))
+
+def bin_hash160(s, hex_format=False):
+    """ s is in hex or binary format
+    """
+    if hex_format and is_hex(s):
+        s = unhexlify(s)
+    return hashlib.new('ripemd160', bin_sha256(s)).digest()
+
+def hex_hash160(s, hex_format=False):
+    """ s is in hex or binary format
+    """
+    if hex_format and is_hex(s):
+        s = unhexlify(s)
+    return hexlify(bin_hash160(s))
+
+def hash_name(name, script_pubkey, register_addr=None):
+    """
+    Generate the hash over a name and hex-string script pubkey.
+    Returns the hex-encoded string RIPEMD160(SHA256(x)), where
+    x is the byte string composed of the concatenation of the
+    binary
+    """
+    bin_name = b40_to_bin(name)
+    name_and_pubkey = bin_name + unhexlify(script_pubkey)
+
+    if register_addr is not None:
+        name_and_pubkey += str(register_addr)
+
+    # make hex-encoded hash
+    return hex_hash160(name_and_pubkey)
+
+def hash128(data):
+    """
+    Hash a string of data by taking its 256-bit sha256 and truncating it to the
+    first 16 bytes
+    """
+    return hexlify(bin_sha256(data)[0:16])
+</code></pre>
+</div>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=Bitcoin wire format&url=https://zbabystack.netlify.com/core/wire-format.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fwire-format.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+</div>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+
+
+                    <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+
+
+                    
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright">&copy; 2018 Blockstack</div>
+
+    </div>
+</footer>
+
+    
+
+    <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      /* A CSS selector that points to your search  box */
+      searchBox: {selector: '#searchBox'}
+   };
+</script>
+<script src="https://cdn.sitesearch360.com/sitesearch360-v11.min.js" async></script>
+
+
+
+    </body>
+
+</html>

@@ -6,20 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Overview of the Atlas network | Blockstack</title>
+<title>Installing Memcached | Blockstack</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="Overview of the Atlas network" />
+<meta property="og:title" content="Installing Memcached" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Overview of the Atlas network" />
-<meta property="og:description" content="Overview of the Atlas network" />
-<link rel="canonical" href="https://zbabystack.netlify.com/core/atlas/overview.html" />
-<meta property="og:url" content="https://zbabystack.netlify.com/core/atlas/overview.html" />
+<meta name="description" content="Installing Memcached" />
+<meta property="og:description" content="Installing Memcached" />
+<link rel="canonical" href="https://zbabystack.netlify.com/core/memcached.html" />
+<meta property="og:url" content="https://zbabystack.netlify.com/core/memcached.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-09-10T17:28:25-07:00" />
 <script type="application/ld+json">
-{"description":"Overview of the Atlas network","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/atlas/overview.html","headline":"Overview of the Atlas network","dateModified":"2018-09-10T17:28:25-07:00","datePublished":"2018-09-10T17:28:25-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/atlas/overview.html"},"@context":"http://schema.org"}</script>
+{"description":"Installing Memcached","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/memcached.html","headline":"Installing Memcached","dateModified":"2018-09-10T17:28:25-07:00","datePublished":"2018-09-10T17:28:25-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/memcached.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
@@ -206,7 +206,7 @@
                             
                             <!--  -->
                             
-                            <li class="uk-active"><a href="/core/atlas/overview.html">Overview of the Atlas network</a></li>
+                            <li class=""><a href="/core/atlas/overview.html">Overview of the Atlas network</a></li>
                         
                             
                             <!--  -->
@@ -247,7 +247,7 @@
 
                 <article class="uk-article">
 
-                    <h1 class="uk-article-title">Overview of the Atlas network</h1>
+                    <h1 class="uk-article-title">Installing Memcached</h1>
 
                     
 
@@ -266,7 +266,7 @@
     
     
 
-<a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/overview.md" class="btn btn-default githubEditButton" role="button">
+<a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/memcached.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
  <span style="font-family:Wingdings">&#119;</span> Sep 10, 2018
 </time>
@@ -275,190 +275,49 @@
 
                     <div class="article-content">
                         
-<p class="no_toc">This document describes the Atlas network, a peer-to-peer content-addressed
-storage system whose chunks’ hashes are announced on a public blockchain. Atlas
-allows users and developers to <strong>permanently store</strong> chunks of data that are
-<strong>replicated across every peer.</strong>  As long as at least one Atlas peer is online,
-all chunks are available to clients.</p>
+<p>The Blockstack API optionally uses memcached and pylibmc for scaling read-only
+calls. If you want to enable this functionality then you should have memcached
+running locally.</p>
 
-<p>This document is aimed at developers and technical users.  The following
-concepts are discussed:</p>
+<h3 id="memcached-on-debian--ubuntu">Memcached on Debian &amp; Ubuntu:</h3>
 
-<ul id="markdown-toc">
-  <li><a href="#architecture" id="markdown-toc-architecture">Architecture</a></li>
-  <li><a href="#motivation" id="markdown-toc-motivation">Motivation</a></li>
-  <li><a href="#feature-comparison" id="markdown-toc-feature-comparison">Feature Comparison</a></li>
-</ul>
-
-<p>The reader of this document is expected to be familiar with the <a href="/core/naming/introduction.html">Blockstack Naming Service</a>(BNS), as well as Blockstack’s
-storage system <a href="https://github.com/blockstack/gaia">Gaia</a>.  We advise the reader
-to familiarize themselves with both systems before approaching this document.</p>
-
-<h2 id="architecture">Architecture</h2>
-
-<p>Atlas is designed to integrate with BNS in order to allow users to
-store name state off-chain, encoded as a DNS zone file.
-The overwhelmingly-common use-cases in Blockstack are:</p>
-
-<ul>
-  <li>Storing a name’s routing information for its owners’ <a href="https://github.com/blockstack/gaia">Gaia</a>
-datastores.</li>
-  <li>Storing BNS subdomain transactions and associated state.</li>
-</ul>
-
-<p>Atlas is a middleware system in Blockstack.  Most developers do not
-interact with it directly.  BNS clients like the
-<a href="https://github.com/blockstack/blockstack-browser">Blockstack Browser</a>
-automatically generate zone files for the names they register, and automatically
-propagate them to the Atlas network.  BNS API endpoints, including our
-<a href="https://core.blockstack.org">public endpoint</a> and the
-<a href="https://github.com/blockstack/blockstack.js">blockstack.js</a> library,
-will automatically fetch zone files from Atlas when they need to look
-up data in Gaia (such as profiles and app data).</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>               +--------------+       +---------------+       +----------------+
-clients        |  Blockstack  |       | blockstack.js |       | BNS API module |
-               |    Browser   |       |               |       |                |
-               +--------------+       +---------------+       +----------------+
-                 ^          ^           ^           ^           ^            ^
-                 |          |           |           |           |            |
-                 |          |           |           |           |            |
-                 V          |           V           |           V            |
-          +----------+      |    +----------+       |    +----------+        |
-Gaia      | Gaia hub |      |    | Gaia hub |       |    | Gaia hub |        |
-          +----------+      |    +----------+       |    +----------+        |
-                            |                       |                        |
-                            |                       |                        |
-                            V                       V                        V
-               +---------------------------------------------------------------+
-Atlas          |                      Atlas Peer Network                       |
-               +----------+------+----------+-----+----------+------+----------+
-BNS            | BNS node |      | BNS node |     | BNS node |      | BNS node |
-               +----------+      +----------+     +----------+      +----------+
-                    ^                 ^                ^                 ^
-                    | (indexing       |                |                 |
-                    |  blockchain)    |                |                 |
-               +---------------------------------------------------------------+
-Blockchain     |                    Blockchain Peer Network                    |
-               +---------------------------------------------------------------+
-
-
-Figure 1:  Location of Atlas in the Blockstack architecture.  Each BNS node
-implements an Atlas peer.  An Atlas peer treats a name state value in BNS as
-the hash of a DNS zone file.  Atlas peers exchange zone files with one another
-until they each have a full replica of all known zone files.  Clients can look
-up zone files for names using the name's stat value as a zone file hash.  Clients
-can broadcast zone files to the network  if they match a previously-announced
-hash.  In practice, zone files store URLs to a name owner's Gaia hubs, thereby
-allowing Blockstack apps to read and write data in Gaia.
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install -y python-dev libmemcached-dev zlib1g-dev
+$ pip install pylibmc
 </code></pre>
 </div>
 
-<p>Nevertheless, Atlas is a general-purpose content-addressed storage
-system that advanced developers can use to <strong>host data in an immutable
-and durable manner.</strong>  Beyond its default use-case in Blockstack,
-Atlas is ideal for tasks like:</p>
+<h3 id="memcached-on-macos">Memcached on macOS:</h3>
 
-<ul>
-  <li>Announcing PGP public keys under a human-readable name</li>
-  <li>Storing package hashes for a software release</li>
-  <li>Securely deploying shell scripts to remote VMs</li>
-  <li>Binding human-readable names to Tor .onion addresses
-(<a href="https://github.com/blockstack-packages/blockstack-tor">example</a>)</li>
-</ul>
+<p>Easiest way to install memcached on macOS is by using <a href="https://brew.sh/">Homebrew</a>.</p>
 
-<h2 id="motivation">Motivation</h2>
+<p>After installing Homebrew:</p>
 
-<p>Atlas was designed to augment BNS.  BNS allows each name to store a small
-amount of state—on the order of 20 bytes.  The size is so small because the
-state must be recorded to a public blockchain, where the cost per byte is
-high and the blockchain protocol limits the size of transactions.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ brew install memcached
+$ brew install libmemcached
+$ pip install pylibmc --install-option="--with-libmemcached=/usr/local/Cellar/libmemcached/1.0.18_1/"
+</code></pre>
+</div>
 
-<p>To compensate for this, we developed an off-chain storage system allows BNS
-names to bind and store a large amount of state to each name in a way that
-<em>preserves the security properties of having written that state to the
-blockchain</em>.  Instead of storing 20 bytes of data on the blockchain, a BNS name
-owner would store the <em>cryptograhpic hash</em> of its state, and then store the actual state
-Atlas.  This decouples the name’s state size from the blockchain.</p>
+<p>After installing, you can start memcached and check if it’s running properly:</p>
 
-<p>The reference implementation of Atlas currently allows up to 40kb of state to be
-bound to a BNS name, instead of a measly 20 bytes.  The 40kb of data is
-replicated to each BNS node, where it is stored forever.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ memcached -d
+$ echo stats | nc localhost 11211
+</code></pre>
+</div>
 
-<h2 id="feature-comparison">Feature Comparison</h2>
+<h3 id="memcached-on-heroku">Memcached on Heroku</h3>
 
-<p>Atlas is not the only peer-to-peer content-addressible chunk store in existance.  The following
-feature table describes Atlas in relation to other popular chunk stores.</p>
+<p>To deploy on Heroku:</p>
 
-<table>
-  <thead>
-    <tr>
-      <th><strong>Features</strong></th>
-      <th>Atlas</th>
-      <th>BitTorrent</th>
-      <th><a href="https://datproject.org/">DAT</a></th>
-      <th><a href="https://ipfs.io">IPFS</a></th>
-      <th><a href="https://github.com/ethersphere/swarm">Swarm</a></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Each peer stores all chunks</td>
-      <td>X</td>
-      <td>X</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Replicas are permanent [1]</td>
-      <td>X</td>
-      <td>X</td>
-      <td>X</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Replicas are free</td>
-      <td> </td>
-      <td>X</td>
-      <td>X</td>
-      <td>X</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Sybil-resistant chunk discovery</td>
-      <td>X</td>
-      <td>X</td>
-      <td> </td>
-      <td> </td>
-      <td>X</td>
-    </tr>
-    <tr>
-      <td>Sybil-resistant peer discovery</td>
-      <td>X</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Fixed chunk size</td>
-      <td>X</td>
-      <td> </td>
-      <td>X</td>
-      <td>X</td>
-      <td>X</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>[1] Here, “permanent” means that once a peer has data, they will never evict it
-as part of the protocol.</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>heroku create
+<span class="gp">$ </span>heroku addons:add memcachedcloud
+<span class="gp">$ </span>git push heroku master
+</code></pre>
+</div>
 
                         <div class="share uk-text-center">
-    <a href="https://twitter.com/intent/tweet?text=Overview of the Atlas network&url=https://zbabystack.netlify.com/core/atlas/overview.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
-    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fatlas%2Foverview.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    <a href="https://twitter.com/intent/tweet?text=Installing Memcached&url=https://zbabystack.netlify.com/core/memcached.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a  class="uk-margin-small-left" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzbabystack.netlify.com%2Fcore%2Fmemcached.html" rel="nofollow" target="_blank" title="Share on Facebook" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
 </div>
 
                     </div>
