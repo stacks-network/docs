@@ -59,7 +59,7 @@ only you control your Blockstack ID, and no one can track your logins.
 
 ## How do I get a Blockstack ID?
 
-If you use the [Blockstack Browser](browser/browser-introduction.md) to create a
+If you use the [Blockstack Browser]({{ site.baseurl }}/browser/browser-introduction.md) to create a
 new ID.
 
 ## Why do I need a Blockstack ID?
@@ -70,7 +70,7 @@ a document with `bob.id`, then `bob.id`'s browser uses the Blockstack ID
 `alice.id` to look up where `alice.id` stored it.
 
 The technical descriptions of how and why this works are quite long.
-Please see the [Blockstack Naming Service](core/naming/introduction.md)
+Please see the [Blockstack Naming Service]({{site.baseurl}}/core/naming/introduction.html)
 documentation for a full description.
 
 =
@@ -80,10 +80,10 @@ documentation for a full description.
 The components that make up Blockstack do not have any central points of
 control.
 
-* The [Blockstack Naming Service](blockstack_naming_service.md) runs on top of
+* The [Blockstack Naming Service]({{ site.baseurl }}/core/naming/introduction.html) runs on top of
   the Bitcoin blockchain, which itself is decentralized.  It binds Blockstack
 IDs to a small amount of on-chain data (usually a hash of off-chain data).
-* The [Atlas Peer Network](atlas_network.md) stores chunks of data referenced by
+* The [Atlas Peer Network]({{ site.baseurl }}/core/atlas/overview.html) stores chunks of data referenced by
 names in BNS.  It operates under similar design principles to BitTorrent, and
 has no single points of failure.  The network is self-healing---if a node
 crashes, it quickly recovers all of its state from its peers.

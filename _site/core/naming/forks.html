@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://zbabystack.netlify.com/core/naming/forks.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-10T15:49:53-07:00" />
+<meta property="article:published_time" content="2018-09-10T17:28:25-07:00" />
 <script type="application/ld+json">
-{"description":"BNS Forks","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/forks.html","headline":"BNS Forks","dateModified":"2018-09-10T15:49:53-07:00","datePublished":"2018-09-10T15:49:53-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/forks.html"},"@context":"http://schema.org"}</script>
+{"description":"BNS Forks","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://zbabystack.netlify.com/core/naming/forks.html","headline":"BNS Forks","dateModified":"2018-09-10T17:28:25-07:00","datePublished":"2018-09-10T17:28:25-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://zbabystack.netlify.com/core/naming/forks.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
@@ -262,7 +262,7 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-09-10T15:49:53-07:00" itemprop="datePublished">
+<time datetime="2018-09-10T17:28:25-07:00" itemprop="datePublished">
     
     
 
@@ -342,14 +342,14 @@ accepted if it included a recent valid consensus hash.
 This means that all BNS nodes in the client’s desired fork-set will accept
 the transaction, and all other BNS nodes not in the fork-set will ignore it.
 You can see where the consensus hash is included in blockchain transactions by reading
-the <a href="wire-format.md">transaction wire format</a> document.</p>
+the <a href="/core/wire-format.html">transaction wire format</a> document.</p>
 
 <h2 id="fork-set-selection">Fork-set Selection</h2>
 
 <p>The blockchain linearizes the history of transactions, which means that
 in general, there exists a fork-set for each distinct set of BNS
-consensus rules.  For example, the Blockstack Core <a href="release_notes/changelog-0.14.md">2016 hard fork</a>
-and <a href="release_notes/changelog-0.17.md">2017 hard fork</a> both introduced new consensus
+consensus rules.  For example, the Blockstack Core <a href="https://github.com/blockstack/blockstack-core/blob/master/release_notes/changelog-0.14.md">2016 hard fork</a>
+and <a href="https://github.com/blockstack/blockstack-core/blob/master/release_notes/changelog-0.17.md">2017 hard fork</a> both introduced new consensus
 rules, which means at the time of this writing there are three possible fork-sets:
 the pre-2016 fork-set, the 2016-2017 fork-set, and the post-2017 fork-set.
 The <a href="https://node.blockstack.org:6263">public BNS nodes</a> are always running
