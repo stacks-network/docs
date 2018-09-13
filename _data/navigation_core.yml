@@ -7,10 +7,8 @@
 
 - title: Tutorials & Cookbooks
   docs:
-  - core/naming/tutorial_creation
   - core/naming/tutorial_subdomains
   - core/naming/search
-  - core/naming/openbazaar
 
 
 - title: How to use BNS
@@ -21,11 +19,7 @@
   - core/naming/register
   - core/naming/manage
   - core/naming/subdomains
-
-- title: Forks and Dids
-  docs:
   - core/naming/forks
-  - core/naming/did
 
 - title: Atlas
   docs:
