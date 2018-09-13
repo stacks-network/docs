@@ -15,7 +15,7 @@ baseurl:            ""
 # permalink:          /:title/
 
 # Site base hostname & protocol, e.g. http://example.com
-url:                "https://zbabystack.netlify.com"
+url:                "https://docs.blockstack.org"
 
 repository: moxiegirl/docs.blockstack
 staticman:

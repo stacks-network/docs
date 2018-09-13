@@ -13,14 +13,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Docs" />
 <meta property="og:description" content="Docs" />
-<link rel="canonical" href="https://zbabystack.netlify.com/changelog/" />
-<meta property="og:url" content="https://zbabystack.netlify.com/changelog/" />
+<link rel="canonical" href="https://docs.blockstack.org/changelog/" />
+<meta property="og:url" content="https://docs.blockstack.org/changelog/" />
 <meta property="og:site_name" content="Blockstack" />
 <script type="application/ld+json">
-{"description":"Docs","author":{"@type":"Person","name":"Blockstack"},"@type":"WebPage","url":"https://zbabystack.netlify.com/changelog/","headline":"Changelog","@context":"http://schema.org"}</script>
+{"description":"Docs","author":{"@type":"Person","name":"Blockstack"},"@type":"WebPage","url":"https://docs.blockstack.org/changelog/","headline":"Changelog","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <!-- <meta property="og:image" content="https://zbabystack.netlify.com/assets/posts/logo.png"/> -->
+  <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
   <meta property="og:image" content="/assets/posts/logo.png"/>
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
@@ -39,7 +39,7 @@
     <div data-uk-navbar>
         <div class="uk-navbar-left">
 
-            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a> -->
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a> -->
             <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs">
              &nbsp;&nbsp;&nbsp;
 
@@ -204,7 +204,7 @@
         <button class="uk-offcanvas-close" type="button" data-uk-close></button>
 
         <ul class="uk-nav uk-nav-default">
-            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://zbabystack.netlify.com/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a></li> -->
             <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
             
                 
@@ -325,16 +325,52 @@
 
     
 
-    <script type="text/javascript">
+    
+        <script type="text/javascript">
    /* Create a configuration object */
    var ss360Config = {
       /* Your site id */
       siteId: 'blockstack',
       /* A CSS selector that points to your search  box */
-      searchBox: {selector: '#searchBox'}
+      searchBox: {
+        selector: '#searchBox'
+      },
+      results: {
+         embedConfig: undefined, // {'url':undefined,'contentBlock':'.page-content-body'}, // if url is given the page will change to that URL and look for the content block there to insert the results
+         fullScreenConfig: undefined, // {trigger: '#ss360-search-trigger', caption: 'Search this site'}, trigger is the CSS selector to the element that starts the search full screen overlay and searchCaption the caption on the full screen search page
+         caption: 'Found #COUNT# search results for \"#QUERY#\"', // the caption of the search results
+         group: true, // whether results should be grouped if content groups are available
+         filters: undefined,
+         num: 96, // the maximum number of search results to be shown
+         highlightQueryTerms: true, // whether to highlight the query terms in search results
+         moreResultsButton: "Show more results", // HTML for the more results button, all results will be shown if this is null
+         noResultsText: 'Sorry, we have not found any matches for your query.', // the text to show when there are no results
+         queryCorrectionText: 'Did you mean "#CORRECTION#"?',
+         searchQueryParamName: 'ss360Query', // the name of the search query parameter
+         linksOpenNewTab: false, // should clicking on the result links open a new tab/window?
+         showSearchBoxLayover: true, //whether to show search box in search result layover
+         moreResultsPagingSize: 12, // the number of new results to show each time the more results button is pressed (max: 24)
+         orderByRelevanceText: "Relevance" // the text to be shown in order select box to describe 'order by relevance' option
+      },
+      suggestions: {
+         show: true,  // whether to show search suggestions
+         maxQuerySuggestions: 3, // the maximum number of query suggestions
+         querySuggestionHeadline: undefined, // the headline of the query suggestions, leave blank if no headline should be shown
+         emptyQuerySuggestions: undefined,
+         showImages: false, // show images in search suggestions
+         num: 6, // the maximum number of search suggestions to be shown
+         minChars: 3, // minimum number of characters before the suggestions shows, default: 3,
+         maxWidth: 'auto', // the maximum width of the suggest box, default: as wide as the input box, at least 275px
+         throttleTime: 300, // the number of milliseconds before the suggest is triggered after finished input, default: 300ms
+         extraHtml: undefined, // extra HTML code that is shown in each search suggest, you can even show values of datapoints here,
+         highlight: true, // whether matched words should be highlighted, default: true
+       }
    };
 </script>
 <script src="https://cdn.sitesearch360.com/sitesearch360-v11.min.js" async></script>
+
+    
+
 
 
 
