@@ -10,10 +10,10 @@
   icon: settings
   doc: browser/browser-introduction
 
-- title: Build Apps and Earn Money
+- title: Build Decentralized Applications
   desc: Learn how to build an application that earns with Blockstack.
   icon: code
-  doc: android/tutorial
+  doc: browser/hello-blockstack
 
 - title: Use the Naming Service
   desc: Work with namespaces, zone files, and other advanced BNS topics.

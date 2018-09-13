@@ -32,7 +32,7 @@ layout: default
 
             <div class="uk-width-1-1 uk-width-expand@m">
 
-                <article class="uk-article">
+                <article markdown="span" class="uk-article">
 
                     <h1 class="uk-article-title">{{ page.title | escape }}</h1>
 
@@ -42,7 +42,7 @@ layout: default
                         {% include post-meta.html %}
                     </div>
 
-                    <div class="article-content">
+                    <div markdown="span" class="article-content">
                         {{ content }}
                         {% include share.html %}
                     </div>

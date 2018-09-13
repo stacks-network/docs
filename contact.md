@@ -1,14 +1,10 @@
 ---
 layout: contact
-title: Got Any Questions
+title: Got Any Questions?
 permalink: /contact/
-formspree:
-    email: my_name@gmail.com
-    redirect: /thanks/
 ---
 
-##### Morbi varius in accumsan blandit, elit ligula velit, luctus mattis ante nulla nulla.
+##### To get in touch with us...
 
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-
-{% include map.html latitude="40.6700" longitude="-73.9400" zoom="16" %}
+Please feel free to post any [questions on our public form](https://forum.blockstack.org/).
+You can also request [access to our Slack instance](https://docs.google.com/a/blockstack.com/forms/d/e/1FAIpQLSed5Mnu0G5ZMJdWs6cTO_8sTJfUVfe1sYL6WFDcD51_XuQkZw/viewform).

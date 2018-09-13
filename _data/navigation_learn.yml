@@ -1,7 +1,7 @@
 - title: Try a tutorial
   docs:
   - browser/hello-blockstack
-  - browser/multi-player-storage
+  - browser/blockstack_storage
 
 - title: Work with an SDK
   docs:
@@ -10,5 +10,5 @@
 
 - title: Reference
   docs:
-  - core/faq_developer  
+  - core/faq_developer
   - common/javascript_ref

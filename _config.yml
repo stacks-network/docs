@@ -61,7 +61,7 @@ twitter_username:
 
 # Default footer image settings
 footer:
-    copyright:      Blockstack
+    copyright:      "Blockstack"
 
 # Disqus comments shortname, requires Disqus account https://disqus.com/
 # disqus:
@@ -85,8 +85,12 @@ post_assets:        /assets/posts/
 
 
 # Build settings
-markdown:           kramdown
-highlighter:        rouge
+markdown: kramdown
+kramdown:
+ input: GFM
+ auto_ids: true
+ hard_wrap: false
+ syntax_highlighter: rouge
 
 plugins:
   - jekyll-feed
@@ -110,6 +114,8 @@ exclude:
   - get-content.sh
   - _core/aglio_templates
   - _core/attic
+  - _code/api-specs.md
+  - _browser/todo-list.md
 
 sass:
   style:            compressed

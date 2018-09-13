@@ -9,7 +9,7 @@ layout: default
             <div class="sidebar-fixed-width uk-visible@m">
                 <div class="sidebar-docs uk-position-fixed">
                   <!--  -->
-                    {% for section in site.data.navigation_usenew %}
+                    {% for section in site.data.navigation_core %}
                     {% if section.title %}
                          <h5>{{ section.title }}</h5>
                     {% endif %}
@@ -47,7 +47,7 @@ layout: default
                         {% include post-meta.html %}
                     </div>
 
-                    <div markdown="span" class="article-content">
+
                         {{ content }}
                         {% include share.html %}
                     </div>
@@ -56,7 +56,7 @@ layout: default
 
                     {% include paginate-doc.html %}
 
-                    <!-- {% include related-usenew.html %} -->
+                    <!-- {% include related-core.html %} -->
 
                 </article>
 
