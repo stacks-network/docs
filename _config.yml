@@ -105,17 +105,23 @@ titles_from_headings:
   strip_title: true
   collections: true
 
+include:
+  - _redirects
 exclude:
+  - '*/glossary.md'
+  - '*/README.md'
+  - README.md
+  - THEME_README.md
   - Gemfile
   - Gemfile.lock
   - node_modules
-  - README.md
-  - THEME_README.md
   - collections.json
   - get-content.sh
   - _core/aglio_templates
   - _core/attic
-  - _code/api-specs.md
+  - _core/api-specs.md
+  - _core/faq_evaluators.md
+  - _core/setup_core_portal.md
   - _browser/todo-list.md
 
 sass:
