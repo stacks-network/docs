@@ -398,7 +398,7 @@
 
     
         <script type="text/javascript">
-   /* Create a configuration object */
+   /* Create a configuration object hero */
    var ss360Config = {
       /* Your site id */
       siteId: 'blockstack',
@@ -407,7 +407,10 @@
         selector: '#searchBox'
       },
       results: {
-         embedConfig: undefined, // {'url':undefined,'contentBlock':'.page-content-body'}, // if url is given the page will change to that URL and look for the content block there to insert the results
+         embedConfig: { // {'url':undefined,'contentBlock':'.page-content-body'}, // if url is given the page will change to that URL and look for the content block there to insert the result
+           url: search-results.html
+           contentBlock: "#search-results-placeholder"
+         },
          fullScreenConfig: undefined, // {trigger: '#ss360-search-trigger', caption: 'Search this site'}, trigger is the CSS selector to the element that starts the search full screen overlay and searchCaption the caption on the full screen search page
          caption: 'Found #COUNT# search results for \"#QUERY#\"', // the caption of the search results
          group: true, // whether results should be grouped if content groups are available
@@ -424,17 +427,7 @@
          orderByRelevanceText: "Relevance" // the text to be shown in order select box to describe 'order by relevance' option
       },
       suggestions: {
-         show: true,  // whether to show search suggestions
-         maxQuerySuggestions: 3, // the maximum number of query suggestions
-         querySuggestionHeadline: undefined, // the headline of the query suggestions, leave blank if no headline should be shown
-         emptyQuerySuggestions: undefined,
-         showImages: false, // show images in search suggestions
-         num: 6, // the maximum number of search suggestions to be shown
-         minChars: 3, // minimum number of characters before the suggestions shows, default: 3,
-         maxWidth: 'auto', // the maximum width of the suggest box, default: as wide as the input box, at least 275px
-         throttleTime: 300, // the number of milliseconds before the suggest is triggered after finished input, default: 300ms
-         extraHtml: undefined, // extra HTML code that is shown in each search suggest, you can even show values of datapoints here,
-         highlight: true, // whether matched words should be highlighted, default: true
+         show: false,  // whether to show search suggestions
        },
        smart404: { /* The caption of the search results. */
              caption: 'These links might be useful', /* The string in the title that identifies the page as a 404 page. */

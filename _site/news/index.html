@@ -277,10 +277,13 @@
       siteId: 'blockstack',
       /* A CSS selector that points to your search  box */
       searchBox: {
-        selector: '#searchBox'
+        selector: '#article-content'
       },
       results: {
-         embedConfig: undefined, // {'url':undefined,'contentBlock':'.page-content-body'}, // if url is given the page will change to that URL and look for the content block there to insert the results
+        embedConfig: { // {'url':undefined,'contentBlock':'.page-content-body'}, // if url is given the page will change to that URL and look for the content block there to insert the result
+          url: search-results.html
+          contentBlock: "#search-results-placeholder"
+         },
          fullScreenConfig: undefined, // {trigger: '#ss360-search-trigger', caption: 'Search this site'}, trigger is the CSS selector to the element that starts the search full screen overlay and searchCaption the caption on the full screen search page
          caption: 'Found #COUNT# search results for \"#QUERY#\"', // the caption of the search results
          group: true, // whether results should be grouped if content groups are available
