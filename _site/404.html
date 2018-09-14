@@ -102,7 +102,7 @@
             <h1 class="uk-article-title">Feeling Lost</h1>
 
             <div markdown="span" class="article-content">
-                <h2 id="the-page-you-are-looking-for-cannot-be-found-please-navigate-to-homepage">The page you are looking for cannot be found. Please navigate to <a href="https://docs.blockstack.org">homepage</a>.</h2>
+                <h2 id="the-page-you-are-looking-for-cannot-be-found">The page you are looking for cannot be found.</h2>
 
             </div>
 
@@ -278,7 +278,12 @@
          throttleTime: 300, // the number of milliseconds before the suggest is triggered after finished input, default: 300ms
          extraHtml: undefined, // extra HTML code that is shown in each search suggest, you can even show values of datapoints here,
          highlight: true, // whether matched words should be highlighted, default: true
-       }
+       },
+       smart404: { /* The caption of the search results. */
+             caption: 'These links might be useful', /* The string in the title that identifies the page as a 404 page. */
+             identifier: 'Page not found', /* A CSS selector that points to the area in which the alternative links should be shown. */
+             resultSelector: '#ss360-404',
+        }
    };
 </script>
 <script src="https://cdn.sitesearch360.com/sitesearch360-v11.min.js" async></script>

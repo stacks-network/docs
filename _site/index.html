@@ -100,7 +100,7 @@
             <div class="uk-position-relative">
                 <form class="uk-search uk-search-default uk-width-1-1" name="search-hero" onsubmit="return false;">
                     <span data-uk-search-icon></span>
-                    <input id="searchBox" class="uk-search-input" type="search" placeholder="Enter a term, API, or topic and press RETURN...">
+                    <input id="searchBox" class="uk-search-input" type="search" placeholder="Enter a term, API, or topic and press return...">
                 </form>
                 <ul id="hero-search-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
             </div>
@@ -424,7 +424,7 @@
          orderByRelevanceText: "Relevance" // the text to be shown in order select box to describe 'order by relevance' option
       },
       suggestions: {
-         show: false,  // whether to show search suggestions
+         show: true,  // whether to show search suggestions
          maxQuerySuggestions: 3, // the maximum number of query suggestions
          querySuggestionHeadline: undefined, // the headline of the query suggestions, leave blank if no headline should be shown
          emptyQuerySuggestions: undefined,
@@ -435,7 +435,12 @@
          throttleTime: 300, // the number of milliseconds before the suggest is triggered after finished input, default: 300ms
          extraHtml: undefined, // extra HTML code that is shown in each search suggest, you can even show values of datapoints here,
          highlight: true, // whether matched words should be highlighted, default: true
-       }
+       },
+       smart404: { /* The caption of the search results. */
+             caption: 'These links might be useful', /* The string in the title that identifies the page as a 404 page. */
+             identifier: 'Page not found', /* A CSS selector that points to the area in which the alternative links should be shown. */
+             resultSelector: '#ss360-404',
+        }
    };
 </script>
 <script src="https://cdn.sitesearch360.com/sitesearch360-v11.min.js" async></script>
