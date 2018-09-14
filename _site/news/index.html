@@ -308,7 +308,12 @@
          throttleTime: 300, // the number of milliseconds before the suggest is triggered after finished input, default: 300ms
          extraHtml: undefined, // extra HTML code that is shown in each search suggest, you can even show values of datapoints here,
          highlight: true, // whether matched words should be highlighted, default: true
-       }
+       },
+       smart404: { /* The caption of the search results. */
+             caption: 'These links might be useful', /* The string in the title that identifies the page as a 404 page. */
+             identifier: 'Page not found', /* A CSS selector that points to the area in which the alternative links should be shown. */
+             resultSelector: '#ss360-404',
+        }
    };
 </script>
 <script src="https://cdn.sitesearch360.com/sitesearch360-v11.min.js" async></script>
