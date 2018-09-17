@@ -68,17 +68,17 @@ authors:
 social:
     email:
     website:
-    facebook:       https://www.facebook.com/
+    facebook:       https://www.facebook.com/blockstack
     flickr:
     dribbble:
-    github:
+    github:         https://github.com/blockstack
     googleplus:
-    instagram:      https://www.instagram.com/
-    linkedin:
+    instagram:
+    linkedin:       https://www.linkedin.com/company/blockstack-labs
     pinterest:
-    twitter:        https://twitter.com/
-    vimeo:          https://vimeo.com/
-    youtube:
+    twitter:        https://twitter.com/blockstack
+    vimeo:
+    youtube:        https://www.youtube.com/channel/UC3J2iHnyt2JtOvtGVf_jpHQ/featured
 
 # Twitter share button
 twitter_username:
