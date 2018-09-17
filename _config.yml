@@ -116,12 +116,25 @@ exclude:
   - node_modules
   - collections.json
   - get-content.sh
+  - _browser/todo-list.md
   - _core/aglio_templates
   - _core/attic
   - _core/api-specs.md
-  - _core/faq_evaluators.md
   - _core/setup_core_portal.md
-  - _browser/todo-list.md
+  - _core/advanced_usage.md
+  - _core/atlas_network.md
+  - _core/basic_usage.md
+  - _core/blockstack_naming_service.md
+  - _core/cli.md
+  - _core/faq_evaluators.md
+  - _core/gai.md
+  - _core/glossary.md
+  - _core/interactive_regtest_macros.md
+  - _core/namespace_creation.md
+  - _core/openbazaar.md
+  - _core/resolver.md
+  - _core/search.md
+  - _core/subdomain.md
 
 sass:
   style:            compressed
