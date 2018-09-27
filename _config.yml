@@ -116,7 +116,6 @@ exclude:
   - node_modules
   - collections.json
   - get-content.sh
-  - _browser/todo-list.md
   - _core/aglio_templates
   - _core/attic
   - _core/api-specs.md

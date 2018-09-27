@@ -1,6 +1,7 @@
 - title: Try a tutorial
   docs:
   - browser/hello-blockstack
+  - browser/todo-list
   - browser/blockstack_storage
 
 - title: Work with an SDK
