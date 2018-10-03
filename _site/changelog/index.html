@@ -13,31 +13,22 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Docs" />
 <meta property="og:description" content="Docs" />
-<link rel="canonical" href="https://docs.blockstack.org/changelog/" />
-<meta property="og:url" content="https://docs.blockstack.org/changelog/" />
+<link rel="canonical" href="http://localhost:4000/changelog/" />
+<meta property="og:url" content="http://localhost:4000/changelog/" />
 <meta property="og:site_name" content="Blockstack" />
 <script type="application/ld+json">
-{"url":"https://docs.blockstack.org/changelog/","headline":"Changelog","author":{"@type":"Person","name":"Blockstack"},"description":"Docs","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/changelog/","author":{"@type":"Person","name":"Blockstack"},"description":"Docs","@type":"WebPage","headline":"Changelog","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
+  <!-- <meta property="og:image" content="http://localhost:4000/assets/posts/logo.png"/> -->
   <meta property="og:image" content="/assets/posts/logo.png"/>
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
   <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
   <script src="/assets/js/main.js"></script>
   
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125894815-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-125894815-1');
-</script>
-
-  
+  <!-- https://www.bryanbraun.com/anchorjs/  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
 </head>
 
 
@@ -50,7 +41,7 @@
     <div data-uk-navbar>
         <div class="uk-navbar-left">
 
-            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a> -->
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="http://localhost:4000/assets/posts/logo.png" alt="Docs"></a> -->
             <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs">
              &nbsp;&nbsp;&nbsp;
 
@@ -215,7 +206,7 @@
         <button class="uk-offcanvas-close" type="button" data-uk-close></button>
 
         <ul class="uk-nav uk-nav-default">
-            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="http://localhost:4000/assets/posts/logo.png" alt="Docs"></a></li> -->
             <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
             
                 
@@ -320,8 +311,13 @@
     
 
 
-
-
+    <script>
+    anchors.options = {
+      placement: 'left',
+      visible: 'hover'
+    };
+       anchors.add();
+     </script>
     </body>
 
 </html>

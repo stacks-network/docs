@@ -85,12 +85,12 @@ post_assets:        /assets/posts/
 
 
 # Build settings
+highlighter: rouge
 markdown: kramdown
 kramdown:
- input: GFM
- auto_ids: true
- hard_wrap: false
- syntax_highlighter: rouge
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
 
 plugins:
   - jekyll-feed
@@ -108,13 +108,14 @@ titles_from_headings:
 include:
   - _redirects
 exclude:
+  - Guardfile
   - '*/glossary.md'
   - '*/README.md'
   - README.md
   - THEME_README.md
   - Gemfile
   - Gemfile.lock
-  - node_modules
+  - '*/node_modules'
   - collections.json
   - get-content.sh
   - _core/aglio_templates
@@ -165,5 +166,8 @@ collections:
     output: true
     basepath: "blockstack/blockstack-ios/blob/master/docs"
   common:
+    output: true
+    basepath: "moxiegirl/docs.blockstack"
+  org:
     output: true
     basepath: "moxiegirl/docs.blockstack"
