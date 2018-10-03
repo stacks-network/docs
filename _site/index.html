@@ -13,31 +13,22 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Docs" />
 <meta property="og:description" content="Docs" />
-<link rel="canonical" href="https://docs.blockstack.org/" />
-<meta property="og:url" content="https://docs.blockstack.org/" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Blockstack" />
 <script type="application/ld+json">
-{"url":"https://docs.blockstack.org/","headline":"Blockstack","author":{"@type":"Person","name":"Blockstack"},"description":"Docs","name":"Blockstack","@type":"WebSite","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/","author":{"@type":"Person","name":"Blockstack"},"description":"Docs","name":"Blockstack","@type":"WebSite","headline":"Blockstack","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
+  <!-- <meta property="og:image" content="http://localhost:4000/assets/posts/logo.png"/> -->
   <meta property="og:image" content="/assets/posts/logo.png"/>
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
   <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
   <script src="/assets/js/main.js"></script>
   
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125894815-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-125894815-1');
-</script>
-
-  
+  <!-- https://www.bryanbraun.com/anchorjs/  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
 </head>
 
 
@@ -50,7 +41,7 @@
     <div data-uk-navbar>
         <div class="uk-navbar-left">
 
-            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a> -->
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="http://localhost:4000/assets/posts/logo.png" alt="Docs"></a> -->
             <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs">
              &nbsp;&nbsp;&nbsp;
 
@@ -97,7 +88,7 @@
         <div class="uk-section section-hero" data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true">
     <div class="uk-container uk-container-small">
         
-        <!-- <p class="hero-image uk-text-center"><img src="https://docs.blockstack.org/assets/posts/touch-icon.png" alt="Hero"></p> -->
+        <!-- <p class="hero-image uk-text-center"><img src="http://localhost:4000/assets/posts/touch-icon.png" alt="Hero"></p> -->
         <p class="hero-image uk-text-center"><img src="/assets/posts/touch-icon.png" alt="Hero"></p>
 
         
@@ -142,13 +133,13 @@
             
             <div>
                 <div class="uk-card uk-card-body uk-inline uk-border-rounded">
-                    <a class="uk-position-cover" href="/common/construction.html"></a>
+                    <a class="uk-position-cover" href="/org/overview.html"></a>
                     
                     <span data-uk-icon="icon: info; ratio: 2" class=""></span>
                     
-                    <h3 class="uk-card-title uk-margin">Evaluate Blockstack</h3>
+                    <h3 class="uk-card-title uk-margin">Evaluate the Blockstack Ecosystem</h3>
                     
-                    <p>Learn about the technology behind Blockstack. Understand the value it offers and how it provides it.</p>
+                    <p>Learn the components that make up the Blockstack Ecosystem. Understand the value a blockchain offers.</p>
                     
                 </div>
             </div>
@@ -163,9 +154,9 @@
                     
                     <span data-uk-icon="icon: settings; ratio: 2" class=""></span>
                     
-                    <h3 class="uk-card-title uk-margin">Use the New Internet</h3>
+                    <h3 class="uk-card-title uk-margin">Use Blockchain Applications</h3>
                     
-                    <p>Learn about the New Internet and its applications. Create an identity and learn how to use it.</p>
+                    <p>Learn about the New Internet and blockchain applications. Create an identity and learn how to use it.</p>
                     
                 </div>
             </div>
@@ -180,9 +171,9 @@
                     
                     <span data-uk-icon="icon: code; ratio: 2" class=""></span>
                     
-                    <h3 class="uk-card-title uk-margin">Build Decentralized Applications</h3>
+                    <h3 class="uk-card-title uk-margin">Build Blockchain Applications</h3>
                     
-                    <p>Learn how to build an application that earns with Blockstack.</p>
+                    <p>Learn how to build a blockchain application with Blockstack. Work through web and mobile tutorials.</p>
                     
                 </div>
             </div>
@@ -352,7 +343,7 @@
         <button class="uk-offcanvas-close" type="button" data-uk-close></button>
 
         <ul class="uk-nav uk-nav-default">
-            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="http://localhost:4000/assets/posts/logo.png" alt="Docs"></a></li> -->
             <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
             
                 
@@ -447,8 +438,13 @@
     
 
 
-
-
+    <script>
+    anchors.options = {
+      placement: 'left',
+      visible: 'hover'
+    };
+       anchors.add();
+     </script>
     </body>
 
 </html>

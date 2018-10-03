@@ -1,17 +1,17 @@
 # Categories home page navigation
 
-- title: Evaluate Blockstack
-  desc: Learn about the technology behind Blockstack. Understand the value it offers and how it provides it.
+- title: Evaluate the Blockstack Ecosystem
+  desc: Learn the components that make up the Blockstack Ecosystem. Understand the value a blockchain offers.
   icon: info
-  doc: common/construction
+  doc: org/overview
 
-- title: Use the New Internet
-  desc: Learn about the New Internet and its applications. Create an identity and learn how to use it.
+- title: Use Blockchain Applications
+  desc: Learn about the New Internet and blockchain applications. Create an identity and learn how to use it.
   icon: settings
   doc: browser/browser-introduction
 
-- title: Build Decentralized Applications
-  desc: Learn how to build an application that earns with Blockstack.
+- title: Build Blockchain Applications
+  desc: Learn how to build a blockchain application with Blockstack. Work through web and mobile tutorials.
   icon: code
   doc: browser/hello-blockstack
 

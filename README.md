@@ -40,6 +40,20 @@ To deploy to Netlify:
     git push -f origin
     ```
 
-# Writing content
+## Test a Deploy with Surge
 
-## Constructing links
+
+```
+cd _site
+surge
+```
+
+```
+surge --domain raspy-songs.surge.sh
+```
+
+
+# Technology Reference
+
+* [UIKit](https://getuikit.com/docs/grid)
+* [Liquid templates](https://shopify.github.io/liquid/)
