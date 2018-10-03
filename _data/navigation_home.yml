@@ -3,7 +3,7 @@
 - title: Evaluate Blockstack
   desc: Learn about the technology behind Blockstack. Understand the value it offers and how it provides it.
   icon: info
-  doc: common/construction
+  doc: org/verify
 
 - title: Use the New Internet
   desc: Learn about the New Internet and its applications. Create an identity and learn how to use it.

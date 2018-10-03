@@ -163,3 +163,6 @@ collections:
   common:
     output: true
     basepath: "moxiegirl/docs.blockstack"
+  org:
+    output: true
+    basepath: "moxiegirl/docs.blockstack"

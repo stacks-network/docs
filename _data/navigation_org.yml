@@ -1,0 +1,8 @@
+- title: About Blockstack
+  docs:
+  - org/overview
+- title: Manage Stacks
+  docs:
+  - org/token
+  - org/address_check
+  - org/verify
