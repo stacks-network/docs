@@ -107,6 +107,7 @@ titles_from_headings:
 include:
   - _redirects
 exclude:
+  - Guardfile
   - '*/glossary.md'
   - '*/README.md'
   - README.md

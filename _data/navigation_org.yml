@@ -1,8 +1,17 @@
 - title: About Blockstack
   docs:
   - org/overview
+  - org/token
+  - org/explore
 - title: Manage Stacks
   docs:
-  - org/token
-  - org/address_check
-  - org/verify
+  - org/wallet-intro
+  - org/investors
+- title: Whitepapers
+  docs:
+  - org/whitepaper-tokensale
+  - org/whitepaper-token
+- title: Reference
+  docs:
+  - org/faq
+  - org/terms

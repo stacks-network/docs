@@ -2,12 +2,14 @@
 layout: org
 permalink: /:collection/:path.html
 ---
-## Install and verify the wallet (Existing investors)
+# Setup Stacks wallet
+
+You use the Stacks Wallet software to generate a unique address for storing your
+Stacks tokens. This section teaches you how to install and verify your Stacks
+token wallet and contains the following sections:
 
 Use this procedure if you are a Blockstack investor in the Blockstack Genesis
-block. This section teaches you how to install and verify your Stacks token
-wallet. You use the Stacks Wallet software to generate a unique address for
-storing your Stacks tokens.
+block.
 
 During you wallet download, you are at risk of a man-in-the-middle attack (as an
 example) from hackers interested in stealing your tokens or your other
@@ -41,7 +43,7 @@ You link your wallet with a Coinleist account. Before you begin, make sure that
 you have [an account with CoinList](https://coinlist.co/register). You must
 create this account yourself.
 
-## Download, verify, and install on Mac OSX
+## Mac OSX: Download, verify, and install on Mac OSX
 
 You use the command line terminal to confirm your download in Mac OSX. Perform this procedure after you dowanlod
 
@@ -62,6 +64,8 @@ You use the command line terminal to confirm your download in Mac OSX. Perform t
 
 3. Select the **Terminal.app** to launch it.
 
-4.
+4. tbd.
 
-## Windows
+## Windows: Download, verify, and install
+
+TBD

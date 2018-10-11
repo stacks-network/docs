@@ -7,38 +7,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Blockstack Storage Tutorial | Blockstack</title>
-<meta name="generator" content="Jekyll v3.8.3" />
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="Blockstack Storage Tutorial" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Blockstack Storage Tutorial" />
 <meta property="og:description" content="Blockstack Storage Tutorial" />
-<link rel="canonical" href="https://docs.blockstack.org/browser/blockstack_storage.html" />
-<meta property="og:url" content="https://docs.blockstack.org/browser/blockstack_storage.html" />
+<link rel="canonical" href="http://localhost:4000/browser/blockstack_storage.html" />
+<meta property="og:url" content="http://localhost:4000/browser/blockstack_storage.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-27T16:58:29-07:00" />
+<meta property="article:published_time" content="2018-10-10T19:31:19-07:00" />
 <script type="application/ld+json">
-{"description":"Blockstack Storage Tutorial","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://docs.blockstack.org/browser/blockstack_storage.html","headline":"Blockstack Storage Tutorial","dateModified":"2018-09-27T16:58:29-07:00","datePublished":"2018-09-27T16:58:29-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/browser/blockstack_storage.html"},"@context":"http://schema.org"}</script>
+{"description":"Blockstack Storage Tutorial","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"http://localhost:4000/browser/blockstack_storage.html","headline":"Blockstack Storage Tutorial","dateModified":"2018-10-10T19:31:19-07:00","datePublished":"2018-10-10T19:31:19-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/browser/blockstack_storage.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
+  <!-- <meta property="og:image" content="http://localhost:4000/assets/posts/logo.png"/> -->
   <meta property="og:image" content="/assets/posts/logo.png"/>
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
   <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
   <script src="/assets/js/main.js"></script>
-  
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125894815-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-125894815-1');
-</script>
-
   
 </head>
 
@@ -52,7 +41,7 @@
     <div data-uk-navbar>
         <div class="uk-navbar-left">
 
-            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a> -->
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="http://localhost:4000/assets/posts/logo.png" alt="Docs"></a> -->
             <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs">
              &nbsp;&nbsp;&nbsp;
 
@@ -195,13 +184,13 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-09-27T16:58:29-07:00" itemprop="datePublished">
+<time datetime="2018-10-10T19:31:19-07:00" itemprop="datePublished">
     
     
 
 <a "target="_blank" href="https://github.com/blockstack/blockstack-browser/blob/master/docs/blockstack_storage.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Sep 27, 2018
+ <span style="font-family:Wingdings">&#119;</span> Oct 10, 2018
 </time>
 
                     </div>
@@ -259,10 +248,9 @@ the application, you need to have already <a href="ids-introduction">registered 
 <p>The tutorial relies on the <code class="highlighter-rouge">npm</code> dependency manager. Before you begin, verify
 you have installed <code class="highlighter-rouge">npm</code> using the <code class="highlighter-rouge">which</code> command.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>which npm
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>which npm
 /usr/local/bin/npm
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>If you don’t find <code class="highlighter-rouge">npm</code> in your system, <a href="https://www.npmjs.com/get-npm">install
 it</a>. Finally, if you get stuck at any point
@@ -279,16 +267,14 @@ existing projects.</p>
   <li>
     <p>Install Yeoman.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm install -g yo
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm <span class="nb">install</span> <span class="nt">-g</span> yo
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Install the Blockstack application generator.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm install -g generator-blockstack
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm <span class="nb">install</span> <span class="nt">-g</span> generator-blockstack
+</code></pre></div>    </div>
   </li>
 </ol>
 
@@ -302,27 +288,24 @@ existing projects.</p>
   <li>
     <p>Create a the <code class="highlighter-rouge">publik</code> directory.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> mkdir publik
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">mkdir </span>publik
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Change into your new directory.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nb">cd </span>publik
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd </span>publik
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Use Yeoman and the Blockstack application generator to create your initial <code class="highlighter-rouge">publik</code> application.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> yo blockstack:react
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> yo blockstack:react
+</code></pre></div>    </div>
 
     <p>You should see several interactive prompts.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>yo blockstack:react
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>yo blockstack:react
  ? <span class="o">==========================================================================</span>
  We<span class="s1">'re constantly looking for ways to make yo better!
  May we anonymously report usage statistics to improve the tool over time?
@@ -340,27 +323,24 @@ existing projects.</p>
   ´   `  |° ´ Y `
 
  ? Are you ready to build a Blockstack app in React? (Y/n)
-</span></code></pre>
-    </div>
+</span></code></pre></div>    </div>
   </li>
   <li>
     <p>Respond to the prompts to populate the initial app.</p>
 
     <p>After the process completes successfully, you see a prompt similar to the following:</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="o">[</span>fsevents] Success:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">[</span>fsevents] Success:
  <span class="s2">"/Users/theuser/repos/publik/node_modules/fsevents/lib/binding/Release/node-v59-darwin-x64/fse.node"</span>
  is installed via remote npm notice created a lockfile as package-lock.json.
  You should commit this file. added 1060 packages <span class="k">in </span>26.901s
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Run the initial application.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm start
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm start
+</code></pre></div>    </div>
 
     <p>The system prompts you to accept incoming connections.</p>
 
@@ -404,23 +384,21 @@ stored on Gaia are made visible to others via the <code class="highlighter-rouge
   <li>
     <p>Locate the <code class="highlighter-rouge">handleSignIn</code> handler method.</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">handleSignIn</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">handleSignIn</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
    <span class="nx">redirectToSignIn</span><span class="p">();</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Modify the method to this:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">handleSignIn</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">handleSignIn</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-   <span class="kr">const</span> <span class="nx">origin</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">origin</span>
+   <span class="kd">const</span> <span class="nx">origin</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">origin</span>
    <span class="nx">redirectToSignIn</span><span class="p">(</span><span class="nx">origin</span><span class="p">,</span> <span class="nx">origin</span> <span class="o">+</span> <span class="s1">'/manifest.json'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'store_write'</span><span class="p">,</span> <span class="s1">'publish_data'</span><span class="p">])</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>By default, authentication requests include the <code class="highlighter-rouge">store_write</code> scope which
  enables storage. This is what allows you to store information to Gaia.</p>
@@ -454,18 +432,17 @@ delete grocery lists.</p>
 <p>A single file collection stores items as an array nested inside each grocery
 list:</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// grocerylists.json</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// grocerylists.json</span>
 <span class="p">{</span>
-  <span class="s2">"3255"</span><span class="err">:</span> <span class="p">{</span>
-    <span class="s2">"items"</span><span class="err">:</span> <span class="p">[</span>
+  <span class="s2">"3255"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"items"</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">"1 Head of Lettuce"</span><span class="p">,</span>
       <span class="s2">"Haralson apples"</span>
     <span class="p">]</span>
   <span class="p">},</span>
   <span class="c1">// ...more lists with items</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This is conceptually the simplest way to manage grocery lists. When you read a
 <code class="highlighter-rouge">/grocerylists.json</code> file with <code class="highlighter-rouge">getFile()</code>, you get back one or more grocery
@@ -504,28 +481,26 @@ or remove a grocery list; updating a list has no impact.</p>
     <p>The <code class="highlighter-rouge">Person</code> object holds a Blockstack profile. Add <code class="highlighter-rouge">putFile</code>, <code class="highlighter-rouge">getFile</code>,
  and <code class="highlighter-rouge">lookupProfile</code> after <code class="highlighter-rouge">Person</code>.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> When you are done, the import statement should look like the following:
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> When you are done, the import statement should look like the following:
+</code></pre></div>    </div>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="kr">import</span> <span class="p">{</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">import</span> <span class="p">{</span>
    <span class="nx">isSignInPending</span><span class="p">,</span>
    <span class="nx">loadUserData</span><span class="p">,</span>
    <span class="nx">Person</span><span class="p">,</span>
    <span class="nx">getFile</span><span class="p">,</span>
    <span class="nx">putFile</span><span class="p">,</span>
    <span class="nx">lookupProfile</span>
- <span class="p">}</span> <span class="nx">from</span> <span class="s1">'blockstack'</span><span class="p">;</span>
-</code></pre>
-    </div>
+ <span class="p">}</span> <span class="k">from</span> <span class="s1">'blockstack'</span><span class="p">;</span>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Replace the <code class="highlighter-rouge">constructor()</code> initial state so that it holds the key properties required by the app.</p>
 
     <p>This code constructs a Blockstack <code class="highlighter-rouge">Person</code> object to hold the profile. Your constructor should look like this:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
-   <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
 
    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
      <span class="na">person</span><span class="p">:</span> <span class="p">{</span>
@@ -543,8 +518,7 @@ or remove a grocery list; updating a list has no impact.</p>
      <span class="na">isLoading</span><span class="p">:</span> <span class="kc">false</span>
    <span class="p">};</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>Locate the <code class="highlighter-rouge">render()</code> method.</li>
   <li>
@@ -553,10 +527,10 @@ or remove a grocery list; updating a list has no impact.</p>
     <p>The following code echos the <code class="highlighter-rouge">person.name</code> and <code class="highlighter-rouge">person.avatarURL</code>
  properties from the profile on the display:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-   <span class="kr">const</span> <span class="p">{</span> <span class="nx">handleSignOut</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
-   <span class="kr">const</span> <span class="p">{</span> <span class="nx">person</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
-   <span class="kr">const</span> <span class="p">{</span> <span class="nx">username</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+   <span class="kd">const</span> <span class="p">{</span> <span class="nx">handleSignOut</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
+   <span class="kd">const</span> <span class="p">{</span> <span class="nx">person</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+   <span class="kd">const</span> <span class="p">{</span> <span class="nx">username</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
 
    <span class="k">return</span> <span class="p">(</span>
      <span class="o">!</span><span class="nx">isSignInPending</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="nx">person</span> <span class="p">?</span>
@@ -569,8 +543,8 @@ or remove a grocery list; updating a list has no impact.</p>
                  <span class="nx">src</span><span class="o">=</span><span class="p">{</span> <span class="nx">person</span><span class="p">.</span><span class="nx">avatarUrl</span><span class="p">()</span> <span class="p">?</span> <span class="nx">person</span><span class="p">.</span><span class="nx">avatarUrl</span><span class="p">()</span> <span class="p">:</span> <span class="nx">avatarFallbackImage</span> <span class="p">}</span>
                  <span class="nx">className</span><span class="o">=</span><span class="s2">"img-rounded avatar"</span>
                  <span class="nx">id</span><span class="o">=</span><span class="s2">"avatar-image"</span>
-               <span class="sr">/</span><span class="err">&gt;
-</span>               <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"username"</span><span class="o">&gt;</span>
+               <span class="o">/&gt;</span>
+               <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"username"</span><span class="o">&gt;</span>
                  <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span>
                    <span class="o">&lt;</span><span class="nx">span</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"heading-name"</span><span class="o">&gt;</span><span class="p">{</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span> <span class="p">?</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span>
                      <span class="p">:</span> <span class="s1">'Nameless Person'</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
@@ -590,8 +564,8 @@ or remove a grocery list; updating a list has no impact.</p>
                  <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">newStatus</span><span class="p">}</span>
                  <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleNewStatusChange</span><span class="p">(</span><span class="nx">e</span><span class="p">)}</span>
                  <span class="nx">placeholder</span><span class="o">=</span><span class="s2">"Enter a status"</span>
-               <span class="sr">/</span><span class="err">&gt;
-</span>             <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+               <span class="o">/&gt;</span>
+             <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
 </span>             <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"col-md-12"</span><span class="o">&gt;</span>
                <span class="o">&lt;</span><span class="nx">button</span>
                  <span class="nx">className</span><span class="o">=</span><span class="s2">"btn btn-primary btn-lg"</span>
@@ -607,8 +581,7 @@ or remove a grocery list; updating a list has no impact.</p>
 </span>     <span class="o">&lt;</span><span class="sr">/div&gt; : nul</span><span class="err">l
 </span>   <span class="p">);</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>This code allows the application to post statuses. It also displays the
 user’s Blockstack ID. To display this, your app must extract the ID from the
@@ -620,19 +593,18 @@ user profile data.</p>
 
     <p>You’ll use the Blockstack <code class="highlighter-rouge">loadUserData()</code> method to access the <code class="highlighter-rouge">username</code>.</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">componentWillMount</span><span class="p">()</span> <span class="p">{</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">componentWillMount</span><span class="p">()</span> <span class="p">{</span>
    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
      <span class="na">person</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">loadUserData</span><span class="p">().</span><span class="nx">profile</span><span class="p">),</span>
      <span class="na">username</span><span class="p">:</span> <span class="nx">loadUserData</span><span class="p">().</span><span class="nx">username</span>
    <span class="p">});</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Add two methods to handle the status input events:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">handleNewStatusChange</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">handleNewStatusChange</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">newStatus</span><span class="p">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">})</span>
  <span class="p">}</span>
 
@@ -642,13 +614,12 @@ user profile data.</p>
      <span class="na">newStatus</span><span class="p">:</span> <span class="s2">""</span>
    <span class="p">})</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Add a <code class="highlighter-rouge">saveNewStatus()</code> method to save the new statuses.</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">saveNewStatus</span><span class="p">(</span><span class="nx">statusText</span><span class="p">)</span> <span class="p">{</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">saveNewStatus</span><span class="p">(</span><span class="nx">statusText</span><span class="p">)</span> <span class="p">{</span>
    <span class="kd">let</span> <span class="nx">statuses</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">statuses</span>
 
    <span class="kd">let</span> <span class="nx">status</span> <span class="o">=</span> <span class="p">{</span>
@@ -658,7 +629,7 @@ user profile data.</p>
    <span class="p">}</span>
 
    <span class="nx">statuses</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="nx">status</span><span class="p">)</span>
-   <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">encrypt</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+   <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">encrypt</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
    <span class="nx">putFile</span><span class="p">(</span><span class="s1">'statuses.json'</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">statuses</span><span class="p">),</span> <span class="nx">options</span><span class="p">)</span>
      <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
@@ -666,8 +637,7 @@ user profile data.</p>
        <span class="p">})</span>
      <span class="p">})</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Save the <code class="highlighter-rouge">Profile.jsk</code> file.</p>
@@ -694,7 +664,7 @@ the statuses back to the user as a blog entry.</p>
   <li>
     <p>Right after this opening <code class="highlighter-rouge">div</code> element, add this block.</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"col-md-12 statuses"</span><span class="o">&gt;</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"col-md-12 statuses"</span><span class="o">&gt;</span>
    <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isLoading</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="err">}
 </span>   <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">statuses</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"status"</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">status</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span>
@@ -703,17 +673,16 @@ the statuses back to the user as a blog entry.</p>
 </span>     <span class="p">)</span>
    <span class="p">)}</span>
  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
-</span></code></pre>
-    </div>
+</span></code></pre></div>    </div>
     <p>This loads existing state. Your code needs to fetch statuses on page load.</p>
   </li>
   <li>
     <p>Add a new method called <code class="highlighter-rouge">fetchData()</code> after the <code class="highlighter-rouge">statuses.unshift(status)</code> section.</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
  <span class="nx">fetchData</span><span class="p">()</span> <span class="p">{</span>
    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">isLoading</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
-   <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">decrypt</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+   <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">decrypt</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
    <span class="nx">getFile</span><span class="p">(</span><span class="s1">'statuses.json'</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">file</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
        <span class="kd">var</span> <span class="nx">statuses</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">file</span> <span class="o">||</span> <span class="s1">'[]'</span><span class="p">)</span>
@@ -728,18 +697,16 @@ the statuses back to the user as a blog entry.</p>
        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">isLoading</span><span class="p">:</span> <span class="kc">false</span> <span class="p">})</span>
      <span class="p">})</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Call <code class="highlighter-rouge">fetchData()</code> from the <code class="highlighter-rouge">componentDidMount()</code> method</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
  <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
    <span class="k">this</span><span class="p">.</span><span class="nx">fetchData</span><span class="p">()</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Save the file.</p>
@@ -758,7 +725,7 @@ the statuses back to the user as a blog entry.</p>
   <li>
     <p>Replace the content with the following:</p>
 
-    <div class="language-css highlighter-rouge"><pre class="highlight"><code> <span class="c">/* Globals */</span>
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">/* Globals */</span>
  <span class="nt">a</span><span class="o">,</span><span class="nt">a</span><span class="nd">:focus</span><span class="o">,</span><span class="nt">a</span><span class="nd">:hover</span><span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="m">#fff</span><span class="p">;}</span>
  <span class="nt">html</span><span class="o">,</span><span class="nt">body</span><span class="p">{</span><span class="nl">height</span><span class="p">:</span><span class="m">100%</span><span class="p">;</span><span class="nl">text-align</span><span class="p">:</span><span class="nb">center</span><span class="p">;</span><span class="nl">background-color</span><span class="p">:</span><span class="m">#191b22</span><span class="p">;}</span>
  <span class="nt">body</span><span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="m">#fff</span><span class="p">}</span>
@@ -793,8 +760,7 @@ the statuses back to the user as a blog entry.</p>
  <span class="c">/* Statuses */</span>
  <span class="nc">.statuses</span><span class="p">{</span><span class="nl">padding-top</span><span class="p">:</span><span class="m">30px</span><span class="p">;}</span>
  <span class="nc">.status</span><span class="p">{</span><span class="nl">margin</span><span class="p">:</span><span class="m">15px</span> <span class="m">0px</span><span class="p">;</span><span class="nl">padding</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span><span class="nl">background-color</span><span class="p">:</span><span class="m">#2e2e2e</span><span class="p">;</span><span class="nl">border-radius</span><span class="p">:</span><span class="m">6px</span><span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Save and close the <code class="highlighter-rouge">src/styles/style.css</code> file.</p>
@@ -826,49 +792,44 @@ other users’ profiles by visiting <code class="highlighter-rouge">http://local
   <li>
     <p>Install <code class="highlighter-rouge">react-router</code>:</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm install --save react-router-dom
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm <span class="nb">install</span> <span class="nt">--save</span> react-router-dom
+</code></pre></div>    </div>
   </li>
   <li>Edit <code class="highlighter-rouge">src/index.js</code> file.</li>
   <li>
     <p>Add an <code class="highlighter-rouge">import</code> to the file at the top:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="kr">import</span> <span class="p">{</span> <span class="nx">BrowserRouter</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router-dom'</span>
-</code></pre>
-    </div>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">import</span> <span class="p">{</span> <span class="nx">BrowserRouter</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'react-router-dom'</span>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Change the <code class="highlighter-rouge">ReactDOM.render()</code> method in <code class="highlighter-rouge">src/index.js</code> to:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">((</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">((</span>
    <span class="o">&lt;</span><span class="nx">BrowserRouter</span><span class="o">&gt;</span>
      <span class="o">&lt;</span><span class="nx">App</span> <span class="o">/&gt;</span>
    <span class="o">&lt;</span><span class="sr">/BrowserRouter</span><span class="err">&gt;
 </span> <span class="p">),</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">));</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>Save and close the <code class="highlighter-rouge">src/index.js</code> file.</li>
   <li>Edit the  <code class="highlighter-rouge">src/components/App.jsx</code> file.</li>
   <li>
     <p>Add the new route by importing the <code class="highlighter-rouge">Switch</code> and <code class="highlighter-rouge">Route</code> components from <code class="highlighter-rouge">react-router-dom</code>:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="kr">import</span> <span class="p">{</span> <span class="nx">Switch</span><span class="p">,</span> <span class="nx">Route</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router-dom'</span>
-</code></pre>
-    </div>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">import</span> <span class="p">{</span> <span class="nx">Switch</span><span class="p">,</span> <span class="nx">Route</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'react-router-dom'</span>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Locate this line below in the <code class="highlighter-rouge">render()</code> method:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="err">:</span> <span class="o">&lt;</span><span class="nx">Profile</span> <span class="nx">handleSignOut</span><span class="o">=</span><span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleSignOut</span> <span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
-</span></code></pre>
-    </div>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">:</span> <span class="o">&lt;</span><span class="nx">Profile</span> <span class="nx">handleSignOut</span><span class="o">=</span><span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleSignOut</span> <span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span></code></pre></div>    </div>
   </li>
   <li>
     <p>Replace it with the following:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="err">:</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">:</span>
   <span class="o">&lt;</span><span class="nx">Switch</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">Route</span>
       <span class="nx">path</span><span class="o">=</span><span class="s1">'/:username?'</span>
@@ -877,8 +838,7 @@ other users’ profiles by visiting <code class="highlighter-rouge">http://local
 </span>      <span class="p">}</span>
     <span class="sr">/</span><span class="err">&gt;
 </span>  <span class="o">&lt;</span><span class="sr">/Switch</span><span class="err">&gt;
-</span></code></pre>
-    </div>
+</span></code></pre></div>    </div>
 
     <p>This sets up a route and captures the route parameter the app will use as the profile lookup username.</p>
   </li>
@@ -897,18 +857,16 @@ process URL paths that contain the <code class="highlighter-rouge">.</code> (dot
   <li>
     <p>Open <code class="highlighter-rouge">webpack.config.js</code> in the root project directory and locate the following line:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">historyApiFallback</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
-</code></pre>
-    </div>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">historyApiFallback</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Replace it with this:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">historyApiFallback</span><span class="err">:</span> <span class="p">{</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">historyApiFallback</span><span class="p">:</span> <span class="p">{</span>
    <span class="nl">disableDotRule</span><span class="p">:</span> <span class="kc">true</span>
  <span class="p">},</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>You will need to run <code class="highlighter-rouge">npm start</code> again for this change to take effect. Don’t
  worry, there is a later step for that to remind you.</p>
@@ -920,21 +878,20 @@ process URL paths that contain the <code class="highlighter-rouge">.</code> (dot
   <li>
     <p>Add a single method that determines if the app is viewing the local user’s profile or another user’s profile.</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">isLocal</span><span class="p">()</span> <span class="p">{</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">isLocal</span><span class="p">()</span> <span class="p">{</span>
    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">match</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">username</span> <span class="p">?</span> <span class="kc">false</span> <span class="p">:</span> <span class="kc">true</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>You use <code class="highlighter-rouge">isLocal()</code> to check if the user is viewing the local user profile or another user’s profile. If it’s the local user profile, the app runs the <code class="highlighter-rouge">getFile()</code> function you added in an earlier step. Otherwise, the app looks up the profile belonging to the <code class="highlighter-rouge">username</code> using the <code class="highlighter-rouge">lookupProfile()</code> method.</p>
   </li>
   <li>
     <p>Modify the <code class="highlighter-rouge">fetchData()</code> method like so:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">fetchData</span><span class="p">()</span> <span class="p">{</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">fetchData</span><span class="p">()</span> <span class="p">{</span>
    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">isLoading</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isLocal</span><span class="p">())</span> <span class="p">{</span>
-     <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">decrypt</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+     <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">decrypt</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
      <span class="nx">getFile</span><span class="p">(</span><span class="s1">'statuses.json'</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
        <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">file</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
          <span class="kd">var</span> <span class="nx">statuses</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">file</span> <span class="o">||</span> <span class="s1">'[]'</span><span class="p">)</span>
@@ -949,7 +906,7 @@ process URL paths that contain the <code class="highlighter-rouge">.</code> (dot
          <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">isLoading</span><span class="p">:</span> <span class="kc">false</span> <span class="p">})</span>
        <span class="p">})</span>
    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-     <span class="kr">const</span> <span class="nx">username</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">match</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">username</span>
+     <span class="kd">const</span> <span class="nx">username</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">match</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">username</span>
 
      <span class="nx">lookupProfile</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span>
        <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">profile</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -963,8 +920,7 @@ process URL paths that contain the <code class="highlighter-rouge">.</code> (dot
        <span class="p">})</span>
    <span class="p">}</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p><strong>NOTE</strong>: For <code class="highlighter-rouge">https</code> deployments, the default Blockstack Core API endpoint for name
   lookups should be changed to point to a core API served over <code class="highlighter-rouge">https</code>.
@@ -976,7 +932,7 @@ process URL paths that contain the <code class="highlighter-rouge">.</code> (dot
   <li>
     <p>Add the following block to <code class="highlighter-rouge">fetchData()</code> right after the call to <code class="highlighter-rouge">lookupProfile(username)... catch((error)=&gt;{..}</code> block:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">username</span><span class="p">:</span> <span class="nx">username</span><span class="p">,</span> <span class="na">decrypt</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">username</span><span class="p">:</span> <span class="nx">username</span><span class="p">,</span> <span class="na">decrypt</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
  <span class="nx">getFile</span><span class="p">(</span><span class="s1">'statuses.json'</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">file</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
      <span class="kd">var</span> <span class="nx">statuses</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">file</span> <span class="o">||</span> <span class="s1">'[]'</span><span class="p">)</span>
@@ -991,8 +947,7 @@ process URL paths that contain the <code class="highlighter-rouge">.</code> (dot
    <span class="p">.</span><span class="k">finally</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">isLoading</span><span class="p">:</span> <span class="kc">false</span> <span class="p">})</span>
    <span class="p">})</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>This fetches the user statuses.</p>
 
@@ -1001,10 +956,10 @@ process URL paths that contain the <code class="highlighter-rouge">.</code> (dot
   <li>
     <p>Replace the <code class="highlighter-rouge">render()</code> method with the following:</p>
 
-    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
- <span class="kr">const</span> <span class="p">{</span> <span class="nx">handleSignOut</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
- <span class="kr">const</span> <span class="p">{</span> <span class="nx">person</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
- <span class="kr">const</span> <span class="p">{</span> <span class="nx">username</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+ <span class="kd">const</span> <span class="p">{</span> <span class="nx">handleSignOut</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
+ <span class="kd">const</span> <span class="p">{</span> <span class="nx">person</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+ <span class="kd">const</span> <span class="p">{</span> <span class="nx">username</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
 
  <span class="k">return</span> <span class="p">(</span>
    <span class="o">!</span><span class="nx">isSignInPending</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="nx">person</span> <span class="p">?</span>
@@ -1017,8 +972,8 @@ process URL paths that contain the <code class="highlighter-rouge">.</code> (dot
                <span class="nx">src</span><span class="o">=</span><span class="p">{</span> <span class="nx">person</span><span class="p">.</span><span class="nx">avatarUrl</span><span class="p">()</span> <span class="p">?</span> <span class="nx">person</span><span class="p">.</span><span class="nx">avatarUrl</span><span class="p">()</span> <span class="p">:</span> <span class="nx">avatarFallbackImage</span> <span class="p">}</span>
                <span class="nx">className</span><span class="o">=</span><span class="s2">"img-rounded avatar"</span>
                <span class="nx">id</span><span class="o">=</span><span class="s2">"avatar-image"</span>
-             <span class="sr">/</span><span class="err">&gt;
-</span>             <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"username"</span><span class="o">&gt;</span>
+             <span class="o">/&gt;</span>
+             <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"username"</span><span class="o">&gt;</span>
                <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span>
                  <span class="o">&lt;</span><span class="nx">span</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"heading-name"</span><span class="o">&gt;</span><span class="p">{</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span> <span class="p">?</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span>
                    <span class="p">:</span> <span class="s1">'Nameless Person'</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
@@ -1040,8 +995,8 @@ process URL paths that contain the <code class="highlighter-rouge">.</code> (dot
                  <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">newStatus</span><span class="p">}</span>
                  <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleNewStatusChange</span><span class="p">(</span><span class="nx">e</span><span class="p">)}</span>
                  <span class="nx">placeholder</span><span class="o">=</span><span class="s2">"What's on your mind?"</span>
-               <span class="sr">/</span><span class="err">&gt;
-</span>             <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+               <span class="o">/&gt;</span>
+             <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
 </span>             <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"col-md-12 text-right"</span><span class="o">&gt;</span>
                <span class="o">&lt;</span><span class="nx">button</span>
                  <span class="nx">className</span><span class="o">=</span><span class="s2">"btn btn-primary btn-lg"</span>
@@ -1066,10 +1021,9 @@ process URL paths that contain the <code class="highlighter-rouge">.</code> (dot
 </span>   <span class="o">&lt;</span><span class="sr">/div&gt; : nul</span><span class="err">l
 </span> <span class="p">);</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
-    <p>### This checks to ensure that users are viewing their own profile, by wrapping the <strong>Logout</strong> button and inputs with the <code class="highlighter-rouge"><span class="p">{</span><span class="err">isLocal()</span><span class="w"> </span><span class="err">&amp;&amp;</span><span class="w"> </span><span class="err">...</span><span class="p">}</span></code> condition.</p>
+    <p>### This checks to ensure that users are viewing their own profile, by wrapping the <strong>Logout</strong> button and inputs with the <code class="highlighter-rouge">{isLocal() &amp;&amp; ...}</code> condition.</p>
   </li>
 </ol>
 
@@ -1080,9 +1034,8 @@ process URL paths that contain the <code class="highlighter-rouge">.</code> (dot
   <li>
     <p>Restart the application so that the disabling of the <code class="highlighter-rouge">.</code> (dot) rule takes effect.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm start
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm start
+</code></pre></div>    </div>
   </li>
   <li>Point your browser to <code class="highlighter-rouge">http://localhost:8080/your_blockstack.id</code> to see the final application.</li>
 </ol>
@@ -1094,7 +1047,7 @@ about Blockstack. To use a working version of the app go
 <a href="http://publik.ykliao.com">here</a>.</p>
 
                         <div class="share uk-text-center">
-    <a href="https://twitter.com/intent/tweet?text=Blockstack Storage Tutorial&url=https://docs.blockstack.org/browser/blockstack_storage.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    <a href="https://twitter.com/intent/tweet?text=Blockstack Storage Tutorial&url=http://localhost:4000/browser/blockstack_storage.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
 </div>
 
                     </div>
@@ -1141,7 +1094,7 @@ about Blockstack. To use a working version of the app go
         <button class="uk-offcanvas-close" type="button" data-uk-close></button>
 
         <ul class="uk-nav uk-nav-default">
-            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="http://localhost:4000/assets/posts/logo.png" alt="Docs"></a></li> -->
             <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
             
                 
