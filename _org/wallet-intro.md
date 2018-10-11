@@ -18,6 +18,7 @@ vel felis sit amet viverra. Aenean eu congue orci. Morbi massa mauris,
 
 ## Software wallet
 
+Current Stacks token 
 The Stacks Wallet offers investors four options:
 
 * a New Wallet (recommended)

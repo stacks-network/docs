@@ -79,7 +79,7 @@ What is a namespace? Well, think of it a bit like an email address, you can get 
 
 5. Click now on the block number itself.
 
-   ![](images/history.png)
+   ![](images/block-number.png)
 
    You should see this new page displayed:
 
@@ -87,7 +87,7 @@ What is a namespace? Well, think of it a bit like an email address, you can get 
 
    This detail page gives you some useful information. You can see that this block is related to name operations. It is, in fact, the very block on the blockchain when this identifier was created. The **Timestamp** will tell you the exact date.
 
-A blockchain gives you both privacy about your data and transparency about the transactions that the blockchain is recording.  The identity `moxiegirl` looks a bit shady now but you may comeback and find the she has verified her identity.  Try looking at the identity of the blockstack founder, `muneeb.id` who is a well known person.  Try searching for your own.
+A blockchain gives you both privacy about your data and trust among the people in the space. The identity `moxiegirl` looks a bit shady now but you may comeback and find the she has verified her identity. Try looking at the identity of our Blockstack founder, `muneeb.id`. You can see, he is a trusted and well known person. Try searching for your own identity, or see [this document]({{ site.baseurl }}/browser/ids-introduction.html) to create your own identity.
 
 In the section [For current investors](investors.html) you can find out how to
 use the explorer to search for details about a Stacks token evaluation.
