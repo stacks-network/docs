@@ -2,56 +2,52 @@
 layout: org
 permalink: /:collection/:path.html
 ---
-# Learm more about the Stacks token
+# Learn more about the Stacks token
 
-Stacks is the name of utility token developed by Blockstack Token LLC. in 2017
+Stacks is the name of the utility token developed by Blockstack Token LLC. in 2017
 and activated in the third quarter of 2018. This page discusses a general
-history of the Stacks token, its current capabilities, and the future
-capabilities of the token.
+history of the Stacks token as well as its current and future capabilities.
 
 If you are a developer interested in the specific technical changes related to
 the 2018 launch, see the [announcement in the Blockstack Forum](#).
 
 ## A brief history of the Stacks token
 
-In 2017 Blockstack did an initial coin offering (ICO). Token holders in that ICO
-received allocations of Stacks token in a draft version of the genesis block. A
-genesis block is the first block of a blockchain.
+In 2017 Blockstack did an initial coin offering (ICO). Participants in the ICO
+became token holders when they received allocations of Stacks tokens in a draft
+version of the genesis block. A genesis block is the first block of a
+blockchain.
 
-During the draft period, token holders were given access to wallet software, or
-they used their own hardware wallet. Token holders created a _seed phrase_ with
-their wallet and stored this seed phrase (sometimes referred to as a _recovery
-phrase_ or a _recovery seed_. It was each token holder’s responsibility to store
-their own seed phrase in a private and secure location.
+During the draft genesis block period token holders setup a seed phrase
+(sometimes referred to as a _recovery phrase_ or a _recovery seed_ using the
+alpha Blockstack software wallet or their own hardware wallet.
 
-A draft of the genesis block allowed token holders to search for and verify
-their allocation using addresses provided by their wallet. Beyond that, while in
-draft state, token holders were locked out of using their allotted tokens.
+It was each token holder’s responsibility to store their own seed phrase in a
+private and secure location. Holders could use their wallet to verify their
+holdings and allocations on the genesis block explorer. Beyond that, while in
+draft state, token holders were in a lock down period.
 
 ## State of the Stacks blockchain V1
 
-The initial block in the Stacks blockchain V1. That will allocate 1.32 billion
+The initial block in the Stacks blockchain V1 allocates 1.32 billion
 tokens. The launch is the culmination of two year’s hard work across the greater
 Blockstack community. With the launch, Stacks tokens unlock for accredited token
 holders under a predetermined unlocking schedule. The events on the unlocking
 schedule are the same for each investor, **the dates of these events** depend on the
-investor’s purchase date.
+holder's purchase date.
 
-<div class="uk-alert-success" uk-alert><b>Note:</b> If you are a token holder, see the <a href="tokenholders.html">For current token holders</a> in this documentation for more information.</div>
+<div class="uk-alert-success" uk-alert><b>Note:</b> If you are a token holder
+and would like to review your unlocking schedule, visit the <a
+href="tokenholders.html">For current token holders</a> page in this
+documentation.</div>
 
-During the draft period, token holders were given access to wallet software, or
-they used their own hardware wallet. Token holders created a seed phrase with
-their wallet and stored this seed phrase (sometimes referred to as a recovery
-phrase or a recovery seed. It was each token holder’s responsibility to store
-their own seed phrase in a private and secure location.
+The genesis launch makes possible the following interactions:
 
-This launch makes possible the following interactions:
+* Token holders can purchase names and namespaces with the Stacks token. Previously, names and namespaces required the purchaser to hold Bitcoin. Initially, this process relies on the Blockstack command-line interface (CLI).
 
-* Token holders can purchase names and namespaces with the Stacks token. Previously, names and namespaces required the purchaser to hold Bitcoin. Initially, will be through the Blockstack command-line interface.
+* Application developers can earn Stacks by building an application on the Blockstack ecosystem.
 
-* Application developers an earn Stacks by building an application on the Blockstack ecosystem.
-
-* Any Stacks tokens held at the time of launch or hold remain usable under the Blockstack Core platform.
+* Any Stacks tokens held at the time of launch or after remain usable under the Blockstack Core platform.
 
 Finally, in addition to the development of Stacks token, this launch enables
 further development of Blockstack Core itself.
@@ -77,7 +73,7 @@ mining and distribution:
   </tr>
   <tr>
     <td>Web-of-trust mining</td>
-    <td>Network users earn Stacks by performing an identity verification with a trusted party.</td>
+    <td>Network users earn Stacks by performing identity verification with a trusted party.</td>
     <td>2019</td>
   </tr>
 </table>

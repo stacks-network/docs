@@ -85,12 +85,12 @@ post_assets:        /assets/posts/
 
 
 # Build settings
+highlighter: rouge
 markdown: kramdown
 kramdown:
- input: GFM
- auto_ids: true
- hard_wrap: false
- syntax_highlighter: rouge
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
 
 plugins:
   - jekyll-feed

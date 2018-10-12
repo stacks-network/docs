@@ -2,9 +2,9 @@
 layout: org
 permalink: /:collection/:path.html
 ---
-# Information for Investors
+# Information for current token holders
 
-The information on this page is intended for investors who took part in
+The information on this page is intended for current Stacks token holders who took part in
 Blockstack's original coin offering in 2017.
 
 * TOC
@@ -13,9 +13,8 @@ Blockstack's original coin offering in 2017.
 ## Find your token balance and unlock date
 
 During your the initial grant process, you should have submitted a _public
-Stacks wallet address_ to Blockstack. This a string of letters and numbers
-starting with an 'SP' or SM', for example
-`SP077AFV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XS` is a wallet address.
+Stacks wallet address_ to Blockstack. The wallet address is a string of letters and numbers
+starting with an 'SP' or SM', for example: `SP077AFV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XS`
 
 If you purchased Stacks tokens through CoinList, you can find your address at
 [CoinList](https://coinlist.co/distributions). If you downloaded and used the Stacks Wallet
@@ -25,7 +24,7 @@ wallet, contact us at <token@blockstack.org> for more information.
 
 
 Use the following form to check your Stacks allocation:
-
+<div class="uk-background-secondary uk-padding uk-panel">
 <script>
 function process()
 {
@@ -41,6 +40,7 @@ return false;
 <input class="uk-button uk-button-default uk-form-width-medium uk-align-center" type="submit" value="Get allocation">
 </div>
 </form>
+</div>
 
 You should see a report detailing the tokens allocated to your address and when they unlock:
 
@@ -51,10 +51,10 @@ If you have questions or concerns about your report, please contact <token@block
 
 ## Understanding the timeline for unlocking your tokens
 
-In October 2018, the Stacks blockchain went launched under the Stacks token.
-With the launch, Stacks tokens unlock for accredited investors under a
+In October 2018, the Stacks blockchain launched under the Stacks token.
+With the launch, Stacks tokens unlock for accredited token holders under a
 predetermined unlocking schedule. The events on the unlocking schedule are the
-same for each investor, *the dates of these events* depend on the investor's
+same for each token holder, *the dates of these events* depend on the holders's
 purchase date.
 
 ![](images/distribution.png)
@@ -64,6 +64,6 @@ timeline for unlocking tokens is as follows:
 
 ![](images/unlocking.png)
 
-Your specific unlock date depends on when you invested or were granted tokens.
+Your specific unlock date depends on when you purchased or were granted tokens.
 You can use the Blockstack Explorer to discover how many tokens you have
 registered and when they will unlock.
