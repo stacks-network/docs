@@ -29,12 +29,12 @@ You use <a href="https://explorer.blockstack.org/" target="_blank" >the Stacks e
   </tr>
   <tr>
     <td>block</td>
-    <td>A block is a complete record on the blockchain.  A good analogy is entry in a diary entry. Each entry completes at particular point in time, contains one or more activities, and the activity took place in the past. A block is a history of completed activity from a specific point of time on the blockchain. The sequential number associated with a block is called a _height_.</td>
+    <td>A block is a complete record on the blockchain.  A good analogy an entry in a diary entry. Each entry completes at a particular point in time, contains one or more activities, and the activity took place in the past. A block is a history of completed activity from a specific point of time on the blockchain. The sequential number associated with a block is called a _height_.</td>
     <td><code class="uk-text-small">1001</code></td>
   </tr>
   <tr>
     <td>transaction</td>
-    <td>A transaction is unit of work within a block. To use the diary entry analogy, a diary entry for yesterday may include a run to the lake, lunch as Spago, and auditioning for a movie.  Lunch at Spago is a "transaction" in this analogy. Each transaction, like a block, has a unique value associated with it called a _hash_. You can use this hash in the explorer to look up the transaction. And, you can be confident that no other transaction has that particular hash, it is unique.</td>
+    <td>A transaction is a unit of work within a block. To use the diary entry analogy, an entry for Sunday may include a run to the lake, lunch at Spago, and auditioning for a movie.  Lunch at Spago is a "transaction" in this analogy. Each transaction, like a block, has a unique value associated with it called a _hash_. You can use this hash in the explorer to look up the transaction. And, you can be confident that no other transaction has that particular hash, it is unique.</td>
     <td><code>000000007136b5c...</code>
     This hash is a partial hash, an actual hash value is very long.</td>
   </tr>
@@ -45,13 +45,18 @@ You use <a href="https://explorer.blockstack.org/" target="_blank" >the Stacks e
   </tr>
 </table>
 
-Users like investors or application users typically don't need to use an explorer. However, there are a few interesting things to do if you are an investor or user or both.
+Users like investors or application users typically don't need to use an explorer. However, there are a few interesting things to do if you are a token holder or user or both.
 
 ## Explorer the Explorer
 
 An easy thing to explore is an identity. If you created an identity through the Blockstack Browser, you can explore that identity.  Identities that you create through the browser are free if you create them in the Blockstack namespace.  
 
-What is a namespace? Well, think of it a bit like an email address, you can get an email address on your own suffix `yourname@myuniquename.com` or you can get email with a service type suffix such as `yahoo` or `msn` or `gmail`.  Blockstack identity behaves like this service type suffix. So, there is only one `moxigirl.id.blockstack` but someone else can be `moxiegirl2.id.blockstack`. You can see this in action yourself with the explorer, by doing the following:
+What is a namespace? Well, think of it a bit like an email address, you can get
+an email address on your own suffix `yourname@myuniquename.com`, or you can get
+email with a service type suffix such as `yahoo` or `msn` or `gmail`.
+Blockstack identity behaves like this service type suffix. So, there is only one
+`moxigirl.id.blockstack` but someone else can be `moxiegirl2.id.blockstack`. You
+can see this in action yourself with the explorer, by doing the following:
 
 1. Open the explorer.
 
@@ -87,7 +92,9 @@ What is a namespace? Well, think of it a bit like an email address, you can get 
 
    This detail page gives you some useful information. You can see that this block is related to name operations. It is, in fact, the very block on the blockchain when this identifier was created. The **Timestamp** will tell you the exact date.
 
-A blockchain gives you both privacy about your data and trust among the people in the space. The identity `moxiegirl` looks a bit shady now but you may comeback and find the she has verified her identity. Try looking at the identity of our Blockstack founder, `muneeb.id`. You can see, he is a trusted and well known person. Try searching for your own identity, or see [this document]({{ site.baseurl }}/browser/ids-introduction.html) to create your own identity.
+Try searching for your own identity, or see [this document]({{ site.baseurl }}/browser/ids-introduction.html) to create your own identity. The identity `moxiegirl` looks a bit shady now but you may comeback and find the she has verified her identity. Try looking at the identity of our Blockstack founder, `muneeb.id`. You can see, he is a trusted and well known person.  How does your identity compare?
 
-In the section [For current investors](investors.html) you can find out how to
-use the explorer to search for details about a Stacks token evaluation.
+## For Stacks token holders
+
+In the section [For current investors](tokenholders.html) current token holders can find out how to
+use the explorer to search for details about a Stacks token allocation.

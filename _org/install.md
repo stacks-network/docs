@@ -15,7 +15,7 @@ During you wallet download, you are at risk of a man-in-the-middle attack (as an
 example) from hackers interested in stealing your tokens or your other
 information.  To protect yourself from this type of attack, you should verify
 your downloaded wallet software before you install it. Verification confirms
-that you received the software signed by Blockstack PBC
+that you received the software signed by Blockstack PBC.
 
 ## Do not lose your Stacks tokens
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-10T20:21:27-07:00</updated><id>http://localhost:4000/</id><title type="html">Blockstack</title><subtitle>Docs</subtitle><author><name>Blockstack</name></author><entry><title type="html">Site tags</title><link href="http://localhost:4000/2017/05/25/post63.html" rel="alternate" type="text/html" title="Site tags" /><published>2017-05-25T00:00:00-07:00</published><updated>2017-05-25T00:00:00-07:00</updated><id>http://localhost:4000/2017/05/25/post63</id><content type="html" xml:base="http://localhost:4000/2017/05/25/post63.html">&lt;p&gt;http://localhost:4000/assets/posts/&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://docs.blockstack.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://docs.blockstack.org/" rel="alternate" type="text/html" /><updated>2018-10-11T20:13:49-07:00</updated><id>https://docs.blockstack.org/</id><title type="html">Blockstack</title><subtitle>Docs</subtitle><author><name>Blockstack</name></author><entry><title type="html">Site tags</title><link href="https://docs.blockstack.org/2017/05/25/post63.html" rel="alternate" type="text/html" title="Site tags" /><published>2017-05-25T00:00:00-07:00</published><updated>2017-05-25T00:00:00-07:00</updated><id>https://docs.blockstack.org/2017/05/25/post63</id><content type="html" xml:base="https://docs.blockstack.org/2017/05/25/post63.html">&lt;p&gt;https://docs.blockstack.org/assets/posts/&lt;/p&gt;
 
 &lt;p&gt;/2017/05/25/post63.html&lt;/p&gt;
 
@@ -10,9 +10,9 @@
 &lt;p&gt;Nunc porta malesuada porta. Etiam tristique vestibulum dolor at ultricies. Proin hendrerit sapien sed erat fermentum, at commodo velit consectetur.&lt;/p&gt;
 
 &lt;figure data-uk-lightbox=&quot;animation: slide&quot;&gt;
-  &lt;!-- &lt;a class=&quot;uk-inline&quot; href=&quot;http://localhost:4000/assets/posts/image1.png&quot; caption=&quot;Image in lightbox&quot;&gt; --&gt;
+  &lt;!-- &lt;a class=&quot;uk-inline&quot; href=&quot;https://docs.blockstack.org/assets/posts/image1.png&quot; caption=&quot;Image in lightbox&quot;&gt; --&gt;
     &lt;a class=&quot;uk-inline&quot; href=&quot;/assets/posts/image1.png&quot; caption=&quot;Image in lightbox&quot;&gt;
-        &lt;!-- &lt;img src=&quot;http://localhost:4000/assets/posts/image1.png&quot; alt=&quot;Alt for image&quot;&gt; --&gt;
+        &lt;!-- &lt;img src=&quot;https://docs.blockstack.org/assets/posts/image1.png&quot; alt=&quot;Alt for image&quot;&gt; --&gt;
         &lt;img src=&quot;/assets/posts/image1.png&quot; alt=&quot;Alt for image&quot; /&gt;
         &lt;div class=&quot;uk-position-center&quot;&gt;
             &lt;span data-uk-overlay-icon=&quot;&quot;&gt;&lt;/span&gt;

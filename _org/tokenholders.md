@@ -12,7 +12,19 @@ Blockstack's original coin offering in 2017.
 
 ## Find your token balance and unlock date
 
-During your the initial grant process, you should have submitted a _public Stacks wallet address_ to Blockstack. This an string of letters and numbers starting with an 'SP' or SM', for example `SP077AFV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XS` is a wallet address. Use the following form to check your Stacks allocation:
+During your the initial grant process, you should have submitted a _public
+Stacks wallet address_ to Blockstack. This a string of letters and numbers
+starting with an 'SP' or SM', for example
+`SP077AFV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XS` is a wallet address.
+
+If you purchased Stacks tokens through CoinList, you can find your address at
+[CoinList](https://coinlist.co/distributions). If you downloaded and used the Stacks Wallet
+software from Blockstack, you can find your address after restoring the wallet
+with your seed phrase. If you have lost or need directions for using the Stacks
+wallet, contact us at <token@blockstack.org> for more information.
+
+
+Use the following form to check your Stacks allocation:
 
 <script>
 function process()

@@ -4,41 +4,99 @@ permalink: /:collection/:path.html
 ---
 # Understand cryptocurrency wallets
 
-Suspendisse ipsum turpis, malesuada sit amet varius eget, auctor vitae lectus.
-Maecenas sit amet tellus metus. Sed in condimentum mi. Nulla ac tincidunt leo.
-Suspendisse lectus elit, facilisis non mollis eu, rhoncus vel augue. Ut tempus
-vel felis sit amet viverra. Aenean eu congue orci. Morbi massa mauris,
+If you are or plan to be a Stacks token holder you need to think about how you
+can manage your tokens. How can you review your token balance or send and
+receive your tokens? You manage your tokens through a **cryptocurrency wallet**.
 
-## Hardware wallet
+Unlike the wallets you carry physical money in, a cryptocurrency wallets doesn’t
+hold your tokens. Your tokens are recorded by transactions which are themselves
+encrypted on the Stacks blockchain. The cryptocurrency wallet holds software
+keys. You use these keys and some software to interact with the blockchain and
+gain access to your tokens.
 
-Suspendisse ipsum turpis, malesuada sit amet varius eget, auctor vitae lectus.
-Maecenas sit amet tellus metus. Sed in condimentum mi. Nulla ac tincidunt leo.
-Suspendisse lectus elit, facilisis non mollis eu, rhoncus vel augue. Ut tempus
-vel felis sit amet viverra. Aenean eu congue orci. Morbi massa mauris,
 
-## Software wallet
+## Token flow and wallets
 
-Current Stacks token 
-The Stacks Wallet offers investors four options:
+Tokens moving from between two token holders go from one wallet, through the blockchain, to another wallet. This process is managed by the wallet software and the blockchain software. For example, here is a very simplified version of what happens:
 
-* a New Wallet (recommended)
-* a Hardware Wallet for Trezor and Ledger users
-* a Multi-Signature Wallet (for advanced users)
-* Restore from Seed Phrase (if an address has previously been created).
+1. Lena decides to buy a book from BitBooks.
+2. Lena uses a private key to open her wallet.
+   A private key is sequences of number or letters or both. Sometimes they are made up of words and are called seed phrases. Regardless of the kind of key you have, the key itself should be kept secret.
 
-![](images/wallet_intro.png)
+3. Lena checks her available tokens.
+   Tokens are organized by address. An address is just a string of letters and numbers, such as a74c0ab86f14d3d7952ab13f5e53503bf929df17c3. Each address has one or more tokens. The token addresses are recorded in the Blockchain ledger as belonging to Lena.
 
-For most investors, we recommend creating a New Wallet. It is VERY IMPORTANT that all investors save their Stacks Addresses and Seed Phrases in a secure location. We plan to update the Wallet software in the future to a full-featured wallet. At this point in time, the wallet software will not store any tokens or your seed phrase. Please check StacksToken.com for updates.
+3. Lena prepares to send some tokens to Bitbooks.
 
-Please note: it is critical that only eligible parties have access to your seed phrase. Transactions in virtual currency may be irreversible, and losses due to fraudulent or accidental transactions may not be recoverable.
+   She fills out a form in her wallet software with information like the amount of token she is sending, the person company she is sending too, in this case, BitBooks. BitBooks has a known public identity on the blockchain which it hands out to people who are buying books.
 
-![](images/wallet_sequence.png)
+4. Once she is sure her purchase information is ready, she sends the form.
 
-Finally, copy your Stacks Address back into the submission form.
+   Her wallet communicates across the web the blockchain the sender's identity (Lena), the designation identity (Bitbooks), and the token address. The addresses contain encoded information like the amount and more.
 
-## You can use both types
+5. The blockchain process the transaction.
 
-Suspendisse ipsum turpis, malesuada sit amet varius eget, auctor vitae lectus.
-Maecenas sit amet tellus metus. Sed in condimentum mi. Nulla ac tincidunt leo.
-Suspendisse lectus elit, facilisis non mollis eu, rhoncus vel augue. Ut tempus
-vel felis sit amet viverra. Aenean eu congue orci. Morbi massa mauris,
+   There is a lot of computing magic that goes on. The important thing to know is the tokens Lena sends are recorded leaving her ownership and moving to Bitbooks.
+
+6. Bitbook sees the new token addresses in its wallet confirming the transaction completed and sends Lena the book.
+7. Lena sees the deduction in her wallet.
+
+## Large-scale or institutional token holders
+
+Just as you don’t keep all the money you have in your bank in a physical wallet,
+you shouldn’t keep large amounts of tokens in your cryptocurrency wallet.
+Instead, if you have a large number of crypto assets, you should store them with
+a custodial service. Custodial services protect your token holdings using
+high-security systems.
+
+Custodial services systems have different techniques for storing crypto assets.
+The techniques vary according to factors such as the liquidity level you want to
+maintain or the security you would like. If you own large numbers or token
+assets as an investment, you should choose a custodial service as if you were
+selecting any investment service. Consider your needs, the firm’s reputation,
+fees, and so forth.
+
+{% include warning.html content="None of our ecosystem entities, Blockstack PBC,
+Blockstack Signature Fund, and Blockstack Token LLC, are custodial services.
+Neither pre-genesis software wallet or the upcoming wallet are recommended for
+instituational holdings." %}
+
+Blockstack suggests a firm such as [Coinbase
+Custody](https://custody.coinbase.com/) for institutional holders. Coinbase
+Custody charges its clients a management fee based on assets. Of course, like
+any responsible asset holder, you should do your own research and select a
+service that meets your needs. Investopedia's article [What Are Cryptocurrency
+Custody
+Solutions?](https://www.investopedia.com/news/what-are-cryptocurrency-custody-solutions/)
+is one place to start.
+
+
+## Choosing a cryptocurrency wallet
+
+You can choose among different types of cryptocurrency wallets. There are mainly
+two types of wallets, software and hardware.
+
+Software wallets run as programs on a computer desktop/tablet, online (web), or
+mobile phone. Desktop software wallets are downloaded to one computer. Because
+they are on one system, they are vulnerable to left either of the computer
+itself or through computer hacking. Computer viruses can also impact desktop
+wallets.
+
+Similarly, mobile wallets are, but they also tend to be smaller and simpler.
+Online wallets run over the web and are accessible from any networked device,
+computer or phone. However, online wallets are vulnerable to hacking as well and
+also rely on third-party service providers who themselves may also be
+vulnerable.
+
+Hardware wallets store your seed and addresses on a device like a USB. To use
+these wallets, you connect them to a networked computer, enter a pin, and
+communicate to send and receive tokens across the web.
+
+Unlike a pure software wallet, hardware wallets can be disconnected and placed
+in a secure physical location like a bank deposit box. Hardware offers another
+level of security that software wallets don’t have. Blockstack suggests that you
+use a hardware wallet such as [Trezor](https://trezor.io/) or
+[Ledger](https://www.ledger.com/).
+
+You need not use a software or hardware wallet exclusively, you can use multiple
+wallets choosing whichever works best for you.
