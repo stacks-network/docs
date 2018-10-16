@@ -20,7 +20,7 @@ If you purchased Stacks tokens through CoinList, you can find your address at
 [CoinList](https://coinlist.co/distributions). If you downloaded and used the Stacks Wallet
 software from Blockstack, you can find your address after restoring the wallet
 with your seed phrase. If you have lost or need directions for using the Stacks
-wallet, contact us at <token@blockstack.org> for more information.
+wallet, contact us at <hello@StacksToken.com> for more information.
 
 
 Use the following form to check your Stacks allocation:
@@ -46,7 +46,7 @@ You should see a report detailing the tokens allocated to your address and when 
 
 ![](images/unlocking-address.png)
 
-If you have questions or concerns about your report, please contact <token@blockstack.org>.
+If you have questions or concerns about your report, please contact <hello@StacksToken.com>.
 
 
 ## Understanding the timeline for unlocking your tokens

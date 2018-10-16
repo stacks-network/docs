@@ -16,7 +16,6 @@ In this section, you learn about the mechanisms each entity uses to advance the
 overall mission.
 
 
-
 ## Blockstack Public Benefit Corp (PBC)
 
 Blockstack Public Benefit Corp. (PBC) started development of the Blockstack
@@ -29,7 +28,7 @@ developers to:
 
 - Build a blockchain application in any Javascript framework. The platform does not require learning a new programming language or extending an existing application stack.
 
-- Use well-defined REST endpoints that simplify and encapsulate the blockchain backend. The Blockstack Javascript API reduces blockchain operations to familiar GET and PUT operations.
+- Use well-defined REST endpoints that simplify and encapsulate the blockchain backend. The Blockstack Javascript API reduces blockchain-backed applications to familiar `GET` and `PUT` operations.
 
 - Access the Blockstack’s Naming System (BNS). The system has over 70K users that can immediately start using your application.
 

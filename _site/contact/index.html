@@ -38,6 +38,8 @@
 </script>
 
   
+  <!-- https://www.bryanbraun.com/anchorjs/  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
 </head>
 
 
@@ -307,8 +309,13 @@ You can also request <a href="https://docs.google.com/a/blockstack.com/forms/d/e
     
 
 
-
-
+    <script>
+    anchors.options = {
+      placement: 'left',
+      visible: 'hover'
+    };
+       anchors.add();
+     </script>
     </body>
 
 </html>

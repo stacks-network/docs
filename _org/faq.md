@@ -38,6 +38,12 @@ please read the following guidelines:
 If you have large token holdings, make sure you take advantage of custodial
 services. A wallet does not provide the security of a custodial service.
 
+### What is the release date of the new Stacks wallet?
+
+An initial version of the Stacks wallet was released for the ICO.  With the
+launch of the Stacks genesis block, that wallet was retired. An updated version of the
+Stacks wallet is expected to release in November 2018.  
+
 ### What is a public Stacks wallet address?
 
 During the initial grant process, investors should have submitted a _public
@@ -46,12 +52,12 @@ starting with an 'SP' or SM', for example
 `SP077AFV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XS` is a wallet address.
 
 If you purchased Stacks tokens through CoinList, you can find your address at
-[CoinList](https://coinlist.co/distributions). If you downloaded and used the Stacks Wallet
-software from Blockstack, you can find your address after restoring the wallet
-with your seed phrase. If you have lost or need directions for using the Stacks
-wallet, contact us at <token@blockstack.org> for more information.
+[CoinList](https://coinlist.co/distributions). If you downloaded and used the ICO versionStacks Wallet
+software from Blockstack, you can find your address after restoring that wallet
+with your seed phrase. If you have lost your download or need directions for using the Stacks
+wallet, contact us at <hello@StacksToken.com> for more information.
 
 
 ### How do I get help from a person?
 
-For questions or help regarding the Stacks token, you can contact us at <token@blockstack.org>.
+For questions or help regarding the Stacks token, you can contact us at <hello@StacksToken.com>.

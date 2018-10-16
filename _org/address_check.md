@@ -21,4 +21,4 @@ Make sure to store your hardware wallet's seed phrase (sometimes referred to as 
 ## For Multi-Sig Wallets:
 
 If you used a multi-signature wallet (for advanced users), you will need to re-enter your public keys to check your address (by clicking “Create Multi-signature Wallet”).
-The order that you enter the public keys into the multi-sig wallet is important! If you do not remember the order in which you entered your public keys, please contact token@blockstack.org.
+The order that you enter the public keys into the multi-sig wallet is important! If you do not remember the order in which you entered your public keys, please contact hello@StacksToken.com.
