@@ -31,4 +31,5 @@
   docs:
   - common/javascript_ref
   - common/core_ref
+  - core/wire-format
   - core/faq_technical
