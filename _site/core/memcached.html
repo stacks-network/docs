@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Installing Memcached | Blockstack</title>
-<meta name="generator" content="Jekyll v3.8.3" />
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="Installing Memcached" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://docs.blockstack.org/core/memcached.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-27T16:58:29-07:00" />
+<meta property="article:published_time" content="2018-10-17T09:26:44-07:00" />
 <script type="application/ld+json">
-{"description":"Installing Memcached","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://docs.blockstack.org/core/memcached.html","headline":"Installing Memcached","dateModified":"2018-09-27T16:58:29-07:00","datePublished":"2018-09-27T16:58:29-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/core/memcached.html"},"@context":"http://schema.org"}</script>
+{"url":"https://docs.blockstack.org/core/memcached.html","author":{"@type":"Person","name":"Blockstack"},"headline":"Installing Memcached","dateModified":"2018-10-17T09:26:44-07:00","description":"Installing Memcached","datePublished":"2018-10-17T09:26:44-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/core/memcached.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
@@ -241,6 +241,11 @@
                       
                       <!--  -->
                       
+                          <li class=""><a href="/core/wire-format.html">Bitcoin wire format</a></li>
+                    
+                      
+                      <!--  -->
+                      
                           <li class=""><a href="/core/faq_technical.html">Blockstack Technical FAQ</a></li>
                     
                     </ul>
@@ -269,13 +274,13 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-09-27T16:58:29-07:00" itemprop="datePublished">
+<time datetime="2018-10-17T09:26:44-07:00" itemprop="datePublished">
     
     
 
 <a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/memcached.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Sep 27, 2018
+ <span style="font-family:Wingdings">&#119;</span> Oct 17, 2018
 </time>
 
                     </div>
@@ -288,10 +293,9 @@ running locally.</p>
 
 <h3 id="memcached-on-debian--ubuntu">Memcached on Debian &amp; Ubuntu:</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install -y python-dev libmemcached-dev zlib1g-dev
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install -y python-dev libmemcached-dev zlib1g-dev
 $ pip install pylibmc
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="memcached-on-macos">Memcached on macOS:</h3>
 
@@ -299,28 +303,25 @@ $ pip install pylibmc
 
 <p>After installing Homebrew:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ brew install memcached
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install memcached
 $ brew install libmemcached
 $ pip install pylibmc --install-option="--with-libmemcached=/usr/local/Cellar/libmemcached/1.0.18_1/"
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>After installing, you can start memcached and check if it’s running properly:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ memcached -d
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ memcached -d
 $ echo stats | nc localhost 11211
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="memcached-on-heroku">Memcached on Heroku</h3>
 
 <p>To deploy on Heroku:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>heroku create
-<span class="gp">$ </span>heroku addons:add memcachedcloud
-<span class="gp">$ </span>git push heroku master
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>heroku create
+<span class="nv">$ </span>heroku addons:add memcachedcloud
+<span class="nv">$ </span>git push heroku master
+</code></pre></div></div>
 
                         <div class="share uk-text-center">
     <a href="https://twitter.com/intent/tweet?text=Installing Memcached&url=https://docs.blockstack.org/core/memcached.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>

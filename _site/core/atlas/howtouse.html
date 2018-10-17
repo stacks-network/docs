@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>How to Use the Atlas Network | Blockstack</title>
-<meta name="generator" content="Jekyll v3.8.3" />
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="How to Use the Atlas Network" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://docs.blockstack.org/core/atlas/howtouse.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-27T16:58:29-07:00" />
+<meta property="article:published_time" content="2018-10-17T09:26:44-07:00" />
 <script type="application/ld+json">
-{"description":"How to Use the Atlas Network","author":{"@type":"Person","name":"Blockstack"},"@type":"BlogPosting","url":"https://docs.blockstack.org/core/atlas/howtouse.html","headline":"How to Use the Atlas Network","dateModified":"2018-09-27T16:58:29-07:00","datePublished":"2018-09-27T16:58:29-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/core/atlas/howtouse.html"},"@context":"http://schema.org"}</script>
+{"url":"https://docs.blockstack.org/core/atlas/howtouse.html","author":{"@type":"Person","name":"Blockstack"},"headline":"How to Use the Atlas Network","dateModified":"2018-10-17T09:26:44-07:00","description":"How to Use the Atlas Network","datePublished":"2018-10-17T09:26:44-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/core/atlas/howtouse.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
@@ -241,6 +241,11 @@
                       
                       <!--  -->
                       
+                          <li class=""><a href="/core/wire-format.html">Bitcoin wire format</a></li>
+                    
+                      
+                      <!--  -->
+                      
                           <li class=""><a href="/core/faq_technical.html">Blockstack Technical FAQ</a></li>
                     
                     </ul>
@@ -269,13 +274,13 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-09-27T16:58:29-07:00" itemprop="datePublished">
+<time datetime="2018-10-17T09:26:44-07:00" itemprop="datePublished">
     
     
 
 <a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/howtouse.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Sep 27, 2018
+ <span style="font-family:Wingdings">&#119;</span> Oct 17, 2018
 </time>
 
                     </div>
@@ -316,7 +321,7 @@ chunk data.  A client can query up to 100 chunks in one RPC call.</p>
 the returned payload will be a <code class="highlighter-rouge">dict</code> with a <code class="highlighter-rouge">zonefiles</code> key that maps the chunk
 hashes to their respective data.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">blockstack</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">blockstack</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">blockstack</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get_zonefiles</span><span class="p">(</span><span class="s">'https://node.blockstack.org:6263'</span><span class="p">,</span> <span class="p">[</span><span class="s">'1b89a685f4c4ea245ce9433d0b29166c22175ab4'</span><span class="p">])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">data</span><span class="p">[</span><span class="s">'zonefiles'</span><span class="p">][</span><span class="s">'1b89a685f4c4ea245ce9433d0b29166c22175ab4'</span><span class="p">]</span>
 <span class="err">$</span><span class="n">ORIGIN</span> <span class="n">duckduckgo_tor</span><span class="o">.</span><span class="nb">id</span>
@@ -324,8 +329,7 @@ hashes to their respective data.</p>
 <span class="n">tor</span> <span class="n">TXT</span> <span class="s">"3g2upl4pq6kufc4m.onion"</span>
 
 <span class="o">&gt;&gt;&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>(This particular chunk happens to be associated with the BNS name
 <code class="highlighter-rouge">duckduckgo_tor.id</code>).</p>
@@ -351,15 +355,14 @@ Browser</a> for doing this.</p>
 <p>Once the name operation is confirmed, you can announce the data to the
 Atlas network.  You can do so with the Python client as follows:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">blockstack</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">blockstack</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">base64</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="s">"..."</span>   <span class="c"># this is the chunk data you will announce</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data_b64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="s">"..."</span>   <span class="c1"># this is the chunk data you will announce
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">data_b64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">blockstack</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">put_zonefiles</span><span class="p">(</span><span class="s">'https://node.blockstack.org:6263'</span><span class="p">,</span> <span class="p">[</span><span class="n">data_b64</span><span class="p">])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s">'saved'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="o">&gt;&gt;&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>At most five chunks can be announced in one RPC call.
 Note that the data must be base64-encoded before it can be announced.</p>
@@ -387,23 +390,22 @@ peer graph, and replicate the chunk to each of them as well.</p>
 <p>For example, this code will replicate the chunk to not only
 <code class="highlighter-rouge">https://node.blockstack.org:6263</code>, but also to its immediate neighbors.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">blockstack</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">blockstack</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">base64</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="s">"..."</span>   <span class="c"># this is the chunk you will replicate widely</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data_b64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="s">"..."</span>   <span class="c1"># this is the chunk you will replicate widely
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">data_b64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">blockstack</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get_atlas_peers</span><span class="p">(</span><span class="s">'https://node.blockstack.org:6263'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">neighbors</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s">'peers'</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span>
-<span class="mf">13.65</span><span class="o">.</span><span class="mf">207.163</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">52.225</span><span class="o">.</span><span class="mf">128.191</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">blockstack</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">23.102</span><span class="o">.</span><span class="mf">162.7</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">52.167</span><span class="o">.</span><span class="mf">230.235</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">23.102</span><span class="o">.</span><span class="mf">162.124</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">52.151</span><span class="o">.</span><span class="mf">59.26</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">13.92</span><span class="o">.</span><span class="mf">134.106</span><span class="p">:</span><span class="mi">6264</span>
+<span class="mf">13.65.207.163</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">52.225.128.191</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">blockstack</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">23.102.162.7</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">52.167.230.235</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">23.102.162.124</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">52.151.59.26</span><span class="p">:</span><span class="mi">6264</span><span class="p">,</span> <span class="mf">13.92.134.106</span><span class="p">:</span><span class="mi">6264</span>
 <span class="o">&gt;&gt;&gt;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
 <span class="o">...</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">blockstack</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">put_zonefiles</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span> <span class="p">[</span><span class="n">data_b64</span><span class="p">])</span>
 <span class="o">...</span>    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s">'saved'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="o">...</span>
 <span class="o">&gt;&gt;&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This is not strictly necessary, but it does help accelerate chunk replication
 and makes it less likely that a chunk will get lost due to individual node
