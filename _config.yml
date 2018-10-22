@@ -151,7 +151,7 @@ collections:
   core:
     output: true
     basepath: "blockstack/blockstack-core/blob/master/docs"
-  gaia:
+  storage:
     output: true
     basepath: "blockstack/gaia/blob/master/docs"
   browser:

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Get the Blockstack Browser | Blockstack</title>
-<meta name="generator" content="Jekyll v3.8.4" />
+<meta name="generator" content="Jekyll v3.5.0" />
 <meta property="og:title" content="Get the Blockstack Browser" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://docs.blockstack.org/browser/browser-introduction.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-10-17T09:26:44-07:00" />
+<meta property="article:published_time" content="2018-10-22T10:20:43-07:00" />
 <script type="application/ld+json">
-{"url":"https://docs.blockstack.org/browser/browser-introduction.html","author":{"@type":"Person","name":"Blockstack"},"headline":"Get the Blockstack Browser","dateModified":"2018-10-17T09:26:44-07:00","description":"Get the Blockstack Browser","datePublished":"2018-10-17T09:26:44-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/browser/browser-introduction.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.blockstack.org/browser/browser-introduction.html","headline":"Get the Blockstack Browser","dateModified":"2018-10-22T10:20:43-07:00","datePublished":"2018-10-22T10:20:43-07:00","author":{"@type":"Person","name":"Blockstack"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/browser/browser-introduction.html"},"description":"Get the Blockstack Browser","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
@@ -159,13 +159,13 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-10-17T09:26:44-07:00" itemprop="datePublished">
+<time datetime="2018-10-22T10:20:43-07:00" itemprop="datePublished">
     
     
 
 <a "target="_blank" href="https://github.com/blockstack/blockstack-browser/blob/master/docs/browser-introduction.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Oct 17, 2018
+ <span style="font-family:Wingdings">&#119;</span> Oct 22, 2018
 </time>
 
                     </div>
@@ -335,49 +335,55 @@ Blockstack, <a href="https://docs.docker.com/install/">install the version of Do
   <li>
     <p>Set the executable bit on the file.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">chmod </span>u+x Blockstack-for-Linux-v0.309.0.0.sh
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>chmod u+x Blockstack-for-Linux-v0.309.0.0.sh
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Enter the command without any arguments to see the available subcommands.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo</span> ./Blockstack-for-Linux-v0.309.0.0.sh
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo ./Blockstack-for-Linux-v0.309.0.0.sh
  blockstack docker launcher commands:
- Install-protocol-handler -&gt; <span class="nb">install </span>a protocol handler <span class="k">for </span>blockstack:// links
+ Install-protocol-handler -&gt; install a protocol handler <span class="k">for </span>blockstack:// links
  ...
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Use the script to <code class="highlighter-rouge">pull</code> the Blockstack Docker images you need.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo</span> ./Blockstack-for-Linux-v0.309.0.0.sh pull
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo ./Blockstack-for-Linux-v0.309.0.0.sh pull
+</code></pre>
+    </div>
 
     <p>Depending on your network speed, this can take some time.</p>
   </li>
   <li>
     <p>Use the <code class="highlighter-rouge">docker image ls</code> command to confirm you have the image.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo </span>docker image Is
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo docker image Is
  REPOSITORY	TAG	IMAGE ID	CREATED
  quay.io/blockstack/blockstack-browser	v0.30.0	ad05fd844f59	2 days ago
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Install the protocol handler</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span> <span class="nb">sudo</span> ./Blockstack-for-Linux-vO.30.0.sh install-protocol-handler 
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span> sudo ./Blockstack-for-Linux-vO.30.0.sh install-protocol-handler 
  Registering protocol handler
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Start the Blockstack containers.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo</span> ./Blockstack-for-Linux-vO.30.0.sh start
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo ./Blockstack-for-Linux-vO.30.0.sh start
  c3092592e59abe3559fdb49d070a7aa5e99165c7d9f2flla20ecaf4e0dfc2f46 
  cd92f61ae473d54398da987f5023f5462b29c03f08584ebb3c9fIbb4cd790c69 
  Registering protocol handler
-</code></pre></div>    </div>
+</code></pre>
+    </div>
 
     <p>The system launches the Blockstack Browser application for you.</p>
 
@@ -389,8 +395,9 @@ Blockstack, <a href="https://docs.docker.com/install/">install the version of Do
 on your system. To display the status of the Blockstack containers, you can use
 the <code class="highlighter-rouge">docker container ls</code> command.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>docker container <span class="nb">ls</span> <span class="nt">--format</span> <span class="s1">'{{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}'</span>
-</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo docker container ls --format <span class="s1">'{{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}'</span>
+</code></pre>
+</div>
 
 <p>Use <code class="highlighter-rouge">./Blockstack-for-Linux-vO.30.0.sh stop</code> to stop the Blockstack Browser and its containers.</p>
 
@@ -452,8 +459,9 @@ your operating system.</p>
 
     <p>From the command line:</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">rm</span> <span class="nt">-r</span> /Users/moxiegirl/Library/Application<span class="se">\ </span>Support/Blockstack
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>rm -r /Users/moxiegirl/Library/Application<span class="se">\ </span>Support/Blockstack
+</code></pre>
+    </div>
   </li>
 </ol>
 
@@ -487,21 +495,22 @@ but that is not explained here.</p>
   <li>
     <p>Stop and remove the Docker containers if they are running.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo</span> ./Blockstack-for-Linux-vO.30.0.sh stop
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo ./Blockstack-for-Linux-vO.30.0.sh stop
  stopping the running blockstack-browser containers
  69a686799d4f
  56fc6189ff97
  69a686799d4f
  56fc6189ff97
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Remove the associated Blockstack images.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo </span>docker image <span class="nb">ls
- </span>REPOSITORY	                          TAG	    IMAGE ID	    CREATED
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo docker image ls
+ REPOSITORY	                          TAG	    IMAGE ID	    CREATED
  quay.io/blockstack/blockstack-browser	v0.30.0	ad05fd844f59	3 days ago
- <span class="nv">$ </span><span class="nb">sudo </span>docker image <span class="nb">rm </span>ad05fd844f59 
+ <span class="nv">$ </span>sudo docker image rm ad05fd844f59 
  Untagged : quay.io/blockstack/blockstack- browser :vO.30.0
  Untagged: quay.io/blockstack/blockstack-browser@sha256:b20c9514c56b99398fd4946af39e7537b807e85694943ac3b8807dlb3625833b
  Deleted: Sha256:ad05fd844f5948blee06a0a09228df946478393c0a7588cbc65dlb8817f5b34e
@@ -509,19 +518,22 @@ but that is not explained here.</p>
  Deleted: sha256:54ea2aa7d7d000e7483f299eeca9e5466fa86231f4cd4cld3c3096d97e61c5df
  Deleted: sha256:38e61054355adefc3c2de031462114a9946cfc0e44444a38a27d0f115aba0da2
  ....
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Use the script to remove the protocol handler</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo</span> ./Blockstack-for-Linux-vO.30.0.sh remove-protocol-handler
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>sudo ./Blockstack-for-Linux-vO.30.0.sh remove-protocol-handler
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Delete the script.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">rm </span>Blockstack-for-Linux-vO.30.0.sh
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>rm Blockstack-for-Linux-vO.30.0.sh
+</code></pre>
+    </div>
   </li>
 </ol>
 

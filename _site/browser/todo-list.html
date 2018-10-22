@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Todo List Application Tutorial | Blockstack</title>
-<meta name="generator" content="Jekyll v3.8.4" />
+<meta name="generator" content="Jekyll v3.5.0" />
 <meta property="og:title" content="Todo List Application Tutorial" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://docs.blockstack.org/browser/todo-list.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-10-17T09:26:44-07:00" />
+<meta property="article:published_time" content="2018-10-22T10:20:43-07:00" />
 <script type="application/ld+json">
-{"url":"https://docs.blockstack.org/browser/todo-list.html","author":{"@type":"Person","name":"Blockstack"},"headline":"Todo List Application Tutorial","dateModified":"2018-10-17T09:26:44-07:00","description":"Todo List Application Tutorial","datePublished":"2018-10-17T09:26:44-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/browser/todo-list.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.blockstack.org/browser/todo-list.html","headline":"Todo List Application Tutorial","dateModified":"2018-10-22T10:20:43-07:00","datePublished":"2018-10-22T10:20:43-07:00","author":{"@type":"Person","name":"Blockstack"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/browser/todo-list.html"},"description":"Todo List Application Tutorial","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
@@ -195,13 +195,13 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-10-17T09:26:44-07:00" itemprop="datePublished">
+<time datetime="2018-10-22T10:20:43-07:00" itemprop="datePublished">
     
     
 
 <a "target="_blank" href="https://github.com/blockstack/blockstack-browser/blob/master/docs/todo-list.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Oct 17, 2018
+ <span style="font-family:Wingdings">&#119;</span> Oct 22, 2018
 </time>
 
                     </div>
@@ -251,9 +251,10 @@ with that ID using Blockstack Storage (Gaia).</p>
 
 <p>The tutorial relies on the <code class="highlighter-rouge">npm</code> dependency manager. Before you begin, verify you have installed <code class="highlighter-rouge">npm</code> using the <code class="highlighter-rouge">which</code> command to verify.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>which npm
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>which npm
 /usr/local/bin/npm
-</code></pre></div></div>
+</code></pre>
+</div>
 <p>If you don’t find <code class="highlighter-rouge">npm</code> in your system, <a href="https://www.npmjs.com/get-npm">install it</a>.</p>
 
 <p>Finally, make sure you have <a href="{site.baseurl}}/browser/ids-introduction.html#create-an-initial-blockstack-id">created at least one Blockstack ID</a>.
@@ -270,19 +271,21 @@ These instructions assume you are cloning.</p>
   <li>
     <p>Install the code by cloning it.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ git clone git@github.com:blockstack/blockstack-todos.git
-</code></pre></div>    </div>
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ git clone git@github.com:blockstack/blockstack-todos.git
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Change to directory to the root of the code.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ cd blockstack-todos
-</code></pre></div>    </div>
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ cd blockstack-todos
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Use <code class="highlighter-rouge">yarn</code> to install the dependencies.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ yarn install
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ yarn install
  yarn install v1.9.2
  info No lockfile found.
  ...
@@ -290,7 +293,8 @@ These instructions assume you are cloning.</p>
  [5/5] 📃  Building fresh packages...
  success Saved lockfile.
  ✨  Done in 19.90s.
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
 </ol>
 
@@ -331,15 +335,17 @@ These instructions assume you are cloning.</p>
   <li>
     <p>Make sure you are in the root of the code base.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">pwd</span> /Users/moxiegirl/repos/blockstack-todos
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">pwd</span> /Users/moxiegirl/repos/blockstack-todos
  Start the application.
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Start the application.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ npm run start
-</code></pre></div>    </div>
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ npm run start
+</code></pre>
+    </div>
 
     <p>You should see a simple application:</p>
 
@@ -385,25 +391,26 @@ parameter:</p>
 
     <p>The output should look similar to below:</p>
 
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
-   </span><span class="s2">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3i96e3ad-0626-4e32-a316-b243154212e2"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1533136622</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1533140228</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:btc-addr:1Nh8oQTunbEQWjrL666HBx2qMc81puLmMt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"public_keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="nt">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3i96e3ad-0626-4e32-a316-b243154212e2"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1533136622</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1533140228</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:btc-addr:1Nh8oQTunbEQWjrL666HBx2qMc81puLmMt"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"public_keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
      </span><span class="s2">"0362173da080c6e1dec0653fa9a3eff5f5660546e387ce6c24u04a90c2fe1fdu73"</span><span class="w">
    </span><span class="p">],</span><span class="w">
-   </span><span class="s2">"domain_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"manifest_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/manifest.json"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"redirect_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"do_not_include_profile"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"supports_hub_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+   </span><span class="nt">"domain_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"manifest_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/manifest.json"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"redirect_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.0"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"do_not_include_profile"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"supports_hub_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
      </span><span class="s2">"store_write"</span><span class="w">
    </span><span class="p">]</span><span class="w">
  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
+</span></code></pre>
+    </div>
 
     <blockquote>
       <p><strong>Note</strong>:</p>
@@ -453,15 +460,16 @@ in and sign out is handled in each of these files:</p>
 
 <p>The <code class="highlighter-rouge">src/components/Landing.vue</code> code calls a <a href="https://blockstack.github.io/blockstack.js#redirectToSignIn"><code class="highlighter-rouge">redirectToSignIn()</code></a> function which generates the <code class="highlighter-rouge">authRequest</code> and redirects the user to the Blockstack authenticator:</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">signIn</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">blockstack</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">blockstack</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">signIn</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">blockstack</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">blockstack</span>
   <span class="nx">blockstack</span><span class="p">.</span><span class="nx">redirectToSignIn</span><span class="p">()</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>Once the user authenticates, the application handles the <code class="highlighter-rouge">authResponse</code> in the <code class="highlighter-rouge">src/App.vue</code> file. :</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">blockstack</span><span class="p">.</span><span class="nx">isUserSignedIn</span><span class="p">())</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">blockstack</span><span class="p">.</span><span class="nx">isUserSignedIn</span><span class="p">())</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="nx">blockstack</span><span class="p">.</span><span class="nx">loadUserData</span><span class="p">().</span><span class="nx">profile</span>
 <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">blockstack</span><span class="p">.</span><span class="nx">isSignInPending</span><span class="p">())</span> <span class="p">{</span>
   <span class="nx">blockstack</span><span class="p">.</span><span class="nx">handlePendingSignIn</span><span class="p">()</span>
@@ -469,16 +477,18 @@ in and sign out is handled in each of these files:</p>
     <span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">origin</span>
   <span class="p">})</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>If <a href="https://blockstack.github.io/blockstack.js/#isusersignedin"><code class="highlighter-rouge">blockstack.isUserSignedIn()</code></a> is true, the user was previously signed in so Blockstack pulls the data from the browser and uses it in our application. If the check on  <a href="https://blockstack.github.io/blockstack.js/#issigninpending"><code class="highlighter-rouge">blockstack.isSignInPending()</code></a> is true, a previous <code class="highlighter-rouge">authResponse</code> was sent to the application but hasn’t been processed yet. The <code class="highlighter-rouge">handlePendingSignIn()</code> function processes any pending sign in.</p>
 
 <p>Signout is handled in <code class="highlighter-rouge">src/components/Dashboard.vue</code>.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">signOut</span> <span class="p">()</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">signOut</span> <span class="p">()</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">blockstack</span><span class="p">.</span><span class="nx">signUserOut</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>The method allows the application creator to decide where to redirect the user upon Sign Out:</p>
 
@@ -499,42 +509,44 @@ command:</p>
 
 <p>You should see a JSON with the todos you just added:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"text"</span><span class="p">:</span><span class="s2">"Software package manager secured by the blockchain"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"completed"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"text"</span><span class="p">:</span><span class="s2">"Software package manager secured by the blockchain"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"completed"</span><span class="p">:</span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"text"</span><span class="p">:</span><span class="s2">"Mutable torrents with human readable names"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"completed"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"text"</span><span class="p">:</span><span class="s2">"Mutable torrents with human readable names"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"completed"</span><span class="p">:</span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"text"</span><span class="p">:</span><span class="s2">"Decentralized twitter"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"completed"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"text"</span><span class="p">:</span><span class="s2">"Decentralized twitter"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"completed"</span><span class="p">:</span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div></div>
+</span></code></pre>
+</div>
 
 <p>Add another todo and check it off. When you fetch the newly generated file
 using the Javascript console, the results reflect your change. Look for <code class="highlighter-rouge">"completed":true</code>:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"text"</span><span class="p">:</span><span class="s2">"Blockstack Todo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"completed"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"text"</span><span class="p">:</span><span class="s2">"Blockstack Todo"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"completed"</span><span class="p">:</span><span class="kc">true</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"text"</span><span class="p">:</span><span class="s2">"Software package manager secured by the blockchain"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"completed"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"text"</span><span class="p">:</span><span class="s2">"Software package manager secured by the blockchain"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"completed"</span><span class="p">:</span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
  </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div></div>
+</span></code></pre>
+</div>
 
 <p>Now that you have seen the application in action, dig into how it works.</p>
 
@@ -545,16 +557,17 @@ application interactions with your Gaia Hub originate in the
 <code class="highlighter-rouge">src/components/Dashboard.vue</code> file. First, examine where the changes to the
 Todos are processed:</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">todos</span><span class="p">:</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">todos</span><span class="err">:</span> <span class="p">{</span>
   <span class="nl">handler</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">todos</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">blockstack</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">blockstack</span>
+    <span class="kr">const</span> <span class="nx">blockstack</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">blockstack</span>
 
     <span class="c1">// encryption is now enabled by default</span>
     <span class="k">return</span> <span class="nx">blockstack</span><span class="p">.</span><span class="nx">putFile</span><span class="p">(</span><span class="nx">STORAGE_FILE</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">todos</span><span class="p">))</span>
   <span class="p">},</span>
-  <span class="nx">deep</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="nx">deep</span><span class="err">:</span> <span class="kc">true</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>The <code class="highlighter-rouge">todos</code> JSON object is passed in and the
 <a href="https://blockstack.github.io/blockstack.js/#putfile"><code class="highlighter-rouge">blockstack.putFile()</code></a>
@@ -562,8 +575,8 @@ method to store it in a Gaia Hub.</p>
 
 <p>The code needs to read the Todo items from the storage with the <a href="https://blockstack.github.io/blockstack.js/#getfile"><code class="highlighter-rouge">blockstack.getFile()</code></a> method which returns a promise:</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetchData</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">blockstack</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">blockstack</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">fetchData</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">blockstack</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">blockstack</span>
   <span class="nx">blockstack</span><span class="p">.</span><span class="nx">getFile</span><span class="p">(</span><span class="nx">STORAGE_FILE</span><span class="p">)</span> <span class="c1">// decryption is enabled by default</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">todosText</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">todos</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">todosText</span> <span class="o">||</span> <span class="s1">'[]'</span><span class="p">)</span>
@@ -574,7 +587,8 @@ method to store it in a Gaia Hub.</p>
     <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="nx">todos</span>
   <span class="p">})</span>
 <span class="p">},</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>The <code class="highlighter-rouge">todos</code> data is retrieved from the promise.</p>
 
