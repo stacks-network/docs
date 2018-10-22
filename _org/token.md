@@ -13,14 +13,13 @@ the 2018 launch, see the [announcement in the Blockstack Forum](#).
 
 ## A brief history of the Stacks token
 
-In 2017 Blockstack did an initial coin offering (ICO). Participants in the ICO
-became token holders when they received allocations of Stacks tokens in a draft
-version of the genesis block. A genesis block is the first block of a
-blockchain.
+In 2017 Blockstack did a token sale. Participants became token holders when they
+received allocations of Stacks tokens in the genesis block. A genesis block is
+the first block of a blockchain.
 
 During the draft genesis block period token holders setup a seed phrase
 (sometimes referred to as a _recovery phrase_ or a _recovery seed_ using the
-alpha Blockstack software wallet or their own hardware wallet.
+Stacks wallet software or their own hardware wallet.
 
 It was each token holder’s responsibility to store their own seed phrase in a
 private and secure location. Holders could use their wallet to verify their
@@ -41,7 +40,7 @@ and would like to review your unlocking schedule, visit the <a
 href="tokenholders.html">For current token holders</a> page in this
 documentation.</div>
 
-The genesis launch makes possible the following interactions:
+The genesis block launch makes possible the following interactions:
 
 * Token holders can purchase names and namespaces with the Stacks token. Previously, names and namespaces required the purchaser to hold Bitcoin. Initially, this process relies on the Blockstack command-line interface (CLI).
 
@@ -54,7 +53,7 @@ further development of Blockstack Core itself.
 
 ## Future projects of the Stacks token
 
-The fourth quarter 2018 genesis launch is significant in that it enables the
+The fourth quarter 2018 genesis block launch is significant in that it enables the
 development of new capabilities and programs for the Blockstack ecosystem. For
 example, the Stacks launch enables the growth of these programs related to
 mining and distribution:

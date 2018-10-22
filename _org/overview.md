@@ -63,7 +63,7 @@ review and delivery of these monthly payments.
 ## Blockstack Token LLC
 
 Through the 2017 Blockstack token offering, Blockstack Token LLC created the
-Stacks token. Stacks are a utility token which is distinct from equity tokens
+Stacks token. Stacks are a utility token which is distinct from security tokens
 and are often called app tokens or user tokens. The Stacks token help to seed
 both blockchain application development and incentives for blockchain users.
 

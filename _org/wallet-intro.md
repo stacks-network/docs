@@ -12,50 +12,17 @@ Unlike the wallets you carry physical money in, a cryptocurrency wallet doesn’
 hold your tokens. Your tokens are recorded by transactions which are themselves
 encrypted on the Stacks bly ockchain. The cryptocurrency wallet holds software
 keys. You use these keys and some software to interact with the blockchain and
-gain use your tokens.
+gain use of your tokens.
 
 
 ## Token flow and wallets
 
-Tokens move from one wallet to a another via the blockchain. For example, here
-is a very simplified version of what happens:
+Tokens move from one wallet to a another via the blockchain. For example, say
+Lena decides to buy a book from Bitbooks, a company that accepts tokens. A
+complete purchase, has the following general steps:
 
-1. Lena decides to buy a book from BitBooks.
-2. Lena uses a private key to open her wallet.
+ ![](images/key.png)
 
-   A private key is sequences of number or letters or both. Sometimes they are
-   made up of words and are called seed phrases. Regardless of the kind of key
-   you have, the key itself should be kept secret and secure.
-
-3. Lena checks her available tokens.
-
-   Tokens are organized by address. An address is just a string of letters and
-   numbers, such as `a74c0ab86f14d3d7952ab13f5e53503bf929df17c3`. Each address
-   has one or more tokens. The token addresses are recorded in the Blockchain
-   ledger as belonging to Lena.
-
-3. Lena prepares to send some tokens to Bitbooks.
-
-   She fills out a form in her wallet software with information like the amount
-   of token she is sending, the person company she is sending too, in this case,
-   BitBooks. BitBooks has a known public identity on the blockchain which it
-   hands out to people who are buying books.
-
-4. Once Lena is sure her purchase information is ready, she sends the form.
-
-   Her wallet communicates across the web to the blockchain the sender's identity
-   (Lena), the designation identity (Bitbooks), and the token address. The
-   addresses contain encoded information like the amount and more.
-
-5. The blockchain process the transaction.
-
-   There is a lot of computing magic that goes on. The important thing to know
-   is the tokens Lena sends are recorded in the Blockchain record as leaving her
-   ownership and moving to Bitbooks.
-
-6. Bitbook sees the new token addresses in its wallet confirming the transaction completed.
-7. Bitbook sends Lena the book.
-8. Lena sees the token deduction in her wallet and later her book arrives.
 
 ## Large-scale or institutional token holders
 
@@ -94,7 +61,7 @@ two types of wallets, software and hardware.
 
 Software wallets run as programs on a computer desktop/tablet, online (web), or
 mobile phone. Desktop software wallets are downloaded to one computer. Because
-they are on one system, they are vulnerable to left either of the computer
+they are on one system, they are vulnerable to theft either of the computer
 itself or through computer hacking. Computer viruses can also impact desktop
 wallets.
 

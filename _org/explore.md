@@ -45,7 +45,7 @@ You use {::nomarkdown}<a href="https://explorer.blockstack.org/" target="\_blank
   </tr>
 </table>
 
-People such as token holders or application users typically don't need to use an explorer. However, there are a few interesting things to do if you are a token holder a user or both.
+People such as token holders or application users typically don't need to use an explorer. However, there are a few interesting things to do if you are a token holder, a user, or both.
 
 ## Investigate the Explorer
 
@@ -57,7 +57,7 @@ What is a namespace? Well, think of it a bit like an email address, you can get
 an email address on your own suffix `yourname@myuniquename.com`, or you can get
 email with a service type suffix such as `yahoo` or `msn` or `gmail`.
 Blockstack identity behaves like this service type suffix. So, there is only one
-`moxigirl.id.blockstack` but someone else can be `moxiegirl2.id.blockstack`. You
+`moxiegirl.id.blockstack` but someone else can be `moxiegirl2.id.blockstack`. You
 can see this in action yourself with the explorer, by doing the following:
 
 1. Open the [explorer](https://explorer.blockstack.org/).

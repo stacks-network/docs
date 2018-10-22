@@ -5,7 +5,7 @@ permalink: /:collection/:path.html
 # Information for current token holders
 
 The information on this page is intended for current Stacks token holders who took part in
-Blockstack's original coin offering in 2017.
+Blockstack's token sale in 2017.
 
 * TOC
 {:toc}
@@ -14,13 +14,13 @@ Blockstack's original coin offering in 2017.
 
 During your the initial grant process, you should have submitted a _public
 Stacks wallet address_ to Blockstack. The wallet address is a string of letters and numbers
-starting with an 'SP' or SM', for example: `SP077AFV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XS`
+starting with an 'SP' or SM', for example: `SP017AUV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XY`
 
 If you purchased Stacks tokens through CoinList, you can find your address at
-[CoinList](https://coinlist.co/distributions). If you downloaded and used the Stacks Wallet
-software from Blockstack, you can find your address after restoring the wallet
-with your seed phrase. If you have lost or need directions for using the Stacks
-wallet, contact us at <hello@StacksToken.com> for more information.
+[CoinList](https://coinlist.co/distributions). If you submitted your Stacks
+address directly to Blockstack, you can either use the “Restore from Seed
+Phrase” feature on the Stacks wallet or contact us at <hello@stackstoken.com> for
+help.
 
 
 Use the following form to check your Stacks allocation:
