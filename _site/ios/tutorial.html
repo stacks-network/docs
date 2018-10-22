@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>iOS SDK Tutorial (Pre-release) | Blockstack</title>
-<meta name="generator" content="Jekyll v3.8.4" />
+<meta name="generator" content="Jekyll v3.5.0" />
 <meta property="og:title" content="iOS SDK Tutorial (Pre-release)" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://docs.blockstack.org/ios/tutorial.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-10-17T09:26:44-07:00" />
+<meta property="article:published_time" content="2018-10-22T10:20:43-07:00" />
 <script type="application/ld+json">
-{"url":"https://docs.blockstack.org/ios/tutorial.html","author":{"@type":"Person","name":"Blockstack"},"headline":"iOS SDK Tutorial (Pre-release)","dateModified":"2018-10-17T09:26:44-07:00","description":"iOS SDK Tutorial (Pre-release)","datePublished":"2018-10-17T09:26:44-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/ios/tutorial.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.blockstack.org/ios/tutorial.html","headline":"iOS SDK Tutorial (Pre-release)","dateModified":"2018-10-22T10:20:43-07:00","datePublished":"2018-10-22T10:20:43-07:00","author":{"@type":"Person","name":"Blockstack"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/ios/tutorial.html"},"description":"iOS SDK Tutorial (Pre-release)","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
@@ -195,13 +195,13 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-10-17T09:26:44-07:00" itemprop="datePublished">
+<time datetime="2018-10-22T10:20:43-07:00" itemprop="datePublished">
     
     
 
 <a "target="_blank" href="https://github.com/blockstack/blockstack-ios/blob/master/docs/tutorial.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Oct 17, 2018
+ <span style="font-family:Wingdings">&#119;</span> Oct 22, 2018
 </time>
 
                     </div>
@@ -292,9 +292,10 @@ Depending on your network connection, this can take between 15-30 minutes.</p>
 Before you begin, verify you have installed <code class="highlighter-rouge">npm</code> using the <code class="highlighter-rouge">which</code> command to
 verify.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>which npm
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>which npm
 /usr/local/bin/npm
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>If you don’t find <code class="highlighter-rouge">npm</code> in your system, <a href="https://www.npmjs.com/get-npm">install
 it</a>.</p>
@@ -310,14 +311,16 @@ use libraries from the community in your project.</p>
 incapability between Cocoapods and XCode. Before starting the tutorial, confirm
 you have installed CocoaPods.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pod <span class="nt">--version</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pod --version
 1.6.0.beta.1
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>If you don’t have the CocoaPods beta version, install it:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem <span class="nb">install </span>cocoapods <span class="nt">-v</span> 1.6.0.beta.1
-</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo gem install cocoapods -v 1.6.0.beta.1
+</code></pre>
+</div>
 
 <h3 id="use-npm-to-install-yeoman-and-the-blockstack-app-generator">Use npm to install Yeoman and the Blockstack App Generator</h3>
 
@@ -329,14 +332,16 @@ existing projects.</p>
   <li>
     <p>Install Yeoman.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm <span class="nb">install</span> <span class="nt">-g</span> yo
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm install -g yo
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Install the Blockstack application generator.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm <span class="nb">install</span> <span class="nt">-g</span> generator-blockstack
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm install -g generator-blockstack
+</code></pre>
+    </div>
     <h2 id="build-the-blockstack-hello-world">Build the Blockstack hello-world</h2>
   </li>
 </ol>
@@ -353,24 +358,27 @@ modify the <code class="highlighter-rouge">hello-world</code> to interact with t
   <li>
     <p>Create a <code class="highlighter-rouge">hello-blockstack</code> directory.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">mkdir </span>hello-blockstack
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> mkdir hello-blockstack
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Change into your new directory.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd </span>hello-blockstack
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nb">cd </span>hello-blockstack
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Use Yeoman and the Blockstack application generator to create your initial <code class="highlighter-rouge">hello-blockstack</code> application.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> yo blockstack:react
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> yo blockstack:react
+</code></pre>
+    </div>
 
     <p>You should see several interactive prompts.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>yo blockstack:react
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>yo blockstack:react
  <span class="o">==========================================================================</span>
  We are constantly looking <span class="k">for </span>ways to make yo better!
  May we anonymously report usage statistics to improve the tool over <span class="nb">time</span>?
@@ -379,8 +387,8 @@ modify the <code class="highlighter-rouge">hello-world</code> to interact with t
 
       _-----_     ╭──────────────────────────╮
      |       |    │      Welcome to the      │
-     |--<span class="o">(</span>o<span class="o">)</span><span class="nt">--</span>|    │      Blockstack app      │
-    <span class="sb">`</span><span class="nt">---------</span>´   │        generator!        │
+     |--<span class="o">(</span>o<span class="o">)</span>--|    │      Blockstack app      │
+    <span class="sb">`</span>---------´   │        generator!        │
      <span class="o">(</span> _´U<span class="sb">`</span>_ <span class="o">)</span>    ╰──────────────────────────╯
      /___A___<span class="se">\ </span>  /
       |  ~  |
@@ -388,26 +396,28 @@ modify the <code class="highlighter-rouge">hello-world</code> to interact with t
   ´   <span class="sb">`</span>  |° ´ Y <span class="sb">`</span>
 
  ? Are you ready to build a Blockstack app <span class="k">in </span>React? <span class="o">(</span>Y/n<span class="o">)</span>
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Respond to the prompts to populate the initial app.</p>
 
     <p>After the process completes successfully, you see a prompt similar to the following:</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">[</span>fsevents] Success:
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="o">[</span>fsevents] Success:
  <span class="s2">"/Users/theuser/repos/hello-blockstack/node_modules/fsevents/lib/binding/Release/node-v59-darwin-x64/fse.node"</span>
  is installed via remote npm notice created a lockfile as package-lock.json.
  You should commit this file. added 1060 packages <span class="k">in </span>26.901s
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Run the initial application.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm start
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm start
 
- <span class="o">&gt;</span> hello-blockstack@0.0.0 start /Users/moxiegirl/repos/hello-blockstack
- <span class="o">&gt;</span> webpack-dev-server
+ &gt; hello-blockstack@0.0.0 start /Users/moxiegirl/repos/hello-blockstack
+ &gt; webpack-dev-server
 
  Project is running at http://localhost:8080/
  webpack output is served from /
@@ -424,7 +434,8 @@ modify the <code class="highlighter-rouge">hello-world</code> to interact with t
           <span class="o">[</span>2] <span class="o">(</span>webpack<span class="o">)</span>/buildin/global.js 509 bytes <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
           <span class="o">[</span>3] <span class="o">(</span>webpack<span class="o">)</span>/buildin/module.js 517 bytes <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
   webpack: Compiled successfully.
-</code></pre></div>    </div>
+</code></pre>
+    </div>
 
     <p>At this point, the browser is running a Blockstack server on your local host.</p>
   </li>
@@ -469,8 +480,9 @@ application directory.</p>
   <li>
     <p>Create a <code class="highlighter-rouge">public</code> directory.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">mkdir </span>public
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>mkdir public
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Use the <code class="highlighter-rouge">touch</code> command to add a redirect endpoint to your application.</p>
@@ -478,13 +490,14 @@ application directory.</p>
     <p>This endpoint on the web version of your app will redirect iOS users back
 to your mobile app.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">touch </span>public/redirect.html
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>touch public/redirect.html
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Open <code class="highlighter-rouge">redirect.html</code> and add code to the endpoint.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="cp">&lt;!DOCTYPE html&gt;</span>
+    <div class="highlighter-rouge"><pre class="highlight"><code> <span class="cp">&lt;!DOCTYPE html&gt;</span>
  <span class="nt">&lt;html&gt;</span>
  <span class="nt">&lt;head&gt;</span>
    <span class="nt">&lt;title&gt;</span>Hello, Blockstack!<span class="nt">&lt;/title&gt;</span>
@@ -500,7 +513,8 @@ to your mobile app.</p>
  <span class="nt">&lt;body&gt;</span>
  <span class="nt">&lt;/body&gt;</span>
  <span class="nt">&lt;/html&gt;</span>
-</code></pre></div>    </div>
+</code></pre>
+    </div>
 
     <p>Blockstack apps are identified by their domain names.  The endpoint will
  receive a get request with the query parameter <code class="highlighter-rouge">authResponse=XXXX</code> and
@@ -564,14 +578,16 @@ lines after.</p>
   <li>
     <p>Navigate to and change directory into the root of your project directory.</p>
 
-    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="err">$</span> <span class="n">cd</span> <span class="n">hello</span><span class="o">-</span><span class="n">blockstack</span><span class="o">-</span><span class="n">ios</span>
-</code></pre></div>    </div>
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code>  <span class="err">$</span> <span class="n">cd</span> <span class="n">hello</span><span class="o">-</span><span class="n">blockstack</span><span class="o">-</span><span class="n">ios</span>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Create a Podfile.</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>pod init
-</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>  <span class="nv">$ </span>pod init
+</code></pre>
+    </div>
 
     <p>The command creates a <code class="highlighter-rouge">Podfile</code> in the directory.</p>
   </li>
@@ -579,7 +595,7 @@ lines after.</p>
   <li>
     <p>Add a line stating the Blockstack dependency.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Uncomment the next line to define a global platform for your project
+    <div class="highlighter-rouge"><pre class="highlight"><code># Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
 target 'hello-blockstack-ios' do
@@ -594,7 +610,8 @@ target 'hello-blockstack-ios' do
         # Pods for testing
       end
 end
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>Save and close the <code class="highlighter-rouge">Podfile</code>.</li>
 </ol>
@@ -607,7 +624,7 @@ end
   <li>
     <p>Initialize the project with Cocoapods.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  $ pod install
+    <div class="highlighter-rouge"><pre class="highlight"><code>  $ pod install
   Analyzing dependencies
   Downloading dependencies
   Installing Blockstack (0.2.0)
@@ -620,18 +637,20 @@ end
   Pod installation complete! There is 1 dependency from the Podfile and 2 total pods installed.
 
   [!] Automatically assigning platform `ios` with version `11.4` on target `hello-blockstack-ios` because no platform was specified. Please specify a platform for this target in your Podfile. See `https://guides.cocoapods.org/syntax/podfile.html#platform`.
-</code></pre></div>    </div>
+</code></pre>
+    </div>
 
     <p>This command creates a number of files</p>
   </li>
   <li>
     <p>Review the files that the <code class="highlighter-rouge">pod</code> installation created:</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls
-</span>Podfile                hello-blockstack-ios                    hello-blockstack-iosTests
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ls
+Podfile                hello-blockstack-ios                    hello-blockstack-iosTests
 Podfile.lock           hello-blockstack-ios.xcodeproj
 Pods                   hello-blockstack-ios.xcworkspace
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>Start XCode and choose <strong>Open another project</strong>.</li>
   <li>
@@ -707,7 +726,7 @@ the user back to your iOS app. In this example, you use <code class="highlighter
   <li>
     <p>Replace the content of the <code class="highlighter-rouge">&lt;scenes&gt;</code> element with the following:</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;scenes&gt;
+    <div class="highlighter-rouge"><pre class="highlight"><code>&lt;scenes&gt;
     &lt;!--View Controller--&gt;
     &lt;scene sceneID="EHf-IW-A2E"&gt;
         &lt;objects&gt;
@@ -741,16 +760,18 @@ the user back to your iOS app. In this example, you use <code class="highlighter
         &lt;point key="canvasLocation" x="52" y="374.66266866566718"/&gt;
     &lt;/scene&gt;
 &lt;/scenes&gt;
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Immediately after scenes but before the close of the <code class="highlighter-rouge">&lt;/document&gt;</code> tag add the following <code class="highlighter-rouge">&lt;resources&gt;</code>.</p>
 
-    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="nt">&lt;resources&gt;</span>
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code>        <span class="nt">&lt;resources&gt;</span>
       <span class="nt">&lt;image</span> <span class="na">name=</span><span class="s">"Image"</span> <span class="na">width=</span><span class="s">"64"</span> <span class="na">height=</span><span class="s">"64"</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;/resources&gt;</span>
      <span class="nt">&lt;/document&gt;</span>
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Choose <strong>Run &gt; Run app</strong> in the emulator.</p>
@@ -777,7 +798,7 @@ functionality to your  code.</p>
   <li>
     <p>Within the <code class="highlighter-rouge">&lt;viewController&gt;</code>  element, replace the existing <code class="highlighter-rouge">&lt;view&gt;</code> subelement with the following:</p>
 
-    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;view</span> <span class="na">key=</span><span class="s">"view"</span> <span class="na">contentMode=</span><span class="s">"scaleToFill"</span> <span class="na">id=</span><span class="s">"8bC-Xf-vdC"</span><span class="nt">&gt;</span>
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;view</span> <span class="na">key=</span><span class="s">"view"</span> <span class="na">contentMode=</span><span class="s">"scaleToFill"</span> <span class="na">id=</span><span class="s">"8bC-Xf-vdC"</span><span class="nt">&gt;</span>
      <span class="nt">&lt;rect</span> <span class="na">key=</span><span class="s">"frame"</span> <span class="na">x=</span><span class="s">"0.0"</span> <span class="na">y=</span><span class="s">"0.0"</span> <span class="na">width=</span><span class="s">"375"</span> <span class="na">height=</span><span class="s">"667"</span><span class="nt">/&gt;</span>
      <span class="nt">&lt;autoresizingMask</span> <span class="na">key=</span><span class="s">"autoresizingMask"</span> <span class="na">widthSizable=</span><span class="s">"YES"</span> <span class="na">heightSizable=</span><span class="s">"YES"</span><span class="nt">/&gt;</span>
      <span class="nt">&lt;subviews&gt;</span>
@@ -817,7 +838,8 @@ functionality to your  code.</p>
      <span class="nt">&lt;/constraints&gt;</span>
      <span class="nt">&lt;viewLayoutGuide</span> <span class="na">key=</span><span class="s">"safeArea"</span> <span class="na">id=</span><span class="s">"6Tk-OE-BBY"</span><span class="nt">/&gt;</span>
  <span class="nt">&lt;/view&gt;</span>
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
 </ol>
 
@@ -849,19 +871,21 @@ functionality to your  code.</p>
 
     <p>When you are done, your ‘ViewController’ file contains the following variables:</p>
 
-    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code> <span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
 
  <span class="kd">@IBOutlet</span> <span class="k">var</span> <span class="nv">nameLabel</span><span class="p">:</span> <span class="kt">UILabel</span><span class="o">!</span>
  <span class="kd">@IBOutlet</span> <span class="k">var</span> <span class="nv">signInButton</span><span class="p">:</span> <span class="kt">UIButton</span><span class="o">!</span>
-</code></pre></div>    </div>
+</code></pre>
+    </div>
 
     <p>And XCode has added two outlines to the <code class="highlighter-rouge">Main.storyboard</code> source.</p>
 
-    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;connections&gt;</span>
+    <div class="language-xml highlighter-rouge"><pre class="highlight"><code> <span class="nt">&lt;connections&gt;</span>
  <span class="nt">&lt;outlet</span> <span class="na">property=</span><span class="s">"nameLabel"</span> <span class="na">destination=</span><span class="s">"9eE-ZS-LU9"</span> <span class="na">id=</span><span class="s">"Ahv-Te-ZZo"</span><span class="nt">/&gt;</span>
  <span class="nt">&lt;outlet</span> <span class="na">property=</span><span class="s">"signInButton"</span> <span class="na">destination=</span><span class="s">"Lfp-KX-BDb"</span> <span class="na">id=</span><span class="s">"yef-Jj-uPt"</span><span class="nt">/&gt;</span>
  <span class="nt">&lt;/connections&gt;</span>
-</code></pre></div>    </div>
+</code></pre>
+    </div>
 
     <p>Your connectors will have their own <code class="highlighter-rouge">destination</code> and <code class="highlighter-rouge">id</code> values.</p>
   </li>
@@ -885,17 +909,18 @@ this application in your mobile add for now. In XCode, do the following;</p>
   <li>
     <p>Add an import both for <code class="highlighter-rouge">Blockstack</code> and for <code class="highlighter-rouge">SafariServices</code>.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  import UIKit
+    <div class="highlighter-rouge"><pre class="highlight"><code>  import UIKit
   import Blockstack
   import SafariServices
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Just before the <code class="highlighter-rouge">didReceiveMemoryWarning</code> function a private <code class="highlighter-rouge">updateUI()</code> function.</p>
 
     <p>This function takes care of loading the user data from Blockstack.</p>
 
-    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">updateUI</span><span class="p">()</span> <span class="p">{</span>
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">updateUI</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">async</span> <span class="p">{</span>
         <span class="k">if</span> <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">isSignedIn</span><span class="p">()</span> <span class="p">{</span>
             <span class="c1">// Read user profile data</span>
@@ -913,7 +938,8 @@ this application in your mobile add for now. In XCode, do the following;</p>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>    </div>
+</code></pre>
+    </div>
 
     <p>The function uses the <code class="highlighter-rouge">Blockstack.shared.isSignedIn()</code> method to determine if
 the user is already logged into Blockstack or not. It then uses the
@@ -923,12 +949,13 @@ the application display with the username.</p>
   <li>
     <p>Replace the content of the <code class="highlighter-rouge">viewDidLoad()</code> function so that it calls this private function.</p>
 
-    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
     <span class="c1">// Do any additional setup after loading the view, typically from a nib.</span>
     <span class="k">self</span><span class="o">.</span><span class="nf">updateUI</span><span class="p">()</span>
 <span class="p">}</span>
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
   <li>
     <p>Create a ‘signIn()’ function that handles both sign in and out.</p>
@@ -936,7 +963,7 @@ the application display with the username.</p>
     <p>The function uses the <code class="highlighter-rouge">Blockstack.shared.signIn()</code> and
 <code class="highlighter-rouge">Blockstack.shared.signOut()</code> methods to sign the user into the application.</p>
 
-    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">signIn</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+    <div class="language-swift highlighter-rouge"><pre class="highlight"><code> <span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">signIn</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">isSignedIn</span><span class="p">()</span> <span class="p">{</span>
         <span class="nf">print</span><span class="p">(</span><span class="s">"Currently signed in so signing out."</span><span class="p">)</span>
         <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">signOut</span><span class="p">()</span>
@@ -959,7 +986,8 @@ the application display with the username.</p>
     <span class="p">}</span>
 
  <span class="p">}</span>
-</code></pre></div>    </div>
+</code></pre>
+    </div>
   </li>
 </ol>
 
