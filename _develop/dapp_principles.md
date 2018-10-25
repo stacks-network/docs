@@ -109,13 +109,16 @@ sometimes they are not.
 
 ## Dapps serve users
 
-Fundamentally, DApps should serve users by preserving user autonomy.  To do so
-the Blockstack principles prevent developers from profiting from either (a)
-building abusive features into DApps like ad networks, or (b) neglecting users
-by failing to build vital safety features like <a href="https://en.wikipedia.org/wiki/Shadow_banning" target="\_blank">shadowbans</a>. Developers cannot profit from abusive features or neglectful designs.  
+Fundamentally, DApps should serve users by preserving user autonomy. Developers
+should no profit from abusive features or neglectful designs. The goal of the
+Blockstack principles is to  prevent developers from profiting from either (a) building
+abusive features into DApps like ad networks, or (b) neglecting users by failing
+to build vital safety features like <a
+href="https://en.wikipedia.org/wiki/Shadow_banning"
+target="\_blank">shadowbans</a>.
 
 Because Blockstack applications allow users to own their identity and data and
-has free choice of clients, the user can simply stop or avoid using bad DApps
+gives them free choice of clients, the user can simply stop or avoid using bad DApps
 with near-zero switching cost. This isn't to say that DApps can't be profitable.
 DApps can still make money for their developers, such as by offering content
 subscriptions or paid-for add-ons. They can broker with third parties on behalf
