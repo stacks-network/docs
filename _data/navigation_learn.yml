@@ -1,3 +1,6 @@
+- title: Introduction
+- docs:
+  - browser/dapp_principles
 - title: Try a tutorial
   docs:
   - browser/hello-blockstack
@@ -13,3 +16,4 @@
   docs:
   - core/faq_developer
   - common/javascript_ref
+  - common/core_ref
