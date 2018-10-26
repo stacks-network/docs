@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>App reviewer instructions | Blockstack</title>
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="App reviewer instructions" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="App reviewer instructions" />
+<meta property="og:description" content="App reviewer instructions" />
+<link rel="canonical" href="https://docs.blockstack.org/develop/mining_review.html" />
+<meta property="og:url" content="https://docs.blockstack.org/develop/mining_review.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-26T14:06:29-07:00" />
+<script type="application/ld+json">
+{"url":"https://docs.blockstack.org/develop/mining_review.html","headline":"App reviewer instructions","dateModified":"2018-10-26T14:06:29-07:00","datePublished":"2018-10-26T14:06:29-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/develop/mining_review.html"},"author":{"@type":"Person","name":"Blockstack"},"description":"App reviewer instructions","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="/assets/posts/logo.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js"></script>
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125894815-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125894815-1');
+</script>
+
+  
+</head>
+
+
+    <body>
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs">
+             &nbsp;&nbsp;&nbsp;
+
+             <svg style="width:141.602;height:11.487px" viewBox="0 0 141.602 11.487" enable-background="new 0 0 141.602 11.487"><path fill="#000000" d="M5.471,7.791c0,0.511-0.16,0.875-0.488,1.111C4.631,9.158,4.097,9.287,3.398,9.287H2.387V6.456h1.011 C5.256,6.456,5.471,7.219,5.471,7.791z M4.554,4.223C4.29,4.448,3.82,4.562,3.16,4.562H2.387V2.2h0.821 c0.611,0,1.066,0.094,1.352,0.279C4.81,2.641,4.933,2.907,4.933,3.292C4.933,3.704,4.809,4.008,4.554,4.223z M6.004,5.338 c0.325-0.181,0.59-0.418,0.79-0.709c0.327-0.476,0.493-1.001,0.493-1.562c0-0.53-0.105-0.989-0.313-1.362 c-0.208-0.374-0.5-0.677-0.867-0.9C5.754,0.59,5.333,0.432,4.855,0.335C4.391,0.24,3.879,0.192,3.334,0.192h-3.06 C0.123,0.192,0,0.317,0,0.471v10.545c0,0.154,0.123,0.278,0.274,0.278h3.315c0.591,0,1.143-0.065,1.645-0.194 c0.513-0.132,0.966-0.339,1.345-0.615c0.388-0.283,0.694-0.641,0.91-1.067C7.702,8.992,7.811,8.488,7.811,7.92 c0-0.78-0.226-1.413-0.672-1.879C6.847,5.737,6.467,5.502,6.004,5.338z M22.197,9.158h-4.595V0.471c0-0.153-0.123-0.278-0.274-0.278 h-1.824c-0.151,0-0.273,0.125-0.273,0.278v10.545c0,0.154,0.122,0.278,0.273,0.278h6.693c0.151,0,0.274-0.124,0.274-0.278v-1.58 C22.47,9.282,22.348,9.158,22.197,9.158z M35.076,5.695c0,0.567-0.051,1.086-0.151,1.543c-0.1,0.45-0.24,0.836-0.416,1.149 c-0.167,0.299-0.37,0.53-0.603,0.688c-0.461,0.312-1.061,0.3-1.505-0.001c-0.233-0.157-0.436-0.389-0.604-0.688 c-0.175-0.313-0.312-0.699-0.407-1.146c-0.096-0.458-0.144-0.978-0.144-1.546c0-1.126,0.187-2.013,0.556-2.638 c0.346-0.587,0.791-0.873,1.36-0.873c0.568,0,1.012,0.285,1.359,0.873C34.889,3.682,35.076,4.569,35.076,5.695z M36.319,1.541 c-0.378-0.494-0.844-0.879-1.381-1.144c-1.076-0.529-2.477-0.529-3.553,0c-0.538,0.265-1.003,0.65-1.381,1.144 c-0.373,0.487-0.669,1.09-0.879,1.792c-0.208,0.696-0.313,1.49-0.313,2.362c0,0.882,0.105,1.685,0.313,2.386 c0.21,0.706,0.504,1.318,0.876,1.821c0.378,0.511,0.844,0.908,1.382,1.179c0.538,0.27,1.136,0.407,1.779,0.407 c0.642,0,1.24-0.137,1.778-0.408c0.538-0.27,1.003-0.667,1.382-1.178c0.372-0.503,0.667-1.115,0.876-1.821 c0.208-0.7,0.314-1.502,0.314-2.386c0-0.873-0.105-1.667-0.314-2.363C36.988,2.631,36.692,2.028,36.319,1.541z M51.29,8.346 c-0.052-0.058-0.125-0.092-0.203-0.092c-0.077,0-0.151,0.033-0.203,0.092c-0.273,0.308-0.566,0.549-0.871,0.715 c-0.602,0.33-1.469,0.308-2.099,0.002c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.423-0.675-0.554-1.116 c-0.134-0.45-0.203-0.968-0.203-1.539c0-0.56,0.068-1.07,0.203-1.515c0.132-0.437,0.316-0.81,0.548-1.111 c0.227-0.293,0.504-0.522,0.825-0.68c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.543,0.333,0.775,0.568 c0.054,0.054,0.147,0.088,0.2,0.081c0.075-0.002,0.146-0.036,0.196-0.092l1.03-1.161c0.098-0.11,0.094-0.278-0.01-0.383 c-0.355-0.361-0.799-0.687-1.317-0.968c-1.105-0.597-2.643-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149 c-0.451,0.498-0.809,1.113-1.064,1.827c-0.253,0.71-0.381,1.521-0.381,2.408c0,0.899,0.128,1.712,0.381,2.417 c0.255,0.709,0.614,1.317,1.066,1.805c0.454,0.489,0.993,0.865,1.603,1.115c0.607,0.249,1.268,0.374,1.966,0.374 c0.695,0,1.333-0.142,1.897-0.423c0.559-0.279,1.068-0.684,1.513-1.204c0.09-0.106,0.089-0.264-0.004-0.368L51.29,8.346z M64.109,4.608l3.075-3.966c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.245-0.157h-2.046 c-0.084,0-0.163,0.039-0.215,0.106l-3.254,4.218V0.47c0-0.153-0.123-0.277-0.274-0.277h-1.855c-0.151,0-0.274,0.124-0.274,0.277 v10.546c0,0.153,0.122,0.278,0.274,0.278h1.855c0.151,0,0.274-0.125,0.274-0.278V8.034l1.185-1.483l2.392,4.594 c0.048,0.091,0.141,0.148,0.242,0.148h2.046c0.097,0,0.186-0.052,0.236-0.138c0.049-0.085,0.05-0.19,0.003-0.276L64.109,4.608z M81.006,6.088c-0.218-0.244-0.478-0.462-0.773-0.647c-0.286-0.179-0.606-0.339-0.94-0.47l-1.368-0.598 c-0.235-0.097-0.461-0.189-0.679-0.276c-0.196-0.079-0.371-0.169-0.516-0.27c-0.134-0.092-0.24-0.197-0.315-0.311 c-0.065-0.099-0.097-0.22-0.097-0.369c0-0.297,0.112-0.514,0.351-0.683c0.263-0.187,0.64-0.281,1.12-0.281 c0.437,0,0.833,0.074,1.179,0.22c0.355,0.151,0.702,0.36,1.03,0.623c0.116,0.094,0.287,0.074,0.381-0.044l0.952-1.193 c0.091-0.114,0.079-0.279-0.026-0.38c-0.456-0.429-0.993-0.775-1.597-1.028c-1.114-0.467-2.435-0.495-3.459-0.144 c-0.469,0.161-0.88,0.389-1.221,0.678c-0.345,0.292-0.618,0.638-0.815,1.031c-0.199,0.398-0.299,0.834-0.299,1.296 c0,0.422,0.072,0.806,0.213,1.141c0.139,0.33,0.328,0.623,0.561,0.873c0.228,0.243,0.488,0.454,0.771,0.626 c0.277,0.169,0.564,0.312,0.841,0.42l1.425,0.634c0.249,0.095,0.479,0.19,0.692,0.285c0.198,0.088,0.367,0.184,0.504,0.285 c0.122,0.09,0.216,0.193,0.281,0.308c0.06,0.107,0.091,0.246,0.091,0.411c0,0.322-0.121,0.563-0.381,0.76 c-0.278,0.21-0.709,0.316-1.28,0.316c-0.467,0-0.934-0.103-1.388-0.307C75.78,8.788,75.358,8.514,74.99,8.18 c-0.056-0.05-0.127-0.077-0.201-0.07c-0.073,0.005-0.141,0.039-0.189,0.096l-1.078,1.274c-0.095,0.113-0.087,0.283,0.02,0.385 c0.541,0.516,1.167,0.92,1.862,1.2c0.695,0.281,1.434,0.423,2.195,0.423c0.63,0,1.205-0.09,1.707-0.265 c0.506-0.178,0.942-0.422,1.294-0.729c0.355-0.309,0.632-0.673,0.823-1.085c0.191-0.412,0.288-0.858,0.288-1.328 c0-0.419-0.062-0.797-0.185-1.123C81.404,6.632,81.229,6.339,81.006,6.088z M96.557,0.192h-8.374c-0.151,0-0.273,0.124-0.273,0.278 v1.58c0,0.154,0.122,0.278,0.273,0.278h2.994v8.687c0,0.154,0.122,0.278,0.274,0.278h1.84c0.151,0,0.273-0.124,0.273-0.278V2.328 h2.994c0.151,0,0.274-0.124,0.274-0.278v-1.58C96.831,0.317,96.708,0.192,96.557,0.192z M107.143,2.902 c0.074,0.282,0.149,0.566,0.226,0.851l0.725,2.664h-1.906l0.265-0.934c0.159-0.561,0.315-1.135,0.469-1.723 C106.996,3.473,107.071,3.188,107.143,2.902z M108.512,0.384c-0.037-0.114-0.142-0.192-0.261-0.192h-2.157 c-0.118,0-0.223,0.077-0.26,0.192l-3.362,10.546c-0.027,0.085-0.012,0.177,0.04,0.249c0.051,0.072,0.134,0.115,0.221,0.115h1.871 c0.122,0,0.229-0.082,0.263-0.201l0.752-2.653h3.044l0.736,2.651c0.034,0.12,0.141,0.203,0.263,0.203h1.951 c0.088,0,0.17-0.043,0.221-0.115c0.052-0.071,0.066-0.164,0.039-0.249L108.512,0.384z M125.302,8.346 c-0.104-0.117-0.302-0.117-0.406,0c-0.273,0.308-0.566,0.548-0.87,0.715c-0.603,0.329-1.469,0.308-2.1,0.002 c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.422-0.675-0.554-1.116c-0.134-0.449-0.202-0.966-0.202-1.539 c0-0.561,0.068-1.071,0.202-1.515c0.132-0.437,0.316-0.811,0.549-1.111c0.226-0.293,0.503-0.522,0.823-0.68 c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.544,0.332,0.775,0.567c0.053,0.055,0.131,0.089,0.2,0.082 c0.075-0.002,0.146-0.035,0.196-0.092l1.031-1.161c0.098-0.11,0.093-0.278-0.01-0.383c-0.355-0.361-0.8-0.687-1.318-0.968 c-1.105-0.597-2.644-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149c-0.451,0.498-0.809,1.113-1.063,1.827 c-0.254,0.71-0.382,1.521-0.382,2.409c0,0.899,0.128,1.712,0.382,2.417c0.254,0.709,0.612,1.317,1.065,1.805 c0.453,0.489,0.993,0.864,1.604,1.115c0.606,0.249,1.268,0.374,1.965,0.374c0.695,0,1.333-0.142,1.897-0.423 c0.559-0.279,1.067-0.684,1.514-1.204c0.09-0.106,0.089-0.264-0.004-0.368L125.302,8.346z M141.567,10.88l-3.448-6.272l3.075-3.966 c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.246-0.157h-2.045c-0.084,0-0.164,0.039-0.215,0.106l-3.254,4.217 V0.47c0-0.153-0.122-0.277-0.274-0.277h-1.856c-0.151,0-0.274,0.124-0.274,0.277v10.546c0,0.153,0.123,0.278,0.274,0.278h1.856 c0.151,0,0.274-0.125,0.274-0.278V8.035l1.185-1.484l2.392,4.594c0.047,0.091,0.141,0.148,0.242,0.148h2.045 c0.097,0,0.187-0.052,0.236-0.138C141.614,11.071,141.615,10.966,141.567,10.88z"></path></svg>
+        </a>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                  <!--  -->
+                    
+                    
+                         <h5>Introduction</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                    </ul>
+                    
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/dapp_principles.html">Principles of Blockstack applications</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Try a tutorial</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/browser/hello-blockstack.html">Hello, Blockstack Tutorial</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/browser/todo-list.html">Todo List Application Tutorial</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/browser/blockstack_storage.html">Blockstack Storage Tutorial</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Work with an SDK</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/android/tutorial.html">Android SDK Tutorial (Pre-release)</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/ios/tutorial.html">iOS SDK Tutorial (Pre-release)</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Application mining</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/mining_intro.html">Understand app mining</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/mining_enroll.html">How to enroll</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Reference</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/core/faq_developer.html">Developer FAQs</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/mining_faq.html">Mining FAQ</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/javascript_ref.html">Blockstack Javascript Reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/core_ref.html">Blockstack CORE API</a></li>
+                    
+                    </ul>
+                    
+                  <!--  -->
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article markdown="span" class="uk-article">
+
+                    <h1 class="uk-article-title">App reviewer instructions</h1>
+
+                    
+
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2018-10-26T14:06:29-07:00" itemprop="datePublished">
+    
+    
+
+<a "target="_blank" href="https://github.com/moxiegirl/docs.blockstack/mining_review.md" class="btn btn-default githubEditButton" role="button">
+  <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+ <span style="font-family:Wingdings">&#119;</span> Oct 26, 2018
+</time>
+
+                    </div>
+
+                    <div markdown="span" class="article-content">
+                        
+<p>Reviewers submit their app rankings to Blockstack every month. The first day of
+the month Blockstack will email reviewers a spreadsheet on which to record rankings.</p>
+
+<p>To submit app rankings, please complete the following steps:</p>
+
+<ol>
+  <li>
+    <p>Download the spreadsheet for that month.</p>
+
+    <p>The spreadsheet is sent to the email address Blocksack has on file for you. The sheet lists all apps eligible for ranking.</p>
+  </li>
+  <li>
+    <p>Record your rankings on the spreadsheet.</p>
+
+    <p>Place a the rank value in the <strong>Ranking</strong> column next to each app you would
+ like to rank. You can rank only those apps you want and omit ranking others.
+ Rank each application numerically where 1 (one) is the highest. For reviewer
+ partners, rank apps for the month using the methodology of your
+ organization.</p>
+
+    <p>Please avoid modifying the spreadsheet in apart from adding your rankings.
+ The <code class="highlighter-rouge">App ID</code> column, in particular, must be preserved to process your rankings
+ accurately.</p>
+  </li>
+  <li>
+    <p>Return your rankings by the 15th of each month to <a href="mailto:app.mining@blockstack.com">app.mining@blockstack.com</a>.</p>
+
+    <div class="uk-alert-warning" uk-alert=""><b>Important:</b> Blockstack must receive your rankings by the 15th of the month or they won't be considered!</div>
+  </li>
+  <li>
+    <p>Attach your completed spreadsheet to your return email.</p>
+
+    <p>Include in the email a brief explanation summarizing your methodology or
+thoughts when ranking. Please mention any app you want to highlight for the
+month.</p>
+  </li>
+</ol>
+
+<p>After receiving the rankings from the reviews, Blockstack will calculate each applications final z-scores.</p>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=App reviewer instructions&url=https://docs.blockstack.org/develop/mining_review.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+</div>
+
+                        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. <br> &copy; 2018 Blockstack Public Benefits Corp.</div>
+
+    </div>
+</footer>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+
+
+                    <!-- <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+ -->
+
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      /* A CSS selector that points to your search  box */
+      searchBox: {
+        selector: '#searchBox'
+      },
+      results: {
+         embedConfig: undefined, // {'url':undefined,'contentBlock':'.page-content-body'}, // if url is given the page will change to that URL and look for the content block there to insert the results
+         fullScreenConfig: undefined, // {trigger: '#ss360-search-trigger', caption: 'Search this site'}, trigger is the CSS selector to the element that starts the search full screen overlay and searchCaption the caption on the full screen search page
+         caption: 'Found #COUNT# search results for \"#QUERY#\"', // the caption of the search results
+         group: true, // whether results should be grouped if content groups are available
+         filters: undefined,
+         num: 96, // the maximum number of search results to be shown
+         highlightQueryTerms: true, // whether to highlight the query terms in search results
+         moreResultsButton: "Show more results", // HTML for the more results button, all results will be shown if this is null
+         noResultsText: 'Sorry, we have not found any matches for your query.', // the text to show when there are no results
+         queryCorrectionText: 'Did you mean "#CORRECTION#"?',
+         searchQueryParamName: 'ss360Query', // the name of the search query parameter
+         linksOpenNewTab: false, // should clicking on the result links open a new tab/window?
+         showSearchBoxLayover: true, //whether to show search box in search result layover
+         moreResultsPagingSize: 12, // the number of new results to show each time the more results button is pressed (max: 24)
+         orderByRelevanceText: "Relevance" // the text to be shown in order select box to describe 'order by relevance' option
+      },
+      suggestions: {
+         show: true,  // whether to show search suggestions
+         maxQuerySuggestions: 3, // the maximum number of query suggestions
+         querySuggestionHeadline: undefined, // the headline of the query suggestions, leave blank if no headline should be shown
+         emptyQuerySuggestions: undefined,
+         showImages: false, // show images in search suggestions
+         num: 6, // the maximum number of search suggestions to be shown
+         minChars: 3, // minimum number of characters before the suggestions shows, default: 3,
+         maxWidth: 'auto', // the maximum width of the suggest box, default: as wide as the input box, at least 275px
+         throttleTime: 300, // the number of milliseconds before the suggest is triggered after finished input, default: 300ms
+         extraHtml: undefined, // extra HTML code that is shown in each search suggest, you can even show values of datapoints here,
+         highlight: true, // whether matched words should be highlighted, default: true
+       },
+       smart404: { /* The caption of the search results. */
+             caption: 'These links might be useful', /* The string in the title that identifies the page as a 404 page. */
+             identifier: 'Page not found', /* A CSS selector that points to the area in which the alternative links should be shown. */
+             resultSelector: '#ss360-404',
+        }
+   };
+</script>
+<script src="https://cdn.sitesearch360.com/sitesearch360-v11.min.js" async></script>
+
+    
+
+
+
+
+    </body>
+
+</html>

@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>iOS SDK Tutorial (Pre-release) | Blockstack</title>
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="iOS SDK Tutorial (Pre-release)" />
+<meta name="author" content="Blockstack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="iOS SDK Tutorial (Pre-release)" />
+<meta property="og:description" content="iOS SDK Tutorial (Pre-release)" />
+<link rel="canonical" href="https://docs.blockstack.org/ios/tutorial.html" />
+<meta property="og:url" content="https://docs.blockstack.org/ios/tutorial.html" />
+<meta property="og:site_name" content="Blockstack" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-26T14:06:29-07:00" />
+<script type="application/ld+json">
+{"url":"https://docs.blockstack.org/ios/tutorial.html","headline":"iOS SDK Tutorial (Pre-release)","dateModified":"2018-10-26T14:06:29-07:00","datePublished":"2018-10-26T14:06:29-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/ios/tutorial.html"},"author":{"@type":"Person","name":"Blockstack"},"description":"iOS SDK Tutorial (Pre-release)","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
+  <meta property="og:image" content="/assets/posts/logo.png"/>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/img/touch-icon.png" >
+  <link rel="alternate" type="application/rss+xml" title="Blockstack" href="/feed.xml">
+  <script src="/assets/js/main.js"></script>
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125894815-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125894815-1');
+</script>
+
+  
+</head>
+
+
+    <body>
+
+    <header class="uk-background-secondary">
+    <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-sticky uk-sticky-fixed" style="position: fixed; top: 0px; width: 1904px;">
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+    <div data-uk-navbar>
+        <div class="uk-navbar-left">
+
+            <!-- <a class="uk-navbar-item uk-logo" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a> -->
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/assets/posts/logo.png" alt="Docs">
+             &nbsp;&nbsp;&nbsp;
+
+             <svg style="width:141.602;height:11.487px" viewBox="0 0 141.602 11.487" enable-background="new 0 0 141.602 11.487"><path fill="#000000" d="M5.471,7.791c0,0.511-0.16,0.875-0.488,1.111C4.631,9.158,4.097,9.287,3.398,9.287H2.387V6.456h1.011 C5.256,6.456,5.471,7.219,5.471,7.791z M4.554,4.223C4.29,4.448,3.82,4.562,3.16,4.562H2.387V2.2h0.821 c0.611,0,1.066,0.094,1.352,0.279C4.81,2.641,4.933,2.907,4.933,3.292C4.933,3.704,4.809,4.008,4.554,4.223z M6.004,5.338 c0.325-0.181,0.59-0.418,0.79-0.709c0.327-0.476,0.493-1.001,0.493-1.562c0-0.53-0.105-0.989-0.313-1.362 c-0.208-0.374-0.5-0.677-0.867-0.9C5.754,0.59,5.333,0.432,4.855,0.335C4.391,0.24,3.879,0.192,3.334,0.192h-3.06 C0.123,0.192,0,0.317,0,0.471v10.545c0,0.154,0.123,0.278,0.274,0.278h3.315c0.591,0,1.143-0.065,1.645-0.194 c0.513-0.132,0.966-0.339,1.345-0.615c0.388-0.283,0.694-0.641,0.91-1.067C7.702,8.992,7.811,8.488,7.811,7.92 c0-0.78-0.226-1.413-0.672-1.879C6.847,5.737,6.467,5.502,6.004,5.338z M22.197,9.158h-4.595V0.471c0-0.153-0.123-0.278-0.274-0.278 h-1.824c-0.151,0-0.273,0.125-0.273,0.278v10.545c0,0.154,0.122,0.278,0.273,0.278h6.693c0.151,0,0.274-0.124,0.274-0.278v-1.58 C22.47,9.282,22.348,9.158,22.197,9.158z M35.076,5.695c0,0.567-0.051,1.086-0.151,1.543c-0.1,0.45-0.24,0.836-0.416,1.149 c-0.167,0.299-0.37,0.53-0.603,0.688c-0.461,0.312-1.061,0.3-1.505-0.001c-0.233-0.157-0.436-0.389-0.604-0.688 c-0.175-0.313-0.312-0.699-0.407-1.146c-0.096-0.458-0.144-0.978-0.144-1.546c0-1.126,0.187-2.013,0.556-2.638 c0.346-0.587,0.791-0.873,1.36-0.873c0.568,0,1.012,0.285,1.359,0.873C34.889,3.682,35.076,4.569,35.076,5.695z M36.319,1.541 c-0.378-0.494-0.844-0.879-1.381-1.144c-1.076-0.529-2.477-0.529-3.553,0c-0.538,0.265-1.003,0.65-1.381,1.144 c-0.373,0.487-0.669,1.09-0.879,1.792c-0.208,0.696-0.313,1.49-0.313,2.362c0,0.882,0.105,1.685,0.313,2.386 c0.21,0.706,0.504,1.318,0.876,1.821c0.378,0.511,0.844,0.908,1.382,1.179c0.538,0.27,1.136,0.407,1.779,0.407 c0.642,0,1.24-0.137,1.778-0.408c0.538-0.27,1.003-0.667,1.382-1.178c0.372-0.503,0.667-1.115,0.876-1.821 c0.208-0.7,0.314-1.502,0.314-2.386c0-0.873-0.105-1.667-0.314-2.363C36.988,2.631,36.692,2.028,36.319,1.541z M51.29,8.346 c-0.052-0.058-0.125-0.092-0.203-0.092c-0.077,0-0.151,0.033-0.203,0.092c-0.273,0.308-0.566,0.549-0.871,0.715 c-0.602,0.33-1.469,0.308-2.099,0.002c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.423-0.675-0.554-1.116 c-0.134-0.45-0.203-0.968-0.203-1.539c0-0.56,0.068-1.07,0.203-1.515c0.132-0.437,0.316-0.81,0.548-1.111 c0.227-0.293,0.504-0.522,0.825-0.68c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.543,0.333,0.775,0.568 c0.054,0.054,0.147,0.088,0.2,0.081c0.075-0.002,0.146-0.036,0.196-0.092l1.03-1.161c0.098-0.11,0.094-0.278-0.01-0.383 c-0.355-0.361-0.799-0.687-1.317-0.968c-1.105-0.597-2.643-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149 c-0.451,0.498-0.809,1.113-1.064,1.827c-0.253,0.71-0.381,1.521-0.381,2.408c0,0.899,0.128,1.712,0.381,2.417 c0.255,0.709,0.614,1.317,1.066,1.805c0.454,0.489,0.993,0.865,1.603,1.115c0.607,0.249,1.268,0.374,1.966,0.374 c0.695,0,1.333-0.142,1.897-0.423c0.559-0.279,1.068-0.684,1.513-1.204c0.09-0.106,0.089-0.264-0.004-0.368L51.29,8.346z M64.109,4.608l3.075-3.966c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.245-0.157h-2.046 c-0.084,0-0.163,0.039-0.215,0.106l-3.254,4.218V0.47c0-0.153-0.123-0.277-0.274-0.277h-1.855c-0.151,0-0.274,0.124-0.274,0.277 v10.546c0,0.153,0.122,0.278,0.274,0.278h1.855c0.151,0,0.274-0.125,0.274-0.278V8.034l1.185-1.483l2.392,4.594 c0.048,0.091,0.141,0.148,0.242,0.148h2.046c0.097,0,0.186-0.052,0.236-0.138c0.049-0.085,0.05-0.19,0.003-0.276L64.109,4.608z M81.006,6.088c-0.218-0.244-0.478-0.462-0.773-0.647c-0.286-0.179-0.606-0.339-0.94-0.47l-1.368-0.598 c-0.235-0.097-0.461-0.189-0.679-0.276c-0.196-0.079-0.371-0.169-0.516-0.27c-0.134-0.092-0.24-0.197-0.315-0.311 c-0.065-0.099-0.097-0.22-0.097-0.369c0-0.297,0.112-0.514,0.351-0.683c0.263-0.187,0.64-0.281,1.12-0.281 c0.437,0,0.833,0.074,1.179,0.22c0.355,0.151,0.702,0.36,1.03,0.623c0.116,0.094,0.287,0.074,0.381-0.044l0.952-1.193 c0.091-0.114,0.079-0.279-0.026-0.38c-0.456-0.429-0.993-0.775-1.597-1.028c-1.114-0.467-2.435-0.495-3.459-0.144 c-0.469,0.161-0.88,0.389-1.221,0.678c-0.345,0.292-0.618,0.638-0.815,1.031c-0.199,0.398-0.299,0.834-0.299,1.296 c0,0.422,0.072,0.806,0.213,1.141c0.139,0.33,0.328,0.623,0.561,0.873c0.228,0.243,0.488,0.454,0.771,0.626 c0.277,0.169,0.564,0.312,0.841,0.42l1.425,0.634c0.249,0.095,0.479,0.19,0.692,0.285c0.198,0.088,0.367,0.184,0.504,0.285 c0.122,0.09,0.216,0.193,0.281,0.308c0.06,0.107,0.091,0.246,0.091,0.411c0,0.322-0.121,0.563-0.381,0.76 c-0.278,0.21-0.709,0.316-1.28,0.316c-0.467,0-0.934-0.103-1.388-0.307C75.78,8.788,75.358,8.514,74.99,8.18 c-0.056-0.05-0.127-0.077-0.201-0.07c-0.073,0.005-0.141,0.039-0.189,0.096l-1.078,1.274c-0.095,0.113-0.087,0.283,0.02,0.385 c0.541,0.516,1.167,0.92,1.862,1.2c0.695,0.281,1.434,0.423,2.195,0.423c0.63,0,1.205-0.09,1.707-0.265 c0.506-0.178,0.942-0.422,1.294-0.729c0.355-0.309,0.632-0.673,0.823-1.085c0.191-0.412,0.288-0.858,0.288-1.328 c0-0.419-0.062-0.797-0.185-1.123C81.404,6.632,81.229,6.339,81.006,6.088z M96.557,0.192h-8.374c-0.151,0-0.273,0.124-0.273,0.278 v1.58c0,0.154,0.122,0.278,0.273,0.278h2.994v8.687c0,0.154,0.122,0.278,0.274,0.278h1.84c0.151,0,0.273-0.124,0.273-0.278V2.328 h2.994c0.151,0,0.274-0.124,0.274-0.278v-1.58C96.831,0.317,96.708,0.192,96.557,0.192z M107.143,2.902 c0.074,0.282,0.149,0.566,0.226,0.851l0.725,2.664h-1.906l0.265-0.934c0.159-0.561,0.315-1.135,0.469-1.723 C106.996,3.473,107.071,3.188,107.143,2.902z M108.512,0.384c-0.037-0.114-0.142-0.192-0.261-0.192h-2.157 c-0.118,0-0.223,0.077-0.26,0.192l-3.362,10.546c-0.027,0.085-0.012,0.177,0.04,0.249c0.051,0.072,0.134,0.115,0.221,0.115h1.871 c0.122,0,0.229-0.082,0.263-0.201l0.752-2.653h3.044l0.736,2.651c0.034,0.12,0.141,0.203,0.263,0.203h1.951 c0.088,0,0.17-0.043,0.221-0.115c0.052-0.071,0.066-0.164,0.039-0.249L108.512,0.384z M125.302,8.346 c-0.104-0.117-0.302-0.117-0.406,0c-0.273,0.308-0.566,0.548-0.87,0.715c-0.603,0.329-1.469,0.308-2.1,0.002 c-0.326-0.159-0.608-0.387-0.841-0.681c-0.236-0.299-0.422-0.675-0.554-1.116c-0.134-0.449-0.202-0.966-0.202-1.539 c0-0.561,0.068-1.071,0.202-1.515c0.132-0.437,0.316-0.811,0.549-1.111c0.226-0.293,0.503-0.522,0.823-0.68 c0.614-0.302,1.45-0.317,2.02-0.032c0.283,0.142,0.544,0.332,0.775,0.567c0.053,0.055,0.131,0.089,0.2,0.082 c0.075-0.002,0.146-0.035,0.196-0.092l1.031-1.161c0.098-0.11,0.093-0.278-0.01-0.383c-0.355-0.361-0.8-0.687-1.318-0.968 c-1.105-0.597-2.644-0.547-3.841-0.044c-0.621,0.262-1.165,0.648-1.618,1.149c-0.451,0.498-0.809,1.113-1.063,1.827 c-0.254,0.71-0.382,1.521-0.382,2.409c0,0.899,0.128,1.712,0.382,2.417c0.254,0.709,0.612,1.317,1.065,1.805 c0.453,0.489,0.993,0.864,1.604,1.115c0.606,0.249,1.268,0.374,1.965,0.374c0.695,0,1.333-0.142,1.897-0.423 c0.559-0.279,1.067-0.684,1.514-1.204c0.09-0.106,0.089-0.264-0.004-0.368L125.302,8.346z M141.567,10.88l-3.448-6.272l3.075-3.966 c0.065-0.083,0.077-0.198,0.031-0.293c-0.045-0.096-0.141-0.157-0.246-0.157h-2.045c-0.084,0-0.164,0.039-0.215,0.106l-3.254,4.217 V0.47c0-0.153-0.122-0.277-0.274-0.277h-1.856c-0.151,0-0.274,0.124-0.274,0.277v10.546c0,0.153,0.123,0.278,0.274,0.278h1.856 c0.151,0,0.274-0.125,0.274-0.278V8.035l1.185-1.484l2.392,4.594c0.047,0.091,0.141,0.148,0.242,0.148h2.045 c0.097,0,0.187-0.052,0.236-0.138C141.614,11.071,141.615,10.966,141.567,10.88z"></path></svg>
+        </a>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+
+            
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                        <input id="searchBox" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                    </form>
+                    <ul id="searchBox-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                </div>
+            </div>
+            
+
+            <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+
+    
+
+    <div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed">
+                  <!--  -->
+                    
+                    
+                         <h5>Introduction</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                    </ul>
+                    
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/dapp_principles.html">Principles of Blockstack applications</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Try a tutorial</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/browser/hello-blockstack.html">Hello, Blockstack Tutorial</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/browser/todo-list.html">Todo List Application Tutorial</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/browser/blockstack_storage.html">Blockstack Storage Tutorial</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Work with an SDK</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/android/tutorial.html">Android SDK Tutorial (Pre-release)</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class="uk-active"><a href="/ios/tutorial.html">iOS SDK Tutorial (Pre-release)</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Application mining</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/mining_intro.html">Understand app mining</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/mining_enroll.html">How to enroll</a></li>
+                    
+                    </ul>
+                    
+                    
+                         <h5>Reference</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/core/faq_developer.html">Developer FAQs</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/mining_faq.html">Mining FAQ</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/javascript_ref.html">Blockstack Javascript Reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/core_ref.html">Blockstack CORE API</a></li>
+                    
+                    </ul>
+                    
+                  <!--  -->
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article markdown="span" class="uk-article">
+
+                    <h1 class="uk-article-title">iOS SDK Tutorial (Pre-release)</h1>
+
+                    
+
+
+                    <div class="uk-article-meta uk-margin-top uk-margin-medium-bottom">
+                        
+
+
+    <!-- <img class="avatar avatar-small" alt="Blockstack" width="32" height="32" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32" srcset="https://avatars2.githubusercontent.com/Blockstack?v=3&s=32 1x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=64 2x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=96 3x, https://avatars2.githubusercontent.com/Blockstack?v=3&s=128 4x" /> -->
+
+
+
+    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
+
+
+<time datetime="2018-10-26T14:06:29-07:00" itemprop="datePublished">
+    
+    
+
+<a "target="_blank" href="https://github.com/blockstack/blockstack-ios/blob/master/docs/tutorial.md" class="btn btn-default githubEditButton" role="button">
+  <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
+ <span style="font-family:Wingdings">&#119;</span> Oct 26, 2018
+</time>
+
+                    </div>
+
+                    <div markdown="span" class="article-content">
+                        
+<p class="no_toc">This tutorial teaches you how to create a decentralized application using
+Blockstack’s iOS SDK using the following content:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#understand-the-sample-application-flow" id="markdown-toc-understand-the-sample-application-flow">Understand the sample application flow</a></li>
+  <li><a href="#set-up-your-environment" id="markdown-toc-set-up-your-environment">Set up your environment</a>    <ul>
+      <li><a href="#install-xcode" id="markdown-toc-install-xcode">Install XCode</a></li>
+      <li><a href="#do-you-have-npm" id="markdown-toc-do-you-have-npm">Do you have npm?</a></li>
+      <li><a href="#install-the-cocoapods-160beta1-dependency-manager" id="markdown-toc-install-the-cocoapods-160beta1-dependency-manager">Install the CocoaPods 1.6.0.beta.1 dependency manager</a></li>
+      <li><a href="#use-npm-to-install-yeoman-and-the-blockstack-app-generator" id="markdown-toc-use-npm-to-install-yeoman-and-the-blockstack-app-generator">Use npm to install Yeoman and the Blockstack App Generator</a></li>
+    </ul>
+  </li>
+  <li><a href="#build-the-blockstack-hello-world" id="markdown-toc-build-the-blockstack-hello-world">Build the Blockstack hello-world</a>    <ul>
+      <li><a href="#generate-and-launch-your-hello-blockstack-application" id="markdown-toc-generate-and-launch-your-hello-blockstack-application">Generate and launch your hello-blockstack application</a></li>
+      <li><a href="#add-a-redirect-end-point-to-your-application" id="markdown-toc-add-a-redirect-end-point-to-your-application">Add a redirect end point to your application</a></li>
+    </ul>
+  </li>
+  <li><a href="#build-the-hello-blockstack-ios" id="markdown-toc-build-the-hello-blockstack-ios">Build the hello-blockstack-ios</a>    <ul>
+      <li><a href="#create-an-xcode-project" id="markdown-toc-create-an-xcode-project">Create an XCode Project</a></li>
+      <li><a href="#add-and-edit-a-podfile" id="markdown-toc-add-and-edit-a-podfile">Add and edit a Podfile</a></li>
+      <li><a href="#install-blockstack-sdk-and-open-the-pod-project" id="markdown-toc-install-blockstack-sdk-and-open-the-pod-project">Install Blockstack SDK and open the pod project</a></li>
+      <li><a href="#choose-a-custom-protocol-handler" id="markdown-toc-choose-a-custom-protocol-handler">Choose a custom protocol handler</a></li>
+      <li><a href="#add-a-splash-screen" id="markdown-toc-add-a-splash-screen">Add a splash screen</a></li>
+      <li><a href="#update-the-mainstoryboard" id="markdown-toc-update-the-mainstoryboard">Update the Main.storyboard</a></li>
+      <li><a href="#add-the-ui-variables-to-the-viewcontroller-file" id="markdown-toc-add-the-ui-variables-to-the-viewcontroller-file">Add the UI variables to the ViewController file.</a></li>
+      <li><a href="#edit-the-viewcontrollerswift-file" id="markdown-toc-edit-the-viewcontrollerswift-file">Edit the ViewController.swift file</a></li>
+    </ul>
+  </li>
+  <li><a href="#troubleshooting-your-build-in-xcode" id="markdown-toc-troubleshooting-your-build-in-xcode">Troubleshooting your build in XCode</a></li>
+</ul>
+
+<p>This tutorial was extensively tested using XCode 9.3 on a MacBook Air
+running High Sierra 10.13.4. If your environment is different, you may encounter
+slight or even major discrepancies when performing the procedures in this
+tutorial. Please <a href="https://slofile.com/slack/blockstack">join the Blockstack community Slack</a> and post questions or comments to
+the <code class="highlighter-rouge">#support</code> channel.</p>
+
+<p>Finally, this tutorial is written for all levels from the beginner to the most
+experienced. For best results, beginners should follow the guide as written. It
+is expected that the fast or furiously brilliant will skip ahead and improvise
+on this material at will. God speed one and all.</p>
+
+<p>If you prefer, you can skip working through the tutorial all together. Instead,
+you can <a href="#">download the final project code</a> and import it
+into XCode to review it.</p>
+
+<h2 id="understand-the-sample-application-flow">Understand the sample application flow</h2>
+
+<p>When complete, the sample application is a simple <code class="highlighter-rouge">hello-world</code> intended for use
+on an iOS phone.</p>
+
+<p><img src="images/final-app.png" alt="" /></p>
+
+<p>Only users with an existing <code class="highlighter-rouge">blockstack.id</code> can run your
+final sample application. When complete, users interact with the sample
+application by doing the following:</p>
+
+<p><img src="images/app-flow.png" alt="" /></p>
+
+<h2 id="set-up-your-environment">Set up your environment</h2>
+
+<p>This sample application requires two code bases, a BlockStack <code class="highlighter-rouge">hello-blockstack</code> web
+application and a <code class="highlighter-rouge">hello-ios</code> iOS application. You use the iOS application to run the
+web application on an iOS device.</p>
+
+<p>Before you start developing the sample, there are a few elements you need in
+your environment.</p>
+
+<h3 id="install-xcode">Install XCode</h3>
+
+<p>If you are an experienced iOS developer and already have an iOS
+development environment on your workstation, you can use that and skip this
+step. However, you may need to adjust the remaining instructions for your
+environment.</p>
+
+<p>Follow the installation instructions to <a href="https://developer.apple.com/xcode/">download and XCode</a> for your operating system.
+Depending on your network connection, this can take between 15-30 minutes.</p>
+
+<h3 id="do-you-have-npm">Do you have npm?</h3>
+
+<p>The Blockstack code in this tutorial relies on the <code class="highlighter-rouge">npm</code> dependency manager.
+Before you begin, verify you have installed <code class="highlighter-rouge">npm</code> using the <code class="highlighter-rouge">which</code> command to
+verify.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>which npm
+/usr/local/bin/npm
+</code></pre></div></div>
+
+<p>If you don’t find <code class="highlighter-rouge">npm</code> in your system, <a href="https://www.npmjs.com/get-npm">install
+it</a>.</p>
+
+<h3 id="install-the-cocoapods-160beta1-dependency-manager">Install the CocoaPods 1.6.0.beta.1 dependency manager</h3>
+
+<p>The sample application only runs on devices with iOS 11.0 or higher. You install
+the Blockstack iOS SDK through the CocoaPods. Cocoapods is a dependency manager
+for Swift and Objective-C Cocoa projects. It’s a simple, user friendly way to
+use libraries from the community in your project.</p>
+
+<p>You must use the <code class="highlighter-rouge">1.6.0.beta.1</code> version of CocoaPods or newer to avoid an
+incapability between Cocoapods and XCode. Before starting the tutorial, confirm
+you have installed CocoaPods.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pod <span class="nt">--version</span>
+1.6.0.beta.1
+</code></pre></div></div>
+
+<p>If you don’t have the CocoaPods beta version, install it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem install cocoapods <span class="nt">-v</span> 1.6.0.beta.1
+</code></pre></div></div>
+
+<h3 id="use-npm-to-install-yeoman-and-the-blockstack-app-generator">Use npm to install Yeoman and the Blockstack App Generator</h3>
+
+<p>You use <code class="highlighter-rouge">npm</code> to install Yeoman. Yeoman is a generic scaffolding system that
+helps users rapidly start new projects and streamline the maintenance of
+existing projects.</p>
+
+<ol>
+  <li>
+    <p>Install Yeoman.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm install <span class="nt">-g</span> yo
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Install the Blockstack application generator.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm install <span class="nt">-g</span> generator-blockstack
+</code></pre></div>    </div>
+    <h2 id="build-the-blockstack-hello-world">Build the Blockstack hello-world</h2>
+  </li>
+</ol>
+
+<p>In this section, you build a Blockstack <code class="highlighter-rouge">hello-world</code> application. Then, you
+modify the <code class="highlighter-rouge">hello-world</code> to interact with the iOS app via a redirect.</p>
+
+<h3 id="generate-and-launch-your-hello-blockstack-application">Generate and launch your hello-blockstack application</h3>
+
+<p>In this section, you build an initial React.js application called
+<code class="highlighter-rouge">hello-blockstack</code>.</p>
+
+<ol>
+  <li>
+    <p>Create a <code class="highlighter-rouge">hello-blockstack</code> directory.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir hello-blockstack
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Change into your new directory.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd </span>hello-blockstack
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Use Yeoman and the Blockstack application generator to create your initial <code class="highlighter-rouge">hello-blockstack</code> application.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> yo blockstack:react
+</code></pre></div>    </div>
+
+    <p>You should see several interactive prompts.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>yo blockstack:react
+ <span class="o">==========================================================================</span>
+ We are constantly looking <span class="k">for </span>ways to make yo better!
+ May we anonymously report usage statistics to improve the tool over <span class="nb">time</span>?
+ More info: https://github.com/yeoman/insight &amp; http://yeoman.io
+ <span class="o">==========================================================================</span> No
+
+      _-----_     ╭──────────────────────────╮
+     |       |    │      Welcome to the      │
+     |--<span class="o">(</span>o<span class="o">)</span><span class="nt">--</span>|    │      Blockstack app      │
+    <span class="sb">`</span><span class="nt">---------</span>´   │        generator!        │
+     <span class="o">(</span> _´U<span class="sb">`</span>_ <span class="o">)</span>    ╰──────────────────────────╯
+     /___A___<span class="se">\ </span>  /
+      |  ~  |
+    __<span class="s1">'.___.'</span>__
+  ´   <span class="sb">`</span>  |° ´ Y <span class="sb">`</span>
+
+ ? Are you ready to build a Blockstack app <span class="k">in </span>React? <span class="o">(</span>Y/n<span class="o">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Respond to the prompts to populate the initial app.</p>
+
+    <p>After the process completes successfully, you see a prompt similar to the following:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">[</span>fsevents] Success:
+ <span class="s2">"/Users/theuser/repos/hello-blockstack/node_modules/fsevents/lib/binding/Release/node-v59-darwin-x64/fse.node"</span>
+ is installed via remote npm notice created a lockfile as package-lock.json.
+ You should commit this file. added 1060 packages <span class="k">in </span>26.901s
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the initial application.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm start
+
+ <span class="o">&gt;</span> hello-blockstack@0.0.0 start /Users/moxiegirl/repos/hello-blockstack
+ <span class="o">&gt;</span> webpack-dev-server
+
+ Project is running at http://localhost:8080/
+ webpack output is served from /
+ 404s will fallback to /index.html
+ Hash: 4d2312ba236a4b95dc3a
+ Version: webpack 2.7.0
+ Time: 2969ms
+                                  Asset       Size  Chunks                    Chunk Names
+ ....
+   Child html-webpack-plugin <span class="k">for</span> <span class="s2">"index.html"</span>:
+      chunk    <span class="o">{</span>0<span class="o">}</span> index.html 541 kB <span class="o">[</span>entry] <span class="o">[</span>rendered]
+          <span class="o">[</span>0] ./~/lodash/lodash.js 540 kB <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
+          <span class="o">[</span>1] ./~/html-webpack-plugin/lib/loader.js!./src/index.html 533 bytes <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
+          <span class="o">[</span>2] <span class="o">(</span>webpack<span class="o">)</span>/buildin/global.js 509 bytes <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
+          <span class="o">[</span>3] <span class="o">(</span>webpack<span class="o">)</span>/buildin/module.js 517 bytes <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
+  webpack: Compiled successfully.
+</code></pre></div>    </div>
+
+    <p>At this point, the browser is running a Blockstack server on your local host.</p>
+  </li>
+  <li>
+    <p>Navigate to <code class="highlighter-rouge">https://localhost:8080</code> with your browser to display the
+application.</p>
+
+    <p><img src="images/blockstack-signin.png" alt="" /></p>
+
+    <p>This local instances is for testing your applications only.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Sign in with Blockstack</strong></p>
+
+    <p>The system displays a prompt allowing you to create a new Blockstack ID or restore an existing one.</p>
+
+    <p><img src="images/create-restore.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Follow the prompts appropriate to your situation.</p>
+
+    <p>If you are restoring an existing ID, you may see a prompt about your user
+ being nameless, ignore it. At this point you have only a single application
+ on your test server.  So, you should see this single application, with your
+ own <code class="highlighter-rouge">blockstack.id</code> display name, once you are signed in:</p>
+
+    <p><img src="images/running-app.png" alt="" /></p>
+  </li>
+</ol>
+
+<h3 id="add-a-redirect-end-point-to-your-application">Add a redirect end point to your application</h3>
+
+<p>When a user opens the webapp from the Blockstack browser on an iOS phone,
+you want the web app to redirect the user to your iOS application. The work
+you do here will allow it.</p>
+
+<ol>
+  <li>
+    <p>From the terminal command line, change directory to your web
+application directory.</p>
+  </li>
+  <li>
+    <p>Create a <code class="highlighter-rouge">public</code> directory.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>mkdir public
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Use the <code class="highlighter-rouge">touch</code> command to add a redirect endpoint to your application.</p>
+
+    <p>This endpoint on the web version of your app will redirect iOS users back
+to your mobile app.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>touch public/redirect.html
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Open <code class="highlighter-rouge">redirect.html</code> and add code to the endpoint.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="cp">&lt;!DOCTYPE html&gt;</span>
+ <span class="nt">&lt;html&gt;</span>
+ <span class="nt">&lt;head&gt;</span>
+   <span class="nt">&lt;title&gt;</span>Hello, Blockstack!<span class="nt">&lt;/title&gt;</span>
+   <span class="nt">&lt;script&gt;</span>
+   <span class="kd">function</span> <span class="nx">getParameterByName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+     <span class="kd">var</span> <span class="nx">match</span> <span class="o">=</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">'[?&amp;]'</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s1">'=([^&amp;]*)'</span><span class="p">).</span><span class="nx">exec</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span>
+     <span class="k">return</span> <span class="nx">match</span> <span class="o">&amp;&amp;</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\+</span><span class="sr">/g</span><span class="p">,</span> <span class="s1">' '</span><span class="p">));</span>
+   <span class="p">}</span>
+
+   <span class="kd">var</span> <span class="nx">authResponse</span> <span class="o">=</span> <span class="nx">getParameterByName</span><span class="p">(</span><span class="s1">'authResponse'</span><span class="p">)</span>
+   <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="s2">"myblockstackapp://?authResponse="</span> <span class="o">+</span> <span class="nx">authResponse</span>
+   <span class="nt">&lt;/script&gt;</span>
+ <span class="nt">&lt;body&gt;</span>
+ <span class="nt">&lt;/body&gt;</span>
+ <span class="nt">&lt;/html&gt;</span>
+</code></pre></div>    </div>
+
+    <p>Blockstack apps are identified by their domain names.  The endpoint will
+ receive a get request with the query parameter <code class="highlighter-rouge">authResponse=XXXX</code> and
+ should redirect the browser to <code class="highlighter-rouge">myblockstackapp:XXXX</code>.</p>
+
+    <p><code class="highlighter-rouge">myblockstackapp:</code> is custom protocol handler. The handler should be unique
+ to your application. Your app’s web-based authentication uses this handler
+ to redirect the user back to your iOS app. Later, you’ll add a reference
+ to this handler in your iOS application.</p>
+  </li>
+  <li>Close and save the <code class="highlighter-rouge">redirect.html</code> file.</li>
+  <li>
+    <p>Ensure your Blockstack app compiles successfully.</p>
+
+    <p>The <code class="highlighter-rouge">npm</code> process should detect and compile your change.</p>
+  </li>
+</ol>
+
+<h2 id="build-the-hello-blockstack-ios">Build the hello-blockstack-ios</h2>
+
+<p>Now, you build an iOS application that can access and run your Blockstack web
+application on a mobile device.</p>
+
+<h3 id="create-an-xcode-project">Create an XCode Project</h3>
+
+<p>This tutorial uses XCode 9.3, you can use another version but be aware that some
+menu items and therefore these procedures may be differœent on your version.</p>
+
+<ol>
+  <li>Launch the XCode interface.</li>
+  <li>Choose <strong>Create new XCode project</strong>.</li>
+  <li>Select <strong>iOS</strong>.</li>
+  <li>
+    <p>Select <strong>Single View App</strong>.</p>
+
+    <p><img src="images/single-view-app.png" alt="" /></p>
+  </li>
+  <li>
+    <p><strong>Choose options for your new project</strong> for your project.</p>
+
+    <p><img src="images/choose-new-options.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Press <strong>Next</strong>.</p>
+
+    <p>The system prompts you for a location to store your code.</p>
+  </li>
+  <li>Save your project.</li>
+  <li>Close XCode.</li>
+</ol>
+
+<h3 id="add-and-edit-a-podfile">Add and edit a Podfile</h3>
+
+<p>To use CocoaPods you need to define the XCode target to link them to.
+So for example if you are writing an iOS app, it would be the name of your app.
+Create a target section by writing target ‘$TARGET_NAME’ do and an end a few
+lines after.</p>
+
+<ol>
+  <li>Open a terminal window on your workstation.</li>
+  <li>
+    <p>Navigate to and change directory into the root of your project directory.</p>
+
+    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="err">$</span> <span class="n">cd</span> <span class="n">hello</span><span class="o">-</span><span class="n">blockstack</span><span class="o">-</span><span class="n">ios</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create a Podfile.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>pod init
+</code></pre></div>    </div>
+
+    <p>The command creates a <code class="highlighter-rouge">Podfile</code> in the directory.</p>
+  </li>
+  <li>Open the <code class="highlighter-rouge">Podfile</code> for editing.</li>
+  <li>
+    <p>Add a line stating the Blockstack dependency.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'hello-blockstack-ios' do
+      # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+      use_frameworks!
+
+      # Pods for hello-blockstack-ios
+      pod 'Blockstack'
+
+      target 'hello-blockstack-iosTests' do
+        inherit! :search_paths
+        # Pods for testing
+      end
+end
+</code></pre></div>    </div>
+  </li>
+  <li>Save and close the <code class="highlighter-rouge">Podfile</code>.</li>
+</ol>
+
+<h3 id="install-blockstack-sdk-and-open-the-pod-project">Install Blockstack SDK and open the pod project</h3>
+
+<ol>
+  <li>Close your new XCode project.</li>
+  <li>Change to the root of your <code class="highlighter-rouge">hello-blockstack-is</code> project.</li>
+  <li>
+    <p>Initialize the project with Cocoapods.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  $ pod install
+  Analyzing dependencies
+  Downloading dependencies
+  Installing Blockstack (0.2.0)
+  Installing CryptoSwift (0.11.0)
+  Generating Pods project
+  Integrating client project
+
+  [!] Please close any current XCode sessions and use `hello-blockstack-ios.xcworkspace` for this project from now on.
+  Sending stats
+  Pod installation complete! There is 1 dependency from the Podfile and 2 total pods installed.
+
+  [!] Automatically assigning platform `ios` with version `11.4` on target `hello-blockstack-ios` because no platform was specified. Please specify a platform for this target in your Podfile. See `https://guides.cocoapods.org/syntax/podfile.html#platform`.
+</code></pre></div>    </div>
+
+    <p>This command creates a number of files</p>
+  </li>
+  <li>
+    <p>Review the files that the <code class="highlighter-rouge">pod</code> installation created:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls
+</span>Podfile                hello-blockstack-ios                    hello-blockstack-iosTests
+Podfile.lock           hello-blockstack-ios.xcodeproj
+Pods                   hello-blockstack-ios.xcworkspace
+</code></pre></div>    </div>
+  </li>
+  <li>Start XCode and choose <strong>Open another project</strong>.</li>
+  <li>
+    <p>Choose the <code class="highlighter-rouge">.xcworkspace</code> file created in your project folder.</p>
+
+    <p><img src="images/open-xcworkspace.png" alt="" /></p>
+
+    <p>When you open the workspace you’ll see a warning indicator at the top in the
+  project title.</p>
+  </li>
+  <li>Click the signal to reveal the warning.</li>
+  <li>
+    <p>Click <strong>Update to recommented settings</strong>.</p>
+
+    <p><img src="images/indicator.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Choose <strong>Perform Changes</strong> and <strong>Continue</strong> when prompted.</p>
+
+    <p>The indicator disappears.</p>
+  </li>
+</ol>
+
+<h3 id="choose-a-custom-protocol-handler">Choose a custom protocol handler</h3>
+
+<p>You’ll need to choose a custom protocol handler that is unique to your app. This
+is so that your app’s web-based authentication <code class="highlighter-rouge">redirect.html</code> endpoint can redirect
+the user back to your iOS app. In this example, you use <code class="highlighter-rouge">myblockstackapp://</code>.</p>
+
+<ol>
+  <li>Open the <code class="highlighter-rouge">.xcworkspace</code> file in XCode if it isn’t open already.</li>
+  <li>Select the top node of your project.</li>
+  <li>Select the <strong>Info</strong> tab in XCode.</li>
+  <li>Scroll to <strong>URL Types</strong> and press <strong>+</strong> (plus) sign.</li>
+  <li>Enter an <strong>Identifier</strong> and <strong>URL Schemes</strong> value.</li>
+  <li>
+    <p>Set the <strong>Role</strong> to <strong>Editor</strong>.</p>
+
+    <p>When you are done the type appears as follows:</p>
+
+    <p><img src="images/url-type.png" alt="" /></p>
+  </li>
+</ol>
+
+<h3 id="add-a-splash-screen">Add a splash screen</h3>
+
+<p>All iOS applications require a splash page.</p>
+
+<ol>
+  <li>Select <code class="highlighter-rouge">Assets.xcassets</code></li>
+  <li>Move your cursor into the area below Appicon.</li>
+  <li>
+    <p>Right click and choose <strong>New Image Set</strong></p>
+
+    <p><img src="images/image-set-0.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Download the Blockstack icon.</p>
+
+    <p><img src="images/blockstack-icon.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Drag the downloaded file into the <strong>3X</strong> position in your new Images folder.</p>
+
+    <p><img src="images/image-set-1.png" alt="" /></p>
+  </li>
+  <li>Select the <code class="highlighter-rouge">LaunchScreen.storyboard</code>.</li>
+  <li>
+    <p>Choose <strong>Open As &gt; Source Code</strong>.</p>
+
+    <p><img src="images/open-as.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Replace the content of the <code class="highlighter-rouge">&lt;scenes&gt;</code> element with the following:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;scenes&gt;
+    &lt;!--View Controller--&gt;
+    &lt;scene sceneID="EHf-IW-A2E"&gt;
+        &lt;objects&gt;
+            &lt;viewController id="01J-lp-oVM" sceneMemberID="viewController"&gt;
+                &lt;view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3"&gt;
+                    &lt;rect key="frame" x="0.0" y="0.0" width="375" height="667"/&gt;
+                    &lt;autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/&gt;
+                    &lt;subviews&gt;
+                        &lt;imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="SpU-hA-y2f"&gt;
+                            &lt;rect key="frame" x="155.5" y="273" width="64" height="64"/&gt;
+                        &lt;/imageView&gt;
+                        &lt;label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello Blockstack iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfj-A6-BZM"&gt;
+                            &lt;rect key="frame" x="108" y="432" width="158" height="21"/&gt;
+                            &lt;fontDescription key="fontDescription" type="system" pointSize="17"/&gt;
+                            &lt;nil key="textColor"/&gt;
+                            &lt;nil key="highlightedColor"/&gt;
+                        &lt;/label&gt;
+                    &lt;/subviews&gt;
+                    &lt;color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/&gt;
+                    &lt;constraints&gt;
+                        &lt;constraint firstItem="Wfj-A6-BZM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AZy-qf-xHq"/&gt;
+                        &lt;constraint firstItem="Wfj-A6-BZM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="412" id="SwP-qV-1RP"/&gt;
+                        &lt;constraint firstItem="SpU-hA-y2f" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XdI-Db-fDo"/&gt;
+                        &lt;constraint firstItem="SpU-hA-y2f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="253" id="xc5-po-W1E"/&gt;
+                    &lt;/constraints&gt;
+                    &lt;viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/&gt;
+                &lt;/view&gt;
+            &lt;/viewController&gt;
+            &lt;placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/&gt;
+        &lt;/objects&gt;
+        &lt;point key="canvasLocation" x="52" y="374.66266866566718"/&gt;
+    &lt;/scene&gt;
+&lt;/scenes&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Immediately after scenes but before the close of the <code class="highlighter-rouge">&lt;/document&gt;</code> tag add the following <code class="highlighter-rouge">&lt;resources&gt;</code>.</p>
+
+    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="nt">&lt;resources&gt;</span>
+      <span class="nt">&lt;image</span> <span class="na">name=</span><span class="s">"Image"</span> <span class="na">width=</span><span class="s">"64"</span> <span class="na">height=</span><span class="s">"64"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/resources&gt;</span>
+     <span class="nt">&lt;/document&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Choose <strong>Run &gt; Run app</strong> in the emulator.</p>
+
+    <p>The emulator now contains a new splash screen.</p>
+
+    <p><img src="images/splash.png" alt="" /></p>
+  </li>
+</ol>
+
+<h3 id="update-the-mainstoryboard">Update the Main.storyboard</h3>
+
+<p>Rather than have you build up your own UI, this section has you copy and paste a layout into the XML file source code for the <strong>Main.storyboard</strong> file.</p>
+
+<ol>
+  <li>Select the <code class="highlighter-rouge">Main.storyboard</code> file.</li>
+  <li>
+    <p>Chooose <strong>Open As &gt; Source Code</strong></p>
+
+    <p>The <code class="highlighter-rouge">blockstack-example/blockstack-example/Base.lproj/Main.storyboard</code> file
+defines the graphical elements. Some elements are required before you can
+functionality to your  code.</p>
+  </li>
+  <li>
+    <p>Within the <code class="highlighter-rouge">&lt;viewController&gt;</code>  element, replace the existing <code class="highlighter-rouge">&lt;view&gt;</code> subelement with the following:</p>
+
+    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;view</span> <span class="na">key=</span><span class="s">"view"</span> <span class="na">contentMode=</span><span class="s">"scaleToFill"</span> <span class="na">id=</span><span class="s">"8bC-Xf-vdC"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;rect</span> <span class="na">key=</span><span class="s">"frame"</span> <span class="na">x=</span><span class="s">"0.0"</span> <span class="na">y=</span><span class="s">"0.0"</span> <span class="na">width=</span><span class="s">"375"</span> <span class="na">height=</span><span class="s">"667"</span><span class="nt">/&gt;</span>
+     <span class="nt">&lt;autoresizingMask</span> <span class="na">key=</span><span class="s">"autoresizingMask"</span> <span class="na">widthSizable=</span><span class="s">"YES"</span> <span class="na">heightSizable=</span><span class="s">"YES"</span><span class="nt">/&gt;</span>
+     <span class="nt">&lt;subviews&gt;</span>
+         <span class="nt">&lt;label</span> <span class="na">opaque=</span><span class="s">"NO"</span> <span class="na">userInteractionEnabled=</span><span class="s">"NO"</span> <span class="na">contentMode=</span><span class="s">"left"</span> <span class="na">horizontalHuggingPriority=</span><span class="s">"251"</span> <span class="na">verticalHuggingPriority=</span><span class="s">"251"</span> <span class="na">text=</span><span class="s">"hello-blockstack-ios"</span> <span class="na">textAlignment=</span><span class="s">"center"</span> <span class="na">lineBreakMode=</span><span class="s">"tailTruncation"</span> <span class="na">baselineAdjustment=</span><span class="s">"alignBaselines"</span> <span class="na">adjustsFontSizeToFit=</span><span class="s">"NO"</span> <span class="na">translatesAutoresizingMaskIntoConstraints=</span><span class="s">"NO"</span> <span class="na">id=</span><span class="s">"9eE-ZS-LU9"</span><span class="nt">&gt;</span>
+             <span class="nt">&lt;rect</span> <span class="na">key=</span><span class="s">"frame"</span> <span class="na">x=</span><span class="s">"0.0"</span> <span class="na">y=</span><span class="s">"101"</span> <span class="na">width=</span><span class="s">"375"</span> <span class="na">height=</span><span class="s">"50"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;color</span> <span class="na">key=</span><span class="s">"backgroundColor"</span> <span class="na">red=</span><span class="s">"0.44735813140000003"</span> <span class="na">green=</span><span class="s">"0.1280144453"</span> <span class="na">blue=</span><span class="s">"0.57268613580000005"</span> <span class="na">alpha=</span><span class="s">"1"</span> <span class="na">colorSpace=</span><span class="s">"custom"</span> <span class="na">customColorSpace=</span><span class="s">"sRGB"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;constraints&gt;</span>
+                 <span class="nt">&lt;constraint</span> <span class="na">firstAttribute=</span><span class="s">"height"</span> <span class="na">constant=</span><span class="s">"50"</span> <span class="na">id=</span><span class="s">"U5v-13-4Ux"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;/constraints&gt;</span>
+             <span class="nt">&lt;fontDescription</span> <span class="na">key=</span><span class="s">"fontDescription"</span> <span class="na">type=</span><span class="s">"system"</span> <span class="na">pointSize=</span><span class="s">"17"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;color</span> <span class="na">key=</span><span class="s">"textColor"</span> <span class="na">white=</span><span class="s">"1"</span> <span class="na">alpha=</span><span class="s">"1"</span> <span class="na">colorSpace=</span><span class="s">"custom"</span> <span class="na">customColorSpace=</span><span class="s">"genericGamma22GrayColorSpace"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;nil</span> <span class="na">key=</span><span class="s">"highlightedColor"</span><span class="nt">/&gt;</span>
+         <span class="nt">&lt;/label&gt;</span>
+         <span class="nt">&lt;button</span> <span class="na">opaque=</span><span class="s">"NO"</span> <span class="na">contentMode=</span><span class="s">"scaleToFill"</span> <span class="na">contentHorizontalAlignment=</span><span class="s">"center"</span> <span class="na">contentVerticalAlignment=</span><span class="s">"center"</span> <span class="na">buttonType=</span><span class="s">"roundedRect"</span> <span class="na">lineBreakMode=</span><span class="s">"middleTruncation"</span> <span class="na">translatesAutoresizingMaskIntoConstraints=</span><span class="s">"NO"</span> <span class="na">id=</span><span class="s">"Lfp-KX-BDb"</span><span class="nt">&gt;</span>
+             <span class="nt">&lt;rect</span> <span class="na">key=</span><span class="s">"frame"</span> <span class="na">x=</span><span class="s">"100"</span> <span class="na">y=</span><span class="s">"382"</span> <span class="na">width=</span><span class="s">"175"</span> <span class="na">height=</span><span class="s">"40"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;color</span> <span class="na">key=</span><span class="s">"backgroundColor"</span> <span class="na">red=</span><span class="s">"0.1215686275"</span> <span class="na">green=</span><span class="s">"0.12941176469999999"</span> <span class="na">blue=</span><span class="s">"0.14117647059999999"</span> <span class="na">alpha=</span><span class="s">"1"</span> <span class="na">colorSpace=</span><span class="s">"custom"</span> <span class="na">customColorSpace=</span><span class="s">"sRGB"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;constraints&gt;</span>
+                 <span class="nt">&lt;constraint</span> <span class="na">firstAttribute=</span><span class="s">"height"</span> <span class="na">constant=</span><span class="s">"40"</span> <span class="na">id=</span><span class="s">"8fN-Ro-Krn"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;/constraints&gt;</span>
+             <span class="nt">&lt;color</span> <span class="na">key=</span><span class="s">"tintColor"</span> <span class="na">white=</span><span class="s">"0.0"</span> <span class="na">alpha=</span><span class="s">"1"</span> <span class="na">colorSpace=</span><span class="s">"calibratedWhite"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;state</span> <span class="na">key=</span><span class="s">"normal"</span> <span class="na">title=</span><span class="s">"Sign into Blocksack"</span><span class="nt">&gt;</span>
+                 <span class="nt">&lt;color</span> <span class="na">key=</span><span class="s">"titleColor"</span> <span class="na">white=</span><span class="s">"1"</span> <span class="na">alpha=</span><span class="s">"1"</span> <span class="na">colorSpace=</span><span class="s">"custom"</span> <span class="na">customColorSpace=</span><span class="s">"genericGamma22GrayColorSpace"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;/state&gt;</span>
+             <span class="nt">&lt;connections&gt;</span>
+                 <span class="nt">&lt;action</span> <span class="na">selector=</span><span class="s">"signIn:"</span> <span class="na">destination=</span><span class="s">"BYZ-38-t0r"</span> <span class="na">eventType=</span><span class="s">"touchUpInside"</span> <span class="na">id=</span><span class="s">"nV7-rt-euZ"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;/connections&gt;</span>
+         <span class="nt">&lt;/button&gt;</span>
+     <span class="nt">&lt;/subviews&gt;</span>
+     <span class="nt">&lt;color</span> <span class="na">key=</span><span class="s">"backgroundColor"</span> <span class="na">red=</span><span class="s">"1"</span> <span class="na">green=</span><span class="s">"1"</span> <span class="na">blue=</span><span class="s">"1"</span> <span class="na">alpha=</span><span class="s">"1"</span> <span class="na">colorSpace=</span><span class="s">"custom"</span> <span class="na">customColorSpace=</span><span class="s">"sRGB"</span><span class="nt">/&gt;</span>
+     <span class="nt">&lt;constraints&gt;</span>
+         <span class="nt">&lt;constraint</span> <span class="na">firstItem=</span><span class="s">"9eE-ZS-LU9"</span> <span class="na">firstAttribute=</span><span class="s">"leading"</span> <span class="na">secondItem=</span><span class="s">"6Tk-OE-BBY"</span> <span class="na">secondAttribute=</span><span class="s">"leading"</span> <span class="na">id=</span><span class="s">"2ZP-tU-h9Y"</span><span class="nt">/&gt;</span>
+         <span class="nt">&lt;constraint</span> <span class="na">firstItem=</span><span class="s">"9eE-ZS-LU9"</span> <span class="na">firstAttribute=</span><span class="s">"top"</span> <span class="na">secondItem=</span><span class="s">"6Tk-OE-BBY"</span> <span class="na">secondAttribute=</span><span class="s">"top"</span> <span class="na">constant=</span><span class="s">"81"</span> <span class="na">id=</span><span class="s">"DBh-q0-pAV"</span><span class="nt">/&gt;</span>
+         <span class="nt">&lt;constraint</span> <span class="na">firstItem=</span><span class="s">"6Tk-OE-BBY"</span> <span class="na">firstAttribute=</span><span class="s">"trailing"</span> <span class="na">secondItem=</span><span class="s">"Lfp-KX-BDb"</span> <span class="na">secondAttribute=</span><span class="s">"trailing"</span> <span class="na">constant=</span><span class="s">"100"</span> <span class="na">id=</span><span class="s">"MHO-ew-4Bd"</span><span class="nt">/&gt;</span>
+         <span class="nt">&lt;constraint</span> <span class="na">firstItem=</span><span class="s">"Lfp-KX-BDb"</span> <span class="na">firstAttribute=</span><span class="s">"leading"</span> <span class="na">secondItem=</span><span class="s">"6Tk-OE-BBY"</span> <span class="na">secondAttribute=</span><span class="s">"leading"</span> <span class="na">constant=</span><span class="s">"100"</span> <span class="na">id=</span><span class="s">"Rsm-LP-ya7"</span><span class="nt">/&gt;</span>
+         <span class="nt">&lt;constraint</span> <span class="na">firstItem=</span><span class="s">"Lfp-KX-BDb"</span> <span class="na">firstAttribute=</span><span class="s">"top"</span> <span class="na">secondItem=</span><span class="s">"6Tk-OE-BBY"</span> <span class="na">secondAttribute=</span><span class="s">"top"</span> <span class="na">constant=</span><span class="s">"362"</span> <span class="na">id=</span><span class="s">"chE-B7-ya6"</span><span class="nt">/&gt;</span>
+         <span class="nt">&lt;constraint</span> <span class="na">firstItem=</span><span class="s">"6Tk-OE-BBY"</span> <span class="na">firstAttribute=</span><span class="s">"trailing"</span> <span class="na">secondItem=</span><span class="s">"9eE-ZS-LU9"</span> <span class="na">secondAttribute=</span><span class="s">"trailing"</span> <span class="na">id=</span><span class="s">"j0x-8j-04u"</span><span class="nt">/&gt;</span>
+     <span class="nt">&lt;/constraints&gt;</span>
+     <span class="nt">&lt;viewLayoutGuide</span> <span class="na">key=</span><span class="s">"safeArea"</span> <span class="na">id=</span><span class="s">"6Tk-OE-BBY"</span><span class="nt">/&gt;</span>
+ <span class="nt">&lt;/view&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="add-the-ui-variables-to-the-viewcontroller-file">Add the UI variables to the ViewController file.</h3>
+
+<p>In this section, you edit the <code class="highlighter-rouge">ViewController.swift</code> file using the storyboard as a starting point.</p>
+
+<ol>
+  <li>
+    <p>Select the <strong>Main.storyboard</strong> and choose <strong>Open As &gt; Interface Builder - storyboard</strong>.</p>
+
+    <p><img src="images/main-storyboard.png" alt="" /></p>
+  </li>
+  <li>
+    <p>With the interface builder open, display the <code class="highlighter-rouge">ViewController.swift</code> file in the rigth panel.</p>
+
+    <p><img src="images/view-editors.gif" alt="" /></p>
+  </li>
+  <li>
+    <p>In the storyboard, select the <strong>Sign into Blockstack</strong> button.</p>
+  </li>
+  <li>
+    <p>Control-drag from the button to the code display in the editor on the right, stopping the drag at the line below controller’s opening statement.</p>
+
+    <p><img src="images/add-action.gif" alt="" /></p>
+  </li>
+  <li>
+    <p>Repeat this process with the storyboard’s purple <strong>hello-blockstack-ios</strong> label.</p>
+
+    <p>When you are done, your ‘ViewController’ file contains the following variables:</p>
+
+    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
+
+ <span class="kd">@IBOutlet</span> <span class="k">var</span> <span class="nv">nameLabel</span><span class="p">:</span> <span class="kt">UILabel</span><span class="o">!</span>
+ <span class="kd">@IBOutlet</span> <span class="k">var</span> <span class="nv">signInButton</span><span class="p">:</span> <span class="kt">UIButton</span><span class="o">!</span>
+</code></pre></div>    </div>
+
+    <p>And XCode has added two outlines to the <code class="highlighter-rouge">Main.storyboard</code> source.</p>
+
+    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;connections&gt;</span>
+ <span class="nt">&lt;outlet</span> <span class="na">property=</span><span class="s">"nameLabel"</span> <span class="na">destination=</span><span class="s">"9eE-ZS-LU9"</span> <span class="na">id=</span><span class="s">"Ahv-Te-ZZo"</span><span class="nt">/&gt;</span>
+ <span class="nt">&lt;outlet</span> <span class="na">property=</span><span class="s">"signInButton"</span> <span class="na">destination=</span><span class="s">"Lfp-KX-BDb"</span> <span class="na">id=</span><span class="s">"yef-Jj-uPt"</span><span class="nt">/&gt;</span>
+ <span class="nt">&lt;/connections&gt;</span>
+</code></pre></div>    </div>
+
+    <p>Your connectors will have their own <code class="highlighter-rouge">destination</code> and <code class="highlighter-rouge">id</code> values.</p>
+  </li>
+</ol>
+
+<h3 id="edit-the-viewcontrollerswift-file">Edit the ViewController.swift file</h3>
+
+<p>Now, you are ready to connect your application with your Blockstack Web
+Application. Normally, after building your Web application you would have
+registred it with Blockstack and the app would be available on the Web. This
+example skips this registration step and uses an example application we’ve
+already created for you:</p>
+
+<p><code class="highlighter-rouge">https://heuristic-brown-7a88f8.netlify.com/redirect.html</code></p>
+
+<p>This web application already has a redirect in place for you. You’ll reference
+this application in your mobile add for now. In XCode, do the following;</p>
+
+<ol>
+  <li>Open the <code class="highlighter-rouge">ViewController.swift</code> file.</li>
+  <li>
+    <p>Add an import both for <code class="highlighter-rouge">Blockstack</code> and for <code class="highlighter-rouge">SafariServices</code>.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  import UIKit
+  import Blockstack
+  import SafariServices
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Just before the <code class="highlighter-rouge">didReceiveMemoryWarning</code> function a private <code class="highlighter-rouge">updateUI()</code> function.</p>
+
+    <p>This function takes care of loading the user data from Blockstack.</p>
+
+    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">updateUI</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">async</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">isSignedIn</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// Read user profile data</span>
+            <span class="k">let</span> <span class="nv">retrievedUserData</span> <span class="o">=</span> <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">loadUserData</span><span class="p">()</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">retrievedUserData</span><span class="p">?</span><span class="o">.</span><span class="n">profile</span><span class="p">?</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="kt">Any</span><span class="p">)</span>
+            <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="n">retrievedUserData</span><span class="p">?</span><span class="o">.</span><span class="n">profile</span><span class="p">?</span><span class="o">.</span><span class="n">name</span> <span class="p">??</span> <span class="s">"Nameless Person"</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">nameLabel</span><span class="p">?</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"Hello, </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">"</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">nameLabel</span><span class="p">?</span><span class="o">.</span><span class="n">isHidden</span> <span class="o">=</span> <span class="kc">false</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">signInButton</span><span class="p">?</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"Sign Out"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"UI update SIGNED_IN"</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">nameLabel</span><span class="p">?</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"hello-blockstack-ios"</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">signInButton</span><span class="p">?</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"Sign into Blockstack"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"UI update SIGNED_OUT"</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>The function uses the <code class="highlighter-rouge">Blockstack.shared.isSignedIn()</code> method to determine if
+the user is already logged into Blockstack or not. It then uses the
+<code class="highlighter-rouge">Blockstack.shared.loadUserData()</code> method to load the user data and update
+the application display with the username.</p>
+  </li>
+  <li>
+    <p>Replace the content of the <code class="highlighter-rouge">viewDidLoad()</code> function so that it calls this private function.</p>
+
+    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+    <span class="c1">// Do any additional setup after loading the view, typically from a nib.</span>
+    <span class="k">self</span><span class="o">.</span><span class="nf">updateUI</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create a ‘signIn()’ function that handles both sign in and out.</p>
+
+    <p>The function uses the <code class="highlighter-rouge">Blockstack.shared.signIn()</code> and
+<code class="highlighter-rouge">Blockstack.shared.signOut()</code> methods to sign the user into the application.</p>
+
+    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">signIn</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">isSignedIn</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Currently signed in so signing out."</span><span class="p">)</span>
+        <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">signOut</span><span class="p">()</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">updateUI</span><span class="p">()</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Currently signed out so signing in."</span><span class="p">)</span>
+        <span class="c1">// Address of deployed example web app</span>
+        <span class="kt">Blockstack</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">signIn</span><span class="p">(</span><span class="nv">redirectURI</span><span class="p">:</span> <span class="s">"https://heuristic-brown-7a88f8.netlify.com/redirect.html"</span><span class="p">,</span>
+                                 <span class="nv">appDomain</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://heuristic-brown-7a88f8.netlify.com"</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span> <span class="n">authResult</span> <span class="k">in</span>
+                                    <span class="k">switch</span> <span class="n">authResult</span> <span class="p">{</span>
+                                    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">userData</span><span class="p">):</span>
+                                        <span class="nf">print</span><span class="p">(</span><span class="s">"Sign in SUCCESS"</span><span class="p">,</span> <span class="n">userData</span><span class="o">.</span><span class="n">profile</span><span class="p">?</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="kt">Any</span><span class="p">)</span>
+                                        <span class="k">self</span><span class="o">.</span><span class="nf">updateUI</span><span class="p">()</span>
+                                    <span class="k">case</span> <span class="o">.</span><span class="nv">cancelled</span><span class="p">:</span>
+                                        <span class="nf">print</span><span class="p">(</span><span class="s">"Sign in CANCELLED"</span><span class="p">)</span>
+                                    <span class="k">case</span> <span class="o">.</span><span class="nf">failed</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+                                        <span class="nf">print</span><span class="p">(</span><span class="s">"Sign in FAILED, error: "</span><span class="p">,</span> <span class="n">error</span> <span class="p">??</span> <span class="s">"n/a"</span><span class="p">)</span>
+                                    <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="troubleshooting-your-build-in-xcode">Troubleshooting your build in XCode</h2>
+
+<p>XCode builds can retain old data. To ensure your builds are clean, try the following:</p>
+
+<ol>
+  <li>Reset the simulator by choosing <strong>Hardware -&gt; Erase all content and settings</strong> from the menu.</li>
+  <li>In XCode, clean the project by choosing <strong>Product &gt; Clean</strong> from the menu or  press ‘Command + Shift + K’ on your keyboard.</li>
+  <li>Clean the build folder by pressing ‘Command + Option + Shift + K’ on your keyboard.</li>
+  <li>Run the code on the simulator again.</li>
+</ol>
+
+                        <div class="share uk-text-center">
+    <a href="https://twitter.com/intent/tweet?text=iOS SDK Tutorial (Pre-release)&url=https://docs.blockstack.org/ios/tutorial.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+</div>
+
+                        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. <br> &copy; 2018 Blockstack Public Benefits Corp.</div>
+
+    </div>
+</footer>
+
+                    </div>
+
+                    <hr class="uk-margin-medium">
+
+                    
+
+
+
+
+                    <!-- <div class="uk-margin-large-top">
+    <h3>Related Articles</h3>
+
+    
+    
+    
+
+    <ul class="uk-list">
+    
+    </ul>
+</div>
+ -->
+
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+            <!-- <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://docs.blockstack.org/assets/posts/logo.png" alt="Docs"></a></li> -->
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="/assets/posts/logo.png" alt="Docs"></a></li>
+            
+                
+            <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+            
+                
+            <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+            
+                
+            <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+        <script type="text/javascript">
+   /* Create a configuration object */
+   var ss360Config = {
+      /* Your site id */
+      siteId: 'blockstack',
+      /* A CSS selector that points to your search  box */
+      searchBox: {
+        selector: '#searchBox'
+      },
+      results: {
+         embedConfig: undefined, // {'url':undefined,'contentBlock':'.page-content-body'}, // if url is given the page will change to that URL and look for the content block there to insert the results
+         fullScreenConfig: undefined, // {trigger: '#ss360-search-trigger', caption: 'Search this site'}, trigger is the CSS selector to the element that starts the search full screen overlay and searchCaption the caption on the full screen search page
+         caption: 'Found #COUNT# search results for \"#QUERY#\"', // the caption of the search results
+         group: true, // whether results should be grouped if content groups are available
+         filters: undefined,
+         num: 96, // the maximum number of search results to be shown
+         highlightQueryTerms: true, // whether to highlight the query terms in search results
+         moreResultsButton: "Show more results", // HTML for the more results button, all results will be shown if this is null
+         noResultsText: 'Sorry, we have not found any matches for your query.', // the text to show when there are no results
+         queryCorrectionText: 'Did you mean "#CORRECTION#"?',
+         searchQueryParamName: 'ss360Query', // the name of the search query parameter
+         linksOpenNewTab: false, // should clicking on the result links open a new tab/window?
+         showSearchBoxLayover: true, //whether to show search box in search result layover
+         moreResultsPagingSize: 12, // the number of new results to show each time the more results button is pressed (max: 24)
+         orderByRelevanceText: "Relevance" // the text to be shown in order select box to describe 'order by relevance' option
+      },
+      suggestions: {
+         show: true,  // whether to show search suggestions
+         maxQuerySuggestions: 3, // the maximum number of query suggestions
+         querySuggestionHeadline: undefined, // the headline of the query suggestions, leave blank if no headline should be shown
+         emptyQuerySuggestions: undefined,
+         showImages: false, // show images in search suggestions
+         num: 6, // the maximum number of search suggestions to be shown
+         minChars: 3, // minimum number of characters before the suggestions shows, default: 3,
+         maxWidth: 'auto', // the maximum width of the suggest box, default: as wide as the input box, at least 275px
+         throttleTime: 300, // the number of milliseconds before the suggest is triggered after finished input, default: 300ms
+         extraHtml: undefined, // extra HTML code that is shown in each search suggest, you can even show values of datapoints here,
+         highlight: true, // whether matched words should be highlighted, default: true
+       },
+       smart404: { /* The caption of the search results. */
+             caption: 'These links might be useful', /* The string in the title that identifies the page as a 404 page. */
+             identifier: 'Page not found', /* A CSS selector that points to the area in which the alternative links should be shown. */
+             resultSelector: '#ss360-404',
+        }
+   };
+</script>
+<script src="https://cdn.sitesearch360.com/sitesearch360-v11.min.js" async></script>
+
+    
+
+
+
+
+    </body>
+
+</html>
