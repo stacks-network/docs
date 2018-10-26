@@ -43,7 +43,7 @@ must be able to bind their identifier to the data they create.
 Blockstack DApps anticipate that each user can own one or more IDs. In turn,
 these IDs are owned by a private key under the user's control. The IDs are
 acquired through the Blockstack naming system. First time users that log into
-the Blockstack application get a free `blockstack.id` in the Blockstack namespace.
+the Blockstack application get a free `id.blockstack` in the Blockstack namespace.
 
 Blockstack IDs are replicated to all peers via a blockchain, this means
 Blockstack cannot hide IDs. Blockstack IDs each have a public key assigned to
