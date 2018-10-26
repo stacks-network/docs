@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Subdomain Design and Implementation | Blockstack</title>
-<meta name="generator" content="Jekyll v3.5.0" />
+<meta name="generator" content="Jekyll v3.6.3" />
 <meta property="og:title" content="Subdomain Design and Implementation" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://docs.blockstack.org/core/naming/tutorial_subdomains.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-10-25T14:46:28-07:00" />
+<meta property="article:published_time" content="2018-10-26T14:02:20-07:00" />
 <script type="application/ld+json">
-{"url":"https://docs.blockstack.org/core/naming/tutorial_subdomains.html","headline":"Subdomain Design and Implementation","dateModified":"2018-10-25T14:46:28-07:00","datePublished":"2018-10-25T14:46:28-07:00","author":{"@type":"Person","name":"Blockstack"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/core/naming/tutorial_subdomains.html"},"description":"Subdomain Design and Implementation","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.blockstack.org/core/naming/tutorial_subdomains.html","headline":"Subdomain Design and Implementation","dateModified":"2018-10-26T14:02:20-07:00","datePublished":"2018-10-26T14:02:20-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/core/naming/tutorial_subdomains.html"},"author":{"@type":"Person","name":"Blockstack"},"description":"Subdomain Design and Implementation","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
@@ -274,13 +274,13 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-10-25T14:46:28-07:00" itemprop="datePublished">
+<time datetime="2018-10-26T14:02:20-07:00" itemprop="datePublished">
     
     
 
 <a "target="_blank" href="https://github.com/blockstack/blockstack-core/blob/master/docs/tutorial_subdomains.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Oct 25, 2018
+ <span style="font-family:Wingdings">&#119;</span> Oct 26, 2018
 </time>
 
                     </div>
@@ -359,13 +359,12 @@ so we chop up the zonefile.</li>
   <li><strong>sig</strong>: signature of the above data.</li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ORIGIN bar.id
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ORIGIN bar.id
 $TTL 3600
 pubkey TXT "pubkey:data:0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 registrar URI 10 1 "bsreg://foo.com:8234"
 aaron TXT "owner=33VvhhSQsYQyCVE2VzG3EHa9gfRCpboqHy" "seqn=0" "parts=1" "zf0=JE9SSUdJTiBhYXJvbgokVFRMIDM2MDAKbWFpbiBVUkkgMSAxICJwdWJrZXk6ZGF0YTowMzAyYWRlNTdlNjNiMzc1NDRmOGQ5Nzk4NjJhNDlkMDBkYmNlMDdmMjkzYmJlYjJhZWNmZTI5OTkxYTg3Mzk4YjgiCg=="
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">registrar</code> entry indicates how to contact the registrar service
 for clients of the domain wishing to register or modify their entry.</p>
@@ -379,9 +378,8 @@ for clients of the domain wishing to register or modify their entry.</p>
 <p>The directory <code class="highlighter-rouge">subdomain_registrar/</code> contains our code for running a
 subdomain registrar. It can be executed by running:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ blockstack-subdomain-registrar start foo.id
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ blockstack-subdomain-registrar start foo.id
+</code></pre></div></div>
 
 <p>Here, <code class="highlighter-rouge">foo.id</code> is the domain for which subdomains will be associated.</p>
 
@@ -398,35 +396,33 @@ subdomain registrar. It can be executed by running:</p>
 <p>Subdomain registrations can be submitted to this endpoint using a REST
 API.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>POST /register
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /register
+</code></pre></div></div>
 
 <p>The schema for registration is:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-        </span><span class="err">'type'</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="err">'object',</span><span class="w">
-        </span><span class="err">'properties'</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w">
-            </span><span class="err">'name'</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w">
-                </span><span class="err">'type':</span><span class="w"> </span><span class="err">'string',</span><span class="w">
-                </span><span class="err">'pattern':</span><span class="w"> </span><span class="err">'([a-z0-9\-_+]{3,36</span><span class="p">}</span><span class="err">)$'</span><span class="w">
-            </span><span class="err">},</span><span class="w">
-            </span><span class="err">'owner_address'</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="err">'type':</span><span class="w"> </span><span class="err">'string',</span><span class="w">
-                </span><span class="err">'pattern':</span><span class="w"> </span><span class="err">schemas.OP_ADDRESS_PATTERN</span><span class="w">
-            </span><span class="p">}</span><span class="err">,</span><span class="w">
-            </span><span class="err">'zonefile'</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="err">'type'</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="err">'string',</span><span class="w">
-                </span><span class="err">'maxLength'</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="err">blockstack_constants.RPC_MAX_ZONEFILE_LEN</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="err">},</span><span class="w">
-        </span><span class="err">'required':</span><span class="p">[</span><span class="w">
-            </span><span class="err">'name'</span><span class="p">,</span><span class="w"> </span><span class="err">'owner_address'</span><span class="p">,</span><span class="w"> </span><span class="err">'zonefile'</span><span class="w">
-        </span><span class="p">]</span><span class="err">,</span><span class="w">
-        </span><span class="err">'additionalProperties'</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="err">True</span><span class="w">
-</span><span class="err">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+        'type' : 'object',
+        'properties' : {
+            'name' : {
+                'type': 'string',
+                'pattern': '([a-z0-9\-_+]{3,36})$'
+            },
+            'owner_address' : {
+                'type': 'string',
+                'pattern': schemas.OP_ADDRESS_PATTERN
+            },
+            'zonefile' : {
+                'type' : 'string',
+                'maxLength' : blockstack_constants.RPC_MAX_ZONEFILE_LEN
+            }
+        },
+        'required':[
+            'name', 'owner_address', 'zonefile'
+        ],
+        'additionalProperties' : True
+}
+</code></pre></div></div>
 
 <p>The registrar will:</p>
 
@@ -437,9 +433,8 @@ API.</p>
 
 <p>On success, this returns <code class="highlighter-rouge">202</code> and the message</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Subdomain registration queued."</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"status": "true", "message": "Subdomain registration queued."}
+</code></pre></div></div>
 
 <p>When the registrar wakes up to prepare a transaction, it packs the queued
 registrations together and issues an <code class="highlighter-rouge">UPDATE</code>.</p>
@@ -450,28 +445,24 @@ registrations together and issues an <code class="highlighter-rouge">UPDATE</cod
 registrar.</p>
 
 <p>This is an API call:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>GET /status/{subdomain}
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /status/{subdomain}
+</code></pre></div></div>
 
 <p>The registrar checks if the subdomain has propagated (i.e., the
 registration is completed), in which case the following is returned:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Subdomain already propagated"</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"status": "Subdomain already propagated"}
+</code></pre></div></div>
 
 <p>Or, if the subdomain has already been submitted in a transaction:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your subdomain was registered in transaction 09a40d6ea362608c68da6e1ebeb3210367abf7aa39ece5fd57fd63d269336399 -- it should propagate on the network once it has 6 confirmations."</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"status": "Your subdomain was registered in transaction 09a40d6ea362608c68da6e1ebeb3210367abf7aa39ece5fd57fd63d269336399 -- it should propagate on the network once it has 6 confirmations."}
+</code></pre></div></div>
 
 <p>If the subdomain still hasn’t been submitted yet:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Subdomain is queued for update and should be announced within the next few blocks."</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"status": "Subdomain is queued for update and should be announced within the next few blocks."}
+</code></pre></div></div>
 
 <p>If an error occurred trying to submit the <code class="highlighter-rouge">UPDATE</code> transaction, this endpoint will return an error
 message in the <code class="highlighter-rouge">"error"</code> key of a JSON object.</p>
@@ -506,7 +497,7 @@ The endpoints which <em>are</em> subdomain aware are marked as such in
 <p>The lookups work just like normal – it returns the user’s
 profile object:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ curl -H "Authorization: bearer blockstack_integration_test_api_password" -H "Origin: http://localhost:3000" http://localhost:16268/v1/users/bar.foo.id -v -s | python -m json.tool
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl -H "Authorization: bearer blockstack_integration_test_api_password" -H "Origin: http://localhost:3000" http://localhost:16268/v1/users/bar.foo.id -v -s | python -m json.tool
 *   Trying 127.0.0.1...
 * Connected to localhost (127.0.0.1) port 16268 (#0)
 &gt; GET /v1/users/bar.foo.id HTTP/1.1
@@ -531,13 +522,12 @@ profile object:</p>
         "description": "Lorem Ipsum Bazorem"
     }
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Name info lookups are also supported (this should enable authenticating logins
 with <code class="highlighter-rouge">blockstack.js</code>, but I will need to double check).</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ curl -H "Authorization: bearer XXXX" -H "Origin: http://localhost:3000" http://localhost:6270/v1/names/created_equal.self_evident_truth.id -s | python -m json.tool
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl -H "Authorization: bearer XXXX" -H "Origin: http://localhost:3000" http://localhost:6270/v1/names/created_equal.self_evident_truth.id -s | python -m json.tool
 {
     "address": "1AYddAnfHbw6bPNvnsQFFrEuUdhMhf2XG9",
     "blockchain": "bitcoin",
@@ -547,8 +537,7 @@ with <code class="highlighter-rouge">blockstack.js</code>, but I will need to do
     "zonefile_hash": "48fc1b351ce81cf0a9fd9b4eae7a3f80e93c0451",
     "zonefile_txt": "$ORIGIN created_equal\n$TTL 3600\n_https._tcp URI 10 1 \"https://www.cs.princeton.edu/~ablankst/created_equal.json\"\n_file URI 10 1 \"file:///tmp/created_equal.json\"\n"
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="subdomain-caching">Subdomain Caching</h3>
 
@@ -562,9 +551,8 @@ when a new zonefile for a particularly domain is seen by the resolver
 <p>You can run a subdomain registrar and resolver with blockstack-core in
 regtest mode as follows:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nv">IMAGE</span><span class="o">=</span><span class="k">$(</span>docker run -dt -p 3000:3000 -p 6270:6270 -p 16269:16269 -p 18332:18332 -e <span class="nv">BLOCKSTACK_TEST_CLIENT_RPC_PORT</span><span class="o">=</span>6270 -e <span class="nv">BLOCKSTACK_TEST_CLIENT_BIND</span><span class="o">=</span>0.0.0.0 -e <span class="nv">BLOCKSTACK_TEST_BITCOIND_ALLOWIP</span><span class="o">=</span>172.17.0.0/16 quay.io/blockstack/integrationtests:master blockstack-test-scenario --interactive 2 blockstack_integration_tests.scenarios.browser_env<span class="k">)</span>
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">IMAGE</span><span class="o">=</span><span class="k">$(</span>docker run <span class="nt">-dt</span> <span class="nt">-p</span> 3000:3000 <span class="nt">-p</span> 6270:6270 <span class="nt">-p</span> 16269:16269 <span class="nt">-p</span> 18332:18332 <span class="nt">-e</span> <span class="nv">BLOCKSTACK_TEST_CLIENT_RPC_PORT</span><span class="o">=</span>6270 <span class="nt">-e</span> <span class="nv">BLOCKSTACK_TEST_CLIENT_BIND</span><span class="o">=</span>0.0.0.0 <span class="nt">-e</span> <span class="nv">BLOCKSTACK_TEST_BITCOIND_ALLOWIP</span><span class="o">=</span>172.17.0.0/16 quay.io/blockstack/integrationtests:master blockstack-test-scenario <span class="nt">--interactive</span> 2 blockstack_integration_tests.scenarios.browser_env<span class="k">)</span>
+</code></pre></div></div>
 
 <p>Once you see <code class="highlighter-rouge">Test finished; doing checks</code> in that container’s logs, the
 registrar has started and is ready to accept requests. (We recommend
@@ -574,37 +562,33 @@ correct environment variables for it to run).</p>
 
 <p>Once this environment has started, you can issue a registration request from curl:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>curl -X POST -H 'Content-Type: application/json' --data '{"zonefile": "$ORIGIN baz\n$TTL 3600\n_file URI 10 1 \"file:///tmp/baz.profile.json\"\n", "name": "baz", "owner_address": "14x2EMRz1gf16UzGbxZh2c6sJg4A8wcHLD"}' http://localhost:3000/register/
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -X POST -H 'Content-Type: application/json' --data '{"zonefile": "$ORIGIN baz\n$TTL 3600\n_file URI 10 1 \"file:///tmp/baz.profile.json\"\n", "name": "baz", "owner_address": "14x2EMRz1gf16UzGbxZh2c6sJg4A8wcHLD"}' http://localhost:3000/register/
+</code></pre></div></div>
 
 <p>This registers <code class="highlighter-rouge">baz.foo.id</code> – you can check the registrar’s status with</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>curl http://localhost:3000/status/baz
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl http://localhost:3000/status/baz
+</code></pre></div></div>
 
 <p>The API endpoints <code class="highlighter-rouge">/v1/users/&lt;foo.bar.tld&gt;</code>,
 <code class="highlighter-rouge">/v1/names/&lt;foo.bar.tld&gt;</code>, and <code class="highlighter-rouge">/v1/addresses/bitcoin/&lt;foo.bar.tld&gt;</code> all work, so if you query the core API, you’ll get a response.</p>
 
 <p>For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>curl http://localhost:6270/v1/names/baz.foo.id | python -m json.tool
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl http://localhost:6270/v1/names/baz.foo.id | python -m json.tool
+</code></pre></div></div>
 
 <p>Will return:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1Nup2UcbVuVoDZeZCtR4vjSkrvTi8toTqc"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"blockchain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitcoin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"expire_block"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"last_txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43bbcbd8793cdc52f1b0bd2713ed136f4f104a683a9fd5c89911a57a8c4b28b6"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"satus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"registered_subdomain"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"zonefile_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7e3aada18c9ac5189f1c54089e987f58c0fa51e"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"zonefile_txt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$ORIGIN bar\n$TTL 3600\n_file URI 10 1 \"file:///tmp/baz.profile.json\"\n"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "address": "1Nup2UcbVuVoDZeZCtR4vjSkrvTi8toTqc",
+    "blockchain": "bitcoin",
+    "expire_block": -1,
+    "last_txid": "43bbcbd8793cdc52f1b0bd2713ed136f4f104a683a9fd5c89911a57a8c4b28b6",
+    "satus": "registered_subdomain",
+    "zonefile_hash": "e7e3aada18c9ac5189f1c54089e987f58c0fa51e",
+    "zonefile_txt": "$ORIGIN bar\n$TTL 3600\n_file URI 10 1 \"file:///tmp/baz.profile.json\"\n"
+}
+</code></pre></div></div>
 
 <h3 id="running-an-interactive-testing-environment-with-the-subdomain-registrar-service">Running an interactive testing environment with the Subdomain Registrar service</h3>
 
@@ -617,13 +601,77 @@ correct environment variables for it to run).</p>
 
 <p>Here’s the full command you’d run to start the interactive testing scenario:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nv">IMAGE</span><span class="o">=</span><span class="k">$(</span>docker run -dt -p 3000:3000 -p 6270:6270 -p 16269:16269 -p 18332:18332 -e <span class="nv">BLOCKSTACK_TEST_CLIENT_RPC_PORT</span><span class="o">=</span>6270 -e <span class="nv">BLOCKSTACK_TEST_CLIENT_BIND</span><span class="o">=</span>0.0.0.0 -e <span class="nv">BLOCKSTACK_TEST_BITCOIND_ALLOWIP</span><span class="o">=</span>172.17.0.0/16 quay.io/blockstack/integrationtests:master blockstack-test-scenario --interactive 2 blockstack_integration_tests.scenarios.browser_env<span class="k">)</span>
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">IMAGE</span><span class="o">=</span><span class="k">$(</span>docker run <span class="nt">-dt</span> <span class="nt">-p</span> 3000:3000 <span class="nt">-p</span> 6270:6270 <span class="nt">-p</span> 16269:16269 <span class="nt">-p</span> 18332:18332 <span class="nt">-e</span> <span class="nv">BLOCKSTACK_TEST_CLIENT_RPC_PORT</span><span class="o">=</span>6270 <span class="nt">-e</span> <span class="nv">BLOCKSTACK_TEST_CLIENT_BIND</span><span class="o">=</span>0.0.0.0 <span class="nt">-e</span> <span class="nv">BLOCKSTACK_TEST_BITCOIND_ALLOWIP</span><span class="o">=</span>172.17.0.0/16 quay.io/blockstack/integrationtests:master blockstack-test-scenario <span class="nt">--interactive</span> 2 blockstack_integration_tests.scenarios.browser_env<span class="k">)</span>
+</code></pre></div></div>
 
                         <div class="share uk-text-center">
     <a href="https://twitter.com/intent/tweet?text=Subdomain Design and Implementation&url=https://docs.blockstack.org/core/naming/tutorial_subdomains.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
 </div>
+
+                        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. <br> &copy; 2018 Blockstack Public Benefits Corp.</div>
+
+    </div>
+</footer>
 
                     </div>
 
@@ -721,74 +769,6 @@ correct environment variables for it to run).</p>
     </div>
 </div>
 
-
-    
-        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
-    <div class="uk-container uk-container-small">
-
-        <!-- <div>
-            <ul class="uk-subnav uk-flex-center">
-                
-                    
-                    
-                    
-                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
-                    
-                
-                    
-                    
-                    
-                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
-                    
-                
-                    
-                    
-                    
-                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
-                    
-                
-            </ul>
-        </div>
-        <div class="uk-margin-medium">
-            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
-                
-<div class="uk-first-column">
-    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-<div>
-    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-
-
-<div>
-    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-
-
-
-<div>
-    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-
-
-
-
-            </div>
-        </div> -->
-        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. &copy; 2018 Blockstack Public Benefits Corp.</div>
-
-    </div>
-</footer>
-
-    
 
     
         <script type="text/javascript">

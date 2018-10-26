@@ -4,10 +4,10 @@ permalink: /:collection/:path.html
 ---
 # Understand app mining
 
-Traditionally the term ‘mining’ in cryptocurrency refers to the process of
+Traditionally the term _mining_ in cryptocurrency refers to the process of
 contributing compute resources to the network and earning a reward. On the
-Blockstack network, however, instead of just “mining” through computation,
-developers can “mine” by contributing apps to the ecosystem and making
+Blockstack network, however, instead of just mining through computation,
+developers can mine by contributing apps to the ecosystem and making
 applications the community wants.
 
 ![](images/mining-image.png)
@@ -15,20 +15,18 @@ applications the community wants.
 Founders that build apps using Blockstack developer tools like Blockstack Auth
 get paid each month, in amounts proportional to that month’s app quality
 ranking. Blockstack PBC, in cooperation with App.co, currently administers the
-payouts. A set of independent “App Reviewers” determines the monthly ranking
+payouts. A set of independent _App reviewers_ determines the monthly ranking
 during the pilot phase.
 
 
 ## How apps are reviewed
 
-This section is an outline of the general algorithm and process that is used to
-rank and reward apps. Blockstack worked with a team of Ph.D. game theorist
-and economists from Princeton and NYU to put together a ranking algorithm which
-is fair and resistant to abuse.
-
-Blockstack has partnered with two different third-party reviewers, Product Hung
-and Democracy.earth. These reviewers are independent, and generally rely on
-their own proprietary data and insights to generate rankings.
+Blockstack worked with a team of Ph.D. game theorist and economists from
+Princeton and NYU to put together a ranking algorithm which is fair and
+resistant to abuse. Blockstack partnered with two different third-party
+reviewers, Product Hunt and Democracy.earth. These reviewers are independent,
+and generally rely on their own proprietary data and insights to generate
+rankings.
 
 ### Product Hunt
 
@@ -72,7 +70,8 @@ votes (including downvotes) an app received, relative to other apps.
 
 ## Reaching the final scores
 
-Once the reviewer-partners generate reviews, we have 4 raw scores for each app, each between 0 and 100:
+Once the reviewer-partners generate reviews, each app has 4 raw scores between 0
+and 100 for the following:
 
 * Product Hunt community score
 * Product Hunt team score
@@ -98,7 +97,7 @@ one, and so apps are ranked from highest to lowest.
 
 For each app mining cohort, there is determined a “pot” of total earnings that will
 get paid to apps. For the Alpha run, Blockstack paid a total of $25,000 USD. Starting in
-December, Blockstack will pay $100,000 USD and the awards will be paid out in Bitcoin.
+December 2018, Blockstack will pay $100,000 USD and the awards will be paid out in Bitcoin.
 
 The top app gets paid 20% of the total pot. So, for a pot of $100k, the top app
 receives $20,000 USD. The next app gets paid 20% of the remaining pot. The
@@ -109,7 +108,8 @@ Here is a chart that visualizes the decay in rewards, depending on rank:
 
 ![](images/decaying.png)
 
-This first release of App Mining is uses our first version of our ranking and
-payout mechanism. Blockstack has taken care to be thoughtful and fair, but things may
-change as we learn more and get feedback from the community. Please let us know
-what you think by commenting below or emailing us at <hello@app.co>!
+This first release of App Mining uses the initial version of our ranking and
+payout mechanism. Blockstack has taken care to be thoughtful and fair, but
+things may change as we learn more and get feedback from the community. Please
+let us know what you think by commenting <a href="https://forum.blockstack.org"
+target="\_blank">in our forum</a> or by emailing us at <hello@app.co>!
