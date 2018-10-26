@@ -98,6 +98,7 @@ plugins:
   - jekyll-gist
   - jekyll-avatar
   - jekyll-titles-from-headings
+  - jekyll-sitemap
 
 titles_from_headings:
   enabled:     true

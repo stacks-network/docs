@@ -38,6 +38,8 @@ GEM
       sass (~> 3.4)
     jekyll-seo-tag (2.5.0)
       jekyll (~> 3.3)
+    jekyll-sitemap (1.1.1)
+      jekyll (~> 3.3)
     jekyll-titles-from-headings (0.5.1)
       jekyll (~> 3.3)
     jekyll-watch (1.5.1)
@@ -81,6 +83,7 @@ DEPENDENCIES
   jekyll-livereload
   jekyll-paginate (~> 1.1)
   jekyll-seo-tag
+  jekyll-sitemap
   jekyll-titles-from-headings
   tzinfo-data
 
