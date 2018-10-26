@@ -14,13 +14,13 @@ eligible for the following month.
 
 To apply, do the following:
 
-1. Integrate Blockstack Auth into your app
+1. Integrate Blockstack Auth into your app.
 
-2. Add your app to <a href="https://app.co/submit target="\_blank">App.co</a>.
+2. Add your app to <a href="https://app.co/submit" target="\_blank">App.co</a>.
 
    Make sure you choose Blockstack from the Authentication list on the form.
 
-3. Email Blockstack with the domain you used to register for your app.
+3. Email <app.mining@blockstack.com> with the domain you used to register for your app.
 
    Blockstack will respond via email with a set of verification materials.
 
@@ -28,6 +28,4 @@ To apply, do the following:
 
    Be sure you provide us with the BTC address for receipt of mining and rewards funds.
 
-Once your enrollment is received, you appear in the enrollment list.
-
-For more information, see the frequetly asked questions [on the App.co site](https://app.co/mining#faq).
+Once your enrollment is received, you appear in the enrollment list. For more information, see the frequently asked questions [on the App.co site](https://app.co/mining#faq).
