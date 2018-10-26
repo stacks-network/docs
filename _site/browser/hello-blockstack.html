@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Hello, Blockstack Tutorial | Blockstack</title>
-<meta name="generator" content="Jekyll v3.5.0" />
+<meta name="generator" content="Jekyll v3.6.3" />
 <meta property="og:title" content="Hello, Blockstack Tutorial" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://docs.blockstack.org/browser/hello-blockstack.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-10-22T12:11:33-07:00" />
+<meta property="article:published_time" content="2018-10-26T14:02:20-07:00" />
 <script type="application/ld+json">
-{"url":"https://docs.blockstack.org/browser/hello-blockstack.html","headline":"Hello, Blockstack Tutorial","dateModified":"2018-10-22T12:11:33-07:00","datePublished":"2018-10-22T12:11:33-07:00","author":{"@type":"Person","name":"Blockstack"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/browser/hello-blockstack.html"},"description":"Hello, Blockstack Tutorial","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.blockstack.org/browser/hello-blockstack.html","headline":"Hello, Blockstack Tutorial","dateModified":"2018-10-26T14:02:20-07:00","datePublished":"2018-10-26T14:02:20-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/browser/hello-blockstack.html"},"author":{"@type":"Person","name":"Blockstack"},"description":"Hello, Blockstack Tutorial","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
@@ -116,6 +116,23 @@
                   <!--  -->
                     
                     
+                         <h5>Introduction</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                    </ul>
+                    
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/dapp_principles.html">Principles of Blockstack applications</a></li>
+                    
+                    </ul>
+                    
+                    
                          <h5>Try a tutorial</h5>
                     
                     <ul class="uk-nav uk-nav-default doc-nav">
@@ -155,6 +172,23 @@
                     </ul>
                     
                     
+                         <h5>Application mining</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/mining_intro.html">Understand app mining</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/mining_enroll.html">How to enroll</a></li>
+                    
+                    </ul>
+                    
+                    
                          <h5>Reference</h5>
                     
                     <ul class="uk-nav uk-nav-default doc-nav">
@@ -167,7 +201,17 @@
                       
                       <!--  -->
                       
+                          <li class=""><a href="/common/mining_faq.html">Mining FAQ</a></li>
+                    
+                      
+                      <!--  -->
+                      
                           <li class=""><a href="/common/javascript_ref.html">Blockstack Javascript Reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/core_ref.html">Blockstack CORE API</a></li>
                     
                     </ul>
                     
@@ -195,13 +239,13 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-10-22T12:11:33-07:00" itemprop="datePublished">
+<time datetime="2018-10-26T14:02:20-07:00" itemprop="datePublished">
     
     
 
 <a "target="_blank" href="https://github.com/blockstack/blockstack-browser/blob/master/docs/hello-blockstack.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Oct 22, 2018
+ <span style="font-family:Wingdings">&#119;</span> Oct 26, 2018
 </time>
 
                     </div>
@@ -258,10 +302,9 @@ the application, you need to have already registered a Blockstack ID.</p>
 <p>The tutorial relies on the <code class="highlighter-rouge">npm</code> dependency manager. Before you begin, verify
 you have installed <code class="highlighter-rouge">npm</code> using the <code class="highlighter-rouge">which</code> command to verify.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>which npm
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>which npm
 /usr/local/bin/npm
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>If you don’t find <code class="highlighter-rouge">npm</code> in your system, <a href="https://www.npmjs.com/get-npm">install
 it</a>.</p>
@@ -278,16 +321,14 @@ existing projects.</p>
   <li>
     <p>Install Yeoman.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm install -g yo
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm install <span class="nt">-g</span> yo
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Install the Blockstack application generator.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm install -g generator-blockstack
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm install <span class="nt">-g</span> generator-blockstack
+</code></pre></div>    </div>
   </li>
 </ol>
 
@@ -299,32 +340,29 @@ existing projects.</p>
   <li>
     <p>Create the <code class="highlighter-rouge">hello-world-tutorial</code> directory.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> mkdir hello-world-tutorial
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir hello-world-tutorial
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Change into your new directory.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nb">cd </span>hello-world-tutorial
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd </span>hello-world-tutorial
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Use Yeoman and the Blockstack application generator to create your initial <code class="highlighter-rouge">hello-world-tutorial</code> application.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> yo blockstack
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> yo blockstack
+</code></pre></div>    </div>
 
     <p>You should see several interactive prompts.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>yo blockstack
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>yo blockstack
 
       _-----_     ╭──────────────────────────╮
      |       |    │      Welcome to the      │
-     |--<span class="o">(</span>o<span class="o">)</span>--|    │      Blockstack app      │
-    <span class="sb">`</span>---------´   │        generator!        │
+     |--<span class="o">(</span>o<span class="o">)</span><span class="nt">--</span>|    │      Blockstack app      │
+    <span class="sb">`</span><span class="nt">---------</span>´   │        generator!        │
      <span class="o">(</span> _´U<span class="sb">`</span>_ <span class="o">)</span>    ╰──────────────────────────╯
      /___A___<span class="se">\ </span>  /
       |  ~  |
@@ -332,15 +370,14 @@ existing projects.</p>
   ´   <span class="sb">`</span>  |° ´ Y <span class="sb">`</span>
 
  ? Are you ready to build a Blockstack app <span class="k">in </span>React? <span class="o">(</span>Y/n<span class="o">)</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Respond to the prompts to populate the initial app.</p>
 
     <p>After the process completes successfully, you see a prompt similar to the following:</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> ...
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ...
 create public/icon-192x192.png
 create public/index.html
 create public/robots.txt
@@ -348,8 +385,7 @@ create public/manifest.json
 
 
  I<span class="s1">'m all done. Running npm install for you to install the required dependencies. If this fails, try running the command yourself.
-</span></code></pre>
-    </div>
+</span></code></pre></div>    </div>
   </li>
 </ol>
 
@@ -451,9 +487,8 @@ and open your browser ‘http://localhost:5000’.  From the root of your new ap
   <li>
     <p>Start the application server.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm start
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm start
+</code></pre></div>    </div>
 
     <p>The first time you run it, your system prompts you to accept incoming connections.</p>
 
@@ -514,30 +549,27 @@ in the <code class="highlighter-rouge">public/app.css</code> file. Open this fil
 <p>All of the code in the file is wrapped in an event
 listener.</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"DOMContentLoaded"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"DOMContentLoaded"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">})</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This listener that waits until the DOM content is loaded. Then, it creates an auth request and redirects the user to sign in:</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'signin-button'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'signin-button'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">blockstack</span><span class="p">.</span><span class="nx">redirectUserToSignIn</span><span class="p">()</span>
 <span class="p">})</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>You can find the <code class="highlighter-rouge">redirectUserToSignIn()</code> function is part of the <a href="https://blockstack.github.io/blockstack.js/">Blockstack Javascript documentation</a>. There is also a sign out button handler. This handler deletes the local user data and signs the user out:</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'signout-button'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'signout-button'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">blockstack</span><span class="p">.</span><span class="nx">signUserOut</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">origin</span><span class="p">)</span>
 <span class="p">})</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The handlers are followed by a <code class="highlighter-rouge">showProfile()</code> function for showing the user’s profile:</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">showProfile</span><span class="p">(</span><span class="nx">profile</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">showProfile</span><span class="p">(</span><span class="nx">profile</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">blockstack</span><span class="p">.</span><span class="nx">Person</span><span class="p">(</span><span class="nx">profile</span><span class="p">)</span>
   <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'heading-name'</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span> <span class="p">?</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span> <span class="p">:</span> <span class="s2">"Nameless Person"</span>
   <span class="k">if</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">avatarUrl</span><span class="p">())</span> <span class="p">{</span>
@@ -546,8 +578,7 @@ listener.</p>
   <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'section-1'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">'none'</span>
   <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'section-2'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">'block'</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Each <code class="highlighter-rouge">getElementById()</code> function refers to elemments in the <code class="highlighter-rouge">index.html</code> file.</p>
 
@@ -563,7 +594,7 @@ several states the user can be in:</p>
 
 <p>The application handles these situtations as followed:</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">blockstack</span><span class="p">.</span><span class="nx">isUserSignedIn</span><span class="p">())</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">blockstack</span><span class="p">.</span><span class="nx">isUserSignedIn</span><span class="p">())</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">profile</span> <span class="o">=</span> <span class="nx">blockstack</span><span class="p">.</span><span class="nx">loadUserData</span><span class="p">().</span><span class="nx">profile</span>
     <span class="nx">showProfile</span><span class="p">(</span><span class="nx">profile</span><span class="p">)</span>
 <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">blockstack</span><span class="p">.</span><span class="nx">isSignInPending</span><span class="p">())</span> <span class="p">{</span>
@@ -571,8 +602,7 @@ several states the user can be in:</p>
     <span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">origin</span>
   <span class="p">})</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>When the user is signed in, Blockstack loads the user data from local storage
 and displays the profile with the <code class="highlighter-rouge">showProfile()</code> function. When the user has a
@@ -585,18 +615,17 @@ user back to the home page.</p>
 configurations dictate how the application is displayed in auth views and on
 user home screens. The contents are very simple:</p>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello, Blockstack"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"start_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localhost:5000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A simple demo of Blockstack Auth"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"icons"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://helloblockstack.com/icon-192x192.png"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192x192"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello, Blockstack"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localhost:5000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A simple demo of Blockstack Auth"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"icons"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://helloblockstack.com/icon-192x192.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192x192"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
   </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <p>Keep it as is or fill it in with new information that describes your app.</p>
 
@@ -608,16 +637,14 @@ user home screens. The contents are very simple:</p>
   <li>
     <p>Initialize the application code as a Git repo.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> git init
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git init
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Add and commit all of the files:</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> git add . <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"first commit"</span>
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git add <span class="nb">.</span> <span class="o">&amp;&amp;</span> git commit <span class="nt">-m</span> <span class="s2">"first commit"</span>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>In GitHub, create a <code class="highlighter-rouge">hello-blockstack</code> repository.</p>
@@ -627,16 +654,14 @@ user home screens. The contents are very simple:</p>
 
     <p>Make sure to fill in your username:</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> git remote add origin git@github.com:YOUR_USERNAME_HERE/hello-blockstack.git
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git remote add origin git@github.com:YOUR_USERNAME_HERE/hello-blockstack.git
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Push your new code to the master branch of the remote repo:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> git push origin master
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git push origin master
+</code></pre></div>    </div>
   </li>
 </ol>
 
@@ -646,6 +671,71 @@ You’re well on your way to becoming a Blockstack app legend.</p>
                         <div class="share uk-text-center">
     <a href="https://twitter.com/intent/tweet?text=Hello, Blockstack Tutorial&url=https://docs.blockstack.org/browser/hello-blockstack.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
 </div>
+
+                        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. <br> &copy; 2018 Blockstack Public Benefits Corp.</div>
+
+    </div>
+</footer>
 
                     </div>
 
@@ -743,74 +833,6 @@ You’re well on your way to becoming a Blockstack app legend.</p>
     </div>
 </div>
 
-
-    
-        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
-    <div class="uk-container uk-container-small">
-
-        <!-- <div>
-            <ul class="uk-subnav uk-flex-center">
-                
-                    
-                    
-                    
-                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
-                    
-                
-                    
-                    
-                    
-                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
-                    
-                
-                    
-                    
-                    
-                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
-                    
-                
-            </ul>
-        </div>
-        <div class="uk-margin-medium">
-            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
-                
-<div class="uk-first-column">
-    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-<div>
-    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-
-
-<div>
-    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-
-
-
-<div>
-    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-
-
-
-
-            </div>
-        </div> -->
-        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. &copy; 2018 Blockstack Public Benefits Corp.</div>
-
-    </div>
-</footer>
-
-    
 
     
         <script type="text/javascript">
