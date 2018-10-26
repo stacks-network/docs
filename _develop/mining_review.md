@@ -35,4 +35,4 @@ To submit app rankings, please complete the following steps:
    thoughts when ranking. Please mention any app you want to highlight for the
    month.
 
-After receiving the rankings from the reviews, Blockstack will calculated each applications final z-scores.  
+After receiving the rankings from the reviews, Blockstack will calculate each applications final z-scores.  
