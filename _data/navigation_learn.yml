@@ -1,3 +1,7 @@
+- title: Introduction
+- docs:
+  - develop/dapp_principles
+
 - title: Try a tutorial
   docs:
   - browser/hello-blockstack
@@ -9,7 +13,14 @@
   - android/tutorial
   - ios/tutorial
 
+- title: Application mining
+  docs:
+  - develop/mining_intro
+  - develop/mining_enroll
+
 - title: Reference
   docs:
   - core/faq_developer
+  - common/mining_faq
   - common/javascript_ref
+  - common/core_ref

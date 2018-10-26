@@ -1,4 +1,9 @@
-## Docs site
+# README for the documentation site
+
+
+## Building after a fork
+
+## Run locally
 
 To run locally:
 
@@ -34,3 +39,7 @@ To deploy to Netlify:
     ```
     git push -f origin
     ```
+
+# Writing content
+
+## Constructing links

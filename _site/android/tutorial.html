@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Android SDK Tutorial (Pre-release) | Blockstack</title>
-<meta name="generator" content="Jekyll v3.5.0" />
+<meta name="generator" content="Jekyll v3.6.3" />
 <meta property="og:title" content="Android SDK Tutorial (Pre-release)" />
 <meta name="author" content="Blockstack" />
 <meta property="og:locale" content="en_US" />
@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://docs.blockstack.org/android/tutorial.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-10-22T12:11:33-07:00" />
+<meta property="article:published_time" content="2018-10-26T14:02:20-07:00" />
 <script type="application/ld+json">
-{"url":"https://docs.blockstack.org/android/tutorial.html","headline":"Android SDK Tutorial (Pre-release)","dateModified":"2018-10-22T12:11:33-07:00","datePublished":"2018-10-22T12:11:33-07:00","author":{"@type":"Person","name":"Blockstack"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/android/tutorial.html"},"description":"Android SDK Tutorial (Pre-release)","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://docs.blockstack.org/android/tutorial.html","headline":"Android SDK Tutorial (Pre-release)","dateModified":"2018-10-26T14:02:20-07:00","datePublished":"2018-10-26T14:02:20-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/android/tutorial.html"},"author":{"@type":"Person","name":"Blockstack"},"description":"Android SDK Tutorial (Pre-release)","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
@@ -116,6 +116,23 @@
                   <!--  -->
                     
                     
+                         <h5>Introduction</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                    </ul>
+                    
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/dapp_principles.html">Principles of Blockstack applications</a></li>
+                    
+                    </ul>
+                    
+                    
                          <h5>Try a tutorial</h5>
                     
                     <ul class="uk-nav uk-nav-default doc-nav">
@@ -155,6 +172,23 @@
                     </ul>
                     
                     
+                         <h5>Application mining</h5>
+                    
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/mining_intro.html">Understand app mining</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/develop/mining_enroll.html">How to enroll</a></li>
+                    
+                    </ul>
+                    
+                    
                          <h5>Reference</h5>
                     
                     <ul class="uk-nav uk-nav-default doc-nav">
@@ -167,7 +201,17 @@
                       
                       <!--  -->
                       
+                          <li class=""><a href="/common/mining_faq.html">Mining FAQ</a></li>
+                    
+                      
+                      <!--  -->
+                      
                           <li class=""><a href="/common/javascript_ref.html">Blockstack Javascript Reference</a></li>
+                    
+                      
+                      <!--  -->
+                      
+                          <li class=""><a href="/common/core_ref.html">Blockstack CORE API</a></li>
                     
                     </ul>
                     
@@ -195,13 +239,13 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-10-22T12:11:33-07:00" itemprop="datePublished">
+<time datetime="2018-10-26T14:02:20-07:00" itemprop="datePublished">
     
     
 
 <a "target="_blank" href="https://github.com/blockstack/blockstack-android/blob/master/docs/tutorial.md" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>
- <span style="font-family:Wingdings">&#119;</span> Oct 22, 2018
+ <span style="font-family:Wingdings">&#119;</span> Oct 26, 2018
 </time>
 
                     </div>
@@ -292,10 +336,9 @@ Depending on your network connection, this can take between 15-30 minutes.</p>
 Before you begin, verify you have installed <code class="highlighter-rouge">npm</code> using the <code class="highlighter-rouge">which</code> command to
 verify.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>which npm
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>which npm
 /usr/local/bin/npm
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>If you don’t find <code class="highlighter-rouge">npm</code> in your system, <a href="https://www.npmjs.com/get-npm">install
 it</a>.</p>
@@ -332,16 +375,14 @@ existing projects.</p>
   <li>
     <p>Install Yeoman.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm install -g yo
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm install <span class="nt">-g</span> yo
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Install the Blockstack application generator.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> npm install -g generator-blockstack
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm install <span class="nt">-g</span> generator-blockstack
+</code></pre></div>    </div>
   </li>
 </ol>
 
@@ -359,27 +400,24 @@ modify the <code class="highlighter-rouge">hello-world</code> to interact with t
   <li>
     <p>Create a <code class="highlighter-rouge">hello-blockstack</code> directory.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> mkdir hello-blockstack
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir hello-blockstack
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Change into your new directory.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nb">cd </span>hello-blockstack
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd </span>hello-blockstack
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Use Yeoman and the Blockstack application generator to create your initial <code class="highlighter-rouge">hello-blockstack</code> application.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> yo blockstack:react
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> yo blockstack:react
+</code></pre></div>    </div>
 
     <p>You should see several interactive prompts.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>yo blockstack:react
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>yo blockstack:react
  <span class="o">==========================================================================</span>
  We are constantly looking <span class="k">for </span>ways to make yo better!
  May we anonymously report usage statistics to improve the tool over <span class="nb">time</span>?
@@ -388,8 +426,8 @@ modify the <code class="highlighter-rouge">hello-world</code> to interact with t
 
       _-----_     ╭──────────────────────────╮
      |       |    │      Welcome to the      │
-     |--<span class="o">(</span>o<span class="o">)</span>--|    │      Blockstack app      │
-     ---------    │        generator!        │
+     |--<span class="o">(</span>o<span class="o">)</span><span class="nt">--</span>|    │      Blockstack app      │
+     <span class="nt">---------</span>    │        generator!        │
      <span class="o">(</span> _U_ <span class="o">)</span>      ╰──────────────────────────╯
      /___A___<span class="se">\ </span>  /
       |  ~  |
@@ -397,28 +435,26 @@ modify the <code class="highlighter-rouge">hello-world</code> to interact with t
          |°  Y
 
  ? Are you ready to build a Blockstack app <span class="k">in </span>React? <span class="o">(</span>Y/n<span class="o">)</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Respond to the prompts to populate the initial app.</p>
 
     <p>After the process completes successfully, you see a prompt similar to the following:</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="o">[</span>fsevents] Success:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">[</span>fsevents] Success:
  <span class="s2">"/Users/theuser/repos/hello-blockstack/node_modules/fsevents/lib/binding/Release/node-v59-darwin-x64/fse.node"</span>
  is installed via remote npm notice created a lockfile as package-lock.json.
  You should commit this file. added 1060 packages <span class="k">in </span>26.901s
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Run the initial application.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>npm start
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>npm start
 
- &gt; hello-blockstack@0.0.0 start /Users/moxiegirl/repos/hello-blockstack
- &gt; webpack-dev-server
+ <span class="o">&gt;</span> hello-blockstack@0.0.0 start /Users/moxiegirl/repos/hello-blockstack
+ <span class="o">&gt;</span> webpack-dev-server
 
  Project is running at http://localhost:8080/
  webpack output is served from /
@@ -435,8 +471,7 @@ modify the <code class="highlighter-rouge">hello-world</code> to interact with t
           <span class="o">[</span>2] <span class="o">(</span>webpack<span class="o">)</span>/buildin/global.js 509 bytes <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
           <span class="o">[</span>3] <span class="o">(</span>webpack<span class="o">)</span>/buildin/module.js 517 bytes <span class="o">{</span>0<span class="o">}</span> <span class="o">[</span>built]
   webpack: Compiled successfully.
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>The system opens a browser displaying your running application.</p>
 
@@ -481,14 +516,13 @@ application directory.</p>
     <p>This endpoint on the web version of your app will redirect Android users back
  to your mobile app.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>touch public/redirect.html
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>touch public/redirect.html
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Open <code class="highlighter-rouge">redirect.html</code> and add code to the endpoint.</p>
 
-    <div class="language-html highlighter-rouge"><pre class="highlight"><code> <span class="cp">&lt;!DOCTYPE html&gt;</span>
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="cp">&lt;!DOCTYPE html&gt;</span>
  <span class="nt">&lt;html&gt;</span>
  <span class="nt">&lt;head&gt;</span>
    <span class="nt">&lt;title&gt;</span>Hello, Blockstack!<span class="nt">&lt;/title&gt;</span>
@@ -504,8 +538,7 @@ application directory.</p>
  <span class="nt">&lt;body&gt;</span>
  <span class="nt">&lt;/body&gt;</span>
  <span class="nt">&lt;/html&gt;</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>Blockstack apps are identified by their domain names.  The endpoint will
  receive a get request with the query parameter <code class="highlighter-rouge">authResponse=XXXX</code> and
@@ -784,7 +817,7 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
 
     <p>When you are done, your imports should appear as follows:</p>
 
-    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code>
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
  <span class="k">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span>
  <span class="k">import</span> <span class="nn">android.os.Bundle</span>
 
@@ -795,13 +828,12 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
  <span class="k">import</span> <span class="nn">org.blockstack.android.sdk.Scope</span>
  <span class="k">import</span> <span class="nn">org.blockstack.android.sdk.UserData</span>
  <span class="k">import</span> <span class="nn">java.net.URI</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Add a variable for the Blockstack session before <code class="highlighter-rouge">onCreate</code>.</p>
 
-    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
 
  <span class="k">private</span> <span class="kd">var</span> <span class="py">_blockstackSession</span><span class="p">:</span> <span class="n">BlockstackSession</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
 
@@ -811,13 +843,12 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
      <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
    <span class="p">}</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Replace the existing the <code class="highlighter-rouge">onCreate</code> function with the following:</p>
 
-    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
      <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
      <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
 
@@ -856,8 +887,7 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
 </span>         <span class="n">handleAuthResponse</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
      <span class="p">}</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>This new <code class="highlighter-rouge">onCreate</code> does several things:</p>
 
@@ -877,14 +907,13 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
   <li>
     <p>Add a private function to reflect when a user successfully signs in.</p>
 
-    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="k">private</span> <span class="k">fun</span> <span class="nf">onSignIn</span><span class="p">(</span><span class="n">userData</span><span class="p">:</span> <span class="n">UserData</span><span class="p">)</span> <span class="p">{</span>
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">private</span> <span class="k">fun</span> <span class="nf">onSignIn</span><span class="p">(</span><span class="n">userData</span><span class="p">:</span> <span class="n">UserData</span><span class="p">)</span> <span class="p">{</span>
  		<span class="n">userDataTextView</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="s">"Signed in as ${userData.decentralizedID}"</span>
 
  		<span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">false</span>
 
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Handle sign in requests with an <code class="highlighter-rouge">onNewIntent</code> function if the activity was already opened when signing in</p>
@@ -892,20 +921,19 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
     <p>Retrieve the authentication token from the custom protocol handler call and
  send it to the Blockstack session.</p>
 
-    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onNewIntent</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">?)</span> <span class="p">{</span>
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onNewIntent</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">?)</span> <span class="p">{</span>
    <span class="k">super</span><span class="p">.</span><span class="n">onNewIntent</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
 
    <span class="k">if</span> <span class="p">(</span><span class="n">intent</span><span class="o">?.</span><span class="n">action</span> <span class="p">==</span> <span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_VIEW</span><span class="p">)</span> <span class="p">{</span>
        <span class="n">handleAuthResponse</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
    <span class="p">}</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Create a handler for the authentication response.</p>
 
-    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="k">private</span> <span class="k">fun</span> <span class="nf">handleAuthResponse</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">)</span> <span class="p">{</span>
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">private</span> <span class="k">fun</span> <span class="nf">handleAuthResponse</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">val</span> <span class="py">response</span> <span class="p">=</span> <span class="n">intent</span><span class="p">.</span><span class="n">dataString</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">val</span> <span class="py">authResponseTokens</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">':'</span><span class="p">)</span>
@@ -924,13 +952,12 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
         <span class="p">}</span>
     <span class="p">}</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Add the convenience method to access the blockstack session.</p>
 
-    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="k">fun</span> <span class="nf">blockstackSession</span><span class="p">()</span> <span class="p">:</span> <span class="n">BlockstackSession</span> <span class="p">{</span>
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">fun</span> <span class="nf">blockstackSession</span><span class="p">()</span> <span class="p">:</span> <span class="n">BlockstackSession</span> <span class="p">{</span>
    <span class="kd">val</span> <span class="py">session</span> <span class="p">=</span> <span class="n">_blockstackSession</span>
     <span class="k">if</span><span class="p">(</span><span class="n">session</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
        <span class="k">return</span> <span class="n">session</span>
@@ -938,13 +965,12 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
      <span class="k">throw</span> <span class="n">IllegalStateException</span><span class="p">(</span><span class="s">"No session."</span><span class="p">)</span>
    <span class="p">}</span>
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Verify your final <code class="highlighter-rouge">MainActivity.kt</code> code looks like this:</p>
 
-    <div class="language-kotlin highlighter-rouge"><pre class="highlight"><code> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
 
      <span class="k">private</span> <span class="kd">var</span> <span class="py">_blockstackSession</span><span class="p">:</span> <span class="n">BlockstackSession</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
 
@@ -1025,8 +1051,7 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
 
 
  <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
 </ol>
 
@@ -1065,6 +1090,71 @@ know about your experience by tweeting to
                         <div class="share uk-text-center">
     <a href="https://twitter.com/intent/tweet?text=Android SDK Tutorial (Pre-release)&url=https://docs.blockstack.org/android/tutorial.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" onclick="window.open(this.href, 'twitter', 'width=550,height=235');return false;"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
 </div>
+
+                        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <!-- <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="uk-margin-medium">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+<div class="uk-first-column">
+    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+<div>
+    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
+</div>
+
+
+
+
+
+
+            </div>
+        </div> -->
+        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. <br> &copy; 2018 Blockstack Public Benefits Corp.</div>
+
+    </div>
+</footer>
 
                     </div>
 
@@ -1162,74 +1252,6 @@ know about your experience by tweeting to
     </div>
 </div>
 
-
-    
-        <footer class="uk-section uk-text-center uk-text-muted uk-link-muted">
-    <div class="uk-container uk-container-small">
-
-        <!-- <div>
-            <ul class="uk-subnav uk-flex-center">
-                
-                    
-                    
-                    
-                        <li><a href="https://blockstack.org" target="_blank" >Blockstack.org</a></li>
-                    
-                
-                    
-                    
-                    
-                        <li><a href="https://forum.blockstack.org/" target="_blank" >Forums</a></li>
-                    
-                
-                    
-                    
-                    
-                        <li><a href="https://github.com/blockstack" target="_blank" >GitHub</a></li>
-                    
-                
-            </ul>
-        </div>
-        <div class="uk-margin-medium">
-            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
-                
-<div class="uk-first-column">
-    <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-<div>
-    <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-
-
-<div>
-    <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-
-
-
-<div>
-    <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link uk-icon" target="_blank"></a>
-</div>
-
-
-
-
-
-
-            </div>
-        </div> -->
-        <div class="uk-margin-medium uk-text-small copyright"> Blockstack&reg; and Stacks&trade; are trademarks of Blockstack Public Benefit Corp. &copy; 2018 Blockstack Public Benefits Corp.</div>
-
-    </div>
-</footer>
-
-    
 
     
         <script type="text/javascript">
