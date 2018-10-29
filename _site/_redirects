@@ -1,0 +1,2 @@
+# Redirect default Netlify subdomain to primary domain
+https://docsproduction.netlify.com/* https://docs.blockstack.org/:splat 301!

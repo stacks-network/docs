@@ -1,0 +1,9 @@
+{
+  "name": "cypress",
+  "productName": "Cypress",
+  "description": "Cypress.io end to end testing tool",
+  "version": "2.1.0",
+  "main": "index.js",
+  "scripts": {},
+  "env": "production"
+}
