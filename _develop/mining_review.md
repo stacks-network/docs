@@ -17,9 +17,7 @@ To submit app rankings, please complete the following steps:
 
     Place a the rank value in the **Ranking** column next to each app you would
     like to rank. You can rank only those apps you want and omit ranking others.
-    Rank each application numerically where 1 (one) is the highest. For reviewer
-    partners, rank apps for the month using the methodology of your
-    organization.
+    Rank each application numerically where 1 (one) is the highest.
 
     Please avoid modifying the spreadsheet in apart from adding your rankings.
     The `App ID` column, in particular, must be preserved to process your rankings
@@ -35,4 +33,4 @@ To submit app rankings, please complete the following steps:
    thoughts when ranking. Please mention any app you want to highlight for the
    month.
 
-After receiving the rankings from the reviews, Blockstack will calculate each applications final z-scores.  
+After receiving the rankings from all reviewers, Blockstack will combine them to calculate each application's final z-scores.  

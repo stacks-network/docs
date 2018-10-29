@@ -28,4 +28,7 @@ To apply, do the following:
 
    Be sure you provide us with the BTC address for receipt of mining and rewards funds.
 
+   {% include warning.html content="You must enroll by the end of each month to be
+   eligible for the following month. If your submission is incomplete, it will not be reviewed." %}
+
 Once your enrollment is received, you appear in the enrollment list. For more information, see the frequently asked questions [on the App.co site](https://app.co/mining#faq).
