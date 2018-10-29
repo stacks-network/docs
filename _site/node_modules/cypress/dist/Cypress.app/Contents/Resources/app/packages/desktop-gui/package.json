@@ -1,0 +1,48 @@
+{
+  "name": "@packages/desktop-gui",
+  "version": "0.0.0",
+  "main": "lib/gui.js",
+  "private": true,
+  "scripts": {
+    "postinstall": "echo '@packages/desktop-gui needs: npm run build'",
+    "build": "node ./scripts/build-dev.js",
+    "build-prod": "node ./scripts/build-prod.js",
+    "watch": "node ./scripts/watch.js",
+    "clean": "zunder clean",
+    "clean-deps": "rm -rf node_modules",
+    "lint": "$(bin-up eslint) --fix lib/*.js src/*.js* src/**/*.js*",
+    "cypress:open": "node ../../scripts/start.js",
+    "cypress:run": "node ../../scripts/run-cypress-tests.js"
+  },
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "devDependencies": {
+    "@cypress/icons": "0.5.4",
+    "@cypress/react-tooltip": "^0.2.2",
+    "@cypress/releaser": "0.1.12",
+    "bin-up": "^1.0.0",
+    "bluebird": "^3.4.0",
+    "bootstrap-sass": "3.3.5",
+    "classnames": "^2.2.5",
+    "fira": "cypress-io/fira#fb63362742eea8cdce0d90825ab9264d77719e3d",
+    "font-awesome": "4.7",
+    "gravatar": "^1.6.0",
+    "human-interval": "^0.1.6",
+    "istanbul": "^0.4.3",
+    "lodash": "^4.13.1",
+    "md5": "^2.1.0",
+    "mobx": "^3.1.11",
+    "mobx-react": "^4.2.1",
+    "mobx-react-devtools": "^4.2.0",
+    "moment": "^2.15.1",
+    "prop-types": "^15.5.10",
+    "rc-collapse": "^1.6.11",
+    "react": "^15.6.1",
+    "react-bootstrap-modal": "3.0.1",
+    "react-dom": "^15.6.1",
+    "react-loader": "^2.4.0",
+    "zunder": "5.6.5"
+  }
+}

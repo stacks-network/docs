@@ -1,0 +1,19 @@
+{
+  "name": "@packages/ts",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "files": [
+    "register.js"
+  ],
+  "scripts": {
+    "test": "node test"
+  },
+  "devDependencies": {
+    "ts-node": "3.3.0",
+    "typescript": "2.5.2"
+  },
+  "dependencies": {
+    "debug": "^2.6.8"
+  }
+}
