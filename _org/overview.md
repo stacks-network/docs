@@ -85,3 +85,22 @@ Finally, Blockstack currently supports relatively simple smart contracts that
 are used to register digital assets on the network. The Stacks blockchain v2
 will support general-purpose smart contracts written in a non-Turing-complete
 language currently under development.
+
+{% include important.html content="<p>This webpage
+contains forward-looking statements, including statements regarding Blockstack
+PBC’s plans for the Blockstack Core and blockchain. Forward-looking statements
+are subject to risks and uncertainties that could cause actual results to differ
+materially, and reported results should not be considered as an indication of
+future performance. Potential risks and uncertainties that could change our
+actual results include, but are not limited to, risks associated with: the
+failure of Blockstack to successfully implement proof-of-burn mining; the
+failure of Blockstack to successfully launch the genesis block; technical
+obstacles in further developing the Stacks blockchain and potential failure of
+its underlying technology; the failure of App Mining Program to successfully
+incentivize the development of applications for the Blockstack network; risks
+associated with potential attacks on the Stacks blockchain, its mining
+mechanisms and the App Reviewers; technical difficulties in the transition from
+a centralized to a decentralized administration of the App Mining program; and
+the ability of Blockstack to develop the Blockstack Core. These forward-looking
+statements speak only as of the date hereof. Blockstack PBC disclaims any
+obligation to update these forward-looking statements.</p>" %}
