@@ -28,7 +28,7 @@ Use the following form to check your Stacks allocation:
 <script>
 function process()
 {
-var url="https://explorer.blockstack.org/stacks/addresses/" + document.getElementById("url").value;
+var url="https://genesis.stackstoken.com/stacks/addresses/" + document.getElementById("url").value;
 location.href=url;
 return false;
 }
