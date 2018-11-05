@@ -17,9 +17,9 @@
 <meta property="og:url" content="https://docs.blockstack.org/android/tutorial.html" />
 <meta property="og:site_name" content="Blockstack" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-11-05T11:21:14-08:00" />
+<meta property="article:published_time" content="2018-11-05T11:26:39-08:00" />
 <script type="application/ld+json">
-{"datePublished":"2018-11-05T11:21:14-08:00","url":"https://docs.blockstack.org/android/tutorial.html","dateModified":"2018-11-05T11:21:14-08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/android/tutorial.html"},"author":{"@type":"Person","name":"Blockstack"},"description":"Android SDK Tutorial (Pre-release)","@type":"BlogPosting","headline":"Android SDK Tutorial (Pre-release)","@context":"http://schema.org"}</script>
+{"datePublished":"2018-11-05T11:26:39-08:00","url":"https://docs.blockstack.org/android/tutorial.html","dateModified":"2018-11-05T11:26:39-08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://docs.blockstack.org/android/tutorial.html"},"author":{"@type":"Person","name":"Blockstack"},"description":"Android SDK Tutorial (Pre-release)","@type":"BlogPosting","headline":"Android SDK Tutorial (Pre-release)","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!-- <meta property="og:image" content="https://docs.blockstack.org/assets/posts/logo.png"/> -->
@@ -241,7 +241,7 @@
     <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Blockstack</span></span><br> -->
 
 
-<time datetime="2018-11-05T11:21:14-08:00" itemprop="datePublished">
+<time datetime="2018-11-05T11:26:39-08:00" itemprop="datePublished">
     
     Nov 5, 2018
 </time>
@@ -654,16 +654,8 @@ iniatial state by creating an emulator to run it in. Open Android Studio and do 
 <p>Now that you have created your initial project and verified it running in an emulator, you are ready to begin configuring the application for use with Blockstack.</p>
 
 <ol>
-  <li>In studio, open the <code class="highlighter-rouge">AndroidManifest.xml</code> file.</li>
   <li>
-    <p>Add the a <code class="highlighter-rouge">launchMode</code> to the <code class="highlighter-rouge">.MainActivity</code> definition.</p>
-
-    <pre><code class="language-XML"> &lt;activity android:name=".MainActivity" android:launchMode="singleTask"&gt;
-</code></pre>
-
-    <p>Blockstack requires that the activity that starts the sign-in process also
-handles the auth reponse token. This means that the activity needs to run in
-<code class="highlighter-rouge">singleTask</code> launch mode.</p>
+    <p>In studio, open the <code class="highlighter-rouge">AndroidManifest.xml</code> file.</p>
   </li>
   <li>
     <p>Add an <code class="highlighter-rouge">&lt;intent-filter&gt;</code> with the custom handler for Blockstack.</p>
@@ -718,12 +710,13 @@ handles the auth reponse token. This means that the activity needs to run in
 
     <pre><code class="language-JS"> dependencies {
      implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-     implementation 'com.android.support:appcompat-v7:27.1.0'
-     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+     implementation 'com.android.support:appcompat-v7:27.1.1'
+     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+     implementation 'com.android.support:design:27.1.1'
      testImplementation 'junit:junit:4.12'
      androidTestImplementation 'com.android.support.test:runner:1.0.2'
      androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-     implementation 'com.github.blockstack:blockstack-android:0.3.0'
+     implementation 'com.github.blockstack:blockstack-android:0.4.0'
  }
 
 </code></pre>
@@ -760,7 +753,7 @@ correctly.</p>
 
     <p>The new interface includes a <code class="highlighter-rouge">BlockstackSignInButton</code> which is provided by
 the SDK. This SDK includes a themed “Sign in with Blockstack” button
-(<code class="highlighter-rouge">BlockstackSignInButton</code>). You use this button in your here with the
+(<code class="highlighter-rouge">BlockstackSignInButton</code>). You use this button here with the
 <code class="highlighter-rouge">org.blockstack.android.sdk.ui.BlockstackSignInButton</code> class.</p>
 
     <pre><code class="language-XML"> &lt;?xml version="1.0" encoding="utf-8"?&gt;
@@ -789,7 +782,7 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
      tools:layout_editor_absoluteX="6dp"
      tools:layout_editor_absoluteY="70dp" /&gt;
 
- &lt;/android
+ &lt;/android&gt;
 </code></pre>
 
     <p>This codes adds a button and some text to your application.</p>
@@ -815,17 +808,15 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
 
     <p>When you are done, your imports should appear as follows:</p>
 
-    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
- <span class="k">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span>
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">import</span> <span class="nn">android.content.Intent</span>
  <span class="k">import</span> <span class="nn">android.os.Bundle</span>
-
  <span class="k">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span>
  <span class="k">import</span> <span class="nn">android.view.View</span>
  <span class="k">import</span> <span class="nn">kotlinx.android.synthetic.main.activity_main.*</span>
  <span class="k">import</span> <span class="nn">org.blockstack.android.sdk.BlockstackSession</span>
  <span class="k">import</span> <span class="nn">org.blockstack.android.sdk.Scope</span>
  <span class="k">import</span> <span class="nn">org.blockstack.android.sdk.UserData</span>
- <span class="k">import</span> <span class="nn">java.net.URI</span>
+ <span class="k">import</span> <span class="nn">org.blockstack.android.sdk.toBlockstackConfig</span>
 </code></pre></div>    </div>
   </li>
   <li>
@@ -833,13 +824,12 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
 
     <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
 
- <span class="k">private</span> <span class="kd">var</span> <span class="py">_blockstackSession</span><span class="p">:</span> <span class="n">BlockstackSession</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">_blockstackSession</span><span class="p">:</span> <span class="n">BlockstackSession</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
 
-
- <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-     <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-     <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
-   <span class="p">}</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+      <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+      <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
+    <span class="p">}</span>
  <span class="p">}</span>
 </code></pre></div>    </div>
   </li>
@@ -849,36 +839,19 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
     <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
      <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
      <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
-
-     <span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">false</span>
-
-     <span class="kd">val</span> <span class="py">appDomain</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"https://flamboyant-darwin-d11c17.netlify.com"</span><span class="p">)</span>
-     <span class="kd">val</span> <span class="py">redirectURI</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"${appDomain}/redirect"</span><span class="p">)</span>
-     <span class="kd">val</span> <span class="py">manifestURI</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"${appDomain}/manifest.json"</span><span class="p">)</span>
+      
      <span class="kd">val</span> <span class="py">scopes</span> <span class="p">=</span> <span class="n">arrayOf</span><span class="p">(</span><span class="n">Scope</span><span class="p">.</span><span class="n">StoreWrite</span><span class="p">)</span>
+     <span class="kd">val</span> <span class="py">config</span> <span class="p">=</span> <span class="s">"https://flamboyant-darwin-d11c17.netlify.com"</span>
+                     <span class="p">.</span><span class="n">toBlockstackConfig</span><span class="p">(</span><span class="n">scopes</span><span class="p">)</span>
 
- <span class="kd">val</span> <span class="py">config</span> <span class="p">=</span> <span class="n">java</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">URI</span><span class="p">(</span><span class="s">"https://flamboyant-darwin-d11c17.netlify.com"</span><span class="p">).</span><span class="n">run</span> <span class="p">{</span>
-         <span class="n">org</span><span class="p">.</span><span class="n">blockstack</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">sdk</span><span class="p">.</span><span class="n">BlockstackConfig</span><span class="p">(</span>
-                 <span class="k">this</span><span class="p">,</span>
-                 <span class="n">redirectURI</span><span class="p">,</span>
-                 <span class="n">manifestURI</span><span class="p">,</span>
-                 <span class="n">scopes</span>
-     <span class="p">}</span>
-
-     <span class="n">_blockstackSession</span> <span class="p">=</span> <span class="n">BlockstackSession</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span>
-             <span class="n">onLoadedCallback</span> <span class="p">=</span> <span class="p">{</span>
-                 <span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">true</span>
-             <span class="p">})</span>
-
+     <span class="n">_blockstackSession</span> <span class="p">=</span> <span class="n">BlockstackSession</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+     
+     <span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">true</span>                
 
      <span class="n">signInButton</span><span class="p">.</span><span class="n">setOnClickListener</span> <span class="p">{</span> <span class="n">view</span><span class="p">:</span> <span class="n">View</span> <span class="p">-&gt;</span>
-         <span class="n">blockstackSession</span><span class="p">().</span><span class="n">redirectUserToSignIn</span> <span class="p">{</span> <span class="n">userData</span> <span class="p">-&gt;</span>
-             <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="p">.</span><span class="n">hasValue</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="n">runOnUiThread</span> <span class="p">{</span>
-                     <span class="n">onSignIn</span><span class="p">(</span><span class="n">userData</span><span class="p">.</span><span class="n">value</span><span class="o">!!</span><span class="p">)</span>
-                 <span class="p">}</span>
-             <span class="p">}</span>
-         <span class="p">}</span>
+         <span class="n">blockstackSession</span><span class="p">().</span><span class="n">redirectUserToSignIn</span> <span class="p">{</span>
+            <span class="c1">// only called on error
+</span>       <span class="p">}</span>
      <span class="p">}</span>
      <span class="k">if</span> <span class="p">(</span><span class="n">intent</span><span class="o">?.</span><span class="n">action</span> <span class="p">==</span> <span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_VIEW</span><span class="p">)</span> <span class="p">{</span>
          <span class="c1">// handle the redirect from sign in
@@ -891,14 +864,14 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
 
     <ul>
       <li>Define the initial state for the <code class="highlighter-rouge">signInButton</code>.</li>
-      <li>Supply authentication information for connecting to your Blockstack app: <code class="highlighter-rouge">appDomain</code>, <code class="highlighter-rouge">redirectURI</code>, <code class="highlighter-rouge">manifestURI</code> and <code class="highlighter-rouge">scopes</code></li>
+      <li>Supply authentication information for connecting to your Blockstack app: <code class="highlighter-rouge">appDomain</code> and <code class="highlighter-rouge">scopes</code> (for <code class="highlighter-rouge">redirectURI</code>, <code class="highlighter-rouge">manifestURI</code> the default values are used)</li>
       <li>Add a listener for the button click.</li>
     </ul>
 
     <p>Notice that the application in this example is a URI you have not set up.
  Registering and application name takes time, so in time’s interest you’ll
  use an existing app that is identical to the <code class="highlighter-rouge">hello-world</code> you created
- earlier. For a produciton verison, you’ll need to replace <code class="highlighter-rouge">appDomain</code>,
+ earlier. For a production version, you’ll need to replace <code class="highlighter-rouge">appDomain</code>,
  <code class="highlighter-rouge">redirectURI</code>, <code class="highlighter-rouge">manifestURI</code> and <code class="highlighter-rouge">scopes</code> with values appropriate for your
  app.</p>
   </li>
@@ -907,9 +880,7 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
 
     <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">private</span> <span class="k">fun</span> <span class="nf">onSignIn</span><span class="p">(</span><span class="n">userData</span><span class="p">:</span> <span class="n">UserData</span><span class="p">)</span> <span class="p">{</span>
  		<span class="n">userDataTextView</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="s">"Signed in as ${userData.decentralizedID}"</span>
-
  		<span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">false</span>
-
  <span class="p">}</span>
 </code></pre></div>    </div>
   </li>
@@ -972,31 +943,23 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
 
      <span class="k">private</span> <span class="kd">var</span> <span class="py">_blockstackSession</span><span class="p">:</span> <span class="n">BlockstackSession</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
 
-
      <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
          <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
          <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span><span class="p">)</span>
 
          <span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">false</span>
 
-         <span class="kd">val</span> <span class="py">appDomain</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"https://flamboyant-darwin-d11c17.netlify.com"</span><span class="p">)</span>
-         <span class="kd">val</span> <span class="py">redirectURI</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"${appDomain}/redirect"</span><span class="p">)</span>
-         <span class="kd">val</span> <span class="py">manifestURI</span> <span class="p">=</span> <span class="n">URI</span><span class="p">(</span><span class="s">"${appDomain}/manifest.json"</span><span class="p">)</span>
          <span class="kd">val</span> <span class="py">scopes</span> <span class="p">=</span> <span class="n">arrayOf</span><span class="p">(</span><span class="n">Scope</span><span class="p">.</span><span class="n">StoreWrite</span><span class="p">)</span>
+         <span class="kd">val</span> <span class="py">config</span> <span class="p">=</span> <span class="s">"https://flamboyant-darwin-d11c17.netlify.com"</span>
+                     <span class="p">.</span><span class="n">toBlockstackConfig</span><span class="p">(</span><span class="n">scopes</span><span class="p">)</span>
 
-         <span class="n">_blockstackSession</span> <span class="p">=</span> <span class="n">BlockstackSession</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">appDomain</span><span class="p">,</span> <span class="n">redirectURI</span><span class="p">,</span> <span class="n">manifestURI</span><span class="p">,</span> <span class="n">scopes</span><span class="p">,</span>
-                 <span class="n">onLoadedCallback</span> <span class="p">=</span> <span class="p">{</span><span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">true</span>
-                 <span class="p">})</span>
-
+         <span class="n">_blockstackSession</span> <span class="p">=</span> <span class="n">BlockstackSession</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+         <span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">true</span>                    
 
          <span class="n">signInButton</span><span class="p">.</span><span class="n">setOnClickListener</span> <span class="p">{</span> <span class="n">view</span><span class="p">:</span> <span class="n">View</span> <span class="p">-&gt;</span>
-             <span class="n">blockstackSession</span><span class="p">().</span><span class="n">redirectUserToSignIn</span> <span class="p">{</span> <span class="n">userData</span> <span class="p">-&gt;</span>
-                 <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="p">.</span><span class="n">hasValue</span><span class="p">)</span> <span class="p">{</span>
-                     <span class="n">runOnUiThread</span> <span class="p">{</span>
-                         <span class="n">onSignIn</span><span class="p">(</span><span class="n">userData</span><span class="p">)</span>
-                     <span class="p">}</span>
-                 <span class="p">}</span>
-             <span class="p">}</span>
+             <span class="n">blockstackSession</span><span class="p">().</span><span class="n">redirectUserToSignIn</span> <span class="p">{</span> 
+                <span class="c1">// only called on error
+</span>             <span class="p">}</span>
          <span class="p">}</span>
          <span class="k">if</span> <span class="p">(</span><span class="n">intent</span><span class="o">?.</span><span class="n">action</span> <span class="p">==</span> <span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_VIEW</span><span class="p">)</span> <span class="p">{</span>
              <span class="n">handleAuthResponse</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
@@ -1007,7 +970,6 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
          <span class="n">userDataTextView</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="s">"Signed in as ${userData.decentralizedID}"</span>
 
          <span class="n">signInButton</span><span class="p">.</span><span class="n">isEnabled</span> <span class="p">=</span> <span class="k">false</span>
-
      <span class="p">}</span>
 
      <span class="k">override</span> <span class="k">fun</span> <span class="nf">onNewIntent</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">?)</span> <span class="p">{</span>
@@ -1046,8 +1008,6 @@ the SDK. This SDK includes a themed “Sign in with Blockstack” button
              <span class="k">throw</span> <span class="n">IllegalStateException</span><span class="p">(</span><span class="s">"No session."</span><span class="p">)</span>
          <span class="p">}</span>
      <span class="p">}</span>
-
-
  <span class="p">}</span>
 </code></pre></div>    </div>
   </li>
