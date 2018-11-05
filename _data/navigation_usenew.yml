@@ -1,5 +1,12 @@
+- title: Browser
+- docs:
+  - browser/browser-introduction
+  - browser/local_browser
+
+- title: Identity
 - docs:
   - browser/ids-introduction
-  - browser/browser-introduction
-  - browser/purchase-id
+
+- title: Reference
+- docs:
   - browser/faq_general
