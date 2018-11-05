@@ -1,11 +1,3 @@
-# downstream content
-_core
-_browser
-_android
-_ios
-_gaia
-
-
 # OS or Editor folders
 .DS_Store
 node_modules
@@ -14,3 +6,5 @@ node_modules
 _site
 .sass-cache
 .jekyll-metadata
+package-lock.json
+package.json
