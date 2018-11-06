@@ -108,7 +108,8 @@ titles_from_headings:
 include:
   - _redirects
 exclude:
-  - packag-lock.json
+  - package-lock.json
+  - package.json
   - Guardfile
   - '*/glossary.md'
   - '*/README.md'
