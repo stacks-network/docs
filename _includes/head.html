@@ -2,7 +2,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% seo %}
+  <title>{{ page.title | escape }}</title>
+  {% seo title=false %}
   <!-- <meta property="og:image" content="{% if site.brand.image contains 'http' %}{{ site.brand.image }}{% else %}{{ site.post_assets | absolute_url }}{{ site.brand.image }}{% endif %}"/> -->
   <meta property="og:image" content="{% if site.brand.image contains 'http' %}{{ site.brand.image }}{% else %}{{ site.post_assets | url }}{{ site.brand.image }}{% endif %}"/>
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
