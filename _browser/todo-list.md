@@ -24,7 +24,7 @@ For this tutorial, we will use the following tools:
 * `browserify` to compile node code into browser-ready code
 * `blockstack.js` to authenticate the user and work with the user’s identity/profile information
 
-At minimum, Blockstack requires macOS High Sierra. This tutorial was written for a user running macOS High Sierra 10.13.4. The application you build is a React.js application that is completely decentralized and server-less. While not strictly required to follow along, basic familiarity with React.js is helpful.
+At minimum, Blockstack requires macOS High Sierra. This tutorial was written for a user running macOS High Sierra 10.13.4. The application you build is a Vue.js application that is completely decentralized and server-less. While not strictly required to follow along, basic familiarity with Vue.js is helpful.
 
 When complete, the app is capable of the following:
 
