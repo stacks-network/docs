@@ -180,7 +180,7 @@ on your personal Blockstack storage.
 
 After the completion of this process, the user is logged in.
 
-## Undder the covers in the sign in code
+## Under the covers in the sign in code
 
 Now, go to the underlying `blockstack-todo` code you cloned or downloaded. Sign
 in and sign out is handled in each of these files:
