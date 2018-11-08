@@ -72,8 +72,6 @@ These instructions assume you are cloning.
 
     ```
     $ npm install
-    ...
-    added 1161 packages in 70.746s
     ```
 
 The Todo application has a basic Vue.js structure. There are several configuration files but the central programming files are in the `src` directory:
@@ -82,8 +80,8 @@ The Todo application has a basic Vue.js structure. There are several configurati
 |-----------------|-------------|
 | `main.js`       | Application initialization.            |
 | `App.vue `      | Code for handling the `authResponse`.        |
-| `Landing.vue `  | Code for the initial sign on page.            |
-| `Dashboard.vue` | Application data storage and user sign out.           |
+| `components/Landing.vue `  | Code for the initial sign on page.            |
+| `components/Dashboard.vue` | Application data storage and user sign out.           |
 
 
 ## Sign into the application
