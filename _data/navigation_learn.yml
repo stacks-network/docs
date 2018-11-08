@@ -7,6 +7,7 @@
   - browser/hello-blockstack
   - browser/todo-list
   - browser/blockstack_storage
+  - develop/auth_provider
 
 - title: Work with an SDK
   docs:

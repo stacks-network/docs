@@ -117,7 +117,7 @@ exclude:
   - THEME_README.md
   - Gemfile
   - Gemfile.lock
-  - '*/node_modules'
+  - 'node_modules'
   - collections.json
   - get-content.sh
   - _core/aglio_templates

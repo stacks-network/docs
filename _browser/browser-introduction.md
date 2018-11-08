@@ -3,7 +3,6 @@ layout: usenew
 permalink: /:collection/:path.html
 ---
 # Introduction to the Blockstack Browser
-
 {:.no_toc}
 
 The Blockstack Browser gives users the ability to explore and use the
