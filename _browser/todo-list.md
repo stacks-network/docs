@@ -67,18 +67,13 @@ These instructions assume you are cloning.
     $ cd blockstack-todos
     ```
 
-2. Use `yarn` to install the dependencies.
+2. Use `npm` to install the dependencies.
 
 
     ```
-    $ yarn install
-    yarn install v1.9.2
-    info No lockfile found.
+    $ npm install
     ...
-    [4/5] 🔗  Linking dependencies...
-    [5/5] 📃  Building fresh packages...
-    success Saved lockfile.
-    ✨  Done in 19.90s.
+    added 1161 packages in 70.746s
     ```
 
 The Todo application has a basic Vue.js structure. There are several configuration files but the central programming files are in the `src` directory:
