@@ -25,6 +25,10 @@
 @import "comments/comments";
 @import "comments/forms";
 
+.uk-alert-primary {
+    background: lighten(mix(white, #32d296, 40%), 25%);
+}
+
 
 .anchorjs-link {
   display: inline-block;
