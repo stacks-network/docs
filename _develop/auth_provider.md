@@ -192,7 +192,7 @@ You'll use the <a href=https://github.com/OmniAuth/OmniAuth=“\_blank">OmniAut
     end
     ```
 
-    The `put` line is just a debug output to the console. The gets the user's
+    The `puts` line is just a debug output to the console. The gets the user's
     Blockstack info from `env['omniauth.hash`], which is where OmniAuth stores
     all authentication info. Then, that info is loaded into the `session` object
     under the key `:blockstack_user`. By adding this info to the session, the
