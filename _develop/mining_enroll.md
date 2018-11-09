@@ -16,6 +16,8 @@ To apply, do the following:
 
 1. Integrate Blockstack Auth into your app.
 
+   Your application code can reside in a public or a private repository.
+
 2. Add your app to <a href="https://app.co/submit" target="\_blank">App.co</a>.
 
    Make sure you choose Blockstack from the Authentication list on the form.
