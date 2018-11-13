@@ -14,7 +14,7 @@ Blockstack's token sale in 2017.
 
 During your the initial grant process, you should have submitted a _public
 Stacks wallet address_ to Blockstack. The wallet address is a string of letters and numbers
-starting with an 'SP' or SM', for example: `SP017AUV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XY`
+starting with an 'SP' or SM', for example: `SM3KJBA4RZ7Z20KD2HBXNSXVPCR1D3CRAV6Q05MKT`
 
 If you purchased Stacks tokens through CoinList, you can find your address at
 [CoinList](https://coinlist.co/distributions). If you submitted your Stacks
@@ -28,7 +28,7 @@ Use the following form to check your Stacks allocation:
 <script>
 function process()
 {
-var url="https://genesis.stackstoken.com/address/stacks/" + document.getElementById("url").value;
+var url="https://explorer.blockstack.org/address/stacks/" + document.getElementById("url").value;
 location.href=url;
 return false;
 }
@@ -37,7 +37,7 @@ return false;
 <form class="uk-form-horizontal" onSubmit="return process();" autocomplete="off">
  <div>
 <input style="background: #fff !important;" class="uk-input" type="text" name="url" id="url" placeholder="Enter public Stacks wallet address">
-<input class="uk-button uk-button-default uk-form-width-medium uk-align-center" type="submit" value="Get allocation">
+<input class="uk-button uk-button-default uk-form-width-medium uk-align-center" type="submit" value="Check allocation">
 </div>
 </form>
 </div>
