@@ -2,6 +2,13 @@
 - docs:
   - develop/dapp_principles
 
+- title: Try it! Zero to Dapp
+  docs:
+  - develop/zero_to_dapp_1
+  - develop/zero_to_dapp_2
+  - develop/zero_to_dapp_3
+  - develop/zero_to_dapp_4
+
 - title: Try a tutorial
   docs:
   - browser/hello-blockstack

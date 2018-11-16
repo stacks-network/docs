@@ -36,7 +36,7 @@ on the virtual internet highway.
 Your personal data storage is linked to this ID. You use this ID to
 identify yourself to other users and to sign into applications. When you add a
 picture to a Dapp, the picture appears in the Dapp but the picture's bits and bytes
-are stored in your personal storage. 
+are stored in your personal storage.
 
 
 When you log into another application with your ID, that application can ask for access to that storage and then use that picture. The application must ask you, it knows you by your ID, and
@@ -81,55 +81,7 @@ registrars. Coin is required to purchase identities on other domains.
 
 ## Create an initial Blockstack ID
 
-To create an inititial Blockstack ID, do the following:
-
-1. Open the [Blockstack web application in your browser](https://browser.blockstack.org/sign-up?redirect=%2F).
-
-   The application prompts you for an email address.
-
-   ![](images/create-id-0.png)
-
-   Blockstack uses this email address to send you recovery information.
-
-2. Enter an email address and press **Next**.
-
-   The application prompts you to enter a password. Blockstack users this
-   password to encrypt your recovery code.  You must record and save this
-   initial password.
-
-   **NOTE**:The Blockstack team cannot restore your password for you.
-
-3. Enter a password, confirm it, and press **Next**.
-
-   ![](images/create-id-1.png)
-
-   The browser prompts you to register a unique username in the `id.blockstack`
-   domain. This is your identity in the decentralized internet. The format of the id
-   is:
-
-    _`username`_`.id.blockstack`
-
-    You'll use this initial ID to access the Blockstack Browser.
-
-3.  Enter a unique username and press **Check Availability**.
-
-    ![](images/create-id-2.png)
-
-    When you choose an ID that is available, the system responds with the following:
-
-    ![](images/create-id-3.png)
-
-4.  Press **Continue**.
-
-    The system prompts you to save your **recovery code**. A recovery code is a
-    sequence  of words.  These words allow you to recover an `id.blockstack`
-    that you've created.  You should store the words along with their order, for
-    example,  `#1 applied` and so forth.
-
-5. Click **I have written down all the words** when you are done.
-
-   The system places you in the Blockstack browser.  You can begin exploring and
-   using Dapps.
+{% include create_id.md %}
 
 ## Restore a Blockstack ID
 
