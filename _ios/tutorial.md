@@ -395,11 +395,11 @@ lines after.
 
 	 ![](images/open-xcworkspace.png)
 
-	 When you open the workspace you'll see a warning indicator at the top in the
-	 project title.
+	 When you open the workspace, the system will begin indexing the project. Then, after indexing, you may see a warning indicator at the top in the
+	 project title. If you see the warning, continue to step 7. Otherwise, go to the next section.
 
 7. Click the signal to reveal the warning.
-8. Click **Update to recommented settings**.
+8. Click **Update to recommended settings**.
 
 	 ![](images/indicator.png)
 
