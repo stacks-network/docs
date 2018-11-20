@@ -11,8 +11,8 @@ Blockstack's iOS SDK using the following content:
 * TOC
 {:toc}
 
-This tutorial was extensively tested using XCode 9.3 on a MacBook Air
-running High Sierra 10.13.4. If your environment is different, you may encounter
+This tutorial was extensively tested using Xcode Version 9.3 (9E145) on a MacBook Pro
+running Mojave 10.14. If your environment is different, you may encounter
 slight or even major discrepancies when performing the procedures in this
 tutorial. Please [join the Blockstack community Slack](https://slofile.com/slack/blockstack) and post questions or comments to
 the `#support` channel.
@@ -23,7 +23,7 @@ is expected that the fast or furiously brilliant will skip ahead and improvise
 on this material at will. God speed one and all.
 
 If you prefer, you can skip working through the tutorial all together. Instead,
-you can [download the final project code](#) and import it
+you can [download the final project code](images/hello-blockstack.zip) and import it
 into XCode to review it.
 
 ## Understand the sample application flow
@@ -85,13 +85,13 @@ you have installed CocoaPods.
 
 ```bash
 $ pod --version
-1.6.0.beta.1
+1.6.0.beta.2
 ```
 
 If you don't have the CocoaPods beta version, install it:
 
 ```bash
-sudo gem install cocoapods -v 1.6.0.beta.1
+sudo gem install cocoapods -v 1.6.0.beta.2
 ```
 
 ### Use npm to install Yeoman and the Blockstack App Generator
@@ -152,7 +152,7 @@ In this section, you build an initial React.js application called
          _-----_     ╭──────────────────────────╮
         |       |    │      Welcome to the      │
         |--(o)--|    │      Blockstack app      │
-       `---------´   │        generator!        │
+        ---------   │        generator!        │
         ( _´U`_ )    ╰──────────────────────────╯
         /___A___\   /
          |  ~  |
@@ -200,7 +200,7 @@ In this section, you build an initial React.js application called
 
    At this point, the browser is running a Blockstack server on your local host.
 
-6. Navigate to `https://localhost:8080` with your browser to display the
+6. Navigate to `http://localhost:8080` with your browser to display the
    application.
 
    ![](images/blockstack-signin.png)
@@ -307,15 +307,18 @@ menu items and therefore these procedures may be differœent on your version.
 
    The system prompts you for a location to store your code.
 
-7. Save your project.
+7. Save your project in your `hello-blockstack` directory.
+
+   When you are done, you will have a `hello-blockstack/hello-blockstack-ios` subdirectory.
+
 8. Close XCode.
 
 
 ### Add and edit a Podfile
 
 To use CocoaPods you need to define the XCode target to link them to.
-So for example if you are writing an iOS app, it would be the name of your app.
-Create a target section by writing target '$TARGET_NAME' do and an end a few
+So, for exampleM if you are writing an iOS app, it would be the name of your app.
+Create a target section by writing target `$TARGET_NAME do` and an `end` a few
 lines after.
 
 1. Open a terminal window on your workstation.
@@ -358,10 +361,10 @@ lines after.
 ### Install Blockstack SDK and open the pod project
 
 1. Close your new XCode project.
-2. Change to the root of your `hello-blockstack-is` project.
+2. Change to the root of your `hello-blockstack-ios` project.
 3. Initialize the project with Cocoapods.
 
-	 ```
+	 ```bash
 	 $ pod install
 	 Analyzing dependencies
 	 Downloading dependencies
@@ -415,9 +418,13 @@ the user back to your iOS app. In this example, you use `myblockstackapp://`.
 1. Select the **Info** tab in XCode.
 2. Scroll to **URL Types** and press **+** (plus) sign.
 3. Enter an **Identifier** and **URL Schemes** value.
+
+   | **Identifier** | `MyBlockstackApp` |
+   | **URL Schemes** | `myblockstackapp` |
+
 4. Set the **Role** to **Editor**.
 
-   When you are done the type appears as follows:
+   When you are done the **URL Types** appears as follows:
 
 	 ![](images/url-type.png)
 
@@ -504,7 +511,7 @@ All iOS applications require a splash page.
 Rather than have you build up your own UI, this section has you copy and paste a layout into the XML file source code for the **Main.storyboard** file.
 
 1.  Select the `Main.storyboard` file.
-2.  Chooose **Open As > Source Code**
+2.  Choose **Open As > Source Code**
 
     The `blockstack-example/blockstack-example/Base.lproj/Main.storyboard` file
     defines the graphical elements. Some elements are required before you can
@@ -563,7 +570,7 @@ In this section, you edit the `ViewController.swift` file using the storyboard a
 
 	 ![](images/main-storyboard.png)
 
-2. With the interface builder open, display the `ViewController.swift` file in the rigth panel.
+2. With the interface builder open, display the `ViewController.swift` file in the right panel.
 
    ![](images/view-editors.gif)
 
@@ -611,22 +618,21 @@ this application in your mobile add for now. In XCode, do the following;
 
 
 1. Open the `ViewController.swift` file.
-2. Add an import both for `Blockstack` and for `SafariServices`.
+2. Add an import both for `Blockstack`.
 
    ```
 	 import UIKit
 	 import Blockstack
-	 import SafariServices
 	 ```
 
-3. Just before the `didReceiveMemoryWarning` function a private `updateUI()` function.
+3. Add a private `updateUI()` function.
 
    This function takes care of loading the user data from Blockstack.
 
    ```swift
    private func updateUI() {
        DispatchQueue.main.async {
-           if Blockstack.shared.isSignedIn() {
+           if Blockstack.shared.isUserSignedIn() {
                // Read user profile data
                let retrievedUserData = Blockstack.shared.loadUserData()
                print(retrievedUserData?.profile?.name as Any)
@@ -644,7 +650,7 @@ this application in your mobile add for now. In XCode, do the following;
    }
     ```
 
-   The function uses the `Blockstack.shared.isSignedIn()` method to determine if
+   The function uses the `Blockstack.shared.isUserSignedIn()` method to determine if
    the user is already logged into Blockstack or not. It then uses the
    `Blockstack.shared.loadUserData()` method to load the user data and update
    the application display with the username.
@@ -662,13 +668,13 @@ this application in your mobile add for now. In XCode, do the following;
 9. Create a 'signIn()' function that handles both sign in and out.
 
    The function uses the `Blockstack.shared.signIn()` and
-   `Blockstack.shared.signOut()` methods to sign the user into the application.
+   `Blockstack.shared.signUserOut()` methods to sign the user into the application.
 
     ```swift
     @IBAction func signIn(_ sender: UIButton) {
-       if Blockstack.shared.isSignedIn() {
+       if Blockstack.shared.isUserSignedIn() {
            print("Currently signed in so signing out.")
-           Blockstack.shared.signOut()
+           Blockstack.shared.signUserOut()
            self.updateUI()
        } else {
            print("Currently signed out so signing in.")
