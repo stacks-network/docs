@@ -618,12 +618,11 @@ this application in your mobile add for now. In XCode, do the following;
 
 
 1. Open the `ViewController.swift` file.
-2. Add an import both for `Blockstack` and for `SafariServices`.
+2. Add an import both for `Blockstack`.
 
    ```
 	 import UIKit
 	 import Blockstack
-	 import SafariServices
 	 ```
 
 3. Add a private `updateUI()` function.
