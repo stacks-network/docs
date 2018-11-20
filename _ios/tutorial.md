@@ -11,7 +11,7 @@ Blockstack's iOS SDK using the following content:
 * TOC
 {:toc}
 
-This tutorial was extensively tested using Version 9.3 (9E145) on a MacBook Pro
+This tutorial was extensively tested using Xcode Version 9.3 (9E145) on a MacBook Pro
 running Mojave 10.14. If your environment is different, you may encounter
 slight or even major discrepancies when performing the procedures in this
 tutorial. Please [join the Blockstack community Slack](https://slofile.com/slack/blockstack) and post questions or comments to
