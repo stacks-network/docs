@@ -4,20 +4,7 @@ permalink: /:collection/:path.html
 ---
 # Understand app mining
 
-Traditionally the term _mining_ in cryptocurrency refers to the process of
-contributing compute resources to the network and earning a reward. On the
-Blockstack network, however, instead of just mining through computation,
-developers can mine by contributing apps to the ecosystem and making
-applications the community wants.
-
-![](images/mining-image.png)
-
-Founders that build apps using Blockstack developer tools like Blockstack Auth
-get paid each month, in amounts proportional to that month’s app quality
-ranking. Blockstack PBC, in cooperation with App.co, currently administers the
-payouts. A set of independent _App reviewers_ determines the monthly ranking
-during the pilot phase.
-
+{% include intro-appmining.md %}
 
 ## How apps are reviewed
 
@@ -95,18 +82,7 @@ one, and so apps are ranked from highest to lowest.
 
 ## Determining how much an app is paid
 
-For each app mining cohort, there is determined a “pot” of total earnings that will
-get paid to apps. For the Alpha run, Blockstack paid a total of $25,000 USD. Starting in
-December 2018, Blockstack will pay $100,000 USD and the awards will be paid out in Bitcoin.
-
-The top app gets paid 20% of the total pot. So, for a pot of $100k, the top app
-receives $20,000 USD. The next app gets paid 20% of the remaining pot. The
-remaining pot is $80k, and 20% of that is $16,000. This process continues until
-every app has been paid.
-
-Here is a chart that visualizes the decay in rewards, depending on rank:
-
-![](images/decaying.png)
+{% include payout-appmining.md %}
 
 This first release of App Mining uses the initial version of our ranking and
 payout mechanism. Blockstack has taken care to be thoughtful and fair, but
