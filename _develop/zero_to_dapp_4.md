@@ -147,7 +147,7 @@ DApp developer community on Blockstack. We hope you've taken the extra
 step of submitting your Animal Kingdom application to the App.co site.
 
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-class="twitter-share-button" data-size="large" data-text="I'm the rule of my Animal Kingdom. Just submitted my Blockstack sample DApp to App.co @TheDappStore! Dapp on people." data-hashtags="blockstack,
+class="twitter-share-button" data-size="large" data-text="I'm the ruler of my Animal Kingdom. Just submitted my Blockstack sample DApp to App.co @TheDappStore! Dapp on people." data-hashtags="blockstack,
 blockchain, blockchainnopain, blockchainnopainblockstack"
 data-show-count="true">Tweet your work!</a><script async
 src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
