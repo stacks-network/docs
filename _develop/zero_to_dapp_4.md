@@ -8,8 +8,8 @@ permalink: /:collection/:path.html
  **Zero to DAPP 4 of 4**
 
 On this page, you learn about application mining as a funding source for your
-new DApp efforts. You'll submit your sample Animal Kingdom to to App.co, the
-Universal DApp store and earn a t-shirt.  You'll also learn about other ways
+new DApp efforts. You'll submit your sample Animal Kingdom to App.co, the
+Universal DApp store and earn a t-shirt. You'll also learn about other ways
 Blockstack helps your development efforts. This page contains the following topics:
 
 * TOC
@@ -36,7 +36,7 @@ participate in application mining.
 
 {% include payout-appmining.md %}
 
-You area going to make a practice submission using the Animal Kingdom sample.
+You are going to make a practice submission using the Animal Kingdom sample.
 
 
 ## Submit your Animal Kingdom to App.co
@@ -73,7 +73,7 @@ than one example, only your first submission receives a t-shirt." %}
         <td>Describe your application.&nbsp;&nbsp;</td>
       </tr>
       <tr>
-        <td><strong>Webiste</strong></td>
+        <td><strong>Website</strong></td>
         <td>The URL of the website where you deployed your application.&nbsp;&nbsp;</td>
       </tr>
       <tr>
@@ -126,7 +126,7 @@ Blockstack reviews each submission to app mining. Through this contact, Blocksta
 developers refine business models and facilitating interactions with investors.
 Two areas that Blockstack assists are pre-funding and pitching.
 
-* **Pre-funding.** Directed toward developers that have a proof of concept of either a blockchain application or an integration  with Blockstack’s techology.  Blockstack helps with sourcing of developers and designers. We can also help with direct access to our core team members that can help you refine or optimize your product.
+* **Pre-funding.** Directed toward developers that have a proof of concept of either a blockchain application or an integration  with Blockstack’s technology. Blockstack helps with sourcing of developers and designers. We can also help with direct access to our core team members that can help you refine or optimize your product.
 * **Pitching investors.**  Blockstack can help you with access to an extensive investor community. Prior to arranging meetings we can give you resources to refine and craft your pitch for the blockchain market.
 
 In addition to app mining, Blockstack offers both a community reward program.
@@ -144,7 +144,7 @@ Learn more about <a href="https://blockstack.org/blog/blockstack-community-rewar
 
 You've completed the Zero to DApp tutorial and have joined the growing
 DApp developer community on Blockstack. We hope you've taken the extra
-step of submitting your Animal Kingdom application to the App.co site.  
+step of submitting your Animal Kingdom application to the App.co site.
 
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
 class="twitter-share-button" data-size="large" data-text="I'm the rule of my Animal Kingdom. Just submitted my Blockstack sample DApp to App.co @TheDappStore! Dapp on people." data-hashtags="blockstack,

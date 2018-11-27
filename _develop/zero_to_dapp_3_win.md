@@ -26,10 +26,10 @@ tutorial even if you have no programming experience. Knowledgeable developers
 should easily be able to complete the tutorial within an hour by following
 along.
 
-If you are a developer super hero, you may want to skip ahead or move
+If you are a developer superhero, you may want to skip ahead or move
 quickly and that's fine too.
 
-## Get prerequisites and set up environment
+## Get prerequisites and set up your environment
 
 To follow this tutorial, you need the following:
 
@@ -52,13 +52,11 @@ is an example of an identity.
    ID with the required _secret recovery key_ or _magic recovery code_. The
    secret recovery key is a 12 or 24 word phrase you recorded when you created
    the ID. The magic recovery code is a string of characters Blockstack emailed
-   to you when you created the your identity. You can confirm your identity with either.
+   to you when you created your identity. You can confirm your identity with either.
 
 * If you do not yet have a Blockstack ID, <a href="https://browser.blockstack.org/" target="\_blank">create one through the Blockstack Browser</a> .
 
-    Instructions for creating an ID are <a href="{{ site.baseurl
-    }}/browser/ids-introduction.html#create-an-initial-blockstack-id"
-    target="\_blank">available in this documentation</a>.
+    Instructions for creating an ID are <a href="{{ site.baseurl }}/browser/ids-introduction.html#create-an-initial-blockstack-id" target="\_blank">available in this documentation</a>.
 
 
 ###  Ensure command-line access
@@ -134,20 +132,20 @@ components. You'll use the `npm` command to install these packaged components.
 
 3. If the `npm` command is not in your system, <a href="https://www.npmjs.com/get-npm" target="\_blank">install it</a>.
 
-   Installing the NPM tool can take a several minutes depending on your connection speed.
+   Installing the NPM tool can take several minutes depending on your connection speed.
 
 
 ## Overview of the Animal Kingdom DApp
 
 You are going to build a DApp called AnimalKingdom. Animal Kingdom is a DApp for
-the web. Users log into it and create a animal persona that rules over a a
+the web. Users log into it and create an animal persona that rules over a
 specific territory. The combination of persona and territory is a kingdom. Once
 you create a kingdom, you can add subjects from other kingdoms.
 
 The Animal Kingdom interacts with two Blockstack services, the Blockstack
 Browser (https://browser.blockstack.org) and the Gaia data storage hub
 (https://hub.blockstack.org/). The Blockstack Browser is itself
-a DApp. The storage hub is purely a service without user facing functionality.
+a DApp. The storage hub is purely a service without user-facing functionality.
 
 The following table describes the key interactions and screens in the DApp.
 
@@ -203,7 +201,7 @@ The following table describes the key interactions and screens in the DApp.
   </a>
   </div></td>
   <td>
-  <p>Users can add subjects from territories in their own Animal Kingdom. The DApp updates the user's GAI hub each time the user addss a subect. Users can also visit other Animal Kingdom installations and add subjects from these as well. You'll learn how to modify the <b>Other Kingdoms</b> available in your installation.
+  <p>Users can add subjects from territories in their own Animal Kingdom. The DApp updates the user's GAI hub each time the user adds a subject. Users can also visit other Animal Kingdom installations and add subjects from these as well. You'll learn how to modify the <b>Other Kingdoms</b> available in your installation.
   </p>
   </td>
 </tr>
@@ -234,9 +232,9 @@ In this section, you copy the code for Animal Kingdom to your workstation.
 
     <img src="images/kingdom-download.png" alt="">
 
-    After unzipping the file you should have a `animal-kingdom-master` directory.
+    After unzipping the file you should have an `animal-kingdom-master` directory.
 
-5. In your terminal change directory into top of the directory by entering:
+5. In your terminal change directory into the top of the directory by entering:
 
     ```bash
     $ cd animal-kingdom-master
