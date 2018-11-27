@@ -34,10 +34,10 @@ tutorial even if you have no programming experience. Knowledgeable developers
 should easily be able to complete the tutorial within an hour by following
 along.
 
-If you are a developer super hero, you may want to skip ahead or move
+If you are a developer superhero, you may want to skip ahead or move
 quickly and that's fine too.
 
-## Get prerequisites and set up environment
+## Get prerequisites and set up your environment
 
 To follow this tutorial, you need the following:
 
@@ -60,7 +60,7 @@ is an example of an identity.
    ID with the required _secret recovery key_ or _magic recovery code_. The
    secret recovery key is a 12 or 24 word phrase you recorded when you created
    the ID. The magic recovery code is a string of characters Blockstack emailed
-   to you when you created the your identity. You can confirm your identity with either.
+   to you when you created your identity. You can confirm your identity with either.
 
 * If you do not yet have a Blockstack ID, <a href="https://browser.blockstack.org/" target="\_blank">create one through the Blockstack Browser</a> .
 
@@ -142,20 +142,20 @@ components. You'll use the `npm` command to install these packaged components.
 
 3. If the `npm` command is not in your system, <a href="https://www.npmjs.com/get-npm" target="\_blank">install it using the instructions for your operating system</a>.
 
-   Installing the NPM tool can take a several minutes depending on your connection speed.
+   Installing the NPM tool can take several minutes depending on your connection speed.
 
 
 ## Overview of the Animal Kingdom DApp
 
 You are going to build a DApp called AnimalKingdom. Animal Kingdom is a DApp for
-the web. Users log into it and create a animal persona that rules over a a
+the web. Users log into it and create an animal persona that rules over a
 specific territory. The combination of persona and territory is a kingdom. Once
 you create a kingdom, you can add subjects from other kingdoms.
 
 The Animal Kingdom interacts with two Blockstack services, the Blockstack
 Browser (https://browser.blockstack.org) and the Gaia data storage hub
 (https://hub.blockstack.org/). The Blockstack Browser is itself
-a DApp. The storage hub is purely a service without user facing functionality.
+a DApp. The storage hub is purely a service without user-facing functionality.
 
 The following table describes the key interactions and screens in the DApp.
 
@@ -211,7 +211,7 @@ The following table describes the key interactions and screens in the DApp.
   </a>
   </div></td>
   <td>
-  <p>Users can add subjects from territories in their own Animal Kingdom. The DApp updates the user's GAI hub each time the user addss a subect. Users can also visit other Animal Kingdom installations and add subjects from these as well. You'll learn how to modify the <b>Other Kingdoms</b> available in your installation.
+  <p>Users can add subjects from territories in their own Animal Kingdom. The DApp updates the user's GAI hub each time the user adds a subject. Users can also visit other Animal Kingdom installations and add subjects from these as well. You'll learn how to modify the <b>Other Kingdoms</b> available in your installation.
   </p>
   </td>
 </tr>
@@ -242,9 +242,9 @@ In this section, you copy the code for Animal Kingdom to your workstation.
 
     <img src="images/kingdom-download.png" alt="">
 
-    After unzipping the file you should have a `animal-kingdom-master` directory.
+    After unzipping the file you should have the `animal-kingdom-master` directory.
 
-5. In your terminal change directory into top of the directory by entering:
+5. In your terminal change directory into the top of the directory by entering:
 
     ```bash
     $ cd animal-kingdom-master
@@ -364,7 +364,7 @@ can run the program you use NPM to get all the dependent packages.
 
    For example, you could edit your animal or visit the other pages such as **Animals** or **Territories**.
 
-7. Go back to your terminal where you started you application is running.
+7. Go back to your terminal where you started your application is running.
 8. Press `CTRL-C` to stop the application.
 
    <img src="images/kingdom-stop.png" alt="">
@@ -455,7 +455,7 @@ for the DApp. Data is encrypted at a unique URL on a GAI storage hub.
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5>App Mining Requirement: Blockstack Authentication</h5>
-<p>To participate in application mining, your application must integrate Blockstack authentication.
+<p>To participate in application mining your application must integrate Blockstack authentication.
 </p>
 </div>
 
@@ -486,14 +486,14 @@ loadMe() {
 
 The `loadMe()` code uses the Blockstack's `getFile()` method to get the
 specified file from the applications data store. If the users' data store on
-GAIA does not have the data, which is the case for a new users, the Gaia hub
+GAIA does not have the data, which is the case for new users, the Gaia hub
 responds with HTTP `404` code and the `getFile` promise resolves to null. If you
 are using a Chrome Developer Tools with the DApp, you'll see these errors in a
 browser's developer **Console**.
 
 <img src="images/kingdom-errors.png" alt="">
 
-After a user choses an animal persona and a territory, the user presses **Done**
+After a user chooses an animal persona and a territory, the user presses **Done**
 and the application stores the user data on GAIA.
 
 ```js
@@ -519,7 +519,7 @@ In the next section, you extend your Kingdom's configuration.
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5>App Mining Requirement: Gaia Storage</h5>
-<p>To participate in application mining, your application must make use of Gaia storage.
+<p>To participate in application mining your application must make use of Gaia storage.
 </p>
 </div>
 
@@ -676,7 +676,7 @@ backend services for static websites. GitHub is a code hosting site.
 
 <div class="uk-card uk-card-default uk-card-body uk-section-muted">
 <h5>App Mining Requirement: Review Accessibility</h5>
-<p>To participate in application mining, your application must be available for review. Open source projects must provide the URL to their code. Projects with private repositories can provides their application in a package form.
+<p>To participate in application mining your application must be available for review. Open source projects must provide the URL to their code. Projects with private repositories can provide their application in a package form.
 </p>
 </div>
 
@@ -721,7 +721,7 @@ Before you begin, you need to build a site that is ready to deploy.
 
    <img src="images/netlify-deploy.gif" alt="">
 
-   After a moment, Netlify builds your code and displays the location of your new webiste.
+   After a moment, Netlify builds your code and displays the location of your new website.
 
    <img src="images/kingdom-build.png" alt="">
 
@@ -735,7 +735,7 @@ Before you begin, you need to build a site that is ready to deploy.
 
     <img src="images/kingdom-failed.png" alt="">   
 
-    You get this message because, when you authenticates, your DApp at one URL
+    You get this message because, when you authenticate, your DApp at one URL
     requested a resource (an identity) from another DApp, the Blockstack
     Browser. A request for a resource outside of the origin (your new website)
     is called as a _cross-origin request_(CORs). Getting data in this manner can

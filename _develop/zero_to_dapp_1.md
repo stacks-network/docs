@@ -13,15 +13,15 @@ their own identity and data.  This tutorial is written for developers who want
 to learn about how to use the Blockstack Ecosystem to develop and fund
 decentralized applications (DApps).
 
-The tutorial has four pages, this is first of four pages. The top of each page
+The tutorial has four pages and this is first. The top of each page
 lists the contents. This page contains the following:
 
 * TOC
 {:toc}
 
 Of course, you can skip pages if you want. Each page contains a section
-describing who can/should skip and containing a link to the next tutorial page.
-You can also use the menu on the left.
+describing who can or should skip the page. The section contains a link to the next page.
+You can also use the navigation on the left to skip pages.
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5>Can you skip this page?</h5>
@@ -46,7 +46,7 @@ has lived in or visited a foreign country and lost access to a site, to a
 service, or to information because of government censorship also understands how
 centralization impacts how people live.
 
-Users and businesses see DApps as valuable because they solve the the
+Users and businesses see DApps as valuable because they solve the
 centralization problems of traditional applications. The following table
 describes the features of traditional applications and the features of
 blockchain applications:
@@ -57,7 +57,7 @@ blockchain applications:
     <th>Decentralized application</th>
   </tr>
   <tr>
-    <td>Users must create many username and password combinations for each service or application. Each combination must be managed and maintained. Also, each creation requires the user to provide,important or unique information into the care of a third-party.</td>
+    <td>Users must create many username and password combinations for each service or application. Each combination must be managed and maintained. Also, each creation requires the user to provide, important or unique information into the care of a third-party.</td>
     <td>Users create and own one or more identities. They use their identities with all applications and services. For example, a user could use the same identity for buying books online as they use for social media.</td>
   </tr>
   <tr>
@@ -65,7 +65,7 @@ blockchain applications:
     <td>Personal information and data is encrypted and remains under the control of the user.,Users leaving an application leave no data behind because none was stored with the application.</td>
   </tr>
   <tr>
-    <td>Multiple accounts across many servers makes personal data subject to attack, misuse, and uncontrolled collection.</td>
+    <td>Multiple accounts across many servers make personal data subject to attack, misuse, and uncontrolled collection.</td>
     <td>Users can audit access to their data and know who accessed their data and which date were accessed.</td>
   </tr>
   <tr>
@@ -74,14 +74,14 @@ blockchain applications:
   </tr>
 </table>
 
-The blockchain technology you build an DApp with determines the features available to your application.
+The blockchain technology you build a DApp with determines the features available to your application.
 
 ## How Blockstack is seeding DApp development
 
 Blockchain applications are a new paradigm for both application developers and
 application users. New paradigms in any market, think solar power or electric
 vehicles, need private and private coalitions to grow. The centralized hosting
-and services known of as cloud computing were once new paradigms. It was the
+and services known as cloud computing were once new paradigms. It was the
 investment of billions in funds and incentives from governments and private
 companies that grew the cloud computing market.  
 
@@ -130,12 +130,12 @@ key features of Blockstack’s platform.
 {:.no_toc}
 
 This section introduced you to the benefits of a decentralized application
-(DApp). You also learned that, similar to other new paradigms, you learned both
+(DApp). You also learned that, similar to other new paradigms, both
 the public and private companies are committing serious resources to developing
 blockchain tech. Finally, you learned Blockstack is designed so that you
 can quickly build a DApp and enter this emerging market.
 
-In the next section, you learn more about the developing DApps and how they are
+In the next section, you learn more about developing DApps and how they are
 different from traditional applications. You’ll also learn about the resources
 Blockstack provides for DApp developers that help you clarify where to put your
 efforts and how to fund them.
