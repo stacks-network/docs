@@ -44,7 +44,7 @@ How do you convey this to users?
 
 Currently, users can create a Blockstack ID for free or buy their own ID. Dapps
 that are submitted for app mining must include Blockstack authentication. This
-authentication includes onboarding flow for users delievered through the
+authentication includes onboarding flow for users delivered through the
 Blockstack Browser. The language and concepts presented by the flow are
 important for you to understand before writing your own DApp.
 
@@ -56,7 +56,7 @@ trying logging on from a device or browser software you haven't used before.
 {% include create_id.md %}
 
 Once in the browser, investigate the account and locate the storage settings.
-Consider the interaction as both a user and a app designer. Are these settings
+Consider the interaction as both a user and an app designer. Are these settings
 what you expected or would you change them?
 
 ### Take a user perspective
@@ -75,7 +75,7 @@ As a developer, your understanding of applications is vastly different from a
 standard application user. Prototyping (paper or wireframes) and user testing
 can help you determine if your approach is correct before you begin coding.
 
-1. Choose an application from the Blockstack Browser home page or from the <a href="https://app.co/" target="\_blank">list on the App.co site</a>.
+1. Choose an application from the Blockstack Browser homepage or from the <a href="https://app.co/" target="\_blank">list on the App.co site</a>.
 
    Blockstack maintains the App.co website as a central place for users and
    developers to explore and review blockchain applications. This site has
@@ -133,7 +133,7 @@ The EY test is a general test about the domains that blockchain application can 
 * Users own their identities
 * Users have free choice of clients
 
-If you haven't read it, read the full article <a href="http://127.0.0.1:4000/develop/dapp_principles.html" target="\_blank">on principles of Blockstack applications</a>.
+If you haven't read it, read the full article <a href="/develop/dapp_principles.html" target="\_blank">on principles of Blockstack applications</a>.
 
 ### Tips for coming up with application ideas
 {:.no_toc}
