@@ -23,32 +23,29 @@ Blockstack helps your development efforts. This page contains the following topi
 <p><img class="uk-align-center" src="images/tshirt-blank.png" alt=""></p>
 </div>
 
-
-## Funding your DApp with application mining
-
-App.co accepts submissions from all decentralized protocols such as Ethereum,
-Blockstack, and many others. Only applications that integrate Blockstack
-authentication, use GAI storage, and which are accessible to review can
-participate in application mining.
+## Understand application mining
 
 {% include intro-appmining.md %}
 
 
 {% include payout-appmining.md %}
 
-You are going to make a practice submission using the Animal Kingdom sample.
 
+## Add your Animal Kingdom to App.co
 
-## Submit your Animal Kingdom to App.co
+App.co accepts applications from all decentralized protocols such as Ethereum,
+Blockstack, and many others. When you add an app, it is not automatically
+eligible for application mining, you must submit it using an another procedure.
+You can also submit an application for app mining but not add it to App.co.
 
-In this section, you submit your Animal Kingdom to the **Blockstack Sample
-Application** on App.co. Apps in this category aren't eligible for app mining,
-but they do earn a limited edition a Zero to DApp t-shirt. Only submit your
+In this section, you add your Animal Kingdom to the **Blockstack Sample
+Application** category on App.co.  Adding your Animal Kingdom app to this
+category earns you a limited edition a Zero to DApp t-shirt. Only submit your
 sample application if you have deployed the application on the internet. This
-allows us to confirm you completed the tutorial.
+allows us to confirm you completed the tutorial. You can submit more than one
+example, only your first submission receives a t-shirt.
 
-{% include note.html content="You can submit more
-than one example, only your first submission receives a t-shirt." %}
+To add an app, do the following:
 
 1. In your browser, navigate to <a href="https://app.co/" target="\_blank">the App.co website</a>.
 2. Choose **Add your app** option from the menu.
@@ -118,6 +115,16 @@ than one example, only your first submission receives a t-shirt." %}
 
    The Blockstack team will email you information about how to obtain your
    limited edition t-shirt at our store.
+
+## Submit a DApp to application mining
+
+Only applications that integrate Blockstack authentication, use GAI storage, and
+which are accessible to review can participate in application mining.
+
+To submit an application for app mining, do the follwoing:
+
+1. Go to select <a href="https://app.co/mining" target="\_blank">App Mining</a> from the App.co menu.
+2. Select the **Submit your app for qualification** button.
 
 
 ## Marketing your DApp
