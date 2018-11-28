@@ -62,7 +62,7 @@ is an example of an identity.
    the ID. The magic recovery code is a string of characters Blockstack emailed
    to you when you created your identity. You can confirm your identity with either.
 
-* If you do not yet have a Blockstack ID, <a href="https://browser.blockstack.org/" target="\_blank">create one through the Blockstack Browser</a> .
+* If you do not yet have a Blockstack ID, <a href="https://browser.blockstack.org/" target="\_blank">create one through the Blockstack Browser</a>.
 
     Instructions for creating an ID are <a href="{{ site.baseurl
     }}/browser/ids-introduction.html#create-an-initial-blockstack-id"
@@ -288,7 +288,7 @@ In this section, you copy the code for Animal Kingdom to your workstation.
     </tr>
     <tr>
     <td><code>src</code></td>
-    <td>Vue.js code source code for the site.&nbsp;&nbsp;This contains configuration files.</td>
+    <td>React source code for the site.&nbsp;&nbsp;This contains configuration files.</td>
     </tr>
     </table>
 
@@ -462,9 +462,9 @@ for the DApp. Data is encrypted at a unique URL on a GAI storage hub.
 ### Get and put user data to a GAIA Hub
 {:.no_toc}
 
-GAI is the Blockstack data storage hub (https://hub.blockstack.org). Once a user
+GAIA is the Blockstack data storage hub (https://hub.blockstack.org). Once a user
 authenticates, the application can get and put application data in the user's
-storage. After a user signs in, the `SignedIn.js` code checks the user's GAI
+storage. After a user signs in, the `SignedIn.js` code checks the user's GAIA
 profile by running the `loadMe()` method.
 
 ```js
@@ -511,7 +511,7 @@ The Blockstack <a href="https://blockstack.github.io/blockstack.js/#putfile"
 target="\_blank"><code>putFile()</code></a> stores the data provided in the
 user's DApp data store. You can view the URL for the data store from a user's
 profile. If you tested your Animal Kingdom, you can see this on your profile.
-To see your profile, go to the Blockstack explorer and search for your ID:
+To see your profile, go to the <a href="https://explorer.blockstack.org">Blockstack explorer</a> and search for your ID:
 
 <img src="images/explorer.png" alt="">
 
@@ -600,7 +600,7 @@ your keyboard.
      }
     ]
     ```
-7. Save and close the `contstant.js` file.
+7. Save and close the `constant.js` file.
 8. Back in a terminal window, restart your application.
 
    ```bash
@@ -793,7 +793,7 @@ Before you begin, you need to build a site that is ready to deploy.
 {:.no_toc}
 
 At this point, your kingdom is isolated. If you know another kingdom, you can
-add subjects from that kingdom but other kingdoms can access your subjects. In
+add subjects from that kingdom but other kingdoms can't access your subjects. In
 this section, you use a free GitHub account to add your kingdom to the
 Blockstack kingdom.
 

@@ -57,20 +57,20 @@ blockchain applications:
     <th>Decentralized application</th>
   </tr>
   <tr>
-    <td>Users must create many username and password combinations for each service or application. Each combination must be managed and maintained. Also, each creation requires the user to provide, important or unique information into the care of a third-party.</td>
+    <td>Users must create many username and password combinations for each service or application. Each combination must be managed and maintained. Also, each creation requires the user to provide important or unique information into the care of a third-party.</td>
     <td>Users create and own one or more identities. They use their identities with all applications and services. For example, a user could use the same identity for buying books online as they use for social media.</td>
   </tr>
   <tr>
-    <td>Multiple third-party applications and services store personal data from individual users in backend servers.,These backend servers are under the control of the application or service. Users leaving the application leave their data behind.</td>
-    <td>Personal information and data is encrypted and remains under the control of the user.,Users leaving an application leave no data behind because none was stored with the application.</td>
+    <td>Multiple third-party applications and services store personal data from individual users in backend servers. These backend servers are under the control of the application or service. Users leaving the application leave their data behind.</td>
+    <td>Personal information and data is encrypted and remains under the control of the user. Users leaving an application leave no data behind because none was stored with the application.</td>
   </tr>
   <tr>
     <td>Multiple accounts across many servers make personal data subject to attack, misuse, and uncontrolled collection.</td>
-    <td>Users can audit access to their data and know who accessed their data and which date were accessed.</td>
+    <td>Users can audit access to their data and know who accessed their data and which data were accessed.</td>
   </tr>
   <tr>
     <td>Central authorities and middlemen control network access enabling them to censor applications and/or users that use them.</td>
-    <td>Companies are developing blockchains that run over peer-to-peer networks.,These future networks can make shutting down or entirely blocking a decentralized application is close to impossible.</td>
+    <td>Companies are developing blockchains that run over peer-to-peer networks. These future networks can make shutting down or entirely blocking a decentralized application close to impossible.</td>
   </tr>
 </table>
 
