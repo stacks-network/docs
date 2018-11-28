@@ -4,11 +4,17 @@ permalink: /:collection/:path.html
 ---
 # Information for current token holders
 
-The information on this page is intended for current Stacks token holders who took part in
-Blockstack's token sale in 2017.
+The information on this page is intended for **current Stacks voucher holders** during Blockstack’s token sale through early 2018.
 
 * TOC
 {:toc}
+
+<div class="uk-card uk-card-default uk-card-body">
+<h5>About token availability</h5>
+<p>
+Stacks tokens are not yet available for purchase through the voucher program. Blockstack continues to work on a legally compliant framework to distribute tokens to voucher holders.  We will update the community with any new developments. Thank you for your patience and continued support and interest in Blockstack!.</p>
+</div>
+
 
 ## Find your token balance and unlock date
 
