@@ -26,8 +26,8 @@ staticman:
 
 # Site logo, image or text
 brand:
-    image:          logo.png  # e.g. logo.png, upload logo image file to /assets/img/ folder
-    text:           Docs      # if the above "logo:" image variable  is not set, this text logo is displayed instead
+    image:         logo.png  # e.g. logo.png, upload logo image file to /assets/img/ folder
+    text:          Docs      # if the above "logo:" image variable  is not set, this text logo is displayed instead
 
 # Default author settings
 author:
@@ -57,7 +57,9 @@ social:
     youtube:
 
 # Twitter share button
-twitter_username:
+twitter:
+  username: blockstack
+  image: /assets/img/touch-icon.png
 
 # Default footer image settings
 footer:
@@ -147,6 +149,7 @@ defaults:
       path: "" # an empty string here means all files in the project
     values:
       comments: true
+      image: /assets/img/touch-icon.png
 
 collections:
   android:

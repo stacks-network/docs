@@ -1,6 +1,7 @@
 ---
 layout: learn
 permalink: /:collection/:path.html
+image: /assets/img/zero-to-dapp.png
 ---
 # 1 - Why Blockchain and Blockstack?
 {:.no_toc}

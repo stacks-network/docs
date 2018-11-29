@@ -1,6 +1,7 @@
 ---
 layout: learn
 permalink: /:collection/:path.html
+image: /assets/img/zero-to-dapp.png
 ---
 # 2 - Discover how DApps are different
 {:.no_toc}
