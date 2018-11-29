@@ -99,7 +99,7 @@ To add an app, do the following:
       </tr>
       <tr>
         <td><strong>Blockchain</strong></td>
-        <td>Leave this as is/</td>
+        <td>Leave this as is.</td>
       </tr>
       <tr>
         <td><strong>Storage</strong></td>
