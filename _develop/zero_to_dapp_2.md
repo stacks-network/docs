@@ -17,7 +17,7 @@ DApp development. This page has the following topics:
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5>Can you skip this page?</h5>
-<p>If you are already have a good understanding of how DApps change user
+<p>If you already have a good understanding of how DApps change user
 interactions, have a Blockstack ID, and have a good idea of the DApp you want to develop, skip
 this page and <a href="zero_to_dapp_3.html">move onto 3 of 4 immediately</a>.
 </p>
@@ -104,11 +104,11 @@ Repeat this exercise with a friend or relative who is not a developer. This
 should give you perspective on the problems users will encounter with your
 potential application.
 
-## Research existing decentralized applications
+## Research existing in decentralized applications
 
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_65D38DE36A9E0559639DF0B6F5271AA88578C54592AF9D85F6A7C7F9A62C47D4_1537563661663_image.png)
 
-This quote from Gene Luen Yang a Genius Grant recipient and comic book artist
+This quote from Gene Luen Yang, a Genius Grant recipient and comic book artist,
 has a good point. Have you researched what other top industry thinkers have said about
 potential applications of blockchain technology? For example, EY developed a five-point
 test to help determine if a blockchain solution would help for a problem:
@@ -127,7 +127,7 @@ test to help determine if a blockchain solution would help for a problem:
 <p>From <a href="http://go.galegroup.com/ps/i.do?p=AONE&u=plan_smcl&id=GALE|A547075763&v=2.1&it=r&sid=AONE&asid=f2f8ee00" target="\_blank">Maslova, Natalia. "BLOCKCHAIN: DISRUPTION AND OPPORTUNITY." Strategic Finance, July 2018</a></p>
 </div>
 
-The EY test is a general test about the domains that blockchain application can disrupt. You can also consider more specific behaviors a DApp should mee. Blockstack defines three principles that Blockstack applications should meet:
+The EY test is a general test about the domains that blockchain applications can disrupt. You can also consider more specific behaviors a DApp should meet. Blockstack defines three principles that Blockstack applications should meet:
 
 * Users own their own data
 * Users own their identities
@@ -140,10 +140,10 @@ If you haven't read it, read the full article <a href="/develop/dapp_principles.
 
 Before developing a DApp, research the blockchain space and engage with the Blockstack community.
 
-* Visit <a href="https://forum.blockstack.org/" target="\_blank">the Blockstack forum</a>
+* Visit <a href="https://forum.blockstack.org/" target="\_blank">the Blockstack forum</a>.
   This is a valuable resource to learn about the questions that other developers have now or have had in the past.
 * Visit the <a href="https://community.blockstack.org/" target="\_blank">Blockstack Community website</a> to learn about events that may be coming to your area.
-* Join the Blockstack <a href="https://slofile.com/slack/blockstack" target="\_blank"> Slack channel</a> which you can join.
+* Join the Blockstack <a href="https://slofile.com/slack/blockstack" target="\_blank"> Slack channel</a> which you can join by filling in the following <a href="https://docs.google.com/forms/d/e/1FAIpQLSed5Mnu0G5ZMJdWs6cTO_8sTJfUVfe1sYL6WFDcD51_XuQkZw/viewform">form</a>.
 
 When coming up with ideas for an application, you can try some thought experiments.
 

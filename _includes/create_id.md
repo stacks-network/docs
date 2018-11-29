@@ -10,7 +10,7 @@ To create an initial Blockstack ID, do the following:
 
 2. Enter an email address and press **Next**.
 
-   The application prompts you to enter a password. Blockstack users this
+   The application prompts you to enter a password. Blockstack uses this
    password to encrypt your recovery code.  You must record and save this
    initial password.
 
