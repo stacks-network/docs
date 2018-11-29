@@ -60,6 +60,7 @@ social:
 twitter:
   username: blockstack
   image: /assets/img/touch-icon.png
+  card: summary
 
 # Default footer image settings
 footer:
