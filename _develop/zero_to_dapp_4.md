@@ -1,6 +1,7 @@
 ---
 layout: learn
 permalink: /:collection/:path.html
+image: /assets/img/zero-to-dapp.png
 ---
 # 4 - Participate in App Mining
 {:.no_toc}
