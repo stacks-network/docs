@@ -3,167 +3,325 @@ layout: learn
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 2 - Discover how DApps are different
+# 2 Learn about the Blockstack platform
 {:.no_toc}
 
-**Zero to DApp, 2 of 4**
+**Zero-to-DApp  2 of 4**
 
-This page explains how DApp user interactions differ from interactions on web
-applications. If you don't have one, you'll also create a Blockstack ID.
-Finally, you'll also learn what industry experts say are fertile grounds for
-DApp development. This page has the following topics:
+In this part, you learn how the Blockstack platform lowers the barriers to
+building with blockchain technology. You'll set up all the prerequisites you
+need to build a typical web DApp. Finally, you'll build and run your own version
+of the Animal Kingdom Dapp introduced in [part 1](zero_to_dapp_1.html). This
+part has the following topics:
 
 * TOC
 {:toc}
 
-<div class="uk-card uk-card-default uk-card-body">
-<h5>Can you skip this page?</h5>
-<p>If you already have a good understanding of how DApps change user
-interactions, have a Blockstack ID, and have a good idea of the DApp you want to develop, skip
-this page and <a href="zero_to_dapp_3.html">move onto 3 of 4 immediately</a>.
-</p>
-</div>
 
-## Get the user perspective on DApps
+## A blockchain platform without pain
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_65D38DE36A9E0559639DF0B6F5271AA88578C54592AF9D85F6A7C7F9A62C47D4_1537556532237_image.png)
+Blockstack’s mission is to bring about a new internet where users control the
+access to their data and how it is used. With this mission in mind, Blockstack
+Public Benefit Corp. (PBC) started development of the Blockstack platform in 2017.  
 
-This old proverb is all about how our environment shapes our thinking. As a
-user, you have lived in the centralized application environment for a
-long time. To develop a DApp, you have to shift your thinking to new
-interaction paradigms. You must discover what you don’t know and reimagine
-application interactions.
+The platform’s development philosophy followed two simple principles. First,
+create backend services that allow decentralized applications to be both
+performant and scalable.  Second, provide simple, familiar development
+interfaces to blockchain technology. The result of this philosophy is a
+technology platform that allows you to:
 
-For example, traditional applications allow users to “safely” forget their
-application passwords because they can recover the password and their data
-access from the a central authority. This isn’t true for a DApp. Users must be
-responsible for keeping their own identity access and managing their own data.
-How do you convey this to users?
+* **Build your application in any Javascript framework.**  You can use the blockchain without learning a new programming language or extending your application stack. Currently, Blockstack supports a react generator for web applications and SDKs for both iOS and Android.
+* **Use well-defined REST endpoints that simplify and encapsulate the blockchain backend.** The Blockstack Javascript API reduces blockchain operations to familiar GET and PUT operations.
+* **Access the Blockstack’s Naming System (BNS).**  The system has over 90K users that can immediately start using your application.
+* **Scale quickly to large, performant production systems.**  Blockstack’s GAIA storage system gives fast, scalable performance on a level comparable to Amazon S3, Google Drive, or Azure.
 
-### How Dapp onboarding differs
+Using Blockstack’s technology you can start building immediately on the
+blockchain with the knowledge you have today.  You won’t need to spend time or
+effort developing additional knowledge of specialized languages or technologies.
+
+## Get prerequisites and set up your environment
+
+To follow the procedures in the rest of this tutorial, you need the following:
+
+* A Blockstack ID (identity) to test your Animal Kingdom.
+* Access to the Mac terminal window and some familiarity with the command line it provides.
+* An installation of the XCode command-line tools to support Node Package Manager (`npm`)
+* The Node Package Manager package manager.
+
+Follow the procedures in this section to install these components.
+
+### Confirm or get a Blockstack ID
 {:.no_toc}
 
-Currently, users can create a Blockstack ID for free or buy their own ID. Dapps
-that are submitted for app mining must include Blockstack authentication. This
-authentication includes onboarding flow for users delivered through the
-Blockstack Browser. The language and concepts presented by the flow are
-important for you to understand before writing your own DApp.
+Confirm you have a Blockstack ID also known as an identity; `joe.id.blockstack`
+is an example of an identity.
 
-If you haven't already created your own Blockstack ID, do this now. As you
-create an ID, consider what interactions are familiar to you and which are not.
-If you already have a Blockstack ID, launch the browser and try resetting it. Or
-trying logging on from a device or browser software you haven't used before.
+* If you have an existing ID, log into the <a href="https://browser.blockstack.org/" target="\_blank">Blockstack Browser</a> in your browser.
 
-{% include create_id.md %}
+   Logging in confirms you have a valid ID with the required _secret recovery
+   key_ or _magic recovery code_. The secret recovery key is a 12 or 24 word
+   phrase you recorded when you created the ID. The magic recovery code is a
+   string of characters Blockstack emailed to you when you created your
+   identity. You can confirm your identity with either.
 
-Once in the browser, investigate the account and locate the storage settings.
-Consider the interaction as both a user and an app designer. Are these settings
-what you expected or would you change them?
+* If you do not yet have a Blockstack ID, <a href="https://browser.blockstack.org/" target="\_blank">create one through the Blockstack Browser</a>.
 
-### Take a user perspective
+    Instructions for creating an ID are <a href="{{ site.baseurl
+    }}/browser/ids-introduction.html#create-an-initial-blockstack-id"
+    target="\_blank">available in this documentation</a>.
+
+
+###  Ensure command-line access
 {:.no_toc}
 
-If you want to solve for an existing, traditional space, you must take time to
-really consider what problems a DApp replacement would solve. But make sure you
-also take the time to consider what challenges your new application has in
-shifting user experiences.
+If you are using a Mac, you can find the **terminal** in the **Application >
+Launchpad > Other** folder.
 
-- What identity or data ownership features make my application unique or powerful?
-- What typical expectations will users have that must be adjusted?
-- How can my interaction design convey these new features to users so users can succeed?
+<img src="images/terminal.png" alt="">
 
-As a developer, your understanding of applications is vastly different from a
-standard application user. Prototyping (paper or wireframes) and user testing
-can help you determine if your approach is correct before you begin coding.
+If you don't often use the command line, take a moment to test some common commands.
 
-1. Choose an application from the Blockstack Browser homepage or from the <a href="https://app.co/" target="\_blank">list on the App.co site</a>.
+<table class="uk-table uk-table-small uk-table-divider">
+  <tr>
+    <th>Command</th>
+    <th>What it does</th>
+  </tr>
+  <tr>
+    <td><code>pwd</code></td>
+    <td>Print the name of the working directory; the current directory your command line is in.</td>
+  </tr>
+  <tr>
+    <td><code>ls</code></td>
+    <td>Lists the files and directories in the current directory.</td>
+  </tr>
+  <tr>
+    <td><code>cd</code></td>
+    <td>Change directory to navigate to locations in your file system.</td>
+  </tr>
+</table>
 
-   Blockstack maintains the App.co website as a central place for users and
-   developers to explore and review blockchain applications. This site has
-   application categories such as:
-
-    - Business Tools
-    - Developer Tools
-    - Education & News
-    - Financial Services
-    - Games & Digital Assets
-    - Social Networking
-    - Health & Fitness
-    - Marketplaces
-
-2. Spend 20 minutes reviewing the application.
-
-   - Is the application free?
-   - How did the application designers expose or hide decentralized features?
-
-3. Try logging into the same application from another device such as your phone.
-
-   - You'll need to authenticate on this device with Blockstack too.
-   - How does the mobile experience differ from your desktop experience?
-
-Repeat this exercise with a friend or relative who is not a developer. This
-should give you perspective on the problems users will encounter with your
-potential application.
-
-## Research existing in decentralized applications
-
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_65D38DE36A9E0559639DF0B6F5271AA88578C54592AF9D85F6A7C7F9A62C47D4_1537563661663_image.png)
-
-This quote from Gene Luen Yang, a Genius Grant recipient and comic book artist,
-has a good point. Have you researched what other top industry thinkers have said about
-potential applications of blockchain technology? For example, EY developed a five-point
-test to help determine if a blockchain solution would help for a problem:
-
-<div class="uk-card uk-card-default uk-card-body">
-<ul> <li>Are there multiple parties in this ecosystem?
-  Blockchains are fundamentally multiparty collaboration systems.</li>
-<li>Is establishing trust between all parties an issue?
-  Blockchains improve trust between participants by having multiple points of verification.</li>
-<li>Is it critical to have a detailed transactional record of activity?
-  If everyone agreed on everything, you wouldn't need a blockchain to verify who did what and when it was done.</li>
-<li>Are we securing the ownership or management of a finite source?
-  Core logic in the blockchain system is designed to prevent double-counting of assets and to record ownership and transfers.</li>
-<li>Does the network of partners benefit from increased transparency across the ecosystem? Blockchains are transparent by design.</li></ul>
-
-<p>From <a href="http://go.galegroup.com/ps/i.do?p=AONE&u=plan_smcl&id=GALE|A547075763&v=2.1&it=r&sid=AONE&asid=f2f8ee00" target="\_blank">Maslova, Natalia. "BLOCKCHAIN: DISRUPTION AND OPPORTUNITY." Strategic Finance, July 2018</a></p>
-</div>
-
-The EY test is a general test about the domains that blockchain applications can disrupt. You can also consider more specific behaviors a DApp should meet. Blockstack defines three principles that Blockstack applications should meet:
-
-* Users own their own data
-* Users own their identities
-* Users have free choice of clients
-
-If you haven't read it, read the full article <a href="/develop/dapp_principles.html" target="\_blank">on principles of Blockstack applications</a>.
-
-### Tips for coming up with application ideas
+### Install XCode Command Line tools
 {:.no_toc}
 
-Before developing a DApp, research the blockchain space and engage with the Blockstack community.
+The Command Line Tool package gives Mac terminal users many commonly used tools,
+utilities, and compilers. Some of the contents installed by NPM require XCode.
+
+1. Open a terminal window on your system.
+2. Enter the `xcode-select` command string:
+
+   ```bash
+   $ xcode-select --install
+   ```
+
+   <img src="images/install-command-line-tools-os-x.jpg" alt="">
+
+   A software update dialog displays:
+
+   <img src="images/confirm-install-command-line-tools-mac-os-x.jpg" alt="">
+
+3. Click **Install** to confirm.
+
+   You are prompted to agree to the terms of service.
+
+4. Agree to the terms of services.
+
+   The tools are installed. This is fairly quick depending on your connection speed.
+
+
+### Install Node Package Manager (NPM)
+{:.no_toc}
+
+Open source developers from every continent use NPM to share software components
+called packages. The Animal Kingdom uses  React, Babel, and many other
+components. You'll use the `npm` command to install these packaged components.
+
+ 1. Open a terminal window on your system.
+ 2. Verify you have installed `npm` using the `which` command.
+
+     <img src="images/command-line.png" alt="">
+
+     If `npm` is installed, `which` returns the command's location in your environment.
+
+3. If the `npm` command is not in your system, <a href="https://www.npmjs.com/get-npm" target="\_blank">install it using the instructions for your operating system</a>.
+
+   Installing the NPM tool can take several minutes depending on your connection speed.
+
+## Get the Animal Kingdom code
+
+In this section, you copy the code for Animal Kingdom to your workstation.
+
+1. In your browser (Chrome, Safari, etc), <a href="https://github.com/blockstack/animal-kingdom" target="\_blank">open the Animal Kingdom code repository</a>.
+
+  The AnimalKingdom code is kept in a public GitHub repository.
+
+2. Click the **Clone or download** button.
+
+  If you have a GitHub account you can choose to clone the original repository
+  or fork it and then clone it. These instructions assume you are downloading
+  the code.
+
+3. Choose the **Download ZIP** for Animal Kingdom.
+
+  <img src="images/kingdom-copy.png" alt="">
+
+3. Check your download directory for the `animal-kingdom-master.zip` file.
+4. Copy the download zip file to a directory where you keep code projects.
+4. Unzip the file.
+
+   <img src="images/kingdom-download.png" alt="">
+
+   After unzipping the file you should have the `animal-kingdom-master` directory.
+
+5. In your terminal change directory into the top of the directory by entering:
+
+   ```bash
+   $ cd animal-kingdom-master
+   ```
+
+   Use the `pwd` command to confirm which directory you are in.
+
+   ```bash
+   $ pwd
+   /Users/manthony/animal-kingdom-master
+   ```
+
+6. Take a minute review the files and subdirectories in your Animal Kingdom project.
+
+   Use the `ls` command to list directory contents.
+
+   <table class="uk-table uk-table-striped">
+   <tr>
+   <th><b>Name</b> </th>
+   <th><b>Description</b></th>
+   </tr>
+   <tr>
+   <td><code>README.md</code></td>
+   <td>Contains a quick reference for building and running Animal Kingdom. </td>
+   </tr>
+   <tr>
+   <td><code>package.json</code></td>
+   <td>An NPM project file.</td>
+   </tr>
+   <tr>
+   <td><code>config</code></td>
+   <td>Environment configuration files written in Javascript.</td>
+   </tr>
+   <tr>
+   <td><code>public</code></td>
+   <td>Files that are copied into the root of the site you are building.</td>
+   </tr>
+   <tr>
+   <td><code>scripts</code></td>
+   <td>NPM scripts used to do common tasks in the project.</td>
+   </tr>
+   <tr>
+   <td><code>src</code></td>
+   <td>React source code for the site.&nbsp;&nbsp;This contains configuration files.</td>
+   </tr>
+   </table>
+
+## Build the sample in development mode
+
+You can build and run the Animal Kingdom on your local workstation. Before you
+can run the program you use NPM to get install all the dependent packages. One
+of the key packages `npm` installs for you is the Blockstack Javascript library.
+
+1. Make sure you are in the root directory of the project.
+
+    ```bash
+    cd ~/animal-kingdom-master
+    pwd
+    /Users/manthony/animal-kingdom-master
+    ```
+
+2. Enter `npm install` to get the software components Animal Kingdom needs.
+
+    ```bash
+     $ npm install
+
+     > fsevents@1.2.4 install /Users/manthony/animal-kingdom-master/node_modules/fsevents
+     > node install
+
+     node-pre-gyp WARN Tried to download(404): https://fsevents-binaries.s3-us-west-2.amazonaws.com/v1.2.4/fse-v1.2.4-node-v67-darwin-x64.tar.gz
+     node-pre-gyp WARN Pre-built binaries not found for fsevents@1.2.4 and node@11.1.0 (node-v67 ABI, unknown) (falling back to source compile with node-gyp)
+      SOLINK_MODULE(target) Release/.node
+      CXX(target) Release/obj.target/fse/fsevents.o
+     In file included from ../fsevents.cc:6:
+
+      ...
+
+     added 1390 packages from 766 contributors and audited 15238 packages in 16.11s
+     found 1 high severity vulnerability
+      run `npm audit fix` to fix them, or `npm audit` for details
+     $
+    ```
+
+    This command creates a `node_modules` subdirectory to your project code and
+    installs all the code libraries you need for your Animal Kingdom project.
+
+3. Enter the `ls` command to list the contents of your project directory to verify `npm` installed correctly.
+
+    ```
+    $ ls
+    ```
+
+    The `node_modules`directory contains many core libraries used by Animal
+    Kingdom. For example, the Blockstack Javascript library is in the
+    `nodule_modules/blockstack/lib` subdirectory.
+
+
+## Start you Animal Kingdom DApp
+
+1. Start the Animal Kingdom DApp running on your workstation by entering:
+
+   ```bash
+   npm start
+   ```
+
+   The `npm` program uses the `scripts/start.js` file to package the Animal
+   Kingdom application. Once the code is packaged, the DApp opens Animal Kingdom
+   running at the `http://localhost:3000` URL in your browser.
+
+2. From the initial Animal Kingdom screen, choose an animal person and a territory.
+3. Press **Done** at the bottom of the page.
+
+   The Animal Kingdom makes a call to the Gaia hub to store your selection.
+   After a brief pause, the DApp returns you to the **Your Kingdom** page. If
+   you have problems,  refresh the page and click **Your Kingdom** in the menu.
+
+   <img src="images/kingdom-ruler.png" alt="">
+
+4. Spend a little time exploring the application.
+
+   For example, you could edit your animal or visit the other pages such as **Animals** or **Territories**.
+
+5. Go back to your terminal where you started your application is running.
+6. Press `CTRL-C` to stop the application.
+
+   <img src="images/kingdom-stop.png" alt="">
+
+You can always start the application again with `npm start` command as you will later in this tutorial.
+
+## Resources for Blockstack developers
+
+Blockstack provides several resources that help developers who are building on
+the Platform. Take a moment to investigate these resources:
 
 * Visit <a href="https://forum.blockstack.org/" target="\_blank">the Blockstack forum</a>.
   This is a valuable resource to learn about the questions that other developers have now or have had in the past.
 * Visit the <a href="https://community.blockstack.org/" target="\_blank">Blockstack Community website</a> to learn about events that may be coming to your area.
 * Join the Blockstack <a href="https://slofile.com/slack/blockstack" target="\_blank"> Slack channel</a> which you can join by filling in the following <a href="https://docs.google.com/forms/d/e/1FAIpQLSed5Mnu0G5ZMJdWs6cTO_8sTJfUVfe1sYL6WFDcD51_XuQkZw/viewform">form</a>.
 
-When coming up with ideas for an application, you can try some thought experiments.
-
-- Imagine if an identity acted as an internet phone number? Could a service pre-screen email so that only those identities that showed an interaction on the blockchain could communicate?
-- How could you use the blockchain to verify reviewers in an application like Yelp? What kind of features would you allow unverified reviewers?
-- How could you use the blockchain to make online dating safer?
-
-A fun game is to use Google to combine the word blockchain with some word you
-think might be unrelated such as juice or zoo. This kind of play can result in
-some surprising finds and interesting ideas.
-
 
 ## Where to go next
 {:.no_toc}
 
-In this section, you learned important areas for consideration and tips for
-where to research. You learned some techniques for formulating and solidifying
-your development efforts. Of course, building an app is a great way to generate
-ideas.
+In this section, you learned about the Blockstack platform and why it makes
+Blockchain development a painless process by encapsulating the complexity of the
+blockstack backend. You also set up a typical development environment for
+developing a Blockstack web application.  Finally, you started and ran the
+Animal Kingdom application locally.
 
-In the next section, you dive into the features of the Blockstack technology by
-developing a sample application. Continue to [Zero to DApp, 3 of 4](zero_to_dapp_3.html).
+In the next section, you explorer the application code and learn which recorded
+elements in a DApp make it eligible for App Mining. Continue to [Zero-to-DApp, 3
+of 4](zero_to_dapp_3.html).

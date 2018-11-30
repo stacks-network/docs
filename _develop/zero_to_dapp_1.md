@@ -3,37 +3,43 @@ layout: learn
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 1 - Why Blockchain and Blockstack?
+# 1 About DApps and app mining
 {:.no_toc}
 
-**Zero to DApp, 1 of 4**
+**Zero-to-DApp 1 of 4**
 
-Welcome to the Blockstack Zero to DApp tutorial.  The Blockstack Ecosystem has a
-mission to bring a new internet where users control the access to, and use of,
-their own identity and data.  This tutorial is written for developers who want
-to learn about how to use the Blockstack Ecosystem to develop and fund
-decentralized applications (DApps).
+Welcome to the Blockstack Zero-to-DApp tutorial. In this tutorial, you build,
+run, modify, and deploy a decentralized application (DApp) called Animal
+Kingdom. This application makes use of blockchain technology through the use of
+the Blockstack platform. As you follow along, you'll learn what makes a DApp
+different than traditional applications. You'll also learn about the Blockstack
+Signature Fund and its Application Mining designed to fund DApp development.
 
-The tutorial has four pages and this is first. The top of each page
-lists the contents. This page contains the following:
+The tutorial has four parts of which this is first. This part contains the
+following topics:
 
 * TOC
 {:toc}
 
-Of course, you can skip pages if you want. Each page contains a section
-describing who can or should skip the page. The section contains a link to the next page.
-You can also use the navigation on the left to skip pages.
+### Skills you need to follow this tutorial
+{:.no_toc}
 
-<div class="uk-card uk-card-default uk-card-body">
-<h5>Can you skip this page?</h5>
-<p>In this section, you learn what is a DApp, why you might want to create one, and
-why you would choose the Blockstack ecosystem to do it.  If you are already
-familiar with how decentralized applications are different from standard
-applications and you understand Blockstack’s unique value proposition, skip
-this section and <a href="zero_to_dapp_2.html">move onto 2 of 4 immediately</a>.</p>
-</div>
+This tutorial is written for developers and others who want to learn about DApps
+and how the Blockstack ecosystem supports their development. As a result, the
+target audience is intentionally broad. Anyone with access to a Windows, Mac, or
+Linux computer and some familiarity with a command line should be able to follow
+along.
 
-## Blockchain applications, the new kid
+If you are good at following directions, chances are you can complete this
+tutorial even if you have no programming experience. Knowledgeable developers
+should easily be able to complete the tutorial within an hour by following
+along.
+
+If you are a developer superhero, you may want to skim or move
+quickly through the pages and that's fine too.
+
+
+## How traditional and decentralized applications differ
 
 A decentralized application (DApp) uses blockchain technology for the
 authentication and data storage components of an application’s platform.
@@ -77,7 +83,24 @@ blockchain applications:
 
 The blockchain technology you build a DApp with determines the features available to your application.
 
-## How Blockstack is seeding DApp development
+## Try your first DApp by creating an identity
+
+The Blockstack Web browser is a DApp for the web. Users can use it to create and
+manage identities in the Blockstack Ecosystem.  DApps built with the Blockstack
+platform, use the on-boarding sequence provided by the browser to onboard their
+users.  Currently, users can create a Blockstack ID for free or buy their own
+ID.
+
+If you haven't already created your own Blockstack ID, do this now. As you
+create an ID, consider what interactions are familiar to you from traditional
+applications, and which are not.
+
+{% include create_id.md %}
+
+If you already have a Blockstack ID, launch the browser and try resetting it. Or
+trying logging on from a device or browser software you haven't used before.
+
+## Seeding DApp market with application mining
 
 Blockchain applications are a new paradigm for both application developers and
 application users. New paradigms in any market, think solar power or electric
@@ -86,46 +109,104 @@ and services known as cloud computing were once new paradigms. It was the
 investment of billions in funds and incentives from governments and private
 companies that grew the cloud computing market.  
 
-Today, these same elements are helping to the drive to the blockchain industry.
-Public and private spending on developing blockchain technology is expected to
-grow at a rapid rate. This investment is happening throughout the world as
-reflected in a recent IDC report:
-
-> <img class="uk-align-center" src="images/history-cloud.jpg" alt="">
->The IDC expects blockchain spending to grow at a robust pace throughout the
-2017-2022 forecast period with a five-year compound annual growth rate (CAGR) of
-73.2%. Worldwide blockchain spending is expected to be $1.5 billion in 2018,
-double the amount spent in 2017.  
-~ <a href="https://www.idc.com/getdoc.jsp?containerId=prUS44150518" target="\_blank">IDC Blockchain Spending Guide</a>
-
 {% include signature_fund.md %}
 
-As you work through this Zero to DApp tutorial, you’ll learn more about the funding available
-through the fund and how you can access it.
 
-## Blockchain, no pain
+<div class="uk-card uk-card-default uk-card-body">
+<h5>App Mining Eligibility Requirements</h5>
+<p>DApps that are eligible for application mining must:</p>
 
-Blockstack’s mission is to bring about a new internet where users control the
-access to their data and how it is used. With this mission in mind, Blockstack
-Public Benefit Corp. (PBC) started development of the Blockstack platform in 2017.  
+<ul>
+<li>Implement Blockstack authentication</li>
+<li>Store data in a Gaia storage hub</li>
+<li>Invite registration and use by the general public</li>
+</ul>
 
-The platform’s development philosophy followed two simple principles. First,
-create backend services that allow decentralized applications to be both
-performant and scalable.  Second, provide simple, familiar development
-interfaces to blockchain technology. The result of this philosophy is a
-technology platform that allows you to:
+<p>As you work through this Zero-to-DApp tutorial, you’ll build and deploy a sample
+application that meets these requirements. While the application you build won't
+be eligible for application mining, completing the tutorial makes you
+eligible for a free, limited edition t-shirt:</p>
 
-* **Build your application in any Javascript framework.**  You can use the blockchain without learning a new programming language or extending your application stack.
-* **Use well-defined REST endpoints that simplify and encapsulate the blockchain backend.** The Blockstack Javascript API reduces blockchain operations to familiar GET and PUT operations.
-* **Access the Blockstack’s Naming System (BNS).**  The system has over 90K users that can immediately start using your application.
-* **Scale quickly to large, performant production systems.**  Blockstack’s GAIA storage system gives fast, scalable performance on a level comparable to Amazon S3, Google Drive, or Azure.
+<p><img class="uk-align-center" src="images/tshirt-blank.png" alt=""></p>
 
-Using Blockstack’s technology you can start building immediately on the
-blockchain with the knowledge you have today.  You won’t need to spend time or
-effort developing additional knowledge of specialized languages or technologies.
+<p>You'll learn how to get your t-shirt in part 4 of this tutorial.</p>
 
-In part 3 of this tutorial, you’ll build a sample DApp that leverages all the
-key features of Blockstack’s platform.
+</div>
+
+## Overview of the  DApp you will build
+
+You are going to build a DApp called AnimalKingdom. Animal Kingdom is a DApp for
+the web. Users log into it and create an animal persona that rules over a
+specific territory. The combination of persona and territory is a kingdom. Once
+you create a kingdom, you can add subjects from other kingdoms.
+
+The Animal Kingdom interacts with two Blockstack services, the Blockstack
+Browser (https://browser.blockstack.org) and the Gaia data storage hub
+(https://hub.blockstack.org/). The Blockstack Browser is itself
+a DApp. The storage hub is purely a service without user-facing functionality.
+
+The following table describes the key interactions and screens in the DApp.
+
+<table class="uk-table uk-table-striped">
+  <tr>
+    <th>Click to enlarge</th>
+    <th> Description</th>
+  </tr>
+  <tr>
+    <td><div uk-lightbox="animation: slide">
+         <a class="uk-inline" href="images/kingdom-enter.png" data-caption="Users must login with a Blockstack identity.">
+             <img src="images/kingdom-enter.png" alt="">
+         </a>
+    </div>
+    </td>
+    <td><p>Users log in (authenticate) with a Blockstack identity. By authenticating, the user gives the application the ability to get and put data in the user's Gaia storage hub.</p></td>
+  </tr>
+  <tr>
+    <td><div uk-lightbox="animation: slide">
+          <a class="uk-inline" href="images/kingdom-signin.png" data-caption="Blockstack login dialogs.">
+              <img src="images/kingdom-signin.png" alt="">
+          </a>
+     </div>
+     </td>
+    <td><p>The Blockstack login dialogs are part of the Blockstack Browser which is itself
+    a DApp. Once a user authenticates, the DApp code automatically
+    returns them to the Kingdom they were attempting to enter.</p></td>
+  </tr>
+  <tr>
+  <td><div uk-lightbox="animation: slide">
+    <a class="uk-inline" href="images/kingdom-new.png" data-caption="Choose a persona and territory.">
+        <img src="images/kingdom-new.png" alt="">
+    </a>
+    </div></td>
+  <td><p>First-time visitors to a kingdom are prompted to create an animal persona and
+  a territory to rule. Once they make a selection, users click <strong>Done</strong> to create a
+  kingdom to rule. Behind the scenes, the data about the user's selection is stored in the user's GAIA hub.
+</p>
+  </td>
+</tr>
+<tr>
+  <td> <div uk-lightbox="animation: slide">
+     <a class="uk-inline" href="images/kingdom-choices.gif" data-caption="Choose a persona and territory.">
+      <img src="images/kingdom-choices.gif" alt="">
+    </a>
+   </div></td>
+  <td><p>Each kingdom has animals and territories. Users can edit their original persona/animal combination. You'll learn how to modify the Animal Kingdom code to add new animals and territories.</p></td>
+</tr>
+<tr>
+  <td><div uk-lightbox="animation: slide">
+  <a class="uk-inline" href="images/kingdom-subjects.gif" data-caption="Adding subjects">
+      <img src="images/kingdom-subjects.gif" alt="">
+  </a>
+  </div></td>
+  <td>
+  <p>Users can add subjects from territories in their own Animal Kingdom. The DApp updates the user's GAI hub each time the user adds a subject. Users can also visit other Animal Kingdom installations and add subjects from these as well. You'll learn how to modify the <b>Other Kingdoms</b> available in your installation.
+  </p>
+  </td>
+</tr>
+</table>
+
+You can try a completed version of this application for yourself by using your
+Blockstack identity to log into the <a href="https://animalkingdoms.netlify.com/" target="\_blank">Blockstack Animal Kingdom</a>.
 
 ## Where to go next
 {:.no_toc}
@@ -141,4 +222,4 @@ different from traditional applications. You’ll also learn about the resources
 Blockstack provides for DApp developers that help you clarify where to put your
 efforts and how to fund them.
 
-Continue to [2 of 4, Zero to DApp](zero_to_dapp_2.html).
+Continue to [2 of 4, Zero-to-DApp](zero_to_dapp_2.html).
