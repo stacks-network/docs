@@ -3,379 +3,38 @@ layout: learn
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 3 - Build an Animal Kingdom DApp
+# 3 Customize your Animal Kingdom
 {:.no_toc}
 
  **Zero to DAPP 3 of 4**
 
-In this page, you follow a tutorial which builds, runs, modifies, and deploys a
-DApp called Animal Kingdom. Through this exercise, you'll learn about the
-components of a Blockstack Dapp.  You'll also learn about the technical
-requirements for submitting a DApp for App.co. This page contains the following
-topics
+In this page, you examine and modify the Animal Kingdom DApp [you built in part
+2](zero_to_dapp_2.html). You'll review the underlying code and locate the
+portions of it which fulfill the requirements necessary to qualify an
+application for App Mining. You'll expand your knowledge of the application by
+extending it. Finally, you'll learn how to deploy a DApp.
+
+This page contains the following topics
 
  * TOC
  {:toc}
 
- <div class="uk-card uk-card-default uk-card-body">
- <h5>Can you skip this page?</h5>
- <p>It isn't a good idea to skip this page, requirements for DApps that participate in App Mining are covered. So, everyone should at least skim through this page.
- </p>
- </div>
 
-
-### Skills you need to build Animal Kingdom
-
-This tutorial is designed for a wide audience. Anyone with access to a Windows,
-Mac, or Linux computer and some familiarity with a command line can build the
-Animal Kingdom DApp.
-
-If you are good at following directions, chances are you can complete this
-tutorial even if you have no programming experience. Knowledgeable developers
-should easily be able to complete the tutorial within an hour by following
-along.
-
-If you are a developer superhero, you may want to skip ahead or move
-quickly and that's fine too.
-
-## Get prerequisites and set up your environment
-
-To follow this tutorial, you need the following:
-
-* A Blockstack ID (identity) to test your Animal Kingdom.
-* Access to the Mac terminal window and some familiarity with the command line it provides.
-* An installation of the XCode command-line tools to support Node Package Manager (`npm`)
-* The Node Package Manager package manager.
-
-Follow the procedures in this section to install these components.
-
-### Confirm or get a Blockstack ID
+### Before you get started
 {:.no_toc}
 
-Confirm you have a Blockstack ID also known as an identity; `joe.id.blockstack`
-is an example of an identity.
+Before you continue, make sure you can locate the key files and
+directories (folders) in your project. You'll need to make sure you have opened
+a terminal and have changed directory to the top of your Animal Kingdom project.
 
-* If you have an existing ID, log into the <a href="https://browser.blockstack.org/" target="\_blank">Blockstack Browser</a> in your browser.
+<img src="images/project-prompt.png" alt="">
 
-   The Blockstack Browser is itself a DApp. Logging in confirms you have a valid
-   ID with the required _secret recovery key_ or _magic recovery code_. The
-   secret recovery key is a 12 or 24 word phrase you recorded when you created
-   the ID. The magic recovery code is a string of characters Blockstack emailed
-   to you when you created your identity. You can confirm your identity with either.
+If you find it easier to navigate, you can use the Finder as well. Just remember
+you'll need the command line to run your project.
 
-* If you do not yet have a Blockstack ID, <a href="https://browser.blockstack.org/" target="\_blank">create one through the Blockstack Browser</a>.
+## Understand the Animal Kingdom application code
 
-    Instructions for creating an ID are <a href="{{ site.baseurl
-    }}/browser/ids-introduction.html#create-an-initial-blockstack-id"
-    target="\_blank">available in this documentation</a>.
-
-
-###  Ensure command-line access
-{:.no_toc}
-
-If you are using a Mac, you can find the **terminal** in the **Application >
-Launchpad > Other** folder.
-
-<img src="images/terminal.png" alt="">
-
-If you don't often use the command line, take a moment to test some common commands.
-
-<table class="uk-table uk-table-small uk-table-divider">
-  <tr>
-    <th>Command</th>
-    <th>What it does</th>
-  </tr>
-  <tr>
-    <td><code>ls</code></td>
-    <td>Lists the files and directories in the current directory.</td>
-  </tr>
-  <tr>
-    <td><code>cd</code></td>
-    <td>Change directory to navigate to locations in your file system.</td>
-  </tr>
-  <tr>
-    <td><code>pwd</code></td>
-    <td>Print the working directory, the location you are working in.</td>
-  </tr>
-</table>
-
-### Install XCode Command Line tools
-{:.no_toc}
-
-The Command Line Tool package gives Mac terminal users many commonly used tools,
-utilities, and compilers. Some of the contents installed by NPM require XCode.
-
-1. Open a terminal window on your system.
-2. Enter the `xcode-select` command string:
-
-   ```bash
-   $ xcode-select --install
-   ```
-
-   <img src="images/install-command-line-tools-os-x.jpg" alt="">
-
-   A software update dialog displays:
-
-   <img src="images/confirm-install-command-line-tools-mac-os-x.jpg" alt="">
-
-3. Click **Install** to confirm.
-
-   You are prompted to agree to the terms of service.
-
-4. Agree to the terms of services.
-
-   The tools are installed. This is fairly quick depending on your connection speed.
-
-
-### Install Node Package Manager (NPM)
-{:.no_toc}
-
-Open source developers from every continent use NPM to share software components
-called packages. The Animal Kingdom uses  React, Babel, and many other
-components. You'll use the `npm` command to install these packaged components.
-
- 1. Open a terminal window on your system.
- 2. Verify you have installed `npm` using the `which` command.
-
-     <img src="images/command-line.png" alt="">
-
-     If `npm` is installed, `which` returns the command's location in your environment.
-
-3. If the `npm` command is not in your system, <a href="https://www.npmjs.com/get-npm" target="\_blank">install it using the instructions for your operating system</a>.
-
-   Installing the NPM tool can take several minutes depending on your connection speed.
-
-
-## Overview of the Animal Kingdom DApp
-
-You are going to build a DApp called AnimalKingdom. Animal Kingdom is a DApp for
-the web. Users log into it and create an animal persona that rules over a
-specific territory. The combination of persona and territory is a kingdom. Once
-you create a kingdom, you can add subjects from other kingdoms.
-
-The Animal Kingdom interacts with two Blockstack services, the Blockstack
-Browser (https://browser.blockstack.org) and the Gaia data storage hub
-(https://hub.blockstack.org/). The Blockstack Browser is itself
-a DApp. The storage hub is purely a service without user-facing functionality.
-
-The following table describes the key interactions and screens in the DApp.
-
-<table class="uk-table uk-table-striped">
-  <tr>
-    <th>Click to enlarge</th>
-    <th> Description</th>
-  </tr>
-  <tr>
-    <td><div uk-lightbox="animation: slide">
-         <a class="uk-inline" href="images/kingdom-enter.png" data-caption="Users must login with a Blockstack identity.">
-             <img src="images/kingdom-enter.png" alt="">
-         </a>
-    </div>
-    </td>
-    <td><p>Users log in (authenticate) with a Blockstack identity. By authenticating, the user gives the application the ability to get and put data in the user's Gaia storage hub.</p></td>
-  </tr>
-  <tr>
-    <td><div uk-lightbox="animation: slide">
-          <a class="uk-inline" href="images/kingdom-signin.png" data-caption="Blockstack login dialogs.">
-              <img src="images/kingdom-signin.png" alt="">
-          </a>
-     </div>
-     </td>
-    <td><p>The Blockstack login dialogs are part of the Blockstack Browser which is itself
-    a DApp. Once a user authenticates, the DApp code automatically
-    returns them to the Kingdom they were attempting to enter.</p></td>
-  </tr>
-  <tr>
-  <td><div uk-lightbox="animation: slide">
-    <a class="uk-inline" href="images/kingdom-new.png" data-caption="Choose a persona and territory.">
-        <img src="images/kingdom-new.png" alt="">
-    </a>
-    </div></td>
-  <td><p>First-time visitors to a kingdom are prompted to create an animal persona and
-  a territory to rule. Once they make a selection, users click <strong>Done</strong> to create a
-  kingdom to rule. Behind the scenes, the data about the user's selection is stored in the user's GAIA hub.
-</p>
-  </td>
-</tr>
-<tr>
-  <td> <div uk-lightbox="animation: slide">
-     <a class="uk-inline" href="images/kingdom-choices.gif" data-caption="Choose a persona and territory.">
-      <img src="images/kingdom-choices.gif" alt="">
-    </a>
-   </div></td>
-  <td><p>Each kingdom has animals and territories. Users can edit their original persona/animal combination. You'll learn how to modify the Animal Kingdom code to add new animals and territories.</p></td>
-</tr>
-<tr>
-  <td><div uk-lightbox="animation: slide">
-  <a class="uk-inline" href="images/kingdom-subjects.gif" data-caption="Adding subjects">
-      <img src="images/kingdom-subjects.gif" alt="">
-  </a>
-  </div></td>
-  <td>
-  <p>Users can add subjects from territories in their own Animal Kingdom. The DApp updates the user's GAI hub each time the user adds a subject. Users can also visit other Animal Kingdom installations and add subjects from these as well. You'll learn how to modify the <b>Other Kingdoms</b> available in your installation.
-  </p>
-  </td>
-</tr>
-</table>
-
-
-## Get the Animal Kingdom code
-
-In this section, you copy the code for Animal Kingdom to your workstation.
-
-1. In your browser (Chrome, Safari, etc), <a href="https://github.com/blockstack/animal-kingdom" target="\_blank">open the Animal Kingdom code repository</a>.
-
-   The AnimalKingdom code is kept in a public GitHub repository.
-
-2. Click the **Clone or download** button.
-
-   If you have a GitHub account you can choose to clone the original repository
-   or fork it and then clone it. These instructions assume you are downloading
-   the code.
-
-3. Choose the **Download ZIP** for Animal Kingdom.
-
-   <img src="images/kingdom-copy.png" alt="">
-
-3. Check your download directory for the `animal-kingdom-master.zip` file.
-4. Copy the download zip file to a directory where you keep code projects.
-4. Unzip the file.
-
-    <img src="images/kingdom-download.png" alt="">
-
-    After unzipping the file you should have the `animal-kingdom-master` directory.
-
-5. In your terminal change directory into the top of the directory by entering:
-
-    ```bash
-    $ cd animal-kingdom-master
-    ```
-
-    Use the `pwd` command to confirm which directory you are in.
-
-    ```bash
-    $ pwd
-    /Users/manthony/animal-kingdom-master
-    ```
-
-6. Take a minute review the files and subdirectories in your Animal Kingdom project.
-
-    Use the `ls` command to list directory contents.
-
-    <table class="uk-table uk-table-striped">
-    <tr>
-    <th><b>Name</b> </th>
-    <th><b>Description</b></th>
-    </tr>
-    <tr>
-    <td><code>README.md</code></td>
-    <td>Contains a quick reference for building and running Animal Kingdom. </td>
-    </tr>
-    <tr>
-    <td><code>package.json</code></td>
-    <td>An NPM project file.</td>
-    </tr>
-    <tr>
-    <td><code>config</code></td>
-    <td>Environment configuration files written in Javascript.</td>
-    </tr>
-    <tr>
-    <td><code>public</code></td>
-    <td>Files that are copied into the root of the site you are building.</td>
-    </tr>
-    <tr>
-    <td><code>scripts</code></td>
-    <td>NPM scripts used to do common tasks in the project.</td>
-    </tr>
-    <tr>
-    <td><code>src</code></td>
-    <td>React source code for the site.&nbsp;&nbsp;This contains configuration files.</td>
-    </tr>
-    </table>
-
-## Build and run the sample in development mode
-
-You can build and run the Animal Kingdom on your local workstation. Before you
-can run the program you use NPM to get all the dependent packages.
-
-1. Make sure you are in the root directory of the project.
-
-   ```bash
-   cd ~/animal-kingdom-master
-   pwd
-   /Users/manthony/animal-kingdom-master
-   ```
-
-2. Enter `npm install` to get the software components Animal Kingdom needs.
-
-   ```bash
-    $ npm install
-
-    > fsevents@1.2.4 install /Users/manthony/animal-kingdom-master/node_modules/fsevents
-    > node install
-
-    node-pre-gyp WARN Tried to download(404): https://fsevents-binaries.s3-us-west-2.amazonaws.com/v1.2.4/fse-v1.2.4-node-v67-darwin-x64.tar.gz
-    node-pre-gyp WARN Pre-built binaries not found for fsevents@1.2.4 and node@11.1.0 (node-v67 ABI, unknown) (falling back to source compile with node-gyp)
-     SOLINK_MODULE(target) Release/.node
-     CXX(target) Release/obj.target/fse/fsevents.o
-    In file included from ../fsevents.cc:6:
-
-     ...
-
-    added 1390 packages from 766 contributors and audited 15238 packages in 16.11s
-    found 1 high severity vulnerability
-     run `npm audit fix` to fix them, or `npm audit` for details
-    $
-   ```
-
-   This command creates a `node_modules` subdirectory to your project code and
-   installs all the code libraries you need for your Animal Kingdom project.
-
-3. Enter the `ls` command to list the contents of your project directory to verify `npm` installed correctly.
-
-   ```
-   $ ls
-   ```
-
-   The `node_modules`directory contains many core libraries used by Animal
-   Kingdom. For example, the Blockstack Javascript library is in the
-   `nodule_modules/blockstack/lib` subdirectory.
-
-4. Start the Animal Kingdom DApp running on your workstation by entering:
-
-   ```bash
-   npm start
-   ```
-
-   The `npm` program compiles the Animal Kingdom code. Once the code compiles,
-   the DApp opens Animal Kingdom running at the  `http://localhost:3000` URL in
-   your browser.
-
-4. From the initial Animal Kingdom screen, choose an animal person and a territory.
-5. Press **Done** at the bottom of the page.
-
-   The Animal Kingdom makes a call to the Gaia hub to store your selection.
-   After a brief pause, the DApp returns you to the **Your Kingdom** page. If
-   you have problems,  refresh the page and click **Your Kingdom** in the
-   menu.
-
-   <img src="images/kingdom-ruler.png" alt="">
-
-6. Spend a little time exploring the application.
-
-   For example, you could edit your animal or visit the other pages such as **Animals** or **Territories**.
-
-7. Go back to your terminal where you started your application is running.
-8. Press `CTRL-C` to stop the application.
-
-   <img src="images/kingdom-stop.png" alt="">
-
-   You can start it again with `npm start` as you will later in this tutorial.
-
-
-## Understand the application code
-
-The application has two major components, React and Blockstack. React is used to
+The Animal Kingdomw application has two major components, React and Blockstack. React is used to
 build all the web components and interactions. You could replace React with any
 framework that you like; Blockstack is web framework agnostic. This section does
 not explain the React in any detail; The discussion focuses on the Blockstack
@@ -388,7 +47,6 @@ Blockstack identity and to read and write to the user's data stored in a Gaia
 hub.
 
 ### Authenticating user identity
-{:.no_toc}
 
 The `src/App.js` file creates a Blockstack `UserSession` and uses that session's
 `isUserSignedIn()` method to determine if the user is signed in or out of the
@@ -461,7 +119,6 @@ for the DApp. Data is encrypted at a unique URL on a GAI storage hub.
 </div>
 
 ### Get and put user data to a GAIA Hub
-{:.no_toc}
 
 GAIA is the Blockstack data storage hub (https://hub.blockstack.org). Once a user
 authenticates, the application can get and put application data in the user's
@@ -511,12 +168,13 @@ saveMe(me) {
 The Blockstack <a href="https://blockstack.github.io/blockstack.js/#putfile"
 target="\_blank"><code>putFile()</code></a> stores the data provided in the
 user's DApp data store. You can view the URL for the data store from a user's
-profile. If you tested your Animal Kingdom, you can see this on your profile.
-To see your profile, go to the <a href="https://explorer.blockstack.org">Blockstack explorer</a> and search for your ID:
+profile.
+
+If you tested your Animal Kingdom, you can see this on your profile. To see your
+profile, go to the <a href="https://explorer.blockstack.org">Blockstack
+explorer</a> and search for your ID:
 
 <img src="images/explorer.png" alt="">
-
-In the next section, you extend your Kingdom's configuration.
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5>App Mining Requirement: Gaia Storage</h5>
@@ -524,7 +182,7 @@ In the next section, you extend your Kingdom's configuration.
 </p>
 </div>
 
-## Expand your kingdom
+### Application configuration
 
 Your DApp contains three pages **Animals**, **Territories**, and **Other
 Kingdoms** that are derived from three code elements:
@@ -533,11 +191,9 @@ Kingdoms** that are derived from three code elements:
  * The `public/animals` directory which contains images.
  * The `public/territories` directory which contains images.
 
-In this section, you learn how to add another kingdom to the available **Other
-Kingdoms** and how to add another territory.
+In the next section, you extend your Kingdom's configuration by modifying these files.
 
-### Add a territory
-{:.no_toc}
+## Add a territory
 
 If your application is still running in localhost stop it with a `CTRL-C` from
 your keyboard.  
@@ -611,8 +267,7 @@ your keyboard.
 
    <img src="images/kingdom-throne.png" alt="">
 
-### Add the Blockstack kingdom
-{:.no_toc}
+## Add the Blockstack kingdom to Other Kingdoms
 
 Your Animal Kingdom has only recognizes two **Other Kingdoms**. In this section,
 you add a third, the Blockstack kingdom (`https://animalkingdoms.netlify.com`).
@@ -669,25 +324,18 @@ you add a third, the Blockstack kingdom (`https://animalkingdoms.netlify.com`).
 8. Try adding a subject from Moxiegirl's kingdom to yours.
 
 
-## Go live on the Internet
+## Deploy your DApp on the web
 
-In this section you use a free Netlify account and a free GitHub account to take
-your kingdom live on the internet. Netlify provides hosting and serverless
-backend services for static websites. GitHub is a code hosting site.
+So far, you've been running the application locally. This means you are the only
+person that can use it to create a kingdom. You can make your application
+available to others by hosting it out on the internet. You can do this for free
+with a Netlify account.
 
 <div class="uk-card uk-card-default uk-card-body uk-section-muted">
 <h5>App Mining Requirement: Review Accessibility</h5>
 <p>To participate in application mining your application must be available for review. Open source projects must provide the URL to their code. Projects with private repositories can provide their application in a package form.
 </p>
 </div>
-
-### Run your Kingdom on the internet
-{:.no_toc}
-
-So far, you've been running the application locally. This means you are the only
-person that can use it to create a kingdom. You can make your application
-available to others by hosting it out on the internet. You can do this for free
-with a Netlify account.
 
 Before you begin, you need to build a site that is ready to deploy.
 
@@ -790,8 +438,7 @@ Before you begin, you need to build a site that is ready to deploy.
     So, the animal kingdom you created on your local workstation is different
     than the one you create on Netlify.
 
-### Add your Kingdom to our Clan
-{:.no_toc}
+## Add your Kingdom to our Clan
 
 At this point, your kingdom is isolated. If you know another kingdom, you can
 add subjects from that kingdom but other kingdoms can't access your subjects. In
@@ -825,9 +472,12 @@ twitter account, why not tell some folks?
 
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
 class="twitter-share-button" data-size="large" data-text="I just built a DApp
-using @blockstack's  Zero to DApp tutorial! " data-hashtags="blockstack,
+using @blockstack's  Zero-to-DApp tutorial! " data-hashtags="blockstack,
 blockchain, blockchainnopain, blockchainnopainblockstack"
 data-show-count="true">Tweet your work!</a><script async
 src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-In the next section, you learn how you can participate in App Mining by submitting a [DApp to App.co &mdash; the Universal App store](zero_to_dapp_4.html).  
+In the next part, you learn about how application mining can fund your DApp
+development efforts. And you will add your Animal Kingdom [DApp to App.co
+&mdash; the Universal App store](zero_to_dapp_4.html) and in doing so, earn a
+limited edition t-shirt.

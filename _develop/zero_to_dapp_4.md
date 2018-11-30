@@ -3,26 +3,21 @@ layout: learn
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 4 - Participate in App Mining
+# 4 List and fund thru App.co
 {:.no_toc}
 
  **Zero to DAPP 4 of 4**
 
-On this page, you learn about application mining as a funding source for your
+In this part, you learn about application mining as a funding source for your
 new DApp efforts. You'll submit your sample Animal Kingdom to App.co, the
 Universal DApp store and earn a t-shirt. You'll also learn about other ways
-Blockstack helps your development efforts. This page contains the following topics:
+Blockstack helps your development efforts. This part contains the following topics:
 
 * TOC
 {:toc}
 
-
-<div class="uk-card uk-card-default uk-card-body">
-<h5>Can you skip this page?</h5>
-<p>This is the final page, so please don't skip it. You don't miss your chance to get this cool t-shirt!
-</p>
-<p><img class="uk-align-center" src="images/tshirt-blank.png" alt=""></p>
-</div>
+This page assumes you have customized and deployed your Animal Kingdom as
+[described in part 3](zero_to_dapp_3).
 
 ## Understand application mining
 
@@ -41,7 +36,7 @@ You can also submit an application for app mining but not add it to App.co.
 
 In this section, you add your Animal Kingdom to the **Blockstack Sample
 Application** category on App.co.  Adding your Animal Kingdom app to this
-category earns you a limited edition a Zero to DApp t-shirt. Only submit your
+category earns you a limited edition a Zero-to-DApp t-shirt. Only submit your
 sample application if you have deployed the application on the internet. This
 allows us to confirm you completed the tutorial. You can submit more than one
 example, only your first submission receives a t-shirt.
@@ -128,7 +123,7 @@ To submit an application for app mining, do the follwoing:
 2. Select the **Submit your app for qualification** button.
 
 
-## Marketing your DApp
+## How Blockstack helps App Miners market
 
 Blockstack reviews each submission to app mining. Through this contact, Blockstack helps
 developers refine business models and facilitating interactions with investors.
@@ -150,7 +145,7 @@ Learn more about <a href="https://blockstack.org/blog/blockstack-community-rewar
 ## Congratulations
 {:.no_toc}
 
-You've completed the Zero to DApp tutorial and have joined the growing
+You've completed the Zero-to-DApp tutorial and have joined the growing
 DApp developer community on Blockstack. We hope you've taken the extra
 step of submitting your Animal Kingdom application to the App.co site.
 
