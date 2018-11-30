@@ -205,7 +205,7 @@ and open your browser 'http://localhost:5000'.  From the root of your new applic
 In this section, you look at the basic application generated with the `yo
 blockstack` command. The generated code contains simple authentication methods
 that allow a user to log into the browser. The main application code is located
-in the `public/app.css` file. Open this file now.
+in the `public/app.js` file. Open this file now.
 
 All of the code in the file is wrapped in an event
 listener.
