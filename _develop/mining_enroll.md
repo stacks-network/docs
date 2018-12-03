@@ -5,10 +5,10 @@ permalink: /:collection/:path.html
 # How to enroll
 
 Application mining pays developers for building decentralized applications
-(Dapps). Enrolling in app mining also makes your application eligible for
+(DApps). Enrolling in app mining also makes your application eligible for
 rewards.
 
-After you enroll, Blockstack verifies your information and your Dapp appears in
+After you enroll, Blockstack verifies your information and your DApp appears in
 the list of registered apps. You must enroll by the end of each month to be
 eligible for the following month.
 

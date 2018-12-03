@@ -23,19 +23,19 @@ Blockstack envisions a world where users control their own data, and power flows
 
 In the decentralied internet, that information stays with you and it isn't
 collected or stored by anyone. Applications that operate in the decentralized
-internet are called _decentralized applications_ or Dapps for short.
+internet are called _decentralized applications_ or DApps for short.
 
 ## What is Blockstack?
 
-Blockstack is an ecosystem to support both Dapp users and Dapp developers. For
-users, Blockstack makes software to create Blockstack identities and find Dapps.
-For developers, Blockstack develops an ecosystem of software and services that developrs can use to build Dapps.
+Blockstack is an ecosystem to support both DApp users and DApp developers. For
+users, Blockstack makes software to create Blockstack identities and find DApps.
+For developers, Blockstack develops an ecosystem of software and services that developrs can use to build DApps.
 
 Blockstack through its
 
-## How do Dapps differ applications I typically use?
+## How do DApps differ applications I typically use?
 
-Dapps differ from Web applications in two ways:
+DApps differ from Web applications in two ways:
 
 * **Users have identities not accounts**.  The user brings their identity to the
   applications; applications do not require the user to create accounts and
@@ -58,15 +58,15 @@ private key.  As long as no one gets access to your private key, no one can
 control your data or ID. When you use Blockstack, by design, your private keys
 are never sent to any remote servers.
 
-## Do Dapps uwork with a regular browser?
+## Do DApps uwork with a regular browser?
 
-Yes! Dapps run in the web browsers (Chrome, Safari, Internet Explorer, etc.) you know and love.
+Yes! DApps run in the web browsers (Chrome, Safari, Internet Explorer, etc.) you know and love.
 
 ## What is the Blockstack Browser?
 
-The Blockstack Browser is the Dapp users use to create and manage their identities and configure their data storage. The browser is also where users can go to discover and use apps using Blockstack.
+The Blockstack Browser is the DApp users use to create and manage their identities and configure their data storage. The browser is also where users can go to discover and use apps using Blockstack.
 
-The Blockstack Browser also handles login requests from Dapps that allow their users to log in with Blockstack. When a user clicks a **Log In with Blockstack** button, they are redirected to the Blockstack Browser to approve the request before being logged into the app.
+The Blockstack Browser also handles login requests from DApps that allow their users to log in with Blockstack. When a user clicks a **Log In with Blockstack** button, they are redirected to the Blockstack Browser to approve the request before being logged into the app.
 
 
 ## Are Blockstack applications usable today?

@@ -107,7 +107,7 @@ they are just that -- a tool. Sometimes blockchains are the right tool for the
 job, and sometimes they are not.
 
 
-## Dapps serve users
+## DApps serve users
 
 Fundamentally, DApps should serve users by preserving user autonomy. Developers
 should not profit from abusive features or neglectful designs.

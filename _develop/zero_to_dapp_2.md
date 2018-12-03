@@ -11,7 +11,7 @@ image: /assets/img/zero-to-dapp.png
 In this part, you learn how the Blockstack platform lowers the barriers to
 building with blockchain technology. You'll set up all the prerequisites you
 need to build a typical web DApp. Finally, you'll build and run your own version
-of the Animal Kingdom Dapp introduced in [part 1](zero_to_dapp_1.html). This
+of the Animal Kingdom DApp introduced in [part 1](zero_to_dapp_1.html). This
 part has the following topics:
 
 * TOC
