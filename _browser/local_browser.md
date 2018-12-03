@@ -6,9 +6,9 @@ permalink: /:collection/:path.html
 {:.no_toc}
 
 If all you want to do is create, manage, and fund an identity and then interact
-with Dapps, you should [use the web edition](browser-introduction.html). If you
+with DApps, you should [use the web edition](browser-introduction.html). If you
 have concerns about net censorship, heightened security concerns, or want to
-develop a Dapp yourself, you may want to download and install the browser's
+develop a DApp yourself, you may want to download and install the browser's
 client edition; though it is not required. This page explains how to install or
 uninstall the browser client on a workstation.
 
@@ -19,7 +19,7 @@ uninstall the browser client on a workstation.
 
 Remember, for most users the Blockstack Browser web application should
 suffice. You only need to install the client if you have additional, advanced
-concerns about Internet or identity. Though not required, some Dapp developrs
+concerns about Internet or identity. Though not required, some DApp developrs
 may find it useful to install the client edition.
 
 The Blockstack Browser installer is a _multiple-context_ installer. If you

@@ -2,48 +2,62 @@ To create an initial Blockstack ID, do the following:
 
 1. Open the <a href="https://browser.blockstack.org/sign-up?redirect=%2F" target="\_blank">Blockstack web application in your browser</a>.
 
-   The application prompts you for an email address.
+   The application prompts you to create or restore an ID.
 
-   ![]({{ site.baseurl }}/browser/images/create-id-0.png)
+   ![]({{ site.baseurl }}/browser/images/create-id-1.png)
 
-   Blockstack uses this email address to send you recovery information.
+2. Choose **Create new ID**.
 
-2. Enter an email address and press **Next**.
+   The browser prompts you to register a unique username in the `id.blockstack`
+   domain. This is a free Blockstack identity and the format of
+   the ID is:
+
+   _`username`_`.id.blockstack`
+
+   You'll use this initial ID to access the Blockstack Browser and other DApps.
+
+   ![]({{ site.baseurl }}/browser/images/create-id-1.png)
+
+   The **Check Availability** buttom makes sure your name is unique.
+
+2. Press **Continue** when you find an available name you like.
 
    The application prompts you to enter a password. Blockstack uses this
    password to encrypt your recovery code.  You must record and save this
    initial password.
 
-   **NOTE**:The Blockstack team cannot restore your password for you.
-
-3. Enter a password, confirm it, and press **Next**.
-
-   ![]({{ site.baseurl }}/browser/images/create-id-1.png)
-
-   The browser prompts you to register a unique username in the `id.blockstack`
-   domain. This is your identity in the decentralized internet. The format of the id
-   is:
-
-    _`username`_`.id.blockstack`
-
-    You'll use this initial ID to access the Blockstack Browser.
-
-3.  Enter a unique username and press **Check Availability**.
-
     ![]({{ site.baseurl }}/browser/images/create-id-2.png)
 
-    When you choose an ID that is available, the system responds with the following:
+   **NOTE**:The Blockstack team cannot restore your password for you.
 
-    ![]({{ site.baseurl }}/browser/images/create-id-3.png)
+3. Enter a password, confirm it, and press **Register ID**.
 
-4.  Press **Continue**.
 
-    The system prompts you to save your **recovery code**. A recovery code is a
-    sequence  of words.  These words allow you to recover an `id.blockstack`
-    that you've created.  You should store the words along with their order, for
-    example,  `#1 applied` and so forth.
+   Blockstack creates an id for you and then prompts you for an email.
 
-5. Click **I have written down all the words** when you are done.
+   ![]({{ site.baseurl }}/browser/images/create-id-3.png)
 
-   The system places you in the Blockstack browser.  You can begin exploring and
-   using Dapps.
+   Blockstack uses this email address to send you recovery information.
+
+4.  Press **Next**.
+
+    Blockstack presents you with the completed ID.  
+
+    ![]({{ site.baseurl }}/browser/images/create-id-4.png)
+
+    The system prompts you to save your **recovery code**.
+
+5. Click **Secret Recovery Key** to record your key.
+
+    ![]({{ site.baseurl }}/browser/images/create-id-4.png)
+
+    A recovery code is a sequence  of words.  These words allow you to recover
+    an `id.blockstack` that you've created.  You should store the words along
+    with their order, for example,  `#1 applied` and so forth.
+
+    ![]({{ site.baseurl }}/browser/images/create-id-4=5.png)
+
+6.  Copy your **Magic Recovery Code** and **Secret Recovery** key.
+
+
+Congratulations you have created your first ID. You are now ready to start using DApps.

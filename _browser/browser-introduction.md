@@ -6,8 +6,8 @@ permalink: /:collection/:path.html
 {:.no_toc}
 
 The Blockstack Browser gives users the ability to explore and use the
-decentralized applications (Dapps). Dapps are a new way to interact with the
-internet. Dapps give users control of their data. Data about them personally,
+decentralized applications (DApps). DApps are a new way to interact with the
+internet. DApps give users control of their data. Data about them personally,
 name, birthdate, phone number and data about what they do such as visiting a
 website or buying an item.
 
@@ -18,13 +18,13 @@ website or buying an item.
 ## Understand the Blockstack Browser
 
 Through the Blockstack browser application you can create an identity. An identity
-represents you as you interact with others through Dapps. The Blockstack
-Browser is itself, a simple Dapp. It allows you to:
+represents you as you interact with others through DApps. The Blockstack
+Browser is itself, a simple DApp. It allows you to:
 
 * create one or more identities
 * send and receive bitcoin
 * manage the storage of your profile and application data
-* find and launch Dapps
+* find and launch DApps
 
 There are two editions of the Blockstack Browser, the web edition is an
 application you access through your web browser by simply <a
@@ -33,8 +33,8 @@ address</a> in your computer's browser. You can also install the browser as a
 client application on your computer.
 
 If all you want to do is create, manage, and fund an identity and then interact
-with Dapps, you can simply use the web edition. If you have concerns about net
-censorship, heightened security concerns, or want to develop a Dapp yourself, you may
+with DApps, you can simply use the web edition. If you have concerns about net
+censorship, heightened security concerns, or want to develop a DApp yourself, you may
 want to download and install the browser's client edition.
 
 To use the web application to create an identity,
