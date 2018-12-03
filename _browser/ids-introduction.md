@@ -5,12 +5,12 @@ permalink: /:collection/:path.html
 # Get and use a Blockstack ID
 {:.no_toc}
 
-Through the Blockstack browser you can create an identity. Your identity is a
+Through the Blockstack Browser you can create an identity. Your identity is a
 point of contact as you interact with others through DApps. Others may be
 individual users or companies or software. Unless you allow it, none of these
 others have access to anything other than your identity label, for example
-`moxiegirl.id.blockstack`. To learn more about you, others must ask and you can
-choose to share -- or not.
+`moxiegirl.id.blockstack`. Typically, others must ask to learn more about you,
+and you can choose to share &ndash; or not.
 
 This document explains one type of identity, the Blockstack ID. You learn how to
 create them, as well as when and how to restore them. It contains the following sections:
@@ -21,16 +21,16 @@ create them, as well as when and how to restore them. It contains the following 
 
 ## Understand how identities function in the Blockstack Ecosystem
 
-In this section you learn about identity so you can use it securely.
+In this section, you learn about identity so you can use it securely.
 
 ### Why is an identity not an account
 
-In the internet of today, an account you create for an applications stays with
+On the internet of today, an account you create for an applications stays with
 the company providing that app. This company keeps data you enter about yourself
 and data about how you use their application. When you close your account, the
 company retains that data.
 
-In decentralized, blockchain software, an _identity_ is a combination of
+In decentralized, blockchain software, _identity_ is a combination of
 username and key. The data associated with that identity stays with it, this
 means applications or central authorities do not keep our control access to your
 data.
@@ -42,17 +42,17 @@ information about you.
 ### How do you get an identity
 
 Think of the ID as a form of identification, like a drivers license.  Like
-drivers' licenses, each identity is unique but this license identifies you on
+drivers' licenses, each identity is unique, but this license identifies you on
 the virtual internet highway. An identity is created through a registrar of which there are many.
 
 For DApps in the Blockstack Ecosystem,  Blockstack maintains an identity
 registrar. The Blockstack Browser is Blockstack's DApp for creating and managing
 identities in the Blockstack registration space.  An example of a registered
 Blockstack ID is the `larry.id` ID. The `.id` designation is required, the
-`larry` porition is a unique string.
+`larry` portion is a unique string.
 
 The Blockstack Browser allows new users to create free IDs. These free IDs have
-include the word blockstack in the ID, like this `moxiegirl.id.blockstack`. The
+included the word `blockstack` in the ID, like this `moxiegirl.id.blockstack`. The
 additional `blockstack` portion of the name is called a _namespace_. It just
 means all the names belong to a particular entity. You don't have to use a free
 `id.blockstack` identity. You can also buy an identity that just has a unique
@@ -65,13 +65,13 @@ same reason you have a work and home email.
 
 ### What is a key?
 
-IDs have keys. These key unlock your identity like opening a door to a private
-home. You should be keep your ID secret and in a safe place. When you create an
+IDs have keys. These key unlock your identity like opening the door to a private
+home. You should keep your ID secret and in a safe place. When you create an
 ID, Blocktack creates the key for you. When you create an ID, Blockstack sends
 you an email with a recovery code you can use to view your key.
 
 * _secret recovery key_ which is a sequence of words `applied binge crisp pictorial fiery dancing agreeable frogs light finish ping apple`
-* _recovery code_ an encrypted string, for example `36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5W1P0BwXxSTazJsUjOAmC55rFUWINqDqGccLio0iwzGclAhaHGZQ5M52`
+* _recovery code_ an encrypted string, for example, `36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5W1P0BwXxSTazJsUjOAmC55rFUWINqDqGccLio0iwzGclAhaHGZQ5M52`
 
 You receive the recovery code only once. When you get this email, You should
 **View Secret Recovery Key** immediately and save to a secure location such as a
@@ -79,7 +79,7 @@ password manager.
 
 
 <div class="uk-card uk-card-default uk-card-body">
-<p>When Blockstack registers your human readable ID and the recovery key. _You_ must
+<p>When Blockstack registers your human-readable ID and the recovery key. _You_ must
 record the:
 </p>
 <ul>
@@ -97,7 +97,7 @@ You can use your Blockstack ID with every DApp in the Blockstack Ecosystem.  To
 create an ID, you use a DApp called the Blockstack Browser. Any DApp data you
 create is linked to this ID.
 
-For example, if you add a picture to a DApp, the picture appears in the DApp but
+For example, if you add a picture to a DApp, the picture appears in the DApp, but
 the picture's bits and bytes are stored in your personal storage. When you log
 into another DApp with your ID, that application can ask for access to your
 storage.
@@ -147,7 +147,7 @@ not accessible by anyone.
 
 5. Enter an email and press **Next**.
 
-   The system prompts you for an password and its confirmation. This password
+   The system prompts you for a password and its confirmation. This password
    can be one you entered previously or an entirely new one. Write this password
    down. You can use the password during your current Blockstack browser
    interaction  to reveal your keychain or change your password. Blockstack does
@@ -184,8 +184,8 @@ not accessible by anyone.
 
 5. Enter an email and press **Next**.
 
-   The system prompts you for an password. This must be the password entered
-   when you first created your identity. If you have forgetten this passowrd,
+   The system prompts you for a password. This must be the password entered
+   when you first created your identity. If you have forgotten this password,
    Blockstack cannot provide it to you. Instead, you must switch to using your
    recovery key rather than your code to restore your identity.
 
