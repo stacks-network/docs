@@ -58,7 +58,7 @@ To add an app, do the following:
         <th>Description</th>
       </tr>
       <tr>
-        <td><strong>Dapp Name</strong></td>
+        <td><strong>DApp Name</strong></td>
         <td>Name of your sample. Animal Kingdom or, if you renamed it, the name you gave your application.</td>
       </tr>
       <tr>
@@ -71,7 +71,7 @@ To add an app, do the following:
       </tr>
       <tr>
         <td><strong>Contact Email</strong></td>
-        <td>A valid email address. This is the email where we will send you instructions for getting your Zero to Dapp t-shirt.</td>
+        <td>A valid email address. This is the email where we will send you instructions for getting your Zero to DApp t-shirt.</td>
       </tr>
       <tr>
         <td><strong>Image URL</strong></td>
@@ -150,7 +150,7 @@ DApp developer community on Blockstack. We hope you've taken the extra
 step of submitting your Animal Kingdom application to the App.co site.
 
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-class="twitter-share-button" data-size="large" data-text="I'm the ruler of my Animal Kingdom. Just submitted my Blockstack sample DApp to App.co @TheDappStore! Dapp on people." data-hashtags="blockstack,
+class="twitter-share-button" data-size="large" data-text="I'm the ruler of my Animal Kingdom. Just submitted my Blockstack sample DApp to App.co @TheDAppStore! DApp on people." data-hashtags="blockstack,
 blockchain, blockchainnopain, blockchainnopainblockstack"
 data-show-count="true">Tweet your work!</a><script async
 src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
