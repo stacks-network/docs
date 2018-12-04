@@ -118,9 +118,10 @@ companies that grew the cloud computing market.
 
 <ul>
 <li>Implement Blockstack authentication</li>
-<li>Store data in a Gaia storage hub</li>
 <li>Invite registration and use by the general public</li>
 </ul>
+
+<p>Storing data in a Gaia storage hub is optional. Potentially in the future it may be required.</p>
 
 <p>As you work through this Zero-to-DApp tutorial, you’ll build and deploy a sample
 application that meets these requirements. While the application you build won't
