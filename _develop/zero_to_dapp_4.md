@@ -99,7 +99,7 @@ To add an app, do the following:
       </tr>
       <tr>
         <td><strong>Storage</strong></td>
-        <td>Choose Gaia.</td>
+        <td>Choose Gaia if you are using it.</td>
       </tr>
       <tr>
         <td><strong>Authentication</strong></td>
