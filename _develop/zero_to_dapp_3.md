@@ -177,8 +177,8 @@ explorer</a> and search for your ID:
 <img src="images/explorer.png" alt="">
 
 <div class="uk-card uk-card-default uk-card-body">
-<h5>App Mining Requirement: Gaia Storage</h5>
-<p>To participate in application mining your application must make use of Gaia storage.
+<h5>App Mining Optional: Gaia Storage</h5>
+<p>Use of Gaia storage is not required for application mining. Keep in mind, using Gaia may make data storage easier as it is designed to work in the Blockstack Ecosystem.
 </p>
 </div>
 
