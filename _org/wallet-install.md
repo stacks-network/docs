@@ -3,101 +3,95 @@ layout: org
 permalink: /:collection/:path.html
 ---
 # Install the Stacks Wallet software
-{:.no_toc}
+
 
 You use the Stacks Wallet software client alone or with a hardware wallet to
-manage your Stacks tokens. On this page, you learn how to install the Stacks
-Software wallet. This page contains the following:
+generate and manage the addresses for storing your Stacks token. On this page,
+you learn how to install the Stacks Software wallet. This page contains the
+following:
 
 * TOC
 {:toc}
 
 If you have already installed the latest Stacks wallet, see [Use the Stacks
-Wallet software](wallet-use.html) in this documentation instead.
+Wallet software](wallet-use.html) instead.
 
 
-##  Before you start
+{% include warning.html content="During you wallet download, you are at risk of
+a man-in-the-middle attack (as an example) from hackers interested in stealing
+your tokens or your other information.  To protect yourself from this type of
+attack, verify your downloaded wallet software as detailed in the installation
+instructions below. Verification confirms that you received the software signed
+by Blockstack PBC." %}
 
-If Trezor, install Trezor bridge https://wallet.trezor.io/data/bridge/latest/index.html
+
+## Mac Installation
+
+1. Select the **MacOS Download** button <a href="https://blockstack.org/wallet/" target="\_blank">on this page</a>.
+
+   This button downloads the software to your computer.
+
+2. Open a terminal window.
+
+   To find the terminal software, enter `terminal` into the Spotlight search.
+
+   ![](images/mac-terminal.png)
+
+3. In the terminal window, enter the command to change directory to the folder where you downloaded the wallet software.
+
+   The default location is the **Downloads** folder, type the following into the terminal and press RETURN on your keyboard.
+
+   ```
+   cd ~/Downloads
+   ```
+
+4. In the terminal window, type the following Command
+
+    ```
+    shasum -a 512 macos-stacks-wallet.dmg
+    ```
+
+    ![](images/mac-shasum.png)
+
+5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published on <a href="https://blockstack.org/wallet/" target="\_blank">on this page</a>.
+
 
 
 ## Windows Installation
 
+1. Select the **Windows Download** button <a href="https://blockstack.org/wallet/" target="\_blank">on this page</a>.
 
-## Download and check the download
+   This button downloads the software to your computer.
 
-1. Select the download button this page.
-2. Download the software which is packaged in a Zip file.
+2. Open a command prompt.
 
-## Verify the download was secure
+   To find the command prompt software, enter `command` into the Start menu.
 
-During you wallet download, you are at risk of a man-in-the-middle attack (as an
-example) from hackers interested in stealing your tokens or your other
-information.  To protect yourself from this type of attack, you should verify
-your downloaded wallet software before you install it. Verification confirms
-that you received the software signed by Blockstack PBC.
+   ![](images/windows-cmd.png)
 
-1. Open command prompt.
+3. In the command prompt window, enter the command to change directory to the folder where you downloaded the wallet software.
 
-   You can find it by typing command into the Start menu
+   The default location is the **Downloads** folder, type the following at the command prompt and press RETURN on your keyboard.
 
-2. Change to the directory your wallet downloaded to by running cd <directory>
+   ```
+   cd <You-User-Directory>/Downloads
+   ```
 
-    By default that’s <You-User-Directory>/Downloads , so you can run cd Downloads
+4. In the command prompt window, type the following at the command prompt.
 
-3. Run the Windows checksum utility by running:
-
+    ```
     certUtil -hashfile windows-stacks-wallet.exe SHA512
+    ```
 
-4. Verify that the resulting hash is the same as the latest hash published on on https://blockstack.org/wallet
+    ![](images/windows-certutil.png)
 
-
-
-## Mac OSX Installation
-
-
-## Download and check the download
-
-1. Select the download button this page.
-2. Download the software which is packaged in a Zip file.
-3. Unzip the zip file. ?Is it a zip
-
-## Verify and then start the wallet
-
-During you wallet download, you are at risk of a man-in-the-middle attack (as an
-example) from hackers interested in stealing your tokens or your other
-information.  To protect yourself from this type of attack, you should verify
-your downloaded wallet software before you install it. Verification confirms
-that you received the software signed by Blockstack PBC.
-
-1. From your Mac desktop, click on the magnifying glass in the top, right corner of your screen.
-
-   ![Spotlight search launch](images/search-start.png)
-
-   The Spotlight search bar appears.
-
-2. Enter terminal in the search field.
-
-   ![Terminal](images/search-terminal.png)
-
-3. Select the **Terminal.app** to launch it.
-4. Change to the directory in Terminal to the directory your wallet downloaded to
-
-    The default directory is usually `/Downloads` so type cd ~/Downloads and press return
-
-5. Run the checksum utility shasum by typing the following command and pressing return:
-
-    `shasum -a 512 macos-stacks-wallet.dmg`
-
-6. Verify that the resulting hash is the same as the latest hash published on on https://blockstack.org/wallet
-
-7. Run the dmg
+5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published on <a href="https://blockstack.org/wallet/" target="\_blank">on this page</a>.
 
 
+## Before you start using the Stacks Wallet software
 
-## Before you start
-
-You link your wallet with a Coinlist or other account with access to Bitcoin. Before you begin, make sure that
-you have [an account with CoinList](https://coinlist.co/register). You must
-create this account yourself. You use this account to load very small fractions
-of Bitcoin to fuel your wallet transactions.
+You fuel your wallet transactions with Bitcoin via a Coinlist or other account.
+Before you begin, make sure that you have [an account with
+CoinList](https://coinlist.co/register). You must create this account yourself.
+You use this account to load very small fractions of Bitcoin to fuel your wallet
+transactions.
