@@ -154,42 +154,48 @@ transaction is recorded in the blockchain. When the transaction is complete, you
 can see a receipt for the transaction in Software Wallet in watch-only mode or
 connected to a hardware wallet.
 
+## Top up Bitcoin gas
 
-## Reset the wallet
+You require very small fractiosn of Bitcoin (.00001) to send Stacks with the wallet.
 
-Resetting a wallet clears all your data from the Stacks wallet and returns the
-wallet to its original state.
+{% include warning.html content="Very small amounts of Bitcoin are all you need
+to fuel transactions. <b>Never send an entire coin to your Stacks Wallet. Amounts
+such as .0002 BTC are plenty</b>." %}
 
-* If you entered a Stacks address, resetting clears the address from the Stacks wallet.
-* If you connected to a hardware wallet, resetting removes the connection to the hardware wallet.
+The Stacks Software wallet uses very small amounts of Bitcoin to pay fees for
+transactions. You can only receive Bitcoin with the wallet, you cannot send it
+from the Stacks Wallet. You need an account with Coinbase or similar exchange to
+buy Bitcoin or send Bitcoin.
 
-Reseting the wallet does nothing to your addresses or their associated balances.
-They are maintained.
+If you attempt to send Stacks with your wallet and you do not have enough
+Bitcoin to fuel the transaction, you see this dialog:
 
-Once you reset the wallet, you have to start over from the *Terms of Use*. If
-you do not restart the wallet, you can simple close it.
+![](images/not-enough.png)
 
+ To increase your Bitcoin for transactions, do the following:
 
-1. Click the <span class="uk-margin-small-center" uk-icon="cog"></span>
- (settings icon) in the upper right corner of the wallet.
+ 1. Click the <span class="uk-margin-small-center" uk-icon="cog"></span>
+  (settings icon) in the upper right corner of the wallet.
 
-   The system opens the **Settings** dialog.
+    The system opens the **Settings** dialog.
 
-   ![](images/settings.png)
+    ![](images/settings.png)
 
-   The **Top Up** button is only visible when you have connected the Stacks
-   Wallet to a hardware wallet.
+    This dialog shows you how much BTC you currently have in your account.
 
-2. Select **Reset Wallet**.
+2. Select **Top up**.
 
-   System asks for confirmation. If, for some reason, you want to stop the reset
-   you would press <span class="uk-margin-small-center" uk-icon="close"></span> (right corner) or **Close**.
+   The systems displays the **Top Up** dialog with a Bitcoin address.
 
-3. Select **Are you sure?** to complete the reset.
+3. Record the address.
 
-   The wallet displays the **Terms of Use**. You can accept to enter the wallet
-   again or choose **Quit**.
+4. Go to your Coinbase or similar account.
+5. Send Bitcoin to the address presented by the Stacks Wallet.
 
+   ![](images/gas-up-cb.gif)
+
+Review your Stacks Wallet settings to see the increase in your balance. Your
+transaction history also shows any Bitcoin sent to your wallet.
 
 ## Send stacks
 
@@ -243,43 +249,39 @@ transactions.
    Select **Refresh** if you don't immediately see the transaction in your
    history.
 
-## Top up Bitcoin gas
 
-{% include warning.html content="Very small amounts of Bitcoin are all you need
-to fuel transactions. <b>Never send an entire coin to your Stacks Wallet. Amounts
-such as .0002 BTC are plenty</b>." %}
 
-The Stacks Software wallet uses very small amounts of Bitcoin to pay fees for
-transactions. You can only receive Bitcoin with the wallet, you cannot send it
-from the Stacks Wallet. You need an account with Coinbase or similar exchange to
-buy Bitcoin or send it.
+## Reset the wallet
 
-If you attempt to send Stacks with your wallet and you do not have enough
-Bitcoin to fuel the transaction, you see this dialog:
+Resetting a wallet clears all your data from the Stacks wallet and returns the
+wallet to its original state.
 
-![](images/not-enough.png)
+* If you entered a Stacks address, resetting clears the address from the Stacks wallet.
+* If you connected to a hardware wallet, resetting removes the connection to the hardware wallet.
 
- To increase your Bitcoin for transactions, do the following:
+Reseting the wallet does nothing to your addresses or their associated balances.
+They are maintained.
 
- 1. Click the <span class="uk-margin-small-center" uk-icon="cog"></span>
-  (settings icon) in the upper right corner of the wallet.
+Once you reset the wallet, you have to start over from the *Terms of Use*. If
+you do not restart the wallet, you can simple close it.
 
-    The system opens the **Settings** dialog.
 
-    ![](images/settings.png)
+1. Click the <span class="uk-margin-small-center" uk-icon="cog"></span>
+ (settings icon) in the upper right corner of the wallet.
 
-    This dialog shows you how much BTC you currently have in your account.
+   The system opens the **Settings** dialog.
 
-2. Select **Top up**.
+   ![](images/settings.png)
 
-   The systems displays the **Top Up** dialog with a Bitcoin address.
+   The **Top Up** button is only visible when you have connected the Stacks
+   Wallet to a hardware wallet.
 
-3. Record the address.
+2. Select **Reset Wallet**.
 
-4. Go to your Coinbase or similar account.
-5. Send Bitcoin to the address presented by the Stacks Wallet.
+   System asks for confirmation. If, for some reason, you want to stop the reset
+   you would press <span class="uk-margin-small-center" uk-icon="close"></span> (right corner) or **Close**.
 
-   ![](images/gas-up-cb.gif)
+3. Select **Are you sure?** to complete the reset.
 
-Review your Stacks Wallet settings to see the increase in your balance. Your
-transaction history also shows any Bitcoin sent to your wallet.
+   The wallet displays the **Terms of Use**. You can accept to enter the wallet
+   again or choose **Quit**.

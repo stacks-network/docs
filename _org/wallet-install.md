@@ -87,11 +87,29 @@ by Blockstack PBC." %}
 
 5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published on <a href="https://blockstack.org/wallet/" target="\_blank">on this page</a>.
 
+## Additional software requirements
 
-## Before you start using the Stacks Wallet software
+If you wish to use the Stacks Wallet software to send and receive Stacks, you
+need to ensure you also have a hardware wallet and a Bitcoin account.
 
-You fuel your wallet transactions with Bitcoin via a Coinlist or other account.
-Before you begin, make sure that you have [an account with
-CoinList](https://coinlist.co/register). You must create this account yourself.
-You use this account to load very small fractions of Bitcoin to fuel your wallet
-transactions.
+### Hardware wallet
+
+If you have a paper wallet or a custodial wallet, you should setup. You can use
+any of these hardware wallets with the Stacks wallet:
+
+* <a href="https://trezor.io/" target="\_blank">Trezor</a> One
+* Trezor Model T
+* <a href="https://www.ledger.com/" target="\_blank">Ledger</a> Nano S
+* Ledger Bluea hardware wallet.
+
+For information on setting up a hardware wallet, refer to the vendor's
+documentation. We cannot help you set up your hardware wallet.
+
+
+### Bitcoin account for fuel
+
+You fuel your Stacks wallet transactions with very small fractions of Bitcoin.
+For example, .00025 Bitcoin can fuel several transactions. You can acquire this
+Bitcoin and send it to the Stacks Wallet via a Coinbase or other Bitcoin
+account. Before you begin, make sure that you have such an account. You must
+create this account yourself.
