@@ -7,6 +7,7 @@
   docs:
   - org/wallet-intro
   - org/tokenholders
+  - org/voucherholder
 - title: Whitepapers
   docs:
   - org/whitepaper-tokensale
