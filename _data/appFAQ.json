@@ -132,7 +132,7 @@
         "question":"What are examples of any quantitative metrics that may be shared with app reviewers?",
         "answer": "<p>Qualitative meticrs are metrics
         that evaluate elements such as engagement, DAU/MAU ratios
-        etc from the reviewed apps? Blockstack plans to incorporate metrics based
+        etc from the reviewed apps. Blockstack plans to incorporate metrics based
         ranking. However, before we do, any mechanism must thoughtfully incorporate the
         digital privacy rights of Blockstack users, and provide information in a way
         that cannot be gamed.</p> "
