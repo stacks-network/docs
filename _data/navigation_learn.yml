@@ -29,6 +29,6 @@
 - title: Reference
   docs:
   - core/faq_developer
-  - common/mining_faq
+  - develop/appMiningFAQ
   - common/javascript_ref
   - common/core_ref
