@@ -111,6 +111,7 @@ titles_from_headings:
 
 include:
   - _redirects
+  - _data
 exclude:
   - package-lock.json
   - package.json
