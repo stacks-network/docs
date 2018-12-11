@@ -2,7 +2,7 @@
 layout: learn
 permalink: /:collection/:path.html
 ---
-# How to enroll
+# How to enroll in App Mining
 
 Application mining pays developers for building decentralized applications
 (DApps). Enrolling in app mining also makes your application eligible for
