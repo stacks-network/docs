@@ -1,6 +1,7 @@
 - title: Introduction
 - docs:
   - develop/dapp_principles
+  - core/faq_developer
 
 - title: Try it! Zero to DApp
   docs:
@@ -25,10 +26,10 @@
   docs:
   - develop/mining_intro
   - develop/mining_enroll
+  - develop/appMiningFAQ
+
 
 - title: Reference
   docs:
-  - core/faq_developer
-  - develop/appMiningFAQ
   - common/javascript_ref
   - common/core_ref
