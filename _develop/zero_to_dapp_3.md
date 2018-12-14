@@ -464,11 +464,16 @@ Blockstack kingdom.
 5. When you receive the email, login into the Blockstack Animal kingdom to see your kingdom under **Other Kingdoms**.
 
 
-## Next Steps
+## Next steps (and a cool tshirt!)
 {:.no_toc}
 
-Well, you have produced your very first DApp. Congratulations! If you have a
-twitter account, why not tell some folks?
+
+In the next part, you learn about how application mining can fund your DApp
+development efforts. And you will take a copule of minutes to add your Animal Kingdom [DApp to App.co
+&mdash; the Universal App store](zero_to_dapp_4.html). Completing this step earns you a
+limited edition t-shirt.
+
+If you have a twitter account, why not tell some folks about your progress?
 
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
 class="twitter-share-button" data-size="large" data-text="I just built a DApp
@@ -476,8 +481,3 @@ using @blockstack's  Zero-to-DApp tutorial! " data-hashtags="blockstack,
 blockchain, blockchainnopain, blockchainnopainblockstack"
 data-show-count="true">Tweet your work!</a><script async
 src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-In the next part, you learn about how application mining can fund your DApp
-development efforts. And you will add your Animal Kingdom [DApp to App.co
-&mdash; the Universal App store](zero_to_dapp_4.html) and in doing so, earn a
-limited edition t-shirt.
