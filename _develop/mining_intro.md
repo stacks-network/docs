@@ -2,7 +2,7 @@
 layout: learn
 permalink: /:collection/:path.html
 ---
-# Understand app mining
+# Understand App Mining
 
 {% include intro-appmining.md %}
 

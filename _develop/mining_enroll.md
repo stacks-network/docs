@@ -5,7 +5,7 @@ permalink: /:collection/:path.html
 # How to enroll in App Mining
 
 Application mining pays developers for building decentralized applications
-(DApps). Enrolling in app mining also makes your application eligible for
+(DApps). Enrolling in App Mining also makes your application eligible for
 rewards.
 
 * TOC
@@ -52,7 +52,7 @@ materials** for your application to be complete.
   </tr>
   <tr>
     <td><strong>BTC address</strong></td>
-    <td>The payout for app mining is currently Bitcoin.  If you win, this is the address we will send your payout to. The address you provide will be visible in any related transactions via the blockchain.</td>
+    <td>The payout for App Mining is currently Bitcoin.  If you win, this is the address we will send your payout to. The address you provide will be visible in any related transactions via the blockchain.</td>
     <td>Email to: <a href="mailto:mining@app.co" target="\_blank">mining@app.co</a></td>
   </tr>
   <tr>
