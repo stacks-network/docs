@@ -1,7 +1,7 @@
 {
    "faqs":[
       {
-         "question":"What is app mining?",
+         "question":"What is App Mining?",
          "answer":"<p>Traditionally the term mining in cryptocurrency refers to the process of
 				 contributing compute resources to the network and earning a reward. In the
 				 Blockstack Ecosystem, instead of just mining through computation, developers
@@ -14,7 +14,7 @@
 				 December 1st 2018, with 34 Blockstack Apps enrolled. A previous alpha run in Oct
 				 2018 included 17 Blockstack apps. App mining is a new mining model that we
 				 expect will evolve and improve over time. We look forward to feedback from our
-				 community regarding the app mining process and program. </p>"
+				 community regarding the App Mining process and program. </p>"
       },
       {
         "question":"How much can I earn and how are rewards distributed? ",
@@ -25,7 +25,7 @@
         The payouts are administered by Blockstack PBC and facilitated by App.co.</p>"
       },
       {
-        "question":"How is app mining different from cryptocurrency mining?",
+        "question":"How is App Mining different from cryptocurrency mining?",
         "answer":"<p>Traditionally the term mining in cryptocurrency refers to the process of
         contributing compute resources to the network and earning a distributed of new
         tokens as a reward. On the Stacks blockchain, developers can “mine” by
@@ -33,7 +33,7 @@
         </p>"
       },
       {
-        "question":"What qualifies my app to compete in app mining?",
+        "question":"What qualifies my app to compete in App Mining?",
         "answer": "<p>Your app should integrate Blockstack authentication for logging into your app.
         Your finished app should be available to the public for use. In the future, App
         Mining may reward apps that have taken steps to further decentralize, such as
@@ -41,11 +41,11 @@
         System.</p>"
       },
       {
-        "question":"Does my app have to be listed on App.co to enter app mining?",
+        "question":"Does my app have to be listed on App.co to enter App Mining?",
         "answer": "<p>Yes, it does.</p>"
       },
       {
-        "question":"How do I submit my application for app mining?",
+        "question":"How do I submit my application for App Mining?",
         "answer": "<p>Complete <a href='https://app.co/mining#'>the submission form on
         App.co</a>.  We suggest registering several days before the ranking
         deadline — our team needs to verify your details to ensure your app
@@ -54,9 +54,9 @@
 
       },
       {
-        "question":"How often can I submit my application for app mining?",
+        "question":"How often can I submit my application for App Mining?",
         "answer": "<p>You need only to submit your application once.  Each month after your
-        submission, your app is competing in app mining.  </p>"
+        submission, your app is competing in App Mining.  </p>"
       },
       {
         "question":"Does my code repository need to be public?",
@@ -80,11 +80,11 @@
         entities that have a proprietary methodology that helps them make objective
         judgements for why a certain app might be better than others.  We strive to
         engage a diverse coalition of app reviewers with the goal of making application
-        ranking objective and resilient to abuse.  </p> <p>At the time of our app mining
+        ranking objective and resilient to abuse.  </p> <p>At the time of our App Mining
         alpha (October 2018), the reviewers were: Product Hunt and Democracy Earth (who
         uses software to collect votes by Stacks token holders).  Future reviewers could
         expand to community election. Please see our forum to ask questions or make
-        suggestions for app mining. </p>"
+        suggestions for App Mining. </p>"
       },
       {
         "question":"How are apps ranked?",
@@ -124,7 +124,7 @@
       },
       {
         "question":"What’s the incentive for user voting? ",
-        "answer": "<p>Voters in the app mining ecosystem are currently Stacks token holders with
+        "answer": "<p>Voters in the App Mining ecosystem are currently Stacks token holders with
         incentive to strategically allocate resources in the ecosystem to apps they
         consider highly valuable.  </p>"
       },
@@ -138,7 +138,7 @@
         that cannot be gamed.</p> "
       },
       {
-        "question":"Is app mining Decentralized?",
+        "question":"Is App Mining Decentralized?",
         "answer": "<p>Given the pioneering nature of the program, we are being careful and starting
         in a centralized fashion that allows for necessary diligence. We don’t want to
         bake in assumptions that have not been validated. The downside of this

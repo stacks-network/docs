@@ -32,7 +32,7 @@ This page assumes you have customized and deployed your Animal Kingdom as
 App.co accepts applications from all decentralized protocols such as Ethereum,
 Blockstack, and many others. When you add an app, it is not automatically
 eligible for application mining, you must submit it using an another procedure.
-You can also submit an application for app mining but not add it to App.co.
+You can also submit an application for App Mining but not add it to App.co.
 
 In this section, you add your Animal Kingdom to the **Blockstack Sample
 Application** category on App.co.  Adding your Animal Kingdom app to this
@@ -117,7 +117,7 @@ To add an app, do the following:
 Only applications that integrate Blockstack authentication, use GAI storage, and
 which are accessible to review can participate in application mining.
 
-To submit an application for app mining, do the follwoing:
+To submit an application for App Mining, do the follwoing:
 
 1. Go to select <a href="https://app.co/mining" target="\_blank">App Mining</a> from the App.co menu.
 2. Select the **Submit your app for qualification** button.
@@ -125,14 +125,14 @@ To submit an application for app mining, do the follwoing:
 
 ## How Blockstack helps App Miners market
 
-Blockstack reviews each submission to app mining. Through this contact, Blockstack helps
+Blockstack reviews each submission to App Mining. Through this contact, Blockstack helps
 developers refine business models and facilitating interactions with investors.
 Two areas that Blockstack assists are pre-funding and pitching.
 
 * **Pre-funding.** Directed toward developers that have a proof of concept of either a blockchain application or an integration  with Blockstack’s technology. Blockstack helps with sourcing of developers and designers. We can also help with direct access to our core team members that can help you refine or optimize your product.
 * **Pitching investors.**  Blockstack can help you with access to an extensive investor community. Prior to arranging meetings we can give you resources to refine and craft your pitch for the blockchain market.
 
-In addition to app mining, Blockstack offers both a community reward program.
+In addition to App Mining, Blockstack offers both a community reward program.
 Community rewards give users the ability to earn tokens for accomplishing tasks.
 For example, some of the latest ways user can earn money include:
 
