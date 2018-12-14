@@ -22,7 +22,7 @@
   - android/tutorial
   - ios/tutorial
 
-- title: Application mining
+- title: App Mining
   docs:
   - develop/mining_intro
   - develop/mining_enroll
