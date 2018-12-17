@@ -67,7 +67,7 @@ To install the command line:
 
 1. <a href="https://github.com/blockstack/cli-blockstack" target="\_blank">Download or `git clone` the command line repository code</a>.  
 
-   Download or cloning the repo creates a `cli-blockstack` repository on your system.
+   Downloading or cloning the repo creates a `cli-blockstack` repository on your system.
 
 2. Change directory into the `cli-blockstack` directory.
 
