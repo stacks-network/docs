@@ -9,7 +9,7 @@
   docs:
   - core/naming/tutorial_subdomains
   - core/naming/search
-
+  - core/faq_technical
 
 - title: How to use BNS
   docs:
@@ -29,7 +29,7 @@
 
 - title: Reference
   docs:
+  - core/cmdLineRef
   - common/javascript_ref
   - common/core_ref
   - core/wire-format
-  - core/faq_technical
