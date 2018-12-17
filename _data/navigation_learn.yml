@@ -32,4 +32,5 @@
 - title: Reference
   docs:
   - common/javascript_ref
+  - develop/cliDocs
   - common/core_ref
