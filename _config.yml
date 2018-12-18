@@ -143,6 +143,9 @@ exclude:
   - _core/resolver.md
   - _core/search.md
   - _core/subdomain.md
+  - _data/*.yml
+  - _data/*.csv
+  - _data/cliRef.json
 
 sass:
   style:            compressed
