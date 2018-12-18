@@ -34,7 +34,7 @@ you'll need the command line to run your project.
 
 ## Understand the Animal Kingdom application code
 
-The Animal Kingdomw application has two major components, React and Blockstack. React is used to
+The Animal Kingdom application has two major components, React and Blockstack. React is used to
 build all the web components and interactions. You could replace React with any
 framework that you like; Blockstack is web framework agnostic. This section does
 not explain the React in any detail; The discussion focuses on the Blockstack
@@ -110,7 +110,7 @@ whether the user already has an existing session in the Blockstack Browser.
 
 Signing in with an identity is the means by which the user grants the DApp
 access. Access means the DApp can read the user profile and read/write user data
-for the DApp. Data is encrypted at a unique URL on a GAI storage hub.
+for the DApp. Data is encrypted at a unique URL on a GAIA storage hub.
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5>App Mining Requirement: Blockstack Authentication</h5>
@@ -461,7 +461,7 @@ Blockstack kingdom.
 
    The Blockstack team will add your Netlify kingdom to ours. When we do that, we will notify you on the issue and you'll also get an email.
 
-5. When you receive the email, login into the Blockstack Animal kingdom to see your kingdom under **Other Kingdoms**.
+5. When you receive the email, login to the Blockstack Animal kingdom to see your kingdom under **Other Kingdoms**.
 
 
 ## Next steps (and a cool tshirt!)
@@ -469,7 +469,7 @@ Blockstack kingdom.
 
 
 In the next part, you learn about how application mining can fund your DApp
-development efforts. And you will take a copule of minutes to add your Animal Kingdom [DApp to App.co
+development efforts. And you will take a couple of minutes to add your Animal Kingdom [DApp to App.co
 &mdash; the Universal App store](zero_to_dapp_4.html). Completing this step earns you a
 limited edition t-shirt.
 
