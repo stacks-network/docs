@@ -152,27 +152,27 @@ In this section, you copy the code for Animal Kingdom to your workstation.
 
 1. In your browser (Chrome, Safari, etc), <a href="https://github.com/blockstack/animal-kingdom" target="\_blank">open the Animal Kingdom code repository</a>.
 
-  The AnimalKingdom code is kept in a public GitHub repository.
+   The AnimalKingdom code is kept in a public GitHub repository.
 
 2. Click the **Clone or download** button.
 
-  If you have a GitHub account you can choose to clone the original repository
-  or fork it and then clone it. These instructions assume you are downloading
-  the code.
+   If you have a GitHub account you can choose to clone the original repository
+   or fork it and then clone it. These instructions assume you are downloading
+   the code.
 
 3. Choose the **Download ZIP** for Animal Kingdom.
 
-  <img src="images/kingdom-copy.png" alt="">
+   <img src="images/kingdom-copy.png" alt="">
 
-3. Check your download directory for the `animal-kingdom-master.zip` file.
-4. Copy the download zip file to a directory where you keep code projects.
-4. Unzip the file.
+4. Check your download directory for the `animal-kingdom-master.zip` file.
+5. Copy the download zip file to a directory where you keep code projects.
+6. Unzip the file.
 
    <img src="images/kingdom-download.png" alt="">
 
    After unzipping the file you should have the `animal-kingdom-master` directory.
 
-5. In your terminal change directory into the top of the directory by entering:
+7. In your terminal change directory into the top of the directory by entering:
 
    ```bash
    $ cd animal-kingdom-master
@@ -185,7 +185,7 @@ In this section, you copy the code for Animal Kingdom to your workstation.
    /Users/manthony/animal-kingdom-master
    ```
 
-6. Take a minute review the files and subdirectories in your Animal Kingdom project.
+8. Take a minute review the files and subdirectories in your Animal Kingdom project.
 
    Use the `ls` command to list directory contents.
 
