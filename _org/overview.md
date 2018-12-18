@@ -32,7 +32,7 @@ developers to:
 
 - Access the Blockstack’s Naming System (BNS). The system has over 70K users that can immediately start using your application.
 
-- Scale quickly to large, performant production systems. Blockstack’s GAIA storage system gives fast, scalable performance on a level comparable to Amazon S3, Google Drive, or Azure.
+- Scale quickly to large, performant production systems. Blockstack’s Gaia storage system gives fast, scalable performance on a level comparable to Amazon S3, Google Drive, or Azure.
 
 Using Blockstack’s technology developers can start building immediately on the
 blockchain with the knowledge you have today. You won’t need to spend time or
