@@ -181,7 +181,7 @@ The following table describes the key interactions and screens in the DApp.
     </div></td>
   <td><p>First-time visitors to a kingdom are prompted to create an animal persona and
   a territory to rule. Once they make a selection, users click <strong>Done</strong> to create a
-  kingdom to rule. Behind the scenes, the data about the user's selection is stored in the user's GAIA hub.
+  kingdom to rule. Behind the scenes, the data about the user's selection is stored in the user's Gaia hub.
 </p>
   </td>
 </tr>

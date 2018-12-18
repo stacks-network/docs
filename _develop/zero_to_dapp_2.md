@@ -33,7 +33,7 @@ technology platform that allows you to:
 * **Build your application in any Javascript framework.**  You can use the blockchain without learning a new programming language or extending your application stack. Currently, Blockstack supports a react generator for web applications and SDKs for both iOS and Android.
 * **Use well-defined REST endpoints that simplify and encapsulate the blockchain backend.** The Blockstack Javascript API reduces blockchain operations to familiar GET and PUT operations.
 * **Access the Blockstack’s Naming System (BNS).**  The system has over 90K users that can immediately start using your application.
-* **Scale quickly to large, performant production systems.**  Blockstack’s GAIA storage system gives fast, scalable performance on a level comparable to Amazon S3, Google Drive, or Azure.
+* **Scale quickly to large, performant production systems.**  Blockstack’s Gaia storage system gives fast, scalable performance on a level comparable to Amazon S3, Google Drive, or Azure.
 
 Using Blockstack’s technology you can start building immediately on the
 blockchain with the knowledge you have today.  You won’t need to spend time or
