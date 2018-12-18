@@ -20,7 +20,7 @@
   icon: cog
   doc: core/naming/introduction
 
-- title: Implement Storage with GAIA
+- title: Implement Storage with Gaia
   desc: Backend storage drivers and interactions between developer APIs and the Gaia service.
   icon: database
   doc: storage/gaia_redirect

@@ -110,7 +110,7 @@ whether the user already has an existing session in the Blockstack Browser.
 
 Signing in with an identity is the means by which the user grants the DApp
 access. Access means the DApp can read the user profile and read/write user data
-for the DApp. Data is encrypted at a unique URL on a GAIA storage hub.
+for the DApp. Data is encrypted at a unique URL on a Gaia storage hub.
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5>App Mining Requirement: Blockstack Authentication</h5>
@@ -118,11 +118,11 @@ for the DApp. Data is encrypted at a unique URL on a GAIA storage hub.
 </p>
 </div>
 
-### Get and put user data to a GAIA Hub
+### Get and put user data to a Gaia Hub
 
-GAIA is the Blockstack data storage hub (https://hub.blockstack.org). Once a user
+Gaia is the Blockstack data storage hub (https://hub.blockstack.org). Once a user
 authenticates, the application can get and put application data in the user's
-storage. After a user signs in, the `SignedIn.js` code checks the user's GAIA
+storage. After a user signs in, the `SignedIn.js` code checks the user's Gaia
 profile by running the `loadMe()` method.
 
 ```js
@@ -144,7 +144,7 @@ loadMe() {
 
 The `loadMe()` code uses the Blockstack's `getFile()` method to get the
 specified file from the applications data store. If the users' data store on
-GAIA does not have the data, which is the case for new users, the Gaia hub
+Gaia does not have the data, which is the case for new users, the Gaia hub
 responds with HTTP `404` code and the `getFile` promise resolves to null. If you
 are using a Chrome Developer Tools with the DApp, you'll see these errors in a
 browser's developer **Console**.
@@ -152,7 +152,7 @@ browser's developer **Console**.
 <img src="images/kingdom-errors.png" alt="">
 
 After a user chooses an animal persona and a territory, the user presses **Done**
-and the application stores the user data on GAIA.
+and the application stores the user data on Gaia.
 
 ```js
 saveMe(me) {
