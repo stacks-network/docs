@@ -3,9 +3,10 @@
   - browser/browser-introduction
   - browser/local_browser
 
-- title: Identity
+- title: Identity and storage
 - docs:
   - browser/ids-introduction
+  - browser/storage-provider
 
 - title: Reference
 - docs:
