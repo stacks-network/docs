@@ -11,7 +11,7 @@ The information on this page is intended for **current Stacks token holders** du
 
 During your the initial grant process, you should have submitted a _public
 Stacks wallet address_ to Blockstack. The wallet address is a string of letters and numbers
-starting with an 'SP' or SM', for example: `SM3KJBA4RZ7Z20KD2HBXNSXVPCR1D3CRAV6Q05MKT`
+starting with an `SP` or `SM`, for example: `SM3KJBA4RZ7Z20KD2HBXNSXVPCR1D3CRAV6Q05MKT`
 
 If you purchased Stacks tokens through CoinList, you can find your address at
 [CoinList](https://coinlist.co/distributions). If you submitted your Stacks
