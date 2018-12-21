@@ -53,7 +53,7 @@ by Blockstack PBC." %}
 
     ![](images/mac-shasum.png)
 
-5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published on <a href="https://github.com/blockstack/stacks-wallet/releases" target="\_blank">on this page</a>.
+5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published <a href="https://github.com/blockstack/stacks-wallet/releases" target="\_blank">on this page</a>.
 
 
 
@@ -85,7 +85,7 @@ by Blockstack PBC." %}
 
     ![](images/windows-certutil.png)
 
-5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published on <a href="https://blockstack.org/wallet/" target="\_blank">on this page</a>.
+5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published <a href="https://github.com/blockstack/stacks-wallet/releases" target="\_blank">on this page</a>.
 
 ## Additional software requirements
 
