@@ -53,7 +53,7 @@ by Blockstack PBC." %}
 
     ![](images/mac-shasum.png)
 
-5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published on <a href="https://blockstack.org/wallet/" target="\_blank">on this page</a>.
+5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published on <a href="https://github.com/blockstack/stacks-wallet/releases" target="\_blank">on this page</a>.
 
 
 
@@ -108,8 +108,8 @@ documentation. We cannot help you set up your hardware wallet.
 
 ### Bitcoin account for fuel
 
-You fuel your Stacks wallet transactions with very small fractions of Bitcoin.
-For example, .00025 Bitcoin can fuel several transactions. You can acquire this
-Bitcoin and send it to the Stacks Wallet via a Coinbase or other Bitcoin
-account. Before you begin, make sure that you have such an account. You must
-create this account yourself.
+You use this account to load very small fractions of Bitcoin to fuel your wallet
+transactions. For example, .00025 Bitcoin can fuel several transactions. You can
+acquire this Bitcoin and send it to the Stacks Wallet via a Coinbase or other
+Bitcoin account. Before you begin using the wallet transactions, make sure that
+you have such an account. You must create this account yourself.
