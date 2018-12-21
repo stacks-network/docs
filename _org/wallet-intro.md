@@ -81,6 +81,18 @@ hardware offers another level of security that software wallets don’t have.
 Blockstack suggests that you use a hardware wallet such as
 [Trezor](https://trezor.io/) or [Ledger](https://www.ledger.com/).
 
+## Multiple wallets
+
 Of course, you need not use a software or hardware wallet exclusively, you can
 use multiple wallets choosing whichever works best for you at a specific time.
-You'll just need to transform tokens to whichever wallet you want to move.
+
+For example, the Stacks Wallet is a software wallet. It operates with and
+without a link to a hardware wallet. With a link to a hardware wallet, you can
+use the Stacks wallet to send and receive Stacks. When used without a hardware
+wallet link, the Stacks wallet is in _watch-only_ mode. This means the wallet
+cannot send or receive Stacks. You can view only balances and transaction
+history.
+
+In some cases, you may need to transfer Stacks to or reference token address in whichever
+wallet you want to move. Consult the documentation for your wallets for more
+information.

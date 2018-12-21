@@ -6,6 +6,8 @@
 - title: Manage Stacks
   docs:
   - org/wallet-intro
+  - org/wallet-install
+  - org/wallet-use
   - org/tokenholders
   - org/voucherholder
 - title: Whitepapers
@@ -14,5 +16,6 @@
   - org/whitepaper-token
 - title: Reference
   docs:
+  - org/secureref
   - org/faq
   - org/terms
