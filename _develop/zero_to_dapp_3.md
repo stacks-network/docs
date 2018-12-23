@@ -34,17 +34,19 @@ you'll need the command line to run your project.
 
 ## Understand the Animal Kingdom application code
 
-The Animal Kingdom application has two major components, React and Blockstack. React is used to
-build all the web components and interactions. You could replace React with any
-framework that you like; Blockstack is web framework agnostic. This section does
-not explain the React in any detail; The discussion focuses on the Blockstack
-Javascript library the DApp instead.
+The Animal Kingdom application has two major components, React and Blockstack.
+React is used to build all the web components and interactions. You could
+replace React with any framework that you like; Blockstack is web framework
+agnostic. This section does not explain the React in any detail; The discussion
+focuses on the Blockstack Javascript library the DApp instead.
 
 The <a href="https://blockstack.github.io/blockstack.js/"
 target="\_blank">Blockstack Javascript library is all a developer needs to
 create a DApp. It grants</a> the application the ability to authenticate a
 Blockstack identity and to read and write to the user's data stored in a Gaia
 hub.
+
+{% include note.html content="Animal Kingdom uses a pre-relese version 19.0.0-alpha.2 of the Blockstack javascript library. Feel free to follow <a href='https://github.com/blockstack/blockstack.js/pull/542' target='\_blank'>the pull request for this version</a> to track the version's progress." %}
 
 ### Authenticating user identity
 
@@ -112,6 +114,13 @@ Signing in with an identity is the means by which the user grants the DApp
 access. Access means the DApp can read the user profile and read/write user data
 for the DApp. Data is encrypted at a unique URL on a Gaia storage hub.
 
+The source code imports `UserSession` from the Blockstack library. Data related to a given user-session is encapsulated in the session. In a web
+browser, `UserSession` default behavior is to store session data in the
+browser's local storage. This means that app developers can leave management of
+session state to users. In a non-web browser environment, it is necessary to
+pass in an instance of `AppConfig` which defines the parameters of the current
+app.
+
 <div class="uk-card uk-card-default uk-card-body">
 <h5>App Mining Requirement: Blockstack Authentication</h5>
 <p>To participate in application mining your application must integrate Blockstack authentication.
@@ -142,8 +151,10 @@ loadMe() {
   }
 ```
 
-The `loadMe()` code uses the Blockstack's `getFile()` method to get the
-specified file from the applications data store. If the users' data store on
+Most of the imports in this file are locally coded React components. For example, `Kingdom.js`, `EditMe.js`, and `Card.js`.  The key Blockstack imports is the `UserSession` and an `appConfig` which is defined in the `constants.js` file.
+
+The `loadMe()` code uses the Blockstack's `UserSession.getFile()` method to get
+the specified file from the applications data store. If the users' data store on
 Gaia does not have the data, which is the case for new users, the Gaia hub
 responds with HTTP `404` code and the `getFile` promise resolves to null. If you
 are using a Chrome Developer Tools with the DApp, you'll see these errors in a
@@ -187,7 +198,7 @@ explorer</a> and search for your ID:
 Your DApp contains three pages **Animals**, **Territories**, and **Other
 Kingdoms** that are derived from three code elements:
 
- * The `src/constants.js` file defines the application's data profile.
+ * The `src/constants.js` file defines the application's data profile (`AppConfig`).
  * The `public/animals` directory which contains images.
  * The `public/territories` directory which contains images.
 
