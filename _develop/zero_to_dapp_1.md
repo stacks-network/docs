@@ -38,6 +38,8 @@ along.
 If you are a developer superhero, you may want to skim or move
 quickly through the pages and that's fine too.
 
+{% include note.html content="For best results, please use the Chrome browser for this tutorial. Currently, the Blockstack Browser works best in Chrome and you can encounter problems using browsers such as Safari or Firefox. We are working on a fix for these issues." %}
+
 
 ## How traditional and decentralized applications differ
 
