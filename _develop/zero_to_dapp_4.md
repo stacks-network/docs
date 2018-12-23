@@ -59,7 +59,7 @@ To add an app, do the following:
       </tr>
       <tr>
         <td><strong>DApp Name</strong></td>
-        <td>Name of your sample. Animal Kingdom or, if you renamed it, the name you gave your application.</td>
+        <td>Name of your sample. <code>USERNAME: Animal Kingdom</code> or, if you renamed it, the name you gave your application.</td>
       </tr>
       <tr>
         <td><strong>Short description</strong></td>
@@ -117,10 +117,9 @@ To add an app, do the following:
 Only applications that integrate Blockstack authentication, use GAI storage, and
 which are accessible to review can participate in application mining.
 
-To submit an application for App Mining, do the follwoing:
+To submit an application for App Mining, you select <a href="https://app.co/mining" target="\_blank">App Mining</a> from the App.co menu and then select the **Submit your app for qualification** button.
 
-1. Go to select <a href="https://app.co/mining" target="\_blank">App Mining</a> from the App.co menu.
-2. Select the **Submit your app for qualification** button.
+Blockstack sample applications that you create from our tutorials such as this one don't qualify for application mining.
 
 
 ## How Blockstack helps App Miners market
