@@ -48,7 +48,7 @@ $ which npm
 If you don't find `npm` in your system, [install
 it](https://www.npmjs.com/get-npm).
 
-Finally, make sure you have [created at least one Blockstack ID]({{ site.baseurl }}/browser/ids-introduction.html#create-an-initial-blockstack-id). You'll use this ID to interat with the application.
+Finally, make sure you have [created at least one Blockstack ID]({{ site.baseurl }}/browser/ids-introduction.html#create-an-initial-blockstack-id). You'll use this ID to interact with the application.
 
 ## Use npm to install Yeoman and the Blockstack App Generator
 
@@ -135,7 +135,7 @@ structure of this generic application structure:
 |------------------|-----------------------------------|
 | .editorconfig    | Sets universal values for editor. |
 | .gitignore       | Git configuration file.           |
-| firebase.json    | Configuragion for mobile application.|
+| firebase.json    | Configuration for mobile application.|
 | package.json     | Specifies required packages.       |
 | requires.js      | A Javascript module loader.        |
 | server.js        | Simple static server configuration.|
@@ -146,7 +146,7 @@ In the `public` folder you find these files:
 |------------------|-----------------------------------|
 | app.css   | Contains application styles.             |
 | app.js    | Main application file.                   |
-| boostrap.min.css | Minifield css for production.     |
+| bootstrap.min.css | Minified css for production.     |
 | icon-192x192.png | Application icon                  |
 | index.html       | Single page.                      |
 | manifest.json    | Tells the browser about the application and how it should behave.|
@@ -245,7 +245,7 @@ function showProfile(profile) {
 }
 ```
 
-Each `getElementById()` function refers to elemments in the `index.html` file.
+Each `getElementById()` function refers to elements in the `index.html` file.
 
 Once a user is successfully signed in, there is logic for loading the user
 profile and displaying the application. As illustrated earlier, there are
@@ -255,7 +255,7 @@ several states the user can be in:
 - The user has a pending sign in request
 - The user is signed out
 
-The application handles these situtations as followed:
+The application handles these situations as followed:
 
 ```js
 if (blockstack.isUserSignedIn()) {
@@ -270,7 +270,7 @@ if (blockstack.isUserSignedIn()) {
 
 When the user is signed in, Blockstack loads the user data from local storage
 and displays the profile with the `showProfile()` function. When the user has a
-pending sign in request, the appplication signs the user in and redirects the
+pending sign in request, the application signs the user in and redirects the
 user back to the home page.
 
 ### Application manifest
@@ -312,7 +312,7 @@ Complete the tutorial by storing your app code on GitHub. Before you begin, make
 
 3. In GitHub, create a `hello-blockstack` repository.
 
-4. Back in your termininal window, add a remote for GitHub.
+4. Back in your terminal window, add a remote for GitHub.
 
     Make sure to fill in your username:
 
