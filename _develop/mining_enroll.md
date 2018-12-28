@@ -34,9 +34,7 @@ To apply, do the following:
 
    <img src="images/add-app.png" alt="">
 
-3. Complete the <a href="https://app.co/mining" target="\_blank">submission form for App Mining</a>.
-
-    <img src="images/submit.png" alt="">
+3. Provide your pay out and tax materials.
 
 
 ## Provide pay out and tax materials
