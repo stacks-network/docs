@@ -4,7 +4,7 @@ To create an initial Blockstack ID, do the following:
 
    The application prompts you to create or restore an ID.
 
-   ![]({{ site.baseurl }}/browser/images/create-id-1.png)
+   ![]({{ site.baseurl }}/browser/images/create-id-0.png)
 
 2. Choose **Create new ID**.
 
@@ -32,12 +32,11 @@ To create an initial Blockstack ID, do the following:
 
 3. Enter a password, confirm it, and press **Register ID**.
 
-
    Blockstack creates an id for you and then prompts you for an email.
 
    ![]({{ site.baseurl }}/browser/images/create-id-3.png)
 
-   Blockstack uses this email address to send you recovery information.
+   Blockstack uses this email address to send you recovery information. This email is only sent once.
 
 4.  Press **Next**.
 
@@ -57,7 +56,7 @@ To create an initial Blockstack ID, do the following:
 
     ![]({{ site.baseurl }}/browser/images/create-id-5.png)
 
-6.  Copy your **Magic Recovery Code** and **Secret Recovery** key.
+6.  Copy your **Secret Recovery Key** .
 
 
 Congratulations you have created your first ID. You are now ready to start using DApps.
