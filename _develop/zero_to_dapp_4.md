@@ -112,10 +112,10 @@ To add an app, do the following:
    The Blockstack team will email you information about how to obtain your
    limited edition t-shirt at our store.
 
-## Submit a DApp to application mining
+## Submit a DApp to App Mining
 
 Only applications that integrate Blockstack authentication and
-that are accessible to review can participate in application mining.
+that are accessible to review can participate in application mining (App Mining).
 
 To submit an application for App Mining, you select <a href="https://app.co/mining" target="\_blank">App Mining</a> from the App.co menu and then select the **Submit your app for qualification** button.
 
