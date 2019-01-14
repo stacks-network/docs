@@ -114,8 +114,8 @@ To add an app, do the following:
 
 ## Submit a DApp to application mining
 
-Only applications that integrate Blockstack authentication, use GAI storage, and
-which are accessible to review can participate in application mining.
+Only applications that integrate Blockstack authentication and
+that are accessible to review can participate in application mining.
 
 To submit an application for App Mining, you select <a href="https://app.co/mining" target="\_blank">App Mining</a> from the App.co menu and then select the **Submit your app for qualification** button.
 
