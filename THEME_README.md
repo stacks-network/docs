@@ -322,7 +322,7 @@ To modify the primary color, open `/_sass/theme/variables.scss` and replace the 
 $color-main: #0F1214;
 ```
 
-Further style customisation can be done in the following files:
+Further style customization can be done in the following files:
 ```
 /_sass/theme/mixins.scss
 /_sass/theme/variables.scss

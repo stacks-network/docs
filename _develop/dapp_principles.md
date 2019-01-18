@@ -69,7 +69,7 @@ because they don't have any irreplaceable server-side logic.
 In the future, Blockstack applications must continue to meet the first two
 principles but need not meet this one. For example, an application could
 encrypt data in-transit between the application's client and the user's chosen
-storage provider. Unless the app divulges the encryption key to the user, then
+Gaia hub provider. Unless the app divulges the encryption key to the user, then
 the user does not have free choice of clients; they can only use clients that
 the app's servers choose to interact with.
 
