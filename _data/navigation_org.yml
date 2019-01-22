@@ -12,6 +12,7 @@
   - org/voucherholder
 - title: Whitepapers
   docs:
+  - org/whitepaper-blockchain
   - org/whitepaper-tokensale
   - org/whitepaper-token
 - title: Reference
