@@ -1,0 +1,39 @@
+{
+  "resources" :[
+    {
+    "title": "Blockstack + React: A TechRally Presentation",
+    "url": "https://www.youtube.com/channel/UCtXf2lbDGQe7h-PpqpAoFig",
+    "type": "video",
+    "date": "01-01-2019",
+    "description": "A series of short videos that takes users through the process of building a decentralized application (DApp) with Blockstack and React.  "
+  },
+  {
+    "title": "Building decentralized apps with blockstack.js",
+    "url": "https://docs.google.com/presentation/d/1KUL7NVGeP4EFyodF-ANCF7Bw05QM4KGBMxGvQbKFsx8/edit?usp=sharing",
+    "type": "presentation",
+    "date": "07-18-2018",
+    "description": "Introduction to using blockstack.js"
+  },
+  {
+      "title": "Blockstack Academy",
+      "url": "https://www.youtube.com/playlist?list=PLXS8JJHIn4nEv_LcXIaklH_QAZaDEVD8q",
+      "date": "09-26-2017",
+      "type": "video",
+      "description" : "A series of educational videos featuring members of the Blockstack community and core contributors."
+    },
+    {
+    "title": "Blockstack: A New Internet That Brings Privacy & Property Rights to Cyberspace",
+    "url": "https://youtu.be/Z4bMFKBRg_k",
+    "type": "video",
+    "date": "06-22-2017",
+    "description": "Meet the developers behind Blockstack, who are using blockchain technology to reconfigure the web."
+    },
+    {
+    "title": "Walkthrough of the Blockstack Browser, December 2017",
+    "url": "https://youtu.be/WopvxEM7O84",
+    "type": "video",
+    "date": "12-18-2017",
+    "description": "Walks through downloading and using Blockstack's new decentralized internet, which gives users control over their data and the applications they share it with. Download the browser for the decentralized internet at blockstack.org."
+    }
+  ]
+}
