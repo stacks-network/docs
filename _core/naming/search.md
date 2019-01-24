@@ -15,7 +15,7 @@ Currently there are two types of indexes to handle search queries:
 * Substring search on usernames, full names, twitter_handle (powered by MongoDB)
 * Raw Lucene index which handles searching extended data e.g., bio.
 
-Search will currently return upto a max of 20 results (can be less depending on the query)
+Search will currently return up to a max of 20 results (can be less depending on the query)
 with data that follows structure of [blockstack IDs](https://github.com/blockstack/blockstack):
 
 In early 2017, the search subsystem was ported over to the new API system, where support for search is provided by the endpoint:

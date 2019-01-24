@@ -322,6 +322,6 @@ blockstack backend. You also set up a typical development environment for
 developing a Blockstack web application.  Finally, you started and ran the
 Animal Kingdom application locally.
 
-In the next section, you explorer the application code and learn which recorded
+In the next section, you explore the application code and learn which recorded
 elements in a DApp make it eligible for App Mining. Continue to [Zero-to-DApp, 3
 of 4](zero_to_dapp_3.html).
