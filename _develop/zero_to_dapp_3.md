@@ -38,7 +38,7 @@ The Animal Kingdom application has two major components, React and Blockstack.
 React is used to build all the web components and interactions. You could
 replace React with any framework that you like; Blockstack is web framework
 agnostic. This section does not explain the React in any detail; The discussion
-focuses on the Blockstack Javascript library the DApp instead.
+focuses on the Blockstack Javascript library code instead.
 
 The <a href="https://blockstack.github.io/blockstack.js/"
 target="\_blank">Blockstack Javascript library is all a developer needs to
