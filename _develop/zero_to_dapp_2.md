@@ -109,9 +109,7 @@ utilities, and compilers. Some of the contents installed by NPM require XCode.
 1. Open a terminal window on your system.
 2. Enter the `xcode-select` command string:
 
-   ```bash
-   $ xcode-select --install
-   ```
+   <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/63de38d8-8a13-0f07-5e06-df7507cf5fc2/i1" width="100%"></iframe>
 
    <img src="images/install-command-line-tools-os-x.jpg" alt="">
 
@@ -174,16 +172,11 @@ In this section, you copy the code for Animal Kingdom to your workstation.
 
 7. In your terminal change directory into the top of the directory by entering:
 
-   ```bash
-   $ cd animal-kingdom-master
-   ```
+   <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/63de38d8-8a13-0f07-5e06-df7507cf5fc2/i2" width="100%"></iframe>
 
    Use the `pwd` command to confirm which directory you are in.
 
-   ```bash
-   $ pwd
-   /Users/manthony/animal-kingdom-master
-   ```
+   <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/63de38d8-8a13-0f07-5e06-df7507cf5fc2/i3" width="100%"></iframe>
 
 8. Take a minute review the files and subdirectories in your Animal Kingdom project.
 
@@ -228,43 +221,17 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
 
 1. Make sure you are in the root directory of the project.
 
-    ```bash
-    cd ~/animal-kingdom-master
-    pwd
-    /Users/manthony/animal-kingdom-master
-    ```
+    <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/63de38d8-8a13-0f07-5e06-df7507cf5fc2/i4" width="100%"></iframe>
 
 2. Enter `npm install` to get the software components Animal Kingdom needs.
 
-    ```bash
-     $ npm install
-
-     > fsevents@1.2.4 install /Users/manthony/animal-kingdom-master/node_modules/fsevents
-     > node install
-
-     node-pre-gyp WARN Tried to download(404): https://fsevents-binaries.s3-us-west-2.amazonaws.com/v1.2.4/fse-v1.2.4-node-v67-darwin-x64.tar.gz
-     node-pre-gyp WARN Pre-built binaries not found for fsevents@1.2.4 and node@11.1.0 (node-v67 ABI, unknown) (falling back to source compile with node-gyp)
-      SOLINK_MODULE(target) Release/.node
-      CXX(target) Release/obj.target/fse/fsevents.o
-     In file included from ../fsevents.cc:6:
-
-      ...
-
-     added 1390 packages from 766 contributors and audited 15238 packages in 16.11s
-     found 1 high severity vulnerability
-      run `npm audit fix` to fix them, or `npm audit` for details
-     $
-    ```
-
+    <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/63de38d8-8a13-0f07-5e06-df7507cf5fc2/i5" height="350px" width="100%"></iframe>
     This command creates a `node_modules` subdirectory to your project code and
     installs all the code libraries you need for your Animal Kingdom project.
 
 3. Enter the `ls` command to list the contents of your project directory to verify `npm` installed correctly.
 
-    ```
-    $ ls
-    ```
-
+    <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/63de38d8-8a13-0f07-5e06-df7507cf5fc2/i6" width="100%"></iframe>
     The `node_modules`directory contains many core libraries used by Animal
     Kingdom. For example, the Blockstack Javascript library is in the
     `nodule_modules/blockstack/lib` subdirectory.
@@ -274,10 +241,7 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
 
 1. Start the Animal Kingdom DApp running on your workstation by entering:
 
-   ```bash
-   npm start
-   ```
-
+   <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/63de38d8-8a13-0f07-5e06-df7507cf5fc2/i7" width="100%"></iframe>
    The `npm` program uses the `scripts/start.js` file to package the Animal
    Kingdom application. Once the code is packaged, the DApp opens Animal Kingdom
    running at the `http://localhost:3000` URL in your browser.

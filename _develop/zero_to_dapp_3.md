@@ -55,49 +55,7 @@ The `src/App.js` file creates a Blockstack `UserSession` and uses that session's
 application. Depending on the result of this method. The application redirects
 to the `src/SignedIn` page or to the `src/Landing.js` page.
 
-```js
- import React, { Component } from 'react'
- import './App.css'
- import { UserSession } from 'blockstack'
-
- import Landing from './Landing'
- import SignedIn from './SignedIn'
-
- class App extends Component {
-
-   constructor() {
-     super()
-     this.userSession = new UserSession()
-   }
-
-   componentWillMount() {
-     const session = this.userSession
-     if(!session.isUserSignedIn() && session.isSignInPending()) {
-       session.handlePendingSignIn()
-       .then((userData) => {
-         if(!userData.username) {
-           throw new Error('This app requires a username.')
-         }
-         window.location = `/kingdom/${userData.username}`
-       })
-     }
-   }
-
-   render() {
-     return (
-       <main role="main">
-           {this.userSession.isUserSignedIn() ?
-             <SignedIn />
-           :
-             <Landing />
-           }
-       </main>
-     );
-   }
- }
-
- export default App
-```
+<iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/61646208-f617-3e49-6f10-80b9e6be1ee1/i1" height="750" width="100%"></iframe>
 
 The first time you start the application, this code determines if the user has
 signed into the DApp previously. If not, it opens the  `Landing.js` page. This
@@ -134,22 +92,7 @@ authenticates, the application can get and put application data in the user's
 storage. After a user signs in, the `SignedIn.js` code checks the user's Gaia
 profile by running the `loadMe()` method.
 
-```js
-loadMe() {
-    const options = { decrypt: false }
-    this.userSession.getFile(ME_FILENAME, options)
-    .then((content) => {
-      if(content) {
-        const me = JSON.parse(content)
-        this.setState({me, redirectToMe: false})
-      } else {
-        const me = null
-
-        this.setState({me, redirectToMe: true})
-      }
-    })
-  }
-```
+<iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/61646208-f617-3e49-6f10-80b9e6be1ee1/i2" height="300" width="100%"></iframe>
 
 Most of the imports in this file are locally coded React components. For example, `Kingdom.js`, `EditMe.js`, and `Card.js`.  The key Blockstack imports is the `UserSession` and an `appConfig` which is defined in the `constants.js` file.
 
@@ -165,16 +108,7 @@ browser's developer **Console**.
 After a user chooses an animal persona and a territory, the user presses **Done**
 and the application stores the user data on Gaia.
 
-```js
-saveMe(me) {
-  this.setState({me, savingMe: true})
-  const options = { encrypt: false }
-  this.userSession.putFile(ME_FILENAME, JSON.stringify(me), options)
-  .finally(() => {
-    this.setState({savingMe: false})
-  })
-}
-```
+<iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/61646208-f617-3e49-6f10-80b9e6be1ee1/i3" height="200" width="100%"></iframe>
 
 The Blockstack <a href="https://blockstack.github.io/blockstack.js/#putfile"
 target="\_blank"><code>putFile()</code></a> stores the data provided in the
@@ -224,56 +158,22 @@ your keyboard.
 
 4. Use the `ls` command to confirm your file appears in `territories` directory and has the correct name.
 
-   ```bash
-   ls public/territories/
-   forest.jpg   tundra.jpg   westeros.jpg
-   ```
+  <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/61646208-f617-3e49-6f10-80b9e6be1ee1/i4" width="100%"></iframe>
 
 4. Open the `src/constant.js` file in your favorite editor.
 5. Scroll down to the section that defines the **Territories**.
 
-   ```js
-   export const TERRITORIES = [
-     {
-       id: 'forest',
-       name: 'Forest',
-       superpower: 'Trees!'
-     },
-     {
-       id: 'tundra',
-       name: 'Tundra',
-       superpower: 'Let it snow!'
-     }
-   ]
-   ```
+   <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/61646208-f617-3e49-6f10-80b9e6be1ee1/i5" height="300" width="100%"></iframe>
 
 6. Add your new territory.
 
-   ```js
-   export const TERRITORIES = [
-     {
-       id: 'forest',
-       name: 'Forest',
-       superpower: 'Trees!'
-     },
-     {
-       id: 'tundra',
-       name: 'Tundra',
-       superpower: 'Let it snow!'
-     },
-     {
-       id: 'westeros',
-       name: 'Westeros',
-       superpower: 'The Iron Throne!'
-     }
-    ]
-    ```
+   <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/61646208-f617-3e49-6f10-80b9e6be1ee1/i6" height="350" width="100%"></iframe>
+
 7. Save and close the `constant.js` file.
 8. Back in a terminal window, restart your application.
 
-   ```bash
-   $ npm start
-   ```
+   <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/61646208-f617-3e49-6f10-80b9e6be1ee1/i7" width="100%"></iframe>
+
 9. After the application starts, navigate to the **Territories** page and look for your `Westeros` territory.
 
    <img src="images/kingdom-throne.png" alt="">
@@ -289,18 +189,7 @@ you add a third, the Blockstack kingdom (`https://animalkingdoms.netlify.com`).
 
 2. Scroll down to the section that defines the **Other Kingdoms**
 
-   ```js
-   export const OTHER_KINGDOMS = [
-     {
-       app: 'https://animal-kingdom-1.firebaseapp.com',
-       ruler: 'larry.id'
-     },
-     {
-       app: 'http://localhost:3001',
-       ruler: 'larz.id'
-     }
-   ]
-   ```
+   <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/61646208-f617-3e49-6f10-80b9e6be1ee1/i8" height="250" width="100%"></iframe>
 
    To add a kingdom, you need its URL and the ID of its owner.
 
@@ -309,22 +198,7 @@ you add a third, the Blockstack kingdom (`https://animalkingdoms.netlify.com`).
    When you are done the file will look like this.
 
 
-   ```js
-   export const OTHER_KINGDOMS = [
-     {
-       app: 'https://animal-kingdom-1.firebaseapp.com',
-       ruler: 'larry.id'
-     },
-     {
-       app: 'http://localhost:3001',
-       ruler: 'larz.id'
-     },
-     {
-       app: 'https://animalkingdoms.netlify.com',
-       ruler: 'moxiegirl.id.blockstack'
-     }
-   ]
-   ```
+   <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/61646208-f617-3e49-6f10-80b9e6be1ee1/i9" height="300" width="100%"></iframe>
 
 4. Save and close the `constants.js` file.
 5. Back in your browser, navigate to the **Other Kingdoms** page.
@@ -353,9 +227,7 @@ Before you begin, you need to build a site that is ready to deploy.
 1. In your terminal, press `CTRL-C` on your keyboard to stop your `npm start` build.
 2. Build a website from your code by entering the `npm run build` command:
 
-   ```bash
-   npm run build
-   ```
+   <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/61646208-f617-3e49-6f10-80b9e6be1ee1/i10" width="100%"></iframe>
 
    <img src="images/run-build.png" alt="">
 
@@ -430,10 +302,7 @@ Before you begin, you need to build a site that is ready to deploy.
 
     To copy them with the `ls` command, enter the following in the root of the `animal-kingdom-master` project.
 
-    ```bash
-    cp cors/_headers public
-    cp cors/_redirects public
-    ```
+  <iframe src="https://app.decs.xyz/embed/scholarly.id.blockstack/61646208-f617-3e49-6f10-80b9e6be1ee1/i11" height="100" width="100%"></iframe>
 
     The name of each file, with the underscore, is essential.
 
