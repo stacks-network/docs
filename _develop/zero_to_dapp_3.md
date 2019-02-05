@@ -123,7 +123,7 @@ app.
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5>App Mining Requirement: Blockstack Authentication</h5>
-<p>To participate in application mining your application must integrate Blockstack authentication.
+<p>To participate in application mining your application must integrate Blockstack authentication. Test flight apps do not qualify.
 </p>
 </div>
 
