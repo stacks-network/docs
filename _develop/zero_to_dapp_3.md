@@ -42,7 +42,7 @@ focuses on the Blockstack Javascript library code instead.
 
 The <a href="https://blockstack.github.io/blockstack.js/"
 target="\_blank">Blockstack Javascript library is all a developer needs to
-create a DApp. It grants</a> the application the ability to authenticate a
+create a DApp</a>. It grants the application the ability to authenticate a
 Blockstack identity and to read and write to the user's data stored in a Gaia
 hub.
 

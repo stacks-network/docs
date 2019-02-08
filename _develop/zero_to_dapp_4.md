@@ -52,13 +52,23 @@ To add an app, do the following:
 
 3. Complete the following fields.
 
-    <table class="uk-table uk-table-small">
-      <tr>
-        <th><strong>Field</strong></th>
+    <table class="uk-table-striped uk-table-small">
+    <thead>      
+     <tr>
+        <th class="uk-width-1-2"><strong>Field</strong></th>
         <th>Description</th>
       </tr>
+      </thead>
       <tr>
-        <td><strong>DApp Name</strong></td>
+        <td><strong>Your Name</strong></td>
+        <td>Your first and last name.</td>
+      </tr>
+      <tr>
+      <td><strong>Your Email</strong></td>
+        <td>A valid email address. This is the email where we will send you instructions for getting your Zero to DApp t-shirt.</td>
+      </tr>    
+      <tr>
+        <td><strong>App Name</strong></td>
         <td>Name of your sample. <code>USERNAME: Animal Kingdom</code> or, if you renamed it, the name you gave your application.</td>
       </tr>
       <tr>
@@ -70,12 +80,8 @@ To add an app, do the following:
         <td>The URL of the website where you deployed your application.&nbsp;&nbsp;</td>
       </tr>
       <tr>
-        <td><strong>Contact Email</strong></td>
-        <td>A valid email address. This is the email where we will send you instructions for getting your Zero to DApp t-shirt.</td>
-      </tr>
-      <tr>
-        <td><strong>Image URL</strong></td>
-        <td>You can leave this blank for a sample application.</td>
+        <td><strong>App icon URL</strong></td>
+        <td> <code>URL_DEPLOYED_SITE/icon-192x192.png</code> for example, <code>https://animalkingdoms.netlify.com/icon-192x192.png</code> &nbsp;&nbsp;</td>
       </tr>
       <tr>
         <td><strong>Open Source URL</strong></td>
@@ -86,12 +92,8 @@ To add an app, do the following:
         <td>Optionally enter a Twitter handle if you have one.</td>
       </tr>
       <tr>
-        <td><strong>Registration is open to all users</strong></td>
-        <td>Leave this unchecked.</td>
-      </tr>
-      <tr>
         <td><strong>Category</strong></td>
-        <td>Sample Blockstack Apps &amp;mdash; make sure you choose this category.</td>
+        <td><strong>Sample Blockstack Apps</strong> &amp;mdash; make sure you choose this category.</td>
       </tr>
       <tr>
         <td><strong>Blockchain</strong></td>
@@ -103,11 +105,13 @@ To add an app, do the following:
       </tr>
       <tr>
         <td><strong>Authentication</strong></td>
-        <td>Choose Blockstack</td>
+        <td>Choose Blockstack.</td>
       </tr>
     </table>    
 
-4. Press the **Submit** button.
+4. Check **App is publicly accessible and user-ready**.
+5. Agree to the terms.
+6. Press the **Submit** button.
 
    The Blockstack team will email you information about how to obtain your
    limited edition t-shirt at our store.
