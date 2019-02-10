@@ -5,7 +5,7 @@ permalink: /:collection/:path.html
 # Use the Democracy Earth voting process
 {:.no_toc}
 
-Democracy Earth developed the `vote.blockstack.org` site for voting on applications in the App Mining program. The votes cast through Democracy earth are consumed by App Mining's ranking algorithm and so affect the final ranking of applications each month.
+Democracy Earth developed the `vote.blockstack.org` site for voting on applications in the App Mining program. The votes cast through Democracy Earth are consumed by App Mining's ranking algorithm and so affect the final ranking of applications each month.
 
 Democracy Earth is a platform for borderless peer-to-peer democracy. Every aspect of `vote.blockstack.org` is thoughtfully designed with an understanding that governance is about enabling rich exchanges of information. The goal is to surface the optimal collective intelligence of a network.
 
@@ -14,9 +14,9 @@ Democracy Earth is a platform for borderless peer-to-peer democracy. Every aspec
 
 ## Understand the voting process
 
-Two categories of people participate in the voting process. Application miners who have submitted their application for mining are one category. The other people in the process are Stacks token holders who have asked Blockstack for voting privileges.
+Two categories of people participate in the voting process. Application miners who have submitted their application for mining are one category. The other people in the process are Stacks token holders who have asked Blockstack for voting privileges. Stacks token holders vote applications up or down; miners respond to questions about their applications.
 
-{% include important.html content="Blockstack may ask token holders to become voters or voters may request an invitation to vote. If you are a token holder and would like to become a voter, email  <a href='mailto:mining@app.co' target='\_blank'>mining@app.co</a> for more information. Of course, token holders that are also application miners are not eligible to vote." %}
+{% include important.html content="Blockstack may ask token holders to become voters or token holders may request an invitation to vote. If you are a token holder and would like to become a voter, email  <a href='mailto:mining@app.co' target='\_blank'>mining@app.co</a> for more information. Of course, token holders that are also application miners are not eligible to vote." %}
 
 ### The value of a vote
 
@@ -43,13 +43,13 @@ New applications are added to Democracy Earth at the start of every month. All n
 
 <img src="images/de-new.png" alt="">
 
-Apps from a previous month remain eligible for voting. This means the pool of applications expands each month. The reason for this is that applications are evolving products, they evolve theur quality or expand their features. A product you thought wasn't so good could make a giant leap forward from one month to the next.  
+Apps from a previous month remain eligible for voting. This means the pool of applications expands each month. The reason for this is that applications are evolving products, they evolve the quality or expand their features. A product you thought wasn't so good could make a giant leap forward from one month to the next.  
 
 All applications appear in a randomized order so all can receive equal attention from voters.
 
-Every month, all voters receive a newsletter with updates related to App Mining's vote. The newsletter contains additional timing-related reminders. If you are a voter make sure you add <a href='mailto:appmining@democracy.earth' target='\_blank'>appmining@democracy.earth</a> to your contacts list. This prevents the newsletter from going to your **Spam** folder.
+Every month, all voters receive a newsletter with updates related to App Mining's vote. The newsletter contains additional timing-related reminders. If you are a voter make sure you add <a href='mailto:appmining@democracy.earth' target='\_blank'>appmining@democracy.earth</a> to your contacts list. This prevents the newsletter from going to your Spam folder.
 
-Use the month to talk (debate) to application miners and to vote on applications.  At the end of the month, votes are tabulated.
+Use the platform to talk (debate) to application miners and to vote on applications. At the 15th of ever month, votes are tabulated.
 
 
 ### About vote tabulation
@@ -88,7 +88,7 @@ To create a voter profile, do the following:
 
    <img src="images/de-profile.png" alt="">
 
-   When you authenticate, Democracy Earth sends a validation email the email address associated with your Blockstack ID.
+   When you authenticate, Democracy Earth sends a validation email to the email address associated with your Blockstack ID.
 
 6. Go to your mailbox.
 7. Locate the email that was sent to you.
@@ -119,7 +119,7 @@ To create a voter profile, do the following:
 
     If you are a voter, your profile appears with the number of votes you have to cast.
 
-    {% include important.html content="If you see that you have NONE instead of a number in the votes section, check and make sure the email in the profile is correct as described in these instructions. If your email is correct, and you still do not have any votes available, email <a href='mailto:mining@app.co' target='\_blank'>mining@app.co</a> for help." %}
+    {% include important.html content="If you see that you have NONE instead of a number in the votes section, check and make sure the email in the profile is correct as described in these instructions. If your email is correct, and you still do not have any votes available, email <a href='mailto:appmining@democracy.earth' target='\_blank'>appmining@democracy.earth</a> for help." %}
 
 You are all done setting up your profile. In the future, make sure that if you log out of Democracy Earth that you always log back in with the Blockstack ID you used to set up your profile.
 
@@ -148,13 +148,12 @@ You are all done setting up your profile. In the future, make sure that if you l
 
 7. Confirm your vote.
 
-   Your confirmed vote is timestamped and remains on the registered ledge of the app until you remove it.x
+   Your confirmed vote is timestamped and remains on the registered ledger of the application. When you remove your vote, the removal is also recorded on the ledger.
 
 ## Help improve voting and the App Mining process
 
-The Democracy Earth Foundation and Blockstack teams are working daily to make
-`vote.blockstack.org` a powerful tool of the Blockstack ecosystem. For that to
-happen, your honest and constructive feedback is welcomed. New features are
+The Democracy Earth Foundation and Blockstack teams are working daily to make `vote.blockstack.org` a powerful tool of the Blockstack ecosystem. For that to
+happen your honest and constructive feedback is welcomed. New features are
 being added every month through the active collaboration between all the
 different stakeholders. Here are the channels that we utilize:
 
