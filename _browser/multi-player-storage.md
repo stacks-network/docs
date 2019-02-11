@@ -2,22 +2,23 @@
 layout: learn
 permalink: /:collection/:path.html
 ---
+
 # Manage Data with Gaia
+
 {:.no_toc}
 
 In this tutorial, you build a micro-blogging application using multi-player Gaia
-storage. Gaia is Blockstack's [decentralized high-performance storage
-system](https://github.com/blockstack/gaia). The tutorial contains the following
-topics:
+storage. Gaia is Blockstack's
+[decentralized high-performance storage system](https://github.com/blockstack/gaia).
+The tutorial contains the following topics:
 
-* TOC
-{:toc}
+-   TOC {:toc}
 
-This tutorial does not teach you about authentication. That is covered in depth [in the hello-blockstack tutorial](hello-blockstack.html).
+This tutorial does not teach you about authentication. That is covered in depth
+[in the hello-blockstack tutorial](hello-blockstack.html).
 
 <!--TODO: authentication tutorial-->
 <!--Strictly speaking not sure it is necessary here to send them out-->
-
 
 ## About this tutorial and the prerequisites you need
 
@@ -26,18 +27,19 @@ machine, you can still work through this tutorial. You will need to adjust the
 instructions for your environment."%}
 
 The application you build is a React.js application that is completely
-decentralized and server-less.  While not strictly required to follow along,
+decentralized and server-less. While not strictly required to follow along,
 basic familiarity with React.js is helpful.
 
 When complete, the app is capable of the following:
 
-- authenticating users using Blockstack
-- posting new statuses
-- displaying statuses in the user profile
-- looking up the profiles and statuses of other users
+-   authenticating users using Blockstack
+-   posting new statuses
+-   displaying statuses in the user profile
+-   looking up the profiles and statuses of other users
 
 The basic identity and storage services are provided by `blockstack.js`. To test
-the application, you need to have already [registered a Blockstack ID](ids-introduction.html).
+the application, you need to have already
+[registered a Blockstack ID](ids-introduction.html).
 
 The tutorial relies on the `npm` dependency manager. Before you begin, verify
 you have installed `npm` using the `which` command.
@@ -47,10 +49,11 @@ $ which npm
 /usr/local/bin/npm
 ```
 
-If you don't find `npm` in your system, [install
-it](https://www.npmjs.com/get-npm). Finally, if you get stuck at any point
-while working on the tutorial, the completed [source code is available for
-you](https://github.com/larrysalibra/publik) to check your work against.
+If you don't find `npm` in your system,
+[install it](https://www.npmjs.com/get-npm). Finally, if you get stuck at any
+point while working on the tutorial, the completed
+[source code is available for you](https://github.com/larrysalibra/publik) to
+check your work against.
 
 High Sierra 10.13.4.
 
@@ -60,12 +63,12 @@ You use `npm` to install Yeoman. Yeoman is a generic scaffolding system that
 helps users rapidly start new projects and streamline the maintenance of
 existing projects.
 
-
 1. Install Yeoman.
 
     ```bash
     npm install -g yo
     ```
+
 2. Install the Blockstack application generator.
 
     ```bash
@@ -78,19 +81,20 @@ existing projects.
 
 In this section, you build an initial React.js application called Publik.
 
-1. Create a the `publik` directory.
+1.  Create a the `publik` directory.
 
     ```bash
     mkdir publik
     ```
 
-2. Change into your new directory.
+2.  Change into your new directory.
 
     ```bash
     cd publik
     ```
 
-3. Use Yeoman and the Blockstack application generator to create your initial `publik` application.
+3.  Use Yeoman and the Blockstack application generator to create your initial
+    `publik` application.
 
     ```bash
     yo blockstack:react
@@ -119,9 +123,10 @@ In this section, you build an initial React.js application called Publik.
     ? Are you ready to build a Blockstack app in React? (Y/n)
     ```
 
-4. Respond to the prompts to populate the initial app.
+4.  Respond to the prompts to populate the initial app.
 
-    After the process completes successfully, you see a prompt similar to the following:
+    After the process completes successfully, you see a prompt similar to the
+    following:
 
     ```bash
     [fsevents] Success:
@@ -130,7 +135,7 @@ In this section, you build an initial React.js application called Publik.
     You should commit this file. added 1060 packages in 26.901s
     ```
 
-5. Run the initial application.
+5.  Run the initial application.
 
     ```bash
     npm start
@@ -140,15 +145,15 @@ In this section, you build an initial React.js application called Publik.
 
     ![Network Connection](./images/network-connections.gif)
 
-6. Choose **Allow**.
+6.  Choose **Allow**.
 
-7. Open your browser to `http://localhost:8080`.
+7.  Open your browser to `http://localhost:8080`.
 
-   You should see a simple React app.
+    You should see a simple React app.
 
-	 ![](images/initial-app.gif)
+        	 ![](images/initial-app.gif)
 
-8. Choose **Sign In with Blockstack**.
+8.  Choose **Sign In with Blockstack**.
 
     The application tells you it will **Read your basic info**.
 
@@ -177,7 +182,7 @@ Modify your authentication request to include the `publish_data` scope.
     }
     ```
 
-2. Modify the method to this:
+3. Modify the method to this:
 
     ```javascript
     handleSignIn(e) {
@@ -190,14 +195,14 @@ Modify your authentication request to include the `publish_data` scope.
     By default, authentication requests include the `store_write` scope which
     enables storage. This is what allows you to store information to Gaia.
 
-3. Save your changes.
-4. Go back to your app at `http://localhost:8080/`.
-5. Log out and sign in again.
+4. Save your changes.
+5. Go back to your app at `http://localhost:8080/`.
+6. Log out and sign in again.
 
     The authentication request now prompts the user for permission to **Publish
     data stored for the app**.
 
-     ![](images/publish-data-perm.png)
+    ![](images/publish-data-perm.png)
 
 ## Understand Gaia storage methods
 
@@ -252,34 +257,37 @@ This design allows you to get only the files you need and avoid accidentally
 overwriting all lists. Further, you’re only updating the index file when you add
 or remove a grocery list; updating a list has no impact.
 
-
 ## Add support for user status submission and lookup
 
-In this step, you add three `blockstack.js` methods that support posting of "statuses". These are the `putFile()`, `getFile()`, and `lookupProfile()` methods.
+In this step, you add three `blockstack.js` methods that support posting of
+"statuses". These are the `putFile()`, `getFile()`, and `lookupProfile()`
+methods.
 
-1. Open the `src/components/Profile.jsx` file.
+1.  Open the `src/components/Profile.jsx` file.
 
-2. Expand the `import from blockstack` statement with data methods.
+2.  Expand the `import from blockstack` statement with data methods.
 
     The `Person` object holds a Blockstack profile. Add `putFile`, `getFile`,
     and `lookupProfile` after `Person`.
 
-		When you are done, the import statement should look like the following:
+        When you are done, the import statement should look like the following:
 
     ```javascript
     import {
-      isSignInPending,
-      loadUserData,
-      Person,
-      getFile,
-      putFile,
-      lookupProfile
+    	isSignInPending,
+    	loadUserData,
+    	Person,
+    	getFile,
+    	putFile,
+    	lookupProfile
     } from 'blockstack';
     ```
 
-3. Replace the `constructor()` initial state so that it holds the key properties required by the app.
+3.  Replace the `constructor()` initial state so that it holds the key
+    properties required by the app.
 
-    This code constructs a Blockstack `Person` object to hold the profile. Your constructor should look like this:
+    This code constructs a Blockstack `Person` object to hold the profile. Your
+    constructor should look like this:
 
     ```javascript
     constructor(props) {
@@ -303,12 +311,12 @@ In this step, you add three `blockstack.js` methods that support posting of "sta
     }
     ```
 
+4) Locate the `render()` method.
+5) Modify the `render()` method to add a text input and submit button to the
+   application.
 
-4. Locate the `render()` method.
-5. Modify the `render()` method to add a text input and submit button to the application.
-
-    The following code echos the `person.name` and `person.avatarURL`
-    properties from the profile on the display:
+    The following code echos the `person.name` and `person.avatarURL` properties
+    from the profile on the display:
 
     ```javascript
     render() {
@@ -367,14 +375,14 @@ In this step, you add three `blockstack.js` methods that support posting of "sta
     }
     ```
 
-   This code allows the application to post statuses. It also displays the
-   user's Blockstack ID. To display this, your app must extract the ID from the
-   user profile data.
+    This code allows the application to post statuses. It also displays the
+    user's Blockstack ID. To display this, your app must extract the ID from the
+    user profile data.
 
-6. Locate the `componentWillMount()` method.
-7. Add the `username` property below the `person` property.
+6) Locate the `componentWillMount()` method.
+7) Add the `username` property below the `person` property.
 
-	 You'll use the Blockstack `loadUserData()` method to access the `username`.
+    You'll use the Blockstack `loadUserData()` method to access the `username`.
 
 
     ```javascript
@@ -426,37 +434,40 @@ In this step, you add three `blockstack.js` methods that support posting of "sta
 
 9. Save the `Profile.jsk` file.
 
-   After the application compiles successfully, your application should appears as follows:
+    After the application compiles successfully, your application should appears
+    as follows:
 
-   ![](images/display-complete.png)
+    ![](images/display-complete.png)
 
 10. Enter your status in the text box and press the **Submit** button.
 
-    At this point, nothing is blogged. In the next section you add code to display
-    the statuses back to the user as a blog entry.
+    At this point, nothing is blogged. In the next section you add code to
+    display the statuses back to the user as a blog entry.
 
 ## Fetch and display statuses
 
 Update `Profile.jsx` again.
 
 1. Go back to the `render()` method.
-2. Locate the `<div className="new-status">` containing the text input and **Submit** button.
+2. Locate the `<div className="new-status">` containing the text input and
+   **Submit** button.
 3. Right after this opening `div` element, add this block.
 
     ```javascript
-    <div className="col-md-12 statuses">
-      {this.state.isLoading && <span>Loading...</span>}
-      {this.state.statuses.map((status) => (
-          <div className="status" key={status.id}>
-            {status.text}
-          </div>
-        )
-      )}
+    <div className='col-md-12 statuses'>
+    	{this.state.isLoading && <span>Loading...</span>}
+    	{this.state.statuses.map(status => (
+    		<div className='status' key={status.id}>
+    			{status.text}
+    		</div>
+    	))}
     </div>
     ```
-   This loads existing state. Your code needs to fetch statuses on page load.
 
-4. Add a new method called `fetchData()` after the `statuses.unshift(status)` section.
+    This loads existing state. Your code needs to fetch statuses on page load.
+
+4. Add a new method called `fetchData()` after the `statuses.unshift(status)`
+   section.
 
     ```javascript
 
@@ -545,23 +556,21 @@ Update `Profile.jsx` again.
 
     ![Multi-reader storage authentication](images/multi-player-storage-status.png)
 
-
-At this point, you have a basic micro-blogging app that users can use to post and
-view statuses. However, there's no way to view other users' statuses. You'll add
-that in the next section.
+At this point, you have a basic micro-blogging app that users can use to post
+and view statuses. However, there's no way to view other users' statuses. You'll
+add that in the next section.
 
 ## Lookup user profiles
 
-Let's now modify the `Profile.jsx` file to display profiles of other users. You'll
-be using the `lookupProfile()` method that you added to the `import` statement
-earlier. `lookupProfile()` takes a single parameter that is the Blockstack ID of
-the profile and returns a profile object.
+Let's now modify the `Profile.jsx` file to display profiles of other users.
+You'll be using the `lookupProfile()` method that you added to the `import`
+statement earlier. `lookupProfile()` takes a single parameter that is the
+Blockstack ID of the profile and returns a profile object.
 
 ### Add a new route
 
 Make some changes to the routing structure of your app so that users can view
 other users' profiles by visiting `http://localhost:8080/other_user.id`
-
 
 1. Make sure you are in the root of your `publik` project.
 2. Install `react-router`:
@@ -574,25 +583,29 @@ other users' profiles by visiting `http://localhost:8080/other_user.id`
 4. Add an `import` to the file at the top:
 
     ```javascript
-    import { BrowserRouter } from 'react-router-dom'
+    import {BrowserRouter} from 'react-router-dom';
     ```
 
 5. Change the `ReactDOM.render()` method in `src/index.js` to:
 
     ```javascript
-    ReactDOM.render((
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    ), document.getElementById('root'));
+    ReactDOM.render(
+    	<BrowserRouter>
+    		<App />
+    	</BrowserRouter>,
+    	document.getElementById('root')
+    );
     ```
+
 6. Save and close the `src/index.js` file.
-7. Edit the  `src/components/App.jsx` file.
-8. Add the new route by importing the `Switch` and `Route` components from `react-router-dom`:
+7. Edit the `src/components/App.jsx` file.
+8. Add the new route by importing the `Switch` and `Route` components from
+   `react-router-dom`:
 
     ```javascript
-    import { Switch, Route } from 'react-router-dom'
+    import {Switch, Route} from 'react-router-dom';
     ```
+
 9. Locate this line below in the `render()` method:
 
     ```javascript
@@ -613,10 +626,10 @@ other users' profiles by visiting `http://localhost:8080/other_user.id`
       </Switch>
     ```
 
-    This sets up a route and captures the route parameter the app will use as the profile lookup username.
+    This sets up a route and captures the route parameter the app will use as
+    the profile lookup username.
 
-11. Save and close the the `src/components/App.jsx` file.
-
+11. Save and close the `src/components/App.jsx` file.
 
 ### Add a rule to process URL paths with . (dot)
 
@@ -624,10 +637,11 @@ You also need to add a rule to your webpack config so that you can properly
 process URL paths that contain the `.` (dot) character for example,
 `http://localhost:8080/other_user.id`
 
-**NOTE**: In a production app, you must ensure the web server is configured to handle this.
+**NOTE**: In a production app, you must ensure the web server is configured to
+handle this.
 
-
-1. Open `webpack.config.js` in the root project directory and locate the following line:
+1. Open `webpack.config.js` in the root project directory and locate the
+   following line:
 
     ```javascript
     historyApiFallback: true,
@@ -647,7 +661,8 @@ process URL paths that contain the `.` (dot) character for example,
 3. Save and close the `webpack.config.js` file.
 
 4. Edit the `src/components/Profile.jsx` file.
-5. Add a single method that determines if the app is viewing the local user's profile or another user's profile.
+5. Add a single method that determines if the app is viewing the local user's
+   profile or another user's profile.
 
     ```javascript
     isLocal() {
@@ -655,7 +670,11 @@ process URL paths that contain the `.` (dot) character for example,
     }
     ```
 
-    You use `isLocal()` to check if the user is viewing the local user profile or another user's profile. If it's the local user profile, the app runs the `getFile()` function you added in an earlier step. Otherwise, the app looks up the profile belonging to the `username` using the `lookupProfile()` method.
+    You use `isLocal()` to check if the user is viewing the local user profile
+    or another user's profile. If it's the local user profile, the app runs the
+    `getFile()` function you added in an earlier step. Otherwise, the app looks
+    up the profile belonging to the `username` using the `lookupProfile()`
+    method.
 
 6. Modify the `fetchData()` method like so:
 
@@ -694,36 +713,39 @@ process URL paths that contain the `.` (dot) character for example,
     }
     ```
 
-     **NOTE**: For `https` deployments, the default Blockstack Core API endpoint for name
-     lookups should be changed to point to a core API served over `https`.
-     Otherwise, name lookups fail due to browsers blocking mixed content.
-     Refer to the [Blockstack.js
-     documentation](http://blockstack.github.io/blockstack.js/#getfile) for
-     details.
+    **NOTE**: For `https` deployments, the default Blockstack Core API endpoint
+    for name lookups should be changed to point to a core API served over
+    `https`. Otherwise, name lookups fail due to browsers blocking mixed
+    content. Refer to the
+    [Blockstack.js documentation](http://blockstack.github.io/blockstack.js/#getfile)
+    for details.
 
-7. Add the following block to `fetchData()` right after the call to `lookupProfile(username)... catch((error)=>{..}` block:
+7. Add the following block to `fetchData()` right after the call to
+   `lookupProfile(username)... catch((error)=>{..}` block:
 
     ```javascript
-    const options = { username: username, decrypt: false }
+    const options = {username: username, decrypt: false};
     getFile('statuses.json', options)
-      .then((file) => {
-        var statuses = JSON.parse(file || '[]')
-        this.setState({
-          statusIndex: statuses.length,
-          statuses: statuses
-        })
-      })
-      .catch((error) => {
-        console.log('could not fetch statuses')
-      })
-      .finally(() => {
-        this.setState({ isLoading: false })
-      })
+    	.then(file => {
+    		var statuses = JSON.parse(file || '[]');
+    		this.setState({
+    			statusIndex: statuses.length,
+    			statuses: statuses
+    		});
+    	})
+    	.catch(error => {
+    		console.log('could not fetch statuses');
+    	})
+    	.finally(() => {
+    		this.setState({isLoading: false});
+    	});
     ```
 
     This fetches the user statuses.
 
-    Finally, you must conditionally render the logout button, status input textbox, and submit button so they don't show up when viewing another user's profile.
+    Finally, you must conditionally render the logout button, status input
+    textbox, and submit button so they don't show up when viewing another user's
+    profile.
 
 8. Replace the `render()` method with the following:
 
@@ -800,15 +822,15 @@ process URL paths that contain the `.` (dot) character for example,
 ### Put it all together
 
 1. Stop the running application by sending a CTL-C.
-2. Restart the application so that the disabling of the `.` (dot) rule takes effect.
+2. Restart the application so that the disabling of the `.` (dot) rule takes
+   effect.
 
     ```bash
     npm start
     ```
 
-3. Point your browser to `http://localhost:8080/your_blockstack.id` to see the final application.
-
-
+3. Point your browser to `http://localhost:8080/your_blockstack.id` to see the
+   final application.
 
 ## Wrapping up
 
