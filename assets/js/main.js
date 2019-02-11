@@ -8774,11 +8774,12 @@
     var _$LiteralSearchStrategy_6 = new LiteralSearchStrategy();
     function LiteralSearchStrategy() {
         this.matches = function(str, crit) {
-            if (typeof str !== "string") {
-                return false;
-            }
-            str = str.trim();
-            return str.toLowerCase().indexOf(crit.toLowerCase()) >= 0;
+            if (!str) return false;
+            str = str.trim().toLowerCase();
+            crit = crit.toLowerCase();
+            return crit.split(" ").filter(function(word) {
+                return str.indexOf(word) >= 0;
+            }).length > 0;
         };
     }
     "use strict";
@@ -8904,11 +8905,9 @@
     function merge(defaultParams, mergeParams) {
         var mergedOptions = {};
         for (var option in defaultParams) {
-            if (Object.prototype.hasOwnProperty.call(defaultParams, option)) {
-                mergedOptions[option] = defaultParams[option];
-                if (typeof mergeParams[option] !== "undefined") {
-                    mergedOptions[option] = mergeParams[option];
-                }
+            mergedOptions[option] = defaultParams[option];
+            if (typeof mergeParams[option] !== "undefined") {
+                mergedOptions[option] = mergeParams[option];
             }
         }
         return mergedOptions;
@@ -8969,10 +8968,6 @@
                 search: search
             };
         };
-        window.SimpleJekyllSearch.init = window.SimpleJekyllSearch;
-        if (typeof window.SimpleJekyllSearchInit === "function") {
-            window.SimpleJekyllSearchInit.call(this, window.SimpleJekyllSearch);
-        }
         function initWithJSON(json) {
             options.success(json);
             _$Repository_4.put(json);
@@ -9026,3 +9021,7 @@
         }
     })(window);
 })();
+
+$(document).ready(function() {
+    anchors.add();
+});
