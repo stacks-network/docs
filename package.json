@@ -25,12 +25,12 @@
   },
   "homepage": "https://github.com/",
   "dependencies": {
-    "simple-jekyll-search": "^1.5.0",
+    "simple-jekyll-search": "^1.7.2",
     "system-font-css": "^2.0.1",
     "uikit": "^3.0.0-beta.42"
   },
   "devDependencies": {
-    "jshint": "^2.9.5",
+    "jshint": "^2.10.1",
     "ncp": "latest",
     "uglify-js": "^3.2.1",
     "watch": "^1.0.2"

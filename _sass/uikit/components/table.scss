@@ -89,7 +89,7 @@ $table-expand-min-width:                         150px !default;
 .uk-table th {
     padding: $table-cell-padding-vertical $table-cell-padding-horizontal;
     text-align: left;
-    vertical-align: top; /* customized: bottom */
+    vertical-align: bottom;
     /* 1 */
     font-size: $table-header-cell-font-size;
     font-weight: $table-header-cell-font-weight;
