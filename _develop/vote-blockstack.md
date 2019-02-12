@@ -14,6 +14,10 @@ Democracy Earth is a platform for borderless peer-to-peer democracy. Every aspec
 
 ## Understand the voting process
 
+<a href="https://www.youtube.com/watch?v=CCkjNu7oBhs&feature=youtu.be" target="\_blank">
+<img border="0" alt="W3Schools" src="images/video-1.png">
+</a>
+
 Two categories of people participate in the voting process. Application miners who have submitted their application for mining are one category. The other people in the process are Stacks token holders who have asked Blockstack for voting privileges. Stacks token holders vote applications up or down; miners respond to questions about their applications.
 
 {% include important.html content="Blockstack may ask token holders to become voters or token holders may request an invitation to vote. If you are a token holder and would like to become a voter, email  <a href='mailto:mining@app.co' target='\_blank'>mining@app.co</a> for more information. Of course, token holders that are also application miners are not eligible to vote." %}
