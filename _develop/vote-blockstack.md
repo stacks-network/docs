@@ -15,7 +15,7 @@ Democracy Earth is a platform for borderless peer-to-peer democracy. Every aspec
 ## Understand the voting process
 
 <a href="https://www.youtube.com/watch?v=CCkjNu7oBhs&feature=youtu.be" target="\_blank">
-<img border="0" alt="W3Schools" src="images/video-1.png">
+<img border="0" alt="Voting Overview" src="images/video-1.png">
 </a>
 
 Two categories of people participate in the voting process. Application miners who have submitted their application for mining are one category. The other people in the process are Stacks token holders who have asked Blockstack for voting privileges. Stacks token holders vote applications up or down; miners respond to questions about their applications.
@@ -153,6 +153,11 @@ You are all done setting up your profile. In the future, make sure that if you l
 7. Confirm your vote.
 
    Your confirmed vote is timestamped and remains on the registered ledger of the application. When you remove your vote, the removal is also recorded on the ledger.
+
+
+   <a href="https://www.youtube.com/watch?v=QwKzTLVnihI&feature=youtu.be" target="\_blank">
+   <img border="0" alt="Reallocating" src="images/video-2.png">
+   </a>
 
 ## Help improve voting and the App Mining process
 
