@@ -5,7 +5,7 @@ permalink: /:collection/:path.html
 # Understand App Mining
 {:.no_toc}
 
-This section explains App Mining, a program for developers. For Blockstack, App Mining is a crucial factor in the growth the base of both blockchain applications and users.  
+This section explains App Mining, a program for developers. For Blockstack, App Mining is a crucial factor in the growth of both blockchain applications and users.  
 
 * TOC
 {:toc}
