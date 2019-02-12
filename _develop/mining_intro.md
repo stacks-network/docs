@@ -3,6 +3,14 @@ layout: learn
 permalink: /:collection/:path.html
 ---
 # Understand App Mining
+{:.no_toc}
+
+This section explains App Mining, a program for developers. For Blockstack, App Mining is a crucial factor in the growth the base of both blockchain applications and users.  
+
+* TOC
+{:toc}
+
+## What is App Mining?
 
 {% include intro-appmining.md %}
 
@@ -55,15 +63,33 @@ you got 90 upvotes and 10 downvotes, you’d get a “likability score” of 90.
 Secondly, Blockstack calculates a “traction score”, which ranks how many total
 votes (including downvotes) an app received, relative to other apps.
 
+
+### TryMyUI
+
+TryMyUI’s panelists score using a special survey they developed expressly for the App Mining program: the ALF Questionnaire (Adoption Likelihood Factors).
+
+Answers to this questionnaire will be used to calculate an overall score reflecting the following 4 factors:
+
+* Usability
+* Usefulness
+* Credibility
+* Desirability
+
+Each factor corresponds to 4 questionnaire items, for a total of 16 items that comprise the ALFQ. Users mark their answers on a 5-point Likert scale, with 5 meaning **Strongly agree** and 1 meaning **Strongly disagree**. The final result is a score for each of the 4 factors, and a composite ALF score.
+
+<img src="images/alf-score.png" alt="">
+
+
 ## Reaching the final scores
 
-Once the reviewer-partners generate reviews, each app has 4 raw scores between 0
+Once the reviewer-partners generate reviews, each app has 5 raw scores between 0
 and 100 for the following:
 
 * Product Hunt community score
 * Product Hunt team score
 * Democracy Earth likability score
 * Democracy Earth traction score
+* TryMyUI ALF score
 
 First Blockstack's determine a ‘z-score’ for each ranking category community,
 team, likability, and traction. This is a statistical technique to account for
