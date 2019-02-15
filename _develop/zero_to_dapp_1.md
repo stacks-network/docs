@@ -8,18 +8,22 @@ image: /assets/img/zero-to-dapp.png
 
 **Zero-to-DApp 1 of 4**
 
-Welcome to the Blockstack Zero-to-DApp tutorial. In this tutorial, you build,
-run, modify, and deploy a decentralized application (DApp) called Animal
-Kingdom. This application makes use of blockchain technology through the use of
-the Blockstack platform. As you follow along, you'll learn what makes a DApp
-different than traditional applications. You'll also learn about the Blockstack
-Signature Fund and its Application Mining designed to fund DApp development.
+Welcome to the Blockstack Zero-to-DApp tutorial. The tutorial uses the
+Blockstack platform to teach you about blockchain technology and the Blockstack
+Ecosystem. The tutorial teaches you what makes a DApp different than a
+traditional application. You'll build and run a DApp. You'll also learn about
+the Blockstack Signature Fund and the Application Mining program which awards funds to DApp developer every month.
 
-The tutorial has four parts of which this is first. This part contains the
+The tutorial has four parts of which this is first, and it contains the
 following topics:
 
 * TOC
 {:toc}
+
+You can complete the entire Zero-to-DApp tutorial in less than 45 minutes. If
+you prefer a 10-minute hello-world code sample, see the [Hello, Blockstack
+Tutorial](browser/hello-blockstack).
+
 
 ### Skills you need to follow this tutorial
 {:.no_toc}
@@ -43,7 +47,8 @@ quickly through the pages and that's fine too.
 
 ## How traditional and decentralized applications differ
 
-A decentralized application (DApp) uses blockchain technology for the
+In this tutorial, you build, run, modify, and deploy a decentralized application
+(DApp) called Animal Kingdom. A DApp uses blockchain technology for the
 authentication and data storage components of an application’s platform.
 Blockchain applications are decentralized applications, meaning they move data
 control and identity management from central authorities and organizations to
