@@ -9,36 +9,48 @@ Democracy Earth developed the `vote.blockstack.org` site for voting on applicati
 
 Democracy Earth is a platform for borderless peer-to-peer democracy. Every aspect of `vote.blockstack.org` is thoughtfully designed with an understanding that governance is about enabling rich exchanges of information. The goal is to surface the optimal collective intelligence of a network.
 
+This page details information related to the voting process and participation rules and contains the following topics:
+
 * TOC
 {:toc}
 
 ## Understand the voting process
 
-<a href="https://www.youtube.com/watch?v=CCkjNu7oBhs&feature=youtu.be" target="\_blank">
-<img border="0" alt="Voting Overview" src="images/video-1.png">
-</a>
-
 Two categories of people participate in the voting process. Application miners who have submitted their application for mining are one category. The other people in the process are Stacks token holders who have asked Blockstack for voting privileges. Stacks token holders vote applications up or down; miners respond to questions about their applications.
 
 {% include important.html content="Blockstack may ask token holders to become voters or token holders may request an invitation to vote. If you are a token holder and would like to become a voter, email  <a href='mailto:mining@app.co' target='\_blank'>mining@app.co</a> for more information. Of course, token holders that are also application miners are not eligible to vote." %}
 
+The following video provides a short, visual introduction to Democracy Earth and the voting process:
+
+<a href="https://www.youtube.com/watch?v=CCkjNu7oBhs&feature=youtu.be" target="\_blank">
+<img border="0" alt="Voting Overview" src="images/video-1.png">
+</a>
+
 ### The value of a vote
 
-App Mining rewards are distributed every month at the end of the month. When
-they accept the voter responsibility, Stacks token holders receive 1000 lifetime
-votes. Voters can distribute some or all of their votes by voting either up or
-down on one or more applications. Of course, if none of the applications are up
-to a voters standards, the voter can abstain from voting entirely.
+When token holders accept the voter responsibility and become a voter, they
+receive 1000 lifetime votes. App Mining rewards are distributed every month at
+the end of the month. So, voters must vote each month before the distribution.
+You can expect to review and vote between the start and end of each month.
 
-Votes are a valuable resource. They ultimately help shape the future of blockchain development by directing financial support to innovative development efforts. As a voter, you are expected to try out each application and evaluate it just as an angel investor would do.
+Votes are a valuable resource. They ultimately help shape the future of blockchain development by directing financial support to innovative development efforts. As a voter, you are expected to review each application and speak with the app developers. This evaluation is similar to the evaluation process of any early-stage angel investor.
+
+After evaluating applications, you can distribute some or all of your 1000
+votes. You distribute votes by voting an application either up (approval) or
+down (disapproval). You can take votes you bestowed the previous month on one
+application and give them to another. Of course, if none of the applications are
+up to your standards, you can abstain from voting entirely that month.
+
 
 ### How app miners participate
 
-Choosing how to allocate votes for a monthly payout of 100k is not a trivial task. Questioning and constructive feedback are enormously insightful input for app miners. Each app has a **Debate** section where voters and app miners can interact directly with each other.
+Choosing how to allocate votes for a monthly payout of 100k is not a trivial task. To help voters learn more, each app has a **Debate** section where voters and app miners can interact with each other. Questioning and constructive feedback are enormously insightful input for app miners.
 
 <img src="images/de-debate.png" alt="">
 
-App miners are encouraged to introduce themselves, explain their goals, and share more about their work. Voters are encouraged to inquire and provide feedback as much as possible. Remember, everyone's joint goal is to build an application ecosystem where all users control their data.
+Voters are encouraged to inquire and provide feedback as much as possible.
+
+Similarly, app miners are encouraged to introduce themselves, explain their goals, their applications, and share more about their work.  Remember, everyone's joint goal is to build an application ecosystem where all users control their data.
 
 
 ### When voting occurs
@@ -47,9 +59,7 @@ New applications are added to Democracy Earth at the start of every month. All n
 
 <img src="images/de-new.png" alt="">
 
-Apps from a previous month remain eligible for voting. This means the pool of applications expands each month. The reason for this is that applications are evolving products, they evolve the quality or expand their features. A product you thought wasn't so good could make a giant leap forward from one month to the next.  
-
-All applications appear in a randomized order so all can receive equal attention from voters.
+Apps from a previous month remain eligible for voting. This means the pool of applications expands each month. The reason for this is that applications are evolving products, they evolve the quality or expand their features. A product you thought wasn't so good could make a giant leap forward from one month to the next.  Applications appear in a randomized order so all can receive equal attention from voters.
 
 Every month, all voters receive a newsletter with updates related to App Mining's vote. The newsletter contains additional timing-related reminders. If you are a voter make sure you add <a href='mailto:appmining@democracy.earth' target='\_blank'>appmining@democracy.earth</a> to your contacts list. This prevents the newsletter from going to your Spam folder.
 
@@ -65,12 +75,24 @@ Blockstack uses votes to calculate a _likability score_ and a _traction score_ f
 
 ## Create a voter or app miner profile on Democracy Earth
 
-If you are a voter or an application miner, you create a profile on Democracy Earth's `vote.blockstack.org` site. Participation on the site is controlled by the email in your Democracy Earth profile; so the email you use matters.
+Both voters and an application miners create a profile on Democracy Earth's `vote.blockstack.org` site. Participation on the site is controlled by the email in your Democracy Earth profile; so the email you use matters. Your profile needs to use a specific email:
 
-Democracy Earth supports authentication with a Blockstack identity. When you authenticate into the site, it builds a profile using the email associated with your Blockstack ID. Your profile needs to use a specific email.
+<table class="uk-table uk-table-small uk-table-divider">
+  <thead><tr>
+    <th class="uk-width-1-3">You are</th>
+    <th>Email to use</th>
+  </tr></thead>
+<tbody>  <tr>
+    <td>voter</td>
+    <td>Use the same email you use when communicating with Blockstack about your tokens.</td>
+  </tr>
+  <tr>
+    <td>app miner</td>
+    <td>Use the email you provided when submitting your application to App Mining (app.co site).</td>
+  </tr></tbody>
+</table>
 
-* If you are an application miner, this email must be the one you provided when submitting your application to App Mining.
-* If you are a Stacks token holder, this email must should be the same email you use when communicating with Blockstack about your tokens.
+Democracy Earth supports authentication with a Blockstack identity. When you authenticate into the site, it builds a profile using the email associated with your Blockstack ID.
 
 If for some reason you can't recall the proper email or the email that appears in your profile does not match the email required to vote, don't worry. You can change that email later after you create a profile.
 
@@ -111,7 +133,7 @@ To create a voter profile, do the following:
    how you complete your profile. Provide a pseudonym and a username not
    generally associated with your public identity. By default, Democracy Earth
    initiates the profile with the username portion of your ID, but you can
-   change it afterward at any time.
+   change it afterward at any time .
 
 10. Edit the **FIRST NAME**, **SURNAME**, and **USERNAME FIELDS** in your profile.
 
@@ -127,8 +149,7 @@ To create a voter profile, do the following:
 
 You are all done setting up your profile. In the future, make sure that if you log out of Democracy Earth that you always log back in with the Blockstack ID you used to set up your profile.
 
-
-## How to vote
+## Vote for applications
 
 1. Log into the <a href="https://vote.blockstack.org/" target="\_blank">https://vote.blockstack.org/</a> site.
 2. Locate an app to vote on.
@@ -146,18 +167,32 @@ You are all done setting up your profile. In the future, make sure that if you l
 
    The intensity bar appears.
 
-6. Slide the bar appropriately for the number of votes you want to apply.
-
    <img src="images/de-slider.png" alt="">    
+
+6. Slide the bar appropriately for the number of votes you want to apply.
 
 7. Confirm your vote.
 
    Your confirmed vote is timestamped and remains on the registered ledger of the application. When you remove your vote, the removal is also recorded on the ledger.
 
 
-   <a href="https://www.youtube.com/watch?v=QwKzTLVnihI&feature=youtu.be" target="\_blank">
-   <img border="0" alt="Reallocating" src="images/video-2.png">
-   </a>
+## Change the email in your Democracy Earth profile
+
+If the email address associated with your Blockstack ID is not the proper e-mail, you can change the email in your profile. To change your email, do the following:
+
+1. Click on the profile icon.
+
+   The system displays your identity.
+
+2. Click on the profile photo to edit your profile information.
+
+    <img src="images/profile-icon.png" alt="">
+
+3. Edit the **E-MAIL** field.
+
+   e<img src="images/email-edit.png" alt="">
+
+4. Press **Save Profile**.
 
 ## Help improve voting and the App Mining process
 
