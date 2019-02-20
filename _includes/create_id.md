@@ -55,7 +55,7 @@ To create an initial Blockstack ID, do the following:
     an `id.blockstack` that you've created.  You should store the words along
     with their order, for example,  `#1 applied` and so forth.
 
-    ![]({{ site.baseurl }}/browser/images/create-id-4=5.png)
+    ![]({{ site.baseurl }}/browser/images/create-id-5.png)
 
 6.  Copy your **Magic Recovery Code** and **Secret Recovery** key.
 
