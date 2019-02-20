@@ -11,7 +11,7 @@ data _on their corporate servers_.
 
 Blockstack DApps do not allow applications to store your data on the
 application's corporate servers. Instead, you store your data with a _storage
-provider_ you choose. A storage provider gives you personal storage for your
+provider_ you choose. A Gaia hub provider gives you personal storage for your
 application data.
 
 If you want to walk away from a particular DApp, there’s no need even to export
@@ -19,21 +19,21 @@ your data. You  simply stop using the DApp and it no longer can read or modify
 your data. And if you want to start using a different DApp with the same data,
 you can.
 
-## Understand storage providers
+## Understand Gaia hub providers
 
 The Blockstack Ecosystem provides a technology for data storage called, Gaia.
 Gaia is _storage hub_ technology for storing application data. A storage
 provider is simply an organization that implemented Gaia and is providing
-storage hubs for users. Any organization or person can create a Gaia storage hub
-and become a storage provider.
+storage hubs for users. Any organization or person can create a Gaia storage
+system and become a Gaia hub provider.
 
 These providers host data in one or more existing storage systems of their
 choice. These storage systems are typically cloud storage systems such as
 Amazon, Dropbox, iCloud or Azure to name a few.
 
 Users that create an identity in the Blockstack Browser are given a choice of
-which data storage provider to use. Blockstack itself runs a Gaia storage hub and acts
-as a storage provider. The default choice is the Blockstack-run storage hub.
+which Gaia hub provider to use. Blockstack itself runs a Gaia hub and acts
+as a hub provider. The default choice is the Blockstack-run Gaia hub.
 
 Every provider will store your data at a particular address or URL. These
 addresses look similar to any address you put in your web browser. When you log

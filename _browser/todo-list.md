@@ -129,7 +129,7 @@ In request.
 A Blockstack Core node also generates a public key token which is sent to the
 browser as an `authRequest` from the browser to your core node. The signed
 authentication request is sent to Blockstack through a JSON Web Token (JWT).
-Blocktack passes the token in via a URL query string in the authRequest
+Blocktack passes the token in via a URL query string in the `authRequest`
 parameter:
 
 `https://browser.blockstack.org/auth?authRequest=j902120cn829n1jnvoa...`

@@ -1,6 +1,7 @@
 Term,Definition,Areas
 App Review,An incentive mechanism for application developers in the early stage (first four years) of the ecosystem and helps with bootstrapping the two-sided market.,
 App Mining,"​​A system where the Blockstack community funds decentralized app teams.",
+association token,"A whitelisted key used in a Gaia Storage system.",Blockstack Tech
 Atlas,A peer network provide a global index for discovery,Blockstack Tech
 block,"A discrete group of records written to a blockchain that can effectively be identified and referenced by the
 use of headers that contain a digital fingerprint of the records each block contains.",Filing
@@ -46,8 +47,8 @@ replicated state machines (RSMs),"This is a model for reasoning about distribute
 smart contract,"A smart contract is a computer program written to a blockchain such as the Blockstack blockchain by developers. This computer program defines the various network operations that can be performed on the digital assets on the blockchain, the computations that can be performed using the smart contract, along with defining various important properties of the respective digital assets like ownership rights and the cost in fuel required to register the digital assets.",Filing
 soft fork,"A soft fork is a proposed update to the software governing the network that results in a post-update network that is compatible with the network as it existed prior to the update, because it restricts the network operations that can be performed after the update.",Filing
 Stacks blockchain,The Stacks blockchain is the custom blockchain being developed for use by the Blockstack network that will use the Stacks token as its native currency and which will include the genesis block and subsequent blocks created by the mining activities described in The Blockstack Network—Development of the Blockstack network.,Filing
-storage hub,"An Gaia instance run by a storage provider or software. A storage hub stores data in separate, addressed locations within the hub.",Blockstack Tech
-storage provider,"A third-party company or software provider that hosts one or more Gaia storage hubs.",Blockstack Tech
+storage hub,"An Gaia instance run by a hub provider or software. A Gaia hub stores data in separate, addressed location.",Blockstack Tech
+storage provider,"A third-party company cloud or software provider that hosts one or more Gaia storage hubs.",Blockstack Tech
 transaction,"A transaction is a unit of work within a block.",General Tech
 transaction fee,"Fees paid by participants in a transaction to miners.",Blockstack Tech
 two-sided market problem,Economic platforms having two distinct user groups that provide each other with network benefits. The Blockstack platform is a classic two-sided market.,

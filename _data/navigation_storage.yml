@@ -1,0 +1,19 @@
+- title: Introduction to Gaia storage
+  docs:
+  - storage/overview
+  - storage/authentication
+  - storage/write-to-read
+  - storage/hub-choice
+
+- title: How to hub
+  docs:
+  - storage/hub-operation
+  - storage/amazon-s3-deploy
+  - storage/hello-hub-choice
+  - storage/gaia-admin
+
+- title: Reference
+  docs:
+  - storage/config-schema
+  - storage/cliDocs
+  - common/javascript_ref

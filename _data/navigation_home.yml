@@ -23,7 +23,7 @@
 - title: Implement Storage with Gaia
   desc: Backend storage drivers and interactions between developer APIs and the Gaia service.
   icon: database
-  doc: storage/gaia_redirect
+  doc: storage/overview
 
 - title: Blockstack Community
   desc: view upcoming events, become a contributor or evangelist.
