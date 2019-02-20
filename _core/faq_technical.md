@@ -97,7 +97,7 @@ Blockstack, like Linux, is an open-source project with a GPLv3 license for the c
 
 ## Where is my data stored and how do I control who access it?
 
-You control where your data is stored (you could run your own server, or use your own cloud storage - Dropbox, Amazon S3, and keep backups across all). You then use those places as locations pointed to by the URLs in your Blockstack ID's zone file. 
+You control where your data is stored (you could run your own server, or use your own cloud storage - Dropbox, Amazon S3, and keep backups across all). You then use those places as locations pointed to by the URLs in your Blockstack ID's zone file.
 
 ## Why should I trust the information, like name ownership or public key mappings, read from Blockstack?
 
@@ -145,8 +145,8 @@ Yes, the Blockstack network will keep running. All of Blockstack's code is open-
 As a Blockstack user, you can choose exactly where your data gets stored.
 Blockstack uses a decentralized storage system called
 [Gaia](https://github.com/blockstack/gaia) to host your data.  Gaia is different
-from other storage systems because it lets you securely host your data wherever you want---in cloud
-storage providers, on your personal server, or in another decentralized storage
+from other storage systems because it lets you securely host your data wherever you want &mdash; in cloud
+software providers, on your personal server, or in another decentralized storage
 system like BitTorrent or IPFS.
 
 When you register, you are given a default Gaia hub that replicates your

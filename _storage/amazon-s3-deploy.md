@@ -5,7 +5,7 @@ permalink: /:collection/:path.html
 # Configure a hub on Amazon EC2
 {:.no_toc}
 
-This teaches you how to run a Gaia hub on Amazon EC2. Amazon EC2 is an affordable and convenient cloud server provider. This example uses Amazon EC2 together with an EB3 instance for file storage.
+This teaches you how to run a Gaia hub on Amazon EC2. Amazon EC2 is an affordable and convenient cloud computing provider. This example uses Amazon EC2 together with an EB3 instance for file storage.
 
 * TOC
 {:toc}
@@ -66,11 +66,15 @@ If `watch` is not located, install it on your workstation.
 
 6. Select the most recent version of the image.
 
-   The system displays **Step 2: Choose an Instance Type** page.
+   You can choose an image that uses ephemeral or EBS storage. The ephemeral storage is very small but free. Only choose this if you plan to test or use a personal hub. Otherwise, choose the AMI for elastic block storage (EBS).
+
+   After you select an image, the system displays **Step 2: Choose an Instance Type** page.
 
     ![](/storage/images/tier-2-image.png)
 
 7. Select **t2.micro** and choose **Next: Configure Instance Details**.
+
+   <hr>
 
    1. Select a VPC.
 
@@ -127,34 +131,39 @@ If `watch` is not located, install it on your workstation.
          </tr>
          <tr>
            <td><code>&lt;STAGING_VALUE&gt;</code></td>
-           <td>Indicates what type of SSL to create, testing (`1`) or production (`0`). Set testing if you want to test without worrying about rate limiting. For this example, use production (`0`).
+           <td><p>Indicates what type of SSL to create, testing (`1`) or production (`0`). Set testing if you want to test without worrying about rate limiting. A testing cerificate is not secure.</p>
+
+           <p>For this tutorial, use production (`0`).</p>
            </td>
          </tr>
         </table>
 
-      When you are done, your details should look like the following:
+     6. Check your **Advanced Details** they should look similar to the following:
 
-      ```
-      {
-        "ignition": { "version": "2.2.0" },
-        "storage": {
-          "files": [{
-            "filesystem": "root",
-            "path": "/etc/environment",
-            "mode": 420,
-            "contents": {
-              "source": "data:application/octet-stream,API_KEY%3Dhubba%0ADOMAIN%3Dmaryhub.ml%0ASTAGING%3D0"
+          ```
+          {
+            "ignition": { "version": "2.2.0" },
+            "storage": {
+              "files": [{
+                "filesystem": "root",
+                "path": "/etc/environment",
+                "mode": 420,
+                "contents": {
+                  "source": "data:application/octet-stream,API_KEY%3Dhubba%0ADOMAIN%3Dmaryhub.ml%0ASTAGING%3D0"
+                }
+              }]
             }
-          }]
-        }
-      }
-      ```     
+          }
+          ```     
+
+    At this point, you have configured your instance details.  
+    <hr>
 
 8. Choose **Next: Add Storage**.
 
-   The AMI specifies a 10 MB SSD volume as a default.
-
    ![](/storage/images/add-storage.png)  
+
+   The storage is set according to the AMI you selected.
 
 9. Choose **Next: Add tags**.
 10. Add a **Key** of `purpose` with the **Value** `gaia`.
@@ -294,62 +303,21 @@ These instructions assume you have already created a free <a href="https://www.f
 
    If you receive another **Your connection is not private** dialogs, proceed to your domain.
 
+8. Refresh or renter the domain name fo your Gaia hub.
+
+  The *Not secure* message should no longer appear in the browser bar.
+
+9. Check the SSL certificate for your hub.
+
+  Each browser has its own check procedure, for example, Chrome:
+
+  ![](/storage/images/cert-check.png)     
+
+
 At this point, you have the following. An EC2 instance running Gaia and a DNS
 record pointing your domain to this instance.
 
 
-## Task 4: Set up your SSL certificates
-
-In this section you setup your SSL certificates.  These steps require you to interact from a workstation command line with your running EC2 instance.
-
-1. Open a terminal on your local workstation.
-2. Confirm the hub DNS is set correctly with the following command:
-
-   ```bash
-   watch -n 2 -t -g -x host <domain>
-   ```
-
-   Substitute your domain name for the `<domain>` variable. For example:
-
-   ```bash
-   watch -n 2 -t -g -x host maryhub.ga
-   maryhub.ml has address 34.219.71.143
-   ```
-
-   If the command returns the correct IP, the same as appears on your EC2 dashboard, stop the process with a` CTRL-C` on your keyboard.
-
-3. Change the permissions on your downloaded `.pem` file.
-
-   For example, this
-
-   ```
-   chmod 400 <location-of-pem>
-   ```
-
-4. SSH from your workstation and restart it.
-
-   This process requires that you know the location of the `.pem` file you downloaded when you created the keypair.
-
-   ```
-   ssh -t -i <your keyfile.pem> -A core@<public ip address> "sudo systemctl restart reset-ssl-certs.service"
-   ```
-
-   For example:
-
-   ```
-   $ ssh -t -i /Users/manthony/gaia.pem -A core@34.219.71.143 "sudo systemctl restart reset-ssl-certs.service"
-   Connection to 34.219.71.143 closed.
-   ```
-
-5. Refresh or renter the domain name fo your Gaia hub.
-
-   The *Not secure* message should no longer appear in the browser bar.
-
-6. Check the SSL certificate for your hub.
-
-   Each browser has its own check procedure, for example, Chrome:
-
-   ![](/storage/images/cert-check.png)     
 
 
 ## Tips and tricks
@@ -466,27 +434,45 @@ ExecStart=/bin/bash -x /gaia/docker/nginx/certbot/reset-certs.sh
 [Install]
 ```
 
-### Regenerate the certificates
+### Restart services and reload certificates
 
-To regenerate certificates:
+This procedures requires you to interact from a workstation command line with your running EC2 instance.
 
-1. Edit the `/etc/environment` file.
+1. Open a terminal on your local workstation.
+2. Confirm the hub DNS is set correctly with the following command:
 
-   ```
-   sudo vi /etc/environment
-   ```
-
-2. Change the values in the file.
-
-   If `STAGING` value is set to `1`, the service generates a staging certificate for localhost. Staging certificates are not valid for production, use them only for testing. A value of `0` generates a valid  certificate for use in production.
-
-3. Restart the `reset-ssl-certs.service` service.
-
-   This service restarts the services with the new certificates.
-
-   ```
-   $ sudo systemctl restart reset-ssl-certs.service
+   ```bash
+   watch -n 2 -t -g -x host <domain>
    ```
 
-You can run `sudo systemctl restart reset-ssl-certs.service` at anytime to
-regenerate valid certifications.
+   Substitute your domain name for the `<domain>` variable. For example:
+
+   ```bash
+   watch -n 2 -t -g -x host maryhub.ga
+   maryhub.ml has address 34.219.71.143
+   ```
+
+   If the command returns the correct IP, the same as appears on your EC2 dashboard, stop the process with a` CTRL-C` on your keyboard.
+
+3. Change the permissions on your downloaded `.pem` file.
+
+   For example, this
+
+   ```
+   chmod 400 <location-of-pem>
+   ```
+
+4. SSH from your workstation and restart it.
+
+   This process requires that you know the location of the `.pem` file you downloaded when you created the keypair.
+
+   ```
+   ssh -t -i <your keyfile.pem> -A core@<public ip address> "sudo systemctl restart reset-ssl-certs.service"
+   ```
+
+   For example:
+
+   ```
+   $ ssh -t -i /Users/manthony/gaia.pem -A core@34.219.71.143 "sudo systemctl restart reset-ssl-certs.service"
+   Connection to 34.219.71.143 closed.
+   ```

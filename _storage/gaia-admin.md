@@ -135,20 +135,22 @@ The `reloadSettings` configure the command that is used to reload your Gaia hub.
 
 ## Using the admin service APIs
 
-You use the admin service APIs to manage the hub. Get calls require that you pass the `API_KEY` set in the admin service config:
+You use the admin service APIs to manage the hub. Administrating a hub requires
+that you make calls from a terminal on your hub service server. To execute admin
+functions on a Gaia hub created with AWS, you `ssh` into your instance as follows:
 
 ```bash
-$ export API_KEY="hello"
+ssh -t -i <your keyfile.pem> -A core@<public ip address>
 ```
 
-`POST` calls require that you supply your AWS access and secret key pair.
+You must also set the `API_KEY` in your environment:
 
 ```bash
-$ export AWS_ACCESS_KEY="<hidden>"
-$ export AWS_SECRET_KEY="<hidden>"
+export API_KEY="hello"
 ```
 
-You may also find it useful to install a JSON processor such as `jq` to process the output of the commands.
+You may find it useful to install a JSON processor such as `jq` to process the
+output of the admin commands.
 
 
 ### Restart the Gaia Hub (`POST /v1/admin/reload`)

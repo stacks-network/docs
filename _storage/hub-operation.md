@@ -41,7 +41,7 @@ the hub server. Alternatively, you can specify a file location using the
 ```
 
 You can specify the logging level, the backend driver, the credentials
-for that backend driver, and the `readURL` for the cloud storage provider.
+for that backend driver, and the `readURL` of the hub. Typically, this is the URL for the compute resource on the cloud computing provider &mdash; where the hub service is running.
 
 ### Require the correct hub URL
 

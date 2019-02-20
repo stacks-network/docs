@@ -23,7 +23,7 @@ The following diagram depicts the Blockstack architecture and Gaia's place in it
 ## User control or how is Gaia decentralized?
 
 A Gaia hub runs as a service which writes to data storage. The hub service
-writes to data storage by requiring a valid authentication token from a requestor. Typically, the hub service runs on a compute resource and the storage itself on separate, dedicated storage resource. Typically, both resources belong to the same cloud vendor.
+writes to data storage by requiring a valid authentication token from a requestor. Typically, the hub service runs on a compute resource and the storage itself on separate, dedicated storage resource. Typically, both resources belong to the same cloud computing provider.
 
 ![Gaiastorage](/storage/images/gaia-storage.png)
 

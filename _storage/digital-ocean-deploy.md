@@ -5,7 +5,7 @@ permalink: /:collection/:path.html
 # Configure a hub on DigitalOcean
 {:.no_toc}
 
-This teaches you how to run a Gaia storage hub on DigitalOcean (DO). DigitalOcean is an affordable and convenient cloud server provider. This example uses DigitalOcean Spaces for file storage. DigitalOcean Spaces is equivalent to AWS's S3 file storage solution.
+This teaches you how to run a Gaia storage hub on DigitalOcean (DO). DigitalOcean is an affordable and convenient cloud computing provider. This example uses DigitalOcean Spaces for file storage. DigitalOcean Spaces is equivalent to AWS's S3 file storage solution.
 
 DigitalOcean provides you with a compute machines known as a **Droplets** and  storage called a **Spaces**. You need both to run a Gaia hub. The Gaia hub setup you create here, requires get a Digital Droplet with Docker pre-installed and a 250 GB Space. Each run for $5/month or a total of $10/month.
 

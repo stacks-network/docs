@@ -68,6 +68,20 @@ In this section, you build an initial React.js application called `hello-hub-cho
     ```
     {% endraw %}
 
+5. Verify that you have version `18.3.0` of blockstack.js or higher.
+
+   ```
+   $ npm ls blockstack
+    hello-blockstack@0.0.0 /Users/manthony/sampleapps/hello-blockstack
+    └── blockstack@18.3.0
+   ```
+
+   If you don't have the correct version, install it.
+
+   ```
+   npm install blockstack@18.3.0
+   ```
+
 
 Depending on your environment you may have some problems with the `npm` packages. Go ahead and fix these before continuing to the next section.
 
