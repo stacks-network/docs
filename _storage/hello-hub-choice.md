@@ -2,7 +2,7 @@
 layout: storage
 permalink: /:collection/:path.html
 ---
-# Hello Hub Choice Tutorial
+# Hello hub choice tutorial
 {:.no_toc}
 
 In this tutorial, you build on the <a href="{{ site.baseurl }}/browser/hello-blockstack.html" target="\_blank">Hello, Blockstack Tutorial</a>. You'll modify the authentication code so that it prompts users who have not yet created a Blockstack identity, to choose a hub URL.

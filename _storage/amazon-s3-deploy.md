@@ -46,7 +46,7 @@ If `watch` is not located, install it on your workstation.
 
    ![](/storage/images/aws-console.png)
 
-2. Make sure your region is set to one close to layout.
+2. Make sure your region is set to one close to you.
 
    ![](/storage/images/us-west-2.png)
 
@@ -66,15 +66,24 @@ If `watch` is not located, install it on your workstation.
 
 6. Select the most recent version of the image.
 
-   You can choose an image that uses ephemeral or EBS storage. The ephemeral storage is very small but free. Only choose this if you plan to test or use a personal hub. Otherwise, choose the AMI for elastic block storage (EBS).
+   Each image name has this format:
 
-   After you select an image, the system displays **Step 2: Choose an Instance Type** page.
+   `blockstack-gaia_hub-STORAGETYPE-VERSION-hvm - ami-BUILDTAG`
+
+    So, the `blockstack-gaia_hub-ephemeral-0001.0.1-hvm - ami-0425cf8c91bb2d331` image uses ephemeral storage, is at version `0001.0.1` and has the `0425cf8c91bb2d331` tag.
+
+    You can choose an image that uses ephemeral or EBS storage. The ephemeral
+    storage is very small but free. Only choose this if you plan to test or use
+    a personal hub. Otherwise, choose the AMI for elastic block storage (EBS).
+
+    After you select an image, the system displays **Step 2: Choose an Instance Type** page.
 
     ![](/storage/images/tier-2-image.png)
 
 7. Select **t2.micro** and choose **Next: Configure Instance Details**.
 
    <hr>
+   To configure instance details, do the following:
 
    1. Select a VPC.
 
@@ -219,7 +228,7 @@ If `watch` is not located, install it on your workstation.
 
     ![](/storage/images/aws-launch-status.png)   
 
-During the instance launch, the machine image on the instance performs some initial setup processes. These processes take a few minutes depending on the minutes, typically thought it should not take more than 10 mins. While this is happening your **Status Checks** reflect the **Initializing** status.
+During the launch process the machine starts and runs some initial setup processes. These processes take a few minutes depending on the network, typically launching does not take more than 10 minutes. While this is happening the instance **Status Checks** reflect the **Initializing** status.
 
 ![](/storage/images/instance-initialize.png)
 
@@ -268,7 +277,7 @@ Now, you are ready to test your Gaia server and make sure it is up and running.
     ![Hub test](/storage/images/aws-hub.png)
 
     At this point, you should see a **Not secure** message in the browser.
-    That's because you haven't yet enabled SSL certification. While `HTTPs` is
+    That's because you haven't yet enabled SSL certification. While `HTTPS` is
     not required simple to run the hub services, Blockstack will only connect to
     a hub and write to its storage over a valid `HTTPS` connection.
 
@@ -301,26 +310,19 @@ These instructions assume you have already created a free <a href="https://www.f
 
    ![Domain test](/storage/images/domain-test.png)
 
-   If you receive another **Your connection is not private** dialogs, proceed to your domain.
-
-8. Refresh or renter the domain name fo your Gaia hub.
-
-  The *Not secure* message should no longer appear in the browser bar.
+   If you receive another **Your connection is not private** dialogs, take the option to proceed to your domain. The *Not secure* message should no longer appear in the browser bar. If the message does appear, try waiting a few minutes for your recent changes to propagate across the net domain servers. Then, refresh the page.
 
 9. Check the SSL certificate for your hub.
 
-  Each browser has its own check procedure, for example, Chrome:
+   Each browser has its own check procedure, for example, Chrome:
 
-  ![](/storage/images/cert-check.png)     
-
+   ![](/storage/images/cert-check.png)     
 
 At this point, you have the following. An EC2 instance running Gaia and a DNS
 record pointing your domain to this instance.
 
 
-
-
-## Tips and tricks
+## AWS hub tips and tricks
 
 Once your Gaia storage hub is up and running on AWS, you may occassionally need to troubleshoot. This section contains some useful information for interacting with your EC2 instance.
 
