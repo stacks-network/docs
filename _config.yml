@@ -146,6 +146,7 @@ exclude:
   - _data/*.yml
   - _data/*.csv
   - _data/cliRef.json
+  - _storage/digital-ocean-deploy.md
 
 sass:
   style:            compressed

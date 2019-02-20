@@ -207,7 +207,7 @@ The following table describes the key interactions and screens in the DApp.
   </a>
   </div></td>
   <td>
-  <p>Users can add subjects from territories in their own Animal Kingdom. The DApp updates the user's GAI hub each time the user adds a subject. Users can also visit other Animal Kingdom installations and add subjects from these as well. You'll learn how to modify the <b>Other Kingdoms</b> available in your installation.
+  <p>Users can add subjects from territories in their own Animal Kingdom. The DApp updates the user's Gaia hub each time the user adds a subject. Users can also visit other Animal Kingdom installations and add subjects from these as well. You'll learn how to modify the <b>Other Kingdoms</b> available in your installation.
   </p>
   </td>
 </tr>
