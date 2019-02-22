@@ -49,6 +49,10 @@
         "answer": "<p>Complete <a href='https://app.co/submit#'>the submission form on App.co</a>. Blockstack suggests registering several days before the ranking deadline — our team needs to verify your details to ensure your app qualifies. Full enrollment details can be found <a href='https://docs.blockstack.org/develop/mining_enroll.html' target='_blank'>here</a>. When you have met all the requirements, you should see your app listed <a href='https://app.co/mining/apps'>on this page</a>.</p>"
       },
       {
+        "question":"When are my submission materials due?",
+        "answer": "<p>Your submission materials are due at 11:59 PM Eastern Time US on the last day of each month. For example, if you are making a submission for March, your materials must be submitted on or before Feb 28 at 11:59 EST.</p>"
+      },
+      {
         "question":"How often can I submit my application for App Mining?",
         "answer": "<p>You need only to submit your application once.  Each month after your
         submission, your app is competing in App Mining.  </p>"
@@ -120,7 +124,11 @@
         "question":"Can developers engage with voters on Democracy Earth?",
         "answer": "<p>As of this time, they cannot. In the future, a feature that could be
         interesting here is allowing developers to comment only on their app and not
-        others.  </p>"
+        others.   </p>"
+      },
+      {
+        "question":"When are the winning payments made?",
+        "answer": "<p>Payouts are made on the 15th of every month.</p>"
       },
       {
         "question":"What’s the incentive for user voting? ",
