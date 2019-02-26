@@ -431,8 +431,8 @@ Before you begin, you need to build a site that is ready to deploy.
     To copy them with the `ls` command, enter the following in the root of the `animal-kingdom-master` project.
 
     ```bash
-    cp cors/_headers public
-    cp cors/_redirects public
+    cp cors/_headers build
+    cp cors/_redirects build
     ```
 
     The name of each file, with the underscore, is essential.
