@@ -808,5 +808,4 @@ process URL paths that contain the `.` (dot) character for example,
 ## Wrapping up
 
 Congratulations, you are all done! We hope you've enjoyed learning a bit more
-about Blockstack. To use a working version of the app go
-[here](http://publik.ykliao.com).
+about Blockstack. 
