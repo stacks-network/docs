@@ -3,10 +3,10 @@ layout: learn
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 2 Learn about the Blockstack platform
+# 2 Learn about the Blockstack platform (Windows)
 {:.no_toc}
 
-**Zero-to-DApp 2 of 4 for MacOS/Linux (or [Windows](zero_to_dapp_2_win.html))**
+**Zero-to-DApp  2 of 4 for Windows (or [MacOS/Linux](zero_to_dapp_2.html))**
 
 In this part, you learn how the Blockstack platform lowers the barriers to
 building with blockchain technology. You'll set up all the prerequisites you
@@ -44,13 +44,17 @@ effort developing additional knowledge of specialized languages or technologies.
 To follow the procedures in the rest of this tutorial, you need the following:
 
 * A Blockstack ID (identity) to test your Animal Kingdom.
-* Access to the Mac terminal window and some familiarity with the command line it provides.
+* Access to the Windows Powershell window and some familiarity with the command line it provides.
 * An installation of the XCode command-line tools to support Node Package Manager (`npm`)
 * The Node Package Manager package manager.
 
 Follow the procedures in this section to install these components.
 
-{% include note.html content="For best results, please use the Chrome browser for this tutorial. Currently, the Blockstack Browser works best in Chrome and you can encounter problems using browsers such as Safari or Firefox. We are working on a fix for these issues." %}
+<div class="uk-card uk-card-default uk-card-body">
+<h5>Windows versions and browser clients tested against this setup</h5>
+<p>This setup procedure was tested on Windows 7 and Windows 10 images using VirtualBox. The Chrome browser was used in both environments. For best results, you should use Chrome as well. Currently, IE and the Edge browsers are not supported with Blockstack Dapps.
+</p>
+</div>
 
 
 ### Confirm or get a Blockstack ID
@@ -77,59 +81,34 @@ is an example of an identity.
 ###  Ensure command-line access
 {:.no_toc}
 
-If you are using a Mac, you can find the **terminal** in the **Application >
-Launchpad > Other** folder.
+If you are using Windows 10 Enterprise Edition, you search for the **Powershell** from the **Start Menu**.
 
-<img src="images/terminal.png" alt="">
+<img src="images/powershell.png" alt="">
 
-If you don't often use the command line, take a moment to test some common commands.
+Click on the Powershell icon to open the shell.
+
+<img src="images/windows-cmndline.png" alt="">
+
+If you don't often use the Powershell, take a moment to test some common commands.
 
 <table class="uk-table uk-table-small uk-table-divider">
-  <tr>
-    <th>Command</th>
-    <th>What it does</th>
-  </tr>
-  <tr>
-    <td><code>pwd</code></td>
-    <td>Print the name of the working directory; the current directory your command line is in.</td>
-  </tr>
-  <tr>
-    <td><code>ls</code></td>
-    <td>Lists the files and directories in the current directory.</td>
-  </tr>
-  <tr>
-    <td><code>cd</code></td>
-    <td>Change directory to navigate to locations in your file system.</td>
-  </tr>
+ <tr>
+   <th>Command</th>
+   <th>What it does</th>
+ </tr>
+ <tr>
+   <td><code>pwd</code></td>
+   <td>Print the name of the working directory; the current directory your command line is in.</td>
+ </tr>
+ <tr>
+   <td><code>ls</code></td>
+   <td>Lists the files and directories in the current directory.</td>
+ </tr>
+ <tr>
+   <td><code>cd</code></td>
+   <td>Change directory to navigate to locations in your file system.</td>
+ </tr>
 </table>
-
-### Install XCode Command Line tools
-{:.no_toc}
-
-The Command Line Tool package gives Mac terminal users many commonly used tools,
-utilities, and compilers. Some of the contents installed by NPM require XCode.
-
-1. Open a terminal window on your system.
-2. Enter the `xcode-select` command string:
-
-   ```bash
-   $ xcode-select --install
-   ```
-
-   <img src="images/install-command-line-tools-os-x.jpg" alt="">
-
-   A software update dialog displays:
-
-   <img src="images/confirm-install-command-line-tools-mac-os-x.jpg" alt="">
-
-3. Click **Install** to confirm.
-
-   You are prompted to agree to the terms of service.
-
-4. Agree to the terms of services.
-
-   The tools are installed. This is fairly quick depending on your connection speed.
-
 
 ### Install Node Package Manager (NPM)
 {:.no_toc}
@@ -138,16 +117,38 @@ Open source developers from every continent use NPM to share software components
 called packages. The Animal Kingdom uses  React, Babel, and many other
 components. You'll use the `npm` command to install these packaged components.
 
- 1. Open a terminal window on your system.
- 2. Verify you have installed `npm` using the `which` command.
+1. Open a web browser (for example, Chrome) window on your system.
+2. Navigate to the  <a href="https://www.nodejs.org/en" target="\_blank">install it using the instructions for your operating system</a>.
 
-     <img src="images/command-line.png" alt="">
+   <img src="images/win-npms.png" alt="">
 
-     If `npm` is installed, `which` returns the command's location in your environment.
+3. Download the **Current** version.
+4. Open the the `msi` download.
 
-3. If the `npm` command is not in your system, <a href="https://www.npmjs.com/get-npm" target="\_blank">install it using the instructions for your operating system</a>.
+   The system displays the installer.
 
-   Installing the NPM tool can take several minutes depending on your connection speed.
+   <img src="images/win-node-wiz.png" alt="">
+
+5. Press **Next** accepting all the defaults until you reach the **Tools for Native Modules** page.
+6. Check the **Automatically install the necessary tools** option.
+
+   <img src="images/win-native-tools.png" alt="">
+
+7. Choose **Next** and then **Install**.
+
+   Installing the NPM tool can take several minutes depending on your connection speed. The installer then displays a command window and prompts you to install the Node and NPM tools.
+
+   <img src="images/win-tools-install.png" alt="">
+
+8. Press any key to install these tools.
+
+   <img src="images/win-tools-complete.png" alt="">
+
+   You may need to run `npm audit fix` to adjust the packages.
+
+6. Open a new Powershell window and check the version you just installed.
+
+   <img src="images/win-npm-version.png" alt="">
 
 ## Get the Animal Kingdom code
 
@@ -163,29 +164,38 @@ In this section, you copy the code for Animal Kingdom to your workstation.
    or fork it and then clone it. These instructions assume you are downloading
    the code.
 
-3. Choose the **Download ZIP** for Animal Kingdom.
+3. Move the download file to your c:/user
+
+4. Choose the **Download ZIP** for Animal Kingdom.
 
    <img src="images/kingdom-copy.png" alt="">
 
-4. Check your download directory for the `animal-kingdom-master.zip` file.
-5. Copy the download zip file to a directory where you keep code projects.
-6. Unzip the file.
+5. Check your **Download** directory for the `animal-kingdom-master.zip` file.
+6. Right click on the file to display the context menu, and choose **Extract All**.
 
-   <img src="images/kingdom-download.png" alt="">
+    <img src="images/win-extract-all.png" alt="">
 
-   After unzipping the file you should have the `animal-kingdom-master` directory.
+6. When prompted for the destination of the extracted files, choose the `C:\` directory.
 
-7. In your terminal change directory into the top of the directory by entering:
+    <img src="images/win-extract.png" alt="">
+
+7. Click **Extract** file.
+
+   After extracting the file you should have the `C:\animal-kingdom-master` directory on your system.
+
+8. In your Powershell change directory into the top of the directory by entering:
 
    ```bash
-   $ cd animal-kingdom-master
+   cd C:\animal-kingdom-master
    ```
-
-   Use the `pwd` command to confirm which directory you are in.
+9. Use the `pwd` command to confirm which directory you are in.
 
    ```bash
-   $ pwd
-   /Users/manthony/animal-kingdom-master
+   C:\animal-kindom-master> pwd
+
+   Path
+   ----
+   C:\animal-kingdom-master
    ```
 
 8. Take a minute review the files and subdirectories in your Animal Kingdom project.
@@ -232,15 +242,18 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
 1. Make sure you are in the root directory of the project.
 
     ```bash
-    cd ~/animal-kingdom-master
-    pwd
-    /Users/manthony/animal-kingdom-master
+    PS C:\> cd .\animal-kingdom-master\ PS C:\animal-kingdom-master> „
+    PS C:\animal-kingdom-master> pwd
+
+    Path
+    -----
+    C:\animal-kingdom-master
     ```
 
 2. Enter `npm install` to get the software components Animal Kingdom needs.
 
     ```bash
-     $ npm install
+     C:\animal-kingdom-master> npm install
 
      > fsevents@1.2.4 install /Users/manthony/animal-kingdom-master/node_modules/fsevents
      > node install
@@ -256,7 +269,7 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
      added 1390 packages from 766 contributors and audited 15238 packages in 16.11s
      found 1 high severity vulnerability
       run `npm audit fix` to fix them, or `npm audit` for details
-     $
+     C:\animal-kingdom-master>
     ```
 
     This command creates a `node_modules` subdirectory to your project code and
@@ -265,7 +278,7 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
 3. Enter the `ls` command to list the contents of your project directory to verify `npm` installed correctly.
 
     ```
-    $ ls
+    C:\animal-kingdom-master> ls
     ```
 
     The `node_modules`directory contains many core libraries used by Animal
@@ -278,12 +291,14 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
 1. Start the Animal Kingdom DApp running on your workstation by entering:
 
    ```bash
-   npm start
+   C:\animal-kingdom-master> npm start
    ```
 
    The `npm` program uses the `scripts/start.js` file to package the Animal
    Kingdom application. Once the code is packaged, the DApp opens Animal Kingdom
    running at the `http://localhost:3000` URL in your browser.
+
+   {% include note.html content="Your firewall may warn you about the application requesting internet access, you must allow this access to proceed." %}
 
 2. From the initial Animal Kingdom screen, choose an animal person and a territory.
 
@@ -301,10 +316,10 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
 
    For example, you could edit your animal or visit the other pages such as **Animals** or **Territories**.
 
-5. Go back to your terminal where you started your application is running.
+5. Go back to your Powershell where you started your application is running.
 6. Press `CTRL-C` to stop the application.
 
-   <img src="images/kingdom-stop.png" alt="">
+   <img src="images/win-kingdom-stop.png" alt="">
 
 You can always start the application again with `npm start` command as you will later in this tutorial.
 
@@ -328,6 +343,6 @@ blockstack backend. You also set up a typical development environment for
 developing a Blockstack web application.  Finally, you started and ran the
 Animal Kingdom application locally.
 
-In the next section, you explore the application code and learn which recorded
+In the next section, you explorer the application code and learn which recorded
 elements in a DApp make it eligible for App Mining. Continue to [Zero-to-DApp, 3
-of 4](zero_to_dapp_3.html).
+of 4 (Windows)](zero_to_dapp_3_win.html).

@@ -3,10 +3,10 @@ layout: learn
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 3 Customize your Animal Kingdom
+# 3 Customize your Animal Kingdom (Windows)
 {:.no_toc}
 
- **Zero to DAPP 3 of 4 for MacOS/Linux (or [Windows](zero_to_dapp_3_win.html))**
+ **Zero to DAPP 3 of 4 for Windows (or [MacOS/Linux](zero_to_dapp_3.html))**
 
 In this page, you examine and modify the Animal Kingdom DApp [you built in part
 2](zero_to_dapp_2.html). You'll review the underlying code and locate the
@@ -27,7 +27,7 @@ Before you continue, make sure you can locate the key files and
 directories (folders) in your project. You'll need to make sure you have opened
 a terminal and have changed directory to the top of your Animal Kingdom project.
 
-<img src="images/project-prompt.png" alt="">
+<img src="images/win-pwd.png" alt="">
 
 If you find it easier to navigate, you can use the Finder as well. Just remember
 you'll need the command line to run your project.
@@ -38,11 +38,11 @@ The Animal Kingdom application has two major components, React and Blockstack.
 React is used to build all the web components and interactions. You could
 replace React with any framework that you like; Blockstack is web framework
 agnostic. This section does not explain the React in any detail; The discussion
-focuses on the Blockstack Javascript library code instead.
+focuses on the Blockstack Javascript library the DApp instead.
 
 The <a href="https://blockstack.github.io/blockstack.js/"
 target="\_blank">Blockstack Javascript library is all a developer needs to
-create a DApp</a>. It grants the application the ability to authenticate a
+create a DApp. It grants</a> the application the ability to authenticate a
 Blockstack identity and to read and write to the user's data stored in a Gaia
 hub.
 
@@ -123,7 +123,7 @@ app.
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5>App Mining Requirement: Blockstack Authentication</h5>
-<p>To participate in application mining your application must integrate Blockstack authentication. Test flight apps do not qualify.
+<p>To participate in application mining your application must integrate Blockstack authentication.
 </p>
 </div>
 
@@ -199,8 +199,8 @@ Your DApp contains three pages **Animals**, **Territories**, and **Other
 Kingdoms** that are derived from three code elements:
 
  * The `src/constants.js` file defines the application's data profile (`AppConfig`).
- * The `public/animals` directory which contains images.
- * The `public/territories` directory which contains images.
+ * The `public\animals` directory which contains images.
+ * The `public\territories` directory which contains images.
 
 In the next section, you extend your Kingdom's configuration by modifying these files.
 
@@ -209,7 +209,7 @@ In the next section, you extend your Kingdom's configuration by modifying these 
 If your application is still running in localhost stop it with a `CTRL-C` from
 your keyboard.  
 
-1. Decide what kind of territory to add &emdash; desert, ocean, or city!
+1. Decide what kind of territory to add &mdash; desert, ocean, or city!
 
    This example adds Westeros, a fictional territory.
 
@@ -225,11 +225,20 @@ your keyboard.
 4. Use the `ls` command to confirm your file appears in `territories` directory and has the correct name.
 
    ```bash
-   ls public/territories/
-   forest.jpg   tundra.jpg   westeros.jpg
+    PS C:\animal-kingdom-master> ls .\public\territories\
+
+    Directory: C:\animal-kingdom-master\public\territories
+
+    Mode	LastWriteTime	Length Name
+
+    -a		2/26/2019	6:09	AM	132814	forest.jpg
+    -a		2/26/2019	6:09	AM	128272	tundra.jpg
+    -a		2/26/2019	6:31	AM	1087534	westeros.jpg
+
+    PS C:\animal-kingdom-master>
    ```
 
-4. Open the `src/constant.js` file in your favorite editor.
+4. Open the `src\constant.js` file in your favorite editor.
 5. Scroll down to the section that defines the **Territories**.
 
    ```js
@@ -272,7 +281,7 @@ your keyboard.
 8. Back in a terminal window, restart your application.
 
    ```bash
-   $ npm start
+   c:\animal-kingdom-master> npm start
    ```
 9. After the application starts, navigate to the **Territories** page and look for your `Westeros` territory.
 
@@ -285,7 +294,7 @@ you add a third, the Blockstack kingdom (`https://animalkingdoms.netlify.com`).
 
 1. Open the `src/constant.js` file in your favorite editor.
 
-   On Mac you can use TextEdit or Vim.
+   On Windows you can use Notepad.
 
 2. Scroll down to the section that defines the **Other Kingdoms**
 
@@ -357,14 +366,14 @@ Before you begin, you need to build a site that is ready to deploy.
    npm run build
    ```
 
-   <img src="images/run-build.png" alt="">
+   <img src="images/run-build-win.png" alt="">
 
    When the command completes, you should have a new `build` subdirectory in your project.
 
 3. Open your project in the Finder.
 4. Locate the newly created `build` subfolder.
 
-   <img src="images/finder-build.png" alt="">
+   <img src="images/finder-build-win.png" alt="">
 
 5. <a href="https://app.netlify.com/signup" target="\_blank">Sign up for a free Netlify account</a>
 
@@ -424,7 +433,7 @@ Before you begin, you need to build a site that is ready to deploy.
 
     You can use the Finder or the `ls` command.
 
-    <img src="images/finder.png" alt="">
+    <img src="images/finder-win.png" alt="">
 
 12. Copy them into your `build` directory.
 
