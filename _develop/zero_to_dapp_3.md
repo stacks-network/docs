@@ -209,7 +209,7 @@ In the next section, you extend your Kingdom's configuration by modifying these 
 If your application is still running in localhost stop it with a `CTRL-C` from
 your keyboard.  
 
-1. Decide what kind of territory to add &emdash; desert, ocean, or city!
+1. Decide what kind of territory to add &&mdash;; desert, ocean, or city!
 
    This example adds Westeros, a fictional territory.
 

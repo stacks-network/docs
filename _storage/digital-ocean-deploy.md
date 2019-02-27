@@ -282,7 +282,7 @@ You should have the console open as `root` on your Droplet. In this section, you
 
     This will allow Blockstack user to write to your Gaia hub, without any social proofs required. You can change this later on, and do other things to lock-down this Gaia hub to just yourself, but that is outside the scope of this document.
 
-    At this point, the json.config file should be completed and appear similar to the following &emdash; but with your values.
+    At this point, the json.config file should be completed and appear similar to the following &&mdash;; but with your values.
 
     ```json
     {
