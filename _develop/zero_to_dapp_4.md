@@ -121,29 +121,11 @@ To add an app, do the following:
 Only applications that integrate Blockstack authentication and
 that are accessible to review can participate in application mining (App Mining).
 
-To submit an application for App Mining, you select <a href="https://app.co/mining" target="\_blank">App Mining</a> from the App.co menu and then select the **Submit your app for qualification** button.
+To submit an application for App Mining, you select <a href="https://app.co/mining" target="\_blank">App Mining</a> from the App.co menu and then select the **Submit your app for qualification** button. Blockstack sample applications that you create from our tutorials such as this one don't qualify for application mining.
 
-Blockstack sample applications that you create from our tutorials such as this one don't qualify for application mining.
-
-
-## How Blockstack helps App Miners market
-
-Blockstack reviews each submission to App Mining. Through this contact, Blockstack helps
-developers refine business models and facilitating interactions with investors.
-Two areas that Blockstack assists are pre-funding and pitching.
-
-* **Pre-funding.** Directed toward developers that have a proof of concept of either a blockchain application or an integration  with Blockstack’s technology. Blockstack helps with sourcing of developers and designers. We can also help with direct access to our core team members that can help you refine or optimize your product.
-* **Pitching investors.**  Blockstack can help you with access to an extensive investor community. Prior to arranging meetings we can give you resources to refine and craft your pitch for the blockchain market.
-
-In addition to App Mining, Blockstack offers both a community reward program.
-Community rewards give users the ability to earn tokens for accomplishing tasks.
-For example, some of the latest ways user can earn money include:
-
-- Organize a Blockstack Hackathon
-- Message of the founders of `stealthy.im` with feedback and ideas
-- Use graphite to write a message about the problems decentralization solves
-
-Learn more about <a href="https://blockstack.org/blog/blockstack-community-rewards-program/" target="\_blank">participating in community rewards</a>.
+Your submission is evaluated internally to check if it passes the basic
+requirements. After it passes, we accept the app and contact you to <a href="{{ site.baseurl }}/develop/mining_enroll.html" target="\_blank">submit
+additional materials</a>.
 
 ## Congratulations
 {:.no_toc}
