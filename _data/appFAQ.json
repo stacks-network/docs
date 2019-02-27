@@ -87,9 +87,9 @@
         engage a diverse coalition of app reviewers with the goal of making application
         ranking objective and resilient to abuse.  </p> <p>As of January 2019, the reviewers were: 
 	Product Hunt, Try My UI and Democracy Earth (who
-        uses software to collect votes by Stacks token holders). See <a href="https://docs.blockstack.org/develop/mining_intro.html#how-apps-are-reviewed">here</a>
+        uses software to collect votes by Stacks token holders). See <a href='https://docs.blockstack.org/develop/mining_intro.html#how-apps-are-reviewed'>here</a>
 	for more details about each reviewer. Future reviewers could
-        expand to community election. Please see our <a href="https://github.com/blockstack/app-mining">github 
+        expand to community election. Please see our <a href='https://github.com/blockstack/app-mining'>github 
 	repository</a> to raise issues or make suggestions for App Mining. </p>"
       },
       {
