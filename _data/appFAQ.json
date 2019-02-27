@@ -38,7 +38,8 @@
         Your finished app should be available to the public for use. In the future, App
         Mining may reward apps that have taken steps to further decentralize, such as
         utilizing Gaia storage or the publishing your app to the Blockstack Naming
-        System. Test flight apps do not qualify.</p>"
+        System. Test flight apps, hello-world apps and apps created through blockstack tutorials 
+	(e.g. animal kingodom apps) do not qualify.</p>"
       },
       {
         "question":"Does my app have to be listed on App.co to enter App Mining?",
@@ -84,11 +85,12 @@
         entities that have a proprietary methodology that helps them make objective
         judgements for why a certain app might be better than others.  We strive to
         engage a diverse coalition of app reviewers with the goal of making application
-        ranking objective and resilient to abuse.  </p> <p>At the time of our App Mining
-        alpha (October 2018), the reviewers were: Product Hunt and Democracy Earth (who
-        uses software to collect votes by Stacks token holders).  Future reviewers could
-        expand to community election. Please see our forum to ask questions or make
-        suggestions for App Mining. </p>"
+        ranking objective and resilient to abuse.  </p> <p>As of January 2019, the reviewers were: 
+	Product Hunt, Try My UI and Democracy Earth (who
+        uses software to collect votes by Stacks token holders). See <a href="https://docs.blockstack.org/develop/mining_intro.html#how-apps-are-reviewed">here</a>
+	for more details about each reviewer. Future reviewers could
+        expand to community election. Please see our <a href="https://github.com/blockstack/app-mining">github 
+	repository</a> to raise issues or make suggestions for App Mining. </p>"
       },
       {
         "question":"How are apps ranked?",
@@ -138,7 +140,7 @@
       },
       {
         "question":"What are examples of any quantitative metrics that may be shared with app reviewers?",
-        "answer": "<p>Qualitative meticrs are metrics
+        "answer": "<p>Qualitative metrics are metrics
         that evaluate elements such as engagement, DAU/MAU ratios
         etc from the reviewed apps. Blockstack plans to incorporate metrics based
         ranking. However, before we do, any mechanism must thoughtfully incorporate the
