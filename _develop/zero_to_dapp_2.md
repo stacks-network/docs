@@ -44,8 +44,8 @@ effort developing additional knowledge of specialized languages or technologies.
 To follow the procedures in the rest of this tutorial, you need the following:
 
 * A Blockstack ID (identity) to test your Animal Kingdom.
-* Access to the Mac terminal window and some familiarity with the command line it provides.
-* An installation of the XCode command-line tools to support Node Package Manager (`npm`)
+* Access to the a terminal window and some familiarity with the command line it provides.
+* On Mac, an installation of the XCode command-line tools to support Node Package Manager (`npm`)
 * The Node Package Manager package manager.
 
 Follow the procedures in this section to install these components.

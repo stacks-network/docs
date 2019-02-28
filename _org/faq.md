@@ -3,9 +3,12 @@ layout: org
 permalink: /:collection/:path.html
 ---
 # Frequently asked questions
+{:.no_toc}
 
 * TOC
 {:toc}
+
+## Stacks wallet
 
 
 ### What is a seed phrase?
@@ -56,7 +59,42 @@ If you purchased Stacks tokens through CoinList, you can find your address at
 [CoinList](https://coinlist.co/distributions). If you submitted your Stacks address directly to Blockstack, you can either use the “Restore from Seed Phrase” feature on the Stacks wallet or contact us at <hello@stackstoken.com> for help.
 
 
-
 ### How do I get help from a person?
 
 For questions or help regarding the Stacks token, you can contact us at <hello@stackstoken.com>.
+
+
+## Stacks tokens
+
+### Where can I buy Stacks?
+
+Blockstack Token LLC (“Blockstack”) is not currently offering Stacks for sale. Please keep an eye out for updates at stackstoken.com, where you may also subscribe for updates by joining our mailing list.
+
+
+### I have a voucher for Stacks. When can I redeem my voucher?
+
+We cannot currently comment on future sales or offers of Stacks. Please keep an eye out for updates at stackstoken.com, where you may also subscribe for updates by joining our mailing list. Thanks for your patience!
+
+
+### Is there an exchange where I can buy and sell Stacks?
+
+There is currently no authorized exchange for buying and selling Stacks or Stacks futures, and we cannot comment on when an exchange might list Stacks at this time. Please keep an eye out for updates at stackstoken.com. If you see Stacks listed on an exchange, please let us know at legal@blockstack.com, as the listing may be illegal or a scam.
+
+
+### Can I sell or transfer Stacks directly to someone else?
+
+If you purchased Stacks from our 2017 token sale, it may be possible to sell or
+transfer Stacks directly to another person in a peer-to-peer transaction. We
+recommend you consult an attorney before engaging in such a transaction,
+especially if buying or selling from or to a U.S. person or entity, as we cannot
+give you legal or regulatory advice.
+
+
+### What is the Stacks holding or lock-up period?
+
+Stacks purchased from our 2017 token sale are subject to two separate holding or lock-up periods that run in tandem: (1) a one-year holding period required by law that prohibits sale or transfer of Stacks within one year of the date of purchase of the SAFT or fund interests that gave you the right to tokens, and (2) a monthly time-lock built into our blockchain that unlocks 1/24th of your Stacks on the date of the Blockchain launch on October 29, 2018, and then an additional 1/24th approximately each month thereafter. Because the 2017 token sale took place over one year ago, the one-year holding period should be over for most investors. You may check the status of your monthly time-lock at https://explorer.blockstack.org/.
+
+
+### I have a tax question about my Stacks. Whom should I talk to?
+
+If you have a tax question about your Stacks, we recommend you speak to an accountant or tax lawyer. If you participated in the 2017 token sale through the Blockstack Token Funds, we’ll provide you with the necessary tax reporting forms by the required deadlines, but in general, we cannot give you tax advice.
