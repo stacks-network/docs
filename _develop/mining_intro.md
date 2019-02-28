@@ -117,3 +117,5 @@ payout mechanism. Blockstack has taken care to be thoughtful and fair, but
 things may change as we learn more and get feedback from the community. Please
 let us know what you think by commenting <a href="https://forum.blockstack.org"
 target="\_blank">in our forum</a> or by emailing us at <hello@app.co>!
+
+The ranking and payout mechanisms are under constant review and are documented at <a href="https://github.com/blockstack/app-mining">the app mining's github repository</a>.
