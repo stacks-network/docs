@@ -3,6 +3,7 @@ layout: org
 permalink: /:collection/:path.html
 ---
 # Check your address
+{:.no_toc}
 
 We recommend that you confirm your address is correct by going through the following steps in the Stacks Wallet:
 
