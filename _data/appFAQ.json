@@ -42,11 +42,7 @@
       },
       {
         "question":"What qualifies my app to compete in App Mining?",
-        "answer": "<p>Your app should integrate Blockstack authentication for logging into your app.
-        Your finished app should be available to the public for use. In the future, App
-        Mining may reward apps that have taken steps to further decentralize, such as
-        utilizing Gaia storage or the publishing your app to the Blockstack Naming
-        System. Test flight apps do not qualify.</p>"
+        "answer": "<p>YYour app should integrate Blockstack authentication for logging into your app. The app must use Blockstack log-in to perform operations with your app and cannot be a stand-alone component of the app. Your app should be available to the public for use, and no beta, invite only, or test-flight apps will qualify. In the future, App Mining may reward apps that have taken steps to further decentralize, such as utilizing Gaia storage or the publishing your app to the Blockstack Naming System.  </p>"
       },
       {
         "question":"Does my app have to be listed on App.co to enter App Mining?",
@@ -104,13 +100,12 @@
          objective judgments for why one app might be better than another. Each
          app reviewers determines the data, formula, and personnel they wish to
          utilize. For example, Product Hunt can tap into their community data to
-         determine relative app popularity. Reviewers are required to publish
-         their methodology to ensure transparency periodically. </p> <p>We've
-         published <a
-         href='https://blog.app.co/how-app-minings-ranking-algorithm-works'>a detailed
-         explanation of our ranking algorithm on our blog</a> and <a
+         determine relative app popularity. Reviewers must publish
+         their methodology periodically to ensure transparency. </p> <p>To learn more see <a
+         href='https://blog.app.co/how-app-minings-ranking-algorithm-works'>the detailed
+         explanation of our ranking algorithm on our blog</a> and in <a
          href='https://docs.blockstack.org/develop/mining_intro.html'>our
-         documentation</a>, where you can learn more.</p>"
+         documentation</a>.</p><p>Apps may have unique circumstances such that the app cannot be ranked by all the reviewers, for example, apps that require specific hardware. In these cases, reviewers that can review and rank the app will. An app’s final ranking is determined by the average of those reviewers that can fully review the app.</p>"
       },
       {
         "question":"Do I have to Hunt my app on Product Hunt?",
