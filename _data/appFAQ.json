@@ -1,20 +1,28 @@
 {
    "faqs":[
+     {
+        "question":"What is App Mining?",
+        "answer":"<p>Traditionally the term mining in cryptocurrency refers to the process of
+       contributing compute resources to the network and earning a reward. In the
+       Blockstack Ecosystem, instead of just mining through computation, developers
+       mine by building apps and the Blockstack community funds them simply for being
+       pioneers in the emerging Blockchain software market. </p> <p>We believe app
+       mining represents a revolution in app funding, allowing small teams to bootstrap
+       without advertising or venture capital. Each month, qualifying apps compete for
+       funding. Qualified apps are evaluated and ranked by expert app reviewers. The
+       better your app, the higher payout you earn. </p> <p>The pilot run begins
+       December 1st 2018, with 34 Blockstack Apps enrolled. A previous alpha run in Oct
+       2018 included 17 Blockstack apps. App mining is a new mining model that we
+       expect will evolve and improve over time. We look forward to feedback from our
+       community regarding the App Mining process and program. </p>"
+     },
       {
-         "question":"What is App Mining?",
-         "answer":"<p>Traditionally the term mining in cryptocurrency refers to the process of
-				 contributing compute resources to the network and earning a reward. In the
-				 Blockstack Ecosystem, instead of just mining through computation, developers
-				 mine by building apps and the Blockstack community funds them simply for being
-				 pioneers in the emerging Blockchain software market. </p> <p>We believe app
-				 mining represents a revolution in app funding, allowing small teams to bootstrap
-				 without advertising or venture capital. Each month, qualifying apps compete for
-				 funding. Qualified apps are evaluated and ranked by expert app reviewers. The
-				 better your app, the higher payout you earn. </p> <p>The pilot run begins
-				 December 1st 2018, with 34 Blockstack Apps enrolled. A previous alpha run in Oct
-				 2018 included 17 Blockstack apps. App mining is a new mining model that we
-				 expect will evolve and improve over time. We look forward to feedback from our
-				 community regarding the App Mining process and program. </p>"
+        "question": "What is the App Mining timeline?",
+        "answer": "<h5>On the first of every month (or as listed on the calendar): </h5> <ul> <li>Registration is closed for that months ranking.</li> <li>Blockstack team sends the complete list of apps to our app reviewer partners. App miners do not need to reach out to Product Hunt, Democracy Earth, or TryMyUI. </li> <li>Blockstack <strong>emails</strong> app miners are emailed about Product Hunt Hunting process. App miners can choose to hunt their app independently or can request to be featured by the Product Hunt the team. <a href='https://docs.blockstack.org/develop/mining_intro.html' target='\\_blank'>Read more</a>.</li> <li>App miners <strong>debate</strong> on their app in Democracy Earth. <a href='https://docs.blockstack.org/develop/vote-blockstack.html' target='\\_blank'>Read more</a>.</li> <li>Registered stack holders <strong>are alerted</strong> about new apps and prompted to vote. <a href='https://docs.blockstack.org/develop/vote-blockstack.html' target='_blank>Read more</a>.</li> </ul> <h5>Over the next two weeks:</h5> <ul> <li>TryMyUI Tests are happening. Please don’t perform upgrades that might break the app.</li> <li>Voters participate on <a href='https://vote.blockstack.org' target='_blank'>vote.blockstack.org</a>. </li> <li>Products are launched on Product Hunt. Product Hunt team performs internal review.</li> </ul> <h5>On the last day of ranking at 11:59pm ET: </h5> <p>App mining results are sent to Blockstack by app reviewer partners.</p> <h5>On the 15th (or as listed on the calendar):</h5> <p>Blockstack team performs App Mining algorithm as referenced <a href='https://blog.blockstack.org/app-mining-game-theory-algorithm-design/' target='_blank'>here</a>.</p> <h5>On the following weekday:</h5> <ul> <li>App miners are emailed login info to access their TryMyUI tests</li> <li>Full App Mining results are published</li> </ul>"
+      },
+      {
+        "question": "Where can I find a calendar of App Mining events?",
+        "answer": "<p>The following calendar shows events each month related to App Mining:</p><p><iframe src='https://calendar.google.com/calendar/b/1/embed?showCalendars=0&amp;height=400&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=blockstack.com_u71ao2dalkd88b493k3671233s%40group.calendar.google.com&amp;color=%235229A3&amp;ctz=America%2FNew_York' style='border-width:0' width='600' height='400' frameborder='0' scrolling='no'></iframe></p>"
       },
       {
         "question":"How much can I earn and how are rewards distributed? ",
@@ -60,7 +68,7 @@
       {
         "question":"How do I launch my app on Product Hunt as an app reviewer?",
         "answer": "<p>Part of the ranking process includes an assessment by the Product Hunt app reviewer via their community vote and their internal team vote. You can find <a href='https://docs.blockstack.org/develop/mining_intro.html' target='_blank'>information on the algorithm in this documentation</a>.</p>
-        <p>Your product's launch on Product Hunt has an impact on your final App Mining ranking as stated in the algorithm information. If your app has not been “hunted” yet on Product Hunt, you have the option to hunt the app independently or to ask Product Hunt to hunt it for you. Make sure you understand the hunting process. Only hunted products can be featured by Product Hunt. More information on successful product hunt launches <a href='https://blog.producthunt.com/how-to-launch-on-product-hunt-7c1843e06399' target='_blank'>can be found on the Product Hunt blog</a>.</p> <p>Blockstack will email each miner about the hunt process at the start of each app mining review cycle. You should feel free to let us know your preference, hunt yourself or by Product Hunt, before the review cycle.</p>"
+        <p>Your product's launch on Product Hunt has an impact on your final App Mining ranking as stated in the algorithm information. If your app has not been “hunted” yet on Product Hunt, you have the option to hunt the app independently or to ask Product Hunt to hunt it for you. Make sure you understand the hunting process. Only hunted products can be featured by Product Hunt. More information on successful product hunt launches <a href='https://blog.producthunt.com/how-to-launch-on-product-hunt-7c1843e06399' target='_blank'>can be found on the Product Hunt blog</a>.</p> <p>Blockstack will email each miner about the hunt process at the start of each App Mining review cycle. You should feel free to let us know your preference, hunt yourself or by Product Hunt, before the review cycle.</p>"
       },
       {
         "question":"Does my code repository need to be public?",
