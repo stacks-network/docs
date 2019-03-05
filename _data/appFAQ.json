@@ -42,7 +42,12 @@
       },
       {
         "question":"What qualifies my app to compete in App Mining?",
-        "answer": "<p>YYour app should integrate Blockstack authentication for logging into your app. The app must use Blockstack log-in to perform operations with your app and cannot be a stand-alone component of the app. Your app should be available to the public for use, and no beta, invite only, or test-flight apps will qualify. In the future, App Mining may reward apps that have taken steps to further decentralize, such as utilizing Gaia storage or the publishing your app to the Blockstack Naming System.  </p>"
+        "answer": "<p>Your app should integrate Blockstack authentication for logging into your app.
+        Your finished app should be available to the public for use. In the future, App
+        Mining may reward apps that have taken steps to further decentralize, such as
+        utilizing Gaia storage or the publishing your app to the Blockstack Naming
+        System. Test flight apps, hello-world apps and apps created through blockstack tutorials 
+        (e.g. animal kingdom apps) do not qualify.</p>"
       },
       {
         "question":"Does my app have to be listed on App.co to enter App Mining?",
@@ -88,11 +93,12 @@
         entities that have a proprietary methodology that helps them make objective
         judgements for why a certain app might be better than others.  We strive to
         engage a diverse coalition of app reviewers with the goal of making application
-        ranking objective and resilient to abuse.  </p> <p>At the time of our App Mining
-        alpha (October 2018), the reviewers were: Product Hunt and Democracy Earth (who
-        uses software to collect votes by Stacks token holders).  Future reviewers could
-        expand to community election. Please see our forum to ask questions or make
-        suggestions for App Mining. </p>"
+        ranking objective and resilient to abuse.  </p> <p>As of January 2019, the reviewers were: 
+	Product Hunt, Try My UI and Democracy Earth (who
+        uses software to collect votes by Stacks token holders). See <a href='https://docs.blockstack.org/develop/mining_intro.html#how-apps-are-reviewed'>here</a>
+	for more details about each reviewer. Future reviewers could
+        expand to community election. Please see our <a href='https://github.com/blockstack/app-mining'>github 
+	repository</a> to raise issues or make suggestions for App Mining. </p>"
       },
       {
         "question":"How are apps ranked?",
