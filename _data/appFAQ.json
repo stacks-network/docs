@@ -46,7 +46,7 @@
         Your finished app should be available to the public for use. In the future, App
         Mining may reward apps that have taken steps to further decentralize, such as
         utilizing Gaia storage or the publishing your app to the Blockstack Naming
-        System. Test flight apps, hello-world apps and apps created through blockstack tutorials 
+        System. Test flight apps, hello-world apps and apps created through blockstack tutorials
         (e.g. animal kingdom apps) do not qualify.</p>"
       },
       {
@@ -93,11 +93,11 @@
         entities that have a proprietary methodology that helps them make objective
         judgements for why a certain app might be better than others.  We strive to
         engage a diverse coalition of app reviewers with the goal of making application
-        ranking objective and resilient to abuse.  </p> <p>As of January 2019, the reviewers were: 
+        ranking objective and resilient to abuse.  </p> <p>As of January 2019, the reviewers were:
 	Product Hunt, Try My UI and Democracy Earth (who
         uses software to collect votes by Stacks token holders). See <a href='https://docs.blockstack.org/develop/mining_intro.html#how-apps-are-reviewed'>here</a>
 	for more details about each reviewer. Future reviewers could
-        expand to community election. Please see our <a href='https://github.com/blockstack/app-mining'>github 
+        expand to community election. Please see our <a href='https://github.com/blockstack/app-mining'>github
 	repository</a> to raise issues or make suggestions for App Mining. </p>"
       },
       {
@@ -131,9 +131,7 @@
       },
       {
         "question":"Can developers engage with voters on Democracy Earth?",
-        "answer": "<p>As of this time, they cannot. In the future, a feature that could be
-        interesting here is allowing developers to comment only on their app and not
-        others.   </p>"
+        "answer": "<p>Yes, they can. App miners can and should create an account on Democracy Earth. From this account they can engage with voters through the debate feature. Learn more <a href='https://docs.blockstack.org/develop/vote-blockstack.html' target='_blank'>in the documentation</a>.</p>"
       },
       {
         "question":"When are the winning payments made?",
