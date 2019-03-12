@@ -13,7 +13,7 @@ This is a general FAQ intended for users of decentralized applications. If you a
 
 ## What is the decentralized internet?
 
-The Blockstack ecosystem enables the new decentralized internet. Decentralization means authority moving from central authority to local authority. Simply put, in a decentralized interent, you your data, not the applications or services you use.
+The Blockstack ecosystem enables the new decentralized internet. Decentralization means authority moving from central authority to local authority. Simply put, in a decentralized internet, you your data, not the applications or services you use.
 
 Blockstack envisions a world where users control their own data, and power flows back to the users. For example, when you buy something from an online company, that company collects and stores  data about you:
 
@@ -30,8 +30,6 @@ internet are called _decentralized applications_ or DApps for short.
 Blockstack is an ecosystem to support both DApp users and DApp developers. For
 users, Blockstack makes software to create Blockstack identities and find DApps.
 For developers, Blockstack develops an ecosystem of software and services that developrs can use to build DApps.
-
-Blockstack through its
 
 ## How do DApps differ applications I typically use?
 
