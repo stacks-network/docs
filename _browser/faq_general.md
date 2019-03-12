@@ -56,7 +56,7 @@ private key.  As long as no one gets access to your private key, no one can
 control your data or ID. When you use Blockstack, by design, your private keys
 are never sent to any remote servers.
 
-## Do DApps uwork with a regular browser?
+## Do DApps work with a regular browser?
 
 Yes! DApps run in the web browsers (Chrome, Safari, Internet Explorer, etc.) you know and love.
 
