@@ -157,7 +157,7 @@ defaults:
     values:
       comments: true
       image: /assets/img/touch-icon.png
-      description: "Using the Blockstack Ecosystem to develop decentralizied applications (DApps). "
+      description: "Using the Blockstack Ecosystem to develop decentralized applications (DApps). "
 
 collections:
   android:
