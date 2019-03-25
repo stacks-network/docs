@@ -106,7 +106,7 @@ To create a voter profile, do the following:
 3. Agree to the App Mining Voting Terms.
 4. Select the **Blockstack ID** button.
 
-   The system prompts you for a blockstack identity. You may be already signed into the Blockstack Browser with an identity; you can use this one or another. If you do not have a Blockstack identity, you should choose to **Create new ID**, <a href="https://docs.blockstack.org/browser/ids-introduction.html" target="\_blank">creating an identity can take time</a>. After creating an identity, return to this procedure.
+   The system prompts you for a blockstack identity. You may be already signed into the Blockstack Browser with an identity; you can use this one or another. If you do not have a Blockstack identity, you should choose to **Create new ID**, <a href="{{ site.baseurl }}/browser/ids-introduction.html" target="\_blank">creating an identity can take time</a>. After creating an identity, return to this procedure.
 
 5. Authenticate with a Blockstack ID.
 

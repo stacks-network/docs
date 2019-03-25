@@ -121,7 +121,7 @@ To add an app, do the following:
 Only applications that integrate Blockstack authentication and
 that are accessible to review can participate in application mining (App Mining).
 
-To submit an application for App Mining, you select <a href="https://app.co/mining" target="\_blank">App Mining</a> from the App.co menu and then select the **Submit your app for qualification** button. Blockstack sample applications that you create from our tutorials such as this one don't qualify for application mining.
+To submit an application for App Mining, you select <a href="https://app.co/mining" target="\_blank" style="color:blue;">App Mining</a> from the App.co menu and then select the **Submit your app for qualification** button. Blockstack sample applications that you create from our tutorials such as this one don't qualify for application mining.
 
 Your submission is evaluated internally to check if it passes the basic
 requirements. After it passes, we accept the app and contact you to <a href="{{ site.baseurl }}/develop/mining_enroll.html" target="\_blank">submit
