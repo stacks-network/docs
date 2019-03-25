@@ -1,6 +1,6 @@
 For each App Mining cohort, there is a determined “pot” of total earnings that
-will get paid to apps. For the Alpha run, Blockstack paid a total of $25,000
-USD. For the Alpha run, App Mining paid a total of $25,000 USD. However, in
+will get paid to apps. For the Alpha run, App Mining paid a total of $25,000
+USD. However, in
 December 2018, App Mining began paying $100,000 USD  each month, with earnings
 paid out in Bitcoin.
 
