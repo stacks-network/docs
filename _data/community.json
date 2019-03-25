@@ -1,6 +1,13 @@
 {
   "resources" :[
-    {
+  {
+    "title": "Use Blockstack with create-react-app",
+    "url": "https://github.com/pradel/craco-blockstack",
+    "type": "repository",
+    "date": "03-17-2019",
+    "description": "A craco plugin to use Blockstack with create-react-app."
+  },
+  {
     "title": "Blockstack + React: A TechRally Presentation",
     "url": "https://www.youtube.com/watch?v=Arb-dwU5SZI&list=PLDQHh6RjV5oUJNbtnzV11VVghiJTPJ5Wv",
     "type": "video",
