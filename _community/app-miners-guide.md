@@ -90,7 +90,7 @@ While there isn't currently a direct measure for number of users, having real us
 
 Chances are the first way you describe your app and its value proposition won't be the most effective ones. Find ways to test what sticks with people and converts new users. A small spend on social or search ads will let you quickly learn what works. You should also experiment with landing pages for specific audiences. There are countless tools to make this easy, you can also pull down free templates for whatever CMS you may be working on. Check out this <a href="https://neilpatel.com/blog/beginners-guide-to-landing-pages/">Beginner's Guide to Landing Pages from Neil Patel</a> and work on <a href="https://blog.hubspot.com/marketing/brand-story">the story of your brand/app/project</a>.
 
-### Design
+### Design and Interaction
 
 With TryMyUI officially onboard, UI is not just important, but a critical piece of the score you receive.
 
@@ -240,7 +240,7 @@ TryMyUI's panelists will score using a special survey they developed expressly f
 
 Each factor corresponds to 4 questionnaire items, for a total 16 items that comprise the ALFQ. Users mark their answers on a 5-point Likert scale, with 5 meaning "Strongly agree" and 1 meaning "Strongly disagree." The final result is a score for each of the 4 factors, and a composite ALF score.
 
-### What to do with your TryMyUI videos & data
+### How to use your TryMyUI videos & data
 
 Every month after the scores are released, you will be given access to 8 user videos from your app, with the accompanying ALF scores and written survey responses. This data will contain deep insights into the User Experience of your app – what you're doing well, and where you can improve.
 All of this will be really helpful over the next few weeks as you work to improve your app design for the next month's round of testing. Here's our tips for diving into your TryMyUI test data:
