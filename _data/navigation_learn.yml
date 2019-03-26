@@ -34,5 +34,6 @@
 - title: Reference
   docs:
   - common/javascript_ref
+  - common/android_ref
   - develop/cliDocs
   - common/core_ref
