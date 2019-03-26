@@ -437,13 +437,12 @@ Before you begin, you need to build a site that is ready to deploy.
 
     The name of each file, with the underscore, is essential.
 
-13. Make sure you are in the `animal-kingdom-master` directory, run the `npm run build` command again.
-15. Drag the `build` file back into the Netlify drop zone.
+13. Drag the `build` file back into the Netlify drop zone.
 
     After a moment, Netlify publishes your site. Check the published location, it may have changed.
 
-16. Click on the link and log into your Animal Kingdom.
-17. Recreate your animal person and territory.
+14. Click on the link and log into your Animal Kingdom.
+15. Recreate your animal person and territory.
 
     The Animal Kingdom is identified by its location on the Internet, remember?
     So, the animal kingdom you created on your local workstation is different
