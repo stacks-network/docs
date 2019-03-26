@@ -28,6 +28,7 @@ group :jekyll_plugins do
    gem 'jekyll-avatar'
    gem 'jekyll-titles-from-headings'
    gem 'jekyll-sitemap'
+   gem 'jekyll-toc'
 end
 
 group :development do
