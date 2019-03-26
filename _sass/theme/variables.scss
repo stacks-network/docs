@@ -1,7 +1,7 @@
 // Color scheme variables
 
 // Main content
-$color-main: #0F1214;
+$color-main: #201F6D;
 
 // Secondary content
 $global-muted-color: #7a838a;
@@ -28,8 +28,8 @@ $global-medium-font-size: 1.125rem;
 $global-small-font-size: 0.875rem;
 
 // Base
-$base-body-color: $color-main;
-$base-heading-color: $color-main;
+$base-body-color: #0F1214;
+$base-heading-color: #0F1214;
 $link-muted-hover-color: $color-main;
 $button-primary-hover-background: $color-hover;
 $base-hr-border: lighten($global-border, 13%);

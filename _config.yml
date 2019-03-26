@@ -95,6 +95,9 @@ kramdown:
   input: GFM
   auto_ids: true
   syntax_highlighter: rouge
+toc:
+  min_level: 2 # default: 1
+  max_level: 3 # default: 6
 
 plugins:
   - jekyll-feed
@@ -103,6 +106,7 @@ plugins:
   - jekyll-avatar
   - jekyll-titles-from-headings
   - jekyll-sitemap
+  - jekyll-toc
 
 titles_from_headings:
   enabled:     true
@@ -163,6 +167,9 @@ collections:
   android:
     output: true
     basepath: "blockstack/blockstack-android/blob/master/docs"
+  community:
+    output: true
+    basepath: "blockstack/blockstack-core/blob/master/docs"
   core:
     output: true
     basepath: "blockstack/blockstack-core/blob/master/docs"
