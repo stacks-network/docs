@@ -171,19 +171,19 @@ collections:
     basepath: "blockstack/blockstack-android/blob/master/docs"
   community:
     output: true
-    basepath: "blockstack/blockstack-core/blob/master/docs"
+    basepath:  "moxiegirl/docs.blockstack"
   core:
     output: true
-    basepath: "blockstack/blockstack-core/blob/master/docs"
+    basepath:  "moxiegirl/docs.blockstack"
   develop:
     output: true
     basepath: "moxiegirl/docs.blockstack"
   storage:
     output: true
-    basepath: "blockstack/gaia/blob/master/docs"
+    basepath: "moxiegirl/docs.blockstack"
   browser:
     output: true
-    basepath: "blockstack/blockstack-browser/blob/master/docs"
+    basepath:  "moxiegirl/docs.blockstack"
   ios:
     output: true
     basepath: "blockstack/blockstack-ios/blob/master/docs"
@@ -191,5 +191,8 @@ collections:
     output: true
     basepath: "moxiegirl/docs.blockstack"
   org:
+    output: true
+    basepath: "moxiegirl/docs.blockstack"
+  faqs:
     output: true
     basepath: "moxiegirl/docs.blockstack"

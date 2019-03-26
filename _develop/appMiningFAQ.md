@@ -7,8 +7,9 @@ permalink: /:collection/:path.html
 * TOC
 {:toc}
 
-
-{% for faq in site.data.appFAQ.faqs %}
+{% for faq in site.data.theFAQs.faqs %}
+   {% if faq.category == 'appminers' %}
 ## {{ faq.question }}
-  {{ faq.answer }}
+{{ faq.answer }}
+  {% endif %}
 {% endfor %}
