@@ -31,5 +31,6 @@
   docs:
   - core/cmdLineRef
   - common/javascript_ref
+  - common/android_ref
   - common/core_ref
   - core/wire-format
