@@ -81,7 +81,7 @@ Each factor corresponds to 4 questionnaire items, for a total of 16 items that c
 
 <img src="images/alf-score.png" alt="">
 
-For example, consider an applciation that is both Android and iOS. Each platform version receives 4 tests of each. In total, 8 user tests are created, the higest and lowest scores are dropped. Application developers receive the raw TryMyUI scores. The App Mining process calculates Z scores for each category. As a result, the TryMyUI results in the App Mining scores differ from raw scores visible in an app's TryMyUI account.
+For example, consider an application that is both Android and iOS. Each platform version receives 4 tests of each. In total, 8 user tests are created, the highest and lowest scores are dropped. App developers receive the raw TryMyUI scores. The App Mining process calculates Z scores for each category. As a result, the TryMyUI results in the App Mining scores differ from raw scores visible in an app's TryMyUI account.
 
 
 ## Reaching the final scores
