@@ -68,7 +68,7 @@ relative to other apps.
 
 ### TryMyUI
 
-TryMyUI’s panelists score using a special survey they developed expressly for the App Mining program: the ALF Questionnaire (Adoption Likelihood Factors).
+TryMyUI’s panelists score using a special survey they developed expressly for the App Mining program: the ALF Questionnaire (Adoption Likelihood Factors). Desktop, iOS, and Android versions of appls are tested.
 
 Answers to this questionnaire will be used to calculate an overall score reflecting the following 4 factors:
 
