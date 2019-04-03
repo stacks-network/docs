@@ -57,4 +57,4 @@ virtual blockchain,A layer that sits on top of a blockchain that introduces new 
 wallet address,A wallet address is the form in which a public key can be presented and recorded on a blockchain. Wallet addresses are therefore used to assign the ownership of digital assets on the Blockstack network.,Filing
 watch-only wallet,A wallet without send and receive ability. You can view only balances and transaction history.
 Web of trust mining,"Web-of-trust mining provides incentive mechanisms for users where an initial trusted-set of unique users is curated in the genesis block and, in the future, the initial set of users can expand the web-of-trust after the network goes live. ",
-Zone file,"A Domain Name System (DNS) zone file is a text filethat describes a DNS zone. A DNS zone is a subset, often a single domain, of the hierarchical domain name structure of the DNS.",General Tech
+Zone file,"A Domain Name System (DNS) zone file is a text file that describes a DNS zone. A DNS zone is a subset, often a single domain, of the hierarchical domain name structure of the DNS.",General Tech
