@@ -22,7 +22,7 @@ following topics:
 
 You can complete the entire Zero-to-DApp tutorial in less than 45 minutes. If
 you prefer a 10-minute hello-world code sample, see the [Hello, Blockstack
-Tutorial](browser/hello-blockstack).
+Tutorial](/browser/hello-blockstack).
 
 
 ### Skills you need to follow this tutorial
