@@ -111,7 +111,7 @@ trying logging on from a device or browser software you haven't used before.
 
 Blockchain applications are a new paradigm for both application developers and
 application users. New paradigms in any market, think solar power or electric
-vehicles, need private and private coalitions to grow. The centralized hosting
+vehicles, need public and private coalitions to grow. The centralized hosting
 and services known as cloud computing were once new paradigms. It was the
 investment of billions in funds and incentives from governments and private
 companies that grew the cloud computing market.  
