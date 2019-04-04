@@ -15,6 +15,8 @@
 - title: Reference
   docs:
   - storage/config-schema
-  - storage/cliDocs
   - common/javascript_ref
   - common/android_ref
+  - common/ios_ref
+  - storage/cliDocs
+  - common/core_ref
