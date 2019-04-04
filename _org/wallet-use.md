@@ -49,14 +49,14 @@ send Stacks, a hardware wallet is required.
 
 ### Stacks Wallet software only
 
-You need at least on Stacks Address to create a wallet. A Stacks address is a
+You need at least one Stacks Address to create a wallet. A Stacks address is a
 unique string of letters and numbers, for example:
 `SM7KJBA4UZ7Z20KD2HBXNSXVPCR1D7CRAV605MKT`.
 
 1. Double-click on the wallet software to open it.
 2. Select **Use a Stacks Address**.
 
-   The system asks you to enter an adddres. If you are a token holder, you
+   The system asks you to enter an address. If you are a token holder, you
    should have generated several Stacks address during your the initial grant
    process. You can provide one of these addresses to the Stacks wallet when you
    start it.
@@ -149,14 +149,14 @@ Stacks address requires the private key. It is this private key together with
 your seed phrase that you should keep private and maintain with high security."
 %}
 
-Blockchain transactions take take time. There may be minutes or hours while the
+Blockchain transactions take time. There may be minutes or hours while the
 transaction is recorded in the blockchain. When the transaction is complete, you
 can see a receipt for the transaction in Software Wallet in watch-only mode or
 connected to a hardware wallet.
 
 ## Top up Bitcoin gas
 
-You require very small fractiosn of Bitcoin (.00001) to send Stacks with the wallet.
+You require very small fractions of Bitcoin (.00001) to send Stacks with the wallet.
 
 {% include warning.html content="Very small amounts of Bitcoin are all you need
 to fuel transactions. <b>Never send an entire coin to your Stacks Wallet. Amounts
@@ -259,7 +259,7 @@ wallet to its original state.
 * If you entered a Stacks address, resetting clears the address from the Stacks wallet.
 * If you connected to a hardware wallet, resetting removes the connection to the hardware wallet.
 
-Reseting the wallet does nothing to your addresses or their associated balances.
+Resetting the wallet does nothing to your addresses or their associated balances.
 They are maintained.
 
 Once you reset the wallet, you have to start over from the *Terms of Use*. If
