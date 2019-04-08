@@ -289,7 +289,7 @@ your keyboard.
 
 ## Add the Blockstack kingdom to Other Kingdoms
 
-Your Animal Kingdom has only recognizes two **Other Kingdoms**. In this section,
+Your Animal Kingdom only recognizes two **Other Kingdoms**. In this section,
 you add a third, the Blockstack kingdom (`https://animalkingdoms.netlify.com`).
 
 1. Open the `src/constant.js` file in your favorite editor.
@@ -340,8 +340,8 @@ you add a third, the Blockstack kingdom (`https://animalkingdoms.netlify.com`).
 
    <img src="images/kingdom-moxiegirl.png" alt="">
 
-7. Got to the `moxiegirl` kingdom by clicking on her kingdom.
-8. Try adding a subject from Moxiegirl's kingdom to yours.
+6. Go to the `moxiegirl` kingdom by clicking on her kingdom.
+7. Try adding a subject from Moxiegirl's kingdom to yours.
 
 
 ## Deploy your DApp on the web
