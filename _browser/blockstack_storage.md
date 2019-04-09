@@ -154,7 +154,7 @@ Leave your new application running and move onto the next section.
 ## Add the `publish_data` scope to sign in requests
 
 Every app that uses Gaia storage must add itself to the user's `profile.json`
-file. The Blockstack browser does this automatically when the `publish_data`
+file. The Blockstack Browser does this automatically when the `publish_data`
 scope is requested during authentication. For this application, the user files
 stored on Gaia are made visible to others via the `apps` property in the user's
 `profile.json` file.
