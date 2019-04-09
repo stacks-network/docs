@@ -419,7 +419,7 @@ In this step, you add three `blockstack.js` methods that support posting of "sta
     }
     ```
 
-9. Save the `Profile.jsk` file.
+9. Save the `Profile.jsx` file.
 
    After the application compiles successfully, your application should appears as follows:
 
