@@ -3,6 +3,7 @@ layout: learn
 permalink: /:collection/:path.html
 ---
 # Todo List Application Tutorial
+{:.no_toc}
 
 In this tutorial, you build the code for and run a single-page application (SPA)
 with Blockstack and Vue.js. Once the application is running, you take a tour
@@ -13,27 +14,37 @@ with that ID using Blockstack Storage (Gaia).
 * TOC
 {:toc}
 
-{% include note.html content="This tutorial was written on macOS High Sierra 10.13.4. If you use a Windows or Linux system, you can still follow along. However, you will need to \"translate\" appropriately for your operating system. Additionally, this tutorial assumes you are accessing the Blockstack Browser web application via Chrome. The application you build will also work with a local installation and/or with browsers other than Chrome. " %}
+{% include note.html content="On macOS, Blockstack requires macOS High Sierra. This tutorial was written on macOS High Sierra 10.13.4. If you use a Windows or Linux system, you can still follow along. However, you will need to \"translate\" appropriately for your operating system. Additionally, this tutorial assumes you are accessing the Blockstack Browser web application via Chrome. The application you build will also work with a local installation and/or with browsers other than Chrome. " %}
 
 If you prefer a video, you can view <a href="https://www.youtube.com/embed/oyvg-h0obFw" target="\_blank">a video of the tutorial</a>.
 
-## About this tutorial and the prerequisites you need
-For this tutorial, we will use the following tools:
+## Before you begin
 
-* `npm` to manage dependencies and scripts
-* `browserify` to compile node code into browser-ready code
-* `blockstack.js` to authenticate the user and work with the user’s identity/profile information
-
-At minimum, Blockstack requires macOS High Sierra. This tutorial was written for a user running macOS High Sierra 10.13.4. The application you build is a Vue.js application that is completely decentralized and server-less. While not strictly required to follow along, basic familiarity with Vue.js is helpful.
-
-When complete, the app is capable of the following:
+The application you build is a Vue.js application that is completely decentralized and server-less. While not strictly required to follow along, basic familiarity with Vue.js is helpful. When complete, the app is capable of the following:
 
 * authenticating users using Blockstack
 * posting new statuses
 * displaying statuses in the user profile
 * looking up the profiles and statuses of other users
 
+For this tutorial, you will use the following tools:
+
+* your workstation's command line
+* `git` to clone the tutorial code
+* `npm` to manage dependencies and scripts
+
 The basic identity and storage services are provided by blockstack.js. To test the application, you need to have already registered a Blockstack ID.
+
+### Verify you have git installed
+
+This tutorial uses `git` to clone the tutorial code. Verify you have installed `git` using the `which` command to verify.
+
+```bash
+$ which git
+/usr/local/bin/npm
+```
+
+### Verify you have npm installed
 
 The tutorial relies on the `npm` dependency manager. Before you begin, verify you have installed `npm` using the `which` command to verify.
 
@@ -43,6 +54,7 @@ $ which npm
 ```
 If you don’t find `npm` in your system, [install it](https://www.npmjs.com/get-npm).
 
+### Make sure you have a Blockstack ID
 
 Finally, make sure you have [created at least one Blockstack ID]({{site.baseurl}}/browser/ids-introduction.html#create-an-initial-blockstack-id).
 You’ll use this ID to interact with the application.
@@ -67,7 +79,7 @@ These instructions assume you are cloning.
     $ cd blockstack-todos
     ```
 
-2. Use `npm` to install the dependencies.
+3. Use `npm` to install the dependencies.
 
 
     ```
@@ -119,20 +131,7 @@ The example application runs in a node server on your local host. In the this se
 
 ## Understand the sign in process
 
-Clicking the Sign In With Blockstack button brings up a modal that prompts you
-to sign in with an existing ID or create a new ID. When Blockstack is provided
-an ID, it generates an ephemeral key within the application. An ephemeral key is
-generated for each execution of a key establishment process. This key is just
-used for the particular instance of the application, in this case to sign a Sign
-In request.
-
-A Blockstack Core node also generates a public key token which is sent to the
-browser as an `authRequest` from the browser to your core node. The signed
-authentication request is sent to Blockstack through a JSON Web Token (JWT).
-Blocktack passes the token in via a URL query string in the `authRequest`
-parameter:
-
-`https://browser.blockstack.org/auth?authRequest=j902120cn829n1jnvoa...`
+{% include sign_in.md %}
 
 To decode the token and see what information it holds:
 
@@ -163,17 +162,7 @@ To decode the token and see what information it holds:
     }
     ```
 
-    >**Note**:
-    > * The `iss` property is a decentralized identifier or `did`. This identifies you and your name to the application. The specific `did` is a `btc-addr`.
-    > * The Blockstack JWT implementation is different from other implementations because of the underlying cryptography we employ. There are libraries in [Javascript](https://github.com/blockstack/jsontokens-js) and [Ruby](https://github.com/blockstack/ruby-jwt-blockstack) available on the Blockstack Github to allow you to work with these tokens.
-
-When the Blockstack node receives the `authRequest`, it generates a session token
-and returns an authentication response to the application. This response is
-similar to the `authRequest` above in that the `authResponse` includes a private key
-intended only for the application. This allows the application to encrypt data
-on your personal Blockstack storage.
-
-After the completion of this process, the user is logged in.
+    The `iss` property is a decentralized identifier or `did`. This identifies the user and the user name to the application. The specific `did` is a `btc-addr`.
 
 ## Under the covers in the sign in code
 
