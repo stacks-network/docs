@@ -46,8 +46,6 @@ create a DApp</a>. It grants the application the ability to authenticate a
 Blockstack identity and to read and write to the user's data stored in a Gaia
 hub.
 
-{% include note.html content="Animal Kingdom uses a pre-relese version 19.0.0-alpha.2 of the Blockstack javascript library. Feel free to follow <a href='https://github.com/blockstack/blockstack.js/pull/542' target='\_blank'>the pull request for this version</a> to track the version's progress." %}
-
 ### Authenticating user identity
 
 The `src/App.js` file creates a Blockstack `UserSession` and uses that session's
@@ -229,8 +227,8 @@ your keyboard.
    forest.jpg   tundra.jpg   westeros.jpg
    ```
 
-4. Open the `src/constant.js` file in your favorite editor.
-5. Scroll down to the section that defines the **Territories**.
+5. Open the `src/constant.js` file in your favorite editor.
+6. Scroll down to the section that defines the **Territories**.
 
    ```js
    export const TERRITORIES = [
@@ -247,7 +245,7 @@ your keyboard.
    ]
    ```
 
-6. Add your new territory.
+7. Add your new territory.
 
    ```js
    export const TERRITORIES = [
@@ -268,13 +266,13 @@ your keyboard.
      }
     ]
     ```
-7. Save and close the `constant.js` file.
-8. Back in a terminal window, restart your application.
+8. Save and close the `constant.js` file.
+9. Back in a terminal window, restart your application.
 
    ```bash
    $ npm start
    ```
-9. After the application starts, navigate to the **Territories** page and look for your `Westeros` territory.
+10. After the application starts, navigate to the **Territories** page and look for your `Westeros` territory.
 
    <img src="images/kingdom-throne.png" alt="">
 
