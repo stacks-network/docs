@@ -1,11 +1,6 @@
 {
   "faqs": [
      {
-        "category": "general",
-        "question": "What is Blockstack?",
-        "answer": "<p>Blockstack is a full-stack decentralized computing network that enables a new generation of applications where developers and users can interact fairly and securely. Blockstack uses blockchain technology to build protocols and developer tools designed to enable a fair and open Internet that returns digital rights to developers and consumers. Led by some of the world’s foremost experts on distributed systems, Blockstack allows users to own their own data that they can take with them from app to app in the ecosystem, along with their Blockstack ID that eliminates the need for password-based logins. The end result is privacy, security, and freedom.<\/p>"
-     },
-     {
       "category": "general",
       "question": "What is decentralized computing?",
       "answer": "<p>Decentralized computing has these attributes:<\/p> <ul> <li><strong>Personal keys for a digital life<\/strong>. Users will have keys that unlock all their software interactions, email, subscriptions, and social. These keys are in users’ hands and under their control similar to physical keys (in some cases they are physical). Corporations  no longer create or manage these keys.<\/li> <li><strong>Security is a first-class concern<\/strong>.  Users want systems that protect both their identity and the data associated with that identity — health, application, and relationships.<\/li> <li><strong>Convenient and auditable.<\/strong> Applications will be readily available as cloud applications are today but will be written with open protocols and code that allow them to be audited.<\/li> <li><strong>Innovation focused.<\/strong> The code and data in a decentralized computing lacks corporate and other boundaries as a result a global workforce can easily contribute and benefit from them.<\/li> <\/ul> <p>Blockstack technology, then, is a shift in how people use software, create it, and benefit from it. It puts people back in control of the computing systems that manage today’s world.<\/p>"
