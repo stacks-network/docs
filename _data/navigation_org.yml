@@ -1,8 +1,14 @@
 - title: About Blockstack
   docs:
   - org/overview
+  - faqs/allFAQS
   - org/token
   - org/explore
+- title: Our Whitepapers
+  docs:
+  - org/whitepaper-blockchain
+  - org/whitepaper-tokensale
+  - org/whitepaper-token
 - title: Manage Stacks
   docs:
   - org/wallet-intro
@@ -10,13 +16,7 @@
   - org/wallet-use
   - org/tokenholders
   - org/voucherholder
-- title: Whitepapers
-  docs:
-  - org/whitepaper-blockchain
-  - org/whitepaper-tokensale
-  - org/whitepaper-token
 - title: Reference
   docs:
   - org/secureref
-  - faqs/allFAQS
   - org/terms
