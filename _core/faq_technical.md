@@ -2,12 +2,10 @@
 layout: core
 permalink: /:collection/:path.html
 ---
-# Core Developers FAQ
+# Technical FAQ
 {:.no_toc}
 
-This document lists frequently-asked questions by developers interested in working with Blockstack core components. If you are new to Blockstack, you should read the [general questions]({{site.baseurl}}/faqs/allFAQs.html) first.
-
-For more general questions about developing applications with the Blockstack platform, see the [DApp developer questions]({{site.baseurl}}/core/faq_developer.html).
+This document lists frequently-asked questions by developers interested in working with Blockstack application and core components. If you are new to Blockstack, you should read the [general questions]({{site.baseurl}}/faqs/allFAQs.html) first.
 
 If you have a technical question that gets frequently asked on the
 [forum](https://forum.blockstack.org) or [Slack](https://blockstack.slack.com),
