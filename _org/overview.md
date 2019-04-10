@@ -2,21 +2,19 @@
 layout: org
 permalink: /:collection/:path.html
 ---
-# What is the Blockstack Ecosystem
+# Overview of Blockstack
 
-The Blockstack Ecosystem has a mission to bring a new internet where users
-control the access to, and use of, their own identity and data. With this
-mission in mind, three independent entities were formed:
-
-* TOC
-{:toc}
-
-These three affiliated entities drive the advancement of the Blockstack mission.
-In this section, you learn about the mechanisms each entity uses to advance the
-overall mission.
+Blockstack is a full-stack decentralized computing network that enables a new generation of applications where developers and users can interact fairly and securely. Blockstack uses blockchain technology to build protocols and developer tools designed to enable a fair and open Internet that returns digital rights to developers and consumers.
 
 
-## Blockstack Public Benefit Corp (PBC)
+## What is the Blockstack Ecosystem?
+
+The Blockstack Ecosystem is the legal entities and community structures that support the Blockstack technology, the apps that rely on it, and the people that work with it. The ecosystem’s mission is to foster an open and decentralized Internet that establishes and protects privacy, security and freedom for all users.
+
+The documentation on this site focuses on the technologies produced by three entities in the ecosystem.
+
+
+### Blockstack Public Benefit Corp (PBC)
 
 Blockstack Public Benefit Corp. (PBC) started development of the Blockstack
 platform in 2014 and launched an alpha of the platform in early 2017. The
@@ -38,11 +36,11 @@ Using Blockstack’s technology developers can start building immediately on the
 blockchain with the knowledge you have today. You won’t need to spend time or
 effort developing expertise in specialized languages or technologies.
 
-## Blockstack Signature Fund
+### Blockstack Signature Fund
 
 {% include signature_fund.md %}
 
-## Blockstack Token LLC
+### Blockstack Token LLC
 
 Through the 2017 Blockstack token offering, Blockstack Token LLC created the
 Stacks token. This year's hard fork is an especially exciting milestone for the ecosystem because it distributes the first Stacks tokens to existing purchasers and recipients. This hard fork launches the Stacks blockchain v1, and enables the following two features for the Blockstack network:
