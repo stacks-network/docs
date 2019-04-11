@@ -68,11 +68,11 @@
       {
          "category":"appusers",
          "question":"How do I get an identity? Is it free?",
-         "answer":"<p>You can get a free identity from Blockstack in the <strong>id.blockstack</strong> namespace. A namepace is similar to a domain (<strong><a href='http://checklist.com'>checklist.com</a></strong>, for example) on the old internet. So, a free identity has <strong>blockstack</strong> suffix in its name; for example, <strong>moxiegirl.id.blockstack</strong> is a free Blockstack identity.</p>"
+         "answer":"<p>Normally, registering an identity as a digital asset on the Stacks blockchain requires <a href='https://blog.blockstack.org/video-reusing-bitcoins-hashpower-to-launch-the-stacks-blockchain/'>burning of Stacks tokens as <emphasis>fuel</emphasis></a>. However, Blockstack PBC is currently running a free service to pay for identities on behalf of the users. Through this service, you can get a free identity from Blockstack in the <strong>id.blockstack</strong> namespace. A namespace is similar to a domain (<strong>checklist.com</strong>, for example) on the old internet. So, a free identity has blockstack suffix in its name; for example, <strong>moxiegirl.id.blockstack</strong> is a free Blockstack identity.</p>"
       },
       {
          "category":"appusers",
-         "question":"What if I forget my identity or my lose my secret key, can Blockstack help me?",
+         "question":"If I forget my identity or my lose my secret key, can Blockstack help me?",
          "answer":"<p>If you forget your identity or lose your secret key, no one else, <em>no person, no software, can help you get your identity back</em>. This restriction protects your identity and your secret key which together control access to data about you. In the new, decentralized internet, no one can keep and store your data but you, not even Blockstack.</p> <p>You need to keep your identity and secret key in a safe, secure place you won’t forget.</p> "
       },
       {
@@ -113,7 +113,7 @@
       {
          "category":"appusers",
          "question":"What is the Blockstack Browser?",
-         "answer":"<p>The Blockstack Browser is a DApp users use to create and manage their Blockstack identities. Users use the Blockstack Browser to manage their identities and their data storage. </p> <p>Developers use the Blockstack Browser to handle login requests from DApps. From a Blockstack DApp, a user chooses the Log In with Blockstack button. Clicking this button sends users to a Blockstack Browser dialog. This dialog asks users to allow the DApp to access their data. </p>"
+         "answer":"<p>The Blockstack Browser is a DApp used to create and manage Blockstack identities. To a user, it looks just like another tab in a standard browser. From the Blockstack Browser tab you can find DApps to try, update settings related to your identity and storage &ndash; and much more. </p> <p>Developers use the Blockstack Browser to handle login requests from DApps. From a Blockstack DApp, a user chooses the Log In with Blockstack button. Clicking this button sends users to a Blockstack Browser dialog. This dialog asks users to allow the DApp to access their data. </p>"
       },
       {
          "category":"appusers",
@@ -353,7 +353,7 @@
       {
          "category":"appminers",
          "question":"Is App Mining Decentralized?",
-         "answer":"<p>Given the pioneering nature of the program, we are being careful and starting in a centralized fashion that allows for necessary diligence. We don’t want to bake in assumptions that have not been validated. The downside of this protection is some level of centralization, which we are taking steps to reduce over time. The pilot is the just the first step in creating a fair system that can be relied upon by founders and contribute to the growth of the Blockstack ecosystem. </p> <p>Blockstack plans to move along a path to decentralization and App Mining will too. It is important to highlight that initially App Mining will purposely have a few points of centralization highlighted below, which can become decentralized over time (all plans are subject to change, legal approval, and applicable law). </p> <h5>Electing app reviewers:</h5> <p>Currently, Blockstack PBC elects app reviewers. In the future, we anticipate gradually transitioning to community elections of App Reviewers. </p> <h5>Registering apps:</h5> <p>Currently, registering apps is regulated by Blockstack PBC through app.co/mining. In the future, we anticipate transitioning to publishing on designated Blockstack namespaces via our public blockchain. </p> <h5>Collecting votes:</h5> <p>Currently, votes are aggregated by Blockstack PBC and administered via App.co. In the future, we expect that votes will be collected through the protocol itself. </p> <h5>Issuing money:</h5> <p>Currently, payouts are issued by Blockstack PBC. In the future, we expect that payouts will over time be generated and deployed on an automated basis. </p>"
+         "answer":"<p>Given the pioneering nature of the program, we are being careful and starting in a somewhat centralized fashion that allows for necessary diligence in the early stages, for example, the current pilot phase. We don’t want to bake in assumptions that have not been validated. The downside of this protection is some level of centralization, which we are taking steps to reduce over time. The pilot is the just the first step in creating a fair system that can be relied upon by founders and contribute to the growth of the Blockstack ecosystem. </p> <p>Blockstack plans to move along a path to decentralization and App Mining will too. It is important to highlight that initially App Mining will purposely have a few points of centralization highlighted below, which can become decentralized over time (all plans are subject to change, legal approval, and applicable law). </p> <h5>Electing app reviewers:</h5> <p>Currently, Blockstack PBC elects app reviewers. In the future, we anticipate gradually transitioning to community elections of App Reviewers. </p> <h5>Registering apps:</h5> <p>Currently, registering apps is regulated by Blockstack PBC through app.co/mining. In the future, we anticipate transitioning to publishing on designated Blockstack namespaces via our public blockchain. </p> <h5>Collecting votes:</h5> <p>Currently, votes are aggregated by Blockstack PBC and administered via App.co. In the future, we expect that votes will be collected through the protocol itself. </p> <h5>Issuing money:</h5> <p>Currently, payouts are issued by Blockstack PBC. In the future, we expect that payouts will over time be generated and deployed on an automated basis. </p>"
       },
       {
          "category":"appminers",
@@ -368,22 +368,17 @@
       {
          "category":"coredevs",
          "question":"What is Blockstack Core?",
-         "answer":"<p>Blockstack Core is the reference implementation of the Blockstack protocol described in our white paper. Today, it consists of these components:</p> <ul><li>Virtualchain implementation: This is a python library that parses the underlying blockchain (Bitcoin) and builds the state of the Blockstack DNS.</li> <li>Blockstack Core: Uses the Virtualchain to build the BNS state and comes to a consensus on that state in a peer network (Atlas).</li> <li>Blockstack API: Indexes the data stored by Blockstack Core and makes it available in a performant way to applications.</li> </ul>"
+         "answer":"<p>Blockstack Core is the reference implementation of the Blockstack protocol described in our white paper. Today, it consists of these components:</p> <ul><li>Blockstack Core: A Python backend service which reads transactiosn from the Stacks blockchain. This blockchain enables the Stacks Token (STX) and Blockstack Naming service.</li> <li>Atlas: A peer network for communicating data about the Blockstack Naming System (BNS).</li> <li>Blockstack API: A service for indexing the data stored by Blockstack Core and making it available in a performant way.</li> </ul><p>The next version of the Stacks Blockchain is under active development in the Rust programming language, and employs our Tunable Proof-of-Work consensus algorithm and a unique scaling solution that enable individual apps to create </p>"
       },
       {
          "category":"coredevs",
          "question":"How will the next version of  Blockstack Core change?",
-         "answer":"<p>The next version of Blockstack core will incorporate smart contacts and do away with the virtual chain. This next version is expected toward the end of the year and will contain these components:</p> <ul> <li><strong><em>Leader election and Proof-of-Burn implementation</em></strong>: This component governs how clients select the longest chain and which miners receive transaction fees for broadcasting transactions.</li> <li><strong><em>Peering network</em></strong>: This component distributes blocks and microblocks among peer nodes participating in the Stacks blockchain.</li> <li><strong><em>Smart contracting VM</em></strong>: This component is responsible for executing and validating transactions in the Stacks blockchain, including smart contract publishing and execution.</li> <li><strong><em>Blockstack API</em></strong>: This API indexes the data stored by Blockstack Core, exposing a JSON REST API for querying information about Stacks ownership, the Blockstack Naming System, and other data stored in smart contracts.</li> </ul>"
+         "answer":"<p>The next version of Blockstack core will incorporate smart contacts and do away with the virtual chain. This next version is expected toward the end of the year and will contain these components:</p> <ul> <li><strong><em>Leader election and Tunable Proof-of-Work implementation</em></strong>: This component governs how clients select the longest chain and which miners receive transaction fees for broadcasting transactions.</li> <li><strong><em>Peering network</em></strong>: This component distributes blocks and microblocks among peer nodes participating in the Stacks blockchain.</li> <li><strong><em>Smart contracting VM</em></strong>: This component is responsible for executing and validating transactions in the Stacks blockchain, including smart contract publishing and execution.</li> <li><strong><em>Blockstack API</em></strong>: This API indexes the data stored by Blockstack Core, exposing a JSON REST API for querying information about Stacks ownership, the Blockstack Naming System, and other data stored in smart contracts.</li> </ul>"
       },
       {
          "category":"coredevs",
          "question":"What is Leader Election and Proof-of-Burn?",
          "answer":"<p>Proof-of-Burn is a mechanism through which potential block miners (what we call leaders) burn an existing cryptocurrency to announce their candidacy for mining a particular block. The more cryptocurrency burnt by a particular leader, the more likely they are to be selected to lead a block (a process which uses cryptographic sortition). Once elected, a leader constructs a valid block,  choosing the chain tip to base their fork off of, and announces the block to the network. In the event of chain forks, clients select the longest such fork as the “correct fork.”</p>"
-      },
-      {
-         "category":"coredevs",
-         "question":"What is a virtual chain",
-         "answer":"<p>Currently, Blockstack uses a “virtual chain” concept, where nodes only need to reach consensus on the shared “virtual chain” they’re interested in. Virtual chains do not interact with one another, and a single blockchain can host many virtual chains. The next iteration of the Blockstack chain no longer contains virtual chains.</p>"
       },
       {
          "category":"coredevs",
@@ -418,7 +413,7 @@
       {
          "category":"coredevs",
          "question":"Do you have a testnet or sandbox to experiment with Blockstack?",
-         "answer":"<p>We have an <a href='https://github.com/blockstack/blockstack-core/tree/master/integration_tests'>integration test framework</a> that provides a private Blockstack testnet. It uses <code>bitcoin -regtest</code> to create a private blockchain that you can interact with, without having to spend any Bitcoin or having to wait for blocks to confirm. Please see the <a href='https://github.com/blockstack/blockstack-core/blob/master/integration_tests/README.md'>README</a> for details.</p>"
+         "answer":"<p>We have an <a href='https://github.com/blockstack/blockstack-core/tree/master/integration_tests'>integration test framework</a> that provides a private Blockstack testnet. It uses <code>bitcoin -regtest</code> to create a private blockchain that you can interact with, without having to spend any Bitcoin or having to wait for blocks to confirm. There is a deployed testnet of the current version of <code>blockstack-core</code> at <a href='https://testnet.blockstack.org/'>testnet.blockstack.org</a>. To deploy your own testnet, please see the <a href='https://github.com/blockstack/blockstack-core/blob/master/integration_tests/README.md'>README</a> for details.</p>"
       },
       {
          "category":"coredevs",
@@ -499,11 +494,6 @@
          "category":"miscquest",
          "question":"What’s the difference between Onename and Blockstack?",
          "answer":"<p>Onename was a free Blockstack ID registrar run by Blockstack. It makes it easy to register your name and set up your profile. Once the name has been registered in Onename, you can transfer it to a wallet you control, or leave it there and use it as you like.</p>"
-      },
-      {
-         "category":"miscquest",
-         "question":"How is Blockstack different from Namecoin?",
-         "answer":"<p>Blockstack DNS differs from Namecoin DNS in a few fundamental ways: blockchain layering, storage models, name pricing models, and incentives for miners. We wrote a post where you can learn more here: <a href='https://blockstack.org/docs/blockstack-vs-namecoin'>https://blockstack.org/docs/blockstack-vs-namecoin</a></p>"
       },
       {
          "category":"miscquest",
