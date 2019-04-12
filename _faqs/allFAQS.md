@@ -18,7 +18,7 @@ This is a comprehensive list of all the Blockstack FAQs.
   {% endif %}
 {% endfor %}
 
-## Application users
+## Application user questions
 
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'appusers' %}
@@ -27,17 +27,7 @@ This is a comprehensive list of all the Blockstack FAQs.
   {% endif %}
 {% endfor %}
 
-## Stacks Wallet
-
-{% for faq in site.data.theFAQs.faqs %}
-   {% if faq.category == 'wallet' %}
-### {{ faq.question }}
-{{ faq.answer }}
-  {% endif %}
-{% endfor %}
-
-
-## Stacks tokens
+## Stacks Token questions
 
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'tokens' %}
@@ -46,7 +36,16 @@ This is a comprehensive list of all the Blockstack FAQs.
   {% endif %}
 {% endfor %}
 
-## DApp developers
+## Stacks Wallet questions
+
+{% for faq in site.data.theFAQs.faqs %}
+   {% if faq.category == 'wallet' %}
+### {{ faq.question }}
+{{ faq.answer }}
+  {% endif %}
+{% endfor %}
+
+## DApp developers questions
 
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'dappdevs' %}
@@ -55,7 +54,7 @@ This is a comprehensive list of all the Blockstack FAQs.
   {% endif %}
 {% endfor %}
 
-## Application Miners
+## Application Miner questions
 
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'appminers' %}
@@ -64,7 +63,7 @@ This is a comprehensive list of all the Blockstack FAQs.
   {% endif %}
 {% endfor %}
 
-## Core developers
+## Core developer questions
 
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'coredevs' %}
@@ -73,7 +72,7 @@ This is a comprehensive list of all the Blockstack FAQs.
   {% endif %}
 {% endfor %}
 
-## Open source developers
+## Open source developer questions
 
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'opensource' %}
