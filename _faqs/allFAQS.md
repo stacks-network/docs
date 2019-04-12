@@ -27,7 +27,7 @@ This is a comprehensive list of all the Blockstack FAQs.
   {% endif %}
 {% endfor %}
 
-## Stacks Tokens questions
+## Stacks Token questions
 
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'tokens' %}
