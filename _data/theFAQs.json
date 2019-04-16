@@ -565,6 +565,11 @@
       "answer": "<p>You may email <a href='mailto:support@blockstack.com'>support@blockstack.com</a> with your voucher ID and full name to check the validity of your voucher.</p>"
       }, 
       { 
+         "category":"tokens", 
+         "question": "Can I transfer or sell my Stacks voucher?",
+         "answer": "<p>Stacks vouchers are non-transferrable and may not be bought, sold or gifted. Only the original person or entity that registered for, and whose name is printed on, the voucher may redeem it.</p>"
+      }, 
+      { 
       "category":"tokens", 
       "question": "How do I check the status of my previously purchased Stacks Tokens?",
       "answer": "<p>You may check the status of previously purchased Stacks Tokens at <a href='https://explorer.blockstack.org/'>https://explorer.blockstack.org/</a>. Additional wallet-related information is available <a href='https://blockstack.org/faq/'>here</a>.</p>"
