@@ -142,14 +142,14 @@ not accessible by anyone.
 
    The system prompts you for an email address. This email can be one you
    entered previously or an entirely new one. Blockstack doesn't store this
-   address; it is used during your current Blockstack browser interaction to communicate
+   address; it is used during your current Blockstack Browser interaction to communicate
    important information with you.
 
 5. Enter an email and press **Next**.
 
    The system prompts you for a password and its confirmation. This password
    can be one you entered previously or an entirely new one. Write this password
-   down. You can use the password during your current Blockstack browser
+   down. You can use the password during your current Blockstack Browser
    interaction  to reveal your keychain or change your password. Blockstack does
    not store this information past the session.
 
@@ -179,7 +179,7 @@ not accessible by anyone.
 
    The system prompts you for an email address. This email can be one you
    entered previously or an entirely new one. Blockstack doesn't store this
-   address; it is used during your current Blockstack browser interaction to
+   address; it is used during your current Blockstack Browser interaction to
    communicate important information with you.
 
 5. Enter an email and press **Next**.
