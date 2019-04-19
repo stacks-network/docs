@@ -107,7 +107,10 @@ You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersess
 
 
 ```JavaScript
- blockstack.deleteFile("/hello.txt")
+
+var userSession = new UserSession()
+
+ userSession.deleteFile("/hello.txt")
  .then(() => {
     // /hello.txt is now removed.
  })
