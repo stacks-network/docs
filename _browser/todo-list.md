@@ -180,7 +180,7 @@ The `src/components/Landing.vue` code calls a [`redirectToSignIn()`](https://blo
 ```js
 signIn () {
   const blockstack = this.blockstack
-  blockstack.redirectToSignIn()
+  blockstack.UserSession.redirectToSignIn()
 }
 ```
 
@@ -188,16 +188,16 @@ Once the user authenticates, the application handles the `authResponse` in the `
 
 ```js
 if (blockstack.isUserSignedIn()) {
-  this.user = blockstack.loadUserData().profile
-} else if (blockstack.isSignInPending()) {
-  blockstack.handlePendingSignIn()
+  this.user = blockstack.UserSession.loadUserData().profile
+} else if (blockstack.UserSession.isSignInPending()) {
+  blockstack.UserSession.handlePendingSignIn()
   .then((userData) => {
     window.location = window.location.origin
   })
 }
 ```
 
-If [`blockstack.isUserSignedIn()`](https://blockstack.github.io/blockstack.js/#isusersignedin) is true, the user was previously signed in so Blockstack pulls the data from the browser and uses it in our application. If the check on  [`blockstack.isSignInPending()`](https://blockstack.github.io/blockstack.js/#issigninpending) is true, a previous `authResponse` was sent to the application but hasn't been processed yet. The `handlePendingSignIn()` function processes any pending sign in.
+If [`blockstack.isUserSignedIn()`](https://blockstack.github.io/blockstack.js/#isusersignedin) is true, the user was previously signed in so Blockstack pulls the data from the browser and uses it in our application. If the check on  [`blockstack.UserSession.isSignInPending()`](https://blockstack.github.io/blockstack.js/#issigninpending) is true, a previous `authResponse` was sent to the application but hasn't been processed yet. The `handlePendingSignIn()` function processes any pending sign in.
 
 Signout is handled in `src/components/Dashboard.vue`.
 
@@ -223,7 +223,7 @@ file you just added by opening the Javascript console and running the following
 command:
 
 ```Javascript
-blockstack.getFile("todos.json", { decrypt: true }).then((file) => {console.log(file)})
+blockstack.UserSession.getFile("todos.json", { decrypt: true }).then((file) => {console.log(file)})
 ```
 
 You should see a JSON with the todos you just added:
@@ -283,22 +283,22 @@ todos: {
     const blockstack = this.blockstack
 
     // encryption is now enabled by default
-    return blockstack.putFile(STORAGE_FILE, JSON.stringify(todos))
+    return blockstack.UserSession.putFile(STORAGE_FILE, JSON.stringify(todos))
   },
   deep: true
 }
 ```
 
 The `todos` JSON object is passed in and the
-[`blockstack.putFile()`](https://blockstack.github.io/blockstack.js/#putfile)
+[`blockstack.UserSession.putFile()`](https://blockstack.github.io/blockstack.js/#putfile)
 method to store it in a Gaia Hub.
 
-The code needs to read the Todo items from the storage with the [`blockstack.getFile()`](https://blockstack.github.io/blockstack.js/#getfile) method which returns a promise:
+The code needs to read the Todo items from the storage with the [`blockstack.UserSession.getFile()`](https://blockstack.github.io/blockstack.js/#getfile) method which returns a promise:
 
 ```js
 fetchData () {
   const blockstack = this.blockstack
-  blockstack.getFile(STORAGE_FILE) // decryption is enabled by default
+  blockstack.UserSession.getFile(STORAGE_FILE) // decryption is enabled by default
   .then((todosText) => {
     var todos = JSON.parse(todosText || '[]')
     todos.forEach(function (todo, index) {

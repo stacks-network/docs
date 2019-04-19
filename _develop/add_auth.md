@@ -51,14 +51,16 @@ To check for the presence of this token, your app should call `UserSession.isSig
 ```js
 import * as blockstack from 'blockstack'
 
-if (blockstack.isSignInPending()) {
-    blockstack.handlePendingSignIn()
+if (blockstack.UserSession.isSignInPending()) {
+    blockstack.UserSession.handlePendingSignIn()
     .then(userData => {
         const profile = userData.profile
     })
 }
 
 ```
+
+By default, these method use the `store_write` scope which allows the DApp to read the user profile and read/write user data for the DApp. To specify a different scope, use a <a href="https://blockstack.github.io/blockstack.js/classes/appconfig.html" target="\_blank">AppConfig</a> object.
 
 ### Custom flows
 

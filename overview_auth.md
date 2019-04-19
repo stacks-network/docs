@@ -282,8 +282,8 @@ To check for the presence of this token, your app should call `isSignInPending`.
 ```js
 import * as blockstack from 'blockstack'
 
-if (blockstack.isSignInPending()) {
-    blockstack.handlePendingSignIn()
+if (blockstack.UserSession.isSignInPending()) {
+    blockstack.UserSession.handlePendingSignIn()
     .then(userData => {
         const profile = userData.profile
     })

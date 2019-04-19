@@ -4,7 +4,7 @@ A decentralized application (DApp) and the Blockstack Browser communicate during
 
 ![](/storage/images/app-sign-in.png)
 
-When a user chooses to **Sign in with Blockstack** on a DApp, calls the `redirectToSignIn()` method which sends an  `authRequest` to the Blockstack Browser. Blocktack passes the token in via a URL query string in the `authRequest` parameter:
+When a user chooses to **Sign in with Blockstack** on a DApp, it calls the `redirectToSignIn()` method which sends an  `authRequest` to the Blockstack Browser. Blockstack passes the token in via a URL query string in the `authRequest` parameter:
 
 `https://browser.blockstack.org/auth?authRequest=j902120cn829n1jnvoa...`
 
@@ -16,7 +16,7 @@ When the Blockstack Browser receives the request, it generates an (`authResponse
 
 The ephemeral key is just used for the particular instance of the application, in this case to sign a sign-in request. It encrypts secrets that need to be passed from the Blockstack Browser to the app during the authentication process. 
 
-The identity address private key is derived from the user's keychain phrase. This key signs the authentication response token for an app to indicate that the user approves sign in to that app.
+The identity-address private key is derived from the user's keychain phrase. This key signs the authentication response token for an app to indicate that the user approves sign in to that app.
 
 The app private key is application-specific. It is generated from the user's identity address private key using the `appDomain` as input. This app private key is also deterministic, meaning that for a given Blockstack ID and domain name, the same private key is generated each time. The app private key serves three functions:
 
