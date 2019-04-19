@@ -3,6 +3,13 @@
   - develop/dapp_principles
   - core/faq_developer
 
+- title: Building Blocks
+- docs:
+  - develop/overview_auth
+  - develop/add_auth
+  - develop/storage
+  - develop/profiles
+
 - title: Try it! Zero to DApp
   docs:
   - develop/zero_to_dapp_1

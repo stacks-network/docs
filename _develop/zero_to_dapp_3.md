@@ -102,7 +102,7 @@ signed into the DApp previously. If not, it opens the  `Landing.js` page. This
 page offers the user an opportunity to **Sign in to Blockstack**.
 
 Clicking the button ends up calling the `redirectToSignIn()` method which generates an
-authentication request and redirects the user to the Blockstack browser to
+authentication request and redirects the user to the Blockstack Browser to
 approve the sign in request. The actual Blockstack sign-in dialog depends on
 whether the user already has an existing session in the Blockstack Browser.
 
