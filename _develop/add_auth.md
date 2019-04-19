@@ -51,8 +51,9 @@ To check for the presence of this token, your app should call `UserSession.isSig
 ```js
 import * as blockstack from 'blockstack'
 
-if (blockstack.UserSession.isSignInPending()) {
-    blockstack.UserSession.handlePendingSignIn()
+var userSession = new UserSession()
+if (userSession.isSignInPending()) {
+    userSession.handlePendingSignIn()
     .then(userData => {
         const profile = userData.profile
     })

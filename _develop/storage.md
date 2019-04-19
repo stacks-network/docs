@@ -86,7 +86,8 @@ the `publish_data` scope during authentication.
    app: 'http://BlockstackApp.com' // origin of the app this file is stored for
  }
 
- blockstack.UserSession.getFile("/message.txt", options)
+var userSession = new UserSession()
+userSession.putFile("/hello.txt", "hello world!", options)
  .then((fileContents) => {
     // get the contents of the file /message.txt
     assert(fileContents === "hello world!")

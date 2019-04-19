@@ -258,11 +258,12 @@ several states the user can be in:
 The application handles these situations as followed:
 
 ```js
-if (blockstack.isUserSignedIn()) {
-  var profile = blockstack.UserSession.loadUserData().profile
+var userSession = new UserSession()
+if (userSession.isUserSignedIn()) {
+  var profile = userSession.loadUserData().profile
     showProfile(profile)
-} else if (blockstack.UserSession.isSignInPending()) {
-  blockstack.UserSession.handlePendingSignIn().then(function(userData) {
+} else if (userSession.isSignInPending()) {
+  userSession.handlePendingSignIn().then(function(userData) {
     window.location = window.location.origin
   })
 }
