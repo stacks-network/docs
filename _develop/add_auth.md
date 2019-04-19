@@ -41,7 +41,7 @@ When your app wants to start the sign in process, typically when the user clicks
 a **Sign in with Blockstack** button, your app will call the `UserSession.redirectToSignIn`.
 This creates an ephemeral transit key, stores it in the web browser's
 `localStorage`. Then, the function is used to create an authentication request token. The Blockstack Browser
-redirects the user to the Blockstack browser to approve the sign in request.
+redirects the user to the Blockstack Browser to approve the sign in request.
 
 
 When a user approves a sign in request, the Blockstack Browser returns a signed `authResponse` token to the `redirectURI` specified in `UserSession.redirectToSignIn`.

@@ -225,7 +225,7 @@ In this section, you build an initial React.js application called
 
 ### Add a redirect end point to your application
 
-When a user opens the webapp from the Blockstack browser on an iOS phone,
+When a user opens the webapp from the Blockstack Browser on an iOS phone,
 you want the web app to redirect the user to your iOS application. The work
 you do here will allow it.
 

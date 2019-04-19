@@ -125,7 +125,7 @@ transit private key signs the app authentication request.
 The identity address private key is derived from the user's keychain phrase and
 is the private key of the Blockstack ID that the user chooses to use to sign in
 to the app. It is a secret owned by the user and never leaves the user's
-instance of the Blockstack browser. This private key signs the authentication
+instance of the Blockstack Browser. This private key signs the authentication
 response token for an app to indicate that the user approves sign in to that
 app.
 
@@ -135,7 +135,7 @@ The app private key is an app-specific private key that is generated from the
 user's identity address private key using the `domain_name` as input. It is
 deterministic in that for a given Blockstack ID and `domain_name`, the same
 private key will be generated each time. The app private key is securely shared
-with the app on each authentication, encrypted by the Blockstack browser with
+with the app on each authentication, encrypted by the Blockstack Browser with
 the transit public key.
 
 ## Scopes
@@ -271,7 +271,7 @@ method of [blockstack.js](https://github.com/blockstack/blockstack.js).
 
 This creates an ephemeral transit key, stores it in the web browser's
 `localStorage`, uses it to create an authentication request token and finally
-redirects the user to the Blockstack browser to approve the sign in request.
+redirects the user to the Blockstack Browser to approve the sign in request.
 
 ##### Handling an authentication response
 

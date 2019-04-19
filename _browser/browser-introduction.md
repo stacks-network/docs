@@ -17,7 +17,7 @@ website or buying an item.
 
 ## Understand the Blockstack Browser
 
-Through the Blockstack browser application you can create an identity. An identity
+Through the Blockstack Browser application you can create an identity. An identity
 represents you as you interact with others through DApps. The Blockstack
 Browser is itself, a simple DApp. It allows you to:
 
