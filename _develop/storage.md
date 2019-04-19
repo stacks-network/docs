@@ -12,7 +12,7 @@ The Blockstack Platform stores application data in the Gaia Storage System. Tran
 {:toc}
 
 
-{% include note.html content="<ul> <li>Blockstack Gaia Storage APIs and on-disk format will change in upcoming pre-releases breaking backward compatibility. File encryption is currently opt-in on a file by file basis.</li> <li>Certain storage features such as and collections are not implemented in the current version. These features will be rolled out in future updates.</li> </ul>" %}
+{% include note.html content="<ul> <li>Blockstack Gaia Storage APIs and on-disk format will change in upcoming pre-releases breaking backward compatibility. File encryption is currently opt-in on a file by file basis.</li> <li>Certain storage features such as collections are not implemented in the current version. These features will be rolled out in future updates.</li> </ul>" %}
 
 
 ## Creating a file
@@ -23,7 +23,7 @@ You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersess
 let options = {
   encrypt: false
 }
- blockstack.putFile("/hello.txt", "hello world!", options)
+ blockstack.UserSession.putFile("/hello.txt", "hello world!", options)
  .then(() => {
     // /hello.txt exists now, and has the contents "hello world!".
  })
@@ -38,7 +38,7 @@ You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersess
    encrypt: true
  }
 
- blockstack.putFile("/message.txt", "Secret hello!", options)
+ blockstack.UserSession.putFile("/message.txt", "Secret hello!", options)
  .then(() => {
     // message.txt exists now, and has the contents "hello world!".
  })
@@ -53,7 +53,7 @@ You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersess
    decrypt: false
  }
  
- blockstack.getFile("/hello.txt", options)
+ blockstack.UserSession.getFile("/hello.txt", options)
  .then((fileContents) => {
     // get the contents of the file /hello.txt
     assert(fileContents === "hello world!")
@@ -69,7 +69,7 @@ You use the <a href="" target="_blank"></a>
    decrypt: true
  }
 
- blockstack.getFile("/message.txt", options)
+ blockstack.UserSession.getFile("/message.txt", options)
  .then((fileContents) => {
     // get & decrypt the contents of the file /message.txt
     assert(fileContents === "Secret hello!")
@@ -86,7 +86,7 @@ the `publish_data` scope during authentication.
    app: 'http://BlockstackApp.com' // origin of the app this file is stored for
  }
 
- blockstack.getFile("/message.txt", options)
+ blockstack.UserSession.getFile("/message.txt", options)
  .then((fileContents) => {
     // get the contents of the file /message.txt
     assert(fileContents === "hello world!")
@@ -95,7 +95,7 @@ the `publish_data` scope during authentication.
 
 ## Delete a file
 
-You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersession.html#deletefile" target="_blank">UserSession.deleteFile</a>
+You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersession.html#deletefile" target="_blank">UserSession.deleteFile</a> from the application's data store.
 
 
 ```JavaScript
@@ -104,3 +104,8 @@ You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersess
     // /hello.txt is now removed.
  })
 ```
+
+## Related Information
+{:.no_toc}
+
+To learn more about the guarantees provided by Gaia, see [Storage write and read]({{ site.baseurl }}/storage/write-to-read.html#)

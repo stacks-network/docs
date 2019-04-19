@@ -259,10 +259,10 @@ The application handles these situations as followed:
 
 ```js
 if (blockstack.isUserSignedIn()) {
-  var profile = blockstack.loadUserData().profile
+  var profile = blockstack.UserSession.loadUserData().profile
     showProfile(profile)
-} else if (blockstack.isSignInPending()) {
-  blockstack.handlePendingSignIn().then(function(userData) {
+} else if (blockstack.UserSession.isSignInPending()) {
+  blockstack.UserSession.handlePendingSignIn().then(function(userData) {
     window.location = window.location.origin
   })
 }

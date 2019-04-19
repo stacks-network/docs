@@ -2,14 +2,15 @@
 layout: learn
 permalink: /:collection/:path.html
 ---
+
 # Understand Blockstack Auth
+
 {:.no_toc}
 
 Blockstack Auth provides single sign on and authentication without third parties or remote servers. On this page, you'll get an overview of authentication from an developer and user perspective. The following topics are covered:
 
 * TOC
 {:toc}
-
 
 ## User experience flow
 
@@ -18,23 +19,22 @@ Blockstack Auth is a bearer token-based authentication system. From an applicati
    ![](images/signwithblockstack.png)
 
 Assume a user, Alice, clicks the **Sign in with Blockstack** button on an app. She is
-redirected to her copy of the Blockstack Browser. If the user has
-signed into the DApp previously. The actual Blockstack sign-in dialog depends on
-whether the user already has an existing session in the Blockstack Browser.
+redirected to her copy of the Blockstack Browser. The Blockstack sign-in dialog a user sees depends on
+whether the user already has an existing Blockstack Browser session for their current device.
 
 <img src="images/kingdom_notin.png" alt="">
 
-Alice can choose to authenticate as one of her Blockstack IDs by selecting the
-ID and clicking the **Approve** button. The Blockstack Browser shows Alice an approval dialog with information about your app including:
+Signing in with an identity is the means by which the user grants the DApp access. Access depends on the scope requested by the DApp. The default `store_write` scope allows the DApp to read the user profile and read/write user data for the DApp. Data is encrypted at a unique URL on a Gaia storage hub.
+
+Alice can choose to authenticate and sign into the DApp with one of her Blockstack IDs by selecting the
+ID. The Blockstack Browser shows Alice an approval dialog with information about the access the DApp requests:
 
 * The origin your app was served from
 * Your app's name
 * Your app's logo
 * The types of permissions and data your app is requesting
 
-Signing in with an identity is the means by which the user grants the DApp access. Access depends on the scope requested by the DApp. The default `store_write` scope allows the DApp to read the user profile and read/write user data for the DApp. Data is encrypted at a unique URL on a Gaia storage hub.
-
-When she clicks approve, Alice is redirected back to the DApp where she is logged in.
+When she chooses an ID (or creates a new one), Alice is redirected back to the DApp where she is logged in.
 
 ## DApp authentication flow
 
@@ -42,8 +42,7 @@ When she clicks approve, Alice is redirected back to the DApp where she is logge
 
 ## Scopes
 
-Scopes define the information and permissions an app requests from the
-user during authentication. This determines the set of permissions a user reads and accepts by choose an ID to sign in with.
+Scopes define the permissions requested from, and that a user accepts, through the sign-in dialog.
 DApps may request any of the following scopes:
 
 | Scope |  Definition|
@@ -52,16 +51,12 @@ DApps may request any of the following scopes:
 | `publish_data` | Publish data so that other users of the app can discover and interact with the user. |
 | `email` | Requests the user's email if available. |
 
-If no `scopes` array is provided to the `redirectToSignIn` or `makeAuthRequest`
+The permissions scope should be specified through the <a href="https://blockstack.github.io/blockstack.js/classes/appconfig.html" target="\_blank">AppConfig</a> object. If no `scopes` array is provided to the `redirectToSignIn` or `makeAuthRequest`
 functions, the default is to request `['store_write']`.
-
 
 ## blockstack: custom protocol handler
 
-The `blockstack:` custom protocol handler is how Blockstack apps send their
-authentication requests to the Blockstack Browser. When the Blockstack Browser
-is installed on a user's computer, it registers itself as the handler for the
-`blockstack:` customer protocol.
+The `blockstack:` custom protocol handler is how Blockstack apps send their authentication requests to the Blockstack Browser. Users can have a Blockstack Browser installed locally on their device or they can use the web version of the Blockstack Browser. If the Blockstack Browser is installed on a user's computer, it registers itself as the handler for the `blockstack:` customer protocol.
 
 When an application calls
 [`redirectToSignIn`](http://blockstack.github.io/blockstack.js/index.html#redirecttosignin)
@@ -69,8 +64,7 @@ or
 [`redirectToSignInWithAuthRequest`](http://blockstack.github.io/blockstack.js/index.html#redirecttosigninwithauthrequest),
 blockstack.js checks if a `blockstack:` protocol handler is installed and, if so,
 redirects the user to `blockstack:<authRequestToken>`. This passes the
-authentication request token from the app to the Blockstack Browser, which will
-in turn validate the request and display an authentication dialog.
+authentication request token from the app to the local Blockstack Browser. If the local Blockstack Browser is not installed, the call is directed to the web version of the Blockstack Browser.
 
 ## Manifest file
 
@@ -90,8 +84,8 @@ Blockstack apps have a manifest file. This file is based on the [W3C web app man
 ```
 
 The Blockstack Browser retrieves the manifest file from the app during the
-authentication process and displays some of the information in it such as the
-app name and icon to the user. The location of the app manifest file is specific
+authentication process and displays the information in it such as the
+app `name` and to the user during sign in. The location of the app manifest file is specific
 in the authentication request token and **must** be on the same origin as the app
 requesting authentication.
 
@@ -107,9 +101,9 @@ How you implement CORS depends in part on which platform/service you use to serv
 
 Blockstack Auth makes extensive use of public key cryptography. Blockstack uses ECDSA with the `secp256k1` curve. The following sections describe the three public-private key pairs used in the authentication process:
 
-* how they're generated, 
-* where they're used 
-* to whom the private key is disclosed.
+* how they're generated
+* where they're used
+* to whom the private key is disclosed
 
 ### Transit private key
 
