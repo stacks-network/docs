@@ -8,20 +8,12 @@ When a user chooses to **Sign in with Blockstack** on a DApp, it calls the `redi
 
 `https://browser.blockstack.org/auth?authRequest=j902120cn829n1jnvoa...`
 
-When the Blockstack Browser receives the request, it generates an (`authResponse`) token to the application. This token includes three key pairs:
+When the Blockstack Browser receives the request, it generates an (`authResponse`) token to the application using an _ephemeral transit key_ . The ephemeral transit key is just used for the particular instance of the application, in this case, to sign the `authRequest`. The application stores the ephemeral transit key during the request generation. The public portion of the transit key is passed in the `authRequest` token. The Blockstack Browser uses the public portion of the key to encrypt an _app-private key_ which is returned via the `authResponse`. 
 
-* an _ephemeral transit_ key 
-* an _identity-address private_ key
-* an _app-private key_
+During sign in, the Blockstack Browser generates the app-private key from the user's _identity-address private_ key and the application's `appDomain`. The app private key serves three functions:
 
-The ephemeral key is just used for the particular instance of the application, in this case to sign a sign-in request. It encrypts secrets that need to be passed from the Blockstack Browser to the app during the authentication process. 
-
-The identity-address private key is derived from the user's keychain phrase. This key signs the authentication response token for an app to indicate that the user approves sign in to that app.
-
-The app private key is application-specific. It is generated from the user's identity address private key using the `appDomain` as input. This app private key is also deterministic, meaning that for a given Blockstack ID and domain name, the same private key is generated each time. The app private key serves three functions:
-
-* It is used to create the credentials that give an app access to the gaia hub storage bucket for that specific app.
-* It is used in the end-to-end encryption of files stored for the app on the user's gaia hub.
+* It is used to create the credentials that give an app access to the Gaia storage bucket for that specific app.
+* It is used in the end-to-end encryption of files stored for the app in the user's Gaia storage.
 * It serves as a cryptographic secret that apps can use to perform other cryptographic functions.
 
-A Blockstack Core node also generates a public key token which is sent to the browser as an `authRequest` from the browser to the core node. 
+Finally, the app private key is deterministic, meaning that for a given user ID and domain name, the same private key is generated each time. 
