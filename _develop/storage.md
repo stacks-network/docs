@@ -20,10 +20,11 @@ The Blockstack Platform stores application data in the Gaia Storage System. Tran
 You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersession.html#putfile" target="_blank">UserSession.putFile</a>
 
 ```JavaScript
+var userSession = new UserSession()
 let options = {
   encrypt: false
 }
- blockstack.UserSession.putFile("/hello.txt", "hello world!", options)
+ userSession.putFile("/hello.txt", "hello world!", options)
  .then(() => {
     // /hello.txt exists now, and has the contents "hello world!".
  })
@@ -34,11 +35,13 @@ let options = {
 You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersession.html#putfile" target="_blank"></a>
 
 ```JavaScript
+var userSession = new UserSession()
+
  let options = {
    encrypt: true
  }
 
- blockstack.UserSession.putFile("/message.txt", "Secret hello!", options)
+ userSession.putFile("/message.txt", "Secret hello!", options)
  .then(() => {
     // message.txt exists now, and has the contents "hello world!".
  })
@@ -49,11 +52,13 @@ You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersess
 You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersession.html#getfile" target="_blank"></a>
 
 ```JavaScript
+var userSession = new UserSession()
+
  let options = {
    decrypt: false
  }
  
- blockstack.UserSession.getFile("/hello.txt", options)
+ userSession.getFile("/hello.txt", options)
  .then((fileContents) => {
     // get the contents of the file /hello.txt
     assert(fileContents === "hello world!")
@@ -65,11 +70,13 @@ You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersess
 You use the <a href="" target="_blank"></a>
 
 ```JavaScript
+var userSession = new UserSession()
+
  let options = {
    decrypt: true
  }
 
- blockstack.UserSession.getFile("/message.txt", options)
+ userSession.getFile("/message.txt", options)
  .then((fileContents) => {
     // get & decrypt the contents of the file /message.txt
     assert(fileContents === "Secret hello!")
@@ -100,7 +107,10 @@ You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersess
 
 
 ```JavaScript
- blockstack.deleteFile("/hello.txt")
+
+var userSession = new UserSession()
+
+ userSession.deleteFile("/hello.txt")
  .then(() => {
     // /hello.txt is now removed.
  })
