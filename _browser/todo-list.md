@@ -249,7 +249,7 @@ file you just added by opening the Javascript console and running the following
 command:
 
 ```Javascript
-blockstack.getFile("todos.json", { decrypt: true }).then((file) => {console.log(file)})
+userSession.getFile("todos.json", { decrypt: true }).then((file) => {console.log(file)})
 ```
 
 You should see a JSON with the todos you just added:
