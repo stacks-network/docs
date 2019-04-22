@@ -47,7 +47,8 @@ $ which npm
 If you don't find `npm` in your system, [install
 it](https://www.npmjs.com/get-npm). Finally, if you get stuck at any point
 while working on the tutorial, the completed [source code is available for
-you](https://github.com/larrysalibra/publik) to check your work against.
+you](https://github.com/yknl/publik) to check your work against. You can also 
+try out the [live build](https://publik.test-blockstack.com) of the app.
 
 ## Use npm to install Yeoman and the Blockstack App Generator
 
@@ -163,31 +164,25 @@ Modify your authentication request to include the `publish_data` scope.
 
 1. Open `src/components/App.jsx` file.
 
-2. Locate the `handleSignIn` handler method.
+2. Locate the `AppConfig` declaration near the beginning of the file.
 
     ```javascript
-    handleSignIn(e) {
-      e.preventDefault();
-      redirectToSignIn();
-    }
+    const appConfig = new AppConfig()
     ```
 
-2. Modify the method to this:
+3. Change it to this:
 
     ```javascript
-    handleSignIn(e) {
-      e.preventDefault();
-      const origin = window.location.origin
-      redirectToSignIn(origin, origin + '/manifest.json', ['store_write', 'publish_data'])
-    }
+    const appConfig = new AppConfig(scopes:['store_write', 'publish_data'])
     ```
 
     By default, authentication requests include the `store_write` scope which
-    enables storage. This is what allows you to store information to Gaia.
+    enables storage. This is what allows you to store information to Gaia. Adding
+    the `publish_data` scope allows your app to share data between users.
 
-3. Save your changes.
-4. Go back to your app at `http://localhost:8080/`.
-5. Log out and sign in again.
+4. Save your changes.
+5. Go back to your app at `http://localhost:8080/`.
+6. Log out and sign in again.
 
     The authentication request now prompts the user for permission to **Publish
     data stored for the app**.
@@ -197,10 +192,10 @@ Modify your authentication request to include the `publish_data` scope.
 ## Understand Gaia storage methods
 
 Once you authenticate a user with `store_write` and `publish_data`, you can
-begin to manage data for your users. Blockstack JS provides two methods
-`getFile()` and `putFile()` for interacting with Gaia storage. The storage
-methods support all file types. This means you can store SQL, Markdown, JSON, or
-even a custom format.
+begin to manage data for your users. Blockstack JS provides two methods within
+the `UserSession` class, `UserSession.getFile` and `UserSession.putFile` for 
+interacting with Gaia storage. The storage methods support all file types. 
+This means you can store markdown, JSON, or even a custom format.
 
 You can create a meaningful and complex data layer using these two methods.
 Before creating an application, consider fundamental data architecture and make
@@ -250,29 +245,12 @@ or remove a grocery list; updating a list has no impact.
 
 ## Add support for user status submission and lookup
 
-In this step, you add three `blockstack.js` methods that support posting of "statuses". These are the `putFile()`, `getFile()`, and `lookupProfile()` methods.
+In this step, you add three `blockstack.js` methods that support posting of "statuses". 
+These are the `UserSession.putFile`, `UserSession.getFile`, and `lookupProfile` methods.
 
 1. Open the `src/components/Profile.jsx` file.
 
-2. Expand the `import from blockstack` statement with data methods.
-
-    The `Person` object holds a Blockstack profile. Add `putFile`, `getFile`,
-    and `lookupProfile` after `Person`.
-
-		When you are done, the import statement should look like the following:
-
-    ```javascript
-    import {
-      isSignInPending,
-      loadUserData,
-      Person,
-      getFile,
-      putFile,
-      lookupProfile
-    } from 'blockstack';
-    ```
-
-3. Replace the `constructor()` initial state so that it holds the key properties required by the app.
+2. Replace the initial state in the `constructor()` method so that it holds the key properties required by the app.
 
     This code constructs a Blockstack `Person` object to hold the profile. Your constructor should look like this:
 
@@ -299,20 +277,20 @@ In this step, you add three `blockstack.js` methods that support posting of "sta
     ```
 
 
-4. Locate the `render()` method.
-5. Modify the `render()` method to add a text input and submit button to the application.
+3. Locate the `render()` method.
+4. Modify the `render()` method to add a text input and submit button to the application.
 
-    The following code echos the `person.name` and `person.avatarURL`
+    The following code renders the `person.name` and `person.avatarURL`
     properties from the profile on the display:
 
     ```javascript
     render() {
-      const { handleSignOut } = this.props;
+      const { handleSignOut, userSession } = this.props;
       const { person } = this.state;
       const { username } = this.state;
 
       return (
-        !isSignInPending() && person ?
+        !userSession.isSignInPending() && person ?
         <div className="container">
           <div className="row">
             <div className="col-md-offset-3 col-md-6">
@@ -366,22 +344,26 @@ In this step, you add three `blockstack.js` methods that support posting of "sta
    user's Blockstack ID. To display this, your app must extract the ID from the
    user profile data.
 
-6. Locate the `componentWillMount()` method.
-7. Add the `username` property below the `person` property.
+   Notice that the `userSession` property passed into our profile renderer contains
+   the `isSignInPending()` method which checks if a sign in operation is pending.
 
-	 You'll use the Blockstack `loadUserData()` method to access the `username`.
+5. Locate the `componentWillMount()` method.
+6. Add the `username` property below the `person` property.
+
+	 You'll use the Blockstack `loadUserData()` method in our user session to access the `username`.
 
 
     ```javascript
     componentWillMount() {
+      const { userSession } = this.props
       this.setState({
-        person: new Person(loadUserData().profile),
-        username: loadUserData().username
+        person: new Person(userSession.loadUserData().profile),
+        username: userSession.loadUserData().username
       });
     }
     ```
 
-7. Add two methods to handle the status input events:
+7. Add two methods in the `Profile` class to handle the status input events:
 
     ```javascript
     handleNewStatusChange(event) {
@@ -400,6 +382,7 @@ In this step, you add three `blockstack.js` methods that support posting of "sta
 
     ```javascript
     saveNewStatus(statusText) {
+      const { userSession } = this.props
       let statuses = this.state.statuses
 
       let status = {
@@ -410,7 +393,7 @@ In this step, you add three `blockstack.js` methods that support posting of "sta
 
       statuses.unshift(status)
       const options = { encrypt: false }
-      putFile('statuses.json', JSON.stringify(statuses), options)
+      userSession.putFile('statuses.json', JSON.stringify(statuses), options)
         .then(() => {
           this.setState({
             statuses: statuses
@@ -427,8 +410,8 @@ In this step, you add three `blockstack.js` methods that support posting of "sta
 
 10. Enter your status in the text box and press the **Submit** button.
 
-    At this point, nothing is blogged. In the next section you add code to display
-    the statuses back to the user as a blog entry.
+    At this point, the status you've just submitted isn't being displayed. 
+    In the next section you add code to display the statuses back to the user as a blog entry.
 
 ## Fetch and display statuses
 
@@ -436,7 +419,7 @@ Update `Profile.jsx` again.
 
 1. Go back to the `render()` method.
 2. Locate the `<div className="new-status">` containing the text input and **Submit** button.
-3. Right after this opening `div` element, add this block.
+3. Right after the matching closing `</div>` element in this section, add this block.
 
     ```javascript
     <div className="col-md-12 statuses">
@@ -449,21 +432,21 @@ Update `Profile.jsx` again.
       )}
     </div>
     ```
-   This loads existing state. Your code needs to fetch statuses on page load.
+   This displays existing state. Your code needs to fetch statuses on page load.
 
-4. Add a new method called `fetchData()` after the `statuses.unshift(status)` section.
+4. Add a new method called `fetchData()` after the `saveNewStatus()` method.
 
     ```javascript
-
     fetchData() {
+      const { userSession } = this.props
       this.setState({ isLoading: true })
       const options = { decrypt: false }
-      getFile('statuses.json', options)
+      userSession.getFile('statuses.json', options)
         .then((file) => {
           var statuses = JSON.parse(file || '[]')
           this.setState({
-            person: new Person(loadUserData().profile),
-            username: loadUserData().username,
+            person: new Person(userSession.loadUserData().profile),
+            username: userSession.loadUserData().username,
             statusIndex: statuses.length,
             statuses: statuses,
           })
@@ -474,7 +457,7 @@ Update `Profile.jsx` again.
     }
     ```
 
-5. Call `fetchData()` from the `componentDidMount()` method
+5. Call `fetchData()` from the `componentDidMount()` method. 
 
     ```javascript
 
@@ -591,7 +574,7 @@ other users' profiles by visiting `http://localhost:8080/other_user.id`
 9. Locate this line below in the `render()` method:
 
     ```javascript
-    : <Profile handleSignOut={ this.handleSignOut } />
+    : <Profile userSession={userSession} handleSignOut={ this.handleSignOut } />
     ```
 
 10. Replace it with the following:
@@ -602,20 +585,25 @@ other users' profiles by visiting `http://localhost:8080/other_user.id`
         <Route
           path='/:username?'
           render={
-            routeProps => <Profile handleSignOut={ this.handleSignOut } {...routeProps} />
+            routeProps => 
+              <Profile 
+                userSession={userSession} 
+                handleSignOut={ this.handleSignOut } 
+                {...routeProps} 
+              />
           }
         />
       </Switch>
     ```
 
-    This sets up a route and captures the route parameter the app will use as the profile lookup username.
+    This sets up a route and captures the route path in the URL as the profile lookup username.
 
 11. Save and close the the `src/components/App.jsx` file.
 
 
 ### Add a rule to process URL paths with . (dot)
 
-You also need to add a rule to your webpack config so that you can properly
+You also need to add a rule to your app's webpack config so that you can properly
 process URL paths that contain the `.` (dot) character for example,
 `http://localhost:8080/other_user.id`
 
@@ -641,8 +629,22 @@ process URL paths that contain the `.` (dot) character for example,
 
 3. Save and close the `webpack.config.js` file.
 
-4. Edit the `src/components/Profile.jsx` file.
-5. Add a single method that determines if the app is viewing the local user's profile or another user's profile.
+4. Open the `src/components/Profile.jsx` file.
+
+5. Expand the `import from blockstack` statement to include the `lookupProfile` method.
+    
+    Add `lookupProfile` after `Person`.
+
+		When you are done, the import statement should look like the following:
+
+    ```javascript
+    import {
+      Person,
+      lookupProfile
+    } from 'blockstack';
+    ```
+
+6. Add a single method to the `Profile` class that determines if the app is viewing the local user's profile or another user's profile.
 
     ```javascript
     isLocal() {
@@ -652,19 +654,20 @@ process URL paths that contain the `.` (dot) character for example,
 
     You use `isLocal()` to check if the user is viewing the local user profile or another user's profile. If it's the local user profile, the app runs the `getFile()` function you added in an earlier step. Otherwise, the app looks up the profile belonging to the `username` using the `lookupProfile()` method.
 
-6. Modify the `fetchData()` method like so:
+7. Modify the `fetchData()` method like so:
 
     ```javascript
     fetchData() {
+      const { userSession } = this.props
       this.setState({ isLoading: true })
       if (this.isLocal()) {
         const options = { decrypt: false }
-        getFile('statuses.json', options)
+        userSession.getFile('statuses.json', options)
           .then((file) => {
             var statuses = JSON.parse(file || '[]')
             this.setState({
-              person: new Person(loadUserData().profile),
-              username: loadUserData().username,
+              person: new Person(userSession.loadUserData().profile),
+              username: userSession.loadUserData().username,
               statusIndex: statuses.length,
               statuses: statuses,
             })
@@ -696,11 +699,11 @@ process URL paths that contain the `.` (dot) character for example,
      documentation](http://blockstack.github.io/blockstack.js/#getfile) for
      details.
 
-7. Add the following block to `fetchData()` right after the call to `lookupProfile(username)... catch((error)=>{..}` block:
+8. Add the following block to `fetchData()` right after the call to `lookupProfile(username)... catch((error)=>{..}` block:
 
     ```javascript
     const options = { username: username, decrypt: false }
-    getFile('statuses.json', options)
+    userSession.getFile('statuses.json', options)
       .then((file) => {
         var statuses = JSON.parse(file || '[]')
         this.setState({
@@ -720,16 +723,16 @@ process URL paths that contain the `.` (dot) character for example,
 
     Finally, you must conditionally render the logout button, status input textbox, and submit button so they don't show up when viewing another user's profile.
 
-8. Replace the `render()` method with the following:
+9. Replace the `render()` method with the following:
 
     ```javascript
     render() {
-    const { handleSignOut } = this.props;
+    const { handleSignOut, userSession } = this.props;
     const { person } = this.state;
     const { username } = this.state;
 
     return (
-      !isSignInPending() && person ?
+      !userSession.isSignInPending() && person ?
       <div className="container">
         <div className="row">
           <div className="col-md-offset-3 col-md-6">
@@ -790,22 +793,28 @@ process URL paths that contain the `.` (dot) character for example,
     }
     ```
 
-    ### This checks to ensure that users are viewing their own profile, by wrapping the **Logout** button and inputs with the `{isLocal() && ...}` condition.
+    This checks to ensure that users are viewing their own profile, by wrapping the **Logout** button and inputs with the `{isLocal() && ...}` condition.
 
 ### Put it all together
 
-1. Stop the running application by sending a CTL-C.
+1. Stop the running application in terminal by sending a CTRL-C.
 2. Restart the application so that the disabling of the `.` (dot) rule takes effect.
 
     ```bash
     npm start
     ```
 
-3. Point your browser to `http://localhost:8080/your_blockstack.id` to see the final application.
-
-
+3. Point your browser to `http://localhost:8080/your_username.id.blockstack` to see the final application. 
 
 ## Wrapping up
 
 Congratulations, you are all done! We hope you've enjoyed learning a bit more
 about Blockstack. 
+
+A few things to note, you'll notice that in our `putFile()` and `getFile()` calls, we chose not to encrypt/decrypt because our app is meant to share statuses publicly. By default, `putFile()` and `getFile()` will encrypt all data stored, making it unreadable by everyone except the logged in user.
+
+## Resources
+
+[Complete source code](https://github.com/yknl/publik)
+
+[Live demo](https://publik.test-blockstack.com)
