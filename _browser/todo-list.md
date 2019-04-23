@@ -70,7 +70,7 @@ These instructions assume you are cloning.
 1. Install the code by cloning it.
 
     ```
-    $ git clone git@github.com:blockstack/blockstack-todos.git
+    $ git clone https://github.com/blockstack/blockstack-todos
     ```
 
 2. Change to directory to the root of the code.
