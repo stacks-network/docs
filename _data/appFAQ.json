@@ -42,7 +42,7 @@
       },
       {
         "question":"What qualifies my app to compete in App Mining?",
-        "answer":"<p>Your app should integrate Blockstack authentication for logging into your app. Your finished app should be available to the public for use. The application must use a registered domain name and the app should be hosted at a URL belonging to the domain. In the future, App Mining may reward apps that have taken steps to further decentralize, such as utilizing Gaia storage or the publishing your app to the Blockstack Naming System. Test flight apps, hello-world apps and apps created through blockstack tutorials (e.g., animal kingdom apps) do not qualify.</p>"
+        "answer":"<p>Your app should integrate Blockstack authentication for logging into your app. Your finished app should be available to the public for use. The application must use a registered domain name and the app should be hosted at a URL belonging to the domain. The app website must use a secured (<code>https</code>) connection. In the future, App Mining may reward apps that have taken steps to further decentralize, such as utilizing Gaia storage or the publishing your app to the Blockstack Naming System. Test flight apps, hello-world apps and apps created through blockstack tutorials (e.g., animal kingdom apps) do not qualify.</p>"
       },
       {
         "question":"Does my app have to be listed on App.co to enter App Mining?",
