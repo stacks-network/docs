@@ -33,6 +33,7 @@
 - title: App Mining
   docs:
   - develop/mining_intro
+  - develop/app-reviewers
   - develop/mining_enroll
   - develop/vote-blockstack
   - community/app-miners-guide
