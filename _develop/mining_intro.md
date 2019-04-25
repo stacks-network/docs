@@ -19,70 +19,12 @@ This section explains App Mining, a program for developers. For Blockstack, App 
 Blockstack worked with a team of Ph.D. game theorist and economists from
 Princeton and NYU to put together a [ranking
 algorithm](https://blog.blockstack.org/app-mining-game-theory-algorithm-design/)
-which is fair and resistant to abuse. Blockstack uses three third-party
-reviewers, Product Hunt, TryMyUI, and Democracy.earth. These reviewers are
+which is fair and resistant to abuse. Blockstack uses the third-party
+reviewer: Product Hunt, Awario, TryMyUI, and Democracy.earth. These reviewers are
 independent, and generally rely on their own proprietary data and insights to
 generate rankings.
 
-### Product Hunt
-
-Product Hunt is the place to find the best new products in tech. They have a
-massive trove of user data (upvotes, comments, etc), that they use for ranking.
-Product Hunt comes up with two different scores for each app — a “community”
-score and a “team” score.
-
-Their community score is determined only by the number of upvotes an app
-received on Product Hunt, relative to other apps that are registered. For
-example, if an app got more upvotes than any other app in a cohort, their
-community score would be 100. If a different app got 60% as many upvotes, they’d
-get a score of 60.
-
-Their team score is determined by internal team members conducting reviews on
-different aspects of an app. They judge based on a few criteria, like execution,
-uniqueness, and desirability. Each app gets ranked 1-10 on each criterion, and
-their final score is the average of each criterion. Finally, this average is
-multiplied by 10, so the highest score you can get is 100.
-
-Once each app has a community and team score, Blockstack converts these scores into
-_z-scores_, more about z-scores below.
-
-### Democracy Earth
-
-Democracy Earth is a platform for borderless peer-to-peer democracy. They’ve
-built a platform that anyone can use to gather votes in a trust-less,
-decentralized way.
-
-Democracy Earth has built a platform for Stacks token holders to vote on how
-apps should be ranked. Each token holder gets a 1000 votes, and they can
-distribute those votes however they want. It’s possible to give all of your
-votes to a single app, and you can also “downvote” an app with one of your
-votes.
-
-After a voting period, each app has a certain amount of upvotes and downvotes.
-First, Democracy Earth calculates the percentage of total votes that are
-upvotes. If an app receives 90 upvotes and 10 downvotes, the resulting
-“likability score” is 90. Secondly, Democracy Earth calculates a “traction
-score”, which ranks how many total votes (including downvotes) an app received,
-relative to other apps.
-
-
-### TryMyUI
-
-TryMyUI’s panelists score using a special survey they developed expressly for the App Mining program: the ALF Questionnaire (Adoption Likelihood Factors). Desktop, iOS, and Android versions of apps are tested as they are applicable.
-
-Answers to this questionnaire will be used to calculate an overall score reflecting the following 4 factors:
-
-* Usability
-* Usefulness
-* Credibility
-* Desirability
-
-Each factor corresponds to 4 questionnaire items, for a total of 16 items that comprise the ALFQ. Users mark their answers on a 5-point Likert scale, with 5 meaning **Strongly agree** and 1 meaning **Strongly disagree**. The final result is a score for each of the 4 factors, and a composite ALF score.
-
-<img src="images/alf-score.png" alt="">
-
-For example, consider an application that is both Android and iOS. Each platform version receives 4 tests of each. In total, 8 user tests are created, the highest and lowest scores are dropped. App developers receive the raw TryMyUI scores. The App Mining process calculates Z scores for each category. As a result, the TryMyUI results in the App Mining scores differ from raw scores visible in an app's TryMyUI account.
-
+To learn in detail about these reviewers, see the page on [who reviews apps](app-reviewers.html).
 
 ## Reaching the final scores
 
@@ -109,6 +51,7 @@ deviations higher than the average.
 Once each app has a calculated a z-score in every category, the average of those
 4 z-scores results in a final number. A higher number is better than a lower
 one, and so apps are ranked from highest to lowest.
+
 
 ## Determining how much an app is paid
 
