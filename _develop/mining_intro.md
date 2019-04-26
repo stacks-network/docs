@@ -20,11 +20,11 @@ Blockstack worked with a team of Ph.D. game theorist and economists from
 Princeton and NYU to put together a [ranking
 algorithm](https://blog.blockstack.org/app-mining-game-theory-algorithm-design/)
 which is fair and resistant to abuse. Blockstack uses the third-party
-reviewer: Product Hunt, Awario, TryMyUI, and Democracy.earth. These reviewers are
+reviewers: Product Hunt, Awario, TryMyUI, and Democracy.earth. These reviewers are
 independent, and generally rely on their own proprietary data and insights to
 generate rankings.
 
-To learn in detail about these reviewers, see the page on [who reviews apps](app-reviewers.html).
+To learn in detail about the reviewers' methods, see the page on [who reviews apps](app-reviewers.html).
 
 ## Reaching the final scores
 
