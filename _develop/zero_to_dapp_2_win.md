@@ -46,7 +46,7 @@ To follow the procedures in the rest of this tutorial, you need the following:
 * A Blockstack ID (identity) to test your Animal Kingdom.
 * Access to the Windows Powershell window and some familiarity with the command line it provides.
 * The Node Package Manager package manager.
-* Chocolately and similar additional tools.
+* Python and similar additional tools.
 
 Follow the procedures in this section to install these components.
 
@@ -118,37 +118,37 @@ called packages. The Animal Kingdom uses  React, Babel, and many other
 components. You'll use the `npm` command to install these packaged components.
 
 1. Open a web browser (for example, Chrome) window on your system.
-2. Navigate to the  <a href="https://www.nodejs.org/en" target="\_blank">install it using the instructions for your operating system</a>.
+2. Navigate to the  <a href="https://www.nodejs.org/en/download/" target="\_blank">install it using the instructions for your operating system</a>.
 
    <img src="images/win-npms.png" alt="">
 
-3. Download the **Current** version.
+3. Download the **10.15.3** version.
 4. Open the the `msi` download.
 
    The system displays the installer.
 
    <img src="images/win-node-wiz.png" alt="">
 
-5. Press **Next** accepting all the defaults until you reach the **Tools for Native Modules** page.
-6. Check the **Automatically install the necessary tools** option.
+5. Press **Next** accepting all the defaults until you reach the **Install** button.
+6. Press **Install**.
 
-   <img src="images/win-native-tools.png" alt="">
+   Installing the NPM tool can take several minutes depending on your connection speed.
 
-7. Choose **Next** and then **Install**.
+6. Open a new Powershell window being sure to **Run as Administrator**.
 
-   Installing the NPM tool can take several minutes depending on your connection speed. The installer then displays a command window and prompts you to install the Node and NPM tools.
-
-   <img src="images/win-tools-install.png" alt="">
-
-8. Press any key to install these tools.
-
-   <img src="images/win-tools-complete.png" alt="">
-
-   You may need to run `npm audit fix` to adjust the packages.
-
-6. Open a new Powershell window and check the version you just installed.
+7. Check the node.js version you just installed.
 
    <img src="images/win-npm-version.png" alt="">
+
+8. From the command prompt, install them
+
+    ```bash
+    PS C:\windows\system32> npm install --global --production windows-build-tools
+    ```
+
+    This is installation can take a lot of time, when it is done, you see message similar to the following:
+
+    <img src="images/win-install-done.png" alt="">
 
 ## Get the Animal Kingdom code
 
