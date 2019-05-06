@@ -20,7 +20,7 @@ Blockstack worked with a team of Ph.D. game theorist and economists from
 Princeton and NYU to put together a [ranking
 algorithm](https://blog.blockstack.org/app-mining-game-theory-algorithm-design/)
 which is fair and resistant to abuse. Blockstack uses the third-party
-reviewers: Product Hunt, Awario, TryMyUI, and Democracy.earth. These reviewers are
+reviewers: Product Hunt, Awario, TryMyUI, and Democracy.. These reviewers are
 independent, and generally rely on their own proprietary data and insights to
 generate rankings.
 
@@ -33,9 +33,9 @@ and 100 for the following:
 
 * Product Hunt community score
 * Product Hunt team score
-* Democracy Earth likability score
-* Democracy Earth traction score
 * TryMyUI ALF score
+* Awario
+* digital rights review
 
 First Blockstack's determine a ‘z-score’ for each ranking category community,
 team, likability, and traction. This is a statistical technique to account for

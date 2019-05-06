@@ -16,26 +16,6 @@ Product Hunt is the place to find the best new products in tech. They have a mas
 
 Their community score is determined only by the number of **credible** upvotes an app received on Product Hunt, relative to other apps that are registered. For example, if an app got more upvotes than any other app in a cohort, their community score would be 100. If a different app got 60% as many upvotes, they’d get a score of 60. Blockstack converts these scores into *z-scores*.
 
-
-## Democracy Earth
-
-Democracy Earth is a platform for borderless peer-to-peer democracy. They’ve
-built a platform that anyone can use to gather votes in a trust-less,
-decentralized way.
-
-Democracy Earth has built a platform for Stacks token holders to vote on how
-apps should be ranked. Each token holder gets a 1000 votes, and they can
-distribute those votes however they want. It’s possible to give all of your
-votes to a single app, and you can also “downvote” an app with one of your
-votes.
-
-After a voting period, each app has a certain amount of upvotes and downvotes.
-First, Democracy Earth calculates the percentage of total votes that are
-upvotes. If an app receives 90 upvotes and ten downvotes, the resulting
-“likability score” is 90. Secondly, Democracy Earth calculates a “traction
-score," which ranks how many total votes (including downvotes) an app received,
-relative to other apps.
-
 ## Digital Rights Reviewer 
 
 As a "digital rights reviewer," New Internet Labs reviews apps submitted to the app mining program based on the degree to which the apps respect and protect users` fundamental digital rights. For these review, the use of Blockstack Auth and Blockstack IDs are evaluated. The reviewer checks if Blockstack Auth is:
