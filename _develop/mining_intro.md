@@ -31,7 +31,6 @@ To learn in detail about the reviewers' methods, see the page on [who reviews ap
 Once the reviewer-partners generate reviews, each app has 5 raw scores between 0
 and 100 for the following:
 
-* Product Hunt community score
 * Product Hunt team score
 * TryMyUI ALF score
 * Awario
