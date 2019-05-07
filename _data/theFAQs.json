@@ -358,7 +358,7 @@
       {
          "category":"coredevs",
          "question":"What is Blockstack Core?",
-         "answer":"<p>Blockstack Core is the reference implementation of the Blockstack protocol described in our white paper. Today, it consists of these components:</p> <ul><li>Blockstack Core: A Python backend service which reads transactions from the Stacks blockchain. This blockchain enables the Stacks Token (STX) and Blockstack Naming service.</li> <li>Atlas: A peer network for communicating data about the Blockstack Naming System (BNS).</li> <li>Blockstack API: A service for indexing the data stored by Blockstack Core and making it available in a performant way.</li> </ul><p>The next version of the Stacks Blockchain is under active development in the Rust programming language and employs our Tunable Proof-of-Work consensus algorithm and a unique scaling solution that enable individual apps to create </p>"
+         "answer":"<p>Blockstack Core is the reference implementation of the Blockstack protocol described in our white paper. Today, it consists of these components:</p> <ul><li>Blockstack Core: A Python backend service which reads transactions from the Stacks blockchain. This blockchain enables the Stacks Token (STX) and Blockstack Naming service.</li> <li>Atlas: A peer network for communicating data about the Blockstack Naming System (BNS).</li> <li>Blockstack API: A service for indexing the data stored by Blockstack Core and making it available in a performant way.</li> </ul><p>The next version of the Stacks Blockchain is under active development in the Rust programming language and employs our Tunable Proof-of-Work consensus algorithm and a unique scaling solution that enable individual apps to create their own app chains. </p>"
       },
       {
          "category":"coredevs",
@@ -408,7 +408,7 @@
       {
          "category":"coredevs",
          "question":"Can the Blockstack blockchain fork?",
-         "answer":"<p>Yes, the Blockstack network can fork. We hard fork the network once a year to make protocol-breaking changes and upgrade the network. The latest fork was in 201 where <a href='https://blog.blockstack.org/the-launch-of-the-stacks-genesis-block/'>we introduced the genesis block</a> of the Stacks blockchain. For technical details, see the <a href='https://forum.blockstack.org/t/blockstack-annual-hard-fork-2018/6518'>2018 forum post for the annual hard fork</a>.</p>"
+         "answer":"<p>Yes, the Blockstack network can fork. We hard fork the network once a year to make protocol-breaking changes and upgrade the network. The latest fork was in 2018 where <a href='https://blog.blockstack.org/the-launch-of-the-stacks-genesis-block/'>we introduced the genesis block</a> of the Stacks blockchain. For technical details, see the <a href='https://forum.blockstack.org/t/blockstack-annual-hard-fork-2018/6518'>2018 forum post for the annual hard fork</a>.</p>"
       },
       {
          "category":"coredevs",
