@@ -258,7 +258,7 @@
       {
          "category":"appminers",
          "question":"What is the App Mining timeline?",
-         "answer":"<h5>On the first of every month (or as listed on the calendar): </h5> <ul> <li>Registration is closed for that months ranking.</li> <li>Blockstack team sends the complete list of apps to our app reviewer partners. App miners do not need to reach out to Product Hunt, Democracy Earth, or TryMyUI. </li> <li>Blockstack <strong>emails</strong> app miners are emailed about Product Hunt Hunting process. App miners can choose to hunt their app independently or can request to be featured by the Product Hunt team. <a href='https://docs.blockstack.org/develop/mining_intro.html' target='_blank'>Read more</a>.</li> <li>App miners <strong>debate</strong> on their app in Democracy Earth. <a href='https://docs.blockstack.org/develop/vote-blockstack.html' target='_blank'>Read more</a>.</li><li>Registered stack holders <strong>are alerted</strong> about new apps and prompted to vote. <a href='https://docs.blockstack.org/develop/vote-blockstack.html' target='_blank'>Read more</a>.</li></ul><h5>Over the next two weeks:</h5> <ul> <li>TryMyUI Tests are happening. Please don’t perform upgrades that might break the app.</li> <li>Voters participate on <a href='https://vote.blockstack.org' target='_blank'>vote.blockstack.org</a>. </li> <li>Products are launched on Product Hunt. Product Hunt team performs internal review.</li> </ul> <h5>On the last day of ranking at 11:59pm ET: </h5> <p>App mining results are sent to Blockstack by app reviewer partners.</p> <h5>On the 15th (or as listed on the calendar):</h5> <p>Blockstack team performs App Mining algorithm as referenced <a href='https://blog.app.co/how-app-minings-ranking-algorithm-works/' target='_blank'>here</a>.</p> <h5>On the following weekday:</h5> <ul> <li>App miners are emailed login info to access their TryMyUI tests</li> <li>Full App Mining results are published</li> </ul>"
+         "answer":"<h5>On the first of every month (or as listed on the calendar): </h5> <ul> <li>Registration is closed for that months ranking.</li> <li>Blockstack team sends the complete list of apps to our app reviewer partners. App miners do not need to reach out to Product Hunt, Awario, TryMyUI, or the digital rights reviewer. </li> <li>Blockstack <strong>emails</strong> app miners are emailed about Product Hunt Hunting process. App miners can choose to hunt their app independently or can request to be featured by the Product Hunt team. <a href='https://docs.blockstack.org/develop/app-reviewers.html' target='_blank'>Read more</a>.</li></ul><h5>Over the next two weeks:</h5> <ul> <li>TryMyUI Tests are happening. Please don’t perform upgrades that might break the app.</li> <li>Products are launched on Product Hunt. Product Hunt team performs internal review.</li> <li>The digital rights reviewer examines apps based on the degree to which the apps respect and protect users` fundamental digital rights.</li></ul> <h5>On the last day of ranking at 11:59pm ET: </h5> <p>App mining results are sent to Blockstack by app reviewer partners.</p> <h5>On the 15th (or as listed on the calendar):</h5> <p>Blockstack team performs App Mining algorithm as referenced <a href='https://blog.app.co/how-app-minings-ranking-algorithm-works/' target='_blank'>here</a>.</p> <h5>On the following weekday:</h5> <ul> <li>App miners are emailed login info to access their TryMyUI tests</li> <li>Full App Mining results are published</li> </ul>"
       },
       {
          "category":"appminers",
@@ -318,7 +318,7 @@
       {
          "category":"appminers",
          "question":"Who are the app reviewers?",
-         "answer":"<p>App reviewers are currently selected by Blockstack PBC. Reviewers are entities that have a proprietary methodology that helps them make objective judgements for why a certain app might be better than others.  We strive to engage a diverse coalition of app reviewers with the goal of making application ranking objective and resilient to abuse.  </p> <p>As of January 2019, the reviewers were: Product Hunt, Try My UI and Democracy Earth (who uses software to collect votes by Stacks token holders). See <a href='https://docs.blockstack.org/develop/mining_intro.html#how-apps-are-reviewed'>here</a> for more details about each reviewer. Future reviewers could expand to community election. Please see our <a href='https://github.com/blockstack/app-mining'>GitHub repository</a> to raise issues or make suggestions for App Mining. </p>"
+         "answer":"<p>App reviewers are currently selected by Blockstack PBC. Reviewers are entities that have a proprietary methodology that helps them make objective judgements for why a certain app might be better than others.  We strive to engage a diverse coalition of app reviewers with the goal of making application ranking objective and resilient to abuse.  </p> <p>The app reviewers are Product Hunt, TryMyUI, Awario, and the digital rights reviewer. See <a href='https://docs.blockstack.org/develop/app-reviewers.html'>here</a> for more details about each reviewer. Future reviewers could expand to community election. Please see our <a href='https://github.com/blockstack/app-mining'>GitHub repository</a> to raise issues or make suggestions for App Mining. </p>"
       },
       {
          "category":"appminers",
@@ -332,18 +332,8 @@
       },
       {
          "category":"appminers",
-         "question":"Can developers engage with voters on Democracy Earth?",
-         "answer":"<p>Yes, they can. App miners can and should create an account on Democracy Earth. From this account, they can engage with voters through the debate feature. Learn more <a href='https://docs.blockstack.org/develop/vote-blockstack.html' target='_blank'>in the documentation</a>.</p>"
-      },
-      {
-         "category":"appminers",
          "question":"When are the winning payments made?",
          "answer":"<p>Payouts are made on the 15th of every month.</p>"
-      },
-      {
-         "category":"appminers",
-         "question":"What’s the incentive for user voting? ",
-         "answer":"<p>Voters in the App Mining ecosystem use Democracy Earth to vote for applications. Voters are currently Stacks token holders with incentive to strategically allocate resources in the ecosystem to apps they consider highly valuable.</p>"
       },
       {
          "category":"appminers",
