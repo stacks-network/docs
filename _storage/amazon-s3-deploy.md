@@ -15,7 +15,7 @@ This teaches you how to run a Gaia hub on Amazon EC2. Amazon EC2 is an affordabl
 
 <p>This documentation is appropriate for advanced power users who are familiar with command line tools, <code>ssh</code>, and basic editing configuration files.</p>
 
-<p>If you are planning on running an <emphasis>open-membership hub</emphasis> or an <emphasis>application-specific hub</emphasis>, see <a href="hub-operation.html">the section on Hub Operation</a>.</p>
+<p>If you are planning on running an <em>open-membership hub</em> or an <em>application-specific hub</em>, see <a href="hub-operation.html">the section on Hub Operation</a>.</p>
 
 </div>
 

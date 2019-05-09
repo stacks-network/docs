@@ -5,89 +5,109 @@ permalink: /:collection/:path.html
 # Use the Stacks Wallet software
 {:.no_toc}
 
-This page describes how to manage your Stacks using the Stacks Wallet software.
-The Stacks Wallet software is installed on your computer. This page contains
-the following topics:
+This page describes how to use the Stacks Wallet software to manager your Stacks (STX) tokens. This page contains the following topics:
 
 * TOC
 {:toc}
 
-This page assumes you have already [downloaded, verified, and installed the
-wallet software](wallet-install.html).
+The Stacks Wallet software is installed on your computer, it is not a web application. You should have already [downloaded, verified, and installed the wallet software](wallet-install.html).
 
-## Use the Stacks Wallet with or without a hardware wallet
+## Key concepts you should understand
 
-You can use the Stacks Wallet software by itself or together with a hardware
-wallet. When used by itself, the Stacks Wallet software acts as a _watch-only
-wallet_. You can view STX balances and transaction history.
+ You use Stacks Wallet software to manage STX tokens. Using the wallet you can:
 
-When you use the Stacks Wallet together with a hardware wallet, you can also
-send and receive Stacks. To do this, you must first top up the wallet's "gas" which is
-Bitcoin.  A **_very small_** amount of Bitcoin is required to send Stacks. No
-gas is required to receive Stacks. You can use any of these hardware wallets with the Stacks wallet:
+* send STX from a specific STX address
+* receive STX at a specific STX address
+* view balances on an address
+* review transaction history associated with an address
+
+To send STX, you need Bitcoin in your wallet. Bitcoin is the "gas" for transactions on the Stacks blockchain.  A **_very small_** amount of Bitcoin is required to send STX. The gas price fluctuates like any market and is driven by the price of Bitcoin. Gas is not required to receive STX.
+
+You can use the Stacks Wallet software by itself or together with a hardware wallet. Using with a hardware wallet is recommended but not required.
+
+<div class="uk-card uk-card-default uk-card-body">
+<h5>Investers and large token holdings: Hardware devices </h5>
+<p>If you are an investor or current Stacks token holder, you should have your relevant STX addresses on a configured hardware device before using the Stacks Wallet software. If you have very large holdings, we recommend and anticipate these are held with a custodial service. In the case of a custodial service, you would work with your service to transfer a portion of your holdings to an appropriate hardware device before using the Stacks Wallet software.</p>
+</div>
+
+### A hardware device with the wallet
+
+You can use any of these hardware wallets with the Stacks Wallet:
 
 * Trezor One
 * Trezor Model T
 * Ledger Nano S
 * Ledger Blue
 
-Once connected, the Stacks Wallet only uses the hardware wallet when signing
-send transactions. This means, you can connect to the hardware wallet when you
-start the Stacks Wallet software. After starting, you can disconnect the
-hardware wallet and put it away until you want to send Stacks.
+The private key on your hardware wallet is used by the Stacks Wallet software to sign send transactions. Receive transactions don't require a signature. Please consult the device's manufacturer for support in setting up and configuring your hardware device.
 
-The **Reset** function is always available regardless of whether you are using a
-hardware wallet as well. A reset returns the Wallet Software to its original
-state. It does not change your Stacks balance or your hardware wallet in any
-way.
+### Software only wallet and a seed phrase
 
+You can use the Stacks Wallet software without a hardware device to create one or more software wallets. Each wallet has its own address which corresponds to a STX address on the Stacks blockchain. You access this address with a unique, **seed phrase**. The software generates a seed phrase for you when create a software-only wallet. The seed phrase consists of 24 words in a sequence. Both the word _and its position the sequence_  are important.  
 
-## Open the wallet
+Write down your seed phrase and store it in a secure location such as a safe deposit box. When you write the seed phrase down, include its position, for example,`1-frog, 2-horse, 3-building` and so on until you reach a final position `24-ocean`.
 
-You can use the Stacks Wallet software with or without a hardware wallet. To
-send Stacks, a hardware wallet is required.
+{% include warning.html content="Do not lose your seed phrase. If you lose your seed phrase, you lose any STX tokens in that associated wallet. <strong>No person or organization, including Blockstack, can recover a lost seed phrase</strong>." %}
 
-### Stacks Wallet software only
+### About the reset function
 
-You need at least one Stacks Address to create a wallet. A Stacks address is a
-unique string of letters and numbers, for example:
-`SM7KJBA4UZ7Z20KD2HBXNSXVPCR1D7CRAV605MKT`.
+The **Reset** function is always available regardless of whether you are using a hardware wallet or a software-only. A **Reset** returns a wallet to its original state. It does not change your STX balance, your Stacks addresses, or any connected hardware wallet in any way.
 
-1. Double-click on the wallet software to open it.
-2. Select **Use a Stacks Address**.
+### Used an older version of the wallet?
 
-   The system asks you to enter an address. If you are a token holder, you
-   should have generated several Stacks address during your the initial grant
-   process. You can provide one of these addresses to the Stacks wallet when you
-   start it.
+If you used the original, v1, version of the wallet, you should instead begin using the new Stacks Wallet v3. you should have a 24 word seed phrase from that wallet. You can use this same seed phrase to open this new version of the Stacks Wallet Software.
 
-   ![](images/enter-address.png)
-
-3. Select **Continue**.
-
-   The system displays the balance for that address.
+The v2 version of the wallet required a hardware wallet to send and receive. You can connect this same hardware wallet to the v3 version of the Stacks Wallet software. If this is your situation, choose **Use existing wallet** when you first start the Stacks Wallet v3; you don't need to create a new wallet.
 
 
-### Hardware wallet
+## Create a new or open an existing wallet
 
-It is a good idea to connect your hardware wallet to your computer before
-starting the Stacks wallet software, but it is not required. Some hardware
-wallets require that you have additional software installed to support the
-hardware wallets interactions with the Stacks wallet.
+When you start the Stacks Wallet it prompts you to create a new or choose an existing wallet. You should create a new wallet if you have not previously connected a hardware device to the Stacks Wallet v3 software or if you do not have an existing 24 word seed phrase.
 
-| Hardware wallet 	| Prerequisite software 	|
-|-----------------	|------------------------	|
-| Trezor One      	| <a href="https://doc.satoshilabs.com/trezor-user/download.html" target="\_blank">Trezor Bridge</a>          	|
-| Trezor Model T  	| <a href="https://doc.satoshilabs.com/trezor-user/download.html" target="\_blank">Trezor Bridge </a>         	|
-| Ledger Nano S   	| None.                  	|
-| Ledger Blue     	| None.                  	|
+### Use with a hardware wallet
 
-Make sure you have installed any prerequisite software. Then, do the following to start the Stacks Wallet with a Hardware wallet:
+Initialize and configure your wallet according to the manufacturer's instructions before you use it with the Stacks Wallet software. Some hardware wallets require that you have additional software installed to support the hardware wallets interactions with the Stacks Wallet.
+
+<table class="uk-table uk-table-small uk-table-divider">
+    <tr>
+      <th>Hardware wallet</th>
+      <th>Prerequisite software</th>
+    </tr>
+    <tr>
+      <td>Trezor One</td>
+      <td><a href="https://doc.satoshilabs.com/trezor-user/download.html" target="\_blank">Trezor Bridge</a></td>
+    </tr>
+    <tr>
+      <td>Trezor Model T</td>
+      <td><a href="https://doc.satoshilabs.com/trezor-user/download.html" target="\_blank">Trezor Bridge </a></td>
+    </tr>
+    <tr>
+      <td>Ledger Nano S</td>
+      <td>None.</td>
+    </tr>
+    <tr>
+      <td>Ledger Blue</td>
+      <td>None.</td>
+    </tr>
+</table>
+
+Make sure you have installed any prerequisite software. It is a good idea to connect your hardware wallet to your computer before starting the Stacks Wallet software, but it is not required. 
+
+When your hardware device is ready, do the following:
 
 1. Connect your hardware wallet to your computer as you normally would.
 2. Double-click on the wallet software to open it.
-3. Select **Use a Hardware Wallet**.
-4. Select the hardware wallet you want to use.
+3. Select **Create new wallet** or **Use existing wallet**.
+
+   If you connected your hardware device to an old version of the Stacks Wallet software, you choose **Create new wallet**. After you make this initial connection, the *next time* you start the wallet, you can choose **Use existing wallet**.
+
+   The system asks if you have a hardware wallet.
+
+4. Choose **Yes, I do**.
+
+   The system prompts you to select a hardware wallet.
+
+5. Select the hardware wallet you want to use.
 
    This example uses a Trezor wallet.
 
@@ -96,29 +116,52 @@ Make sure you have installed any prerequisite software. Then, do the following t
    The system prompts you to connect your
    device.
 
-5. Connect your wallet to your computer and choose **Continue**.
+6. Connect your wallet to your computer and choose **Continue**.
 
    The system prompts you to export a public key.
 
    ![](images/trezor-export.png)
 
-6. Select **Export**.
+7. Select **Export**.
 
    The Stacks Wallet shows the current wallet balance.
 
 
+### Software only wallet
 
-## View Balance, Allocation, and transaction history
+If you have an existing 24 word seed phrase from this or a previous version of the Stacks Wallet software, you don't need to create a new wallet, you can **Use existing wallet**. This procedure assumes you are creating a wallet for the first time.
+
+1. Double-click on the wallet software to open it.
+2. Select **Create new wallet**.
+
+   The system asks if you have a hardware wallet.
+
+3. Choose **No, I don't**.
+
+   The system prompts cautions you that a hardware wallet is recommended. 
+
+4. Choose **Continue without a hardware wallet**.
+
+    The system generates a seed phrase for you and prompts you to write it down.
+    Don't lose your seed phrase. If you lose your seed phrase, you lose your STX tokens and can never get them back. 
+
+5. Write down each word and its position, for example,` 1 - frog`. 
+6. Store your written seed phrase in a secure location such as a safe deposit box.
+7. Click **I've written down my seed phrase**.
+
+    The system prompts you to re-enter your seed phrase. The sequence numbers are out of order. For example, `5` may appear in the `1` position. Enter the corresponding `5` and `1` word as appropriate.
+
+8. Select **Done**.
+
+   The system displays the balance for the address that corresponds to your seed phrase.
+
+## View balance, allocation, or transaction history
 
 The default view for an open and loaded wallet is the **Wallet Balance** view.
 
 ![](images/hardware-balance.png)
 
-If you have started with a hardware wallet, your view includes **Send** and
-**Receive** buttons. If you open the same address in a watch-only wallet, you do
-not see these buttons:
-
-![](images/software-balance.png)
+Notice this view includes **Send** and **Receive** buttons. 
 
 Both balances show **Transaction History** if it exists for an address. A
 transaction summary appears on the initial screen. To see details,
@@ -126,49 +169,47 @@ click on a transaction:
 
 ![](images/receive-details.png)
 
-Not all addresses will have a balance. If you are a Stacks token holder, your
+Not all addresses have a balance. If you are a Stacks token holder, your
 address shows with both a **Balance** and **Allocation**. The **Balance** is the
-Stackes you have unlocked. The **Allocation** is the amount still locked up.
+Stacks you have unlocked. The **Allocation** is the amount still locked up.
 
 ![](images/token-holder-balance.png)
 
 
 ## Receive Stacks
 
-To receive Stack you pass a STX address directly to a user via email, for
-example. If your Stackes Wallet is connected to a hardware wallet, click the **Receive** button to
-display an address where others can send Stacks to.
+To receive Stacks: you give a STX address directly to a user via email or text, for
+example. 
 
-![](images/receive-button.png)
+1. Click the **Receive** button to display the wallet address. where others can send STX to.
 
-A stack address is a public addresses. Anyone with the address, can view the
-address balance or send money _**to**_ the address.
+   ![](images/receive-button.png)
 
-{% include note.html content="Sending money <emphasis><u>from</u></emphasis> a
-Stacks address requires the private key. It is this private key together with
-your seed phrase that you should keep private and maintain with high security."
-%}
+2. Email or text the address to the person or organization sending to you.
 
-Blockchain transactions take time. There may be minutes or hours while the
-transaction is recorded in the blockchain. When the transaction is complete, you
-can see a receipt for the transaction in Software Wallet in watch-only mode or
-connected to a hardware wallet.
+    A Stacks address is a public addresses. Anyone with the address, can view the address balance or send money _**to**_ the address.
 
-## Top up Bitcoin gas
+3. Look for the receipt transaction in your transaction history.
 
-You require very small fractions of Bitcoin (.00001) to send Stacks with the wallet.
+   Once the person has sent you STX, you see a **PENDING** transaction which means the transaction is still being recorded by the blockchain.
+
+   ![](images/pending.png)   
+
+   Blockchain transactions take time. It may be minutes or hours before the transaction is recorded in the blockchain. When the transaction is complete, you can see a receipt for the transaction in your Stacks Wallet. The **PENDING** marker goes away once the funds are recorded on the blockchain.
+
+
+
+## Add Bitcoin gas
+
+The Stacks Wallet uses very small amounts of Bitcoin to pay fees for sending transactions. You need very small fractions of Bitcoin (BTC) for gas. The cost of gas you need fluctuates with the market price of Bitcoin.
 
 {% include warning.html content="Very small amounts of Bitcoin are all you need
 to fuel transactions. <b>Never send an entire coin to your Stacks Wallet. Amounts
 such as .0002 BTC are plenty</b>." %}
 
-The Stacks Software wallet uses very small amounts of Bitcoin to pay fees for
-transactions. You can only receive Bitcoin with the wallet, you cannot send it
-from the Stacks Wallet. You need an account with Coinbase or similar exchange to
-buy Bitcoin or send Bitcoin.
+You can only receive Bitcoin with Stacks Wallet; you cannot send Bitcoin. You need an account with Coinbase or similar exchange to buy Bitcoin and send it to the Stacks Wallet.
 
-If you attempt to send Stacks with your wallet and you do not have enough
-Bitcoin to fuel the transaction, you see this dialog:
+If you attempt to send STX with your wallet and you do not have enough Bitcoin to fuel the transaction, you see this dialog:
 
 ![](images/not-enough.png)
 
@@ -183,12 +224,13 @@ Bitcoin to fuel the transaction, you see this dialog:
 
     This dialog shows you how much BTC you currently have in your account.
 
-2. Select **Top up**.
+2. Select **Add BTC**.
 
    The systems displays the **Top Up** dialog with a Bitcoin address.
 
-3. Record the address.
+   ![](images/top-up.png)
 
+3. Record the BTC address.
 4. Go to your Coinbase or similar account.
 5. Send Bitcoin to the address presented by the Stacks Wallet.
 
@@ -199,11 +241,9 @@ transaction history also shows any Bitcoin sent to your wallet.
 
 ## Send stacks
 
-You can only send Stacks if you have connected your Stacks wallet to a hardware
-wallet. The Stacks Wallet software uses the hardware wallet to sign your send
-transactions.
+Sending stacks is a transaction you must authorize or sign. If you have connected your Stacks Wallet to a hardware wallet. The Stacks Wallet software uses the hardware wallet to sign your send transactions. A software-only wallet asks you for the 24-word key phase you used to create the wallet.
 
-1. Open the Stacks wallet.
+1. Open the Stacks Wallet.
 
    If you are starting after a reset, choose **Use a Hardware Wallet**.
 
@@ -241,10 +281,7 @@ transactions.
 6. Select **Close**.
 
    The send transaction appears in your **Transaction History**. Blockchain
-   transactions can take minutes or hours to complete. Transactions that have
-   not cleared yet show as **PENDING**.
-
-   ![](images/pending.png)   
+   transactions can take minutes or hours to complete.
 
    Select **Refresh** if you don't immediately see the transaction in your
    history.
@@ -253,10 +290,10 @@ transactions.
 
 ## Reset the wallet
 
-Resetting a wallet clears all your data from the Stacks wallet and returns the
+Resetting a wallet clears all your data from the Stacks Wallet and returns the
 wallet to its original state.
 
-* If you entered a Stacks address, resetting clears the address from the Stacks wallet.
+* If you entered a Stacks address, resetting clears the address from the Stacks Wallet.
 * If you connected to a hardware wallet, resetting removes the connection to the hardware wallet.
 
 Resetting the wallet does nothing to your addresses or their associated balances.
@@ -272,9 +309,6 @@ you do not restart the wallet, you can simple close it.
    The system opens the **Settings** dialog.
 
    ![](images/settings.png)
-
-   The **Top Up** button is only visible when you have connected the Stacks
-   Wallet to a hardware wallet.
 
 2. Select **Reset Wallet**.
 

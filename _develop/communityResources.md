@@ -17,7 +17,7 @@ other resources.
 </thead>
 {% for resource in site.data.community.resources %}
   <tr>
-    <td><p><a href="{{ resource.url }}" target="\_blank">{{ resource.title }}</a> {{resource.description}} (<emphasis>{{resource.type}}</emphasis>)</p></td>
+    <td><p><a href="{{ resource.url }}" target="\_blank">{{ resource.title }}</a> {{resource.description}} (<em>{{resource.type}}</em>)</p></td>
     <td>{{resource.date}}</td>
   </tr>
 {% endfor %}
