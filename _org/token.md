@@ -20,7 +20,7 @@ the first block of a blockchain.
 
 During the draft genesis block period token holders setup a seed phrase
 (sometimes referred to as a _recovery phrase_ or a _recovery seed_ using the
-Stacks wallet software or their own hardware wallet.
+Stacks Wallet software or their own hardware wallet.
 
 It was each token holder’s responsibility to store their own seed phrase in a
 private and secure location. Holders could use their wallet to verify their

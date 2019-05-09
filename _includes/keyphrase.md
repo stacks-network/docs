@@ -9,42 +9,38 @@ Use the following table to answer questions about keys/phrases/values you can sh
    <tr valign="top">
       <td>
          <p>Secret Recovery Key</p>
-         <p>12 word seed phrase</p>
-         <p>24 word seed phrase</p>
       </td>
       <td><p>PROTECT</p></td>
       <td>
-         <p>A 12 or 24 sequence of words for example:</p>
+         <p>Used to access an identity on the Blockstack blockchain. A 24-word sequence of words for example:</p>
          <p><code>applied binge crisp pictorial fiery</code>
          </p><p><code> dancing agreeable frogs light finish ping apple</code></p>
+         <p>The early Blockstack recovery keys were 12-word sequences.</p>
       </td>
    </tr>
    <tr valign="top">
       <td>
-         <p>Identity</p>
+         <p>identity</p>
          <p>Blockstack identity</p>
          <p>Blockstack ID</p>
          </td>
       <td><p>SHAREABLE</p></td>
       <td>
-         <p>A username, Both <code>moxiegirl.id.blockstack</code> or <code>chad.id</code> are examples of IDs.</p>
+         <p>A way to identify a person or an organization on the Blockstack network. An identity is unique, both <code>moxiegirl.id.blockstack</code> or <code>chad.id</code> are examples of IDs.</p>
       </td>
    </tr>
    <tr valign="top">
       <td>Magic Recovery Code</td>
       <td><p>PROTECT</p></td>
-      <td><p>An long encrypted string, for example:</p>
-        <p> <code>36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5WXxSTazJsUjOA...</code></p>
-         <p>Do not share the QR code that accompanied your code either. This is a QR code:</p>
-           <img src="/org/images/qr-code.png"/>
+      <td><p>An long encrypted string, for example:</p> <p> <code>36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5WXxSTazJsUjOA...</code></p> <p>Do not share the QR code that accompanied your code either. This is a QR code:</p> <img src="/org/images/qr-code.png"/>
       </td>
    </tr>
    <tr valign="top">
       <td>Blockstack Owner Address</td>
       <td><p>SHAREABLE</p></td>
-      <td><p>Looks like a bitcoin address but starts with <code>ID</code> for example:</p>
-         <p><code>ID-1J3PUxY5uDShUnHRrMyU6yKtoHEUPhKULs</code></p>
-      </td>
+      <td>
+      <p>Looks like a bitcoin address but starts with <code>ID</code> for example:</p> <p><code>ID-1J3PUxY5uDShUnHRrMyU6yKtoHEUPhKULs</code></p>
+       </td>
    </tr>
    <tr valign="top">
       <td>Bitcoin address
@@ -57,14 +53,11 @@ Use the following table to answer questions about keys/phrases/values you can sh
       </td>
    </tr>
    <tr valign="top">
-      <td><p>Stacks Address</p>
-         <p>Stacks Wallet Address</p>
-         <p>STX address</p>
+      <td><p>Stacks address or STX address</p>
       </td>
       <td><p>SHAREABLE</p></td>
-      <td><p>A string of letters and numbers starting with an <code>SP</code> or <code>SM</code></p>
-      <code>SM3KJBA4RZ7Z20KD2HBXNSXVPCR1D3CRAV6Q05MKT</code>
-         <p>Sharing this allows anyone to send Stacks to the address, view the address balances, and view the address allocations.</p>
+      <td>
+       <p>A string of letters and numbers.</p> <p><code>3E53XjqK4Cxt71BGeP2VhpcotM8LZ853C8</code></p> <p>Sharing this address allows anyone to send Bitcoin to the address.</p>
       </td>
    </tr>
    <tr valign="top">
@@ -77,10 +70,30 @@ Use the following table to answer questions about keys/phrases/values you can sh
    </tr>
    <tr valign="top">
       <td>private key</td>
-      <td></td>
+      <td>PROTECT</td>
       <td><p>Private keys matches a corresponding public key.  A public key also looks like a string of letters and numbers:</p>
       <img src="/org/images/private.png"/>
          <p>The exact format of the public and private key depend on the software you use to create them.</p>
+      </td>
+   </tr>
+   <tr valign="top">
+      <td>
+         <p>seed phrase</p>
+      </td>
+      <td><p>PROTECT</p></td>
+      <td>
+         <p>Used to access Stacks Wallet software. The seed phrase consists of 24 words in a sequence. Both the word <em>and its position the sequence</em>  are important.</p><p>Write down your seed phrase and store it in a secure location such as a safe deposit box. When you write the seed phrase down, include its position, for example,<code>1-frog, 2-horse, 3-building</code> and so on until you reach a final position <code>24-ocean</code>.</p>
+      </td>
+   </tr>
+      <tr valign="top">
+      <td>
+         <p>wallet address</p>
+      </td>
+      <td><p>SHAREABLE</p></td>
+      <td>
+       <p>
+         If you created a software-only wallet with the Stacks Wallet software, the wallet has a single STX address which is also sometimes called a <em>Stacks (STX) address</em>. You access a software wallet with a <em>seed phrase</em>.
+       </p>
       </td>
    </tr>
 </table>
