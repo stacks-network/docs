@@ -98,7 +98,7 @@
          href='https://blog.app.co/how-app-minings-ranking-algorithm-works'>the detailed
          explanation of our ranking algorithm on our blog</a> and in <a
          href='https://docs.blockstack.org/develop/mining_intro.html'>our
-         documentation</a>.</p><p>Apps may have unique circumstances such that the app cannot be ranked by all the reviewers, for example, apps that require specific hardware. In these cases, reviewers that can review and rank the app will. An app’s final ranking is determined by the average of those reviewers that can fully review the app.</p>"
+         documentation</a>.</p><p>Apps are ranked by all app reviewers.</p>"
       },
       {
         "question":"Do I have to Hunt my app on Product Hunt?",
