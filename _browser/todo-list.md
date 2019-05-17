@@ -143,7 +143,7 @@ The example application runs in a node server on your local host. In the this se
 
     ![](images/todo-app.png)
 
-## Task 3: Larn about the sign in process
+## Task 3: Learn about the sign in process
 
 {% include sign_in.md %}
 
