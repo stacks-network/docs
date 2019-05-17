@@ -15,7 +15,6 @@
   - org/wallet-install
   - org/wallet-use
   - org/tokenholders
-  - org/voucherholder
 - title: Reference
   docs:
   - org/secureref
