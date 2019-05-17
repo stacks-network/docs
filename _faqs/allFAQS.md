@@ -1,6 +1,7 @@
 ---
 layout: org
 permalink: /:collection/:path.html
+redirect_from: /org/voucherholder
 ---
 # Blockstack FAQs
 

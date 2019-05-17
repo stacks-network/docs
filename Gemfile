@@ -29,6 +29,7 @@ group :jekyll_plugins do
    gem 'jekyll-titles-from-headings'
    gem 'jekyll-sitemap'
    gem 'jekyll-toc'
+   gem 'jekyll-redirect-from'
 end
 
 group :development do
