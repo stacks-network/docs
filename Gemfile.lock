@@ -45,6 +45,8 @@ GEM
       em-websocket (~> 0.5)
       jekyll (~> 3.0)
     jekyll-paginate (1.1.0)
+    jekyll-redirect-from (0.12.1)
+      jekyll (~> 3.3)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
     jekyll-seo-tag (2.5.0)
@@ -110,6 +112,7 @@ DEPENDENCIES
   jekyll-gist
   jekyll-livereload
   jekyll-paginate (~> 1.1)
+  jekyll-redirect-from
   jekyll-seo-tag
   jekyll-sitemap
   jekyll-titles-from-headings
