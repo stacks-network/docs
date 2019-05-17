@@ -62,3 +62,7 @@ potentially possible, are as follows:
 Your specific unlock date depends on when you purchased or were granted tokens.
 You can use the Blockstack Explorer to discover how many tokens you have
 registered and when they will unlock.
+
+## Have more questions?
+
+For a list of frequent questions and answers about STX tokens, [see the Stacks token FAQs](https://docs.blockstack.org/faqs/allfaqs#stacks-token-questions).
