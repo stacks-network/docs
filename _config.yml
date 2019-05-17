@@ -109,6 +109,8 @@ plugins:
   - jekyll-titles-from-headings
   - jekyll-sitemap
   - jekyll-toc
+  - jekyll-redirect-from
+
 
 titles_from_headings:
   enabled:     true
