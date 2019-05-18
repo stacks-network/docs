@@ -548,7 +548,7 @@
       { 
       "category":"tokens", 
       "question": "I have a voucher. How do I redeem it for Stacks Tokens?",
-      "answer": "<p>Vouchers cannot be used to purchase Stacks Tokens until the SEC qualifies the offering statement. Although the planned offering of Stacks Tokens is not yet qualified by the SEC, you must register your voucher now so we can allocate the proper number of tokens to voucher holders.</p><p>If you are a voucher holder, you should have received an email with steps for completing the registration process, which must be complete by 11:59 PM Eastern Time on May 25, 2019. <strong>If you do not complete the registration process by the deadline, you will be unable to redeem your voucher.</strong> If you have any questions, please contact <a href='mailto:support@stackstoken.com'>support@stackstoken.com.</a></p>"
+      "answer": "<p>Vouchers cannot be used to purchase Stacks Tokens until the SEC qualifies the offering statement. Although the planned offering of Stacks Tokens is not yet qualified by the SEC, you must register your voucher now so we can allocate the proper number of tokens to voucher holders.</p><p>If you are a voucher holder, you should have received an email with steps for completing the registration process, which must be complete by 11:59 PM Eastern Time on May 25, 2019. <strong>If you do not complete the registration process by the deadline, you may be unable to redeem your voucher.</strong> If you have any questions, please contact <a href='mailto:support@stackstoken.com'>support@stackstoken.com.</a></p>"
       },
    { 
       "category":"tokens", 
