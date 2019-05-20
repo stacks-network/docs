@@ -499,7 +499,7 @@
       {
          "category":"wallet",
          "question":"How do I keep my tokens secure?",
-         "answer":"<p>The safety of your Stacks Tokens is extremely important to us. To help ensure that you complete the process of receiving your tokens correctly and securely, please read the following guidelines:</p> <ul> <li> <p><strong>Website Safety</strong>: When inputting data on a website or verifying the presence of data on a website it is essential that you confirm that the URL is correct and that your browser is using HTTPS.</p> </li> <li> <p><strong>Email Safety</strong>: Blockstack will never ask for your personal identifying information over e-mail, or call you directly. When we ask verifying questions, we will only do so when you call us to confirm your identity. We will never ask you for money or your Seed Phrase (private key).</p> </li> </ul> <p>If you have large token holdings, make sure you take advantage of custodial services. A wallet does not provide the security of a custodial service.</p>"
+         "answer":"<p>The safety of your Stacks tokens is extremely important to us. To help ensure that you complete the process of receiving your tokens correctly and securely, please read the following guidelines:</p> <ul> <li> <p><strong>Website Safety</strong>: When inputting data on a website or verifying the presence of data on a website it is essential that you confirm that the URL is correct and that your browser is using HTTPS.</p> </li> <li> <p><strong>Email Safety</strong>: Blockstack will never ask for your personal identifying information over e-mail, or call you directly. When we ask verifying questions, we will only do so when you call us to confirm your identity. We will never ask you for money or your Seed Phrase (private key).</p> </li> </ul> <p>If you have large token holdings, make sure you take advantage of custodial services. A wallet does not provide the security of a custodial service.</p>"
       },
       {
          "category":"wallet",
@@ -517,38 +517,38 @@
          "answer":"<p>For questions or help regarding the Stacks token, you can contact us at <a href='mailto:hello@stackstoken.com'>hello@stackstoken.com</a>.</p>"
       },
       { "category":"tokens",
-      "question": "Where can I buy Stacks Tokens?",
-      "answer": "<p>Blockstack Token LLC has filed an offering statement with the U.S. Securities and Exchange Commission (SEC) to conduct a $50 million token offering using the SEC Regulation A+ framework. Stacks Tokens won’t be sold until the SEC has qualified the offering statement. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>, where you may also subscribe for updates by joining our mailing list.</p>"
+      "question": "Where can I buy Stacks tokens?",
+      "answer": "<p>Blockstack Token LLC has filed an offering statement with the U.S. Securities and Exchange Commission (SEC) to conduct a $50 million token offering using the SEC Regulation A+ framework. Stacks tokens won’t be sold until the SEC has qualified the offering statement. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>, where you may also subscribe for updates by joining our mailing list.</p>"
       }, 
       { 
       "category":"tokens", 
-      "question": "When can I buy Stacks Tokens?",
+      "question": "When can I buy Stacks tokens?",
       "answer": "<p>The timing of the sale depends on if and when the SEC qualifies the offering statement. We hope qualification will be in the near future. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>, where you may also subscribe for updates by joining our mailing list.</p>"
       }, 
       { 
       "category":"tokens", 
-      "question": "How much do Stacks Tokens cost?",
-      "answer": "<p>We are offering up to 215 million Stacks Tokens at a discounted purchase price of $0.12 to current holders of certain non-binding vouchers to purchase Stacks Tokens, up to a maximum of $3,000 in Stacks Tokens to each voucher-holder.</p> <p>We are offering at least 40 million Stacks Tokens at a price of $0.30 per token to “qualified purchasers” generally (as such term is defined under Regulation A of the Securities Act of 1933). We may, in our discretion, increase the size of the general offering (up to a maximum of 62 million tokens).</p> <p>Please refer to the preliminary offering circular filed with the SEC <a href='https://www.sec.gov/Archives/edgar/data/1719379/000110465919029828/a18-15736_1partiiandiii.htm'>here</a> for all information related to the proposed Regulation A offering of the Stacks token.</p>"
+      "question": "How much do Stacks tokens cost?",
+      "answer": "<p>We are offering up to 215 million Stacks tokens at a discounted purchase price of $0.12 to current holders of certain non-binding vouchers to purchase Stacks tokens, up to a maximum of $3,000 in Stacks tokens to each voucher-holder.</p> <p>We are offering at least 40 million Stacks tokens at a price of $0.30 per token to “qualified purchasers” generally (as such term is defined under Regulation A of the Securities Act of 1933). We may, in our discretion, increase the size of the general offering (up to a maximum of 62 million tokens).</p> <p>Please refer to the preliminary offering circular filed with the SEC <a href='https://www.sec.gov/Archives/edgar/data/1719379/000110465919029828/a18-15736_1partiiandiii.htm'>here</a> for all information related to the proposed Regulation A offering of the Stacks token.</p>"
       }, 
       { 
       "category":"tokens", 
-      "question": "How are Stacks Tokens priced?",
-      "answer": "<p>The valuation history of Stacks Tokens is disclosed in detail on page 71 of the preliminary offering circular. Please refer to the preliminary offering circular filed with the SEC <a href='https://www.sec.gov/Archives/edgar/data/1719379/000110465919029828/a18-15736_1partiiandiii.htm'>here</a> for all information related to the proposed Regulation A offering of the Stacks Token.</p>"
+      "question": "How are Stacks tokens priced?",
+      "answer": "<p>The valuation history of Stacks tokens is disclosed in detail on page 71 of the preliminary offering circular. Please refer to the preliminary offering circular filed with the SEC <a href='https://www.sec.gov/Archives/edgar/data/1719379/000110465919029828/a18-15736_1partiiandiii.htm'>here</a> for all information related to the proposed Regulation A offering of the Stacks Token.</p>"
       }, 
       { 
-      "category":"tokens", 
-      "question": "Why were Stacks Tokens valued/sold at $0.00012 prior to the 2017 accredited sale at $0.12?",
-      "answer": "<p><strong>Founders and early employees</strong> of Blockstack PBC received tokens at $0.00012 per token in October 2017 based on an independent valuation from Foresight Valuation Group, LLC when the Stacks Token was still in its earliest stage of development and before the publication of the token white paper at the end of that month. This grant was subject to a three-year time lock commencing upon the introduction of the genesis block to the Blockstack network in November 2018, and the nominal price reflected the early, high-risk support of founders and early employees.</p> <p><strong>Holders of Blockstack’s Series A convertible preferred stock</strong>—who had invested a total of $5.1 million as of late 2016 and funded Blockstack’s early growth and development before the decision to create a token, or the drafting or publication of any white papers—were also provided an opportunity to purchase tokens at the $0.00012 per token price. This opportunity to participate at a nominal price was given in return for their early support and in proportion to their equity ownership, and it was based on their reasonable expectation as early investors that they would receive tokens if Blockstack ever decided to create a digital token. These tokens are subject to a three-year time lock, commencing upon the introduction of the genesis block to the Blockstack network in November 2018.</p>"
-      }, 
+         "category":"tokens", 
+         "question": "What is the minimum and maximum amount an investor can commit to purchase?",
+         "answer": "<p>Investors must commit to a minimum purchase amount of $100 for the tokens in this offering.  This minimum may be waived at our discretion. Investors in the voucher program will only be permitted to purchase $3,000 worth of Stacks Tokens through the voucher program, or 25,000 Stacks Tokens, at the $0.12 per token price. Investors in the voucher program may also purchase through the general offering.</p><p>Investors may be either <em>accredited investors</em> within the meaning of Regulation D under the Securities Act, or any other investors so long as their investment in the tokens does not represent more than 10% of the greater of their annual income or net worth (for natural persons), or 10% of the greater of annual revenue or net assets at fiscal year-end (for non-natural persons).</p>"
+         },
       { 
       "category":"tokens", 
-      "question": "Can I buy Stacks Tokens with either cryptocurrency or fiat currency?",
+      "question": "Can I buy Stacks tokens with either cryptocurrency or fiat currency?",
       "answer": "<p>As indicated in the preliminary offering circular, if qualified by the SEC, Stacks may be purchased using U.S. dollars, Bitcoin, or Ether. Please refer to the preliminary offering circular filed with the SEC <a href='https://www.sec.gov/Archives/edgar/data/1719379/000110465919029828/a18-15736_1partiiandiii.htm'>here</a> for all information related to the proposed Regulation A offering of the Stacks token.</p>"
       }, 
       { 
       "category":"tokens", 
-      "question": "I have a voucher. How do I redeem it for Stacks Tokens?",
-      "answer": "<p>Vouchers cannot be used to purchase Stacks Tokens until the SEC qualifies the offering statement. Although the planned offering of Stacks Tokens is not yet qualified by the SEC, you must register your voucher now so we can allocate the proper number of tokens to voucher holders.</p><p>If you are a voucher holder, you should have received an email with steps for completing the registration process, which must be complete by 11:59 PM Eastern Time on May 25, 2019. <strong>If you do not complete the registration process by the deadline, you may be unable to redeem your voucher.</strong> If you have any questions, please contact <a href='mailto:support@stackstoken.com'>support@stackstoken.com.</a></p>"
+      "question": "I have a voucher. How do I redeem it for Stacks tokens?",
+      "answer": "<p>Vouchers cannot be used to purchase Stacks tokens until the SEC qualifies the offering statement. Although the planned offering of Stacks tokens is not yet qualified by the SEC, you must register your voucher now so we can allocate the proper number of tokens to voucher holders.</p><p>If you are a voucher holder, you should have received an email with steps for completing the registration process, which must be complete by 11:59 PM Eastern Time on May 25, 2019. <strong>If you do not complete the registration process by the deadline, you may be unable to redeem your voucher.</strong> If you have any questions, please contact <a href='mailto:support@stackstoken.com'>support@stackstoken.com.</a></p>"
       },
    { 
       "category":"tokens", 
@@ -560,15 +560,16 @@
          "question": "Can I transfer or sell my Stacks voucher?",
          "answer": "<p>Stacks vouchers are non-transferrable and may not be bought, sold or gifted. Only the original person or entity that registered for, and whose name is printed on, the voucher may redeem it.</p>"
       }, 
+
       {
          "question": "Why do I need to register to redeem my voucher?",
          "category": "tokens",
-         "answer": "<p>Although the planned offering of Stacks Tokens is not yet qualified by the SEC, you must register your voucher now so we can allocate the proper number of tokens to voucher holders. Please complete the registration process by 11:59 PM Eastern Time on May 25, 2019. If you do not complete the registration process by the deadline, you may be unable to redeem your voucher.</p>"
+         "answer": "<p>Although the planned offering of Stacks tokens is not yet qualified by the SEC, you must register your voucher now so we can allocate the proper number of tokens to voucher holders. Please complete the registration process by 11:59 PM Eastern Time on May 25, 2019. If you do not complete the registration process by the deadline, you may be unable to redeem your voucher.</p>"
       },
       {
          "question": "I didn’t complete the voucher registration process. Can I still redeem my voucher?",
          "category": "tokens",
-         "answer": "<p>If you did not complete the voucher registration process by the deadline, you may be unable to redeem your voucher. You may still purchase Stacks Tokens at a price of $0.30 per token available to all qualified purchasers.</p>"
+         "answer": "<p>If you did not complete the voucher registration process by the deadline, you may be unable to redeem your voucher. You may still purchase Stacks tokens at a price of $0.30 per token available to all qualified purchasers.</p>"
       },
       {
          "question": "I already filled out a voucher survey. Do I still need to complete the voucher registration process?",
@@ -582,43 +583,48 @@
       },
       { 
       "category":"tokens", 
-      "question": "How do I check the status of my previously purchased Stacks Tokens?",
-      "answer": "<p>You may check the status of previously purchased Stacks Tokens at <a href='https://explorer.blockstack.org/'>https://explorer.blockstack.org/</a>. Additional wallet-related information is available <a href='https://blockstack.org/faq/'>here</a>.</p>"
+      "question": "How do I check the status of my previously purchased Stacks tokens?",
+      "answer": "<p>You may check the status of previously purchased Stacks tokens at <a href='https://explorer.blockstack.org/'>https://explorer.blockstack.org/</a>. Additional wallet-related information is available <a href='https://blockstack.org/faq/'>here</a>.</p>"
       }, 
       { 
       "category":"tokens", 
-      "question": "If I am not a U.S. person, can I buy Stacks Tokens?",
+      "question": "If I am not a U.S. person, can I buy Stacks tokens?",
       "answer": "<p>We anticipate that people in certain foreign jurisdictions will be able to participate upon qualification, but we cannot currently share a list of countries, nor can we give you legal advice. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>, where you may also subscribe for updates by joining our mailing list.</p> <p>You should consult a local attorney in your country to determine whether your local country’s laws prohibit the sale of Stacks to you.</p>"
       }, 
       { 
       "category":"tokens", 
-      "question": "If am a New York State resident, can I buy Stacks Tokens?",
+      "question": "If am a New York State resident, can I buy Stacks tokens?",
       "answer": "<p>No. Due to New York state laws, New York residents are excluded from participating in the proposed Regulation A offering.</p>"
       }, 
       { 
       "category":"tokens", 
-      "question": "Is there an exchange where I can buy and sell Stacks Tokens?",
+      "question": "Is there an exchange where I can buy and sell Stacks tokens?",
       "answer": "<p>Currently, there is no authorized exchange or alternative trading system (ATS) for buying and selling Stacks or Stacks futures, and we cannot comment on when an exchange or ATS might list Stacks at this time. Please keep an eye out for updates at <a href='http://stackstoken.com'>stackstoken.com</a>. If you see Stacks listed on an exchange, please let us know at <a href='mailto:legal@blockstack.com'>legal@blockstack.com</a>, as the listing may be illegal or a scam.</p>"
       }, 
       { 
       "category":"tokens", 
-      "question": "Can I sell or transfer Stacks Tokens directly to someone else?",
+      "question": "Can I sell or transfer Stacks tokens directly to someone else?",
       "answer": "<p>If you purchased Stacks from our 2017 token sale, it may be possible to sell or transfer Stacks directly to another person in a peer-to-peer transaction. We recommend you consult an attorney before engaging in such a transaction, especially if buying from or selling to a U.S. person or entity, as we cannot give you legal or regulatory advice.</p>"
       }, 
       { 
       "category":"tokens", 
-      "question": "What is the holding or lock-up period for Stacks Tokens?",
-      "answer": "<p>For Stacks Tokens under the proposed Regulation A offering, please refer to the preliminary offering circular filed with the SEC <a href='https://www.sec.gov/Archives/edgar/data/1719379/000110465919029828/a18-15736_1partiiandiii.htm'>here</a> for information relating to the lock-up period.</p> <p>Stacks purchased from the 2017 token sale are subject to two separate holding or lock-up periods that run in tandem: (1) a one-year holding period required by law that prohibits sale or transfer of Stacks within one year of the date of purchase of the SAFT or fund interests that gave you the right to tokens, and (2) a monthly time-lock built into our blockchain that unlocks 1/24th of your Stacks on the date of the Blockchain launch on October 29, 2018, and then an additional 1/24th approximately each month thereafter. Because the 2017 token sale took place over one year ago, the one-year holding period should be over for most investors. You may check the status of your monthly time-lock at <a href='https://explorer.blockstack.org/'>https://explorer.blockstack.org/</a>.</p>"
+      "question": "What is the holding or lock-up period for Stacks tokens?",
+      "answer": "<p>For Stacks tokens under the proposed Regulation A offering, please refer to the preliminary offering circular filed with the SEC <a href='https://www.sec.gov/Archives/edgar/data/1719379/000110465919029828/a18-15736_1partiiandiii.htm'>here</a> for information relating to the lock-up period.</p> <p>Stacks purchased from the 2017 token sale are subject to two separate holding or lock-up periods that run in tandem: (1) a one-year holding period required by law that prohibits sale or transfer of Stacks within one year of the date of purchase of the SAFT or fund interests that gave you the right to tokens, and (2) a monthly time-lock built into our blockchain that unlocks 1/24th of your Stacks on the date of the Blockchain launch on October 29, 2018, and then an additional 1/24th approximately each month thereafter. Because the 2017 token sale took place over one year ago, the one-year holding period should be over for most investors. You may check the status of your monthly time-lock at <a href='https://explorer.blockstack.org/'>https://explorer.blockstack.org/</a>.</p>"
       }, 
       { 
       "category":"tokens", 
-      "question": "I have a tax question about my Stacks Tokens. Whom should I talk to?",
-      "answer": "<p>If you have a tax question about your Stacks Tokens, we recommend you speak to an accountant or tax lawyer. If you participated in the 2017 token sale through the Blockstack Token Funds, we’ll provide you with the necessary tax reporting forms by the required deadlines, but in general, we cannot give you tax advice.</p>"
+      "question": "I have a tax question about my Stacks tokens. Whom should I talk to?",
+      "answer": "<p>If you have a tax question about your Stacks tokens, we recommend you speak to an accountant or tax lawyer. If you participated in the 2017 token sale through the Blockstack Token Funds, we’ll provide you with the necessary tax reporting forms by the required deadlines, but in general, we cannot give you tax advice.</p>"
       }, 
+      { 
+         "category":"tokens", 
+         "question": "Why were Stacks tokens valued/sold at $0.00012 prior to the 2017 accredited sale at $0.12?",
+         "answer": "<p><strong>Founders and early employees</strong> of Blockstack PBC received tokens at $0.00012 per token in October 2017 based on an independent valuation from Foresight Valuation Group, LLC when the Stacks Token was still in its earliest stage of development and before the publication of the token white paper at the end of that month. This grant was subject to a three-year time lock commencing upon the introduction of the genesis block to the Blockstack network in November 2018, and the nominal price reflected the early, high-risk support of founders and early employees.</p> <p><strong>Holders of Blockstack’s Series A convertible preferred stock</strong>—who had invested a total of $5.1 million as of late 2016 and funded Blockstack’s early growth and development before the decision to create a token, or the drafting or publication of any white papers—were also provided an opportunity to purchase tokens at the $0.00012 per token price. This opportunity to participate at a nominal price was given in return for their early support and in proportion to their equity ownership, and it was based on their reasonable expectation as early investors that they would receive tokens if Blockstack ever decided to create a digital token. These tokens are subject to a three-year time lock, commencing upon the introduction of the genesis block to the Blockstack network in November 2018.</p>"
+         },
       { 
       "category":"tokens", 
       "question": "Stacks token FAQs: Rule 255 disclaimer",
-      "answer": "<p>**<em>This communication may be deemed “testing the waters” material under Regulation A under the Securities Act of 1933. We are not under any obligation to complete an offering under Regulation A. We may choose to make an offering to some, but not all, of the people who indicate an interest in investing, and that offering might not be made under Regulation A. We will only be able to make sales after the Securities and Exchange Commission (SEC) has “qualified” the offering statement that we have filed with the SEC. The information in that offering statement will be more complete than the information we are providing now, and could differ in important ways. You must read the documents filed with the SEC before investing.</em></p> <p>**<em>No money or other consideration is being solicited, and if sent in response, will not be accepted. No offer to buy the securities can be accepted and no part of the purchase price can be received until the offering statement filed by the company with the SEC has been qualified by the SEC. Any such offer may be withdrawn or revoked, without obligation or commitment of any kind, at any time before notice of acceptance given after the date of qualification.</em></p> <p>**<em>An indication of interest involves no obligation or commitment of any kind.</em></p> <p><em>Any person interested in investing in any offering of Stacks Tokens should review our disclosures and the publicly filed offering statement relating to that offering, a copy of which is available at <a href='http://www.sec.gov'>www.sec.gov</a>. You may obtain a copy of the preliminary offering circular that is part of that offering statement at</em> <a href='http://www.stackstoken.com/'><em>stackstoken.com</em></a><em>.</em></p> <p>**<em>Blockstack is not registered, licensed or supervised as a broker dealer or investment adviser by the Securities and Exchange Commission (SEC), the Financial Industry Regulatory Authority (FINRA) or any other financial regulatory authority or licensed to provide any financial advice or services.</em></p>" 
+      "answer": "<p>**<em>This communication may be deemed “testing the waters” material under Regulation A under the Securities Act of 1933. We are not under any obligation to complete an offering under Regulation A. We may choose to make an offering to some, but not all, of the people who indicate an interest in investing, and that offering might not be made under Regulation A. We will only be able to make sales after the Securities and Exchange Commission (SEC) has “qualified” the offering statement that we have filed with the SEC. The information in that offering statement will be more complete than the information we are providing now, and could differ in important ways. You must read the documents filed with the SEC before investing.</em></p> <p>**<em>No money or other consideration is being solicited, and if sent in response, will not be accepted. No offer to buy the securities can be accepted and no part of the purchase price can be received until the offering statement filed by the company with the SEC has been qualified by the SEC. Any such offer may be withdrawn or revoked, without obligation or commitment of any kind, at any time before notice of acceptance given after the date of qualification.</em></p> <p>**<em>An indication of interest involves no obligation or commitment of any kind.</em></p> <p><em>Any person interested in investing in any offering of Stacks tokens should review our disclosures and the publicly filed offering statement relating to that offering, a copy of which is available at <a href='http://www.sec.gov'>www.sec.gov</a>. You may obtain a copy of the preliminary offering circular that is part of that offering statement at</em> <a href='http://www.stackstoken.com/'><em>stackstoken.com</em></a><em>.</em></p> <p>**<em>Blockstack is not registered, licensed or supervised as a broker dealer or investment adviser by the Securities and Exchange Commission (SEC), the Financial Industry Regulatory Authority (FINRA) or any other financial regulatory authority or licensed to provide any financial advice or services.</em></p>" 
       }
    ]
 }
