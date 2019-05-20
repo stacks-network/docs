@@ -6,7 +6,7 @@
 ## Community Rewards
 
 Blockstack Community Reward Program
-We’ve set up a community portal with all kinds of tasks you can complete to earn Stacks Tokens by contributing to and supporting the community - these stay in your account and convert into tokens when the network goes live. Many are really easy and they’re all fun and helpful for the community, more information here - https://contribute.blockstack.org/.
+We’ve set up a community portal with all kinds of tasks you can complete to earn Stacks tokens by contributing to and supporting the community - these stay in your account and convert into tokens when the network goes live. Many are really easy and they’re all fun and helpful for the community, more information here - https://contribute.blockstack.org/.
 
 
 ## Blockstack on Social Media
