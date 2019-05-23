@@ -119,7 +119,7 @@ this up and test this, do the following:
 
 ## Install OmniAuth and OmniAuth-blockstack gems
 
-You'll use the <a href=https://github.com/OmniAuth/OmniAuth=“\_blank">OmniAuth</a> plugin to setup Blockstack authentication. OmniAuth is a popular framework for integrating third-party authentication with a ruby on rails website. Blockstack provides an OmniAuth plugin, <a href="https://github.com/blockstack/OmniAuth-blockstack" target="\_blank">OmniAuth-blockstack</a> to make this easy for you.
+You'll use the <ahref="https://github.com/OmniAuth/OmniAuth" target="\_blank">OmniAuth</a> plugin to setup Blockstack authentication. OmniAuth is a popular framework for integrating third-party authentication with a ruby on rails website. Blockstack provides an OmniAuth plugin, <a href="https://github.com/blockstack/OmniAuth-blockstack" target="\_blank">OmniAuth-blockstack</a> to make this easy for you.
 
 1. Stop the Rails server if it is running.
 
