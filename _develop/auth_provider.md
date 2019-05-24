@@ -280,4 +280,4 @@ Congratulations! You've successfully integrated Blockstack authentication into a
 website. You can now build out a fully-fledged rails app with the ability to use
 Blockstack for decentralized user authentication.
 
-| Let folks know your work by tweeting: | <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="I just built a sample decentralized application with Blockstack! " data-hashtags="blockstack, blockchain" data-show-count="false">Tweet your work!</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> |
+Let folks know your work by tweeting: <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="I just built a sample decentralized application with Blockstack! " data-hashtags="blockstack, blockchain" data-show-count="false">Tweet your work!</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
