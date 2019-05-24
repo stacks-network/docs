@@ -69,7 +69,7 @@
       {
          "category":"appusers",
          "question":"How do I get an identity? Is it free?",
-         "answer":"<p>Normally, registering an identity as a digital asset on the Stacks blockchain requires <a href='https://blog.blockstack.org/video-reusing-bitcoins-hashpower-to-launch-the-stacks-blockchain/'>burning of Stacks tokens as <emphasis>fuel</emphasis></a>. However, Blockstack PBC is currently running a free service to pay for identities on behalf of the users. Through this service, you can get a free identity from Blockstack in the <strong>id.blockstack</strong> namespace. A namespace is similar to a domain (<strong>checklist.com</strong>, for example) on the old internet. So, a free identity has blockstack suffix in its name; for example, <strong>moxiegirl.id.blockstack</strong> is a free Blockstack identity.</p>"
+         "answer":"<p>Normally, registering an identity as a digital asset on the Stacks blockchain requires <a href='https://blog.blockstack.org/video-reusing-bitcoins-hashpower-to-launch-the-stacks-blockchain/'>burning of Stacks tokens as <em>fuel</em></a>. However, Blockstack PBC is currently running a free service to pay for identities on behalf of the users. Through this service, you can get a free identity from Blockstack in the <strong>id.blockstack</strong> namespace. A namespace is similar to a domain (<strong>checklist.com</strong>, for example) on the old internet. So, a free identity has blockstack suffix in its name; for example, <strong>moxiegirl.id.blockstack</strong> is a free Blockstack identity.</p>"
       },
       {
          "category":"appusers",
@@ -503,13 +503,13 @@
       },
       {
          "category":"wallet",
-         "question":"When will the new Stacks wallet be available?",
-         "answer":"<p>The Stacks wallet is available for <a href='https://wallet.blockstack.org/'>download at wallet.blockstack.org.</a></p>"
+         "question":"When will the new Stacks Wallet be available?",
+         "answer":"<p>The Stacks Wallet is available for <a href='https://wallet.blockstack.org/'>download at wallet.blockstack.org.</a></p>"
       },
       {
          "category":"wallet",
-         "question":"What is a public Stacks wallet address?",
-         "answer":"<p>During the initial grant process, investors submitted a <em>public Stacks wallet address</em> to Blockstack. This is a string of letters and numbers starting with an ‘SP’ or SM’, for example <code>SP017AUV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XY</code> is a wallet address.</p> <p>If you purchased Stacks tokens through CoinList, you can find your address at <a href='https://coinlist.co/distributions'>CoinList</a>. If you submitted your Stacks address directly to Blockstack, you can either use the “Restore from Seed Phrase” feature on the Stacks wallet or contact us at <a href='mailto:hello@stackstoken.com'>hello@stackstoken.com</a> for help.</p>"
+         "question":"What is a public Stacks Wallet address?",
+         "answer":"<p>During the initial grant process, investors submitted a <em>public Stacks Wallet address</em> to Blockstack. This is a string of letters and numbers starting with an ‘SP’ or SM’, for example <code>SP017AUV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XY</code> is a wallet address.</p> <p>If you purchased Stacks tokens through CoinList, you can find your address at <a href='https://coinlist.co/distributions'>CoinList</a>. If you submitted your Stacks address directly to Blockstack, you can either use the “Restore from Seed Phrase” feature on the Stacks Wallet or contact us at <a href='mailto:hello@stackstoken.com'>hello@stackstoken.com</a> for help.</p>"
       },
       {
          "category":"wallet",
