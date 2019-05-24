@@ -3,7 +3,7 @@ layout: learn
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 2 Learn about the Blockstack platform
+# 2 - Learn about the platform
 {:.no_toc}
 
 **Zero-to-DApp 2 of 4 for MacOS/Linux (or [Windows](zero_to_dapp_2_win.html))**
