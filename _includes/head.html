@@ -29,4 +29,22 @@
         });
     }
   </script>
+  	<!-- Load jquery.cookie plugin (optional) -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.cookie.js"></script>
+	<!-- Load jquery.navgoco plugin js and css files -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.navgoco.js"></script>
+  <link rel="stylesheet" href="/assets/navgoco/jquery.navgoco.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.nav').navgoco({
+          caretHtml: '<i class="some-random-icon-class"></i>',
+          accordion: true,
+          openClass: 'open',
+          slide: {
+            duration: 400,
+            easing: 'swing'
+          }
+        });
+    });
+  </script>
 </head>

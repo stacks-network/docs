@@ -1,10 +1,10 @@
 - title: Introduction
-- docs:
+  docs:
   - develop/dapp_principles
   - core/faq_developer
 
-- title: Building Blocks
-- docs:
+- title: Coding basics
+  docs:
   - develop/overview_auth
   - develop/add_auth
   - develop/storage

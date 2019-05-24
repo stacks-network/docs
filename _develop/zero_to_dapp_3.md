@@ -3,7 +3,7 @@ layout: learn
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 3 Customize your Animal Kingdom
+# 3 - Customize your kingdom
 {:.no_toc}
 
  **Zero to DAPP 3 of 4 for MacOS/Linux (or [Windows](zero_to_dapp_3_win.html))**
