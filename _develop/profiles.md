@@ -13,7 +13,7 @@ You can use the blockstack.js library to create and register an ID on the Stacks
 * TOC
 {:toc}
 
-## About profiels
+## About profiles
 
 Profile data is stored using Gaia on the user's selected storage provider. An example of a `profile.json` file URL using Blockstack provided storage:
 
