@@ -105,7 +105,7 @@ In this section, you build an initial React.js application called `hello-world-t
        __'.___.'__
      ´   `  |° ´ Y `
 
-    ? Are you ready to build a Blockstack app in React? (Y/n)
+    ? Are you ready to build a Blockstack app? (Y/n)
     ```
 
 4. Respond to the prompts to populate the initial app.
@@ -147,12 +147,13 @@ In the `public` folder you find these files:
 | app.css   | Contains application styles.             |
 | app.js    | Main application file.                   |
 | bootstrap.min.css | Minified css for production.     |
-| icon-192x192.png | Application icon                  |
+| favicon.ico      | Website icon.
+| icon-192x192.png | Application icon.                  |
 | index.html       | Single page.                      |
 | manifest.json    | Tells the browser about the application and how it should behave.|
 | robots.txt       | Configures crawling and indexing. |
 
-The simple static file server in the `server.js`file serves all of the files in
+The simple static file server in the `server.js` file serves all of the files in
 the `/public` directory, including `index.html`, `app.js`, `bootstrap.min.css`
 and `app.css`. The main file of the application is in the `app.js`. It contains
 the majority of the application logic.
@@ -174,7 +175,7 @@ and open your browser 'http://localhost:5000'.  From the root of your new applic
 
 2. Choose **Allow**.
 
-3. Open your browser to `http://localhost:8080`.
+3. Open your browser to `http://localhost:5000`.
 
    You should see a simple application:
 
