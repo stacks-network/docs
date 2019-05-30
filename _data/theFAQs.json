@@ -548,7 +548,7 @@
       { 
       "category":"tokens", 
       "question": "I have a voucher. How do I redeem it for Stacks tokens?",
-      "answer": "<p>Vouchers cannot be used to purchase Stacks tokens until the SEC qualifies the offering statement. Although the planned offering of Stacks tokens is not yet qualified by the SEC, you must register your voucher now so we can allocate the proper number of tokens to voucher holders.</p><p>If you are a voucher holder, you should have received an email with steps for completing the registration process, which must be complete by 11:59 PM Eastern Time on May 25, 2019. <strong>If you do not complete the registration process by the deadline, you may be unable to redeem your voucher.</strong> If you have any questions, please contact <a href='mailto:support@stackstoken.com'>support@stackstoken.com.</a></p>"
+      "answer": "<p>Vouchers cannot be used to purchase Stacks tokens until the SEC qualifies the offering statement. Although the planned offering of Stacks tokens is not yet qualified by the SEC, voucher holders were required to register their voucher and indicate their interest by May 28, 2019.</p><p>Voucher holders who missed the deadline will only be allowed to redeem their voucher in Blockstack's discretion on a first-come, first-serve basis and only if there are sufficient tokens remaining in the voucher program. You may still purchase Stacks tokens at a price of $0.30 per token available to all qualified purchasers.</p><p>If you have any questions, please contact <a href='mailto:support@stackstoken.com'>support@stackstoken.com.</a></p>"
       },
    { 
       "category":"tokens", 
@@ -560,16 +560,10 @@
          "question": "Can I transfer or sell my Stacks voucher?",
          "answer": "<p>Stacks vouchers are non-transferrable and may not be bought, sold or gifted. Only the original person or entity that registered for, and whose name is printed on, the voucher may redeem it.</p>"
       }, 
-
-      {
-         "question": "Why do I need to register to redeem my voucher?",
-         "category": "tokens",
-         "answer": "<p>Although the planned offering of Stacks tokens is not yet qualified by the SEC, you must register your voucher now so we can allocate the proper number of tokens to voucher holders. Please complete the registration process by 11:59 PM Eastern Time on May 25, 2019. If you do not complete the registration process by the deadline, you may be unable to redeem your voucher.</p>"
-      },
       {
          "question": "I didn’t complete the voucher registration process. Can I still redeem my voucher?",
          "category": "tokens",
-         "answer": "<p>If you did not complete the voucher registration process by the deadline, you may be unable to redeem your voucher. You may still purchase Stacks tokens at a price of $0.30 per token available to all qualified purchasers.</p>"
+         "answer": "<p>Voucher holders who missed the deadline will only be allowed to redeem their voucher in Blockstack's discretion on a first-come, first-serve basis and only if there are sufficient tokens remaining in the voucher program. You may still purchase Stacks tokens at a price of $0.30 per token available to all qualified purchasers.</p><p>If you have any questions, please contact <a href='mailto:support@stackstoken.com'>support@stackstoken.com.</a></p>"
       },
       {
          "question": "I already filled out a voucher survey. Do I still need to complete the voucher registration process?",
