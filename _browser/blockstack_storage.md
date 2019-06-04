@@ -173,7 +173,7 @@ Modify your authentication request to include the `publish_data` scope.
 3. Change it to this:
 
     ```javascript
-    const appConfig = new AppConfig(scopes:['store_write', 'publish_data'])
+    const appConfig = new AppConfig(['store_write', 'publish_data'])
     ```
 
     By default, authentication requests include the `store_write` scope which
