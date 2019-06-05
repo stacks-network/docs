@@ -30,6 +30,7 @@ group :jekyll_plugins do
    gem 'jekyll-sitemap'
    gem 'jekyll-toc'
    gem 'jekyll-redirect-from'
+   gem 'jekyll-google-tag-manager'
 end
 
 group :development do
