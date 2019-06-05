@@ -77,6 +77,10 @@ google_analytics: UA-125894815-1
 # Google maps API key, get your key here: https://developers.google.com/maps/documentation/javascript/get-api-key
 google_maps_api_key:
 
+google:
+  tag_manager:
+    container_id: GTM-TPGGRT5
+
 # Number of posts displayed on blog page
 paginate: 10
 
