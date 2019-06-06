@@ -93,7 +93,7 @@ To add an app, do the following:
       </tr>
       <tr>
         <td><strong>Category</strong></td>
-        <td><strong>Sample Blockstack Apps</strong> &amp;mdash; make sure you choose this category.</td>
+        <td><strong>Sample Blockstack Apps</strong>; make sure you choose this category.</td>
       </tr>
       <tr>
         <td><strong>Blockchain</strong></td>
