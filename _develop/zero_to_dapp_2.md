@@ -273,7 +273,7 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
     `nodule_modules/blockstack/lib` subdirectory.
 
 
-## Start you Animal Kingdom DApp
+## Start your Animal Kingdom DApp
 
 1. Start the Animal Kingdom DApp running on your workstation by entering:
 
