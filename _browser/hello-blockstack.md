@@ -105,7 +105,7 @@ In this section, you build an initial React.js application called `hello-world-t
        __'.___.'__
      ´   `  |° ´ Y `
 
-    ? Are you ready to build a Blockstack app in React? (Y/n)
+    ? Are you ready to build a Blockstack app? (Y/n)
     ```
 
 4. Respond to the prompts to populate the initial app.
@@ -147,12 +147,13 @@ In the `public` folder you find these files:
 | app.css   | Contains application styles.             |
 | app.js    | Main application file.                   |
 | bootstrap.min.css | Minified css for production.     |
-| icon-192x192.png | Application icon                  |
+| favicon.ico      | Website icon.
+| icon-192x192.png | Application icon.                  |
 | index.html       | Single page.                      |
 | manifest.json    | Tells the browser about the application and how it should behave.|
 | robots.txt       | Configures crawling and indexing. |
 
-The simple static file server in the `server.js`file serves all of the files in
+The simple static file server in the `server.js` file serves all of the files in
 the `/public` directory, including `index.html`, `app.js`, `bootstrap.min.css`
 and `app.css`. The main file of the application is in the `app.js`. It contains
 the majority of the application logic.
@@ -174,7 +175,7 @@ and open your browser 'http://localhost:5000'.  From the root of your new applic
 
 2. Choose **Allow**.
 
-3. Open your browser to `http://localhost:8080`.
+3. Open your browser to `http://localhost:5000`.
 
    You should see a simple application:
 
@@ -211,23 +212,26 @@ All of the code in the file is wrapped in an event
 listener.
 
 ```js
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", event => {
 })
 ```
 
 This listener that waits until the DOM content is loaded. Then, it creates an auth request and redirects the user to sign in:
 
 ```js
-document.getElementById('signin-button').addEventListener('click', function() {
-  blockstack.redirectUserToSignIn()
+document.getElementById('signin-button').addEventListener('click', event => {
+  event.preventDefault()
+  userSession.redirectToSignIn()
 })
 ```
 
-You can find the `redirectUserToSignIn()` function is part of the [Blockstack Javascript documentation](https://blockstack.github.io/blockstack.js/). There is also a sign out button handler. This handler deletes the local user data and signs the user out:
+You can find the `redirectToSignIn()` function is part of the [Blockstack Javascript documentation](https://blockstack.github.io/blockstack.js/). There is also a sign out button handler. This handler deletes the local user data and signs the user out:
 
 ```js
-document.getElementById('signout-button').addEventListener('click', function() {
-  blockstack.signUserOut(window.location.origin)
+document.getElementById('signout-button').addEventListener('click', event => {
+  event.preventDefault()
+  userSession.signUserOut()
+  window.location = window.location.origin
 })
 ```
 
@@ -235,7 +239,7 @@ The handlers are followed by a `showProfile()` function for showing the user's p
 
 ```js
 function showProfile(profile) {
-  var person = new blockstack.Person(profile)
+  let person = new blockstack.Person(profile)
   document.getElementById('heading-name').innerHTML = person.name() ? person.name() : "Nameless Person"
   if(person.avatarUrl()) {
     document.getElementById('avatar-image').setAttribute('src', person.avatarUrl())
@@ -258,12 +262,14 @@ several states the user can be in:
 The application handles these situations as followed:
 
 ```js
-var userSession = new UserSession()
+const appConfig = new blockstack.AppConfig()
+const userSession = new blockstack.UserSession({ appConfig: appConfig })
+
 if (userSession.isUserSignedIn()) {
-  var profile = userSession.loadUserData().profile
-    showProfile(profile)
+  const { profile } = userSession.loadUserData()
+  showProfile(profile)
 } else if (userSession.isSignInPending()) {
-  userSession.handlePendingSignIn().then(function(userData) {
+  userSession.handlePendingSignIn().then(userData => {
     window.location = window.location.origin
   })
 }
