@@ -583,7 +583,7 @@
       { 
       "category":"tokens", 
       "question": "If I am not a U.S. person, can I buy Stacks tokens?",
-      "answer": "<p>We anticipate that people in certain foreign jurisdictions will be able to participate upon qualification, but we cannot currently share a list of countries, nor can we give you legal advice. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>, where you may also subscribe for updates by joining our mailing list.</p> <p>You should consult a local attorney in your country to determine whether your local country’s laws prohibit the sale of Stacks to you.</p>"
+      "answer": "<p>Unfortunately, residents in certain jurisdictions are unable to participate. We are unable to offer tokens to residents of Japan and Canada due to legal prohibitions in the those countries. Additionally, exclusions based on the sanctions program of the Office of Foreign Assets Control apply. We anticipate that purchasers in other foreign jurisdictions will be able to participate upon SEC qualification, but we cannot give you legal advice. You should consult a local attorney in your country to determine whether your country’s laws prohibit the sale of Stacks tokens to you.</p> <p>Please keep an eye out for updates at <a href='http://stackstoken.com'>stackstoken.com</a>, where you may also subscribe for updates by joining our mailing list.</p>"
       }, 
       { 
       "category":"tokens", 
