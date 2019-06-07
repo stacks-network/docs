@@ -129,29 +129,29 @@ Depending on your environment you may have some problems with the `npm` packages
 
 The initial application you create is a generic Javascript application you run
 with a local express node. Before you continue, take a moment to examine the
-structure of this generic application structure:
+structure of this generic application structure. In the `/` (root) of the generated sample you have the following files:
 
 | File             | Description                       |
 |------------------|-----------------------------------|
-| .editorconfig    | Sets universal values for editor. |
-| .gitignore       | Git configuration file.           |
-| firebase.json    | Configuration for mobile application.|
-| package.json     | Specifies required packages.       |
-| requires.js      | A Javascript module loader.        |
-| server.js        | Simple static server configuration.|
+| `.editorconfig`    | Sets universal values for editor. |
+| `.gitignore`       | Git configuration file.           |
+| `firebase.json`    | Configuration for mobile application.|
+| `package.json`     | Specifies required packages.       |
+| `requires.js`      | A Javascript module loader.        |
+| `server.js`        | Simple static server configuration.|
 
 In the `public` folder you find these files:
 
 | File             | Description                       |
 |------------------|-----------------------------------|
-| app.css   | Contains application styles.             |
-| app.js    | Main application file.                   |
-| bootstrap.min.css | Minified css for production.     |
-| favicon.ico      | Website icon.
-| icon-192x192.png | Application icon.                  |
-| index.html       | Single page.                      |
-| manifest.json    | Tells the browser about the application and how it should behave.|
-| robots.txt       | Configures crawling and indexing. |
+| `app.css`   | Contains application styles.             |
+| `app.js`    | Main application file.                   |
+| `bootstrap.min.css` | Minified css for production.     |
+| `favicon.ico`      | Website icon.
+| `icon-192x192.png` | Application icon.                  |
+| `index.html`       | Single page.                      |
+| `manifest.json`    | Tells the browser about the application and how it should behave.|
+| `robots.txt`       | Configures crawling and indexing. |
 
 The simple static file server in the `server.js` file serves all of the files in
 the `/public` directory, including `index.html`, `app.js`, `bootstrap.min.css`
@@ -208,45 +208,49 @@ blockstack` command. The generated code contains simple authentication methods
 that allow a user to log into the browser. The main application code is located
 in the `public/app.js` file. Open this file now.
 
-All of the code in the file is wrapped in an event
-listener.
+All of the code in the file is wrapped in an event listener.
 
 ```js
 document.addEventListener("DOMContentLoaded", event => {
-})
+  const appConfig = new blockstack.AppConfig()
+  const userSession = new blockstack.UserSession({ appConfig: appConfig })
+
+  ...
 ```
+
+The `appConfig` contains configuration data for the app while the  `userSession` objects represent the instance of a user on this app. On browser platforms, creating an `AppConfig` instance without any arguments will use `window.location.origin` as the app domain. On non-browser platforms, you need to specify an app domain as the first argument. You can refer to the [blockstack.js Library Reference](https://docs.blockstack.org/common/javascript_ref.html) for information about available functions.
 
 This listener that waits until the DOM content is loaded. Then, it creates an auth request and redirects the user to sign in:
 
 ```js
 document.getElementById('signin-button').addEventListener('click', event => {
-  event.preventDefault()
-  userSession.redirectToSignIn()
-})
+    event.preventDefault()
+    userSession.redirectToSignIn()
+  })
 ```
 
-You can find the `redirectToSignIn()` function is part of the [Blockstack Javascript documentation](https://blockstack.github.io/blockstack.js/). There is also a sign out button handler. This handler deletes the local user data and signs the user out:
+There is also a sign out button handler. This handler deletes the local user data and signs the user out:
 
 ```js
-document.getElementById('signout-button').addEventListener('click', event => {
-  event.preventDefault()
-  userSession.signUserOut()
-  window.location = window.location.origin
-})
+  document.getElementById('signout-button').addEventListener('click', event => {
+    event.preventDefault()
+    userSession.signUserOut()
+    window.location = window.location.origin
+  })
 ```
 
 The handlers are followed by a `showProfile()` function for showing the user's profile:
 
 ```js
-function showProfile(profile) {
-  let person = new blockstack.Person(profile)
-  document.getElementById('heading-name').innerHTML = person.name() ? person.name() : "Nameless Person"
-  if(person.avatarUrl()) {
-    document.getElementById('avatar-image').setAttribute('src', person.avatarUrl())
+  function showProfile (profile) {
+    let person = new blockstack.Person(profile)
+    document.getElementById('heading-name').innerHTML = person.name() ? person.name() : "Nameless Person"
+    if(person.avatarUrl()) {
+      document.getElementById('avatar-image').setAttribute('src', person.avatarUrl())
+    }
+    document.getElementById('section-1').style.display = 'none'
+    document.getElementById('section-2').style.display = 'block'
   }
-  document.getElementById('section-1').style.display = 'none'
-  document.getElementById('section-2').style.display = 'block'
-}
 ```
 
 Each `getElementById()` function refers to elements in the `index.html` file.
@@ -262,17 +266,14 @@ several states the user can be in:
 The application handles these situations as followed:
 
 ```js
-const appConfig = new blockstack.AppConfig()
-const userSession = new blockstack.UserSession({ appConfig: appConfig })
-
-if (userSession.isUserSignedIn()) {
-  const { profile } = userSession.loadUserData()
-  showProfile(profile)
-} else if (userSession.isSignInPending()) {
-  userSession.handlePendingSignIn().then(userData => {
-    window.location = window.location.origin
-  })
-}
+  if (userSession.isUserSignedIn()) {
+    const { profile } = userSession.loadUserData()
+    showProfile(profile)
+  } else if (userSession.isSignInPending()) {
+    userSession.handlePendingSignIn().then(userData => {
+      window.location = window.location.origin
+    })
+  }
 ```
 
 When the user is signed in, Blockstack loads the user data from local storage
