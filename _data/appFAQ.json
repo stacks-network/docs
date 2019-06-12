@@ -194,6 +194,10 @@
         developers. </p>"
       },
       {
+        "question":"How do I propose and follow changes to App Mining?",
+        "answer":"<p>The App Mining <a href='https://github.com/blockstack/app-mining' target='_blank'>GitHub repo</a> is the best place to propose changes to App Mining. </p>"
+     },
+      {
         "question":"Disclaimer",
         "answer":"<p><i>This FAQ contains forward-looking statements, including statements
         regarding Blockstack PBC’s plans for its App Mining program. Forward-looking
