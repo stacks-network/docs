@@ -353,6 +353,11 @@
       },
       {
          "category":"appminers",
+         "question":"How do I propose and follow changes to App Mining?",
+         "answer":"<p>The App Mining <a href='https://github.com/blockstack/app-mining' target='_blank'>GitHub repo</a> is the best place to propose changes to App Mining. </p>"
+      },
+      {
+         "category":"appminers",
          "question":"App Mining Disclaimer",
          "answer":"<p><i>The App Mining FAQs contain forward-looking statements, including statements regarding Blockstack PBC’s plans for its App Mining program. Forward-looking statements are subject to risks and uncertainties that could cause actual results to differ materially, and reported results should not be considered as an indication of future performance. Potential risks and uncertainties that could change our actual results include, but are not limited to, risks associated with: the failure of App Mining Program to successfully incentivize the development of applications for the Blockstack network; risks associated with attacks designed to influence the App Reviewers or game their methodologies; technical difficulties in the transition from a centralized to a decentralized administration of the program. These forward-looking statements speak only as of the date hereof. Blockstack PBC disclaims any obligation to update these forward-looking statements. </i></p> <p><i>Any decisions that may be made through the App Mining Program regarding rewards provided to app developers are not recommendations as to the quality of any investments that individuals may make in a company that receives rewards. If you are considering an investment in any of these companies, you should make your own decision regarding that investment and not rely in any way on the results of the App Mining program. </i></p>"
       },
