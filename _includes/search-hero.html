@@ -3,7 +3,22 @@
    var ss360Config = {
       /* Your site id */
       siteId: 'blockstack',
+      showErrors: true,
+      accessibility: {
+        isMainContent: true
+      },
       /* A CSS selector that points to your search  box */
+      layout: {
+        navigation: {
+            position: "top"
+        },
+        mobile: {
+            showUrl: true
+        },
+        desktop: {
+            showUrl: true
+        }
+      },
       searchBox: {
         selector: '#searchBox'
       },
