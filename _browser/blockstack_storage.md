@@ -132,13 +132,13 @@ In this section, you build an initial React.js application called Publik.
     npm start
     ```
 
-    The system prompts you to accept incoming connections.
+    The system may prompt you to accept incoming connections.
 
     ![Network Connection](./images/network-connections.gif)
 
-6. Choose **Allow**.
+6. If it does, choose **Allow**.
 
-7. Open your browser to `http://localhost:8080`.
+7. Your browswer –– Chrome by default –– will open to `http://127.0.0.1:3000/`.
 
    You should see a simple React app.
 
@@ -162,7 +162,7 @@ stored on Gaia are made visible to others via the `apps` property in the user's
 
 Modify your authentication request to include the `publish_data` scope.
 
-1. Open `src/components/App.jsx` file.
+1. Open `src/components/App.js` file.
 
 2. Locate the `AppConfig` declaration near the beginning of the file.
 
@@ -181,7 +181,7 @@ Modify your authentication request to include the `publish_data` scope.
     the `publish_data` scope allows your app to share data between users.
 
 4. Save your changes.
-5. Go back to your app at `http://localhost:8080/`.
+5. Go back to your app at `http://127.0.0.1:3000/`.
 6. Log out and sign in again.
 
     The authentication request now prompts the user for permission to **Publish
@@ -248,7 +248,7 @@ or remove a grocery list; updating a list has no impact.
 In this step, you add three `blockstack.js` methods that support posting of "statuses". 
 These are the `UserSession.putFile`, `UserSession.getFile`, and `lookupProfile` methods.
 
-1. Open the `src/components/Profile.jsx` file.
+1. Open the `src/components/Profile.js` file.
 
 2. Replace the initial state in the `constructor()` method so that it holds the key properties required by the app.
 
@@ -278,7 +278,8 @@ These are the `UserSession.putFile`, `UserSession.getFile`, and `lookupProfile` 
 
 
 3. Locate the `render()` method.
-4. Modify the `render()` method to add a text input and submit button to the application.
+4. Modify the `render()` method to add a text input and submit button to the 
+   by replacing it with the code below:
 
     The following code renders the `person.name` and `person.avatarURL`
     properties from the profile on the display:
@@ -402,7 +403,7 @@ These are the `UserSession.putFile`, `UserSession.getFile`, and `lookupProfile` 
     }
     ```
 
-9. Save the `Profile.jsx` file.
+9. Save the `Profile.js` file.
 
    After the application compiles successfully, your application should appears as follows:
 
@@ -415,11 +416,11 @@ These are the `UserSession.putFile`, `UserSession.getFile`, and `lookupProfile` 
 
 ## Fetch and display statuses
 
-Update `Profile.jsx` again.
+Update `Profile.js` again.
 
 1. Go back to the `render()` method.
 2. Locate the `<div className="new-status">` containing the text input and **Submit** button.
-3. Right after the matching closing `</div>` element in this section, add this block.
+3. Right before the matching closing `</div>` element in this section, add this block.
 
     ```javascript
     <div className="col-md-12 statuses">
@@ -530,7 +531,7 @@ that in the next section.
 
 ## Lookup user profiles
 
-Let's now modify the `Profile.jsx` file to display profiles of other users. You'll
+Let's now modify the `Profile.js` file to display profiles of other users. You'll
 be using the `lookupProfile()` method that you added to the `import` statement
 earlier. `lookupProfile()` takes a single parameter that is the Blockstack ID of
 the profile and returns a profile object.
@@ -538,46 +539,22 @@ the profile and returns a profile object.
 ### Add a new route
 
 Make some changes to the routing structure of your app so that users can view
-other users' profiles by visiting `http://localhost:8080/other_user.id`
+other users' profiles by visiting `http://127.0.0.1:3000/other_user.id`
 
 
-1. Make sure you are in the root of your `publik` project.
-2. Install `react-router`:
-
-    ```bash
-    npm install --save react-router-dom
-    ```
-
-3. Edit `src/index.js` file.
-4. Add an `import` to the file at the top:
-
-    ```javascript
-    import { BrowserRouter } from 'react-router-dom'
-    ```
-
-5. Change the `ReactDOM.render()` method in `src/index.js` to:
-
-    ```javascript
-    ReactDOM.render((
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    ), document.getElementById('root'));
-    ```
-6. Save and close the `src/index.js` file.
-7. Edit the  `src/components/App.jsx` file.
-8. Add the new route by importing the `Switch` and `Route` components from `react-router-dom`:
+1. Edit the  `src/components/App.js` file.
+2. Add the new route by importing the `Switch` and `Route` components from `react-router-dom`:
 
     ```javascript
     import { Switch, Route } from 'react-router-dom'
     ```
-9. Locate this line below in the `render()` method:
+3. Locate this line below in the `render()` method:
 
     ```javascript
     : <Profile userSession={userSession} handleSignOut={ this.handleSignOut } />
     ```
 
-10. Replace it with the following:
+4. Replace it with the following:
 
     ```javascript
       :
@@ -598,10 +575,10 @@ other users' profiles by visiting `http://localhost:8080/other_user.id`
 
     This sets up a route and captures the route path in the URL as the profile lookup username.
 
-11. Save and close the the `src/components/App.jsx` file.
+5. Save and close the the `src/components/App.js` file.
 
 
-### Add a rule to process URL paths with . (dot)
+### Add in lookupProfile
 
 You also need to add a rule to your app's webpack config so that you can properly
 process URL paths that contain the `.` (dot) character for example,
@@ -610,28 +587,9 @@ process URL paths that contain the `.` (dot) character for example,
 **NOTE**: In a production app, you must ensure the web server is configured to handle this.
 
 
-1. Open `webpack.config.js` in the root project directory and locate the following line:
+1. Open the `src/components/Profile.js` file.
 
-    ```javascript
-    historyApiFallback: true,
-    ```
-
-2. Replace it with this:
-
-    ```javascript
-    historyApiFallback: {
-      disableDotRule: true
-    },
-    ```
-
-    You will need to run `npm start` again for this change to take effect. Don't
-    worry, there is a later step for that to remind you.
-
-3. Save and close the `webpack.config.js` file.
-
-4. Open the `src/components/Profile.jsx` file.
-
-5. Expand the `import from blockstack` statement to include the `lookupProfile` method.
+2. Expand the `import from blockstack` statement to include the `lookupProfile` method.
     
     Add `lookupProfile` after `Person`.
 
@@ -644,7 +602,7 @@ process URL paths that contain the `.` (dot) character for example,
     } from 'blockstack';
     ```
 
-6. Add a single method to the `Profile` class that determines if the app is viewing the local user's profile or another user's profile.
+3. Add a single method to the `Profile` class that determines if the app is viewing the local user's profile or another user's profile.
 
     ```javascript
     isLocal() {
@@ -654,7 +612,7 @@ process URL paths that contain the `.` (dot) character for example,
 
     You use `isLocal()` to check if the user is viewing the local user profile or another user's profile. If it's the local user profile, the app runs the `getFile()` function you added in an earlier step. Otherwise, the app looks up the profile belonging to the `username` using the `lookupProfile()` method.
 
-7. Modify the `fetchData()` method like so:
+4. Modify the `fetchData()` method like so:
 
     ```javascript
     fetchData() {
@@ -699,7 +657,7 @@ process URL paths that contain the `.` (dot) character for example,
      documentation](http://blockstack.github.io/blockstack.js/#getfile) for
      details.
 
-8. Add the following block to `fetchData()` right after the call to `lookupProfile(username)... catch((error)=>{..}` block:
+5. Add the following block to `fetchData()` right after the call to `lookupProfile(username)... catch((error)=>{..}` block:
 
     ```javascript
     const options = { username: username, decrypt: false }
@@ -723,7 +681,7 @@ process URL paths that contain the `.` (dot) character for example,
 
     Finally, you must conditionally render the logout button, status input textbox, and submit button so they don't show up when viewing another user's profile.
 
-9. Replace the `render()` method with the following:
+6. Replace the `render()` method with the following:
 
     ```javascript
     render() {
@@ -804,7 +762,7 @@ process URL paths that contain the `.` (dot) character for example,
     npm start
     ```
 
-3. Point your browser to `http://localhost:8080/your_username.id.blockstack` to see the final application. 
+3. Point your browser to `http://127.0.01:3000/your_username.id.blockstack` to see the final application. 
 
 ## Wrapping up
 
