@@ -1,6 +1,6 @@
 Use the following table to answer questions about keys/phrases/values you can share with others (`SHAREABLE`) and ones you should _never_ share but instead keep in a secure place (`PROTECT`).
 
-<table class="uk-table-small uk-table-striped uk-text-small">
+<table class="uk-table-small uk-table-striped uk-overflow-auto">
    <tr valign="top">
       <th class="uk-width-large">Phrase/Key/Value</th>
       <th>Security</th>
