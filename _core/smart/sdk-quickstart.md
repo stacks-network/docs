@@ -84,7 +84,7 @@ Your project should contain three directories:
 The `contracts` directory contains a single file in `sample/hello-world.clar` file.
 
 ```cl
-(define (hello-world)
+(define (say-hi)
    "hello world")
 
 (define (echo-number (val int))
@@ -117,8 +117,8 @@ describe("hello world contract test suite", () => {
       await helloWorldClient.deployContract();
     });
 
-    it("should print hello world message", async () => {
-      const query = helloWorldClient.createQuery({ method: { name: "hello-world", args: [] } });
+    it("should return 'hello world'", async () => {
+      const query = helloWorldClient.createQuery({ method: { name: "say-hi", args: [] } });
       const receipt = await helloWorldClient.submitQuery(query);
       const result = Result.unwrap(receipt);
       const parsedResult = Buffer.from(result.replace("0x", ""), "hex").toString();
@@ -227,11 +227,11 @@ Use the `+` and `-` function to create a `decrement-number` user-defined method.
 
 Finally, try adding a `counter` variable and be sure to store it. Increment `counter` in your code` and add a `get-counter` funtion to return the result. Here is a hint, you can add a `var` to a contract by adding the following line (before the function): 
 
-    ```cl
-    ;; Storage
+```cl
+;; Storage
 
-    (define-data-var internal-value int 0)
-    ``
+(define-data-var internal-value int 0)
+```
 
 <div class="uk-inline">
 <button class="uk-button uk-button-primary" enter="button">ANSWER</button>
