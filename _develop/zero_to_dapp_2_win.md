@@ -3,7 +3,7 @@ layout: learn
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 2 Learn about the Blockstack platform (Windows)
+# 2 - Learn about the platform (Windows)
 {:.no_toc}
 
 **Zero-to-DApp  2 of 4 for Windows (or [MacOS/Linux](zero_to_dapp_2.html))**
@@ -134,13 +134,13 @@ components. You'll use the `npm` command to install these packaged components.
 
    Installing the NPM tool can take several minutes depending on your connection speed.
 
-6. Open a new Powershell window being sure to **Run as Administrator**.
+7. Open a new Powershell window being sure to **Run as Administrator**.
 
-7. Check the node.js version you just installed.
+8. Check the node.js version you just installed.
 
    <img src="images/win-npm-version.png" alt="">
 
-8. From the command prompt, install them
+9. From the command prompt, install them
 
     ```bash
     PS C:\windows\system32> npm install --global --production windows-build-tools

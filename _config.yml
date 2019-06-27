@@ -102,8 +102,8 @@ kramdown:
 toc:
   min_level: 2 # default: 1
   max_level: 3 # default: 6
-  list_class: "uk-nav uk-nav-default"
-  sublist_class: "uk-nav-sub doc-nav"
+#  list_class: "uk-nav uk-nav-default"
+#  sublist_class: "uk-nav-sub doc-nav"
 
 plugins:
   - jekyll-feed

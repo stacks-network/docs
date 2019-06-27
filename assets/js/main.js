@@ -5338,7 +5338,7 @@
             selTarget: "",
             widthElement: false,
             showOnUp: false,
-            targetOffset: true
+            targetOffset: false
         },
         computed: {
             selTarget: function(ref, $el) {
