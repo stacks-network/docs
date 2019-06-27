@@ -82,7 +82,7 @@ The easiest program to run in any language is a hello world program. In Clarity,
    (print "hello world"))
 ```
 
-This program defines a single `hello-world` user function. The `begin` is a native Clarity function that evaluates the expressions input to it and returns the value of the last expression.  Here there is a single `print` expression. Both the `begin` and the `print` are enclosed in `()` parentheses.
+This program defines a single `hello-world` expression that is excuted when the contract launches. The `begin` is a native Clarity function that evaluates the expressions input to it and returns the value of the last expression.  Here there is a single `print` expression. Both the `begin` and the `print` are enclosed in `()` parentheses.
 
 For the pre-release, the Blockstack test environment includes the `clarity-cli` command for interacting with the contract and SQLite to support the data space. You create a SQLLite database to hold data related to Clarity contracts. This database simulates the blockchain by recording the contract activity. 
 
