@@ -3,7 +3,7 @@ layout: learn
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 4 List and fund thru App.co
+# 4 - List and fund thru App.co
 {:.no_toc}
 
  **Zero to DAPP 4 of 4**

@@ -3,7 +3,7 @@ layout: learn
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 1 About DApps and App Mining
+# 1 - About DApps and App Mining
 {:.no_toc}
 
 **Zero-to-DApp 1 of 4**

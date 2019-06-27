@@ -5,32 +5,32 @@ layout: default
 <div class="uk-section">
     <div class="uk-container">
         <div class="uk-grid-large" data-uk-grid>
-
             <div class="sidebar-fixed-width uk-visible@m">
                 <div class="sidebar-docs uk-position-fixed">
-                  <!--  -->
+                    <ul class="nav">
                     {% for section in site.data.navigation_learn %}
-                    {% if section.title %}
-                         <h5>{{ section.title }}</h5>
-                    {% endif %}
-                    <ul class="uk-nav uk-nav-default doc-nav">
-                    {% for doc in section.docs %}
-                      {% assign doc_url = doc | prepend:"/" | append:".html" %}
-                      <!-- {% assign p =  site.docs | where:"url", doc_url | first %} -->
-                      {% for col in site.collections %}
-                        {% for item in col.docs %}
-                            {% if item.url == doc_url %}
-                                 {% assign doc_title = item.title %}
-                             {% else %}
-                               {% comment %}Do nothing{% endcomment %}
-                             {% endif %}
-                        {% endfor %}
-                      {% endfor %}
-                          <li class="{% if doc_url == page.url %}uk-active{% endif %}"><a href="{{ doc_url }}">{{ doc_title }}</a></li>
+                        {% if section.title %}
+                            <li ><a href='#'>{{ section.title }}</a>
+                        {% endif %}
+                            <ul>
+                            {% for doc in section.docs %}
+                                {% assign doc_url = doc | prepend:"/" | append:".html" %}
+                                <!-- {% assign p =  site.docs | where:"url", doc_url | first %} -->
+                                {% for col in site.collections %}
+                                    {% for item in col.docs %}
+                                        {% if item.url == doc_url %}
+                                            {% assign doc_title = item.title %}
+                                        {% else %}
+                                        {% comment %}Do nothing{% endcomment %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                                <li class="{% if doc_url == page.url %}active{% endif %}"><a href="{{ doc_url }}">{{ doc_title }}</a></li>
+                            {% endfor %}
+                            </ul>
+                            </li> 
                     {% endfor %}
                     </ul>
-                    {% endfor %}
-                  <!--  -->
                 </div>
             </div>
 

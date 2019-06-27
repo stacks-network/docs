@@ -15,8 +15,8 @@
   icon: code
   doc: develop/zero_to_dapp_1
 
-- title: Use the Naming Service
-  desc: Work with namespaces, zone files, and other advanced BNS topics.
+- title: Blockstack Core 
+  desc: Work with our Core node, smart contracts, namespaces, zone files, and other advanced topics.
   icon: cog
   doc: core/naming/introduction
 
