@@ -14,42 +14,20 @@ This section explains App Mining, a program for developers. For Blockstack, App 
 
 {% include intro-appmining.md %}
 
-## How apps are reviewed
+## How apps are reviewed and ranked
 
-Blockstack worked with a team of Ph.D. game theorist and economists from
-Princeton and NYU to put together a [ranking
-algorithm](https://blog.blockstack.org/app-mining-game-theory-algorithm-design/)
-which is fair and resistant to abuse. Blockstack uses the third-party
-reviewers: Product Hunt, Awario, TryMyUI, and Democracy.. These reviewers are
-independent, and generally rely on their own proprietary data and insights to
-generate rankings.
+Blockstack uses the third-party reviewers: 
 
-To learn in detail about the reviewers' methods, see the page on [who reviews apps](app-reviewers.html).
-
-## Reaching the final scores
-
-Once the reviewer-partners generate reviews, each app has 5 raw scores between 0
-and 100 for the following:
-
-* Product Hunt team score
-* TryMyUI ALF score
+* Product Hunt
 * Awario
-* digital rights review
+* TryMyUI
+* Internet Labs. 
 
-First Blockstack's determine a ‘z-score’ for each ranking category community,
-team, likability, and traction. This is a statistical technique to account for
-different distributions of scores within categories. Second, Blockstack computes
-the average and standard deviation of each category. Finally, for each app’s
-score in that category, Blockstack determines how many standard deviations it is
-away from the average score in that category.
+These reviewers are independent, and generally rely on their own proprietary data and insights to generate rankings.
 
-For example, let’s say a category has an average score of 60, with a standard
-deviation of 15. A score of 90 would get a z-score of 2, because it’s 2 standard
-deviations higher than the average.
+{% include mining-ranking.md %}
 
-Once each app has a calculated a z-score in every category, the average of those
-4 z-scores results in a final number. A higher number is better than a lower
-one, and so apps are ranked from highest to lowest.
+Read more about [how reviewers score your app](app-reviewers.html) and [how your app ranking is calculated](app-rankings.html).
 
 
 ## Determining how much an app is paid
