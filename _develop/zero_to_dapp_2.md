@@ -211,7 +211,7 @@ In this section, you copy the code for Animal Kingdom to your workstation.
    </tr>
    <tr>
    <td><code>cors</code></td>
-   <td>Files to support cross-orgin request configruation.</td>
+   <td>Files to support cross-origin request configuration.</td>
    </tr>
    <tr>
    <td><code>src</code></td>
