@@ -59,7 +59,7 @@ social:
 # Twitter share button
 twitter:
   username: blockstack
-  image: /assets/img/touch-icon.png
+  image: /assets/img/twitter.png
   card: summary
 
 
