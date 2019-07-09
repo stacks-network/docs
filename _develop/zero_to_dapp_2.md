@@ -203,19 +203,15 @@ In this section, you copy the code for Animal Kingdom to your workstation.
    </tr>
    <tr>
    <td><code>package.json</code></td>
-   <td>An NPM project file.</td>
-   </tr>
-   <tr>
-   <td><code>config</code></td>
-   <td>Environment configuration files written in Javascript.</td>
+   <td>An NPM project file and a corresponding <code>.lock</code> file.</td>
    </tr>
    <tr>
    <td><code>public</code></td>
    <td>Files that are copied into the root of the site you are building.</td>
    </tr>
    <tr>
-   <td><code>scripts</code></td>
-   <td>NPM scripts used to do common tasks in the project.</td>
+   <td><code>cors</code></td>
+   <td>Files to support cross-orgin request configruation.</td>
    </tr>
    <tr>
    <td><code>src</code></td>
