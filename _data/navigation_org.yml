@@ -7,7 +7,6 @@
 - title: Our Whitepapers
   docs:
   - org/whitepaper-blockchain
-  - org/whitepaper-tokensale
 - title: Manage Stacks
   docs:
   - org/wallet-intro
