@@ -8,7 +8,6 @@
   docs:
   - org/whitepaper-blockchain
   - org/whitepaper-tokensale
-  - org/whitepaper-token
 - title: Manage Stacks
   docs:
   - org/wallet-intro
