@@ -1,5 +1,5 @@
 {
-   "last_updated": "Wed Jul 10 PDT 2019",
+   "last_updated": "Wed Jul 11 PDT 2019",
    "faqs": [
       {
          "category": "general",
@@ -589,8 +589,8 @@
       {
          "category": "tokens",
          "question": "What is the order of priority if the offering is oversubscribed?",
-         "answer": "<p><u>General offering</u>: Priority in the general sale is first-come, first-serve, based on receipt of payment. We have sole discretion to reject any purchase request for any reason. We encourage you to plan accordingly, especially if you use a slower form of payment, such as ACH.</p> <p><u>Voucher program</u>: Voucher holders who pre-registered before the May 28, 2019 voucher pre-registration deadline have first priority for up to $3,000 worth of Stacks tokens at $0.12 per token. Voucher holders who missed the deadline are placed on a waitlist and given priority on a first-come, first-serve basis if there is any remaining availability.</p>"
-      },
+         "answer": "<p><u>General offering</u>: Priority in the general sale is first-come, first-serve, based on receipt of payment. We have sole discretion to reject any purchase request for any reason. We encourage you to plan accordingly, especially if you use a slower form of payment, such as ACH.</p><p><u>Voucher program</u>: Voucher holders who pre-registered before the May 28, 2019 voucher pre-registration deadline have priority for up the amount of Stacks tokens at the $0.12 per token price that they indicated during pre-registration. Any number of tokens requested above the pre-registration amount is not guaranteed and the purchase amount for those tokens may be refunded. Voucher holders may purchase additional tokens at the general offering price of $0.30 per token. Voucher holders who missed the deadline are placed on a waitlist and given priority on a first-come, first-serve basis if there is any remaining availability.</p>"
+         },
       {
          "category": "tokens",
          "question": "I didn’t complete the voucher registration process. Can I still redeem my voucher?",
@@ -649,12 +649,42 @@
       {
          "category": "tokens",
          "question": "How do I get help from a person?",
-         "answer": "<p>For questions or help regarding the Stacks token, you can contact us at <a href='mailto:support@stackstoken.com'>support@stackstoken.com.</a></p>"
+         "answer": "<p>For questions or help regarding the Stacks token, you can contact us at <a href='mailto:support@stackstoken.com'>support@stackstoken.com</a>.</p>"
       },
+         {
+         "category": "tokens",
+         "question": "How can I edit my stacks wallet address?",
+         "answer": "<p>Log into your account at <a href='http://sale.stackstoken.com/'>sale.stackstoken.com</a>. If you click on <strong>Stacks Address</strong> from the top menu, you should be able to edit your Stacks address.</p>"
+         },
+         {
+         "category": "tokens",
+         "question": "How can I change my currency?",
+         "answer": "<p>You can invest with US dollars, Bitcoin, or Ether. You will be asked to confirm the type of currency when you initiate your payment after the sale opens. You will not be able to change the currency once you have submitted payment.</p>",
+         },
+         {
+         "category": "tokens",
+         "question": "What is the current circulating supply of Stacks?",
+         "answer": "<p>Currently, 866,827,880 tokens of the 1.3B genesis block have been distributed. If all tokens offered in the Reg A and concurrent Reg S offerings are sold and allocated, the total will be 1,089,161,213. For more details, please refer to the public filing with the SEC at <a href='https://stackstoken.com/circular'>stackstoken.com/circular</a>.</p>"
+         },
+         {
+         "category": "tokens",
+         "question": "Are there any locks on previously sold Stacks tokens?",
+         "answer": "<p>Details on the lock-ups of employee token grants and other token sale lock-ups can be found in the <a href='http://stackstoken.com/circular'>offering circular</a>.</p>",
+         },
+         {
+         "category": "tokens",
+         "question": "Where will the Stacks token trade?",
+         "answer": "<p>There is currently no authorized exchange or alternative trading system (ATS) for buying and selling Stacks tokens, and we cannot comment on when an exchange or ATS might list Stacks tokens at this time. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>. If you see Stacks listed on an exchange, please let us know at <a href='mailto:legal@blockstack.com'>legal@blockstack.com</a>, as the listing may be illegal or a scam.</p>"
+         },
+         {
+         "category": "tokens",
+         "question": "Why were Stacks Tokens valued/sold at $0.00012 prior to the 2017 accredited sale at $0.12?",
+         "answer": "<p><u>Founders and early employees</u> of Blockstack PBC received tokens at $0.00012 per token in October 2017 based on an independent valuation from Foresight Valuation Group, LLC when the Stacks Token was still in its earliest stage of development and before the publication of the token white paper at the end of that month. This grant was subject to a three-year time lock commencing upon the introduction of the genesis block to the Blockstack network in November 2018, and the nominal price reflected the early, high-risk support of founders and early employees.</p><p><u>Holders of Blockstack&#39;s Series A convertible preferred stock</u> who had invested a total of $5.1 million as of late 2016 and funded Blockstack&#39;s early growth and development before the decision to create a token, or the drafting or publication of any white papers—were also provided an opportunity to purchase tokens at the $0.00012 per token price. This opportunity to participate at a nominal price was given in return for their early support and in proportion to their equity ownership, and it was based on their reasonable expectation as early investors that they would receive tokens if Blockstack ever decided to create a digital token. These tokens are subject to a three-year time lock, commencing upon the introduction of the genesis block to the Blockstack network in November 2018.</p>",
+         },
       {
          "category": "tokens",
          "question": "Important Disclaimer",
-         "answer":"<p><em>The Securities and Exchange Commission (SEC) has qualified the offering statement that we have filed with the SEC. The information in that offering statement is more complete than the information we are providing now, and could differ in important ways. You must read the documents filed with the SEC before investing. The offering is being made only by means of its offering statement. This document shall not constitute an offer to sell or the solicitation of an offer to buy, nor shall there be any sale of these securities in any state or jurisdiction in which such offer, solicitation or sale would be unlawful prior to registration or qualification under the securities laws of any such state or jurisdiction.</em></p> <p><em>An indication of interest involves no obligation or commitment of any kind. Any person interested in investing in any offering of Stacks Tokens should review our disclosures and the publicly filed offering statement and the <a href='https://stackstoken.com/circular'>final offering circular</a> that is part of that offering statement. Blockstack is not registered, licensed or supervised as a broker dealer or investment adviser by the SEC, the Financial Industry Regulatory Authority (FINRA) or any other financial regulatory authority or licensed to provide any financial advice or services.</em></p><h4><em>Forward-looking statements</em></h4><p><em>This communication contains forward-looking statements that are based on our beliefs and assumptions and on information currently available to us. In some cases, you can identify forward-looking statements by the following words: <q>will,</q> <q>expect,</q> <q>would,</q> <q>intend,</q> <q>believe,</q> or other comparable terminology. Forward-looking statements in this document include, but are not limited to, statements about our plans for developing the platform and future utility for the Stacks Token, our Reg A+ offering and launch of our network, and collaborations and partnerships. These statements involve risks, uncertainties, assumptions and other factors that may cause actual results or performance to be materially different. More information on the factors, risks and uncertainties that could cause or contribute to such differences is included in our filings with the Securities and Exchange Commission, including in the <q>Risk Factors</q> and <q>Management’s Discussion &amp; Analysis</q> sections of our offering statement on Form 1-A. We cannot assure you that the forward-looking statements will prove to be accurate. These forward-looking statements speak only as of the date hereof. We disclaim any obligation to update these forward-looking statements.</em></p>"
+         "answer": "<p><em>The Securities and Exchange Commission (SEC) has qualified the offering statement that we have filed with the SEC. The information in that offering statement is more complete than the information we are providing now, and could differ in important ways. You must read the documents filed with the SEC before investing. The offering is being made only by means of its offering statement. This document shall not constitute an offer to sell or the solicitation of an offer to buy, nor shall there be any sale of these securities in any state or jurisdiction in which such offer, solicitation or sale would be unlawful prior to registration or qualification under the securities laws of any such state or jurisdiction.</em></p> <p><em>An indication of interest involves no obligation or commitment of any kind. Any person interested in investing in any offering of Stacks Tokens should review our disclosures and the publicly filed offering statement and the <a href='https://stackstoken.com/circular'>final offering circular</a> that is part of that offering statement. Blockstack is not registered, licensed or supervised as a broker dealer or investment adviser by the SEC, the Financial Industry Regulatory Authority (FINRA) or any other financial regulatory authority or licensed to provide any financial advice or services.</em></p><h4><em>Forward-looking statements</em></h4><p><em>This communication contains forward-looking statements that are based on our beliefs and assumptions and on information currently available to us. In some cases, you can identify forward-looking statements by the following words: <q>will,</q> <q>expect,</q> <q>would,</q> <q>intend,</q> <q>believe,</q> or other comparable terminology. Forward-looking statements in this document include, but are not limited to, statements about our plans for developing the platform and future utility for the Stacks Token, our Reg A+ offering and launch of our network, and collaborations and partnerships. These statements involve risks, uncertainties, assumptions and other factors that may cause actual results or performance to be materially different. More information on the factors, risks and uncertainties that could cause or contribute to such differences is included in our filings with the Securities and Exchange Commission, including in the <q>Risk Factors</q> and <q>Management’s Discussion &amp; Analysis</q> sections of our offering statement on Form 1-A. We cannot assure you that the forward-looking statements will prove to be accurate. These forward-looking statements speak only as of the date hereof. We disclaim any obligation to update these forward-looking statements.</em></p>"
       }
    ]
 }
