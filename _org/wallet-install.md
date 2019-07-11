@@ -40,7 +40,7 @@ by Blockstack PBC." %}
 4. In the terminal window, type the following Command
 
     ```
-    shasum -a 512 macos-stacks-wallet.dmg
+    shasum -a 512 Stacks-Wallet-macOS-3.0.0.dmg
     ```
 
     ![](images/mac-shasum.png)
@@ -72,7 +72,7 @@ by Blockstack PBC." %}
 4. In the command prompt window, type the following at the command prompt.
 
     ```
-    certUtil -hashfile windows-stacks-wallet.exe SHA512
+    certUtil -hashfile Stacks-Wallet-win10-3.0.0.exe SHA512
     ```
 
     ![](images/windows-certutil.png)
