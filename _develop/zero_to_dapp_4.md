@@ -127,6 +127,9 @@ Your submission is evaluated internally to check if it passes the basic
 requirements. After it passes, we accept the app and contact you to <a href="{{ site.baseurl }}/develop/mining_enroll.html" target="\_blank">submit
 additional materials</a>.
 
+<h6><a class="uk-button uk-button-primary" href="https://app.co/mining/latest" target="_blank">See the list of the latest earners</a></h6>
+
+
 ## Congratulations
 {:.no_toc}
 
