@@ -1,5 +1,5 @@
 {
-   "last_updated": "Thu Jul 11 09:07:29 PDT 2019",
+   "last_updated": "Fri Jul 12 07:07:01 PDT 2019",
    "faqs": [
       {
          "category": "general",
@@ -618,9 +618,14 @@
       },
       {
          "category": "tokens",
-         "question": "What types of transfer or time locks apply to my Stacks tokens?",
-         "answer": "<p>2019 Regulation A offering: Stacks tokens sold pursuant to our Regulation A offering are subject to an approximately two-year time lock from the date of the hard fork that distributes the tokens. 1/24th of the amount of tokens purchased will be released from this time lock on the date of distribution of the tokens, and an additional 1/24th will be released approximately every month. These tokens will not be subject to a transfer lock.</p> <p>2019 Regulation S offering: Stacks tokens sold pursuant to our Regulation S offering to non-U.S. institutional investors are subject to a one-year transfer lock from the date of sale and an approximately two-year time lock from the date of the hard fork that distributes the tokens.</p> <p>2017 Accredited Investor Sale: Stacks tokens sold pursuant to our Regulation D offering to accredited investors in 2017 are subject to an approximately two-year time lock from the date of the genesis block, except for 50,000,000 of those tokens, which are subject to an approximately four-year time lock. The tokens were previously subject to a one-year transfer lock, which has expired.</p> <p>2017 Founder Sale &amp; Equity Investor Sale: Stacks tokens sold to founders and certain stockholders of Blockstack PBC in 2017 are subject to an approximately three-year time lock from the date of the genesis block.</p>"
-      },
+         "question": "What types of transfer or time locks are Stacks tokens subject to?",
+         "answer": "<p>Previous and future sales of Stacks tokens are subject to two potential types of locks on use and transfer: a <q>transfer lock</q> and a <q>time lock.</q> Transfer locks are implemented where the tokens sold are considered sales of “restricted securities” under the Securities Act of 1933. Tokens subject to transfer locks are non-transferable on the Blockstack network until a one-year holding period following their sale has lapsed. A token can be burned on the network while subject to a transfer lock (provided it is not subject to a time lock), but otherwise is non-transferable.</p> <p>Separately, tokens on the Blockstack network can be subject to a time lock, a general restriction that prevents a Stacks token from being used for any purpose on the Blockstack network, such that the Stacks token cannot be burned or transferred. Time locks operate such that Stacks tokens unlock in equal increments each time a pre-set number of blocks is processed on the blockchain.</p>"
+          },
+         {
+         "category": "tokens",
+         "question": "What types of transfer or time locks apply to the current and future sales of Stacks tokens?",
+         "answer": "<p><u>2019 Regulation A offering</u>: Stacks tokens sold pursuant to our Regulation A offering are subject to an approximately two-year time lock from the date of the hard fork that distributes the tokens. 1/24th of the amount of tokens purchased will be released from this time lock on the date of distribution of the tokens, and an additional 1/24th will be released approximately every month. These tokens will not be subject to a transfer lock.</p> <p><u>2019 Regulation S offering</u>: Stacks tokens sold pursuant to our Regulation S offering to non-U.S. institutional investors are subject to a one-year transfer lock from the date of sale and an approximately two-year time lock that unlocks on an approximately monthly basis from the date of the hard fork that distributes the tokens.</p> <p><u>2017 Accredited Investor Sale</u>: Stacks tokens sold pursuant to our Regulation D offering to accredited investors in 2017 are subject to an approximately two-year time lock that unlocks on an approximately monthly basis from the date of the genesis block, except for 50,000,000 of those tokens, which are subject to an approximately four-year time lock. The tokens were previously subject to a one-year transfer lock, which has expired.</p> <p><u>2017 Founder Sale &amp; Equity Investor Sale</u>: Stacks tokens sold to founders and certain stockholders of Blockstack PBC in 2017 are subject to an approximately three-year time lock that unlocks on an approximately monthly basis from the date of the genesis block.</p>"
+          },
       {
          "category": "tokens",
          "question": "How will mining affect the supply of Stacks tokens?",
@@ -652,10 +657,10 @@
          "answer": "<p>You can invest with US dollars, Bitcoin, or Ether. You will be asked to confirm the type of currency when you initiate your payment after the sale opens. You will not be able to change the currency once you have submitted payment.</p>",
          },
          {
-         "category": "tokens",
-         "question": "What is the current circulating supply of Stacks?",
-         "answer": "<p>Currently, 866,827,880 tokens of the 1.3B genesis block have been distributed. If all tokens offered in the Reg A and concurrent Reg S offerings are sold and allocated, the total will be 1,089,161,213. For more details, please refer to the public filing with the SEC at <a href='https://stackstoken.com/circular'>stackstoken.com/circular</a>.</p>"
-         },
+            "category": "tokens",
+            "question": "What is the current circulating supply of Stacks?",
+            "answer": "<p>Currently, 866,827,880 tokens of the 1.32B genesis block have been distributed. As of June 10, 2019 approximately 229,229,868 of those 866,827,880 distributed tokens have been released from their time locks.  The remainder continue to be subject to time locks that release approximately monthly over approximately two, three or four year periods.  If all tokens offered in the Reg A and concurrent Reg S offerings are sold, allocated and distributed, the total number of Stacks tokens distributed will be 1,089,161,213. For more details, please refer to the public filing with the SEC in our <a href='http://stackstoken.com/circular'>offering circular</a>.</p>"
+             },
          {
          "category": "tokens",
          "question": "Are there any locks on previously sold Stacks tokens?",
