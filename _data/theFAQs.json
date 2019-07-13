@@ -519,7 +519,7 @@
       {
          "category": "wallet",
         "question": "Can I use another software wallet with Stacks?",
-        "answer": "<p>Currently, you can only use the Blockstack Wallet software with Stacks. </p>"
+        "answer": "<p>Currently, the only software wallet that supports Stacks is the Blockstack Wallet software.</p>"
          },
         {
          "category": "wallet",
