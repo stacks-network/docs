@@ -518,6 +518,26 @@
       },
       {
          "category": "wallet",
+        "question": "Can I use another software wallet with Stacks?",
+        "answer": "<p>Currently, you can only use the Blockstack Wallet software with Stacks. </p>"
+         },
+        {
+         "category": "wallet",
+        "question": "Can I use the older, version 1 Blockstack Wallet?",
+        "answer": "<p>Version 1 of the Blockstack Wallet software was a read-only wallet. To view Stacks balances, send or receive Stacks you need to use the latest, version 3 wallet. You <em>can</em> use the seed phrase you created with the old wallet with the new version.</p>"
+         },
+        {
+         "category": "wallet",
+        "question": "Can I send Bitcoin to my Stacks wallet?",
+        "answer": "<p>No, you cannot send Bitcoin to a Stacks address. You can only add Bitcoin as fuel to the wallet. Please <a href='https://docs.blockstack.org/org/wallet-use.html' target='_blank'>follow the instructions for adding &quot;gas&quot;</a>.</p>"
+         },
+        {
+         "category": "wallet",
+        "question": "How do I check my STX balance",
+        "answer": "<p> Blockchain transactions take time. Once Stacks are sent to you, you see a <strong>PENDING</strong> transaction which means the transaction is still being recorded by the blockchain. Your balance will not change until the transaction is recorded. It may be minutes or hours before the transaction is recorded in the blockchain.</p><p>When the transaction is complete, you can see a receipt for the transaction in your Stacks Wallet. The <strong>PENDING</strong> marker goes away once the funds are recorded on the blockchain. Then, at this point, the <a href='https://docs.blockstack.org/org/wallet-use.html#view-balance-allocation-or-transaction-history' target='_blank'>balance in your Stacks Wallet software</a> should reflect the completed transaction.</p>"
+         },
+      {
+         "category": "wallet",
          "question": "How do I get help with my wallet from a person?",
          "answer": "<p>For questions or help regarding the Stacks token, you can contact us at <a href='mailto:hello@stackstoken.com'>hello@stackstoken.com</a>.</p>"
       },
