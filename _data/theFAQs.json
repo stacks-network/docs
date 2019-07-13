@@ -534,7 +534,7 @@
         {
          "category": "wallet",
         "question": "How do I check my STX balance",
-        "answer": "<p> Blockchain transactions take time. Once Stacks are sent to you, you see a <strong>PENDING</strong> transaction which means the transaction is still being recorded by the blockchain. Your balance will not change until the transaction is recorded. It may be minutes or hours before the transaction is recorded in the blockchain.</p><p>When the transaction is complete, you can see a receipt for the transaction in your Stacks Wallet. The <strong>PENDING</strong> marker goes away once the funds are recorded on the blockchain. Then, at this point the <a href='https://docs.blockstack.org/org/wallet-use.html#view-balance-allocation-or-transaction-history' target='_blank'>balance in your Stacks Wallet software</a> should reflect the completed transaction.</p>"
+        "answer": "<p> Blockchain transactions take time. Once Stacks are sent to you, you see a <strong>PENDING</strong> transaction which means the transaction is still being recorded by the blockchain. Your balance will not change until the transaction is recorded. It may be minutes or hours before the transaction is recorded in the blockchain.</p><p>When the transaction is complete, you can see a receipt for the transaction in your Stacks Wallet. The <strong>PENDING</strong> marker goes away once the funds are recorded on the blockchain. Then, at this point, the <a href='https://docs.blockstack.org/org/wallet-use.html#view-balance-allocation-or-transaction-history' target='_blank'>balance in your Stacks Wallet software</a> should reflect the completed transaction.</p>"
          },
       {
          "category": "wallet",
