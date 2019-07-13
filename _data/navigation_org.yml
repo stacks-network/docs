@@ -4,14 +4,13 @@
   - faqs/allFAQS
   - org/token
   - org/explore
-- title: Our Whitepapers
-  docs:
   - org/whitepaper-blockchain
 - title: Manage Stacks
   docs:
   - org/wallet-intro
   - org/wallet-install
   - org/wallet-use
+  - org/wallet-troubleshoot
   - org/tokenholders
 - title: Reference
   docs:
