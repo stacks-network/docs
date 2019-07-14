@@ -603,6 +603,11 @@
       },
       {
          "category": "tokens",
+         "question": "Why can’t residents in Texas, North Dakota, Nebraska and Arizona purchase in the offering?",
+         "answer": "<p>Blockstack has aimed to offer the Stacks Tokens as broadly as possible.  However, we have currently excluded from the cash offering certain states, including Texas, North Dakota, Arizona and Nebraska, that assert that issuers like Blockstack, who sell their own securities without employing a registered broker-dealer, need to register as dealers with the state in order to sell their own securities.  These states also maintain that their ability to require this registration is not preempted by the federal securities laws.   While we do not necessarily agree with these states’ positions on these matters, proceeding with the cash offering in these states without complying with their dealer-registration requirements might subject us to litigation risk, and we are not able to comply with these dealer-registration requirements at this time.   We are continuing to examine ways in which we may be able to comply with the dealer-registration requirements or otherwise offer Stacks Tokens in these states.  We will evaluate participation by developers in the App Mining program on a case-by-case basis to review if there is an applicable exemption under state law for each developer, but otherwise developers from these states will also be excluded from the App Mining program.</p>"
+      },
+      {
+         "category": "tokens",
          "question": "What if my payment does not clear before the offering ends?",
          "answer": "<p>Your purchase is not complete until your payment is received and we accept your subscription. Priority is first-come, first-serve, based on receipt of payment. If your payment is late, your subscription may be rejected and your payment returned. We encourage you to plan accordingly, especially if you use a slower form of payment, such as ACH.</p>"
       },
