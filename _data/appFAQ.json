@@ -1,223 +1,96 @@
 {
-   "faqs":[
+  "faqs": [
      {
-        "question":"What is App Mining?",
-        "answer":"<p>Traditionally the term mining in cryptocurrency refers to the process of
-       contributing compute resources to the network and earning a reward. In the
-       Blockstack Ecosystem, instead of just mining through computation, developers
-       mine by building apps and the Blockstack community funds them simply for being
-       pioneers in the emerging Blockchain software market. </p> <p>We believe app
-       mining represents a revolution in app funding, allowing small teams to bootstrap
-       without advertising or venture capital. Each month, qualifying apps compete for
-       funding. Qualified apps are evaluated and ranked by expert app reviewers. The
-       better your app, the higher payout you earn. </p> <p>The pilot run begins
-       December 1st 2018, with 34 Blockstack Apps enrolled. A previous alpha run in Oct
-       2018 included 17 Blockstack apps. App mining is a new mining model that we
-       expect will evolve and improve over time. We look forward to feedback from our
-       community regarding the App Mining process and program. </p>"
+        "question": "What is App Mining?",
+        "answer": "<p>Traditionally the term mining in cryptocurrency refers to the process of contributing compute resources to the network and earning a reward. In the Blockstack Ecosystem, instead of just mining through computation, developers mine by building apps and the Blockstack community funds them simply for being pioneers in the emerging Blockchain software market.</p> <p>We believe app mining represents a revolution in app funding, allowing small teams to bootstrap without advertising or venture capital. Each month, qualifying apps compete for funding. Qualified apps are evaluated and ranked by expert app reviewers. The better your app, the higher payout you earn.</p> <p>The pilot run began on December 1st 2018, with 34 Blockstack Apps enrolled. A previous alpha run in Oct 2018 included 17 Blockstack apps. App mining is a new mining model that we expect will evolve and improve over time. We look forward to feedback from our community regarding the App Mining process and program.</p>"
      },
      {
-      "question":"What is the App Mining timeline?",
-      "answer":"<h5>On the first of every month (or as listed on the calendar): </h5> <ul> <li>Registration is closed for that months ranking.</li> <li>Blockstack team sends the complete list of apps to our app reviewer partners. App miners do not need to reach out to Product Hunt, Awario, TryMyUI, or the digital rights reviewer. </li> <li>Blockstack <strong>emails</strong> app miners are emailed about Product Hunt Hunting process. App miners can choose to hunt their app independently or can request to be featured by the Product Hunt team. <a href='https://docs.blockstack.org/develop/app-reviewers.html' target='_blank'>Read more</a>.</li></ul><h5>Over the next two weeks:</h5> <ul> <li>TryMyUI Tests are happening. Please don’t perform upgrades that might break the app.</li> <li>Products are launched on Product Hunt. Product Hunt team performs internal review.</li> <li>The digital rights reviewer examines apps based on the degree to which the apps respect and protect users` fundamental digital rights.</li></ul> <h5>On the last day of ranking at 11:59pm ET: </h5> <p>App mining results are sent to Blockstack by app reviewer partners.</p> <h5>On the 15th (or as listed on the calendar):</h5> <p>Blockstack team performs App Mining algorithm as referenced <a href='https://blog.app.co/how-app-minings-ranking-algorithm-works/' target='_blank'>here</a>.</p> <h5>On the following weekday:</h5> <ul> <li>App miners are emailed login info to access their TryMyUI tests</li> <li>Full App Mining results are published</li> </ul>"
-   },
-        {
+        "question": "What is the App Mining timeline?",
+        "answer": "<p>On the first of every month (or as listed on the calendar):</p> <ul> <li>Registration is closed for that months ranking.</li> <li>Blockstack team sends the complete list of apps to our app reviewer partners. App miners do not need to reach out to Product Hunt, Awario, TryMyUI, or the digital rights reviewer.</li> <li>Blockstack emails app miners are emailed about Product Hunt Hunting process. App miners can choose to hunt their app independently or can request to be featured by the Product Hunt team. <a href='https://docs.blockstack.org/develop/app-reviewers.html' target='_blank'>Read more</a>.</li> </ul> <p>Over the next two weeks:</p> <ul> <li>TryMyUI Tests are happening. Please don’t perform upgrades that might break the app.</li> <li>Products are launched on Product Hunt. Product Hunt team performs internal review.</li> <li>The digital rights reviewer examines apps based on the degree to which the apps respect and protect users` fundamental digital rights.</li> </ul> <p>On the last day of ranking at 11:59pm ET: App mining results are sent to Blockstack by app reviewer partners.</p> <p>On the 15th (or as listed on the calendar): Blockstack team performs App Mining algorithm as referenced <a href='https://blog.app.co/how-app-minings-ranking-algorithm-works/' target='_blank'>here</a>.</p> <p>On the following weekday:</p> <ul> <li>App miners are emailed login info to access their TryMyUI tests. </li> <li>App founders are sent an audit version of the results. </li> </ul> <p>A week later: </p> <ul> <li>Payouts are completed. </li> <li>Full App Mining results are published. </li> </ul>"
+     },
+     {
         "question": "Where can I find a calendar of App Mining events?",
         "answer": "<p>The following calendar shows events each month related to App Mining:</p><p><iframe src='https://calendar.google.com/calendar/b/1/embed?showCalendars=0&amp;height=400&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=blockstack.com_u71ao2dalkd88b493k3671233s%40group.calendar.google.com&amp;color=%235229A3&amp;ctz=America%2FNew_York' style='border-width:0' width='600' height='400' frameborder='0' scrolling='no'></iframe></p>"
-      },
-      {
-        "question":"How much can I earn and how are rewards distributed? ",
-        "answer":"<p>Payouts for the pilot run are $100k in total each month (the original alpha
-        run paid out $25K. In the pilot run, the highest-ranked app receives 20% of the
-        100K, the next highest-ranked app receives 20% of the remaining 80%, and so on
-        (this distribution is subject to change). </p><p>Rewards are paid in Bitcoin.
-        The payouts are administered by Blockstack PBC and facilitated by App.co.</p>"
-      },
-      {
-        "question":"How is App Mining different from cryptocurrency mining?",
-        "answer":"<p>Traditionally the term mining in cryptocurrency refers to the process of
-        contributing compute resources to the network and earning a distributed of new
-        tokens as a reward. On the Stacks blockchain, developers can “mine” by
-        contributing apps to the ecosystem and making applications the community wants.
-        </p>"
-      },
-      {
-        "question":"What qualifies my app to compete in App Mining?",
-        "answer":"<p>Your app should integrate Blockstack authentication for logging into your app. Your finished app should be available to the public for use. The application must use a registered domain name and the app should be hosted at a URL belonging to the domain. The app website must use a secured (<code>https</code>) connection. In the future, App Mining may reward apps that have taken steps to further decentralize, such as utilizing Gaia storage or the publishing your app to the Blockstack Naming System. Test flight apps, hello-world apps and apps created through blockstack tutorials (e.g., animal kingdom apps) do not qualify.</p>"
-      },
-      {
-        "question":"Does my app have to be listed on App.co to enter App Mining?",
+     },
+     {
+        "question": "How much can I earn and how are rewards distributed? ",
+        "answer": "<p>Starting in August 2019, App Mining payouts will include an additional $100K payout in Stacks tokens (STX) on top of the existing $100k in BTC. And starting in November 2019 we plan to ramp the total monthly payout and switch entirely to paying out in Stacks tokens. By May 2020, we plan for the monthly payout to be $1M worth of Stacks tokens. For more detailed information, see <a href='https://docs.blockstack.org/develop/mining-rewards.html' target='_blank'>How payouts are administered</a> in the Blockstack documentation.</p>"
+     },
+     {
+        "question": "What is the Stacks token?",
+        "answer": "<p>Stacks (STX) token is the native utility token of the Blockstack network and the only token currently available as part of an SEC-qualified sale. Stacks tokens are consumed as &quot;fuel&quot; when users register digital assets, like usernames, or when they register/execute smart contracts. Using Stacks, developers can build and distribute apps that let users maintain ownership of their data and protect their digital rights.</p> <p>Learn more at: <a href='https://stackstoken.com/faq/' target='_blank'>https://stackstoken.com/faq/</a></p>"
+     },
+     {
+        "question": "How is App Mining different from cryptocurrency mining?",
+        "answer": "<p>Traditionally the term mining in cryptocurrency refers to the process of contributing compute resources to the network and earning a distributed of new tokens as a reward. On the Stacks blockchain, developers can <q>mine</q> by contributing apps to the ecosystem and making applications the community wants. </p>"
+     },
+     {
+        "question": "What qualifies my app to compete in App Mining?",
+        "answer": "<p>Your app should integrate Blockstack authentication for logging into your app. Your finished app should be available to the public for use.  The application must use a registered domain name and the app should be hosted at a URL belonging to the domain. The app website must use a secured (<code>https</code>) connection. In the future, App Mining may reward apps that have taken steps to further decentralize, such as utilizing Gaia storage or the publishing your app to the Blockstack Naming System. Test flight apps, hello-world apps and apps created through blockstack tutorials (e.g., animal kingdom apps) do not qualify.</p>"
+     },
+     {
+        "question": "Does my app have to be listed on App.co to enter App Mining?",
         "answer": "<p>Yes, it does.</p>"
-      },
-      {
-        "question":"How do I submit my application for App Mining?",
+     },
+     {
+        "question": "How do I submit my application for App Mining?",
         "answer": "<p>Complete <a href='https://app.co/submit#'>the submission form on App.co</a>. Blockstack suggests registering several days before the ranking deadline — our team needs to verify your details to ensure your app qualifies. Full enrollment details can be found <a href='https://docs.blockstack.org/develop/mining_enroll.html' target='_blank'>here</a>. When you have met all the requirements, you should see your app listed <a href='https://app.co/mining/apps'>on this page</a>.</p>"
-      },
-      {
-        "question":"When are my submission materials due?",
+     },
+     {
+        "question": "When are my submission materials due?",
         "answer": "<p>Your submission materials are due at 11:59 PM Eastern Time US on the last day of each month. For example, if you are making a submission for March, your materials must be submitted on or before Feb 28 at 11:59 EST.</p>"
-      },
-      {
-        "question":"How often can I submit my application for App Mining?",
-        "answer": "<p>You need only to submit your application once.  Each month after your
-        submission, your app is competing in App Mining.  </p>"
-      },
-      {
-        "question":"How do I launch my app on Product Hunt as an app reviewer?",
-        "answer": "<p>Part of the ranking process includes an assessment by the Product Hunt app reviewer via their community vote and their internal team vote. You can find <a href='https://docs.blockstack.org/develop/mining_intro.html' target='_blank'>information on the algorithm in this documentation</a>.</p>
-        <p>Your product's launch on Product Hunt has an impact on your final App Mining ranking as stated in the algorithm information. If your app has not been “hunted” yet on Product Hunt, you have the option to hunt the app independently or to ask Product Hunt to hunt it for you. Make sure you understand the hunting process. Only hunted products can be featured by Product Hunt. More information on successful product hunt launches <a href='https://blog.producthunt.com/how-to-launch-on-product-hunt-7c1843e06399' target='_blank'>can be found on the Product Hunt blog</a>.</p> <p>Blockstack will email each miner about the hunt process at the start of each App Mining review cycle. You should feel free to let us know your preference, hunt yourself or by Product Hunt, before the review cycle.</p>"
-      },
-      {
-        "question":"Does my code repository need to be public?",
+     },
+     {
+        "question": "How often can I submit my application for App Mining?",
+        "answer": "<p>You need only to submit your application once.  Each month after your submission, your app is competing in App Mining.  </p>"
+     },
+     {
+        "question": "How do I launch my app on Product Hunt as an app reviewer?",
+        "answer": "<p>Part of the ranking process includes an assessment by the Product Hunt app reviewer via their community vote and their internal team vote. You can find <a href='https://docs.blockstack.org/develop/mining_intro.html' target='_blank'>information on the algorithm in this documentation</a>.</p> <p>Your product's launch on Product Hunt has an impact on your final App Mining ranking as stated in the algorithm information. If your app has not been <q>hunted</q> yet on Product Hunt, you have the option to hunt the app independently or to ask Product Hunt to hunt it for you. Make sure you understand the hunting process. Only hunted products can be featured by Product Hunt. More information on successful product hunt launches <a href='https://blog.producthunt.com/how-to-launch-on-product-hunt-7c1843e06399' target='_blank'>can be found on the Product Hunt blog</a>.</p> <p>Blockstack will email each miner about the hunt process at the start of each App Mining review cycle. You should feel free to let us know your preference, hunt yourself or by Product Hunt, before the review cycle.</p>"
+     },
+     {
+        "question": "Does my code repository need to be public?",
         "answer": "<p>Your application code can be public or private.</p>"
-      },
-      {
-        "question":"Is Blockstack Auth difficult to integrate?",
-        "answer": "<p>If you’re already building your app with JavaScript, adding Blockstack
-        authentication is easy! We have docs, tutorials, and thorough API references for
-        you to learn from. Vist the <a
-        href='https://docs.blockstack.org/develop/zero_to_dapp_1.html'> Zero-to-Dapp
-        tutorial</a> for end-to-end training. Or <a
-        href='https://docs.blockstack.org/develop/auth_provider.html'>use this short
-        example</a>.</p> <p>If you’re developing a traditional server-side application,
-        you can still take advantage of Blockstack authentication. For an example, check
-        out <a href='https://github.com/blockstack/blockstack-ruby'>our Ruby on Rails gem</a>.</p>"
-      },
-      {
-        "category":"appminers",
-        "question":"Who are the app reviewers?",
-        "answer":"<p>App reviewers are currently selected by Blockstack PBC. Reviewers are entities that have a proprietary methodology that helps them make objective judgements for why a certain app might be better than others.  We strive to engage a diverse coalition of app reviewers with the goal of making application ranking objective and resilient to abuse.  </p> <p>The app reviewers are Product Hunt, TryMyUI, Awario, and the digital rights reviewer. See <a href='https://docs.blockstack.org/develop/app-reviewers.html'>here</a> for more details about each reviewer. Future reviewers could expand to community election. Please see our <a href='https://github.com/blockstack/app-mining'>GitHub repository</a> to raise issues or make suggestions for App Mining. </p>"
      },
-      {
-        "question":"How are apps ranked?",
-        "answer": "<p>App reviewers have a proprietary methodology that helps them make
-         objective judgments for why one app might be better than another. Each
-         app reviewers determines the data, formula, and personnel they wish to
-         utilize. For example, Product Hunt can tap into their community data to
-         determine relative app popularity. Reviewers must publish
-         their methodology periodically to ensure transparency. </p> <p>To learn more see <a
-         href='https://blog.app.co/how-app-minings-ranking-algorithm-works'>the detailed
-         explanation of our ranking algorithm on our blog</a> and in <a
-         href='https://docs.blockstack.org/develop/mining_intro.html'>our
-         documentation</a>.</p><p>Apps are ranked by all app reviewers.</p>"
-      },
-      {
-        "question":"Do I have to Hunt my app on Product Hunt?",
-        "answer": "<p>As part of the ranking process, there is an assessment by App Reviewer
-        Product Hunt via their community vote and their internal team vote. More info on
-        the algorithm, <a
-        href='https://docs.blockstack.org/develop/mining_intro.html'>here</a>. The Hunt
-        launch will have an impact on your final ranking, as you can see in the
-        algorithm breakdown. Here is <a
-        href='https://blog.producthunt.com/how-to-launch-on-product-hunt-7c1843e06399'>more
-        info</a> on Product Hunt launch best practices. In general, sharing and
-        responsiveness to questions are encouraged and it might help your community
-        reception if you choose to hunt the app yourself. If not, Product Hunt can hunt
-        your App as well.</p><p>Apps will be hunted every 6 months, so if you hunted
-        your app in a past month, as long as you are in the 6 month time window you will
-        not have to Hunt the app. </p>"
-      },
-      {
-        "question":"When are the winning payments made?",
+     {
+        "question": "Is Blockstack Auth difficult to integrate?",
+        "answer": "<p>If you’re already building your app with JavaScript, adding Blockstack authentication is easy! We have docs, tutorials, and thorough API references for you to learn from. Visit the <a href='https://docs.blockstack.org/develop/zero_to_dapp_1.html'> Zero-to-Dapp tutorial</a> for end-to-end training. Or <a href='https://docs.blockstack.org/develop/auth_provider.html'>use this short example</a>.</p> <p>If you’re developing a traditional server-side application, you can still take advantage of Blockstack authentication. For an example, check out <a href='https://github.com/blockstack/blockstack-ruby'>our Ruby on Rails gem</a>.</p>"
+     },
+     {
+        "question": "Who are the app reviewers?",
+        "answer": "<p>App reviewers are currently selected by Blockstack PBC. Reviewers are entities that have a proprietary methodology that helps them make objective judgements for why a certain app might be better than others. We strive to engage a diverse coalition of app reviewers with the goal of making application ranking objective and resilient to abuse.</p> <p>The app reviewers are Product Hunt, TryMyUI, Awario, and the New Internet Labs. See <a href='https://docs.blockstack.org/develop/app-reviewers.html' target='_blank'>here</a> for more details about each reviewer. Future reviewers could expand to community election. Please see our <a href='https://github.com/blockstack/app-mining' target='_blank'>GitHub repository</a> to raise issues or make suggestions for App Mining.</p>"
+     },
+     {
+        "question": "How are apps ranked?",
+        "answer": "<p>App reviewers have a proprietary methodology that helps them make objective judgments for why one app might be better than another. Each app reviewers determines the data, formula, and personnel they wish to utilize. For example, Product Hunt can tap into their community data to determine relative app popularity. Reviewers must publish their methodology periodically to ensure transparency.</p> <p>To learn more see <a href='https://docs.blockstack.org/develop/app-reviewers.html' target='_blank'>the detailed explanation of our ranking algorithm on our</a> <a href='https://docs.blockstack.org/develop/app-reviewers.html' target='_blank'>documentation</a>.</p> <p>Apps are ranked by all app reviewers.</p>"
+     },
+     {
+        "question": "Do I have to Hunt my app on Product Hunt?",
+        "answer": "<p>As part of the ranking process, there is an assessment by App Reviewer Product Hunt via their community vote and their internal team vote. More info on the algorithm, <a href='https://docs.blockstack.org/develop/mining_intro.html'>here</a>. The Hunt launch will have an impact on your final ranking, as you can see in the algorithm breakdown. Here is <a href='https://blog.producthunt.com/how-to-launch-on-product-hunt-7c1843e06399'>more info</a> on Product Hunt launch best practices. In general, sharing and responsiveness to questions are encouraged, and it might help your community reception if you choose to hunt the app yourself. If not, Product Hunt can hunt your App as well.</p><p>Apps will be hunted every 6 months, so if you hunted your app in a past month, as long as you are in the 6 month time window, you will not have to Hunt the app. </p>"
+     },
+     {
+        "question": "When are the winning payments made?",
         "answer": "<p>Payouts are made on the 15th of every month.</p>"
-      },
-      {
-        "question":"What’s the incentive for user voting? ",
-        "answer": "<p>Voters in the App Mining ecosystem are currently Stacks token holders with
-        incentive to strategically allocate resources in the ecosystem to apps they
-        consider highly valuable.  </p>"
-      },
-      {
-        "question":"What are examples of any quantitative metrics that may be shared with app reviewers?",
-        "answer": "<p>Qualitative metrics are metrics
-        that evaluate elements such as engagement, DAU/MAU ratios
-        etc from the reviewed apps. Blockstack plans to incorporate metrics based
-        ranking. However, before we do, any mechanism must thoughtfully incorporate the
-        digital privacy rights of Blockstack users, and provide information in a way
-        that cannot be gamed.</p> "
-      },
-      {
-        "question":"Is App Mining Decentralized?",
-        "answer": "<p>Given the pioneering nature of the program, we are being careful and starting
-        in a centralized fashion that allows for necessary diligence. We don’t want to
-        bake in assumptions that have not been validated. The downside of this
-        protection is some level of centralization, which we are taking steps to reduce
-        over time. The pilot is the just the first step in creating a fair system that
-        can be relied upon by founders and contribute to the growth of the Blockstack
-        ecosystem. </p> <p>Blockstack plans to move along a path to decentralization and
-        App Mining will too. It is important to highlight that initially App Mining will
-        purposely have a few points of centralization highlighted below, which can
-        become decentralized over time (all plans are subject to change, legal approval,
-        and applicable law). </p> <h5>Electing app reviewers:</h5> <p>Currently,
-        Blockstack PBC elects app reviewers. In the future, we anticipate gradually
-        transitioning to community elections of App Reviewers. </p> <h5>Registering
-        apps:</h5> <p>Currently, registering apps is regulated by Blockstack PBC through
-        app.co/mining. In the future, we anticipate transitioning to publishing on
-        designated Blockstack namespaces via our public blockchain. </p> <h5>Collecting
-        votes:</h5> <p>Currently, votes are aggregated by Blockstack PBC and
-        administered via App.co. In the future, we expect that votes will be collected
-        through the protocol itself. </p> <h5>Issuing money:</h5> <p>Currently, payouts
-        are issued by Blockstack PBC. In the future, we expect that payouts will over
-        time be generated and deployed on an automated basis. </p>"
-      },
-      {
-        "question":"How is App Mining protected against bribery, collusion, or gaming?",
-        "answer": "<p>We are taking potential threats very seriously and hope to create a fair
-        system that continuously reinforces trust within our community for the long
-        term. </p> <p>We are currently consulting with a team of 3 Ph.D. Game Theorist
-        professors from Princeton University and New York University to determine
-        thoughtful methods to protect App Mining from being attacked and/or abused. Our
-        goal is to be as transparent as possible, but App Reviewers may reserve the
-        right to keep some secrets in their formula to avoid bribes and gaming, and the
-        algorithm that combines all of these score may be tuned in the future to account
-        for new learnings. </p> <p>The Game Theorists are working with us to create a
-        technical paper and broader documents like blogs explaining the overall
-        mechanism </p>"
-      },
-      {
-         "question":"What is the Blockstack Ecosystem?",
-         "answer":"<p>The Blockstack Ecosystem has a mission to bring a new internet where users
-				 control the access to, and use of, their own identity and data. With this
-				 mission in mind, three independent entities were formed: </p> <ul><li>Blockstack
-				 Public Benefit Corp (PBC)</li> <li>Blockstack Signature Fund</li> <li>Blockstack
-				 Token LLC</li></ul> <p>These three affiliated entities drive the advancement of
-				 the Blockstack mission. All three entities are committed to building a new
-				 internet where users fundamental digital rights, such as security, privacy,
-				 anti-censorship, are always respected.</p>"
-      },
-      {
-        "question":"What is Blockstack PBC and the Blockstack Platform?",
-        "answer": "<p>Blockstack Public Benefit Corp. (PBC) started development of the Blockstack
-        Platform in 2014 and launched an alpha of the platform in early 2017. The
-        Blockstack Platform is the easiest way to start building decentralized,
-        blockchain-based apps. It provides a complete decentralized application stack,
-        powered by the Stacks blockchain, and maintained by a community of 7000
-        developers. </p>"
-      },
-      {
-        "question":"How do I propose and follow changes to App Mining?",
-        "answer":"<p>The App Mining <a href='https://github.com/blockstack/app-mining' target='_blank'>GitHub repo</a> is the best place to propose changes to App Mining. </p>"
      },
-      {
-        "question":"Disclaimer",
-        "answer":"<p><i>This FAQ contains forward-looking statements, including statements
-        regarding Blockstack PBC’s plans for its App Mining program. Forward-looking
-        statements are subject to risks and uncertainties that could cause actual
-        results to differ materially, and reported results should not be considered as
-        an indication of future performance. Potential risks and uncertainties that
-        could change our actual results include, but are not limited to, risks
-        associated with: the failure of App Mining Program to successfully incentivize
-        the development of applications for the Blockstack network; risks associated
-        with attacks designed to influence the App Reviewers or game their
-        methodologies; technical difficulties in the transition from a centralized to a
-        decentralized administration of the program. These forward-looking statements
-        speak only as of the date hereof. Blockstack PBC disclaims any obligation to
-        update these forward-looking statements. </i></p> <p><i>Any decisions that may
-        be made through the App Mining Program regarding rewards provided to app
-        developers are not recommendations as to the quality of any investments that
-        individuals may make in a company that receives rewards. If you are considering
-        an investment in any of these companies, you should make your own decision
-        regarding that investment and not rely in any way on the results of the App
-        Mining program. </i></p>"
-      }
-   ]
+     {
+        "question": "What are examples of any quantitative metrics that may be shared with app reviewers?",
+        "answer": "<p>Qualitative metrics are metrics that evaluate elements such as engagement, DAU/MAU ratios, etc. from the reviewed apps. Blockstack plans to incorporate metrics based ranking. However, before we do, any mechanism must thoughtfully incorporate the digital privacy rights of Blockstack users, and provide information in a way that cannot be gamed.</p> "
+     },
+     {
+        "question": "Is App Mining Decentralized?",
+        "answer": "<p>Given the pioneering nature of the program, we are being careful and starting in a somewhat centralized fashion that allows for necessary diligence in the early stages, for example, the current pilot phase. We don’t want to bake in assumptions that have not been validated. The downside of this protection is some level of centralization, which we are taking steps to reduce over time. The pilot is the just the first step in creating a fair system that can be relied upon by founders and contribute to the growth of the Blockstack ecosystem. </p> <p>Blockstack plans to move along a path to decentralization and App Mining will too. It is important to highlight that initially, App Mining will purposely have a few points of centralization highlighted below, which can become decentralized over time (all plans are subject to change, legal approval, and applicable law). </p> <h5>Electing app reviewers:</h5> <p>Currently, Blockstack PBC elects app reviewers. In the future, we anticipate gradually transitioning to community elections of App Reviewers. </p> <h5>Registering apps:</h5> <p>Currently, registering apps is regulated by Blockstack PBC through app.co/mining. In the future, we anticipate transitioning to publishing on designated Blockstack namespaces via our public blockchain. </p> <h5>Collecting votes:</h5> <p>Currently, votes are aggregated by Blockstack PBC and administered via App.co. In the future, we expect that votes will be collected through the protocol itself. </p> <h5>Issuing money:</h5> <p>Currently, payouts are issued by Blockstack PBC. In the future, we expect that payouts will over time be generated and deployed on an automated basis. </p>"
+     },
+     {
+        "question": "How is App Mining protected against bribery, collusion, or gaming?",
+        "answer": "<p>We are taking potential threats very seriously and hope to create a fair system that continuously reinforces trust within our community for the long term. </p> <p>We are currently consulting with a team of 3 Ph.D. Game Theorist professors from Princeton University and New York University to determine thoughtful methods to protect App Mining from being attacked and/or abused. Our goal is to be as transparent as possible, but App Reviewers may reserve the right to keep some secrets in their formula to avoid bribes and gaming, and the algorithm that combines all of these score may be tuned in the future to account for new learnings. </p> <p>The Game Theorists are working with us to create a technical paper and broader documents like blogs explaining the overall mechanism.</p>"
+     },
+     {
+        "question": "How do I propose and follow changes to App Mining?",
+        "answer": "<p>The App Mining <a href='https://github.com/blockstack/app-mining' target='_blank'>GitHub repo</a> is the best place to propose changes to App Mining. </p>"
+     },
+     {
+        "question": "App Mining Disclaimer",
+        "answer": "<p><i>The App Mining FAQs contain forward-looking statements, including statements regarding Blockstack PBC’s plans for its App Mining program. Forward-looking statements are subject to risks and uncertainties that could cause actual results to differ materially, and reported results should not be considered as an indication of future performance. Potential risks and uncertainties that could change our actual results include, but are not limited to, risks associated with: the failure of App Mining Program to successfully incentivize the development of applications for the Blockstack network; risks associated with attacks designed to influence the App Reviewers or game their methodologies; technical difficulties in the transition from a centralized to a decentralized administration of the program. These forward-looking statements speak only as of the date hereof. Blockstack PBC disclaims any obligation to update these forward-looking statements. </i></p> <p><i>Any decisions that may be made through the App Mining Program regarding rewards provided to app developers are not recommendations as to the quality of any investments that individuals may make in a company that receives rewards. If you are considering an investment in any of these companies, you should make your own decision regarding that investment and not rely in any way on the results of the App Mining program. </i></p>"
+     }
+  ]
 }
