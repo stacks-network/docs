@@ -14,8 +14,8 @@
      },
      {
         "question": "How much can I earn and how are rewards distributed? ",
-        "answer": "<p>Starting in August 2019, App Mining payouts will include an additional $100K payout in Stacks tokens (STX) on top of the existing $100k in BTC. And starting in November 2019 we plan to ramp the total monthly payout and switch entirely to paying out in Stacks tokens. By May 2020, we plan for the monthly payout to be $1M worth of Stacks tokens. For more detailed information, see <a href='https://docs.blockstack.org/develop/mining-rewards.html' target='_blank'>How payouts are administered</a> in the Blockstack documentation.</p>"
-     },
+        "answer":"<p>Starting in August 2019, App Mining payouts will include an additional $100K payout in Stacks tokens (STX) on top of the existing $100k in BTC. And starting in November 2019 we plan to ramp the total monthly payout and switch entirely to paying out in Stacks tokens. By May 2020, we plan for the monthly payout to be $1M worth of Stacks tokens. App mining rewards in STX earned before the hard fork, will be accrued and the tokens distributed following the hard fork, which we expect to happen within approximately 30 days after the close of the Stacks Token Offering.</p><p>For more detailed information, see <a href='https://docs.blockstack.org/develop/mining-rewards.html' target='_blank'>How payouts are administered</a> in the Blockstack documentation.</p>"     
+      },
      {
         "question": "What is the Stacks token?",
         "answer": "<p>Stacks (STX) token is the native utility token of the Blockstack network and the only token currently available as part of an SEC-qualified sale. Stacks tokens are consumed as &quot;fuel&quot; when users register digital assets, like usernames, or when they register/execute smart contracts. Using Stacks, developers can build and distribute apps that let users maintain ownership of their data and protect their digital rights.</p> <p>Learn more at: <a href='https://stackstoken.com/faq/' target='_blank'>https://stackstoken.com/faq/</a></p>"
