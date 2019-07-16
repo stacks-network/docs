@@ -101,6 +101,7 @@ kramdown:
   input: GFM
   auto_ids: true
   syntax_highlighter: rouge
+  parse_block_html: true
 toc:
   min_level: 2 # default: 1
   max_level: 3 # default: 6
