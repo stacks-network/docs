@@ -14,7 +14,7 @@
      },
      {
         "question": "How much can I earn and how are rewards distributed? ",
-        "answer":"<p>Starting in August 2019, App Mining payouts will include an additional $100K payout in Stacks tokens (STX) on top of the existing $100k in BTC. And starting in November 2019 we plan to ramp the total monthly payout and switch entirely to paying out in Stacks tokens. By May 2020, we plan for the monthly payout to be $1M worth of Stacks tokens. App mining rewards in STX earned before the hard fork, will be accrued and the tokens distributed following the hard fork, which we expect to happen within approximately 30 days after the close of the Stacks Token Offering.</p><p>For more detailed information, see <a href='https://docs.blockstack.org/develop/mining-rewards.html' target='_blank'>How payouts are administered</a> in the Blockstack documentation.</p>"     
+        "answer":"<p>Starting in August 2019, App Mining payouts will include an additional $100K payout in Stacks tokens (STX) on top of the existing $100k in BTC. And starting in November 2019 we plan to ramp the total monthly payout and switch entirely to paying out in Stacks tokens. By May 2020, we plan for the monthly payout to be $1M worth of Stacks tokens. App Mining rewards in STX earned before the hard fork will be accrued, and the tokens will be distributed following the hard fork. We expect the hard fork to occur approximately 30-60 days following the end of the term of the RegA+ cash offering.</p><p>For more detailed information, see <a href='https://docs.blockstack.org/develop/mining-rewards.html' target='_blank'>How payouts are administered</a> in the Blockstack documentation.</p>"     
       },
      {
         "question": "What is the Stacks token?",
