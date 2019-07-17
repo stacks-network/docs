@@ -684,7 +684,7 @@
          {
          "category": "tokens",
          "question": "How can I edit my stacks wallet address?",
-         "answer": "<p>Log into your account at <a href='http://sale.stackstoken.com/'>sale.stackstoken.com</a>. If you click on <strong>Stacks Address</strong> from the top menu, you should be able to edit your Stacks address.</p>"
+         "answer": "<p>Log into your account at <a href='http://sale.stackstoken.com/'>sale.stackstoken.com</a>. From this screen, you should be able to edit your Stacks address.</p>"
          },
          {
          "category": "tokens",
