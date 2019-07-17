@@ -36,7 +36,7 @@ Y = final (rolled) score from previous month
 0.75X + 0.25Y = new month’s final score
 ```
 
-TryMyUI tests occur from the beginning to middle of the month, and Blockstack PBC cannot provide exact timing of the tests. App founders should not make any breaking changes to the app during this time. TryMyUI testers are English speaking. TryMyUI provides niche audiences based on the type of app.  Founders can take this brief survey to fill out their preferred audiences.  Read more about TryMyUI Scoring and recommendations in our [Application Miner's Guide to Promoting your App]({{ site.baseurl }}/community/app-miners-guide/app-miners-guide.html#recommendations-from-trymyui). 
+TryMyUI tests occur from the beginning to middle of the month, and Blockstack PBC cannot provide exact timing of the tests. App founders should not make any breaking changes to the app during this time. TryMyUI testers are English speaking. TryMyUI provides niche audiences based on the type of app.  Founders can take this brief survey to fill out their preferred audiences.  Read more about TryMyUI Scoring and recommendations in our [Application Miner's Guide to Promoting your App]({{ site.baseurl }}/community/app-miners-guide#recommendations-from-trymyui). 
 
 ## New Internet Labs 
 
