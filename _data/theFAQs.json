@@ -643,6 +643,11 @@
       },
       {
          "category": "tokens",
+         "question": "Where will the Stacks token trade?",
+         "answer": "<p>There is currently no authorized exchange or alternative trading system (ATS) for buying and selling Stacks tokens, and we cannot comment on when an exchange or ATS might list Stacks tokens at this time. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>. If you see Stacks listed on an exchange, please let us know at <a href='mailto:legal@blockstack.com'>legal@blockstack.com</a>, as the listing may be illegal or a scam.</p>"
+         },   
+      {
+         "category": "tokens",
          "question": "Can I sell or transfer Stacks tokens directly to someone else?",
          "answer": "<p>It may be possible to sell or transfer Stacks directly to another person in a peer-to-peer transaction. We recommend that you consult an attorney before engaging in such a transaction, especially if buying from or selling to a U.S. person or entity, as we cannot give you legal or regulatory advice.</p>"
       },
@@ -684,28 +689,28 @@
          {
          "category": "tokens",
          "question": "How can I change my currency?",
-         "answer": "<p>You can invest with US dollars, Bitcoin, or Ether. You will be asked to confirm the type of currency when you initiate your payment after the sale opens. You will not be able to change the currency once you have submitted payment.</p>",
+         "answer": "<p>You can invest with US dollars, Bitcoin, or Ether. You will be asked to confirm the type of currency when you initiate your payment after the sale opens. You will not be able to change the currency once you have submitted payment.</p>"
          },
+         {
+            "category": "tokens",
+            "question": "How much money has Blockstack raised?",
+           "answer": "<p>Blockstack PBC has raised $5.1M in equity investments and $47.5M in the 2017 token offering. The last equity financing was the Series A round in Fall 2016.</p><p>Traditionally, venture-capital backed startups target around 12 to 18 months of runway after a new round of financing. As of July 2019, Blockstack PBC has 12+ months of runway at current burn rates. This runway projection (a) does not include funds contingent on achieving Milestone 2, (b) discounts the crypto holdings of Blockstack PBC, and (c) does not include any funds raised in the current Reg A and Reg S offerings.</p><p>Further, Blockstack PBC has a total of 110M STX in a long-term treasury. In addition, after completion of the 2019 offerings, approximately 231 million tokens from the genesis block will remain unallocated; the future use of these ~231 million tokens is under the discretion of Blockstack PBC.</p><p>Our audited financials are available in our <a href='http://stackstoken.com/circular' target='_blank'>offering circular</a>.</p><p>We expanded our team from 19 employees in January 2019 to 25 in July 2019 and we have several <a href='https://blockstack.org/careers' target='_blank'>open positions</a>.</p>"
+           },
+           {
+            "category": "tokens",
+            "question": "What has been the recent traction on the network?",
+            "answer": "<p>Blockstack PBC moved from the R&amp;D phase to the infrastructure building phase in 2017 (upon closing of the Series A equity investment). Blockstack PBC successfully completed the launch of the Stacks blockchain in Q4 2018, <a href='https://blog.blockstack.org/blockstack-unlocks-25-million-in-funding/' target='_blank'>meeting Milestone 1</a>.</p> <p>Since Q4 2018, we’ve been in the developer traction phase. The number of independent applications built on the network increased from 17 to 46 in Q4 2018, from 46 to 86 in Q1 2019, and from 86 to 165 by the time of our SEC offering qualification in July 2019.</p> <p>The Blockstack network has 115,780 registered user accounts as of July 2019 and Blockstack PBC plans to start focusing on user acquisition as we move from the developer traction phase to user engagement phase.</p>"
+            },
+            {
+            "category": "tokens",
+             "question": "How were tokens<strong> </strong>distributed to early investors?",
+            "answer": "<p>Accredited Investors and funds in the 2017 Reg D token offering purchased tokens at a $0.12 price. Blockstack PBC raised $47.5M in this offering.</p> <p>Holders of Blockstack’s Series A convertible preferred stock—who had invested a total of $5.1 million as of late 2016 and funded Blockstack’s early growth and development before the decision to create a token, or the drafting or publication of any white papers—were also provided an opportunity to purchase tokens at a nominal price per token before the 2017 Reg D offering. This opportunity to participate at a nominal price was given in return for their early support and in proportion to their equity ownership, and it was based on their reasonable expectation as early investors that they would receive tokens if Blockstack ever decided to create a digital token.</p> <p>These tokens are subject to a three-year time lock, commencing upon the introduction of the genesis block to the Blockstack network in November 2018. The tokens for founders and employees are also subject to a three-year time lock starting November 2018.</p> <p>Further, affiliates of Blockstack PBC including Union Square Ventures, Muneeb Ali, and Ryan Shea — three of the largest holders of Stacks tokens — have additional restrictions on selling tokens on the open markets.</p>"
+            },
          {
             "category": "tokens",
             "question": "What is the current circulating supply of Stacks?",
             "answer": "<p>Currently, 866,827,880 tokens of the 1.32B genesis block have been distributed. As of June 10, 2019 approximately 229,229,868 of those 866,827,880 distributed tokens have been released from their time locks.  The remainder continue to be subject to time locks that release approximately monthly over approximately two, three or four year periods.  If all tokens offered in the Reg A and concurrent Reg S offerings are sold, allocated and distributed, the total number of Stacks tokens distributed will be 1,089,161,213. For more details, please refer to the public filing with the SEC in our <a href='http://stackstoken.com/circular'>offering circular</a>.</p>"
              },
-         {
-         "category": "tokens",
-         "question": "Are there any locks on previously sold Stacks tokens?",
-         "answer": "<p>Details on the lock-ups of employee token grants and other token sale lock-ups can be found in the <a href='http://stackstoken.com/circular'>offering circular</a>.</p>",
-         },
-         {
-         "category": "tokens",
-         "question": "Where will the Stacks token trade?",
-         "answer": "<p>There is currently no authorized exchange or alternative trading system (ATS) for buying and selling Stacks tokens, and we cannot comment on when an exchange or ATS might list Stacks tokens at this time. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>. If you see Stacks listed on an exchange, please let us know at <a href='mailto:legal@blockstack.com'>legal@blockstack.com</a>, as the listing may be illegal or a scam.</p>"
-         },
-         {
-         "category": "tokens",
-         "question": "Why were Stacks Tokens valued/sold at $0.00012 prior to the 2017 accredited sale at $0.12?",
-         "answer": "<p><u>Founders and early employees</u> of Blockstack PBC received tokens at $0.00012 per token in October 2017 based on an independent valuation from Foresight Valuation Group, LLC when the Stacks Token was still in its earliest stage of development and before the publication of the token white paper at the end of that month. This grant was subject to a three-year time lock commencing upon the introduction of the genesis block to the Blockstack network in November 2018, and the nominal price reflected the early, high-risk support of founders and early employees.</p><p><u>Holders of Blockstack&#39;s Series A convertible preferred stock</u> who had invested a total of $5.1 million as of late 2016 and funded Blockstack&#39;s early growth and development before the decision to create a token, or the drafting or publication of any white papers—were also provided an opportunity to purchase tokens at the $0.00012 per token price. This opportunity to participate at a nominal price was given in return for their early support and in proportion to their equity ownership, and it was based on their reasonable expectation as early investors that they would receive tokens if Blockstack ever decided to create a digital token. These tokens are subject to a three-year time lock, commencing upon the introduction of the genesis block to the Blockstack network in November 2018.</p>",
-         },      
          {
             "category": "tokens",
             "question": "How do I get help about the Stacks token from a person?",
