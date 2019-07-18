@@ -1,5 +1,5 @@
 {
-   "last_updated": "Wed Jul 17 15:17:28 PDT 2019",
+   "last_updated": "Thu Jul 18 11:06:28 PDT 2019",
    "faqs": [
       {
          "category": "general",
@@ -620,6 +620,11 @@
          "category": "tokens",
          "question": "What is the order of priority if the offering is oversubscribed?",
          "answer": "<p><u>General offering</u>: Priority in the general sale is first-come, first-serve, based on receipt of payment. We have sole discretion to reject any purchase request for any reason. We encourage you to plan accordingly, especially if you use a slower form of payment, such as ACH.</p><p><u>Voucher program</u>: Voucher holders who pre-registered before the May 28, 2019 voucher pre-registration deadline have priority for up the amount of Stacks tokens at the $0.12 per token price that they indicated during pre-registration. Any number of tokens requested above the pre-registration amount is not guaranteed and the purchase amount for those tokens may be refunded. Voucher holders may purchase additional tokens at the general offering price of $0.30 per token. Voucher holders who missed the deadline are placed on a waitlist and given priority on a first-come, first-serve basis if there is any remaining availability.</p>"
+         },
+         {
+            "category": "tokens",
+            "question": "When do I receive my Stacks tokens?",
+            "answer": "<p>We anticipate the hard fork distribution of tokens to take place approximately 30 days after the end of the cash offering term. We may extend the hard fork distribution by an additional 30 days if needed. The sale is open for 60 days by default. As described in the <a href='https://stackstoken.com/circular'>offering circular</a>, we will give an update as a public notice, filed as a Form 1-U with the SEC, as certain conditions are met. We will also give public notice when the sale is closed.</p>"
          },
       {
          "category": "tokens",
