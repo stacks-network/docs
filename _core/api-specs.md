@@ -559,6 +559,99 @@ Get a history of all blockchain records of a registered name.
                 },
             }
 
+## Get subdomains at transaction [GET /v1/subdomains/{txid}]
+Fetches the list of subdomain operations processed by a given transaction.
+The returned array includes subdomain operations that have not yet been accepted
+as part of any subdomain's history (checkable via the `accepted` field).  If the
+given transaction ID does not correspond to a Blockstack transaction that
+introduced new subdomain operations, and empty array will be returned.
+
++ Public Endpoint
++ Subdomain aware
++ Parameters
+  + txid: d04d708472ea3c147f50e43264efdb1535f71974053126dc4db67b3ac19d41fe (string) the transaction ID
++ Response 200 (application/json)
+  + Body
+
+            [
+              {
+                "accepted": 1,
+                "block_height": 546199,
+                "domain": "id.blockstack",
+                "fully_qualified_subdomain": "nturl345.id.blockstack",
+                "missing": "",
+                "owner": "17Q8hcsxRLCk3ypJiGeXQv9tFK9GnHr5Ea",
+                "parent_zonefile_hash": "58224144791919f6206251a9960a2dd5723b96b6",
+                "parent_zonefile_index": 95780,
+                "resolver": "https://registrar.blockstack.org",
+                "sequence": 0,
+                "signature": "None",
+                "txid": "d04d708472ea3c147f50e43264efdb1535f71974053126dc4db67b3ac19d41fe",
+                "zonefile_hash": "d3bdf1cf010aac3f21fac473e41450f5357e0817",
+                "zonefile_offset": 0
+              },
+              {
+                "accepted": 1,
+                "block_height": 546199,
+                "domain": "id.blockstack",
+                "fully_qualified_subdomain": "dwerner1.id.blockstack",
+                "missing": "",
+                "owner": "17tFeKEBMUAAiHVsCgqKo8ccwYqq7aCn9X",
+                "parent_zonefile_hash": "58224144791919f6206251a9960a2dd5723b96b6",
+                "parent_zonefile_index": 95780,
+                "resolver": "https://registrar.blockstack.org",
+                "sequence": 0,
+                "signature": "None",
+                "txid": "d04d708472ea3c147f50e43264efdb1535f71974053126dc4db67b3ac19d41fe",
+                "zonefile_hash": "ab79b1774fa7a4c5709b6ad4e5892fb7c0f79765",
+                "zonefile_offset": 1
+              }
+            ]
+
+  + Schema
+
+            {
+              'type': 'array',
+              'items': {
+                'type': 'object',
+                'properties': {
+                   'accepted': { 'type': 'integer', 'minimum': 0, 'maximum': 1 },
+                   'block_height': { 'type': 'integer', 'minimum': 0 },
+                   'domain': { 'type': 'string', 'pattern': '^([a-z0-9\\-_.+]{3,37})$|^([a-z0-9\\-_.+]){3,37}$' },
+                   'fully_qualified_subdomain: { 'type': 'string', 'pattern': '^([a-z0-9\\-_.+]{3,37})\.([a-z0-9\\-_.+]{3,37})$' },
+                   'missing': { 'type': 'string' },
+                   'owner': { 'type': 'string', 'pattern': "^([123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]+)$" },
+                   'parent_zonefile_hash': { 'type': 'string', 'pattern': '^[0-9a-fA-F]{40}' },
+                   'parent_zonefile_index': { 'type': 'integer', 'minimum': 0 },
+                   'resolver': { 'type': 'string' },
+                   'sequence': { 'type': 'integer', 'minimum': 0 },
+                   'signature': { 'type': 'string' },
+                   'txid': { 'type': 'string', 'pattern': '^[0-9a-fA-F]{64}' },
+                   'zonefile_hash': { 'type': 'string', 'pattern': '^[0-9a-fA-F]{40}' },
+                   'zonefile_offset': { 'type': 'integer', 'minimum': 0 }
+                },
+                'required': [ 'accepted, 'block_height, 'domain',
+                              'fully_qualified_subdomain', 'missing', 'owner',
+                              'parent_zonefile_hash', 'parent_zonefile_index', 'resolver',
+                              'sequence', 'signature', 'txid', 'zonefile_hash',
+                              'zonefile_offset' ]
+               }
+            }
+    
++ Response 400 (application/json)
+  + Body
+
+            { "error": "Invalid txid" }
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': {
+                    'error': { 'type': 'string' },
+                },
+            }
+    
 ## Get historical zone file [GET /v1/names/{name}/zonefile/{zoneFileHash}]
 Fetches the historical zonefile specified by the username and zone hash.
 + Public Endpoint
@@ -666,113 +759,6 @@ Retrieves a list of names owned by the address provided.
 
 # Group Price Checks
 
-## Get namespace price [GET /v1/prices/namespaces/{tld}]
-
-This endpoint is used to get the price of a namespace.
-
-+ Public Endpoint
-+ Parameters
-  + tld: id (string) - namespace to query price for
-+ Response 200 (application/json)
-  + Body
-
-             {
-               "satoshis": 4000000000,
-               "units": "BTC",
-               "amount": "4000000000"
-             }
-
-  + Schema
-
-            {
-                'type': 'object',
-                'properties': {
-                    'units': {
-                        'type': 'string',
-                    },
-                    'amount': {
-                        'type': 'string',
-                        'pattern': '^[0-9]+$',
-                    },
-                    'satoshis': {
-                        'type': 'integer',
-                        'minimum': 0,
-                    },
-                },
-                'required': [ 'satoshis' ]
-            }
-
-+ Response 400 (application/json)
-  + Body
-
-            { "error": "Invalid namepace" }
-
-  + Schema
-
-            {
-                'type': 'object',
-                'properties': {
-                    'error': { 'type': 'string' },
-                },
-            }
-
-## Get name price [GET /v1/prices/names/{name}]
-
-This endpoint is used to get the price of a name.  If you are using a public
-endpoint, you should *only* rely on the `name_price` field in the returned JSON
-blob.
-
-The other fields are relevant only for estimating the cost of registering a
-name. You register a name via
-[blockstack.js](https://github.com/blockstack/blockstack.js) or the [Blockstack
-Browser](https://github.com/blockstack/blockstack-browser)).
-
-+ Public Endpoint
-+ Parameters
-    + name: muneeb.id (string) - name to query price information for
-+ Response 200 (application/json)
-  + Body
-
-               {
-                  "name_price": {
-                    "satoshis": 100000,
-                    "units": "BTC",
-                    "amount": "100000"
-                  },
-               }
-
-    + Schema
-
-               {
-                   'type': 'object',
-                   'properties': {
-                       'name_price': {
-                           'type': 'object',
-                           'properties': {
-                               'satoshis': { 'type': 'integer', 'minimum': 0 },
-                               'units': { 'type': 'string' },
-                               'amount': { 'type': 'string', 'pattern': '^[0-9]+$' }
-                           },
-                           'required': [ 'satoshis' ],
-                       },
-                      'required': [ 'name_price' ]
-                   }
-               }
-
-+ Response 400 (application/json)
-  + Body
-
-            { "error": "Invalid name" }
-
-  + Schema
-
-            {
-                'type': 'object',
-                'properties': {
-                    'error': { 'type': 'string' },
-                },
-            }
-
 ## Get namespace price [GET /v2/prices/namespaces/{tld}]
 
 This endpoint is used to get the price of a namespace, while explicitly
@@ -869,6 +855,107 @@ cryptocurrency (not necessarily Bitcoin).
                 },
             },
 
+## Legacy Get namespace price [GET /v1/prices/namespaces/{tld}]
+
+This endpoint is used to get the price of a namespace in Bitcoin.
+
++ Public Endpoint
++ Legacy Endpoint
++ Parameters
+  + tld: id (string) - namespace to query price for
++ Response 200 (application/json)
+  + Body
+
+             {
+               "satoshis": 4000000000,
+               "units": "BTC",
+               "amount": "4000000000"
+             }
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': {
+                    'units': {
+                        'type': 'string',
+                    },
+                    'amount': {
+                        'type': 'string',
+                        'pattern': '^[0-9]+$',
+                    },
+                    'satoshis': {
+                        'type': 'integer',
+                        'minimum': 0,
+                    },
+                },
+                'required': [ 'satoshis' ]
+            }
+
++ Response 400 (application/json)
+  + Body
+
+            { "error": "Invalid namepace" }
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': {
+                    'error': { 'type': 'string' },
+                },
+            }
+
+## Legacy Get name price [GET /v1/prices/names/{name}]
+
+This endpoint is used to get the price of a name in Bitcoin.
+
++ Public Endpoint
++ Legacy Endpoint
++ Parameters
+    + name: muneeb.id (string) - name to query price information for
++ Response 200 (application/json)
+  + Body
+
+               {
+                  "name_price": {
+                    "satoshis": 100000,
+                    "units": "BTC",
+                    "amount": "100000"
+                  },
+               }
+
+    + Schema
+
+               {
+                   'type': 'object',
+                   'properties': {
+                       'name_price': {
+                           'type': 'object',
+                           'properties': {
+                               'satoshis': { 'type': 'integer', 'minimum': 0 },
+                               'units': { 'type': 'string' },
+                               'amount': { 'type': 'string', 'pattern': '^[0-9]+$' }
+                           },
+                           'required': [ 'satoshis' ],
+                       },
+                      'required': [ 'name_price' ]
+                   }
+               }
+
++ Response 400 (application/json)
+  + Body
+
+            { "error": "Invalid name" }
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': {
+                    'error': { 'type': 'string' },
+                },
+            }
 # Group Blockchain Operations
 
 ## Get consensus hash [GET /v1/blockchains/{blockchainName}/consensus]
@@ -1324,8 +1411,8 @@ Get the Blockstack operations in a given block
   + Schema
 
             {
-             'type': 'array',
-             'items': {
+              'type': 'array',
+              'items': {
                  'type': 'object',
                  'properties': {
                      'address': {
@@ -1514,9 +1601,9 @@ Get the Blockstack operations in a given block
                      'txid',
                      'vtxindex'
                  ],
-               }
+                }
+              }
             }
-         }
 
 + Response 400 (application/json)
   + Body
@@ -1553,23 +1640,28 @@ Get the Blockstack operations in a given block
 + Response 200 (application/json)
   + Body
 
-               {
-                 "namespaces": [
-                   "id"
-                 ]
-               }
+            {
+              "namespaces": [
+                "id",
+                "helloworld",
+                "podcast",
+                "graphite",
+                "blockstack"
+              ]
+            }
 
   + Schema
-               {
-                  'type': 'object',
-                  'properties': {
-                     'namespaces': {
-                        'type': 'array',
-                        'items': { 'type': 'string' }
-                     }
-                  },
-                  'required': [ 'namespaces' ]
-               }
+
+            {
+               'type': 'object',
+               'properties': {
+                  'namespaces': {
+                     'type': 'array',
+                     'items': { 'type': 'string' }
+                  }
+               },
+               'required': [ 'namespaces' ]
+            }
                      
 ## Get namespace names [GET /v1/namespaces/{tld}/names?page={page}]
 
@@ -1614,6 +1706,352 @@ Fetch a list of names from the namespace.
   + Body
 
             { "error": "No such namespace" }
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': {
+                    'error': { 'type': 'string' },
+                },
+            }
+
+## Group Account Operations
+
+The set of methods in this section correspond to querying the states of
+Blockstack token accounts.  Each token account is represented by an account
+address, which is a [Crockford base-32](https://en.wikipedia.org/wiki/Base32#Crockford's_Base32)
+encoding of the RIPEMD160 hash of the SHA256 hash of one or more keys,
+plus a version byte and a 4-byte SHA256 checksum.
+Internally, Blockstack account addresses are generated and represented in the
+same way as p2pkh and p2sh Bitcoin addresses -- that is, a Blockstack account addresses
+are in 1-to-1 correspondance with Bitcoin addresses (Blockstack account addresses
+simply use a different encoding alphabet).
+We have a [reference library](http://github.com/blockstack/c32check) for
+helping developers generate and convert between Bitcoin and Blockstack addresses.
+
+Right now, an account can only own Stacks tokens (designiated in the API
+as having a toke type `STACKS`).  However, in the future
+Blockstack may be upgraded to support owning many different kinds of
+app-specific tokens.  The API presented here is designed to accomodate this
+possible development.
+
+## Get account status [GET /v1/accounts/{address}/{tokenType}/status]
+
+Get the status of an account's current token allocation.  The current number of
+tokens held by the account's address is equal to the difference between the
+`credit_value` and `debit_value`.  These two numbers always increase and are
+accounted in the smallest possible unit of the token type (e.g. microStacks for
+the `STACKS` token).  Programs that parse these values should be aware of this,
+and should use an appropriate numeric representation like `BigInteger` when
+parsing them.
+
+The last transaction's ID (`txid`) and transaction offset (`vtxindex`) are given.
+If `vtxindex` is 0, then the transaction ID corresponds to a "sentinal" transaction
+in Blockstack Core that indicates tokens getting generated or unlocked.  These
+transaction IDs will not appear in any block explorer, since they do not correspond
+to "real" transactions.
+
++ Public Endpoint
+* Parameters
+  + address: SP1T1F14QX4KZYFZH8A5286Z4AK9S7GY93KZ4ZZD7 (string) - address to query.  Can be either a base58check address or a c32check address
+  + tokenType: STACKS (string) - type of token to query (only `STACKS` is
+    supported right now).
++ Response 200 (application/json)
+  + Body
+
+            {
+              "address": "1BaqZJqwt2dcdxt6oa3mwSK4DiEyfXCgnZ",
+              "block_id": 589689,
+              "credit_value": "100000000000",
+              "debit_value": "6400000000",
+              "lock_transfer_block_id": 0,
+              "txid": "65e99765cb332b1026049527ecf297223612a12cd6adec9aeb555105f655428b",
+              "type": "STACKS",
+              "vtxindex": 1
+            }
+
+  + Schema
+
+            {
+              'type': 'object',
+              'properties': {
+                 'address': {
+                    'type': 'string',
+                    'pattern': "^([123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]+)$",
+                 },
+                 'block_id': { 'type': 'integer', 'minimum': 0 },
+                 'credit_value': { 'type': 'string', 'pattern': '^[0-9]+$' },
+                 'debit_value': { 'type': 'string', 'pattern': '^[0-9]+$' },
+                 'lock_transfer_block_id': { 'type': 'integer', 'minimum': 0 },
+                 'txid': { 'type': 'string', 'pattern': '^[0-9a-fA-F]{64}$' },
+                 'type': { 'type': 'string' },
+                 'vtxindex': { 'type': 'integer', 'minimum': 0 }
+              },
+              'required': [ 'address, 'block_id', 'credit_value', 'debit_value', 
+                            'lock_transfer_block_id', 'txid', 'type', 'vtxindex' ]
+            }
+
++ Response 400 (application/json)
+  + Body
+
+            { "error": "Invalid address" }
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': {
+                    'error': { 'type': 'string' },
+                },
+            }
+
++ Response 404 (application/json)
+  + Body
+
+            { "error": "Failed to get account record for STACKS ST3S24N1NK9JVGK6T06PR3E6HE7SBAH7VSG6C950F: No such account"}
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': {
+                    'error': { 'type': 'string' },
+                },
+            }
+
+## Get account tokens [GET /v1/accounts/{address}/tokens]
+
+Get the types of tokens held by a particular account, given its address.  For
+now, this can only be `STACKS` tokens.
+
++ Public Endpoint
+* Parameters
+  + address: SP1T1F14QX4KZYFZH8A5286Z4AK9S7GY93KZ4ZZD7 (string) - address to query.  Can be either a base58check address or a c32check address
++ Response 200 (application/json)
+  + Body
+
+            {
+              "tokens": [
+                  "STACKS"
+              ]
+            }
+
+  + Schema
+
+            {
+              'type': 'object',
+              'properties': {
+                'tokens': {
+                   'type': 'array',
+                   'items': { 'type': 'string' }
+                },
+                'required': [ 'tokens' ]
+              }
+            }
+
++ Response 400 (application/json)
+  + Body
+
+            { "error": "Invalid address" }
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': {
+                    'error': { 'type': 'string' },
+                },
+            }
+
+## Get account balance [GET /v1/accounts/{address}/{tokenType}/balance]
+
+Get the number of tokens held by a particular account, given the account's
+address and the token type.
+
+Note that the value returned by this endpoint can be very large, since the token
+balances are integers that represent the number of smallest units of the token
+(e.g. microStacks for the `STACKS` token).
+
+This endpoint returns a zero balance for accounts and token types that do not
+exist.
+
++ Public Endpoint
++ Parameters
+  + address: SP1T1F14QX4KZYFZH8A5286Z4AK9S7GY93KZ4ZZD7 (string) - address to query.  Can be either a base58check address or a c32check address
+  + tokenType: STACKS (string) - type of token to query (only `STACKS` is
+    supported right now).
++ Response 200 (application/json)
+  + Body
+
+            {
+              "balance": "936000000"
+            }
+
+  + Schema
+
+            {
+              'type': 'object',
+              'properties': {
+                 'balance' { 'type': 'string', 'pattern': '^[0-9+]$' }
+              }
+              'required': [ 'balance' ]
+            }
+     
+
++ Response 400 (application/json)
+  + Body
+
+            { "error": "Invalid address" }
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': {
+                    'error': { 'type': 'string' },
+                },
+            }
+
+## Get account history [GET /v1/accounts/{address}/history?page={pageNum}]
+
+Get a page of an account's transaction history.  Each entry in the history
+corresponds to the status of the account at a particular transaction.
+The history will be returned in reverse order -- the first item will be the
+latest transaction.
+
+Queries on addresses that do not correspond to an existing account will simply
+return an empty list.
+
++ Public Endpoint
++ Parameters
+  + address: SP1T1F14QX4KZYFZH8A5286Z4AK9S7GY93KZ4ZZD7 (string) - address to query.  Can be either a base58check address or a c32check address
+  + pageNum: 0 (integer) - page of the history to query
++ Response 200 (application/json)
+  + Body
+
+            [
+              {
+                "address": "1BaqZJqwt2dcdxt6oa3mwSK4DiEyfXCgnZ",
+                "block_id": 589689,
+                "credit_value": "100000000000",
+                "debit_value": "6400000000",
+                "lock_transfer_block_id": 0,
+                "txid": "65e99765cb332b1026049527ecf297223612a12cd6adec9aeb555105f655428b",
+                "type": "STACKS",
+                "vtxindex": 1
+              },
+              {
+                "address": "1BaqZJqwt2dcdxt6oa3mwSK4DiEyfXCgnZ",
+                "block_id": 589688,
+                "credit_value": "100000000000",
+                "debit_value": "0",
+                "lock_transfer_block_id": 0,
+                "txid": "c28d44fde97dbe59856fa62a4aa99b49c37291577a3e664621a6f03c77c08f47",
+                "type": "STACKS",
+                "vtxindex": 0
+              }
+            ]
+
+  + Schema
+
+            {
+              'type': 'array'
+              'items': {
+                 'type': 'object',
+                 'properties': {
+                    'address': {
+                       'type': 'string',
+                       'pattern': "^([123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]+)$",
+                    },
+                    'block_id': { 'type': 'integer', 'minimum': 0 },
+                    'credit_value': { 'type': 'string', 'pattern': '^[0-9]+$' },
+                    'debit_value': { 'type': 'string', 'pattern': '^[0-9]+$' },
+                    'lock_transfer_block_id': { 'type': 'integer', 'minimum': 0 },
+                    'txid': { 'type': 'string', 'pattern': '^[0-9a-fA-F]{64}$' },
+                    'type': { 'type': 'string' },
+                    'vtxindex': { 'type': 'integer', 'minimum': 0 }
+                 },
+                 'required': [ 'address, 'block_id', 'credit_value', 'debit_value', 
+                               'lock_transfer_block_id', 'txid', 'type', 'vtxindex' ]
+               }
+            }
+
++ Response 400 (application/json)
+  + Body
+
+            { "error": "Invalid address" }
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': {
+                    'error': { 'type': 'string' },
+                },
+            }
+
+## Get account statuses at block [GET /v1/accounts/{address}/history/{blockNum}]
+
+Get the status(es) of an account at a particular block height.  If the account
+was affected by a transaction at the given block height, the states the
+account passed through will be returned (i.e. at least two entries).  If the
+account was not affected at this block height, then the last state the account
+was in at that block height will be returned.
+
+If there is more than one state, then the states will be listed in reverse order
+chronologically, with the latest state as the first entry.
+
+If the account does not exist, then an empty list will be returned.
+
++ Public Endpoint
++ Parameters
+  + address: SP1T1F14QX4KZYFZH8A5286Z4AK9S7GY93KZ4ZZD7 (string) - address to query.  Can be either a base58check address or a c32check address
+  + blockNum: 589688 (integer) - page of the history to query
++ Response 200 (application/json)
+  + Body
+
+            [
+              {
+                "address": "1BaqZJqwt2dcdxt6oa3mwSK4DiEyfXCgnZ",
+                "block_id": 589688,
+                "credit_value": "100000000000",
+                "debit_value": "0",
+                "lock_transfer_block_id": 0,
+                "txid": "c28d44fde97dbe59856fa62a4aa99b49c37291577a3e664621a6f03c77c08f47",
+                "type": "STACKS",
+                "vtxindex": 0
+              }
+            ]
+
+  + Schema
+
+            {
+              'type': 'array'
+              'items': {
+                 'type': 'object',
+                 'properties': {
+                    'address': {
+                       'type': 'string',
+                       'pattern': "^([123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]+)$",
+                    },
+                    'block_id': { 'type': 'integer', 'minimum': 0 },
+                    'credit_value': { 'type': 'string', 'pattern': '^[0-9]+$' },
+                    'debit_value': { 'type': 'string', 'pattern': '^[0-9]+$' },
+                    'lock_transfer_block_id': { 'type': 'integer', 'minimum': 0 },
+                    'txid': { 'type': 'string', 'pattern': '^[0-9a-fA-F]{64}$' },
+                    'type': { 'type': 'string' },
+                    'vtxindex': { 'type': 'integer', 'minimum': 0 }
+                 },
+                 'required': [ 'address, 'block_id', 'credit_value', 'debit_value', 
+                               'lock_transfer_block_id', 'txid', 'type', 'vtxindex' ]
+               }
+            }
+
++ Response 400 (application/json)
+  + Body
+
+            { "error": "Invalid address" }
 
   + Schema
 
@@ -1689,6 +2127,7 @@ Note that [blockstack.js](https://github.com/blockstack/blockstack.js) does
                }
 
   + Schema
+
             {
                 'type': 'object',
                 'patternProperties': {
@@ -1790,6 +2229,7 @@ Searches for a profile using a search string.
                }
 
   + Schema
+
             {
                 'type': 'object',
                 'properties': {
@@ -1804,3 +2244,121 @@ Searches for a profile using a search string.
                  }
             }
 
+
+## Get Profile Index Data [GET /v1/index_files/profiles]
+
+Returns a 302 redirect to a data dump of the profiles indexed by the search indexer.
+If not configured by the server, it returns a 404.
+
++ Public Endpoint
++ Response 302 (application/json)
+  + Body
+  
+             {
+                "profileData": "https://storage.googleapis.com/blockstack-search_indexer_data/profile_data.json"
+             }
+
+## Get Profile Index Data [GET /v1/index_files/blockchain]
+
+Returns a 302 redirect to a data dump of the blockchain names indexed by the search indexer.
+If not configured by the server, it returns a 404.
+
++ Public Endpoint
++ Response 302 (application/json)
+  + Body
+  
+             {
+                "blockchainData": "https://storage.googleapis.com/blockstack-search_indexer_data/blockchain_data.json"
+             }
+
+
+## Resolve DID [GET /v1/dids/{did}]
+Resolve a Blockstack DID to its DID document object (DDO).  In practice, the DDO
+is stored in the same way as a user profile, but a few extra DDO-specific
+fields will be filled in by this endpoint (namely, `@context` and `publicKey`).
+
+Blockstack DIDs correspond to non-revoked, non-expired names.  A DID will not
+resolve if its underlying name is revoked or expired, or if the DID does not
+correspond to an existing name.
+
++ Public Endpoint
++ Subdomain Aware
++ Parameters
+  + did: `did:stack:v0:15gxXgJyT5tM5A4Cbx99nwccynHYsBouzr-0` (string) - DID to resolve
++ Response 200 (application/json)
+  + Body
+
+            {
+                "document": {
+                    "@context": "https://w3id.org/did/v1",
+                    "publicKey": [
+                        {
+                            "id": "did:stack:v0:15gxXgJyT5tM5A4Cbx99nwccynHYsBouzr-0",
+                            "publicKeyHex": "022af593b4449b37899b34244448726aa30e9de13c518f6184a29df40823d82840",
+                            "type": "secp256k1"
+                        }
+                    ],
+                    ... omitted for brevity ...
+                },
+                "public_key": "022af593b4449b37899b34244448726aa30e9de13c518f6184a29df40823d82840"
+            }
+
+   + Schema
+
+            {
+               "type": "object",
+               "properties": {
+                  "document": {
+                     "type": "object",
+                     "properties": {
+                        "@context": { "type": "string" },
+                        "publicKey": {
+                           "type": "array",
+                           "items": {
+                              "type": "object",
+                              "properties": {
+                                 "id": { "type": "string" },
+                                 "type": { "type": "string" },
+                                 "publicKeyHex": { "type": "string", "pattern": "^[0-9a-fA-F]$" },
+                              },
+                              "required": [ "id", "type", "publicKeyHex" ],
+                           },
+                        },
+                     },
+                     "required": [ "@context", "publicKey" ],
+                  },
+                  "public_key": { "type": "string", "pattern": "^[0-9a-fA-F]$" },
+               }
+               "required": [ "document", "public_key" ]
+            }
+
+
++ Response 400 (application/json)
+  + Body
+
+            {
+               "error": "Invalid DID"
+            }
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': { 'error': 'string' },
+                'required': [ 'error' ]
+            }
+
++ Response 404 (application/json)
+  + Body
+
+            {
+               "error": "Failed to get DID record: Failed to resolve DID to a non-revoked name"
+            }
+
+  + Schema
+
+            {
+                'type': 'object',
+                'properties': { 'error': 'string' },
+                'required': [ 'error' ]
+            }
