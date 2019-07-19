@@ -146,6 +146,7 @@ exclude:
   - _core/basic_usage.md
   - _core/blockstack_naming_service.md
   - _core/cli.md
+  - _core/blockstack-did-spec.md
   - _core/faq_evaluators.md
   - _core/gai.md
   - _core/glossary.md
