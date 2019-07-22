@@ -49,7 +49,7 @@ https://sale.stackstoken.com/stacks-token-sale/Eleven/wallet_address
 To view or change your Stacks address on Coinlist, do the following:
 
 1. Log into your Coinlist account.
-2. Enter the URL in this format:
+2. Enter a URL in this format:
   
    ```
   https://sale.stackstoken.com/stacks-token-sale/YOUR_COINLIST_USERNAME/wallet_address 
