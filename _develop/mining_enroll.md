@@ -28,36 +28,51 @@ To apply, do the following:
 
    Your application code can reside in a public or a private repository.
 
-2. Add your app to <a href="https://app.co/submit" target="\_blank">App.co</a>.
+2. Complete the  <a href="https://app.co/submit" target="\_blank">App.co</a> form.
 
-   Make sure you choose **Blockstack** from the **Authentication** list on the form.
+   You should fill out all the required fields. 
 
    <img src="images/add-app.png" alt="">
 
-3. Provide your pay out and tax materials.
+
+   {% include required-fields.md %}
+   
+   Make sure you choose **Blockstack** from the **Authentication** list on the form.
+
+
+3. Press **Submit App**.
+
+   The system responds with the a completion dialog and a link.  
 
 
 ## Provide pay out and tax materials
 
-After you complete the submission form on the App.co site **you must supply the following additional
-materials** for your application to be complete.
+After you complete the submission form on the App.co site **you must supply the additional
+materials** for your application to be complete. In this section, you use the link you received when you submitted to provide these material.
+
 
 <table class="uk-table uk-table-small uk-table-divider">
   <tr>
     <th>Required</th>
     <th>Why?</th>
-    <th>How to provide</th>
   </tr>
   <tr>
-    <td><strong>BTC address</strong></td>
+    <td><strong>Payment Details</strong></td>
     <td>The payout for App Mining is currently Bitcoin.  If you win, this is the address we will send your payout to. The address you provide will be visible in any related transactions via the blockchain.</td>
-    <td>Email to: <a href="mailto:mining@app.co" target="\_blank">mining@app.co</a></td>
   </tr>
   <tr>
-    <td><strong>Tax form</strong></td>
+    <td><strong>Identity verification</strong></td>
     <td>Required for both US citizens and non-citizens. US Citizens should <a href="http://bit.ly/2QrRbSD" target="\_">fill out a W-9 form</a>.
     <p>Non-citizens should fill out <a href="http://bit.ly/2QPo9Mo" target="\_blank">the applicable W-8 form</a>. Please note, the version of the W-8 form you must fill out depends on your country's treaty status with the US. We cannot assist you in completing the form: you are responsible for completing it accurately.</p></td>
-    <td><a href="https://www.dropbox.com/request/sCpPzIILkhKFvfDjB620" target="\_blank">Secure dropbox link</a></td>
+  </tr>
+    <tr>
+    <td><strong>Document Signing</strong></td>
+    <td>You must sign our participation agreement to become eligible to participate in App Mining. Signing is a process, you provide an email and download some accompanying materials. Then, you complete the signing process via an olnine process.</td>
+  </tr>
+  <tr>
+    <td><strong>Tax Documents</strong></td>
+    <td>Person's or entities (businesses or organizations and so forth) must provide tax documents to participate. US persons or entitie supply a <a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target=“\_blank">IRS Form W-9</a>. Persons outside of the US supply a <a href=“https://www.irs.gov/pub/irs-pdf/iw8.pdf” target=“\_blank">IRS Form W-8</a> while entities supply a <a href=“[HTTPS](https://www.irs.gov/pub/irs-pdf/fw8bene.pdf)” target=“\_blank">IRS Form W-8BEN-E</a>. You upload your completed forms via Dropbox, a DropBox account is <em>not</em> required to upload.
+    </td>
   </tr>
 </table>
 
