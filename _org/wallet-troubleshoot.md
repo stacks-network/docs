@@ -37,17 +37,22 @@ To change from a software-only wallet to a hardware wallet, do the following:
 If you purchased Stacks via Coinlist during in the token sale, your Stacks address is located at this URL:
 
 ```
-https://sale.stackstoken.com/stacks-token-sale/YOUR_COINLIST_USERNAME/WALLET_ADDRESS 
+https://sale.stackstoken.com/stacks-token-sale/YOUR_COINLIST_USERNAME/wallet_address 
 ```
 
-For example, if your Coinlist user name is `Eleven` and the Stacks wallet address you provided is `SM3KJBA4RZ7Z20KD2HBXNSXVPCR1D3CRAV6Q05MKT`, the URL you would use is:
+For example, if your Coinlist user name is `Eleven`, the URL you would use is:
 
 ```
-https://sale.stackstoken.com/stacks-token-sale/Eleven/SM3KJBA4RZ7Z20KD2HBXNSXVPCR1D3CRAV6Q05MKT 
+https://sale.stackstoken.com/stacks-token-sale/Eleven/wallet_address 
 ```
 
 To view or change your Stacks address on Coinlist, do the following:
 
 1. Log into your Coinlist account.
-2. Enter the URL for your Stack's token.
+2. Enter a URL in this format:
+  
+   ```
+  https://sale.stackstoken.com/stacks-token-sale/YOUR_COINLIST_USERNAME/wallet_address 
+  ```
+
 3. Change your address if necessary.
