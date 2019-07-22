@@ -51,63 +51,8 @@ To add an app, do the following:
    <img src="images/submit-app.png" alt="">
 
 3. Complete the following fields.
-
-    <table class="uk-table-striped uk-table-small">
-    <thead>      
-     <tr>
-        <th class="uk-width-1-2"><strong>Field</strong></th>
-        <th>Description</th>
-      </tr>
-      </thead>
-      <tr>
-        <td><strong>Your Name</strong></td>
-        <td>Your first and last name.</td>
-      </tr>
-      <tr>
-      <td><strong>Your Email</strong></td>
-        <td>A valid email address. This is the email where we will send you instructions for getting your Zero to DApp t-shirt.</td>
-      </tr>    
-      <tr>
-        <td><strong>App Name</strong></td>
-        <td>Name of your sample. <code>USERNAME: Animal Kingdom</code> or, if you renamed it, the name you gave your application.</td>
-      </tr>
-      <tr>
-        <td><strong>Short description</strong></td>
-        <td>Describe your application.&nbsp;&nbsp;</td>
-      </tr>
-      <tr>
-        <td><strong>Website</strong></td>
-        <td>The URL of the website where you deployed your application.&nbsp;&nbsp;</td>
-      </tr>
-      <tr>
-        <td><strong>App icon URL</strong></td>
-        <td> <code>URL_DEPLOYED_SITE/icon-192x192.png</code> for example, <code>https://animalkingdoms.netlify.com/icon-192x192.png</code> &nbsp;&nbsp;</td>
-      </tr>
-      <tr>
-        <td><strong>Open Source URL</strong></td>
-        <td>You can leave this blank for a sample application.&nbsp;&nbsp;</td>
-      </tr>
-      <tr>
-        <td><strong>Twitter Handle</strong></td>
-        <td>Optionally enter a Twitter handle if you have one.</td>
-      </tr>
-      <tr>
-        <td><strong>Category</strong></td>
-        <td><strong>Sample Blockstack Apps</strong>; make sure you choose this category.</td>
-      </tr>
-      <tr>
-        <td><strong>Blockchain</strong></td>
-        <td>Leave this as is.</td>
-      </tr>
-      <tr>
-        <td><strong>Storage</strong></td>
-        <td>Choose Gaia if you are using it.</td>
-      </tr>
-      <tr>
-        <td><strong>Authentication</strong></td>
-        <td>Choose Blockstack.</td>
-      </tr>
-    </table>    
+    
+   {% include required-fields.md %}
 
 4. Check **App is publicly accessible and user-ready**.
 5. Agree to the terms.
