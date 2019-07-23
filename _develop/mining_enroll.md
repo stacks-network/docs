@@ -4,9 +4,9 @@ permalink: /:collection/:path.html
 ---
 # How to enroll in App Mining
 
-Application mining pays developers for building decentralized applications
-(DApps). Enrolling in App Mining also makes your application eligible for
-rewards.
+Application mining rewards developers for building decentralized applications
+(DApps). You must enroll your application to be eligible for these
+rewards. This section explains the enrollment process and covers the following topics:
 
 * TOC
 {:toc}
@@ -17,10 +17,7 @@ rewards.
 
 ## Complete the add and submission forms on App.co
 
-Make sure you enroll at least one business week in advance of the month you
-would first like your app to complete.  You need only enroll in App Mining once.  A single
-submission enrolls your app in the month you submit and every month following
-automatically.
+Make sure you enroll in advance of the month you would first like your app to complete.  You need only enroll in App Mining once.  A single submission enrolls your app in the month you submit and every month following automatically.
 
 To apply, do the following:
 

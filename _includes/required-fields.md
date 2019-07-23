@@ -35,7 +35,7 @@
       </tr>
       <tr>
         <td><strong>Twitter Handle</strong></td>
-        <td>Optionally enter a Twitter handle if you have one.</td>
+        <td>Optionally enter a Twitter handle for your application, for example `@coolapp`.</td>
       </tr>
       <tr>
         <td><strong>Category</strong></td>
