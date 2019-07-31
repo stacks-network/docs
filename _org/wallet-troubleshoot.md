@@ -56,3 +56,16 @@ To view or change your Stacks address on Coinlist, do the following:
   ```
 
 3. Change your address if necessary.
+
+## I tried to login to CoinList with my AngelList account. Now, I can’t sign in. How do I access my account?
+
+If you previously set up your CoinList account by logging in with your AngelList credentials and you are having issues signing into your account, you must create a separate password for Coinlist. To do this:
+
+1. Go to <a href="https://stackstoken.net/login" target="_blank">stackstoken.net</a>.
+2. Select **Forgot your Password?**.
+3. Enter the email associated with your AngelList account.
+4. Select **Send recovery email**.
+5. Locate the recovery email in your email software.
+6. Use the instructions in the recovery email to create a unique password for your CoinList account.
+
+Going forward, you can access your CoinList account by logging in with your email and new password.
