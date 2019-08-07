@@ -12,7 +12,7 @@ Welcome to the Blockstack Zero-to-DApp tutorial. The tutorial uses the
 Blockstack platform to teach you about blockchain technology and the Blockstack
 Ecosystem. The tutorial teaches you what makes a DApp different than a
 traditional application. You'll build and run a DApp. You'll also learn about
-the Blockstack Signature Fund and the Application Mining program which awards funds to DApp developer every month.
+the Application Mining program which awards funds to DApp developer every month.
 
 The tutorial has four parts of which this is first, and it contains the
 following topics:
@@ -115,8 +115,6 @@ vehicles, need public and private coalitions to grow. The centralized hosting
 and services known as cloud computing were once new paradigms. It was the
 investment of billions in funds and incentives from governments and private
 companies that grew the cloud computing market.  
-
-{% include signature_fund.md %}
 
 
 <div class="uk-card uk-card-default uk-card-body">
