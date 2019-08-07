@@ -57,16 +57,38 @@ helps users rapidly start new projects and streamline the maintenance of
 existing projects.
 
 
-1. Install Yeoman.
+1. Use `npm` to install Yeoman and the Blockstack generator
 
     ```bash
-    npm install -g yo
+    npm install -g yo generator-blockstack
     ```
-2. Install the Blockstack application generator.
 
-    ```bash
-    npm install -g generator-blockstack
-    ```
+You can use the generator to create starter applications for these frameworks:
+
+<table class="uk-table">
+  <tr>
+    <th>Framework</th>
+    <th>Use this command to install</th>
+  </tr>
+  <tr>
+    <td>Plain Javascript</td>
+    <td><code> blockstack</code></td>
+  </tr>
+  <tr>
+    <td>Webpack</td>
+    <td><code> blockstack:webpack</code></td>
+  </tr>
+  <tr>
+    <td>React</td>
+    <td><code> blockstack:react</code></td>
+  </tr>
+  <tr>
+    <td>Vue</td>
+    <td><code> blockstack:vue</code></td>
+  </tr>
+</table>
+
+For this example, you will use plain Javascript.
 
 ## Generate an initial Blockstack application
 
@@ -84,10 +106,11 @@ In this section, you build an initial React.js application called `hello-world-t
     cd hello-world-tutorial
     ```
 
-3. Use Yeoman and the Blockstack application generator to create your initial `hello-world-tutorial` application.
+3. Create your initial `hello-world-tutorial` application.
 
     ```bash
-    yo blockstack
+    $ npm create yo blockstack
+    npx: installed 15 in 1.482s
     ```
 
     You should see several interactive prompts.
@@ -131,7 +154,7 @@ The initial application you create is a generic Javascript application you run
 with a local express node. Before you continue, take a moment to examine the
 structure of this generic application structure. In the `/` (root) of the generated sample you have the following files:
 
-| File             | Description                       |
+| File/directory             | Description                       |
 |------------------|-----------------------------------|
 | `.editorconfig`    | Sets universal values for editor. |
 | `.gitignore`       | Git configuration file.           |
@@ -139,6 +162,9 @@ structure of this generic application structure. In the `/` (root) of the genera
 | `package.json`     | Specifies required packages.       |
 | `requires.js`      | A Javascript module loader.        |
 | `server.js`        | Simple static server configuration.|
+| `node_modules`     | Package files installed by `npm`.|
+| `public`           | Starter web app code.|
+
 
 In the `public` folder you find these files:
 
@@ -147,8 +173,7 @@ In the `public` folder you find these files:
 | `app.css`   | Contains application styles.             |
 | `app.js`    | Main application file.                   |
 | `bootstrap.min.css` | Minified css for production.     |
-| `favicon.ico`      | Website icon.
-| `icon-192x192.png` | Application icon.                  |
+| `favicon.ico`      | Web app site icon.                |
 | `index.html`       | Single page.                      |
 | `manifest.json`    | Tells the browser about the application and how it should behave.|
 | `robots.txt`       | Configures crawling and indexing. |
@@ -179,7 +204,7 @@ and open your browser 'http://localhost:5000'.  From the root of your new applic
 
    You should see a simple application:
 
-   ![](images/initial-app.gif)
+   ![](images/initial-app.png)
 
 4. Choose **Sign In with Blockstack**.
 
@@ -293,7 +318,7 @@ user home screens. The contents are very simple:
   "start_url": "localhost:5000",
   "description": "A simple demo of Blockstack Auth",
   "icons": [{
-    "src": "https://helloblockstack.com/icon-192x192.png",
+    "src": "favicon.ico",
     "sizes": "192x192",
     "type": "image/png"
   }]

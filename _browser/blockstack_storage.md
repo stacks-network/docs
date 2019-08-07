@@ -142,7 +142,7 @@ In this section, you build an initial React.js application called Publik.
 
    You should see a simple React app.
 
-	 ![](images/initial-app.gif)
+	 ![](images/initial-app.png)
 
 8. Choose **Sign In with Blockstack**.
 
