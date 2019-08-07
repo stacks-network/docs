@@ -40,7 +40,7 @@ TryMyUI tests occur from the beginning to middle of the month, and Blockstack PB
 
 ## New Internet Labs 
 
-New Internet Labs ranks apps based on their use of Blockstack Authentication (Auth) and Gaia as a measure of Digital Rights. New Internet Labs may test on any browser or device of their choosing for web apps. If the application is a mobile app, the it will be tested on the appropriate mobile OS. 
+New Internet Labs ranks apps based on their use of Blockstack Authentication (Auth) and Gaia as a measure of Digital Rights. New Internet Labs may test on any browser or device of their choosing for web apps. If the application is a mobile app, then it is tested on the appropriate mobile OS. 
 
 For authentication, the scoring criteria follows: 
 
