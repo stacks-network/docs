@@ -36,11 +36,11 @@ Y = final (rolled) score from previous month
 0.75X + 0.25Y = new month’s final score
 ```
 
-TryMyUI tests occur from the beginning to middle of the month, and Blockstack PBC cannot provide exact timing of the tests. App founders should not make any breaking changes to the app during this time. TryMyUI testers are English speaking. TryMyUI provides niche audiences based on the type of app.  Founders can take this brief survey to fill out their preferred audiences.  Read more about TryMyUI Scoring and recommendations in our [Application Miner's Guide to Promoting your App]({{ site.baseurl }}/community/app-miners-guide#recommendations-from-trymyui). 
+TryMyUI tests occur from the beginning to middle of the month, and Blockstack PBC cannot provide exact timing of the tests. App founders should not make any breaking changes to the app during this time. TryMyUI testers are English speaking. TryMyUI provides niche audiences based on the type of app.  Founders can take <a href="https://docs.google.com/forms/d/1y_1i5eTYpUQ0119cUieFaj4B9CPfmJilz9zIM5fGjgU/viewform?edit_requested=true" target="_blank">this brief survey</a> to fill out their preferred audiences.  Read more about TryMyUI Scoring and recommendations in our [App Miner's Guide]({{ site.baseurl }}/community/app-miners-guide#recommendations-from-trymyui). 
 
 ## New Internet Labs 
 
-New Internet Labs ranks apps based on their use of Blockstack Authentication (Auth) and Gaia as a measure of Digital Rights. New Internet Labs may test on any browser or device of their choosing for web apps, and the OS that matches the app if it is mobile. 
+New Internet Labs ranks apps based on their use of Blockstack Authentication (Auth) and Gaia as a measure of Digital Rights. New Internet Labs may test on any browser or device of their choosing for web apps. If the application is a mobile app, the it will be tested on the appropriate mobile OS. 
 
 For authentication, the scoring criteria follows: 
 
