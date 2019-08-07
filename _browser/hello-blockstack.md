@@ -57,7 +57,7 @@ helps users rapidly start new projects and streamline the maintenance of
 existing projects.
 
 
-1. Use npm to install Yeoman and the Blockstack generator
+1. Use `npm` to install Yeoman and the Blockstack generator
 
     ```bash
     npm install -g yo generator-blockstack
@@ -106,7 +106,7 @@ In this section, you build an initial React.js application called `hello-world-t
     cd hello-world-tutorial
     ```
 
-3. Use Yeoman and the Blockstack application generator to create your initial `hello-world-tutorial` application.
+3. Create your initial `hello-world-tutorial` application.
 
     ```bash
     $ npm create yo blockstack
