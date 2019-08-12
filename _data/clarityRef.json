@@ -44,7 +44,7 @@
       "name": "<= (less than or equal)",
       "input_type": "int, int",
       "output_type": "bool",
-      "signature": "(> i1 i2)",
+      "signature": "(<= i1 i2)",
       "description": "Compares two integers, returning true if `i1` is less than or equal to `i2` and `false` otherwise.",
       "example": "(<= 1 1) ;; Returns 'true\n(<= 5 2) ;; Returns 'false\n"
     },
