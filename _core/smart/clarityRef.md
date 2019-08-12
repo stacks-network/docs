@@ -129,27 +129,36 @@ Response types represent the result of a public function. Use this type to indic
 
 Response types contain two subtypes -- a response type in the event of `ok` (that is, a public function returns an integer code on success) and an `err` type (that is, a function returns a buffer on error).
 
-## Native variables
+## Keyword reference
 
-The Clarity language includes native variables you can use in your contract.
+{% capture keyword_list %}
+{% for entry in site.data.clarityRef.keywords %}
+{{ entry.name }}||{{ entry.output_type }}||{{ entry.description }}||{{ entry.example }}
+{% if forloop.last == false %}::{% endif%}
+{% endfor %}
+{% endcapture %}
+{% assign keyword_array = keyword_list | split: '::' | sort %}	
+{% for keyword in keyword_array %}
+{% assign keyword_vals = keyword | split: '||' %}
+### {{keyword_vals[0] | lstrip | rstrip}}
 
-### block-height
+<code>{{keyword_vals[1] | lstrip | rstrip }}</code> 
 
-The height of a block in the Stacks blockchain.  Block height is the number of blocks in the chain between any given block and the very first block in the blockchain. You can obtain a `block-height` via the `get-block-info` function.
+{{keyword_vals[2]}}
 
-### contract-name
+**Example**
 
-Represents the current contract.
+```cl
+{{keyword_vals[3] | lstrip | rstrip }}
+```
+<hr class="uk-divider-icon">
+{% endfor %}
 
-### tx-sender
 
-Represents the current principal. This variable does not change during inter-contract calls. This means that if a transaction invokes a function in a given smart contract, that function is able to make calls into other smart contracts on your behalf. This enables a wide variety of applications, but it comes with some dangers for users of smart contracts. Static analysis of Clarity contracts guarantees the language allows clients to deduce which functions a given smart contract will ever call. Good clients should always warn users about any potential side effects of a given transaction.
-
-
-## Clarity function reference
+## Function reference
 
 {% capture function_list %}
-{% for entry in site.data.clarityRef %}
+{% for entry in site.data.clarityRef.functions %}
 {{ entry.name }}||{{ entry.signature }}||{{ entry.input_type }}||{{ entry.output_type }}||{{ entry.description }}||{{ entry.example }}
 {% if forloop.last == false %}::{% endif%}
 {% endfor %}
@@ -162,20 +171,16 @@ Represents the current principal. This variable does not change during inter-con
 **Syntax**
 ```{{function_vals[1] | lstrip | rstrip }} ```
 
-<table class="uk-table uk-table-small">
-<tr>
-<th class="uk-width-small">Input type:</th>
-<td><code>{{function_vals[2] | lstrip | rstrip }}</code></td>
-</tr>
-<tr>
-<th>Output type:</th>
-<td><code>{{function_vals[3] | rstrip }}</code></td>
-</tr>
-</table>
+INPUT: <code>{{function_vals[2] | lstrip | rstrip }}</code><br>
+OUTPUT: <code>{{function_vals[3] | lstrip | rstrip }}</code>
+
 {{function_vals[4]}}
-<h4>Example</h4>
+
+**Example**
+
 ```cl
 {{function_vals[5] | lstrip | rstrip }}
 ```
 <hr class="uk-divider-icon">
 {% endfor %}
+

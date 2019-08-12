@@ -71,11 +71,10 @@ The `_data/cliRef.json` file is generated from the `blockstack-cli` subcommand `
 
 3. Make sure the generated docs are clean.
 
-## Clarity Command Line
+## Clarity Reference
 
-As of 8/19 Clarity is in the [develop](https://github.com/blockstack/blockstack-core/tree/develop) branch of core.  You can build the Clarity command line from the Docker image.
+As of 8/12/19 Clarity is in the [develop](https://github.com/blockstack/blockstack-core/tree/develop) branch of core.  You can build the Clarity command line from the Docker image. `core/src/vm/docs/mod.rs`
 
-docker run -it -v $HOME/blockstack-dev-data:/data/ 6524 blockstack-core docgen | jsonpp > ~/repos/docs.blockstack/_data/clarityRef.json
 
 1. Pull the latest developer preview from the Docker Hub.
 
@@ -89,7 +88,7 @@ docker run -it -v $HOME/blockstack-dev-data:/data/ 6524 blockstack-core docgen |
    docker run -it -v $HOME/blockstack-dev-data:/data/ blockstack/blockstack-core:clarity-developer-preview blockstack-core docgen | jsonpp > ~/repos/docs.blockstack/_data/clarityRef.json
    ```
 
-3. Build the documentation and verify the CLI docs are building correctly.
+3. Build the documentation and verify the Clarity reference is building correctly.
 
 
 # Technology Reference
