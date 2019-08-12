@@ -2,7 +2,7 @@
 layout: usenew
 permalink: /:collection/:path.html
 ---
-# Intall or uninstall the local browser
+# Install or uninstall the local browser
 {:.no_toc}
 
 If all you want to do is create, manage, and fund an identity and then interact
