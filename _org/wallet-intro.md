@@ -1,5 +1,6 @@
 ---
 layout: org
+description: "How to use the Blockstack Software"
 permalink: /:collection/:path.html
 ---
 # Understand cryptocurrency wallets

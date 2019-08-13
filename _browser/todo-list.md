@@ -1,5 +1,6 @@
 ---
 layout: learn
+description: Single-page application with Blockstack
 permalink: /:collection/:path.html
 ---
 # Todo List Application Tutorial

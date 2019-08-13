@@ -1,5 +1,6 @@
 ---
 layout: core
+description: "Blockstack smart contracting language"
 permalink: /:collection/:path.html
 ---
 # Quickstart for the SDK

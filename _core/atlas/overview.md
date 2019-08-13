@@ -1,5 +1,6 @@
 ---
 layout: core
+description: "Blockstack Atlas network"
 permalink: /:collection/:path.html
 ---
 #  Overview of the Atlas network

@@ -1,5 +1,6 @@
 ---
 layout: community
+description: Marketing insights for Blockstack App miners
 permalink: /:collection/:path.html
 toc: true
 ---

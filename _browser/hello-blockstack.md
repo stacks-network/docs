@@ -1,5 +1,6 @@
 ---
 layout: learn
+description: Simple Blockstack web App
 permalink: /:collection/:path.html
 ---
 # Hello, Blockstack Tutorial

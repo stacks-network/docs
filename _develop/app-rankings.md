@@ -1,5 +1,6 @@
 ---
 layout: learn
+description: Blockstack app mining documentation
 permalink: /:collection/:path.html
 ---
 # How scores become rankings
