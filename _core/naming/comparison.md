@@ -1,5 +1,6 @@
 ---
 layout: core
+description: "Blockstack naming service (BNS)"
 permalink: /:collection/:path.html
 ---
 # Naming system feature comparison

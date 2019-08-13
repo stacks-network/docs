@@ -1,5 +1,6 @@
 ---
 layout: learn
+description: Blockstack Zero-to-DApp tutorial
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---

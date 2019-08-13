@@ -1,5 +1,6 @@
 ---
 layout: org
+description: "Blockstack token holder documentation"
 permalink: /:collection/:path.html
 ---
 # Learn more about the Stacks token

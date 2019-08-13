@@ -1,5 +1,6 @@
 ---
 layout: learn
+description: How to use Blockstack on iOS Mobile
 permalink: /:collection/:path.html
 ---
 # iOS SDK Tutorial (Pre-release)
