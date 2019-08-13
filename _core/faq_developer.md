@@ -1,5 +1,6 @@
 ---
 layout: learn
+description: Blockstack DApp technical FAQs
 permalink: /:collection/:path.html
 ---
 # DApp Developer FAQs

@@ -170,7 +170,7 @@ defaults:
     values:
       comments: true
       image: /assets/img/touch-icon.png
-      description: "Blockstack Network docs for investors,users, and developers."
+      description: "Blockstack Network docs for investors, users, and developers."
 
 collections:
   android:

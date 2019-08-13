@@ -1,5 +1,6 @@
 ---
 layout: learn
+description: Learn about the Android SDK
 permalink: /:collection/:path.html
 ---
 # Android SDK Tutorial (Pre-release)

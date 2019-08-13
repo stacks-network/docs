@@ -1,5 +1,6 @@
 ---
 layout: learn
+description: Blockstack developer documentation
 permalink: /:collection/:path.html
 ---
 # Add Auth to your DApp
