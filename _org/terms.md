@@ -1,5 +1,6 @@
 ---
 layout: org
+description: "Blockstack Network documentation"
 permalink: /:collection/:path.html
 ---
 # Glossary

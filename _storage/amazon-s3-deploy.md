@@ -1,5 +1,6 @@
 ---
 layout: storage
+description: "Storing user data with Blockstack"
 permalink: /:collection/:path.html
 ---
 # Configure a hub on Amazon EC2

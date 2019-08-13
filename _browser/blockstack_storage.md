@@ -1,5 +1,6 @@
 ---
 layout: learn
+description: Learn how to implement Gaia in a DApp
 permalink: /:collection/:path.html
 ---
 # Blockstack Storage Tutorial
