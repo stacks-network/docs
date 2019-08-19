@@ -137,22 +137,6 @@
       "example": "(let ((a 2) (b (+ 5 6 7))) (print a) (print b) (+ a b)) ;; Returns 20"
     },
     {
-      "name": "fetch-var",
-      "input_type": "VarName",
-      "output_type": "A",
-      "signature": "(fetch-var var-name)",
-      "description": "The `fetch-var` function looks up and returns an entry from a contract's data map.\nThe value is looked up using `var-name`.",
-      "example": "(fetch-var cursor) ;; Returns cursor"
-    },
-    {
-      "name": "set-var!",
-      "input_type": "VarName, AnyType",
-      "output_type": "bool",
-      "signature": "(set-var! var-name expr1)",
-      "description": "The `set-var!` function sets the value associated with the input variable to the \ninputted value.",
-      "example": "(set-var! cursor (+ cursor 1)) ;; Returns 'true"
-    },
-    {
       "name": "map",
       "input_type": "Function(A) -> B, (list A)",
       "output_type": "(list B)",
@@ -177,44 +161,60 @@
       "example": "(list (+ 1 2) 4 5) ;; Returns [3 4 5]"
     },
     {
-      "name": "fetch-entry",
-      "input_type": "MapName, tuple",
-      "output_type": "(optional (tuple))",
-      "signature": "(fetch-entry map-name key-tuple)",
-      "description": "The `fetch-entry` function looks up and returns an entry from a contract's data map.\nThe value is looked up using `key-tuple`.\nIf there is no value associated with that key in the data map, the function returns a (none) option. Otherwise,\nit returns (some value)",
-      "example": "(expects! (fetch-entry names-map (tuple (name \"blockstack\"))) (err 1)) ;; Returns (tuple (id 1337))\n(expects! (fetch-entry names-map ((name \"blockstack\"))) (err 1)) ;; Same command, using a shorthand for constructing the tuple\n"
+      "name": "var-get",
+      "input_type": "VarName",
+      "output_type": "A",
+      "signature": "(var-get var-name)",
+      "description": "The `var-get` function looks up and returns an entry from a contract's data map.\nThe value is looked up using `var-name`.",
+      "example": "(var-get cursor) ;; Returns cursor"
     },
     {
-      "name": "fetch-contract-entry",
+      "name": "var-set!",
+      "input_type": "VarName, AnyType",
+      "output_type": "bool",
+      "signature": "(var-set! var-name expr1)",
+      "description": "The `var-set!` function sets the value associated with the input variable to the \ninputted value.",
+      "example": "(var-set! cursor (+ cursor 1)) ;; Returns 'true"
+    },
+    {
+      "name": "map-get",
+      "input_type": "MapName, tuple",
+      "output_type": "(optional (tuple))",
+      "signature": "(map-get map-name key-tuple)",
+      "description": "The `map-get` function looks up and returns an entry from a contract's data map.\nThe value is looked up using `key-tuple`.\nIf there is no value associated with that key in the data map, the function returns a (none) option. Otherwise,\nit returns (some value)",
+      "example": "(expects! (map-get names-map (tuple (name \"blockstack\"))) (err 1)) ;; Returns (tuple (id 1337))\n(expects! (map-get names-map ((name \"blockstack\"))) (err 1)) ;; Same command, using a shorthand for constructing the tuple\n"
+    },
+    {
+      "name": "contract-map-get",
       "input_type": "ContractName, MapName, tuple",
       "output_type": "(optional (tuple))",
-      "signature": "(fetch-contract-entry contract-name map-name key-tuple)",
-      "description": "The `fetch-contract-entry` function looks up and returns an entry from a\ncontract other than the current contract's data map. The value is looked up using `key-tuple`.\nIf there is no value associated with that key in the data map, the function returns a (none) option. Otherwise,\nit returns (some value).",
-      "example": "(expects! (fetch-contract-entry names-contract names-map (tuple (name \"blockstack\")) (err 1))) ;; Returns (tuple (id 1337))\n(expects! (fetch-contract-entry names-contract names-map ((name \"blockstack\")) (err 1)));; Same command, using a shorthand for constructing the tuple\n"
+      "signature": "(contract-map-get contract-name map-name key-tuple)",
+      "description": "The `contract-map-get` function looks up and returns an entry from a\ncontract other than the current contract's data map. The value is looked up using `key-tuple`.\nIf there is no value associated with that key in the data map, the function returns a (none) option. Otherwise,\nit returns (some value).",
+      "example": "(expects! (contract-map-get names-contract names-map (tuple (name \"blockstack\")) (err 1))) ;; Returns (tuple (id 1337))\n(expects! (contract-map-get names-contract names-map ((name \"blockstack\")) (err 1)));; Same command, using a shorthand for constructing the tuple\n"
     },
     {
-      "name": "set-entry!",
+      "name": "map-set!",
       "input_type": "MapName, tuple_A, tuple_B",
       "output_type": "bool",
-      "signature": "(set-entry! map-name key-tuple value-tuple)",
-      "description": "The `set-entry!` function sets the value associated with the input key to the \ninputted value. This function performs a _blind_ update; whether or not a value is already associated\nwith the key, the function overwrites that existing association.",
-      "example": "(set-entry! names-map (tuple (name \"blockstack\")) (tuple (id 1337))) ;; Returns 'true\n(set-entry! names-map ((name \"blockstack\")) ((id 1337))) ;; Same command, using a shorthand for constructing the tuple\n"
+      "signature": "(map-set! map-name key-tuple value-tuple)",
+      "description": "The `map-set!` function sets the value associated with the input key to the \ninputted value. This function performs a _blind_ update; whether or not a value is already associated\nwith the key, the function overwrites that existing association.",
+      "example": "(map-set! names-map (tuple (name \"blockstack\")) (tuple (id 1337))) ;; Returns 'true\n(map-set! names-map ((name \"blockstack\")) ((id 1337))) ;; Same command, using a shorthand for constructing the tuple\n"
     },
     {
-      "name": "insert-entry!",
+      "name": "map-insert!",
       "input_type": "MapName, tuple_A, tuple_B",
       "output_type": "bool",
-      "signature": "(insert-entry! map-name key-tuple value-tuple)",
-      "description": "The `insert-entry!` function sets the value associated with the input key to the \ninputted value if and only if there is not already a value associated with the key in the map.\nIf an insert occurs, the function returns `true`. If a value already existed for\nthis key in the data map, the function returns `false`.",
-      "example": "(insert-entry! names-map (tuple (name \"blockstack\")) (tuple (id 1337))) ;; Returns 'true\n(insert-entry! names-map (tuple (name \"blockstack\")) (tuple (id 1337))) ;; Returns 'false\n(insert-entry! names-map ((name \"blockstack\")) ((id 1337))) ;; Same command, using a shorthand for constructing the tuple\n"
+      "signature": "(map-insert! map-name key-tuple value-tuple)",
+      "description": "The `map-insert!` function sets the value associated with the input key to the \ninputted value if and only if there is not already a value associated with the key in the map.\nIf an insert occurs, the function returns `true`. If a value already existed for\nthis key in the data map, the function returns `false`.",
+      "example": "(map-insert! names-map (tuple (name \"blockstack\")) (tuple (id 1337))) ;; Returns 'true\n(map-insert! names-map (tuple (name \"blockstack\")) (tuple (id 1337))) ;; Returns 'false\n(map-insert! names-map ((name \"blockstack\")) ((id 1337))) ;; Same command, using a shorthand for constructing the tuple\n"
     },
     {
-      "name": "delete-entry!",
+      "name": "map-delete!",
       "input_type": "MapName, tuple",
       "output_type": "bool",
-      "signature": "(delete-entry! map-name key-tuple)",
-      "description": "The `delete-entry!` function removes the value associated with the input key for\nthe given map. If an item exists and is removed, the function returns `true`.\nIf a value did not exist for this key in the data map, the function returns `false`.",
-      "example": "(delete-entry! names-map (tuple (name \"blockstack\"))) ;; Returns 'true\n(delete-entry! names-map (tuple (name \"blockstack\"))) ;; Returns 'false\n(delete-entry! names-map ((name \"blockstack\"))) ;; Same command, using a shorthand for constructing the tuple\n"
+      "signature": "(map-delete! map-name key-tuple)",
+      "description": "The `map-delete!` function removes the value associated with the input key for\nthe given map. If an item exists and is removed, the function returns `true`.\nIf a value did not exist for this key in the data map, the function returns `false`.",
+      "example": "(map-delete! names-map (tuple (name \"blockstack\"))) ;; Returns 'true\n(map-delete! names-map (tuple (name \"blockstack\"))) ;; Returns 'false\n(map-delete! names-map ((name \"blockstack\"))) ;; Same command, using a shorthand for constructing the tuple\n"
     },
     {
       "name": "tuple",
@@ -230,7 +230,7 @@
       "output_type": "A",
       "signature": "(get key-name tuple)",
       "description": "The `get` function fetches the value associated with a given key from the supplied typed tuple.\nIf an `Optional` value is supplied as the inputted tuple, `get` returns an `Optional` type of the specified key in\nthe tuple. If the supplied option is a `(none)` option, get returns `(none)`.",
-      "example": "(get id (tuple (name \"blockstack\") (id 1337))) ;; Returns 1337\n(get id (fetch-entry names-map (tuple (name \"blockstack\")))) ;; Returns (some 1337)\n(get id (fetch-entry names-map (tuple (name \"non-existent\")))) ;; Returns (none)\n"
+      "example": "(get id (tuple (name \"blockstack\") (id 1337))) ;; Returns 1337\n(get id (map-get names-map (tuple (name \"blockstack\")))) ;; Returns (some 1337)\n(get id (map-get names-map (tuple (name \"non-existent\")))) ;; Returns (none)\n"
     },
     {
       "name": "begin",
@@ -297,20 +297,20 @@
       "example": "(get-block-info time 10) ;; Returns 1557860301\n(get-block-info header-hash 2) ;; Returns 0x374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb\n(get-block-info vrf-seed 6) ;; Returns 0xf490de2920c8a35fabeb13208852aa28c76f9be9b03a4dd2b3c075f7a26923b4\n"
     },
     {
-      "name": "ok",
-      "input_type": "A",
-      "output_type": "(response A B)",
-      "signature": "(ok value)",
-      "description": "The `ok` function constructs a response type from the input value. Use `ok` for\ncreating return values in public functions. An _ok_ value indicates that any database changes during\nthe processing of the function should materialize.",
-      "example": "(ok 1) ;; Returns (ok 1)"
-    },
-    {
       "name": "err",
       "input_type": "A",
       "output_type": "(response A B)",
       "signature": "(err value)",
       "description": "The `err` function constructs a response type from the input value. Use `err` for\ncreating return values in public functions. An _err_ value indicates that any database changes during\nthe processing of the function should be rolled back.",
       "example": "(err 'true) ;; Returns (err 'true)"
+    },
+    {
+      "name": "ok",
+      "input_type": "A",
+      "output_type": "(response A B)",
+      "signature": "(ok value)",
+      "description": "The `ok` function constructs a response type from the input value. Use `ok` for\ncreating return values in public functions. An _ok_ value indicates that any database changes during\nthe processing of the function should materialize.",
+      "example": "(ok 1) ;; Returns (ok 1)"
     },
     {
       "name": "some",
@@ -326,7 +326,7 @@
       "output_type": "A",
       "signature": "(default-to default-value option-value)",
       "description": "The `default-to` function attempts to 'unpack' the second argument: if the argument is\na `(some ...)` option, it returns the inner value of the option. If the second argument is a `(none)` value,\n`default-to` it returns the value of `default-value`.",
-      "example": "(default-to 0 (get id (fetch-entry names-map (tuple (name \"blockstack\"))))) ;; Returns 1337\n(default-to 0 (get id (fetch-entry names-map (tuple (name \"non-existant\"))))) ;; Returns 0\n"
+      "example": "(default-to 0 (get id (map-get names-map (tuple (name \"blockstack\"))))) ;; Returns 1337\n(default-to 0 (get id (map-get names-map (tuple (name \"non-existant\"))))) ;; Returns 0\n"
     },
     {
       "name": "expects!",
@@ -334,7 +334,7 @@
       "output_type": "A",
       "signature": "(expects! option-input thrown-value)",
       "description": "The `expects!` function attempts to 'unpack' the first argument: if the argument is\nan option type, and the argument is a `(some ...)` option, `expects!` returns the inner value of the\noption. If the argument is a response type, and the argument is an `(ok ...)` response, `expects!` returns\n the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `(none)` value,\n`expects!` _returns_ `thrown-value` from the current function and exits the current control-flow.",
-      "example": "(expects! (fetch-entry names-map (tuple (name \"blockstack\"))) (err 1)) ;; Returns (tuple (id 1337))"
+      "example": "(expects! (map-get names-map (tuple (name \"blockstack\"))) (err 1)) ;; Returns (tuple (id 1337))"
     },
     {
       "name": "expects-err!",
@@ -358,7 +358,7 @@
       "output_type": "bool",
       "signature": "(is-none? value)",
       "description": "`is-none?` tests a supplied option value, returning `true` if the option value is `(none)`,\nand `false` if it is a `(some ...)`.",
-      "example": "(is-none? (get id (fetch-entry names-map (tuple (name \"blockstack\"))))) ;; Returns 'false\n(is-none? (get id (fetch-entry names-map (tuple (name \"non-existant\"))))) ;; Returns 'true"
+      "example": "(is-none? (get id (map-get names-map (tuple (name \"blockstack\"))))) ;; Returns 'false\n(is-none? (get id (map-get names-map (tuple (name \"non-existant\"))))) ;; Returns 'true"
     },
     {
       "name": "filter",
@@ -367,38 +367,6 @@
       "signature": "(filter func list)",
       "description": "The `filter` function applies the input function `func` to each element of the\ninput list, and returns the same list with any elements removed for which the `func` returned `false`.",
       "example": "(filter not (list true false true false)) ;; Returns (list false false)"
-    },
-    {
-      "name": "nft-mint!",
-      "input_type": "AssetName, A, principal",
-      "output_type": "(response bool int)",
-      "signature": "(nft-mint! asset-class asset-identifier recipient)",
-      "description": "`nft-mint!` is used to instantiate an asset and set that asset's owner to the `recipient` principal.\nThe asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in\nthat definition.\n\nIf an asset identified by `asset-identifier` _already exists_, this function will return an error with the following error code:\n\n`(err 1)`\n\nOtherwise, on successfuly mint, it returns `(ok 'true)`.\n",
-      "example": "\n(define-non-fungible-token stackaroo (buff 40))\n(nft-mint! stackaroo \"Roo\" tx-sender)\n"
-    },
-    {
-      "name": "ft-mint!",
-      "input_type": "TokenName, int, principal",
-      "output_type": "(response bool int)",
-      "signature": "(ft-mint! token-name amount recipient)",
-      "description": "`ft-mint!` is used to increase the token balance for the `recipient` principal for a token\ntype defined using `define-fungible-token`. The increased token balance is _not_ transfered from another principal, but\nrather minted.\n\nIf a non-positive amount is provided to mint, this function returns `(err 1)`. Otherwise, on successfuly mint, it\nreturns `(ok 'true)`.\n",
-      "example": "\n(define-fungible-token stackaroo)\n(ft-mint! stackaroo 100 tx-sender)\n"
-    },
-    {
-      "name": "nft-transfer!",
-      "input_type": "AssetName, A, principal, principal",
-      "output_type": "(response bool int)",
-      "signature": "(nft-transfer! asset-class asset-identifier sender recipient)",
-      "description": "`nft-transfer!` is used to change the owner of an asset identified by `asset-identifier`\nfrom `sender` to `recipient`. The `asset-class` must have been defined by `define-non-fungible-token` and `asset-identifier`\nmust be of the type specified in that definition.\n\nThis function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns\none of the following error codes:\n\n`(err 1)` -- `sender` does not own the asset\n`(err 2)` -- `sender` and `recipient` are the same principal\n`(err 3)` -- asset identified by asset-identifier does not exist\n",
-      "example": "\n(define-non-fungible-token stackaroo (buff 40))\n(nft-mint! stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)\n(nft-transfer! stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender) ;; returns (ok true)\n(nft-transfer! stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender) ;; returns (err 1)\n(nft-transfer! stackaroo \"Stacka\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender) ;; returns (err 3)\n"
-    },
-    {
-      "name": "ft-transfer!",
-      "input_type": "TokenName, int, principal, principal",
-      "output_type": "(response bool int)",
-      "signature": "(ft-transfer! token-name amount sender recipient)",
-      "description": "`ft-transfer!` is used to increase the token balance for the `recipient` principal for a token\ntype defined using `define-fungible-token` by debiting the `sender` principal.\n\nThis function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns\none of the following error codes:\n\n`(err 1)` -- `sender` does not have enough balance to transfer\n`(err 2)` -- `sender` and `recipient` are the same principal\n`(err 3)` -- amount to send is non-positive\n",
-      "example": "\n(define-fungible-token stackaroo)\n(ft-mint! stackaroo 100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)\n(ft-transfer! stackaroo 50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender) ;; returns (ok true)\n(ft-transfer! stackaroo 60 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender) ;; returns (err 1)\n"
     },
     {
       "name": "ft-get-balance",
@@ -417,36 +385,52 @@
       "example": "\n(define-non-fungible-token stackaroo (buff 40))\n(nft-get-owner stackaroo \"Roo\")\n"
     },
     {
-      "name": "define-non-fungible-token",
-      "input_type": "AssetName, TypeSignature",
-      "output_type": "Not Applicable",
-      "signature": "(define-non-fungible-token asset-name asset-identifier-type)",
-      "description": "`define-non-fungible-token` is used to define a new non-fungible token class for use in the current contract.\nIndividual assets are identified by their asset identifier, which must be of the type `asset-identifier-type`. Asset\nidentifiers are _unique_ identifiers.\n\nLike other kinds of definition statements, `define-non-fungible-token` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).\n\nAssets defined using `define-non-fungible-token` may be used in `nft-transfer!`, `nft-mint!`, and `nft-get-owner` functions",
-      "example": "\n(define-non-fungible-token names (buff 50))\n"
+      "name": "ft-transfer!",
+      "input_type": "TokenName, int, principal, principal",
+      "output_type": "(response bool int)",
+      "signature": "(ft-transfer! token-name amount sender recipient)",
+      "description": "`ft-transfer!` is used to increase the token balance for the `recipient` principal for a token\ntype defined using `define-fungible-token` by debiting the `sender` principal.\n\nThis function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns\none of the following error codes:\n\n`(err 1)` -- `sender` does not have enough balance to transfer\n`(err 2)` -- `sender` and `recipient` are the same principal\n`(err 3)` -- amount to send is non-positive\n",
+      "example": "\n(define-fungible-token stackaroo)\n(ft-mint! stackaroo 100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)\n(ft-transfer! stackaroo 50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender) ;; returns (ok true)\n(ft-transfer! stackaroo 60 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender) ;; returns (err 1)\n"
     },
     {
-      "name": "define-fungible-token",
-      "input_type": "TokenName, <int>",
-      "output_type": "Not Applicable",
-      "signature": "(define-fungible-token token-name <total-supply>)",
-      "description": "`define-fungible-token` is used to define a new fungible token class for use in the current contract.\n\nThe second argument, if supplied, defines the total supply of the fungible token. This ensures that all calls to the `ft-mint!`\nfunction will never be able to create more than `total-supply` tokens. If any such call were to increase the total supply\nof tokens passed that amount, that invocation of `ft-mint!` will result in a runtime error and abort.\n\nLike other kinds of definition statements, `define-fungible-token` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).\n\nTokens defined using `define-fungible-token` may be used in `ft-transfer!`, `ft-mint!`, and `ft-get-balance` functions",
-      "example": "\n(define-fungible-token stacks)\n"
+      "name": "nft-transfer!",
+      "input_type": "AssetName, A, principal, principal",
+      "output_type": "(response bool int)",
+      "signature": "(nft-transfer! asset-class asset-identifier sender recipient)",
+      "description": "`nft-transfer!` is used to change the owner of an asset identified by `asset-identifier`\nfrom `sender` to `recipient`. The `asset-class` must have been defined by `define-non-fungible-token` and `asset-identifier`\nmust be of the type specified in that definition.\n\nThis function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns\none of the following error codes:\n\n`(err 1)` -- `sender` does not own the asset\n`(err 2)` -- `sender` and `recipient` are the same principal\n`(err 3)` -- asset identified by asset-identifier does not exist\n",
+      "example": "\n(define-non-fungible-token stackaroo (buff 40))\n(nft-mint! stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)\n(nft-transfer! stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender) ;; returns (ok true)\n(nft-transfer! stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender) ;; returns (err 1)\n(nft-transfer! stackaroo \"Stacka\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender) ;; returns (err 3)\n"
     },
     {
-      "name": "define-map",
-      "input_type": "MapName, KeyTupleDefinition, MapTupleDefinition",
-      "output_type": "Not Applicable",
-      "signature": "(define-map map-name ((key-name-0 key-type-0) ...) ((val-name-0 val-type-0) ...))",
-      "description": "`define-map` is used to define a new datamap for use in a smart contract. Such\nmaps are only modifiable by the current smart contract.\n\nMaps are defined with a key tuple type and value tuple type. These are defined using a list\nof name and type pairs, e.g., a key type might be `((id int))`, which is a tuple with a single \"id\"\nfield of type `int`.\n\nLike other kinds of definition statements, `define-map` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).",
-      "example": "\n(define-map squares ((x int)) ((square int)))\n(define (add-entry (x int))\n  (insert-entry! squares ((x 2)) ((square (* x x)))))\n(add-entry 1)\n(add-entry 2)\n(add-entry 3)\n(add-entry 4)\n(add-entry 5)\n"
+      "name": "nft-mint!",
+      "input_type": "AssetName, A, principal",
+      "output_type": "(response bool int)",
+      "signature": "(nft-mint! asset-class asset-identifier recipient)",
+      "description": "`nft-mint!` is used to instantiate an asset and set that asset's owner to the `recipient` principal.\nThe asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in\nthat definition.\n\nIf an asset identified by `asset-identifier` _already exists_, this function will return an error with the following error code:\n\n`(err 1)`\n\nOtherwise, on successfuly mint, it returns `(ok 'true)`.\n",
+      "example": "\n(define-non-fungible-token stackaroo (buff 40))\n(nft-mint! stackaroo \"Roo\" tx-sender)\n"
     },
     {
-      "name": "define-data-var",
-      "input_type": "VarName, TypeDefinition, Value",
+      "name": "ft-mint!",
+      "input_type": "TokenName, int, principal",
+      "output_type": "(response bool int)",
+      "signature": "(ft-mint! token-name amount recipient)",
+      "description": "`ft-mint!` is used to increase the token balance for the `recipient` principal for a token\ntype defined using `define-fungible-token`. The increased token balance is _not_ transfered from another principal, but\nrather minted.\n\nIf a non-positive amount is provided to mint, this function returns `(err 1)`. Otherwise, on successfuly mint, it\nreturns `(ok 'true)`.\n",
+      "example": "\n(define-fungible-token stackaroo)\n(ft-mint! stackaroo 100 tx-sender)\n"
+    },
+    {
+      "name": "define-constant",
+      "input_type": "MethodSignature, MethodBody",
       "output_type": "Not Applicable",
-      "signature": "(define-data-var var-name type value)",
-      "description": "`define-data-var` is used to define a new persisted variable for use in a smart contract. Such\nvariable are only modifiable by the current smart contract.\n\nPersisted variable are defined with a type and a value.\n\nLike other kinds of definition statements, `define-data-var` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).",
-      "example": "\n(define-data-var size int 0)\n(define (set-size (value int))\n  (set-var! size value))\n(set-size 1)\n(set-size 2)\n"
+      "signature": "(define-constant name expression)",
+      "description": "`define-constant` is used to define a private constant value in a smart contract.\nThe expression passed into the definition is evaluated at contract launch, in the order that it is\nsupplied in the contract. This can lead to undefined function or undefined variable errors in the\nevent that a function or variable used in the expression has not been defined before the constant.\n\nLike other kinds of definition statements, `define-constant` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).\n",
+      "example": "\n(define-constant four (+ 2 2))\n(+ 4 four) ;; returns 8\n"
+    },
+    {
+      "name": "define-private",
+      "input_type": "MethodSignature, MethodBody",
+      "output_type": "Not Applicable",
+      "signature": "(define-private (function-name (arg-name-0 arg-type-0) (arg-name-1 arg-type-1) ...) function-body)",
+      "description": "`define-private` is used to define _private_ functions for a smart contract. Private\nfunctions may not be called from other smart contracts, nor may they be invoked directly by users.\nInstead, these functions may only be invoked by other functions defined in the same smart contract.\n\nLike other kinds of definition statements, `define-private` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).\n\nPrivate functions may return any type.",
+      "example": "\n(define-private (max-of (i1 int) (i2 int))\n  (if (> i1 i2)\n      i1\n      i2))\n(max-of 4 6) ;; returns 6\n"
     },
     {
       "name": "define-public",
@@ -457,20 +441,44 @@
       "example": "\n(define-public (hello-world (input int))\n  (begin (print (+ 2 input))\n         (ok input)))\n"
     },
     {
-      "name": "define",
-      "input_type": "MethodSignature, MethodBody",
-      "output_type": "Not Applicable",
-      "signature": "(define (function-name (arg-name-0 arg-type-0) (arg-name-1 arg-type-1) ...) function-body)",
-      "description": "`define` is used to define _private_ functions for a smart contract. Private\nfunctions may not be called from other smart contracts, nor may they be invoked directly by users.\nInstead, these functions may only be invoked by other functions defined in the same smart contract.\n\nLike other kinds of definition statements, `define` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).\n\nPrivate functions may return any type.",
-      "example": "\n(define (max-of (i1 int) (i2 int))\n  (if (> i1 i2)\n      i1\n      i2))\n(max-of 4 6) ;; returns 6\n"
-    },
-    {
       "name": "define-read-only",
       "input_type": "MethodSignature, MethodBody",
       "output_type": "Not Applicable",
       "signature": "(define-read-only (function-name (arg-name-0 arg-type-0) (arg-name-1 arg-type-1) ...) function-body)",
       "description": "`define-read-only` is used to define a _public read-only_ function for a smart contract. Such\nfunctions are callable from other smart contracts.\n\nLike other kinds of definition statements, `define-read-only` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).\n\nRead-only functions may return any type. However, read-only functions\nmay not perform any datamap modifications, or call any functions which\nperform such modifications. This is enforced both during type checks and during\nthe execution of the function. Public read-only functions may\nbe invoked by other contracts via `contract-call!`.",
       "example": "\n(define-read-only (just-return-one-hundred) \n  (* 10 10))"
+    },
+    {
+      "name": "define-map",
+      "input_type": "MapName, KeyTupleDefinition, MapTupleDefinition",
+      "output_type": "Not Applicable",
+      "signature": "(define-map map-name ((key-name-0 key-type-0) ...) ((val-name-0 val-type-0) ...))",
+      "description": "`define-map` is used to define a new datamap for use in a smart contract. Such\nmaps are only modifiable by the current smart contract.\n\nMaps are defined with a key tuple type and value tuple type. These are defined using a list\nof name and type pairs, e.g., a key type might be `((id int))`, which is a tuple with a single \"id\"\nfield of type `int`.\n\nLike other kinds of definition statements, `define-map` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).",
+      "example": "\n(define-map squares ((x int)) ((square int)))\n(define (add-entry (x int))\n  (map-insert! squares ((x 2)) ((square (* x x)))))\n(add-entry 1)\n(add-entry 2)\n(add-entry 3)\n(add-entry 4)\n(add-entry 5)\n"
+    },
+    {
+      "name": "define-data-var",
+      "input_type": "VarName, TypeDefinition, Value",
+      "output_type": "Not Applicable",
+      "signature": "(define-data-var var-name type value)",
+      "description": "`define-data-var` is used to define a new persisted variable for use in a smart contract. Such\nvariable are only modifiable by the current smart contract.\n\nPersisted variable are defined with a type and a value.\n\nLike other kinds of definition statements, `define-data-var` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).",
+      "example": "\n(define-data-var size int 0)\n(define (set-size (value int))\n  (var-set! size value))\n(set-size 1)\n(set-size 2)\n"
+    },
+    {
+      "name": "define-fungible-token",
+      "input_type": "TokenName, <int>",
+      "output_type": "Not Applicable",
+      "signature": "(define-fungible-token token-name <total-supply>)",
+      "description": "`define-fungible-token` is used to define a new fungible token class for use in the current contract.\n\nThe second argument, if supplied, defines the total supply of the fungible token. This ensures that all calls to the `ft-mint!`\nfunction will never be able to create more than `total-supply` tokens. If any such call were to increase the total supply\nof tokens passed that amount, that invocation of `ft-mint!` will result in a runtime error and abort.\n\nLike other kinds of definition statements, `define-fungible-token` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).\n\nTokens defined using `define-fungible-token` may be used in `ft-transfer!`, `ft-mint!`, and `ft-get-balance` functions",
+      "example": "\n(define-fungible-token stacks)\n"
+    },
+    {
+      "name": "define-non-fungible-token",
+      "input_type": "AssetName, TypeSignature",
+      "output_type": "Not Applicable",
+      "signature": "(define-non-fungible-token asset-name asset-identifier-type)",
+      "description": "`define-non-fungible-token` is used to define a new non-fungible token class for use in the current contract.\nIndividual assets are identified by their asset identifier, which must be of the type `asset-identifier-type`. Asset\nidentifiers are _unique_ identifiers.\n\nLike other kinds of definition statements, `define-non-fungible-token` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).\n\nAssets defined using `define-non-fungible-token` may be used in `nft-transfer!`, `nft-mint!`, and `nft-get-owner` functions",
+      "example": "\n(define-non-fungible-token names (buff 50))\n"
     }
   ],
   "keywords": [
