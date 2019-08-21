@@ -6,7 +6,7 @@ permalink: /:collection/:path.html
 # Configure a hub on Amazon EC2
 {:.no_toc}
 
-This teaches you how to run a Gaia hub on Amazon EC2. Amazon EC2 is an affordable and convenient cloud computing provider. This example uses Amazon EC2 together with an EB3 instance for file storage.
+This teaches you how to run a Gaia hub on Amazon EC2. Amazon EC2 is an affordable and convenient cloud computing provider. This example uses Amazon EC2 instance together with an [EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) disk for file storage.
 
 * TOC
 {:toc}
@@ -55,7 +55,7 @@ If `watch` is not located, install it on your workstation.
 
    The system opens the EC2 dashboard.
 
-4. Enter `Blockstack Gaia` in the search bar.
+4. Enter `blockstack-gaia_hub` in the search bar.
 
    The system finds AMIs in the Marketplace and the Community.
 
@@ -67,15 +67,17 @@ If `watch` is not located, install it on your workstation.
 
 6. Select the most recent version of the image.
 
+     * Current Release: `2.5.3`
+
    Each image name has this format:
 
    `blockstack-gaia_hub-STORAGETYPE-VERSION-hvm - ami-BUILDTAG`
 
-    So, the `blockstack-gaia_hub-ephemeral-0001.0.1-hvm - ami-0425cf8c91bb2d331` image uses ephemeral storage, is at version `0001.0.1` and has the `0425cf8c91bb2d331` tag.
+    So, the `blockstack-gaia_hub-ephemeral-2.5.3-hvm - ami-0c8fc48c10a42737e` image uses ephemeral storage, is at version `2.5.3` and has the `0c8fc48c10a42737e` tag.
 
     You can choose an image that uses ephemeral or EBS storage. The ephemeral
     storage is very small but free. Only choose this if you plan to test or use
-    a personal hub. Otherwise, choose the AMI for elastic block storage (EBS).
+    a personal hub. Otherwise, choose the AMI for elastic block storage (EBS) which provides a persistent data store on a separate disk backed by [EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html).
 
     After you select an image, the system displays **Step 2: Choose an Instance Type** page.
 
@@ -96,7 +98,7 @@ If `watch` is not located, install it on your workstation.
        should attach an elastic IP (EIP) to the VM. This EIP allows you to
        reboot the instance without worrying whether the address will reset. To
        attach an IP, <strong>press allocate new address</strong> and follow the
-       instructions to attach the EIP to your new EC2 instance." %}
+       instructions to [attach the EIP](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating) to your new EC2 instance." %}
 
    2. Set **Protect against accidental termination**.
 
@@ -176,7 +178,11 @@ If `watch` is not located, install it on your workstation.
    The storage is set according to the AMI you selected.
 
 9. Choose **Next: Add tags**.
-10. Add a **Key** of `purpose` with the **Value** `gaia`.
+10. Add the following tags:
+
+    * **Key** of `Purpose` with the **Value** `gaia`
+    * **Key** of `Name` with the **Value** `gaia-hub`
+    * **Key** of `Version` with the **Value** `2.5.3`
 
     ![](/storage/images/tag-add.png)    
 
@@ -341,13 +347,12 @@ Your EC2 instance is running several `docker` services that support the Gaia hub
 
 {% raw %}
 ```bash
-$ docker ps --format "table {{.ID}}\t{{.Command}}\t{{.Names}}"
-CONTAINER ID        COMMAND                  NAMES
-b371234dc741        "/bin/sh -c 'trap ex…"   docker_certbot_1
-597866815f42        "/bin/sh -c 'envsubs…"   docker_nginx_1
-1d559bc51699        "npm run start"          docker_admin_1
-46d410a1dce5        "npm run start"          docker_reader_1
-f83fb8d044f5        "npm run start"          docker_hub_1
+$ docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Command}}\t{{.Names}}"
+CONTAINER ID        IMAGE                                   COMMAND                  NAMES
+6b170ce9b0d6        nginx:alpine                            "nginx -g 'daemon of…"   nginx
+91c5ff651586        quay.io/blockstack/gaia-hub:v2.5.3      "docker-entrypoint.s…"   gaia-hub
+16b229a20320        quay.io/blockstack/gaia-reader:v2.5.3   "node lib/index.js"      gaia-reader
+89739e338573        quay.io/blockstack/gaia-admin:v2.5.3    "docker-entrypoint.s…"   gaia-admin
 ```
 {% endraw %}
 
@@ -363,19 +368,18 @@ Each service plays a particular role in running your Gaia hub.
    <tbody>
       <tr>
          <td><code>certbot</code></td>
-         <td>Service running Let's Encrypt `certbot` client to support SSL. Certbot renews your certificates and reloads Nginx to pick up the changes.</td>
+         <td>Service running Let's Encrypt `certbot` client to support SSL. Certbot renews your certificates and reloads Nginx to pick up the changes. This service will run 2x per day checking if the certificate needs to be renewed. </td>
       </tr>
       <tr>
          <td><code>nginx</code></td>
-         <td>Runs an Nginx proxy in front of the <code>reader</code> side-car. This service does things like rate-limiting and SSL termination.  Your
-         that nginx service relies on your hub's <code>readURL</code> to make requests. Changes to a hub's <code>readURL</code> must be reflected in the <code>nginx</code> service configuration.</td>
+         <td>Runs an Nginx proxy in front of the Gaia Hub. This service does things like rate-limiting, SSL termination, and redirects to HTTPS.  Your nginx service relies on your hub's <code>readURL</code> to make requests. Changes to a hub's <code>readURL</code> must be reflected in the <code>nginx</code> service configuration in </code>/gaia/nginx/conf.d/default.conf</code></td>
       </tr>
       <tr>
-         <td><code>admin</code></td>
+         <td><code>gaia-admin</code></td>
          <td>A simple administrative service that allows you to administer the Gaia hub. Use REST calls with this service to get and set hub configuration values.</td>
       </tr>
       <tr>
-         <td><code>reader</code></td>
+         <td><code>gaia-reader</code></td>
          <td>The Gaia read side-car services get file requests on URLs that start with
          your Gaia hub's <code>readURL</code>.  You can determine your Gaia hub's read URL by either
          looking for the <code>readURL</code> key in your Gaia hub's config file. This value is  or by looking for
@@ -383,7 +387,7 @@ Each service plays a particular role in running your Gaia hub.
          Gaia hub.</td>
       </tr>
       <tr>
-         <td><code>hub</code></td>
+         <td><code>gaia-hub</code></td>
          <td>The Gaia hub service.</td>
       </tr>
    </tbody>
@@ -402,7 +406,7 @@ Each service plays a particular role in running your Gaia hub.
    <tbody>
       <tr>
          <td><code>/etc/systemd/system</code></td>
-         <td>Contains services for managing your Gaia hub.</td>
+         <td>Contains systemd unit-files for managing your Gaia hub.</td>
       </tr>
       <tr>
          <td><code>/etc/environment</code></td>
@@ -410,12 +414,37 @@ Each service plays a particular role in running your Gaia hub.
          </td>
       </tr>
       <tr>
-         <td><code>reset-ssl-certs.service</code></td>
-         <td>Restarts all the Gaia hub services.</td>
+         <td><code>/gaia/gaia.env</code></td>
+         <td>Contains the environment variables used by the Gaia systemd unit-files
+         </td>
       </tr>
       <tr>
-         <td><code>/gaia/docker/admin-config</code></td>
-         <td>Configuration for the hub admin service.</td>
+         <td><code>reset-ssl-certs.service</code></td>
+         <td>Removes all existing certificates and restarts all the Gaia hub services. <br>* Use this sparingly, since the Letsencrypt service will throttle too many requests for certificates </td>
+      </tr>
+      <tr>
+         <td><code>/gaia/hub-config</code></td>
+         <td>Configuration for the Gaia Hub service.</td>
+      </tr>
+      <tr>
+         <td><code>/gaia/admin-config</code></td>
+         <td>Configuration for the Gaia Hub admin service.</td>
+      </tr>
+      <tr>
+         <td><code>/gaia/reader-config</code></td>
+         <td>Configuration for the Gaia Hub reader service.</td>
+      </tr>
+      <tr>
+         <td><code>/gaia/nginx/conf.d</code></td>
+         <td>Configuration files for the Nginx service.</td>
+      </tr>
+      <tr>
+         <td><code>/gaia/nginx/certbot/conf</code></td>
+         <td>Letsencrypt SSL certificates/configs</td>
+      </tr>
+      <tr>
+         <td><code>/gaia/scripts</code></td>
+         <td>Scripts run by the systemd services on startup</td>
       </tr>
    </tbody>
 </table>
@@ -424,17 +453,20 @@ You can `cat` the various services to see what settings they are using.
 
 ```
 $ cat /etc/systemd/system/reset-ssl-certs.service
+# reset-ssl-certs.service
 [Unit]
 Description=Reset Gaia to first boot
+ConditionFileIsExecutable=/gaia/scripts/reset-certs.sh
 
 [Service]
 Type=oneshot
 RemainAfterExit=no
-EnvironmentFile=/gaia/docker/.env
+EnvironmentFile=/gaia/gaia.env
 EnvironmentFile=/etc/environment
-ExecStart=/bin/bash -x /gaia/docker/nginx/certbot/reset-certs.sh
+ExecStart=/bin/bash /gaia/scripts/reset-certs.sh
 
 [Install]
+WantedBy=multi-user.target
 ```
 
 ### Restart services and reload certificates
@@ -465,7 +497,26 @@ This procedures requires you to interact from a workstation command line with yo
    chmod 400 <location-of-pem>
    ```
 
-4. SSH from your workstation and restart it.
+4. SSH from your workstation and restart Gaia Hub:
+
+   This process requires that you know the location of the `.pem` file you downloaded when you created the keypair.
+
+   ```
+   ssh -t -i <your keyfile.pem> -A core@<public ip address> "sudo systemctl restart gaia.service"
+   ```
+
+   For example:
+
+   ```
+   $ ssh -t -i /Users/manthony/gaia.pem -A core@34.219.71.143 "sudo systemctl restart gaia.service"
+   Connection to 34.219.71.143 closed.
+   ```
+
+   This will restart all services required for running a Gaia Hub (nginx, hub, reader, admin, certbot)
+
+5. SSH from your workstation to reset back to first boot:
+
+   ** This process will stop Gaia Hub, Nginx and remove any existing SSL certificates. It will then start the process of retrieving certificates and setting up the services again. This will not affect any existing data stored on the server.
 
    This process requires that you know the location of the `.pem` file you downloaded when you created the keypair.
 
@@ -479,3 +530,4 @@ This procedures requires you to interact from a workstation command line with yo
    $ ssh -t -i /Users/manthony/gaia.pem -A core@34.219.71.143 "sudo systemctl restart reset-ssl-certs.service"
    Connection to 34.219.71.143 closed.
    ```
+   After a few minutes, all Gaia Hub services will restart automatically and will retrieve a new SSL certificate.
