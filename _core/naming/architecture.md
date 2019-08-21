@@ -42,17 +42,14 @@ The BNS indexer and BNS API comprise the **BNS node**.  An architectural schemat
     |       blockchain transactions                    +--------------------+
     +------------------------------------------------->|   blockchain peer  |
                                                        +--------------------+
+```
 
-Figure 1: BNS architecture overview.  Clients talk to the BNS API module to
-resolve names, and generate and send blockchain transactions to register and
-modify names.   The API module talks to the indexer module and gives clients
-a stable, Web-accessible interface for resolving names.  The indexer module reads
-the blockchain via a blockchain peer, over the blockchain's peer network.
+The above diagram depicts the BNS architecture.  Clients talk to the BNS API module to resolve names, and generate and send blockchain transactions to register and modify names.   The API module talks to the indexer module and gives clients a stable, Web-accessible interface for resolving names.  The indexer module reads the blockchain via a blockchain peer, over the blockchain's peer network.
 
 Blockstack Core currently implements the API module and indexer module as separate
 daemons (`blockstack api` and `blockstack-core`, respectively).  However, this
 is an implementation detail, and may change in the future.
-```
+
 
 The BNS indexer implements the blockchain consensus rules and network protocols.
 Its main responsibility is to build up and replicate all of the name state.  It does
