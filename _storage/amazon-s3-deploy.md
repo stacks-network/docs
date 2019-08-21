@@ -55,7 +55,7 @@ If `watch` is not located, install it on your workstation.
 
    The system opens the EC2 dashboard.
 
-4. Enter `blockstack-gaia_hub` in the search bar.
+4. Enter `blockstack-gaia_hub-[a-z]*-[.0-9]*-hvm` in the search bar.
 
    The system finds AMIs in the Marketplace and the Community.
 
