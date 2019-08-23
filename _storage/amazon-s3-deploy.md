@@ -55,7 +55,7 @@ If `watch` is not located, install it on your workstation.
 
    The system opens the EC2 dashboard.
 
-4. Enter `blockstack-gaia_hub-[a-z]*-[.0-9]*-hvm` in the search bar.
+4. Enter `blockstack-gaia` in the search bar.
 
    The system finds AMIs in the Marketplace and the Community.
 
@@ -67,17 +67,17 @@ If `watch` is not located, install it on your workstation.
 
 6. Select the most recent version of the image.
 
-     * Current Release: `2.5.3`
-
    Each image name has this format:
 
    `blockstack-gaia_hub-STORAGETYPE-VERSION-hvm - ami-BUILDTAG`
 
-    So, the `blockstack-gaia_hub-ephemeral-2.5.3-hvm - ami-0c8fc48c10a42737e` image uses ephemeral storage, is at version `2.5.3` and has the `0c8fc48c10a42737e` tag.
 
-    You can choose an image that uses ephemeral or EBS storage. The ephemeral
+    You can choose an image that uses **ephemeral** or **EBS** storage. The ephemeral
     storage is very small but free. Only choose this if you plan to test or use
     a personal hub. Otherwise, choose the AMI for elastic block storage (EBS) which provides a persistent data store on a separate disk backed by [EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html).
+
+    So, the `blockstack-gaia_hub-ephemeral-2.5.3-hvm - ami-0c8fc48c10a42737e` image uses ephemeral storage, is at version `2.5.3` and has the `0c8fc48c10a42737e` tag.
+
 
     After you select an image, the system displays **Step 2: Choose an Instance Type** page.
 
@@ -85,91 +85,98 @@ If `watch` is not located, install it on your workstation.
 
 7. Select **t2.micro** and choose **Next: Configure Instance Details**.
 
-   <hr>
    To configure instance details, do the following:
 
-   1. Select a VPC.
+   <div class="uk-card uk-card-body">
+   <ol>
+      <li>
+         <p>Select a VPC.</p>
+         <p>A default VPC is created with a free tier account. You can use this
+            default VPC. Or you can choose another VPC. If you choose another VPC,
+            ensure the <code class="highlighter-rouge">Subnet</code> value is set to a subnet reachable by a public IP.
+         </p>
+         <div class="uk-alert-warning uk-alert" uk-alert=""><b>Important:</b> If you're using a private subnet, you
+            should attach an elastic IP (EIP) to the VM. This EIP allows you to
+            reboot the instance without worrying whether the address will reset. To
+            attach an IP, <strong>press allocate new address</strong> and follow the
+            instructions to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating" target="_blank">attach the EIP</a> to your new EC2 instance.
+         </div>
+      </li>
+      <li>
+         <p>Set <strong>Protect against accidental termination</strong>.</p>
+         <p>If you terminate a Gaia instance, you lose all the data associated with it. Protection adds an extra step to terminating your Gaia instance.</p>
+      </li>
+      <li>
+         <p>Open the <strong>Advanced Details</strong>.</p>
+         <p>At this point, you are going to configure environment variables for your instance.</p>
+      </li>
+      <li>
+         <p>Paste the following into the <strong>Advanced Details</strong>.</p>
 
-       A default VPC is created with a free tier account. You can use this
-       default VPC. Or you can choose another VPC. If you choose another VPC,
-       ensure the `Subnet` value is set to a subnet reachable by a public IP.
-
-       {% include important.html content="If you're using a private subnet, you
-       should attach an elastic IP (EIP) to the VM. This EIP allows you to
-       reboot the instance without worrying whether the address will reset. To
-       attach an IP, <strong>press allocate new address</strong> and follow the
-       instructions to [attach the EIP](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating) to your new EC2 instance." %}
-
-   2. Set **Protect against accidental termination**.
-
-      If you terminate a Gaia instance, you lose all the data associated with it. Protection adds an extra step to terminating your Gaia instance.
-
-   3. Open the **Advanced Details**.
-
-      At this point, you are going to configure environment variables for your instance.  
-
-   4. Paste the following into the **Advanced Details**.
-
-      ```json
-      {
-        "ignition": { "version": "2.2.0" },
-        "storage": {
-          "files": [{
-            "filesystem": "root",
-            "path": "/etc/environment",
-            "mode": 420,
-            "contents": {
-              "source": "data:application/octet-stream,API_KEY%3D<KEYPHRASE>%0ADOMAIN%3D<DOMAIN_NAME_VALUE>%0ASTAGING%3D<STAGING_VALUE>"
-            }
-          }]
-        }
-      }
-      ```
-
-   5. Replace the following values in the JSON.
-
-       <table class="uk-table uk-table-small uk-table-divider">
-         <tr>
-           <th>Value</th>
-           <th>Description</th>
-         </tr>
-         <tr>
-           <td><code>&lt;KEYPHRASE&gt;</code></td>
-           <td>A phrase to pass when using the hub admin. For example, <code>hubba</code> is a fun key phrase.</td>
-         </tr>
-         <tr>
-           <td><code>&lt;DOMAIN_NAME_VALUE&gt;</code></td>
-           <td>Your hub's domain name. For example, <code>maryhub.ml</code> is the domain name in this example.</td>
-         </tr>
-         <tr>
-           <td><code>&lt;STAGING_VALUE&gt;</code></td>
-           <td><p>Indicates what type of SSL to create, testing (`1`) or production (`0`). Set testing if you want to test without worrying about rate limiting. A testing cerificate is not secure.</p>
-
-           <p>For this tutorial, use production (`0`).</p>
-           </td>
-         </tr>
-        </table>
-
-     6. Check your **Advanced Details** they should look similar to the following:
-
-          ```
-          {
+         <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  
+         {
             "ignition": { "version": "2.2.0" },
             "storage": {
-              "files": [{
-                "filesystem": "root",
-                "path": "/etc/environment",
-                "mode": 420,
-                "contents": {
-                  "source": "data:application/octet-stream,API_KEY%3Dhubba%0ADOMAIN%3Dmaryhub.ml%0ASTAGING%3D0"
-                }
-              }]
+               "files": [{
+               "filesystem": "root",
+               "path": "/etc/environment",
+               "mode": 420,
+               "contents": {
+                  "source": "data:application/octet-stream,API_KEY%3DKEYPHRASE%0ADOMAIN%3DNAME_OF_DOMAIN%0ASTAGING%3DSTAGING_VALUE"
+               }
+               }]
             }
-          }
-          ```     
+         }
+         </code></pre></div>        </div>
+      </li>
+      <li>
+         <p>Replace the following values in the JSON.</p>
+         <table class="uk-table uk-table-small uk-table-divider">
+            <tbody>
+               <tr>
+                  <th>Value</th>
+                  <th>Description</th>
+               </tr>
+               <tr>
+                  <td><code>&lt;KEYPHRASE&gt;</code></td>
+                  <td>A phrase to pass when using the hub admin. For example, <code>hubba</code> is a fun key phrase.</td>
+               </tr>
+               <tr>
+                  <td><code>&lt;NAME_OF_DOMAIN&gt;</code></td>
+                  <td>Your hub's domain name. For example, <code>maryhub.ml</code> is the domain name in this example.</td>
+               </tr>
+               <tr>
+                  <td><code>&lt;STAGING_VALUE&gt;</code></td>
+                  <td>
+                     <p>Indicates what type of SSL to create, testing (`1`) or production (`0`). Set testing if you want to test without worrying about rate limiting. A testing cerificate is not secure.</p>
+                     <p>For this tutorial, use production (`0`).</p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </li>
+      <li>
+        <p>Check your <strong>Advanced Details</strong> they should look similar to the following:</p>
+
+               <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
+            "ignition": { "version": "2.2.0" },
+            "storage": {
+               "files": [{
+               "filesystem": "root",
+               "path": "/etc/environment",
+               "mode": 420,
+               "contents": {
+                  "source": "data:application/octet-stream,API_KEY%3Dhubba%0ADOMAIN%3Dmaryhub.ml%0ASTAGING%3D0"
+               }
+               }]
+            }
+         }
+         </code></pre></div>        </div>
+      </li>
+   </ol>
+   </div>
 
     At this point, you have configured your instance details.  
-    <hr>
 
 8. Choose **Next: Add Storage**.
 
@@ -182,7 +189,7 @@ If `watch` is not located, install it on your workstation.
 
     * **Key** of `Purpose` with the **Value** `gaia`
     * **Key** of `Name` with the **Value** `gaia-hub`
-    * **Key** of `Version` with the **Value** `2.5.3`
+    * **Key** of `Version` with the **Value** `2.5.3` (This value is an example, your version may be different.)
 
     ![](/storage/images/tag-add.png)    
 
@@ -368,11 +375,11 @@ Each service plays a particular role in running your Gaia hub.
    <tbody>
       <tr>
          <td><code>certbot</code></td>
-         <td>Service running Let's Encrypt `certbot` client to support SSL. Certbot renews your certificates and reloads Nginx to pick up the changes. This service will run 2x per day checking if the certificate needs to be renewed. </td>
+         <td>Service running Let's Encrypt <code>certbot</code> client to support SSL. Certbot renews your certificates and reloads Nginx to pick up the changes. This service will run 2x per day checking if the certificate needs to be renewed. </td>
       </tr>
       <tr>
          <td><code>nginx</code></td>
-         <td>Runs an Nginx proxy in front of the Gaia Hub. This service does things like rate-limiting, SSL termination, and redirects to HTTPS.  Your nginx service relies on your hub's <code>readURL</code> to make requests. Changes to a hub's <code>readURL</code> must be reflected in the <code>nginx</code> service configuration in </code>/gaia/nginx/conf.d/default.conf</code></td>
+         <td>Runs an Nginx proxy in front of the Gaia Hub. This service does things like rate-limiting, SSL termination, and redirects to HTTPS.  Your nginx service relies on your hub's <code>readURL</code> to make requests. Changes to a hub's <code>readURL</code> must be reflected in the <code>nginx</code> service configuration in <code>/gaia/nginx/conf.d/default.conf</code></td>
       </tr>
       <tr>
          <td><code>gaia-admin</code></td>
@@ -396,7 +403,7 @@ Each service plays a particular role in running your Gaia hub.
 
 ### Locations of key files
 
-<table>
+<table class="uk-table uk-table-small uk-table-divider">
    <thead>
       <tr>
          <th>File or Directory</th>
@@ -415,12 +422,12 @@ Each service plays a particular role in running your Gaia hub.
       </tr>
       <tr>
          <td><code>/gaia/gaia.env</code></td>
-         <td>Contains the environment variables used by the Gaia systemd unit-files
+         <td>Contains the environment variables used by the Gaia <code>systemd</code> unit-files.
          </td>
       </tr>
       <tr>
          <td><code>reset-ssl-certs.service</code></td>
-         <td>Removes all existing certificates and restarts all the Gaia hub services. <br>* Use this sparingly, since the Letsencrypt service will throttle too many requests for certificates </td>
+         <td>Removes all existing certificates and restarts all the Gaia hub services. Use this sparingly, since the Lets Encrypt service will throttle too many requests for certificates.</td>
       </tr>
       <tr>
          <td><code>/gaia/hub-config</code></td>
@@ -440,11 +447,11 @@ Each service plays a particular role in running your Gaia hub.
       </tr>
       <tr>
          <td><code>/gaia/nginx/certbot/conf</code></td>
-         <td>Letsencrypt SSL certificates/configs</td>
+         <td>Lets Encrypt SSL certificates/configs.</td>
       </tr>
       <tr>
          <td><code>/gaia/scripts</code></td>
-         <td>Scripts run by the systemd services on startup</td>
+         <td>Scripts run by the systemd services on startup.</td>
       </tr>
    </tbody>
 </table>
