@@ -189,7 +189,7 @@ If `watch` is not located, install it on your workstation.
 
     * **Key** of `Purpose` with the **Value** `gaia`
     * **Key** of `Name` with the **Value** `gaia-hub`
-    * **Key** of `Version` with the **Value** `2.5.3`
+    * **Key** of `Version` with the **Value** `2.5.3` (This value is an example, your version may be different.)
 
     ![](/storage/images/tag-add.png)    
 
