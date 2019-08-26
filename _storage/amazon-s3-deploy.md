@@ -65,8 +65,6 @@ If `watch` is not located, install it on your workstation.
 
    ![](/storage/images/gaia-community.png)
 
-6. Select the most recent version of the image.
-
    Each image name has this format:
 
    `blockstack-gaia_hub-STORAGETYPE-VERSION-hvm - ami-BUILDTAG`
@@ -78,6 +76,7 @@ If `watch` is not located, install it on your workstation.
 
     So, the `blockstack-gaia_hub-ephemeral-2.5.3-hvm - ami-0c8fc48c10a42737e` image uses ephemeral storage, is at version `2.5.3` and has the `0c8fc48c10a42737e` tag.
 
+6. Select the most recent version image with the storage you want. The images are not sorted; The most recent images is not necessarily at the top of the list.
 
     After you select an image, the system displays **Step 2: Choose an Instance Type** page.
 
@@ -184,14 +183,17 @@ If `watch` is not located, install it on your workstation.
 
    The storage is set according to the AMI you selected.
 
-9. Choose **Next: Add tags**.
-10. Add the following tags:
+9.  Choose **Next: Add tags**.
+10. Optionally, add the following tags:
+
+    The tags are not required, they just apply searchable labels to an instance on an EC2 console.
 
     * **Key** of `Purpose` with the **Value** `gaia`
     * **Key** of `Name` with the **Value** `gaia-hub`
     * **Key** of `Version` with the **Value** `2.5.3` (This value is an example, your version may be different.)
 
     ![](/storage/images/tag-add.png)    
+
 
 11. Choose **Next: Configure Security Group**.
 12. Create a security group with the following three types:
@@ -247,9 +249,9 @@ During the launch process the machine starts and runs some initial setup process
 ![](/storage/images/instance-initialize.png)
 
 
-## Task 2: Test your Gaia server
+## Task 2: Connect your Gaia server to your domain
 
-Now, you are ready to test your Gaia server and make sure it is up and running.
+Now, you are ready to test your Gaia server. This procedure ensures the Gaia services started correctly and they are configured to the domain name you provided in **Advanced Details** above.
 
 1. Visit the <a href="https://aws.amazon.com/free/" target="\_blank">AWS Free Tier page</a> and choose **Sign in to the Console**.
 
@@ -275,15 +277,37 @@ Now, you are ready to test your Gaia server and make sure it is up and running.
    ![](/storage/images/ec2-instance.png)   
 
 6. Locate the **IPv4 Public IP** value.
+
+   The public IP must match the DNS configured for the domain you entered in **Advanced Details** in the previous procedure. 
+
 7. Copy the IP and paste it in your browser.
 
-   You should see a message that your connection is not private.
+    <table class="uk-table uk-table-small uk-table-divider">
+     <tr>
+       <th>If the response is</th>
+       <th>Do this...</th>
+     </tr>
+     <tr>
+       <td><img src="{{ '/storage/images/private-connection.png' | prepend: site.baseurl }}"/></td>
+       <td> You should see a message that your connection is not private.
+ Everything is fine, continue to the next step, step 8.</td>
+     </tr>
+     <tr>
+       <td><img src="{{ '/storage/images/bad-connection.png' | prepend: site.baseurl }}"/></td>
+       <td>
+       <ol>
+       <li>Check that your domain's DNS configuration matches the public IP address of your instance.</li>
+       <li>Update the DNS site's configuration.</li>
+       <li>Restart your EC2 instance as per the <a href="#restart-services-and-reload-certificates">Restart and reload certificates</a> procedure on this page.</li>
+       <li>Continue with next step, step 8.</li>
+       </ol>
+       </td>
+     </tr>
+   </table>
+
 
 8. Press **Advanced**.
-
-   ![Hub test](/storage/images/private-connection.png)
-
-9. Choose to proceed.
+9.  Choose to proceed.
 10. Extend the IP with the `PUBLIC_IP/hub_info` tag like so.
 
     You should see a response from your Gaia hub!
@@ -375,7 +399,7 @@ Each service plays a particular role in running your Gaia hub.
    <tbody>
       <tr>
          <td><code>certbot</code></td>
-         <td>Service running Let's Encrypt <code>certbot</code> client to support SSL. Certbot renews your certificates and reloads Nginx to pick up the changes. This service will run 2x per day checking if the certificate needs to be renewed. </td>
+         <td>This service runs every 12 hours so you may not see it in the output. The service runs Let's Encrypt <code>certbot</code> client to support SSL. Certbot renews your certificates and reloads Nginx to pick up the changes. This service will run 2x per day checking if the certificate needs to be renewed. </td>
       </tr>
       <tr>
          <td><code>nginx</code></td>
@@ -426,8 +450,8 @@ Each service plays a particular role in running your Gaia hub.
          </td>
       </tr>
       <tr>
-         <td><code>reset-ssl-certs.service</code></td>
-         <td>Removes all existing certificates and restarts all the Gaia hub services. Use this sparingly, since the Lets Encrypt service will throttle too many requests for certificates.</td>
+         <td><code>/etc/systemd/system/reset-ssl-certs.service</code></td>
+         <td>A service that removes all existing certificates and restarts all the Gaia hub services. Use this sparingly, since the Lets Encrypt service will throttle too many requests for certificates.</td>
       </tr>
       <tr>
          <td><code>/gaia/hub-config</code></td>
