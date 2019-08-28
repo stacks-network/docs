@@ -99,7 +99,7 @@ and open your browser `http://localhost:5000`.  From the root of your new applic
 
 2. Choose **Allow**.
 
-3. Open your browser to `http://localhost:8080`.
+3. Open your browser to `http://localhost:5000`.
 
    You should see a simple application:
 
@@ -162,17 +162,17 @@ To replace the default login, do the following:
     ```
     const authRequest = userSession.makeAuthRequest(
       userSession.generateAndStoreTransitKey(),
-      'http://localhost:8080/',
-      'http://localhost:8080/manifest.json',
+      'http://localhost:5000/',
+      'http://localhost:5000/manifest.json',
       ['store_write', 'publish_data'],
-      'http://localhost:8080/',
+      'http://localhost:5000/',
       blockstack.nextHour().getTime(), {
         solicitGaiaHubUrl: true
       } // new options param
     );
     ```
 
-    {% include note.html content="If your app is running a different port than <code>8080</code>, enter that port instead. " %}
+    {% include note.html content="If your app is running a different port than <code>500</code>, enter that port instead. " %}
 
    The extra `solicitGaiaHubUrl` parameter of `true` will cause the Blockstack Browser to prompt new identity creators for a storage hub URL.
 
@@ -184,7 +184,7 @@ To replace the default login, do the following:
 
 Try your new authentication code.
 
-1. Refresh the client at `http://localhost:8080/`.
+1. Refresh the client at `http://localhost:5000/`.
 2. Click *Sign in with Blockstack*.
 
    The Blockstack Browser prompts you to sign in. I you are _not already authenticated_ with the browser, you should see the following:
@@ -259,10 +259,10 @@ const authRequest = userSession.makeAuthRequest(undefined, undefined, undefined,
 
 const authRequest = userSession.makeAuthRequest(
   generateAndStoreTransitKey(),
-  'http://localhost:8080/',
-  'http://localhost:8080/manifest.json',
+  'http://localhost:5000/',
+  'http://localhost:5000/manifest.json',
   ['store_write', 'publish_data'],
-  'http://localhost:8080/',
+  'http://localhost:5000/',
   nextHour().getTime(), {
     solicitGaiaHubUrl: true, //new options param
     recommendedGaiaHubUrl: 'https://mygaiahub.com' // new options param
