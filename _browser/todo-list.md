@@ -310,7 +310,6 @@ watch: {
       handler: function (todos) {
         const UserSession = this.UserSession
 
-        // encryption is now enabled by default
         return UserSession.putFile(STORAGE_FILE, JSON.stringify(todos))
       },
       deep: true
@@ -320,14 +319,14 @@ watch: {
 
 The `todos` JSON object is passed in and the
 [`blockstack.UserSession.putFile()`](https://blockstack.github.io/blockstack.js/#putfile)
-method to store it in a Gaia Hub.
+method to store it in a Gaia Hub. By default, `putFile()` encrypts data when it stores it.
 
 The code needs to read the Todo items from the storage with the [`blockstack.UserSession.getFile()`](https://blockstack.github.io/blockstack.js/#getfile) method which returns a promise:
 
 ```js
 fetchData () {
       const UserSession = this.UserSession
-      UserSession.getFile(STORAGE_FILE) // decryption is enabled by default
+      UserSession.getFile(STORAGE_FILE) 
         .then((todosText) => {
           var todos = JSON.parse(todosText || '[]')
           todos.forEach(function (todo, index) {
@@ -339,7 +338,7 @@ fetchData () {
 },
 ```
 
-The `todos` data is retrieved from the promise.
+The `todos` data is retrieved from the promise. By default, the `getFile()` decrypts data for you. For more information on the available options, see the <a href="https://blockstack.github.io/blockstack.js/interfaces/getfileoptions.html" taraget="_blank"><code>GetFileOptions</code></a> interface.
 
 
 ## Summary

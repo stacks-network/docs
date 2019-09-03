@@ -34,7 +34,7 @@ collection of data that is backed by one or more existing storage systems.
 When a user logs into an application, the application will create or connect to
 the datastore that holds the user's data.  Once connected, it can proceed to
 interact with its data via POSIX-like functions: `mkdir`, `listdir`, `rmdir`,
-`getFile`, `putFile`, `deleteFile`, and `stat`.
+`getFile()`, `putFile()`, `deleteFile`, and `stat`.
 
 A datastore has exactly one writer: the user that creates it.  However, all data
 within a datastore is world-readable by default, so other users can see the

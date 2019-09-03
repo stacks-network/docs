@@ -404,6 +404,8 @@ These are the `UserSession.putFile`, `UserSession.getFile`, and `lookupProfile` 
     }
     ```
 
+    The default behavior for  `putFile()` is to encrypt data when storing it, making it unreadable by everyone except the logged in user. In this example  `putFile()` call is not encrypting the status because our app is meant to share statuses publicly. 
+
 9. Save the `Profile.js` file.
 
    After the application compiles successfully, your application should appears as follows:
@@ -458,6 +460,7 @@ Update `Profile.js` again.
         })
     }
     ```
+   By default, `getFile()` this method decrypts data; because the default `putFile()` encrypts it. In this case, the app shares statuses publicly. So, there is no need to decrypt.
 
 5. Call `fetchData()` from the `componentDidMount()` method. 
 
@@ -769,8 +772,6 @@ process URL paths that contain the `.` (dot) character for example,
 
 Congratulations, you are all done! We hope you've enjoyed learning a bit more
 about Blockstack. 
-
-A few things to note, you'll notice that in our `putFile()` and `getFile()` calls, we chose not to encrypt/decrypt because our app is meant to share statuses publicly. By default, `putFile()` and `getFile()` will encrypt all data stored, making it unreadable by everyone except the logged in user.
 
 ## Resources
 
