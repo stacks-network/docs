@@ -10,6 +10,7 @@ Blockstack is updated when our team releases new functionality. Significant issu
 * TOC
 {:toc}
 
+
 ## How to locate your version
 
 If you are running the local version of Blockstack, you are also running the most current release of the blockstack.js library.  The actual values are available from <a href="https://github.com/blockstack/blockstack-browser/releases" target="_blank">blockstack/blockstack-browser</a> and <a href="https://github.com/blockstack/blockstack.js/releases" target="_blank">blockstack/blockstack.js</a>.
@@ -27,6 +28,7 @@ To use the beta version of the web application, simply visit the <a href="https:
 
 Once beta mode is engaged, your local Blockstack redirects all activity to a hosted version of Blockstack at `beta.browser.blockstack.org`. You'll have to sign in with your Blockstack ID again to the best code. You can resume usage of your local Blockstack client at any time by disabling the beta mode in the hidden menu.
 
+{% include note.html content="The Linux version of the local Blockstack client does not support a beta mode. Instead, you should test using the beta version of the web app." %}
 
 ## Display the hidden menu on the Blockstack client
 
