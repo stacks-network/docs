@@ -177,7 +177,7 @@ saveMe(me) {
 
 The Blockstack <a href="https://blockstack.github.io/blockstack.js/#putfile"
 target="\_blank"><code>putFile()</code></a> stores the data provided in the
-user's DApp data store. By default, `putFile()` stores data in an encrypted format which means only user that stored it can view it. You can view the URL for the data store from a user's profile. Because this application wants other users to view the persona and territory, the data is not encrypted, so the `encrypt` option is set to `false`.
+user's DApp data store. By default, `putFile()` stores data in an encrypted format which means only the user that stored it can view it. You can view the URL for the data store from a user's profile. Because this application wants other users to view the persona and territory, the data is not encrypted, so the `encrypt` option is set to `false`.
 
 If you tested your Animal Kingdom, you can see this on your profile. To see your
 profile, go to the <a href="https://explorer.blockstack.org">Blockstack
