@@ -23,7 +23,7 @@ be able to read from the `https://myreads.com/foo/bar` URL. Note that, while the
 prefix in the write-to url (for example,`myhub.service.org/store`) and the read-from URL
 (`https://myreads.com`) are different, the `foo/bar` suffixes are the same.
 
-By default, `putFile()` encrypts information while `getFile()` decrypts it by default. Data stored in an encrypted format means only the user that stored it can view it. For applications that want other users to view data, the  `encrypt` option is set to `false`. And, corresponding, the `decrypt` option on `getFile()`
+By default, `putFile()` encrypts information while `getFile()` decrypts it by default. Data stored in an encrypted format means only the user that stored it can view it. For applications that want other users to view data, the application should set the  `encrypt` option to `false`. And, corresponding, the `decrypt` option on `getFile()` should also be `false`.
 
 Consistent, identical suffixes allow an application to know _exactly_ where a
 written file can be read from, given the read prefix. The Gaia service defines a `hub_info` endpoint to obtain that read prefix:
