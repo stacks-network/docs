@@ -9,6 +9,7 @@
   - develop/add_auth
   - develop/storage
   - develop/profiles
+  - develop/betatesting
 
 - title: Try it! Zero to DApp
   docs:
@@ -22,13 +23,10 @@
   - browser/hello-blockstack
   - browser/todo-list
   - browser/blockstack_storage
-  - develop/auth_provider
-  - develop/communityResources
-
-- title: Work with an SDK
-  docs:
   - android/tutorial
   - ios/tutorial
+  - develop/auth_provider
+  - develop/communityResources
 
 - title: App Mining
   docs:
