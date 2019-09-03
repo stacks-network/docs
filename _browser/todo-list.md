@@ -338,7 +338,7 @@ fetchData () {
 },
 ```
 
-The `todos` data is retrieved from the promise. By default, the `getFile()` decrypts data for you. For more information on the available options, see the <a href="https://blockstack.github.io/blockstack.js/interfaces/getfileoptions.html" taraget="_blank"><code>GetFileOptions</code></a> interface.
+The `todos` data is retrieved from the promise. By default, the `getFile()` decrypts data for you. For more information on the available options, see the <a href="https://blockstack.github.io/blockstack.js/interfaces/getfileoptions.html" taraget="_blank">the blockstack.js</a> library for details on the `GetFileOptions` interface.
 
 
 ## Summary
