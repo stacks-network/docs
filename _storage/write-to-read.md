@@ -12,7 +12,7 @@ Once a user authenticates and a DApp obtains authentication, the application int
 
 Gaia is built on a driver model that supports many storage services. So, with
 very few lines of code, you can interact with providers on Amazon S3, Dropbox,
-and so forth.  The simple `getFile` and `putFile` interfaces are kept simple
+and so forth.  The simple `getFile()` and `putFile()` interfaces are kept simple
 because Blockstack assumes and wants to encourage a community of
 open-source-data-management libraries.
 
@@ -22,6 +22,8 @@ that when an application submits a write-to
 be able to read from the `https://myreads.com/foo/bar` URL. Note that, while the
 prefix in the write-to url (for example,`myhub.service.org/store`) and the read-from URL
 (`https://myreads.com`) are different, the `foo/bar` suffixes are the same.
+
+By default, `putFile()` encrypts information while `getFile()` decrypts it by default. Data stored in an encrypted format  means only user that stored it can view it. For applications that want other users to view data, the  `encrypt` option is set to `false`. And, corresponding, the `decrypt` option on `getFile()`
 
 Consistent, identical suffixes allow an application to know _exactly_ where a
 written file can be read from, given the read prefix. The Gaia service defines a `hub_info` endpoint to obtain that read prefix:

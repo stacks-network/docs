@@ -155,7 +155,7 @@ Most of the imports in this file are locally coded React components. For example
 The `loadMe()` code uses the Blockstack's `UserSession.getFile()` method to get
 the specified file from the applications data store. If the users' data store on
 Gaia does not have the data, which is the case for new users, the Gaia hub
-responds with HTTP `404` code and the `getFile` promise resolves to null. If you
+responds with HTTP `404` code and the `getFile()` promise resolves to null. If you
 are using a Chrome Developer Tools with the DApp, you'll see these errors in a
 browser's developer **Console**.
 
@@ -177,8 +177,7 @@ saveMe(me) {
 
 The Blockstack <a href="https://blockstack.github.io/blockstack.js/#putfile"
 target="\_blank"><code>putFile()</code></a> stores the data provided in the
-user's DApp data store. You can view the URL for the data store from a user's
-profile.
+user's DApp data store. By default, `putFile()` stores data in an encrypted format which means only user that stored it can view it. You can view the URL for the data store from a user's profile. Because this application wants other users to view the persona and territory, the data is not encrypted, so the `encrypt` option is set to `false`.
 
 If you tested your Animal Kingdom, you can see this on your profile. To see your
 profile, go to the <a href="https://explorer.blockstack.org">Blockstack

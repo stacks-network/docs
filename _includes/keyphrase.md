@@ -32,7 +32,7 @@ Use the following table to answer questions about keys/phrases/values you can sh
    <tr valign="top">
       <td>Magic Recovery Code</td>
       <td><p>PROTECT</p></td>
-      <td><p>An long encrypted string, for example:</p> <p> <code>36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5WXxSTazJsUjOA...</code></p> <p>Do not share the QR code that accompanied your code either. This is a QR code:</p> <img src="/org/images/qr-code.png"/>
+      <td><p>An long encrypted string, for example:</p> <p> <code>36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5WXxSTazJsUjOA...</code></p> <p>Do not share the QR code that accompanied your recovery code either. This is a QR code:</p> <img src="/org/images/qr-code.png"/>
       </td>
    </tr>
    <tr valign="top">
