@@ -23,12 +23,9 @@
   - browser/todo-list
   - browser/blockstack_storage
   - develop/auth_provider
-  - develop/communityResources
-
-- title: Work with an SDK
-  docs:
   - android/tutorial
   - ios/tutorial
+  - develop/communityResources
 
 - title: App Mining
   docs:
