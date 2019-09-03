@@ -3,7 +3,7 @@ layout: learn
 permalink: /:collection/:path.html
 ---
 
-# Test beta Blockstack features
+# Test Blockstack beta features
 
 Blockstack is updated when our team releases new functionality. Significant issues may require patches as well and so result in new releases. A new release of Blockstack is first previewed through a beta before the official release. This allows developers on the Blockstack platform to test their applications with the new functionality before app users.
 
@@ -43,7 +43,7 @@ To display the hidden menu, on macOS, you can do the following:
 
    <img src="images/mac-hidden-menu.png" alt="">
 
-4. Check for updates.
+3. Check for updates.
 
 
 To display the hidden menu on Windows:
