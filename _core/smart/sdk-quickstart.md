@@ -21,31 +21,18 @@ You can use the software developer kit (SDK) to develop, test, and deploy Clarit
 
 {% include note.html content="This tutorial was written on macOS High Sierra 10.13.4. If you use a Windows or Linux system, you can still follow along. However, you will need to \"translate\" appropriately for your operating system." %}
 
-For this tutorial, you will use  `npm` to manage dependencies and scripts. The tutorial relies on the `npm` dependency manager. Before you begin, verify you have installed `npm` using the `which` command to verify.
+For this tutorial, you will use  `npm` to manage dependencies and scripts. Before you begin, verify you have installed `npm` using the `which` command to verify.
 
 ```bash
 $ which npm
 /usr/local/bin/npm
 ```
 
-If you don't find `npm` in your system, [install
-it](https://www.npmjs.com/get-npm).
-
-You use `npm` to install Yeoman. Yeoman is a generic scaffolding system that
-helps users rapidly start new projects and streamline the maintenance of
-existing projects. Verify you have installed `yo` using the `which` command. 
-
-
-```
-$ which yo
-/usr/local/bin/yo
-```
-
-If you don't have Yeoman, you can install it with the `npm install -g yo` command.
+If you don't find `npm` in your system, [install it](https://www.npmjs.com/get-npm).
 
 ## Task 1: Generate an initial Clarity project
 
-The SDK uses Yeoman to generate a project scaffold &mdash; an initial set of directories and files.   
+In this task, you generate a project scaffold &mdash; an initial set of directories and files.   
 
 1. Create a new directory for your project.
 
@@ -61,13 +48,13 @@ The SDK uses Yeoman to generate a project scaffold &mdash; an initial set of dir
 3. Use the `npm` command to initialize a Clarity project.
 
     ```sh
-    npm init yo clarity-dev
-    npx: installed 15 in 1.892s
-      create package.json
-      create .vscode/extensions.json
+    npm init clarity-dev
     ...
+
+    added 153 packages from 630 contributors and audited 280 packages in 4.73s
+    found 0 vulnerabilities
+
     Project created at /private/tmp/hello-clarity-sdk
-    ✔ create-yo ok!
     ```
 
     Depending on your connection speed, it may take time to construct the scaffolding.
@@ -94,7 +81,7 @@ The `contracts` directory contains a single file in `sample/hello-world.clar` fi
 
 The contract exposes 2 rudimentary functions. The **say-hi** returns a `hello world` string. The **increment-number**: echos  `val`. 
 
-The project also includes `tests/hello-world.ts` file. The test is written in Typescript. You can also write tests in Javascript.
+The project also includes `tests/hello-world.ts` file. The the `mocha.opts` file supports the testing by the <a href="https://mochajs.org/" target="_blank">Mocha Javascript test framework</a>.
 
 {% highlight cl linenos %}
 import { Client, Provider, ProviderRegistry, Result } from "@blockstack/clarity";
@@ -171,7 +158,7 @@ In the next section, try your hand at expanding the `hello-world.clar` program.
 
 In this task, you are challenged to expand the contents of the `contracts/hello-world.clar` file. Use your favorite editor and open the `contracts/hello-world.clar` file. If you use Visual Studio Code, you can install the Blockstack Clarity extension. The extension provides `syntax coloration` and some `autocompletion`. 
 
-Edit the `hello-world.clar` file.
+Edit the `contracts/hello-world.clar` file.
 
 ```cl
 ;; Functions
