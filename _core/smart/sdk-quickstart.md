@@ -21,7 +21,7 @@ You can use the software developer kit (SDK) to develop, test, and deploy Clarit
 
 {% include note.html content="This tutorial was written on macOS High Sierra 10.13.4. If you use a Windows or Linux system, you can still follow along. However, you will need to \"translate\" appropriately for your operating system." %}
 
-For this tutorial, you will use  `npm` to manage dependencies and scripts. The tutorial relies on the `npm` dependency manager. Before you begin, verify you have installed `npm` using the `which` command to verify.
+For this tutorial, you will use  `npm` to manage dependencies and scripts. Before you begin, verify you have installed `npm` using the `which` command to verify.
 
 ```bash
 $ which npm
