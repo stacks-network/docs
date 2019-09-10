@@ -644,7 +644,7 @@
       {
          "category": "tokens",
          "question": "Is there an exchange where I can buy and sell Stacks tokens?",
-         "answer": "<p>There is currently no authorized exchange or alternative trading system (ATS) for buying and selling Stacks tokens, and we cannot comment on when an exchange or ATS might list Stacks tokens at this time. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>. If you see Stacks listed on an exchange, please let us know at <a href='mailto:legal@blockstack.com'>legal@blockstack.com</a>, as the listing may be illegal or a scam.</p>"
+         "answer": "<p>We're currently in discussions with international (non-US) exchanges for potential listings of Stacks (STX) tokens in Oct or later. US persons will not be able to trade on such initial international exchanges.</p><p>For US investors, there is currently no authorized exchange or alternative trading system (ATS) for buying and selling Stacks tokens, and we cannot comment on when an exchange or ATS might list Stacks tokens at this time. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>. If you see Stacks listed on an exchange, please let us know at <a href='mailto:legal@blockstack.com'>legal@blockstack.com</a>, as the listing may be illegal or a scam.</p>"
       },
       {
          "category": "tokens",
