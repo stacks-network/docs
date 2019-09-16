@@ -30,6 +30,9 @@
 }
 
 
+/**
+* https://www.bryanbraun.com/anchorjs
+*/
 .anchorjs-link {
   display: inline-block;
   height: 32px;
@@ -42,6 +45,19 @@
   display: block;
 }
 
+/**
+* Create an invisible pseudo-element and make it the height of the
+* sticky navbar so the jump takes you to a location above the link
+*/
+:target:before {
+  content: "";
+  display: block;
+  margin-top: -80px;
+  height: 80px;
+  width: 1px;
+}
+
+// END: www.bryanbraun.com/anchorjs
 
 body > div.uk-lightbox.uk-overflow-hidden.uk-lightbox-panel.uk-open > div.uk-lightbox-toolbar.uk-lightbox-caption.uk-position-bottom.uk-text-center.uk-transition-slide-bottom.uk-transition-opaque
 .lb-data .lb-details {
