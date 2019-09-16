@@ -197,3 +197,46 @@ not accessible by anyone.
   ![](images/welcome-back.png)
 
   At this point, you can go work with DApps or you can review your recovery key.
+
+## Can you delete a Blockstack ID?
+
+An ID is recorded on the Blockstack's blockchain; For this reason, once you create an identity, you can’t delete it. You can abandon or simply stop using your ID. Estranged identities like this can’t be used by another person or organization because only you have access to the ID's 12 word recovery phrase.
+
+However, you **can delete** the data associated with your ID. Storage deletion is *only possible* if you used that ID with the default Blockstack Gaia storage hub. If your ID used your own or another Gaia storage hub, Blockstack cannot delete the data, instead, you should contact your storage hub provider for that service.
+
+Do the following to delete the default storage provided with your ID.
+
+1. Log into the Blockstack Browser.
+2. Choose <a href="https://browser.blockstack.org/profiles/i/all" target="_blank"><strong>Identity > More page</strong></a>.
+
+   This page lists your **Default ID** and any other IDs associated with it. Each ID has a Gaia storage location associated with it. You may just have one ID, that is typical.
+
+3. Make sure you are using <a hreg="https://browser.blockstack.org/account/storage" target="_blank">the default storage hub</a>.
+
+   If you are using the default hub, the page looks like this:
+
+   ![](images/defaultstorage.png)
+
+4. Visit the <a href="https://browser.blockstack.org/profiles" target="_blank"><strong>Identity</strong></a> page on your browser.
+5. Enter `Delete Me` and the date you made the request for the **Full Name** and the **Short Bio**.
+
+   ![](images/deleteme.png)
+
+6. Press **Save**.
+7. Email the list of IDs to <a href='mailto:support@blockstack.com'>support@blockstack.com</a>, the content of your email should contain details similar to the following:
+
+   ```txt
+   Please delete the Gaia storage associated with the following ids:
+   - user1.id.blockstack
+   - user2.id
+   - user3.id.blockstack
+   All of these IDs used the Gaia default storage.
+   ```
+
+   The support team will respond with an email confirming your data was deleted.
+  
+8. To confirm your data was deleted, navigate to <a href="https://explorer.blockstack.org/" target="_blank">the Blockstack Explorer</a> and enter your ID into the search bar.
+
+   You should see something similar to the following:
+
+   ![](images/deletedprofile.png)
