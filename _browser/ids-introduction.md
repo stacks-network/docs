@@ -235,7 +235,7 @@ Do the following to delete the default storage provided with your ID.
 
    The support team will respond with an email confirming your data was deleted.
   
-8. To confirm your data was deleted, navigate to <a href="https://explorer.blockstack.org/" target="_blank"></a> and enter your ID into the search bar.
+8. To confirm your data was deleted, navigate to <a href="https://explorer.blockstack.org/" target="_blank">the Blockstack Explorer</a> and enter your ID into the search bar.
 
    You should see something similar to the following:
 
