@@ -218,7 +218,7 @@ Do the following to delete the default storage provided with your ID.
    ![](images/defaultstorage.png)
 
 4. Visit the <a href="https://browser.blockstack.org/profiles" target="_blank"><strong>Identity</strong></a> page on your browser.
-5. Enter Delete Me for the **Full Name** and the **Short Bio**.
+5. Enter `Delete Me` and the date you made the request for the **Full Name** and the **Short Bio**.
 
    ![](images/deleteme.png)
 
@@ -241,4 +241,4 @@ Do the following to delete the default storage provided with your ID.
 
    You should see something similar to the following:
 
-   [TBD]
+   ![](images/deletedprofile.png)
