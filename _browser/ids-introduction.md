@@ -14,11 +14,10 @@ others have access to anything other than your identity, for example
 and you can choose to share &ndash; or not.
 
 This document explains the free Blockstack ID, though there are others you can get for fee. You learn how to
-create a Blockstack ID, how to restore an ID, and how to delete data associated with an ID. This page contains the following sections:
+create a Blockstack ID, how to sign in with an ID, and how to delete data associated with an ID. This page contains the following sections:
 
 * TOC
 {:toc}
-
 
 ## Understand how identities function in the Blockstack Ecosystem
 
@@ -91,7 +90,7 @@ Visit the <a href="https://app.co/" target="_blank">App.co, the Universal DApp S
 When you return to the Blockstack Browser, the browser prompts you to create a
 new Blockstack ID or signing in with an existing Blockstack ID.  When you do this the system provides you with this prompt:
 
- ![](images/existing-d.png)
+![](images/existing-id.png)
 
 From this dialog you can choose between these two methods:
 
@@ -99,7 +98,7 @@ From this dialog you can choose between these two methods:
 * Method 2: Supply the identity recovery code (`36mWivFdy0YPH2z31E...`) and the password you used when you created the identity
 
 If you loose either the recovery code or the password you provided when you
-_initially_ created your identity, you can no longer use method 1 to restore
+_initially_ created your identity, you can no longer use method 1 to sign into
 your identity. If you lose the recovery key, you can no longer use method 2.
 Once you no longer have access to either method, your identity is estranged and
 not accessible by anyone, not even Blockstack.
@@ -141,7 +140,7 @@ not accessible by anyone, not even Blockstack.
 
    At this point, you can go onto work with DApps or you can review your recovery key.
 
-### Restore with a secret recovery code and original password
+### Sign in with a secret recovery code and original password
 
 1. Open the [Blockstack web application in your browser](https://browser.blockstack.org/sign-up?redirect=%2F).
 2. Choose **Sign in with an existing ID**.
@@ -149,7 +148,7 @@ not accessible by anyone, not even Blockstack.
    The system displays a dialog where you can enter your recovery code or a
    recovery key.
 
-3. Enter your recovery code.
+3. Enter your magic recovery code.
 
   The recovery code is an encrypted string.
 
@@ -167,7 +166,7 @@ not accessible by anyone, not even Blockstack.
    The system prompts you for a password. **This must be the password entered
    when you first created your identity.** If you have forgotten this password,
    Blockstack cannot provide it to you. Instead, you must switch to using your
-   recovery key rather than your code to restore your identity.
+   recovery key rather than your code to sign into your identity.
 
 6. Enter your origin password and press **Next**.
 
