@@ -6,19 +6,18 @@ permalink: /:collection/:path.html
 # Get and use a Blockstack ID
 {:.no_toc}
 
-Through the Blockstack Browser you can create an identity. Your identity is a
+Through the Blockstack Browser you can create an identity. You use this single identity to log into applications that allow you to **Login with Blockstack**. Your identity is also your
 point of contact as you interact with others through DApps. Others may be
 individual users or companies or software. Unless you allow it, none of these
-others have access to anything other than your identity label, for example
+others have access to anything other than your identity, for example
 `moxiegirl.id.blockstack`. Typically, others must ask to learn more about you,
 and you can choose to share &ndash; or not.
 
-This document explains one type of identity, the Blockstack ID. You learn how to
-create them, as well as when and how to restore them. It contains the following sections:
+This document explains the free Blockstack ID, though there are others you can get for fee. You learn how to
+create a Blockstack ID, how to sign in with an ID, and how to delete data associated with an ID. This page contains the following sections:
 
 * TOC
 {:toc}
-
 
 ## Understand how identities function in the Blockstack Ecosystem
 
@@ -26,55 +25,33 @@ In this section, you learn about identity so you can use it securely.
 
 ### Why is an identity not an account
 
-On the internet of today, an account you create for an applications stays with
-the company providing that app. This company keeps data you enter about yourself
-and data about how you use their application. When you close your account, the
-company retains that data.
+In today's Internet, an account you create to use an applications stays with the company providing that app. This company keeps data you enter about yourself and collects data about how you use their application. This data is valuable and companies use your data to attract advertises. If you stop using that application and close your account, the company retains your data because even old data has value. 
 
-In decentralized, blockchain software, _identity_ is a combination of
-username and key. The data associated with that identity stays with it, this
-means applications or central authorities do not keep our control access to your
-data.
+Companies combine data from different applications you visit to build a profile of you. This profile lets them target you for particular information and craft your experience of it. For example, an advertiser can determine if you might be interested in a product and _how much they can charge you for it_. In return for allowing this subtle messaging to you and lack of privacy, you receive a free application or service.
 
-You give a DApp access to your data but when you decide to no longer use that
-application, you withdraw that access. The DApp developer can no longer access
-information about you.
+A decentralized identity is a new way to use applications without surrendering your data. A, _decentralized identity_ is a combination of username and key. The data associated with that identity stays with it, this means big companies, their applications or central authorities cannot build data profiles about you. You remain private.
 
-### How do you get an identity
+A Blockstack ID is a decentralized identity. You use this single identity to log into decentralized applications (DApps) that present the **Login with Blockstack** button. A single identity gives you access to 100s of applications. When you log into a DApp, you create data but that data is encrypted and stored with your identity. When you log out of an application, the application no longer can read that data so it can't make use of it to build up a profile of you or sell your data to other companies. Your privacy is preserved.
 
-Think of the ID as a form of identification, like a drivers license.  Like
-drivers' licenses, each identity is unique, but this license identifies you on
-the virtual internet highway. An identity is created through a registrar of which there are many.
+### How do you get a Blockstack identity
 
-For DApps in the Blockstack Ecosystem,  Blockstack maintains an identity
-registrar. The Blockstack Browser is Blockstack's DApp for creating and managing
-identities in the Blockstack registration space.  An example of a registered
-Blockstack ID is the `larry.id` ID. The `.id` designation is required, the
-`larry` portion is a unique string.
+Think of the ID as a form of identification, like a drivers license. Like drivers' licenses, each identity is unique, but this license identifies you on the virtual internet highway. An identity is created through a registrar of which there are many. When you create a Blockstack ID, your registrar records the identity creation on the Stacks blockchain. 
 
-The Blockstack Browser allows new users to create free IDs. These free IDs have
-included the word `blockstack` in the ID, like this `moxiegirl.id.blockstack`. The
-additional `blockstack` portion of the name is called a _namespace_. It just
-means all the names belong to a particular entity. You don't have to use a free
-`id.blockstack` identity. You can also buy an identity that just has a unique
-name and the  `.id` portion.
+The Blockstack Browser allows new users to create free IDs. These free IDs have included the word `blockstack` in the ID, like this `moxiegirl.id.blockstack`. The additional `blockstack` portion of the name is called a _namespace_. It just means all the names belong to a particular entity. You don't have to use a free `id.blockstack` identity. 
 
-This first ID you create is a _primary ID_. Once you create a primary identity,
-you can add other, sub-identities to it. Sub-identities can have the
-`id.blockstack` or the `.id` format. You might created sub-identities for the
-same reason you have a work and home email.
+This first Blockstack ID you create is a _primary ID_. Once you create a primary identity, you can add other, sub-identities to it. Sub-identities can have the `id.blockstack` or the `.id` format. You might created sub-identities for the same reason you have a work and home email.
+
+If you want a primary identity without the `blockstack` namespace in it, you can buy one. An example of purchased ID is the `larry.id` ID. The `.id` designation is required, the `larry` portion is a unique string.
 
 ### What is a key?
 
-IDs have keys. These key unlock your identity like opening the door to a private
-home. You should keep your ID secret and in a safe place. When you create an
-ID, Blocktack creates the key for you. When you create an ID, Blockstack sends
-you an email with a recovery code you can use to view your key.
+Blockstack IDs have keys. These key unlock your identity like opening the door to a private
+home. You should keep your ID secret and in a safe place. Blocktack creates your identity key for you. There are two pieces of important information associated with your key:
 
-* _secret recovery key_ which is a sequence of words `applied binge crisp pictorial fiery dancing agreeable frogs light finish ping apple`
-* _recovery code_ an encrypted string, for example, `36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5W1P0BwXxSTazJsUjOAmC55rFUWINqDqGccLio0iwzGclAhaHGZQ5M52`
+* The key itself also called the _magic recovery key_ which is a sequence of words `applied binge crisp pictorial fiery dancing agreeable frogs light finish ping apple`
+* The _secret recovery code_ an encrypted string, for example, `36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5W1P0BwXxSTazJsUjOAmC55rFUWINqDqGccLio0iwzGclAhaHGZQ5M52`
 
-You receive the recovery code only once. When you get this email, You should
+When you create Blockstack ID, Blockstack sends you an email with a recovery code you can use to view your key. You receive the recovery code only once. When you get this email, You should
 **View Secret Recovery Key** immediately and save to a secure location such as a
 password manager.
 
@@ -84,17 +61,16 @@ password manager.
 record the:
 </p>
 <ul>
-<li>recovery key</li>
-<li>recovery code (in the order the words appear)</li>
-<li>initial password (the password lasts until you **RESET** the browser)</li>
+<li>secret recovery key</li>
+<li>magic recovery code (in the order the words appear)</li>
+<li>initial password (the password lasts until you <strong>RESET</strong> the browser)</li>
 </ul>
-<p>Blockstack does not store them, so it can't give them to you later if they are
-lost.</p>
+<p>Blockstack does not store the key or recover code, so it can't give them to you later if you lose them.</p>
 </div>
 
 ### Where can you use a Blockstack ID
 
-You can use your Blockstack ID with every DApp in the Blockstack Ecosystem.  To
+You can use your Blockstack ID with every DApp in the Blockstack Ecosystem. To
 create an ID, you use a DApp called the Blockstack Browser. Any DApp data you
 create is linked to this ID.
 
@@ -103,41 +79,43 @@ the picture's bits and bytes are stored in your personal storage. When you log
 into another DApp with your ID, that application can ask for access to your
 storage.
 
+Visit the <a href="https://app.co/" target="_blank">App.co, the Universal DApp Store</a> to find apps you can use with your Blockstack ID.
 
 ## Create an initial Blockstack ID
 
 {% include create_id.md %}
 
-## Restore a Blockstack ID
+## Sign in with an existing a Blockstack ID
 
 When you return to the Blockstack Browser, the browser prompts you to create a
-new Blockstack ID or restore an existing Blockstack ID. If you have a
-Blockstack identity, you can open the browser by restoring the identity. To
-restore an identity, there are two available methods.
+new Blockstack ID or signing in with an existing Blockstack ID.  When you do this the system provides you with this prompt:
 
-Method 1: Supply the identity recovery code (`36mWivFdy0YPH2z31E...`) and the
-password you provided when you _initially_ created your identity. Method 2:
-Supply the recovery key which is a sequence of words (`applied binge ...`)
+![](images/existing-id.png)
 
-If you loose either the recovery code or the password you provided when you
-_initially_ created your identity, you can no longer use method 1 to restore
-your identity. If you lose the recovery key, you can no longer use method 2.
+From this dialog you can choose between these two methods:
+
+* Method 1: Supply the secret recovery key which is a sequence of words (`applied binge ...`)
+* Method 2: Supply the magic recovery code (`36mWivFdy0YPH2z31E...`) and the password you used when you created the identity
+
+If you loose either the magic recovery code or the password you provided when you
+_initially_ created your identity, you can no longer use method 1 to sign into
+your identity. If you lose the secret recovery key, you can no longer use method 2.
 Once you no longer have access to either method, your identity is estranged and
-not accessible by anyone.
+not accessible by anyone, not even Blockstack.
 
-### Restore with a recovery key
+### Sign in with a secret recovery key
 
 1. Open the [Blockstack web application in your browser](https://browser.blockstack.org/sign-up?redirect=%2F).
-2. Choose **Restore a Blockstack ID**.
+2. Choose **Sign in with an existing ID**.
 
    The system displays a dialog where you can enter your recovery code or a
    recovery key.
 
 3. Enter the recovery key.
 
-   The recovery key is a squence of words.
+   The recovery key is a sequence of words.
 
-   ![](images/recovery-code.png)
+   ![](images/recovery-key.png)
 
 4. Press **Next**.
 
@@ -162,15 +140,15 @@ not accessible by anyone.
 
    At this point, you can go onto work with DApps or you can review your recovery key.
 
-### Restore with a recovery code and original password
+### Sign in with a magic recovery code and original password
 
 1. Open the [Blockstack web application in your browser](https://browser.blockstack.org/sign-up?redirect=%2F).
-2. Choose **Restore a Blockstack ID**.
+2. Choose **Sign in with an existing ID**.
 
    The system displays a dialog where you can enter your recovery code or a
    recovery key.
 
-3. Enter your recovery code.
+3. Enter your magic recovery code.
 
   The recovery code is an encrypted string.
 
@@ -185,16 +163,16 @@ not accessible by anyone.
 
 5. Enter an email and press **Next**.
 
-   The system prompts you for a password. This must be the password entered
-   when you first created your identity. If you have forgotten this password,
+   The system prompts you for a password. **This must be the password entered
+   when you first created your identity.** If you have forgotten this password,
    Blockstack cannot provide it to you. Instead, you must switch to using your
-   recovery key rather than your code to restore your identity.
+   recovery key rather than your code to sign into your identity.
 
 6. Enter your origin password and press **Next**.
 
-  The system welcomes you back.
+   The system welcomes you back.
 
-  ![](images/welcome-back.png)
+   ![](images/welcome-back.png)
 
   At this point, you can go work with DApps or you can review your recovery key.
 
