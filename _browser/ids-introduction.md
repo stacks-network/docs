@@ -170,9 +170,9 @@ not accessible by anyone, not even Blockstack.
 
 6. Enter your origin password and press **Next**.
 
-  The system welcomes you back.
+   The system welcomes you back.
 
-  ![](images/welcome-back.png)
+   ![](images/welcome-back.png)
 
   At this point, you can go work with DApps or you can review your recovery key.
 
