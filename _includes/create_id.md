@@ -23,12 +23,12 @@ To create an initial Blockstack ID, do the following:
 2. Press **Continue** when you find an available name you like.
 
    The application prompts you to enter a password. Blockstack uses this
-   password to encrypt your recovery code.  You must record and save this
+   password to encrypt your recovery code. You must record and save this
    initial password.
 
     ![]({{ site.baseurl }}/browser/images/create-id-2.png)
 
-   **NOTE**:The Blockstack team cannot restore your password for you.
+   {% include note.html content="The Blockstack team cannot restore your password for you." %}
 
 3. Enter a password, confirm it, and press **Register ID**.
 
@@ -38,9 +38,9 @@ To create an initial Blockstack ID, do the following:
 
    Blockstack uses this email address to send you recovery information. This email is only sent once.
 
-4.  Press **Next**.
+4. Press **Next**.
 
-    Blockstack presents you with the completed ID.  
+    Blockstack presents you with the completed ID. 
 
     ![]({{ site.baseurl }}/browser/images/create-id-4.png)
 
@@ -48,15 +48,26 @@ To create an initial Blockstack ID, do the following:
 
 5. Click **Secret Recovery Key** to record your key.
 
-    ![]({{ site.baseurl }}/browser/images/create-id-4.png)
+    The system warns you to ave your key:
 
-    A recovery code is a sequence  of words.  These words allow you to recover
-    an `id.blockstack` that you've created.  You should store the words along
-    with their order, for example,  `#1 applied` and so forth.
+    ![]({{ site.baseurl }}/browser/images/secret-key-recovery.png)
+
+6. Click **Secret Recovery Key** to record your key.
 
     ![]({{ site.baseurl }}/browser/images/create-id-5.png)
 
-6.  Copy your **Secret Recovery Key** .
+    A recovery code is a sequence  of words. These words allow you to recover
+    an `id.blockstack` that you've created. You should store the words along
+    with their order, for example,  `#1 applied` and so forth.
 
+
+6. Copy your **Secret Recovery Key**  and press **Continue**.
+
+   The system confirms you have saved your key by asking you to select two words.
+
+7. Choose **Go to Blockstack**.
+
+   It may take several moments for your username to be recorded on the blockchain. You can still use it but you may see a computer-friendly ID sequence such as `ID-1G9318bjf6FAZvD3gnaSyzUojM6f8xKWK1` until the recording is finalized.
 
 Congratulations you have created your first ID. You are now ready to start using DApps.
+
