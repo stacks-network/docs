@@ -94,16 +94,16 @@ new Blockstack ID or signing in with an existing Blockstack ID.  When you do thi
 
 From this dialog you can choose between these two methods:
 
-* Method 1: Supply the secret key which is a sequence of words (`applied binge ...`)
-* Method 2: Supply the identity recovery code (`36mWivFdy0YPH2z31E...`) and the password you used when you created the identity
+* Method 1: Supply the secret recovery key which is a sequence of words (`applied binge ...`)
+* Method 2: Supply the magic recovery code (`36mWivFdy0YPH2z31E...`) and the password you used when you created the identity
 
-If you loose either the recovery code or the password you provided when you
+If you loose either the magic recovery code or the password you provided when you
 _initially_ created your identity, you can no longer use method 1 to sign into
-your identity. If you lose the recovery key, you can no longer use method 2.
+your identity. If you lose the secret recovery key, you can no longer use method 2.
 Once you no longer have access to either method, your identity is estranged and
 not accessible by anyone, not even Blockstack.
 
-### Sign in with a magic recovery key
+### Sign in with a secret recovery key
 
 1. Open the [Blockstack web application in your browser](https://browser.blockstack.org/sign-up?redirect=%2F).
 2. Choose **Sign in with an existing ID**.
@@ -115,7 +115,7 @@ not accessible by anyone, not even Blockstack.
 
    The recovery key is a sequence of words.
 
-   ![](images/recovery-code.png)
+   ![](images/recovery-key.png)
 
 4. Press **Next**.
 
@@ -140,7 +140,7 @@ not accessible by anyone, not even Blockstack.
 
    At this point, you can go onto work with DApps or you can review your recovery key.
 
-### Sign in with a secret recovery code and original password
+### Sign in with a magic recovery code and original password
 
 1. Open the [Blockstack web application in your browser](https://browser.blockstack.org/sign-up?redirect=%2F).
 2. Choose **Sign in with an existing ID**.
