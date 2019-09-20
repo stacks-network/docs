@@ -62,7 +62,7 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
 3. Launch the alpha build of the local Blockstack Browser client.
 
-   {% include warning.html content="This alpha build interacts with a version of the Gaia Storage hub that supports collections. You cannot use an existing ID to test with, instead, you need to <strong>create a new, test ID using the alpha build</strong>. Additionally, <strong>you must use the <code>https://develop-hub.blockstack.org</code> Gaia hub during the Contact Manager onboarding</strong>. For this reason, wait to create a new ID." %}
+   {% include warning.html content="This alpha build interacts with a version of the Gaia Storage hub that supports collections. You cannot use an existing ID to test with, instead, you need to <strong>create a new, test ID using the alpha build</strong>. Additionally, <strong>you must use the <code>https://staging-hub.blockstack.xyz</code> Gaia hub during the Contact Manager onboarding</strong>. For this reason, wait to create a new ID." %}
 
 4. Go to the local Blockstack Browser and make sure you see this:
 
@@ -100,7 +100,7 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
 12. Choose **Create new ID** from the pop up.
 
-    The onboarding should prompt you to store your data with the `https://develop-hub.blockstack.org` provider.
+    The onboarding should prompt you to store your data with the `https://staging-hub.blockstack.xyz` provider.
 
 13. Choose **Yes, use the recommended provider** and complete the creation of your test ID.
 
@@ -148,7 +148,7 @@ In this section, you learn how to add `Contact` collection functionality to an e
 
     const authRequest = makeAuthRequest(undefined, undefined, undefined, scopes, undefined, undefined, {
     solicitGaiaHubUrl: true,
-    recommendedGaiaHubUrl: 'https://develop-hub.blockstack.org'
+    recommendedGaiaHubUrl: 'https://staging-hub.blockstack.xyz'
     })
 
     userSession.redirectToSignInWithAuthRequest(authRequest)
