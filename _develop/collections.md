@@ -34,11 +34,11 @@ How do collections work? Blockstack builds a library containing commonly used da
 
 A collection schema is neither validated or enforced. The goal is to incentivize collection use rather that enforce use. 
 
-Because malicious apps or apps with poor security controls may damage user data, Blockstack believes collections should include the ability for users to roll-back changes. For this reason, Blockstack supports an event log and rollback mechanisms in collections. To support this rollback in the pre-release, collections data store is conceptually an event log. Every data write an app makes is stored as a separate file. By placing data in files it ensures that data is never lost and developers can return files back to any previous state. 
+Because malicious apps or apps with poor security controls may damage user data, Blockstack believes collections should include the ability for users to roll-back changes. For this reason, Blockstack supports an event log and rollback mechanisms in collections. To support this rollback in the pre-release, collections data store is conceptually an event log. Every data write an app makes is stored as a separate file. By placing data in files it ensures that data is never lost and files can be returned back to any previous state. 
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5 class="uk-card-title">The Future of Collections Envisioned</h5>
-<p>Blockstack believes that collections should enable true data portability across applications for each distributed ID. The goal is to develop simple user interfaces to allow users to manage of application access and permissions to collection data.</p>
+<p>Blockstack believes that collections should enable true data portability across applications for each distributed ID. The goal is to develop simple user interfaces to allow users to manage of application access and permissions to collection data. For example, in the future, users can rollback data to previous versions using management interfaces.</p>
 <p>For developers, collections can incentivize user adoption by reducing user friction.  Users can easily try new apps and move to them without the overhead or barrier of re-entering data. You are <a href="https://forum.blockstack.org/t/feedback-wanted-collections-design/7752" target="_blank">welcome to review and comment</a> on the current design document.</p>
 </div>
 
