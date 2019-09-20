@@ -5,7 +5,7 @@ permalink: /:collection/:path.html
 # Work with Collections (Preview)
 {:.no_toc}
 
-Collections is that feature designed to make data portable among Blockstack applications. Sharing is accomplished by storing a user's data in a standard, structured way in a known Gaia location. Collections associate the data with a user's distributed ID. When users move among apps, the same data is available to each application. 
+Collections is the feature designed to make data portable among Blockstack applications. Sharing is accomplished by storing a user's data in a standard, structured way in a known Gaia location. Collections associate the data with a user's distributed ID. When users move among apps, the same data is available to each application. 
 
 On this page, you learn what collections are and how to use them. You'll learn about the `Contacts` collection in particular. The following topics are covered:
 
@@ -32,15 +32,13 @@ How do collections work? Blockstack builds a library containing commonly used da
 }
 ```
 
-A collection schema is neither validated or enforced. The goal is to incentivize collection use rather that enforce use. Developers have the ability to roll-back in case apps make undesirable changes that break compatibility with collections. To support this rollback in the pre-release, collections data store is conceptually an event log. Every data write an app makes is stored as a separate file. By placing data in files it ensures that data is never lost and developers can return files back to any previous state. 
+A collection schema is neither validated or enforced. The goal is to incentivize collection use rather that enforce use. 
+
+Because malicious apps or apps with poor security controls may damage user data, Blockstack believes collections should include the ability for users to roll-back changes. For this reason, Blockstack supports an event log and rollback mechanisms in collections. To support this rollback in the pre-release, collections data store is conceptually an event log. Every data write an app makes is stored as a separate file. By placing data in files it ensures that data is never lost and developers can return files back to any previous state. 
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5 class="uk-card-title">The Future of Collections Envisioned</h5>
-<p>Blockstack believes that collections feature of the Blockstack platform can reduce the damage that faulty and malicious apps can cause to user’s data. For end=users, Blockstack seeks to enable:</p>
-<ul class="uk-list uk-list-bullet uk-text-small">
-  <li>True data portability across applications for each distributed ID</li>
-  <li>Management of application access and permissions to collection data.</li>
-</ul>
+<p>Blockstack believes that collections should enable true data portability across applications for each distributed ID. The goal is to develop simple user interfaces to allow users to manage of application access and permissions to collection data.</p>
 <p>For developers, collections can incentivize user adoption by reducing user friction.  Users can easily try new apps and move to them without the overhead or barrier of re-entering data. You are <a href="https://forum.blockstack.org/t/feedback-wanted-collections-design/7752" target="_blank">welcome to review and comment</a> on the current design document.</p>
 </div>
 
@@ -64,7 +62,7 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
 3. Launch the alpha build of the local Blockstack Browser client.
 
-   {% include warning.html content="This alpha build interacts with a version of the Gaia Storage hub that supports collections. You cannot use an existing ID to test with, instead, you need to <strong>create a new, test ID using the alpha build</strong>. Additionally, <strong>you must create a custom Gaia hub during the Contact Manager onboarding</strong>. For this reason, wait to create a new ID." %}
+   {% include warning.html content="This alpha build interacts with a version of the Gaia Storage hub that supports collections. You cannot use an existing ID to test with, instead, you need to <strong>create a new, test ID using the alpha build</strong>. Additionally, <strong>you must use the <code>https://develop-hub.blockstack.org</code> Gaia hub during the Contact Manager onboarding</strong>. For this reason, wait to create a new ID." %}
 
 4. Go to the local Blockstack Browser and make sure you see this:
 
