@@ -56,20 +56,17 @@ surge --domain raspy-songs.surge.sh
 
 The `_data/cliRef.json` file is generated from the `blockstack-cli` subcommand `docs`. This data file is consumed by the `_includes/commandline.md` file which is used to serve up the reference.  
 
-1. Install the latest version of the cli.
+1. Install the latest version of the cli according to the instructions at: https://github.com/blockstack/cli-blockstack
 
-    ```
-    $ npm install -g https://github.com/blockstack/cli-blockstack
-
-    ```
-
-2. Generate the json for the cli in the `docs.blockstack1 repo.
+2. Generate the json for the cli in the `docs.blockstack` repo.
 
    ```
    $ blockstack-cli docs | python -m json.tool > _data/cliRef.json 
    ```
 
-3. Make sure the generated docs are clean.
+3. Make sure the generated docs are clean by building the documentation.
+
+   If you run into any problem in the generation usually it results from a problem in the repo. You can make a pull request back to the repo to fix anything.
 
 ## Clarity Reference
 
