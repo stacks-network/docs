@@ -2,39 +2,39 @@
   "functions": [
     {
       "name": "+ (add)",
-      "input_type": "int, ...",
-      "output_type": "int",
+      "input_type": "int, ... | uint, ...",
+      "output_type": "int | uint",
       "signature": "(+ i1 i2...)",
       "description": "Adds a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.",
       "example": "(+ 1 2 3) ;; Returns 6"
     },
     {
       "name": "- (subtract)",
-      "input_type": "int, ...",
-      "output_type": "int",
+      "input_type": "int, ... | uint, ...",
+      "output_type": "int | uint",
       "signature": "(- i1 i2...)",
       "description": "Subtracts a variable number of integer inputs and returns the result. In the event of an _underflow_, throws a runtime error.",
       "example": "(- 2 1 1) ;; Returns 0\n(- 0 3) ;; Returns -3\n"
     },
     {
       "name": "* (multiply)",
-      "input_type": "int, ...",
-      "output_type": "int",
+      "input_type": "int, ... | uint, ...",
+      "output_type": "int | uint",
       "signature": "(* i1 i2...)",
       "description": "Multiplies a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.",
       "example": "(* 2 3) ;; Returns 6\n(* 5 2) ;; Returns 10\n(* 2 2 2) ;; Returns 8\n"
     },
     {
       "name": "/ (divide)",
-      "input_type": "int, ...",
-      "output_type": "int",
+      "input_type": "int, ... | uint, ...",
+      "output_type": "int | uint",
       "signature": "(/ i1 i2...)",
       "description": "Integer divides a variable number of integer inputs and returns the result. In the event of division by zero, throws a runtime error.",
       "example": "(/ 2 3) ;; Returns 0\n(/ 5 2) ;; Returns 2\n(/ 4 2 2) ;; Returns 1\n"
     },
     {
       "name": ">= (greater than or equal)",
-      "input_type": "int, int",
+      "input_type": "int, int | uint, uint",
       "output_type": "bool",
       "signature": "(>= i1 i2)",
       "description": "Compares two integers, returning `true` if `i1` is greater than or equal to `i2` and `false` otherwise.",
@@ -42,7 +42,7 @@
     },
     {
       "name": "<= (less than or equal)",
-      "input_type": "int, int",
+      "input_type": "int, int | uint, uint",
       "output_type": "bool",
       "signature": "(<= i1 i2)",
       "description": "Compares two integers, returning true if `i1` is less than or equal to `i2` and `false` otherwise.",
@@ -50,7 +50,7 @@
     },
     {
       "name": "< (less than)",
-      "input_type": "int, int",
+      "input_type": "int, int | uint, uint",
       "output_type": "bool",
       "signature": "(< i1 i2)",
       "description": "Compares two integers, returning `true` if `i1` is less than `i2` and `false` otherwise.",
@@ -58,32 +58,48 @@
     },
     {
       "name": "> (greater than)",
-      "input_type": "int, int",
+      "input_type": "int, int | uint, uint",
       "output_type": "bool",
       "signature": "(> i1 i2)",
       "description": "Compares two integers, returning `true` if `i1` is greater than `i2` and false otherwise.",
       "example": "(> 1 2) ;; Returns 'false\n(> 5 2) ;; Returns 'true\n"
     },
     {
-      "name": "mod",
-      "input_type": "int, int",
+      "name": "to-int",
+      "input_type": "uint",
       "output_type": "int",
+      "signature": "(to-int u)",
+      "description": "Tries to convert the `uint` argument to an `int`. Will cause a runtime error and abort if the supplied argument is >= `pow(2, 127)`",
+      "example": "(to-int u238) ;; Returns 238"
+    },
+    {
+      "name": "to-uint",
+      "input_type": "int",
+      "output_type": "uint",
+      "signature": "(to-uint i)",
+      "description": "Tries to convert the `int` argument to a `uint`. Will cause a runtime error and abort if the supplied argument is negative.",
+      "example": "(to-uint 238) ;; Returns u238"
+    },
+    {
+      "name": "mod",
+      "input_type": "int, int | uint, uint",
+      "output_type": "int | uint",
       "signature": "(mod i1 i2)",
       "description": "Returns the integer remainder from integer dividing `i1` by `i2`. In the event of a division by zero, throws a runtime error.",
       "example": "(mod 2 3) ;; Returns 0\n(mod 5 2) ;; Returns 1\n(mod 7 1) ;; Returns 0\n"
     },
     {
       "name": "pow",
-      "input_type": "int, int",
-      "output_type": "int",
+      "input_type": "int, int | uint, uint",
+      "output_type": "int | uint",
       "signature": "(pow i1 i2)",
       "description": "Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error.",
       "example": "(pow 2 3) ;; Returns 8\n(pow 2 2) ;; Returns 4\n(pow 7 1) ;; Returns 7\n"
     },
     {
       "name": "xor",
-      "input_type": "int, int",
-      "output_type": "int",
+      "input_type": "int, int | uint, uint",
+      "output_type": "int | uint",
       "signature": "(xor i1 i2)",
       "description": "Returns the result of bitwise exclusive or'ing `i1` with `i2`.",
       "example": "(xor 1 2) ;; Returns 3\n(xor 120 280) ;; Returns 352\n"
@@ -255,6 +271,22 @@
       "signature": "(sha256 value)",
       "description": "The `sha256` function computes `SHA256(x)` of the inputted value.\nIf an integer (128 bit) is supplied the hash is computed over the little-endian representation of the\ninteger.",
       "example": "(sha256 0) ;; Returns 0x374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+    },
+    {
+      "name": "sha512",
+      "input_type": "buff|int",
+      "output_type": "(buff 64)",
+      "signature": "(sha512 value)",
+      "description": "The `sha512` function computes `SHA512(x)` of the inputted value.\nIf an integer (128 bit) is supplied the hash is computed over the little-endian representation of the\ninteger.",
+      "example": "(sha512 1) ;; Returns 0x6fcee9a7b7a7b821d241c03c82377928bc6882e7a08c78a4221199bfa220cdc55212273018ee613317c8293bb8d1ce08d1e017508e94e06ab85a734c99c7cc34"
+    },
+    {
+      "name": "sha512/256",
+      "input_type": "buff|int",
+      "output_type": "(buff 32)",
+      "signature": "(sha512/256 value)",
+      "description": "The `sha512/256` function computes `SHA512/256(x)` (the SHA512 algorithm with the 512/256 initialization vector, truncated\nto 256 bits) of the inputted value.\nIf an integer (128 bit) is supplied the hash is computed over the little-endian representation of the\ninteger.",
+      "example": "(sha512/256 1) ;; Returns 0x515a7e92e7c60522db968d81ff70b80818fc17aeabbec36baf0dda2812e94a86"
     },
     {
       "name": "keccak256",

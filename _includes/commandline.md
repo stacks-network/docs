@@ -14,10 +14,12 @@ private keys. For this reason, DO NOT use this tool for day-to-day tasks as you
 risk the security of your keys." %}
 
 You must <a href="#installCommandLine">install the command line</a> before you
-can use the commands
+can use the commands. 
 
 ## List of commands
 {:.no_toc}
+
+To see the usage and options for the command in general, enter `blockstack-cli` without any subcommands. To see a list of subcommands enter `blockstack-cli help`. Enter `blockstack-cli SUBCOMMAND_NAME help` to see a subcommand with its usage. The following are the available subcommands:
 
 * TOC
 {:toc}
@@ -58,12 +60,9 @@ can use the commands
 ##  How to install the command line
 {:.no_toc}
 
-These instructions assume you are using a macOS or Linux system. Installing the
-command line relies on the `npm` dependency manager and optionally Git. If you
-don't find `npm` in your system, <a href="https://www.npmjs.com/get-npm"
-target="\_blank">install it</a>.
+You must have [Node.js](https://nodejs.org/en/download/) v8 or higher (v10 recommended). MacOS and Linux users can avoid `sudo` or [permissions problems](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) or by using [`nvm`](https://github.com/nvm-sh/nvm). These instructions assume you are using a macOS or Linux system. 
 
-To install the command line:
+To install the command line, do the following:
 
 1. <a href="https://github.com/blockstack/cli-blockstack" target="\_blank">Download or `git clone` the command line repository code</a>.  
 
@@ -93,3 +92,9 @@ To install the command line:
    ```
    sudo npm link
    ```
+
+### Troubleshooting the CLI installation
+
+If you run into `EACCES` permissions errors, try the following:
+* See https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally.
+* Use [`Node Version Manager`](https://github.com/nvm-sh/nvm).
