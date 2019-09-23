@@ -6,6 +6,7 @@
 - title: Identity and storage
 - docs:
   - browser/ids-introduction
+  - browser/ids-workit
   - browser/storage-provider
 
 - title: Reference
