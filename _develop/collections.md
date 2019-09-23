@@ -5,7 +5,7 @@ permalink: /:collection/:path.html
 # Work with Collections (Preview)
 {:.no_toc}
 
-Collections is the feature designed to make data portable among Blockstack applications. Sharing is accomplished by storing a user's data in a standard, structured way in a known Gaia location. Collections associate the data with a user's distributed ID. When users move among apps, the same data is available to each application. 
+Collections is the feature designed to make data portable among Blockstack applications. Sharing is accomplished by storing a user's data in a standardized format at a known, Gaia storage location. Collections associate user data with a user's decentralized ID. When users move among apps, the same data is available to each application the user authorizes. 
 
 On this page, you learn what collections are and how to use them. You'll learn about the `Contacts` collection in particular. The following topics are covered:
 
@@ -16,7 +16,7 @@ On this page, you learn what collections are and how to use them. You'll learn a
 
 ## Understand how collections work
 
-One of Blockstack's goals is to give users true data ownership by enabling *data portability*.  Data portability allows users to login with their digital ID on any app and have access to the same data. For example, if a user adds a photo of a Hawaiian vacation in one app, that photo enters the user's data pool. Then, when the user opens a second app, that same photo is already in use because the user's digital ID login is identical for both apps. 
+One of Blockstack's goals is to give users true data ownership by enabling *data portability*.  Data portability allows users to login with their digital ID on any app and have access to the same data. For example, if a user adds a photo of a Hawaiian vacation in one app, that photo enters the user's data pool. Then, when the user opens a second app, that same photo is available to the second app because the user data, including the photo, is shared via the user's decentralized ID. 
 
 How do collections work? Blockstack builds a library containing commonly used data schemes. Developers use these classes and objects instead of creating their own, unique data schemes. Using a class from the collections library guarantees class data is stored in Gaia in that format; And, when retrieved, guarantees the same format is returned. This pre-release provides the `Contact` collection. A contact schema produces this structure:
 
@@ -38,7 +38,7 @@ Because malicious apps or apps with poor security controls may damage user data,
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5 class="uk-card-title">The Future of Collections Envisioned</h5>
-<p>Blockstack believes that collections should enable true data portability across applications for each distributed ID. The goal is to develop simple user interfaces to allow users to manage of application access and permissions to collection data. For example, in the future, users can rollback data to previous versions using management interfaces.</p>
+<p>Blockstack believes that collections should enable true data portability across applications for each decentralized ID. The goal is to develop simple user interfaces to allow users to manage of application access and permissions to collection data. For example, in the future, users can rollback data to previous versions using management interfaces.</p>
 <p>For developers, collections can incentivize user adoption by reducing user friction.  Users can easily try new apps and move to them without the overhead or barrier of re-entering data. You are <a href="https://forum.blockstack.org/t/feedback-wanted-collections-design/7752" target="_blank">welcome to review and comment</a> on the current design document.</p>
 </div>
 
