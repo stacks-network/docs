@@ -14,10 +14,12 @@ private keys. For this reason, DO NOT use this tool for day-to-day tasks as you
 risk the security of your keys." %}
 
 You must <a href="#installCommandLine">install the command line</a> before you
-can use the commands
+can use the commands. 
 
 ## List of commands
 {:.no_toc}
+
+To see the usage and options for the command in general, enter `blockstack-cli` without any subcommands. To see a list of subcommands enter `blockstack-cli help`. Enter `blockstack-cli SUBCOMMAND_NAME help` to see a subcommand with its usage. The following are the available subcommands:
 
 * TOC
 {:toc}
