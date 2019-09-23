@@ -9,6 +9,7 @@
   - develop/add_auth
   - develop/storage
   - develop/profiles
+  - develop/collections
   - develop/betatesting
 
 - title: Try it! Zero to DApp
