@@ -353,12 +353,28 @@ Complete the tutorial by storing your app code on GitHub. Before you begin, make
     ```bash
     git remote add origin git@github.com:YOUR_USERNAME_HERE/hello-blockstack.git
     ```
+    
+5. If you see this error ('refusing to merge unrelated histories’), please run the following command:
 
-5. Push your new code to the master branch of the remote repo:
+    ```bash
+    git pull origin master --allow-unrelated-histories
+    ```
+
+6. Push your new code to the master branch of the remote repo:
 
     ```
     git push origin master
     ```
+
+7. If you get the following error ('No such remote 'origin'), please run the following command: 
+    
+    Make sure to fill in your username:
+
+    ```bash
+    git remote set-url origin https://github.com/USERNAME/hello-blockstack.git
+    ```
+    
+    Afterwards, re-run step 6.
 
 You're done! You just built your first Blockstack app and shipped the code.
 You're well on your way to becoming a Blockstack app legend.
