@@ -53,23 +53,7 @@ try out the [live build](https://publik.test-blockstack.com) of the app.
 
 ## Use npm to install Yeoman and the Blockstack App Generator
 
-You use `npm` to install Yeoman. Yeoman is a generic scaffolding system that
-helps users rapidly start new projects and streamline the maintenance of
-existing projects.
-
-
-1. Install Yeoman.
-
-    ```bash
-    npm install -g yo
-    ```
-2. Install the Blockstack application generator.
-
-    ```bash
-    npm install -g generator-blockstack
-    ```
-
-<!-- Need to find out if user is required to have React installed before running Yeoman. Doesn't appear to be the case. -->
+{% include scaffolding.md %}
 
 ## Generate and launch the public application
 
