@@ -12,7 +12,7 @@ On this page, you learn what collections are and how to use them. You'll learn a
 * TOC
 {:toc}
 
-{% include note.html content="This is a preview release of the <code>Contact</code> collections is a preview release. This release allows developers to try out the new collections functionality and we are interested in collecting feedback. Please feel free to report issues or request enhancements with collections or <code>Contacts</code> themselves on the <a href='https://github.com/blockstack/blockstack-collections/issues/new' target='_blank'>blockstack/blockstack-collections</a> repository.  If you encounter problems with <code>blockstack.js</code> you can <a href='https://github.com/blockstack/blockstack.js/issues/new' target='_blank'>file issues or request enhancements on its repo</a>." %}
+{% include note.html content="This is a preview release of the <code>Contact</code> collections. This release allows developers to try out the new collections functionality and we are interested in collecting feedback. Please feel free to report issues or request enhancements with collections or <code>Contacts</code> themselves on the <a href='https://github.com/blockstack/blockstack-collections/issues/new' target='_blank'>blockstack/blockstack-collections</a> repository.  If you encounter problems with <code>blockstack.js</code> you can <a href='https://github.com/blockstack/blockstack.js/issues/new' target='_blank'>file issues or request enhancements on its repo</a>." %}
 
 ## Understand how collections work
 
@@ -119,13 +119,13 @@ In this section, you learn how to add `Contact` collection functionality to an e
 2. Install the preview branch of the `blockstack.js`.
 
     ```
-    npm install blockstack@20.0.0-alpha.3
+    npm install blockstack@20.0.0-alpha.4
     ```
 
 3. Add the ``blockstack-collections` package to your app.
 
     ```
-    npm install blockstack-collections@0.1.7
+    npm install blockstack-collections@0.1.8
     ```
 
 4. Edit your code to import the `Contact` collection type.
