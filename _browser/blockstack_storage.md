@@ -71,59 +71,41 @@ In this section, you build an initial React.js application called Publik.
     cd publik
     ```
 
-3. Use Yeoman and the Blockstack application generator to create your initial `publik` application.
+3. Use the Blockstack application generator to create your initial `publik` application.
 
     ```bash
-    yo blockstack:react
-    ```
+    $ npx generator-blockstack --react
+      npx: installed 338 in 13.792s
+        create package.json
+        create .gitignore
+        create webpack.config.js
+        create netlify.toml
+        create firebase.json
+        ...
+        I'm all done. Running npm install for you to install the required dependencies. If this fails, try running the command yourself.
 
-    You should see several interactive prompts.
+      > fsevents@1.2.9 install /private/tmp/testymc/node_modules/fsevents
+      > node install
+      added 775 packages from 455 contributors and audited 9435 packages in 20.934s
+      found 0 vulnerabilities
 
-    ```bash
-    $ yo blockstack:react
-    ? ==========================================================================
-    We're constantly looking for ways to make yo better!
-    May we anonymously report usage statistics to improve the tool over time?
-    More info: https://github.com/yeoman/insight & http://yeoman.io
-    ========================================================================== No
+     ```
 
-         _-----_     ╭──────────────────────────╮
-        |       |    │      Welcome to the      │
-        |--(o)--|    │      Blockstack app      │
-       `---------´   │        generator!        │
-        ( _´U`_ )    ╰──────────────────────────╯
-        /___A___\   /
-         |  ~  |
-       __'.___.'__
-     ´   `  |° ´ Y `
+    Depending on your environment you may have some warnings with the installation. Optionally, you can fix these before continuing to the next section.
 
-    ? Are you ready to build a Blockstack app in React? (Y/n)
-    ```
-
-4. Respond to the prompts to populate the initial app.
-
-    After the process completes successfully, you see a prompt similar to the following:
+3. Run the initial application.
 
     ```bash
-    [fsevents] Success:
-    "/Users/theuser/repos/publik/node_modules/fsevents/lib/binding/Release/node-v59-darwin-x64/fse.node"
-    is installed via remote npm notice created a lockfile as package-lock.json.
-    You should commit this file. added 1060 packages in 26.901s
-    ```
-
-5. Run the initial application.
-
-    ```bash
-    npm start
+     npm run start
     ```
 
     The system may prompt you to accept incoming connections.
 
     ![Network Connection](./images/network-connections.gif)
 
-6. If it does, choose **Allow**.
+2. If it does, choose **Allow**.
 
-7. Your browswer –– Chrome by default –– will open to `http://127.0.0.1:3000/`.
+3. Your browswer –– Chrome by default –– will open to `http://127.0.0.1:3000/`.
 
    You should see a simple React app.
 
@@ -747,7 +729,7 @@ process URL paths that contain the `.` (dot) character for example,
 2. Restart the application so that the disabling of the `.` (dot) rule takes effect.
 
     ```bash
-    npm start
+    npm run start
     ```
 
 3. Point your browser to `http://127.0.01:3000/your_username.id.blockstack` to see the final application. 

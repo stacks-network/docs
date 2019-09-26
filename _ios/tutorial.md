@@ -59,19 +59,19 @@ environment.
 Follow the installation instructions to [download and XCode](https://developer.apple.com/xcode/) for your operating system.
 Depending on your network connection, this can take between 15-30 minutes.
 
-### Do you have npm?
+### Do you have Node.js?
 
-The Blockstack code in this tutorial relies on the `npm` dependency manager.
-Before you begin, verify you have installed `npm` using the `which` command to
-verify.
+Node.js v10 or higher is recommended the minimum supported version is Node.js v8. Before you begin, verify you have the correct version of Node.js and its tools installed.
 
 ```bash
-$ which npm
+$ node -v
+v12.10.0
+$ which npm npx
 /usr/local/bin/npm
+/usr/local/bin/npx
 ```
 
-If you don't find `npm` in your system, [install
-it](https://www.npmjs.com/get-npm).
+If you don't have these installed, take a moment to install or upgrade as needed.
 
 ### Install the CocoaPods 1.6.0.beta.1 dependency manager
 
@@ -121,50 +121,32 @@ In this section, you build an initial React.js application called
     cd hello-blockstack
     ```
 
-3. Use Yeoman and the Blockstack application generator to create your initial `hello-blockstack` application.
+3. Create your initial `hello-world-tutorial` application.
 
     ```bash
-    yo blockstack:react
-    ```
+    $ npx generator-blockstack --react
+      npx: installed 338 in 13.792s
+        create package.json
+        create .gitignore
+        create webpack.config.js
+        create netlify.toml
+        create firebase.json
+        ...
+        I'm all done. Running npm install for you to install the required dependencies. If this fails, try running the command yourself.
 
-    You should see several interactive prompts.
+      > fsevents@1.2.9 install /private/tmp/testymc/node_modules/fsevents
+      > node install
+      added 775 packages from 455 contributors and audited 9435 packages in 20.934s
+      found 0 vulnerabilities
 
-    ```bash
-    $ yo blockstack:react
-    ==========================================================================
-    We are constantly looking for ways to make yo better!
-    May we anonymously report usage statistics to improve the tool over time?
-    More info: https://github.com/yeoman/insight & http://yeoman.io
-    ========================================================================== No
+     ```
 
-         _-----_     ╭──────────────────────────╮
-        |       |    │      Welcome to the      │
-        |--(o)--|    │      Blockstack app      │
-        ---------   │        generator!        │
-        ( _´U`_ )    ╰──────────────────────────╯
-        /___A___\   /
-         |  ~  |
-       __'.___.'__
-     ´   `  |° ´ Y `
-
-    ? Are you ready to build a Blockstack app in React? (Y/n)
-    ```
-
-4. Respond to the prompts to populate the initial app.
-
-    After the process completes successfully, you see a prompt similar to the following:
-
-    ```bash
-    [fsevents] Success:
-    "/Users/theuser/repos/hello-blockstack/node_modules/fsevents/lib/binding/Release/node-v59-darwin-x64/fse.node"
-    is installed via remote npm notice created a lockfile as package-lock.json.
-    You should commit this file. added 1060 packages in 26.901s
-    ```
+    Depending on your environment you may have some warnings with the installation. Optionally, you can fix these before continuing to the next section.
 
 5. Run the initial application.
 
     ```bash
-    npm start
+     npm run start
 
     > hello-blockstack@0.0.0 start /Users/moxiegirl/repos/hello-blockstack
     > webpack-dev-server

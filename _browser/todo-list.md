@@ -29,20 +29,23 @@ The application you build is a React application that is completely decentralize
 For this tutorial, you will use the following tools:
 
 * your workstation's command line
-* `npm` to manage dependencies and scripts
+- Node.js  v10 or higher is recommended the minimum supported version is Node.js v8.
 
 The basic identity and storage services are provided by blockstack.js. To test the application, you need to have already registered a Blockstack ID.
 
-### Verify you have npm installed
+### Verify you have Node.js and its tools installed
 
-The tutorial relies on the `npm` dependency manager. Before you begin, verify you have installed `npm` using the `which` command to verify.
+The tutorial relies on Node.js and its `npx` or `npm` tools. Before you begin, verify you have the correct version of Node.js and its tools installed.
 
 ```bash
-$ which npm
+$ node -v
+v12.10.0
+$ which npm npx
 /usr/local/bin/npm
+/usr/local/bin/npx
 ```
 
-If you don’t find `npm` in your system, [install it](https://www.npmjs.com/get-npm).
+If you don't, make sure they are installed.
 
 ### Make sure you have a Blockstack ID
 
@@ -101,7 +104,7 @@ The example application runs in a node server on your local host. In the this se
 2. Start the application in your local environment.
 
     ```bash
-    $ npm start
+    $ npm run start
     ```
     
     You should see output similar to the following:

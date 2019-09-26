@@ -20,7 +20,7 @@ decentralized, server-less application. You work through the following sections:
 
 For this tutorial, we will use the following tools:
 
-- `npm` to manage dependencies and scripts
+- Node.js v10 or higher is recommended the minimum supported version is Node.js v8.
 - `browserify` to compile node code into browser-ready code
 - `blockstack.js` to authenticate the user and work with the user's identity/profile information
 
@@ -38,16 +38,17 @@ When complete, the app is capable of the following:
 The basic identity and storage services are provided by `blockstack.js`. To test
 the application, you need to have already registered a Blockstack ID.
 
-The tutorial relies on the `npm` dependency manager. Before you begin, verify
-you have installed `npm` using the `which` command to verify.
+Before you begin, verify you have the correct version of Node.js and its tools installed.
 
 ```bash
-$ which npm
+$ node -v
+v12.10.0
+$ which npm npx
 /usr/local/bin/npm
+/usr/local/bin/npx
 ```
 
-If you don't find `npm` in your system, [install
-it](https://www.npmjs.com/get-npm).
+If you don't have these installed, take a moment to install or upgrade as needed.
 
 Finally, make sure you have [created at least one Blockstack ID]({{ site.baseurl }}/browser/ids-introduction.html#create-an-initial-blockstack-id). You'll use this ID to interact with the application.
 
@@ -76,44 +77,24 @@ In this section, you build an initial React.js application called `hello-world-t
 3. Create your initial `hello-world-tutorial` application.
 
     ```bash
-    $ npm create yo blockstack
-    npx: installed 15 in 1.482s
-    ```
+    $ npx generator-blockstack --react
+      npx: installed 338 in 13.792s
+        create package.json
+        create .gitignore
+        create webpack.config.js
+        create netlify.toml
+        create firebase.json
+        ...
+        I'm all done. Running npm install for you to install the required dependencies. If this fails, try running the command yourself.
 
-    You should see several interactive prompts.
+      > fsevents@1.2.9 install /private/tmp/testymc/node_modules/fsevents
+      > node install
+      added 775 packages from 455 contributors and audited 9435 packages in 20.934s
+      found 0 vulnerabilities
 
-    ```bash
-    $ yo blockstack
+     ```
 
-         _-----_     ╭──────────────────────────╮
-        |       |    │      Welcome to the      │
-        |--(o)--|    │      Blockstack app      │
-       `---------´   │        generator!        │
-        ( _´U`_ )    ╰──────────────────────────╯
-        /___A___\   /
-         |  ~  |
-       __'.___.'__
-     ´   `  |° ´ Y `
-
-    ? Are you ready to build a Blockstack app? (Y/n)
-    ```
-
-4. Respond to the prompts to populate the initial app.
-
-    After the process completes successfully, you see a prompt similar to the following:
-
-    ```bash
-    ...
-   create public/icon-192x192.png
-   create public/index.html
-   create public/robots.txt
-   create public/manifest.json
-
-
-    I'm all done. Running npm install for you to install the required dependencies. If this fails, try running the command yourself.
-    ```
-
-Depending on your environment you may have some problems with the `npm` packages. Go ahead and fix these before continuing to the next section.
+    Depending on your environment you may have some warnings with the installation. Optionally, you can fix these before continuing to the next section.
 
 ## Review the basic application structure
 
@@ -158,7 +139,7 @@ and open your browser 'http://localhost:5000'.  From the root of your new applic
 1. Start the application server.
 
     ```bash
-    npm start
+    npm run start
     ```
 
     The first time you run it, your system prompts you to accept incoming connections.
