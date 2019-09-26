@@ -288,7 +288,7 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
 1. Start the Animal Kingdom DApp running on your workstation by entering:
 
    ```bash
-   C:\animal-kingdom-master> npm start
+   C:\animal-kingdom-master> npm run start
    ```
 
    The `npm` program uses the `scripts/start.js` file to package the Animal
@@ -318,7 +318,7 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
 
    <img src="images/win-kingdom-stop.png" alt="">
 
-You can always start the application again with `npm start` command as you will later in this tutorial.
+You can always start the application again with `npm run start` command as you will later in this tutorial.
 
 ## Resources for Blockstack developers
 

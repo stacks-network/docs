@@ -270,7 +270,7 @@ your keyboard.
 9. Back in a terminal window, restart your application.
 
    ```bash
-   $ npm start
+   $ npm run start
    ```
 10. After the application starts, navigate to the **Territories** page and look for your `Westeros` territory.
 
@@ -348,7 +348,7 @@ with a Netlify account.
 
 Before you begin, you need to build a site that is ready to deploy.
 
-1. In your terminal, press `CTRL-C` on your keyboard to stop your `npm start` build.
+1. In your terminal, press `CTRL-C` on your keyboard to stop your `npm run start` build.
 2. Build a website from your code by entering the `npm run build` command:
 
    ```bash

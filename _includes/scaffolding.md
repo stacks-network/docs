@@ -7,7 +7,7 @@ You use `npm` to install Yeoman and Blockstack App Generator. Yeoman is a generi
     npm install -g yo generator-blockstack
     ```
     
-You can use the generator to create scaffolding for a starter application. The generator can create scaffoling for any of these frameworks:
+You can use the generator to create scaffolding for a starter application. The generator can create scaffolding for any of these frameworks:
 
 <table class="uk-table">
   <tr>
@@ -16,20 +16,17 @@ You can use the generator to create scaffolding for a starter application. The g
   </tr>
   <tr>
     <td>Plain Javascript</td>
-    <td><code> blockstack</code></td>
-  </tr>
-  <tr>
-    <td>Webpack</td>
-    <td><code> blockstack:webpack</code></td>
+    <td><code> npx generator-blockstack --plain</code></td>
   </tr>
   <tr>
     <td>React</td>
-    <td><code> blockstack:react</code></td>
+    <td><code> npx generator-blockstack --react</code></td>
   </tr>
   <tr>
     <td>Vue</td>
-    <td><code> blockstack:vue</code></td>
+    <td><code> npx generator-blockstack --vue
+</code></td>
   </tr>
 </table>
 
-For example, to install a Vue scaffolding, use the  `npm create yo blockstack:vue` command.
+For example, to install a Vue scaffolding, you would use the  `npx generator-blockstack --vue` command.
