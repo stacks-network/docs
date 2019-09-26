@@ -52,48 +52,14 @@ it](https://www.npmjs.com/get-npm).
 Finally, make sure you have [created at least one Blockstack ID]({{ site.baseurl }}/browser/ids-introduction.html#create-an-initial-blockstack-id). You'll use this ID to interact with the application.
 
 ## Use npm to install Yeoman and the Blockstack App Generator
+    
+{% include scaffolding.md %}
 
-You use `npm` to install Yeoman. Yeoman is a generic scaffolding system that
-helps users rapidly start new projects and streamline the maintenance of
-existing projects.
-
-
-1. Use `npm` to install Yeoman and the Blockstack generator
-
-    ```bash
-    npm install -g yo generator-blockstack
-    ```
-
-You can use the generator to create starter applications for these frameworks:
-
-<table class="uk-table">
-  <tr>
-    <th>Framework</th>
-    <th>Use this command to install</th>
-  </tr>
-  <tr>
-    <td>Plain Javascript</td>
-    <td><code> blockstack</code></td>
-  </tr>
-  <tr>
-    <td>Webpack</td>
-    <td><code> blockstack:webpack</code></td>
-  </tr>
-  <tr>
-    <td>React</td>
-    <td><code> blockstack:react</code></td>
-  </tr>
-  <tr>
-    <td>Vue</td>
-    <td><code> blockstack:vue</code></td>
-  </tr>
-</table>
-
-For this example, you will use plain Javascript.
 
 ## Generate an initial Blockstack application
 
-In this section, you build an initial React.js application called `hello-world-tutorial`.
+In this section, you build an initial React.js application called `hello-world-tutorial`. For this example, you will use plain Javascript scaffolding.
+
 
 1. Create the `hello-world-tutorial` directory.
 
@@ -328,37 +294,6 @@ user home screens. The contents are very simple:
 
 Keep it as is or fill it in with new information that describes your app.
 
-### Save your application code
+### Congratulations you are all done!
 
-Complete the tutorial by storing your app code on GitHub. Before you begin, make sure you have a GitHub account and have configured your environment to use it.
-
-1. Initialize the application code as a Git repo.
-
-    ```bash
-    git init
-    ```
-
-2. Add and commit all of the files:
-
-    ```bash
-    git add . && git commit -m "first commit"
-    ```
-
-3. In GitHub, create a `hello-blockstack` repository.
-
-4. Back in your terminal window, add a remote for GitHub.
-
-    Make sure to fill in your username:
-
-    ```bash
-    git remote add origin git@github.com:YOUR_USERNAME_HERE/hello-blockstack.git
-    ```
-
-5. Push your new code to the master branch of the remote repo:
-
-    ```
-    git push origin master
-    ```
-
-You're done! You just built your first Blockstack app and shipped the code.
-You're well on your way to becoming a Blockstack app legend.
+You're done! You just built your first Blockstack app and shipped the code. You're well on your way to becoming a Blockstack app legend. If you want to save your code, you can upload it to GitHub or similar code repository. 
