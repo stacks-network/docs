@@ -97,21 +97,8 @@ sudo gem install cocoapods -v 1.6.0.beta.2
 
 ### Use npm to install Yeoman and the Blockstack App Generator
 
-You use `npm` to install Yeoman. Yeoman is a generic scaffolding system that
-helps users rapidly start new projects and streamline the maintenance of
-existing projects.
+{% include scaffolding.md %}
 
-
-1. Install Yeoman.
-
-    ```bash
-    npm install -g yo
-    ```
-2. Install the Blockstack application generator.
-
-    ```bash
-    npm install -g generator-blockstack
-    ```
 ## Build the Blockstack hello-world
 
 In this section, you build a Blockstack `hello-world` application. Then, you
