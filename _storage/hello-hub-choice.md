@@ -94,7 +94,7 @@ and open your browser `http://localhost:5000`.  From the root of your new applic
 1. Start the application server.
 
     ```bash
-    npm start
+    npm run start
     ```
 
 2. Choose **Allow**.
