@@ -100,17 +100,15 @@ In this section, you build an initial React.js application called `hello-world-t
 
 The initial application you create is a generic Javascript application you run
 with a local express node. Before you continue, take a moment to examine the
-structure of this generic application structure. In the `/` (root) of the generated sample you have the following files:
+scaffolding of this generic application structure. In the `/` (root) of the generated sample you have the following files:
 
-| File/directory             | Description                       |
+| File/folder            | Description                       |
 |------------------|-----------------------------------|
-| `.editorconfig`    | Sets universal values for editor. |
 | `.gitignore`       | Git configuration file.           |
-| `firebase.json`    | Configuration for mobile application.|
 | `package.json`     | Specifies required packages.       |
-| `requires.js`      | A Javascript module loader.        |
-| `server.js`        | Simple static server configuration.|
+| `cors`             | Configuration for cross-domain origin support.|
 | `node_modules`     | Package files installed by `npm`.|
+| `src`              | Application source code.|
 | `public`           | Starter web app code.|
 
 
@@ -118,18 +116,11 @@ In the `public` folder you find these files:
 
 | File             | Description                       |
 |------------------|-----------------------------------|
-| `app.css`   | Contains application styles.             |
-| `app.js`    | Main application file.                   |
-| `bootstrap.min.css` | Minified css for production.     |
 | `favicon.ico`      | Web app site icon.                |
 | `index.html`       | Single page.                      |
 | `manifest.json`    | Tells the browser about the application and how it should behave.|
-| `robots.txt`       | Configures crawling and indexing. |
+| `white-logo.svg`       | Configures crawling and indexing. |
 
-The simple static file server in the `server.js` file serves all of the files in
-the `/public` directory, including `index.html`, `app.js`, `bootstrap.min.css`
-and `app.css`. The main file of the application is in the `app.js`. It contains
-the majority of the application logic.
 
 ## Start the server and view the application
 
@@ -142,13 +133,13 @@ and open your browser 'http://localhost:5000'.  From the root of your new applic
     npm run start
     ```
 
-    The first time you run it, your system prompts you to accept incoming connections.
+    The first time you run it, your system may prompt you to accept incoming connections.
 
     ![Network Connection](images/network-connections.gif)
 
 2. Choose **Allow**.
 
-3. Open your browser to `http://localhost:5000`.
+   The system opens your browser to `http://127.0.0.1:3000`.
 
    You should see a simple application:
 
@@ -179,80 +170,105 @@ and open your browser 'http://localhost:5000'.  From the root of your new applic
 In this section, you look at the basic application generated with the `yo
 blockstack` command. The generated code contains simple authentication methods
 that allow a user to log into the browser. The main application code is located
-in the `public/app.js` file. Open this file now.
+in the `src/App.js` file. Open this file now.
 
 All of the code in the file is wrapped in an event listener.
 
 ```js
-document.addEventListener("DOMContentLoaded", event => {
-  const appConfig = new blockstack.AppConfig()
-  const userSession = new blockstack.UserSession({ appConfig: appConfig })
+import React, { Component } from 'react';
+import Profile from './Profile.js';
+import Signin from './Signin.js';
+import {
+  UserSession,
+  AppConfig
+} from 'blockstack';
 
+const appConfig = new AppConfig()
+const userSession = new UserSession({ appConfig: appConfig })
   ...
 ```
 
-The `appConfig` contains configuration data for the app while the  `userSession` objects represent the instance of a user on this app. On browser platforms, creating an `AppConfig` instance without any arguments will use `window.location.origin` as the app domain. On non-browser platforms, you need to specify an app domain as the first argument. You can refer to the [blockstack.js Library Reference](https://docs.blockstack.org/common/javascript_ref.html) for information about available functions.
+The `appConfig` contains configuration data for the app while the  `userSession` objects represent the instance of a user on this app. On browser platforms, creating an `AppConfig` instance without any arguments will use `window.location.origin` as the app domain. On non-browser platforms, you need to specify an app domain as the first argument. You can refer to the [blockstack.js Library Reference](https://docs.blockstack.org/common/javascript_ref.html) for information about available functions. 
 
-This listener that waits until the DOM content is loaded. Then, it creates an auth request and redirects the user to sign in:
+The `UserSession` API supplies both sign in and sign out that handle user onboarding for you with a set of defaults: 
 
 ```js
-document.getElementById('signin-button').addEventListener('click', event => {
-    event.preventDefault()
-    userSession.redirectToSignIn()
-  })
+  handleSignIn(e) {
+    e.preventDefault();
+    userSession.redirectToSignIn();
+  }
+
+  handleSignOut(e) {
+    e.preventDefault();
+    userSession.signUserOut(window.location.origin);
+  }
 ```
 
-There is also a sign out button handler. This handler deletes the local user data and signs the user out:
+This `render` code checks if the user is signed in or not:
 
 ```js
-  document.getElementById('signout-button').addEventListener('click', event => {
-    event.preventDefault()
-    userSession.signUserOut()
-    window.location = window.location.origin
-  })
+  render() {
+    return (
+      <div className="site-wrapper">
+        <div className="site-wrapper-inner">
+          { !userSession.isUserSignedIn() ?
+            <Signin userSession={userSession} handleSignIn={ this.handleSignIn } />
+            : <Profile userSession={userSession} handleSignOut={ this.handleSignOut } />
+          }
+        </div>
+      </div>
+    );
+  }
 ```
 
-The handlers are followed by a `showProfile()` function for showing the user's profile:
+The `isSignInPending()` method loads the `userData` or not depending on the sign in determination.
 
 ```js
-  function showProfile (profile) {
-    let person = new blockstack.Person(profile)
-    document.getElementById('heading-name').innerHTML = person.name() ? person.name() : "Nameless Person"
-    if(person.avatarUrl()) {
-      document.getElementById('avatar-image').setAttribute('src', person.avatarUrl())
+  componentDidMount() {
+    if (userSession.isSignInPending()) {
+      userSession.handlePendingSignIn().then((userData) => {
+        window.history.replaceState({}, document.title, "/")
+        this.setState({ userData: userData})
+      });
     }
-    document.getElementById('section-1').style.display = 'none'
-    document.getElementById('section-2').style.display = 'block'
   }
 ```
 
-Each `getElementById()` function refers to elements in the `index.html` file.
-
-Once a user is successfully signed in, there is logic for loading the user
-profile and displaying the application. As illustrated earlier, there are
-several states the user can be in:
-
-- The user is already signed in
-- The user has a pending sign in request
-- The user is signed out
-
-The application handles these situations as followed:
+A single *Sign in with Blockstack* or *Logout* button is rendred and presented to the user. The `Profile.js` code actually renders the user data.
 
 ```js
-  if (userSession.isUserSignedIn()) {
-    const { profile } = userSession.loadUserData()
-    showProfile(profile)
-  } else if (userSession.isSignInPending()) {
-    userSession.handlePendingSignIn().then(userData => {
-      window.location = window.location.origin
-    })
+render() {
+    const { handleSignOut, userSession } = this.props;
+    const { person } = this.state;
+    return (
+      !userSession.isSignInPending() ?
+      <div className="panel-welcome" id="section-2">
+        <div className="avatar-section">
+          <img src={ person.avatarUrl() ? person.avatarUrl() : avatarFallbackImage } className="img-rounded avatar" id="avatar-image" alt=""/>
+        </div>
+        <h1>Hello, <span id="heading-name">{ person.name() ? person.name() : 'Nameless Person' }</span>!</h1>
+        <p className="lead">
+          <button
+            className="btn btn-primary btn-lg"
+            id="signout-button"
+            onClick={ handleSignOut.bind(this) }
+          >
+            Logout
+          </button>
+        </p>
+      </div> : null
+    );
+  }
+
+  componentWillMount() {
+    const { userSession } = this.props;
+    this.setState({
+      person: new Person(userSession.loadUserData().profile),
+    });
   }
 ```
 
-When the user is signed in, Blockstack loads the user data from local storage
-and displays the profile with the `showProfile()` function. When the user has a
-pending sign in request, the application signs the user in and redirects the
-user back to the home page.
+When the user is signed in, Blockstack loads the user data from local storage and displays the profile and a *Logout* button. If the user is signed out, the application displays *Sign in with Blockstack* button. When the user presses this button, the user has a pending sign in request, the application sends the user into the Blockstack onboarding, signs the user in, and redirects the user back to the home page.
 
 ### Application manifest
 
@@ -263,13 +279,16 @@ user home screens. The contents are very simple:
 ```json
 {
   "name": "Hello, Blockstack",
-  "start_url": "localhost:5000",
   "description": "A simple demo of Blockstack Auth",
-  "icons": [{
+  "icons": [
+    {
     "src": "favicon.ico",
     "sizes": "192x192",
     "type": "image/png"
-  }]
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone"
 }
 ```
 
