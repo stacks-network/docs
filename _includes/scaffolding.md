@@ -1,13 +1,4 @@
-You use `npm` to install Yeoman and Blockstack App Generator. Yeoman is a generic scaffolding system that helps users rapidly start new projects and streamline the maintenance of existing projects.
-
-
-1. Use `npm` to install Yeoman and the Blockstack generator
-
-    ```bash
-    npm install -g yo generator-blockstack
-    ```
-    
-You can use the generator to create scaffolding for a starter application. The generator can create scaffolding for any of these frameworks:
+You use the Blockstack App Generator to create scaffolding for a starter application. The generator can create scaffolding for any of these frameworks:
 
 <table class="uk-table">
   <tr>
