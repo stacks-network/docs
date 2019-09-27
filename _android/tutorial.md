@@ -92,18 +92,14 @@ Blockstack.
 
 2. Install the version appropriate for your operating system.
 
-
-### Use npm to install Yeoman and the Blockstack App Generator
-
-{% include scaffolding.md %}
-
-
 ## Build the Blockstack hello-world
 
 In this section, you build a Blockstack `hello-world` application. Then, you
 modify the `hello-world` to interact with the Android app via a redirect.
 
 ### Generate and launch your hello-blockstack application
+
+{% include scaffolding.md %}
 
 In this section, you build an initial React.js application called
 `hello-blockstack`.

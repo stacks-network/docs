@@ -25,9 +25,7 @@ This tutorial does not teach you about authentication. That is covered in depth 
 
 The storage application you build with this tutorial is a React.js application
 that is completely decentralized and server-less.  While not strictly required
-to follow along, basic familiarity with React.js is helpful.
-
-When complete, the app is capable of the following:
+to follow along, basic familiarity with React.js is helpful. When complete, the app is capable of the following:
 
 - authenticating users using Blockstack
 - posting new statuses
@@ -37,27 +35,32 @@ When complete, the app is capable of the following:
 The basic identity and storage services are provided by `blockstack.js`. To test
 the application, you need to have already [registered a Blockstack ID](ids-introduction).
 
-The tutorial relies on the `npm` dependency manager. Before you begin, verify
-you have installed `npm` using the `which` command.
+
+For this tutorial, you will use the following tools:
+
+- Node.js v10 or higher is recommended the minimum supported version is Node.js v8.
+- `blockstack.js` to authenticate the user and work with the user's identity/profile information
+
+
+Before you begin, verify you have the correct version of Node.js and its tools installed.
 
 ```bash
-$ which npm
+$ node -v
+v12.10.0
+$ which npm npx
 /usr/local/bin/npm
+/usr/local/bin/npx
 ```
 
-If you don't find `npm` in your system, [install
-it](https://www.npmjs.com/get-npm). Finally, if you get stuck at any point
-while working on the tutorial, the completed [source code is available for
-you](https://github.com/yknl/publik) to check your work against. You can also 
-try out the [live build](https://publik.test-blockstack.com) of the app.
+If you don't have these installed, take a moment to install or upgrade as needed. Also, make sure you have [created at least one Blockstack ID]({{ site.baseurl }}/browser/ids-introduction.html#create-an-initial-blockstack-id). You'll use this ID to interact with the application.
 
-## Use npm to install Yeoman and the Blockstack App Generator
-
-{% include scaffolding.md %}
+Finally, if you get stuck at any point while working on the tutorial, the completed [source code is available for you](https://github.com/yknl/publik) to check your work against. You can also try out the [live build](https://publik.test-blockstack.com) of the app.
 
 ## Generate and launch the public application
 
-In this section, you build an initial React.js application called Publik.
+{% include scaffolding.md %}
+
+In this section, you build an initial React application called Publik.
 
 1. Create a the `publik` directory.
 
@@ -93,7 +96,7 @@ In this section, you build an initial React.js application called Publik.
 
     Depending on your environment you may have some warnings with the installation. Optionally, you can fix these before continuing to the next section.
 
-3. Run the initial application.
+4. Run the initial application.
 
     ```bash
      npm run start
@@ -103,9 +106,9 @@ In this section, you build an initial React.js application called Publik.
 
     ![Network Connection](./images/network-connections.gif)
 
-2. If it does, choose **Allow**.
+5. If it does, choose **Allow**.
 
-3. Your browswer –– Chrome by default –– will open to `http://127.0.0.1:3000/`.
+6. Your browswer –– Chrome by default –– will open to `http://127.0.0.1:3000/`.
 
    You should see a simple React app.
 

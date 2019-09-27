@@ -18,10 +18,9 @@ decentralized, server-less application. You work through the following sections:
 
 ## About this tutorial and the prerequisites you need
 
-For this tutorial, we will use the following tools:
+For this tutorial, you will use the following tools:
 
 - Node.js v10 or higher is recommended the minimum supported version is Node.js v8.
-- `browserify` to compile node code into browser-ready code
 - `blockstack.js` to authenticate the user and work with the user's identity/profile information
 
 The application you build is a React.js application that is completely
@@ -51,15 +50,13 @@ $ which npm npx
 If you don't have these installed, take a moment to install or upgrade as needed.
 
 Finally, make sure you have [created at least one Blockstack ID]({{ site.baseurl }}/browser/ids-introduction.html#create-an-initial-blockstack-id). You'll use this ID to interact with the application.
-
-## Use npm to install Yeoman and the Blockstack App Generator
     
+## Generate an initial Blockstack application
+
 {% include scaffolding.md %}
 
 
-## Generate an initial Blockstack application
-
-In this section, you build an initial React.js application called `hello-world-tutorial`. For this example, you will use plain Javascript scaffolding.
+In this section, you build an initial React.js application called `hello-world-tutorial`. For this example, you will use the React scaffolding.
 
 
 1. Create the `hello-world-tutorial` directory.
