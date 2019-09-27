@@ -95,16 +95,14 @@ If you don't have the CocoaPods beta version, install it:
 sudo gem install cocoapods -v 1.6.0.beta.2
 ```
 
-### Use npm to install Yeoman and the Blockstack App Generator
-
-{% include scaffolding.md %}
-
 ## Build the Blockstack hello-world
 
 In this section, you build a Blockstack `hello-world` application. Then, you
 modify the `hello-world` to interact with the iOS app via a redirect.
 
 ### Generate and launch your hello-blockstack application
+
+{% include scaffolding.md %}
 
 In this section, you build an initial React.js application called
 `hello-blockstack`.
@@ -143,7 +141,7 @@ In this section, you build an initial React.js application called
 
     Depending on your environment you may have some warnings with the installation. Optionally, you can fix these before continuing to the next section.
 
-5. Run the initial application.
+4. Run the initial application.
 
     ```bash
      npm run start
@@ -170,20 +168,20 @@ In this section, you build an initial React.js application called
 
    At this point, the browser is running a Blockstack server on your local host.
 
-6. Navigate to `http://localhost:8080` with your browser to display the
+5. Navigate to `http://localhost:8080` with your browser to display the
    application.
 
    ![](images/blockstack-signin.png)
 
    This local instances is for testing your applications only.
 
-7. Choose **Sign in with Blockstack**
+6. Choose **Sign in with Blockstack**
 
    The system displays a prompt allowing you to create a new Blockstack ID or restore an existing one.
 
     ![](images/create-restore.png)
 
-8. Follow the prompts appropriate to your situation.
+7. Follow the prompts appropriate to your situation.
 
     If you are restoring an existing ID, you may see a prompt about your user
     being nameless, ignore it. At this point you have only a single application
