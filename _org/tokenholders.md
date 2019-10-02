@@ -10,6 +10,8 @@ The information on this page is intended for **current Stacks (STX) token holder
 
 ## Find your token balance and unlock date
 
+{% include important.html content=" If you <strong>purchased Stacks tokens during Summer 2019</strong>, the form below will <strong>not</strong> work for your allocation. Please <a href='' target='_blank'>check your allocation using this tool instead</a>. "%}
+
 During your the initial grant process, you should have submitted a public *Stacks (STX) address* (also known as a *wallet address*) to Blockstack. A STX address is a string of letters and numbers starting with an `SP` or `SM`, for example: `SM3KJBA4RZ7Z20KD2HBXNSXVPCR1D3CRAV6Q05MKT`
 
 If you purchased STX tokens through CoinList, you can find your address at
@@ -17,7 +19,6 @@ If you purchased STX tokens through CoinList, you can find your address at
 address directly to Blockstack, you can either use the **Restore from Seed
 Phrase** feature on the Stacks Wallet or contact us at <hello@stackstoken.com> for
 help.
-
 
 Use the following form to check your Stacks allocation:
 <div class="uk-background-secondary uk-padding uk-panel">
