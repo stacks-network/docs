@@ -93,7 +93,6 @@ You need very small fractions of Bitcoin to fuel your Stacks Wallet transactions
 If you have a paper wallet or a custodial wallet, you should set up a secondary hardware. You can then transfer small amounts to this hardware wallet for use with your Stacks Wallet. You can use any of these hardware wallets with the Stacks Wallet:
 
 * <a href="https://trezor.io/" target="\_blank">Trezor</a> One
-* Trezor Model T
 * <a href="https://www.ledger.com/" target="\_blank">Ledger</a> Nano S
 * Ledger Blue hardware wallet.
 
