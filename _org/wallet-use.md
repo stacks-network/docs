@@ -36,7 +36,6 @@ You can use the Stacks Wallet software by itself or together with a hardware wal
 You can use any of these hardware wallets with the Stacks Wallet:
 
 * Trezor One
-* Trezor Model T
 * Ledger Nano S
 * Ledger Blue
 
@@ -77,10 +76,6 @@ Initialize and configure your wallet according to the manufacturer's instruction
     <tr>
       <td>Trezor One</td>
       <td><a href="https://doc.satoshilabs.com/trezor-user/download.html" target="\_blank">Trezor Bridge</a></td>
-    </tr>
-    <tr>
-      <td>Trezor Model T</td>
-      <td><a href="https://doc.satoshilabs.com/trezor-user/download.html" target="\_blank">Trezor Bridge </a></td>
     </tr>
     <tr>
       <td>Ledger Nano S</td>
