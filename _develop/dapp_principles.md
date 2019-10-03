@@ -32,7 +32,7 @@ Blockstack IDs are recorded on the Stacks blockchain, this means Blockstack cann
 ### III. Users have free choice of clients
 
 Identities and *data* are application independent. An application cannot be considered a DApp unless it allows users to interact with their identities and data such that the user can later do so via a different DApp.
-For example, a user that creates data in client ‘X’ must be able access that data from a different client, ‘Y’, provided the client allows compatible mechanisms. Ultimately, the user has the freedom to write their own client that interacts with their own data.
+For example, a user that creates data in client `X` must be able access that data from a different client, `Y`, provided the client allows compatible mechanisms. Ultimately, the user has the freedom to write their own client that interacts with their own data.
 
 Blockstack’s APIs and SDKs make it easy to build applications that adhere to this principle. Existing Blockstack applications have this property today simply because they don’t have any irreplaceable server-side logic.
 
