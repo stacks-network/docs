@@ -20,14 +20,14 @@ More info on the Product Hunt launch component and recommendations in the [Appli
 
 ## TryMyUI
 
-TryMyUI provides 1.5M application testers around the globe, and apps enrolled in app mining are reviewed by 10 users each month and rated on the following dimensions:
+TryMyUI provides 1.5M application testers around the globe, and apps enrolled in app mining are reviewed by 10 users every other month and rated on the following dimensions:
 
 * Usability
 * Usefulness
 * Credibility
 * Desirability
 
-TryMyUI drops the highest and lowest test scores and uses the middle 8 scores each month for the rankings and calculates and average of scores for each component. TryMyUI has it’s own “history” component to increase reliability of the tests. On average, projects need around 20 user tests to get actionable and reliable feedback. TryMyUI provides a monthly score that reflects 75% of the new month’s score, and 25% from last month’s score. The calculation to find that is: 
+TryMyUI drops the highest and lowest test scores and uses the middle 8 scores each month for the rankings and calculates and average of scores for each component. Apps that are not being tested will receive the same scores as the last test round.  TryMyUI has it’s own “history” component to increase reliability of the tests. On average, projects need around 20 user tests to get actionable and reliable feedback. TryMyUI provides a monthly score that reflects 75% of the new month’s score, and 25% from last month’s score. The calculation to find that is: 
 
 ```
 X = raw score of new month
