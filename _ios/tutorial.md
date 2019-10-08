@@ -198,9 +198,9 @@ you want the web app to redirect the user to your iOS application. The work
 you do here will allow it.
 
 1. From the terminal command line, change directory to your web
-application directory.
+application directory (`hello-blockstack`).
 
-2. Create a `public` directory.
+1. If it doesn't ext, create the `public` directory.
 
     ```bash
     $ mkdir public
@@ -245,8 +245,8 @@ application directory.
     to redirect the user back to your iOS app. Later, you'll add a reference
     to this handler in your iOS application.
 
-5. Close and save the `redirect.html` file.
-6. Ensure your Blockstack app compiles successfully.
+4. Close and save the `redirect.html` file.
+5. Ensure your Blockstack app compiles successfully.
 
    The `npm` process should detect and compile your change.
 
@@ -261,7 +261,7 @@ This tutorial uses XCode 9.3, you can use another version but be aware that some
 menu items and therefore these procedures may be differœent on your version.
 
 1. Launch the XCode interface.
-2. Choose **Create new XCode project**.
+2. Choose **Create a new XCode project**.
 3. Select **iOS**.
 4. Select **Single View App**.
 
@@ -335,17 +335,20 @@ lines after.
 	 ```bash
 	 $ pod install
 	 Analyzing dependencies
-	 Downloading dependencies
-	 Installing Blockstack (0.2.0)
-	 Installing CryptoSwift (0.11.0)
-	 Generating Pods project
-	 Integrating client project
+     Downloading dependencies
+     Installing Blockstack (0.7.2)
+     Installing CryptoSwift (0.15.0)
+     Installing PromisesObjC (1.2.8)
+     Installing PromisesSwift (1.2.8)
+     Installing STRegex (2.1.0)
+     Generating Pods project
+     Integrating client project
 
 	 [!] Please close any current XCode sessions and use `hello-blockstack-ios.xcworkspace` for this project from now on.
 	 Sending stats
 	 Pod installation complete! There is 1 dependency from the Podfile and 2 total pods installed.
 
-	 [!] Automatically assigning platform `ios` with version `11.4` on target `hello-blockstack-ios` because no platform was specified. Please specify a platform for this target in your Podfile. See `https://guides.cocoapods.org/syntax/podfile.html#platform`.
+	 [!] Automatically assigning platform `ios` with version `11.3` on target `hello-blockstack-ios` because no platform was specified. Please specify a platform for this target in your Podfile. See `https://guides.cocoapods.org/syntax/podfile.html#platform`.
 	 ```
 
 	This command creates a number of files
@@ -363,7 +366,7 @@ lines after.
 
 	 ![](images/open-xcworkspace.png)
 
-	 When you open the workspace, the system will begin indexing the project. Then, after indexing, you may see a warning indicator at the top in the
+	 When you open the workspace, the system will begin indexing the project. Then, after indexing, you **may** see a warning indicator at the top in the
 	 project title. If you see the warning, continue to step 7. Otherwise, go to the next section.
 
 7. Click the signal to reveal the warning.
