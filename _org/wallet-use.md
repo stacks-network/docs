@@ -232,8 +232,7 @@ If you attempt to send STX with your wallet and you do not have enough Bitcoin t
 
    ![](images/gas-up-cb.gif)
 
-Review your Stacks Wallet settings to see the increase in your balance. Your
-transaction history also shows any Bitcoin sent to your wallet.
+Review your Stacks Wallet settings to see the increase in your balance. Your BTC balance only appears in this area.
 
 ## Send stacks
 
@@ -248,14 +247,14 @@ Sending stacks is a transaction you must authorize or sign. If you have connecte
 
    The system displays the **Send** dialog.
 
-3. Complete the dialog with the transaction information.
+4. Complete the dialog with the transaction information.
 
 
     | **Recipient**      	| A Stacks address.	|
     | **Amount to Send** 	| Enter a value.   	|
     | **Note**   	        | A memo for the transaction.  	|
 
-4. Select **Continue**.
+5. Select **Continue**.
 
     If you do not have enough Bitcoin to fuel the transaction, the system
     notifies you. If you don't have enough Bitcoin, you must **Top Up**.
@@ -264,17 +263,17 @@ Sending stacks is a transaction you must authorize or sign. If you have connecte
 
     ![](images/device-check.png)
 
-4. Select **Continue**.
+6. Select **Continue**.
 
    The Stacks Wallet displays a confirmation dialog.
 
    ![](images/confirm-send.png)
 
-5. Select **Confirm** to complete your transaction.
+7. Select **Confirm** to complete your transaction.
 
    ![](images/sent.png)
 
-6. Select **Close**.
+8. Select **Close**.
 
    The send transaction appears in your **Transaction History**. Blockchain
    transactions can take minutes or hours to complete.
