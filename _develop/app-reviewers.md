@@ -70,14 +70,18 @@ Awario provides data about app awareness by scanning the web for 'Mentions' of t
 
 Awario rankings start counting at the start of the month the app was submitted, and the results are incorporated into the rankings the month following. This means that any data used in calculations is from the previous month. New apps to the program do not incorporate this score on their first month of being enrolled.
 
-As of October 2019, Awario ranks apps based on Blended Awareness.
+As of October 2019, Awario ranks apps based on Blended Awareness which is comprised of these parts:
 
-Blended Awareness is comprised of 3 parts:
-1. A binary scoring on social networks. i.e. you get a number out of 5 max (1 point for any Mention registered on Facebook, Twitter, YouTube, Reddit, or Instagram).
-2. A “Reach score” for any Mentions in the News/Blog section. The Reach will have log10 scoring applied to it.
-3. A growth score, this will be calculated the same way, just limited to the growth in Reach from the News/Blog Mentions. 
+* A binary scoring on social networks, that is, you get a number out of 5 max (1 point for any Mention registered on Facebook, Twitter, YouTube, Reddit, or Instagram).
+* A _reach score_ for any mentions in the news or blog section. The reach will have `log10` scoring applied to it.
+* A _growth score_ which is calculated the same way, just limited to the growth in reach from the news or blog mentions. 
 
-Each of these three pieces will make up 1/3 of your overall Awario score.
+Each of these three pieces will make up 1/3 of your overall Awario score. Some special conditions to understand about these values:
+
+* The first month you have Awario data you won't receive a growth score. This means your score for the first month is only comprised of reach and social.
+* If your reach in the last month was less than 1000, you don't get a growth score. This is designed to prevent huge growth percentage outliers.
+
+{% include note.html content="During the transition to the new Awario scoring method, no app will have a growth score in the first month." %}
 
 Blockstack publishes the Awario data sheet with all app mentions for auditing at the start of the audit period. Blockstack PBC employee social media accounts are omitted from the reach scores. There is also a manual scan of Awario data to remove any data suspected of a false match.
 
