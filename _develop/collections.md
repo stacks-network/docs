@@ -7,7 +7,7 @@ permalink: /:collection/:path.html
 
 Collections is the feature designed to make data portable among Blockstack applications. Sharing is accomplished by storing a user's data in a standardized format at a known, Gaia storage location. Collections associate user data with a user's decentralized ID. When users move among apps, the same data is available to each application the user authorizes. 
 
-On this page, you learn what collections are and how to use them. You'll learn about the `Contacts` collection in particular. The following topics are covered:
+On this page, you learn what collections are and how to use them. You'll learn about the `Contact` collection in particular. The following topics are covered:
 
 * TOC
 {:toc}
@@ -42,7 +42,7 @@ Because malicious apps or apps with poor security controls may damage user data,
 <p>For developers, collections can incentivize user adoption by reducing user friction.  Users can easily try new apps and move to them without the overhead or barrier of re-entering data. You are <a href="https://forum.blockstack.org/t/feedback-wanted-collections-design/7752" target="_blank">welcome to review and comment</a> on the current design document.</p>
 </div>
 
-## Try the Contact Manager demo app
+## Build a Contact Manager demo app
 
 Before adding collections to your DApp, you can try it for yourself using the Contact Manager demo application. Blockstack Contacts is a simple contacts manager that allows users to add and manage their contacts. The data stored by this app can be used in another app that receives the contacts collection permissions.
 
@@ -95,17 +95,24 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
     The system should return you to the Contact Manager demo application.
 
-Try adding a contact using the Contact Manager. When you have successfully created a contact, the Contact Manager displays that contact on the list. Here you can see that Alfred Newman was entered as a contact.
+### Test Contact data portability
 
-![](images/added-contact.png)
+1. Add a contact using your new Contact Manager application, the contact added here is `Josephine Baker`. 
+   
+   When you have successfully created a contact, the Contact Manager displays that contact on the list. Here you can see that Josephine Baker was entered as a contact.
 
-12. Once you've created a contact, you'll be able to view them in a different app.
+   ![](images/added-contact.png)
 
-Below is a separate test app that allows you to view the contacts data:
+2. Open the [collections page test](https://blockstack.github.io/blockstack-collections/page_test/) in your browser.
 
-https://blockstack.github.io/blockstack-collections/page_test/
+   The page test is an entirely different application that also makes use of the Contacts collection.
 
-Once you click Sign in, choose the same Blockstack ID you used in the Contacts Manager. You will now be able to see all contacts data that was written in the previous steps by the Contacts Manager app.
+3. Sign in using the same Blockstack ID you used to sign into the Contacts Manager.
+
+4. Choose **List contacts**.
+
+   ![](images/test-contact.png)
+
 
 ## How to add the Contact collections to your DApp
 
@@ -132,7 +139,7 @@ In this section, you learn how to add `Contact` collection functionality to an e
 
 5. Customize your sign in request to include the contacts collection scope `Contact.scope`. 
 
-    This scope grants your app permission to read and write to the user’s `Contacts` collection. 
+    This scope grants your app permission to read and write to the user’s `Contact` collection. 
 
     ```javascript
     import { UserSession, AppConfig, makeAuthRequest } from 'blockstack'
