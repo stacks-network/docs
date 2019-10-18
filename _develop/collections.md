@@ -151,8 +151,6 @@ In this section, you learn how to add `Contact` collection functionality to an e
     userSession.redirectToSignIn()
     ```
 
-    {% include note.html content="This example enables the custom Gaia hub selection prompt to point at the pre-release hub that has collections features enabled." %}
-
 ## Collection storage operations
 
 Collection storage was designed around an ORM-like interface. This approach ensures that you’ll be working with typed objects instead of the `getFile`, `putFile` functions provided by blockstack.js.
