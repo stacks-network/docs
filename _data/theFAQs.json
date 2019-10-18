@@ -509,7 +509,7 @@
       {
          "category": "wallet",
          "question": "What is a seed phrase?",
-         "answer": "<p>When you create a wallet address, you also create a seed phrase. With one significant exception, a seed phrase is similar to a banking pin in that it gives you access to your wallet and your token allocation. Unlike a pin, if you lose your seed phrase, <strong>you can never access your wallet or your token allocation ever again</strong>.</p> <p class='uk-alert-danger' ><strong>Warning</strong>: Losing a seed phrase is final and destructive. Blockstack does not keep a copy of your seed. Blockstack cannot give you a new seed, get your access to your wallet, or return your tokens if you lose your seed phrase.</p> <p>Keep your seed phrase secret. Just as with a banking pin, anyone that knows or steals your seed phrase can access your allocation.</p> <p>You should write your seed phrase down and store the paper you write on in at least two secure locations. A safe or lock box is a good location. You can also store it online in an encrypted password manager such as 1Password.  You should <em>never</em> simply store a seed phrase in Apple Cloud or Dropbox.</p>"
+         "answer": "<p>When you create a wallet address, you also create a seed phrase. With one significant exception, a seed phrase is similar to a banking pin in that it gives you access to your wallet and your token allocation. Unlike a pin, if you lose your seed phrase, <strong>you can never access your wallet or your token allocation ever again</strong>.</p> <p class='uk-alert-danger' ><strong>Warning</strong>: Losing a seed phrase is final and destructive. Blockstack does not keep a copy of your seed. Blockstack cannot give you a new seed, get your access to your wallet, or return your tokens if you lose your seed phrase.</p> <p>Keep your seed phrase secret. Just as with a banking pin, anyone that knows or steals your seed phrase can access your allocation.</p> <p>You should write your seed phrase down and store the paper you write on in at least two secure locations. A safe or lockbox is a good location. You can also store it online in an encrypted password manager such as 1Password.  You should <em>never</em> simply store a seed phrase in Apple Cloud or Dropbox.</p>"
       },
       {
          "category": "wallet",
@@ -519,7 +519,7 @@
       {
          "category": "wallet",
          "question": "How do I keep my tokens secure?",
-         "answer": "<p>The safety of your Stacks tokens is extremely important to us. To help ensure that you complete the process of receiving your tokens correctly and securely, please read the following guidelines:</p> <ul> <li> <p><strong>Website Safety</strong>: When inputting data on a website or verifying the presence of data on a website it is essential that you confirm that the URL is correct and that your browser is using HTTPS.</p> </li> <li> <p><strong>Email Safety</strong>: Blockstack will never ask for your personal identifying information over e-mail, or call you directly. When we ask verifying questions, we will only do so when you call us to confirm your identity. We will never ask you for money or your Seed Phrase (private key).</p> </li> </ul> <p>If you have large token holdings, make sure you take advantage of custodial services. A wallet does not provide the security of a custodial service.</p>"
+         "answer": "<p>The safety of your Stacks tokens is extremely important to us. To help ensure that you complete the process of receiving your tokens correctly and securely, please read the following guidelines:</p> <ul> <li> <p><strong>Website Safety</strong>: When inputting data on a website or verifying the presence of data on a website, it is essential that you confirm that the URL is correct and that your browser is using HTTPS.</p> </li> <li> <p><strong>Email Safety</strong>: Blockstack will never ask for your personal identifying information over email, or call you directly. When we ask verifying questions, we will only do so when you call us to confirm your identity. We will never ask you for money or your Seed Phrase (private key).</p> </li> </ul> <p>If you have large token holdings, make sure you take advantage of custodial services. A wallet does not provide the security of a custodial service.</p>"
       },
       {
          "category": "wallet",
@@ -529,7 +529,7 @@
       {
          "category": "wallet",
          "question": "What is a public Stacks Wallet address?",
-         "answer": "<p>During the initial grant process, investors submitted a <em>public Stacks Wallet address</em> to Blockstack. This is a string of letters and numbers starting with an ‘SP’ or SM’, for example <code>SP017AUV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XY</code> is a wallet address.</p> <p>If you purchased Stacks tokens through stackstoken.com using CoinList, you can find your address at <a href='https://coinlist.co/distributions'>CoinList</a>. If you submitted your Stacks address directly to Blockstack, you can either use the <q>Restore from Seed Phrase</q> feature on the Stacks Wallet or contact us at <a href='mailto:hello@stackstoken.com'>hello@stackstoken.com</a> for help.</p>"
+         "answer": "<p>During the initial grant process, investors submitted a <em>public Stacks Wallet address</em> to Blockstack. This is a string of letters and numbers starting with an ‘SP’ or SM’; for example, <code>SP017AUV5YRM7HT3TSQXJF7FCCYXETAB276BQ6XY</code> is a wallet address.</p> <p>If you purchased Stacks tokens through stackstoken.com using CoinList, you can find your address at <a href='https://coinlist.co/distributions'>CoinList</a>. If you submitted your Stacks address directly to Blockstack, you can either use the <q>Restore from Seed Phrase</q> feature on the Stacks Wallet or contact us at <a href='mailto:hello@stackstoken.com'>hello@stackstoken.com</a> for help.</p>"
       },
       {
          "category": "wallet",
@@ -538,12 +538,12 @@
          },
         {
          "category": "wallet",
-        "question": "Can I use the older, version 1 Blockstack Wallet?",
-        "answer": "<p>Version 1 of the Blockstack Wallet software was a read-only wallet. To view Stacks balances, send or receive Stacks you need to use the latest, version 3 wallet. You <em>can</em> use the seed phrase you created with the old wallet with the new version.</p>"
+        "question": "Can I use the older version 1 Blockstack Wallet?",
+        "answer": "<p>Version 1 of the Blockstack Wallet software was a read-only wallet. To view Stacks balances, send or receive Stacks you need to use the latest version 3 wallet. You <em>can</em> use the seed phrase you created with the old wallet with the new version.</p>"
          },
         {
          "category": "wallet",
-        "question": "Can I send Bitcoin to my Stacks wallet?",
+        "question": "Can I send Bitcoin to my Stacks Wallet?",
         "answer": "<p>No, you cannot send Bitcoin to a Stacks address. You can only add Bitcoin as fuel to the wallet. Please <a href='https://docs.blockstack.org/org/wallet-use.html' target='_blank'>follow the instructions for adding &quot;gas&quot;</a>.</p>"
          },
       {
@@ -559,7 +559,7 @@
      {
          "category": "tokens",
          "question": "How do I check my STX balance?",
-         "answer": "<p>Blockchain transactions take time. Once Stacks are sent to you, you see a PENDING transaction which means the transaction is still being recorded by the blockchain. Your balance will not change until the transaction is recorded. It may be minutes or hours before the transaction is recorded in the blockchain.</p><p>When the transaction is complete, you can see a receipt for the transaction in your Stacks Wallet. The PENDING marker goes away once the funds are recorded on the blockchain. Then, at this point, the <a href='https://docs.blockstack.org/org/wallet-use.html#view-balance-allocation-or-transaction-history'>balance in your Stacks Wallet software</a> should reflect the completed transaction.</p>"
+         "answer": "<p>Blockchain transactions take time. Once Stacks are sent to you, you see a PENDING transaction, which means the transaction is still being recorded by the blockchain. Your balance will not change until the transaction is recorded. It may be minutes or hours before the transaction is recorded in the blockchain.</p><p>When the transaction is complete, you can see a receipt for the transaction in your Stacks Wallet. The PENDING marker goes away once the funds are recorded on the blockchain. Then, at this point, the <a href='https://docs.blockstack.org/org/wallet-use.html#view-balance-allocation-or-transaction-history'>balance in your Stacks Wallet software</a> should reflect the completed transaction.</p>"
       },
 
       {
@@ -575,7 +575,7 @@
       {
          "category": "tokens",
          "question": "Can I sell or transfer Stacks tokens directly to someone else?",
-         "answer": "<p>It may be possible to sell or transfer Stacks directly to another person in a peer-to-peer transaction. We recommend that you consult an attorney before engaging in such a transaction, especially if buying from or selling to a U.S. person or entity, as we cannot give you legal or regulatory advice.</p>"
+         "answer": "<p>It may be possible to sell or transfer Stacks directly to another person in a peer-to-peer transaction. We recommend that you consult an attorney before engaging in such a transaction, especially if buying from or selling to a US person or entity, as we cannot give you legal or regulatory advice.</p>"
       },
       {
          "category": "tokens",
@@ -585,7 +585,7 @@
          {
          "category": "tokens",
          "question": "What types of transfer or time locks apply to the current and future sales of Stacks tokens?",
-         "answer": "<p><u>2019 Regulation A offering</u>: Stacks tokens sold pursuant to our Regulation A offering are subject to an approximately two-year time lock from the date of the hard fork that distributes the tokens. 1/24th of the amount of tokens purchased will be released from this time lock on the date of distribution of the tokens, and an additional 1/24th will be released approximately every month. These tokens will not be subject to a transfer lock.</p> <p><u>2019 Regulation S offering</u>: Stacks tokens sold pursuant to our Regulation S offering to non-U.S. institutional investors are subject to a one-year transfer lock from the date of sale and an approximately two-year time lock that unlocks on an approximately monthly basis from the date of the hard fork that distributes the tokens.</p> <p><u>2017 Accredited Investor Sale</u>: Stacks tokens sold pursuant to our Regulation D offering to accredited investors in 2017 are subject to an approximately two-year time lock that unlocks on an approximately monthly basis from the date of the genesis block, except for 50,000,000 of those tokens, which are subject to an approximately four-year time lock. The tokens were previously subject to a one-year transfer lock, which has expired.</p> <p><u>2017 Founder Sale &amp; Equity Investor Sale</u>: Stacks tokens sold to founders and certain stockholders of Blockstack PBC in 2017 are subject to an approximately three-year time lock that unlocks on an approximately monthly basis from the date of the genesis block.</p>"
+         "answer": "<p><u>2019 Regulation A offering</u>: Stacks tokens sold pursuant to our Regulation A offering are subject to an approximately two-year time lock from the date of the hard fork that distributes the tokens. 1/24th of the amount of tokens purchased will be released from this time lock on the date of distribution of the tokens, and an additional 1/24th will be released approximately every month. These tokens will not be subject to a transfer lock.</p> <p><u>2019 Regulation S offering</u>: Stacks tokens sold pursuant to our Regulation S offering to non-US institutional investors are subject to a one-year transfer lock from the date of sale and an approximately two-year time lock that unlocks on an approximately monthly basis from the date of the hard fork that distributes the tokens.</p> <p><u>2017 Accredited Investor Sale</u>: Stacks tokens sold pursuant to our Regulation D offering to accredited investors in 2017 are subject to an approximately two-year time lock that unlocks on an approximately monthly basis from the date of the genesis block, except for 50,000,000 of those tokens, which are subject to an approximately four-year time lock. The tokens were previously subject to a one-year transfer lock, which has expired.</p> <p><u>2017 Founder Sale &amp; Equity Investor Sale</u>: Stacks tokens sold to founders and certain stockholders of Blockstack PBC in 2017 are subject to an approximately three-year time lock that unlocks on an approximately monthly basis from the date of the genesis block.</p>"
           },
       {
          "category": "tokens",
@@ -599,23 +599,23 @@
       },
       {
          "category": "tokens",
-         "question": "I have a tax question about my Stacks tokens. Whom should I talk to?",
+         "question": "I have a tax question about my Stacks tokens. Who should I talk to?",
          "answer": "<p>If you have a tax question about your Stacks tokens, we recommend you speak to an accountant or tax lawyer. If you participated in the 2017 token sale through the Blockstack Token Funds, we’ll provide you with the necessary tax reporting forms by the required deadlines, but in general, we cannot give you tax advice.</p>"
       },
          {
             "category": "tokens",
             "question": "How much money has Blockstack raised?",
-           "answer": "<p>Blockstack PBC has raised ~$75m+ from equity investments and token offerings--approximately $23.2m from two token offerings in 2019, $47.5m from a token offering in 2017, and $5.1m in equity investments.</p><p>Traditionally, venture-capital backed startups target around 12 to 18 months of runway after a new round of financing. As of October 2019, Blockstack PBC has a projected runway until at least the end of 2021 at current burn rates.</p><p>Our audited financials are available in our <a href='https://stackstoken.com/circular'>in our offering circular</a>.</p>"
+           "answer": "<p>Blockstack PBC has raised ~$75m+ from equity investments and token offerings--approximately $23.2m from two token offerings in 2019, $47.5m from a token offering in 2017, and $5.1m in equity investments.</p><p>Traditionally, venture-capital-backed startups target around 12 to 18 months of runway after a new round of financing. As of October 2019, Blockstack PBC has a projected runway until at least the end of 2021 at current burn rates.</p><p>Our audited financials are available <a href='https://stackstoken.com/circular'>in our offering circular</a>.</p>"
            },
            {
             "category": "tokens",
             "question": "What has been the recent traction on the network?",
-            "answer": "<p>Blockstack PBC moved from the R&amp;D phase to the infrastructure building phase in 2017 (upon closing of the Series A equity investment). Blockstack PBC successfully completed the launch of the Stacks blockchain in Q4 2018, <a href='https://blog.blockstack.org/blockstack-unlocks-25-million-in-funding/' target='_blank'>meeting Milestone 1</a>.</p> <p>Since Q4 2018, we’ve been in the developer traction phase. The number of independent applications built on the network increased from 17 to 46 in Q4 2018, from 46 to 86 in Q1 2019, from 86 to 165 in Q2 2019, to 165 to 265+ apps in Q3 2019. The Blockstack network has 115,780 registered user accounts as of July 2019 and Blockstack PBC has increased focus on user acquisition during the transition from the developer traction phase to user engagement phase.</p>"
+            "answer": "<p>Blockstack PBC moved from the R&amp;D phase to the infrastructure building phase in 2017 (upon closing of the Series A equity investment). Blockstack PBC successfully completed the launch of the Stacks blockchain in Q4 2018, <a href='https://blog.blockstack.org/blockstack-unlocks-25-million-in-funding/' target='_blank'>meeting Milestone 1</a>.</p> <p>Since Q4 2018, we’ve been in the developer traction phase. The number of independent applications built on the network increased from 17 to 46 in Q4 2018, from 46 to 86 in Q1 2019, from 86 to 165 in Q2 2019, to 165 to 265+ apps in Q3 2019. The Blockstack network has 115,780 registered user accounts as of July 2019, and Blockstack PBC has increased focus on user acquisition during the transition from the developer traction phase to user engagement phase.</p>"
             },
             {
             "category": "tokens",
             "question": "How were tokens distributed to early investors?",
-            "answer": "<p>Accredited Investors and funds in the 2017 Reg D token offering purchased tokens at a $0.12 price. Blockstack PBC raised $47.5M in this offering.</p> <p>Holders of Blockstack’s Series A convertible preferred stock—who had invested a total of $5.1 million as of late 2016 and funded Blockstack’s early growth and development before the decision to create a token, or the drafting or publication of any white papers—were also provided an opportunity to purchase tokens at a nominal price per token before the 2017 Reg D offering. This opportunity to participate at a nominal price was given in return for their early support and in proportion to their equity ownership, and it was based on their reasonable expectation as early investors that they would receive tokens if Blockstack ever decided to create a digital token.</p> <p>These tokens are subject to a three-year time lock, commencing upon the introduction of the genesis block to the Blockstack network in November 2018. The tokens for founders and employees are also subject to a three-year time lock starting November 2018.</p> <p>Further, affiliates of Blockstack PBC including Union Square Ventures, Muneeb Ali, and Ryan Shea — three of the largest holders of Stacks tokens — have additional restrictions on selling tokens on the open markets.</p>"
+            "answer": "<p>Accredited Investors and funds in the 2017 Reg D token offering purchased tokens at a $0.12 price. Blockstack PBC raised $47.5M in this offering.</p> <p>Holders of Blockstack’s Series A convertible preferred stock—who had invested a total of $5.1 million as of late 2016 and funded Blockstack’s early growth and development before the decision to create a token, or the drafting or publication of any white papers—were also provided an opportunity to purchase tokens at a nominal price per token before the 2017 Reg D offering. This opportunity to participate at a nominal price was given in return for their early support and in proportion to their equity ownership, and it was based on their reasonable expectation as early investors that they would receive tokens if Blockstack ever decided to create a digital token.</p> <p>These tokens are subject to a three-year time lock, commencing upon the introduction of the genesis block to the Blockstack network in November 2018. The tokens for founders and employees are also subject to a three-year time lock starting November 2018.</p> <p>Further, affiliates of Blockstack PB,C including Union Square Ventures, Muneeb Ali, and Ryan Shea — three of the largest holders of Stacks tokens — have additional restrictions on selling tokens on the open markets.</p>"
             }
    ]
 }
