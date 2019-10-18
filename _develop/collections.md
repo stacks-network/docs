@@ -7,7 +7,7 @@ permalink: /:collection/:path.html
 
 Collections is the feature designed to make data portable among Blockstack applications. Sharing is accomplished by storing a user's data in a standardized format at a known, Gaia storage location. Collections associate user data with a user's decentralized ID. When users move among apps, the same data is available to each application the user authorizes. 
 
-On this page, you learn what collections are and how to use them. You'll learn about the `Contacts` collection in particular. The following topics are covered:
+On this page, you learn what collections are and how to use them. You'll learn about the `Contact` collection in particular. The following topics are covered:
 
 * TOC
 {:toc}
@@ -42,7 +42,7 @@ Because malicious apps or apps with poor security controls may damage user data,
 <p>For developers, collections can incentivize user adoption by reducing user friction.  Users can easily try new apps and move to them without the overhead or barrier of re-entering data. You are <a href="https://forum.blockstack.org/t/feedback-wanted-collections-design/7752" target="_blank">welcome to review and comment</a> on the current design document.</p>
 </div>
 
-## Try the Contact Manager demo app
+## Build a Contact Manager demo app
 
 Before adding collections to your DApp, you can try it for yourself using the Contact Manager demo application. Blockstack Contacts is a simple contacts manager that allows users to add and manage their contacts. The data stored by this app can be used in another app that receives the contacts collection permissions.
 
@@ -62,27 +62,19 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
 3. Launch the alpha build of the local Blockstack Browser client.
 
-   {% include warning.html content="This alpha build interacts with a version of the Gaia Storage hub that supports collections. You cannot use an existing ID to test with, instead, you need to <strong>create a new, test ID using the alpha build</strong>. Additionally, <strong>you must use the <code>https://staging-hub.blockstack.xyz</code> Gaia hub during the Contact Manager onboarding</strong>. For this reason, wait to create a new ID." %}
+4. In your Internet browser, visit the <a href="https://github.com/yknl/blockstack-contacts" target="_blank">https://github.com/yknl/blockstack-contacts</a> repository.
 
-4. Go to the local Blockstack Browser and make sure you see this:
+5. Download or clone the repository code to you local workstation.
 
-   ![](images/confirm-local.png)
+6. In your workstation terminal, change directory where you downloaded the demo code.
 
-   Do not create an ID yet.
-
-5. In your Internet browser, visit the <a href="https://github.com/yknl/blockstack-contacts" target="_blank">https://github.com/yknl/blockstack-contacts</a> repository.
-
-6. Download or clone the repository code to you local workstation.
-
-7. In your workstation terminal, change directory where you downloaded the demo code.
-
-8. Install the dependencies using `npm`.
+7. Install the dependencies using `npm`.
 
     ```bash
     npm install
     ```
 
-9. Start the application running.
+8. Start the application running.
 
     ```bash
     npm run start
@@ -90,25 +82,36 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
     The system starts the application and launches it in your browser at  127.0.0.1:3000
 
-10. Choose **Sign In with Blockstack**.
+9. Choose **Sign In with Blockstack**.
 
-    This system displays this pop-up
+    The internet browser will display this pop-up
 
     ![](images/contacts-manager.png)
 
-11. Use the local browser by choosing  **Open Blockstack.app**.
+10. Use the local browser by choosing  **Open Blockstack.app**.
 
-12. Choose **Create new ID** from the pop up.
-
-    The onboarding should prompt you to store your data with the `https://staging-hub.blockstack.xyz` provider.
-
-13. Choose **Yes, use the recommended provider** and complete the creation of your test ID.
+11. If you are not signed into an ID in the Blockstack Browser, choose **Create new ID** from the pop up.
+   If you are already signed in, choose an ID to sign in to the Contacts Manager app with.
 
     The system should return you to the Contact Manager demo application.
 
-Try adding a contact using the Contact Manager. When you have successfully created a contact, the Contact Manager displays that contact on the list. Here you can see that Alfred Newman was entered as a contact.
+### Test Contact data portability
 
-![](images/added-contact.png)
+1. Add a contact using your new Contact Manager application, the contact added here is `Josephine Baker`. 
+   
+   When you have successfully created a contact, the Contact Manager displays that contact on the list. Here you can see that Josephine Baker was entered as a contact.
+
+   ![](images/added-contact.png)
+
+2. Open the [collections page test](https://blockstack.github.io/blockstack-collections/page_test/) in your browser.
+
+   The page test is an entirely different application that also makes use of the Contacts collection.
+
+3. Sign in using the same Blockstack ID you used to sign into the Contacts Manager.
+
+4. Choose **List contacts**.
+
+   ![](images/test-contact.png)
 
 
 ## How to add the Contact collections to your DApp
@@ -119,7 +122,7 @@ In this section, you learn how to add `Contact` collection functionality to an e
 2. Install the preview branch of the `blockstack.js`.
 
     ```
-    npm install blockstack@20.0.0-alpha.4
+    npm install blockstack@20.0.0-alpha.5
     ```
 
 3. Add the ``blockstack-collections` package to your app.
@@ -136,7 +139,7 @@ In this section, you learn how to add `Contact` collection functionality to an e
 
 5. Customize your sign in request to include the contacts collection scope `Contact.scope`. 
 
-    This scope grants your app permission to read and write to the user’s `Contacts` collection. 
+    This scope grants your app permission to read and write to the user’s `Contact` collection. 
 
     ```javascript
     import { UserSession, AppConfig, makeAuthRequest } from 'blockstack'
@@ -145,13 +148,7 @@ In this section, you learn how to add `Contact` collection functionality to an e
     const scopes = ['store_write', 'publish_data', Contact.scope]
     const appConfig = new AppConfig(scopes)
     const userSession = new UserSession({appConfig: appConfig})
-
-    const authRequest = makeAuthRequest(undefined, undefined, undefined, scopes, undefined, undefined, {
-    solicitGaiaHubUrl: true,
-    recommendedGaiaHubUrl: 'https://staging-hub.blockstack.xyz'
-    })
-
-    userSession.redirectToSignInWithAuthRequest(authRequest)
+    userSession.redirectToSignIn()
     ```
 
     {% include note.html content="This example enables the custom Gaia hub selection prompt to point at the pre-release hub that has collections features enabled." %}
