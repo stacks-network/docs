@@ -30,36 +30,70 @@ $ which npm
 
 If you don't find `npm` in your system, [install it](https://www.npmjs.com/get-npm).
 
-## Task 1: Generate an initial Clarity project
+## Task 1: Install the SDK command line
+
+The SDK comes with a command line for setting up the SDK and creating new projects.  Use `npm` to install the `clarity` SDK command:
+
+```
+npm install -g @blockstack/clarity-cli
+```
+
+Verify you have installed the command correctly:
+
+```
+$ clarity --help
+The Clarity CLI is used to manage Clarity smart contracts from the command line.
+
+VERSION
+  @blockstack/clarity-cli/0.1.13-alpha.3 darwin-x64 node-v12.10.0
+
+USAGE
+  $ clarity [COMMAND]
+
+COMMANDS
+  help   display help for clarity
+  new    Generate new project
+  setup  Install blockstack-core and its dependencies
+```
+
+## Task 2: Generate an initial Clarity project
 
 In this task, you generate a project scaffold &mdash; an initial set of directories and files.   
 
-1. Create a new directory for your project.
+1. Create a new Clarity project .
 
     ```sh
-    mkdir hello-clarity-sdk
+    clarity new hello-clarity-sdk
     ```
+
+    The system responds by creating a scaffolding for your Clarity project and initializing the packaging:
+
+    ```
+    $ clarity new hello-clarity-sdk
+      create .vscode/extensions.json
+      create .vscode/launch.json
+      create contracts/sample/hello-world.clar
+      create test/mocha.opts
+      create tsconfig.json
+      create test/hello-world.ts
+      create .gitignore
+      create package.json
+      ...
+    added 126 packages from 632 contributors and audited 226 packages in 4.678s
+    found 0 vulnerabilities
+
+    Project created at /tmp/hello-clarity-sdk
+    ```
+
+    Depending on your connection speed, it may take time to construct the scaffolding.
+
 2. Change into your new project directory.
 
     ```sh
     cd hello-clarity-sdk
     ```
 
-3. Use the `npm` command to initialize a Clarity project.
-
-    ```sh
-    npm init clarity-dev
-    ...
-
-    added 153 packages from 630 contributors and audited 280 packages in 4.73s
-    found 0 vulnerabilities
-
-    Project created at /private/tmp/hello-clarity-sdk
-    ```
-
-    Depending on your connection speed, it may take time to construct the scaffolding.
-
-## Task 2: Investigate the generated project 
+## Task 3: Investigate the generated project 
    
 Your project should contain three directories:
 
@@ -154,7 +188,7 @@ npm run test
 
 In the next section, try your hand at expanding the `hello-world.clar` program.
 
-## Task 3: Try to expand the contract
+## Task 4: Try to expand the contract
 
 In this task, you are challenged to expand the contents of the `contracts/hello-world.clar` file. Use your favorite editor and open the `contracts/hello-world.clar` file. If you use Visual Studio Code, you can install the Blockstack Clarity extension. The extension provides `syntax coloration` and some `autocompletion`. 
 
