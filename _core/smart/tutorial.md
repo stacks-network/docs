@@ -69,7 +69,7 @@ The first line of the `tokens.clar` program contains a user-defined `get-balance
   (default-to 0 (get balance (fetch-entry tokens (tuple (account account))))))
 ```
 
-`get-balance` is a private function because it is constructed with the `define` call. To create public functions, you would use the `define-public` function. Public functions can be called from other contracts or even from the command line with the `clarity`.
+`get-balance` is a private function because it is constructed with the `define` call. To create public functions, you would use the `define-public` function. Public functions can be called from other contracts or even from the command line with the `clarity-cli`.
 
 Notice the program is enclosed in  `()` (parentheses) and each statement as well.  The `get-balance` function takes an `account` argument of the special type `principal`. Principals represent a spending entity and are roughly equivalent to a Stacks address. 
 
@@ -124,12 +124,12 @@ Which `tokens.clar` function is being called?
 
 ## Task 3: Initialize data-space and launch contracts
 
-In this task, you interact with the the contracts using the `clarity` command line. 
+In this task, you interact with the the contracts using the `clarity-cli` command line. 
 
 1. Initialize a new `db` database in the `/data/` directory
 
     ```bash
-    #  clarity initialize /data/db
+    #  clarity-cli initialize /data/db
     Database created
     ```
 
@@ -138,7 +138,7 @@ In this task, you interact with the the contracts using the `clarity` command li
 2. Type check the `names.clar` contract.
 
     ```bash
-    #  clarity check sample-programs/names.clar /data/db
+    #  clarity-cli check sample-programs/names.clar /data/db
     ```
     You should get an error:
 
@@ -152,7 +152,7 @@ In this task, you interact with the the contracts using the `clarity` command li
 3. Type check the `tokens.clar` contract, it should pass a check as it does not use the `contract-call` function:
 
     ```bash
-    # clarity check sample-programs/tokens.clar /data/db
+    # clarity-cli check sample-programs/tokens.clar /data/db
     Checks passed.
     ```
 
@@ -163,7 +163,7 @@ In this task, you interact with the the contracts using the `clarity` command li
    You use the `launch` command to instantiate a contract on the Stacks blockchain. If you have dependencies between contracts, for example names.clar is dependent on tokens.clar, you must launch the dependency first.
 
     ```bash
-    # clarity launch tokens sample-programs/tokens.clar /data/db
+    # clarity-cli launch tokens sample-programs/tokens.clar /data/db
     Contract initialized!
     ```
     
@@ -172,7 +172,7 @@ In this task, you interact with the the contracts using the `clarity` command li
 5. Recheck the `names.clar` contract.
 
     ```bash
-    # clarity check sample-programs/names.clar /data/db
+    # clarity-cli check sample-programs/names.clar /data/db
     ```
 
    The program should pass validation because its dependency on `tokens.clar` is fulfilled. 
@@ -180,7 +180,7 @@ In this task, you interact with the the contracts using the `clarity` command li
 6. Instantiate the `names.clar` contract as well.
 
     ```bash
-    # clarity launch names sample-programs/names.clar /data/db
+    # clarity-cli launch names sample-programs/names.clar /data/db
     ```
 
 ## Task 4. Examine the SQLite database
@@ -188,13 +188,13 @@ In this task, you interact with the the contracts using the `clarity` command li
 The test environment uses a SQLite database to represent the blockchain. You initialized this database when you ran this earlier:
 
 ```bash
-clarity initialize /data/db
+clarity-cli initialize /data/db
 ```
 
 As you work the contracts, data is added to the `db` database because you pass this database as a parameter, for example:
 
 ```bash
-clarity launch tokens sample-programs/tokens.clar /data/db
+clarity-cli launch tokens sample-programs/tokens.clar /data/db
 ```
 
 The database exists on your local workstation and persists through restarts of the container. You can use this database to examine the effects of your Clarity programs. The tables in the SQLite database are the following:
@@ -242,7 +242,7 @@ In this section, you use the public `mint!` function in the  `tokens` contract t
 1. Use the `clarity_cli` command to create a demo address.
 
    ```
-   # clarity generate_address
+   # clarity-cli generate_address
    SP26CHZZ26Q25WDD1CFJYSED169PS9HTNX445XKDG
    ```
 
@@ -255,7 +255,7 @@ In this section, you use the public `mint!` function in the  `tokens` contract t
 3. Get the current balance of your new address.
 
    ```bash
-    # echo "(get-balance '$DEMO_ADDRESS)" | clarity eval tokens /data/db
+    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval tokens /data/db
     Program executed successfully! Output: 
     0
     ```
@@ -265,15 +265,15 @@ In this section, you use the public `mint!` function in the  `tokens` contract t
 4. Try minting some tokens and sending them to an address we'll use for our demo.
 
     ```bash
-    # clarity execute /data/db tokens mint! $DEMO_ADDRESS 100000
+    # clarity-cli execute /data/db tokens mint! $DEMO_ADDRESS 100000
     ```
 
     This executes the public `mint!` function defined in the tokens contract, sending 100000 tokens to you `$DEMO_ADDRESS`.
 
-5. Use the `clarity eval` command to check the result of this call.
+5. Use the `clarity-cli eval` command to check the result of this call.
 
     ```bash
-    # echo "(get-balance '$DEMO_ADDRESS)" | clarity eval tokens /data/db
+    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval tokens /data/db
     Program executed successfully! Output: 
     100000
     ```
@@ -287,7 +287,7 @@ Now, let's register a name using the `names.clar` contract. Names are just integ
    You'll _salt_ the hash with the salt `8888`:
 
     ```bash
-    # echo "(hash160 (xor 10 8888))" | clarity eval names /data/db
+    # echo "(hash160 (xor 10 8888))" | clarity-cli eval names /data/db
     Program executed successfully! Output: 
     0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde
     ```
@@ -301,7 +301,7 @@ Now, let's register a name using the `names.clar` contract. Names are just integ
 2. Preorder the name using the _execute_ command:
 
     ```bash
-    # clarity execute /data/db names preorder $DEMO_ADDRESS 0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde 1000
+    # clarity-cli execute /data/db names preorder $DEMO_ADDRESS 0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde 1000
     Transaction executed and committed. Returned: 0
     ```
 
@@ -310,7 +310,7 @@ Now, let's register a name using the `names.clar` contract. Names are just integ
 3.  Check the demo address' new balance:
 
     ```bash
-    # echo "(get-balance '$DEMO_ADDRESS)" | clarity eval tokens /data/db
+    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval tokens /data/db
     Program executed successfully! Output: 
     99000
     ```
@@ -318,14 +318,14 @@ Now, let's register a name using the `names.clar` contract. Names are just integ
 4. Register the name by executing the _register_ function:
 
     ```bash
-    # clarity execute /data/db names register $DEMO_ADDRESS \'$DEMO_ADDRESS 10 8888
-    Transaction executed and committed. Returned: 0clarity execute /data/db names register $DEMO_ADDRESS \'$DEMO_ADDRESS 10 8888
+    # clarity-cli execute /data/db names register $DEMO_ADDRESS \'$DEMO_ADDRESS 10 8888
+    Transaction executed and committed. Returned: 0clarity-cli execute /data/db names register $DEMO_ADDRESS \'$DEMO_ADDRESS 10 8888
     ```
 
 5. Lookup the "owner address" for the name:
 
     ```bash
-    # echo "(get owner (fetch-entry name-map (tuple (name 10))))" | clarity eval names /data/db
+    # echo "(get owner (fetch-entry name-map (tuple (name 10))))" | clarity-cli eval names /data/db
     Program executed successfully! Output: 
     (some 'SP26CHZZ26Q25WDD1CFJYSED169PS9HTNX445XKDG)
     ```
@@ -334,4 +334,4 @@ Now, let's register a name using the `names.clar` contract. Names are just integ
 {:.no_toc}
 
 * <a href="clarityRef.html">Clarity Language Reference</a>
-* <a href="clarityRef.html">clarity command line</a>
+* <a href="clarityRef.html">clarity-cli command line</a>
