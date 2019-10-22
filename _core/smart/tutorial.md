@@ -3,9 +3,9 @@ layout: core
 description: "Blockstack smart contracting language"
 permalink: /:collection/:path.html
 ---
-# Hello Clarity tutorial
+# Hello Clarity for the VM
 
-In this tutorial, you learn how to use Clarity, Blockstack's smart contracting language. Use this tutorial to get a quick introduction to Clarity and the default Blockstack test environment.
+In this tutorial, you learn how to use Clarity, Blockstack's smart contracting language inside of a virtual environment. The environment is run using a Docker image. Use this tutorial to get a quick introduction to Clarity and the default Blockstack test environment.
 
 * TOC
 {:toc}
