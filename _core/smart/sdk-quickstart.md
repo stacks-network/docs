@@ -131,7 +131,7 @@ describe("hello world contract test suite", () => {
 
 The `hello-world.ts` test file is a client that runs the `hello-world.clar` contract. Tests are critical for smart contracts as they are intended to manipulate assets and their ownership. These manipulations are irreversible within a blockchain. As you create a contracts, you should not be surprise if you end up spending more time and having more code in your `tests` than in your `contracts` directory. The `tests/hello-world.ts` file in the scaffold has the following content:
 
-The first part of the test (lines 1 -10) sets up the test environment. It defines a Clarity `provider` and launches it (line 9). The Client instance contains a contract name and the path to the sample code. This test also checks the client (line 14) and then launches it (line 19), this is equivalent to running `clarity-cli check` with the command line. The remaining test code exercises the contract. Try running this test.
+The first part of the test (lines 1 -10) sets up the test environment. It defines a Clarity `provider` and launches it (line 9). The Client instance contains a contract name and the path to the sample code. This test also checks the client (line 14) and then launches it (line 19), this is equivalent to running `clarity check` with the command line. The remaining test code exercises the contract. Try running this test.
 
 
 ```sh
