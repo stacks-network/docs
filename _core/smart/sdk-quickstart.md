@@ -3,7 +3,7 @@ layout: core
 description: "Blockstack smart contracting language"
 permalink: /:collection/:path.html
 ---
-# Quickstart for the SDK
+# Clarity SDK Quickstart
 {:.no_toc}
 
 You can use the software developer kit (SDK) to develop, test, and deploy Clarity smart contracts. The SDK goes beyond the basic test environment to allow for development of Javascript or TypeScript clients that call upon Clarity contracts.
