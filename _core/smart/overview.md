@@ -44,7 +44,7 @@ Clarity is a list processing (LISP) language, as such it is not compiled. Omitti
 
 Clarity is in pre-release and does not yet directly interact with the live Stacks blockchain. For the pre-release period you need a test environment to run Clarity contracts. Blockstack provides a Docker image called `clarity-developer-preview` that you can use or you can build a test environment locally from code. Either the Docker image or a local environment is sufficient for testing Clarity programming for standalone contracts.
 
-You use the `clarity-cli` command line to check, launch, and execute standalone Clarity contracts. You can use this same command line to create simulate mining Stacks and inspecting a blockchain. 
+You use the `clarity` command line to check, launch, and execute standalone Clarity contracts. You can use this same command line to create simulate mining Stacks and inspecting a blockchain. 
 
 Blockstack expects that some decentralized applications (DApp) will want to make use of Clarity contracts as part of their applications. For this purpose, you should use the Clarity SDK, also in pre-release. The SDK is a development environment, testing framework, and deployment tool. It provides a library for safe interactions with Clarity contracts from a DApp written with the blockstack.js library. 
 
@@ -72,7 +72,7 @@ You can add comments to your Clarity contracts using  `;;` (double semi-colons).
   (transfer! tx-sender recipient amount)) ;; returns: boolean
 ```
 
-You use the `clarity-cli` command to check and launch a Clarity (`.clar`) program.
+You use the `clarity` command to check and launch a Clarity (`.clar`) program.
 
 ## hello-world example
 
@@ -85,11 +85,11 @@ The easiest program to run in any language is a hello world program. In Clarity,
 
 This program defines a single `hello-world` expression that is excuted when the contract launches. The `begin` is a native Clarity function that evaluates the expressions input to it and returns the value of the last expression.  Here there is a single `print` expression. Both the `begin` and the `print` are enclosed in `()` parentheses.
 
-For the pre-release, the Blockstack test environment includes the `clarity-cli` command for interacting with the contract and SQLite to support the data space. You create a SQLLite database to hold data related to Clarity contracts. This database simulates the blockchain by recording the contract activity. 
+For the pre-release, the Blockstack test environment includes the `clarity` command for interacting with the contract and SQLite to support the data space. You create a SQLLite database to hold data related to Clarity contracts. This database simulates the blockchain by recording the contract activity. 
 
-You can't run even an a hello-world program without first initializing a Clarity contract's data space within the database. You can use the `clarity-cli initialize` command to set up the database.
+You can't run even an a hello-world program without first initializing a Clarity contract's data space within the database. You can use the `clarity initialize` command to set up the database.
 
-```clarity-cli initialize /data/db```
+```clarity initialize /data/db```
 
 This command initializes the `db` database which resides in the `/data` directory of the container. You can name the database anything you like, the name `db` is not required. You can use SQLite to query this database:
 
@@ -103,12 +103,12 @@ sqlite>
 
 After you initialize the contract's data space, you can `check` a Clarity program for problems.
 
-```clarity-cli check ./hello.clar /data/db```
+```clarity check ./hello.clar /data/db```
 
 As the name implies, the `check` ensures the contract definition passes a type check; passing programs will returns an exit code of `0` (zero). Once a contract passes a check, you `launch` it.
 
 ```bash
-root@4224dd95b5f5:/data# clarity-cli launch hello ./hello.clar /data/db
+root@4224dd95b5f5:/data# clarity launch hello ./hello.clar /data/db
 Buffer(BuffData { data: [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100] })
 Contract initialized!
 ```
