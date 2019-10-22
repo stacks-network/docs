@@ -44,9 +44,9 @@ Clarity is a list processing (LISP) language, as such it is not compiled. Omitti
 
 Clarity is in pre-release and does not yet directly interact with the live Stacks blockchain. For the pre-release period you need a test environment to run Clarity contracts. Blockstack provides a Docker image called `clarity-developer-preview` that you can use or you can build a test environment locally from code. Either the Docker image or a local environment is sufficient for testing Clarity programming for standalone contracts.
 
-You use the `clarity-cli` command line to check, launch, and execute standalone Clarity contracts. You can use this same command line to create simulate mining Stacks and inspecting a blockchain. 
+You use the `clarity-cli` command line to check, launch, and execute standalone Clarity contracts inside the virtual test environment. You can use this same command line to create simulate mining Stacks and inspecting a blockchain. 
 
-Blockstack expects that some decentralized applications (DApp) will want to make use of Clarity contracts as part of their applications. For this purpose, you should use the Clarity SDK, also in pre-release. The SDK is a development environment, testing framework, and deployment tool. It provides a library for safe interactions with Clarity contracts from a DApp written with the blockstack.js library. 
+Blockstack expects that some decentralized applications (DApp) will want to make use of Clarity contracts as part of their applications. For this purpose, you should use the Clarity SDK, also in pre-release. The SDK is a development environment, testing framework, and deployment tool. It provides a library for safe interactions with Clarity contracts from a DApp written with the blockstack.js library. The SDK has a `clarity` command line for creating Clarity projects.
 
 ## Basic building blocks of Clarity contracts
 
