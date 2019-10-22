@@ -38,7 +38,7 @@ The principal's signature is not checked by the smart contract, but by the virtu
 Smart contracts themselves are principals and are represented by the smart contract's identifier. You create the identifier when you launch the contract, for example, the contract identifier here is `hanomine`.
 
 ```bash
-clarity-cli launch hanomine /data/hano.clar /data/db
+clarity launch hanomine /data/hano.clar /data/db
 ```
 
 A smart contract may use the special variable `contract-name` to refer to its own principal.
