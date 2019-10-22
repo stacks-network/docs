@@ -20,17 +20,18 @@ by Blockstack PBC." %}
 
 ## Mac Installation
 
-1. Select the **MacOS Download** button <a href="https://wallet.blockstack.org" target="\_blank">on this page</a>.
+1. <a href="https://wallet.blockstack.org" target="\_blank">Go to the wallet download page</a> in your browser.
+2. Select the **MacOS Download** button.
 
    This button downloads the software to your computer.
 
-2. Open a terminal window.
+3. Open a terminal window.
 
    To find the terminal software, enter `terminal` into the Spotlight search.
 
    ![](images/mac-terminal.png)
 
-3. In the terminal window, enter the command to change directory to the folder where you downloaded the wallet software.
+4. In the terminal window, enter the command to change directory to the folder where you downloaded the wallet software.
 
    The default location is the **Downloads** folder, type the following into the terminal and press RETURN on your keyboard.
 
@@ -38,7 +39,7 @@ by Blockstack PBC." %}
    cd ~/Downloads
    ```
 
-4. In the terminal window, type the following Command
+5. In the terminal window, type the following Command
 
     ```
     shasum -a 512 Stacks-Wallet-macOS-3.0.0.dmg
@@ -46,7 +47,7 @@ by Blockstack PBC." %}
 
     ![](images/mac-shasum.png)
 
-5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published <a href="https://github.com/blockstack/stacks-wallet/releases" target="\_blank">on this page</a>.
+6. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published <a href="https://github.com/blockstack/stacks-wallet/releases" target="\_blank">on this page</a>.
 
 
 
