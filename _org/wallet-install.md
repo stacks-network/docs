@@ -20,7 +20,7 @@ by Blockstack PBC." %}
 
 ## Mac Installation
 
-1. Select <a href="https://wallet.blockstack.org" target="\_blank"><strong>the MacOS Download</strong> button on this page</a>.
+1. Select the **MacOS Download** button <a href="https://wallet.blockstack.org" target="\_blank">on this page</a>.
 
    This button downloads the software to your computer.
 

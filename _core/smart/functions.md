@@ -13,7 +13,7 @@ Clarity includes _defines_  and native functions for creating user-defined funct
 
 ## define and define-public functions
 
-Functions specified via `define-public` statements are public functions. Functions without these designations, simple `define` statements, are private functions. You can run a contract's public functions directly via the `clarity execute` command line directly or from other contracts. You can use the `clarity eval` or `clarity eval_raw` commands to evaluate private functions via the command line.
+Functions specified via `define-public` statements are public functions. Functions without these designations, simple `define` statements, are private functions. You can run a contract's public functions directly via the `clarity-cli execute` command line directly or from other contracts. You can use the `clarity eval` or `clarity eval_raw` commands to evaluate private functions via the command line.
 
 Public functions return a Response type result. If the function returns an `ok` type, then the function call is considered valid, and any changes made to the blockchain state will be materialized. If the function returns an `err` type, it is considered invalid, and has no effect on the smart contract's state. 
 
