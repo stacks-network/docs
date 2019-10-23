@@ -570,17 +570,27 @@
       {
          "category": "tokens",
          "question": "Is there an exchange where I can buy and sell Stacks tokens?",
-         "answer": "<p>We're currently in discussions with international (non-US) exchanges for potential listings of Stacks (STX) tokens in Oct or later. US persons will not be able to trade on such initial international exchanges.</p><p>For US investors, there is currently no authorized exchange or alternative trading system (ATS) for buying and selling Stacks tokens, and we cannot comment on when an exchange or ATS might list Stacks tokens at this time. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>. If you see Stacks listed on an exchange, please let us know at <a href='mailto:legal@blockstack.com'>legal@blockstack.com</a>, as the listing may be illegal or a scam.</p>"
+         "answer": "<p>Stacks tokens will be available for secondary trading on <a href='https://www.binance.com/en/trade/BTC_USDT' target='blank'>Binance's global exchange</a> or <a href='https://pro.hashkey.com/'>Hashkey Pro</a>'s institutional exchange.</p><p>Only non-US persons located outside of the US are eligible to buy or sell STX on these exchanges, subject to your country's laws.</p>"
       },
       {
          "category": "tokens",
-         "question": "Where will the Stacks token trade?",
-         "answer": "<p>There is currently no authorized exchange or alternative trading system (ATS) for buying and selling Stacks tokens, and we cannot comment on when an exchange or ATS might list Stacks tokens at this time. Please keep an eye out for updates at <a href='http://stackstoken.com/'>stackstoken.com</a>. If you see Stacks listed on an exchange, please let us know at <a href='mailto:legal@blockstack.com'>legal@blockstack.com</a>, as the listing may be illegal or a scam.</p>"
-         },   
+         "question": "When will Stacks tokens be available on an exchange for US residents?",
+         "answer": "<p>For US investors, there is currently no authorized exchange or alternative trading system (ATS) for buying and selling Stacks tokens, and we cannot comment on when an exchange or ATS might list Stacks tokens at this time. Please keep an eye out for updates at <a href='http://stackstoken.com/' target='_blank'>stackstoken.com</a>. If you see Stacks listed on an exchange, please let us know at <a href='mailto:legal@blockstack.com'>legal@blockstack.com</a>, as the listing may be illegal or a scam.</p>"
+         },  
+         {
+            "category": "tokens",
+            "question": "If I am already a Stacks token holder, how does the list on Biance affect me?",
+            "answer": "<p>If I'm already a Stacks token holder, how does the listing on Binance affect me? If you are a non-US resident and your country's laws allow you to legally use Binance's global exchange, you can exchange any of your Stacks tokens that are no longer subject to a time or transfer lock.</p> <p>If you cannot legally access Binance's global exchange (<em>e.g.</em>, if you are a US resident) then this does not affect you.</p>"
+            },    
       {
          "category": "tokens",
          "question": "Can I sell or transfer Stacks tokens directly to someone else?",
          "answer": "<p>It may be possible to sell or transfer Stacks directly to another person in a peer-to-peer transaction. We recommend that you consult an attorney before engaging in such a transaction, especially if buying from or selling to a US person or entity, as we cannot give you legal or regulatory advice.</p>"
+      },
+      {
+         "category": "tokens",
+         "question": "How can I use Stacks within the Blockstack Ecosystem?",
+         "answer": "<p>Stacks (STX) are the native token of the Blockstack network. Stacks are consumed when users register blockchain-based identities. In the future, we plan for users and developers to use STX to interact with Clarity smart contracts and to be paid to miners that host Blockstack nodes and secure the network.</p>"
       },
       {
          "category": "tokens",
@@ -592,6 +602,11 @@
          "question": "What types of transfer or time locks apply to the current and future sales of Stacks tokens?",
          "answer": "<p><u>2019 Regulation A offering</u>: Stacks tokens sold pursuant to our Regulation A offering are subject to an approximately two-year time lock from the date of the hard fork that distributes the tokens. 1/24th of the amount of tokens purchased will be released from this time lock on the date of distribution of the tokens, and an additional 1/24th will be released approximately every month. These tokens will not be subject to a transfer lock.</p> <p><u>2019 Regulation S offering</u>: Stacks tokens sold pursuant to our Regulation S offering to non-US institutional investors are subject to a one-year transfer lock from the date of sale and an approximately two-year time lock that unlocks on an approximately monthly basis from the date of the hard fork that distributes the tokens.</p> <p><u>2017 Accredited Investor Sale</u>: Stacks tokens sold pursuant to our Regulation D offering to accredited investors in 2017 are subject to an approximately two-year time lock that unlocks on an approximately monthly basis from the date of the genesis block, except for 50,000,000 of those tokens, which are subject to an approximately four-year time lock. The tokens were previously subject to a one-year transfer lock, which has expired.</p> <p><u>2017 Founder Sale &amp; Equity Investor Sale</u>: Stacks tokens sold to founders and certain stockholders of Blockstack PBC in 2017 are subject to an approximately three-year time lock that unlocks on an approximately monthly basis from the date of the genesis block.</p>"
           },
+          {
+            "category": "tokens",
+            "question": "What is the current circulating supply of Stacks?",
+            "answer": "<p>As of June 10, 2019, 866,827,880 tokens of the 1.32B genesis block have been distributed and approximately 229,229,868 of those 866,827,880 distributed tokens have been released from their time locks. The remainder continue to be subject to time locks that release approximately monthly over approximately two, three or four year periods. </p> <p>120,056,154 tokens were sold in the 2019 Reg S and Reg A offerings with an additional 40,000,000 tokens allocated for App Mining. Token distribution will proceed after the October 18, 2019 hard fork according to their corresponding time locks. For more details, please refer to the public filing with the SEC <a href='https://stackstoken.com/circular' target='_blank'>in our offering circular</a> and to <a href='https://blockstack.org/tokenpaper.pdf' target='_blank'>our Stacks Token Whitepaper</a>.</p>"
+         },
       {
          "category": "tokens",
          "question": "How will mining affect the supply of Stacks tokens?",
