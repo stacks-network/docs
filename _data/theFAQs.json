@@ -604,8 +604,8 @@
           },
           {
             "category": "tokens",
-            "question": "What is the curren circulating supply of Stacks?",
-            "answer": "<p>As of June 10, 2019, 866,827,880 tokens of the 1.32B genesis block have been distributed and approximately 229,229,868 of those 866,827,880 distributed tokens have been released from their time locks. The remainder continue to be subject to time locks that release approximately monthly over approximately two, three or four year periods. </p> <p>120,056,154 tokens were sold in the 2019 Reg S and Reg A offerings with an additional 40,000,000 tokens allocated for App Mining. Token distribution will proceed after the October 18, 2019 hard fork according to their corresponding time locks. For more details, please refer to the public filing with the SEC <a href='https://stackstoken.com/circular' target='_blank'>in our offering circular</a>.</p>"
+            "question": "What is the current circulating supply of Stacks?",
+            "answer": "<p>As of June 10, 2019, 866,827,880 tokens of the 1.32B genesis block have been distributed and approximately 229,229,868 of those 866,827,880 distributed tokens have been released from their time locks. The remainder continue to be subject to time locks that release approximately monthly over approximately two, three or four year periods. </p> <p>120,056,154 tokens were sold in the 2019 Reg S and Reg A offerings with an additional 40,000,000 tokens allocated for App Mining. Token distribution will proceed after the October 18, 2019 hard fork according to their corresponding time locks. For more details, please refer to the public filing with the SEC <a href='https://stackstoken.com/circular' target='_blank'>in our offering circular</a> and to <a href='https://blockstack.org/tokenpaper.pdf' target='_blank'>our Stacks Token Whitepaper</a>.</p>"
          },
       {
          "category": "tokens",
