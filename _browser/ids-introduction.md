@@ -10,7 +10,7 @@ Through the Blockstack Browser you can create an identity. You use this single i
 point of contact as you interact with others through DApps. Others may be
 individual users or companies or software. Unless you allow it, none of these
 others have access to anything other than your identity, for example
-`moxiegirl.id.blockstack`. Typically, others must ask to learn more about you,
+`meepers.id.blockstack`. Typically, others must ask to learn more about you,
 and you can choose to share &ndash; or not.
 
 This document explains the free Blockstack ID, though there are others you can get for fee. You learn how to
@@ -37,7 +37,7 @@ A Blockstack ID is a decentralized identity. You use this single identity to log
 
 Think of the ID as a form of identification, like a drivers license. Like drivers' licenses, each identity is unique, but this license identifies you on the virtual internet highway. An identity is created through a registrar of which there are many. When you create a Blockstack ID, your registrar records the identity creation on the Stacks blockchain. 
 
-The Blockstack Browser allows new users to create free IDs. These free IDs have included the word `blockstack` in the ID, like this `moxiegirl.id.blockstack`. The additional `blockstack` portion of the name is called a _namespace_. It just means all the names belong to a particular entity. You don't have to use a free `id.blockstack` identity. 
+The Blockstack Browser allows new users to create free IDs. These free IDs have included the word `blockstack` in the ID, like this `meepers.id.blockstack`. The additional `blockstack` portion of the name is called a _namespace_. It just means all the names belong to a particular entity. You don't have to use a free `id.blockstack` identity. 
 
 This first Blockstack ID you create is a _primary ID_. Once you create a primary identity, you can add other, sub-identities to it. Sub-identities can have the `id.blockstack` or the `.id` format. You might created sub-identities for the same reason you have a work and home email.
 

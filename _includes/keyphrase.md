@@ -26,7 +26,7 @@ Use the following table to answer questions about keys/phrases/values you can sh
          </td>
       <td><p>SHAREABLE</p></td>
       <td>
-         <p>A way to identify a person or an organization on the Blockstack network. An identity is unique, both <code>moxiegirl.id.blockstack</code> or <code>chad.id</code> are examples of IDs.</p>
+         <p>A way to identify a person or an organization on the Blockstack network. An identity is unique, both <code>meepers.id.blockstack</code> or <code>chad.id</code> are examples of IDs.</p>
       </td>
    </tr>
    <tr valign="top">

@@ -109,7 +109,7 @@ In this task, you add a droplet to your account. The droplet is a droplet is a c
 
 9. Scroll down to the **Finalize and create** section.
 
-10. **Choose a hostname** for you Give your Droplet such as `moxiegirl-storage-hub`.
+10. **Choose a hostname** for you Give your Droplet such as `meepers-storage-hub`.
 
 11.  Review your choices then click **Create** to start your droplet running.
 
@@ -167,7 +167,7 @@ A droplet console emulates the access you would have if you were sitting down wi
     *	Docker Compose is installed and configured per Docker's recommendations: https://docs.docker.eom/compose/install/#install-compose
     For help and more information, visit http://do.co/dockerl804
 
-    To delete this message of the day: rm -rf /etc/update-motd.d/99-one-click root@moxiegirl:~#
+    To delete this message of the day: rm -rf /etc/update-motd.d/99-one-click root@meepers:~#
     ```
 
 <div class="uk-card uk-card-default uk-card-body">
@@ -208,7 +208,7 @@ You should have the console open as `root` on your Droplet. In this section, you
 1. Copy the Gaia code into your droplet using the `git clone` command.
 
    ```
-   root@moxiegirl:~# git clone https://github.com/blockstack/gaia.git
+   root@meepers:~# git clone https://github.com/blockstack/gaia.git
    ```
 
    Successful output from this command looks like the following.
@@ -221,7 +221,7 @@ You should have the console open as `root` on your Droplet. In this section, you
    remote: Total 4206 (delta 27), reused 35 (delta 17), pack-reused 4143
    Receiving objects: 100% (4206/4206), 17.40 MiB | 9.89 MiB/s, done.
    Resolving deltas: 100% (2700/2700), done.
-   root@moxiegirl:~#
+   root@meepers:~#
    ```
 
    This command creates a `gaia` subdirectory.
@@ -251,11 +251,11 @@ You should have the console open as `root` on your Droplet. In this section, you
 
 6. Set the `bucket` to the name of the DigitalOcean space you just created.
 
-   If your space is called `moxiegirl-hub-space`, the `bucket` value is `moxiegirl-hub-space`.
+   If your space is called `meepers-hub-space`, the `bucket` value is `meepers-hub-space`.
 
 6. Set the `readURL` to the URL of the DigitalOcean space you just created.
 
-  If your space URL called `https://moxiegirl-hub-space.sfo2.digitaloceanspaces.com `, the `readURL` name is `https://moxiegirl-hub-space.sfo2.digitaloceanspaces.com`.
+  If your space URL called `https://meepers-hub-space.sfo2.digitaloceanspaces.com `, the `readURL` name is `https://meepers-hub-space.sfo2.digitaloceanspaces.com`.
 
 
 7. Add an `endpoint` value to the `awsCredentials` section.
@@ -290,8 +290,8 @@ You should have the console open as `root` on your Droplet. In this section, you
       "servername": "",
       "port": 3000,
       "driver": "aws",
-      "bucket": "moxiegirl-hub-space",
-      "readURL": "https://moxiegirl-hub-space.sfo2.digitaloceanspaces.com",
+      "bucket": "meepers-hub-space",
+      "readURL": "https://meepers-hub-space.sfo2.digitaloceanspaces.com",
       "awsCredentials": {
         "accessKeyId": "W7GBQGIUWDWKA6KAGL56",
         "secretAccessKey": "O6hBYRPCeRmE0d9lr3Frtc345QsWt3l+mrDgvrVT9oE",
@@ -382,7 +382,7 @@ While your console is still in the the `gaia/hub` folder, build the `gaia.hub` i
 
 
     ```bash
-    root@moxiegirl:~/gaia/hub# docker ps
+    root@meepers:~/gaia/hub# docker ps
     CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
     aeca7eea4a86        gaia.hub            "npm run start"     11 seconds ago      Up 10 seconds       0.0.0.0:3000->3000/tcp   musing_payne
     ```
@@ -425,7 +425,7 @@ In this task, you set up a simple Nginx reverse proxy to serve your Docker conta
 6. Run `nginx -t` to make sure you have no syntax errors.
 
     ```
-    root@moxiegirl:~/gaia/hub# nginx -t
+    root@meepers:~/gaia/hub# nginx -t
     nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
     nginx: configuration file /etc/nginx/nginx.conf test is successful
     ```
@@ -460,7 +460,7 @@ Now, you are ready to test your Gaia server and make sure it is up and running.
 
     The `read_url_prefix` should be combine from the bucket and endpoint create
     in your `config.json` file, for example,
-    `https://moxiegirl-hub-space.s3.amazonaws.com/`.
+    `https://meepers-hub-space.s3.amazonaws.com/`.
 
 
 ## Task 9: Configure a domain name

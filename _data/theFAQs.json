@@ -69,7 +69,7 @@
       {
          "category": "appusers",
          "question": "How do I get an identity? Is it free?",
-         "answer": "<p>Normally, registering an identity as a digital asset on the Stacks blockchain requires <a href='https://blog.blockstack.org/video-reusing-bitcoins-hashpower-to-launch-the-stacks-blockchain/'>burning of Stacks tokens as <em>fuel</em></a>. However, Blockstack PBC is currently running a free service to pay for identities on behalf of the users. Through this service, you can get a free identity from Blockstack in the <strong>id.blockstack</strong> namespace. A namespace is similar to a domain (<strong>checklist.com</strong>, for example) on the old internet. So, a free identity has blockstack suffix in its name; for example, <strong>moxiegirl.id.blockstack</strong> is a free Blockstack identity.</p>"
+         "answer": "<p>Normally, registering an identity as a digital asset on the Stacks blockchain requires <a href='https://blog.blockstack.org/video-reusing-bitcoins-hashpower-to-launch-the-stacks-blockchain/'>burning of Stacks tokens as <em>fuel</em></a>. However, Blockstack PBC is currently running a free service to pay for identities on behalf of the users. Through this service, you can get a free identity from Blockstack in the <strong>id.blockstack</strong> namespace. A namespace is similar to a domain (<strong>checklist.com</strong>, for example) on the old internet. So, a free identity has blockstack suffix in its name; for example, <strong>meepers.id.blockstack</strong> is a free Blockstack identity.</p>"
       },
       {
          "category": "appusers",
@@ -99,7 +99,7 @@
       {
          "category": "appusers",
          "question": "Do identities last forever or do they expire?",
-         "answer": "<p>Identities with the like <strong>moxiegirl.id.blockstack</strong> or <strong>subdomain.name.namespace</strong> format do not expire.  Names that have a single dot like <strong>name.namespace</strong> expire according to the rules set by the <strong>namespace</strong> creators.  For example, <strong>name.id</strong> in the <strong>id</strong> namespace expires every two years and must be renewed. If a <strong>name.id</strong> expires, someone else can claim it.</p>"
+         "answer": "<p>Identities with the like <strong>meepers.id.blockstack</strong> or <strong>subdomain.name.namespace</strong> format do not expire.  Names that have a single dot like <strong>name.namespace</strong> expire according to the rules set by the <strong>namespace</strong> creators.  For example, <strong>name.id</strong> in the <strong>id</strong> namespace expires every two years and must be renewed. If a <strong>name.id</strong> expires, someone else can claim it.</p>"
       },
       {
          "category": "appusers",

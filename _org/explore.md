@@ -26,7 +26,7 @@ You use {::nomarkdown}<a href="https://explorer.blockstack.org/" target="\_blank
   <tr>
     <td>name</td>
     <td>An identifier or name. A name is a type of digital asset on the Blockstack network.  If you have signed into the Blockstack Browser, you created a name. If an application developer registered an application within Blockstack, then they registered a name.</td>
-    <td><code>graphite.it</code> or <code>moxiegirl.id.blockstack</code></td>
+    <td><code>graphite.it</code> or <code>meepers.id.blockstack</code></td>
   </tr>
   <tr>
     <td>block</td>
@@ -58,7 +58,7 @@ What is a namespace? Well, think of it a bit like an email address, you can get
 an email address on your own suffix `yourname@myuniquename.com`, or you can get
 email with a service type suffix such as `yahoo` or `msn` or `gmail`.
 Blockstack identity behaves like this service type suffix. So, there is only one
-`moxiegirl.id.blockstack` but someone else can be `moxiegirl2.id.blockstack`. You
+`meepers.id.blockstack` but someone else can be `meepers2.id.blockstack`. You
 can see this in action yourself with the explorer, by doing the following:
 
 1. Open the [explorer](https://explorer.blockstack.org/).
@@ -67,9 +67,9 @@ can see this in action yourself with the explorer, by doing the following:
 
    ![](images/names.png)
 
-   The **Names** page lists all the names (users or organizations) that are registered on the Stacks blockchain. There are over 77 thousand names on this list! So, you likely do not want to scroll down the page looking for yours. You can search for a known name, try searching for the `moxiegirl.id.blockstack` name.
+   The **Names** page lists all the names (users or organizations) that are registered on the Stacks blockchain. There are over 77 thousand names on this list! So, you likely do not want to scroll down the page looking for yours. You can search for a known name, try searching for the `meepers.id.blockstack` name.
 
-3. Place your cursor in the search bar in the right hand corner and type `moxiegirl.id.blockstack` and then press return.
+3. Place your cursor in the search bar in the right hand corner and type `meepers.id.blockstack` and then press return.
 
    The explorer looks for the name and then loads the information for it. You should see this result:
 
@@ -96,7 +96,7 @@ can see this in action yourself with the explorer, by doing the following:
    You can click on transactions to go further down into this technical information.
 
 
-Try searching for your own identity. If necessary, you can first  [create your own identity]({{ site.baseurl }}/browser/ids-introduction.html). The identity `moxiegirl` looks a bit shady now but you may comeback and find the she has verified her identity. Try looking at the identity of our Blockstack founder, `muneeb.id`. You can see, he is a trusted and well known person.  How does your identity compare?
+Try searching for your own identity. If necessary, you can first  [create your own identity]({{ site.baseurl }}/browser/ids-introduction.html). The identity `meepers` looks a bit shady now but you may comeback and find the she has verified her identity. Try looking at the identity of our Blockstack founder, `muneeb.id`. You can see, he is a trusted and well known person.  How does your identity compare?
 
 ## For Stacks token holders
 

@@ -188,7 +188,7 @@ your operating system.
    From the command line:
 
    ```bash
-   $ rm -r /Users/moxiegirl/Library/Application\ Support/Blockstack
+   $ rm -r /Users/meepers/Library/Application\ Support/Blockstack
    ```
 
 ### On Windows
