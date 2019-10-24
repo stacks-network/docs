@@ -146,7 +146,7 @@ In this section, you build an initial React.js application called
     ```bash
      npm run start
 
-    > hello-blockstack@0.0.0 start /Users/moxiegirl/repos/hello-blockstack
+    > hello-blockstack@0.0.0 start /Users/meepers/repos/hello-blockstack
     > webpack-dev-server
 
     Project is running at http://localhost:8080/
