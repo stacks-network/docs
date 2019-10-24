@@ -311,7 +311,7 @@ you add a third, the Blockstack kingdom (`https://animalkingdoms.netlify.com`).
 
    To add a kingdom, you need its URL and the ID of its owner.
 
-3. Edit the file and add the `https://animalkingdoms.netlify.com` which is owned by `moxiegirl.id.blockstack`.
+3. Edit the file and add the `https://animalkingdoms.netlify.com` which is owned by `meepers.id.blockstack`.
 
    When you are done the file will look like this.
 
@@ -328,7 +328,7 @@ you add a third, the Blockstack kingdom (`https://animalkingdoms.netlify.com`).
      },
      {
        app: 'https://animalkingdoms.netlify.com',
-       ruler: 'moxiegirl.id.blockstack'
+       ruler: 'meepers.id.blockstack'
      }
    ]
    ```
@@ -336,10 +336,10 @@ you add a third, the Blockstack kingdom (`https://animalkingdoms.netlify.com`).
 4. Save and close the `constants.js` file.
 5. Back in your browser, navigate to the **Other Kingdoms** page.
 
-   <img src="images/kingdom-moxiegirl.png" alt="">
+   <img src="images/kingdom-meepers.png" alt="">
 
-6. Go to the `moxiegirl` kingdom by clicking on her kingdom.
-7. Try adding a subject from Moxiegirl's kingdom to yours.
+6. Go to the `meepers` kingdom by clicking on her kingdom.
+7. Try adding a subject from meepers's kingdom to yours.
 
 
 ## Deploy your DApp on the web

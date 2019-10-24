@@ -96,7 +96,7 @@ The example application runs in a node server on your local host. In the this se
 
    ```bash
     $ pwd 
-    /Users/moxiegirl/repos/blockstack-todos
+    /Users/meepers/repos/blockstack-todos
    ```
    
    This path will be different for you, but double-check the last part to ensure that you're in the directory into which you cloned and in which you ran `npm install`.
