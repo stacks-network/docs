@@ -21,7 +21,8 @@ repository: blockstack/docs.blockstack
 staticman:
   branch: "master"
 
-github_editme_path: blockstack/docs-new/blob/master
+github_editme_path: blockstack/docs.blockstack/blob/master
+branch_url: master
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 
@@ -168,6 +169,7 @@ sass:
 defaults:
   - scope:
       path: "" # an empty string here means all files in the project
+      basepath: elephant
     values:
       comments: true
       image: /assets/img/touch-icon.png
@@ -176,7 +178,6 @@ defaults:
 collections:
   android:
     output: true
-    basepath: "blockstack/blockstack-android/blob/master/docs"
   community:
     output: true
   core:
