@@ -17,10 +17,12 @@ baseurl:            ""
 # Site base hostname & protocol, e.g. http://example.com
 url:                "https://docs.blockstack.org"
 
-repository: moxiegirl/docs.blockstack
+repository: blockstack/docs.blockstack
 staticman:
   branch: "master"
-# github_editme_path: moxiegirl/docs-new/blob/master
+
+github_editme_path: blockstack/docs.blockstack/blob/master
+branch_url: master
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 
@@ -167,6 +169,7 @@ sass:
 defaults:
   - scope:
       path: "" # an empty string here means all files in the project
+      basepath: elephant
     values:
       comments: true
       image: /assets/img/touch-icon.png
@@ -175,31 +178,21 @@ defaults:
 collections:
   android:
     output: true
-    basepath: "blockstack/blockstack-android/blob/master/docs"
   community:
     output: true
-    basepath:  "moxiegirl/docs.blockstack"
   core:
     output: true
-    basepath:  "moxiegirl/docs.blockstack"
   develop:
     output: true
-    basepath: "moxiegirl/docs.blockstack"
   storage:
     output: true
-    basepath: "moxiegirl/docs.blockstack"
   browser:
     output: true
-    basepath:  "moxiegirl/docs.blockstack"
   ios:
     output: true
-    basepath: "blockstack/blockstack-ios/blob/master/docs"
   common:
     output: true
-    basepath: "moxiegirl/docs.blockstack"
   org:
     output: true
-    basepath: "moxiegirl/docs.blockstack"
   faqs:
     output: true
-    basepath: "moxiegirl/docs.blockstack"

@@ -155,7 +155,7 @@ In this section, you build an initial React.js application called
     ```bash
     $ npm run start
 
-    > hello-blockstack@0.0.0 start /Users/moxiegirl/repos/hello-blockstack
+    > hello-blockstack@0.0.0 start /Users/meepers/repos/hello-blockstack
     > webpack-dev-server
 
     Project is running at http://localhost:8080/
@@ -368,13 +368,13 @@ Now that you have created your initial project and verified it running in an emu
 4. Open the Module `build.gradle` file.
 5. Set the `defaultConfig minSdkVersion` to `19`.
 
-   When you are done, you should see (within your own username not `moxiegirl`):
+   When you are done, you should see (within your own username not `meepers`):
 
    ```JS
    android {
        compileSdkVersion 27
            defaultConfig {
-               applicationId "com.example.moxiegirl.hello_android"
+               applicationId "com.example.meepers.hello_android"
                minSdkVersion 19
                targetSdkVersion 27
                versionCode 1
