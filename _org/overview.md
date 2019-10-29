@@ -71,21 +71,4 @@ are used to register digital assets on the network. The Stacks blockchain v2
 will support general-purpose smart contracts written in a non-Turing-complete
 language currently under development.
 
-{% include important.html content="<p>This webpage
-contains forward-looking statements, including statements regarding Blockstack
-PBC’s plans for the Blockstack Core and blockchain. Forward-looking statements
-are subject to risks and uncertainties that could cause actual results to differ
-materially, and reported results should not be considered as an indication of
-future performance. Potential risks and uncertainties that could change our
-actual results include, but are not limited to, risks associated with: the
-failure of Blockstack to successfully implement proof-of-burn mining; the
-failure of Blockstack to successfully launch the genesis block; technical
-obstacles in further developing the Stacks blockchain and potential failure of
-its underlying technology; the failure of App Mining Program to successfully
-incentivize the development of applications for the Blockstack network; risks
-associated with potential attacks on the Stacks blockchain, its mining
-mechanisms and the App Reviewers; technical difficulties in the transition from
-a centralized to a decentralized administration of the App Mining program; and
-the ability of Blockstack to develop the Blockstack Core. These forward-looking
-statements speak only as of the date hereof. Blockstack PBC disclaims any
-obligation to update these forward-looking statements.</p>" %}
+{% include important.html content="<p>This communication contains forward-looking statements that are based on our beliefs and assumptions and on information currently available to us. In some cases, you can identify forward-looking statements by the following words: “will,” “expect,” “would,” “intend,” “believe,” or other comparable terminology. Forward-looking statements in this document include, but are not limited to, statements about our plans for developing the platform and future utility for the Stacks Token, our Clarity smart contracting language, and potential mining operations. These statements involve risks, uncertainties, assumptions and other factors that may cause actual results or performance to be materially different. More information on the factors, risks and uncertainties that could cause or contribute to such differences is included in our filings with the SEC, including in the “Risk Factors” and “Management’s Discussion & Analysis” sections of our offering statement on Form 1-A. We cannot assure you that the forward-looking statements will prove to be accurate. These forward-looking statements speak only as of the date hereof. We disclaim any obligation to update these forward-looking statements.</p>" %}
