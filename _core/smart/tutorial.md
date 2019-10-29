@@ -159,12 +159,22 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
 
     When the `check` command executes successfully and exits with the stand UNIX `0` exit code.
 
-4. Launch the `tokens.clar` contract.
+4. Generate a Stacks address for your contract.
+
+   This address is used to name your contract at launch time. You can use any existing Stacks address. For this sample, you are going to use the `generate_address` to create one for use.
+
+   ```bash
+   # clarity-cli generate_address
+   SPN7V35591YV8TMHAZYXDF2EKTGG5SR6RZZRD00Q
+   ```
+  
+
+5. Launch the `tokens.clar` contract.
 
    You use the `launch` command to instantiate a contract on the Stacks blockchain. If you have dependencies between contracts, for example names.clar is dependent on tokens.clar, you must launch the dependency first.
 
     ```bash
-    # clarity-cli launch tokens sample-programs/tokens.clar /data/db
+    clarity-cli launch SPN7V35591YV8TMHAZYXDF2EKTGG5SR6RZZRD00Q.tokens sample-programs/tokens.clar /data/db
     Contract initialized!
     ```
     
