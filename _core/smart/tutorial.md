@@ -62,35 +62,36 @@ Blockstack publishes the `clarity-developer-preview` image on Docker hub. A cont
 
 If you haven't already done so, use the `cat` or `more` command to display the `tokens.clar` file's code. Clarity is designed for static analysis; it is not a compiled language and is not Turing complete. It language is a LISP-like language.  LISP is an acronym for list processing. 
 
-The first line of the `tokens.clar` program contains a user-defined `get-balance` function.  
+The first lines of the `tokens.clar` program contains a user-defined `get-balance` function.  
 
 ```cl
-(define (get-balance (account principal))
-  (default-to 0 (get balance (fetch-entry tokens (tuple (account account))))))
+(define-map tokens ((account principal)) ((balance int)))
+(define-private (get-balance (account principal))
+  (default-to 0 (get balance (map-get tokens (tuple (account account))))))
 ```
 
-`get-balance` is a private function because it is constructed with the `define` call. To create public functions, you would use the `define-public` function. Public functions can be called from other contracts or even from the command line with the `clarity-cli`.
+`get-balance` is a private function because it is constructed with the `define-private` call. To create public functions, you would use the `define-public` function. Public functions can be called from other contracts or even from the command line with the `clarity-cli`.
 
 Notice the program is enclosed in  `()` (parentheses) and each statement as well.  The `get-balance` function takes an `account` argument of the special type `principal`. Principals represent a spending entity and are roughly equivalent to a Stacks address. 
 
 Along with the `principal` types, Clarity supports  booleans, integers, and fixed length buffers. Variables are created via `let` binding but there is no support for mutating functions like `set`.
 
-The next sequence of lines shows an `if` statement that allows you to set conditions for execution in the language.. 
+The next sequence of lines shows an `if` statement that allows you to set conditions for execution in the language. 
 
 ```cl
-(define (token-credit! (account principal) (tokens int))
-  (if (<= tokens 0)
+(define-private (token-credit! (account principal) (amount int))
+  (if (<= amount 0)
       (err "must move positive balance")
       (let ((current-amount (get-balance account)))
         (begin
-          (set-entry! tokens (tuple (account account))
-                      (tuple (balance (+ tokens current-amount))))
-          (ok tokens)))))
+          (map-set! tokens (tuple (account account))
+                      (tuple (balance (+ amount current-amount))))
+          (ok amount)))))
 ```
 
 Every smart contract has both a data space and code. The data space of a contract may only interact with that contract. This particular function is interacting with a map named `tokens`. The `set-entry!` function is a native function that sets the value associated with the input key to the inputted value in the `tokens` data map. Because `set-entry!`  mutates data so it has an `!` exclamation point; this is by convention in Clarity. 
 
-In the first `token-transfer` public function, you see that it calls the private `get-balance` function and passes it `tx-sender`. The `tx-sender` isa a globally defined variable that represents the the current principal.
+In the first `token-transfer` public function, you see that it calls the private `get-balance` function and passes it `tx-sender`. The `tx-sender` is a globally defined variable that represents the the current principal.
 
 ```cl
 (define-public (token-transfer (to principal) (amount int))
@@ -98,7 +99,7 @@ In the first `token-transfer` public function, you see that it calls the private
     (if (or (> amount balance) (<= amount 0))
         (err "must transfer positive balance and possess funds")
         (begin
-          (set-entry! tokens (tuple (account tx-sender))
+          (map-set! tokens (tuple (account tx-sender))
                       (tuple (balance (- balance amount))))
           (token-credit! to amount)))))
 
@@ -114,10 +115,10 @@ The final two lines of the program pass a principal, represented by a Stacks add
 
 Smart contracts may call other smart contracts using a `contract-call!` function. This means that if a transaction invokes a function in a given smart contract, that function is able to make calls into other smart contracts on your behalf. The ability to read and do a static analysis of Clarity code allows clients to learn which functions a given smart contract will ever call. Good clients should always warn users about any potential side effects of a given transaction.
 
-Take a moment to `cat` the contents of the `names.clar` file.
+Take a moment to `cat` the contents of the `sample-programs/names.clar` file.
 
 ```bash
-cat names.clar
+cat sample-programs/names.clar
 ````
 
 Which `tokens.clar` function is being called? 
@@ -140,11 +141,11 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
     ```bash
     #  clarity-cli check sample-programs/names.clar /data/db
     ```
+    
     You should get an error:
 
     ```
-    Type check error.
-    NoSuchContract("tokens")
+    Error (line 11, column 1): use of unresolved contract ''S1G2081040G2081040G2081040G208105NK8PE5.tokens'.
     ```
 
     This happens because the `names.clar` contract _calls_ the `tokens.clar` contract, and that contract has not been created on the blockchain.
