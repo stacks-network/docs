@@ -159,7 +159,7 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
 
     When the `check` command executes successfully and exits with the stand UNIX `0` exit code.
 
-4. Generate a Stacks address for your contract.
+4. Generate a Stacks address for testing your contract.
 
    This address is used to name your contract at launch time. You can use any existing Stacks address. For this sample, you are going to use the `generate_address` to create one for use.
 
@@ -167,9 +167,12 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
    # clarity-cli generate_address
    SPN7V35591YV8TMHAZYXDF2EKTGG5SR6RZZRD00Q
    ```
-  
 
-5. Launch the `tokens.clar` contract.
+   The address you generate will be different. 
+   
+5. Copy or make note of the address you generated, you will use it in the rest of the tutorial.
+
+6. Launch the `tokens.clar` contract and assign it to your test address.
 
    You use the `launch` command to instantiate a contract on the Stacks blockchain. If you have dependencies between contracts, for example names.clar is dependent on tokens.clar, you must launch the dependency first.
 
@@ -177,7 +180,7 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
     clarity-cli launch SPN7V35591YV8TMHAZYXDF2EKTGG5SR6RZZRD00Q.tokens sample-programs/tokens.clar /data/db
     Contract initialized!
     ```
-    
+
     Once launched, you can execute the contract or a public method on the contract. Your development database has an instantiated `tokens` contract. If you were to close the container and restart it later with the same mount point and you wouldn't need to relaunch that database; it persists until you remove it from your local drive.
     
 5. Recheck the `names.clar` contract.
@@ -191,7 +194,7 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
 6. Instantiate the `names.clar` contract as well.
 
     ```bash
-    # clarity-cli launch names sample-programs/names.clar /data/db
+    # clarity-cli launch SPN7V35591YV8TMHAZYXDF2EKTGG5SR6RZZRD00Q.names sample-programs/names.clar /data/db
     ```
 
 ## Task 4. Examine the SQLite database
@@ -205,7 +208,7 @@ clarity-cli initialize /data/db
 As you work the contracts, data is added to the `db` database because you pass this database as a parameter, for example:
 
 ```bash
-clarity-cli launch tokens sample-programs/tokens.clar /data/db
+clarity-cli launch SPN7V35591YV8TMHAZYXDF2EKTGG5SR6RZZRD00Q.tokens sample-programs/tokens.clar /data/db
 ```
 
 The database exists on your local workstation and persists through restarts of the container. You can use this database to examine the effects of your Clarity programs. The tables in the SQLite database are the following:
@@ -276,7 +279,7 @@ In this section, you use the public `mint!` function in the  `tokens` contract t
 4. Try minting some tokens and sending them to an address we'll use for our demo.
 
     ```bash
-    # clarity-cli execute /data/db tokens mint! $DEMO_ADDRESS 100000
+    # clarity-cli execute /data/db SP26CHZZ26Q25WDD1CFJYSED169PS9HTNX445XKDG.tokens mint! $DEMO_ADDRESS 100000
     ```
 
     This executes the public `mint!` function defined in the tokens contract, sending 100000 tokens to you `$DEMO_ADDRESS`.
