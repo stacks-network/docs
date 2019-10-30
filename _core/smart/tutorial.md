@@ -269,7 +269,7 @@ In this section, you use the public `mint!` function in the  `tokens` contract t
 3. Get the current balance of your new address.
 
    ```bash
-    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval tokens /data/db
+    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval SP26CHZZ26Q25WDD1CFJYSED169PS9HTNX445XKDG.tokens /data/db
     Program executed successfully! Output: 
     0
     ```
