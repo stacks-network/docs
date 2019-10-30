@@ -82,7 +82,7 @@ As of 8/12/19 Clarity is in the [develop](https://github.com/blockstack/blocksta
 2. Build the lastest JSON.
 
    ```
-   docker run -it -v $HOME/blockstack-dev-data:/data/ blockstack/blockstack-core:clarity-developer-preview blockstack-core docgen | jsonpp > ~/repos/docs.blockstack/_data/clarityRef.json
+   $ docker run --name docsbuild -it blockstack-test blockstack-core docgen | jsonpp > ~/repos/docs.blockstack/_data/clarityRef.json
    ```
 
 3. Build the documentation and verify the Clarity reference is building correctly.
