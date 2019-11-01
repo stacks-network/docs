@@ -9,6 +9,7 @@
   docs:
   - storage/hub-operation
   - storage/amazon-s3-deploy
+  - storage/digital-ocean-deploy
   - storage/hello-hub-choice
   - storage/gaia-admin
 
