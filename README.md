@@ -82,10 +82,18 @@ As of 8/12/19 Clarity is in the [develop](https://github.com/blockstack/blocksta
 2. Build the lastest JSON.
 
    ```
-   $ docker run --name docsbuild -it blockstack-test blockstack-core docgen | jsonpp > ~/repos/docs.blockstack/_data/clarityRef.json
+   docker run -it blockstack/blockstack-core:clarity-developer-preview blockstack-core docgen | jsonpp > ~/repos/docs.blockstack/_data/clarityRef.json
    ```
 
 3. Build the documentation and verify the Clarity reference is building correctly.
+
+4. Make changes in core
+5. Build the docker image
+6. Run doc gen with the new image
+
+```
+   $ docker run --name docsbuild -it blockstack-test blockstack-core docgen | jsonpp > ~/repos/docs.blockstack/_data/clarityRef.json
+```
 
 
 # Technology Reference
