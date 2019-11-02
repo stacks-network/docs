@@ -108,52 +108,13 @@ Going hand in hand with gathering feedback from users, you should find ways to e
 #### Invest in graphic design work (even if lightly)
 {:.no_toc}
 
-First impressions of your app (even just the logo appearing on Product Hunt or elsewhere) can be the difference between someone taking your app seriously or just scrolling right past. Quality design work can be found in many places, here's a quick list of resources you can try:
+First impressions of your app (even just the logo appearing on a blog) can be the difference between someone taking your app seriously or just scrolling right past. Quality design work can be found in many places, here's a quick list of resources you can try:
 
 * <a href="https://www.upwork.com/">Upwork</a>
 * <a href="https://www.fiverr.com/">Fiverr</a>
 * <a href="https://www.toptal.com/designers">Toptal</a>
 * <a href="https://www.canva.com/">Canva (DIY)</a>
 * <a href="https://graphicriver.net/">Graphic River</a>
-
-## Recommendations from Product Hunt
-
-### Product Hunt Community Score
-
-The community score is calculated directly from public upvotes on Product Hunt. This community serves as a good indicator of how your app will be perceived by early adopters and people who are actively looking for new solutions. Although your best opportunity to get upvotes is from a good launch on Product Hunt, you can continue to get upvotes forever.
-
-### Resources
-
-
-Maximizing your launch: Since your launch on Product Hunt is such a great opportunity to start your Community Score on the right foot, we recommend following the extensive launch guide Product Hunt has put together. It will help you navigate a the do's and don'ts of launch and provide other helpful marketing tips. It covers:
-
-* How to launch on Product Hunt
-* The key things to focus on
-* What to avoid doing
-* How to prepare in advance
-* How to market your product
-
-**Bonus Section**: How to get promoted by the official Product Hunt <a href="https://twitter.com/producthunt/">Twitter</a> and <a href="https://www.facebook.com/producthunt">Facebook</a> accounts, and how to make it into the <a href="https://www.producthunt.com/newsletter">Newsletter</a> which reaches hundreds of thousands of readers every day (even after your launch).
-
- <table class="uk-table">
-    <tr>
-       <td class="uk-width-1-3"><img src="images/launch.png" alt=""></td>
-       <td>
-          <h4 class="uk-card-title">How to Launch on Product Hunt ????</h4>
-          <p class="uk-text-meta">There are dozens of different articles and posts, each promising to be the "Ultimate Guide to launching on Product Hunt." While the intentions of the authors are good and most of the recommendations accurate, each article unwittingly contains misinformation that we'll address throughout this post.</p>
-          <p class="uk-padding-small uk-padding-remove-top"><a class="uk-button uk-button-secondary" href="https://blog.producthunt.com/how-to-launch-on-product-hunt-7c1843e06399">Learn more</a></p>
-        </td>
-  </tr>
- </table>
-
-#### Easy ways to get more upvotes even after launch
-{:.no_toc}
-
-
-* Use the <a href="https://blog.producthunt.com/new-feature-add-a-product-hunt-upvote-badge-to-your-website-150fb4840809">upvote widget from Product Hunt</a>
-* Get your app listed on popular collections to increase visibility
-* Link to your Product Hunt page from your social media accounts or website
-* Expand the content on your Product Hunt page to appear in more search results and give people the information they're looking for
 
 ## Recommendations from TryMyUI
 
