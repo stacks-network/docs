@@ -8,15 +8,7 @@ permalink: /:collection/:path.html
 Blockstack uses third-party reviewers who interact with, review and provide scores for the apps in the App Mining program. The scores from each reviewer are used to determine an app`s ultimate rank. In this section, you learn more about the reviewers and how they score.
 
 * TOC
-{:toc}
-
-## Product Hunt
-
-Product Hunt is the place to find the best new products in tech. They have a massive trove of user data (upvotes, comments, etc.) that they use for ranking. Product Hunt ranks apps based on a “community” score.
-
-Their community score is determined only by the number of **credible** upvotes an app received on Product Hunt, relative to other apps that are registered. For example, if an app got more upvotes than any other app in a cohort, their community score would be 100. If a different app got 60% as many upvotes, they’d get a score of 60. Blockstack converts these scores into *z-scores*.
-
-More info on the Product Hunt launch component and recommendations in the [Application Miner's Guide to Promoting your App]({{ site.baseurl }}/community/app-miners-guide.html).  
+{:toc} 
 
 ## TryMyUI
 
