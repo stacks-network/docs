@@ -19,7 +19,6 @@ This section explains App Mining, a program for developers. For Blockstack, App 
 
 Blockstack uses the third-party reviewers: 
 
-* Product Hunt
 * Awario
 * TryMyUI
 * Internet Labs. 
