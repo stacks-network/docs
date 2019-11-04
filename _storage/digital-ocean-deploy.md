@@ -447,6 +447,17 @@ In this task, you set up a simple Nginx reverse proxy to serve your Docker conta
           proxy_set_header Connection 'upgrade';
           proxy_set_header Host $host;
           proxy_cache_bypass $http_upgrade;
+
+          if ($request_method = 'OPTIONS') {
+                    more_set_headers   'Access-Control-Allow-Origin: *';
+                    more_set_headers   'Access-Control-Allow-Methods: POST, OPTIONS, DELETE';
+                    more_set_headers   'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, authorization';
+                    more_set_headers   'Access-Control-Max-Age: 21600';
+                    more_set_headers   'Content-Type: text/plain charset=UTF-8';
+                    more_set_headers   'Content-Length: 0';
+                    return             204;
+          }
+          more_set_headers    'Access-Control-Allow-Origin: *';
     }
     ```
 
