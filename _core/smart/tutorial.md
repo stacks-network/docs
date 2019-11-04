@@ -161,7 +161,7 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
 
 4. Generate a demo Stacks address for testing your contract.
 
-   This address is used to name your contract at launch time. You can use any existing Stacks address. For this sample, you are going to use the `generate_address` to create one for use.
+   This address is used to name your contract at launch time. You can use any existing Stacks address. For this sample, you are going to use the `generate_address` command to create one.
 
    ```bash
    # clarity-cli generate_address
@@ -191,6 +191,7 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
 
     ```bash
     # clarity-cli launch $DEMO_ADDRESS.names sample-programs/names.clar /data/db
+    Contract initialized!
     ```
 
 ## Task 4. Examine the SQLite database
@@ -278,7 +279,7 @@ In this section, you use the public `mint!` function in the  `tokens` contract t
 
 ## Task 6: Spend tokens by registering a name 
 
-Now, let's register a name using the `names.clar` contract. Names are just integers in this sample contract, so you'll register the name 10.
+Now, let's register a name using the `names.clar` contract. Names can _only_ be integers in this sample contract, so you'll register the name 10 in this environment.
 
 1. Compute the hash of the name we want to register. 
 
@@ -324,9 +325,9 @@ Now, let's register a name using the `names.clar` contract. Names are just integ
 5. Lookup the "owner address" for the name:
 
     ```bash
-    # echo "(get owner (map-get name-map (tuple (name-hash name))))" | clarity-cli eval $DEMO_ADDRESS.names /data/db
+    # echo "(get owner (map-get name-map (tuple (name 10))))" | clarity-cli eval $DEMO_ADDRESS.names /data/db
     Program executed successfully! Output: 
-    (some 'SP26CHZZ26Q25WDD1CFJYSED169PS9HTNX445XKDG)
+    (some 'SP2Y8T8RWWXFR8S1XBP6K0MHCQF01D552FSWD9M4E)
     ```
 
 ## Where to go next
