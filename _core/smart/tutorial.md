@@ -159,42 +159,38 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
 
     When the `check` command executes successfully and exits with the stand UNIX `0` exit code.
 
-4. Generate a Stacks address for testing your contract.
+4. Generate a demo Stacks address for testing your contract.
 
    This address is used to name your contract at launch time. You can use any existing Stacks address. For this sample, you are going to use the `generate_address` to create one for use.
 
    ```bash
    # clarity-cli generate_address
-   SPN7V35591YV8TMHAZYXDF2EKTGG5SR6RZZRD00Q
+   SP28Z69HE5H70BVRG4VGKN4SYNVJ1J0417WVCKZWM
    ```
 
-   The address you generate will be different. 
-   
-5. Copy or make note of the address you generated, you will use it in the rest of the tutorial.
+   The demo address you generate will be different than the one that appears in this example. 
 
-6. Launch the `tokens.clar` contract and assign it to your test address.
-
-   You use the `launch` command to instantiate a contract on the Stacks blockchain. If you have dependencies between contracts, for example names.clar is dependent on tokens.clar, you must launch the dependency first.
+5. Add the address to your environment.
 
     ```bash
-    clarity-cli launch SPN7V35591YV8TMHAZYXDF2EKTGG5SR6RZZRD00Q.tokens sample-programs/tokens.clar /data/db
+    # DEMO_ADDRESS=SP28Z69HE5H70BVRG4VGKN4SYNVJ1J0417WVCKZWM
+    ```
+
+6. Launch the `tokens.clar` contract and assign it to your `DEMO_ADDRESS` address.
+
+   You use the `launch` command to instantiate a contract on the Stacks blockchain. If you have dependencies between contracts, for example `names.clar` is dependent on `tokens.clar`, you must launch the dependency first.
+
+    ```bash
+    clarity-cli launch $DEMO_ADDRESS.tokens sample-programs/tokens.clar /data/db
     Contract initialized!
     ```
 
     Once launched, you can execute the contract or a public method on the contract. Your development database has an instantiated `tokens` contract. If you were to close the container and restart it later with the same mount point and you wouldn't need to relaunch that database; it persists until you remove it from your local drive.
-    
-5. Recheck the `names.clar` contract.
-
-    ```bash
-    # clarity-cli check sample-programs/names.clar /data/db
-    ```
-
-   The program should pass validation because its dependency on `tokens.clar` is fulfilled. 
    
-6. Instantiate the `names.clar` contract as well.
+6. Instantiate the `names.clar` contract and assign it to your `DEMO_ADDRESS` address. as well.
 
     ```bash
-    # clarity-cli launch SPN7V35591YV8TMHAZYXDF2EKTGG5SR6RZZRD00Q.names sample-programs/names.clar /data/db
+    # clarity-cli launch $DEMO_ADDRESS.names sample-programs/names.clar /data/db
     ```
 
 ## Task 4. Examine the SQLite database
@@ -208,7 +204,7 @@ clarity-cli initialize /data/db
 As you work the contracts, data is added to the `db` database because you pass this database as a parameter, for example:
 
 ```bash
-clarity-cli launch SPN7V35591YV8TMHAZYXDF2EKTGG5SR6RZZRD00Q.tokens sample-programs/tokens.clar /data/db
+clarity-cli launch $DEMO_ADDRESS.tokens sample-programs/tokens.clar /data/db
 ```
 
 The database exists on your local workstation and persists through restarts of the container. You can use this database to examine the effects of your Clarity programs. The tables in the SQLite database are the following:
@@ -253,41 +249,29 @@ sqlite>
 
 In this section, you use the public `mint!` function in the  `tokens` contract to mint some new tokens. 
 
-1. Use the `clarity_cli` command to create a demo address.
-
-   ```
-   # clarity-cli generate_address
-   SP26CHZZ26Q25WDD1CFJYSED169PS9HTNX445XKDG
-   ```
-
-2. Add the address to your environment.
-
-    ```bash
-    # DEMO_ADDRESS=SP26CHZZ26Q25WDD1CFJYSED169PS9HTNX445XKDG
-    ```
-
-3. Get the current balance of your new address.
+1. Get the current balance of your new address.
 
    ```bash
-    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval SP26CHZZ26Q25WDD1CFJYSED169PS9HTNX445XKDG.tokens /data/db
+    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval $DEMO_ADDRESS.tokens /data/db
     Program executed successfully! Output: 
     0
     ```
 
     This command uses the private `get-balance` function in the `tokens` contract and pipes the result to the `eval` subcommand. The `eval` subcommand lets you evaluate both public and _private_ functions of a contract in read-only mode.
 
-4. Try minting some tokens and sending them to an address we'll use for our demo.
+2. Try minting some tokens and sending them to an address we'll use for our demo.
 
     ```bash
-    # clarity-cli execute /data/db SP26CHZZ26Q25WDD1CFJYSED169PS9HTNX445XKDG.tokens mint! $DEMO_ADDRESS 100000
+    # clarity-cli execute /data/db $DEMO_ADDRESS.tokens mint! $DEMO_ADDRESS 100000
+    Transaction executed and committed. Returned: 100000
     ```
 
     This executes the public `mint!` function defined in the tokens contract, sending 100000 tokens to you `$DEMO_ADDRESS`.
 
-5. Use the `clarity-cli eval` command to check the result of this call.
+3. Use the `clarity-cli eval` command to check the result of this call.
 
     ```bash
-    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval tokens /data/db
+    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval $DEMO_ADDRESS.tokens /data/db
     Program executed successfully! Output: 
     100000
     ```
@@ -301,7 +285,7 @@ Now, let's register a name using the `names.clar` contract. Names are just integ
    You'll _salt_ the hash with the salt `8888`:
 
     ```bash
-    # echo "(hash160 (xor 10 8888))" | clarity-cli eval names /data/db
+    # echo "(hash160 (xor 10 8888))" | clarity-cli eval $DEMO_ADDRESS.names /data/db
     Program executed successfully! Output: 
     0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde
     ```
@@ -315,16 +299,17 @@ Now, let's register a name using the `names.clar` contract. Names are just integ
 2. Preorder the name using the _execute_ command:
 
     ```bash
-    # clarity-cli execute /data/db names preorder $DEMO_ADDRESS 0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde 1000
+    # clarity-cli execute /data/db $DEMO_ADDRESS.names preorder $DEMO_ADDRESS 0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde 1000
+    e077b50c3a48fde 1000
     Transaction executed and committed. Returned: 0
     ```
 
     This executes the public `preorder` function defined in the `names.clar` contract. The function reserves a name by paying the name fee (in this case, 1000 tokens).
 
-3.  Check the demo address' new balance:
+3. Check the demo address' new balance:
 
     ```bash
-    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval tokens /data/db
+    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval $DEMO_ADDRESS.tokens /data/db
     Program executed successfully! Output: 
     99000
     ```
@@ -332,14 +317,14 @@ Now, let's register a name using the `names.clar` contract. Names are just integ
 4. Register the name by executing the _register_ function:
 
     ```bash
-    # clarity-cli execute /data/db names register $DEMO_ADDRESS \'$DEMO_ADDRESS 10 8888
-    Transaction executed and committed. Returned: 0clarity-cli execute /data/db names register $DEMO_ADDRESS \'$DEMO_ADDRESS 10 8888
+    # clarity-cli execute /data/db $DEMO_ADDRESS.names register $DEMO_ADDRESS \'$DEMO_ADDRESS 10 8888
+    Transaction executed and committed. Returned: 0
     ```
 
 5. Lookup the "owner address" for the name:
 
     ```bash
-    # echo "(get owner (fetch-entry name-map (tuple (name 10))))" | clarity-cli eval names /data/db
+    # echo "(get owner (map-get name-map (tuple (name-hash name))))" | clarity-cli eval $DEMO_ADDRESS.names /data/db
     Program executed successfully! Output: 
     (some 'SP26CHZZ26Q25WDD1CFJYSED169PS9HTNX445XKDG)
     ```
