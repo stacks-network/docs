@@ -20,12 +20,12 @@ In this tutorial, you learn how to use Clarity, Blockstack's smart contracting l
 
 The Clarity language goes live in the next Stacks blockchain fork. Until the fork, you can run Clarity in a test environment. You run this test environment in a Docker container.  Before you begin this tutorial, make sure you have <a href="https://docs.docker.com" target="_blank">Docker installed on your workstation</a>.
 
-If for some reason you don't want to run the test environment with Docker, you can build and maintain a local environment. Instructions for downloading and building the environment are available in the `blockstack/blockstack-core` repository's <a href='https://github.com/blockstack/blockstack-core' target='_blank'>README</a> file.
+If, for some reason, you don't want to run the test environment with Docker, you can build and maintain a local environment. Instructions for downloading and building the environment are available in the `blockstack/blockstack-core` repository's <a href='https://github.com/blockstack/blockstack-core' target='_blank'>README</a> file.
 
 
 ## Task 1: Set up the test environment
 
-Blockstack publishes the `clarity-developer-preview` image on Docker hub. A container built from this image contains sample programs, the Blockstack Core, and tools for working with them. In this task, you use Docker to pull and and run the image on your local workstation. 
+Blockstack publishes the `clarity-developer-preview` image on Docker hub. A container built from this image contains sample programs, the Blockstack Core, and tools for working with them. In this task, you use Docker to pull and run the image on your local workstation. 
 
 1. Pull the Blockstack core `clarity-developer-preview` image from Docker Hub.
 
@@ -39,7 +39,7 @@ Blockstack publishes the `clarity-developer-preview` image on Docker hub. A cont
     $ docker run -it -v $HOME/blockstack-dev-data:/data/ blockstack/blockstack-core:clarity-developer-preview bash
     ```
 
-    The launches a container with the Clarity test environment and opens a bash shell into the container. The `-v` flag creates a local `$HOME/blockstack-dev-data` directory in your workstation and mounts it at the `/data` directory inside the container. The shell opens into the `src/blockstack-core` directory. This directory contains the source for a core and includes Clarity contract samples you can run.
+    The command launches a container with the Clarity test environment and opens a bash shell into the container. The `-v` flag creates a local `$HOME/blockstack-dev-data` directory in your workstation and mounts it at the `/data` directory inside the container. The shell opens into the `src/blockstack-core` directory. This directory contains the source for a core and includes Clarity contract samples you can run.
 
 3. List the contents of the `sample-programs` directory.
 
@@ -48,7 +48,7 @@ Blockstack publishes the `clarity-developer-preview` image on Docker hub. A cont
    names.clar  tokens.clar
    ```
 
-   The sample programs directory contains two simple Clarity programs. Clarity code files have a `.clar` suffix.
+   The sample program's directory contains two simple Clarity programs. Clarity code files have a `.clar` suffix.
 
 4. Go ahead and display the contents of the `tokens.clar` program with the `cat` command.
 
@@ -74,7 +74,7 @@ The first lines of the `tokens.clar` program contains a user-defined `get-balanc
 
 Notice the program is enclosed in  `()` (parentheses) and each statement as well.  The `get-balance` function takes an `account` argument of the special type `principal`. Principals represent a spending entity and are roughly equivalent to a Stacks address. 
 
-Along with the `principal` types, Clarity supports  booleans, integers, and fixed length buffers. Variables are created via `let` binding but there is no support for mutating functions like `set`.
+Along with the `principal` types, Clarity supports  booleans, integers, and fixed-length buffers. Variables are created via `let` binding, but there is no support for mutating functions like `set`.
 
 The next sequence of lines shows an `if` statement that allows you to set conditions for execution in the language. 
 
@@ -91,7 +91,7 @@ The next sequence of lines shows an `if` statement that allows you to set condit
 
 Every smart contract has both a data space and code. The data space of a contract may only interact with that contract. This particular function is interacting with a map named `tokens`. The `set-entry!` function is a native function that sets the value associated with the input key to the inputted value in the `tokens` data map. Because `set-entry!`  mutates data so it has an `!` exclamation point; this is by convention in Clarity. 
 
-In the first `token-transfer` public function, you see that it calls the private `get-balance` function and passes it `tx-sender`. The `tx-sender` is a globally defined variable that represents the the current principal.
+In the first `token-transfer` public function, you see that it calls the private `get-balance` function and passes it `tx-sender`. The `tx-sender` is a globally defined variable that represents the current principal.
 
 ```cl
 (define-public (token-transfer (to principal) (amount int))
@@ -113,7 +113,7 @@ In the first `token-transfer` public function, you see that it calls the private
 
 The final two lines of the program pass a principal, represented by a Stacks address, and an amount to the private user-defined `token-credit` function.
 
-Smart contracts may call other smart contracts using a `contract-call!` function. This means that if a transaction invokes a function in a given smart contract, that function is able to make calls into other smart contracts on your behalf. The ability to read and do a static analysis of Clarity code allows clients to learn which functions a given smart contract will ever call. Good clients should always warn users about any potential side effects of a given transaction.
+Smart contracts may call other smart contracts using a `contract-call!` function. This ability means that if a transaction invokes a function in a given smart contract, that function is able to make calls into other smart contracts on your behalf. The ability to read and do a static analysis of Clarity code allows clients to learn which functions a given smart contract will ever call. Good clients should always warn users about any potential side effects of a given transaction.
 
 Take a moment to `cat` the contents of the `sample-programs/names.clar` file.
 
@@ -134,7 +134,7 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
     Database created
     ```
 
-    You should see a message saying `Database created`. The command creates an SQLlite database.  The database is available in the container and also in your workstation. In this tutorial, your workstation mount should at this point contain the `$HOME/blockstack-dev-data/db`  directory.
+    You should see a message saying `Database created`. The command creates an SQLlite database.  The database is available in the container and also in your workstation. In this tutorial, your workstation mount should, at this point, contain the `$HOME/blockstack-dev-data/db`  directory.
 
 2. Type check the `names.clar` contract.
 
@@ -181,13 +181,13 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
    You use the `launch` command to instantiate a contract on the Stacks blockchain. If you have dependencies between contracts, for example `names.clar` is dependent on `tokens.clar`, you must launch the dependency first.
 
     ```bash
-    clarity-cli launch $DEMO_ADDRESS.tokens sample-programs/tokens.clar /data/db
+    # clarity-cli launch $DEMO_ADDRESS.tokens sample-programs/tokens.clar /data/db
     Contract initialized!
     ```
 
     Once launched, you can execute the contract or a public method on the contract. Your development database has an instantiated `tokens` contract. If you were to close the container and restart it later with the same mount point and you wouldn't need to relaunch that database; it persists until you remove it from your local drive.
    
-6. Instantiate the `names.clar` contract and assign it to your `DEMO_ADDRESS` address. as well.
+7. Instantiate the `names.clar` contract and assign it to your `DEMO_ADDRESS` address. as well.
 
     ```bash
     # clarity-cli launch $DEMO_ADDRESS.names sample-programs/names.clar /data/db
@@ -196,7 +196,7 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
 
 ## Task 4. Examine the SQLite database
 
-The test environment uses a SQLite database to represent the blockchain. You initialized this database when you ran this earlier:
+The test environment uses a SQLite database to represent a virtual blockchain. You initialized this database when you ran this earlier:
 
 ```bash
 clarity-cli initialize /data/db
@@ -208,43 +208,14 @@ As you work the contracts, data is added to the `db` database because you pass t
 clarity-cli launch $DEMO_ADDRESS.tokens sample-programs/tokens.clar /data/db
 ```
 
-The database exists on your local workstation and persists through restarts of the container. You can use this database to examine the effects of your Clarity programs. The tables in the SQLite database are the following:
+The database exists on your local workstation and persists through restarts of the container. You can use this database to explore the transactional effects of your Clarity programs. The SQLite database includes a single `data_table` and a set of `marf` structures.
 
+While not required, you can install SQLite in your local environment and use it to examine the data associated with and impacted by your contract. For example, this what the `data_able` contains after you initialize the `tokens` contract.
 
-<table class="uk-table">
-  <tr>
-    <th>Name</th>
-    <th>Purpose</th>
-  </tr>
-  <tr>
-    <td><code>contracts</code></td>
-    <td>Lists contracts and stores a JSON description of it.</td>
-  </tr>
-  <tr>
-    <td><code>data_table</code></td>
-    <td>Lists the data associated with a contract.</td>
-  </tr>
-    <tr>
-    <td><code>maps_table</code></td>
-    <td>Lists maps types associated with a contract and stores JSON description of it.</td>
-  </tr>
-    <tr>
-    <td><code>simmed_block_table</code></td>
-    <td>Supports the test environment by simulating responses to blockchain information queries.</td>
-  </tr>
-    <tr>
-    <td><code>type_analysis_table</code></td>
-    <td>Provides a JSON describing contract data.</td>
-  </tr>
-</table>
+<img src="../images/sqlite-contract.png" alt="">
 
-While not required, you can install SQLite in your local environment and use it to examine the data associated with and impacted by your contract. For example, this what the `maps_table` contains after you initialize the `tokens` contract.
+The `marf` directory defines a data structure that handles key-value lookups in the presence of blockchain forks. These structures are not intended for use in debugging, they simply support the implementation.
 
-```
-sqlite> select * from maps_table;
-1|tokens|tokens|{"Atom":{"TupleType":{"type_map":{"account":{"Atom":"PrincipalType"}}}}}|{"Atom":{"TupleType":{"type_map":{"balance":{"Atom":"IntType"}}}}}
-sqlite> 
-````
 
 ## Task 5: Execute a public function
 
