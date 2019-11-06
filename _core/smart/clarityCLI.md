@@ -46,7 +46,7 @@ Type checks a potential contract definition.
 ## launch
 
 ```bash
-clarity-cli launch [contract-name] [contract-definition.scm] [vm-state.db]
+clarity-cli launch [contract-identifier] [contract-definition.clar] [vm-state.db]
 ```
 
 Launches a new contract in the local VM state database.
@@ -54,7 +54,7 @@ Launches a new contract in the local VM state database.
 ## eval
 
 ```bash
-clarity-cli eval [context-contract-name] (program.scm) [vm-state.db]
+clarity-cli eval [contract-identifier] (program.clar) [vm-state.db]
 ```
 
 Evaluates, in read-only mode, a program in a given contract context.
@@ -62,6 +62,7 @@ Evaluates, in read-only mode, a program in a given contract context.
 ## eval_raw
 
 ```bash
+clarity-cli eval_raw
 ```
 
 Type check and evaluate an expression for validity inside of a function’s source. It does not evaluate within a contract or database context.
@@ -77,7 +78,7 @@ Type check and evaluate expressions in a stdin/stdout loop.
 ## execute
 
 ```bash
-clarity-cli execute [vm-state.db] [contract-name] [public-function-name] [sender-address] [args...]
+clarity-cli execute [vm-state.db] [contract-identifier] [public-function-name] [sender-address] [args...]
 ```
 
 Executes a public function of a defined contract.
