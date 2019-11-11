@@ -479,7 +479,7 @@
       {
          "category": "opensource",
          "question": "Where are the current core developers based? What are the requirements for being a core developer?",
-         "answer": "<p>Our core developers work in various cities, New York City, Seattle, Toronto, Chicago, Minneapolis, NYC, San Francisco Bay Area, Barcelona, and the Netherlands . Developers who’ve contributed to the <a href='https://github.com/blockstack/blockstack-core'>core open-source software</a> over a long enough period, by default, get included in the list of core developers. There is no formal process for being part of this informal list. Core developers, generally, can write high-quality code, understand distributed systems and applied crypto, and share a vision of building a genuinely decentralized internet and are dedicated to that cause.</p>"
+         "answer": "<p>Our core developers work in various cities, New York City, Seattle, Toronto, Chicago, Minneapolis, NYC, San Francisco Bay Area, Barcelona, and the Netherlands. Developers who’ve contributed to the <a href='https://github.com/blockstack/blockstack-core'>core open-source software</a> over a long enough period, by default, get included in the list of core developers. There is no formal process for being part of this informal list. Core developers, generally, can write high-quality code, understand distributed systems and applied crypto, and share a vision of building a genuinely decentralized internet and are dedicated to that cause.</p>"
       },
       {
          "category": "opensource",
