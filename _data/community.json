@@ -1,5 +1,12 @@
 {
   "resources" :[
+    {
+      "title": "KubeSail",
+      "url": "https://kubesail.com/template/pastudan/gaia-hub",
+      "type": "website",
+      "date": "11-10-2019",
+      "description": "An example of a KubeSail template button"
+    },
   {
     "title": "Use Blockstack with create-react-app",
     "url": "https://github.com/pradel/craco-blockstack",
