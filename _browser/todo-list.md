@@ -9,7 +9,7 @@ permalink: /:collection/:path.html
 In this tutorial, you build the code for and run a single-page application (SPA)
 with Blockstack and React. Once the application is running, you take a tour
 through the applications’ Blockstack functionality. You’ll learn how it manages
-authentcation using a Blockstack ID and how it stores information associated
+authentication using a Blockstack ID and how it stores information associated
 with that ID using Blockstack Storage (Gaia).
 
 * TOC
