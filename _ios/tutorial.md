@@ -12,7 +12,7 @@ Blockstack's iOS SDK using the following content:
 * TOC
 {:toc}
 
-This tutorial was extensively tested using Xcode Version 9.3 (9E145) on a MacBook Pro
+This tutorial was extensively tested using Xcode Version 11.2 (11B52) on a MacBook Pro
 running Mojave 10.14. If your environment is different, you may encounter
 slight or even major discrepancies when performing the procedures in this
 tutorial. Please [join the Blockstack community Slack](https://slofile.com/slack/blockstack) and post questions or comments to
@@ -56,7 +56,7 @@ development environment on your workstation, you can use that and skip this
 step. However, you may need to adjust the remaining instructions for your
 environment.
 
-Follow the installation instructions to [download and XCode](https://developer.apple.com/xcode/) for your operating system.
+Follow the installation instructions to [download and install XCode](https://developer.apple.com/xcode/) for your operating system.
 Depending on your network connection, this can take between 15-30 minutes.
 
 ### Do you have Node.js?
@@ -86,13 +86,13 @@ you have installed CocoaPods.
 
 ```bash
 $ pod --version
-1.6.0.beta.2
+1.8.1
 ```
 
 If you don't have the CocoaPods beta version, install it:
 
 ```bash
-sudo gem install cocoapods -v 1.6.0.beta.2
+sudo gem install cocoapods -v 1.8.1
 ```
 
 ## Build the Blockstack hello-world
@@ -171,7 +171,7 @@ In this section, you build an initial React.js application called
 5. Navigate to `http://localhost:8080` with your browser to display the
    application.
 
-   ![](images/blockstack-signin.png)
+   ![]({{ site.baseurl }}/browser/images/initial-app.png)
 
    This local instances is for testing your applications only.
 
@@ -179,7 +179,7 @@ In this section, you build an initial React.js application called
 
    The system displays a prompt allowing you to create a new Blockstack ID or restore an existing one.
 
-    ![](images/create-restore.png)
+    ![]({{ site.baseurl }}/browser/images/login-choice.png)
 
 7. Follow the prompts appropriate to your situation.
 
@@ -187,8 +187,9 @@ In this section, you build an initial React.js application called
     being nameless, ignore it. At this point you have only a single application
     on your test server.  So, you should see this single application, with your
     own `blockstack.id` display name, once you are signed in:
+    
+    ![]({{ site.baseurl }}/browser/images/hello-authd.png)
 
-    ![](images/running-app.png)
 
 
 ### Add a redirect end point to your application
@@ -252,12 +253,12 @@ application directory (`hello-blockstack`).
 
 ## Build the hello-blockstack-ios
 
-Now, you build an iOS application that can access and run your Blockstack web
+Now, you build an iOS application that can work with your Blockstack web
 application on a mobile device.
 
 ### Create an XCode Project
 
-This tutorial uses XCode 9.3, you can use another version but be aware that some
+This tutorial uses XCode 11.1, you can use another version but be aware that some
 menu items and therefore these procedures may be differœent on your version.
 
 1. Launch the XCode interface.
@@ -267,7 +268,22 @@ menu items and therefore these procedures may be differœent on your version.
 
    ![](images/single-view-app.png)
 
-5. **Choose options for your new project** for your project.
+5. On the **Choose options for your new project** dialog, set the following:
+
+    <table class="uk-table uk-table-small">
+    <tr>
+      <th>Product Name</th>
+      <td><code>hello-blockstack-ios</code></td>
+    </tr>
+    <tr>
+      <th>Organization Name</th>
+      <td><code><i>USERNAME</i></code></td>
+    </tr>
+    <tr>
+      <th>User Interface</th>
+      <td>Storyboard</td>
+    </tr>
+    </table>
 
 	 ![](images/choose-new-options.png)
 
@@ -275,9 +291,7 @@ menu items and therefore these procedures may be differœent on your version.
 
    The system prompts you for a location to store your code.
 
-7. Save your project in your `hello-blockstack` directory.
-
-   When you are done, you will have a `hello-blockstack/hello-blockstack-ios` subdirectory.
+7. Save your project in your `hello-blockstack-ios` directory.
 
 8. Close XCode.
 
@@ -290,7 +304,7 @@ Create a target section by writing target `$TARGET_NAME do` and an `end` a few
 lines after.
 
 1. Open a terminal window on your workstation.
-2. Navigate to and change directory into the root of your project directory.
+2. Change directory into your new project directory where your `hello-blockstack-ios.xcodeproj` file was created.
 
 	 ```swift
 	 $ cd hello-blockstack-ios
@@ -328,15 +342,15 @@ lines after.
 
 ### Install Blockstack SDK and open the pod project
 
-1. Close your new XCode project.
-2. Change to the root of your `hello-blockstack-ios` project.
-3. Initialize the project with Cocoapods.
+1. Close your new XCode project if you haven't already.
+2. In terminal, make sure it is open to the root of your `hello-blockstack-ios` project.
+3. Initialize the project with Cocoapods via the `pod install` command.
 
 	 ```bash
 	 $ pod install
-	 Analyzing dependencies
+     Analyzing dependencies
      Downloading dependencies
-     Installing Blockstack (0.7.2)
+     Installing Blockstack (1.0.1)
      Installing CryptoSwift (0.15.0)
      Installing PromisesObjC (1.2.8)
      Installing PromisesSwift (1.2.8)
@@ -370,13 +384,13 @@ lines after.
 	 project title. If you see the warning, continue to step 7. Otherwise, go to the next section.
 
 7. Click the signal to reveal the warning.
-8. Click **Update to recommended settings**.
+8. Click **Next**.
 
 	 ![](images/indicator.png)
 
-9. Choose **Perform Changes** and **Continue** when prompted.
+9. Select all the targets and press **Next** and **Continue** when prompted.
 
-	 The indicator disappears.
+	 Make sure you have no errors; warnings are acceptable to continue.
 
 ### Choose a custom protocol handler
 
@@ -386,14 +400,14 @@ the user back to your iOS app. In this example, you use `myblockstackapp://`.
 
 1. Open the `.xcworkspace` file in XCode if it isn't open already.
 2. Select the top node of your project.
-1. Select the **Info** tab in XCode.
-2. Scroll to **URL Types** and press **+** (plus) sign.
-3. Enter an **Identifier** and **URL Schemes** value.
+3. Select the **Info** tab in XCode.
+4. Scroll to **URL Types** and press **+** (plus) sign.
+5. Enter an **Identifier** and **URL Schemes** value.
 
    | **Identifier** | `MyBlockstackApp` |
    | **URL Schemes** | `myblockstackapp` |
 
-4. Set the **Role** to **Editor**.
+6. Set the **Role** to **Editor**.
 
    When you are done the **URL Types** appears as follows:
 
@@ -479,14 +493,14 @@ All iOS applications require a splash page.
 
 ### Update the Main.storyboard
 
-Rather than have you build up your own UI, this section has you copy and paste a layout into the XML file source code for the **Main.storyboard** file.
+Rather than have you build up your own UI in the interface builder, this section has you copy and paste a layout into the XML file source code for the **Main.storyboard** file.
 
 1.  Select the `Main.storyboard` file.
 2.  Choose **Open As > Source Code**
 
-    The `blockstack-example/blockstack-example/Base.lproj/Main.storyboard` file
-    defines the graphical elements. Some elements are required before you can
-    functionality to your  code.
+    The `hello-blockstack-ios/Base.lproj/Main.storyboard` file
+    defines the graphical elements, and their functionality will be defined in 
+    a respective `.swift` file.
 
 3. Within the `<viewController>`  element, replace the existing `<view>` subelement with the following:
 
@@ -532,6 +546,14 @@ Rather than have you build up your own UI, this section has you copy and paste a
         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
     </view>
 	 ```
+4. Select the Main.storyboard and choose **Open as  > Interface Builder - Storyboard**.
+
+   ![](images/main-storyboard.png)
+
+   You should see the following:
+
+   ![](images/new-storyboard.png)
+
 
 ### Add the UI variables to the ViewController file.
 
@@ -539,27 +561,44 @@ In this section, you edit the `ViewController.swift` file using the storyboard a
 
 1. Select the **Main.storyboard** and choose **Open As > Interface Builder - storyboard**.
 
-	 ![](images/main-storyboard.png)
+2. With the interface builder open, choose **Editor > Assistant** to edit the `ViewController.swift` file.
 
-2. With the interface builder open, display the `ViewController.swift` file in the right panel.
+   ![](images/view-editors.png)
 
-   ![](images/view-editors.gif)
+3. In the storyboard, select the **Sign into Blockstack** button.
 
-4. In the storyboard, select the **Sign into Blockstack** button.
-
-5. Control-drag from the button to the code display in the editor on the right, stopping the drag at the line below controller's opening statement.
+4. Control-drag from the button to the code display in the editor on the right, stopping the drag at the line below controller's `viewDidLoad()` statement.
 
    ![](images/add-action.gif)
 
-6. Repeat this process with the storyboard's purple **hello-blockstack-ios** label.
+5. Set the **Connection** to `Outlet`.
+6. Name the new section `signinButton`.
 
-    When you are done, your 'ViewController' file contains the following variables:
+   ![](images/signinbutton.png)
+
+7. Press **Connect**.
+8. Repeat with purple **hello-blockstack-ios** label, name it `nameLabel.
+
+9. Add an import statement for the `Blockstack` and another for the `SafariServices` module.
+
+    When you are done, your `ViewController.swift` file contains the following:
 
     ```swift
+    import UIKit
+    import Blockstack
+    import SafariServices
+
     class ViewController: UIViewController {
 
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var signInButton: UIButton!
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            // Do any additional setup after loading the view.
+        }
+
+            @IBOutlet weak var nameLabel: UILabel!
+            @IBOutlet var signinButton: UIButton!
+
+    }
     ```
 
     And XCode has added two outlines to the `Main.storyboard` source.
@@ -567,7 +606,7 @@ In this section, you edit the `ViewController.swift` file using the storyboard a
     ```xml
     <connections>
     <outlet property="nameLabel" destination="9eE-ZS-LU9" id="Ahv-Te-ZZo"/>
-    <outlet property="signInButton" destination="Lfp-KX-BDb" id="yef-Jj-uPt"/>
+    <outlet property="signinButton" destination="Lfp-KX-BDb" id="yef-Jj-uPt"/>
     </connections>
     ```
 
@@ -610,11 +649,11 @@ this application in your mobile add for now. In XCode, do the following;
                let name = retrievedUserData?.profile?.name ?? "Nameless Person"
                self.nameLabel?.text = "Hello, \(name)"
                self.nameLabel?.isHidden = false
-               self.signInButton?.setTitle("Sign Out", for: .normal)
+               self.signinButton?.setTitle("Sign Out", for: .normal)
                print("UI update SIGNED_IN")
            } else {
                self.nameLabel?.text = "hello-blockstack-ios"
-               self.signInButton?.setTitle("Sign into Blockstack", for: .normal)
+               self.signinButton?.setTitle("Sign into Blockstack", for: .normal)
                print("UI update SIGNED_OUT")
            }
        }
@@ -636,7 +675,7 @@ this application in your mobile add for now. In XCode, do the following;
    }
 	 ```
 
-9. Create a 'signIn()' function that handles both sign in and out.
+9. Create a `signIn()` function that handles both sign in and out.
 
    The function uses the `Blockstack.shared.signIn()` and
    `Blockstack.shared.signUserOut()` methods to sign the user into the application.
@@ -650,7 +689,7 @@ this application in your mobile add for now. In XCode, do the following;
        } else {
            print("Currently signed out so signing in.")
            // Address of deployed example web app
-           Blockstack.shared.signIn(redirectURI: "https://heuristic-brown-7a88f8.netlify.com/redirect.html",
+           Blockstack.shared.signIn(redirectURI: URL(string: "https://heuristic-brown-7a88f8.netlify.com/redirect.html")!,
                                     appDomain: URL(string: "https://heuristic-brown-7a88f8.netlify.com")!) { authResult in
                                        switch authResult {
                                        case .success(let userData):
@@ -672,6 +711,6 @@ this application in your mobile add for now. In XCode, do the following;
 XCode builds can retain old data. To ensure your builds are clean, try the following:
 
 1. Reset the simulator by choosing **Hardware -> Erase all content and settings** from the menu.
-2. In XCode, clean the project by choosing **Product > Clean** from the menu or  press 'Command + Shift + K' on your keyboard.
-3. Clean the build folder by pressing 'Command + Option + Shift + K' on your keyboard.
+2. In XCode, clean the project by choosing **Product > Clean** from the menu or  press `Command + Shift + K` on your keyboard.
+3. Clean the build folder by pressing `Command + Option + Shift + K` on your keyboard.
 4. Run the code on the simulator again.
