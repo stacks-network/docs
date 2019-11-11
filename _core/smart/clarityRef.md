@@ -61,7 +61,9 @@ Supports values of `'true` or `'false`.
 
 ### Buffer type
 
-Buffer types represent fixed-length byte buffers. Currently, the only way to construct a Buffer is using string literals, for example `"alice.id"` or `hash160("bob.id")` 
+Buffer types represent fixed-length byte buffers. A Buffer can either be constructed using:
+- String literals, for example `"alice.id"` or `hash160("bob.id")`,
+- Hexadecimals literals, for example `0xABCDEF`.
 
 All of the hash functions return buffers:
 
@@ -73,7 +75,7 @@ The block properties `header-hash`, `burnchain-header-hash`, and `vrf-seed` are 
 
 ### List type
 
-Clarity supports lists of the atomic types. However, the only variable length lists in the language appear as function inputs; there is no support for list operations like append or join.
+Clarity supports lists of the atomic types. However, the only variable length lists in the language appear as function inputs.
 
 ### Principal type
 
@@ -100,19 +102,19 @@ This allows for creating named tuples on the fly, which is useful for data maps 
   <th>Description</th>
 </tr>
 <tr>
-  <td><code>(fetch-entry map-name key-tuple)</code></td>
+  <td><code>(map-get map-name key-tuple)</code></td>
   <td>Fetches the value associated with a given key in the map, or returns <code>none</code> if there is no such value.</td>
 </tr>
 <tr>
-   <td><code>(set-entry! map-name key-tuple value-tuple)</code></td>
+   <td><code>(map-set! map-name key-tuple value-tuple)</code></td>
   <td>Sets the value of key-tuple in the data map</td>
 </tr>
   <tr>
-   <td><code>(insert-entry! map-name key-tuple value-tuple)</code></td>
+   <td><code>(map-insert! map-name key-tuple value-tuple)</code></td>
   <td>Sets the value of key-tuple in the data map if and only if an entry does not already exist.</td>
 </tr>
   <tr>
-   <td><code>(delete-entry! map-name key-tuple)</code></td>
+   <td><code>(map-delete! map-name key-tuple)</code></td>
   <td>Deletes key-tuple from the data map.</td>
 </tr>
 </table>
