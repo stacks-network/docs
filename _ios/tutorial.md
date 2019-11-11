@@ -711,6 +711,6 @@ this application in your mobile add for now. In XCode, do the following;
 XCode builds can retain old data. To ensure your builds are clean, try the following:
 
 1. Reset the simulator by choosing **Hardware -> Erase all content and settings** from the menu.
-2. In XCode, clean the project by choosing **Product > Clean** from the menu or  press 'Command + Shift + K' on your keyboard.
-3. Clean the build folder by pressing 'Command + Option + Shift + K' on your keyboard.
+2. In XCode, clean the project by choosing **Product > Clean** from the menu or  press `Command + Shift + K` on your keyboard.
+3. Clean the build folder by pressing `Command + Option + Shift + K` on your keyboard.
 4. Run the code on the simulator again.
