@@ -6,9 +6,9 @@ permalink: /:collection/:path.html
 # Configure a hub on DigitalOcean
 {:.no_toc}
 
-This teaches you how to run a Gaia storage hub on DigitalOcean (DO). DigitalOcean is an affordable and convenient cloud computing provider. This example uses DigitalOcean Spaces for file storage. DigitalOcean Spaces is equivalent to AWS's S3 file storage solution.
+This teaches you how to run a Gaia storage hub on DigitalOcean (DO). DigitalOcean is an affordable and convenient cloud computing provider. This example uses DigitalOcean Spaces for file storage. A space is equivalent to AWS's S3 file storage solution.
 
-DigitalOcean provides you with a compute machines known as a **Droplets** and  storage called a **Spaces**. You need both to run a Gaia hub. The Gaia hub setup you create here, requires get a Digital Droplet with Docker pre-installed and a 250 GB Space. Each run for $5/month or a total of $10/month.
+DigitalOcean provides you with a compute machines known as a **Droplets** and storage called a **Spaces**. You need both to run a Gaia hub. The Gaia hub setup you create here, requires get a Digital Droplet with Docker pre-installed and a 250 GB Space. Droplets and storage each run for $5/month or a total of $10/month.
 
 * TOC
 {:toc}
@@ -16,7 +16,7 @@ DigitalOcean provides you with a compute machines known as a **Droplets** and  s
 <div class="uk-card uk-card-default uk-card-body">
 <h5>Is this tutorial for you?</h5>
 
-<p>This documentation is appropriate for advanced power users who are familiar with command line tools, editing configuration files, and basic configuration of services of DNS or Nginx.  </p>
+<p>This documentation is appropriate for advanced power users who are familiar with command line tools, editing configuration files, and basic configuration of services of DNS or Nginx.</p>
 
 <p>If you are planning on running an <em>open-membership hub</em> or an <em>application-specific hub</em>, you'll should see <a href="hub-operation.html">the section on Hub Operation</a></p>.
 
@@ -24,14 +24,9 @@ DigitalOcean provides you with a compute machines known as a **Droplets** and  s
 
 ## Prerequisites you need
 
- You use DigitalOcean choose and configure assets for running droplets and spaces.  To enable this, you must be sure to complete a number of prerequisites.
-
-### Required prerequisites on DigitalOcean
+ You use DigitalOcean choose and configure assets for running droplets and spaces.  To enable this, you must be sure to complete the prerequisites in this section.
 
 You must create an account on <a href="https://digitalocean.com" target="\_blank">DigitalOcean</a>. DigitalOcean requires you to supply a credit card to create an account. You are only charged for the services you use the Gaia hub as of this writing should cost $10 USD a month.
-
-
-### Optional prerequisites for SSH users
 
 The easiest way to interact with your droplet is the DigitalOcean Console. Users who are comfortable using the secure shell (SSH) and private keys may prefer to open a local terminal on their home machine instead. To enable this, you should ensure you have the following prerequisites completed.
 
@@ -42,7 +37,6 @@ The easiest way to interact with your droplet is the DigitalOcean Console. Users
 * Create a <a href="https://www.digitalocean.com/docs/api/create-personal-access-token/" target="\_blank">personal access token in DigitalOcean</a>.
 
 * Install `doctl` which is the DigitalOcean command line tool. For information on installing these, see  which is the DigitalOcean command line utility. Check out their [installation instructions](https://github.com/digitalocean/doctl/blob/master/README.md#installing-doctl) to see how to install it on your computer.
-
 
 ## Task 1: Create a DigitalOcean space
 
@@ -73,8 +67,69 @@ In this task you create a **Space** which is where Gaia stores your files.
 
    After a moment, your Space is up and running.
 
+## Task 2: Enable File Listing and Set a Bucket Policy
 
-## Task 2: Create a DigitalOcean droplet
+
+On Digital Ocean, set **Enable File Listing**:
+
+1. Navigate to the **Spaces** tab.
+
+2. Select your newly created space and click **Settings**
+3. Set  **Enable File Listing** for your space.
+4. Press **Save**.
+
+On your local workstation, create a bucket policy to grant read permission on your space.
+
+1. On your local workstation, open a terminal.
+2. <a href="https://www.digitalocean.com/docs/spaces/resources/s3cmd/" target="_blank">Install and configure the <strong>s3cmd</strong></a>.
+3. In the current directory, use the `touch` command to create a file called `gaiahub-policy`.
+
+    ```
+    touch gaiahub-policy
+    ```
+
+4. Use your favorite editor to open the file.
+5. Add the following policy to the file.
+
+    ```json
+    {
+      "Version":"2012-10-17",
+      "Id": "read policy",
+      "Statement":[
+        {
+          "Sid":"PublicRead",
+          "Effect":"Allow",
+          "Principal": "*",
+          "Action": "s3:GetObject",
+          "Resource": "arn:aws:s3:::<SPACE_NAME>/*"
+        }
+      ]
+    }
+    ```
+6. Edit the `Resource` line and replace the `<SPACE_NAME>` with your space name from Digital Ocean.
+
+   For example, if your space is named `meepers`, after editing the line you would have:
+
+   ```
+   "Resource": "arn:aws:s3:::meepers/*"
+   ```
+
+   Be sure not to change any of the other fields, especially `Version`.
+
+7. Save and close the file.
+8. Use `s3cmd` to enact the policy.
+
+   ```
+   s3cmd setpolicy gaiahub-policy s3://<SPACE_NAME>
+   ```
+
+   Be sure to `SPACE_NAME` with the name of your space, for example:
+
+      ```
+   s3cmd setpolicy gaiahub-policy s3://meepers
+   ```
+
+## Task 3: Create a DigitalOcean droplet
 
 In this task, you add a droplet to your account. The droplet is a droplet is a cloud-based server you can use as a compute resource. This server is where you will run the Gaia Storage System service. The droplet you create will be an Ubuntu server with Docker pre-installed.
 
@@ -87,13 +142,11 @@ In this task, you add a droplet to your account. The droplet is a droplet is a c
 
    ![Create option](/storage/images/digital-droplet.png)
 
-4. Select the **One-click apps** tab.
+4. Select the **Marketplace** tab.
 
-   ![One-click app](/storage/images/digital-one-click.png)
+   ![Marketplace](/storage/images/digital-one-click.png)
 
 5. Select the **Docker** app from the options presented.
-
-   This will give you
 
 6.  Scroll down to the **Choose a size** section and use the left arrow to display and select the **$5/mo** image.
 
@@ -109,14 +162,14 @@ In this task, you add a droplet to your account. The droplet is a droplet is a c
 
 9. Scroll down to the **Finalize and create** section.
 
-10. **Choose a hostname** for you Give your Droplet such as `meepers-storage-hub`.
+10. **Choose a hostname** for your droplet such as `moxie-gaiahub`.
 
 11.  Review your choices then click **Create** to start your droplet running.
 
 At this point, your new droplet should appear in the list of resources on your DigitalOcean dashboard.
 
 
-## Task 3: Open a console on your Droplet
+## Task 4: Open a console on your Droplet
 
 A droplet console emulates the access you would have if you were sitting down with a keyboard and monitor attached to the actual server. In this section, you open a console on your droplet.
 
@@ -177,7 +230,7 @@ A droplet console emulates the access you would have if you were sitting down wi
 </div>
 
 
-## Task 4: Create a space key
+## Task 5: Create a space key
 
 1. In the DigitalOcean dashboard, go to the **API** page.
 2. Scroll to the **Spaces Access Keys** section.
@@ -195,13 +248,13 @@ A droplet console emulates the access you would have if you were sitting down wi
 
     ![Access key](/storage/images/space-access-key.png)
 
-6. Save your secrete in a secure password manager.
+6. Save your secret in a secure password manager.
 
     You should never share your secret.
 
 7. Leave the page up with your key and secret and go to your open console.
 
-## Task 5: Get the Gaia code and configure your server
+## Task 6: Get the Gaia code and configure your server
 
 You should have the console open as `root` on your Droplet. In this section, you get the Gaia code and configure the Gaia service.
 
@@ -235,7 +288,7 @@ You should have the console open as `root` on your Droplet. In this section, you
 3. Copy the configuration sample to a new `config.json` file.
 
     ```
-    cp config.sample.json config.json
+    cp config.do.sample.json config.json
     ```
 
 4. Edit your new `config.json` file with `vi` or `vim`.
@@ -243,32 +296,48 @@ You should have the console open as `root` on your Droplet. In this section, you
    ```
    vi config.json
    ```
+
    You now need to edit this JSON file to have it store files on your DigitalOcean space.
 
-5. Set the `driver` to `aws`.
+   ```
+   {
+    "serverName": "DROPLET_NAME",
+    "port": 4000,
+    "driver": "aws",
+    "readURL": "SPACE_URL",
+    "proofsConfig": {
+      "proofsRequired": 0
+    },
+    "pageSize": 20,
+    "bucket": "SPACE_NAME",
+    "awsCredentials": {
+       "endpoint": "SPACE_LOCATION",
+       "accessKeyId": "YOUR_ACCESS_KEY",
+       "secretAccessKey": ""
+    },
+    "argsTransport": {
+      "level": "debug",
+      "handleExceptions": true,
+      "stringify": true,
+      "timestamp": true,
+      "colorize": false,
+      "json": true
+    }
+  }
+  ```
 
-   The DigitalOcean space API exactly mimics the S3 API. Since Gaia doesn't have a DigitalOcean driver, you can just use the `aws` driver with some special configuration.
+   You'll find that the `driver` is set to `aws`. The DigitalOcean space API exactly mimics the S3 API. Since Gaia doesn't have a DigitalOcean driver, you can just use the `aws` driver with some special configuration.
 
-6. Set the `bucket` to the name of the DigitalOcean space you just created.
+5. Set the `serverName` to the droplet you just created.
+6. Set the `readURL` to the URL of the DigitalOcean space you just created.
+
+   If your space URL called `https://meepers-hub-space.sfo2.digitaloceanspaces.com `, the `readURL` name is `https://meepers-hub-space.sfo2.digitaloceanspaces.com`.
+7. Set the `bucket` to the name of the DigitalOcean space you just created.
 
    If your space is called `meepers-hub-space`, the `bucket` value is `meepers-hub-space`.
 
-6. Set the `readURL` to the URL of the DigitalOcean space you just created.
-
-  If your space URL called `https://meepers-hub-space.sfo2.digitaloceanspaces.com `, the `readURL` name is `https://meepers-hub-space.sfo2.digitaloceanspaces.com`.
-
-
-7. Add an `endpoint` value to the `awsCredentials` section.
-
-   ```json
-   "awsCredentials": {
-      "accessKeyId": "",
-      "secretAccessKey": "",
-      "endpoint": ""
-   },
-   ```
-8. Go back to your DigitalOcean dashboard open to your space key.
-9. Copy the **Key** and paste it into the `accessKeyId` value in the `config.json` file.
+8.  Go back to your DigitalOcean dashboard open to your space key.
+9.  Copy the **Key** and paste it into the `accessKeyId` value in the `config.json` file.
 10. Copy the **Secret** and paste it into the `secretAccessKey` value in the `config.json` file.
 11. In the DigitalOcean dashboard, choose the Spaces page.
 12. Copy the section of your space URL that follows the name.
@@ -279,40 +348,30 @@ You should have the console open as `root` on your Droplet. In this section, you
 
 13. Paste the string you copied into the `endpoint` value.
 
-14. Change the `proofsRequired` value to the number `0` (zero).
+14. Ensure the `proofsRequired` value is set to the number `0` (zero).
 
     This will allow Blockstack user to write to your Gaia hub, without any social proofs required. You can change this later on, and do other things to lock-down this Gaia hub to just yourself, but that is outside the scope of this document.
 
-    At this point, the json.config file should be completed and appear similar to the following &&mdash;; but with your values.
+    At this point, the `json.config` file should be completed and appear similar to the following &&mdash;; but with your values.
 
     ```json
     {
-      "servername": "",
-      "port": 3000,
+      "serverName": "moxie-gaiahub",
+      "port": 4000,
       "driver": "aws",
-      "bucket": "meepers-hub-space",
       "readURL": "https://meepers-hub-space.sfo2.digitaloceanspaces.com",
-      "awsCredentials": {
-        "accessKeyId": "W7GBQGIUWDWKA6KAGL56",
-        "secretAccessKey": "O6hBYRPCeRmE0d9lr3Frtc345QsWt3l+mrDgvrVT9oE",
-        "endpoint": "sfo2.digitaloceanspaces.com "
-      },
-
       "proofsConfig": {
-        "proofsRequired" : 0
+          "proofsRequired": 0
       },
-
-      "azCredentials": {
-        "accountName": "",
-        "accountKey": ""
+      "pageSize": 20,
+      "bucket": "meepers-hub-space",
+      "awsCredentials": {
+        "endpoint": "sfo2.digitaloceanspaces.com",
+        "accessKeyId": "fb3J7AT/PGMGMPOA86EFLpx8IjGZQib99eXWjVR+QK0",
+        "secretAccessKey": "9ac685342eaa5bc4b44c13f3ecf43b001a3bdb9e2257114d44394d410dd91f66"
       },
-
-      "gcCredentials": {
-        "projectId": ""
-      },
-
       "argsTransport": {
-        "level": "warn",
+        "level": "debug",
         "handleExceptions": true,
         "stringify": true,
         "timestamp": true,
@@ -322,11 +381,11 @@ You should have the console open as `root` on your Droplet. In this section, you
     }
     ```
 
-15. Save and close the `vim` editor.
+15. Save your config file and close the `vim` editor.
 
     The system returns you back to the prompt.
 
-## Task 6: Run the Gaia image with Docker
+## Task 7: Run the Gaia image with Docker
 
 While your console is still in the the `gaia/hub` folder, build the `gaia.hub` image.
 
@@ -389,7 +448,7 @@ While your console is still in the the `gaia/hub` folder, build the `gaia.hub` i
 
 At this point, your Gaia service is up and running. You can run `docker logs MY_CONTAINER_ID` with your running image's ID to see the logs of this server at any time.
 
-## Task 7: Set up an Nginx reverse proxy
+## Task 8: Set up an Nginx reverse proxy
 
 In this task, you set up a simple Nginx reverse proxy to serve your Docker container through a public URL. You do this from the droplet console command line.
 
@@ -416,6 +475,17 @@ In this task, you set up a simple Nginx reverse proxy to serve your Docker conta
           proxy_set_header Connection 'upgrade';
           proxy_set_header Host $host;
           proxy_cache_bypass $http_upgrade;
+
+          if ($request_method = 'OPTIONS') {
+                    more_set_headers   'Access-Control-Allow-Origin: *';
+                    more_set_headers   'Access-Control-Allow-Methods: POST, OPTIONS, DELETE';
+                    more_set_headers   'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, authorization';
+                    more_set_headers   'Access-Control-Max-Age: 21600';
+                    more_set_headers   'Content-Type: text/plain charset=UTF-8';
+                    more_set_headers   'Content-Length: 0';
+                    return             204;
+          }
+          more_set_headers    'Access-Control-Allow-Origin: *';
     }
     ```
 
@@ -442,7 +512,7 @@ In this task, you set up a simple Nginx reverse proxy to serve your Docker conta
     ufw allow 80
     ```
 
-## Task 8: Test your Gaia server
+## Task 9: Test your Gaia server
 
 Now, you are ready to test your Gaia server and make sure it is up and running.
 
@@ -463,8 +533,7 @@ Now, you are ready to test your Gaia server and make sure it is up and running.
     `https://meepers-hub-space.s3.amazonaws.com/`.
 
 
-## Task 9: Configure a domain name
-
+## Task 10: Configure a domain name
 
 At this point, you can point a domain to your Gaia hub. Although it's not required, it is highly recommended. If you use a domain, you can migrate your Droplet to a different server (or even provider such as Azure or AWS) at any time, and still access it through the domain URL. Simply point your domain at the IP address for your Droplet. Use an `A Record` DNS type.
 
@@ -493,7 +562,7 @@ These instructions assume you have already created a free <a href="https://www.f
    ![Domain test](/storage/images/domain-test.png)
 
 
-## Task 10: Set up SSL
+## Task 11: Set up SSL
 
 If you've configured a domain to point to your Gaia hub, then it's highly
 recommended that you set up SSL to connect to your hub securely. DigitalOcean
