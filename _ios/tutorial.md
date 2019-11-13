@@ -570,7 +570,7 @@ In this section, you edit the `ViewController.swift` file using the storyboard a
    ![](images/add-action.gif)
 
 5. Set the **Connection** to `Outlet`.
-6. Name the new section `signinButton`.
+6. Name the new section `signInButton`.
 
    ![](images/signinbutton.png)
 
@@ -594,7 +594,7 @@ In this section, you edit the `ViewController.swift` file using the storyboard a
         }
 
             @IBOutlet weak var nameLabel: UILabel!
-            @IBOutlet var signinButton: UIButton!
+            @IBOutlet var signInButton: UIButton!
 
     }
     ```
@@ -604,7 +604,7 @@ In this section, you edit the `ViewController.swift` file using the storyboard a
     ```xml
     <connections>
     <outlet property="nameLabel" destination="9eE-ZS-LU9" id="Ahv-Te-ZZo"/>
-    <outlet property="signinButton" destination="Lfp-KX-BDb" id="yef-Jj-uPt"/>
+    <outlet property="signInButton" destination="Lfp-KX-BDb" id="yef-Jj-uPt"/>
     </connections>
     ```
 
@@ -647,11 +647,11 @@ this application in your mobile add for now. In XCode, do the following;
                let name = retrievedUserData?.profile?.name ?? "Nameless Person"
                self.nameLabel?.text = "Hello, \(name)"
                self.nameLabel?.isHidden = false
-               self.signinButton?.setTitle("Sign Out", for: .normal)
+               self.signInButton?.setTitle("Sign Out", for: .normal)
                print("UI update SIGNED_IN")
            } else {
                self.nameLabel?.text = "hello-blockstack-ios"
-               self.signinButton?.setTitle("Sign into Blockstack", for: .normal)
+               self.signInButton?.setTitle("Sign into Blockstack", for: .normal)
                print("UI update SIGNED_OUT")
            }
        }
