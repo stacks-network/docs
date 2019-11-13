@@ -356,7 +356,7 @@ You should have the console open as `root` on your Droplet. In this section, you
 
     ```json
     {
-      "serverName": "moxie-gaiahub",
+      "serverName": "meepers-hub-space",
       "port": 4000,
       "driver": "aws",
       "readURL": "https://meepers-hub-space.sfo2.digitaloceanspaces.com",
