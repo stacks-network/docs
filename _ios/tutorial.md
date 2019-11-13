@@ -23,9 +23,7 @@ experienced. For best results, beginners should follow the guide as written. It
 is expected that the fast or furiously brilliant will skip ahead and improvise
 on this material at will. God speed one and all.
 
-If you prefer, you can skip working through the tutorial all together. Instead,
-you can [download the final project code](images/hello-blockstack.zip) and import it
-into XCode to review it.
+If you want to download a complete application rather than working through a tutorial, see this *alternative* sample, the <a href="https://github.com/blockstack/photoblock-demo" target="_blank">photoblock-demo</a>.
 
 ## Understand the sample application flow
 
