@@ -13,7 +13,7 @@ To run locally:
     ./get-content.sh
     ```
 
-3. Build and serve locally.
+3. Build and serve locally. You will need [bundler](https://bundler.io/). You can install it with `gem install bundler` and then can run `bundle install` before running this bundle exec command below:
 
    ```
    bundle exec jekyll serve --config _config.yml,staticman.yml
