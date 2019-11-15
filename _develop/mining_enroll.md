@@ -21,23 +21,25 @@ Make sure you enroll in advance of the month you would first like your app to co
 
 To apply, do the following:
 
-1. Integrate Blockstack Auth into your app.
+1. Create an application that integrates Blockstack Auth.
 
    Your application code can reside in a public or a private repository.
 
-2. Complete the  <a href="https://app.co/submit" target="\_blank">App.co</a> form.
+2. Choose <a href="https://app.co/submit" target="\_blank"><strong>Submit app</strong></a> from the App.co site.
 
-   You should fill out all the required fields. 
+3. Sign into the application with your Blockstack ID.
+
+   You will use your Blockstack ID to access your submisison in the future. If you have multiple IDs, make sure you keep track of which ID you use during your submission.
+
+4. Fill out all the form's required fields. 
 
    <img src="images/add-app.png" alt="">
 
-
    {% include required-fields.md %}
    
-   Make sure you choose **Blockstack** from the **Authentication** list on the form.
+   You must choose **Blockstack** from the **Authentication** category on the form; If you do not, you cannot participate in App Mining.
 
-
-3. Press **Submit App**.
+5. Press **Submit App**.
 
    The system responds with the a completion dialog and an application link. 
 
@@ -45,7 +47,7 @@ To apply, do the following:
    
    You will also receive an email from the App.co team acknowledging receipt of your submission.
 
-4. Copy and store the application link.
+6. Copy and store the application link.
 
 ## Provide pay out and tax details
 
