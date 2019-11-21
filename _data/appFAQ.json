@@ -17,7 +17,7 @@
    },
    {
       "question": "How much can I earn and how are rewards distributed? ",
-      "answer":"<p>Starting in August 2019, App Mining payouts will include an additional $100K payout in Stacks tokens (STX) on top of the existing $100k in BTC. And starting in November 2019 we plan to ramp the total monthly payout and switch entirely to paying out in Stacks tokens. By May 2020, we plan for the monthly payout to be $1M worth of Stacks tokens. App Mining rewards in STX earned before the hard fork will be accrued, and the tokens will be distributed following the hard fork. We expect the hard fork to occur approximately 30-60 days following the end of the term of the RegA+ cash offering.</p><p>For more detailed information, see <a href='https://docs.blockstack.org/develop/mining-rewards.html' target='_blank'>How payouts are administered</a> in the Blockstack documentation.</p>"     
+      "answer":"<p>App Mining pays out $400k per month in combined STX and BTC January 2020. In February 2020, the payout pool will ramp up to $500k total in STX. In March and April 2020, the monthly payout pool will be $700k. In May 2020 we plan for the monthly payout to be $1M worth of Stacks tokens. For more detailed information, see <a href='https://docs.blockstack.org/develop/mining-rewards.html' target='_blank'>How payouts are administered</a> in the Blockstack documentation.</p>"     
    },
    {
       "question":"What is the Stacks token?",
@@ -41,7 +41,7 @@
    },
    {
       "question": "When are my submission materials due?",
-      "answer": "<p>Your submission materials are due at 11:59 PM Eastern Time US on the last day of each month. For example, if you are making a submission for March, your materials must be submitted on or before Feb 28 at 11:59 EST.</p>"
+      "answer": "<p>Your submission materials are due before the end of the month. Please see the <a href='https://app.co/mining#where-can-i-find-a-calendar-of-app-mining-events' target='_blank'>app mining calendar</a> for the exact dates. Keep in mind that registering is a multi-step process.</p>"
    },
    {
       "question": "How often can I submit my application for App Mining?",
@@ -65,7 +65,7 @@
    },
    {
       "question": "When are the winning payments made?",
-      "answer": "<p>Payouts are made on the 15th of every month.</p>"
+      "answer": "<p>Payouts are made mid-month.</p>"
    },
    {
       "question": "What are examples of any quantitative metrics that may be shared with app reviewers?",

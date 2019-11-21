@@ -1,13 +1,5 @@
-Traditionally the term _mining_ in cryptocurrency refers to the process of
-contributing compute resources to the network and earning a reward. On the
-Blockstack network, however, instead of just mining through computation,
-developers also can mine by contributing apps to the ecosystem and making
-applications the community wants.
+Traditionally the term _mining_ in cryptocurrency refers to the process of contributing compute resources to the network and earning a reward. In the Blockstack Ecosystem, instead of just mining through computation, developers mine by building apps, and the Blockstack community funds them simply for being pioneers in the emerging Blockchain software market.
 
 ![](images/mining-image.png)
 
-Founders that build apps using Blockstack developer tools like Blockstack Auth
-get paid each month, in amounts proportional to that month’s app quality
-ranking. Blockstack PBC, in cooperation with App.co, currently administers the
-payouts. A set of independent _app reviewers_ determines the monthly ranking
-during the pilot phase.
+Blockstack believes app mining represents a revolution in app funding, allowing small teams to bootstrap without advertising or venture capital. Each month, qualifying apps compete for funding. Qualified apps are evaluated and ranked by expert app reviewers. The better your app, the higher payout you earn.</p> <p>App mining is a new mining model that is continuously evolving and improving based on <a href='https://github.com/blockstack/app-mining' target='_blank'>community feedback</a>.
