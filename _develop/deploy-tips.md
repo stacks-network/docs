@@ -6,7 +6,7 @@ permalink: /:collection/:path.html
 # How to deploy a Blockstack dApp
 {:.no_toc}
 
-Blockstack applications are a type of web application that use Blockstack's technology to authenticate users. As such, Blockstack apps tend to be simple in design and operation, since in many cases they don’t have to host anything besides the application’s assets.
+Blockstack applications are a type of web application that uses Blockstack's technology to authenticate users. As such, Blockstack apps tend to be simple in design and operation, since in many cases, they don’t have to host anything besides the application’s assets.
 
  * TOC
  {:toc}
@@ -28,11 +28,11 @@ If you first populated your application with the Blockstack application generato
   </tr>
   <tr>
     <td><code>node_modules/react-scripts</code></td>
-    <td>A set of scripts for that helpsyou kick off React projects without configuring, so you do not have to setup your project by yourself.</td>
+    <td>A set of scripts for that helps you kick off React projects without configuring, so you do not have to set up your project by yourself.</td>
   </tr>
   <tr>
     <td><code>package.json</code></td>
-    <td>Contains a scripts section that includes a reference to the react-scripts which are a dependency. This script creates a <code>build</code> directory containing your files for deployment.</td>
+    <td>Contains a scripts section that includes a reference to the react-scripts, which are a dependency. This script creates a <code>build</code> directory containing your files for deployment.</td>
   </tr>
   <tr>
     <td><code>public/favicon.ico</code></td>
@@ -48,17 +48,17 @@ If you first populated your application with the Blockstack application generato
   </tr>
   <tr>
     <td><code>cors</code></td>
-    <td>Contains example deployment files for cross origin request configuration.</td>
+    <td>Contains example deployment files for cross-origin request configuration.</td>
   </tr>
 </table>
 
 If you use the generator to build Javascript or Vue scaffolding, your project configuration files will be different. 
 
-Regardless of which scaffolding you use, you must customize and extend this basic scaffolding as needed by your application. For example, you may want to add more properties to the `manifest.json` file. Since every application is different, Blockstack cannot give you specific intructions how to do this. The steps you take are specific to your application.
+Regardless of which scaffolding you use, you must customize and extend this basic scaffolding as needed by your application. For example, you may want to add more properties to the `manifest.json` file. Since every application is different, Blockstack cannot give you specific instructions on how to do this. The steps you take are specific to your application.
 
 ## Blockstack Authentication and deployment
 
-When you application authenticates users with Blockstack, your DApp at one URL requests a resource (an identity) from another DApp, the Blockstack Browser. A request for a resource outside of the origin (your new website) is called as a _cross-origin request_(CORs). Getting data in this manner can be risky, so you must configure your website security to allow interactions across origins.
+When your application authenticates users with Blockstack, your DApp at one URL requests a resource (an identity) from another DApp, the Blockstack Browser. A request for a resource outside of the origin (your new website) is called as a _cross-origin request_(CORs). Getting data in this manner can be risky, so you must configure your website security to allow interactions across origins.
 
 You can think of CORS interactions as an apartment building with Security. For example, if you need to borrow a ladder, you could ask a neighbor in your building who has one. Security would likely not have a problem with this request (i.e., same-origin, your building). If you needed a particular tool, however, and you ordered it delivered from an online hardware store (i.e., cross-origin, another site), Security may request identification before allowing the delivery man into the apartment building. (Credit: <a href="https://www.codecademy.com/articles/what-is-cors" target="\_blank">Codecademy</a>)
 
@@ -66,4 +66,4 @@ The way you configure CORs depends on which company you use to host your web app
 
 ## Deployment and Radiks
 
-If you are deploying an Blockstack application that uses Radiks, your deployment includes a server and a database component. You must take this into account when deploying your application. You may want to choose a service such as Heroku or Digital Ocean if your app uses Radiks.
+If you are deploying a Blockstack application that uses Radiks, your deployment includes a server and a database component. You must take this into account when deploying your application. You may want to choose a service such as Heroku or Digital Ocean if your app uses Radiks.
