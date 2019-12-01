@@ -109,9 +109,6 @@ profile by fetching the proof URL and verifying the proof message. Currently sup
 - Facebook
 - Twitter
 - Instagram
-- LinkedIn
-- Hacker News
-- GitHub
 
 The proof message must be of the form:
 
