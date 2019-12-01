@@ -6,7 +6,7 @@ permalink: /:collection/:path.html
 # How to deploy a Blockstack dApp
 {:.no_toc}
 
-Blockstack applications are a type of web application that uses Blockstack's technology to authenticate users. As such, Blockstack apps tend to be simple in design and operation, since in many cases, they don’t have to host anything besides the application’s assets.
+Blockstack applications are web applications that authenticate users with Blockstack Auth and store data with Gaia. Both of these technologies can be accessed on the client side.  As such, Blockstack apps tend to be simple in design and operation, since in many cases, they don’t have to host anything besides the application’s assets.
 
  * TOC
  {:toc}
@@ -62,7 +62,15 @@ When your application authenticates users with Blockstack, your DApp at one URL 
 
 You can think of CORS interactions as an apartment building with Security. For example, if you need to borrow a ladder, you could ask a neighbor in your building who has one. Security would likely not have a problem with this request (i.e., same-origin, your building). If you needed a particular tool, however, and you ordered it delivered from an online hardware store (i.e., cross-origin, another site), Security may request identification before allowing the delivery man into the apartment building. (Credit: <a href="https://www.codecademy.com/articles/what-is-cors" target="\_blank">Codecademy</a>)
 
-The way you configure CORs depends on which company you use to host your web application.  The application generator adds a `cors` directory to your application scaffolding. This directory contains files for Netlify (`_headers` and `_redirects`) as well as one for Firebase (`firebase.json`). Consult the documentation for your hosting service to learn how to configure CORS on that service.
+The way you configure CORs depends on which company you use to host your web application.  The application generator adds a `cors` directory to your application scaffolding. This directory contains files for Netlify (`_headers` and `_redirects`) as well as one for Firebase (`firebase.json`).  The configurations in the `cors` directory make your application's `manifest.json` file accessible to other applications (for example, to the Blockstack Browser). If you are deploying to a service other than Netlify or Firebase, you must configure CORS on that service to include the following headers when serving `manifest.json`: 
+
+```html
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: "X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding"
+Access-Control-Allow-Methods: "POST, GET, OPTIONS, DELETE, PUT"```
+```
+
+Consult the documentation for your hosting service to learn how to configure CORS on that service.
 
 ## Deployment and Radiks
 
