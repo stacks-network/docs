@@ -109,7 +109,6 @@ profile by fetching the proof URL and verifying the proof message. Currently sup
 - Facebook
 - Twitter
 - Instagram
-- GitHub
 
 The proof message must be of the form:
 
