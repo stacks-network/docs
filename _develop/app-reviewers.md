@@ -12,14 +12,14 @@ Blockstack uses third-party reviewers who interact with, review and provide scor
 
 ## TryMyUI
 
-TryMyUI provides 1.5M application testers around the globe, and apps enrolled in app mining are reviewed by 10 users every other month and rated on the following dimensions:
+TryMyUI provides 1.5M application testers around the globe. New apps enrolled in app mining are reviewed by 10 users, and previously enrolled apps receive 5 user testing videos. Apps are rated on the following dimensions:
 
 * Usability
 * Usefulness
 * Credibility
 * Desirability
 
-TryMyUI drops the highest and lowest test scores and uses the middle 8 scores each month for the rankings and calculates and average of scores for each component. Apps that are not being tested will receive the same scores as the last test round.  TryMyUI has it’s own “history” component to increase reliability of the tests. On average, projects need around 20 user tests to get actionable and reliable feedback. TryMyUI provides a monthly score that reflects 75% of the new month’s score, and 25% from last month’s score. The calculation to find that is: 
+TryMyUI drops the highest and lowest test scores and uses the middle 8 scores for the first rankings and calculates and average of scores for each component. TryMyUI has it’s own “history” component to increase reliability of the tests. On average, projects need around 20 user tests to get actionable and reliable feedback. TryMyUI provides a monthly score that reflects 75% of the new month’s score, and 25% from last month’s score. The calculation to find that is:
 
 ```
 X = raw score of new month
@@ -28,7 +28,7 @@ Y = final (rolled) score from previous month
 0.75X + 0.25Y = new month’s final score
 ```
 
-TryMyUI tests occur from the beginning to middle of the month, and Blockstack PBC cannot provide exact timing of the tests. App founders should not make any breaking changes to the app during this time. TryMyUI testers are English speaking. TryMyUI provides niche audiences based on the type of app.  Founders can take <a href="https://docs.google.com/forms/d/1y_1i5eTYpUQ0119cUieFaj4B9CPfmJilz9zIM5fGjgU/viewform?edit_requested=true" target="_blank">this brief survey</a> to fill out their preferred audiences.  Read more about TryMyUI Scoring and recommendations in our [App Miner's Guide]({{ site.baseurl }}/community/app-miners-guide#recommendations-from-trymyui). 
+TryMyUI tests occur from the beginning to middle of the month, and Blockstack PBC cannot provide exact timing of the tests. App founders should not make any breaking changes to the app during this time. TryMyUI testers are English speaking. TryMyUI provides niche audiences based on the type of app. Founders can take <a href="https://docs.google.com/forms/d/1y_1i5eTYpUQ0119cUieFaj4B9CPfmJilz9zIM5fGjgU/viewform?edit_requested=true" target="_blank">this brief survey</a> to fill out their preferred audiences.  Read more about TryMyUI Scoring and recommendations in our [App Miner's Guide]({{ site.baseurl }}/community/app-miners-guide#recommendations-from-trymyui). 
 
 ## New Internet Labs 
 
