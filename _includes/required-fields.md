@@ -38,7 +38,7 @@
         <td>The URL where your source code lives. If you are submitting an example of Animal Kingdom sample, you can leave this blank for a sample application.&nbsp;&nbsp;</td>
       </tr>
       <tr>
-        <td><strong>Twitter Handle</strong></td>
+        <td><strong>Application's Twitter Handle</strong></td>
         <td>Optionally enter a Twitter handle for your application, for example `@coolapp`.</td>
       </tr>
       <tr>

@@ -27,9 +27,11 @@ To apply, do the following:
 
 2. Choose <a href="https://app.co/submit" target="\_blank"><strong>Submit app</strong></a> from the App.co site.
 
-3. Sign into the application with your Blockstack ID.
+3. Sign into the submission form with your Blockstack ID.
 
-   You will use your Blockstack ID to access your submisison in the future. If you have multiple IDs, make sure you keep track of which ID you use during your submission.
+   <img src="images/submission-signin.png" alt="">
+
+   You will use your Blockstack ID to access your submisison in the future. If you have multiple IDs, make sure you keep track of which ID you use during your submission
 
 4. Fill out all the form's required fields. 
 
@@ -39,7 +41,10 @@ To apply, do the following:
    
    You must choose **Blockstack** from the **Authentication** category on the form; If you do not, you cannot participate in App Mining.
 
-5. Press **Submit App**.
+5. Check the box that says *App is publicly accessible and user-ready(required)*.
+6. Agree to the terms and policies.
+
+7. Press **Submit your app**.
 
    The system responds with the a completion dialog and an application link. 
 
@@ -47,7 +52,7 @@ To apply, do the following:
    
    You will also receive an email from the App.co team acknowledging receipt of your submission.
 
-6. Copy and store the application link.
+8. Copy and store the application link.
 
 ## Provide pay out and tax details
 
