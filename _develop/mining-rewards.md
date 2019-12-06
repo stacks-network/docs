@@ -26,7 +26,7 @@ The payouts are administered by Blockstack PBC and facilitated by App.co. Here i
       </tr>
       <tr>
          <td>November 2019 - January 2020</td>
-         <td>$400,000 in payout pool</td>
+         <td>$400,000 in payout pool ($300k in STX and $100k in BTC)</td>
          <td>5% of the remaining STX payout for each sequentially ranked app</td>
          <td>$40,000</td>
       </tr>
