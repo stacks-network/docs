@@ -60,7 +60,7 @@ To see the usage and options for the command in general, enter `blockstack-cli` 
 ##  How to install the command line
 {:.no_toc}
 
-You must have [Node.js](https://nodejs.org/en/download/) v8 or higher (v10 recommended). MacOS and Linux users can avoid `sudo` or [permissions problems](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) or by using [`nvm`](https://github.com/nvm-sh/nvm). These instructions assume you are using a macOS or Linux system. 
+You must have [Node.js](https://nodejs.org/en/download/) v8 or higher (v10 recommended). macOS and Linux users can avoid `sudo` or [permissions problems](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) or by using [`nvm`](https://github.com/nvm-sh/nvm). These instructions assume you are using a macOS or Linux system. 
 
 To install the command line, do the following:
 
