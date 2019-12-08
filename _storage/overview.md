@@ -23,18 +23,14 @@ The following diagram depicts the Blockstack architecture and Gaia's place in it
 
 ## User control or how is Gaia decentralized?
 
-A Gaia hub runs as a service which writes to data storage. The hub service
+A Gaia hub runs as a service which writes to data storage. The storage itself is a simple key-value store.  The hub service
 writes to data storage by requiring a valid authentication token from a requestor. Typically, the hub service runs on a compute resource and the storage itself on separate, dedicated storage resource. Typically, both resources belong to the same cloud computing provider.
 
 ![Gaiastorage](/storage/images/gaia-storage.png)
 
-Gaia's approach to decentralization focuses on user control of data and its
-storage. If a user can choose which Gaia hub provider to use, then that choice
-is all the decentralization required to enable user-controlled applications.
+Gaia's approach to decentralization focuses on user control of data and its storage. Users can choose a Gaia hub provider. If a user can choose which Gaia hub provider to use, then that choice is all the decentralization required to enable user-controlled applications. Moreover, Gaia a uniform API to access for applications to access that data.
 
-The control of user data lies in the way that user data is accessed.
-When an application fetches a file `data.txt` for a given user `alice.id`, the
-lookup will follow these steps:
+The control of user data lies in the way that user data is accessed. When an application fetches a file `data.txt` for a given user `alice.id`, the lookup will follow these steps:
 
 1. Fetch the `zonefile` for `alice.id`.
 2. Read her profile URL from her `zonefile`.
@@ -43,35 +39,18 @@ lookup will follow these steps:
 5. Read the `gaiaHubUrl`  (e.g. `https://gaia.alice.org/`) out of the profile
 6. Fetch the file from `https://gaia.alice.org/data.txt`.
 
-Because `alice.id` has access to her zonefile, she can change where her profile
-is stored. For example, she may do this if the current profile's service or
-storage is compromised. To change where her profile is stored, she changes her
-Gaia hub URL to another Gaia hub URL from another hub provider. If Alice has
-sufficient compute and storage resources herself, she may run her own Gaia
-Storage System and bypass a commercial Gaia hub provider all together.
+Because `alice.id` has access to her zonefile, she can change where her profile is stored. For example, she may do this if the current profile's service provider or storage is compromised. To change where her profile is stored, she changes her Gaia hub URL to another Gaia hub URL. If a user has sufficient compute and storage resources, a user may run their own Gaia Storage System and bypass a commercial Gaia hub provider all together.
 
 {% include note.html content="Users with existing identities cannot yet migrate
 their data from one hub to another." %}
 
-Applications writing directly on behalf of Alice do not need to perform a
-lookup. Instead, the Blockstack <a
-href="http://blockstack.github.io/blockstack.js/index.html"
-target="\_blank">authentication flow</a>  provides Alice's chosen application
-root URL to the application. This authentication flow _is also_ within Alice's
-control because Alice's browser _must_ generate the authentication response.
-
+Applications writing directly on behalf of `alice.id` do not need to perform a lookup. Instead, the Blockstack <a href="http://blockstack.github.io/blockstack.js/index.html" target="\_blank">authentication flow</a>  provides Alice's chosen application root URL to the application. This authentication flow _is also_ within Alice's control because Alice's browser _must_ generate the authentication response.
 
 ## Understand data storage
 
-A Gaia hub stores the written data _exactly_ as given. It offers minimal
-guarantees about the data. It does not ensure that data is validly formatted,
-contains valid signatures, or is encrypted. Rather, the design philosophy is
-that these concerns are client-side concerns.
+A Gaia hub stores the written data _exactly_ as given. It offers minimal guarantees about the data. It does not ensure that data is validly formatted, contains valid signatures, or is encrypted. Rather, the design philosophy is that these concerns are client-side concerns.
 
-Client libraries (such as `blockstack.js`) are capable of providing these
-guarantees. Blockstack used a liberal definition of the <a href="https://en.wikipedia.org/wiki/End-to-end_principle" target="\_blank">end-to-end principle</a> to
-guide this design decision.
-
+Client libraries (such as `blockstack.js`) are capable of providing these guarantees. Blockstack used a liberal definition of the <a href="https://en.wikipedia.org/wiki/End-to-end_principle" target="\_blank">end-to-end principle</a> to guide this design decision.
 
 ## Gaia versus other storage systems
 

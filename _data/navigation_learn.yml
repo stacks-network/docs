@@ -16,6 +16,14 @@
   docs:
   - develop/collections
   - develop/collection-type
+  
+- title: Sharing data
+  docs: 
+  - develop/radiks-intro
+  - develop/radiks-setup
+  - develop/radiks-models
+  - develop/radiks-collaborate
+  - develop/radiks-server-extras
 
 - title: Try it! Zero to DApp
   docs:

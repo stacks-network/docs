@@ -7,7 +7,7 @@ image: /assets/img/zero-to-dapp.png
 # 3 - Customize your kingdom
 {:.no_toc}
 
- **Zero to DAPP 3 of 4 for MacOS/Linux (or [Windows](zero_to_dapp_3_win.html))**
+ **Zero to DAPP 3 of 4 for macOS/Linux (or [Windows](zero_to_dapp_3_win.html))**
 
 In this page, you examine and modify the Animal Kingdom DApp [you built in part
 2](zero_to_dapp_2.html). You'll review the underlying code and locate the
