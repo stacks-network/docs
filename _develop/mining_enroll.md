@@ -4,7 +4,7 @@ permalink: /:collection/:path.html
 ---
 # How to enroll in App Mining
 
-Application mining rewards developers for building decentralized applications
+App mining rewards developers for building decentralized applications
 (DApps). You must enroll your application to be eligible for these
 rewards. This section explains the enrollment process and covers the following topics:
 
