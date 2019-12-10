@@ -15,7 +15,7 @@ rewards. This section explains the enrollment process and covers the following t
 {% include warning.html content="You must complete enrollment including <b>submission of verification materials and BTC address</b> prior to the month in which you wish to be considered. If your submission is incomplete it will not be reviewed. Please note that the submission process can take time to complete. <strong>No late submissions will be accepted</strong>, but we'll be happy to include you in the following month's ranking. You should register early to allow for sufficient time for collection of all required materials." %}
 
 
-## Complete the add and submission forms on App.co
+## Complete the app submission form on App.co
 
 Make sure you enroll in advance of the month you would first like your app to complete.  You need only enroll in App Mining once.  A single submission enrolls your app in the month you submit and every month following automatically. You can submit multiple applications.
 
