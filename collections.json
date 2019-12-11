@@ -10,7 +10,7 @@
      "repo": "https://github.com/blockstack/blockstack-core"
    },
    {
-    "name": "browser",
+    "name": "android",
     "repo": "https://github.com/blockstack/blockstack-android"
   },
   {
