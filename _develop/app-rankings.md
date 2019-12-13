@@ -32,9 +32,9 @@ Once each app has a calculated a theta-score in every category, the average of t
 
 ## Final Results
 
-The final results are determined by taking the average Theta values of the app’s scores and combine it with a history score. App mining weighs past results of the program alongside new results to track improvements and give weight to each months rankings. 
+The final results are determined by taking the average Theta values of the app’s scores and combining that value with a history score. App mining weighs past results of the program alongside new results to track improvements and give weight to each months rankings. 
 
-Apps that have been in the program for a month consider 25% history score (score last round) and 75% their average score this month. Here is the equation that is used:
+Apps that have been in the program for a month take into account a 25% history score from their score last round and 75% of their average score this month. Here is the equation that is used:
 
 `if(Score last round=0, New Average Score, (0.75*New average score+0.25*Score last round))`
 
