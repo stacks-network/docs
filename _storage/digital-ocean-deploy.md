@@ -129,7 +129,29 @@ On your local workstation, create a bucket policy to grant read permission on yo
    s3cmd setpolicy gaiahub-policy s3://meepers
    ```
 
-## Task 3: Create a DigitalOcean droplet
+## Task 3: Set a CORS configuration
+
+1. On your local workstation, create a file called `gaiahub-cors.xml` that looks like this:
+
+      ```xml
+      <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+        <CORSRule>
+          <AllowedMethod>GET</AllowedMethod>
+          <AllowedMethod>HEAD</AllowedMethod>
+          <AllowedOrigin>*</AllowedOrigin>
+          <ExposeHeader>ETag</ExposeHeader>
+          <MaxAgeSeconds>0</MaxAgeSeconds>
+        </CORSRule>
+      </CORSConfiguration>
+      ```
+
+2. Once again, use `s3cmd` to enact the configuration.
+
+    ```
+    s3cmd setcors gaiahub-cors.xml s3://<SPACE_NAME>
+    ```
+
+## Task 4: Create a DigitalOcean droplet
 
 In this task, you add a droplet to your account. The droplet is a droplet is a cloud-based server you can use as a compute resource. This server is where you will run the Gaia Storage System service. The droplet you create will be an Ubuntu server with Docker pre-installed.
 
@@ -169,7 +191,7 @@ In this task, you add a droplet to your account. The droplet is a droplet is a c
 At this point, your new droplet should appear in the list of resources on your DigitalOcean dashboard.
 
 
-## Task 4: Open a console on your Droplet
+## Task 5: Open a console on your Droplet
 
 A droplet console emulates the access you would have if you were sitting down with a keyboard and monitor attached to the actual server. In this section, you open a console on your droplet.
 
@@ -230,7 +252,7 @@ A droplet console emulates the access you would have if you were sitting down wi
 </div>
 
 
-## Task 5: Create a space key
+## Task 6: Create a space key
 
 1. In the DigitalOcean dashboard, go to the **API** page.
 2. Scroll to the **Spaces Access Keys** section.
@@ -254,7 +276,7 @@ A droplet console emulates the access you would have if you were sitting down wi
 
 7. Leave the page up with your key and secret and go to your open console.
 
-## Task 6: Get the Gaia code and configure your server
+## Task 7: Get the Gaia code and configure your server
 
 You should have the console open as `root` on your Droplet. In this section, you get the Gaia code and configure the Gaia service.
 
@@ -385,7 +407,7 @@ You should have the console open as `root` on your Droplet. In this section, you
 
     The system returns you back to the prompt.
 
-## Task 7: Run the Gaia image with Docker
+## Task 8: Run the Gaia image with Docker
 
 While your console is still in the the `gaia/hub` folder, build the `gaia.hub` image.
 
@@ -448,7 +470,7 @@ While your console is still in the the `gaia/hub` folder, build the `gaia.hub` i
 
 At this point, your Gaia service is up and running. You can run `docker logs MY_CONTAINER_ID` with your running image's ID to see the logs of this server at any time.
 
-## Task 8: Set up an Nginx reverse proxy
+## Task 9: Set up an Nginx reverse proxy
 
 In this task, you set up a simple Nginx reverse proxy to serve your Docker container through a public URL. You do this from the droplet console command line.
 
@@ -479,7 +501,7 @@ In this task, you set up a simple Nginx reverse proxy to serve your Docker conta
           if ($request_method = 'OPTIONS') {
                     more_set_headers   'Access-Control-Allow-Origin: *';
                     more_set_headers   'Access-Control-Allow-Methods: POST, OPTIONS, DELETE';
-                    more_set_headers   'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, authorization';
+                    more_set_headers   'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, authorization, If-Match';
                     more_set_headers   'Access-Control-Max-Age: 21600';
                     more_set_headers   'Content-Type: text/plain charset=UTF-8';
                     more_set_headers   'Content-Length: 0';
@@ -512,7 +534,7 @@ In this task, you set up a simple Nginx reverse proxy to serve your Docker conta
     ufw allow 80
     ```
 
-## Task 9: Test your Gaia server
+## Task 10: Test your Gaia server
 
 Now, you are ready to test your Gaia server and make sure it is up and running.
 
@@ -533,7 +555,7 @@ Now, you are ready to test your Gaia server and make sure it is up and running.
     `https://meepers-hub-space.s3.amazonaws.com/`.
 
 
-## Task 10: Configure a domain name
+## Task 11: Configure a domain name
 
 At this point, you can point a domain to your Gaia hub. Although it's not required, it is highly recommended. If you use a domain, you can migrate your Droplet to a different server (or even provider such as Azure or AWS) at any time, and still access it through the domain URL. Simply point your domain at the IP address for your Droplet. Use an `A Record` DNS type.
 
@@ -562,7 +584,7 @@ These instructions assume you have already created a free <a href="https://www.f
    ![Domain test](/storage/images/domain-test.png)
 
 
-## Task 11: Set up SSL
+## Task 12: Set up SSL
 
 If you've configured a domain to point to your Gaia hub, then it's highly
 recommended that you set up SSL to connect to your hub securely. DigitalOcean
