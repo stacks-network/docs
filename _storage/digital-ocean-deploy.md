@@ -145,7 +145,7 @@ On your local workstation, create a bucket policy to grant read permission on yo
       </CORSConfiguration>
       ```
 
-2. Once again, use `s3cmd` to enact the configuration.
+2. Use `s3cmd` to enact the configuration.
 
     ```
     s3cmd setcors gaiahub-cors.xml s3://<SPACE_NAME>
