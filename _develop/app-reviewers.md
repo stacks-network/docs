@@ -77,7 +77,7 @@ Each of these three pieces will make up 1/3 of your overall Awario score. Some s
   <li>To make sure <strong>Mentions</strong> on Instagram are picked up, <a href='https://help.instagram.com/502981923235522' target='_blank'>set your account to a <strong>Business</strong> account</a>.</li>
   <li>Medium links will not count in your Reach score for the time being. The way Reach is calculated currently on Medium.com is too clumsy. Awario is shipping updates to this soon, so Blockstack can revisit then. Medium Reach will be zeroed out for everyone <a href='https://github.com/blockstack/app-mining/issues/171' target='_blank'>as described here</a>.</li>
   <li>If you change your app name, you need to let us know. Email <a href='mailto:mining@app.co'>mining@app.co</a> to start the process. Anticipate a month not getting an Awario score to allow for Blockstack to set up and train a new query.</li>
-  <li>Please wait until the audit period to contact us about Mentions you feel are missing. In all the cases where someone has reached out, the Mentions show in the dashboard later as there is a delay as data is processed- you Awario dashboard is not meant to be real-time.</li>
+  <li>Please wait until the audit period to contact us about Mentions you feel are missing. In all the cases where someone has reached out, the Mentions show in the dashboard later as there is a delay as data is processed- your Awario dashboard is not meant to be real-time.</li>
 </ul>" %}
 
 Blockstack publishes the Awario data sheet with all app mentions for auditing at the start of the audit period. Blockstack PBC employee social media accounts are omitted from the reach scores. There is also a manual scan of Awario data to remove any data suspected of a false match.

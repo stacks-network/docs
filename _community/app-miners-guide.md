@@ -226,6 +226,86 @@ Here are some quick tips from the TryMyUI team on improving your app's design an
     </div>
 </div>
 
+## Recommendations from Awario
+
+Generally speaking, Awario is an App Reviewer that ranks apps based on *awareness*. The underlying goal of App Mining is to <a href="https://blog.blockstack.org/introducing-app-mining/" target="\_blank">accelerate growth of the decentralized app ecosystem</a>, a key part of which is attracting users. Attracting users depends on creating marketplace awareness of an app through effective marketing. 
+
+Awario assesses the **reach** of your marketing efforts and looks at your monthly marketing activity to determine how your overall awareness ranks relative to other apps in the program*.* Each month, Awario also provides you with valuable data the informs you about your apps online mention, influencer, and online sentiment.  This is the data behind your rank. You can use this data to further enhance your marketing efforts and increase your app’s score.
+
+{% include note.html content="Awareness level is only one part of your score. To read more about the components of a score, see this <a href='../develop/app-reviewers.html' target='\_blank'>How apps are reviewed and scored</a> here. Also, watch <a href='https://github.com/blockstack/app-mining/blob/master/CHANGELOG.md' target='\_blank'>the changelog</a> and attend App Mining meetings to stay aware of scoring changes for Awario or other App Reviewers." %}
+
+### Anatomy of Awario’s awareness level
+
+Awario uses mentions and reach to determine your apps awareness level.
+
+<table class="uk-table uk-table-small">
+    <tr>
+      <td><strong>mentions</strong></td>
+      <td>A public instance of your App’s name being found online (social networks, media, blogs, websites, etc.). Each mention must use the exact app name, no typos or misspellings.  Images do not count as mentions.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>reach</strong></td>
+      <td>An estimation of how many people are involved in and exposed to the conversation around your app.</td>
+    </tr>
+</table>
+
+For each of the mentions found, Awario assigns a reach number. A more popular blog will have higher reach number than a less popular one.  Awario scans the web for Mentions of your app across 3 main areas:
+
+<table class="uk-table uk-table-small">
+    <tr>
+      <td><strong>social</strong></td>
+      <td>Facebook, Twitter, Instagram, Reddit, and YouTube.  For Instagram and YouTube, use the caption area to mention your app name.  For Instagram, your account needs to be <a href="https://help.instagram.com/502981923235522?helpref=faq_content">set to Business</a>.</td>
+    </tr>
+    <tr>
+      <td><strong>news/blog</strong></td>
+      <td>The Wall Street Journal, Wired, The Verge, etc. as well as smaller blogs that have a history of reporting news or media style content. What constitutes a News/Blog mention is determined by Awario’s algorithms.</td>
+    </tr>
+    <tr>
+      <td><strong>web</strong></td>
+      <td>Mentions on a website not considered a News or Blog site. These mentions are not factored into your App Mining rank</td>
+    </tr>
+</table>
+
+Finally, you should understand that your awareness rank drives your growth score. To receive a Growth score, your app must achieve reach rank of at least 1,000 in the month. Scores are run on GMT, not your own local timezone. Therefore any mention needs to occur within the past calendar month according to GMT.
+
+
+### Tips for maximizing your Awario score
+
+Get at least one public post on each social network mentioning your App’s name. This is a simple as an update on Facebook, a Tweet, a Reddit post, etc.  
+
+Mentions must:
+
+- Use the exact app name in the body of the text or update. Misspellings or typos or if the mention appears in a sidebar such as related articles are not recorded in your rank. 
+- images that contain your app name only count when the app name also appears in a images `alt` caption, for example:  `<img src="myappgif.gif" alt="APP NAME">`
+* Posts must be publicly viewable. 
+* You can have friends, your personal accounts, or other brands mention you on social networks (this is actually ideal for your app in the long-term), it’s not restricted to what you post as the app brand itself.
+* For Instagram and YouTube, use the caption area to mention your app name. 
+* For Instagram, your account needs to be [set to Business](https://help.instagram.com/502981923235522?helpref=faq_content). 
+
+Get placements in News/Blog sites: 
+
+- Reach out to the ***writers*** for sites like TechCrunch, The Verge, WSJ, and so forth ([tips for locating the writers](http://www.onstartups.com/tabid/3339/bid/80121/How-To-Get-Media-Coverage-For-Your-Startup-A-Complete-Guide.aspx)). Pitch them on why they should cover what you’re building. With these folks, the broader implications of privacy and security tend to go farther than specifics about your app. Human interest is another good angle, i.e. talk about who your app serves and why it’s important users have it.
+- Make yourself and your team available for interviews.
+- Work with a PR firm.
+- Hire a freelance writer to help tell your story (or a PR freelancer), these people can help pull out what the media will care most about and get something placed.
+- Jump on existing news and join the conversation ([newsjacking](https://contentmarketinginstitute.com/2014/01/brand-marketing-newsjacking-next-level/)).
+- Focus on the WHY and the WHO, when it comes to all your marketing efforts, not the HOW. What is the value your app provides? 
+
+Be steady with your efforts. Just like in the real-world, marketing is a constant and long-term investment. If you drop off for a month or two, that will reverberate negatively in your real-world awareness and in your score. Some further reading on earning press:
+
+- [The 12-Step Insider's Guide To Getting Press Coverage](https://www.forbes.com/sites/brettnelson/2012/08/27/the-12-step-insiders-guide-to-getting-press-coverage/#3359dbae1765)
+- [How much more traffic should](https://neilpatel.com/blog/getting-media-coverage/) [](https://neilpatel.com/blog/getting-media-coverage/)[you actually be getting](https://neilpatel.com/blog/getting-media-coverage/)
+- [How To Get Media Coverage For Your Startup: A Complete Guide](http://www.onstartups.com/tabid/3339/bid/80121/How-To-Get-Media-Coverage-For-Your-Startup-A-Complete-Guide.aspx)
+
+
+### Recap of important guidelines
+
+- Each mention must use the exact app name, no typos or misspellings.  
+- Images do not count as mentions unless the app name also appears in a text caption.
+- To receive a Growth score, you need to hit a reach rank of at least 1,000 in the month.
+- For Instagram, your account needs to be [set to Business](https://help.instagram.com/502981923235522?helpref=faq_content). 
+- Mentions in websites other than blog or news, are not counted.
 
 ## Thank you!
 {:.no_toc}
