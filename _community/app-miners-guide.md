@@ -267,7 +267,7 @@ For each of the mentions found, Awario assigns a reach number. A more popular bl
     </tr>
 </table>
 
-Finally, you should understand that your awareness rank drives your growth score. To  receive a Growth score, your app must achieve reach rank of at least 1,000 in the month
+Finally, you should understand that your awareness rank drives your growth score. To receive a Growth score, your app must achieve reach rank of at least 1,000 in the month. Scores are run on GMT, not your own local timezone. Therefore any mention needs to occur within the past calendar month according to GMT.
 
 
 ### Tips for maximizing your Awario score
