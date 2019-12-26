@@ -296,7 +296,7 @@ Now, let's register a name using the `names.clar` contract. Names can _only_ be 
 5. Lookup the "owner address" for the name:
 
     ```bash
-    # echo "(get owner (map-get name-map (tuple (name 10))))" | clarity-cli eval $DEMO_ADDRESS.names /data/db
+    # echo "(get owner (map-get? name-map (tuple (name u10))))" | clarity-cli eval $DEMO_ADDRESS.names /data/db
     Program executed successfully! Output: 
     (some 'SP2Y8T8RWWXFR8S1XBP6K0MHCQF01D552FSWD9M4E)
     ```
