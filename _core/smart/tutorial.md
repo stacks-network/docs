@@ -305,4 +305,4 @@ Now, let's register a name using the `names.clar` contract. Names can _only_ be 
 {:.no_toc}
 
 * <a href="clarityRef.html">Clarity Language Reference</a>
-* <a href="clarityRef.html">clarity-cli command line</a>
+* <a href="clarityCLI.html">clarity-cli command line</a>
