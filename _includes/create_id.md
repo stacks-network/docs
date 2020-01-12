@@ -48,7 +48,7 @@ To create an initial Blockstack ID, do the following:
 
 5. Click **Secret Recovery Key** to record your key.
 
-    The system warns you to ave your key:
+    The system warns you to save your key:
 
     ![]({{ site.baseurl }}/browser/images/secret-key-recovery.png)
 
