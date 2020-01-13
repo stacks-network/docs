@@ -297,7 +297,7 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
 
    {% include note.html content="Your firewall may warn you about the application requesting internet access, you must allow this access to proceed." %}
 
-2. From the initial Animal Kingdom screen, choose an animal person and a territory.
+2. From the initial Animal Kingdom screen, choose an animal persona and a territory.
 
    <img src="images/initialkingdom.png" alt="">
 

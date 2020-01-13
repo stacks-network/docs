@@ -282,7 +282,7 @@ of the key packages `npm` installs for you is the Blockstack Javascript library.
    Kingdom application. Once the code is packaged, the DApp opens Animal Kingdom
    running at the `http://localhost:3000` URL in your browser.
 
-2. From the initial Animal Kingdom screen, choose an animal person and a territory.
+2. From the initial Animal Kingdom screen, choose an animal persona and a territory.
 
    <img src="images/initialkingdom.png" alt="">
 
