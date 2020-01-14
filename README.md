@@ -91,9 +91,45 @@ As of 8/12/19 Clarity is in the [develop](https://github.com/blockstack/blocksta
 5. Build the docker image
 6. Run doc gen with the new image
 
-```
+    ```
    $ docker run --name docsbuild -it blockstack-test blockstack-core docgen | jsonpp > ~/repos/docs.blockstack/_data/clarityRef.json
-```
+    ```
+## To view the clarity cli
+
+You can view [the source code](https://github.com/blockstack/blockstack-core/blob/develop/src/clarity.rs).
+
+1. Pull the Blockstack core clarity-developer-preview image from Docker Hub.
+
+   ```bash
+    $ docker pull blockstack/blockstack-core:clarity-developer-preview
+   ```
+
+2. Start the Blockstack Core test environment with a Bash shell.
+
+    ```bash
+    $ docker run -it -v $HOME/blockstack-dev-data:/data/ blockstack/blockstack-core:clarity-developer-preview bash
+    ```
+
+    The command launches a container with the Clarity test environment and opens a bash shell into the container.
+
+3. Run the clarity-cli in the shell.
+
+    ```bash
+    root@5b9798633251:/src/blockstack-core# clarity-cli
+    Usage: clarity-cli [command]
+    where command is one of:
+
+    initialize         to initialize a local VM state database.
+    mine_block         to simulated mining a new block.
+    get_block_height   to print the simulated block height.
+    check              to typecheck a potential contract definition.
+    launch             to launch a initialize a new contract in the local state database.
+    eval               to evaluate (in read-only mode) a program in a given contract context.
+    eval_raw           to typecheck and evaluate an expression without a contract or database context.
+    repl               to typecheck and evaluate expressions in a stdin/stdout loop.
+    execute            to execute a public function of a defined contract.
+    generate_address   to generate a random Stacks public address for testing purposes.
+    ```
 
 
 # Technology Reference

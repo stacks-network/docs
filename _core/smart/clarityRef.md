@@ -132,6 +132,15 @@ Response types represent the result of a public function. Use this type to indic
 
 Response types contain two subtypes -- a response type in the event of `ok` (that is, a public function returns an integer code on success) and an `err` type (that is, a function returns a buffer on error).
 
+### Algebraic
+
+Clarity supports limited algebraic data types, it has an `(optional A)` type and a `(response A B)` type.  An `(optioanl A)` type can either be `(some A)` or `(none)`, and a `(response A B)` type can either be `(ok A)` or `(err B)`.  For example, `(some u3)` and `(none)` would have type `(optional uint)`, and `(ok \"woot!\")` and `(err 'false)` would have type `(response (buff 5) bool)`.
+
+The algebraic data types have two variants (e.g. `(some ...)` or `(none)`; `(ok ...)` or `(err ...)`).
+
+The `default-to`, `expects`, and `expects-err!` functions unpack algebraic data types. To *unpack* means to extract one of the "inner" types.  Unpacking an `(optional A)` means to do something to get at `A`, and unpacking `(response A B)` means to do something to get at ether `A` or `B` (where "do something" is specific to the function doing the unpacking). The built-in functions that "unpack" an algebraic data type each behave differently.  
+
+
 ## Keyword reference
 
 {% capture keyword_list %}

@@ -65,9 +65,9 @@ If you haven't already done so, use the `cat` or `more` command to display the `
 The first lines of the `tokens.clar` program contains a user-defined `get-balance` function.  
 
 ```cl
-(define-map tokens ((account principal)) ((balance int)))
+(define-map tokens ((account principal)) ((balance uint)))
 (define-private (get-balance (account principal))
-  (default-to 0 (get balance (map-get tokens (tuple (account account))))))
+  (default-to u0 (get balance (map-get? tokens (tuple (account account))))))
 ```
 
 `get-balance` is a private function because it is constructed with the `define-private` call. To create public functions, you would use the `define-public` function. Public functions can be called from other contracts or even from the command line with the `clarity-cli`.
@@ -79,12 +79,12 @@ Along with the `principal` types, Clarity supports  booleans, integers, and fixe
 The next sequence of lines shows an `if` statement that allows you to set conditions for execution in the language. 
 
 ```cl
-(define-private (token-credit! (account principal) (amount int))
-  (if (<= amount 0)
+(define-private (token-credit! (account principal) (amount uint))
+  (if (<= amount u0)
       (err "must move positive balance")
       (let ((current-amount (get-balance account)))
         (begin
-          (map-set! tokens (tuple (account account))
+          (map-set tokens (tuple (account account))
                       (tuple (balance (+ amount current-amount))))
           (ok amount)))))
 ```
@@ -94,21 +94,21 @@ Every smart contract has both a data space and code. The data space of a contrac
 In the first `token-transfer` public function, you see that it calls the private `get-balance` function and passes it `tx-sender`. The `tx-sender` is a globally defined variable that represents the current principal.
 
 ```cl
-(define-public (token-transfer (to principal) (amount int))
+(define-public (token-transfer (to principal) (amount uint))
   (let ((balance (get-balance tx-sender)))
-    (if (or (> amount balance) (<= amount 0))
+    (if (or (> amount balance) (<= amount u0))
         (err "must transfer positive balance and possess funds")
         (begin
-          (map-set! tokens (tuple (account tx-sender))
+          (map-set tokens (tuple (account tx-sender))
                       (tuple (balance (- balance amount))))
           (token-credit! to amount)))))
 
-(define-public (mint! (amount int))
+(define-public (mint! (amount uint))
    (let ((balance (get-balance tx-sender)))
      (token-credit! tx-sender amount)))
 
-(token-credit! 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 10000)
-(token-credit! 'SM2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQVX8X0G 300)
+(token-credit! 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR u10000)
+(token-credit! 'SM2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQVX8X0G u300)
 ```
 
 The final two lines of the program pass a principal, represented by a Stacks address, and an amount to the private user-defined `token-credit` function.
@@ -234,7 +234,7 @@ In this section, you use the public `mint!` function in the  `tokens` contract t
 2. Try minting some tokens and sending them to an address we'll use for our demo.
 
     ```bash
-    # clarity-cli execute /data/db $DEMO_ADDRESS.tokens mint! $DEMO_ADDRESS 100000
+    # clarity-cli execute /data/db $DEMO_ADDRESS.tokens mint! $DEMO_ADDRESS u100000
     Transaction executed and committed. Returned: 100000
     ```
 
@@ -271,7 +271,7 @@ Now, let's register a name using the `names.clar` contract. Names can _only_ be 
 2. Preorder the name using the _execute_ command:
 
     ```bash
-    # clarity-cli execute /data/db $DEMO_ADDRESS.names preorder $DEMO_ADDRESS 0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde 1000
+    # clarity-cli execute /data/db $DEMO_ADDRESS.names preorder $DEMO_ADDRESS 0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde u1000
     e077b50c3a48fde 1000
     Transaction executed and committed. Returned: 0
     ```
