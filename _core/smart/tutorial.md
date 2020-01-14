@@ -234,7 +234,7 @@ In this section, you use the public `mint!` function in the  `tokens` contract t
 2. Try minting some tokens and sending them to an address we'll use for our demo.
 
     ```bash
-    # clarity-cli execute /data/db $DEMO_ADDRESS.tokens mint! $DEMO_ADDRESS 100000
+    # clarity-cli execute /data/db $DEMO_ADDRESS.tokens mint! $DEMO_ADDRESS u100000
     Transaction executed and committed. Returned: 100000
     ```
 
@@ -271,7 +271,7 @@ Now, let's register a name using the `names.clar` contract. Names can _only_ be 
 2. Preorder the name using the _execute_ command:
 
     ```bash
-    # clarity-cli execute /data/db $DEMO_ADDRESS.names preorder $DEMO_ADDRESS 0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde 1000
+    # clarity-cli execute /data/db $DEMO_ADDRESS.names preorder $DEMO_ADDRESS 0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde u1000
     e077b50c3a48fde 1000
     Transaction executed and committed. Returned: 0
     ```
