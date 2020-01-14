@@ -9,9 +9,13 @@
   - develop/add_auth
   - develop/storage
   - develop/profiles
-  - develop/collections
   - develop/deploy-tips
   - develop/betatesting
+
+- title: Data Portability (Preview)
+  docs:
+  - develop/collections
+  - develop/collection-type
 
 - title: Try it! Zero to DApp
   docs:
