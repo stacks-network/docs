@@ -22,13 +22,11 @@ npm install -g blockstack-collections
 
 You should also familiarize yourself with the <a href="https://github.com/blockstack/blockstack-collections/blob/master/src/types/collection.ts" target="_blank">Collection</a> class and review <a href="https://github.com/blockstack/blockstack-collections/tree/master/src/types" type="_blank">the existing Collection types</a>. Keep in mind, someone else may have already added a custom type similar to what you want to add.
 
-Collection types must be written in a `.ts` (Typescript) file. Typescript is a typed superset of Javascript, you can <a href="https://www.typescriptlang.org/" target="_blank">read the language documentation</a> to learn more.
-
-{% include question.html content="My assumption is they have to use typescript .ts files but can the file itself simply contain Javascipt?"%}
+Collection types can be written in `.js` Javascript or `.ts` (Typescript) files. Typescript is a typed superset of Javascript, you can <a href="https://www.typescriptlang.org/" target="_blank">read the language documentation</a> to learn more.
 
 ## Essential steps for creating a Collection type 
 
-Follow these steps to create a new collection type:
+This section demonstrates how to create a new collection type using Typescript. While this is written in Typescript, the steps in Javascript are the same. Follow these steps to create a new collection type:
 
 1. Create a new `.ts` file and open it for editing.
 2. Import the `Collection` class.
@@ -157,7 +155,4 @@ To publish your Collection type, do the following:
 
 1. Clone or fork the <a href="https://github.com/blockstack/blockstack-collections" target="_blank">blockstack-collections</a> repo.
 2. Add your new type file to the `src/types` subdirectory.
-3. Create a pull request back to the repository. 
-
-
-{% include question.html content="Are we testing submission code in any way?"%}
+3. Create a pull request back to the `blockstack-collection` repository. 
