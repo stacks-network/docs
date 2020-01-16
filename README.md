@@ -2,6 +2,8 @@
 
 ## How the Documentation is Organized
 
+
+
 <table>
   <tr>
     <th>Directory</th>
@@ -9,14 +11,96 @@
      <th>Notes</th>
   </tr>
   <tr>
-    <td>```bash,npm install --save radiks,```</td>
-    <td>```bash,yarn add radiks,```</td>
+    <td>_android</td>
+    <td></td>
+   <td></td>
   </tr>
   <tr>
+    <td>_browser</td>
     <td></td>
     <td></td>
   </tr>
-</table>
+  <tr>
+    <td>_commong</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>_core</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>_data</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>_develop</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>_faqs</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+  <td>_includes</td>
+    <td></td>
+    <td></td>
+  </tr>
+    <tr>
+    <td>_ios</td>
+    <td></td>
+    <td></td>
+  </tr>
+<tr>
+    <td>_layouts</td>
+    <td></td>
+    <td></td>
+</tr>
+  <tr>
+    <td>_org</td>
+    <td></td>
+    <td></td>
+  </tr>
+   <tr>
+    <td>_plugins</td>
+    <td></td>
+    <td></td>
+  </tr> 
+  <tr>
+    <td>_posts</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>_sass</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>_storage</td>
+    <td></td>
+    <td></td>
+  </tr>
+ <tr>
+    <td>assets</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>exclude</td>
+    <td></td>
+    <td></td>
+  </tr>
+    <tr>
+    <td>news</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </table>
 
 
 

@@ -90,7 +90,7 @@ paginate: 10
 paginate_path:      "/news/:num/"
 
 # Path to post content assets directory i.e post images, pdfs etc
-post_assets:        /assets/posts/
+# post_assets:        /assets/posts/
 #keep_files:  (`/images/`)
 
 
