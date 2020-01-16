@@ -1,7 +1,26 @@
-# README for the documentation site
+# README: Overview Documentation Repository
+
+## How the Documentation is Organized
+
+<table>
+  <tr>
+    <th>Directory</th>
+    <th>Purpose</th>
+     <th>Notes</th>
+  </tr>
+  <tr>
+    <td>```bash,npm install --save radiks,```</td>
+    <td>```bash,yarn add radiks,```</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 
 
-## Building after a fork
+
+## 
 
 ## Run locally
 
