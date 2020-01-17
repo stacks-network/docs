@@ -63,3 +63,16 @@ demonstrate that they control _that_ address. This is achieved via the
 authentication token which is a message _signed_ by the private key associated
 with that address. The message itself is a challenge text, returned via the
 `/hub_info/` endpoint.
+
+Reads can be done by everybody. The URLs to a user's app data are in a canonical location in their profile. For example, here's how you would get data from the
+￼ [Banter](https://banter.pub/) app, stored under the Blockstack ID `gavin.id`.
+￼
+￼ 1. Get the bucket URL
+￼ `bash ￼ $ BUCKET_URL="$(curl -sL https://core.blockstack.org/v1/users/gavin.id | jq -r '."gavin.id"["profile"]["apps"]["https://banter.pub"]')" ￼ $ echo "$BUCKET_URL" ￼ https://gaia.blockstack.org/hub/16E485MVpR3QpmjVkRgej7ya2Vnzu3jyTR/ ￼`
+￼
+￼ 2. Get the data
+￼ `bash ￼ $ curl -sL "${BUCKET_URL%%/}/Message/3e866af471d0-4072-beba-06ad1e7ad4bd" ￼ {"content":"Anyone here?","votes":[],"createdBy":"gavin.id",...} ￼`
+
+This data is public and unencrypted. The same works for encrypted data.
+Only the holder of the private key used for
+encryption would be able to decrypt the data.
