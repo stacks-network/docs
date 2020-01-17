@@ -13,7 +13,7 @@ Directories that contain only content
   </tr>
   <tr>
     <td>_android</td>
-    <td>SDK tutorial. Part of the [developer menu](https://github.com/blockstack/docs.blockstack/blob/master/_data/navigation_learn.yml).</td>
+    <td>SDK tutorial. Part of the <a href="https://github.com/blockstack/docs.blockstack/blob/master/_data/navigation_learn.yml">developer menu</a>.</td>
    <td></td>
   </tr>
   <tr>
