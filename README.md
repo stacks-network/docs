@@ -3,6 +3,59 @@
 ## How the Documentation is Organized
 
 
+Directories that contain only content
+
+<table>
+  <tr>
+    <th>Directory</th>
+    <th>Purpose</th>
+     <th>Technical Repo(s)</th>
+  </tr>
+  <tr>
+    <td>_android</td>
+    <td>SDK tutorial. Part of the [developer menu](https://github.com/blockstack/docs.blockstack/blob/master/_data/navigation_learn.yml).</td>
+   <td></td>
+  </tr>
+  <tr>
+    <td>_browser</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>_commong</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>_core</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>_develop</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+  <td>_includes</td>
+    <td></td>
+    <td></td>
+  </tr>
+    <tr>
+    <td>_ios</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>_org</td>
+    <td></td>
+    <td></td>
+  <tr>
+    <td>_storage</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </table>
 
 <table>
   <tr>
