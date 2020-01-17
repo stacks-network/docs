@@ -9,7 +9,8 @@ To create an initial Blockstack ID, do the following:
 2. Choose **Create new ID**.
 
    The browser prompts you to register a unique username in the `id.blockstack`
-   domain. This is a free Blockstack identity and the format of
+   domain. The username must be between 8 and 38 letter longs and can only contain characters, numbers and underscore (`_`).
+   This is a free Blockstack identity and the format of
    the ID is:
 
    _`username`_`.id.blockstack`
