@@ -3,7 +3,7 @@
 ## How the Documentation is Organized
 
 
-Directories that contain only content
+Directories that contain information used to build content.
 
 <table>
   <tr>
@@ -34,7 +34,12 @@ Directories that contain only content
   <tr>
     <td>_develop</td>
     <td>Information for application miners covers using the Javascript library, our mobile SDKs, and the concepts hat support them. Navigation controlled by <a href="https://github.com/blockstack/docs.blockstack/blob/master/_data/navigation_learn.yml">developer menu</a> </td>
-    <td>This information was never associated with a single repo. Much of it does rely heavily on<a href="https://github.com/blockstack/blockstack.js">https://github.com/blockstack/blockstack.js</a>.</td>
+    <td>This information was never associated with a single repo. Much of it does rely heavily on <a href="https://github.com/blockstack/blockstack.js">https://github.com/blockstack/blockstack.js</a>.</td>
+  </tr>
+    <tr>
+    <td>_faqs</td>
+    <td>Contains a JSON source file for all the FAQs. The JSON in this directory</td>
+    <td></td>
   </tr>
   <tr>
   <td>_includes</td>
@@ -48,11 +53,11 @@ Directories that contain only content
   </tr>
   <tr>
     <td>_org</td>
-    <td>Information for Stacks holders and people curious about what Blockstack does. User docs controlled by in the the <a href="https://github.com/blockstack/docs.blockstack/blob/master/_data/navigation_org.yml">organization menu</a></td>
+    <td>Information for Stacks holders and people curious about what Blockstack does. Appear in the the <a href="https://github.com/blockstack/docs.blockstack/blob/master/_data/navigation_org.yml">organization menu</a></td>
     <td>Not associated with any repository.</td>
   <tr>
     <td>_storage</td>
-    <td></td>
+    <td>Information for developers using storage in their apps or creating Gaia servers. Appear in the the <a href="https://github.com/blockstack/docs.blockstack/blob/master/_data/navigation_storage.yml">storage menu</a></td>
        <td><a href="https://github.com/blockstack/blockstack-gaia">https://github.com/blockstack/blockstack-gaia</a></td>
   </tr>
   </table>
@@ -73,11 +78,7 @@ Directories that contain only content
     <td></td>
     <td></td>
   </tr>
-  <tr>
-    <td>_faqs</td>
-    <td></td>
-    <td></td>
-  </tr>
+
   <tr>
   <td>_includes</td>
     <td></td>
@@ -247,6 +248,58 @@ You can view [the source code](https://github.com/blockstack/blockstack-core/blo
     generate_address   to generate a random Stacks public address for testing purposes.
     ```
 
+## Understand how the shared FAQs work
+
+The FAQ system servers single-sourced content that support the FAQs that appear in blockstack.org, app.co, and stacks.com site. JSON files are created by the Jekyll build and served through the documentation site. Single sourcing the content ensures that FAQs are the same regardless of which property they appear in. These files participate in the FAQ
+
+<table>
+  <tr>
+    <th>File </th>
+    <th>Contains</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <td>_faqs/allfaqs.json</td>
+    <td>Liquid to generate JSON from theFAQS.json</td>
+    <td>Serves up the FAQs that are consumed by the blockstack.org and stacks.com sites.</td>
+  </tr>
+  <tr>
+    <td>_develop/faq-data.json</td>
+    <td>Liquid to generate JSON from appFAQ.json.</td>
+    <td>Serves up the FAQs that are consumed by the app.co site. <br><br>NOTE: App.co was never changed to pull from the same file as blockstack.org. </td>
+  </tr>
+  <tr>
+    <td>_faqs/allFAQs.md</td>
+    <td>Liquid and headings.</td>
+    <td>Reads the _data/theFAQs.json and produces a Markdown file for display in our site.</td>
+  </tr>
+  <tr>
+    <td>_data/theFAQs.json</td>
+    <td>JSON for the FAQS.</td>
+    <td>Source file for all the FAQs.</td>
+  </tr>
+  <tr>
+    <td>_data/appFAQ.json</td>
+    <td>JSON for the app mining FAQs.</td>
+    <td>Source file for the application mining FAQs.</td>
+  </tr>
+  <tr>
+    <td>_develop/appMiningFAQ.md</td>
+    <td>Liquid to extract the app mining FAQs from the allFAQs.json file.</td>
+    <td>Display just the app mining FAQs in the docs.</td>
+  </tr>
+</table>
+
+FAQs are usually written internally by a team that are unfamiliar with markdown or HTML used in websites. So, FAQs are produced using this process:
+
+1. Draft new or revised FAQs in a Google or Paper document.
+2. Review the drafts and approve them.
+3. Convert the FAQ document to HTML.
+4. Strip out the unnecessary codes such as `id` or `class` designations. 
+   This leaves behind plain html.
+5. Add the new FAQs to the `_data/theFAQS.json` file.
+   Currently this is manually done through cut and paste. 
+6. Copy the JSON for `appminers` categories to the `_data/appFAQ.json` file
 
 # Technology Reference
 
