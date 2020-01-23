@@ -38,13 +38,13 @@ Directories that contain information used to build content.
   </tr>
     <tr>
     <td>_faqs</td>
-    <td>Contains a JSON source file for all the FAQs. The JSON in this directory</td>
-    <td></td>
+    <td>Contains files for single-sourcing all the FAQs. The Blockstack docs has a single page that <a href="https://docs.blockstack.org/faqs/allfaqs" target="_blank">lists all the faqs</a>; then several pages in different sections re-use this information. See the FAQs section below for detail about how these files figure into FAQS.</td>
+    <td>Not related to repo.</td>
   </tr>
   <tr>
   <td>_includes</td>
-    <td>Information reused (markdown or html) in many places, common html used in pages and notes.</td>
-    <td></td>
+    <td>Information reused (markdown or html) in many places, common html used in pages and notes. </td>
+    <td>These files don't correspond to a repository.</td>
   </tr>
     <tr>
     <td>_ios</td>
@@ -69,13 +69,8 @@ Directories that contain information used to build content.
      <th>Notes</th>
   </tr>
   <tr>
-    <td>_common</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
     <td>_data</td>
-    <td></td>
+    <td>Source files for the FAQS.</td>
     <td></td>
   </tr>
 
@@ -250,7 +245,19 @@ You can view [the source code](https://github.com/blockstack/blockstack-core/blo
 
 ## Understand how the shared FAQs work
 
-The FAQ system servers single-sourced content that support the FAQs that appear in blockstack.org, app.co, and stacks.com site. JSON files are created by the Jekyll build and served through the documentation site. Single sourcing the content ensures that FAQs are the same regardless of which property they appear in. These files participate in the FAQ
+The FAQ system servers single-sourced content that support the FAQs that appear in blockstack.org, app.co, and stacks.com site. We have FAQs that fall into these categories:
+
+* general 
+* appusers
+* dappdevs
+* appminers
+* coredevs
+* opensource
+* miscquest
+* wallet  (Wallet users)
+* tokens (Stacks owners)
+
+FAQ content is created by the Jekyll build and served throughout the documentation site. Single sourcing the content ensures that FAQs are the same regardless of where and on which property they appear in. These files participate in the FAQ:
 
 <table>
   <tr>
@@ -299,7 +306,8 @@ FAQs are usually written internally by a team that are unfamiliar with markdown 
    This leaves behind plain html.
 5. Add the new FAQs to the `_data/theFAQS.json` file.
    Currently this is manually done through cut and paste. 
-6. Copy the JSON for `appminers` categories to the `_data/appFAQ.json` file
+6. Copy the JSON for `appminers` categories to the `_data/appFAQ.json` file.
+
 
 # Technology Reference
 
