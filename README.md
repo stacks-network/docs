@@ -70,23 +70,23 @@ These are the other directories in the site structure:
     <th>Purpose</th>
   </tr>
   <tr>
-    <td>_data</td>
+    <th>_data</th>
     <td>JSON source files for the FAQS, CLI, and clarity reference. Menu configurations YAML files. The CSV file with the glossary. </td>
   </tr>
 <tr>
-    <td>_layouts</td>
+    <th>_layouts</th>
     <td>Layouts for various pages. The community layout is significantly different from the other layouts.</td>
 </tr>
    <tr>
-    <td>_plugins</td>
+    <th>_plugins</th>
     <td>Code files for plugins.</td>
   </tr> 
   <tr>
-    <td>_sass</td>
+    <th>_sass</th>
     <td>Style folder including customizations.</td>
   </tr>
  <tr>
-    <td>assets</td>
+    <th>assets</th>
     <td>Support for the docs templates.</td>
   </tr>
   </table>
