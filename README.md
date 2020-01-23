@@ -62,52 +62,32 @@ Directories that contain information used to build content.
   </tr>
   </table>
 
+These are the other directories in the site structure:
+
 <table>
   <tr>
     <th>Directory</th>
     <th>Purpose</th>
-     <th>Notes</th>
   </tr>
   <tr>
     <td>_data</td>
-    <td>Source files for the FAQS.</td>
-    <td></td>
-  </tr>
-
-  <tr>
-  <td>_includes</td>
-    <td></td>
-    <td></td>
+    <td>JSON source files for the FAQS, CLI, and clarity reference. Menu configurations YAML files. The CSV file with the glossary. </td>
   </tr>
 <tr>
     <td>_layouts</td>
-    <td></td>
-    <td></td>
+    <td>Layouts for various pages. The community layout is significantly different from the other layouts.</td>
 </tr>
    <tr>
     <td>_plugins</td>
-    <td></td>
-    <td></td>
+    <td>Code files for plugins.</td>
   </tr> 
   <tr>
-    <td>_posts</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
     <td>_sass</td>
-    <td></td>
-    <td></td>
+    <td>Style folder including customizations.</td>
   </tr>
  <tr>
     <td>assets</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>exclude</td>
-    <td></td>
-    <td></td>
+    <td>Support for the docs templates.</td>
   </tr>
   </table>
 
