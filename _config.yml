@@ -84,13 +84,13 @@ google:
     container_id: GTM-TPGGRT5
 
 # Number of posts displayed on blog page
-paginate: 10
+# paginate: 10
 
 # Blog path
-paginate_path:      "/news/:num/"
+# paginate_path:      "/news/:num/"
 
-# Path to post content assets directory i.e post images, pdfs etc
-post_assets:        /assets/posts/
+# Path to  content assets directory i.e post images, pdfs etc
+post_assets:        /assets/img/
 #keep_files:  (`/images/`)
 
 
