@@ -1,7 +1,51 @@
 # README: Overview Documentation Repository
 
-## How the Documentation is Organized
+This README explains the user cases, source file organization, and procedures for building the Blockstack documentation.  You can find the documentation at https://docs.blockstack.com
 
+## Use Cases
+
+Blockstack is a ecosystem build around a platform. There are several types of users to support with the documentation. Types are exist when they can operate within a vertical of the ecosystem.  These are the users that can appear within this ecosystem and that the docs must support.
+
+<table>
+  <tr>
+    <th>Users</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <th>STX holders</th>
+    <td>Users who have purchased STX and who use our wallet to move STX holdings. These users want to know about Blockstack as a company and STX as an investment token. They have a Blockstack identity, they use the Blockstack wallet, and may also use the Blockstack explorer.</td>
+  </tr>
+  <tr>
+    <th>DApp users</th>
+    <td>Users who make use of applications built on the Blockstack platform. These users have a Blockstack identity and typically use the Blockstack Browser at some point.</td>
+  </tr>
+  <tr>
+    <th>Dapp developers or DApp miners</th>
+    <td>Users who develop applications on the Blockstack platform. These users may be application miners but are not always. Special content exists for developers that are also miners.</td>
+  </tr>
+  <tr>
+    <th>Hub Providers</th>
+    <td>Users who sell or maintain a Gai services are hub providers.  They may also be application miners but need not be. These users may be more devops user types as opposed to developers.</td>
+  </tr>
+  <tr>
+    <th>Core service programmers</th>
+    <td>These are users that provide Blockstack CORE servers or who write Clarity contracts. These are also users who build wallets or explorers into the Blockstack platform.</td>
+  </tr>
+</table>
+
+Finally, a key user set but seldom mentioned for any company docs is the company employees. These users are expected to make use of the documentation when onboarding or to support other users.
+
+## Documentation backend
+
+Our documentation is written in Markdown (`.md`), built using [Jekyll](https://jekyllrb.com/), and deployed to a Netlify server. Serving the content from Netlify allows us to use functionality (plugins/javascript) not supported with standard GitHub pages. 
+
+Blockstack versions it source files in a public GitHub repo (duh :smile). You can submit changes by cloning, forking, and submitting a pull request. You can also make use of the **Edit this page on GitHub** link from any https://docs.blockstack.org page.
+
+Some content is single sourced. Modifying single source content requires an understanding of that concept, how it works with Liquid tags, and the organization of this repo's source files.
+
+[UIKit](https://getuikit.com/docs/introduction) provides the documentation theme. There is explicit use of HTML plus UIKit components directly in files where needed for special layouts. And there is use of CSV and JSON source files transformed with [Liquid template language](https://help.shopify.com/en/themes/liquid) to produce reference content.
+
+## How the Source Files are Organized
 
 Directories that contain information used to build content.
 
@@ -93,19 +137,16 @@ These are the other directories in the site structure:
 
 
 
-## 
+## Building the documentation source for display
+
+If you are making significant changes to the documentation, you should build and view the entire set locally before submitting a PR.
 
 ## Run locally
 
 To run locally:
 
-1. Get the content from the downstream repos.
-
-    ```
-    ./get-content.sh
-    ```
-
-3. Build and serve locally.
+1. Install Jekyll into your workstation environment
+2. Build and serve locally.
 
    ```
    bundle exec jekyll serve --config _config.yml,staticman.yml
@@ -116,35 +157,55 @@ To run locally:
    ```
    JEKYLL_ENV=production bundle exec jekyll serve --config _config.yml
    ```
-
-## Deploy via Netlify
-
-To deploy to Netlify:
-
-1. Build the site.
-
-    ```
-    JEKYLL_ENV=production bundle exec jekyll build --config _config.yml
-    ```
-2. Force add the `_site` directory.
-
-    ```
-    git push -f origin
-    ```
-
 ## Test a Deploy with Surge
 
+You can also do a test deploy using a tool like [Surge](https://surge.sh/).
 
 ```
 cd _site
 surge
 ```
 
-```
-surge --domain raspy-songs.surge.sh
-```
+Make sure you delete the deployed Surge domain when you are done. Using the `teardown` command.
 
-# To generate the CLI json manually
+```
+  surge – single command web publishing. (v0.21.3)
+
+  Usage:
+    surge <project> <domain>
+
+  Options:
+    -a, --add           adds user to list of collaborators (email address)
+    -r, --remove        removes user from list of collaborators (email address)
+    -V, --version       show the version number
+    -h, --help          show this help message
+
+  Additional commands:
+    surge whoami        show who you are logged in as
+    surge logout        expire local token
+    surge login         only performs authentication step
+    surge list          list all domains you have access to
+    surge teardown      tear down a published project
+    surge plan          set account plan
+
+  Guides:
+    Getting started     surge.sh/help/getting-started-with-surge
+    Custom domains      surge.sh/help/adding-a-custom-domain
+    Additional help     surge.sh/help
+
+  When in doubt, run surge from within your project directory.
+  ```
+
+## Deployment of the site
+
+The documentation is deployed to Netlify using the following command:
+
+    ```
+    JEKYLL_ENV=production bundle exec jekyll build --config _config.yml
+
+## Generated documentation
+
+### To generate the CLI json manually
 
 The `_data/cliRef.json` file is generated from the `blockstack-cli` subcommand `docs`. This data file is consumed by the `_includes/commandline.md` file which is used to serve up the reference.  
 
@@ -160,7 +221,7 @@ The `_data/cliRef.json` file is generated from the `blockstack-cli` subcommand `
 
    If you run into any problem in the generation usually it results from a problem in the repo. You can make a pull request back to the repo to fix anything.
 
-## Clarity Reference
+### Clarity Reference
 
 As of 8/12/19 Clarity is in the [develop](https://github.com/blockstack/blockstack-core/tree/develop) branch of core.  You can build the Clarity command line from the Docker image. `core/src/vm/docs/mod.rs`
 
@@ -186,7 +247,16 @@ As of 8/12/19 Clarity is in the [develop](https://github.com/blockstack/blocksta
     ```
    $ docker run --name docsbuild -it blockstack-test blockstack-core docgen | jsonpp > ~/repos/docs.blockstack/_data/clarityRef.json
     ```
-## To view the clarity cli
+    
+    This generates the JSON source files which are consumed through Liquid templates into markdown.
+
+7. Rebuild the documentation site with Jekyll.
+
+8. Review the changes in the Clarity documentation to ensure that no breaking changes were introduced through code changes.
+
+9. If you find the documentation is no longer formatting correctly or there are errors in the reference, create a PR against the `blockstack-core` repo.
+
+### View and test the clarity cli
 
 You can view [the source code](https://github.com/blockstack/blockstack-core/blob/develop/src/clarity.rs).
 
@@ -237,7 +307,20 @@ The FAQ system servers single-sourced content that support the FAQs that appear 
 * wallet  (Wallet users)
 * tokens (Stacks owners)
 
-FAQ content is created by the Jekyll build and served throughout the documentation site. Single sourcing the content ensures that FAQs are the same regardless of where and on which property they appear in. These files participate in the FAQ:
+FAQs are usually written internally by a team that are unfamiliar with markdown or HTML used in websites. So, FAQs are produced using this process:
+
+1. Draft new or revised FAQs in a Google or Paper document.
+2. Review the drafts and approve them.
+3. Convert the FAQ document to HTML.
+4. Strip out the unnecessary codes such as `id` or `class` designations. 
+   This leaves behind plain html.
+5. Add the new FAQs to the `_data/theFAQS.json` file.
+   Currently this is manually done through cut and paste. 
+6. Copy the JSON for `appminers` categories to the `_data/appFAQ.json` file.
+7. Run the Jekyll build and verify the content builds correctly by viewing this `LOCAL_HOST/faqs/allfaqs`
+8. Push your changes to the site and redeploy.
+
+ Single sourcing the content ensures that FAQs are the same regardless of where and on which property they appear in. These source files play a role in the FAQ single-sourcing layout:
 
 <table>
   <tr>
@@ -276,17 +359,6 @@ FAQ content is created by the Jekyll build and served throughout the documentati
     <td>Display just the app mining FAQs in the docs.</td>
   </tr>
 </table>
-
-FAQs are usually written internally by a team that are unfamiliar with markdown or HTML used in websites. So, FAQs are produced using this process:
-
-1. Draft new or revised FAQs in a Google or Paper document.
-2. Review the drafts and approve them.
-3. Convert the FAQ document to HTML.
-4. Strip out the unnecessary codes such as `id` or `class` designations. 
-   This leaves behind plain html.
-5. Add the new FAQs to the `_data/theFAQS.json` file.
-   Currently this is manually done through cut and paste. 
-6. Copy the JSON for `appminers` categories to the `_data/appFAQ.json` file.
 
 
 # Technology Reference
