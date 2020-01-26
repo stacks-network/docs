@@ -7,7 +7,7 @@ permalink: /:collection/:path.html
 
 {:.no_toc}
 
-Blockstack Auth provides single sign on and authentication without third parties or remote servers. On this page, you'll get an overview of authentication from a developer and user perspective. The following topics are covered:
+Blockstack Auth provides single sign in and authentication without third parties or remote servers. On this page, you'll get an overview of authentication from a developer and user perspective. The following topics are covered:
 
 * TOC
 {:toc}
