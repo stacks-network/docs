@@ -130,13 +130,26 @@ If you are using `blockstack.js` version 18 or earlier, you must use the Radiks 
     Successfully added user: { "user" : "admin", "roles" : [ "readWrite", "dbAdmin" ] }
     ```
 
-### Configure your application to use 
+4. Create an `MONGODB_URI` environment variable on the same machine where you are running the `radiks-server`.
+
+   Use the `mongodb://username:password@host:port/db_name` format for your variable. For example, to set this variable in a `bash` shell:
+
+   ```bash
+   export MONGODB_URI="mongodb://admin:foobar1@localhost:27017/test1"
+   ```
 
 
+## Task 3. Add startup code and build your application
 
-3. Configure your application to use your `radiks-server`.
-  
-    To configure your applciation as a `radiks` client, use code that looks like this when starting up your application:
+To set up radiks.js, you only need to configure the URL that your Radiks-server instance is running on. If you're using the pre-built Radiks server, this will be `http://localhost:1260`. If you're in production or are using a custom Radiks server, you'll need to specify exactly which URL it's available at.
+
+Radiks also is compatible with version 19 of blockstack.js, which requires you to configure a `UserSession` object to handle all user-data-related methods. You'll need to define this and pass it to your Radiks configuration, so that Radiks can know how to fetch information about the current logged in user.
+
+### Configure your application to use your `radiks-server`.
+
+To configure your application as a `radiks` client, do the following:
+
+1. Start your application so that a `UserSession` allows the app to both write and publish data:
 
     ```js
      import { UserSession, AppConfig } from 'blockstack';
@@ -152,96 +165,33 @@ If you are using `blockstack.js` version 18 or earlier, you must use the Radiks 
      });
     ```
  
-   For more information on configuring and writing a Radiks a client application, see [the Radiks client](https://github.com/blockstack-radiks/radiks) repository. 
+ 2. Add authentication to your application 
 
+    After your user logs in with Blockstack, you'll have some code to save the user's data in your applications `localStorage`. You'll want to use the same `UserSession` you configured with Radiks, which can be fetched from the `getConfig` method.
 
-4. Create an `MONGODB_URI` environment variable on the same machine where you are running the `radiks-server`.
+    ```js
+    import { User, getConfig } from 'radiks';
 
-   Use the `mongodb://username:password@host:port/db_name` format for your variable. For example, to set this variable in a `bash` shell:
+    const handleSignIn = () => {
+      const { userSession } = getConfig();
+      if (userSession.isSignInPending()) {
+        await userSession.handlePendingSignIn();
+        await User.createWithCurrentUser();
+      }
+    }
+    ```
 
-   ```bash
-   export MONGODB_URI="mongodb://admin:foobar1@localhost:27017/test1"
-   ```
+    Calling `User.createWithCurrentUser` does the following:
 
-   mongodb://admin:foobar1@127.0.0.1:27017/test1
+    * Fetch user data that Blockstack.js stores in `localStorage`
+    * Save the user's public data (including their public key) in Radiks-server
+    * Find or create a signing key that is used to authorize writes on behalf of this user
+    * Cache the user's signing key (and any group-related signing keys) to make signatures and decryption happen quickly later on
 
-5. Build and run your application.
+### Build and run your application
 
+After you have added Radiks to your application, build and run the application. Test the application by logging in with your Blockstack ID. Create some data using the application. If you inspect the MongoDB database, you should see the encrypted data stored in the database.
 
-### Configuration
+## Where to go next
 
-To set up radiks.js, you only need to configure the URL that your Radiks-server instance is running on. If you're using the pre-built Radiks server, this will be `http://localhost:1260`. If you're in production or are using a custom Radiks server, you'll need to specify exactly which URL it's available at.
-
-Radiks also is compatible with version 19 of blockstack.js, which requires you to configure a `UserSession` object to handle all user-data-related methods. You'll need to define this and pass it to your Radiks configuration, so that Radiks can know how to fetch information about the current logged in user.
-
-To configure radiks, use code that looks like this when starting up your application:
-
-~~~javascript
-import { UserSession, AppConfig } from 'blockstack';
-import { configure } from 'radiks';
-
-const userSession = new UserSession({
-  appConfig: new AppConfig(['store_write', 'publish_data'])
-})
-
-configure({
-  apiServer: 'http://my-radiks-server.com',
-  userSession
-});
-~~~
-
-### Authentication
-
-Most of your code will be informed by following [Blockstack's authentication documentation](https://github.com/blockstack/blockstack.js/blob/master/src/auth/README.md).
-
-After your user logs in with Blockstack, you'll have some code to save the user's data in localStorage. You'll want to use the same `UserSession` you configured with Radiks, which can be fetched from the `getConfig` method.
-
-~~~javascript
-import { User, getConfig } from 'radiks';
-
-const handleSignIn = () => {
-  const { userSession } = getConfig();
-  if (userSession.isSignInPending()) {
-    await userSession.handlePendingSignIn();
-    await User.createWithCurrentUser();
-  }
-}
-~~~
-
-Calling `User.createWithCurrentUser` will do a few things:
-
-1. Fetch user data that Blockstack.js stores in `localStorage`
-2. Save the user's public data (including their public key) in Radiks-server
-3. Find or create a signing key that is used to authorize writes on behalf of this user
-4. Cache the user's signing key (and any group-related signing keys) to make signatures and decryption happen quickly later on
-
-## Models
-
-Creating models for your application's data is where radiks truly becomes helpful. We provide a `Model` class that you can extend to easily create, save, and fetch models.
-
-### Quick start
-
-```javascript
-import { Model, User } from 'radiks';
-
-class Todo extends Model {
-  static className = 'Todo';
-  static schema = { // all fields are encrypted by default
-    title: String,
-    completed: Boolean,
-  }
-};
-
-// after authentication:
-const todo = new Todo({ title: 'Use Radiks in an app' });
-await todo.save();
-todo.update({
-  completed: true,
-});
-await todo.save();
-
-const incompleteTodos = await Todo.fetchOwnList({ // fetch todos that this user created
-  completed: false
-});
-console.log(incompleteTodos.length); // 0
-```
+Creating models for your application's data is where radiks truly becomes helpful. To learn how to use models, see the [Create and use models](radiks-models.html) section.
