@@ -3,10 +3,48 @@ layout: learn
 permalink: /:collection/:path.html
 ---
 # Create and use models
+{:.no_toc}
+
+* TOC
+{:toc}
+
+
+### The Model class
+
 
 To create a model class, first import the `Model` class from radiks. Then, create a class that extends this model, and provide a schema.
 
 **Important**: Make sure you add a static `className` property to your class. This is used when storing and querying information. If you don't add this, radiks will default to the actual model's class name. However, in production, your code will likely be minified, and the actual class name will be different. For this reason, it's highly recommended that you define the `className` manually.
+
+
+We provide a `Model` class that you can extend to easily create, save, and fetch models.
+
+
+
+```javascript
+import { Model, User } from 'radiks';
+
+class Todo extends Model {
+  static className = 'Todo';
+  static schema = { // all fields are encrypted by default
+    title: String,
+    completed: Boolean,
+  }
+};
+
+// after authentication:
+const todo = new Todo({ title: 'Use Radiks in an app' });
+await todo.save();
+todo.update({
+  completed: true,
+});
+await todo.save();
+
+const incompleteTodos = await Todo.fetchOwnList({ // fetch todos that this user created
+  completed: false
+});
+console.log(incompleteTodos.length); // 0
+```
 
 #### Schema
 
