@@ -20,9 +20,7 @@ import { Model, User } from 'radiks';
 
  Then, create a class that extends this model, and provide a schema. Refer to <a href="https://github.com/blockstack/radiks/blob/master/src/model.ts" target="_blank">the <code>Model</code> class</a> in the `radiks` repo to get an overview of the class functionality.
 
-Your new class must define a static `className` property manually. This  property is used when storing and querying information. If you don't add a `className`, Radiks defaults to the actual model's class name. In production, your code should be minified, and the actual class name will be different. For this reason, it's highly recommended that you define the `className` manually.
-
-{% include question.html content="The sentence with the statement that the actual class name will be different doesn't parse.  The actual class name will be different from the model class name? the className as defined --- what? Also, what do you mean by defining the class name manually -- you mean in the code as opposed to default to the model class name"%}
+Your new class must define a static `className` property. This  property is used when storing and querying information. If you fail to add a `className`, Radiks defaults to the actual model's class name (`foobar.ts`) and your application will behave unpredictably.
 
 The example class code extends `Model` to create a class named `Todo`:
 
@@ -134,12 +132,12 @@ In this section, you learn how to use a model you have defined.
 
 All model instances have an `_id` attribute. An `_id` is used as a primary key when storing data, and is used for fetching a model. Radiks also creates a `createdAt` and `updatedAt` property when creating and saving models.
 
-If, when constructing a model, you don't pass an `_id`, Radiks creates an `_id` for you automatically. This automatically created id uses the  [`uuid/v4`](https://github.com/kelektiv/node-uuid) format. 
+If, when constructing a model's instance, you don't pass an `_id`, Radiks creates an `_id` for you automatically. This automatically created id uses the  [`uuid/v4`](https://github.com/kelektiv/node-uuid) format. This automatic `_id` is returned by the constructor.
 
 
 ### Construct a model instance
 
-To create an instance of a model, pass some attributes to the constructor of that class:
+To create an instance, pass some attributes to the constructor of that class:
 
 ```javascript
 const person = new Person({
@@ -149,24 +147,20 @@ const person = new Person({
 })
 ```
 
-{% include question.html content="I don't see an example of the _id attribute in the above construction.  How does the user get the id to pass to findByID below then?"%}
-
 ### Fetch an instance
 
-To fetch an existing instance of a model, you need the instance's  `id` property. Then, call the `fetch()` function, which returns a promise.
+To fetch an existing instance of an instance, you need the instance's  `id` property. Then, call the `findById()` method or the `fetch()` method, which returns a promise.
 
 ```javascript
 const person = await Person.findById('404eab3a-6ddc-4ba6-afe8-1c3fff464d44');
 ```
 
-{% include question.html content="You mention calling fetch but your example uses findById. it looks like either will work but do you want to use fetch in this example?"%}
 
-
-After calling `fetch`, Radiks automatically decrypts all encrypted fields.
+After calling these methods, Radiks automatically decrypts all encrypted fields.
 
 ### Access attributes
 
-Other than `id`, all attributes are stored in an `attrs` property on the model.
+Other than `id`, all attributes are stored in an `attrs` property on the instance.
 
 ```javascript
 const { name, likesDogs } = person.attrs;
@@ -175,7 +169,7 @@ console.log(`Does ${name} like dogs?`, likesDogs);
 
 ### Update attributes
 
-To quickly update multiple attributes of a model, pass those attributes to the `update` function.
+To quickly update multiple attributes of an instance, pass those attributes to the `update` method.
 
 ```javascript
 const newAttributes = {
@@ -185,11 +179,11 @@ const newAttributes = {
 person.update(newAttributes)
 ```
 
-Note that calling `update` does **not** save the model.
+Important, calling `update` does **not** save the instance.
 
 ### Save changes
 
-To save a model to Gaia and MongoDB, call the `save()` method which returns a promise. This method encrypts all attributes that do not have the `decrypted` option in their schema. Then, it saves a JSON representation of the model in Gaia, as well as in the MongoDB.
+To save an instance to Gaia and MongoDB, call the `save()` method which returns a promise. This method encrypts all attributes that do not have the `decrypted` option in their schema. Then, it saves a JSON representation of the model in Gaia, as well as in the MongoDB.
 
 ```javascript
 await person.save();
@@ -197,7 +191,7 @@ await person.save();
 
 ### Delete an instance
 
-To delete a model, just call the `destroy` method on it.
+To delete an instance, just call the `destroy` method on it.
 
 ```javascript
 await person.destroy();
@@ -251,7 +245,7 @@ const dogHaters = await Person.count({ likesDogs: false });
 
 ## Fetch models created by the current user
 
-Use the `fetchOwnList` method to find models that were created by the current user. By using this method, you can preserve privacy, because Radiks uses a `signingKey` that only the current user knows.
+Use the `fetchOwnList` method to find instances that were created by the current user. By using this method, you can preserve privacy, because Radiks uses a `signingKey` that only the current user knows.
 
 ```javascript
 const tasks = await Task.fetchOwnList({

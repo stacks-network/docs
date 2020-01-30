@@ -2,7 +2,7 @@
 layout: learn
 permalink: /:collection/:path.html
 ---
-# Radiks server Tips and tricks
+# Radiks server tips and tricks
 
 In this section, you'll find some tips and tricks you can use to work with a Radiks server.
 
