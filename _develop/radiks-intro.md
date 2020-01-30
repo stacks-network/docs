@@ -6,12 +6,10 @@ permalink: /:collection/:path.html
 
 The Blockstack Radiks feature enables Blockstack decentralized applications (DApps) to index and store across data belonging to multiple users. Radiks works with Blockstack's Gaia Storage System.  Using Radiks, you can build multi-player DApps that:
 
-- index, store, and query complex application data
+- index, store, and query application data
 - query a user's publicly saved data
 - display real-time updates that reflect in progress changes
 - support collaboration among sets of users
-
-{% include question.html content="I added the word <strong>application</strong> to the complex data bullet above.  Your origianl text seemed to make a distinction between publicly saved data and complex data. I assumed applciation data was the something Radiks could store and that was intended here. Was this your intent?"%}
 
   
 
@@ -19,9 +17,9 @@ The Blockstack Radiks feature enables Blockstack decentralized applications (DAp
 
 Many applications server data that users create to share publicly with others, Facebook, Twitter, and Instagram are examples of such applications. Decentralized applications that want to create comparable multi-user experiences must ensure that anything a user creates for public sharing is likewise still under control the creator in the user's Gaia storage.  
 
-For example, if Twitter were a decentralized application where many different users creating their own tweets and those tweets are stored in each user's own Gaia storage. In such a situation, developer need a way to track of everyone's tweets, display tweets in user timelines, and perform searches across tweets. Radiks exists to support these kind of scenarios in that it allows applications to query across multiple user data, using complicated queries like text search, joins, and filters. Radiks allows applications to query data in a performant and flexible way.
+For example, if Twitter were a decentralized application where many different users creating their own tweets and those tweets are stored in each user's own Gaia storage. In such a situation, developer need a way to track of everyone's tweets, display tweets in user timelines, and perform searches across tweets. Radiks exists to support these kind of scenarios in that it allows applications to query across multiple user data, using complicated queries like text search, joins, and filters. 
 
-{% include question.html content="Can one Radiks server support multiple client applications or is a single server required for each application?"%}
+Radiks allows applications to query data in a performant and flexible way. Each application that wishes to index and query in this way requires its own Radiks server.
 
 ## How Radiks works with application data
 
@@ -31,10 +29,7 @@ Radiks consists of a database, a pre-built server, and a client. Each applicatio
 2. Saves a raw JSON of this encrypted data in the user's Gaia storage.
 3. Stores the encrypted data on the Radiks server.
 
-{% include question.html content="You didn't state this in the original but I am assuming the data is user data not just general application data. Is this correct? See the following paragraph which was taken from your server docs, in particular you had the last sentence regarding unencrypted data. Still isn't clear to me when is data in unencrypted and how it is identified from data the user wants signed." %}
-
-Radiks stores both public data and sensitive, non-private data. Radiks encrypts sensitive data before it leaves the client. Your application can query Radiks for public data and then decrypt the sensitive information on the client.  This means that the server is only able to return queries for unencrypted data.
-
+Radiks stores both public data and sensitive, non-private data. Radiks encrypts sensitive data by default before the data leaves the client. Your application can query Radiks for public data and then decrypt the sensitive information on the client.  This means that the Radiks server is only able to return queries for unencrypted data.
 
 ## How Radiks authorizes writes
 
