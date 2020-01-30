@@ -14,6 +14,10 @@ The Blockstack Platform stores application data in the Gaia Storage System. Tran
 
 {% include note.html content="<ul> <li>Blockstack Gaia Storage APIs and on-disk format will change in upcoming pre-releases breaking backward compatibility. File encryption is currently opt-in on a file by file basis.</li> <li>Certain storage features such as collections are not implemented in the current version. These features will be rolled out in future updates.</li> </ul>" %}
 
+## How data is stored
+
+Gaia storage is a key-value store. 
+
 
 ## Creating a file
 
