@@ -7,7 +7,7 @@ image: /assets/img/zero-to-dapp.png
 # 2 - Learn about the platform
 {:.no_toc}
 
-**Zero-to-DApp 2 of 4 for MacOS/Linux (or [Windows](zero_to_dapp_2_win.html))**
+**Zero-to-DApp 2 of 4 for macOS/Linux (or [Windows](zero_to_dapp_2_win.html))**
 
 In this part, you learn how the Blockstack platform lowers the barriers to
 building with blockchain technology. You'll set up all the prerequisites you
