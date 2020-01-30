@@ -16,19 +16,19 @@ Radiks-server is a `node.js` application that uses [MongoDB](https://www.mongodb
 
 ### Install and configure MongoDB
 
-In the future, Radiks-server will support various different databases, but right now only MongoDB 3.6 or higher is supported. MongoDB 3.6 and higher contains fixes required for naming patterns in keys. 
+In the future, Radiks-server will support various different databases, but right now, only MongoDB 3.6 or higher is supported. MongoDB 3.6 and higher contains fixes required for naming patterns in keys. 
 
-{% include note.html content="The steps assumes you want to install and run the MongoDB software locally on your workstation for testing and development. If you are deploying for a production application, you would install MongoDB on your application server or on a server connected to it. " %}
+{% include note.html content="The steps assume you want to install and run the MongoDB software locally on your workstation for testing and development. If you are deploying for a production application, you will install MongoDB on your application server or on a server connected to it. " %}
 
 1. <a href="https://docs.mongodb.com/manual/administration/install-community/" target="_blank">Download and install MongoDB 3.6 or higher</a> on your workstation.
 
-    You can also install MongoDB using your favorite package manager, for example, Homebrew is recommended for macOS. If you are testing on a local workstation, you can use a `docker` image instead of installing locally.
+    You can also install MongoDB using your favorite package manager; for example, Homebrew is recommended for macOS. If you are testing on a local workstation, you can use a `docker` image instead of installing locally.
 
 2. Start the MongoDB service and verify it is running.
   
 3. On your MongoDB instance, create a database for your application data.
 
-   You can use the <a href="https://docs.mongodb.com/manual/mongo/" target="_blank">Mongo shell</a> to do this or you can <a href="https://www.mongodb.com/download-center/compass" target="_blank">install the MongoDB Compass</a> software to explore and work with MongoDB data. 
+   You can use the <a href="https://docs.mongodb.com/manual/mongo/" target="_blank">Mongo shell</a> to do this, or you can <a href="https://www.mongodb.com/download-center/compass" target="_blank">install the MongoDB Compass</a> software to explore and work with MongoDB data. 
   
 4. Create a username/password combination with `root` privileges on your new database.
 
@@ -47,21 +47,21 @@ The easiest way to run `radiks-server` is to use the pre-packaged `node.js` serv
     ```bash
     yarn global add radiks-server
     ```
-   The default port for Mongodb is `27017`, your instance may be configured differently.  By default, Radiks-server will use `'MongoDB://localhost:27017/radiks-server'` as the `MongoDB_URI` value. This is suitable for local testing, but in production, you'll want to change the hostname and possible the database name.
+   The default port for Mongodb is `27017`; your instance may be configured differently.  By default, Radiks-server will use `'MongoDB://localhost:27017/radiks-server'` as the `MongoDB_URI` value. This is suitable for local testing, but in production, you'll want to change the hostname and possibly the database name.
 
 3. Start the `radiks-server` in the command line to confirm your installation. 
 
    ```
    $ radiks-server
-    (node:37750) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
+    (node:37750) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
   radiks-server is ready on http://localhost:1260
     ```
 
    The `radiks-server` defaults to running on port `1260`. To change the default port, specify the  `PORT` environment variable in your environment.
 
-4. By default the server is running at `http://localhost:1260`
+4. By default, the server is running at `http://localhost:1260`
 
-4. Stop the `radiks` server process after you confirm it runs and your installation was a success.
+4. Stop the `radiks` server process after you confirm it runs, and your installation was a success.
 
 ## Task 2. Set up your application
 
@@ -72,7 +72,7 @@ You must set up your application to use Radiks. This requires installing the `ra
 If you are using `blockstack.js` version 18 or earlier, you must use the Radiks version 0.1.\*, otherwise if you're using `blockstack.js` version 19 or higher, use Radiks 0.2.\* .
 
 1. Change directory to the root of you application code.
-2. Install the install the `radiks` client package.
+2. Install the `radiks` client package.
 
    <table class="uk-table uk-table-small">
       <thead>
@@ -141,9 +141,9 @@ If you are using `blockstack.js` version 18 or earlier, you must use the Radiks 
 
 ## Task 3. Add startup code and build your application
 
-To set up radiks.js, you only need to configure the URL that your Radiks-server instance is running on. If you're using the pre-built Radiks server, this will be `http://localhost:1260`. If you're in production or are using a custom Radiks server, you'll need to specify exactly which URL it's available at.
+To set up radiks.js, you only need to configure the URL that your Radiks-server instance is running on. If you're using the pre-built Radiks server, this will be `http://localhost:1260`. If you're in production or are using a custom Radiks server, you'll need to specify the exact URL where it's available.
 
-Radiks also is compatible with version 19 of blockstack.js, which requires you to configure a `UserSession` object to handle all user-data-related methods. You'll need to define this and pass it to your Radiks configuration, so that Radiks can know how to fetch information about the current logged in user.
+Radiks also is compatible with version 19 of blockstack.js, which requires you to configure a `UserSession` object to handle all user-data-related methods. You'll need to define this and pass it to your Radiks configuration so that Radiks can know how to fetch information about the current logged in user.
 
 ### Configure your application to use your `radiks-server`.
 

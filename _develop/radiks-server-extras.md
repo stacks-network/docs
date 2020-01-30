@@ -72,7 +72,7 @@ const migrate = async () => {
    * Call code to get your users from firebase
    * const users = await getUsersFromFirebase();
    * OR grab the Firebase JSON file and set users to that value
-   * How you saved your user data will proably be different than the example below
+   * How you saved your user data will probably be different than the example below
    */
 
   const users = {

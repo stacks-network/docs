@@ -5,7 +5,7 @@ permalink: /:collection/:path.html
 # Collaborate with groups
 {:.no_toc}
 
-A key feature of Radiks is support for private collaboration between multiple users.  Supporting collaboration with client-side encryption and user-owned storage can be complicated but the patterns to implement it are generally the same among most applications. Radiks provides out-of-the box for collaboration, making it easy to build private, collaborative apps.
+A key feature of Radiks is support for private collaboration between multiple users.  Supporting collaboration with client-side encryption and user-owned storage can be complicated, but the patterns to implement it are generally the same among most applications. Radiks supplies interfaces for collaboration, making it easy to build private, collaborative apps.
 
 You use the <a href="https://github.com/blockstack/radiks/blob/master/src/models/user-group.ts" target="_blank"><code>UserGroup</code></a> class to build a collaborative group with Radiks. In this section, you learn about this class.
 
@@ -29,7 +29,7 @@ The general workflow for creating a collaborative group that can share and edit 
 
 As they participate in a group, the group's members can create and update models that are related to the group. These models **must** contain a `userGroupId` attribute used to reference the group. This allows Radiks to know which keys to use for encryption and signing.
 
-When needed, the group admin can remove a user from a group. To remove a user from the group, the admin creates a new private key for signing and encryption. Then, the admin updates the `GroupMembership` of all users _except_ the user they just removed. This is also known as rotating the key.
+When needed, the group admin can remove a user from a group. To remove a user from the group, the admin creates a new private key for signing and encryption. Then, the admin updates the `GroupMembership` of all users _except_ the user they just removed. This update-and-remove action is also known as rotating the key.
 
 After a key is rotated, all new and updated models must use the new key for signing. Radiks-server validates all group-related models to ensure that they're signed with the most up-to-date key.
 
@@ -39,7 +39,7 @@ This section details the methods on the <a href="https://github.com/blockstack/r
 
 ### Create a UserGroup
 
-To create a `UserGroup`, your application must import the class from `radiks`:
+To create a `UserGroup`, you must import the class into your application from `radiks`:
 
 ```javascript
 import { UserGroup } from 'radiks';

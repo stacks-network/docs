@@ -5,7 +5,7 @@ permalink: /:collection/:path.html
 # Create and use models
 {:.no_toc}
 
-Radiks allows you to model your client data. You can then query this data and display it for user in multi-player applications.  For example, a social application where users want to see the comments of other users. This page explains how to create a model in your distributed application using Radiks.
+Radiks allows you to model your client data. You can then query this data and display it for a user in multi-player applications.  A social application where users want to see the comments of other users is an example of a multi-player application. This page explains how to create a model in your distributed application using Radiks.
 
 * TOC
 {:toc}
@@ -71,13 +71,13 @@ The  `key` in this object is the field name and the value, for example,  `String
 
 To define options, pass an object, with a mandatory `type` field. The only supported option right now is `decrypted`. This defaults to `false`, meaning the field is encrypted before the data is stored publicly. If you specify `true`, then the field is not encrypted. 
 
-Storing unencrypted fields is useful if you want to be able to query the field when fetching data. A good use-case for storing decrypted fields is to store a `foreignId` that references a different model, for a "belongs-to" type of relation.
+Storing unencrypted fields is useful if you want to be able to query the field when fetching data. A good use-case for storing decrypted fields is to store a `foreignId` that references a different model, for a "belongs-to" type of relationship.
 
 **Never add the `decrypted` option to fields that contain sensitive user data.** Blockstack data is stored in a decentralized Gaia storage and anyone can read the user's data. That's why encrypting it is so important. If you want to filter sensitive data, then you should do it on the client-side, after decrypting it. 
 
 ### Include defaults
 
-You may want to include an optional `defaults` static property for some field values. For example in the class below the `likesDogs` field is a `Boolean` and the default is `true`.
+You may want to include an optional `defaults` static property for some field values. For example, in the class below, the `likesDogs` field is a `Boolean`, and the default is `true`.
 
 ```javascript
 import { Model } from 'radiks';
@@ -122,7 +122,7 @@ class MyAppUserModel extends User {
 }
 ```
 
-The default `User` model defines a `username` but you can add a `displayName` to allow the user to define a name unique in your app.
+The default `User` model defines a `username`, but you can add a `displayName` to allow the user to set unique name in your app.
 
 ## Use a model you have defined
 
@@ -130,7 +130,7 @@ In this section, you learn how to use a model you have defined.
 
 ### About the _id attribute
 
-All model instances have an `_id` attribute. An `_id` is used as a primary key when storing data, and is used for fetching a model. Radiks also creates a `createdAt` and `updatedAt` property when creating and saving models.
+All model instances have an `_id` attribute. An `_id` is used as a primary key when storing data and is used for fetching a model. Radiks also creates a `createdAt` and `updatedAt` property when creating and saving models.
 
 If, when constructing a model's instance, you don't pass an `_id`, Radiks creates an `_id` for you automatically. This automatically created id uses the  [`uuid/v4`](https://github.com/kelektiv/node-uuid) format. This automatic `_id` is returned by the constructor.
 
@@ -183,7 +183,7 @@ Important, calling `update` does **not** save the instance.
 
 ### Save changes
 
-To save an instance to Gaia and MongoDB, call the `save()` method which returns a promise. This method encrypts all attributes that do not have the `decrypted` option in their schema. Then, it saves a JSON representation of the model in Gaia, as well as in the MongoDB.
+To save an instance to Gaia and MongoDB, call the `save()` method, which returns a promise. This method encrypts all attributes that do not have the `decrypted` option in their schema. Then, it saves a JSON representation of the model in Gaia, as well as in the MongoDB.
 
 ```javascript
 await person.save();
