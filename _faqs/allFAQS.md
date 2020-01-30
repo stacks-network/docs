@@ -16,7 +16,9 @@ This is a comprehensive list of all the Blockstack FAQs.
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'general' %}
 ### {{ faq.question }}
+<div class="faq-answer">
 {{ faq.answer }}
+</div>
   {% endif %}
 {% endfor %}
 
@@ -25,7 +27,9 @@ This is a comprehensive list of all the Blockstack FAQs.
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'appusers' %}
 ### {{ faq.question }}
+<div class="faq-answer">
 {{ faq.answer }}
+</div>
   {% endif %}
 {% endfor %}
 
@@ -34,7 +38,9 @@ This is a comprehensive list of all the Blockstack FAQs.
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'tokens' %}
 ### {{ faq.question }}
+<div class="faq-answer">
 {{ faq.answer }}
+</div>
   {% endif %}
 {% endfor %}
 
@@ -43,7 +49,9 @@ This is a comprehensive list of all the Blockstack FAQs.
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'wallet' %}
 ### {{ faq.question }}
+<div class="faq-answer">
 {{ faq.answer }}
+</div>
   {% endif %}
 {% endfor %}
 
@@ -52,7 +60,9 @@ This is a comprehensive list of all the Blockstack FAQs.
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'dappdevs' %}
 ### {{ faq.question }}
+<div class="faq-answer">
 {{ faq.answer }}
+</div>
   {% endif %}
 {% endfor %}
 
@@ -61,7 +71,9 @@ This is a comprehensive list of all the Blockstack FAQs.
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'appminers' %}
 ### {{ faq.question }}
+<div class="faq-answer">
 {{ faq.answer }}
+</div>
   {% endif %}
 {% endfor %}
 
@@ -70,7 +82,9 @@ This is a comprehensive list of all the Blockstack FAQs.
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'coredevs' %}
 ### {{ faq.question }}
+<div class="faq-answer">
 {{ faq.answer }}
+</div>
   {% endif %}
 {% endfor %}
 
@@ -79,7 +93,9 @@ This is a comprehensive list of all the Blockstack FAQs.
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'opensource' %}
 ### {{ faq.question }}
+<div class="faq-answer">
 {{ faq.answer }}
+</div>
   {% endif %}
 {% endfor %}
 
@@ -88,7 +104,9 @@ This is a comprehensive list of all the Blockstack FAQs.
 {% for faq in site.data.theFAQs.faqs %}
    {% if faq.category == 'miscquest' %}
 ### {{ faq.question }}
+<div class="faq-answer">
 {{ faq.answer }}
+</div>
   {% endif %}
 {% endfor %}
 
@@ -98,6 +116,6 @@ This is a comprehensive list of all the Blockstack FAQs.
   
 *An indication of interest involves no obligation or commitment of any kind. Any person interested in investing in any offering of Stacks Tokens should review our disclosures and the publicly filed offering statement and the f<a href='https://stackstoken.com/circular'>final offering circular</a>  that is part of that offering statement. Blockstack is not registered, licensed or supervised as a broker dealer or investment adviser by the SEC, the Financial Industry Regulatory Authority (FINRA) or any other financial regulatory authority or licensed to provide any financial advice or services.*
 
-### Forward-looking statements
+## Forward-looking statements
 
 *This communication contains forward-looking statements that are based on our beliefs and assumptions and on information currently available to us. In some cases, you can identify forward-looking statements by the following words: “will,” “expect,” “would,” “intend,” “believe,” or other comparable terminology. Forward-looking statements in this document include, but are not limited to, statements about our plans for developing the platform and future utility for the Stacks Token, our Clarity smart contracting language, and potential mining operations. These statements involve risks, uncertainties, assumptions and other factors that may cause actual results or performance to be materially different. More information on the factors, risks and uncertainties that could cause or contribute to such differences is included in our filings with the SEC, including in the “Risk Factors” and “Management’s Discussion & Analysis” sections of our offering statement on Form 1-A. We cannot assure you that the forward-looking statements will prove to be accurate. These forward-looking statements speak only as of the date hereof. We disclaim any obligation to update these forward-looking statements.*
