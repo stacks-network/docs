@@ -5,21 +5,26 @@ permalink: /:collection/:path.html
 # Create and use models
 {:.no_toc}
 
+Radiks allows you to model your client data. You can then query this data and display it for user in multi-player applications.  For example, a social application where users want to see the comments of other users. This page explains how to create a model in your distributed application using Radiks.
+
 * TOC
 {:toc}
 
+## Overview of Model class extension
 
-### The Model class
+Blockstack provides a `Model` class you should extend to easily create, save, and fetch models. To create a model class, import the `Model` class from `radiks` into your application.
 
+```javascript
+import { Model, User } from 'radiks';
+```
 
-To create a model class, first import the `Model` class from radiks. Then, create a class that extends this model, and provide a schema.
+ Then, create a class that extends this model, and provide a schema. Refer to <a href="https://github.com/blockstack/radiks/blob/master/src/model.ts" target="_blank">the <code>Model</code> class</a> in the `radiks` repo to get an overview of the class functionality.
 
-**Important**: Make sure you add a static `className` property to your class. This is used when storing and querying information. If you don't add this, radiks will default to the actual model's class name. However, in production, your code will likely be minified, and the actual class name will be different. For this reason, it's highly recommended that you define the `className` manually.
+Your new class must define a static `className` property manually. This  property is used when storing and querying information. If you don't add a `className`, Radiks defaults to the actual model's class name. In production, your code should be minified, and the actual class name will be different. For this reason, it's highly recommended that you define the `className` manually.
 
+{% include question.html content="The sentence with the statement that the actual class name will be different doesn't parse.  The actual class name will be different from the model class name? the className as defined --- what? Also, what do you mean by defining the class name manually -- you mean in the code as opposed to default to the model class name"%}
 
-We provide a `Model` class that you can extend to easily create, save, and fetch models.
-
-
+The example class code extends `Model` to create a class named `Todo`:
 
 ```javascript
 import { Model, User } from 'radiks';
@@ -46,23 +51,37 @@ const incompleteTodos = await Todo.fetchOwnList({ // fetch todos that this user 
 console.log(incompleteTodos.length); // 0
 ```
 
-#### Schema
+## How to create your own Model
 
-The first static property you'll need to define is a schema. Create a static `schema` property on your class to define it. Each `key` in this object is the name of the field. The value is whatever type you want the field to be, or you can pass some options.
+The following sections guide you through the steps in defining your own class.
 
-If you don't want to include any options, just pass the class for that field, like `String`, `Boolean`, or `Number`.
+### Define a class schema
 
-To include options, pass an object, with a mandatory `type` field. The only supported option right now is `decrypted`. This defaults to `false`, but if you provide `true`, then this field will not be encrypted before storing data publicly. This is useful if you want to be able to query this field when fetching data.
+Every class must have a static `schema` property which defines the attributes of a model using field/value pairs, for example:
 
-**Important**: do not add the `decrypted` option to fields that contain sensitive user data. Remember, because this is decentralized storage, anyone can read the user's data. That's why encrypting it is so important. If you want to be able to filter sensitive data, then you should do it on the client-side, after decrypting it. A good use-case for storing decrypted fields is to store a `foreignId` that references a different model, for a "belongs-to" type of relation.
+```javascript
+class Todo extends Model {
+  static className = 'Todo';
+  static schema = { // all fields are encrypted by default
+    title: String,
+    completed: Boolean,
+  }
+};
+```
 
-#### Defaults
+The  `key` in this object is the field name and the value, for example,  `String`, `Boolean`, or `Number`.  In this case, the `title` is a `String` field.  Alternatively, you can pass  options instead of a type.  
 
-Include an optional `defaults` static property to define default values for a field.
+To define options, pass an object, with a mandatory `type` field. The only supported option right now is `decrypted`. This defaults to `false`, meaning the field is encrypted before the data is stored publicly. If you specify `true`, then the field is not encrypted. 
 
-#### Example
+Storing unencrypted fields is useful if you want to be able to query the field when fetching data. A good use-case for storing decrypted fields is to store a `foreignId` that references a different model, for a "belongs-to" type of relation.
 
-~~~javascript
+**Never add the `decrypted` option to fields that contain sensitive user data.** Blockstack data is stored in a decentralized Gaia storage and anyone can read the user's data. That's why encrypting it is so important. If you want to filter sensitive data, then you should do it on the client-side, after decrypting it. 
+
+### Include defaults
+
+You may want to include an optional `defaults` static property for some field values. For example in the class below the `likesDogs` field is a `Boolean` and the default is `true`.
+
+```javascript
 import { Model } from 'radiks';
 
 class Person extends Model {
@@ -82,88 +101,121 @@ class Person extends Model {
     likesDogs: true
   }
 }
-~~~
+```
 
-### Using models
+If you wanted to add a default for `isHuman`, you would simply add it to the `defaults` as well. Separate each field with a comma.
 
-All model instances have an `_id` attribute. If you don't pass an `_id` to the model (when constructing it), then an `_id` will be created automatically using [`uuid/v4`](https://github.com/kelektiv/node-uuid). This `_id` is used as a primary key when storing data, and would be used for fetching this model in the future.
+### Extend the User model
 
-In addition to automatically creating an `_id` attribute, radiks also creates a `createdAt` and `updatedAt` property when creating and saving models.
+Radiks also supplies <a href="https://github.com/blockstack/radiks/blob/master/src/models/user.ts" target="_blank">a default <code>User</code> model</a>. You can also extend this model to add your own attributes. 
 
-#### Constructing a model
+```javascript
+import { User } from 'radiks';
+
+// For example I want to add a public name on my user model
+class MyAppUserModel extends User {
+  static schema = {
+    ...User.schema,
+    displayName: {
+      type: String,
+      decrypted: true,
+    },
+  };
+}
+```
+
+The default `User` model defines a `username` but you can add a `displayName` to allow the user to define a name unique in your app.
+
+## Use a model you have defined
+
+In this section, you learn how to use a model you have defined.
+
+### About the _id attribute
+
+All model instances have an `_id` attribute. An `_id` is used as a primary key when storing data, and is used for fetching a model. Radiks also creates a `createdAt` and `updatedAt` property when creating and saving models.
+
+If, when constructing a model, you don't pass an `_id`, Radiks creates an `_id` for you automatically. This automatically created id uses the  [`uuid/v4`](https://github.com/kelektiv/node-uuid) format. 
+
+
+### Construct a model instance
 
 To create an instance of a model, pass some attributes to the constructor of that class:
 
-~~~javascript
+```javascript
 const person = new Person({
   name: 'Hank',
   isHuman: false,
   likesDogs: false // just an example, I love dogs!
 })
-~~~
+```
 
-#### Fetching a model
+{% include question.html content="I don't see an example of the _id attribute in the above construction.  How does the user get the id to pass to findByID below then?"%}
 
-To fetch an existing model, first construct it with a required `id` property. Then, call the `fetch()` function, which returns a promise.
+### Fetch an instance
 
-~~~javascript
+To fetch an existing instance of a model, you need the instance's  `id` property. Then, call the `fetch()` function, which returns a promise.
+
+```javascript
 const person = await Person.findById('404eab3a-6ddc-4ba6-afe8-1c3fff464d44');
-~~~
+```
 
-After calling `fetch`, radiks will automatically decrypt all encrypted fields.
+{% include question.html content="You mention calling fetch but your example uses findById. it looks like either will work but do you want to use fetch in this example?"%}
 
-#### Accessing model attributes
 
-All attributes (other than `id`) are stored in an `attrs` property on the model.
+After calling `fetch`, Radiks automatically decrypts all encrypted fields.
 
-~~~javascript
+### Access attributes
+
+Other than `id`, all attributes are stored in an `attrs` property on the model.
+
+```javascript
 const { name, likesDogs } = person.attrs;
 console.log(`Does ${name} like dogs?`, likesDogs);
-~~~
+```
 
-#### Updating a model
+### Update attributes
 
 To quickly update multiple attributes of a model, pass those attributes to the `update` function.
 
-~~~javascript
+```javascript
 const newAttributes = {
   likesDogs: false,
   age: 30
 }
 person.update(newAttributes)
-~~~
+```
 
 Note that calling `update` does **not** save the model.
 
-#### Saving a model
+### Save changes
 
-To save a model to Gaia and MongoDB, call the `save` function. First, it encrypts all attributes that do not have the `decrypted` option in their schema. Then, it saves a JSON representation of the model in Gaia, as well as in MongoDB. `save` returns a promise.
+To save a model to Gaia and MongoDB, call the `save()` method which returns a promise. This method encrypts all attributes that do not have the `decrypted` option in their schema. Then, it saves a JSON representation of the model in Gaia, as well as in the MongoDB.
 
-~~~javascript
+```javascript
 await person.save();
-~~~
+```
 
-#### Deleting a model
+### Delete an instance
 
 To delete a model, just call the `destroy` method on it.
 
-~~~javascript
+```javascript
 await person.destroy();
-~~~
+```
 
-### Querying models
+## Query a model
 
-To fetch multiple records that match a certain query, use the class's `fetchList` function. This method creates an HTTP query to Radiks-server, which then queries the underlying database. Radiks-server uses the [`query-to-mongo`](https://github.com/pbatey/query-to-mongo) package to turn an HTTP query into a MongoDB query. Read the documentation for that package to learn how to do complex querying, sorting, limiting, etc.
+To fetch multiple records that match a certain query, use the class's `fetchList()` function. This method creates an HTTP query to Radiks-server, which then queries the underlying database. Radiks-server uses the `query-to-mongo` package to turn an HTTP query into a MongoDB query. 
 
 Here are some examples:
 
-~~~javascript
+```javascript
 const dogHaters = await Person.fetchList({ likesDogs: false });
-~~~
+```
 
 Or, imagine a `Task` model with a `name`, a boolean for `completed`, and an `order` attribute.
 
-~~~javascript
+```javascript
 class Task extends Model {
   static className = 'Task';
 
@@ -184,17 +236,20 @@ const tasks = await Task.fetchList({
   completed: false,
   sort: '-order'
 })
-~~~
+```
 
-### Counting models
+You can read the [`query-to-mongo`](https://github.com/pbatey/query-to-mongo) package documentation to learn how to do complex querying, sorting, limiting, and so forth.
 
-You can also get the count record directly.
-~~~javascript
+## Count models
+
+You can also get a model's `count` record directly.
+
+```javascript
 const dogHaters = await Person.count({ likesDogs: false });
 // dogHaters is the count number
-~~~
+```
 
-### Fetching models created by the current user
+## Fetch models created by the current user
 
 Use the `fetchOwnList` method to find models that were created by the current user. By using this method, you can preserve privacy, because Radiks uses a `signingKey` that only the current user knows.
 
@@ -204,11 +259,11 @@ const tasks = await Task.fetchOwnList({
 });
 ```
 
-### Managing relational data
+## Manage relational data
 
 It is common for applications to have multiple different models, where some reference another. For example, imagine a task-tracking application where a user has multiple projects, and each project has multiple tasks. Here's what those models might look like:
 
-~~~javascript
+```javascript
 class Project extends Model {
   static className = 'Project';
   static schema = { name: String }
@@ -225,29 +280,29 @@ class Task extends Model {
     completed: Boolean
   }
 }
-~~~
+```
 
-Whenever you save a task, you'll want to save a reference to the project it's in:
+Whenever you save a task, you should save a reference to the project it's in:
 
-~~~javascript
+```javascript
 const task = new Task({
   name: 'Improve radiks documentation',
   projectId: project._id
 })
 await task.save();
-~~~
+```
 
 Then, later you'll want to fetch all tasks for a certain project:
 
-~~~javascript
+```javascript
 const tasks = await Task.fetchList({
   projectId: project._id,
 })
-~~~
+```
 
-Radiks lets you define an `afterFetch` method, which you can use to automatically fetch child records when you fetch the parent instance.
+Radiks lets you define an `afterFetch` method. Use this method to automatically fetch child records when you fetch the parent instance.
 
-~~~javascript
+```javascript
 class Project extends Model {
   static className = 'Project';
   static schema = { name: String }
@@ -261,23 +316,4 @@ class Project extends Model {
 
 const project = await Project.findById('some-id-here');
 console.log(project.tasks); // will already have fetched and decrypted all related tasks
-~~~
-
-### Extending the user model
-
-You can extend the default user model to add your own fields.
-
-~~~javascript
-import { User } from 'radiks';
-
-// For example I want to add a public name on my user model
-class MyAppUserModel extends User {
-  static schema = {
-    ...User.schema,
-    name: {
-      type: String,
-      decrypted: true,
-    },
-  };
-}
-~~~
+```
