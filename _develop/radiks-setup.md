@@ -192,6 +192,21 @@ To configure your application as a `radiks` client, do the following:
 
 After you have added Radiks to your application, build and run the application. Test the application by logging in with your Blockstack ID. Create some data using the application. If you inspect the MongoDB database, you should see the encrypted data stored in the database.
 
+
+You can specify the `mongoDBUrl` or the `maxLimit` option when initiating the Radiks server in your application. 
+
+```javascript
+const { setup } = require('radiks-server');
+
+setup({
+  ...myOptions,
+});
+```
+
+The `mongoDBUrl` option is the MongoDB URL for the Radiks server
+The `maxLimit` option is the maximum `limit` field used inside the mongo queries. The default is 1000.
+
+
 ## Where to go next
 
 Creating models for your application's data is where radiks truly becomes helpful. To learn how to use models, see the [Create and use models](radiks-models.html) section.
