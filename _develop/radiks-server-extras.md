@@ -3,9 +3,12 @@ layout: learn
 permalink: /:collection/:path.html
 ---
 # Radiks server tips and tricks
+{:.no_toc}
 
 In this section, you'll find some tips and tricks you can use to work with a Radiks server.
 
+* TOC
+{:toc}
 
 ## Access the MongoDB collection
 
@@ -117,3 +120,53 @@ migrate()
   });
 ```
 
+## Streaming real-time changes
+
+`Radiks-server` provides a websocket endpoint that will stream all new inserts and updates that it sees on the server. `Radiks` provides a helpful interface to poll for these changes on a model-by-model basis. For example, if you had a `Task` model, you could get real-time updates on all your tasks. This is especially useful in collaborative environments. As soon as a collaborator updates a model, you can get the change in real-time, and update your views accordingly.
+
+Before you can implement the websocket function, you must configure your `Radiks-Server` with [express-ws](https://github.com/HenningM/express-ws)
+
+```javascript
+const app = express()
+expressWS(app)
+```
+
+Here's an example for how to use the API:
+
+```javascript
+import Task from './models/task';
+
+const streamCallback = (task) => {
+  // this callback will be called whenever a task is created or updated.
+  // `task` is an instance of `Task`, and all methods are defined on it.
+  // If the user has the necessary keys to decrypt encrypted fields on the model,
+  // the model will be decrypted before the callback is invoked.
+
+  if (task.projectId === myAppsCurrentProjectPageId) {
+    // update your view here with this task
+  }
+}
+
+Task.addStreamListener(streamCallback)
+
+// later on, you might want to remove the stream listener (if the
+// user changes pages, for example). When calling `removeStreamListener`,
+// you MUST provide the exact same callback that you used with `addStreamListener`.
+
+Task.removeStreamListener(streamCallback)
+```
+
+## Saving centralized user-related data
+
+Sometimes, you need to save some data on behalf of the user that only the server is able to see. A common use case for this is when you want to notify a user, and you need to store, for example, their email. This should be updatable only by the user, and only the server (or that user) should be able to see it. Radiks provides the `Central` API to handle this:
+
+```javascript
+import { Central } from 'radiks';
+
+const key = 'UserSettings';
+const value = { email: 'myemail@example.com' };
+await Central.save(key, value);
+
+const result = await Central.get(key);
+console.log(result); // { email: 'myemail@example.com' }
+```
