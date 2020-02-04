@@ -24,9 +24,9 @@ If you have installed the local Blockstack client on macOS, you can use the "hid
 
 The beta version of Blockstack uses the code from the Blockstack  `develop` branch. When using this code, you can test the latest versions but you may encounter issues. Please file any issues on the <a href="https://github.com/blockstack/blockstack-browser/issues" target="_blank">blockstack/blockstack-browser</a> repository.
 
-To use the beta version of the web application, simply visit the <a href="https://beta.browser.blockstack.org" target="_blank">beta.blockstack.browser.org</a> app. If you are using a local client, you can use the hidden menu to turn beta mode on. To turn it off, simply return to using the regular menu. 
+To use the beta version of the web application, simply visit the <a href="https://beta.browser.blockstack.org" target="_blank">beta.blockstack.browser.org</a> app. If you are using a local client, you can use the hidden menu to turn beta mode on. To turn it off, simply return to using the regular menu.
 
-Once beta mode is engaged, your local Blockstack redirects all activity to a hosted version of Blockstack at `beta.browser.blockstack.org`. You'll have to sign in with your Blockstack ID again to the best code. You can resume usage of your local Blockstack client at any time by disabling the beta mode in the hidden menu.
+Once beta mode is engaged, your local Blockstack redirects all activity to a hosted version of Blockstack at `beta.browser.blockstack.org`. You'll have to sign in with your Blockstack ID again to the beta code. You can resume usage of your local Blockstack client at any time by disabling the beta mode in the hidden menu.
 
 {% include note.html content="The Linux version of the local Blockstack client does not support a beta mode. Instead, you should test using the beta version of the web app." %}
 
