@@ -6,6 +6,10 @@ permalink: /:collection/:path.html
 # Understand App Mining
 {:.no_toc}
 
+**App Mining Has Been Paused. 
+Thank you to the hundreds of you that participated and congratulations to our winners.**
+[More info](https://blog.blockstack.org/the-next-phase-of-app-mining/) & [all apps →](https://app.co/blockstack)
+
 This section explains App Mining, a program for developers. For Blockstack, App Mining is a crucial factor in the growth of both blockchain applications and users.  
 
 * TOC
@@ -14,6 +18,10 @@ This section explains App Mining, a program for developers. For Blockstack, App 
 ## What is App Mining?
 
 {% include intro-appmining.md %}
+
+**App Mining Has Been Paused. 
+Thank you to the hundreds of you that participated and congratulations to our winners.**
+[More info](https://blog.blockstack.org/the-next-phase-of-app-mining/) & [all apps →](https://app.co/blockstack)
 
 ## How apps are reviewed and ranked
 
@@ -31,6 +39,10 @@ Read more about [how reviewers score your app](app-reviewers.html) and [how your
 
 
 ## Determining how much an app is paid
+
+**App Mining Has Been Paused. 
+Thank you to the hundreds of you that participated and congratulations to our winners.**
+[More info](https://blog.blockstack.org/the-next-phase-of-app-mining/)  &  [all apps →](https://app.co/blockstack)
 
 {% include payout-appmining.md %}
 
