@@ -46,7 +46,7 @@ Although Radiks applications rely on a centrally-hosted database, an application
 <table class="uk-table">
   <tr>
     <td>Built on decentralized authentication</td>
-    <td> Radiks is deeply tied to Blockstack authentication, which uses a blockchain and Gaia to give you full control over your user data. 
+    <td> Radiks is deeply tied to Blockstack authentication, which uses a blockchain and Gaia to give you full control over your user data. </td>
   </tr>
   <tr>
     <td>No data lock-in</td>
