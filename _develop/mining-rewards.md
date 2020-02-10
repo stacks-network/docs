@@ -3,6 +3,10 @@ layout: learn
 description: Blockstack app mining documentation
 permalink: /:collection/:path.html
 ---
+**This is outdated documentation for the App Mining program. App Mining Has Been Paused. 
+Thank you to the hundreds of you that participated and congratulations to our winners.**
+[More info](https://blog.blockstack.org/the-next-phase-of-app-mining/) & [all apps →](https://app.co/blockstack)
+
 # How payouts are administered
 
 The payouts are administered by Blockstack PBC and facilitated by App.co. Here is how the payouts ramp: 
