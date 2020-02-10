@@ -6,6 +6,14 @@ toc: true
 ---
 <p class="uk-text-lead">A guide featuring insights from App Reviewers and the Blockstack PBC team</p>
 
+**This is outdated documentation for the App Mining program. App Mining Has Been Paused. 
+Thank you to the hundreds of you that participated and congratulations to our winners.**
+[More info](https://blog.blockstack.org/the-next-phase-of-app-mining/) & [all apps →](https://app.co/blockstack)
+
+
+
+
+
 <p class="uk-text-meta"><strong>Disclaimer</strong>: App Mining is currently being piloted by Blockstack PBC with the intent of refining it to the point it can be implemented at the protocol level on the Stacks Blockchain. The program is constantly improving thanks to feedback collected via the forum, Github, and ongoing App Mining calls with miners. </p>
 
 
