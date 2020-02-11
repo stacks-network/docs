@@ -4,6 +4,10 @@ permalink: /:collection/:path.html
 ---
 # How to enroll in App Mining
 
+**This is outdated documentation for the app mining program. App Mining Has Been Paused. 
+Thank you to the hundreds of you that participated and congratulations to our winners.**
+[More info](https://blog.blockstack.org/the-next-phase-of-app-mining/) & [all apps →](https://app.co/blockstack)
+
 Application mining rewards developers for building decentralized applications
 (DApps). You must enroll your application to be eligible for these
 rewards. This section explains the enrollment process and covers the following topics:
