@@ -20,13 +20,6 @@ Blockstack helps your development efforts. This part contains the following topi
 This page assumes you have customized and deployed your Animal Kingdom as
 [described in part 3](zero_to_dapp_3).
 
-## Understand application mining
-
-{% include intro-appmining.md %}
-
-
-{% include payout-appmining.md %}
-
 
 ## Add your Animal Kingdom to App.co
 
@@ -62,16 +55,7 @@ To add an app, do the following:
    The Blockstack team will email you information about how to obtain your
    limited edition t-shirt at our store.
 
-## Submit a DApp to App Mining
 
-Only applications that integrate Blockstack authentication and
-that are accessible to review can participate in application mining (App Mining).
-
-To submit an application for App Mining, you select <a href="https://app.co/mining" target="\_blank" style="color:blue;">App Mining</a> from the App.co menu and then select the **Submit your app for qualification** button. Blockstack sample applications that you create from our tutorials such as this one don't qualify for application mining.
-
-Your submission is evaluated internally to check if it passes the basic
-requirements. After it passes, we accept the app and contact you to <a href="{{ site.baseurl }}/develop/mining_enroll.html" target="\_blank">submit
-additional materials</a>.
 
 <h6><a class="uk-button uk-button-primary" href="https://app.co/mining/latest" target="_blank">See the list of the latest earners</a></h6>
 
