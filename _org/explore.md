@@ -26,7 +26,7 @@ You use {::nomarkdown}<a href="https://explorer.blockstack.org/" target="\_blank
   <tr>
     <td>name</td>
     <td>An identifier or name. A name is a type of digital asset on the Blockstack network.  If you have signed into the Blockstack Browser, you created a name. If an application developer registered an application within Blockstack, then they registered a name.</td>
-    <td><code>graphite.it</code> or <code>meepers.id.blockstack</code></td>
+    <td><code>naval.id</code> or <code>meepers.id.blockstack</code></td>
   </tr>
   <tr>
     <td>block</td>
