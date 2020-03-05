@@ -449,7 +449,7 @@ Before you begin, you need to build a site that is ready to deploy.
     After a moment, Netlify publishes your site. Check the published location, it may have changed.
 
 14. Click on the link and log into your Animal Kingdom.
-15. Recreate your animal person and territory.
+15. Recreate your animal persona and territory.
 
     The Animal Kingdom is identified by its location on the Internet, remember?
     So, the animal kingdom you created on your local workstation is different
