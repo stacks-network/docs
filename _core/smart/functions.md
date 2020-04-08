@@ -35,7 +35,7 @@ For example, consider two functions, `foo.A` and `bar.B` where the `foo.A` funct
   <tr>
     <td><code>ok</code></td>
     <td><code>err</code></td>
-    <td>Change from <code>foo.A</code> is possible; no changes from <code>foo.B</code> materialize.</td>
+    <td>Change from <code>foo.A</code> is possible; no changes from <code>bar.B</code> materialize.</td>
   </tr>
 </table>
 
