@@ -17,9 +17,9 @@
   {% include editme.html %}
 </time>
 <div>
-  {% assign three_months_ago = 'now' | date: '%s' | minus: 15552000 %}
+  {% assign six_months_ago = 'now' | date: '%s' | minus: 15552000 %}
   {% assign page_date = page.last_modified_at | date: '%s' %}
-  {% assign diff_date = three_months_ago | minus: page_date %}
+  {% assign diff_date = six_months_ago | minus: page_date %}
 
   {% if diff_date >= 0 %}
   <div class=uk-alert-warning uk-card" style="margin-top: 25px !important;" uk-alert>
