@@ -149,7 +149,7 @@ To run locally:
 2. Build and serve locally.
 
    ```
-   bundle exec jekyll serve --config _config.yml,staticman.yml
+   bundle exec jekyll serve --config _config.yml,staticman.yml --livereload
    ```
 
    Use this format to turn on production features:
