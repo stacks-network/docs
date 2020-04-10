@@ -116,6 +116,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-toc
   - jekyll-redirect-from
+  - jekyll-last-modified-at
 
 
 titles_from_headings:

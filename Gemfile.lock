@@ -43,6 +43,9 @@ GEM
       octokit (~> 4.2)
     jekyll-google-tag-manager (1.0.3)
       jekyll (>= 3.3, < 5.0)
+    jekyll-last-modified-at (1.0.1)
+      jekyll (~> 3.3)
+      posix-spawn (~> 0.3.9)
     jekyll-livereload (0.2.2)
       em-websocket (~> 0.5)
       jekyll (~> 3.0)
@@ -81,6 +84,7 @@ GEM
       sawyer (~> 0.8.0, >= 0.5.3)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
+    posix-spawn (0.3.13)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -111,6 +115,7 @@ DEPENDENCIES
   jekyll-feed (~> 0.6)
   jekyll-gist
   jekyll-google-tag-manager
+  jekyll-last-modified-at
   jekyll-livereload
   jekyll-paginate (~> 1.1)
   jekyll-redirect-from
@@ -121,7 +126,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.6.3p62
 
 BUNDLED WITH
-   1.16.6
+   1.17.2

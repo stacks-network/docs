@@ -31,6 +31,7 @@ group :jekyll_plugins do
    gem 'jekyll-toc'
    gem 'jekyll-redirect-from'
    gem 'jekyll-google-tag-manager'
+   gem "jekyll-last-modified-at"
 end
 
 group :development do

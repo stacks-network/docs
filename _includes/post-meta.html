@@ -1,19 +1,31 @@
 {% if page.author %}
-  {% assign author = site.authors[page.author] %}
+{% assign author = site.authors[page.author] %}
 {% else %}
-  {% assign author = site.author %}
+{% assign author = site.author %}
 {% endif %}
 
 {% if author.github %}
-    <!-- {% avatar {{ author.github }} size=32 %} -->
+<!-- {% avatar {{ author.github }} size=32 %} -->
 {% endif %}
 
 {% if author.name %}
-    <!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ author.name }}</span></span><br> -->
+<!-- Written by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ author.name }}</span></span><br> -->
 {% endif %}
 
-<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-    {% assign date_format = site.date_format | default: "%b %-d, %Y" %}
-    {{ page.date | date: date_format }}
-    {% include editme.html %}  
+<time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="datePublished">
+  {{ page.last_modified_at | date: "%b %-d, %Y" }}
+  {% include editme.html %}
 </time>
+<div>
+  {% assign three_months_ago = 'now' | date: '%s' | minus: 15552000 %}
+  {% assign page_date = page.last_modified_at | date: '%s' %}
+  {% assign diff_date = three_months_ago | minus: page_date %}
+
+  {% if diff_date >= 0 %}
+  <div class=uk-alert-warning uk-card" style="margin-top: 25px !important;" uk-alert>
+    <b>Note:</b>
+    This page has been published more than 6 months ago, and parts
+    of its contents are very likely to be obsolete by now.
+  </div>
+  {% endif %}
+</div>
