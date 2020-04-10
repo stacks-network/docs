@@ -42,6 +42,12 @@
   - develop/auth_provider
   - develop/communityResources
 
+- title: Connect
+  docs:
+  - develop/connect/overview
+  - develop/connect/get-started
+  - develop/connect/use-with-clarity
+
 - title: App Mining
   docs:
   - develop/mining_intro
