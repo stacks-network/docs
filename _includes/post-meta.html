@@ -17,15 +17,14 @@
   {% include editme.html %}
 </time>
 <div>
-  {% assign six_months_ago = 'now' | date: '%s' | minus: 15552000 %}
+  {% assign year_ago = 'now' | date: '%s' | minus: 31104000 %}
   {% assign page_date = page.last_modified_at | date: '%s' %}
-  {% assign diff_date = six_months_ago | minus: page_date %}
+  {% assign diff_date = year_ago | minus: page_date %}
 
   {% if diff_date >= 0 %}
   <div class=uk-alert-warning uk-card" style="margin-top: 25px !important;" uk-alert>
     <b>Note:</b>
-    This page has been published more than 6 months ago, and parts
-    of its contents are very likely to be obsolete by now.
+    This page has been published more than a year ago, and may be partially out of date.
   </div>
   {% endif %}
 </div>
