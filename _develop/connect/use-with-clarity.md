@@ -16,7 +16,7 @@ For your app's users to be able to execute a smart contract function, they need 
 
 Connect allows you to open the authenticator with parameters indicating the details of the transaction - like the smart contract address, function name, and specific arguments. Your users get the chance to see these details, and then sign and broadcast the transaction in a single click. Their transaction will be securely signed and broadcasted onto the Stacks blockchain. After this is done, a callback is fired to allow you to update your app.
 
-## API
+## Usage
 
 ### `ContractCallOptions`
 

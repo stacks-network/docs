@@ -36,11 +36,8 @@ The exact interface you'll use [is defined as](https://github.com/blockstack/con
 
 ```typescript
 export interface AuthOptions {
-  // The URL you want the user to be redirected to after authentication.
   redirectTo: string;
-  manifestPath?: string;
-  finished?: (payload: FinishedData) => void;
-  authOrigin?: string;
+  finished: (payload: FinishedData) => void;
   sendToSignIn?: boolean;
   userSession?: UserSession;
   appDetails: {
@@ -50,17 +47,18 @@ export interface AuthOptions {
 }
 ```
 
-- `redirectTo`: The path in your app where users go after sign in.
-- `appDetails`: an optional object which includes `appName: string` and `appIcon: string`. This will speed up the process of loading your app's information during onboarding.
-- `manifestPath`: __(optional)__ - the path in your app where your manifest.json file can be found
-- `finished`: __(optional)__ - A callback that can be invoked after authentication. This prevents having to do a whole page refresh in a new tab. One argument is passed to this callback, which is an object with `userSession` included. If included, then the `redirectTo` path is ignored, and the user will be logged in automatically.
-- `authOrigin`: __(optional)__ - The URL you'd like to use for authentication. Only necessary for local development of the authenticator.
-- `sendToSignIn`: __(optional)__ - defaults to `false`. Whether the user should go straight to the 'sign in' flow.
-- `userSession`: __(optional)__ - pass a `UserSession` instance to use for authentication. If it's not passed, `@blockstack/connect` will create one for you.
+parameter | type | default | optional | description
+---|---|---|---|---
+redirectTo | string | | false | The path in your app where users go after sign in.
+appDetails | object | | false | an object which includes `appName: string` and `appIcon: string`. This will speed up the process of loading your app's information during onboarding.
+finished | function | | false | A callback that can be invoked after authentication. This prevents having to do a whole page refresh in a new tab. One argument is passed to this callback, which is an object with `userSession` included. If included, then the `redirectTo` path is ignored, and the user will be logged in automatically.
+sendToSignIn | boolean | false | true | Whether the user should go straight to the 'sign in' flow.
+userSession | UserSession | | false | pass a `UserSession` instance to use for authentication. If it's not passed, `@blockstack/connect` will create one for you.
+
 
 ### In React Apps
 
-If you're using `connect` in a React app, then the best option is to include `connect`'s React infrastructure and hooks in your React app.
+If you're using `connect` in a React app, then the best option is to include `connect`'s React Provider and hooks in your React app.
 
 First, setup the `Connect` provider at the "top-level" of your app - probably next to wherever you would put a Redux provider, for example.
 
@@ -101,6 +99,10 @@ const SignInButton = () => {
 }
 ```
 
+#### Sign In
+
+To send the user straight to sign in, call `doOpenAuth(true)`.
+
 ### In ES6 (non-React) apps
 
 If you aren't using React, or just want a simpler API, then you can use the `showBlockstackConnect` method.
@@ -113,7 +115,11 @@ const authOptions = { /** See docs above for options */ };
 showBlockstackConnect(authOptions);
 ```
 
-**Note about dependency size:**
+#### Sign In
+
+To send the user straight to sign in, include `sendToSignIn: true` in your `authOptions`.
+
+#### Note about dependency size:
 
 If you're building a non-React app, note that importing `@blockstack/connect` will add React dependencies to your JavaScript bundle. We recommend using something like [Webpack resolve aliases](https://webpack.js.org/configuration/resolve/) to replace `react` with `preact` in production, which reduces your bundle size. Check out [our own webpack.config.js file](https://github.com/blockstack/ux/blob/fix/connect-modal-accessibility/packages/connect/webpack.config.js#L87:L95) to see how we use this for production builds.
 
