@@ -35,14 +35,15 @@ export interface ContractCallOptions {
 }
 ```
 
-- `contractAddress`: The Stacks address that published this contract
-- `contractName`: The name that was used when publishing this contract
-- `functionName`: The name of the function you're calling. This needs to be a [public function](/core/smart/clarityRef.html#define-public).
-- `functionArgs`: The arguments you're calling the function with
-- `authOrigin`: _(optional)_ The URL for the authenticator. You only need to use this if you're developing the authenticator locally. Do not use in production
-- `userSession`: _(optional)_ A `UserSession` instance
-- `appDetails`: A dictionary that includes `name` and `icon`
-- `finished`: A callback that is fired when the transaction is signed and broadcasted. Your callback will receive an object back with a `txId` and a `txRaw`.
+parameter | type | default | optional | description
+---|---|---|---|---
+contractAddress | string | | false | The Stacks address that published this contract
+contractName | string | | false | The name that was used when publishing this contract
+functionName | string | | false | The name of the function you're calling. This needs to be a [public function](/core/smart/clarityRef.html#define-public).
+functionArgs | array | [] | true | The arguments you're calling the function with
+userSession | UserSession | | true | A `UserSession` instance
+appDetails | object | | false | A dictionary that includes `name` and `icon`
+finished | function | | false | A callback that is fired when the transaction is signed and broadcasted. Your callback will receive an object back with a `txId` and a `txRaw`, both of which are strings.
 
 ### Usage in ES6 (non-React) apps
 
