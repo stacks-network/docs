@@ -3,95 +3,123 @@ layout: core
 description: "Blockstack smart contracting language"
 permalink: /:collection/:path.html
 ---
-# Hello Clarity for the VM
+# Hello Clarity
 
-In this tutorial, you learn how to use Clarity, Blockstack's smart contracting language inside of a virtual environment. The environment is run using a Docker image. Use this tutorial to get a quick introduction to Clarity and the default Blockstack test environment.
+| Audience | | **Beginners**  |
+| Duration | | **15 minutes** |
+
+In this tutorial, you learn how to use Clarity, Blockstack's smart contracting language inside of a virtual environment. The environment is run using a [Docker](https://www.docker.com/) image. Use this tutorial to get a quick introduction to Clarity and the default Blockstack test environment.
+
+By the end of this tutorial you will ...
+
+* Have working test environment to run Clarity smart contracts
+* Have access to a set of sample contracts to play with
+* Understand basic Clarity language design principles
+* Deploy and run your own smart contract
+
+## Overview
 
 * TOC
 {:toc}
 
 <div class="uk-card uk-card-default uk-card-body">
-<h5>Clarity is in pre-release</h5>
-<p>Clarity and its accompanying toolset are in pre-release. If you encounter issues with or have feature requests regarding Clarity, please create an issue on the <a href='https://github.com/blockstack/blockstack-core/issues' target='_blank'>blockstack/blockstack-core</a> repository. To read previous or join ongoing discussions about smart contracts in general and Clarity in particular, visit the <strong><a href='https://forum.blockstack.org/c/clarity' target='_blank'>Smart Contracts</a></strong> topic in the Blockstack Forum.
+<h5>Early Release</h5>
+<p>Clarity and its accompanying toolset are in early release. If you encounter issues with or have feature requests regarding Clarity, please create an issue on the <a href='https://github.com/blockstack/stacks-blockchain/issues' target='_blank'>blockstack/stacks-blockchain</a> repository. To read previous or join ongoing discussions about smart contracts in general and Clarity in particular, visit the <strong><a href='https://forum.blockstack.org/c/clarity' target='_blank'>Smart Contracts</a></strong> topic in the Blockstack Forum.
 </p>
 </div>
 
 ## Before you begin (pre-requisites)
 
-The Clarity language goes live in the next Stacks blockchain fork. Until the fork, you can run Clarity in a test environment. You run this test environment in a Docker container.  Before you begin this tutorial, make sure you have <a href="https://docs.docker.com" target="_blank">Docker installed on your workstation</a>.
+The Clarity language goes live with the release of Stacks2.0. Until then, you can run Clarity in a test environment. You run this test environment in a Docker container. Before you begin this tutorial, make sure you have <a href="https://docs.docker.com/get-docker/" target="_blank">Docker installed on your workstation</a>.
 
-If, for some reason, you don't want to run the test environment with Docker, you can build and maintain a local environment. Instructions for downloading and building the environment are available in the `blockstack/blockstack-core` repository's <a href='https://github.com/blockstack/blockstack-core' target='_blank'>README</a> file.
+You can verify your Docker installation by running the following in your terminal:
 
-
-## Task 1: Set up the test environment
-
-Blockstack publishes the `clarity-developer-preview` image on Docker hub. A container built from this image contains sample programs, the Blockstack Core, and tools for working with them. In this task, you use Docker to pull and run the image on your local workstation. 
-
-1. Pull the Blockstack core `clarity-developer-preview` image from Docker Hub.
-
-    ```bash
-    $ docker pull blockstack/blockstack-core:clarity-developer-preview
-    ``` 
-
-2. Start the Blockstack Core test environment with a Bash shell.
-
-    ```bash
-    $ docker run -it -v $HOME/blockstack-dev-data:/data/ blockstack/blockstack-core:clarity-developer-preview bash
-    ```
-
-    The command launches a container with the Clarity test environment and opens a bash shell into the container. The `-v` flag creates a local `$HOME/blockstack-dev-data` directory in your workstation and mounts it at the `/data` directory inside the container. The shell opens into the `src/blockstack-core` directory. This directory contains the source for a core and includes Clarity contract samples you can run.
-
-3. List the contents of the `sample-programs` directory.
-
-   ```bash
-   root@f88368ba07b2:/src/blockstack-core# ls sample-programs/
-   names.clar  tokens.clar
-   ```
-
-   The sample program's directory contains two simple Clarity programs. Clarity code files have a `.clar` suffix.
-
-4. Go ahead and display the contents of the `tokens.clar` program with the `cat` command.
-
-    ```bash
-    root@c28600552694:/src/blockstack-core# cat sample-programs/tokens.clar 
-    ```
-
-    The next section gives you an introduction to the Clarity language by way of examining this program's code.
-
-## Task 2: Review a simple Clarity program
-
-If you haven't already done so, use the `cat` or `more` command to display the `tokens.clar` file's code. Clarity is designed for static analysis; it is not a compiled language and is not Turing complete. It language is a LISP-like language.  LISP is an acronym for list processing. 
-
-The first lines of the `tokens.clar` program contains a user-defined `get-balance` function.  
-
-```cl
-(define-map tokens ((account principal)) ((balance uint)))
-(define-private (get-balance (account principal))
-  (default-to u0 (get balance (map-get? tokens (tuple (account account))))))
+```bash
+docker verion
 ```
 
-`get-balance` is a private function because it is constructed with the `define-private` call. To create public functions, you would use the `define-public` function. Public functions can be called from other contracts or even from the command line with the `clarity-cli`.
+You should see the version of your Docker engine running on your workstation.
 
-Notice the program is enclosed in  `()` (parentheses) and each statement as well.  The `get-balance` function takes an `account` argument of the special type `principal`. Principals represent a spending entity and are roughly equivalent to a Stacks address. 
+## Step 1: Set up the test environment
 
-Along with the `principal` types, Clarity supports  booleans, integers, and fixed-length buffers. Variables are created via `let` binding, but there is no support for mutating functions like `set`.
+In this step, you use the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) to pull and run the image on your local workstation.
 
-The next sequence of lines shows an `if` statement that allows you to set conditions for execution in the language. 
+1. Using your terminal, download the latest [Stacks 2.0 blockchain Docker image](https://hub.docker.com/r/blockstack/stacks-blockchain) from the Docker Hub:
 
-```cl
-(define-private (token-credit! (account principal) (amount uint))
-  (if (<= amount u0)
-      (err "must move positive balance")
-      (let ((current-amount (get-balance account)))
-        (begin
-          (map-set tokens (tuple (account account))
-                      (tuple (balance (+ amount current-amount))))
-          (ok amount)))))
-```
+    ```bash
+    docker pull blockstack/stacks-blockchain:latest
+    ```
 
-Every smart contract has both a data space and code. The data space of a contract may only interact with that contract. This particular function is interacting with a map named `tokens`. The `set-entry!` function is a native function that sets the value associated with the input key to the inputted value in the `tokens` data map. Because `set-entry!`  mutates data so it has an `!` exclamation point; this is by convention in Clarity. 
+2. Now, you can start the Stack2.0 test environment in your terminal:
 
-In the first `token-transfer` public function, you see that it calls the private `get-balance` function and passes it `tx-sender`. The `tx-sender` is a globally defined variable that represents the current principal.
+    ```bash
+    docker run -it -v $HOME/blockstack-dev-data:/data/ blockstack/stacks-blockchain:latest bash
+    ```
+
+    The command opens a bash shell inside the Docker image, so that you can operate in the test environment.
+
+## Step 2: Review sample contracts
+With a test environment running on your workstation, let's have a look at some sample contracts implemented with Clarity.
+
+1. Still inside the bash shell of the Docker image, list the contents of the `sample-contracts` directory.
+
+    ```bash
+    ls sample-contracts/
+    ```
+
+    This directory contains a set of simple Clarity contracts. Note that all Clarity files have a `.clar` suffix.
+
+2. Let's review the contents of `tokens.clar` with the `cat` command.
+
+    ```bash
+    cat sample-contracts/tokens.clar
+    ```
+
+    You should see the contract source code. Take a few minutes to review the content.
+
+    Clarity is a programming language based on [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)). Most notably, Clarity is designed for static analysis, not compiled, and **not** [Turing complete](https://en.wikipedia.org/wiki/Turing_completeness).
+
+    Let's go through the source code:
+
+    ```cl
+    (define-map tokens ((account principal)) ((balance uint)))
+    (define-private (get-balance (account principal))
+        (default-to u0 (get balance (map-get? tokens (tuple (account account))))))
+    ```
+
+    Notice the program and each statement is enclosed in `()` (parentheses).
+
+     The first line defines a map for `tokens` with the account-balance key-value pairs. The `account` key is of the [`principal`](https://docs.blockstack.org/core/smart/clarityref#principal-type) type. Principals represent a spending entity and are roughly equivalent to a Stacks address. The `balance` value is an unsigned integer ([`uint`](https://docs.blockstack.org/core/smart/clarityref#uint-type)). Along with principals and signed/unsigned integers, Clarity supports the following types:
+    * [booleans](https://docs.blockstack.org/core/smart/clarityref#bool-type)
+    * [fixed-length buffers](https://docs.blockstack.org/core/smart/clarityref#buffer-type)
+    * [tuples](https://docs.blockstack.org/core/smart/clarityref#tuple-type)
+
+     On line 2 and 3, a `get-balance` function is declared as a private function. To create public functions, you would use the `define-public` function. Public functions can be called from DApps, CLIs, or other contracts.
+     The `get-balance` function returns the value (`balance`) for the key provided (`account`). Using `default-to`, an unsigned integer `0` (note the `u0` literal to differentiate between signed integers) is returned if the account key cannot be found in the `tokens` map.
+
+     Let's look at the next method definition. The private method `token-credit!` is defined below. It takes a principal and unsigned integer as input parameters:
+
+    ```cl
+    (define-private (token-credit! (account principal) (amount uint))
+    (if (<= amount u0)
+        (err "must move positive balance")
+        (let ((current-amount (get-balance account)))
+            (begin
+            (map-set tokens (tuple (account account))
+                        (tuple (balance (+ amount current-amount))))
+            (ok amount)))))
+    ```
+
+    On the first line of the method, we see how conditions can be used with the [`if`](https://docs.blockstack.org/core/smart/clarityref#if) statement. The if statement takes a boolean argument and two expressions. The first expression is executed when the boolean argument evalutes true. In this case, [`err`](https://docs.blockstack.org/core/smart/clarityref#int-type) is used to return an error response type with the error message provided.
+
+    --> TODO
+
+    Variables are created via [`let`](https://docs.blockstack.org/core/smart/clarityref#let) binding, but there is no support for mutating functions like `set`.
+    - Describe: `token-credit`, `!`, `current-amount`, `begin`, `ok`
+
+    Every smart contract has both a data space and code. The data space of a contract may only interact with that contract. This particular function is interacting with a map named `tokens` (defined on line 1). The [`map-set`](https://docs.blockstack.org/core/smart/clarityref#map-set) function sets the value associated with the input key to the inputted value in the `tokens` data map.
+
+    In the first `token-transfer` public function, you see that it calls the private `get-balance` function and passes it `tx-sender`. The `tx-sender` is a globally defined variable that represents the current principal.
 
 ```cl
 (define-public (token-transfer (to principal) (amount uint))
@@ -115,10 +143,10 @@ The final two lines of the program pass a principal, represented by a Stacks add
 
 Smart contracts may call other smart contracts using a `contract-call!` function. This ability means that if a transaction invokes a function in a given smart contract, that function is able to make calls into other smart contracts on your behalf. The ability to read and do a static analysis of Clarity code allows clients to learn which functions a given smart contract will ever call. Good clients should always warn users about any potential side effects of a given transaction.
 
-Take a moment to `cat` the contents of the `sample-programs/names.clar` file.
+Take a moment to `cat` the contents of the `sample-contracts/names.clar` file.
 
 ```bash
-cat sample-programs/names.clar
+cat sample-contracts/names.clar
 ````
 
 Which `tokens.clar` function is being called? 
@@ -139,7 +167,7 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
 2. Type check the `names.clar` contract.
 
     ```bash
-    #  clarity-cli check sample-programs/names.clar /data/db
+    #  clarity-cli check sample-contracts/names.clar /data/db
     ```
     
     You should get an error:
@@ -153,7 +181,7 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
 3. Type check the `tokens.clar` contract, it should pass a check as it does not use the `contract-call` function:
 
     ```bash
-    # clarity-cli check sample-programs/tokens.clar /data/db
+    # clarity-cli check sample-contracts/tokens.clar /data/db
     Checks passed.
     ```
 
@@ -181,7 +209,7 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
    You use the `launch` command to instantiate a contract on the Stacks blockchain. If you have dependencies between contracts, for example `names.clar` is dependent on `tokens.clar`, you must launch the dependency first.
 
     ```bash
-    # clarity-cli launch $DEMO_ADDRESS.tokens sample-programs/tokens.clar /data/db
+    # clarity-cli launch $DEMO_ADDRESS.tokens sample-contracts/tokens.clar /data/db
     Contract initialized!
     ```
 
@@ -190,7 +218,7 @@ In this task, you interact with the the contracts using the `clarity-cli` comman
 7. Instantiate the `names.clar` contract and assign it to your `DEMO_ADDRESS` address. as well.
 
     ```bash
-    # clarity-cli launch $DEMO_ADDRESS.names sample-programs/names.clar /data/db
+    # clarity-cli launch $DEMO_ADDRESS.names sample-contracts/names.clar /data/db
     Contract initialized!
     ```
 
@@ -205,7 +233,7 @@ clarity-cli initialize /data/db
 As you work the contracts, data is added to the `db` database because you pass this database as a parameter, for example:
 
 ```bash
-clarity-cli launch $DEMO_ADDRESS.tokens sample-programs/tokens.clar /data/db
+clarity-cli launch $DEMO_ADDRESS.tokens sample-contracts/tokens.clar /data/db
 ```
 
 The database exists on your local workstation and persists through restarts of the container. You can use this database to explore the transactional effects of your Clarity programs. The SQLite database includes a single `data_table` and a set of `marf` structures.

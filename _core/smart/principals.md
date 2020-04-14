@@ -3,7 +3,7 @@ layout: core
 description: "Blockstack smart contracting language"
 permalink: /:collection/:path.html
 ---
-# Principals
+# Understanding Principals
 {:.no_toc}
 
 _Principals_ are a Clarity native type that represents a spending entity. This section discusses principals and how they are used in the Clarity.  

@@ -3,7 +3,7 @@ layout: core
 description: "Blockstack smart contracting language"
 permalink: /:collection/:path.html
 ---
-# Welcome to Clarity
+# Introduction
 {:.no_toc}
 
 Clarity is Blockstack's smart contracting language for use with the Stacks blockchain. Clarity supports programmatic control over digital assets within the Stacks blockchain (for example, BNS names, Stacks tokens, and so forth). This section discusses the following topics:
@@ -12,8 +12,8 @@ Clarity is Blockstack's smart contracting language for use with the Stacks block
 {:toc}
 
 <div class="uk-card uk-card-default uk-card-body">
-<h5>Clarity is in pre-release</h5>
-<p>Clarity, its accompanying toolset, and the SDK are in pre-release.  If you encounter issues with or have feature requests regarding Clarity, please create an issue on the <a href='https://github.com/blockstack/blockstack-core/issues' target='_blank'>blockstack/blockstack-core</a> repository. To read previous or join ongoing discussions about smart contracts in general and Clarity in particular, visit the <strong><a href='https://forum.blockstack.org/c/clarity' target='_blank'>Smart Contracts</a></strong> topic in the Blockstack Forum.
+<h5>Early Release</h5>
+<p>Clarity and its accompanying toolset are in early release. If you encounter issues with or have feature requests regarding Clarity, please create an issue on the <a href='https://github.com/blockstack/stacks-blockchain/issues' target='_blank'>blockstack/stacks-blockchain</a> repository. To read previous or join ongoing discussions about smart contracts in general and Clarity in particular, visit the <strong><a href='https://forum.blockstack.org/c/clarity' target='_blank'>Smart Contracts</a></strong> topic in the Blockstack Forum.
 </p>
 </div>
 
@@ -42,11 +42,11 @@ Contracts can also call public functions from other smart contracts. The ability
 
 Clarity is a list processing (LISP) language, as such it is not compiled. Omitting compilation prevents the possibility of error or bugs introduced at the compiler level. You can write Clarity smart contract programs on any operating system with a text editor. You can use any editor you are comfortable with such as Atom, Vim, or even Notepad. The Clarity files you create with an editor have a `.clar` extension.
 
-Clarity is in pre-release and does not yet directly interact with the live Stacks blockchain. For the pre-release period you need a test environment to run Clarity contracts. Blockstack provides a Docker image called `clarity-developer-preview` that you can use or you can build a test environment locally from code. Either the Docker image or a local environment is sufficient for testing Clarity programming for standalone contracts.
+Clarity is in easly release and does not yet directly interact with the live Stacks blockchain. For the early release period you need a test environment to run Clarity contracts. Blockstack provides a Docker image called `clarity-developer-preview` that you can use or you can build a test environment locally from code. Either the Docker image or a local environment is sufficient for testing Clarity programming for standalone contracts.
 
 You use the `clarity-cli` command line to check, launch, and execute standalone Clarity contracts inside the virtual test environment. You can use this same command line to create simulate mining Stacks and inspecting a blockchain. 
 
-Blockstack expects that some decentralized applications (DApp) will want to make use of Clarity contracts as part of their applications. For this purpose, you should use the Clarity SDK, also in pre-release. The SDK is a development environment, testing framework, and deployment tool. It provides a library for safe interactions with Clarity contracts from a DApp written with the blockstack.js library. The SDK has a `clarity` command line for creating Clarity projects.
+Blockstack expects that some decentralized applications (DApp) will want to make use of Clarity contracts as part of their applications. For this purpose, you should use the Clarity SDK, also in early release. The SDK is a development environment, testing framework, and deployment tool. It provides a library for safe interactions with Clarity contracts from a DApp written with the blockstack.js library. The SDK has a `clarity` command line for creating Clarity projects.
 
 ## Basic building blocks of Clarity contracts
 
@@ -85,7 +85,7 @@ The easiest program to run in any language is a hello world program. In Clarity,
 
 This program defines a single `hello-world` expression that is excuted when the contract launches. The `begin` is a native Clarity function that evaluates the expressions input to it and returns the value of the last expression.  Here there is a single `print` expression. Both the `begin` and the `print` are enclosed in `()` parentheses.
 
-For the pre-release, the Blockstack test environment includes the `clarity-cli` command for interacting with the contract and SQLite to support the data space. You create a SQLLite database to hold data related to Clarity contracts. This database simulates the blockchain by recording the contract activity. 
+For the early release, the Blockstack test environment includes the `clarity-cli` command for interacting with the contract and SQLite to support the data space. You create a SQLLite database to hold data related to Clarity contracts. This database simulates the blockchain by recording the contract activity. 
 
 You can't run even an a hello-world program without first initializing a Clarity contract's data space within the database. You can use the `clarity-cli initialize` command to set up the database.
 

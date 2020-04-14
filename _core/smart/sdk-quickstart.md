@@ -12,8 +12,8 @@ You can use the software developer kit (SDK) to develop, test, and deploy Clarit
 {:toc}
 
 <div class="uk-card uk-card-default uk-card-body">
-<h5>Clarity is in pre-release</h5>
-<p>Clarity, its accompanying toolset, and the SDK are in pre-release. If you encounter issues with or have feature requests regarding Clarity, please create an issue on the <a href='https://github.com/blockstack/blockstack-core/issues' target='_blank'>blockstack/blockstack-core</a> repository. To read previous or join ongoing discussions about smart contracts in general and Clarity in particular, visit the <strong><a href='https://forum.blockstack.org/c/clarity' target='_blank'>Smart Contracts</a></strong> topic in the Blockstack Forum.
+<h5>Early Release</h5>
+<p>Clarity and its accompanying toolset are in early release. If you encounter issues with or have feature requests regarding Clarity, please create an issue on the <a href='https://github.com/blockstack/stacks-blockchain/issues' target='_blank'>blockstack/stacks-blockchain</a> repository. To read previous or join ongoing discussions about smart contracts in general and Clarity in particular, visit the <strong><a href='https://forum.blockstack.org/c/clarity' target='_blank'>Smart Contracts</a></strong> topic in the Blockstack Forum.
 </p>
 </div>
 
@@ -97,10 +97,10 @@ In this task, you generate a project scaffold &mdash; an initial set of director
    
 Your project should contain three directories:
 
- | Directory |Description  |
- |---|---|
- | `contracts` | Contains `.clar` files (Clarity contract files) here.  |
- | `test` | Contains files for testing your application. |
+ | Directory      | Description                                               |
+ | -------------- | --------------------------------------------------------- |
+ | `contracts`    | Contains `.clar` files (Clarity contract files) here.     |
+ | `test`         | Contains files for testing your application.              |
  | `node_modules` | Contains packages the project depends on. Added by `npm`. |
  
 The `contracts` directory contains a single file in `sample/hello-world.clar` file.

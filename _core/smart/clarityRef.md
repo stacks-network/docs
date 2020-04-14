@@ -3,7 +3,7 @@ layout: core
 description: "Blockstack smart contracting language"
 permalink: /:collection/:path.html
 ---
-# Clarity language reference
+# Language Reference
 
 This file contains the reference for the Clarity language. 
 
@@ -18,7 +18,7 @@ The `get-block-info` function fetches property details for a block at a specifie
 (get-block-info time 10) ;; Returns 1557860301
 ```
 
-Because the Clarity language is in pre-release, the block properties that are fetched are simulated properties from a SQLite database. The available property names are:
+Because the Clarity language is in early release, the block properties that are fetched are simulated properties from a SQLite database. The available property names are:
 
 <table class="uk-table">
   <tr>
@@ -54,6 +54,12 @@ This section lists the types available to smart contracts. The only atomic types
 ### Int type
 
 The integer type in the Clarity language is a 16-byte signed integer, which allows it to specify the maximum amount of microstacks spendable in a single Stacks transfer. The special `BlockHeightInt` you can obtain with the `get-block-info` function.
+
+### Uint type
+
+The unsigned integer type (`uint`) in the Clarity language is a 16-byte unsigned integer. Using the unsigned type can ensure that any value underflows (negative numbers) will cause a transaction to be aborted.
+
+Anywhere a developer wishes to use a literal unsigned integer (for example, incrementing or decrementing an input by a constant) the integer literal should use the `u` prefix, e.g., `u123`.
 
 ### Bool type
 
