@@ -48,9 +48,6 @@ GEM
       octokit (~> 4.2)
     jekyll-google-tag-manager (1.0.3)
       jekyll (>= 3.3, < 5.0)
-    jekyll-livereload (0.2.2)
-      em-websocket (~> 0.5)
-      jekyll (~> 3.0)
     jekyll-paginate (1.1.0)
     jekyll-redirect-from (0.15.0)
       jekyll (>= 3.3, < 5.0)
@@ -116,7 +113,6 @@ DEPENDENCIES
   jekyll-feed (~> 0.6)
   jekyll-gist
   jekyll-google-tag-manager
-  jekyll-livereload
   jekyll-paginate (~> 1.1)
   jekyll-redirect-from
   jekyll-seo-tag
