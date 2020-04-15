@@ -40,10 +40,37 @@ parameter | type | default | optional | description
 contractAddress | string | | false | The Stacks address that published this contract
 contractName | string | | false | The name that was used when publishing this contract
 functionName | string | | false | The name of the function you're calling. This needs to be a [public function](/core/smart/clarityRef.html#define-public).
-functionArgs | array | [] | true | The arguments you're calling the function with
+functionArgs | array | | false | The arguments you're calling the function with. You'll need to provide the Clarity type with each argument. See the below section for details.
 userSession | UserSession | | true | A `UserSession` instance
 appDetails | object | | false | A dictionary that includes `name` and `icon`
 finished | function | | false | A callback that is fired when the transaction is signed and broadcasted. Your callback will receive an object back with a `txId` and a `txRaw`, both of which are strings.
+
+#### Passing Clarity types with function arguments
+
+To be able to serialize your transaction properly, you need to provide the appropriate Clarity type with each argument. These types are named the same as they are in Clarity. The `value` that you pass must be a string. The types you can pass are:
+
+- `uint` - i.e. `"240"`
+- `int` - i.e. `"12"`
+- `bool` - can be "true", "false", "0" or "1"
+- `buff` - i.e. `"asdf"`
+- `principal` - This can be a contract principal, or a standard principal. Examples: `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ"` or `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ.my-contract"`.
+
+Using these types, each argument is an object with the keys `type` and `value`. For example:
+
+```js
+const functionArguments = [
+  {
+    type: 'buff',
+    value: 'hello, world'
+  },
+  {
+    type: 'uint',
+    value: '1'
+  }
+]
+```
+
+If you're using Typescript, these Clarity types can be imported as `ContractCallArgumentType` from `@blockstack/connect`.
 
 ### Usage in ES6 (non-React) apps
 
@@ -51,12 +78,16 @@ finished | function | | false | A callback that is fired when the transaction is
 import { openContractCall } from '@blockstack/connect';
 
 // Here's an example of options:
+const myStatus = 'hey there';
 const options = {
   contractAddress: 'ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ',
   contractName: 'status',
   functionName: 'write-status!',
   functionArgs: [
-    'Hello, World!',
+    {
+      type: 'buff',
+      value: myStatus,
+    }
   ],
   appDetails: {
     name: 'SuperApp',
