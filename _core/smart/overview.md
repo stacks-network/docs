@@ -21,7 +21,7 @@ If you are new to smart contracts concepts, you should read <a href="https://blo
 
 ## Use cases
 
-Not every decentralized application requires smart contracts, but Clarity unlocks interesting capabilities for decentralized applications. Examples of interesting use cases include, but are not limited to:
+Not every decentralized application requires smart contracts, but Clarity unlocks interesting capabilities for decentralized applications. Examples of use cases include, but are not limited to:
 
 * Access control (e.g. pay to access)
 * Non-fungible and fungible tokens
@@ -31,7 +31,7 @@ Not every decentralized application requires smart contracts, but Clarity unlock
 
 ## Language design
 
-Clarity is a list processing (LISP) language and differs from most other smart contract languages in two essential ways:
+Clarity is a [list processing (LISP) language](https://en.wikipedia.org/wiki/Lisp_(programming_language)) and differs from most other smart contract languages in two essential ways:
 
 * The language is not intended to be compiled
 * The language is not Turing complete

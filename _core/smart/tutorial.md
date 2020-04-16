@@ -84,11 +84,11 @@ Now, let's have a look at a Clarity smart contract and get familiar with the bas
 
     ```cl
     (define-public (say-hi)
-        (ok "hello world")
+      (ok "hello world")
     )
 
     (define-public (echo-number (val int))
-        (ok val)
+      (ok val)
     )
     ```
 
@@ -109,26 +109,26 @@ Now, let's have a look at a Clarity smart contract and get familiar with the bas
 
 The starter project comes with test tooling already set up for you (using [Mocha](https://mochajs.org/)). Let's run the tests and review the results:
 
-1. Still in the project root directory, run the following command:
+Still in the project root directory, run the following command:
 
-    ```bash
-    npm test
-    ```
+```bash
+npm test
+```
 
-    You should see the following response:
+You should see the following response:
 
-    ```bash
-      hello world contract test suite
-        ✓ should have a valid syntax
-        deploying an instance of the contract
-        ✓ should return 'hello world'
-        ✓ should echo number
+```bash
+  hello world contract test suite
+    ✓ should have a valid syntax
+    deploying an instance of the contract
+    ✓ should return 'hello world'
+    ✓ should echo number
 
 
-    3 passing (412ms)
-    ```
+3 passing (412ms)
+```
 
-    Great, all tests are passing! Now, let's have a look at the test implementation. That helps understand how to interact with Clarity smart contracts.
+Great, all tests are passing! Now, let's have a look at the test implementation. That helps understand how to interact with Clarity smart contracts.
 
 ## Step 4: Interacting with contracts
 

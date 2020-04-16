@@ -27,53 +27,47 @@ Before you get started, you should complete the [Hello World tutorial](tutorial.
 
 In this step, you initialize a starter project with additional counter tutorial files:
 
-1. Using your terminal, run the following command:
+Using your terminal, run the following command:
 
-    ```bash
-    npm init clarity-starter
-    ```
+```bash
+npm init clarity-starter
+```
 
-    You have to select a template and a name for your local folder. For the counter template used in this tutorial, ensure to type `counter` and hit ENTER:
+You have to select a template and a name for your local folder. For the counter template used in this tutorial, ensure to type `counter` and hit ENTER:
 
-    ```bash
-    ? Template - one of [hello-world, counter]: counter
-    ? Project name: (clarity-counter)
-    ```
+```bash
+? Template - one of [hello-world, counter]: counter
+? Project name: (clarity-counter)
+```
 
-    Finally, the project dependencies are installed and your project is ready for development. Because you already completed the Hello World tutorial, the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
+Finally, the project dependencies are installed and your project is ready for development. Because you already completed the Hello World tutorial, the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
 
 ## Step 2: Running tests
 
 Smart contracts are often developed in a test-driven approach to ensure code quality but also to speed up the development cycle by removing the need to push every change to the Blockchain before executing it. We will do the same in this project. Now, let's run the tests and review the results:
 
-1. Still in the project root directory, run the following command:
+Still in the project root directory, run the following command:
 
-    ```bash
-    npm test
-    ```
+```bash
+npm test
+```
 
-    You should see the following response:
+You should see the following response:
 
-    ```bash
-    counter contract test suite
-        ✓ should have a valid syntax
-        deploying an instance of the contract
-        1) should start at zero
-        2) should increment
-        3) should decrement
-
-    hello world contract test suite
-        ✓ should have a valid syntax
-        deploying an instance of the contract
-        ✓ should return 'hello world'
-        ✓ should echo number
+```bash
+counter contract test suite
+    ✓ should have a valid syntax
+    deploying an instance of the contract
+    1) should start at zero
+    2) should increment
+    3) should decrement
 
 
-    4 passing (455ms)
-    3 failing
-    ```
+1 passing (734ms)
+3 failing
+```
 
-    It looks like we see some failed test! That is on purpose - we will implement the new smart contract in the next steps! After every increment of the contract, we will rerun the tests to ensure we're on the right track.
+It looks like we see some failed test! That is on purpose - we will implement the new smart contract in the next steps! After every increment of the contract, we will rerun the tests to ensure we're on the right track.
 
 ## Step 3: Developing a smart contract
 
@@ -91,21 +85,17 @@ Let's get familiar with the tests to understand what the new smart contract shou
     counterClient = new Client("SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.counter", "counter", provider);
     ```
 
-    That tells us that the new smart contract is named `counter` and that we need to start by creating a new file for the smart contract: `contracts/counter.clar`. Note that the `contracts` folder is assumed as the base folder and that every Clarity file has the suffix `.clar`.
+    That tells us that the new smart contract is named `counter` and that the referenced smart contract should be found in the following file: `contracts/counter.clar`. Note that the `contracts` folder is assumed as the base folder and that every Clarity file has the suffix `.clar`.
 
-2. Let's create the new file:
+    The file was already created during the project setup.
 
-    ```shell
-    touch contracts/counter.clar
-    ```
-
-3. With the editor of your choice, open the file and add the following lines of code:
+2. With the editor of your choice, open the file and add the following lines of code:
 
     ```cl
     (define-data-var counter int 0)
 
     (define-public (get-counter)
-        (ok (var-get counter))
+      (ok (var-get counter))
     )
     ```
 
@@ -115,7 +105,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     With that, you are ready to rerun the tests!
 
-4. Run the tests and review the results:
+3. Run the tests and review the results:
 
     ```shell
     npm test
@@ -125,14 +115,14 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     However, we don't stop here. Let's implement increment and decrement methods.
 
-5. Add the following lines to the bottom of the `counter.clar` file and take a few seconds to review them:
+4. Add the following lines to the bottom of the `counter.clar` file and take a few seconds to review them:
 
     ```cl
     (define-public (increment)
-        (begin
-            (var-set counter (+ (var-get counter) 1))
-            (ok (var-get counter))
-        )
+      (begin
+        (var-set counter (+ (var-get counter) 1))
+          (ok (var-get counter))
+      )
     )
     ```
 
@@ -140,48 +130,42 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     Next, a [`var-set`](https://docs.blockstack.org/core/smart/clarityref#var-set) is used to set a new value for the `counter` variable. The new value is constructed using the [`+`](https://docs.blockstack.org/core/smart/clarityref#-add) (add) statement. This statement takes a number of integers and returns the result. Along with add, Clarity provides statements to subtract, multiply, and divide integers. Find more details in the [Clarity language reference](https://docs.blockstack.org/core/smart/clarityref).
 
-6. Finally, take a few minutes and implement a new public method `decrement` to subtract `1` from the `counter` variable. You should have all knowledge needed to succeed at this!
+5. Finally, take a few minutes and implement a new public method `decrement` to subtract `1` from the `counter` variable. You should have all knowledge needed to succeed at this!
 
-    Done? Great! Run the tests and make sure all of them are passing. You are looking for 7 successful tests:
+    Done? Great! Run the tests and make sure all of them are passing. You are looking for 4 passed tests:
 
     ```shell
     counter contract test suite
-        ✓ should have a valid syntax
+        ✓ should have a valid syntax (39ms)
         deploying an instance of the contract
         ✓ should start at zero
-        ✓ should increment (95ms)
-        ✓ should decrement (92ms)
-
-    hello world contract test suite
-        ✓ should have a valid syntax
-        deploying an instance of the contract
-        ✓ should return 'hello world'
-        ✓ should echo number
+        ✓ should increment (133ms)
+        ✓ should decrement (177ms)
 
 
-    7 passing (518ms)
+    4 passing (586ms)
     ```
 
     **Congratulations! You just implemented your first Clarity smart contract.**
 
-7. Here is how the final smart contract file should look like. Note that you can find the `decrement` method in here - in case you want to compare with your own implementation:
+6. Here is how the final smart contract file should look like. Note that you can find the `decrement` method in here - in case you want to compare with your own implementation:
 
     ```cl
     (define-data-var counter int 0)
     (define-public (increment)
-        (begin
-            (var-set counter (+ (var-get counter) 1))
-            (ok (var-get counter))
-        )
+      (begin
+        (var-set counter (+ (var-get counter) 1))
+        (ok (var-get counter))
+      )
     )
     (define-public (decrement)
-        (begin
-            (var-set counter (- (var-get counter) 1))
-            (ok (var-get counter))
-        )
+      (begin
+        (var-set counter (- (var-get counter) 1))
+        (ok (var-get counter))
+      )
     )
     (define-public (get-counter)
-        (ok (var-get counter))
+      (ok (var-get counter))
     )
     ```
 
