@@ -89,10 +89,12 @@ Now, let's have a look at a Clarity smart contract and get familiar with the bas
 
     ```cl
     (define-public (say-hi)
-    (ok "hello world"))
+        (ok "hello world")
+    )
 
     (define-public (echo-number (val int))
-    (ok val))
+        (ok val)
+    )
     ```
 
     On the first line, a new public method `say-hi` is declared. To create private functions, you would use the `define-private` function. Note that only public functions can be called from outside e.g., through other smart contracts.
