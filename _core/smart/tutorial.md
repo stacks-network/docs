@@ -3,19 +3,17 @@ layout: core
 description: "Blockstack smart contracting language"
 permalink: /:collection/:path.html
 ---
-# Hello Clarity
+# Tutorial: Hello World
 
-| Audience | | **Beginners**  |
+| Experience | | **Beginner**  |
 | Duration | | **15 minutes** |
 
-In this tutorial, you learn how to use Clarity, Blockstack's smart contracting language inside of a virtual environment. The environment is run using a [Docker](https://www.docker.com/) image. Use this tutorial to get a quick introduction to Clarity and the default Blockstack test environment.
+In this tutorial, you learn how to use Clarity, Blockstack's smart contracting language. By the end of this tutorial, you will ...
 
-By the end of this tutorial you will ...
-
-* Have working test environment to run Clarity smart contracts
-* Have access to a set of sample contracts to play with
+* Have a working Clarity starter project
 * Understand basic Clarity language design principles
-* Deploy and run your own smart contract
+* Understand how to interact with smart contracts
+* Understand how to test smart contracts
 
 ## Overview
 
@@ -28,309 +26,184 @@ By the end of this tutorial you will ...
 </p>
 </div>
 
-## Before you begin (pre-requisites)
+## Pre-requisites
 
-The Clarity language goes live with the release of Stacks2.0. Until then, you can run Clarity in a test environment. You run this test environment in a Docker container. Before you begin this tutorial, make sure you have <a href="https://docs.docker.com/get-docker/" target="_blank">Docker installed on your workstation</a>.
+To complete the tutorial, you should have [NodeJS](https://nodejs.org/en/download/) installed on your workstation. You can verify your installation by opening up your terminal and run the following command:
 
-You can verify your Docker installation by running the following in your terminal:
-
-```bash
-docker verion
+```shell
+npm --version
 ```
 
-You should see the version of your Docker engine running on your workstation.
+A version should be returned, indicating that NodeJS installed successfully.
 
-## Step 1: Set up the test environment
+## Step 1: Installing Clarity JS SDK
 
-In this step, you use the [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) to pull and run the image on your local workstation.
+In this step, you initialize a starter project for Clarity development:
 
-1. Using your terminal, download the latest [Stacks 2.0 blockchain Docker image](https://hub.docker.com/r/blockstack/stacks-blockchain) from the Docker Hub:
-
-    ```bash
-    docker pull blockstack/stacks-blockchain:latest
-    ```
-
-2. Now, you can start the Stack2.0 test environment in your terminal:
+1. Using your terminal, run the following command:
 
     ```bash
-    docker run -it -v $HOME/blockstack-dev-data:/data/ blockstack/stacks-blockchain:latest bash
+    npm init clarity-dev
     ```
 
-    The command opens a bash shell inside the Docker image, so that you can operate in the test environment.
-
-## Step 2: Review sample contracts
-With a test environment running on your workstation, let's have a look at some sample contracts implemented with Clarity.
-
-1. Still inside the bash shell of the Docker image, list the contents of the `sample-contracts` directory.
+2. After the starter project was loaded up, you are asked to name the starter project. Feel free to hit ENTER to accept the default suggestion.
 
     ```bash
-    ls sample-contracts/
+    ? Project name (clarity-dev-project)
     ```
 
-    This directory contains a set of simple Clarity contracts. Note that all Clarity files have a `.clar` suffix.
+    Finally, the project dependencies are installed and your project is ready for development.
 
-2. Let's review the contents of `tokens.clar` with the `cat` command.
+3. The project is located in a new folder, `clarity-dev-project` by default. Jump into the folder and have a look at the file structure:
 
     ```bash
-    cat sample-contracts/tokens.clar
+    cd clarity-dev-project
+    ls
     ```
 
-    You should see the contract source code. Take a few minutes to review the content.
+    Take note of the `contracts` and `test` folders. The other files are boilerplate to wire up the project.
+
+## Step 2: Reviewing hello world contract
+
+Now, let's have a look at a Clarity smart contract and get familiar with the basic language design characteristics.
+
+1. Still inside the terminal, list the contents of the `contracts/sample` folder.
+
+    ```bash
+    ls contracts/sample
+    ```
+
+    This directory contains a hello world Clarity contract. Note that all Clarity files have a `.clar` suffix.
+
+2. Let's review the contents of `hello-world.clar` with the `cat` command.
+
+    ```bash
+    cat contracts/sample/hello-world.clar
+    ```
+
+    You should see the contract source code. Take a few seconds to review the content.
 
     Clarity is a programming language based on [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)). Most notably, Clarity is designed for static analysis, not compiled, and **not** [Turing complete](https://en.wikipedia.org/wiki/Turing_completeness).
 
-    Let's go through the source code:
+    Let's go through the source code. Notice how the program and each statement is enclosed in `()` (parentheses). You'll see that the smart contract consists of two public methods. Starting at the top, let's review line by line:
 
     ```cl
-    (define-map tokens ((account principal)) ((balance uint)))
-    (define-private (get-balance (account principal))
-        (default-to u0 (get balance (map-get? tokens (tuple (account account))))))
+    (define-public (say-hi)
+    (ok "hello world"))
+
+    (define-public (echo-number (val int))
+    (ok val))
     ```
 
-    Notice the program and each statement is enclosed in `()` (parentheses).
+    On the first line, a new public method `say-hi` is declared. To create private functions, you would use the `define-private` function. Note that only public functions can be called from outside e.g., through other smart contracts.
 
-     The first line defines a map for `tokens` with the account-balance key-value pairs. The `account` key is of the [`principal`](https://docs.blockstack.org/core/smart/clarityref#principal-type) type. Principals represent a spending entity and are roughly equivalent to a Stacks address. The `balance` value is an unsigned integer ([`uint`](https://docs.blockstack.org/core/smart/clarityref#uint-type)). Along with principals and signed/unsigned integers, Clarity supports the following types:
-    * [booleans](https://docs.blockstack.org/core/smart/clarityref#bool-type)
-    * [fixed-length buffers](https://docs.blockstack.org/core/smart/clarityref#buffer-type)
-    * [tuples](https://docs.blockstack.org/core/smart/clarityref#tuple-type)
+    The method doesn't take any parameters and simply returns "hello world" using the [`ok`](https://docs.blockstack.org/core/smart/clarityref#ok) response constructor.
 
-     On line 2 and 3, a `get-balance` function is declared as a private function. To create public functions, you would use the `define-public` function. Public functions can be called from DApps, CLIs, or other contracts.
-     The `get-balance` function returns the value (`balance`) for the key provided (`account`). Using `default-to`, an unsigned integer `0` (note the `u0` literal to differentiate between signed integers) is returned if the account key cannot be found in the `tokens` map.
+    Let's review the second public method, `echo-number`. As opposed to the function before, this takes an input parameter of the type [`int`](https://docs.blockstack.org/core/smart/clarityref#int-type). Along with integer, Clarity supports the following types:
+   * [uint](https://docs.blockstack.org/core/smart/clarityref#uint-type): 16-byte unsigned integer
+   * [principal](https://docs.blockstack.org/core/smart/clarityref#principal-type): spending entity, roughly equivalent to a Stacks address
+   * [boolean](https://docs.blockstack.org/core/smart/clarityref#bool-type): `true` or `false`
+   * [buffer](https://docs.blockstack.org/core/smart/clarityref#buffer-type): fixed-length byte buffers
+   * [tuple](https://docs.blockstack.org/core/smart/clarityref#tuple-type): named fields in keys and values
 
-     Let's look at the next method definition. The private method `token-credit!` is defined below. It takes a principal and unsigned integer as input parameters:
+    The function simply uses the `ok` response and returns the value passed to the method.
 
-    ```cl
-    (define-private (token-credit! (account principal) (amount uint))
-    (if (<= amount u0)
-        (err "must move positive balance")
-        (let ((current-amount (get-balance account)))
-            (begin
-            (map-set tokens (tuple (account account))
-                        (tuple (balance (+ amount current-amount))))
-            (ok amount)))))
-    ```
+## Step 3: Running tests
 
-    On the first line of the method, we see how conditions can be used with the [`if`](https://docs.blockstack.org/core/smart/clarityref#if) statement. The if statement takes a boolean argument and two expressions. The first expression is executed when the boolean argument evalutes true. In this case, [`err`](https://docs.blockstack.org/core/smart/clarityref#int-type) is used to return an error response type with the error message provided.
+Smart contracts are often developed in a test-driven approach to ensure code quality but also to speed up the development cycle by removing the need to push every change to the blockchain before executing it. We will do the same in this project. In fact, the started project comes with test tooling already set up for you (using [Mocha](https://mochajs.org/)). Let's run the tests and review the results:
 
-    --> TODO
-
-    Variables are created via [`let`](https://docs.blockstack.org/core/smart/clarityref#let) binding, but there is no support for mutating functions like `set`.
-    - Describe: `token-credit`, `!`, `current-amount`, `begin`, `ok`
-
-    Every smart contract has both a data space and code. The data space of a contract may only interact with that contract. This particular function is interacting with a map named `tokens` (defined on line 1). The [`map-set`](https://docs.blockstack.org/core/smart/clarityref#map-set) function sets the value associated with the input key to the inputted value in the `tokens` data map.
-
-    In the first `token-transfer` public function, you see that it calls the private `get-balance` function and passes it `tx-sender`. The `tx-sender` is a globally defined variable that represents the current principal.
-
-```cl
-(define-public (token-transfer (to principal) (amount uint))
-  (let ((balance (get-balance tx-sender)))
-    (if (or (> amount balance) (<= amount u0))
-        (err "must transfer positive balance and possess funds")
-        (begin
-          (map-set tokens (tuple (account tx-sender))
-                      (tuple (balance (- balance amount))))
-          (token-credit! to amount)))))
-
-(define-public (mint! (amount uint))
-   (let ((balance (get-balance tx-sender)))
-     (token-credit! tx-sender amount)))
-
-(token-credit! 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR u10000)
-(token-credit! 'SM2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQVX8X0G u300)
-```
-
-The final two lines of the program pass a principal, represented by a Stacks address, and an amount to the private user-defined `token-credit` function.
-
-Smart contracts may call other smart contracts using a `contract-call!` function. This ability means that if a transaction invokes a function in a given smart contract, that function is able to make calls into other smart contracts on your behalf. The ability to read and do a static analysis of Clarity code allows clients to learn which functions a given smart contract will ever call. Good clients should always warn users about any potential side effects of a given transaction.
-
-Take a moment to `cat` the contents of the `sample-contracts/names.clar` file.
-
-```bash
-cat sample-contracts/names.clar
-````
-
-Which `tokens.clar` function is being called? 
-
-## Task 3: Initialize data-space and launch contracts
-
-In this task, you interact with the the contracts using the `clarity-cli` command line. 
-
-1. Initialize a new `db` database in the `/data/` directory
+1. Still in the project root directory, run the following command:
 
     ```bash
-    #  clarity-cli initialize /data/db
-    Database created
+    npm test
     ```
 
-    You should see a message saying `Database created`. The command creates an SQLlite database.  The database is available in the container and also in your workstation. In this tutorial, your workstation mount should, at this point, contain the `$HOME/blockstack-dev-data/db`  directory.
-
-2. Type check the `names.clar` contract.
+    You should see the following response:
 
     ```bash
-    #  clarity-cli check sample-contracts/names.clar /data/db
-    ```
-    
-    You should get an error:
+      hello world contract test suite
+        ✓ should have a valid syntax
+        deploying an instance of the contract
+        ✓ should return 'hello world'
+        ✓ should echo number
 
-    ```
-    Error (line 11, column 1): use of unresolved contract ''S1G2081040G2081040G2081040G208105NK8PE5.tokens'.
-    ```
 
-    This happens because the `names.clar` contract _calls_ the `tokens.clar` contract, and that contract has not been created on the blockchain.
-
-3. Type check the `tokens.clar` contract, it should pass a check as it does not use the `contract-call` function:
-
-    ```bash
-    # clarity-cli check sample-contracts/tokens.clar /data/db
-    Checks passed.
+    3 passing (412ms)
     ```
 
-    When the `check` command executes successfully and exits with the stand UNIX `0` exit code.
+    Oh, it looks like we see some failed test! That is on purpose - we will implement a new smart contract in the next tutorial! After every increment of the contract, we will run the tests again to ensure we're on the right track. For now, let's have a look at how we can interact with Clarity smart contracts.
 
-4. Generate a demo Stacks address for testing your contract.
+## Step 4: Interacting with contracts
 
-   This address is used to name your contract at launch time. You can use any existing Stacks address. For this sample, you are going to use the `generate_address` command to create one.
+Tests are located in the `test` folder, let's have a look at the tests associated with the `hello-world.clar` file.
 
-   ```bash
-   # clarity-cli generate_address
-   SP28Z69HE5H70BVRG4VGKN4SYNVJ1J0417WVCKZWM
-   ```
-
-   The demo address you generate will be different than the one that appears in this example. 
-
-5. Add the address to your environment.
-
-    ```bash
-    # DEMO_ADDRESS=SP28Z69HE5H70BVRG4VGKN4SYNVJ1J0417WVCKZWM
-    ```
-
-6. Launch the `tokens.clar` contract and assign it to your `DEMO_ADDRESS` address.
-
-   You use the `launch` command to instantiate a contract on the Stacks blockchain. If you have dependencies between contracts, for example `names.clar` is dependent on `tokens.clar`, you must launch the dependency first.
-
-    ```bash
-    # clarity-cli launch $DEMO_ADDRESS.tokens sample-contracts/tokens.clar /data/db
-    Contract initialized!
-    ```
-
-    Once launched, you can execute the contract or a public method on the contract. Your development database has an instantiated `tokens` contract. If you were to close the container and restart it later with the same mount point and you wouldn't need to relaunch that database; it persists until you remove it from your local drive.
+Run the following command:
    
-7. Instantiate the `names.clar` contract and assign it to your `DEMO_ADDRESS` address. as well.
-
-    ```bash
-    # clarity-cli launch $DEMO_ADDRESS.names sample-contracts/names.clar /data/db
-    Contract initialized!
-    ```
-
-## Task 4. Examine the SQLite database
-
-The test environment uses a SQLite database to represent a virtual blockchain. You initialized this database when you ran this earlier:
-
 ```bash
-clarity-cli initialize /data/db
+cat test/hello-world.ts
 ```
 
-As you work the contracts, data is added to the `db` database because you pass this database as a parameter, for example:
+Take a few seconds to review the contents of the file. You should ignore the test setup methods and focus on the most relevant parts related to Clarity.
 
-```bash
-clarity-cli launch $DEMO_ADDRESS.tokens sample-contracts/tokens.clar /data/db
+Note that we're importing modules form the `@blockstack/clarity` package:
+
+```js
+import { Client, Provider, ProviderRegistry, Result } from "@blockstack/clarity";
 ```
 
-The database exists on your local workstation and persists through restarts of the container. You can use this database to explore the transactional effects of your Clarity programs. The SQLite database includes a single `data_table` and a set of `marf` structures.
+### Initiliazing a client
 
-While not required, you can install SQLite in your local environment and use it to examine the data associated with and impacted by your contract. For example, this what the `data_able` contains after you initialize the `tokens` contract.
+At the test start, we are initializing contract instance `helloWorldClient` and a provider that forwards commands to the Rust CLI in order to interact with the Stack2.0 blockchain.
 
-<img src="../images/sqlite-contract.png" alt="">
+ ```js
+ let helloWorldClient: Client;
+let provider: Provider;
 
-The `marf` directory defines a data structure that handles key-value lookups in the presence of blockchain forks. These structures are not intended for use in debugging, they simply support the implementation.
+...
 
+provider = await ProviderRegistry.createProvider();
+helloWorldClient = new Client("SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.hello-world", "sample/hello-world", provider);
+```
 
-## Task 5: Execute a public function
+Take a look at the client initialization. It requires a contract id and name in the following format: `{contract_id}.{contract_name}`. The second parameter indicates the location of the smart contract file, without the `.clar` suffix. By default, the location is assuming to be relative to the `contracts` folder.
 
-In this section, you use the public `mint!` function in the  `tokens` contract to mint some new tokens. 
+### Checking syntax
 
-1. Get the current balance of your new address.
+Next, we check the contract for valid syntax with:
 
-   ```bash
-    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval $DEMO_ADDRESS.tokens /data/db
-    Program executed successfully! Output: 
-    0
-    ```
+```js
+    await helloWorldClient.checkContract();
+```
 
-    This command uses the private `get-balance` function in the `tokens` contract and pipes the result to the `eval` subcommand. The `eval` subcommand lets you evaluate both public and _private_ functions of a contract in read-only mode.
+Note that the `checkContract()` method returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). The `await` command makes sure JavaScript is not executing the next lines until the contract check completes.
 
-2. Try minting some tokens and sending them to an address we'll use for our demo.
+### Deploying contract
 
-    ```bash
-    # clarity-cli execute /data/db $DEMO_ADDRESS.tokens mint! $DEMO_ADDRESS u100000
-    Transaction executed and committed. Returned: 100000
-    ```
+Further down in the file, you find a contract deployment:
 
-    This executes the public `mint!` function defined in the tokens contract, sending 100000 tokens to you `$DEMO_ADDRESS`.
+```js
+await helloWorldClient.deployContract();
+```
 
-3. Use the `clarity-cli eval` command to check the result of this call.
+### Run public methods
 
-    ```bash
-    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval $DEMO_ADDRESS.tokens /data/db
-    Program executed successfully! Output: 
-    100000
-    ```
+Finally, you will find snippets that call the public `say-hi` method of the contract:
 
-## Task 6: Spend tokens by registering a name 
+```js
+const query = helloWorldClient.createQuery({ method: { name: "say-hi", args: [] } });
+const receipt = await helloWorldClient.submitQuery(query);
+const result = Result.unwrapString(receipt);
+```
 
-Now, let's register a name using the `names.clar` contract. Names can _only_ be integers in this sample contract, so you'll register the name 10 in this environment.
+As you see, smart contract calls are realized through query definitions. The `createQuery` method defines the name and arguments passed to the smart contract function. With `submitQuery`, the method executed and the response is wrapped into a `Result` object. To obtain the readable result, we use the `unwrapString` method, which should return `hello world`.
 
-1. Compute the hash of the name we want to register. 
+Now, review the last test `should echo number` on your own and try to understand how arguments are passed to the `echo-number` smart contract.
 
-   You'll _salt_ the hash with the salt `8888`:
-
-    ```bash
-    # echo "(hash160 (xor 10 8888))" | clarity-cli eval $DEMO_ADDRESS.names /data/db
-    Program executed successfully! Output: 
-    0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde
-    ```
-
-    The value of the name hash is:
-
-    ```
-    0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde
-    ```
-
-2. Preorder the name using the _execute_ command:
-
-    ```bash
-    # clarity-cli execute /data/db $DEMO_ADDRESS.names preorder $DEMO_ADDRESS 0xb572fb1ce2e9665f1efd0994fe077b50c3a48fde u1000
-    e077b50c3a48fde 1000
-    Transaction executed and committed. Returned: 0
-    ```
-
-    This executes the public `preorder` function defined in the `names.clar` contract. The function reserves a name by paying the name fee (in this case, 1000 tokens).
-
-3. Check the demo address' new balance:
-
-    ```bash
-    # echo "(get-balance '$DEMO_ADDRESS)" | clarity-cli eval $DEMO_ADDRESS.tokens /data/db
-    Program executed successfully! Output: 
-    99000
-    ```
-
-4. Register the name by executing the _register_ function:
-
-    ```bash
-    # clarity-cli execute /data/db $DEMO_ADDRESS.names register $DEMO_ADDRESS \'$DEMO_ADDRESS 10 8888
-    Transaction executed and committed. Returned: 0
-    ```
-
-5. Lookup the "owner address" for the name:
-
-    ```bash
-    # echo "(get owner (map-get name-map (tuple (name 10))))" | clarity-cli eval $DEMO_ADDRESS.names /data/db
-    Program executed successfully! Output: 
-    (some 'SP2Y8T8RWWXFR8S1XBP6K0MHCQF01D552FSWD9M4E)
-    ```
+With that, you have completed the first Clarity tutorial! Congratulations!
 
 ## Where to go next
+
 {:.no_toc}
 
-* <a href="clarityRef.html">Clarity Language Reference</a>
-* <a href="clarityCLI.html">clarity-cli command line</a>
+* <a href="tutorial-counter.html">Next tutorial: Writing your first smart contract</a>
+* <a href="clarityRef.html">Clarity language reference</a>
