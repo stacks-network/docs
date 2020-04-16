@@ -37,7 +37,7 @@ In this step, you initialize a starter project with additional counter tutorial 
 
     ```bash
     ? Template - one of [hello-world, counter]: counter
-    ? Project name: (clarity-counter-project)
+    ? Project name: (clarity-counter)
     ```
 
     Finally, the project dependencies are installed and your project is ready for development. Because you already completed the Hello World tutorial, the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.

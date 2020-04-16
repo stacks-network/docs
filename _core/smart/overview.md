@@ -6,7 +6,7 @@ permalink: /:collection/:path.html
 # Introduction to Clarity
 {:.no_toc}
 
-Clarity is a smart contracting language for use with the Stacks 2.0 Blockchain. It supports programmatic control over digital assets and unlocks interesting capabilities for decentralized applications. Note that not every application requires smart contracts.
+Clarity is a smart contracting language for use with the Stacks 2.0 Blockchain. It supports programmatic control over digital assets.
 
 * TOC
 {:toc}
@@ -18,6 +18,16 @@ Smart contracts allow two parties to exchange anything of value (money, property
 In Nick Szabo's metaphor, the vending machine is the smart contract. The buyer and machine owner are the two parties. A vending machine executes a set of hard-coded actions when the buyer engages with it. The machine displays the items and their prices. A buyer enters money into the machine which determines if the amount fails to mee, meets, or exceeds an item's price. Based on the amount, the machine asks for more money, dispenses an item, or dispenses and item and change.
 
 If you are new to smart contracts concepts, you should read <a href="https://blockgeeks.com/guides/smart-contracts/" target="_blank">a good general explanation</a> first.
+
+## Use cases
+
+Not every decentralized application requires smart contracts, but Clarity unlocks interesting capabilities for decentralized applications. Examples of interesting use cases include, but are not limited to:
+
+* Access control (e.g. pay to access)
+* Non-fungible and fungible tokens
+* Business model templates (e.g. subscriptions)
+* App Chains
+* Decentralized Autonomous Organizations
 
 ## Language design
 
@@ -42,4 +52,4 @@ Note some of the key Clarity language rules and limitations:
 
 ## Learning Clarity
 
-You can try a [Hello World tutorial](tutorial-counter.html) or jump right into the [language reference](clarityRef.html).
+You can try a [Hello World tutorial](tutorial.html) or jump right into the [language reference](clarityRef.html).

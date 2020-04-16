@@ -44,15 +44,15 @@ In this step, you initialize a starter project for Clarity development:
 
     ```bash
     ? Template - one of [hello-world, counter]: (hello-world)
-    ? Project name: (clarity-hello-world-project)
+    ? Project name: (clarity-hello-world)
     ```
 
     Finally, the project dependencies are installed and your project is ready for development.
 
-3. The project is located in a new folder, `clarity-hello-world-project` by default. Jump into the folder and have a look at the file structure:
+3. The project is located in a new folder, `clarity-hello-world` by default. Jump into the folder and have a look at the file structure:
 
     ```bash
-    cd clarity-hello-world-project
+    cd clarity-hello-world
     ls
     ```
 
