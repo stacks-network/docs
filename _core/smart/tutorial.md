@@ -80,7 +80,7 @@ Now, let's have a look at a Clarity smart contract and get familiar with the bas
 
     Clarity is a programming language based on [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)). Most notably, Clarity is designed for static analysis, not compiled, and **not** [Turing complete](https://en.wikipedia.org/wiki/Turing_completeness).
 
-    Let's go through the source code. Notice how the program and each statement is enclosed in `()` (parentheses). You'll see that the smart contract consists of two public methods. Starting at the top, let's review line by line:
+    Let's go through the source code. Notice how the program and each statement is enclosed in `()` (parentheses). You'll see that the smart contract consists of two public functions. Starting at the top, let's review line by line:
 
     ```cl
     (define-public (say-hi)
@@ -92,18 +92,18 @@ Now, let's have a look at a Clarity smart contract and get familiar with the bas
     )
     ```
 
-    On the first line, a new public method `say-hi` is declared. To create private functions, you would use the `define-private` function. Note that only public functions can be called from outside e.g., through other smart contracts.
+    On the first line, a new public function `say-hi` is declared. To create private functions, you would use the `define-private` function. Private functions can only be executed by the current smart contract and not from the outside. Only public functions can be called from outside e.g., through other smart contracts or applications. The need to call another smart contract can have different reasons. It allows to reuse existing smart contracts published by other developers. It may also be required because complex implementations are often split out into a set of contracts to achieve a [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns).
 
-    The method doesn't take any parameters and simply returns "hello world" using the [`ok`](https://docs.blockstack.org/core/smart/clarityref#ok) response constructor.
+    The function doesn't take any parameters and simply returns "hello world" using the [`ok`](https://docs.blockstack.org/core/smart/clarityref#ok) response constructor.
 
-    Let's review the second public method, `echo-number`. As opposed to the function before, this takes an input parameter of the type [`int`](https://docs.blockstack.org/core/smart/clarityref#int-type). Along with integer, Clarity supports the following types:
+    Let's review the second public function, `echo-number`. As opposed to the function before, this takes an input parameter of the type [`int`](https://docs.blockstack.org/core/smart/clarityref#int-type). Along with integer, Clarity supports the following types:
    * [uint](https://docs.blockstack.org/core/smart/clarityref#uint-type): 16-byte unsigned integer
    * [principal](https://docs.blockstack.org/core/smart/clarityref#principal-type): spending entity, roughly equivalent to a Stacks address
    * [boolean](https://docs.blockstack.org/core/smart/clarityref#bool-type): `true` or `false`
    * [buffer](https://docs.blockstack.org/core/smart/clarityref#buffer-type): fixed-length byte buffers
    * [tuple](https://docs.blockstack.org/core/smart/clarityref#tuple-type): named fields in keys and values
 
-    The function simply uses the `ok` response and returns the value passed to the method.
+    The function simply uses the `ok` response and returns the value passed to the function.
 
 ## Step 3: Running tests
 
@@ -140,7 +140,7 @@ Run the following command:
 cat test/hello-world.ts
 ```
 
-Take a few seconds to review the contents of the file. You should ignore the test setup methods and focus on the most relevant parts related to Clarity.
+Take a few seconds to review the contents of the file. You should ignore the test setup functions and focus on the most relevant parts related to Clarity.
 
 Note that we're importing modules from the `@blockstack/clarity` package:
 
@@ -172,7 +172,7 @@ Next, we check the contract for valid syntax with:
 await helloWorldClient.checkContract();
 ```
 
-Note that the `checkContract()` method returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). The `await` command makes sure JavaScript is not executing the next lines until the contract check completes.
+Note that the `checkContract()` function returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). The `await` command makes sure JavaScript is not executing the next lines until the contract check completes.
 
 ### Deploying contract
 
@@ -182,17 +182,17 @@ Further down in the file, you find a contract deployment:
 await helloWorldClient.deployContract();
 ```
 
-### Run public methods
+### Run public functions
 
-Finally, you will find snippets that call the public `say-hi` method of the contract:
+Finally, you will find snippets that call the public `say-hi` function of the contract:
 
 ```js
-const query = helloWorldClient.createQuery({ method: { name: "say-hi", args: [] } });
+const query = helloWorldClient.createQuery({ function: { name: "say-hi", args: [] } });
 const receipt = await helloWorldClient.submitQuery(query);
 const result = Result.unwrapString(receipt);
 ```
 
-As you see, smart contract calls are realized through query definitions. The `createQuery` method defines the name and arguments passed to the smart contract function. With `submitQuery`, the method executed and the response is wrapped into a `Result` object. To obtain the readable result, we use the `unwrapString` method, which should return `hello world`.
+As you see, smart contract calls are realized through query definitions. The `createQuery` function defines the name and arguments passed to the smart contract function. With `submitQuery`, the function executed and the response is wrapped into a `Result` object. To obtain the readable result, we use the `unwrapString` function, which should return `hello world`.
 
 Now, review the last test `should echo number` on your own and try to understand how arguments are passed to the `echo-number` smart contract.
 
