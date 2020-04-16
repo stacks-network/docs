@@ -68,7 +68,7 @@ Now, let's have a look at a Clarity smart contract and get familiar with the bas
     ls contracts
     ```
 
-    This directory contains a hello world Clarity contract. Note that all Clarity files have a `.clar` suffix.
+    This directory contains one file for the hello world smart contract. Note that all Clarity files have a `.clar` suffix.
 
 2. Let's review the contents of `hello-world.clar` with the `cat` command.
 
@@ -164,9 +164,11 @@ helloWorldClient = new Client("SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.hello-w
 
 Take a look at the client initialization. It requires a contract id and name in the following format: `{owner_stacks_address}.{contract_identifier}`. The second parameter indicates the location of the smart contract file, without the `.clar` suffix. By default, the location is assumed to be relative to the `contracts` folder.
 
+As you can see above, a sample stacks address and contract identifier is already provided for you. You don't need to modify anything.
+
 ### Checking syntax
 
-Next, we check the contract for valid syntax with:
+Next, we check the contract for valid syntax. If the smart contract implementation has syntax error (bugs), this check would fail:
 
 ```js
 await helloWorldClient.checkContract();

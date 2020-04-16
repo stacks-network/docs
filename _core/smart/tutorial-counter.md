@@ -85,7 +85,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
     counterClient = new Client("SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.counter", "counter", provider);
     ```
 
-    That tells us that the new smart contract is named `counter` and that the referenced smart contract should be found in the following file: `contracts/counter.clar`. Note that the `contracts` folder is assumed as the base folder and that every Clarity file has the suffix `.clar`.
+    That tells us that the new smart contract is named `counter` and that it should be found in the following file: `contracts/counter.clar`. Note that the `contracts` folder is assumed as the base folder and that every Clarity file has the suffix `.clar`.
 
     The file was already created during the project setup.
 
@@ -101,7 +101,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     The first line initializes a new integer variable `counter` with the value set to `0` using the [`define-data-var`](https://docs.blockstack.org/core/smart/clarityref#define-data-var) statement. It is important to note that all definition statements in Clarity need to be at the top of the file.
 
-    To provide access to the variable from outside of the current smart contract, we need to declare a public get function for this variable. The last lines of the code add a public `get-counter` function. The [`var-get`](https://docs.blockstack.org/core/smart/clarityref#var-get) statement looks for a variable in the contract's data map and returns it.
+    To provide access to the `counter` variable from outside of the current smart contract, we need to declare a public get function. The last lines of the code add a public `get-counter` function. The [`var-get`](https://docs.blockstack.org/core/smart/clarityref#var-get) statement looks for a variable in the contract's data map and returns it.
 
     With that, you are ready to rerun the tests!
 
