@@ -30,7 +30,7 @@ npm --version
 
 A version should be returned, indicating that NodeJS installed successfully.
 
-## Step 1: Download starter project
+## Step 1: Downloading starter project
 
 In this step, you initialize a starter project for Clarity development:
 

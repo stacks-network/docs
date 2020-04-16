@@ -23,7 +23,7 @@ In this tutorial, you learn how to implement a smart contract that stores and ma
 
 Before you get started, you should complete the [Hello World tutorial](tutorial.html).
 
-## Step 1: Download counter tutorial project
+## Step 1: Downloading counter starter project
 
 In this step, you initialize a starter project with additional counter tutorial files:
 
