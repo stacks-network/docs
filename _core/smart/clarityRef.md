@@ -10,43 +10,6 @@ This file contains the reference for the Clarity language.
 * TOC
 {:toc}
 
-## Block Properties
-
-The `get-block-info` function fetches property details for a block at a specified block height. For example:
-
-```cl
-(get-block-info time 10) ;; Returns 1557860301
-```
-
-Because the Clarity language is in early release, the block properties that are fetched are simulated properties from a SQLite database. The available property names are:
-
-<table class="uk-table">
-  <tr>
-    <th>Property</th>
-    <th>Definition</th>
-  </tr>
-  <tr>
-    <td><code>header-hash</code></td>
-    <td>A 32-byte buffer containing the block hash.</td>
-  </tr>
-  <tr>
-    <td><code>burnchain-header-hash</code></td>
-    <td>A 32-byte buffer that contains the hash from the proof of burn.</td>
-  </tr>
-  <tr>
-    <td><code>vrf-seed</code></td>
-    <td>A 32-byte buffer containing the Verifiable Random Function (VRF) seed value used for the block.</td>
-  </tr>
-  <tr>
-    <td><code>time</code></td>
-    <td>An integer value containing that roughly corresponds to when the block was mined. This is a Unix epoch timestamp in seconds. </td>
-  </tr>
-</table>
-
-
-{% include warning.html content="The <code>time</code> does not increase monotonically with each block. Block times are accurate only to within two hours. See <a href='https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki' target='_blank'>BIP113</a> for more information." %}
-
-
 ## Supported types
 
 This section lists the types available to smart contracts. The only atomic types supported by the Clarity are booleans, integers, fixed length buffers, and principals. 
