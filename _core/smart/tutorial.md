@@ -36,28 +36,28 @@ npm --version
 
 A version should be returned, indicating that NodeJS installed successfully.
 
-## Step 1: Installing Clarity JS SDK
+## Step 1: Download starter project
 
 In this step, you initialize a starter project for Clarity development:
 
 1. Using your terminal, run the following command:
 
     ```bash
-    npm init clarity-dev
+    npm init clarity-starter
     ```
 
 2. After the starter project was loaded up, you are asked to name the starter project. Feel free to hit ENTER to accept the default suggestion.
 
     ```bash
-    ? Project name (clarity-dev-project)
+    ? Project name (clarity-starter-project)
     ```
 
     Finally, the project dependencies are installed and your project is ready for development.
 
-3. The project is located in a new folder, `clarity-dev-project` by default. Jump into the folder and have a look at the file structure:
+3. The project is located in a new folder, `clarity-starter-project` by default. Jump into the folder and have a look at the file structure:
 
     ```bash
-    cd clarity-dev-project
+    cd clarity-starter-project
     ls
     ```
 
@@ -112,7 +112,7 @@ Now, let's have a look at a Clarity smart contract and get familiar with the bas
 
 ## Step 3: Running tests
 
-Smart contracts are often developed in a test-driven approach to ensure code quality but also to speed up the development cycle by removing the need to push every change to the blockchain before executing it. We will do the same in this project. In fact, the started project comes with test tooling already set up for you (using [Mocha](https://mochajs.org/)). Let's run the tests and review the results:
+The starter project comes with test tooling already set up for you (using [Mocha](https://mochajs.org/)). Let's run the tests and review the results:
 
 1. Still in the project root directory, run the following command:
 
@@ -133,14 +133,14 @@ Smart contracts are often developed in a test-driven approach to ensure code qua
     3 passing (412ms)
     ```
 
-    Oh, it looks like we see some failed test! That is on purpose - we will implement a new smart contract in the next tutorial! After every increment of the contract, we will run the tests again to ensure we're on the right track. For now, let's have a look at how we can interact with Clarity smart contracts.
+    Great, all tests are passing! Now, let's have a look at the test implementation. That helps understand how to interact with Clarity smart contracts.
 
 ## Step 4: Interacting with contracts
 
 Tests are located in the `test` folder, let's have a look at the tests associated with the `hello-world.clar` file.
 
 Run the following command:
-   
+
 ```bash
 cat test/hello-world.ts
 ```
@@ -207,5 +207,5 @@ With that, you have completed the first Clarity tutorial! Congratulations!
 
 {:.no_toc}
 
-* <a href="tutorial-counter.html">Next tutorial: Writing your first smart contract</a>
+* <a href="tutorial-counter.html">Next tutorial: Writing a counter smart contract</a>
 * <a href="clarityRef.html">Clarity language reference</a>
