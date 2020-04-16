@@ -142,7 +142,7 @@ cat test/hello-world.ts
 
 Take a few seconds to review the contents of the file. You should ignore the test setup methods and focus on the most relevant parts related to Clarity.
 
-Note that we're importing modules form the `@blockstack/clarity` package:
+Note that we're importing modules from the `@blockstack/clarity` package:
 
 ```js
 import { Client, Provider, ProviderRegistry, Result } from "@blockstack/clarity";
