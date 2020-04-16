@@ -11,12 +11,6 @@ You can use the software developer kit (SDK) to develop, test, and deploy Clarit
 * TOC
 {:toc}
 
-<div class="uk-card uk-card-default uk-card-body">
-<h5>Early Release</h5>
-<p>Clarity and its accompanying toolset are in early release. If you encounter issues with or have feature requests regarding Clarity, please create an issue on the <a href='https://github.com/blockstack/stacks-blockchain/issues' target='_blank'>blockstack/stacks-blockchain</a> repository. To read previous or join ongoing discussions about smart contracts in general and Clarity in particular, visit the <strong><a href='https://forum.blockstack.org/c/clarity' target='_blank'>Smart Contracts</a></strong> topic in the Blockstack Forum.
-</p>
-</div>
-
 ## About this tutorial and the prerequisites you need
 
 {% include note.html content="This tutorial was written on macOS High Sierra 10.13.4. If you use a Windows or Linux system, you can still follow along. However, you will need to \"translate\" appropriately for your operating system." %}

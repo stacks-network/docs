@@ -11,12 +11,6 @@ Clarity is Blockstack's smart contracting language for use with the Stacks block
 * TOC
 {:toc}
 
-<div class="uk-card uk-card-default uk-card-body">
-<h5>Early Release</h5>
-<p>Clarity and its accompanying toolset are in early release. If you encounter issues with or have feature requests regarding Clarity, please create an issue on the <a href='https://github.com/blockstack/stacks-blockchain/issues' target='_blank'>blockstack/stacks-blockchain</a> repository. To read previous or join ongoing discussions about smart contracts in general and Clarity in particular, visit the <strong><a href='https://forum.blockstack.org/c/clarity' target='_blank'>Smart Contracts</a></strong> topic in the Blockstack Forum.
-</p>
-</div>
-
 ## Who should use smart contracts?
 
 You can use Clarity to write standalone contracts or to write contracts that are part of decentralized applications (DApps) you write with the blockstack.js library. Smart contracts allow two parties to exchange anything of value (money, property, shares), in an automated, auditable, and secure way _without the services of a middleman_. Nick Szabo introduced the canonical metaphor for smart contracts, a vending machine. 

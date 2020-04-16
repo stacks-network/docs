@@ -8,7 +8,7 @@ permalink: /:collection/:path.html
 | Experience | | **Intermediate**  |
 | Duration | | **30 minutes** |
 
-In this tutorial, you learn how to implement a smart contract that stores and manipulates an integer value on the Stack2.0 Blockchain. By the end of this tutorial, you will ...
+In this tutorial, you learn how to implement a smart contract that stores and manipulates an integer value on the Stacks 2.0 Blockchain. By the end of this tutorial, you will ...
 
 * Have experienced test-driven development with Clarity
 * Understand more Clarity language design principles
@@ -18,12 +18,6 @@ In this tutorial, you learn how to implement a smart contract that stores and ma
 
 * TOC
 {:toc}
-
-<div class="uk-card uk-card-default uk-card-body">
-<h5>Early Release</h5>
-<p>Clarity and its accompanying toolset are in early release. If you encounter issues with or have feature requests regarding Clarity, please create an issue on the <a href='https://github.com/blockstack/stacks-blockchain/issues' target='_blank'>blockstack/stacks-blockchain</a> repository. To read previous or join ongoing discussions about smart contracts in general and Clarity in particular, visit the <strong><a href='https://forum.blockstack.org/c/clarity' target='_blank'>Smart Contracts</a></strong> topic in the Blockstack Forum.
-</p>
-</div>
 
 ## Pre-requisites
 
@@ -36,16 +30,17 @@ In this step, you initialize a starter project with additional counter tutorial 
 1. Using your terminal, run the following command:
 
     ```bash
-    npm init clarity-starter --counter-tutorial
+    npm init clarity-starter
     ```
 
-2. After the additional project files are loaded up, you can confirm the project name. Feel free to hit ENTER to accept the default suggestion - or enter a new one.
+    You have to select a template and a name for your local folder. For the counter template used in this tutorial, ensure to type `counter` and hit ENTER:
 
     ```bash
-    ? Project name (clarity-counter-project)
+    ? Template - one of [hello-world, counter]: counter
+    ? Project name: (clarity-counter-project)
     ```
 
-    Finally, the project dependencies will install, and your project is ready for development. Because you already completed the Hello World tutorial, the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
+    Finally, the project dependencies are installed and your project is ready for development. Because you already completed the Hello World tutorial, the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
 
 ## Step 2: Running tests
 
@@ -93,15 +88,15 @@ Let's get familiar with the tests to understand what the new smart contract shou
     You should be familiar with the test set up from the Hello World tutorial. Notice how the instance of the smart contract is created on line 8:
 
     ```js
-    counterClient = new Client("SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.counter", "sample/counter", provider);
+    counterClient = new Client("SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.counter", "counter", provider);
     ```
 
-    That tells us that the new smart contract is named `counter` and that we need to start by creating a new file for the smart contract: `contracts/sample/counter.clar`. Note that the `contracts` folder is assumed as the base folder and that every Clarity file has the suffix `.clar`.
+    That tells us that the new smart contract is named `counter` and that we need to start by creating a new file for the smart contract: `contracts/counter.clar`. Note that the `contracts` folder is assumed as the base folder and that every Clarity file has the suffix `.clar`.
 
 2. Let's create the new file:
 
     ```shell
-    touch contracts/sample/counter.clar
+    touch contracts/counter.clar
     ```
 
 3. With the editor of your choice, open the file and add the following lines of code:
@@ -194,5 +189,5 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
 {:.no_toc}
 
-* <a href="tutorial-token.html">Next tutorial: Writing a token management smart contract</a>
+* <a href="principals.html">Guide: Understanding principals</a>
 * <a href="clarityRef.html">Clarity language reference</a>

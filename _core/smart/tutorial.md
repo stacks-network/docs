@@ -20,12 +20,6 @@ In this tutorial, you learn how to use Clarity, Blockstack's smart contracting l
 * TOC
 {:toc}
 
-<div class="uk-card uk-card-default uk-card-body">
-<h5>Early Release</h5>
-<p>Clarity and its accompanying toolset are in early release. If you encounter issues with or have feature requests regarding Clarity, please create an issue on the <a href='https://github.com/blockstack/stacks-blockchain/issues' target='_blank'>blockstack/stacks-blockchain</a> repository. To read previous or join ongoing discussions about smart contracts in general and Clarity in particular, visit the <strong><a href='https://forum.blockstack.org/c/clarity' target='_blank'>Smart Contracts</a></strong> topic in the Blockstack Forum.
-</p>
-</div>
-
 ## Pre-requisites
 
 To complete the tutorial, you should have [NodeJS](https://nodejs.org/en/download/) installed on your workstation. You can verify your installation by opening up your terminal and run the following command:
@@ -46,18 +40,19 @@ In this step, you initialize a starter project for Clarity development:
     npm init clarity-starter
     ```
 
-2. After the starter project was loaded up, you are asked to name the starter project. Feel free to hit ENTER to accept the default suggestion.
+2. After the starter project was loaded up, have to select a template and a name for your local folder. Feel free to hit ENTER both times to accept the default suggestion.
 
     ```bash
-    ? Project name (clarity-starter-project)
+    ? Template - one of [hello-world, counter]: (hello-world)
+    ? Project name: (clarity-hello-world-project)
     ```
 
     Finally, the project dependencies are installed and your project is ready for development.
 
-3. The project is located in a new folder, `clarity-starter-project` by default. Jump into the folder and have a look at the file structure:
+3. The project is located in a new folder, `clarity-hello-world-project` by default. Jump into the folder and have a look at the file structure:
 
     ```bash
-    cd clarity-starter-project
+    cd clarity-hello-world-project
     ls
     ```
 
@@ -67,10 +62,10 @@ In this step, you initialize a starter project for Clarity development:
 
 Now, let's have a look at a Clarity smart contract and get familiar with the basic language design characteristics.
 
-1. Still inside the terminal, list the contents of the `contracts/sample` folder.
+1. Still inside the terminal, list the contents of the `contracts` folder.
 
     ```bash
-    ls contracts/sample
+    ls contracts
     ```
 
     This directory contains a hello world Clarity contract. Note that all Clarity files have a `.clar` suffix.
@@ -78,7 +73,7 @@ Now, let's have a look at a Clarity smart contract and get familiar with the bas
 2. Let's review the contents of `hello-world.clar` with the `cat` command.
 
     ```bash
-    cat contracts/sample/hello-world.clar
+    cat contracts/hello-world.clar
     ```
 
     You should see the contract source code. Take a few seconds to review the content.
@@ -155,26 +150,26 @@ import { Client, Provider, ProviderRegistry, Result } from "@blockstack/clarity"
 
 ### Initiliazing a client
 
-At the test start, we are initializing contract instance `helloWorldClient` and a provider that forwards commands to the Rust CLI in order to interact with the Stack2.0 blockchain.
+At the test start, we are initializing contract instance `helloWorldClient` and a provider that simulates interactions with the Stacks 2.0 Blockchain.
 
- ```js
- let helloWorldClient: Client;
+```js
+let helloWorldClient: Client;
 let provider: Provider;
 
-...
+(...)
 
 provider = await ProviderRegistry.createProvider();
-helloWorldClient = new Client("SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.hello-world", "sample/hello-world", provider);
+helloWorldClient = new Client("SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.hello-world", "hello-world", provider);
 ```
 
-Take a look at the client initialization. It requires a contract id and name in the following format: `{contract_id}.{contract_name}`. The second parameter indicates the location of the smart contract file, without the `.clar` suffix. By default, the location is assuming to be relative to the `contracts` folder.
+Take a look at the client initialization. It requires a contract id and name in the following format: `{owner_stacks_address}.{contract_identifier}`. The second parameter indicates the location of the smart contract file, without the `.clar` suffix. By default, the location is assumed to be relative to the `contracts` folder.
 
 ### Checking syntax
 
 Next, we check the contract for valid syntax with:
 
 ```js
-    await helloWorldClient.checkContract();
+await helloWorldClient.checkContract();
 ```
 
 Note that the `checkContract()` method returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). The `await` command makes sure JavaScript is not executing the next lines until the contract check completes.
