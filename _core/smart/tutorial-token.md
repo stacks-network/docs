@@ -1,18 +1,16 @@
 ---
 layout: core
-description: "Blockstack Clarity: Counter Tutorial"
+description: "Blockstack Clarity: Token Tutorial"
 permalink: /:collection/:path.html
 ---
-# Tutorial: Counter
+# Tutorial: Token
 
-| Experience | | **Intermediate**  |
+| Experience | | **Advanced**  |
 | Duration | | **30 minutes** |
 
-In this tutorial, you learn how to implement a smart contract that stores and manipulates an integer value on the Stack2.0 Blockchain. By the end of this tutorial, you will ...
+In this tutorial, you learn ... By the end of this tutorial, you will ...
 
-* Have experienced test-driven development with Clarity
-* Understand more Clarity language design principles
-* Have a working Clarity counter smart contract
+* 
 
 ## Overview
 
@@ -27,31 +25,27 @@ In this tutorial, you learn how to implement a smart contract that stores and ma
 
 ## Pre-requisites
 
-Before you get started, you should complete the [Hello World tutorial](tutorial.html).
+Before you get started with this tutorial, you should complete the [Hello World](tutorial.html) and the [Counter](tutorial-counter.html) tutorials.
 
-## Step 1: Download counter tutorial project
+## Step 1: Download token tutorial project
 
-In this step, you initialize a starter project with additional counter tutorial files:
-
-1. Using your terminal, run the following command:
+1. Initialize a starter project with additional token tutorial files:
 
     ```bash
-    npm init clarity-starter --counter-tutorial
+    npm init clarity-starter --token-tutorial
     ```
 
-2. After the additional project files are loaded up, you can confirm the project name. Feel free to hit ENTER to accept the default suggestion - or enter a new one.
+2. Confirm the new project name:
 
     ```bash
-    ? Project name (clarity-counter-project)
+    ? Project name (clarity-token-project)
     ```
-
-    Finally, the project dependencies will install, and your project is ready for development. Because you already completed the Hello World tutorial, the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
 
 ## Step 2: Running tests
 
-Smart contracts are often developed in a test-driven approach to ensure code quality but also to speed up the development cycle by removing the need to push every change to the Blockchain before executing it. We will do the same in this project. Now, let's run the tests and review the results:
+Just like in the Counter tutorial, we will use test-driven development to implement our Token smart contract. Let's run the tests and review the results:
 
-1. Still in the project root directory, run the following command:
+1. Run the following command:
 
     ```bash
     npm test
@@ -60,27 +54,10 @@ Smart contracts are often developed in a test-driven approach to ensure code qua
     You should see the following response:
 
     ```bash
-    counter contract test suite
-        ✓ should have a valid syntax
-        deploying an instance of the contract
-        1) should start at zero
-        2) should increment
-        3) should decrement
-
-    hello world contract test suite
-        ✓ should have a valid syntax
-        deploying an instance of the contract
-        ✓ should return 'hello world'
-        ✓ should echo number
-
-
-    4 passing (455ms)
-    3 failing
+    ...
     ```
 
-    It looks like we see some failed test! That is on purpose - we will implement the new smart contract in the next steps! After every increment of the contract, we will rerun the tests to ensure we're on the right track.
-
-## Step 3: Developing a smart contract
+## Step 3: Developing the smart contract
 
 Let's get familiar with the tests to understand what the new smart contract should look like
 

@@ -1,6 +1,6 @@
 ---
 layout: core
-description: "Blockstack smart contracting language"
+description: "Blockstack Clarity: Hello World Tutorial"
 permalink: /:collection/:path.html
 ---
 # Tutorial: Hello World
