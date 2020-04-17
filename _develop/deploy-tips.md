@@ -3,7 +3,7 @@ layout: learn
 description: Blockstack dApp documentation
 permalink: /:collection/:path.html
 ---
-# How to deploy a Blockstack dApp
+# Deployment
 {:.no_toc}
 
 Blockstack applications are web applications that authenticate users with Blockstack Auth and store data with Gaia. Both of these technologies can be accessed on the client side.  As such, Blockstack apps tend to be simple in design and operation, since in many cases, they don’t have to host anything besides the application’s assets.

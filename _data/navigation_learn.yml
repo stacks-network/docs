@@ -1,23 +1,19 @@
-- title: Introduction
-  docs:
-  - develop/dapp_principles
-  - core/faq_developer
-
-- title: Coding basics
+- title: Guides
   docs:
   - develop/overview_auth
-  - develop/add_auth
   - develop/storage
   - develop/profiles
-  - develop/deploy-tips
-  - develop/betatesting
-
-- title: Data Portability (Preview)
-  docs:
-  - develop/collections
-  - develop/collection-type
   
-- title: Radiks data 
+- title: Tutorials
+  docs:
+  - browser/hello-blockstack
+  - browser/todo-list
+  - browser/blockstack_storage
+  - develop/deploy-tips
+  - android/tutorial
+  - ios/tutorial
+  
+- title: Data sharing & collaboration
   docs: 
   - develop/radiks-intro
   - develop/radiks-setup
@@ -25,27 +21,20 @@
   - develop/radiks-collaborate
   - develop/radiks-server-extras
 
-- title: Try it! Zero to DApp
+- title: Data portability (Preview)
   docs:
-  - develop/zero_to_dapp_1
-  - develop/zero_to_dapp_2
-  - develop/zero_to_dapp_3
-  - develop/zero_to_dapp_4
+  - develop/collections
+  - develop/collection-type
 
-- title: Try a tutorial
-  docs:
-  - browser/hello-blockstack
-  - browser/todo-list
-  - browser/blockstack_storage
-  - android/tutorial
-  - ios/tutorial
-  - develop/auth_provider
-  - develop/communityResources
-
-- title: Reference
+- title: References
   docs:
   - common/javascript_ref
   - common/android_ref
   - common/ios_ref
   - develop/cliDocs
   - common/core_ref
+
+- title: Misc
+  docs:
+  - core/faq_developer
+  - develop/communityResources

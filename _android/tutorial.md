@@ -3,7 +3,7 @@ layout: learn
 description: Learn about the Android SDK
 permalink: /:collection/:path.html
 ---
-# Android SDK Tutorial (Pre-release)
+# Android DApps (Pre-release)
 {:.no_toc}
 
 This tutorial is written for readers who are new to either or both Blockstack

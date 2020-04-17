@@ -1,31 +1,31 @@
 # Categories home page navigation
 
 - title: Build Decentralized Apps
-  desc: Learn how to build a blockchain application with Blockstack. Work through web and mobile tutorials.
+  desc: Learn how to build decentralized applications using Blockstack's storage and authentication tools.
   icon: code
-  doc: develop/zero_to_dapp_1
+  doc: develop/overview_auth
 
 - title: Build Smart Contracts
-  desc: Work with our Core node, smart contracts, namespaces, zone files, and other advanced topics.
-  icon: cog
+  desc: Learn how to develop smart contracts using Blockstack's smart contracting language.
+  icon: file-edit
   doc: core/smart/overview
 
-- title: Blockstack Core
-  desc: Work with our Core node, namespaces, zone files, and other advanced topics.
+- title: Work with Blockstack Core
+  desc: Learn how to work with nodes, namespaces, zone files, and other advanced topics.
   icon: cog
   doc: core/naming/introduction
+
+- title: Work with Blockstack Gaia
+  desc: Learn about storage, interactions between developer APIs, and the Gaia service.
+  icon: database
+  doc: storage/overview
 
 - title: Evaluate the Blockstack Ecosystem
   desc: Learn the components that make up the Blockstack Ecosystem. Understand the value a blockchain offers.
   icon: info
   doc: org/overview
 
-- title: Implement Storage with Gaia
-  desc: Backend storage drivers and interactions between developer APIs and the Gaia service.
-  icon: database
-  doc: storage/overview
-
 - title: Blockstack Community
-  desc: view upcoming events, become a contributor or evangelist.
+  desc: View upcoming events and become a contributor or evangelist.
   icon: user
   doc: common/community_ref

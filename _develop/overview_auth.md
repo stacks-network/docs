@@ -3,7 +3,7 @@ layout: learn
 permalink: /:collection/:path.html
 ---
 
-# Understand Blockstack Auth
+# Guide to Blockstack Auth
 {:.no_toc}
 
 Blockstack Auth provides single sign on and authentication without third parties or remote servers. On this page, you'll get an overview of authentication from a developer and user perspective. The following topics are covered:
@@ -44,11 +44,11 @@ When she chooses an ID (or creates a new one), Alice is redirected back to the D
 Scopes define the permissions requested from, and that a user accepts, through the sign-in dialog.
 DApps may request any of the following scopes:
 
-| Scope |  Definition|
-|---|---|
-| `store_write` | Read and write data to the user's Gaia hub in an app-specific storage bucket. |
+| Scope          | Definition                                                                           |
+| -------------- | ------------------------------------------------------------------------------------ |
+| `store_write`  | Read and write data to the user's Gaia hub in an app-specific storage bucket.        |
 | `publish_data` | Publish data so that other users of the app can discover and interact with the user. |
-| `email` | Requests the user's email if available. |
+| `email`        | Requests the user's email if available.                                              |
 
 The permissions scope should be specified through the <a href="https://blockstack.github.io/blockstack.js/classes/appconfig.html" target="\_blank">AppConfig</a> object. If no `scopes` array is provided to the `redirectToSignIn` or `makeAuthRequest`
 functions, the default is to request `['store_write']`.
