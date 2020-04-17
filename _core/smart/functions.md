@@ -3,7 +3,7 @@ layout: core
 description: "Blockstack smart contracting language"
 permalink: /:collection/:path.html
 ---
-# Define functions and data maps
+# Defining Functions and Maps
 {:.no_toc}
 
 Clarity includes _defines_  and native functions for creating user-defined functions. 
