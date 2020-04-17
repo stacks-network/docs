@@ -59,8 +59,8 @@ Smart contracts may also be principals (represented by the smart contract's iden
 To support the use of named fields in keys and values, Clarity  allows the construction of named tuples using a function `(tuple ...)`, for example
 
 ```cl
-(define imaginary-number-a (tuple (real 1) (i 2)))
-(define imaginary-number-b (tuple (real 2) (i 3)))
+(define-constant imaginary-number-a (tuple (real 1) (i 2)))
+(define-constant imaginary-number-b (tuple (real 2) (i 3)))
 ```
 
 This allows for creating named tuples on the fly, which is useful for data maps where the keys and values are themselves named tuples. Values in a given mapping are set or fetched using:
