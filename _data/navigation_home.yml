@@ -1,24 +1,24 @@
 # Categories home page navigation
 
-- title: Evaluate the Blockstack Ecosystem
-  desc: Learn the components that make up the Blockstack Ecosystem. Understand the value a blockchain offers.
-  icon: info
-  doc: org/overview
-
-- title: Use Blockchain Applications
-  desc: Learn about the New Internet and blockchain applications. Create an identity and learn how to use it.
-  icon: settings
-  doc: browser/browser-introduction
-
-- title: Build Blockchain Applications
+- title: Build Decentralized Apps
   desc: Learn how to build a blockchain application with Blockstack. Work through web and mobile tutorials.
   icon: code
   doc: develop/zero_to_dapp_1
 
-- title: Blockstack Core 
+- title: Build Smart Contracts
   desc: Work with our Core node, smart contracts, namespaces, zone files, and other advanced topics.
   icon: cog
-  doc: core/naming/introduction
+  doc: core/smart/overview
+
+- title: Use Blockchain Apps
+  desc: Learn about the New Internet and blockchain applications. Create an identity and learn how to use it.
+  icon: settings
+  doc: browser/browser-introduction
+
+- title: Evaluate the Blockstack Ecosystem
+  desc: Learn the components that make up the Blockstack Ecosystem. Understand the value a blockchain offers.
+  icon: info
+  doc: org/overview
 
 - title: Implement Storage with Gaia
   desc: Backend storage drivers and interactions between developer APIs and the Gaia service.

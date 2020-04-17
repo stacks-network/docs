@@ -3,49 +3,12 @@ layout: core
 description: "Blockstack smart contracting language"
 permalink: /:collection/:path.html
 ---
-# Clarity language reference
+# Language Reference
 
 This file contains the reference for the Clarity language. 
 
 * TOC
 {:toc}
-
-## Block Properties
-
-The `get-block-info` function fetches property details for a block at a specified block height. For example:
-
-```cl
-(get-block-info time 10) ;; Returns 1557860301
-```
-
-Because the Clarity language is in pre-release, the block properties that are fetched are simulated properties from a SQLite database. The available property names are:
-
-<table class="uk-table">
-  <tr>
-    <th>Property</th>
-    <th>Definition</th>
-  </tr>
-  <tr>
-    <td><code>header-hash</code></td>
-    <td>A 32-byte buffer containing the block hash.</td>
-  </tr>
-  <tr>
-    <td><code>burnchain-header-hash</code></td>
-    <td>A 32-byte buffer that contains the hash from the proof of burn.</td>
-  </tr>
-  <tr>
-    <td><code>vrf-seed</code></td>
-    <td>A 32-byte buffer containing the Verifiable Random Function (VRF) seed value used for the block.</td>
-  </tr>
-  <tr>
-    <td><code>time</code></td>
-    <td>An integer value containing that roughly corresponds to when the block was mined. This is a Unix epoch timestamp in seconds. </td>
-  </tr>
-</table>
-
-
-{% include warning.html content="The <code>time</code> does not increase monotonically with each block. Block times are accurate only to within two hours. See <a href='https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki' target='_blank'>BIP113</a> for more information." %}
-
 
 ## Supported types
 
@@ -54,6 +17,12 @@ This section lists the types available to smart contracts. The only atomic types
 ### Int type
 
 The integer type in the Clarity language is a 16-byte signed integer, which allows it to specify the maximum amount of microstacks spendable in a single Stacks transfer. The special `BlockHeightInt` you can obtain with the `get-block-info` function.
+
+### Uint type
+
+The unsigned integer type (`uint`) in the Clarity language is a 16-byte unsigned integer. Using the unsigned type can ensure that any value underflows (negative numbers) will cause a transaction to be aborted.
+
+Anywhere a developer wishes to use a literal unsigned integer (for example, incrementing or decrementing an input by a constant) the integer literal should use the `u` prefix, e.g., `u123`.
 
 ### Bool type
 
