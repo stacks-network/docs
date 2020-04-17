@@ -37,10 +37,6 @@ Using Blockstack’s technology developers can start building immediately on the
 blockchain with the knowledge you have today. You won’t need to spend time or
 effort developing expertise in specialized languages or technologies.
 
-### Blockstack Signature Fund
-
-{% include signature_fund.md %}
-
 ### Blockstack Token LLC
 
 Through the 2017 Blockstack token offering, Blockstack Token LLC created the

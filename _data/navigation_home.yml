@@ -15,11 +15,6 @@
   icon: cog
   doc: core/naming/introduction
 
-- title: Use Blockchain Apps
-  desc: Learn about the New Internet and blockchain applications. Create an identity and learn how to use it.
-  icon: settings
-  doc: browser/browser-introduction
-
 - title: Evaluate the Blockstack Ecosystem
   desc: Learn the components that make up the Blockstack Ecosystem. Understand the value a blockchain offers.
   icon: info
