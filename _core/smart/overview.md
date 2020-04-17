@@ -6,18 +6,17 @@ permalink: /:collection/:path.html
 # Introduction to Clarity
 {:.no_toc}
 
-Clarity is a smart contracting language for use with the Stacks 2.0 Blockchain. It supports programmatic control over digital assets.
+Clarity is a smart contracting language for use with the Stacks 2.0 blockchain. It supports programmatic control over digital assets.
 
 * TOC
 {:toc}
 
 ## Smart contracts
 
-Smart contracts allow two parties to exchange anything of value (money, property, shares), in an automated, auditable, and secure way _without the services of a middleman_. Nick Szabo introduced the canonical metaphor for smart contracts, a vending machine.
 
-In Nick Szabo's metaphor, the vending machine is the smart contract. The buyer and machine owner are the two parties. A vending machine executes a set of hard-coded actions when the buyer engages with it. The machine displays the items and their prices. A buyer enters money into the machine which determines if the amount fails to mee, meets, or exceeds an item's price. Based on the amount, the machine asks for more money, dispenses an item, or dispenses and item and change.
+Smart contracts encode and enforce the rules for curating this data, and are often used to ensure that users can exchange valuable data in an automated and secure way. For example, a smart contract could allow anyone to add a new movie to a movie catalog, but require that someone first pay for a decryption key before anyone can view it. To do this, the smart contract could be written such that the movie creator had to publicly disclose the decryption key in order to receive payment. Such a system would allow movie creators to make money by adding movies to the movie catalog that people want to watch.
 
-If you are new to smart contracts concepts, you should read <a href="https://blockgeeks.com/guides/smart-contracts/" target="_blank">a good general explanation</a> first.
+Because smart contracts run on top of a blockchain, anyone can query them, and anyone can submit transactions to run their code. The blockchain stores the history of all accepted transactions, so anyone can audit the blockchain in order to independently verify that an app's global shared state has been managed correctly according to the smart contract's rules.
 
 ## Use cases
 
@@ -26,23 +25,21 @@ Not every decentralized application requires smart contracts, but Clarity unlock
 * Access control (e.g. pay to access)
 * Non-fungible and fungible tokens
 * Business model templates (e.g. subscriptions)
-* App Chains
+* App-specific blockchains
 * Decentralized Autonomous Organizations
 
 ## Language design
 
 Clarity is a [list processing (LISP) language](https://en.wikipedia.org/wiki/Lisp_(programming_language)) and differs from most other smart contract languages in two essential ways:
 
-* The language is not intended to be compiled
-* The language is not Turing complete
+* The language is interpreted and broadcasted on the blockchain as is (not compiled)
+* The language is decidable (not Turing complete)
   
-These differences allow for static analysis of programs to determine properties like runtime cost and data usage. Omitting compilation prevents the possibility of error or bugs introduced at the compiler level.
+Using an interpreted language ensures that the code that executes is human-readable, and is auditable by users. The fact that Clarity is a decidable language means that users can determine the set of reachable code from any function they want to call.
 
-A Clarity smart contract is composed of two parts &mdash; a data-space and a set of functions. Only the associated smart contract may modify its corresponding data-space on the Blockchain. Functions are private unless they are defined as public functions. Users call smart contracts' public functions by broadcasting a transaction on the Blockchain which invokes the public function.
+A Clarity smart contract is composed of two parts &mdash; a data-space and a set of functions. Only the associated smart contract may modify its corresponding data-space on the blockchain. Functions may be private and thus callable only from within the smart contract, or public and thus callable from other contracts. Users call smart contracts' public functions by broadcasting a transaction on the blockchain which invokes the public function. Contracts can also call public functions from other smart contracts.
 
-Contracts can also call public functions from other smart contracts. The ability to do a static analysis of a smart contract allows a user to determine dependency between contracts.
-
-Note some of the key Clarity language rules and limitations:
+Note some of the key Clarity language rules and limitations.
 
 * The only atomic types are booleans, integers, fixed length buffers, and principals
 * Recursion is illegal and there is no lambda function.

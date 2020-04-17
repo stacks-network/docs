@@ -78,21 +78,19 @@ Now, let's have a look at a Clarity smart contract and get familiar with the bas
 
     You should see the contract source code. Take a few seconds to review the content.
 
-    Clarity is a programming language based on [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)). Most notably, Clarity is designed for static analysis, not compiled, and **not** [Turing complete](https://en.wikipedia.org/wiki/Turing_completeness).
+    Clarity is a programming language based on [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)). Most notably, Clarity is interpreted and decidable.
 
     Let's go through the source code. Notice how the program and each statement is enclosed in `()` (parentheses). You'll see that the smart contract consists of two public functions. Starting at the top, let's review line by line:
 
     ```cl
     (define-public (say-hi)
-      (ok "hello world")
-    )
+      (ok "hello world"))
 
     (define-public (echo-number (val int))
-      (ok val)
-    )
+      (ok val))
     ```
 
-    On the first line, a new public function `say-hi` is declared. To create private functions, you would use the `define-private` function. Private functions can only be executed by the current smart contract and not from the outside. Only public functions can be called from outside e.g., through other smart contracts or applications. The need to call another smart contract can have different reasons. It allows to reuse existing smart contracts published by other developers. It may also be required because complex implementations are often split out into a set of contracts to achieve a [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns).
+    On the first line, a new public function `say-hi` is declared. To create private functions, you would use the `define-private` keyword. Private functions can only be executed by the current smart contract and not from the outside. Only public functions can be called from outside, by other smart contracts. The reason public functions exist is to enable re-using code that is already available in other smart contracts, and to enable developers to break complex smart contracts into smaller, simpler smart contracts (an exercise in [separating concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)).
 
     The function doesn't take any parameters and simply returns "hello world" using the [`ok`](https://docs.blockstack.org/core/smart/clarityref#ok) response constructor.
 
@@ -150,7 +148,7 @@ import { Client, Provider, ProviderRegistry, Result } from "@blockstack/clarity"
 
 ### Initiliazing a client
 
-At the test start, we are initializing contract instance `helloWorldClient` and a provider that simulates interactions with the Stacks 2.0 Blockchain.
+At the test start, we are initializing contract instance `helloWorldClient` and a provider that simulates interactions with the Stacks 2.0 blockchain.
 
 ```js
 let helloWorldClient: Client;
@@ -162,9 +160,9 @@ provider = await ProviderRegistry.createProvider();
 helloWorldClient = new Client("SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.hello-world", "hello-world", provider);
 ```
 
-Take a look at the client initialization. It requires a contract id and name in the following format: `{owner_stacks_address}.{contract_identifier}`. The second parameter indicates the location of the smart contract file, without the `.clar` suffix. By default, the location is assumed to be relative to the `contracts` folder.
+Take a look at the client initialization. It requires a contract id and name in the following format: `{owner_stacks_address}.{contract_identifier}`. The second field indicates the location of the smart contract file, without the `.clar` suffix. By default, the location is assumed to be relative to the `contracts` folder.
 
-As you can see above, a sample stacks address and contract identifier is already provided for you. You don't need to modify anything.
+As you can see above, a sample Stacks address and contract identifier is already provided for you. You don't need to modify anything.
 
 ### Checking syntax
 

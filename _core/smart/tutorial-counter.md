@@ -8,7 +8,7 @@ permalink: /:collection/:path.html
 | Experience | | **Intermediate**  |
 | Duration | | **30 minutes** |
 
-In this tutorial, you learn how to implement a smart contract that stores and manipulates an integer value on the Stacks 2.0 Blockchain. By the end of this tutorial, you will ...
+In this tutorial, you learn how to implement a smart contract that stores and manipulates an integer value on the Stacks 2.0 blockchain. By the end of this tutorial, you will ...
 
 * Have experienced test-driven development with Clarity
 * Understand more Clarity language design principles
@@ -40,11 +40,11 @@ You have to select a template and a name for your local folder. For the counter 
 ? Project name: (clarity-counter)
 ```
 
-Finally, the project dependencies are installed and your project is ready for development. Because you already completed the Hello World tutorial, the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
+Finally, the project dependencies are installed and your project is ready for development. Because you already completed the [Hello World tutorial](tutorial.html), the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
 
 ## Step 2: Running tests
 
-Smart contracts are often developed in a test-driven approach to ensure code quality but also to speed up the development cycle by removing the need to push every change to the Blockchain before executing it. We will do the same in this project. Now, let's run the tests and review the results:
+mart contracts are often developed in a test-driven approach. This not only improves code quality, but also removes the need to push every iteration to the blockchain before executing it. We will do the same in this project. Now, let's run the tests and review the results:
 
 Still in the project root directory, run the following command:
 
@@ -67,7 +67,7 @@ counter contract test suite
 3 failing
 ```
 
-It looks like we see some failed test! That is on purpose - we will implement the new smart contract in the next steps! After every increment of the contract, we will rerun the tests to ensure we're on the right track.
+It looks like we see some failed tests! That is on purpose - we will implement the new smart contract in the next steps! After every step in this tutorial, we will rerun the tests to ensure we're on the right track.
 
 ## Step 3: Developing a smart contract
 
@@ -95,17 +95,16 @@ Let's get familiar with the tests to understand what the new smart contract shou
     (define-data-var counter int 0)
 
     (define-public (get-counter)
-      (ok (var-get counter))
-    )
+      (ok (var-get counter)))
     ```
 
     The first line initializes a new integer variable `counter` with the value set to `0` using the [`define-data-var`](https://docs.blockstack.org/core/smart/clarityref#define-data-var) statement. It is important to note that all definition statements in Clarity need to be at the top of the file.
 
-    To provide access to the `counter` variable from outside of the current smart contract, we need to declare a public get function. The last lines of the code add a public `get-counter` function. The [`var-get`](https://docs.blockstack.org/core/smart/clarityref#var-get) statement looks for a variable in the contract's data map and returns it.
+    To provide access to the `counter` variable from outside of the current smart contract, we need to declare a public function to get it. The last lines of the code add a public `get-counter` function. The [`var-get`](https://docs.blockstack.org/core/smart/clarityref#var-get) statement looks for a variable in the contract's data space and returns it.
 
     With that, you are ready to rerun the tests!
 
-3. Run the tests and review the results:
+1. Run the tests and review the results:
 
     ```shell
     npm test
@@ -115,22 +114,20 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     However, we don't stop here. Let's implement increment and decrement functions.
 
-4. Add the following lines to the bottom of the `counter.clar` file and take a few seconds to review them:
+2. Add the following lines to the bottom of the `counter.clar` file and take a few seconds to review them:
 
     ```cl
     (define-public (increment)
       (begin
         (var-set counter (+ (var-get counter) 1))
-          (ok (var-get counter))
-      )
-    )
+          (ok (var-get counter))))
     ```
 
     First, the [`begin`](https://docs.blockstack.org/core/smart/clarityref#begin) statement evaluates the multi-line expressions and returns the value of the last expression. In this case, it is used to set a new value and return the new value.
 
     Next, a [`var-set`](https://docs.blockstack.org/core/smart/clarityref#var-set) is used to set a new value for the `counter` variable. The new value is constructed using the [`+`](https://docs.blockstack.org/core/smart/clarityref#-add) (add) statement. This statement takes a number of integers and returns the result. Along with add, Clarity provides statements to subtract, multiply, and divide integers. Find more details in the [Clarity language reference](https://docs.blockstack.org/core/smart/clarityref).
 
-5. Finally, take a few minutes and implement a new public function `decrement` to subtract `1` from the `counter` variable. You should have all knowledge needed to succeed at this!
+3. Finally, take a few minutes and implement a new public function `decrement` to subtract `1` from the `counter` variable. You should have all knowledge needed to succeed at this!
 
     Done? Great! Run the tests and make sure all of them are passing. You are looking for 4 passed tests:
 
@@ -148,25 +145,20 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     **Congratulations! You just implemented your first Clarity smart contract.**
 
-6. Here is how the final smart contract file should look like. Note that you can find the `decrement` function in here - in case you want to compare with your own implementation:
+4. Here is how the final smart contract file should look like. Note that you can find the `decrement` function in here - in case you want to compare with your own implementation:
 
     ```cl
     (define-data-var counter int 0)
     (define-public (increment)
       (begin
         (var-set counter (+ (var-get counter) 1))
-        (ok (var-get counter))
-      )
-    )
+        (ok (var-get counter))))
     (define-public (decrement)
       (begin
         (var-set counter (- (var-get counter) 1))
-        (ok (var-get counter))
-      )
-    )
+        (ok (var-get counter))))
     (define-public (get-counter)
-      (ok (var-get counter))
-    )
+      (ok (var-get counter)))
     ```
 
 ## Where to go next
