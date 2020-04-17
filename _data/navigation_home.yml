@@ -10,6 +10,11 @@
   icon: cog
   doc: core/smart/overview
 
+- title: Blockstack Core
+  desc: Work with our Core node, namespaces, zone files, and other advanced topics.
+  icon: cog
+  doc: core/naming/introduction
+
 - title: Use Blockchain Apps
   desc: Learn about the New Internet and blockchain applications. Create an identity and learn how to use it.
   icon: settings

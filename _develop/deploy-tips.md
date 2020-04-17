@@ -1,6 +1,6 @@
 ---
 layout: learn
-description: Blockstack app mining documentation
+description: Blockstack dApp documentation
 permalink: /:collection/:path.html
 ---
 # How to deploy a Blockstack dApp

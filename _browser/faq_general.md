@@ -6,7 +6,7 @@ permalink: /:collection/:path.html
 # Users Frequently Asked Questions (FAQ)
 {:.no_toc}
 
-This is a FAQ intended for users of decentralized applications. A comprehensive list of FAQs that touch on general, technical, and App Mining questions is [also available]({{site.baseurl}}/faqs/allFAQS.html).
+This is a FAQ intended for users of decentralized applications. A comprehensive list of FAQs that touch on general, and technical, questions is [also available]({{site.baseurl}}/faqs/allFAQS.html).
 
 * TOC
 {:toc}

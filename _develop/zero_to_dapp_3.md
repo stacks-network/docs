@@ -10,9 +10,7 @@ image: /assets/img/zero-to-dapp.png
  **Zero to DAPP 3 of 4 for macOS/Linux (or [Windows](zero_to_dapp_3_win.html))**
 
 In this page, you examine and modify the Animal Kingdom DApp [you built in part
-2](zero_to_dapp_2.html). You'll review the underlying code and locate the
-portions of it which fulfill the requirements necessary to qualify an
-application for App Mining. You'll expand your knowledge of the application by
+2](zero_to_dapp_2.html). You'll review the underlying code. You'll expand your knowledge of the application by
 extending it. Finally, you'll learn how to deploy a DApp.
 
 This page contains the following topics
@@ -120,12 +118,6 @@ session state to users. In a non-web browser environment, it is necessary to
 pass in an instance of `AppConfig` which defines the parameters of the current
 app.
 
-<div class="uk-card uk-card-default uk-card-body">
-<h5>App Mining Requirement: Blockstack Authentication</h5>
-<p>To participate in application mining your application must integrate Blockstack authentication. Test flight apps do not qualify.
-</p>
-</div>
-
 ### Get and put user data to a Gaia Hub
 
 Gaia is the Blockstack data storage hub (https://hub.blockstack.org). Once a user
@@ -184,12 +176,6 @@ profile, go to the <a href="https://explorer.blockstack.org">Blockstack
 explorer</a> and search for your ID:
 
 <img src="images/explorer.png" alt="">
-
-<div class="uk-card uk-card-default uk-card-body">
-<h5>App Mining Optional: Gaia Storage</h5>
-<p>Use of Gaia storage is not required for application mining. Keep in mind, using Gaia may make data storage easier as it is designed to work in the Blockstack Ecosystem.
-</p>
-</div>
 
 ### Application configuration
 
@@ -340,12 +326,6 @@ person that can use it to create a kingdom. You can make your application
 available to others by hosting it out on the internet. You can do this for free
 with a Netlify account.
 
-<div class="uk-card uk-card-default uk-card-body uk-section-muted">
-<h5>App Mining Requirement: Review Accessibility</h5>
-<p>To participate in application mining your application must be available for review. Open source projects must provide the URL to their code. Projects with private repositories can provide their application in a package form.
-</p>
-</div>
-
 Before you begin, you need to build a site that is ready to deploy.
 
 1. In your terminal, press `CTRL-C` on your keyboard to stop your `npm run start` build.
@@ -470,22 +450,3 @@ Blockstack kingdom.
    The Blockstack team will add your Netlify kingdom to ours. When we do that, we will notify you on the issue and you'll also get an email.
 
 5. When you receive the email, login to the Blockstack Animal kingdom to see your kingdom under **Other Kingdoms**.
-
-
-## Next steps (and a cool tshirt!)
-{:.no_toc}
-
-
-In the next part, you learn about how application mining can fund your DApp
-development efforts. And you will take a couple of minutes to [add your Animal Kingdom DApp to App.co
-&mdash; the Universal App store](zero_to_dapp_4.html). Completing this step earns you a
-limited edition t-shirt.
-
-If you have a twitter account, why not tell some folks about your progress?
-
-<a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-class="twitter-share-button" data-size="large" data-text="I just built a DApp
-using @blockstack's  Zero-to-DApp tutorial! " data-hashtags="blockstack,
-blockchain, blockchainnopain, blockchainnopainblockstack"
-data-show-count="true">Tweet your work!</a><script async
-src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

@@ -42,17 +42,6 @@
   - develop/auth_provider
   - develop/communityResources
 
-- title: App Mining
-  docs:
-  - develop/mining_intro
-  - develop/app-reviewers
-  - develop/app-rankings
-  - develop/mining_enroll
-  - develop/mining-rewards
-  - community/app-miners-guide
-  - develop/appMiningFAQ
-
-
 - title: Reference
   docs:
   - common/javascript_ref

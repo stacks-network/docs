@@ -1,7 +1,6 @@
 {
    "last_updated": "Fri Nov 1 09:07:59 PST 2019",
-   "faqs": [
-      {
+   "faqs": [{
          "category": "general",
          "question": "What is Blockstack?",
          "answer": "<p>Blockstack is a full-stack decentralized computing network that enables a new generation of applications where developers and users can interact fairly and securely. Blockstack uses blockchain technology to build protocols and developer tools designed to enable a fair and open Internet that returns digital rights to developers and consumers. Led by some of the world’s foremost experts on distributed systems, Blockstack allows users to own their own data that they can take with them from app to app in the ecosystem, along with their Blockstack ID that eliminates the need for password-based logins. The end result is privacy, security, and freedom.</p>"
@@ -252,116 +251,6 @@
          "answer": "<p>Yes! Since Blockstack applications are built like web applications, all you need to do is include the relevant Javascript library into your application.</p>"
       },
       {
-         "category": "appminers",
-         "question":"What is App Mining?",
-         "answer":"<p>Traditionally the term mining in cryptocurrency refers to the process of contributing compute resources to the network and earning a reward. In the Blockstack Ecosystem, instead of just mining through computation, developers mine by building apps, and the Blockstack community funds them simply for being pioneers in the emerging Blockchain software market.</p> <p>We believe app mining represents a revolution in app funding, allowing small teams to bootstrap without advertising or venture capital. Each month, qualifying apps compete for funding. Qualified apps are evaluated and ranked by expert app reviewers. The better your app, the higher payout you earn.</p> <p>App mining is a new mining model that is continuously evolving and improving based on <a href='https://github.com/blockstack/app-mining' target='_blank'>community feedback</a>.</p>"
-      },
-      {
-            "category": "appminers",
-            "question":"Is App Mining internationally accesible?",
-            "answer":"<p>Yes, App Mining is internationally available. The reviewers today cater to an English-speaking audience. The long term vision for app mining entails developing a plan to make it more internationally accessible. We will continue to update the guidelines and FAQ as the program evolves.</p>"
-      },
-      {
-         "category": "appminers",
-         "question": "What is the App Mining timeline?",
-         "answer":"<p>On the first of every month (or as listed on the calendar):</p> <ul> <li>Registration is closed for that months ranking.</li> <li>Blockstack team sends the complete list of apps to our app reviewer partners. App miners do not need to reach out to Awario, TryMyUI, or the digital rights reviewer.</li></ul> <p>Over the next two weeks:</p> <ul> <li>TryMyUI Tests are happening. Please don’t perform upgrades that might break the app.</li><li>The digital rights reviewer examines apps based on the degree to which the apps respect and protect users` fundamental digital rights.</li> </ul> <p>On the last day of ranking at 11:59pm ET: App mining results are sent to Blockstack by app reviewer partners.</p> <p>On the 15th (or as listed on the calendar): Blockstack team performs App Mining algorithm as referenced <a href='https://blog.app.co/how-app-minings-ranking-algorithm-works/' target='_blank'>here</a>.</p> <p>On the following weekday:</p> <ul> <li>App miners are emailed login info to access their TryMyUI tests. </li> <li>App founders are sent an audit version of the results. </li> </ul> <p>A week later: </p> <ul> <li>Payouts are completed. </li> <li>Full App Mining results are published. </li> </ul>"
-      },
-      {
-         "category": "appminers",
-         "question": "Where can I find a calendar of App Mining events?",
-         "answer": "<p>The following calendar shows events each month related to App Mining:</p><p><iframe src='https://calendar.google.com/calendar/b/1/embed?showCalendars=0&amp;height=400&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=blockstack.com_u71ao2dalkd88b493k3671233s%40group.calendar.google.com&amp;color=%235229A3&amp;ctz=America%2FNew_York' style='border-width:0' width='600' height='400' frameborder='0' scrolling='no'></iframe></p>"
-      },
-      {
-         "category": "appminers",
-         "question": "How much can I earn and how are rewards distributed? ",
-         "answer":"<p>App Mining pays out $400k per month in combined STX and BTC January 2020. In February 2020, the payout pool will ramp up to $500k total in STX. In March and April 2020, the monthly payout pool will be $700k. In May 2020 we plan for the monthly payout to be $1M worth of Stacks tokens. For more detailed information, see <a href='https://docs.blockstack.org/develop/mining-rewards.html' target='_blank'>How payouts are administered</a> in the Blockstack documentation.</p>"         
-      }, 
-      {
-         "category": "appminers",
-         "question":"What is the Stacks token?",
-         "answer":"<p>Stacks (STX) token is the native utility token of the Blockstack network and the only token currently available as part of an SEC-qualified sale. Stacks tokens are consumed as &quot;fuel&quot; when users register digital assets, like usernames, or when they register/execute smart contracts. Using Stacks, developers can build and distribute apps that let users maintain ownership of their data and protect their digital rights.</p> <p>Learn more at: <a href='https://stackstoken.com/faq/' target='_blank'>https://stackstoken.com/faq/</a></p>"
-     },
-      {
-         "category": "appminers",
-         "question": "How is App Mining different from cryptocurrency mining?",
-         "answer": "<p>Traditionally the term mining in cryptocurrency refers to the process of contributing compute resources to the network and earning a distributed of new tokens as a reward. On the Stacks blockchain, developers can <q>mine</q> by contributing apps to the ecosystem and making applications the community wants. </p>"
-      },
-      {
-         "category": "appminers",
-         "question": "What qualifies my app to compete in App Mining?",
-         "answer": "<p>Your app should integrate Blockstack authentication for logging into your app. Your finished app should be available to the public for use.  The application must use a registered domain name and the app should be hosted at a URL belonging to the domain. The app website must use a secured (<code>https</code>) connection. In the future, App Mining may reward apps that have taken steps to further decentralize, such as utilizing Gaia storage or the publishing your app to the Blockstack Naming System. Test flight apps, hello-world apps and apps created through blockstack tutorials (e.g., animal kingdom apps) do not qualify.</p>"
-      },
-      {
-         "category": "appminers",
-         "question": "Does my app have to be listed on App.co to enter App Mining?",
-         "answer": "<p>Yes, it does.</p>"
-      },
-      {
-         "category": "appminers",
-         "question": "How do I submit my application for App Mining?",
-         "answer": "<p>Complete <a href='https://app.co/submit#'>the submission form on App.co</a>. Blockstack suggests registering several days before the ranking deadline — our team needs to verify your details to ensure your app qualifies. Full enrollment details can be found <a href='https://docs.blockstack.org/develop/mining_enroll.html' target='_blank'>here</a>. When you have met all the requirements, you should see your app listed <a href='https://app.co/mining/apps'>on this page</a>.</p>"
-      },
-      {
-         "category": "appminers",
-         "question": "When are my submission materials due?",
-         "answer": "<p>Your submission materials are due before the end of the month. Please see the <a href='https://app.co/mining#where-can-i-find-a-calendar-of-app-mining-events' target='_blank'>app mining calendar</a> for the exact dates. Keep in mind that registering is a multi-step process.</p>"
-      },
-      {
-         "category": "appminers",
-         "question": "How often can I submit my application for App Mining?",
-         "answer": "<p>You need only to submit your application once.  Each month after your submission, your app is competing in App Mining.  </p>"
-      },
-      {
-         "category": "appminers",
-         "question": "Does my code repository need to be public?",
-         "answer": "<p>Your application code can be public or private.</p>"
-      },
-      {
-         "category": "appminers",
-         "question": "Is Blockstack Auth difficult to integrate?",
-         "answer": "<p>If you’re already building your app with JavaScript, adding Blockstack authentication is easy! We have docs, tutorials, and thorough API references for you to learn from. Visit the <a href='https://docs.blockstack.org/develop/zero_to_dapp_1.html'> Zero-to-Dapp tutorial</a> for end-to-end training. Or <a href='https://docs.blockstack.org/develop/auth_provider.html'>use this short example</a>.</p> <p>If you’re developing a traditional server-side application, you can still take advantage of Blockstack authentication. For an example, check out <a href='https://github.com/blockstack/blockstack-ruby'>our Ruby on Rails gem</a>.</p>"
-      },
-      {
-         "category": "appminers",
-         "question": "Who are the app reviewers?",
-         "answer":"<p>App reviewers are currently selected by Blockstack PBC. Reviewers are entities that have a proprietary methodology that helps them make objective judgements for why a certain app might be better than others. We strive to engage a diverse coalition of app reviewers with the goal of making application ranking objective and resilient to abuse.</p> <p>The app reviewers are TryMyUI, Awario, and the New Internet Labs. See <a href='https://docs.blockstack.org/develop/app-reviewers.html' target='_blank'>here</a> for more details about each reviewer. Future reviewers could expand to community election. Please see our <a href='https://github.com/blockstack/app-mining' target='_blank'>GitHub repository</a> to raise issues or make suggestions for App Mining.</p>"
-      },
-      {
-         "category": "appminers",
-         "question": "How are apps ranked?",
-         "answer":"<p>App reviewers have a proprietary methodology that helps them make objective judgments for why one app might be better than another. Each app reviewers determines the data, formula, and personnel they wish to utilize. Reviewers must publish their methodology periodically to ensure transparency.</p> <p>To learn more see <a href='https://docs.blockstack.org/develop/app-reviewers.html' target='_blank'>the detailed explanation of our ranking algorithm on our</a> <a href='https://docs.blockstack.org/develop/app-reviewers.html' target='_blank'>documentation</a>.</p> <p>Apps are ranked by all app reviewers.</p>"
-      },
-      {
-         "category": "appminers",
-         "question": "When are the winning payments made?",
-         "answer": "<p>Payouts are made mid-month.</p>"
-      },
-      {
-         "category": "appminers",
-         "question": "What are examples of any quantitative metrics that may be shared with app reviewers?",
-         "answer": "<p>Qualitative metrics are metrics that evaluate elements such as engagement, DAU/MAU ratios, etc. from the reviewed apps. Blockstack plans to incorporate metrics based ranking. However, before we do, any mechanism must thoughtfully incorporate the digital privacy rights of Blockstack users, and provide information in a way that cannot be gamed.</p> "
-      },
-      {
-         "category": "appminers",
-         "question": "Is App Mining Decentralized?",
-         "answer": "<p>Given the pioneering nature of the program, we are being careful and starting in a somewhat centralized fashion that allows for necessary diligence in the early stages, for example, the current pilot phase. We don’t want to bake in assumptions that have not been validated. The downside of this protection is some level of centralization, which we are taking steps to reduce over time. The pilot is the just the first step in creating a fair system that can be relied upon by founders and contribute to the growth of the Blockstack ecosystem. </p> <p>Blockstack plans to move along a path to decentralization and App Mining will too. It is important to highlight that initially, App Mining will purposely have a few points of centralization highlighted below, which can become decentralized over time (all plans are subject to change, legal approval, and applicable law). </p> <h5>Electing app reviewers:</h5> <p>Currently, Blockstack PBC elects app reviewers. In the future, we anticipate gradually transitioning to community elections of App Reviewers. </p> <h5>Registering apps:</h5> <p>Currently, registering apps is regulated by Blockstack PBC through app.co/mining. In the future, we anticipate transitioning to publishing on designated Blockstack namespaces via our public blockchain. </p> <h5>Collecting votes:</h5> <p>Currently, votes are aggregated by Blockstack PBC and administered via App.co. In the future, we expect that votes will be collected through the protocol itself. </p> <h5>Issuing money:</h5> <p>Currently, payouts are issued by Blockstack PBC. In the future, we expect that payouts will over time be generated and deployed on an automated basis. </p>"
-      },
-      {
-         "category": "appminers",
-         "question": "How is App Mining protected against bribery, collusion, or gaming?",
-         "answer": "<p>We are taking potential threats very seriously and hope to create a fair system that continuously reinforces trust within our community for the long term. </p> <p>We are currently consulting with a team of 3 Ph.D. Game Theorist professors from Princeton University and New York University to determine thoughtful methods to protect App Mining from being attacked and/or abused. Our goal is to be as transparent as possible, but App Reviewers may reserve the right to keep some secrets in their formula to avoid bribes and gaming, and the algorithm that combines all of these score may be tuned in the future to account for new learnings. </p> <p>The Game Theorists are working with us to create a technical paper and broader documents like blogs explaining the overall mechanism.</p>"
-      },
-      {
-         "category": "appminers",
-         "question": "How do I propose and follow changes to App Mining?",
-         "answer": "<p>The App Mining <a href='https://github.com/blockstack/app-mining' target='_blank'>GitHub repo</a> is the best place to propose changes to App Mining. </p>"
-      },
-      {
-         "category": "appminers",
-         "question": "App Mining Disclaimer",
-         "answer": "<p><i>The App Mining FAQs contain forward-looking statements, including statements regarding Blockstack PBC’s plans for its App Mining program. Forward-looking statements are subject to risks and uncertainties that could cause actual results to differ materially, and reported results should not be considered as an indication of future performance. Potential risks and uncertainties that could change our actual results include, but are not limited to, risks associated with: the failure of App Mining Program to successfully incentivize the development of applications for the Blockstack network; risks associated with attacks designed to influence the App Reviewers or game their methodologies; technical difficulties in the transition from a centralized to a decentralized administration of the program. These forward-looking statements speak only as of the date hereof. Blockstack PBC disclaims any obligation to update these forward-looking statements. </i></p> <p><i>Any decisions that may be made through the App Mining Program regarding rewards provided to app developers are not recommendations as to the quality of any investments that individuals may make in a company that receives rewards. If you are considering an investment in any of these companies, you should make your own decision regarding that investment and not rely in any way on the results of the App Mining program. </i></p>"
-      },
-      {
          "category": "coredevs",
          "question": "What is Blockstack Core?",
          "answer": "<p>Blockstack Core is the reference implementation of the Blockstack protocol described in our white paper. Today, it consists of these components:</p> <ul><li>Blockstack Core: A Python backend service which reads transactions from the Stacks blockchain. This blockchain enables the Stacks Token (STX) and Blockstack Naming service.</li> <li>Atlas: A peer network for communicating data about the Blockstack Naming System (BNS).</li> <li>Blockstack API: A service for indexing the data stored by Blockstack Core and making it available in a performant way.</li> </ul><p>The next version of the Stacks Blockchain is under active development in the Rust programming language and employs our Tunable Proof-of-Work consensus algorithm and a unique scaling solution that enable individual apps to create their own app chains. </p>"
@@ -528,19 +417,19 @@
       },
       {
          "category": "wallet",
-        "question": "Can I use another software wallet with Stacks?",
-        "answer": "<p>Currently, the only software wallet that supports Stacks is the Blockstack Wallet software.</p>"
-         },
-        {
+         "question": "Can I use another software wallet with Stacks?",
+         "answer": "<p>Currently, the only software wallet that supports Stacks is the Blockstack Wallet software.</p>"
+      },
+      {
          "category": "wallet",
-        "question": "Can I use the older version 1 Blockstack Wallet?",
-        "answer": "<p>Version 1 of the Blockstack Wallet software was a read-only wallet. To view Stacks balances, send or receive Stacks you need to use the latest version 3 wallet. You <em>can</em> use the seed phrase you created with the old wallet with the new version.</p>"
-         },
-        {
+         "question": "Can I use the older version 1 Blockstack Wallet?",
+         "answer": "<p>Version 1 of the Blockstack Wallet software was a read-only wallet. To view Stacks balances, send or receive Stacks you need to use the latest version 3 wallet. You <em>can</em> use the seed phrase you created with the old wallet with the new version.</p>"
+      },
+      {
          "category": "wallet",
-        "question": "Can I send Bitcoin to my Stacks Wallet?",
-        "answer": "<p>No, you cannot send Bitcoin to a Stacks address. You can only add Bitcoin as fuel to the wallet. Please <a href='https://docs.blockstack.org/org/wallet-use.html' target='_blank'>follow the instructions for adding &quot;gas&quot;</a>.</p>"
-         },
+         "question": "Can I send Bitcoin to my Stacks Wallet?",
+         "answer": "<p>No, you cannot send Bitcoin to a Stacks address. You can only add Bitcoin as fuel to the wallet. Please <a href='https://docs.blockstack.org/org/wallet-use.html' target='_blank'>follow the instructions for adding &quot;gas&quot;</a>.</p>"
+      },
       {
          "category": "wallet",
          "question": "How do I get help with my wallet from a person?",
@@ -551,7 +440,7 @@
          "question": "How do I check the status of my previously purchased Stacks tokens?",
          "answer": "<p>You may check the status of previously purchased Stacks tokens at the <a href='https://explorer.blockstack.org'>Blockstack Explorer</a>. Additional wallet-related information is available <a href='https://docs.blockstack.org/org/wallet-intro.html'>here</a>.</p>"
       },
-     {
+      {
          "category": "tokens",
          "question": "How do I check my STX balance?",
          "answer": "<p>Blockchain transactions take time. Once Stacks are sent to you, you see a PENDING transaction, which means the transaction is still being recorded by the blockchain. Your balance will not change until the transaction is recorded. It may be minutes or hours before the transaction is recorded in the blockchain.</p><p>When the transaction is complete, you can see a receipt for the transaction in your Stacks Wallet. The PENDING marker goes away once the funds are recorded on the blockchain. Then, at this point, the <a href='https://docs.blockstack.org/org/wallet-use.html#view-balance-allocation-or-transaction-history'>balance in your Stacks Wallet software</a> should reflect the completed transaction.</p>"
@@ -566,12 +455,12 @@
          "category": "tokens",
          "question": "When will Stacks tokens be available on an exchange for US residents?",
          "answer": "<p>For US investors, there is currently no authorized exchange or alternative trading system (ATS) for buying and selling Stacks tokens, and we cannot comment on when an exchange or ATS might list Stacks tokens at this time. Please keep an eye out for updates at <a href='http://stackstoken.com/' target='_blank'>stackstoken.com</a>. If you see Stacks listed on an exchange, please let us know at <a href='mailto:legal@blockstack.com'>legal@blockstack.com</a>, as the listing may be illegal or a scam.</p>"
-         },  
-         {
-            "category": "tokens",
-            "question": "If I am already a Stacks token holder, how does the listing on Binance affect me?",
-            "answer": "<p>If I'm already a Stacks token holder, how does the listing on Binance affect me? If you are a non-US resident and your country's laws allow you to legally use Binance's global exchange, you can exchange any of your Stacks tokens that are no longer subject to a time or transfer lock.</p> <p>If you cannot legally access Binance's global exchange (<em>e.g.</em>, if you are a US resident) then this does not affect you.</p>"
-            },    
+      },
+      {
+         "category": "tokens",
+         "question": "If I am already a Stacks token holder, how does the listing on Binance affect me?",
+         "answer": "<p>If I'm already a Stacks token holder, how does the listing on Binance affect me? If you are a non-US resident and your country's laws allow you to legally use Binance's global exchange, you can exchange any of your Stacks tokens that are no longer subject to a time or transfer lock.</p> <p>If you cannot legally access Binance's global exchange (<em>e.g.</em>, if you are a US resident) then this does not affect you.</p>"
+      },
       {
          "category": "tokens",
          "question": "Can I sell or transfer Stacks tokens directly to someone else?",
@@ -586,17 +475,17 @@
          "category": "tokens",
          "question": "What types of transfer or time locks are Stacks tokens subject to?",
          "answer": "<p>Previous and future sales of Stacks tokens are subject to two potential types of locks on use and transfer: a <q>transfer lock</q> and a <q>time lock.</q> Transfer locks are implemented where the tokens sold are considered sales of “restricted securities” under the Securities Act of 1933. Tokens subject to transfer locks are non-transferable on the Blockstack network until a one-year holding period following their sale has lapsed. A token can be burned on the network while subject to a transfer lock (provided it is not subject to a time lock), but otherwise is non-transferable.</p> <p>Separately, tokens on the Blockstack network can be subject to a time lock, a general restriction that prevents a Stacks token from being used for any purpose on the Blockstack network, such that the Stacks token cannot be burned or transferred. Time locks operate such that Stacks tokens unlock in equal increments each time a pre-set number of blocks is processed on the blockchain.</p>"
-          },
-         {
+      },
+      {
          "category": "tokens",
          "question": "What types of transfer or time locks apply to the current and future sales of Stacks tokens?",
          "answer": "<p><u>2019 Regulation A offering</u>: Stacks tokens sold pursuant to our Regulation A offering are subject to an approximately two-year time lock from the date of the hard fork that distributes the tokens. 1/24th of the amount of tokens purchased will be released from this time lock on the date of distribution of the tokens, and an additional 1/24th will be released approximately every month. These tokens will not be subject to a transfer lock.</p> <p><u>2019 Regulation S offering</u>: Stacks tokens sold pursuant to our Regulation S offering to non-US institutional investors are subject to a one-year transfer lock from the date of sale and an approximately two-year time lock that unlocks on an approximately monthly basis from the date of the hard fork that distributes the tokens.</p> <p><u>2017 Accredited Investor Sale</u>: Stacks tokens sold pursuant to our Regulation D offering to accredited investors in 2017 are subject to an approximately two-year time lock that unlocks on an approximately monthly basis from the date of the genesis block, except for 50,000,000 of those tokens, which are subject to an approximately four-year time lock. The tokens were previously subject to a one-year transfer lock, which has expired.</p> <p><u>2017 Founder Sale &amp; Equity Investor Sale</u>: Stacks tokens sold to founders and certain stockholders of Blockstack PBC in 2017 are subject to an approximately three-year time lock that unlocks on an approximately monthly basis from the date of the genesis block.</p>"
-          },
-          {
-            "category": "tokens",
-            "question": "What is the current circulating supply of Stacks?",
-            "answer": "<p>As of June 10, 2019, 866,827,880 tokens of the 1.32B genesis block have been distributed and approximately 229,229,868 of those 866,827,880 distributed tokens have been released from their time locks. The remainder continue to be subject to time locks that release approximately monthly over approximately two, three or four year periods. </p> <p>120,056,154 tokens were sold in the 2019 Reg S and Reg A offerings with an additional 40,000,000 tokens allocated for App Mining. Token distribution will proceed after the October 18, 2019 hard fork according to their corresponding time locks. For more details, please refer to the public filing with the SEC <a href='https://stackstoken.com/circular' target='_blank'>in our offering circular</a> and to <a href='https://blockstack.org/tokenpaper.pdf' target='_blank'>our Stacks Token Whitepaper</a>.</p>"
-         },
+      },
+      {
+         "category": "tokens",
+         "question": "What is the current circulating supply of Stacks?",
+         "answer": "<p>As of June 10, 2019, 866,827,880 tokens of the 1.32B genesis block have been distributed and approximately 229,229,868 of those 866,827,880 distributed tokens have been released from their time locks. The remainder continue to be subject to time locks that release approximately monthly over approximately two, three or four year periods. </p> <p>120,056,154 tokens were sold in the 2019 Reg S and Reg A offerings with an additional 40,000,000 tokens allocated for App Mining. Token distribution will proceed after the October 18, 2019 hard fork according to their corresponding time locks. For more details, please refer to the public filing with the SEC <a href='https://stackstoken.com/circular' target='_blank'>in our offering circular</a> and to <a href='https://blockstack.org/tokenpaper.pdf' target='_blank'>our Stacks Token Whitepaper</a>.</p>"
+      },
       {
          "category": "tokens",
          "question": "How will mining affect the supply of Stacks tokens?",
@@ -612,20 +501,20 @@
          "question": "I have a tax question about my Stacks tokens. Who should I talk to?",
          "answer": "<p>If you have a tax question about your Stacks tokens, we recommend you speak to an accountant or tax lawyer. If you participated in the 2017 token sale through the Blockstack Token Funds, we’ll provide you with the necessary tax reporting forms by the required deadlines, but in general, we cannot give you tax advice.</p>"
       },
-         {
-            "category": "tokens",
-            "question": "How much money has Blockstack raised?",
-           "answer": "<p>Blockstack PBC has raised ~$75m+ from equity investments and token offerings--approximately $23.0M from two token offerings in 2019, $47.5m from a token offering in 2017, and $5.1m in equity investments.</p><p>Traditionally, venture-capital-backed startups target around 12 to 18 months of runway after a new round of financing. As of October 2019, Blockstack PBC has a projected runway until at least the end of 2021 at current burn rates.</p><p>Our audited financials are available <a href='https://stackstoken.com/circular'>in our offering circular</a>.</p>"
-           },
-           {
-            "category": "tokens",
-            "question": "What has been the recent traction on the network?",
-            "answer": "<p>Blockstack PBC moved from the R&amp;D phase to the infrastructure building phase in 2017 (upon closing of the Series A equity investment). Blockstack PBC successfully completed the launch of the Stacks blockchain in Q4 2018, <a href='https://blog.blockstack.org/blockstack-unlocks-25-million-in-funding/' target='_blank'>meeting Milestone 1</a>.</p> <p>Since Q4 2018, we’ve been in the developer traction phase. The number of independent applications built on the network increased from 17 to 46 in Q4 2018, from 46 to 86 in Q1 2019, from 86 to 165 in Q2 2019, to 165 to 265+ apps in Q3 2019. The Blockstack network has 115,780 registered user accounts as of July 2019, and Blockstack PBC has increased focus on user acquisition during the transition from the developer traction phase to user engagement phase.</p>"
-            },
-            {
-            "category": "tokens",
-            "question": "How were tokens distributed to early investors?",
-            "answer": "<p>Accredited Investors and funds in the 2017 Reg D token offering purchased tokens at a $0.12 price. Blockstack PBC raised $47.5M in this offering.</p> <p>Holders of Blockstack’s Series A convertible preferred stock—who had invested a total of $5.1 million as of late 2016 and funded Blockstack’s early growth and development before the decision to create a token, or the drafting or publication of any white papers—were also provided an opportunity to purchase tokens at a nominal price per token before the 2017 Reg D offering. This opportunity to participate at a nominal price was given in return for their early support and in proportion to their equity ownership, and it was based on their reasonable expectation as early investors that they would receive tokens if Blockstack ever decided to create a digital token.</p> <p>These tokens are subject to a three-year time lock, commencing upon the introduction of the genesis block to the Blockstack network in November 2018. The tokens for founders and employees are also subject to a three-year time lock starting November 2018.</p> <p>Further, affiliates of Blockstack PB,C including Union Square Ventures, Muneeb Ali, and Ryan Shea — three of the largest holders of Stacks tokens — have additional restrictions on selling tokens on the open markets.</p>"
-            }
+      {
+         "category": "tokens",
+         "question": "How much money has Blockstack raised?",
+         "answer": "<p>Blockstack PBC has raised ~$75m+ from equity investments and token offerings--approximately $23.0M from two token offerings in 2019, $47.5m from a token offering in 2017, and $5.1m in equity investments.</p><p>Traditionally, venture-capital-backed startups target around 12 to 18 months of runway after a new round of financing. As of October 2019, Blockstack PBC has a projected runway until at least the end of 2021 at current burn rates.</p><p>Our audited financials are available <a href='https://stackstoken.com/circular'>in our offering circular</a>.</p>"
+      },
+      {
+         "category": "tokens",
+         "question": "What has been the recent traction on the network?",
+         "answer": "<p>Blockstack PBC moved from the R&amp;D phase to the infrastructure building phase in 2017 (upon closing of the Series A equity investment). Blockstack PBC successfully completed the launch of the Stacks blockchain in Q4 2018, <a href='https://blog.blockstack.org/blockstack-unlocks-25-million-in-funding/' target='_blank'>meeting Milestone 1</a>.</p> <p>Since Q4 2018, we’ve been in the developer traction phase. The number of independent applications built on the network increased from 17 to 46 in Q4 2018, from 46 to 86 in Q1 2019, from 86 to 165 in Q2 2019, to 165 to 265+ apps in Q3 2019. The Blockstack network has 115,780 registered user accounts as of July 2019, and Blockstack PBC has increased focus on user acquisition during the transition from the developer traction phase to user engagement phase.</p>"
+      },
+      {
+         "category": "tokens",
+         "question": "How were tokens distributed to early investors?",
+         "answer": "<p>Accredited Investors and funds in the 2017 Reg D token offering purchased tokens at a $0.12 price. Blockstack PBC raised $47.5M in this offering.</p> <p>Holders of Blockstack’s Series A convertible preferred stock—who had invested a total of $5.1 million as of late 2016 and funded Blockstack’s early growth and development before the decision to create a token, or the drafting or publication of any white papers—were also provided an opportunity to purchase tokens at a nominal price per token before the 2017 Reg D offering. This opportunity to participate at a nominal price was given in return for their early support and in proportion to their equity ownership, and it was based on their reasonable expectation as early investors that they would receive tokens if Blockstack ever decided to create a digital token.</p> <p>These tokens are subject to a three-year time lock, commencing upon the introduction of the genesis block to the Blockstack network in November 2018. The tokens for founders and employees are also subject to a three-year time lock starting November 2018.</p> <p>Further, affiliates of Blockstack PB,C including Union Square Ventures, Muneeb Ali, and Ryan Shea — three of the largest holders of Stacks tokens — have additional restrictions on selling tokens on the open markets.</p>"
+      }
    ]
 }

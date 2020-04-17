@@ -4,7 +4,7 @@ description: Blockstack Zero-to-DApp tutorial
 permalink: /:collection/:path.html
 image: /assets/img/zero-to-dapp.png
 ---
-# 1 - About DApps and App Mining
+# 1 - About DApps
 {:.no_toc}
 
 **Zero-to-DApp 1 of 4**
@@ -12,8 +12,7 @@ image: /assets/img/zero-to-dapp.png
 Welcome to the Blockstack Zero-to-DApp tutorial. The tutorial uses the
 Blockstack platform to teach you about blockchain technology and the Blockstack
 Ecosystem. The tutorial teaches you what makes a DApp different than a
-traditional application. You'll build and run a DApp. You'll also learn about
-the Application Mining program which awards funds to DApp developer every month.
+traditional application. You'll build and run a DApp.
 
 The tutorial has four parts of which this is first, and it contains the
 following topics:
@@ -107,38 +106,6 @@ applications, and which are not.
 
 If you already have a Blockstack ID, launch the browser and try resetting it. Or
 trying logging on from a device or browser software you haven't used before.
-
-## Seeding DApp market with application mining
-
-Blockchain applications are a new paradigm for both application developers and
-application users. New paradigms in any market, think solar power or electric
-vehicles, need public and private coalitions to grow. The centralized hosting
-and services known as cloud computing were once new paradigms. It was the
-investment of billions in funds and incentives from governments and private
-companies that grew the cloud computing market.  
-
-
-<div class="uk-card uk-card-default uk-card-body">
-<h5>App Mining Eligibility Requirements</h5>
-<p>DApps that are eligible for application mining must:</p>
-
-<ul>
-<li>Implement Blockstack authentication</li>
-<li>Invite registration and use by the general public</li>
-</ul>
-
-<p>Storing data in a Gaia storage hub is optional. Potentially in the future it may be required.</p>
-
-<p>As you work through this Zero-to-DApp tutorial, you’ll build and deploy a sample
-application that meets these requirements. While the application you build won't
-be eligible for application mining, completing the tutorial makes you
-eligible for a free, limited edition t-shirt:</p>
-
-<p><img class="uk-align-center" src="images/tshirt-blank.png" alt=""></p>
-
-<p>You'll learn how to get your t-shirt in part 4 of this tutorial.</p>
-
-</div>
 
 ## Overview of the  DApp you will build
 

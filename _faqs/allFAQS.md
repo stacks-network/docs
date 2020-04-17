@@ -66,17 +66,6 @@ This is a comprehensive list of all the Blockstack FAQs.
   {% endif %}
 {% endfor %}
 
-## Application Miner questions
-
-{% for faq in site.data.theFAQs.faqs %}
-   {% if faq.category == 'appminers' %}
-### {{ faq.question }}
-<div class="faq-answer">
-{{ faq.answer }}
-</div>
-  {% endif %}
-{% endfor %}
-
 ## Core developer questions
 
 {% for faq in site.data.theFAQs.faqs %}

@@ -79,8 +79,6 @@ the picture's bits and bytes are stored in your personal storage. When you log
 into another DApp with your ID, that application can ask for access to your
 storage.
 
-Visit the <a href="https://app.co/" target="_blank">App.co, the Universal DApp Store</a> to find apps you can use with your Blockstack ID.
-
 ## Create an initial Blockstack ID
 
 {% include create_id.md %}

@@ -68,7 +68,7 @@ The Blockstack Browser allows you to use the new internet. Toward this end, the 
 <tbody>  
 <tr>
     <td>Home</td>
-    <td>Takes you to the initial page. This page contains a list of the available applications. You can also find available applications at the <a href="https://app.co/blockstack" target="\_blank">App.co</a> site.</td>
+    <td>Takes you to the initial page. This page contains a list of the available applications.
   </tr>
   <tr>
     <td>IDs</td>
