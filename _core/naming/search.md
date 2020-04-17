@@ -5,7 +5,7 @@ permalink: /:collection/:path.html
 ---
 # How to build a Profile Search Index
 
-The search subsystem for Blockstack Core creates an index for data associated
+The search subsystem for Stacks Blockchain creates an index for data associated
 with registered names in namespaces and makes that data searchable.
 
 The search subsystem is currently meant to index the .id namespace but can
@@ -41,9 +41,9 @@ $ sudo pip install -r api/requirements.txt
 $ sudo mkdir /var/blockstack-search && sudo chown $USER:$USER /var/blockstack-search
 ```
 
-- **Step 2:** Make sure you have Blockstack Core running locally (see [instructions](https://github.com/blockstack/blockstack-core/blob/master/README.md#quick-start)). We highly
+- **Step 2:** Make sure you have Stacks Blockchain running locally (see [instructions](https://github.com/blockstack/blockstack-core/blob/master/README.md#quick-start)). We highly
 recommend using a local node because the search subsystem issues thousands of calls to
-Blockstack Core for re-indexing and remote nodes can slow down performance.
+Stacks Blockchain for re-indexing and remote nodes can slow down performance.
 
 - **Step 3:** Fetch the data for the .id namespace and respective profiles. Note, you may want to redirect stderr to a file, as there is a lot of debug output.
 

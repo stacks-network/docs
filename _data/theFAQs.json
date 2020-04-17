@@ -213,7 +213,7 @@
       {
          "category": "dappdevs",
          "question": "How can I look up names and profiles?",
-         "answer": "<p>You can use <a href='https://blockstack.github.io/blockstack.js/'>blockstack.js</a>, or you can use the <a href='https://core.blockstack.org'>public Blockstack Core endpoint</a>.</p>"
+         "answer": "<p>You can use <a href='https://blockstack.github.io/blockstack.js/'>blockstack.js</a>, or you can use the <a href='https://core.blockstack.org'>public Stacks Blockchain endpoint</a>.</p>"
       },
       {
          "category": "dappdevs",
@@ -238,7 +238,7 @@
       {
          "category": "dappdevs",
          "question": "What programming language can I use to build these apps?",
-         "answer": "<p>To make apps that run in the web browser using Blockstack, you can use JavaScript and any of the same web frameworks or libraries you use today such as React, AngularJs, Vue.js or jQuery. Blockstack Core is implemented in Python (the next major release will be in Rust), but you can use any language you like for native apps as long as it can consume a JSON REST API.</p>"
+         "answer": "<p>To make apps that run in the web browser using Blockstack, you can use JavaScript and any of the same web frameworks or libraries you use today such as React, AngularJs, Vue.js or jQuery. Stacks Blockchain is implemented in Python (the next major release will be in Rust), but you can use any language you like for native apps as long as it can consume a JSON REST API.</p>"
       },
       {
          "category": "dappdevs",
@@ -252,13 +252,13 @@
       },
       {
          "category": "coredevs",
-         "question": "What is Blockstack Core?",
-         "answer": "<p>Blockstack Core is the reference implementation of the Blockstack protocol described in our white paper. Today, it consists of these components:</p> <ul><li>Blockstack Core: A Python backend service which reads transactions from the Stacks blockchain. This blockchain enables the Stacks Token (STX) and Blockstack Naming service.</li> <li>Atlas: A peer network for communicating data about the Blockstack Naming System (BNS).</li> <li>Blockstack API: A service for indexing the data stored by Blockstack Core and making it available in a performant way.</li> </ul><p>The next version of the Stacks Blockchain is under active development in the Rust programming language and employs our Tunable Proof-of-Work consensus algorithm and a unique scaling solution that enable individual apps to create their own app chains. </p>"
+         "question": "What is Stacks Blockchain?",
+         "answer": "<p>Stacks Blockchain is the reference implementation of the Blockstack protocol described in our white paper. Today, it consists of these components:</p> <ul><li>Stacks Blockchain: A Python backend service which reads transactions from the Stacks blockchain. This blockchain enables the Stacks Token (STX) and Blockstack Naming service.</li> <li>Atlas: A peer network for communicating data about the Blockstack Naming System (BNS).</li> <li>Blockstack API: A service for indexing the data stored by Stacks Blockchain and making it available in a performant way.</li> </ul><p>The next version of the Stacks Blockchain is under active development in the Rust programming language and employs our Tunable Proof-of-Work consensus algorithm and a unique scaling solution that enable individual apps to create their own app chains. </p>"
       },
       {
          "category": "coredevs",
-         "question": "How will the next version of  Blockstack Core change?",
-         "answer": "<p>The next version of Blockstack core will incorporate smart contacts and do away with the virtual chain. This next version is expected toward the end of the year and will contain these components:</p> <ul> <li><strong><em>Leader election and Tunable Proof-of-Work implementation</em></strong>: This component governs how clients select the longest chain and which miners receive transaction fees for broadcasting transactions.</li> <li><strong><em>Peering network</em></strong>: This component distributes blocks and microblocks among peer nodes participating in the Stacks blockchain.</li> <li><strong><em>Smart contracting VM</em></strong>: This component is responsible for executing and validating transactions in the Stacks blockchain, including smart contract publishing and execution.</li> <li><strong><em>Blockstack API</em></strong>: This API indexes the data stored by Blockstack Core, exposing a JSON REST API for querying information about Stacks ownership, the Blockstack Naming System, and other data stored in smart contracts.</li> </ul>"
+         "question": "How will the next version of  Stacks Blockchain change?",
+         "answer": "<p>The next version of Stacks Blockchain will incorporate smart contacts and do away with the virtual chain. This next version is expected toward the end of the year and will contain these components:</p> <ul> <li><strong><em>Leader election and Tunable Proof-of-Work implementation</em></strong>: This component governs how clients select the longest chain and which miners receive transaction fees for broadcasting transactions.</li> <li><strong><em>Peering network</em></strong>: This component distributes blocks and microblocks among peer nodes participating in the Stacks blockchain.</li> <li><strong><em>Smart contracting VM</em></strong>: This component is responsible for executing and validating transactions in the Stacks blockchain, including smart contract publishing and execution.</li> <li><strong><em>Blockstack API</em></strong>: This API indexes the data stored by Stacks Blockchain, exposing a JSON REST API for querying information about Stacks ownership, the Blockstack Naming System, and other data stored in smart contracts.</li> </ul>"
       },
       {
          "category": "coredevs",
@@ -273,7 +273,7 @@
       {
          "category": "coredevs",
          "question": "Can anyone register names on Blockstack?",
-         "answer": "<p>Anyone can register a name or identity on Blockstack — you just need to use a Blockstack client to submit a registration request to a Blockstack core node. All of that software is Open-Source and can be run without any centralized parties.</p>"
+         "answer": "<p>Anyone can register a name or identity on Blockstack — you just need to use a Blockstack client to submit a registration request to a Stacks Blockchain node. All of that software is Open-Source and can be run without any centralized parties.</p>"
       },
       {
          "category": "coredevs",
@@ -323,7 +323,7 @@
       {
          "category": "coredevs",
          "question": "Do I need to run a full Blockstack node to use Blockstack?",
-         "answer": "<p>No. We maintain a fleet of Blockstack Core nodes that your Blockstack applications can connect to by default.</p>"
+         "answer": "<p>No. We maintain a fleet of Stacks Blockchain nodes that your Blockstack applications can connect to by default.</p>"
       },
       {
          "category": "coredevs",

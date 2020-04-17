@@ -280,6 +280,6 @@ saveTasks(tasks) {
 
 You now have everything you need to construct complex applications complete with authentication and storage on the Decentralized Internet. Why not try coding [a sample application that accesses multiple profiles](blockstack_storage.html).
 
-If you would like to explore the Blockstack APIs, you can visit the [Blockstack Core API](https://core.blockstack.org/) documentation or the [Blockstack JS API](https://blockstack.github.io/blockstack.js).
+If you would like to explore the Blockstack APIs, you can visit the [Stacks Blockchain API](https://core.blockstack.org/) documentation or the [Blockstack JS API](https://blockstack.github.io/blockstack.js).
 
 Go forth and build!

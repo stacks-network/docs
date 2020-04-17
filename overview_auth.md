@@ -50,7 +50,7 @@ This app private key is also deterministic, meaning that for a given Blockstack 
 * is used in the end-to-end encryption of files stored for the app on the user's Gaia hub
 * serves as a cryptographic secret that apps can use to perform other cryptographic functions
 
-A Blockstack Core node also generates a public key token which is sent to the
+A Stacks Blockchain node also generates a public key token which is sent to the
 browser as an `authRequest` from the browser to the core node. The signed
 authentication request is sent to Blockstack through a JSON Web Token (JWT).
 Blocktack passes the token in via a URL query string in the `authRequest`

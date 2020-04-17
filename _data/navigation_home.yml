@@ -10,7 +10,7 @@
   icon: file-edit
   doc: core/smart/overview
 
-- title: Work with Blockstack Core
+- title: Work with Stacks Blockchain
   desc: Learn how to work with nodes, namespaces, zone files, and other advanced topics.
   icon: cog
   doc: core/naming/introduction

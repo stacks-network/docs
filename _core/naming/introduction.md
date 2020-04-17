@@ -12,7 +12,7 @@ section introduces you to BNS and explains the following concepts:
 * TOC
 {:toc}
 
-The ([Blockstack Core](https://github.com/blockstack/blockstack-core))
+The ([Stacks Blockchain](https://github.com/blockstack/blockstack-core))
 repository is the reference implementation of the Blockstack Naming Service.
 
 

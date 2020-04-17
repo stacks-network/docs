@@ -29,7 +29,7 @@ Blockstack is a ecosystem build around a platform. There are several types of us
   </tr>
   <tr>
     <th>Core service programmers</th>
-    <td>These are users that provide Blockstack CORE servers or who write Clarity contracts. These are also users who build wallets or explorers into the Blockstack platform.</td>
+    <td>These are users that run Stacks Blockchain node or who write Clarity contracts. These are also users who build wallets or explorers into the Blockorm.</td>
   </tr>
 </table>
 
@@ -260,13 +260,13 @@ As of 8/12/19 Clarity is in the [develop](https://github.com/blockstack/blocksta
 
 You can view [the source code](https://github.com/blockstack/blockstack-core/blob/develop/src/clarity.rs).
 
-1. Pull the Blockstack core clarity-developer-preview image from Docker Hub.
+1. Pull the Stacks Blockchain clarity-developer-preview image from Docker Hub.
 
    ```bash
     $ docker pull blockstack/blockstack-core:clarity-developer-preview
    ```
 
-2. Start the Blockstack Core test environment with a Bash shell.
+2. Start the Stacks Blockchain test environment with a Bash shell.
 
     ```bash
     $ docker run -it -v $HOME/blockstack-dev-data:/data/ blockstack/blockstack-core:clarity-developer-preview bash

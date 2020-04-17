@@ -6,7 +6,7 @@ include mixins.jade
 html
     head
         meta(charset="utf-8")
-        title= 'Blockstack Core'
+        title= 'Stacks Blockchain'
         link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
         style!= self.css
     body.preload
@@ -21,7 +21,7 @@ html
                     .middle
                         header
                             h1#top!= 'Getting Started'
-                        p!= 'Welcome to this deployment of Blockstack Core v{{server_info.server_version}}. You can read the documentation and make RESTful calls to this node.'
+                        p!= 'Welcome to this deployment of Stacks Blockchain v{{server_info.server_version}}. You can read the documentation and make RESTful calls to this node.'
                         p
                             table
                                 tr
@@ -34,7 +34,7 @@ html
                                 tr
                                   td!= 'Last block processed'
                                   td!= '{{server_info.last_block_processed}}'
-                        p!= 'Blockstack Core is open-source software released under a GPLv3 license. The code for this API is <a href="https://github.com/blockstack/blockstack-core/tree/master/api">available on Github</a> and you can deploy your own nodes by following <a href="https://github.com/blockstack/blockstack-core/tree/master/api">these instructions</a>.'
+                        p!= 'Stacks Blockchain is open-source software released under a GPLv3 license. The code for this API is <a href="https://github.com/blockstack/blockstack-core/tree/master/api">available on Github</a> and you can deploy your own nodes by following <a href="https://github.com/blockstack/blockstack-core/tree/master/api">these instructions</a>.'
                     block content
                         +ContentTriple(true)
 

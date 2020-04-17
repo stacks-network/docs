@@ -11,7 +11,7 @@ permalink: /:collection/:path.html
 Step-by-step instructions for deploying a Blockstack API node on Debian or
 Ubuntu are below.
 
-- **Step 1:** Make sure you have Blockstack Core running locally (see [instructions](https://github.com/blockstack/blockstack-core/blob/master/README.md#quick-start)).
+- **Step 1:** Make sure you have Stacks Blockchain running locally (see [instructions](https://github.com/blockstack/blockstack-core/blob/master/README.md#quick-start)).
 
 - **Step 2:** Make sure you have [virtualenv installed](http://docs.python-guide.org/en/latest/dev/virtualenvs/).
 Then, setup the API:
