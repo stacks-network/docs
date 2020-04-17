@@ -13,6 +13,7 @@ Clarity is a smart contracting language for use with the Stacks 2.0 blockchain. 
 
 ## Smart contracts
 
+Smart contracts are programs that run on a blockchain. In Blockstack, the main use-case for smart contracts is to manage _global shared state_ for an app. This is data that is collectively owned and curated by all of an app's users. For example, the list of all subreddits is global shared state in Reddit. As another example, the catalog of movies is global shared state in YouTube. Every user can see and use this data when the use the app, and every user can propose changes to this data, but the data itself belongs to everyone.
 
 Smart contracts encode and enforce the rules for curating this data, and are often used to ensure that users can exchange valuable data in an automated and secure way. For example, a smart contract could allow anyone to add a new movie to a movie catalog, but require that someone first pay for a decryption key before anyone can view it. To do this, the smart contract could be written such that the movie creator had to publicly disclose the decryption key in order to receive payment. Such a system would allow movie creators to make money by adding movies to the movie catalog that people want to watch.
 
