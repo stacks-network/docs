@@ -1,9 +1,9 @@
 ---
 layout: smart
-description: "Blockstack smart contracting language"
+description: "Clarity CLI: Reference"
 permalink: /:collection/:path.html
 ---
-# clarity-cli VM command line
+# Clarity CLI
 {:.no_toc}
 
 You use the `clarity-cli` command to work with smart contracts within the Blockstack virtual environment. This command has the following subcommands:

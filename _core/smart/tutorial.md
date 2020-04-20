@@ -1,6 +1,6 @@
 ---
 layout: smart
-description: "Blockstack Clarity: Hello World Tutorial"
+description: "Clarity: Hello World Tutorial"
 permalink: /:collection/:path.html
 ---
 # Hello World

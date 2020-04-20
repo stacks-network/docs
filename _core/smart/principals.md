@@ -1,6 +1,6 @@
 ---
 layout: smart
-description: "Blockstack smart contracting language"
+description: "Clarity: Understanding Principals"
 permalink: /:collection/:path.html
 ---
 # Understanding Principals

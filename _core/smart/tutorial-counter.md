@@ -1,6 +1,6 @@
 ---
 layout: smart
-description: "Blockstack Clarity: Counter Tutorial"
+description: "Clarity: Counter Tutorial"
 permalink: /:collection/:path.html
 ---
 # Counter
