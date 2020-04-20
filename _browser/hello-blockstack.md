@@ -3,7 +3,7 @@ layout: learn
 description: Simple Blockstack web App
 permalink: /:collection/:path.html
 ---
-# Hello, Blockstack Tutorial
+# Hello, Blockstack
 
 In this tutorial, you generate a simple application on Blockstack. The application
 is a single-page application (SPA) that runs completely client-side. The
@@ -99,24 +99,24 @@ The initial application you create is a generic Javascript application you run
 with a local express node. Before you continue, take a moment to examine the
 scaffolding of this generic application structure. In the `/` (root) of the generated sample you have the following files:
 
-| File/folder            | Description                       |
-|------------------|-----------------------------------|
-| `.gitignore`       | Git configuration file.           |
-| `package.json`     | Specifies required packages.       |
-| `cors`             | Configuration for cross-domain origin support.|
-| `node_modules`     | Package files installed by `npm`.|
-| `src`              | Application source code.|
-| `public`           | Starter web app code.|
+| File/folder    | Description                                    |
+| -------------- | ---------------------------------------------- |
+| `.gitignore`   | Git configuration file.                        |
+| `package.json` | Specifies required packages.                   |
+| `cors`         | Configuration for cross-domain origin support. |
+| `node_modules` | Package files installed by `npm`.              |
+| `src`          | Application source code.                       |
+| `public`       | Starter web app code.                          |
 
 
 In the `public` folder you find these files:
 
-| File             | Description                       |
-|------------------|-----------------------------------|
-| `favicon.ico`      | Web app site icon.                |
-| `index.html`       | Single page.                      |
-| `manifest.json`    | Tells the browser about the application and how it should behave.|
-| `white-logo.svg`       | Configures crawling and indexing. |
+| File             | Description                                                       |
+| ---------------- | ----------------------------------------------------------------- |
+| `favicon.ico`    | Web app site icon.                                                |
+| `index.html`     | Single page.                                                      |
+| `manifest.json`  | Tells the browser about the application and how it should behave. |
+| `white-logo.svg` | Configures crawling and indexing.                                 |
 
 
 ## Start the server and view the application
@@ -132,8 +132,6 @@ and open your browser 'http://localhost:5000'.  From the root of your new applic
 
     The first time you run it, your system may prompt you to accept incoming connections.
 
-    ![Network Connection](images/network-connections.gif)
-
 2. Choose **Allow**.
 
    The system opens your browser to `http://127.0.0.1:3000`.
@@ -142,15 +140,15 @@ and open your browser 'http://localhost:5000'.  From the root of your new applic
 
    ![](images/initial-app.png)
 
-4. Choose **Sign In with Blockstack**.
+3. Choose **Sign In with Blockstack**.
 
     The application detects whether the user has the Blockstack client edition installed or
     not. This is done automatically by the Blockstack API, more about this later.
     What the browser displays depends on the users' current state.
 
-    | Using web app    | Has client edition installed      |
-    |------------------|-----------------------------------|
-    | ![](images/login-choice.png) | ![](images/login.gif) |
+    | Using web app                | Has client edition installed |
+    | ---------------------------- | ---------------------------- |
+    | ![](images/login-choice.png) | ![](images/login.gif)        |
 
     If the user logged into the Blockstack Browser but not reset it, the user can
     simply use the exiting identity.
@@ -160,7 +158,7 @@ and open your browser 'http://localhost:5000'.  From the root of your new applic
    If the user chooses **Deny**, the Blockstack Browser displays its
    **Home** page but the user is not logged into the sample application.
 
-5. Leave your new application running and move onto the next section.
+4. Leave your new application running and move onto the next section.
 
 ## Understand the generated application code
 

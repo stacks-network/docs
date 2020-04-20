@@ -37,10 +37,6 @@ Using Blockstack’s technology developers can start building immediately on the
 blockchain with the knowledge you have today. You won’t need to spend time or
 effort developing expertise in specialized languages or technologies.
 
-### Blockstack Signature Fund
-
-{% include signature_fund.md %}
-
 ### Blockstack Token LLC
 
 Through the 2017 Blockstack token offering, Blockstack Token LLC created the
@@ -58,13 +54,13 @@ process.  This consensus algorithm is planned to be introduced in additional
 hard forks in 2019.
 
 Addtionally, a future Stacks blockchain will support truly decentralized mobile
-applications by removing the need to trust a remote Blockstack Core node.
+applications by removing the need to trust a remote Stacks Node.
 Instead, it will be possible for light clients to calculate the economic weight
 of different Stacks blockchain forks, and identify the fork with the most
 economic activity. Today, light clients  rely on other trusted sources for fork
 selection and cannot make that decision independently. For mobile apps this
 enables functionality like looking up names without having to rely on a remote
-Blockstack Core node.
+Stacks Node.
 
 Finally, Blockstack currently supports relatively simple smart contracts that
 are used to register digital assets on the network. The Stacks blockchain v2

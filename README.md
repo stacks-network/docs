@@ -20,16 +20,16 @@ Blockstack is a ecosystem build around a platform. There are several types of us
     <td>Users who make use of applications built on the Blockstack platform. These users have a Blockstack identity and typically use the Blockstack Browser at some point.</td>
   </tr>
   <tr>
-    <th>Dapp developers or DApp miners</th>
-    <td>Users who develop applications on the Blockstack platform. These users may be application miners but are not always. Special content exists for developers that are also miners.</td>
+    <th>Dapp developers</th>
+    <td>Users who develop applications on the Blockstack platform.</td>
   </tr>
   <tr>
     <th>Hub Providers</th>
-    <td>Users who sell or maintain a Gai services are hub providers.  They may also be application miners but need not be. These users may be more devops user types as opposed to developers.</td>
+    <td>Users who sell or maintain a Gai services are hub providers.  These users may be more devops user types as opposed to developers.</td>
   </tr>
   <tr>
     <th>Core service programmers</th>
-    <td>These are users that provide Blockstack CORE servers or who write Clarity contracts. These are also users who build wallets or explorers into the Blockstack platform.</td>
+    <td>These are users that run Stacks node or who write Clarity contracts. These are also users who build wallets or explorers into the Blockstack platform.</td>
   </tr>
 </table>
 
@@ -77,7 +77,7 @@ Directories that contain information used to build content.
   </tr>
   <tr>
     <td>_develop</td>
-    <td>Information for application miners covers using the Javascript library, our mobile SDKs, and the concepts hat support them. Navigation controlled by <a href="https://github.com/blockstack/docs.blockstack/blob/master/_data/navigation_learn.yml">developer menu</a> </td>
+    <td>Information for application developers covers using the Javascript library, our mobile SDKs, and the concepts hat support them. Navigation controlled by <a href="https://github.com/blockstack/docs.blockstack/blob/master/_data/navigation_learn.yml">developer menu</a> </td>
     <td>This information was never associated with a single repo. Much of it does rely heavily on <a href="https://github.com/blockstack/blockstack.js">https://github.com/blockstack/blockstack.js</a>.</td>
   </tr>
     <tr>
@@ -260,13 +260,13 @@ As of 8/12/19 Clarity is in the [develop](https://github.com/blockstack/blocksta
 
 You can view [the source code](https://github.com/blockstack/blockstack-core/blob/develop/src/clarity.rs).
 
-1. Pull the Blockstack core clarity-developer-preview image from Docker Hub.
+1. Pull the Stacks Node clarity-developer-preview image from Docker Hub.
 
    ```bash
     $ docker pull blockstack/blockstack-core:clarity-developer-preview
    ```
 
-2. Start the Blockstack Core test environment with a Bash shell.
+2. Start the Stacks Node test environment with a Bash shell.
 
     ```bash
     $ docker run -it -v $HOME/blockstack-dev-data:/data/ blockstack/blockstack-core:clarity-developer-preview bash
@@ -295,12 +295,11 @@ You can view [the source code](https://github.com/blockstack/blockstack-core/blo
 
 ## Understand how the shared FAQs work
 
-The FAQ system servers single-sourced content that support the FAQs that appear in blockstack.org, app.co, and stacks.com site. We have FAQs that fall into these categories:
+The FAQ system servers single-sourced content that support the FAQs that appear in blockstack.org, and stackstoken.com site. We have FAQs that fall into these categories:
 
 * general 
 * appusers
 * dappdevs
-* appminers
 * coredevs
 * opensource
 * miscquest
@@ -331,12 +330,7 @@ FAQs are usually written internally by a team that are unfamiliar with markdown 
   <tr>
     <td>_faqs/allfaqs.json</td>
     <td>Liquid to generate JSON from theFAQS.json</td>
-    <td>Serves up the FAQs that are consumed by the blockstack.org and stacks.com sites.</td>
-  </tr>
-  <tr>
-    <td>_develop/faq-data.json</td>
-    <td>Liquid to generate JSON from appFAQ.json.</td>
-    <td>Serves up the FAQs that are consumed by the app.co site. <br><br>NOTE: App.co was never changed to pull from the same file as blockstack.org. </td>
+    <td>Serves up the FAQs that are consumed by the blockstack.org and stackstoken.com sites.</td>
   </tr>
   <tr>
     <td>_faqs/allFAQs.md</td>
@@ -347,16 +341,6 @@ FAQs are usually written internally by a team that are unfamiliar with markdown 
     <td>_data/theFAQs.json</td>
     <td>JSON for the FAQS.</td>
     <td>Source file for all the FAQs.</td>
-  </tr>
-  <tr>
-    <td>_data/appFAQ.json</td>
-    <td>JSON for the app mining FAQs.</td>
-    <td>Source file for the application mining FAQs.</td>
-  </tr>
-  <tr>
-    <td>_develop/appMiningFAQ.md</td>
-    <td>Liquid to extract the app mining FAQs from the allFAQs.json file.</td>
-    <td>Display just the app mining FAQs in the docs.</td>
   </tr>
 </table>
 
