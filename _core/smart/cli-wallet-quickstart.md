@@ -69,9 +69,9 @@ In order to send tokens, we will need 5 parameters.
 
 **Recipient Address** - The Stacks address of the recipient
 
-**Amount** - The number of Stacks to send denoted in microstacks (1 STX = 1000000 mSTX)
+**Amount** - The number of Stacks to send denoted in microstacks (1 STX = 1000000 microstacks)
 
-**Fee Rate** - The transaction fee you are willing to pay send this transaction. Denoted in microstacks per byte. For Testnet use, you can simply set a fee rate of 1.
+**Fee Rate** - The transaction fee rate for this transaction. You can safely set a fee rate of 1 for Testnet.
 
 **Nonce** - The nonce is a number that needs to be incremented monotonically for each transaction from the account. This ensures transactions are not duplicated.
 
