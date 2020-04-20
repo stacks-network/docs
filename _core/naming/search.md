@@ -41,9 +41,9 @@ $ sudo pip install -r api/requirements.txt
 $ sudo mkdir /var/blockstack-search && sudo chown $USER:$USER /var/blockstack-search
 ```
 
-- **Step 2:** Make sure you have Stacks Blockchain running locally (see [instructions](https://github.com/blockstack/blockstack-core/blob/master/README.md#quick-start)). We highly
+- **Step 2:** Make sure you have a Stacks Node running locally (see [instructions](https://github.com/blockstack/blockstack-core/blob/master/README.md#quick-start)). We highly
 recommend using a local node because the search subsystem issues thousands of calls to
-Stacks Blockchain for re-indexing and remote nodes can slow down performance.
+a Stacks Node for re-indexing and remote nodes can slow down performance.
 
 - **Step 3:** Fetch the data for the .id namespace and respective profiles. Note, you may want to redirect stderr to a file, as there is a lot of debug output.
 

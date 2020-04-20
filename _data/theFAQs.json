@@ -238,7 +238,7 @@
       {
          "category": "dappdevs",
          "question": "What programming language can I use to build these apps?",
-         "answer": "<p>To make apps that run in the web browser using Blockstack, you can use JavaScript and any of the same web frameworks or libraries you use today such as React, AngularJs, Vue.js or jQuery. Stacks Blockchain is implemented in Python (the next major release will be in Rust), but you can use any language you like for native apps as long as it can consume a JSON REST API.</p>"
+         "answer": "<p>To make apps that run in the web browser using Blockstack, you can use JavaScript and any of the same web frameworks or libraries you use today such as React, AngularJs, Vue.js or jQuery. Stacks Node is implemented in Python (the next major release will be in Rust), but you can use any language you like for native apps as long as it can consume a JSON REST API.</p>"
       },
       {
          "category": "dappdevs",
@@ -253,7 +253,7 @@
       {
          "category": "coredevs",
          "question": "What is Stacks Blockchain?",
-         "answer": "<p>Stacks Blockchain is the reference implementation of the Blockstack protocol described in our white paper. Today, it consists of these components:</p> <ul><li>Stacks Blockchain: A Python backend service which reads transactions from the Stacks blockchain. This blockchain enables the Stacks Token (STX) and Blockstack Naming service.</li> <li>Atlas: A peer network for communicating data about the Blockstack Naming System (BNS).</li> <li>Blockstack API: A service for indexing the data stored by Stacks Blockchain and making it available in a performant way.</li> </ul><p>The next version of the Stacks Blockchain is under active development in the Rust programming language and employs our Tunable Proof-of-Work consensus algorithm and a unique scaling solution that enable individual apps to create their own app chains. </p>"
+         "answer": "<p>Stacks Blockchain is the reference implementation of the Blockstack protocol described in our white paper. Today, it consists of these components:</p> <ul><li>Stacks Node: A Python backend service which reads transactions from the Stacks blockchain. This blockchain enables the Stacks Token (STX) and Blockstack Naming service.</li> <li>Atlas: A peer network for communicating data about the Blockstack Naming System (BNS).</li> <li>Blockstack API: A service for indexing the data stored by Stacks Blockchain and making it available in a performant way.</li> </ul><p>The next version of the Stacks Blockchain is under active development in the Rust programming language and employs our Tunable Proof-of-Work consensus algorithm and a unique scaling solution that enable individual apps to create their own app chains. </p>"
       },
       {
          "category": "coredevs",
@@ -273,7 +273,7 @@
       {
          "category": "coredevs",
          "question": "Can anyone register names on Blockstack?",
-         "answer": "<p>Anyone can register a name or identity on Blockstack — you just need to use a Blockstack client to submit a registration request to a Stacks Blockchain node. All of that software is Open-Source and can be run without any centralized parties.</p>"
+         "answer": "<p>Anyone can register a name or identity on Blockstack — you just need to use a Blockstack client to submit a registration request to a Stacks Node. All of that software is Open-Source and can be run without any centralized parties.</p>"
       },
       {
          "category": "coredevs",
@@ -323,7 +323,7 @@
       {
          "category": "coredevs",
          "question": "Do I need to run a full Blockstack node to use Blockstack?",
-         "answer": "<p>No. We maintain a fleet of Stacks Blockchain nodes that your Blockstack applications can connect to by default.</p>"
+         "answer": "<p>No. We maintain a fleet of Stacks Nodes that your Blockstack applications can connect to by default.</p>"
       },
       {
          "category": "coredevs",

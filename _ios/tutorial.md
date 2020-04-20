@@ -3,7 +3,7 @@ layout: learn
 description: How to use Blockstack on iOS Mobile
 permalink: /:collection/:path.html
 ---
-# iOS DApps (Pre-release)
+# iOS DApps
 {:.no_toc}
 
 This tutorial teaches you how to create a decentralized application using

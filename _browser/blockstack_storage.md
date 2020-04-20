@@ -623,7 +623,7 @@ process URL paths that contain the `.` (dot) character for example,
     }
     ```
 
-     **NOTE**: For `https` deployments, the default Stacks Blockchain API endpoint for name
+     **NOTE**: For `https` deployments, the default Stacks Node API endpoint for name
      lookups should be changed to point to a core API served over `https`.
      Otherwise, name lookups fail due to browsers blocking mixed content.
      Refer to the [Blockstack.js

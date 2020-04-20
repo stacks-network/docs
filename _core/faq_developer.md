@@ -8,7 +8,7 @@ permalink: /:collection/:path.html
 
 This document lists frequently-asked questions developers about Blockstack application development. If you are new to Blockstack, you should read the [general questions]({{site.baseurl}}/faqs/allFAQs.html) first.
 
-For more technical FAQs about Stacks Blockchain nodes, the Stacks blockchain, and other architectural elements, see the [entire set of technical FAQs]({{site.baseurl}}/core/faq_technical.html).
+For more technical FAQs about Stacks nodes, the Stacks blockchain, and other architectural elements, see the [entire set of technical FAQs]({{site.baseurl}}/core/faq_technical.html).
 
 If you have a technical question that gets frequently asked on the
 [forum](https://forum.blockstack.org) or [Slack](https://blockstack.slack.com),

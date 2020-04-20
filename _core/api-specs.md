@@ -1,6 +1,6 @@
 # Group Core Node Administration
 
-Stacks Blockchain's API module provides a set of API calls for interacting with
+Stacks Node API module provides a set of API calls for interacting with
 the node's configuration.  Most configuration state is in the [Blockstack
 Browser](https://github.com/blockstack/blockstack-browser).  Client-side state
 is managed by [blockstack.js](https://github.com/blockstack/blockstack.js).

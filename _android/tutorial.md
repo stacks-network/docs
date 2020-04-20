@@ -3,7 +3,7 @@ layout: learn
 description: Learn about the Android SDK
 permalink: /:collection/:path.html
 ---
-# Android DApps (Pre-release)
+# Android DApps
 {:.no_toc}
 
 This tutorial is written for readers who are new to either or both Blockstack
@@ -701,9 +701,6 @@ Now that you have created your initial project and verified it running in an emu
 
 ## Where to go next
 
-Congratulations, you've completed your Android app using the new, pre-release
-Blockstack Android SDK. Thank you for trying this pre-release. Please let us
-know about your experience by tweeting to
-[@blockstack](https://twitter.com/blockstack).
+Congratulations, you've completed your Android app using the Blockstack Android SDK.
 
 Learn more about Blockstack by [trying another tutorial](https://blockstack.org/tutorials).

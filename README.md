@@ -29,7 +29,7 @@ Blockstack is a ecosystem build around a platform. There are several types of us
   </tr>
   <tr>
     <th>Core service programmers</th>
-    <td>These are users that run Stacks Blockchain node or who write Clarity contracts. These are also users who build wallets or explorers into the Blockorm.</td>
+    <td>These are users that run Stacks node or who write Clarity contracts. These are also users who build wallets or explorers into the Blockstack platform.</td>
   </tr>
 </table>
 
@@ -260,13 +260,13 @@ As of 8/12/19 Clarity is in the [develop](https://github.com/blockstack/blocksta
 
 You can view [the source code](https://github.com/blockstack/blockstack-core/blob/develop/src/clarity.rs).
 
-1. Pull the Stacks Blockchain clarity-developer-preview image from Docker Hub.
+1. Pull the Stacks Node clarity-developer-preview image from Docker Hub.
 
    ```bash
     $ docker pull blockstack/blockstack-core:clarity-developer-preview
    ```
 
-2. Start the Stacks Blockchain test environment with a Bash shell.
+2. Start the Stacks Node test environment with a Bash shell.
 
     ```bash
     $ docker run -it -v $HOME/blockstack-dev-data:/data/ blockstack/blockstack-core:clarity-developer-preview bash
@@ -295,7 +295,7 @@ You can view [the source code](https://github.com/blockstack/blockstack-core/blo
 
 ## Understand how the shared FAQs work
 
-The FAQ system servers single-sourced content that support the FAQs that appear in blockstack.org, and stacks.com site. We have FAQs that fall into these categories:
+The FAQ system servers single-sourced content that support the FAQs that appear in blockstack.org, and stackstoken.com site. We have FAQs that fall into these categories:
 
 * general 
 * appusers
@@ -330,7 +330,7 @@ FAQs are usually written internally by a team that are unfamiliar with markdown 
   <tr>
     <td>_faqs/allfaqs.json</td>
     <td>Liquid to generate JSON from theFAQS.json</td>
-    <td>Serves up the FAQs that are consumed by the blockstack.org and stacks.com sites.</td>
+    <td>Serves up the FAQs that are consumed by the blockstack.org and stackstoken.com sites.</td>
   </tr>
   <tr>
     <td>_faqs/allFAQs.md</td>

@@ -326,7 +326,7 @@ Thus to generate this TXT record for their DID, the user would do the following:
 4. Sign the resulting string with the DID's current private key.
 5. Generate and append the `sig=${base64_signature}` field to the TXT record.
 
-Sample code to generate these TXT records can be found in the [Stacks Blockchain
+Sample code to generate these TXT records can be found in the [Stacks Node
 reference implementation](https://github.com/blockstack/blockstack-core), under
 the `blockstack.lib.subdomains` package.  For example, the Python 2 program here
 generates such a TXT record:

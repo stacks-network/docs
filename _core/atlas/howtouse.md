@@ -24,7 +24,7 @@ to zone files and zone file hashes.  This is intentional.
 The [public BNS API endpoint](https://core.blockstack.org) does not support
 resolving Atlas chunks that do not encode Gaia routing information or subdomain
 information.  To directly interact with Atlas, developers will need to install
-[Stacks Blockchain](https://github.com/blockstack/blockstack-core) and use its
+[Stacks Node](https://github.com/blockstack/blockstack-core) and use its
 Python client libraries for these examples.
 
 ## Looking up Chunks
