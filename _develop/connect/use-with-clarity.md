@@ -7,6 +7,21 @@ permalink: /:collection/:path.html
 
 With Connect, you can interact with the Stacks 2.0 blockchain. You can allow your users to send transactions and interact with smart contracts.
 
+<div class="uk-card uk-card-default uk-card-body">
+<h5 class="uk-card-title">Transaction signing is still in progress</h5>
+<p>
+  The Stacks 2.0 blockchain is still in testnet, and our web app integration is also still in beta. In order to use transaction signing in your application, you need to use the configuration `authOrigin` with `@blockstack/connect`.
+</p>
+<pre>
+  <code>
+    const options = {
+      // your other options
+      authOrigin: 'https://deploy-preview-301--stacks-authenticator.netlify.app'
+    };
+  </code>
+</pre>
+</div>
+
 * TOC
 {:toc}
 
