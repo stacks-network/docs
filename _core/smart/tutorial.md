@@ -1,9 +1,9 @@
 ---
-layout: core
+layout: smart
 description: "Blockstack Clarity: Hello World Tutorial"
 permalink: /:collection/:path.html
 ---
-# Tutorial: Hello World
+# Hello World
 
 | Experience | | **Beginner**  |
 | Duration | | **15 minutes** |
@@ -196,7 +196,14 @@ As you see, smart contract calls are realized through query definitions. The `cr
 
 Now, review the last test `should echo number` on your own and try to understand how arguments are passed to the `echo-number` smart contract.
 
-With that, you have completed the first Clarity tutorial! Congratulations!
+With that, you have completed the first Clarity tutorial! In just a few minutes you ...
+
+* Created a working Clarity starter project
+* Understood basic Clarity language design principles
+* Understood how to interact with smart contracts
+* Understood how to test smart contracts
+
+Congratulations!
 
 ## Where to go next
 

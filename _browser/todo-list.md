@@ -3,7 +3,7 @@ layout: learn
 description: Single-page application with Blockstack
 permalink: /:collection/:path.html
 ---
-# Todo List Application Tutorial
+# Todo List
 {:.no_toc}
 
 In this tutorial, you build the code for and run a single-page application (SPA)
@@ -81,12 +81,12 @@ You can clone the source code with  `git` or [download and unzip the code from t
 
 The Todo application has a basic React structure. There are several configuration files but the central programming files are in the `src/components` directory:
 
-| File            | Description |
-|-----------------|-------------|
-| `index.js`       | Application initialization.            |
-| `components/App.js `      | Code for handling the `authResponse`.        |
-| `components/Signin.js `  | Code for the initial sign on page.            |
-| `components/Profile.js` | Application data storage and user sign out.           |
+| File                    | Description                                 |
+| ----------------------- | ------------------------------------------- |
+| `index.js`              | Application initialization.                 |
+| `components/App.js `    | Code for handling the `authResponse`.       |
+| `components/Signin.js ` | Code for the initial sign on page.          |
+| `components/Profile.js` | Application data storage and user sign out. |
 
 ## Task 2: Sign into the application
 
@@ -183,11 +183,11 @@ To decode the token and see what information it holds:
 Now, go to the underlying `blockstack-todo` code you cloned or downloaded. Sign
 in and sign out is handled in each of these files:
 
-| File            | Description |
-|-----------------|-------------|
-| `components/App.js `      | Code for handling the `authResponse`.        |
-| `components/Signin.js `  | Code for the initial sign on page.            |
-| `components/Profile.js` | Application data storage and user sign out.           |
+| File                    | Description                                 |
+| ----------------------- | ------------------------------------------- |
+| `components/App.js `    | Code for handling the `authResponse`.       |
+| `components/Signin.js ` | Code for the initial sign on page.          |
+| `components/Profile.js` | Application data storage and user sign out. |
 
 The `src/components/App.js` code configures an `AppConfig` object and then uses this to create a `UserSession`. Then, the application calls a [`redirectToSignIn()`](https://blockstack.github.io/blockstack.js#redirectToSignIn) function which generates the `authRequest` and redirects the user to the Blockstack authenticator:
 
@@ -280,6 +280,6 @@ saveTasks(tasks) {
 
 You now have everything you need to construct complex applications complete with authentication and storage on the Decentralized Internet. Why not try coding [a sample application that accesses multiple profiles](blockstack_storage.html).
 
-If you would like to explore the Blockstack APIs, you can visit the [Blockstack Core API](https://core.blockstack.org/) documentation or the [Blockstack JS API](https://blockstack.github.io/blockstack.js).
+If you would like to explore the Blockstack APIs, you can visit the [Stacks Node API](https://core.blockstack.org/) documentation or the [Blockstack JS API](https://blockstack.github.io/blockstack.js).
 
 Go forth and build!

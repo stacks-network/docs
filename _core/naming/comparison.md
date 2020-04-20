@@ -80,7 +80,7 @@ BNS has a fundamentally different relationship with blockchains than ENS.
 Whereas ENS tries to use on-chain logic as much as possible, BNS
 tries to use the blockchain as little as possible.  BNS only uses it to store a
 database log for name operations (which are interpreted with an off-chain BNS
-node like Blockstack Core).  BNS name state and BNS subdomains reside entirely
+node like Stacks Blockchain).  BNS name state and BNS subdomains reside entirely
 off-chain in the Atlas network.  This has allowed BNS to migrate from blockchain
 to blockchain in order to survive individual blockchain failures, and this has
 allowed BNS developers to upgrade its consensus rules without having to get the
@@ -114,7 +114,7 @@ The following feature table provides a quick summary how BNS differs from other 
 [1] Requires support in higher-level applications.  These systems are not aware
 of the existence of namespaces/TLDs at the protocol level.
 
-[2] Blockstack Core destroys the underlying blockchain token to pay for
+[2] Stacks Blockchain destroys the underlying blockchain token to pay for
 registration fees when there is no pay-to-namespace-creator address set in the
 name's namespace.  This has the effect of making the blockchain miners' holdings
 slightly more valuable.

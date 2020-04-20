@@ -72,7 +72,7 @@ the [transaction wire format]({{ site.baseurl }}/core/wire-format.html) document
 
 The blockchain linearizes the history of transactions, which means that
 in general, there exists a fork-set for each distinct set of BNS
-consensus rules.  For example, the Blockstack Core [2016 hard fork](https://github.com/blockstack/blockstack-core/blob/master/release_notes/changelog-0.14.md)
+consensus rules.  For example, the Stacks Blockchain [2016 hard fork](https://github.com/blockstack/blockstack-core/blob/master/release_notes/changelog-0.14.md)
 and [2017 hard fork](https://github.com/blockstack/blockstack-core/blob/master/release_notes/changelog-0.17.md) both introduced new consensus
 rules, which means at the time of this writing there are three possible fork-sets:
 the pre-2016 fork-set, the 2016-2017 fork-set, and the post-2017 fork-set.

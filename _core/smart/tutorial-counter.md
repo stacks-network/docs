@@ -1,9 +1,9 @@
 ---
-layout: core
+layout: smart
 description: "Blockstack Clarity: Counter Tutorial"
 permalink: /:collection/:path.html
 ---
-# Tutorial: Counter
+# Counter
 
 | Experience | | **Intermediate**  |
 | Duration | | **30 minutes** |
@@ -160,6 +160,12 @@ Let's get familiar with the tests to understand what the new smart contract shou
     (define-public (get-counter)
       (ok (var-get counter)))
     ```
+
+With the completion of this tutorial, you ...
+
+* Experienced test-driven development with Clarity
+* Understood more Clarity language design principles
+* Developed a working Clarity counter smart contract
 
 ## Where to go next
 

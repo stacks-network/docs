@@ -1,22 +1,11 @@
-- title: Smart Contracts
-  docs:
-  - core/smart/overview
-  - core/smart/tutorial
-  - core/smart/tutorial-counter
-  - core/smart/principals
-  - core/smart/functions
-  - core/smart/clarityRef
-  - core/smart/clarityCLI
-  - core/smart/sdk-quickstart
-  
-- title: Naming Services
+- title: Naming Services Guides
   docs:
   - core/naming/introduction
   - core/naming/architecture
   - core/naming/namespaces
   - core/naming/comparison
 
-- title: Tutorials & Cookbooks
+- title: Naming Service Tutorials
   docs:
   - core/naming/tutorial_subdomains
   - core/naming/search

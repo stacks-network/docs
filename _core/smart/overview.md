@@ -1,5 +1,5 @@
 ---
-layout: core
+layout: smart
 description: "Blockstack Clarity: Introduction"
 permalink: /:collection/:path.html
 ---

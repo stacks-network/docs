@@ -1,6 +1,6 @@
 # Group Core Node Administration
 
-Blockstack Core's API module provides a set of API calls for interacting with
+Stacks Node API module provides a set of API calls for interacting with
 the node's configuration.  Most configuration state is in the [Blockstack
 Browser](https://github.com/blockstack/blockstack-browser).  Client-side state
 is managed by [blockstack.js](https://github.com/blockstack/blockstack.js).
@@ -1748,7 +1748,7 @@ parsing them.
 
 The last transaction's ID (`txid`) and transaction offset (`vtxindex`) are given.
 If `vtxindex` is 0, then the transaction ID corresponds to a "sentinal" transaction
-in Blockstack Core that indicates tokens getting generated or unlocked.  These
+in Stacks Blockchain that indicates tokens getting generated or unlocked.  These
 transaction IDs will not appear in any block explorer, since they do not correspond
 to "real" transactions.
 

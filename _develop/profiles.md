@@ -2,7 +2,7 @@
 layout: learn
 permalink: /:collection/:path.html
 ---
-# Work with Profiles
+# Guide to Blockstack Profiles
 
 {:.no_toc}
 
