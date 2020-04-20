@@ -25,7 +25,7 @@ on the blockchain.
 
 A Clarity contract can use a globally defined `tx-sender` variable to
 obtain the current principal. The following example defines a transaction
-type that transfers `amount` uSTX from the sender to a recipient if amount
+type that transfers `amount` microSTX from the sender to a recipient if amount
 is a multiple of 10, otherwise returning a 400 error code.
 
 ```scheme
@@ -46,9 +46,29 @@ contract _and_ the contract's name, e.g.:
 ```
 
 For convenience, smart contracts may write a contract's identifier in the
-form `.contract-name`, which is expanded by the Clarity interpreter into
+form `.contract-name`. This will be expanded by the Clarity interpreter into
 a fully-qualified contract identifier that corresponds to the same
-publishing address as the contract it appears in.
+publishing address as the contract it appears in. For example, if the
+same publisher key, `SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR`, is 
+publishing two contracts, `contract-A` and `contract-B`, the fully
+qualified identifier for the contracts would be:
+
+```scheme
+'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR.contract-A
+'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR.contract-B
+```
+
+But, in the contract source code, if the developer wishes
+to call a function from `contract-A` in `contract-B`, they can
+write
+
+```scheme
+(contract-call? .contract-A public-function-foo)
+```
+
+This allows the smart contract developer to modularize their
+applications across multiple smart contracts _without_ knowing
+the publishing key a priori.
 
 In order for a smart contract to operate on assets it owns, smart contracts
 may use the special `(as-contract ...)` function. This function
