@@ -26,7 +26,7 @@ Anywhere a developer wishes to use a literal unsigned integer (for example, incr
 
 ### Bool type
 
-Supports values of `'true` or `'false`. 
+Supports values of `true` or `false`. 
 
 ### Buffer type
 

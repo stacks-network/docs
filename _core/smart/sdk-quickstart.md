@@ -100,10 +100,10 @@ Your project should contain three directories:
 The `contracts` directory contains a single file in `sample/hello-world.clar` file.
 
 ```cl
-(define (say-hi)
+(define-public (say-hi)
    "hello world")
 
-(define (echo-number (val int))
+(define-public (echo-number (val int))
    val)
 ```
 
@@ -191,10 +191,10 @@ Edit the `contracts/hello-world.clar` file.
 ```cl
 ;; Functions
 
-(define (hello-world)
+(define-public (hello-world)
    "hello world")
 
-(define (echo-number (val int))
+(define-public (echo-number (val int))
    val)
 ```
 
@@ -206,13 +206,13 @@ Use the `+` function to create a `increment-number-by-10` function.
 <pre>
 ;; Functions
 
-(define (say-hi)
+(define-public (say-hi)
 "hello world")
 
-(define (increment-number (number int))
+(define-public (increment-number (number int))
 (+ 1 number))
 
-(define (increment-number-by-10 (number int))
+(define-public (increment-number-by-10 (number int))
 (+ 10 number))
 </pre>
 </div>
@@ -226,16 +226,16 @@ Use the `+` and `-` function to create a `decrement-number` user-defined method.
     <pre>
     ;; Functions
 
-   (define (say-hi)
+   (define-public (say-hi)
    "hello world")
 
-   (define (increment-number (number int))
+   (define-public (increment-number (number int))
    (+ 1 number))
 
-   (define (increment-number-by-10 (number int))
+   (define-public (increment-number-by-10 (number int))
    (+ 10 number))
 
-   (define (decrement-number (number int))
+   (define-public (decrement-number (number int))
    (- number 1))
     </pre>
    </div>
@@ -259,22 +259,22 @@ Finally, try adding a `counter` variable and be sure to store it. Increment `cou
 
 ;; Functions
 
-(define (say-hi)
+(define-public (say-hi)
 "hello world")
 
-(define (increment-number (number int))
+(define-public (increment-number (number int))
 (+ 1 number))
 
-(define (increment-number-by-10 (number int))
+(define-public (increment-number-by-10 (number int))
 (+ 10 number))
 
-(define (decrement-number (number int))
+(define-public (decrement-number (number int))
 (- number 1))
 
-(define (increment-counter)
+(define-public (increment-counter)
   (set-var! counter (+ 1 counter)))
 
-(define (get-counter)
+(define-public (get-counter)
   (counter))
 
 </pre>
