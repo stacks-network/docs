@@ -1,9 +1,9 @@
 ---
 layout: smart
-description: "Blockstack smart contracting language"
+description: "Clarity: Language Reference"
 permalink: /:collection/:path.html
 ---
-# Language Reference
+# Clarity
 
 This file contains the reference for the Clarity language. 
 
