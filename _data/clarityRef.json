@@ -534,7 +534,7 @@
       "output_type": "Not Applicable",
       "signature": "(define-map map-name ((key-name-0 key-type-0) ...) ((val-name-0 val-type-0) ...))",
       "description": "`define-map` is used to define a new datamap for use in a smart contract. Such\nmaps are only modifiable by the current smart contract.\n\nMaps are defined with a key tuple type and value tuple type. These are defined using a list\nof name and type pairs, e.g., a key type might be `((id int))`, which is a tuple with a single \"id\"\nfield of type `int`.\n\nLike other kinds of definition statements, `define-map` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).",
-      "example": "\n(define-map squares ((x int)) ((square int)))\n(define (add-entry (x int))\n  (map-insert squares ((x 2)) ((square (* x x)))))\n(add-entry 1)\n(add-entry 2)\n(add-entry 3)\n(add-entry 4)\n(add-entry 5)\n"
+      "example": "\n(define-map squares ((x int)) ((square int)))\n(define-public (add-entry (x int))\n  (map-insert squares ((x 2)) ((square (* x x)))))\n(add-entry 1)\n(add-entry 2)\n(add-entry 3)\n(add-entry 4)\n(add-entry 5)\n"
     },
     {
       "name": "define-data-var",
@@ -542,7 +542,7 @@
       "output_type": "Not Applicable",
       "signature": "(define-data-var var-name type value)",
       "description": "`define-data-var` is used to define a new persisted variable for use in a smart contract. Such\nvariable are only modifiable by the current smart contract.\n\nPersisted variable are defined with a type and a value.\n\nLike other kinds of definition statements, `define-data-var` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).",
-      "example": "\n(define-data-var size int 0)\n(define (set-size (value int))\n  (var-set size value))\n(set-size 1)\n(set-size 2)\n"
+      "example": "\n(define-data-var size int 0)\n(define-public (set-size (value int))\n  (var-set size value))\n(set-size 1)\n(set-size 2)\n"
     },
     {
       "name": "define-fungible-token",
@@ -584,7 +584,7 @@
       "name": "none",
       "output_type": "(optional ?)",
       "description": "Represents the _none_ option indicating no value for a given optional (analogous to a null value).",
-      "example": "\n(define (only-if-positive (a int))\n  (if (> a 0)\n      (some a)\n      none))\n(only-if-positive 4) ;; Returns (some 4)\n(only-if-positive (- 3)) ;; Returns none\n"
+      "example": "\n(define-public (only-if-positive (a int))\n  (if (> a 0)\n      (some a)\n      none))\n(only-if-positive 4) ;; Returns (some 4)\n(only-if-positive (- 3)) ;; Returns none\n"
     }
   ]
 }
