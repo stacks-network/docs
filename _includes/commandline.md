@@ -6,7 +6,7 @@ Browser does not yet support. Using the command line, developers can:
 * Generate and Broadcast all supported types of Blockstack transactions
 * Load, store, and list data in Gaia hubs
 * Generate owner, payment and application keys from a seed phrase
-* Query Blockstack core nodes
+* Query Stacks Nodes
 * Implement a minimum viable authentication flow
 
 {% include warning.html content="Many of the commands operate on unencrypted

@@ -3,8 +3,13 @@
  */
 
 
+a>.highlight,
+.highlighter-rouge {
+    color: inherit !important;
+}
 
-.highlight, .highlighter-rouge {
+.highlight,
+.highlighter-rouge {
     background-color: #F7F8FA;
     color: #5A6575;
     border: none;

@@ -48,7 +48,7 @@ The genesis block launch makes possible the following interactions:
 
 * Application developers can earn Stacks by building an application on the Blockstack ecosystem.
 
-* Any Stacks tokens held at the time of launch or after remain usable under the Blockstack Core platform.
+* Any Stacks tokens held at the time of launch or after remain usable under the Stacks Blockchain platform.
 
 Finally, in addition to the development of Stacks token, this launch enables
-further development of Blockstack Core itself.
+further development of Stacks Blockchain itself.

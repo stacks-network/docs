@@ -3,7 +3,7 @@ layout: learn
 description: Learn how to implement Gaia in a DApp
 permalink: /:collection/:path.html
 ---
-# Blockstack Storage Tutorial
+# Storage
 {:.no_toc}
 
 In this tutorial, you build a micro-blogging application using multi-player Gaia
@@ -623,7 +623,7 @@ process URL paths that contain the `.` (dot) character for example,
     }
     ```
 
-     **NOTE**: For `https` deployments, the default Blockstack Core API endpoint for name
+     **NOTE**: For `https` deployments, the default Stacks Node API endpoint for name
      lookups should be changed to point to a core API served over `https`.
      Otherwise, name lookups fail due to browsers blocking mixed content.
      Refer to the [Blockstack.js

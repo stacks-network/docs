@@ -31,7 +31,7 @@ name in history prior to this one (which happens to be `abcdefgh123456.id`).
 The purpose of a DID is to provide an eternal identifier for a public key.
 The public key may change, but the DID will not.
 
-Blockstack Core implements a DID method of its own
+Stacks Blockchain implements a DID method of its own
 in order to be compatible with other systems that use DIDs for public key resolution.
 In order for a DID to be resolvable, all of the following must be true for a
 name:

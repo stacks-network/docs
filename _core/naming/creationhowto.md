@@ -52,9 +52,9 @@ Pairing the `NAMESPACE_PREORDER` and `NAMESPACE_REVEAL` steps is designed to pre
 
 If you would like to navigate a namespace history, you can. To do this, do the following:
 
-1. Query a Blockstack Core server for a particular name.
+1. Query a Stacks Blockchain server for a particular name.
 
-   The format to query the Blockstack core server is:
+   The format to query the Stacks Blockchain server is:
 
    `https://core.blockstack.org/v1/namespaces/NAMESPACE`
 

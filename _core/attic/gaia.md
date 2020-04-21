@@ -21,10 +21,10 @@ devices.  Gaia has "drivers" for each storage system that allow it to load,
 store, and delete chunks of data via a uniform interface, and it gives
 applications a familiar API for organizing their data.
 
-Applications interface with Gaia via the [Blockstack Core
+Applications interface with Gaia via the [Stacks Node
 API](https://github.com/blockstack/blockstack-core/tree/master/api).  Javascript
 applications connect to Gaia using [Blockstack Portal](https://github.com/blockstack/blockstack-portal),
-which helps them bootstrap a secure connection to Blockstack Core.
+which helps them bootstrap a secure connection to Stacks Blockchain.
 
 # Datastores
 
@@ -44,7 +44,7 @@ All data in a datastore is signed by a datastore-specific key on write, in order
 to guarantee that readers only consume authentic data.
 
 The application client handles all of the encryption and signing.  The other
-participants---Blockstack Portal, Blockstack Core, and the storage
+participants---Blockstack Portal, Stacks Node, and the storage
 systems---only ferry data back and forth between application clients.
 
 ## Data Organization
@@ -129,7 +129,7 @@ the following protocol is executed:
    list of names to use.  The user selects which name to sign in as.
 
 4. Now that Portal knows which name to use, and which application is signing in,
-   it loads the datastore private key and requests a Blockstack Core session
+   it loads the datastore private key and requests a Stacks Blockchain session
 token.  This token will be used by the application to access Gaia.
 
 5. Portal creates an authentication response with `makeAuthResponse()`, which it
@@ -211,7 +211,7 @@ node if it wants to authenticate the data itself.
 ### Path Resolution
 
 Applications do not need to do path resolution themselves; they simply ask the
-Blockstack Core node to do so on their behalf.  Fetching the root directory
+Stacks Node to do so on their behalf.  Fetching the root directory
 works as follows:
 
 1. Get the root inode ID from the datastore record.
@@ -316,9 +316,9 @@ or `deleteFile()` (to remove a file).  In either case, the protocol executed is
 2. If an inode by the given name does not exist, then the method fails.
 
 3. The client removes the inode's name and ID from the directory listing, signs
-   the new directory, and replicates it to the Blockstack Core node.
+   the new directory, and replicates it to the Stacks Node.
 
-4. The client tells the Blockstack Core node to delete the inode's header and
+4. The client tells the Stacks Node to delete the inode's header and
    payload from all storage systems.
 
 
@@ -424,10 +424,10 @@ which we address in the next topic.
 
 ## A `.storage` Namespace
 
-Blockstack Core nodes can already serve as storage "gateways".  That is, one
+Stacks Nodes can already serve as storage "gateways".  That is, one
 node can ask another node to store its data and serve it back to any reader.
 
-For example, Alice can make her Blockstack Core node public and program it to
+For example, Alice can make her Stacks Node public and program it to
 store data to her Amazon S3 bucket and her Dropbox account.  Bob can then post data to Alice's 
 node, causing her node to replicate data to both providers.  Later, Charlie can
 read Bob's data from Alice's node, causing Alice's node to fetch and serve back
