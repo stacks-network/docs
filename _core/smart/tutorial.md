@@ -22,7 +22,7 @@ In this tutorial, you learn how to use Clarity, Blockstack's smart contracting l
 
 ## Pre-requisites
 
-To complete the tutorial, you should have [NodeJS](https://nodejs.org/en/download/) installed on your workstation. To download the starter project, you need to have at least version `8.12.0`. You can verify your installation by opening up your terminal and run the following command:
+To complete the tutorial, you should have [NodeJS](https://nodejs.org/en/download/) installed on your workstation. To install and run the starter project, you need to have at least version `8.12.0`. You can verify your installation by opening up your terminal and run the following command:
 
 ```shell
 node --version
