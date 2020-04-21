@@ -1,10 +1,6 @@
 ---
-<<<<<<< HEAD
 layout: smart
-description: "Blockstack smart contracting language"
-=======
-layout: core
->>>>>>> Updates from stacks-blockchain:master (#543)
+description: "Clarity: Understanding Principals"
 permalink: /:collection/:path.html
 ---
 # Principals

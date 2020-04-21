@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: default-desc
 ---
 
 <div class="uk-section">
@@ -39,7 +39,7 @@ layout: default
 
                 <article markdown="span" class="uk-article">
 
-                    <h1 class="uk-article-title">{{ page.title | escape }}</h1>
+                    <h1 class="uk-article-title">{{ page.description | escape }}</h1>
 
                     {% if page.subtitle %}<p class="subtitle uk-text-lead uk-text-muted">{{ page.subtitle }}</p>
                     {% endif %}

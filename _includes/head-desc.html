@@ -1,0 +1,50 @@
+<head>
+  {% gtm head %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.description | escape }}</title>
+  {% seo title=false %}
+  {% seo description=false %}
+  <!-- <meta property="og:image" content="{% if site.brand.image contains 'http' %}{{ site.brand.image }}{% else %}{{ site.post_assets | url }}{{ site.brand.image }}{% endif %}"/> -->
+  <meta property="og:image" content="{{site.url}}{{ page.image }}"/>
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+  <link rel="shortcut icon" type="image/png" href="{{ "assets/img/touch-icon.png" | relative_url }}" >
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+  <script src="{{ "/assets/js/main.js" | relative_url }}" ></script>
+  {% if jekyll.environment == 'production' and site.google_analytics %}
+    {% include google-analytics.html %}
+  {% endif %}
+  <!-- https://www.bryanbraun.com/anchorjs/  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+  <script type"text/javascript" src="https://code.jquery.com/jquery-latest.min.js">
+    switcherTab('uk-tab-instance');
+
+    function switcherTab(id){
+        $('#'+id+' a[href = "'+window.location.hash+'"]').parent('li').click();
+
+        $('#'+id+' a').click(function(){
+            var val = $(this).attr('href');
+            window.location.hash = val.replace("#", "");
+        });
+    }
+  </script>
+  	<!-- Load jquery.cookie plugin (optional) -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.cookie.js"></script>
+	<!-- Load jquery.navgoco plugin js and css files -->
+	<script type="text/javascript" src="/assets/navgoco/jquery.navgoco.js"></script>
+  <link rel="stylesheet" href="/assets/navgoco/jquery.navgoco.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.nav').navgoco({
+          caretHtml: '<i class="some-random-icon-class"></i>',
+          accordion: true,
+          openClass: 'open',
+          slide: {
+            duration: 400,
+            easing: 'swing'
+          }
+        });
+    });
+  </script>
+</head>

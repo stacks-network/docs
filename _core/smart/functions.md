@@ -1,6 +1,6 @@
 ---
 layout: smart
-description: "Blockstack smart contracting language"
+description: "Clarity: Defining Functions and Maps"
 permalink: /:collection/:path.html
 ---
 # Defining Functions and Maps
