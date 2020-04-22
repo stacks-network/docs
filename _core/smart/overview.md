@@ -13,9 +13,13 @@ Clarity is a smart contracting language for use with the Stacks 2.0 blockchain. 
 
 ## Smart contracts
 
-Smart contracts encode and enforce the rules for data curation, and are often used to ensure that users can exchange valuable data in an programmatic and secure way. For example, a smart contract could allow creators to add a new movie to a movie catalog, but require that users first pay for a decryption key before viewing it. To do this, the smart contract could be written such that the movie creator had to publicly disclose the decryption key in order to receive payment. Such a system would allow movie creators to make money by adding movies to the movie catalog that people want to watch.
+Smart contracts encode and enforce the rules for data curation, and are often used to ensure that users can exchange valuable data in an programmatic and secure way. For example, a smart contract could allow creators to add a new tv show to a streaming service, but require that users first pay for a decryption key before viewing it. To do this, the smart contract could be written such that the movie creator had to publicly disclose the decryption key in order to receive payment. The movie creators would therefore be incentivized to work on tv show episodes that people want to watch, based on the viewers' upfront payments that are locked-in until the creator releases the episode and the decryption key.
 
-Because smart contracts run on top of a blockchain, anyone can query them, and anyone can submit transactions to run their code. Apps use the blockchain to manage a global state that is visible to the public. To get back to ge movie catalog exaple, this state could include a list of user that paid for a specific movie. This is possible because the blockchain stores the history of all accepted transactions. Anyone can audit the blockchain in order to independently verify that an app's global shared state has been managed correctly according to the smart contract's rules.
+Because smart contracts run on top of a blockchain, anyone can query them, and anyone can submit transactions to execute them. A smart contract execution can result in new transactions being written to the blockchain.
+
+Apps use the blockchain to manage a global state that is visible to the public. To get back to the streaming service exaple, the global state could include a list of user that paid for a specific tv show episoed. This is possible because the blockchain stores the history of all accepted transactions.
+
+Anyone can audit the blockchain in order to independently verify that an app's global shared state has been managed correctly according to the smart contract's rules.
 
 ## Use cases
 
