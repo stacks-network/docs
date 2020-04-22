@@ -17,7 +17,7 @@ Smart contracts encode and enforce the rules for data curation, and are often us
 
 Because smart contracts run on top of a blockchain, anyone can query them, and anyone can submit transactions to execute them. A smart contract execution can result in new transactions being written to the blockchain.
 
-Apps use the blockchain to manage a global state that is visible to the public. To get back to the streaming service exaple, the global state could include a list of user that paid for a specific tv show episoed. This is possible because the blockchain stores the history of all accepted transactions.
+Apps use the blockchain to manage a global state that is visible to the public. To get back to the streaming service example, the global state could include a list of user that paid for a specific tv show episode. This is possible because the blockchain stores the history of all accepted transactions.
 
 Anyone can audit the blockchain in order to independently verify that an app's global shared state has been managed correctly according to the smart contract's rules.
 
@@ -26,7 +26,7 @@ Anyone can audit the blockchain in order to independently verify that an app's g
 Not every decentralized application requires smart contracts, but Clarity unlocks interesting capabilities for decentralized applications. Examples of use cases include, but are not limited to:
 
 * Access control (e.g. pay to access)
-* Non-fungible (e.g. collectibles) and fungible tokens (e.g. stable-coins)
+* Non-fungible (e.g. collectibles) and fungible tokens (e.g. stablecoins)
 * Business model templates (e.g. subscriptions)
 * App-specific blockchains
 * Decentralized Autonomous Organizations
