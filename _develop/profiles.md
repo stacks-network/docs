@@ -21,15 +21,11 @@ Profile data is stored using Gaia on the user's selected storage provider. An ex
 https://gaia.blockstack.org/hub/1EeZtGNdFrVB2AgLFsZbyBCF7UTZcEWhHk/profile.json
 ```
 
-
 Follow these steps to create and register a profile for a Blockstack ID:
 
 1. Create a JSON profile object
 2. Split up the profile into tokens, sign the tokens, and put them in a token file
 3. Create a zone file that points to the web location of the profile token file
-
-
-Accounts can have one or more proofs. Proofs are stored under the `account` key in the user's profile data
 
 ```js
 "account": [
@@ -88,63 +84,4 @@ const recoveredProfile = Person.fromToken(tokenFile, publicKey)
 
 ```js
 const validationResults = Person.validateSchema(recoveredProfile)
-```
-
-## Validate a proof
-
-```es6
-import { validateProofs } from 'blockstack'
-
-const domainName = "naval.id"
-validateProofs(profile, domainName).then((proofs) => {
-  console.log(proofs)
-})
-```
-
-## How proofs are validated
-
-The `validateProofs` function checks each of the proofs listed in the
-profile by fetching the proof URL and verifying the proof message. Currently supported proof validation services:
-
-- Facebook
-- Twitter
-- Instagram
-
-The proof message must be of the form:
-
-```
-Verifying my Blockstack ID is secured with the address
-1EeZtGNdFrVB2AgLFsZbyBCF7UTZcEWhHk
-```
-The proof message also must appear in the required location on the
-proof page specific to each type of social media account.
-
-The account from which the proof message is posted must match exactly
-the account identifier/username claimed in the user profile. The
-`validateProofs` function will check this in the body of the proof or
-in the proof URL depending on the service.
-
-## Adding additional social account validation services
-
-The `Service` class can be extended to provide proof validation service
-to additional social account types. You will need to override the
-`getProofStatement(searchText: string)` method which parses the proof
-body and returns the proof message text. Additionally, the identifier
-claimed should be verified in the proof URL or in the body by implementing
-`getProofIdentity(searchText: string)` and setting `shouldValidateIdentityInBody()`
-to return true.
-
-The following snippet uses the meta tags in the proof page to retrieve the proof message.
-```js
-static getProofStatement(searchText: string) {
-	const $ = cheerio.load(searchText)
-	const statement = $('meta[property="og:description"]')
-	                    .attr('content')
-
-	if (statement !== undefined && statement.split(':').length > 1) {
-	  return statement.split(':')[1].trim().replace('“', '').replace('”', '')
-	} else {
-	  return ''
-	}
-}
 ```
