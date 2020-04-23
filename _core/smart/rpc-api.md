@@ -1,9 +1,9 @@
 ---
 layout: smart
-description: "Stacks Node RPC API"
+description: "Stacks Node RPC API Reference"
 permalink: /:collection/:path.html
 ---
-# Stacks Node RPC API Reference
+# RPC API Reference
 {:.no_toc}
 
 Every running Stacks node exposes an RPC API, which allows you to interact with the underlying blockchain.
