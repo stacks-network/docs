@@ -15,7 +15,7 @@ You will need to have `npm` installed.
 
 To install the Blockstack CLI, run the following command in terminal. 
 
-`npm install -g blockstack-cli` 
+`npm install -g https://github.com/blockstack/cli-blockstack#feature/stacks-2.0-tx` 
 
 ## Creating a Wallet
 
