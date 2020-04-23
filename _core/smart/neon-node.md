@@ -1,6 +1,6 @@
 ---
-layout: core
-description: "Blockstack smart contracting language"
+layout: smart
+description: "Run a Stacks Testnet Node"
 permalink: /:collection/:path.html
 ---
 # Running a Neon Testnet Node
@@ -39,52 +39,41 @@ Building the project on ARM:
 cargo build --features "aarch64" --no-default-features
 ```
 
-### Setup your Proof-of-Burn miner
+### Configure your node to connect to the Neon network
 
-In this phase of the testnet, miners will be burning BTC to participate in leader election. In order to mine, you'll need to configure your node with a BTC keychain, and you'll need to fund it with BTC. We're providing a BTC faucet to make it easy to run a miner.
+You'll need to update your node's configuration to connect to the public Neon testnet.
 
-Let's start by generating a keypair:
+In the `stacks-blockchain` repository, open up the file `testnet/follower-config.toml`.
 
-```bash
-cargo run --bin blockstack-cli generate-sk --testnet
-
-# Output
-# {
-#  secretKey: "b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001",
-#  publicKey: "02781d2d3a545afdb7f6013a8241b9e400475397516a0d0f76863c6742210539b5",
-#  stacksAddress: "ST2ZRX0K27GW0SP3GJCEMHD95TQGJMKB7G9Y0X1MH"
-# }
-```
-
-**TODO**: guidance / update on generating a BTC address from this keypair.
-
-Once you have your BTC address, head over to our testnet website to use the BTC faucet:
-
-**TODO**: URL, guidance for BTC faucet
-
-Now that you have some testnet BTC, you'll need to configure your Stacks node to use this wallet.
-
-Open up the file `testnet/Stacks.toml`. Find the section that starts with `[burnchain]`. Update that section so that it looks like this:
+First, find the `bootstrap_node` line in the `[node]` section, and update it to the following:
 
 ```toml
-[burnchain]
-chain = "bitcoin"
-mode = "neon"
-peer_host = "127.0.0.1" # todo(ludo): update URL with neon.blockstack.org when deployed
-burnchain_op_tx_fee = 1000
-commit_anchor_block_within = 10000
-rpc_port = 3000
-peer_port = 18444
+bootstrap_node = "030d1bd465746c816ff516d9247415159b96b83e1b008774d040a0a1962c18fbc6@35.245.58.246:20444"
 ```
 
-**TODO**: update `peer_host`, and how do you specify your BTC keychain?
+Next, find the `peer_host` line in the `[burnchain]` section, and update it to:
 
-### Running your mining node
+```toml
+peer_host = "35.245.58.246"
+```
 
-Now that you're all set up, you can run your miner. In the command line, run:
+### Run your node
+
+You're all set to run a node that connects to the Neon network.
+
+Back in the command line, run:
 
 ```bash
-cargo testnet ./testnet/Stacks.toml
+cargo testnet ./testnet/follower-conf.toml
 ```
 
-**TODO**: some way of confirming that the miner is running - expected logs, explorer, etc?
+You should see some logs that look something like the this:
+
+```
+Starting testnet with config ./testnet/follower-conf.toml...
+Transactions can be posted on the endpoint:
+POST http://127.0.0.1:9001/v2/transactions
+INFO [1587602447.879] [src/chainstate/stacks/index/marf.rs:732] First-ever block 0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206
+```
+
+Awesome! Your node is now connected to the Neon network. Your node will receive new blocks when they are produced, and you can use your node's RPC API to send transactions, fetch information for contracts and accounts, and more.
