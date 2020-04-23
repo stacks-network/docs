@@ -1,17 +1,17 @@
 ---
-layout: core
-description: "Blockstack smart contracting language"
+layout: smart
+description: "Run a Stacks Testnet Node"
 permalink: /:collection/:path.html
 ---
 # Running a Neon Testnet Node
 {:.no_toc}
 
-"Neon" is phase 1 of the Stacks 2.0 testnet. In Neon, you can run a Stacks node and participate in proof-of-burn mining.
+"Neon" is phase 1 of the Stacks 2.0 testnet. In Neon, you can run a node and connect it to a public network. This guide will walk you through downloading and running your own node in the Neon network.
 
 * TOC
 {:toc}
 
-### Download and build stacks-blockchain
+### Download the `stacks-blockchain` repository
 
 The first step is to ensure that you have Rust and the support software installed.
 
@@ -19,7 +19,11 @@ The first step is to ensure that you have Rust and the support software installe
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-From there, you can clone this repository:
+If you already have the Rust toolchain installed, you might see this prompt. Select 'Proceed with Installation' to make sure you have the latest version installed.
+
+  ![rustup prompt](/core/images/rust-install.png)
+
+Next, clone this repository:
 
 ```bash
 git clone https://github.com/blockstack/stacks-blockchain.git
@@ -27,64 +31,57 @@ git clone https://github.com/blockstack/stacks-blockchain.git
 cd stacks-blockchain
 ```
 
-Then build the project:
+### Configure your node to connect to the Neon network
 
-```bash
-cargo build
-```
+You'll need to update your node's configuration to connect to the public Neon testnet.
 
-Building the project on ARM:
+In the `stacks-blockchain` repository, open up the file `testnet/follower-conf.toml`.
 
-```bash
-cargo build --features "aarch64" --no-default-features
-```
-
-### Setup your Proof-of-Burn miner
-
-In this phase of the testnet, miners will be burning BTC to participate in leader election. In order to mine, you'll need to configure your node with a BTC keychain, and you'll need to fund it with BTC. We're providing a BTC faucet to make it easy to run a miner.
-
-Let's start by generating a keypair:
-
-```bash
-cargo run --bin blockstack-cli generate-sk --testnet
-
-# Output
-# {
-#  secretKey: "b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001",
-#  publicKey: "02781d2d3a545afdb7f6013a8241b9e400475397516a0d0f76863c6742210539b5",
-#  stacksAddress: "ST2ZRX0K27GW0SP3GJCEMHD95TQGJMKB7G9Y0X1MH"
-# }
-```
-
-**TODO**: guidance / update on generating a BTC address from this keypair.
-
-Once you have your BTC address, head over to our testnet website to use the BTC faucet:
-
-**TODO**: URL, guidance for BTC faucet
-
-Now that you have some testnet BTC, you'll need to configure your Stacks node to use this wallet.
-
-Open up the file `testnet/Stacks.toml`. Find the section that starts with `[burnchain]`. Update that section so that it looks like this:
+First, find the `bootstrap_node` line in the `[node]` section, and update it to the following:
 
 ```toml
-[burnchain]
-chain = "bitcoin"
-mode = "neon"
-peer_host = "127.0.0.1" # todo(ludo): update URL with neon.blockstack.org when deployed
-burnchain_op_tx_fee = 1000
-commit_anchor_block_within = 10000
-rpc_port = 3000
-peer_port = 18444
+bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@35.245.47.179:20444"
 ```
 
-**TODO**: update `peer_host`, and how do you specify your BTC keychain?
+Next, find the uncommented `peer_host` line in the `[burnchain]` section, and update it to:
 
-### Running your mining node
+```toml
+peer_host = "35.245.47.179"
+```
 
-Now that you're all set up, you can run your miner. In the command line, run:
+### Run your node
+
+You're all set to run a node that connects to the Neon network.
+
+Back in the command line, run:
 
 ```bash
-cargo testnet ./testnet/Stacks.toml
+cargo testnet ./testnet/follower-conf.toml
 ```
 
-**TODO**: some way of confirming that the miner is running - expected logs, explorer, etc?
+The first time you run this, you'll see some logs indicating that the Rust code is being compiled. Once that's done, you should see some logs that look something like the this:
+
+```
+Starting testnet with config ./testnet/follower-conf.toml...
+Transactions can be posted on the endpoint:
+POST http://127.0.0.1:9001/v2/transactions
+INFO [1587602447.879] [src/chainstate/stacks/index/marf.rs:732] First-ever block 0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206
+```
+
+Awesome! Your node is now connected to the Neon network. Your node will receive new blocks when they are produced, and you can use your [node's RPC API](/core/smart/rpc-api) to send transactions, fetch information for contracts and accounts, and more.
+
+### Creating an optimized binary
+
+The steps above are great for trying to run a node temporarily. If you want to host a node on a server somewhere, you might want to generate an optimized binary. To do so, use the same configuration as above, but run:
+
+```bash
+cd testnet
+cargo build --release --bin stacks-testnet
+cd ..
+```
+
+The above code will compile an optimized binary. To use it, run:
+
+```bash
+./target/release/stacks-testnet ./testnet/follower-conf.toml
+```
