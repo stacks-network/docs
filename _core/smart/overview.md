@@ -13,7 +13,7 @@ Clarity is a smart contracting language for use with the Stacks 2.0 blockchain. 
 
 ## Smart contracts
 
-Smart contracts encode and enforce the rules for data curation, and are often used to ensure that users can exchange valuable data in an programmatic and secure way. For example, a smart contract could allow creators to add a new tv show to a streaming service, but require that users first pay for a decryption key before viewing it. To do this, the smart contract could be written such that the movie creator had to publicly disclose the decryption key in order to receive payment. The movie creators would therefore be incentivized to work on tv show episodes that people want to watch, based on the viewers' upfront payments that are locked-in until the creator releases the episode and the decryption key.
+Smart contracts encode and enforce the rules for modifying a particular set of data as shared among people and entities who don't necessarily trust each other. For example, a smart contract could allow creators to add a new tv show to a streaming service, but require that users first pay for a decryption key before viewing it. To do this, the smart contract could be written such that the movie creator had to publicly disclose the decryption key in order to receive payment. The movie creators would therefore be incentivized to work on tv show episodes that people want to watch, based on the viewers' upfront payments that are locked-in until the creator releases the episode and the decryption key.
 
 Because smart contracts run on top of a blockchain, anyone can query them, and anyone can submit transactions to execute them. A smart contract execution can result in new transactions being written to the blockchain.
 
