@@ -54,7 +54,7 @@ Once the faucet transaction has been broadcasted, you will need to wait for the 
 Once you’ve requested Testnet Stacks tokens from the faucet, you can check the balance of your account using the following command. 
 
 ```
-$ blockstack-cli balance ST1BG7MHW2R524WMF7X8PGG3V45ZN040EB9EW0GQJ -H "https://neon.blockstack.org"
+$ blockstack-cli balance ST1BG7MHW2R524WMF7X8PGG3V45ZN040EB9EW0GQJ -H "http://neon.blockstack.org:20443"
 
 {
   "balance": "1000",
@@ -62,7 +62,7 @@ $ blockstack-cli balance ST1BG7MHW2R524WMF7X8PGG3V45ZN040EB9EW0GQJ -H "https://n
 }
 ``` 
 
-Using the `-H` option, we specify a connection to the testnet node at `https://neon.blockstack.org`
+Using the `-H` option, we specify a connection to the testnet node at `http://neon.blockstack.org:20443`
 
 Verify that your account has tokens before continuing to the next step to send tokens.
 
@@ -83,7 +83,7 @@ In order to send tokens, we will need the 5 parameters below.
 Once we have the parameters, we can use the  `send_tokens` command:
 
 ```
-$ blockstack-cli send_tokens ST1WZ69T99RHQMQX3D91ZH2R37GV5NK8KDS5D5VDZ 1000 1 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t -T "https://neon.blockstack.org"
+$ blockstack-cli send_tokens ST1WZ69T99RHQMQX3D91ZH2R37GV5NK8KDS5D5VDZ 1000 1 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t -T "http://neon.blockstack.org:20443/v2/transactions"
 
 d32de0d66b4a07e0d7eeca320c37a10111c8c703315e79e17df76de6950c622c
 ```    
@@ -98,7 +98,7 @@ Finally, the last parameter is the private key from earlier. `381314da39a45f43f4
 
 Once again, we’re using the `-t` option to indicate that this is a Testnet transaction, so it should be broadcasted to Testnet.
 
-Using the `-T` option, we specify that we want to broadcast to the testnet node at `https://neon.blockstack.org`
+Using the `-T` option, we specify that we want to broadcast to the testnet node at `http://neon.blockstack.org:20443/v2/transactions`
 
 If valid, your transaction will now be broadcasted to the network and you will see the transaction ID displayed on the screen.
 
