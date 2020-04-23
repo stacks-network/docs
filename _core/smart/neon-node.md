@@ -43,7 +43,7 @@ First, find the `bootstrap_node` line in the `[node]` section, and update it to 
 bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@35.245.47.179:20444"
 ```
 
-Next, find the `peer_host` line in the `[burnchain]` section, and update it to:
+Next, find the uncommented `peer_host` line in the `[burnchain]` section, and update it to:
 
 ```toml
 peer_host = "35.245.47.179"
@@ -59,7 +59,7 @@ Back in the command line, run:
 cargo testnet ./testnet/follower-conf.toml
 ```
 
-You should see some logs that look something like the this:
+The first time you run this, you'll see some logs indicating that the Rust code is being compiled. Once that's done, you should see some logs that look something like the this:
 
 ```
 Starting testnet with config ./testnet/follower-conf.toml...
@@ -68,7 +68,7 @@ POST http://127.0.0.1:9001/v2/transactions
 INFO [1587602447.879] [src/chainstate/stacks/index/marf.rs:732] First-ever block 0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206
 ```
 
-Awesome! Your node is now connected to the Neon network. Your node will receive new blocks when they are produced, and you can use your node's RPC API to send transactions, fetch information for contracts and accounts, and more.
+Awesome! Your node is now connected to the Neon network. Your node will receive new blocks when they are produced, and you can use your [node's RPC API](/core/smart/rpc-api) to send transactions, fetch information for contracts and accounts, and more.
 
 ### Creating an optimized binary
 
