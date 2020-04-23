@@ -11,7 +11,7 @@ permalink: /:collection/:path.html
 * TOC
 {:toc}
 
-### Download the `stacks-blockchain` repository
+### Download and install the `stacks-blockchain` repository
 
 The first step is to ensure that you have Rust and the support software installed.
 
@@ -31,22 +31,10 @@ git clone https://github.com/blockstack/stacks-blockchain.git
 cd stacks-blockchain
 ```
 
-### Configure your node to connect to the Neon network
+Install the Stacks node by running:
 
-You'll need to update your node's configuration to connect to the public Neon testnet.
-
-In the `stacks-blockchain` repository, open up the file `testnet/follower-conf.toml`.
-
-First, find the `bootstrap_node` line in the `[node]` section, and update it to the following:
-
-```toml
-bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@35.245.47.179:20444"
-```
-
-Next, find the uncommented `peer_host` line in the `[burnchain]` section, and update it to:
-
-```toml
-peer_host = "35.245.47.179"
+```bash
+cargo install --path ./testnet
 ```
 
 ### Run your node
@@ -56,7 +44,7 @@ You're all set to run a node that connects to the Neon network.
 Back in the command line, run:
 
 ```bash
-cargo testnet ./testnet/follower-conf.toml
+stacks-node neon
 ```
 
 The first time you run this, you'll see some logs indicating that the Rust code is being compiled. Once that's done, you should see some logs that look something like the this:
@@ -76,12 +64,12 @@ The steps above are great for trying to run a node temporarily. If you want to h
 
 ```bash
 cd testnet
-cargo build --release --bin stacks-testnet
+cargo build --release --bin stacks-node
 cd ..
 ```
 
 The above code will compile an optimized binary. To use it, run:
 
 ```bash
-./target/release/stacks-testnet ./testnet/follower-conf.toml
+./target/release/stacks-node ./testnet/conf/neon-follower-conf.toml
 ```
