@@ -31,7 +31,7 @@ cd stacks-blockchain
 
 You'll need to update your node's configuration to connect to the public Neon testnet.
 
-In the `stacks-blockchain` repository, open up the file `testnet/follower-config.toml`.
+In the `stacks-blockchain` repository, open up the file `testnet/follower-conf.toml`.
 
 First, find the `bootstrap_node` line in the `[node]` section, and update it to the following:
 
