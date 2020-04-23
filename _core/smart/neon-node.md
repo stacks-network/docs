@@ -65,3 +65,19 @@ INFO [1587602447.879] [src/chainstate/stacks/index/marf.rs:732] First-ever block
 ```
 
 Awesome! Your node is now connected to the Neon network. Your node will receive new blocks when they are produced, and you can use your node's RPC API to send transactions, fetch information for contracts and accounts, and more.
+
+### Creating an optimized binary
+
+The steps above are great for trying to run a node temporarily. If you want to host a node on a server somewhere, you might want to generate an optimized binary. To do so, use the same configuration as above, but run:
+
+```bash
+cd testnet
+cargo build --release --bin stacks-testnet
+cd ..
+```
+
+The above code will compile an optimized binary. To use it, run:
+
+```bash
+./target/release/stacks-testnet ./testnet/follower-conf.toml
+```
