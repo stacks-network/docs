@@ -68,7 +68,7 @@ Verify that your account has tokens before continuing to the next step to send t
 
 ## Sending Tokens
 
-In order to send tokens, we will need 5 parameters. 
+In order to send tokens, we will need the 5 parameters below.
 
 **Recipient Address** - The Stacks address of the recipient
 
@@ -76,7 +76,7 @@ In order to send tokens, we will need 5 parameters.
 
 **Fee Rate** - The transaction fee rate for this transaction. You can safely set a fee rate of 1 for Testnet.
 
-**Nonce** - The nonce is a number that needs to be incremented monotonically for each transaction from the account. This ensures transactions are not duplicated.
+**Nonce** - The nonce is a number that needs to be incremented monotonically for each transaction from the account. This ensures transactions are not duplicated. You can get the latest valid nonce for each account using the `balance` command.
 
 **Private Key** - This is the private key corresponding to your account that was generated when you created the wallet earlier using the CLI.
 
