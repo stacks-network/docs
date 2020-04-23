@@ -54,7 +54,7 @@ bootstrap_node = "030d1bd465746c816ff516d9247415159b96b83e1b008774d040a0a1962c18
 Next, find the `peer_host` line in the `[burnchain]` section, and update it to:
 
 ```toml
-peer_host = "35.245.58.246"
+peer_host = "neon.blockstack.org"
 ```
 
 ### Run your node
