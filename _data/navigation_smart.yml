@@ -11,6 +11,7 @@
   docs:
   - core/smart/principals
   - core/smart/functions
+  - core/smart/neon-node
 
 - title: References
   docs:
