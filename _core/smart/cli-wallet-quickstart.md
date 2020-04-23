@@ -45,7 +45,7 @@ The private key is what you will need to send tokens later.
 
 ## Getting Tokens
 
-To receive Testnet Stacks tokens, visit the Testnet stacks token [faucet](https://www.blockstack.org/faucet). Enter the Stacks address you generated above into the address field on the faucet page. 
+To receive Testnet Stacks tokens, visit the Testnet stacks token [faucet](https://testnet.blockstack.org/faucet). Enter the Stacks address you generated above into the address field on the faucet page and click "Get STX".
 
 Once the faucet transaction has been broadcasted, you will need to wait for the balance to be reflected in your account.
 
@@ -53,13 +53,16 @@ Once the faucet transaction has been broadcasted, you will need to wait for the 
 
 Once you’ve requested Testnet Stacks tokens from the faucet, you can check the balance of your account using the following command. 
 
+```
+$ blockstack-cli balance ST1BG7MHW2R524WMF7X8PGG3V45ZN040EB9EW0GQJ -H "https://neon.blockstack.org"
 
-    $ blockstack-cli balance ST1BG7MHW2R524WMF7X8PGG3V45ZN040EB9EW0GQJ -t
-    
-    {
-      "Stacks": "1000"
-    }
-    
+{
+  "balance": "1000",
+  "nonce": 0
+}
+``` 
+
+Using the `-H` option, we specify a connection to the testnet node at `https://neon.blockstack.org`
 
 Verify that your account has tokens before continuing to the next step to send tokens.
 
@@ -80,7 +83,7 @@ In order to send tokens, we will need 5 parameters.
 Once we have the parameters, we can use the  `send_tokens` command:
 
 ```
-$ blockstack-cli send_tokens ST1WZ69T99RHQMQX3D91ZH2R37GV5NK8KDS5D5VDZ 1000 1 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t
+$ blockstack-cli send_tokens ST1WZ69T99RHQMQX3D91ZH2R37GV5NK8KDS5D5VDZ 1000 1 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t -T "https://neon.blockstack.org"
 
 d32de0d66b4a07e0d7eeca320c37a10111c8c703315e79e17df76de6950c622c
 ```    
@@ -94,6 +97,8 @@ The nonce is set to `0` for this transaction, since it will be the first transac
 Finally, the last parameter is the private key from earlier. `381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301` 
 
 Once again, we’re using the `-t` option to indicate that this is a Testnet transaction, so it should be broadcasted to Testnet.
+
+Using the `-T` option, we specify that we want to broadcast to the testnet node at `https://neon.blockstack.org`
 
 If valid, your transaction will now be broadcasted to the network and you will see the transaction ID displayed on the screen.
 
