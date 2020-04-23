@@ -1,9 +1,9 @@
 ---
 layout: smart
-description: "Blockstack CLI Wallet Quickstart"
+description: "CLI Wallet Guide"
 permalink: /:collection/:path.html
 ---
-# Send/Receive Stacks on Testnet
+# Blockstack CLI Wallet Quickstart (Testnet)
 
 This quickstart guide will show you how to setup a Stacks wallet using the Blockstack JavaScript CLI and use it to send/receive Stacks tokens on Testnet. This wallet is intended for developer experimentation with Testnet only, do not use this wallet to store your tokens.
 
@@ -15,7 +15,7 @@ You will need to have `npm` installed.
 
 To install the Blockstack CLI, run the following command in terminal. 
 
-`npm install -g https://github.com/blockstack/cli-blockstack#feature/stacks-2.0-tx` 
+`npm install -g blockstack-cli` 
 
 ## Creating a Wallet
 
@@ -45,7 +45,7 @@ The private key is what you will need to send tokens later.
 
 ## Getting Tokens
 
-To receive Testnet Stacks tokens, visit the Testnet stacks token [faucet](https://testnet.blockstack.org/faucet). Enter the Stacks address you generated above into the address field on the faucet page and click "Get STX".
+To receive Testnet Stacks tokens, visit the Testnet stacks token [faucet](https://www.blockstack.org/faucet). Enter the Stacks address you generated above into the address field on the faucet page. 
 
 Once the faucet transaction has been broadcasted, you will need to wait for the balance to be reflected in your account.
 
@@ -53,22 +53,19 @@ Once the faucet transaction has been broadcasted, you will need to wait for the 
 
 Once you’ve requested Testnet Stacks tokens from the faucet, you can check the balance of your account using the following command. 
 
-```
-$ blockstack-cli balance ST1BG7MHW2R524WMF7X8PGG3V45ZN040EB9EW0GQJ -H "https://neon.blockstack.org"
 
-{
-  "balance": "1000",
-  "nonce": 0
-}
-``` 
-
-Using the `-H` option, we specify a connection to the testnet node at `https://neon.blockstack.org`
+    $ blockstack-cli balance ST1BG7MHW2R524WMF7X8PGG3V45ZN040EB9EW0GQJ -t
+    
+    {
+      "Stacks": "1000"
+    }
+    
 
 Verify that your account has tokens before continuing to the next step to send tokens.
 
 ## Sending Tokens
 
-In order to send tokens, we will need the 5 parameters below.
+In order to send tokens, we will need 5 parameters. 
 
 **Recipient Address** - The Stacks address of the recipient
 
@@ -76,14 +73,14 @@ In order to send tokens, we will need the 5 parameters below.
 
 **Fee Rate** - The transaction fee rate for this transaction. You can safely set a fee rate of 1 for Testnet.
 
-**Nonce** - The nonce is a number that needs to be incremented monotonically for each transaction from the account. This ensures transactions are not duplicated. You can get the latest valid nonce for each account using the `balance` command.
+**Nonce** - The nonce is a number that needs to be incremented monotonically for each transaction from the account. This ensures transactions are not duplicated.
 
 **Private Key** - This is the private key corresponding to your account that was generated when you created the wallet earlier using the CLI.
 
 Once we have the parameters, we can use the  `send_tokens` command:
 
 ```
-$ blockstack-cli send_tokens ST1WZ69T99RHQMQX3D91ZH2R37GV5NK8KDS5D5VDZ 1000 1 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t -T "https://neon.blockstack.org"
+$ blockstack-cli send_tokens ST1WZ69T99RHQMQX3D91ZH2R37GV5NK8KDS5D5VDZ 1000 1 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t
 
 d32de0d66b4a07e0d7eeca320c37a10111c8c703315e79e17df76de6950c622c
 ```    
@@ -97,8 +94,6 @@ The nonce is set to `0` for this transaction, since it will be the first transac
 Finally, the last parameter is the private key from earlier. `381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301` 
 
 Once again, we’re using the `-t` option to indicate that this is a Testnet transaction, so it should be broadcasted to Testnet.
-
-Using the `-T` option, we specify that we want to broadcast to the testnet node at `https://neon.blockstack.org`
 
 If valid, your transaction will now be broadcasted to the network and you will see the transaction ID displayed on the screen.
 

@@ -12,7 +12,6 @@
   - core/smart/principals
   - core/smart/functions
   - core/smart/neon-node
-  - core/smart/cli-wallet-quickstart
 
 - title: References
   docs:
