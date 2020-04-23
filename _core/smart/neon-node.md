@@ -19,7 +19,11 @@ The first step is to ensure that you have Rust and the support software installe
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-From there, you can clone this repository:
+If you already have the Rust toolchain installed, you might see this prompt. Select 'Proceed with Installation' to make sure you have the latest version installed.
+
+  ![rustup prompt](/core/images/rust-install.png)
+
+Next, clone this repository:
 
 ```bash
 git clone https://github.com/blockstack/stacks-blockchain.git
