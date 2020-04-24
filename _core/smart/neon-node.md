@@ -56,7 +56,7 @@ You're all set to run a node that connects to the Neon network.
 Back in the command line, run:
 
 ```bash
-cargo testnet ./testnet/follower-conf.toml
+cargo testnet ./testnet/conf/neon-follower-conf.toml
 ```
 
 The first time you run this, you'll see some logs indicating that the Rust code is being compiled. Once that's done, you should see some logs that look something like the this:
@@ -76,12 +76,12 @@ The steps above are great for trying to run a node temporarily. If you want to h
 
 ```bash
 cd testnet
-cargo build --release --bin stacks-testnet
+cargo build --release --bin stacks-node
 cd ..
 ```
 
 The above code will compile an optimized binary. To use it, run:
 
 ```bash
-./target/release/stacks-testnet ./testnet/follower-conf.toml
+./target/release/stacks-node neon
 ```
