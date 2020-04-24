@@ -83,14 +83,14 @@ In order to send tokens, we will need the 5 parameters below.
 Once we have the parameters, we can use the  `send_tokens` command:
 
 ```
-$ blockstack-cli send_tokens ST1WZ69T99RHQMQX3D91ZH2R37GV5NK8KDS5D5VDZ 1000 1 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t -T "http://neon.blockstack.org:20443/v2/transactions"
+$ blockstack-cli send_tokens ST1WZ69T99RHQMQX3D91ZH2R37GV5NK8KDS5D5VDZ 1000 200 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t -T "http://neon.blockstack.org:20443/v2/transactions"
 
 d32de0d66b4a07e0d7eeca320c37a10111c8c703315e79e17df76de6950c622c
 ```    
 
 With this command we’re sending 1000 microstacks to the Stacks address `ST1WZ69T99RHQMQX3D91ZH2R37GV5NK8KDS5D5VDZ`. 
 
-We set the fee rate to `1`, as this does not matter for Testnet. 
+We set the fee rate to `200` microstacks. 
 
 The nonce is set to `0` for this transaction, since it will be the first transaction we send from this account. 
 
