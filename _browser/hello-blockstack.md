@@ -2,6 +2,11 @@
 layout: learn
 description: Simple Blockstack web App
 permalink: /:collection/:path.html
+redirect_from:
+  - /develop/zero_to_dapp_1.html
+  - /develop/zero_to_dapp_2.html
+  - /develop/zero_to_dapp_3.html
+  - /develop/zero_to_dapp_4.html
 ---
 # Hello, Blockstack
 
