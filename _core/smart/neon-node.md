@@ -78,9 +78,8 @@ cd ..
 The above code will compile an optimized binary. To use it, run:
 
 ```bash
-./target/release/stacks-node ./testnet/conf/neon-follower-conf.toml
+./target/release/stacks-node start --config=./testnet/conf/neon-follower-conf.toml
 ```
-
 ### Enable debug logging
 
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
