@@ -2,8 +2,9 @@
 layout: learn
 permalink: /:collection/:path.html
 ---
-# Get Started
+# Guide to Blockstack Connect
 {:.no_toc}
+
 
 Blockstack Connect is a Javascript library for integrating your application with Stacks v2. With Connect, you get some big benefits:
 

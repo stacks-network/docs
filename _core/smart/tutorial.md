@@ -20,7 +20,7 @@ In this tutorial, you learn how to use Clarity, Blockstack's smart contracting l
 * TOC
 {:toc}
 
-## Pre-requisites
+## Prerequisites
 
 To complete the tutorial, you should have [NodeJS](https://nodejs.org/en/download/) installed on your workstation. To install and run the starter project, you need to have at least version `8.12.0`. You can verify your installation by opening up your terminal and run the following command:
 
@@ -90,7 +90,7 @@ Now, let's have a look at a Clarity smart contract and get familiar with the bas
       (ok val))
     ```
 
-    On the first line, a new public function `say-hi` is declared. To create private functions, you would use the `define-private` keyword. Private functions can only be executed by the current smart contract and not from the outside. Only public functions can be called from outside, by other smart contracts. The reason public functions exist is to enable re-using code that is already available in other smart contracts, and to enable developers to break complex smart contracts into smaller, simpler smart contracts (an exercise in [separating concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)).
+    On the first line, a new public function `say-hi` is declared. To create private functions, you would use the `define-private` keyword. Private functions can only be executed by the current smart contract - not from other smart contracts published to the same network. Only public functions can be called from other contracts. The reason public functions exist is to enable re-using code that is already available in other smart contracts, and to enable developers to break complex smart contracts into smaller, simpler smart contracts (an exercise in [separating concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)).
 
     The function doesn't take any parameters and simply returns "hello world" using the [`ok`](https://docs.blockstack.org/core/smart/clarityref#ok) response constructor.
 
@@ -146,9 +146,9 @@ Note that we're importing modules from the `@blockstack/clarity` package:
 import { Client, Provider, ProviderRegistry, Result } from "@blockstack/clarity";
 ```
 
-### Initiliazing a client
+### Initializing a client
 
-At the test start, we are initializing contract instance `helloWorldClient` and a provider that simulates interactions with the Stacks 2.0 blockchain.
+At the test start, we are initializing a contract instance `helloWorldClient` and a provider that simulates interactions with the Stacks 2.0 blockchain. If this were in a production environment, the contract instance would be the equivalent of a contract deployed to the blockchain. The provider would be the Stacks blockchain.
 
 ```js
 let helloWorldClient: Client;
