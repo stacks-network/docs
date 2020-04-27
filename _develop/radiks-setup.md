@@ -47,7 +47,7 @@ The easiest way to run `radiks-server` is to use the pre-packaged `node.js` serv
     ```bash
     yarn global add radiks-server
     ```
-   The default port for Mongodb is `27017`; your instance may be configured differently.  By default, Radiks-server will use `'MongoDB://localhost:27017/radiks-server'` as the `MongoDB_URI` value. This is suitable for local testing, but in production, you'll want to change the hostname and possibly the database name.
+   The default port for Mongodb is `27017`; your instance may be configured differently.  By default, Radiks-server will use `'mongodb://localhost:27017/radiks-server'` as the `MongoDB_URI` value. This is suitable for local testing, but in production, you'll want to change the hostname and possibly the database name.
 
 3. Start the `radiks-server` in the command line to confirm your installation. 
 
