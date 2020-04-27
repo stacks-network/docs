@@ -11,6 +11,13 @@ permalink: /:collection/:path.html
 * TOC
 {:toc}
 
+### Prerequisites
+Note: If you use Linux, you may need to manually install [`libssl-dev`](https://wiki.openssl.org/index.php/Libssl_API) and other packages. In your command line, run the following to get all packages:
+
+```bash
+sudo apt-get install build-essential cmake libssl-dev pkg-config
+```
+
 ### Download and install the `stacks-blockchain` repository
 
 The first step is to ensure that you have Rust and the support software installed.
@@ -36,8 +43,6 @@ Install the Stacks node by running:
 ```bash
 cargo install --path ./testnet
 ```
-
-*Note: If you use Linux, you may need to manually install the [`libssl-dev`](https://wiki.openssl.org/index.php/Libssl_API) package.*
 
 ### Run your node
 
