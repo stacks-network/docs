@@ -40,14 +40,14 @@ In this step, you initialize a starter project for Clarity development:
     npm init clarity-starter
     ```
 
-2. After the starter project was loaded up, have to select a template and a name for your local folder. Feel free to hit ENTER both times to accept the default suggestion.
+2. After the starter project was loaded up, you have to select a template and a name for your local project folder. Feel free to hit ENTER both times to accept the default suggestion.
 
     ```bash
     ? Template - one of [hello-world, counter]: (hello-world)
     ? Project name: (clarity-hello-world)
     ```
 
-    Finally, the project dependencies are installed and your project is ready for development.
+    Finally, after the project dependencies have been installed, your project is ready for development.
 
 3. The project is located in a new folder, `clarity-hello-world` by default. Jump into the folder and have a look at the file structure:
 
@@ -192,7 +192,7 @@ const receipt = await helloWorldClient.submitQuery(query);
 const result = Result.unwrapString(receipt);
 ```
 
-As you see, smart contract calls are realized through query definitions. The `createQuery` function defines the name and arguments passed to the smart contract function. With `submitQuery`, the function executed and the response is wrapped into a `Result` object. To obtain the readable result, we use the `unwrapString` function, which should return `hello world`.
+As you see, smart contract calls are realized through query definitions. The `createQuery` function defines the name and arguments passed to the smart contract function. With `submitQuery`, the function is executed and the response is wrapped into a `Result` object. To obtain the readable result, we use the `unwrapString` function, which should return `hello world`.
 
 Now, review the last test `should echo number` on your own and try to understand how arguments are passed to the `echo-number` smart contract.
 
