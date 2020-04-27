@@ -37,6 +37,8 @@ Install the Stacks node by running:
 cargo install --path ./testnet
 ```
 
+*Note: If you use Linux, you may need to manually install the [`libssl-dev`](https://wiki.openssl.org/index.php/Libssl_API) package.*
+
 ### Run your node
 
 You're all set to run a node that connects to the Neon network.
@@ -72,4 +74,12 @@ The above code will compile an optimized binary. To use it, run:
 
 ```bash
 ./target/release/stacks-node ./testnet/conf/neon-follower-conf.toml
+```
+
+### Enable debug logging
+
+In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
+
+```bash
+BLOCKSTACK_DEBUG=1 stacks-node neon
 ```
