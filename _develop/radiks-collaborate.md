@@ -71,16 +71,34 @@ const invitation = await group.makeGroupMembership(usernameToInvite);
 console.log(invitation._id); // the ID used to later activate an invitation
 ```
 
+#### Generic invitation
+
+You can also create a generic invitation that any user can activate, if they are provided with randomly generated secret key, which should be used to decrypt the invitation. The key is generated when the generic invitation is being created.
+
+~~~javascript
+import { GenericGroupInvitation, UserGroup } from 'radiks';
+const group = await UserGroup.findById(myGroupId);
+// Creating generic invitation
+const genericInvitation = await GenericGroupInvitation.makeGenericInvitation(group);
+console.log(genericInvitation._id); // the ID used to later activate an invitation
+console.log(genericInvitation.secretCode); // the secretCode used to later activate an invitation
+~~~
+
+
 ### Accept an invitation
 
 Use the `activate` method on a `GroupInvitation` instance to activate an invitation on behalf of a user:
 
 ```javascript
-import { GroupInvitation } from 'radiks';
+import { GroupInvitation, GenericGroupInvitation } from 'radiks';
 
+// For user-specific invitation
 const invitation = await GroupInvitation.findById(myInvitationID);
 await invitation.activate();
-```
+
+// For generic invitation
+const genericInvitation = await GenericGroupInvitation.findById(myInvitationID);
+await genericInvitation.activate(mySecretCode);```
 
 ## View all activated UserGroups for the current user
 
