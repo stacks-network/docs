@@ -121,8 +121,5 @@ DEPENDENCIES
   jekyll-toc
   tzinfo-data
 
-RUBY VERSION
-   ruby 2.5.1p57
-
 BUNDLED WITH
-   1.16.6
+   1.17.3
