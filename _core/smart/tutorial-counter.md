@@ -19,7 +19,7 @@ In this tutorial, you learn how to implement a smart contract that stores and ma
 * TOC
 {:toc}
 
-## Pre-requisites
+## Prerequisites
 
 Before you get started, you should complete the [Hello World tutorial](tutorial.html).
 
@@ -100,11 +100,13 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     The first line initializes a new integer variable `counter` with the value set to `0` using the [`define-data-var`](https://docs.blockstack.org/core/smart/clarityref#define-data-var) statement. It is important to note that all definition statements in Clarity need to be at the top of the file.
 
+    The `counter` variable is stored in the data space associated with this particular smart contract. The variable is persisted and acts as the global shared state.
+
     To provide access to the `counter` variable from outside of the current smart contract, we need to declare a public function to get it. The last lines of the code add a public `get-counter` function. The [`var-get`](https://docs.blockstack.org/core/smart/clarityref#var-get) statement looks for a variable in the contract's data space and returns it.
 
     With that, you are ready to rerun the tests!
 
-1. Run the tests and review the results:
+3. Run the tests and review the results:
 
     ```shell
     npm test
@@ -114,7 +116,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     However, we don't stop here. Let's implement increment and decrement functions.
 
-2. Add the following lines to the bottom of the `counter.clar` file and take a few seconds to review them:
+4. Add the following lines to the bottom of the `counter.clar` file and take a few seconds to review them:
 
     ```cl
     (define-public (increment)
@@ -127,7 +129,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     Next, a [`var-set`](https://docs.blockstack.org/core/smart/clarityref#var-set) is used to set a new value for the `counter` variable. The new value is constructed using the [`+`](https://docs.blockstack.org/core/smart/clarityref#-add) (add) statement. This statement takes a number of integers and returns the result. Along with add, Clarity provides statements to subtract, multiply, and divide integers. Find more details in the [Clarity language reference](https://docs.blockstack.org/core/smart/clarityref).
 
-3. Finally, take a few minutes and implement a new public function `decrement` to subtract `1` from the `counter` variable. You should have all knowledge needed to succeed at this!
+5. Finally, take a few minutes and implement a new public function `decrement` to subtract `1` from the `counter` variable. You should have all knowledge needed to succeed at this!
 
     Done? Great! Run the tests and make sure all of them are passing. You are looking for 4 passed tests:
 
@@ -145,7 +147,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     **Congratulations! You just implemented your first Clarity smart contract.**
 
-4. Here is how the final smart contract file should look like. Note that you can find the `decrement` function in here - in case you want to compare with your own implementation:
+6. Here is how the final smart contract file should look like. Note that you can find the `decrement` function in here - in case you want to compare with your own implementation:
 
     ```cl
     (define-data-var counter int 0)
