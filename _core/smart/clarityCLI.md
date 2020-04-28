@@ -6,7 +6,7 @@ permalink: /:collection/:path.html
 # Clarity CLI
 {:.no_toc}
 
-You use the `clarity-cli` command to work with smart contracts within the Blockstack virtual environment. This command has the following subcommands:
+You use the `clarity-cli` command to work with smart contracts within a local-only Blockstack virtual environment. This command has the following subcommands:
 
 * TOC
 {:toc}
