@@ -20,15 +20,21 @@ sudo apt-get install build-essential cmake libssl-dev pkg-config
 
 ### Download and install the `stacks-blockchain` repository
 
-The first step is to ensure that you have Rust and the support software installed.
+The first step is to ensure that you have Rust installed. If you are using macOS, Linux, or another Unix-like OS, run the following. If you are on a different OS, follow the [official Rust installation guide](https://www.rust-lang.org/tools/install).
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-If you already have the Rust toolchain installed, you might see this prompt. Select 'Proceed with Installation' to make sure you have the latest version installed.
+If Rust is already installed, you might see this prompt. Select 'Proceed with Installation' to make sure you have the latest version installed.
 
   ![rustup prompt](/core/images/rust-install.png)
+
+In case you just installed Rust, you will need to run the following command to make the `cargo` command available:
+
+```bash
+source $HOME/.cargo/env
+```
 
 Next, clone this repository:
 
