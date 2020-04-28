@@ -10,104 +10,126 @@ This file contains the reference for the Clarity language.
 * TOC
 {:toc}
 
-## Supported types
+## Clarity Type System
 
-This section lists the types available to smart contracts. The only atomic types supported by the Clarity are booleans, integers, fixed length buffers, and principals. 
+The Clarity language uses a strong static type system. Function arguments
+and database schemas require specified types, and use of types is checked
+during contract launch. The type system does _not_ have a universal
+super type. The type system contains the following types:
 
-### Int type
+* `(tuple (key-name-0 key-type-0) (key-name-1 key-type-1) ...)` -
+  a typed tuple with named fields.
+* `(list max-len entry-type)` - a list of maximum length `max-len`, with
+  entries of type `entry-type`
+* `(response ok-type err-type)` - object used by public functions to commit
+  their changes or abort. May be returned or used by other functions as
+  well, however, only public functions have the commit/abort behavior.
+* `(optional some-type)` - an option type for objects that can either be
+  `(some value)` or `none`
+* `(buff max-len)` := byte buffer or maximum length `max-len`.
+* `principal` := object representing a principal (whether a contract principal
+  or standard principal).
+* `bool` := boolean value (`true` or `false`)
+* `int`  := signed 128-bit integer
+* `uint` := unsigned 128-bit integer
 
-The integer type in the Clarity language is a 16-byte signed integer, which allows it to specify the maximum amount of microstacks spendable in a single Stacks transfer. The special `BlockHeightInt` you can obtain with the `get-block-info` function.
+## Public Functions
 
-### Uint type
+Functions specified via `define-public` statements are _public_
+functions and these are the only types of functions which may
+be called directly through signed blockchain transactions. In addition
+to being callable directly from a transaction (see the Stacks wire formats
+for more details on Stacks transactions), public function may be called
+by other smart contracts.
 
-The unsigned integer type (`uint`) in the Clarity language is a 16-byte unsigned integer. Using the unsigned type can ensure that any value underflows (negative numbers) will cause a transaction to be aborted.
+Public functions _must_ return a `(response ...)` type. This is used
+by Clarity to determine whether or not to materialize any changes from
+the execution of the function. If a function returns an `(err ...)`
+type, and mutations on the blockchain state from executing the
+function (and any function that it called during execution) will be
+aborted.
 
-Anywhere a developer wishes to use a literal unsigned integer (for example, incrementing or decrementing an input by a constant) the integer literal should use the `u` prefix, e.g., `u123`.
+In addition to function defined via `define-public`, contracts may expose
+read-only functions. These functions, defined via `define-read-only`, are
+callable by other smart contracts, and may be queryable via public blockchain
+explorers. These functions _may not_ mutate any blockchain state. Unlike normal
+public functions, read-only functions may return any type.
 
-### Bool type
+## Contract Calls
 
-Supports values of `true` or `false`. 
+A smart contract may call functions from other smart contracts using a
+`(contract-call?)` function.
 
-### Buffer type
+This function returns a response type result-- the return value of the
+called smart contract function.
 
-Buffer types represent fixed-length byte buffers. A Buffer can either be constructed using:
-- String literals, for example `"alice.id"` or `hash160("bob.id")`,
-- Hexadecimals literals, for example `0xABCDEF`.
+We distinguish 2 different types of `contract-call?`:
 
-All of the hash functions return buffers:
+* Static dispatch: the callee is a known, invariant contract available
+on-chain when the caller contract is deployed. In this case, the
+callee's principal is provided as the first argument, followed by the
+name of the method and its arguments:
 
-`hash160`
-`sha256`
-`keccak256`
-
-The block properties `header-hash`, `burnchain-header-hash`, and `vrf-seed` are all buffers.
-
-### List type
-
-Clarity supports lists of the atomic types. However, the only variable length lists in the language appear as function inputs.
-
-### Principal type
-
-Clarity provides this primitive for checking whether or not the smart contract transaction was signed by a particular principal. Principals represent a spending entity and are roughly equivalent to a Stacks address. The principal's signature is not checked by the smart contract, but by the virtual machine. A smart contract function can use the  globally defined `tx-sender` variable to obtain the current principal.
-
-Smart contracts may also be principals (represented by the smart contract's identifier). However, there is no private key associated with the smart contract, and it cannot broadcast a signed transaction on the blockchain. A smart contract uses the special variable `contract-name` to refer to its own principal.
-
-[//]: #  You can use the `is-contract?` to determine whether a given principal corresponds to a smart contract. 
-
-### Tuple type
-
-To support the use of named fields in keys and values, Clarity  allows the construction of named tuples using a function `(tuple ...)`, for example
-
-```cl
-(define-constant imaginary-number-a (tuple (real 1) (i 2)))
-(define-constant imaginary-number-b (tuple (real 2) (i 3)))
+```scheme
+(contract-call?
+    .registrar
+    register-name
+    name-to-register)
 ```
 
-This allows for creating named tuples on the fly, which is useful for data maps where the keys and values are themselves named tuples. Values in a given mapping are set or fetched using:
+* Dynamic dispatch: the callee is passed as an argument, and typed
+as a trait reference (<A>).
 
-<table class="uk-table uk-table-small">
-<tr>
-  <th class="uk-width-small">Function</th>
-  <th>Description</th>
-</tr>
-<tr>
-  <td><code>(map-get map-name key-tuple)</code></td>
-  <td>Fetches the value associated with a given key in the map, or returns <code>none</code> if there is no such value.</td>
-</tr>
-<tr>
-   <td><code>(map-set! map-name key-tuple value-tuple)</code></td>
-  <td>Sets the value of key-tuple in the data map</td>
-</tr>
-  <tr>
-   <td><code>(map-insert! map-name key-tuple value-tuple)</code></td>
-  <td>Sets the value of key-tuple in the data map if and only if an entry does not already exist.</td>
-</tr>
-  <tr>
-   <td><code>(map-delete! map-name key-tuple)</code></td>
-  <td>Deletes key-tuple from the data map.</td>
-</tr>
-</table>
+```scheme
+(define-public (swap (token-a <can-transfer-tokens>)
+                     (amount-a uint)
+                     (owner-a principal)
+                     (token-b <can-transfer-tokens>)
+                     (amount-b uint)
+                     (owner-b principal)))
+     (begin
+         (unwrap! (contract-call? token-a transfer-from? owner-a owner-b amount-a))
+         (unwrap! (contract-call? token-b transfer-from? owner-b owner-a amount-b))))
+```
 
+Traits can either be locally defined:
 
-To access a named value of a given tuple, the `(get name tuple)` function returns that item from the tuple.
+```scheme
+(define-trait can-transfer-tokens (
+    (transfer-from? (principal principal uint) (response uint)))
+```
 
-### Optional type
+Or imported from an existing contract:
 
-Represents an optional value. This is used in place of the typical usage of "null" values in other languages, and represents a type that can either be some value or `none`. Optional types are used as the return types of data-map functions.
+```scheme
+(use-trait can-transfer-tokens
+    .contract-defining-trait.can-transfer-tokens)
+```
 
-### Response type
+Looking at trait conformance, callee contracts have two different paths.
+They can either be "compatible" with a trait by defining methods
+matching some of the methods defined in a trait, or explicitely declare
+conformance using the `impl-trait` statement:
 
-Response types represent the result of a public function. Use this type to indicate and return data associated with the execution of the function. Also, the response should indicate whether the function error'ed (and therefore did not materialize any data in the database) or ran `ok` (in which case data materialized in the database).
+```scheme
+(impl-trait .contract-defining-trait.can-transfer-tokens)
+```
 
-Response types contain two subtypes -- a response type in the event of `ok` (that is, a public function returns an integer code on success) and an `err` type (that is, a function returns a buffer on error).
+Explicit conformance should be prefered when adequate.
+It acts as a safeguard by helping the static analysis system to detect
+deviations in method signatures before contract deployment.
 
-### Algebraic
+The following limitations are imposed on contract calls:
 
-Clarity supports limited algebraic data types, it has an `(optional A)` type and a `(response A B)` type.  An `(optioanl A)` type can either be `(some A)` or `(none)`, and a `(response A B)` type can either be `(ok A)` or `(err B)`.  For example, `(some u3)` and `(none)` would have type `(optional uint)`, and `(ok \"woot!\")` and `(err 'false)` would have type `(response (buff 5) bool)`.
-
-The algebraic data types have two variants (e.g. `(some ...)` or `(none)`; `(ok ...)` or `(err ...)`).
-
-The `default-to`, `expects`, and `expects-err!` functions unpack algebraic data types. To *unpack* means to extract one of the "inner" types.  Unpacking an `(optional A)` means to do something to get at `A`, and unpacking `(response A B)` means to do something to get at ether `A` or `B` (where "do something" is specific to the function doing the unpacking). The built-in functions that "unpack" an algebraic data type each behave differently.  
+1. On static dispatches, callee smart contracts _must_ exist at the
+   time of creation.
+2. No cycles may exist in the call graph of a smart contract. This
+   prevents recursion (and re-entrancy bugs). Such structures can
+   be detected with static analysis of the call graph, and will be
+   rejected by the network.
+3. `contract-call?` are for inter-contract calls only. Attempts to
+   execute when the caller is also the callee will abort the
+   transaction.
 
 
 ## Keyword reference
