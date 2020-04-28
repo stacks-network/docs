@@ -3,7 +3,7 @@ layout: smart
 description: "Clarity: Understanding Principals"
 permalink: /:collection/:path.html
 ---
-# Principals
+# Understanding Principals
 {:.no_toc}
 
 _Principals_ are a Clarity native type that represents an entity that can have a token balance. This section discusses principals and how they are used in the Clarity.
