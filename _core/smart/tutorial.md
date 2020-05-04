@@ -30,6 +30,12 @@ node --version
 
 A version >= `v8.12.0` should be returned, indicating that a compatible NodeJS release is installed.
 
+Install the Clarity CLI
+
+```
+npm install -g @blockstack/clarity-cli
+```
+
 ## Step 1: Downloading starter project
 
 In this step, you initialize a starter project for Clarity development:
