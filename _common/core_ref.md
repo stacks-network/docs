@@ -11,7 +11,7 @@ With the launch of Stacks 2.0, a new version of the Blockstack blockchain was re
 The Stacks 2.0 blockchain's Rust implementation exposes JSON RPC endpoints, which can be used to interface with blockchain. [You can find the RPC API references here](https://github.com/blockstack/stacks-blockchain/blob/master/docs/rpc-endpoints.md).
 
 ## RESTful JSON API
-A RESTful JSON API that is hosted by PBC and has a proxy to the JSON RPC endpoints. [You can find the OpenAPI specification and documentation here](https://blockstack.github.io/stacks-blockchain-sidecar/). You can also make API calls from within the documentation.
+A RESTful JSON API that is hosted by PBC and has a proxy to the JSON RPC endpoints. [You can find the OpenAPI specification and documentation here](https://blockstack.github.io/stacks-blockchain-sidecar/).
 
 Using this API (sometimes referred to as "sidecar") requires you to trust the client but provides a faster onboarding experience. It also addresses performance issues for which querying a node itself would be too slow or difficult.
 
