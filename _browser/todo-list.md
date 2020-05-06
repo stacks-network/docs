@@ -189,19 +189,27 @@ in and sign out is handled in each of these files:
 | `components/Signin.js ` | Code for the initial sign on page.          |
 | `components/Profile.js` | Application data storage and user sign out. |
 
-The `src/components/App.js` code configures an `AppConfig` object and then uses this to create a `UserSession`. Then, the application calls a [`redirectToSignIn()`](https://blockstack.github.io/blockstack.js#redirectToSignIn) function which generates the `authRequest` and redirects the user to the Blockstack authenticator:
+<!-- The `src/components/App.js` code configures an `AppConfig` object and then uses this to create a `UserSession`. Then, the application calls a [`redirectToSignIn()`](https://blockstack.github.io/blockstack.js#redirectToSignIn) function which generates the `authRequest` and redirects the user to the Blockstack authenticator: -->
+
+The `src/components/App.js` code configures a `UserSession` and other `authOptions`, which are passed to the `Connect` component. The `Connect` component acts as a "provider" for the rest of your application, and essentially creates a re-usable configuration for you.
+
+In the `src/components/Signin.js` component, we are then calling the `useConnect` hook. This hook returns many helper functions, one of which is `doOpenAuth`. Calling this method will being the authentication process. First, it injects a modal into your application, which acts as a way of "warming up" your user to Blockstack authentication. When the user continues, they are redirected to the Blockstack authenticator, where they can finish signing up.
 
 ```js
-...
-const userSession = new UserSession({ appConfig })
+import React from 'react';
+import { useConnect } from '@blockstack/connect';
 
-export default class App extends Component {
+export const Signin = () => {
+  const { doOpenAuth } = useConnect();
 
-  handleSignIn(e) {
-    e.preventDefault();
-    userSession.redirectToSignIn();
-  }
-...
+  return (
+    <button
+      onClick={() => doOpenAuth()}
+    >
+      Sign In with Blockstack
+    </button>
+  )
+};
 ```
 
 Once the user authenticates, the application handles the `authResponse` in the `src/components/Profile.js` file. :
