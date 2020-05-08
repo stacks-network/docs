@@ -6,9 +6,7 @@ permalink: /:collection/:path.html
 
 {:.no_toc}
 
-
-
-You can use the blockstack.js library to create and register an ID on the Stacks blockchain. This section describes the `Profile` object and contains the following topics:
+You can use the blockstack.js library to create and register an Blockstack username on the Stacks blockchain. This section describes the `Profile` object and contains the following topics:
 
 * TOC
 {:toc}
@@ -21,7 +19,7 @@ Profile data is stored using Gaia on the user's selected storage provider. An ex
 https://gaia.blockstack.org/hub/1EeZtGNdFrVB2AgLFsZbyBCF7UTZcEWhHk/profile.json
 ```
 
-Follow these steps to create and register a profile for a Blockstack ID:
+Follow these steps to create and register a profile for a Blockstack username (`identifier`):
 
 1. Create a JSON profile object
 2. Split up the profile into tokens, sign the tokens, and put them in a token file
