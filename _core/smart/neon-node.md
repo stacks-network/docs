@@ -80,7 +80,7 @@ To get a keychain, the simplest way is to use the `blockstack-cli`. We'll use th
 npx blockstack-cli@1.1.0-beta.1 make_keychain -t
 ```
 
-After this runs, you should see some output that looks like this:
+After this runs, you'll probably see some installation logs, and at the end you should see some JSON that looks like this:
 
 ```json
 {
@@ -94,7 +94,7 @@ After this runs, you should see some output that looks like this:
 }
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and head over to [the Stacks testnet website](https://testnet.blockstack.org/faucet). In the BTC faucet section, past in your `btcAddress`, and submit. You'll be sent 0.5 testnet BTC to that address. Don't lose this information - we'll need to use the `privateKey` field later on.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and head over to [the Stacks testnet website](https://testnet.blockstack.org/faucet). In the BTC faucet section, past in your `btcAddress`, and submit. You'll be sent 0.5 testnet BTC to that address. **Don't lose this information** - we'll need to use the `privateKey` field later on.
 
 Now, we need to configure out node to use this Bitcoin keychain. In the `stacks-blockchain` folder, create a new file called `testnet/stacks-node/conf/neon-miner-conf.toml`.
 
@@ -135,7 +135,7 @@ Now, grab your `privateKey` from earlier, when you ran the `make_keychain` comma
 To run your miner, run this in the command line:
 
 ```bash
-stacks-node start config=./testnet/stacks-node/conf/neon-miner-conf.toml
+stacks-node start --config=./testnet/stacks-node/conf/neon-miner-conf.toml
 ```
 
 Your node should start. It will take some time to sync, and then your miner will be running!
