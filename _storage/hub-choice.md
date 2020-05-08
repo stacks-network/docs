@@ -3,6 +3,9 @@ layout: storage
 description: "Storing user data with Blockstack"
 permalink: /:collection/:path.html
 ---
+
+{% include note.html content="The functionality described in this tutorial has been deprecated with the Blockstack Browser. It will continue working only for apps that have not yet upgraded to Blockstack Connect." %}
+
 # Hubs and user choice
 
 Blockstack operates a default Gaia storage hub at `https://hub.blockstack.org`.
