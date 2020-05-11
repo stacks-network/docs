@@ -47,7 +47,7 @@ cd stacks-blockchain
 Install the Stacks node by running:
 
 ```bash
-cargo install --path ./testnet
+cargo install --path=./testnet/stacks-node
 ```
 
 ### Run your node
