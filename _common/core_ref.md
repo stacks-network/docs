@@ -11,7 +11,7 @@ With the launch of Stacks 2.0, a new version of the Blockstack blockchain was re
 The Stacks 2.0 blockchain's Rust implementation exposes JSON RPC endpoints, which can be used to interface with the Stacks blockchain. [You can find the RPC API references here](https://docs.blockstack.org/core/smart/rpc-api.html).
 
 ## Explorer API (RESTful JSON)
-The Explorer API was built to maintain pageable materialized views of the Stacks 2.0 Blockchain. It is a server that exposes a RESTful JSON API, hosted by PBC. It introduces aidditonal functionality (e.g. get all transactions), as well as proxies calls directly to Stacks Node. [You can find the OpenAPI specification and documentation here](https://blockstack.github.io/stacks-blockchain-sidecar/).
+The Explorer API is built to serve pageable materialized views of the Stacks 2.0 Blockchain. It is a server that exposes a RESTful JSON API, hosted by PBC. It introduces additional functionality (e.g. get all transactions), as well as proxies calls directly to Stacks Node. [You can find the OpenAPI specification and documentation here](https://blockstack.github.io/stacks-blockchain-sidecar/).
 
 *Note: Using this API requires you to trust the server, but provides a faster onboarding experience. It also addresses performance issues for which querying a node itself would be too slow or difficult.*
 
