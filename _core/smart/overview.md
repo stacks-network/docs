@@ -6,20 +6,18 @@ permalink: /:collection/:path.html
 # Introduction to Clarity
 {:.no_toc}
 
-Clarity is a smart contracting language for use with the Stacks 2.0 blockchain. It supports programmatic control over digital assets.
+Clarity is a programming langauge for writing smart contracts on the Stacks 2.0 blockchain. It supports programmatic control over digital assets.
 
 * TOC
 {:toc}
 
 ## Smart contracts
 
-Smart contracts encode and enforce the rules for modifying a particular set of data as shared among people and entities who don't necessarily trust each other. For example, a smart contract could allow creators to add a new tv show to a streaming service, but require that users first pay for a decryption key before viewing it. To do this, the smart contract could be written such that the movie creator had to publicly disclose the decryption key in order to receive payment. The movie creators would therefore be incentivized to work on tv show episodes that people want to watch, based on the viewers' upfront payments that are locked-in until the creator releases the episode and the decryption key.
+Smart contracts encode and enforce rules for modifying a particular set of data that is shared among people and entities who don't necessarily trust each other. For example, a smart contract can hold funds in escrow until multiple parties agree to release them, create its own ledger and keep track of its own novel tokens (fungible or non-fungible), and even help make supply chains more transparent.
 
-Because smart contracts run on top of a blockchain, anyone can query them, and anyone can submit transactions to execute them. A smart contract execution can result in new transactions being written to the blockchain.
+Because smart contracts are programs that exist in a blockchain, anyone can query them, and anyone can submit transactions to execute them. A smart contract execution can result in new transactions being written to the blockchain.
 
-Apps use the blockchain to manage a global state that is visible to the public. To get back to the streaming service example, the global state could include a list of user that paid for a specific tv show episode. This is possible because the blockchain stores the history of all accepted transactions.
-
-Anyone can audit the blockchain in order to independently verify that an app's global shared state has been managed correctly according to the smart contract's rules.
+Apps can take advantage of smart contracts to manage a global state that is visible to the public. Anyone can audit the blockchain in order to independently verify that an app's global shared state has been managed correctly according to the smart contract's rules.
 
 ## Use cases
 
@@ -44,11 +42,11 @@ A Clarity smart contract is composed of two parts &mdash; a data space and a set
 
 Note some of the key Clarity language rules and limitations.
 
-* The only atomic types are booleans, integers, fixed length buffers, and principals
-* Recursion is illegal and there is no lambda function.
+* The only primitive types are booleans, integers, buffers, and principals
+* Recursion is illegal and there are no anonymous functions.
 * Looping may only be performed via `map`, `filter`, or `fold`
-* There is support for lists of the atomic types, however, the only variable length lists in the language appear as function inputs; There is no support for list operations like append or join.
-* Variables are created via `let` binding and there is no support for mutating functions like `set`.
+* There is support for lists, however, the only variable length lists in the language appear as function inputs; There is no support for list operations like append or join.
+* Variables are immutable.
 
 ## Learning Clarity
 
