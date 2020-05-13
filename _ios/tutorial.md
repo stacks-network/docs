@@ -71,14 +71,14 @@ $ which npm npx
 
 If you don't have these installed, take a moment to install or upgrade as needed.
 
-### Install the CocoaPods 1.6.0.beta.1 dependency manager
+### Install the CocoaPods 1.6.0 dependency manager
 
 The sample application only runs on devices with iOS 11.0 or higher. You install
 the Blockstack iOS SDK through the CocoaPods. Cocoapods is a dependency manager
 for Swift and Objective-C Cocoa projects. It’s a simple, user friendly way to
 use libraries from the community in your project.
 
-You must use the `1.6.0.beta.1` version of CocoaPods or newer to avoid an
+You must use the `1.6.0` version of CocoaPods or newer to avoid an
 incapability between Cocoapods and XCode. Before starting the tutorial, confirm
 you have installed CocoaPods.
 
@@ -500,7 +500,7 @@ Rather than have you build up your own UI in the interface builder, this section
     defines the graphical elements, and their functionality will be defined in 
     a respective `.swift` file.
 
-3. Within the `<viewController>`  element, replace the existing `<view>` subelement with the following:
+3. Within the `<viewController>`  element, replace the existing `<view>` sub-element with the following:
 
    ```xml
    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
@@ -619,7 +619,7 @@ registred it with Blockstack and the app would be available on the Web. This
 example skips this registration step and uses an example application we've
 already created for you:
 
-`https://heuristic-brown-7a88f8.netlify.com/redirect.html`
+`https://heuristic-brown-7a88f8.netlify.app/redirect.html`
 
 This web application already has a redirect in place for you. You'll reference
 this application in your mobile add for now. In XCode, do the following;
@@ -687,8 +687,8 @@ this application in your mobile add for now. In XCode, do the following;
        } else {
            print("Currently signed out so signing in.")
            // Address of deployed example web app
-           Blockstack.shared.signIn(redirectURI: URL(string: "https://heuristic-brown-7a88f8.netlify.com/redirect.html")!,
-                                    appDomain: URL(string: "https://heuristic-brown-7a88f8.netlify.com")!) { authResult in
+           Blockstack.shared.signIn(redirectURI: URL(string: "https://heuristic-brown-7a88f8.netlify.app/redirect.html")!,
+                                    appDomain: URL(string: "https://heuristic-brown-7a88f8.netlify.app")!) { authResult in
                                        switch authResult {
                                        case .success(let userData):
                                            print("Sign in SUCCESS", userData.profile?.name as Any)
