@@ -1,7 +1,7 @@
 ---
 layout: core
-title: "Stacks Node API"
-description: Interacting with the Blockstack Blockchain
+title: "Stacks Blockchain APIs"
+description: Interacting with the Stacks 2.0 Blockchain
 permalink: /:collection/:path.html
 ---
 
