@@ -78,8 +78,8 @@ the Blockstack iOS SDK through the CocoaPods. Cocoapods is a dependency manager
 for Swift and Objective-C Cocoa projects. It’s a simple, user friendly way to
 use libraries from the community in your project.
 
-You must use the `1.6.0` version of CocoaPods or newer to avoid an
-incapability between Cocoapods and XCode. Before starting the tutorial, confirm
+You must use CocoaPods version `1.6.0` or newer to avoid an
+incompatibility between Cocoapods and XCode. Before starting the tutorial, confirm
 you have installed CocoaPods.
 
 ```bash
