@@ -6,7 +6,7 @@ permalink: /:collection/:path.html
 # Introduction to Clarity
 {:.no_toc}
 
-Clarity is a programming langauge for writing smart contracts on the Stacks 2.0 blockchain. It supports programmatic control over digital assets.
+Clarity is a programming language for writing smart contracts on the Stacks 2.0 blockchain. It supports programmatic control over digital assets.
 
 * TOC
 {:toc}
