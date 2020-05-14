@@ -13,11 +13,10 @@ content:
 * TOC
 {:toc}
 
-This tutorial was extensively tested using Android Studio 3.1 on a MacBook Air
-running High Sierra 10.13.4. If your environment is different, you may encounter
+This tutorial was extensively tested using Android Studio 3.6 on a Dell XPS 13
+running Ubuntu 19. If your environment is different, you may encounter
 slight or even major discrepancies when performing the procedures in this
-tutorial. Please [join the Blockstack community
-Slack](https://slofile.com/slack/blockstack) and post questions or comments to
+tutorial. Please [join the Blockstack discord server](https://chat.blockstack.org) and post questions or comments to
 the `#support` channel.
 
 Finally, this tutorial is written for all levels from the beginner to the most
@@ -36,7 +35,7 @@ intended for user on an Android phone.
 
 ![](images/final-app.png)
 
-Only users with an existing `blockstack.id` can run your
+Only users with an existing blockstack id can run your
 final sample application. When complete, users interact with the sample
 application by doing the following:
 
@@ -45,7 +44,7 @@ application by doing the following:
 ## Set up your environment
 
 This sample application has two code bases, a Blockstack `hello-blockstack`
-application and a `hello-andriod` Android application. Before you start
+web application and a `hello-andriod` Android application. Before you start
 developing the sample, there are a few elements you need in your environment.
 
 ### Install Android Studio
@@ -56,7 +55,7 @@ step. However, you will need to adjust the remaining instructions for your
 environment.
 
 Follow the installation instructions to download and [Android Studio
-3.1](https://developer.android.com/studio/install) for your operating system.
+3.6](https://developer.android.com/studio/install) for your operating system.
 Depending on your network connection, this can take between 15-30 minutes.
 
 ![](images/studio-download.png)
@@ -75,27 +74,10 @@ $ which npm npx
 
 If you don't have these installed, take a moment to install or upgrade as needed.
 
-### Install the Blockstack test rig
+## Build the Blockstack hello-world web app
 
-Users interact with Blockstack-enabled applications through a web browser. You
-can Blockstack in test mode, on `localhost` or you can interact with completed
-apps through the Blockstack webapp which is available at
-[https://browser.blockstack.org/].
-
-If you have already installed Blockstack for testing locally and have an
-existing Blockstack ID, skip this section.  Otherwise, continue onto install
-Blockstack.
-
-1. Go to  [Blockstack](https://blockstack.org/install)
-
-    ![](images/blockstack-install.png)
-
-2. Install the version appropriate for your operating system.
-
-## Build the Blockstack hello-world
-
-In this section, you build a Blockstack `hello-world` application. Then, you
-modify the `hello-world` to interact with the Android app via a redirect.
+In this section, you build a Blockstack `hello-world` web application that acts as the companion site to your
+Android application.
 
 ### Generate and launch your hello-blockstack application
 
@@ -119,20 +101,16 @@ In this section, you build an initial React.js application called
 3. Use the Blockstack application generator to create your initial `hello-blockstack` application.
 
     ```bash
-    $ npx generator-blockstack --react
-      npx: installed 338 in 13.792s
+    $ npx generator-blockstack --plain
         create package.json
         create .gitignore
         create webpack.config.js
         create netlify.toml
         create firebase.json
         ...
-        I'm all done. Running npm install for you to install the required dependencies. If this fails, try running the command yourself.
-
-      > fsevents@1.2.9 install /private/tmp/testymc/node_modules/fsevents
-      > node install
-      added 775 packages from 455 contributors and audited 9435 packages in 20.934s
-      found 0 vulnerabilities
+        added 812 packages from 575 contributors and audited 813 packages in 13.176s
+        found 1 high severity vulnerability
+          run `npm audit fix` to fix them, or `npm audit` for details
 
      ```
 
@@ -155,7 +133,7 @@ In this section, you build an initial React.js application called
     ```bash
     $ npm run start
 
-    > hello-blockstack@0.0.0 start /Users/meepers/repos/hello-blockstack
+    > hello-blockstack@0.0.0 start /Users/user/repos/hello-blockstack
     > webpack-dev-server
 
     Project is running at http://localhost:8080/
@@ -182,7 +160,7 @@ In this section, you build an initial React.js application called
    At this point, the browser is running a Blockstack server on your local host.
    This is for testing your applications only.
 
-6. Choose **Sign in with Blockstack**
+6. Choose **Get started**
 
    The system displays a prompt allowing you to create a new Blockstack ID or restore an existing one.
 
@@ -193,7 +171,7 @@ In this section, you build an initial React.js application called
     If you are restoring an existing ID, you may see a prompt about your user
     being nameless, ignore it. At this point you have only a single application
     on your test server.  So, you should see this single application, with your
-    own `blockstack.id` display name, once you are signed in:
+    own `blockstack.id`, once you are signed in:
 
     ![](images/running-app.png)
 
