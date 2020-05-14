@@ -143,3 +143,23 @@ Then, you can use API methods under the `blockstackConnect` global variable:
 const authOptions = { /** See docs above for options */ };
 blockstackConnect.showBlockstackConnect(authOptions);
 ```
+
+## Handling redirect fallbacks
+
+Connect is built to use popups with the [`window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) API, which provides a much better and seamless user experience. However, there are times when this flow can fail. For example, the popup may be blocked, or the `window.postMessage` API might not work properly (which often happens on mobile browsers).
+
+To make sure your app handles this gracefully, you'll need to handle the case where authentication is performed through regular HTTP redirects. With redirects, your users will be sent back to your app at a URL like:
+
+`${authOptions.redirectTo}?authResponse=....`
+
+To finalize authentication with this flow, you'll need to utilize the `UserSession` methods `isSignInPending()` and `handlePendingSignIn()`. For more information, check out the [blockstack.js API reference](https://blockstack.github.io/blockstack.js/).
+
+```js
+const userSession = new UserSession(appConfig);
+
+// ... call this code on page load
+if (userSession.isSignInPending()) {
+  const userData = await userSession.handlePendingSignIn();
+  // your user is now logged in.
+}
+```
