@@ -146,9 +146,9 @@ blockstackConnect.showBlockstackConnect(authOptions);
 
 ## Handling redirect fallbacks
 
-Connect is built to use popups with the `window.postMessage` API, which provides a much better and seamless user experience. However, there are times when this flow can fail. For example, the popup may be blocked, or the `window.postMessage` API might not work properly (which often happens on mobile browsers).
+Connect is built to use popups with the [`window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) API, which provides a much better and seamless user experience. However, there are times when this flow can fail. For example, the popup may be blocked, or the `window.postMessage` API might not work properly (which often happens on mobile browsers).
 
-To make sure your app handles this gracefully, you'll need to handle the case where authentication is performed through vanilla redirects. With redirects, your users will be sent back to your app at a URL like:
+To make sure your app handles this gracefully, you'll need to handle the case where authentication is performed through regular HTTP redirects. With redirects, your users will be sent back to your app at a URL like:
 
 `${authOptions.redirectTo}?authResponse=....`
 
