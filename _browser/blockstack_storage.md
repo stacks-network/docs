@@ -14,7 +14,7 @@ topics:
 * TOC
 {:toc}
 
-This tutorial does not teach you about authentication. That is covered in depth [in the hello-blockstack tutorial](hello-blockstack).
+This tutorial does not teach you about authentication. That is covered in depth [in the guide to Blockstack Connect](/develop/connect/get-started).
 
 <!--TODO: authentication tutorial-->
 <!--Strictly speaking not sure it is necessary here to send them out-->
@@ -32,8 +32,7 @@ to follow along, basic familiarity with React.js is helpful. When complete, the 
 - displaying statuses in the user profile
 - looking up the profiles and statuses of other users
 
-The basic identity and storage services are provided by `blockstack.js`. To test
-the application, you need to have already [registered a Blockstack ID](ids-introduction).
+The basic identity and storage services are provided by `blockstack.js`.
 
 
 For this tutorial, you will use the following tools:
