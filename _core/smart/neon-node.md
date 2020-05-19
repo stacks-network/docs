@@ -145,14 +145,14 @@ Your node should start. It will take some time to sync, and then your miner will
 The steps above are great for trying to run a node temporarily. If you want to host a node on a server somewhere, you might want to generate an optimized binary. To do so, use the same configuration as above, but run:
 
 ```bash
-cd testnet
+cd testnet/stacks-node
 cargo build --release --bin stacks-node
 ```
 
 The above code will compile an optimized binary. To use it, run:
 
 ```bash
-cd ..
+cd ../..
 ./target/release/stacks-node start --config=./testnet/conf/neon-follower-conf.toml
 ```
 
