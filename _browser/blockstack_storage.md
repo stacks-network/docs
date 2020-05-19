@@ -14,7 +14,7 @@ topics:
 * TOC
 {:toc}
 
-This tutorial does not teach you about authentication. That is covered in depth [in the hello-blockstack tutorial](hello-blockstack).
+This tutorial does not teach you about authentication. That is covered in depth [in the guide to Blockstack Connect](/develop/connect/get-started).
 
 <!--TODO: authentication tutorial-->
 <!--Strictly speaking not sure it is necessary here to send them out-->
@@ -32,8 +32,7 @@ to follow along, basic familiarity with React.js is helpful. When complete, the 
 - displaying statuses in the user profile
 - looking up the profiles and statuses of other users
 
-The basic identity and storage services are provided by `blockstack.js`. To test
-the application, you need to have already [registered a Blockstack ID](ids-introduction).
+The basic identity and storage services are provided by `blockstack.js`.
 
 
 For this tutorial, you will use the following tools:
@@ -220,48 +219,36 @@ These are the `UserSession.putFile`, `UserSession.getFile`, and `lookupProfile` 
 
 1. Open the `src/components/Profile.js` file.
 
-2. Replace the initial state in the `constructor()` method so that it holds the key properties required by the app.
+2. Replace the initial state in the component method so that it holds the key properties required by the app.
 
-    This code constructs a Blockstack `Person` object to hold the profile. Your constructor should look like this:
+    This code constructs a Blockstack `Person` object to hold the profile. Your component should look like this:
 
     ```javascript
-    constructor(props) {
-      super(props);
-
-      this.state = {
-        person: {
-          name() {
-            return 'Anonymous';
-          },
-          avatarUrl() {
-            return avatarFallbackImage;
-          },
-        },
-        username: "",
-        newStatus: "",
-        statuses: [],
-        statusIndex: 0,
-        isLoading: false
-      };
+    export const Profile = ({ userData, handleSignOut }) => {
+      const [newStatus, setNewStatus] = React.useState('');
+      const [statuses, setStatuses] = React.useState([]);
+      const [statusIndex, setStatusIndex] = React.useState(0);
+      const [isLoading, setLoading] = React.useState(false);
+      const [username, setUsername] = React.useState(userData.username);
+      const [person, setPerson] = React.useState(new Person(userData.profile));
+      const { authOptions } = useConnect();
+      const { userSession } = authOptions;
+      // ...
     }
     ```
 
 
-3. Locate the `render()` method.
-4. Modify the `render()` method to add a text input and submit button to the 
+3. Modify the rendered result to add a text input and submit button to the 
    by replacing it with the code below:
 
     The following code renders the `person.name` and `person.avatarURL`
     properties from the profile on the display:
 
     ```javascript
-    render() {
-      const { handleSignOut, userSession } = this.props;
-      const { person } = this.state;
-      const { username } = this.state;
+    export const Profile = ({ userData, handleSignOut }) => {
+      // ... state setup from before
 
       return (
-        !userSession.isSignInPending() && person ?
         <div className="container">
           <div className="row">
             <div className="col-md-offset-3 col-md-6">
@@ -289,15 +276,15 @@ These are the `UserSession.putFile`, `UserSession.getFile`, and `lookupProfile` 
               <div className="new-status">
                 <div className="col-md-12">
                   <textarea className="input-status"
-                    value={this.state.newStatus}
-                    onChange={e => this.handleNewStatusChange(e)}
+                    value={newStatus}
+                    onChange={handleNewStatus}
                     placeholder="Enter a status"
                   />
                 </div>
                 <div className="col-md-12">
                   <button
                     className="btn btn-primary btn-lg"
-                    onClick={e => this.handleNewStatusSubmit(e)}
+                    onClick={handleNewStatusSubmit}
                   >
                     Submit
                   </button>
@@ -306,7 +293,7 @@ These are the `UserSession.putFile`, `UserSession.getFile`, and `lookupProfile` 
 
             </div>
           </div>
-        </div> : null
+        </div>
       );
     }
     ```
@@ -315,61 +302,36 @@ These are the `UserSession.putFile`, `UserSession.getFile`, and `lookupProfile` 
    user's Blockstack ID. To display this, your app must extract the ID from the
    user profile data.
 
-   Notice that the `userSession` property passed into our profile renderer contains
-   the `isSignInPending()` method which checks if a sign in operation is pending.
-
-5. Locate the `componentWillMount()` method.
-6. Add the `username` property below the `person` property.
-
-	 You'll use the Blockstack `loadUserData()` method in our user session to access the `username`.
-
+7. Add two methods in the `Profile` component to handle the status input events:
 
     ```javascript
-    componentWillMount() {
-      const { userSession } = this.props
-      this.setState({
-        person: new Person(userSession.loadUserData().profile),
-        username: userSession.loadUserData().username
-      });
-    }
-    ```
-
-7. Add two methods in the `Profile` class to handle the status input events:
-
-    ```javascript
-    handleNewStatusChange(event) {
-      this.setState({newStatus: event.target.value})
+    const handleNewStatus = (event) => {
+      setNewStatus(event.target.value);
     }
 
-    handleNewStatusSubmit(event) {
-      this.saveNewStatus(this.state.newStatus)
-      this.setState({
-        newStatus: ""
-      })
+    const handleNewStatusSubmit = async (event) => {
+      await saveNewStatus(newStatus);
+      setNewStatus("");
     }
     ```
 
 8. Add a `saveNewStatus()` method to save the new statuses.
 
     ```javascript
-    saveNewStatus(statusText) {
-      const { userSession } = this.props
-      let statuses = this.state.statuses
+    const saveNewStatus = async (statusText) => {
+      const _statuses = statuses
 
       let status = {
-        id: this.state.statusIndex++,
+        id: statusIndex + 1,
         text: statusText.trim(),
         created_at: Date.now()
       }
 
-      statuses.unshift(status)
+      _statuses.unshift(status)
       const options = { encrypt: false }
-      userSession.putFile('statuses.json', JSON.stringify(statuses), options)
-        .then(() => {
-          this.setState({
-            statuses: statuses
-          })
-        })
+      await userSession.putFile('statuses.json', JSON.stringify(_statuses), options);
+      setStatuses(_statuses);
+      setStatusIndex(statusIndex + 1);
     }
     ```
 
@@ -396,13 +358,12 @@ Update `Profile.js` again.
 
     ```javascript
     <div className="col-md-12 statuses">
-      {this.state.isLoading && <span>Loading...</span>}
-      {this.state.statuses.map((status) => (
-          <div className="status" key={status.id}>
-            {status.text}
-          </div>
-        )
-      )}
+      {isLoading && <span>Loading...</span>}
+      {statuses.map((status) => (
+        <div className="status" key={status.id}>
+          {status.text}
+        </div>
+      ))}
     </div>
     ```
    This displays existing state. Your code needs to fetch statuses on page load.
@@ -410,34 +371,26 @@ Update `Profile.js` again.
 4. Add a new method called `fetchData()` after the `saveNewStatus()` method.
 
     ```javascript
-    fetchData() {
-      const { userSession } = this.props
-      this.setState({ isLoading: true })
+    const fetchData = async () => {
+      setLoading(true);
       const options = { decrypt: false }
-      userSession.getFile('statuses.json', options)
-        .then((file) => {
-          var statuses = JSON.parse(file || '[]')
-          this.setState({
-            person: new Person(userSession.loadUserData().profile),
-            username: userSession.loadUserData().username,
-            statusIndex: statuses.length,
-            statuses: statuses,
-          })
-        })
-        .finally(() => {
-          this.setState({ isLoading: false })
-        })
+      const file = await userSession.getFile('statuses.json', options)
+      const _statuses = JSON.parse(file || '[]')
+      setStatusIndex(_statuses.length);
+      setStatuses(_statuses);
+      setLoading(false);
     }
     ```
    By default, `getFile()` this method decrypts data; because the default `putFile()` encrypts it. In this case, the app shares statuses publicly. So, there is no need to decrypt.
 
-5. Call `fetchData()` from the `componentDidMount()` method. 
+5. Call `fetchData()` from the by using React's `useEffect` method, which will fetch data whenever the component's username state is changed.. 
 
     ```javascript
+    // after setting up your component's state
 
-    componentDidMount() {
-      this.fetchData()
-    }
+    React.useEffect(() => {
+      fetchData();
+    }, [username]);
     ```
 
 6. Save the file.
@@ -578,8 +531,13 @@ process URL paths that contain the `.` (dot) character for example,
 3. Add a single method to the `Profile` class that determines if the app is viewing the local user's profile or another user's profile.
 
     ```javascript
-    isLocal() {
-      return this.props.match.params.username ? false : true
+    // Make sure you add this new prop!
+    export const Profile = ({ userData, handleSignOut, match }) => {
+      // ...
+      const isLocal = () => {
+        return match.params.username ? false : true
+      }
+      // ...
     }
     ```
 
@@ -588,37 +546,25 @@ process URL paths that contain the `.` (dot) character for example,
 4. Modify the `fetchData()` method like so:
 
     ```javascript
-    fetchData() {
-      const { userSession } = this.props
-      this.setState({ isLoading: true })
-      if (this.isLocal()) {
+    const fetchData = async () => {
+      setLoading(true);
+      if (isLocal()) {
         const options = { decrypt: false }
-        userSession.getFile('statuses.json', options)
-          .then((file) => {
-            var statuses = JSON.parse(file || '[]')
-            this.setState({
-              person: new Person(userSession.loadUserData().profile),
-              username: userSession.loadUserData().username,
-              statusIndex: statuses.length,
-              statuses: statuses,
-            })
-          })
-          .finally(() => {
-            this.setState({ isLoading: false })
-          })
+        const file = await userSession.getFile('statuses.json', options)
+        const _statuses = JSON.parse(file || '[]')
+        setStatusIndex(_statuses.length);
+        setStatuses(_statuses);
+        setLoading(false);
       } else {
-        const username = this.props.match.params.username
+        const username = match.params.username
 
-        lookupProfile(username)
-          .then((profile) => {
-            this.setState({
-              person: new Person(profile),
-              username: username
-            })
-          })
-          .catch((error) => {
-            console.log('could not resolve profile')
-          })
+        try {
+          const newProfile = await lookupProfile(username)
+          setPerson(new Person(newProfile));
+          setUsername(username);
+        } catch (error) {
+          console.log('Could not resolve profile');
+        }
       }
     }
     ```
@@ -630,40 +576,25 @@ process URL paths that contain the `.` (dot) character for example,
      documentation](http://blockstack.github.io/blockstack.js/#getfile) for
      details.
 
-5. Add the following block to `fetchData()` right after the call to `lookupProfile(username)... catch((error)=>{..}` block:
+5. Add the following block to `fetchData()` right after the call to `setUsername(username)` block:
 
     ```javascript
     const options = { username: username, decrypt: false }
-    userSession.getFile('statuses.json', options)
-      .then((file) => {
-        var statuses = JSON.parse(file || '[]')
-        this.setState({
-          statusIndex: statuses.length,
-          statuses: statuses
-        })
-      })
-      .catch((error) => {
-        console.log('could not fetch statuses')
-      })
-      .finally(() => {
-        this.setState({ isLoading: false })
-      })
+    const file = await userSession.getFile('statuses.json', options)
+    const _statuses = JSON.parse(file || '[]')
+    setStatusIndex(_statuses.length);
+    setStatuses(_statuses);
+    setLoading(false);
     ```
 
     This fetches the user statuses.
 
     Finally, you must conditionally render the logout button, status input textbox, and submit button so they don't show up when viewing another user's profile.
 
-6. Replace the `render()` method with the following:
+6. Replace the returned JSX in the `Profile` component with the following:
 
     ```javascript
-    render() {
-    const { handleSignOut, userSession } = this.props;
-    const { person } = this.state;
-    const { username } = this.state;
-
     return (
-      !userSession.isSignInPending() && person ?
       <div className="container">
         <div className="row">
           <div className="col-md-offset-3 col-md-6">
@@ -680,28 +611,28 @@ process URL paths that contain the `.` (dot) character for example,
                       : 'Nameless Person' }</span>
                   </h1>
                   <span>{username}</span>
-                  {this.isLocal() &&
+                  {isLocal() &&
                     <span>
                       &nbsp;|&nbsp;
-                      <a onClick={ handleSignOut.bind(this) }>(Logout)</a>
+                      <a onClick={handleSignOut}>(Logout)</a>
                     </span>
                   }
                 </div>
               </div>
             </div>
-            {this.isLocal() &&
+            {isLocal() &&
               <div className="new-status">
                 <div className="col-md-12">
                   <textarea className="input-status"
-                    value={this.state.newStatus}
-                    onChange={e => this.handleNewStatusChange(e)}
+                    value={newStatus}
+                    onChange={handleNewStatus}
                     placeholder="What's on your mind?"
                   />
                 </div>
                 <div className="col-md-12 text-right">
                   <button
                     className="btn btn-primary btn-lg"
-                    onClick={e => this.handleNewStatusSubmit(e)}
+                    onClick={handleNewStatusSubmit}
                   >
                     Submit
                   </button>
@@ -709,19 +640,17 @@ process URL paths that contain the `.` (dot) character for example,
               </div>
             }
             <div className="col-md-12 statuses">
-            {this.state.isLoading && <span>Loading...</span>}
-            {this.state.statuses.map((status) => (
+              {isLoading && <span>Loading...</span>}
+              {statuses.map((status) => (
                 <div className="status" key={status.id}>
                   {status.text}
                 </div>
-                )
-            )}
+              ))}
             </div>
           </div>
         </div>
-      </div> : null
+      </div>
     );
-    }
     ```
 
     This checks to ensure that users are viewing their own profile, by wrapping the **Logout** button and inputs with the `{isLocal() && ...}` condition.

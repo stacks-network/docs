@@ -4,9 +4,9 @@ A decentralized application (DApp) and the Blockstack Browser communicate during
 
 ![](/storage/images/app-sign-in.png)
 
-When a user chooses to **Sign in with Blockstack** on a DApp, it calls the `redirectToSignIn()` method which sends an  `authRequest` to the Blockstack Browser. Blockstack passes the token in via a URL query string in the `authRequest` parameter:
+When a user chooses to **Sign in with Blockstack** on a DApp, it calls the `doOpenAuth()` method which sends an  `authRequest` to the Blockstack Authenticator. Blockstack passes the token in via a URL query string in the `authRequest` parameter:
 
-`https://browser.blockstack.org/auth?authRequest=j902120cn829n1jnvoa...`
+`https://app.blockstack.org/#/sign-up?authRequest=j902120cn829n1jnvoa...`
 
 When the Blockstack Browser receives the request, it generates an (`authResponse`) token to the application using an _ephemeral transit key_ . The ephemeral transit key is just used for the particular instance of the application, in this case, to sign the `authRequest`. The application stores the ephemeral transit key during the request generation. The public portion of the transit key is passed in the `authRequest` token. The Blockstack Browser uses the public portion of the key to encrypt an _app-private key_ which is returned via the `authResponse`. 
 
