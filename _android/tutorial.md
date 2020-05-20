@@ -12,8 +12,8 @@ This tutorial is written for readers who are new to either or both Blockstack
 and Android to create a decentralized application. It contains the following
 content:
 
-- TOC
-  {:toc}
+TOC
+{:toc}
 
 This tutorial was extensively tested using Android Studio 3.6 on a Dell XPS 13
 running Ubuntu 19. If your environment is different, you may encounter
@@ -508,78 +508,76 @@ Now that you have created your initial project and verified it running in an emu
 
    ```kotlin
    package blockstack.id.user.hello
+
+    import android.content.Intent
+    import android.os.Bundle
+    import androidx.appcompat.app.AppCompatActivity
+    import androidx.lifecycle.lifecycleScope
+    import kotlinx.android.synthetic.main.activity_main.\*
+    import kotlinx.coroutines.Dispatchers
+    import kotlinx.coroutines.launch
+    import org.blockstack.android.sdk.BlockstackSession
+    import org.blockstack.android.sdk.BlockstackSignIn
+    import org.blockstack.android.sdk.SessionStore
+    import org.blockstack.android.sdk.getBlockstackSharedPreferences
+    import org.blockstack.android.sdk.model.UserData
+    import org.blockstack.android.sdk.model.toBlockstackConfig
+    import org.blockstack.android.sdk.ui.SignInProvider
+    import org.blockstack.android.sdk.ui.showBlockstackConnect
+
+    class MainActivity : AppCompatActivity(), SignInProvider {
+
+        private lateinit var blockstackSession: BlockstackSession
+        private lateinit var blockstackSignIn: BlockstackSignIn
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
+
+            val appConfig =
+                "https://flamboyant-darwin-d11c17.netlify.app".toBlockstackConfig()
+            val sessionStore = SessionStore(getBlockstackSharedPreferences())
+            blockstackSession = BlockstackSession(sessionStore, appConfig)
+            blockstackSignIn = BlockstackSignIn(sessionStore, appConfig)
+            BlockstackSignIn.shouldLaunchInCustomTabs = false
+
+            signInButton.setOnClickListener {
+                showBlockstackConnect()
+            }
+
+            if (intent?.action == Intent.ACTION_VIEW) {
+                // handle the redirect from sign in
+                userDataTextView.text = "Signing in now ..."
+                lifecycleScope.launch(Dispatchers.IO) {
+                    handleAuthResponse(intent)
+                }
+            }
+        }
+
+        private fun onSignIn(userData: UserData) {
+            userDataTextView.text = "Signed in as ${userData.decentralizedID}"
+            signInButton.isEnabled = false
+        }
+
+        private suspend fun handleAuthResponse(intent: Intent) {
+            val authResponse = intent.data?.getQueryParameter("authResponse")
+            if (authResponse != null) {
+                val userData = blockstackSession.handlePendingSignIn(authResponse)
+                if (userData.hasValue) {
+                    // The user is now signed in!
+                    runOnUiThread {
+                        onSignIn(userData.value!!)
+                    }
+                }
+            }
+        }
+
+        override fun provideBlockstackSignIn(): BlockstackSignIn {
+            return blockstackSignIn
+        }
+
+    }
    ```
-
-import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import kotlinx.android.synthetic.main.activity_main.\*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import org.blockstack.android.sdk.BlockstackSession
-import org.blockstack.android.sdk.BlockstackSignIn
-import org.blockstack.android.sdk.SessionStore
-import org.blockstack.android.sdk.getBlockstackSharedPreferences
-import org.blockstack.android.sdk.model.UserData
-import org.blockstack.android.sdk.model.toBlockstackConfig
-import org.blockstack.android.sdk.ui.SignInProvider
-import org.blockstack.android.sdk.ui.showBlockstackConnect
-
-class MainActivity : AppCompatActivity(), SignInProvider {
-
-      private lateinit var blockstackSession: BlockstackSession
-      private lateinit var blockstackSignIn: BlockstackSignIn
-
-      override fun onCreate(savedInstanceState: Bundle?) {
-          super.onCreate(savedInstanceState)
-          setContentView(R.layout.activity_main)
-
-          val appConfig =
-              "https://flamboyant-darwin-d11c17.netlify.app".toBlockstackConfig()
-          val sessionStore = SessionStore(getBlockstackSharedPreferences())
-          blockstackSession = BlockstackSession(sessionStore, appConfig)
-          blockstackSignIn = BlockstackSignIn(sessionStore, appConfig)
-          BlockstackSignIn.shouldLaunchInCustomTabs = false
-
-          signInButton.setOnClickListener {
-              showBlockstackConnect()
-          }
-
-          if (intent?.action == Intent.ACTION_VIEW) {
-              // handle the redirect from sign in
-              userDataTextView.text = "Signing in now ..."
-              lifecycleScope.launch(Dispatchers.IO) {
-                  handleAuthResponse(intent)
-              }
-          }
-      }
-
-      private fun onSignIn(userData: UserData) {
-          userDataTextView.text = "Signed in as ${userData.decentralizedID}"
-          signInButton.isEnabled = false
-      }
-
-      private suspend fun handleAuthResponse(intent: Intent) {
-          val authResponse = intent.data?.getQueryParameter("authResponse")
-          if (authResponse != null) {
-              val userData = blockstackSession.handlePendingSignIn(authResponse)
-              if (userData.hasValue) {
-                  // The user is now signed in!
-                  runOnUiThread {
-                      onSignIn(userData.value!!)
-                  }
-              }
-          }
-      }
-
-      override fun provideBlockstackSignIn(): BlockstackSignIn {
-          return blockstackSignIn
-      }
-
-}
-
-```
 
 ### Run the final app in the emulator
 
@@ -591,7 +589,7 @@ class MainActivity : AppCompatActivity(), SignInProvider {
 ![](images/connect-ui.png)
 
 5. Select **Get Started**
-The system might prompt you how to select a browser.
+   The system might prompt you how to select a browser.
 
 6. Work through the Blockstack prompts to login.
 7. Blockstack redirects you to a web site. Open it with your Android app: Select **Hello Android** and **Always**
@@ -607,4 +605,3 @@ The system might prompt you how to select a browser.
 Congratulations, you've completed your Android app using the Blockstack Android SDK.
 
 Learn more about Blockstack by [trying another tutorial](https://blockstack.org/tutorials).
-```
