@@ -174,7 +174,7 @@ npm run test
     ✓ should have a valid syntax
     deploying an instance of the contract
       ✓ should print hello world message
-      ✓ should echo number
+      ✓ should echo number (54ms)
 
 
   3 passing (182ms)

@@ -37,7 +37,6 @@ You have to select a template and a name for your local folder. For the counter 
 
 ```bash
 ? Template - one of [hello-world, counter]: counter
-? Project name: (clarity-counter)
 ```
 
 Finally, the project dependencies are installed and your project is ready for development. Because you already completed the [Hello World tutorial](tutorial.html), the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
@@ -65,6 +64,10 @@ counter contract test suite
 
 1 passing (734ms)
 3 failing
+
+... # error details
+
+npm ERR! Test failed.  See above for more details.
 ```
 
 It looks like we see some failed tests! That is on purpose - we will implement the new smart contract in the next steps! After every step in this tutorial, we will rerun the tests to ensure we're on the right track.
@@ -89,7 +92,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     The file was already created during the project setup.
 
-2. With the editor of your choice, open the file and add the following lines of code:
+2. With the editor of your choice, open `contracts/counter.clar` and add the following lines of code:
 
     ```cl
     (define-data-var counter int 0)
@@ -151,16 +154,19 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     ```cl
     (define-data-var counter int 0)
+
+    (define-public (get-counter)
+      (ok (var-get counter)))
+
     (define-public (increment)
       (begin
         (var-set counter (+ (var-get counter) 1))
         (ok (var-get counter))))
+
     (define-public (decrement)
       (begin
         (var-set counter (- (var-get counter) 1))
         (ok (var-get counter))))
-    (define-public (get-counter)
-      (ok (var-get counter)))
     ```
 
 With the completion of this tutorial, you ...
@@ -173,5 +179,6 @@ With the completion of this tutorial, you ...
 
 {:.no_toc}
 
+* <a href="#">Coming soon: Deploying contracts and calling public functions</a>
 * <a href="principals.html">Guide: Understanding principals</a>
 * <a href="clarityRef.html">Clarity language reference</a>
