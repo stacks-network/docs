@@ -20,8 +20,8 @@ whether the user already has an existing session in the Blockstack Browser.
 
 <img src="images/kingdom_notin.png" alt="">
 
-Alice can choose to authenticate as one of her Blockstack IDs by selecting the
-ID and clicking the **Approve** button. The Blockstack Browser shows Alice an approval dialog with information about your app including:
+Alice can choose to authenticate as one of her Blockstack usernames by selecting the
+username and clicking the **Approve** button. The Blockstack Browser shows Alice an approval dialog with information about your app including:
 
 * The origin your app was served from
 * Your app's name
@@ -40,11 +40,11 @@ A decentralized application (DApp) and the Blockstack Browser communicate during
 
 ![](/storage/images/app-sign-in.png)
 
-When a user chooses to **Sign in with Blockstack** on a DApp, calls the `redirectToSignIn()` method which sends the user to the Blockstack Browser. When Blockstack Browser is provided an ID, it generates an The browser responds with an authentication token and an _app private key_.
+When a user chooses to **Sign in with Blockstack** on a DApp, calls the `redirectToSignIn()` method which sends the user to the Blockstack Browser. When Blockstack Browser is provided a username, it generates an The browser responds with an authentication token and an _app private key_.
 
 The app private key is application-specific. It is generated from the user's identity address private key using the `appDomain` as input.  The key is ephemeral, it is generated for each execution of a key establishment process. This key is just used for the particular instance of the application, in this case to sign a sign-in request.
 
-This app private key is also deterministic, meaning that for a given Blockstack ID and domain name, the same private key is generated each time. The app private key is securely shared with the app on each authentication and encrypted by the Blockstack Browser. The key serves three functions, it:
+This app private key is also deterministic, meaning that for a given Blockstack username and domain name, the same private key is generated each time. The app private key is securely shared with the app on each authentication and encrypted by the Blockstack Browser. The key serves three functions, it:
 
 * is used to create the credentials that give an app access to the Gaia hub storage bucket for that specific app
 * is used in the end-to-end encryption of files stored for the app on the user's Gaia hub
@@ -120,10 +120,10 @@ Blockstack Browser encrypts secret data such as the app private key using this
 public key and sends it back to the app when the user signs in to the app. The
 transit private key signs the app authentication request.
 
-### Blockstack ID Identity address private key
+### Blockstack username identity address private key
 
 The identity address private key is derived from the user's keychain phrase and
-is the private key of the Blockstack ID that the user chooses to use to sign in
+is the private key of the Blockstack username that the user chooses to use to sign in
 to the app. It is a secret owned by the user and never leaves the user's
 instance of the Blockstack Browser. This private key signs the authentication
 response token for an app to indicate that the user approves sign in to that
@@ -133,7 +133,7 @@ app.
 
 The app private key is an app-specific private key that is generated from the
 user's identity address private key using the `domain_name` as input. It is
-deterministic in that for a given Blockstack ID and `domain_name`, the same
+deterministic in that for a given Blockstack username and `domain_name`, the same
 private key will be generated each time. The app private key is securely shared
 with the app on each authentication, encrypted by the Blockstack Browser with
 the transit public key.
@@ -207,7 +207,7 @@ const requestPayload = {
     private_key, // encrypted private key payload
     public_keys, // single entry array with public key
     profile, // profile object or null if passed by profile_url
-    username, // blockstack id username (if any)
+    username, // blockstack username (if any)
     core_token, // encrypted core token payload
     email, // email if email scope is requested & email available
     profile_url, // url to signed profile token
