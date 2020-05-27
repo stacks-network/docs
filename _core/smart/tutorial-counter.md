@@ -179,6 +179,5 @@ With the completion of this tutorial, you ...
 
 {:.no_toc}
 
-* <a href="#">Coming soon: Deploying contracts and calling public functions</a>
 * <a href="principals.html">Guide: Understanding principals</a>
 * <a href="clarityRef.html">Clarity language reference</a>

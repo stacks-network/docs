@@ -48,7 +48,7 @@ In this step, you initialize a starter project for Clarity development:
 
     Finally, after the project dependencies have been installed, your project is ready for development.
 
-3. The project resources are created in your current folder. Have a look at the projects structure:
+3. The project resources are created in your current folder. Have a look at the project structure:
 
     ```bash
     ls
