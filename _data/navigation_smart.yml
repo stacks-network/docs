@@ -6,6 +6,7 @@
   docs:
   - core/smart/tutorial
   - core/smart/tutorial-counter
+  - core/smart/tutorial-deploy-call
 
 - title: Guides
   docs:
@@ -16,6 +17,4 @@
 - title: References
   docs:
   - core/smart/clarityRef
-  - core/smart/clarityCLI
-  - core/smart/sdk-quickstart
   - core/smart/rpc-api

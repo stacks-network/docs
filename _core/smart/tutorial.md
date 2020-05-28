@@ -34,9 +34,10 @@ A version >= `v8.12.0` should be returned, indicating that a compatible NodeJS r
 
 In this step, you initialize a starter project for Clarity development:
 
-1. Using your terminal, run the following command:
+1. Using your terminal, run the following command to create a new folder an initialize a new project:
 
     ```bash
+    mkdir hello-world; cd hello-world/
     npm init clarity-starter
     ```
 
@@ -193,6 +194,8 @@ const result = Result.unwrapString(receipt);
 As you see, smart contract calls are realized through query definitions. The `createQuery` function defines the name and arguments passed to the smart contract function. With `submitQuery`, the function is executed and the response is wrapped into a `Result` object. To obtain the readable result, we use the `unwrapString` function, which should return `hello world`.
 
 Now, review the last test `should echo number` on your own and try to understand how arguments are passed to the `echo-number` smart contract.
+
+---
 
 With that, you have completed the first Clarity tutorial! In just a few minutes you ...
 

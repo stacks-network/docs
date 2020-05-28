@@ -27,13 +27,14 @@ Before you get started, you should complete the [Hello World tutorial](tutorial.
 
 In this step, you initialize a starter project with additional counter tutorial files:
 
-Using your terminal, run the following command:
+Using your terminal, run the following command to create a new folder an initialize a new project:
 
 ```bash
+mkdir counter; cd counter/
 npm init clarity-starter
 ```
 
-You have to select a template and a name for your local folder. For the counter template used in this tutorial, ensure to type `counter` and hit ENTER:
+You have to select a template. For the counter template used in this tutorial, ensure to type `counter` and hit ENTER:
 
 ```bash
 ? Template - one of [hello-world, counter]: counter
@@ -43,7 +44,7 @@ Finally, the project dependencies are installed and your project is ready for de
 
 ## Step 2: Running tests
 
-mart contracts are often developed in a test-driven approach. This not only improves code quality, but also removes the need to push every iteration to the blockchain before executing it. We will do the same in this project. Now, let's run the tests and review the results:
+Smart contracts are often developed in a test-driven approach. This not only improves code quality, but also removes the need to push every iteration to the blockchain before executing it. We will do the same in this project. Now, let's run the tests and review the results:
 
 Still in the project root directory, run the following command:
 
@@ -169,6 +170,8 @@ Let's get familiar with the tests to understand what the new smart contract shou
         (ok (var-get counter))))
     ```
 
+---
+
 With the completion of this tutorial, you ...
 
 * Experienced test-driven development with Clarity
@@ -179,5 +182,5 @@ With the completion of this tutorial, you ...
 
 {:.no_toc}
 
-* <a href="principals.html">Guide: Understanding principals</a>
+* <a href="tutorial-deploy-call.html">Next tutorial: Deploying and interacting with smart contracts</a>
 * <a href="clarityRef.html">Clarity language reference</a>
