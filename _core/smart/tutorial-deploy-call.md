@@ -10,7 +10,7 @@ permalink: /:collection/:path.html
 
 In this tutorial, you learn how to deploy and interact with a smart contract on the Stacks 2.0 blockchain. By the end of this tutorial, you will ...
 
-* Have a Clarity counter smart contract deployed to the Testnet
+* Have a Clarity smart contract deployed to the Testnet that implements a counter
 * Called public methods of the deployed smart contract
 * Understand how to use the Explorer Sandbox functionality
 * Understand how to use the Blockstack CLI for advanced capabilities
@@ -45,7 +45,7 @@ Before you get started, you should complete the [Counter tutorial](tutorial-coun
 
 ## Step 1: Accessing the Explorer Sandbox
 
-Open up the <a href="https://testnet-explorer.blockstack.org/sandbox" target="_blank">Stacks 2.0 Explorer Sandbox view</a>. You will be asked to sign in with a Blockstack account. Follow the steps on the screen to complete the process.
+Open up the <a href="https://testnet-explorer.blockstack.org/sandbox" target="_blank">Stacks 2.0 Explorer Sandbox view</a>. You will be asked to sign in with a Blockstack account, so you can sign transactions when interacting with the Blockchain. Follow the steps on the screen to complete the process.
 
 Once completed, you will see the Sandbox screen and a confirmation, indicating you were provided with a new STX address for testing purposes.
 
@@ -53,7 +53,7 @@ Once completed, you will see the Sandbox screen and a confirmation, indicating y
 
 ## Step 2: Obtaining STX tokens
 
-Uploading and calling smart contracts requires fees to be paid. For this tutorial, we will limit out interaction to the Testnet, which comes with the capability to request STX tokens that can be used to pay the fees ("STX faucet").
+Uploading and calling smart contracts requires fees to be paid to the network to process the transactions. For this tutorial, we will limit out interaction to the Testnet, which comes with the capability to request STX tokens that can be used to pay the fees ("STX faucet").
 
 Still on the first screen of the Sandbox, you will notice that you are looking at the ["STX faucet"](https://testnet-explorer.blockstack.org/sandbox?tab=faucet) tab. Your new STX address should already be prefilled. Hit "Submit" to request 0.5 STX to be transferred to your account.
 

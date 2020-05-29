@@ -27,14 +27,14 @@ Before you get started, you should complete the [Hello World tutorial](tutorial.
 
 In this step, you initialize a starter project with additional counter tutorial files:
 
-Using your terminal, run the following command to create a new folder an initialize a new project:
+Using your terminal, run the following command to create a new folder and initialize a new project:
 
 ```bash
-mkdir counter; cd counter/
+mkdir counter; cd counter
 npm init clarity-starter
 ```
 
-You have to select a template. For the counter template used in this tutorial, ensure to type `counter` and hit ENTER:
+You must now select a template. Type `counter` and hit ENTER:
 
 ```bash
 ? Template - one of [hello-world, counter]: counter

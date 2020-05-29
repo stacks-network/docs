@@ -34,10 +34,10 @@ A version >= `v8.12.0` should be returned, indicating that a compatible NodeJS r
 
 In this step, you initialize a starter project for Clarity development:
 
-1. Using your terminal, run the following command to create a new folder an initialize a new project:
+1. Using your terminal, run the following command to create a new folder and initialize a new project:
 
     ```bash
-    mkdir hello-world; cd hello-world/
+    mkdir hello-world; cd hello-world
     npm init clarity-starter
     ```
 
