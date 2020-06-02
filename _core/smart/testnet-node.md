@@ -2,6 +2,8 @@
 layout: smart
 description: "Run a Stacks Testnet Node"
 permalink: /:collection/:path.html
+redirect_from:
+  - /core/smart/neon-node.html
 ---
 # Running a Testnet Node
 {:.no_toc}
