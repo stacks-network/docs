@@ -45,7 +45,7 @@ Before you get started, you should complete the [Counter tutorial](tutorial-coun
 
 ## Step 1: Accessing the Explorer Sandbox
 
-Open up the <a href="https://testnet-explorer.blockstack.org/sandbox" target="_blank">Stacks 2.0 Explorer Sandbox view</a>. You will be asked to sign in with a Blockstack account, so you can sign transactions when interacting with the Blockchain. Follow the steps on the screen to complete the process.
+Open up the [Stacks 2.0 Explorer Sandbox view](https://testnet-explorer.blockstack.org/sandbox). You will be asked to sign in with a Blockstack account, so you can sign transactions when interacting with the Blockchain. Follow the steps on the screen to complete the process.
 
 Once completed, you will see the Sandbox screen and a confirmation, indicating you were provided with a new STX address for testing purposes.
 
@@ -103,13 +103,13 @@ The following set of commands will achieve the same goals as steps 1-4.
 
 ```shell
 # Install early release of the new Blockstack CLI for Stacks 2.0
-npm install -g https://github.com/blockstack/cli-blockstack#feature/stacks-2.0-tx
+sudo npm install -g "https://github.com/blockstack/cli-blockstack#feature/stacks-2.0-tx"
 
 # Create a new STX address and save keychain details to a file
 blockstack make_keychain -t > new_keychain.txt
 
 # Call faucet to get STX tokens, replace <stx_address>
-curl -XPOST 'https://sidecar.staging.blockstack.xyz/sidecar/v1/debug/faucet?address=<stx_address>' | json_pp
+curl -XPOST "https://sidecar.staging.blockstack.xyz/sidecar/v1/debug/faucet?address=<stx_address>" | json_pp
 
 # Confirm faucet transaction, replace <stx_address>
 blockstack balance <stx_address> -t
