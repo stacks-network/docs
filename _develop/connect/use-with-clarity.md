@@ -178,13 +178,13 @@ To allow your app's users to deploy arbitrary Clarity contracts, use the `openCo
 ```ts
 import { openContractDeploy } from '@blockstack/connect';
 
-const contractSource = '(begin (print "hello, world"))';
+const codeBody = '(begin (print "hello, world"))';
 // While in beta, you must provide this option:
 const authOrigin = 'https://deploy-preview-301--stacks-authenticator.netlify.app';
 
 openContractDeploy({
   contractName: 'my-contract-name',
-  contractSource,
+  codeBody,
   authOrigin,
   appDetails: {
     name: 'SuperApp',
@@ -200,7 +200,7 @@ Here is the interface for the options you can provide to `openContractDeploy`:
 
 ```ts
 interface ContractDeployOptions {
-  contractSource: string;
+  codeBody: string;
   contractName: string;
   authOrigin?: string;
   appDetails: AuthOptions['appDetails'];
@@ -210,7 +210,7 @@ interface ContractDeployOptions {
 
 parameter | type | optional | description
 ---|---|---|---
-contractSource | string | false | The Clarity source code for this contract
+codeBody | string | false | The Clarity source code for this contract
 contractName | string | false | The name for this contract
 appDetails | object | false | A dictionary that includes `name` and `icon`
 finished | function | false | A callback that is fired when the transaction is signed and broadcasted. Your callback will receive an object back with a `txId` and a `txRaw`, both of which are strings.
