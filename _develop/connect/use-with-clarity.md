@@ -31,7 +31,7 @@ With Connect, you can interact with the Stacks 2.0 blockchain. You can allow you
 
 ## How it works
 
-For your app's users to be able to execute a smart contract function, they need to sign and broadcast a transaction. It's important that users remain control of the private keys that sign these transactions. Connect provides an easy-to-use workflow that allows your users to securely sign transactions.
+For your app's users to be able to execute a smart contract function, they need to sign and broadcast a transaction. It's important that users remain in control of the private keys that sign these transactions. Connect provides an easy-to-use workflow that allows your users to securely sign transactions.
 
 Connect allows you to open the authenticator with parameters indicating the details of the transaction - like the smart contract address, function name, and specific arguments. Your users get the chance to see these details, and then sign and broadcast the transaction in a single click. Their transaction will be securely signed and broadcasted onto the Stacks blockchain. After this is done, a callback is fired to allow you to update your app.
 
