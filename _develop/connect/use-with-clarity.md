@@ -82,7 +82,10 @@ interface ContractCallOptions {
   contractName: string;
   functionArgs?: any[];
   authOrigin?: string;
-  appDetails: AuthOptions['appDetails'];
+  appDetails: {
+    name: string;
+    icon: string;
+  };
   finished: (data: FinishedTxData) => void;
 }
 ```
@@ -157,7 +160,10 @@ interface STXTransferOptions {
   amount: string;
   memo?: string;
   authOrigin?: string;
-  appDetails: AuthOptions['appDetails'];
+  appDetails: {
+    name: string;
+    icon: string;
+  };
   finished: (data: FinishedTxData) => void;
 }
 ```
@@ -203,7 +209,10 @@ interface ContractDeployOptions {
   codeBody: string;
   contractName: string;
   authOrigin?: string;
-  appDetails: AuthOptions['appDetails'];
+  appDetails: {
+    name: string;
+    icon: string;
+  };
   finished: (data: FinishedTxData) => void;
 }
 ```
