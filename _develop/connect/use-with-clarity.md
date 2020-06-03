@@ -108,7 +108,7 @@ To be able to serialize your transaction properly, you need to provide the appro
 - `int` - i.e. `"12"`
 - `bool` - can be "true", "false", "0" or "1"
 - `buff` - i.e. `"asdf"`
-- `principal` - This can be a contract principal, or a standard principal. Examples: `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ"` or `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ.my-contract"`.
+- `principal` - This can be a contract principal, or a standard principal. [Read more about principals](/core/smart/principals.html). Examples: `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ"` or `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ.my-contract"`.
 
 Using these types, each argument is an object with the keys `type` and `value`. For example:
 
