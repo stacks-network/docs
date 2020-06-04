@@ -3,7 +3,7 @@
 - title: Build Decentralized Apps
   desc: Learn how to build decentralized applications using Blockstack's storage and authentication tools.
   icon: code
-  doc: develop/overview_auth
+  doc: browser/hello-blockstack
 
 - title: Build Smart Contracts
   desc: Learn how to develop smart contracts using Blockstack's smart contracting language.

@@ -65,5 +65,5 @@ Although Radiks applications rely on a centrally-hosted database, an application
   </tr>
 </table>
 
-If you are not familiar with Gaia or Blockstack authentication, see 
-[read the Gaia documentation](({{site.baseurl}}/storage/overview.html) and [start with the overview of Blockstack auth](overview_auth.html).
+If you are not familiar with Gaia, see 
+[read the Gaia documentation](({{site.baseurl}}/storage/overview.html).
