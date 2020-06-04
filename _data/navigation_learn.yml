@@ -1,9 +1,3 @@
-- title: Guides
-  docs:
-  - develop/overview_auth
-  - develop/storage
-  - develop/profiles
-  
 - title: Tutorials
   docs:
   - browser/hello-blockstack
@@ -31,6 +25,11 @@
   docs:
   - develop/collections
   - develop/collection-type
+
+- title: Guides
+  docs:
+  - develop/storage
+  - develop/profiles
 
 - title: References
   docs:
