@@ -6,7 +6,7 @@
   docs:
   - core/smart/tutorial
   - core/smart/tutorial-counter
-  - core/smart/tutorial-deploy-call
+  - core/smart/tutorial-test
 
 - title: Guides
   docs:
