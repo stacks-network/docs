@@ -5,11 +5,6 @@ permalink: /:collection/:path.html
 # Guide to Blockstack Connect
 {:.no_toc}
 
-
-Blockstack Connect is a Javascript library for integrating your application with Stacks v2. With Connect, you get some big benefits:
-
-<!-- -  -->
-
 * TOC
 {:toc}
 
@@ -143,3 +138,43 @@ Then, you can use API methods under the `blockstackConnect` global variable:
 const authOptions = { /** See docs above for options */ };
 blockstackConnect.showBlockstackConnect(authOptions);
 ```
+
+## Handling redirect fallbacks
+
+Connect is built to use popups with the [`window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) API, which provides a much better and seamless user experience. However, there are times when this flow can fail. For example, the popup may be blocked, or the `window.postMessage` API might not work properly (which often happens on mobile browsers).
+
+To make sure your app handles this gracefully, you'll need to handle the case where authentication is performed through regular HTTP redirects. With redirects, your users will be sent back to your app at a URL like:
+
+`${authOptions.redirectTo}?authResponse=....`
+
+To finalize authentication with this flow, you'll need to utilize the `UserSession` methods `isSignInPending()` and `handlePendingSignIn()`. For more information, check out the [blockstack.js API reference](https://blockstack.github.io/blockstack.js/).
+
+```js
+const userSession = new UserSession(appConfig);
+
+// ... call this code on page load
+if (userSession.isSignInPending()) {
+  const userData = await userSession.handlePendingSignIn();
+  // your user is now logged in.
+}
+```
+
+## Design Guidance
+
+Blockstack is valuable to users, but it can also be a barrier to those unfamiliar with Blockstack. The following guidelines serve to remedy that and help you onboard as many new users as you can. 
+
+### Delay Blockstack onboarding as long as possible
+
+People will often leave apps when things are asked of them before they experience the app. Give them a chance to try your app before you ask them to sign up with Blockstack. For example, a note taking app could let a new user write a couple of notes before prompting them to save their progress.
+
+### Provide an easy way in for new users
+
+Many new users to your app will not be familiar with Blockstack yet and will be hesitant to click a Blockstack-branded button. Provide a generic button for users that are new to your app and Blockstack. Blockstack Connect will introduce new users to Blockstack and recognize existing users.
+
+![Design Guidance Example](./docs/call-to-action-branding.png)
+
+### Provide a quick way for existing users to sign in
+
+You can point users to a specific part of the Blockstack App. For instance, a “Sign in” button on your website can redirect users to the sign in flow of the Blockstack App. If you do this, make sure you also have an option that is explicitly for new users and that points to the sign up flow.
+
+To implement this functionality, check out our section on sending users to sign in immediately.

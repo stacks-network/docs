@@ -29,7 +29,7 @@ Radiks consists of a database, a pre-built server, and a client. A developer add
 2. Saves a raw JSON of this encrypted data in the user's Gaia storage.
 3. Stores the encrypted data on the Radiks server.
 
-Radiks can store both public and sensitive, non-public data since all data is encrypted by default before it leaves the client. Your application can query Radiks for public data and then decrypt the sensitive information on the client. Radix servers can only return queries for unencrypted data.
+Radiks can store both public and sensitive, non-public data since all data is encrypted by default before it leaves the client. Your application can query Radiks for public data and then decrypt the sensitive information on the client. Radiks servers can only return queries for unencrypted data.
 
 ## How Radiks authorizes writes
 

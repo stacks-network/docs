@@ -3,21 +3,22 @@ layout: learn
 description: Learn about the Android SDK
 permalink: /:collection/:path.html
 ---
+
 # Android DApps
+
 {:.no_toc}
 
 This tutorial is written for readers who are new to either or both Blockstack
 and Android to create a decentralized application. It contains the following
 content:
 
-* TOC
+TOC
 {:toc}
 
-This tutorial was extensively tested using Android Studio 3.1 on a MacBook Air
-running High Sierra 10.13.4. If your environment is different, you may encounter
+This tutorial was extensively tested using Android Studio 3.6 on a Dell XPS 13
+running Ubuntu 19. If your environment is different, you may encounter
 slight or even major discrepancies when performing the procedures in this
-tutorial. Please [join the Blockstack community
-Slack](https://slofile.com/slack/blockstack) and post questions or comments to
+tutorial. Please [join the Blockstack discord server](https://chat.blockstack.org) and post questions or comments to
 the `#support` channel.
 
 Finally, this tutorial is written for all levels from the beginner to the most
@@ -36,7 +37,7 @@ intended for user on an Android phone.
 
 ![](images/final-app.png)
 
-Only users with an existing `blockstack.id` can run your
+Only users with an existing blockstack id can run your
 final sample application. When complete, users interact with the sample
 application by doing the following:
 
@@ -45,7 +46,7 @@ application by doing the following:
 ## Set up your environment
 
 This sample application has two code bases, a Blockstack `hello-blockstack`
-application and a `hello-andriod` Android application. Before you start
+web application and a `hello-andriod` Android application. Before you start
 developing the sample, there are a few elements you need in your environment.
 
 ### Install Android Studio
@@ -56,7 +57,7 @@ step. However, you will need to adjust the remaining instructions for your
 environment.
 
 Follow the installation instructions to download and [Android Studio
-3.1](https://developer.android.com/studio/install) for your operating system.
+3.6](https://developer.android.com/studio/install) for your operating system.
 Depending on your network connection, this can take between 15-30 minutes.
 
 ![](images/studio-download.png)
@@ -75,27 +76,9 @@ $ which npm npx
 
 If you don't have these installed, take a moment to install or upgrade as needed.
 
-### Install the Blockstack test rig
+## Build the Blockstack hello-world web app
 
-Users interact with Blockstack-enabled applications through a web browser. You
-can Blockstack in test mode, on `localhost` or you can interact with completed
-apps through the Blockstack webapp which is available at
-[https://browser.blockstack.org/].
-
-If you have already installed Blockstack for testing locally and have an
-existing Blockstack ID, skip this section.  Otherwise, continue onto install
-Blockstack.
-
-1. Go to  [Blockstack](https://blockstack.org/install)
-
-    ![](images/blockstack-install.png)
-
-2. Install the version appropriate for your operating system.
-
-## Build the Blockstack hello-world
-
-In this section, you build a Blockstack `hello-world` application. Then, you
-modify the `hello-world` to interact with the Android app via a redirect.
+In this section, you build a Blockstack `hello-world` web application that acts as the companion site to your Android application.
 
 ### Generate and launch your hello-blockstack application
 
@@ -106,74 +89,66 @@ In this section, you build an initial React.js application called
 
 1. Create a `hello-blockstack` directory.
 
-    ```bash
-    mkdir hello-blockstack
-    ```
+   ```bash
+   mkdir hello-blockstack
+   ```
 
 2. Change into your new directory.
 
-    ```bash
-    cd hello-blockstack
-    ```
+   ```bash
+   cd hello-blockstack
+   ```
 
 3. Use the Blockstack application generator to create your initial `hello-blockstack` application.
 
-    ```bash
-    $ npx generator-blockstack --react
-      npx: installed 338 in 13.792s
-        create package.json
-        create .gitignore
-        create webpack.config.js
-        create netlify.toml
-        create firebase.json
-        ...
-        I'm all done. Running npm install for you to install the required dependencies. If this fails, try running the command yourself.
+   ```bash
+   $ npx generator-blockstack --plain
+       create package.json
+       create .gitignore
+       create webpack.config.js
+       create netlify.toml
+       create firebase.json
+       ...
+       npm WARN ajv-errors@1.0.1 requires a peer of ajv@>=5.0.0 but none is installed. You must install peer dependencies yourself.
 
-      > fsevents@1.2.9 install /private/tmp/testymc/node_modules/fsevents
-      > node install
-      added 775 packages from 455 contributors and audited 9435 packages in 20.934s
-      found 0 vulnerabilities
+       added 840 packages from 582 contributors and audited 843 packages in 18.84s
+       found 0 vulnerabilities
+   ```
 
-     ```
+   Depending on your environment you may have some warnings with the installation. Optionally, you can fix these before continuing to the next section.
 
-    Depending on your environment you may have some warnings with the installation. Optionally, you can fix these before continuing to the next section.
-    ```
+4. Depending on your environment, respond to the prompts to populate the initial app.
+   You might see a prompt similar to the following:
 
-4. Respond to the prompts to populate the initial app.
+   ```bash
+   [fsevents] Success:
+   "/Users/theuser/repos/hello-blockstack/node_modules/fsevents/lib/binding/Release/node-v59-darwin-x64/fse.node"
+   is installed via remote npm notice created a lockfile as package-lock.json.
+   You should commit this file. added 1060 packages in 26.901s
+   ```
 
-    After the process completes successfully, you see a prompt similar to the following:
+5. After the initial setup you can now run the initial application.
 
-    ```bash
-    [fsevents] Success:
-    "/Users/theuser/repos/hello-blockstack/node_modules/fsevents/lib/binding/Release/node-v59-darwin-x64/fse.node"
-    is installed via remote npm notice created a lockfile as package-lock.json.
-    You should commit this file. added 1060 packages in 26.901s
-    ```
+   ```bash
+   $ npm run start
 
-5. Run the initial application.
-
-    ```bash
-    $ npm run start
-
-    > hello-blockstack@0.0.0 start /Users/meepers/repos/hello-blockstack
+    > hello-blockstack-webpack@0.0.0 start /home/user/hello-blockstack
     > webpack-dev-server
 
-    Project is running at http://localhost:8080/
-    webpack output is served from /
-    404s will fallback to /index.html
-    Hash: 4d2312ba236a4b95dc3a
-    Version: webpack 2.7.0
-    Time: 2969ms
-                                     Asset       Size  Chunks                    Chunk Names
-    ....
-      Child html-webpack-plugin for "index.html":
-         chunk    {0} index.html 541 kB [entry] [rendered]
-             [0] ./~/lodash/lodash.js 540 kB {0} [built]
-             [1] ./~/html-webpack-plugin/lib/loader.js!./src/index.html 533 bytes {0} [built]
-             [2] (webpack)/buildin/global.js 509 bytes {0} [built]
-             [3] (webpack)/buildin/module.js 517 bytes {0} [built]
-     webpack: Compiled successfully.
-     ```
+    ℹ ｢wds｣: Project is running at http://localhost:9000/
+    ℹ ｢wds｣: webpack output is served from /
+    ℹ ｢wds｣: Content not from webpack is served from /home/user/hello-blockstack/dist
+    ℹ ｢wdm｣: Hash: f5d88efe9c9194f66ddd
+    Version: webpack 4.43.0
+    Time: 2733ms
+    Built at: 05/19/2020 10:44:50 AM
+      Asset      Size  Chunks             Chunk Names
+    main.js  5.39 MiB    main  [emitted]  main
+   ....
+    [./src/index.js] 1.8 KiB {main} [built]
+        + 610 hidden modules
+    ℹ ｢wdm｣: Compiled successfully.
+   ```
 
    The system opens a browser displaying your running application.
 
@@ -182,76 +157,23 @@ In this section, you build an initial React.js application called
    At this point, the browser is running a Blockstack server on your local host.
    This is for testing your applications only.
 
-6. Choose **Sign in with Blockstack**
+6. Choose **Get started**
 
    The system displays a prompt allowing you to create a new Blockstack ID or restore an existing one.
 
-    ![](images/create-restore.png)
+   ![](images/create-restore.png)
 
 7. Follow the prompts appropriate to your situation.
 
-    If you are restoring an existing ID, you may see a prompt about your user
-    being nameless, ignore it. At this point you have only a single application
-    on your test server.  So, you should see this single application, with your
-    own `blockstack.id` display name, once you are signed in:
+   At this point you have only a single application
+   on your test server. So, you should see this single application, with your
+   own `blockstack.id`, once you are signed in:
 
-    ![](images/running-app.png)
-
-
-### Add a redirect end point to your application
-
-When a user opens the webapp from the Blockstack Browser on an Android phone,
-you want the web app to redirect the user to your Android application. The work
-you do here will allow it.
-
-1. From the terminal command line, change directory to the root of your sample
-application directory.
-
-2. Use the `touch` command to add a redirect endpoint to your application.
-
-    This endpoint on the web version of your app will redirect Android users back
-    to your mobile app.
-
-    ```bash
-    $ touch public/redirect.html
-    ```
-
-3. Open `redirect.html` and add code to the endpoint.
-
-    ```html
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Hello, Blockstack!</title>
-      <script>
-      function getParameterByName(name) {
-        var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-      }
-
-      var authResponse = getParameterByName('authResponse')
-      window.location="myblockstackapp:" + authResponse
-      </script>
-    <body>
-    </body>
-    </html>
-    ```
-
-    Blockstack apps are identified by their domain names.  The endpoint will
-    receive a get request with the query parameter `authResponse=XXXX` and
-    should redirect the browser to `myblockstackapp:XXXX`.
-
-    `myblockstackapp:` is custom protocol handler. The handler should be unique
-    to your application. Your app's web-based authentication uses this handler
-    to redirect the user back to your Android app. Later, you'll add a reference
-    to this handler in your Android application.
-
-5. Close and save the `redirect.html` file.
-6. Ensure your Blockstack compiles successfully.
+   ![](images/running-app.png)
 
 ## Create the hello-android project
 
-In this section, you'll create an Android application in Android Studio.  You'll
+In this section, you'll create an Android application in Android Studio. You'll
 run the application in the emulator to test it.
 
 ### Create a simple project
@@ -259,46 +181,42 @@ run the application in the emulator to test it.
 In this section, you create an inital project. You'll validate the application's
 iniatial state by creating an emulator to run it in. Open Android Studio and do the following:
 
-
 1. Open Android Studio and choose **Start a new Andriod Studio project**.
 
    If studio is already started, choose **File > New > New Project**.
 
-2. Enter these fields in the **Create Android Project** page.
+2. Choose a project template: select **Empty Activity** and press **Next**
 
-    <table class="uk-table">
-    <tr>
-      <th>Application Name</th>
-      <td><code>hello-android</code></td>
-    </tr>
-    <tr>
-      <th>Company domain</th>
-      <td><code><i>USERNAME</i>.example.com</code></td>
-    </tr>
-    <tr>
-      <th>Project location</th>
-      <td><code>/Users/<i>USERNAME</i>/AndroidStudioProjects/helloandroid</code></td>
-    </tr>
-    <tr>
-      <th>Include Kotlin support</th>
-      <td>Set (checked)</td>
-    </tr>
-    </table>
+3. Enter these fields in the **Create Android Project** page.
 
-3. Press **Next** to display **Target Android Devices**.
-4. Check **Phone and Tablet**.
-5. Choose API 27: Andriod 8.1 (Oreo) for the target version.
-6. Press **Next**.
-7. Choose **Empty Activity** and press **Next**.
-8. Leave the **Configure Activity** dialog with its defaults.
+<table class="uk-table">
+<tr>
+  <th>Name</th>
+  <td><code>Hello Android</code></td>
+</tr>
+<tr>
+  <th>Package name</th>
+  <td><code>blockstack.id.<i>USERNAME</i>.hello</code></td>
+</tr>
+<tr>
+  <th>Project location</th>
+  <td><code>/home/<i>USERNAME</i>/AndroidStudioProjects/helloandroid</code></td>
+</tr>
+<tr>
+  <th>Language</th>
+  <td>Select (Kotlin)</td>
+</tr>
+<tr>
+  <th>Minimum SDK</th>
+  <td>Select (API 21: Android 5.0 (Lollipop))</td>
+</tr>
+</table>
 
-   ![](images/configure-activity.png)
+![](images/configure-activity.png)
 
-9. Press **Finish**.
+4. Press **Finish**.
 
    Android studio builds your initial project. This can take a bit the first time you do it.
-
-   ![](images/initial-build.png)
 
 ### Run the app in an emulator
 
@@ -306,32 +224,31 @@ In this section, you run the appliation and create an emulator when prompted.
 
 1. Once the project is imported into studio, click the `app` module in the **Project** window.
 
-2. Then, select **Run > Run** (or click the green arrow  in the toolbar).
+2. Then, select **Run > Run** (or click the green arrow in the toolbar).
 
    Studio prompts you to **Select Deployment Target**.
 
 3. Choose **Create New Virtual Device** and press **OK**.
 
-    Studio prompts you to **Select Hardware**.
+   Studio prompts you to **Select Hardware**.
 
-4. Choose a Phone running Pixel XL.
+4. Choose a Phone device configuration like "Pixel".
 
-    ![](images/select-hdw.png)
+   ![](images/select-hdw.png)
 
-    Studio prompts you for a system image.
+   Studio prompts you for a system image.
 
-5. Choose **Oreo** which is API level 27 and press **Next**.
+5. Choose **Q** which is API level 29 and press **Next**.
 
-    ![](images/oreo-api.png)
+   ![](images/q-api.png)
 
-    Studio asks you to verify your new emulator configuration.
+   Studio asks you to verify your new emulator configuration.
 
 6. Press **Finish**.
 
-    The emulation takes a moment to build. Then, studio launches the emulation and opens your application.
+   The emulation takes a moment to build. Then, studio launches the emulation and opens your application.
 
-    ![](images/hello-andriod-1.png)
-
+   ![](images/hello-andriod-1.png)
 
 ### Configure your application with the Blockstack SDK
 
@@ -339,84 +256,79 @@ Now that you have created your initial project and verified it running in an emu
 
 1. In studio, open the `AndroidManifest.xml` file.
 
-2. Add an `<intent-filter>` with the custom handler for Blockstack.
+2. Add an `<intent-filter>` with the custom handler for Blockstack. Replace the host ("flamboyant-darwin-d11c17.netlify.app") with your own url once you have hosted your web app publicly.
 
-    ```XML
-    <intent-filter>
-      <action android:name="android.intent.action.VIEW" />
-      <category android:name="android.intent.category.DEFAULT" />
-      <category android:name="android.intent.category.BROWSABLE" />
-      <data android:scheme="myblockstackapp" />
-     </intent-filter>
-    ```
+   ```XML
+   <intent-filter>
+     <action android:name="android.intent.action.VIEW" />
+     <category android:name="android.intent.category.DEFAULT" />
+     <category android:name="android.intent.category.BROWSABLE" />
+     <data android:scheme="https" android:host="flamboyant-darwin-d11c17.netlify.app" />
+    </intent-filter>
+   ```
 
-2. Open the Project's `build.gradle` file.
-3. Add the Jitpack repository `maven { url 'https://jitpack.io' }` to the `repositories` section.
+3. Open the Project's `build.gradle` file ("Project: Hello Android").
+4. Add the Jitpack repository `maven { url 'https://jitpack.io' }` to the `repositories` section. for all projects
 
-    When you finish, that section looks like this:
+   When you finish, that section looks like this:
 
-    ```JS
-    allprojects {
-      repositories {
-          google()
-          jcenter()
-          maven { url 'https://jitpack.io' }
-      }
-    }
-    ```
+   ```JS
+   allprojects {
+     repositories {
+         google()
+         jcenter()
+         maven { url 'https://jitpack.io' }
+     }
+   }
+   ```
 
-4. Open the Module `build.gradle` file.
-5. Set the `defaultConfig minSdkVersion` to `19`.
-
-   When you are done, you should see (within your own username not `meepers`):
+5. Open the Module `build.gradle` file ("Module: app").
+6. Fix a problem with duplicate meta data in the Android SDK: add `packagingOptions`
 
    ```JS
    android {
-       compileSdkVersion 27
-           defaultConfig {
-               applicationId "com.example.meepers.hello_android"
-               minSdkVersion 19
-               targetSdkVersion 27
-               versionCode 1
-               versionName "1.0"
-               testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-           }
       ...
+      packagingOptions {
+        exclude 'META-INF/*'
+    }
    }
-    ```
+   ```
 
 7. Below this, add the Blockstack Android SDK dependency to your project's `dependencies` list:
 
-    When you are done you should see:
+   When you are done you should see:
 
-    ```JS
+   ```JS
     dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-        implementation 'com.android.support:appcompat-v7:27.1.1'
-        implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-        implementation 'com.android.support:design:27.1.1'
+        implementation 'androidx.appcompat:appcompat:1.1.0'
+        implementation 'androidx.core:core-ktx:1.2.0'
+        implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
         testImplementation 'junit:junit:4.12'
-        androidTestImplementation 'com.android.support.test:runner:1.0.2'
-        androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-        implementation 'com.github.blockstack:blockstack-android:0.4.0'
+        androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+        implementation 'com.github.blockstack:blockstack-android:7940940'
+        implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
     }
 
-    ```
+   ```
 
-    **NOTE**: Ignore the warning on the appcompat` dependencies.
+   **NOTE**: Ignore the warning on the `junit` dependencies.
 
 8. Sync your project.
 
-    ![](images/sync-project.png)
+   ![](images/sync-project.png)
 
-    Be sure to check the sync completed successfully.
+   Be sure to check the sync completed successfully.
 
-    ![](images/sync-success.png)
+   ![](images/sync-success.png)
 
-10. Run your app in the emulator.
+9. Run your app in the emulator.
 
-    You've made a lot of changes, make sure the emulator is still running
-    correctly.
+   You've made a lot of changes, make sure the emulator is still running
+   correctly.
 
 ### Add a simple interface
 
@@ -424,48 +336,50 @@ Now that you have created your initial project and verified it running in an emu
 
     The `activity_main.xml` file defines the graphical elements. Some elements are required before you can functionality to your `MainActivity.kt` code.
 
-3. Replace the entire content of the file with the following code:
+2.  Replace the entire content of the file with the following code:
 
-   The new interface includes a `BlockstackSignInButton` which is provided by
-   the SDK. This SDK includes a themed "Sign in with Blockstack" button
-   (`BlockstackSignInButton`). You use this button here with the
-   `org.blockstack.android.sdk.ui.BlockstackSignInButton` class.
+    The new interface includes a `BlockstackSignInButton` which is provided by
+    the SDK. This SDK includes a themed "Get Started" button
+    (`BlockstackSignInButton`). You use this button here with the
+    `org.blockstack.android.sdk.ui.BlockstackSignInButton` class.
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        tools:context=".MainActivity">
 
-    <org.blockstack.android.sdk.ui.BlockstackSignInButton
-        android:id="@+id/signInButton"
-        android:layout_width="307dp"
-        android:layout_height="45dp"
-        android:layout_margin="4dp"
-        android:layout_marginEnd="185dp"
-        android:layout_marginStart="39dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        <org.blockstack.android.sdk.ui.BlockstackSignInButton
+            android:id="@+id/signInButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/userDataTextView"/>
 
-    <TextView
-        android:id="@+id/userDataTextView"
-        android:layout_width="370dp"
-        android:layout_height="27dp"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="70dp" />
+        <TextView
+            android:id="@+id/userDataTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signInButton" />
 
-    </android>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     ```
 
     This codes adds a button and some text to your application.
 
-4. Choose **Run > Apply changes**.
+3.  Choose **Run > Apply changes**.
 
-5. Choose **Run > Run app** in the emulator.
+4.  Choose **Run > Run app** in the emulator.
 
     The emulator now contains a new interface with a button:
 
@@ -474,27 +388,35 @@ Now that you have created your initial project and verified it running in an emu
 ### Add session & authentication code
 
 1. Open the `MainActivity.kt` file.
-2. Add some additional imports to the top below the `android.os.Bundle` import.
+2. Add some additional imports to the top, replace the `android.os.Bundle` import.
 
-    When you are done, your imports should appear as follows:
+   When you are done, your imports should appear as follows:
 
-    ```kotlin
+   ```kotlin
     import android.content.Intent
     import android.os.Bundle
-    import android.support.v7.app.AppCompatActivity
-    import android.view.View
+    import androidx.appcompat.app.AppCompatActivity
+    import androidx.lifecycle.lifecycleScope
     import kotlinx.android.synthetic.main.activity_main.*
+    import kotlinx.coroutines.Dispatchers
+    import kotlinx.coroutines.launch
     import org.blockstack.android.sdk.BlockstackSession
-    import org.blockstack.android.sdk.Scope
-    import org.blockstack.android.sdk.UserData
-    import org.blockstack.android.sdk.toBlockstackConfig
-    ```
-3. Add a variable for the Blockstack session before `onCreate`.
+    import org.blockstack.android.sdk.BlockstackSignIn
+    import org.blockstack.android.sdk.SessionStore
+    import org.blockstack.android.sdk.getBlockstackSharedPreferences
+    import org.blockstack.android.sdk.model.UserData
+    import org.blockstack.android.sdk.model.toBlockstackConfig
+    import org.blockstack.android.sdk.ui.SignInProvider
+    import org.blockstack.android.sdk.ui.showBlockstackConnect
+   ```
+
+3. Add one variable for the Blockstack sign-in flow and one for the Blockstack session that deals with all other function. This needs to be added before `onCreate`.
 
    ```kotlin
    class MainActivity : AppCompatActivity() {
 
-       private var _blockstackSession: BlockstackSession? = null
+      private lateinit var blockstackSession: BlockstackSession
+      private lateinit var blockstackSignIn: BlockstackSignIn
 
        override fun onCreate(savedInstanceState: Bundle?) {
          super.onCreate(savedInstanceState)
@@ -503,201 +425,180 @@ Now that you have created your initial project and verified it running in an emu
     }
    ```
 
-4. Replace the existing the `onCreate` function with the following:
+4. Replace the existing the `onCreate` function with the following, use your own domain if you are already hosting your web app somewhere:
 
-    ```kotlin
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-      
-        val scopes = arrayOf(Scope.StoreWrite)
-	    val config = "https://flamboyant-darwin-d11c17.netlify.com"
-                        .toBlockstackConfig(scopes)
+   ```kotlin
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      setContentView(R.layout.activity_main)
 
-        _blockstackSession = BlockstackSession(this, config)
-     
-        signInButton.isEnabled = true                
+      val appConfig =
+          "https://flamboyant-darwin-d11c17.netlify.app".toBlockstackConfig()
+      val sessionStore = SessionStore(getBlockstackSharedPreferences())
+      blockstackSession = BlockstackSession(sessionStore, appConfig)
+      blockstackSignIn = BlockstackSignIn(sessionStore, appConfig)
+      BlockstackSignIn.shouldLaunchInCustomTabs = false
 
-        signInButton.setOnClickListener { view: View ->
-            blockstackSession().redirectUserToSignIn {
-               // only called on error
+      signInButton.setOnClickListener {
+          showBlockstackConnect()
+      }
+
+      if (intent?.action == Intent.ACTION_VIEW) {
+          // handle the redirect from sign in
+          userDataTextView.text = "Signing in now ..."
+          lifecycleScope.launch(Dispatchers.IO) {
+              handleAuthResponse(intent)
           }
-        }
-        if (intent?.action == Intent.ACTION_VIEW) {
-            // handle the redirect from sign in
-            handleAuthResponse(intent)
-        }
-    }
-    ```
+      }
+   }
+   ```
 
-    This new `onCreate` does several things:
+   This new `onCreate` does several things:
 
-    * Define the initial state for the `signInButton`.
-    * Supply authentication information for connecting to your Blockstack app: `appDomain` and `scopes` (for `redirectURI`, `manifestURI` the default values are used) 
-    * Add a listener for the button click.
+   - Supply authentication information for connecting to your Blockstack app: `appDomain` (for `scopes`, `redirectURI`, `manifestURI` the default values are used)
+   - Add a listener for the button click.
+   - Handles the redirect intent from the sign-in flow.
 
-    Notice that the application in this example is a URI you have not set up.
-    Registering and application name takes time, so in time's interest you'll
-    use an existing app that is identical to the `hello-world` you created
-    earlier. For a production version, you'll need to replace `appDomain`,
-    `redirectURI`, `manifestURI` and `scopes` with values appropriate for your
-    app.
+   Notice that the application in this example is a URI you have not set up.
+   Registering and application name takes time, so in time's interest you'll
+   use an existing app (https://flamboyant-darwin-d11c17.netlify.app) that is identical to the `hello-world` you created
+   earlier. For a production version, you'll need to replace `appDomain`,
+   `redirectURI`, `manifestURI` and `scopes` with values appropriate for your
+   app.
 
 5. Add a private function to reflect when a user successfully signs in.
 
-    ```kotlin
-    private fun onSignIn(userData: UserData) {
-    		userDataTextView.text = "Signed in as ${userData.decentralizedID}"
-    		signInButton.isEnabled = false
-    }
-    ```
+   ```kotlin
+   private fun onSignIn(userData: UserData) {
+   		userDataTextView.text = "Signed in as ${userData.decentralizedID}"
+   		signInButton.isEnabled = false
+   }
+   ```
 
-6. Handle sign in requests with an `onNewIntent` function if the activity was already opened when signing in
+6. Create a handler for the authentication response.
 
-    Retrieve the authentication token from the custom protocol handler call and
-    send it to the Blockstack session.
-
-    ```kotlin
-    override fun onNewIntent(intent: Intent?) {
-      super.onNewIntent(intent)
-
-      if (intent?.action == Intent.ACTION_VIEW) {
-          handleAuthResponse(intent)
+   ```kotlin
+   private fun handleAuthResponse(intent: Intent) {
+      val authResponse = intent.data?.getQueryParameter("authResponse")
+      if (authResponse != null) {
+          val userData = blockstackSession.handlePendingSignIn(authResponse)
+          if (userData.hasValue) {
+              // The user is now signed in!
+              runOnUiThread {
+                  onSignIn(userData.value!!)
+              }
+          }
       }
-    }
-    ```
+   }
+   ```
 
-7. Create a handler for the authentication response.
+7. Add `SignInProvider` interface for better user onboarding. Let the activity implement the interface and implement the member function `getBlockstackSignIn`
 
-    ```kotlin
-    private fun handleAuthResponse(intent: Intent) {
-       val response = intent.dataString
-       if (response != null) {
-           val authResponseTokens = response.split(':')
+   ```kotlin
+   class MainActivity : AppCompatActivity(), SignInProvider {
+   ...
 
-           if (authResponseTokens.size > 1) {
-               val authResponse = authResponseTokens[1]
+     override fun provideBlockstackSignIn(): BlockstackSignIn {
+       return blockstackSignIn
+     }
+   }
+   ```
 
-               blockstackSession().handlePendingSignIn(authResponse, { userData ->
-                   if (userData.hasValue) {
-                      // The user is now signed in!
-                      runOnUiThread {
-                         onSignIn(userData.value!!)
-                      }
-                   }
-               })
-           }
-       }
-    }
-    ```
+8. Verify your final `MainActivity.kt` code looks like this:
 
-8. Add the convenience method to access the blockstack session.
+   ```kotlin
+   package blockstack.id.user.hello
 
-    ```kotlin
-    fun blockstackSession() : BlockstackSession {
-      val session = _blockstackSession
-       if(session != null) {
-          return session
-       } else {
-        throw IllegalStateException("No session.")
-      }
-    }
-    ```
+    import android.content.Intent
+    import android.os.Bundle
+    import androidx.appcompat.app.AppCompatActivity
+    import androidx.lifecycle.lifecycleScope
+    import kotlinx.android.synthetic.main.activity_main.\*
+    import kotlinx.coroutines.Dispatchers
+    import kotlinx.coroutines.launch
+    import org.blockstack.android.sdk.BlockstackSession
+    import org.blockstack.android.sdk.BlockstackSignIn
+    import org.blockstack.android.sdk.SessionStore
+    import org.blockstack.android.sdk.getBlockstackSharedPreferences
+    import org.blockstack.android.sdk.model.UserData
+    import org.blockstack.android.sdk.model.toBlockstackConfig
+    import org.blockstack.android.sdk.ui.SignInProvider
+    import org.blockstack.android.sdk.ui.showBlockstackConnect
 
-9. Verify your final `MainActivity.kt` code looks like this:
+    class MainActivity : AppCompatActivity(), SignInProvider {
 
-    ```kotlin
-    class MainActivity : AppCompatActivity() {
-
-        private var _blockstackSession: BlockstackSession? = null
+        private lateinit var blockstackSession: BlockstackSession
+        private lateinit var blockstackSignIn: BlockstackSignIn
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
 
-            signInButton.isEnabled = false
+            val appConfig =
+                "https://flamboyant-darwin-d11c17.netlify.app".toBlockstackConfig()
+            val sessionStore = SessionStore(getBlockstackSharedPreferences())
+            blockstackSession = BlockstackSession(sessionStore, appConfig)
+            blockstackSignIn = BlockstackSignIn(sessionStore, appConfig)
+            BlockstackSignIn.shouldLaunchInCustomTabs = false
 
-            val scopes = arrayOf(Scope.StoreWrite)
-	        val config = "https://flamboyant-darwin-d11c17.netlify.com"
-                        .toBlockstackConfig(scopes)
-
-            _blockstackSession = BlockstackSession(this, config)
-            signInButton.isEnabled = true                    
-
-            signInButton.setOnClickListener { view: View ->
-                blockstackSession().redirectUserToSignIn { 
-                   // only called on error
-                }
+            signInButton.setOnClickListener {
+                showBlockstackConnect()
             }
+
             if (intent?.action == Intent.ACTION_VIEW) {
-                handleAuthResponse(intent)
+                // handle the redirect from sign in
+                userDataTextView.text = "Signing in now ..."
+                lifecycleScope.launch(Dispatchers.IO) {
+                    handleAuthResponse(intent)
+                }
             }
         }
 
         private fun onSignIn(userData: UserData) {
             userDataTextView.text = "Signed in as ${userData.decentralizedID}"
-
             signInButton.isEnabled = false
         }
 
-        override fun onNewIntent(intent: Intent?) {
-            super.onNewIntent(intent)
-
-            if (intent?.action == Intent.ACTION_VIEW) {
-                handleAuthResponse(intent)
-            }
-        }
-
-        private fun handleAuthResponse(intent: Intent) {
-            val response = intent.dataString
-            if (response != null) {
-                val authResponseTokens = response.split(':')
-
-                if (authResponseTokens.size > 1) {
-                    val authResponse = authResponseTokens[1]
-
-                    blockstackSession().handlePendingSignIn(authResponse, { userData ->
-                        if (userData.hasValue) {
-                            // The user is now signed in!
-                            runOnUiThread {
-                                onSignIn(userData.value!!)
-                            }
-                        }
-                    })
+        private suspend fun handleAuthResponse(intent: Intent) {
+            val authResponse = intent.data?.getQueryParameter("authResponse")
+            if (authResponse != null) {
+                val userData = blockstackSession.handlePendingSignIn(authResponse)
+                if (userData.hasValue) {
+                    // The user is now signed in!
+                    runOnUiThread {
+                        onSignIn(userData.value!!)
+                    }
                 }
             }
         }
 
-        fun blockstackSession() : BlockstackSession {
-            val session = _blockstackSession
-            if(session != null) {
-                return session
-            } else {
-                throw IllegalStateException("No session.")
-            }
+        override fun provideBlockstackSignIn(): BlockstackSignIn {
+            return blockstackSignIn
         }
+
     }
-    ```
+   ```
 
 ### Run the final app in the emulator
 
 1. Choose **Run > Apply changes**.
 2. Choose **Run > Run app** in the emulator.
-3. When you see the application open, choose **Sign in with Blockstack**.
+3. When you see the application open, choose **Get Started**.
+4. A small information is presented about the sign-in flow
 
-    The system prompts you how to open.
+![](images/connect-ui.png)
 
-    ![](images/chrome-prompt.png)
-
-4. Choose **Chrome** and click **ALWAYS**.
-5. Move through the rest of the Chrome prompts.
-
-   The system presents you with your final application.
-
-   ![](images/final-app.png)
+5. Select **Get Started**
+   The system might prompt you how to select a browser.
 
 6. Work through the Blockstack prompts to login.
+7. Blockstack redirects you to a web site. Open it with your Android app: Select **Hello Android** and **Always**
 
+![](images/connect-response.png)
+
+8. The screen after the sign-in flow shows the owner address of the username that was entered during sign-in.
+
+![](images/final-app.png)
 
 ## Where to go next
 
