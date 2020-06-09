@@ -182,5 +182,4 @@ With the completion of this tutorial, you ...
 
 {:.no_toc}
 
-* <a href="tutorial-deploy-call.html">Next tutorial: Deploying and interacting with smart contracts</a>
 * <a href="clarityRef.html">Clarity language reference</a>

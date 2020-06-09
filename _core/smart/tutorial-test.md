@@ -8,7 +8,7 @@ permalink: /:collection/:path.html
 
 ## Overview
 
-| Experience | | **Beginner**  |
+| Experience | | **Advanced**  |
 | Duration | | **15 minutes** |
 
 Clarity, Blockstack's smart contracting language, is based on [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)). Clarity is an interpreted language, and [decidable](https://en.wikipedia.org/wiki/Recursive_language). In this tutorial, you will learn how to test Clarity and how use [Mocha](https://mochajs.org/) to test Clarity contracts while you develop them.

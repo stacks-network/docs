@@ -1,6 +1,6 @@
 ---
 layout: smart
-description: Get Started Writing Smart Contracts on the Blockchain with Clarity
+description: Get Started Writing Smart Contracts with Clarity
 permalink: /:collection/:path.html
 ---
 
@@ -9,9 +9,9 @@ permalink: /:collection/:path.html
 ## Overview
 
 | Experience | | **Beginner**  |
-| Duration | | **15 minutes** |
+| Duration | | **18 minutes** |
 
-Clarity, Blockstack's smart contracting language, is based on [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)). Clarity is an interpreted language, and [decidable](https://en.wikipedia.org/wiki/Recursive_language). In this tutorial, you will learn how to use Clarity and how to deploy and interact with a smart contract on the Stacks 2.0 blockchain. By the end of this tutorial, you will:
+Clarity, Blockstack's smart contracting language, is based on LISP and uses a its parenthesized notation. Clarity is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and [decidable](https://en.wikipedia.org/wiki/Recursive_language). In this tutorial, you will learn how to use Clarity and how to deploy and interact with a smart contract on the Stacks 2.0 blockchain. By the end of this tutorial, you will:
 
 * Have a working Clarity starter project
 * Understand basic Clarity language design principles
@@ -31,15 +31,15 @@ node --version
 
 ### Visual Studio Code with Clarity Extensions
 
-Visual Studio Code (aka VS Code) is a free development interface that we recommend for writing smart contracts with Clarity.
+[Visual Studio Code](https://code.visualstudio.com/) (aka VS Code) is a free development interface for which Blockstack has created custom extensions, to make it easier to create smart contracts with Clarity.
 
 [Install Visual Studio Code](https://code.visualstudio.com/download) and be sure to install the following extensions for the best coding experience:
 
 - [Clarity](https://marketplace.visualstudio.com/items?itemName=blockstack.clarity), the official language extension by Blockstack
-- [clarity-lsp](https://marketplace.visualstudio.com/items?itemName=lgalabru.clarity-lsp), which will add auto-complete and inline help functionality to VS Code.
-- [Rainbow Brackets](https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets), which will provide helpful colorization of matching pairs of parentheses while you code.
+- [clarity-lsp](https://marketplace.visualstudio.com/items?itemName=lgalabru.clarity-lsp), which will add auto-complete and inline help functionality to VS Code
+- [Rainbow Brackets](https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets), which will provide helpful colorization of matching pairs of parentheses while you code
 
-If you need help installing extensions, review [Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-gallery) in the Visual Studio Code docs.
+> **Note**: If you need help installing extensions, review [Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-gallery) in the Visual Studio Code docs.
 
 ## Step 1: Download a starter project
 
@@ -50,19 +50,17 @@ mkdir hello-world; cd hello-world
 npm init clarity-starter
 ```
 
-After the starter project is loaded up, you have to select a template and a name for your local project folder. Feel free to hit ENTER both times to accept the default suggestion.
+After the starter project is loaded up, you have to select a template for your local project folder. Select `hello-world`, which is the default, by hitting ENTER.
 
 ```bash
 ? Template - one of [hello-world, counter]: (hello-world)
 ```
 
-Finally, after the project dependencies have been installed, your project is ready for development.
-
-The project resources are created in your current folder. Take note of the `contracts` and `test` folders. The other files are boilerplate to wire up the project.
+After the project is created and its dependencies are installed, your project is ready for development.
 
 ## Step 2: Review the contract
 
-Open up `contracts/hello-world.clar` in VS Code.
+Select **File** > **Add Folder to Workspace** in VS Code, and add the `clarity-hello-world` folder. Then, navigate to `contracts/hello-world.clar`.
 
 Notice how the program and each statement is enclosed in `()` (parentheses). You'll see that the smart contract consists of two public functions.
 
@@ -76,7 +74,7 @@ Notice how the program and each statement is enclosed in `()` (parentheses). You
 
 On the first line, a new public function `say-hi` is declared. The reason public functions exist is to enable re-using code that is already available in other smart contracts, and to enable developers to break complex smart contracts into smaller, simpler smart contracts (an exercise in [separating concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)).
 
-> To create private functions, you would use the `define-private` keyword. Private functions can only be executed by the current smart contract - not from other smart contracts published to the same network. Only public functions can be called from other contracts.
+{% include note.html content="To create private functions, you would use the <code>define-private</code> keyword. Private functions can only be executed by the current smart contract. Only public functions can be called from other contracts." %}
 
 The function doesn't take any parameters and simply returns "hello world" using the [`ok`](https://docs.blockstack.org/core/smart/clarityref#ok) response constructor.
 
@@ -91,7 +89,7 @@ The function simply uses the `ok` response and returns the value passed to the f
 
 ## Access the Explorer Sandbox
 
-{% include note.html content="This tutorial uses a developer preview release of the <a href='https://testnet-explorer.blockstack.org/'>Stacks 2.0 Explorer</a>. Please feel free to report issues or request enhancements on the <a href='https://github.com/blockstack/explorer/issues/new'>blockstack/explorer</a> repository." %}
+{% include note.html content="This tutorial uses a developer preview release of the <a href='https://testnet-explorer.blockstack.org/'>Stacks 2.0 Explorer</a>. Please feel free to report issues or request enhancements on the <a href='https://github.com/blockstack/explorer/issues/new'>blockstack/explorer</a> repository. For more details about this release, see the <a href='https://forum.blockstack.org/t/explore-the-stacks-2-0-testnet-with-the-new-explorer-developer-preview/10889'>Explore the Stacks 2.0 Testnet</a> post in the Blockstack forums." %}
 
 Open up the [Stacks 2.0 Explorer Sandbox view](https://testnet-explorer.blockstack.org/sandbox). You will be asked to sign in with a Blockstack account, so you can sign transactions when interacting with the Blockchain. Follow the steps on the screen to complete the process.
 
