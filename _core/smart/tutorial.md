@@ -25,10 +25,6 @@ By the end of this tutorial, you will:
 
 ## Prerequisites
 
-### Sign up for a Blockstack ID
-
-If you don't have one already, [create a Blockstack ID](https://browser.blockstack.org/sign-up) so that you can obtain an address to receive STX tokens and use the Testnet Explorer.
-
 ### Set up your Node environment
 
 You will need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:
@@ -99,7 +95,7 @@ The second function, `echo-number`, is a [read-only function](clarityRef.html#de
 
 Open up the [Stacks 2.0 Explorer Sandbox view](https://testnet-explorer.blockstack.org/sandbox). The Explorer Sandbox is a web-enabled view of the Testnet blockchain, and has tools for validating contracts, testing out transactions, and generating Testnet STX tokens. Here, we will run the code from `hello-world` right in the browser and create blockchain transactions right in the browser.
 
-You will be asked to sign in with or sign up for a Blockstack ID, which creates a new STX address for you on the Testnet blockchain. Follow the steps on the screen to complete the process.
+You will be asked to sign in with or sign up for a Blockstack ID, which creates a new STX address for you on the Testnet blockchain, where you can receive tokens. Follow the steps on the screen to complete the process.
 
 ![The faucet tab of the Stacks 2.0 Testnet Explorer](images/faucet.png)
 
