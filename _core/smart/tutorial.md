@@ -80,12 +80,12 @@ On the first line, a new public function `say-hi` is declared. Public functions 
 
 The function doesn't take any parameters and simply returns "hello world" using the [`ok`](clarityRef.html#ok) response constructor.
 
-The second function, `echo-number`, is a [read-only function](clarityRef.html#define-read-only). Read-only functions are also public, but as the name implies, they can not perform any datamap modifications. `echo-number` takes an input parameter of the type [`int`](clarityRef.html#int-type). Along with integer, Clarity supports the following types:
-* [uint](clarityRef.html#uint-type): 16-byte unsigned integer
-* [principal](clarityRef.html#principal-type): spending entity, roughly equivalent to a Stacks address
-* [boolean](clarityRef.html#bool-type): `true` or `false`
-* [buffer](clarityRef.html#buffer-type): fixed-length byte buffers
-* [tuple](clarityRef.html#tuple-type): named fields in keys and values
+The second function, `echo-number`, is a [read-only function](clarityRef.html#define-read-only). Read-only functions are also public, but as the name implies, they can not perform any datamap modifications. `echo-number` takes an input parameter of the type `int`. Along with integer, Clarity supports the following [types](clarityRef.html#clarity-type-system):
+* `uint`: 16-byte unsigned integer
+* `principal`: spending entity, roughly equivalent to a Stacks address
+* `boolean`: `true` or `false`
+* `buffer`: fixed-length byte buffers
+* `tuple`: named fields in keys and values
 
 `echo-number` uses an [`ok`](clarityRef.html#ok) response to return the value passed to the function.
 
