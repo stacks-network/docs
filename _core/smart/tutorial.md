@@ -1,211 +1,213 @@
 ---
 layout: smart
-description: "Clarity: Hello World Tutorial"
+description: Get Started Writing Smart Contracts with Clarity
 permalink: /:collection/:path.html
 ---
-# Hello World
 
-| Experience | | **Beginner**  |
-| Duration | | **15 minutes** |
-
-In this tutorial, you learn how to use Clarity, Blockstack's smart contracting language. By the end of this tutorial, you will ...
-
-* Have a working Clarity starter project
-* Understand basic Clarity language design principles
-* Understand how to interact with smart contracts
-* Understand how to test smart contracts
+# Hello, World!
 
 ## Overview
 
-* TOC
-{:toc}
+| Experience | | **Beginner**  |
+| Duration | | **18 minutes** |
+
+In the world of smart contracts, everything is a blockchain transaction. You use tokens in your wallet to deploy a smart contract in a transaction, and each call to that contract after it's published is a transaction, too. That means that at each step, tokens are being exchanged as transaction fees. This tutorial introduces you to this mode of programming, which transforms blockchains into powerful state machines capable of executing complex logic.
+
+Clarity, Blockstack's smart contracting language, is based on LISP and uses its parenthesized notation. Clarity is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and [decidable](https://en.wikipedia.org/wiki/Recursive_language). To learn more basics about the language, see the [Introduction to Clarity](overview.html) topic.
+
+By the end of this tutorial, you will:
+
+* Have a working Clarity starter project and local dev environment
+* Understand basic Clarity language design principles
+* Deploy a contract to the Stacks 2.0 blockchain and call its public methods
+* Understand how to use the Explorer Sandbox functionality
+
 
 ## Prerequisites
 
-To complete the tutorial, you should have [NodeJS](https://nodejs.org/en/download/) installed on your workstation. To install and run the starter project, you need to have at least version `8.12.0`. You can verify your installation by opening up your terminal and run the following command:
+### Sign up for a Blockstack ID
+
+If you don't have one already, [create a Blockstack ID](https://browser.blockstack.org/sign-up) so that you can obtain an address to receive STX tokens and use the Testnet Explorer.
+
+### Set up your Node environment
+
+You will need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:
 
 ```shell
 node --version
 ```
 
-A version >= `v8.12.0` should be returned, indicating that a compatible NodeJS release is installed.
+### Install Visual Studio Code with Clarity Extensions
 
-## Step 1: Downloading starter project
+[Visual Studio Code](https://code.visualstudio.com/) (aka VS Code) is a free development interface for which Blockstack has created custom extensions, to make it easier to create smart contracts with Clarity.
 
-In this step, you initialize a starter project for Clarity development:
+[Install Visual Studio Code](https://code.visualstudio.com/download) and be sure to install the following extensions for the best coding experience:
 
-1. Using your terminal, run the following command:
+- [Clarity](https://marketplace.visualstudio.com/items?itemName=blockstack.clarity), the official language extension by Blockstack that defines the Clarity language for VS Code and provides auto-complete and syntax highlighting.
+- [clarity-lsp](https://marketplace.visualstudio.com/items?itemName=lgalabru.clarity-lsp), which adds inline help functionality for Clarity to VS Code
+- [Rainbow Brackets](https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets), which adds helpful colorization of matching pairs of parentheses while you code
 
-    ```bash
-    npm init clarity-starter
-    ```
+> **Note**: If you need help installing extensions, review [Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-gallery) in the Visual Studio Code docs.
 
-2. After the starter project was loaded up, you have to select a template and a name for your local project folder. Feel free to hit ENTER both times to accept the default suggestion.
+## Download a starter project
 
-    ```bash
-    ? Template - one of [hello-world, counter]: (hello-world)
-    ```
-
-    Finally, after the project dependencies have been installed, your project is ready for development.
-
-3. The project resources are created in your current folder. Have a look at the project structure:
-
-    ```bash
-    ls
-    ```
-
-    Take note of the `contracts` and `test` folders. The other files are boilerplate to wire up the project.
-
-## Step 2: Reviewing hello world contract
-
-Now, let's have a look at a Clarity smart contract and get familiar with the basic language design characteristics.
-
-1. Still inside the terminal, list the contents of the `contracts` folder.
-
-    ```bash
-    ls contracts
-    ```
-
-    This directory contains one file for the hello world smart contract. Note that all Clarity files have a `.clar` suffix.
-
-2. Let's review the contents of `hello-world.clar` with the `cat` command.
-
-    ```bash
-    cat contracts/hello-world.clar
-    ```
-
-    You should see the contract source code. Take a few seconds to review the content.
-
-    Clarity is a programming language based on [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)). Most notably, Clarity is interpreted and decidable.
-
-    Let's go through the source code. Notice how the program and each statement is enclosed in `()` (parentheses). You'll see that the smart contract consists of two public functions. Starting at the top, let's review line by line:
-
-    ```cl
-    (define-public (say-hi)
-      (ok "hello world"))
-
-    (define-public (echo-number (val int))
-      (ok val))
-    ```
-
-    On the first line, a new public function `say-hi` is declared. To create private functions, you would use the `define-private` keyword. Private functions can only be executed by the current smart contract - not from other smart contracts published to the same network. Only public functions can be called from other contracts. The reason public functions exist is to enable re-using code that is already available in other smart contracts, and to enable developers to break complex smart contracts into smaller, simpler smart contracts (an exercise in [separating concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)).
-
-    The function doesn't take any parameters and simply returns "hello world" using the [`ok`](https://docs.blockstack.org/core/smart/clarityref#ok) response constructor.
-
-    Let's review the second public function, `echo-number`. As opposed to the function before, this takes an input parameter of the type [`int`](https://docs.blockstack.org/core/smart/clarityref#int-type). Along with integer, Clarity supports the following types:
-   * [uint](https://docs.blockstack.org/core/smart/clarityref#uint-type): 16-byte unsigned integer
-   * [principal](https://docs.blockstack.org/core/smart/clarityref#principal-type): spending entity, roughly equivalent to a Stacks address
-   * [boolean](https://docs.blockstack.org/core/smart/clarityref#bool-type): `true` or `false`
-   * [buffer](https://docs.blockstack.org/core/smart/clarityref#buffer-type): fixed-length byte buffers
-   * [tuple](https://docs.blockstack.org/core/smart/clarityref#tuple-type): named fields in keys and values
-
-    The function simply uses the `ok` response and returns the value passed to the function.
-
-## Step 3: Running tests
-
-The starter project comes with test tooling already set up for you (using [Mocha](https://mochajs.org/)). Let's run the tests and review the results:
-
-Still in the project root directory, run the following command:
+Using your terminal, run the following command to create a new folder and initialize a new project:
 
 ```bash
-npm test
+mkdir hello-world; cd hello-world
+npm init clarity-starter
 ```
 
-You should see the following response:
+After the starter project is loaded up, you have to select a project template. Select `hello-world`, which is the default, by hitting ENTER.
 
 ```bash
-  hello world contract test suite
-    ✓ should have a valid syntax
-    deploying an instance of the contract
-    ✓ should return 'hello world'
-    ✓ should echo number
-
-
-3 passing (412ms)
+? Template - one of [hello-world, counter]: (hello-world)
 ```
 
-Great, all tests are passing! Now, let's have a look at the test implementation. That helps understand how to interact with Clarity smart contracts.
+## Review the contract
 
-## Step 4: Interacting with contracts
+Select **File** > **Add Folder to Workspace** in VS Code, and add the `hello-world` folder you created in the previous step. Then, navigate to `contracts/hello-world.clar`.
 
-Tests are located in the `test` folder, let's have a look at the tests associated with the `hello-world.clar` file.
+You will see that the program and each statement is enclosed in `()` (parentheses), and the smart contract consists of two functions.
 
-Run the following command:
+```cl
+(define-public (say-hi)
+  (ok "hello world"))
 
-```bash
-cat test/hello-world.ts
+(define-read-only (echo-number (val int))
+  (ok val))
 ```
 
-Take a few seconds to review the contents of the file. You should ignore the test setup functions and focus on the most relevant parts related to Clarity.
+On the first line, a new public function `say-hi` is declared. Public functions are callable from other smart contracts, enabling developers to break complex tasks into smaller, simpler smart contracts (an exercise in [separating concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)).
 
-Note that we're importing modules from the `@blockstack/clarity` package:
+{% include note.html content="To create private functions, you would use the <code>define-private</code> keyword. Private functions can only be executed by the current smart contract. Only public functions can be called from other contracts." %}
 
-```js
-import { Client, Provider, ProviderRegistry, Result } from "@blockstack/clarity";
+The function doesn't take any parameters and simply returns "hello world" using the [`ok`](clarityRef.html#ok) response constructor.
+
+The second function, `echo-number`, is a [read-only function](clarityRef.html#define-read-only). Read-only functions are also public, but as the name implies, they can not perform any datamap modifications. `echo-number` takes an input parameter of the type [`int`](clarityRef.html#int-type). Along with integer, Clarity supports the following types:
+* [uint](clarityRef.html#uint-type): 16-byte unsigned integer
+* [principal](clarityRef.html#principal-type): spending entity, roughly equivalent to a Stacks address
+* [boolean](clarityRef.html#bool-type): `true` or `false`
+* [buffer](clarityRef.html#buffer-type): fixed-length byte buffers
+* [tuple](clarityRef.html#tuple-type): named fields in keys and values
+
+`echo-number` uses an [`ok`](clarityRef.html#ok) response to return the value passed to the function.
+
+## Access the Explorer Sandbox
+
+{% include note.html content="<p>This tutorial uses a developer preview release of the <a href='https://testnet-explorer.blockstack.org/'>Stacks 2.0 Explorer</a>. Please feel free to report issues or request enhancements on the <a href='https://github.com/blockstack/explorer/issues/new'>blockstack/explorer</a> repository. For more details about this release, see the <a href='https://forum.blockstack.org/t/explore-the-stacks-2-0-testnet-with-the-new-explorer-developer-preview/10889'>Explore the Stacks 2.0 Testnet</a> post in the Blockstack forums.</p><p>If you encounter trouble using the Explorer Sandbox, try falling back to <a href='#get-familiar-with-cli-optional'>the CLI instructions at the end of this page</a>.</p>" %}
+
+Open up the [Stacks 2.0 Explorer Sandbox view](https://testnet-explorer.blockstack.org/sandbox). The Explorer Sandbox is a web-enabled view of the Testnet blockchain, and has tools for validating contracts, testing out transactions, and generating Testnet STX tokens. Here, we will run the code from `hello-world` right in the browser and create blockchain transactions right in the browser.
+
+You will be asked to sign in with or sign up for a Blockstack ID, which creates a new STX address for you on the Testnet blockchain. Follow the steps on the screen to complete the process.
+
+![The faucet tab of the Stacks 2.0 Testnet Explorer](images/faucet.png)
+
+Once completed, you will see the Sandbox screen and a confirmation, indicating you were provided with a new STX address for testing purposes.
+
+## Obtain STX tokens
+
+Uploading and calling smart contracts requires fees to be paid to the network to process the transactions. The Testnet Explorer features the capability to request STX tokens that can be used to pay the fees ("STX faucet").
+
+On the [**STX faucet**](https://testnet-explorer.blockstack.org/sandbox?tab=faucet) screen, your new STX address will be prefilled. Click **Request STX** to receive 0.5 STX at your address.
+
+A confirmation for a new transaction will pop up. If you want to see the details of your faucet request, you can click **View transaction**. However, you will to refresh the page a few times, for up to a minute or so, while the transaction completes.
+
+![Screenshot of faucet request submission](images/faucet-transfer.png)
+
+## Deploy the contract
+
+Go back to the Sandbox screen, switch to the [**Contract deploy**](https://testnet-explorer.blockstack.org/sandbox?tab=contract-deploy) tab, and do the following:
+
+1. Enter a name for the contract under **Contract name** that uses lower-case letters, dashes, and numbers only.
+2. Replace code in the text area under **Contract source code** with the contents of `contracts/hello-world.clar`.
+3. Ignore the **Choose from sample** drop-down for now. After completing this tutorial you can come back to the Explorer Sandbox and use this drop-down to try other sample contracts.
+3. Click **Deploy contract**.
+
+![deploy](images/contract-deploy.png)
+
+A confirmation will pop up, indicating that a new contract deploy transaction was issued. As with the faucet request, you can click **View transaction** to review the pending transaction if you like, but you'll need to keep refreshing the page until the deploy transaction completes. Once you're able to see the completed deploy transaction, you will see that every smart contract's source code is publicly verifiable through the explorer.
+
+## Call the public method
+
+Go back to the Sandbox screen, switch to the [**Contract call**](https://testnet-explorer.blockstack.org/sandbox?tab=contract-call) tab, and enter the following details:
+
+* **Contract address**: Your generated STX address. Hover over the identity component on the right side of the screen to copy your full address and paste it in here.
+* **Contract name**: Whatever you entered as your contract name in the previous step. If you forgot, you can review your recent transactions by following the link on the upper-right, and look up your contract creation transaction.
+
+![Screenshot of the Sandbox's contract call screen](images/sandbox-call.png)
+
+After clicking **Search**, you will see the two public methods implemented in the smart contract.
+
+Locate the `(echo-number)` method, provide any integer for the `val` argument and click **Submit**. You will see the value you entered echoed back at you on the screen, as well as a confirmation that a contract call transaction was issued. Click on the transaction to review it. In the next seconds, your contract call should be completed and you will see a contract call success screen. Scroll down to the function summary section to verify your contract call:
+
+![sandbox-call](images/sandbox-calltx.png)
+
+**Congratulations! You just deployed your smart contract and called a public function on the Testnet.**
+
+---
+
+With the completion of this tutorial, you now:
+
+* Have a working Clarity starter project and local dev environment
+* Understand basic Clarity language design principles
+* Have deployed a contract to the Stacks 2.0 blockchain and called its public methods
+* Understand how to use the Explorer Sandbox functionality
+
+## Get familiar with CLI (optional)
+
+The steps above provide an easy way to get started with contract deployment and contract calls. If you want to stay in the terminal and get access to more advanced capabilities, you should use the Blockstack CLI.
+
+The following set of commands will achieve the same goals as the above workflow.
+
+Install an early release of the new Blockstack CLI for Stacks 2.0.
+
+```shell
+sudo npm install -g "https://github.com/blockstack/cli-blockstack#feature/stacks-2.0-tx"
 ```
 
-### Initializing a client
+Create a new STX address and save keychain details, using the `-t` flag to target Testnet.
 
-At the test start, we are initializing a contract instance `helloWorldClient` and a provider that simulates interactions with the Stacks 2.0 blockchain. If this were in a production environment, the contract instance would be the equivalent of a contract deployed to the blockchain. The provider would be the Stacks blockchain.
-
-```js
-let helloWorldClient: Client;
-let provider: Provider;
-
-(...)
-
-provider = await ProviderRegistry.createProvider();
-helloWorldClient = new Client("SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.hello-world", "hello-world", provider);
+```shell
+blockstack make_keychain -t > new_keychain.txt
 ```
 
-Take a look at the client initialization. It requires a contract id and name in the following format: `{owner_stacks_address}.{contract_identifier}`. The second field indicates the location of the smart contract file, without the `.clar` suffix. By default, the location is assumed to be relative to the `contracts` folder.
+See your new STX address.
 
-As you can see above, a sample Stacks address and contract identifier is already provided for you. You don't need to modify anything.
-
-### Checking syntax
-
-Next, we check the contract for valid syntax. If the smart contract implementation has syntax error (bugs), this check would fail:
-
-```js
-await helloWorldClient.checkContract();
+```shell
+cat new_keychain.txt
 ```
 
-Note that the `checkContract()` function returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). The `await` command makes sure JavaScript is not executing the next lines until the contract check completes.
+Call the Testnet faucet to get STX tokens; replace `<stx_address>` with the address you obtained in the previous step.
 
-### Deploying contract
-
-Further down in the file, you find a contract deployment:
-
-```js
-await helloWorldClient.deployContract();
+```shell
+curl -XPOST "https://sidecar.staging.blockstack.xyz/sidecar/v1/debug/faucet?address=<stx_address>" | json_pp
 ```
 
-### Run public functions
+Confirm faucet transaction.
 
-Finally, you will find snippets that call the public `say-hi` function of the contract:
-
-```js
-const query = helloWorldClient.createQuery({ function: { name: "say-hi", args: [] } });
-const receipt = await helloWorldClient.submitQuery(query);
-const result = Result.unwrapString(receipt);
+```shell
+blockstack balance <stx_address> -t
 ```
 
-As you see, smart contract calls are realized through query definitions. The `createQuery` function defines the name and arguments passed to the smart contract function. With `submitQuery`, the function is executed and the response is wrapped into a `Result` object. To obtain the readable result, we use the `unwrapString` function, which should return `hello world`.
+Deploy a contract file to Testnet.
 
-Now, review the last test `should echo number` on your own and try to understand how arguments are passed to the `echo-number` smart contract.
+```shell
+blockstack deploy_contract ./hello-world.clar hello-world 2000 0 <stx_private_key> -t
+```
 
-With that, you have completed the first Clarity tutorial! In just a few minutes you ...
+Call the `echo-number` method of the contract.
 
-* Created a working Clarity starter project
-* Understood basic Clarity language design principles
-* Understood how to interact with smart contracts
-* Understood how to test smart contracts
+```shell
+blockstack call_contract_func <stx_address> hello-world echo-number 2000 1 <stx_private_key> -t
+```
 
-Congratulations!
+To learn more about the Blockstack CLI commands, you can run `blockstack-cli help all`.
 
 ## Where to go next
 
 {:.no_toc}
 
+
 * <a href="tutorial-counter.html">Next tutorial: Writing a counter smart contract</a>
-* <a href="clarityRef.html">Clarity language reference</a>
+* <a href="tutorial-test.html">Tutorial: Testing contracts with JavaScript and Mocha</a>

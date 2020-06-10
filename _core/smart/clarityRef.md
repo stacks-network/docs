@@ -3,7 +3,7 @@ layout: smart
 description: "Clarity: Language Reference"
 permalink: /:collection/:path.html
 ---
-# Clarity
+# Clarity Language Reference
 
 This file contains the reference for the Clarity language. 
 

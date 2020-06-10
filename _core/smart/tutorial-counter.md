@@ -27,13 +27,14 @@ Before you get started, you should complete the [Hello World tutorial](tutorial.
 
 In this step, you initialize a starter project with additional counter tutorial files:
 
-Using your terminal, run the following command:
+Using your terminal, run the following command to create a new folder and initialize a new project:
 
 ```bash
+mkdir counter; cd counter
 npm init clarity-starter
 ```
 
-You have to select a template and a name for your local folder. For the counter template used in this tutorial, ensure to type `counter` and hit ENTER:
+You must now select a template. Type `counter` and hit ENTER:
 
 ```bash
 ? Template - one of [hello-world, counter]: counter
@@ -43,7 +44,7 @@ Finally, the project dependencies are installed and your project is ready for de
 
 ## Step 2: Running tests
 
-mart contracts are often developed in a test-driven approach. This not only improves code quality, but also removes the need to push every iteration to the blockchain before executing it. We will do the same in this project. Now, let's run the tests and review the results:
+Smart contracts are often developed in a test-driven approach. This not only improves code quality, but also removes the need to push every iteration to the blockchain before executing it. We will do the same in this project. Now, let's run the tests and review the results:
 
 Still in the project root directory, run the following command:
 
@@ -150,24 +151,27 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     **Congratulations! You just implemented your first Clarity smart contract.**
 
-6. Here is how the final smart contract file should look like. Note that you can find the `decrement` function in here - in case you want to compare with your own implementation:
+Here is how the final smart contract file should look like. Note that you can find the `decrement` function in here - in case you want to compare with your own implementation:
 
-    ```cl
-    (define-data-var counter int 0)
+```cl
+(define-data-var counter int 0)
 
-    (define-public (get-counter)
-      (ok (var-get counter)))
+(define-public (get-counter)
+  (ok (var-get counter)))
 
-    (define-public (increment)
-      (begin
-        (var-set counter (+ (var-get counter) 1))
-        (ok (var-get counter))))
+(define-public (increment)
+  (begin
+    (var-set counter (+ (var-get counter) 1))
+    (ok (var-get counter))))
 
-    (define-public (decrement)
-      (begin
-        (var-set counter (- (var-get counter) 1))
-        (ok (var-get counter))))
-    ```
+(define-public (decrement)
+  (begin
+    (var-set counter (- (var-get counter) 1))
+    (ok (var-get counter))))
+```
+
+If you're ready to deploy and execute the contract, try [the Explorer Sandbox](tutorial.html#access-the-explorer-sandbox) or following [the instructions to run the contract in the command-line](tutorial.html#get-familiar-with-cli-optional).
+---
 
 With the completion of this tutorial, you ...
 
@@ -179,5 +183,4 @@ With the completion of this tutorial, you ...
 
 {:.no_toc}
 
-* <a href="principals.html">Guide: Understanding principals</a>
 * <a href="clarityRef.html">Clarity language reference</a>
