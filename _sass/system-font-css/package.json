@@ -2,7 +2,7 @@
   "_args": [
     [
       "system-font-css@2.0.2",
-      "/Users/manthony/repos/docs.blockstack"
+      "/private/var/www/docs.blockstack"
     ]
   ],
   "_from": "system-font-css@2.0.2",
@@ -26,7 +26,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/system-font-css/-/system-font-css-2.0.2.tgz",
   "_spec": "2.0.2",
-  "_where": "/Users/manthony/repos/docs.blockstack",
+  "_where": "/private/var/www/docs.blockstack",
   "author": {
     "name": "Jonathan Neal",
     "email": "jonathantneal@hotmail.com",

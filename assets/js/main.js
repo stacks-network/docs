@@ -9022,3 +9022,6 @@
     })(window);
 })();
 
+$(document).ready(function() {
+    anchors.add();
+});

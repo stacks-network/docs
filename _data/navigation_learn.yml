@@ -1,3 +1,9 @@
+- title: Guides
+  docs:
+  - develop/overview_auth
+  - develop/storage
+  - develop/profiles
+
 - title: Tutorials
   docs:
   - browser/hello-blockstack
@@ -7,7 +13,7 @@
   - android/tutorial
   - ios/tutorial
 
-- title: Connect
+- title: Blockstack Connect
   docs:
   - develop/connect/overview
   - develop/connect/get-started
@@ -25,11 +31,6 @@
   docs:
   - develop/collections
   - develop/collection-type
-
-- title: Guides
-  docs:
-  - develop/storage
-  - develop/profiles
 
 - title: References
   docs:
