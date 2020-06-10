@@ -4,7 +4,7 @@ description: Get Started Writing Smart Contracts with Clarity
 permalink: /:collection/:path.html
 ---
 
-# Get Started
+# Hello, World!
 
 ## Overview
 
@@ -13,11 +13,10 @@ permalink: /:collection/:path.html
 
 Clarity, Blockstack's smart contracting language, is based on LISP and uses a its parenthesized notation. Clarity is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and [decidable](https://en.wikipedia.org/wiki/Recursive_language). In this tutorial, you will learn how to use Clarity and how to deploy and interact with a smart contract on the Stacks 2.0 blockchain. By the end of this tutorial, you will:
 
-* Have a working Clarity starter project
+* Have a working Clarity starter project and local dev environment
 * Understand basic Clarity language design principles
 * Called public methods of the deployed smart contract
 * Understand how to use the Explorer Sandbox functionality
-* Understand how to use the Blockstack CLI for advanced capabilities
 
 ## Prerequisites
 
@@ -35,9 +34,9 @@ node --version
 
 [Install Visual Studio Code](https://code.visualstudio.com/download) and be sure to install the following extensions for the best coding experience:
 
-- [Clarity](https://marketplace.visualstudio.com/items?itemName=blockstack.clarity), the official language extension by Blockstack
-- [clarity-lsp](https://marketplace.visualstudio.com/items?itemName=lgalabru.clarity-lsp), which will add auto-complete and inline help functionality to VS Code
-- [Rainbow Brackets](https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets), which will provide helpful colorization of matching pairs of parentheses while you code
+- [Clarity](https://marketplace.visualstudio.com/items?itemName=blockstack.clarity), the official language extension by Blockstack that defines the Clarity language for VS COde and provides auto-complete and syntax highlighting.
+- [clarity-lsp](https://marketplace.visualstudio.com/items?itemName=lgalabru.clarity-lsp), which adds inline help functionality for Clarity to VS Code
+- [Rainbow Brackets](https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets), which adds helpful colorization of matching pairs of parentheses while you code
 
 > **Note**: If you need help installing extensions, review [Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-gallery) in the Visual Studio Code docs.
 
@@ -68,7 +67,7 @@ Notice how the program and each statement is enclosed in `()` (parentheses). You
 (define-public (say-hi)
   (ok "hello world"))
 
-(define-public (echo-number (val int))
+(define-read-only (echo-number (val int))
   (ok val))
 ```
 
@@ -91,15 +90,17 @@ The function simply uses the `ok` response and returns the value passed to the f
 
 {% include note.html content="This tutorial uses a developer preview release of the <a href='https://testnet-explorer.blockstack.org/'>Stacks 2.0 Explorer</a>. Please feel free to report issues or request enhancements on the <a href='https://github.com/blockstack/explorer/issues/new'>blockstack/explorer</a> repository. For more details about this release, see the <a href='https://forum.blockstack.org/t/explore-the-stacks-2-0-testnet-with-the-new-explorer-developer-preview/10889'>Explore the Stacks 2.0 Testnet</a> post in the Blockstack forums." %}
 
-Open up the [Stacks 2.0 Explorer Sandbox view](https://testnet-explorer.blockstack.org/sandbox). You will be asked to sign in with a Blockstack account, so you can sign transactions when interacting with the Blockchain. Follow the steps on the screen to complete the process.
+Open up the [Stacks 2.0 Explorer Sandbox view](https://testnet-explorer.blockstack.org/sandbox). The Explorer Sandbox is a web-enabled view of the Testnet blockchain, and has tools for validating contracts, testing out transactions, and generating Testnet STX tokens. Here, we will run the code from `hello-world` right in the browser and create blockchain transactions right in the browser.
+
+You will be asked to sign in with or sign up for a Blockstack ID, which creates a new STX address for you on the Testnet blockchain. Follow the steps on the screen to complete the process.
 
 ![The faucet tab of the Stacks 2.0 Testnet Explorer](images/faucet.png)
 
 Once completed, you will see the Sandbox screen and a confirmation, indicating you were provided with a new STX address for testing purposes.
 
-## Step 2: Obtaining STX tokens
+## Obtain STX tokens
 
-Uploading and calling smart contracts requires fees to be paid to the network to process the transactions. For this tutorial, we will limit out interaction to the Testnet, which comes with the capability to request STX tokens that can be used to pay the fees ("STX faucet").
+Uploading and calling smart contracts requires fees to be paid to the network to process the transactions. The Testnet Explorer features the capability to request STX tokens that can be used to pay the fees ("STX faucet").
 
 Still on the first screen of the Sandbox, you will notice that you are looking at the ["STX faucet"](https://testnet-explorer.blockstack.org/sandbox?tab=faucet) tab. Your new STX address should already be prefilled. Hit "Submit" to request 0.5 STX to be transferred to your account.
 
@@ -107,27 +108,30 @@ A confirmation for a new transaction will pop up. Click on "View transaction" to
 
 ![faucettx](images/faucet-transfer.png)
 
-## Step 3: Deploying the contract
+## Deploy the contract
 
-Go back to the Sandbox screen and switch to the ["Contract deploy"](https://testnet-explorer.blockstack.org/sandbox?tab=contract-deploy) tab. The screen has various options, but all we want to do here is replace the code in the text area under **Contract source code** with the contents of `contracts/hello-world.clar`:
+Go back to the Sandbox screen and switch to the ["Contract deploy"](https://testnet-explorer.blockstack.org/sandbox?tab=contract-deploy) tab, and do the following:
+
+1. Enter a slug-like name for the contract under **Contract name** that uses lower-case letters, dashes, and numbers only.
+2. Replace code in the text area under **Contract source code** with the contents of `contracts/hello-world.clar`.
+3. Click **Deploy contract**.
 
 ![deploy](images/contract-deploy.png)
 
-Verify your input and hit "Submit". A confirmation will pop up, indicating that a new contract deploy transaction was issued. Click on "View transaction" to review the pending transaction. You might have to refresh the page a few times. In the next seconds, your contract deployment should be confirmed and you will see a contract creation success screen.
+A confirmation will pop up, indicating that a new contract deploy transaction was issued. Click on "View transaction" to review the pending transaction, and refresh the page a few times. In the next seconds, your contract deployment should be confirmed and you will see a contract creation success screen.
 
 As you can see on the screen, every smart contract's source code is publicly verifiable through the explorer.
 
+## Call the public method
 
-## Step 4: Call the public method
-
-Go back to the Sandbox screen and switch to the ["Contract call"](https://testnet-explorer.blockstack.org/sandbox?tab=contract-call) tab. In the form, enter the following details:
+Switch to the ["Contract call"](https://testnet-explorer.blockstack.org/sandbox?tab=contract-call) tab. In the form, enter the following details:
 
 * **Contract address**: Your generated STX address. Hover over the identity component on the right side of the screen to see your full address.
-* **Contract name**: hello-world-contract
+* **Contract name**: Whatever you entered as your contract name in the previous step. If you forgot, you can review your recent transactions by following the link on the upper-right.
 
 ![sandbox-call](images/sandbox-call.png)
 
-Verify your input and hit "Fetch" to look up available methods. You should see the 3 public methods implemented in the smart contract.
+Verify your input and hit "Fetch" to look up available methods. You should see the 2 public methods implemented in the smart contract.
 
 Locate the `(echo-number)` method, provide any integer for the `val` argument, set the post condition mode to "Allow" and hit **Submit**. A result confirmation will be displayed, indicating that a new contract call transaction was issued. Click on the transaction to review it. In the next seconds, your contract call should be completed and you will see a contract call success screen. Scroll down to the function summary section to verify your contract call:
 
@@ -135,7 +139,7 @@ Locate the `(echo-number)` method, provide any integer for the `val` argument, s
 
 **Congratulations! You just deployed your smart contract and called a public function on the Testnet.**
 
-## Step 5: Get familiar with CLI (optional)
+## Get familiar with CLI (optional)
 
 The steps above represent an easy way to get started with contract deployment and contract calls. If you want to stay in the terminal and get access to more advanced capabilities, you should use the Blockstack CLI.
 
@@ -145,19 +149,22 @@ The following set of commands will achieve the same goals as steps 1-4.
 # Install early release of the new Blockstack CLI for Stacks 2.0
 sudo npm install -g "https://github.com/blockstack/cli-blockstack#feature/stacks-2.0-tx"
 
-# Create a new STX address and save keychain details to a file
+# Create a new STX address and save keychain details, add -t flag for Testnet
 blockstack make_keychain -t > new_keychain.txt
+
+# See STX address
+cat new_keychain.txt
 
 # Call faucet to get STX tokens, replace <stx_address>
 curl -XPOST "https://sidecar.staging.blockstack.xyz/sidecar/v1/debug/faucet?address=<stx_address>" | json_pp
 
-# Confirm faucet transaction, replace <stx_address>
+# Confirm faucet transaction, replace <stx_address>, add -t flag for Testnet
 blockstack balance <stx_address> -t
 
-# Deploy a contract file, replace <stx_private_key>
+# Deploy a contract file, replace <stx_private_key>, add -t flag for Testnet
 blockstack deploy_contract ./hello-world.clar hello-world 2000 0 <stx_private_key> -t
 
-# Call increment method of deployed contract, replace <stx_address> and <stx_private_key>
+# Call increment method of contract, replace <stx_address> and <stx_private_key>
 blockstack call_contract_func <stx_address> hello-world echo-number 2000 1 <stx_private_key> -t
 ```
 
@@ -165,14 +172,12 @@ To learn more about the Blockstack CLI commands, you can run `blockstack-cli hel
 
 ---
 
-With the completion of this tutorial, you ...
+With the completion of this tutorial, you now:
 
-* Created a working Clarity starter project
-* Understood basic Clarity language design principles
-* Deployed a smart contract to the Testnet
-* Called public methods of the deployed smart contract
-* Understood how to use the Explorer Sandbox functionality
-* Understood how to use the Blockstack CLI for advanced capabilities
+* Have a working Clarity starter project and local dev environment
+* Understand basic Clarity language design principles
+* Have called public methods of the deployed smart contract
+* Understand how to use the Explorer Sandbox functionality
 
 Congratulations!
 
@@ -180,7 +185,6 @@ Congratulations!
 
 {:.no_toc}
 
-* <a href="principals.html">Guide: Understanding principals</a>
+
 * <a href="tutorial-counter.html">Next tutorial: Writing a counter smart contract</a>
-* <a href="principals.html">Guide: Testing contracts with JavaScript and Mocha</a>
-* <a href="clarityRef.html">Clarity language reference</a>
+* <a href="tutorial-test.html">Tutorial: Testing contracts with JavaScript and Mocha</a>

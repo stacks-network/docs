@@ -151,25 +151,26 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     **Congratulations! You just implemented your first Clarity smart contract.**
 
-6. Here is how the final smart contract file should look like. Note that you can find the `decrement` function in here - in case you want to compare with your own implementation:
+Here is how the final smart contract file should look like. Note that you can find the `decrement` function in here - in case you want to compare with your own implementation:
 
-    ```cl
-    (define-data-var counter int 0)
+```cl
+(define-data-var counter int 0)
 
-    (define-public (get-counter)
-      (ok (var-get counter)))
+(define-public (get-counter)
+  (ok (var-get counter)))
 
-    (define-public (increment)
-      (begin
-        (var-set counter (+ (var-get counter) 1))
-        (ok (var-get counter))))
+(define-public (increment)
+  (begin
+    (var-set counter (+ (var-get counter) 1))
+    (ok (var-get counter))))
 
-    (define-public (decrement)
-      (begin
-        (var-set counter (- (var-get counter) 1))
-        (ok (var-get counter))))
-    ```
+(define-public (decrement)
+  (begin
+    (var-set counter (- (var-get counter) 1))
+    (ok (var-get counter))))
+```
 
+If you're ready to deploy and execute the contract, try [the Explorer Sandbox](tutorial.html#access-the-explorer-sandbox) or following [the instructions to run the contract in the command-line](tutorial.html#get-familiar-with-cli-optional).
 ---
 
 With the completion of this tutorial, you ...
