@@ -35,7 +35,7 @@ Clarity differs from most other smart contract languages in two essential ways:
 
 * The language is interpreted and broadcasted on the blockchain as is (not compiled)
 * The language is decidable (not Turing complete)
-  
+
 Using an interpreted language ensures that the executed code is human-readable and auditable. A decidable language like Clarity makes it possible to determine precisely which code is going to be executed, for any function.
 
 A Clarity smart contract is composed of two parts &mdash; a data space and a set of functions. Only the associated smart contract may modify its corresponding data space on the blockchain. Functions may be private and thus callable only from within the smart contract, or public and thus callable from other contracts. Users call smart contracts' public functions by broadcasting a transaction on the blockchain which invokes the public function. Contracts can also call public functions from other smart contracts.
@@ -50,4 +50,6 @@ Note some of the key Clarity language rules and limitations.
 
 ## Learning Clarity
 
-You can try a [Hello World tutorial](tutorial.html) or jump right into the [language reference](clarityRef.html).
+The tutorials are ordered from "beginner" to "advanced." Start with the [Hello World tutorial](tutorial.html), then learn how to construct [a counter](tutorial-counter.html), and finally, learn how to [test your smart contracts](tutorial-test.html) using Mocha.
+
+Once you've got the hang of the general workflow, environment, and language syntax, you should be ready to start writing contracts, referring to the [Clarity language reference](clarityRef.html) as you go.
