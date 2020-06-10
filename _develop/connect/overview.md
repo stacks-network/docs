@@ -36,7 +36,7 @@ As you can see, you simply need to add a "Sign in" option to your homepage. The 
 
 At whichever point after a user has authenticated to your app, you can trigger the authenticator in a popup once more for them to a sign a transaction against any smart contract you or others have published to the Stacks blockchain.
 
-**insert screenshot**
+![Transaction signing in apps](/assets/img/transaction-signing.png)
 
 Note how this UI indicates "Testing mode" since transaction signing functionality is currently in beta and designed primarily with developers in mind. However, any Blockstack user who authenticates to your app can use it.
 
