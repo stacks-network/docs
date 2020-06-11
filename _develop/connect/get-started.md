@@ -5,11 +5,6 @@ permalink: /:collection/:path.html
 # Guide to Blockstack Connect
 {:.no_toc}
 
-
-Blockstack Connect is a Javascript library for integrating your application with Stacks v2. With Connect, you get some big benefits:
-
-<!-- -  -->
-
 * TOC
 {:toc}
 
@@ -163,3 +158,23 @@ if (userSession.isSignInPending()) {
   // your user is now logged in.
 }
 ```
+
+## Design Guidance
+
+Blockstack is valuable to users, but it can also be a barrier to those unfamiliar with Blockstack. The following guidelines serve to remedy that and help you onboard as many new users as you can. 
+
+### Delay Blockstack onboarding as long as possible
+
+People will often leave apps when things are asked of them before they experience the app. Give them a chance to try your app before you ask them to sign up with Blockstack. For example, a note taking app could let a new user write a couple of notes before prompting them to save their progress.
+
+### Provide an easy way in for new users
+
+Many new users to your app will not be familiar with Blockstack yet and will be hesitant to click a Blockstack-branded button. Provide a generic button for users that are new to your app and Blockstack. Blockstack Connect will introduce new users to Blockstack and recognize existing users.
+
+![Design Guidance Example](./docs/call-to-action-branding.png)
+
+### Provide a quick way for existing users to sign in
+
+You can point users to a specific part of the Blockstack App. For instance, a “Sign in” button on your website can redirect users to the sign in flow of the Blockstack App. If you do this, make sure you also have an option that is explicitly for new users and that points to the sign up flow.
+
+To implement this functionality, check out our section on sending users to sign in immediately.

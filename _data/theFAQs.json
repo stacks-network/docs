@@ -23,12 +23,12 @@
       {
          "category": "general",
          "question": "What can developers achieve with the Blockstack Ecosystem?",
-         "answer": "<p>The Blockstack Ecosystem is working to enable developers to build software that protects users’ digital rights. This new kind of software is known as decentralized applications or DApps.</p> <p>DApps use blockchain technology. Where Bitcoin is a decentralized value exchange on a blockchain, DApps use blockchain technology for more than value exchange; they use a blockchain to exchange data and support application interactions.</p> <p>Decentralized applications potentially represent the next generation of computing. In an entirely decentralized world, all things occur using peer-to-peer networks, and the idea of centralized entities are non-existent. This distributed future is still being designed and built, but the early stages of development are looking promising.</p>"
+         "answer": "<p>The Blockstack Ecosystem is working to enable developers to build software that protects users’ digital rights. This new kind of software is known as decentralized applications.</p> <p>Decentralized apps use blockchain technology. Where Bitcoin is a decentralized value exchange on a blockchain, decentralized apps use blockchain technology for more than value exchange; they use a blockchain to exchange data and support application interactions.</p> <p>Decentralized applications potentially represent the next generation of computing. In an entirely decentralized world, all things occur using peer-to-peer networks, and the idea of centralized entities are non-existent. This distributed future is still being designed and built, but the early stages of development are looking promising.</p>"
       },
       {
          "category": "general",
-         "question": "What problems do Blockstack DApps solve for me as a user?",
-         "answer": "<p>Applications developed with Blockstack’s technology run like the traditional, web applications you know. Unlike traditional, web applications, DApps avoid abusing users by adhering to the following principles:</p> <ul> <li><strong>Users control their data, not the application developer.</strong> If you stop using an application, the application cannot access your data. When you leave the application, you take your data with you.</li> <li><strong>Users determine where to store their data.</strong> You can store your data on your computer. Alternatively, you can choose highly-available commercial storage providers you trust. The providers can only host your data; it is encrypted so they cannot <q>unlock</q> it to view.</li> <li><strong>Users control which applications and which third parties can access their data.</strong> Applications ask your permission to read your data, and you can withdraw those same permissions at any time. Applications cannot sell or mine your data on behalf of a third party you are unaware of.</li> </ul>"
+         "question": "What problems do Blockstack apps solve for me as a user?",
+         "answer": "<p>Applications developed with Blockstack’s technology run like the traditional, web applications you know. Unlike traditional, web applications, Blockstack apps avoid abusing users by adhering to the following principles:</p> <ul> <li><strong>Users control their data, not the application developer.</strong> If you stop using an application, the application cannot access your data. When you leave the application, you take your data with you.</li> <li><strong>Users determine where to store their data.</strong> You can store your data on your computer. Alternatively, you can choose highly-available commercial storage providers you trust. The providers can only host your data; it is encrypted so they cannot <q>unlock</q> it to view.</li> <li><strong>Users control which applications and which third parties can access their data.</strong> Applications ask your permission to read your data, and you can withdraw those same permissions at any time. Applications cannot sell or mine your data on behalf of a third party you are unaware of.</li> </ul>"
       },
       {
          "category": "general",
@@ -42,23 +42,23 @@
       },
       {
          "category": "appusers",
-         "question": "What is a decentralized application or DApp?",
-         "answer": "<p>Decentralized applications or DApps are a new type of software application built with blockchain technology. Where Bitcoin is a decentralized value exchange on a blockchain, DApps use blockchain technology for more than value exchange; they use a blockchain to exchange data and support application interactions.</p>"
+         "question": "What is a decentralized application?",
+         "answer": "<p>Decentralized applications are a new type of software application built with blockchain technology. Where Bitcoin is a decentralized value exchange on a blockchain, decentralized apps use blockchain technology for more than value exchange; they use a blockchain to exchange data and support application interactions.</p>"
       },
       {
          "category": "appusers",
-         "question": "How do DApps differ from applications I typically use?",
-         "answer": "<p>DApps (decentralized applications) differ from Web applications in these key ways:</p> <ul> <li><strong>Users have identities, not accounts.</strong> The user brings their identity to the applications; applications do not require the user to create accounts and passwords. A user can use a single identity on all applications.</li> <li><strong>Users determine where to store their application data.</strong> They can store their data on their computer or with a commercial cloud storage provider.</li> <li><strong>Users control data access.</strong> Users control access to their data. Software creators and their decentralized applications don’t keep or save your data. When a user logs into a DApp with an identity, the user gives the DApp authority to read existing data or write new data. When a user disconnects from a DApp, it no longer has access to the user data.</li> </ul>"
+         "question": "How do Blockstack apps differ from applications I typically use?",
+         "answer": "<p>Decentralized applications differ from Web applications in these key ways:</p> <ul> <li><strong>Users have identities, not accounts.</strong> The user brings their identity to the applications; applications do not require the user to create accounts and passwords. A user can use a single identity on all applications.</li> <li><strong>Users determine where to store their application data.</strong> They can store their data on their computer or with a commercial cloud storage provider.</li> <li><strong>Users control data access.</strong> Users control access to their data. Software creators and their decentralized applications don’t keep or save your data. When a user logs into an app with an identity, the user gives the app authority to read existing data or write new data. When a user disconnects from an app, it no longer has access to the user data.</li> </ul>"
       },
       {
          "category": "appusers",
-         "question": "Do DApps work with a regular browser?",
-         "answer": "<p>Yes! DApps run in the web browsers (Chrome, Safari, Internet Explorer, and so forth) you know today.</p>"
+         "question": "Do Blockstack apps work with a regular browser?",
+         "answer": "<p>Yes! Blockstack apps run in the web browsers (Chrome, Safari, Internet Explorer, and so forth) you know today.</p>"
       },
       {
          "category": "appusers",
          "question": "What is an identity or ID or Blockstack identity?",
-         "answer": "<p>A name or identity, ID for short, is your <q>home</q> on the decentralized internet. Your identity is unique, like a passport number, only you have it. To use an application, you sign into the application with your identity and a secret key only you know.</p> <p>Your data and where it is stored is connected with your identity. When you sign into a DApp, you give the DApp permission to read your data and write to your data store on your behalf. When you log out of an application, it no longer has access to your data or data store — until the next time you log in with your identity.</p>"
+         "answer": "<p>A name or identity, ID for short, is your <q>home</q> on the decentralized internet. Your identity is unique, like a passport number, only you have it. To use an application, you sign into the application with your identity and a secret key only you know.</p> <p>Your data and where it is stored is connected with your identity. When you sign into an app, you give the app permission to read your data and write to your data store on your behalf. When you log out of an application, it no longer has access to your data or data store — until the next time you log in with your identity.</p>"
       },
       {
          "category": "appusers",
@@ -102,28 +102,23 @@
       },
       {
          "category": "appusers",
-         "question": "Why do DApps ask me for an email in addition to an identity?",
-         "answer": "<p>Your email is not kept by DApps or by Blockstack. It is stored in your browser client’s local web storage. (See the question about data storage for more information about web storage.) When you are logged into a DApp, it can use your email to send you any information you need to operate the DApp. When you log out, your email is no longer available to the DApp.</p>"
-      },
-      {
-         "category": "appusers",
-         "question": "Where can I find Blockstack DApps that I can use?",
-         "answer": "<p>You can see a list on <a href='https://app.co/'>the App.co site</a>. Alternatively, you can go directly to your <a href='https://browser.blockstack.org/'>Blockstack Browser</a> home page.</p>"
+         "question": "Where can I find Blockstack apps that I can use?",
+         "answer": "<p>You can see a list on <a href='https://app.co/'>the App.co site</a>.</p>"
       },
       {
          "category": "appusers",
          "question": "What is the Blockstack Browser?",
-         "answer": "<p>The Blockstack Browser is a DApp used to create and manage Blockstack identities. To a user, it looks just like another tab in a standard browser. From the Blockstack Browser tab, you can find DApps to try, update settings related to your identity and storage &ndash; and much more. </p> <p>Developers use the Blockstack Browser to handle login requests from DApps. From a Blockstack DApp, a user chooses the Log In with Blockstack button. Clicking this button sends users to a Blockstack Browser dialog. This dialog asks users to allow the DApp to access their data. </p>"
+         "answer": "<p>The Blockstack Browser is a deprecated app used to create and manage Blockstack identities. To a user, it looks just like another tab in a standard browser. From the Blockstack Browser tab, you can find apps to try, update settings related to your identity and storage &ndash; and much more. </p> <p>Developers used the Blockstack Browser to handle login requests from apps. From a Blockstack app, a user chooses the Log In with Blockstack button. Clicking this button sends users to a Blockstack Browser dialog. This dialog asks users to allow the app to access their data. </p><p>Developers are encouraged to integrate <a href=\"https://docs.blockstack.org/develop/connect/overview.html\">Blockstack Connect</a> into their apps instead of the Blockstack Browser, which is no longer actively developed by Blockstack PBC.</p> "
       },
       {
          "category": "appusers",
-         "question": "Do Blockstack DApps work with my web browser?",
-         "answer": "<p>Yes! DApps using Blockstack run in the web browsers you know and love (Chrome, Safari, Firefox, and Edge). Blockstack DApps are web applications; they happen to use the blockchain. DApps are just as fast as traditional web applications, often more so. If you use our <a href='https://browser.blockstack.org/'>Web-hosted Blockstack Browser</a>, you can get started using DApps right away.</p>"
+         "question": "Do Blockstack apps work with my web browser?",
+         "answer": "<p>Yes! Apps using Blockstack run in the web browsers you know and love (Chrome, Safari, Firefox, and Edge). Blockstack apps are web applications; they happen to use the blockchain. These apps are just as fast as traditional web applications, often more so.</p>"
       },
       {
          "category": "appusers",
          "question": "Is there a downloadable version of the Blockstack Browser?",
-         "answer": "<p>Yes. You can download a desktop version of the Blockstack Browser <a href='https://blockstack.org/install/'>here</a>.</p>"
+         "answer": "<p>Yes. You can download a desktop version of the Blockstack Browser <a href='https://blockstack.org/install/'>here</a>. However, it is deprecated and no longer actively developed by Blockstack PBC.</p>"
       },
       {
          "category": "appusers",
@@ -137,8 +132,8 @@
       },
       {
          "category": "appusers",
-         "question": "What kind of data does a Blockstack DApp keep about me?",
-         "answer": "<p>Blockstack does not keep any data about you. When you login into an application, you are asked to provide an email. That email is in your browser’s web storage; it doesn’t leave your device (computer or phone). When you reset the Blockstack Browser or clear your browser’s web storage, the local storage and your email are removed.</p>"
+         "question": "What kind of data does a Blockstack app keep about me?",
+         "answer": "<p>Blockstack does not keep any data about you. When you login into an application, you are asked to provide an email. That email is in your browser’s web storage; it doesn’t leave your device (computer or phone). When you reset the Blockstack authenticator or clear your browser’s web storage, the local storage and your email are removed.</p>"
       },
       {
          "category": "appusers",
@@ -151,102 +146,102 @@
          "answer": "<p>Currently, moving your data from one storage provider to another is not supported via the UI. You can do this move with assistance from Blockstack.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "Who should build with the Blockstack Platform?",
          "answer": "<p>Everyone! However, more seriously, if you are building an application in JavaScript that requires sign-in and storage, you should look at using Blockstack.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "I’m a web developer.  Can I build on the Blockstack Platform?",
          "answer": "<p>Yes! Blockstack is geared primarily towards web developers. All of your existing knowledge is immediately applicable to Blockstack. Anything you can do in a web browser, you can do in a Blockstack app.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "I’m a non-web developer.  Can I build on Blockstack Platform?",
          "answer": "<p>Yes! Blockstack implements a <a href='https://core.blockstack.org'>RESTful API</a> which lets you interact with Blockstack from any language and any runtime. In fact, the reference client (<a href='https://blockstack.github.io/blockstack.js/'>blockstack.js</a>) is mainly a wrapper around these RESTful API calls, so you won’t be missing much by using a language other than Javascript.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "How do I get started using Blockstack to build decentralized applications?",
-         "answer": "<p>The <a href='https://docs.blockstack.org/develop/zero_to_dapp_1.html'>Zero-to-Dapp Tutorial</a> is the best place to learn to build with Blockstack. The tutorial takes you through key aspects of building with Blockstack and takes less than 60 minutes. If you want something short and sweet, we have a <a href='https://docs.blockstack.org/browser/hello-blockstack.html'>Hello World</a> that takes about 10 minutes. In the end, you’ll have a working demo and even get a free limited edition t-shirt!</p>"
+         "answer": "<p>The <a href='https://docs.blockstack.org/develop/zero_to_app_1.html'>Zero-to-app Tutorial</a> is the best place to learn to build with Blockstack. The tutorial takes you through key aspects of building with Blockstack and takes less than 60 minutes. If you want something short and sweet, we have a <a href='https://docs.blockstack.org/browser/hello-blockstack.html'>Hello World</a> that takes about 10 minutes. In the end, you’ll have a working demo and even get a free limited edition t-shirt!</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "What’s the difference between a web app and a Blockstack app?",
          "answer": "<p>Blockstack apps are built like <a href='https://en.wikipedia.org/wiki/Single-page_application'>single-page web apps</a> — they are, in fact, a type of web application.</p> <p>Blockstack apps are a subset of web applications that use Blockstack’s technology to preserve the user’s control over their identities and data. As such, they tend to be simple in design and operation, since in many cases they don’t have to host anything besides the application’s assets.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "Do I need to learn any new languages or frameworks?",
          "answer": "<p>No. Blockstack applications are built using existing web frameworks and programming. The only new thing you need to learn is either <a href='https://blockstack.github.io/blockstack.js/'>blockstack.js</a> or the <a href='https://core.blockstack.org'>Blockstack RESTful API</a>.</p> "
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "What is the general architecture of the Blockstack Platform?",
          "answer": "<p>Applications built with Blockstack are serverless and decentralized. Developers don’t have to worry about running servers, maintaining databases, or building out user management systems.</p> <p>Developers build an application in Javascript using the <a href='https://blockstack.github.io/blockstack.js/'>blockstack.js</a> library. This library handles everything from identity and authentication to data storage. Applications can request permissions from users for read and write access to user resources. Data is stored off the blockchain in a storage provider running Blockstack’s Gaia Storage system. Gaia is simple and reliable and uses existing cloud infrastructure.</p> <p>Under the hood, Blockstack provides a decentralized domain name system, the Blockstack Naming System (BNS). BNS is a decentralized public key distribution system and registry for apps and user identities.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "What is a <q>serverless</q> app?",
-         "answer": "<p>The application should not run application-specific functionality on a server. All of its functionality should run on end-points. Serverless can also mean applications where the application developer still writes some amount of server-side logic, but unlike traditional architectures, this logic is run in stateless compute containers that are event-triggered and ephemeral (may only last for one invocation).</p> <p>However, applications may use some servers with the caveat that they must not be part of the application’s trusted computing base. The Gaia Storage System is part of most DApps’  computing base, but because user data is signed and verified end-to-end, the storage systems are not trusted to always serve correct data.</p>"
+         "answer": "<p>The application should not run application-specific functionality on a server. All of its functionality should run on end-points. Serverless can also mean applications where the application developer still writes some amount of server-side logic, but unlike traditional architectures, this logic is run in stateless compute containers that are event-triggered and ephemeral (may only last for one invocation).</p> <p>However, applications may use some servers with the caveat that they must not be part of the application’s trusted computing base. The Gaia Storage System is part of most apps’  computing base, but because user data is signed and verified end-to-end, the storage systems are not trusted to always serve correct data.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "How does my web app interact with Blockstack?",
          "answer": "<p>The <a href='https://blockstack.github.io/blockstack.js/'>blockstack.js</a> library gives any web application the ability to interact with Blockstack’s authentication and storage services. In addition, we supply a <a href='https://core.blockstack.org'>public RESTful API</a>.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "What does blockstack.js do?",
          "answer": "<p>This is the reference client implementation for Blockstack. You use it in your web app to do the following:</p> <ul> <li>Authenticate users</li> <li>Load and store user data</li> <li>Reuse users’ public data in your application</li> </ul><p>There are also mobile libraries for <a href='https://blockstack.github.io/blockstack-ios/'>iOS</a> and <a href='https://blockstack.github.io/blockstack-android/'>Android</a>.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "How do I use blockstack.js?",
-         "answer": "<p>Our documentation has <a href='https://docs.blockstack.org/develop/zero_to_dapp_1.html'>several examples</a> you can use to get started.</p>"
+         "answer": "<p>Our documentation has <a href='https://docs.blockstack.org/develop/zero_to_app_1.html'>several examples</a> you can use to get started.</p>"
       },
       {
-         "category": "dappdevs",
-         "question": "How do I register Blockstack IDs?",
-         "answer": "<p>You should use the <a href='https://browser.blockstack.org'>Blockstack Browser</a>.</p>"
+         "category": "appdevs",
+         "question": "How do I register Blockstack usernames?",
+         "answer": "<p>You should use integrate authentication into your app with <a href='https://docs.blockstack.org/develop/connect/overview.html'>Blockstack Connect</a>.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "How can I look up names and profiles?",
          "answer": "<p>You can use <a href='https://blockstack.github.io/blockstack.js/'>blockstack.js</a>, or you can use the <a href='https://core.blockstack.org'>public Stacks Blockchain endpoint</a>.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "What kind of scalability and performance can I expect from applications built with Blockstack?",
          "answer": "<p>Blockstack uses the blockchain only for name registration. Data storage is kept off-chain in the Gaia Storage System.  This basic application architecture means any application can perform and scale as they do without a blockchain.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "Is there a limit to the file sizes I can store in a Gaia Storage System",
          "answer": "<p>The file size limit is 25 MB per file.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "Can I run a Gaia Storage System commercially?",
          "answer": "<p>Yes, you can. Anyone interested in running a Gaia Storage System can run one and make it available to users.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "Is the platform private or open sourced?",
          "answer": "<p>The project is open-source, and anyone can contribute! The major contributors are mostly employees of Blockstack PBC. You can see the full list of contributors here: <a href='https://github.com/blockstack/blockstack-core/graphs/contributors'>https://github.com/blockstack/blockstack-core/graphs/contributors</a></p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "What programming language can I use to build these apps?",
          "answer": "<p>To make apps that run in the web browser using Blockstack, you can use JavaScript and any of the same web frameworks or libraries you use today such as React, AngularJs, Vue.js or jQuery. Stacks Node is implemented in Python (the next major release will be in Rust), but you can use any language you like for native apps as long as it can consume a JSON REST API.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "How is Blockstack different from Ethereum for building decentralized apps?",
          "answer": "<p>You can think of Ethereum as a <q>heavy</q> blockchain that does everything for you. All the complexity is handled on-chain, computations are run there, and all scalability and security concerns must be handled at the blockchain level. Ethereum amounts to a <q>mainframe</q> that runs all the applications in the ecosystem.</p> <p>Blockstack puts minimal logic into a blockchain and handles scalability outside of the blockchain by re-using existing internet infrastructure. Our architectural design mirrors how computing has developed; moving from mainframes to smaller networked entities.</p>"
       },
       {
-         "category": "dappdevs",
+         "category": "appdevs",
          "question": "Can Blockstack applications interact with Bitcoin? Ethereum? Other blockchains?",
          "answer": "<p>Yes! Since Blockstack applications are built like web applications, all you need to do is include the relevant Javascript library into your application.</p>"
       },

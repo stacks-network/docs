@@ -3,7 +3,7 @@
   - develop/overview_auth
   - develop/storage
   - develop/profiles
-  
+
 - title: Tutorials
   docs:
   - browser/hello-blockstack
@@ -13,7 +13,7 @@
   - android/tutorial
   - ios/tutorial
 
-- title: Connect
+- title: Blockstack Connect
   docs:
   - develop/connect/overview
   - develop/connect/get-started

@@ -1,7 +1,7 @@
 # Categories home page navigation
 
 - title: Build Decentralized Apps
-  desc: Learn how to build decentralized applications using Blockstack's storage and authentication tools.
+  desc: Learn how to build decentralized applications using Blockstack's authentication and storage tools.
   icon: code
   doc: develop/overview_auth
 

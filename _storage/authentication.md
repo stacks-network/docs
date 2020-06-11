@@ -11,18 +11,18 @@ In this section, you get an overview of the authentication system and learn how 
 
 ## Authentication and Gaia
 
-A decentralized application (DApp) and the Blockstack Browser communicate during
+A decentralized application (DApp) and the Blockstack authenticator communicate during
 the authentication flow by passing back and forth two tokens. The requesting
-application sends the Blockstack Browser an `authRequest` token. Once a user
-approves a sign-in, the Blockstack Browser responds to the application with an
+application sends the Blockstack authenticator an `authRequest` token. Once a user
+approves a sign-in, the Blockstack authenticator responds to the application with an
 `authResponse` token. These tokens are <a href="https://jwt.io/" target="\_blank">JSON Web Tokens</a>, and they are passed via
 URL query strings.
 
-When a user chooses to "Sign in with Blockstack" on your DApp, the `redirectToSignIn()` method sends the user to the Blockstack Browser. The browser responds with an authentication token and an _app private key_.
+When a user chooses to "Sign in with Blockstack" on your DApp, the `redirectToSignIn()` method sends the user to the Blockstack authenticator. The browser responds with an authentication token and an _app private key_.
 
 ![](/storage/images/app-sign-in.png)
 
-The app private key is application-specific. It is generated from the user's identity address private key using the `appDomain` as input. This key is deterministic, meaning that for a given Blockstack ID and domain name, the same private key is generated each time. The app private key is securely shared with the app on each authentication and encrypted by the Blockstack Browser. The key serves three functions, it:
+The app private key is application-specific. It is generated from the user's identity address private key using the `appDomain` as input. This key is deterministic, meaning that for a given Blockstack ID and domain name, the same private key is generated each time. The app private key is securely shared with the app on each authentication and encrypted by the Blockstack authenticator. The key serves three functions, it:
 
 * is used to create the credentials that give an app access to the Gaia hub storage bucket for that specific app
 * is used in the end-to-end encryption of files stored for the app on the user's Gaia hub
