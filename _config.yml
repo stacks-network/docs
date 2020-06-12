@@ -116,7 +116,6 @@ plugins:
   - jekyll-avatar
   - jekyll-titles-from-headings
   - jekyll-sitemap
-  - jekyll-toc
   - jekyll-redirect-from
 
 
