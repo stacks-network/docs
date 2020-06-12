@@ -3,7 +3,7 @@
 
 ---
 
-# Guide to Blockstack Auth
+# Authentication protocol
 {:.no_toc}
 
 Blockstack Auth provides single sign on and authentication without third parties or remote servers. On this page, you'll get an overview of authentication from a developer perspective. The following topics are covered:

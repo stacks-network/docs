@@ -1,23 +1,22 @@
-- title: Guides
-  docs:
-  - develop/overview_auth
-  - develop/storage
-  - develop/profiles
-
-- title: Tutorials
+- title: Get Started
   docs:
   - browser/hello-blockstack
   - browser/todo-list
   - browser/blockstack_storage
-  - develop/deploy-tips
-  - android/tutorial
-  - ios/tutorial
 
-- title: Blockstack Connect
+- title: Authentication
   docs:
   - develop/connect/overview
   - develop/connect/get-started
-  - develop/connect/use-with-clarity
+  - develop/profiles
+
+- title: Data Storage
+  docs:
+  - storage/overview
+  - develop/storage
+  - storage/authentication
+  - storage/write-to-read
+  - storage/hub-choice
 
 - title: Data sharing & collaboration
   docs:
@@ -27,71 +26,26 @@
   - develop/radiks-collaborate
   - develop/radiks-server-extras
 
-- title: Data portability (Preview)
-  docs:
-  - develop/collections
-  - develop/collection-type
-
-- title: Introduction to Gaia storage
-  docs:
-  - storage/overview
-  - storage/authentication
-  - storage/write-to-read
-  - storage/hub-choice
-
-- title: Gaia How to hub
-  docs:
-  - storage/hub-operation
-  - storage/amazon-s3-deploy
-  - storage/digital-ocean-deploy
-  - storage/hello-hub-choice
-  - storage/gaia-admin
-
-- title: Clarity Getting started
+- title: Smart Contracts
   docs:
   - core/smart/overview
-
-- title: Clarity Tutorials
-  docs:
   - core/smart/tutorial
   - core/smart/tutorial-counter
   - core/smart/tutorial-test
-
-- title: Clarity Guides
-  docs:
+  - develop/connect/use-with-clarity
   - core/smart/principals
-  - core/smart/neon-node
+  - core/smart/testnet-node
   - core/smart/cli-wallet-quickstart
 
-- title: About Blockstack
-  docs:
-  - org/overview
-  - faqs/allFAQS
-  - org/token
-  - org/whitepaper-blockchain
-- title: About Blockstack Manage Stacks
-  docs:
-  - org/wallet-intro
-  - org/wallet-install
-  - org/wallet-use
-  - org/wallet-troubleshoot
-  - org/tokenholders
-
-- title: Naming Services Guides
+- title: Naming Services
   docs:
   - core/naming/introduction
   - core/naming/architecture
   - core/naming/namespaces
   - core/naming/comparison
-
-- title: Naming Service Tutorials
-  docs:
   - core/naming/tutorial_subdomains
   - core/naming/search
   - core/faq_technical
-
-- title: How to use BNS
-  docs:
   - core/naming/pickname
   - core/naming/creationhowto
   - core/naming/resolving
@@ -100,11 +54,36 @@
   - core/naming/subdomains
   - core/naming/forks
 
+- title: Data Portability (Preview)
+  docs:
+  - develop/collections
+  - develop/collection-type
+
+- title: Host a Storage Hub
+  docs:
+  - storage/hub-operation
+  - storage/amazon-s3-deploy
+  - storage/digital-ocean-deploy
+  - storage/hello-hub-choice
+  - storage/gaia-admin
+
 - title: Atlas
   docs:
   - core/atlas/overview
   - core/atlas/howitworks
   - core/atlas/howtouse
+
+- title: Blockstack and Stacks Tokens
+  docs:
+  - org/overview
+  - faqs/allFAQS
+  - org/token
+  - org/whitepaper-blockchain
+  - org/wallet-intro
+  - org/wallet-install
+  - org/wallet-use
+  - org/wallet-troubleshoot
+  - org/tokenholders
 
 - title: References
   docs:
@@ -120,4 +99,5 @@
   - core/wire-format
   - storage/config-schema
   - org/secureref
+  - develop/overview_auth
   - org/terms
