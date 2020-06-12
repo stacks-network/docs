@@ -19,6 +19,7 @@ layout: default
                                   {% for item in site.pages %}
                                       {% if item.url == doc_url %}
                                           {% assign doc_title = item.title %}
+                                          {% break %}
                                       {% else %}
                                       {% comment %}Do nothing{% endcomment %}
                                       {% endif %}

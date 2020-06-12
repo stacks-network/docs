@@ -1,9 +1,4 @@
 ---
-
-description: "Run a Stacks Testnet Node"
-
-redirect_from:
-  - /core/smart/neon-node.html
 ---
 # Running a Testnet Node
 {:.no_toc}

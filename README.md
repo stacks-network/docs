@@ -14,8 +14,8 @@ When setting up your machine for the first time, run:
 # restart terminal or run the following source command:
 source ~/.rvm/scripts/rvm
 # install Ruby 2.7 and the needed dependencies
-rvm install 2.7
-rvm use 2.1 --default
+rvm install 2.6
+rvm use 2.6 --default
 gem install bundler
 # make sure you're in the root of your clone of this repo and run
 bundle install
@@ -35,6 +35,11 @@ Don't want to install a bunch of stuff and don't mind the overhead of using Dock
 
 ```bash
 docker build -t blockdocs .
+```
+
+From then on, you can run:
+
+```bash
 docker run -p 4000:4000 -ti -v "$(pwd)":/usr/src/app blockdocs
 ```
 
