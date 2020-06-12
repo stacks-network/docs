@@ -17,7 +17,7 @@ feel free to send a pull-request with the question and answer.
 ## DApp developers
 
 {% for faq in site.data.theFAQs.faqs %}
-   {% if faq.category == 'dappdevs' %}
+   {% if faq.category == 'appdevs' %}
 ### {{ faq.question }}
 {{ faq.answer }}
   {% endif %}

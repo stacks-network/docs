@@ -58,7 +58,7 @@ This is a comprehensive list of all the Blockstack FAQs.
 ## DApp developers questions
 
 {% for faq in site.data.theFAQs.faqs %}
-   {% if faq.category == 'dappdevs' %}
+   {% if faq.category == 'appdevs' %}
 ### {{ faq.question }}
 <div class="faq-answer">
 {{ faq.answer }}

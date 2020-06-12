@@ -2,6 +2,6 @@
 layout: learn
 permalink: /:collection/:path.html
 ---
-# Blockstack CLI Reference
+# CLI Reference
 
 {% include commandline.md %}

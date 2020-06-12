@@ -299,7 +299,7 @@ The FAQ system servers single-sourced content that support the FAQs that appear 
 
 * general 
 * appusers
-* dappdevs
+* appdevs
 * coredevs
 * opensource
 * miscquest

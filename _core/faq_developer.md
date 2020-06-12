@@ -3,7 +3,7 @@ layout: learn
 description: Blockstack DApp technical FAQs
 permalink: /:collection/:path.html
 ---
-# DApp Developer FAQs
+# Developer FAQs
 {:.no_toc}
 
 This document lists frequently-asked questions developers about Blockstack application development. If you are new to Blockstack, you should read the [general questions]({{site.baseurl}}/faqs/allFAQs.html) first.
@@ -18,7 +18,7 @@ feel free to send a pull-request with the question and answer.
 {:toc}
 
 {% for faq in site.data.theFAQs.faqs %}
-   {% if faq.category == 'dappdevs' %}
+   {% if faq.category == 'appdevs' %}
 ### {{ faq.question }}
 {{ faq.answer }}
   {% endif %}

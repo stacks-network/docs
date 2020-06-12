@@ -2,7 +2,7 @@
 layout: learn
 permalink: /:collection/:path.html
 ---
-# Guide to Blockstack Storage
+# Storage Reference
 
 {:.no_toc}
 

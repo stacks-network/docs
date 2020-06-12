@@ -1,46 +1,31 @@
-- title: Guides
-  docs:
-  - develop/overview_auth
-  - develop/storage
-  - develop/profiles
-
 - title: Tutorials
   docs:
-  - browser/hello-blockstack
-  - browser/todo-list
-  - browser/blockstack_storage
-  - develop/deploy-tips
-  - android/tutorial
-  - ios/tutorial
+  - develop/tutorials/authentication
+  - develop/tutorials/storage
+  - develop/tutorials/transaction-signing
 
-- title: Blockstack Connect
+- title: Samples
   docs:
-  - develop/connect/overview
-  - develop/connect/get-started
-  - develop/connect/use-with-clarity
-  
-- title: Data sharing & collaboration
-  docs: 
-  - develop/radiks-intro
-  - develop/radiks-setup
-  - develop/radiks-models
-  - develop/radiks-collaborate
-  - develop/radiks-server-extras
-
-- title: Data portability (Preview)
-  docs:
-  - develop/collections
-  - develop/collection-type
+  - develop/samples/hello-blockstack
 
 - title: References
   docs:
+  - develop/references/authentication
+  - develop/references/storage
+  - develop/references/transaction-signing
   - common/javascript_ref
-  - common/android_ref
-  - common/ios_ref
-  - develop/cliDocs
-  - common/core_ref
-
-- title: Misc
-  docs:
+  - develop/references/profiles
+  - develop/references/cli
+  - develop/references/deployment
   - core/faq_developer
-  - develop/communityResources
+  - develop/community-resources
+  
+- title: Advanced guides
+  docs: 
+  - develop/guides/radiks-intro
+  - develop/guides/radiks-setup
+  - develop/guides/radiks-models
+  - develop/guides/radiks-collaborate
+  - develop/guides/radiks-server-extras
+  - develop/guides/collections
+  - develop/guides/collection-type

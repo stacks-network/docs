@@ -2,7 +2,7 @@
 layout: learn
 permalink: /:collection/:path.html
 ---
-# Community Learning Resources
+# Community Resources
 
 You can use these community resources to learn more. To add your own resources,
 please make a pull request or send us an issue on Github. We are happy to add
