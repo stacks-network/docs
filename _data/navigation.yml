@@ -1,0 +1,123 @@
+- title: Guides
+  docs:
+  - develop/overview_auth
+  - develop/storage
+  - develop/profiles
+
+- title: Tutorials
+  docs:
+  - browser/hello-blockstack
+  - browser/todo-list
+  - browser/blockstack_storage
+  - develop/deploy-tips
+  - android/tutorial
+  - ios/tutorial
+
+- title: Blockstack Connect
+  docs:
+  - develop/connect/overview
+  - develop/connect/get-started
+  - develop/connect/use-with-clarity
+
+- title: Data sharing & collaboration
+  docs:
+  - develop/radiks-intro
+  - develop/radiks-setup
+  - develop/radiks-models
+  - develop/radiks-collaborate
+  - develop/radiks-server-extras
+
+- title: Data portability (Preview)
+  docs:
+  - develop/collections
+  - develop/collection-type
+
+- title: Introduction to Gaia storage
+  docs:
+  - storage/overview
+  - storage/authentication
+  - storage/write-to-read
+  - storage/hub-choice
+
+- title: Gaia How to hub
+  docs:
+  - storage/hub-operation
+  - storage/amazon-s3-deploy
+  - storage/digital-ocean-deploy
+  - storage/hello-hub-choice
+  - storage/gaia-admin
+
+- title: Clarity Getting started
+  docs:
+  - core/smart/overview
+
+- title: Clarity Tutorials
+  docs:
+  - core/smart/tutorial
+  - core/smart/tutorial-counter
+  - core/smart/tutorial-test
+
+- title: Clarity Guides
+  docs:
+  - core/smart/principals
+  - core/smart/neon-node
+  - core/smart/cli-wallet-quickstart
+
+- title: About Blockstack
+  docs:
+  - org/overview
+  - faqs/allFAQS
+  - org/token
+  - org/whitepaper-blockchain
+- title: About Blockstack Manage Stacks
+  docs:
+  - org/wallet-intro
+  - org/wallet-install
+  - org/wallet-use
+  - org/wallet-troubleshoot
+  - org/tokenholders
+
+- title: Naming Services Guides
+  docs:
+  - core/naming/introduction
+  - core/naming/architecture
+  - core/naming/namespaces
+  - core/naming/comparison
+
+- title: Naming Service Tutorials
+  docs:
+  - core/naming/tutorial_subdomains
+  - core/naming/search
+  - core/faq_technical
+
+- title: How to use BNS
+  docs:
+  - core/naming/pickname
+  - core/naming/creationhowto
+  - core/naming/resolving
+  - core/naming/register
+  - core/naming/manage
+  - core/naming/subdomains
+  - core/naming/forks
+
+- title: Atlas
+  docs:
+  - core/atlas/overview
+  - core/atlas/howitworks
+  - core/atlas/howtouse
+
+- title: References
+  docs:
+  - core/cmdLineRef
+  - core/smart/clarityRef
+  - core/smart/rpc-api
+  - common/javascript_ref
+  - common/android_ref
+  - common/ios_ref
+  - develop/cliDocs
+  - common/core_ref
+  - core/faq_developer
+  - core/wire-format
+  - storage/config-schema
+  - org/secureref
+  - org/terms
