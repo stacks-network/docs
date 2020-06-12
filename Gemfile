@@ -1,40 +1,43 @@
 source "https://rubygems.org"
 
-# Hello! This is where you manage which Jekyll version is used to run.
-# When you want to use a different version, change it below, save the
-# file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
+# Update me once in a while: https://github.com/github/pages-gem/releases
+# Please ensure, before upgrading, that this version exists as a tag in starefossen/github-pages here:
+# https://hub.docker.com/r/starefossen/github-pages/tags/
 #
-#     bundle exec jekyll serve
+# Fresh install?
 #
-# This will help ensure the proper Jekyll version is running.
-# Happy Jekylling!
-gem "jekyll", "3.8.6"
+# Windows:
+# Install Ruby 2.3.3 x64 and download the Development Kit for 64-bit:
+# https://rubyinstaller.org/downloads/
+#
+# Run this to install devkit after extracting:
+# ruby <path_to_devkit>/dk.rb init
+# ruby <path_to_devkit>/dk.rb install
+#
+# then:
+# gem install bundler
+# bundle install
+#
+# Mac/Linux:
+# Install Ruby 2.3.x and then:
+# gem install bundler
+# bundle install
+#
+# ---------------------
+# Upgrading? Probably best to reset your environment:
+#
+# Remove all gems:
+# gem uninstall -aIx
+#
+# (If Windows, do the dk.rb bits above, then go to the next step below)
 
-# This is the default theme for new Jekyll sites. You may change this to anything you like.
-# gem "minima", "~> 2.0"
+# Install anew:
+# gem install bundler
+# bundle install
 
-# If you want to use GitHub Pages, remove the "gem "jekyll"" above and
-# uncomment the line below. To upgrade, run `bundle update github-pages`.
-# gem "github-pages", group: :jekyll_plugins
+# This only affects interactive builds (local build, Netlify) and not the
+# live site deploy, which uses the Dockerfiles found in the publish-tools
+# branch.
 
-# If you have any plugins, put them here!
-group :jekyll_plugins do
-   gem "jekyll-feed", "~> 0.6"
-   gem 'jekyll-paginate', '~> 1.1'
-   gem 'jekyll-seo-tag'
-   gem 'jekyll-gist'
-   gem 'jekyll-avatar'
-   gem 'jekyll-titles-from-headings'
-   gem 'jekyll-sitemap'
-   gem 'jekyll-toc'
-   gem 'jekyll-redirect-from'
-   gem 'jekyll-google-tag-manager'
-end
-
-group :development do
-  gem 'guard'
-end
-
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "github-pages", "198"
+gem 'wdm' if Gem.win_platform?
