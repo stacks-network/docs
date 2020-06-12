@@ -22,7 +22,6 @@
 @import "syntax-highlighting/github";
 
 // Comment forms
-@import "comments/comments";
 @import "comments/forms";
 
 .uk-alert-primary {
@@ -64,7 +63,7 @@ body > div.uk-lightbox.uk-overflow-hidden.uk-lightbox-panel.uk-open > div.uk-lig
     text-align: right;
 }
 
- 
+
 .uk-table th {
   vertical-align: top !important;
 }

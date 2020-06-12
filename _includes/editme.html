@@ -1,5 +1,5 @@
 <!-- {% assign theCol = site.collections | where: "label", page.collection | first %} -->
 
 {% assign filename = page.slug  | append: '.md' %}
-<a "target="_blank" href="https://github.com/{{site.github_editme_path}}/{{page.relative_path}}{% unless page.url contains "index.html" %}{% endunless %}" class="btn btn-default githubEditButton" role="button">
+<a "target="_blank" href="https://github.com/{{site.github_editme_path}}/{{page.path}}" class="btn btn-default githubEditButton" role="button">
   <span data-uk-icon="icon: pencil; ratio: 1.2"></span> Edit this page on Github</a>

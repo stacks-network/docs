@@ -169,31 +169,10 @@ sass:
 
 defaults:
   - scope:
-      path: "" # an empty string here means all files in the project
-      basepath: elephant
+      path: ""
+      type: "pages"
     values:
       comments: true
       image: /assets/img/touch-icon.png
       description: "Blockstack Network docs for investors, users, and developers."
-
-collections:
-  android:
-    output: true
-  community:
-    output: true
-  core:
-    output: true
-  develop:
-    output: true
-  storage:
-    output: true
-  browser:
-    output: true
-  ios:
-    output: true
-  common:
-    output: true
-  org:
-    output: true
-  faqs:
-    output: true
+      layout: docs
