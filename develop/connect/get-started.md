@@ -171,7 +171,7 @@ People will often leave apps when things are asked of them before they experienc
 
 Many new users to your app will not be familiar with Blockstack yet and will be hesitant to click a Blockstack-branded button. Provide a generic button for users that are new to your app and Blockstack. Blockstack Connect will introduce new users to Blockstack and recognize existing users.
 
-![Design Guidance Example](./docs/call-to-action-branding.png)
+![Design Guidance Example](/develop/images/connect-call-to-action-branding.png)
 
 ### Provide a quick way for existing users to sign in
 
