@@ -1,8 +1,6 @@
-- title: Get Started
+- title: Tutorials
   docs:
-  - browser/hello-blockstack
   - browser/todo-list
-  - browser/blockstack_storage
 
 - title: Authentication
   docs:
