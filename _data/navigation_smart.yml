@@ -13,6 +13,7 @@
   - core/smart/principals
   - core/smart/neon-node
   - core/smart/cli-wallet-quickstart
+  - core/smart/testnet-node
 
 - title: References
   docs:
