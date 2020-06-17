@@ -17,8 +17,9 @@ Blockstack Auth provides single sign on and authentication without third parties
 
 ## Scopes
 
-Scopes define the permissions requested from, and that a user accepts, through the sign-in dialog.
-Decentralized apps may request any of the following scopes:
+Scopes define the permissions requested by an app for granting during authentication.
+
+Apps may request any of the following scopes:
 
 | Scope          | Definition                                                                           |
 | -------------- | ------------------------------------------------------------------------------------ |
@@ -155,3 +156,40 @@ const requestPayload = {
     version // version tuple
   }
 ```
+
+## Decode authRequest
+
+To decode the token and see what information it holds:
+
+1. Copy the `authRequest` string from the URL.
+
+   <img src="{{site.baseurl}}/develop/images/copy-authRequest.png" alt="">
+
+2. Navigate to [jwt.io](https://jwt.io/).
+3. Paste the full token there.
+
+    The output should look similar to below:
+
+    ```json
+    {
+      "jti": "f65f02db-9f42-4523-bfa9-8034d8edf459",
+      "iat": 1555641911,
+      "exp": 1555645511,
+      "iss": "did:btc-addr:1ANL7TNdT7TTcjVnrvauP7Mq3tjcb8TsUX",
+      "public_keys": [
+        "02f08d5541bf611ded745cc15db08f4447bfa55a55a2dd555648a1de9759aea5f9"
+      ],
+      "domain_name": "http://localhost:8080",
+      "manifest_uri": "http://localhost:8080/manifest.json",
+      "redirect_uri": "http://localhost:8080",
+      "version": "1.3.1",
+      "do_not_include_profile": true,
+      "supports_hub_url": true,
+      "scopes": [
+        "store_write",
+        "publish_data"
+      ]
+    }
+    ```
+
+    The `iss` property is a decentralized identifier or `did`. This identifies the user and the user name to the application. The specific `did` is a `btc-addr`.

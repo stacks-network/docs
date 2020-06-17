@@ -3,105 +3,39 @@
 description: Single-page application with Blockstack
 
 ---
-# Todo List
+# Todos app
 {:.no_toc}
 
-In this tutorial, you build the code for and run a single-page application (SPA)
-with Blockstack and React. Once the application is running, you take a tour
-through the applications’ Blockstack functionality. You’ll learn how it manages
-authentication using a Blockstack ID and how it stores information associated
-with that ID using Blockstack Storage (Gaia).
+In this tutorial, you will learn about Blockstack authentication and storage by installing, running and reviewing the code for a "Todos" web app built with Blockstack and [React](https://reactjs.org/).
+
+This app highlights the following platform functionality:
+
+- Generate Secret Key with associated Blockstack username to authenticate app
+- Add, edit and delete encrypted app data with Gaia
+- Decrypt data on Gaia for public sharing by URL
+- Unauthenticate and re-authenticate app with Secret Key
+
+[Preview the app](https://todos.blockstack.org) or [view its code on GitHub](https://github.com/blockstack/blockstack-todos).
+
+Existing familiarity with React is recommended for reviewing this app's code.
 
 * TOC
 {:toc}
 
-{% include note.html content="On macOS, Blockstack requires macOS High Sierra. This tutorial was written on macOS High Sierra 10.13.4. If you use a Windows or Linux system, you can still follow along. However, you will need to \"translate\" appropriately for your operating system. Additionally, this tutorial assumes you are accessing the Blockstack Browser web application via Chrome. The application you build will also work with a local installation and/or with browsers other than Chrome. " %}
+### Install and run the app
 
-## Before you begin
-
-The application you build is a React application that is completely decentralized and server-less. While not strictly required to follow along, basic familiarity with React is helpful. When complete, the app is capable of the following:
-
-* authenticating users using Blockstack
-* posting new statuses
-* displaying statuses in the user profile
-* looking up the profiles and statuses of other users
-
-For this tutorial, you will use the following tools:
-
-* your workstation's command line
-- Node.js  v10 or higher is recommended the minimum supported version is Node.js v8.
-
-The basic identity and storage services are provided by blockstack.js. To test the application, you need to have already registered a Blockstack ID.
-
-### Verify you have Node.js and its tools installed
-
-The tutorial relies on Node.js and its `npx` or `npm` tools. Before you begin, verify you have the correct version of Node.js and its tools installed.
-
-```bash
-$ node -v
-v12.10.0
-$ which npm npx
-/usr/local/bin/npm
-/usr/local/bin/npx
-```
-
-If you don't, make sure they are installed.
-
-### Make sure you have a Blockstack ID
-
-Finally, make sure you have [created at least one Blockstack ID]({{site.baseurl}}/browser/ids-introduction.html#create-an-initial-blockstack-id).
-You’ll use this ID to interact with the application.
-
-## Task 1: Install the code and retrieve the dependencies
-
-You can clone the source code with  `git` or [download and unzip the code from the repository](https://github.com/blockstack/blockstack-todos/archive/master.zip). These instructions assume you are cloning.
+You must have recent versions of Git and [Node.js](https://nodejs.org/en/download/) (v12.10.0 or greater) installed already.
 
 
-1. Install the code by cloning it.
+1. Install the code and its dependencies:
 
     ```
-    $ git clone https://github.com/blockstack/blockstack-todos
+    git clone https://github.com/blockstack/blockstack-todos
+    cd blockstack-todos
+    npm install
     ```
 
-2. Change to directory to the root of the code.
-
-    ```
-    $ cd blockstack-todos
-    ```
-
-    If you downloaded the zip file, the contents unzip into a `blockstack-todos-master` directory.
-
-
-3. Use `npm` to install the dependencies.
-
-
-    ```
-    $ npm install
-    ```
-
-The Todo application has a basic React structure. There are several configuration files but the central programming files are in the `src/components` directory:
-
-| File                    | Description                                 |
-| ----------------------- | ------------------------------------------- |
-| `index.js`              | Application initialization.                 |
-| `components/App.js `    | Code for handling the `authResponse`.       |
-| `components/Signin.js ` | Code for the initial sign on page.          |
-| `components/Profile.js` | Application data storage and user sign out. |
-
-## Task 2: Sign into the application
-
-The example application runs in a node server on your local host. In the this section, you start the application and interact with it.
-
-1. Make sure you are in the root of the code base.
-
-   ```bash
-    $ pwd 
-    /Users/meepers/repos/blockstack-todos
-   ```
-   
-   This path will be different for you, but double-check the last part to ensure that you're in the directory into which you cloned and in which you ran `npm install`.
-
-2. Start the application in your local environment.
+2. Run the application:
 
     ```bash
     $ npm run start
@@ -120,116 +54,205 @@ The example application runs in a node server on your local host. In the this se
       To create a production build, use npm run build.
       ```
 
-2. Open your local browser to the `http://localhost:3000` URL.
+2. Open your local browser to `http://localhost:3000` if it doesn't open automatically.
   
-    You should see a simple application:
+    You should see the app's landing page:
 
-    ![](images/todo-sign-in.png)
+    ![](images/todos-home.png)
 
- 3. Choose **Sign In with Blockstack**.
+### Onboard into your first Blockstack app
 
-    If you have already signed into Blockstack the application prompts you to select the ID to use. If you aren’t signed in, Blockstack prompts you to:
+1. Choose **Get started** to start onboarding into the app.
 
-    ![](images/login-choice.png)
+    The app displays a standardized introductory modal using [Blockstack Connect](https://github.com/blockstack/ux/tree/master/packages/connect), a JavaScript library that makes it easy to integrate Blockstack into the UI of any web app.
 
-    If the login to the application is successful, the user is presented with the application:
+    ![](images/todos-intro.svg)
 
-    ![](images/todo-app.png)
+    The following [React component](https://reactjs.org/docs/react-component.html)  triggers this modal in [`src/components/Signin.js`](https://github.com/blockstack/blockstack-todos/blob/master/src/components/Signin.js):
 
-## Task 3: Learn about the sign in process
+    ```
+    import React from 'react';
+    import '../styles/Signin.css'
+    import { useConnect } from '@blockstack/connect';
 
-{% include sign_in.md %}
+    export const Signin = () => {
+      const { doOpenAuth } = useConnect();
 
+      return (
+        <div className="panel-landing" id="section-1">
+          <h1 className="landing-heading">Hello, Blockstack!</h1>
+          <p className="lead">
+            <button
+              className="btn btn-primary btn-lg"
+              id="signin-button"
+              onClick={() => doOpenAuth()}
+            >
+              Sign In with Blockstack
+            </button>
+          </p>
+        </div>
+      );
+    }
 
-## Task 4: Decode the authRequest
+    export default Signin;
 
-To decode the token and see what information it holds:
+    ```
 
-1. Copy the `authRequest` string from the URL.
+    This component imports the [React hook](https://reactjs.org/docs/hooks-overview.html) [`useConnect`](https://github.com/blockstack/ux/blob/master/packages/connect/src/react/hooks/use-connect.ts) from the Blockstack Connect library.
 
-   <img src="{{site.baseurl}}/develop/images/copy-authRequest.png" alt="">
+    `useConnect` returns many helper functions such as [`doOpenAuth`](https://github.com/blockstack/ux/blob/5934829a40338ac269b80783912c8dad17af1962/packages/connect/src/react/hooks/use-connect.ts#L33), which triggers this modal upon click of the "Get started" button.
 
-2. Navigate to [jwt.io](https://jwt.io/).
-3. Paste the full token there.
+    The modal is designed to prepare new users for a different type of relationship with Blockstack apps, one in which they authenticate with a *Secret Key* that's used to encrypt their private data.
 
-    The output should look similar to below:
+    The modal displays the app's name and icon as configured in [`src/components/App.js`](https://github.com/blockstack/blockstack-todos/blob/f6ab7b38f3f9bd98a900c7f285da4f4dd9768d60/src/components/App.js#L26):
 
-    ```json
-    {
-      "jti": "f65f02db-9f42-4523-bfa9-8034d8edf459",
-      "iat": 1555641911,
-      "exp": 1555645511,
-      "iss": "did:btc-addr:1ANL7TNdT7TTcjVnrvauP7Mq3tjcb8TsUX",
-      "public_keys": [
-        "02f08d5541bf611ded745cc15db08f4447bfa55a55a2dd555648a1de9759aea5f9"
-      ],
-      "domain_name": "http://localhost:8080",
-      "manifest_uri": "http://localhost:8080/manifest.json",
-      "redirect_uri": "http://localhost:8080",
-      "version": "1.3.1",
-      "do_not_include_profile": true,
-      "supports_hub_url": true,
-      "scopes": [
-        "store_write",
-        "publish_data"
-      ]
+    ```
+
+      appDetails: {
+        name: 'Blockstack App',
+        icon: window.location.origin + '/favicon.ico'
+      }
+
+    ```
+
+    This component loads the [`UserSession`](https://blockstack.github.io/blockstack.js/classes/usersession.html) module from a second Blockstack library called [blockstack.js](https://github.com/blockstack/blockstack.js/), which complements Blockstack Connect by providing an API for many protocol-level operations, such as for authentication and storage.
+
+    ```
+
+    import { UserSession } from 'blockstack';
+    import { appConfig } from '../assets/constants'
+
+    ...
+
+    const userSession = new UserSession({ appConfig })
+
+    ```
+
+    This module handles user session operations and is initiated using the [`appConfig`](https://github.com/blockstack/blockstack-todos/blob/f6ab7b38f3f9bd98a900c7f285da4f4dd9768d60/src/assets/constants.js#L3) object, which contains an array of [scopes](/develop/overview_auth.html#scopes) that indicate just what permissions to grant during authentication:
+
+    ```
+    export const appConfig = new AppConfig(['store_write', 'publish_data'])
+    ```
+
+    The `appDetails` and `userSession` objects are joined by the callback function [`finished`](https://github.com/blockstack/blockstack-todos/blob/f6ab7b38f3f9bd98a900c7f285da4f4dd9768d60/src/components/App.js#L31) in configuring Blockstack Connect for authentication with the `authOptions` object:
+
+    ```
+    finished: ({ userSession }) => {
+      this.setState({ userData: userSession.loadUserData() });
+    }
+
+    ```
+
+    This function simply saves data about the user into the app's state upon authentication.
+
+    Further down in the component we see in [`componentDidMount`](https://github.com/blockstack/blockstack-todos/blob/f6ab7b38f3f9bd98a900c7f285da4f4dd9768d60/src/components/App.js#L46) that it checks upon mount to either process completion of authentication with `userSession.handlePendingSignIn()` or otherwise load session data into app state as above with `userSession.isUserSignedIn()`:
+
+    ```
+    componentDidMount() {
+      if (userSession.isSignInPending()) {
+        userSession.handlePendingSignIn().then((userData) => {
+          window.history.replaceState({}, document.title, "/")
+          this.setState({ userData: userData})
+        });
+      } else if (userSession.isUserSignedIn()) {
+        this.setState({ userData: userSession.loadUserData() });
+      }
     }
     ```
 
-    The `iss` property is a decentralized identifier or `did`. This identifies the user and the user name to the application. The specific `did` is a `btc-addr`.
 
-## Task 5: Under the covers in the sign in code
+2. Choose **Get started** to generate a *Secret Key*.
 
-Now, go to the underlying `blockstack-todo` code you cloned or downloaded. Sign
-in and sign out is handled in each of these files:
+    The app triggers a popup window in which [the Blockstack App](https://github.com/blockstack/ux/tree/master/packages/app) is loaded from [`app.blockstack.org`](http://app.blockstack.org/) and begins generating a new *Secret Key*.
 
-| File                    | Description                                 |
-| ----------------------- | ------------------------------------------- |
-| `components/App.js `    | Code for handling the `authResponse`.       |
-| `components/Signin.js ` | Code for the initial sign on page.          |
-| `components/Profile.js` | Application data storage and user sign out. |
+    ![](images/todos-generation.svg)
 
-<!-- The `src/components/App.js` code configures an `AppConfig` object and then uses this to create a `UserSession`. Then, the application calls a [`redirectToSignIn()`](https://blockstack.github.io/blockstack.js#redirectToSignIn) function which generates the `authRequest` and redirects the user to the Blockstack authenticator: -->
+3. Choose **Copy Secret Key** to copy your *Secret Key* to the clipboard.
 
-The `src/components/App.js` code configures a `UserSession` and other `authOptions`, which are passed to the `Connect` component. The `Connect` component acts as a "provider" for the rest of your application, and essentially creates a re-usable configuration for you.
+    The *Secret Key* is a unique 12-word [mnemonic phrase](https://en.bitcoinwiki.org/wiki/Mnemonic_phrase) that empowers the user not only to access Blockstack apps securely and independently. It's also used to encrypt all of the private data they create and manage with Blockstack apps.
 
-In the `src/components/Signin.js` component, we are then calling the `useConnect` hook. This hook returns many helper functions, one of which is `doOpenAuth`. Calling this method will being the authentication process. First, it injects a modal into your application, which acts as a way of "warming up" your user to Blockstack authentication. When the user continues, they are redirected to the Blockstack authenticator, where they can finish signing up.
+    *Secret Keys* are like strong passwords. However, they can never be recovered if lost or reset if stolen. As such, it's paramount that users handle them with great care.
 
-```js
-import React from 'react';
-import { useConnect } from '@blockstack/connect';
+   ![](images/todos-copy-secret-key.svg)
 
-export const Signin = () => {
-  const { doOpenAuth } = useConnect();
+4. Choose **I've saved it** to confirm you've secured your *Secret Key* in a suitable place.
 
-  return (
-    <button
-      onClick={() => doOpenAuth()}
-    >
-      Sign In with Blockstack
-    </button>
-  )
-};
+   ![](images/todos-ive-saved-it.svg)
+
+5. Enter a username value and choose **Continue**
+
+   The username will be used by the app to generate a URL for sharing your todos, should you choose to make them public.
+
+   It is registered on the Stacks blockchain with the [Blockstack Naming System (BNS)](/core/naming/introduction.html) and associated with your *Secret Key*.
+
+   ![](images/todos-username.svg)
+
+6. You've now completed onboarding into the app!
+
+### Add, edit and delete todos privately
+
+Once you've authenticated the app, you can can start adding todos by entering values into the "Write your to do" field and hitting "Enter".
+
+![](images/todos-home-authenticated.svg)
+
+The data for all todos are saved as JSON to the Gaia hub linked to your Secret Key using the [`putFile`](http://blockstack.github.io/blockstack.js/globals.html#putfile) method of the `userSession` object in the [`src/components/Profile.js`](https://github.com/blockstack/blockstack-todos/blob/f6ab7b38f3f9bd98a900c7f285da4f4dd9768d60/src/components/Profile.js#L50) component:
+
+```
+saveTasks(tasks, encrypt) {
+  const options = { encrypt: encrypt ? true : encrypt };
+  this.props.userSession.putFile(TASKS_FILENAME, JSON.stringify(tasks), options);
+}
 ```
 
-Once the user authenticates, the application handles the `authResponse` in the `src/components/Profile.js` file. :
+These todos are subsequently loaded using the [`getFile`](http://blockstack.github.io/blockstack.js/globals.html#getfile) method of the same object in the same component:
 
-```js
-...
-componentWillMount() {
-    if (userSession.isSignInPending()) {
-      userSession.handlePendingSignIn().then((userData) => {
-        //if (!userData.username) {
-        //  throw new Error('This app requires a username.')
-        //}
-        window.location = window.location.origin;
-      });
-    }
-  }
-...
+```
+loadTasks() {
+  const options = { decrypt: true };
+  this.props.userSession.getFile(TASKS_FILENAME, options)
+  .then((content) => {
+    if(content) {
+      const tasks = JSON.parse(content);
+      this.setState({tasks});
+    } 
+  })
+}
 ```
 
-If [`isUserSignedIn()`](https://blockstack.github.io/blockstack.js/#isusersignedin) is true, the user was previously signed in so Blockstack pulls the data from the browser and uses it in our application. If the check on  [`UserSession.isSignInPending()`](https://blockstack.github.io/blockstack.js/#issigninpending) is true, a previous `authResponse` was sent to the application but hasn't been processed yet. The `handlePendingSignIn()` function processes any pending sign in.
+By default, the `putFile` and `getFile` methods automatically encrypt data when saved and decrypt it when retrieved, using the user's Secret Key. This ensures that only the user has the ability to view this data.
+
+When deleting a todo, the same `putFile` method is used to save a new JSON array of todos that excludes the deleted todo.
+
+### Publish your todos publicly
+
+If you wish to make your todos accessible to the public for sharing via URL, select "Make public".
+
+![](images/todos-public.svg)
+
+This will call the [`makePublic`](#) method of the `Profile.js` component, which in turn calls `saveTasks` with the `encrypt` parameter set to `false`, which is used to disable encryption when using `putFile`:
+
+```
+makePublic() {
+  const tasks = remove(e.currentTarget.dataset.index, this.state);
+  this.saveTasks(tasks, false);
+}
+
+saveTasks(tasks, encrypt) {
+  const options = { encrypt: encrypt ? true : encrypt };
+  this.props.userSession.putFile(TASKS_FILENAME, JSON.stringify(tasks), options);
+}
+```
+
+The app will now show all of your todos to anyone who visits the URL displayed with your Blockstack username as a suffix.
+
+
+### Sign out and back in
+
+
+
+
+
+
 
 Signout is handled in `src/components/App.js`.
 
@@ -240,54 +263,4 @@ Signout is handled in `src/components/App.js`.
   }
 ```
 
-The method allows the application creator to decide where to redirect the user upon Sign Out:
 
-
-## Task 6: Work with the application
-
-Now, trying adding a few items to the todo list. For example, try making a list of applications you want to see built on top of Blockstack:
-
-![](images/make-a-list.png)
-
-Each list is immediately stored in the Gaia Hub linked to your Blockstack ID.
-For more information about the Gaia hub, [see the overview in this documentation]({{ site.baseurl }}/storage/overview.html#). Now that you have seen the application in action, dig into how it works.
-
-
-## Task 7: Implement storage
-
-Go to the underlying `blockstack-todo` code you cloned or downloaded. The application interactions with your Gaia Hub originate in the `src/components/Profile.js` file. First, examine where the changes to the Todos are processed in the `Profile.js` file.
-
-The code needs to read the Todo items from the storage with the [`getFile()`](https://blockstack.github.io/blockstack.js/#getfile) method which returns a promise:
-
-```js
-  loadTasks() {
-    const options = { decrypt: true };
-    this.props.userSession.getFile(TASKS_FILENAME, options)
-    .then((content) => {
-      if(content) {
-        const tasks = JSON.parse(content);
-        this.setState({tasks});
-      } 
-    })
-  }
-```
-The `todos` data is retrieved from the promise. By default, the `getFile()` decrypts data for you. For more information on the available options, see the <a href="https://blockstack.github.io/blockstack.js/interfaces/getfileoptions.html" taraget="_blank">the blockstack.js</a> library for details on the `GetFileOptions` interface.
-
-During the creation of a  `todos`, a JSON object is passed in and the [`putFile()`](https://blockstack.github.io/blockstack.js/#putfile) method to store it in a Gaia Hub. By default, `putFile()` encrypts data when it stores it.
-
-```js
-saveTasks(tasks) {
-    const options = { encrypt: true };
-    this.props.userSession.putFile(TASKS_FILENAME, JSON.stringify(tasks), options);
-  }
-```
-
-
-## Summary
-{:.no_toc}
-
-You now have everything you need to construct complex applications complete with authentication and storage on the Decentralized Internet. Why not try coding [a sample application that accesses multiple profiles](blockstack_storage.html).
-
-If you would like to explore the Blockstack APIs, you can visit the [Stacks Node API](https://core.blockstack.org/) documentation or the [Blockstack JS API](https://blockstack.github.io/blockstack.js).
-
-Go forth and build!
