@@ -5,7 +5,6 @@
 - title: Authentication
   docs:
   - develop/connect/overview
-  - develop/connect/get-started
   - develop/profiles
 
 - title: Data Storage
