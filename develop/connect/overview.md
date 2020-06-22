@@ -18,7 +18,84 @@ The library empowers you to:
 
 ## See it in action
 
-Here's what it looks like to register new users into an app with Blockstack Connect:
+## How does this compare to `blockstack.js`?
+
+Although [`blockstack.js`](https://github.com/blockstack/blockstack.js) can also be used to authenticate users, it implements the deprecated [Blockstack Browser](https://browser.blockstack.org/) and lacks any pre-built onboarding UI that educates users as to how your app is more secure for having implemented Blockstack. As such, we advise that you use `blockstack.js` for all other functionality apart from authentication, such as saving and retrieving user data with Gaia.
+
+## Start building with Blockstack Connect
+
+Head over to the [Tutorial for App Integration](/browser/todo-list.html) to learn how to build apps with Blockstack Connect.
+
+## Installation
+
+With yarn:
+
+```bash
+yarn add @blockstack/connect
+```
+
+With npm:
+
+```bash
+npm install --save @blockstack/connect
+```
+
+## Usage
+
+### AuthOptions
+
+Every major method you'll use with `connect` requires you to pass some options, like the name and icon of your app, and what to do when authentication is finished. In practice, this means you need to define these options, and pass them to the various API methods.
+
+The exact interface you'll use [is defined as](https://github.com/blockstack/connect/blob/master/src/auth.ts#L12:L24):
+
+```typescript
+export interface AuthOptions {
+  redirectTo: string;
+  finished: (payload: FinishedData) => void;
+  sendToSignIn?: boolean;
+  userSession?: UserSession;
+  appDetails: {
+    name: string;
+    icon: string;
+  };
+}
+```
+
+parameter | type | default | optional | description
+---|---|---|---|---
+redirectTo | string | | false | The path in your app where users go after sign in.
+appDetails | object | | false | an object which includes `appName: string` and `appIcon: string`. This will speed up the process of loading your app's information during onboarding.
+finished | function | | false | A callback that can be invoked after authentication. This prevents having to do a whole page refresh in a new tab. One argument is passed to this callback, which is an object with `userSession` included. If included, then the `redirectTo` path is ignored, and the user will be logged in automatically.
+sendToSignIn | boolean | false | true | Whether the user should go straight to the 'sign in' flow (false) or be presented with the 'sign up' flow (true) instead.
+userSession | UserSession | | false | pass a `UserSession` instance to use for authentication. If it's not passed, `@blockstack/connect` will create one for you.
+
+
+### In React Apps
+
+If you're using `connect` in a React app, then the best option is to include `connect`'s React Provider and hooks in your React app.
+
+First, setup the `Connect` provider at the "top-level" of your app - probably next to wherever you would put a Redux provider, for example.
+
+```javascript
+import { Connect } from '@blockstack/connect';
+
+const authOptions = {
+  redirectTo: '/',
+  finished: ({ userSession }) => {
+    console.log(userSession.loadUserData());
+  },
+  appDetails: {
+    name: 'My Cool App',
+    icon: 'https://example.com/icon.png',
+  },
+};
+
+const App = () => (
+  <Connect authOptions={authOptions}>
+    // the rest of your app's components
+  </Connect>
+)
+```
 
 **insert video**
 
