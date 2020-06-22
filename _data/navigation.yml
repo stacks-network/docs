@@ -1,9 +1,6 @@
-- title: Tutorials
-  docs:
-  - browser/todo-list
-
 - title: Authentication
   docs:
+  - browser/todo-list
   - develop/connect/overview
   - develop/connect/get-started
   - develop/profiles
