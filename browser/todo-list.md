@@ -3,7 +3,7 @@
 description: Single-page application with Blockstack
 
 ---
-# Todos app
+# Tutorial for App Integration
 {:.no_toc}
 
 In this tutorial, you will learn about Blockstack authentication and storage by installing, running and reviewing the code for a "Todos" web app built with Blockstack and [React](https://reactjs.org/).
