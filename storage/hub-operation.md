@@ -2,6 +2,9 @@
 
 description: "Storing user data with Blockstack"
 
+redirect_from: 
+- /storage/hello-hub-choice.html
+
 ---
 # Understand hub operation
 {:.no_toc}

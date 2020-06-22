@@ -29,7 +29,7 @@ Although [`blockstack.js`](https://github.com/blockstack/blockstack.js) can also
 
 ## Start building with Blockstack Connect
 
-Head over to the [Guide to Connect](get-started.html) for installation steps and usage guidelines.
+Head over to the [Tutorial for App Integration](/browser/todo-list.html) to learn how to build apps with Blockstack Connect.
 
 ## Installation
 
