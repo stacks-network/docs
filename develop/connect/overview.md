@@ -123,7 +123,9 @@ Our test app [Banter](https://banter.pub) is built with Blockstack Connect. Sele
 
 Separately, you can use the [Blockstack Testnet Demo](https://authenticator-demo.netlify.app/) not only to experience registration and sign in but transaction signing as well.
 
-## How does this compare to `blockstack.js`?
+Many new users to your app will not be familiar with Blockstack yet and will be hesitant to click a Blockstack-branded button. Provide a generic button for users that are new to your app and Blockstack. Blockstack Connect will introduce new users to Blockstack and recognize existing users.
+
+[![Design Guidance Example](/develop/images/connect-call-to-action-branding.png)](/develop/images/connect-call-to-action-branding.png)
 
 Although [`blockstack.js`](https://github.com/blockstack/blockstack.js) can also be used to authenticate users, it implements the deprecated [Blockstack Browser](https://browser.blockstack.org/) and lacks any pre-built onboarding UI that educates users as to how your app is more secure for having implemented Blockstack. As such, we advise that you use `blockstack.js` for all other functionality apart from authentication, such as saving and retrieving user data with Gaia.
 
