@@ -48,13 +48,13 @@ You must have recent versions of Git and [Node.js](https://nodejs.org/en/downloa
 
       You can now view bs-todo in the browser.
 
-        http://127.0.0.1:3000/
+        http://localhost:3000/
 
       Note that the development build is not optimized.
       To create a production build, use npm run build.
       ```
 
-2. Open your local browser to `http://localhost:3000` if it doesn't open automatically.
+2. Open your local browser to [`http://localhost:3000`](http://localhost:3000) if it doesn't open automatically.
   
     You should see the app's landing page:
 
@@ -66,47 +66,32 @@ You must have recent versions of Git and [Node.js](https://nodejs.org/en/downloa
 
     The app displays a standardized introductory modal using [Blockstack Connect](https://github.com/blockstack/ux/tree/master/packages/connect), a JavaScript library that makes it easy to integrate Blockstack into the UI of any web app.
 
-    ![](images/todos-intro.svg)
+    ![](images/todos-intro.png)
 
-    The following [React component](https://reactjs.org/docs/react-component.html)  triggers this modal in [`src/components/Signin.js`](https://github.com/blockstack/blockstack-todos/blob/master/src/components/Signin.js):
+    Below, you can see the relevant parts of the [React component](https://reactjs.org/docs/react-component.html) that triggers this modal in [`src/components/Signin.jsx`](https://github.com/blockstack/blockstack-todos/blob/master/src/components/Signin.jsx):
 
-    ```
-    import React from 'react';
-    import '../styles/Signin.css'
+    ```js
     import { useConnect } from '@blockstack/connect';
 
     export const Signin = () => {
       const { doOpenAuth } = useConnect();
 
       return (
-        <div className="panel-landing" id="section-1">
-          <h1 className="landing-heading">Hello, Blockstack!</h1>
-          <p className="lead">
-            <button
-              className="btn btn-primary btn-lg"
-              id="signin-button"
-              onClick={() => doOpenAuth()}
-            >
-              Sign In with Blockstack
-            </button>
-          </p>
-        </div>
+        <Button onClick={() => doOpenAuth()}>Get Started</Button>
       );
-    }
-
-    export default Signin;
+    };
 
     ```
 
     This component imports the [React hook](https://reactjs.org/docs/hooks-overview.html) [`useConnect`](https://github.com/blockstack/ux/blob/master/packages/connect/src/react/hooks/use-connect.ts) from the Blockstack Connect library.
 
-    `useConnect` returns many helper functions such as [`doOpenAuth`](https://github.com/blockstack/ux/blob/5934829a40338ac269b80783912c8dad17af1962/packages/connect/src/react/hooks/use-connect.ts#L33), which triggers this modal upon click of the "Get started" button.
+    `useConnect` returns many helper functions such as [`doOpenAuth`](https://github.com/blockstack/ux/blob/master/packages/connect/src/react/hooks/use-connect.ts#L33), which triggers this modal upon click of the "Get started" button.
 
     The modal is designed to prepare new users for a different type of relationship with Blockstack apps, one in which they authenticate with a *Secret Key* that's used to encrypt their private data.
 
-    The modal displays the app's name and icon as configured in [`src/components/App.js`](https://github.com/blockstack/blockstack-todos/blob/f6ab7b38f3f9bd98a900c7f285da4f4dd9768d60/src/components/App.js#L26):
+    The modal displays the app's name and icon as configured in [`src/components/App.jsx`](https://github.com/blockstack/blockstack-todos/blob/master/src/components/App.jsx#L26):
 
-    ```
+    ```js
 
       appDetails: {
         name: 'Blockstack App',
@@ -117,26 +102,26 @@ You must have recent versions of Git and [Node.js](https://nodejs.org/en/downloa
 
     This component loads the [`UserSession`](https://blockstack.github.io/blockstack.js/classes/usersession.html) module from a second Blockstack library called [blockstack.js](https://github.com/blockstack/blockstack.js/), which complements Blockstack Connect by providing an API for many protocol-level operations, such as for authentication and storage.
 
-    ```
+    ```js
 
     import { UserSession } from 'blockstack';
     import { appConfig } from '../assets/constants'
 
-    ...
+    // ...
 
     const userSession = new UserSession({ appConfig })
 
     ```
 
-    This module handles user session operations and is initiated using the [`appConfig`](https://github.com/blockstack/blockstack-todos/blob/f6ab7b38f3f9bd98a900c7f285da4f4dd9768d60/src/assets/constants.js#L3) object, which contains an array of [scopes](/develop/overview_auth.html#scopes) that indicate just what permissions to grant during authentication:
+    This module handles user session operations and is initiated using the [`appConfig`](https://github.com/blockstack/blockstack-todos/blob/master/src/assets/constants.js#L3) object, which contains an array of [scopes](/develop/overview_auth.html#scopes) that indicate just what permissions to grant during authentication:
 
-    ```
+    ```js
     export const appConfig = new AppConfig(['store_write', 'publish_data'])
     ```
 
-    The `appDetails` and `userSession` objects are joined by the callback function [`finished`](https://github.com/blockstack/blockstack-todos/blob/f6ab7b38f3f9bd98a900c7f285da4f4dd9768d60/src/components/App.js#L31) in configuring Blockstack Connect for authentication with the `authOptions` object:
+    The `appDetails` and `userSession` objects are joined by the callback function [`finished`](https://github.com/blockstack/blockstack-todos/blob/master/src/components/App.jsx#L31) in configuring Blockstack Connect for authentication with the `authOptions` object:
 
-    ```
+    ```js
     finished: ({ userSession }) => {
       this.setState({ userData: userSession.loadUserData() });
     }
@@ -145,9 +130,9 @@ You must have recent versions of Git and [Node.js](https://nodejs.org/en/downloa
 
     This function simply saves data about the user into the app's state upon authentication.
 
-    Further down in the component we see in [`componentDidMount`](https://github.com/blockstack/blockstack-todos/blob/f6ab7b38f3f9bd98a900c7f285da4f4dd9768d60/src/components/App.js#L46) that it checks upon mount to either process completion of authentication with `userSession.handlePendingSignIn()` or otherwise load session data into app state as above with `userSession.isUserSignedIn()`:
+    Further down in the component we see in [`componentDidMount`](https://github.com/blockstack/blockstack-todos/blob/master/src/components/App.jsx#L46) that it checks upon mount to either process completion of authentication with `userSession.handlePendingSignIn()` or otherwise load session data into app state as above with `userSession.isUserSignedIn()`:
 
-    ```
+    ```js
     componentDidMount() {
       if (userSession.isSignInPending()) {
         userSession.handlePendingSignIn().then((userData) => {
@@ -195,28 +180,26 @@ Once you've authenticated the app, you can can start adding todos by entering va
 
 ![](images/todos-home-authenticated.svg)
 
-The data for all todos are saved as JSON to the Gaia hub linked to your Secret Key using the [`putFile`](http://blockstack.github.io/blockstack.js/globals.html#putfile) method of the `userSession` object in the [`src/components/Profile.js`](https://github.com/blockstack/blockstack-todos/blob/f6ab7b38f3f9bd98a900c7f285da4f4dd9768d60/src/components/Profile.js#L50) component:
+The data for all todos are saved as JSON to the Gaia hub linked to your Secret Key using the [`putFile`](http://blockstack.github.io/blockstack.js/globals.html#putfile) method of the `userSession` object in the [`src/assets/data-store.js`](https://github.com/blockstack/blockstack-todos/blob/master/src/assets/data-store.js#L26) module:
 
-```
-saveTasks(tasks, encrypt) {
-  const options = { encrypt: encrypt ? true : encrypt };
-  this.props.userSession.putFile(TASKS_FILENAME, JSON.stringify(tasks), options);
-}
+```js
+export const saveTasks = async (userSession, tasks, isPublic) => {
+  await userSession.putFile(TASKS_FILENAME, JSON.stringify({ tasks, isPublic }), {
+    encrypt: !isPublic,
+  });
+};
 ```
 
-These todos are subsequently loaded using the [`getFile`](http://blockstack.github.io/blockstack.js/globals.html#getfile) method of the same object in the same component:
+These todos are subsequently loaded using the [`getFile`](http://blockstack.github.io/blockstack.js/globals.html#getfile) method of the same object in the same module:
 
-```
-loadTasks() {
-  const options = { decrypt: true };
-  this.props.userSession.getFile(TASKS_FILENAME, options)
-  .then((content) => {
-    if(content) {
-      const tasks = JSON.parse(content);
-      this.setState({tasks});
-    } 
-  })
-}
+```js
+export const fetchTasks = async (userSession, username) => {
+  const tasksJSON = await userSession.getFile(TASKS_FILENAME, {
+    decrypt: false,
+    username: username || undefined,
+  });
+  // code to format and return the tasks
+};
 ```
 
 By default, the `putFile` and `getFile` methods automatically encrypt data when saved and decrypt it when retrieved, using the user's Secret Key. This ensures that only the user has the ability to view this data.
@@ -229,27 +212,22 @@ If you wish to make your todos accessible to the public for sharing via URL, sel
 
 ![](images/todos-public.svg)
 
-This will call the [`makePublic`](#) method of the `Profile.js` component, which in turn calls `saveTasks` with the `encrypt` parameter set to `false`, which is used to disable encryption when using `putFile`:
-
-```
-makePublic() {
-  const tasks = remove(e.currentTarget.dataset.index, this.state);
-  this.saveTasks(tasks, false);
-}
-
-saveTasks(tasks, encrypt) {
-  const options = { encrypt: encrypt ? true : encrypt };
-  this.props.userSession.putFile(TASKS_FILENAME, JSON.stringify(tasks), options);
-}
-```
+This will call `saveTasks` with the `isPublic` parameter set to `true`, which is used to disable encryption when using `putFile`.
 
 The app will now show all of your todos to anyone who visits the URL displayed with your Blockstack username as a suffix.
 
-
-### Sign out and back in
-
+### Sign out and see your public tasks
 
 
+This triggers an event, which [under the hood](https://github.com/blockstack/blockstack-todos/blob/master/src/components/Header.jsx#L47) calls the [`signUserOut` method](https://blockstack.github.io/blockstack.js/classes/usersession.html#signuserout) of the `UserSession` object.
+
+Now, visit the URL that was provided to you when you made your tasks public. This url is of the format `/todos/:username`, so if your username is `jane_doe.id.blockstack`, the URL would be [`localhost:3000/todos/jane_doe.id.blockstack`](http://localhost:3000/todos/jane_doe.id.blockstack).
+
+When you visit this page, the `TodoList.jsx` component detects that there is a username in the URL. When there is a username, it calls `fetchTasks`, this time providing the `username` argument. This `username` option is then passed to `getFile`, which will lookup where that user's tasks are stored.
+
+### Sign back in
+
+At this point, you will be logged out from the app but not you'll still have an active session with the Blockstack app itself on [app.blockstack.org](https://app.blockstack.org). Navigate to app.blockstack.org and select "Sign out" there if you want to deauthenticate the Blockstack app as well.
 
 
 
@@ -263,4 +241,5 @@ Signout is handled in `src/components/App.js`.
   }
 ```
 
+Read [the Blockstack Connect guide](/develop/connect/get-started.html) and [the blockstack.js reference](https://blockstack.github.io/blockstack.js/) to learn more about the libraries used in this tutorial.
 
