@@ -2,7 +2,6 @@
   docs:
   - browser/todo-list
   - develop/connect/overview
-  - develop/connect/get-started
   - develop/profiles
 
 - title: Data Storage
@@ -13,7 +12,7 @@
   - storage/write-to-read
   - storage/hub-choice
 
-- title: Data sharing & collaboration
+- title: Data Indexing
   docs:
   - develop/radiks-intro
   - develop/radiks-setup
@@ -90,7 +89,6 @@
   - common/ios_ref
   - develop/cliDocs
   - common/core_ref
-  - core/faq_developer
   - core/wire-format
   - storage/config-schema
   - org/secureref

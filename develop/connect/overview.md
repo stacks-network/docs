@@ -1,12 +1,18 @@
 ---
 
+description: "JavaScript library for integration authentication and smart contracts"
+
+redirect_from: 
+- /develop/connect/get-started.html
 
 ---
-# Introduction
+# Guide to Blockstack Connect
 {:.no_toc}
 
 * TOC
 {:toc}
+
+## Introduction
 
 Blockstack Connect is a JavaScript library for integrating Blockstack authentication and smart contracts into your app.
 
@@ -16,7 +22,6 @@ The library empowers you to:
 - Authenticate users when they return to your app using that same Secret Key.
 - Prompt users to sign transactions with smart contracts as written in Clarity and published to the Stacks blockchain.
 
-## See it in action
 
 ## How does this compare to `blockstack.js`?
 
@@ -97,38 +102,102 @@ const App = () => (
 )
 ```
 
-**insert video**
+Later, when you want to begin the onboarding process, use the `useConnect` hook to get `connect`'s `doOpenAuth` method.
 
-As you can see, you simply need to add a "Get started" option to your app homepage and the library will display an introductory modal in the context of your app that explains the privacy benefits of using Blockstack and prepares users to receive a Secret Key instead of entering a traditional email and password.
+```javascript
+import { useConnect } from '@blockstack/connect';
 
-The modal then triggers a popup in which Blockstack PBC's authenticator generates a 12-word mnemonic Secret Key and instructs the user to save it securely. The authenticator subsequently requests a username from the user, which will be used to identify them in your app and manage their various accounts, before routing them back to your app to start using it.
+const SignInButton = () => {
+  const { doOpenAuth } = useConnect();
 
-This entire onboarding flow has been designed and tested to optimize the speed in which your new users start using your app with the prerequisite knowledge and credentials. 
+  return (
+    <Button onClick={doOpenAuth}>
+      Sign In
+    </Button>
+  )
+}
+```
 
-Here's what users see when returning to an app to sign back in:
+#### Sign In
 
-**insert video**
+To send the user straight to sign in, call `doOpenAuth(true)`.
 
-As you can see, you simply need to add a "Sign in" option to your homepage. The library will trigger a popup in which the authenticator prompts users to simply enter their Secret Key at which point they can resume using your app.
+### In ES6 (non-React) apps
 
-At whichever point after a user has authenticated to your app, you can trigger the authenticator in a popup once more for them to a sign a transaction against any smart contract you or others have published to the Stacks blockchain.
+If you aren't using React, or just want a simpler API, then you can use the `showBlockstackConnect` method.
 
-![Transaction signing in apps](/assets/img/transaction-signing.png)
 
-Note how this UI indicates "Testing mode" since transaction signing functionality is currently in beta and designed primarily with developers in mind. However, any Blockstack user who authenticates to your app can use it.
+```javascript
+import { showBlockstackConnect } from '@blockstack/connect';
 
-## Try it out
+const authOptions = { /** See docs above for options */ };
+showBlockstackConnect(authOptions);
+```
 
-Our test app [Banter](https://banter.pub) is built with Blockstack Connect. Select "Get Started" to experience the standardized onboarding flow available to all apps that integrate this library.
+#### Sign In
 
-Separately, you can use the [Blockstack Testnet Demo](https://authenticator-demo.netlify.app/) not only to experience registration and sign in but transaction signing as well.
+To send the user straight to sign in, include `sendToSignIn: true` in your `authOptions`.
+
+#### Note about dependency size:
+
+If you're building a non-React app, note that importing `@blockstack/connect` will add React dependencies to your JavaScript bundle. We recommend using something like [Webpack resolve aliases](https://webpack.js.org/configuration/resolve/) to replace `react` with `preact` in production, which reduces your bundle size. Check out [our own webpack.config.js file](https://github.com/blockstack/ux/blob/fix/connect-modal-accessibility/packages/connect/webpack.config.js#L87:L95) to see how we use this for production builds.
+
+If you're using the hosted version of `@blockstack/connect` (described below), then you already have a production-optimized bundle.
+
+### Using a hosted version of `@blockstack/connect`
+
+If you aren't using ES6 imports, you can still use `connect`! We package the library so that it can be automatically used with [unpkg](https://unpkg.com/).
+
+First, include the script in your HTML:
+
+```html
+<script src="https://unpkg.com/@blockstack/connect" />
+```
+
+Then, you can use API methods under the `blockstackConnect` global variable:
+
+
+```javascript
+const authOptions = { /** See docs above for options */ };
+blockstackConnect.showBlockstackConnect(authOptions);
+```
+
+## Handling redirect fallbacks
+
+Connect is built to use popups with the [`window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) API, which provides a much better and seamless user experience. However, there are times when this flow can fail. For example, the popup may be blocked, or the `window.postMessage` API might not work properly (which often happens on mobile browsers).
+
+To make sure your app handles this gracefully, you'll need to handle the case where authentication is performed through regular HTTP redirects. With redirects, your users will be sent back to your app at a URL like:
+
+`${authOptions.redirectTo}?authResponse=....`
+
+To finalize authentication with this flow, you'll need to utilize the `UserSession` methods `isSignInPending()` and `handlePendingSignIn()`. For more information, check out the [blockstack.js API reference](https://blockstack.github.io/blockstack.js/).
+
+```js
+const userSession = new UserSession(appConfig);
+
+// ... call this code on page load
+if (userSession.isSignInPending()) {
+  const userData = await userSession.handlePendingSignIn();
+  // your user is now logged in.
+}
+```
+
+## Design Guidance
+
+Blockstack is valuable to users, but it can also be a barrier to those unfamiliar with Blockstack. The following guidelines serve to remedy that and help you onboard as many new users as you can. 
+
+### Delay Blockstack onboarding as long as possible
+
+People will often leave apps when things are asked of them before they experience the app. Give them a chance to try your app before you ask them to sign up with Blockstack. For example, a note taking app could let a new user write a couple of notes before prompting them to save their progress.
+
+### Provide an easy way in for new users
 
 Many new users to your app will not be familiar with Blockstack yet and will be hesitant to click a Blockstack-branded button. Provide a generic button for users that are new to your app and Blockstack. Blockstack Connect will introduce new users to Blockstack and recognize existing users.
 
 [![Design Guidance Example](/develop/images/connect-call-to-action-branding.png)](/develop/images/connect-call-to-action-branding.png)
 
-Although [`blockstack.js`](https://github.com/blockstack/blockstack.js) can also be used to authenticate users, it implements the deprecated [Blockstack Browser](https://browser.blockstack.org/) and lacks any pre-built onboarding UI that educates users as to how your app is more secure for having implemented Blockstack. As such, we advise that you use `blockstack.js` for all other functionality apart from authentication, such as saving and retrieving user data with Gaia.
+### Provide a quick way for existing users to sign in
 
-## Start building with Blockstack Connect
+You can point users to a specific part of the Blockstack App. For instance, a “Sign in” button on your website can redirect users to the sign in flow of the Blockstack App. If you do this, make sure you also have an option that is explicitly for new users and that points to the sign up flow.
 
-Head over to the [Guide to Connect](get-started.html) for installation steps and usage guidelines.
+To implement this functionality, check out our section on sending users to sign in immediately.

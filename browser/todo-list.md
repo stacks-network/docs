@@ -208,7 +208,7 @@ When deleting a todo, the same `putFile` method is used to save a new JSON array
 
 ### Publish your todos publicly
 
-If you wish to make your todos accessible to the public for sharing via URL, select "Make public".
+Select "Make public" to make your todos accessible to the public for sharing via URL.
 
 ![](images/todos-public.svg)
 
@@ -218,6 +218,7 @@ The app will now show all of your todos to anyone who visits the URL displayed w
 
 ### Sign out and see your public tasks
 
+Select "Sign out" to deauthenticate the app with your Blockstack account.
 
 This triggers an event, which [under the hood](https://github.com/blockstack/blockstack-todos/blob/master/src/components/Header.jsx#L47) calls the [`signUserOut` method](https://blockstack.github.io/blockstack.js/classes/usersession.html#signuserout) of the `UserSession` object.
 
@@ -229,17 +230,20 @@ When you visit this page, the `TodoList.jsx` component detects that there is a u
 
 At this point, you will be logged out from the app but not you'll still have an active session with the Blockstack app itself on [app.blockstack.org](https://app.blockstack.org). Navigate to app.blockstack.org and select "Sign out" there if you want to deauthenticate the Blockstack app as well.
 
+Once signed out, select "Sign in" to sign back in with your *Secret Key*.
 
+If you've previously deauthenticated the Blockstack app, you'll see a prompt to enter your *Secret Key*:
 
+![](images/todos-sign-in.svg)
 
-Signout is handled in `src/components/App.js`.
+The above screen will be ommitted if you have an active session with the Blockstack app already.
 
-```js
-  handleSignOut(e) {
-    e.preventDefault();
-    userSession.signUserOut(window.location.origin);
-  }
-```
+Then you'll be presented with the option to select an existing username associated with your *Secret Key* or create a new one if you wish to authenticate the app with a different identity and data set:
+
+![](images/todos-choose-account.svg)
+
+You'll now see your todos as an authenticated user for the username you've chosen.
+
+## Learn more
 
 Read [the Blockstack Connect guide](/develop/connect/get-started.html) and [the blockstack.js reference](https://blockstack.github.io/blockstack.js/) to learn more about the libraries used in this tutorial.
-
