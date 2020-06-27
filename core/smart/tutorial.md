@@ -177,7 +177,7 @@ cat new_keychain.txt
 Call the Testnet faucet to get STX tokens; replace `<stx_address>` with the address you obtained in the previous step.
 
 ```shell
-curl -XPOST "https://sidecar.staging.blockstack.xyz/sidecar/v1/debug/faucet?address=<stx_address>" | json_pp
+curl -XPOST "https://sidecar.staging.blockstack.xyz/sidecar/v1/faucets/stx?address=<stx_address>" | json_pp
 ```
 
 Confirm faucet transaction.
