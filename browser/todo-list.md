@@ -1,7 +1,7 @@
 ---
-
 description: Single-page application with Blockstack
-
+redirect_from:
+- /browser/hello-blockstack.html
 ---
 # Tutorial for App Integration
 {:.no_toc}
