@@ -1,6 +1,7 @@
 ---
 description: Single-page application with Blockstack
 redirect_from:
+- /develop/zero_to_dapp_1.html
 - /browser/hello-blockstack.html
 ---
 # Tutorial for App Integration
