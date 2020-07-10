@@ -247,3 +247,17 @@ const MyComponent = () => {
   );
 };
 ```
+
+## Checking transaction status
+You may want to check the status of a transaction after signing and broadcasting it. For instance, your app might want to enable certain components only _after_ a transaction was successfully processed on the blockchain.
+
+Following the steps above, you'll receive a transaction ID (`txId`) as part of the `finished` callback method once your user signed the transaction. Equipped with the ID, you can use the [Stacks Blockstack API](https://docs.blockstack.org/common/core_ref.html#stacks-blockchain-api) to request the status of the transaction.
+
+```bash
+curl 'https://sidecar.staging.blockstack.xyz/sidecar/v1/tx/<txId>'
+```
+
+The API will respond with a JSON object that includes a `tx_status` field. Once the response returns `success`, the transactions was successfully processed.
+
+{% include note.html content="Review the API reference of the <a
+href="https://blockstack.github.io/stacks-blockchain-sidecar/#operation/get_transaction_by_id">Get Transaction endpoint</a> for more details." %}
