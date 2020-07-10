@@ -260,4 +260,4 @@ curl 'https://sidecar.staging.blockstack.xyz/sidecar/v1/tx/<txId>'
 The API will respond with a JSON object that includes a `tx_status` field. Once the response returns `success`, the transactions was successfully processed.
 
 {% include note.html content="Review the API reference of the <a
-href="https://blockstack.github.io/stacks-blockchain-sidecar/#operation/get_transaction_by_id">Get Transaction endpoint</a> for more details." %}
+href='https://blockstack.github.io/stacks-blockchain-sidecar/#operation/get_transaction_by_id'>Get Transaction endpoint</a> for more details." %}
