@@ -71,7 +71,7 @@ parameter | type | default | optional | description
 redirectTo | string | | false | The path in your app where users go after sign in.
 appDetails | object | | false | an object which includes `appName: string` and `appIcon: string`. This will speed up the process of loading your app's information during onboarding.
 finished | function | | false | A callback that can be invoked after authentication. This prevents having to do a whole page refresh in a new tab. One argument is passed to this callback, which is an object with `userSession` included. If included, then the `redirectTo` path is ignored, and the user will be logged in automatically.
-sendToSignIn | boolean | false | true | Whether the user should go straight to the 'sign in' flow (false) or be presented with the 'sign up' flow (true) instead.
+sendToSignIn | boolean | false | true | Whether the user should go straight to the 'sign in' flow (true) or be presented with the 'sign up' flow (false) instead.
 userSession | UserSession | | false | pass a `UserSession` instance to use for authentication. If it's not passed, `@blockstack/connect` will create one for you.
 
 
