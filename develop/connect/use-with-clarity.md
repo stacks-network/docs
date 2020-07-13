@@ -253,9 +253,10 @@ You may want to check the status of a transaction after signing and broadcasting
 
 Following the steps above, you'll receive a transaction ID (`txId`) as part of the `finished` callback method once your user signed the transaction. Equipped with the ID, you can use the [Stacks Blockstack API](https://docs.blockstack.org/common/core_ref.html#stacks-blockchain-api) to request the status of the transaction.
 
-```bash
-curl 'https://sidecar.staging.blockstack.xyz/sidecar/v1/tx/<txId>'
-```
+```js
+const response = await fetch(`https://sidecar.staging.blockstack.xyz/sidecar/v1/tx/${txId}`)
+const txData = await response.json();
+console.log(txData.status);
 
 The API will respond with a JSON object that includes a `tx_status` field. Once the response returns `success`, the transactions was successfully processed.
 
