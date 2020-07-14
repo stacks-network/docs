@@ -21,14 +21,23 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const firstLine = `The Blockstack docs have been deployed with Vercel using the code from this PR!`;
-            const { data } = await github.issues.listComments({
-              ...context.repo,
-              issue_number: context.issue.number,
-            });
-            const vercelPreviewURLComment = data.find((comment) =>
-              comment.body.includes(firstLine)
-            );
-            const commentId = vercelPreviewURLComment && vercelPreviewURLComment.id || undefined;
+
+            let comment = undefined;
+
+            try {
+              const { data } = await github.issues.listComments({
+                ...context.repo,
+                issue_number: context.issue.number,
+              });
+              comment = data.find((c) =>
+                c.body.includes(firstLine)
+              );
+            } catch(e) {
+              console.log(e)
+            }
+
+            const commentId = comment && comment.id || undefined;
+
             const commentBody = `
             #### Deploy preview ready!
             ${firstLine}
@@ -37,6 +46,7 @@ jobs:
 
             Built with commit ${context.sha}.
             `;
+
             if(context.issue.number){
               if (commentId) {
                 await github.issues.updateComment({
