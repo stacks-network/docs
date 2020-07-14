@@ -257,6 +257,7 @@ Following the steps above, you'll receive a transaction ID (`txId`) as part of t
 const response = await fetch(`https://sidecar.staging.blockstack.xyz/sidecar/v1/tx/${txId}`)
 const txData = await response.json();
 console.log(txData.status);
+```
 
 The API will respond with a JSON object that includes a `tx_status` field. Once the response returns `success`, the transactions was successfully processed.
 
