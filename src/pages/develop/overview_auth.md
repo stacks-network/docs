@@ -1,9 +1,8 @@
 ---
-
-
 ---
 
 # Authentication protocol
+
 Blockstack Auth provides single sign on and authentication without third parties or remote servers. On this page, you'll get an overview of authentication from a developer perspective. The following topics are covered:
 
 ## Authentication flow
@@ -19,7 +18,7 @@ Apps may request any of the following scopes:
 | Scope          | Definition                                                                           |
 | -------------- | ------------------------------------------------------------------------------------ |
 | `store_write`  | Read and write data to the user's Gaia hub in an app-specific storage bucket.        |
-| `publish_data` | Publish data so that other users of the app can discover and interact with the user. |                                          |
+| `publish_data` | Publish data so that other users of the app can discover and interact with the user. |  |
 
 The permissions scope should be specified through the <a href="https://blockstack.github.io/blockstack.js/classes/appconfig.html" target="\_blank">AppConfig</a> object. If no `scopes` array is provided to the `redirectToSignIn` or `makeAuthRequest`
 functions, the default is to request `['store_write']`.
@@ -59,9 +58,9 @@ How you implement CORS depends in part on which platform/service you use to serv
 
 Blockstack Auth makes extensive use of public key cryptography. Blockstack uses ECDSA with the `secp256k1` curve. The following sections describe the three public-private key pairs used in the authentication process:
 
-* how they're generated
-* where they're used
-* to whom the private key is disclosed
+- how they're generated
+- where they're used
+- to whom the private key is disclosed
 
 ### Transit private key
 
@@ -109,12 +108,11 @@ and
 [Ruby](https://github.com/blockstack/ruby-jwt-blockstack/tree/ruby-jwt-blockstack)
 JWT libraries with support for this signing algorithm.
 
-
 {% include note.html content="The Blockstack JWT implementation is different from other implementations because of the underlying cryptography we employ. There are libraries in <a href='https://github.com/blockstack/jsontokens-js'>Javascript</a> and <a href='https://github.com/blockstack/ruby-jwt-blockstack'>Ruby</a> available on the Blockstack Github to allow you to work with these tokens." %}
 
 ### Example: authRequest payload schema
 
-``` JavaScript
+```JavaScript
 const requestPayload = {
     jti, // UUID
     iat, // JWT creation time in seconds
@@ -130,7 +128,6 @@ const requestPayload = {
     scopes // an array of string values indicating scopes requested by the app
   }
 ```
-
 
 ### Example: authResponse payload schema
 
@@ -163,28 +160,23 @@ To decode the token and see what information it holds:
 2. Navigate to [jwt.io](https://jwt.io/).
 3. Paste the full token there.
 
-    The output should look similar to below:
+   The output should look similar to below:
 
-    ```json
-    {
-      "jti": "f65f02db-9f42-4523-bfa9-8034d8edf459",
-      "iat": 1555641911,
-      "exp": 1555645511,
-      "iss": "did:btc-addr:1ANL7TNdT7TTcjVnrvauP7Mq3tjcb8TsUX",
-      "public_keys": [
-        "02f08d5541bf611ded745cc15db08f4447bfa55a55a2dd555648a1de9759aea5f9"
-      ],
-      "domain_name": "http://localhost:8080",
-      "manifest_uri": "http://localhost:8080/manifest.json",
-      "redirect_uri": "http://localhost:8080",
-      "version": "1.3.1",
-      "do_not_include_profile": true,
-      "supports_hub_url": true,
-      "scopes": [
-        "store_write",
-        "publish_data"
-      ]
-    }
-    ```
+   ```json
+   {
+     "jti": "f65f02db-9f42-4523-bfa9-8034d8edf459",
+     "iat": 1555641911,
+     "exp": 1555645511,
+     "iss": "did:btc-addr:1ANL7TNdT7TTcjVnrvauP7Mq3tjcb8TsUX",
+     "public_keys": ["02f08d5541bf611ded745cc15db08f4447bfa55a55a2dd555648a1de9759aea5f9"],
+     "domain_name": "http://localhost:8080",
+     "manifest_uri": "http://localhost:8080/manifest.json",
+     "redirect_uri": "http://localhost:8080",
+     "version": "1.3.1",
+     "do_not_include_profile": true,
+     "supports_hub_url": true,
+     "scopes": ["store_write", "publish_data"]
+   }
+   ```
 
-    The `iss` property is a decentralized identifier or `did`. This identifies the user and the user name to the application. The specific `did` is a `btc-addr`.
+   The `iss` property is a decentralized identifier or `did`. This identifies the user and the user name to the application. The specific `did` is a `btc-addr`.

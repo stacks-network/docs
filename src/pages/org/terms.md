@@ -1,8 +1,7 @@
 ---
-
-description: "Blockstack Network documentation"
-
+description: 'Blockstack Network documentation'
 ---
+
 # Glossary
 
 <!-- <table class="uk-table uk-table-large uk-table-striped"> -->

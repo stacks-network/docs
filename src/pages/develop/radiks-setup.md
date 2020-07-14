@@ -1,9 +1,9 @@
 ---
-
-
 ---
+
 # Set-up Radiks for your DApp
-Using Radiks with your application requires a Radiks server and a client application constructed to use the server. In this article, you learn how to install, setup, and run a pre-packaged Radiks server that connects to MongoDB.  You also learn how to establish your DApp application as a client for that server.
+
+Using Radiks with your application requires a Radiks server and a client application constructed to use the server. In this article, you learn how to install, setup, and run a pre-packaged Radiks server that connects to MongoDB. You also learn how to establish your DApp application as a client for that server.
 
 ## Task 1. Set up your Radiks server
 
@@ -17,7 +17,7 @@ In the future, Radiks-server will support various different databases, but right
 
 1. <a href="https://docs.mongodb.com/manual/administration/install-community/" target="_blank">Download and install MongoDB 3.6 or higher</a> on your workstation.
 
-    You can also install MongoDB using your favorite package manager; for example, Homebrew is recommended for macOS. If you are testing on a local workstation, you can use a `docker` image instead of installing locally.
+   You can also install MongoDB using your favorite package manager; for example, Homebrew is recommended for macOS. If you are testing on a local workstation, you can use a `docker` image instead of installing locally.
 
 2. Start the MongoDB service and verify it is running.
 
@@ -27,34 +27,35 @@ In the future, Radiks-server will support various different databases, but right
 
 4. Create a username/password combination with `root` privileges on your new database.
 
-
 ### Install and start the Radiks server
 
 The easiest way to run `radiks-server` is to use the pre-packaged `node.js` server.
 
 1. Install the `radiks-server` on a workstation or server.
 
-    ```bash
-    npm install -g radiks-server
-    ```
-    Or, if you prefer `yarn`:
+   ```bash
+   npm install -g radiks-server
+   ```
 
-    ```bash
-    yarn global add radiks-server
-    ```
-   The default port for Mongodb is `27017`; your instance may be configured differently.  By default, Radiks-server will use `'mongodb://localhost:27017/radiks-server'` as the `MongoDB_URI` value. This is suitable for local testing, but in production, you'll want to change the hostname and possibly the database name.
+   Or, if you prefer `yarn`:
 
-3. Start the `radiks-server` in the command line to confirm your installation.
+   ```bash
+   yarn global add radiks-server
+   ```
+
+   The default port for Mongodb is `27017`; your instance may be configured differently. By default, Radiks-server will use `'mongodb://localhost:27017/radiks-server'` as the `MongoDB_URI` value. This is suitable for local testing, but in production, you'll want to change the hostname and possibly the database name.
+
+2. Start the `radiks-server` in the command line to confirm your installation.
 
    ```
    $ radiks-server
     (node:37750) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
-  radiks-server is ready on http://localhost:1260
-    ```
+   radiks-server is ready on http://localhost:1260
+   ```
 
-   The `radiks-server` defaults to running on port `1260`. To change the default port, specify the  `PORT` environment variable in your environment.
+   The `radiks-server` defaults to running on port `1260`. To change the default port, specify the `PORT` environment variable in your environment.
 
-4. By default, the server is running at `http://localhost:1260`
+3. By default, the server is running at `http://localhost:1260`
 
 4. Stop the `radiks` server process after you confirm it runs, and your installation was a success.
 
@@ -88,42 +89,42 @@ If you are using `blockstack.js` version 18 or earlier, you must use the Radiks 
 
 1. Start the mongo shell application.
 
-    ```
-    $ mongo
-    MongoDB shell version v4.2.0
-    connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
-    Implicit session: session { "id" : UUID("8d43cf80-490d-4cac-8bd6-40eec5c128de") }
-    MongoDB server version: 4.2.0
-    ....
+   ```
+   $ mongo
+   MongoDB shell version v4.2.0
+   connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+   Implicit session: session { "id" : UUID("8d43cf80-490d-4cac-8bd6-40eec5c128de") }
+   MongoDB server version: 4.2.0
+   ....
 
-    To enable free monitoring, run the following command: db.enableFreeMonitoring()
-    To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
-    >
-    ```
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+   >
+   ```
 
- 2. Create a new database for your application.
+2. Create a new database for your application.
 
-    ```
-    > show dbs
-    admin   0.000GB
-    config  0.000GB
-    local   0.000GB
-    > use test1
-    switched to db test1
-    > show dbs
-    admin   0.000GB
-    config  0.000GB
-    local   0.000GB
-    > db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});
-    Successfully added user: { "user" : "admin", "roles" : [ "readWrite", "dbAdmin" ] }
-    ```
+   ```
+   > show dbs
+   admin   0.000GB
+   config  0.000GB
+   local   0.000GB
+   > use test1
+   switched to db test1
+   > show dbs
+   admin   0.000GB
+   config  0.000GB
+   local   0.000GB
+   > db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});
+   Successfully added user: { "user" : "admin", "roles" : [ "readWrite", "dbAdmin" ] }
+   ```
 
 3. Add a user with administrative rights to the database.
 
-    ```
-    > db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});
-    Successfully added user: { "user" : "admin", "roles" : [ "readWrite", "dbAdmin" ] }
-    ```
+   ```
+   > db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});
+   Successfully added user: { "user" : "admin", "roles" : [ "readWrite", "dbAdmin" ] }
+   ```
 
 4. Create an `MONGODB_URI` environment variable on the same machine where you are running the `radiks-server`.
 
@@ -132,7 +133,6 @@ If you are using `blockstack.js` version 18 or earlier, you must use the Radiks 
    ```bash
    export MONGODB_URI="mongodb://admin:foobar1@localhost:27017/test1"
    ```
-
 
 ## Task 3. Add startup code and build your application
 
@@ -146,47 +146,46 @@ To configure your application as a `radiks` client, do the following:
 
 1. Start your application so that a `UserSession` allows the app to both write and publish data:
 
-    ```js
-     import { UserSession, AppConfig } from 'blockstack';
-     import { configure } from 'radiks';
+   ```js
+   import { UserSession, AppConfig } from 'blockstack';
+   import { configure } from 'radiks';
 
-     const userSession = new UserSession({
-       appConfig: new AppConfig(['store_write', 'publish_data'])
-     })
+   const userSession = new UserSession({
+     appConfig: new AppConfig(['store_write', 'publish_data']),
+   });
 
-     configure({
-       apiServer: 'http://localhost:1260',
-       userSession
-     });
-    ```
+   configure({
+     apiServer: 'http://localhost:1260',
+     userSession,
+   });
+   ```
 
- 2. Add authentication to your application
+2. Add authentication to your application
 
-    After your user logs in with Blockstack, you'll have some code to save the user's data in your applications `localStorage`. You'll want to use the same `UserSession` you configured with Radiks, which can be fetched from the `getConfig` method.
+   After your user logs in with Blockstack, you'll have some code to save the user's data in your applications `localStorage`. You'll want to use the same `UserSession` you configured with Radiks, which can be fetched from the `getConfig` method.
 
-    ```js
-    import { User, getConfig } from 'radiks';
+   ```js
+   import { User, getConfig } from 'radiks';
 
-    const handleSignIn = () => {
-      const { userSession } = getConfig();
-      if (userSession.isSignInPending()) {
-        await userSession.handlePendingSignIn();
-        await User.createWithCurrentUser();
-      }
-    }
-    ```
+   const handleSignIn = () => {
+     const { userSession } = getConfig();
+     if (userSession.isSignInPending()) {
+       await userSession.handlePendingSignIn();
+       await User.createWithCurrentUser();
+     }
+   }
+   ```
 
-    Calling `User.createWithCurrentUser` does the following:
+   Calling `User.createWithCurrentUser` does the following:
 
-    * Fetch user data that Blockstack.js stores in `localStorage`
-    * Save the user's public data (including their public key) in Radiks-server
-    * Find or create a signing key that is used to authorize writes on behalf of this user
-    * Cache the user's signing key (and any group-related signing keys) to make signatures and decryption happen quickly later on
+   - Fetch user data that Blockstack.js stores in `localStorage`
+   - Save the user's public data (including their public key) in Radiks-server
+   - Find or create a signing key that is used to authorize writes on behalf of this user
+   - Cache the user's signing key (and any group-related signing keys) to make signatures and decryption happen quickly later on
 
 ### Build and run your application
 
 After you have added Radiks to your application, build and run the application. Test the application by logging in with your Blockstack ID. Create some data using the application. If you inspect the MongoDB database, you should see the encrypted data stored in the database.
-
 
 You can specify the `mongoDBUrl` or the `maxLimit` option when initiating the Radiks server in your application.
 
@@ -200,7 +199,6 @@ setup({
 
 The `mongoDBUrl` option is the MongoDB URL for the Radiks server
 The `maxLimit` option is the maximum `limit` field used inside the mongo queries. The default is 1000.
-
 
 ## Where to go next
 

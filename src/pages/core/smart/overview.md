@@ -1,5 +1,5 @@
 ---
-description: "Blockstack Clarity: Introduction"
+description: 'Blockstack Clarity: Introduction'
 ---
 
 # Introduction to Clarity
@@ -18,18 +18,18 @@ Apps can take advantage of smart contracts to manage a global state that is visi
 
 Not every decentralized application requires smart contracts, but Clarity unlocks interesting capabilities for decentralized applications. Examples of use cases include, but are not limited to:
 
-* Access control (e.g. pay to access)
-* Non-fungible (e.g. collectibles) and fungible tokens (e.g. stablecoins)
-* Business model templates (e.g. subscriptions)
-* App-specific blockchains
-* Decentralized Autonomous Organizations
+- Access control (e.g. pay to access)
+- Non-fungible (e.g. collectibles) and fungible tokens (e.g. stablecoins)
+- Business model templates (e.g. subscriptions)
+- App-specific blockchains
+- Decentralized Autonomous Organizations
 
 ## Language design
 
 Clarity differs from most other smart contract languages in two essential ways:
 
-* The language is interpreted and broadcasted on the blockchain as is (not compiled)
-* The language is decidable (not Turing complete)
+- The language is interpreted and broadcasted on the blockchain as is (not compiled)
+- The language is decidable (not Turing complete)
 
 Using an interpreted language ensures that the executed code is human-readable and auditable. A decidable language like Clarity makes it possible to determine precisely which code is going to be executed, for any function.
 
@@ -37,11 +37,11 @@ A Clarity smart contract is composed of two parts &mdash; a data space and a set
 
 Note some of the key Clarity language rules and limitations.
 
-* The only primitive types are booleans, integers, buffers, and principals
-* Recursion is illegal and there are no anonymous functions.
-* Looping may only be performed via `map`, `filter`, or `fold`
-* There is support for lists, however, the only variable length lists in the language appear as function inputs; There is no support for list operations like append or join.
-* Variables are immutable.
+- The only primitive types are booleans, integers, buffers, and principals
+- Recursion is illegal and there are no anonymous functions.
+- Looping may only be performed via `map`, `filter`, or `fold`
+- There is support for lists, however, the only variable length lists in the language appear as function inputs; There is no support for list operations like append or join.
+- Variables are immutable.
 
 ## Learning Clarity
 

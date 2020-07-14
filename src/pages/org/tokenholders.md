@@ -1,18 +1,16 @@
 ---
-
-description: "Blockstack token holder documentation"
-
+description: 'Blockstack token holder documentation'
 ---
+
 # Information for current token holders
 
 The information on this page is intended for **current Stacks (STX) token holders** during Blockstack’s token sale through early 2018.
-
 
 ## Find your token balance and unlock date
 
 {% include important.html content=" If you <strong>purchased Stacks tokens during Summer 2019</strong>, the form below will <strong>not</strong> work for your allocation. Please <a href='https://explorer.blockstack.org/verifier' target='_blank'>check your allocation using this tool instead</a>. "%}
 
-During your the initial grant process, you should have submitted a public *Stacks (STX) address* (also known as a *wallet address*) to Blockstack. A STX address is a string of letters and numbers starting with an `SP` or `SM`, for example: `SM3KJBA4RZ7Z20KD2HBXNSXVPCR1D3CRAV6Q05MKT`
+During your the initial grant process, you should have submitted a public _Stacks (STX) address_ (also known as a _wallet address_) to Blockstack. A STX address is a string of letters and numbers starting with an `SP` or `SM`, for example: `SM3KJBA4RZ7Z20KD2HBXNSXVPCR1D3CRAV6Q05MKT`
 
 If you purchased STX tokens through CoinList, you can find your address at
 [CoinList](https://coinlist.co/distributions). If you submitted your Stacks
@@ -21,9 +19,9 @@ Phrase** feature on the Stacks Wallet or contact us at <hello@stackstoken.com> f
 help.
 
 Use the following form to check your Stacks allocation:
+
 <!-- TODO: make work with react -->
 <!-- <div class="uk-background-secondary uk-padding uk-panel"> -->
-
 
 <!-- <script> -->
 <!-- function process() -->
@@ -48,7 +46,6 @@ You should see a report detailing the tokens allocated to your address and when 
 
 If you have questions or concerns about your report, please contact <hello@StacksToken.com>.
 
-
 ## Understanding the timeline for unlocking your tokens
 
 In October 2018, the Stacks blockchain launched under the STX token. With the
@@ -58,7 +55,6 @@ token holder, the dates of these events depend on the holders’s purchase date.
 
 The general timeline for unlocking tokens and the capabilities that are
 potentially possible, are as follows:
-
 
 ![](images/unlocking.png)
 

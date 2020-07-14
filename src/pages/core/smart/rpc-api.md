@@ -1,5 +1,5 @@
 ---
-description: "Stacks Node RPC API Reference"
+description: 'Stacks Node RPC API Reference'
 ---
 
 # RPC API Reference
@@ -22,10 +22,10 @@ Returns JSON data in the form:
 
 ```json
 {
- "balance": "0x100..",
- "nonce": 1,
- "balance_proof": "0x01fa...",
- "nonce_proof": "0x01ab...",
+  "balance": "0x100..",
+  "nonce": 1,
+  "balance_proof": "0x01fa...",
+  "nonce_proof": "0x01ab..."
 }
 ```
 
@@ -42,7 +42,7 @@ JSON object _without_ the `balance_proof` or `nonce_proof` fields.
 ### POST /v2/map_entry/[Stacks Address]/[Contract Name]/[Map Name]
 
 Attempt to fetch data from a contract data map. The contract is identified with [Stacks Address] and
- [Contract Name] in the URL path. The map is identified with [Map Name].
+[Contract Name] in the URL path. The map is identified with [Map Name].
 
 The _key_ to lookup in the map is supplied via the POST body. This should be supplied as the hex string
 serialization of the key (which should be a Clarity value). Note, this is a _JSON_ string atom.
@@ -51,8 +51,8 @@ Returns JSON data in the form:
 
 ```json
 {
- "data": "0x01ce...",
- "proof": "0x01ab...",
+  "data": "0x01ce...",
+  "proof": "0x01ab..."
 }
 ```
 
@@ -225,9 +225,9 @@ published in, and the MARF proof for the data.
 
 ```json
 {
- "source": "(define-private ...",
- "publish_height": 1,
- "proof": "0x00213..."
+  "source": "(define-private ...",
+  "publish_height": 1,
+  "proof": "0x00213..."
 }
 ```
 
@@ -245,7 +245,7 @@ the simulated `tx-sender` are supplied via the POST body in the following JSON f
 ```json
 {
   "sender": "SP31DA6FTSJX2WGTZ69SFY11BH51NZMB0ZW97B5P0.get-info",
-  "arguments": [ "0x0011...", "0x00231..." ]
+  "arguments": ["0x0011...", "0x00231..."]
 }
 ```
 

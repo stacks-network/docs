@@ -1,8 +1,7 @@
 ---
-
-description: "Blockstack naming service (BNS)"
-
+description: 'Blockstack naming service (BNS)'
 ---
+
 # Creating a Namespace
 
 Making a namespace is very expensive. Given the large amount of cryptocurrency at stake in name creation, developers wanting to create their own namespaces should read [Understand Namespaces]({{ site.baseurl }}/core/naming/namespaces.html) first. You should also read this document thoroughly before creating a namespace.
@@ -13,35 +12,35 @@ There are four steps to creating a namespace.
 
 ### Step 1. Send a `NAMESPACE_PREORDER` transaction
 
-This step registers the *salted hash* of the namespace with BNS nodes, and burns the requisite amount of cryptocurrency.  Additionally, this step proves to the BNS nodes that user has honored the BNS consensus rules by including a recent *consensus hash* in the transaction (see the section on [BNS forks](#bns-forks) for details).
+This step registers the _salted hash_ of the namespace with BNS nodes, and burns the requisite amount of cryptocurrency. Additionally, this step proves to the BNS nodes that user has honored the BNS consensus rules by including a recent _consensus hash_ in the transaction (see the section on [BNS forks](#bns-forks) for details).
 
 ### Step 2. Send a `NAMESPACE_REVEAL` transaction
 
 This second step reveals the salt and the namespace ID (pairing it with its
 `NAMESPACE_PREORDER`). It reveals how long names last in this namespace before
-they expire or must be renewed, and it sets a *price function* for the namespace
+they expire or must be renewed, and it sets a _price function_ for the namespace
 that determines how cheap or expensive names its will be.
 
-The price function takes a name in this namespace as input, and outputs the amount of cryptocurrency the name will cost. The function does this by examining how long the name is, and whether or not it has any vowels or non-alphabet characters.  The namespace creator has the option to collect name registration fees for the first year of the namespace's existence by setting a *namespace creator address*.
+The price function takes a name in this namespace as input, and outputs the amount of cryptocurrency the name will cost. The function does this by examining how long the name is, and whether or not it has any vowels or non-alphabet characters. The namespace creator has the option to collect name registration fees for the first year of the namespace's existence by setting a _namespace creator address_.
 
 ### Step 3. Seed the namespace with `NAME_IMPORT` transactions
 
 Once a namespace is revealed, the user has the option to populate it with a set of
-names.  Each imported name is given both an owner and some off-chain state.
+names. Each imported name is given both an owner and some off-chain state.
 This step is optional; Namespace creators are not required to import names.
 
 ### Step 4. Send a `NAMESPACE_READY` transaction
 
-The final step of the process *launches* the namespace and makes the namespace available to the
-public.  Once a namespace is launched, anyone can register a name in it if they
+The final step of the process _launches_ the namespace and makes the namespace available to the
+public. Once a namespace is launched, anyone can register a name in it if they
 pay the appropriate amount of cryptocurrency. Again, the appropriate amount is according to the price function
 revealed in step 2.
 
 ## Consensus rules and competition for namespaces
 
-Namespaces are created on a first-come first-serve basis. The BNS consensus rules require a `NAMESPACE_REVEAL` to be paired with a previous `NAMESPACE_PREORDER` sent within the past 24 hours.  If two people try to create the same namespace, the one that successfully confirms both the `NAMESPACE_PREORDER` and `NAMESPACE_REVEAL` wins.  The fee burned in the `NAMESPACE_PREORDER` is spent either way.
+Namespaces are created on a first-come first-serve basis. The BNS consensus rules require a `NAMESPACE_REVEAL` to be paired with a previous `NAMESPACE_PREORDER` sent within the past 24 hours. If two people try to create the same namespace, the one that successfully confirms both the `NAMESPACE_PREORDER` and `NAMESPACE_REVEAL` wins. The fee burned in the `NAMESPACE_PREORDER` is spent either way.
 
-Once a user issues the `NAMESPACE_PREORDER` and `NAMESPACE_REVEAL`, they have 1 year before they must send the `NAMESPACE_READY` transaction.  If they do not do this, then the namespace they created disappears (along with all the names they imported).
+Once a user issues the `NAMESPACE_PREORDER` and `NAMESPACE_REVEAL`, they have 1 year before they must send the `NAMESPACE_READY` transaction. If they do not do this, then the namespace they created disappears (along with all the names they imported).
 
 Pairing the `NAMESPACE_PREORDER` and `NAMESPACE_REVEAL` steps is designed to prevent frontrunning. Frontrunning is a practice where name registrar uses insider information to register domains for the purpose of re-selling them or earning revenue from them. By registering the domains, the registrar locks out other potential registrars. Thus, through this pairing, a malicious actor cannot watch the blockchain network and race a victim to claim a namespace.
 
@@ -94,5 +93,3 @@ If you would like to navigate a namespace history, you can. To do this, do the f
 3. Provide the id in a query to a blockchain explorer such as [Blockchain.com](https://www.blockchain.com/) or similar.
 
    For example, a search on Blockchain returns this [page of information](https://www.blockchain.com/btc/tx/5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28).
-
-

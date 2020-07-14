@@ -1,5 +1,5 @@
 ---
-description: "Clarity: Understanding Principals"
+description: 'Clarity: Understanding Principals'
 ---
 
 # Understanding Principals
@@ -112,10 +112,10 @@ faucet" could be implemented as so:
 
 In this example, the public function `claim-from-faucet`:
 
-* Checks if the sender has claimed from the faucet before.
-* Assigns the tx sender to a `requester` variable.
-* Adds an entry to the tracking map.
-* Uses `as-contract` to send 1 microstack
+- Checks if the sender has claimed from the faucet before.
+- Assigns the tx sender to a `requester` variable.
+- Adds an entry to the tracking map.
+- Uses `as-contract` to send 1 microstack
 
 Unlike other principals, there is no private key associated with a
 smart contract. As it lacks a private key, a Clarity smart contract
@@ -230,7 +230,6 @@ another contract.
            (err u4)))))
 ```
 
-
 ### Extending functionality: Multi-flyer contract
 
 The authorization scheme for `fly-ship` allows pilots to fly rocket-ships from
@@ -252,7 +251,6 @@ for multiple rocket-ships in a single transaction:
 (define-public (fly-all (ships (list 10 uint)))
   (ok (map call-fly ships)))
 ```
-
 
 ### Authorization for Contract-Owned Assets
 

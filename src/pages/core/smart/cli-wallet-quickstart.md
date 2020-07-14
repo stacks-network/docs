@@ -1,5 +1,5 @@
 ---
-description: "Blockstack CLI Wallet Quickstart"
+description: 'Blockstack CLI Wallet Quickstart'
 ---
 
 # Send/Receive Stacks on Testnet
@@ -84,7 +84,7 @@ In order to send tokens, we will need the 5 parameters below.
 
 **Private Key** - This is the private key corresponding to your account that was generated when you created the wallet earlier using the CLI.
 
-Once we have the parameters, we can use the  `send_tokens` command:
+Once we have the parameters, we can use the `send_tokens` command:
 
 ```
 $ blockstack send_tokens ST2KMMVJAB00W5Z6XWTFPH6B13JE9RJ2DCSHYX0S7 1000 200 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t

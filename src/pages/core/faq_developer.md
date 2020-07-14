@@ -1,6 +1,7 @@
 ---
 description: Blockstack DApp technical FAQs
 ---
+
 # DApp Developer FAQs
 
 This document lists frequently-asked questions developers about Blockstack application development. If you are new to Blockstack, you should read the [general questions]({{site.baseurl}}/faqs/allFAQs.html) first.
@@ -12,15 +13,19 @@ If you have a technical question that gets frequently asked on the
 feel free to send a pull-request with the question and answer.
 
 {% for faq in site.data.theFAQs.faqs %}
-   {% if faq.category == 'dappdevs' %}
+{% if faq.category == 'dappdevs' %}
+
 ### {{ faq.question }}
+
 {{ faq.answer }}
-  {% endif %}
+{% endif %}
 {% endfor %}
 
 {% for faq in site.data.theFAQs.faqs %}
-   {% if faq.category == 'opensource' %}
+{% if faq.category == 'opensource' %}
+
 ### {{ faq.question }}
+
 {{ faq.answer }}
-  {% endif %}
+{% endif %}
 {% endfor %}

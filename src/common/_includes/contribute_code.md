@@ -1,7 +1,9 @@
 ### Sections in this article
+
 {:.no_toc}
-* TOC
-{:toc}
+
+- TOC
+  {:toc}
 
 Good pull requests—patches, improvements, new features—are a fantastic help. They should remain focused in scope and avoid containing unrelated commits.
 
@@ -58,14 +60,13 @@ Adhering to the following process is the best way to get your work included in t
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-    with a clear title and description against the `master` branch.
+   with a clear title and description against the `master` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MPL-2.0 License](LICENSE.md) (if it
 includes code changes) and under the terms of the
 [Creative Commons Attribution 3.0 Unported License](docs/LICENSE.md)
 (if it includes documentation changes).
-
 
 ## Code guidelines
 
@@ -81,12 +82,11 @@ includes code changes) and under the terms of the
 - 2 spaces (no tabs)
 - strict mode
 - "Attractive"
-- Don't use jQuery (no "$" allowed)
+- Don't use jQuery (no "\$" allowed)
 
 ### Checking code
 
 Run `npm run dev` before committing to ensure your changes follow our coding standards.
-
 
 ## License
 

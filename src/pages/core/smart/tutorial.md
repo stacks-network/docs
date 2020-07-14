@@ -6,7 +6,7 @@ description: Get Started Writing Smart Contracts with Clarity
 
 ## Overview
 
-| Experience | | **Beginner**  |
+| Experience | | **Beginner** |
 | Duration | | **18 minutes** |
 
 In the world of smart contracts, everything is a blockchain transaction. You use tokens in your wallet to deploy a smart contract in a transaction, and each call to that contract after it's published is a transaction, too. That means that at each step, tokens are being exchanged as transaction fees. This tutorial introduces you to this mode of programming, which transforms blockchains into powerful state machines capable of executing complex logic.
@@ -15,11 +15,10 @@ Clarity, Blockstack's smart contracting language, is based on LISP and uses its 
 
 By the end of this tutorial, you will:
 
-* Have a working Clarity starter project and local dev environment
-* Understand basic Clarity language design principles
-* Deploy a contract to the Stacks 2.0 blockchain and call its public methods
-* Understand how to use the Explorer Sandbox functionality
-
+- Have a working Clarity starter project and local dev environment
+- Understand basic Clarity language design principles
+- Deploy a contract to the Stacks 2.0 blockchain and call its public methods
+- Understand how to use the Explorer Sandbox functionality
 
 ## Prerequisites
 
@@ -79,11 +78,12 @@ On the first line, a new public function `say-hi` is declared. Public functions 
 The function doesn't take any parameters and simply returns "hello world" using the [`ok`](clarityRef.html#ok) response constructor.
 
 The second function, `echo-number`, is a [read-only function](clarityRef.html#define-read-only). Read-only functions are also public, but as the name implies, they can not perform any datamap modifications. `echo-number` takes an input parameter of the type `int`. Along with integer, Clarity supports the following [types](clarityRef.html#clarity-type-system):
-* `uint`: 16-byte unsigned integer
-* `principal`: spending entity, roughly equivalent to a Stacks address
-* `boolean`: `true` or `false`
-* `buffer`: fixed-length byte buffers
-* `tuple`: named fields in keys and values
+
+- `uint`: 16-byte unsigned integer
+- `principal`: spending entity, roughly equivalent to a Stacks address
+- `boolean`: `true` or `false`
+- `buffer`: fixed-length byte buffers
+- `tuple`: named fields in keys and values
 
 `echo-number` uses an [`ok`](clarityRef.html#ok) response to return the value passed to the function.
 
@@ -116,7 +116,7 @@ Go back to the Sandbox screen, switch to the [**Contract deploy**](https://testn
 1. Enter a name for the contract under **Contract name** that uses lower-case letters, dashes, and numbers only.
 2. Replace code in the text area under **Contract source code** with the contents of `contracts/hello-world.clar`.
 3. Ignore the **Choose from sample** drop-down for now. After completing this tutorial you can come back to the Explorer Sandbox and use this drop-down to try other sample contracts.
-3. Click **Deploy contract**.
+4. Click **Deploy contract**.
 
 ![deploy](images/contract-deploy.png)
 
@@ -126,8 +126,8 @@ A confirmation will pop up, indicating that a new contract deploy transaction wa
 
 Go back to the Sandbox screen, switch to the [**Contract call**](https://testnet-explorer.blockstack.org/sandbox?tab=contract-call) tab, and enter the following details:
 
-* **Contract address**: Your generated STX address. Hover over the identity component on the right side of the screen to copy your full address and paste it in here.
-* **Contract name**: Whatever you entered as your contract name in the previous step. If you forgot, you can review your recent transactions by following the link on the upper-right, and look up your contract creation transaction.
+- **Contract address**: Your generated STX address. Hover over the identity component on the right side of the screen to copy your full address and paste it in here.
+- **Contract name**: Whatever you entered as your contract name in the previous step. If you forgot, you can review your recent transactions by following the link on the upper-right, and look up your contract creation transaction.
 
 ![Screenshot of the Sandbox's contract call screen](images/sandbox-call.png)
 
@@ -143,10 +143,10 @@ Locate the `(echo-number)` method, provide any integer for the `val` argument an
 
 With the completion of this tutorial, you now:
 
-* Have a working Clarity starter project and local dev environment
-* Understand basic Clarity language design principles
-* Have deployed a contract to the Stacks 2.0 blockchain and called its public methods
-* Understand how to use the Explorer Sandbox functionality
+- Have a working Clarity starter project and local dev environment
+- Understand basic Clarity language design principles
+- Have deployed a contract to the Stacks 2.0 blockchain and called its public methods
+- Understand how to use the Explorer Sandbox functionality
 
 ## Get familiar with CLI (optional)
 
@@ -200,5 +200,5 @@ To learn more about the Blockstack CLI commands, you can run `blockstack-cli hel
 
 ## Where to go next
 
-* <a href="tutorial-counter.html">Next tutorial: Writing a counter smart contract</a>
-* <a href="tutorial-test.html">Tutorial: Testing contracts with JavaScript and Mocha</a>
+- <a href="tutorial-counter.html">Next tutorial: Writing a counter smart contract</a>
+- <a href="tutorial-test.html">Tutorial: Testing contracts with JavaScript and Mocha</a>

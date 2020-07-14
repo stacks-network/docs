@@ -1,5 +1,5 @@
 ---
-description: "Blockstack naming service (BNS)"
+description: 'Blockstack naming service (BNS)'
 ---
 
 # How to build a Profile Search Index
@@ -12,8 +12,8 @@ be easily expanded to include other namespaces.
 
 Currently there are two types of indexes to handle search queries:
 
-* Substring search on usernames, full names, twitter_handle (powered by MongoDB)
-* Raw Lucene index which handles searching extended data e.g., bio.
+- Substring search on usernames, full names, twitter_handle (powered by MongoDB)
+- Raw Lucene index which handles searching extended data e.g., bio.
 
 Search will currently return upto a max of 20 results (can be less depending on the query)
 with data that follows structure of [blockstack IDs](https://github.com/blockstack/blockstack):
@@ -29,7 +29,8 @@ This document describes how to setup the search subsystem to respond at that end
 # Installation
 
 - **Step 1:** First, make sure you have [virtualenv installed](http://docs.python-guide.org/en/latest/dev/virtualenvs/).
-Then, setup the API and search subsystem:
+  Then, setup the API and search subsystem:
+
 ```
 $ sudo apt-get install -y mongodb memcached python-dev libmemcached-dev zlib1g-dev nginx
 $ sudo pip install uwsgi
@@ -41,8 +42,8 @@ $ sudo mkdir /var/blockstack-search && sudo chown $USER:$USER /var/blockstack-se
 ```
 
 - **Step 2:** Make sure you have a Stacks Node running locally (see [instructions](https://github.com/blockstack/blockstack-core/blob/master/README.md#quick-start)). We highly
-recommend using a local node because the search subsystem issues thousands of calls to
-a Stacks Node for re-indexing and remote nodes can slow down performance.
+  recommend using a local node because the search subsystem issues thousands of calls to
+  a Stacks Node for re-indexing and remote nodes can slow down performance.
 
 - **Step 3:** Fetch the data for the .id namespace and respective profiles. Note, you may want to redirect stderr to a file, as there is a lot of debug output.
 
@@ -150,7 +151,7 @@ pip install -r requirements.txt
 
 Elastic Search library is not in github and resides at unix/lib/elastic
 
-the current version we're using is *0.90.2*. Download from:
+the current version we're using is _0.90.2_. Download from:
 
 > wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.2.zip
 

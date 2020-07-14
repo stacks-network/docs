@@ -6,13 +6,13 @@ description: Learn to Test Clarity Contract Code with JavaScript and Mocha
 
 ## Overview
 
-| Experience | | **Advanced**  |
+| Experience | | **Advanced** |
 | Duration | | **15 minutes** |
 
-Clarity, Blockstack's smart contracting language, is based on [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)). Clarity is an interpreted language, and [decidable](https://en.wikipedia.org/wiki/Recursive_language). In this tutorial, you will learn how to test Clarity and how use [Mocha](https://mochajs.org/) to test Clarity contracts while you develop them.
+Clarity, Blockstack's smart contracting language, is based on [LISP](<https://en.wikipedia.org/wiki/Lisp_(programming_language)>). Clarity is an interpreted language, and [decidable](https://en.wikipedia.org/wiki/Recursive_language). In this tutorial, you will learn how to test Clarity and how use [Mocha](https://mochajs.org/) to test Clarity contracts while you develop them.
 
-* Have a working Clarity starter project
-* Understand how to test Clarity code using `.ts` files and Mocha.
+- Have a working Clarity starter project
+- Understand how to test Clarity code using `.ts` files and Mocha.
 
 ## Prerequisites
 
@@ -83,7 +83,7 @@ Take a few seconds to review the contents of the file. You should ignore the tes
 Note that we're importing modules from the `@blockstack/clarity` package:
 
 ```js
-import { Client, Provider, ProviderRegistry, Result } from "@blockstack/clarity";
+import { Client, Provider, ProviderRegistry, Result } from '@blockstack/clarity';
 ```
 
 ### Initializing a client
@@ -127,7 +127,7 @@ await helloWorldClient.deployContract();
 Finally, you will find snippets that call the public `say-hi` function of the contract:
 
 ```js
-const query = helloWorldClient.createQuery({ function: { name: "say-hi", args: [] } });
+const query = helloWorldClient.createQuery({ function: { name: 'say-hi', args: [] } });
 const receipt = await helloWorldClient.submitQuery(query);
 const result = Result.unwrapString(receipt);
 ```
@@ -140,13 +140,13 @@ Now, review the last test `should echo number` on your own and try to understand
 
 With the completion of this tutorial, you ...
 
-* Created a working Clarity starter project
-* Understood how to test Clarity contracts
+- Created a working Clarity starter project
+- Understood how to test Clarity contracts
 
 Congratulations!
 
 ## Where to go next
 
-* <a href="principals.html">Guide: Understanding principals</a>
-* <a href="tutorial-counter.html">Next tutorial: Writing a counter smart contract</a>
-* <a href="clarityRef.html">Clarity language reference</a>
+- <a href="principals.html">Guide: Understanding principals</a>
+- <a href="tutorial-counter.html">Next tutorial: Writing a counter smart contract</a>
+- <a href="clarityRef.html">Clarity language reference</a>

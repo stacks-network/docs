@@ -20,4 +20,4 @@ You use the Blockstack App Generator to create scaffolding for a starter applica
   </tr>
 </table>
 
-For example, to install a Vue scaffolding, you would use the  `npx generator-blockstack --vue` command.
+For example, to install a Vue scaffolding, you would use the `npx generator-blockstack --vue` command.
