@@ -8,7 +8,7 @@ import { EditIcon } from '@components/icons/edit';
 import { Card } from '@components/home/card';
 import { Body, H1, BodyLarge, SubHeading } from '@components/home/text';
 
-export const Hero = () => {
+export const Hero = ({ cards }: { cards?: any }) => {
   return (
     <>
       <Grid pb="64px" pt="128px" style={{ placeItems: 'center' }} mt="50px">
@@ -25,61 +25,37 @@ export const Hero = () => {
         width="100%"
         gridGap={space('extra-loose')}
         minHeight="200px"
-        gridTemplateColumns={['repeat(1, 1fr)', 'repeat(1, 1fr)', 'repeat(3, 1fr)']}
+        gridTemplateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
         mx="auto"
         mt={space('extra-loose')}
         px={space('extra-loose')}
       >
-        <Card href="/design-graph/what-is-it" textAlign="center">
-          {({ hover, active }) => (
-            <Box as="span">
-              <CircleIcon
-                as="span"
-                hover={hover}
-                icon={AtomAltIcon}
-                mx="auto"
-                mb={space('base-loose')}
-              />
-              <SubHeading
-                as="span"
-                display="block"
-                color={hover || active ? color('accent') : color('text-title')}
-                mb={space('base-loose')}
-              >
-                Build an app
-              </SubHeading>
-              <Body as="p">Start building your own decentralized app.</Body>
-            </Box>
-          )}
-        </Card>
-        <Card href="/components/box" textAlign="center">
-          {({ hover, active }) => (
-            <Box>
-              <CircleIcon hover={hover} icon={BoxIcon} mx="auto" mb={space('base-loose')} />
-              <SubHeading
-                color={hover || active ? color('accent') : color('text-title')}
-                mb={space('base-loose')}
-              >
-                Write a smart contract
-              </SubHeading>
-              <Body>Learn how to write your contract in the Clarity language.</Body>
-            </Box>
-          )}
-        </Card>
-        <Card href="/contributing" textAlign="center">
-          {({ hover, active }) => (
-            <Box>
-              <CircleIcon hover={hover} icon={EditIcon} mx="auto" mb={space('base-loose')} />
-              <SubHeading
-                color={hover || active ? color('accent') : color('text-title')}
-                mb={space('base-loose')}
-              >
-                View documentation
-              </SubHeading>
-              <Body>Dive in to learn all about developing on Blockstack.</Body>
-            </Box>
-          )}
-        </Card>
+        {cards.map(({ href, title, subtitle, icon: Icon }, index) => (
+          <Card href={href} textAlign="center" key={index}>
+            {({ hover, active }) => (
+              <Box as="span">
+                <CircleIcon
+                  as="span"
+                  hover={hover}
+                  icon={Icon}
+                  mx="auto"
+                  mb={space('base-loose')}
+                />
+                <SubHeading
+                  as="span"
+                  display="block"
+                  color={hover || active ? color('accent') : color('text-title')}
+                  mb={space('base-loose')}
+                >
+                  {title}
+                </SubHeading>
+                <Body as="p" maxWidth="26ch" mx="auto">
+                  {subtitle}
+                </Body>
+              </Box>
+            )}
+          </Card>
+        ))}
       </Grid>
     </>
   );
