@@ -10,3 +10,32 @@ Gemfile.lock
 **/.DS_Store
 **/desktop.ini
 **/.svn
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+.vercel
+/.next/
+/out/
+/build/
+
+# production
+/build
+
+# misc
+.env*
+.idea
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.now
+.mdx-data

@@ -1,0 +1,7 @@
+.next
+.vercel
+.mdx-data
+.idea
+node_modules
+build
+README.md
