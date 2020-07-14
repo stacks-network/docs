@@ -1,19 +1,16 @@
 ---
-
-description: "Blockstack Network documentation"
-
+description: 'Blockstack Network documentation'
 ---
+
 # Overview of Blockstack
 
 Blockstack is a full-stack decentralized computing network that enables a new generation of applications where developers and users can interact fairly and securely. Blockstack uses blockchain technology to build protocols and developer tools designed to enable a fair and open Internet that returns digital rights to developers and consumers.
-
 
 ## What is the Blockstack Ecosystem?
 
 The Blockstack Ecosystem is the legal entities and community structures that support the Blockstack technology, the apps that rely on it, and the people that work with it. The ecosystem’s mission is to foster an open and decentralized Internet that establishes and protects privacy, security and freedom for all users.
 
 The documentation on this site focuses on the technologies produced by three entities in the ecosystem.
-
 
 ### Blockstack Public Benefit Corp (PBC)
 
@@ -42,22 +39,22 @@ effort developing expertise in specialized languages or technologies.
 Through the 2017 Blockstack token offering, Blockstack Token LLC created the
 Stacks token. This year's hard fork is an especially exciting milestone for the ecosystem because it distributes the first Stacks tokens to existing purchasers and recipients. This hard fork launches the Stacks blockchain v1, and enables the following two features for the Blockstack network:
 
-* Registration of all digital assets and smart contracts for registering digital assets with the Stacks token.
+- Registration of all digital assets and smart contracts for registering digital assets with the Stacks token.
 
-* A genesis block that distributes Stacks tokens to existing purchasers.
+- A genesis block that distributes Stacks tokens to existing purchasers.
 
 A full technical description of the upgrade is available on <a href="https://forum.blockstack.org/t/blockstack-annual-hard-fork-2018/6518" target="\blank" >the Blockstack forum</a>.
 
 In future upgrades and hard forks, the blockchain will expand to introduce a new
 scalable consensus algorithm to increase the number of transactions it can
-process.  This consensus algorithm is planned to be introduced in additional
+process. This consensus algorithm is planned to be introduced in additional
 hard forks in 2019.
 
 Addtionally, a future Stacks blockchain will support truly decentralized mobile
 applications by removing the need to trust a remote Stacks Node.
 Instead, it will be possible for light clients to calculate the economic weight
 of different Stacks blockchain forks, and identify the fork with the most
-economic activity. Today, light clients  rely on other trusted sources for fork
+economic activity. Today, light clients rely on other trusted sources for fork
 selection and cannot make that decision independently. For mobile apps this
 enables functionality like looking up names without having to rely on a remote
 Stacks Node.

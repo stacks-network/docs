@@ -1,9 +1,9 @@
 ---
-
-description: "Storing user data with Blockstack"
-
+description: 'Storing user data with Blockstack'
 ---
+
 # Configure a hub on Amazon EC2
+
 This teaches you how to run a Gaia hub on Amazon EC2. Amazon EC2 is an affordable and convenient cloud computing provider. This example uses Amazon EC2 instance together with an [EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) disk for file storage.
 
 <div class="uk-card uk-card-default uk-card-body">
@@ -20,7 +20,7 @@ This teaches you how to run a Gaia hub on Amazon EC2. Amazon EC2 is an affordabl
 This procedure uses Amazon AWS to choose and configure an Amazon Machine Image
 (AMI) running a Gaia service. For this reason, you should have an AWS account
 on the <a href="https://aws.amazon.com/free/" target="\_blank">Amazon AWS free
-tier</a>, personal account, or corporate account.  These instructions assume you
+tier</a>, personal account, or corporate account. These instructions assume you
 are using a free tier account.
 
 These instructions assume you have already created a free <a
@@ -46,7 +46,7 @@ If `watch` is not located, install it on your workstation.
 
    ![](/storage/images/us-west-2.png)
 
-3. Under  **Build a solution** choose **Launch a virtual machine**.
+3. Under **Build a solution** choose **Launch a virtual machine**.
 
    The system opens the EC2 dashboard.
 
@@ -71,127 +71,128 @@ If `watch` is not located, install it on your workstation.
 
     So, the `blockstack-gaia_hub-ephemeral-2.5.3-hvm - ami-0c8fc48c10a42737e` image uses ephemeral storage, is at version `2.5.3` and has the `0c8fc48c10a42737e` tag.
 
-6. Select the most recent version image with the storage you want. The images are not sorted; The most recent images is not necessarily at the top of the list.
+6.  Select the most recent version image with the storage you want. The images are not sorted; The most recent images is not necessarily at the top of the list.
 
     After you select an image, the system displays **Step 2: Choose an Instance Type** page.
 
     ![](/storage/images/tier-2-image.png)
 
-7. Select **t2.micro** and choose **Next: Configure Instance Details**.
+7.  Select **t2.micro** and choose **Next: Configure Instance Details**.
 
-   To configure instance details, do the following:
+    To configure instance details, do the following:
 
-   <div class="uk-card uk-card-body">
-   <ol>
-      <li>
-         <p>Select a VPC.</p>
-         <p>A default VPC is created with a free tier account. You can use this
-            default VPC. Or you can choose another VPC. If you choose another VPC,
-            ensure the <code class="highlighter-rouge">Subnet</code> value is set to a subnet reachable by a public IP.
-         </p>
-         <div class="uk-alert-warning uk-alert" uk-alert=""><b>Important:</b> If you're using a private subnet, you
-            should attach an elastic IP (EIP) to the VM. This EIP allows you to
-            reboot the instance without worrying whether the address will reset. To
-            attach an IP, <strong>press allocate new address</strong> and follow the
-            instructions to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating" target="_blank">attach the EIP</a> to your new EC2 instance.
-         </div>
-      </li>
-      <li>
-         <p>Set <strong>Protect against accidental termination</strong>.</p>
-         <p>If you terminate a Gaia instance, you lose all the data associated with it. Protection adds an extra step to terminating your Gaia instance.</p>
-      </li>
-      <li>
-         <p>Open the <strong>Advanced Details</strong>.</p>
-         <p>At this point, you are going to configure environment variables for your instance.</p>
-      </li>
-      <li>
-         <p>Paste the following into the <strong>Advanced Details</strong>.</p>
+    <div class="uk-card uk-card-body">
+    <ol>
+       <li>
+          <p>Select a VPC.</p>
+          <p>A default VPC is created with a free tier account. You can use this
+             default VPC. Or you can choose another VPC. If you choose another VPC,
+             ensure the <code class="highlighter-rouge">Subnet</code> value is set to a subnet reachable by a public IP.
+          </p>
+          <div class="uk-alert-warning uk-alert" uk-alert=""><b>Important:</b> If you're using a private subnet, you
+             should attach an elastic IP (EIP) to the VM. This EIP allows you to
+             reboot the instance without worrying whether the address will reset. To
+             attach an IP, <strong>press allocate new address</strong> and follow the
+             instructions to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating" target="_blank">attach the EIP</a> to your new EC2 instance.
+          </div>
+       </li>
+       <li>
+          <p>Set <strong>Protect against accidental termination</strong>.</p>
+          <p>If you terminate a Gaia instance, you lose all the data associated with it. Protection adds an extra step to terminating your Gaia instance.</p>
+       </li>
+       <li>
+          <p>Open the <strong>Advanced Details</strong>.</p>
+          <p>At this point, you are going to configure environment variables for your instance.</p>
+       </li>
+       <li>
+          <p>Paste the following into the <strong>Advanced Details</strong>.</p>
 
-         <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-         {
-            "ignition": { "version": "2.2.0" },
-            "storage": {
-               "files": [{
-               "filesystem": "root",
-               "path": "/etc/environment",
-               "mode": 420,
-               "contents": {
-                  "source": "data:application/octet-stream,API_KEY%3DKEYPHRASE%0ADOMAIN%3DNAME_OF_DOMAIN%0ASTAGING%3DSTAGING_VALUE"
-               }
-               }]
-            }
-         }
-         </code></pre></div>        </div>
-      </li>
-      <li>
-         <p>Replace the following values in the JSON.</p>
-         <table class="uk-table uk-table-small uk-table-divider">
-            <tbody>
-               <tr>
-                  <th>Value</th>
-                  <th>Description</th>
-               </tr>
-               <tr>
-                  <td><code>&lt;KEYPHRASE&gt;</code></td>
-                  <td>A phrase to pass when using the hub admin. For example, <code>hubba</code> is a fun key phrase.</td>
-               </tr>
-               <tr>
-                  <td><code>&lt;NAME_OF_DOMAIN&gt;</code></td>
-                  <td>Your hub's domain name. For example, <code>maryhub.ml</code> is the domain name in this example.</td>
-               </tr>
-               <tr>
-                  <td><code>&lt;STAGING_VALUE&gt;</code></td>
-                  <td>
-                     <p>Indicates what type of SSL to create, testing (`1`) or production (`0`). Set testing if you want to test without worrying about rate limiting. A testing cerificate is not secure.</p>
-                     <p>For this tutorial, use production (`0`).</p>
-                  </td>
-               </tr>
-            </tbody>
-         </table>
-      </li>
-      <li>
-        <p>Check your <strong>Advanced Details</strong> they should look similar to the following:</p>
+          <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+          {
+             "ignition": { "version": "2.2.0" },
+             "storage": {
+                "files": [{
+                "filesystem": "root",
+                "path": "/etc/environment",
+                "mode": 420,
+                "contents": {
+                   "source": "data:application/octet-stream,API_KEY%3DKEYPHRASE%0ADOMAIN%3DNAME_OF_DOMAIN%0ASTAGING%3DSTAGING_VALUE"
+                }
+                }]
+             }
+          }
+          </code></pre></div>        </div>
 
-               <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
-            "ignition": { "version": "2.2.0" },
-            "storage": {
-               "files": [{
-               "filesystem": "root",
-               "path": "/etc/environment",
-               "mode": 420,
-               "contents": {
-                  "source": "data:application/octet-stream,API_KEY%3Dhubba%0ADOMAIN%3Dmaryhub.ml%0ASTAGING%3D0"
-               }
-               }]
-            }
-         }
-         </code></pre></div>        </div>
-      </li>
-   </ol>
-   </div>
+       </li>
+       <li>
+          <p>Replace the following values in the JSON.</p>
+          <table class="uk-table uk-table-small uk-table-divider">
+             <tbody>
+                <tr>
+                   <th>Value</th>
+                   <th>Description</th>
+                </tr>
+                <tr>
+                   <td><code>&lt;KEYPHRASE&gt;</code></td>
+                   <td>A phrase to pass when using the hub admin. For example, <code>hubba</code> is a fun key phrase.</td>
+                </tr>
+                <tr>
+                   <td><code>&lt;NAME_OF_DOMAIN&gt;</code></td>
+                   <td>Your hub's domain name. For example, <code>maryhub.ml</code> is the domain name in this example.</td>
+                </tr>
+                <tr>
+                   <td><code>&lt;STAGING_VALUE&gt;</code></td>
+                   <td>
+                      <p>Indicates what type of SSL to create, testing (`1`) or production (`0`). Set testing if you want to test without worrying about rate limiting. A testing cerificate is not secure.</p>
+                      <p>For this tutorial, use production (`0`).</p>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+       </li>
+       <li>
+         <p>Check your <strong>Advanced Details</strong> they should look similar to the following:</p>
+
+                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
+             "ignition": { "version": "2.2.0" },
+             "storage": {
+                "files": [{
+                "filesystem": "root",
+                "path": "/etc/environment",
+                "mode": 420,
+                "contents": {
+                   "source": "data:application/octet-stream,API_KEY%3Dhubba%0ADOMAIN%3Dmaryhub.ml%0ASTAGING%3D0"
+                }
+                }]
+             }
+          }
+          </code></pre></div>        </div>
+
+       </li>
+    </ol>
+    </div>
 
     At this point, you have configured your instance details.
 
-8. Choose **Next: Add Storage**.
+8.  Choose **Next: Add Storage**.
 
-   ![](/storage/images/add-storage.png)
+    ![](/storage/images/add-storage.png)
 
-   The storage is set according to the AMI you selected.
+    The storage is set according to the AMI you selected.
 
 9.  Choose **Next: Add tags**.
 10. Optionally, add the following tags:
 
     The tags are not required, they just apply searchable labels to an instance on an EC2 console.
 
-    * **Key** of `Purpose` with the **Value** `gaia`
-    * **Key** of `Name` with the **Value** `gaia-hub`
-    * **Key** of `Version` with the **Value** `2.5.3` (This value is an example, your version may be different.)
+    - **Key** of `Purpose` with the **Value** `gaia`
+    - **Key** of `Name` with the **Value** `gaia-hub`
+    - **Key** of `Version` with the **Value** `2.5.3` (This value is an example, your version may be different.)
 
     ![](/storage/images/tag-add.png)
 
-
-11. Choose **Next: Configure Security Group**.
-12. Create a security group with the following three types:
+11) Choose **Next: Configure Security Group**.
+12) Create a security group with the following three types:
 
     <table class="uk-table uk-table-small uk-table-divider">
       <tr>
@@ -224,16 +225,16 @@ If `watch` is not located, install it on your workstation.
       </tr>
     </table>
 
-13. Choose **Review and Launch**.
+13) Choose **Review and Launch**.
 
     The system may warn you that the selection is not free tier eligible. You can ignore this for now.
 
-14. Press **Launch**.
+14) Press **Launch**.
 
     The system prompts you for a key pair.
 
-15. Select **Create a new keypair** or **Choose an existing key pair**.
-16. Select **Launch Instances**.
+15) Select **Create a new keypair** or **Choose an existing key pair**.
+16) Select **Launch Instances**.
 
     The system launches your instance.
 
@@ -242,7 +243,6 @@ If `watch` is not located, install it on your workstation.
 During the launch process the machine starts and runs some initial setup processes. These processes take a few minutes depending on the network, typically launching does not take more than 10 minutes. While this is happening the instance **Status Checks** reflect the **Initializing** status.
 
 ![](/storage/images/instance-initialize.png)
-
 
 ## Task 2: Connect your Gaia server to your domain
 
@@ -277,33 +277,32 @@ Now, you are ready to test your Gaia server. This procedure ensures the Gaia ser
 
 7. Copy the IP and paste it in your browser.
 
-    <table class="uk-table uk-table-small uk-table-divider">
-     <tr>
-       <th>If the response is</th>
-       <th>Do this...</th>
-     </tr>
-     <tr>
-       <td><img src="{{ '/storage/images/private-connection.png' | prepend: site.baseurl }}"/></td>
-       <td> You should see a message that your connection is not private.
- Everything is fine, continue to the next step, step 8.</td>
-     </tr>
-     <tr>
-       <td><img src="{{ '/storage/images/bad-connection.png' | prepend: site.baseurl }}"/></td>
-       <td>
-       <ol>
-       <li>Check that your domain's DNS configuration matches the public IP address of your instance.</li>
-       <li>Update the DNS site's configuration.</li>
-       <li>Restart your EC2 instance as per the <a href="#restart-services-and-reload-certificates">Restart and reload certificates</a> procedure on this page.</li>
-       <li>Continue with next step, step 8.</li>
-       </ol>
-       </td>
-     </tr>
-   </table>
+   <table class="uk-table uk-table-small uk-table-divider">
+    <tr>
+      <th>If the response is</th>
+      <th>Do this...</th>
+    </tr>
+    <tr>
+      <td><img src="{{ '/storage/images/private-connection.png' | prepend: site.baseurl }}"/></td>
+      <td> You should see a message that your connection is not private.
+Everything is fine, continue to the next step, step 8.</td>
+    </tr>
+    <tr>
+      <td><img src="{{ '/storage/images/bad-connection.png' | prepend: site.baseurl }}"/></td>
+      <td>
+      <ol>
+      <li>Check that your domain's DNS configuration matches the public IP address of your instance.</li>
+      <li>Update the DNS site's configuration.</li>
+      <li>Restart your EC2 instance as per the <a href="#restart-services-and-reload-certificates">Restart and reload certificates</a> procedure on this page.</li>
+      <li>Continue with next step, step 8.</li>
+      </ol>
+      </td>
+    </tr>
+  </table>
 
-
-8. Press **Advanced**.
-9.  Choose to proceed.
-10. Extend the IP with the `PUBLIC_IP/hub_info` tag like so.
+8) Press **Advanced**.
+9) Choose to proceed.
+10) Extend the IP with the `PUBLIC_IP/hub_info` tag like so.
 
     You should see a response from your Gaia hub!
 
@@ -313,7 +312,6 @@ Now, you are ready to test your Gaia server. This procedure ensures the Gaia ser
     That's because you haven't yet enabled SSL certification. While `HTTPS` is
     not required simple to run the hub services, Blockstack will only connect to
     a hub and write to its storage over a valid `HTTPS` connection.
-
 
 ## Task 3: Configure a domain name
 
@@ -343,9 +341,9 @@ These instructions assume you have already created a free <a href="https://www.f
 
    ![Domain test](/storage/images/domain-test.png)
 
-   If you receive another **Your connection is not private** dialogs, take the option to proceed to your domain. The *Not secure* message should no longer appear in the browser bar. If the message does appear, try waiting a few minutes for your recent changes to propagate across the net domain servers. Then, refresh the page.
+   If you receive another **Your connection is not private** dialogs, take the option to proceed to your domain. The _Not secure_ message should no longer appear in the browser bar. If the message does appear, try waiting a few minutes for your recent changes to propagate across the net domain servers. Then, refresh the page.
 
-9. Check the SSL certificate for your hub.
+8. Check the SSL certificate for your hub.
 
    Each browser has its own check procedure, for example, Chrome:
 
@@ -353,7 +351,6 @@ These instructions assume you have already created a free <a href="https://www.f
 
 At this point, you have the following. An EC2 instance running Gaia and a DNS
 record pointing your domain to this instance.
-
 
 ## AWS hub tips and tricks
 
@@ -372,6 +369,7 @@ ssh -t -i <your keyfile.pem> core@<public ip address>
 Your EC2 instance is running several `docker` services that support the Gaia hub. You can list these services using the `docker ps` command.
 
 {% raw %}
+
 ```bash
 $ docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Command}}\t{{.Names}}"
 CONTAINER ID        IMAGE                                   COMMAND                  NAMES
@@ -380,6 +378,7 @@ CONTAINER ID        IMAGE                                   COMMAND             
 16b229a20320        quay.io/blockstack/gaia-reader:v2.5.3   "node lib/index.js"      gaia-reader
 89739e338573        quay.io/blockstack/gaia-admin:v2.5.3    "docker-entrypoint.s…"   gaia-admin
 ```
+
 {% endraw %}
 
 Each service plays a particular role in running your Gaia hub.
@@ -418,7 +417,6 @@ Each service plays a particular role in running your Gaia hub.
       </tr>
    </tbody>
 </table>
-
 
 ### Locations of key files
 
@@ -513,7 +511,7 @@ This procedures requires you to interact from a workstation command line with yo
    maryhub.ml has address 34.219.71.143
    ```
 
-   If the command returns the correct IP, the same as appears on your EC2 dashboard, stop the process with a` CTRL-C` on your keyboard.
+   If the command returns the correct IP, the same as appears on your EC2 dashboard, stop the process with a`CTRL-C` on your keyboard.
 
 3. Change the permissions on your downloaded `.pem` file.
 
@@ -542,7 +540,7 @@ This procedures requires you to interact from a workstation command line with yo
 
 5. SSH from your workstation to reset back to first boot:
 
-   ** This process will stop Gaia Hub, Nginx and remove any existing SSL certificates. It will then start the process of retrieving certificates and setting up the services again. This will not affect any existing data stored on the server.
+   \*\* This process will stop Gaia Hub, Nginx and remove any existing SSL certificates. It will then start the process of retrieving certificates and setting up the services again. This will not affect any existing data stored on the server.
 
    This process requires that you know the location of the `.pem` file you downloaded when you created the keypair.
 
@@ -556,4 +554,5 @@ This procedures requires you to interact from a workstation command line with yo
    $ ssh -t -i /Users/manthony/gaia.pem -A core@34.219.71.143 "sudo systemctl restart reset-ssl-certs.service"
    Connection to 34.219.71.143 closed.
    ```
+
    After a few minutes, all Gaia Hub services will restart automatically and will retrieve a new SSL certificate.

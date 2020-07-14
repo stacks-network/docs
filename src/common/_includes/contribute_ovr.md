@@ -1,7 +1,9 @@
 ### Sections in this article
+
 {:.no_toc}
-* TOC
-{:toc}
+
+- TOC
+  {:toc}
 
 Looking to contribute something to Blockstack? **Here's how you can help.**
 
@@ -20,6 +22,7 @@ Musce libero nunc, dignissim quis turpis quis, semper vehicula dolor. Suspendiss
 Nulla non sollicitudin. Morbi sit amet laoreet ipsum, vel pretium mi. Morbi varius, tellus in accumsan blandit, elit ligula eleifend velit, luctus mattis ante nulla condimentum nulla. Etiam vestibulum risus vel arcu elementum eleifend. Cras at dolor eget urna varius faucibus tempus in elit.
 
 ## What can you contribute?
+
 Nunc porta malesuada porta. Etiam tristique vestibulum dolor at ultricies. Proin hendrerit sapien sed erat fermentum, at commodo velit consectetur.
 
 {% include image.html img="image1.png" style="wide" lightbox="true" alt="Alt for image" caption="Image in lightbox" %}

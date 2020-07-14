@@ -1,8 +1,7 @@
 ---
-
-description: "How to use the Blockstack Software"
-
+description: 'How to use the Blockstack Software'
 ---
+
 # Understand cryptocurrency wallets
 
 If you are, or plan to be a Stacks token holder, you need to think about how you
@@ -12,7 +11,7 @@ receive your tokens? STX tokens are a cryptocurrency and you manage your tokens 
 ## Wallets, addresses, and tokens
 
 Cryptocurrency wallets are software that make sending and receiving cryptocurrency easier. Unlike the wallets you carry physical money in, a cryptocurrency wallet doesn’t
-contain your tokens. A wallet has one or more cryptocurrency addresses, in the case of Stacks these are *Stacks token address*.
+contain your tokens. A wallet has one or more cryptocurrency addresses, in the case of Stacks these are _Stacks token address_.
 
 An address is public and can be viewed by other people much like your house is visible to any passerby. To open a particular address, you must know the address value and you must have the private key for that address. Wallets can read existing addresses to send from or create new addresses to send to. A wallet can show you the history of transactions for an address on the blockchain.
 
@@ -20,7 +19,7 @@ Exchanging cryptocurrency requires moving currency from one address to another. 
 
 ![](images/key.png)
 
-Token exchanges are recorded by *transactions* on a blockchain. In the case of STX, these exchanges appear on the Stacks blockchain.  The movement of tokens from Lena to Bitbook is recorded on the blockchain. The private key Lena uses is not recorded.
+Token exchanges are recorded by _transactions_ on a blockchain. In the case of STX, these exchanges appear on the Stacks blockchain. The movement of tokens from Lena to Bitbook is recorded on the blockchain. The private key Lena uses is not recorded.
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5>Security tip: What to share and what not to</h5>
@@ -53,7 +52,6 @@ service that meets your needs. The Investopedia's article [What Are Cryptocurren
 Custody
 Solutions?](https://www.investopedia.com/news/what-are-cryptocurrency-custody-solutions/)
 is one place to start.
-
 
 ## Choosing a cryptocurrency wallet
 

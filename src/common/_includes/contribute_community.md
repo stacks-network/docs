@@ -1,13 +1,14 @@
 ### Sections in this article
+
 {:.no_toc}
-* TOC
-{:toc}
+
+- TOC
+  {:toc}
 
 ## Community Rewards
 
 Blockstack Community Reward Program
 We’ve set up a community portal with all kinds of tasks you can complete to earn Stacks tokens by contributing to and supporting the community - these stay in your account and convert into tokens when the network goes live. Many are really easy and they’re all fun and helpful for the community, more information here - https://contribute.blockstack.org/.
-
 
 ## Blockstack on Social Media
 
@@ -18,14 +19,12 @@ Musce libero nunc, dignissim quis turpis quis, semper vehicula dolor. Suspendiss
 - Telegram
 - Reddit
 
-
 ## Meeting fact to face
 
 - Events Calendar
 - Meetup
 - Blockstack Community Rewards Program
 - Request Sponsorship for your Event
-
 
 ## Become an evangelist
 

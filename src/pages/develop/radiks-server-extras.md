@@ -1,8 +1,8 @@
 ---
-
-
 ---
+
 # Radiks server tips and tricks
+
 In this section, you'll find some tips and tricks you can use to work with a Radiks server.
 
 ## Access the MongoDB collection
@@ -16,7 +16,6 @@ const mongo = await getDB(MONGODB_URL);
 ```
 
 [See the MongoDB Collection reference](https://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html) for documentation about how you can interact with this collection.
-
 
 ## Run a custom Radiks-server
 
@@ -49,7 +48,6 @@ setup({
 ```
 
 Currently, only the `mongoDBUrl` option is supported.
-
 
 ## Migrate from Firebase (or anywhere else)
 
@@ -122,8 +120,8 @@ migrate()
 Before you can implement the websocket function, you must configure your `Radiks-Server` with [express-ws](https://github.com/HenningM/express-ws)
 
 ```javascript
-const app = express()
-expressWS(app)
+const app = express();
+expressWS(app);
 ```
 
 Here's an example for how to use the API:
@@ -131,7 +129,7 @@ Here's an example for how to use the API:
 ```javascript
 import Task from './models/task';
 
-const streamCallback = (task) => {
+const streamCallback = task => {
   // this callback will be called whenever a task is created or updated.
   // `task` is an instance of `Task`, and all methods are defined on it.
   // If the user has the necessary keys to decrypt encrypted fields on the model,
@@ -140,15 +138,15 @@ const streamCallback = (task) => {
   if (task.projectId === myAppsCurrentProjectPageId) {
     // update your view here with this task
   }
-}
+};
 
-Task.addStreamListener(streamCallback)
+Task.addStreamListener(streamCallback);
 
 // later on, you might want to remove the stream listener (if the
 // user changes pages, for example). When calling `removeStreamListener`,
 // you MUST provide the exact same callback that you used with `addStreamListener`.
 
-Task.removeStreamListener(streamCallback)
+Task.removeStreamListener(streamCallback);
 ```
 
 ## Saving centralized user-related data

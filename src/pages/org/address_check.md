@@ -1,9 +1,9 @@
 ---
-
-description: "Blockstack Network documentation"
-
+description: 'Blockstack Network documentation'
 ---
+
 # Check your address
+
 We recommend that you confirm your address is correct by going through the following steps in the Stacks Wallet:
 
 If you created a software wallet, using the "New Wallet" option, choose "Restore from Seed Phrase" when you start the Stacks Wallet application, then enter your Seed Phrase, and click "Restore." The address that you see on the next screen should match the address you created earlier.

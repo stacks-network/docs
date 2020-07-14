@@ -1,18 +1,20 @@
 ---
-
-description: "How to use the Blockstack Software"
-
+description: 'How to use the Blockstack Software'
 ---
+
 # Wallet FAQs and Troubleshooting
+
 This page contains frequently asked questions and troubleshooting related to the wallet.
 
 ## Frequently asked questions
 
 {% for faq in site.data.theFAQs.faqs %}
-   {% if faq.category == 'wallet' %}
+{% if faq.category == 'wallet' %}
+
 ### {{ faq.question }}
+
 {{ faq.answer }}
-  {% endif %}
+{% endif %}
 {% endfor %}
 
 ## Change from a software-only wallet to a hardware wallet
@@ -25,7 +27,6 @@ To change from a software-only wallet to a hardware wallet, do the following:
 4. Use the <a href="wallet-use.html#receive-stacks" target="_blank">**Receive** button to display the Stacks address</a>.
 5. Login into your Coinlist account.
 6. Change your Stacks wallet address.
-
 
 ## View or change your Stacks wallet address on Coinlist
 
@@ -47,8 +48,10 @@ To view or change your Stacks address on Coinlist, do the following:
 2. Enter a URL in this format:
 
    ```
-  https://sale.stackstoken.com/stacks-token-sale/YOUR_COINLIST_USERNAME/wallet_address
-  ```
+   https://sale.stackstoken.com/stacks-token-sale/YOUR_COINLIST_USERNAME/wallet_address
+   ```
+
+```
 
 3. Change your address if necessary.
 
@@ -64,3 +67,4 @@ If you previously set up your CoinList account by logging in with your AngelList
 6. Use the instructions in the recovery email to create a unique password for your CoinList account.
 
 Going forward, you can access your CoinList account by logging in with your email and new password.
+```

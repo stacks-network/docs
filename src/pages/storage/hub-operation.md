@@ -1,19 +1,19 @@
 ---
-
-description: "Storing user data with Blockstack"
+description: 'Storing user data with Blockstack'
 
 redirect_from:
-- /storage/hello-hub-choice.html
-
+  - /storage/hello-hub-choice.html
 ---
+
 # Understand hub operation
+
 This page describes the considerations hub operators must take into account when creating and operating a Gaia storage hub.
 
 ## Configuration files
 
 You should store a JSON configuration file either in the top-level directory of
 the hub server. Alternatively, you can specify a file location using the
-`CONFIG_PATH` environment variable.  The following is an example configuration file for Amazon S3:
+`CONFIG_PATH` environment variable. The following is an example configuration file for Amazon S3:
 
 ```json
 {
@@ -24,8 +24,8 @@ the hub server. Alternatively, you can specify a file location using the
   "pageSize": 20,
   "bucket": "YOUR_BUCKET_NAME",
   "awsCredentials": {
-     "accessKeyID": "YOUR_ACCESS_KEY",
-     "secretAccessKey": "YOUR_SECRET_KEY"
+    "accessKeyID": "YOUR_ACCESS_KEY",
+    "secretAccessKey": "YOUR_SECRET_KEY"
   },
   "argsTransport": {
     "level": "debug",
@@ -74,7 +74,6 @@ Past users could configure this setting as a crude spam-control mechanism.
 However, for the smoothest operation of your Gaia hub, set the
 `proofsConfig.proofsRequired` value to `0`.
 
-
 ## Open or private hubs
 
 You can configure an open-membership storage hub or a private storage hub. An open-membership hub, as it sounds, allows any user to use the hub service. A private hub limits the use of the service. In this section, you learn about configuring each type.
@@ -94,7 +93,7 @@ via _whitelisting_ the addresses allowed to write files. Recall that each applic
 support application storage, your configuration must add to the whitelist each application you wish to use.
 
 Alternatively, the user's client can use the authentication scheme and generate
-an association token for each app.  The user should whitelist her address, and
-use her associated private key to sign each app's association token.  This
+an association token for each app. The user should whitelist her address, and
+use her associated private key to sign each app's association token. This
 removes the need to whitelist each application, but with the caveat that the
 user needs to take care that her association tokens do not get misused.

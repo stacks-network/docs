@@ -1,8 +1,7 @@
 ---
-
-description: "Blockstack Atlas network"
-
+description: 'Blockstack Atlas network'
 ---
+
 # How to Use the Atlas Network
 
 This section teaches you how to use the Atlas network, it contains the
@@ -12,23 +11,23 @@ following sections:
 
 While the Blockstack software stack expects that Atlas-hosted data is made up of
 DNS zone files, Atlas itself does not enforce this (nor does it care about the
-format of its chunks).  It is designed as a general-purpose chunk store.
+format of its chunks). It is designed as a general-purpose chunk store.
 Nevertheless, the ubiquitous use of Atlas to store data as DNS zone files has
 had an influence on its API design---fields and method names frequently allude
-to zone files and zone file hashes.  This is intentional.
+to zone files and zone file hashes. This is intentional.
 
 The [public BNS API endpoint](https://core.blockstack.org) does not support
 resolving Atlas chunks that do not encode Gaia routing information or subdomain
-information.  To directly interact with Atlas, developers will need to install
+information. To directly interact with Atlas, developers will need to install
 [Stacks Node](https://github.com/blockstack/blockstack-core) and use its
 Python client libraries for these examples.
 
 ## Looking up Chunks
 
 All Atlas chunks are addressed by the RIPEMD160 hash of the SHA256 hash of the
-chunk data.  A client can query up to 100 chunks in one RPC call.
+chunk data. A client can query up to 100 chunks in one RPC call.
 
-A client can look up a chunk with the `get_zonefiles()` method.  If successful,
+A client can look up a chunk with the `get_zonefiles()` method. If successful,
 the returned payload will be a `dict` with a `zonefiles` key that maps the chunk
 hashes to their respective data.
 
@@ -49,11 +48,11 @@ tor TXT "3g2upl4pq6kufc4m.onion"
 ## Adding a New Chunk
 
 The only way to add a chunk to Atlas is to do so through an on-chain name in
-BNS.  Adding a new chunk is a two-step process:
+BNS. Adding a new chunk is a two-step process:
 
-* The name owner announces the chunk hash as a name's state
-via a `NAME_REGISTRATION`, `NAME_UPDATE`, `NAME_RENEWAL`, or `NAME_IMPORT` transaction.
-* Once the transaction is confirmed and processed by BNS, the name owner
+- The name owner announces the chunk hash as a name's state
+  via a `NAME_REGISTRATION`, `NAME_UPDATE`, `NAME_RENEWAL`, or `NAME_IMPORT` transaction.
+- Once the transaction is confirmed and processed by BNS, the name owner
   broadcasts the matching zone file.
 
 Setting a name's state to be the hash of a chunk is beyond the scope of this
@@ -63,7 +62,7 @@ See the relevant documentation for
 Browser](https://github.com/blockstack/blockstack-browser) for doing this.
 
 Once the name operation is confirmed, you can announce the data to the
-Atlas network.  You can do so with the Python client as follows:
+Atlas network. You can do so with the Python client as follows:
 
 ```python
 >>> import blockstack
@@ -79,7 +78,7 @@ At most five chunks can be announced in one RPC call.
 Note that the data must be base64-encoded before it can be announced.
 
 When the `put_zonefiles()` method succeeds, it returns a `dict` with a list
-under the `saved` key.  Here, `result['saved'][i]` will be 1 if the `i`th
+under the `saved` key. Here, `result['saved'][i]` will be 1 if the `i`th
 chunk given to `put_zonefiles()` was saved by the node, and 0 if not.
 The node will not save a chunk if it is too big, or if it has not yet processed
 the name operation that contained the chunk's hash.
@@ -88,10 +87,10 @@ The `put_zonefiles()` method is idempotent.
 
 ## Propagating Chunks
 
-Atlas peers will each store a copy of the chunks you announce.  In the
+Atlas peers will each store a copy of the chunks you announce. In the
 background, they will asynchronously announce to one another which chunks they
 have available, and replicate them to one another in a rarest-first order (much
-like how BitTorrent works).  Eventually, every Atlas peer will receive the
+like how BitTorrent works). Eventually, every Atlas peer will receive the
 chunk.
 
 However, developers can accelerate this process by eagerly propagating chunks.

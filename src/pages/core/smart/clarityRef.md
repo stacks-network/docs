@@ -1,5 +1,5 @@
 ---
-description: "Clarity: Language Reference"
+description: 'Clarity: Language Reference'
 ---
 
 # Clarity Language Reference
@@ -13,21 +13,21 @@ and database schemas require specified types, and use of types is checked
 during contract launch. The type system does _not_ have a universal
 super type. The type system contains the following types:
 
-* `(tuple (key-name-0 key-type-0) (key-name-1 key-type-1) ...)` -
+- `(tuple (key-name-0 key-type-0) (key-name-1 key-type-1) ...)` -
   a typed tuple with named fields.
-* `(list max-len entry-type)` - a list of maximum length `max-len`, with
+- `(list max-len entry-type)` - a list of maximum length `max-len`, with
   entries of type `entry-type`
-* `(response ok-type err-type)` - object used by public functions to commit
+- `(response ok-type err-type)` - object used by public functions to commit
   their changes or abort. May be returned or used by other functions as
   well, however, only public functions have the commit/abort behavior.
-* `(optional some-type)` - an option type for objects that can either be
+- `(optional some-type)` - an option type for objects that can either be
   `(some value)` or `none`
-* `(buff max-len)` := byte buffer or maximum length `max-len`.
-* `principal` := object representing a principal (whether a contract principal
+- `(buff max-len)` := byte buffer or maximum length `max-len`.
+- `principal` := object representing a principal (whether a contract principal
   or standard principal).
-* `bool` := boolean value (`true` or `false`)
-* `int`  := signed 128-bit integer
-* `uint` := unsigned 128-bit integer
+- `bool` := boolean value (`true` or `false`)
+- `int` := signed 128-bit integer
+- `uint` := unsigned 128-bit integer
 
 ## Public Functions
 
@@ -61,10 +61,10 @@ called smart contract function.
 
 We distinguish 2 different types of `contract-call?`:
 
-* Static dispatch: the callee is a known, invariant contract available
-on-chain when the caller contract is deployed. In this case, the
-callee's principal is provided as the first argument, followed by the
-name of the method and its arguments:
+- Static dispatch: the callee is a known, invariant contract available
+  on-chain when the caller contract is deployed. In this case, the
+  callee's principal is provided as the first argument, followed by the
+  name of the method and its arguments:
 
 ```scheme
 (contract-call?
@@ -73,8 +73,8 @@ name of the method and its arguments:
     name-to-register)
 ```
 
-* Dynamic dispatch: the callee is passed as an argument, and typed
-as a trait reference (`<A>`).
+- Dynamic dispatch: the callee is passed as an argument, and typed
+  as a trait reference (`<A>`).
 
 ```scheme
 (define-public (swap (token-a <can-transfer-tokens>)
@@ -127,8 +127,8 @@ The following limitations are imposed on contract calls:
    execute when the caller is also the callee will abort the
    transaction.
 
-
 ## Keyword reference
+
 <!-- TODO: make work with react  -->
 <!-- {% capture keyword_list %} -->
 <!-- {% for entry in site.data.clarityRef.keywords %} -->
@@ -152,7 +152,6 @@ The following limitations are imposed on contract calls:
 <!-- ``` -->
 <!-- <hr class="uk-divider-icon"> -->
 <!-- {% endfor %} -->
-
 
 <!-- ## Function reference -->
 
@@ -182,4 +181,3 @@ The following limitations are imposed on contract calls:
 <!-- ``` -->
 <!-- <hr class="uk-divider-icon"> -->
 <!-- {% endfor %} -->
-

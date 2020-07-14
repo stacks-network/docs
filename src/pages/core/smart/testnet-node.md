@@ -3,6 +3,7 @@
 The Stacks 2.0 testnet is currently in development. As part of the testnet, you can run a node and connect it to a public network. This guide will walk you through downloading and running your own node in the testnet network.
 
 ### Prerequisites
+
 Note: If you use Linux, you may need to manually install [`libssl-dev`](https://wiki.openssl.org/index.php/Libssl_API) and other packages. In your command line, run the following to get all packages:
 
 ```bash
@@ -17,7 +18,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 If Rust is already installed, you might see this prompt. Select 'Proceed with Installation' to make sure you have the latest version installed.
 
-  ![rustup prompt](/core/images/rust-install.png)
+![rustup prompt](/core/images/rust-install.png)
 
 In case you just installed Rust, you will be prompted to run the following command to make the `cargo` command available:
 

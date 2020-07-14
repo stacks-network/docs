@@ -1,5 +1,5 @@
 ---
-description: "Blockstack naming service (BNS)"
+description: 'Blockstack naming service (BNS)'
 ---
 
 # Subdomain Design and Implementation
@@ -22,30 +22,29 @@ These names will be indicated with an `.`, e.g., `foo.bar.id`
 We can do this today with a special indexer & resolver endpoint and
 without any changes to the core protocol.
 
-We can do this by having a zone file record for each subdomain *i*
+We can do this by having a zone file record for each subdomain _i_
 containing the following information:
 
-1. An owner address *addr*
-2. A sequence number *N*
+1. An owner address _addr_
+2. A sequence number _N_
 3. A zonefile
-4. A signature *S* of the above
+4. A signature _S_ of the above
 
-The signature *S_i* must be verifiable with the address in the
-*(N-1)*th entry for subdomain *i*.
+The signature _S_i_ must be verifiable with the address in the
+*(N-1)*th entry for subdomain _i_.
 
 ## Zonefile Format
 
-For now, the resolver will use an *TXT* record per subdomain to define
+For now, the resolver will use an _TXT_ record per subdomain to define
 this information. The entry name will be `$(subdomain)`.
-
 
 We'll use the format of [RFC 1464](https://tools.ietf.org/html/rfc1464)
 for the TXT entry. We'll have the following strings with identifiers:
 
 1. **parts** : this specifies the number of pieces that the
-zonefile has been chopped into. TXT strings can only be 255 bytes,
-so we chop up the zonefile.
-2. **zf{n}**: part *n* of the zonefile, base64 encoded
+   zonefile has been chopped into. TXT strings can only be 255 bytes,
+   so we chop up the zonefile.
+2. **zf{n}**: part _n_ of the zonefile, base64 encoded
 3. **owner**: the owner address delegated to operate the subdomain
 4. **seqn**: the sequence number
 5. **sig**: signature of the above data.
@@ -133,13 +132,13 @@ On success, this returns `202` and the message
 When the registrar wakes up to prepare a transaction, it packs the queued
 registrations together and issues an `UPDATE`.
 
-
 ### Check subdomain registration status
 
 A user can check on the registration status of their name via querying the
 registrar.
 
 This is an API call:
+
 ```
 GET /status/{subdomain}
 ```
@@ -179,17 +178,17 @@ When a lookup like `foo.bar.id` hits the resolver, the resolver will need to:
 3. Verify that all `foo` operations are correct
 4. Return the latest record for foo
 5. Do a profile lookup for `foo.bar.id` by fetching the URLs in the entry.
-*Note*, this spec does not define a priority order for fetching those URLs.
+   _Note_, this spec does not define a priority order for fetching those URLs.
 
 ### Supported Core / Resolver Endpoints
 
 Generally, domain endpoints are not aware of subdomains (only endpoints
 aware of subdomains is `/v1/users/<foo.bar.tld>`,
 `/v1/names/<foo.bar.tld>`, and `/v1/addresses/bitcoin/<foo.bar.tld>`)
-The endpoints which *are* subdomain aware are marked as such in
+The endpoints which _are_ subdomain aware are marked as such in
 [api-specs.md].
 
-This means that search is *not* yet supported.
+This means that search is _not_ yet supported.
 
 The lookups work just like normal -- it returns the user's
 profile object:
@@ -240,7 +239,7 @@ $ curl -H "Authorization: bearer XXXX" -H "Origin: http://localhost:3000" http:/
 
 ### Subdomain Caching
 
-A resolver *caches* a subdomain's state by keeping a database of all
+A resolver _caches_ a subdomain's state by keeping a database of all
 the current subdomain records. This database is automatically updated
 when a new zonefile for a particularly domain is seen by the resolver
 (this is performed lazily).
@@ -282,6 +281,7 @@ curl http://localhost:6270/v1/names/baz.foo.id | python -m json.tool
 ```
 
 Will return:
+
 ```
 {
     "address": "1Nup2UcbVuVoDZeZCtR4vjSkrvTi8toTqc",
@@ -299,6 +299,7 @@ Will return:
 Follow the [instructions here](https://github.com/blockstack/blockstack-core/blob/master/integration_tests/README.md) to download the regtesting Docker image.
 
 Since the subdomain registrar service runs on port 3000, we need to do two things to expose this endpoint to interact with it from the browser:
+
 - Open port 3000 with `-p 3000:3000`
 
 Here's the full command you'd run to start the interactive testing scenario:

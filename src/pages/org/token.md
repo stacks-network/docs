@@ -1,8 +1,7 @@
 ---
-
-description: "Blockstack token holder documentation"
-
+description: 'Blockstack token holder documentation'
 ---
+
 # Learn more about the Stacks token
 
 Stacks is the name of a token developed by Blockstack Token LLC in 2017 and
@@ -44,11 +43,11 @@ documentation.</div>
 
 The genesis block launch makes possible the following interactions:
 
-* Token holders can purchase names and namespaces with the Stacks token. Previously, names and namespaces required the purchaser to hold Bitcoin. Initially, this process relies on the Blockstack command-line interface (CLI).
+- Token holders can purchase names and namespaces with the Stacks token. Previously, names and namespaces required the purchaser to hold Bitcoin. Initially, this process relies on the Blockstack command-line interface (CLI).
 
-* Application developers can earn Stacks by building an application on the Blockstack ecosystem.
+- Application developers can earn Stacks by building an application on the Blockstack ecosystem.
 
-* Any Stacks tokens held at the time of launch or after remain usable under the Stacks Blockchain platform.
+- Any Stacks tokens held at the time of launch or after remain usable under the Stacks Blockchain platform.
 
 Finally, in addition to the development of Stacks token, this launch enables
 further development of Stacks Blockchain itself.

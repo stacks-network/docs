@@ -1,4 +1,5 @@
 # Guide to Blockstack Connect
+
 ## Installation
 
 With yarn:
@@ -34,14 +35,13 @@ export interface AuthOptions {
 }
 ```
 
-parameter | type | default | optional | description
----|---|---|---|---
-redirectTo | string | | false | The path in your app where users go after sign in.
-appDetails | object | | false | an object which includes `appName: string` and `appIcon: string`. This will speed up the process of loading your app's information during onboarding.
-finished | function | | false | A callback that can be invoked after authentication. This prevents having to do a whole page refresh in a new tab. One argument is passed to this callback, which is an object with `userSession` included. If included, then the `redirectTo` path is ignored, and the user will be logged in automatically.
-sendToSignIn | boolean | false | true | Whether the user should go straight to the 'sign in' flow (false) or be presented with the 'sign up' flow (true) instead.
-userSession | UserSession | | false | pass a `UserSession` instance to use for authentication. If it's not passed, `@blockstack/connect` will create one for you.
-
+| parameter    | type        | default | optional | description                                                                                                                                                                                                                                                                                                   |
+| ------------ | ----------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| redirectTo   | string      |         | false    | The path in your app where users go after sign in.                                                                                                                                                                                                                                                            |
+| appDetails   | object      |         | false    | an object which includes `appName: string` and `appIcon: string`. This will speed up the process of loading your app's information during onboarding.                                                                                                                                                         |
+| finished     | function    |         | false    | A callback that can be invoked after authentication. This prevents having to do a whole page refresh in a new tab. One argument is passed to this callback, which is an object with `userSession` included. If included, then the `redirectTo` path is ignored, and the user will be logged in automatically. |
+| sendToSignIn | boolean     | false   | true     | Whether the user should go straight to the 'sign in' flow (false) or be presented with the 'sign up' flow (true) instead.                                                                                                                                                                                     |
+| userSession  | UserSession |         | false    | pass a `UserSession` instance to use for authentication. If it's not passed, `@blockstack/connect` will create one for you.                                                                                                                                                                                   |
 
 ### In React Apps
 
@@ -63,11 +63,7 @@ const authOptions = {
   },
 };
 
-const App = () => (
-  <Connect authOptions={authOptions}>
-    // the rest of your app's components
-  </Connect>
-)
+const App = () => <Connect authOptions={authOptions}>// the rest of your app's components</Connect>;
 ```
 
 Later, when you want to begin the onboarding process, use the `useConnect` hook to get `connect`'s `doOpenAuth` method.
@@ -78,12 +74,8 @@ import { useConnect } from '@blockstack/connect';
 const SignInButton = () => {
   const { doOpenAuth } = useConnect();
 
-  return (
-    <Button onClick={doOpenAuth}>
-      Sign In
-    </Button>
-  )
-}
+  return <Button onClick={doOpenAuth}>Sign In</Button>;
+};
 ```
 
 #### Sign In
@@ -94,11 +86,12 @@ To send the user straight to sign in, call `doOpenAuth(true)`.
 
 If you aren't using React, or just want a simpler API, then you can use the `showBlockstackConnect` method.
 
-
 ```javascript
 import { showBlockstackConnect } from '@blockstack/connect';
 
-const authOptions = { /** See docs above for options */ };
+const authOptions = {
+  /** See docs above for options */
+};
 showBlockstackConnect(authOptions);
 ```
 
@@ -124,9 +117,10 @@ First, include the script in your HTML:
 
 Then, you can use API methods under the `blockstackConnect` global variable:
 
-
 ```javascript
-const authOptions = { /** See docs above for options */ };
+const authOptions = {
+  /** See docs above for options */
+};
 blockstackConnect.showBlockstackConnect(authOptions);
 ```
 

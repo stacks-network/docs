@@ -1,8 +1,8 @@
 ---
-
-
 ---
+
 # Work with Collections (Preview)
+
 Collections is the feature designed to make data portable among Blockstack applications. Sharing is accomplished by storing a user's data in a standardized format at a known, Gaia storage location. Collections associate user data with a user's decentralized ID. When users move among apps, the same data is available to each application the user authorizes.
 
 On this page, you learn what collections are and how to use them. You'll learn about the `Contact` collection in particular. The following topics are covered:
@@ -11,7 +11,7 @@ On this page, you learn what collections are and how to use them. You'll learn a
 
 ## Understand how collections work
 
-One of Blockstack's goals is to give users true data ownership by enabling *data portability*.  Data portability allows users to login with their digital ID on any app and have access to the same data. For example, if a user adds a photo of a Hawaiian vacation in one app, that photo enters the user's data pool. Then, when the user opens a second app, that same photo is available to the second app because the user data, including the photo, is shared via the user's decentralized ID.
+One of Blockstack's goals is to give users true data ownership by enabling _data portability_. Data portability allows users to login with their digital ID on any app and have access to the same data. For example, if a user adds a photo of a Hawaiian vacation in one app, that photo enters the user's data pool. Then, when the user opens a second app, that same photo is available to the second app because the user data, including the photo, is shared via the user's decentralized ID.
 
 How do collections work? Blockstack builds a library containing commonly used data schemes. Developers use these classes and objects instead of creating their own, unique data schemes. Using a class from the collections library guarantees class data is stored in Gaia in that format; And, when retrieved, guarantees the same format is returned. This pre-release provides the `Contact` collection. A contact schema produces this structure:
 
@@ -65,28 +65,28 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
 7. Install the dependencies using `npm`.
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 8. Start the application running.
 
-    ```bash
-    npm run start
-    ```
+   ```bash
+   npm run start
+   ```
 
-    The system starts the application and launches it in your browser at  127.0.0.1:3000
+   The system starts the application and launches it in your browser at 127.0.0.1:3000
 
 9. Choose **Sign In with Blockstack**.
 
-    The internet browser will display this pop-up
+   The internet browser will display this pop-up
 
-    ![](images/contacts-manager.png)
+   ![](images/contacts-manager.png)
 
-10. Use the local browser by choosing  **Open Blockstack.app**.
+10. Use the local browser by choosing **Open Blockstack.app**.
 
 11. If you are not signed into an ID in the Blockstack Browser, choose **Create new ID** from the pop up.
-   If you are already signed in, choose an ID to sign in to the Contacts Manager app with.
+    If you are already signed in, choose an ID to sign in to the Contacts Manager app with.
 
     The system should return you to the Contact Manager demo application.
 
@@ -108,7 +108,6 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
    ![](images/test-contact.png)
 
-
 ## How to add the Contact collections to your DApp
 
 In this section, you learn how to add `Contact` collection functionality to an existing application. Before beginning, make sure your application is using Blockstack auth and is storing data with Gaia. To start using the `Contact` collection in your Blockstack app, do the following:
@@ -116,35 +115,35 @@ In this section, you learn how to add `Contact` collection functionality to an e
 1. Change to the root directory of your app project.
 2. Install the preview branch of the `blockstack.js`.
 
-    ```
-    npm install blockstack@20.0.0-alpha.5
-    ```
+   ```
+   npm install blockstack@20.0.0-alpha.5
+   ```
 
 3. Add the ``blockstack-collections` package to your app.
 
-    ```
-    npm install blockstack-collections@0.1.8
-    ```
+   ```
+   npm install blockstack-collections@0.1.8
+   ```
 
 4. Edit your code to import the `Contact` collection type.
 
-    ```
-    import { Contact } from `blockstack-collections`
-    ```
+   ```
+   import { Contact } from `blockstack-collections`
+   ```
 
 5. Customize your sign in request to include the contacts collection scope `Contact.scope`.
 
-    This scope grants your app permission to read and write to the user’s `Contact` collection.
+   This scope grants your app permission to read and write to the user’s `Contact` collection.
 
-    ```javascript
-    import { UserSession, AppConfig, makeAuthRequest } from 'blockstack'
-    import { Contact } from '`blockstack-collections'
+   ```javascript
+   import { UserSession, AppConfig, makeAuthRequest } from 'blockstack';
+   import { Contact } from '`blockstack-collections';
 
-    const scopes = ['store_write', 'publish_data', Contact.scope]
-    const appConfig = new AppConfig(scopes)
-    const userSession = new UserSession({appConfig: appConfig})
-    userSession.redirectToSignIn()
-    ```
+   const scopes = ['store_write', 'publish_data', Contact.scope];
+   const appConfig = new AppConfig(scopes);
+   const userSession = new UserSession({ appConfig: appConfig });
+   userSession.redirectToSignIn();
+   ```
 
 ## Collection storage operations
 
@@ -153,53 +152,50 @@ Collection storage was designed around an ORM-like interface. This approach ensu
 ### Example: Create and save a Contact object
 
 ```javascript
-    const newContact = {
-      lastName: 'Stackerson',
-      firstName: 'Blocky',
-      blockstackID: 'Blockstacker.id',
-      email: 'blockstacker@blockstack.org',
-      website: 'blockstack.org',
-      telephone: '123123123'
-    }
+const newContact = {
+  lastName: 'Stackerson',
+  firstName: 'Blocky',
+  blockstackID: 'Blockstacker.id',
+  email: 'blockstacker@blockstack.org',
+  website: 'blockstack.org',
+  telephone: '123123123',
+};
 
-    var contact = new Contact(newContact)
-    contact.save().then((contactID) => {
-      // contact saved successfully
-    })
+var contact = new Contact(newContact);
+contact.save().then(contactID => {
+  // contact saved successfully
+});
 ```
-
 
 ### Example: Read a Contact object
 
 ```javascript
-    let contactID = 'Blocky Stackerson'
-    Contact.get(contactID).then((contact) => {
-      // Do something with the contact object
-      console.log('Hello ${contact.firstName}')
-    })
+let contactID = 'Blocky Stackerson';
+Contact.get(contactID).then(contact => {
+  // Do something with the contact object
+  console.log('Hello ${contact.firstName}');
+});
 ```
-
 
 ### Example: List Contact objects
 
 ```javascript
-    let contacts = []
-    Contact.list((contactID) => {
-      // This callback is invoked for each contact identifier
-      // To get the actual object you'll need to use Contact.get
-      // Or you can add the IDs to an array for display
-      contacts.push(contactID)
-      // Return true to continue iterating, return false to stop
-      return true
-    })
+let contacts = [];
+Contact.list(contactID => {
+  // This callback is invoked for each contact identifier
+  // To get the actual object you'll need to use Contact.get
+  // Or you can add the IDs to an array for display
+  contacts.push(contactID);
+  // Return true to continue iterating, return false to stop
+  return true;
+});
 ```
-
 
 ### Example: Delete a Contact
 
 ```javascript
-    var contact = new Contact(newContact)
-    contact.delete().then(() => {
-      // contact deleted successfully
-    })
+var contact = new Contact(newContact);
+contact.delete().then(() => {
+  // contact deleted successfully
+});
 ```

@@ -1,24 +1,24 @@
 ---
-
-
 ---
+
 # Collaborate with groups
-A key feature of Radiks is support for private collaboration between multiple users.  Supporting collaboration with client-side encryption and user-owned storage can be complicated, but the patterns to implement it are generally the same among most applications. Radiks supplies interfaces for collaboration, making it easy to build private, collaborative apps.
+
+A key feature of Radiks is support for private collaboration between multiple users. Supporting collaboration with client-side encryption and user-owned storage can be complicated, but the patterns to implement it are generally the same among most applications. Radiks supplies interfaces for collaboration, making it easy to build private, collaborative apps.
 
 You use the <a href="https://github.com/blockstack/radiks/blob/master/src/models/user-group.ts" target="_blank"><code>UserGroup</code></a> class to build a collaborative group with Radiks. In this section, you learn about this class.
 
 ## Understand the UserGroup workflow
 
-The key model behind a collaborative group is `UserGroup`. By default, it only has one attribute, `name`, which is encrypted. You can subclass  `UserGroup` with different attributes as needed.
+The key model behind a collaborative group is `UserGroup`. By default, it only has one attribute, `name`, which is encrypted. You can subclass `UserGroup` with different attributes as needed.
 
 The general workflow for creating a collaborative group that can share and edit encrypted models is as follows:
 
 1. The admin of the group creates a new `UserGroup`.
    This group acts as the 'hub' and controls the logic around inviting and removing users.
 2. The admin invites one or more other users to a group:
-    * The admin specifies the username of the user they want to invite
-    * Radiks looks up the user's public key
-    * Radiks creates an 'invitation' that is encrypted with the user's public key, and contains information about the `UserGroup`
+   - The admin specifies the username of the user they want to invite
+   - Radiks looks up the user's public key
+   - Radiks creates an 'invitation' that is encrypted with the user's public key, and contains information about the `UserGroup`
 3. When the invited user 'activates' an invitation, they create a `GroupMembership`.
    They use this membership instance to reference information (such as private keys and signing keys) related to the group.
 
@@ -44,14 +44,12 @@ import { UserGroup } from 'radiks';
 
 Calling `create` on a new `UserGroup` will create the group and activate an invitation for the group's creator.
 
-
 ```javascript
 const group = new UserGroup({ name: 'My Group Name' });
 await group.create();
 ```
 
 A group's creator is also the group's admin.
-
 
 ### Invite users to become members
 
@@ -70,21 +68,20 @@ console.log(invitation._id); // the ID used to later activate an invitation
 
 You can also create a generic invitation that any user can activate, if they are provided with randomly generated secret key, which should be used to decrypt the invitation. The key is generated when the generic invitation is being created.
 
-~~~javascript
+```javascript
 import { GenericGroupInvitation, UserGroup } from 'radiks';
 const group = await UserGroup.findById(myGroupId);
 // Creating generic invitation
 const genericInvitation = await GenericGroupInvitation.makeGenericInvitation(group);
 console.log(genericInvitation._id); // the ID used to later activate an invitation
 console.log(genericInvitation.secretCode); // the secretCode used to later activate an invitation
-~~~
-
+```
 
 ### Accept an invitation
 
 Use the `activate` method on a `GroupInvitation` instance to activate an invitation on behalf of a user:
 
-```javascript
+````javascript
 import { GroupInvitation, GenericGroupInvitation } from 'radiks';
 
 // For user-specific invitation
@@ -103,7 +100,7 @@ Call `UserGroup.myGroups` to fetch all groups that the current user is a member 
 import { UserGroup } from 'radiks';
 
 const groups = await UserGroup.myGroups();
-```
+````
 
 ## Find a UserGroup
 
