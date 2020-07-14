@@ -1,5 +1,5 @@
 ---
-description: "Blockstack smart contracting language"
+description: 'Blockstack smart contracting language'
 ---
 
 # Install Clarity from Source

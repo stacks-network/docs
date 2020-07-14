@@ -58,9 +58,7 @@ const NotFoundPage = () => {
             </Box>
           </Box>
           <Box mx="auto" maxWidth="40ch" textAlign="center">
-            <Text>
-              Looks like there's nothing here yet.
-            </Text>
+            <Text>Looks like there's nothing here yet.</Text>
             <Box mt={space('base')}>
               <Link
                 as="a"

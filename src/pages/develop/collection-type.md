@@ -1,8 +1,8 @@
 ---
-
-
 ---
+
 # How to create a Collection type
+
 Collections support data portability between applications. Blockstack supplies a `Contact` collection for use by Blockstack applications. Developers can create additional collection types, use them in their own applications, and publish them so other developers can make use of them too.
 
 In this section, you learn the coding guidelines for creating and publishing a new `Collection` type. The following topics are included:
@@ -26,17 +26,17 @@ This section demonstrates how to create a new collection type using Typescript. 
 1. Create a new `.ts` file and open it for editing.
 2. Import the `Collection` class.
 
-    ```js
-    import { Collection, Attrs, Serializable } from 'blockstack-collections'
-    ```
+   ```js
+   import { Collection, Attrs, Serializable } from 'blockstack-collections';
+   ```
 
 3. Extend the abstract `Collection` class from the `blockstack-collections` package.
 
-    ```js
-    export class Contact extends Collection implements Serializable {
-      ...
-    }
-    ```
+   ```js
+   export class Contact extends Collection implements Serializable {
+     ...
+   }
+   ```
 
 4. Give your `Collection` a unique identifier.
 
@@ -46,57 +46,57 @@ This section demonstrates how to create a new collection type using Typescript. 
     static get collectionName(): string {
       return 'contact'
     }
-    ```
+   ```
 
-    {% include warning.html content="While you must specify a unique identifier, the Blockstack platform does not currently enforce uniqueness. If your <code>Collection</code> type shares the same identifier as another type, it will lead to data corruption for the user. In the future, the Blockstack platform will enforce unique collection names. " %}
+   {% include warning.html content="While you must specify a unique identifier, the Blockstack platform does not currently enforce uniqueness. If your <code>Collection</code> type shares the same identifier as another type, it will lead to data corruption for the user. In the future, the Blockstack platform will enforce unique collection names. " %}
 
 5. Define a static `schema` constant.
 
    This is your type's schema.
 
-    ```js
-    static schema = {
-      identifier: String,
-      firstName: String,
-      lastName: String,
-      blockstackID: String,
-      email: String,
-      website: String,
-      address: String,
-      telephone: String,
-      organization: String
-    }
-    ```
+   ```js
+   static schema = {
+     identifier: String,
+     firstName: String,
+     lastName: String,
+     blockstackID: String,
+     email: String,
+     website: String,
+     address: String,
+     telephone: String,
+     organization: String
+   }
+   ```
 
 6. Determine if you need to set the `singleFile` storage flag.
 
-    By default, the `singleFile` flag is false. This setting causes every record in a collection to store in Gaia as a separate file. The default works well for larger types that describe data such as documents or photos. If your `Collection` type only has a few fields and is not expected to have a large number of records, set the `singleFile` data format flag to `true`.
+   By default, the `singleFile` flag is false. This setting causes every record in a collection to store in Gaia as a separate file. The default works well for larger types that describe data such as documents or photos. If your `Collection` type only has a few fields and is not expected to have a large number of records, set the `singleFile` data format flag to `true`.
 
-    ```js
-    static singleFile = true
-    ```
+   ```js
+   static singleFile = true
+   ```
 
 7. Define the `fromObject` and `fromData` serializaiton methods.
 
-   These methods serialize and deserialize your `Collection` type. You can use any serialization method you want.  Data encryption is handled automatically by the parent `Collection` class, so you *should not* perform any additional encryption.
+   These methods serialize and deserialize your `Collection` type. You can use any serialization method you want. Data encryption is handled automatically by the parent `Collection` class, so you _should not_ perform any additional encryption.
 
    In the following example code, data is converted to JSON string for storage.
 
-    ```js
-    static fromObject(object: object) {
-      // Create from plain Javascript object
-      return new Contact(object)
-    }
-    static fromData(data: string) {
-      // Deserialize JSON data
-      return new Contact(JSON.parse(data))
-    }
+   ```js
+   static fromObject(object: object) {
+     // Create from plain Javascript object
+     return new Contact(object)
+   }
+   static fromData(data: string) {
+     // Deserialize JSON data
+     return new Contact(JSON.parse(data))
+   }
 
-    serialize() {
-      // Serialize to JSON string
-      return JSON.stringify(this.attrs)
-    }
-    ```
+   serialize() {
+     // Serialize to JSON string
+     return JSON.stringify(this.attrs)
+   }
+   ```
 
 8. Test and iterate development of your type in your application.
 9. Publish your type for others to use.
@@ -144,7 +144,7 @@ To perform additional processing of a collection, you can override the `get`, `s
 
 ## Publish your new type for others to use
 
-While you *can* use your collection exclusively in your application, the Collections feature is intended to enable data portability between DApps. So, you should publish your new type so other developers can make use of it.
+While you _can_ use your collection exclusively in your application, the Collections feature is intended to enable data portability between DApps. So, you should publish your new type so other developers can make use of it.
 
 To publish your Collection type, do the following:
 

@@ -5,42 +5,43 @@ It describes the transaction formats for the Bitcoin blockchain.
 
 ## Transaction format
 
-Each Bitcoin transaction for Blockstack contains signatures from two sets of keys: the name owner, and the payer.  The owner `scriptSig` and `scriptPubKey` fields are generated from the key(s) that own the given name.  The payer `scriptSig` and `scriptPubKey` fields are used to *subsidize* the operation.  The owner keys do not pay for any operations; the owner keys only control the minimum amount of BTC required to make the transaction standard.  The payer keys only pay for the transaction's fees, and (when required) they pay the name fee.
+Each Bitcoin transaction for Blockstack contains signatures from two sets of keys: the name owner, and the payer. The owner `scriptSig` and `scriptPubKey` fields are generated from the key(s) that own the given name. The payer `scriptSig` and `scriptPubKey` fields are used to _subsidize_ the operation. The owner keys do not pay for any operations; the owner keys only control the minimum amount of BTC required to make the transaction standard. The payer keys only pay for the transaction's fees, and (when required) they pay the name fee.
 
-This construction is meant to allow the payer to be wholly separate from the owner.  The principal that owns the name can fund their own transactions, or they can create a signed transaction that carries out the desired operation and request some other principal (e.g. a parent organization) to actually pay for and broadcast the transaction.
+This construction is meant to allow the payer to be wholly separate from the owner. The principal that owns the name can fund their own transactions, or they can create a signed transaction that carries out the desired operation and request some other principal (e.g. a parent organization) to actually pay for and broadcast the transaction.
 
 The general transaction layout is as follows:
 
-| **Inputs**               | **Outputs**            |
-| ------------------------ | ----------------------- |
-| Owner scriptSig (1)      | `OP_RETURN <payload>` (2)  |
-| Payment scriptSig        | Owner scriptPubKey (3) |
+| **Inputs**               | **Outputs**               |
+| ------------------------ | ------------------------- |
+| Owner scriptSig (1)      | `OP_RETURN <payload>` (2) |
+| Payment scriptSig        | Owner scriptPubKey (3)    |
 | Payment scriptSig... (4) |
-| ...                  (4) | ... (5)                |
+| ... (4)                  | ... (5)                   |
 
-(1) The owner `scriptSig` is *always* the first input.
-(2) The `OP_RETURN` script that describes the name operation is *always* the first output.
-(3) The owner `scriptPubKey` is *always* the second output.
+(1) The owner `scriptSig` is _always_ the first input.
+(2) The `OP_RETURN` script that describes the name operation is _always_ the first output.
+(3) The owner `scriptPubKey` is _always_ the second output.
 (4) The payer can use as many payment inputs as (s)he likes.
 (5) At most one output will be the "change" `scriptPubKey` for the payer.
 Different operations require different outputs.
 
 ## Payload Format
 
-Each Blockstack transaction in Bitcoin describes the name operation within an `OP_RETURN` output.  It encodes name ownership, name fees, and payments as `scriptPubKey` outputs.  The specific operations are described below.
+Each Blockstack transaction in Bitcoin describes the name operation within an `OP_RETURN` output. It encodes name ownership, name fees, and payments as `scriptPubKey` outputs. The specific operations are described below.
 
-Each `OP_RETURN` payload *always* starts with the two-byte string `id` (called the "magic" bytes in this document), followed by a one-byte `op` that describes the operation.
+Each `OP_RETURN` payload _always_ starts with the two-byte string `id` (called the "magic" bytes in this document), followed by a one-byte `op` that describes the operation.
 
 ### NAME_PREORDER
 
 Op: `?`
 
-Description:  This transaction commits to the *hash* of a name.  It is the first
+Description: This transaction commits to the _hash_ of a name. It is the first
 transaction of two transactions that must be sent to register a name in BNS.
 
 Example: [6730ae09574d5935ffabe3dd63a9341ea54fafae62fde36c27738e9ee9c4e889](https://www.blocktrail.com/BTC/tx/6730ae09574d5935ffabe3dd63a9341ea54fafae62fde36c27738e9ee9c4e889)
 
 `OP_RETURN` wire format:
+
 ```
     0     2  3                                                  23             39
     |-----|--|--------------------------------------------------|--------------|
@@ -48,23 +49,26 @@ Example: [6730ae09574d5935ffabe3dd63a9341ea54fafae62fde36c27738e9ee9c4e889](http
 ```
 
 Inputs:
-* Payment `scriptSig`'s
+
+- Payment `scriptSig`'s
 
 Outputs:
-* `OP_RETURN` payload
-* Payment `scriptPubkey` script for change
-* `p2pkh` `scriptPubkey` to the burn address (0x00000000000000000000000000000000000000)
+
+- `OP_RETURN` payload
+- Payment `scriptPubkey` script for change
+- `p2pkh` `scriptPubkey` to the burn address (0x00000000000000000000000000000000000000)
 
 Notes:
-* `register_addr` is a base58check-encoded `ripemd160(sha256(pubkey))` (i.e. an address).  This address **must not** have been used before in the underlying blockchain.
-* `script_pubkey` is either a `p2pkh` or `p2sh` compiled Bitcoin script for the payer's address.
+
+- `register_addr` is a base58check-encoded `ripemd160(sha256(pubkey))` (i.e. an address). This address **must not** have been used before in the underlying blockchain.
+- `script_pubkey` is either a `p2pkh` or `p2sh` compiled Bitcoin script for the payer's address.
 
 ### NAME_REGISTRATION
 
 Op: `:`
 
-Description:  This transaction reveals the name whose hash was announced by a
-previous `NAME_PREORDER`.  It is the second of two transactions that must be
+Description: This transaction reveals the name whose hash was announced by a
+previous `NAME_PREORDER`. It is the second of two transactions that must be
 sent to register a name in BNS.
 
 Example: [55b8b42fc3e3d23cbc0f07d38edae6a451dfc512b770fd7903725f9e465b2925](https://www.blocktrail.com/BTC/tx/55b8b42fc3e3d23cbc0f07d38edae6a451dfc512b770fd7903725f9e465b2925)
@@ -72,6 +76,7 @@ Example: [55b8b42fc3e3d23cbc0f07d38edae6a451dfc512b770fd7903725f9e465b2925](http
 `OP_RETURN` wire format (2 variations allowed):
 
 Variation 1:
+
 ```
     0    2  3                             39
     |----|--|-----------------------------|
@@ -79,6 +84,7 @@ Variation 1:
 ```
 
 Variation 2:
+
 ```
     0    2  3                                  39                  59
     |----|--|----------------------------------|-------------------|
@@ -86,26 +92,28 @@ Variation 2:
 ```
 
 Inputs:
-* Payer `scriptSig`'s
+
+- Payer `scriptSig`'s
 
 Outputs:
-* `OP_RETURN` payload
-* `scriptPubkey` for the owner's address
-* `scriptPubkey` for the payer's change
+
+- `OP_RETURN` payload
+- `scriptPubkey` for the owner's address
+- `scriptPubkey` for the payer's change
 
 Notes:
 
-* Variation 1 simply registers the name.  Variation 2 will register the name and
-set a name value simultaneously.  This is used in practice to set a zone file
-hash for a name without the extra `NAME_UPDATE` transaction.
-* Both variations are supported.  Variation 1 was designed for the time when
+- Variation 1 simply registers the name. Variation 2 will register the name and
+  set a name value simultaneously. This is used in practice to set a zone file
+  hash for a name without the extra `NAME_UPDATE` transaction.
+- Both variations are supported. Variation 1 was designed for the time when
   Bitcoin only supported 40-byte `OP_RETURN` outputs.
 
 ### NAME_RENEWAL
 
 Op: `:`
 
-Description:  This transaction renews a name in BNS.  The name must still be
+Description: This transaction renews a name in BNS. The name must still be
 registered and not expired, and owned by the transaction sender.
 
 Example: [e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65](https://www.blocktrail.com/BTC/tx/e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65)
@@ -113,6 +121,7 @@ Example: [e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65](http
 `OP_RETURN` wire format (2 variations allowed):
 
 Variation 1:
+
 ```
     0    2  3                             39
     |----|--|-----------------------------|
@@ -120,6 +129,7 @@ Variation 1:
 ```
 
 Variation 2:
+
 ```
     0    2  3                                  39                  59
     |----|--|----------------------------------|-------------------|
@@ -128,24 +138,24 @@ Variation 2:
 
 Inputs:
 
-* Payer `scriptSig`'s
+- Payer `scriptSig`'s
 
 Outputs:
 
-* `OP_RETURN` payload
-* `scriptPubkey` for the owner's addess.  This can be a different address than
+- `OP_RETURN` payload
+- `scriptPubkey` for the owner's addess. This can be a different address than
   the current name owner (in which case, the name is renewed and transferred).
-* `scriptPubkey` for the payer's change
-* `scriptPubkey` for the burn address (to pay the name cost)
+- `scriptPubkey` for the payer's change
+- `scriptPubkey` for the burn address (to pay the name cost)
 
 Notes:
 
-* This transaction is identical to a `NAME_REGISTRATION`, except for the presence of the fourth output that pays for the name cost (to the burn address).
-* Variation 1 simply renews the name.  Variation 2 will both renew the name and
+- This transaction is identical to a `NAME_REGISTRATION`, except for the presence of the fourth output that pays for the name cost (to the burn address).
+- Variation 1 simply renews the name. Variation 2 will both renew the name and
   set a new name value (in practice, the hash of a new zone file).
-* Both variations are supported.  Variation 1 was designed for the time when
+- Both variations are supported. Variation 1 was designed for the time when
   Bitcoin only supported 40-byte `OP_RETURN` outputs.
-* This operation can be used to transfer a name to a new address by setting the
+- This operation can be used to transfer a name to a new address by setting the
   second output (the first `scriptPubkey`) to be the `scriptPubkey` of the new
   owner key.
 
@@ -153,13 +163,14 @@ Notes:
 
 Op: `+`
 
-Description:  This transaction sets the name state for a name to the given
-`value`.  In practice, this is used to announce new DNS zone file hashes to the [Atlas
+Description: This transaction sets the name state for a name to the given
+`value`. In practice, this is used to announce new DNS zone file hashes to the [Atlas
 network]({{ site.baseurl }}/core/atlas/overview.html).
 
 Example: [e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7](https://www.blocktrail.com/BTC/tx/e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7)
 
 `OP_RETURN` wire format:
+
 ```
     0     2  3                                   19                      39
     |-----|--|-----------------------------------|-----------------------|
@@ -174,24 +185,27 @@ Example: `hash128("jude.id" + "8d8762c37d82360b84cf4d87f32f7754") == "d1062edb9e
 The 20 byte zone file hash is computed from zone file data by using `ripemd160(sha56(zone file data))`
 
 Inputs:
-* owner `scriptSig`
-* payment `scriptSig`'s
+
+- owner `scriptSig`
+- payment `scriptSig`'s
 
 Outputs:
-* `OP_RETURN` payload
-* owner's `scriptPubkey`
-* payment `scriptPubkey` change
+
+- `OP_RETURN` payload
+- owner's `scriptPubkey`
+- payment `scriptPubkey` change
 
 ### NAME_TRANSFER
 
 Op: `>`
 
-Description:  This transaction changes the public key hash that owns the name in
+Description: This transaction changes the public key hash that owns the name in
 BNS.
 
 Example: [7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24](https://www.blocktrail.com/BTC/tx/7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24)
 
 `OP_RETURN` wire format:
+
 ```
     0     2  3    4                   20              36
     |-----|--|----|-------------------|---------------|
@@ -201,31 +215,32 @@ Example: [7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24](http
 
 Inputs:
 
-* Owner `scriptSig`
-* Payment `scriptSig`'s
+- Owner `scriptSig`
+- Payment `scriptSig`'s
 
 Outputs:
 
-* `OP_RETURN` payload
-* new name owner's `scriptPubkey`
-* old name owner's `scriptPubkey`
-* payment `scriptPubkey` change
+- `OP_RETURN` payload
+- new name owner's `scriptPubkey`
+- old name owner's `scriptPubkey`
+- payment `scriptPubkey` change
 
 Notes:
 
-* The `keep data?` byte controls whether or not the name's 20-byte value is preserved.  This value is either `>` to preserve it, or `~` to delete it.
+- The `keep data?` byte controls whether or not the name's 20-byte value is preserved. This value is either `>` to preserve it, or `~` to delete it.
 
 ### NAME_REVOKE
 
 Op: `~`
 
-Description:  This transaction destroys a registered name.  Its name state value
+Description: This transaction destroys a registered name. Its name state value
 in BNS will be cleared, and no further transactions will be able to affect the
 name until it expires (if its namespace allows it to expire at all).
 
 Example: [eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f](https://www.blocktrail.com/BTC/tx/eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f)
 
 `OP_RETURN` wire format:
+
 ```
     0    2  3                             39
     |----|--|-----------------------------|
@@ -234,28 +249,28 @@ Example: [eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f](http
 
 Inputs:
 
-* owner `scriptSig`
-* payment `scriptSig`'s
+- owner `scriptSig`
+- payment `scriptSig`'s
 
 Outputs:
 
-* `OP_RETURN` payload
-* owner `scriptPubkey`
-* payment `scriptPubkey` change
+- `OP_RETURN` payload
+- owner `scriptPubkey`
+- payment `scriptPubkey` change
 
 ### ANNOUNCE
 
 Op: `#`
 
-Description:  This transaction does not affect any names in BNS, but it allows a
-user to send a message to other BNS nodes.  In order for the message to be
+Description: This transaction does not affect any names in BNS, but it allows a
+user to send a message to other BNS nodes. In order for the message to be
 received, the following must be true:
 
-* The sender must have a BNS name
-* The BNS nodes must list the sender's BNS name as being a "trusted message
+- The sender must have a BNS name
+- The BNS nodes must list the sender's BNS name as being a "trusted message
   sender"
-* The message must have already been propagated through the [Atlas
-  network]({{ site.baseurl }}/core/atlas/overview.html).  This transaction references it by content hash.
+- The message must have already been propagated through the [Atlas
+  network]({{ site.baseurl }}/core/atlas/overview.html). This transaction references it by content hash.
 
 `OP_RETURN` wire format:
 
@@ -267,27 +282,28 @@ received, the following must be true:
 
 Inputs:
 
-* The payer `scriptSig`'s
+- The payer `scriptSig`'s
 
 Outputs:
 
-* `OP_RETURN` payload
-* change `scriptPubKey`
+- `OP_RETURN` payload
+- change `scriptPubKey`
 
 Notes:
 
-* The payer key should be an owner key for an existing name, since Blockstack users can subscribe to announcements from specific name-owners.
+- The payer key should be an owner key for an existing name, since Blockstack users can subscribe to announcements from specific name-owners.
 
 ### NAMESPACE_PREORDER
 
 Op: `*`
 
-Description:  This transaction announces the *hash* of a new namespace.  It is the
+Description: This transaction announces the _hash_ of a new namespace. It is the
 first of three transactions that must be sent to create a namespace.
 
 Example: [5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28](https://www.blocktrail.com/BTC/tx/5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28)
 
 `OP_RETURN` wire format:
+
 ```
    0     2   3                                         23               39
    |-----|---|-----------------------------------------|----------------|
@@ -296,28 +312,29 @@ Example: [5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28](http
 
 Inputs:
 
-* Namespace payer `scriptSig`
+- Namespace payer `scriptSig`
 
 Outputs:
 
-* `OP_RETURN` payload
-* Namespace payer `scriptPubkey` change address
-* `p2pkh` script to the burn address `1111111111111111111114oLvT2`, whose public key hash is 0x00000000000000000000000000000000
+- `OP_RETURN` payload
+- Namespace payer `scriptPubkey` change address
+- `p2pkh` script to the burn address `1111111111111111111114oLvT2`, whose public key hash is 0x00000000000000000000000000000000
 
 Notes:
 
-* The `reveal_addr` field is the address of the namespace revealer public key.  The revealer private key will be used to generate `NAME_IMPORT` transactions.
+- The `reveal_addr` field is the address of the namespace revealer public key. The revealer private key will be used to generate `NAME_IMPORT` transactions.
 
 ### NAMESPACE_REVEAL
 
 Op: `&`
 
-Description:  This transaction reveals the namespace ID and namespace rules
+Description: This transaction reveals the namespace ID and namespace rules
 for a previously-anounced namespace hash (sent by a previous `NAMESPACE_PREORDER`).
 
 Example: [ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32](https://www.blocktrail.com/BTC/tx/ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32)
 
 `OP_RETURN` wire format:
+
 ```
    0     2   3        7     8     9    10   11   12   13   14    15    16    17       18        20                        39
    |-----|---|--------|-----|-----|----|----|----|----|----|-----|-----|-----|--------|----------|-------------------------|
@@ -328,57 +345,58 @@ Example: [ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32](http
 
 Inputs:
 
-* Namespace payer `scriptSig`s
+- Namespace payer `scriptSig`s
 
 Outputs:
 
-* `OP_RETURN` payload
-* namespace revealer `scriptPubkey`
-* namespace payer change `scriptPubkey`
+- `OP_RETURN` payload
+- namespace revealer `scriptPubkey`
+- namespace payer change `scriptPubkey`
 
 Notes:
 
-* This transaction must be sent within 1 day of the `NAMESPACE_PREORDER`
-* The second output (with the namespace revealer) **must** be a `p2pkh` script
-* The address of the second output **must** be the `reveal_addr` in the `NAMESPACE_PREORDER`
+- This transaction must be sent within 1 day of the `NAMESPACE_PREORDER`
+- The second output (with the namespace revealer) **must** be a `p2pkh` script
+- The address of the second output **must** be the `reveal_addr` in the `NAMESPACE_PREORDER`
 
 Pricing:
 
 The rules for a namespace are as follows:
 
-   * a name can fall into one of 16 buckets, measured by length.  Bucket 16 incorporates all names at least 16 characters long.
-   * the pricing structure applies a multiplicative penalty for having numeric characters, or punctuation characters.
-   * the price of a name in a bucket is ((coeff) * (base) ^ (bucket exponent)) / ((numeric discount multiplier) * (punctuation discount multiplier))
+- a name can fall into one of 16 buckets, measured by length. Bucket 16 incorporates all names at least 16 characters long.
+- the pricing structure applies a multiplicative penalty for having numeric characters, or punctuation characters.
+- the price of a name in a bucket is ((coeff) _ (base) ^ (bucket exponent)) / ((numeric discount multiplier) _ (punctuation discount multiplier))
 
 Example:
-* base = 10
-* coeff = 2
-* nonalpha discount: 10
-* no-vowel discount: 10
-* buckets 1, 2: 9
-* buckets 3, 4, 5, 6: 8
-* buckets 7, 8, 9, 10, 11, 12, 13, 14: 7
-* buckets 15, 16+:
+
+- base = 10
+- coeff = 2
+- nonalpha discount: 10
+- no-vowel discount: 10
+- buckets 1, 2: 9
+- buckets 3, 4, 5, 6: 8
+- buckets 7, 8, 9, 10, 11, 12, 13, 14: 7
+- buckets 15, 16+:
 
 With the above example configuration, the following are true:
 
-* The price of "john" would be 2 * 10^8, since "john" falls into bucket 4 and has no punctuation or numerics.
-* The price of "john1" would be 2 * 10^6, since "john1" falls into bucket 5 but has a number (and thus receives a 10x discount)
-* The price of "john_1" would be 2 * 10^6, since "john_1" falls into bucket 6 but has a number and punctuation (and thus receives a 10x discount)
-* The price of "j0hn_1" would be 2 * 10^5, since "j0hn_1" falls into bucket 6 but has a number and punctuation and lacks vowels (and thus receives a 100x discount)
-
+- The price of "john" would be 2 \* 10^8, since "john" falls into bucket 4 and has no punctuation or numerics.
+- The price of "john1" would be 2 \* 10^6, since "john1" falls into bucket 5 but has a number (and thus receives a 10x discount)
+- The price of "john_1" would be 2 \* 10^6, since "john_1" falls into bucket 6 but has a number and punctuation (and thus receives a 10x discount)
+- The price of "j0hn_1" would be 2 \* 10^5, since "j0hn_1" falls into bucket 6 but has a number and punctuation and lacks vowels (and thus receives a 100x discount)
 
 ### NAME_IMPORT
 
 Op: `;`
 
-Description:  This transaction registers a name and some name state into a
-namespace that has been revealed, but not been launched.  Only the namespace
-creator can import names.  See the [namespace creation section]({{ site.baseurl }}/core/naming/namespaces.html) for details.
+Description: This transaction registers a name and some name state into a
+namespace that has been revealed, but not been launched. Only the namespace
+creator can import names. See the [namespace creation section]({{ site.baseurl }}/core/naming/namespaces.html) for details.
 
 Example: [c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312](https://www.blocktrail.com/BTC/tx/c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312)
 
 `OP_RETURN` wire format:
+
 ```
     0    2  3                             39
     |----|--|-----------------------------|
@@ -387,33 +405,34 @@ Example: [c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312](http
 
 Inputs:
 
-* The namespace reveal `scriptSig` (with the namespace revealer's public key), or one of its first 300 extended public keys
-* Any payment inputs
+- The namespace reveal `scriptSig` (with the namespace revealer's public key), or one of its first 300 extended public keys
+- Any payment inputs
 
 Outputs:
 
-* `OP_RETURN` payload
-* recipient `scriptPubKey`
-* zone file hash (using the 20-byte hash in a standard `p2pkh` script)
-* payment change `scriptPubKey`
+- `OP_RETURN` payload
+- recipient `scriptPubKey`
+- zone file hash (using the 20-byte hash in a standard `p2pkh` script)
+- payment change `scriptPubKey`
 
 Notes:
 
-* These transactions can only be sent between the `NAMESPACE_REVEAL` and `NAMESPACE_READY`.
-* The first `NAME_IMPORT` transaction **must** have a `scriptSig` input that matches the `NAMESPACE_REVEAL`'s second output (i.e. the reveal output).
-* Any subsequent `NAME_IMPORT` transactions **may** have a `scriptSig` input whose public key is one of the first 300 extended public keys from the `NAMESPACE_REVEAL`'s `scriptSig` public key.
+- These transactions can only be sent between the `NAMESPACE_REVEAL` and `NAMESPACE_READY`.
+- The first `NAME_IMPORT` transaction **must** have a `scriptSig` input that matches the `NAMESPACE_REVEAL`'s second output (i.e. the reveal output).
+- Any subsequent `NAME_IMPORT` transactions **may** have a `scriptSig` input whose public key is one of the first 300 extended public keys from the `NAMESPACE_REVEAL`'s `scriptSig` public key.
 
 ### NAMESPACE_READY
 
 Op: `!`
 
-Description:  This transaction launches a namesapce.  Only the namespace creator
-can send this transaction.  Once sent, anyone can register names in the
+Description: This transaction launches a namesapce. Only the namespace creator
+can send this transaction. Once sent, anyone can register names in the
 namespace.
 
 Example: [2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032](https://www.blocktrail.com/BTC/tx/2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032)
 
 `OP_RETURN` wire format:
+
 ```
 
    0     2  3  4           23
@@ -422,24 +441,28 @@ Example: [2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032](http
 ```
 
 Inputs:
-* Namespace revealer's `scriptSig`s
+
+- Namespace revealer's `scriptSig`s
 
 Outputs:
-* `OP_RETURN` payload
-* Change output to the namespace revealer's `p2pkh` script
+
+- `OP_RETURN` payload
+- Change output to the namespace revealer's `p2pkh` script
 
 Notes:
-* This transaction must be sent within 1 year of the corresponding `NAMESPACE_REVEAL` to be accepted.
+
+- This transaction must be sent within 1 year of the corresponding `NAMESPACE_REVEAL` to be accepted.
 
 ### TOKEN_TRANSFER
 
 Op: `$`
 
-Description:  This transaction transfers tokens from one account to another.  Only `STACKS` tokens can be transferred at this time.  The transaction encodes the number of *micro-Stacks* to send.
+Description: This transaction transfers tokens from one account to another. Only `STACKS` tokens can be transferred at this time. The transaction encodes the number of _micro-Stacks_ to send.
 
 Example: [093983ca71a6a9dd041c0bdb8b3012824d726ee26fe51da8335a06e8a08c2798](https://www.blocktrail.com/BTC/tx/093983ca71a6a9dd041c0bdb8b3012824d726ee26fe51da8335a06e8a08c2798)
 
 `OP_RETURN` wire format:
+
 ```
     0     2  3              19         38          46                        80
     |-----|--|--------------|----------|-----------|-------------------------|
@@ -447,21 +470,24 @@ Example: [093983ca71a6a9dd041c0bdb8b3012824d726ee26fe51da8335a06e8a08c2798](http
 ```
 
 Inputs:
-* Sender's scriptSig's
+
+- Sender's scriptSig's
 
 Outputs:
-* `OP_RETURN` payload
-* Recipient scriptPubKey (encodes the address of the receiving account)
-* Change address for the sender
+
+- `OP_RETURN` payload
+- Recipient scriptPubKey (encodes the address of the receiving account)
+- Change address for the sender
 
 Notes:
-* The `amount` field is an 8-byte litte-endian number that encodes the number of micro-Stacks.
-* The `token_type` field must be `STACKS`.  All other unused bytes in this field must be `\x00`.
-* The `scratch area` field is optional -- it can be up to 34 bytes, and include any data you want.
+
+- The `amount` field is an 8-byte litte-endian number that encodes the number of micro-Stacks.
+- The `token_type` field must be `STACKS`. All other unused bytes in this field must be `\x00`.
+- The `scratch area` field is optional -- it can be up to 34 bytes, and include any data you want.
 
 ## Method Glossary
 
-Some hashing primitives are used to construct the wire-format representation of each name operation.  They are enumerated here:
+Some hashing primitives are used to construct the wire-format representation of each name operation. They are enumerated here:
 
 ```
 B40_REGEX = '^[a-z0-9\-_.+]*$'

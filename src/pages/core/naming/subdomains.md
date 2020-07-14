@@ -1,6 +1,7 @@
 ---
-description: "Blockstack naming service (BNS)"
+description: 'Blockstack naming service (BNS)'
 ---
+
 # BNS Subdomains
 
 This section explains BNS subdomains and provides instructions for methods
@@ -9,35 +10,35 @@ you can use to work with them. The following topics are included:
 # Overview of subdomains
 
 BNS names are strongly-owned because the owner of its private key can generate
-valid transactions that update its zone file hash and owner.  However, this comes at the
+valid transactions that update its zone file hash and owner. However, this comes at the
 cost of requiring a name owner to pay for the underlying transaction in the
-blockchain.  Moreover, this approach limits the rate of BNS name registrations
+blockchain. Moreover, this approach limits the rate of BNS name registrations
 and operations to the underlying blockchain's transaction bandwidth.
 
-BNS overcomes this with subdomains.  A **BNS subdomain** is a type of BNS name whose state
+BNS overcomes this with subdomains. A **BNS subdomain** is a type of BNS name whose state
 and owner are stored outside of the blockchain, but whose existence and
 operation history are anchored to the
-blockchain.  In the example table in the [Resolving BNS
+blockchain. In the example table in the [Resolving BNS
 Names](#resolving-bns-names) section, the names `cicero.res_publica.id` and
 `podsaveamerica.verified.podcast` are subdomains.
 
 Like their on-chain counterparts, subdomains are globally
-unique, strongly-owned, and human-readable.  BNS gives them their own name state
+unique, strongly-owned, and human-readable. BNS gives them their own name state
 and public keys.
 
 Unlike on-chain names, subdomains can be created and managed
 cheaply, because they are broadcast to the
-BNS network in batches.  A single blockchain transaction can send up to 120
+BNS network in batches. A single blockchain transaction can send up to 120
 subdomain operations.
 
 This is achieved by storing subdomain records in the [Atlas Network]({{ site.baseurl }}/core/atlas/overview.html).
 An on-chain name owner broadcasts subdomain operations by encoding them as
-`TXT` records within a DNS zone file.  To broadcast the zone file,
+`TXT` records within a DNS zone file. To broadcast the zone file,
 the name owner sets the new zone file hash with a `NAME_UPDATE` transaction and
-replicates the zone file via Atlas.  This, in turn, replicates all subdomain
+replicates the zone file via Atlas. This, in turn, replicates all subdomain
 operations it contains, and anchors the set of subdomain operations to
-an on-chain transaction.  The BNS node's consensus rules ensure that only
-valid subdomain operations from *valid* `NAME_UPDATE` transactions will ever be
+an on-chain transaction. The BNS node's consensus rules ensure that only
+valid subdomain operations from _valid_ `NAME_UPDATE` transactions will ever be
 stored.
 
 For example, the name `verified.podcast` once wrote the zone file hash `247121450ca0e9af45e85a82e61cd525cd7ba023`,
@@ -80,9 +81,9 @@ file for `verified.podcast`.
 ## Subdomain Lifecycle
 
 Note that `1yeardaily.verified.podcast` has a different public key
-hash (address) than `verified.podcast`.  A BNS node will only process a
+hash (address) than `verified.podcast`. A BNS node will only process a
 subsequent subdomain operation on `1yeardaily.verified.podcast` if it includes a
-signature from this address's private key.  `verified.podcast` cannot generate
+signature from this address's private key. `verified.podcast` cannot generate
 updates; only the owner of `1yeardaily.verified.podcast can do so`.
 
 The lifecycle of a subdomain and its operations is shown in Figure 2.
@@ -122,17 +123,17 @@ However, any on-chain name ("jude.id" in this case) can broadcast a subdomain
 update for "cicero.res_publica.id".
 ```
 
-Subdomain operations are ordered by sequence number, starting at 0.  Each new
+Subdomain operations are ordered by sequence number, starting at 0. Each new
 subdomain operation must include:
 
-* The next sequence number
-* The public key that hashes to the previous subdomain transaction's address
-* A signature from the corresponding private key over the entire subdomain
+- The next sequence number
+- The public key that hashes to the previous subdomain transaction's address
+- A signature from the corresponding private key over the entire subdomain
   operation.
 
 If two correctly-signed but conflicting subdomain operations are discovered
 (i.e. they have the same sequence number), the one that occurs earlier in the
-blockchain's history is accepted.  Invalid subdomain operations are ignored.
+blockchain's history is accepted. Invalid subdomain operations are ignored.
 
 Combined, this ensures that a BNS node with all of the zone files with a given
 subdomain's operations will be able to determine the valid sequence of
@@ -192,23 +193,24 @@ $ curl https://core.blockstack.org/v1/addresses/bitcoin/1PwztPFd1s2STMv4Ntq6UPBd
 ## Subdomain Creation and Management
 
 Unlike an on-chain name, a subdomain owner needs an on-chain name owner's help
-to broadcast their subdomain operations.  In particular:
-* A subdomain-creation transaction can only be processed by the owner of the on-chain
-name that shares its suffix.  For example, only the owner of `res_publica.id`
-can broadcast subdomain-creation transactions for subdomain names ending in
-`.res_publica.id`.
-* A subdomain-transfer transaction can only be broadcast by the owner of the
-on-chain name that created it.  For example, the owner of
-`cicero.res_publica.id` needs the owner of `res_publica.id` to broadcast a
-subdomain-transfer transaction to change `cicero.res_publica.id`'s public key.
-* In order to send a subdomain-creation or subdomain-transfer, all
+to broadcast their subdomain operations. In particular:
+
+- A subdomain-creation transaction can only be processed by the owner of the on-chain
+  name that shares its suffix. For example, only the owner of `res_publica.id`
+  can broadcast subdomain-creation transactions for subdomain names ending in
+  `.res_publica.id`.
+- A subdomain-transfer transaction can only be broadcast by the owner of the
+  on-chain name that created it. For example, the owner of
+  `cicero.res_publica.id` needs the owner of `res_publica.id` to broadcast a
+  subdomain-transfer transaction to change `cicero.res_publica.id`'s public key.
+- In order to send a subdomain-creation or subdomain-transfer, all
   of an on-chain name owner's zone files must be present in the Atlas network.
-  This lets the BNS node prove the *absence* of any conflicting subdomain-creation and
-subdomain-transfer operations when processing new zone files.
-* A subdomain update transaction can be broadcast by *any* on-chain name owner,
-  but the subdomain owner needs to find one who will cooperate.  For example,
-the owner of `verified.podcast` can broadcast a subdomain-update transaction
-created by the owner of `cicero.res_publica.id`.
+  This lets the BNS node prove the _absence_ of any conflicting subdomain-creation and
+  subdomain-transfer operations when processing new zone files.
+- A subdomain update transaction can be broadcast by _any_ on-chain name owner,
+  but the subdomain owner needs to find one who will cooperate. For example,
+  the owner of `verified.podcast` can broadcast a subdomain-update transaction
+  created by the owner of `cicero.res_publica.id`.
 
 That said, to create a subdomain, the subdomain owner generates a
 subdomain-creation operation for their desired name
@@ -217,26 +219,26 @@ The on-chain name owner then uses Atlas to
 broadcast it to all other BNS nodes.
 
 Once created, a subdomain owner can use any on-chain name owner to broadcast a
-subdomain-update operation.  To do so, they generate and sign the requisite
+subdomain-update operation. To do so, they generate and sign the requisite
 subdomain operation and give it to an on-chain name owner, who then packages it
 with other subdomain operations into a DNS zone file
 and sends them all out on the Atlas network.
 
 If the subdomain owner wants to change the address of their subdomain, they need
 to sign a subdomain-transfer operation and give it to the on-chain name owner
-who created the subdomain.  They then package it into a zone file and broadcast
+who created the subdomain. They then package it into a zone file and broadcast
 it.
 
 ## Subdomain Registrars
 
 Because subdomain names are cheap, developers may be inclined to run
-subdomain registrars on behalf of their applications.  For example,
+subdomain registrars on behalf of their applications. For example,
 the name `personal.id` is used to register Blockstack application users without
 requiring them to spend any Bitcoin.
 
 We supply a reference
 implementation of a [BNS Subdomain Registrar](https://github.com/blockstack/subdomain-registrar)
-to help developers broadcast subdomain operations.  Users would still own their
+to help developers broadcast subdomain operations. Users would still own their
 subdomain names; the registrar simply gives developers a convenient way for them
 to register and manage them in the context of a particular application.
 Please see the [tutorial on running a subdomain registrar]({{ site.baseurl }}/core/naming/tutorial_subdomains.html) for

@@ -1,21 +1,18 @@
 ---
-
-
 ---
+
 # Radiks the data indexer
 
-The Blockstack Radiks feature enables Blockstack decentralized applications (DApps) to index and store across data belonging to multiple users. Radiks works with Blockstack's Gaia Storage System.  Using Radiks, you can build multi-player DApps that:
+The Blockstack Radiks feature enables Blockstack decentralized applications (DApps) to index and store across data belonging to multiple users. Radiks works with Blockstack's Gaia Storage System. Using Radiks, you can build multi-player DApps that:
 
 - index, store, and query application data
 - query a user's publicly saved data
 - display real-time updates that reflect in progress changes
 - support collaboration among sets of users
 
-  
-
 ## Why use Radiks?
 
-Many applications serve data that users create to share publicly with others. Facebook, Twitter, and Instagram are examples of such applications. Decentralized applications that want to create comparable multi-user experiences must ensure that anything a user creates for public sharing is still under control of the creator in the user's Gaia storage.  
+Many applications serve data that users create to share publicly with others. Facebook, Twitter, and Instagram are examples of such applications. Decentralized applications that want to create comparable multi-user experiences must ensure that anything a user creates for public sharing is still under control of the creator in the user's Gaia storage.
 
 For example, if Twitter wanted to be a decentralized application while still having many different users creating their own tweets, those tweets would be stored in each user's own Gaia storage. In such a situation, Twitter still needs a way to keep track of everyone's tweets, display those tweets in user timelines, and perform searches across the platform. Radiks exists to support these kinds of scenarios. It allows applications to query across multiple user data using complicated queries like text search, joins, and filters.
 
@@ -33,9 +30,9 @@ Radiks can store both public and sensitive, non-public data since all data is en
 
 ## How Radiks authorizes writes
 
-Radiks must ensure that the user is writing to their own data. To ensure this, Radiks creates and manages *signing keys*. These keys sign all writes that a user performs. Radiks server-validates all signatures before performing a write. This guarantees that a user is not able to overwrite another user's data.
+Radiks must ensure that the user is writing to their own data. To ensure this, Radiks creates and manages _signing keys_. These keys sign all writes that a user performs. Radiks server-validates all signatures before performing a write. This guarantees that a user is not able to overwrite another user's data.
 
-A Radiks server is also built to support writes in a collaborative but private situation. For example, consider a collaborative document editing application, where users can create organizations and invite users to that organization. All users in that organization should have read and write privileges to the organization data. Thus, these organizations will have a single shared key that is used to sign and encrypt data. 
+A Radiks server is also built to support writes in a collaborative but private situation. For example, consider a collaborative document editing application, where users can create organizations and invite users to that organization. All users in that organization should have read and write privileges to the organization data. Thus, these organizations will have a single shared key that is used to sign and encrypt data.
 
 When an organization administrator needs to remove a user from the group, they are expected to revoke the previous key and create a new one. Radiks is aware of these relationships, and will only support writes that are signed with the currently active key related to an organization.
 
@@ -65,5 +62,5 @@ Although Radiks applications rely on a centrally-hosted database, an application
   </tr>
 </table>
 
-If you are not familiar with Gaia, see 
+If you are not familiar with Gaia, see
 [read the Gaia documentation](({{site.baseurl}}/storage/overview.html).

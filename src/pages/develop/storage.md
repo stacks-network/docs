@@ -1,7 +1,6 @@
 ---
-
-
 ---
+
 # Guide to Blockstack Storage
 
 The Blockstack Platform stores application data in the Gaia Storage System. Transactional metadata is stored on the Blockstack blockchain and user application data is stored in Gaia storage. Storing data off of the blockchain ensures that Blockstack applications can provide users with high performance and high availability for data reads and writes without introducing central trust parties.
@@ -11,7 +10,6 @@ The Blockstack Platform stores application data in the Gaia Storage System. Tran
 ## How data is stored
 
 Gaia storage is a key-value store.
-
 
 ## Creating a file
 
@@ -82,6 +80,7 @@ var userSession = new UserSession()
 ```
 
 ## Reading another user's unencrypted file
+
 In order for files to be publicly readable, the app must request
 the `publish_data` scope during authentication.
 
@@ -103,7 +102,6 @@ userSession.putFile("/hello.txt", "hello world!", options)
 
 You use the <a href="https://blockstack.github.io/blockstack.js/classes/usersession.html#deletefile" target="_blank">UserSession.deleteFile</a> from the application's data store.
 
-
 ```JavaScript
 
 var userSession = new UserSession()
@@ -115,4 +113,5 @@ var userSession = new UserSession()
 ```
 
 ## Related Information
+
 To learn more about the guarantees provided by Gaia, see [Storage write and read]({{ site.baseurl }}/storage/write-to-read.html#)

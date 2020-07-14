@@ -1,8 +1,7 @@
 ---
-
-description: "Storing user data with Blockstack"
-
+description: 'Storing user data with Blockstack'
 ---
+
 # blockstack_cli reference
 
 {% include commandline.md %}

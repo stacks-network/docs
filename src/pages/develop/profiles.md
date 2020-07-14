@@ -1,7 +1,6 @@
 ---
-
-
 ---
+
 # Guide to Blockstack Profiles
 
 You can use the blockstack.js library to create and register an Blockstack username on the Stacks blockchain. This section describes the `Profile` object and contains the following topics:
@@ -36,45 +35,45 @@ Follow these steps to create and register a profile for a Blockstack username (`
 
 ```es6
 const profileOfNaval = {
-  "@context": "http://schema.org/",
-  "@type": "Person",
-  "name": "Naval Ravikant",
-  "description": "Co-founder of AngelList"
-}
+  '@context': 'http://schema.org/',
+  '@type': 'Person',
+  name: 'Naval Ravikant',
+  description: 'Co-founder of AngelList',
+};
 ```
 
 ## Sign a profile as a single token
 
 ```es6
-import { makeECPrivateKey, wrapProfileToken, Person } from 'blockstack'
+import { makeECPrivateKey, wrapProfileToken, Person } from 'blockstack';
 
-const privateKey = makeECPrivateKey()
+const privateKey = makeECPrivateKey();
 
-const person = new Person(profileOfNaval)
-const token = person.toToken(privateKey)
-const tokenFile = [wrapProfileToken(token)]
+const person = new Person(profileOfNaval);
+const token = person.toToken(privateKey);
+const tokenFile = [wrapProfileToken(token)];
 ```
 
 ## Verify an individual token
 
 ```js
-import { verifyProfileToken } from 'blockstack'
+import { verifyProfileToken } from 'blockstack';
 
 try {
-  const decodedToken = verifyProfileToken(tokenFile[0].token, publicKey)
-} catch(e) {
-  console.log(e)
+  const decodedToken = verifyProfileToken(tokenFile[0].token, publicKey);
+} catch (e) {
+  console.log(e);
 }
 ```
 
 ## Recover a profile from a token file
 
 ```js
-const recoveredProfile = Person.fromToken(tokenFile, publicKey)
+const recoveredProfile = Person.fromToken(tokenFile, publicKey);
 ```
 
 ## Validate profile schema
 
 ```js
-const validationResults = Person.validateSchema(recoveredProfile)
+const validationResults = Person.validateSchema(recoveredProfile);
 ```
