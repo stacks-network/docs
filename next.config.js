@@ -2,14 +2,41 @@ const withMdxEnhanced = require('next-mdx-enhanced');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
+const remark = require('remark');
+const strip = require('strip-markdown');
 
 const remarkPlugins = [
+  require('./src/lib/remark-paragraph-alerts'),
   require('remark-external-links'),
   require('remark-emoji'),
   require('remark-images'),
   require('remark-unwrap-images'),
   require('remark-slug'),
 ];
+
+const processMdxContent = mdxContent => {
+  const regex = /\n(#+)(.*)/gm;
+  const found = mdxContent.match(regex);
+  const getLevel = string => string.split('#');
+  const headings =
+    found && found.length
+      ? found.map(f => {
+          const md = f.split('# ')[1];
+          let content = md;
+          remark()
+            .use(strip)
+            .process(md, (err, file) => {
+              if (err) throw err;
+              content = file.contents.toString().trim();
+            });
+          const level = getLevel(f).length;
+          return { content, level };
+        })
+      : [];
+  return {
+    headings,
+  };
+};
 
 module.exports = withBundleAnalyzer(
   withMdxEnhanced({
@@ -18,23 +45,13 @@ module.exports = withBundleAnalyzer(
     fileExtensions: ['mdx', 'md'],
     remarkPlugins,
     extendFrontMatter: {
-      process: mdxContent => {
-        const regex = /\n(#+)(.*)/gm;
-        const found = mdxContent.match(regex);
-        const headings = found && found.length ? found.map(f => f.split('# ')[1]) : [];
-        return {
-          headings,
-        };
-      },
+      process: processMdxContent,
     },
   })({
     experimental: {
       modern: true,
       polyfillsOptimization: true,
       jsconfigPaths: true,
-    },
-    env: {
-      FATHOM_ID: 'XHIKWSQD',
     },
     pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
     webpack: (config, options) => {

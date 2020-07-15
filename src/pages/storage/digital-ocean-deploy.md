@@ -78,7 +78,7 @@ On your local workstation, create a bucket policy to grant read permission on yo
 2. <a href="https://www.digitalocean.com/docs/spaces/resources/s3cmd/" target="_blank">Install and configure the <strong>s3cmd</strong></a>.
 3. In the current directory, use the `touch` command to create a file called `gaiahub-policy`.
 
-   ```
+   ```bash
    touch gaiahub-policy
    ```
 
@@ -396,11 +396,11 @@ You should have the console open as `root` on your Droplet. In this section, you
       "json": true
     }
   }
-  ```
+````
 
 15. Save your config file and close the `vim` editor.
 
-  The system returns you back to the prompt.
+The system returns you back to the prompt.
 
 ## Task 8: Run the Gaia image with Docker
 
@@ -408,11 +408,12 @@ While your console is still in the the `gaia/hub` folder, build the `gaia.hub` i
 
 1. Enter the following `docker` command at the console command line.
 
-````
+```
 
 docker build -t gaia.hub .
 
 ```
+
 This build users the `Dockerfile` already in the `gaia/hub` folder. The output of the command is similar to the following:
 
 ```
@@ -435,13 +436,13 @@ Removing intermediate container ae459cc0865b
 Successfully built b1ced6c39784
 Successfully tagged gaia.hub:latest
 
-````
+```
 
 2. Run your Gaia hub image.
 
 ```bash
 docker run --restart=always -v ~/gaia/hub/config.json:/src/hub/config.json -p 3000:3000 -e CONFIG_PATH=/src/hub/config.json gaia.hub
-````
+```
 
 This runs your Gaia hub on port `3000`. If everything runs successfully, the last line outputted from this command should be:
 

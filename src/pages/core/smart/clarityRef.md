@@ -2,6 +2,8 @@
 description: 'Clarity: Language Reference'
 ---
 
+import { ClarityKeywordReference, ClarityFunctionReference } from '@components/clarity-ref'
+
 # Clarity Language Reference
 
 This file contains the reference for the Clarity language.
@@ -61,22 +63,25 @@ called smart contract function.
 
 We distinguish 2 different types of `contract-call?`:
 
-- Static dispatch: the callee is a known, invariant contract available
-  on-chain when the caller contract is deployed. In this case, the
-  callee's principal is provided as the first argument, followed by the
-  name of the method and its arguments:
+### Static dispatch
 
-```scheme
+The callee is a known, invariant contract available
+on-chain when the caller contract is deployed. In this case, the
+callee's principal is provided as the first argument, followed by the
+name of the method and its arguments:
+
+```clarity
 (contract-call?
     .registrar
     register-name
     name-to-register)
 ```
 
-- Dynamic dispatch: the callee is passed as an argument, and typed
-  as a trait reference (`<A>`).
+### Dynamic dispatch
 
-```scheme
+The callee is passed as an argument, and typed as a trait reference (`<A>`).
+
+```clarity
 (define-public (swap (token-a <can-transfer-tokens>)
                      (amount-a uint)
                      (owner-a principal)
@@ -90,14 +95,14 @@ We distinguish 2 different types of `contract-call?`:
 
 Traits can either be locally defined:
 
-```scheme
+```clarity
 (define-trait can-transfer-tokens (
     (transfer-from? (principal principal uint) (response uint)))
 ```
 
 Or imported from an existing contract:
 
-```scheme
+```clarity
 (use-trait can-transfer-tokens
     .contract-defining-trait.can-transfer-tokens)
 ```
@@ -107,7 +112,7 @@ They can either be "compatible" with a trait by defining methods
 matching some of the methods defined in a trait, or explicitely declare
 conformance using the `impl-trait` statement:
 
-```scheme
+```clarity
 (impl-trait .contract-defining-trait.can-transfer-tokens)
 ```
 
@@ -129,55 +134,8 @@ The following limitations are imposed on contract calls:
 
 ## Keyword reference
 
-<!-- TODO: make work with react  -->
-<!-- {% capture keyword_list %} -->
-<!-- {% for entry in site.data.clarityRef.keywords %} -->
-<!-- {{ entry.name }}||{{ entry.output_type }}||{{ entry.description }}||{{ entry.example }} -->
-<!-- {% if forloop.last == false %}::{% endif%} -->
-<!-- {% endfor %} -->
-<!-- {% endcapture %} -->
-<!-- {% assign keyword_array = keyword_list | split: '::' | sort %} -->
-<!-- {% for keyword in keyword_array %} -->
-<!-- {% assign keyword_vals = keyword | split: '||' %} -->
-<!-- ### {{keyword_vals[0] | lstrip | rstrip}} -->
+<ClarityKeywordReference />
 
-<!-- <code>{{keyword_vals[1] | lstrip | rstrip }}</code> -->
+## Function reference
 
-<!-- {{keyword_vals[2]}} -->
-
-<!-- **Example** -->
-
-<!-- ```cl -->
-<!-- {{keyword_vals[3] | lstrip | rstrip }} -->
-<!-- ``` -->
-<!-- <hr class="uk-divider-icon"> -->
-<!-- {% endfor %} -->
-
-<!-- ## Function reference -->
-
-<!-- {% capture function_list %} -->
-<!-- {% for entry in site.data.clarityRef.functions %} -->
-<!-- {{ entry.name }}||{{ entry.signature }}||{{ entry.input_type }}||{{ entry.output_type }}||{{ entry.description }}||{{ entry.example }} -->
-<!-- {% if forloop.last == false %}::{% endif%} -->
-<!-- {% endfor %} -->
-<!-- {% endcapture %} -->
-<!-- {% assign function_array = function_list | split: '::' | sort %} -->
-<!-- {% for function in function_array %} -->
-<!-- {% assign function_vals = function | split: '||' %} -->
-<!-- ### {{function_vals[0] | lstrip | rstrip}} -->
-
-<!-- **Syntax** -->
-<!-- ```{{function_vals[1] | lstrip | rstrip }} ``` -->
-
-<!-- INPUT: <code>{{function_vals[2] | lstrip | rstrip }}</code><br> -->
-<!-- OUTPUT: <code>{{function_vals[3] | lstrip | rstrip }}</code> -->
-
-<!-- {{function_vals[4]}} -->
-
-<!-- **Example** -->
-
-<!-- ```cl -->
-<!-- {{function_vals[5] | lstrip | rstrip }} -->
-<!-- ``` -->
-<!-- <hr class="uk-divider-icon"> -->
-<!-- {% endfor %} -->
+<ClarityFunctionReference />

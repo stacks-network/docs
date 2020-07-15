@@ -45,6 +45,6 @@ Note some of the key Clarity language rules and limitations.
 
 ## Learning Clarity
 
-The tutorials are ordered from "beginner" to "advanced." Start with the [Hello World tutorial](tutorial.html), then learn how to construct [a counter](tutorial-counter.html), and finally, learn how to [test your smart contracts](tutorial-test.html) using Mocha.
+The tutorials are ordered from "beginner" to "advanced." Start with the [Hello World tutorial](tutorial), then learn how to construct [a counter](tutorial-counter), and finally, learn how to [test your smart contracts](tutorial-test) using Mocha.
 
-Once you've got the hang of the general workflow, environment, and language syntax, you should be ready to start writing contracts, referring to the [Clarity language reference](clarityRef.html) as you go.
+Once you've got the hang of the general workflow, environment, and language syntax, you should be ready to start writing contracts, referring to the [Clarity language reference](clarityRef) as you go.

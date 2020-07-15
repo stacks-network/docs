@@ -6,7 +6,7 @@ running locally.
 
 ### Memcached on Debian & Ubuntu:
 
-```
+```bash
 $ sudo apt-get install -y python-dev libmemcached-dev zlib1g-dev
 $ pip install pylibmc
 ```
@@ -17,7 +17,7 @@ Easiest way to install memcached on macOS is by using [Homebrew](https://brew.sh
 
 After installing Homebrew:
 
-```
+```bash
 $ brew install memcached
 $ brew install libmemcached
 $ pip install pylibmc --install-option="--with-libmemcached=/usr/local/Cellar/libmemcached/1.0.18_1/"
@@ -25,7 +25,7 @@ $ pip install pylibmc --install-option="--with-libmemcached=/usr/local/Cellar/li
 
 After installing, you can start memcached and check if it's running properly:
 
-```
+```bash
 $ memcached -d
 $ echo stats | nc localhost 11211
 ```

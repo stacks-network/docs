@@ -23,7 +23,7 @@ obtain the current principal. The following example defines a transaction
 type that transfers `amount` microSTX from the sender to a recipient if amount
 is a multiple of 10, otherwise returning a 400 error code.
 
-```scheme
+```clarity
 (define-public (transfer-to-recipient! (recipient principal) (amount uint))
   (if (is-eq (mod amount 10) 0)
       (stx-transfer? amount tx-sender recipient)
@@ -41,7 +41,7 @@ contracts A, B, and C, each with an `invoke` function such that
 When a user Bob issues a transaction that calls `A::invoke`, the value
 of `contract-caller` in each successive invoke function's body would change:
 
-```
+```clarity
 in A::invoke,  contract-caller = Bob
 in B::invoke,  contract-caller = A
 in C::invoke,  contract-caller = B
@@ -62,7 +62,7 @@ Smart contracts themselves are principals and are represented by the
 smart contract's identifier -- which is the publishing address of the
 contract _and_ the contract's name, e.g.:
 
-```scheme
+```clarity
 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR.contract-name
 ```
 
@@ -74,7 +74,7 @@ same publisher key, `SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR`, is
 publishing two contracts, `contract-A` and `contract-B`, the fully
 qualified identifier for the contracts would be:
 
-```scheme
+```clarity
 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR.contract-A
 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR.contract-B
 ```
@@ -83,7 +83,7 @@ But, in the contract source code, if the developer wishes
 to call a function from `contract-A` in `contract-B`, they can
 write
 
-```scheme
+```clarity
 (contract-call? .contract-A public-function-foo)
 ```
 
@@ -100,7 +100,7 @@ set to the contract's principal, rather than the current sender. The
 For example, a smart contract that implements something like a "token
 faucet" could be implemented as so:
 
-```scheme
+```clarity
 (define-public (claim-from-faucet)
   (if (is-none? (map-get? claimed-before (tuple (sender tx-sender))))
       (let ((requester tx-sender)) ;; set a local variable requester = tx-sender
@@ -154,7 +154,7 @@ protects users from unknowingly calling a function on a malicious
 contract that subsequently tries to call sensitive functions on
 another contract.
 
-```scheme
+```clarity
 ;;
 ;; rockets-base.clar
 ;;
@@ -239,7 +239,7 @@ around calling that function.
 For example, we can create a contract that calls `fly-ship`
 for multiple rocket-ships in a single transaction:
 
-```
+```clarity
 ;;
 ;; rockets-multi.clar
 ;;
@@ -262,7 +262,7 @@ contract, rather than the user -- it does this by updating `tx-sender`
 to the current contract principal. We can use this to, for example, create
 a smart contract rocket-ship-line:
 
-```
+```clarity
 ;;
 ;; rockets-ship-line.clar
 ;;

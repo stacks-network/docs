@@ -4,7 +4,7 @@ description: 'Blockstack naming service (BNS)'
 
 # Creating a Namespace
 
-Making a namespace is very expensive. Given the large amount of cryptocurrency at stake in name creation, developers wanting to create their own namespaces should read [Understand Namespaces]({{ site.baseurl }}/core/naming/namespaces.html) first. You should also read this document thoroughly before creating a namespace.
+Making a namespace is very expensive. Given the large amount of cryptocurrency at stake in name creation, developers wanting to create their own namespaces should read [Understand Namespaces](/core/naming/namespaces) first. You should also read this document thoroughly before creating a namespace.
 
 ## Creation process
 

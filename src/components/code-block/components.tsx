@@ -9,10 +9,8 @@ import {
   useClipboard,
   BoxProps,
 } from '@blockstack/ui';
-import 'prismjs/components/prism-jsx';
 import { CodeEditor } from '@components/code-editor';
 import { Text } from '@components/typography';
-import 'prismjs/components/prism-tsx';
 import { border } from '@common/utils';
 
 const Error = () => {

@@ -32,7 +32,7 @@ Internally, a BNS node implements a replicated name database. Each BNS node keep
 synchronized to all of the other ones in the world, so queries on one BNS node
 will be the same on other nodes. BNS nodes allow a name's owner to bind
 up to 40Kb of off-chain state to their name, which will be replicated to all
-BNS nodes via the [Atlas network]({{ site.baseurl }}/core/atlas/overview.html).
+BNS nodes via the [Atlas network](/core/atlas/overview).
 
 BNS nodes extract the name database log from an underlying blockchain (Blockstack
 Core currently uses Bitcoin, and had used Namecoin in the past).
@@ -113,11 +113,11 @@ layers in this hierarchy related to naming:
   blockchain transactions. Example names include `verified.podcast` and
   `muneeb.id`. Anyone can create a BNS name, as long as the namespace that
   contains it exists already. The state for BNS names is usually stored in the [Atlas
-  network]({{ site.baseurl }}/core/atlas/overview.html).
+  network](/core/atlas/overview).
 
 - **BNS subdomains**. These are names whose records are stored off-chain,
   but are collectively anchored to the blockchain. The ownership and state for
-  these names lives within the [Atlas network]({{ site.baseurl }}/core/atlas/overview.html). While BNS
+  these names lives within the [Atlas network](/core/atlas/overview). While BNS
   subdomains are owned by separate private keys, a BNS name owner must
   broadcast their subdomain state. Example subdomains include `jude.personal.id`
   and `podsaveamerica.verified.podcast`. Unlike BNS namespaces and names, the

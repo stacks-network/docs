@@ -11,7 +11,7 @@ description: Get Started Writing Smart Contracts with Clarity
 
 In the world of smart contracts, everything is a blockchain transaction. You use tokens in your wallet to deploy a smart contract in a transaction, and each call to that contract after it's published is a transaction, too. That means that at each step, tokens are being exchanged as transaction fees. This tutorial introduces you to this mode of programming, which transforms blockchains into powerful state machines capable of executing complex logic.
 
-Clarity, Blockstack's smart contracting language, is based on LISP and uses its parenthesized notation. Clarity is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and [decidable](https://en.wikipedia.org/wiki/Recursive_language). To learn more basics about the language, see the [Introduction to Clarity](overview.html) topic.
+Clarity, Blockstack's smart contracting language, is based on LISP and uses its parenthesized notation. Clarity is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and [decidable](https://en.wikipedia.org/wiki/Recursive_language). To learn more basics about the language, see the [Introduction to Clarity](overview) topic.
 
 By the end of this tutorial, you will:
 
@@ -26,7 +26,7 @@ By the end of this tutorial, you will:
 
 You will need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:
 
-```shell
+```bash
 node --version
 ```
 
@@ -63,7 +63,7 @@ Select **File** > **Add Folder to Workspace** in VS Code, and add the `hello-wor
 
 You will see that the program and each statement is enclosed in `()` (parentheses), and the smart contract consists of two functions.
 
-```cl
+```clarity
 (define-public (say-hi)
   (ok "hello world"))
 
@@ -156,43 +156,43 @@ The following set of commands will achieve the same goals as the above workflow.
 
 Install an early release of the new Blockstack CLI for Stacks 2.0.
 
-```shell
+```bash
 sudo npm install -g "https://github.com/blockstack/cli-blockstack#feature/stacks-2.0-tx"
 ```
 
 Create a new STX address and save keychain details, using the `-t` flag to target Testnet.
 
-```shell
+```bash
 blockstack make_keychain -t > new_keychain.txt
 ```
 
 See your new STX address.
 
-```shell
+```bash
 cat new_keychain.txt
 ```
 
 Call the Testnet faucet to get STX tokens; replace `<stx_address>` with the address you obtained in the previous step.
 
-```shell
+```bash
 curl -XPOST "https://sidecar.staging.blockstack.xyz/sidecar/v1/faucets/stx?address=<stx_address>" | json_pp
 ```
 
 Confirm faucet transaction.
 
-```shell
+```bash
 blockstack balance <stx_address> -t
 ```
 
 Deploy a contract file to Testnet.
 
-```shell
+```bash
 blockstack deploy_contract ./hello-world.clar hello-world 2000 0 <stx_private_key> -t
 ```
 
 Call the `echo-number` method of the contract.
 
-```shell
+```bash
 blockstack call_contract_func <stx_address> hello-world echo-number 2000 1 <stx_private_key> -t
 ```
 

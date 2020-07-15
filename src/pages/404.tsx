@@ -4,7 +4,7 @@ import { ContentWrapper } from '@components/content-wrapper';
 import { Text, Title, Link } from '@components/typography';
 import FileDocumentEditOutlineIcon from 'mdi-react/FileDocumentEditOutlineIcon';
 import { border } from '@common/utils';
-import { DocsLayout } from '@components/docs-layout';
+import { DocsLayout } from '@components/layouts/docs-layout';
 import Head from 'next/head';
 
 const toPx = (number: number): string => `${number}px`;

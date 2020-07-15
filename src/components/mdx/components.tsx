@@ -1,4 +1,4 @@
-import { Box, FlexProps, BoxProps, color, useClipboard, space } from '@blockstack/ui';
+import { Box, Flex, FlexProps, BoxProps, color, useClipboard, space } from '@blockstack/ui';
 import NextLink from 'next/link';
 import React, { forwardRef, Ref } from 'react';
 import LinkIcon from 'mdi-react/LinkVariantIcon';
@@ -9,7 +9,7 @@ import { useActiveHeading } from '@common/hooks/use-active-heading';
 import { Text, Title } from '@components/typography';
 import { border } from '@common/utils';
 import { css } from '@styled-system/css';
-import { useRouter } from 'next/router';
+import { getHeadingStyles, baseTypeStyles } from '@components/mdx/typography';
 
 const preProps = {
   display: 'inline-block',
@@ -160,112 +160,6 @@ export const TextItem = (props: any) => (
   </Text>
 );
 
-const baseStyles = {
-  letterSpacing: '-0.01em',
-  dispay: 'flex',
-  fontFeatureSettings: `'ss01' on`,
-};
-
-const h1 = {
-  fontWeight: 'bolder',
-  fontSize: '44px',
-  lineHeight: '52px',
-  padding: '0.05px 0',
-  ':before': {
-    content: "''",
-    marginTop: '-0.2284090909090909em',
-    display: 'block',
-    height: 0,
-  },
-  ':after': {
-    content: "''",
-    marginBottom: '-0.22840909090909092em',
-    display: 'block',
-    height: 0,
-  },
-};
-const h2 = {
-  fontWeight: 600,
-  fontSize: '27.5px',
-  lineHeight: '34px',
-  padding: '0.05px 0',
-  ':before': {
-    content: "''",
-    marginTop: '-0.25636363636363635em',
-    display: 'block',
-    height: 0,
-  },
-  ':after': {
-    content: "''",
-    marginBottom: '-0.2563636363636364em',
-    display: 'block',
-    height: 0,
-  },
-};
-
-const h3 = {
-  fontWeight: 500,
-  fontSize: '22px',
-  lineHeight: '32px',
-  padding: '0.05px 0',
-  ':before': {
-    content: "''",
-    marginTop: '-0.3659090909090909em',
-    display: 'block',
-    height: 0,
-  },
-  ':after': {
-    content: "''",
-    marginBottom: '-0.3659090909090909em',
-    display: 'block',
-    height: 0,
-  },
-};
-
-const h4 = {
-  fontSize: '19.25px',
-  lineHeight: '28px',
-  padding: '0.05px 0',
-  ':before': {
-    content: "''",
-    marginTop: '-0.36623376623376624em',
-    display: 'block',
-    height: 0,
-  },
-  ':after': {
-    content: "''",
-    marginBottom: '-0.36623376623376624em',
-    display: 'block',
-    height: 0,
-  },
-};
-const h5 = {
-  fontSize: '16px',
-  lineHeight: '28px',
-  fontWeight: 'bold',
-};
-
-const h6 = {
-  fontSize: '14px',
-  lineHeight: '28px',
-  fontWeight: 'bold',
-};
-
-const headings = {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-};
-
-const getHeadingStyles = (as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
-  return {
-    ...headings[as],
-  };
-};
-
 const LinkButton = React.memo(({ link, onClick, ...rest }: BoxProps & { link: string }) => {
   const url =
     typeof document !== 'undefined' && document.location.origin + document.location.pathname + link;
@@ -335,7 +229,7 @@ export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
       as={as}
       {...bind}
       css={css({
-        ...baseStyles,
+        ...baseTypeStyles,
         ...styles,
         color: isActive ? color('accent') : (color('text-title') as any),
         // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
@@ -347,10 +241,12 @@ export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         display: 'flex',
-        ...rest,
+        justifyContent: 'flex-start',
       })}
     >
-      {children}
+      <Box as="span" display="inline-block">
+        {children}
+      </Box>
       <AnchorOffset id={id} />
       {isActive && <Hashtag />}
       <LinkButton opacity={isHovered ? 1 : 0} onClick={handleLinkClick} link={link} />

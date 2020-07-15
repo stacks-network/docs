@@ -7,7 +7,7 @@ Step-by-step instructions for deploying a Blockstack API node on Debian or Ubunt
 - **Step 2:** Make sure you have [virtualenv installed](http://docs.python-guide.org/en/latest/dev/virtualenvs/).
   Then, setup the API:
 
-```
+```bash
 $ sudo apt-get install -y python-pip memcached rng-tools python-dev libmemcached-dev zlib1g-dev libgmp-dev libffi-dev libssl-dev
 $ sudo service memcached start
 $ sudo pip install virtualenv
@@ -34,7 +34,7 @@ For a production deployment we recommend using nginx and uwsgi:
 
 - **Step 1:** Install nginx and uWSGI:
 
-```
+```bash
 $ sudo apt-get install -y nginx
 $ sudo pip install uwsgi
 ```
@@ -46,7 +46,7 @@ $ sudo pip install uwsgi
 and edit the paths depending on the uwsgi blockstack_api socket directory (defaults to /tmp/blockstack_api.sock)
 You can test your nginx settings:
 
-```
+```bash
 $ sudo nginx -t
 ```
 

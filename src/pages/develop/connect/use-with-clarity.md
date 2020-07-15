@@ -41,7 +41,7 @@ with it.
 
 To initiate a contract call transaction, use the `openContractCall` function.
 
-```ts
+```tsx
 import { openContractCall } from '@blockstack/connect';
 
 // While in beta, you must provide this option:
@@ -76,7 +76,7 @@ await openContractCall(opts);
 When calling `openContractCall`, you need to specify a few details. Here is the exact interface that describes what
 options you have:
 
-```ts
+```tsx
 interface ContractCallOptions {
   contractAddress: string;
   functionName: string;
@@ -111,12 +111,12 @@ These types are named the same as they are in Clarity. The `value` that you pass
 - `bool` - can be "true", "false", "0" or "1"
 - `buff` - i.e. `"asdf"`
 - `principal` - This can be a contract principal, or a standard principal.
-  [Read more about principals](/core/smart/principals.html). Examples: `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ"`
+  [Read more about principals](/core/smart/principals). Examples: `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ"`
   or `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ.my-contract"`.
 
 Using these types, each argument is an object with the keys `type` and `value`. For example:
 
-```js
+```tsx
 const functionArguments = [
   {
     type: 'buff',
@@ -135,7 +135,7 @@ If you're using Typescript, these Clarity types can be imported as `ContractCall
 
 STX token transfers can be initiated with the `openSTXTransfer` function.
 
-```ts
+```tsx
 import { openSTXTransfer } from '@blockstack/connect';
 
 // While in beta, you must provide this option:
@@ -158,7 +158,7 @@ openSTXTransfer({
 
 When calling `openSTXTransfer`, you need to specify a few details. Here are the options you have:
 
-```ts
+```tsx
 interface STXTransferOptions {
   recipient: string;
   amount: string;
@@ -185,7 +185,7 @@ interface STXTransferOptions {
 
 To allow your app's users to deploy arbitrary Clarity contracts, use the `openContractDeploy` method.
 
-```ts
+```tsx
 import { openContractDeploy } from '@blockstack/connect';
 
 const codeBody = '(begin (print "hello, world"))';
@@ -208,7 +208,7 @@ openContractDeploy({
 
 Here is the interface for the options you can provide to `openContractDeploy`:
 
-```ts
+```tsx
 interface ContractDeployOptions {
   codeBody: string;
   contractName: string;

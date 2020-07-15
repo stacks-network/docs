@@ -3,39 +3,62 @@
 
 # Work with Collections (Preview)
 
-Collections is the feature designed to make data portable among Blockstack applications. Sharing is accomplished by storing a user's data in a standardized format at a known, Gaia storage location. Collections associate user data with a user's decentralized ID. When users move among apps, the same data is available to each application the user authorizes.
+Collections is the feature designed to make data portable among Blockstack applications. Sharing is accomplished by
+storing a user's data in a standardized format at a known, Gaia storage location. Collections associate user data with
+a user's decentralized ID. When users move among apps, the same data is available to each application the user authorizes.
 
-On this page, you learn what collections are and how to use them. You'll learn about the `Contact` collection in particular. The following topics are covered:
+On this page, you learn what collections are and how to use them. You'll learn about the `Contact` collection in
+particular. The following topics are covered:
 
-{% include note.html content="This is a preview release of the <code>Contact</code> collections. This release allows developers to try out the new collections functionality and we are interested in collecting feedback. Please feel free to report issues or request enhancements with collections or <code>Contacts</code> themselves on the <a href='https://github.com/blockstack/blockstack-collections/issues/new' target='_blank'>blockstack/blockstack-collections</a> repository.  If you encounter problems with <code>blockstack.js</code> you can <a href='https://github.com/blockstack/blockstack.js/issues/new' target='_blank'>file issues or request enhancements on its repo</a>." %}
+> #### Preview release
+>
+> This is a preview release of the `Contact` collections. This release allows developers to try out the new collections
+> functionality and we are interested in collecting feedback. Please feel free to report issues or request enhancements
+> with collections or `Contacts` themselves on the [blockstack-collections repository](https://github.com/blockstack/blockstack-collections/issues/new).
+>
+> If you encounter problems with `blockstack.js` you can [file issues or request enhancements on its repo](https://github.com/blockstack/blockstack.js/issues/new).
 
 ## Understand how collections work
 
-One of Blockstack's goals is to give users true data ownership by enabling _data portability_. Data portability allows users to login with their digital ID on any app and have access to the same data. For example, if a user adds a photo of a Hawaiian vacation in one app, that photo enters the user's data pool. Then, when the user opens a second app, that same photo is available to the second app because the user data, including the photo, is shared via the user's decentralized ID.
+One of Blockstack's goals is to give users true data ownership by enabling _data portability_. Data portability allows
+users to login with their digital ID on any app and have access to the same data. For example, if a user adds a photo of
+a Hawaiian vacation in one app, that photo enters the user's data pool. Then, when the user opens a second app, that
+same photo is available to the second app because the user data, including the photo, is shared via the user's
+decentralized ID.
 
-How do collections work? Blockstack builds a library containing commonly used data schemes. Developers use these classes and objects instead of creating their own, unique data schemes. Using a class from the collections library guarantees class data is stored in Gaia in that format; And, when retrieved, guarantees the same format is returned. This pre-release provides the `Contact` collection. A contact schema produces this structure:
+How do collections work? Blockstack builds a library containing commonly used data schemes. Developers use these classes
+and objects instead of creating their own, unique data schemes. Using a class from the collections library guarantees
+class data is stored in Gaia in that format; And, when retrieved, guarantees the same format is returned. This
+pre-release provides the `Contact` collection. A contact schema produces this structure:
 
-```
+```json
 {
-   "lastName": "jeffries",
-   "firstName": "sally",
-   "blockstackID": "",
-   "email": "",
-   "website": "",
-   "telephone": "",
-   "identifier": "sally jeffries"
+  "lastName": "jeffries",
+  "firstName": "sally",
+  "blockstackID": "",
+  "email": "",
+  "website": "",
+  "telephone": "",
+  "identifier": "sally jeffries"
 }
 ```
 
 A collection schema is neither validated or enforced. The goal is to incentivize collection use rather that enforce use.
 
-Because malicious apps or apps with poor security controls may damage user data, Blockstack believes collections should include the ability for users to roll-back changes. For this reason, Blockstack supports an event log and rollback mechanisms in collections. To support this rollback in the pre-release, collections data store is conceptually an event log. Every data write an app makes is stored as a separate file. By placing data in files it ensures that data is never lost and files can be returned back to any previous state.
+Because malicious apps or apps with poor security controls may damage user data, Blockstack believes collections should
+include the ability for users to roll-back changes. For this reason, Blockstack supports an event log and rollback
+mechanisms in collections. To support this rollback in the pre-release, collections data store is conceptually an event
+log. Every data write an app makes is stored as a separate file. By placing data in files it ensures that data is never
+lost and files can be returned back to any previous state.
 
-<div class="uk-card uk-card-default uk-card-body">
-<h5 class="uk-card-title">The Future of Collections Envisioned</h5>
-<p>Blockstack believes that collections should enable true data portability across applications for each decentralized ID. The goal is to develop simple user interfaces to allow users to manage of application access and permissions to collection data. For example, in the future, users can rollback data to previous versions using management interfaces.</p>
-<p>For developers, collections can incentivize user adoption by reducing user friction.  Users can easily try new apps and move to them without the overhead or barrier of re-entering data. You are <a href="https://forum.blockstack.org/t/feedback-wanted-collections-design/7752" target="_blank">welcome to review and comment</a> on the current design document.</p>
-</div>
+##### The Future of Collections Envisioned
+
+Blockstack believes that collections should enable true data portability across applications for each decentralized ID.
+The goal is to develop simple user interfaces to allow users to manage of application access and permissions to collection
+data. For example, in the future, users can rollback data to previous versions using management interfaces.
+For developers, collections can incentivize user adoption by reducing user friction. Users can easily try new apps and
+move to them without the overhead or barrier of re-entering data. You are [welcome to review and comment](https://forum.blockstack.org/t/feedback-wanted-collections-design/7752)
+on the current design document.
 
 ## Build a Contact Manager demo app
 
@@ -135,7 +158,7 @@ In this section, you learn how to add `Contact` collection functionality to an e
 
    This scope grants your app permission to read and write to the user’s `Contact` collection.
 
-   ```javascript
+   ```jsx
    import { UserSession, AppConfig, makeAuthRequest } from 'blockstack';
    import { Contact } from '`blockstack-collections';
 
@@ -151,7 +174,7 @@ Collection storage was designed around an ORM-like interface. This approach ensu
 
 ### Example: Create and save a Contact object
 
-```javascript
+```jsx
 const newContact = {
   lastName: 'Stackerson',
   firstName: 'Blocky',
@@ -169,7 +192,7 @@ contact.save().then(contactID => {
 
 ### Example: Read a Contact object
 
-```javascript
+```jsx
 let contactID = 'Blocky Stackerson';
 Contact.get(contactID).then(contact => {
   // Do something with the contact object
@@ -179,7 +202,7 @@ Contact.get(contactID).then(contact => {
 
 ### Example: List Contact objects
 
-```javascript
+```jsx
 let contacts = [];
 Contact.list(contactID => {
   // This callback is invoked for each contact identifier
@@ -193,7 +216,7 @@ Contact.list(contactID => {
 
 ### Example: Delete a Contact
 
-```javascript
+```jsx
 var contact = new Contact(newContact);
 contact.delete().then(() => {
   // contact deleted successfully

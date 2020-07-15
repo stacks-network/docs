@@ -6,13 +6,13 @@ description: 'Storing user data with Blockstack'
 
 {% include note.html content="The functionality described in this tutorial has been deprecated with the Blockstack Browser. It will continue working only for apps that have not yet upgraded to Blockstack Connect." %}
 
-In this tutorial, you build on the <a href="{{ site.baseurl }}/browser/hello-blockstack.html" target="\_blank">Hello, Blockstack Tutorial</a>. You'll modify the authentication code so that it prompts users who have not yet created a Blockstack identity, to choose a hub URL.
+In this tutorial, you build on the <a href="/browser/hello-blockstack.html" target="\_blank">Hello, Blockstack Tutorial</a>. You'll modify the authentication code so that it prompts users who have not yet created a Blockstack identity, to choose a hub URL.
 
 {% include note.html content="This tutorial was written on macOS High Sierra 10.13.4. If you use a Windows or Linux system, you can still follow along. However, you will need to \"translate\" appropriately for your operating system. Additionally, this tutorial assumes you are accessing the Blockstack Browser web application via Chrome. The application you build will also work with a local installation and/or with browsers other than Chrome. " %}
 
 ## About this tutorial and the prerequisites you need
 
-This tutorial assumes you already set up your environment and tooling as specified in the <a href="{{ site.baseurl }}/browser/hello-blockstack.html" target="\_blank">Hello, Blockstack Tutorial</a>. You should also review that tutorial for basic information about
+This tutorial assumes you already set up your environment and tooling as specified in the <a href="/browser/hello-blockstack.html" target="\_blank">Hello, Blockstack Tutorial</a>. You should also review that tutorial for basic information about
 
 ## Task 1: Generate an initial Blockstack application
 
@@ -148,7 +148,7 @@ To replace the default login, do the following:
 2. Locate the `redirectToSignIn()` method at line 4.
 3. Replace `redirectToSignIn()` method with the `blockstack.UserSession.redirectToSignInWithAuthRequest(authRequest)` method.
 
-   ```javascript
+   ```jsx
    var userSession = new UserSession();
    userSession.redirectToSignInWithAuthRequest(authRequest);
    ```
@@ -242,7 +242,7 @@ your application with a company-run Gaia hub.
 To suggest a Gaia hub URL, provide an additional `recommendedGaiaHubUrl` value
 alongside the `solicitGaiaHubUrl`, for example:
 
-```javascript
+```jsx
 import { makeAuthRequest, redirectToSignInWithAuthRequest } from 'blockstack';
 
 var userSession = new UserSession();

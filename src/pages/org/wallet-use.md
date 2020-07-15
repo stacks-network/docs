@@ -6,7 +6,7 @@ description: 'Blockstack Network documentation'
 
 This page describes how to use the Stacks Wallet software to manager your Stacks (STX) tokens. This page contains the following topics:
 
-The Stacks Wallet software is installed on your computer, it is not a web application. You should have already [downloaded, verified, and installed the wallet software](wallet-install.html).
+The Stacks Wallet software is installed on your computer, it is not a web application. You should have already [downloaded, verified, and installed the wallet software](wallet-install).
 
 ## Key concepts you should understand
 
