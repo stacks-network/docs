@@ -11,7 +11,7 @@ import { Body, H1, BodyLarge, SubHeading } from '@components/home/text';
 export const Hero = ({ cards }: { cards?: any }) => {
   return (
     <>
-      <Grid pb="64px" pt="128px" style={{ placeItems: 'center' }} mt="50px">
+      <Grid pb="64px" pt="64px" style={{ placeItems: 'center' }} mt="50px">
         <Box maxWidth="62ch" textAlign="center">
           <H1 mb={space('base')}>Easily build decentralized apps</H1>
           <BodyLarge maxWidth="42ch" mt="64px" mx="auto">

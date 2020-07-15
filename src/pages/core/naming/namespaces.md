@@ -51,11 +51,11 @@ layers in this hierarchy related to naming:
   blockchain transactions. Example names include `verified.podcast` and
   `muneeb.id`. Anyone can create a BNS name, as long as the namespace that
   contains it exists already. The state for BNS names is usually stored in the [Atlas
-  network]({{ site.baseurl }}/core/atlas/overview.html).
+  network](/core/atlas/overview).
 
 - **BNS subdomains**. These are names whose records are stored off-chain,
   but are collectively anchored to the blockchain. The ownership and state for
-  these names lives within the [Atlas network]({{ site.baseurl }}/core/atlas/overview.html). While BNS
+  these names lives within the [Atlas network](/core/atlas/overview). While BNS
   subdomains are owned by separate private keys, a BNS name owner must
   broadcast their subdomain state. Example subdomains include `jude.personal.id`
   and `podsaveamerica.verified.podcast`. Unlike BNS namespaces and names, the

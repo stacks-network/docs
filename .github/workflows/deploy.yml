@@ -27,7 +27,7 @@ jobs:
             try {
               const comments = await github.paginate(
                 'GET /repos/:owner/:repo/issues/:issue_number/comments',
-                { ...context.repo, issue_number: context.issue.number},
+                { ...context.repo, issue_number: context.issue.number },
                 response => response.data.map(issue => issue.body)
               );
 

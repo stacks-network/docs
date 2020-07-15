@@ -52,7 +52,7 @@ By default, the Gaia hub will validate that the supplied URL matches
 `https://${config.servername}`, but if there are multiple valid URLs
 for clients to reach the hub at, you can include a list in your `config.json`:
 
-```javascript
+```jsx
 {
   ....
   servername: "normalserver.com"

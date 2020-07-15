@@ -2,6 +2,8 @@
 description: 'Storing user data with Blockstack'
 ---
 
+import Architecture from '@common/\_includes/architecture.md'
+
 # A decentralized storage architecture
 
 The Blockstack Network stores application data using a storage system called
@@ -15,7 +17,7 @@ parties.
 
 The following diagram depicts the Blockstack architecture and Gaia's place in it:
 
-{% include architecture.md %}
+<Architecture />
 
 ## User control or how is Gaia decentralized?
 

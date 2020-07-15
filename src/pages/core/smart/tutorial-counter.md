@@ -17,7 +17,7 @@ In this tutorial, you learn how to implement a smart contract that stores and ma
 
 ## Prerequisites
 
-Before you get started, you should complete the [Hello World tutorial](tutorial.html).
+Before you get started, you should complete the [Hello World tutorial](tutorial).
 
 ## Step 1: Downloading counter starter project
 
@@ -36,7 +36,7 @@ You must now select a template. Type `counter` and hit ENTER:
 ? Template - one of [hello-world, counter]: counter
 ```
 
-Finally, the project dependencies are installed and your project is ready for development. Because you already completed the [Hello World tutorial](tutorial.html), the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
+Finally, the project dependencies are installed and your project is ready for development. Because you already completed the [Hello World tutorial](tutorial), the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
 
 ## Step 2: Running tests
 
@@ -75,7 +75,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
 1. Take a quick look at the test file associated with the counter smart contract:
 
-   ```shell
+   ```bash
    cat test/counter.ts
    ```
 
@@ -112,7 +112,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
 3. Run the tests and review the results:
 
-   ```shell
+   ```bash
    npm test
    ```
 
@@ -137,7 +137,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
    Done? Great! Run the tests and make sure all of them are passing. You are looking for 4 passed tests:
 
-   ```shell
+   ```bash
    counter contract test suite
        ✓ should have a valid syntax (39ms)
        deploying an instance of the contract

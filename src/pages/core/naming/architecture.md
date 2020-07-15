@@ -76,7 +76,7 @@ Browser](https://github.com/blockstack/blockstack-browser).
 
 Developers who want to make their own client programs that do not use
 the reference client library code should read the
-[BNS transaction wire format]({{ site.baseurl }}/core/wire-format.html) document for generating and
+[BNS transaction wire format](/core/wire-format) document for generating and
 sending their own transactions.
 
 The examples in this document focus on resolving names using `curl`. We refer

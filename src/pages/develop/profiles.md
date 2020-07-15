@@ -19,7 +19,7 @@ Follow these steps to create and register a profile for a Blockstack username (`
 2. Split up the profile into tokens, sign the tokens, and put them in a token file
 3. Create a zone file that points to the web location of the profile token file
 
-```js
+```jsx
 "account": [
 	{
 	  "@type": "Account",
@@ -33,7 +33,7 @@ Follow these steps to create and register a profile for a Blockstack username (`
 
 ## Create a profile
 
-```es6
+```jsx
 const profileOfNaval = {
   '@context': 'http://schema.org/',
   '@type': 'Person',
@@ -44,7 +44,7 @@ const profileOfNaval = {
 
 ## Sign a profile as a single token
 
-```es6
+```jsx
 import { makeECPrivateKey, wrapProfileToken, Person } from 'blockstack';
 
 const privateKey = makeECPrivateKey();
@@ -56,7 +56,7 @@ const tokenFile = [wrapProfileToken(token)];
 
 ## Verify an individual token
 
-```js
+```jsx
 import { verifyProfileToken } from 'blockstack';
 
 try {
@@ -68,12 +68,12 @@ try {
 
 ## Recover a profile from a token file
 
-```js
+```jsx
 const recoveredProfile = Person.fromToken(tokenFile, publicKey);
 ```
 
 ## Validate profile schema
 
-```js
+```jsx
 const validationResults = Person.validateSchema(recoveredProfile);
 ```

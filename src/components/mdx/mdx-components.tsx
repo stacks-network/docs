@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, space, BoxProps, color } from '@blockstack/ui';
+import { Box, space, BoxProps, color, themeColor } from '@blockstack/ui';
 import css from '@styled-system/css';
 import dynamic from 'next/dynamic';
 import {
@@ -20,25 +20,15 @@ const BaseHeading: React.FC<BoxProps> = React.memo(props => (
   <Heading width="100%" mt={space('base-loose')} {...props} />
 ));
 
-const H1: React.FC<BoxProps> = props => <BaseHeading as="h1" mb={space('loose')} {...props} />;
-const H2: React.FC<BoxProps> = props => (
-  <BaseHeading as="h2" mt={'48px'} mb={space('loose')} {...props} />
-);
-const H3: React.FC<BoxProps> = props => (
-  <BaseHeading as="h3" mt={space('extra-loose')} mb={space('loose')} {...props} />
-);
-const H4: React.FC<BoxProps> = props => (
-  <BaseHeading as="h4" mt={space('extra-loose')} mb={space('loose')} {...props} />
-);
-const H5: React.FC<BoxProps> = props => (
-  <BaseHeading as="h5" mt={space('extra-loose')} mb={space('loose')} {...props} />
-);
-const H6: React.FC<BoxProps> = props => (
-  <BaseHeading as="h6" mt={space('extra-loose')} mb={space('loose')} {...props} />
-);
+export const H1: React.FC<BoxProps> = props => <BaseHeading as="h1" {...props} />;
+export const H2: React.FC<BoxProps> = props => <BaseHeading as="h2" {...props} />;
+export const H3: React.FC<BoxProps> = props => <BaseHeading as="h3" {...props} />;
+export const H4: React.FC<BoxProps> = props => <BaseHeading as="h4" {...props} />;
+export const H5: React.FC<BoxProps> = props => <BaseHeading as="h5" {...props} />;
+export const H6: React.FC<BoxProps> = props => <BaseHeading as="h6" {...props} />;
 
-const Br: React.FC<BoxProps> = props => <Box height="24px" {...props} />;
-const Hr: React.FC<BoxProps> = props => (
+export const Br: React.FC<BoxProps> = props => <Box height="24px" {...props} />;
+export const Hr: React.FC<BoxProps> = props => (
   <Box
     as="hr"
     borderTopWidth="1px"
@@ -49,63 +39,74 @@ const Hr: React.FC<BoxProps> = props => (
   />
 );
 
-const P: React.FC<BoxProps> = props => (
-  <Text
-    as="p"
-    css={css({
-      display: 'block',
-      fontSize: '16.5px',
-      lineHeight: '28px',
-      padding: '0.05px 0',
-      ':before': {
-        content: "''",
-        marginTop: '-0.4878787878787879em',
-        display: 'block',
-        height: 0,
-      },
-      ':after': {
-        content: "''",
-        marginBottom: '-0.4878787878787879em',
-        display: 'block',
-        height: 0,
-      },
-    })}
-    {...props}
-  />
-);
-const Ol: React.FC<BoxProps> = props => (
+export const P: React.FC<BoxProps> = props => <Text as="p" {...props} />;
+export const Ol: React.FC<BoxProps> = props => (
   <Box pl={space('base')} mt={space('base')} mb={space('base-tight')} as="ol" {...props} />
 );
-const Ul: React.FC<BoxProps> = props => (
+export const Ul: React.FC<BoxProps> = props => (
   <Box pl={space('base-loose')} mt={space('base')} mb={space('base-tight')} as="ul" {...props} />
 );
-const Li: React.FC<BoxProps> = props => <Box as="li" pb={space('tight')} {...props} />;
-const BlockQuote: React.FC<BoxProps> = ({ children, ...rest }) => (
-  <Box as="blockquote" display="block" my={space('extra-loose')} {...rest}>
-    <Box
-      border="1px solid"
-      css={css({
-        border: border(),
-        borderRadius: 'md',
-        boxShadow: 'mid',
-        py: space('base-tight'),
-        px: space('base'),
-        bg: color('bg-light'),
-        '> *:first-of-type': {
-          marginTop: 0,
-          borderLeft: '4px solid',
-          borderColor: color('accent'),
-          pl: space('base'),
-        },
-      })}
-    >
-      {children}
-    </Box>
-  </Box>
-);
+export const Li: React.FC<BoxProps> = props => <Box as="li" pb={space('tight')} {...props} />;
 
-const Img: React.FC<BoxProps> = props => (
-  <Box display="block" mx="auto" my={space('extra-loose')} as="img" {...props} />
+const getAlertStyles = (className: string) => {
+  if (className?.includes('alert-success')) {
+    return {};
+  }
+  if (className?.includes('alert-info')) {
+    return {};
+  }
+  if (className?.includes('alert-warning')) {
+    return {
+      bg: '#FEF0E3',
+      borderColor: '#F7AA00',
+      accent: '#F7AA00',
+    };
+  }
+  if (className?.includes('alert-danger')) {
+    return {
+      bg: '#FCEBEC',
+      borderColor: themeColor('red'),
+      accent: themeColor('red'),
+    };
+  }
+  return {};
+};
+
+export const BlockQuote: React.FC<BoxProps> = ({ children, className, ...rest }) => {
+  const { accent, ...styles } = getAlertStyles(className);
+  return (
+    <Box as="blockquote" display="block" my={space('extra-loose')} className={className} {...rest}>
+      <Box
+        border="1px solid"
+        css={css({
+          border: border(),
+          borderRadius: 'md',
+          boxShadow: 'mid',
+          py: space('base'),
+          px: space('base'),
+          bg: color('bg-light'),
+          ...styles,
+        })}
+      >
+        <Box
+          css={css({
+            marginTop: 0,
+            py: space('base-tight'),
+            borderLeft: '2px solid',
+            borderRadius: '2px',
+            borderColor: accent || color('accent'),
+            pl: space('base'),
+          })}
+        >
+          {children}
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const Img: React.FC<BoxProps> = props => (
+  <Box display="block" mx="auto" as="img" {...props} />
 );
 
 export const MDXComponents = {

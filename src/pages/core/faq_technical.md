@@ -1,6 +1,6 @@
 # Technical FAQ
 
-This document lists frequently-asked questions by developers interested in working with Blockstack application and core components. If you are new to Blockstack, you should read the [general questions]({{site.baseurl}}/faqs/allFAQs.html) first.
+This document lists frequently-asked questions by developers interested in working with Blockstack application and core components. If you are new to Blockstack, you should read the [general questions](/faqs/allFAQs) first.
 
 If you have a technical question that gets frequently asked on the
 [forum](https://forum.blockstack.org) or [Slack](https://blockstack.slack.com),

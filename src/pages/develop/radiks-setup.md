@@ -47,7 +47,7 @@ The easiest way to run `radiks-server` is to use the pre-packaged `node.js` serv
 
 2. Start the `radiks-server` in the command line to confirm your installation.
 
-   ```
+   ```bash
    $ radiks-server
     (node:37750) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
    radiks-server is ready on http://localhost:1260
@@ -89,7 +89,7 @@ If you are using `blockstack.js` version 18 or earlier, you must use the Radiks 
 
 1. Start the mongo shell application.
 
-   ```
+   ```bash
    $ mongo
    MongoDB shell version v4.2.0
    connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
@@ -104,7 +104,7 @@ If you are using `blockstack.js` version 18 or earlier, you must use the Radiks 
 
 2. Create a new database for your application.
 
-   ```
+   ```bash
    > show dbs
    admin   0.000GB
    config  0.000GB
@@ -121,7 +121,7 @@ If you are using `blockstack.js` version 18 or earlier, you must use the Radiks 
 
 3. Add a user with administrative rights to the database.
 
-   ```
+   ```bash
    > db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});
    Successfully added user: { "user" : "admin", "roles" : [ "readWrite", "dbAdmin" ] }
    ```
@@ -189,7 +189,7 @@ After you have added Radiks to your application, build and run the application. 
 
 You can specify the `mongoDBUrl` or the `maxLimit` option when initiating the Radiks server in your application.
 
-```javascript
+```jsx
 const { setup } = require('radiks-server');
 
 setup({
@@ -202,4 +202,4 @@ The `maxLimit` option is the maximum `limit` field used inside the mongo queries
 
 ## Where to go next
 
-Creating models for your application's data is where radiks truly becomes helpful. To learn how to use models, see the [Create and use models](radiks-models.html) section.
+Creating models for your application's data is where radiks truly becomes helpful. To learn how to use models, see the [Create and use models](radiks-models) section.

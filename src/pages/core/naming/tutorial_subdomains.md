@@ -49,7 +49,7 @@ for the TXT entry. We'll have the following strings with identifiers:
 4. **seqn**: the sequence number
 5. **sig**: signature of the above data.
 
-```
+```bash
 $ORIGIN bar.id
 $TTL 3600
 pubkey TXT "pubkey:data:0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
@@ -69,7 +69,7 @@ At 4kb zonefile size, we can only fit around 20 updates per zonefile.
 The directory `subdomain_registrar/` contains our code for running a
 subdomain registrar. It can be executed by running:
 
-```
+```bash
 $ blockstack-subdomain-registrar start foo.id
 ```
 
@@ -88,33 +88,31 @@ You can change the location of the config file (and the database), by setting th
 Subdomain registrations can be submitted to this endpoint using a REST
 API.
 
-```
+```bash
 POST /register
 ```
 
 The schema for registration is:
 
-```
+```json
 {
-        'type' : 'object',
-        'properties' : {
-            'name' : {
-                'type': 'string',
-                'pattern': '([a-z0-9\-_+]{3,36})$'
-            },
-            'owner_address' : {
-                'type': 'string',
-                'pattern': schemas.OP_ADDRESS_PATTERN
-            },
-            'zonefile' : {
-                'type' : 'string',
-                'maxLength' : blockstack_constants.RPC_MAX_ZONEFILE_LEN
-            }
-        },
-        'required':[
-            'name', 'owner_address', 'zonefile'
-        ],
-        'additionalProperties' : True
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "([a-z0-9-_+]{3,36})$"
+    },
+    "owner_address": {
+      "type": "string",
+      "pattern": schemas.OP_ADDRESS_PATTERN
+    },
+    "zonefile": {
+      "type": "string",
+      "maxLength": blockstack_constants.RPC_MAX_ZONEFILE_LEN
+    }
+  },
+  "required": ["name", "owner_address", "zonefile"],
+  "additionalProperties": True
 }
 ```
 
@@ -125,8 +123,8 @@ The registrar will:
 
 On success, this returns `202` and the message
 
-```
-{"status": "true", "message": "Subdomain registration queued."}
+```json
+{ "status": "true", "message": "Subdomain registration queued." }
 ```
 
 When the registrar wakes up to prepare a transaction, it packs the queued
@@ -146,20 +144,22 @@ GET /status/{subdomain}
 The registrar checks if the subdomain has propagated (i.e., the
 registration is completed), in which case the following is returned:
 
-```
-{"status": "Subdomain already propagated"}
+```json
+{ "status": "Subdomain already propagated" }
 ```
 
 Or, if the subdomain has already been submitted in a transaction:
 
-```
-{"status": "Your subdomain was registered in transaction 09a40d6ea362608c68da6e1ebeb3210367abf7aa39ece5fd57fd63d269336399 -- it should propagate on the network once it has 6 confirmations."}
+```json
+{
+  "status": "Your subdomain was registered in transaction 09a40d6ea362608c68da6e1ebeb3210367abf7aa39ece5fd57fd63d269336399 -- it should propagate on the network once it has 6 confirmations."
+}
 ```
 
 If the subdomain still hasn't been submitted yet:
 
-```
-{"status": "Subdomain is queued for update and should be announced within the next few blocks."}
+```json
+{ "status": "Subdomain is queued for update and should be announced within the next few blocks." }
 ```
 
 If an error occurred trying to submit the `UPDATE` transaction, this endpoint will return an error
@@ -193,7 +193,7 @@ This means that search is _not_ yet supported.
 The lookups work just like normal -- it returns the user's
 profile object:
 
-```
+```bash
 $ curl -H "Authorization: bearer blockstack_integration_test_api_password" -H "Origin: http://localhost:3000" http://localhost:16268/v1/users/bar.foo.id -v -s | python -m json.tool
 *   Trying 127.0.0.1...
 * Connected to localhost (127.0.0.1) port 16268 (#0)
@@ -224,7 +224,7 @@ $ curl -H "Authorization: bearer blockstack_integration_test_api_password" -H "O
 Name info lookups are also supported (this should enable authenticating logins
 with `blockstack.js`, but I will need to double check).
 
-```
+```bash
 $ curl -H "Authorization: bearer XXXX" -H "Origin: http://localhost:3000" http://localhost:6270/v1/names/created_equal.self_evident_truth.id -s | python -m json.tool
 {
     "address": "1AYddAnfHbw6bPNvnsQFFrEuUdhMhf2XG9",
@@ -261,13 +261,13 @@ correct environment variables for it to run).
 
 Once this environment has started, you can issue a registration request from curl:
 
-```
+```bash
 curl -X POST -H 'Content-Type: application/json' --data '{"zonefile": "$ORIGIN baz\n$TTL 3600\n_file URI 10 1 \"file:///tmp/baz.profile.json\"\n", "name": "baz", "owner_address": "14x2EMRz1gf16UzGbxZh2c6sJg4A8wcHLD"}' http://localhost:3000/register/
 ```
 
 This registers `baz.foo.id` -- you can check the registrar's status with
 
-```
+```bash
 curl http://localhost:3000/status/baz
 ```
 
@@ -276,21 +276,21 @@ The API endpoints `/v1/users/<foo.bar.tld>`,
 
 For example:
 
-```
+```bash
 curl http://localhost:6270/v1/names/baz.foo.id | python -m json.tool
 ```
 
 Will return:
 
-```
+```json
 {
-    "address": "1Nup2UcbVuVoDZeZCtR4vjSkrvTi8toTqc",
-    "blockchain": "bitcoin",
-    "expire_block": -1,
-    "last_txid": "43bbcbd8793cdc52f1b0bd2713ed136f4f104a683a9fd5c89911a57a8c4b28b6",
-    "satus": "registered_subdomain",
-    "zonefile_hash": "e7e3aada18c9ac5189f1c54089e987f58c0fa51e",
-    "zonefile_txt": "$ORIGIN bar\n$TTL 3600\n_file URI 10 1 \"file:///tmp/baz.profile.json\"\n"
+  "address": "1Nup2UcbVuVoDZeZCtR4vjSkrvTi8toTqc",
+  "blockchain": "bitcoin",
+  "expire_block": -1,
+  "last_txid": "43bbcbd8793cdc52f1b0bd2713ed136f4f104a683a9fd5c89911a57a8c4b28b6",
+  "satus": "registered_subdomain",
+  "zonefile_hash": "e7e3aada18c9ac5189f1c54089e987f58c0fa51e",
+  "zonefile_txt": "$ORIGIN bar\n$TTL 3600\n_file URI 10 1 \"file:///tmp/baz.profile.json\"\n"
 }
 ```
 

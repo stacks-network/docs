@@ -14,7 +14,7 @@ comparison to Blockstack:
 Blockstack and DNS both implement naming systems, but in fundamentally
 different ways. Blockstack _can be used_ for resolving host names to IP
 addresses, but this is not its default use-case. The [Blockstack Naming
-Service]({{ site.baseurl }}/core/naming/introduction.html) (BNS) instead behaves
+Service](/core/naming/introduction) (BNS) instead behaves
 more like a decentralized
 [LDAP](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol) system for
 resolving user names to user data.
@@ -45,9 +45,9 @@ than DNS:
   of `bar.baz` in both DNS and BNS).
 
 More details can be found in the [Blockstack vs
-DNS]({{ site.baseurl }}/core/naming/comparison.html) document. A feature
+DNS](/core/naming/comparison) document. A feature
 comparison can be found at the end of the [Blockstack Naming
-Service]({{ site.baseurl }}/core/naming/introduction.html) document.
+Service](/core/naming/introduction) document.
 
 ## Blockstack vs Namecoin
 
@@ -60,7 +60,7 @@ blockchains, so that if Blockstack's underlying blockchain (currently Bitcoin)
 ever became insecure, the system could migrate to a more secure blockchain.
 
 A feature comparison can be found at the end of the [Blockstack Naming
-Service]({{ site.baseurl }}/core/naming/introduction.html) document.
+Service](/core/naming/introduction) document.
 
 ## Blockstack vs ENS
 

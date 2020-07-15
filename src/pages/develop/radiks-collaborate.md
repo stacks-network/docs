@@ -1,15 +1,22 @@
 ---
+title: Collaborate with groups
+description: A key feature of Radiks is support for private collaboration between multiple users.
 ---
 
 # Collaborate with groups
 
-A key feature of Radiks is support for private collaboration between multiple users. Supporting collaboration with client-side encryption and user-owned storage can be complicated, but the patterns to implement it are generally the same among most applications. Radiks supplies interfaces for collaboration, making it easy to build private, collaborative apps.
+A key feature of Radiks is support for private collaboration between multiple users. Supporting collaboration with
+client-side encryption and user-owned storage can be complicated, but the patterns to implement it are generally the
+same among most applications. Radiks supplies interfaces for collaboration, making it easy to build private,
+collaborative apps.
 
-You use the <a href="https://github.com/blockstack/radiks/blob/master/src/models/user-group.ts" target="_blank"><code>UserGroup</code></a> class to build a collaborative group with Radiks. In this section, you learn about this class.
+You use the [`UserGroup`](https://github.com/blockstack/radiks/blob/master/src/models/user-group.ts) class to build a
+collaborative group with Radiks. In this section, you learn about this class.
 
 ## Understand the UserGroup workflow
 
-The key model behind a collaborative group is `UserGroup`. By default, it only has one attribute, `name`, which is encrypted. You can subclass `UserGroup` with different attributes as needed.
+The key model behind a collaborative group is `UserGroup`. By default, it only has one attribute, `name`, which is
+encrypted. You can subclass `UserGroup` with different attributes as needed.
 
 The general workflow for creating a collaborative group that can share and edit encrypted models is as follows:
 
@@ -22,21 +29,27 @@ The general workflow for creating a collaborative group that can share and edit 
 3. When the invited user 'activates' an invitation, they create a `GroupMembership`.
    They use this membership instance to reference information (such as private keys and signing keys) related to the group.
 
-As they participate in a group, the group's members can create and update models that are related to the group. These models **must** contain a `userGroupId` attribute used to reference the group. This allows Radiks to know which keys to use for encryption and signing.
+As they participate in a group, the group's members can create and update models that are related to the group.
+These models **must** contain a `userGroupId` attribute used to reference the group. This allows Radiks to know which
+keys to use for encryption and signing.
 
-When needed, the group admin can remove a user from a group. To remove a user from the group, the admin creates a new private key for signing and encryption. Then, the admin updates the `GroupMembership` of all users _except_ the user they just removed. This update-and-remove action is also known as rotating the key.
+When needed, the group admin can remove a user from a group. To remove a user from the group, the admin creates a
+new private key for signing and encryption. Then, the admin updates the `GroupMembership` of all users _except_ the
+user they just removed. This update-and-remove action is also known as rotating the key.
 
-After a key is rotated, all new and updated models must use the new key for signing. Radiks-server validates all group-related models to ensure that they're signed with the most up-to-date key.
+After a key is rotated, all new and updated models must use the new key for signing. Radiks-server validates all
+group-related models to ensure that they're signed with the most up-to-date key.
 
 ## Work with a UserGroup
 
-This section details the methods on the <a href="https://github.com/blockstack/radiks/blob/master/src/models/user-group.ts" target="_blank"><code>UserGroup</code></a> class you can use to create, add members to, and query a group.
+This section details the methods on the [`UserGroup`](https://github.com/blockstack/radiks/blob/master/src/models/user-group.ts)
+class you can use to create, add members to, and query a group.
 
 ### Create a UserGroup
 
 To create a `UserGroup`, you must import the class into your application from `radiks`:
 
-```javascript
+```jsx
 import { UserGroup } from 'radiks';
 
 // ...
@@ -44,7 +57,7 @@ import { UserGroup } from 'radiks';
 
 Calling `create` on a new `UserGroup` will create the group and activate an invitation for the group's creator.
 
-```javascript
+```jsx
 const group = new UserGroup({ name: 'My Group Name' });
 await group.create();
 ```
@@ -53,9 +66,10 @@ A group's creator is also the group's admin.
 
 ### Invite users to become members
 
-Use the `makeGroupMembership` method on a `UserGroup` instance to invite a user. The only argument passed to this method is the user's `username`.
+Use the `makeGroupMembership` method on a `UserGroup` instance to invite a user. The only argument passed to this
+method is the user's `username`.
 
-```javascript
+```jsx
 import { UserGroup } from 'radiks';
 
 const group = await UserGroup.findById(myGroupId);
@@ -66,9 +80,11 @@ console.log(invitation._id); // the ID used to later activate an invitation
 
 #### Generic invitation
 
-You can also create a generic invitation that any user can activate, if they are provided with randomly generated secret key, which should be used to decrypt the invitation. The key is generated when the generic invitation is being created.
+You can also create a generic invitation that any user can activate, if they are provided with randomly generated
+secret key, which should be used to decrypt the invitation. The key is generated when the generic invitation
+is being created.
 
-```javascript
+```jsx
 import { GenericGroupInvitation, UserGroup } from 'radiks';
 const group = await UserGroup.findById(myGroupId);
 // Creating generic invitation
@@ -81,7 +97,7 @@ console.log(genericInvitation.secretCode); // the secretCode used to later activ
 
 Use the `activate` method on a `GroupInvitation` instance to activate an invitation on behalf of a user:
 
-````javascript
+```jsx
 import { GroupInvitation, GenericGroupInvitation } from 'radiks';
 
 // For user-specific invitation
@@ -90,22 +106,24 @@ await invitation.activate();
 
 // For generic invitation
 const genericInvitation = await GenericGroupInvitation.findById(myInvitationID);
-await genericInvitation.activate(mySecretCode);```
+await genericInvitation.activate(mySecretCode);
+```
 
 ## View all activated UserGroups for the current user
 
 Call `UserGroup.myGroups` to fetch all groups that the current user is a member of:
 
-```javascript
+```jsx
 import { UserGroup } from 'radiks';
 
 const groups = await UserGroup.myGroups();
-````
+```
 
 ## Find a UserGroup
 
-Use the method `UserGroup.find(id)` when fetching a specific UserGroup. This method has extra boilerplate to handle decrypting the model, because the private keys may need to be fetched from different models.
+Use the method `UserGroup.find(id)` when fetching a specific UserGroup. This method has extra boilerplate to handle
+decrypting the model, because the private keys may need to be fetched from different models.
 
-```javascript
+```jsx
 const group = await UserGroup.find('my-id-here');
 ```
