@@ -1,5 +1,5 @@
 ---
-description: 'Blockstack naming service (BNS)'
+description: Blockstack naming service (BNS)
 ---
 
 # How to build a Profile Search Index
@@ -31,7 +31,7 @@ This document describes how to setup the search subsystem to respond at that end
 - **Step 1:** First, make sure you have [virtualenv installed](http://docs.python-guide.org/en/latest/dev/virtualenvs/).
   Then, setup the API and search subsystem:
 
-```
+```bash
 $ sudo apt-get install -y mongodb memcached python-dev libmemcached-dev zlib1g-dev nginx
 $ sudo pip install uwsgi
 $ git clone https://github.com/blockstack/blockstack-core.git --branch api
@@ -47,7 +47,7 @@ $ sudo mkdir /var/blockstack-search && sudo chown $USER:$USER /var/blockstack-se
 
 - **Step 3:** Fetch the data for the .id namespace and respective profiles. Note, you may want to redirect stderr to a file, as there is a lot of debug output.
 
-```
+```bash
 $ cd api/
 
 $ python -m search.fetch_data --fetch_namespace
@@ -57,13 +57,13 @@ $ python -m search.fetch_data --fetch_profiles
 
 - **Step 4:** Create the search index:
 
-```
+```bash
 python -m search.basic_index --refresh
 ```
 
 - **Step 5:** Enable search API endpoint:
 
-```
+```bash
 $ sed -i 's/SEARCH_API_ENDPOINT_ENABLED \= False/SEARCH_API_ENDPOINT_ENABLED \= True/' config.py
 ```
 
@@ -71,28 +71,30 @@ $ sed -i 's/SEARCH_API_ENDPOINT_ENABLED \= False/SEARCH_API_ENDPOINT_ENABLED \= 
 
 You can quickly test the search index from the command line:
 
-```
+```bash
 python -m search.substring_search --search_name "Fred Wil"
 python -m search.substring_search --search_twitter fredwil
 ```
 
 You can also use the search API end-point:
 
-> curl -G {machine_ip}:port/search/name -d "query=muneeb"
+```bash
+curl -G {machine_ip}:port/search/name -d "query=muneeb"
+```
 
 Sample Response:
 
-```
+```json
 {
   "people": [
-   {
+    {
       "profile": {
-          "website": [
+        "website": [
           {
             "url": "http://muneebali.com",
             "@type": "WebSite"
           }
-          ],
+        ],
         "name": "Muneeb Ali",
         "address": {
           "addressLocality": "New York, NY",
@@ -112,8 +114,8 @@ Sample Response:
         ],
         "@type": "Person",
         "description": "Co-founder of Blockstack. Interested in distributed systems and blockchains. Previously, PhD at Princeton."
-    },
-    "username": "muneeb"
+      },
+      "username": "muneeb"
     },
     {
       "profile": {
@@ -131,7 +133,6 @@ Sample Response:
       },
       "username": "muneebali1"
     }
-
   ]
 }
 ```
@@ -140,7 +141,7 @@ Sample Response:
 
 ### Requirements:
 
-```
+```bash
 sudo apt-get install mongodb
 sudo apt-get install memcached libmemcached-dev
 sudo apt-get install python2.7-dev
@@ -153,36 +154,43 @@ Elastic Search library is not in github and resides at unix/lib/elastic
 
 the current version we're using is _0.90.2_. Download from:
 
-> wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.2.zip
+```bash
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.2.zip
+```
 
-before installing pylimbmc make sure [memcached]({{ site.baseurl }}/core/memcached.html) is installed.
+before installing pylimbmc make sure [memcached](/core/memcached) is installed.
 
 Ensure that mongodb and elastic search are running
 starting elastic search:
 
-```
+```bash
 $elasticsearch (on mac)
 bin/elasticsearch -d (on linux)
 ```
 
 To test if elastic search is running:
 
-> curl -X GET http://localhost:9200/
+```bash
+curl -X GET http://localhost:9200/
+```
 
 returns:
 
-```
+```json
 {
-  "ok" : true,
-  "status" : 200,
-  "name" : "Angler",
-  "version" : {
-    "number" : "0.90.2",
-    "snapshot_build" : false,
-    "lucene_version" : "4.3.1"
-  },
+  "ok": true,
+  "status": 200,
+  "name": "Angler",
+  "version": {
+    "number": "0.90.2",
+    "snapshot_build": false,
+    "lucene_version": "4.3.1"
+  }
+}
 ```
 
 Create Index:
 
-> python create_search_index.py --create_index
+```bash
+python create_search_index.py --create_index
+```

@@ -4,32 +4,32 @@ description: 'Storing user data with Blockstack'
 
 # Configure a hub on Amazon EC2
 
-This teaches you how to run a Gaia hub on Amazon EC2. Amazon EC2 is an affordable and convenient cloud computing provider. This example uses Amazon EC2 instance together with an [EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) disk for file storage.
+This teaches you how to run a Gaia hub on Amazon EC2. Amazon EC2 is an affordable and convenient cloud computing provider.
+This example uses Amazon EC2 instance together with an [EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html)
+disk for file storage.
 
-<div class="uk-card uk-card-default uk-card-body">
-<h5>Is this tutorial for you?</h5>
-
-<p>This documentation is appropriate for advanced power users who are familiar with command line tools, <code>ssh</code>, and basic editing configuration files.</p>
-
-<p>If you are planning on running an <em>open-membership hub</em> or an <em>application-specific hub</em>, see <a href="hub-operation.html">the section on Hub Operation</a>.</p>
-
-</div>
+> #### Is this tutorial for you?
+>
+> This documentation is appropriate for advanced power users who are familiar with command line tools, `ssh`, and
+> basic editing configuration files.
+>
+> If you are planning on running an _open-membership hub_ or an _application-specific hub_, see
+> [the section on Hub Operation](hub-operation).
 
 ## Prerequisites you need
 
 This procedure uses Amazon AWS to choose and configure an Amazon Machine Image
 (AMI) running a Gaia service. For this reason, you should have an AWS account
-on the <a href="https://aws.amazon.com/free/" target="\_blank">Amazon AWS free
-tier</a>, personal account, or corporate account. These instructions assume you
-are using a free tier account.
+on the [Amazon AWS free tier](https://aws.amazon.com/free/), personal account,
+or corporate account. These instructions assume you are using a free tier account.
 
-These instructions assume you have already created a free <a
-href="https://www.freenom.com" target="\_blank">domain through the freenom
-service</a>. If you have another domain, you can use that instead.
+These instructions assume you have already created a free [domain through the freenom service](https://www.freenom.com).
+If you have another domain, you can use that instead.
 
-Finally, setting up the SSL certificates on your EC2 instance requires you to use the terminal command line on your workstation. Make sure you have the `watch` command installed using the `which` command.
+Finally, setting up the SSL certificates on your EC2 instance requires you to use the terminal
+command line on your workstation. Make sure you have the `watch` command installed using the `which` command.
 
-```
+```bash
 $ which watch
 /usr/local/bin/watch
 ```
@@ -38,7 +38,7 @@ If `watch` is not located, install it on your workstation.
 
 ## Task 1: Launch an EC2 instance
 
-1. Visit the <a href="https://aws.amazon.com/free/" target="\_blank">AWS Free Tier page</a> and choose **Sign in to the Console**.
+1. Visit the [AWS Free Tier page](https://aws.amazon.com/free/) and choose **Sign in to the Console**.
 
    ![](/storage/images/aws-console.png)
 
@@ -67,15 +67,18 @@ If `watch` is not located, install it on your workstation.
 
     You can choose an image that uses **ephemeral** or **EBS** storage. The ephemeral
     storage is very small but free. Only choose this if you plan to test or use
-    a personal hub. Otherwise, choose the AMI for elastic block storage (EBS) which provides a persistent data store on a separate disk backed by [EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html).
+    a personal hub. Otherwise, choose the AMI for elastic block storage (EBS) which provides a persistent data store on
+    a separate disk backed by [EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html).
 
-    So, the `blockstack-gaia_hub-ephemeral-2.5.3-hvm - ami-0c8fc48c10a42737e` image uses ephemeral storage, is at version `2.5.3` and has the `0c8fc48c10a42737e` tag.
+    So, the `blockstack-gaia_hub-ephemeral-2.5.3-hvm - ami-0c8fc48c10a42737e` image uses ephemeral storage, is at
+    version `2.5.3` and has the `0c8fc48c10a42737e` tag.
 
-6.  Select the most recent version image with the storage you want. The images are not sorted; The most recent images is not necessarily at the top of the list.
+6.  Select the most recent version image with the storage you want. The images are not sorted; The most recent images
+    is not necessarily at the top of the list.
 
-    After you select an image, the system displays **Step 2: Choose an Instance Type** page.
+        After you select an image, the system displays **Step 2: Choose an Instance Type** page.
 
-    ![](/storage/images/tier-2-image.png)
+        ![](/storage/images/tier-2-image.png)
 
 7.  Select **t2.micro** and choose **Next: Configure Instance Details**.
 

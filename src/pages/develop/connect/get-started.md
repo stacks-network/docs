@@ -49,7 +49,7 @@ If you're using `connect` in a React app, then the best option is to include `co
 
 First, setup the `Connect` provider at the "top-level" of your app - probably next to wherever you would put a Redux provider, for example.
 
-```javascript
+```jsx
 import { Connect } from '@blockstack/connect';
 
 const authOptions = {
@@ -68,7 +68,7 @@ const App = () => <Connect authOptions={authOptions}>// the rest of your app's c
 
 Later, when you want to begin the onboarding process, use the `useConnect` hook to get `connect`'s `doOpenAuth` method.
 
-```javascript
+```jsx
 import { useConnect } from '@blockstack/connect';
 
 const SignInButton = () => {
@@ -86,7 +86,7 @@ To send the user straight to sign in, call `doOpenAuth(true)`.
 
 If you aren't using React, or just want a simpler API, then you can use the `showBlockstackConnect` method.
 
-```javascript
+```jsx
 import { showBlockstackConnect } from '@blockstack/connect';
 
 const authOptions = {
@@ -117,7 +117,7 @@ First, include the script in your HTML:
 
 Then, you can use API methods under the `blockstackConnect` global variable:
 
-```javascript
+```jsx
 const authOptions = {
   /** See docs above for options */
 };

@@ -31,7 +31,7 @@ cheaply, because they are broadcast to the
 BNS network in batches. A single blockchain transaction can send up to 120
 subdomain operations.
 
-This is achieved by storing subdomain records in the [Atlas Network]({{ site.baseurl }}/core/atlas/overview.html).
+This is achieved by storing subdomain records in the [Atlas Network](/core/atlas/overview).
 An on-chain name owner broadcasts subdomain operations by encoding them as
 `TXT` records within a DNS zone file. To broadcast the zone file,
 the name owner sets the new zone file hash with a `NAME_UPDATE` transaction and
@@ -241,5 +241,5 @@ implementation of a [BNS Subdomain Registrar](https://github.com/blockstack/subd
 to help developers broadcast subdomain operations. Users would still own their
 subdomain names; the registrar simply gives developers a convenient way for them
 to register and manage them in the context of a particular application.
-Please see the [tutorial on running a subdomain registrar]({{ site.baseurl }}/core/naming/tutorial_subdomains.html) for
+Please see the [tutorial on running a subdomain registrar](/core/naming/tutorial_subdomains) for
 details on how to use it.

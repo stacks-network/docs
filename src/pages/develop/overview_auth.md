@@ -27,16 +27,18 @@ functions, the default is to request `['store_write']`.
 
 Decentralized apps have a manifest file. This file is based on the [W3C web app manifest specification](https://w3c.github.io/manifest/). The following is an example manifest file.
 
-```
+```json
 {
   "name": "Todo App",
   "start_url": "http://blockstack-todos.appartisan.com",
   "description": "A simple todo app build on blockstack",
-  "icons": [{
-    "src": "http://blockstack-todos.appartisan.com/logo.png",
-    "sizes": "400x400",
-    "type": "image/png"
-  }]
+  "icons": [
+    {
+      "src": "http://blockstack-todos.appartisan.com/logo.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    }
+  ]
 }
 ```
 
@@ -112,41 +114,41 @@ JWT libraries with support for this signing algorithm.
 
 ### Example: authRequest payload schema
 
-```JavaScript
+```jsx
 const requestPayload = {
-    jti, // UUID
-    iat, // JWT creation time in seconds
-    exp, // JWT expiration time in seconds
-    iss, // legacy decentralized identifier generated from transit key
-    public_keys, // single entry array with public key of transit key
-    domain_name, // app origin
-    manifest_uri, // url to manifest file - must be hosted on app origin
-    redirect_uri, // url to which the Blockstack App redirects user on auth approval - must be hosted on app origin
-    version, // version tuple
-    do_not_include_profile, // a boolean flag asking Blockstack App to send profile url instead of profile object
-    supports_hub_url, // a boolean flag indicating gaia hub support
-    scopes // an array of string values indicating scopes requested by the app
-  }
+  jti, // UUID
+  iat, // JWT creation time in seconds
+  exp, // JWT expiration time in seconds
+  iss, // legacy decentralized identifier generated from transit key
+  public_keys, // single entry array with public key of transit key
+  domain_name, // app origin
+  manifest_uri, // url to manifest file - must be hosted on app origin
+  redirect_uri, // url to which the Blockstack App redirects user on auth approval - must be hosted on app origin
+  version, // version tuple
+  do_not_include_profile, // a boolean flag asking Blockstack App to send profile url instead of profile object
+  supports_hub_url, // a boolean flag indicating gaia hub support
+  scopes, // an array of string values indicating scopes requested by the app
+};
 ```
 
 ### Example: authResponse payload schema
 
-```JavaScript
-    const responsePayload = {
-    jti, // UUID
-    iat, // JWT creation time in seconds
-    exp, // JWT expiration time in seconds
-    iss, // legacy decentralized identifier (string prefix + identity address) - this uniquely identifies the user
-    private_key, // encrypted private key payload
-    public_keys, // single entry array with public key
-    profile, // profile object or null if passed by profile_url
-    username, // blockstack username (if any)
-    core_token, // encrypted core token payload
-    email, // email if email scope is requested & email available
-    profile_url, // url to signed profile token
-    hubUrl, // url pointing to user's gaia hub
-    version // version tuple
-  }
+```jsx
+const responsePayload = {
+  jti, // UUID
+  iat, // JWT creation time in seconds
+  exp, // JWT expiration time in seconds
+  iss, // legacy decentralized identifier (string prefix + identity address) - this uniquely identifies the user
+  private_key, // encrypted private key payload
+  public_keys, // single entry array with public key
+  profile, // profile object or null if passed by profile_url
+  username, // blockstack username (if any)
+  core_token, // encrypted core token payload
+  email, // email if email scope is requested & email available
+  profile_url, // url to signed profile token
+  hubUrl, // url pointing to user's gaia hub
+  version, // version tuple
+};
 ```
 
 ## Decode authRequest
@@ -155,7 +157,7 @@ To decode the token and see what information it holds:
 
 1. Copy the `authRequest` string from the URL.
 
-   <img src="{{site.baseurl}}/develop/images/copy-authRequest.png" alt="" />
+   <img src="/develop/images/copy-authRequest.png" alt="" />
 
 2. Navigate to [jwt.io](https://jwt.io/).
 3. Paste the full token there.

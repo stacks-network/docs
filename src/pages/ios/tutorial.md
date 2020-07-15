@@ -164,7 +164,7 @@ In this section, you build an initial React.js application called
 5. Navigate to `http://localhost:8080` with your browser to display the
    application.
 
-   ![]({{ site.baseurl }}/browser/images/initial-app.png)
+   ![](/browser/images/initial-app.png)
 
    This local instances is for testing your applications only.
 
@@ -172,7 +172,7 @@ In this section, you build an initial React.js application called
 
    The system displays a prompt allowing you to create a new Blockstack ID or restore an existing one.
 
-   ![]({{ site.baseurl }}/browser/images/login-choice.png)
+   ![](/browser/images/login-choice.png)
 
 7. Follow the prompts appropriate to your situation.
 
@@ -181,7 +181,7 @@ In this section, you build an initial React.js application called
    on your test server. So, you should see this single application, with your
    own `blockstack.id` display name, once you are signed in:
 
-   ![]({{ site.baseurl }}/browser/images/hello-authd.png)
+   ![](/browser/images/hello-authd.png)
 
 ### Add a redirect end point to your application
 

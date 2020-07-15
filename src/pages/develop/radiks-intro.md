@@ -47,7 +47,7 @@ Although Radiks applications rely on a centrally-hosted database, an application
   </tr>
   <tr>
     <td>No data lock-in</td>
-    <td><p>All user data is first stored in Gaia before encrypted with the user's keys and stored in Radiks. This process means the user still controls their data for as long as they need to. If the application's Radiks server shuts down, the user can still access their data. And, without the user's signing keys, an application cannot decrypt the user's data. Users may also backup or migrate their application data from Gaia. 
+    <td><p>All user data is first stored in Gaia before encrypted with the user's keys and stored in Radiks. This process means the user still controls their data for as long as they need to. If the application's Radiks server shuts down, the user can still access their data. And, without the user's signing keys, an application cannot decrypt the user's data. Users may also backup or migrate their application data from Gaia.
 </p></td>
   </tr>
   <tr>
@@ -63,4 +63,4 @@ Although Radiks applications rely on a centrally-hosted database, an application
 </table>
 
 If you are not familiar with Gaia, see
-[read the Gaia documentation](({{site.baseurl}}/storage/overview.html).
+[read the Gaia documentation]((/storage/overview).

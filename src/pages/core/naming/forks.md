@@ -65,7 +65,7 @@ accepted if it included a recent valid consensus hash.
 This means that all BNS nodes in the client's desired fork-set will accept
 the transaction, and all other BNS nodes not in the fork-set will ignore it.
 You can see where the consensus hash is included in blockchain transactions by reading
-the [transaction wire format]({{ site.baseurl }}/core/wire-format.html) document.
+the [transaction wire format](/core/wire-format) document.
 
 ## Fork-set Selection
 

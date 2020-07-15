@@ -47,7 +47,7 @@ since they can be authenticated using the hashes discovered by indexing the
 blockchain under the BNS consensus rules.
 
 BNS nodes implement a decentralized storage system for zone files called the
-[Atlas network]({{ site.baseurl }}/core/atlas/overview.html). In this system, BNS nodes eagerly replicate
+[Atlas network](/core/atlas/overview). In this system, BNS nodes eagerly replicate
 all the zone files they know about to one another, so that eventually every BNS
 node has a full replica of all zone files.
 
@@ -229,7 +229,9 @@ scope are:
 The name's _entire_ history is returned. This includes the history of the name
 under its previous owner, if the name expired and was reregistered.
 
-## Look up the list of names owned by a given public key hash ([reference](https://core.blockstack.org/#name-querying-get-names-owned-by-address))
+## Look up the list of names owned by a given public key hash
+
+See [reference](https://core.blockstack.org/#name-querying-get-names-owned-by-address).
 
 ```bash
 $ curl https://core.blockstack.org/v1/addresses/bitcoin/16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg

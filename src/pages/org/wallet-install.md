@@ -30,13 +30,13 @@ by Blockstack PBC." %}
 
    The default location is the **Downloads** folder, type the following into the terminal and press RETURN on your keyboard.
 
-   ```
+   ```bash
    cd ~/Downloads
    ```
 
 5. In the terminal window, type the following Command
 
-   ```
+   ```bash
    shasum -a 512 Stacks-Wallet-macOS-3.0.0.dmg
    ```
 
@@ -60,13 +60,13 @@ by Blockstack PBC." %}
 
    The default location is the **Downloads** folder, type the following at the command prompt and press RETURN on your keyboard.
 
-   ```
+   ```bash
    cd <You-User-Directory>/Downloads
    ```
 
 4. In the command prompt window, type the following at the command prompt.
 
-   ```
+   ```bash
    certUtil -hashfile Stacks-Wallet-win10-3.0.0.exe SHA512
    ```
 

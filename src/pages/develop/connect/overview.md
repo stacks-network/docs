@@ -22,7 +22,7 @@ Although [`blockstack.js`](https://github.com/blockstack/blockstack.js) can also
 
 ## Start building with Blockstack Connect
 
-Head over to the [Tutorial for App Integration](/browser/todo-list.html) to learn how to build apps with Blockstack Connect.
+Head over to the [Tutorial for App Integration](/browser/todo-list) to learn how to build apps with Blockstack Connect.
 
 ## Installation
 
@@ -46,7 +46,7 @@ Every major method you'll use with `connect` requires you to pass some options, 
 
 The exact interface you'll use [is defined as](https://github.com/blockstack/connect/blob/master/src/auth.ts#L12:L24):
 
-```typescript
+```tsx
 export interface AuthOptions {
   redirectTo: string;
   finished: (payload: FinishedData) => void;
@@ -73,7 +73,7 @@ If you're using `connect` in a React app, then the best option is to include `co
 
 First, setup the `Connect` provider at the "top-level" of your app - probably next to wherever you would put a Redux provider, for example.
 
-```javascript
+```tsx
 import { Connect } from '@blockstack/connect';
 
 const authOptions = {
@@ -87,12 +87,14 @@ const authOptions = {
   },
 };
 
-const App = () => <Connect authOptions={authOptions}>// the rest of your app's components</Connect>;
+const App: React.FC<AppProps> = props => {
+  return <Connect authOptions={authOptions}>{/** the rest of your app's components */}</Connect>;
+};
 ```
 
 Later, when you want to begin the onboarding process, use the `useConnect` hook to get `connect`'s `doOpenAuth` method.
 
-```javascript
+```tsx
 import { useConnect } from '@blockstack/connect';
 
 const SignInButton = () => {
@@ -110,7 +112,7 @@ To send the user straight to sign in, call `doOpenAuth(true)`.
 
 If you aren't using React, or just want a simpler API, then you can use the `showBlockstackConnect` method.
 
-```javascript
+```tsx
 import { showBlockstackConnect } from '@blockstack/connect';
 
 const authOptions = {
@@ -136,12 +138,12 @@ If you aren't using ES6 imports, you can still use `connect`! We package the lib
 First, include the script in your HTML:
 
 ```html
-<script src="https://unpkg.com/@blockstack/connect" />
+<script src="https://unpkg.com/@blockstack/connect">
 ```
 
 Then, you can use API methods under the `blockstackConnect` global variable:
 
-```javascript
+```jsx
 const authOptions = {
   /** See docs above for options */
 };
@@ -158,7 +160,7 @@ To make sure your app handles this gracefully, you'll need to handle the case wh
 
 To finalize authentication with this flow, you'll need to utilize the `UserSession` methods `isSignInPending()` and `handlePendingSignIn()`. For more information, check out the [blockstack.js API reference](https://blockstack.github.io/blockstack.js/).
 
-```js
+```jsx
 const userSession = new UserSession(appConfig);
 
 // ... call this code on page load

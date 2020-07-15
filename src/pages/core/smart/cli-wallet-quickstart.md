@@ -20,7 +20,7 @@ To install the Blockstack CLI, run the following command in terminal.
 
 First, we are going to generate a new wallet for Testnet. To generate a wallet use the `make_keychain` command with the `-t` option for Testnet.
 
-```
+```bash
 $ blockstack make_keychain -t
 
 {
@@ -53,7 +53,7 @@ Once the faucet transaction has been broadcasted, you will need to wait for the 
 
 Once you’ve requested Testnet Stacks tokens from the faucet, you can check the balance of your account using the following command.
 
-```
+```bash
 $ blockstack balance ST1BG7MHW2R524WMF7X8PGG3V45ZN040EB9EW0GQJ -t
 
 {
@@ -86,7 +86,7 @@ In order to send tokens, we will need the 5 parameters below.
 
 Once we have the parameters, we can use the `send_tokens` command:
 
-```
+```bash
 $ blockstack send_tokens ST2KMMVJAB00W5Z6XWTFPH6B13JE9RJ2DCSHYX0S7 1000 200 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t
 
 d32de0d66b4a07e0d7eeca320c37a10111c8c703315e79e17df76de6950c622c

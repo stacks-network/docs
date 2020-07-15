@@ -5,6 +5,7 @@ import { Hero } from '@components/home/sections/hero';
 import { AtomAltIcon } from '@components/icons/atom-alt';
 import { BoxIcon } from '@components/icons/box';
 import { EditIcon } from '@components/icons/edit';
+
 interface Card {
   title: string;
   subtitle: string;
@@ -62,5 +63,13 @@ const Homepage = () => (
     </HomeLayout>
   </>
 );
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      isHome: true,
+    }, // will be passed to the page component as props
+  };
+}
 
 export default Homepage;

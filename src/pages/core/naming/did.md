@@ -38,7 +38,7 @@ name:
 
 - The name must exist
 - The name's zone file hash must be the hash of a well-formed DNS zone file
-- The DNS zone file must be present in the BNS [Atlas Network]({{ site.baseurl }}/core/atlas/overview.html)
+- The DNS zone file must be present in the BNS [Atlas Network](/core/atlas/overview)
 - The DNS zone file must contain a `URI` resource record that points to a signed
   JSON Web Token
 - The public key that signed the JSON Web Token (and is included with it) must

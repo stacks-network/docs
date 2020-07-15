@@ -65,7 +65,9 @@ the characters `a-z`, `0-9`, `+`, `-`, `_`, and `.`. This is to prevent
 `NAME_REGISTRATION` transactions that do not conform to this requirement will be
 ignored.
 
-## Getting a Name's Registration Fee ([reference](https://core.blockstack.org/#price-checks-get-name-price))
+## Getting a Name's Registration Fee
+
+See [reference](https://core.blockstack.org/#price-checks-get-name-price).
 
 ```bash
 $ curl -sL https://core.blockstack.org/v1/prices/names/helloworld.id | jq -r ".name_price"
@@ -79,7 +81,9 @@ Note the use of `jq -r` to select the `"name_price"` field. This API
 endpoint may return other ancilliary data regarding transaction fee estimation,
 but this is the only field guaranteed by this specification to be present.
 
-## Getting the Current Consensus Hash ([reference](https://core.blockstack.org/#blockchain-operations-get-consensus-hash))
+## Getting the Current Consensus Hash
+
+See [reference](https://core.blockstack.org/#blockchain-operations-get-consensus-hash).
 
 ```bash
 $ curl -sL https://core.blockstack.org/v1/blockchains/bitcoin/consensus
@@ -90,7 +94,7 @@ $ curl -sL https://core.blockstack.org/v1/blockchains/bitcoin/consensus
 
 The consensus hash must be included in the `NAME_PREORDER` transaction. The BNS
 clients do this automatically. See the [transaction format
-document]({{ site.baseurl }}/core/wire-format.html) for details as to how to include this in the
+document](/core/wire-format) for details as to how to include this in the
 transaction.
 
 ## Registering a Name
@@ -103,4 +107,4 @@ dynamically and automatically, and broadcast both the `NAME_PREORDER` and
 `NAME_REGISTRATION` transactions at the right times.
 
 If you want to make your own registration client, you should see the
-[transaction format]({{ site.baseurl }}/core/wire-format.html) document.
+[transaction format](/core/wire-format) document.

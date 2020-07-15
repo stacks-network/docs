@@ -30,7 +30,9 @@ The reference BNS clients---
 Browser](https://github.com/blockstack/blockstack-browser)---can handle creating
 and sending all of these transactions for you.
 
-## NAME_UPDATE ([live example](https://www.blocktrail.com/BTC/tx/e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7))
+## NAME_UPDATE
+
+See [live example](https://www.blocktrail.com/BTC/tx/e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7).
 
 A `NAME_UPDATE` transaction changes the name's zone file hash. You would send
 one of these transactions if you wanted to change the name's zone file contents.
@@ -39,10 +41,12 @@ hub](https://github.com/blockstack/gaia) and want other people to read from it.
 
 A `NAME_UPDATE` transaction is generated from the name, a recent [consensus
 hash](#bns-forks), and the new zone file hash. The reference clients gather
-this information automatically. See the [transaction format]({{ site.baseurl }}/core/wire-format.html)
+this information automatically. See the [transaction format](/core/wire-format)
 document for details on how to construct this transaction.
 
-## NAME_TRANSFER ([live example](https://www.blocktrail.com/BTC/tx/7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24))
+## NAME_TRANSFER
+
+See [live example](https://www.blocktrail.com/BTC/tx/7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24).
 
 A `NAME_TRANSFER` transaction changes the name's public key hash. You would
 send one of these transactions if you wanted to:
@@ -57,10 +61,12 @@ recipient's name does not resolve to your zone file.
 
 The `NAME_TRANSFER` transaction is generated from the name, a recent [consensus
 hash](#bns-forks), and the new public key hash. The reference clients gather
-this information automatically. See the [transaction format]({{ site.baseurl }}/core/wire-format.html)
+this information automatically. See the [transaction format](/core/wire-format)
 document for details on how to construct this transaction.
 
-## NAME_REVOKE ([live example](https://www.blocktrail.com/BTC/tx/eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f))
+## NAME_REVOKE
+
+See [live example](https://www.blocktrail.com/BTC/tx/eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f).
 
 A `NAME_REVOKE` transaction makes a name unresolvable. The BNS consensus rules
 stipulate that once a name is revoked, no one can change its public key hash or
@@ -71,10 +77,12 @@ You should only do this if your private key is compromised, or if you want to
 render your name unusable for whatever reason. It is rarely used in practice.
 
 The `NAME_REVOKE` operation is generated using only the name. See the
-[transaction format]({{ site.baseurl }}/core/wire-format.html) document for details on how to construct
+[transaction format](/core/wire-format) document for details on how to construct
 it.
 
-## NAME_RENEWAL ([live example](https://www.blocktrail.com/BTC/tx/e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65))
+## NAME_RENEWAL
+
+See [live example](https://www.blocktrail.com/BTC/tx/e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65).
 
 Depending in the namespace rules, a name can expire. For example, names in the
 `.id` namespace expire after 2 years. You need to send a `NAME_RENEWAL` every
@@ -93,5 +101,5 @@ If your name is in a namespace where names do not expire, then you never need to
 use this transaction.
 
 When you send a `NAME_RENEWAL`, you have the option of also setting a new public
-key hash and a new zone file hash. See the [transaction format]({{ site.baseurl }}/core/wire-format.html)
+key hash and a new zone file hash. See the [transaction format](/core/wire-format)
 document for details on how to construct this transaction.

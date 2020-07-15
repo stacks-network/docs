@@ -3,7 +3,7 @@ import { Flex, FlexProps, space } from '@blockstack/ui';
 
 const ContentWrapper: React.FC<FlexProps> = props => (
   <Flex
-    flexShrink={1}
+    flexShrink={0}
     px={space('base')}
     pt={space(['base', 'base', 'extra-loose'])}
     mt={space('extra-loose')}

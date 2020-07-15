@@ -9,7 +9,7 @@ In this section, you'll find some tips and tricks you can use to work with a Rad
 
 Radiks-server keeps all models inside of a collection. You can use the `getDB` function to access this collection from inside your application.
 
-```js
+```jsx
 const { getDB } = require('radiks-server');
 
 const mongo = await getDB(MONGODB_URL);
@@ -23,7 +23,7 @@ If you're using an [express.js](https://expressjs.com/) server to run your appli
 
 Radiks-server includes an easy-to-use middleware that you can include in your application:
 
-```javascript
+```jsx
 const express = require('express');
 
 const { setup } = require('radiks-server');
@@ -39,7 +39,7 @@ The `setup` method returns a promise, and that promise resolves to the actual mi
 
 The `setup` function accepts an `options` object as the first argument. If you aren't using environment variables, you can explicitly pass in a MongoDB URL here:
 
-```javascript
+```jsx
 setup({
   mongoDBUrl: 'mongodb://localhost:27017/my-custom-database',
 }).then(RadiksController => {
@@ -119,14 +119,14 @@ migrate()
 
 Before you can implement the websocket function, you must configure your `Radiks-Server` with [express-ws](https://github.com/HenningM/express-ws)
 
-```javascript
+```jsx
 const app = express();
 expressWS(app);
 ```
 
 Here's an example for how to use the API:
 
-```javascript
+```jsx
 import Task from './models/task';
 
 const streamCallback = task => {
@@ -153,7 +153,7 @@ Task.removeStreamListener(streamCallback);
 
 Sometimes, you need to save some data on behalf of the user that only the server is able to see. A common use case for this is when you want to notify a user, and you need to store, for example, their email. This should be updatable only by the user, and only the server (or that user) should be able to see it. Radiks provides the `Central` API to handle this:
 
-```javascript
+```jsx
 import { Central } from 'radiks';
 
 const key = 'UserSettings';
