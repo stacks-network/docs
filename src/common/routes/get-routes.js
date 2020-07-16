@@ -27,17 +27,7 @@ const sections = [
       { path: 'develop/storage' },
       { path: 'storage/authentication' },
       { path: 'storage/write-to-read' },
-      // { path: 'storage/hub-choice' },
-    ],
-  },
-  {
-    title: 'Data Indexing',
-    routes: [
-      { path: 'storage/overview' },
-      { path: 'develop/storage' },
-      { path: 'storage/authentication' },
-      { path: 'storage/write-to-read' },
-      // { path: 'storage/hub-choice' },
+      // { path: 'storage/hub-choice' }, // TODO: why is this missing? missing from `master` too
     ],
   },
   {
