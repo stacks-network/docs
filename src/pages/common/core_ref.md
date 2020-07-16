@@ -15,4 +15,4 @@ The Stacks Blockchain API was built to maintain pageable materialized views of t
 
 _Note: Using this API requires you to trust the server, but provides a faster onboarding experience. It also addresses performance issues for which querying a node itself would be too slow or difficult._
 
-{% include note.html content="If you are looking for the Stacks 1.0 RPC endpoint references, please follow [this link](https://core.blockstack.org/)." %}
+-> If you are looking for the Stacks 1.0 RPC endpoint references, please follow [this link](https://core.blockstack.org/).
