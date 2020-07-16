@@ -6,6 +6,7 @@ import 'prismjs/components/prism-tsx';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-toml';
 import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-kotlin';
 
 import { SimpleCodeBlock } from '@components/code-block/components';
 import { useForceUpdate } from '@blockstack/ui';

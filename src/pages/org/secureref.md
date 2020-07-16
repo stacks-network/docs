@@ -21,4 +21,4 @@ You are responsible for recalling and protecting your keys. Blockstack does not 
 
 ## Security terminology
 
-{% include keyphrase.md %}
+@include "keyphrase.md"

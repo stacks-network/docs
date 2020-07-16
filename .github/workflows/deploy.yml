@@ -1,5 +1,5 @@
 name: Deploy preview
-on: [push, pull_request]
+on: pull_request
 
 jobs:
   vercel-deployment:
@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Vercel action
-        uses: amondnet/vercel-action@v19.0.1+1
+        uses: amondnet/vercel-action@master
         id: vercel-deployment-preview
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
@@ -21,34 +21,23 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const firstLine = `The Blockstack docs have been deployed with Vercel using the code from this PR!`;
-
-            let comment = undefined;
-
-            try {
-              const comments = await github.paginate(
-                'GET /repos/:owner/:repo/issues/:issue_number/comments',
-                { ...context.repo, issue_number: context.issue.number },
-                response => response.data.map(issue => issue.body)
-              );
-
-              comment = comments.find((c) =>
-                c.body.includes(firstLine)
-              );
-            } catch(e) {
-              console.log('Comment could not be made!', e)
-            }
-
-            const commentId = comment && comment.id || undefined;
-
+            console.log(context);
+            const { data } = await github.issues.listComments({
+              ...context.repo,
+              issue_number: context.issue.number,
+            });
+            const vercelPreviewURLComment = data.find((comment) =>
+              comment.body.includes(firstLine)
+            );
+            const commentId = vercelPreviewURLComment && vercelPreviewURLComment.id || undefined;
             const commentBody = `
-            #### Deploy preview ready!
+            #### Deploy previews
             ${firstLine}
 
-            - [Click here to view the deploy preview.](${{ steps.vercel-deployment-preview.outputs.preview-url }})
+            - [Blockstack docs](${{ steps.vercel-deployment-preview.outputs.preview-url }})
 
             Built with commit ${context.sha}.
             `;
-
             if(context.issue.number){
               if (commentId) {
                 await github.issues.updateComment({

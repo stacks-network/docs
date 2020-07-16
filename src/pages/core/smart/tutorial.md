@@ -73,7 +73,7 @@ You will see that the program and each statement is enclosed in `()` (parenthese
 
 On the first line, a new public function `say-hi` is declared. Public functions are callable from other smart contracts, enabling developers to break complex tasks into smaller, simpler smart contracts (an exercise in [separating concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)).
 
-{% include note.html content="To create private functions, you would use the <code>define-private</code> keyword. Private functions can only be executed by the current smart contract. Only public functions can be called from other contracts." %}
+-> To create private functions, you would use the `define-private` keyword. Private functions can only be executed by the current smart contract. Only public functions can be called from other contracts." %}
 
 The function doesn't take any parameters and simply returns "hello world" using the [`ok`](clarityRef.html#ok) response constructor.
 
@@ -89,7 +89,14 @@ The second function, `echo-number`, is a [read-only function](clarityRef.html#de
 
 ## Access the Explorer Sandbox
 
-{% include note.html content="<p>This tutorial uses a developer preview release of the <a href='https://testnet-explorer.blockstack.org/'>Stacks 2.0 Explorer</a>. Please feel free to report issues or request enhancements on the <a href='https://github.com/blockstack/explorer/issues/new'>blockstack/explorer</a> repository. For more details about this release, see the <a href='https://forum.blockstack.org/t/explore-the-stacks-2-0-testnet-with-the-new-explorer-developer-preview/10889'>Explore the Stacks 2.0 Testnet</a> post in the Blockstack forums.</p><p>If you encounter trouble using the Explorer Sandbox, try falling back to <a href='#get-familiar-with-cli-optional'>the CLI instructions at the end of this page</a>.</p>" %}
+> This tutorial uses a developer preview release of the [Stacks 2.0 Explorer](https://testnet-explorer.blockstack.org/).
+> Please feel free to report issues or request enhancements on the [blockstack/explorer](https://github.com/blockstack/explorer/issues/new)
+> repository.
+>
+> For more details about this release, see the [Explore the Stacks 2.0 Testnet](https://forum.blockstack.org/t/explore-the-stacks-2-0-testnet-with-the-new-explorer-developer-preview/10889)
+> post in the Blockstack forums.
+>
+> If you encounter trouble using the Explorer Sandbox, try falling back to [the CLI instructions at the end of this page](#get-familiar-with-cli-optional).
 
 Open up the [Stacks 2.0 Explorer Sandbox view](https://testnet-explorer.blockstack.org/sandbox). The Explorer Sandbox is a web-enabled view of the Testnet blockchain, and has tools for validating contracts, testing out transactions, and generating Testnet STX tokens. Here, we will run the code from `hello-world` right in the browser and create blockchain transactions right in the browser.
 

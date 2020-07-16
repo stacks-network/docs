@@ -7,7 +7,7 @@ Blockstack Auth provides single sign on and authentication without third parties
 
 ## Authentication flow
 
-{% include sign_in.md %}
+@include "sign_in.md"
 
 ## Scopes
 
