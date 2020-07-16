@@ -1,20 +1,26 @@
+const { includeMarkdown } = require('@hashicorp/remark-plugins');
+
 const withMdxEnhanced = require('next-mdx-enhanced');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 const remark = require('remark');
 const strip = require('strip-markdown');
+const path = require('path');
 
 const remarkPlugins = [
+  [includeMarkdown, { resolveFrom: path.join(__dirname, 'src/common/_includes') }],
+  require('remark-squeeze-paragraphs'),
   require('./src/lib/remark-paragraph-alerts'),
   require('remark-external-links'),
   require('remark-emoji'),
   require('remark-images'),
   require('remark-unwrap-images'),
+  require('remark-normalize-headings'),
   require('remark-slug'),
 ];
 
-const processMdxContent = mdxContent => {
+const getHeadings = mdxContent => {
   const regex = /\n(#+)(.*)/gm;
   const found = mdxContent.match(regex);
   const getLevel = string => string.split('#');
@@ -45,7 +51,7 @@ module.exports = withBundleAnalyzer(
     fileExtensions: ['mdx', 'md'],
     remarkPlugins,
     extendFrontMatter: {
-      process: processMdxContent,
+      process: getHeadings,
     },
   })({
     experimental: {

@@ -8,9 +8,7 @@ A Gaia service can run a simple administrative service co-located with your Gaia
 
 In this section, you learn how to use the Gaia admin service with your Gaia hub.
 
-{% include note.html content="
-The examples in this section assume that Gaia and the admin service
-were installed through the Configure a hub on Amazon EC2." %}
+-> The examples in this section assume that Gaia and the admin service were installed through the Configure a hub on Amazon EC2.
 
 ## Understand the configuration files
 
