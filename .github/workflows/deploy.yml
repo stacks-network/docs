@@ -7,60 +7,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Vercel action
-        uses: amondnet/vercel-action@v19.0.1+1
+        uses: amondnet/vercel-action@master
         id: vercel-deployment-preview
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           scope: ${{ secrets.VERCEL_SCOPE }}
-      - name: Comment on PR
-        uses: actions/github-script@v2
-        id: comment
-        with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const firstLine = `The Blockstack docs have been deployed with Vercel using the code from this PR!`;
-
-            let comment = undefined;
-
-            try {
-              const comments = await github.paginate(
-                'GET /repos/:owner/:repo/issues/:issue_number/comments',
-                { ...context.repo, issue_number: context.issue.number },
-                response => response.data.map(issue => issue.body)
-              );
-
-              comment = comments.find((c) =>
-                c.body.includes(firstLine)
-              );
-            } catch(e) {
-              console.log('Comment could not be made!', e)
-            }
-
-            const commentId = comment && comment.id || undefined;
-
-            const commentBody = `
-            #### Deploy preview ready!
-            ${firstLine}
-
-            - [Click here to view the deploy preview.](${{ steps.vercel-deployment-preview.outputs.preview-url }})
-
-            Built with commit ${context.sha}.
-            `;
-
-            if(context.issue.number){
-              if (commentId) {
-                await github.issues.updateComment({
-                  ...context.repo,
-                  comment_id: commentId,
-                  body: commentBody,
-                });
-              } else {
-                await github.issues.createComment({
-                  ...context.repo,
-                  issue_number: context.issue.number,
-                  body: commentBody,
-                });
-              }
-            }
