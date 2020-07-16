@@ -117,7 +117,7 @@ const sections = [
       { path: 'common/javascript_ref' },
       { path: 'common/android_ref' },
       { path: 'common/ios_ref' },
-      { path: 'develop/cliDocs' },
+      // { path: 'develop/cliDocs' }, Duplicate
       { path: 'common/core_ref' },
       { path: 'core/wire-format' },
       { path: 'storage/config-schema' },
@@ -138,14 +138,18 @@ const getHeadings = mdContent => {
 
 const routes = sections.map(section => {
   const _routes = section.routes.map(route => {
-    const fileContent = fs.readFileSync(path.join('./src/pages/', route.path + '.md'), 'utf8');
-    const data = fm(fileContent);
-    const headings = getHeadings(data.body);
-    return {
-      ...route,
-      ...data.attributes,
-      headings,
-    };
+    try {
+      const fileContent = fs.readFileSync(path.join('./src/pages/', route.path + '.md'), 'utf8');
+      const data = fm(fileContent);
+      const headings = getHeadings(data.body);
+      return {
+        ...route,
+        ...data.attributes,
+        headings,
+      };
+    } catch (e) {
+      console.log(e);
+    }
   });
   return {
     ...section,

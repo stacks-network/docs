@@ -75,7 +75,7 @@ In this section, you build a Blockstack `hello-world` web application that acts 
 
 ### Generate and launch your hello-blockstack application
 
-{% include scaffolding.md %}
+@include "scaffolding.md"
 
 In this section, you build an initial React.js application called
 `hello-blockstack`.

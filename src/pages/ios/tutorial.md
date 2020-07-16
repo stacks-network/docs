@@ -95,7 +95,7 @@ modify the `hello-world` to interact with the iOS app via a redirect.
 
 ### Generate and launch your hello-blockstack application
 
-{% include scaffolding.md %}
+@include "scaffolding.md"
 
 In this section, you build an initial React.js application called
 `hello-blockstack`.
