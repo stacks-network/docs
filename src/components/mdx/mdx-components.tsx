@@ -105,8 +105,8 @@ export const BlockQuote: React.FC<BoxProps> = ({ children, className, ...rest })
   );
 };
 
-export const Img: React.FC<BoxProps> = props => (
-  <Box display="block" mx="auto" as="img" {...props} />
+export const Img: React.FC<BoxProps & { loading?: string; src?: string; alt?: string }> = props => (
+  <Box loading="lazy" display="block" mx="auto" as="img" {...props} />
 );
 
 export const MDXComponents = {
