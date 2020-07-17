@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import * as Fathom from 'fathom-client';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useFathom = () => {
   const router = useRouter();
 

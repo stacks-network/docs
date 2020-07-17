@@ -4,7 +4,6 @@ import { ContentWrapper } from '@components/content-wrapper';
 import { Text, Title, Link } from '@components/typography';
 import FileDocumentEditOutlineIcon from 'mdi-react/FileDocumentEditOutlineIcon';
 import { border } from '@common/utils';
-import { DocsLayout } from '@components/layouts/docs-layout';
 import Head from 'next/head';
 
 const toPx = (number: number): string => `${number}px`;
@@ -45,7 +44,7 @@ const Graphic = (props: FlexProps) => {
 
 const NotFoundPage = () => {
   return (
-    <DocsLayout>
+    <>
       <Head>
         <title>Page not found | Blockstack UI</title>
       </Head>
@@ -73,7 +72,7 @@ const NotFoundPage = () => {
           </Box>
         </Stack>
       </ContentWrapper>
-    </DocsLayout>
+    </>
   );
 };
 

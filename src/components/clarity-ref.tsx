@@ -45,7 +45,7 @@ export const ClarityFunctionReference = () =>
         <MDXComponents.h4 id={slugify(entry.name) + '-example'}>Example</MDXComponents.h4>
         <MDXComponents.pre>
           {/* @ts-ignore*/}
-          <MDXComponents.code children={entry.example.toString() as string} />
+          <MDXComponents.code children={entry.example.toString()} />
         </MDXComponents.pre>
       </React.Fragment>
     );

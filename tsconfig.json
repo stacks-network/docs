@@ -22,6 +22,14 @@
     "baseUrl": "src"
   },
   "exclude": ["node_modules", ".next"],
-  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/**/*.mdx", "types/**/*.d.ts"],
+  "include": [
+    "**/src/**/*.ts",
+    "**/test/**/*.ts",
+    "next-env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.mdx",
+    "types/**/*.d.ts"
+  ],
   "noImplicitAny": false
 }

@@ -34,8 +34,8 @@ uses is not recorded.
 > ##### Security tip: What to share and what not to
 >
 > A Stacks address is a string of letters and numbers starting with an `SP` or `SM`, like
-`SM3KJBA4RZ7Z20KD2HBXNSXVPCR1D3CRAV6Q05MKT`. You can and should share the address when you want
-someone to send STX tokens to you.
+> `SM3KJBA4RZ7Z20KD2HBXNSXVPCR1D3CRAV6Q05MKT`. You can and should share the address when you want
+> someone to send STX tokens to you.
 >
 > Your seed phrase, 24 words in an ordered sequence, is the private key for your addresses and wallet. **never** share your seed phrase with anyone.
 
