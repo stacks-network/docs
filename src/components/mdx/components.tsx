@@ -196,16 +196,17 @@ const LinkButton = React.memo(({ link, onClick, ...rest }: BoxProps & { link: st
 });
 
 // this is to adjust the offset of where the page scrolls to when an anchor is present
-const AnchorOffset = ({ id }: BoxProps) => (
-  <Box
-    as="span"
-    display="block"
-    position="absolute"
-    style={{ userSelect: 'none', pointerEvents: 'none' }}
-    top="-120px"
-    id={id}
-  />
-);
+const AnchorOffset = ({ id }: BoxProps) =>
+  id ? (
+    <Box
+      as="span"
+      display="block"
+      position="absolute"
+      style={{ userSelect: 'none', pointerEvents: 'none' }}
+      top="-120px"
+      id={id}
+    />
+  ) : null;
 
 const Hashtag = () => (
   <Box position="absolute" as="span" left="10px" color={color('text-caption')}>
@@ -232,24 +233,23 @@ export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
         ...baseTypeStyles,
         ...styles,
         color: isActive ? color('accent') : (color('text-title') as any),
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         alignItems: 'center',
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         position: 'relative',
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         display: 'flex',
+        // @ts-ignore
         justifyContent: 'flex-start',
+        ...rest,
       })}
     >
       <Box as="span" display="inline-block">
         {children}
       </Box>
       <AnchorOffset id={id} />
-      {isActive && <Hashtag />}
-      <LinkButton opacity={isHovered ? 1 : 0} onClick={handleLinkClick} link={link} />
+      {id && isActive && <Hashtag />}
+      {id && <LinkButton opacity={isHovered ? 1 : 0} onClick={handleLinkClick} link={link} />}
     </Title>
   );
 };

@@ -271,7 +271,7 @@ const DocsLayout: React.FC<{ isHome?: boolean }> = ({ children, isHome }) => {
               {children}
             </Flex>
           </Main>
-          <Footer justifySelf="flex-end" />
+          {!isErrorPage && <Footer justifySelf="flex-end" />}
         </Flex>
       </Flex>
     </Flex>

@@ -20,6 +20,7 @@
     "algoliasearch": "^4.3.0",
     "babel-plugin-macros": "^2.8.0",
     "docsearch.js": "^2.6.3",
+    "eslint": "^7.4.0",
     "fathom-client": "^3.0.0",
     "front-matter": "^4.0.2",
     "fs-extra": "^9.0.1",
@@ -68,6 +69,7 @@
     "use-events": "^1.4.2"
   },
   "devDependencies": {
+    "@blockstack/eslint-config": "^1.0.5",
     "@blockstack/prettier-config": "^0.0.6",
     "@next/bundle-analyzer": "^9.4.4",
     "babel-plugin-styled-components": "^1.10.7",
@@ -90,7 +92,9 @@
     "lint:eslint": "eslint \"src/**/*.{ts,tsx}\" -f unix",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" -f unix --fix",
     "lint:prettier": "prettier --check \"src/**/*.{ts,tsx,md,mdx}\" *.js",
-    "lint:prettier:fix": "prettier --write \"src/**/*.{ts,tsx,md,mdx}\" *.js"
+    "lint:prettier:fix": "prettier --write \"src/**/*.{ts,tsx,md,mdx}\" *.js",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "npm run typecheck -- --watch"
   },
   "resolutions": {
     "preact": "^10.4.4"
