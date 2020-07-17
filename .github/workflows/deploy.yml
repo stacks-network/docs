@@ -21,7 +21,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const firstLine = `The Blockstack docs have been deployed with Vercel using the code from this PR!`;
-            console.log(context);
             const { data } = await github.issues.listComments({
               ...context.repo,
               issue_number: context.issue.number,

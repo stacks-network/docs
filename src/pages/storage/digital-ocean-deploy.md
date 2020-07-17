@@ -43,10 +43,7 @@ In this task you create a **Space** which is where Gaia stores your files.
 
 2. **Choose a datacenter region** section.
 
-   {% include important.html content="Choose a region that is both
-   geographically close to you and that supports spaces. Currently,  <strong>San
-   Francisco</strong>, <strong>New York</strong>, <strong>Amsterdam</strong>,
-   and <strong>Singapore</strong> support spaces." %}
+   ~> Choose a region that is both geographically close to you and that supports spaces. Currently, <strong>San Francisco</strong>, <strong>New York</strong>, <strong>Amsterdam</strong>, and <strong>Singapore</strong> support spaces.
 
    The geographical location of your server impacts latency for storing data.
    You select a region close to you so that when you use Blockstack apps,
@@ -171,7 +168,7 @@ In this task, you add a droplet to your account. The droplet is a droplet is a c
 
 7. Scroll down to the **Choose a datacenter region** section.
 
-   {% include important.html content="Choose a region that is both geographically close to you and that supports spaces. Currently,  <strong>San Francisco</strong>, <strong>New York</strong>, <strong>Amsterdam</strong>, and <strong>Singapore</strong> support spaces." %}
+   ~> Choose a region that is both geographically close to you and that supports spaces. Currently, <strong>San Francisco</strong>, <strong>New York</strong>, <strong>Amsterdam</strong>, and <strong>Singapore</strong> support spaces.
 
    The geographical location of your server impacts latency for storing data. You select a region close to you so that when you use Blockstack apps, storing data is quicker.
 
@@ -189,7 +186,7 @@ At this point, your new droplet should appear in the list of resources on your D
 
 A droplet console emulates the access you would have if you were sitting down with a keyboard and monitor attached to the actual server. In this section, you open a console on your droplet.
 
-{% include note.html content="If you are an SSH user and have completed the prerequisites, <strong>skip this section</strong>. Instead, use <a href='https://do.co/2S4HMk1' target='\_blank'>the DigitalOcean instructions for connecting with doctl</a>." %}
+-> If you are an SSH user and have completed the prerequisites, <strong>skip this section</strong>. Instead, use [the DigitalOcean instructions for connecting with doctl](https://do.co/2S4HMk1).
 
 1. From the DigitalOcean dashboard, select Droplets.
 

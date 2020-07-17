@@ -13,7 +13,7 @@ Radiks-server is a `node.js` application that uses [MongoDB](https://www.mongodb
 
 In the future, Radiks-server will support various different databases, but right now, only MongoDB 3.6 or higher is supported. MongoDB 3.6 and higher contains fixes required for naming patterns in keys.
 
-{% include note.html content="The steps assume you want to install and run the MongoDB software locally on your workstation for testing and development. If you are deploying for a production application, you will install MongoDB on your application server or on a server connected to it. " %}
+-> The steps assume you want to install and run the MongoDB software locally on your workstation for testing and development. If you are deploying for a production application, you will install MongoDB on your application server or on a server connected to it.
 
 1. <a href="https://docs.mongodb.com/manual/administration/install-community/" target="_blank">Download and install MongoDB 3.6 or higher</a> on your workstation.
 

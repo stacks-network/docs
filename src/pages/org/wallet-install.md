@@ -4,18 +4,19 @@ description: 'How to use the Blockstack Software'
 
 # Install the Stacks Wallet software
 
-You use the Stacks Wallet software client alone or with a hardware wallet to send and receive Stacks (STX) tokens. On this page, you learn how to install the Stacks Wallet software. This page contains the following:
+You use the Stacks Wallet software client alone or with a hardware wallet to send and receive
+Stacks (STX) tokens. On this page, you learn how to install the Stacks Wallet software.
 
-{% include warning.html content="When you download the wallet software you are at risk of
+!> When you download the wallet software you are at risk of
 a man-in-the-middle attack (as an example) from hackers interested in stealing
-your tokens or your other information.  To protect yourself from this type of
+your tokens or your other information. To protect yourself from this type of
 attack, verify your downloaded wallet software as detailed in the installation
 instructions below. Verification confirms that you received the software signed
-by Blockstack PBC." %}
+by Blockstack PBC.
 
 ## Mac Installation
 
-1. <a href="https://wallet.blockstack.org" target="\_blank">Go to the wallet download page</a> in your browser.
+1. [Go to the wallet download page](https://wallet.blockstack.org) in your browser.
 2. Select the **macOS Download** button.
 
    This button downloads the software to your computer.
@@ -42,11 +43,11 @@ by Blockstack PBC." %}
 
    ![](images/mac-shasum.png)
 
-6. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published <a href="https://github.com/blockstack/stacks-wallet/releases" target="\_blank">on this page</a>.
+6. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published [on this page](https://github.com/blockstack/stacks-wallet/releases).
 
 ## Windows Installation
 
-1. Select the **Windows Download** button <a href="https://wallet.blockstack.org/" target="\_blank">on this page</a>.
+1. Select the **Windows Download** button [on this page](https://wallet.blockstack.org/).
 
    This button downloads the software to your computer.
 
@@ -72,7 +73,7 @@ by Blockstack PBC." %}
 
    ![](images/windows-certutil.png)
 
-5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published <a href="https://github.com/blockstack/stacks-wallet/releases" target="\_blank">on this page</a>.
+5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published [on this page](https://github.com/blockstack/stacks-wallet/releases).
 
 ## Additional requirement and option
 
@@ -86,11 +87,11 @@ You need very small fractions of Bitcoin to fuel your Stacks Wallet transactions
 
 If you have a paper wallet or a custodial wallet, you should set up a secondary hardware. You can then transfer small amounts to this hardware wallet for use with your Stacks Wallet. You can use any of these hardware wallets with the Stacks Wallet:
 
-- <a href="https://trezor.io/" target="\_blank">Trezor</a> One
-- <a href="https://www.ledger.com/" target="\_blank">Ledger</a> Nano S
+- [Trezor One](https://trezor.io/)
+- [Ledger Nano S](https://www.ledger.com/)
 - Ledger Blue
 
-{% include note.html content="Blockstack only supports the hardware wallets listed above.  Other wallets, for example, the Trezor Model T, <strong>are not supported</strong>.  If you have questions about wallet support, please <a href='emailto:support@blockstack.org' target='_blank'>contact Blockstack support</a>." %}
+-> Blockstack only supports the hardware wallets listed above. Other wallets, for example, the Trezor Model T, **are not supported**. If you have questions about wallet support, please [contact Blockstack support](mailto:support@blockstack.org).
 
 For information on setting up a hardware wallet, refer to the vendor's
 documentation. We cannot help you set up your hardware wallet.

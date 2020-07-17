@@ -4,11 +4,11 @@ description: 'Storing user data with Blockstack'
 
 # Hello hub choice tutorial
 
-{% include note.html content="The functionality described in this tutorial has been deprecated with the Blockstack Browser. It will continue working only for apps that have not yet upgraded to Blockstack Connect." %}
+-> The functionality described in this tutorial has been deprecated with the Blockstack Browser. It will continue working only for apps that have not yet upgraded to Blockstack Connect.
 
 In this tutorial, you build on the <a href="/browser/hello-blockstack.html" target="\_blank">Hello, Blockstack Tutorial</a>. You'll modify the authentication code so that it prompts users who have not yet created a Blockstack identity, to choose a hub URL.
 
-{% include note.html content="This tutorial was written on macOS High Sierra 10.13.4. If you use a Windows or Linux system, you can still follow along. However, you will need to \"translate\" appropriately for your operating system. Additionally, this tutorial assumes you are accessing the Blockstack Browser web application via Chrome. The application you build will also work with a local installation and/or with browsers other than Chrome. " %}
+-> This tutorial was written on macOS High Sierra 10.13.4. If you use a Windows or Linux system, you can still follow along. However, you will need to "translate" appropriately for your operating system. Additionally, this tutorial assumes you are accessing the Blockstack Browser web application via Chrome. The application you build will also work with a local installation and/or with browsers other than Chrome.
 
 ## About this tutorial and the prerequisites you need
 
@@ -38,22 +38,17 @@ In this section, you build an initial React.js application called `hello-hub-cho
 
    You should see several interactive prompts.
 
+   ```bash
+   $ yo blockstack
 
-    {% raw %}
-    ```bash
-    $ yo blockstack
+   ...
 
-    ...
+   ? Are you ready to build a Blockstack app in React? (Y/n)
+   ```
 
-    ? Are you ready to build a Blockstack app in React? (Y/n)
-    ```
-    {% endraw %}
-
-4. Respond to the prompts to populate the initial app.
+4) Respond to the prompts to populate the initial app.
 
    After the process completes successfully, you see a prompt similar to the following:
-
-   {% raw %}
 
    ```bash
    ...
@@ -61,16 +56,13 @@ In this section, you build an initial React.js application called `hello-hub-cho
    create public/index.html
    create public/robots.txt
    create public/manifest.json
+
+   Im all done. Running npm install for you to install the required dependencies. If this fails, try running the command yourself.
    ```
-
-
-    Im all done. Running npm install for you to install the required dependencies. If this fails, try running the command yourself.
-    ```
-    {% endraw %}
 
 5. Verify that you have version `18.3.0` of blockstack.js or higher.
 
-   ```
+   ```bash
    $ npm ls blockstack
     hello-blockstack@0.0.0 /Users/manthony/sampleapps/hello-blockstack
     └── blockstack@18.3.0
@@ -78,7 +70,7 @@ In this section, you build an initial React.js application called `hello-hub-cho
 
    If you don't have the correct version, install it.
 
-   ```
+   ```bash
    npm install blockstack@18.3.0
    ```
 
@@ -157,20 +149,21 @@ To replace the default login, do the following:
 
 4. Immediately above the method you just added and below the `event.preventDefault()` method, construct a String `const` for the `authRequest`:
 
-   ```
+   ```jsx
    const authRequest = userSession.makeAuthRequest(
      userSession.generateAndStoreTransitKey(),
      'http://localhost:5000/',
      'http://localhost:5000/manifest.json',
      ['store_write', 'publish_data'],
      'http://localhost:5000/',
-     blockstack.nextHour().getTime(), {
-       solicitGaiaHubUrl: true
+     blockstack.nextHour().getTime(),
+     {
+       solicitGaiaHubUrl: true,
      } // new options param
    );
    ```
 
-   {% include note.html content="If your app is running a different port than <code>500</code>, enter that port instead. " %}
+   -> If your app is running a different port than `500`, enter that port instead.
 
    The extra `solicitGaiaHubUrl` parameter of `true` will cause the Blockstack Browser to prompt new identity creators for a storage hub URL.
 
