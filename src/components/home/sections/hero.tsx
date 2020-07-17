@@ -2,9 +2,6 @@ import React from 'react';
 import { Box, Grid, space, color } from '@blockstack/ui';
 import { CircleIcon } from '@components/home/common';
 import { CONTENT_MAX_WIDTH } from '@common/constants';
-import { AtomAltIcon } from '@components/icons/atom-alt';
-import { BoxIcon } from '@components/icons/box';
-import { EditIcon } from '@components/icons/edit';
 import { Card } from '@components/home/card';
 import { Body, H1, BodyLarge, SubHeading } from '@components/home/text';
 
