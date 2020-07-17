@@ -3,8 +3,11 @@ import Head from 'next/head';
 import { HomeLayout } from '@components/layouts/home';
 import { Hero } from '@components/home/sections/hero';
 import { AtomAltIcon } from '@components/icons/atom-alt';
-import { BoxIcon } from '@components/icons/box';
-import { EditIcon } from '@components/icons/edit';
+import { CodeIcon } from '@components/icons/code';
+import { AppsIcon } from '@components/icons/apps';
+import { StackIcon } from '@components/icons/stack';
+import { WorldIcon } from '@components/icons/world';
+import { ServerIcon } from '@components/icons/server';
 
 interface Card {
   title: string;
@@ -18,32 +21,32 @@ const cards = [
     title: 'Build an app',
     subtitle: 'Start building your own decentralized app.',
     href: '/browser/todo-list',
-    icon: AtomAltIcon,
+    icon: AppsIcon,
   },
   {
     title: 'Write a smart contract',
     subtitle: 'Learn how to write your contract in the Clarity language.',
     href: '/core/smart/overview',
-    icon: AtomAltIcon,
+    icon: CodeIcon,
   },
   {
     title: 'Stacks blockchain',
     subtitle: 'Learn how to work with nodes, namespaces, zone files, and other advanced topics.',
     href: '/core/naming/introduction',
-    icon: AtomAltIcon,
+    icon: StackIcon,
   },
   {
     title: 'Gaia storage',
     subtitle: 'Learn about storage, interactions between developer APIs, and the Gaia service.',
     href: '/storage/overview',
-    icon: AtomAltIcon,
+    icon: ServerIcon,
   },
   {
     title: 'Evaluate the ecosystem',
     subtitle:
       'Learn the components that make up the Blockstack Ecosystem. Understand the value a blockchain offers.',
     href: '/org/overview',
-    icon: AtomAltIcon,
+    icon: WorldIcon,
   },
   {
     title: 'Join the community',
