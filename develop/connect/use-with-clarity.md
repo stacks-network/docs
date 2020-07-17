@@ -5,26 +5,13 @@
 # Signing transactions
 {:.no_toc}
 
-With Connect, you can interact with the Stacks 2.0 blockchain. You can allow your users to send transactions and interact with smart contracts.
+With Blockstack Connect, you can interact with the Stacks 2.0 blockchain, empowering your users to sign transactions and interact with smart contracts.
 
 <div class="uk-card uk-card-default uk-card-body">
-<h5 class="uk-card-title">Transaction signing is still in progress</h5>
-<p>
-  To use these features, make sure you install the <code>testnet</code> tag the <code>@blockstack/connect</code> NPM package. You can do this by running <code>npm install --save @blockstack/connect@testnet</code>, or by specifying <code>testnet</code> as the version in
-  your package.json file.
-</p>
-<p>
-  The Stacks 2.0 blockchain is still in testnet, and our web app integration is also still in beta. In order to use transaction signing in your application, you need to use the configuration `authOrigin` with `@blockstack/connect`.
-</p>
-<pre>
-  <code>
-    const options = {
-      // your other options
-      authOrigin: 'https://deploy-preview-301--stacks-authenticator.netlify.app'
-    };
-  </code>
-</pre>
+<h5 class="uk-card-title">This functionality currently operates on <a href="http://testnet.blockstack.org/">the Stacks 2.0 Testnet</a></h5>
+<p>The user interface has been designed with developers in mind and prominently displays debug information. STX testnet tokens for paying transaction fees can be obtained for free with <a href="https://testnet.blockstack.org/faucet">the testnet faucet</a>. We will update this functionality and experience for mainnet upon its release.</p>
 </div>
+
 
 * TOC
 {:toc}
@@ -43,9 +30,6 @@ To initiate a contract call transaction, use the `openContractCall` function.
 
 ```ts
 import { openContractCall } from '@blockstack/connect';
-
-// While in beta, you must provide this option:
-const authOrigin = 'https://deploy-preview-301--stacks-authenticator.netlify.app';
 
 // Here's an example of options:
 const myStatus = 'hey there';
@@ -134,9 +118,6 @@ STX token transfers can be initiated with the `openSTXTransfer` function.
 ```ts
 import { openSTXTransfer } from '@blockstack/connect';
 
-// While in beta, you must provide this option:
-const authOrigin = 'https://deploy-preview-301--stacks-authenticator.netlify.app';
-
 openSTXTransfer({
   recipient: 'ST2EB9WEQNR9P0K28D2DC352TM75YG3K0GT7V13CV',
   amount: '100',
@@ -185,8 +166,6 @@ To allow your app's users to deploy arbitrary Clarity contracts, use the `openCo
 import { openContractDeploy } from '@blockstack/connect';
 
 const codeBody = '(begin (print "hello, world"))';
-// While in beta, you must provide this option:
-const authOrigin = 'https://deploy-preview-301--stacks-authenticator.netlify.app';
 
 openContractDeploy({
   contractName: 'my-contract-name',
