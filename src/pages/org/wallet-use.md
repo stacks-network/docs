@@ -21,10 +21,9 @@ To send STX, you need Bitcoin in your wallet. Bitcoin is the "gas" for transacti
 
 You can use the Stacks Wallet software by itself or together with a hardware wallet. Using with a hardware wallet is recommended but not required.
 
-<div class="uk-card uk-card-default uk-card-body">
-<h5>Investers and large token holdings: Hardware devices </h5>
-<p>If you are an investor or current Stacks token holder, you should have your relevant STX addresses on a configured hardware device before using the Stacks Wallet software. If you have very large holdings, we recommend and anticipate these are held with a custodial service. In the case of a custodial service, you would work with your service to transfer a portion of your holdings to an appropriate hardware device before using the Stacks Wallet software.</p>
-</div>
+> ##### Investors and large token holdings: Hardware devices
+>
+> If you are an investor or current Stacks token holder, you should have your relevant STX addresses on a configured hardware device before using the Stacks Wallet software. If you have very large holdings, we recommend and anticipate these are held with a custodial service. In the case of a custodial service, you would work with your service to transfer a portion of your holdings to an appropriate hardware device before using the Stacks Wallet software.
 
 ### A hardware device with the wallet
 
@@ -44,7 +43,7 @@ You can use the Stacks Wallet software without a hardware device to create one o
 
 Write down your seed phrase and store it in a secure location such as a safe deposit box. When you write the seed phrase down, include its position, for example,`1-frog, 2-horse, 3-building` and so on until you reach a final position `24-ocean`.
 
-{% include warning.html content="Do not lose your seed phrase. If you lose your seed phrase, you lose any STX tokens in that associated wallet. <strong>No person or organization, including Blockstack, can recover a lost seed phrase</strong>." %}
+!> Do not lose your seed phrase. If you lose your seed phrase, you lose any STX tokens in that associated wallet. **No person or organization, including Blockstack, can recover a lost seed phrase**.
 
 ### About the reset function
 
@@ -191,9 +190,7 @@ example.
 
 The Stacks Wallet uses very small amounts of Bitcoin to pay fees for sending transactions. You need very small fractions of Bitcoin (BTC) for gas. The cost of gas you need fluctuates with the market price of Bitcoin.
 
-{% include warning.html content="Very small amounts of Bitcoin are all you need
-to fuel transactions. <b>Never send an entire coin to your Stacks Wallet. Amounts
-such as .0002 BTC are plenty</b>." %}
+!> Very small amounts of Bitcoin are all you need to fuel transactions. **Never send an entire coin to your Stacks Wallet. Amounts such as .0002 BTC are plenty**.
 
 You can only receive Bitcoin with Stacks Wallet; you cannot send Bitcoin. You need an account with Coinbase or similar exchange to buy Bitcoin and send it to the Stacks Wallet.
 

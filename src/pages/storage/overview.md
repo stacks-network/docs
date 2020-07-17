@@ -39,8 +39,7 @@ The control of user data lies in the way that user data is accessed. When an app
 
 Because `alice.id` has access to her zonefile, she can change where her profile is stored. For example, she may do this if the current profile's service provider or storage is compromised. To change where her profile is stored, she changes her Gaia hub URL to another Gaia hub URL. If a user has sufficient compute and storage resources, a user may run their own Gaia Storage System and bypass a commercial Gaia hub provider all together.
 
-{% include note.html content="Users with existing identities cannot yet migrate
-their data from one hub to another." %}
+~> Users with existing identities cannot yet migrate their data from one hub to another.
 
 Applications writing directly on behalf of `alice.id` do not need to perform a lookup. Instead, the [Blockstack authentication flow](http://blockstack.github.io/blockstack.js/index.html) provides Alice's chosen application root URL to the application. This authentication flow _is also_ within Alice's control because Alice's browser _must_ generate the authentication response.
 

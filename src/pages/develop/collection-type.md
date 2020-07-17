@@ -15,9 +15,9 @@ New collections rely on the `blockstack-collections` package. Before you code, m
 npm install -g blockstack-collections
 ```
 
-You should also familiarize yourself with the <a href="https://github.com/blockstack/blockstack-collections/blob/master/src/types/collection.ts" target="_blank">Collection</a> class and review <a href="https://github.com/blockstack/blockstack-collections/tree/master/src/types" type="_blank">the existing Collection types</a>. Keep in mind, someone else may have already added a custom type similar to what you want to add.
+You should also familiarize yourself with the [Collection](https://github.com/blockstack/blockstack-collections/blob/master/src/types/collection.ts) class and review [the existing Collection types](https://github.com/blockstack/blockstack-collections/tree/master/src/types). Keep in mind, someone else may have already added a custom type similar to what you want to add.
 
-Collection types can be written in `.js` Javascript or `.ts` (Typescript) files. Typescript is a typed superset of Javascript, you can <a href="https://www.typescriptlang.org/" target="_blank">read the language documentation</a> to learn more.
+Collection types can be written in `.js` Javascript or `.ts` (Typescript) files. Typescript is a typed superset of Javascript, you can [read the language documentation](https://www.typescriptlang.org/) to learn more.
 
 ## Essential steps for creating a Collection type
 
@@ -48,13 +48,13 @@ This section demonstrates how to create a new collection type using Typescript. 
     }
    ```
 
-   {% include warning.html content="While you must specify a unique identifier, the Blockstack platform does not currently enforce uniqueness. If your <code>Collection</code> type shares the same identifier as another type, it will lead to data corruption for the user. In the future, the Blockstack platform will enforce unique collection names. " %}
+   !> While you must specify a unique identifier, the Blockstack platform does not currently enforce uniqueness. If your `Collection` type shares the same identifier as another type, it will lead to data corruption for the user. In the future, the Blockstack platform will enforce unique collection names.
 
 5. Define a static `schema` constant.
 
    This is your type's schema.
 
-   ```js
+   ```jsx
    static schema = {
      identifier: String,
      firstName: String,
@@ -72,7 +72,7 @@ This section demonstrates how to create a new collection type using Typescript. 
 
    By default, the `singleFile` flag is false. This setting causes every record in a collection to store in Gaia as a separate file. The default works well for larger types that describe data such as documents or photos. If your `Collection` type only has a few fields and is not expected to have a large number of records, set the `singleFile` data format flag to `true`.
 
-   ```js
+   ```jsx
    static singleFile = true
    ```
 
@@ -82,7 +82,7 @@ This section demonstrates how to create a new collection type using Typescript. 
 
    In the following example code, data is converted to JSON string for storage.
 
-   ```js
+   ```jsx
    static fromObject(object: object) {
      // Create from plain Javascript object
      return new Contact(object)
@@ -105,7 +105,7 @@ This section demonstrates how to create a new collection type using Typescript. 
 
 If you need to listen for changes to any of the object’s attributes, you can implement the `onValueChange` method. For example, in the `Contacts` Collection type, when the contact is renamed, the unique identifier for the object needs to be updated.
 
-```js
+```jsx
     onValueChange(key: string, value: any) {
       if (key === 'firstName') {
         this.previousIdentifier = this.attrs.identifier
@@ -124,7 +124,7 @@ If you need to listen for changes to any of the object’s attributes, you can i
 
 To perform additional processing of a collection, you can override the `get`, `save`, `list` and `delete` methods. For example, in the `Contact` type, the `save` method is overridden to also perform a `delete` if a contact is renamed. Deletion is necessary because identifiers for a `Contact` are generated from the contact name. And data stored under the previous identifier must be deleted after writing to a new identifier.
 
-```js
+```jsx
     async save(userSession?: UserSession) {
       // Delete old file on save if object identifier changes
       return super.save(userSession)
@@ -148,6 +148,6 @@ While you _can_ use your collection exclusively in your application, the Collect
 
 To publish your Collection type, do the following:
 
-1. Clone or fork the <a href="https://github.com/blockstack/blockstack-collections" target="_blank">blockstack-collections</a> repo.
+1. Clone or fork the [blockstack-collections](https://github.com/blockstack/blockstack-collections) repo.
 2. Add your new type file to the `src/types` subdirectory.
 3. Create a pull request back to the `blockstack-collection` repository.
