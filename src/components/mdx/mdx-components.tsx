@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, space, BoxProps, color, themeColor } from '@blockstack/ui';
 import css from '@styled-system/css';
-import dynamic from 'next/dynamic';
 import {
   Heading,
   Pre,
@@ -13,8 +12,7 @@ import {
 } from '@components/mdx/components';
 import { Text } from '@components/typography';
 import { border } from '@common/utils';
-
-const CodeBlock = dynamic(() => import('../code-block'));
+import { useRouter } from 'next/router';
 
 const BaseHeading: React.FC<BoxProps> = React.memo(props => (
   <Heading width="100%" mt={space('base-loose')} {...props} />
@@ -105,9 +103,32 @@ export const BlockQuote: React.FC<BoxProps> = ({ children, className, ...rest })
   );
 };
 
-export const Img: React.FC<BoxProps & { loading?: string; src?: string; alt?: string }> = props => (
-  <Box loading="lazy" display="block" mx="auto" as="img" {...props} />
-);
+const imgix = 'https://docs-stacks.imgix.net/';
+
+const params = '?auto=compress,format';
+
+const useImgix = (src: string) => {
+  let _src = src;
+  const router = useRouter();
+  if (!src.startsWith('http')) {
+    const path = src.startsWith('/') ? '' : router.pathname.split('/')[1] + '/';
+    _src = `${imgix + path + src + params}`;
+  }
+  return _src;
+};
+
+export const Img: React.FC<BoxProps & { loading?: string; src?: string; alt?: string }> = ({
+  src: _src,
+  ...rest
+}) => {
+  const src = useImgix(_src);
+  const props = {
+    src,
+    ...rest,
+  };
+  return <Box loading="lazy" display="block" mx="auto" as="img" {...props} />;
+};
+const Code: React.FC<BoxProps> = props => <Box as="code" {...props} />;
 
 export const MDXComponents = {
   h1: H1,
@@ -117,7 +138,7 @@ export const MDXComponents = {
   h5: H5,
   h6: H6,
   inlineCode: InlineCode,
-  code: CodeBlock,
+  code: Code,
   pre: Pre,
   br: Br,
   hr: Hr,

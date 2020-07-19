@@ -12,7 +12,7 @@ interface ActiveHeadingReturn {
 
 export const useActiveHeading = (_slug: string): ActiveHeadingReturn => {
   const router = useRouter();
-  const { asPath } = router;
+  const asPath = router && router.asPath;
   const { activeSlug, slugInView, doChangeActiveSlug, doChangeSlugInView } = useAppState();
   const urlHash = asPath?.includes('#') && asPath.split('#')[1];
   const location = typeof window !== 'undefined' && window.location.href;

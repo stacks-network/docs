@@ -95,7 +95,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
 2. With the editor of your choice, open `contracts/counter.clar` and add the following lines of code:
 
-   ```cl
+   ```clarity
    (define-data-var counter int 0)
 
    (define-public (get-counter)
@@ -122,7 +122,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
 4. Add the following lines to the bottom of the `counter.clar` file and take a few seconds to review them:
 
-   ```cl
+   ```clarity
    (define-public (increment)
      (begin
        (var-set counter (+ (var-get counter) 1))
@@ -154,7 +154,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
 Here is how the final smart contract file should look like. Note that you can find the `decrement` function in here - in case you want to compare with your own implementation:
 
-```cl
+```clarity
 (define-data-var counter int 0)
 
 (define-public (get-counter)

@@ -1,8 +1,10 @@
 ---
-description: 'Clarity: Language Reference'
+description: 'See a detailed list of all keywords and functions for the Clarity language.'
 ---
 
-import { ClarityKeywordReference, ClarityFunctionReference } from '@components/clarity-ref'
+import { ClarityKeywordReference, ClarityFunctionReference, convertClarityRefToMdx } from '@components/clarity-ref'
+
+export const getStaticProps = convertClarityRefToMdx
 
 # Clarity Language Reference
 
@@ -134,8 +136,8 @@ The following limitations are imposed on contract calls:
 
 ## Keyword reference
 
-<ClarityKeywordReference />
+<ClarityKeywordReference reference={props.reference} />
 
 ## Function reference
 
-<ClarityFunctionReference />
+<ClarityFunctionReference reference={props.reference} />

@@ -1,45 +1,66 @@
 import React from 'react';
 import { cliReferenceData } from '@common/_data/cliRef';
-import { Text } from '@components/typography';
-import MDX from '@mdx-js/runtime';
 import { MDXComponents } from '@components/mdx/mdx-components';
-import GithubSlugger from 'github-slugger';
+import renderToString from 'next-mdx-remote/render-to-string';
+import hydrate from 'next-mdx-remote/hydrate';
+import { remarkPlugins, wrapValueInTicks } from '@common/mdx';
 
-const Item = React.memo(({ entry, index }: any) => {
-  const slugger = new GithubSlugger();
+const wrapInCode = value => value && '<inlineCode>' + value + '</inlineCode>';
 
-  return (
-    <React.Fragment key={index}>
-      <MDXComponents.h2 id={slugger.slug(entry.command)}>{entry.command}</MDXComponents.h2>
-      <MDXComponents.p>
-        <Text fontWeight="bold">Group</Text>: {entry.group}
-      </MDXComponents.p>
-      <MDX components={MDXComponents}>{entry.usage}</MDX>
-      <MDXComponents.h3 id={slugger.slug(entry.command + ' Arguments')}>Arguments</MDXComponents.h3>
-      <MDXComponents.table>
-        <tr>
-          <MDXComponents.th>Name</MDXComponents.th>
-          <MDXComponents.th>Type</MDXComponents.th>
-          <MDXComponents.th>Value</MDXComponents.th>
-          <MDXComponents.th>Format</MDXComponents.th>
-        </tr>
+const makeMdxTableRow = ({ name: _name, type: _type, value: _value, format: _format }) => {
+  const name = wrapValueInTicks(_name);
+  const type = wrapValueInTicks(_type);
+  const value = wrapValueInTicks(_value);
+  const format = wrapValueInTicks(_format);
 
-        {entry.args.map((arg, argKey) => (
-          <tr key={argKey}>
-            <MDXComponents.td>{arg.name}</MDXComponents.td>
-            <MDXComponents.td>{arg.type}</MDXComponents.td>
-            <MDXComponents.td>{arg.value}</MDXComponents.td>
-            <MDXComponents.td>
-              <MDXComponents.inlineCode>{arg.format}</MDXComponents.inlineCode>
-            </MDXComponents.td>
-          </tr>
-        ))}
-      </MDXComponents.table>
-    </React.Fragment>
-  );
-});
+  return `
+  ##### Name
+  ${wrapValueInTicks(name)}
+  
+  ##### Type
+  ${wrapValueInTicks(type)}  
+  
+  ##### Value
+  ${wrapValueInTicks(value)}
+  
+  ##### Format
+  ${wrapValueInTicks(format)}
+  `;
+  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+  // return '  | ' + name + '   | ' + type + ' | ' + value + ' | ' + wrapValueInTicks(format) + '`  |';
+};
 
-export const CLIReferenceTable = () =>
-  cliReferenceData.map((entry, key) => {
-    return <Item entry={entry} index={key} />;
+const convertEntryToMarkdown = entry => {
+  return `
+  ## ${entry.command}
+
+  **Group:**: ${entry.group}
+
+  ${entry.usage}
+
+  ### Arguments
+
+  | Name         | Type        | Value   | Format  |
+  | ------------ | ----------- | ------- | ------- |
+  
+  ${entry.args.map(makeMdxTableRow)}
+  `;
+};
+
+const makeMdxDocument = data => {
+  let mdx = ``;
+  data.forEach(entry => {
+    mdx += convertEntryToMarkdown(entry);
   });
+  return mdx;
+};
+
+export async function convertCliRefToMdx() {
+  const mdx = makeMdxDocument(cliReferenceData);
+  const reference = await renderToString(mdx, MDXComponents, {
+    remarkPlugins: remarkPlugins('bash'),
+  });
+  return { props: { reference } };
+}
+
+export const CLIReferenceTable = ({ reference }) => hydrate(reference, MDXComponents);

@@ -31,7 +31,7 @@ A client can look up a chunk with the `get_zonefiles()` method. If successful,
 the returned payload will be a `dict` with a `zonefiles` key that maps the chunk
 hashes to their respective data.
 
-```python
+```py
 >>> import blockstack
 >>> data = blockstack.lib.client.get_zonefiles('https://node.blockstack.org:6263', ['1b89a685f4c4ea245ce9433d0b29166c22175ab4'])
 >>> print data['zonefiles']['1b89a685f4c4ea245ce9433d0b29166c22175ab4']
@@ -64,7 +64,7 @@ Browser](https://github.com/blockstack/blockstack-browser) for doing this.
 Once the name operation is confirmed, you can announce the data to the
 Atlas network. You can do so with the Python client as follows:
 
-```python
+```py
 >>> import blockstack
 >>> import base64
 >>> data = "..."   # this is the chunk data you will announce
@@ -100,7 +100,7 @@ peer graph, and replicate the chunk to each of them as well.
 For example, this code will replicate the chunk to not only
 `https://node.blockstack.org:6263`, but also to its immediate neighbors.
 
-```python
+```py
 >>> import blockstack
 >>> import base64
 >>> data = "..."   # this is the chunk you will replicate widely
