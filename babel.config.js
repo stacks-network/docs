@@ -1,4 +1,8 @@
 module.exports = {
   presets: ['next/babel'],
-  plugins: ['babel-plugin-macros', ['styled-components', { ssr: true }]],
+  plugins: [
+    './lib/babel-plugin-nextjs-mdx-patch',
+    'babel-plugin-macros',
+    ['styled-components', { ssr: true }],
+  ],
 };

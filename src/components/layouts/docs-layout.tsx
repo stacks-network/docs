@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, color, space } from '@blockstack/ui';
+import { Flex, color, space, themeColor } from '@blockstack/ui';
 import { SideNav } from '../side-nav';
 import { Header } from '../header';
 import { Main } from '../main';
@@ -102,6 +102,31 @@ const styleOverwrites = {
     },
   },
   pre: {
+    '&.shiki': {
+      bg: '#0f1117 !important',
+      overflow: 'auto',
+      py: space('base-loose'),
+      px: space('extra-loose'),
+      borderRadius: ['unset', 'unset', '12px', '12px'],
+      code: {
+        fontSize: '14.556040756914118px',
+        lineHeight: '24px',
+        padding: '0.05px 0',
+        ':before': {
+          content: "''",
+          marginTop: '-0.47483499999999995em',
+          display: 'block',
+          height: 0,
+        },
+        ':after': {
+          content: "''",
+          marginBottom: '-0.493835em',
+          display: 'block',
+          height: 0,
+        },
+        whiteSpace: 'pre',
+      },
+    },
     '& + h2, & + h3': {
       mt: space('extra-loose'),
     },
@@ -225,7 +250,6 @@ export const Contents = ({ headings, children }) => (
           : '100%'
       }
       mx="unset"
-      px="unset"
       pt="unset"
       pr={space('base-tight')}
       css={css(styleOverwrites)}

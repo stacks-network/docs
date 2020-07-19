@@ -50,7 +50,7 @@ do.
 
 Developers can programmatically resolve DIDs via the Python API:
 
-```Python
+```python
 >>> import blockstack
 >>> blockstack.lib.client.resolve_DID('did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-1', hostport='https://node.blockstack.org:6263')
 {'public_key': '020fadbbcea0ff3b05f03195b41cd991d7a0af8bd38559943aec99cbdaf0b22cc8'}
@@ -87,7 +87,7 @@ second is encoded with version byte 63).
 
 You can see this play out in practice with the following code snippit:
 
-```python
+```py
 >>> import blockstack
 >>> blockstack.lib.client.get_name_record('jude.statism.id', hostport='https://node.blockstack.org:6263')['address']
 u'16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg'

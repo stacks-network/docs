@@ -2,9 +2,12 @@
 title: Blockstack CLI Reference
 ---
 
-import { CLIReferenceTable } from '@components/cli-reference'
+import { convertCliRefToMdx, CLIReferenceTable } from '@components/cli-reference'
+
+export const getStaticProps = convertCliRefToMdx
 
 # Blockstack CLI reference
+
 
 The command line is intended for developers only. Developers can use the command
 line to test and debug Blockstack applications in ways that the Blockstack
@@ -66,4 +69,4 @@ If you run into `EACCES` permissions errors, try the following:
 
 To see the usage and options for the command in general, enter `blockstack-cli` without any subcommands. To see a list of subcommands enter `blockstack-cli help`. Enter `blockstack-cli SUBCOMMAND_NAME help` to see a subcommand with its usage. The following are the available subcommands:
 
-<CLIReferenceTable />
+<CLIReferenceTable reference={props.reference} />

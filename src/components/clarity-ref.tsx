@@ -1,52 +1,76 @@
 import React from 'react';
-import clarityRefData from '@common/_data/clarityRef.json';
-import MDX from '@mdx-js/runtime';
 import { MDXComponents } from '@components/mdx/mdx-components';
-import { slugify } from '@common/utils';
+import renderToString from 'next-mdx-remote/render-to-string';
+import hydrate from 'next-mdx-remote/hydrate';
+import { remarkPlugins, wrapValueInTicks } from '@common/mdx';
+import clarityRefData from '@common/_data/clarityRef.json';
 
-export const ClarityKeywordReference = () =>
-  clarityRefData.keywords.map((entry, key) => {
-    return (
-      <React.Fragment key={key}>
-        <MDXComponents.h3 id={slugify(entry.name)}>{entry.name}</MDXComponents.h3>
-        <MDXComponents.p>
-          <MDXComponents.inlineCode>{entry.output_type}</MDXComponents.inlineCode>
-        </MDXComponents.p>
-        <MDXComponents.p>
-          <MDX components={MDXComponents}>{entry.description}</MDX>
-        </MDXComponents.p>
-        <MDXComponents.h4 id={slugify(entry.name) + '-example'}>Example</MDXComponents.h4>
-        <MDXComponents.pre>
-          {/* @ts-ignore*/}
-          <MDXComponents.code children={entry.example.toString()} />
-        </MDXComponents.pre>
-      </React.Fragment>
-    );
+const wrapInClarityCodes = value => '```clarity' + `\n` + value.trim() + `\n` + '```';
+
+const convertKeywordsToMdx = entry => {
+  return `
+  ### ${entry.name}
+  
+  ${wrapValueInTicks(entry.output_type)}
+  
+  ${entry.description}
+  
+  #### Example
+  
+  ${wrapInClarityCodes(entry.example)}
+
+  `;
+};
+
+const convertFunctionsToMdx = entry => {
+  return `
+  ### ${entry.name}
+  
+  ${wrapInClarityCodes(entry.signature)}
+  
+  **Input:** ${wrapValueInTicks(entry.input_type)}
+  
+  **Output:** ${wrapValueInTicks(entry.output_type)}
+  
+  ${entry.description}
+  
+  #### Example
+  
+  ${wrapInClarityCodes(entry.example)}
+
+  `;
+};
+
+const makeMdxDocument = (data, converter) => {
+  let mdx = ``;
+  data.forEach(entry => {
+    mdx += converter(entry);
   });
-export const ClarityFunctionReference = () =>
-  clarityRefData.functions.map((entry, key) => {
-    return (
-      <React.Fragment key={key}>
-        <MDXComponents.h3 id={slugify(entry.name)}>{entry.name}</MDXComponents.h3>
-        <MDXComponents.p>
-          <MDXComponents.inlineCode>{entry.signature}</MDXComponents.inlineCode>
-        </MDXComponents.p>
-        <MDXComponents.p>
-          <strong>INPUT:</strong>{' '}
-          <MDXComponents.inlineCode>{entry.input_type}</MDXComponents.inlineCode>
-        </MDXComponents.p>
-        <MDXComponents.p>
-          <strong>OUTPUT:</strong>{' '}
-          <MDXComponents.inlineCode>{entry.output_type}</MDXComponents.inlineCode>
-        </MDXComponents.p>
-        <MDXComponents.p>
-          <MDX components={MDXComponents}>{entry.description}</MDX>
-        </MDXComponents.p>
-        <MDXComponents.h4 id={slugify(entry.name) + '-example'}>Example</MDXComponents.h4>
-        <MDXComponents.pre>
-          {/* @ts-ignore*/}
-          <MDXComponents.code children={entry.example.toString()} />
-        </MDXComponents.pre>
-      </React.Fragment>
-    );
+  return mdx;
+};
+
+// getStaticProps
+export async function convertClarityRefToMdx() {
+  const functionsMdx = makeMdxDocument(clarityRefData.functions, convertFunctionsToMdx);
+  const keywordsMdx = makeMdxDocument(clarityRefData.keywords, convertKeywordsToMdx);
+
+  const functions = await renderToString(functionsMdx, MDXComponents, {
+    remarkPlugins: remarkPlugins('clarity'),
   });
+  const keywords = await renderToString(keywordsMdx, MDXComponents, {
+    remarkPlugins: remarkPlugins('clarity'),
+  });
+  return {
+    props: {
+      reference: {
+        functions,
+        keywords,
+      },
+    },
+  };
+}
+
+export const ClarityKeywordReference = ({ reference }) =>
+  hydrate(reference.keywords, MDXComponents);
+export const ClarityFunctionReference = ({ reference }) =>
+  hydrate(reference.functions, MDXComponents);

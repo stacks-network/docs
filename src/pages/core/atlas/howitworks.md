@@ -162,7 +162,7 @@ but the 1st chunk is missing.
 
 Developers can query a node's inventory vector as follows:
 
-```python
+```py
 >>> import blockstack
 >>> result = blockstack.lib.client.get_zonefile_inventory("https://node.blockstack.org:6263", 0, 524288)
 >>> print len(result['inv'])
