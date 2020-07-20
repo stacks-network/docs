@@ -13,6 +13,8 @@ import {
 import { Text } from '@components/typography';
 import { border } from '@common/utils';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+const Code = dynamic(() => import('../code-block'));
 
 const BaseHeading: React.FC<BoxProps> = React.memo(props => (
   <Heading width="100%" mt={space('base-loose')} {...props} />
@@ -107,11 +109,22 @@ const imgix = 'https://docs-stacks.imgix.net/';
 
 const params = '?auto=compress,format';
 
+const getUrl = pathname => {
+  let url = '';
+  const levels = pathname.split('/');
+  levels.forEach((level, index) => {
+    if (index !== levels.length - 1) {
+      url += level + '/';
+    }
+  });
+  return url;
+};
+
 const useImgix = (src: string) => {
   let _src = src;
   const router = useRouter();
   if (!src.startsWith('http')) {
-    const path = src.startsWith('/') ? '' : router.pathname.split('/')[1] + '/';
+    const path = src.startsWith('/') ? '' : getUrl(router.pathname);
     _src = `${imgix + path + src + params}`;
   }
   return _src;
@@ -128,7 +141,6 @@ export const Img: React.FC<BoxProps & { loading?: string; src?: string; alt?: st
   };
   return <Box loading="lazy" display="block" mx="auto" as="img" {...props} />;
 };
-const Code: React.FC<BoxProps> = props => <Box as="code" {...props} />;
 
 export const MDXComponents = {
   h1: H1,

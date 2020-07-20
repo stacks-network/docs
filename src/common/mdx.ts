@@ -1,17 +1,44 @@
-export const remarkPlugins = (defaultLang: string) => [
-  [
-    require('../lib/remark-shiki'),
-    { theme: 'Material-Theme-Default', defaultLang: defaultLang },
-  ],
-  require('remark-slug'),
-];
-
-const replaceTicks = value => {
-  const _value = value.trim();
-  if (_value.startsWith('`') && !_value.endsWith('`')) {
-    return _value.replace('`', '');
-  }
-  return _value;
-};
+import { MDXComponents } from '@components/mdx/mdx-components';
+import { cliReferenceData } from '@common/_data/cliRef';
+import renderToString from 'next-mdx-remote/render-to-string';
+import CLARITY_REFERENCE from '@common/_data/clarityRef.json';
 
 export const wrapValueInTicks = value => '`' + value.replace('`', '').replace('`', '') + '`';
+
+export const convertRemoteDataToMDX = async (arr: any[], key: string) =>
+  Promise.all(arr.map(entry => renderToString(entry[key], MDXComponents)));
+
+export const convertBlockstackCLIUsageToMdx = async () => {
+  const results = await convertRemoteDataToMDX(cliReferenceData, 'usage');
+  return {
+    props: {
+      mdx: results,
+    },
+  };
+};
+
+export const convertClarityRefUsageToMdx = async () => {
+  const [_functions, _keywords] = await Promise.all([
+    convertRemoteDataToMDX(CLARITY_REFERENCE.functions, 'description'),
+    convertRemoteDataToMDX(CLARITY_REFERENCE.keywords, 'description'),
+  ]);
+
+  const functions = CLARITY_REFERENCE.functions.map((fn, index) => ({
+    ...fn,
+    description: _functions[index],
+  }));
+
+  const keywords = CLARITY_REFERENCE.keywords.map((fn, index) => ({
+    ...fn,
+    description: _keywords[index],
+  }));
+
+  return {
+    props: {
+      mdx: {
+        functions,
+        keywords,
+      },
+    },
+  };
+};

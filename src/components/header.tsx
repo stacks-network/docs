@@ -121,16 +121,6 @@ const Header = ({ ...rest }: any) => {
           </Link>
         </NextLink>
         <Flex align="center">
-          <Link
-            as="a"
-            mr={space('base')}
-            href="https://www.dropbox.com/sh/5uyhon1dxax4t6t/AABnh34kFRzD2TSck1wE9fmqa?dl=0"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-            fontSize="12px"
-          >
-            Branding Assets
-          </Link>
           <GithubButton />
           <MenuButton />
         </Flex>

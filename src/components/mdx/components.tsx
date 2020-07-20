@@ -15,8 +15,6 @@ const preProps = {
   display: 'inline-block',
   border: border(),
   borderRadius: '4px',
-  transform: 'translateY(-1px)',
-  fontSize: '12px',
   padding: '2px 6px',
   boxShadow: '0 1px 2px rgba(0, 0, 0, 0.04)',
   bg: color('bg'),
@@ -25,21 +23,10 @@ export const InlineCode: React.FC<BoxProps> = ({ children, ...rest }) => (
   <Text
     as="code"
     css={css({
-      fontSize: '16.5px',
-      lineHeight: '28px',
-      padding: '0.05px 0',
-      ':before': {
-        content: "''",
-        marginTop: '-0.4878787878787879em',
-        display: 'block',
-        height: 0,
-      },
-      ':after': {
-        content: "''",
-        marginBottom: '-0.4878787878787879em',
-        display: 'block',
-        height: 0,
-      },
+      // @ts-ignore
+      fontSize: '14px',
+      // @ts-ignore
+      lineHeight: '20px',
       ...preProps,
       ...rest,
     })}
@@ -64,13 +51,14 @@ export const SmartLink = ({ href, ...rest }: { href: string }) => {
 };
 
 export const Table = ({ children, ...rest }: any) => (
-  <Box {...rest}>
+  <Box maxWidth="100%" overflow="auto" {...rest}>
     <Box
       color={color('text-body')}
       textAlign="left"
       my={space('extra-loose')}
       width="100%"
       as="table"
+      maxWidth="100%"
     >
       {children}
     </Box>
@@ -135,7 +123,6 @@ export const TextItem = (props: any) => (
     {...props}
   >
     <Box
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
       pointerEvents="auto"
     >
@@ -149,7 +136,6 @@ export const TextItem = (props: any) => (
           _focus={{ opacity: 1, boxShadow: 'outline' }}
           opacity={0}
           ml="0.375rem"
-          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
           // @ts-ignore
           href={`#${props.id}`}
         >

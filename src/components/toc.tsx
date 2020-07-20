@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, color, space } from '@blockstack/ui';
+import { Box, Grid, color, space, BoxProps } from '@blockstack/ui';
 import { TOC_WIDTH } from '@common/constants';
 import { slugify } from '@common/utils';
 import { Text } from '@components/typography';
@@ -45,38 +45,53 @@ const Item = ({ slug, label, level }) => {
 
 export const TableOfContents = ({
   headings,
+  noLabel,
+  label = 'On this page',
+  columns = 1,
+  display,
+  ...rest
 }: {
   headings?: {
     content: string;
     level: number;
   }[];
-}) => {
+  noLabel?: boolean;
+  label?: string;
+  columns?: number | number[];
+} & BoxProps) => {
   return (
-    <Box position="relative">
+    <Box position="relative" display={display}>
       <Box
-        mt="50px"
         flexShrink={0}
-        display={['none', 'none', 'block', 'block']}
         minWidth={['100%', `${TOC_WIDTH}px`, `${TOC_WIDTH}px`]}
-        position="sticky"
-        top="118px"
         pr={space('base')}
+        {...rest}
       >
-        <Box mb={space('extra-tight')}>
-          <Text fontWeight="bold" fontSize="14px">
-            On this page
-          </Text>
-        </Box>
-        {headings.map((heading, index) => {
-          return index > 0 ? (
-            <Item
-              level={heading.level}
-              slug={slugify(heading.content)}
-              label={heading.content}
-              key={index}
-            />
-          ) : null;
-        })}
+        {!noLabel && (
+          <Box mb={space('extra-tight')}>
+            <Text fontWeight="bold" fontSize="14px">
+              {label}
+            </Text>
+          </Box>
+        )}
+        <Grid
+          gridTemplateColumns={
+            Array.isArray(columns)
+              ? columns.map(value => `repeat(${value}, 1fr)`)
+              : `repeat(${columns}, 1fr)`
+          }
+        >
+          {headings.map((heading, index) => {
+            return index > 0 ? (
+              <Item
+                level={heading.level}
+                slug={slugify(heading.content)}
+                label={heading.content}
+                key={index}
+              />
+            ) : null;
+          })}
+        </Grid>
       </Box>
     </Box>
   );

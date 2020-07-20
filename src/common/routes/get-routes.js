@@ -139,6 +139,7 @@ const getHeadings = mdContent => {
 const routes = sections.map(section => {
   const _routes = section.routes.map(route => {
     try {
+      const extension = /\.(mdx?)$/;
       const fileContent = fs.readFileSync(path.join('./src/pages/', route.path + '.md'), 'utf8');
       const data = fm(fileContent);
       const headings = getHeadings(data.body);

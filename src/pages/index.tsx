@@ -9,13 +9,6 @@ import { StackIcon } from '@components/icons/stack';
 import { WorldIcon } from '@components/icons/world';
 import { ServerIcon } from '@components/icons/server';
 
-interface Card {
-  title: string;
-  subtitle: string;
-  href: string;
-  icon: React.FC<any>;
-}
-
 const cards = [
   {
     title: 'Build an app',
@@ -56,16 +49,18 @@ const cards = [
   },
 ];
 
-const Homepage = () => (
-  <>
-    <Head>
-      <title>Blockstack Docs</title>
-    </Head>
-    <HomeLayout>
-      <Hero cards={cards} />
-    </HomeLayout>
-  </>
-);
+const Homepage = () => {
+  return (
+    <>
+      <Head>
+        <title>Blockstack Docs</title>
+      </Head>
+      <HomeLayout>
+        <Hero cards={cards} />
+      </HomeLayout>
+    </>
+  );
+};
 
 export async function getStaticProps(context) {
   return {
