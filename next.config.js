@@ -10,7 +10,7 @@ const remarkPlugins = [
     { resolveFrom: path.join(__dirname, 'src/common/_includes') },
   ],
   require('remark-squeeze-paragraphs'),
-  require('./src/lib/remark-paragraph-alerts'),
+  require('./lib/remark-paragraph-alerts'),
   require('remark-external-links'),
   require('remark-emoji'),
   require('remark-images'),
@@ -37,7 +37,7 @@ module.exports = withBundleAnalyzer({
             remarkPlugins,
           },
         },
-        path.join(__dirname, './src/lib/md-loader'),
+        path.join(__dirname, './lib/md-loader'),
       ],
     });
 
