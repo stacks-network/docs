@@ -1,4 +1,7 @@
-Use the following table to answer questions about keys/phrases/values you can share with others (`SHAREABLE`) and ones you should _never_ share but instead keep in a secure place (`PROTECT`).
+
+| Phrase/Key/Value    | Security | Description                                                                                                                                                                                                                                                     |
+| ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Secret Recovery Key | PROTECT  | Used to access an identity on the Blockstack blockchain. A 24-word sequence of words for example: <br /> `applied binge crisp pictorial fiery dancing agreeable frogs light finish ping apple` <br />The early Blockstack recovery keys were 12-word sequences. |
 
 <table class="uk-table-small uk-table-striped uk-overflow-auto">
    <tr valign="top">
