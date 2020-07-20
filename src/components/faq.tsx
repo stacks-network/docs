@@ -16,7 +16,7 @@ const getSlug = (asPath: string) => {
   return;
 };
 
-const FAQItem = React.memo(({ faq, ...rest }) => {
+const FAQItem = React.memo(({ faq, ...rest }: any) => {
   const id = slugify(faq.question);
   const { isActive } = useActiveHeading(id);
 
@@ -56,7 +56,7 @@ const FAQItem = React.memo(({ faq, ...rest }) => {
     </Box>
   );
 });
-export const FAQs = React.memo(({ category, data }) => {
+export const FAQs = React.memo(({ category, data }: any) => {
   const router = useRouter();
   const slug = getSlug(router.asPath);
   const faqs = data.filter(faq => faq.category === category);
