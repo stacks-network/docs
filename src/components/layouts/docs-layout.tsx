@@ -241,13 +241,24 @@ const styleOverwrites = {
     boxShadow: 'none',
     my: space('extra-loose'),
   },
+  '& > img': {
+    mx: 'auto',
+  },
+  table: {
+    '& code': {
+      maxWidth: '100%',
+      overflowX: 'auto',
+      overflowY: 'hidden',
+      whiteSpace: 'pre',
+    },
+  },
 };
 
 export const Contents = ({ headings, children }) => (
   <>
     <ContentWrapper
       width={
-        headings?.length
+        headings?.length && headings.length > 1
           ? ['100%', '100%', `calc(100% - ${TOC_WIDTH}px)`, `calc(100% - ${TOC_WIDTH}px)`]
           : '100%'
       }

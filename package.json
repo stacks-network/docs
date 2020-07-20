@@ -21,6 +21,7 @@
     "algoliasearch": "^4.3.0",
     "babel-plugin-macros": "^2.8.0",
     "babel-plugin-prismjs": "^2.0.1",
+    "csvtojson": "^2.0.10",
     "docsearch.js": "^2.6.3",
     "eslint": "^7.4.0",
     "fathom-client": "^3.0.0",

@@ -293,15 +293,11 @@ $ curl -H "Authorization: bearer $API_KEY" http://localhost:8009/v1/admin/config
 
 To set the whitelist, you must set the _entire_ whitelist. To set the list, pass a command such as the following:
 
-{% raw %}
-
 ```bash
 $ export API_KEY="hello"
 $ curl -H "Authorization: bearer $API_KEY" -H 'Content-Type: application/json' -X POST --data-raw '{"whitelist": ["1KDcaHsYJqD7pwHtpDn6sujCVQCY2e1ktw", "15hUKXg1URbQsmaEHKFV2vP9kCeCsT8gUu"]}' http://localhost:8009/v1/admin/config
 {"message":"Config updated -- you should reload your Gaia hub now."}
 ```
-
-{% endraw %}
 
 ## View logs for the hub or admin service
 

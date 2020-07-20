@@ -10,7 +10,7 @@ the Stacks token and deployment on the Blockstack network as well as the current
 role of the Stacks token.
 
 If you are a developer interested in the specific technical changes related to
-the 2018 launch, see the <a href="https://forum.blockstack.org/t/blockstack-annual-hard-fork-2018/6518" target="\blank" >announcment in the Blockstack forum</a>.
+the 2018 launch, see the [announcement in the Blockstack forum](https://forum.blockstack.org/t/blockstack-annual-hard-fork-2018/6518).
 
 ## A brief history of the Stacks token
 
@@ -36,10 +36,7 @@ holders under a predetermined unlocking schedule. The events on the unlocking
 schedule are the same for each investor, **the dates of these events** depend on the
 holder's purchase date.
 
-<div class="uk-alert-success" uk-alert><b>Note:</b> If you are a token holder
-and would like to review your unlocking schedule, visit the <a
-href="tokenholders.html">For current token holders</a> page in this
-documentation.</div>
+-> **Note:** If you are a token holder and would like to review your unlocking schedule, visit the [For current token holders](/org/tokenholders) page in this documentation.
 
 The genesis block launch makes possible the following interactions:
 

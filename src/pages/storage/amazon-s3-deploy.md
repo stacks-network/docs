@@ -371,8 +371,6 @@ ssh -t -i <your keyfile.pem> core@<public ip address>
 
 Your EC2 instance is running several `docker` services that support the Gaia hub. You can list these services using the `docker ps` command.
 
-{% raw %}
-
 ```bash
 $ docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Command}}\t{{.Names}}"
 CONTAINER ID        IMAGE                                   COMMAND                  NAMES
@@ -381,8 +379,6 @@ CONTAINER ID        IMAGE                                   COMMAND             
 16b229a20320        quay.io/blockstack/gaia-reader:v2.5.3   "node lib/index.js"      gaia-reader
 89739e338573        quay.io/blockstack/gaia-admin:v2.5.3    "docker-entrypoint.s…"   gaia-admin
 ```
-
-{% endraw %}
 
 Each service plays a particular role in running your Gaia hub.
 
