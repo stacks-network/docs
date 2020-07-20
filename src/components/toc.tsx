@@ -75,6 +75,7 @@ export const TableOfContents = ({
           </Box>
         )}
         <Grid
+          gridColumnGap={space('base-loose')}
           gridTemplateColumns={
             Array.isArray(columns)
               ? columns.map(value => `repeat(${value}, 1fr)`)

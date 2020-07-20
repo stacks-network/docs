@@ -73,7 +73,7 @@ You will see that the program and each statement is enclosed in `()` (parenthese
 
 On the first line, a new public function `say-hi` is declared. Public functions are callable from other smart contracts, enabling developers to break complex tasks into smaller, simpler smart contracts (an exercise in [separating concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)).
 
--> To create private functions, you would use the `define-private` keyword. Private functions can only be executed by the current smart contract. Only public functions can be called from other contracts." %}
+-> To create private functions, you would use the `define-private` keyword. Private functions can only be executed by the current smart contract. Only public functions can be called from other contracts.
 
 The function doesn't take any parameters and simply returns "hello world" using the [`ok`](clarityRef.html#ok) response constructor.
 

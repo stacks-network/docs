@@ -2,26 +2,15 @@
 description: 'Blockstack Network documentation'
 ---
 
+export { convertFaqAnswersToMDX as getStaticProps } from '@common/mdx'
+import { FAQs } from '@components/faq'
+
 # FAQs about Stacks tokens and wallet
 
 ## Stacks tokens
 
-{% for faq in site.data.theFAQs.faqs %}
-{% if faq.category == 'tokens' %}
-
-### {{ faq.question }}
-
-{{ faq.answer }}
-{% endif %}
-{% endfor %}
+<FAQs category="tokens" data={props.mdx} />
 
 ## Stacks Wallet
 
-{% for faq in site.data.theFAQs.faqs %}
-{% if faq.category == 'wallet' %}
-
-### {{ faq.question }}
-
-{{ faq.answer }}
-{% endif %}
-{% endfor %}
+<FAQs category="wallet" data={props.mdx} />

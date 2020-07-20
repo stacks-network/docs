@@ -1,3 +1,6 @@
+export { convertFaqAnswersToMDX as getStaticProps } from '@common/mdx'
+import { FAQs } from '@components/faq'
+
 # Technical FAQ
 
 This document lists frequently-asked questions by developers interested in working with Blockstack application and core components. If you are new to Blockstack, you should read the [general questions](/faqs/allFAQs) first.
@@ -8,44 +11,16 @@ feel free to send a pull-request with the question and answer.
 
 ## DApp developers
 
-{% for faq in site.data.theFAQs.faqs %}
-{% if faq.category == 'dappdevs' %}
-
-### {{ faq.question }}
-
-{{ faq.answer }}
-{% endif %}
-{% endfor %}
+<FAQs category="appdevs" data={props.mdx} />
 
 ## Core developers
 
-{% for faq in site.data.theFAQs.faqs %}
-{% if faq.category == 'coredevs' %}
-
-### {{ faq.question }}
-
-{{ faq.answer }}
-{% endif %}
-{% endfor %}
+<FAQs category="coredevs" data={props.mdx} />
 
 ## Open source developers
 
-{% for faq in site.data.theFAQs.faqs %}
-{% if faq.category == 'opensource' %}
-
-### {{ faq.question }}
-
-{{ faq.answer }}
-{% endif %}
-{% endfor %}
+<FAQs category="opensource" data={props.mdx} />
 
 ## Miscellaneous questions
 
-{% for faq in site.data.theFAQs.faqs %}
-{% if faq.category == 'miscquest' %}
-
-### {{ faq.question }}
-
-{{ faq.answer }}
-{% endif %}
-{% endfor %}
+<FAQs category="miscquest" data={props.mdx} />

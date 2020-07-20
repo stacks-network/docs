@@ -90,6 +90,9 @@ export const BlockQuote: React.FC<BoxProps> = ({ children, className, ...rest })
       >
         <Box
           css={css({
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
             marginTop: 0,
             py: space('base-tight'),
             borderLeft: '2px solid',

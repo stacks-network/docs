@@ -2,20 +2,18 @@
 description: 'How to use the Blockstack Software'
 ---
 
+export { convertFaqAnswersToMDX as getStaticProps } from '@common/mdx'
+import { FAQs } from '@components/faq'
+
+<!--  TODO: very out of date, update content -->
+
 # Wallet FAQs and Troubleshooting
 
 This page contains frequently asked questions and troubleshooting related to the wallet.
 
 ## Frequently asked questions
 
-{% for faq in site.data.theFAQs.faqs %}
-{% if faq.category == 'wallet' %}
-
-### {{ faq.question }}
-
-{{ faq.answer }}
-{% endif %}
-{% endfor %}
+<FAQs category="wallet" data={props.mdx} />
 
 ## Change from a software-only wallet to a hardware wallet
 
@@ -51,8 +49,6 @@ To view or change your Stacks address on Coinlist, do the following:
    https://sale.stackstoken.com/stacks-token-sale/YOUR_COINLIST_USERNAME/wallet_address
    ```
 
-```
-
 3. Change your address if necessary.
 
 ## I tried to login to CoinList with my AngelList account. Now, I can’t sign in. How do I access my account?
@@ -67,4 +63,3 @@ If you previously set up your CoinList account by logging in with your AngelList
 6. Use the instructions in the recovery email to create a unique password for your CoinList account.
 
 Going forward, you can access your CoinList account by logging in with your email and new password.
-```

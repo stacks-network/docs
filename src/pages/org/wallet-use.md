@@ -33,7 +33,7 @@ You can use any of these hardware wallets with the Stacks Wallet:
 - Ledger Nano S
 - Ledger Blue
 
-{% include note.html content="Blockstack only supports the hardware wallets listed above.  Other wallets, for example, the Trezor Model T, <strong>are not supported</strong>.  If you have questions about wallet support, please <a href='emailto:support@blockstack.org' target='_blank'>contact Blockstack support</a>." %}
+-> Blockstack only supports the hardware wallets listed above.  Other wallets, for example, the Trezor Model T, <strong>are not supported</strong>.  If you have questions about wallet support, please <a href='emailto:support@blockstack.org' target='_blank'>contact Blockstack support</a>.
 
 The private key on your hardware wallet is used by the Stacks Wallet software to sign send transactions. Receive transactions don't require a signature. Please consult the device's manufacturer for support in setting up and configuring your hardware device.
 

@@ -1,4 +1,3 @@
-
 | Phrase/Key/Value    | Security | Description                                                                                                                                                                                                                                                     |
 | ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Secret Recovery Key | PROTECT  | Used to access an identity on the Blockstack blockchain. A 24-word sequence of words for example: <br /> `applied binge crisp pictorial fiery dancing agreeable frogs light finish ping apple` <br />The early Blockstack recovery keys were 12-word sequences. |
