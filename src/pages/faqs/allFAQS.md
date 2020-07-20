@@ -4,97 +4,44 @@ description: 'Blockstack Network documentation'
 redirect_from: /org/voucherholder
 ---
 
+export { convertFaqAnswersToMDX as getStaticProps } from '@common/mdx'
+import { FAQs } from '@components/faq'
+
 # Blockstack FAQs
 
 This is a comprehensive list of all the Blockstack FAQs.
 
 ## General questions
 
-<!-- {% for faq in site.data.theFAQs.faqs %} -->
-<!--    {% if faq.category == 'general' %} -->
-<!-- ### {{ faq.question }} -->
-<!-- <div class="faq-answer"> -->
-<!-- {{ faq.answer }} -->
-<!-- </div> -->
-<!--   {% endif %} -->
-<!-- {% endfor %} -->
+<FAQs category="general" data={props.mdx} />
 
 ## Application user questions
 
-<!-- {% for faq in site.data.theFAQs.faqs %} -->
-<!--    {% if faq.category == 'appusers' %} -->
-<!-- ### {{ faq.question }} -->
-<!-- <div class="faq-answer"> -->
-<!-- {{ faq.answer }} -->
-<!-- </div> -->
-<!--   {% endif %} -->
-<!-- {% endfor %} -->
+<FAQs category="appusers" data={props.mdx} />
 
 ## Stacks Token questions
 
-<!-- {% for faq in site.data.theFAQs.faqs %} -->
-<!--    {% if faq.category == 'tokens' %} -->
-<!-- ### {{ faq.question }} -->
-<!-- <div class="faq-answer"> -->
-<!-- {{ faq.answer }} -->
-<!-- </div> -->
-<!--   {% endif %} -->
-<!-- {% endfor %} -->
+<FAQs category="tokens" data={props.mdx} />
 
 ## Stacks Wallet questions
 
-<!-- {% for faq in site.data.theFAQs.faqs %} -->
-<!--    {% if faq.category == 'wallet' %} -->
-<!-- ### {{ faq.question }} -->
-<!-- <div class="faq-answer"> -->
-<!-- {{ faq.answer }} -->
-<!-- </div> -->
-<!--   {% endif %} -->
-<!-- {% endfor %} -->
+<FAQs category="wallet" data={props.mdx} />
 
 ## DApp developers questions
 
-<!-- {% for faq in site.data.theFAQs.faqs %} -->
-<!--    {% if faq.category == 'dappdevs' %} -->
-<!-- ### {{ faq.question }} -->
-<!-- <div class="faq-answer"> -->
-<!-- {{ faq.answer }} -->
-<!-- </div> -->
-<!--   {% endif %} -->
-<!-- {% endfor %} -->
+<FAQs category="appdevs" data={props.mdx} />
 
 ## Core developer questions
 
-<!-- {% for faq in site.data.theFAQs.faqs %} -->
-<!--    {% if faq.category == 'coredevs' %} -->
-<!-- ### {{ faq.question }} -->
-<!-- <div class="faq-answer"> -->
-<!-- {{ faq.answer }} -->
-<!-- </div> -->
-<!--   {% endif %} -->
-<!-- {% endfor %} -->
+<FAQs category="coredevs" data={props.mdx} />
 
 ## Open source developer questions
 
-<!-- {% for faq in site.data.theFAQs.faqs %} -->
-<!--    {% if faq.category == 'opensource' %} -->
-<!-- ### {{ faq.question }} -->
-<!-- <div class="faq-answer"> -->
-<!-- {{ faq.answer }} -->
-<!-- </div> -->
-<!--   {% endif %} -->
-<!-- {% endfor %} -->
+<FAQs category="opensource" data={props.mdx} />
 
 ## Miscellaneous questions
 
-<!-- {% for faq in site.data.theFAQs.faqs %} -->
-<!--    {% if faq.category == 'miscquest' %} -->
-<!-- ### {{ faq.question }} -->
-<!-- <div class="faq-answer"> -->
-<!-- {{ faq.answer }} -->
-<!-- </div> -->
-<!--   {% endif %} -->
-<!-- {% endfor %} -->
+<FAQs category="miscquest" data={props.mdx} />
 
 ## Important disclaimer
 

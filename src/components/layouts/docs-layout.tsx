@@ -61,7 +61,7 @@ p, ul, ol, table {
 `;
 
 const styleOverwrites = {
-  '& > *:not(pre):not(ul):not(ol):not(img)': {
+  '& > *:not(pre):not(ul):not(ol):not(img):not([data-reach-accordion])': {
     px: space('extra-loose'),
   },
   '& > ul, & > ol': {

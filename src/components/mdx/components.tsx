@@ -10,6 +10,7 @@ import { Text, Title } from '@components/typography';
 import { border } from '@common/utils';
 import { css } from '@styled-system/css';
 import { getHeadingStyles, baseTypeStyles } from '@components/mdx/typography';
+import { useRouter } from 'next/router';
 
 const preProps = {
   display: 'inline-block',
@@ -201,12 +202,14 @@ const Hashtag = () => (
 );
 
 export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
-  const { isActive, doChangeActiveSlug, doChangeSlugInView } = useActiveHeading(id);
+  const { isActive, doChangeActiveSlug } = useActiveHeading(id);
   const [isHovered, bind] = useHover();
+  const router = useRouter();
 
   const link = `#${id}`;
 
   const handleLinkClick = () => {
+    void router.push(router.pathname, router.pathname + link, { shallow: true });
     doChangeActiveSlug(id);
   };
   const styles = getHeadingStyles(as as any);
