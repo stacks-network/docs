@@ -16,7 +16,7 @@ const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponen
 
 export const FeedbackSection: React.FC<BoxProps> = props => {
   return (
-    <Box borderTop={border()} py={space('extra-loose')} mt={space('extra-loose')}>
+    <Box borderTop={border()} mt={space('extra-loose')}>
       <MDXComponents.h3>Was this page helpful?</MDXComponents.h3>
       <Stack isInline spacing={space('base-loose')} mt={space('base-loose')}>
         <Icon icon={SadIcon} />

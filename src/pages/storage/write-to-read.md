@@ -72,7 +72,6 @@ with that address. The message itself is a challenge text, returned via the
 Reads can be done by everybody. The URLs to a user's app data are in a canonical location in their profile.
 For example, here's how you would get data from the [Banter](https://banter.pub/) app, stored under the
 Blockstack ID `gavin.id`.
-￼
 
 ### Step 1: Get the bucket URL
 

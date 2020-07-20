@@ -1,8 +1,7 @@
 ---
+title: A decentralized storage architecture
 description: 'Storing user data with Blockstack'
 ---
-
-import Architecture from '@common/\_includes/architecture.md'
 
 # A decentralized storage architecture
 
@@ -17,7 +16,7 @@ parties.
 
 The following diagram depicts the Blockstack architecture and Gaia's place in it:
 
-<Architecture />
+@include "architecture.md"
 
 ## User control or how is Gaia decentralized?
 

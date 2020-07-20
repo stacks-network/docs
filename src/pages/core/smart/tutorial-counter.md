@@ -13,8 +13,6 @@ In this tutorial, you learn how to implement a smart contract that stores and ma
 - Understand more Clarity language design principles
 - Have a working Clarity counter smart contract
 
-## Overview
-
 ## Prerequisites
 
 Before you get started, you should complete the [Hello World tutorial](tutorial).
@@ -171,9 +169,9 @@ Here is how the final smart contract file should look like. Note that you can fi
     (ok (var-get counter))))
 ```
 
-## If you're ready to deploy and execute the contract, try [the Explorer Sandbox](tutorial.html#access-the-explorer-sandbox) or following [the instructions to run the contract in the command-line](tutorial.html#get-familiar-with-cli-optional).
+> If you're ready to deploy and execute the contract, try [the Explorer Sandbox](tutorial.html#access-the-explorer-sandbox) or following [the instructions to run the contract in the command-line](tutorial.html#get-familiar-with-cli-optional).
 
-With the completion of this tutorial, you ...
+With the completion of this tutorial, you:
 
 - Experienced test-driven development with Clarity
 - Understood more Clarity language design principles

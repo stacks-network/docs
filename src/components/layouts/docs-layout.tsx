@@ -69,32 +69,61 @@ const styleOverwrites = {
     pl: '64px ',
   },
   p: {
-    '& + p': {
-      mt: space('extra-loose'),
+    display: 'inline-block',
+    fontSize: '16.5px',
+    lineHeight: '28px',
+    ':before': {
+      content: "''",
+      marginTop: '-0.4878787878787879em',
+      display: 'block',
+      height: 0,
     },
-    '&, ol, ul': {
-      '& code': {
-        fontSize: '14px',
-      },
-      '&, & > *': {
-        display: 'inline-block',
-        fontSize: '16.5px',
-        lineHeight: '28px',
-        ':before': {
-          content: "''",
-          marginTop: '-0.4878787878787879em',
-          display: 'block',
-          height: 0,
-        },
-        ':after': {
-          content: "''",
-          marginBottom: '-0.4878787878787879em',
-          display: 'block',
-          height: 0,
-        },
-      },
+    ':after': {
+      content: "''",
+      marginBottom: '-0.4878787878787879em',
+      display: 'block',
+      height: 0,
     },
   },
+  li: {
+    pb: 0,
+    ':last-child': {
+      mb: 0,
+      pb: 0,
+    },
+    '*:last-child': {
+      mb: 0,
+    },
+    pre: {
+      display: 'block',
+      my: space('extra-loose'),
+    },
+    p: {
+      display: 'inline',
+    },
+    'ol, ul': {
+      mt: space('base-loose'),
+    },
+    ':before': {
+      verticalAlign: 'top',
+    },
+    ':marker': {
+      verticalAlign: 'top',
+    },
+    mb: space('base'),
+    'p + p': {
+      mt: space('extra-loose'),
+    },
+    'p + p, ul + p, ol + p': {
+      display: 'inline-block',
+      mt: space('extra-loose'),
+    },
+  },
+  'p + p, ul + p, ol + p': {
+    display: 'inline-block',
+    mt: space('extra-loose'),
+  },
+
   '& > *:not(pre) a > code': {
     color: color('accent'),
     '&:hover': {
@@ -102,35 +131,10 @@ const styleOverwrites = {
     },
   },
   pre: {
-    '&.shiki': {
-      bg: '#0f1117 !important',
-      overflow: 'auto',
-      py: space('base-loose'),
-      px: space('extra-loose'),
-      borderRadius: ['unset', 'unset', '12px', '12px'],
-      code: {
-        fontSize: '14.556040756914118px',
-        lineHeight: '24px',
-        padding: '0.05px 0',
-        ':before': {
-          content: "''",
-          marginTop: '-0.47483499999999995em',
-          display: 'block',
-          height: 0,
-        },
-        ':after': {
-          content: "''",
-          marginBottom: '-0.493835em',
-          display: 'block',
-          height: 0,
-        },
-        whiteSpace: 'pre',
-      },
-    },
     '& + h2, & + h3': {
       mt: space('extra-loose'),
     },
-    '& + h4, & + h5, & + h6': {
+    '& + h4, & + h5, & + h6, & + blockquote, & + ul, & + ol': {
       mt: 0,
     },
   },
@@ -201,8 +205,10 @@ const styleOverwrites = {
     },
   },
   'ol, ul': {
-    '& + blockquote': {
-      mt: space('extra-tight'),
+    mb: 0,
+    mt: space('extra-loose'),
+    '& + blockquote, & + pre': {
+      // mt: space('extra-tight'),
     },
   },
   blockquote: {
@@ -235,10 +241,6 @@ const styleOverwrites = {
     boxShadow: 'none',
     my: space('extra-loose'),
   },
-  'li pre': {
-    display: 'block',
-    my: space('base'),
-  },
 };
 
 export const Contents = ({ headings, children }) => (
@@ -256,7 +258,15 @@ export const Contents = ({ headings, children }) => (
     >
       {children}
     </ContentWrapper>
-    {headings?.length && headings.length > 1 ? <TableOfContents headings={headings} /> : null}
+    {headings?.length && headings.length > 1 ? (
+      <TableOfContents
+        display={['none', 'none', 'block', 'block']}
+        position="sticky"
+        top="105px"
+        pl={space('extra-loose')}
+        headings={headings}
+      />
+    ) : null}
   </>
 );
 
@@ -295,7 +305,7 @@ const DocsLayout: React.FC<{ isHome?: boolean }> = ({ children, isHome }) => {
               {children}
             </Flex>
           </Main>
-          {!isErrorPage && <Footer justifySelf="flex-end" />}
+          {isErrorPage || isHome ? null : <Footer justifySelf="flex-end" />}
         </Flex>
       </Flex>
     </Flex>

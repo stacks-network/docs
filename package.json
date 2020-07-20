@@ -19,6 +19,7 @@
     "@types/reach__tooltip": "^0.2.0",
     "algoliasearch": "^4.3.0",
     "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-prismjs": "^2.0.1",
     "docsearch.js": "^2.6.3",
     "eslint": "^7.4.0",
     "fathom-client": "^3.0.0",
@@ -63,7 +64,6 @@
     "remark-slug": "6.0.0",
     "remark-squeeze-paragraphs": "^4.0.0",
     "remark-unwrap-images": "2.0.0",
-    "shiki": "^0.1.7",
     "store": "^2.0.12",
     "strip-markdown": "^3.1.2",
     "swr": "^0.2.3",
@@ -87,8 +87,8 @@
   },
   "private": true,
   "scripts": {
-    "build": "yarn clean:build-files && next telemetry disable && next build && next export -o build",
-    "build:analyze": "yarn clean:build-files && next telemetry disable && ANALYZE=true next build",
+    "build": "yarn clean:build-files && next telemetry disable && NODE_ENV=production next build && next export -o build",
+    "build:analyze": "yarn clean:build-files && next telemetry disable && NODE_ENV=production ANALYZE=true next build",
     "start": "next telemetry disable && NODE_ENV=production next start",
     "clean:build-files": "rimraf .next",
     "dev": "yarn clean:build-files && next dev",
@@ -102,8 +102,7 @@
     "typecheck:watch": "npm run typecheck -- --watch"
   },
   "resolutions": {
-    "preact": "^10.4.4",
-    "shiki-languages": "file:./lib/shiki-languages"
+    "preact": "^10.4.4"
   },
   "prettier": "@blockstack/prettier-config"
 }

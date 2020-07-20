@@ -1,76 +1,83 @@
 import React from 'react';
 import { MDXComponents } from '@components/mdx/mdx-components';
-import renderToString from 'next-mdx-remote/render-to-string';
+import { Box } from '@blockstack/ui';
+import { TableOfContents } from '@components/toc';
 import hydrate from 'next-mdx-remote/hydrate';
-import { remarkPlugins, wrapValueInTicks } from '@common/mdx';
-import clarityRefData from '@common/_data/clarityRef.json';
 
-const wrapInClarityCodes = value => '```clarity' + `\n` + value.trim() + `\n` + '```';
+const renderFunctionsSection = entry => (
+  <>
+    <MDXComponents.h3>{entry.name}</MDXComponents.h3>
 
-const convertKeywordsToMdx = entry => {
-  return `
-  ### ${entry.name}
-  
-  ${wrapValueInTicks(entry.output_type)}
-  
-  ${entry.description}
-  
-  #### Example
-  
-  ${wrapInClarityCodes(entry.example)}
+    <MDXComponents.p>
+      <strong>Signature:</strong>{' '}
+      <MDXComponents.inlineCode>{entry.signature}</MDXComponents.inlineCode>
+    </MDXComponents.p>
 
-  `;
+    <MDXComponents.p>
+      <strong>Input:</strong>{' '}
+      <MDXComponents.inlineCode>{entry.input_type}</MDXComponents.inlineCode>
+    </MDXComponents.p>
+
+    <MDXComponents.p>
+      <strong>Output:</strong>{' '}
+      <MDXComponents.inlineCode>{entry.output_type}</MDXComponents.inlineCode>
+    </MDXComponents.p>
+
+    {hydrate(entry.description, MDXComponents)}
+
+    <MDXComponents.h4>Example</MDXComponents.h4>
+
+    {/* @ts-ignore */}
+    <MDXComponents.code>{entry.example}</MDXComponents.code>
+  </>
+);
+
+const renderKeywordsSection = entry => (
+  <>
+    <MDXComponents.h3>{entry.name}</MDXComponents.h3>
+
+    <MDXComponents.p>
+      <strong>Output:</strong>{' '}
+      <MDXComponents.inlineCode>{entry.output_type}</MDXComponents.inlineCode>
+    </MDXComponents.p>
+
+    {hydrate(entry.description, MDXComponents)}
+
+    <MDXComponents.h4>Example</MDXComponents.h4>
+
+    {/* @ts-ignore */}
+    <MDXComponents.code>{entry.example}</MDXComponents.code>
+  </>
+);
+
+export const ClarityKeywordReference = ({ entries }) => {
+  return (
+    <>
+      <Box>
+        <TableOfContents
+          label="Contents"
+          headings={entries.map(entry => ({
+            content: entry.name,
+            level: 1,
+          }))}
+        />
+      </Box>
+      {entries.map(renderKeywordsSection)}
+    </>
+  );
 };
-
-const convertFunctionsToMdx = entry => {
-  return `
-  ### ${entry.name}
-  
-  ${wrapInClarityCodes(entry.signature)}
-  
-  **Input:** ${wrapValueInTicks(entry.input_type)}
-  
-  **Output:** ${wrapValueInTicks(entry.output_type)}
-  
-  ${entry.description}
-  
-  #### Example
-  
-  ${wrapInClarityCodes(entry.example)}
-
-  `;
-};
-
-const makeMdxDocument = (data, converter) => {
-  let mdx = ``;
-  data.forEach(entry => {
-    mdx += converter(entry);
-  });
-  return mdx;
-};
-
-// getStaticProps
-export async function convertClarityRefToMdx() {
-  const functionsMdx = makeMdxDocument(clarityRefData.functions, convertFunctionsToMdx);
-  const keywordsMdx = makeMdxDocument(clarityRefData.keywords, convertKeywordsToMdx);
-
-  const functions = await renderToString(functionsMdx, MDXComponents, {
-    remarkPlugins: remarkPlugins('clarity'),
-  });
-  const keywords = await renderToString(keywordsMdx, MDXComponents, {
-    remarkPlugins: remarkPlugins('clarity'),
-  });
-  return {
-    props: {
-      reference: {
-        functions,
-        keywords,
-      },
-    },
-  };
-}
-
-export const ClarityKeywordReference = ({ reference }) =>
-  hydrate(reference.keywords, MDXComponents);
-export const ClarityFunctionReference = ({ reference }) =>
-  hydrate(reference.functions, MDXComponents);
+export const ClarityFunctionReference = ({ entries }) => (
+  <>
+    <Box>
+      <TableOfContents
+        columns={[2, 2, 3]}
+        label="Contents"
+        headings={entries.map(entry => ({
+          content: entry.name,
+          level: 1,
+        }))}
+      />
+    </Box>
+    {entries.map(renderFunctionsSection)}
+  </>
+);
