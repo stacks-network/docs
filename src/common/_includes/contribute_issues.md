@@ -1,10 +1,3 @@
-### Sections in this article
-
-{:.no_toc}
-
-- TOC
-  {:toc}
-
 ## Using the issue tracker
 
 The [issue tracker](https://github.com/blockstack/blockstack-browser/issues) is the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests) and [submitting pull requests](#pull-requests), but please respect the following

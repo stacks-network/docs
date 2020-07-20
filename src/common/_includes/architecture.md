@@ -1,7 +1,3 @@
----
-layout: none
----
-
 ![Blockstack Architecture](/common/images/architecture.png)
 
 Blockchains require consensus among large numbers of people, so they can be slow. Additionally, a blockchain is not designed to hold a lot of data. This means using a blockchain for every bit of data a user might write and store is expensive. For example, imagine if an application were storing every tweet in the chain.

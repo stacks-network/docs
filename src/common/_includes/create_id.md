@@ -4,7 +4,7 @@ To create an initial Blockstack ID, do the following:
 
    The application prompts you to create or restore an ID.
 
-   ![]({{ site.baseurl }}/browser/images/create-id-0.png)
+   ![](/browser/images/create-id-0.png)
 
 2. Choose **Create new ID**.
 
@@ -17,7 +17,7 @@ To create an initial Blockstack ID, do the following:
 
    You'll use this initial ID to access the Blockstack Browser and other DApps.
 
-   ![]({{ site.baseurl }}/browser/images/create-id-1.png)
+   ![](/browser/images/create-id-1.png)
 
    The **Check Availability** buttom makes sure your name is unique.
 
@@ -27,7 +27,7 @@ To create an initial Blockstack ID, do the following:
    password to encrypt your recovery code. You must record and save this
    initial password.
 
-   ![]({{ site.baseurl }}/browser/images/create-id-2.png)
+   ![](/browser/images/create-id-2.png)
 
    {% include note.html content="The Blockstack team cannot restore your password for you." %}
 
@@ -35,7 +35,7 @@ To create an initial Blockstack ID, do the following:
 
    Blockstack creates an id for you and then prompts you for an email.
 
-   ![]({{ site.baseurl }}/browser/images/create-id-3.png)
+   ![](/browser/images/create-id-3.png)
 
    Blockstack uses this email address to send you recovery information. This email is only sent once.
 
@@ -43,7 +43,7 @@ To create an initial Blockstack ID, do the following:
 
    Blockstack presents you with the completed ID.
 
-   ![]({{ site.baseurl }}/browser/images/create-id-4.png)
+   ![](/browser/images/create-id-4.png)
 
    The system prompts you to save your **recovery code**.
 
@@ -51,11 +51,11 @@ To create an initial Blockstack ID, do the following:
 
    The system warns you to save your key:
 
-   ![]({{ site.baseurl }}/browser/images/secret-key-recovery.png)
+   ![](/browser/images/secret-key-recovery.png)
 
 7. Click **Secret Recovery Key** to record your key.
 
-   ![]({{ site.baseurl }}/browser/images/create-id-5.png)
+   ![](/browser/images/create-id-5.png)
 
    A recovery code is a sequence of words. These words allow you to recover
    an `id.blockstack` that you've created. You should store the words along

@@ -1,10 +1,3 @@
-### Sections in this article
-
-{:.no_toc}
-
-- TOC
-  {:toc}
-
 ## Community Rewards
 
 Blockstack Community Reward Program
