@@ -105,7 +105,7 @@ export const BlockQuote: React.FC<BoxProps> = ({ children, className, ...rest })
   );
 };
 
-const imgix = 'https://docs-stacks.imgix.net/';
+const imgix = 'https://docs-stacks.imgix.net';
 
 const params = '?auto=compress,format';
 
@@ -139,7 +139,7 @@ export const Img: React.FC<BoxProps & { loading?: string; src?: string; alt?: st
     src,
     ...rest,
   };
-  return <Box loading="lazy" display="block" mx="auto" as="img" {...props} />;
+  return <Box loading="lazy" maxWidth="100%" display="block" as="img" {...props} />;
 };
 
 export const MDXComponents = {
