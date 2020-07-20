@@ -142,13 +142,10 @@ Let's get familiar with the tests to understand what the new smart contract shou
        ✓ should start at zero
        ✓ should increment (133ms)
        ✓ should decrement (177ms)
+       4 passing (586ms)
    ```
 
-
-    4 passing (586ms)
-    ```
-
-    **Congratulations! You just implemented your first Clarity smart contract.**
+   **Congratulations! You just implemented your first Clarity smart contract.**
 
 Here is how the final smart contract file should look like. Note that you can find the `decrement` function in here - in case you want to compare with your own implementation:
 

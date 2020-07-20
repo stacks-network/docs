@@ -3,6 +3,8 @@ title: 'Stacks Blockchain APIs'
 description: Interacting with the Stacks 2.0 Blockchain
 ---
 
+# Stacks Blockchain APIs
+
 With the launch of Stacks 2.0, a new version of the Blockstack blockchain was released. There are two ways of interacting with the blockchain, either using the Stacks Blockchain API or by making RPC calls to a Stacks Core directly.
 
 ## Stacks Core API
