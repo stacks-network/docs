@@ -14,7 +14,7 @@ import { Text } from '@components/typography';
 import { border } from '@common/utils';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-const Code = dynamic(() => import('../code-block'));
+const Code = dynamic(() => import('../code-block/index'));
 
 const BaseHeading: React.FC<BoxProps> = React.memo(props => (
   <Heading width="100%" mt={space('base-loose')} {...props} />

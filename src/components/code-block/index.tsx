@@ -7,28 +7,80 @@ import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-toml';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-kotlin';
+import { Highlighter, HighlighterProps } from '../highlighter';
+import { Box, BoxProps } from '@blockstack/ui';
+import { css } from '@styled-system/css';
 
-import { SimpleCodeBlock } from '@components/code-block/components';
-import { useForceUpdate } from '@blockstack/ui';
+interface CodeBlock {
+  live?: boolean;
+  highlight?: string;
+}
 
-export const CodeBlock = React.memo(
-  ({ className, live = true, isManual, render, children, ...props }: any) => {
-    const update = useForceUpdate();
-    React.useEffect(() => {
-      update();
-    }, []);
+export type CodeBlockProps = CodeBlock & HighlighterProps & BoxProps;
 
-    const language = className && className.replace(/language-/, '');
+const getHighlightLineNumbers = str =>
+  str &&
+  str
+    .split(' ')
+    .join('')
+    .split(',')
+    .flatMap(s => {
+      if (!s.includes('-')) return +s;
 
-    return (
-      <SimpleCodeBlock
-        editorCode={children.toString()}
-        showLineNumbers={language !== 'bash'}
-        language={language}
-        {...props}
-      />
-    );
-  }
+      const [min, max] = s.split('-');
+
+      return Array.from({ length: max - min + 1 }, (_, n) => n + +min);
+    });
+
+const CodeBlock = React.memo(
+  React.forwardRef(
+    (
+      {
+        code,
+        showLineNumbers,
+        hideLineHover,
+        style = {},
+        highlightedLines,
+        className,
+        live = true,
+        highlight,
+        children,
+        ...props
+      }: CodeBlockProps,
+      ref: React.Ref<HTMLDivElement>
+    ) => {
+      const language = className && className.replace(/language-/, '');
+
+      return (
+        <Box
+          className={language !== 'bash' ? 'line-numbers' : ''}
+          bg="ink"
+          borderRadius={[0, 0, '12px']}
+          overflowX="auto"
+        >
+          <Box
+            ref={ref}
+            css={css({
+              ...style,
+              // @ts-ignore
+              color: 'white',
+              // @ts-ignore
+              whiteSpace: 'pre',
+              ...props,
+            })}
+          >
+            <Highlighter
+              language={language as any}
+              code={children.toString().trim()}
+              showLineNumbers={language && language !== 'bash'}
+              highlightedLines={getHighlightLineNumbers(highlight)}
+              hideLineHover
+            />
+          </Box>
+        </Box>
+      );
+    }
+  )
 );
 
 export default CodeBlock;

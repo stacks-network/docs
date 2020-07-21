@@ -4,11 +4,12 @@ import { CircleIcon } from '@components/home/common';
 import { CONTENT_MAX_WIDTH } from '@common/constants';
 import { Card } from '@components/home/card';
 import { Body, H1, BodyLarge, SubHeading } from '@components/home/text';
+import { HEADER_HEIGHT } from '@components/header';
 
 export const Hero = ({ cards }: { cards?: any }) => {
   return (
     <>
-      <Grid pb="64px" pt="64px" style={{ placeItems: 'center' }} mt="50px">
+      <Grid pb="64px" pt="64px" style={{ placeItems: 'center' }}>
         <Box maxWidth="62ch" textAlign="center">
           <H1 mb={space('base')}>Easily build decentralized apps</H1>
           <BodyLarge maxWidth="42ch" mt="64px" mx="auto">
