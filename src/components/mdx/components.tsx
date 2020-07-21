@@ -91,18 +91,20 @@ export const TData = (props: any) => (
   />
 );
 
-export const Link = forwardRef((props: { href: string } & BoxProps, ref: Ref<HTMLDivElement>) => (
-  <Box
-    as="a"
-    ref={ref}
-    color="var(--colors-accent)"
-    cursor="pointer"
-    textDecoration="underline"
-    _hover={{ textDecoration: 'none' }}
-    _focus={{ boxShadow: 'outline' }}
-    {...props}
-  />
-));
+export const Link = forwardRef(
+  (props: { href: string; target?: string; rel?: string } & BoxProps, ref: Ref<HTMLDivElement>) => (
+    <Box
+      as="a"
+      ref={ref}
+      color="var(--colors-accent)"
+      cursor="pointer"
+      textDecoration="underline"
+      _hover={{ textDecoration: 'none' }}
+      _focus={{ boxShadow: 'outline' }}
+      {...props}
+    />
+  )
+);
 
 export const TextItem = (props: any) => (
   <Text

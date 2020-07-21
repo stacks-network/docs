@@ -11,19 +11,24 @@ import 'prismjs/components/prism-kotlin';
 import { SimpleCodeBlock } from '@components/code-block/components';
 import { useForceUpdate } from '@blockstack/ui';
 
-export const CodeBlock = ({ className, live = true, isManual, render, children, ...props }) => {
-  const update = useForceUpdate();
-  React.useEffect(() => {
-    update();
-  }, []);
+export const CodeBlock = React.memo(
+  ({ className, live = true, isManual, render, children, ...props }: any) => {
+    const update = useForceUpdate();
+    React.useEffect(() => {
+      update();
+    }, []);
 
-  const language = className && className.replace(/language-/, '');
+    const language = className && className.replace(/language-/, '');
 
-  return <SimpleCodeBlock editorCode={children.toString()} language={language} {...props} />;
-};
-
-CodeBlock.defaultProps = {
-  mountStylesheet: false,
-};
+    return (
+      <SimpleCodeBlock
+        editorCode={children.toString()}
+        showLineNumbers={language !== 'bash'}
+        language={language}
+        {...props}
+      />
+    );
+  }
+);
 
 export default CodeBlock;

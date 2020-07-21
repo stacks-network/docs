@@ -2,7 +2,7 @@
 description: Blockstack DApp technical FAQs
 ---
 
-export { convertFaqAnswersToMDX as getStaticProps } from '@common/mdx'
+export { convertFaqAnswersToMDX as getStaticProps } from '@common/data/faq'
 import { FAQs } from '@components/faq'
 
 # DApp Developer FAQs

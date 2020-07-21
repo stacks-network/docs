@@ -1,4 +1,4 @@
-export { convertFaqAnswersToMDX as getStaticProps } from '@common/mdx'
+export { convertFaqAnswersToMDX as getStaticProps } from '@common/data/faq'
 import { FAQs } from '@components/faq'
 
 # Technical FAQ

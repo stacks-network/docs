@@ -4,7 +4,7 @@ description: 'Blockstack Network documentation'
 redirect_from: /org/voucherholder
 ---
 
-export { convertFaqAnswersToMDX as getStaticProps } from '@common/mdx'
+export { convertFaqAnswersToMDX as getStaticProps } from '@common/data/faq'
 import { FAQs } from '@components/faq'
 
 # Blockstack FAQs

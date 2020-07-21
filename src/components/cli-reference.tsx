@@ -1,5 +1,5 @@
 import React from 'react';
-import { cliReferenceData } from '@common/_data/cliRef';
+import { cliReferenceData } from '@common/../_data/cliRef';
 import { MDXComponents } from '@components/mdx/mdx-components';
 import { Grid, Box } from '@blockstack/ui';
 import { border } from '@common/utils';
