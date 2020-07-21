@@ -9,13 +9,14 @@ import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
 import dynamic from 'next/dynamic';
 const SearchBox = dynamic(() => import('./search'));
 import { SIDEBAR_WIDTH } from '@common/constants';
+import { HEADER_HEIGHT } from '@components/header';
 
 const Wrapper = ({ width = `${SIDEBAR_WIDTH}px`, children, ...rest }: any) => (
   <Box
     position="relative"
     width={width}
     maxWidth={width}
-    height="calc(100vh - 50px)"
+    height={`calc(100vh - ${HEADER_HEIGHT}px)`}
     flexGrow={0}
     flexShrink={0}
     overflow="auto"
@@ -23,9 +24,9 @@ const Wrapper = ({ width = `${SIDEBAR_WIDTH}px`, children, ...rest }: any) => (
   >
     <Box
       position="fixed"
-      top={50}
+      top={HEADER_HEIGHT}
       width={width}
-      height="calc(100vh - 50px)"
+      height={`calc(100vh - ${HEADER_HEIGHT}px)`}
       overflow="auto"
       borderRight={['none', border(), border()]}
       pb={space('base-loose')}

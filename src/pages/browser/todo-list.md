@@ -154,7 +154,7 @@ Further down in the component we see in
 that it checks upon mount to either process completion of authentication with `userSession.handlePendingSignIn()`
 or otherwise load session data into app state as above with `userSession.isUserSignedIn()`:
 
-```js
+```jsx
 // src/components/App.jsx
 
 componentDidMount() {

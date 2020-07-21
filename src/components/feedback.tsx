@@ -1,5 +1,17 @@
 import React from 'react';
-import { Box, BoxProps, color, Flex, space, Stack, themeColor } from '@blockstack/ui';
+import {
+  Box,
+  Button,
+  BoxProps,
+  color,
+  Flex,
+  space,
+  Stack,
+  themeColor,
+  transition,
+  SlideFade,
+} from '@blockstack/ui';
+import { Text } from '@components/typography';
 import { MDXComponents, Link } from '@components/mdx';
 import { SadIcon, NeutralIcon, HappyIcon } from '@components/icons/feedback';
 import { useHover } from 'use-events';
@@ -15,8 +27,63 @@ const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponen
   );
 };
 
+const FeedbackCard = ({ show, onClose }) => {
+  return (
+    <SlideFade in={show}>
+      {styles => (
+        <Box ml={space('base-loose')} p={space('base')}>
+          <Flex
+            p={space('base')}
+            border={border()}
+            borderRadius="12px"
+            align="center"
+            justifyContent="center"
+            bg={color('bg')}
+            size="100%"
+            boxShadow="mid"
+            transition={transition}
+            _hover={{
+              transform: 'translateY(-5px)',
+              boxShadow: 'high',
+            }}
+            style={{
+              ...styles,
+            }}
+          >
+            <Box>
+              <Button
+                as="a"
+                // @ts-ignore
+                href="https://forms.formium.io/f/5f174a3960b46d000139b62f"
+                target="_blank"
+              >
+                Leave feedback
+              </Button>
+              <Box
+                _hover={{ color: color('accent'), textDecoration: 'underline', cursor: 'pointer' }}
+                onClick={onClose}
+                mt={space('tight')}
+                textAlign="center"
+                mx="auto"
+              >
+                <Text color="currentColor" fontSize="14px">
+                  Dismiss
+                </Text>
+              </Box>
+            </Box>
+          </Flex>
+        </Box>
+      )}
+    </SlideFade>
+  );
+};
+
 export const FeedbackSection: React.FC<BoxProps> = props => {
   const { pathname } = useRouter();
+  const [showButton, setShowButton] = React.useState(false);
+  const handleShow = () => {
+    setShowButton(!showButton);
+  };
   return (
     <Flex
       flexDirection={['column', 'column', 'row']}
@@ -24,14 +91,17 @@ export const FeedbackSection: React.FC<BoxProps> = props => {
       borderTop={border()}
       mt={space('extra-loose')}
     >
-      <Box>
-        <MDXComponents.h3>Was this page helpful?</MDXComponents.h3>
-        <Stack isInline spacing={space('base-loose')} mt={space('base-loose')}>
-          <Icon icon={SadIcon} />
-          <Icon icon={NeutralIcon} />
-          <Icon icon={HappyIcon} />
-        </Stack>
-      </Box>
+      <Flex>
+        <Box position="relative">
+          <MDXComponents.h4>Was this page helpful?</MDXComponents.h4>
+          <Stack isInline spacing={space('base-loose')} mt={space('base-loose')}>
+            <Icon onClick={() => handleShow()} icon={SadIcon} />
+            <Icon onClick={() => handleShow()} icon={NeutralIcon} />
+            <Icon onClick={() => handleShow()} icon={HappyIcon} />
+          </Stack>
+        </Box>
+        <FeedbackCard show={showButton} onClose={() => setShowButton(false)} />
+      </Flex>
       <Box mt={space(['extra-loose', 'extra-loose', 'base-loose'])}>
         <Link
           href={`https://github.com/blockstack/docs.blockstack/tree/feat/next/src/pages${pathname}.md`}

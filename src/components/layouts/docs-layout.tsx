@@ -1,7 +1,7 @@
 import React from 'react';
-import { Flex, color, space, themeColor } from '@blockstack/ui';
+import { Flex, color, space, themeColor, ChevronIcon } from '@blockstack/ui';
 import { SideNav } from '../side-nav';
-import { Header } from '../header';
+import { Header, HEADER_HEIGHT } from '../header';
 import { Main } from '../main';
 import { Footer } from '../footer';
 import { useRouter } from 'next/router';
@@ -225,7 +225,7 @@ const styleOverwrites = {
   img: {
     my: space('extra-loose'),
   },
-  '& > pre > *:not(pre)': {
+  '& > pre > *:not(pre):not(.line-numbers)': {
     border: 'none',
     px: space(['extra-loose', 'extra-loose', 'none', 'none']),
   },
@@ -273,7 +273,7 @@ export const Contents = ({ headings, children }) => (
       <TableOfContents
         display={['none', 'none', 'block', 'block']}
         position="sticky"
-        top="105px"
+        top="195px"
         pl={space('extra-loose')}
         headings={headings}
       />
@@ -292,7 +292,7 @@ const DocsLayout: React.FC<{ isHome?: boolean }> = ({ children, isHome }) => {
   });
   return (
     <Flex minHeight="100vh" flexDirection="column">
-      <Header />
+      <Header hideSubBar={isHome || isErrorPage} />
       <Flex width="100%" flexGrow={1}>
         {!isHome && <SideNav display={['none', 'none', 'block']} />}
         <Flex
@@ -303,7 +303,7 @@ const DocsLayout: React.FC<{ isHome?: boolean }> = ({ children, isHome }) => {
             `calc(100% - ${isHome ? 0 : SIDEBAR_WIDTH}px)`,
             `calc(100% - ${isHome ? 0 : SIDEBAR_WIDTH}px)`,
           ]}
-          mt={'50px'}
+          mt={`${HEADER_HEIGHT}px`}
           flexDirection="column"
         >
           <Main mx="unset" width={'100%'}>

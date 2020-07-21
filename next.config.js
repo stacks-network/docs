@@ -2,6 +2,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const webpack = require('webpack');
+
 const path = require('path');
 
 const remarkPlugins = [
@@ -67,6 +69,9 @@ module.exports = withBundleAnalyzer({
       const aliases = config.resolve.alias || (config.resolve.alias = {});
       aliases.react = aliases['react-dom'] = 'preact/compat';
       aliases['react-ssr-prepass'] = 'preact-ssr-prepass';
+
+      // to fix a dupe dependency
+      config.externals.push('prismjs');
 
       // https://github.com/FormidableLabs/react-live#what-bundle-size-can-i-expect
       aliases['buble'] = '@philpl/buble';
