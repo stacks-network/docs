@@ -7,7 +7,7 @@ const path = require('path');
 const remarkPlugins = [
   [
     require('@hashicorp/remark-plugins').includeMarkdown,
-    { resolveFrom: path.join(__dirname, 'src/common/_includes') },
+    { resolveFrom: path.join(__dirname, 'src/_includes') },
   ],
   require('remark-squeeze-paragraphs'),
   require('./lib/remark-paragraph-alerts'),

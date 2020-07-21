@@ -22,7 +22,12 @@ export const Hero = ({ cards }: { cards?: any }) => {
         width="100%"
         gridGap={space('extra-loose')}
         minHeight="200px"
-        gridTemplateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
+        gridTemplateColumns={[
+          'repeat(1, 1fr)',
+          'repeat(1, 1fr)',
+          'repeat(2, 1fr)',
+          'repeat(3, 1fr)',
+        ]}
         mx="auto"
         mt={space('extra-loose')}
         px={space('extra-loose')}

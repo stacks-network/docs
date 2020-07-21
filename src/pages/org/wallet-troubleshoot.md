@@ -2,7 +2,7 @@
 description: 'How to use the Blockstack Software'
 ---
 
-export { convertFaqAnswersToMDX as getStaticProps } from '@common/mdx'
+export { convertFaqAnswersToMDX as getStaticProps } from '@common/data/faq'
 import { FAQs } from '@components/faq'
 
 <!--  TODO: very out of date, update content -->

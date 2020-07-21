@@ -2,7 +2,7 @@
 description: 'Blockstack Network documentation'
 ---
 
-export { convertFaqAnswersToMDX as getStaticProps } from '@common/mdx'
+export { convertFaqAnswersToMDX as getStaticProps } from '@common/data/faq'
 import { FAQs } from '@components/faq'
 
 # FAQs about Stacks tokens and wallet

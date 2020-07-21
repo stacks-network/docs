@@ -1,9 +1,10 @@
 import React from 'react';
 import { Box, BoxProps, color, Flex, space, Stack, themeColor } from '@blockstack/ui';
-import { MDXComponents } from '@components/mdx';
+import { MDXComponents, Link } from '@components/mdx';
 import { SadIcon, NeutralIcon, HappyIcon } from '@components/icons/feedback';
 import { useHover } from 'use-events';
 import { border } from '@common/utils';
+import { useRouter } from 'next/router';
 
 const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponent, ...props }) => {
   const [isHovered, bind] = useHover();
@@ -15,14 +16,31 @@ const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponen
 };
 
 export const FeedbackSection: React.FC<BoxProps> = props => {
+  const { pathname } = useRouter();
   return (
-    <Box borderTop={border()} mt={space('extra-loose')}>
-      <MDXComponents.h3>Was this page helpful?</MDXComponents.h3>
-      <Stack isInline spacing={space('base-loose')} mt={space('base-loose')}>
-        <Icon icon={SadIcon} />
-        <Icon icon={NeutralIcon} />
-        <Icon icon={HappyIcon} />
-      </Stack>
-    </Box>
+    <Flex
+      flexDirection={['column', 'column', 'row']}
+      justifyContent="space-between"
+      borderTop={border()}
+      mt={space('extra-loose')}
+    >
+      <Box>
+        <MDXComponents.h3>Was this page helpful?</MDXComponents.h3>
+        <Stack isInline spacing={space('base-loose')} mt={space('base-loose')}>
+          <Icon icon={SadIcon} />
+          <Icon icon={NeutralIcon} />
+          <Icon icon={HappyIcon} />
+        </Stack>
+      </Box>
+      <Box mt={space(['extra-loose', 'extra-loose', 'base-loose'])}>
+        <Link
+          href={`https://github.com/blockstack/docs.blockstack/tree/feat/next/src/pages${pathname}.md`}
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          Edit this page on GitHub
+        </Link>
+      </Box>
+    </Flex>
   );
 };

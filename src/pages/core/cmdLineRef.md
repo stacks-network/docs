@@ -2,7 +2,7 @@
 title: Blockstack CLI Reference
 ---
 
-export { convertBlockstackCLIUsageToMdx as getStaticProps } from '@common/mdx'
+export { convertBlockstackCLIUsageToMdx as getStaticProps } from '@common/data/cli-ref'
 import { CLIReferenceTable } from '@components/cli-reference'
 
 # Blockstack CLI reference
