@@ -183,7 +183,8 @@ const Lines = ({
               length={lines.length + 1}
               showLineNumbers={showLineNumbers}
               highlighted={
-                highlightedLines?.length && !!highlightedLines.find(lineNumber => lineNumber === i)
+                highlightedLines?.length &&
+                !!highlightedLines.find(lineNumber => lineNumber === i + 1)
               }
               hideLineHover={hideLineHover || lines.length < 3}
               {...getLineProps({ line: tokens, key: i })}

@@ -3,7 +3,7 @@ import { cliReferenceData } from '@common/../_data/cliRef';
 import { MDXComponents } from '@components/mdx/mdx-components';
 import { Grid, Box } from '@blockstack/ui';
 import { border } from '@common/utils';
-import hydrate from 'next-mdx-remote/hydrate';
+import { hydrate } from '@common/hydrate-mdx';
 
 const styles = {
   maxWidth: '100%',
@@ -15,13 +15,21 @@ const InlineCode = props => <MDXComponents.inlineCode {...styles} {...props} />;
 
 const ReferenceEntry = ({ entry, usage }) => (
   <>
-    <MDXComponents.h2>{entry.command}</MDXComponents.h2>
+    <MDXComponents.h4>{entry.command}</MDXComponents.h4>
 
     <MDXComponents.p>
       <strong>Group:</strong> {entry.group}
     </MDXComponents.p>
 
-    {hydrate(usage, MDXComponents)}
+    {hydrate(usage, {
+      ...MDXComponents,
+      p: (props: any) => (
+        <MDXComponents.p
+          {...props}
+          style={{ display: 'block', wordBreak: 'break-word', hyphens: 'auto' }}
+        />
+      ),
+    })}
     <MDXComponents.h3>Arguments</MDXComponents.h3>
     <Grid
       mb="tight"

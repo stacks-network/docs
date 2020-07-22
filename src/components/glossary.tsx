@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, space } from '@blockstack/ui';
-import hydrate from 'next-mdx-remote/hydrate';
+import { hydrate } from '@common/hydrate-mdx';
 import { MDXComponents } from '@components/mdx/mdx-components';
 import { slugify } from '@common/utils';
 import { css } from '@styled-system/css';

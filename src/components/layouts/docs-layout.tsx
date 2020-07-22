@@ -163,7 +163,7 @@ const styleOverwrites = {
     },
   },
   h4: {
-    mt: space('extra-loose'),
+    mt: '64px',
     '&, & > *': {
       ...getHeadingStyles('h4'),
     },
@@ -212,13 +212,13 @@ const styleOverwrites = {
     },
   },
   blockquote: {
+    '& + blockquote': {
+      mt: space('extra-tight'),
+    },
     '& > div > div > *:first-child': {
       mt: 0,
     },
     '& + pre': {
-      mt: '0',
-    },
-    '& + h2': {
       mt: '0',
     },
   },
@@ -264,7 +264,7 @@ export const Contents = ({ headings, children }) => (
       }
       mx="unset"
       pt="unset"
-      pr={space('base-tight')}
+      pr={space(['none', 'none', 'base-tight', 'base-tight'])}
       css={css(styleOverwrites)}
     >
       {children}

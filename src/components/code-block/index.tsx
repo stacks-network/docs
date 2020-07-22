@@ -1,4 +1,10 @@
 import React from 'react';
+import { Highlighter, HighlighterProps } from '../highlighter';
+import { Box, BoxProps } from '@blockstack/ui';
+import { css } from '@styled-system/css';
+
+// Languages used in docs
+// when adding a new language in the docs, import the theme here
 import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-jsx';
@@ -7,12 +13,10 @@ import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-toml';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-kotlin';
-import { Highlighter, HighlighterProps } from '../highlighter';
-import { Box, BoxProps } from '@blockstack/ui';
-import { css } from '@styled-system/css';
 
 interface CodeBlock {
   live?: boolean;
+  showLineNumbers?: boolean;
   highlight?: string;
 }
 
@@ -53,7 +57,7 @@ const CodeBlock = React.memo(
 
       return (
         <Box
-          className={language !== 'bash' ? 'line-numbers' : ''}
+          className={language && language !== 'bash' ? 'line-numbers' : ''}
           bg="ink"
           borderRadius={[0, 0, '12px']}
           overflowX="auto"
@@ -72,7 +76,7 @@ const CodeBlock = React.memo(
             <Highlighter
               language={language as any}
               code={children.toString().trim()}
-              showLineNumbers={language && language !== 'bash'}
+              showLineNumbers={showLineNumbers || (language && language !== 'bash')}
               highlightedLines={getHighlightLineNumbers(highlight)}
               hideLineHover
             />

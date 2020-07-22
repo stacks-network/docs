@@ -56,7 +56,7 @@ const BreadCrumbs: React.FC<any> = props => {
     });
   }, [router.route]);
 
-  return (
+  return route && section ? (
     <Flex align="center">
       <Box>
         <Text fontSize="14px" fontWeight="600">
@@ -80,6 +80,8 @@ const BreadCrumbs: React.FC<any> = props => {
         </Text>
       </Box>
     </Flex>
+  ) : (
+    <Box />
   );
 };
 
