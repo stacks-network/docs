@@ -14,6 +14,10 @@ import { Text } from '@components/typography';
 import { border } from '@common/utils';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import { CheckCircleIcon } from '@components/icons/check-circle';
+import { AlertTriangleIcon } from '@components/icons/alert-triangle';
+import { AlertCircleIcon } from '@components/icons/alert-circle';
+import { InfoCircleIcon } from '@components/icons/info-circle';
 const Code = dynamic(() => import('../code-block/index'));
 
 const BaseHeading: React.FC<BoxProps> = React.memo(props => (
@@ -50,59 +54,78 @@ export const Li: React.FC<BoxProps> = props => <Box as="li" pb={space('tight')} 
 
 const getAlertStyles = (className: string) => {
   if (className?.includes('alert-success')) {
-    return {};
+    return {
+      borderTopColor: themeColor('green'),
+      borderTopWidth: '2px',
+      borderTopRightRadius: '0px',
+      borderTopLeftRadius: '0px',
+      accent: themeColor('green'),
+      icon: CheckCircleIcon,
+    };
   }
   if (className?.includes('alert-info')) {
-    return {};
+    return {
+      border: border(),
+      borderRadius: 'md',
+      boxShadow: 'mid',
+      bg: color('bg'),
+      accent: color('accent'),
+      icon: InfoCircleIcon,
+    };
   }
   if (className?.includes('alert-warning')) {
     return {
-      bg: '#FEF0E3',
-      borderColor: '#F7AA00',
+      borderTopColor: '#F7AA00',
+      borderTopWidth: '2px',
+      borderTopRightRadius: '0px',
+      borderTopLeftRadius: '0px',
       accent: '#F7AA00',
+      icon: AlertTriangleIcon,
     };
   }
   if (className?.includes('alert-danger')) {
     return {
-      bg: '#FCEBEC',
-      borderColor: themeColor('red'),
+      borderTopColor: themeColor('red'),
+      borderTopWidth: '2px',
+      borderTopRightRadius: '0px',
+      borderTopLeftRadius: '0px',
       accent: themeColor('red'),
+      icon: AlertCircleIcon,
     };
   }
   return {};
 };
 
 export const BlockQuote: React.FC<BoxProps> = ({ children, className, ...rest }) => {
-  const { accent, ...styles } = getAlertStyles(className);
+  const isAlert = className?.includes('alert');
+  const { accent, icon: Icon, ...styles } = getAlertStyles(className);
   return (
     <Box as="blockquote" display="block" my={space('extra-loose')} className={className} {...rest}>
       <Box
         border="1px solid"
         css={css({
-          border: border(),
+          display: 'flex',
+          alignItems: 'flex-start',
+          border: isAlert ? border() : border(),
+          bg: isAlert ? color('bg') : themeColor('ink.150'),
           borderRadius: 'md',
-          boxShadow: 'mid',
+          boxShadow: isAlert ? 'mid' : 'unset',
           py: space('base'),
           px: space('base'),
-          bg: color('bg-light'),
+          '& p': {
+            flexGrow: 1,
+            pt: '4px',
+          },
           ...styles,
         })}
       >
-        <Box
-          css={css({
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            marginTop: 0,
-            py: space('base-tight'),
-            borderLeft: '2px solid',
-            borderRadius: '2px',
-            borderColor: accent || color('accent'),
-            pl: space('base'),
-          })}
-        >
-          {children}
-        </Box>
+        {Icon && (
+          <Box flexShrink={0} color={accent} mr={space('base-tight')} size="24px">
+            <Icon />
+          </Box>
+        )}
+
+        <Box>{children}</Box>
       </Box>
     </Box>
   );

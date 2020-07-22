@@ -233,21 +233,25 @@ Which will render:
 We use another remark plugin to generate certain kinds of alerts inline in our documentation.
 
 ```md
-=> This will be a success style alert.
+> This is a standard blockquote (non-alert).
 
 -> This will be a standard note style alert.
 
-~> This will be a warning style alert.
+=> This will be a success style alert.
 
-!> This will be a danger style alert.
+~> This will be a warning style alert!
+
+!> This will be a danger style alert!!!
 ```
 
 Which renders:
 
-=> This will be a success style alert.
+> This is a standard blockquote (non-alert).
 
 -> This will be a standard note style alert.
 
-~> This will be a warning style alert.
+=> This will be a success style alert.
 
-!> This will be a danger style alert.
+~> This will be a warning style alert!
+
+!> This will be a danger style alert!!!
