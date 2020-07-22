@@ -2,7 +2,7 @@ import React from 'react';
 import { MDXComponents } from '@components/mdx/mdx-components';
 import { Box } from '@blockstack/ui';
 import { TableOfContents } from '@components/toc';
-import hydrate from 'next-mdx-remote/hydrate';
+import { hydrate } from '@common/hydrate-mdx';
 
 const renderFunctionsSection = entry => (
   <>
@@ -23,7 +23,15 @@ const renderFunctionsSection = entry => (
       <MDXComponents.inlineCode>{entry.output_type}</MDXComponents.inlineCode>
     </MDXComponents.p>
 
-    {hydrate(entry.description, MDXComponents)}
+    {hydrate(entry.description, {
+      ...MDXComponents,
+      p: (props: any) => (
+        <MDXComponents.p
+          {...props}
+          style={{ display: 'block', wordBreak: 'break-word', hyphens: 'auto' }}
+        />
+      ),
+    })}
 
     <MDXComponents.h4>Example</MDXComponents.h4>
 
