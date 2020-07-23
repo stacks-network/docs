@@ -1,11 +1,11 @@
 ---
-description: 'Blockstack naming service (BNS)'
+title: Manage BNS Names
+description: This section teaches you how to manage your namespace.
 ---
 
 # Manage BNS Names
 
-This section teaches you how to manage your namespace, it contains the
-following sections:
+This section teaches you how to manage your namespace.
 
 ## Overview of management
 
@@ -30,7 +30,9 @@ The reference BNS clients---
 Browser](https://github.com/blockstack/blockstack-browser)---can handle creating
 and sending all of these transactions for you.
 
-## NAME_UPDATE
+## Transaction types
+
+### NAME_UPDATE
 
 See [live example](https://www.blocktrail.com/BTC/tx/e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7).
 
@@ -44,7 +46,7 @@ hash](#bns-forks), and the new zone file hash. The reference clients gather
 this information automatically. See the [transaction format](/core/wire-format)
 document for details on how to construct this transaction.
 
-## NAME_TRANSFER
+### NAME_TRANSFER
 
 See [live example](https://www.blocktrail.com/BTC/tx/7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24).
 
@@ -64,7 +66,7 @@ hash](#bns-forks), and the new public key hash. The reference clients gather
 this information automatically. See the [transaction format](/core/wire-format)
 document for details on how to construct this transaction.
 
-## NAME_REVOKE
+### NAME_REVOKE
 
 See [live example](https://www.blocktrail.com/BTC/tx/eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f).
 
@@ -80,7 +82,7 @@ The `NAME_REVOKE` operation is generated using only the name. See the
 [transaction format](/core/wire-format) document for details on how to construct
 it.
 
-## NAME_RENEWAL
+### NAME_RENEWAL
 
 See [live example](https://www.blocktrail.com/BTC/tx/e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65).
 

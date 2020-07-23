@@ -1,6 +1,6 @@
 import React from 'react';
 import { Highlighter, HighlighterProps } from '../highlighter';
-import { Box, BoxProps } from '@blockstack/ui';
+import { Box, BoxProps, color } from '@blockstack/ui';
 import { css } from '@styled-system/css';
 
 // Languages used in docs
@@ -55,17 +55,25 @@ const CodeBlock = React.memo(
     ) => {
       const language = className && className.replace(/language-/, '');
 
+      const displayNumbers = showLineNumbers || (language && language !== 'bash');
+
       return (
         <Box
-          className={language && language !== 'bash' ? 'line-numbers' : ''}
+          className={displayNumbers ? 'line-numbers' : ''}
           bg="ink"
+          border="1px solid"
+          borderColor={color('border')}
+          borderRightWidth={['0px', '0px', '1px']}
+          borderLeftWidth={['0px', '0px', '1px']}
           borderRadius={[0, 0, '12px']}
-          overflowX="auto"
+          overflow="hidden"
         >
           <Box
             ref={ref}
             css={css({
               ...style,
+              // @ts-ignore
+              overflowX: 'auto',
               // @ts-ignore
               color: 'white',
               // @ts-ignore
@@ -76,7 +84,7 @@ const CodeBlock = React.memo(
             <Highlighter
               language={language as any}
               code={children.toString().trim()}
-              showLineNumbers={showLineNumbers || (language && language !== 'bash')}
+              showLineNumbers={displayNumbers}
               highlightedLines={getHighlightLineNumbers(highlight)}
               hideLineHover
             />

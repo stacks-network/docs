@@ -53,7 +53,7 @@ const Homepage = () => {
   return (
     <>
       <Head>
-        <title>Blockstack Docs</title>
+        <title>Documentation | Blockstack</title>
       </Head>
       <HomeLayout>
         <Hero cards={cards} />

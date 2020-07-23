@@ -1,7 +1,7 @@
 import React from 'react';
 import { cliReferenceData } from '@common/../_data/cliRef';
 import { MDXComponents } from '@components/mdx/mdx-components';
-import { Grid, Box } from '@blockstack/ui';
+import { Grid, Box, color } from '@blockstack/ui';
 import { border } from '@common/utils';
 import { hydrate } from '@common/hydrate-mdx';
 
@@ -37,6 +37,7 @@ const ReferenceEntry = ({ entry, usage }) => (
       borderBottom={border()}
       gridGap="base"
       gridTemplateColumns="repeat(4, minmax(0,25%))"
+      color={color('text-caption')}
     >
       <Box fontSize="14px" fontWeight="bold">
         Name
@@ -61,6 +62,7 @@ const ReferenceEntry = ({ entry, usage }) => (
           gridGap="base"
           gridTemplateColumns="repeat(4, minmax(0,25%))"
           key={index}
+          color={color('text-body')}
         >
           <Box>
             <InlineCode>${name}</InlineCode>

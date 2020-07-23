@@ -1,5 +1,6 @@
 ---
-description: 'Blockstack naming service (BNS)'
+title: Resolve a name
+description: This section explains resolving BNS names and provides instructions for methods you can use to accomplish namespace resolution.
 ---
 
 ## Resolve a name

@@ -1,4 +1,13 @@
-import { Box, Flex, FlexProps, BoxProps, color, useClipboard, space } from '@blockstack/ui';
+import {
+  Box,
+  Flex,
+  FlexProps,
+  BoxProps,
+  color,
+  themeColor,
+  useClipboard,
+  space,
+} from '@blockstack/ui';
 import NextLink from 'next/link';
 import React, { forwardRef, Ref } from 'react';
 import LinkIcon from 'mdi-react/LinkVariantIcon';
@@ -11,6 +20,11 @@ import { border } from '@common/utils';
 import { css } from '@styled-system/css';
 import { getHeadingStyles, baseTypeStyles } from '@components/mdx/typography';
 import { useRouter } from 'next/router';
+import { HEADER_HEIGHT } from '@components/header';
+import { CheckCircleIcon } from '@components/icons/check-circle';
+import { AlertTriangleIcon } from '@components/icons/alert-triangle';
+import { AlertCircleIcon } from '@components/icons/alert-circle';
+import { InfoCircleIcon } from '@components/icons/info-circle';
 
 const preProps = {
   display: 'inline-block',
@@ -52,16 +66,13 @@ export const SmartLink = ({ href, ...rest }: { href: string }) => {
 };
 
 export const Table = ({ children, ...rest }: any) => (
-  <Box maxWidth="100%" overflow="auto" {...rest}>
-    <Box
-      color={color('text-body')}
-      textAlign="left"
-      my={space('extra-loose')}
-      width="100%"
-      as="table"
-      maxWidth="100%"
-    >
-      {children}
+  <Box my={space('extra-loose')} maxWidth="100%" {...rest}>
+    <Box borderRadius={[0, 0, '12px']} border={border()} overflow="hidden">
+      <Box overflowX="auto">
+        <Box color={color('text-body')} textAlign="left" width="100%" as="table" maxWidth="100%">
+          {children}
+        </Box>
+      </Box>
     </Box>
   </Box>
 );
@@ -71,9 +82,12 @@ export const THead = (props: any) => {
     <Box
       as="th"
       color="var(--colors-text-caption)"
-      bg="blue.50"
-      p={2}
-      textStyle={'body.small.medium'}
+      borderRight={border()}
+      bg={color('bg-alt')}
+      fontSize="12px"
+      px={space('base-tight')}
+      pt={space('tight')}
+      pb={space('extra-tight')}
       {...props}
     />
   );
@@ -82,10 +96,13 @@ export const THead = (props: any) => {
 export const TData = (props: any) => (
   <Box
     as="td"
-    p={2}
-    borderTopWidth="1px"
-    borderColor="var(--colors-border)"
-    textStyle="body.small"
+    fontSize="14px"
+    p={space('tight')}
+    px={space('base-tight')}
+    pt={space('base-tight')}
+    borderRight={border()}
+    borderTop={border()}
+    color={color('text-body')}
     whiteSpace="normal"
     {...props}
   />
@@ -192,7 +209,7 @@ const AnchorOffset = ({ id }: BoxProps) =>
       display="block"
       position="absolute"
       style={{ userSelect: 'none', pointerEvents: 'none' }}
-      top="-120px"
+      top={`-${HEADER_HEIGHT + 42}px`}
       id={id}
     />
   ) : null;
@@ -244,3 +261,123 @@ export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
     </Title>
   );
 };
+
+const BaseHeading: React.FC<BoxProps> = React.memo(props => (
+  <Heading width="100%" mt={space('base-loose')} {...props} />
+));
+
+export const H1: React.FC<BoxProps> = props => <BaseHeading as="h1" {...props} />;
+export const H2: React.FC<BoxProps> = props => <BaseHeading as="h2" {...props} />;
+export const H3: React.FC<BoxProps> = props => <BaseHeading as="h3" {...props} />;
+export const H4: React.FC<BoxProps> = props => <BaseHeading as="h4" {...props} />;
+export const H5: React.FC<BoxProps> = props => <BaseHeading as="h5" {...props} />;
+export const H6: React.FC<BoxProps> = props => <BaseHeading as="h6" {...props} />;
+
+export const Br: React.FC<BoxProps> = props => <Box height="24px" {...props} />;
+export const Hr: React.FC<BoxProps> = props => (
+  <Box
+    as="hr"
+    borderTopWidth="1px"
+    borderColor={color('border')}
+    my={space('extra-loose')}
+    mx={space('extra-loose')}
+    {...props}
+  />
+);
+
+export const P: React.FC<BoxProps> = props => <Text as="p" {...props} />;
+export const Ol: React.FC<BoxProps> = props => (
+  <Box pl={space('base')} mt={space('base')} mb={space('base-tight')} as="ol" {...props} />
+);
+export const Ul: React.FC<BoxProps> = props => (
+  <Box pl={space('base-loose')} mt={space('base')} mb={space('base-tight')} as="ul" {...props} />
+);
+export const Li: React.FC<BoxProps> = props => (
+  <Box as="li" color={color('text-body')} pb={space('tight')} {...props} />
+);
+
+const getAlertStyles = (className: string) => {
+  if (className?.includes('alert-success')) {
+    return {
+      borderTopColor: themeColor('green'),
+      borderTopWidth: '2px',
+      borderTopRightRadius: '0px',
+      borderTopLeftRadius: '0px',
+      accent: themeColor('green'),
+      icon: CheckCircleIcon,
+    };
+  }
+  if (className?.includes('alert-info')) {
+    return {
+      border: border(),
+      borderRadius: 'md',
+      boxShadow: 'mid',
+      accent: color('accent'),
+      icon: InfoCircleIcon,
+    };
+  }
+  if (className?.includes('alert-warning')) {
+    return {
+      borderTopColor: '#F7AA00',
+      borderTopWidth: '2px',
+      borderTopRightRadius: '0px',
+      borderTopLeftRadius: '0px',
+      accent: '#F7AA00',
+      icon: AlertTriangleIcon,
+    };
+  }
+  if (className?.includes('alert-danger')) {
+    return {
+      borderTopColor: themeColor('red'),
+      borderTopWidth: '2px',
+      borderTopRightRadius: '0px',
+      borderTopLeftRadius: '0px',
+      accent: themeColor('red'),
+      icon: AlertCircleIcon,
+    };
+  }
+  return {};
+};
+
+export const BlockQuote: React.FC<BoxProps> = ({ children, className, ...rest }) => {
+  const isAlert = className?.includes('alert');
+  const { accent, icon: Icon, ...styles } = getAlertStyles(className);
+  return (
+    <Box as="blockquote" display="block" my={space('extra-loose')} className={className} {...rest}>
+      <Box
+        border="1px solid"
+        css={css({
+          position: 'relative',
+          display: 'grid',
+          placeItems: 'center',
+          gridTemplateColumns: Icon ? '22px 1fr' : '1fr',
+          alignItems: 'flex-start',
+          border: isAlert ? border() : border(),
+          bg: isAlert ? color('bg') : color('bg-alt'),
+          borderRadius: 'md',
+          boxShadow: isAlert ? 'mid' : 'unset',
+          py: space('base'),
+          px: space('base'),
+          '& p': {
+            flexGrow: 1,
+            pt: '4px',
+          },
+          ...styles,
+        })}
+      >
+        {Icon && (
+          <Flex align="center" height="28x" flexShrink={0} color={accent} width="22px">
+            <Box position="absolute" top="16px" size="22px">
+              <Icon />
+            </Box>
+          </Flex>
+        )}
+        <Box width="100%" pl={Icon && space('tight')} flexGrow={1}>
+          {children}
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const Sup: React.FC<any> = props => <Text as="sup" mr={space('extra-tight')} {...props} />;

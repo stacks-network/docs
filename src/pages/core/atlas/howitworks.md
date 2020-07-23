@@ -1,5 +1,6 @@
 ---
-description: 'Blockstack Atlas network'
+title: How Atlas works
+description: Atlas was designed to overcome the structural weaknesses inherent to all distributed hash tables.
 ---
 
 # How Atlas Works
@@ -8,8 +9,6 @@ Atlas was designed to overcome the structural weaknesses inherent to all
 distributed hash tables. In particular, it uses an unstructured peer network to
 maximize resilience against network link failure, and it uses the underlying
 blockchain (through BNS) to rate-limit chunk announcements.
-
-This section contains the following sections:
 
 ## Peer Selection
 

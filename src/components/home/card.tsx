@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Box, Flex, space, color, transition, FlexProps } from '@blockstack/ui';
 import NextLink from 'next/link';
-import { useActive, useHover } from 'use-events';
+import { useTouchable } from 'touchable-hook';
 
 interface CardProps extends FlexProps {
   href?: string;
@@ -15,16 +15,15 @@ const LinkComponent = ({ href }: { href: string }) =>
   ) : null;
 
 export const Card: React.FC<CardProps> = ({ children, onClick, dark = false, href, ...rest }) => {
-  const [hover, hoverBind] = useHover();
-  const [active, activeBind] = useActive();
-
+  const { bind, hover, active } = useTouchable({
+    behavior: 'link',
+  });
   return (
     <Flex
       width="100%"
       cursor={(hover || active) && 'pointer'}
       position="relative"
-      {...hoverBind}
-      {...activeBind}
+      {...bind}
       {...rest}
     >
       <LinkComponent href={href} />

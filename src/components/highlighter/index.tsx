@@ -149,10 +149,11 @@ const Lines = ({
   hideLineHover?: boolean;
   highlightedLines?: number[];
 } & RenderProps) => {
+  const displayNumbers = lines?.length > 2 && showLineNumbers;
   return (
     <Box display="block" className={className}>
-      <Box display="block" style={{ fontFamily: 'Fira Code' }}>
-        <Spacer showLineNumbers={showLineNumbers} />
+      <Box display="block">
+        <Spacer showLineNumbers={displayNumbers} />
         {lines.map((tokens, i) => (
           <Box
             css={css({
@@ -181,7 +182,7 @@ const Lines = ({
               tokens={tokens}
               getTokenProps={getTokenProps}
               length={lines.length + 1}
-              showLineNumbers={showLineNumbers}
+              showLineNumbers={displayNumbers}
               highlighted={
                 highlightedLines?.length &&
                 !!highlightedLines.find(lineNumber => lineNumber === i + 1)
@@ -191,7 +192,7 @@ const Lines = ({
             />
           </Box>
         ))}
-        <Spacer showLineNumbers={showLineNumbers} />
+        <Spacer showLineNumbers={displayNumbers} />
       </Box>
     </Box>
   );

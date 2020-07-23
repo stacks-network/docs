@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Flex, BoxProps, transition, space, themeColor } from '@blockstack/ui';
+import { Box, Grid, Flex, BoxProps, transition, space, themeColor, color } from '@blockstack/ui';
 import { GridProps } from '@blockstack/ui/dist/ui/src/grid/types';
 import { CONTENT_MAX_WIDTH } from '@common/constants';
 
@@ -11,17 +11,11 @@ export const CircleIcon: React.FC<
     align="center"
     justify="center"
     borderRadius={size}
-    bg={
-      dark
-        ? hover
-          ? themeColor('blue.900')
-          : 'rgb(39, 41, 46)'
-        : themeColor(hover ? 'blue' : 'blue.100')
-    }
+    bg={color(hover ? 'accent' : 'bg-alt')}
     transition={transition}
     {...rest}
   >
-    <Box size="34px" color={dark ? 'white' : hover ? 'white' : themeColor('blue')}>
+    <Box size="34px" color={color(hover ? 'bg' : 'invert')}>
       <Icon transition={transition} />
     </Box>
   </Flex>

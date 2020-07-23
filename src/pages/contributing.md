@@ -16,7 +16,7 @@ Markdown files. In addition to being able to write JSX in Markdown, it allows th
 Markdown content with React components! This means that we are able to do some pretty complex things while a
 contributor only has to know how to write Markdown.
 
--> Don't know what Markdown is? Here is a [helpful guide](https://guides.github.com/features/mastering-markdown/) for getting started with Markdown.
+-> **Don't know what Markdown is?** Here is a [helpful guide](https://guides.github.com/features/mastering-markdown/) for learning it.
 
 ## Getting started
 
@@ -103,7 +103,7 @@ description: A short, concise sentence describing what is on this page
 Frontmatter gives us the ability to define some things within a page that the site can use, such as a page title or page description.
 When adding any new page, please include a `title` and `description`.
 
--> **Did you know?** The term _Frontmatter_ comes from the section in a book at the beginning the details things like: Publisher’s name and address, Copyright information, Table of Contents, etc.
+-> **Did you know?** The term _Frontmatter_ comes from the section in a book at the beginning detailing things like: publisher’s name and address, copyright information, table of contents, etc.
 
 ### Dynamic sidebar
 
