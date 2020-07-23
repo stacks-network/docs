@@ -1,172 +1,30 @@
 import React from 'react';
-import { Box, space, BoxProps, color, themeColor } from '@blockstack/ui';
-import css from '@styled-system/css';
 import {
-  Heading,
   Pre,
   THead,
   SmartLink,
   TData,
   Table,
   InlineCode,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  BlockQuote,
+  Br,
+  Ul,
+  P,
+  Ol,
+  Hr,
+  Li,
+  Sup,
 } from '@components/mdx/components';
-import { Text } from '@components/typography';
-import { border } from '@common/utils';
-import { useRouter } from 'next/router';
+import { Img } from '@components/mdx/image';
 import dynamic from 'next/dynamic';
-import { CheckCircleIcon } from '@components/icons/check-circle';
-import { AlertTriangleIcon } from '@components/icons/alert-triangle';
-import { AlertCircleIcon } from '@components/icons/alert-circle';
-import { InfoCircleIcon } from '@components/icons/info-circle';
-const Code = dynamic(() => import('../code-block/index'));
 
-const BaseHeading: React.FC<BoxProps> = React.memo(props => (
-  <Heading width="100%" mt={space('base-loose')} {...props} />
-));
-
-export const H1: React.FC<BoxProps> = props => <BaseHeading as="h1" {...props} />;
-export const H2: React.FC<BoxProps> = props => <BaseHeading as="h2" {...props} />;
-export const H3: React.FC<BoxProps> = props => <BaseHeading as="h3" {...props} />;
-export const H4: React.FC<BoxProps> = props => <BaseHeading as="h4" {...props} />;
-export const H5: React.FC<BoxProps> = props => <BaseHeading as="h5" {...props} />;
-export const H6: React.FC<BoxProps> = props => <BaseHeading as="h6" {...props} />;
-
-export const Br: React.FC<BoxProps> = props => <Box height="24px" {...props} />;
-export const Hr: React.FC<BoxProps> = props => (
-  <Box
-    as="hr"
-    borderTopWidth="1px"
-    borderColor={color('border')}
-    my={space('extra-loose')}
-    mx={space('extra-loose')}
-    {...props}
-  />
-);
-
-export const P: React.FC<BoxProps> = props => <Text as="p" {...props} />;
-export const Ol: React.FC<BoxProps> = props => (
-  <Box pl={space('base')} mt={space('base')} mb={space('base-tight')} as="ol" {...props} />
-);
-export const Ul: React.FC<BoxProps> = props => (
-  <Box pl={space('base-loose')} mt={space('base')} mb={space('base-tight')} as="ul" {...props} />
-);
-export const Li: React.FC<BoxProps> = props => <Box as="li" pb={space('tight')} {...props} />;
-
-const getAlertStyles = (className: string) => {
-  if (className?.includes('alert-success')) {
-    return {
-      borderTopColor: themeColor('green'),
-      borderTopWidth: '2px',
-      borderTopRightRadius: '0px',
-      borderTopLeftRadius: '0px',
-      accent: themeColor('green'),
-      icon: CheckCircleIcon,
-    };
-  }
-  if (className?.includes('alert-info')) {
-    return {
-      border: border(),
-      borderRadius: 'md',
-      boxShadow: 'mid',
-      bg: color('bg'),
-      accent: color('accent'),
-      icon: InfoCircleIcon,
-    };
-  }
-  if (className?.includes('alert-warning')) {
-    return {
-      borderTopColor: '#F7AA00',
-      borderTopWidth: '2px',
-      borderTopRightRadius: '0px',
-      borderTopLeftRadius: '0px',
-      accent: '#F7AA00',
-      icon: AlertTriangleIcon,
-    };
-  }
-  if (className?.includes('alert-danger')) {
-    return {
-      borderTopColor: themeColor('red'),
-      borderTopWidth: '2px',
-      borderTopRightRadius: '0px',
-      borderTopLeftRadius: '0px',
-      accent: themeColor('red'),
-      icon: AlertCircleIcon,
-    };
-  }
-  return {};
-};
-
-export const BlockQuote: React.FC<BoxProps> = ({ children, className, ...rest }) => {
-  const isAlert = className?.includes('alert');
-  const { accent, icon: Icon, ...styles } = getAlertStyles(className);
-  return (
-    <Box as="blockquote" display="block" my={space('extra-loose')} className={className} {...rest}>
-      <Box
-        border="1px solid"
-        css={css({
-          display: 'flex',
-          alignItems: 'flex-start',
-          border: isAlert ? border() : border(),
-          bg: isAlert ? color('bg') : themeColor('ink.150'),
-          borderRadius: 'md',
-          boxShadow: isAlert ? 'mid' : 'unset',
-          py: space('base'),
-          px: space('base'),
-          '& p': {
-            flexGrow: 1,
-            pt: '4px',
-          },
-          ...styles,
-        })}
-      >
-        {Icon && (
-          <Box flexShrink={0} color={accent} mr={space('base-tight')} size="24px">
-            <Icon />
-          </Box>
-        )}
-
-        <Box>{children}</Box>
-      </Box>
-    </Box>
-  );
-};
-
-const imgix = 'https://docs-stacks.imgix.net';
-
-const params = '?auto=compress,format';
-
-const getUrl = pathname => {
-  let url = '';
-  const levels = pathname.split('/');
-  levels.forEach((level, index) => {
-    if (index !== levels.length - 1) {
-      url += level + '/';
-    }
-  });
-  return url;
-};
-
-const useImgix = (src: string) => {
-  let _src = src;
-  const router = useRouter();
-  if (!src.startsWith('http')) {
-    const path = src.startsWith('/') ? '' : getUrl(router.pathname);
-    _src = `${imgix + path + src + params}`;
-  }
-  return _src;
-};
-
-export const Img: React.FC<BoxProps & { loading?: string; src?: string; alt?: string }> = ({
-  src: _src,
-  ...rest
-}) => {
-  const src = useImgix(_src);
-  const props = {
-    src,
-    ...rest,
-  };
-  return <Box loading="lazy" maxWidth="100%" display="block" as="img" {...props} />;
-};
+const Code = dynamic(() => import('../code-block'));
 
 export const MDXComponents = {
   h1: H1,
@@ -190,4 +48,5 @@ export const MDXComponents = {
   li: Li,
   img: Img,
   blockquote: BlockQuote,
+  sup: Sup,
 };

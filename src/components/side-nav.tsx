@@ -94,6 +94,12 @@ const Section = ({ section, isLast, ...rest }: any) => {
   const isActive = section.routes.find(route => pathname === `/${route.path}`);
   const [visible, setVisible] = React.useState(isActive);
 
+  React.useEffect(() => {
+    if (isActive && !visible) {
+      setVisible(true);
+    }
+  }, [router, isActive]);
+
   return (
     <Box width="100%" pt={space('base')} {...rest}>
       {section.title ? (
@@ -107,7 +113,9 @@ const Section = ({ section, isLast, ...rest }: any) => {
           }}
         >
           <SectionTitle>{section.title}</SectionTitle>
-          <ChevronIcon size="24px" direction={visible ? 'up' : 'down'} />
+          <Box color={color('text-caption')}>
+            <ChevronIcon size="24px" direction={visible ? 'up' : 'down'} />
+          </Box>
         </Flex>
       ) : null}
       {visible && <Links routes={section.routes} />}

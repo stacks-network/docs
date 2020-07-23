@@ -21,8 +21,14 @@ import { useRouter } from 'next/router';
 const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponent, ...props }) => {
   const [isHovered, bind] = useHover();
   return (
-    <Box _hover={{ color: color('accent'), cursor: 'pointer' }} size="42px" {...props} {...bind}>
-      <IconComponent bg={isHovered ? themeColor('blue.200') : themeColor('ink.200')} />
+    <Box
+      color={color('text-caption')}
+      _hover={{ color: color('bg'), cursor: 'pointer' }}
+      size="42px"
+      {...props}
+      {...bind}
+    >
+      <IconComponent bg={isHovered ? color('accent') : color('bg-light')} />
     </Box>
   );
 };
@@ -60,6 +66,7 @@ const FeedbackCard = ({ show, onClose }) => {
                 Leave feedback
               </Button>
               <Box
+                color={color('text-body')}
                 _hover={{ color: color('accent'), textDecoration: 'underline', cursor: 'pointer' }}
                 onClick={onClose}
                 mt={space('tight')}

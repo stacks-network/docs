@@ -6,6 +6,8 @@ import { MDXComponents } from '@components/mdx';
 import { border } from '@common/utils';
 import NextLink from 'next/link';
 import { Link } from '@components/typography';
+import { useTouchable } from 'touchable-hook';
+
 const usePaginateRoutes = () => {
   const router = useRouter();
 
@@ -30,7 +32,6 @@ const usePaginateRoutes = () => {
   const isFirstSection = sectionIndex === 0;
   const isLastSection = sectionIndex === routes.length - 1;
 
-  const route = sectionRoutes.find(getRoute);
   const routeIndex: number = sectionRoutes.findIndex(getRoute);
 
   const isFirstRouteInSection = routeIndex === 0;
@@ -56,38 +57,44 @@ const usePaginateRoutes = () => {
 };
 
 const Description: React.FC<BoxProps> = props => (
-  <Box maxWidth="32ch" mt={space('extra-tight')}>
+  <Box maxWidth="42ch" mt={space('extra-tight')}>
     <MDXComponents.p {...props} />
   </Box>
 );
 
-const Card = props => (
-  <Flex
-    flexDirection="column"
-    width="100%"
-    position="relative"
-    border={border()}
-    borderRadius="12px"
-    py={space('base')}
-    px={space('base-loose')}
-    boxShadow="mid"
-    transition={transition}
-    _hover={{ cursor: 'pointer', boxShadow: 'high' }}
-    justifyContent="center"
-    {...props}
-  />
-);
-
-export const Pagination = ({ hidePagination, ...rest }: any) => {
-  const { next, prev } = usePaginateRoutes();
+const Card: React.FC<any> = ({ children, ...rest }) => {
+  const { bind, active, hover } = useTouchable({
+    behavior: 'link',
+  });
   return (
-    <Grid
-      gridColumnGap={space('base-loose')}
-      gridRowGap={space('extra-loose')}
-      gridTemplateColumns={['repeat(1, 1fr)', 'repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)']}
+    <Flex
+      flexDirection="column"
+      width="100%"
+      position="relative"
+      border={border()}
+      borderRadius="12px"
+      py={space('base')}
+      px={space('base-loose')}
+      boxShadow={active ? 'low' : hover ? 'high' : 'mid'}
+      transition={transition}
+      justifyContent="center"
+      bg={active ? color('bg-light') : color('bg')}
+      transform={active ? 'translateY(3px)' : hover ? 'translateY(-5px)' : 'none'}
+      {...bind}
+      {...rest}
     >
-      {prev ? (
-        <Card>
+      {children({ hover, active })}
+    </Flex>
+  );
+};
+
+const PrevCard: React.FC<any> = React.memo(props => {
+  const { prev } = usePaginateRoutes();
+
+  return prev ? (
+    <Card>
+      {({ hover, active }) => (
+        <>
           <NextLink href={`/${prev.path}`} passHref>
             <Link position="absolute" size="100%" zIndex={2} as="a" />
           </NextLink>
@@ -100,12 +107,20 @@ export const Pagination = ({ hidePagination, ...rest }: any) => {
             <MDXComponents.h3 my={0}>{prev.title || prev.headings[0]}</MDXComponents.h3>
           </Box>
           {prev.description && <Description>{prev.description}</Description>}
-        </Card>
-      ) : (
-        <Box />
+        </>
       )}
-      {next ? (
-        <Card textAlign="right" align="flex-end">
+    </Card>
+  ) : (
+    <Box />
+  );
+});
+const NextCard: React.FC<any> = React.memo(props => {
+  const { next } = usePaginateRoutes();
+
+  return next ? (
+    <Card textAlign="right" align="flex-end">
+      {({ hover, active }) => (
+        <>
           <NextLink href={`/${next.path}`} passHref>
             <Link position="absolute" size="100%" zIndex={2} as="a" />
           </NextLink>
@@ -113,13 +128,30 @@ export const Pagination = ({ hidePagination, ...rest }: any) => {
             Next
           </MDXComponents.h5>
           <Box maxWidth="38ch">
-            <MDXComponents.h3 my={0}>{next.title || next.headings[0]}</MDXComponents.h3>
+            <MDXComponents.h3
+              transition={transition}
+              color={hover ? color('accent') : color('text-title')}
+              my={0}
+            >
+              {next.title || next.headings[0]}
+            </MDXComponents.h3>
           </Box>
           {next.description && <Description>{next.description}</Description>}
-        </Card>
-      ) : (
-        <Box />
+        </>
       )}
-    </Grid>
+    </Card>
+  ) : (
+    <Box />
   );
-};
+});
+
+export const Pagination: React.FC<any> = React.memo(({ hidePagination, ...rest }: any) => (
+  <Grid
+    gridColumnGap={space('base-loose')}
+    gridRowGap={space('extra-loose')}
+    gridTemplateColumns={['repeat(1, 1fr)', 'repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)']}
+  >
+    <PrevCard />
+    <NextCard />
+  </Grid>
+));

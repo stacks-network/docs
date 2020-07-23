@@ -1,5 +1,6 @@
 ---
-description: 'Blockstack naming service (BNS)'
+title: Understand Namespaces
+description: Namespaces are the top-level naming objects in BNS.
 ---
 
 # Understand Namespaces

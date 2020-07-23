@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps } from '@blockstack/ui';
+import { Box, BoxProps, color } from '@blockstack/ui';
 import { Text } from '@components/typography';
 import { css } from '@styled-system/css';
 
@@ -7,6 +7,7 @@ export const H1: React.FC<BoxProps> = ({ children, ...rest }) => (
   <Box {...rest}>
     <Text
       css={css({
+        color: color('text-title'),
         display: 'block',
         fontWeight: 'bolder',
         fontSize: ['44px', '44px', '66px'],
@@ -40,6 +41,7 @@ export const H2: React.FC<BoxProps> = ({ children, ...rest }) => (
   <Box {...rest}>
     <Text
       css={css({
+        color: color('text-title'),
         display: 'block',
         fontWeight: 'bold',
         fontSize: '38.5px',
@@ -68,6 +70,7 @@ export const BodyLarge: React.FC<BoxProps> = ({ children, ...rest }) => (
   <Text
     as="h2"
     css={css({
+      color: color('text-body'),
       display: 'block',
       fontSize: '22px',
       lineHeight: '32px',

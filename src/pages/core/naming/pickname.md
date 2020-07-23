@@ -1,11 +1,11 @@
 ---
-description: 'Blockstack naming service (BNS)'
+title: Choose a name
+description: This section explains how to choose and create a namespace.
 ---
 
 # Choose a name
 
-This section explains how to choose and create a namespace, it contains the
-following sections:
+This section explains how to choose and create a namespace.
 
 ## Intended uses for a namespace
 
@@ -118,7 +118,7 @@ requisite amount of cryptocurrency. In addition, it proves to the BNS nodes that
 BNS consensus rules by including a recent _consensus hash_ in the transaction (see the section on
 [BNS forks](#bns-forks) for details).
 
-See `NAMESPACE_PREORDER` ([live example](https://www.blocktrail.com/BTC/tx/5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28)).
+-> See `NAMESPACE_PREORDER` ([live example](https://www.blocktrail.com/BTC/tx/5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28)).
 
 #### Step 2: Send a `NAMESPACE_REVEAL` transaction
 
@@ -132,7 +132,7 @@ has any vowels or non-alphabet characters). The namespace creator
 has the option to collect name registration fees for the first year of the
 namespace's existence by setting a _namespace creator address_.
 
-See `NAMESPACE_REVEAL` ([live example](https://www.blocktrail.com/BTC/tx/ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32)).
+-> See `NAMESPACE_REVEAL` ([live example](https://www.blocktrail.com/BTC/tx/ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32)).
 
 #### Step 3: Seed the namespace with `NAME_IMPORT` transactions
 
@@ -140,7 +140,7 @@ Once the namespace has been revealed, the user has the option to populate it wit
 names. Each imported name is given both an owner and some off-chain state.
 This step is optional---namespace creators are not required to import names.
 
-See `NAME_IMPORT` ([live example](https://www.blocktrail.com/BTC/tx/c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312)).
+-> See `NAME_IMPORT` ([live example](https://www.blocktrail.com/BTC/tx/c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312)).
 
 #### Step 4: Send a `NAMESPACE_READY` transaction
 
@@ -149,9 +149,7 @@ public. Once a namespace is ready, anyone can register a name in it if they
 pay the appropriate amount of cryptocurrency (according to the price funtion
 revealed in step 2).
 
-See `NAMESPACE_READY` ([live example](https://www.blocktrail.com/BTC/tx/2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032)).
-
----
+-> See `NAMESPACE_READY` ([live example](https://www.blocktrail.com/BTC/tx/2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032)).
 
 The reason for the `NAMESPACE_PREORDER/NAMESPACE_REVEAL` pairing is to prevent
 frontrunning. The BNS consensus rules require a `NAMESPACE_REVEAL` to be

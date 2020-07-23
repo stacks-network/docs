@@ -1,5 +1,6 @@
 ---
-description: 'Blockstack naming service (BNS)'
+title: Feature comparison
+description: This page describes some other naming systems in comparison to Blockstack.
 ---
 
 # Naming system feature comparison

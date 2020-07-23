@@ -1,4 +1,5 @@
 ---
+title: Overview
 description: 'Blockstack naming service (BNS)'
 ---
 

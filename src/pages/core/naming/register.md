@@ -1,11 +1,12 @@
 ---
-description: 'Blockstack naming service (BNS)'
+title: Register a name
+description: This section explains registering BNS names and provides instructions for methods you can use to understand the cost of namespace registration.
 ---
 
 # Register a name
 
 This section explains registering BNS names and provides instructions for methods
-you can use to understandt the cost of namespace registration.
+you can use to understand the cost of namespace registration.
 
 ## Understand registration
 
@@ -67,7 +68,7 @@ ignored.
 
 ## Getting a Name's Registration Fee
 
-See [reference](https://core.blockstack.org/#price-checks-get-name-price).
+-> See [reference](https://core.blockstack.org/#price-checks-get-name-price).
 
 ```bash
 $ curl -sL https://core.blockstack.org/v1/prices/names/helloworld.id | jq -r ".name_price"
@@ -83,7 +84,7 @@ but this is the only field guaranteed by this specification to be present.
 
 ## Getting the Current Consensus Hash
 
-See [reference](https://core.blockstack.org/#blockchain-operations-get-consensus-hash).
+-> See [reference](https://core.blockstack.org/#blockchain-operations-get-consensus-hash).
 
 ```bash
 $ curl -sL https://core.blockstack.org/v1/blockchains/bitcoin/consensus
@@ -93,9 +94,8 @@ $ curl -sL https://core.blockstack.org/v1/blockchains/bitcoin/consensus
 ```
 
 The consensus hash must be included in the `NAME_PREORDER` transaction. The BNS
-clients do this automatically. See the [transaction format
-document](/core/wire-format) for details as to how to include this in the
-transaction.
+clients do this automatically. See the [transaction format document](/core/wire-format)
+for details as to how to include this in the transaction.
 
 ## Registering a Name
 
@@ -106,5 +106,4 @@ The reference BNS clients manage a local Bitcoin wallet, calculate transaction f
 dynamically and automatically, and broadcast both the `NAME_PREORDER` and
 `NAME_REGISTRATION` transactions at the right times.
 
-If you want to make your own registration client, you should see the
-[transaction format](/core/wire-format) document.
+-> If you want to make your own registration client, you should see the [transaction format](/core/wire-format) document.

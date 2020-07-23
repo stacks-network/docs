@@ -1,11 +1,9 @@
 ---
-description: 'Blockstack Atlas network'
+title: How to use the Atlas network
+description: This section teaches you how to use the Atlas network.
 ---
 
 # How to Use the Atlas Network
-
-This section teaches you how to use the Atlas network, it contains the
-following sections:
 
 ## The API
 

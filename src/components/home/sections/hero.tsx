@@ -39,7 +39,7 @@ export const Hero = ({ cards }: { cards?: any }) => {
               <Box as="span">
                 <CircleIcon
                   as="span"
-                  hover={hover}
+                  hover={hover || active}
                   icon={Icon}
                   mx="auto"
                   mb={space('base-loose')}

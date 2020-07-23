@@ -1,17 +1,8 @@
 import React from 'react';
-import { Flex, color, space, themeColor, ChevronIcon } from '@blockstack/ui';
-import { SideNav } from '../side-nav';
-import { Header, HEADER_HEIGHT } from '../header';
-import { Main } from '../main';
-import { Footer } from '../footer';
-import { useRouter } from 'next/router';
-import { ContentWrapper } from '../content-wrapper';
-import NotFoundPage from '@pages/404';
+import { color, space } from '@blockstack/ui';
 import { createGlobalStyle } from 'styled-components';
-import { TableOfContents } from '@components/toc';
 import { getHeadingStyles } from '@components/mdx/typography';
-import { css } from '@styled-system/css';
-import { SIDEBAR_WIDTH, TOC_WIDTH } from '@common/constants';
+
 export const MdxOverrides = createGlobalStyle`
 .DocSearch-Container{
 z-index: 99999;
@@ -60,7 +51,7 @@ p, ul, ol, table {
 }
 `;
 
-const styleOverwrites = {
+export const styleOverwrites = {
   '& > *:not(pre):not(ul):not(ol):not(img):not([data-reach-accordion])': {
     px: space('extra-loose'),
   },
@@ -91,7 +82,7 @@ const styleOverwrites = {
       mb: 0,
       pb: 0,
     },
-    '*:last-child': {
+    '*:last-child:not(pre):not(blockquote)': {
       mb: 0,
     },
     pre: {
@@ -126,9 +117,7 @@ const styleOverwrites = {
 
   '& > *:not(pre) a > code': {
     color: color('accent'),
-    '&:hover': {
-      textDecoration: 'underline',
-    },
+    textDecoration: 'inherit',
   },
   pre: {
     '& + h2, & + h3': {
@@ -211,6 +200,10 @@ const styleOverwrites = {
       // mt: space('extra-tight'),
     },
   },
+  '.prism-code': {
+    width: '100%',
+    minWidth: 'fit-content',
+  },
   blockquote: {
     '& + blockquote': {
       mt: space('extra-tight'),
@@ -221,12 +214,14 @@ const styleOverwrites = {
     '& + pre': {
       mt: '0',
     },
+    '& + h3, & + h4': {
+      mt: space('extra-loose'),
+    },
   },
   img: {
     my: space('extra-loose'),
   },
   '& > pre > *:not(pre):not(.line-numbers)': {
-    border: 'none',
     px: space(['extra-loose', 'extra-loose', 'none', 'none']),
   },
   '& > pre > div[style]': {
@@ -237,7 +232,6 @@ const styleOverwrites = {
   },
   '& > pre': {
     px: space(['none', 'none', 'extra-loose', 'extra-loose']),
-    border: 'none',
     boxShadow: 'none',
     my: space('extra-loose'),
   },
@@ -251,76 +245,8 @@ const styleOverwrites = {
       overflowY: 'hidden',
       whiteSpace: 'pre',
     },
+    'td:last-child, th:last-child': {
+      borderRight: 0,
+    },
   },
 };
-
-export const Contents = ({ headings, children }) => (
-  <>
-    <ContentWrapper
-      width={
-        headings?.length && headings.length > 1
-          ? ['100%', '100%', `calc(100% - ${TOC_WIDTH}px)`, `calc(100% - ${TOC_WIDTH}px)`]
-          : '100%'
-      }
-      mx="unset"
-      pt="unset"
-      pr={space(['none', 'none', 'base-tight', 'base-tight'])}
-      css={css(styleOverwrites)}
-    >
-      {children}
-    </ContentWrapper>
-    {headings?.length && headings.length > 1 ? (
-      <TableOfContents
-        display={['none', 'none', 'block', 'block']}
-        position="sticky"
-        top="195px"
-        pl={space('extra-loose')}
-        headings={headings}
-      />
-    ) : null}
-  </>
-);
-
-const DocsLayout: React.FC<{ isHome?: boolean }> = ({ children, isHome }) => {
-  let isErrorPage = false;
-
-  // get if NotFoundPage
-  React.Children.forEach(children, (child: any) => {
-    if (child?.type === NotFoundPage) {
-      isErrorPage = true;
-    }
-  });
-  return (
-    <Flex minHeight="100vh" flexDirection="column">
-      <Header hideSubBar={isHome || isErrorPage} />
-      <Flex width="100%" flexGrow={1}>
-        {!isHome && <SideNav display={['none', 'none', 'block']} />}
-        <Flex
-          flexGrow={1}
-          maxWidth={[
-            '100%',
-            '100%',
-            `calc(100% - ${isHome ? 0 : SIDEBAR_WIDTH}px)`,
-            `calc(100% - ${isHome ? 0 : SIDEBAR_WIDTH}px)`,
-          ]}
-          mt={`${HEADER_HEIGHT}px`}
-          flexDirection="column"
-        >
-          <Main mx="unset" width={'100%'}>
-            <Flex
-              flexDirection={['column', 'column', 'row', 'row']}
-              maxWidth="108ch"
-              mx="auto"
-              flexGrow={1}
-            >
-              {children}
-            </Flex>
-          </Main>
-          {isErrorPage || isHome ? null : <Footer justifySelf="flex-end" />}
-        </Flex>
-      </Flex>
-    </Flex>
-  );
-};
-
-export { DocsLayout };

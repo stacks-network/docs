@@ -6,7 +6,6 @@ import {
   Stack,
   color,
   space,
-  themeColor,
   transition,
   ChevronIcon,
 } from '@blockstack/ui';
@@ -24,6 +23,7 @@ import { css } from '@styled-system/css';
 import NextLink from 'next/link';
 import MagnifyIcon from 'mdi-react/MagnifyIcon';
 import { useRouter } from 'next/router';
+import { ColorModeButton } from '@components/color-mode-button';
 
 const MenuButton = ({ ...rest }: any) => {
   const { isOpen, handleOpen, handleClose } = useMobileMenuState();
@@ -142,7 +142,7 @@ const SubBar: React.FC<any> = props => (
     height="60px"
     width="100%"
     px={['extra-loose', 'extra-loose', 'base', 'base']}
-    bg="rgba(255,255,255, 0.8)"
+    bg={color('bg')}
     borderBottom={border()}
     style={{
       backdropFilter: 'blur(5px)',
@@ -152,14 +152,15 @@ const SubBar: React.FC<any> = props => (
     <Flex
       align="center"
       justifyContent="flex-end"
-      bg={themeColor('ink.150')}
+      bg={color('bg-alt')}
       height="32px"
       width="32px"
       borderRadius="32px"
       transition={transition}
       px={space('tight')}
+      color={color('invert')}
       _hover={{
-        bg: themeColor('ink.200'),
+        bg: color('bg-light'),
         width: ['32px', '32px', '225px', '225px'],
         cursor: 'pointer',
         justifyContent: 'flex-end',
@@ -180,7 +181,7 @@ const Header = ({ hideSubBar, ...rest }: any) => {
           justifyContent="space-between"
           align="center"
           px={['extra-loose', 'extra-loose', 'base', 'base']}
-          bg="rgba(255,255,255, 0.8)"
+          bg={color('bg')}
           borderBottom={border()}
           style={{
             backdropFilter: 'blur(5px)',
@@ -234,6 +235,7 @@ const Header = ({ hideSubBar, ...rest }: any) => {
                 ))}
               </Stack>
             </Box>
+            <ColorModeButton />
             <GithubButton />
             <MenuButton />
           </Flex>

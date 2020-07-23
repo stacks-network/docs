@@ -1,5 +1,6 @@
 ---
-description: 'Blockstack naming service (BNS)'
+title: Decentralized Identifiers (DIDs)
+description: BNS nodes are compliant with the emerging Decentralized Identity Foundation protocol specification for decentralized identifiers.
 ---
 
 # Decentralized Identifiers (DIDs)
@@ -10,7 +11,7 @@ specification for decentralized identifiers (DIDs).
 
 Each name in BNS has an associated DID. The DID format for BNS is:
 
-```
+```bash
     did:stack:v0:{address}-{index}
 ```
 

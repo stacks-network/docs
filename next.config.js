@@ -19,6 +19,7 @@ const remarkPlugins = [
   require('remark-unwrap-images'),
   require('remark-normalize-headings'),
   require('remark-slug'),
+  require('remark-footnotes'),
 ];
 
 module.exports = withBundleAnalyzer({

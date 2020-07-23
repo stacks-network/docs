@@ -1,5 +1,6 @@
 ---
-description: 'Blockstack naming service (BNS)'
+title: BNS forks
+description: Learn about forks within the context of the BNS.
 ---
 
 # BNS Forks
@@ -15,7 +16,7 @@ the BNS peer needs to do so, and must know how to _reject_ both invalid transact
 as well as well-formed transactions from dishonest peers (i.e. peers that do not
 follow the same consensus rules).
 
-BNS nodes do not directly communicate with one another---by design, the set of
+BNS nodes do not directly communicate with one another--by design, the set of
 BNS peers is not enumerable. The only shared communication medium between BNS
 peers is the blockchain.
 

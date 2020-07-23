@@ -1,5 +1,5 @@
 import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document';
-
+import { THEME_STORAGE_KEY } from '@common/constants';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document<any> {
@@ -33,6 +33,22 @@ export default class MyDocument extends Document<any> {
       <Html lang="en">
         <Head />
         <body>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function() {
+                try {
+                  var mode = localStorage.getItem('${THEME_STORAGE_KEY}')
+                  if (!mode) return
+                  document.documentElement.classList.add(mode)
+                  var bgValue = getComputedStyle(document.documentElement)
+                    .getPropertyValue('--colors-bg')
+                  document.documentElement.style.background = bgValue
+                } catch (e) {}
+              })()`,
+            }}
+          />
+          <link rel="preconnect" href="https://bh4d9od16a-dsn.algolia.net" crossOrigin="true" />
+          <link rel="preconnect" href="https://cdn.usefathom.com" crossOrigin="true" />
           <Main />
           <NextScript />
         </body>

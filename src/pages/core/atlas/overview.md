@@ -1,5 +1,6 @@
 ---
-description: 'Blockstack Atlas network'
+title: Overview of the Atlas network
+description: This document describes the Atlas network, a peer-to-peer content-addressed storage system whose chunks' hashes are announced on a public blockchain.
 ---
 
 # Overview of the Atlas network
@@ -10,11 +11,10 @@ allows users and developers to **permanently store** chunks of data that are
 **replicated across every peer.** As long as at least one Atlas peer is online,
 all chunks are available to clients.
 
-This document is aimed at developers and technical users. The following
-concepts are discussed:
+This document is aimed at developers and technical users.
 
-The reader of this document is expected to be familiar with the [Blockstack Naming Service](/core/naming/introduction)(BNS), as well as Blockstack's
-storage system [Gaia](https://github.com/blockstack/gaia). We advise the reader
+The reader of this document is expected to be familiar with the [Blockstack Naming Service](/core/naming/introduction)(BNS),
+as well as Blockstack's storage system [Gaia](https://github.com/blockstack/gaia). We advise the reader
 to familiarize themselves with both systems before approaching this document.
 
 ## Architecture
@@ -112,11 +112,11 @@ feature table describes Atlas in relation to other popular chunk stores.
 | **Features**                    | Atlas | BitTorrent | [DAT](https://datproject.org/) | [IPFS](https://ipfs.io) | [Swarm](https://github.com/ethersphere/swarm) |
 | ------------------------------- | ----- | ---------- | ------------------------------ | ----------------------- | --------------------------------------------- |
 | Each peer stores all chunks     | X     | X          |                                |                         |                                               |
-| Replicas are permanent [1]      | X     | X          | X                              |                         |                                               |
+| Replicas are permanent [^1]     | X     | X          | X                              |                         |                                               |
 | Replicas are free               |       | X          | X                              | X                       |                                               |
 | Sybil-resistant chunk discovery | X     | X          |                                |                         | X                                             |
 | Sybil-resistant peer discovery  | X     |            |                                |                         |                                               |
 | Fixed chunk size                | X     |            | X                              | X                       | X                                             |
 
-[1] Here, "permanent" means that once a peer has data, they will never evict it
+[^1] Here, "permanent" means that once a peer has data, they will never evict it
 as part of the protocol.
