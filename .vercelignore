@@ -6,3 +6,6 @@
 node_modules
 build
 README.md
+.cache
+.yalc
+yalc.lock

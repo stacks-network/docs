@@ -19,9 +19,10 @@ const getUrl = pathname => {
 
 const useImgix = (src: string) => {
   if (process.env.NODE_ENV !== 'production') return src;
+  if (!src) return src;
   let _src = src;
   const router = useRouter();
-  if (!src.startsWith('http')) {
+  if (!src?.startsWith('http')) {
     const path = src.startsWith('/') ? '' : getUrl(router.pathname);
     _src = `${imgix + path + src + params}`;
   }
