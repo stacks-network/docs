@@ -11,8 +11,8 @@ content:
 This tutorial was extensively tested using Android Studio 3.6 on a Dell XPS 13
 running Ubuntu 19. If your environment is different, you may encounter
 slight or even major discrepancies when performing the procedures in this
-tutorial. Please [join the Blockstack discord server](https://chat.blockstack.org) and post questions or comments to
-the `#support` channel.
+tutorial. Please [join the Blockstack discord server](https://chat.blockstack.org)
+and post questions or comments to the `#support` channel.
 
 Finally, this tutorial is written for all levels from the beginner to the most
 experienced. For best results, beginners should follow the guide as written. It
@@ -39,7 +39,7 @@ application by doing the following:
 ## Set up your environment
 
 This sample application has two code bases, a Blockstack `hello-blockstack`
-web application and a `hello-andriod` Android application. Before you start
+web application and a `hello-android` Android application. Before you start
 developing the sample, there are a few elements you need in your environment.
 
 ### Install Android Studio
@@ -57,7 +57,8 @@ Depending on your network connection, this can take between 15-30 minutes.
 
 ### Do you have Node.js?
 
-Node.js v10 or higher is recommended the minimum supported version is Node.js v8. Before you begin, verify you have the correct version of Node.js and its tools installed.
+Node.js v10 or higher is recommended the minimum supported version is Node.js v8. Before you begin,
+verify you have the correct version of Node.js and its tools installed.
 
 ```bash
 $ node -v
@@ -71,7 +72,8 @@ If you don't have these installed, take a moment to install or upgrade as needed
 
 ## Build the Blockstack hello-world web app
 
-In this section, you build a Blockstack `hello-world` web application that acts as the companion site to your Android application.
+In this section, you build a Blockstack `hello-world` web application that acts as the companion site to
+your Android application.
 
 ### Generate and launch your hello-blockstack application
 

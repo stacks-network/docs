@@ -1,6 +1,5 @@
 ---
 description: 'Blockstack Network documentation'
-
 redirect_from: /org/voucherholder
 ---
 

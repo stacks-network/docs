@@ -7,7 +7,7 @@ import { AppStateProvider } from '@components/app-state';
 import { MdxOverrides } from '@components/mdx/styles';
 import { ProgressBar } from '@components/progress-bar';
 import GoogleFonts from 'next-google-fonts';
-import '@docsearch/react/dist/style.css';
+import '@docsearch/css';
 import { BaseLayout } from '@components/layouts/base-layout';
 import { THEME_STORAGE_KEY } from '@common/constants';
 import { ColorModes } from '@components/color-modes/styles';

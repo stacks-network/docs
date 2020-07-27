@@ -76,6 +76,7 @@ export const convertClarityRefToMdx = async () => {
     content: _functions,
     headings: getHeadings(CLARITY_REFERENCE.functions),
   };
+
   const keywords = {
     content: _keywords,
     headings: getHeadings(CLARITY_REFERENCE.keywords),
