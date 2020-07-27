@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Box, Flex, space, color, transition, FlexProps } from '@blockstack/ui';
 import NextLink from 'next/link';
-import { useTouchable } from 'touchable-hook';
+import { useTouchable } from '@common/hooks/use-touchable';
 
 interface CardProps extends FlexProps {
   href?: string;

@@ -1,9 +1,14 @@
 import React from 'react';
-import { color, space } from '@blockstack/ui';
+import { color, space, themeColor } from '@blockstack/ui';
 import { createGlobalStyle } from 'styled-components';
 import { getHeadingStyles } from '@components/mdx/typography';
+import { border } from '@common/utils';
 
 export const MdxOverrides = createGlobalStyle`
+@counter-style list {
+ pad: "0";
+ 
+}
 .DocSearch-Container{
 z-index: 99999;
 }
@@ -59,7 +64,7 @@ export const styleOverwrites = {
     pr: space('extra-loose'),
     pl: '64px ',
   },
-  p: {
+  'p, li': {
     display: 'inline-block',
     fontSize: '16.5px',
     lineHeight: '28px',
@@ -77,6 +82,7 @@ export const styleOverwrites = {
     },
   },
   li: {
+    display: 'list-item',
     pb: 0,
     ':last-child': {
       mb: 0,
@@ -119,13 +125,57 @@ export const styleOverwrites = {
     color: color('accent'),
     textDecoration: 'inherit',
   },
+  'li pre': {
+    '& > div': {
+      border: border(),
+      borderRadius: '12px',
+    },
+  },
   pre: {
-    '& + h2, & + h3': {
-      mt: space('extra-loose'),
+    my: space('extra-loose'),
+    '& > div': {
+      borderRight: [0, 0, border()],
+      borderLeft: [0, 0, border()],
+      borderBottom: border(),
+      borderTop: border(),
+      borderRadius: [0, 0, '12px'],
+      bg: themeColor('ink'),
     },
-    '& + h4, & + h5, & + h6, & + blockquote, & + ul, & + ol': {
-      mt: 0,
+    '& > div > code': {
+      whiteSpace: 'pre',
+      overflowX: 'auto',
+      maxWidth: '100%',
+      '& + h2, & + h3': {
+        mt: space('extra-loose'),
+      },
+      '& + h4, & + h5, & + h6, & + blockquote, & + ul, & + ol': {
+        mt: 0,
+      },
+      counterReset: 'line',
+      '& .token-line': {
+        '.comment': {
+          color: 'rgba(255,255,255,0.5) !important',
+        },
+        display: 'flex',
+        fontSize: '14px',
+        '&::before': {
+          counterIncrement: 'line',
+          content: 'counter(line, decimal-leading-zero)',
+          display: 'grid',
+          placeItems: 'center',
+          color: themeColor('ink.400'),
+          mr: '16px',
+          width: '42px',
+          fontSize: '12px',
+          borderRight: '1px solid rgb(39,41,46)',
+        },
+        pr: space(['base-loose', 'base-loose', 'extra-loose', 'extra-loose']),
+      },
+      boxShadow: 'none',
     },
+  },
+  '& > pre': {
+    px: space(['none', 'none', 'extra-loose', 'extra-loose']),
   },
   h2: {
     mt: '64px',
@@ -200,10 +250,6 @@ export const styleOverwrites = {
       // mt: space('extra-tight'),
     },
   },
-  '.prism-code': {
-    width: '100%',
-    minWidth: 'fit-content',
-  },
   blockquote: {
     '& + blockquote': {
       mt: space('extra-tight'),
@@ -219,20 +265,6 @@ export const styleOverwrites = {
     },
   },
   img: {
-    my: space('extra-loose'),
-  },
-  '& > pre > *:not(pre):not(.line-numbers)': {
-    px: space(['extra-loose', 'extra-loose', 'none', 'none']),
-  },
-  '& > pre > div[style]': {
-    px: space(['base-loose', 'base-loose', 'none', 'none']),
-  },
-  '& > pre > .code-editor': {
-    pl: space(['base', 'base', 'none', 'none']),
-  },
-  '& > pre': {
-    px: space(['none', 'none', 'extra-loose', 'extra-loose']),
-    boxShadow: 'none',
     my: space('extra-loose'),
   },
   '& > img': {

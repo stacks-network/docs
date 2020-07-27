@@ -39,3 +39,7 @@ yarn-error.log*
 
 .now
 .mdx-data
+.cache
+.yalc
+yalc.lock
+.cache

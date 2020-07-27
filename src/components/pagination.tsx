@@ -6,7 +6,7 @@ import { MDXComponents } from '@components/mdx';
 import { border } from '@common/utils';
 import NextLink from 'next/link';
 import { Link } from '@components/typography';
-import { useTouchable } from 'touchable-hook';
+import { useTouchable } from '@common/hooks/use-touchable';
 
 const usePaginateRoutes = () => {
   const router = useRouter();

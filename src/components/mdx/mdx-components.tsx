@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import {
   Pre,
   THead,
@@ -12,7 +12,7 @@ import {
   H4,
   H5,
   H6,
-  BlockQuote,
+  Blockquote,
   Br,
   Ul,
   P,
@@ -22,9 +22,7 @@ import {
   Sup,
 } from '@components/mdx/components';
 import { Img } from '@components/mdx/image';
-import dynamic from 'next/dynamic';
-
-const Code = dynamic(() => import('../code-block'));
+import { Code } from '@components/mdx/components';
 
 export const MDXComponents = {
   h1: H1,
@@ -33,8 +31,8 @@ export const MDXComponents = {
   h4: H4,
   h5: H5,
   h6: H6,
-  inlineCode: InlineCode,
   code: Code,
+  inlineCode: InlineCode,
   pre: Pre,
   br: Br,
   hr: Hr,
@@ -47,6 +45,6 @@ export const MDXComponents = {
   ol: Ol,
   li: Li,
   img: Img,
-  blockquote: BlockQuote,
+  blockquote: Blockquote,
   sup: Sup,
 };

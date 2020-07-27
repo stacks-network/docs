@@ -4,7 +4,7 @@ import { useMediaQuery } from '@common/hooks/use-media-query';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from '@components/mdx';
 import { AppStateProvider } from '@components/app-state';
-import { MdxOverrides } from '@components/mdx/overrides';
+import { MdxOverrides } from '@components/mdx/styles';
 import { ProgressBar } from '@components/progress-bar';
 import GoogleFonts from 'next-google-fonts';
 import '@docsearch/react/dist/style.css';
@@ -12,17 +12,24 @@ import { BaseLayout } from '@components/layouts/base-layout';
 import { THEME_STORAGE_KEY } from '@common/constants';
 import { ColorModes } from '@components/color-modes/styles';
 
+const setHtmlBackgroundColor = () => {
+  const bgValue = getComputedStyle(document.documentElement).getPropertyValue('--colors-bg');
+  document.documentElement.style.background = bgValue;
+};
+
 const setDarkMode = setColorMode => {
   localStorage.setItem(THEME_STORAGE_KEY, 'dark');
   setColorMode('dark');
   document.documentElement.classList.add('dark');
   document.documentElement.classList.remove('light');
+  setHtmlBackgroundColor();
 };
 const setLightMode = setColorMode => {
   localStorage.setItem(THEME_STORAGE_KEY, 'light');
   setColorMode('light');
   document.documentElement.classList.add('light');
   document.documentElement.classList.remove('dark');
+  setHtmlBackgroundColor();
 };
 
 export const useColorMode = () => {

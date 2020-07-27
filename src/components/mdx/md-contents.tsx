@@ -6,7 +6,7 @@ import { TableOfContents } from '@components/toc';
 
 import { css } from '@styled-system/css';
 import { TOC_WIDTH } from '@common/constants';
-import { styleOverwrites } from '@components/mdx/overrides';
+import { styleOverwrites } from '@components/mdx/styles';
 
 export const MDContents: React.FC<any> = React.memo(({ headings, children }) => (
   <>
@@ -17,7 +17,7 @@ export const MDContents: React.FC<any> = React.memo(({ headings, children }) => 
       mx="unset"
       pt="unset"
       px="unset"
-      css={css(styleOverwrites)}
+      css={css(styleOverwrites as any)}
     >
       {children}
     </ContentWrapper>

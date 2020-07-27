@@ -7,19 +7,19 @@ import {
   Flex,
   space,
   Stack,
-  themeColor,
   transition,
   SlideFade,
 } from '@blockstack/ui';
 import { Text } from '@components/typography';
 import { MDXComponents, Link } from '@components/mdx';
 import { SadIcon, NeutralIcon, HappyIcon } from '@components/icons/feedback';
-import { useHover } from 'use-events';
+import { useTouchable } from '@common/hooks/use-touchable';
 import { border } from '@common/utils';
 import { useRouter } from 'next/router';
 
 const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponent, ...props }) => {
-  const [isHovered, bind] = useHover();
+  const { bind, hover, active } = useTouchable();
+  const isHovered = hover || active;
   return (
     <Box
       color={color('text-caption')}
