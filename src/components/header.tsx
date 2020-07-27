@@ -24,6 +24,7 @@ import NextLink from 'next/link';
 import MagnifyIcon from 'mdi-react/MagnifyIcon';
 import { useRouter } from 'next/router';
 import { ColorModeButton } from '@components/color-mode-button';
+import Search from '@components/search';
 
 const MenuButton = ({ ...rest }: any) => {
   const { isOpen, handleOpen, handleClose } = useMobileMenuState();
@@ -40,6 +41,7 @@ const MenuButton = ({ ...rest }: any) => {
     </Flex>
   );
 };
+
 const BreadCrumbs: React.FC<any> = props => {
   const router = useRouter();
   const [route, setRoute] = React.useState(undefined);
@@ -149,25 +151,7 @@ const SubBar: React.FC<any> = props => (
     }}
   >
     <BreadCrumbs />
-    <Flex
-      align="center"
-      justifyContent="flex-end"
-      bg={color('bg-alt')}
-      height="32px"
-      width="32px"
-      borderRadius="32px"
-      transition={transition}
-      px={space('tight')}
-      color={color('invert')}
-      _hover={{
-        bg: color('bg-light'),
-        width: ['32px', '32px', '225px', '225px'],
-        cursor: 'pointer',
-        justifyContent: 'flex-end',
-      }}
-    >
-      <MagnifyIcon size="16px" />
-    </Flex>
+    <Search />
   </Flex>
 );
 
