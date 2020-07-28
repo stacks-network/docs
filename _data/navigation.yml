@@ -10,7 +10,6 @@
   - develop/storage
   - storage/authentication
   - storage/write-to-read
-  - storage/hub-choice
 
 - title: Data Indexing
   docs:
