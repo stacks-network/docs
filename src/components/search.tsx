@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Flex, Portal, space, Fade, themeColor, color } from '@blockstack/ui';
-import { useDocSearchKeyboardEvents, DocSearchModal } from '@docsearch/react';
+import { useDocSearchKeyboardEvents } from '@docsearch/react';
 
 import { border } from '@common/utils';
 import { Text } from '@components/typography';
@@ -17,10 +17,11 @@ const getLocalUrl = href => {
     .replace('storage/clidocs', 'core/cmdLineRef');
   return url;
 };
+
 function Hit({ hit, children }: any) {
   const url = getLocalUrl(hit.url);
   return (
-    <Link href={url} passHref>
+    <Link href={url} as={url} passHref scroll={!url.includes('#')}>
       <a>{children}</a>
     </Link>
   );
@@ -29,7 +30,7 @@ function Hit({ hit, children }: any) {
 const navigator = {
   navigate: async ({ suggestionUrl }: any) => {
     const url = getLocalUrl(suggestionUrl);
-    return Router.push(url);
+    return Router.push(url, url);
   },
 };
 
@@ -38,14 +39,29 @@ const searchOptions = {
   indexName: 'blockstack',
   navigator,
 };
-export const SearchBox: React.FC<any> = () => {
+
+let DocSearchModal: any = null;
+
+export const SearchBox: React.FC<any> = React.memo(() => {
   const [isOpen, setIsOpen] = React.useState(false);
+
+  const importDocSearchModalIfNeeded = React.useCallback(function importDocSearchModalIfNeeded() {
+    if (DocSearchModal) {
+      return Promise.resolve();
+    }
+
+    return Promise.all([import('@docsearch/react/modal')]).then(([{ DocSearchModal: Modal }]) => {
+      DocSearchModal = Modal;
+    });
+  }, []);
 
   const onOpen = React.useCallback(
     function onOpen() {
-      setIsOpen(true);
+      void importDocSearchModalIfNeeded().then(() => {
+        setIsOpen(true);
+      });
     },
-    [setIsOpen]
+    [importDocSearchModalIfNeeded, setIsOpen]
   );
 
   const onClose = React.useCallback(
@@ -90,6 +106,6 @@ export const SearchBox: React.FC<any> = () => {
       </Box>
     </>
   );
-};
+});
 
 export default SearchBox;

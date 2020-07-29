@@ -26,9 +26,6 @@ module.exports = withBundleAnalyzer({
       ],
     });
 
-    if (!options.isServer) {
-      config.node['fs'] = 'empty';
-    }
     if (!options.dev) {
       const splitChunks = config.optimization && config.optimization.splitChunks;
       if (splitChunks) {

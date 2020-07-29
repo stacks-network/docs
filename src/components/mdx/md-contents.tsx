@@ -16,7 +16,6 @@ export const MDContents: React.FC<any> = React.memo(({ headings, children }) => 
       }
       mx="unset"
       pt="unset"
-      px="unset"
       css={css(styleOverwrites as any)}
     >
       {children}
@@ -25,9 +24,11 @@ export const MDContents: React.FC<any> = React.memo(({ headings, children }) => 
       <TableOfContents
         display={['none', 'none', 'none', 'block']}
         position="sticky"
-        top="195px"
+        top={space('base')}
+        pt="64px"
         pl={space('extra-loose')}
         headings={headings}
+        limit={2}
       />
     ) : null}
   </>

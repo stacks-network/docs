@@ -10,19 +10,37 @@ interface ActiveHeadingReturn {
   doChangeSlugInView: (value: string) => void;
 }
 
-export const useActiveHeading = (_slug: string): ActiveHeadingReturn => {
+const getHash = (url: string) => url?.includes('#') && url.split('#')[1];
+
+export const useWatchActiveHeadingChange = () => {
   const router = useRouter();
   const asPath = router && router.asPath;
-  const { activeSlug, slugInView, doChangeActiveSlug, doChangeSlugInView } = useAppState();
-  const urlHash = asPath?.includes('#') && asPath.split('#')[1];
+  const { activeSlug, doChangeActiveSlug } = useAppState();
+  const urlHash = getHash(asPath);
 
-  const location = typeof window !== 'undefined' && window.location.href;
+  const handleRouteChange = url => {
+    if (url) {
+      const hash = getHash(url);
+      if (hash) doChangeActiveSlug(hash);
+    }
+  };
 
   useEffect(() => {
-    if (urlHash && !activeSlug) {
+    if ((urlHash && !activeSlug) || (urlHash && urlHash !== activeSlug)) {
       doChangeActiveSlug(urlHash);
     }
-  }, [asPath, urlHash, location]);
+    router.events.on('hashChangeStart', handleRouteChange);
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('hashChangeStart', handleRouteChange);
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, []);
+};
+
+export const useActiveHeading = (_slug: string): ActiveHeadingReturn => {
+  const { activeSlug, slugInView, doChangeActiveSlug, doChangeSlugInView } = useAppState();
+  const location = typeof window !== 'undefined' && window.location.href;
 
   const isActive = _slug === activeSlug;
 

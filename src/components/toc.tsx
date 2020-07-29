@@ -5,7 +5,7 @@ import { slugify } from '@common/utils';
 import { Text } from '@components/typography';
 import { Link } from '@components/mdx';
 import { useActiveHeading } from '@common/hooks/use-active-heading';
-
+import NextLink from 'next/link';
 const getLevelPadding = (level: number) => {
   switch (level) {
     case 2:
@@ -17,30 +17,30 @@ const getLevelPadding = (level: number) => {
   }
 };
 
-const Item = ({ slug, label, level }) => {
+const Item = ({ slug, label, level, limit }) => {
   const { isActive: _isActive, doChangeActiveSlug, slugInView } = useActiveHeading(slug);
   const isOnScreen = slugInView === slug;
 
   const isActive = isOnScreen || _isActive;
-  return (
+  return !limit || level <= limit + 1 ? (
     <Box pl={getLevelPadding(level - 2)} py={space('extra-tight')}>
-      <Link
-        href={`#${slug}`}
-        fontSize="14px"
-        color={isActive ? color('text-title') : color('text-caption')}
-        fontWeight={isActive ? '600' : '400'}
-        onClick={() => doChangeActiveSlug(slug)}
-        textDecoration="none"
-        _hover={{
-          textDecoration: 'underline',
-          color: color('accent'),
-        }}
-        pointerEvents={isActive ? 'none' : 'unset'}
-      >
-        <Box as="span" dangerouslySetInnerHTML={{ __html: label }} />
-      </Link>
+      <NextLink href={`#${slug}`} passHref>
+        <Link
+          fontSize="14px"
+          color={isActive ? color('text-title') : color('text-caption')}
+          fontWeight={isActive ? '600' : '400'}
+          textDecoration="none"
+          _hover={{
+            textDecoration: 'underline',
+            color: color('accent'),
+          }}
+          pointerEvents={isActive ? 'none' : 'unset'}
+        >
+          <Box as="span" dangerouslySetInnerHTML={{ __html: label }} />
+        </Link>
+      </NextLink>
     </Box>
-  );
+  ) : null;
 };
 
 export const TableOfContents = ({
@@ -49,6 +49,7 @@ export const TableOfContents = ({
   label = 'On this page',
   columns = 1,
   display,
+  limit,
   ...rest
 }: {
   headings?: {
@@ -57,6 +58,7 @@ export const TableOfContents = ({
   }[];
   noLabel?: boolean;
   label?: string;
+  limit?: number;
   columns?: number | number[];
 } & BoxProps) => {
   return (
@@ -85,6 +87,7 @@ export const TableOfContents = ({
           {headings.map((heading, index) => {
             return index > 0 ? (
               <Item
+                limit={limit}
                 level={heading.level}
                 slug={slugify(heading.content)}
                 label={heading.content}

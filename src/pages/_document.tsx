@@ -49,6 +49,8 @@ export default class MyDocument extends Document<any> {
           />
           <link rel="preconnect" href="https://bh4d9od16a-dsn.algolia.net" crossOrigin="true" />
           <link rel="preconnect" href="https://cdn.usefathom.com" crossOrigin="true" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="true" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
           <Main />
           <NextScript />
         </body>
