@@ -4,17 +4,20 @@ import { generateCssVariables } from '@blockstack/ui';
 export const ColorModes = createGlobalStyle`
   :root{
     ${generateCssVariables('light')};
+    --colors-highlight-line-bg: rgba(255,255,255,0.08);
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
       ${generateCssVariables('dark')};
+      --colors-highlight-line-bg: rgba(255,255,255,0.04);
     }
   }
 
   @media (prefers-color-scheme: light) {
     :root {
       ${generateCssVariables('light')};
+      --colors-highlight-line-bg: rgba(255,255,255,0.08);
     }
   }
 
@@ -24,9 +27,11 @@ export const ColorModes = createGlobalStyle`
     
     &.light {
       ${generateCssVariables('light')};
+      --colors-highlight-line-bg: rgba(255,255,255,0.08);
     }
     &.dark {
       ${generateCssVariables('dark')};
+      --colors-highlight-line-bg: rgba(255,255,255,0.04);
     }
   }
 

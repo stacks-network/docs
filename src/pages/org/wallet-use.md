@@ -63,24 +63,11 @@ When you start the Stacks Wallet it prompts you to create a new or choose an exi
 
 Initialize and configure your wallet according to the manufacturer's instructions before you use it with the Stacks Wallet software. Some hardware wallets require that you have additional software installed to support the hardware wallets interactions with the Stacks Wallet.
 
-<table class="uk-table uk-table-small uk-table-divider">
-    <tr>
-      <th>Hardware wallet</th>
-      <th>Prerequisite software</th>
-    </tr>
-    <tr>
-      <td>Trezor One</td>
-      <td><a href="https://doc.satoshilabs.com/trezor-user/download.html" target="\_blank">Trezor Bridge</a></td>
-    </tr>
-    <tr>
-      <td>Ledger Nano S</td>
-      <td>None.</td>
-    </tr>
-    <tr>
-      <td>Ledger Blue</td>
-      <td>None.</td>
-    </tr>
-</table>
+| Hardware wallet | Prerequisite software                                                  |
+| --------------- | ---------------------------------------------------------------------- |
+| Trezor One      | [Trezor Bridge](https://doc.satoshilabs.com/trezor-user/download.html) |
+| Ledger Nano S   | None.                                                                  |
+| Ledger Blue     | None.                                                                  |
 
 Make sure you have installed any prerequisite software. It is a good idea to connect your hardware wallet to your computer before starting the Stacks Wallet software, but it is not required.
 
@@ -200,8 +187,7 @@ If you attempt to send STX with your wallet and you do not have enough Bitcoin t
 
 To increase your Bitcoin for transactions, do the following:
 
-1. Click the <span class="uk-margin-small-center" uk-icon="cog"></span>
-   (settings icon) in the upper right corner of the wallet.
+1. Click the settings icon in the upper right corner of the wallet.
 
    The system opens the **Settings** dialog.
 

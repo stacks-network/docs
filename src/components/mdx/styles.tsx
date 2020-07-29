@@ -107,81 +107,30 @@ p, ul, ol, table {
 `;
 
 export const styleOverwrites = {
-  '& > *:not(pre):not(ul):not(ol):not(img):not([data-reach-accordion])': {
-    px: space('extra-loose'),
-  },
-  '& > ul, & > ol': {
-    pr: space('extra-loose'),
-    pl: '64px ',
-  },
-  'p, li': {
-    display: 'inline-block',
-    fontSize: '16.5px',
-    lineHeight: '28px',
-    ':before': {
-      content: "''",
-      marginTop: '-0.4878787878787879em',
-      display: 'block',
-      height: 0,
+  section: {
+    '& > *:not(pre):not(ul):not(ol):not(img):not([data-reach-accordion]):not(section)': {
+      px: space('extra-loose'),
     },
-    ':after': {
-      content: "''",
-      marginBottom: '-0.4878787878787879em',
-      display: 'block',
-      height: 0,
+    'ul, ol': {
+      pr: space('extra-loose'),
+      pl: '64px',
+      'ul, ol': {
+        pl: space('extra-loose'),
+      },
     },
-  },
-  li: {
-    display: 'list-item',
-    pb: 0,
-    ':last-child': {
-      mb: 0,
-      pb: 0,
-    },
-    '*:last-child:not(pre):not(blockquote)': {
-      mb: 0,
+    '*:not(pre) a > code': {
+      color: color('accent'),
+      textDecoration: 'inherit',
     },
     pre: {
-      display: 'block',
-      my: space('extra-loose'),
+      px: space(['none', 'none', 'extra-loose', 'extra-loose']),
     },
-    p: {
-      display: 'inline',
-    },
-    'ol, ul': {
-      mt: space('base-loose'),
-    },
-    ':before': {
-      verticalAlign: 'top',
-    },
-    ':marker': {
-      verticalAlign: 'top',
-    },
-    mb: space('base'),
-    'p + p': {
-      mt: space('extra-loose'),
-    },
-    'p + p, ul + p, ol + p': {
-      display: 'inline-block',
-      mt: space('extra-loose'),
-    },
-  },
-  'p + p, ul + p, ol + p': {
-    display: 'inline-block',
-    mt: space('extra-loose'),
-  },
-
-  '& > *:not(pre) a > code': {
-    color: color('accent'),
-    textDecoration: 'inherit',
-  },
-  'li pre': {
-    '& > div': {
-      border: border(),
-      borderRadius: '12px',
+    img: {
+      mx: 'auto',
     },
   },
   pre: {
+    display: 'block',
     my: space('extra-loose'),
     '& > div': {
       borderRight: [0, 0, border()],
@@ -224,8 +173,64 @@ export const styleOverwrites = {
       boxShadow: 'none',
     },
   },
-  '& > pre': {
-    px: space(['none', 'none', 'extra-loose', 'extra-loose']),
+  'p, li, a': {
+    display: 'inline-block',
+    fontSize: '16px',
+    lineHeight: '28px',
+    padding: '0.05px 0',
+    '::before': {
+      content: "''",
+      marginTop: '-0.5144886363636364em',
+      display: 'block',
+      height: 0,
+    },
+    '::after': {
+      content: "''",
+      marginBottom: '-0.5144886363636364em',
+      display: 'block',
+      height: 0,
+    },
+  },
+  li: {
+    display: 'list-item',
+    pb: space('base-tight'),
+    ':last-child': {
+      mb: 0,
+      pb: 0,
+    },
+    '*:last-child:not(pre):not(blockquote)': {
+      mb: 0,
+    },
+    p: {
+      display: 'inline',
+    },
+    'ol, ul': {
+      mt: space('base-loose'),
+    },
+    ':before': {
+      verticalAlign: 'top',
+    },
+    ':marker': {
+      verticalAlign: 'top',
+    },
+    mb: space('base'),
+    'p + p': {
+      mt: space('extra-loose'),
+    },
+    'p + p, ul + p, ol + p': {
+      display: 'inline-block',
+      mt: space('extra-loose'),
+    },
+  },
+  'p + p, ul + p, ol + p': {
+    display: 'inline-block',
+    mt: space('extra-loose'),
+  },
+  'li pre': {
+    '& > div': {
+      border: border(),
+      borderRadius: '12px',
+    },
   },
   h2: {
     mt: '64px',
@@ -238,7 +243,7 @@ export const styleOverwrites = {
       mr: '2px',
       fontSize: '22px',
     },
-    '& + h3': {
+    '& + section > h3': {
       mt: 0,
     },
   },
@@ -247,7 +252,7 @@ export const styleOverwrites = {
     '&, & > *': {
       ...getHeadingStyles('h3'),
     },
-    '& + h4': {
+    '& + section > h4': {
       mt: 0,
     },
   },
@@ -256,7 +261,7 @@ export const styleOverwrites = {
     '&, & > *': {
       ...getHeadingStyles('h4'),
     },
-    '& + h5': {
+    '& + section > h5': {
       mt: 0,
     },
   },
@@ -296,9 +301,6 @@ export const styleOverwrites = {
   'ol, ul': {
     mb: 0,
     mt: space('extra-loose'),
-    '& + blockquote, & + pre': {
-      // mt: space('extra-tight'),
-    },
   },
   blockquote: {
     '& + blockquote': {
@@ -317,10 +319,22 @@ export const styleOverwrites = {
   img: {
     my: space('extra-loose'),
   },
-  '& > img': {
-    mx: 'auto',
-  },
   table: {
+    '*': {
+      fontSize: '14px',
+      lineHeight: '24px',
+      '::before': {
+        display: 'none',
+      },
+      '::after': {
+        display: 'none',
+      },
+      '& code': {
+        fontSize: '10px',
+        lineHeight: '12px',
+        transform: 'translateY(4px)',
+      },
+    },
     '& code': {
       maxWidth: '100%',
       overflowX: 'auto',

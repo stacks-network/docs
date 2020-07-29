@@ -16,36 +16,14 @@ Before users can interact with your application, you must deploy it on a server 
 
 If you first populated your application with the Blockstack application generator, your application contains the starting blocks for configuring, building, and deploying your app. For example, the React template builds out a scaffolding with the following building blocks.
 
-<table class="uk-table">
-  <tr>
-    <th>File or Directory</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><code>node_modules/react-scripts</code></td>
-    <td>A set of scripts for that helps you kick off React projects without configuring, so you do not have to set up your project by yourself.</td>
-  </tr>
-  <tr>
-    <td><code>package.json</code></td>
-    <td>Contains a scripts section that includes a reference to the react-scripts, which are a dependency. This script creates a <code>build</code> directory containing your files for deployment.</td>
-  </tr>
-  <tr>
-    <td><code>public/favicon.ico</code></td>
-    <td>An example shortcut icon.</td>
-  </tr>
-  <tr>
-    <td><code>public/index.html</code></td>
-    <td>An entry page for an application.</td>
-  </tr>
-  <tr>
-    <td><code>public/manifest.json</code></td>
-    <td>A JSON file that describes your web application to the browser.&nbsp;&nbsp;</td>
-  </tr>
-  <tr>
-    <td><code>cors</code></td>
-    <td>Contains example deployment files for cross-origin request configuration.</td>
-  </tr>
-</table>
+| File or Directory          | Description                                                                                                                                                                    |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| node_modules/react-scripts | A set of scripts for that helps you kick off React projects without configuring, so you do not have to set up your project by yourself.                                        |
+| package.json               | Contains a scripts section that includes a reference to the react-scripts, which are a dependency. This script creates a build directory containing your files for deployment. |
+| public/favicon.ico         | An example shortcut icon.                                                                                                                                                      |
+| public/index.html          | An entry page for an application.                                                                                                                                              |
+| public/manifest.json       | A JSON file that describes your web application to the browser.                                                                                                                |
+| cors                       | Contains example deployment files for cross-origin request configuration.                                                                                                      |
 
 If you use the generator to build Javascript or Vue scaffolding, your project configuration files will be different.
 

@@ -4,9 +4,40 @@ import { Box, BoxProps, color, themeColor } from '@blockstack/ui';
 import { border } from '@common/utils';
 import { css } from '@styled-system/css';
 import { Text } from '@components/typography';
+import { useColorMode } from '@pages/_app';
 
-export const Code: React.FC<any> = React.memo(
-  React.forwardRef(({ children, ...rest }, ref) => {
+const getHighlightLineNumbers = (str: string): number[] | undefined => {
+  if (!str) return;
+  let numbers: number[] | undefined = undefined;
+  numbers = str.split(',').flatMap(s => {
+    if (!s.includes('-')) return +s;
+
+    const [min, max] = s.split('-');
+    // @ts-ignore
+    const final = Array.from({ length: max - min + 1 }, (_, n) => n + +min);
+    return final;
+  });
+  return numbers;
+};
+
+export const Code: React.FC<BoxProps & { highlight?: string }> = React.forwardRef(
+  ({ children, highlight, ...rest }, ref) => {
+    const [mode] = useColorMode();
+    const numbers = getHighlightLineNumbers(highlight);
+
+    const generateCssStylesForHighlightedLines = (numbers: number[] = []) => {
+      const record = {};
+      const style = {
+        bg: 'var(--colors-highlight-line-bg)',
+        '&::before': {
+          borderRightColor: themeColor('ink.600'),
+        },
+      };
+      numbers.forEach(number => {
+        record[`&:nth-of-type(${number})`] = style;
+      });
+      return record;
+    };
     return (
       <Box ref={ref as any} overflowX="auto">
         <Box
@@ -18,12 +49,7 @@ export const Code: React.FC<any> = React.memo(
             minWidth: 'fit-content',
             '.token-line': {
               display: 'inline-block',
-              '&.token-line--highlighted': {
-                bg: 'rgba(255,255,255,0.05)',
-                '&::before': {
-                  borderRightColor: themeColor('ink.600'),
-                },
-              },
+              ...generateCssStylesForHighlightedLines(numbers),
             },
           })}
           {...rest}
@@ -34,7 +60,7 @@ export const Code: React.FC<any> = React.memo(
         </Box>
       </Box>
     );
-  })
+  }
 );
 
 const preProps = {

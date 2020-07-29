@@ -20,6 +20,7 @@ import {
   Hr,
   Li,
   Sup,
+  Section,
 } from '@components/mdx/components';
 import { Img } from '@components/mdx/image';
 import { Code } from '@components/mdx/components';
@@ -47,4 +48,5 @@ export const MDXComponents = {
   img: Img,
   blockquote: Blockquote,
   sup: Sup,
+  section: Section,
 };

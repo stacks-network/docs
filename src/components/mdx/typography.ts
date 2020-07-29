@@ -6,18 +6,18 @@ export const baseTypeStyles = {
 
 const h1 = {
   fontWeight: 'bolder',
-  fontSize: '44px',
+  fontSize: ['38px', '38px', '44px'],
   lineHeight: '52px',
   padding: '0.05px 0',
   ':before': {
     content: "''",
-    marginTop: '-0.2284090909090909em',
+    marginTop: ['-0.32188995215311006em', '-0.32188995215311006em', '-0.2284090909090909em'],
     display: 'block',
     height: 0,
   },
   ':after': {
     content: "''",
-    marginBottom: '-0.22840909090909092em',
+    marginBottom: ['-0.32188995215311006em', '-0.32188995215311006em', '-0.22840909090909092em'],
     display: 'block',
     height: 0,
   },

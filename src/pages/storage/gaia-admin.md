@@ -51,74 +51,24 @@ The `port` is the port where Gaia is running. The `apiKeys` field is key used fo
 
 The `argsTransport` section configures the hub logging. The service uses the `winston` logging service. Refer to their documentation for full details on the [logging configuration options](https://github.com/winstonjs/winston).
 
-<table class="uk-table uk-table-small uk-table-divider">
-   <thead>
-      <tr>
-         <th>Field</th>
-         <th>Description</th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr>
-         <td><code>level</code></td>
-         <td>Lowest level this transport will log. (default: <code>info</code>)</td>
-      </tr>
-      <tr>
-         <td><code>handleException</code></td>
-         <td>Set to true to have this transport handle exceptions. (default: <code>false</code>)</td>
-      </tr>
-      <tr>
-         <td><code>timestamp</code></td>
-         <td>The timestamp when the message was received.</td>
-      </tr>
-      <tr>
-         <td><code>stringify</code></td>
-         <td>Converts the output to a JSON string.</td>
-      </tr>
-      <tr>
-         <td><code>colorize</code></td>
-         <td>Colorizes the standard logging level</td>
-      </tr>
-      <tr>
-         <td><code>json</code></td>
-         <td>Log format.</td>
-      </tr>
-   </tbody>
-</table>
+| Field           | Description                                                              |
+| --------------- | ------------------------------------------------------------------------ |
+| level           | Lowest level this transport will log. (default: `info`)                  |
+| handleException | Set to true to have this transport handle exceptions. (default: `false`) |
+| timestamp       | The timestamp when the message was received.                             |
+| stringify       | Converts the output to a JSON string.                                    |
+| colorize        | Colorizes the standard logging level                                     |
+| json            | Log format.                                                              |
 
 The `reloadSettings` configure the command that is used to reload your Gaia hub.
 
-<table class="uk-table uk-table-small uk-table-divider">
-   <thead>
-      <tr>
-         <th>Field</th>
-         <th>Description</th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr>
-         <td><code>command</code></td>
-         <td>A command which reloads the Gaia hub service.</td>
-      </tr>
-      <tr>
-         <td><code>argv</code></td>
-         <td>An array containing the command arguments.</td>
-      </tr>
-      <tr>
-         <td><code>env</code></td>
-         <td>This is a key/value list of any environment variables
-           that need to be set for the command to run. This is optional.</td>
-      </tr>
-      <tr>
-         <td><code>setuid</code></td>
-         <td>This is the UID under which the command will be run. This is optional.</td>
-      </tr>
-      <tr>
-         <td><code>setgid</code></td>
-         <td>This is the GID under which the command will run. This is optional.</td>
-      </tr>
-   </tbody>
-</table>
+| Field   | Description                                                                                                         |
+| ------- | ------------------------------------------------------------------------------------------------------------------- |
+| command | A command which reloads the Gaia hub service.                                                                       |
+| argv    | An array containing the command arguments.                                                                          |
+| env     | This is a key/value list of any environment variables that need to be set for the command to run. This is optional. |
+| setuid  | This is the UID under which the command will be run. This is optional.                                              |
+| setgid  | This is the GID under which the command will run. This is optional.                                                 |
 
 ## Using the admin service APIs
 
