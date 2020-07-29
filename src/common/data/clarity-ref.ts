@@ -1,5 +1,6 @@
 import { renderMdx } from '@common/data/mdx';
 import CLARITY_REFERENCE from '../../_data/clarityRef.json';
+import { slugify } from '@common/utils';
 
 const wrapInClarityTicks = (string: string) => {
   let newString = '';
@@ -34,7 +35,7 @@ const generateMarkdown = () => {
 
 ${entry.description}
 
-#### Example
+#### Example {#${slugify(entry.name)}-example}
 
 ${wrapInClarityTicks(entry.example)}
 `;
@@ -47,7 +48,7 @@ ${wrapInClarityTicks(entry.example)}
 
 ${entry.description}
 
-#### Example
+#### Example {#${slugify(entry.name)}-example}
 
 ${wrapInClarityTicks(entry.example)}
 `;

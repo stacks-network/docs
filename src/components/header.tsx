@@ -1,31 +1,20 @@
 import React from 'react';
-import {
-  Flex,
-  Box,
-  BlockstackIcon,
-  Stack,
-  color,
-  space,
-  transition,
-  ChevronIcon,
-} from '@blockstack/ui';
+import { Flex, Box, BlockstackIcon, Stack, color, space, ChevronIcon } from '@blockstack/ui';
 import { Link, Text, LinkProps } from '@components/typography';
 import MenuIcon from 'mdi-react/MenuIcon';
 import CloseIcon from 'mdi-react/CloseIcon';
-import { useLockBodyScroll } from '@common/hooks/use-lock-body-scroll';
 import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
-import { SideNav } from './side-nav';
 import GithubIcon from 'mdi-react/GithubIcon';
 import { IconButton } from '@components/icon-button';
-import { border } from '@common/utils';
 import routes from '@common/routes';
 import { css } from '@styled-system/css';
 import NextLink from 'next/link';
-import MagnifyIcon from 'mdi-react/MagnifyIcon';
 import { useRouter } from 'next/router';
 import { ColorModeButton } from '@components/color-mode-button';
-import Search from '@components/search';
-
+import dynamic from 'next/dynamic';
+const Search = dynamic(() => import('./search'));
+import Headroom from 'react-headroom';
+import { border } from '@common/utils';
 const MenuButton = ({ ...rest }: any) => {
   const { isOpen, handleOpen, handleClose } = useMobileMenuState();
   const Icon = isOpen ? CloseIcon : MenuIcon;
@@ -61,7 +50,7 @@ const BreadCrumbs: React.FC<any> = props => {
   return route && section ? (
     <Flex align="center">
       <Box>
-        <Text fontSize="14px" fontWeight="600">
+        <Text fontSize={['12px', '12px', '14px']} fontWeight="500">
           Docs
         </Text>
       </Box>
@@ -69,7 +58,7 @@ const BreadCrumbs: React.FC<any> = props => {
         <ChevronIcon size="20px" />
       </Box>
       <Box>
-        <Text fontSize="14px" fontWeight="600">
+        <Text fontSize={['12px', '12px', '14px']} fontWeight="500">
           {section?.title}
         </Text>
       </Box>
@@ -77,7 +66,7 @@ const BreadCrumbs: React.FC<any> = props => {
         <ChevronIcon size="20px" />
       </Box>
       <Box>
-        <Text fontSize="14px" fontWeight="600">
+        <Text fontSize={['12px', '12px', '14px']} fontWeight="500">
           {route?.title || (route?.headings.length && route.headings[0])}
         </Text>
       </Box>
@@ -109,26 +98,9 @@ const GithubButton = (props: LinkProps) => (
   </IconButton>
 );
 
-const MobileSideNav = () => {
-  const { isOpen } = useMobileMenuState();
-  useLockBodyScroll(isOpen);
-  return (
-    <SideNav
-      position="fixed"
-      top={`${HEADER_HEIGHT}px`}
-      maxHeight={`calc(100vh - ${HEADER_HEIGHT}px)`}
-      width="100%"
-      zIndex={99}
-      bg={color('bg')}
-      display={isOpen ? ['block', 'block', 'none'] : 'none'}
-      border="unset"
-    />
-  );
-};
-
-const HeaderWrapper: React.FC<any> = props => (
-  <Box position="fixed" zIndex={9999} width="100%" {...props} />
-);
+const HeaderWrapper: React.FC<any> = React.forwardRef((props, ref) => (
+  <Box top={2} ref={ref} width="100%" {...props} />
+));
 
 const nav = [
   {
@@ -139,19 +111,26 @@ const nav = [
 ];
 const SubBar: React.FC<any> = props => (
   <Flex
-    justifyContent="space-between"
+    position="sticky"
+    zIndex={99}
+    top={0}
     align="center"
     height="60px"
-    width="100%"
-    px={['extra-loose', 'extra-loose', 'base', 'base']}
     bg={color('bg')}
     borderBottom={border()}
-    style={{
-      backdropFilter: 'blur(5px)',
-    }}
+    {...props}
   >
-    <BreadCrumbs />
-    <Search />
+    <Flex
+      px={space(['extra-loose', 'extra-loose', 'base', 'base'])}
+      flexGrow={1}
+      justifyContent="space-between"
+      align="center"
+      maxWidth="1280px"
+      mx="auto"
+    >
+      <BreadCrumbs />
+      <Search />
+    </Flex>
   </Flex>
 );
 
@@ -164,13 +143,14 @@ const Header = ({ hideSubBar, ...rest }: any) => {
         <Flex
           justifyContent="space-between"
           align="center"
-          px={['extra-loose', 'extra-loose', 'base', 'base']}
           bg={color('bg')}
-          borderBottom={border()}
           style={{
             backdropFilter: 'blur(5px)',
           }}
           height="72px"
+          maxWidth="1280px"
+          mx="auto"
+          px={space(['extra-loose', 'extra-loose', 'base', 'base'])}
           {...rest}
         >
           <NextLink href="/" passHref>
@@ -224,9 +204,8 @@ const Header = ({ hideSubBar, ...rest }: any) => {
             <MenuButton />
           </Flex>
         </Flex>
-        {!hideSubBar && <SubBar />}
       </HeaderWrapper>
-      <MobileSideNav />
+      {!hideSubBar && <SubBar />}
     </>
   );
 };

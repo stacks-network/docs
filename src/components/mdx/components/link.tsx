@@ -16,7 +16,10 @@ export const SmartLink = ({ href, ...rest }: { href: string }) => {
 };
 
 export const Link = forwardRef(
-  (props: { href: string; target?: string; rel?: string } & BoxProps, ref: Ref<HTMLDivElement>) => (
+  (
+    props: { href?: string; target?: string; rel?: string } & BoxProps,
+    ref: Ref<HTMLDivElement>
+  ) => (
     <Box
       as="a"
       ref={ref}
