@@ -1,10 +1,9 @@
 import React from 'react';
-import { Box, Flex, Portal, space, Fade, themeColor, color } from '@blockstack/ui';
+import { Box, Flex, Portal, space, Fade, themeColor, color, BoxProps } from '@blockstack/ui';
 import { useDocSearchKeyboardEvents } from '@docsearch/react';
 
-import { border } from '@common/utils';
 import { Text } from '@components/typography';
-import SearchIcon from 'mdi-react/SearchIcon';
+import { SearchIcon } from '@components/icons/search';
 import Router from 'next/router';
 import Link from 'next/link';
 
@@ -42,7 +41,7 @@ const searchOptions = {
 
 let DocSearchModal: any = null;
 
-export const SearchBox: React.FC<any> = React.memo(() => {
+export const SearchBox: React.FC<BoxProps> = React.memo(props => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const importDocSearchModalIfNeeded = React.useCallback(function importDocSearchModalIfNeeded() {
@@ -75,28 +74,45 @@ export const SearchBox: React.FC<any> = React.memo(() => {
 
   return (
     <>
-      {
-        <Portal>
-          <Fade in={isOpen}>
-            {styles => (
-              <Box position="absolute" zIndex={9999} style={styles}>
-                <DocSearchModal {...searchOptions} onClose={onClose} hitComponent={Hit} />
-              </Box>
-            )}
-          </Fade>
-        </Portal>
-      }
-      <Box minWidth="200px" display={['none', 'none', 'block', 'block']}>
+      <Portal>
+        <Fade in={isOpen}>
+          {styles => (
+            <Box position="absolute" zIndex={9999} style={styles}>
+              <DocSearchModal
+                initialScrollY={window.scrollY}
+                {...searchOptions}
+                onClose={onClose}
+                hitComponent={Hit}
+              />
+            </Box>
+          )}
+        </Fade>
+      </Portal>
+      <Box
+        bg={color('bg-alt')}
+        minWidth="200px"
+        borderRadius="12px"
+        display={['none', 'none', 'block', 'block']}
+        border="1px solid"
+        borderColor={isOpen ? 'rgba(170, 179, 255, 0.8)' : color('bg-alt')}
+        boxShadow={
+          isOpen ? '0 0 0 3px rgba(170, 179, 255, 0.25)' : '0 0 0 3px rgba(170, 179, 255, 0)'
+        }
+        transition="border-color 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.2s cubic-bezier(0.23, 1, 0.32, 1)"
+        _hover={{
+          borderColor: 'rgba(170, 179, 255, 0.8)',
+          boxShadow: '0 0 0 3px rgba(170, 179, 255, 0.25)',
+        }}
+        {...props}
+      >
         <Flex
           onClick={onOpen}
-          border={border()}
-          borderRadius="6px"
           px={space('base-tight')}
           py={space('tight')}
           align="center"
           _hover={{ borderColor: themeColor('blue.400'), cursor: 'pointer' }}
         >
-          <Box mr={space('tight')}>
+          <Box transform="scaleX(-1)" mr={space('tight')} color={color('text-caption')}>
             <SearchIcon size="18px" />
           </Box>
           <Text fontSize={'14px'} color={color('text-caption')}>

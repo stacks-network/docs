@@ -22,8 +22,8 @@ const Wrapper: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
         overflow="auto"
         pb="62px"
         px={space('base')}
-        top="60px"
-        pt={space('base')}
+        top={0}
+        pt="64px"
         {...containerProps}
       >
         {children}

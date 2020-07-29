@@ -1,5 +1,14 @@
 import React from 'react';
-import { Flex, Box, BlockstackIcon, Stack, color, space, ChevronIcon } from '@blockstack/ui';
+import {
+  Flex,
+  Box,
+  BlockstackIcon,
+  Stack,
+  color,
+  space,
+  ChevronIcon,
+  BoxProps,
+} from '@blockstack/ui';
 import { Link, Text, LinkProps } from '@components/typography';
 import MenuIcon from 'mdi-react/MenuIcon';
 import CloseIcon from 'mdi-react/CloseIcon';
@@ -11,10 +20,7 @@ import { css } from '@styled-system/css';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { ColorModeButton } from '@components/color-mode-button';
-import dynamic from 'next/dynamic';
-const Search = dynamic(() => import('./search'));
-import Headroom from 'react-headroom';
-import { border } from '@common/utils';
+
 const MenuButton = ({ ...rest }: any) => {
   const { isOpen, handleOpen, handleClose } = useMobileMenuState();
   const Icon = isOpen ? CloseIcon : MenuIcon;
@@ -109,32 +115,36 @@ const nav = [
   { label: 'Run a node' },
   { label: 'Build on Blockstack' },
 ];
-const SubBar: React.FC<any> = props => (
-  <Flex
-    position="sticky"
-    zIndex={99}
-    top={0}
-    align="center"
-    height="60px"
-    bg={color('bg')}
-    borderBottom={border()}
-    {...props}
-  >
-    <Flex
-      px={space(['extra-loose', 'extra-loose', 'base', 'base'])}
-      flexGrow={1}
-      justifyContent="space-between"
-      align="center"
-      maxWidth="1280px"
-      mx="auto"
-    >
-      <BreadCrumbs />
-      <Search />
-    </Flex>
-  </Flex>
-);
 
 export const HEADER_HEIGHT = 132;
+
+const HeaderTextItem: React.FC<BoxProps> = ({ children, ...rest }) => (
+  <Text
+    color={color('invert')}
+    css={css({
+      fontWeight: 500,
+      fontSize: '16px',
+      lineHeight: '24px',
+      padding: '0.05px 0',
+      '::before': {
+        content: "''",
+        marginTop: '-0.38948863636363634em',
+        display: 'block',
+        height: 0,
+      },
+      '::after': {
+        content: "''",
+        marginBottom: '-0.38948863636363634em',
+        display: 'block',
+        height: 0,
+      },
+      ...rest,
+    })}
+  >
+    {' '}
+    {children}
+  </Text>
+);
 
 const Header = ({ hideSubBar, ...rest }: any) => {
   return (
@@ -157,32 +167,10 @@ const Header = ({ hideSubBar, ...rest }: any) => {
             <Link as="a">
               <Flex align="center">
                 <Box color={color('invert')} mr={space('tight')}>
-                  <BlockstackIcon size="20px" />
+                  <BlockstackIcon size="18px" />
                 </Box>
                 <Box>
-                  <Text
-                    color={color('invert')}
-                    css={css({
-                      fontWeight: 500,
-                      fontSize: '13.75px',
-                      lineHeight: '14px',
-                      padding: '0.05px 0',
-                      ':before': {
-                        content: "''",
-                        marginTop: '-0.14909090909090908em',
-                        display: 'block',
-                        height: 0,
-                      },
-                      ':after': {
-                        content: "''",
-                        marginBottom: '-0.14909090909090908em',
-                        display: 'block',
-                        height: 0,
-                      },
-                    })}
-                  >
-                    Blockstack
-                  </Text>
+                  <HeaderTextItem>Blockstack</HeaderTextItem>
                 </Box>
               </Flex>
             </Link>
@@ -192,9 +180,7 @@ const Header = ({ hideSubBar, ...rest }: any) => {
               <Stack mr={space('base')} isInline spacing={space('base')}>
                 {nav.map(item => (
                   <Box>
-                    <Text fontSize="14px" fontWeight="600">
-                      {item.label}
-                    </Text>
+                    <HeaderTextItem>{item.label}</HeaderTextItem>
                   </Box>
                 ))}
               </Stack>
@@ -205,7 +191,6 @@ const Header = ({ hideSubBar, ...rest }: any) => {
           </Flex>
         </Flex>
       </HeaderWrapper>
-      {!hideSubBar && <SubBar />}
     </>
   );
 };

@@ -184,28 +184,12 @@ iniatial state by creating an emulator to run it in. Open Android Studio and do 
 
 3. Enter these fields in the **Create Android Project** page.
 
-<table class="uk-table">
-<tr>
-  <th>Name</th>
-  <td><code>Hello Android</code></td>
-</tr>
-<tr>
-  <th>Package name</th>
-  <td><code>blockstack.id.<i>USERNAME</i>.hello</code></td>
-</tr>
-<tr>
-  <th>Project location</th>
-  <td><code>/home/<i>USERNAME</i>/AndroidStudioProjects/helloandroid</code></td>
-</tr>
-<tr>
-  <th>Language</th>
-  <td>Select (Kotlin)</td>
-</tr>
-<tr>
-  <th>Minimum SDK</th>
-  <td>Select (API 21: Android 5.0 (Lollipop))</td>
-</tr>
-</table>
+| Name             | Hello Android                                       |
+| ---------------- | --------------------------------------------------- |
+| Package name     | `blockstack.id.USERNAME.hello`                      |
+| Project location | `/home/USERNAME/AndroidStudioProjects/helloandroid` |
+| Language         | Select (Kotlin)                                     |
+| Minimum SDK      | Select (API 21: Android 5.0 (Lollipop))             |
 
 ![](images/configure-activity.png)
 

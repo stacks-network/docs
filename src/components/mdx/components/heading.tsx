@@ -17,8 +17,8 @@ const LinkButton = React.memo(({ link, onClick, ...rest }: BoxProps & { link: st
   const url =
     typeof document !== 'undefined' && document.location.origin + document.location.pathname + link;
 
-  const { onCopy } = useClipboard(url);
-  const label = 'Copy url';
+  const { hasCopied, onCopy } = useClipboard(url);
+  const label = hasCopied ? 'Copied!' : 'Copy url';
   return (
     <Box
       as="span"
@@ -27,6 +27,7 @@ const LinkButton = React.memo(({ link, onClick, ...rest }: BoxProps & { link: st
         onClick && onClick(e);
         onCopy?.();
       }}
+      transform="translateY(-5px)"
       {...rest}
     >
       <Tooltip label={label} aria-label={label}>
@@ -99,15 +100,19 @@ export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
         display: 'flex',
         // @ts-ignore
         justifyContent: 'flex-start',
+        textDecoration: id && hover ? 'underline' : 'unset',
+        // @ts-ignore
+        cursor: id && hover ? 'pointer' : 'unset',
         ...rest,
       })}
+      onClick={id && handleLinkClick}
     >
       <Box as="span" display="inline-block">
         {children}
       </Box>
       <AnchorOffset id={id} />
       {id && isActive && <Hashtag />}
-      {id && <LinkButton opacity={hover || active ? 1 : 0} onClick={handleLinkClick} link={link} />}
+      {id && <LinkButton opacity={hover || active ? 1 : 0} link={link} />}
     </Title>
   );
 };

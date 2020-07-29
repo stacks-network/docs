@@ -12,7 +12,6 @@ import {
   FlexProps,
 } from '@blockstack/ui';
 import { Caption, Text } from '@components/typography';
-import jsxToString from 'jsx-to-string';
 
 import { border } from '@common/utils';
 

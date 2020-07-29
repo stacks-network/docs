@@ -5,3 +5,4 @@ export * from './link';
 export * from './list';
 export * from './table';
 export * from './typography';
+export * from './section';

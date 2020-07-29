@@ -3,6 +3,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 const path = require('path');
 const { remarkPlugins } = require('./lib/remark-plugins');
+const { rehypePlugins } = require('./lib/rehype-plugins');
 
 module.exports = withBundleAnalyzer({
   experimental: {
@@ -20,6 +21,7 @@ module.exports = withBundleAnalyzer({
           loader: '@mdx-js/loader',
           options: {
             remarkPlugins,
+            rehypePlugins,
           },
         },
         path.join(__dirname, './lib/md-loader'),

@@ -261,22 +261,12 @@ menu items and therefore these procedures may be differœent on your version.
 
 5. On the **Choose options for your new project** dialog, set the following:
 
-   <table class="uk-table uk-table-small">
-   <tr>
-     <th>Product Name</th>
-     <td><code>hello-blockstack-ios</code></td>
-   </tr>
-   <tr>
-     <th>Organization Name</th>
-     <td><code><i>USERNAME</i></code></td>
-   </tr>
-   <tr>
-     <th>User Interface</th>
-     <td>Storyboard</td>
-   </tr>
-   </table>
+| Product Name      | `hello-blockstack-ios` |
+| ----------------- | ---------------------- |
+| Organization Name | USERNAME               |
+| User Interface    | Storyboard             |
 
-   ![](images/choose-new-options.png)
+![](images/choose-new-options.png)
 
 6. Press **Next**.
 

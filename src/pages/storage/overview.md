@@ -53,133 +53,18 @@ Client libraries (such as `blockstack.js`) are capable of providing these guaran
 Here's how Gaia stacks up against other decentralized storage systems. Features
 that are common to all storage systems are omitted for brevity.
 
-<table class="uk-table uk-table-striped">
-<thead>
-  <tr>
-    <th>Features</th>
-    <th>Gaia</th>
-    <th><a href="https://sia.tech/" target="\_blank">Sia</a></th>
-    <th><a href="https://storj.io/" target="\_blank">Storj</a></th>
-    <th><a href="https://ipfs.io/" target="\_blank">IPFS</a></th>
-    <th><a href="https://datproject.org/" target="\_blank">DAT</a></th>
-    <th><a href="https://www.scuttlebutt.nz/" target="\_blank">SSB</a></th>
-  </tr>
-  </thead>
-  <tr>
-    <td>User controls where data is hosted</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Data can be viewed in a normal Web browser</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Data is read/write</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>X</td>
-    <td>X</td>
-  </tr>
-  <tr>
-    <td>Data can be deleted</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>X</td>
-    <td>X</td>
-  </tr>
-  <tr>
-    <td>Data can be listed</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td>X</td>
-    <td>X</td>
-  </tr>
-  <tr>
-    <td>Deleted data space is reclaimed</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Data lookups have predictable performance</td>
-    <td>X</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Writes permission can be delegated</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Listing permission can be delegated</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Supports multiple backends natively</td>
-    <td>X</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Data is globally addressable</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Needs a cryptocurrency to work</td>
-    <td></td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Data is content-addressed</td>
-    <td></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-  </tr>
-</table>
+| Features                                   | [Gaia](https://github.com/blockstack/gaia) | [Sia](https://sia.tech/) | [Storj](https://storj.io/) | [IPFS](https://ipfs.io/) | [DAT](https://datproject.org/) | [SSB](https://www.scuttlebutt.nz/) |
+| ------------------------------------------ | ------------------------------------------ | ------------------------ | -------------------------- | ------------------------ | ------------------------------ | ---------------------------------- |
+| User controls where data is hosted         | X                                          |                          |                            |                          |                                |                                    |
+| Data can be viewed in a normal Web browser | X                                          |                          |                            | X                        |                                |                                    |
+| Data is read/write                         | X                                          |                          |                            |                          | X                              | X                                  |
+| Data can be deleted                        | X                                          |                          |                            |                          | X                              | X                                  |
+| Data can be listed                         | X                                          | X                        | X                          |                          | X                              | X                                  |
+| Deleted data space is reclaimed            | X                                          | X                        | X                          | X                        |                                |                                    |
+| Data lookups have predictable performance  | X                                          |                          | X                          |                          |                                |                                    |
+| Writes permission can be delegated         | X                                          |                          |                            |                          |                                |                                    |
+| Listing permission can be delegated        | X                                          |                          |                            |                          |                                |                                    |
+| Supports multiple backends natively        | X                                          |                          | X                          |                          |                                |                                    |
+| Data is globally addressable               | X                                          | X                        | X                          | X                        | X                              |                                    |
+| Needs a cryptocurrency to work             |                                            | X                        | X                          |                          |                                |                                    |
+| Data is content-addressed                  |                                            | X                        | X                          | X                        | X                              | X                                  |
