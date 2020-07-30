@@ -24,6 +24,7 @@ import {
 } from '@components/mdx/components';
 import { Img } from '@components/mdx/image';
 import { Code } from '@components/mdx/components';
+import { PageReference } from '@components/custom-blocks/page-reference';
 
 export const MDXComponents = {
   h1: H1,
@@ -49,4 +50,5 @@ export const MDXComponents = {
   blockquote: Blockquote,
   sup: Sup,
   section: Section,
+  pagereference: PageReference,
 };

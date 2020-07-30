@@ -173,6 +173,9 @@ export const styleOverwrites = {
       boxShadow: 'none',
     },
   },
+  p: {
+    width: '100%',
+  },
   'p, li, a': {
     display: 'inline-block',
     fontSize: '16px',
