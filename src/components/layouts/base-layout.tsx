@@ -10,6 +10,7 @@ import { useWatchActiveHeadingChange } from '@common/hooks/use-active-heading';
 import { useLockBodyScroll } from '@common/hooks/use-lock-body-scroll';
 import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
 import { border } from '@common/utils';
+import { useRouter } from 'next/router';
 
 const MobileMenu: React.FC<FlexProps> = props => {
   const { isOpen, handleClose } = useMobileMenuState();
@@ -126,7 +127,9 @@ const MobileMenu: React.FC<FlexProps> = props => {
   );
 };
 
-const BaseLayout: React.FC<{ isHome?: boolean }> = ({ children, isHome }) => {
+const BaseLayout: React.FC<{ isHome?: boolean }> = ({ children }) => {
+  const router = useRouter();
+  const isHome = router.pathname === '/';
   let isErrorPage = false;
 
   // get if NotFoundPage
@@ -140,9 +143,9 @@ const BaseLayout: React.FC<{ isHome?: boolean }> = ({ children, isHome }) => {
   return (
     <Flex minHeight="100vh" flexDirection="column">
       <MobileMenu />
-      <Header hideSubBar={isHome || isErrorPage} />
+      <Header />
       <Flex width="100%" flexGrow={1} maxWidth="1280px" mx="auto">
-        {!isHome && <SideNav display={['none', 'none', 'block']} />}
+        <SideNav display={['none', 'none', 'block']} />
         <Flex
           flexGrow={1}
           maxWidth={[
@@ -163,7 +166,7 @@ const BaseLayout: React.FC<{ isHome?: boolean }> = ({ children, isHome }) => {
               {children}
             </Flex>
           </Main>
-          {isErrorPage || isHome ? null : <Footer justifySelf="flex-end" />}
+          {isErrorPage ? null : <Footer justifySelf="flex-end" />}
         </Flex>
       </Flex>
     </Flex>

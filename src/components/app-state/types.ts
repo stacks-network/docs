@@ -3,4 +3,5 @@ export interface State {
   activeSlug: string;
   slugInView?: string;
   setState: (value: any) => void;
+  routes: any;
 }

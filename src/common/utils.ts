@@ -50,7 +50,7 @@ export const onlyText = (children: ReactNode): string => {
     let newText = '';
 
     if (isValidElement(child) && hasChildren(child)) {
-      newText = onlyText(child.props.children);
+      newText = onlyText(child.props.children) + '\n';
     } else if (isValidElement(child) && !hasChildren(child)) {
       newText = '';
     } else {

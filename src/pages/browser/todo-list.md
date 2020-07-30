@@ -1,6 +1,6 @@
 ---
 title: Building a Todo app
-description: In this tutorial, you will learn about Blockstack authentication and storage by installing, running and reviewing the code for a "Todos" web app built with Blockstack and React.
+description: Learn how to integrate authentication and data storage.
 redirect_from:
   - /develop/zero_to_dapp_1.html
   - /browser/hello-blockstack.html

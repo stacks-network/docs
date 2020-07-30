@@ -1,8 +1,8 @@
 ---
-description: 'Clarity: Counter Tutorial'
+description: Learn how to write a simple smart contract in the Clarity language
 ---
 
-# Counter
+# Counter smart contract
 
 | Experience | | **Intermediate** |
 | Duration | | **30 minutes** |
@@ -176,4 +176,4 @@ With the completion of this tutorial, you:
 
 ## Where to go next
 
-- <a href="clarityRef.html">Clarity language reference</a>
+- <a href="clarityRef">Clarity language reference</a>
