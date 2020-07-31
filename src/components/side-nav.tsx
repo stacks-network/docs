@@ -12,6 +12,7 @@ import { getCapsizeStyles } from '@components/mdx/typography';
 import { Text } from '@components/typography';
 import { css } from '@styled-system/css';
 import { SmartLink } from '@components/mdx';
+
 const Wrapper: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
   width = `${SIDEBAR_WIDTH}px`,
   containerProps,
