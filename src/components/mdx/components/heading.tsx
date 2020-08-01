@@ -57,7 +57,7 @@ const AnchorOffset = ({ id }: BoxProps) =>
       display="block"
       position="absolute"
       style={{ userSelect: 'none', pointerEvents: 'none' }}
-      top={`-${HEADER_HEIGHT + 42}px`}
+      top={`-64px`}
       id={id}
     />
   ) : null;

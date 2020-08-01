@@ -10,7 +10,46 @@
 const fm = require('front-matter');
 const fs = require('fs-extra');
 const path = require('path');
-const sections = require('./all-routes.json');
+
+const slugify = string =>
+  string
+    .toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, ''); // Trim - from end of text
+
+const YAML = require('yaml');
+const yamlFile = fs.readFileSync(path.resolve(__dirname, '../navigation.yaml'), 'utf8');
+const navigation = YAML.parse(yamlFile);
+
+const getFlatMap = navigation => {
+  return navigation.sections.flatMap(section =>
+    section.pages.flatMap(page => {
+      if (page.pages) {
+        let sectionPages = [];
+        if (page.sections) {
+          sectionPages = page.sections.flatMap(_section =>
+            _section.pages.flatMap(sectionPage => `${page.path}${sectionPage.path}`)
+          );
+        }
+        const pages = page.pages.flatMap(_page => {
+          if (_page.pages) {
+            return _page.pages.flatMap(p => `${page.path}${_page.path}${p.path}`);
+          } else {
+            return `${page.path}${_page.path}`;
+          }
+        });
+        return [...pages, ...sectionPages];
+      } else {
+        return `${section.title ? '/' + slugify(section.title) : ''}${page.path}`;
+      }
+    })
+  );
+};
+
+const allRoutes = getFlatMap(navigation);
 
 const getHeadings = mdContent => {
   const regex = /(#+)(.*)/gm;
@@ -20,25 +59,23 @@ const getHeadings = mdContent => {
     : undefined;
 };
 
-const routes = sections.map(section => {
-  const _routes = section.routes.map(route => {
-    try {
-      const fileContent = fs.readFileSync(path.join('./src/pages/', route.path + '.md'), 'utf8');
-      const data = fm(fileContent);
-      const headings = getHeadings(data.body);
-      return {
-        ...route,
-        ...data.attributes,
-        headings,
-      };
-    } catch (e) {
-      console.log(e);
-    }
-  });
-  return {
-    ...section,
-    routes: _routes,
-  };
+const routes = allRoutes.map(route => {
+  try {
+    const fileContent = fs.readFileSync(
+      path.join('./src/pages', (route === '/' ? 'index' : route) + '.md'),
+      'utf8'
+    );
+    const data = fm(fileContent);
+    const headings = getHeadings(data.body);
+    return {
+      path: route,
+      ...data.attributes,
+      headings,
+    };
+  } catch (e) {
+    console.error('ROUTES ERROR');
+    console.warn(e);
+  }
 });
 
-module.exports = routes || [];
+module.exports = routes;

@@ -8,18 +8,18 @@ All you need to build decentralized apps and smart contracts
 
 ## Get started
 
-[[page-reference | title]]
-| browser/todo-list, core/smart/overview, core/smart/testnet-node
+[[page-reference]]
+| /build-an-app, /smart-contracts/overview, /mining
 
 ## Tutorials
 
 [[page-reference]]
-| browser/todo-list, core/smart/tutorial-counter
+| /authentication/building-todo-app, /smart-contracts/hello-world-tutorial, /smart-contracts/counter-tutorial
 
 ## Explore
 
 [[page-reference]]
-| org/overview, org/token
+| /ecosystem/overview, /ecosystem/stacks-token
 
 ## Sample projects
 

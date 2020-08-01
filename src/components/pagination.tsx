@@ -15,6 +15,11 @@ const usePaginateRoutes = () => {
   const getSection = _section => _section.routes.find(getRoute);
   const findSectionByTitle = item => item.title === section.title;
 
+  return {
+    next: undefined,
+    prev: undefined,
+  };
+
   const section = routes.find(getSection);
 
   if (!section)

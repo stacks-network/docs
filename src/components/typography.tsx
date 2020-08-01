@@ -28,7 +28,7 @@ export const SectionTitle: React.FC<BoxProps> = props => (
 
 export const Pre = React.forwardRef((props: BoxProps, ref) => (
   <Text
-    fontFamily={`"Fira Code", monospace`}
+    fontFamily={`"Soehne Mono", "Fira Code", monospace`}
     bg={color('bg-alt')}
     borderRadius="3px"
     px="extra-tight"
