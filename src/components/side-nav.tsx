@@ -1,10 +1,7 @@
 import React from 'react';
 import { Flex, Box, color, space, ChevronIcon, BoxProps } from '@blockstack/ui';
-import { Text, Caption, LinkProps } from '@components/typography';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import routes from '@common/routes';
-import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
 import { SIDEBAR_WIDTH } from '@common/constants';
 // @ts-ignore
 import nav from '@common/navigation.yaml';
@@ -67,8 +64,8 @@ const SectionTitle: React.FC<BoxProps> = props => (
   />
 );
 
-const ChildPages = ({ items, handleClick }) =>
-  items.pages.map((page, index) => {
+const ChildPages = ({ items, handleClick }: any) =>
+  items.pages.map(page => {
     const path = page.pages
       ? `${page.path}${page.pages[0].path}`
       : items.path
@@ -217,58 +214,9 @@ export const SideNav: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
   containerProps,
   ...rest
 }) => {
-  // const router = useRouter();
-  // const { pathname } = router;
-  // const active = routes.find(section =>
-  //   section.routes.find(route => pathname === `/${route.path}`)
-  // );
-  // const [visible, setVisible] = React.useState(active);
-  // const handleSectionClick = (section: any) => {
-  //   if (section?.title === active?.title) {
-  //     setVisible(false);
-  //   } else {
-  //     setVisible(section);
-  //   }
-  // };
-
-  const getFlatMap = navigation => {
-    return navigation.sections.flatMap(section =>
-      section.pages.flatMap(page => {
-        if (page.pages) {
-          let sectionPages = [];
-          if (page.sections) {
-            sectionPages = page.sections.flatMap(_section =>
-              _section.pages.flatMap(sectionPage => `${page.path}${sectionPage.path}`)
-            );
-          }
-          const pages = page.pages.flatMap(_page => {
-            if (_page.pages) {
-              return _page.pages.flatMap(p => `${page.path}${_page.path}${p.path}`);
-            } else {
-              return `${page.path}${_page.path}`;
-            }
-          });
-          return [...pages, ...sectionPages];
-        } else {
-          return `${section?.title ? '/' + slugify(section.title) : ''}${page.path}`;
-        }
-      })
-    );
-  };
-
   return (
     <Wrapper containerProps={containerProps} {...rest}>
       <NewNav />
-      {/*{routes.map((section, sectionKey, arr) => (*/}
-      {/*  <Section*/}
-      {/*    visible={visible}*/}
-      {/*    key={sectionKey}*/}
-      {/*    section={section}*/}
-      {/*    isLast={sectionKey === arr.length - 1}*/}
-      {/*    isFirst={sectionKey === 0}*/}
-      {/*    setVisible={handleSectionClick}*/}
-      {/*  />*/}
-      {/*))}*/}
     </Wrapper>
   );
 };
