@@ -5,6 +5,9 @@ import { getHeadingStyles } from '@components/mdx/typography';
 import { border } from '@common/utils';
 
 export const MdxOverrides = createGlobalStyle`
+html, body {
+  font-family: 'Soehne', Inter, sans-serif;
+}
 @counter-style list {
  pad: "0";
 }
@@ -95,6 +98,9 @@ export const MdxOverrides = createGlobalStyle`
   color: ${color('accent')};
 }
 
+pre, code{
+font-family: "Soehne Mono", "Fira Code", monospace;
+}
 pre{
   display: inline-block;
 }
@@ -108,6 +114,9 @@ p, ul, ol, table {
 
 export const styleOverwrites = {
   section: {
+    '&:first-child > h2:first-child': {
+      mt: 0,
+    },
     '& > *:not(pre):not(ul):not(ol):not(img):not([data-reach-accordion]):not(section)': {
       px: space('extra-loose'),
     },

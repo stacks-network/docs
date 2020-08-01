@@ -27,7 +27,7 @@ import { Code } from '@components/mdx/components';
 import { PageReference } from '@components/custom-blocks/page-reference';
 
 export const MDXComponents = {
-  h1: H1,
+  h1: () => null,
   h2: H2,
   h3: H3,
   h4: H4,

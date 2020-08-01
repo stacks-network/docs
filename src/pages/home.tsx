@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import { HomeLayout } from '@components/layouts/home';
 import { Hero } from '@components/home/sections/hero';
 import { AtomAltIcon } from '@components/icons/atom-alt';
 import { CodeIcon } from '@components/icons/code';
@@ -55,9 +54,7 @@ const Homepage = () => {
       <Head>
         <title>Documentation | Blockstack</title>
       </Head>
-      <HomeLayout>
-        <Hero cards={cards} />
-      </HomeLayout>
+      <Hero cards={cards} />
     </>
   );
 };

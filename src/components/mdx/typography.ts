@@ -2,10 +2,11 @@ export const baseTypeStyles = {
   letterSpacing: '-0.01em',
   dispay: 'flex',
   fontFeatureSettings: `'ss01' on`,
+  fontFamily: `'Soehne', Inter, sans-serif`,
 };
 
 const h1 = {
-  fontWeight: 'bolder',
+  fontWeight: 600,
   fontSize: ['38px', '38px', '44px'],
   lineHeight: '52px',
   padding: '0.05px 0',
@@ -23,7 +24,7 @@ const h1 = {
   },
 };
 const h2 = {
-  fontWeight: 600,
+  fontWeight: 500,
   fontSize: '27.5px',
   lineHeight: '34px',
   padding: '0.05px 0',
@@ -61,6 +62,7 @@ const h3 = {
 };
 
 const h4 = {
+  fontWeight: 400,
   fontSize: '19.25px',
   lineHeight: '28px',
   padding: '0.05px 0',
@@ -78,15 +80,15 @@ const h4 = {
   },
 };
 const h5 = {
+  fontWeight: 400,
   fontSize: '16px',
   lineHeight: '28px',
-  fontWeight: 'bold',
 };
 
 const h6 = {
+  fontWeight: 400,
   fontSize: '14px',
   lineHeight: '28px',
-  fontWeight: 'bold',
 };
 
 const headings = {

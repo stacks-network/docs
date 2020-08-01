@@ -1,0 +1,102 @@
+sections:
+  - pages:
+      - path: /
+      - path: /build-an-app # is an overview page
+      - path: /smart-contracts
+        pages:
+          - path: /overview
+          - path: /testing-contracts
+          - path: /principals
+          - path: /running-testnet-node
+        sections:
+          - title: Tutorials
+            pages:
+              - path: /hello-world-tutorial
+              - path: /counter-tutorial
+              - path: /signing-transactions
+      - path: /mining # is an overview page
+
+  - title: Technology
+    pages:
+      - path: /authentication
+        pages:
+          - path: /overview
+          - path: /profiles
+          - path: /connect
+        sections:
+          - title: Tutorials
+            pages:
+              - path: /building-todo-app
+      - path: /data-storage
+        pages:
+          - path: /overview
+          - path: /storage-guide
+          - path: /authentication
+          - path: /storage-write-read
+          - path: /collections
+          - path: /collection-type
+      - path: /data-indexing
+        pages:
+          - path: /overview
+          - path: /integrate
+          - path: /models
+          - path: /collaborate
+          - path: /server-extras
+      - path: /stacks-blockchain
+        pages:
+          - path: /overview
+          - path: /best-practices
+          - path: /wire-format
+          - path: /atlas
+            pages:
+              - path: /overview
+              - path: /how-atlas-works
+              - path: /usage
+        sections:
+          - title: Tutorials
+            pages:
+              - path: /install-api
+              - path: /installing-memcached
+      - path: /naming-services
+        pages:
+          - path: /overview
+          - path: /architecture
+          - path: /comparison
+          - path: /did
+          - path: /forks
+          - path: /namespaces
+          - path: /subdomains
+          - path: /forks
+        sections:
+          - title: Tutorials
+            pages:
+              - path: /build-profile-search-index
+              - path: /choose-name
+              - path: /create-namespace
+              - path: /resolve-name
+              - path: /register-name
+              - path: /manage-names
+              - path: /subdomains-tutorial
+      - path: /storage-hubs # this seems out of date, kill?
+        pages:
+          - path: /overview
+          - path: /hello-hub-choice
+          - path: /gaia-admin
+          - path: /config-schema
+          - path: /digital-ocean-deploy
+          - path: /amazon-s3-deploy
+  - title: Ecosystem
+    pages:
+      - path: /overview #pbc et al
+      - path: /stacks-token
+      - path: /contributing
+
+  - title: References
+    pages:
+      - path: /clarity-reference
+      - path: /blockstack-cli-reference
+      - path: /stacks-blockchain-reference
+      - path: /stacks-rpc-api-reference
+      - path: /faqs
+      - path: /glossary
+      - path: /deploy-tips
