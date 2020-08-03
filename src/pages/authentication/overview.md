@@ -1,6 +1,9 @@
 ---
 title: Authentication
 description: Blockstack Auth provides single sign on and authentication without third parties or remote servers.
+images:
+  large: /images/pages/authentication.svg
+  sm: /images/pages/authentication-sm.svg
 ---
 
 # Authentication protocol

@@ -3,6 +3,9 @@ title: Building a Todo app
 description: Learn how to integrate authentication and data storage.
 tags:
   - tutorial
+images:
+  large: /images/pages/todo-app.svg
+  sm: /images/pages/todo-app-sm.svg
 redirect_from:
   - /develop/zero_to_dapp_1.html
   - /browser/hello-blockstack.html

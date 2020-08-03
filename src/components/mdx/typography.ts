@@ -1,94 +1,54 @@
+import capsize from 'capsize';
+
+const fontMetrics = {
+  capHeight: 718,
+  ascent: 1040,
+  descent: -234,
+  lineGap: 0,
+  unitsPerEm: 1000,
+};
+
 export const baseTypeStyles = {
   letterSpacing: '-0.01em',
-  dispay: 'flex',
+  display: 'flex',
   fontFeatureSettings: `'ss01' on`,
   fontFamily: `'Soehne', Inter, sans-serif`,
 };
 
+export const getCapsizeStyles = (fontSize, leading) =>
+  capsize({
+    fontMetrics,
+    fontSize,
+    leading,
+  });
+
 const h1 = {
   fontWeight: 600,
-  fontSize: ['38px', '38px', '44px'],
-  lineHeight: '52px',
-  padding: '0.05px 0',
-  ':before': {
-    content: "''",
-    marginTop: ['-0.32188995215311006em', '-0.32188995215311006em', '-0.2284090909090909em'],
-    display: 'block',
-    height: 0,
-  },
-  ':after': {
-    content: "''",
-    marginBottom: ['-0.32188995215311006em', '-0.32188995215311006em', '-0.22840909090909092em'],
-    display: 'block',
-    height: 0,
-  },
+  ...getCapsizeStyles(36, 48),
 };
 const h2 = {
-  fontWeight: 500,
-  fontSize: '27.5px',
-  lineHeight: '34px',
-  padding: '0.05px 0',
-  ':before': {
-    content: "''",
-    marginTop: '-0.25636363636363635em',
-    display: 'block',
-    height: 0,
-  },
-  ':after': {
-    content: "''",
-    marginBottom: '-0.2563636363636364em',
-    display: 'block',
-    height: 0,
-  },
+  fontWeight: 600,
+  ...getCapsizeStyles(24, 36),
 };
 
 const h3 = {
-  fontWeight: 500,
-  fontSize: '22px',
-  lineHeight: '32px',
-  padding: '0.05px 0',
-  ':before': {
-    content: "''",
-    marginTop: '-0.3659090909090909em',
-    display: 'block',
-    height: 0,
-  },
-  ':after': {
-    content: "''",
-    marginBottom: '-0.3659090909090909em',
-    display: 'block',
-    height: 0,
-  },
+  fontWeight: 400,
+  ...getCapsizeStyles(20, 32),
 };
 
 const h4 = {
-  fontWeight: 400,
-  fontSize: '19.25px',
-  lineHeight: '28px',
-  padding: '0.05px 0',
-  ':before': {
-    content: "''",
-    marginTop: '-0.36623376623376624em',
-    display: 'block',
-    height: 0,
-  },
-  ':after': {
-    content: "''",
-    marginBottom: '-0.36623376623376624em',
-    display: 'block',
-    height: 0,
-  },
+  fontWeight: 500,
+  ...getCapsizeStyles(18, 32),
 };
+
 const h5 = {
   fontWeight: 400,
-  fontSize: '16px',
-  lineHeight: '28px',
+  ...getCapsizeStyles(16, 26),
 };
 
 const h6 = {
   fontWeight: 400,
-  fontSize: '14px',
-  lineHeight: '28px',
+  ...getCapsizeStyles(14, 20),
 };
 
 const headings = {

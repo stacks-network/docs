@@ -2,6 +2,11 @@
 description: Learn how to write a simple smart contract in the Clarity language.
 experience: intermediate
 duration: 30 minutes
+tags:
+  - tutorial
+images:
+  large: /images/pages/counter-tutorial.svg
+  sm: /images/pages/counter-tutorial-sm.svg
 ---
 
 # Counter smart contract

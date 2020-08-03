@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDXComponents } from '@components/mdx';
 import { Box, Flex, ChevronIcon, space, color } from '@blockstack/ui';
-import { hydrate } from '@common/hydrate-mdx';
+import { hydrate } from '@common/data/hydrate-mdx';
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@reach/accordion';
 import { border } from '@common/utils';
 import { slugify } from '@common/utils';

@@ -2905,6 +2905,13 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001093:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001107.tgz#809360df7a5b3458f627aa46b0f6ed6d5239da9a"
   integrity sha512-86rCH+G8onCmdN4VZzJet5uPELII59cUzDphko3thQFgAQG1RNa+sVLDoALIhRYmflo5iSIzWY3vu1XTWtNMQQ==
 
+capsize@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/capsize/-/capsize-1.1.0.tgz#d70f918b5ecadc2390b2a3b3b672ced639907ed6"
+  integrity sha512-tV0weOXxQ9hsbqewiWfGQBXsGzSN/i/w9IGuH+JVySzGOhscTAzeK3N9ZAM3Kf89bWgYot80Za5fSXKi6ZynvA==
+  dependencies:
+    round-to "^4.1.0"
+
 caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
@@ -8072,6 +8079,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+round-to@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/round-to/-/round-to-4.1.0.tgz#148d768d18b2f127f78e6648cb8b0a5943c416bf"
+  integrity sha512-H/4z+4QdWS82iMZ23+5St302Mv2jJws0hUvEogrD6gC8NN6Z5TalDtbg51owCrVy4V/4c8ePvwVLNtlhEfPo5g==
+
 run-queue@^1.0.0, run-queue@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/run-queue/-/run-queue-1.0.3.tgz#e848396f057d223f24386924618e25694161ec47"
@@ -9172,10 +9184,10 @@ unicode-property-aliases-ecmascript@^1.0.4:
   resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.1.0.tgz#dd57a99f6207bedff4628abefb94c50db941c8f4"
   integrity sha512-PqSoPh/pWetQ2phoj5RLiaqIk4kCNwoV3CI+LfGmWLKI3rE3kl1h59XpX2BjgDrmbxD9ARtQobPGU1SguCYuQg==
 
-unified-vscode@^1.0.0-beta.0:
-  version "1.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/unified-vscode/-/unified-vscode-1.0.0-beta.0.tgz#d09a7375943094ac7b1a782e98b404405343a0ff"
-  integrity sha512-DsTZZqOx85ycgNKzemttRW2oBJN/7ZXZzJnvbaTQ594IH8L5zARrdWFqZxEiCgHM7rpYjnE52SbKMheH4VwBFQ==
+unified-vscode@^1.0.0-beta.1:
+  version "1.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/unified-vscode/-/unified-vscode-1.0.0-beta.1.tgz#d80c220c119e77da60c81fea1e441a062507449d"
+  integrity sha512-YXjyTkJRCeePjFfz8HCZM0ZZmiuHMwb83B8jQZ922rrnMas77MSYT7S63MFA2vBTOxvEJzeKutuTjPvRYd/hfA==
   dependencies:
     cache-manager "^3.3.0"
     cache-manager-fs-hash "^0.0.9"
@@ -9575,6 +9587,11 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+
+"vscode-textmate@git+https://github.com/octref/vscode-textmate.git":
+  version "4.0.1"
+  uid e65aabe2227febda7beaad31dd0fca1228c5ddf3
+  resolved "git+https://github.com/octref/vscode-textmate.git#e65aabe2227febda7beaad31dd0fca1228c5ddf3"
 
 "vscode-textmate@https://github.com/octref/vscode-textmate":
   version "4.0.1"

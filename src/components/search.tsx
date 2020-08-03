@@ -90,7 +90,7 @@ export const SearchBox: React.FC<BoxProps> = React.memo(props => {
       </Portal>
       <Box
         bg={color('bg-alt')}
-        minWidth="200px"
+        width="100%"
         borderRadius="12px"
         display={['none', 'none', 'block', 'block']}
         border="1px solid"

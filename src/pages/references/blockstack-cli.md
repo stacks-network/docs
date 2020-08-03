@@ -1,5 +1,5 @@
 ---
-title: Blockstack CLI Reference
+title: Blockstack CLI
 ---
 
 export { convertBlockstackCLIUsageToMdx as getStaticProps } from '@common/data/cli-ref'

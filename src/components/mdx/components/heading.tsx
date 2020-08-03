@@ -1,4 +1,4 @@
-import { Box, FlexProps, BoxProps, color, useClipboard, space } from '@blockstack/ui';
+import { Box, Flex, FlexProps, BoxProps, color, useClipboard, space } from '@blockstack/ui';
 
 import React from 'react';
 import LinkIcon from 'mdi-react/LinkVariantIcon';
@@ -10,7 +10,6 @@ import { Title } from '@components/typography';
 import { css } from '@styled-system/css';
 import { getHeadingStyles, baseTypeStyles } from '@components/mdx/typography';
 import { useRouter } from 'next/router';
-import { HEADER_HEIGHT } from '@components/header';
 import { Link } from '@components/mdx/components/link';
 
 const LinkButton = React.memo(({ link, onClick, ...rest }: BoxProps & { link: string }) => {
@@ -63,9 +62,16 @@ const AnchorOffset = ({ id }: BoxProps) =>
   ) : null;
 
 const Hashtag = () => (
-  <Box position="absolute" as="span" left="10px" color={color('text-caption')}>
+  <Flex
+    position="absolute"
+    as="span"
+    align="center"
+    size="1rem"
+    left="10px"
+    color={color('text-caption')}
+  >
     <HashtagIcon size="1rem" />
-  </Box>
+  </Flex>
 );
 
 export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
@@ -107,9 +113,7 @@ export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
       })}
       onClick={id && handleLinkClick}
     >
-      <Box as="span" display="inline-block">
-        {children}
-      </Box>
+      {children}
       <AnchorOffset id={id} />
       {id && isActive && <Hashtag />}
       {id && <LinkButton opacity={hover || active ? 1 : 0} link={link} />}

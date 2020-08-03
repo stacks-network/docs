@@ -1,5 +1,6 @@
 ---
-description: 'Stacks Node RPC API Reference'
+title: Stacks Node RPC API
+description: Every running Stacks node exposes an RPC API, which allows you to interact with the underlying blockchain.
 ---
 
 # RPC API Reference

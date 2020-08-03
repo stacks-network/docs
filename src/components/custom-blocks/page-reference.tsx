@@ -5,14 +5,35 @@ import { useTouchable } from '@common/hooks/use-touchable';
 import { Caption, Text } from '@components/typography';
 import Link from 'next/link';
 import routes from '@common/routes';
+import { Img } from '@components/mdx/image';
 
-const Image = (props: BoxProps) => (
+const Image = ({
+  src,
+  isHovered,
+  size,
+  ...rest
+}: BoxProps & { src?: string; isHovered?: boolean }) => (
   <Box
-    transition="all 0.75s cubic-bezier(0.23, 1, 0.32, 1)"
     flexShrink={0}
-    bg="#9985FF"
-    {...props}
-  />
+    style={{
+      willChange: 'transform',
+    }}
+    width="100%"
+    transition="all 0.2s cubic-bezier(0.23, 1, 0.32, 1)"
+    size={size}
+    {...rest}
+  >
+    <Img
+      flexShrink={0}
+      borderRadius="12px"
+      src={src}
+      width="100%"
+      minWidth={size}
+      size={size}
+      mx="0 !important"
+      my="0 !important"
+    />
+  </Box>
 );
 
 const Title = ({ children, ...props }: BoxProps) => (
@@ -39,6 +60,7 @@ const InlineCard = ({ page }) => {
   return (
     <Flex
       border={border()}
+      flexDirection={['column', 'column', 'row']}
       borderColor={hover ? '#9985FF' : color('border')}
       p={space('base-loose')}
       borderRadius="12px"
@@ -48,14 +70,30 @@ const InlineCard = ({ page }) => {
       position="relative"
       {...bind}
     >
-      <Image borderRadius={hover ? '100%' : '12px'} mr={space('base')} size="64px" />
-      <Flex flexDirection="column">
+      <Box flexShrink={0} size="64px" overflow="hidden" borderRadius={'12px'}>
+        <Image size="64px" src={page.images.sm} />
+      </Box>
+      <Flex
+        flexDirection="column"
+        ml={space(['none', 'none', 'base'])}
+        mt={space(['base', 'base', 'none'])}
+        textAlign={['center', 'center', 'left']}
+      >
         <Flex align="baseline">
-          <Title color={hover ? color('accent') : color('text-title')} mb={space('extra-tight')}>
+          <Title
+            width={['100%', '100%', 'unset']}
+            color={hover ? color('accent') : color('text-title')}
+            mb={space('extra-tight')}
+          >
             {page.title || page.headings[0]}
           </Title>
-          {page.tags?.length
-            ? page.tags.map(tag => (
+          {page.tags?.length ? (
+            <Flex
+              position={['absolute', 'absolute', 'static']}
+              top={space('base-loose')}
+              right={space('base-loose')}
+            >
+              {page.tags.map(tag => (
                 <Flex
                   ml={space('tight')}
                   borderRadius="18px"
@@ -71,13 +109,39 @@ const InlineCard = ({ page }) => {
                 >
                   {tag}
                 </Flex>
-              ))
-            : null}
+              ))}
+            </Flex>
+          ) : null}
         </Flex>
         <Description>{page.description}</Description>
       </Flex>
       <FloatingLink href={`${page.path}`} />
     </Flex>
+  );
+};
+
+const GridCard: React.FC<BoxProps & { page?: any }> = ({ page, ...rest }) => {
+  const { hover, active, bind } = useTouchable({
+    behavior: 'link',
+  });
+  return (
+    <Box position="relative" {...rest} {...bind}>
+      <Box borderRadius="12px" overflow="hidden" mb={space('loose')}>
+        <Image
+          width="100%"
+          size="100%"
+          transform={hover || active ? 'scale(1.1)' : 'scale(1.02)'}
+          src={page?.images?.large}
+        />
+      </Box>
+      <Flex alignItems="flex-start" justifyContent="flex-start" flexDirection="column">
+        <Title color={hover ? color('accent') : color('text-title')} mb={space('tight')}>
+          {page.title || page.headings[0]}
+        </Title>
+        <Description>{page.description}</Description>
+      </Flex>
+      <FloatingLink href={`${page.path}`} />
+    </Box>
   );
 };
 
@@ -90,23 +154,18 @@ export const PageReference = ({ children }) => {
   const pages = paths.map(path => routes?.find(route => route.path === path)).filter(page => page);
   return (
     <Grid
+      width="100%"
       mt={space('extra-loose')}
       gridColumnGap={space('loose')}
-      gridTemplateColumns={`repeat(${pages.length === 1 ? 1 : 3}, 1fr)`}
+      gridRowGap={space('loose')}
+      gridTemplateColumns={[
+        `repeat(1, 1fr)`,
+        `repeat(1, 1fr)`,
+        `repeat(${pages.length === 1 ? 1 : 3}, 1fr)`,
+      ]}
     >
       {pages.map(page =>
-        variant === 'inline' ? (
-          <InlineCard page={page} />
-        ) : (
-          <Box position="relative">
-            <Image height="144px" borderRadius="12px" mb={space('loose')} />
-            <Flex alignItems="flex-start" justifyContent="flex-start" flexDirection="column">
-              <Title mb={space('tight')}>{page.title || page.headings[0]}</Title>
-              <Description>{page.description}</Description>
-            </Flex>
-            <FloatingLink href={`${page.path}`} />
-          </Box>
-        )
+        variant === 'inline' ? <InlineCard page={page} /> : <GridCard page={page} />
       )}
     </Grid>
   );

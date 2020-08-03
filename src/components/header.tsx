@@ -1,25 +1,14 @@
 import React from 'react';
-import {
-  Flex,
-  Box,
-  BlockstackIcon,
-  Stack,
-  color,
-  space,
-  ChevronIcon,
-  BoxProps,
-} from '@blockstack/ui';
-import { Link, Text, LinkProps } from '@components/typography';
+import { Flex, Box, BlockstackIcon, Stack, color, space, BoxProps } from '@blockstack/ui';
+import { Link, Text } from '@components/typography';
 import MenuIcon from 'mdi-react/MenuIcon';
 import CloseIcon from 'mdi-react/CloseIcon';
 import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
-import GithubIcon from 'mdi-react/GithubIcon';
-import { IconButton } from '@components/icon-button';
-import routes from '@common/routes';
+
 import { css } from '@styled-system/css';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
 import { ColorModeButton } from '@components/color-mode-button';
+import { PAGE_WIDTH } from '@common/constants';
 
 const MenuButton = ({ ...rest }: any) => {
   const { isOpen, handleOpen, handleClose } = useMobileMenuState();
@@ -37,73 +26,6 @@ const MenuButton = ({ ...rest }: any) => {
   );
 };
 
-const BreadCrumbs: React.FC<any> = props => {
-  const router = useRouter();
-  const [route, setRoute] = React.useState(undefined);
-  const [section, setSection] = React.useState(undefined);
-  React.useEffect(() => {
-    routes.forEach(_section => {
-      _section?.routes?.length &&
-        _section.routes.forEach(_route => {
-          if (router.route === `/${_route.path}`) {
-            setSection(_section);
-            setRoute(_route);
-          }
-        });
-    });
-  }, [router.route]);
-
-  return route && section ? (
-    <Flex align="center">
-      <Box>
-        <Text fontSize={['12px', '12px', '14px']} fontWeight="500">
-          Docs
-        </Text>
-      </Box>
-      <Box pt="3px" color={color('text-caption')}>
-        <ChevronIcon size="20px" />
-      </Box>
-      <Box>
-        <Text fontSize={['12px', '12px', '14px']} fontWeight="500">
-          {section?.title}
-        </Text>
-      </Box>
-      <Box pt="3px" color={color('text-caption')}>
-        <ChevronIcon size="20px" />
-      </Box>
-      <Box>
-        <Text fontSize={['12px', '12px', '14px']} fontWeight="500">
-          {route?.title || (route?.headings.length && route.headings[0])}
-        </Text>
-      </Box>
-    </Flex>
-  ) : (
-    <Box />
-  );
-};
-
-const GithubButton = (props: LinkProps) => (
-  <IconButton
-    as="a"
-    href="https://github.com/blockstack/ux/tree/master/packages/ui#blockstack-ui"
-    target="_blank"
-    rel="nofollow noopener noreferrer"
-    title="Find us on GitHub"
-    position="relative"
-    overflow="hidden"
-    display="flex"
-    style={{
-      alignItems: 'center',
-    }}
-    {...props}
-  >
-    <Text position="absolute" opacity={0} as="label">
-      Find us on GitHub
-    </Text>
-    <GithubIcon size="20px" />
-  </IconButton>
-);
-
 const HeaderWrapper: React.FC<any> = React.forwardRef((props, ref) => (
   <Box top={2} ref={ref} width="100%" {...props} />
 ));
@@ -111,9 +33,23 @@ const HeaderWrapper: React.FC<any> = React.forwardRef((props, ref) => (
 const nav = [
   {
     label: 'Developers',
+    chilren: [
+      {
+        label: 'Documentation',
+      },
+      {
+        label: 'GitHub',
+      },
+      {
+        label: 'Papers',
+      },
+      {
+        label: 'Discord',
+      },
+    ],
   },
-  { label: 'Run a node' },
-  { label: 'Build on Blockstack' },
+  { label: 'Testnet' },
+  { label: 'Discover apps' },
 ];
 
 export const HEADER_HEIGHT = 132;
@@ -158,7 +94,7 @@ const Header = ({ hideSubBar, ...rest }: any) => {
             backdropFilter: 'blur(5px)',
           }}
           height="72px"
-          maxWidth="1280px"
+          maxWidth={`${PAGE_WIDTH}px`}
           mx="auto"
           px={space(['extra-loose', 'extra-loose', 'base', 'base'])}
           {...rest}
@@ -177,7 +113,7 @@ const Header = ({ hideSubBar, ...rest }: any) => {
           </NextLink>
           <Flex align="center">
             <Box display={['none', 'none', 'block']}>
-              <Stack mr={space('base')} isInline spacing={space('base')}>
+              <Stack mr={space('base')} isInline spacing={space('extra-loose')}>
                 {nav.map(item => (
                   <Box>
                     <HeaderTextItem>{item.label}</HeaderTextItem>
@@ -186,7 +122,6 @@ const Header = ({ hideSubBar, ...rest }: any) => {
               </Stack>
             </Box>
             <ColorModeButton />
-            <GithubButton />
             <MenuButton />
           </Flex>
         </Flex>

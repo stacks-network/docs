@@ -1,6 +1,9 @@
 ---
 title: A decentralized storage architecture
-description: 'Storing user data with Blockstack'
+description: Storing user data with Blockstack
+images:
+  large: /images/pages/data-storage.svg
+  sm: /images/pages/data-storage-sm.svg
 ---
 
 # A decentralized storage architecture

@@ -63,12 +63,7 @@ export const TableOfContents = ({
 } & BoxProps) => {
   return (
     <Box position="relative" display={display}>
-      <Box
-        flexShrink={0}
-        minWidth={['100%', `${TOC_WIDTH}px`, `${TOC_WIDTH}px`]}
-        pr={space('base')}
-        {...rest}
-      >
+      <Box flexShrink={0} width="100%" {...rest}>
         {!noLabel && (
           <Box mb={space('extra-tight')}>
             <Text fontWeight="bold" fontSize="14px">

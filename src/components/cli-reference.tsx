@@ -3,7 +3,7 @@ import { cliReferenceData } from '@common/../_data/cliRef';
 import { MDXComponents } from '@components/mdx/mdx-components';
 import { Grid, Box, color } from '@blockstack/ui';
 import { border } from '@common/utils';
-import { hydrate } from '@common/hydrate-mdx';
+import { hydrate } from '@common/data/hydrate-mdx';
 
 const styles = {
   maxWidth: '100%',
