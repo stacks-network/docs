@@ -18,7 +18,9 @@ const getUrl = pathname => {
 };
 
 const useImgix = (src: string) => {
-  if (process.env.NODE_ENV !== 'production') return src;
+  // if (process.env.NODE_ENV !== 'production') return src;
+  // TODO: after deploy, re-enable imgix to proxy images
+  return src;
   if (!src) return src;
   let _src = src;
   const router = useRouter();
