@@ -66,4 +66,4 @@ Although Radiks applications rely on a centrally-hosted database, an application
 </table>
 
 If you are not familiar with Gaia, see 
-[read the Gaia documentation](({{site.baseurl}}/storage/overview.html).
+[read the Gaia documentation](storage/overview.html).
