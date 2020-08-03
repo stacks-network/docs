@@ -127,12 +127,7 @@ const GridCard: React.FC<BoxProps & { page?: any }> = ({ page, ...rest }) => {
   return (
     <Box position="relative" {...rest} {...bind}>
       <Box borderRadius="12px" overflow="hidden" mb={space('loose')}>
-        <Image
-          width="100%"
-          size="100%"
-          transform={hover || active ? 'scale(1.1)' : 'scale(1.02)'}
-          src={page?.images?.large}
-        />
+        <Image width="100%" size="100%" src={page?.images?.large} />
       </Box>
       <Flex alignItems="flex-start" justifyContent="flex-start" flexDirection="column">
         <Title color={hover ? color('accent') : color('text-title')} mb={space('tight')}>
