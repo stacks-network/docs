@@ -113,7 +113,7 @@ export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
       })}
       onClick={id && handleLinkClick}
     >
-      {children}
+      <Box as="span">{children}</Box>
       <AnchorOffset id={id} />
       {id && isActive && <Hashtag />}
       {id && <LinkButton opacity={hover || active ? 1 : 0} link={link} />}
