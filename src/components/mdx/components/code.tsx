@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Box, BoxProps, color, themeColor } from '@blockstack/ui';
+import { Box, BoxProps, color, space, themeColor } from '@blockstack/ui';
 import { border } from '@common/utils';
 import { css } from '@styled-system/css';
 import { Text } from '@components/typography';
-import { useColorMode } from '@pages/_app';
+
+const LINE_MINIMUM = 4;
 
 const getHighlightLineNumbers = (str: string): number[] | undefined => {
   if (!str) return;
@@ -20,26 +21,27 @@ const getHighlightLineNumbers = (str: string): number[] | undefined => {
   return numbers;
 };
 
-export const Code: React.FC<BoxProps & { highlight?: string }> = React.forwardRef(
-  ({ children, highlight, ...rest }, ref) => {
-    const [mode] = useColorMode();
-    const numbers = getHighlightLineNumbers(highlight);
+const generateCssStylesForHighlightedLines = (numbers: number[] = []) => {
+  const record = {};
+  const style = {
+    bg: 'var(--colors-highlight-line-bg)',
+    '&::before': {
+      borderRightColor: themeColor('ink.600'),
+    },
+  };
+  numbers.forEach(number => {
+    record[`&:nth-of-type(${number})`] = style;
+  });
+  return record;
+};
 
-    const generateCssStylesForHighlightedLines = (numbers: number[] = []) => {
-      const record = {};
-      const style = {
-        bg: 'var(--colors-highlight-line-bg)',
-        '&::before': {
-          borderRightColor: themeColor('ink.600'),
-        },
-      };
-      numbers.forEach(number => {
-        record[`&:nth-of-type(${number})`] = style;
-      });
-      return record;
-    };
+export const Code: React.FC<
+  BoxProps & { highlight?: string; lang?: string; lines: number }
+> = React.memo(
+  React.forwardRef(({ children, highlight, lang, lines, ...rest }, ref) => {
+    const numbers = getHighlightLineNumbers(highlight);
     return (
-      <Box ref={ref as any} overflowX="auto">
+      <Box className={lines <= 3 ? 'no-line-numbers' : ''} ref={ref as any} overflowX="auto">
         <Box
           as="code"
           css={css({
@@ -51,6 +53,34 @@ export const Code: React.FC<BoxProps & { highlight?: string }> = React.forwardRe
               display: 'inline-block',
               ...generateCssStylesForHighlightedLines(numbers),
             },
+            counterReset: 'line',
+            '& .token-line': {
+              '.comment': {
+                color: 'rgba(255,255,255,0.5) !important',
+              },
+              display: 'flex',
+              fontSize: '14px',
+
+              '&::before':
+                lines > LINE_MINIMUM && lang !== 'bash'
+                  ? {
+                      counterIncrement: 'line',
+                      content: 'counter(line, decimal-leading-zero)',
+                      display: 'grid',
+                      placeItems: 'center',
+                      color: themeColor('ink.400'),
+                      mr: '16px',
+                      width: '42px',
+                      fontSize: '12px',
+                      borderRight: '1px solid rgb(39,41,46)',
+                    }
+                  : {},
+            },
+            pr: space(['base-loose', 'base-loose', 'extra-loose', 'extra-loose']),
+            pl:
+              lines <= LINE_MINIMUM || lang === 'bash'
+                ? space(['base-loose', 'base-loose', 'base-loose', 'base-loose'])
+                : 'unset',
           })}
           {...rest}
         >
@@ -60,7 +90,7 @@ export const Code: React.FC<BoxProps & { highlight?: string }> = React.forwardRe
         </Box>
       </Box>
     );
-  }
+  })
 );
 
 const preProps = {

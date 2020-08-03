@@ -1,13 +1,13 @@
 ---
+title: Testing Clarity code
 description: Learn to Test Clarity Contract Code with JavaScript and Mocha
+experience: advanced
+duration: 15 minutes
 ---
 
-# Test Clarity Code
+# Testing Clarity code
 
 ## Overview
-
-| Experience | | **Advanced** |
-| Duration | | **15 minutes** |
 
 Clarity, Blockstack's smart contracting language, is based on [LISP](<https://en.wikipedia.org/wiki/Lisp_(programming_language)>). Clarity is an interpreted language, and [decidable](https://en.wikipedia.org/wiki/Recursive_language). In this tutorial, you will learn how to test Clarity and how use [Mocha](https://mochajs.org/) to test Clarity contracts while you develop them.
 
@@ -138,15 +138,9 @@ Now, review the last test `should echo number` on your own and try to understand
 
 ---
 
-With the completion of this tutorial, you ...
+With the completion of this tutorial, you:
 
 - Created a working Clarity starter project
 - Understood how to test Clarity contracts
 
 Congratulations!
-
-## Where to go next
-
-- <a href="principals.html">Guide: Understanding principals</a>
-- <a href="tutorial-counter.html">Next tutorial: Writing a counter smart contract</a>
-- <a href="clarityRef.html">Clarity language reference</a>

@@ -1,8 +1,12 @@
 ---
-description: 'Blockstack Clarity: Introduction'
+title: Write smart contracts
+description: Overview and guides for getting started with Clarity
+images:
+  large: /images/pages/smart-contracts.svg
+  sm: /images/pages/smart-contracts-sm.svg
 ---
 
-# Introduction to Clarity
+# Write smart contracts
 
 Clarity is a programming language for writing smart contracts on the Stacks 2.0 blockchain. It supports programmatic control over digital assets.
 
@@ -28,7 +32,7 @@ Not every decentralized application requires smart contracts, but Clarity unlock
 
 Clarity differs from most other smart contract languages in two essential ways:
 
-- The language is interpreted and broadcasted on the blockchain as is (not compiled)
+- The language is interpreted and broadcast on the blockchain as is (not compiled)
 - The language is decidable (not Turing complete)
 
 Using an interpreted language ensures that the executed code is human-readable and auditable. A decidable language like Clarity makes it possible to determine precisely which code is going to be executed, for any function.

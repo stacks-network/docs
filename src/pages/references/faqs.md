@@ -1,5 +1,6 @@
 ---
-description: 'Blockstack Network documentation'
+title: FAQs
+description: This is a comprehensive list of all the Blockstack FAQs.
 redirect_from: /org/voucherholder
 ---
 

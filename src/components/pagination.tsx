@@ -2,69 +2,52 @@ import React from 'react';
 import { Box, BoxProps, Flex, Grid, color, space, transition } from '@blockstack/ui';
 import routes from '@common/routes';
 import { useRouter } from 'next/router';
-import { MDXComponents } from '@components/mdx';
-import { border } from '@common/utils';
+import { border, getTitle } from '@common/utils';
 import NextLink from 'next/link';
-import { Link } from '@components/typography';
+import { Caption, Text, Link } from '@components/typography';
 import { useTouchable } from '@common/hooks/use-touchable';
+import { getHeadingStyles } from '@components/mdx/typography';
+import { css } from '@styled-system/css';
+
+const FloatingLink: React.FC<any> = ({ href }) => (
+  <NextLink href={`${href}`} passHref>
+    <Link position="absolute" size="100%" zIndex={2} as="a" />
+  </NextLink>
+);
+
+const getCategory = (pathname: string) => {
+  const arr = pathname.split('/');
+  if (arr.length > 1) {
+    return arr[1];
+  }
+  return undefined;
+};
 
 const usePaginateRoutes = () => {
   const router = useRouter();
 
-  const getRoute = route => router.pathname === `/${route.path}`;
-  const getSection = _section => _section.routes.find(getRoute);
-  const findSectionByTitle = item => item.title === section.title;
+  const category = getCategory(router.pathname);
+  const getSection = route => getCategory(route.path) === category;
+  const findCurrentRouteInArray = item => item.path === router.pathname;
 
-  return {
-    next: undefined,
-    prev: undefined,
-  };
+  const sectionRoutes = routes.filter(getSection);
 
-  const section = routes.find(getSection);
-
-  if (!section)
+  if (!sectionRoutes)
     return {
       next: undefined,
       prev: undefined,
     };
 
-  const { routes: sectionRoutes } = section;
-  const sectionIndex: number = routes.findIndex(findSectionByTitle);
+  const routeIndex: number = sectionRoutes.findIndex(findCurrentRouteInArray);
 
-  const nextSection = routes[sectionIndex + 1];
-  const prevSection = routes[sectionIndex - 1];
-
-  const isFirstSection = sectionIndex === 0;
-  const isLastSection = sectionIndex === routes.length - 1;
-
-  const routeIndex: number = sectionRoutes.findIndex(getRoute);
-
-  const isFirstRouteInSection = routeIndex === 0;
-  const isLastRouteInSection = routeIndex === sectionRoutes.length - 1;
-
-  let next;
-  let prev;
-
-  if (!isLastRouteInSection) {
-    next = sectionRoutes[routeIndex + 1];
-  }
-  if (isLastRouteInSection && !isLastSection) {
-    next = nextSection?.routes?.length && nextSection?.routes[0];
-  }
-  if (!isFirstRouteInSection) {
-    prev = sectionRoutes[routeIndex - 1];
-  }
-  if (isFirstRouteInSection && !isFirstSection) {
-    prev = prevSection?.routes?.length && prevSection?.routes[0];
-  }
+  const next = sectionRoutes[routeIndex + 1];
+  const prev = sectionRoutes[routeIndex - 1];
 
   return { next, prev };
 };
 
 const Description: React.FC<BoxProps> = props => (
-  <Box maxWidth="42ch" mt={space('extra-tight')}>
-    <MDXComponents.p {...props} />
-  </Box>
+  <Caption display="block" maxWidth="42ch" mt={space('extra-tight')} {...props} />
 );
 
 const Card: React.FC<any> = ({ children, ...rest }) => {
@@ -93,6 +76,34 @@ const Card: React.FC<any> = ({ children, ...rest }) => {
   );
 };
 
+const Pretitle: React.FC<BoxProps> = props => (
+  <Text
+    display="block"
+    color={color('text-caption')}
+    transition={transition}
+    mb={space('base')}
+    css={css({
+      ...getHeadingStyles('h6'),
+    })}
+    {...props}
+  />
+);
+
+const Title: React.FC<BoxProps & { isHovered?: boolean }> = ({ isHovered, ...props }) => (
+  <Text
+    display="block"
+    maxWidth="38ch"
+    width="100%"
+    transition={transition}
+    color={isHovered ? color('accent') : color('text-title')}
+    mb={space('tight')}
+    css={css({
+      ...getHeadingStyles('h3'),
+    })}
+    {...props}
+  />
+);
+
 const PrevCard: React.FC<any> = React.memo(props => {
   const { prev } = usePaginateRoutes();
 
@@ -100,17 +111,9 @@ const PrevCard: React.FC<any> = React.memo(props => {
     <Card>
       {({ hover, active }) => (
         <>
-          <NextLink href={`/${prev.path}`} passHref>
-            <Link position="absolute" size="100%" zIndex={2} as="a" />
-          </NextLink>
-          <Box>
-            <MDXComponents.h5 mt={0} color={color('text-caption')}>
-              Previous
-            </MDXComponents.h5>
-          </Box>
-          <Box maxWidth="38ch">
-            <MDXComponents.h3 my={0}>{prev.title || prev.headings[0]}</MDXComponents.h3>
-          </Box>
+          <FloatingLink href={prev.path} />
+          <Pretitle>Previous</Pretitle>
+          <Title isHovered={hover || active}>{getTitle(prev)}</Title>
           {prev.description && <Description>{prev.description}</Description>}
         </>
       )}
@@ -126,21 +129,9 @@ const NextCard: React.FC<any> = React.memo(props => {
     <Card textAlign="right" align="flex-end">
       {({ hover, active }) => (
         <>
-          <NextLink href={`/${next.path}`} passHref>
-            <Link position="absolute" size="100%" zIndex={2} as="a" />
-          </NextLink>
-          <MDXComponents.h5 mt={0} color={color('text-caption')} width="100%" display="block">
-            Next
-          </MDXComponents.h5>
-          <Box maxWidth="38ch">
-            <MDXComponents.h3
-              transition={transition}
-              color={hover ? color('accent') : color('text-title')}
-              my={0}
-            >
-              {next.title || next.headings[0]}
-            </MDXComponents.h3>
-          </Box>
+          <FloatingLink href={next.path} />
+          <Pretitle>Next</Pretitle>
+          <Title isHovered={hover || active}>{getTitle(next)}</Title>
           {next.description && <Description>{next.description}</Description>}
         </>
       )}

@@ -1,9 +1,28 @@
 ---
-description: 'Guide to Blockstack Connect'
+title: Blockstack Connect
+description: Learn what Connect is and how to integrate it into an app.
 experience: beginners
 ---
 
 # Guide to Blockstack Connect
+
+## Introduction
+
+Blockstack Connect is a JavaScript library for integrating Blockstack authentication and smart contracts into your app.
+
+The library empowers you to:
+
+- Register new users with a pre-built onboarding flow that quickly educates them as to the privacy benefits of using your app with Blockstack and provisions a "Secret Key" that secures their identity and data against the Stacks blockchain.
+- Authenticate users when they return to your app using that same Secret Key.
+- Prompt users to sign transactions with smart contracts as written in Clarity and published to the Stacks blockchain.
+
+## How does this compare to `blockstack.js`?
+
+Although [`blockstack.js`](https://github.com/blockstack/blockstack.js) can also be used to authenticate users, it implements the deprecated [Blockstack Browser](https://browser.blockstack.org/) and lacks any pre-built onboarding UI that educates users as to how your app is more secure for having implemented Blockstack. As such, we advise that you use `blockstack.js` for all other functionality apart from authentication, such as saving and retrieving user data with Gaia.
+
+## Start building with Blockstack Connect
+
+Head over to the [to-do app tutorial](/authentication/building-todo-app) to learn how to build apps with Blockstack Connect.
 
 ## Installation
 

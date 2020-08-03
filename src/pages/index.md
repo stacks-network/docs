@@ -1,28 +1,21 @@
 ---
-title: 'Documentation'
+title: Documentation
+description: All you need to build decentralized apps and smart contracts.
 ---
 
 # Documentation
 
-All you need to build decentralized apps and smart contracts
-
 ## Get started
 
-[[page-reference]]
+[@page-reference | grid]
 | /build-an-app, /smart-contracts/overview, /mining
 
 ## Tutorials
 
-[[page-reference]]
-| /authentication/building-todo-app, /smart-contracts/hello-world-tutorial, /smart-contracts/counter-tutorial
+[@page-reference | grid]
+| /authentication/building-todo-app, /smart-contracts/counter-tutorial
 
 ## Explore
 
-[[page-reference]]
+[@page-reference | grid-small]
 | /ecosystem/overview, /ecosystem/stacks-token
-
-## Sample projects
-
-Showcase your sample project
-
-[Submit on GitHub](https://github.com/blockstack/docs.blockstack)

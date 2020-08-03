@@ -1,13 +1,16 @@
 ---
+title: Hello, World!
 description: Get Started Writing Smart Contracts with Clarity
+duration: 18 minutes
+experience: beginners
+images:
+  large: /images/pages/hello-world-app.svg
+  sm: /images/pages/hello-world-sm.svg
 ---
 
 # Hello, World!
 
 ## Overview
-
-| Experience | | **Beginner** |
-| Duration | | **18 minutes** |
 
 In the world of smart contracts, everything is a blockchain transaction. You use tokens in your wallet to deploy a smart contract in a transaction, and each call to that contract after it's published is a transaction, too. That means that at each step, tokens are being exchanged as transaction fees. This tutorial introduces you to this mode of programming, which transforms blockchains into powerful state machines capable of executing complex logic.
 

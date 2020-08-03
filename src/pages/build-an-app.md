@@ -1,13 +1,16 @@
 ---
 title: Building decentralized apps
 description: Overview and guides for getting started building decentralized applications.
+images:
+  large: /images/pages/build-an-app.svg
+  sm: /images/pages/build-an-app-sm.svg
 ---
 
 # Building decentralized apps
 
 Prefer to jump right in? Get started with this tutorial where you’ll create a decentralized to-do list app.
 
-[[page-reference | inline]]
+[@page-reference | inline]
 | /authentication/building-todo-app
 
 ## What are decentralized apps?
@@ -44,13 +47,13 @@ To build your decentralized app, you’ll use authentication, data storage, data
 Like a regular app, yours will require user authentication and data storage — but decentralized. Get started with the
 documentation below or try the tutorial.
 
-[[page-reference | inline]]
+[@page-reference | inline]
 | /authentication/overview
 
-[[page-reference | inline]]
+[@page-reference | inline]
 | /data-storage/overview
 
-[[page-reference | inline]]
+[@page-reference | inline]
 | /authentication/building-todo-app
 
 ### Data indexing
@@ -58,7 +61,7 @@ documentation below or try the tutorial.
 If you need to store and index data shared by multiple users, such as messages or a shared document, read the Radiks
 documentation.
 
-[[page-reference | inline]]
+[@page-reference | inline]
 | /data-indexing/overview
 
 ### Smart contracts
@@ -66,11 +69,11 @@ documentation.
 You can use smart contracts to decentralize your app’s backend logic, making it open and permissionless. Smart contracts
 on Blockstack are written in the Clarity language. View the smart contracts documentation or get started with a tutorial.
 
-[[page-reference | inline]]
+[@page-reference | inline]
 | /smart-contracts/overview
 
-[[page-reference | inline]]
+[@page-reference | inline]
 | /smart-contracts/hello-world-tutorial
 
-[[page-reference | inline]]
+[@page-reference | inline]
 | /smart-contracts/counter-tutorial

@@ -9,7 +9,7 @@ const camelToKebab = (string: string) =>
     .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2')
     .toLowerCase();
 
-export const slugify = (string: string) =>
+export const slugify = (string: string): string =>
   string
     .toLowerCase()
     .replace(/\s+/g, '-') // Replace spaces with -
@@ -60,3 +60,12 @@ export const onlyText = (children: ReactNode): string => {
     return text.concat(newText);
   }, '') as string;
 };
+
+const getTitleFromHeading = (headings?: any[]) =>
+  headings?.length
+    ? typeof headings[0] === 'string'
+      ? headings[0]
+      : headings[0].content
+    : undefined;
+
+export const getTitle = ({ title, headings }): string => title || getTitleFromHeading(headings);

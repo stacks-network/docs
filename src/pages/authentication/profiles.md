@@ -4,7 +4,7 @@ title: Guide to Blockstack Profiles
 
 # Guide to Blockstack Profiles
 
-You can use `blockstack.js` to create and register an Blockstack username on the Stacks blockchain.
+You can use `blockstack.js` to create and register a Blockstack username on the Stacks blockchain.
 This section describes the `Profile` object and contains the following topics:
 
 ## About profiles

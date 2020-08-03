@@ -1,5 +1,5 @@
 ---
-title: 'Stacks Blockchain APIs'
+title: Stacks Blockchain APIs
 description: Interacting with the Stacks 2.0 Blockchain
 ---
 

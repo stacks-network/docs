@@ -6,7 +6,8 @@ import { SIDEBAR_WIDTH } from '@common/constants';
 // @ts-ignore
 import nav from '@common/navigation.yaml';
 import ArrowLeftIcon from 'mdi-react/ArrowLeftIcon';
-import { slugify } from '@common/utils';
+import { getTitle, slugify } from '@common/utils';
+import { useRouter } from 'next/router';
 
 const Wrapper: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
   width = `${SIDEBAR_WIDTH}px`,
@@ -21,7 +22,6 @@ const Wrapper: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
         width={width}
         maxHeight={`calc(100vh - 60px)`}
         overflow="auto"
-        pb="62px"
         px={space('base')}
         top={0}
         pt="64px"
@@ -41,15 +41,15 @@ const capitalize = s => {
 const convertToTitle = (path: string) =>
   !path ? null : path === '/' ? 'Home' : capitalize(path.replace('/', '').replace(/-/g, ' '));
 
-const PageItem = ({ isActive, ...props }: any) => (
+const PageItem = ({ isActive, color: _color = color('text-caption'), ...props }: any) => (
   <Flex
     _hover={{
       cursor: 'pointer',
       color: color('text-title'),
     }}
-    color={isActive ? color('accent') : color('text-caption')}
     mb={space('tight')}
-    fontSize="14px"
+    fontSize="16px"
+    color={isActive ? color('accent') : _color}
     {...props}
   />
 );
@@ -57,39 +57,56 @@ const PageItem = ({ isActive, ...props }: any) => (
 const SectionTitle: React.FC<BoxProps> = props => (
   <Box
     color={color('text-title')}
-    fontSize="16px"
+    fontSize="18px"
     mb={space('tight')}
     fontWeight="400"
     {...props}
   />
 );
 
+const getRoutePath = path => routes.find(route => route.path.endsWith(path));
+
 const ChildPages = ({ items, handleClick }: any) =>
-  items.pages.map(page => {
-    const path = page.pages
-      ? `${page.path}${page.pages[0].path}`
-      : items.path
-      ? '/' + slugify(items.path) + page.path
-      : page.path;
+  items?.pages
+    ? items?.pages?.map(page => {
+        const path = page.pages
+          ? `${page.path}${page.pages[0].path}`
+          : items.path
+          ? '/' + slugify(items.path) + page.path
+          : page.path;
 
-    const routePath = routes.find(route => route.path.endsWith(path));
+        const router = useRouter();
 
-    return (
-      <Box mb={space('extra-tight')}>
-        <Link href={routePath.path} passHref>
-          <PageItem onClick={page.pages ? () => handleClick(page) : undefined} as="a">
-            {convertToTitle(page.path)}
-          </PageItem>
-        </Link>
-      </Box>
-    );
-  });
+        const routePath = routes.find(route => route.path.endsWith(path));
 
-const ChildSection = ({ sections }) =>
+        return (
+          <Box mb={space('extra-tight')}>
+            <Link href={routePath.path} passHref>
+              <PageItem
+                isActive={router.pathname.endsWith(path)}
+                onClick={page.pages ? () => handleClick(page) : undefined}
+                as="a"
+              >
+                {convertToTitle(page.path)}
+              </PageItem>
+            </Link>
+          </Box>
+        );
+      })
+    : null;
+
+const ChildSection: React.FC<BoxProps & { sections?: any }> = ({ sections, ...rest }) =>
   sections.map(section => {
     return (
-      <Box mt={space('base-loose')}>
-        <SectionTitle>{section.title}</SectionTitle>
+      <Box {...rest}>
+        <SectionTitle
+          letterSpacing="0.06rem"
+          textTransform="uppercase"
+          fontSize="12px"
+          fontWeight={500}
+        >
+          {section.title}
+        </SectionTitle>
         <ChildPages items={section} />
       </Box>
     );
@@ -104,24 +121,47 @@ const BackItem = props => (
   </PageItem>
 );
 
-const NewNav = () => {
+const Navigation = () => {
   const [selected, setSelected] = React.useState<any | undefined>({
     type: 'default',
     items: nav.sections,
     selected: undefined,
   });
 
+  const router = useRouter();
+
+  React.useEffect(() => {
+    let currentSection = selected.items;
+    nav.sections.forEach(section => {
+      section.pages.forEach(page => {
+        if (page.pages) {
+          const pagesFound = page.pages.find(_page => {
+            return router.pathname.endsWith(page.path + _page.path);
+          });
+          const sectionsFound = page?.sections?.find(_section => {
+            return _section.pages.find(_page => {
+              return router.pathname.endsWith(page.path + _page.path);
+            });
+          });
+          if (pagesFound || sectionsFound) {
+            currentSection = page;
+          }
+        } else {
+          return router.pathname.endsWith(page.path);
+        }
+      });
+    });
+
+    if (selected.items !== currentSection) {
+      setSelected({ type: 'page', items: currentSection });
+    }
+  }, []);
+
   const handleClick = (page: any) => {
     if (page.pages) {
       setSelected({
         type: 'page',
         items: page,
-      });
-    } else {
-      setSelected({
-        type: 'default',
-        items: nav.sections,
-        selected: page.path,
       });
     }
   };
@@ -141,6 +181,7 @@ const NewNav = () => {
           {selected.items ? <ChildPages handleClick={handleClick} items={selected.items} /> : null}
           {selected.items?.sections ? (
             <ChildSection
+              mt={space('extra-loose')}
               sections={selected.items?.sections?.map(section => ({
                 ...section,
                 path: selected.items.path,
@@ -159,7 +200,7 @@ const NewNav = () => {
           ? {
               color: color('text-title'),
               mb: space('tight'),
-              fontSize: '16px',
+              fontSize: '18px',
               _hover: {
                 color: color('accent'),
                 cursor: 'pointer',
@@ -167,9 +208,9 @@ const NewNav = () => {
             }
           : {};
       return (
-        <Box mb={space('base')}>
+        <Box mb="40px">
           {section.title ? (
-            <Flex width="100%" align="center">
+            <Flex width="100%" align="center" mb={space('extra-tight')}>
               <SectionTitle>{section.title}</SectionTitle>
               <Box
                 transform="translateY(-3px)"
@@ -185,8 +226,10 @@ const NewNav = () => {
             const path = page.pages
               ? `${page.path}${page.pages[0].path}`
               : section?.title
-              ? '/' + slugify(section?.title) + page.path
+              ? `/${slugify(section?.title)}${page.path}`
               : page.path;
+
+            const route = getRoutePath(path);
 
             return (
               <Box mb={space('extra-tight')}>
@@ -195,10 +238,10 @@ const NewNav = () => {
                     as="a"
                     href={path}
                     {...itemProps}
-                    isActive={selected.selected === page.path}
+                    isActive={router.pathname.endsWith(path)}
                     onClick={() => handleClick(page)}
                   >
-                    {convertToTitle(page.path)}
+                    {section.usePageTitles ? getTitle(route) : convertToTitle(page.path)}
                   </PageItem>
                 </Link>
               </Box>
@@ -216,7 +259,7 @@ export const SideNav: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
 }) => {
   return (
     <Wrapper containerProps={containerProps} {...rest}>
-      <NewNav />
+      <Navigation />
     </Wrapper>
   );
 };

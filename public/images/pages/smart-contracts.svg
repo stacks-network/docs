@@ -1,0 +1,14 @@
+<svg width="257" height="145" viewBox="0 0 257 145" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.697876" y="0.439056" width="256" height="144" fill="#9985FF"/>
+<g style="mix-blend-mode:multiply">
+<rect x="0.697876" y="0.439056" width="256" height="144" fill="#9985FF"/>
+</g>
+<path opacity="0.64" d="M128.698 32.1023L176.698 58.38L128.698 84.6577L80.6979 58.38L128.698 32.1023Z" fill="white"/>
+<path d="M128.698 60.2204L176.698 86.4981L128.698 112.776L80.6979 86.4981L128.698 60.2204Z" fill="white"/>
+<g style="mix-blend-mode:multiply">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M151.017 72.4391L128.698 84.6577L106.379 72.4391L128.698 60.2204L151.017 72.4391Z" fill="#9985FF"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M151.017 72.439L128.698 84.6576L106.379 72.439L128.698 60.2203L151.017 72.439Z" fill="#9985FF"/>
+</g>
+</svg>

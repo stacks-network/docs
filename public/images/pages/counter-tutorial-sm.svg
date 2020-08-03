@@ -1,0 +1,14 @@
+<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="65" height="65">
+<rect x="0.27417" y="0.0744896" width="64" height="64" fill="#F0F0F5"/>
+</mask>
+<g mask="url(#mask0)">
+<rect x="0.27417" y="0.0744896" width="64" height="64" fill="#9985FF"/>
+<g style="mix-blend-mode:multiply">
+<rect x="0.27417" y="0.0744896" width="64" height="64" fill="#9985FF"/>
+</g>
+<rect opacity="0.64" x="12.2742" y="-9.92551" width="40" height="40" rx="4" fill="white"/>
+<path d="M35.3335 12.6003V11.1894H28.6135V12.6003H35.3335Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16.2742 34.9231C14.065 34.9231 12.2742 36.714 12.2742 38.9231V70.9231C12.2742 73.1323 14.065 74.9231 16.2742 74.9231H48.2742C50.4833 74.9231 52.2742 73.1323 52.2742 70.9231V38.9231C52.2742 36.714 50.4833 34.9231 48.2742 34.9231H16.2742ZM33.2098 55.2378H36.2061V56.7651H33.2098V59.7615H31.697V56.7651H28.7007V55.2378H31.697V52.2415H33.2098V55.2378Z" fill="white"/>
+</g>
+</svg>

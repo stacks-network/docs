@@ -41,28 +41,28 @@ export default class MyDocument extends Document<any> {
   font-family: 'Soehne Mono';
   src: url('/static/fonts/soehne-mono-web-buch.otf') format('opentype');
   font-weight: 400;
-  font-display: auto;
+  font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Soehne';
   src: url('/static/fonts/soehne-web-buch.otf') format('opentype');
   font-weight: 400;
-  font-display: auto;
+  font-display: swap;
   font-style: normal;
 }
 @font-face {
     font-family: 'Soehne';
   src: url('/static/fonts/soehne-web-kraftig_1.otf') format('opentype');
   font-weight: 500;
-  font-display: auto;
+  font-display: swap;
   font-style: normal;
 }
 @font-face {
     font-family: 'Soehne';
   src: url('/static/fonts/soehne-web-halbfett_1.otf') format('opentype');
   font-weight: 600;
-  font-display: auto;
+  font-display: swap;
   font-style: normal;
 }
 `,

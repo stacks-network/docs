@@ -1,11 +1,11 @@
 import React from 'react';
 import { Flex, Box, FlexProps, color, space, CloseIcon, Fade, Transition } from '@blockstack/ui';
 import { SideNav } from '../side-nav';
-import { Header, HEADER_HEIGHT } from '../header';
+import { Header } from '../header';
 import { Main } from '../main';
 import { Footer } from '../footer';
 import NotFoundPage from '@pages/404';
-import { SIDEBAR_WIDTH } from '@common/constants';
+import { PAGE_WIDTH, SIDEBAR_WIDTH } from '@common/constants';
 import { useWatchActiveHeadingChange } from '@common/hooks/use-active-heading';
 import { useLockBodyScroll } from '@common/hooks/use-lock-body-scroll';
 import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
@@ -144,7 +144,7 @@ const BaseLayout: React.FC<{ isHome?: boolean }> = ({ children }) => {
     <Flex minHeight="100vh" flexDirection="column">
       <MobileMenu />
       <Header />
-      <Flex width="100%" flexGrow={1} maxWidth="1280px" mx="auto">
+      <Flex width="100%" flexGrow={1} maxWidth={`${PAGE_WIDTH}px`} mx="auto">
         <SideNav display={['none', 'none', 'block']} />
         <Flex
           flexGrow={1}

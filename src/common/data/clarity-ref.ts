@@ -23,7 +23,8 @@ const generateMarkdown = () => {
   let functions = '';
 
   CLARITY_REFERENCE.functions.forEach(entry => {
-    functions += `### ${entry.name}
+    functions += `
+### ${entry.name}
 
 **Signature:** ${inlineCode(entry.signature)}\n
 
@@ -37,12 +38,12 @@ ${entry.description}
 
 #### Example {#${slugify(entry.name)}-example}
 
-${wrapInClarityTicks(entry.example)}
+${wrapInClarityTicks(entry.example)}\n
 `;
   });
 
   CLARITY_REFERENCE.keywords.forEach(entry => {
-    keywords += `### ${entry.name}
+    keywords += `\n### ${entry.name}
 
 **Output:** ${inlineCode(entry.output_type)}
 
@@ -50,7 +51,7 @@ ${entry.description}
 
 #### Example {#${slugify(entry.name)}-example}
 
-${wrapInClarityTicks(entry.example)}
+${wrapInClarityTicks(entry.example)}\n
 `;
   });
 

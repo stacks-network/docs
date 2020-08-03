@@ -3,6 +3,7 @@ import { color, space, themeColor } from '@blockstack/ui';
 import { createGlobalStyle } from 'styled-components';
 import { getHeadingStyles } from '@components/mdx/typography';
 import { border } from '@common/utils';
+import { getCapsizeStyles } from '@components/mdx/typography';
 
 export const MdxOverrides = createGlobalStyle`
 html, body {
@@ -10,6 +11,11 @@ html, body {
 }
 @counter-style list {
  pad: "0";
+}
+img{
+  //image-rendering: auto;
+  //image-rendering: crisp-edges;
+  //image-rendering: pixelated;
 }
 .headroom {
   top: 0;
@@ -98,9 +104,6 @@ html, body {
   color: ${color('accent')};
 }
 
-pre, code{
-font-family: "Soehne Mono", "Fira Code", monospace;
-}
 pre{
   display: inline-block;
 }
@@ -159,26 +162,6 @@ export const styleOverwrites = {
       '& + h4, & + h5, & + h6, & + blockquote, & + ul, & + ol': {
         mt: 0,
       },
-      counterReset: 'line',
-      '& .token-line': {
-        '.comment': {
-          color: 'rgba(255,255,255,0.5) !important',
-        },
-        display: 'flex',
-        fontSize: '14px',
-        '&::before': {
-          counterIncrement: 'line',
-          content: 'counter(line, decimal-leading-zero)',
-          display: 'grid',
-          placeItems: 'center',
-          color: themeColor('ink.400'),
-          mr: '16px',
-          width: '42px',
-          fontSize: '12px',
-          borderRight: '1px solid rgb(39,41,46)',
-        },
-        pr: space(['base-loose', 'base-loose', 'extra-loose', 'extra-loose']),
-      },
       boxShadow: 'none',
     },
   },
@@ -187,21 +170,7 @@ export const styleOverwrites = {
   },
   'p, li, a': {
     display: 'inline-block',
-    fontSize: '16px',
-    lineHeight: '28px',
-    padding: '0.05px 0',
-    '::before': {
-      content: "''",
-      marginTop: '-0.5144886363636364em',
-      display: 'block',
-      height: 0,
-    },
-    '::after': {
-      content: "''",
-      marginBottom: '-0.5144886363636364em',
-      display: 'block',
-      height: 0,
-    },
+    ...getCapsizeStyles(16, 28),
   },
   li: {
     display: 'list-item',
@@ -243,6 +212,16 @@ export const styleOverwrites = {
       border: border(),
       borderRadius: '12px',
     },
+  },
+  '*:not(pre) code': {
+    fontFamily: '"Soehne Mono", "Fira Code", monospace',
+    // ...getCapsizeStyles(14, 24),
+    // padding: '3px 2px',
+  },
+  'pre code': {
+    fontFamily: '"Soehne Mono", "Fira Code", monospace',
+    fontSize: '14px',
+    lineHeight: '24px',
   },
   h2: {
     mt: '64px',
