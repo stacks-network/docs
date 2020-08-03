@@ -155,7 +155,7 @@ const Navigation = () => {
     if (selected.items !== currentSection) {
       setSelected({ type: 'page', items: currentSection });
     }
-  }, []);
+  }, [router.pathname]);
 
   const handleClick = (page: any) => {
     if (page.pages) {
