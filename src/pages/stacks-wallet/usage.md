@@ -89,7 +89,7 @@ When your hardware device is ready, do the following:
 
    This example uses a Trezor wallet.
 
-   ![](images/choose-hardware.png)
+   ![](/images/choose-hardware.png)
 
    The system prompts you to connect your
    device.
@@ -98,7 +98,7 @@ When your hardware device is ready, do the following:
 
    The system prompts you to export a public key.
 
-   ![](images/trezor-export.png)
+   ![](/images/trezor-export.png)
 
 7. Select **Export**.
 
@@ -136,7 +136,7 @@ If you have an existing 24 word seed phrase from this or a previous version of t
 
 The default view for an open and loaded wallet is the **Wallet Balance** view.
 
-![](images/hardware-balance.png)
+![](/images/hardware-balance.png)
 
 Notice this view includes **Send** and **Receive** buttons.
 
@@ -144,13 +144,13 @@ Both balances show **Transaction History** if it exists for an address. A
 transaction summary appears on the initial screen. To see details,
 click on a transaction:
 
-![](images/receive-details.png)
+![](/images/receive-details.png)
 
 Not all addresses have a balance. If you are a Stacks token holder, your
 address shows with both a **Balance** and **Allocation**. The **Balance** is the
 Stacks you have unlocked. The **Allocation** is the amount still locked up.
 
-![](images/token-holder-balance.png)
+![](/images/token-holder-balance.png)
 
 ## Receive Stacks
 
@@ -159,7 +159,7 @@ example.
 
 1. Click the **Receive** button to display the wallet address. where others can send STX to.
 
-   ![](images/receive-button.png)
+   ![](/images/receive-button.png)
 
 2. Email or text the address to the person or organization sending to you.
 
@@ -169,7 +169,7 @@ example.
 
    Once the person has sent you STX, you see a **PENDING** transaction which means the transaction is still being recorded by the blockchain.
 
-   ![](images/pending.png)
+   ![](/images/pending.png)
 
    Blockchain transactions take time. It may be minutes or hours before the transaction is recorded in the blockchain. When the transaction is complete, you can see a receipt for the transaction in your Stacks Wallet. The **PENDING** marker goes away once the funds are recorded on the blockchain.
 
@@ -183,7 +183,7 @@ You can only receive Bitcoin with Stacks Wallet; you cannot send Bitcoin. You ne
 
 If you attempt to send STX with your wallet and you do not have enough Bitcoin to fuel the transaction, you see this dialog:
 
-![](images/not-enough.png)
+![](/images/not-enough.png)
 
 To increase your Bitcoin for transactions, do the following:
 
@@ -191,7 +191,7 @@ To increase your Bitcoin for transactions, do the following:
 
    The system opens the **Settings** dialog.
 
-   ![](images/settings.png)
+   ![](/images/settings.png)
 
    This dialog shows you how much BTC you currently have in your account.
 
@@ -199,13 +199,13 @@ To increase your Bitcoin for transactions, do the following:
 
    The systems displays the **Top Up** dialog with a Bitcoin address.
 
-   ![](images/top-up.png)
+   ![](/images/top-up.png)
 
 3. Record the BTC address.
 4. Go to your Coinbase or similar account.
 5. Send Bitcoin to the address presented by the Stacks Wallet.
 
-   ![](images/gas-up-cb.gif)
+   ![](/images/gas-up-cb.gif)
 
 Review your Stacks Wallet settings to see the increase in your balance. Your BTC balance only appears in this area.
 
@@ -236,17 +236,17 @@ Sending stacks is a transaction you must authorize or sign. If you have connecte
    Otherwise, the system prompts you to connect to your hardware wallet. Your
    hardware wallet will prompt you for additional information and actions.
 
-   ![](images/device-check.png)
+   ![](/images/device-check.png)
 
 6. Select **Continue**.
 
    The Stacks Wallet displays a confirmation dialog.
 
-   ![](images/confirm-send.png)
+   ![](/images/confirm-send.png)
 
 7. Select **Confirm** to complete your transaction.
 
-   ![](images/sent.png)
+   ![](/images/sent.png)
 
 8. Select **Close**.
 
@@ -275,7 +275,7 @@ you do not restart the wallet, you can simple close it.
 
    The system opens the **Settings** dialog.
 
-   ![](images/settings.png)
+   ![](/images/settings.png)
 
 2. Select **Reset Wallet**.
 

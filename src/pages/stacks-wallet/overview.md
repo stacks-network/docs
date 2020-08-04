@@ -25,7 +25,7 @@ books and receive crypto currency in payment. Lena sees a book she wants to buy 
 button and Bitbook gives her an address to send currency to. Lena uses her private key to open one of her cryptocurrency
 addresses. She then sends from this address to BitBook's address.
 
-![](images/key.png)
+![](/images/key.png)
 
 Token exchanges are recorded by _transactions_ on a blockchain. In the case of STX, these exchanges appear on the
 Stacks blockchain. The movement of tokens from Lena to Bitbook is recorded on the blockchain. The private key Lena

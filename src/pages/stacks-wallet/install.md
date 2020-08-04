@@ -25,7 +25,7 @@ by Blockstack PBC.
 
    To find the terminal software, enter `terminal` into the Spotlight search.
 
-   ![](images/mac-terminal.png)
+   ![](/images/mac-terminal.png)
 
 4. In the terminal window, enter the command to change directory to the folder where you downloaded the wallet software.
 
@@ -41,7 +41,7 @@ by Blockstack PBC.
    shasum -a 512 Stacks-Wallet-macOS-3.0.0.dmg
    ```
 
-   ![](images/mac-shasum.png)
+   ![](/images/mac-shasum.png)
 
 6. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published [on this page](https://github.com/blockstack/stacks-wallet/releases).
 
@@ -55,7 +55,7 @@ by Blockstack PBC.
 
    To find the command prompt software, enter `command` into the Start menu.
 
-   ![](images/windows-cmd.png)
+   ![](/images/windows-cmd.png)
 
 3. In the command prompt window, enter the command to change directory to the folder where you downloaded the wallet software.
 
@@ -71,7 +71,7 @@ by Blockstack PBC.
    certUtil -hashfile Stacks-Wallet-win10-3.0.0.exe SHA512
    ```
 
-   ![](images/windows-certutil.png)
+   ![](/images/windows-certutil.png)
 
 5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published [on this page](https://github.com/blockstack/stacks-wallet/releases).
 

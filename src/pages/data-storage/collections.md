@@ -105,7 +105,7 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
    The internet browser will display this pop-up
 
-   ![](images/contacts-manager.png)
+   ![](/images/contacts-manager.png)
 
 10. Use the local browser by choosing **Open Blockstack.app**.
 
@@ -120,7 +120,7 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
    When you have successfully created a contact, the Contact Manager displays that contact on the list. Here you can see that Josephine Baker was entered as a contact.
 
-   ![](images/added-contact.png)
+   ![](/images/added-contact.png)
 
 2. Open the [collections page test](https://blockstack.github.io/blockstack-collections/page_test/) in your browser.
 
@@ -130,7 +130,7 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
 4. Choose **List contacts**.
 
-   ![](images/test-contact.png)
+   ![](/images/test-contact.png)
 
 ## How to add the Contact collections to your DApp
 
