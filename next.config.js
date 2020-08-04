@@ -83,6 +83,7 @@ module.exports = withFonts(
       modern: true,
       polyfillsOptimization: true,
       jsconfigPaths: true,
+      trailingSlash: true,
     },
     pageExtensions: ['js', 'ts', 'tsx', 'md', 'mdx'],
     webpack: (config, options) => {
