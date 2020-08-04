@@ -79,7 +79,7 @@ export const Code: React.FC<
             pr: space(['base-loose', 'base-loose', 'extra-loose', 'extra-loose']),
             pl:
               lines <= LINE_MINIMUM || lang === 'bash'
-                ? space(['base-loose', 'base-loose', 'base-loose', 'base-loose'])
+                ? space(['extra-loose', 'extra-loose', 'base-loose', 'base-loose'])
                 : 'unset',
           })}
           {...rest}

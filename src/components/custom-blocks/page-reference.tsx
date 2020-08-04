@@ -6,7 +6,7 @@ import { Caption, Text } from '@components/typography';
 import Link from 'next/link';
 import routes from '@common/routes';
 import { Img } from '@components/mdx/image';
-
+import { css } from '@styled-system/css';
 const Image = ({
   src,
   isHovered,
@@ -130,15 +130,26 @@ const GridCard: React.FC<BoxProps & { page?: any }> = ({ page, ...rest }) => {
   });
   return (
     <Box position="relative" {...rest} {...bind}>
-      <Box borderRadius="12px" overflow="hidden" mb={space('loose')}>
-        <Image
-          width="100%"
-          size="100%"
-          transition={transition('0.45s')}
-          transform={(hover || active) && 'scale(1.08)'}
-          style={{ willChange: 'transform' }}
-          src={page?.images?.large}
-        />
+      <Box
+        bg="#9985FF"
+        position="relative"
+        borderRadius="12px"
+        mb={space('loose')}
+        overflow="hidden"
+      >
+        <Grid style={{ placeItems: 'center' }} height="0px" paddingTop="56.25%">
+          <Image
+            width="102%"
+            size="102%"
+            transition={transition('0.45s')}
+            transform={(hover || active) && 'scale(1.08)'}
+            style={{ willChange: 'transform' }}
+            src={page?.images?.large}
+            position="absolute"
+            left={'-2%'}
+            top={'-2%'}
+          />
+        </Grid>
       </Box>
       <Flex alignItems="flex-start" justifyContent="flex-start" flexDirection="column">
         <Title color={hover ? color('accent') : color('text-title')} mb={space('tight')}>
@@ -166,7 +177,8 @@ export const PageReference = ({ children }) => {
       gridRowGap={space('loose')}
       gridTemplateColumns={[
         `repeat(1, 1fr)`,
-        `repeat(1, 1fr)`,
+        `repeat(${pages.length === 1 ? 1 : 2}, 1fr)`,
+        `repeat(${pages.length === 1 ? 1 : 2}, 1fr)`,
         `repeat(${pages.length === 1 ? 1 : 3}, 1fr)`,
       ]}
     >
