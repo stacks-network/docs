@@ -1,11 +1,24 @@
 import React from 'react';
-import { Box, Flex, Portal, space, Fade, themeColor, color, BoxProps } from '@blockstack/ui';
+import {
+  Box,
+  Flex,
+  Portal,
+  space,
+  Fade,
+  themeColor,
+  color,
+  BoxProps,
+  Grid,
+  Stack,
+} from '@blockstack/ui';
 import { useDocSearchKeyboardEvents } from '@docsearch/react';
-
 import { Text } from '@components/typography';
 import { SearchIcon } from '@components/icons/search';
 import Router from 'next/router';
 import Link from 'next/link';
+import { getCapsizeStyles } from '@components/mdx/typography';
+import { css } from '@styled-system/css';
+import { border } from '@common/utils';
 
 const getLocalUrl = href => {
   const _url = new URL(href);
@@ -32,6 +45,32 @@ const navigator = {
     return Router.push(url, url);
   },
 };
+
+const Key: React.FC<BoxProps> = ({ children, ...rest }) => (
+  <Grid
+    style={{
+      placeItems: 'center',
+    }}
+    size="18px"
+    bg={color('bg')}
+    border={border()}
+    borderRadius="3px"
+    boxShadow="low"
+    opacity={0.75}
+    {...rest}
+  >
+    <Text
+      css={css({
+        color: color('text-caption'),
+        display: 'block',
+        transform: 'translateY(1px)',
+        ...getCapsizeStyles(12, 12),
+      })}
+    >
+      {children}
+    </Text>
+  </Grid>
+);
 
 const searchOptions = {
   apiKey: '9040ba6d60f5ecb36eafc26396288875',
@@ -96,7 +135,7 @@ export const SearchBox: React.FC<BoxProps> = React.memo(props => {
         borderRadius="12px"
         display={['none', 'none', 'block', 'block']}
         border="1px solid"
-        borderColor={isOpen ? 'rgba(170, 179, 255, 0.8)' : color('bg-alt')}
+        borderColor={isOpen ? 'rgba(170, 179, 255, 0.8)' : color('border')}
         boxShadow={
           isOpen ? '0 0 0 3px rgba(170, 179, 255, 0.25)' : '0 0 0 3px rgba(170, 179, 255, 0)'
         }
@@ -104,23 +143,44 @@ export const SearchBox: React.FC<BoxProps> = React.memo(props => {
         _hover={{
           borderColor: 'rgba(170, 179, 255, 0.8)',
           boxShadow: '0 0 0 3px rgba(170, 179, 255, 0.25)',
+          cursor: 'pointer',
+        }}
+        style={{
+          userSelect: 'none',
         }}
         {...props}
       >
-        <Flex
-          ref={searchButtonRef}
-          onClick={onOpen}
-          px={space('base-tight')}
-          py={space('tight')}
-          align="center"
-          _hover={{ borderColor: themeColor('blue.400'), cursor: 'pointer' }}
-        >
-          <Box transform="scaleX(-1)" mr={space('tight')} color={color('text-caption')}>
-            <SearchIcon size="18px" />
-          </Box>
-          <Text fontSize={'14px'} color={color('text-caption')}>
-            Search docs
-          </Text>
+        <Flex align="center" justifyContent="space-between">
+          <Flex
+            ref={searchButtonRef}
+            onClick={onOpen}
+            px={space('base-tight')}
+            py={space('tight')}
+            align="center"
+            _hover={{ borderColor: themeColor('blue.400') }}
+          >
+            <Box
+              transform="scaleX(-1)"
+              mr={space('tight')}
+              opacity={0.6}
+              color={color('text-caption')}
+            >
+              <SearchIcon size="18px" />
+            </Box>
+            <Text
+              opacity={0.8}
+              css={css({
+                color: color('text-caption'),
+                ...getCapsizeStyles(14, 28),
+              })}
+            >
+              Search docs
+            </Text>
+          </Flex>
+          <Stack isInline spacing="3px" pr="base">
+            <Key>⌘</Key>
+            <Key>K</Key>
+          </Stack>
         </Flex>
       </Box>
     </>

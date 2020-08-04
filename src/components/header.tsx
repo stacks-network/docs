@@ -11,7 +11,7 @@ import {
   FlexProps,
   Fade,
 } from '@blockstack/ui';
-import { Link, Text } from '@components/typography';
+import { Link, LinkProps, Text } from '@components/typography';
 import MenuIcon from 'mdi-react/MenuIcon';
 import CloseIcon from 'mdi-react/CloseIcon';
 import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
@@ -23,6 +23,7 @@ import { PAGE_WIDTH } from '@common/constants';
 import { border, transition } from '@common/utils';
 import { getCapsizeStyles } from '@components/mdx/typography';
 import { useTouchable } from '@common/hooks/use-touchable';
+import { useRouter } from 'next/router';
 
 const MenuButton = ({ ...rest }: any) => {
   const { isOpen, handleOpen, handleClose } = useMobileMenuState();
@@ -50,31 +51,44 @@ const nav = [
     children: [
       {
         label: 'Documentation',
+        href: 'https://docs.blockstack.org/',
       },
       {
         label: 'GitHub',
+        href: 'https://github.com/blockstack',
       },
       {
         label: 'Papers',
+        href: 'https://www.blockstack.org/papers',
       },
       {
         label: 'Discord',
+        href: 'https://discord.com/invite/6PcCMU',
       },
     ],
   },
-  { label: 'Testnet' },
-  { label: 'Discover apps' },
+  { label: 'Testnet', href: 'https://www.blockstack.org/testnet' },
+  { label: 'Discover apps', href: 'https://app.co/' },
 ];
 
 export const HEADER_HEIGHT = 132;
 
-const HeaderTextItem: React.FC<BoxProps> = ({ children, ...rest }) => (
+const HeaderTextItem: React.FC<BoxProps & LinkProps> = ({ children, href, as, ...rest }) => (
   <Text
     color={color('invert')}
     css={css({
       ...getCapsizeStyles(16, 26),
       ...rest,
+      color: 'currentColor',
+      ':hover': {
+        cursor: 'pointer',
+        textDecoration: href ? 'underline' : 'none',
+        color: href ? color('accent') : 'currentColor',
+      },
     })}
+    as={as}
+    // @ts-ignore
+    href={href}
   >
     {children}
   </Text>
@@ -86,11 +100,12 @@ const NavItem: React.FC<FlexProps & { item: any }> = ({ item, ...props }) => {
   });
   return (
     <Flex justifyContent="center" position="relative" {...props} {...bind}>
-      <Link as="a">
-        <HeaderTextItem>{item.label}</HeaderTextItem>
-      </Link>
+      <HeaderTextItem as={item.href ? 'a' : 'span'} href={item.href}>
+        {item.label}
+      </HeaderTextItem>
+
       {item.children ? (
-        <Box ml={space('extra-tight')}>
+        <Box color={color('text-caption')} ml={space('extra-tight')}>
           <ChevronIcon direction="down" />
         </Box>
       ) : null}
@@ -125,6 +140,11 @@ const NavItem: React.FC<FlexProps & { item: any }> = ({ item, ...props }) => {
                     borderBottom={_key < item.children.length - 1 && border()}
                     px={space('base')}
                     py={space('base-loose')}
+                    as="a"
+                    display="block"
+                    // @ts-ignore
+                    href={child.href}
+                    target="_blank"
                   >
                     <HeaderTextItem color="currentColor">{child.label}</HeaderTextItem>
                   </Box>
@@ -157,41 +177,63 @@ const Navigation: React.FC<BoxProps> = props => {
   );
 };
 
+const LogoLink = () => {
+  const { hover, active, bind } = useTouchable();
+  const router = useRouter();
+  return (
+    <NextLink href="/" passHref>
+      <Link
+        as="a"
+        style={{
+          textDecoration: 'none',
+          pointerEvents: router.pathname === '/' ? 'none' : 'unset',
+        }}
+        {...bind}
+      >
+        <Flex as="span" align="center">
+          <Box
+            as="span"
+            // opacity={hover || active ? 0.75 : 1}
+            color={hover || active ? color('accent') : color('invert')}
+            mr={space('tight')}
+          >
+            <BlockstackIcon size="20px" />
+          </Box>
+          <Box as="span" transform="translateY(1px)">
+            <HeaderTextItem>Blockstack</HeaderTextItem>
+          </Box>
+        </Flex>
+      </Link>
+    </NextLink>
+  );
+};
+
 const Header = ({ hideSubBar, ...rest }: any) => {
   return (
     <>
       <HeaderWrapper>
-        <Flex
-          justifyContent="space-between"
-          align="center"
-          bg={color('bg')}
-          style={{
-            backdropFilter: 'blur(5px)',
-          }}
-          height="72px"
-          maxWidth={`${PAGE_WIDTH}px`}
-          mx="auto"
-          px={space(['extra-loose', 'extra-loose', 'base', 'base'])}
-          {...rest}
-        >
-          <NextLink href="/" passHref>
-            <Link as="a">
-              <Flex align="center">
-                <Box color={color('invert')} mr={space('tight')}>
-                  <BlockstackIcon size="20px" />
-                </Box>
-                <Box transform="translateY(1px)">
-                  <HeaderTextItem>Blockstack</HeaderTextItem>
-                </Box>
-              </Flex>
-            </Link>
-          </NextLink>
-          <Flex align="center">
-            <Navigation />
-            <ColorModeButton />
-            <MenuButton />
+        <Box mx="auto" px="extra-loose">
+          <Flex
+            justifyContent="space-between"
+            align="center"
+            bg={color('bg')}
+            style={{
+              backdropFilter: 'blur(5px)',
+            }}
+            height="72px"
+            maxWidth={`${PAGE_WIDTH}px`}
+            mx="auto"
+            color={color('text-title')}
+            {...rest}
+          >
+            <LogoLink />
+            <Flex align="center">
+              <Navigation />
+              <ColorModeButton />
+              <MenuButton />
+            </Flex>
           </Flex>
-        </Flex>
+        </Box>
       </HeaderWrapper>
     </>
   );

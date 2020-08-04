@@ -6,11 +6,20 @@ export const ColorModes = createGlobalStyle`
     ${generateCssVariables('light')};
     --colors-highlight-line-bg: rgba(255,255,255,0.08);
   }
+  
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
   @media (prefers-color-scheme: dark) {
     :root {
       ${generateCssVariables('dark')};
       --colors-highlight-line-bg: rgba(255,255,255,0.04);
+    }
+  * {
+      -webkit-font-smoothing: subpixel-antialiased;
+      -moz-osx-font-smoothing: auto;
     }
   }
 
@@ -18,6 +27,10 @@ export const ColorModes = createGlobalStyle`
     :root {
       ${generateCssVariables('light')};
       --colors-highlight-line-bg: rgba(255,255,255,0.08);
+    }
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
   }
 
@@ -28,10 +41,18 @@ export const ColorModes = createGlobalStyle`
     &.light {
       ${generateCssVariables('light')};
       --colors-highlight-line-bg: rgba(255,255,255,0.08);
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
     }
     &.dark {
       ${generateCssVariables('dark')};
       --colors-highlight-line-bg: rgba(255,255,255,0.04);
+      * {
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+      }
     }
   }
 

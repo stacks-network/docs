@@ -11,11 +11,13 @@ import {
   SlideFade,
 } from '@blockstack/ui';
 import { Text } from '@components/typography';
-import { MDXComponents, Link } from '@components/mdx';
+import { Link } from '@components/mdx';
 import { SadIcon, NeutralIcon, HappyIcon } from '@components/icons/feedback';
 import { useTouchable } from '@common/hooks/use-touchable';
 import { border } from '@common/utils';
 import { useRouter } from 'next/router';
+import { getHeadingStyles } from '@components/mdx/typography';
+import { css } from '@styled-system/css';
 
 const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponent, ...props }) => {
   const { bind, hover, active } = useTouchable();
@@ -24,11 +26,11 @@ const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponen
     <Box
       color={color('text-caption')}
       _hover={{ color: color('bg'), cursor: 'pointer' }}
-      size="42px"
+      size="28px"
       {...props}
       {...bind}
     >
-      <IconComponent bg={isHovered ? color('accent') : color('bg-light')} />
+      <IconComponent bg={isHovered ? color('accent') : color('bg-alt')} />
     </Box>
   );
 };
@@ -99,8 +101,14 @@ export const FeedbackSection: React.FC<BoxProps> = props => {
       mt={space('extra-loose')}
     >
       <Flex>
-        <Box position="relative">
-          <MDXComponents.h4>Was this page helpful?</MDXComponents.h4>
+        <Box mt={space('extra-loose')} position="relative">
+          <Text
+            css={css({
+              ...getHeadingStyles('h5'),
+            })}
+          >
+            Was this page helpful?
+          </Text>
           <Stack isInline spacing={space('base-loose')} mt={space('base-loose')}>
             <Icon onClick={() => handleShow()} icon={SadIcon} />
             <Icon onClick={() => handleShow()} icon={NeutralIcon} />

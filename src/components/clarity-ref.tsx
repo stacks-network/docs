@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDXComponents } from '@components/mdx/mdx-components';
 import { TableOfContents } from '@components/toc';
-import { hydrate } from '@common/data/hydrate-mdx';
+import hydrate from 'next-mdx-remote/hydrate';
 import { space } from '@blockstack/ui';
 
 export const ClarityKeywordReference = ({ content, headings }) => {
