@@ -39,7 +39,7 @@ In this task you create a **Space** which is where Gaia stores your files.
 
 1. Choose **Create > Spaces** from the dashboard menu.
 
-   ![Dashboard](/storage/images/create-space.png)
+   ![Dashboard](/images/create-space.png)
 
 2. **Choose a datacenter region** section.
 
@@ -150,15 +150,15 @@ In this task, you add a droplet to your account. The droplet is a droplet is a c
 1. Log into DigitalOcean.
 2. Go to your DigitalOcean dashboard.
 
-   ![Dashboard](/storage/images/digital-welcome.png)
+   ![Dashboard](/images/digital-welcome.png)
 
 3. Click the **Create > Droplets** button in the top right.
 
-   ![Create option](/storage/images/digital-droplet.png)
+   ![Create option](/images/digital-droplet.png)
 
 4. Select the **Marketplace** tab.
 
-   ![Marketplace](/storage/images/digital-one-click.png)
+   ![Marketplace](/images/digital-one-click.png)
 
 5. Select the **Docker** app from the options presented.
 
@@ -194,7 +194,7 @@ A droplet console emulates the access you would have if you were sitting down wi
 
 2. Click on the droplet name to open the control panel.
 
-   ![Droplet control panel](/storage/images/droplet-control.png)
+   ![Droplet control panel](/images/droplet-control.png)
 
 3. Choose **Access** from the control panel.
 4. Select **Reset Root Password** to have DigitalOcean send you the root password.
@@ -211,7 +211,7 @@ A droplet console emulates the access you would have if you were sitting down wi
 
    The system displays a message telling you to change the `root` password.
 
-   ![Droplet control panel](/storage/images/droplet-control.png)
+   ![Droplet control panel](/images/droplet-control.png)
 
    And prompts you for the current password.
 
@@ -258,7 +258,7 @@ A droplet console emulates the access you would have if you were sitting down wi
 
    The system creates your key and displays both the key and its secret.
 
-   ![Access key](/storage/images/space-access-key.png)
+   ![Access key](/images/space-access-key.png)
 
 6. Save your secret in a secure password manager.
 
@@ -356,7 +356,7 @@ You should have the console open as `root` on your Droplet. In this section, you
 11. In the DigitalOcean dashboard, choose the Spaces page.
 12. Copy the section of your space URL that follows the name.
 
-  ![Space endpoint](/storage/images/space-endpoint.png)
+  ![Space endpoint](/images/space-endpoint.png)
 
   In this example, you would copy the `sfo2.digitaloceanspaces.com` section.
 
@@ -538,14 +538,14 @@ Now, you are ready to test your Gaia server and make sure it is up and running.
 1. Click on **Droplets** in the sidebar.
 2. Find your Droplet running Gaia.
 
-   ![Droplet IP](/storage/images/space-endpoint.png)
+   ![Droplet IP](/images/space-endpoint.png)
 
 3. Copy the IP address for it.
 4. In your browser, visit the page `MY_DROPLET_IP/hub_info`.
 
    You should see a response from your Gaia hub!
 
-   ![Hub test](/storage/images/hub-running.png)
+   ![Hub test](/images/hub-running.png)
 
    The `read_url_prefix` should be combine from the bucket and endpoint create
    in your `config.json` file, for example,
@@ -573,11 +573,11 @@ These instructions assume you have already created a free <a href="https://www.f
 
    At this point, your DNS management should look similar to the following except that with your domain rather than the `maryhub.ga` domain.
 
-   ![DNS fields](/storage/images/dns-fields.png)
+   ![DNS fields](/images/dns-fields.png)
 
 7. After your changes propagate, visit your new domain at the `hub_info` page.
 
-   ![Domain test](/storage/images/domain-test.png)
+   ![Domain test](/images/domain-test.png)
 
 ## Task 12: Set up SSL
 

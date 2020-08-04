@@ -93,7 +93,7 @@ and open your browser `http://localhost:5000`. From the root of your new applica
 
    You should see a simple application:
 
-   ![](images/sign-in.png)
+   ![](/images/sign-in.png)
 
 4. Leave your new application running and move onto the next section.
 
@@ -179,7 +179,7 @@ Try your new authentication code.
 
    The Blockstack Browser prompts you to sign in. I you are _not already authenticated_ with the browser, you should see the following:
 
-   ![](images/not-authenticated.png)
+   ![](/images/not-authenticated.png)
 
    If you are already authenticated with an existing ID, you can choose that ID
    or **Deny**. Choosing an existing ID, signs you into the Hello Blockstack
@@ -196,7 +196,7 @@ Try your new authentication code.
 
    The system prompts you for a provider.
 
-   ![](images/provider-prompt.png)
+   ![](/images/provider-prompt.png)
 
    The default is to user Blockstacks' Gaia hub.
 
@@ -204,7 +204,7 @@ Try your new authentication code.
 
    The system prompts you for a URL.
 
-   ![](images/different-provider.png)
+   ![](/images/different-provider.png)
 
 8. Enter a Gaia hub URL.
 
@@ -270,7 +270,7 @@ userSession.redirectToSignInWithAuthRequest(authRequest);
 
 Passing these parameters changes the storage hub URL prompt to the following:
 
-![Gaiastorage](/storage/images/recommended-provider.png)
+![Gaiastorage](/images/recommended-provider.png)
 
 ## Related information
 

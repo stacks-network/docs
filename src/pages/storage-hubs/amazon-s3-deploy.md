@@ -40,11 +40,11 @@ If `watch` is not located, install it on your workstation.
 
 1. Visit the [AWS Free Tier page](https://aws.amazon.com/free/) and choose **Sign in to the Console**.
 
-   ![](/storage/images/aws-console.png)
+   ![](/images/aws-console.png)
 
 2. Make sure your region is set to one close to you.
 
-   ![](/storage/images/us-west-2.png)
+   ![](/images/us-west-2.png)
 
 3. Under **Build a solution** choose **Launch a virtual machine**.
 
@@ -58,7 +58,7 @@ If `watch` is not located, install it on your workstation.
 
    The system displays the available Gaia hub images.
 
-   ![](/storage/images/gaia-community.png)
+   ![](/images/gaia-community.png)
 
    Each image name has this format:
 
@@ -78,7 +78,7 @@ If `watch` is not located, install it on your workstation.
 
         After you select an image, the system displays **Step 2: Choose an Instance Type** page.
 
-        ![](/storage/images/tier-2-image.png)
+        ![](/images/tier-2-image.png)
 
 7.  Select **t2.micro** and choose **Next: Configure Instance Details**.
 
@@ -179,7 +179,7 @@ If `watch` is not located, install it on your workstation.
 
 8.  Choose **Next: Add Storage**.
 
-    ![](/storage/images/add-storage.png)
+    ![](/images/add-storage.png)
 
     The storage is set according to the AMI you selected.
 
@@ -192,7 +192,7 @@ If `watch` is not located, install it on your workstation.
     - **Key** of `Name` with the **Value** `gaia-hub`
     - **Key** of `Version` with the **Value** `2.5.3` (This value is an example, your version may be different.)
 
-    ![](/storage/images/tag-add.png)
+    ![](/images/tag-add.png)
 
 11) Choose **Next: Configure Security Group**.
 12) Create a security group with the following three types:
@@ -241,11 +241,11 @@ If `watch` is not located, install it on your workstation.
 
     The system launches your instance.
 
-    ![](/storage/images/aws-launch-status.png)
+    ![](/images/aws-launch-status.png)
 
 During the launch process the machine starts and runs some initial setup processes. These processes take a few minutes depending on the network, typically launching does not take more than 10 minutes. While this is happening the instance **Status Checks** reflect the **Initializing** status.
 
-![](/storage/images/instance-initialize.png)
+![](/images/instance-initialize.png)
 
 ## Task 2: Connect your Gaia server to your domain
 
@@ -253,13 +253,13 @@ Now, you are ready to test your Gaia server. This procedure ensures the Gaia ser
 
 1. Visit the <a href="https://aws.amazon.com/free/" target="\_blank">AWS Free Tier page</a> and choose **Sign in to the Console**.
 
-   ![](/storage/images/aws-console.png)
+   ![](/images/aws-console.png)
 
 2. Choose **All services > EC2**.
 
    The system displays the **EC2 Dashboard**.
 
-   ![](/storage/images/ec2-dashboard.png)
+   ![](/images/ec2-dashboard.png)
 
 3. Select **Running Instances**.
 
@@ -272,7 +272,7 @@ Now, you are ready to test your Gaia server. This procedure ensures the Gaia ser
 
 5. Select the **Description** tab.
 
-   ![](/storage/images/ec2-instance.png)
+   ![](/images/ec2-instance.png)
 
 6. Locate the **IPv4 Public IP** value.
 
@@ -286,12 +286,12 @@ Now, you are ready to test your Gaia server. This procedure ensures the Gaia ser
       <th>Do this...</th>
     </tr>
     <tr>
-      <td><img src="{{ '/storage/images/private-connection.png' | prepend: site.baseurl }}"/></td>
+      <td><img src="/images/private-connection.png"/></td>
       <td> You should see a message that your connection is not private.
 Everything is fine, continue to the next step, step 8.</td>
     </tr>
     <tr>
-      <td><img src="{{ '/storage/images/bad-connection.png' | prepend: site.baseurl }}"/></td>
+      <td><img src="/images/bad-connection.png"/></td>
       <td>
       <ol>
       <li>Check that your domain's DNS configuration matches the public IP address of your instance.</li>
@@ -309,7 +309,7 @@ Everything is fine, continue to the next step, step 8.</td>
 
     You should see a response from your Gaia hub!
 
-    ![Hub test](/storage/images/aws-hub.png)
+    ![Hub test](/images/aws-hub.png)
 
     At this point, you should see a **Not secure** message in the browser.
     That's because you haven't yet enabled SSL certification. While `HTTPS` is
@@ -338,11 +338,11 @@ These instructions assume you have already created a free <a href="https://www.f
 
    At this point, your DNS management should look similar to the following except that with your domain rather than the `maryhub.ga` domain.
 
-   ![DNS fields](/storage/images/aws-dns-fields.png)
+   ![DNS fields](/images/aws-dns-fields.png)
 
 7. After your changes propagate, visit your new domain at the `hub_info` page.
 
-   ![Domain test](/storage/images/domain-test.png)
+   ![Domain test](/images/domain-test.png)
 
    If you receive another **Your connection is not private** dialogs, take the option to proceed to your domain. The _Not secure_ message should no longer appear in the browser bar. If the message does appear, try waiting a few minutes for your recent changes to propagate across the net domain servers. Then, refresh the page.
 
@@ -350,7 +350,7 @@ These instructions assume you have already created a free <a href="https://www.f
 
    Each browser has its own check procedure, for example, Chrome:
 
-   ![](/storage/images/cert-check.png)
+   ![](/images/cert-check.png)
 
 At this point, you have the following. An EC2 instance running Gaia and a DNS
 record pointing your domain to this instance.

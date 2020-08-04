@@ -42,7 +42,7 @@ help.
 
 You should see a report detailing the tokens allocated to your address and when they unlock:
 
-![](images/unlocking-address.png)
+![](/images/unlocking-address.png)
 
 If you have questions or concerns about your report, please contact [hello@StacksToken.com](mailto:hello@StacksToken.com).
 
@@ -56,7 +56,7 @@ token holder, the dates of these events depend on the holders’s purchase date.
 The general timeline for unlocking tokens and the capabilities that are
 potentially possible, are as follows:
 
-![](images/unlocking.png)
+![](/images/unlocking.png)
 
 Your specific unlock date depends on when you purchased or were granted tokens.
 You can use the Blockstack Explorer to discover how many tokens you have

@@ -105,7 +105,7 @@ Open up the [Stacks 2.0 Explorer Sandbox view](https://testnet-explorer.blocksta
 
 You will be asked to sign in with or sign up for a Blockstack ID, which creates a new STX address for you on the Testnet blockchain, where you can receive tokens. Follow the steps on the screen to complete the process.
 
-![The faucet tab of the Stacks 2.0 Testnet Explorer](images/faucet.png)
+![The faucet tab of the Stacks 2.0 Testnet Explorer](/images/faucet.png)
 
 Once completed, you will see the Sandbox screen and a confirmation, indicating you were provided with a new STX address for testing purposes.
 
@@ -117,7 +117,7 @@ On the [**STX faucet**](https://testnet-explorer.blockstack.org/sandbox?tab=fauc
 
 A confirmation for a new transaction will pop up. If you want to see the details of your faucet request, you can click **View transaction**. However, you will to refresh the page a few times, for up to a minute or so, while the transaction completes.
 
-![Screenshot of faucet request submission](images/faucet-transfer.png)
+![Screenshot of faucet request submission](/images/faucet-transfer.png)
 
 ## Deploy the contract
 
@@ -128,7 +128,7 @@ Go back to the Sandbox screen, switch to the [**Contract deploy**](https://testn
 3. Ignore the **Choose from sample** drop-down for now. After completing this tutorial you can come back to the Explorer Sandbox and use this drop-down to try other sample contracts.
 4. Click **Deploy contract**.
 
-![deploy](images/contract-deploy.png)
+![deploy](/images/contract-deploy.png)
 
 A confirmation will pop up, indicating that a new contract deploy transaction was issued. As with the faucet request, you can click **View transaction** to review the pending transaction if you like, but you'll need to keep refreshing the page until the deploy transaction completes. Once you're able to see the completed deploy transaction, you will see that every smart contract's source code is publicly verifiable through the explorer.
 
@@ -139,13 +139,13 @@ Go back to the Sandbox screen, switch to the [**Contract call**](https://testnet
 - **Contract address**: Your generated STX address. Hover over the identity component on the right side of the screen to copy your full address and paste it in here.
 - **Contract name**: Whatever you entered as your contract name in the previous step. If you forgot, you can review your recent transactions by following the link on the upper-right, and look up your contract creation transaction.
 
-![Screenshot of the Sandbox's contract call screen](images/sandbox-call.png)
+![Screenshot of the Sandbox's contract call screen](/images/sandbox-call.png)
 
 After clicking **Search**, you will see the two public methods implemented in the smart contract.
 
 Locate the `(echo-number)` method, provide any integer for the `val` argument and click **Submit**. You will see the value you entered echoed back at you on the screen, as well as a confirmation that a contract call transaction was issued. Click on the transaction to review it. In the next seconds, your contract call should be completed and you will see a contract call success screen. Scroll down to the function summary section to verify your contract call:
 
-![sandbox-call](images/sandbox-calltx.png)
+![sandbox-call](/images/sandbox-calltx.png)
 
 **Congratulations! You just deployed your smart contract and called a public function on the Testnet.**
 

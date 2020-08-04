@@ -63,7 +63,7 @@ You should see output similar to the following:
 
 You should see the app's landing page:
 
-![](images/todos-home.png)
+![](/images/todos-home.png)
 
 ## Onboard into your first Blockstack app
 
@@ -73,7 +73,7 @@ The app displays a standardized introductory modal using
 [Blockstack Connect](https://github.com/blockstack/ux/tree/master/packages/connect), a JavaScript
 library that makes it easy to integrate Blockstack into the UI of any web app.
 
-![](images/todos-intro.png)
+![](/images/todos-intro.png)
 
 Below, you can see the relevant parts of the [React component](https://reactjs.org/docs/react-component.html)
 that triggers this modal in [`src/components/Signin.jsx`](https://github.com/blockstack/blockstack-todos/blob/master/src/components/Signin.jsx):
@@ -179,7 +179,7 @@ componentDidMount() {
 The app triggers a popup window in which [the Blockstack App](https://github.com/blockstack/ux/tree/master/packages/app)
 is loaded from [`app.blockstack.org`](http://app.blockstack.org/) and begins generating a new _Secret Key_.
 
-![](images/todos-generation.svg)
+![](/images/todos-generation.svg)
 
 ### Step 3: Choose **Copy Secret Key** to copy your _Secret Key_ to the clipboard.
 
@@ -190,11 +190,11 @@ all of the private data they create and manage with Blockstack apps.
 _Secret Keys_ are like strong passwords. However, they can never be recovered if lost or reset if stolen.
 As such, it's paramount that users handle them with great care.
 
-![](images/todos-copy-secret-key.svg)
+![](/images/todos-copy-secret-key.svg)
 
 ### Step 4: Choose **I've saved it** to confirm you've secured your _Secret Key_ in a suitable place.
 
-![](images/todos-ive-saved-it.svg)
+![](/images/todos-ive-saved-it.svg)
 
 ### Step 5: Enter a username value and choose **Continue**
 
@@ -203,7 +203,7 @@ The username will be used by the app to generate a URL for sharing your todos, s
 It is registered on the Stacks blockchain with the [Blockstack Naming System (BNS)](/core/naming/introduction)
 and associated with your _Secret Key_.
 
-![](images/todos-username.svg)
+![](/images/todos-username.svg)
 
 ### Done: You've now completed onboarding into the app!
 
@@ -212,7 +212,7 @@ and associated with your _Secret Key_.
 Once you've authenticated the app, you can can start adding todos by entering values into the "Write your to do"
 field and hitting "Enter".
 
-![](images/todos-home-authenticated.svg)
+![](/images/todos-home-authenticated.svg)
 
 The data for all todos are saved as JSON to the Gaia hub linked to your Secret Key using the
 [`putFile`](http://blockstack.github.io/blockstack.js/globals.html#putfile) method of the `userSession` object in the
@@ -248,7 +248,7 @@ When deleting a todo, the same `putFile` method is used to save a new JSON array
 
 Select "Make public" to make your todos accessible to the public for sharing via URL.
 
-![](images/todos-public.svg)
+![](/images/todos-public.svg)
 
 This will call `saveTasks` with the `isPublic` parameter set to `true`, which is used to disable encryption when using `putFile`.
 
@@ -280,14 +280,14 @@ Once signed out, select "Sign in" to sign back in with your _Secret Key_.
 
 If you've previously deauthenticated the Blockstack app, you'll see a prompt to enter your _Secret Key_:
 
-![](images/todos-sign-in.svg)
+![](/images/todos-sign-in.svg)
 
 The above screen will be ommitted if you have an active session with the Blockstack app already.
 
 Then you'll be presented with the option to select an existing username associated with your _Secret Key_ or
 create a new one if you wish to authenticate the app with a different identity and data set:
 
-![](images/todos-choose-account.svg)
+![](/images/todos-choose-account.svg)
 
 You'll now see your todos as an authenticated user for the username you've chosen.
 
