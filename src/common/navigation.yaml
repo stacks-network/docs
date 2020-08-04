@@ -92,19 +92,18 @@ sections:
           - path: /config-schema
           - path: /digital-ocean-deploy
           - path: /amazon-s3-deploy
+      - path: /references
+        usePageTitles: true
+        pages:
+          - path: /clarity-language
+          - path: /blockstack-cli
+          - path: /stacks-blockchain
+          - path: /stacks-rpc-api
+          - path: /faqs
+          - path: /glossary
+          - path: /deploy-tips
   - title: Ecosystem
     pages:
       - path: /overview #pbc et al
       - path: /stacks-token
       - path: /contributing
-
-  - title: References
-    usePageTitles: true
-    pages:
-      - path: /clarity-language
-      - path: /blockstack-cli
-      - path: /stacks-blockchain
-      - path: /stacks-rpc-api
-      - path: /faqs
-      - path: /glossary
-      - path: /deploy-tips
