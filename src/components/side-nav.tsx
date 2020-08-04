@@ -104,6 +104,8 @@ const ChildPages = ({ items, handleClick }: any) =>
 
         const routePath = routes.find(route => route.path.endsWith(path));
 
+        const route = getRoutePath(path);
+
         return (
           <Box mb={space('extra-tight')}>
             <Link href={routePath.path} passHref>
@@ -112,7 +114,7 @@ const ChildPages = ({ items, handleClick }: any) =>
                 onClick={page.pages ? () => handleClick(page) : undefined}
                 as="a"
               >
-                {convertToTitle(page.path)}
+                {items.usePageTitles ? getTitle(route) : convertToTitle(page.path)}
               </PageItem>
             </Link>
           </Box>
