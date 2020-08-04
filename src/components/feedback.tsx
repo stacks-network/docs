@@ -18,6 +18,7 @@ import { border } from '@common/utils';
 import { useRouter } from 'next/router';
 import { getHeadingStyles } from '@components/mdx/typography';
 import { css } from '@styled-system/css';
+import { StatusCheck } from '@components/status-check';
 
 const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponent, ...props }) => {
   const { bind, hover, active } = useTouchable();
@@ -117,15 +118,22 @@ export const FeedbackSection: React.FC<BoxProps> = props => {
         </Box>
         <FeedbackCard show={showButton} onClose={() => setShowButton(false)} />
       </Flex>
-      <Box mt={space(['extra-loose', 'extra-loose', 'base-loose'])}>
+      <Flex
+        flexDirection="column"
+        justifyContent="flex-end"
+        align="flex-end"
+        mt={space(['extra-loose', 'extra-loose', 'base-loose'])}
+      >
         <Link
           href={`https://github.com/blockstack/docs.blockstack/tree/feat/next/src/pages${pathname}.md`}
           target="_blank"
           rel="nofollow noopener noreferrer"
+          fontSize="14px"
         >
           Edit this page on GitHub
         </Link>
-      </Box>
+        <StatusCheck mt={space('base-loose')} />
+      </Flex>
     </Flex>
   );
 };
