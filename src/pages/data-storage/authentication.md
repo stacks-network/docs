@@ -23,7 +23,7 @@ passed via URL query strings.
 When a user chooses to "Sign in with Blockstack" on your DApp, the `redirectToSignIn()` method sends the user to the
 Blockstack authenticator. The browser responds with an authentication token and an _app private key_.
 
-![](/storage/images/app-sign-in.png)
+![](/images/app-sign-in.png)
 
 The app private key is application-specific. It is generated from the user's identity address private key using the
 `appDomain` as input. This key is deterministic, meaning that for a given Blockstack ID and domain name, the same
@@ -36,6 +36,6 @@ encrypted by the Blockstack authenticator. The key serves three functions, it:
 
 When an application writes to a Gaia hub, the authentication token, key, and the data are passed to the Gaia hub.
 
-![Gaia writes](/storage/images/gaia-writes.png)
+![Gaia writes](/images/gaia-writes.png)
 
 The token ensures the DApp has the authorization to write to the hub on the user's behalf.

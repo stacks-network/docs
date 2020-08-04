@@ -18,7 +18,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 If Rust is already installed, you might see this prompt. Select 'Proceed with Installation' to make sure you have the latest version installed.
 
-![rustup prompt](/core/images/rust-install.png)
+![rustup prompt](/images/rust-install.png)
 
 In case you just installed Rust, you will be prompted to run the following command to make the `cargo` command available:
 
