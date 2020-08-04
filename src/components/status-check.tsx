@@ -1,64 +1,75 @@
 import React from 'react';
-import { Box, Flex, space, themeColor, color } from '@blockstack/ui';
+import useSWR from 'swr';
+import { Box, Flex, space, color, BoxProps } from '@blockstack/ui';
 import { border } from '@common/utils';
 import { Link } from '@components/mdx';
-import { Text } from '@components/typography';
-import { CheckmarkCircleIcon, ExclamationMarkCircleIcon, Spinner } from '@blockstack/ui';
-import useSWR from 'swr';
+import { LinkProps, Text } from '@components/typography';
+import { Spinner } from '@blockstack/ui';
+import { CircleCheck } from '@components/icons/circle-check';
+import { AlertCircleIcon } from '@components/icons/alert-circle';
+import { STATUS_CHECKER_URL } from '@common/constants';
+import { css } from '@styled-system/css';
+import { getCapsizeStyles } from '@components/mdx/typography';
 
 const fetcher = url => fetch(url).then(r => r.json());
 
-export const StatusCheck: React.FC<any> = () => {
-  const STATUS_CHECKER_URL = 'https://status.test-blockstack.com';
-  const { data, error } = useSWR(`${STATUS_CHECKER_URL}/json`, fetcher);
-  let status = false;
+const StatusWords: React.FC<BoxProps & { status?: boolean }> = ({ status, ...rest }) => (
+  <>
+    <Box as="span">:</Box>
+    <Box as="span" color={status ? color('feedback-success') : color('feedback-alert')}>{`${
+      status ? ' online' : ' offline'
+    }`}</Box>
+  </>
+);
 
-  if (data && data.hasOwnProperty('masterNodePings') && data.masterNodePings.length > 1) {
-    status = data.masterNodePings[0].value;
-  }
+export const StatusCheck: React.FC<LinkProps> = props => {
+  const { data, error } = useSWR(`${STATUS_CHECKER_URL}/json`, fetcher);
+  const [status, setStatus] = React.useState(undefined);
+
+  React.useEffect(() => {
+    if (data?.masterNodePings?.length > 1) {
+      setStatus(data.masterNodePings[0].value);
+    } else if (status) {
+      setStatus(undefined);
+    }
+  }, [data, error]);
+
+  const critical = error && !status;
+  const positive = data && status && !error;
 
   return (
-    <Link href={STATUS_CHECKER_URL} target="_blank" textDecoration="none">
-      <Box pt={space('base-loose')} px={space('base')} display={['none', 'none', 'block', 'block']}>
-        <Flex
-          border={border()}
-          borderRadius="6px"
-          px={space('base-tight')}
-          py={space('tight')}
-          align="center"
-          _hover={{ borderColor: themeColor('blue.400'), cursor: 'pointer' }}
+    <Link
+      href={STATUS_CHECKER_URL}
+      target="_blank"
+      textDecoration="none"
+      border={border()}
+      borderRadius="6px"
+      px={space('base-tight')}
+      py={space('tight')}
+      color={color('text-caption')}
+      _hover={{ cursor: 'pointer', bg: color('bg-alt') }}
+      {...props}
+    >
+      <Flex align="center">
+        <Box mr={space('tight')}>
+          {!data && !error ? (
+            <Spinner color={color('accent')} speed="1s" thickness="2px" size="sm" />
+          ) : critical ? (
+            <AlertCircleIcon color={color('feedback-alert')} size="20px" />
+          ) : (
+            positive && <CircleCheck size="20px" color={color('feedback-success')} />
+          )}
+        </Box>
+        <Text
+          css={css({
+            color: 'currentColor',
+            ...getCapsizeStyles(14, 24),
+          })}
         >
-          <Box mr={space('tight')}>
-            {!data && !error && (
-              <Spinner color={themeColor('ink.600')} speed="1s" thickness="2px" size="sm" />
-            )}
-            {error && !status && (
-              <ExclamationMarkCircleIcon
-                color={themeColor('feedback.error')}
-                size="20px"
-                alignItems="center"
-                justifyContent="center"
-              />
-            )}
-            {data && status && (
-              <CheckmarkCircleIcon
-                color={themeColor('feedback.success')}
-                size="20px"
-                alignItems="center"
-                justifyContent="center"
-              />
-            )}
-          </Box>
-          <Text fontSize={'14px'} color={themeColor('ink.600')}>
-            {!data && `Stack 2.0 testnet status`}
-            {data && `Stacks 2.0 testnet is ${status ? 'online' : 'offline'}`}
-          </Text>
-        </Flex>
-      </Box>
+          Stacks 2.0 testnet status
+          <StatusWords status={status} />
+        </Text>
+      </Flex>
     </Link>
   );
 };
-
-const SpinnerComponent = ({ color }: { color: string }) => (
-  <Spinner color={color} speed="1s" thickness="2px" size="sm" />
-);

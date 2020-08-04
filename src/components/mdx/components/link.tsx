@@ -28,6 +28,7 @@ export const Link = forwardRef(
       textDecoration="underline"
       _hover={{ textDecoration: 'none' }}
       _focus={{ boxShadow: 'outline' }}
+      rel="nofollow noopener noreferrer"
       {...props}
     />
   )
