@@ -8,9 +8,6 @@ import { getCapsizeStyles } from '@components/mdx/typography';
 export const MdxOverrides = createGlobalStyle`
 * {
   font-feature-settings: 'ss01' on;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
-  -webkit-font-smoothing: subpixel-antialiased;
 }
 html, body {
   font-family: 'Soehne', Inter, sans-serif;
@@ -125,12 +122,13 @@ export const styleOverwrites = {
     '&:first-child > h2:first-child': {
       mt: 0,
     },
-    '& > *:not(pre):not(ul):not(ol):not(img):not([data-reach-accordion]):not(section)': {
-      px: space('extra-loose'),
+    '& > *:not(pre):not(ul):not(ol):not(img):not([data-reach-accordion]):not(section):not(hr)': {
+      px: space(['extra-loose', 'extra-loose', 'none', 'none']),
     },
     'ul, ol': {
-      pr: space('extra-loose'),
-      pl: '64px',
+      // pr: space('extra-loose'),
+      px: space(['64px', '64px', 'extra-loose', 'extra-loose']),
+      // pl: '64px',
       'ul, ol': {
         pl: space('extra-loose'),
       },
@@ -140,7 +138,7 @@ export const styleOverwrites = {
       textDecoration: 'inherit',
     },
     pre: {
-      px: space(['none', 'none', 'extra-loose', 'extra-loose']),
+      // px: space(['none', 'none', 'extra-loose', 'extra-loose']),
     },
     img: {
       mx: 'auto',

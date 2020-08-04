@@ -6,11 +6,12 @@ import { SIDEBAR_WIDTH } from '@common/constants';
 // @ts-ignore
 import nav from '@common/navigation.yaml';
 import ArrowLeftIcon from 'mdi-react/ArrowLeftIcon';
-import { getTitle, slugify } from '@common/utils';
+import { getCategory, getTitle, slugify } from '@common/utils';
 import { useRouter } from 'next/router';
 import { getCapsizeStyles } from '@components/mdx/typography';
 import { Text } from '@components/typography';
 import { css } from '@styled-system/css';
+import { SmartLink } from '@components/mdx';
 const Wrapper: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
   width = `${SIDEBAR_WIDTH}px`,
   containerProps,
@@ -24,7 +25,6 @@ const Wrapper: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
         width={width}
         maxHeight={`calc(100vh - 60px)`}
         overflow="auto"
-        px={space('base')}
         top={0}
         pt="64px"
         {...containerProps}
@@ -57,21 +57,22 @@ const PageItem = React.forwardRef(
   ) => {
     const typeStyles = isTopLevel ? getCapsizeStyles(16, 26) : getCapsizeStyles(14, 20);
     return (
-      <Text
+      <SmartLink
         ref={ref}
         css={css({
           display: 'block',
           ...typeStyles,
           color: isActive ? color('accent') : isTopLevel ? color('text-title') : _color,
-          mb,
+          mb: isTopLevel ? space('base-loose') : mb,
           ':hover': {
             color: isTopLevel ? color('accent') : color('text-title'),
           },
+          textDecoration: 'none',
         })}
         {...props}
       >
         {children}
-      </Text>
+      </SmartLink>
     );
   }
 );
@@ -94,6 +95,16 @@ const getRoutePath = path => routes.find(route => route.path.endsWith(path));
 const ChildPages = ({ items, handleClick }: any) =>
   items?.pages
     ? items?.pages?.map(page => {
+        if (page.external) {
+          return (
+            <Box mb={space('extra-tight')}>
+              <PageItem as="a" href={page.external.href} target="_blank">
+                {page.external.title}
+              </PageItem>
+            </Box>
+          );
+        }
+
         const path = page.pages
           ? `${page.path}${page.pages[0].path}`
           : items.path
@@ -153,7 +164,7 @@ const BackItem = props => (
     <Box mr={space('extra-tight')}>
       <ArrowLeftIcon size="16px" />
     </Box>
-    <PageItem mb={'0px'} color={'currentColor'}>
+    <PageItem textDecoration="none" mb={'0px'} color={'currentColor'}>
       Back
     </PageItem>
   </Flex>
@@ -170,6 +181,7 @@ const Navigation = () => {
 
   React.useEffect(() => {
     let currentSection = selected.items;
+
     nav.sections.forEach(section => {
       section.pages.forEach(page => {
         if (page.pages) {
@@ -234,6 +246,7 @@ const Navigation = () => {
   }
 
   if (selected.type === 'default') {
+    const urlCategory = getCategory(router.pathname);
     return selected.items.map((section, i) => {
       return (
         <Box mb="40px">
@@ -256,17 +269,14 @@ const Navigation = () => {
 
             return (
               <Box mb={space('extra-tight')}>
-                <Link href={path}>
-                  <PageItem
-                    as="a"
-                    href={path}
-                    isTopLevel={i === 0}
-                    isActive={router.pathname.endsWith(path)}
-                    onClick={() => handleClick(page)}
-                  >
-                    {section.usePageTitles ? getTitle(route) : convertToTitle(page.path)}
-                  </PageItem>
-                </Link>
+                <PageItem
+                  href={!urlCategory ? path : !path.includes(urlCategory) && path}
+                  isTopLevel={i === 0}
+                  isActive={router.pathname.endsWith(path)}
+                  onClick={() => handleClick(page)}
+                >
+                  {section.usePageTitles ? getTitle(route) : convertToTitle(page.path)}
+                </PageItem>
               </Box>
             );
           })}

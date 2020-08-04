@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import React, { forwardRef, Ref } from 'react';
 
 export const SmartLink = ({ href, ...rest }: { href: string }) => {
-  const isExternal = href.includes('http') || href.includes('mailto');
+  const isExternal = !href || href?.includes('http') || href?.includes('mailto');
   const link = <Link href={href} {...rest} />;
 
   return isExternal ? (
@@ -21,7 +21,7 @@ export const Link = forwardRef(
     ref: Ref<HTMLDivElement>
   ) => (
     <Box
-      as="a"
+      as={props.href ? 'a' : 'span'}
       ref={ref}
       color="var(--colors-accent)"
       cursor="pointer"

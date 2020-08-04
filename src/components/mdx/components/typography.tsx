@@ -12,14 +12,7 @@ export const H6: React.FC<BoxProps> = props => <BaseHeading as="h6" {...props} /
 
 export const Br: React.FC<BoxProps> = props => <Box height="24px" {...props} />;
 export const Hr: React.FC<BoxProps> = props => (
-  <Box
-    as="hr"
-    borderTopWidth="1px"
-    borderColor={color('border')}
-    my={space('extra-loose')}
-    mx={space('extra-loose')}
-    {...props}
-  />
+  <Box as="hr" borderTopWidth="1px" borderColor={color('border')} my={'64px'} {...props} />
 );
 
 export const P: React.FC<BoxProps> = props => <Text as="p" {...props} />;

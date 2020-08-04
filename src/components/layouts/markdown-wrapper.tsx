@@ -16,9 +16,8 @@ const PageTop = props => {
   const isHome = router.pathname === '/';
   return (
     <Box
-      pl={space('extra-loose')}
-      pr={['extra-loose', 'extra-loose', 'unset']}
       mb={['extra-loose', 'extra-loose', '64px']}
+      px={space(['extra-loose', 'extra-loose', 'none', 'none'])}
     >
       <Flex>
         <H1 mb="0 !important">{getTitle(props)}</H1>

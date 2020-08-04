@@ -72,3 +72,11 @@ export const getTitle = ({ title, headings }): string => title || getTitleFromHe
 
 export const transition = (timing = '0.2s', properties = 'all') =>
   `${properties} ${timing} cubic-bezier(0.23, 1, 0.32, 1)`;
+
+export const getCategory = (pathname: string) => {
+  const arr = pathname.split('/');
+  if (arr.length > 1) {
+    return arr[1];
+  }
+  return undefined;
+};

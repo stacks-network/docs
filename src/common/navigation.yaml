@@ -99,7 +99,9 @@ sections:
           - path: /blockstack-cli
           - path: /stacks-blockchain
           - path: /stacks-rpc-api
-          - path: /faqs
+          - external:
+              href: 'https://blockstack.zendesk.com/hc/en-us'
+              title: FAQs
           - path: /glossary
           - path: /deploy-tips
   - title: Ecosystem

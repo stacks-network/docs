@@ -23,22 +23,22 @@ export const getCapsizeStyles = (fontSize, leading) =>
 
 const h1 = {
   fontWeight: 600,
-  ...getCapsizeStyles(36, 52),
+  ...getCapsizeStyles(36, 42),
 };
 
 const h2 = {
   fontWeight: 500,
-  ...getCapsizeStyles(24, 40),
+  ...getCapsizeStyles(24, 32),
 };
 
 const h3 = {
   fontWeight: 500,
-  ...getCapsizeStyles(18, 32),
+  ...getCapsizeStyles(18, 28),
 };
 
 const h4 = {
   fontWeight: 400,
-  ...getCapsizeStyles(20, 36),
+  ...getCapsizeStyles(20, 32),
 };
 
 const h5 = {

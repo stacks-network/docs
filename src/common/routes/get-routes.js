@@ -31,14 +31,16 @@ const getFlatMap = navigation => {
         let sectionPages = [];
         if (page.sections) {
           sectionPages = page.sections.flatMap(_section =>
-            _section.pages.flatMap(sectionPage => `${page.path}${sectionPage.path}`)
+            _section.pages.flatMap(
+              sectionPage => sectionPage && sectionPage.path && `${page.path}${sectionPage.path}`
+            )
           );
         }
         const pages = page.pages.flatMap(_page => {
           if (_page.pages) {
             return _page.pages.flatMap(p => `${page.path}${_page.path}${p.path}`);
           } else {
-            return `${page.path}${_page.path}`;
+            return _page.path && `${page.path}${_page.path}`;
           }
         });
         return [...pages, ...sectionPages];
@@ -49,7 +51,7 @@ const getFlatMap = navigation => {
   );
 };
 
-const allRoutes = getFlatMap(navigation);
+const allRoutes = getFlatMap(navigation).filter(route => route);
 
 const getHeadings = mdContent => {
   const regex = /(#+)(.*)/gm;

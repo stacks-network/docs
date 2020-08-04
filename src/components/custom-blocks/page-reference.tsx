@@ -59,7 +59,7 @@ const InlineCard = ({ page }) => {
   return (
     <Flex
       border={border()}
-      flexDirection={['column', 'column', 'row']}
+      flexDirection={['column', 'row', 'row', 'row']}
       p={space('base-loose')}
       borderRadius="12px"
       align="center"
@@ -79,13 +79,13 @@ const InlineCard = ({ page }) => {
       </Box>
       <Flex
         flexDirection="column"
-        ml={space(['none', 'none', 'base'])}
-        mt={space(['base', 'base', 'none'])}
-        textAlign={['center', 'center', 'left']}
+        ml={space(['none', 'base', 'base', 'base'])}
+        mt={space(['base', 'none', 'none', 'none'])}
+        textAlign={['center', 'left', 'left', 'left']}
       >
         <Flex align="baseline">
           <Title
-            width={['100%', '100%', 'unset']}
+            width={['100%', 'unset', 'unset', 'unset']}
             color={hover ? color('accent') : color('text-title')}
             mb={space('extra-tight')}
           >
@@ -93,11 +93,11 @@ const InlineCard = ({ page }) => {
           </Title>
           {page.tags?.length ? (
             <Flex
-              position={['absolute', 'absolute', 'static']}
+              position={['absolute', 'static', 'static', 'static']}
               top={space('base-loose')}
               right={space('base-loose')}
             >
-              {page.tags.map(tag => (
+              {page.tags.map((tag, key) => (
                 <Flex
                   ml={space('tight')}
                   borderRadius="18px"
@@ -110,6 +110,7 @@ const InlineCard = ({ page }) => {
                   textTransform="capitalize"
                   color={color('invert')}
                   transition={transition()}
+                  key={key}
                 >
                   {tag}
                 </Flex>

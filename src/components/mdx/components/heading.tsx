@@ -66,8 +66,8 @@ const Hashtag = () => (
     position="absolute"
     as="span"
     align="center"
-    size="1rem"
-    left="10px"
+    size="20px"
+    left={['12px', '12px', '-20px', '-20px']}
     color={color('text-caption')}
   >
     <HashtagIcon size="1rem" />

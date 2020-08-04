@@ -33,7 +33,6 @@ export const SectionWrapper: React.FC<BoxProps> = props => (
     width="100%"
     maxWidth={`${CONTENT_MAX_WIDTH}px`}
     overflow="hidden"
-    px={space('extra-loose')}
     pt={space('extra-loose')}
     {...props}
   />

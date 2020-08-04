@@ -98,7 +98,7 @@ const Title: React.FC<BoxProps & { isHovered?: boolean }> = ({ isHovered, ...pro
     color={isHovered ? color('accent') : color('text-title')}
     mb={space('tight')}
     css={css({
-      ...getHeadingStyles('h3'),
+      ...getHeadingStyles('h4'),
     })}
     {...props}
   />
@@ -108,7 +108,7 @@ const PrevCard: React.FC<any> = React.memo(props => {
   const { prev } = usePaginateRoutes();
 
   return prev ? (
-    <Card>
+    <Card py="loose">
       {({ hover, active }) => (
         <>
           <FloatingLink href={prev.path} />
@@ -126,7 +126,7 @@ const NextCard: React.FC<any> = React.memo(props => {
   const { next } = usePaginateRoutes();
 
   return next ? (
-    <Card textAlign="right" align="flex-end">
+    <Card py="loose" textAlign="right" align="flex-end">
       {({ hover, active }) => (
         <>
           <FloatingLink href={next.path} />
@@ -143,7 +143,7 @@ const NextCard: React.FC<any> = React.memo(props => {
 
 export const Pagination: React.FC<any> = React.memo(({ hidePagination, ...rest }: any) => (
   <Grid
-    gridColumnGap={space('base-loose')}
+    gridColumnGap={space('extra-loose')}
     gridRowGap={space('extra-loose')}
     gridTemplateColumns={['repeat(1, 1fr)', 'repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)']}
   >
