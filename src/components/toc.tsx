@@ -1,11 +1,12 @@
 import React from 'react';
 import { Box, Grid, color, space, BoxProps } from '@blockstack/ui';
-import { TOC_WIDTH } from '@common/constants';
 import { slugify } from '@common/utils';
 import { Text } from '@components/typography';
 import { Link } from '@components/mdx';
 import { useActiveHeading } from '@common/hooks/use-active-heading';
 import NextLink from 'next/link';
+import { getHeadingStyles } from '@components/mdx/typography';
+import { css } from '@styled-system/css';
 const getLevelPadding = (level: number) => {
   switch (level) {
     case 2:
@@ -18,7 +19,7 @@ const getLevelPadding = (level: number) => {
 };
 
 const Item = ({ slug, label, level, limit }) => {
-  const { isActive: _isActive, doChangeActiveSlug, slugInView } = useActiveHeading(slug);
+  const { isActive: _isActive, slugInView } = useActiveHeading(slug);
   const isOnScreen = slugInView === slug;
 
   const isActive = isOnScreen || _isActive;
@@ -35,6 +36,11 @@ const Item = ({ slug, label, level, limit }) => {
             color: color('accent'),
           }}
           pointerEvents={isActive ? 'none' : 'unset'}
+          css={css({
+            display: 'block',
+            ...getHeadingStyles('h6'),
+            mb: space('base-tight'),
+          })}
         >
           <Box as="span" dangerouslySetInnerHTML={{ __html: label }} />
         </Link>
@@ -65,8 +71,13 @@ export const TableOfContents = ({
     <Box position="relative" display={display}>
       <Box flexShrink={0} width="100%" {...rest}>
         {!noLabel && (
-          <Box mb={space('extra-tight')}>
-            <Text fontWeight="bold" fontSize="14px">
+          <Box mb={space('base')}>
+            <Text
+              css={css({
+                ...getHeadingStyles('h6'),
+                fontWeight: 500,
+              })}
+            >
               {label}
             </Text>
           </Box>

@@ -40,7 +40,7 @@ export const MDContents: React.FC<any> = React.memo(
             pr="base-loose"
           >
             <Box position="sticky" top={0} pt="64px">
-              <Search mb={space('base')} />
+              <Search mb={space('extra-loose')} />
               {headings?.length > 1 ? (
                 <TableOfContents
                   pl={space('base')}

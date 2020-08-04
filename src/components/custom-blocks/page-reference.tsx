@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Flex, BoxProps, color, Grid, space, transition } from '@blockstack/ui';
-import { border, onlyText } from '@common/utils';
+import { Box, Flex, BoxProps, color, Grid, space } from '@blockstack/ui';
+import { border, onlyText, transition } from '@common/utils';
 import { useTouchable } from '@common/hooks/use-touchable';
 import { Caption, Text } from '@components/typography';
 import Link from 'next/link';
@@ -19,7 +19,6 @@ const Image = ({
       willChange: 'transform',
     }}
     width="100%"
-    transition="all 0.2s cubic-bezier(0.23, 1, 0.32, 1)"
     size={size}
     {...rest}
   >
@@ -61,17 +60,22 @@ const InlineCard = ({ page }) => {
     <Flex
       border={border()}
       flexDirection={['column', 'column', 'row']}
-      borderColor={hover ? '#9985FF' : color('border')}
       p={space('base-loose')}
       borderRadius="12px"
       align="center"
-      transition={transition}
+      transition={transition()}
       boxShadow={hover ? 'mid' : 'none'}
       position="relative"
       {...bind}
     >
       <Box flexShrink={0} size="64px" overflow="hidden" borderRadius={'12px'}>
-        <Image size="64px" src={page.images.sm} />
+        <Image
+          transition={transition('0.45s')}
+          transform={(hover || active) && 'scale(1.12)'}
+          style={{ willChange: 'transform' }}
+          size="64px"
+          src={page.images.sm}
+        />
       </Box>
       <Flex
         flexDirection="column"
@@ -105,7 +109,7 @@ const InlineCard = ({ page }) => {
                   bg={color('border')}
                   textTransform="capitalize"
                   color={color('invert')}
-                  transition={transition}
+                  transition={transition()}
                 >
                   {tag}
                 </Flex>
@@ -127,7 +131,14 @@ const GridCard: React.FC<BoxProps & { page?: any }> = ({ page, ...rest }) => {
   return (
     <Box position="relative" {...rest} {...bind}>
       <Box borderRadius="12px" overflow="hidden" mb={space('loose')}>
-        <Image width="100%" size="100%" src={page?.images?.large} />
+        <Image
+          width="100%"
+          size="100%"
+          transition={transition('0.45s')}
+          transform={(hover || active) && 'scale(1.08)'}
+          style={{ willChange: 'transform' }}
+          src={page?.images?.large}
+        />
       </Box>
       <Flex alignItems="flex-start" justifyContent="flex-start" flexDirection="column">
         <Title color={hover ? color('accent') : color('text-title')} mb={space('tight')}>

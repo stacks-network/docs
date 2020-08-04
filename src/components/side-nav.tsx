@@ -8,7 +8,9 @@ import nav from '@common/navigation.yaml';
 import ArrowLeftIcon from 'mdi-react/ArrowLeftIcon';
 import { getTitle, slugify } from '@common/utils';
 import { useRouter } from 'next/router';
-
+import { getCapsizeStyles } from '@components/mdx/typography';
+import { Text } from '@components/typography';
+import { css } from '@styled-system/css';
 const Wrapper: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
   width = `${SIDEBAR_WIDTH}px`,
   containerProps,
@@ -41,27 +43,50 @@ const capitalize = s => {
 const convertToTitle = (path: string) =>
   !path ? null : path === '/' ? 'Home' : capitalize(path.replace('/', '').replace(/-/g, ' '));
 
-const PageItem = ({ isActive, color: _color = color('text-caption'), ...props }: any) => (
-  <Flex
-    _hover={{
-      cursor: 'pointer',
-      color: color('text-title'),
-    }}
-    mb={space('tight')}
-    fontSize="16px"
-    color={isActive ? color('accent') : _color}
-    {...props}
-  />
+const PageItem = React.forwardRef(
+  (
+    {
+      isActive,
+      color: _color = color('text-caption'),
+      children,
+      mb = space('base'),
+      isTopLevel,
+      ...props
+    }: any,
+    ref: any
+  ) => {
+    const typeStyles = isTopLevel ? getCapsizeStyles(16, 26) : getCapsizeStyles(14, 20);
+    return (
+      <Text
+        ref={ref}
+        css={css({
+          display: 'block',
+          ...typeStyles,
+          color: isActive ? color('accent') : isTopLevel ? color('text-title') : _color,
+          mb,
+          ':hover': {
+            color: isTopLevel ? color('accent') : color('text-title'),
+          },
+        })}
+        {...props}
+      >
+        {children}
+      </Text>
+    );
+  }
 );
 
-const SectionTitle: React.FC<BoxProps> = props => (
-  <Box
-    color={color('text-title')}
-    fontSize="18px"
-    mb={space('tight')}
-    fontWeight="400"
-    {...props}
-  />
+const SectionTitle: React.FC<BoxProps> = ({ children, ...rest }) => (
+  <Text
+    css={css({
+      display: 'block',
+      ...getCapsizeStyles(16, 26),
+      color: color('text-title'),
+      ...rest,
+    })}
+  >
+    {children}
+  </Text>
 );
 
 const getRoutePath = path => routes.find(route => route.path.endsWith(path));
@@ -104,6 +129,7 @@ const ChildSection: React.FC<BoxProps & { sections?: any }> = ({ sections, ...re
           textTransform="uppercase"
           fontSize="12px"
           fontWeight={500}
+          mb={space('base-loose')}
         >
           {section.title}
         </SectionTitle>
@@ -113,12 +139,22 @@ const ChildSection: React.FC<BoxProps & { sections?: any }> = ({ sections, ...re
   });
 
 const BackItem = props => (
-  <PageItem align="center" color={color('text-caption')} {...props}>
+  <Flex
+    color={color('text-caption')}
+    _hover={{
+      cursor: 'pointer',
+      color: color('text-title'),
+    }}
+    align="center"
+    {...props}
+  >
     <Box mr={space('extra-tight')}>
       <ArrowLeftIcon size="16px" />
     </Box>
-    Back
-  </PageItem>
+    <PageItem mb={'0px'} color={'currentColor'}>
+      Back
+    </PageItem>
+  </Flex>
 );
 
 const Navigation = () => {
@@ -175,8 +211,10 @@ const Navigation = () => {
   if (selected.type === 'page') {
     return (
       <Box>
-        <BackItem onClick={handleBack} mb={space('base')} />
-        <SectionTitle>{convertToTitle(selected.items.path)}</SectionTitle>
+        <BackItem onClick={handleBack} mb={space('extra-loose')} />
+        <Box mb={space('loose')}>
+          <SectionTitle>{convertToTitle(selected.items.path)}</SectionTitle>
+        </Box>
         <Box>
           {selected.items ? <ChildPages handleClick={handleClick} items={selected.items} /> : null}
           {selected.items?.sections ? (
@@ -195,29 +233,12 @@ const Navigation = () => {
 
   if (selected.type === 'default') {
     return selected.items.map((section, i) => {
-      const itemProps =
-        i === 0
-          ? {
-              color: color('text-title'),
-              mb: space('tight'),
-              fontSize: '18px',
-              _hover: {
-                color: color('accent'),
-                cursor: 'pointer',
-              },
-            }
-          : {};
       return (
         <Box mb="40px">
           {section.title ? (
-            <Flex width="100%" align="center" mb={space('extra-tight')}>
+            <Flex width="100%" align="center" mb={space('loose')}>
               <SectionTitle>{section.title}</SectionTitle>
-              <Box
-                transform="translateY(-3px)"
-                color={color('text-caption')}
-                size="16px"
-                ml={space('extra-tight')}
-              >
+              <Box color={color('text-caption')} size="16px" ml={space('extra-tight')}>
                 <ChevronIcon direction="down" />
               </Box>
             </Flex>
@@ -237,7 +258,7 @@ const Navigation = () => {
                   <PageItem
                     as="a"
                     href={path}
-                    {...itemProps}
+                    isTopLevel={i === 0}
                     isActive={router.pathname.endsWith(path)}
                     onClick={() => handleClick(page)}
                   >

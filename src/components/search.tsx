@@ -70,7 +70,9 @@ export const SearchBox: React.FC<BoxProps> = React.memo(props => {
     [setIsOpen]
   );
 
-  useDocSearchKeyboardEvents({ isOpen, onOpen, onClose });
+  const searchButtonRef = React.useRef(null);
+
+  useDocSearchKeyboardEvents({ isOpen, onOpen, onClose, searchButtonRef });
 
   return (
     <>
@@ -106,6 +108,7 @@ export const SearchBox: React.FC<BoxProps> = React.memo(props => {
         {...props}
       >
         <Flex
+          ref={searchButtonRef}
           onClick={onOpen}
           px={space('base-tight')}
           py={space('tight')}

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@blockstack/ui": "2.12.2-beta.0",
-    "@docsearch/react": "^1.0.0-alpha.24",
+    "@docsearch/react": "^1.0.0-alpha.26",
     "@hashicorp/remark-plugins": "^3.0.0",
     "@mdx-js/loader": "1.6.15",
     "@mdx-js/mdx": "^1.6.15",
@@ -11,6 +11,7 @@
     "@next/mdx": "^9.4.4",
     "@reach/accordion": "^0.10.5",
     "@reach/tooltip": "^0.10.5",
+    "@styled-system/css": "^5.1.5",
     "@styled-system/theme-get": "^5.1.2",
     "@types/mdx-js__react": "^1.5.2",
     "@types/node": "^14.0.27",

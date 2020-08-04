@@ -6,6 +6,12 @@ import { border } from '@common/utils';
 import { getCapsizeStyles } from '@components/mdx/typography';
 
 export const MdxOverrides = createGlobalStyle`
+* {
+  font-feature-settings: 'ss01' on;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
 html, body {
   font-family: 'Soehne', Inter, sans-serif;
 }
@@ -13,9 +19,8 @@ html, body {
  pad: "0";
 }
 img{
-  //image-rendering: auto;
-  //image-rendering: crisp-edges;
-  //image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  will-change: transform;
 }
 .headroom {
   top: 0;

@@ -1,5 +1,16 @@
 import React from 'react';
-import { Flex, Box, BlockstackIcon, Stack, color, space, BoxProps } from '@blockstack/ui';
+import {
+  Flex,
+  Box,
+  BlockstackIcon,
+  Stack,
+  color,
+  space,
+  BoxProps,
+  ChevronIcon,
+  FlexProps,
+  Fade,
+} from '@blockstack/ui';
 import { Link, Text } from '@components/typography';
 import MenuIcon from 'mdi-react/MenuIcon';
 import CloseIcon from 'mdi-react/CloseIcon';
@@ -9,6 +20,9 @@ import { css } from '@styled-system/css';
 import NextLink from 'next/link';
 import { ColorModeButton } from '@components/color-mode-button';
 import { PAGE_WIDTH } from '@common/constants';
+import { border, transition } from '@common/utils';
+import { getCapsizeStyles } from '@components/mdx/typography';
+import { useTouchable } from '@common/hooks/use-touchable';
 
 const MenuButton = ({ ...rest }: any) => {
   const { isOpen, handleOpen, handleClose } = useMobileMenuState();
@@ -27,13 +41,13 @@ const MenuButton = ({ ...rest }: any) => {
 };
 
 const HeaderWrapper: React.FC<any> = React.forwardRef((props, ref) => (
-  <Box top={2} ref={ref} width="100%" {...props} />
+  <Box as="header" ref={ref} width="100%" position="relative" zIndex={9999} {...props} />
 ));
 
 const nav = [
   {
-    label: 'Developers',
-    chilren: [
+    label: 'Start building',
+    children: [
       {
         label: 'Documentation',
       },
@@ -58,29 +72,90 @@ const HeaderTextItem: React.FC<BoxProps> = ({ children, ...rest }) => (
   <Text
     color={color('invert')}
     css={css({
-      fontWeight: 500,
-      fontSize: '16px',
-      lineHeight: '24px',
-      padding: '0.05px 0',
-      '::before': {
-        content: "''",
-        marginTop: '-0.38948863636363634em',
-        display: 'block',
-        height: 0,
-      },
-      '::after': {
-        content: "''",
-        marginBottom: '-0.38948863636363634em',
-        display: 'block',
-        height: 0,
-      },
+      ...getCapsizeStyles(16, 26),
       ...rest,
     })}
   >
-    {' '}
     {children}
   </Text>
 );
+
+const NavItem: React.FC<FlexProps & { item: any }> = ({ item, ...props }) => {
+  const { hover, active, bind } = useTouchable({
+    behavior: 'link',
+  });
+  return (
+    <Flex justifyContent="center" position="relative" {...props} {...bind}>
+      <Link as="a">
+        <HeaderTextItem>{item.label}</HeaderTextItem>
+      </Link>
+      {item.children ? (
+        <Box ml={space('extra-tight')}>
+          <ChevronIcon direction="down" />
+        </Box>
+      ) : null}
+      {item.children ? (
+        <Fade in={hover || active}>
+          {styles => (
+            <Box
+              pt={space('base-loose')}
+              top="100%"
+              position="absolute"
+              transform="translateX(-5px)"
+              zIndex={99999999}
+              minWidth="200px"
+              style={{ ...styles }}
+            >
+              <Box
+                borderRadius="12px"
+                border={border()}
+                bg={color('bg')}
+                overflow="hidden"
+                boxShadow="0 0 8px 0 rgba(15,17,23,.03), 0 16px 40px 0 rgba(15,17,23,.06)"
+              >
+                {item.children.map((child, _key) => (
+                  <Box
+                    _hover={{
+                      bg: color('accent'),
+                      color: color('bg'),
+                      cursor: 'pointer',
+                    }}
+                    transition={transition()}
+                    color={color('text-title')}
+                    borderBottom={_key < item.children.length - 1 && border()}
+                    px={space('base')}
+                    py={space('base-loose')}
+                  >
+                    <HeaderTextItem color="currentColor">{child.label}</HeaderTextItem>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+          )}
+        </Fade>
+      ) : null}
+    </Flex>
+  );
+};
+
+const Navigation: React.FC<BoxProps> = props => {
+  return (
+    <Box
+      as="nav"
+      position="relative"
+      zIndex={99999999}
+      display={['none', 'none', 'block']}
+      transform="translateY(2px)"
+      {...props}
+    >
+      <Stack mr={space('base')} isInline spacing={space('extra-loose')}>
+        {nav.map((item, key) => (
+          <NavItem item={item} key={key} />
+        ))}
+      </Stack>
+    </Box>
+  );
+};
 
 const Header = ({ hideSubBar, ...rest }: any) => {
   return (
@@ -103,24 +178,16 @@ const Header = ({ hideSubBar, ...rest }: any) => {
             <Link as="a">
               <Flex align="center">
                 <Box color={color('invert')} mr={space('tight')}>
-                  <BlockstackIcon size="18px" />
+                  <BlockstackIcon size="20px" />
                 </Box>
-                <Box>
+                <Box transform="translateY(1px)">
                   <HeaderTextItem>Blockstack</HeaderTextItem>
                 </Box>
               </Flex>
             </Link>
           </NextLink>
           <Flex align="center">
-            <Box display={['none', 'none', 'block']}>
-              <Stack mr={space('base')} isInline spacing={space('extra-loose')}>
-                {nav.map(item => (
-                  <Box>
-                    <HeaderTextItem>{item.label}</HeaderTextItem>
-                  </Box>
-                ))}
-              </Stack>
-            </Box>
+            <Navigation />
             <ColorModeButton />
             <MenuButton />
           </Flex>
