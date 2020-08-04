@@ -1,5 +1,5 @@
 import { Children, isValidElement, ReactNode, ReactElement, ReactText } from 'react';
-import { BorderStyleProperty } from 'csstype';
+import { Property } from 'csstype';
 import { color } from '@blockstack/ui';
 import { ColorsStringLiteral } from '@blockstack/ui';
 
@@ -20,7 +20,7 @@ export const slugify = (string: string): string =>
 
 export const border = (
   width = 1,
-  style: BorderStyleProperty = 'solid',
+  style: Property.BorderStyle = 'solid',
   _color: ColorsStringLiteral = 'border'
 ): string => `${width}px ${style} ${color(_color)}`;
 
