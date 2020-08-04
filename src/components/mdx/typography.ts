@@ -11,7 +11,6 @@ const fontMetrics = {
 export const baseTypeStyles = {
   letterSpacing: '-0.01em',
   display: 'flex',
-  fontFeatureSettings: `'ss01' on`,
   fontFamily: `'Soehne', Inter, sans-serif`,
 };
 
@@ -24,21 +23,22 @@ export const getCapsizeStyles = (fontSize, leading) =>
 
 const h1 = {
   fontWeight: 600,
-  ...getCapsizeStyles(36, 48),
+  ...getCapsizeStyles(36, 52),
 };
+
 const h2 = {
-  fontWeight: 600,
-  ...getCapsizeStyles(24, 36),
+  fontWeight: 500,
+  ...getCapsizeStyles(24, 40),
 };
 
 const h3 = {
-  fontWeight: 400,
-  ...getCapsizeStyles(20, 32),
+  fontWeight: 500,
+  ...getCapsizeStyles(18, 32),
 };
 
 const h4 = {
-  fontWeight: 500,
-  ...getCapsizeStyles(18, 32),
+  fontWeight: 400,
+  ...getCapsizeStyles(20, 36),
 };
 
 const h5 = {

@@ -7,14 +7,19 @@ import { Caption, Text } from '@components/typography';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { getTitle } from '@common/utils';
-
+import { css } from '@styled-system/css';
+import { getHeadingStyles } from '@components/mdx/typography';
 const Search = dynamic(() => import('@components/search'));
 
 const PageTop = props => {
   const router = useRouter();
   const isHome = router.pathname === '/';
   return (
-    <Box px={space('extra-loose')} mb="64px">
+    <Box
+      pl={space('extra-loose')}
+      pr={['extra-loose', 'extra-loose', 'unset']}
+      mb={['extra-loose', 'extra-loose', '64px']}
+    >
       <Flex>
         <H1 mb="0 !important">{getTitle(props)}</H1>
         {isHome ? (
@@ -24,12 +29,18 @@ const PageTop = props => {
         ) : null}
       </Flex>
       {props.description ? (
-        <Box mt="24px !important">
-          <Text>{props.description}</Text>{' '}
+        <Box mt="40px !important">
+          <Text
+            css={css({
+              ...getHeadingStyles('h4'),
+            })}
+          >
+            {props.description}
+          </Text>{' '}
         </Box>
       ) : null}
 
-      <Stack isInline spacing={space('base')} mt={space('base')}>
+      <Stack isInline spacing={space('base')} mt={space('extra-loose')}>
         {props.experience ? <Caption textTransform="capitalize">{props.experience}</Caption> : null}
         {!isHome && props.duration ? <Caption>{props.duration}</Caption> : null}
       </Stack>

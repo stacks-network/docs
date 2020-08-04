@@ -1301,19 +1301,19 @@
     use-events "^1.4.1"
     use-onclickoutside "^0.3.1"
 
-"@docsearch/css@^1.0.0-alpha.24":
-  version "1.0.0-alpha.24"
-  resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-1.0.0-alpha.24.tgz#a2e8d7e7ac50ebea17f90e974c5174b0d1a5c855"
-  integrity sha512-BCNomH+wdpg+hWTCczwQATS4hbztOvzU/6GXco+KIgVrvpTovtPsS7BYTQMCRhs2gPSk3p3DqgW95mwCoAvt0w==
+"@docsearch/css@^1.0.0-alpha.26":
+  version "1.0.0-alpha.26"
+  resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-1.0.0-alpha.26.tgz#a2f9b61168d527600b0e3f31c0f04998002f3aa2"
+  integrity sha512-YAa7R6O2MMdRtxTaMB3TTfeelhpf01J1xtnGZEQa7LNA64QO8BErceQIMQq5/ZMXnGViK/eUjqSVyCu7uzYE5w==
 
-"@docsearch/react@^1.0.0-alpha.24":
-  version "1.0.0-alpha.24"
-  resolved "https://registry.yarnpkg.com/@docsearch/react/-/react-1.0.0-alpha.24.tgz#c0fb18e0df9494b86e50588892a0b25e293aa0ac"
-  integrity sha512-abfYBMrZcxmUhyxjdYPCRqBCC5XMilKEmondjkjUQG0W1sYmpjrVOMYBiTq6ZTW+7urVvXPjD9bm0fBZnlI9ow==
+"@docsearch/react@^1.0.0-alpha.26":
+  version "1.0.0-alpha.26"
+  resolved "https://registry.yarnpkg.com/@docsearch/react/-/react-1.0.0-alpha.26.tgz#98b736d7de951bfa55cf3d0eb3639f93c9dd1db2"
+  integrity sha512-2eKIcUXuWbGgz6/xF+p7kYyd1IVGcnB8r+oIkTD6Tqtq0VGzZmf9ZPCOX37G38pVIJXAAxmtAb7oPO311xGWNQ==
   dependencies:
-    "@docsearch/css" "^1.0.0-alpha.24"
-    "@francoischalifour/autocomplete-core" "^1.0.0-alpha.24"
-    "@francoischalifour/autocomplete-preset-algolia" "^1.0.0-alpha.24"
+    "@docsearch/css" "^1.0.0-alpha.26"
+    "@francoischalifour/autocomplete-core" "^1.0.0-alpha.26"
+    "@francoischalifour/autocomplete-preset-algolia" "^1.0.0-alpha.26"
     algoliasearch "^4.0.0"
 
 "@emotion/is-prop-valid@^0.8.1", "@emotion/is-prop-valid@^0.8.8":
@@ -1338,15 +1338,15 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
-"@francoischalifour/autocomplete-core@^1.0.0-alpha.24":
-  version "1.0.0-alpha.24"
-  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-core/-/autocomplete-core-1.0.0-alpha.24.tgz#fc71704a17cf9326a66d97134508abdf02313181"
-  integrity sha512-rdWCKeIeDYjUXokdoyRNrFTreGZ8WLO/mhxAIWyLJ8ymdfXsortJqPL3fSDe57khXllGaZc/qxNsZi5RrpDRmQ==
+"@francoischalifour/autocomplete-core@^1.0.0-alpha.26":
+  version "1.0.0-alpha.26"
+  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-core/-/autocomplete-core-1.0.0-alpha.26.tgz#fc9ec90a62f0665c7092d19a649c751fe3794de3"
+  integrity sha512-XUXAGVx0My9isShokR1QB/oPFQiaPYDCouoTZTN+DISQw5AK6kGZUCFFXJSRNHTxBq1/0e70DYEiQa8E+rT/Og==
 
-"@francoischalifour/autocomplete-preset-algolia@^1.0.0-alpha.24":
-  version "1.0.0-alpha.24"
-  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.0.0-alpha.24.tgz#f305d529d9e6c31b7e14d7aff45e912a23b187e5"
-  integrity sha512-LHcbVKZaki42J30zg30ZoAuEJVysfIMSE91JT9YuOnpch+26hC8Vff9VlCs+6ACYxXGuGHdX7uuKYOx7GcoQ3A==
+"@francoischalifour/autocomplete-preset-algolia@^1.0.0-alpha.26":
+  version "1.0.0-alpha.26"
+  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.0.0-alpha.26.tgz#3e20315d43dfef6c676cab4267974de70c2f6ec2"
+  integrity sha512-RrayxZgvTzpwq+RqEIpVn2UOEFLwa+HADCr2I3UI05o/OGU7Wc6LltpQy54scR+FlAIk6qTJwp5Nw/ecJn6xXg==
 
 "@hashicorp/remark-plugins@^3.0.0":
   version "3.0.0"
@@ -9587,11 +9587,6 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
-
-"vscode-textmate@git+https://github.com/octref/vscode-textmate.git":
-  version "4.0.1"
-  uid e65aabe2227febda7beaad31dd0fca1228c5ddf3
-  resolved "git+https://github.com/octref/vscode-textmate.git#e65aabe2227febda7beaad31dd0fca1228c5ddf3"
 
 "vscode-textmate@https://github.com/octref/vscode-textmate":
   version "4.0.1"
