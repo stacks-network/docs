@@ -77,7 +77,7 @@ const Hashtag = () => (
 export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
   const { isActive, doChangeActiveSlug } = useActiveHeading(id);
 
-  const { bind, hover, active } = useTouchable({
+  const { bind: _bind, hover, active } = useTouchable({
     behavior: 'link',
   });
   const router = useRouter();
@@ -89,6 +89,8 @@ export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
     doChangeActiveSlug(id);
   };
   const styles = getHeadingStyles(as as any);
+
+  const bind = id ? _bind : {};
 
   return (
     <Title
