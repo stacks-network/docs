@@ -1,6 +1,6 @@
 import React from 'react';
 import { cliReferenceData } from '@common/../_data/cliRef';
-import { MDXComponents } from '@components/mdx/mdx-components';
+import { Components } from '@components/mdx/mdx-components';
 import { Grid, Box, color } from '@blockstack/ui';
 import { border } from '@common/utils';
 import hydrate from 'next-mdx-remote/hydrate';
@@ -11,27 +11,26 @@ const styles = {
   overflowY: 'hidden',
   whiteSpace: 'pre',
 };
-const InlineCode = props => <MDXComponents.inlineCode {...styles} {...props} />;
+const InlineCode = props => <Components.inlineCode {...styles} {...props} />;
 
 const ReferenceEntry = ({ entry, usage }) => (
   <>
-    <MDXComponents.h4>{entry.command}</MDXComponents.h4>
+    <Components.h4>{entry.command}</Components.h4>
 
-    <MDXComponents.p>
+    <Components.p>
       <strong>Group:</strong> {entry.group}
-    </MDXComponents.p>
+    </Components.p>
 
     {hydrate(usage, {
-      ...MDXComponents,
-      wrapper: undefined,
+      ...Components,
       p: (props: any) => (
-        <MDXComponents.p
+        <Components.p
           {...props}
           style={{ display: 'block', wordBreak: 'break-word', hyphens: 'auto' }}
         />
       ),
     })}
-    <MDXComponents.h3>Arguments</MDXComponents.h3>
+    <Components.h3>Arguments</Components.h3>
     <Grid
       mb="tight"
       pb="base-tight"

@@ -95,10 +95,19 @@ sections:
       - path: /references
         usePageTitles: true
         pages:
-          - path: /clarity-language
           - path: /blockstack-cli
+          - path: /clarity-language
           - path: /stacks-blockchain
           - path: /stacks-rpc-api
+          - external:
+              href: 'https://blockstack.github.io/blockstack.js/'
+              title: blockstack.js
+          - external:
+              href: 'https://blockstack.github.io/blockstack-android/'
+              title: Android SDK
+          - external:
+              href: 'https://blockstack.github.io/blockstack-ios/'
+              title: iOS SDK
           - external:
               href: 'https://blockstack.zendesk.com/hc/en-us'
               title: FAQs

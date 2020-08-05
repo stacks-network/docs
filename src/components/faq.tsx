@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDXComponents } from '@components/mdx';
+import { Components } from '@components/mdx';
 import { Box, Flex, ChevronIcon, space, color } from '@blockstack/ui';
 import hydrate from 'next-mdx-remote/hydrate';
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@reach/accordion';
@@ -43,15 +43,15 @@ const FAQItem = React.memo(({ faq, ...rest }: any) => {
           },
         })}
       >
-        <MDXComponents.h4 id={id} my="0px !important" color="currentColor">
+        <Components.h4 id={id} my="0px !important" color="currentColor">
           {faq.question}
-        </MDXComponents.h4>
+        </Components.h4>
         <Box color={color('text-caption')} pl={space('base-loose')}>
           <ChevronIcon direction="down" size="22px" />
         </Box>
       </Flex>
       <Box px={space('extra-loose')} pb={space('extra-loose')} as={AccordionPanel}>
-        {hydrate(faq.answer, { ...MDXComponents, wrapper: undefined })}
+        {hydrate(faq.answer, Components)}
       </Box>
     </Box>
   );
