@@ -68,7 +68,8 @@ const getTitleFromHeading = (headings?: any[]) =>
       : headings[0].content
     : undefined;
 
-export const getTitle = ({ title, headings }): string => title || getTitleFromHeading(headings);
+export const getTitle = ({ title, headings }: { title?: string; headings?: any[] }): string =>
+  title || getTitleFromHeading(headings);
 
 export const transition = (timing = '0.2s', properties = 'all') =>
   `${properties} ${timing} cubic-bezier(0.23, 1, 0.32, 1)`;

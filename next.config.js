@@ -8,26 +8,94 @@ const withFonts = require('next-fonts');
 
 async function redirects() {
   return [
-    { source: '/browser/todo-list.html', destination: '', permanent: true },
-    { source: '/develop/connect/get-started.html', destination: '', permanent: true },
-    { source: '/develop/connect/overview.html', destination: '', permanent: true },
-    { source: '/develop/profiles.html', destination: '', permanent: true },
-    { source: '/storage/overview.html', destination: '', permanent: true },
-    { source: '/develop/storage.html', destination: '', permanent: true },
-    { source: '/storage/authentication.html', destination: '', permanent: true },
-    { source: '/storage/write-to-read.html', destination: '', permanent: true },
-    { source: '/develop/radiks-intro.html', destination: '', permanent: true },
-    { source: '/develop/radiks-setup.html', destination: '', permanent: true },
-    { source: '/develop/radiks-models.html', destination: '', permanent: true },
-    { source: '/develop/radiks-collaborate.html', destination: '', permanent: true },
-    { source: '/develop/radiks-server-extras.html', destination: '', permanent: true },
-    { source: '/core/smart/overview.html', destination: '', permanent: true },
-    { source: '/core/smart/tutorial.html', destination: '', permanent: true },
-    { source: '/core/smart/tutorial-counter.html', destination: '', permanent: true },
-    { source: '/core/smart/tutorial-test.html', destination: '', permanent: true },
-    { source: '/develop/connect/use-with-clarity.html', destination: '', permanent: true },
-    { source: '/core/smart/principals.html', destination: '', permanent: true },
-    { source: '/core/smart/testnet-node.html', destination: '', permanent: true },
+    {
+      source: '/browser/todo-list.html',
+      destination: '/authentication/building-todo-app',
+      permanent: true,
+    },
+    {
+      source: '/develop/connect/get-started.html',
+      destination: '/authentication/connect',
+      permanent: true,
+    },
+    {
+      source: '/develop/connect/overview.html',
+      destination: '/authentication/connect',
+      permanent: true,
+    },
+    { source: '/develop/profiles.html', destination: '/authentication/profiles', permanent: true },
+    { source: '/storage/overview.html', destination: '/data-storage/overview', permanent: true },
+    { source: '/develop/storage.html', destination: '/data-storage/overview', permanent: true },
+    {
+      source: '/storage/authentication.html',
+      destination: '/data-storage/authentication',
+      permanent: true,
+    },
+    {
+      source: '/storage/write-to-read.html',
+      destination: '/data-storage/storage-write-read',
+      permanent: true,
+    },
+    {
+      source: '/develop/radiks-intro.html',
+      destination: '/data-indexing/overview',
+      permanent: true,
+    },
+    {
+      source: '/develop/radiks-setup.html',
+      destination: '/data-indexing/integrate',
+      permanent: true,
+    },
+    {
+      source: '/develop/radiks-models.html',
+      destination: '/data-indexing/models',
+      permanent: true,
+    },
+    {
+      source: '/develop/radiks-collaborate.html',
+      destination: '/data-indexing/collaborate',
+      permanent: true,
+    },
+    {
+      source: '/develop/radiks-server-extras.html',
+      destination: '/data-indexing/server-extras',
+      permanent: true,
+    },
+    {
+      source: '/core/smart/overview.html',
+      destination: '/smart-contracts/overview',
+      permanent: true,
+    },
+    {
+      source: '/core/smart/tutorial.html',
+      destination: '/smart-contracts/hello-world-tutorial',
+      permanent: true,
+    },
+    {
+      source: '/core/smart/tutorial-counter.html',
+      destination: '/smart-contracts/counter-tutorial',
+      permanent: true,
+    },
+    {
+      source: '/core/smart/tutorial-test.html',
+      destination: '/smart-contracts/testing-contracts',
+      permanent: true,
+    },
+    {
+      source: '/develop/connect/use-with-clarity.html',
+      destination: '/smart-contracts/signing-transactions',
+      permanent: true,
+    },
+    {
+      source: '/core/smart/principals.html',
+      destination: '/smart-contracts/principals',
+      permanent: true,
+    },
+    {
+      source: '/core/smart/testnet-node.html',
+      destination: '/smart-contracts/running-a-testnet-node',
+      permanent: true,
+    },
     { source: '/core/smart/cli-wallet-quickstart.html', destination: '', permanent: true },
     { source: '/core/naming/introduction.html', destination: '', permanent: true },
     { source: '/core/naming/architecture.html', destination: '', permanent: true },
@@ -92,13 +160,12 @@ module.exports = withFonts(
         use: [
           options.defaultLoaders.babel,
           {
-            loader: '@mdx-js/loader',
+            loader: './lib/mdx-loader',
             options: {
               remarkPlugins,
               rehypePlugins,
             },
           },
-          path.join(__dirname, './lib/md-loader'),
         ],
       });
 

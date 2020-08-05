@@ -9,6 +9,10 @@ export const MdxOverrides = createGlobalStyle`
 * {
   font-feature-settings: 'ss01' on;
 }
+section{
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+}
 html, body {
   font-family: 'Soehne', Inter, sans-serif;
 }

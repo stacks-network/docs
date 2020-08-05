@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import {
   Pre,
   THead,
@@ -6,7 +6,6 @@ import {
   TData,
   Table,
   InlineCode,
-  H1,
   H2,
   H3,
   H4,
@@ -25,6 +24,7 @@ import {
 import { Img } from '@components/mdx/image';
 import { Code } from '@components/mdx/components';
 import { PageReference } from '@components/custom-blocks/page-reference';
+import { MDWrapper } from '@components/layouts/markdown-wrapper';
 
 export const MDXComponents = {
   h1: () => null,
@@ -51,4 +51,5 @@ export const MDXComponents = {
   sup: Sup,
   section: Section,
   pagereference: PageReference,
+  wrapper: MDWrapper,
 };

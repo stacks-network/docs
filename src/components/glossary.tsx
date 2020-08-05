@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, space } from '@blockstack/ui';
-import { hydrate } from '@common/data/hydrate-mdx';
+import hydrate from 'next-mdx-remote/hydrate';
 import { MDXComponents } from '@components/mdx/mdx-components';
 import { slugify } from '@common/utils';
 import { css } from '@styled-system/css';
@@ -37,7 +37,7 @@ export const Glossary = ({ data }) => {
               },
             })}
           >
-            {hydrate(entry.definition, MDXComponents)}
+            {hydrate(entry.definition, { ...MDXComponents, wrapper: undefined })}
           </Box>
         </>
       ))}
