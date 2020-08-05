@@ -4,7 +4,7 @@ import React, { forwardRef, Ref } from 'react';
 
 export const SmartLink = ({ href, ...rest }: { href: string }) => {
   const isExternal = !href || href?.includes('http') || href?.includes('mailto');
-  const link = <Link href={href} {...rest} />;
+  const link = <Link href={href || undefined} {...rest} />;
 
   return isExternal ? (
     link

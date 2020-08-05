@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, BoxProps, Flex, Grid, color, space, transition } from '@blockstack/ui';
-import routes from '@common/routes';
+import { useAppState } from '@common/hooks/use-app-state';
 import { useRouter } from 'next/router';
 import { border, getTitle } from '@common/utils';
 import NextLink from 'next/link';
@@ -25,6 +25,7 @@ const getCategory = (pathname: string) => {
 
 const usePaginateRoutes = () => {
   const router = useRouter();
+  const { routes } = useAppState();
 
   const category = getCategory(router.pathname);
   const getSection = route => getCategory(route.path) === category;

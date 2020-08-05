@@ -1526,10 +1526,10 @@
   resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-9.5.1.tgz#c7e2fd457810b34e8ce598f57075b799ca48751b"
   integrity sha512-jmNKqEMWkCPQWWeoq6CiOShngGv99Cs+rQSLlU7BZMVCZzbcTVEkAsUqR4WfLA97K2ihjtNidY5jwbKFu4h83Q==
 
-"@next/react-dev-overlay@9.5.2-canary.6":
-  version "9.5.2-canary.6"
-  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-9.5.2-canary.6.tgz#a1c057fc3d64abe6f2aa4caa50639cb1e3d83e5e"
-  integrity sha512-j7OL0bWMSTJO4YlMgiyRJ3MPphfeVtlQzZSeZJAGDuTDt3TSdMNo05HElgsYgZR9g2NVGIJkOqxZaz5+P/fggg==
+"@next/react-dev-overlay@9.5.2-canary.7":
+  version "9.5.2-canary.7"
+  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-9.5.2-canary.7.tgz#41f1f4a2513a897b548620f6e45df030602c495d"
+  integrity sha512-lDFIorQQE55Z62XvouJ7XcRw5EzU6LiZjoeilpnfpCXMyhPvxXR/XZ2P5WwM/6/+8o5DjvXlsEhyY2T2C9RJLQ==
   dependencies:
     "@babel/code-frame" "7.8.3"
     ally.js "1.4.1"
@@ -1542,10 +1542,10 @@
     stacktrace-parser "0.1.10"
     strip-ansi "6.0.0"
 
-"@next/react-refresh-utils@9.5.2-canary.6":
-  version "9.5.2-canary.6"
-  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-9.5.2-canary.6.tgz#0e7ef8f4759af55add1115da1b8a3ed085f61df7"
-  integrity sha512-5Y4u7tHb8VIv0tAWqBj020lucp3VvfUYn8aI5hbu3bgvHvuWbffJ8MOlIQeLIMD9qzjeNz+far+Q6SDvFHH1aQ==
+"@next/react-refresh-utils@9.5.2-canary.7":
+  version "9.5.2-canary.7"
+  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-9.5.2-canary.7.tgz#db801584c088a1a961c771eb5fbbbf91b5764e32"
+  integrity sha512-6Lk9eEhwaK+KYCaaIqbCBTexw9J3BCJn4xJq589aW0IghWYXTFuJB/w3W4ZHxUFC4jJWvw6Y/eOpNvDQh05Xww==
 
 "@popperjs/core@^2.4.0":
   version "2.4.4"
@@ -6324,10 +6324,10 @@ next-transpile-modules@^4.0.2:
     micromatch "^4.0.2"
     slash "^3.0.0"
 
-next@^9.5.2-canary.6:
-  version "9.5.2-canary.6"
-  resolved "https://registry.yarnpkg.com/next/-/next-9.5.2-canary.6.tgz#0ea1194028cd49427eb761d19e654f01a94cf138"
-  integrity sha512-fCCQrQs42x6N//Nb88ZT2gsI7awIdtqu4nVHw/lLhahQGyHefb/8yDol0b2Zpud9siyj1FwfIMpVxRSOnZCsjg==
+next@^9.5.2-canary.7:
+  version "9.5.2-canary.7"
+  resolved "https://registry.yarnpkg.com/next/-/next-9.5.2-canary.7.tgz#4f753ba974e58c5f07a4d00eb484b3f4d38fc2cb"
+  integrity sha512-Alo6nQf5VMr3X9kZYXPLjQDlKUMapRuRqRpf9VqgFjE2mxXPGEpfSz6EHz4KuQpcCYflE2RxrHaWKeL8+DgaIw==
   dependencies:
     "@ampproject/toolbox-optimizer" "2.5.14"
     "@babel/code-frame" "7.8.3"
@@ -6348,8 +6348,8 @@ next@^9.5.2-canary.6:
     "@babel/preset-typescript" "7.9.0"
     "@babel/runtime" "7.9.6"
     "@babel/types" "7.9.6"
-    "@next/react-dev-overlay" "9.5.2-canary.6"
-    "@next/react-refresh-utils" "9.5.2-canary.6"
+    "@next/react-dev-overlay" "9.5.2-canary.7"
+    "@next/react-refresh-utils" "9.5.2-canary.7"
     ast-types "0.13.2"
     babel-plugin-syntax-jsx "6.18.0"
     babel-plugin-transform-define "2.0.0"
@@ -9617,11 +9617,6 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
-
-"vscode-textmate@git+https://github.com/octref/vscode-textmate.git":
-  version "4.0.1"
-  uid e65aabe2227febda7beaad31dd0fca1228c5ddf3
-  resolved "git+https://github.com/octref/vscode-textmate.git#e65aabe2227febda7beaad31dd0fca1228c5ddf3"
 
 "vscode-textmate@https://github.com/octref/vscode-textmate":
   version "4.0.1"

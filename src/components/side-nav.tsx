@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, Box, color, space, ChevronIcon, BoxProps } from '@blockstack/ui';
 import Link from 'next/link';
-import routes from '@common/routes';
+import { useAppState } from '@common/hooks/use-app-state';
 import { SIDEBAR_WIDTH } from '@common/constants';
 // @ts-ignore
 import nav from '@common/navigation.yaml';
@@ -91,14 +91,16 @@ const SectionTitle: React.FC<BoxProps> = ({ children, ...rest }) => (
   </Text>
 );
 
-const getRoutePath = path => routes.find(route => route.path.endsWith(path));
+const getRoutePath = (path, routes) => routes.find(route => route.path.endsWith(path));
 
-const ChildPages = ({ items, handleClick }: any) =>
-  items?.pages
-    ? items?.pages?.map(page => {
+const ChildPages = ({ items, handleClick }: any) => {
+  const { routes } = useAppState();
+
+  return items?.pages
+    ? items?.pages?.map((page, key) => {
         if (page.external) {
           return (
-            <Box mb={space('extra-tight')}>
+            <Box mb={space('extra-tight')} key={key}>
               <PageItem as="a" href={page.external.href} target="_blank">
                 {page.external.title}
               </PageItem>
@@ -109,17 +111,17 @@ const ChildPages = ({ items, handleClick }: any) =>
         const path = page.pages
           ? `${page.path}${page.pages[0].path}`
           : items.path
-          ? '/' + slugify(items.path) + page.path
+          ? `/${slugify(items.path)}${page.path}`
           : page.path;
 
         const router = useRouter();
 
         const routePath = routes.find(route => route.path.endsWith(path));
 
-        const route = getRoutePath(path);
+        const route = getRoutePath(path, routes);
 
         return (
-          <Box mb={space('extra-tight')}>
+          <Box mb={space('extra-tight')} key={key}>
             <Link href={routePath.path} passHref>
               <PageItem
                 isActive={router.pathname.endsWith(path)}
@@ -133,11 +135,12 @@ const ChildPages = ({ items, handleClick }: any) =>
         );
       })
     : null;
+};
 
 const ChildSection: React.FC<BoxProps & { sections?: any }> = ({ sections, ...rest }) =>
-  sections.map(section => {
+  sections.map((section, key) => {
     return (
-      <Box {...rest}>
+      <Box {...rest} key={key}>
         <SectionTitle
           letterSpacing="0.06rem"
           textTransform="uppercase"
@@ -172,6 +175,7 @@ const BackItem = props => (
 );
 
 const Navigation = () => {
+  const { routes } = useAppState();
   const [selected, setSelected] = React.useState<any | undefined>({
     type: 'default',
     items: nav.sections,
@@ -187,11 +191,11 @@ const Navigation = () => {
       section.pages.forEach(page => {
         if (page.pages) {
           const pagesFound = page.pages.find(_page => {
-            return router.pathname.endsWith(page.path + _page.path);
+            return router.pathname.endsWith(`${page.path}${_page.path}`);
           });
           const sectionsFound = page?.sections?.find(_section => {
             return _section.pages.find(_page => {
-              return router.pathname.endsWith(page.path + _page.path);
+              return router.pathname.endsWith(`${page.path}${_page.path}`);
             });
           });
           if (pagesFound || sectionsFound) {
@@ -250,7 +254,7 @@ const Navigation = () => {
     const urlCategory = getCategory(router.pathname);
     return selected.items.map((section, i) => {
       return (
-        <Box mb="40px">
+        <Box mb="40px" key={i}>
           {section.title ? (
             <Flex width="100%" align="center" mb={space('loose')}>
               <SectionTitle>{section.title}</SectionTitle>
@@ -259,17 +263,17 @@ const Navigation = () => {
               </Box>
             </Flex>
           ) : null}
-          {section.pages.map(page => {
+          {section.pages.map((page, key) => {
             const path = page.pages
               ? `${page.path}${page.pages[0].path}`
               : section?.title
               ? `/${slugify(section?.title)}${page.path}`
               : page.path;
 
-            const route = getRoutePath(path);
+            const route = getRoutePath(path, routes);
 
             return (
-              <Box mb={space('extra-tight')}>
+              <Box mb={space('extra-tight')} key={`${i}-${key}`}>
                 <PageItem
                   href={!urlCategory ? path : !path.includes(urlCategory) && path}
                   isTopLevel={i === 0}

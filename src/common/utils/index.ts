@@ -29,7 +29,8 @@ const hasChildren = (element: ReactNode): element is ReactElement<{ children: Re
   isValidElement<{ children?: ReactNode[] }>(element) && Boolean(element.props.children);
 
 // https://github.com/fernandopasik/react-children-utilities/blob/master/src/lib/onlyText.ts
-export const childToString = (child?: ReactText | boolean | {} | null): string => {
+
+export const childToString = (child?: ReactText | boolean | unknown | null): string => {
   if (typeof child === 'undefined' || child === null || typeof child === 'boolean') {
     return '';
   }
