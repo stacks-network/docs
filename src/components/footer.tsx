@@ -6,7 +6,7 @@ import { FeedbackSection } from '@components/feedback';
 
 const Footer = ({ hidePagination, ...rest }: any) => {
   return (
-    <Section px={space(['extra-loose', 'extra-loose', 'none', 'none'])}>
+    <Section px={space(['extra-loose', 'extra-loose', 'none', 'none'])} {...rest}>
       <SectionWrapper>
         <Pagination />
         <FeedbackSection />

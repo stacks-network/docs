@@ -125,45 +125,66 @@ const InlineCard = ({ page }) => {
   );
 };
 
-const GridCard: React.FC<BoxProps & { page?: any }> = ({ page, ...rest }) => {
-  const { hover, active, bind } = useTouchable({
-    behavior: 'link',
-  });
-  return (
-    <Box position="relative" {...rest} {...bind}>
-      <Box
-        bg="#9985FF"
-        position="relative"
-        borderRadius="12px"
-        mb={space('loose')}
-        overflow="hidden"
-      >
-        <Grid style={{ placeItems: 'center' }} height="0px" paddingTop="56.25%">
-          <Image
-            width="102%"
-            size="102%"
-            transition={transition('0.45s')}
-            transform={(hover || active) && 'scale(1.08)'}
-            style={{ willChange: 'transform' }}
-            src={page?.images?.large}
-            position="absolute"
-            left={'-2%'}
-            top={'-2%'}
-          />
-        </Grid>
-      </Box>
+const GridCardImage: React.FC<BoxProps & { isHovered?: boolean; page: any }> = React.memo(
+  ({ isHovered, page, ...props }) => (
+    <Box
+      bg="#9985FF"
+      position="relative"
+      borderRadius="12px"
+      mb={space('loose')}
+      overflow="hidden"
+      {...props}
+    >
+      <Grid style={{ placeItems: 'center' }} height="0px" paddingTop="56.25%">
+        <Image
+          width="102%"
+          size="102%"
+          transition={transition('0.45s')}
+          transform={isHovered && 'scale(1.08)'}
+          style={{ willChange: 'transform' }}
+          src={page?.images?.large}
+          position="absolute"
+          left={'-2%'}
+          top={'-2%'}
+        />
+      </Grid>
+    </Box>
+  )
+);
+
+const GridCardDetails: React.FC<BoxProps & { isHovered?: boolean; page: any }> = React.memo(
+  ({ isHovered, page, ...props }) => (
+    <>
       <Flex alignItems="flex-start" justifyContent="flex-start" flexDirection="column">
-        <Title color={hover ? color('accent') : color('text-title')} mb={space('tight')}>
+        <Title color="currentColor" mb={space('tight')}>
           {page.title || page.headings[0]}
         </Title>
         <Description>{page.description}</Description>
       </Flex>
       <FloatingLink href={`${page.path}`} />
+    </>
+  )
+);
+
+const GridCard: React.FC<BoxProps & { page?: any }> = React.memo(({ page, ...rest }) => {
+  const { hover, active, bind } = useTouchable({
+    behavior: 'link',
+  });
+  return (
+    <Box
+      position="relative"
+      color={color('text-title')}
+      _hover={{ color: color('accent') }}
+      {...rest}
+      {...bind}
+    >
+      <GridCardImage page={page} isHovered={hover || active} />
+      <GridCardDetails page={page} />
     </Box>
   );
-};
+});
 
-export const PageReference = ({ children }) => {
+export const PageReference: React.FC<BoxProps> = React.memo(({ children }) => {
   const content = onlyText(children).trim();
   const [variant, _paths] = content.includes('\n') ? content.split('\n') : ['default', content];
   const paths = _paths.includes(', ') ? _paths.split(', ') : [_paths];
@@ -188,4 +209,4 @@ export const PageReference = ({ children }) => {
       )}
     </Grid>
   );
-};
+});

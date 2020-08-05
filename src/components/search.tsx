@@ -46,7 +46,7 @@ const navigator = {
   },
 };
 
-const Key: React.FC<BoxProps> = ({ children, ...rest }) => (
+const Key: React.FC<BoxProps> = React.memo(({ children, ...rest }) => (
   <Grid
     style={{
       placeItems: 'center',
@@ -70,7 +70,7 @@ const Key: React.FC<BoxProps> = ({ children, ...rest }) => (
       {children}
     </Text>
   </Grid>
-);
+));
 
 const searchOptions = {
   apiKey: '9040ba6d60f5ecb36eafc26396288875',

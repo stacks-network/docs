@@ -1469,7 +1469,7 @@
     unist-builder "2.0.3"
     unist-util-visit "2.0.3"
 
-"@mdx-js/mdx@^1.6.15", "@mdx-js/mdx@^1.6.8":
+"@mdx-js/mdx@^1.6.16", "@mdx-js/mdx@^1.6.8":
   version "1.6.16"
   resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.6.16.tgz#f01af0140539c1ce043d246259d8becd2153b2bb"
   integrity sha512-jnYyJ0aCafCIehn3GjYcibIapaLBgs3YkoenNQBPcPFyyuUty7B3B07OE+pMllhJ6YkWeP/R5Ax19x0nqTzgJw==
@@ -1499,7 +1499,7 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.15.tgz#99a6061d0f74f2d01b95ad0314efba9ad6f19e81"
   integrity sha512-C8yhsYZyFwL2kTa4Yw1zFIUxHcl225NrP75F6qgNbBum1APcsnl0WQ7N5V/l515gxnJmXSRQ6uL7pAFPZvdmzA==
 
-"@mdx-js/react@^1.6.15", "@mdx-js/react@^1.6.8":
+"@mdx-js/react@^1.6.16", "@mdx-js/react@^1.6.8":
   version "1.6.16"
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.16.tgz#538eb14473194d0b3c54020cb230e426174315cd"
   integrity sha512-+FhuSVOPo7+4fZaRwWuCSRUcZkJOkZu0rfAbBKvoCg1LWb1Td8Vzi0DTLORdSvgWNbU6+EL40HIgwTOs00x2Jw==
