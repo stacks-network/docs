@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDXComponents } from '@components/mdx';
 import { Box, Flex, ChevronIcon, space, color } from '@blockstack/ui';
-import { hydrate } from '@common/data/hydrate-mdx';
+import hydrate from 'next-mdx-remote/hydrate';
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@reach/accordion';
 import { border } from '@common/utils';
 import { slugify } from '@common/utils';
@@ -51,7 +51,7 @@ const FAQItem = React.memo(({ faq, ...rest }: any) => {
         </Box>
       </Flex>
       <Box px={space('extra-loose')} pb={space('extra-loose')} as={AccordionPanel}>
-        {hydrate(faq.answer, MDXComponents)}
+        {hydrate(faq.answer, { ...MDXComponents, wrapper: undefined })}
       </Box>
     </Box>
   );

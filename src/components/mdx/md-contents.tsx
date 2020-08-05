@@ -13,44 +13,35 @@ import dynamic from 'next/dynamic';
 
 const Search = dynamic(() => import('@components/search'));
 
-export const MDContents: React.FC<any> = React.memo(
-  ({ pageTop: PageTop = null, headings, children }) => {
-    const router = useRouter();
-    const isHome = router.pathname === '/';
+export const MDContents: React.FC<any> = ({ pageTop: PageTop = null, headings, children }) => {
+  const router = useRouter();
+  const isHome = router?.pathname === '/';
 
-    const TOCShowing = !isHome && headings?.length > 1;
-    return (
-      <>
-        <ContentWrapper
-          width={['100%', '100%', '100%', `calc(100% - ${!TOCShowing ? 0 : TOC_WIDTH}px)`]}
-          mx="unset"
-          pt="unset"
-          css={css(styleOverwrites as any)}
-          pr={TOCShowing && ['0', '0', '0', 'extra-loose']}
+  const TOCShowing = !isHome && headings && headings?.length > 1;
+  return (
+    <>
+      <ContentWrapper
+        width={['100%', '100%', '100%', `calc(100% - ${!TOCShowing ? 0 : TOC_WIDTH}px)`]}
+        mx="unset"
+        pt="unset"
+        css={css(styleOverwrites as any)}
+        pr={TOCShowing && ['0', '0', '0', 'extra-loose']}
+      >
+        {PageTop && <PageTop />}
+        {children}
+      </ContentWrapper>
+      {!isHome ? (
+        <Box
+          maxWidth={['100%', `${TOC_WIDTH}px`, `${TOC_WIDTH}px`]}
+          width="100%"
+          display={['none', 'none', 'none', 'block']}
         >
-          {PageTop && <PageTop />}
-          {children}
-        </ContentWrapper>
-        {!isHome ? (
-          <Box
-            maxWidth={['100%', `${TOC_WIDTH}px`, `${TOC_WIDTH}px`]}
-            width="100%"
-            display={['none', 'none', 'none', 'block']}
-          >
-            <Box position="sticky" top={0} pt="64px">
-              <Search mb={space('extra-loose')} />
-              {TOCShowing ? (
-                <TableOfContents
-                  pl={space('base')}
-                  borderLeft={border()}
-                  headings={headings}
-                  limit={2}
-                />
-              ) : null}
-            </Box>
+          <Box position="sticky" top={0} pt="64px">
+            <Search mb={space('extra-loose')} />
+            {TOCShowing ? null : null}
           </Box>
-        ) : null}
-      </>
-    );
-  }
-);
+        </Box>
+      ) : null}
+    </>
+  );
+};

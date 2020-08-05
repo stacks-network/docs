@@ -8,7 +8,7 @@ export const ClarityKeywordReference = ({ content, headings }) => {
   return (
     <>
       <TableOfContents mb={space('extra-loose')} label="Contents" headings={headings} />
-      {hydrate(content, MDXComponents)}
+      {hydrate(content, { ...MDXComponents, wrapper: undefined })}
     </>
   );
 };
@@ -20,6 +20,6 @@ export const ClarityFunctionReference = ({ content, headings }) => (
       label="Contents"
       headings={headings}
     />
-    {hydrate(content, MDXComponents)}
+    {hydrate(content, { ...MDXComponents, wrapper: undefined })}
   </>
 );

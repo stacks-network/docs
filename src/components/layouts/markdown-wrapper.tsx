@@ -13,7 +13,7 @@ const Search = dynamic(() => import('@components/search'));
 
 const PageTop = props => {
   const router = useRouter();
-  const isHome = router.pathname === '/';
+  const isHome = router?.pathname === '/';
   return (
     <Box
       mb={['extra-loose', 'extra-loose', '64px']}
@@ -47,23 +47,31 @@ const PageTop = props => {
   );
 };
 
-export const MDWrapper = ({ frontmatter, dynamicHeadings = [], ...props }) => {
-  const { headings, description } = frontmatter;
-
-  return (
-    <>
-      <Head>
-        <title>{getTitle(frontmatter)} | Blockstack</title>
-        <meta name="description" content={description} />
-      </Head>
-      <MDContents
-        pageTop={() => <PageTop {...frontmatter} />}
-        headings={[...headings, ...dynamicHeadings]}
-      >
-        {props.children}
-      </MDContents>
-    </>
-  );
+const defaultFrontmatter = {
+  headings: [],
+  description:
+    'Blockstack is an open-source and developer-friendly network for building decentralized apps and smart contracts.',
 };
+
+export const MDWrapper: React.FC<any> = React.memo(
+  ({ frontmatter = defaultFrontmatter, dynamicHeadings = [], ...props }) => {
+    const { headings, description } = frontmatter;
+
+    return (
+      <>
+        <Head>
+          <title>{getTitle(frontmatter)} | Blockstack</title>
+          <meta name="description" content={description} />
+        </Head>
+        <MDContents
+          pageTop={() => <PageTop {...frontmatter} />}
+          headings={[...headings, ...dynamicHeadings]}
+        >
+          {props.children}
+        </MDContents>
+      </>
+    );
+  }
+);
 
 export default MDWrapper;

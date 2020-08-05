@@ -3,7 +3,7 @@ import { cliReferenceData } from '@common/../_data/cliRef';
 import { MDXComponents } from '@components/mdx/mdx-components';
 import { Grid, Box, color } from '@blockstack/ui';
 import { border } from '@common/utils';
-import { hydrate } from '@common/data/hydrate-mdx';
+import hydrate from 'next-mdx-remote/hydrate';
 
 const styles = {
   maxWidth: '100%',
@@ -23,6 +23,7 @@ const ReferenceEntry = ({ entry, usage }) => (
 
     {hydrate(usage, {
       ...MDXComponents,
+      wrapper: undefined,
       p: (props: any) => (
         <MDXComponents.p
           {...props}
