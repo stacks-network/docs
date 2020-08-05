@@ -50,6 +50,7 @@ export const Components = {
   blockquote: Blockquote,
   sup: Sup,
   section: Section,
+  undefined: () => null,
 };
 
 export const MDXComponents = {

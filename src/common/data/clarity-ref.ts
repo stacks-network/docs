@@ -3,16 +3,18 @@ import CLARITY_REFERENCE from '../../_data/clarityRef.json';
 import { slugify } from '@common/utils';
 
 const wrapInClarityTicks = (string: string) => {
-  let newString = '';
-  newString += '```clarity\n';
-  newString += string.trim() + '\n';
+  let newString = '```clarity';
+  newString += `
+`;
+  newString += string.trim();
+  newString += `
+`;
   newString += '```';
   return newString;
 };
 
 const inlineCode = (string: string) => {
-  let newString = '';
-  newString += '`';
+  let newString = '`';
   newString += string.trim();
   newString += '`';
   return newString;
@@ -26,32 +28,33 @@ const generateMarkdown = () => {
     functions += `
 ### ${entry.name}
 
-**Signature:** ${inlineCode(entry.signature)}\n
+**Signature:** ${inlineCode(entry.signature)}
 
 
-**Input:** ${inlineCode(entry.input_type)}\n
+**Input:** ${inlineCode(entry.input_type)}
 
 
-**Output:** ${inlineCode(entry.output_type)}\n
+**Output:** ${inlineCode(entry.output_type)}
 
-${entry.description}
+${entry.description.trim()}
 
 #### Example {#${slugify(entry.name)}-example}
 
-${wrapInClarityTicks(entry.example)}\n
+${wrapInClarityTicks(entry.example)}
 `;
   });
 
   CLARITY_REFERENCE.keywords.forEach(entry => {
-    keywords += `\n### ${entry.name}
+    keywords += `### ${entry.name}
 
 **Output:** ${inlineCode(entry.output_type)}
 
-${entry.description}
+${entry.description.trim()}
 
 #### Example {#${slugify(entry.name)}-example}
 
-${wrapInClarityTicks(entry.example)}\n
+${wrapInClarityTicks(entry.example)}
+
 `;
   });
 

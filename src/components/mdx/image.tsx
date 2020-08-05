@@ -11,7 +11,7 @@ const getUrl = pathname => {
   const levels = pathname.split('/');
   levels.forEach((level, index) => {
     if (index !== levels.length - 1) {
-      url += level + '/';
+      url += `${level}/`;
     }
   });
   return url;

@@ -4,7 +4,7 @@ import { useRect } from '@reach/rect';
 import { useScroll } from '@common/hooks/use-scroll';
 
 export const useHeadroom = (target: Ref<HTMLDivElement>, { useStyle = true, wait = 0 } = {}) => {
-  let styleInserted = false;
+  const styleInserted = false;
   const rect = useRect(target as any);
   const { scrollY, scrollDirection } = useScroll();
 

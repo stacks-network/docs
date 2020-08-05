@@ -4,7 +4,7 @@ import { border, onlyText, transition } from '@common/utils';
 import { useTouchable } from '@common/hooks/use-touchable';
 import { Caption, Text } from '@components/typography';
 import Link from 'next/link';
-import routes from '@common/routes';
+import { useAppState } from '@common/hooks/use-app-state';
 import { Img } from '@components/mdx/image';
 import { css } from '@styled-system/css';
 import { getCapsizeStyles, getHeadingStyles } from '@components/mdx/typography';
@@ -201,6 +201,8 @@ export const PageReference: React.FC<BoxProps> = React.memo(({ children }) => {
   const content = onlyText(children).trim();
   const [variant, _paths] = content.includes('\n') ? content.split('\n') : ['default', content];
   const paths = _paths.includes(', ') ? _paths.split(', ') : [_paths];
+  const { routes } = useAppState();
+
   if (!routes) return null;
 
   const pages = paths.map(path => routes?.find(route => route.path === path)).filter(page => page);
@@ -217,8 +219,12 @@ export const PageReference: React.FC<BoxProps> = React.memo(({ children }) => {
         `repeat(${pages.length === 1 ? 1 : 3}, 1fr)`,
       ]}
     >
-      {pages.map(page =>
-        variant === 'inline' ? <InlineCard page={page} /> : <GridCard page={page} />
+      {pages.map((page, key) =>
+        variant === 'inline' ? (
+          <InlineCard key={key} page={page} />
+        ) : (
+          <GridCard key={key} page={page} />
+        )
       )}
     </Grid>
   );
