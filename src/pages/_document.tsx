@@ -1,8 +1,15 @@
-import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document';
+import Document, {
+  DocumentContext,
+  DocumentProps,
+  Html,
+  Head,
+  Main,
+  NextScript,
+} from 'next/document';
 import { THEME_STORAGE_KEY } from '@common/constants';
 import { ServerStyleSheet } from 'styled-components';
 
-export default class MyDocument extends Document<any> {
+export default class MyDocument extends Document<DocumentProps> {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
@@ -84,8 +91,6 @@ export default class MyDocument extends Document<any> {
           />
           <link rel="preconnect" href="https://bh4d9od16a-dsn.algolia.net" crossOrigin="true" />
           <link rel="preconnect" href="https://cdn.usefathom.com" crossOrigin="true" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="true" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
           <Main />
           <NextScript />
         </body>
