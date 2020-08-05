@@ -7,6 +7,7 @@ import Link from 'next/link';
 import routes from '@common/routes';
 import { Img } from '@components/mdx/image';
 import { css } from '@styled-system/css';
+import { getCapsizeStyles, getHeadingStyles } from '@components/mdx/typography';
 const Image = ({
   src,
   isHovered,
@@ -36,15 +37,27 @@ const Image = ({
 );
 
 const Title = ({ children, ...props }: BoxProps) => (
-  <Text fontWeight="500" display="block" {...props}>
+  <Text
+    css={css({
+      ...getHeadingStyles('h3'),
+    })}
+    {...props}
+  >
     {children}
   </Text>
 );
 
 const Description = ({ children, ...props }) => (
-  <Caption maxWidth="50ch" {...props}>
+  <Text
+    {...props}
+    css={css({
+      ...getCapsizeStyles(16, 26),
+      mt: space('base-tight'),
+      color: color('text-body'),
+    })}
+  >
     {children}
-  </Caption>
+  </Text>
 );
 
 const FloatingLink = ({ href, ...props }: any) => (
@@ -195,8 +208,8 @@ export const PageReference: React.FC<BoxProps> = React.memo(({ children }) => {
     <Grid
       width="100%"
       mt={space('extra-loose')}
-      gridColumnGap={space('loose')}
-      gridRowGap={space('loose')}
+      gridColumnGap={space('extra-loose')}
+      gridRowGap={space('extra-loose')}
       gridTemplateColumns={[
         `repeat(1, 1fr)`,
         `repeat(${pages.length === 1 ? 1 : 2}, 1fr)`,

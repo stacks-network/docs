@@ -15,7 +15,7 @@ const Search = dynamic(() => import('@components/search'));
 
 export const MDContents: React.FC<any> = ({ pageTop: PageTop = null, headings, children }) => {
   const router = useRouter();
-  const isHome = router?.pathname === '/';
+  const isHome = router.pathname === '/';
 
   const TOCShowing = !isHome && headings && headings?.length > 1;
   return (
@@ -38,7 +38,14 @@ export const MDContents: React.FC<any> = ({ pageTop: PageTop = null, headings, c
         >
           <Box position="sticky" top={0} pt="64px">
             <Search mb={space('extra-loose')} />
-            {TOCShowing ? null : null}
+            {TOCShowing ? (
+              <TableOfContents
+                pl={space('base')}
+                borderLeft={border()}
+                headings={headings}
+                limit={2}
+              />
+            ) : null}
           </Box>
         </Box>
       ) : null}
