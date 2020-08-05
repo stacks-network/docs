@@ -309,12 +309,13 @@ module.exports = withFonts(
         use: [
           options.defaultLoaders.babel,
           {
-            loader: './lib/mdx-loader',
+            loader: '@mdx-js/loader',
             options: {
               remarkPlugins,
               rehypePlugins,
             },
           },
+          path.join(__dirname, './lib/mdx-frontmatter-loader'),
         ],
       });
 

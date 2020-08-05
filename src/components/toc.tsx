@@ -7,6 +7,7 @@ import { useActiveHeading } from '@common/hooks/use-active-heading';
 import NextLink from 'next/link';
 import { getHeadingStyles } from '@components/mdx/typography';
 import { css } from '@styled-system/css';
+
 const getLevelPadding = (level: number) => {
   switch (level) {
     case 2:
@@ -18,12 +19,24 @@ const getLevelPadding = (level: number) => {
   }
 };
 
-const Item = ({ slug, label, level, limit }) => {
+const Item = ({
+  slug,
+  label,
+  level,
+  limit,
+}: {
+  slug: string;
+  label: string;
+  level: number;
+  limit?: number;
+}) => {
   const { isActive: _isActive, slugInView } = useActiveHeading(slug);
   const isOnScreen = slugInView === slug;
 
   const isActive = isOnScreen || _isActive;
-  return !limit || level <= limit + 1 ? (
+
+  const render = !limit || level <= limit + 1;
+  return render ? (
     <Box pl={getLevelPadding(level - 2)} py={space('extra-tight')}>
       <NextLink href={`#${slug}`} passHref>
         <Link
@@ -36,11 +49,6 @@ const Item = ({ slug, label, level, limit }) => {
             color: color('accent'),
           }}
           pointerEvents={isActive ? 'none' : 'unset'}
-          css={css({
-            display: 'block',
-            ...getHeadingStyles('h6'),
-            mb: space('base-tight'),
-          })}
         >
           <Box as="span" dangerouslySetInnerHTML={{ __html: label }} />
         </Link>
@@ -90,7 +98,7 @@ export const TableOfContents = ({
               : `repeat(${columns}, 1fr)`
           }
         >
-          {headings.map((heading, index) => {
+          {headings?.map((heading, index) => {
             return index > 0 ? (
               <Item
                 limit={limit}

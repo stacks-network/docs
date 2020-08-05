@@ -78,8 +78,9 @@ const HeaderTextItem: React.FC<BoxProps & LinkProps> = ({ children, href, as, ..
     color={color('invert')}
     css={css({
       ...getCapsizeStyles(16, 26),
-      ...rest,
       color: 'currentColor',
+      ...rest,
+      fontWeight: '400',
       ':hover': {
         cursor: 'pointer',
         textDecoration: href ? 'underline' : 'none',
