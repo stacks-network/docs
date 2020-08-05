@@ -58,7 +58,7 @@ const getHeadings = mdContent => {
   const found = mdContent.match(regex);
   return found && found.length
     ? found.map(f => f && f.split('# ')[1]).filter(f => typeof f !== 'undefined')
-    : undefined;
+    : null;
 };
 
 const routes = allRoutes.map(route => {

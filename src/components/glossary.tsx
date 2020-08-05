@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, space } from '@blockstack/ui';
 import hydrate from 'next-mdx-remote/hydrate';
-import { MDXComponents } from '@components/mdx/mdx-components';
+import { Components } from '@components/mdx/mdx-components';
 import { slugify } from '@common/utils';
 import { css } from '@styled-system/css';
 import { TableOfContents } from '@components/toc';
@@ -18,9 +18,9 @@ export const Glossary = ({ data }) => {
       />
       {data.map(entry => (
         <>
-          <MDXComponents.h3 pl={space('extra-loose')} id={slugify(entry.term)}>
+          <Components.h3 pl={space('extra-loose')} id={slugify(entry.term)}>
             {entry.term}
-          </MDXComponents.h3>
+          </Components.h3>
 
           <Box
             css={css({
@@ -37,7 +37,7 @@ export const Glossary = ({ data }) => {
               },
             })}
           >
-            {hydrate(entry.definition, { ...MDXComponents, wrapper: undefined })}
+            {hydrate(entry.definition, Components)}
           </Box>
         </>
       ))}

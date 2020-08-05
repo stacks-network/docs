@@ -26,7 +26,7 @@ import { Code } from '@components/mdx/components';
 import { PageReference } from '@components/custom-blocks/page-reference';
 import { MDWrapper } from '@components/layouts/markdown-wrapper';
 
-export const MDXComponents = {
+export const Components = {
   h1: () => null,
   h2: H2,
   h3: H3,
@@ -50,6 +50,9 @@ export const MDXComponents = {
   blockquote: Blockquote,
   sup: Sup,
   section: Section,
+};
+
+export const MDXComponents = {
+  ...Components,
   pagereference: PageReference,
-  wrapper: MDWrapper,
 };
