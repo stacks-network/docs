@@ -35,7 +35,6 @@ then writes to storage on behalf of that user.
 
 Within Blockstack, then, the Stacks blockchain stores only identity data. Data created by the actions of an identity is stored in a Gaia Storage System. Each user has profile data. When a user interacts with a decentralized dApp that application stores application data on behalf of the user. Because Gaia stores user and application data off the blockchain, a Blockstack DApp is typically more performant than DApps created on other blockchains.
 
-
 ## User control or how is Gaia decentralized?
 
 A Gaia hub runs as a service which writes to data storage. The storage itself is a simple key-value store. The hub service
