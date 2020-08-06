@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Box, BoxProps, color, space, themeColor } from '@blockstack/ui';
-import { border } from '@common/utils';
+import { Box, BoxProps, color, space, themeColor, Highlighter, Button, useClipboard, utils } from '@blockstack/ui';
+import { border, onlyText } from '@common/utils';
 import { css } from '@styled-system/css';
 import { Text } from '@components/typography';
 
@@ -39,6 +39,7 @@ export const Code: React.FC<
   BoxProps & { highlight?: string; lang?: string; lines: number }
 > = React.memo(
   React.forwardRef(({ children, highlight, lang, lines, ...rest }, ref) => {
+    const { hasCopied, onCopy } = useClipboard(onlyText(children));
     const numbers = getHighlightLineNumbers(highlight);
     return (
       <Box className={lines <= 3 ? 'no-line-numbers' : ''} ref={ref as any} overflowX="auto">
@@ -88,6 +89,9 @@ export const Code: React.FC<
           {children}
           <Box height="16px" width="100%" />
         </Box>
+        <Button onClick={onCopy} size="sm" mode="secondary">
+          {hasCopied ? 'Copied!' : 'Copy'}
+        </Button>
       </Box>
     );
   })
