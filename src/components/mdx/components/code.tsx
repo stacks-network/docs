@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, BoxProps, color, space, themeColor, Highlighter, Button, useClipboard, utils } from '@blockstack/ui';
+import { Box, BoxProps, color, space, themeColor, Button, useClipboard } from '@blockstack/ui';
 import { border, onlyText } from '@common/utils';
 import { css } from '@styled-system/css';
 import { Text } from '@components/typography';
