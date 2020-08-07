@@ -1,8 +1,7 @@
 ---
 title: Best practices
+descriptions: Helpful tips for getting a core node up and running.
 ---
-
-# Best practices
 
 ## Hardware and OS requirements
 

@@ -3,10 +3,6 @@ title: Radiks server tips and tricks
 description: Some tips and tricks for working with a Radiks server.
 ---
 
-# Radiks server tips and tricks
-
-In this section, you'll find some tips and tricks you can use to work with a Radiks server.
-
 ## Access the MongoDB collection
 
 Radiks-server keeps all models inside of a collection. You can use the `getDB` function to access this collection from inside your application.

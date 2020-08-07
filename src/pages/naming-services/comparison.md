@@ -3,7 +3,7 @@ title: Feature comparison
 description: This page describes some other naming systems in comparison to Blockstack.
 ---
 
-# Naming system feature comparison
+## Introduction
 
 BNS is not the only naming system in wide-spread use, nor is it the only
 decentralized naming system that implements human-readable, globally-unique, and

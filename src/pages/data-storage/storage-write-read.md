@@ -2,7 +2,7 @@
 description: 'Storing user data with Blockstack'
 ---
 
-# Storage write and read
+## Introduction
 
 Once a user authenticates and a DApp obtains authentication, the application interacts with Gaia through the
 blockstack.js library. There are two simple methods for working with data in Gaia hub: the `putFile()` and `getFile()`

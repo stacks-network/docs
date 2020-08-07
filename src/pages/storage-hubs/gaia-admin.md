@@ -3,7 +3,7 @@ title: Gaia admin
 description: 'Storing user data with Blockstack'
 ---
 
-# Use the admin service
+## Introduction
 
 A Gaia service can run a simple administrative service co-located with your Gaia hub. This service allows you to administer the Gaia hub with the help of an API key. Gaia hubs installed using the Gaia Amazon Machine Image (AMI) have this service integrated automatically.
 

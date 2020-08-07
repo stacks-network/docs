@@ -6,7 +6,7 @@ images:
   sm: /images/pages/build-an-app-sm.svg
 ---
 
-# Building decentralized apps
+## Introduction
 
 Prefer to jump right in? Get started with this tutorial where you’ll create a decentralized to-do list app.
 

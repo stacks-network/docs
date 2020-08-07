@@ -1,4 +1,7 @@
-# Installing Memcached
+---
+title: Installing Memcached
+description: Learn how to install Memcached to improve performance of a local Blockstack API instance.
+---
 
 The Blockstack API optionally uses memcached and pylibmc for scaling read-only
 calls. If you want to enable this functionality then you should have memcached

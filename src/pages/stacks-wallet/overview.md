@@ -1,8 +1,9 @@
 ---
-description: 'How to use the Blockstack Software'
+title: Stacks wallet overview
+description: Learn about cryptocurrency wallets, STX, and the Stacks wallet.
 ---
 
-# Understand cryptocurrency wallets
+## Introduction
 
 If you are, or plan to be a Stacks token holder, you need to think about how you
 can manage your Stacks (STX) tokens. How can you review your token balance? How can send or

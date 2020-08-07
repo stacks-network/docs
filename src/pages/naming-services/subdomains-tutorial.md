@@ -1,12 +1,11 @@
 ---
-description: 'Blockstack naming service (BNS)'
+title: Subdomain registrar
+description: Learn how to create, register, and run a subdomain registrar.
 ---
 
-# Subdomain Design and Implementation
+## Introduction
 
-Subdomains allow us to provide names to end users cheaply (and quickly). This
-tutorial explains you how to create, register, and run a subdomain register, it
-contains the following sections:
+Subdomains allow us to provide names to end users cheaply (and quickly).
 
 ## Strong subdomain ownership
 

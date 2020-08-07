@@ -1,10 +1,12 @@
 ---
-description: 'Blockstack CLI Wallet Quickstart'
+title: CLI Wallet quickstart
+description: Learn how to set up a wallet via the CLI and send/receive STX on the Testnet.
 ---
 
-# Send/Receive Stacks on Testnet
+## Introduction
 
-This quickstart guide will show you how to setup a Stacks wallet using the Blockstack JavaScript CLI and use it to send/receive Stacks tokens on Testnet. This wallet is intended for developer experimentation with Testnet only, do not use this wallet to store your tokens.
+This quickstart guide will show you how to setup a Stacks wallet using the Blockstack JavaScript CLI and use it to
+send/receive Stacks tokens on Testnet. This wallet is intended for developer experimentation with Testnet only, do not use this wallet to store your tokens.
 
 ## Prerequisites
 

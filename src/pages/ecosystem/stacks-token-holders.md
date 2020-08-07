@@ -1,8 +1,9 @@
 ---
+title: Stacks token holders
 description: 'Blockstack token holder documentation'
 ---
 
-# Information for current token holders
+## Introduction
 
 The information on this page is intended for **current Stacks (STX) token holders** during Blockstack’s token sale through early 2018.
 
@@ -17,28 +18,6 @@ If you purchased STX tokens through CoinList, you can find your address at
 address directly to Blockstack, you can either use the **Restore from Seed
 Phrase** feature on the Stacks Wallet or contact us at <hello@stackstoken.com> for
 help.
-
-<!-- Use the following form to check your Stacks allocation: -->
-
-<!-- TODO: make work with react -->
-<!-- <div class="uk-background-secondary uk-padding uk-panel"> -->
-
-<!-- <script> -->
-<!-- function process() -->
-<!-- { -->
-<!-- var url="https://explorer.blockstack.org/address/stacks/" + document.getElementById("url").value; -->
-<!-- location.href=url; -->
-<!-- return false; -->
-<!-- } -->
-<!-- </script> -->
-
-<!-- <form class="uk-form-horizontal" onSubmit="return process();" autocomplete="off"> -->
-<!--  <div> -->
-<!-- <input style="background: #fff !important;" class="uk-input" type="text" name="url" id="url" placeholder="Enter public Stacks Wallet address"> -->
-<!-- <input class="uk-button uk-button-default uk-form-width-medium uk-align-center" type="submit" value="Check allocation"> -->
-<!-- </div> -->
-<!-- </form> -->
-<!-- </div> -->
 
 You should see a report detailing the tokens allocated to your address and when they unlock:
 

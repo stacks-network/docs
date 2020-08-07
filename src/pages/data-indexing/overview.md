@@ -6,7 +6,7 @@ images:
   sm: /images/pages/radiks-sm.svg
 ---
 
-# Radiks the data indexer
+## Introduction
 
 The Blockstack Radiks feature enables Blockstack decentralized applications (DApps) to index and store across data
 belonging to multiple users. Radiks works with Blockstack's Gaia Storage System. Using Radiks, you can build

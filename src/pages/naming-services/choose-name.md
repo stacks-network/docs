@@ -3,10 +3,6 @@ title: Choose a name
 description: This section explains how to choose and create a namespace.
 ---
 
-# Choose a name
-
-This section explains how to choose and create a namespace.
-
 ## Intended uses for a namespace
 
 The intention is that each application can create its own BNS

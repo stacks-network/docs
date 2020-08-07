@@ -3,8 +3,6 @@ title: How to use the Atlas network
 description: This section teaches you how to use the Atlas network.
 ---
 
-# How to Use the Atlas Network
-
 ## The API
 
 While the Blockstack software stack expects that Atlas-hosted data is made up of

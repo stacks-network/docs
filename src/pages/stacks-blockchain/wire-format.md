@@ -1,4 +1,9 @@
-# Bitcoin wire format
+---
+title: Bitcoin wire format
+description: Learn about the format of transactions used for name operations in the Blockstack network.
+---
+
+## Introduction
 
 This page is for organizations who want to be able to create and send name operation transactions to the blockchain(s) Blockstack supports.
 It describes the transaction formats for the Bitcoin blockchain.

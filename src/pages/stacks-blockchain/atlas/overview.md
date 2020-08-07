@@ -3,7 +3,7 @@ title: Overview of the Atlas network
 description: This document describes the Atlas network, a peer-to-peer content-addressed storage system whose chunks' hashes are announced on a public blockchain.
 ---
 
-# Overview of the Atlas network
+## Introduction
 
 This document describes the Atlas network, a peer-to-peer content-addressed
 storage system whose chunks' hashes are announced on a public blockchain. Atlas

@@ -1,8 +1,9 @@
 ---
+title: Principals
 description: 'Clarity: Understanding Principals'
 ---
 
-# Understanding Principals
+## Introduction
 
 _Principals_ are a Clarity native type that represents an entity that can have a token balance. This section discusses principals and how they are used in the Clarity.
 

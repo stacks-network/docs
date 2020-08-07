@@ -1,8 +1,9 @@
 ---
+title: Configure a hub on DigitalOcean
 description: 'Storing user data with Blockstack'
 ---
 
-# Configure a hub on DigitalOcean
+## Introduction
 
 This teaches you how to run a Gaia storage hub on DigitalOcean (DO). DigitalOcean is an affordable and convenient cloud computing provider. This example uses DigitalOcean Spaces for file storage. A space is equivalent to AWS's S3 file storage solution.
 

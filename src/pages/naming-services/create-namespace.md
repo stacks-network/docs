@@ -3,7 +3,7 @@ title: Creating a Namespace
 description: Learn how to create a namespace in the Blockstack Naming Service.
 ---
 
-# Creating a Namespace
+## Introduction
 
 Making a namespace is very expensive. Given the large amount of cryptocurrency at stake in name creation, developers
 wanting to create their own namespaces should read [Understand Namespaces](/core/naming/namespaces) first. You should

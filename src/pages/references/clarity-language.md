@@ -6,10 +6,6 @@ description: See a detailed list of all keywords and functions for the Clarity l
 export { convertClarityRefToMdx as getStaticProps } from '@common/data/clarity-ref'
 import { ClarityKeywordReference, ClarityFunctionReference } from '@components/clarity-ref'
 
-# Clarity Language Reference
-
-This file contains the reference for the Clarity language.
-
 ## Clarity Type System
 
 The Clarity language uses a strong static type system. Function arguments

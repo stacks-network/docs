@@ -3,7 +3,7 @@ title: How to contribute
 description: Learn how this site is built, and how you could contribute to it.
 ---
 
-# How to contribute
+## Introduction
 
 Welcome! Thank you for your interest in contributing and helping make these docs as good as they can be! This page will
 outline how this site is built, its general structure, getting it running locally, and some helpful tips for using all of its features.

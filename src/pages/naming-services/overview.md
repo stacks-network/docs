@@ -97,7 +97,7 @@ can do the following and more:
 - Build public-key infrastructure where it's easy for users to discover and
   remember each other's keys.
 
-# Organization of BNS
+## Organization of BNS
 
 BNS names are organized into a global name hierarchy. There are three different
 layers in this hierarchy related to naming:

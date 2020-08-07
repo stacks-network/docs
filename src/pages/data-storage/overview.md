@@ -6,7 +6,7 @@ images:
   sm: /images/pages/data-storage-sm.svg
 ---
 
-# A decentralized storage architecture
+## Introduction
 
 The Blockstack Network stores application data using a storage system called
 Gaia. Transactional metadata is stored on the Blockstack blockchain and user

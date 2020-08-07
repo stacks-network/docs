@@ -2,7 +2,7 @@
 description: Blockstack naming service (BNS)
 ---
 
-# How to build a Profile Search Index
+## Introduction
 
 The search subsystem for Stacks Blockchain creates an index for data associated
 with registered names in namespaces and makes that data searchable.
@@ -26,7 +26,7 @@ http://localhost:5000/search?query=<SEARCH_PATTERN>
 
 This document describes how to setup the search subsystem to respond at that endpoint.
 
-# Installation
+## Installation
 
 - **Step 1:** First, make sure you have [virtualenv installed](http://docs.python-guide.org/en/latest/dev/virtualenvs/).
   Then, setup the API and search subsystem:
@@ -67,7 +67,7 @@ python -m search.basic_index --refresh
 $ sed -i 's/SEARCH_API_ENDPOINT_ENABLED \= False/SEARCH_API_ENDPOINT_ENABLED \= True/' config.py
 ```
 
-# Usage
+## Usage
 
 You can quickly test the search index from the command line:
 

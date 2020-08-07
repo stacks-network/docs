@@ -1,10 +1,13 @@
 ---
-description: Blockstack dApp documentation
+title: Deploy tips
+description: Learn some common methods for deploying your application.
 ---
 
-# Deployment
+## Introduction
 
-Blockstack applications are web applications that authenticate users with Blockstack Auth and store data with Gaia. Both of these technologies can be accessed on the client side. As such, Blockstack apps tend to be simple in design and operation, since in many cases, they don’t have to host anything besides the application’s assets.
+Blockstack applications are web applications that authenticate users with Blockstack Auth and store data with Gaia.
+Both of these technologies can be accessed on the client side. As such, Blockstack apps tend to be simple in design and
+operation, since in many cases, they don’t have to host anything besides the application’s assets.
 
 ## Where to deploy your application
 

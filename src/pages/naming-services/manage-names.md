@@ -3,10 +3,6 @@ title: Manage BNS Names
 description: This section teaches you how to manage your namespace.
 ---
 
-# Manage BNS Names
-
-This section teaches you how to manage your namespace.
-
 ## Overview of management
 
 Once you register a BNS name, you have the power to change its zone file hash,

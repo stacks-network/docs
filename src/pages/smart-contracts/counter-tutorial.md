@@ -1,4 +1,5 @@
 ---
+title: Counter tutorial
 description: Learn how to write a simple smart contract in the Clarity language.
 experience: intermediate
 duration: 30 minutes
@@ -9,7 +10,7 @@ images:
   sm: /images/pages/counter-tutorial-sm.svg
 ---
 
-# Counter smart contract
+## Introduction
 
 In this tutorial, you learn how to implement a smart contract that stores and manipulates an integer value on the Stacks 2.0 blockchain. By the end of this tutorial, you will ...
 

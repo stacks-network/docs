@@ -1,8 +1,9 @@
 ---
+title: Hub configuration
 description: 'Storing user data with Blockstack'
 ---
 
-# Hub configuration parameters
+## Schema
 
 The following JSON schema details the possible parameters for a hub configuration:
 

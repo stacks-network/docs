@@ -3,11 +3,6 @@ title: Register a name
 description: This section explains registering BNS names and provides instructions for methods you can use to understand the cost of namespace registration.
 ---
 
-# Register a name
-
-This section explains registering BNS names and provides instructions for methods
-you can use to understand the cost of namespace registration.
-
 ## Understand registration
 
 Registering a BNS name costs cryptocurrency. This cost comes from two sources:

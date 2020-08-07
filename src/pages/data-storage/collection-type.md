@@ -2,7 +2,7 @@
 title: Create a Collection type
 ---
 
-# How to create a Collection type
+## Introduction
 
 Collections support data portability between applications. Blockstack supplies a `Contact` collection for use by Blockstack applications. Developers can create additional collection types, use them in their own applications, and publish them so other developers can make use of them too.
 

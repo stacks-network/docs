@@ -2,9 +2,8 @@
 title: Blockstack Connect
 description: Learn what Connect is and how to integrate it into an app.
 experience: beginners
+duration: 15 minutes
 ---
-
-# Guide to Blockstack Connect
 
 ## Introduction
 

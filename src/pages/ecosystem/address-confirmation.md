@@ -1,8 +1,9 @@
 ---
-description: 'Blockstack Network documentation'
+title: Confirm your address
+description: Learn how to confirm a Stacks address
 ---
 
-# Check your address
+## Introduction
 
 We recommend that you confirm your address is correct by going through the following steps in the Stacks Wallet:
 

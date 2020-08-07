@@ -1,8 +1,11 @@
 import React from 'react';
 import { Box, Flex, BoxProps, color, Grid, space } from '@blockstack/ui';
+import { BlockstackLogo } from '@components/icons/blockstack-logo';
+import { StackIcon } from '@components/icons/stack';
+import { SitemapIcon } from '@components/icons/sitemap';
 import { border, onlyText, transition } from '@common/utils';
 import { useTouchable } from '@common/hooks/use-touchable';
-import { Caption, Text } from '@components/typography';
+import { Text } from '@components/typography';
 import Link from 'next/link';
 import { useAppState } from '@common/hooks/use-app-state';
 import { Img } from '@components/mdx/image';
@@ -84,7 +87,7 @@ const InlineCard = ({ page }) => {
       <Box flexShrink={0} size="64px" overflow="hidden" borderRadius={'12px'}>
         <Image
           transition={transition('0.45s')}
-          transform={(hover || active) && 'scale(1.12)'}
+          transform={(hover || active) && 'scale(1.18)'}
           style={{ willChange: 'transform' }}
           size="64px"
           src={page.images.sm}
@@ -165,7 +168,7 @@ const GridCardImage: React.FC<BoxProps & { isHovered?: boolean; page: any }> = R
   )
 );
 
-const GridCardDetails: React.FC<BoxProps & { isHovered?: boolean; page: any }> = React.memo(
+const GridItemDetails: React.FC<BoxProps & { isHovered?: boolean; page: any }> = React.memo(
   ({ isHovered, page, ...props }) => (
     <>
       <Flex alignItems="flex-start" justifyContent="flex-start" flexDirection="column">
@@ -192,10 +195,62 @@ const GridCard: React.FC<BoxProps & { page?: any }> = React.memo(({ page, ...res
       {...bind}
     >
       <GridCardImage page={page} isHovered={hover || active} />
-      <GridCardDetails page={page} />
+      <GridItemDetails page={page} />
     </Box>
   );
 });
+
+const getIcon = (icon: string) => {
+  switch (icon) {
+    case 'BlockstackIcon':
+      return (p: BoxProps) => <BlockstackLogo size="32px" color="#9985FF" {...p} />;
+    case 'StacksIcon':
+      return (p: BoxProps) => (
+        <Grid borderRadius="6px" style={{ placeItems: 'center' }} bg="#9985FF" size="32px" {...p}>
+          <StackIcon size="24px" color={color('bg')} />
+        </Grid>
+      );
+    case 'TestnetIcon':
+      return (p: BoxProps) => (
+        <Grid borderRadius="6px" style={{ placeItems: 'center' }} bg="#9985FF" size="32px" {...p}>
+          <SitemapIcon size="24px" color={color('bg')} />
+        </Grid>
+      );
+    default:
+      return (p: BoxProps) => <BlockstackLogo size="32px" color={color('accent')} {...p} />;
+  }
+};
+const GridSmallItem: React.FC<BoxProps & { page?: any }> = ({ page, ...rest }) => {
+  const { hover, active, bind } = useTouchable({
+    behavior: 'link',
+  });
+  const Icon = getIcon(page.icon);
+  return (
+    <Box
+      position="relative"
+      color={color('text-title')}
+      _hover={{ color: color('accent') }}
+      {...rest}
+      {...bind}
+    >
+      {page.icon ? <Icon mb={space('base')} /> : null}
+      <GridItemDetails page={page} />
+    </Box>
+  );
+};
+
+const getComponent = (type: 'default' | 'inline' | 'grid' | 'grid-small') => {
+  switch (type) {
+    case 'inline':
+      return InlineCard;
+    case 'grid':
+      return GridCard;
+    case 'grid-small':
+      return GridSmallItem;
+    default:
+      return GridCard;
+  }
+};
 
 export const PageReference: React.FC<BoxProps> = React.memo(({ children }) => {
   const content = onlyText(children).trim();
@@ -206,6 +261,8 @@ export const PageReference: React.FC<BoxProps> = React.memo(({ children }) => {
   if (!routes) return null;
 
   const pages = paths.map(path => routes?.find(route => route.path === path)).filter(page => page);
+
+  const Comp = getComponent(variant as any);
   return (
     <Grid
       width="100%"
@@ -219,13 +276,9 @@ export const PageReference: React.FC<BoxProps> = React.memo(({ children }) => {
         `repeat(${pages.length === 1 ? 1 : 3}, 1fr)`,
       ]}
     >
-      {pages.map((page, key) =>
-        variant === 'inline' ? (
-          <InlineCard key={key} page={page} />
-        ) : (
-          <GridCard key={key} page={page} />
-        )
-      )}
+      {pages.map((page, key) => (
+        <Comp key={key} page={page} />
+      ))}
     </Grid>
   );
 });

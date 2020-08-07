@@ -1,13 +1,9 @@
 ---
-description: 'Blockstack naming service (BNS)'
+title: Subdomains
+description: This section explains BNS subdomains and provides instructions for methods you can use to work with them.
 ---
 
-# BNS Subdomains
-
-This section explains BNS subdomains and provides instructions for methods
-you can use to work with them. The following topics are included:
-
-# Overview of subdomains
+## Overview of subdomains
 
 BNS names are strongly-owned because the owner of its private key can generate
 valid transactions that update its zone file hash and owner. However, this comes at the
@@ -236,8 +232,7 @@ subdomain registrars on behalf of their applications. For example,
 the name `personal.id` is used to register Blockstack application users without
 requiring them to spend any Bitcoin.
 
-We supply a reference
-implementation of a [BNS Subdomain Registrar](https://github.com/blockstack/subdomain-registrar)
+We supply a reference implementation of a [BNS Subdomain Registrar](https://github.com/blockstack/subdomain-registrar)
 to help developers broadcast subdomain operations. Users would still own their
 subdomain names; the registrar simply gives developers a convenient way for them
 to register and manage them in the context of a particular application.

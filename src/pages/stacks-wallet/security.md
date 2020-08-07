@@ -1,8 +1,9 @@
 ---
-description: 'Blockstack Network documentation'
+title: Wallet security
+description: Best practices for keeping your wallet(s) secure.
 ---
 
-# Wallet and identity security
+## Introduction
 
 It is important that you understand how to keep good security for your Stacks Wallet software and your Blockstack identity.
 
@@ -12,7 +13,7 @@ Both your wallet seed phrase and your Secret Recovery Code are cryptographic key
 Stacks Wallet software. A **Secret Recovery Code** gives you access to your Blockstack identity. You need to use the
 strictest security available to you for both of these keys.
 
-The CrtypoCurrency Security Standard publishes [guidelines for key storage](https://cryptoconsortium.github.io/CCSS/Details/#1.03).
+The Cryptocurrency Security Standard publishes [guidelines for key storage](https://cryptoconsortium.github.io/CCSS/Details/#1.03).
 These guidelines are presented from least (Level I) to most secure (Level III). We recommend you store your keys with at least
 Level II security. This level states that you should:
 

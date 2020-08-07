@@ -3,7 +3,7 @@ title: Decentralized Identifiers (DIDs)
 description: BNS nodes are compliant with the emerging Decentralized Identity Foundation protocol specification for decentralized identifiers.
 ---
 
-# Decentralized Identifiers (DIDs)
+## Introduction
 
 BNS nodes are compliant with the emerging
 [Decentralized Identity Foundation](http://identity.foundation) protocol
