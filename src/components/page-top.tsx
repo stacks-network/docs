@@ -22,12 +22,7 @@ export const PageTop: React.FC<PageTopProps> = React.memo(
     const router = useRouter();
     const isHome = router?.pathname === '/';
     return (
-      <Box
-        as="section"
-        mb={['extra-loose', 'extra-loose', '64px']}
-        px={space(['extra-loose', 'extra-loose', 'none', 'none'])}
-        {...rest}
-      >
+      <Box as="section" mb="64px" {...rest}>
         <Flex>
           <H1 mb="0 !important">
             {getTitle({
