@@ -9,14 +9,16 @@ Stacks 2.0 is an open-membership replicated state machine produced by the coordi
 
 To unpack this definition:
 
-- A replicated state machine is two or more copies (“replicas”) of a given set of rules (a “machine”) that, in processing
-  a common input (such as the same sequence of transactions), will arrive at the same configuration (“state”). Bitcoin
-  is a replicated state machine — its state is the set of UTXOs, which each peer has a full copy of, and given a block,
-  all peers will independently calculate the same new UTXO set from the existing one.
-- Open-membership means that any host on the Internet can join the blockchain and independently calculate the same full
-  replica as all other peers.
-- Non-enumerable means that the set of peers that are producing the blocks don’t know about one another — they don’t know
-  their identities, or even how many exist and are online. They are indistinguishable.
+_A replicated state machine_ is two or more copies ("replicas") of a given set of rules (a "machine") that, in processing
+a common input (such as the same sequence of transactions), will arrive at the same configuration ("state"). Bitcoin
+is a replicated state machine — its state is the set of UTXOs, which each peer has a full copy of, and given a block,
+all peers will independently calculate the same new UTXO set from the existing one.
+
+_Open-membership_ means that any host on the Internet can join the blockchain and independently calculate the same full
+replica as all other peers.
+
+_Non-enumerable_ means that the set of peers that are producing the blocks don’t know about one another — they don’t know
+their identities, or even how many exist and are online. They are indistinguishable.
 
 ## Roadmap
 
@@ -27,17 +29,17 @@ system-wide issue, and for documenting design decisions.
 
 -> See [SIP 000](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-000-stacks-improvement-proposal-process.md) for more details about the SIPs process.
 
-- ✅&nbsp;&nbsp;&nbsp;[SIP 001: Burn Election](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md)
-- ✅&nbsp;&nbsp;&nbsp;[SIP 002: Clarity, a language for predictable smart contracts](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-002-smart-contract-language.md)
-- ✅&nbsp;&nbsp;&nbsp;[SIP 003: Peer Network](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-003-peer-network.md)
-- ✅&nbsp;&nbsp;&nbsp;[SIP 004: Cryptographic Committment to Materialized Views](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-004-materialized-view.md)
-- ✅&nbsp;&nbsp;&nbsp;[SIP 005: Blocks, Transactions, and Accounts](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md)
-- [ ] SIP 006: Clarity Execution Cost Assessment (Q2 2020)
-- [ ] SIP 007: Stacking Consensus (Q2 2020)
+- ✅ [SIP 001:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md) Burn Election
+- ✅ [SIP 002:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-002-smart-contract-language.md) Clarity, a language for predictable smart contracts
+- ✅ [SIP 003:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-003-peer-network.md) Peer Network
+- ✅ [SIP 004:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-004-materialized-view.md) Cryptographic Committment to Materialized Views
+- ✅ [SIP 005:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md) Blocks, Transactions, and Accounts
+- [ ] SIP 006: Clarity Execution Cost Assessment _(Q2 2020)_
+- [ ] SIP 007: Stacking Consensus _(Q2 2020)_
 
 ## Testnet phases
 
-- ✅&nbsp;&nbsp;&nbsp;**Helium** is a developer local setup, mono-node, assembling SIP 001, SIP 002, SIP 004 and SIP 005. With this version, developers can not only run Stacks 2.0 on their development machines, but also write, execute, and test smart contracts. See the instructions below for more details.
+- ✅ **Helium** is a developer local setup, mono-node, assembling SIP 001, SIP 002, SIP 004 and SIP 005. With this version, developers can not only run Stacks 2.0 on their development machines, but also write, execute, and test smart contracts. See the instructions below for more details.
 - [ ] **Neon** is the upcoming version of our public testnet, that we're anticipating will ship in Q2 2020. This testnet will ship with SIP 003, and will be an open-membership public network, where participants will be able to validate and participate in mining testnet blocks.
 - [ ] **Mainnet** is the fully functional version, that we're intending to ship in Q3 2020.
 

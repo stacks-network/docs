@@ -70,7 +70,7 @@ export const styleOverwrites = {
   },
   'p, li, a': {
     display: 'inline-block',
-    ...getCapsizeStyles(16, 28),
+    ...getCapsizeStyles(16, 26),
   },
   li: {
     display: 'list-item',
