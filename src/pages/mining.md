@@ -4,6 +4,8 @@ description: Set up and run a miner on the Stacks 2.0 testnet
 icon: TestnetIcon
 experience: beginners
 duration: 10 minutes
+tags:
+  - tutorial
 images:
   large: /images/pages/mining.svg
   sm: /images/pages/mining-sm.svg
@@ -14,7 +16,7 @@ images:
 Make sure you've followed our guide for getting a Stacks 2.0 Testnet node up and running, once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
 
 [@page-reference | inline]
-| /stacks-blockchain/testnet
+| /stacks-blockchain/testnet-node
 
 ## Running a miner
 

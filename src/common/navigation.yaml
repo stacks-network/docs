@@ -45,7 +45,7 @@ sections:
       - path: /stacks-blockchain
         pages:
           - path: /overview
-          - path: /testnet
+          - path: /testnet-node
           - path: /best-practices
           - path: /wire-format
           - path: /atlas
