@@ -248,11 +248,11 @@ const getComponent = (type: 'default' | 'inline' | 'grid' | 'grid-small') => {
     case 'grid-small':
       return GridSmallItem;
     default:
-      return GridCard;
+      return InlineCard;
   }
 };
 
-export const PageReference: React.FC<BoxProps> = React.memo(({ children }) => {
+export const PageReference: React.FC<BoxProps> = React.memo(({ children, ...rest }) => {
   const content = onlyText(children).trim();
   const [variant, _paths] = content.includes('\n') ? content.split('\n') : ['default', content];
   const paths = _paths.includes(', ') ? _paths.split(', ') : [_paths];
@@ -264,21 +264,24 @@ export const PageReference: React.FC<BoxProps> = React.memo(({ children }) => {
 
   const Comp = getComponent(variant as any);
   return (
-    <Grid
-      width="100%"
-      mt={space('extra-loose')}
-      gridColumnGap={space('extra-loose')}
-      gridRowGap={space('extra-loose')}
-      gridTemplateColumns={[
-        `repeat(1, 1fr)`,
-        `repeat(${pages.length === 1 ? 1 : 2}, 1fr)`,
-        `repeat(${pages.length === 1 ? 1 : 2}, 1fr)`,
-        `repeat(${pages.length === 1 ? 1 : 3}, 1fr)`,
-      ]}
-    >
-      {pages.map((page, key) => (
-        <Comp key={key} page={page} />
-      ))}
-    </Grid>
+    <Box {...rest}>
+      <Grid
+        display="grid"
+        width="100%"
+        gridColumnGap={space('extra-loose')}
+        gridRowGap={space('extra-loose')}
+        mt={space('extra-loose')}
+        gridTemplateColumns={[
+          `repeat(1, 1fr)`,
+          `repeat(${pages.length === 1 ? 1 : 2}, 1fr)`,
+          `repeat(${pages.length === 1 ? 1 : 2}, 1fr)`,
+          `repeat(${pages.length === 1 ? 1 : 3}, 1fr)`,
+        ]}
+      >
+        {pages.map((page, key) => (
+          <Comp key={key} page={page} />
+        ))}
+      </Grid>
+    </Box>
   );
 });
