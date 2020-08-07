@@ -18,4 +18,4 @@ description: All you need to build decentralized apps and smart contracts.
 ## Explore
 
 [@page-reference | grid-small]
-| /ecosystem/overview, /ecosystem/stacks-token, /smart-contracts/running-a-testnet-node
+| /ecosystem/overview, /ecosystem/stacks-token, /stacks-blockchain/testnet

@@ -119,7 +119,7 @@ export const Code: React.FC<
           >
             <IconButton
               title="Copy to clipboard"
-              bg="transparent"
+              bg="ink.900"
               _hover={{
                 color: 'white',
                 // @ts-ignore

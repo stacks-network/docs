@@ -6,7 +6,6 @@ sections:
         pages:
           - path: /overview
           - path: /principals
-          - path: /running-a-testnet-node
         sections:
           - title: Tutorials
             pages:
@@ -46,6 +45,7 @@ sections:
       - path: /stacks-blockchain
         pages:
           - path: /overview
+          - path: /testnet
           - path: /best-practices
           - path: /wire-format
           - path: /atlas
