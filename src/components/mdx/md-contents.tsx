@@ -13,7 +13,7 @@ import { getCapsizeStyles } from '@components/mdx/typography';
 export const styleOverwrites = {
   '& > section': {
     '&:nth-child(2)': {
-      '& > *:first-child': {
+      '& > *:first-child, & > section:first-child > *:first-child': {
         mt: 0,
       },
     },
