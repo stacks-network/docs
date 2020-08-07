@@ -80,6 +80,8 @@ Awesome! Your node is now connected to the testnet network. Your node will recei
 and you can use your [node's RPC API](/core/smart/rpc-api) to send transactions, fetch information for contracts and
 accounts, and more.
 
+### Mine Stacks token
+
 Now that you have a running testnet node, you can easily set up a miner.
 
 [@page-reference | inline]
