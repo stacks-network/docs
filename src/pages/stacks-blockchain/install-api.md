@@ -1,6 +1,12 @@
-# Blockstack API
+---
+title: Blockstack API
+description: Step-by-step instructions for deploying a Blockstack API node on Debian or Ubuntu are below.
+duration: 30 minutes
+tags:
+  - tutorial
+---
 
-Step-by-step instructions for deploying a Blockstack API node on Debian or Ubuntu are below.
+## Introduction
 
 - **Step 1:** Make sure you have a Stacks Node running locally (see [instructions](https://github.com/blockstack/blockstack-core/blob/master/README.md#quick-start)).
 
@@ -82,5 +88,5 @@ sudo systemctl restart blockstack_api
 sudo systemctl restart nginx
 ```
 
-If you run into any issues, please [submit a Github issue](https://github.com/blockstack/blockstack-core/issues) and we'll update these
+If you run into any issues, please [submit a Github issue](https://github.com/blockstack/stacks-blockchain/issues) and we'll update these
 instructions.

@@ -2,7 +2,7 @@
 description: 'Storing user data with Blockstack'
 ---
 
-# Authentication and Gaia
+## Introduction
 
 Blockstack authentication is a bearer token-based authentication system. From an app user's perspective,
 login similar to third-party authentication techniques that they're familiar with. For an app developer,

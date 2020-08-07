@@ -22,11 +22,12 @@ sections:
         pages:
           - path: /overview
           - path: /profiles
-          - path: /connect
         sections:
           - title: Tutorials
+            usePageTitles: true
             pages:
               - path: /building-todo-app
+              - path: /connect
       - path: /data-storage
         pages:
           - path: /overview
@@ -63,7 +64,6 @@ sections:
           - path: /install
           - path: /usage
           - path: /security
-          - path: /troubleshooting
       - path: /naming-services
         pages:
           - path: /overview

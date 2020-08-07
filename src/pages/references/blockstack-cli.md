@@ -5,7 +5,7 @@ title: Blockstack CLI
 export { convertBlockstackCLIUsageToMdx as getStaticProps } from '@common/data/cli-ref'
 import { CLIReferenceTable } from '@components/cli-reference'
 
-# Blockstack CLI reference
+## Introduction
 
 The command line is intended for developers only. Developers can use the command
 line to test and debug Blockstack applications in ways that the Blockstack
@@ -17,8 +17,7 @@ Browser does not yet support. Using the command line, developers can:
 - Query Stacks Nodes
 - Implement a minimum viable authentication flow
 
-!> Many of the commands operate on unencrypted private keys. For this reason,
-DO NOT use this tool for day-to-day tasks as you risk the security of your keys.
+!> Many of the commands operate on unencrypted private keys. For this reason, **DO NOT** use this tool for day-to-day tasks as you risk the security of your keys.
 
 You must install the command line before you can use the commands.
 

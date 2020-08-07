@@ -1,5 +1,6 @@
 ---
 description: Learn about Blockstack and decentralization
+icon: BlockstackIcon
 ---
 
 # Overview of Blockstack

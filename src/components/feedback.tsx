@@ -19,10 +19,12 @@ import { useRouter } from 'next/router';
 import { getHeadingStyles } from '@components/mdx/typography';
 import { css } from '@styled-system/css';
 import { StatusCheck } from '@components/status-check';
+import { useColorMode } from '@common/hooks/use-color-mode';
 
 const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponent, ...props }) => {
   const { bind, hover, active } = useTouchable();
   const isHovered = hover || active;
+  const [mode] = useColorMode();
   return (
     <Box
       color={color('text-caption')}
@@ -31,7 +33,9 @@ const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponen
       {...props}
       {...bind}
     >
-      <IconComponent bg={isHovered ? color('accent') : color('bg-alt')} />
+      <IconComponent
+        bg={isHovered ? '#9985FF' : mode === 'light' ? color('bg-alt') : color('bg-light')}
+      />
     </Box>
   );
 };

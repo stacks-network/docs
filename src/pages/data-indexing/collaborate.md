@@ -3,7 +3,7 @@ title: Collaborate with groups
 description: A key feature of Radiks is support for private collaboration between multiple users.
 ---
 
-# Collaborate with groups
+## Introduction
 
 A key feature of Radiks is support for private collaboration between multiple users. Supporting collaboration with
 client-side encryption and user-owned storage can be complicated, but the patterns to implement it are generally the

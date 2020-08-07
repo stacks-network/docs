@@ -11,10 +11,14 @@ import { border } from '@common/utils';
 import { getCapsizeStyles } from '@components/mdx/typography';
 
 export const styleOverwrites = {
-  section: {
-    '&:first-child > h2:first-child': {
-      mt: 0,
+  '& > section': {
+    '&:nth-child(2)': {
+      '& > *:first-child': {
+        mt: 0,
+      },
     },
+  },
+  section: {
     '& > *:not(pre):not(ul):not(ol):not(img):not([data-reach-accordion]):not(section):not(hr)': {
       px: space(['extra-loose', 'extra-loose', 'none', 'none']),
     },
@@ -48,7 +52,7 @@ export const styleOverwrites = {
       borderRadius: [0, 0, '12px'],
       bg: themeColor('ink'),
     },
-    '& > div > code': {
+    '& > div > div > code': {
       whiteSpace: 'pre',
       overflowX: 'auto',
       maxWidth: '100%',

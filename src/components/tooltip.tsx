@@ -13,7 +13,7 @@ const centered = (triggerRect: any, tooltipRect: any) => {
   };
 };
 
-export const Tooltip = ({ children, label, 'aria-label': ariaLabel }: any) => {
+export const Tooltip = ({ children, label, 'aria-label': ariaLabel, style = {}, ...rest }: any) => {
   const [trigger, tooltip] = useTooltip();
 
   const { onMouseDown, ...triggerProps } = trigger;
@@ -33,8 +33,10 @@ export const Tooltip = ({ children, label, 'aria-label': ariaLabel }: any) => {
           borderRadius: '3px',
           padding: '0.5em 1em',
           fontSize: '12px',
+          ...style,
         }}
         position={centered}
+        {...rest}
       />
     </>
   );

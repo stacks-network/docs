@@ -1,8 +1,11 @@
 ---
 title: Signing transactions
+description: Learn how to sign transactions using Blockstack Connect.
+experience: advanced
+duration: 30 minutes
 ---
 
-# Signing transactions
+## Introduction
 
 With Connect, you can interact with the Stacks 2.0 blockchain. You can allow your users to send transactions
 and interact with smart contracts.

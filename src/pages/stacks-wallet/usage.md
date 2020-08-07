@@ -1,10 +1,11 @@
 ---
-description: 'Blockstack Network documentation'
+title: Using the Stacks wallet
+description: Learn how to use the Stacks wallet
 ---
 
-# Use the Stacks Wallet software
+## Introduction
 
-This page describes how to use the Stacks Wallet software to manager your Stacks (STX) tokens. This page contains the following topics:
+This page describes how to use the Stacks Wallet software to manager your Stacks (STX) tokens.
 
 The Stacks Wallet software is installed on your computer, it is not a web application. You should have already [downloaded, verified, and installed the wallet software](wallet-install).
 
@@ -270,8 +271,7 @@ They are maintained.
 Once you reset the wallet, you have to start over from the _Terms of Use_. If
 you do not restart the wallet, you can simple close it.
 
-1. Click the <span class="uk-margin-small-center" uk-icon="cog"></span>
-   (settings icon) in the upper right corner of the wallet.
+1. Click the settings icon in the upper right corner of the wallet.
 
    The system opens the **Settings** dialog.
 
@@ -280,7 +280,7 @@ you do not restart the wallet, you can simple close it.
 2. Select **Reset Wallet**.
 
    System asks for confirmation. If, for some reason, you want to stop the reset
-   you would press <span class="uk-margin-small-center" uk-icon="close"></span> (right corner) or **Close**.
+   you would press close icon in the right corner or **Close**.
 
 3. Select **Are you sure?** to complete the reset.
 

@@ -3,7 +3,7 @@ title: Integrate Radiks
 description: Learn how to setup Radiks with your application.
 ---
 
-# Integrate Radiks
+## Introduction
 
 Using Radiks with your application requires a Radiks server and a client application constructed to use the server.
 In this article, you learn how to install, setup, and run a pre-packaged Radiks server that connects to MongoDB.

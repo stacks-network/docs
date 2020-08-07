@@ -1,20 +1,19 @@
 ---
-description: 'Storing user data with Blockstack'
+title: Configure a hub on Amazon EC2
+description: Learn how to run a Gaia hub on Amazon EC2.
 ---
 
-# Configure a hub on Amazon EC2
+## Introduction
 
 This teaches you how to run a Gaia hub on Amazon EC2. Amazon EC2 is an affordable and convenient cloud computing provider.
 This example uses Amazon EC2 instance together with an [EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html)
 disk for file storage.
 
-> #### Is this tutorial for you?
->
-> This documentation is appropriate for advanced power users who are familiar with command line tools, `ssh`, and
-> basic editing configuration files.
->
-> If you are planning on running an _open-membership hub_ or an _application-specific hub_, see
-> [the section on Hub Operation](hub-operation).
+#### Is this tutorial for you?
+
+-> This documentation is appropriate for advanced power users who are familiar with command line tools, `ssh`, and basic editing configuration files.
+
+-> If you are planning on running an _open-membership hub_ or an _application-specific hub_, see [the section on Hub Operation](hub-operation).
 
 ## Prerequisites you need
 

@@ -1,6 +1,6 @@
 ---
 title: Hello, World!
-description: Get Started Writing Smart Contracts with Clarity
+description: Learn the basics of Clarity and write a simple Hello World smart contract.
 duration: 18 minutes
 experience: beginners
 images:
@@ -8,9 +8,7 @@ images:
   sm: /images/pages/hello-world-sm.svg
 ---
 
-# Hello, World!
-
-## Overview
+## Introduction
 
 In the world of smart contracts, everything is a blockchain transaction. You use tokens in your wallet to deploy a smart contract in a transaction, and each call to that contract after it's published is a transaction, too. That means that at each step, tokens are being exchanged as transaction fees. This tutorial introduces you to this mode of programming, which transforms blockchains into powerful state machines capable of executing complex logic.
 
@@ -149,8 +147,6 @@ Locate the `(echo-number)` method, provide any integer for the `val` argument an
 
 **Congratulations! You just deployed your smart contract and called a public function on the Testnet.**
 
----
-
 With the completion of this tutorial, you now:
 
 - Have a working Clarity starter project and local dev environment
@@ -207,8 +203,3 @@ blockstack call_contract_func <stx_address> hello-world echo-number 2000 1 <stx_
 ```
 
 To learn more about the Blockstack CLI commands, you can run `blockstack-cli help all`.
-
-## Where to go next
-
-- <a href="tutorial-counter.html">Next tutorial: Writing a counter smart contract</a>
-- <a href="tutorial-test.html">Tutorial: Testing contracts with JavaScript and Mocha</a>

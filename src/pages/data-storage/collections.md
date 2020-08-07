@@ -1,8 +1,9 @@
 ---
 title: Collections (Preview)
+description: Learn about the beta release of Collections and how you can start using it.
 ---
 
-# Work with Collections (Preview)
+## Introduction
 
 Collections is the feature designed to make data portable among Blockstack applications. Sharing is accomplished by
 storing a user's data in a standardized format at a known, Gaia storage location. Collections associate user data with
@@ -11,13 +12,9 @@ a user's decentralized ID. When users move among apps, the same data is availabl
 On this page, you learn what collections are and how to use them. You'll learn about the `Contact` collection in
 particular. The following topics are covered:
 
-> #### Preview release
->
-> This is a preview release of the `Contact` collections. This release allows developers to try out the new collections
-> functionality and we are interested in collecting feedback. Please feel free to report issues or request enhancements
-> with collections or `Contacts` themselves on the [blockstack-collections repository](https://github.com/blockstack/blockstack-collections/issues/new).
->
-> If you encounter problems with `blockstack.js` you can [file issues or request enhancements on its repo](https://github.com/blockstack/blockstack.js/issues/new).
+-> This is a preview release of the `Contact` collections. This release allows developers to try out the new collections functionality and we are interested in collecting feedback. Please feel free to report issues or request enhancements with collections or `Contacts` themselves on the [blockstack-collections repository](https://github.com/blockstack/blockstack-collections/issues/new).
+
+~> If you encounter problems with `blockstack.js` you can [file issues or request enhancements on its repo](https://github.com/blockstack/blockstack.js/issues/new).
 
 ## Understand how collections work
 

@@ -1,3 +1,9 @@
+---
+title: Testnet
+description: Run the latest builds of a Stacks Testnet node
+icon: TestnetIcon
+---
+
 # Running a Testnet Node
 
 The Stacks 2.0 testnet is currently in development. As part of the testnet, you can run a node and connect it to a public network. This guide will walk you through downloading and running your own node in the testnet network.

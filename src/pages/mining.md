@@ -6,4 +6,4 @@ images:
   sm: /images/pages/mining-sm.svg
 ---
 
-# Mine Stacks Token
+## Introduction

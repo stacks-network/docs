@@ -1,6 +1,26 @@
-import { Box, BoxProps } from '@blockstack/ui';
+import { Box, BoxProps, color, space, Fade } from '@blockstack/ui';
 import NextLink from 'next/link';
 import React, { forwardRef, Ref } from 'react';
+import { useAppState } from '@common/hooks/use-app-state';
+import { border, transition } from '@common/utils';
+import { Text } from '@components/typography';
+import { useTouchable } from '@common/hooks/use-touchable';
+import { css } from '@styled-system/css';
+import { getHeadingStyles } from '@components/mdx/typography';
+import { PageMeta } from '@components/page-meta';
+
+export const MarkdownLink = ({ href, ...rest }: { href: string }) => {
+  const isExternal = !href || href?.includes('http') || href?.includes('mailto');
+  const link = <LinkWithHover href={href || undefined} {...rest} />;
+
+  return isExternal ? (
+    link
+  ) : (
+    <NextLink href={href} passHref>
+      {link}
+    </NextLink>
+  );
+};
 
 export const SmartLink = ({ href, ...rest }: { href: string }) => {
   const isExternal = !href || href?.includes('http') || href?.includes('mailto');
@@ -15,21 +35,104 @@ export const SmartLink = ({ href, ...rest }: { href: string }) => {
   );
 };
 
+const Card = ({ route, styles, ...rest }) => {
+  const { description } = route;
+  return (
+    <Box
+      style={{ userSelect: 'none', pointerEvents: 'none', ...styles }}
+      transition={transition()}
+      pt={space('tight')}
+      {...rest}
+    >
+      <Box
+        bg={color('bg')}
+        minWidth="280px"
+        border={border()}
+        borderRadius="12px"
+        overflow="hidden"
+        boxShadow="0px 2px 4px rgba(0, 0, 0, 0.02), 0px 24px 40px rgba(0, 0, 0, 0.08)"
+      >
+        <Box bg={color('bg-light')} p={space('base')}>
+          <Text
+            css={css({
+              ...getHeadingStyles('h5'),
+              display: 'block',
+            })}
+          >
+            {description}
+          </Text>
+          <PageMeta small {...route} />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const LinkWithHover = forwardRef(
+  (
+    props: { href?: string; target?: string; rel?: string } & BoxProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    const { bind, hover } = useTouchable();
+
+    const { routes } = useAppState();
+    const isExternal =
+      props.href && (props.href?.includes('http') || props.href?.includes('mailto'));
+
+    const previewData =
+      !isExternal && props.href && props.href.startsWith('/')
+        ? routes.find(r => r.path.endsWith(props.href))
+        : undefined;
+
+    return (
+      <Box display="inline" position="relative" {...bind}>
+        <Box
+          as={props.href ? 'a' : 'span'}
+          ref={ref}
+          color="var(--colors-accent)"
+          cursor="pointer"
+          textDecoration="underline"
+          _hover={{ textDecoration: 'none' }}
+          _focus={{ boxShadow: 'outline' }}
+          rel="nofollow noopener noreferrer"
+          {...props}
+        />
+        {previewData ? (
+          <Fade in={hover}>
+            {styles => (
+              <Card
+                route={previewData}
+                position="absolute"
+                left={0}
+                top="100%"
+                styles={styles}
+                zIndex={999}
+              />
+            )}
+          </Fade>
+        ) : null}
+      </Box>
+    );
+  }
+);
+
 export const Link = forwardRef(
   (
     props: { href?: string; target?: string; rel?: string } & BoxProps,
     ref: Ref<HTMLDivElement>
-  ) => (
-    <Box
-      as={props.href ? 'a' : 'span'}
-      ref={ref}
-      color="var(--colors-accent)"
-      cursor="pointer"
-      textDecoration="underline"
-      _hover={{ textDecoration: 'none' }}
-      _focus={{ boxShadow: 'outline' }}
-      rel="nofollow noopener noreferrer"
-      {...props}
-    />
-  )
+  ) => {
+    return (
+      <Box
+        as={props.href ? 'a' : 'span'}
+        ref={ref}
+        color="var(--colors-accent)"
+        cursor="pointer"
+        textDecoration="underline"
+        _hover={{ textDecoration: 'none' }}
+        _focus={{ boxShadow: 'outline' }}
+        rel="nofollow noopener noreferrer"
+        {...props}
+      />
+    );
+  }
 );

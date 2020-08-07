@@ -2,7 +2,7 @@
 title: Guide to Blockstack Storage
 ---
 
-# Guide to Blockstack Storage
+## Introduction
 
 The Blockstack Platform stores application data in the Gaia Storage System. Transactional metadata is stored on the
 Blockstack blockchain and user application data is stored in Gaia storage. Storing data off of the blockchain ensures

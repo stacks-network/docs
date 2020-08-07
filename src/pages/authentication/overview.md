@@ -6,11 +6,6 @@ images:
   sm: /images/pages/authentication-sm.svg
 ---
 
-# Authentication protocol
-
-Blockstack Auth provides single sign on and authentication without third parties or remote servers.
-On this page, you'll get an overview of authentication from a developer perspective.
-
 ## Authentication flow
 
 For an application developer, the application flow is similar to the typical client-server flow used by centralized sign in services (e.g., OAuth). However, with Blockstack, the authentication flow happens entirely client-side.

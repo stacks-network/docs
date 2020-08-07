@@ -1,6 +1,7 @@
 ---
 title: Stacks token
 description: Learn about the native token of Blockstack
+icon: StacksIcon
 ---
 
 # Learn more about the Stacks token

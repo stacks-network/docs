@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Pre,
   THead,
-  SmartLink,
+  MarkdownLink,
   TData,
   Table,
   InlineCode,
@@ -24,7 +24,6 @@ import {
 import { Img } from '@components/mdx/image';
 import { Code } from '@components/mdx/components';
 import { PageReference } from '@components/custom-blocks/page-reference';
-import { MDWrapper } from '@components/layouts/markdown-wrapper';
 
 export const Components = {
   h1: () => null,
@@ -41,7 +40,7 @@ export const Components = {
   table: Table,
   th: THead,
   td: TData,
-  a: SmartLink,
+  a: MarkdownLink,
   p: P,
   ul: Ul,
   ol: Ol,

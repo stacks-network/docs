@@ -3,7 +3,7 @@ title: How Atlas works
 description: Atlas was designed to overcome the structural weaknesses inherent to all distributed hash tables.
 ---
 
-# How Atlas Works
+## Introduction
 
 Atlas was designed to overcome the structural weaknesses inherent to all
 distributed hash tables. In particular, it uses an unstructured peer network to

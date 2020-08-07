@@ -1,8 +1,9 @@
 ---
-description: 'How to use the Blockstack Software'
+title: Install the Stacks wallet
+description: Learn how to install the Stacks wallet
 ---
 
-# Install the Stacks Wallet software
+## Introduction
 
 You use the Stacks Wallet software client alone or with a hardware wallet to send and receive
 Stacks (STX) tokens. On this page, you learn how to install the Stacks Wallet software.

@@ -1,8 +1,9 @@
 ---
+title: Install Clarity from source
 description: 'Blockstack smart contracting language'
 ---
 
-# Install Clarity from Source
+## Installation
 
 Build using `rust` and `cargo`:
 

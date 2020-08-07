@@ -3,11 +3,6 @@ title: Resolve a name
 description: This section explains resolving BNS names and provides instructions for methods you can use to accomplish namespace resolution.
 ---
 
-## Resolve a name
-
-This section explains resolving BNS names and provides instructions for methods
-you can use to accomplish namespace resolution.
-
 ## Understand resolution
 
 BNS names are bound to both public keys and to about 40Kb of off-chain state.

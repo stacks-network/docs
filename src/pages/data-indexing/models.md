@@ -3,7 +3,7 @@ title: Create and use models
 description: Model and query application data with Radiks.
 ---
 
-# Create and use models
+## Introduction
 
 Radiks allows you to model your client data. You can then query this data and display it for a
 user in multi-player applications. A social application where users want to see the comments of

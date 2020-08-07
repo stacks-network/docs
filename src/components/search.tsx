@@ -52,16 +52,14 @@ const Key: React.FC<BoxProps> = React.memo(({ children, ...rest }) => (
       placeItems: 'center',
     }}
     size="18px"
-    bg={color('bg')}
-    border={border()}
+    bg={'rgba(0,0,0,0.11)'}
     borderRadius="3px"
-    boxShadow="low"
-    opacity={0.75}
+    opacity={0.65}
     {...rest}
   >
     <Text
       css={css({
-        color: color('text-caption'),
+        color: color('text-body'),
         display: 'block',
         transform: 'translateY(1px)',
         ...getCapsizeStyles(12, 12),

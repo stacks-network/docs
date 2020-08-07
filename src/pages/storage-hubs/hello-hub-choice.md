@@ -1,8 +1,9 @@
 ---
+title: Hello world hub choice
 description: 'Storing user data with Blockstack'
 ---
 
-# Hello hub choice tutorial
+## Introduction
 
 -> The functionality described in this tutorial has been deprecated with the Blockstack Browser. It will continue working only for apps that have not yet upgraded to Blockstack Connect.
 

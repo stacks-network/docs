@@ -4,10 +4,6 @@ redirect_from:
   - /storage/hello-hub-choice.html
 ---
 
-# Understand hub operation
-
-This page describes the considerations hub operators must take into account when creating and operating a Gaia storage hub.
-
 ## Configuration files
 
 You should store a JSON configuration file either in the top-level directory of

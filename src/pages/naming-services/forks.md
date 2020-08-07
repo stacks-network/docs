@@ -3,7 +3,7 @@ title: BNS forks
 description: Learn about forks within the context of the BNS.
 ---
 
-# BNS Forks
+## Introduction
 
 BNS effectively uses a public blockchain to store a database log. A BNS peer
 bootstraps itself by downloading and replaying the database log from the
