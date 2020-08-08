@@ -26,7 +26,7 @@ export const Card: React.FC<CardProps> = ({ children, onClick, dark = false, hre
       {...bind}
       {...rest}
     >
-      <LinkComponent href={href} />
+      {href && <LinkComponent href={href} />}
       <Grid
         width="100%"
         px={space('base-loose')}

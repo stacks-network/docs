@@ -1,76 +1,68 @@
 import React from 'react';
-import { Components } from '@components/mdx';
-import { Box, Flex, ChevronIcon, space, color } from '@blockstack/ui';
-import hydrate from 'next-mdx-remote/hydrate';
-import { Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@reach/accordion';
-import { border } from '@common/utils';
+import { Box, space, color, Grid } from '@blockstack/ui';
+import { Text } from '@components/typography';
 import { slugify } from '@common/utils';
 import { css } from '@styled-system/css';
-import { useRouter } from 'next/router';
-import { useActiveHeading } from '@common/hooks/use-active-heading';
-const getSlug = (asPath: string) => {
-  if (asPath.includes('#')) {
-    const slug = asPath.split('#')[1];
-    return slug;
-  }
-  return;
-};
+import { getCapsizeStyles, getHeadingStyles } from '@components/mdx/typography';
+import { HoverImage } from '../hover-image';
+import { useTouchable } from '@common/hooks/use-touchable';
+import Link from 'next/link';
+import { getBetterNames } from '@common/utils/faqs';
 
-const FAQItem = React.memo(({ faq, ...rest }: any) => {
-  const id = slugify(faq.question);
-  const { isActive } = useActiveHeading(id);
-
+const FloatingLink = ({ href, ...props }: any) => (
+  <Link href={href} {...props} passHref>
+    <Box as="a" position="absolute" size="100%" zIndex={999} left={0} top={0} />
+  </Link>
+);
+const SectionCard = ({ section }) => {
+  const { hover, active, bind } = useTouchable({
+    behavior: 'button',
+  });
+  const { title, description, img } = getBetterNames(section.id);
   return (
-    <Box as={AccordionItem} borderBottom={border()} {...rest}>
-      <Flex
-        as={AccordionButton}
-        _hover={{ color: color('accent') }}
-        css={css({
-          display: 'flex',
-          width: '100%',
-          outline: 'none',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          py: space('extra-loose'),
-          textAlign: 'left',
-          pr: space('extra-loose'),
-          color: isActive ? color('accent') : color('text-title'),
-          '& > h4': {
-            pl: space('extra-loose'),
-          },
-          ':hover': {
-            color: color('accent'),
-          },
-        })}
-      >
-        <Components.h4 id={id} my="0px !important" color="currentColor">
-          {faq.question}
-        </Components.h4>
-        <Box color={color('text-caption')} pl={space('base-loose')}>
-          <ChevronIcon direction="down" size="22px" />
+    <Box
+      color={color('text-title')}
+      _hover={{ cursor: 'pointer', color: color('accent') }}
+      position="relative"
+      {...bind}
+    >
+      <FloatingLink href="/references/faqs/[slug]" as={`/references/faqs/${slugify(title)}`} />
+      <HoverImage isHovered={hover || active} src={img} />
+      <Box>
+        <Text
+          css={css({
+            color: 'currentColor',
+            ...getHeadingStyles('h3'),
+          })}
+        >
+          {title}
+        </Text>
+        <Box>
+          <Text
+            css={css({
+              display: 'block',
+              color: color('text-body'),
+              mt: space('base-loose'),
+              ...getCapsizeStyles(16, 26),
+            })}
+          >
+            {description}
+          </Text>
         </Box>
-      </Flex>
-      <Box px={space('extra-loose')} pb={space('extra-loose')} as={AccordionPanel}>
-        {hydrate(faq.answer, Components)}
       </Box>
     </Box>
   );
-});
-export const FAQs = React.memo(({ category, data }: any) => {
-  const router = useRouter();
-  const slug = getSlug(router.asPath);
-  const faqs = data.filter(faq => faq.category === category);
-  const slugIndex = faqs.findIndex(faq => slugify(faq.question) === slug);
-  const [index, setIndex] = React.useState(slugIndex !== -1 ? slugIndex : undefined);
-  const handleIndexChange = (value: number) => {
-    setIndex(value);
-  };
-
+};
+export const FAQs = React.memo(({ articles, sections }: any) => {
   return (
-    <Accordion multiple collapsible defaultIndex={index} onChange={handleIndexChange}>
-      {faqs.map((faq, _index) => {
-        return <FAQItem faq={faq} key={_index} />;
+    <Grid
+      gridTemplateColumns="repeat(2, 1fr)"
+      gridColumnGap={space('extra-loose')}
+      gridRowGap="64px"
+    >
+      {sections.map(section => {
+        return <SectionCard key={section.id} section={section} />;
       })}
-    </Accordion>
+    </Grid>
   );
 });

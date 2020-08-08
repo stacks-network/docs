@@ -124,7 +124,7 @@ const ChildPages = ({ items, handleClick }: any) => {
           <Box mb={space('extra-tight')} key={key}>
             <Link href={routePath.path} passHref>
               <PageItem
-                isActive={router.pathname.endsWith(path)}
+                isActive={router.pathname.includes(path)}
                 onClick={page.pages ? () => handleClick(page) : undefined}
                 as="a"
               >
@@ -187,28 +187,38 @@ const Navigation = () => {
   React.useEffect(() => {
     let currentSection = selected.items;
 
-    nav.sections.forEach(section => {
-      section.pages.forEach(page => {
-        if (page.pages) {
-          const pagesFound = page.pages.find(_page => {
-            return router.pathname.endsWith(`${page.path}${_page.path}`);
-          });
-          const sectionsFound = page?.sections?.find(_section => {
-            return _section.pages.find(_page => {
+    if (router.pathname === '/') {
+      currentSection = {
+        items: nav.sections,
+        type: 'default',
+      };
+    } else {
+      nav.sections.forEach(section => {
+        section.pages.forEach(page => {
+          if (page.pages) {
+            const pagesFound = page.pages.find(_page => {
               return router.pathname.endsWith(`${page.path}${_page.path}`);
             });
-          });
-          if (pagesFound || sectionsFound) {
-            currentSection = page;
+            const sectionsFound = page?.sections?.find(_section => {
+              return _section.pages.find(_page => {
+                return router.pathname.endsWith(`${page.path}${_page.path}`);
+              });
+            });
+            if (pagesFound || sectionsFound) {
+              currentSection = {
+                type: 'page',
+                items: page,
+              };
+            }
+          } else {
+            return router.pathname.endsWith(page.path);
           }
-        } else {
-          return router.pathname.endsWith(page.path);
-        }
+        });
       });
-    });
+    }
 
-    if (selected.items !== currentSection) {
-      setSelected({ type: 'page', items: currentSection });
+    if (currentSection.items && selected.items !== currentSection.items) {
+      setSelected(currentSection);
     }
   }, [router.pathname]);
 
@@ -289,6 +299,8 @@ const Navigation = () => {
       );
     });
   }
+
+  return null;
 };
 
 export const SideNav: React.FC<BoxProps & { containerProps?: BoxProps }> = ({

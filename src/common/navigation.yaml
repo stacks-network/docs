@@ -108,9 +108,7 @@ sections:
           - external:
               href: 'https://blockstack.github.io/blockstack-ios/'
               title: iOS SDK
-          - external:
-              href: 'https://blockstack.zendesk.com/hc/en-us'
-              title: FAQs
+          - path: /faqs
           - path: /glossary
           - path: /deploy-tips
   - title: Ecosystem
