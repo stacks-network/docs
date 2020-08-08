@@ -141,8 +141,8 @@ const InlineCard = ({ page }) => {
   );
 };
 
-const GridCardImage: React.FC<BoxProps & { isHovered?: boolean; page: any }> = React.memo(
-  ({ isHovered, page, ...props }) => (
+const GridCardImage: React.FC<BoxProps & { isHovered?: boolean; src?: string }> = React.memo(
+  ({ isHovered, src, ...props }) => (
     <Box
       bg="#9985FF"
       position="relative"
@@ -158,7 +158,7 @@ const GridCardImage: React.FC<BoxProps & { isHovered?: boolean; page: any }> = R
           transition={transition('0.45s')}
           transform={isHovered && 'scale(1.08)'}
           style={{ willChange: 'transform' }}
-          src={page?.images?.large}
+          src={src}
           position="absolute"
           left={'-2%'}
           top={'-2%'}
@@ -194,7 +194,7 @@ const GridCard: React.FC<BoxProps & { page?: any }> = React.memo(({ page, ...res
       {...rest}
       {...bind}
     >
-      <GridCardImage page={page} isHovered={hover || active} />
+      <GridCardImage src={page?.images?.large} isHovered={hover || active} />
       <GridItemDetails page={page} />
     </Box>
   );

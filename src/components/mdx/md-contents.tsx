@@ -244,15 +244,14 @@ export const MDContents: React.FC<any> = ({ pageTop: PageTop = null, headings, c
   const router = useRouter();
   const isHome = router.pathname === '/';
 
-  const TOCShowing = !isHome && headings && headings?.length > 1;
   return (
     <>
       <ContentWrapper
-        width={['100%', '100%', '100%', `calc(100% - ${!TOCShowing ? 0 : TOC_WIDTH}px)`]}
+        width={['100%', '100%', '100%', `calc(100% - ${isHome ? 0 : TOC_WIDTH}px)`]}
         mx="unset"
         pt="unset"
         css={css(styleOverwrites as any)}
-        pr={TOCShowing && ['0', '0', '0', 'extra-loose']}
+        pr={!isHome && ['0', '0', '0', 'extra-loose']}
       >
         {PageTop && <PageTop />}
         {children}
@@ -265,7 +264,7 @@ export const MDContents: React.FC<any> = ({ pageTop: PageTop = null, headings, c
         >
           <Box position="sticky" top={0} pt="64px">
             <Search mb={space('extra-loose')} />
-            <TableOfContents headings={headings} />
+            {headings?.length ? <TableOfContents headings={headings} /> : null}
           </Box>
         </Box>
       ) : null}
