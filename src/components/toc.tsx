@@ -35,8 +35,6 @@ const Item = ({
 
   const isActive = isOnScreen || _isActive;
 
-  const render = level === 2;
-
   const adjustedLevel = level - 2;
   return adjustedLevel > 0 && adjustedLevel <= 2 ? (
     <Box pl={getLevelPadding(level - 2)} py={space('extra-tight')}>
