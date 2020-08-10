@@ -143,7 +143,7 @@ async function redirects() {
     },
     {
       source: '/core/faq_technical.html',
-      destination: 'https://blockstack.zendesk.com/hc/en-us',
+      destination: '/references/faqs',
       permanent: true,
     },
     {

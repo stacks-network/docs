@@ -98,7 +98,7 @@ interface ContractCallOptions {
 | --------------- | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | contractAddress | string   | false    | The Stacks address that published this contract                                                                                                                               |
 | contractName    | string   | false    | The name that was used when publishing this contract                                                                                                                          |
-| functionName    | string   | false    | The name of the function you're calling. This needs to be a [public function](/core/smart/clarityRef.html#define-public).                                                     |
+| functionName    | string   | false    | The name of the function you're calling. This needs to be a [public function](/references/clarity-language#define-public).                                                     |
 | functionArgs    | array    | false    | The arguments you're calling the function with. You'll need to provide the Clarity type with each argument. See the below section for details. Defaults to `[]`.              |
 | appDetails      | object   | false    | A dictionary that includes `name` and `icon`                                                                                                                                  |
 | finished        | function | false    | A callback that is fired when the transaction is signed and broadcasted. Your callback will receive an object back with a `txId` and a `txRaw`, both of which are strings.    |
@@ -234,7 +234,7 @@ interface ContractDeployOptions {
 
 ## Usage in React Apps
 
-Make sure you follow the [setup instructions](/develop/connect/get-started.html#in-react-apps) first. When you're using
+Make sure you follow the [setup instructions](/authentication/connect#in-react-apps) first. When you're using
 `useConnect`, you don't have to specify `appDetails` - we'll pick that up from your existing configuration.
 
 Each transaction signing method is exposed through the `useConnect` hook, but they're prefixed with `do` instead of
