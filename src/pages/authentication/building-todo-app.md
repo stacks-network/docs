@@ -134,7 +134,7 @@ const userSession = new UserSession({ appConfig });
 
 This module handles user session operations and is initiated using the
 [`appConfig`](https://github.com/blockstack/blockstack-todos/blob/master/src/assets/constants.js#L3) object,
-which contains an array of [scopes](/develop/overview_auth.html#scopes) that indicate just what permissions
+which contains an array of [scopes](/authentication/overview#scopes) that indicate just what permissions
 to grant during authentication:
 
 ```js

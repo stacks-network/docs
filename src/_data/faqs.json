@@ -108,7 +108,7 @@
       {
          "category": "appusers",
          "question": "What is the Blockstack Browser?",
-         "answer": "<p>The Blockstack Browser is a deprecated app used to create and manage Blockstack identities. To a user, it looks just like another tab in a standard browser. From the Blockstack Browser tab, you can find apps to try, update settings related to your identity and storage &ndash; and much more. </p> <p>Developers used the Blockstack Browser to handle login requests from apps. From a Blockstack app, a user chooses the Log In with Blockstack button. Clicking this button sends users to a Blockstack Browser dialog. This dialog asks users to allow the app to access their data. </p><p>Developers are encouraged to integrate <a href=\"https://docs.blockstack.org/develop/connect/overview.html\">Blockstack Connect</a> into their apps instead of the Blockstack Browser, which is no longer actively developed by Blockstack PBC.</p> "
+         "answer": "<p>The Blockstack Browser is a deprecated app used to create and manage Blockstack identities. To a user, it looks just like another tab in a standard browser. From the Blockstack Browser tab, you can find apps to try, update settings related to your identity and storage &ndash; and much more. </p> <p>Developers used the Blockstack Browser to handle login requests from apps. From a Blockstack app, a user chooses the Log In with Blockstack button. Clicking this button sends users to a Blockstack Browser dialog. This dialog asks users to allow the app to access their data. </p><p>Developers are encouraged to integrate <a href=\"/authentication/connect\">Blockstack Connect</a> into their apps instead of the Blockstack Browser, which is no longer actively developed by Blockstack PBC.</p> "
       },
       {
          "category": "appusers",
@@ -203,7 +203,7 @@
       {
          "category": "appdevs",
          "question": "How do I register Blockstack usernames?",
-         "answer": "<p>You should use integrate authentication into your app with <a href='https://docs.blockstack.org/develop/connect/overview.html'>Blockstack Connect</a>.</p>"
+         "answer": "<p>You should use integrate authentication into your app with <a href='/authentication/connect'>Blockstack Connect</a>.</p>"
       },
       {
          "category": "appdevs",
@@ -273,7 +273,7 @@
       {
          "category": "coredevs",
          "question": "What is a Blockstack Subdomain?",
-         "answer": "<p>A Blockstack subdomain can be used for all the things a Blockstack ID can be used for. The only difference is that they have the format <code>~~foo.bar.baz~~</code> instead of <code>~~bar.baz~~</code>. For example, <a href='https://core.blockstack.org/v1/users/jude.personal.id'>jude.personal.id</a> is a Blockstack ID, and is a subdomain of <code>~~personal.id~~</code>. Hundreds of subdomains can be registered with a single transaction. The <a href='https://docs.blockstack.org/core/naming/introduction.html'>BNS documentation</a> describes them in detail.</p>"
+         "answer": "<p>A Blockstack subdomain can be used for all the things a Blockstack ID can be used for. The only difference is that they have the format <code>~~foo.bar.baz~~</code> instead of <code>~~bar.baz~~</code>. For example, <a href='https://core.blockstack.org/v1/users/jude.personal.id'>jude.personal.id</a> is a Blockstack ID, and is a subdomain of <code>~~personal.id~~</code>. Hundreds of subdomains can be registered with a single transaction. The <a href='/naming-services/overview'>BNS documentation</a> describes them in detail.</p>"
       },
       {
          "category": "coredevs",
@@ -423,7 +423,7 @@
       {
          "category": "wallet",
          "question": "Can I send Bitcoin to my Stacks Wallet?",
-         "answer": "<p>No, you cannot send Bitcoin to a Stacks address. You can only add Bitcoin as fuel to the wallet. Please <a href='https://docs.blockstack.org/org/wallet-use.html' target='_blank'>follow the instructions for adding &quot;gas&quot;</a>.</p>"
+         "answer": "<p>No, you cannot send Bitcoin to a Stacks address. You can only add Bitcoin as fuel to the wallet. Please <a href='/stacks-wallet/usage' target='_blank'>follow the instructions for adding &quot;gas&quot;</a>.</p>"
       },
       {
          "category": "wallet",
@@ -433,12 +433,12 @@
       {
          "category": "tokens",
          "question": "How do I check the status of my previously purchased Stacks tokens?",
-         "answer": "<p>You may check the status of previously purchased Stacks tokens at the <a href='https://explorer.blockstack.org'>Blockstack Explorer</a>. Additional wallet-related information is available <a href='https://docs.blockstack.org/org/wallet-intro.html'>here</a>.</p>"
+         "answer": "<p>You may check the status of previously purchased Stacks tokens at the <a href='https://explorer.blockstack.org'>Blockstack Explorer</a>. Additional wallet-related information is available <a href='/stacks-wallet/overview'>here</a>.</p>"
       },
       {
          "category": "tokens",
          "question": "How do I check my STX balance?",
-         "answer": "<p>Blockchain transactions take time. Once Stacks are sent to you, you see a PENDING transaction, which means the transaction is still being recorded by the blockchain. Your balance will not change until the transaction is recorded. It may be minutes or hours before the transaction is recorded in the blockchain.</p><p>When the transaction is complete, you can see a receipt for the transaction in your Stacks Wallet. The PENDING marker goes away once the funds are recorded on the blockchain. Then, at this point, the <a href='https://docs.blockstack.org/org/wallet-use.html#view-balance-allocation-or-transaction-history'>balance in your Stacks Wallet software</a> should reflect the completed transaction.</p>"
+         "answer": "<p>Blockchain transactions take time. Once Stacks are sent to you, you see a PENDING transaction, which means the transaction is still being recorded by the blockchain. Your balance will not change until the transaction is recorded. It may be minutes or hours before the transaction is recorded in the blockchain.</p><p>When the transaction is complete, you can see a receipt for the transaction in your Stacks Wallet. The PENDING marker goes away once the funds are recorded on the blockchain. Then, at this point, the <a href='/stacks-wallet/usage#view-balance-allocation-or-transaction-history'>balance in your Stacks Wallet software</a> should reflect the completed transaction.</p>"
       },
 
       {

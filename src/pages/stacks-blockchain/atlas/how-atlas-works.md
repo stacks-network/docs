@@ -41,7 +41,7 @@ for this with the following tweaks:
   but only reports a random subset of peers that have met a minimium health threshold.
 
 - A new neighbor is only selected if it belongs to the same [BNS
-  fork-set](/core/naming/introduction.html#bns-forks) (i.e. it reports
+  fork-set](/naming-services/overview#bns-forks) (i.e. it reports
   as having a recent valid consensus hash).
 
 The algorithm was adapted from the work from [Lee, Xu, and
