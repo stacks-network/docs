@@ -28,7 +28,7 @@ const Wrapper: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
         maxHeight={`calc(100vh - 60px)`}
         overflow="auto"
         top={0}
-        pt="64px"
+        pt={space('extra-loose')}
         {...containerProps}
       >
         {children}

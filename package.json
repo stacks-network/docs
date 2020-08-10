@@ -95,6 +95,7 @@
     "start": "next telemetry disable && NODE_ENV=production next start",
     "clean:build-files": "rimraf .next && rimraf .cache",
     "dev": "yarn clean:build-files && next dev",
+    "build:cli-reference": "blockstack-cli docs > src/_data/cli-reference.json",
     "export": "next export",
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "lint:eslint": "eslint \"src/**/*.{ts,tsx}\" -f unix",
