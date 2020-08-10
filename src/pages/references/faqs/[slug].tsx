@@ -104,7 +104,10 @@ const FaqItems = ({ articles }) => {
   };
 
   return (
-    <Box pr={['0px', 0, 'base-loose']}>
+    <Box
+      pr={['extra-loose', 'extra-loose', 'base-loose', 'base-loose']}
+      pl={['extra-loose', 'extra-loose', '0', '0']}
+    >
       <BackButton href="/references/faqs" mb={0} />
       <Accordion multiple collapsible defaultIndex={index} onChange={handleIndexChange}>
         {articles

@@ -12,6 +12,7 @@ import { getCapsizeStyles } from '@components/mdx/typography';
 import { Text } from '@components/typography';
 import { css } from '@styled-system/css';
 import { SmartLink } from '@components/mdx';
+import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
 
 const Wrapper: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
   width = `${SIDEBAR_WIDTH}px`,
@@ -95,13 +96,19 @@ const getRoutePath = (path, routes) => routes.find(route => route.path.endsWith(
 
 const ChildPages = ({ items, handleClick }: any) => {
   const { routes } = useAppState();
+  const { handleClose } = useMobileMenuState();
 
   return items?.pages
     ? items?.pages?.map((page, key) => {
         if (page.external) {
           return (
             <Box mb={space('extra-tight')} key={key}>
-              <PageItem as="a" href={page.external.href} target="_blank">
+              <PageItem
+                as="a"
+                href={page.external.href}
+                onClick={() => handleClose()}
+                target="_blank"
+              >
                 {page.external.title}
               </PageItem>
             </Box>
@@ -125,7 +132,14 @@ const ChildPages = ({ items, handleClick }: any) => {
             <Link href={routePath.path} passHref>
               <PageItem
                 isActive={router.pathname.includes(path)}
-                onClick={page.pages ? () => handleClick(page) : undefined}
+                onClick={
+                  page.pages
+                    ? () => {
+                        handleClick(page);
+                        handleClose();
+                      }
+                    : handleClose
+                }
                 as="a"
               >
                 {items.usePageTitles ? getTitle(route) : convertToTitle(page.path)}
@@ -181,6 +195,7 @@ const Navigation = () => {
     items: nav.sections,
     selected: undefined,
   });
+  const { handleClose } = useMobileMenuState();
 
   const router = useRouter();
 
@@ -229,6 +244,7 @@ const Navigation = () => {
         items: page,
       });
     }
+    handleClose();
   };
 
   const handleBack = () =>

@@ -138,9 +138,10 @@ export const Code: React.FC<
 );
 
 const preProps = {
-  display: 'inline-block',
+  display: 'inline',
   border: border(),
   borderRadius: '4px',
+  wordBreak: ['break-all', 'break-all', 'unset', 'unset'],
   padding: '2px 6px',
   boxShadow: '0 1px 2px rgba(0, 0, 0, 0.04)',
   bg: color('bg'),

@@ -3,6 +3,10 @@ import { color } from '@blockstack/ui';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
+:root {
+  --reach-tooltip: 1;
+}
+
 * {
   font-feature-settings: 'ss01' on;
 }

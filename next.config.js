@@ -14,6 +14,16 @@ async function redirects() {
       permanent: true,
     },
     {
+      source: '/develop/zero_to_dapp_1.html',
+      destination: '/authentication/building-todo-app',
+      permanent: true,
+    },
+    {
+      source: '/browser/hello-blockstack.html',
+      destination: '/authentication/building-todo-app',
+      permanent: true,
+    },
+    {
       source: '/develop/connect/get-started.html',
       destination: '/authentication/connect',
       permanent: true,
@@ -183,6 +193,11 @@ async function redirects() {
       permanent: true,
     },
     {
+      source: '/storage/hello-hub-choice.html',
+      destination: '/storage-hubs/overview',
+      permanent: true,
+    },
+    {
       source: '/storage/amazon-s3-deploy.html',
       destination: '/storage-hubs/amazon-s3-deploy',
       permanent: true,
@@ -220,7 +235,12 @@ async function redirects() {
     { source: '/org/overview.html', destination: '/ecosystem/overview', permanent: true },
     {
       source: '/faqs/allFAQS.html',
-      destination: 'https://blockstack.zendesk.com/hc/en-us',
+      destination: '/references/faqs',
+      permanent: true,
+    },
+    {
+      source: '/core/faq_technical.html',
+      destination: '/references/faqs',
       permanent: true,
     },
     { source: '/org/token.html', destination: '/ecosystem/stacks-token', permanent: true },

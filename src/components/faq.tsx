@@ -56,9 +56,10 @@ const SectionCard = ({ section }) => {
 export const FAQs = React.memo(({ articles, sections }: any) => {
   return (
     <Grid
-      gridTemplateColumns="repeat(2, 1fr)"
+      gridTemplateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)']}
       gridColumnGap={space('extra-loose')}
       gridRowGap="64px"
+      px={['extra-loose', 'extra-loose', 0, 0]}
     >
       {sections.map(section => {
         return <SectionCard key={section.id} section={section} />;

@@ -8,9 +8,6 @@ tags:
 images:
   large: /images/pages/todo-app.svg
   sm: /images/pages/todo-app-sm.svg
-redirect_from:
-  - /develop/zero_to_dapp_1.html
-  - /browser/hello-blockstack.html
 ---
 
 # Building a Todo app
@@ -269,9 +266,7 @@ This triggers an event, which
 calls the [`signUserOut` method](https://blockstack.github.io/blockstack.js/classes/usersession.html#signuserout)
 of the `UserSession` object.
 
-Now, visit the URL that was provided to you when you made your tasks public. This url is of the format `/todos/:username`,
-so if your username is `jane_doe.id.blockstack`, the URL would be
-[`localhost:3000/todos/jane_doe.id.blockstack`](http://localhost:3000/todos/jane_doe.id.blockstack).
+Now, visit the URL that was provided to you when you made your tasks public. This url is of the format `/todos/:username`, so if your username is `jane_doe.id.blockstack`, the URL would be [`localhost:3000/todos/jane_doe.id.blockstack`](http://localhost:3000/todos/jane_doe.id.blockstack).
 
 When you visit this page, the `TodoList.jsx` component detects that there is a username in the URL.
 When there is a username, it calls `fetchTasks`, this time providing the `username` argument. This `username`

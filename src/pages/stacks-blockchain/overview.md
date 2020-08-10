@@ -12,7 +12,7 @@ To unpack this definition:
 _A replicated state machine_ is two or more copies ("replicas") of a given set of rules (a "machine") that, in processing
 a common input (such as the same sequence of transactions), will arrive at the same configuration ("state"). Bitcoin
 is a replicated state machine — its state is the set of UTXOs, which each peer has a full copy of, and given a block,
-all peers will independently calculate the same new UTXO set from the existing one.
+all peers will independently calculate the same new unspent output (UTXO) set from the existing one.
 
 _Open-membership_ means that any host on the Internet can join the blockchain and independently calculate the same full
 replica as all other peers.
@@ -77,9 +77,6 @@ predictability and security.
 Anyone can be a Stacks Miner. There are no special hardware or software requirements, all you need is Bitcoin. Instead
 of spending energy, Stacks miners transfer Bitcoin to holders of Stacks Token (STX) to mine a block. This mechanism is
 called Proof of Transfer (PoX).
-
-[@page-reference | inline]
-| /stacks-blockchain/testnet-node
 
 [@page-reference | inline]
 | /mining
