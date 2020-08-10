@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Pre,
   THead,
-  MarkdownLink,
+  SmartLink,
   TData,
   Table,
   InlineCode,
@@ -40,7 +40,7 @@ export const Components = {
   table: Table,
   th: THead,
   td: TData,
-  a: MarkdownLink,
+  a: SmartLink,
   p: P,
   ul: Ul,
   ol: Ol,

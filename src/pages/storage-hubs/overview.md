@@ -1,14 +1,10 @@
 ---
-title: Overview
-redirect_from:
-  - /storage/hello-hub-choice.html
+title: Storage hubs overview
 ---
 
 ## Configuration files
 
-You should store a JSON configuration file either in the top-level directory of
-the hub server. Alternatively, you can specify a file location using the
-`CONFIG_PATH` environment variable. The following is an example configuration file for Amazon S3:
+You should store a JSON configuration file either in the top-level directory of the hub server. Alternatively, you can specify a file location using the `CONFIG_PATH` environment variable. The following is an example configuration file for Amazon S3:
 
 ```json
 {

@@ -67,8 +67,12 @@ export const styleOverwrites = {
   },
   p: {
     width: '100%',
+    a: {
+      display: 'inline',
+    },
   },
-  'p, li, a': {
+  'p, li': {
+    overflowWrap: 'break-word',
     display: 'inline-block',
     ...getCapsizeStyles(16, 26),
   },
@@ -81,9 +85,6 @@ export const styleOverwrites = {
     },
     '*:last-child:not(pre):not(blockquote)': {
       mb: 0,
-    },
-    p: {
-      display: 'inline',
     },
     'ol, ul': {
       mt: space('base-loose'),
@@ -115,8 +116,6 @@ export const styleOverwrites = {
   },
   '*:not(pre) code': {
     fontFamily: '"Soehne Mono", "Fira Code", monospace',
-    // ...getCapsizeStyles(14, 24),
-    // padding: '3px 2px',
   },
   'pre code': {
     fontFamily: '"Soehne Mono", "Fira Code", monospace',

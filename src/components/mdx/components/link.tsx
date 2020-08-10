@@ -42,6 +42,8 @@ const Card = ({ route, styles, ...rest }) => {
       style={{ userSelect: 'none', pointerEvents: 'none', ...styles }}
       transition={transition()}
       pt={space('tight')}
+      as="span"
+      display="block"
       {...rest}
     >
       <Box
@@ -51,8 +53,10 @@ const Card = ({ route, styles, ...rest }) => {
         borderRadius="12px"
         overflow="hidden"
         boxShadow="0px 2px 4px rgba(0, 0, 0, 0.02), 0px 24px 40px rgba(0, 0, 0, 0.08)"
+        as="span"
+        display="block"
       >
-        <Box bg={color('bg-light')} p={space('base')}>
+        <Box as="span" display="block" bg={color('bg-light')} p={space('base')}>
           <Text
             css={css({
               ...getHeadingStyles('h5'),
@@ -85,7 +89,7 @@ export const LinkWithHover = forwardRef(
         : undefined;
 
     return (
-      <Box display="inline" position="relative" {...bind}>
+      <Box as="span" display="inline" position="relative" {...bind}>
         <Box
           as={props.href ? 'a' : 'span'}
           ref={ref}
