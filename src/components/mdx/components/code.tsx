@@ -56,8 +56,13 @@ export const Code: React.FC<
     const CopyIcon = hasCopied ? ClipboardCheckIcon : BaseCopyIcon;
 
     return (
-      <Box position="relative" {...bind}>
-        <Box className={lines <= 3 ? 'no-line-numbers' : ''} ref={ref as any} overflowX="auto">
+      <Box overflow="hidden" position="relative" {...bind}>
+        <Box
+          className={lines <= 3 ? 'no-line-numbers' : ''}
+          position="relative"
+          ref={ref as any}
+          overflowX="auto"
+        >
           <Box
             as="code"
             css={css({
@@ -100,7 +105,25 @@ export const Code: React.FC<
             {...rest}
           >
             <Box height="16px" width="100%" />
-            {children}
+            <Box
+              as="span"
+              position="absolute"
+              color="transparent"
+              top="16px"
+              left={lines <= LINE_MINIMUM || lang === 'bash' ? '20px' : '58px'}
+              zIndex={99}
+            >
+              {codeString}
+            </Box>
+            <Box
+              as="span"
+              style={{
+                userSelect: 'none',
+                pointerEvents: 'none',
+              }}
+            >
+              {children}
+            </Box>
             <Box height="16px" width="100%" />
           </Box>
         </Box>
@@ -116,6 +139,9 @@ export const Code: React.FC<
             px={space('base')}
             py={lines === 1 ? '10px' : space('base')}
             display={['none', 'none', 'flex']}
+            style={{
+              pointerEvents: 'none',
+            }}
           >
             <IconButton
               title="Copy to clipboard"
@@ -127,6 +153,9 @@ export const Code: React.FC<
               }}
               color={themeColor('ink.400')}
               onClick={onCopy}
+              style={{
+                pointerEvents: 'all',
+              }}
             >
               <CopyIcon size="20px" />
             </IconButton>
