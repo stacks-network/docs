@@ -98,6 +98,7 @@ export const FeedbackSection: React.FC<BoxProps> = props => {
   const handleShow = () => {
     setShowButton(!showButton);
   };
+  const editPage = pathname === '/' ? '/index' : pathname;
   return (
     <Flex
       flexDirection={['column', 'column', 'row']}
@@ -129,7 +130,7 @@ export const FeedbackSection: React.FC<BoxProps> = props => {
         mt={space(['extra-loose', 'extra-loose', 'base-loose'])}
       >
         <Link
-          href={`https://github.com/blockstack/docs.blockstack/tree/feat/next/src/pages${pathname}.md`}
+          href={`https://github.com/blockstack/docs.blockstack/tree/feat/next/src/pages${editPage}.md`}
           target="_blank"
           rel="nofollow noopener noreferrer"
           fontSize="14px"
