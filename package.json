@@ -80,6 +80,7 @@
     "@blockstack/prettier-config": "^0.0.6",
     "@next/bundle-analyzer": "^9.4.4",
     "babel-plugin-styled-components": "^1.11.0",
+    "eslint": "^7.6.0",
     "husky": "^4.2.5",
     "next-transpile-modules": "^4.0.2",
     "react": "^16.13.0",
