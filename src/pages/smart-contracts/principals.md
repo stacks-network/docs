@@ -14,7 +14,7 @@ Assets in the smart contracting language and blockchain are
 the principal type may own an asset. For the case of public-key hash
 and multi-signature Stacks addresses, a given principal can operate on
 their assets by issuing a signed transaction on the blockchain. _Smart
-contracts_ may also be principals (reprepresented by the smart
+contracts_ may also be principals (represented by the smart
 contract's identifier), however, there is no private key associated
 with the smart contract, and it cannot broadcast a signed transaction
 on the blockchain.
@@ -71,7 +71,7 @@ For convenience, smart contracts may write a contract's identifier in the
 form `.contract-name`. This will be expanded by the Clarity interpreter into
 a fully-qualified contract identifier that corresponds to the same
 publishing address as the contract it appears in. For example, if the
-same publisher key, `SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR`, is
+same publisher address, `SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR`, is
 publishing two contracts, `contract-A` and `contract-B`, the fully
 qualified identifier for the contracts would be:
 

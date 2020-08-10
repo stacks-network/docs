@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, color, space, ChevronIcon, BoxProps } from '@blockstack/ui';
+import { Flex, Box, color, space, BoxProps } from '@blockstack/ui';
 import Link from 'next/link';
 import { useAppState } from '@common/hooks/use-app-state';
 import { SIDEBAR_WIDTH } from '@common/constants';
@@ -284,9 +284,6 @@ const Navigation = () => {
           {section.title ? (
             <Flex width="100%" align="center" mb={space('loose')}>
               <SectionTitle>{section.title}</SectionTitle>
-              <Box color={color('text-caption')} size="16px" ml={space('extra-tight')}>
-                <ChevronIcon direction="down" />
-              </Box>
             </Flex>
           ) : null}
           {section.pages.map((page, key) => {
