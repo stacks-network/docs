@@ -141,7 +141,7 @@ This contract performs two different authorization checks:
 
 1. Before a ship is allowed to fly, the contract checks whether or not
    the transaction was created and signed by an authorized pilot. A
-   pilot, could, for example, call another contract, which then calls
+   pilot could, for example, call another contract, which then calls
    the "fly-ship" public function on the pilot's behalf.
 2. Before modifying the allowed-pilots for a given rocket ship, the
    contract checks that the transaction was signed by the owner of the
