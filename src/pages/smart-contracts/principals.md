@@ -103,10 +103,10 @@ faucet" could be implemented as so:
 
 ```clarity
 (define-public (claim-from-faucet)
-  (if (is-none? (map-get? claimed-before (tuple (sender tx-sender))))
+  (if (is-none (map-get? claimed-before (tuple (sender tx-sender))))
       (let ((requester tx-sender)) ;; set a local variable requester = tx-sender
         (begin
-            (map-set claimed-before (tuple (sender requester)) (tuple (claimed true)))
+            (map-set claimed-before { sender: requester, claimed: true })
             (as-contract (stx-transfer? u1 tx-sender requester))))
       (err 1)))
 ```
