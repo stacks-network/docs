@@ -49,7 +49,8 @@ export const Code: React.FC<
 
     const convertSingleChildToString = child => onlyText(child).replace(/\n/g, '');
     const tokenLines = Children.toArray(children).map(convertSingleChildToString);
-    const codeString = tokenLines.join('\n');
+
+    const codeString = tokenLines.filter(line => line !== '').join('\n');
 
     const { hasCopied, onCopy } = useClipboard(codeString);
 
