@@ -11,9 +11,9 @@ import { css } from '@styled-system/css';
 const getLevelPadding = (level: number) => {
   switch (level) {
     case 2:
-      return space('base-loose');
+      return space('base');
     case 3:
-      return space('extra-loose');
+      return space('base-loose');
     default:
       return 0;
   }
@@ -35,8 +35,10 @@ const Item = ({
 
   const isActive = isOnScreen || _isActive;
 
-  const render = !limit || level <= limit + 1;
-  return render ? (
+  const render = level === 2;
+
+  const adjustedLevel = level - 2;
+  return adjustedLevel <= 2 ? (
     <Box pl={getLevelPadding(level - 2)} py={space('extra-tight')}>
       <NextLink href={`#${slug}`} passHref>
         <Link
@@ -99,7 +101,7 @@ export const TableOfContents = ({
           }
         >
           {headings?.map((heading, index) => {
-            return index > 0 ? (
+            return (
               <Item
                 limit={limit}
                 level={heading.level}
@@ -107,7 +109,7 @@ export const TableOfContents = ({
                 label={heading.content}
                 key={index}
               />
-            ) : null;
+            );
           })}
         </Grid>
       </Box>

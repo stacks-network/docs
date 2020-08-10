@@ -53,11 +53,10 @@ can also call public functions from other smart contracts.
 
 Note some of the key Clarity language rules and limitations.
 
-- The only primitive types are booleans, integers, buffers, and principals
+- The only primitive types are booleans, integers, buffers, and principals.
 - Recursion is illegal and there are no anonymous functions.
-- Looping may only be performed via `map`, `filter`, or `fold`
-- There is support for lists, however, the only variable length lists in the language appear as function inputs;
-  There is no support for list operations like append or join.
+- Looping may only be performed via `map`, `filter`, or `fold`.
+- There is support for lists, however, the only variable length lists in the language appear as function inputs; there is no support for list operations like append or join.
 - Variables are immutable.
 
 ## Learning Clarity
