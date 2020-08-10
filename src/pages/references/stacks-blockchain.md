@@ -9,7 +9,7 @@ With the launch of Stacks 2.0, a new version of the Blockstack blockchain was re
 
 ## Stacks Core API
 
-The Stacks 2.0 blockchain's Rust implementation exposes RPC endpoints (in JSON format), which can be used to interface with the Stacks blockchain. [You can find the RPC API references here](https://docs.blockstack.org/core/smart/rpc-api.html).
+The Stacks 2.0 blockchain's Rust implementation exposes RPC endpoints (in JSON format), which can be used to interface with the Stacks blockchain. [You can find the RPC API references here](/references/stacks-rpc-api).
 
 ## Stacks Blockchain API
 
