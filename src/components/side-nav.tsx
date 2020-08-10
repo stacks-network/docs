@@ -200,7 +200,7 @@ const Navigation = () => {
   const router = useRouter();
 
   React.useEffect(() => {
-    let currentSection = selected.items;
+    let currentSection;
 
     if (router.pathname === '/') {
       currentSection = {
@@ -225,8 +225,11 @@ const Navigation = () => {
                 items: page,
               };
             }
-          } else {
-            return router.pathname.endsWith(page.path);
+          } else if (!currentSection && router.pathname.endsWith(page.path)) {
+            currentSection = {
+              items: nav.sections,
+              type: 'default',
+            };
           }
         });
       });
