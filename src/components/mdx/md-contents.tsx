@@ -73,7 +73,6 @@ export const styleOverwrites = {
   },
   'p, li': {
     overflowWrap: 'break-word',
-    display: 'inline-block',
     ...getCapsizeStyles(16, 26),
   },
   li: {
