@@ -1,8 +1,8 @@
 import React from 'react';
-import { cliReferenceData } from '@common/../_data/cliRef';
+import cliReferenceData from '../_data/cli-reference.json';
 import { Components } from '@components/mdx/mdx-components';
 import { Grid, Box, color } from '@blockstack/ui';
-import { border } from '@common/utils';
+import { border, onlyText } from '@common/utils';
 import hydrate from 'next-mdx-remote/hydrate';
 
 const styles = {
@@ -10,8 +10,20 @@ const styles = {
   overflowX: 'auto',
   overflowY: 'hidden',
   whiteSpace: 'pre',
+  display: 'inline-block',
 };
-const InlineCode = props => <Components.inlineCode {...styles} {...props} />;
+const cleanTheChildren = (children: any) => {
+  const text = onlyText(children).trim();
+  if (text.startsWith('$')) {
+    return text.replace('$', '');
+  }
+  return text;
+};
+const InlineCode = ({ children, ...rest }: any) => (
+  <Components.inlineCode {...styles} {...rest}>
+    {cleanTheChildren(children)}
+  </Components.inlineCode>
+);
 
 const ReferenceEntry = ({ entry, usage }) => (
   <>

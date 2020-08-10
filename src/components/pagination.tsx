@@ -8,10 +8,12 @@ import { Caption, Text, Link } from '@components/typography';
 import { useTouchable } from '@common/hooks/use-touchable';
 import { getHeadingStyles } from '@components/mdx/typography';
 import { css } from '@styled-system/css';
+import { ArrowRightIcon } from '@components/icons/arrow-right';
+import { ArrowLeftIcon } from '@components/icons/arrow-left';
 
 const FloatingLink: React.FC<any> = ({ href }) => (
   <NextLink href={`${href}`} passHref>
-    <Link position="absolute" size="100%" zIndex={2} as="a" />
+    <Link position="absolute" size="100%" left={0} top={0} zIndex={2} as="a" />
   </NextLink>
 );
 
@@ -53,7 +55,7 @@ const Description: React.FC<BoxProps> = props => (
 
 const Card: React.FC<any> = ({ children, ...rest }) => {
   const { bind, active, hover } = useTouchable({
-    behavior: 'link',
+    behavior: 'button',
   });
   return (
     <Flex
@@ -61,14 +63,12 @@ const Card: React.FC<any> = ({ children, ...rest }) => {
       width="100%"
       position="relative"
       border={border()}
-      borderRadius="12px"
+      borderRadius="6px"
       py={space('base')}
       px={space('base-loose')}
-      boxShadow={active ? 'low' : hover ? 'high' : 'mid'}
       transition={transition}
       justifyContent="center"
-      bg={active ? color('bg-light') : color('bg')}
-      transform={active ? 'translateY(3px)' : hover ? 'translateY(-5px)' : 'none'}
+      bg={color('bg')}
       {...bind}
       {...rest}
     >
@@ -82,7 +82,6 @@ const Pretitle: React.FC<BoxProps> = props => (
     display="block"
     color={color('text-caption')}
     transition={transition}
-    mb={space('base')}
     css={css({
       ...getHeadingStyles('h6'),
     })}
@@ -113,9 +112,20 @@ const PrevCard: React.FC<any> = React.memo(props => {
       {({ hover, active }) => (
         <>
           <FloatingLink href={prev.path} />
-          <Pretitle>Previous</Pretitle>
-          <Title isHovered={hover || active}>{getTitle(prev)}</Title>
-          {prev.description && <Description>{prev.description}</Description>}
+          <Flex position="relative" mb={space('base-tight')} align="center">
+            <Pretitle
+              left={hover || active ? '18px' : 0}
+              bg={color('bg')}
+              position="relative"
+              zIndex={2}
+            >
+              Previous
+            </Pretitle>
+            <Box position="absolute" left={0} color={color('text-caption')} pt="2px">
+              <ArrowLeftIcon size="14px" />
+            </Box>
+          </Flex>
+          <Title isHovered={hover}>{getTitle(prev)}</Title>
         </>
       )}
     </Card>
@@ -131,9 +141,20 @@ const NextCard: React.FC<any> = React.memo(props => {
       {({ hover, active }) => (
         <>
           <FloatingLink href={next.path} />
-          <Pretitle>Next</Pretitle>
-          <Title isHovered={hover || active}>{getTitle(next)}</Title>
-          {next.description && <Description>{next.description}</Description>}
+          <Flex position="relative" mb={space('base-tight')} align="center">
+            <Pretitle
+              right={hover || active ? '18px' : 0}
+              bg={color('bg')}
+              position="relative"
+              zIndex={2}
+            >
+              Next
+            </Pretitle>
+            <Box position="absolute" right={0} ml="4px" color={color('text-caption')} pt="2px">
+              <ArrowRightIcon size="14px" />
+            </Box>
+          </Flex>
+          <Title isHovered={hover}>{getTitle(next)}</Title>
         </>
       )}
     </Card>

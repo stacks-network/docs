@@ -1,5 +1,5 @@
 import { convertRemoteDataToMDX } from '@common/data/mdx';
-import { cliReferenceData } from '../../_data/cliRef';
+import cliReferenceData from '../../_data/cli-reference.json';
 
 export const convertBlockstackCLIUsageToMdx = async () => {
   const transformed = cliReferenceData.map(entry => {

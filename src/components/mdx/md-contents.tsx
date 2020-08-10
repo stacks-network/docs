@@ -261,9 +261,9 @@ export const MDContents: React.FC<any> = ({ pageTop: PageTop = null, headings, c
           width="100%"
           display={['none', 'none', 'none', 'block']}
         >
-          <Box position="sticky" top={0} pt="64px">
+          <Box position="sticky" top={0} pt={space('extra-loose')}>
             <Search mb={space('extra-loose')} />
-            {headings?.length ? <TableOfContents headings={headings} /> : null}
+            {headings?.length ? <TableOfContents limit={2} headings={headings} /> : null}
           </Box>
         </Box>
       ) : null}
