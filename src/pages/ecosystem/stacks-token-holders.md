@@ -1,6 +1,6 @@
 ---
 title: Stacks token holders
-description: 'Blockstack token holder documentation'
+description: Blockstack token holder documentation
 ---
 
 ## Introduction
@@ -43,4 +43,4 @@ registered and when they will unlock.
 
 ## Have more questions?
 
-For a list of frequent questions and answers about STX tokens, [see the Stacks token FAQs](https://docs.blockstack.org/faqs/allfaqs#stacks-token-questions).
+For a list of frequent questions and answers about STX tokens, [see the Stacks token FAQs](/references/faqs/stacks-token).

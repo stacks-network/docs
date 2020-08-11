@@ -103,7 +103,7 @@ async function redirects() {
     },
     {
       source: '/core/smart/testnet-node.html',
-      destination: '/smart-contracts/running-a-testnet-node',
+      destination: '/stacks-blockchain/testnet-node',
       permanent: true,
     },
     {
@@ -143,6 +143,11 @@ async function redirects() {
     },
     {
       source: '/core/faq_technical.html',
+      destination: '/references/faqs',
+      permanent: true,
+    },
+    {
+      source: '/faqs/allfaqs',
       destination: '/references/faqs',
       permanent: true,
     },
@@ -263,6 +268,11 @@ async function redirects() {
       permanent: true,
     },
     { source: '/core/cmdLineRef.html', destination: '/references/blockstack-cli', permanent: true },
+    {
+      source: '/core/smart/clarityref',
+      destination: '/references/clarity-language',
+      permanent: true,
+    },
     {
       source: '/core/smart/clarityRef.html',
       destination: '/references/clarity-language',
