@@ -294,6 +294,18 @@ async function redirects() {
       permanent: true,
     },
     {
+      source: '/android/tutorial.html', // TODO: update once choice has been made on SDKs
+      destination:
+        'https://github.com/blockstack/docs.blockstack/blob/master-legacy/android/tutorial.md',
+      permanent: true,
+    },
+    {
+      source: '/ios/tutorial.html', // TODO: update once choice has been made on SDKs
+      destination:
+        'https://github.com/blockstack/docs.blockstack/blob/master-legacy/android/tutorial.md',
+      permanent: true,
+    },
+    {
       source: '/common/ios_ref.html',
       destination: 'https://blockstack.github.io/blockstack-ios/',
       permanent: true,

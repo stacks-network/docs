@@ -3,11 +3,14 @@ title: Blockstack Connect
 description: Learn what Connect is and how to integrate it into an app.
 experience: beginners
 duration: 15 minutes
+images:
+  large: /images/pages/connect.svg
+  sm: /images/pages/connect-sm.svg
 ---
 
 ## Introduction
 
-Blockstack Connect is a JavaScript library for integrating Blockstack authentication and smart contracts into your app.
+Blockstack Connect is a JavaScript library for integrating Blockstack authentication, data storage, and smart contracts into your app.
 
 The library empowers you to:
 
