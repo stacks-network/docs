@@ -1,6 +1,4 @@
 import React from 'react';
-import { MDXProvider } from '@mdx-js/react';
-import { MDXComponents } from '@components/mdx';
 import { AppStateProvider } from '@components/app-state';
 import { MdxOverrides } from '@components/mdx/overrides';
 import { ProgressBar } from '@components/progress-bar';
@@ -17,11 +15,9 @@ export const AppWrapper: React.FC<any> = ({ children, isHome }) => {
       <MdxOverrides />
       <ColorModes />
       <ProgressBar />
-      <MDXProvider components={MDXComponents}>
-        <AppStateProvider>
-          <BaseLayout isHome={isHome}>{children}</BaseLayout>
-        </AppStateProvider>
-      </MDXProvider>
+      <AppStateProvider>
+        <BaseLayout isHome={isHome}>{children}</BaseLayout>
+      </AppStateProvider>
     </>
   );
 };
