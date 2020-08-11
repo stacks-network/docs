@@ -7,7 +7,7 @@ export const useFathom = () => {
 
   useEffect(() => {
     Fathom.load(process.env.FATHOM_ID, {
-      excludedDomains: ['localhost'],
+      includedDomains: ['docs.blockstack.org'],
     });
 
     function onRouteChangeComplete() {
