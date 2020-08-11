@@ -73,9 +73,13 @@ export const styleOverwrites = {
   },
   'p, li': {
     overflowWrap: 'break-word',
+    display: 'inline-block',
     ...getCapsizeStyles(16, 26),
   },
   li: {
+    '& > p': {
+      display: 'inline',
+    },
     display: 'list-item',
     pb: space('base-tight'),
     ':last-child': {
