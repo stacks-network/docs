@@ -9,7 +9,8 @@ import dynamic from 'next/dynamic';
 import { getHeadingStyles } from '@components/mdx/typography';
 import { border } from '@common/utils';
 import { getCapsizeStyles } from '@components/mdx/typography';
-
+import { MDXProvider } from '@mdx-js/react';
+import { MDXComponents } from '@components/mdx';
 export const styleOverwrites = {
   '& > section': {
     '&:nth-child(2)': {
@@ -256,7 +257,7 @@ export const MDContents: React.FC<any> = ({ pageTop: PageTop = null, headings, c
         pr={!isHome && ['0', '0', '0', 'extra-loose']}
       >
         {PageTop && <PageTop />}
-        {children}
+        <MDXProvider components={MDXComponents}>{children}</MDXProvider>
       </ContentWrapper>
       {!isHome ? (
         <Box
