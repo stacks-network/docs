@@ -4,7 +4,7 @@ import { SideNav } from '../side-nav';
 import { Header } from '../header';
 import { Main } from '../main';
 import { Footer } from '../footer';
-import NotFoundPage from '@pages/404';
+
 import { PAGE_WIDTH, SIDEBAR_WIDTH } from '@common/constants';
 import { useWatchActiveHeadingChange } from '@common/hooks/use-active-heading';
 import { useRouter } from 'next/router';
@@ -13,14 +13,6 @@ import { MobileMenu } from '@components/mobile-menu';
 const BaseLayout: React.FC<{ isHome?: boolean }> = ({ children }) => {
   const router = useRouter();
   const isHome = router.pathname === '/';
-  let isErrorPage = false;
-
-  // get if NotFoundPage
-  React.Children.forEach(children, (child: any) => {
-    if (child?.type === NotFoundPage) {
-      isErrorPage = true;
-    }
-  });
 
   useWatchActiveHeadingChange();
   return (
@@ -50,7 +42,7 @@ const BaseLayout: React.FC<{ isHome?: boolean }> = ({ children }) => {
                 {children}
               </Flex>
             </Main>
-            {isErrorPage ? null : <Footer justifySelf="flex-end" />}
+            <Footer justifySelf="flex-end" />
           </Flex>
         </Flex>
       </Flex>
