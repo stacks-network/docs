@@ -235,7 +235,7 @@ const Navigation = () => {
       });
     }
 
-    if (currentSection.items && selected.items !== currentSection.items) {
+    if (currentSection?.items && selected.items !== currentSection.items) {
       setSelected(currentSection);
     }
   }, [router.pathname]);
