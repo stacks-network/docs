@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, BoxProps } from '@blockstack/ui';
 import { useRouter } from 'next/router';
 
-const imgix = 'https://docs-stacks.imgix.net';
+const imgix = 'https://stacks-documentation.imgix.net';
 
 const params = '?auto=compress,format';
 
@@ -18,10 +18,7 @@ const getUrl = pathname => {
 };
 
 const useImgix = (src: string) => {
-  // if (process.env.NODE_ENV !== 'production') return src;
-  // TODO: after deploy, re-enable imgix to proxy images
-  return src;
-  if (!src) return src;
+  if (process.env.NODE_ENV !== 'production' || !src) return src;
   let _src = src;
   const router = useRouter();
   if (!src?.startsWith('http')) {
