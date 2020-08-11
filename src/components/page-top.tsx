@@ -30,11 +30,11 @@ export const PageTop: React.FC<PageTopProps> = React.memo(
               headings,
             })}
           </H1>
-          {isHome ? (
-            <Box width="100%" maxWidth="208px">
-              <Search />
-            </Box>
-          ) : null}
+          {/*{isHome ? (*/}
+          {/*  <Box width="100%" maxWidth="208px">*/}
+          {/*    <Search />*/}
+          {/*  </Box>*/}
+          {/*) : null}*/}
         </Flex>
         {description ? (
           <Box mt="40px !important">
