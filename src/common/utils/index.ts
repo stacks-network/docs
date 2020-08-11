@@ -18,6 +18,8 @@ export const slugify = (string: string): string =>
     .replace(/^-+/, '') // Trim - from start of text
     .replace(/-+$/, ''); // Trim - from end of text
 
+export const capitalize = ([s, ...tring]: string): string => [s.toUpperCase(), ...tring].join('');
+
 export const border = (
   width = 1,
   style: Property.BorderStyle = 'solid',

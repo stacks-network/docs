@@ -321,6 +321,9 @@ module.exports = withFonts(
       jsconfigPaths: true,
       trailingSlash: true,
     },
+    env: {
+      FATHOM_ID: 'EPNTIXUM',
+    },
     redirects,
     pageExtensions: ['js', 'ts', 'tsx', 'md', 'mdx'],
     webpack: (config, options) => {
