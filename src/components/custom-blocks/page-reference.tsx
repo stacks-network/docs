@@ -15,8 +15,9 @@ const Image = ({
   src,
   isHovered,
   size,
+  alt,
   ...rest
-}: BoxProps & { src?: string; isHovered?: boolean }) => (
+}: BoxProps & { src?: string; isHovered?: boolean; alt?: string }) => (
   <Box
     flexShrink={0}
     style={{
@@ -33,6 +34,7 @@ const Image = ({
       width="100%"
       minWidth={size}
       size={size}
+      alt={alt}
       mx="0 !important"
       my="0 !important"
     />
@@ -63,9 +65,22 @@ const Description = ({ children, ...props }) => (
   </Text>
 );
 
-const FloatingLink = ({ href, ...props }: any) => (
+const FloatingLink = ({ href, contents, ...props }: any) => (
   <Link href={href} passHref>
-    <Box as="a" position="absolute" size="100%" left={0} top={0} />
+    <Box
+      as="a"
+      position="absolute"
+      size="100%"
+      opacity={0}
+      color="transparent"
+      style={{
+        userSelect: 'none',
+      }}
+      left={0}
+      top={0}
+    >
+      {contents}
+    </Box>
   </Link>
 );
 const InlineCard = ({ page }) => {
@@ -91,6 +106,7 @@ const InlineCard = ({ page }) => {
           style={{ willChange: 'transform' }}
           size="64px"
           src={page?.images?.sm}
+          alt={`Page image for: ${page.title || page.headings[0]}`}
         />
       </Box>
       <Flex
@@ -177,7 +193,7 @@ const GridItemDetails: React.FC<BoxProps & { isHovered?: boolean; page: any }> =
         </Title>
         <Description>{page.description}</Description>
       </Flex>
-      <FloatingLink href={`${page.path}`} />
+      <FloatingLink href={`${page.path}`} contents={page.title || page.headings[0]} />
     </>
   )
 );

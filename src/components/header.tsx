@@ -101,7 +101,12 @@ const NavItem: React.FC<FlexProps & { item: any }> = ({ item, ...props }) => {
   });
   return (
     <Flex justifyContent="center" position="relative" {...props} {...bind}>
-      <HeaderTextItem as={item.href ? 'a' : 'span'} href={item.href}>
+      <HeaderTextItem
+        as={item.href ? 'a' : 'span'}
+        href={item.href}
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+      >
         {item.label}
       </HeaderTextItem>
 
