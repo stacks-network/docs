@@ -28,7 +28,7 @@ const Item = ({
   slug: string;
   label: string;
   level: number;
-  limit?: number;
+  limit?: boolean;
 }) => {
   const { isActive: _isActive, slugInView } = useActiveHeading(slug);
   const isOnScreen = slugInView === slug;
@@ -73,7 +73,7 @@ export const TableOfContents = ({
   }[];
   noLabel?: boolean;
   label?: string;
-  limit?: number;
+  limit?: boolean;
   columns?: number | number[];
 } & BoxProps) => {
   return (

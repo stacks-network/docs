@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
 }
 
 * {
-  font-feature-settings: 'ss01' on;
+  font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "ss01" 1;
 }
 html, body {
   font-family: 'Soehne', Inter, sans-serif;
