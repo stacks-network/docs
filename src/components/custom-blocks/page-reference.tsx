@@ -90,7 +90,7 @@ const InlineCard = ({ page }) => {
           transform={(hover || active) && 'scale(1.18)'}
           style={{ willChange: 'transform' }}
           size="64px"
-          src={page.images.sm}
+          src={page?.images?.sm}
         />
       </Box>
       <Flex
