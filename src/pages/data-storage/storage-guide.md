@@ -24,8 +24,8 @@ const userSession = new UserSession();
 const options: PutFileOptions = {
   encrypt: false,
 };
-userSession.putFile('/hello.txt', 'hello world!', options).then(() => {
-  // /hello.txt exists now, and has the contents "hello world!".
+userSession.putFile('hello.txt', 'hello world!', options).then(() => {
+  // hello.txt exists now, and has the contents "hello world!".
 });
 ```
 
@@ -41,7 +41,7 @@ const options: PutFileOptions = {
   encrypt: true,
 };
 
-userSession.putFile('/message.txt', 'Secret hello!', options).then(() => {
+userSession.putFile('message.txt', 'Secret hello!', options).then(() => {
   // message.txt exists now, and has the contents "hello world!".
 });
 ```
@@ -57,8 +57,8 @@ const options: PutFileOptions = {
   decrypt: false,
 };
 
-userSession.getFile('/hello.txt', options).then(fileContents => {
-  // get the contents of the file /hello.txt
+userSession.getFile('hello.txt', options).then(fileContents => {
+  // get the contents of the file hello.txt
   assert(fileContents === 'hello world!');
 });
 ```
@@ -75,7 +75,7 @@ const options: GetFileOptions = {
   decrypt: true,
 };
 
-userSession.getFile('/message.txt', options).then(fileContents => {
+userSession.getFile('message.txt', options).then(fileContents => {
   // get & decrypt the contents of the file /message.txt
   assert(fileContents === 'Secret hello!');
 });
@@ -93,7 +93,7 @@ const options = {
 };
 
 const userSession = new UserSession();
-userSession.putFile('/hello.txt', 'hello world!', options).then(fileContents => {
+userSession.putFile('hello.txt', 'hello world!', options).then(fileContents => {
   // get the contents of the file /message.txt
   assert(fileContents === 'hello world!');
 });
@@ -106,8 +106,8 @@ Use the [`UserSession.deleteFile`](https://blockstack.github.io/blockstack.js/cl
 ```jsx
 const userSession = new UserSession();
 
-userSession.deleteFile('/hello.txt').then(() => {
-  // /hello.txt is now removed.
+userSession.deleteFile('hello.txt').then(() => {
+  // hello.txt is now removed.
 });
 ```
 
