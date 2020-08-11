@@ -32,6 +32,7 @@
     "gray-matter": "^4.0.2",
     "hast-util-to-string": "^1.0.4",
     "html-react-parser": "^0.13.0",
+    "image-size": "^0.8.3",
     "lodash.debounce": "^4.0.8",
     "mdi-react": "7.3.0",
     "micro-memoize": "^4.0.9",

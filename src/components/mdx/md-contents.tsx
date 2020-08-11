@@ -38,7 +38,7 @@ export const styleOverwrites = {
     pre: {
       // px: space(['none', 'none', 'extra-loose', 'extra-loose']),
     },
-    img: {
+    '.img': {
       mx: 'auto',
     },
   },
@@ -210,7 +210,7 @@ export const styleOverwrites = {
       mt: space('extra-loose'),
     },
   },
-  img: {
+  '.img': {
     my: space('extra-loose'),
   },
   table: {
