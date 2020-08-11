@@ -70,7 +70,6 @@ counter contract test suite
     2) should increment
     3) should decrement
 
-
 1 passing (734ms)
 3 failing
 
