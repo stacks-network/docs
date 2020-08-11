@@ -41,17 +41,32 @@ const MenuButton = ({ ...rest }: any) => {
   );
 };
 
-const HeaderWrapper: React.FC<any> = React.forwardRef((props, ref) => (
+const HeaderWrapper: React.FC<BoxProps> = React.forwardRef((props, ref) => (
   <Box as="header" ref={ref} width="100%" position="relative" zIndex={9999} {...props} />
 ));
 
-const nav = [
+interface NavChildren {
+  label: string;
+  href?: string;
+  target?: string;
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  target?: string;
+  children?: NavItem[];
+}
+
+const nav: NavItem[] = [
   {
     label: 'Start building',
+    href: '',
     children: [
       {
         label: 'Documentation',
         href: 'https://docs.blockstack.org/',
+        target: '_self',
       },
       {
         label: 'GitHub',
@@ -95,7 +110,7 @@ const HeaderTextItem: React.FC<BoxProps & LinkProps> = ({ children, href, as, ..
   </Text>
 );
 
-const NavItem: React.FC<FlexProps & { item: any }> = ({ item, ...props }) => {
+const NavItem: React.FC<FlexProps & { item: NavItem }> = ({ item, ...props }) => {
   const { hover, active, bind } = useTouchable({
     behavior: 'link',
   });
@@ -150,7 +165,7 @@ const NavItem: React.FC<FlexProps & { item: any }> = ({ item, ...props }) => {
                     display="block"
                     // @ts-ignore
                     href={child.href}
-                    target="_blank"
+                    target={child.target || '_blank'}
                   >
                     <HeaderTextItem color="currentColor">{child.label}</HeaderTextItem>
                   </Box>
