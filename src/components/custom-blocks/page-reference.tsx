@@ -11,6 +11,7 @@ import { useAppState } from '@common/hooks/use-app-state';
 import { Img } from '@components/mdx/image';
 import { css } from '@styled-system/css';
 import { getCapsizeStyles, getHeadingStyles } from '@components/mdx/typography';
+
 const Image = ({
   src,
   isHovered,
@@ -106,7 +107,7 @@ const InlineCard = ({ page }) => {
           style={{ willChange: 'transform' }}
           size="64px"
           src={page?.images?.sm}
-          alt={`Page image for: ${page.title || page.headings[0]}`}
+          alt={`Graphic for: ${page.title || page.headings[0]}`}
         />
       </Box>
       <Flex
@@ -157,32 +158,33 @@ const InlineCard = ({ page }) => {
   );
 };
 
-const GridCardImage: React.FC<BoxProps & { isHovered?: boolean; src?: string }> = React.memo(
-  ({ isHovered, src, ...props }) => (
-    <Box
-      bg="#9985FF"
-      position="relative"
-      borderRadius="12px"
-      mb={space('loose')}
-      overflow="hidden"
-      {...props}
-    >
-      <Grid style={{ placeItems: 'center' }} height="0px" paddingTop="56.25%">
-        <Image
-          width="102%"
-          size="102%"
-          transition={transition('0.45s')}
-          transform={isHovered && 'scale(1.08)'}
-          style={{ willChange: 'transform' }}
-          src={src}
-          position="absolute"
-          left={'-2%'}
-          top={'-2%'}
-        />
-      </Grid>
-    </Box>
-  )
-);
+const GridCardImage: React.FC<
+  BoxProps & { isHovered?: boolean; src?: string; alt?: string }
+> = React.memo(({ isHovered, src, alt, ...props }) => (
+  <Box
+    bg="#9985FF"
+    position="relative"
+    borderRadius="12px"
+    mb={space('loose')}
+    overflow="hidden"
+    {...props}
+  >
+    <Grid style={{ placeItems: 'center' }} height="0px" paddingTop="56.25%">
+      <Image
+        width="102%"
+        size="102%"
+        transition={transition('0.45s')}
+        transform={isHovered && 'scale(1.08)'}
+        style={{ willChange: 'transform' }}
+        src={src}
+        position="absolute"
+        alt={alt}
+        left={'-2%'}
+        top={'-2%'}
+      />
+    </Grid>
+  </Box>
+));
 
 const GridItemDetails: React.FC<BoxProps & { isHovered?: boolean; page: any }> = React.memo(
   ({ isHovered, page, ...props }) => (
@@ -210,7 +212,11 @@ const GridCard: React.FC<BoxProps & { page?: any }> = React.memo(({ page, ...res
       {...rest}
       {...bind}
     >
-      <GridCardImage src={page?.images?.large} isHovered={hover || active} />
+      <GridCardImage
+        alt={`Graphic for: ${page.title || page.headings[0]}`}
+        src={page?.images?.large}
+        isHovered={hover || active}
+      />
       <GridItemDetails page={page} />
     </Box>
   );
