@@ -1480,22 +1480,22 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.16.tgz#07a7342f6b61ea1ecbfb31e6e23bf7a8c79b9b57"
   integrity sha512-SFtLGIGZummuyMDPRL5KdmpgI8U19Ble28UjEWihPjGxF1Lgj8aDjLWY8KiaUy9eqb9CKiVCqEIrK9jbnANfkw==
 
-"@next/bundle-analyzer@^9.4.4":
-  version "9.5.1"
-  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-9.5.1.tgz#4c0431299d351851c675a4ca3cfc0f87242ec52c"
-  integrity sha512-31fI4DUn6auGjpBwaEQA7ChqP84IbTN5a+KJ4QaILavZIdwQdxvUSzZfrBX3mAwxjuwUCbAcDN3jw8nh+eO4eg==
+"@next/bundle-analyzer@^9.5.2":
+  version "9.5.2"
+  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-9.5.2.tgz#9a04a915d2095121688028f5164016d6e1ba8433"
+  integrity sha512-JO6Ol5Bx9g7fVNFdCfbWk/uEIzHiWqU7ZmFmhBvDaGnt9k3iRN2itBlLthl2KbXD6ngFqV2mEAT+nqWs7Ak7iw==
   dependencies:
     webpack-bundle-analyzer "3.6.1"
 
-"@next/mdx@^9.4.4":
-  version "9.5.1"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-9.5.1.tgz#c7e2fd457810b34e8ce598f57075b799ca48751b"
-  integrity sha512-jmNKqEMWkCPQWWeoq6CiOShngGv99Cs+rQSLlU7BZMVCZzbcTVEkAsUqR4WfLA97K2ihjtNidY5jwbKFu4h83Q==
+"@next/mdx@^9.5.2":
+  version "9.5.2"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-9.5.2.tgz#71d28fa3a43270a681a75eabaef8486811e378d0"
+  integrity sha512-KJLi1cNrrX0q++e0VIWRDmwnMA2NdG5CKp09YZY1tDn+7wC6Xs4bEScoXIiFThfB4uXSrzrvHUEijDKCoMTabA==
 
-"@next/react-dev-overlay@9.5.2-canary.17":
-  version "9.5.2-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-9.5.2-canary.17.tgz#f28fc8c6bcca872c4cf980ae16373d5662c262df"
-  integrity sha512-WIs96RTiqgmu1Z7nO7+4QE50/2EgYPFV2FVT5htj7NiuCzGD3Y43j1RZP4CjYmB+UXezAIXYsAOtiNN9r711LA==
+"@next/react-dev-overlay@9.5.2":
+  version "9.5.2"
+  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-9.5.2.tgz#5d7878782e2819926b0dcd0f880c26ed527e9880"
+  integrity sha512-L0MbB8tX94lGwLOICCncuyYIrStkUXRG1SNgGFG/J5X5peJpDac8UOUJCtnFnE+ptJTBfQ76jWG2rqatE+Fu0A==
   dependencies:
     "@babel/code-frame" "7.8.3"
     ally.js "1.4.1"
@@ -1508,10 +1508,10 @@
     stacktrace-parser "0.1.10"
     strip-ansi "6.0.0"
 
-"@next/react-refresh-utils@9.5.2-canary.17":
-  version "9.5.2-canary.17"
-  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-9.5.2-canary.17.tgz#1155f790092e3d0b94ef290da87d88c3d4776f8e"
-  integrity sha512-aWUTLcFu1ozFBX0HGvefK6ODrTAdH+aOrL7tkvfjNufzENhnGENcdxrC4rDbaBEzVgBCs9SbegGdRQaaCHmxHA==
+"@next/react-refresh-utils@9.5.2":
+  version "9.5.2"
+  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-9.5.2.tgz#5d92d8ad0f2bd79de2290614e74e5a12a0cda02b"
+  integrity sha512-ch/16u3OVy/aIXJROwqXZjGw/tFMyG7qy2IGDA2RFjvQMtPyJJrklmwX2EcfH4+4spRI2MZKes2soI+0w2/MDQ==
 
 "@popperjs/core@^2.4.0":
   version "2.4.4"
@@ -6085,10 +6085,10 @@ next-transpile-modules@^4.0.2:
     micromatch "^4.0.2"
     slash "^3.0.0"
 
-next@^9.5.2-canary.17:
-  version "9.5.2-canary.17"
-  resolved "https://registry.yarnpkg.com/next/-/next-9.5.2-canary.17.tgz#64c19478d294cd1d99d41e6ff50e0911b11657f7"
-  integrity sha512-QfWEM3YGAKBz85ry52pdqzzXhGOqkHAnRIKbxuS9Q6v9VJFBQoAuZjPXGEWmIgdtpvL3CdPBhFLD3YsOMblSLQ==
+next@^9.5.2:
+  version "9.5.2"
+  resolved "https://registry.yarnpkg.com/next/-/next-9.5.2.tgz#ef9b77455b32dca0e917c763529de25c11b5c442"
+  integrity sha512-wasNxEE4tXXalPoUc7B5Ph3tpByIo7IqodE9iHhp61B/3/vG2zi2BGnCJjZQwFeuotUEQl93krz/0Tp4vd0DsQ==
   dependencies:
     "@ampproject/toolbox-optimizer" "2.6.0"
     "@babel/code-frame" "7.8.3"
@@ -6109,8 +6109,8 @@ next@^9.5.2-canary.17:
     "@babel/preset-typescript" "7.9.0"
     "@babel/runtime" "7.9.6"
     "@babel/types" "7.9.6"
-    "@next/react-dev-overlay" "9.5.2-canary.17"
-    "@next/react-refresh-utils" "9.5.2-canary.17"
+    "@next/react-dev-overlay" "9.5.2"
+    "@next/react-refresh-utils" "9.5.2"
     ast-types "0.13.2"
     babel-plugin-syntax-jsx "6.18.0"
     babel-plugin-transform-define "2.0.0"
