@@ -16,10 +16,11 @@ Prefer to jump right in? Get started with this tutorial where you’ll create a 
 ## What are decentralized apps?
 
 Decentralized apps are apps that don’t depend on a centralized platform, server or database. Instead, they use a
-decentralized network, built on the Stacks blockchain, for authentication, data storage, and backend logic. Just like
-Bitcoin, a decentralized network of applications is accessible to anyone and not controlled by any central authority.
+decentralized network, built on the Stacks blockchain, for [authentication](/authentication/overview), [data storage](/data-storage/overview),
+and [backend logic](/data-indexing/overview). Just like Bitcoin, a decentralized network of applications is accessible to
+anyone and not controlled by any central authority.
 
-To learn more about the Blockstack network and decentralization, read the Blockstack overview.
+To learn more about the Blockstack network and decentralization, read the [Blockstack overview](/ecosystem/overview).
 
 ### User-owned data
 
@@ -28,9 +29,9 @@ host, their users’ data. This protects users against security breaches and kee
 
 ### Smart contracts
 
-Decentralized apps can use smart contracts to make their backend logic public, open, and permissionless. Once published
-on the blockchain, no one really owns or controls a smart contract. They will execute when their terms are met,
-regardless of who interacts with it.
+Decentralized apps can use [smart contracts](/smart-contracts/overview) to make their backend logic public, open, and
+permissionless. Once published on the blockchain, no one really owns or controls a smart contract. They will execute when
+the terms are met, regardless of who interacts with it.
 
 ### Compatible and extendable
 
@@ -39,8 +40,9 @@ other apps without requiring permission or fear of being shut out.
 
 ## Getting started
 
-To build your decentralized app, you’ll use authentication, data storage, data indexing (optional), and smart contracts
-(optional). Get started with the documentation and tutorials below.
+To build your decentralized app, you’ll use [authentication](/authentication/overview), [data storage](/data-storage/overview),
+[data indexing](/data-indexing/overview) (optional), and [smart contracts](/smart-contracts/overview) (optional).
+Get started with the documentation and tutorials below.
 
 ### Authentication and data storage
 
@@ -67,7 +69,7 @@ documentation.
 ### Smart contracts
 
 You can use smart contracts to decentralize your app’s backend logic, making it open and permissionless. Smart contracts
-on Blockstack are written in the Clarity language. View the smart contracts documentation or get started with a tutorial.
+on Blockstack are written in the [Clarity language](https://clarity-lang.org). View the smart contracts documentation or get started with a tutorial.
 
 [@page-reference | inline]
 | /smart-contracts/overview
@@ -77,3 +79,11 @@ on Blockstack are written in the Clarity language. View the smart contracts docu
 
 [@page-reference | inline]
 | /smart-contracts/counter-tutorial
+
+### Connect
+
+Connect is a JavaScript library developed by Blockstack PBC that makes it easy to integrate authentication, data storage
+and smart contracts functionality in a user-friendly way.
+
+[@page-reference | inline]
+| /authentication/connect
