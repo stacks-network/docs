@@ -50,7 +50,7 @@ export const Code: React.FC<
     const convertSingleChildToString = child => onlyText(child).replace(/\n/g, '');
     const tokenLines = Children.toArray(children).map(convertSingleChildToString);
 
-    const codeString = tokenLines.filter(line => line !== '').join('\n');
+    const codeString = tokenLines.join('\n').replace(/\n\n\n/g, '\n\n');
 
     const { hasCopied, onCopy } = useClipboard(codeString);
 
@@ -77,6 +77,9 @@ export const Code: React.FC<
               },
               counterReset: 'line',
               '& .token-line': {
+                '&__empty': {
+                  height: '24px',
+                },
                 '.comment': {
                   color: 'rgba(255,255,255,0.5) !important',
                 },
@@ -93,6 +96,7 @@ export const Code: React.FC<
                         mr: '16px',
                         width: '42px',
                         fontSize: '12px',
+                        transform: 'translateY(1px)',
                         borderRight: '1px solid rgb(39,41,46)',
                       }
                     : {},
@@ -111,7 +115,11 @@ export const Code: React.FC<
               position="absolute"
               color="transparent"
               top="16px"
-              left={lines <= LINE_MINIMUM || lang === 'bash' ? '20px' : '58px'}
+              left={
+                lines <= LINE_MINIMUM || lang === 'bash'
+                  ? space(['extra-loose', 'extra-loose', '20px', '20px'])
+                  : '58px'
+              }
               zIndex={99}
             >
               {codeString}

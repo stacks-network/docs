@@ -60,7 +60,6 @@ You should see the following response:
     ✓ should return 'hello world'
     ✓ should echo number
 
-
 3 passing (412ms)
 ```
 
