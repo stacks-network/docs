@@ -92,3 +92,33 @@ export const getSlug = (asPath: string) => {
   }
   return;
 };
+
+interface CancelablePromise {
+  promise: Promise<any>;
+  cancel: () => void;
+}
+
+/** Make a Promise "cancelable".
+ *
+ * Rejects with {isCanceled: true} if canceled.
+ *
+ * The way this works is by wrapping it with internal hasCanceled_ state
+ * and checking it before resolving.
+ */
+export const makeCancelable = (promise: Promise<any>): CancelablePromise => {
+  let hasCanceled_ = false;
+
+  const wrappedPromise = new Promise((resolve, reject) => {
+    void promise.then((val: any) => (hasCanceled_ ? reject({ isCanceled: true }) : resolve(val)));
+    void promise.catch((error: any) =>
+      hasCanceled_ ? reject({ isCanceled: true }) : reject(error)
+    );
+  });
+
+  return {
+    promise: wrappedPromise,
+    cancel() {
+      hasCanceled_ = true;
+    },
+  };
+};
