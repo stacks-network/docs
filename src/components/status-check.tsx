@@ -1,7 +1,7 @@
 import React from 'react';
 import useSWR from 'swr';
 import { Box, Flex, space, color, BoxProps } from '@blockstack/ui';
-import { border } from '@common/utils';
+import { border, transition } from '@common/utils';
 import { Link } from '@components/mdx';
 import { LinkProps, Text } from '@components/typography';
 import { Spinner } from '@blockstack/ui';
@@ -13,29 +13,46 @@ import { getCapsizeStyles } from '@components/mdx/typography';
 
 const fetcher = url => fetch(url).then(r => r.json());
 
-const StatusWords: React.FC<BoxProps & { status?: boolean }> = ({ status, ...rest }) => (
+type Status = 'online' | 'slow' | 'degraded' | 'loading' | undefined;
+
+const getColor = (status: Status) => {
+  switch (status) {
+    case 'degraded':
+      return 'feedback-error';
+    case 'online':
+      return 'feedback-success';
+    case 'slow':
+      return 'feedback-alert';
+  }
+};
+
+const StatusWords: React.FC<BoxProps & { status?: Status }> = ({ status, ...rest }) => (
   <>
     <Box as="span">:</Box>
-    <Box as="span" color={status ? color('feedback-success') : color('feedback-alert')}>{`${
-      status ? ' online' : ' offline'
-    }`}</Box>
+    <Box as="span" color={color(getColor(status))}>{` ${status}`}</Box>
   </>
 );
 
+const getStatus = (data: number): Status | 'loading' => {
+  switch (data) {
+    case 0:
+      return 'online';
+    case 1:
+      return 'slow';
+    case 2:
+      return 'degraded';
+    default:
+      return 'loading';
+  }
+};
+
 export const StatusCheck: React.FC<LinkProps> = props => {
-  const { data, error } = useSWR(`${STATUS_CHECKER_URL}/json`, fetcher);
-  const [status, setStatus] = React.useState(undefined);
+  const { data, error } = useSWR(`/api/status`, fetcher);
 
-  React.useEffect(() => {
-    if (data?.masterNodePings?.length > 1) {
-      setStatus(data.masterNodePings[0].value);
-    } else if (status) {
-      setStatus(undefined);
-    }
-  }, [data, error]);
+  const status = getStatus(data);
 
-  const critical = error && !status;
-  const positive = data && status && !error;
+  const critical = error || status === 'degraded';
+  const warn = status === 'slow';
 
   return (
     <Link
@@ -48,16 +65,26 @@ export const StatusCheck: React.FC<LinkProps> = props => {
       py={space('tight')}
       color={color('text-caption')}
       _hover={{ cursor: 'pointer', bg: color('bg-alt') }}
+      opacity={data || error ? 1 : 0}
+      transition={transition()}
       {...props}
     >
       <Flex align="center">
         <Box mr={space('tight')}>
           {!data && !error ? (
-            <Spinner color={color('accent')} speed="1s" thickness="2px" size="sm" />
-          ) : critical ? (
-            <AlertCircleIcon color={color('feedback-alert')} size="20px" />
+            <Box
+              style={{
+                display: 'grid',
+                placeItems: 'center',
+              }}
+              size="24px"
+            >
+              <Spinner color={color('accent')} speed="1s" thickness="2px" size="sm" />
+            </Box>
+          ) : critical || warn ? (
+            <AlertCircleIcon color={color(getColor(status))} size="24px" />
           ) : (
-            positive && <CircleCheck size="20px" color={color('feedback-success')} />
+            <CircleCheck size="24px" color={color('feedback-success')} />
           )}
         </Box>
         <Text

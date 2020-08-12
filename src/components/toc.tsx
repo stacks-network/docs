@@ -36,7 +36,7 @@ const Item = ({
   const isActive = isOnScreen || _isActive;
 
   const adjustedLevel = level - 2;
-  const shouldRender = limit ? adjustedLevel > 0 && adjustedLevel <= 2 : true;
+  const shouldRender = limit ? adjustedLevel > 0 && adjustedLevel <= 1 : true;
   return shouldRender ? (
     <Box pl={getLevelPadding(level - 2)} py={space('extra-tight')}>
       <NextLink href={`#${slug}`} passHref>
