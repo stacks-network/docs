@@ -62,6 +62,7 @@ const PageItem = React.forwardRef(
       <SmartLink
         ref={ref}
         css={css({
+          outline: '0',
           display: 'block',
           ...typeStyles,
           color: isActive ? color('accent') : isTopLevel ? color('text-title') : _color,
@@ -70,6 +71,9 @@ const PageItem = React.forwardRef(
             color: isTopLevel ? color('accent') : color('text-title'),
           },
           textDecoration: 'none',
+          ':focus': {
+            color: color('accent'),
+          },
         })}
         {...props}
       >
