@@ -7,6 +7,8 @@ description: Every running Stacks node exposes an RPC API, which allows you to i
 
 Every running Stacks node exposes an RPC API, which allows you to interact with the underlying blockchain.
 
+@include "different_apis.md"
+
 ### POST /v2/transactions
 
 This endpoint is for posting _raw_ transaction data to the node's mempool.
