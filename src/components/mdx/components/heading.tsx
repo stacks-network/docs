@@ -26,7 +26,7 @@ const LinkButton = React.memo(({ link, onClick, ...rest }: BoxProps & { link: st
         onClick && onClick(e);
         onCopy?.();
       }}
-      transform="translateY(-5px)"
+      transform="translateY(1px)"
       {...rest}
     >
       <Tooltip label={label} aria-label={label}>
@@ -77,9 +77,7 @@ const Hashtag = () => (
 export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
   const { isActive, doChangeActiveSlug } = useActiveHeading(id);
 
-  const { bind: _bind, hover, active } = useTouchable({
-    behavior: 'link',
-  });
+  const { bind: _bind, hover, active } = useTouchable();
   const router = useRouter();
 
   const link = `#${id}`;
@@ -108,17 +106,15 @@ export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
         display: 'flex',
         // @ts-ignore
         justifyContent: 'flex-start',
-        textDecoration: id && hover ? 'underline' : 'unset',
         // @ts-ignore
         cursor: id && hover ? 'pointer' : 'unset',
         ...rest,
       })}
-      onClick={id && handleLinkClick}
     >
       <Box as="span">{children}</Box>
       <AnchorOffset id={id} />
       {id && isActive && <Hashtag />}
-      {id && <LinkButton opacity={hover || active ? 1 : 0} link={link} />}
+      {id && <LinkButton opacity={hover ? 1 : 0} link={link} />}
     </Title>
   );
 };

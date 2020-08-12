@@ -84,3 +84,11 @@ export const getCategory = (pathname: string) => {
   }
   return undefined;
 };
+
+export const getSlug = (asPath: string) => {
+  if (asPath.includes('#')) {
+    const slug = asPath.split('#')[1];
+    return slug;
+  }
+  return;
+};
