@@ -102,12 +102,6 @@ sections:
           - external:
               href: 'https://blockstack.github.io/blockstack.js/'
               title: blockstack.js
-          - external:
-              href: 'https://blockstack.github.io/blockstack-android/'
-              title: Android SDK
-          - external:
-              href: 'https://blockstack.github.io/blockstack-ios/'
-              title: iOS SDK
           - path: /faqs
           - path: /glossary
           - path: /deploy-tips
