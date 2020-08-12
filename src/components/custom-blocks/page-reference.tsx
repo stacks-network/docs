@@ -100,12 +100,22 @@ const InlineCard = ({ page }) => {
       position="relative"
       {...bind}
     >
-      <Box flexShrink={0} size="64px" overflow="hidden" borderRadius={'12px'}>
+      <Box
+        flexShrink={0}
+        position="relative"
+        size="64px"
+        overflow="hidden"
+        bg="#9985FF"
+        borderRadius={'12px'}
+      >
         <Image
+          size="102%"
+          left={'-2%'}
+          top={'-2%'}
+          position="absolute"
           transition={transition('0.45s')}
           transform={(hover || active) && 'scale(1.18)'}
           style={{ willChange: 'transform' }}
-          size="64px"
           src={page?.images?.sm}
           alt={`Graphic for: ${page.title || page.headings[0]}`}
         />
@@ -171,16 +181,15 @@ const GridCardImage: React.FC<
   >
     <Grid style={{ placeItems: 'center' }} height="0px" paddingTop="56.25%">
       <Image
-        width="102%"
         size="102%"
+        left={'-2%'}
+        top={'-2%'}
+        position="absolute"
         transition={transition('0.45s')}
         transform={isHovered && 'scale(1.08)'}
         style={{ willChange: 'transform' }}
         src={src}
-        position="absolute"
         alt={alt}
-        left={'-2%'}
-        top={'-2%'}
       />
     </Grid>
   </Box>

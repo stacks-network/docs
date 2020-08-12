@@ -34,9 +34,12 @@ const useImgix = (src: string) => {
           ${_src}&w=480&fit=max&q=20&dpr=3 3x`;
 
   const base = `${_src}&w=720&dpr=1&fit=max`;
+  const placeholder = `${_src}&w=40&dpr=1&fit=max`;
+
   return {
     srcset,
     src: base,
+    placeholder,
   };
 };
 
@@ -48,21 +51,33 @@ const getAspectRatio = dimensions => {
   return (height / width) * 100;
 };
 
-const BaseImg: React.FC<any> = props => (
-  <Box
-    loading="lazy"
-    maxWidth="100%"
-    width={['100%', '100%', 'inherit', 'inherit']}
-    display="block"
-    as="img"
-    {...props}
-  />
-);
+const BaseImg: React.FC<
+  BoxProps & {
+    src?: string;
+    srcSet?: string;
+    loading?: string;
+  }
+> = ({ style = {}, ...props }) => {
+  return (
+    <Box
+      maxWidth="100%"
+      width={['100%', '100%', 'inherit', 'inherit']}
+      display="block"
+      loading="lazy"
+      as="img"
+      style={{
+        ...style,
+      }}
+      {...props}
+    />
+  );
+};
 
 export const Img: React.FC<
   BoxProps & { loading?: string; src?: string; alt?: string; dimensions?: any }
 > = React.memo(({ src: _src, dimensions, ...rest }) => {
   const { src, srcset } = useImgix(_src);
+
   const props = {
     src,
     srcSet: srcset,
@@ -73,7 +88,6 @@ export const Img: React.FC<
     // means the image is local and we can generate the aspect ratio
     // and prevent the page from jumping due to lack of an image being loaded
     // (because of the built in lazy-loading)
-
     const aspectRatio = getAspectRatio(dimensions);
 
     const width = dimensions.width <= 720 ? dimensions.width : '100%';
