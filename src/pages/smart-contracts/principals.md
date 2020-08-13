@@ -106,9 +106,9 @@ faucet" could be implemented as so:
   (if (is-none (map-get? claimed-before (tuple (sender tx-sender))))
       (let ((requester tx-sender)) ;; set a local variable requester = tx-sender
         (begin
-            (map-set claimed-before { sender: requester, claimed: true })
+            (map-set claimed-before { sender: requester } { claimed: true })
             (as-contract (stx-transfer? u1 tx-sender requester))))
-      (err 1)))
+      (err u1)))
 ```
 
 In this example, the public function `claim-from-faucet`:
