@@ -26,7 +26,7 @@ const InlineCode = ({ children, ...rest }: any) => (
 );
 
 const ReferenceEntry = ({ entry, usage }) => (
-  <>
+  <Components.section>
     <Components.h4>{entry.command}</Components.h4>
 
     <Components.p>
@@ -91,7 +91,7 @@ const ReferenceEntry = ({ entry, usage }) => (
         </Grid>
       );
     })}
-  </>
+  </Components.section>
 );
 
 export const CLIReferenceTable = ({ mdx }) =>
