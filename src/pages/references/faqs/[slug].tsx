@@ -20,35 +20,37 @@ const FAQItem = React.memo(({ faq, ...rest }: any) => {
   const { isActive } = useActiveHeading(id);
 
   return (
-    <Box as={AccordionItem} borderBottom={border()} {...rest}>
-      <Flex
-        as={AccordionButton}
-        _hover={{ color: color('accent') }}
-        css={css({
-          display: 'flex',
-          width: '100%',
-          outline: 'none',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          py: space('extra-loose'),
-          textAlign: 'left',
-          color: isActive ? color('accent') : color('text-title'),
-          ':hover': {
-            color: color('accent'),
-          },
-        })}
-      >
-        <Components.h4 my="0px !important" id={id} color="currentColor">
-          {faq.title}
-        </Components.h4>
-        <Box color={color('text-caption')} pl={space('base-loose')}>
-          <ChevronIcon direction="down" size="22px" />
+    <Components.section>
+      <Box as={AccordionItem} borderBottom={border()} {...rest}>
+        <Flex
+          as={AccordionButton}
+          _hover={{ color: color('accent') }}
+          css={css({
+            display: 'flex',
+            width: '100%',
+            outline: 'none',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            py: space('extra-loose'),
+            textAlign: 'left',
+            color: isActive ? color('accent') : color('text-title'),
+            ':hover': {
+              color: color('accent'),
+            },
+          })}
+        >
+          <Components.h4 my="0px !important" id={id} color="currentColor">
+            {faq.title}
+          </Components.h4>
+          <Box color={color('text-caption')} pl={space('base-loose')}>
+            <ChevronIcon direction="down" size="22px" />
+          </Box>
+        </Flex>
+        <Box pb={space('extra-loose')} as={AccordionPanel}>
+          {hydrate(faq.body, Components)}
         </Box>
-      </Flex>
-      <Box pb={space('extra-loose')} as={AccordionPanel}>
-        {hydrate(faq.body, Components)}
       </Box>
-    </Box>
+    </Components.section>
   );
 });
 
