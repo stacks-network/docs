@@ -2,7 +2,7 @@ import React from 'react';
 import cliReferenceData from '../_data/cli-reference.json';
 import { Components } from '@components/mdx/mdx-components';
 import { Grid, Box, color } from '@blockstack/ui';
-import { border, onlyText } from '@common/utils';
+import { border, onlyText, slugify } from '@common/utils';
 import hydrate from 'next-mdx-remote/hydrate';
 
 const styles = {
@@ -27,7 +27,7 @@ const InlineCode = ({ children, ...rest }: any) => (
 
 const ReferenceEntry = ({ entry, usage }) => (
   <Components.section>
-    <Components.h4>{entry.command}</Components.h4>
+    <Components.h4 id={slugify(entry.command)}>{entry.command}</Components.h4>
 
     <Components.p>
       <strong>Group:</strong> {entry.group}
@@ -42,7 +42,7 @@ const ReferenceEntry = ({ entry, usage }) => (
         />
       ),
     })}
-    <Components.h3>Arguments</Components.h3>
+    <Components.h3 id={`${slugify(entry.command)}-arguments`}>Arguments</Components.h3>
     <Grid
       mb="tight"
       pb="base-tight"
