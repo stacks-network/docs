@@ -1,5 +1,5 @@
 import { renderMdx } from '@common/data/mdx';
-import CLARITY_REFERENCE from '../../_data/clarityRef.json';
+import CLARITY_REFERENCE from '../../_data/clarity-reference.json';
 import { slugify } from '@common/utils';
 
 const wrapInClarityTicks = (string: string) => {
