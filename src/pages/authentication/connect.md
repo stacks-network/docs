@@ -127,7 +127,7 @@ To send the user straight to sign in, include `sendToSignIn: true` in your `auth
 
 #### Note about dependency size:
 
-If you're building a non-React app, note that importing `@blockstack/connect` will add React dependencies to your JavaScript bundle. We recommend using something like [Webpack resolve aliases](https://webpack.js.org/configuration/resolve/) to replace `react` with `preact` in production, which reduces your bundle size. Check out [our own webpack.config.js file](https://github.com/blockstack/ux/blob/fix/connect-modal-accessibility/packages/connect/webpack.config.js#L87:L95) to see how we use this for production builds.
+If you're building a non-React app, note that importing `@blockstack/connect` will add React dependencies to your JavaScript bundle. We recommend using something like [Webpack resolve aliases](https://webpack.js.org/configuration/resolve/) to replace `react` with `preact` in production, which reduces your bundle size. Check out [our own webpack.config.js file](https://github.com/blockstack/ux/blob/master/packages/connect/webpack.config.js#L87:L95) to see how we use this for production builds.
 
 If you're using the hosted version of `@blockstack/connect` (described below), then you already have a production-optimized bundle.
 
