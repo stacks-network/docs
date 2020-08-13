@@ -24,23 +24,28 @@ const useImgix = (src: string) => {
       srcset: undefined,
     };
   let _src = src;
+  let _srcSet = undefined;
   const router = useRouter();
   if (!src?.startsWith('http')) {
     const path = src.startsWith('/') ? '' : getUrl(router.pathname);
     _src = `${imgix + path + src + params}`;
-  }
-  const srcset = `${_src}&w=860&dpr=1&fit=max 1x,
+    _srcSet = `${_src}&w=860&dpr=1&fit=max 1x,
           ${_src}&w=480&fit=max&q=40&dpr=2 2x,
           ${_src}&w=480&fit=max&q=20&dpr=3 3x`;
 
-  const base = `${_src}&w=720&dpr=1&fit=max`;
-  const placeholder = `${_src}&w=40&dpr=1&fit=max`;
-
-  return {
-    srcset,
-    src: base,
-    placeholder,
-  };
+    const base = `${_src}&w=720&dpr=1&fit=max`;
+    const placeholder = `${_src}&w=40&dpr=1&fit=max`;
+    return {
+      srcset: _srcSet,
+      src: base,
+      placeholder,
+    };
+  } else {
+    return {
+      src: _src,
+      srcset: _srcSet,
+    };
+  }
 };
 
 const getAspectRatio = dimensions => {
