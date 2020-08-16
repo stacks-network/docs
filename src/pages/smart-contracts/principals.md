@@ -102,6 +102,10 @@ For example, a smart contract that implements something like a "token
 faucet" could be implemented as so:
 
 ```clarity
+(define-map claimed-before
+ ((sender principal))
+ ((claimed bool)))
+
 (define-public (claim-from-faucet)
   (if (is-none (map-get? claimed-before (tuple (sender tx-sender))))
       (let ((requester tx-sender)) ;; set a local variable requester = tx-sender
