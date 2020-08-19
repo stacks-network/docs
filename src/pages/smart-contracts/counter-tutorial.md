@@ -129,14 +129,14 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
     ;; counter getter
     (define-public (get-counter)
-        (ok (var-get counter)))
+      (ok (var-get counter)))
    ```
 
    The [`define-data-var`](/references/clarity-language#define-data-var) statement initializes a
    new integer variable named `counter` and sets the value to `0`. It is important to note that all definition statements
    in Clarity need to be at the top of the file.
 
-   The `counter` variable is stored in the data space associated of the smart contract. The variable is persisted and
+   The `counter` variable is stored in the data space associated with the smart contract. The variable is persisted and
    acts as the global shared state.
 
    To provide access to the `counter` variable from outside of the current smart contract, we need to declare a public function to get it. The last lines of the code add a public `get-counter` function. The [`var-get`](/references/clarity-language#var-get) statement looks for a variable in the contract's data space and returns it.
@@ -158,12 +158,12 @@ Let's get familiar with the tests to understand what the new smart contract shou
    ```clarity
    ;; increment method
    (define-public (increment)
-    (begin
-    (var-set counter (+ (var-get counter) 1))
-        (ok (var-get counter))))
+     (begin
+       (var-set counter (+ (var-get counter) 1))
+       (ok (var-get counter))))
    ```
 
-   First, the [`begin`](/references/clarity-language#begin) statement evaluates the multi-line expressions and returns the value of the last expression. In this case, it is used to set a new value and return the new value.
+   First, the [`begin`](/references/clarity-language#begin) statement evaluates multiple expressions and returns the value of the last one. In this case, it is used to set a new value and return the new value.
 
    Next, a [`var-set`](/references/clarity-language#var-set) is used to set a new value for the `counter` variable. The new value is constructed using the [`+`](/references/clarity-language#-add) (add) statement. This statement takes a number of integers and returns the result. Along with add, Clarity provides statements to subtract, multiply, and divide integers. Find more details in the [Clarity language reference](/references/clarity-language).
 
