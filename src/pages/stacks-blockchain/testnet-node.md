@@ -29,10 +29,6 @@ Ensure that you have Rust installed. If you are using macOS, Linux, or another U
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ```
 
-If Rust is already installed, you might see this prompt. Select 'Proceed with Installation' to make sure you have the latest version installed.
-
-![rustup prompt](/images/rust-install.png)
-
 In case you just installed Rust, you will be prompted to run the following command to make the `cargo` command available:
 
 ```bash
