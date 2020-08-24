@@ -26,7 +26,7 @@ sudo apt-get install build-essential cmake libssl-dev pkg-config
 Ensure that you have Rust installed. If you are using macOS, Linux, or another Unix-like OS, run the following. If you are on a different OS, follow the [official Rust installation guide](https://www.rust-lang.org/tools/install).
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ```
 
 If Rust is already installed, you might see this prompt. Select 'Proceed with Installation' to make sure you have the latest version installed.
