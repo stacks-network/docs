@@ -47,6 +47,7 @@ sections:
           - path: /overview
           - path: /testnet-node
           - path: /best-practices
+          - path: /stacking
           - path: /wire-format
           - path: /atlas
             pages:
@@ -56,8 +57,9 @@ sections:
         sections:
           - title: Tutorials
             pages:
+              - path: /integrate-stacking
               - path: /install-api
-              - path: /installing-memcached
+              - path: /install-memcached
       - path: /stacks-wallet
         pages:
           - path: /overview
