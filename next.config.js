@@ -248,23 +248,9 @@ async function redirects() {
       destination: '/references/faqs',
       permanent: true,
     },
-    { source: '/org/token.html', destination: '/ecosystem/stacks-token', permanent: true },
     {
       source: '/org/whitepaper-blockchain.html',
       destination: 'https://blockstack.org/whitepaper.pdf',
-      permanent: true,
-    },
-    { source: '/org/wallet-intro.html', destination: '/stacks-wallet/overview', permanent: true },
-    { source: '/org/wallet-install.html', destination: '/stacks-wallet/install', permanent: true },
-    { source: '/org/wallet-use.html', destination: '/stacks-wallet/usage', permanent: true },
-    {
-      source: '/org/wallet-troubleshoot.html',
-      destination: '/stacks-wallet/troubleshooting',
-      permanent: true,
-    },
-    {
-      source: '/org/tokenholders.html',
-      destination: '/ecosystem/stacks-token-holders',
       permanent: true,
     },
     { source: '/core/cmdLineRef.html', destination: '/references/blockstack-cli', permanent: true },
@@ -325,7 +311,6 @@ async function redirects() {
       destination: '/storage-hubs/config-schema',
       permanent: true,
     },
-    { source: '/org/secureref.html', destination: '/stacks-wallet/security', permanent: true },
     {
       source: '/develop/overview_auth.html',
       destination: '/authentication/overview',

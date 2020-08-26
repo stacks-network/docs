@@ -58,12 +58,6 @@ sections:
             pages:
               - path: /install-api
               - path: /installing-memcached
-      - path: /stacks-wallet
-        pages:
-          - path: /overview
-          - path: /install
-          - path: /usage
-          - path: /security
       - path: /naming-services
         pages:
           - path: /overview
