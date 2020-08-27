@@ -332,6 +332,11 @@ async function redirects() {
       permanent: true,
     },
     { source: '/org/terms.html', destination: '/references/glossary', permanent: true },
+    {
+      source: '/stacks-blockchain/installing-memcached',
+      destination: '/stacks-blockchain/install-memcached',
+      permanent: true,
+    },
   ];
 }
 
