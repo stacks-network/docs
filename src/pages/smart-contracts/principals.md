@@ -103,8 +103,12 @@ faucet" could be implemented as so:
 
 ```clarity
 (define-map claimed-before
- ((sender principal))
- ((claimed bool)))
+  ((sender principal))
+  ((claimed bool)))
+
+(define-constant err-already-claimed u1)
+(define-constant err-faucet-empty u2)
+(define-constant stx-amount u1)
 
 (define-public (claim-from-faucet)
   (if (is-none (map-get? claimed-before {sender: tx-sender}))
