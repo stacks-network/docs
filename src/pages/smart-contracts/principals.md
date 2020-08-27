@@ -111,11 +111,11 @@ faucet" could be implemented as so:
 (define-constant stx-amount u1)
 
 (define-public (claim-from-faucet)
-  (if (is-none (map-get? claimed-before {sender: tx-sender}))
-    (let ((requester tx-sender))
-      (map-set claimed-before {sender: requester} {claimed: true})
-      (as-contract (stx-transfer? u1 tx-sender requester)))
-    (err u0)))
+    (let ((requester tx-sender)) ;; set a local variable requester = tx-sender
+        (asserts! (is-none (map-get? claimed-before {sender: requester})) (err err-already-claimed))
+        (unwrap! (as-contract (stx-transfer? stx-amount tx-sender requester)) (err err-faucet-empty))
+        (map-set claimed-before {sender: requester} {claimed: true})
+        (ok stx-amount)))
 ```
 
 In this example, the public function `claim-from-faucet`:
