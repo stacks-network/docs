@@ -84,9 +84,13 @@ called Proof of Transfer (PoX).
 
 ### Proof of Transfer (PoX)
 
--> Proof of Transfer and Stacking are in active development
+-> Proof of Transfer is in active development
 
-Proof of Transfer (PoX) is a consensus mechanism that leverages the security and stability of Bitcoin to create new blockchains, without modifying the Bitcoin protocol. PoX makes it possible to reward network participants with Bitcoin. A concrete implementation of the PoX mechanism on the Stacks 2.0 blockchain is called **Stacking**.
+Proof of Transfer (PoX) is a consensus mechanism that leverages the security and stability of Bitcoin to create a new blockchain, without modifying the Bitcoin protocol.
+
+With the PoX mechanism, miners use Bitcoin to secure the Stacks 2.0 network. By anchoring onto the Bitcoin network, it is practically infeasible for malicious actors to have enough computational power or ownership stake to attack the Stacks 2.0 network.
+
+PoX makes it also possible to reward Stacks token holders with bitcoins, a feature called **Stacking**.
 
 [@page-reference | inline]
 | /stacks-blockchain/stacking

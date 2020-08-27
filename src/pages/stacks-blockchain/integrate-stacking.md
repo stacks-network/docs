@@ -1,5 +1,5 @@
 ---
-title: Integrating Stacking
+title: Integrate Stacking
 description: Understand how to add Stacking capabilities to your wallet or exchange
 experience: advanced
 duration: 60 minutes
@@ -13,8 +13,6 @@ images:
 ![What you'll be creating in this tutorial](/images/todo-list-app.png)
 
 ## Introduction
-
--> Fun fact: Stacking is implemented as a smart contract, using [Clarity](/smart-contracts/overview).
 
 In this tutorial, you will learn how to integrate Stacking by interacting the respective smart contract using Connect and reading data from the Stacks Blockchain API.
 

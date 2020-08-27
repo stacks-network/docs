@@ -1,50 +1,54 @@
 ---
 title: Understand Stacking
-description: Introduction to the consensus algorithm of the Stacks 2.0 blockchain
+description: Introduction to the rewarding mechanism of Proof-of-Transfer
 images:
-  large: /images/pages/mining.svg
-  sm: /images/pages/mining-sm.svg
+  sm: /images/pages/stacking-rounded.svg
 ---
 
 ## Introduction
 
-The Stacking consensus algorithm uses a new type of mining mechanism called "proof-of-transfer" (PoX). With PoX, miners are not converting electricity and computing power to newly minted tokens, nor are they staking their cryptocurrency. Rather, they use Bitcoin to secure the Stacks 2.0 network. By anchoring onto the Bitcoin network, it is practically infeasible for malicious actors to have enough computational power or ownership stake to attack the Stacks 2.0 network.
+Stacking rewards Stacks token holders with bitcoins for providing a valuable service to the network by locking up their tokens for a certain period of time.
 
-## Mining mechanism: Proof of Transfer
+Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks 2.0 network.
 
-In proof-of-transfer, in order to receive newly-minted Stacks tokens, miners have to transfer bitcoins to owners of Stacks tokens. On a protocol-level, the mechanism consists of three key steps:
+## PoX mining
 
-- Election: A verifiable random function (VRF) chooses a registered miner to write a new block on the Stacks blockchain
-- Operation: The leader writes the new block and collects rewards in form of new Stacks tokens
-- Distribution: Bitcoins are sent to a set of specific addresses corresponding to Stacks (STX) tokens holders
+For a miner to receive newly-minted Stacks tokens, they have to transfer bitcoins to eligible owners of Stacks tokens. The PoX mechanism ensures proper handling and incentives through four key phases:
 
-### Stacks token holder requirements
+- Registration: Miners register for a future election by transfering bitcoins and sending consensus data to the network
+- Election: A verifiable random function chooses one registered miner to write a new block on the Stacks blockchain
+- Operation: The elected miner writes the new block and collects rewards in form of new Stacks tokens
+- Distribution: Collected bitcoins from the registration process are sent to a set eligible Stacks tokens holders
 
-In order to qualify for Stacking rewards, an STX holder must:
+Miners have to run software on their machines to participate in the PoX mechanism.
 
-- Hold ~94.000 Stacks tokens
+[@page-reference | inline]
+| /mining
+
+## Token holder eligibility
+
+Stacks token holders do not automatically receive Stacking rewards. Instead, they must:
+
 - Commit to participation before a reward cycle begins
-- Lock Stacks tokens for a lockup period
-- Specify a Bitcoin address to receive rewards
-- Vote on a Stacks chain tip
+- Hold ~94.000 Stacks tokens
+- Lock up Stacks tokens for a specified period
+- Set a Bitcoin address to receive rewards
 
-## Consensus algorithm: Stacking
-
-- each leader candidate registers itself for a future election by sending a key transaction
-- transaction both burns the leader's cryptocurrency (proof-of-burn) and spends the leader's energy (proof-of-work), and registers the leader's preferred chain tip and new VRF seed for selection in the cryptographic sortition
-- one election across all candidate leaders (across all chain tips)
-- each correct leader candidate first selects the transactions they will commit to include their blocks as a batch, constructs a Merkle tree from them, and then commits the Merkle tree root of the batch and their preferred chain tip (encoded as the hash of the last leader's microblock header) within the commitment transaction in the election protocol.
-- leader that commits to the winning chain tip and the peers who also burn for that leader collectively share in the block's reward, proportional to how much each one burned
-- New Stacks tokens come into existence on a fork in an epoch where a leader is selected, and are granted to the leader if the leader produces a valid block
-- However, the Stacks blockchain pools all tokens created and all transaction fees received and does not distribute them until a large number of epochs (a lockup period) has passed. The tokens cannot be spent until the period passes.
-
-- must determine the set of addresses that miners may validly transfer funds to. Consensus of this requires a "rewarding prepare" phase in which an anchor block and reward set are decided on
-- Progression in Stacking consensus happens over reward cycles (with a fixed length). In each reward cycle, a set of Bitcoin addresses are iterated over, such that each Bitcoin address in the set of reward addresses has exactly one Bitcoin block in which miners will transfer funds to the reward address.
-- If a miner is building off a descendant of the anchor block, the miner must send commitment funds to 5 addresses from the reward set
-
-### Integrating stacking
-
-Ready to integrate stacking in your wallet or exchange?
+Token holders will have to use a wallet or exchange that supports participation in Stacking.
 
 [@page-reference | inline]
 | /stacks-blockchain/integrate-stacking
+
+## Stacking consensus algorithm
+
+Stacking is a built-in capability of PoX and is realized through a set of actions on the Stacks 2.0 network. The full implementation details can be found in [SIP-007](https://github.com/blockstack/stacks-blockchain/blob/develop/sip/sip-007-stacking-consensus.md). Below is a summary of the most relevant actions of the algorithm.
+
+-> Fun fact: The Stacking consensus algorithm is implemented as a smart contract, using [Clarity](/smart-contracts/overview).
+
+- Progression in Stacking consensus happens over reward cycles (with a fixed length). In each reward cycle, a set of Bitcoin addresses are iterated over
+- A reward cycle consists of two phases: prepare and reward
+- During the prepare phase, miners decide on an anchor block and a reward set. Mining any descendant forks of the anchor block requires transferring mining funds to the appropriate reward addresses. The reward set is the set of Bitcoin addresses which will receive funds in the reward cycle
+- Miners register as leader candidates for a future election by sending a key transaction that both burns cryptocurrency (proof-of-burn) and spends energy (proof-of-work). The transaction also registers the leader's preferred chain tip (must be a descendant of the anchor block) and commitment of funds to 5 addresses from the reward set
+- Token holders register for the next rewards cycle by broadcasting a signed message that locks up associated Stacks tokens for a protocol-specified lockup period, specifies a Bitcoin address to receive the funds, and votes on a Stacks chain tip
+- The leader that commits to the winning chain tip and the peers who also burn for that leader collectively share the reward, proportional to how much each one burned
+- Token holders' locked up tokens automatically unlock as soon as the lockup period is completed
