@@ -23,7 +23,8 @@ This tutorial highlights the following functionality:
 
 ## Requirements
 
-You should [review and understand the Stacking mechanism](/stacks-blockchain/stacking).
+- Familiarity with the [Stacking mechanism](/stacks-blockchain/stacking)
+- Familiarity with [Blockstack authentication](/authentication/overview)
 
 ## Overview
 
@@ -42,25 +43,155 @@ In this tutorial, we will implement this Stacking flow:
 
 ## Step 1: Integrate JS libraries
 
-- add connect to enable transaction signing
-- add stacks API client lib to enable API calls and WebSockets
+First, we will add [Blockstack Connect](http://localhost:3000/authentication/connect) and the [Stacks Blockchain API client library](https://blockstack.github.io/stacks-blockchain-api/client/index.html) to the application:
 
-## Step 2: Display stacking info
+```bash
+yarn add @blockstack/connect@testnet @stacks/blockchain-api-client
+```
 
-- call Stacks API to obtain info: next cycle, cycle time
+> Note: The Stacks 2.0 blockchain and the web app integration is still in beta
 
-## Step 3: Add lock-up action
+Connect will allow to sign transactions inside the applications and the client library will allow interacting with the PoX Stacking smart contract.
 
-- ask for: BTC address, duration, token amount
-- calls Stacks API to obtain info: estimated rewards
-- verify BTC address (?) > maybe show in BTC explorer
-- initiate transaction and handle signing
+## Step 2: Implement Blockstack authentication
 
-## Step 4: Confirm lock-up and display status
+Allow your users to login with their Blockstack account.
 
-- calls Stacks API to obtain info: status, (estimated) rewards, unlock time
+For React-based applications, setup the `Connect` provider at the "top-level" of your app - probably next to wherever you would put a Redux provider, for example.
 
-## Step 5: Display stacking history (optional)
+```js
+// for react
+import { Connect } from '@blockstack/connect';
+
+const authOptions = {
+  redirectTo: '/',
+  authOrigin: 'https://deploy-preview-301--stacks-authenticator.netlify.app',
+  finished: ({ userSession }) => {
+    console.log(userSession.loadUserData());
+  },
+  appDetails: {
+    name: 'My Cool App',
+    icon: 'https://example.com/icon.png',
+  },
+};
+
+const App = () => <Connect authOptions={authOptions}>// the rest of your app's components</Connect>;
+```
+
+Later, when you want to begin the onboarding process, use the `useConnect` hook to get `connect`'s `doOpenAuth` method.
+
+```jsx
+import { useConnect } from '@blockstack/connect';
+
+const SignInButton = () => {
+  const { doOpenAuth } = useConnect();
+
+  return <Button onClick={doOpenAuth}>Sign In</Button>;
+};
+```
+
+## Step 3: Display stacking info
+
+In order to inform users about the upcoming reward cycle and duration, an API call can be made:
+
+```js
+import { SmartContractsApi } from '@stacks/blockchain-api-client';
+
+const contractsAPI = new SmartContractsApi();
+
+const response = await contractsAPI.callReadOnlyFunction({
+  contractName: '',
+  functionName: '',
+  stacksAddress: '',
+});
+
+console.log(response);
+// next cycles timestamp
+// cycle duration
+```
+
+## Step 4: Verify stacking eligibility
+
+Using the user session, you can also verify if the account holder is eligible for Stacking.
+
+- read tokens available
+- make API call to read minimum tokens required
+
+## Step 5: Add lock-up action
+
+Next, your application should ask the user for the following input:
+
+- BTC reward address: This address will receive earnings
+- Reward cycles: The number of reward cycles to participate in
+- STX tokens: The amount of tokens that will be locked up
+
+> Using the cycle duration and next cycle timestamp, you can calculate the lockup duration: `next_cycle_timestamp + (cycle_duration * cycle_amount)`.
+
+It is strongly recommended to verify the input fields presented to the user:
+
+```js
+const btcAddress = '<btcInput>'.match(/^[13][a-km-zA-HJ-NP-Z0-9]{26,33}$/);
+const rewardCycles = parseInt('cycleInput');
+const stxAmount = Decimal.Parse('stxInput', NumberStyles.AllowDecimalPoint);
+```
+
+With the user input, you can make an API call to obtain estimated rewards:
+
+```js
+const response = await contractsAPI.callReadOnlyFunction({
+  contractName: '',
+  functionName: '',
+  stacksAddress: '',
+  // arguments, e.g. stx ?
+});
+
+console.log(response);
+// reward estimates in uSTX
+```
+
+It it important to understand and point out to users that the rewards are _estimations_ based on previous reward cycles. The actual reward depends on a variety of parameters and amount would likely vary.
+
+Now that the user was presented with the reward estimates, the Stacking action should be enabled. The action will require signing a transaction and is best handled with Blockstack Connect:
+
+```js
+import { openContractCall } from '@blockstack/connect';
+
+// While in beta, you must provide this option:
+const authOrigin = 'https://deploy-preview-301--stacks-authenticator.netlify.app';
+
+// Here's an example of options:
+const myStatus = 'hey there';
+const options = {
+  contractAddress: 'ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ',
+  contractName: 'status',
+  functionName: 'write-status!',
+  functionArgs: [
+    {
+      type: 'buff',
+      value: myStatus,
+    },
+  ],
+  authOrigin,
+  appDetails: {
+    name: 'SuperApp',
+    icon: 'https://example.com/icon.png',
+  },
+  finished: data => {
+    console.log('TX ID:', data.txId);
+    console.log('Raw TX:', data.txRaw);
+  },
+};
+
+await openContractCall(options);
+```
+
+## Step 6: Confirm lock-up and display status
+
+Once the user signed the transaction, the Stacks tokens in the account will be locked up for the lockup duration. During that duration, the application can display the Stacking status.
+
+- calls Stacks API to obtain info: status, (estimated) rewards, rewards earned, unlock time
+
+## Step 7: Display stacking history (optional)
 
 - alls Stacks API to obtain info: previous lock-ups, durations, dates, and rewards
 
