@@ -1,6 +1,6 @@
 ---
 title: Understand Stacking
-description: Introduction to the rewarding mechanism of Proof-of-Transfer
+description: Introduction to the reward mechanism of Proof-of-Transfer
 images:
   sm: /images/pages/stacking-rounded.svg
 ---
@@ -10,6 +10,8 @@ images:
 Stacking rewards Stacks token holders with bitcoins for providing a valuable service to the network by locking up their tokens for a certain period of time.
 
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks 2.0 network.
+
+-> Fun fact: The Stacking consensus algorithm is implemented as a smart contract, using [Clarity](/smart-contracts/overview).
 
 ## PoX mining
 
@@ -34,7 +36,7 @@ Stacks token holders do not automatically receive Stacking rewards. Instead, the
 - Lock up Stacks tokens for a specified period
 - Set a Bitcoin address to receive rewards
 
-Token holders will have to use a wallet or exchange that supports participation in Stacking.
+Token holders will have to use software like apps, exchanges, or wallets that support participation in Stacking.
 
 [@page-reference | inline]
 | /stacks-blockchain/integrate-stacking
@@ -43,12 +45,10 @@ Token holders will have to use a wallet or exchange that supports participation 
 
 Stacking is a built-in capability of PoX and is realized through a set of actions on the Stacks 2.0 network. The full implementation details can be found in [SIP-007](https://github.com/blockstack/stacks-blockchain/blob/develop/sip/sip-007-stacking-consensus.md). Below is a summary of the most relevant actions of the algorithm.
 
--> Fun fact: The Stacking consensus algorithm is implemented as a smart contract, using [Clarity](/smart-contracts/overview).
-
 - Progression in Stacking consensus happens over reward cycles (with a fixed length). In each reward cycle, a set of Bitcoin addresses are iterated over
 - A reward cycle consists of two phases: prepare and reward
 - During the prepare phase, miners decide on an anchor block and a reward set. Mining any descendant forks of the anchor block requires transferring mining funds to the appropriate reward addresses. The reward set is the set of Bitcoin addresses which will receive funds in the reward cycle
 - Miners register as leader candidates for a future election by sending a key transaction that both burns cryptocurrency (proof-of-burn) and spends energy (proof-of-work). The transaction also registers the leader's preferred chain tip (must be a descendant of the anchor block) and commitment of funds to 5 addresses from the reward set
 - Token holders register for the next rewards cycle by broadcasting a signed message that locks up associated Stacks tokens for a protocol-specified lockup period, specifies a Bitcoin address to receive the funds, and votes on a Stacks chain tip
-- The leader that commits to the winning chain tip and the peers who also burn for that leader collectively share the reward, proportional to how much each one burned
+- Multiple leaders can commit to the same chain tip. The leader that wins the election and the peers who also burn for that leader collectively share the reward, proportional to how much each one burned
 - Token holders' locked up tokens automatically unlock as soon as the lockup period is completed
