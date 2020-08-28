@@ -27,9 +27,9 @@ You should [review and understand the Stacking mechanism](/stacks-blockchain/sta
 
 ## Overview
 
-![The flow you'll be implementation in this tutorial](/images/stacking-illustration.png)
-
 In this tutorial, we will implement this Stacking flow:
+
+![The flow you'll be implementation in this tutorial](/images/stacking-illustration.png)
 
 1. Make API calls to get details about the upcoming reward cycle. The details include the next cycle timestamp, cycle duration, and estimated rewards
 2. For a specific Stacks wallet, confirm the minimum balance required and no locked-up tokens
@@ -38,7 +38,7 @@ In this tutorial, we will implement this Stacking flow:
 5. The Stacking mechanism executes reward cycles and sends out rewards to the set BTC reward address
 6. During the lockup period, make API calls to get details about unlocking timing, rewards collected and projected
 7. Once lockup period is passed, the tokens are released and accessible again
-8. Display actual rewards collected from the last Stacking participation
+8. Display reward history, including details like earnings for previews rewrad cycles
 
 ## Step 1: Integrate JS libraries
 
