@@ -56,6 +56,7 @@ sections:
         sections:
           - title: Tutorials
             pages:
+              - path: /broadcasting-transactions
               - path: /install-api
               - path: /installing-memcached
       - path: /stacks-wallet
