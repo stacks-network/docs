@@ -1,5 +1,5 @@
 import React from 'react';
-import { color, space, themeColor } from '@blockstack/ui';
+import { color, space, themeColor } from '@stacks/ui';
 import { getHeadingStyles } from '@components/mdx/typography';
 import { border } from '@common/utils';
 import { getCapsizeStyles } from '@components/mdx/typography';

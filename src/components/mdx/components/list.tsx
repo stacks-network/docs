@@ -1,4 +1,4 @@
-import { Box, BoxProps, color, space } from '@blockstack/ui';
+import { Box, BoxProps, color, space } from '@stacks/ui';
 import React, { forwardRef, Ref } from 'react';
 
 export const Ol: React.FC<BoxProps> = props => (

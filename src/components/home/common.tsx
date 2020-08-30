@@ -1,14 +1,23 @@
 import React from 'react';
-import { Box, Grid, Flex, BoxProps, transition, space, themeColor, color } from '@blockstack/ui';
-import { GridProps } from '@blockstack/ui/dist/ui/src/grid/types';
+import {
+  Box,
+  Grid,
+  Flex,
+  BoxProps,
+  transition,
+  space,
+  GridProps,
+  color,
+  FlexProps,
+} from '@stacks/ui';
 import { CONTENT_MAX_WIDTH } from '@common/constants';
 
 export const CircleIcon: React.FC<
-  BoxProps & { icon: React.FC<any>; hover?: boolean; dark?: boolean }
+  FlexProps & { icon: React.FC<any>; hover?: boolean; dark?: boolean }
 > = ({ size = '72px', icon: Icon, hover, dark, ...rest }) => (
   <Flex
     size={size}
-    align="center"
+    alignItems="center"
     justify="center"
     borderRadius={size}
     bg={color(hover ? 'accent' : 'bg-alt')}

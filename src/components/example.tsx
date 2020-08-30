@@ -10,7 +10,7 @@ import {
   ChevronIcon,
   themeColor,
   FlexProps,
-} from '@blockstack/ui';
+} from '@stacks/ui';
 import { Caption, Text } from '@components/typography';
 
 import { border } from '@common/utils';
@@ -33,7 +33,7 @@ const AppItem: React.FC<FlexProps & { name: string; usage: string }> = ({
   ...rest
 }) => (
   <ListItem {...rest}>
-    <Flex align="center">
+    <Flex alignItems="center">
       <Box
         bg={color('bg-alt')}
         border={border()}
@@ -43,7 +43,7 @@ const AppItem: React.FC<FlexProps & { name: string; usage: string }> = ({
       />
       <Title>{name}</Title>
     </Flex>
-    <Flex justify="flex-end" maxWidth="100px" align="center" flexGrow={1}>
+    <Flex justify="flex-end" maxWidth="100px" alignItems="center" flexGrow={1}>
       <Caption>{usage}</Caption>
       <ChevronIcon size="22px" color={color('text-caption')} direction="right" />
     </Flex>
@@ -52,7 +52,7 @@ const AppItem: React.FC<FlexProps & { name: string; usage: string }> = ({
 
 const ListItem: React.FC<FlexProps> = props => (
   <Flex
-    align="center"
+    alignItems="center"
     justify="space-between"
     borderBottom={border()}
     pb={space('base')}
@@ -73,18 +73,23 @@ export const ExampleComponent: React.FC<BoxProps> = props => (
     width={['100%', '320px', '320px', '320px']}
     {...props}
   >
-    <Flex borderBottom={border()} p={space('base-loose')} justify="space-between" align="center">
+    <Flex
+      borderBottom={border()}
+      p={space('base-loose')}
+      justify="space-between"
+      alignItems="center"
+    >
       <Title>Data storage</Title>
       <Avatar border={border()} size="24px" />
     </Flex>
     <Box p={space('base-loose')}>
       <Caption>Connected to</Caption>
       <ListItem mt={space('base-tight')}>
-        <Flex align="center">
+        <Flex alignItems="center">
           <BlockstackIcon color={color('accent')} mr={space('tight')} size="18px" />
           <Title>My Gaia Hub</Title>
         </Flex>
-        <Flex maxWidth="100px" align="center" flexGrow={1}>
+        <Flex maxWidth="100px" alignItems="center" flexGrow={1}>
           <Progress mr={space('base')} amount={72} />
           <ChevronIcon size="22px" color={color('text-caption')} direction="right" />
         </Flex>
@@ -106,7 +111,7 @@ export const exampleCode = `
   borderRadius="lg" 
   width="320px">
   <Flex 
-    align="center"
+    alignItems="center"
     justify="space-between" 
     p={space('base-loose')} 
     borderBottom={border()}> 
@@ -127,7 +132,7 @@ export const exampleCode = `
 
 export const gaiaHubUsage = `
 <ListItem>
-  <Flex align="center">
+  <Flex alignItems="center">
     <BlockstackIcon 
       color={color('accent')} 
       mr={space('tight')} 
@@ -136,7 +141,7 @@ export const gaiaHubUsage = `
   </Flex>
   <Flex 
     maxWidth="100px" 
-    align="center" 
+    alignItems="center" 
     flexGrow={1}>
     <Progress 
       mr={space('base')} 
@@ -150,7 +155,7 @@ export const gaiaHubUsage = `
 
 export const appItem = `
 <ListItem>
-  <Flex align="center">
+  <Flex alignItems="center">
     <Box
       bg={color('bg-alt')}
       border={border()}
@@ -163,7 +168,7 @@ export const appItem = `
   <Flex 
     justify="flex-end" 
     maxWidth="100px" 
-    align="center" 
+    alignItems="center" 
     flexGrow={1}>
     <Caption>{usage}</Caption>
     <ChevronIcon 

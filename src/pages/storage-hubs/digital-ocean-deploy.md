@@ -459,12 +459,11 @@ This runs your Gaia hub on port `3000`. If everything runs successfully, the las
 
    This command includes `-d` option to `docker run`. This runs Docker in detached mode, so that it runs in the background. You can run `docker ps` to see your running docker images, and get the `id` of your Gaia server.
 
-
-    ```bash
-    root@meepers:~/gaia/hub# docker ps
-    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
-    aeca7eea4a86        gaia.hub            "npm run start"     11 seconds ago      Up 10 seconds       0.0.0.0:3000->3000/tcp   musing_payne
-    ```
+   ```bash
+   root@meepers:~/gaia/hub# docker ps
+   CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+   aeca7eea4a86        gaia.hub            "npm run start"     11 seconds ago      Up 10 seconds       0.0.0.0:3000->3000/tcp   musing_payne
+   ```
 
 At this point, your Gaia service is up and running. You can run `docker logs MY_CONTAINER_ID` with your running image's ID to see the logs of this server at any time.
 

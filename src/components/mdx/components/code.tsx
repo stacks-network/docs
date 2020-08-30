@@ -1,9 +1,9 @@
 import React, { Children } from 'react';
 
-import { Box, Flex, BoxProps, color, space, useClipboard, themeColor } from '@blockstack/ui';
+import { Box, Flex, BoxProps, color, space, useClipboard, themeColor } from '@stacks/ui';
 import { ClipboardCheckIcon } from '@components/icons/clipboard-check';
 import { border, onlyText } from '@common/utils';
-import { css } from '@styled-system/css';
+import { css } from '@stacks/ui-core';
 import { Text } from '@components/typography';
 import { useHover } from 'use-events';
 import { IconButton } from '@components/icon-button';
@@ -66,16 +66,23 @@ export const Code: React.FC<
         >
           <Box
             as="code"
-            css={css({
+            {...{
               width: '100%',
               display: 'flex',
               flexDirection: 'column',
               minWidth: 'fit-content',
+              counterReset: 'line',
+              pr: space(['base-loose', 'base-loose', 'extra-loose', 'extra-loose']),
+              pl:
+                lines <= LINE_MINIMUM || lang === 'bash'
+                  ? space(['extra-loose', 'extra-loose', 'base-loose', 'base-loose'])
+                  : 'unset',
+            }}
+            css={css({
               '.token-line': {
                 display: 'inline-block',
                 ...generateCssStylesForHighlightedLines(numbers),
               },
-              counterReset: 'line',
               '& .token-line': {
                 '&__empty': {
                   height: '24px',
@@ -101,11 +108,6 @@ export const Code: React.FC<
                       }
                     : {},
               },
-              pr: space(['base-loose', 'base-loose', 'extra-loose', 'extra-loose']),
-              pl:
-                lines <= LINE_MINIMUM || lang === 'bash'
-                  ? space(['extra-loose', 'extra-loose', 'base-loose', 'base-loose'])
-                  : 'unset',
             })}
             {...rest}
           >
@@ -188,14 +190,12 @@ const preProps = {
 export const InlineCode: React.FC<BoxProps> = ({ children, ...rest }) => (
   <Text
     as="code"
-    css={css({
-      // @ts-ignore
+    {...preProps}
+    {...{
       fontSize: '14px',
-      // @ts-ignore
       lineHeight: '20px',
-      ...preProps,
-      ...rest,
-    })}
+    }}
+    {...rest}
   >
     {children}
   </Text>

@@ -37,32 +37,31 @@ If `watch` is not located, install it on your workstation.
 
 ## Task 1: Launch an EC2 instance
 
-1. Visit the [AWS Free Tier page](https://aws.amazon.com/free/) and choose **Sign in to the Console**.
+1.  Visit the [AWS Free Tier page](https://aws.amazon.com/free/) and choose **Sign in to the Console**.
 
-   ![](/images/aws-console.png)
+    ![](/images/aws-console.png)
 
-2. Make sure your region is set to one close to you.
+2.  Make sure your region is set to one close to you.
 
-   ![](/images/us-west-2.png)
+    ![](/images/us-west-2.png)
 
-3. Under **Build a solution** choose **Launch a virtual machine**.
+3.  Under **Build a solution** choose **Launch a virtual machine**.
 
-   The system opens the EC2 dashboard.
+    The system opens the EC2 dashboard.
 
-4. Enter `blockstack-gaia` in the search bar.
+4.  Enter `blockstack-gaia` in the search bar.
 
-   The system finds AMIs in the Marketplace and the Community.
+    The system finds AMIs in the Marketplace and the Community.
 
-5. Choose **Community AMIs**.
+5.  Choose **Community AMIs**.
 
-   The system displays the available Gaia hub images.
+    The system displays the available Gaia hub images.
 
-   ![](/images/gaia-community.png)
+    ![](/images/gaia-community.png)
 
-   Each image name has this format:
+    Each image name has this format:
 
-   `blockstack-gaia_hub-STORAGETYPE-VERSION-hvm - ami-BUILDTAG`
-
+    `blockstack-gaia_hub-STORAGETYPE-VERSION-hvm - ami-BUILDTAG`
 
     You can choose an image that uses **ephemeral** or **EBS** storage. The ephemeral
     storage is very small but free. Only choose this if you plan to test or use

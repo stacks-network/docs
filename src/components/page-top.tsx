@@ -1,11 +1,11 @@
 import React from 'react';
-import { Box, Flex, Stack, space, BoxProps } from '@blockstack/ui';
+import { Box, Flex, Stack, space, BoxProps } from '@stacks/ui';
 import { H1 } from '@components/mdx';
 import { Text } from '@components/typography';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { getTitle } from '@common/utils';
-import { css } from '@styled-system/css';
+import { css } from '@stacks/ui-core';
 import { getHeadingStyles } from '@components/mdx/typography';
 const Search = dynamic(() => import('@components/search'));
 import { PageMeta } from '@components/page-meta';
@@ -38,13 +38,7 @@ export const PageTop: React.FC<PageTopProps> = React.memo(
         </Flex>
         {description ? (
           <Box mt="40px !important">
-            <Text
-              css={css({
-                ...getHeadingStyles('h4'),
-              })}
-            >
-              {description}
-            </Text>
+            <Text {...getHeadingStyles('h4')}>{description}</Text>
           </Box>
         ) : null}
         <PageMeta duration={duration} experience={experience} isHome={isHome} />

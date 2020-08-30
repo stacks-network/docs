@@ -1,4 +1,4 @@
-import { Box, Flex, FlexProps, BoxProps, color, useClipboard, space } from '@blockstack/ui';
+import { Box, Flex, FlexProps, BoxProps, color, useClipboard, space } from '@stacks/ui';
 
 import React from 'react';
 import LinkIcon from 'mdi-react/LinkVariantIcon';
@@ -7,10 +7,10 @@ import { useTouchable } from '@common/hooks/use-touchable';
 import { Tooltip } from '@components/tooltip';
 import { useActiveHeading } from '@common/hooks/use-active-heading';
 import { Title } from '@components/typography';
-import { css } from '@styled-system/css';
 import { getHeadingStyles, baseTypeStyles } from '@components/mdx/typography';
 import { useRouter } from 'next/router';
 import { Link } from '@components/mdx/components/link';
+import { ForwardRefExoticComponentWithAs, forwardRefWithAs } from '@stacks/ui-core';
 
 const LinkButton = React.memo(({ link, onClick, ...rest }: BoxProps & { link: string }) => {
   const url =
@@ -49,7 +49,7 @@ const LinkButton = React.memo(({ link, onClick, ...rest }: BoxProps & { link: st
 });
 
 // this is to adjust the offset of where the page scrolls to when an anchor is present
-const AnchorOffset = ({ id }: BoxProps) =>
+const AnchorOffset: React.FC<BoxProps & { id?: string }> = ({ id }) =>
   id ? (
     <Box
       as="span"
@@ -65,7 +65,7 @@ const Hashtag = () => (
   <Flex
     position="absolute"
     as="span"
-    align="center"
+    alignItems="center"
     size="20px"
     left={['12px', '12px', '-20px', '-20px']}
     color={color('text-caption')}
@@ -74,51 +74,51 @@ const Hashtag = () => (
   </Flex>
 );
 
-export const Heading = ({ as, children, id, ...rest }: FlexProps) => {
-  const { isActive, doChangeActiveSlug } = useActiveHeading(id);
+export const Heading: ForwardRefExoticComponentWithAs<
+  FlexProps,
+  'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+> = forwardRefWithAs<FlexProps, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>(
+  ({ as, children, id, ...rest }) => {
+    const { isActive, doChangeActiveSlug } = useActiveHeading(id);
 
-  const { bind: _bind, hover, active } = useTouchable();
-  const router = useRouter();
+    const { bind: _bind, hover, active } = useTouchable();
+    const router = useRouter();
 
-  const link = `#${id}`;
+    const link = `#${id}`;
 
-  const handleLinkClick = () => {
-    void router.push(router.pathname, router.pathname + link, { shallow: true });
-    doChangeActiveSlug(id);
-  };
-  const styles = getHeadingStyles(as as any);
+    const handleLinkClick = () => {
+      void router.push(router.pathname, router.pathname + link, { shallow: true });
+      doChangeActiveSlug(id);
+    };
+    const styles = getHeadingStyles(as as any);
 
-  const bind = id ? _bind : {};
+    const bind = id ? _bind : {};
 
-  return (
-    <Title
-      as={as}
-      {...bind}
-      css={css({
-        ...baseTypeStyles,
-        ...styles,
-        color: isActive ? color('accent') : (color('text-title') as any),
-        // @ts-ignore
-        alignItems: 'center',
-        // @ts-ignore
-        position: 'relative',
-        // @ts-ignore
-        display: 'flex',
-        // @ts-ignore
-        justifyContent: 'flex-start',
-        // @ts-ignore
-        cursor: id && hover ? 'pointer' : 'unset',
-        ...rest,
-      })}
-    >
-      <Box as="span">{children}</Box>
-      <AnchorOffset id={id} />
-      {id && isActive && <Hashtag />}
-      {id && <LinkButton opacity={hover ? 1 : 0} link={link} />}
-    </Title>
-  );
-};
+    return (
+      <Title
+        as={as}
+        {...bind}
+        {...{
+          ...baseTypeStyles,
+          ...styles,
+          color: isActive ? color('accent') : (color('text-title') as any),
+          alignItems: 'center',
+          position: 'relative',
+          display: 'flex',
+          justifyContent: 'flex-start',
+          cursor: id && hover ? 'pointer' : 'unset',
+        }}
+        {...rest}
+      >
+        <Box as="span">{children}</Box>
+        <AnchorOffset id={id} />
+        {id && isActive && <Hashtag />}
+        {id && <LinkButton opacity={hover ? 1 : 0} link={link} />}
+      </Title>
+    );
+  }
+);
 
-export const BaseHeading: React.FC<BoxProps> = React.memo(props => (
-  <Heading width="100%" mt={space('base-loose')} {...props} />
+export const BaseHeading: React.FC<BoxProps> = React.memo(({ ...props }) => (
+  <Heading width="100%" mt={space('base-loose')} {...(props as any)} />
 ));

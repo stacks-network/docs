@@ -1,7 +1,7 @@
 import React from 'react';
 import cliReferenceData from '../_data/cli-reference.json';
 import { Components } from '@components/mdx/mdx-components';
-import { Grid, Box, color } from '@blockstack/ui';
+import { Grid, Box, color } from '@stacks/ui';
 import { border, onlyText, slugify } from '@common/utils';
 import hydrate from 'next-mdx-remote/hydrate';
 

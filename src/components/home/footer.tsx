@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps, Grid, space, themeColor } from '@blockstack/ui';
+import { Box, BoxProps, Grid, space, themeColor } from '@stacks/ui';
 
 import { Section, SectionWrapper } from '@components/home/common';
 import { Text } from '@components/typography';

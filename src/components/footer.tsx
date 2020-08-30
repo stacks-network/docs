@@ -1,5 +1,5 @@
 import React from 'react';
-import { space } from '@blockstack/ui';
+import { space } from '@stacks/ui';
 import { Pagination } from '@components/pagination';
 import { Section, SectionWrapper } from '@components/home/common';
 import { FeedbackSection } from '@components/feedback';
