@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps, Flex, Grid, color, space, transition } from '@blockstack/ui';
+import { Box, BoxProps, Flex, Grid, color, space, transition } from '@stacks/ui';
 import { useAppState } from '@common/hooks/use-app-state';
 import { useRouter } from 'next/router';
 import { border, getTitle } from '@common/utils';
@@ -7,7 +7,7 @@ import NextLink from 'next/link';
 import { Caption, Text, Link } from '@components/typography';
 import { useTouchable } from '@common/hooks/use-touchable';
 import { getHeadingStyles } from '@components/mdx/typography';
-import { css } from '@styled-system/css';
+import { css } from '@stacks/ui-core';
 import { ArrowRightIcon } from '@components/icons/arrow-right';
 import { ArrowLeftIcon } from '@components/icons/arrow-left';
 
@@ -82,9 +82,7 @@ const Pretitle: React.FC<BoxProps> = props => (
     display="block"
     color={color('text-caption')}
     transition={transition}
-    css={css({
-      ...getHeadingStyles('h6'),
-    })}
+    {...getHeadingStyles('h6')}
     {...props}
   />
 );
@@ -97,9 +95,7 @@ const Title: React.FC<BoxProps & { isHovered?: boolean }> = ({ isHovered, ...pro
     transition={transition}
     color={isHovered ? color('accent') : color('text-title')}
     mb={space('tight')}
-    css={css({
-      ...getHeadingStyles('h4'),
-    })}
+    {...getHeadingStyles('h4')}
     {...props}
   />
 );
@@ -112,7 +108,7 @@ const PrevCard: React.FC<any> = React.memo(props => {
       {({ hover, active }) => (
         <>
           <FloatingLink href={prev.path} />
-          <Flex position="relative" mb={space('base-tight')} align="center">
+          <Flex position="relative" mb={space('base-tight')} alignItems="center">
             <Pretitle
               left={hover || active ? '18px' : 0}
               bg={color('bg')}
@@ -137,11 +133,11 @@ const NextCard: React.FC<any> = React.memo(props => {
   const { next } = usePaginateRoutes();
 
   return next ? (
-    <Card py="loose" textAlign="right" align="flex-end">
+    <Card py="loose" textAlign="right" alignItems="flex-end">
       {({ hover, active }) => (
         <>
           <FloatingLink href={next.path} />
-          <Flex position="relative" mb={space('base-tight')} align="center">
+          <Flex position="relative" mb={space('base-tight')} alignItems="center">
             <Pretitle
               right={hover || active ? '18px' : 0}
               bg={color('bg')}

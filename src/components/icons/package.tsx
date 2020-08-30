@@ -1,8 +1,6 @@
 import React from 'react';
-import { Box, BoxProps } from '@blockstack/ui';
-import { SVGProps } from 'react';
-
-export const PackageIcon: React.FC<BoxProps & SVGProps<any>> = props => (
+import { Box, BoxProps } from '@stacks/ui';
+export const PackageIcon: React.FC<BoxProps> = props => (
   <Box
     as="svg"
     width="44"

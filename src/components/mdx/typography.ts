@@ -14,54 +14,64 @@ export const baseTypeStyles = {
   fontFamily: `'Soehne', Inter, sans-serif`,
 };
 
-export const getCapsizeStyles = (fontSize, leading) =>
-  capsize({
+export const getCapsizeStyles = (fontSize, leading, prefix = '_') => {
+  const styles = capsize({
     fontMetrics,
     fontSize,
     leading,
   });
 
-const h1 = {
+  Object.keys(styles).forEach(prop => {
+    if (prop.startsWith('::')) {
+      styles[prop.replace('::', prefix)] = styles[prop];
+      delete styles[prop];
+    }
+  });
+
+  return styles;
+};
+
+const h1 = prefix => ({
   fontWeight: 600,
-  ...getCapsizeStyles(36, 42),
-};
+  ...getCapsizeStyles(36, 42, prefix),
+});
 
-const h2 = {
+const h2 = prefix => ({
   fontWeight: 500,
-  ...getCapsizeStyles(24, 32),
-};
+  ...getCapsizeStyles(24, 32, prefix),
+});
 
-const h3 = {
+const h3 = prefix => ({
   fontWeight: 500,
-  ...getCapsizeStyles(18, 28),
-};
+  ...getCapsizeStyles(18, 28, prefix),
+});
 
-const h4 = {
+const h4 = prefix => ({
   fontWeight: 400,
-  ...getCapsizeStyles(20, 32),
-};
+  ...getCapsizeStyles(20, 32, prefix),
+});
 
-const h5 = {
+const h5 = prefix => ({
   fontWeight: 400,
-  ...getCapsizeStyles(16, 26),
-};
+  ...getCapsizeStyles(16, 26, prefix),
+});
 
-const h6 = {
+const h6 = prefix => ({
   fontWeight: 400,
-  ...getCapsizeStyles(14, 20),
-};
+  ...getCapsizeStyles(14, 20, prefix),
+});
 
-const headings = {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-};
+const headings = (as, prefix) => ({
+  h1: h1(prefix),
+  h2: h2(prefix),
+  h3: h3(prefix),
+  h4: h4(prefix),
+  h5: h5(prefix),
+  h6: h6(prefix),
+});
 
-export const getHeadingStyles = (as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
+export const getHeadingStyles = (as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', prefix = '_') => {
   return {
-    ...headings[as],
+    ...headings(as, prefix)[as],
   };
 };

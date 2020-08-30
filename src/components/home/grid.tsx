@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, space, color } from '@blockstack/ui';
+import { Box, space, color } from '@stacks/ui';
 
 import { Body, SubHeading } from '@components/home/text';
 export const GridItem = ({ icon: Icon, title, body, ...rest }) => {

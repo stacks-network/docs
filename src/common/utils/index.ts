@@ -1,7 +1,7 @@
 import { Children, isValidElement, ReactNode, ReactElement, ReactText } from 'react';
 import { Property } from 'csstype';
-import { color } from '@blockstack/ui';
-import { ColorsStringLiteral } from '@blockstack/ui';
+import { color } from '@stacks/ui';
+import { ColorsStringLiteral } from '@stacks/ui';
 
 const camelToKebab = (string: string) =>
   string

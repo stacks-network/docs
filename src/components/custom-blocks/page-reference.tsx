@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, BoxProps, color, Grid, space } from '@blockstack/ui';
+import { Box, Flex, BoxProps, color, Grid, space } from '@stacks/ui';
 import { BlockstackLogo } from '@components/icons/blockstack-logo';
 import { StackIcon } from '@components/icons/stack';
 import { SitemapIcon } from '@components/icons/sitemap';
@@ -9,7 +9,6 @@ import { Text } from '@components/typography';
 import Link from 'next/link';
 import { useAppState } from '@common/hooks/use-app-state';
 import { Img } from '@components/mdx/image';
-import { css } from '@styled-system/css';
 import { getCapsizeStyles, getHeadingStyles } from '@components/mdx/typography';
 
 const Image = ({
@@ -42,13 +41,8 @@ const Image = ({
   </Box>
 );
 
-const Title = ({ children, ...props }: BoxProps) => (
-  <Text
-    css={css({
-      ...getHeadingStyles('h3'),
-    })}
-    {...props}
-  >
+const Title: React.FC<BoxProps> = ({ children, ...props }) => (
+  <Text {...getHeadingStyles('h3')} {...props}>
     {children}
   </Text>
 );
@@ -56,11 +50,9 @@ const Title = ({ children, ...props }: BoxProps) => (
 const Description = ({ children, ...props }) => (
   <Text
     {...props}
-    css={css({
-      ...getCapsizeStyles(16, 26),
-      mt: space('base-tight'),
-      color: color('text-body'),
-    })}
+    {...getCapsizeStyles(16, 26)}
+    mt={space('base-tight')}
+    color={color('text-body')}
   >
     {children}
   </Text>
@@ -94,7 +86,7 @@ const InlineCard = ({ page }) => {
       flexDirection={['column', 'row', 'row', 'row']}
       p={space('base-loose')}
       borderRadius="12px"
-      align="center"
+      alignItems="center"
       transition={transition()}
       boxShadow={hover ? 'mid' : 'none'}
       position="relative"
@@ -126,7 +118,7 @@ const InlineCard = ({ page }) => {
         mt={space(['base', 'none', 'none', 'none'])}
         textAlign={['center', 'left', 'left', 'left']}
       >
-        <Flex align="baseline">
+        <Flex alignItems="baseline">
           <Title
             width={['100%', 'unset', 'unset', 'unset']}
             color={hover ? color('accent') : color('text-title')}
@@ -146,7 +138,7 @@ const InlineCard = ({ page }) => {
                   borderRadius="18px"
                   px={space('base-tight')}
                   height="20px"
-                  align="center"
+                  alignItems="center"
                   justify="center"
                   fontSize="12px"
                   bg={color('border')}
@@ -175,7 +167,7 @@ const GridCardImage: React.FC<
     bg="#9985FF"
     position="relative"
     borderRadius="12px"
-    mb={space('loose')}
+    marginBottom="base"
     overflow="hidden"
     {...props}
   >
@@ -225,6 +217,7 @@ const GridCard: React.FC<BoxProps & { page?: any }> = React.memo(({ page, ...res
         alt={`Graphic for: ${page.title || page.headings[0]}`}
         src={page?.images?.large}
         isHovered={hover || active}
+        mb={'loose'}
       />
       <GridItemDetails page={page} />
     </Box>
@@ -264,7 +257,7 @@ const GridSmallItem: React.FC<BoxProps & { page?: any }> = ({ page, ...rest }) =
       {...rest}
       {...bind}
     >
-      {page.icon ? <Icon mb={space('base')} /> : null}
+      {page.icon ? <Icon mb={space('loose')} /> : null}
       <GridItemDetails page={page} />
     </Box>
   );
@@ -297,7 +290,6 @@ export const PageReference: React.FC<BoxProps> = React.memo(({ children, ...rest
   return (
     <Box {...rest}>
       <Grid
-        display="grid"
         width="100%"
         gridColumnGap={space('extra-loose')}
         gridRowGap={space('extra-loose')}

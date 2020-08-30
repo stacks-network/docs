@@ -10,13 +10,13 @@ import {
   ChevronIcon,
   FlexProps,
   Fade,
-} from '@blockstack/ui';
+} from '@stacks/ui';
 import { Link, LinkProps, Text } from '@components/typography';
 import MenuIcon from 'mdi-react/MenuIcon';
 import CloseIcon from 'mdi-react/CloseIcon';
 import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
 
-import { css } from '@styled-system/css';
+import { css, ForwardRefExoticComponentWithAs, forwardRefWithAs } from '@stacks/ui-core';
 import NextLink from 'next/link';
 import { ColorModeButton } from '@components/color-mode-button';
 import { PAGE_WIDTH } from '@common/constants';
@@ -41,7 +41,7 @@ const MenuButton = ({ ...rest }: any) => {
   );
 };
 
-const HeaderWrapper: React.FC<BoxProps> = React.forwardRef((props, ref) => (
+const HeaderWrapper: React.FC<BoxProps> = React.forwardRef((props, ref: any) => (
   <Box as="header" ref={ref} width="100%" position="relative" zIndex={9999} {...props} />
 ));
 
@@ -88,27 +88,30 @@ const nav: NavItem[] = [
 
 export const HEADER_HEIGHT = 132;
 
-const HeaderTextItem: React.FC<BoxProps & LinkProps> = ({ children, href, as, ...rest }) => (
+const HeaderTextItem: ForwardRefExoticComponentWithAs<BoxProps & LinkProps, 'a'> = forwardRefWithAs<
+  BoxProps & LinkProps,
+  'a'
+>(({ children, href, as = 'a', ...rest }, ref) => (
   <Text
     color={color('invert')}
-    css={css({
+    {...{
       ...getCapsizeStyles(16, 26),
       color: 'currentColor',
       ...rest,
       fontWeight: '400',
-      ':hover': {
+      _hover: {
         cursor: 'pointer',
         textDecoration: href ? 'underline' : 'none',
         color: href ? color('accent') : 'currentColor',
       },
-    })}
+    }}
     as={as}
-    // @ts-ignore
     href={href}
+    ref={ref}
   >
     {children}
   </Text>
-);
+));
 
 const NavItem: React.FC<FlexProps & { item: NavItem }> = ({ item, ...props }) => {
   const { hover, active, bind } = useTouchable({
@@ -200,29 +203,21 @@ const Navigation: React.FC<BoxProps> = props => {
 
 const LogoLink = () => {
   const { hover, active, bind } = useTouchable();
-  const router = useRouter();
   return (
     <NextLink href="/" passHref>
-      <Link
-        as="a"
-        style={{
-          textDecoration: 'none',
-          pointerEvents: router.pathname === '/' ? 'none' : 'unset',
-        }}
-        {...bind}
-      >
-        <Flex as="span" align="center">
+      <Link _hover={{ textDecoration: 'none' }} as="a" display="flex" {...bind}>
+        <Flex as="span" alignItems="center">
           <Box
             as="span"
-            // opacity={hover || active ? 0.75 : 1}
-            color={hover || active ? color('accent') : color('invert')}
+            opacity={hover || active ? 0.75 : 1}
+            color={color('invert')}
             mr={space('tight')}
           >
             <BlockstackIcon size="20px" />
           </Box>
-          <Box as="span" transform="translateY(1px)">
-            <HeaderTextItem>Blockstack</HeaderTextItem>
-          </Box>
+          <HeaderTextItem as="span" transform="translateY(1px)">
+            Blockstack
+          </HeaderTextItem>
         </Flex>
       </Link>
     </NextLink>
@@ -236,7 +231,7 @@ const Header = ({ hideSubBar, ...rest }: any) => {
         <Box mx="auto" px="extra-loose">
           <Flex
             justifyContent="space-between"
-            align="center"
+            alignItems="center"
             bg={color('bg')}
             style={{
               backdropFilter: 'blur(5px)',
@@ -248,7 +243,7 @@ const Header = ({ hideSubBar, ...rest }: any) => {
             {...rest}
           >
             <LogoLink />
-            <Flex align="center">
+            <Flex alignItems="center">
               <Navigation />
               <ColorModeButton />
               <MenuButton />

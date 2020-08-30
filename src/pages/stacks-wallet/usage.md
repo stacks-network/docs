@@ -225,10 +225,9 @@ Sending stacks is a transaction you must authorize or sign. If you have connecte
 
 4. Complete the dialog with the transaction information.
 
-
-    | **Recipient**      	| A Stacks address.	|
-    | **Amount to Send** 	| Enter a value.   	|
-    | **Note**   	        | A memo for the transaction.  	|
+   | **Recipient** | A Stacks address. |
+   | **Amount to Send** | Enter a value. |
+   | **Note** | A memo for the transaction. |
 
 5. Select **Continue**.
 

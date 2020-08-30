@@ -1,11 +1,11 @@
-import { Box, BoxProps, color, space, Fade } from '@blockstack/ui';
+import { Box, BoxProps, color, space, Fade } from '@stacks/ui';
 import NextLink from 'next/link';
 import React, { forwardRef, Ref } from 'react';
 import { useAppState } from '@common/hooks/use-app-state';
 import { border, transition } from '@common/utils';
 import { Text } from '@components/typography';
 import { useTouchable } from '@common/hooks/use-touchable';
-import { css } from '@styled-system/css';
+import { css, forwardRefWithAs } from '@stacks/ui-core';
 import { getHeadingStyles } from '@components/mdx/typography';
 import { PageMeta } from '@components/page-meta';
 
@@ -58,10 +58,10 @@ const Card = ({ route, styles, ...rest }) => {
       >
         <Box as="span" display="block" bg={color('bg-light')} p={space('base')}>
           <Text
-            css={css({
+            {...{
               ...getHeadingStyles('h5'),
               display: 'block',
-            })}
+            }}
           >
             {description}
           </Text>
@@ -120,23 +120,18 @@ export const LinkWithHover = forwardRef(
   }
 );
 
-export const Link = forwardRef(
-  (
-    props: { href?: string; target?: string; rel?: string } & BoxProps,
-    ref: Ref<HTMLDivElement>
-  ) => {
-    return (
-      <Box
-        as={props.href ? 'a' : 'span'}
-        ref={ref}
-        color="var(--colors-accent)"
-        cursor="pointer"
-        textDecoration="underline"
-        _hover={{ textDecoration: 'none' }}
-        _focus={{ boxShadow: 'outline' }}
-        rel="nofollow noopener noreferrer"
-        {...props}
-      />
-    );
-  }
-);
+export const Link = forwardRefWithAs<BoxProps, 'a'>((props, ref) => {
+  return (
+    <Box
+      as={props.href ? 'a' : 'span'}
+      ref={ref}
+      color="var(--colors-accent)"
+      cursor="pointer"
+      textDecoration="none"
+      _hover={{ textDecoration: 'underline' }}
+      _focus={{ boxShadow: 'outline' }}
+      rel="nofollow noopener noreferrer"
+      {...props}
+    />
+  );
+});

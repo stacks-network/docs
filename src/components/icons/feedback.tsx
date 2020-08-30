@@ -1,8 +1,6 @@
 import React from 'react';
-import { Box, BoxProps, transition } from '@blockstack/ui';
-import { SVGProps } from 'react';
-
-export type SvgProps = React.FC<BoxProps & SVGProps<any>>;
+import { Box, BoxProps, transition } from '@stacks/ui';
+export type SvgProps = React.FC<BoxProps>;
 
 export const SadIcon: SvgProps = ({ bg = '#E1E3E8', ...props }) => (
   <Box
