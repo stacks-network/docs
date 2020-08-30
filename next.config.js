@@ -394,6 +394,10 @@ module.exports = withFonts(
         aliases.react = aliases['react-dom'] = 'preact/compat';
         aliases['react-ssr-prepass'] = 'preact-ssr-prepass';
       }
+      config.resolve.alias['@emotion/react'] = path.resolve(
+        __dirname,
+        './node_modules/@emotion/react'
+      );
 
       return config;
     },

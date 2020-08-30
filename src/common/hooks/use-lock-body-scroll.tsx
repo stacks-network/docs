@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSafeLayoutEffect } from '@blockstack/ui';
+import { useSafeLayoutEffect } from '@stacks/ui';
 
 export const useLockBodyScroll = (lock: boolean) => {
   useSafeLayoutEffect(() => {

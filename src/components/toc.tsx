@@ -1,12 +1,11 @@
 import React from 'react';
-import { Box, Grid, color, space, BoxProps } from '@blockstack/ui';
+import { Box, Grid, color, space, BoxProps } from '@stacks/ui';
 import { slugify } from '@common/utils';
 import { Text } from '@components/typography';
 import { Link } from '@components/mdx';
 import { useActiveHeading } from '@common/hooks/use-active-heading';
 import NextLink from 'next/link';
 import { getHeadingStyles } from '@components/mdx/typography';
-import { css } from '@styled-system/css';
 
 const getLevelPadding = (level: number) => {
   switch (level) {
@@ -82,10 +81,10 @@ export const TableOfContents = ({
         {!noLabel && (
           <Box mb={space('base')}>
             <Text
-              css={css({
+              {...{
                 ...getHeadingStyles('h6'),
                 fontWeight: 500,
-              })}
+              }}
             >
               {label}
             </Text>
@@ -95,7 +94,7 @@ export const TableOfContents = ({
           gridColumnGap={space('base-loose')}
           gridTemplateColumns={
             Array.isArray(columns)
-              ? columns.map(value => `repeat(${value}, 1fr)`)
+              ? (columns as any).map(value => `repeat(${value}, 1fr)`)
               : `repeat(${columns}, 1fr)`
           }
         >

@@ -1,10 +1,9 @@
 import React from 'react';
-import { Box, space, color, Grid } from '@blockstack/ui';
+import { Box, space, color, Grid } from '@stacks/ui';
 import { Text } from '@components/typography';
 import { slugify } from '@common/utils';
-import { css } from '@styled-system/css';
 import { getCapsizeStyles, getHeadingStyles } from '@components/mdx/typography';
-import { HoverImage } from '../hover-image';
+import { HoverImage } from '@components/hover-image';
 import { useTouchable } from '@common/hooks/use-touchable';
 import Link from 'next/link';
 import { getBetterNames } from '@common/utils/faqs';
@@ -29,22 +28,15 @@ const SectionCard = ({ section }) => {
       <FloatingLink href="/references/faqs/[slug]" as={`/references/faqs/${slugify(title)}`} />
       <HoverImage isHovered={hover || active} src={img} />
       <Box>
-        <Text
-          css={css({
-            color: 'currentColor',
-            ...getHeadingStyles('h3'),
-          })}
-        >
+        <Text color="currentColor" {...getHeadingStyles('h3')}>
           {title}
         </Text>
         <Box>
           <Text
-            css={css({
-              display: 'block',
-              color: color('text-body'),
-              mt: space('base-loose'),
-              ...getCapsizeStyles(16, 26),
-            })}
+            display={'block'}
+            color={color('text-body')}
+            mt={space('base-loose')}
+            {...getCapsizeStyles(16, 26)}
           >
             {description}
           </Text>

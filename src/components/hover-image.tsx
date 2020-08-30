@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps, Grid, space } from '@blockstack/ui';
+import { Box, BoxProps, Grid, space } from '@stacks/ui';
 import { transition } from '@common/utils';
 import { Img } from '@components/mdx/image';
 

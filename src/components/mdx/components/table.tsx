@@ -1,4 +1,4 @@
-import { Box, color, space } from '@blockstack/ui';
+import { Box, color, space } from '@stacks/ui';
 import React from 'react';
 import { P } from '@components/mdx/components';
 import { border } from '@common/utils';

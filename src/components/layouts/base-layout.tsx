@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex } from '@blockstack/ui';
+import { Flex } from '@stacks/ui';
 import { SideNav } from '../side-nav';
 import { Header } from '../header';
 import { Main } from '../main';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Components } from '@components/mdx/mdx-components';
 import { TableOfContents } from '@components/toc';
 import hydrate from 'next-mdx-remote/hydrate';
-import { space } from '@blockstack/ui';
+import { space } from '@stacks/ui';
 
 export const ClarityKeywordReference = React.memo(({ content, headings }: any) => {
   return (
