@@ -45,19 +45,20 @@ sections:
       - path: /stacks-blockchain
         pages:
           - path: /overview
-          - path: /testnet-node
-          - path: /best-practices
-          - path: /wire-format
-          - path: /atlas
-            pages:
-              - path: /overview
-              - path: /how-atlas-works
-              - path: /usage
         sections:
           - title: Tutorials
             pages:
               - path: /managing-accounts
               - path: /sending-tokens
+              - path: /running-testnet-node
+          - title: Stacks 1.0
+            pages:
+              - path: /stacks-1.0-info
+              - path: /best-practices
+              - path: /wire-format
+              - path: /atlas-overview
+              - path: /atlas-how-it-works
+              - path: /atlas-usage
               - path: /install-api
               - path: /installing-memcached
       - path: /stacks-wallet
