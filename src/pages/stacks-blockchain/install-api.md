@@ -21,6 +21,7 @@ $ sudo npm -g install aglio
 $ virtualenv api && source api/bin/activate
 $ git clone https://github.com/blockstack/blockstack-core.git
 $ cd blockstack-core/
+$ git checkout stacks-1.0
 $ pip install .
 $ pip install -r api/requirements.txt
 $ blockstack setup_wallet
