@@ -56,7 +56,8 @@ sections:
         sections:
           - title: Tutorials
             pages:
-              - path: /broadcasting-transactions
+              - path: /managing-accounts
+              - path: /sending-tokens
               - path: /install-api
               - path: /installing-memcached
       - path: /stacks-wallet
