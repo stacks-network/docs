@@ -45,6 +45,10 @@ sections:
       - path: /stacks-blockchain
         pages:
           - path: /overview
+          - path: /testnet
+          - path: /accounts
+          - path: /transactions
+          - path: /network
         sections:
           - title: Tutorials
             pages:
