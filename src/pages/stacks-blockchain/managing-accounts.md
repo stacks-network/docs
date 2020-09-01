@@ -1,6 +1,6 @@
 ---
 title: Managing accounts
-description: Learn how to generate and review Stacks 2.0 accounts
+description: Learn how to generate and review accounts
 icon: TestnetIcon
 duration: 15 minutes
 experience: beginners
@@ -57,7 +57,7 @@ const apiConfig = new Configuration({
 const privateKey = makeRandomPrivKey();
 ```
 
-> Note: The code above also imports methods required for the next steps, including API configuration for the client library usage.
+-> Note: The code above also imports methods required for the next steps, including API configuration for the client library usage.
 
 ## Step 3: Reviewing account info
 
@@ -80,7 +80,7 @@ const stacksAddress = getAddressFromPrivateKey(
   console.log(accountInfo);
 ```
 
-> Note: A "principal" is any entity that can have a token balance. Find more details in the [Princials guide](/smart-contracts/principals).
+-> Note: A "principal" is any entity that can have a token balance. Find more details in the [Princials guide](/smart-contracts/principals).
 
 The API will respond with a balance, nonce (starting at zero), and respective proofs:
 
@@ -130,7 +130,7 @@ The API will respond with a new transaction ID and confirmation that the faucet 
 }
 ```
 
-> Note: Wait a few minutes for the transaction to complete. You can review the status using the Explorer, by navigating to the following URL: `https://testnet-explorer.blockstack.org/txid/<txid>`.
+-> Note: Wait a few minutes for the transaction to complete. You can review the status using the Explorer, by navigating to the following URL: `https://testnet-explorer.blockstack.org/txid/<txid>`.
 
 Assumping the faucet transaction was successfully processed, you can review the account history. We are expecting at least one transactions to show up in the account history.
 
@@ -225,6 +225,6 @@ The API will respond with the following breakdown of token balances:
 }
 ```
 
-> Note: The `balance` field does **not** represent full Stacks token, but microstacks. 1,000,000 microstacks are worth 1 Stacks token.
+-> Note: The `balance` field does **not** represent full Stacks token, but microstacks. 1,000,000 microstacks are worth 1 Stacks token.
 
 We can see that the current Stacks balance is `500000` microstacks, or `0.5` Stacks token.

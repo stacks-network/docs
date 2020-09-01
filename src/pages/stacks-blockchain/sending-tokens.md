@@ -1,6 +1,6 @@
 ---
 title: Sending tokens
-description: Learn how to generate and broadcast Stacks 2.0 token transfers
+description: Learn how to transfer tokens
 icon: TestnetIcon
 duration: 15 minutes
 experience: beginners
@@ -67,7 +67,7 @@ const key = 'edf9aee84d9b7abc145504dde6726c64f369d37ee34ded868fabd876c26570bc01'
 const senderKey = createStacksPrivateKey(key);
 ```
 
-> Note: The code above also imports methods required for the next steps, including API configuration for the client library usage.
+-> Note: The code above also imports methods required for the next steps, including API configuration for the client library usage.
 
 ## Step 3: Generating transaction
 
@@ -127,7 +127,7 @@ Another way to estimate the fee is to use the `estimateTransfer()` function afte
 estimateTransfer(transaction);
 ```
 
-> Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
+-> Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
 
 ### Handling nonces
 
@@ -161,7 +161,7 @@ const serializedTx = transaction.serialize().toString('hex');
 
 With the transaction ID, we can check the status of the transaction. Every transaction needs to be confirmed by the network and will be `pending` as soon as it is broadcasted.
 
-> Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
+-> Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
 
 ```js
 const transactions = new TransactionsApi(apiConfig);
