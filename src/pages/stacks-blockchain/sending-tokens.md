@@ -74,8 +74,10 @@ const senderKey = createStacksPrivateKey(key);
 <<<<<<< HEAD
 -> Note: The code above also imports methods required for the next steps, including API configuration for the client library usage.
 =======
+
 > Note: The code above also imports methods required for the next steps, including API configuration for the client library usage.
->>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
+>
+> > > > > > > 50bb8c8a... feat: draft of first 2 tutorials
 
 ## Step 3: Generating transaction
 
@@ -124,26 +126,27 @@ const transaction = await makeSTXTokenTransfer(txOptions);
 The generation method will need a few more pieces of information, as specified in the `txOptions` object:
 
 <<<<<<< HEAD
-| Parameter   | Description                                                                                                                      | Optional |
+| Parameter | Description | Optional |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `recipient` | The recipient Stacks address in c32check format                                                                                  | **No**   |
-| `amount`    | The amount of Stacks tokens to send denominated in microstacks                                                                   | **No**   |
-| `fee`       | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks                      | Yes      |
-| `nonce`     | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes      |
-| `senderKey` | A private key object                                                                                                             | Yes      |
-| `network`   | Specifies whether the transaction is meant for Stacks Mainnet or Testnet                                                         | Yes      |
-| `memo`      | A memo string to attach additional information to the transaction. This data is limited to 33 bytes                              | Yes      |
+| `recipient` | The recipient Stacks address in c32check format | **No** |
+| `amount` | The amount of Stacks tokens to send denominated in microstacks | **No** |
+| `fee` | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks | Yes |
+| `nonce` | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes |
+| `senderKey` | A private key object | Yes |
+| `network` | Specifies whether the transaction is meant for Stacks Mainnet or Testnet | Yes |
+| `memo` | A memo string to attach additional information to the transaction. This data is limited to 33 bytes | Yes |
 =======
-| Parameter          | Description                                                                                                                      | Optional |
+| Parameter | Description | Optional |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `recipientAddress` | The recipient Stacks address in c32check format                                                                                  | **No**   |
-| `amount`           | The amount of Stacks tokens to send denominated in microstacks                                                                   | **No**   |
-| `fee`              | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks                      | Yes      |
-| `nonce`            | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes      |
-| `senderKey`        | A private key object                                                                                                             | Yes      |
-| `network`          | Specifies whether the transaction is meant for Stacks Mainnet or Testnet                                                         | Yes      |
-| `memo`             | A memo string to attach additional information to the transaction. This data is limited to 33 bytes                              | Yes      |
->>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
+| `recipientAddress` | The recipient Stacks address in c32check format | **No** |
+| `amount` | The amount of Stacks tokens to send denominated in microstacks | **No** |
+| `fee` | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks | Yes |
+| `nonce` | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes |
+| `senderKey` | A private key object | Yes |
+| `network` | Specifies whether the transaction is meant for Stacks Mainnet or Testnet | Yes |
+| `memo` | A memo string to attach additional information to the transaction. This data is limited to 33 bytes | Yes |
+
+> > > > > > > 50bb8c8a... feat: draft of first 2 tutorials
 
 ### Estimating fees
 
@@ -158,8 +161,10 @@ estimateTransfer(transaction);
 <<<<<<< HEAD
 -> Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
 =======
+
 > Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
->>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
+>
+> > > > > > > 50bb8c8a... feat: draft of first 2 tutorials
 
 ### Handling nonces
 
@@ -196,8 +201,10 @@ With the transaction ID, we can check the status of the transaction. Every trans
 <<<<<<< HEAD
 -> Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
 =======
+
 > Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
->>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
+>
+> > > > > > > 50bb8c8a... feat: draft of first 2 tutorials
 
 ```js
 const transactions = new TransactionsApi(apiConfig);
