@@ -1,6 +1,10 @@
 ---
 title: Sending tokens
+<<<<<<< HEAD
 description: Learn how to transfer tokens
+=======
+description: Learn how to generate and broadcast Stacks 2.0 token transfers
+>>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
 icon: TestnetIcon
 duration: 15 minutes
 experience: beginners
@@ -67,14 +71,22 @@ const key = 'edf9aee84d9b7abc145504dde6726c64f369d37ee34ded868fabd876c26570bc01'
 const senderKey = createStacksPrivateKey(key);
 ```
 
+<<<<<<< HEAD
 -> Note: The code above also imports methods required for the next steps, including API configuration for the client library usage.
+=======
+> Note: The code above also imports methods required for the next steps, including API configuration for the client library usage.
+>>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
 
 ## Step 3: Generating transaction
 
 To generate a token transfer transaction, we will be using the `makeSTXTokenTransfer()` transaction builder function:
 
 ```js
+<<<<<<< HEAD
 const recipient = 'SP3FGQ8Z7JY9BWYZ5WM53E0M9NK7WHJF0691NZ159';
+=======
+const recipientAddress = 'SP3FGQ8Z7JY9BWYZ5WM53E0M9NK7WHJF0691NZ159';
+>>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
 
 // amount of Stacks tokens to send (in microstacks). 1,000,000 microstacks are worth 1 STX token
 const amount = new BN(1000000);
@@ -91,7 +103,11 @@ const network = new StacksTestnet();
 const memo = 'hello world';
 
 const txOptions = {
+<<<<<<< HEAD
   recipient,
+=======
+  recipientAddress,
+>>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
   amount,
   fee,
   nonce,
@@ -107,6 +123,7 @@ const transaction = await makeSTXTokenTransfer(txOptions);
 
 The generation method will need a few more pieces of information, as specified in the `txOptions` object:
 
+<<<<<<< HEAD
 | Parameter   | Description                                                                                                                      | Optional |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `recipient` | The recipient Stacks address in c32check format                                                                                  | **No**   |
@@ -116,6 +133,17 @@ The generation method will need a few more pieces of information, as specified i
 | `senderKey` | A private key object                                                                                                             | Yes      |
 | `network`   | Specifies whether the transaction is meant for Stacks Mainnet or Testnet                                                         | Yes      |
 | `memo`      | A memo string to attach additional information to the transaction. This data is limited to 33 bytes                              | Yes      |
+=======
+| Parameter          | Description                                                                                                                      | Optional |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `recipientAddress` | The recipient Stacks address in c32check format                                                                                  | **No**   |
+| `amount`           | The amount of Stacks tokens to send denominated in microstacks                                                                   | **No**   |
+| `fee`              | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks                      | Yes      |
+| `nonce`            | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes      |
+| `senderKey`        | A private key object                                                                                                             | Yes      |
+| `network`          | Specifies whether the transaction is meant for Stacks Mainnet or Testnet                                                         | Yes      |
+| `memo`             | A memo string to attach additional information to the transaction. This data is limited to 33 bytes                              | Yes      |
+>>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
 
 ### Estimating fees
 
@@ -127,7 +155,11 @@ Another way to estimate the fee is to use the `estimateTransfer()` function afte
 estimateTransfer(transaction);
 ```
 
+<<<<<<< HEAD
 -> Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
+=======
+> Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
+>>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
 
 ### Handling nonces
 
@@ -161,7 +193,11 @@ const serializedTx = transaction.serialize().toString('hex');
 
 With the transaction ID, we can check the status of the transaction. Every transaction needs to be confirmed by the network and will be `pending` as soon as it is broadcasted.
 
+<<<<<<< HEAD
 -> Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
+=======
+> Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
+>>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
 
 ```js
 const transactions = new TransactionsApi(apiConfig);

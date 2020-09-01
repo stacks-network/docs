@@ -1,6 +1,6 @@
 ---
 title: Managing accounts
-description: Learn how to generate and review accounts
+description: Learn how to generate and review Stacks 2.0 accounts
 icon: TestnetIcon
 duration: 15 minutes
 experience: beginners
