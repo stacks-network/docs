@@ -46,12 +46,12 @@ npm install --save @blockstack/connect
 
 Every major method you'll use with `connect` requires you to pass some options, like the name and icon of your app, and what to do when authentication is finished. In practice, this means you need to define these options, and pass them to the various API methods.
 
-The exact interface you'll use [is defined as](https://github.com/blockstack/connect/blob/master/src/auth.ts#L12:L24):
+The exact interface you'll use [is defined as](https://github.com/blockstack/ux/blob/master/packages/connect/src/auth.ts#L17:L39):
 
 ```typescript
 export interface AuthOptions {
-  redirectTo: string;
-  finished: (payload: FinishedData) => void;
+  redirectTo?: string;
+  finished?: (payload: FinishedData) => void;
   sendToSignIn?: boolean;
   userSession?: UserSession;
   appDetails: {
@@ -63,11 +63,11 @@ export interface AuthOptions {
 
 | parameter    | type        | default | optional | description                                                                                                                                                                                                                                                                                                   |
 | ------------ | ----------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| redirectTo   | string      |         | false    | The path in your app where users go after sign in.                                                                                                                                                                                                                                                            |
+| redirectTo   | string      |         | true     | The path in your app where users go after sign in.                                                                                                                                                                                                                                                            |
 | appDetails   | object      |         | false    | an object which includes `appName: string` and `appIcon: string`. This will speed up the process of loading your app's information during onboarding.                                                                                                                                                         |
-| finished     | function    |         | false    | A callback that can be invoked after authentication. This prevents having to do a whole page refresh in a new tab. One argument is passed to this callback, which is an object with `userSession` included. If included, then the `redirectTo` path is ignored, and the user will be logged in automatically. |
+| finished     | function    |         | true     | A callback that can be invoked after authentication. This prevents having to do a whole page refresh in a new tab. One argument is passed to this callback, which is an object with `userSession` included. If included, then the `redirectTo` path is ignored, and the user will be logged in automatically. |
 | sendToSignIn | boolean     | false   | true     | Whether the user should go straight to the 'sign in' flow (false) or be presented with the 'sign up' flow (true) instead.                                                                                                                                                                                     |
-| userSession  | UserSession |         | false    | pass a `UserSession` instance to use for authentication. If it's not passed, `@blockstack/connect` will create one for you.                                                                                                                                                                                   |
+| userSession  | UserSession |         | true    | pass a `UserSession` instance to use for authentication. If it's not passed, `@blockstack/connect` will create one for you.                                                                                                                                                                                   |
 
 ### In React Apps
 
