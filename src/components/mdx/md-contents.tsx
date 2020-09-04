@@ -10,7 +10,7 @@ import { border } from '@common/utils';
 import { getCapsizeStyles } from '@components/mdx/typography';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from '@components/mdx';
-import { css, ThemeUICSSObject } from '@stacks/ui-core';
+import { css, Theme, ThemeUICSSObject } from '@stacks/ui-core';
 export const styleOverwrites: ThemeUICSSObject = {
   '& > section': {
     '&:nth-child(2)': {
@@ -253,7 +253,7 @@ export const MDContents: React.FC<any> = ({ pageTop: PageTop = null, headings, c
         width={['100%', '100%', '100%', `calc(100% - ${isHome ? 0 : TOC_WIDTH}px)`]}
         mx="0"
         pt="0"
-        css={theme => css(styleOverwrites)(theme)}
+        css={(theme: Theme) => css(styleOverwrites)(theme)}
         pr={!isHome && ['0', '0', '0', 'extra-loose']}
       >
         {PageTop && <PageTop />}

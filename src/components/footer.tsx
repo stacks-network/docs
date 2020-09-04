@@ -1,7 +1,7 @@
 import React from 'react';
 import { space } from '@stacks/ui';
 import { Pagination } from '@components/pagination';
-import { Section, SectionWrapper } from '@components/home/common';
+import { Section, SectionWrapper } from '@components/common';
 import { FeedbackSection } from '@components/feedback';
 
 const Footer = ({ hidePagination, ...rest }: any) => {

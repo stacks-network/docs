@@ -33,6 +33,7 @@ const GlobalStyles = (
       body {
         font-family: 'Soehne', Inter, sans-serif;
       }
+
       @counter-style list {
         pad: '0';
       }

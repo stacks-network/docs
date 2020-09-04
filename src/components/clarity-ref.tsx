@@ -8,7 +8,7 @@ export const ClarityKeywordReference = React.memo(({ content, headings }: any) =
   return (
     <>
       <TableOfContents mb={space('extra-loose')} label="Contents" headings={headings} />
-      {hydrate(content, Components)}
+      {hydrate(content, { components: Components })}
     </>
   );
 });
@@ -21,7 +21,7 @@ export const ClarityFunctionReference = React.memo(({ content, headings }: any) 
         label="Contents"
         headings={headings}
       />
-      {hydrate(content, Components)}
+      {hydrate(content, { components: Components })}
     </>
   );
 });

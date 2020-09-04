@@ -3,7 +3,7 @@ import { Box, space } from '@stacks/ui';
 import hydrate from 'next-mdx-remote/hydrate';
 import { Components } from '@components/mdx/mdx-components';
 import { slugify } from '@common/utils';
-import { css } from '@stacks/ui-core';
+import { css, Theme } from '@stacks/ui-core';
 import { TableOfContents } from '@components/toc';
 
 export const Glossary = ({ data }) => {
@@ -24,7 +24,7 @@ export const Glossary = ({ data }) => {
 
           <Box
             {...{ width: '100%', maxWidth: '48ch', pl: space(['none', 'none', 'base-loose']) }}
-            css={theme =>
+            css={(theme: Theme) =>
               css({
                 '& p': {
                   display: 'block',
@@ -37,7 +37,9 @@ export const Glossary = ({ data }) => {
               })(theme)
             }
           >
-            {hydrate(entry.definition, Components)}
+            {hydrate(entry.definition, {
+              components: Components,
+            })}
           </Box>
         </>
       ))}
