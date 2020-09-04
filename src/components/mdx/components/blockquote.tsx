@@ -2,7 +2,7 @@ import { Box, Flex, BoxProps, color, themeColor, space } from '@stacks/ui';
 import React from 'react';
 
 import { border } from '@common/utils';
-import { css } from '@stacks/ui-core';
+import { css, Theme } from '@stacks/ui-core';
 import { CheckCircleIcon } from '@components/icons/check-circle';
 import { AlertTriangleIcon } from '@components/icons/alert-triangle';
 import { AlertCircleIcon } from '@components/icons/alert-circle';
@@ -79,7 +79,7 @@ export const Blockquote: React.FC<BoxProps> = React.memo(
             py: space('base'),
             px: space('base'),
           }}
-          css={theme =>
+          css={(theme: Theme) =>
             css({
               '& p': {
                 flexGrow: 1,
@@ -90,7 +90,13 @@ export const Blockquote: React.FC<BoxProps> = React.memo(
           {...styles}
         >
           {Icon && (
-            <Flex alignItems="center" height="28x" flexShrink={0} color={accent} width="22px">
+            <Flex
+              alignItems="center"
+              height="28x"
+              flexShrink={0}
+              color={accent as any}
+              width="22px"
+            >
               <Box position="absolute" top="16px" size="22px">
                 <Icon />
               </Box>

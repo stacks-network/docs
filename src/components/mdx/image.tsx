@@ -95,7 +95,7 @@ export const Img: ForwardRefExoticComponentWithAs<
     // (because of the built in lazy-loading)
     const aspectRatio = getAspectRatio(dimensions);
 
-    const width = dimensions.width <= 720 ? dimensions.width : '100%';
+    const width = dimensions.width <= 720 ? `${dimensions.width}px` : '100%';
     return (
       <Box width={width} maxWidth="100%" padding="0 !important" position="relative" className="img">
         <Box height="0" paddingBottom={`${aspectRatio}%`} width="100%" />

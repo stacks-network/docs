@@ -34,13 +34,15 @@ const ReferenceEntry = ({ entry, usage }) => (
     </Components.p>
 
     {hydrate(usage, {
-      ...Components,
-      p: (props: any) => (
-        <Components.p
-          {...props}
-          style={{ display: 'block', wordBreak: 'break-word', hyphens: 'auto' }}
-        />
-      ),
+      components: {
+        ...Components,
+        p: (props: any) => (
+          <Components.p
+            {...props}
+            style={{ display: 'block', wordBreak: 'break-word', hyphens: 'auto' }}
+          />
+        ),
+      },
     })}
     <Components.h3 id={`${slugify(entry.command)}-arguments`}>Arguments</Components.h3>
     <Grid

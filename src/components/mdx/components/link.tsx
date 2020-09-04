@@ -5,7 +5,7 @@ import { useAppState } from '@common/hooks/use-app-state';
 import { border, transition } from '@common/utils';
 import { Text } from '@components/typography';
 import { useTouchable } from '@common/hooks/use-touchable';
-import { css, forwardRefWithAs } from '@stacks/ui-core';
+import { ForwardRefExoticComponentWithAs, forwardRefWithAs } from '@stacks/ui-core';
 import { getHeadingStyles } from '@components/mdx/typography';
 import { PageMeta } from '@components/page-meta';
 
@@ -22,9 +22,12 @@ export const MarkdownLink = ({ href, ...rest }: { href: string }) => {
   );
 };
 
-export const SmartLink = ({ href, ...rest }: { href: string }) => {
+export const SmartLink: ForwardRefExoticComponentWithAs<{ href?: string }, 'a'> = forwardRefWithAs<
+  { href?: string },
+  'a'
+>(({ href, ...rest }, ref) => {
   const isExternal = !href || href?.includes('http') || href?.includes('mailto');
-  const link = <Link href={href || undefined} {...rest} />;
+  const link = <Link ref={ref} href={href || undefined} {...rest} />;
 
   return isExternal ? (
     link
@@ -33,7 +36,7 @@ export const SmartLink = ({ href, ...rest }: { href: string }) => {
       {link}
     </NextLink>
   );
-};
+});
 
 const Card = ({ route, styles, ...rest }) => {
   const { description } = route;
@@ -120,10 +123,10 @@ export const LinkWithHover = forwardRef(
   }
 );
 
-export const Link = forwardRefWithAs<BoxProps, 'a'>((props, ref) => {
-  return (
+export const Link: ForwardRefExoticComponentWithAs<BoxProps, 'a'> = forwardRefWithAs<BoxProps, 'a'>(
+  ({ as = 'a', ...props }, ref) => (
     <Box
-      as={props.href ? 'a' : 'span'}
+      as={props.href ? as : 'span'}
       ref={ref}
       color="var(--colors-accent)"
       cursor="pointer"
@@ -133,5 +136,5 @@ export const Link = forwardRefWithAs<BoxProps, 'a'>((props, ref) => {
       rel="nofollow noopener noreferrer"
       {...props}
     />
-  );
-});
+  )
+);
