@@ -78,7 +78,7 @@ export const Heading: ForwardRefExoticComponentWithAs<
   FlexProps,
   'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 > = forwardRefWithAs<FlexProps, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>(
-  ({ as, children, id, ...rest }) => {
+  ({ as, children, id, ...rest }, ref) => {
     const { isActive, doChangeActiveSlug } = useActiveHeading(id);
 
     const { bind: _bind, hover, active } = useTouchable();
@@ -108,6 +108,7 @@ export const Heading: ForwardRefExoticComponentWithAs<
           justifyContent: 'flex-start',
           cursor: id && hover ? 'pointer' : 'unset',
         }}
+        ref={ref}
         {...rest}
       >
         <Box as="span">{children}</Box>

@@ -47,7 +47,7 @@ const FAQItem = React.memo(({ faq, ...rest }: any) => {
           </Box>
         </Flex>
         <Box pb={space('extra-loose')} as={AccordionPanel}>
-          {hydrate(faq.body, Components)}
+          {hydrate(faq.body, { components: Components })}
         </Box>
       </Box>
     </Components.section>

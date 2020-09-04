@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, BoxProps, Grid, space, themeColor } from '@stacks/ui';
 
-import { Section, SectionWrapper } from '@components/home/common';
+import { Section, SectionWrapper } from '@components/common';
 import { Text } from '@components/typography';
 
 const SectionHeading: React.FC<BoxProps> = props => (
@@ -9,7 +9,7 @@ const SectionHeading: React.FC<BoxProps> = props => (
 );
 
 const SectionItem: React.FC<BoxProps> = props => (
-  <Text mb={space('tight')} display="block" color={themeColor('ink.300')} {...props} />
+  <Text mb={space('tight')} display="block" color={themeColor('ink.300') as any} {...props} />
 );
 
 export const Footer: React.FC<BoxProps> = props => (
