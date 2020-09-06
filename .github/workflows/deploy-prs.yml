@@ -17,7 +17,7 @@ jobs:
           alias-domains: pr-{{ PR_NUMBER }}.docs.stacks.engineering
       - id: file_changes
         name: Check diff of PR
-        uses: trilom/file-changes-action@v1.2.3
+        uses: trilom/file-changes-action@v1.2.4
         with:
           prNumber: ${{ github.event.pull_request.number }}
       - name: Comment on PR
