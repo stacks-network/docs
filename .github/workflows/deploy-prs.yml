@@ -105,6 +105,8 @@ jobs:
             const prUrl = '${{steps.vercel_deployment_preview.outputs.preview-url}}'
             const changed = ${{steps.file_changes.outputs.files_modified}}
             const added = ${{steps.file_changes.outputs.files_added}}
+            const removed = ${{steps.file_changes.outputs.files_removed}}
+            const all_files = ${{steps.file_changes.outputs.files}}
 
             const commentBody = `
             #### Blockstack Documentation
