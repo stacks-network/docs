@@ -83,9 +83,9 @@ On the first line, a new public function `say-hi` is declared. Public functions 
 
 -> To create private functions, you would use the `define-private` keyword. Private functions can only be executed by the current smart contract. Only public functions can be called from other contracts.
 
-The function doesn't take any parameters and simply returns "hello world" using the [`ok`](/references/clarity-language#ok) response constructor.
+The function doesn't take any parameters and simply returns "hello world" using the [`ok`](/references/language-clarity#ok) response constructor.
 
-The second function, `echo-number`, is a [read-only function](/references/clarity-language#define-read-only). Read-only functions are also public, but as the name implies, they can not change and variables or datamaps. `echo-number` takes an input parameter of the type `int`. Along with integer, Clarity supports the following [types](/references/clarity-language#clarity-type-system):
+The second function, `echo-number`, is a [read-only function](/references/language-clarity#define-read-only). Read-only functions are also public, but as the name implies, they can not change and variables or datamaps. `echo-number` takes an input parameter of the type `int`. Along with integer, Clarity supports the following [types](/references/language-clarity#clarity-type-system):
 
 - `uint`: 16-byte unsigned integer
 - `principal`: spending entity, roughly equivalent to a Stacks address
@@ -93,7 +93,7 @@ The second function, `echo-number`, is a [read-only function](/references/clarit
 - `buffer`: fixed-length byte buffers
 - `tuple`: named fields in keys and values
 
-`echo-number` uses an [`ok`](/references/clarity-language#ok) response to return the value passed to the function.
+`echo-number` uses an [`ok`](/references/language-clarity#ok) response to return the value passed to the function.
 
 ## Step 3: Access the Explorer Sandbox
 
