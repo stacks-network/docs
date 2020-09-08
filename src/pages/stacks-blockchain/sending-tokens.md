@@ -129,18 +129,19 @@ The generation method will need a few more pieces of information, as specified i
 | `network` | Specifies whether the transaction is meant for Stacks Mainnet or Testnet | Yes |
 | `memo` | A memo string to attach additional information to the transaction. This data is limited to 33 bytes | Yes |
 
-> > > > > > > 50bb8c8a... feat: draft of first 2 tutorials
-=======
-| Parameter   | Description                                                                                                                      | Optional |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `recipient` | The recipient Stacks address in c32check format                                                                                  | **No**   |
-| `amount`    | The amount of Stacks tokens to send denominated in microstacks                                                                   | **No**   |
-| `fee`       | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks                      | Yes      |
-| `nonce`     | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes      |
-| `senderKey` | A private key object                                                                                                             | Yes      |
-| `network`   | Specifies whether the transaction is meant for Stacks Mainnet or Testnet                                                         | Yes      |
-| `memo`      | A memo string to attach additional information to the transaction. This data is limited to 33 bytes                              | Yes      |
->>>>>>> ab15b4f3... feat: restructure information architecture
+> > > > > > > # 50bb8c8a... feat: draft of first 2 tutorials
+> > > > > > >
+> > > > > > > | Parameter   | Description                                                                                                                      | Optional |
+> > > > > > > | ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
+> > > > > > > | `recipient` | The recipient Stacks address in c32check format                                                                                  | **No**   |
+> > > > > > > | `amount`    | The amount of Stacks tokens to send denominated in microstacks                                                                   | **No**   |
+> > > > > > > | `fee`       | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks                      | Yes      |
+> > > > > > > | `nonce`     | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes      |
+> > > > > > > | `senderKey` | A private key object                                                                                                             | Yes      |
+> > > > > > > | `network`   | Specifies whether the transaction is meant for Stacks Mainnet or Testnet                                                         | Yes      |
+> > > > > > > | `memo`      | A memo string to attach additional information to the transaction. This data is limited to 33 bytes                              | Yes      |
+> > > > > > >
+> > > > > > > ab15b4f3... feat: restructure information architecture
 
 ### Estimating fees
 
@@ -158,15 +159,15 @@ estimateTransfer(transaction);
 =======
 
 > Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
-<<<<<<< HEAD
+> <<<<<<< HEAD
 >
-> > > > > > > 50bb8c8a... feat: draft of first 2 tutorials
-=======
->>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
-=======
--> Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
->>>>>>> 69c8cfcb... feat: restructure information architecture
->>>>>>> ab15b4f3... feat: restructure information architecture
+> > > > > > > # 50bb8c8a... feat: draft of first 2 tutorials
+> > > > > > >
+> > > > > > > # 50bb8c8a... feat: draft of first 2 tutorials
+> > > > > > >
+> > > > > > > -> Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
+> > > > > > > 69c8cfcb... feat: restructure information architecture
+> > > > > > > ab15b4f3... feat: restructure information architecture
 
 ### Handling nonces
 
@@ -206,15 +207,15 @@ With the transaction ID, we can check the status of the transaction. Every trans
 =======
 
 > Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
-<<<<<<< HEAD
+> <<<<<<< HEAD
 >
-> > > > > > > 50bb8c8a... feat: draft of first 2 tutorials
-=======
->>>>>>> 50bb8c8a... feat: draft of first 2 tutorials
-=======
--> Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
->>>>>>> 69c8cfcb... feat: restructure information architecture
->>>>>>> ab15b4f3... feat: restructure information architecture
+> > > > > > > # 50bb8c8a... feat: draft of first 2 tutorials
+> > > > > > >
+> > > > > > > # 50bb8c8a... feat: draft of first 2 tutorials
+> > > > > > >
+> > > > > > > -> Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
+> > > > > > > 69c8cfcb... feat: restructure information architecture
+> > > > > > > ab15b4f3... feat: restructure information architecture
 
 ```js
 const transactions = new TransactionsApi(apiConfig);
