@@ -270,12 +270,17 @@ async function redirects() {
     { source: '/core/cmdLineRef.html', destination: '/references/blockstack-cli', permanent: true },
     {
       source: '/core/smart/clarityref',
-      destination: '/references/clarity-language',
+      destination: '/references/language-clarity',
       permanent: true,
     },
     {
       source: '/core/smart/clarityRef.html',
-      destination: '/references/clarity-language',
+      destination: '/references/language-clarity',
+      permanent: true,
+    },
+    {
+      source: '/references/clarity-language',
+      destination: '/references/language-clarity',
       permanent: true,
     },
     {

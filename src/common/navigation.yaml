@@ -96,7 +96,7 @@ sections:
         usePageTitles: true
         pages:
           - path: /blockstack-cli
-          - path: /clarity-language
+          - path: /language-clarity
           - path: /stacks-blockchain
           - path: /stacks-rpc-api
           - external:
