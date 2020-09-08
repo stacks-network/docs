@@ -36,6 +36,8 @@ First install the stacks transactions library and an API client for the [Stacks 
 npm install --save @blockstack/stacks-transactions@0.6.0 @stacks/blockchain-api-client
 ```
 
+-> The API client is generated from the [OpenAPI specification](https://github.com/blockstack/stacks-blockchain-api/blob/master/docs/openapi.yaml) ([openapi-generator](https://github.com/OpenAPITools/openapi-generator)). Many other languages and frameworks are be supported by the generator.
+
 ## Step 2: Generating an account
 
 To get started, let's generate a new, random Stacks 2.0 private key:
