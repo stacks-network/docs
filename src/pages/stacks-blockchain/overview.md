@@ -20,6 +20,8 @@ replica as all other peers.
 _Non-enumerable_ means that the set of peers that are producing the blocks don’t know about one another — they don’t know
 their identities, or even how many exist and are online. They are indistinguishable.
 
+-> The Stacks 2.0 blockchain is open-source and available on GitHub: [blockstack/stacks-blockstack](https://github.com/blockstack/stacks-blockchain).
+
 ## Status
 
 The Stacks 2.0 blockchain is in active development. While the final release ("mainnet") is in the works, you can already get familiar with Stacks 2.0 capabilities on the "testnet".
@@ -28,6 +30,12 @@ For more information on the testnet, have a look at this page:
 
 [@page-reference | inline]
 | /stacks-blockchain/testnet
+
+## Explorer
+
+You can view accounts, blocks, transactions, and smart contracts broadcasted to the Stacks 2.0 blockchain using the [**Stacks 2.0 Explorer**](https://testnet-explorer.blockstack.org/).
+
+-> The Explorer consumes the [Stacks 2.0 Blockchain API](https://blockstack.github.io/stacks-blockchain-api/). You can use this public API for programatic access to the blockchain.
 
 ## Tutorials
 

@@ -39,6 +39,8 @@ First install the stacks transactions library, a JavaScript [BigNum](https://en.
 npm install --save @blockstack/stacks-transactions@0.6.0 bn.js @stacks/blockchain-api-client
 ```
 
+-> The API client is generated from the [OpenAPI specification](https://github.com/blockstack/stacks-blockchain-api/blob/master/docs/openapi.yaml) ([openapi-generator](https://github.com/OpenAPITools/openapi-generator)). Many other languages and frameworks are be supported by the generator.
+
 ## Step 2: Specifying a sender
 
 In order to build and sign transactions, you will need a Stacks privat key. You can easily generate a new, random Stacks 2.0 sender key (see ["Generating an account" from the previous tutorial](http://localhost:3000/stacks-blockchain/managing-accounts#step-2-generating-an-account)).
