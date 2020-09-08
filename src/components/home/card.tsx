@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Flex, space, color, transition, FlexProps } from '@blockstack/ui';
+import { Grid, Box, Flex, space, color, transition, FlexProps } from '@stacks/ui';
 import NextLink from 'next/link';
 import { useTouchable } from '@common/hooks/use-touchable';
 

@@ -1,8 +1,8 @@
-import { Box, Flex, BoxProps, color, themeColor, space } from '@blockstack/ui';
+import { Box, Flex, BoxProps, color, themeColor, space } from '@stacks/ui';
 import React from 'react';
 
 import { border } from '@common/utils';
-import { css } from '@styled-system/css';
+import { css, Theme } from '@stacks/ui-core';
 import { CheckCircleIcon } from '@components/icons/check-circle';
 import { AlertTriangleIcon } from '@components/icons/alert-triangle';
 import { AlertCircleIcon } from '@components/icons/alert-circle';
@@ -61,12 +61,12 @@ export const Blockquote: React.FC<BoxProps> = React.memo(
         display="block"
         my={space('extra-loose')}
         className={className}
-        ref={ref}
+        ref={ref as any}
         {...rest}
       >
         <Box
           border="1px solid"
-          css={css({
+          {...{
             position: 'relative',
             display: 'grid',
             placeItems: 'center',
@@ -78,15 +78,25 @@ export const Blockquote: React.FC<BoxProps> = React.memo(
             boxShadow: isAlert ? 'mid' : 'unset',
             py: space('base'),
             px: space('base'),
-            '& p': {
-              flexGrow: 1,
-              pt: '4px',
-            },
-            ...styles,
-          })}
+          }}
+          css={(theme: Theme) =>
+            css({
+              '& p': {
+                flexGrow: 1,
+                pt: '4px',
+              },
+            })(theme)
+          }
+          {...styles}
         >
           {Icon && (
-            <Flex align="center" height="28x" flexShrink={0} color={accent} width="22px">
+            <Flex
+              alignItems="center"
+              height="28x"
+              flexShrink={0}
+              color={accent as any}
+              width="22px"
+            >
               <Box position="absolute" top="16px" size="22px">
                 <Icon />
               </Box>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Components } from '@components/mdx';
-import { Box, Flex, ChevronIcon, space, color, Grid } from '@blockstack/ui';
+import { Box, Flex, ChevronIcon, space, color, Grid } from '@stacks/ui';
 import hydrate from 'next-mdx-remote/hydrate';
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@reach/accordion';
 import { border } from '@common/utils';
-import { css } from '@styled-system/css';
+import { css } from '@stacks/ui-core';
 import { useRouter } from 'next/router';
 import { useActiveHeading } from '@common/hooks/use-active-heading';
 import { BackButton } from '@components/back-button';
@@ -25,7 +25,7 @@ const FAQItem = React.memo(({ faq, ...rest }: any) => {
         <Flex
           as={AccordionButton}
           _hover={{ color: color('accent') }}
-          css={css({
+          {...{
             display: 'flex',
             width: '100%',
             outline: 'none',
@@ -34,10 +34,10 @@ const FAQItem = React.memo(({ faq, ...rest }: any) => {
             py: space('extra-loose'),
             textAlign: 'left',
             color: isActive ? color('accent') : color('text-title'),
-            ':hover': {
+            _hover: {
               color: color('accent'),
             },
-          })}
+          }}
         >
           <Components.h4 my="0px !important" id={id} color="currentColor">
             {faq.title}
@@ -47,7 +47,7 @@ const FAQItem = React.memo(({ faq, ...rest }: any) => {
           </Box>
         </Flex>
         <Box pb={space('extra-loose')} as={AccordionPanel}>
-          {hydrate(faq.body, Components)}
+          {hydrate(faq.body, { components: Components })}
         </Box>
       </Box>
     </Components.section>

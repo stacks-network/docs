@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps } from '@blockstack/ui';
+import { Box, BoxProps } from '@stacks/ui';
 
 export const DarkModeIcon = (props: BoxProps) => (
   <Box {...props}>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { color } from '@blockstack/ui';
+import { color } from '@stacks/ui';
 import { useTooltip, TooltipPopup } from '@reach/tooltip';
 
 const centered = (triggerRect: any, tooltipRect: any) => {

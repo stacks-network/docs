@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box, space } from '@blockstack/ui';
+import { Box, space } from '@stacks/ui';
 import hydrate from 'next-mdx-remote/hydrate';
 import { Components } from '@components/mdx/mdx-components';
 import { slugify } from '@common/utils';
-import { css } from '@styled-system/css';
+import { css, Theme } from '@stacks/ui-core';
 import { TableOfContents } from '@components/toc';
 
 export const Glossary = ({ data }) => {
@@ -23,21 +23,23 @@ export const Glossary = ({ data }) => {
           </Components.h3>
 
           <Box
-            css={css({
-              width: '100%',
-              maxWidth: '48ch',
-              pl: space(['none', 'none', 'base-loose']),
-              '& p': {
-                display: 'block',
-                wordBreak: 'break-word',
-                hyphens: 'auto',
-              },
-              code: {
-                wordBreak: 'break-all',
-              },
-            })}
+            {...{ width: '100%', maxWidth: '48ch', pl: space(['none', 'none', 'base-loose']) }}
+            css={(theme: Theme) =>
+              css({
+                '& p': {
+                  display: 'block',
+                  wordBreak: 'break-word',
+                  hyphens: 'auto',
+                },
+                code: {
+                  wordBreak: 'break-all',
+                },
+              })(theme)
+            }
           >
-            {hydrate(entry.definition, Components)}
+            {hydrate(entry.definition, {
+              components: Components,
+            })}
           </Box>
         </>
       ))}
