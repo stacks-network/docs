@@ -141,7 +141,7 @@ export const Code: React.FC<
                   }
                 : {},
             },
-          })(theme)
+          })(theme) as any
         }
         {...bind}
       >
