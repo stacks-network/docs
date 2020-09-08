@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Help build the user owned internet by testing the latest builds for Stacks nodes, Stacks mining, Clarity smart contracts, and more.
+description: Learn more about the Stacks blockchain
 ---
 
 ## Introduction
@@ -19,6 +19,15 @@ replica as all other peers.
 
 _Non-enumerable_ means that the set of peers that are producing the blocks don’t know about one another — they don’t know
 their identities, or even how many exist and are online. They are indistinguishable.
+
+## Status
+
+The Stacks 2.0 blockchain is in active development. While the final release ("mainnet") is in the works, you can already get familiar with Stacks 2.0 capabilities on the "testnet".
+
+For more information on the testnet, have a look at this page:
+
+[@page-reference | inline]
+| /stacks-blockchain/testnet
 
 ## Tutorials
 

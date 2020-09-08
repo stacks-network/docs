@@ -24,7 +24,7 @@ Transactions go through phases before being finally confirmed, and available for
 - **Verify and sign**: Transactions are verified to confirm if they are well-formed. Required signatures are filled in.
 - **Broadcast**: Transactions are send to a node.
 - **Register**: A miner receives transactions and adds them to the "mempool", a holding area for all the pending transactions.
-- **Process**: Miners review the mempool and select transactions for the next blocked to be mined. Depending on the transaction type, different actions can happen during this step. For example, post-conditions could be verified for a token transfer, new tokens could be minted, or an attemp to call an existing smart contract method could be made.
+- **Process**: Miners review the mempool and select transactions for the next blocked to be mined. Depending on the transaction type, different actions can happen during this step. For example, post-conditions could be verified for a token transfer, new tokens could be minted, or an attempt to call an existing smart contract method could be made.
 - **Confirm**: Miners successfully mine blocks with a set of transactions. The transactions inside are successfully propogated to the network.
 
 ## Types
@@ -58,7 +58,7 @@ Each transaction includes a field that describes zero or more post-conditions th
 | Comparator    | Compare operation to be applied (could define "how much" or "whether or not")             |
 | Literal       | Integer or boolean value used to compare instances of the asset against via the condition |
 
-## Evaluation modes
+### Evaluation modes
 
 The Stacks blockchain supports an `allow` or `deny` mode for evaluating post-conditions:
 
@@ -186,8 +186,68 @@ const transaction = await makeContractCall(txOptions);
 
 ## Serialization
 
-- raw transactions (format, how to generate)
-- What serialization protocol do you use for transactions? (e.g. RLP, JSON)
+A well-formed transaction construct is encoded in [Recursive Length Prefix ("RLP")](https://eth.wiki/en/fundamentals/rlp). RLP encoding results in a variable-sized byte array.
+
+In order to broadcast transactions to and between nodes on the network, RLP data is represented in hexadecial (also called the **raw format**).
+
+To support an API-friendly and human-readable representation, transactions are serialized into a JSON format.
+
+=> [The Stacks Transactions JS liberary](https://github.com/blockstack/stacks-transactions-js) supports serialization of transactions.
+
+### Raw format
+
+Broadcasting transactions directly to the Stacks Blockchain API or Node RPC API requires the transaction to be serialized and in hexadecimal representation.
+
+```js
+// to see the raw serialized tx
+const serializedTx = transaction.serialize().toString('hex');
+
+console.log(serializedTx);
+```
+
+The method above will return the following string:
+
+```shell
+8080000000040015c31b8c1c11c515e244b75806bac48d1399c77500000000000000000000000000000000000127e88a68dce8689fc94ff4c186bf8966f8d544c5129ff84d95a2459b5e8e7c39430388f6c8f85cce8c9ce5e6ec1e157116ca4a67d65ab53768b25d5fb5831939030200000000000516df0ba3e79792be7be5e50a370289accfc8c9e03200000000000f424068656c6c6f20776f726c640000000000000000000000000000000000000000000000
+```
+
+### JSON format
+
+When called the Stacks Blockchain API or Node RPC API, transactions returned will be serialized in a JSON format. Here is a token transfer transaction:
+
+```js
+{
+  "tx_id": "0x19e25515652dad41ef675bd0670964e3d537b80ec19cf6ca6f1dd65d5bc642c6",
+  "tx_status": "success",
+  "tx_type": "token_transfer",
+  "fee_rate": "180",
+  "sender_address": "STJTXEJPJPPVDNA9B052NSRRBGQCFNKVS178VGH1",
+  "sponsored": false,
+  "post_condition_mode": "deny",
+  "block_hash": "0x9080f6df3e0be0d6de67569330e547346a44c8ecd30d9d76b5edd1b49e2c22f6",
+  "block_height": 3190,
+  "burn_block_time": 1594227992,
+  "canonical": true,
+  "tx_index": 1,
+  "token_transfer": {
+    "recipient_address": "ST1RZG804V6Y0N4XHQD3ZE2GE3XSCV3VHRKMA3GB0",
+    "amount": "10000",
+    "memo": "0x00000000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "events": [
+    {
+      "event_index": 0,
+      "event_type": "stx_asset",
+      "asset": {
+        "asset_event_type": "transfer",
+        "sender": "STJTXEJPJPPVDNA9B052NSRRBGQCFNKVS178VGH1",
+        "recipient": "ST1RZG804V6Y0N4XHQD3ZE2GE3XSCV3VHRKMA3GB0",
+        "amount": "10000"
+      }
+    }
+  ]
+}
+```
 
 ## Signature and Verification
 
