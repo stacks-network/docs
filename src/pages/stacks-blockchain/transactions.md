@@ -87,7 +87,7 @@ A transaction includes the following information. Multiple-byte fields are encod
 
 ## Construction
 
-The easies way to construct well-formed transactions is by [using the Stacks Transactions JS liberary](https://github.com/blockstack/stacks-transactions-js#post-conditions). You can construct the follow transaction types:
+The easies way to construct well-formed transactions is by [using the Stacks Transactions JS library](https://github.com/blockstack/stacks-transactions-js#post-conditions). You can construct the follow transaction types:
 
 - Stacks token transfer
 - Smart contract deploy
@@ -150,9 +150,73 @@ const txOptions = {
 const transaction = await makeContractCall(txOptions);
 ```
 
+### Clarity value types
+
+Building transactions that call functions in deployed clarity contracts requires you to construct valid Clarity Values to pass to the function as arguments. The [Clarity type system](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-002-smart-contract-language.md#clarity-type-system) contains the following types:
+
+| Type             | Declaration                           | Description                                                                                                                                                                         |
+| ---------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tuple            | `(tuple (key-name-0 key-type-0) ...)` | Typed tuple with named fields                                                                                                                                                       |
+| List             | `(list max-len entry-type)`           | List of maximum length max-len, with entries of type entry-type                                                                                                                     |
+| Response         | `(response ok-type err-type)`         | Object used by public functions to commit their changes or abort. May be returned or used by other functions as well, however, only public functions have the commit/abort behavior |
+| Optional         | `(optional some-type)`                | Option type for objects that can either be (some value) or none                                                                                                                     |
+| Buffer           | `(buff max-len)`                      | Byte buffer or maximum length max-len                                                                                                                                               |
+| Principal        | `principal`                           | Object representing a principal (whether a contract principal or standard principal)                                                                                                |
+| Boolean          | `bool`                                | Boolean value ('true or 'false)                                                                                                                                                     |
+| Signed Integer   | `int`                                 | Signed 128-bit integer                                                                                                                                                              |
+| Unsigned Integer | `uint`                                | Unsigned 128-bit integer                                                                                                                                                            |
+
+The Stacks Transactions JS library contains Typescript types and classes that map to the Clarity types, in order to make it easy to construct well-typed Clarity values in Javascript. These types all extend the abstract class `ClarityValue`.
+
+Here are samples for Clarity value contructions using this library:
+
+```js
+// construct boolean clarity values
+const t = trueCV();
+const f = falseCV();
+
+// construct optional clarity values
+const nothing = noneCV();
+const something = someCV(t);
+
+// construct a buffer clarity value from an existing Buffer
+const buffer = Buffer.from('foo');
+const bufCV = bufferCV(buffer);
+
+// construct signed and unsigned integer clarity values
+const i = intCV(-10);
+const u = uintCV(10);
+
+// construct principal clarity values
+const address = 'SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B';
+const contractName = 'contract-name';
+const spCV = standardPrincipalCV(address);
+const cpCV = contractPrincipalCV(address, contractName);
+
+// construct response clarity values
+const errCV = responseErrorCV(trueCV());
+const okCV = responseOkCV(falseCV());
+
+// construct tuple clarity values
+const tupCV = tupleCV({
+  a: intCV(1),
+  b: trueCV(),
+  c: falseCV(),
+});
+
+// construct list clarity values
+const l = listCV([trueCV(), falseCV()]);
+```
+
+If you develop in Typescript, the type checker can help prevent you from creating wrongly-typed Clarity values. For example, the following code won't compile since in Clarity lists are homogeneous, meaning they can only contain values of a single type. It is important to include the type variable `BooleanCV` in this example, otherwise the typescript type checker won't know which type the list is of and won't enforce homogeneity.
+
+```js
+const l = listCV < BooleanCV > [trueCV(), intCV(1)];
+```
+
 ### Setting post-conditions
 
-The Stacks Transactions JS liberary supports construction of post conditions.
+The Stacks Transactions JS library supports construction of post conditions.
 
 Here is an example of the earlier mentioned post condition ("account's STX balance should have decreased by no more than 1 STX"):
 
@@ -192,7 +256,7 @@ In order to broadcast transactions to and between nodes on the network, RLP data
 
 To support an API-friendly and human-readable representation, transactions are serialized into a JSON format.
 
-=> [The Stacks Transactions JS liberary](https://github.com/blockstack/stacks-transactions-js) supports serialization of transactions.
+=> [The Stacks Transactions JS library](https://github.com/blockstack/stacks-transactions-js) supports serialization of transactions.
 
 ### Raw format
 
@@ -251,24 +315,148 @@ When called the Stacks Blockchain API or Node RPC API, transactions returned wil
 
 ## Signature and Verification
 
-### Clarity value types
-
 ## Broadcast
 
-- what network?
+With a serialized transaction in the [raw format](#raw-format), it can be broadcasted to the network using the [`POST /v2/transactions`](https://blockstack.github.io/stacks-blockchain-api/#operation/post_core_node_transactions) endpoint:
+
+```shell
+curl --location --request POST 'https://stacks-node-api-latest.argon.blockstack.xyz/v2/transactions' \
+--header 'Content-Type: text/plain' \
+--data-raw '<tx_raw_format>'
+```
+
+The API will respond with a `HTTP 200 - OK` if the transactions was successfully added to the mempool.
 
 ## Querying
 
 Transactions on the Stacks 2.0 network can be queried using the [Stacks Blockchain API](/references/stacks-blockchain). The API exposes two interfaces, a RESTful JSON API and a WebSockets API.
 
--> Note: The API can be easily consumed using a generated [JS client library](https://blockstack.github.io/stacks-blockchain-api/client/index.html).
+For convenience, a Postman Collection was created and published: [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/614feab5c108d292bffa)
+
+-> Note: The API can be easily consumed using a generated [JS client library](https://blockstack.github.io/stacks-blockchain-api/client/index.html). The generator uses an OpenAPI specification and supports other languages and frameworks.
+
+### Pagination
+
+To make API responses more compact, lists returned by the API are paginated. For lists, the response body includes:
+
+- `limit`: the number of list items return per response (max is `200`)
+- `offset`: the number of elements to skip (starting from `0`)
+- `total`: the number of all available list items
+- `results`: the array of list items (length of array is between 0 and the set limit)
+
+Using the `limit` and `offset` properties, you can paginate through the entire list by increasing the offset by the limit until you reach the end of the list (as indicated by the `total` field).
+
+### Filter
+
+The current API design doesn't allow to set filters for queries. In case you are looking for a specific type of transaction, it is best to paginate through the list and iterate over the results of each response.
+
+For example, if you were to look to token transfers only, you would evaluate if the `tx_type` equals `token_transfer`.
 
 ### Get recent transactions
 
+Recent transactions can be obtained through the [`GET /extended/v1/tx`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_transaction_list) endpoint:
+
+```shell
+curl 'https://stacks-node-api-latest.argon.blockstack.xyz/extended/v1/tx'
+```
+
+Sample response:
+
+```js
+{
+  "limit": 10,
+  "offset": 0,
+  "total": 101922,
+  "results": [
+    {
+      "tx_id": "0x5e9f3933e358df6a73fec0d47ce3e1062c20812c129f5294e6f37a8d27c051d9",
+      "tx_status": "success",
+      "tx_type": "coinbase",
+      "fee_rate": "0",
+      "sender_address": "ST3WCQ6S0DFT7YHF53M8JPKGDS1N1GSSR91677XF1",
+      "sponsored": false,
+      "post_condition_mode": "deny",
+      "block_hash": "0x58412b50266debd0c35b1a20348ad9c0f17e5525fb155a97033256c83c9e2491",
+      "block_height": 3231,
+      "burn_block_time": 1594230455,
+      "canonical": true,
+      "tx_index": 0,
+      "coinbase_payload": {
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    }
+  ]
+}
+```
+
 ### Get mempool transactions
+
+Mempool (registered, but not processed) transactions can be obtained using the [`GET /extended/v1/tx/mempool`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_mempool_transaction_list) endpoint:
+
+```shell
+curl 'https://stacks-node-api-latest.argon.blockstack.xyz/extended/v1/tx/mempool'
+```
+
+Sample response:
+
+```js
+{
+  "limit": 96,
+  "offset": 0,
+  "total": 5,
+  "results": [
+    {
+      "tx_id": "0xb31df5a363dad31723324cb5e0eefa04d491519fd30827a521cbc830114aa50c",
+      "tx_status": "pending",
+      "tx_type": "token_transfer",
+      "receipt_time": 1598288370,
+      "receipt_time_iso": "2020-08-24T16:59:30.000Z",
+      "fee_rate": "180",
+      "sender_address": "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6",
+      "sponsored": false,
+      "post_condition_mode": "deny",
+      "token_transfer": {
+        "recipient_address": "ST1GY25DM8RZV4X15X07THRZ2C5NMWPGQWKFGV87F",
+        "amount": "500000",
+        "memo": "0x46617563657400000000000000000000000000000000000000000000000000000000"
+      }
+    }
+  ]
+}
+```
 
 ### Get transaction by ID
 
-### Broadcast raw transactions
+A specific transaction can be obtained using the [`GET /extended/v1/tx/<tx_id>`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_transaction_by_id) endpoint:
 
-- How do you filter for a specific type of transactions?
+```shell
+curl 'https://stacks-node-api-latest.argon.blockstack.xyz/extended/v1/tx/<tx_id>'
+```
+
+Sample response:
+
+```js
+{
+  "limit": 96,
+  "offset": 0,
+  "total": 5,
+  "results": [
+    {
+      "tx_id": "0xb31df5a363dad31723324cb5e0eefa04d491519fd30827a521cbc830114aa50c",
+      "tx_status": "pending",
+      "tx_type": "token_transfer",
+      "receipt_time": 1598288370,
+      "receipt_time_iso": "2020-08-24T16:59:30.000Z",
+      "fee_rate": "180",
+      "sender_address": "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6",
+      "sponsored": false,
+      "post_condition_mode": "deny",
+      "token_transfer": {
+        "recipient_address": "ST1GY25DM8RZV4X15X07THRZ2C5NMWPGQWKFGV87F",
+        "amount": "500000",
+        "memo": "0x46617563657400000000000000000000000000000000000000000000000000000000"
+      }
+    }
+  ]
+}
+```
