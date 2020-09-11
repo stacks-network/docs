@@ -20,6 +20,8 @@ This tutorial will walk you through the following steps:
 - Reviewing account history
 - Getting account balances
 
+-> This tutorial is NodeJS-specific. If you would like to understand how to manage Stacks 2.0 accounts using a different language/framework, please [review the accounts guide](/stacks-blockchain/accounts).
+
 ## Requirements
 
 You will need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:
@@ -30,10 +32,10 @@ node --version
 
 ## Step 1: Installing libraries
 
-First install the stacks transactions library and an API client for the [Stacks 2.0 Blockchain API](/references/stacks-blockchain):
+First, install all the required libraries:
 
-```shell
-npm install --save @blockstack/stacks-transactions@0.6.0 @stacks/blockchain-api-client
+```bash
+npm install --save @blockstack/stacks-transactions@0.6.0 @stacks/blockchain-api-client cross-fetch
 ```
 
 -> The API client is generated from the [OpenAPI specification](https://github.com/blockstack/stacks-blockchain-api/blob/master/docs/openapi.yaml) ([openapi-generator](https://github.com/OpenAPITools/openapi-generator)). Many other languages and frameworks are be supported by the generator.
@@ -43,6 +45,7 @@ npm install --save @blockstack/stacks-transactions@0.6.0 @stacks/blockchain-api-
 To get started, let's generate a new, random Stacks 2.0 private key:
 
 ```js
+import fetch from 'cross-fetch';
 const {
   makeRandomPrivKey,
   privateKeyToString,
@@ -82,7 +85,7 @@ const stacksAddress = getAddressFromPrivateKey(
   console.log(accountInfo);
 ```
 
--> Note: A "principal" is any entity that can have a token balance. Find more details in the [Princials guide](/smart-contracts/principals).
+-> Note: A "principal" is any entity that can have a token balance. Find more details in the [Principals guide](/smart-contracts/principals).
 
 The API will respond with a balance, nonce (starting at zero), and respective proofs:
 
@@ -95,7 +98,7 @@ The API will respond with a balance, nonce (starting at zero), and respective pr
 }
 ```
 
-The `balance` property represents the Stacks token balance, as hex-encoded string of an unsigned 128-bit integer (big-endian). It is not easy to consume the `balance` property in this format. To simplify that, and to obtain all balances for all tokens (Stacks, fungible, and non-fungible), check out [step 5](#step-5-getting-account-balances).
+The `balance` property represents the Stacks token balance, as hex-encoded string of an unsigned 128-bit integer (big-endian). It is not easy to consume the `balance` property in this format. To simplify that, and to obtain all balances for all tokens (Stacks/STX, fungible, and non-fungible), check out [step 5](#step-5-getting-account-balances).
 
 ### Disabling proofs
 
@@ -134,7 +137,7 @@ The API will respond with a new transaction ID and confirmation that the faucet 
 
 -> Note: Wait a few minutes for the transaction to complete. You can review the status using the Explorer, by navigating to the following URL: `https://testnet-explorer.blockstack.org/txid/<txid>`.
 
-Assumping the faucet transaction was successfully processed, you can review the account history. We are expecting at least one transactions to show up in the account history.
+Assuming the faucet transaction was successfully processed, you can review the account history. We are expecting at least one transactions to show up in the account history.
 
 ```js
 const history = await accounts.getAccountTransactions({
@@ -227,6 +230,6 @@ The API will respond with the following breakdown of token balances:
 }
 ```
 
--> Note: The `balance` field does **not** represent full Stacks token, but microstacks. 1,000,000 microstacks are worth 1 Stacks token.
+-> Note: The `balance` field does **not** represent full Stacks (STX) token, but micro-STX. 1,000,000 micro-STX are worth 1 Stacks (STX) token.
 
-We can see that the current Stacks balance is `500000` microstacks, or `0.5` Stacks token.
+We can see that the current Stacks (STX) balance is `500000` micro-STX, or `0.5` Stacks (STX) token.
