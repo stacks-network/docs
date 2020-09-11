@@ -182,7 +182,7 @@ The following set of commands will achieve the same goals as the above workflow.
 Install an early release of the new Blockstack CLI for Stacks 2.0.
 
 ```bash
-sudo npm install -g "https://github.com/blockstack/cli-blockstack#feature/stacks-2.0-tx"
+npm install --global "https://github.com/blockstack/cli-blockstack#feature/stacks-2.0-tx"
 ```
 
 Create a new Stacks address and save keychain details, using the `-t` flag to target Testnet. The new keychain details will be stored in the file `cli_keychain.json`:
