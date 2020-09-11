@@ -5,7 +5,7 @@ description: Guide to Stacks 2.0 transactions
 
 ## Introduction
 
-Transactions are the fundamental unit of execution in the Stacks blockchain. Each transaction is originated from a standard account, and is retained in the Stacks blockchain history for eternity. This guide helps you understand Stacks 2.0 transactions.
+Transactions are the fundamental unit of execution in the Stacks blockchain. Each transaction is originated from a [Stacks 2.0 account](/stacks-blockchain/accounts), and is retained in the Stacks blockchain history for eternity. This guide helps you understand Stacks 2.0 transactions.
 
 If you want to jump right in and broadcast your first transaction, try this tutorial:
 
@@ -21,42 +21,42 @@ Transactions go through phases before being finally confirmed, and available for
 ![Transaction lifecycle](/images/tx-lifecycle.png)
 
 - **Generate**: Transactions are assembled according to the encoding specification.
-- **Verify and sign**: Transactions are verified to confirm if they are well-formed. Required signatures are filled in.
-- **Broadcast**: Transactions are send to a node.
-- **Register**: A miner receives transactions and adds them to the "mempool", a holding area for all the pending transactions.
-- **Process**: Miners review the mempool and select transactions for the next blocked to be mined. Depending on the transaction type, different actions can happen during this step. For example, post-conditions could be verified for a token transfer, new tokens could be minted, or an attempt to call an existing smart contract method could be made.
+- **Validate and sign**: Transactions are validated to confirm they are well-formed. Required signatures are filled in.
+- **Broadcast**: Transactions are sent to a node.
+- **Register**: A miner receives transactions, verifies, and adds them to the ["mempool"](https://academy.binance.com/glossary/mempool), a holding area for all the pending transactions.
+- **Process**: Miners review the mempool and select transactions for the next block to be mined. Depending on the transaction type, different actions can happen during this step. For example, post-conditions could be verified for a token transfer, smart-contract defined tokens could be minted, or an attempt to call an existing smart contract method could be made.
 - **Confirm**: Miners successfully mine blocks with a set of transactions. The transactions inside are successfully propogated to the network.
 
 ## Types
 
 The Stacks 2.0 supports a set of different transaction types:
 
-| **Type**          | **Description**                                                                                                   |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Coinbase          | The first transaction in a new block (an entity holding several transactions). Used to register for block rewards |
-| Token transfer    | Asset transfer from a sender to a recipient                                                                       |
-| Contract creation | Contract instantiation                                                                                            |
-| Contract call     | Contract call for a public, non read-only function                                                                |
-| Poison Microblock | Punish leaders who intentionally equivocate about the microblocks they package                                    |
+| **Type**          | **Description**                                                                                                                                                                                      |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Coinbase          | The first transaction in a new block (an entity holding several transactions). Used to register for block rewards. These are not manully generated and broadcasted like other types of transactions. |
+| Token transfer    | Asset transfer from a sender to a recipient                                                                                                                                                          |
+| Contract deploy   | Contract instantiation                                                                                                                                                                               |
+| Contract call     | Contract call for a public, non read-only function                                                                                                                                                   |
+| Poison Microblock | Punish leaders who intentionally equivocate about the microblocks they package                                                                                                                       |
 
 -> A sample of each transaction type can be found in the [Stacks Blockchain API response definition for transactions](https://blockstack.github.io/stacks-blockchain-api/#operation/get_transaction_by_id).
 
 ## Post-conditions
 
-Transaction post-conditions are a feature meant to limit the damage smart contract bugs can do in terms of destroying a user's assets whenever a contract is instantiated or a public method of an existing contract is executed. Post-conditions are meant to be added by the user (or by the user's wallet software) at the moment they sign a transaction.
+Transaction post-conditions are a feature meant to limit the damage malicious smart contract developers and smart contract bugs can do in terms of destroying a user's assets. Post-conditions are executed whenever a contract is instantiated or a public method of an existing contract is executed. Whenever a post-condition fails, a transaction will be forced to abort.
 
-Post-conditions are intended to be used to force a transaction to abort if the transaction would cause a principal to send an asset in a way that is not to the user's liking. For example, a user may append a post-condition saying that upon successful execution, their account's STX balance should have decreased by no more than 1 STX. If this is not the case, then the transaction would abort and the account would only pay the transaction fee of processing it.
+Post-conditions are meant to be added by the user (or by the user's wallet software) at the moment they sign a transaction. For example, a user may append a post-condition saying that upon successful execution, their account's STX balance should have decreased by no more than 1 STX. If this is not the case, then the transaction would abort and the account would only pay the transaction fee of processing it.
 
 ### Attributes
 
-Each transaction includes a field that describes zero or more post-conditions that must all be true when the transaction finishes running. A post-conditiona includes the following information:
+Each transaction includes a field that describes zero or more post-conditions that must all be true when the transaction finishes running. A post-condition includes the following information:
 
-| **Attribute** | **Description**                                                                           |
-| ------------- | ----------------------------------------------------------------------------------------- |
-| Principal     | Sender of the transaction, can be a Stacks address or a contract                          |
-| Asset name    | Asset to apply conditions to (could be Stacks, fungible, or non-fungible tokens)          |
-| Comparator    | Compare operation to be applied (could define "how much" or "whether or not")             |
-| Literal       | Integer or boolean value used to compare instances of the asset against via the condition |
+| **Attribute**                            | **Sample**                                  | **Description**                                                                           |
+| ---------------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| [Principal](/smart-contracts/principals) | `SP2ZD731ANQZT6J4K3F5N8A40ZXWXC1XFXHVVQFKE` | Sender of the transaction, can be a Stacks address or a contract                          |
+| Asset name                               | `STX`                                       | Asset to apply conditions to (could be Stacks, fungible, or non-fungible tokens)          |
+| Comparator                               | `>=`                                        | Compare operation to be applied (could define "how much" or "whether or not")             |
+| Literal                                  | `1000000`                                   | Integer or boolean value used to compare instances of the asset against via the condition |
 
 ### Evaluation modes
 
@@ -87,15 +87,15 @@ A transaction includes the following information. Multiple-byte fields are encod
 
 ## Construction
 
-The easies way to construct well-formed transactions is by [using the Stacks Transactions JS library](https://github.com/blockstack/stacks-transactions-js#post-conditions). You can construct the following transaction types:
+The easiest way to construct well-formed transactions is by [using the Stacks Transactions JS library](https://github.com/blockstack/stacks-transactions-js#post-conditions). You can construct the following transaction types:
 
 - Stacks token transfer
 - Smart contract deploy
 - Smart contract function call
 
-When constructing transactions, it is requireq to set the network the transaction is intended for. This can be either mainnet or testnet. At the moment of this writing, the only available option is the [testnet network](/stacks-blockchain/testnet).
+When constructing transactions, it is required to set the network the transaction is intended for. This can be either mainnet or testnet. At the moment of this writing, the only available option is the [testnet network](/stacks-blockchain/testnet).
 
--> Transactions can be constructed and serialized offline. Internet access is only required to broadcast the transaction to the network.
+-> Transactions can be constructed and serialized offline. However, it is required to know the nonce and estimated fees ahead of time. Once internet access is available, the transaction can be broadcasted to the network. Keep in mind that the nonce and fee might change during offline activity, making the transaction invalid.
 
 ### Stacks Token transfer
 
@@ -116,7 +116,7 @@ const txOptions = {
 const transaction = await makeSTXTokenTransfer(txOptions);
 ```
 
--> Read more about [nonces](http://localhost:3000/stacks-blockchain/network#nonces) in the network guide
+-> Read more about [nonces](/stacks-blockchain/network#nonces) in the network guide
 
 ### Smart contract deployment
 
@@ -158,17 +158,19 @@ const transaction = await makeContractCall(txOptions);
 
 Building transactions that call functions in deployed clarity contracts requires you to construct valid Clarity Values to pass to the function as arguments. The [Clarity type system](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-002-smart-contract-language.md#clarity-type-system) contains the following types:
 
-| Type             | Declaration                           | Description                                                                                                                                                                         |
-| ---------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tuple            | `(tuple (key-name-0 key-type-0) ...)` | Typed tuple with named fields                                                                                                                                                       |
-| List             | `(list max-len entry-type)`           | List of maximum length max-len, with entries of type entry-type                                                                                                                     |
-| Response         | `(response ok-type err-type)`         | Object used by public functions to commit their changes or abort. May be returned or used by other functions as well, however, only public functions have the commit/abort behavior |
-| Optional         | `(optional some-type)`                | Option type for objects that can either be (some value) or none                                                                                                                     |
-| Buffer           | `(buff max-len)`                      | Byte buffer or maximum length max-len                                                                                                                                               |
-| Principal        | `principal`                           | Object representing a principal (whether a contract principal or standard principal)                                                                                                |
-| Boolean          | `bool`                                | Boolean value ('true or 'false)                                                                                                                                                     |
-| Signed Integer   | `int`                                 | Signed 128-bit integer                                                                                                                                                              |
-| Unsigned Integer | `uint`                                | Unsigned 128-bit integer                                                                                                                                                            |
+| Type             | Declaration                                                  | Description                                                                                                                                                                         |
+| ---------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tuple            | `(tuple (key-name-0 key-type-0) ...)`                        | Typed tuple with named fields                                                                                                                                                       |
+| List             | `(list max-len entry-type)`                                  | List of maximum length max-len, with entries of type entry-type                                                                                                                     |
+| Response         | `(response ok-type err-type)`                                | Object used by public functions to commit their changes or abort. May be returned or used by other functions as well, however, only public functions have the commit/abort behavior |
+| Optional         | `(optional some-type)`                                       | Option type for objects that can either be (some value) or none                                                                                                                     |
+| Buffer           | `(buff max-len)`                                             | Byte buffer with maximum length `max-len`                                                                                                                                           |
+| Principal        | `principal`                                                  | Object representing a principal (whether a contract principal or standard principal)                                                                                                |
+| Boolean          | `bool`                                                       | Boolean value ('true or 'false)                                                                                                                                                     |
+| Signed Integer   | `int`                                                        | Signed 128-bit integer                                                                                                                                                              |
+| Unsigned Integer | `uint`                                                       | Unsigned 128-bit integer                                                                                                                                                            |
+| ASCII String     | `(define-data-var my-str (string-ascii 11) "hello world")`   | String value encoded in ASCII                                                                                                                                                       |
+| UTF-8 String     | `(define-data-var my-str (string-utf8 7) u"hello \u{1234}")` | String value encoded in UTF-8                                                                                                                                                       |
 
 The Stacks Transactions JS library contains Typescript types and classes that map to the Clarity types, in order to make it easy to construct well-typed Clarity values in Javascript. These types all extend the abstract class `ClarityValue`.
 
@@ -256,9 +258,9 @@ const transaction = await makeContractCall(txOptions);
 
 A well-formed transaction construct is encoded in [Recursive Length Prefix ("RLP")](https://eth.wiki/en/fundamentals/rlp). RLP encoding results in a variable-sized byte array.
 
-In order to broadcast transactions to and between nodes on the network, RLP data is represented in hexadecial (also called the **raw format**).
+In order to broadcast transactions to and between nodes on the network, RLP data is represented in hexadecimal string (also called the **raw format**).
 
-To support an API-friendly and human-readable representation, transactions are serialized into a JSON format.
+To support an API-friendly and human-readable representation, the [Stacks Blockchain API](/references/stacks-blockchain) converts transactions into a JSON format.
 
 => [The Stacks Transactions JS library](https://github.com/blockstack/stacks-transactions-js) supports serialization of transactions.
 

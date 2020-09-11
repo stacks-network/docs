@@ -21,22 +21,4 @@ The work towards mainnet is split up into four sequential phases:
 - [ ] **Phase 3:** is the upcoming version that we're anticipating to ship in Q3 2020. This version focus on the PoX basics (miner get rewards, Stackers get BTC distributions, etc).
 - [ ] **Phase 4** is the fully functional version, that we're intending to ship in Q4 2020.
 
-## Roadmap
-
-Each phase add capabilities to the Stacks 2.0 blockchain:
-
-|                                                                                                                                              | Phase 1 | **Phase 2** | Phase 3                            | Phase 4                            |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ----------- | ---------------------------------- | ---------------------------------- |
-| [Simple Proof of Transfer mining](https://github.com/blockstack/stacks-blockchain)                                                           | ✅      | ✅          | <input type="checkbox" disabled /> | <input type="checkbox" disabled /> |
-| [Send and receive Stacks](https://github.com/blockstack/cli-blockstack)                                                                      | ✅      | ✅          | <input type="checkbox" disabled /> | <input type="checkbox" disabled /> |
-| [Deploy Clarity contracts](/smart-contracts/overview)                                                                                        | ✅      | ✅          | <input type="checkbox" disabled /> | <input type="checkbox" disabled /> |
-| [New Stacks Explorer](https://testnet-explorer.blockstack.org/)                                                                              |         | ✅          | <input type="checkbox" disabled /> | <input type="checkbox" disabled /> |
-| [stacks-transactions-js](https://github.com/blockstack/stacks-transactions-js)                                                               |         | ✅          | <input type="checkbox" disabled /> | <input type="checkbox" disabled /> |
-| [Transaction signing](https://blog.blockstack.org/build-apps-that-sign-transactions-with-clarity-smart-contracts-on-the-stacks-2-0-testnet/) |         | ✅          | <input type="checkbox" disabled /> | <input type="checkbox" disabled /> |
-| Proof of Transfer mining                                                                                                                     |         |             | <input type="checkbox" disabled /> | <input type="checkbox" disabled /> |
-| Stacking                                                                                                                                     |         |             | <input type="checkbox" disabled /> | <input type="checkbox" disabled /> |
-| New Stacks Wallet                                                                                                                            |         |             | <input type="checkbox" disabled /> | <input type="checkbox" disabled /> |
-| Testing upgrade to Stacks 2.0                                                                                                                |         |             |                                    | <input type="checkbox" disabled /> |
-| Integration with Bitcoin testnet                                                                                                             |         |             |                                    | <input type="checkbox" disabled /> |
-
-✅ Released features&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" disabled /> Upcoming
+-> Have a look at the [Stacks 2.0 Testnet page](https://www.blockstack.org/testnet#phases) for a roadmap, including capabilities released and planned for each phase.

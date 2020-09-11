@@ -21,6 +21,8 @@ This tutorial will walk you through the following steps:
 - Checking transaction completion
 - Confirming updates account balances (optional)
 
+-> This tutorial is NodeJS-specific. If you would like to understand how to initiate a token transfer by constructing and broadcasting transactions using a different language/framework, please [review the transactions guide](/stacks-blockchain/transactions).
+
 ## Requirements
 
 You will need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:
@@ -43,7 +45,7 @@ npm install --save @blockstack/stacks-transactions@0.6.0 bn.js @stacks/blockchai
 
 ## Step 2: Specifying a sender
 
-In order to build and sign transactions, you will need a Stacks privat key. You can easily generate a new, random Stacks 2.0 sender key (see ["Generating an account" from the previous tutorial](http://localhost:3000/stacks-blockchain/managing-accounts#step-2-generating-an-account)).
+In order to build and sign transactions, you will need a Stacks private key. You can easily generate a new, random Stacks 2.0 sender key (see ["Generating an account" from the previous tutorial](/stacks-blockchain/managing-accounts#step-2-generating-an-account)).
 
 For this tutorial, we will use an existing Stacks account and instantiate the key object from a private key string:
 
@@ -82,7 +84,7 @@ const recipient = 'SP3FGQ8Z7JY9BWYZ5WM53E0M9NK7WHJF0691NZ159';
 const amount = new BN(1000000);
 
 // skip automatic fee estimation
-const fee = new BN(0);
+const fee = new BN(2000);
 
 // skip automatic nonce lookup
 const nonce = new BN(0);
@@ -111,7 +113,7 @@ The generation method will need a few more pieces of information, as specified i
 
 | Parameter   | Description                                                                                                                      | Optional |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `recipient` | The recipient Stacks address in c32check format                                                                                  | **No**   |
+| `recipient` | The recipient Stacks address in [c32check](https://www.npmjs.com/package/c32check) format                                        | **No**   |
 | `amount`    | The amount of Stacks tokens to send denominated in microstacks                                                                   | **No**   |
 | `fee`       | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks                      | Yes      |
 | `nonce`     | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes      |
@@ -126,7 +128,11 @@ If not specified, the transaction builder will automatically estimate the fee. E
 Another way to estimate the fee is to use the `estimateTransfer()` function after you have constructed a transaction:
 
 ```js
-estimateTransfer(transaction);
+// get fee
+const feeEstimate = estimateTransfer(transaction);
+
+// set fee manually
+transaction.setFee(feeEstimate);
 ```
 
 -> Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
@@ -150,6 +156,8 @@ const txId = await broadcastTransaction(transaction, testnet);
 ```
 
 As soon as the `broadcastTransaction` is completed, a transaction ID is returned.
+
+~> Keep in mind that the existence of a transaction ID does not mean the transaction has been successfully processed. Please review the [transaction lifecycle](/stacks-blockchain/transactions#lifecycle) for more details.
 
 ### Seralizing transactions
 

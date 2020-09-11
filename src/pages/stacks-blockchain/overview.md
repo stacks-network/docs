@@ -46,16 +46,14 @@ You can view accounts, blocks, transactions, and smart contracts broadcasted to 
 
 ### Clarity Smart Contracts
 
-A Smart Contract is code running on the Stacks Blockchain that executes autonomously. Clarity is the safest language for writing Smart Contracts, optimized for predictability and security.
+A [Smart Contract](https://academy.binance.com/glossary/smart-contract) is code running on the Stacks Blockchain that executes autonomously. Smart contracts on the Stacks 2.0 blockchain are written in Clarity, a language optimized for predictability and security.
 
 [@page-reference | inline]
 | /smart-contracts/overview
 
 ### Stacks Mining
 
-Anyone can be a Stacks Miner. There are no special hardware or software requirements, all you need is Bitcoin. Instead
-of spending energy, Stacks miners transfer Bitcoin to holders of Stacks Token (Stacks) to mine a block. This mechanism is
-called Proof of Transfer (PoX).
+Anyone who owns Bitcoin can be a Stacks Miner. Instead of spending energy, Stacks miners spend Bitcoin to mine a block. This mechanism is called Proof of Transfer (PoX).
 
 [@page-reference | inline]
 | /mining
@@ -68,12 +66,11 @@ An example of this is Stacking.
 
 ### Stacking
 
-Stackers are Stacks (Stacks) Token holders who provide a valuable service to the network by locking up their Stacks for a certain
-period of time. As a reward, Stackers receive the Bitcoin that miners transfer as part of Proof of Transfer (PoX).
+Stackers are Stacks (STX) Token holders who help secure the network by effectively acting as validators on the network, incentivizing honest behavior on the part of miners. Stackers have to lock up STX for a certain period of time. As a reward, Stackers receive the Bitcoin that miners transfer as part of Proof of Transfer (PoX).
 
 -> Proof of Transfer and Stacking are in active development and are coming soon
 
-## Design specification
+## Protocol specification
 
 Stacks improvement proposals (SIPs) are aimed at describing the implementation of the Stacks blockchain, as well as
 proposing improvements. They should contain concise technical specifications of features or standards and the rationale
@@ -82,10 +79,12 @@ system-wide issue, and for documenting design decisions.
 
 -> See [SIP 000](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-000-stacks-improvement-proposal-process.md) for more details about the SIPs process.
 
-- ✅ [SIP 001:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md) Burn Election
-- ✅ [SIP 002:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-002-smart-contract-language.md) Clarity, a language for predictable smart contracts
-- ✅ [SIP 003:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-003-peer-network.md) Peer Network
-- ✅ [SIP 004:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-004-materialized-view.md) Cryptographic Committment to Materialized Views
-- ✅ [SIP 005:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md) Blocks, Transactions, and Accounts
-- [ ] SIP 006: Clarity Execution Cost Assessment _(Q2 2020)_
-- [ ] SIP 007: Stacking Consensus _(Q2 2020)_
+| **SIP**                                                                                                                                                            | **Proposed** | **Active** |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | ---------- |
+| [SIP 001:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md) Burn Election                                                 | ✅           | ✅         |
+| [SIP 002:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-002-smart-contract-language.md) Clarity, a language for predictable smart contracts | ✅           | ✅         |
+| [SIP 003:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-003-peer-network.md) Peer Network                                                   | ✅           | ✅         |
+| [SIP 004:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-004-materialized-view.md) Cryptographic Committment to Materialized Views           | ✅           | ✅         |
+| [SIP 005:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md) Blocks, Transactions, and Accounts                  | ✅           | ✅         |
+| SIP 006: Clarity Execution Cost Assessment _(Q4 2020)_                                                                                                             |              |            |
+| [SIP 007:](https://github.com/blockstack/stacks-blockchain/blob/develop/sip/sip-007-stacking-consensus.md) Stacking Consensus                                      | ✅           |            |

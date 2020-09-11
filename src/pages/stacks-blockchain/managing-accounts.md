@@ -20,6 +20,8 @@ This tutorial will walk you through the following steps:
 - Reviewing account history
 - Getting account balances
 
+-> This tutorial is NodeJS-specific. If you would like to understand how to manage Stacks 2.0 accounts using a different language/framework, please [review the accounts guide](/stacks-blockchain/accounts).
+
 ## Requirements
 
 You will need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:

@@ -17,9 +17,9 @@ images:
 
 This tutorial will walk you through the following steps:
 
-- Download and install the node
-- Running the node
-- Mining Stacks token
+- Download and install the node software
+- Run the node
+- Mine Stacks token
 
 ## Requirements
 
