@@ -59,4 +59,4 @@ description: Helpful tips for getting a core node up and running.
 
 ### People are attacking my Bitcoin node
 
-- Stick an `nginx` reverse proxy in front of your `bitcoind` node, and use our [nginx](https://github.com/blockstack/atlas/tree/master/public_fleet/bitcoind) scripts to limit APi access to only the JSON-RPC methods Blockstack actually needs. Better yet, do what we do---build a statically-linked `bitcoind` binary from source that simply omits all of the RPC methods except the ones listed in the linked config file.
+- Stick an `nginx` reverse proxy in front of your `bitcoind` node, and use our [nginx](https://github.com/blockstack/atlas/tree/master/public_fleet/bitcoind) scripts to limit API access to only the JSON-RPC methods Blockstack actually needs. Better yet, do what we do---build a statically-linked `bitcoind` binary from source that simply omits all of the RPC methods except the ones listed in the linked config file.

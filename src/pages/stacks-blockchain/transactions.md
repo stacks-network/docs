@@ -25,19 +25,19 @@ Transactions go through phases before being finally confirmed, and available for
 - **Broadcast**: Transactions are sent to a node.
 - **Register**: A miner receives transactions, verifies, and adds them to the ["mempool"](https://academy.binance.com/glossary/mempool), a holding area for all the pending transactions.
 - **Process**: Miners review the mempool and select transactions for the next block to be mined. Depending on the transaction type, different actions can happen during this step. For example, post-conditions could be verified for a token transfer, smart-contract defined tokens could be minted, or an attempt to call an existing smart contract method could be made.
-- **Confirm**: Miners successfully mine blocks with a set of transactions. The transactions inside are successfully propogated to the network.
+- **Confirm**: Miners successfully mine blocks with a set of transactions. The transactions inside are successfully propagated to the network.
 
 ## Types
 
 The Stacks 2.0 supports a set of different transaction types:
 
-| **Type**          | **Description**                                                                                                                                                                                      |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Coinbase          | The first transaction in a new block (an entity holding several transactions). Used to register for block rewards. These are not manully generated and broadcasted like other types of transactions. |
-| Token transfer    | Asset transfer from a sender to a recipient                                                                                                                                                          |
-| Contract deploy   | Contract instantiation                                                                                                                                                                               |
-| Contract call     | Contract call for a public, non read-only function                                                                                                                                                   |
-| Poison Microblock | Punish leaders who intentionally equivocate about the microblocks they package                                                                                                                       |
+| **Type**          | **Description**                                                                                                                                                                                       |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Coinbase          | The first transaction in a new block (an entity holding several transactions). Used to register for block rewards. These are not manually generated and broadcasted like other types of transactions. |
+| Token transfer    | Asset transfer from a sender to a recipient                                                                                                                                                           |
+| Contract deploy   | Contract instantiation                                                                                                                                                                                |
+| Contract call     | Contract call for a public, non read-only function                                                                                                                                                    |
+| Poison Microblock | Punish leaders who intentionally equivocate about the microblocks they package                                                                                                                        |
 
 -> A sample of each transaction type can be found in the [Stacks Blockchain API response definition for transactions](https://blockstack.github.io/stacks-blockchain-api/#operation/get_transaction_by_id).
 
@@ -82,7 +82,7 @@ A transaction includes the following information. Multiple-byte fields are encod
 | Version number  | Network version. `0x80` for testnet, `0x0` for mainnet                                                                                                                                                                    |
 | Chain ID        | Chain instance ID. `0x80000000` for testnet, `0x00000001` for mainnet                                                                                                                                                     |
 | Authorization   | Type of authorization (`0x04` for standard, `0x05` for sponsored) and [spending conditions](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-authorization) |
-| Post-conditions | List of post-conditions, each including a [type ID and varible-length condition body](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-post-conditions-1)   |
+| Post-conditions | List of post-conditions, each including a [type ID and variable-length condition body](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-post-conditions-1)  |
 | Payload         | Transaction type and variable-length [payload](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-payloads-1)                                                 |
 
 ## Construction
@@ -174,7 +174,7 @@ Building transactions that call functions in deployed clarity contracts requires
 
 The Stacks Transactions JS library contains Typescript types and classes that map to the Clarity types, in order to make it easy to construct well-typed Clarity values in Javascript. These types all extend the abstract class `ClarityValue`.
 
-Here are samples for Clarity value contructions using this library:
+Here are samples for Clarity value constructions using this library:
 
 ```js
 // construct boolean clarity values
@@ -329,7 +329,7 @@ Below are the steps taken to generate the signature internal to the transaction 
 
 ### Signing steps
 
-Step 1: Generate a transaction hash for signing. This is the SHA512/256 digest of the serialzed transaction before a signature is added.
+Step 1: Generate a transaction hash for signing. This is the SHA512/256 digest of the serialized transaction before a signature is added.
 
 Step 2: Append the authorization type, fee amount and nonce to the transaction hash to create the signature hash.
 

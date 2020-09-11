@@ -40,13 +40,13 @@ The `make_keychain` command will create following file:
 }
 ```
 
-| Field                | Description                                                                                                                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `mnemonic`           | A 24-word seed phrase used to access the account, generated using [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) with 256 bits of entropy |
-| `keyInfo.address`    | Stacks address for the account                                                                                                                                     |
-| `keyInfo.privateKey` | Private key for the account. Required for [token transfers](/stacks-blockchain/transactions#stacks-token-transfer) and often referred to as `senderKey`            |
-| `keyInfo.index`      | Nonce for the account, starting at 0                                                                                                                               |
-| `keyInfo.btcAddress` | Corresponding BTC address for the account                                                                                                                          |
+| Field                | Description                                                                                                                                                          |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mnemonic`           | A 24-phrase seed phrase used to access the account, generated using [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) with 256 bits of entropy |
+| `keyInfo.address`    | Stacks address for the account                                                                                                                                       |
+| `keyInfo.privateKey` | Private key for the account. Required for [token transfers](/stacks-blockchain/transactions#stacks-token-transfer) and often referred to as `senderKey`              |
+| `keyInfo.index`      | Nonce for the account, starting at 0                                                                                                                                 |
+| `keyInfo.btcAddress` | Corresponding BTC address for the account                                                                                                                            |
 
 Note that the new account is instantiated implicitly. There is no need to manually instantiate it on the Stacks 2.0 blockchain.
 

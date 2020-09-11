@@ -97,7 +97,7 @@ To compensate for this, we developed an off-chain storage system allows BNS
 names to bind and store a large amount of state to each name in a way that
 _preserves the security properties of having written that state to the
 blockchain_. Instead of storing 20 bytes of data on the blockchain, a BNS name
-owner would store the _cryptograhpic hash_ of its state, and then store the actual state
+owner would store the _cryptographic hash_ of its state, and then store the actual state
 Atlas. This decouples the name's state size from the blockchain.
 
 The reference implementation of Atlas currently allows up to 40kb of state to be
@@ -106,7 +106,7 @@ replicated to each BNS node, where it is stored forever.
 
 ## Feature Comparison
 
-Atlas is not the only peer-to-peer content-addressible chunk store in existance. The following
+Atlas is not the only peer-to-peer content-addressible chunk store in existence. The following
 feature table describes Atlas in relation to other popular chunk stores.
 
 | **Features**                    | Atlas | BitTorrent | [DAT](https://datproject.org/) | [IPFS](https://ipfs.io) | [Swarm](https://github.com/ethersphere/swarm) |

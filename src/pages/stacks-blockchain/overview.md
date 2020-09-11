@@ -35,7 +35,7 @@ For more information on the testnet, have a look at this page:
 
 You can view accounts, blocks, transactions, and smart contracts broadcasted to the Stacks 2.0 blockchain using the [**Stacks 2.0 Explorer**](https://testnet-explorer.blockstack.org/).
 
--> The Explorer consumes the [Stacks 2.0 Blockchain API](https://blockstack.github.io/stacks-blockchain-api/). You can use this public API for programatic access to the blockchain.
+-> The Explorer consumes the [Stacks 2.0 Blockchain API](https://blockstack.github.io/stacks-blockchain-api/). You can use this public API for programmatic access to the blockchain.
 
 ## Tutorials
 
@@ -84,7 +84,7 @@ system-wide issue, and for documenting design decisions.
 | [SIP 001:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md) Burn Election                                                 | ✅           | ✅         |
 | [SIP 002:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-002-smart-contract-language.md) Clarity, a language for predictable smart contracts | ✅           | ✅         |
 | [SIP 003:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-003-peer-network.md) Peer Network                                                   | ✅           | ✅         |
-| [SIP 004:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-004-materialized-view.md) Cryptographic Committment to Materialized Views           | ✅           | ✅         |
+| [SIP 004:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-004-materialized-view.md) Cryptographic Commitment to Materialized Views            | ✅           | ✅         |
 | [SIP 005:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md) Blocks, Transactions, and Accounts                  | ✅           | ✅         |
 | SIP 006: Clarity Execution Cost Assessment _(Q4 2020)_                                                                                                             |              |            |
 | [SIP 007:](https://github.com/blockstack/stacks-blockchain/blob/develop/sip/sip-007-stacking-consensus.md) Stacking Consensus                                      | ✅           |            |

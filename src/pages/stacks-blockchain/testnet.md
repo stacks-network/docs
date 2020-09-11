@@ -8,7 +8,7 @@ images:
 
 ## Introduction
 
-The Stacks 2.0 testnet is an altenrative blockchain, to be used for testing. It is intended for developer experimentation and not built for production-ready integrations. The testnet is frequently reset and Stacks tokens, used as fees for operations on the testnet, can be obtained for free using a [faucet](https://www.blockstack.org/testnet/faucet).
+The Stacks 2.0 testnet is an alterative blockchain, to be used for testing. It is intended for developer experimentation and not built for production-ready integrations. The testnet is frequently reset and Stacks tokens, used as fees for operations on the testnet, can be obtained for free using a [faucet](https://www.blockstack.org/testnet/faucet).
 
 With the completion of the Stacks 2.0 blockchain, a production-ready, stable version will be released as "mainnet". While work for the mainnet is in progress, the testnet reflects the most recent implementation of the Stacks 2.0 blockchain.
 

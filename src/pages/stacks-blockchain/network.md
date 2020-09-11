@@ -7,7 +7,7 @@ description: Guide to the Stacks 2.0 network
 
 ## Tokens
 
-Stacks ("STX") are the native tokens on the Stacks 2.0 blockchain. The smallest fraction of a STX is one micro-STX. 1.000.000 micro-STXs make one STX.
+Stacks ("STX") are the native tokens on the Stacks 2.0 blockchain. The smallest fraction of a STX is one micro-STX. 1.000.000 micro-STX make one STX.
 
 -> STX amounts should be stored as integers (8 bytes long), and represent the amount of micro-STX. For display purposes, micro-STX are divided by 1.000.000 (decimal precision of 6).
 

@@ -31,7 +31,7 @@ You will need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to co
 node --version
 ```
 
-You should also complete the [Managing accounts tutorial](/stacks-blockchain/managing-accounts). The following steps assume we have access to an exsiting Stacks 2.0 account.
+You should also complete the [Managing accounts tutorial](/stacks-blockchain/managing-accounts). The following steps assume we have access to an existing Stacks 2.0 account.
 
 ## Step 1: Installing libraries
 
@@ -159,7 +159,7 @@ As soon as the `broadcastTransaction` is completed, a transaction ID is returned
 
 ~> Keep in mind that the existence of a transaction ID does not mean the transaction has been successfully processed. Please review the [transaction lifecycle](/stacks-blockchain/transactions#lifecycle) for more details.
 
-### Seralizing transactions
+### Serializing transactions
 
 In case you would like to inspect the raw serialized transaction, you can call the `serialize()` method:
 
@@ -214,4 +214,4 @@ For all property formats and details, please review the [API reference](https://
 
 ## Step 6: Confirming balance (optional)
 
-Now that the token transfer is confirmed, we can verify the new account balance on the sender address by [follwing the "Getting account balances" steps from the previous tutorial](/stacks-blockchain/managing-accounts#step-5-getting-account-balances).
+Now that the token transfer is confirmed, we can verify the new account balance on the sender address by [following the "Getting account balances" steps from the previous tutorial](/stacks-blockchain/managing-accounts#step-5-getting-account-balances).

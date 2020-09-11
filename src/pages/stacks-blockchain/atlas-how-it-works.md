@@ -38,7 +38,7 @@ for this with the following tweaks:
   but in a way that still guarantees that the sampling will remain unbiased.
 
 - A peer does not report its entire neighbor set when queried,
-  but only reports a random subset of peers that have met a minimium health threshold.
+  but only reports a random subset of peers that have met a minimum health threshold.
 
 - A new neighbor is only selected if it belongs to the same [BNS
   fork-set](/naming-services/overview#bns-forks) (i.e. it reports
@@ -52,7 +52,7 @@ ACM SIGMETRICS 2012.
 
 The reason Atlas uses an unstructured random peer network
 instead of a [distributed hash table](https://en.wikipedia.org/wiki/Distributed_hash_table)
-(DHT) is that DHTs are susceptbile to Sybil attacks. An adaptive adversary can
+(DHT) is that DHTs are susceptible to Sybil attacks. An adaptive adversary can
 insert malicious nodes into the DHT in order to stop victims from
 resolving chunks or finding honest neighbors.
 
