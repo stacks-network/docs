@@ -13,13 +13,15 @@ images:
 
 ## Introduction
 
-This tutorial will walk you through the following steps:
+This tutorial walks you through the following steps:
 
 - Specifying a sender key
 - Generating a token transfer transaction
 - Broadcasting the transaction to the network
 - Checking transaction completion
 - Confirming updates account balances (optional)
+
+-> This tutorial is NodeJS-specific. If you would like to understand how to initiate a token transfer by constructing and broadcasting transactions using a different language/framework, please [review the transactions guide](/stacks-blockchain/transactions).
 
 ## Requirements
 
@@ -29,25 +31,26 @@ You will need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to co
 node --version
 ```
 
-You should also complete the [Managing accounts tutorial](/stacks-blockchain/managing-accounts). The following steps assume we have access to an exsiting Stacks 2.0 account.
+You should also complete the [Managing accounts tutorial](/stacks-blockchain/managing-accounts). The following steps assume we have access to an existing Stacks 2.0 account.
 
 ## Step 1: Installing libraries
 
-First install the stacks transactions library, a JavaScript [BigNum](https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic) implementation, and the API client for the [Stacks 2.0 Blockchain API](/references/stacks-blockchain):
+First, install all the required libraries:
 
-```shell
-npm install --save @blockstack/stacks-transactions@0.6.0 bn.js @stacks/blockchain-api-client
+```bash
+npm install --save @blockstack/stacks-transactions@0.6.0 bn.js @stacks/blockchain-api-client cross-fetch
 ```
 
 -> The API client is generated from the [OpenAPI specification](https://github.com/blockstack/stacks-blockchain-api/blob/master/docs/openapi.yaml) ([openapi-generator](https://github.com/OpenAPITools/openapi-generator)). Many other languages and frameworks are be supported by the generator.
 
 ## Step 2: Specifying a sender
 
-In order to build and sign transactions, you will need a Stacks privat key. You can easily generate a new, random Stacks 2.0 sender key (see ["Generating an account" from the previous tutorial](http://localhost:3000/stacks-blockchain/managing-accounts#step-2-generating-an-account)).
+In order to build and sign transactions, you will need a Stacks private key. You can easily generate a new, random Stacks 2.0 sender key (see ["Generating an account" from the previous tutorial](/stacks-blockchain/managing-accounts#step-2-generating-an-account)).
 
 For this tutorial, we will use an existing Stacks account and instantiate the key object from a private key string:
 
 ```js
+import fetch from 'cross-fetch';
 const BN = require('bn.js');
 const {
   makeSTXTokenTransfer,
@@ -78,11 +81,11 @@ To generate a token transfer transaction, we will be using the `makeSTXTokenTran
 ```js
 const recipient = 'SP3FGQ8Z7JY9BWYZ5WM53E0M9NK7WHJF0691NZ159';
 
-// amount of Stacks tokens to send (in microstacks). 1,000,000 microstacks are worth 1 STX token
+// amount of Stacks (STX) tokens to send (in micro-STX). 1,000,000 micro-STX are worth 1 Stacks (STX) token
 const amount = new BN(1000000);
 
 // skip automatic fee estimation
-const fee = new BN(0);
+const fee = new BN(2000);
 
 // skip automatic nonce lookup
 const nonce = new BN(0);
@@ -109,67 +112,33 @@ const transaction = await makeSTXTokenTransfer(txOptions);
 
 The generation method will need a few more pieces of information, as specified in the `txOptions` object:
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-| Parameter | Description | Optional |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `recipient` | The recipient Stacks address in c32check format | **No** |
-| `amount` | The amount of Stacks tokens to send denominated in microstacks | **No** |
-| `fee` | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks | Yes |
-| `nonce` | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes |
-| `senderKey` | A private key object | Yes |
-| `network` | Specifies whether the transaction is meant for Stacks Mainnet or Testnet | Yes |
-| `memo` | A memo string to attach additional information to the transaction. This data is limited to 33 bytes | Yes |
-=======
-| Parameter | Description | Optional |
+| Parameter          | Description                                                                                                                      | Optional |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `recipientAddress` | The recipient Stacks address in c32check format | **No** |
-| `amount` | The amount of Stacks tokens to send denominated in microstacks | **No** |
-| `fee` | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks | Yes |
-| `nonce` | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes |
-| `senderKey` | A private key object | Yes |
-| `network` | Specifies whether the transaction is meant for Stacks Mainnet or Testnet | Yes |
-| `memo` | A memo string to attach additional information to the transaction. This data is limited to 33 bytes | Yes |
-
-> > > > > > > # 50bb8c8a... feat: draft of first 2 tutorials
-> > > > > > >
-> > > > > > > | Parameter   | Description                                                                                                                      | Optional |
-> > > > > > > | ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
-> > > > > > > | `recipient` | The recipient Stacks address in c32check format                                                                                  | **No**   |
-> > > > > > > | `amount`    | The amount of Stacks tokens to send denominated in microstacks                                                                   | **No**   |
-> > > > > > > | `fee`       | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks                      | Yes      |
-> > > > > > > | `nonce`     | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes      |
-> > > > > > > | `senderKey` | A private key object                                                                                                             | Yes      |
-> > > > > > > | `network`   | Specifies whether the transaction is meant for Stacks Mainnet or Testnet                                                         | Yes      |
-> > > > > > > | `memo`      | A memo string to attach additional information to the transaction. This data is limited to 33 bytes                              | Yes      |
-> > > > > > >
-> > > > > > > ab15b4f3... feat: restructure information architecture
+| `recipientAddress` | The recipient Stacks address in c32check format                                                                                  | **No**   |
+| `amount`           | The amount of Stacks tokens to send denominated in microstacks                                                                   | **No**   |
+| `fee`              | The fee that the sender is willing to pay for miners to process the transaction. Denominated in microstacks                      | Yes      |
+| `nonce`            | A nonce is an integer that needs to be incremented by 1 for each sequential transaction from the same account. Nonces start at 0 | Yes      |
+| `senderKey`        | A private key object                                                                                                             | Yes      |
+| `network`          | Specifies whether the transaction is meant for Stacks Mainnet or Testnet                                                         | Yes      |
+| `memo`             | A memo string to attach additional information to the transaction. This data is limited to 33 bytes                              | Yes      |
 
 ### Estimating fees
 
-If not specified, the transaction builder will automatically estimate the fee. Estimated fee rate is supplied by a Stacks node so network access is required. The fee is calculated based on the estimate fee rate and the size of the transaction in bytes.
+If not specified, the transaction builder will automatically estimate the fee. Estimated fee rate is supplied by a Stacks node so network access is required.
+
+-> Learn more about fees in the [network guide](/stacks-blockchain/network#fees)
 
 Another way to estimate the fee is to use the `estimateTransfer()` function after you have constructed a transaction:
 
 ```js
-estimateTransfer(transaction);
+// get fee
+const feeEstimate = estimateTransfer(transaction);
+
+// set fee manually
+transaction.setFee(feeEstimate);
 ```
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 -> Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
-=======
-
-> Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
-> <<<<<<< HEAD
->
-> > > > > > > # 50bb8c8a... feat: draft of first 2 tutorials
-> > > > > > >
-> > > > > > > # 50bb8c8a... feat: draft of first 2 tutorials
-> > > > > > >
-> > > > > > > -> Note: By setting a fee in the transaction builder function, the automatic fee estimation step will be skipped.
-> > > > > > > 69c8cfcb... feat: restructure information architecture
-> > > > > > > ab15b4f3... feat: restructure information architecture
 
 ### Handling nonces
 
@@ -191,7 +160,9 @@ const txId = await broadcastTransaction(transaction, testnet);
 
 As soon as the `broadcastTransaction` is completed, a transaction ID is returned.
 
-### Seralizing transactions
+~> Keep in mind that the existence of a transaction ID does not mean the transaction has been successfully processed. Please review the [transaction lifecycle](/stacks-blockchain/transactions#lifecycle) for more details.
+
+### Serializing transactions
 
 In case you would like to inspect the raw serialized transaction, you can call the `serialize()` method:
 
@@ -203,21 +174,7 @@ const serializedTx = transaction.serialize().toString('hex');
 
 With the transaction ID, we can check the status of the transaction. Every transaction needs to be confirmed by the network and will be `pending` as soon as it is broadcasted.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 -> Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
-=======
-
-> Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
-> <<<<<<< HEAD
->
-> > > > > > > # 50bb8c8a... feat: draft of first 2 tutorials
-> > > > > > >
-> > > > > > > # 50bb8c8a... feat: draft of first 2 tutorials
-> > > > > > >
-> > > > > > > -> Note: A transactions is completed once it is confirmed and the status changes to `success`. Most transactions will be pending for several minutes before confirmed. You should implement polling in your app to refresh the status display.
-> > > > > > > 69c8cfcb... feat: restructure information architecture
-> > > > > > > ab15b4f3... feat: restructure information architecture
 
 ```js
 const transactions = new TransactionsApi(apiConfig);
@@ -260,4 +217,4 @@ For all property formats and details, please review the [API reference](https://
 
 ## Step 6: Confirming balance (optional)
 
-Now that the token transfer is confirmed, we can verify the new account balance on the sender address by [follwing the "Getting account balances" steps from the previous tutorial](/stacks-blockchain/managing-accounts#step-5-getting-account-balances).
+Now that the token transfer is confirmed, we can verify the new account balance on the sender address by [following the "Getting account balances" steps from the previous tutorial](/stacks-blockchain/managing-accounts#step-5-getting-account-balances).

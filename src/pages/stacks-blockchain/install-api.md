@@ -61,7 +61,7 @@ $ sudo nginx -t
 
 > /etc/systemd/system/blockstack_api.service
 
-and edit the service user and blockstack paths depending on where your blockstack repo is located, and
+and edit the service user and Blockstack paths depending on where your Blockstack repo is located, and
 where your virtualenv is located.
 
 Note: The following sed commands will work if the virtualenv is currently active and your shell is in the repo's root directory.

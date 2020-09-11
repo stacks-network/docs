@@ -7,4 +7,4 @@ description: Get familiar with the old Stacks 1.0 architecture
 
 Stacks 1.0 is an older blockchain architecture Blockstack.
 
-!> Stacks 1.0 arhcitecture is not compatible with Stacks 2.0. The information in this chapter is in reference to **deprecated** implementation details.
+!> Stacks 1.0 architecture is not compatible with Stacks 2.0. The information in this chapter is in reference to **deprecated** implementation details.

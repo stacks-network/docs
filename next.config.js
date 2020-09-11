@@ -348,6 +348,31 @@ async function redirects() {
     { source: '/storage-hubs', destination: '/storage-hubs/overview', permanent: true },
     { source: '/references', destination: '/references/blockstack-cli', permanent: true },
     { source: '/ecosystem', destination: '/ecosystem/overview', permanent: true },
+    {
+      source: '/stacks-blockchain/testnet-node',
+      destination: '/stacks-blockchain/running-testnet-node',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/testnet-node',
+      destination: '/stacks-blockchain/running-testnet-node',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/atlas/overview',
+      destination: '/stacks-blockchain/atlas-overview',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/atlas/how-atlas-works',
+      destination: '/stacks-blockchain/atlas-how-it-works',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/atlas/usage',
+      destination: '/stacks-blockchain/atlas-usage',
+      permanent: true,
+    },
   ];
 }
 
