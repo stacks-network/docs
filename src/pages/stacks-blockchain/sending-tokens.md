@@ -123,7 +123,9 @@ The generation method will need a few more pieces of information, as specified i
 
 ### Estimating fees
 
-If not specified, the transaction builder will automatically estimate the fee. Estimated fee rate is supplied by a Stacks node so network access is required. The fee is calculated based on the estimate fee rate and the size of the transaction in bytes.
+If not specified, the transaction builder will automatically estimate the fee. Estimated fee rate is supplied by a Stacks node so network access is required.
+
+-> Learn more about fees in the [network guide](/stacks-blockchain/network#fees)
 
 Another way to estimate the fee is to use the `estimateTransfer()` function after you have constructed a transaction:
 

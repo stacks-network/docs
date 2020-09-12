@@ -31,6 +31,8 @@ For more information on the testnet, have a look at this page:
 [@page-reference | inline]
 | /stacks-blockchain/testnet
 
+=> The health status of the Stacks 2.0 network can be reviewed using the [status checker](/stacks-blockchain/network#health-check)
+
 ## Explorer
 
 You can view accounts, blocks, transactions, and smart contracts broadcasted to the Stacks 2.0 blockchain using the [**Stacks 2.0 Explorer**](https://testnet-explorer.blockstack.org/).
