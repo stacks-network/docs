@@ -47,7 +47,7 @@
     "mdi-react": "7.3.0",
     "micro-memoize": "^4.0.9",
     "modern-normalize": "^1.0.0",
-    "next": "^9.5.4-canary.15",
+    "next": "^9.5.3",
     "next-fonts": "^1.4.0",
     "next-mdx-remote": "^1.0.0",
     "nprogress": "^0.2.0",
