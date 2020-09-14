@@ -23,8 +23,13 @@ This tutorial highlights the following functionality:
 
 ## Requirements
 
-- Familiarity with the [Stacks 2.0 blockchain](/stacks-blockchain/overview)
-- Familiarity with the [Stacking mechanism](/stacks-blockchain/stacking)
+First, you will need to understand the [Stacking mechanism](/stacks-blockchain/stacking).
+
+You will also need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:
+
+```bash
+node --version
+```
 
 ## Overview
 
@@ -45,24 +50,59 @@ In this tutorial, we will implement this Stacking flow:
 
 First, we will add the [Stacks transactions JS library](https://github.com/blockstack/stacks-transactions-js). This library will help contruct, sign, and broadcast transactions.
 
-## Step 2: Implement account management
+```js
+npm install @blockstack/stacks-transactions
+```
 
-Allow users to create and manage their Stacks account:
+## Step 2: Add Stacks account management
 
-[@page-reference | inline]
-| /stacks-blockchain/managing-accounts
+To get started, users should be able to create/access their Stacks account:
+
+```js
+import {
+  createStacksPrivateKey,
+  makeRandomPrivKey,
+  getPublicKey,
+} from '@blockstack/stacks-transactions';
+
+// Random key
+const privateKey = makeRandomPrivKey();
+// Get public key from private
+const publicKey = getPublicKey(privateKey);
+
+// Private key from hex string
+const key = 'b244296d5907de9864c0b0d51f98a13c52890be0404e83f273144cd5b9960eed01';
+const privateKey = createStacksPrivateKey(key);
+```
+
+-> Review the [accounts guide](/stacks-blockchain/accounts) for more details
 
 ## Step 3: Display stacking info
 
-In order to inform users about the upcoming reward cycle and duration, we need to the stacking info using the [Stacks Blockchain API]():
+!> Todo: Prepare for API call (get address, resolve contract ID, construct Clarity values for API call)
 
-```js
-curl --location --request POST 'https://stacks-node-api-latest.argon.blockstack.xyz/v2/contracts/call-read/ST2MTD9MVRD074PTKGDYAKVTJSPWZGEQSDE3CEFRP/hello_world/get-value?sender=SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR&arguments=[%220x0011...%22]' \
+In order to inform users about the upcoming reward cycle and duration, we need to display the stacking info. This information can be obtained using the [`POST /v2/contracts/call-read/`](https://blockstack.github.io/stacks-blockchain-api/#operation/call_read_only_function) endpoint:
+
+```shell
+curl --location --request POST 'https://stacks-node-api-latest.argon.blockstack.xyz/v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>?sender=SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR&arguments=[%220x0011...%22]' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "sender": "SP31DA6FTSJX2WGTZ69SFY11BH51NZMB0ZW97B5P0",
   "arguments": ["0x0011...", "0x00231..."]
 }'
+```
+
+The request body needs to include the following parameters:
+
+| **Parameter** | **Description**                                                                       |
+| ------------- | ------------------------------------------------------------------------------------- |
+| `sender`      | A Stacks address indicating the caller ID. Should be set to the user's Stacks address |
+| `arguments`   | Stacking function call arguments as an array of hex serialized Clarity values         |
+
+Sample response:
+
+```js
+
 ```
 
 ## Step 4: Verify stacking eligibility
@@ -82,63 +122,20 @@ Next, your application should ask the user for the following input:
 
 > Using the cycle duration and next cycle timestamp, you can calculate the lockup duration: `next_cycle_timestamp + (cycle_duration * cycle_amount)`.
 
-It is strongly recommended to verify the input fields presented to the user:
-
-```js
-const btcAddress = '<btcInput>'.match(/^[13][a-km-zA-HJ-NP-Z0-9]{26,33}$/);
-const rewardCycles = parseInt('cycleInput');
-const stxAmount = Decimal.Parse('stxInput', NumberStyles.AllowDecimalPoint);
-```
+!> It is strongly recommended to verify the input fields presented to the user
 
 With the user input, you can make an API call to obtain estimated rewards:
 
-```js
-const response = await contractsAPI.callReadOnlyFunction({
-  contractName: '',
-  functionName: '',
-  stacksAddress: '',
-  // arguments, e.g. stx ?
-});
+````shell
 
-console.log(response);
-// reward estimates in uSTX
-```
 
 It it important to understand and point out to users that the rewards are _estimations_ based on previous reward cycles. The actual reward depends on a variety of parameters and amount would likely vary.
 
-Now that the user was presented with the reward estimates, the Stacking action should be enabled. The action will require signing a transaction and is best handled with Blockstack Connect:
+Now that the user was presented with the reward estimates, the Stacking action should be enabled. The action will require signing a transaction:
 
 ```js
-import { openContractCall } from '@blockstack/connect';
 
-// While in beta, you must provide this option:
-const authOrigin = 'https://deploy-preview-301--stacks-authenticator.netlify.app';
-
-// Here's an example of options:
-const myStatus = 'hey there';
-const options = {
-  contractAddress: 'ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ',
-  contractName: 'status',
-  functionName: 'write-status!',
-  functionArgs: [
-    {
-      type: 'buff',
-      value: myStatus,
-    },
-  ],
-  authOrigin,
-  appDetails: {
-    name: 'SuperApp',
-    icon: 'https://example.com/icon.png',
-  },
-  finished: data => {
-    console.log('TX ID:', data.txId);
-    console.log('Raw TX:', data.txRaw);
-  },
-};
-
-await openContractCall(options);
-```
+````
 
 ## Step 6: Confirm lock-up and display status
 
