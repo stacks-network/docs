@@ -6,9 +6,9 @@
     "@docsearch/react": "^1.0.0-alpha.27",
     "@emotion/babel-plugin": "^11.0.0-next.17",
     "@emotion/babel-preset-css-prop": "^11.0.0-next.10",
-    "@emotion/cache": "^11.0.0-next.15",
+    "@emotion/cache": "^11.0.0-next.16",
     "@emotion/core": "^11.0.0-next.10",
-    "@emotion/css": "^11.0.0-next.15",
+    "@emotion/css": "^11.0.0-next.17",
     "@emotion/react": "^11.0.0-next.17",
     "@emotion/server": "^11.0.0-next.17",
     "@hashicorp/remark-plugins": "^3.0.0",
@@ -127,11 +127,11 @@
   "resolutions": {
     "preact": "^10.4.4",
     "eslint": "^7.4.0",
-    "@emotion/cache": "^11.0.0-next.15",
+    "@emotion/cache": "^11.0.0-next.16",
     "@emotion/core": "^11.0.0-next.10",
-    "@emotion/css": "^11.0.0-next.15",
-    "@emotion/react": "^11.0.0-next.15",
-    "@emotion/server": "^11.0.0-next.15"
+    "@emotion/css": "^11.0.0-next.17",
+    "@emotion/react": "^11.0.0-next.17",
+    "@emotion/server": "^11.0.0-next.17"
   },
   "husky": {
     "hooks": {
