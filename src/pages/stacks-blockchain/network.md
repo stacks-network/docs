@@ -74,11 +74,11 @@ The API will respond with the block time (in seconds):
 
 Smart contracts can expose public function calls. For functions that make state modifications to the blockchain, transactions need to be generated and broadcasted.
 
-However, read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](/references/stacks-blockchain).
+However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](/references/stacks-blockchain).
 
 -> Read-only function calls do not require transaction fees
 
-A read-only contract call can be done through the [`POST /v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>`](https://blockstack.github.io/stacks-blockchain-api/#operation/call_read_only_function) endpoint:
+A read-only contract call can be done using the [`POST /v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>`](https://blockstack.github.io/stacks-blockchain-api/#operation/call_read_only_function) endpoint:
 
 ```shell
 curl --location --request POST 'https://stacks-node-api-latest.argon.blockstack.xyz/v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>' \
@@ -99,8 +99,6 @@ Sample response for a successful call:
 ```
 
 -> To set the function call arguments and read the result, [Clarity values](http://localhost:3000/stacks-blockchain/transactions#clarity-value-types) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/blockstack/stacks-transactions-js) library supports these operations
-
-## Block Height
 
 ## Querying
 
