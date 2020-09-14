@@ -50,7 +50,7 @@ The `make_keychain` command will create following file:
 | `keyInfo.address`    | Stacks address for the account                                                                                                                                       |
 | `keyInfo.privateKey` | Private key for the account. Required for [token transfers](/stacks-blockchain/transactions#stacks-token-transfer) and often referred to as `senderKey`              |
 | `keyInfo.index`      | Nonce for the account, starting at 0                                                                                                                                 |
-| `keyInfo.btcAddress` | Corresponding BTC address for the account                                                                                                                            |
+| `keyInfo.btcAddress` | Corresponding BTC address for the account. A construct from the previous blockchain (Stacks 1.0), not used at the moment.                                            |
 
 Note that the new account is instantiated implicitly and does not require internet access. There is no need to manually instantiate it on the Stacks 2.0 blockchain.
 
@@ -119,6 +119,8 @@ Sample response:
     "non_fungible_tokens": {}
 }
 ```
+
+-> Stacks accounts cannot hold bitcoins. The best way to obtain corresponding BTC balances is to derive the BTC address from the Stacks address (using `c32check`[https://github.com/blockstack/c32check#c32tob58-b58toc32]) and query the Bitcoin network.
 
 ### Get all asset events
 

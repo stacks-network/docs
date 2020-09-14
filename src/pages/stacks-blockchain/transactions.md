@@ -33,13 +33,13 @@ Transactions go through phases before being finally confirmed, and available for
 
 The Stacks 2.0 supports a set of different transaction types:
 
-| **Type**          | **Description**                                                                                                                                                                                       |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Coinbase          | The first transaction in a new block (an entity holding several transactions). Used to register for block rewards. These are not manually generated and broadcasted like other types of transactions. |
-| Token transfer    | Asset transfer from a sender to a recipient                                                                                                                                                           |
-| Contract deploy   | Contract instantiation                                                                                                                                                                                |
-| Contract call     | Contract call for a public, non read-only function                                                                                                                                                    |
-| Poison Microblock | Punish leaders who intentionally equivocate about the microblocks they package                                                                                                                        |
+| **Type**          | **Value**           | **Description**                                                                                                                                                                                       |
+| ----------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Coinbase          | `coinbase`          | The first transaction in a new block (an entity holding several transactions). Used to register for block rewards. These are not manually generated and broadcasted like other types of transactions. |
+| Token transfer    | `token_transfer`    | Asset transfer from a sender to a recipient                                                                                                                                                           |
+| Contract deploy   | `smart_contract`    | Contract instantiation                                                                                                                                                                                |
+| Contract call     | `contract_call`     | Contract call for a public, non read-only function                                                                                                                                                    |
+| Poison Microblock | `poison_microblock` | Punish leaders who intentionally equivocate about the microblocks they package                                                                                                                        |
 
 -> The current [Naming service](/naming-services/overview) is unrelated to Stacks 2.0. There is no naming-specific transaction type. However, the naming service functionality will be ported to Stacks 2.0 in the future and might be implemented through smart contracts.
 
@@ -403,12 +403,6 @@ For convenience, a Postman Collection was created and published: [![Run in Postm
 
 @include "stacks-api-pagination.md"
 
-### Filter
-
-The current API design doesn't allow to set filters for queries. In case you are looking for a specific type of transaction, it is best to paginate through the list and iterate over the results of each response.
-
-For example, if you were to look to token transfers only, you would evaluate if the `tx_type` equals `token_transfer`.
-
 ### Get recent transactions
 
 Recent transactions can be obtained through the [`GET /extended/v1/tx`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_transaction_list) endpoint:
@@ -483,6 +477,14 @@ Sample response:
 ```
 
 -> The `memo` field is represented as a hexadecimal string of a byte buffer
+
+#### Filter by type
+
+Recent transactions can be filtered by [transaction type](/stacks-blockchain/transactions#types) using the `type` query parameter:
+
+```shell
+curl 'https://stacks-node-api-latest.argon.blockstack.xyz/extended/v1/tx/?type=contract_call'
+```
 
 ### Get transaction by ID
 

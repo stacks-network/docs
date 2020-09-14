@@ -81,12 +81,13 @@ system-wide issue, and for documenting design decisions.
 
 -> See [SIP 000](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-000-stacks-improvement-proposal-process.md) for more details about the SIPs process.
 
-| **SIP**                                                                                                                                                            | **Proposed** | **Active** |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | ---------- |
-| [SIP 001:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md) Burn Election                                                 | ✅           | ✅         |
-| [SIP 002:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-002-smart-contract-language.md) Clarity, a language for predictable smart contracts | ✅           | ✅         |
-| [SIP 003:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-003-peer-network.md) Peer Network                                                   | ✅           | ✅         |
-| [SIP 004:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-004-materialized-view.md) Cryptographic Commitment to Materialized Views            | ✅           | ✅         |
-| [SIP 005:](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md) Blocks, Transactions, and Accounts                  | ✅           | ✅         |
-| SIP 006: Clarity Execution Cost Assessment _(Q4 2020)_                                                                                                             |              |            |
-| [SIP 007:](https://github.com/blockstack/stacks-blockchain/blob/develop/sip/sip-007-stacking-consensus.md) Stacking Consensus                                      | ✅           |            |
+| **Proposal**                                                                                                   | **Description**                                     |
+| -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| [SIP 001](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md)            | Burn Election                                       |
+| [SIP 002](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-002-smart-contract-language.md)  | Clarity, a language for predictable smart contracts |
+| [SIP 003](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-003-peer-network.md)             | Peer Network                                        |
+| [SIP 004](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-004-materialized-view.md)        | Cryptographic Commitment to Materialized Views      |
+| [SIP 005](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md)  | Blocks, Transactions, and Accounts                  |
+| SIP 006                                                                                                        | Clarity Execution Cost Assessment _(Q4 2020)_       |
+| [SIP 007](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-007-stacking-consensus.md)       | Stacking Consensus                                  |
+| [SIP 008](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-008-analysis-cost-assessment.md) | Clarity Parsing and Analysis Cost Assessment        |
