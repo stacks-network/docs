@@ -18,13 +18,13 @@ In this tutorial, you will learn how to integrate Stacking by interacting with t
 This tutorial highlights the following functionality:
 
 - Reading wallet information and verifying Stacking eligibility
-- Initiating Stacking participation and locking up Stacks tokens by signing a transaction using [Blockstack Connect](/authentication/connect)
-- Reading Stacking reward details by calling the [Stacks Blockchain API](/references/stacks-blockchain)
+- Initiating Stacking participation and locking up Stacks tokens by signing a transaction
+- Reading Stacking reward details
 
 ## Requirements
 
+- Familiarity with the [Stacks 2.0 blockchain](/stacks-blockchain/overview)
 - Familiarity with the [Stacking mechanism](/stacks-blockchain/stacking)
-- Familiarity with [Blockstack authentication](/authentication/overview)
 
 ## Overview
 
@@ -41,73 +41,28 @@ In this tutorial, we will implement this Stacking flow:
 7. Once lockup period is passed, the tokens are released and accessible again
 8. Display reward history, including details like earnings for previews rewrad cycles
 
-## Step 1: Integrate JS libraries
+## Step 1: Integrate transactions JS library
 
-First, we will add [Blockstack Connect](http://localhost:3000/authentication/connect) and the [Stacks Blockchain API client library](https://blockstack.github.io/stacks-blockchain-api/client/index.html) to the application:
+First, we will add the [Stacks transactions JS library](https://github.com/blockstack/stacks-transactions-js). This library will help contruct, sign, and broadcast transactions.
 
-```bash
-yarn add @blockstack/connect@testnet @stacks/blockchain-api-client
-```
+## Step 2: Implement account management
 
-> Note: The Stacks 2.0 blockchain and the web app integration is still in beta
+Allow users to create and manage their Stacks account:
 
-Connect will allow to sign transactions inside the applications and the client library will allow interacting with the PoX Stacking smart contract.
-
-## Step 2: Implement Blockstack authentication
-
-Allow your users to login with their Blockstack account.
-
-For React-based applications, setup the `Connect` provider at the "top-level" of your app - probably next to wherever you would put a Redux provider, for example.
-
-```js
-// for react
-import { Connect } from '@blockstack/connect';
-
-const authOptions = {
-  redirectTo: '/',
-  authOrigin: 'https://deploy-preview-301--stacks-authenticator.netlify.app',
-  finished: ({ userSession }) => {
-    console.log(userSession.loadUserData());
-  },
-  appDetails: {
-    name: 'My Cool App',
-    icon: 'https://example.com/icon.png',
-  },
-};
-
-const App = () => <Connect authOptions={authOptions}>// the rest of your app's components</Connect>;
-```
-
-Later, when you want to begin the onboarding process, use the `useConnect` hook to get `connect`'s `doOpenAuth` method.
-
-```jsx
-import { useConnect } from '@blockstack/connect';
-
-const SignInButton = () => {
-  const { doOpenAuth } = useConnect();
-
-  return <Button onClick={doOpenAuth}>Sign In</Button>;
-};
-```
+[@page-reference | inline]
+| /stacks-blockchain/managing-accounts
 
 ## Step 3: Display stacking info
 
-In order to inform users about the upcoming reward cycle and duration, an API call can be made:
+In order to inform users about the upcoming reward cycle and duration, we need to the stacking info using the [Stacks Blockchain API]():
 
 ```js
-import { SmartContractsApi } from '@stacks/blockchain-api-client';
-
-const contractsAPI = new SmartContractsApi();
-
-const response = await contractsAPI.callReadOnlyFunction({
-  contractName: '',
-  functionName: '',
-  stacksAddress: '',
-});
-
-console.log(response);
-// next cycles timestamp
-// cycle duration
+curl --location --request POST 'https://stacks-node-api-latest.argon.blockstack.xyz/v2/contracts/call-read/ST2MTD9MVRD074PTKGDYAKVTJSPWZGEQSDE3CEFRP/hello_world/get-value?sender=SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR&arguments=[%220x0011...%22]' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "sender": "SP31DA6FTSJX2WGTZ69SFY11BH51NZMB0ZW97B5P0",
+  "arguments": ["0x0011...", "0x00231..."]
+}'
 ```
 
 ## Step 4: Verify stacking eligibility
