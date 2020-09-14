@@ -3,8 +3,6 @@ title: Network
 description: Guide to the Stacks 2.0 network
 ---
 
-## Introduction
-
 ## Tokens
 
 Stacks ("STX") are the native tokens on the Stacks 2.0 blockchain. The smallest fraction of a STX is one micro-STX. 1.000.000 micro-STX make one STX.

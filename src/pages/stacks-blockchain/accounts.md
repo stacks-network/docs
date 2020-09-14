@@ -7,11 +7,16 @@ description: Guide to Stacks 2.0 accounts
 
 Stacks 2.0 accounts are entities that own assets, like Stacks tokens. An account has an address, private key, nonce, and one or more asset balances.
 
+If you want to jump right in to generate and query a new account, try this tutorial:
+
+[@page-reference | inline]
+| /stacks-blockchain/managing-accounts
+
 -> The public-key signature system used for Stacks 2.0 accounts is [Ed25519](https://ed25519.cr.yp.to/).
 
 Assets cannot leave an account without an action from the account owner. All changes to assets (and the balances of the account) require a corresponding transaction.
 
--> The [transaction type](/stacks-blockchain/transactions#types) doesn't need to be a token transfer - contract deploy and contract call transactions can change the balances of an accounts
+-> The [transaction type](/stacks-blockchain/transactions#types) doesn't need to be a token transfer - contract deploy and contract call transactions can change the balances of an account
 
 ## Creation
 
