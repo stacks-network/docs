@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, BoxProps, useSafeLayoutEffect } from '@blockstack/ui';
+import { Box, BoxProps, useSafeLayoutEffect } from '@stacks/ui';
 import { useSpring, animated, config } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
 import { makeCancelable } from '@common/utils';
+import { ForwardRefExoticComponentWithAs, forwardRefWithAs } from '@stacks/ui-core';
 
 interface ImageProps {
   /** The source of the image to load */
@@ -56,14 +57,10 @@ const loadImage = (
     }
   });
 
-export const LazyImage: React.FC<
-  BoxProps & {
-    src?: string;
-    srcSet?: string;
-    loading?: string;
-    placeholder?: string;
-  }
-> = ({ src, srcSet, style = {}, placeholder, ...props }) => {
+export const LazyImage: ForwardRefExoticComponentWithAs<BoxProps, 'img'> = forwardRefWithAs<
+  BoxProps,
+  'img'
+>(({ as = 'img', src, srcSet, style = {}, placeholder, ...props }, forwardedRef) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     rootMargin: '200px 0px',
@@ -134,18 +131,20 @@ export const LazyImage: React.FC<
           maxWidth="100%"
           width={['100%', '100%', 'inherit', 'inherit']}
           display="block"
-          as={animated.img}
+          as={(animated.img as unknown) as 'img'}
           zIndex={99}
-          style={{
-            opacity: 0,
-            willChange: 'opacity',
-            ...style,
-            ...styleProps,
-          }}
-          {...source}
-          {...props}
+          style={
+            {
+              opacity: 0,
+              willChange: 'opacity',
+              ...style,
+              ...styleProps,
+            } as any
+          }
+          {...(source as any)}
+          {...(props as any)}
         />
       ) : null}
     </Box>
   );
-};
+});

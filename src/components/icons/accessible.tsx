@@ -1,8 +1,7 @@
 import React from 'react';
-import { Box, BoxProps } from '@blockstack/ui';
-import { SVGProps } from 'react';
+import { Box, BoxProps } from '@stacks/ui';
 
-export const AccessibleIcon: React.FC<BoxProps & SVGProps<any>> = props => (
+export const AccessibleIcon: React.FC<BoxProps> = props => (
   <Box
     as="svg"
     width="44"

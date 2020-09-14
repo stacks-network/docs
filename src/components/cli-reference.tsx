@@ -1,7 +1,7 @@
 import React from 'react';
 import cliReferenceData from '../_data/cli-reference.json';
 import { Components } from '@components/mdx/mdx-components';
-import { Grid, Box, color } from '@blockstack/ui';
+import { Grid, Box, color } from '@stacks/ui';
 import { border, onlyText, slugify } from '@common/utils';
 import hydrate from 'next-mdx-remote/hydrate';
 
@@ -34,13 +34,15 @@ const ReferenceEntry = ({ entry, usage }) => (
     </Components.p>
 
     {hydrate(usage, {
-      ...Components,
-      p: (props: any) => (
-        <Components.p
-          {...props}
-          style={{ display: 'block', wordBreak: 'break-word', hyphens: 'auto' }}
-        />
-      ),
+      components: {
+        ...Components,
+        p: (props: any) => (
+          <Components.p
+            {...props}
+            style={{ display: 'block', wordBreak: 'break-word', hyphens: 'auto' }}
+          />
+        ),
+      },
     })}
     <Components.h3 id={`${slugify(entry.command)}-arguments`}>Arguments</Components.h3>
     <Grid

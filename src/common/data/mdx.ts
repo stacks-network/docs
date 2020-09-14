@@ -9,10 +9,15 @@ const { rehypePlugins } = require('../../../lib/rehype-plugins');
 // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
 export const wrapValueInTicks = value => '`' + value.replace('`', '').replace('`', '') + '`';
 
+const mdxOptions = {
+  remarkPlugins,
+  rehypePlugins,
+};
+
+const renderToStringOptions = { components: Components, mdxOptions };
+
 export const convertRemoteDataToMDX = async (arr: any[], key: string) =>
-  Promise.all(
-    arr.map(entry => renderToString(entry[key], Components, { remarkPlugins, rehypePlugins }))
-  );
+  Promise.all(arr.map(entry => renderToString(entry[key], renderToStringOptions)));
 
 export const renderMdx = async (content: string): Promise<any> =>
-  renderToString(content, Components, { remarkPlugins, rehypePlugins }) as Promise<any>;
+  renderToString(content, renderToStringOptions) as Promise<any>;

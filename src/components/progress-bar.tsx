@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import { createGlobalStyle, css } from 'styled-components';
+import { css, Global } from '@emotion/react';
 import debounce from 'lodash.debounce';
 
 const styles = css`
@@ -59,9 +59,10 @@ const styles = css`
     }
   }
 `;
-const ProgressBarStyles = createGlobalStyle`${styles}`;
+export const ProgressBarStyles = <Global styles={styles} />;
 
 export const useProgressBar = () => {
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   const { start, done } = NProgress;
 
   return {
@@ -70,7 +71,7 @@ export const useProgressBar = () => {
   };
 };
 
-export const ProgressBar = () => {
+export const ProgressBar = React.memo(() => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const start = debounce(NProgress.start, 450);
   React.useEffect(() => {
@@ -86,9 +87,5 @@ export const ProgressBar = () => {
       NProgress.done();
     });
   }, []);
-  return (
-    <>
-      <ProgressBarStyles />
-    </>
-  );
-};
+  return <></>;
+});

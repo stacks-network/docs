@@ -9,7 +9,7 @@ import {
   Stack,
   transition,
   SlideFade,
-} from '@blockstack/ui';
+} from '@stacks/ui';
 import { Text } from '@components/typography';
 import { Link } from '@components/mdx';
 import { SadIcon, NeutralIcon, HappyIcon } from '@components/icons/feedback';
@@ -17,7 +17,7 @@ import { useTouchable } from '@common/hooks/use-touchable';
 import { border } from '@common/utils';
 import { useRouter } from 'next/router';
 import { getHeadingStyles } from '@components/mdx/typography';
-import { css } from '@styled-system/css';
+import { css } from '@stacks/ui-core';
 import { StatusCheck } from '@components/status-check';
 import { useColorMode } from '@common/hooks/use-color-mode';
 
@@ -49,7 +49,7 @@ const FeedbackCard = ({ show, onClose }) => {
             p={space('base')}
             border={border()}
             borderRadius="12px"
-            align="center"
+            alignItems="center"
             justifyContent="center"
             bg={color('bg')}
             size="100%"
@@ -108,13 +108,7 @@ export const FeedbackSection: React.FC<BoxProps> = props => {
     >
       <Flex>
         <Box mt={space('extra-loose')} position="relative">
-          <Text
-            css={css({
-              ...getHeadingStyles('h5'),
-            })}
-          >
-            Was this page helpful?
-          </Text>
+          <Text {...getHeadingStyles('h5')}>Was this page helpful?</Text>
           <Stack isInline spacing={space('base-loose')} mt={space('base-loose')}>
             <Icon onClick={() => handleShow()} icon={SadIcon} />
             <Icon onClick={() => handleShow()} icon={NeutralIcon} />
@@ -126,7 +120,7 @@ export const FeedbackSection: React.FC<BoxProps> = props => {
       <Flex
         flexDirection="column"
         justifyContent="flex-end"
-        align="flex-end"
+        alignItems="flex-end"
         mt={space(['extra-loose', 'extra-loose', 'base-loose'])}
       >
         <Link

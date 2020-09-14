@@ -102,13 +102,20 @@ For example, a smart contract that implements something like a "token
 faucet" could be implemented as so:
 
 ```clarity
+(define-map claimed-before
+  ((sender principal))
+  ((claimed bool)))
+
+(define-constant err-already-claimed u1)
+(define-constant err-faucet-empty u2)
+(define-constant stx-amount u1)
+
 (define-public (claim-from-faucet)
-  (if (is-none (map-get? claimed-before (tuple (sender tx-sender))))
-      (let ((requester tx-sender)) ;; set a local variable requester = tx-sender
-        (begin
-            (map-set claimed-before { sender: requester, claimed: true })
-            (as-contract (stx-transfer? u1 tx-sender requester))))
-      (err 1)))
+    (let ((requester tx-sender)) ;; set a local variable requester = tx-sender
+        (asserts! (is-none (map-get? claimed-before {sender: requester})) (err err-already-claimed))
+        (unwrap! (as-contract (stx-transfer? stx-amount tx-sender requester)) (err err-faucet-empty))
+        (map-set claimed-before {sender: requester} {claimed: true})
+        (ok stx-amount)))
 ```
 
 In this example, the public function `claim-from-faucet`:
