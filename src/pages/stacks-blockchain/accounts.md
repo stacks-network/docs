@@ -125,7 +125,7 @@ Sample response:
 }
 ```
 
--> Stacks accounts cannot hold bitcoins. The best way to obtain corresponding BTC balances is to derive the BTC address from the Stacks address (using `c32check`[https://github.com/blockstack/c32check#c32tob58-b58toc32]) and query the Bitcoin network.
+-> Stacks accounts cannot hold bitcoins. The best way to obtain corresponding BTC balances is to derive the BTC address from the Stacks address (using [`c32check`](https://github.com/blockstack/c32check#c32tob58-b58toc32)) and query the Bitcoin network.
 
 ### Get all asset events
 
