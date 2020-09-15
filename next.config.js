@@ -337,6 +337,17 @@ async function redirects() {
       permanent: true,
     },
     { source: '/org/terms.html', destination: '/references/glossary', permanent: true },
+    // overview redirects
+    { source: '/stacks-blockchain', destination: '/stacks-blockchain/overview', permanent: true },
+    { source: '/stacks-blockchain', destination: '/stacks-blockchain/overview', permanent: true },
+    { source: '/smart-contracts', destination: '/smart-contracts/overview', permanent: true },
+    { source: '/data-storage', destination: '/data-storage/overview', permanent: true },
+    { source: '/data-indexing', destination: '/data-indexing/overview', permanent: true },
+    { source: '/stacks-wallet', destination: '/stacks-wallet/overview', permanent: true },
+    { source: '/naming-services', destination: '/naming-services/overview', permanent: true },
+    { source: '/storage-hubs', destination: '/storage-hubs/overview', permanent: true },
+    { source: '/references', destination: '/references/blockstack-cli', permanent: true },
+    { source: '/ecosystem', destination: '/ecosystem/overview', permanent: true },
   ];
 }
 
