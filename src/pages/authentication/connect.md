@@ -24,7 +24,7 @@ Although [`blockstack.js`](https://github.com/blockstack/blockstack.js) can also
 
 ## Start building with Blockstack Connect
 
-Head over to the [to-do app tutorial](/authentication/building-todo-app) to learn how to build apps with Blockstack Connect.
+Head over to the [to-do app tutorial](/authentication/building-todo-app) to learn how to build apps with Blockstack Connect. For interaction with Stacks accounts and smart contracts with Blockstack Connect see the [transaction sigining section](/smart-contracts/signing-transactions).
 
 ## Installation
 
