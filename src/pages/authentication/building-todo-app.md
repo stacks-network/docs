@@ -294,6 +294,6 @@ You'll now see your todos as an authenticated user for the username you've chose
 
 ## Learn more
 
-Read [the Blockstack Connect guide](/develop/connect/get-started) and
+Read [the Blockstack Connect guide](/authentication/connect) and
 [the blockstack.js reference](https://blockstack.github.io/blockstack.js/) to learn more about the
 libraries used in this tutorial.
