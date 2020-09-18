@@ -1,5 +1,5 @@
 ---
-title: Transaction generation
+title: Transactions
 description: Guide to Stacks 2.0 transactions
 ---
 
@@ -87,13 +87,15 @@ A transaction includes the following information. Multiple-byte fields are encod
 
 ## Construction
 
-The easies way to construct well-formed transactions is by [using the Stacks Transactions JS library](https://github.com/blockstack/stacks-transactions-js#post-conditions). You can construct the follow transaction types:
+The easies way to construct well-formed transactions is by [using the Stacks Transactions JS library](https://github.com/blockstack/stacks-transactions-js#post-conditions). You can construct the following transaction types:
 
 - Stacks token transfer
 - Smart contract deploy
 - Smart contract function call
 
--> Note that transaction construction requires setting the network the transaction is for. This can be either mainnet or testnet. At the moment of this writing, the only available option is the testnet network. Learn more about it [here](/stacks-blockchain/testnet).
+When constructing transactions, it is requireq to set the network the transaction is intended for. This can be either mainnet or testnet. At the moment of this writing, the only available option is the [testnet network](/stacks-blockchain/testnet).
+
+-> Transactions can be constructed and serialized offline. Internet access is only required to broadcast the transaction to the network.
 
 ### Stacks Token transfer
 
@@ -113,6 +115,8 @@ const txOptions = {
 
 const transaction = await makeSTXTokenTransfer(txOptions);
 ```
+
+-> Read more about [nonces](http://localhost:3000/stacks-blockchain/network#nonces) in the network guide
 
 ### Smart contract deployment
 
@@ -365,16 +369,7 @@ For convenience, a Postman Collection was created and published: [![Run in Postm
 
 -> Note: The API can be easily consumed using a generated [JS client library](https://blockstack.github.io/stacks-blockchain-api/client/index.html). The generator uses an OpenAPI specification and supports other languages and frameworks.
 
-### Pagination
-
-To make API responses more compact, lists returned by the API are paginated. For lists, the response body includes:
-
-- `limit`: the number of list items return per response (max is `200`)
-- `offset`: the number of elements to skip (starting from `0`)
-- `total`: the number of all available list items
-- `results`: the array of list items (length of array is between 0 and the set limit)
-
-Using the `limit` and `offset` properties, you can paginate through the entire list by increasing the offset by the limit until you reach the end of the list (as indicated by the `total` field).
+@include "stacks-api-pagination.md"
 
 ### Filter
 
