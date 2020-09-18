@@ -63,6 +63,7 @@ sections:
               - path: /atlas-overview
               - path: /atlas-how-it-works
               - path: /atlas-usage
+              - path: /broadcasting-transactions
               - path: /install-api
               - path: /installing-memcached
       - path: /stacks-wallet
