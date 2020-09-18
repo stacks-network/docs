@@ -103,7 +103,7 @@ async function redirects() {
     },
     {
       source: '/core/smart/testnet-node.html',
-      destination: '/stacks-blockchain/testnet-node',
+      destination: '/stacks-blockchain/running-testnet-node',
       permanent: true,
     },
     {
@@ -224,17 +224,17 @@ async function redirects() {
     },
     {
       source: '/core/atlas/overview.html',
-      destination: '/stacks-blockchain/atlas/overview',
+      destination: '/stacks-blockchain/atlas-overview',
       permanent: true,
     },
     {
       source: '/core/atlas/howitworks.html',
-      destination: '/stacks-blockchain/atlas/how-atlas-works',
+      destination: '/stacks-blockchain/atlas-how-it-works',
       permanent: true,
     },
     {
       source: '/core/atlas/howtouse.html',
-      destination: '/stacks-blockchain/atlas/usage',
+      destination: '/stacks-blockchain/atlas-usage',
       permanent: true,
     },
     { source: '/org/overview.html', destination: '/ecosystem/overview', permanent: true },
@@ -348,11 +348,6 @@ async function redirects() {
     { source: '/storage-hubs', destination: '/storage-hubs/overview', permanent: true },
     { source: '/references', destination: '/references/blockstack-cli', permanent: true },
     { source: '/ecosystem', destination: '/ecosystem/overview', permanent: true },
-    {
-      source: '/stacks-blockchain/testnet-node',
-      destination: '/stacks-blockchain/running-testnet-node',
-      permanent: true,
-    },
     {
       source: '/stacks-blockchain/testnet-node',
       destination: '/stacks-blockchain/running-testnet-node',
