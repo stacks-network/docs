@@ -12,7 +12,7 @@ The Stacks 2.0 testnet is an altenrative blockchain, to be used for testing. It 
 
 With the completion of the Stacks 2.0 blockchain, a production-ready, stable version will be released as "mainnet". While work for the mainnet is in progress, the testnet reflects the most recent implementation of the Stacks 2.0 blockchain.
 
-## Testnet phases
+## Release phases
 
 The work towards mainnet is split up into four sequential phases:
 
@@ -21,7 +21,7 @@ The work towards mainnet is split up into four sequential phases:
 - [ ] **Phase 3:** is the upcoming version that we're anticipating to ship in Q3 2020. This version focus on the PoX basics (miner get rewards, Stackers get BTC distributions, etc).
 - [ ] **Phase 4** is the fully functional version, that we're intending to ship in Q4 2020.
 
-## Testnet roadmap
+## Roadmap
 
 Each phase add capabilities to the Stacks 2.0 blockchain:
 
