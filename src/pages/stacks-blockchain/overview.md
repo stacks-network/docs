@@ -66,12 +66,10 @@ Anyone who owns Bitcoin can be a Stacks Miner. Instead of spending energy, Stack
 
 Proof of Transfer (PoX) is a consensus mechanism that leverages the security and stability of Bitcoin to create a new blockchain, without modifying the Bitcoin protocol. With the PoX mechanism, miners use Bitcoin to secure the Stacks 2.0 network. By anchoring onto the Bitcoin network, it is practically infeasible for malicious actors to have enough computational power or ownership stake to attack the Stacks 2.0 network.
 
-PoX makes it also possible to reward Stacks token holders with bitcoins, a feature called **Stacking**.
+PoX makes it also possible to reward Stacks token holders with bitcoins, a feature called **Stacking**. With Stacking, Stacks (STX) token holders lock up STX tokens for a certain time. With that, they help secure the network by effectively acting as validators on the network, incentivizing honest behavior on the part of miners.
 
 [@page-reference | inline]
 | /stacks-blockchain/stacking
-
-Stackers are Stacks (STX) Token holders who help secure the network by effectively acting as validators on the network, incentivizing honest behavior on the part of miners. Stackers have to lock up STX for a certain period of time. As a reward, Stackers receive the Bitcoin that miners transfer as part of Proof of Transfer (PoX).
 
 ## Protocol specification
 

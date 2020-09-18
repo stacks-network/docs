@@ -43,8 +43,8 @@ In this tutorial, we will implement this Stacking flow:
 4. The transaction is broadcasted. With the confirmation of the transaction, the Stacks tokens will be locked-up and inaccessible throughout the lockup period
 5. The Stacking mechanism executes reward cycles and sends out rewards to the set BTC reward address
 6. During the lockup period, make API calls to get details about unlocking timing, rewards collected and projected
-7. Once lockup period is passed, the tokens are released and accessible again
-8. Display reward history, including details like earnings for previews rewrad cycles
+7. Once the lockup period is passed, the tokens are released and accessible again
+8. Display reward history, including details like earnings for previews reward cycles
 
 ## Step 1: Integrate transactions JS library
 
@@ -105,6 +105,8 @@ Sample response:
 
 ```
 
+-> Stacking execution will differ between mainnet and testnet in terms of cycle times and participation thresholds
+
 ## Step 4: Verify stacking eligibility
 
 Using the user session, you can also verify if the account holder is eligible for Stacking.
@@ -113,6 +115,8 @@ Using the user session, you can also verify if the account holder is eligible fo
 - make API call to read minimum tokens required
 
 ## Step 5: Add lock-up action
+
+-> The stacking contract identifier (`ST000000000000000000002AMW42H.pox`) is static.
 
 Next, your application should ask the user for the following input:
 

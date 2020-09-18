@@ -7,7 +7,7 @@ images:
 
 ## Introduction
 
-Stacking rewards Stacks token holders with bitcoins for providing a valuable service to the network by locking up their tokens for a certain period of time.
+Stacking rewards Stacks token holders with bitcoins for providing a valuable service to the network by locking up their tokens for a certain time.
 
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks 2.0 network.
 
@@ -15,14 +15,17 @@ Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechani
 
 ## PoX mining
 
-For a miner to receive newly-minted Stacks tokens, they have to transfer bitcoins to eligible owners of Stacks tokens. The PoX mechanism ensures proper handling and incentives through four key phases:
+PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of destroying the committed Bitcoin, it is transferred to eligible Stacks (STX) holders that participate in the Stacking protocol.
 
-- Registration: Miners register for a future election by transfering bitcoins and sending consensus data to the network
-- Election: A verifiable random function chooses one registered miner to write a new block on the Stacks blockchain
-- Operation: The elected miner writes the new block and collects rewards in form of new Stacks tokens
-- Distribution: Collected bitcoins from the registration process are sent to a set eligible Stacks tokens holders
+-> A PoX miner can only receive newly-minted Stacks (STX) tokens when they transfer bitcoins to eligible owners of Stacks tokens
 
-Miners have to run software on their machines to participate in the PoX mechanism.
+Miners have to run a software (mining client, aka "miner") on their machines to participate in the PoX mechanism. The mining client implements the PoX mechanism, which ensures proper handling and incentives through four key phases:
+
+- Registration: Miners register for a future election by sending consensus data to the network
+- Commitment: Registered miners transfer bitcoins to participate in the election
+- Election: A verifiable random function chooses one miner to write a new block on the Stacks blockchain
+- Assembly: The elected miner writes the new block and collects rewards in form of new Stacks tokens
+- Distribution: Committed bitcoins are sent to a set eligible Stacks tokens holders
 
 [@page-reference | inline]
 | /mining
