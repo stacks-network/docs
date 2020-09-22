@@ -285,7 +285,7 @@ async function redirects() {
     },
     {
       source: '/core/smart/rpc-api.html',
-      destination: '/references/stacks-blockchain',
+      destination: '/references/stacks-blockchain-api',
       permanent: true,
     },
     {
@@ -317,7 +317,7 @@ async function redirects() {
     },
     {
       source: '/common/core_ref.html',
-      destination: '/references/stacks-blockchain',
+      destination: '/references/stacks-blockchain-api',
       permanent: true,
     },
     {
@@ -338,7 +338,6 @@ async function redirects() {
     },
     { source: '/org/terms.html', destination: '/references/glossary', permanent: true },
     // overview redirects
-    { source: '/stacks-blockchain', destination: '/stacks-blockchain/overview', permanent: true },
     { source: '/stacks-blockchain', destination: '/stacks-blockchain/overview', permanent: true },
     { source: '/smart-contracts', destination: '/smart-contracts/overview', permanent: true },
     { source: '/data-storage', destination: '/data-storage/overview', permanent: true },
@@ -416,7 +415,12 @@ async function redirects() {
     },
     {
       source: '/references/stacks-rpc-api',
-      destination: '/references/stacks-blockchain',
+      destination: '/references/stacks-blockchain-api',
+      permanent: true,
+    },
+    {
+      source: '/references/stacks-blockchain',
+      destination: '/references/stacks-blockchain-api',
       permanent: true,
     },
   ];
