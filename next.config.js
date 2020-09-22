@@ -138,7 +138,7 @@ async function redirects() {
     },
     {
       source: '/core/naming/search.html',
-      destination: '/naming-services/build-profile-search-index',
+      destination: '/naming-services/overview',
       permanent: true,
     },
     {
@@ -397,6 +397,11 @@ async function redirects() {
     {
       source: '/storage-hubs/hello-hub-choice',
       destination: '/storage-hubs/overview',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/build-profile-search-index',
+      destination: '/naming-services/overview',
       permanent: true,
     },
   ];

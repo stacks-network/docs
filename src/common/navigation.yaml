@@ -84,11 +84,9 @@ sections:
           - path: /forks
           - path: /namespaces
           - path: /subdomains
-          - path: /forks
         sections:
           - title: Tutorials
             pages:
-              - path: /build-profile-search-index
               - path: /choose-name
               - path: /create-namespace
               - path: /resolve-name
