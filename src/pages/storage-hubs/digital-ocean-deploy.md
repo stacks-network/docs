@@ -1,6 +1,6 @@
 ---
-title: Configure a hub on DigitalOcean
-description: 'Storing user data with Blockstack'
+title: Deploy on DigitalOcean
+description: Learn how to run a Gaia hub on DigitalOcean
 ---
 
 ## Introduction
@@ -228,13 +228,13 @@ A droplet console emulates the access you would have if you were sitting down wi
     Welcome to DigitalOcean's One-Click Docker Droplet.
     To keep this Droplet secure, the UFW firewall is enabled.
     All ports are BLOCKED except 22 (SSH), 2375 (Docker) and 2376 (Docker).
-    *	The Docker One-Click Quickstart guide is available at: https ://do.co/docker1804#start
+    *	The Docker One-Click Quickstart guide is available at:https ://do.co/docker1804#start
     *	You can SSH to this Droplet in a terminal as root: ssh root@138.68.28.100
-    *	Docker is installed and configured per Docker's recommendations: https://docs.docker.com/install/linux/docker-ce/ubuntu/
-    *	Docker Compose is installed and configured per Docker's recommendations: https://docs.docker.eom/compose/install/#install-compose
+    *	Docker is installed and configured per Docker's recommendations:https://docs.docker.com/install/linux/docker-ce/ubuntu/
+    *	Docker Compose is installed and configured per Docker's recommendations:https://docs.docker.eom/compose/install/#install-compose
     For help and more information, visit http://do.co/dockerl804
 
-    To delete this message of the day: rm -rf /etc/update-motd.d/99-one-click root@meepers:~#
+    To delete this message of the day: rm -rf /etc/update-motd.d/99-one-clickroot@meepers:~#
     ```
 
 <div class="uk-card uk-card-default uk-card-body">
