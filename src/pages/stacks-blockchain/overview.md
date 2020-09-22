@@ -35,7 +35,15 @@ You can view accounts, blocks, transactions, and smart contracts broadcasted to 
 
 ### Clarity Smart Contracts
 
-A [Smart Contract](https://academy.binance.com/glossary/smart-contract) is code running on the Stacks Blockchain that executes autonomously. Smart contracts on the Stacks 2.0 blockchain are written in Clarity, a language optimized for predictability and security.
+A [Smart Contract](https://academy.binance.com/glossary/smart-contract) is code running on the Stacks Blockchain that executes autonomously.
+
+Smart contracts on the Stacks 2.0 blockchain are written in a new language called Clarity. This language gives developers a safe way to build complex smart contracts. It's main features are:
+
+- **Predictability**: The Clarity language uses precise and unambiguous syntax that allows developers to predict exactly how their contracts will be executed
+- **Security**: The Clarity language allows users to supply their own conditions for transactions that ensure that a contract may never unexpectedly transfer a token owned by a user
+- **No compiling**: Contracts written in Clarity are broadcasted on the blockchain exactly as they are written by developers. This ensures that the code developers wrote, analyzed, and tested, is exactly what gets executed
+
+-> The [Clarity open-source project](https://clarity-lang.org/) is supported by Blockstack and Algorand.
 
 [@page-reference | inline]
 | /smart-contracts/overview
@@ -44,16 +52,14 @@ A [Smart Contract](https://academy.binance.com/glossary/smart-contract) is code 
 
 Mining is required to make the network trustworthy and secure, by verifying transaction information. Mining is the act of participation in the consensus mechanism of the Stacks 2.0 blockchain, called Proof of Transfer (PoX). To incentivize miners, who have to run mining software on their machine, they receive freshly minted Stacks (STX) tokens.
 
-In comparison with Bitcoin mining, instead of spending energy, Stacks miners spend Bitcoin to mine blocks.
-
 [@page-reference | inline]
 | /mining
 
 ### Proof of Transfer (PoX)
 
-Proof of Transfer (PoX) is the consensus mechanism that leverages the security and stability of Bitcoin to create new
-blockchains, without modifying the Bitcoin protocol. PoX makes it possible to reward network participants with Bitcoin.
-An example of this is Stacking.
+Proof of Transfer (PoX) is the consensus mechanism that leverages the security and stability of Bitcoin to create new blockchains, without modifying the Bitcoin protocol.
+
+PoX makes it possible to reward holders of Stacks Token (STX) with Bitcoin: instead of spending energy, Stacks miners transfer Bitcoin to holders of Stacks Token (STX) to mine blocks. An implementation of this is called **Stacking**.
 
 ### Stacking
 
