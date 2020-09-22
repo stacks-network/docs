@@ -214,7 +214,7 @@ async function redirects() {
     },
     {
       source: '/storage-hubs/hello-hub-choice.html',
-      destination: '/storage-hubs/hello-hub-choice',
+      destination: '/storage-hubs/overview',
       permanent: true,
     },
     {
@@ -392,6 +392,11 @@ async function redirects() {
     {
       source: '/data-indexing/server-extras',
       destination: '/data-storage/indexing-server-extras',
+      permanent: true,
+    },
+    {
+      source: '/storage-hubs/hello-hub-choice',
+      destination: '/storage-hubs/overview',
       permanent: true,
     },
   ];
