@@ -98,7 +98,6 @@ sections:
       - path: /storage-hubs # this seems out of date, kill?
         pages:
           - path: /overview
-          - path: /hello-hub-choice
           - path: /gaia-admin
           - path: /config-schema
           - path: /digital-ocean-deploy
