@@ -1,5 +1,5 @@
 ---
-title: Radiks
+title: Indexing overview
 description: Using Radiks you can build multi-player apps that index, store, and query user data.
 images:
   large: /images/pages/radiks.svg
@@ -16,6 +16,11 @@ multi-player DApps that:
 - query a user's publicly saved data
 - display real-time updates that reflect in progress changes
 - support collaboration among sets of users
+
+Want to jump right in and start integrating indexing into your app? Try this tutorial:
+
+[@page-reference | inline]
+| /data-storage/integrate-indexing
 
 ## Why use Radiks?
 
