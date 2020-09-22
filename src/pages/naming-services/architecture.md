@@ -10,7 +10,7 @@ and replicating global name state.
 
 There are three parts to BNS that developers should be aware of. They are:
 
-- **The BNS indexer**. This module crawls the blockchain and builds
+- **[The BNS indexer](https://github.com/blockstack/blockstack-search-indexer)**. This module crawls the blockchain and builds
   up its name database. BNS indexers do not contain any private or sensitive
   state, and can be deployed publicly. We maintain a fleet of them at
   `https://node.blockstack.org:6263` for developers to use to get started.
@@ -23,7 +23,7 @@ There are three parts to BNS that developers should be aware of. They are:
   resolve names. Internally, they generate and send transactions to register
   and modify names.
 
-The BNS indexer and BNS API comprise the **BNS node**. An architectural schematic appears below.
+The [BNS indexer](https://github.com/blockstack/blockstack-search-indexer) and BNS API comprise the **BNS node**. An architectural schematic appears below.
 
 ```
                       +-------------------------------------------------------+
@@ -50,7 +50,7 @@ Stacks Blockchain currently implements the API module and indexer module as sepa
 daemons (`blockstack api` and `blockstack-core`, respectively). However, this
 is an implementation detail, and may change in the future.
 
-The BNS indexer implements the blockchain consensus rules and network protocols.
+The [BNS indexer](https://github.com/blockstack/blockstack-search-indexer) implements the blockchain consensus rules and network protocols.
 Its main responsibility is to build up and replicate all of the name state. It does
 not have any public APIs of its own.
 
