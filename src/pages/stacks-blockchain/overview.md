@@ -42,7 +42,9 @@ A [Smart Contract](https://academy.binance.com/glossary/smart-contract) is code 
 
 ### Stacks Mining
 
-Anyone who owns Bitcoin can be a Stacks Miner. Instead of spending energy, Stacks miners spend Bitcoin to mine a block. This mechanism is called Proof of Transfer (PoX).
+Mining is required to make the network trustworthy and secure, by verifying transaction information. Mining is the act of participation in the consensus mechanism of the Stacks 2.0 blockchain, called Proof of Transfer (PoX). To incentivize miners, who have to run mining software on their machine, they receive freshly minted Stacks (STX) tokens.
+
+In comparison with Bitcoin mining, instead of spending energy, Stacks miners spend Bitcoin to mine blocks.
 
 [@page-reference | inline]
 | /mining
@@ -61,9 +63,9 @@ Stackers are Stacks (STX) Token holders who help secure the network by effective
 
 ## Protocol specification
 
-Stacks improvement proposals (SIPs) are aimed at describing the implementation of the Stacks blockchain, as well as
-proposing improvements. They should contain concise technical specifications of features or standards and the rationale
-behind it. SIPs are intended to be the primary medium for proposing new features, for collecting community input on a
-system-wide issue, and for documenting design decisions.
+The Stacks 2.0 blockchain specification consists a set of proposals, called Stacks improvement proposals (SIPs). Each SIP is aimed at describing the implementation of a part of the Stacks 2.0 blockchain. Together, all proposals contain concise technical specifications of features or standards and the rationale
+behind it.
 
--> See [SIP 000](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-000-stacks-improvement-proposal-process.md) for more details about the SIPs process. For an in-depth understanding of the proposals, have a look at the [SIP folder](https://github.com/blockstack/stacks-blockchain/blob/master/sip/).
+You can review the [SIP folder](https://github.com/blockstack/stacks-blockchain/blob/master/sip/) to find all proposals. Reading through the SIPs will help understand the Stacks 2.0 details on a propotcol level.
+
+-> See [SIP 000](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-000-stacks-improvement-proposal-process.md) for more details about the SIPs process..
