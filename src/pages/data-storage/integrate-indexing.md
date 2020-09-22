@@ -1,6 +1,14 @@
 ---
 title: Integrate Radiks
-description: Learn how to setup Radiks with your application.
+description: Learn how to setup Radiks with your application
+icon: BlockstackIcon
+duration: 1 hour
+experience: intermediate
+tags:
+  - tutorial
+images:
+  large: /images/pages/radiks.svg
+  sm: /images/pages/radiks-sm.svg
 ---
 
 ## Introduction

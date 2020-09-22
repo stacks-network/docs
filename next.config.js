@@ -48,27 +48,27 @@ async function redirects() {
     },
     {
       source: '/develop/radiks-intro.html',
-      destination: '/data-indexing/overview',
+      destination: '/data-storage/indexing-overview',
       permanent: true,
     },
     {
       source: '/develop/radiks-setup.html',
-      destination: '/data-indexing/integrate',
+      destination: '/data-storage/integrate-indexing',
       permanent: true,
     },
     {
       source: '/develop/radiks-models.html',
-      destination: '/data-indexing/models',
+      destination: '/data-storage/indexing-models',
       permanent: true,
     },
     {
       source: '/develop/radiks-collaborate.html',
-      destination: '/data-indexing/collaborate',
+      destination: '/data-storage/indexing-collaborate',
       permanent: true,
     },
     {
       source: '/develop/radiks-server-extras.html',
-      destination: '/data-indexing/server-extras',
+      destination: '/data-storage/indexing-server-extras',
       permanent: true,
     },
     {
@@ -342,7 +342,7 @@ async function redirects() {
     { source: '/stacks-blockchain', destination: '/stacks-blockchain/overview', permanent: true },
     { source: '/smart-contracts', destination: '/smart-contracts/overview', permanent: true },
     { source: '/data-storage', destination: '/data-storage/overview', permanent: true },
-    { source: '/data-indexing', destination: '/data-indexing/overview', permanent: true },
+    { source: '/data-indexing', destination: '/data-storage/indexing-overview', permanent: true },
     { source: '/stacks-wallet', destination: '/stacks-wallet/overview', permanent: true },
     { source: '/naming-services', destination: '/naming-services/overview', permanent: true },
     { source: '/storage-hubs', destination: '/storage-hubs/overview', permanent: true },
@@ -366,6 +366,32 @@ async function redirects() {
     {
       source: '/stacks-blockchain/atlas/usage',
       destination: '/stacks-blockchain/atlas-usage',
+      permanent: true,
+    },
+    // data indexing changes
+    {
+      source: '/data-indexing/overview',
+      destination: '/data-storage/indexing-overview',
+      permanent: true,
+    },
+    {
+      source: '/data-indexing/integrate',
+      destination: '/data-storage/integrate-indexing',
+      permanent: true,
+    },
+    {
+      source: '/data-indexing/models',
+      destination: '/data-storage/indexing-models',
+      permanent: true,
+    },
+    {
+      source: '/data-indexing/collaborate',
+      destination: '/data-storage/indexing-collaborate',
+      permanent: true,
+    },
+    {
+      source: '/data-indexing/server-extras',
+      destination: '/data-storage/indexing-server-extras',
       permanent: true,
     },
   ];
