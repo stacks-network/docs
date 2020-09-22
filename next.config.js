@@ -327,7 +327,7 @@ async function redirects() {
     },
     {
       source: '/storage/config-schema.html',
-      destination: '/storage-hubs/config-schema',
+      destination: '/storage-hubs/gaia-admin',
       permanent: true,
     },
     { source: '/org/secureref.html', destination: '/stacks-wallet/security', permanent: true },
@@ -402,6 +402,11 @@ async function redirects() {
     {
       source: '/naming-services/build-profile-search-index',
       destination: '/naming-services/overview',
+      permanent: true,
+    },
+    {
+      source: '/storage-hubs/config-schema',
+      destination: '/storage-hubs/gaia-admin',
       permanent: true,
     },
   ];

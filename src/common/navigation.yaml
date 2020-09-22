@@ -97,7 +97,6 @@ sections:
         pages:
           - path: /overview
           - path: /gaia-admin
-          - path: /config-schema
           - path: /digital-ocean-deploy
           - path: /amazon-s3-deploy
       - path: /references
