@@ -409,6 +409,11 @@ async function redirects() {
       destination: '/storage-hubs/gaia-admin',
       permanent: true,
     },
+    {
+      source: '/storage-hubs/amazon-s3-deploy',
+      destination: '/storage-hubs/amazon-ec2-deploy',
+      permanent: true,
+    },
   ];
 }
 

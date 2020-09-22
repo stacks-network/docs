@@ -1,6 +1,6 @@
 ---
-title: Configure a hub on Amazon EC2
-description: Learn how to run a Gaia hub on Amazon EC2.
+title: Deploy on Amazon EC2
+description: Learn how to run a Gaia hub on Amazon EC2
 ---
 
 ## Introduction

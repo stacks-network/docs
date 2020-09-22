@@ -97,8 +97,12 @@ sections:
         pages:
           - path: /overview
           - path: /gaia-admin
-          - path: /digital-ocean-deploy
-          - path: /amazon-s3-deploy
+        sections:
+          - title: Tutorials
+            usePageTitles: true
+            pages:
+              - path: /amazon-ec2-deploy
+              - path: /digital-ocean-deploy
       - path: /references
         usePageTitles: true
         pages:
