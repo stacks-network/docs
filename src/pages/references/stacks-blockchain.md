@@ -13,8 +13,23 @@ The Stacks 2.0 Blockchain API was built to maintain pageable materialized views 
 
 A generated JS Client is available for consumption of this API. The client library enables typesafe REST and WebSocket communication. [Please review the client documentation for more details](https://blockstack.github.io/stacks-blockchain-api/client/index.html).
 
-@include "different_apis.md"
+## Stacks Node RPC API
+
+The Stacks 2.0 Blockchain API is centrally-hosted. However, every running Stacks node exposes an RPC API, which allows you to interact with the underlying blockchain. Instead of using a centrally-hosted API, you can directly access the RPC API of a locally-hosted Node.
+
+-> The Stacks Blockchain API proxies to Node RPC endpoints
+
+While the Node RPC API doesn't give the same functionality as the hosted Stacks 2.0 Blockchain API, you get similar functionality in a way that is scoped to that specific node. The RPC API includes the following endpoints:
+
+- [POST /v2/transactions](https://blockstack.github.io/stacks-blockchain-api/#operation/post_core_node_transactions)
+- [GET /v2/contracts/interface/{stacks_address}/{contract_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/get_contract_interface)
+- [POST /v2/map_entry/{stacks_address}/{contract_name}/{map_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/get_contract_data_map_entry)
+- [GET /v2/contracts/source/{stacks_address}/{contract_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/get_contract_source)
+- [GET /v2/accounts/{principal}](https://blockstack.github.io/stacks-blockchain-api/#operation/get_account_info)
+- [POST /v2/contracts/call-read/{stacks_address}/{contract_name}/{function_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/call_read_only_function)
+- [GET /v2/fees/transfer](https://blockstack.github.io/stacks-blockchain-api/#operation/get_fee_transfer)
+- [GET /v2/info](https://blockstack.github.io/stacks-blockchain-api/#operation/get_core_api_info)
 
 ## Legacy API
 
--> If you are looking for the Stacks 1.0 RPC endpoint references, please follow [this link](https://core.blockstack.org/).
+If you are looking for the Stacks 1.0 RPC endpoint references, please follow [this link](https://core.blockstack.org/).

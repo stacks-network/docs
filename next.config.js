@@ -285,7 +285,7 @@ async function redirects() {
     },
     {
       source: '/core/smart/rpc-api.html',
-      destination: '/references/stacks-rpc-api',
+      destination: '/references/stacks-blockchain',
       permanent: true,
     },
     {
@@ -412,6 +412,11 @@ async function redirects() {
     {
       source: '/storage-hubs/amazon-s3-deploy',
       destination: '/storage-hubs/amazon-ec2-deploy',
+      permanent: true,
+    },
+    {
+      source: '/references/stacks-rpc-api',
+      destination: '/references/stacks-blockchain',
       permanent: true,
     },
   ];
