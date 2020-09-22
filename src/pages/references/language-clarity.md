@@ -23,6 +23,8 @@ super type. The type system contains the following types:
 - `(optional some-type)` - an option type for objects that can either be
   `(some value)` or `none`
 - `(buff max-len)` := byte buffer or maximum length `max-len`.
+- `(ascii-string max-len)` := ASCII string of maximum length `max-len`
+- `(utf8-string max-len)` := UTF-8 string of maximum length `max-len`
 - `principal` := object representing a principal (whether a contract principal
   or standard principal).
 - `bool` := boolean value (`true` or `false`)
