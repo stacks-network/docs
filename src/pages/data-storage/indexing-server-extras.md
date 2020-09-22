@@ -1,5 +1,5 @@
 ---
-title: Radiks server tips and tricks
+title: Server tips and tricks
 description: Some tips and tricks for working with a Radiks server.
 ---
 

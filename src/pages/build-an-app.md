@@ -17,7 +17,7 @@ Prefer to jump right in? Get started with this tutorial where you’ll create a 
 
 Decentralized apps are apps that don’t depend on a centralized platform, server or database. Instead, they use a
 decentralized network, built on the Stacks blockchain, for [authentication](/authentication/overview), [data storage](/data-storage/overview),
-and [backend logic](/data-indexing/overview). Just like Bitcoin, a decentralized network of applications is accessible to
+and [backend logic](/data-storage/indexing-overview). Just like Bitcoin, a decentralized network of applications is accessible to
 anyone and not controlled by any central authority.
 
 To learn more about the Blockstack network and decentralization, read the [Blockstack overview](/ecosystem/overview).
@@ -41,7 +41,7 @@ other apps without requiring permission or fear of being shut out.
 ## Getting started
 
 To build your decentralized app, you’ll use [authentication](/authentication/overview), [data storage](/data-storage/overview),
-[data indexing](/data-indexing/overview) (optional), and [smart contracts](/smart-contracts/overview) (optional).
+[data indexing](/data-storage/indexing-overview) (optional), and [smart contracts](/smart-contracts/overview) (optional).
 Get started with the documentation and tutorials below.
 
 ### Authentication and data storage
@@ -64,7 +64,7 @@ If you need to store and index data shared by multiple users, such as messages o
 documentation.
 
 [@page-reference | inline]
-| /data-indexing/overview
+| /data-storage/indexing-overview
 
 ### Smart contracts
 

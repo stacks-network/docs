@@ -35,13 +35,17 @@ sections:
           - path: /storage-write-read
           - path: /collections
           - path: /collection-type
-      - path: /data-indexing
-        pages:
-          - path: /overview
-          - path: /integrate
-          - path: /models
-          - path: /collaborate
-          - path: /server-extras
+        sections:
+          - title: Data Indexing
+            usePageTitles: true
+            pages:
+              - path: /indexing-overview
+              - path: /indexing-models
+              - path: /indexing-collaborate
+              - path: /indexing-server-extras
+          - title: Tutorials
+            pages:
+              - path: /integrate-indexing
       - path: /stacks-blockchain
         pages:
           - path: /overview
