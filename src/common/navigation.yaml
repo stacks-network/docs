@@ -108,7 +108,7 @@ sections:
         pages:
           - path: /blockstack-cli
           - path: /language-clarity
-          - path: /stacks-blockchain
+          - path: /stacks-blockchain-api
           - external:
               href: 'https://blockstack.github.io/blockstack.js/'
               title: blockstack.js
