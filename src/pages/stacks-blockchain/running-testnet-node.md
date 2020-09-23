@@ -64,7 +64,7 @@ You're all set to run a node that connects to the testnet network.
 Back in the command line, run:
 
 ```bash
-stacks-node argon
+stacks-node krypton
 ```
 
 The first time you run this, you'll see some logs indicating that the Rust code is being compiled. Once that's done, you should see some logs that look something like the this:
