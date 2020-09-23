@@ -285,3 +285,17 @@ you do not restart the wallet, you can simple close it.
 
    The wallet displays the **Terms of Use**. You can accept to enter the wallet
    again or choose **Quit**.
+
+## Trezor wallet support
+
+Due to technical compatibility issues, we are currently unable to fully support all Trezor wallets. Going forward, support for any Trezor wallet will be discontinued.
+
+### Trezor One and current Stacks Wallet
+
+The current Stacks Wallet (v3) supports only the Trezor One device, and only up to firmware [version 1.6.1](https://wiki.trezor.io/Firmware_changelog). If you have a newer firmware, you will have to downgrade by [following instructions described on this page](https://wiki.trezor.io/Firmware_downgrade).
+
+!> Downgrading your wallet is dangerous and will erase your Trezor, so make sure you have your seed phrase backed up.
+
+### Coming Stacks Wallet
+
+With the release of the new Stacks Wallet (v4), coming out after Stacks 2.0, we will remove support for _any_ Trezor wallet. It is therefore recommended to send your Stacks (STX) tokens to a [Ledger hardware device](https://www.ledger.com/) before Stacks 2.0.
