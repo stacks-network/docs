@@ -301,3 +301,5 @@ The current Stacks Wallet ([v3.0.0](https://github.com/blockstack/stacks-wallet/
 ### Coming Stacks Wallet
 
 With the release of the new Stacks Wallet (v4), coming out after Stacks 2.0, we will remove support for _any_ Trezor wallet. It is therefore recommended to use your Stacks (STX) tokens with a [Ledger hardware device](https://www.ledger.com/). You can enter your seed phrase into the Ledger device to access your account.
+
+-> Only Ledger Nano S is currently supported by the v3.0.0 Stacks Wallet. However, all Ledger models should be supported after Stacks 2.0 by the Stacks Wallet v4.0+
