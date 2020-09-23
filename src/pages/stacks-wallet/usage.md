@@ -292,10 +292,10 @@ Due to technical compatibility issues, we are currently unable to fully support 
 
 ### Trezor One and current Stacks Wallet
 
-The current Stacks Wallet (v3) supports only the Trezor One device, and only up to firmware [version 1.6.1](https://wiki.trezor.io/Firmware_changelog). If you have a newer firmware, you will have to downgrade by [following instructions described on this page](https://wiki.trezor.io/Firmware_downgrade).
+The current Stacks Wallet ([v3.0.0](https://github.com/blockstack/stacks-wallet/releases/tag/v3.0.0)) supports only the Trezor One device, and only up to firmware [version 1.8.3](https://wiki.trezor.io/Firmware_changelog). If you have a newer firmware, you will have to downgrade by [following instructions described on this page](https://wiki.trezor.io/Firmware_downgrade).
 
 !> Downgrading your wallet is dangerous and will erase your Trezor, so make sure you have your seed phrase backed up.
 
 ### Coming Stacks Wallet
 
-With the release of the new Stacks Wallet (v4), coming out after Stacks 2.0, we will remove support for _any_ Trezor wallet. It is therefore recommended to send your Stacks (STX) tokens to a [Ledger hardware device](https://www.ledger.com/) before Stacks 2.0.
+With the release of the new Stacks Wallet (v4), coming out after Stacks 2.0, we will remove support for _any_ Trezor wallet. It is therefore recommended to use your Stacks (STX) tokens with a [Ledger hardware device](https://www.ledger.com/). You can enter your seed phrase into the Ledger device to access your account.
