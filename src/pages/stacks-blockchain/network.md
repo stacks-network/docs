@@ -16,7 +16,7 @@ Fees are used to incentivize miners to confirm transactions on the Stacks 2.0 bl
 Fee estimates can obtained through the [`GET /v2/fees/transfer`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_fee_transfer) endpoint:
 
 ```bash
-curl 'https://stacks-node-api-latest.argon.blockstack.xyz/v2/fees/transfer'
+curl 'https://stacks-node-api-latest.krypton.blockstack.xyz/v2/fees/transfer'
 ```
 
 The API will respond with the fee rate (as integer):
@@ -52,7 +52,7 @@ The time to mine a block, to confirm transactions, will eventually match the exp
 The block time is hardcoded and will change throughout the implementation phases of the [testnet](/stacks-blockchain/testnet). The current block time can be obtained through the [`GET /extended/v1/info/network_block_times`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_network_block_times) endpoint:
 
 ```bash
-curl 'https://stacks-node-api-latest.argon.blockstack.xyz/extended/v1/info/network_block_times'
+curl 'https://stacks-node-api-latest.krypton.blockstack.xyz/extended/v1/info/network_block_times'
 ```
 
 The API will respond with the block time (in seconds):
@@ -79,7 +79,7 @@ However, for read-only function calls, transactions are **not** required. Instea
 A read-only contract call can be done using the [`POST /v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>`](https://blockstack.github.io/stacks-blockchain-api/#operation/call_read_only_function) endpoint:
 
 ```bash
-curl --location --request POST 'https://stacks-node-api-latest.argon.blockstack.xyz/v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>' \
+curl --location --request POST 'https://stacks-node-api-latest.krypton.blockstack.xyz/v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "sender": "<stx_address>.<contract_name>",
@@ -155,7 +155,7 @@ The easiest way of identifying the health is by looking at the `blockRateStatus`
 The network information can be obtained using the [`GET /v2/info`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_core_api_info) endpoint:
 
 ```bash
-curl 'https://stacks-node-api-latest.argon.blockstack.xyz/v2/info'
+curl 'https://stacks-node-api-latest.krypton.blockstack.xyz/v2/info'
 ```
 
 Sample response:
