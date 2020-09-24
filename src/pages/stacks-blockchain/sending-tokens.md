@@ -65,7 +65,7 @@ const { TransactionsApi, Configuration } = require('@stacks/blockchain-api-clien
 
 const apiConfig = new Configuration({
   fetchApi: fetch,
-  basePath: 'https://stacks-node-api.krypton.blockstack.xyz',
+  basePath: 'https://stacks-node-api.blockstack.org',
 });
 
 const key = 'edf9aee84d9b7abc145504dde6726c64f369d37ee34ded868fabd876c26570bc01';
