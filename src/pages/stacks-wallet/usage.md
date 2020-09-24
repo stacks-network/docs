@@ -288,18 +288,14 @@ you do not restart the wallet, you can simple close it.
 
 ## Trezor wallet support
 
-Due to technical compatibility issues, we are currently unable to fully support all Trezor wallets. Going forward, support for any Trezor wallet will be discontinued.
+Due to technical compatibility issues, we are currently unable to fully support all Trezor wallets.
 
 -> The wallet only supports Trezor One, Ledger Nano S, and Ledger Blue. Other wallets, for example, the Trezor Model T, are not supported. If you have questions about wallet support, please [contact Blockstack support](emailto:support@blockstack.org).
-
-### Trezor One and current Stacks Wallet
 
 The current Stacks Wallet ([v3.0.0](https://github.com/blockstack/stacks-wallet/releases/tag/v3.0.0)) supports only the Trezor One device, and only up to firmware [version 1.8.3](https://wiki.trezor.io/Firmware_changelog). If you have a newer firmware, you will have to downgrade by [following instructions described on this page](https://wiki.trezor.io/Firmware_downgrade).
 
 !> Downgrading your wallet is dangerous and will erase your Trezor, so make sure you have your seed phrase backed up.
 
-### Coming Stacks Wallet
+Alternatively to downgrading the firmware, you can use Stacks (STX) tokens with a [Ledger hardware device](https://www.ledger.com/). You can enter your seed phrase into the Ledger device to access your account.
 
-With the release of the new Stacks Wallet (v4), coming out after Stacks 2.0, we will remove support for _any_ Trezor wallet. It is therefore recommended to use your Stacks (STX) tokens with a [Ledger hardware device](https://www.ledger.com/). You can enter your seed phrase into the Ledger device to access your account.
-
--> Only Ledger Nano S is currently supported by the v3.0.0 Stacks Wallet. However, all Ledger models should be supported after Stacks 2.0 by the Stacks Wallet v4.0+
+-> Only Ledger Nano S is currently supported by the v3.0.0 Stacks Wallet.
