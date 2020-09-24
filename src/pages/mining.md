@@ -52,15 +52,15 @@ Paste in the following configuration:
 [node]
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@argon-master.blockstack.org:20444"
+bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@krypton.blockstack.org:20444"
 # Enter your private key here!
 seed = "replace-with-your-private-key"
 miner = true
 
 [burnchain]
 chain = "bitcoin"
-mode = "argon"
-peer_host = "argon.blockstack.org"
+mode = "krypton"
+peer_host = "bitcoind.krypton.blockstack.org"
 rpc_port = 18443
 peer_port = 18444
 
@@ -101,7 +101,7 @@ The above code will compile an optimized binary. To use it, run:
 
 ```bash
 cd ../..
-./target/release/stacks-node start --config=./testnet/conf/argon-follower-conf.toml
+./target/release/stacks-node start --config=./testnet/conf/krypton-follower-conf.toml
 ```
 
 ## Enable debug logging
@@ -109,5 +109,5 @@ cd ../..
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
 
 ```bash
-BLOCKSTACK_DEBUG=1 stacks-node argon
+BLOCKSTACK_DEBUG=1 stacks-node krypton
 ```
