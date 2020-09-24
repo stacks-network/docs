@@ -56,7 +56,7 @@ const { AccountsApi, FaucetsApi, Configuration } = require('@stacks/blockchain-a
 
 const apiConfig = new Configuration({
   fetchApi: fetch,
-  basePath: 'https://stacks-node-api-latest.krypton.blockstack.xyz',
+  basePath: 'https://stacks-node-api.krypton.blockstack.xyz',
 });
 
 const privateKey = makeRandomPrivKey();
