@@ -381,7 +381,7 @@ A sponsored transaction is one where a second signer sets and pays the transacti
 With a serialized transaction in the [raw format](#raw-format), it can be broadcasted to the network using the [`POST /v2/transactions`](https://blockstack.github.io/stacks-blockchain-api/#operation/post_core_node_transactions) endpoint:
 
 ```bash
-curl --location --request POST 'https://stacks-node-api-latest.krypton.blockstack.xyz/v2/transactions' \
+curl --location --request POST 'https://stacks-node-api.krypton.blockstack.xyz/v2/transactions' \
 --header 'Content-Type: text/plain' \
 --data-raw '<tx_raw_format>'
 ```
@@ -408,7 +408,7 @@ For convenience, a Postman Collection was created and published: [![Run in Postm
 Recent transactions can be obtained through the [`GET /extended/v1/tx`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_transaction_list) endpoint:
 
 ```bash
-curl 'https://stacks-node-api-latest.krypton.blockstack.xyz/extended/v1/tx'
+curl 'https://stacks-node-api.krypton.blockstack.xyz/extended/v1/tx'
 ```
 
 Sample response:
@@ -445,7 +445,7 @@ Sample response:
 Mempool (registered, but not processed) transactions can be obtained using the [`GET /extended/v1/tx/mempool`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_mempool_transaction_list) endpoint:
 
 ```bash
-curl 'https://stacks-node-api-latest.krypton.blockstack.xyz/extended/v1/tx/mempool'
+curl 'https://stacks-node-api.krypton.blockstack.xyz/extended/v1/tx/mempool'
 ```
 
 Sample response:
@@ -483,7 +483,7 @@ Sample response:
 Recent transactions can be filtered by [transaction type](/stacks-blockchain/transactions#types) using the `type` query parameter:
 
 ```bash
-curl 'https://stacks-node-api-latest.krypton.blockstack.xyz/extended/v1/tx/?type=contract_call'
+curl 'https://stacks-node-api.krypton.blockstack.xyz/extended/v1/tx/?type=contract_call'
 ```
 
 ### Get transaction by ID
@@ -491,7 +491,7 @@ curl 'https://stacks-node-api-latest.krypton.blockstack.xyz/extended/v1/tx/?type
 A specific transaction can be obtained using the [`GET /extended/v1/tx/<tx_id>`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_transaction_by_id) endpoint:
 
 ```bash
-curl 'https://stacks-node-api-latest.krypton.blockstack.xyz/extended/v1/tx/<tx_id>'
+curl 'https://stacks-node-api.krypton.blockstack.xyz/extended/v1/tx/<tx_id>'
 ```
 
 Sample response:

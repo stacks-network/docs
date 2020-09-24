@@ -91,7 +91,7 @@ const stacksAddress = getAddressFromPrivateKey(
 STX balance and nonce can be obtained through the [`GET /v2/accounts/<stx_address>`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_account_info) endpoint:
 
 ```bash
-curl 'https://stacks-node-api-latest.krypton.blockstack.xyz/v2/accounts/<stx_address>'
+curl 'https://stacks-node-api.krypton.blockstack.xyz/v2/accounts/<stx_address>'
 ```
 
 Sample response:
@@ -110,7 +110,7 @@ Sample response:
 All token balances can be obtained through the [`GET /extended/v1/address/<stx_address>/balances`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_account_balance) endpoint:
 
 ```bash
-curl 'https://stacks-node-api-latest.krypton.blockstack.xyz/extended/v1/address/<stx_address>/balances'
+curl 'https://stacks-node-api.krypton.blockstack.xyz/extended/v1/address/<stx_address>/balances'
 ```
 
 Sample response:
@@ -134,7 +134,7 @@ Sample response:
 All asset events associated with the account can be obtained through the [`GET /extended/v1/address/<stx_address>/assets`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_account_balance) endpoint:
 
 ```bash
-curl 'https://stacks-node-api-latest.krypton.blockstack.xyz/extended/v1/address/<stx_address>/assets'
+curl 'https://stacks-node-api.krypton.blockstack.xyz/extended/v1/address/<stx_address>/assets'
 ```
 
 Sample response:
