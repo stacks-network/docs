@@ -213,7 +213,7 @@ Make an API call to the Testnet faucet to get STX tokens.
 
 ```bash
 # replace <stx_address> with `address` property from your keychain
-curl -XPOST "https://sidecar.staging.blockstack.xyz/sidecar/v1/faucets/stx?address=<stx_address>" | json_pp
+curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/stx?address=<stx_address>" | json_pp
 ```
 
 The response will include a `txId` property. This is the transaction that was initiated to transfer funds to your Stacks address.
