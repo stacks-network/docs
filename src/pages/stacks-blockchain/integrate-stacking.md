@@ -21,6 +21,8 @@ This tutorial highlights the following functionality:
 - Initiating Stacking participation and locking up Stacks tokens by signing a transaction
 - Reading Stacking reward details
 
+-> Alternatively to integration using JS libraries, you can [use the CLI](https://gist.github.com/kantai/c261ca04114231f0f6a7ce34f0d2499b).
+
 ## Requirements
 
 First, you will need to understand the [Stacking mechanism](/stacks-blockchain/stacking).
@@ -66,15 +68,19 @@ import {
   privateKeyToString,
   getAddressFromPrivateKey,
   TransactionVersion,
+  StacksTestnet,
   standardPrincipalCV,
   uintCV,
   serializeCV,
+  tupleCV,
+  makeContractCall,
 } from '@blockstack/stacks-transactions';
 const {
   InfoApi,
   AccountsApi,
   SmartContractsApi,
   Configuration,
+  TransactionsApi,
 } = require('@stacks/blockchain-api-client');
 
 const apiConfig = new Configuration({
@@ -220,21 +226,52 @@ If the user is eligible, the stacking action should be enabled on the UI.
 
 ## Step 5: Add stacking action
 
-Next, your application should ask the user for the following input:
-
-- BTC reward address: This address will receive earnings
-
-The Stacking action should be enabled. The action will require signing a transaction:
+Next, the Stacking action can be enabled. Once the user confirms the action, a new transaction needs to be broadcasted to the network:
 
 ```js
+const tx = new TransactionsApi(apiConfig);
 
+// TODO: actuall parse BTC address into version, checksum
+const version = bufferCV(Buffer.from('01', 'hex'));
+const hashbytes = bufferCV(randomBytes(20));
+const address = tupleCV({
+  hashbytes,
+  version,
+});
+
+const contractAddress = poxInfo.contract_id.split('.')[0];
+const contractName = poxInfo.contract_id.split('.')[1];
+const functionName = 'stack-stx';
+const network = new StacksTestnet();
+
+const txOptions = {
+  contractAddress,
+  contractName,
+  functionName,
+  functionArgs: [uintCV(microSTXoLockups), address, uintCV(numberOfCycles)],
+  senderKey: privateKey,
+  validateWithAbi: true,
+  network,
+};
+
+const transaction = await makeContractCall(txOptions);
+
+const rawTx = transaction.serialize().toString('hex');
+
+const contractCall = tx.postCoreNodeTransactions({
+  body: rawTx,
+});
 ```
+
+-> The transaction completion will take several minutes. Concurrent stacking actions should be disabled to ensure the user doesn't lock up more tokens as expected
 
 ## Step 6: Confirm lock-up and display status
 
+TODO: check for transaction completion
+
 Once the user signed the transaction, the Stacks tokens in the account will be locked up for the lockup duration. During that duration, the application can display the Stacking status.
 
-- calls Stacks API to obtain info: status, (estimated) rewards, rewards earned, unlock time
+- read-only call to 'get-stacker-info'
 
 ## Step 7: Display stacking history (optional)
 
