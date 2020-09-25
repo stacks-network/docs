@@ -3,6 +3,8 @@ title: Hello, World!
 description: Learn the basics of Clarity and write a simple Hello World smart contract.
 duration: 18 minutes
 experience: beginners
+tags:
+  - tutorial
 images:
   large: /images/pages/hello-world-app.svg
   sm: /images/pages/hello-world-sm.svg

@@ -80,6 +80,9 @@ on Blockstack are written in the [Clarity language](https://clarity-lang.org). V
 [@page-reference | inline]
 | /smart-contracts/counter-tutorial
 
+[@page-reference | inline]
+| /smart-contracts/public-registry-tutorial
+
 ### Connect
 
 Connect is a JavaScript library developed by Blockstack PBC that makes it easy to integrate authentication, data storage
