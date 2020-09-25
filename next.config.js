@@ -289,6 +289,11 @@ async function redirects() {
       permanent: true,
     },
     {
+      source: '/core/smart/rpc-api',
+      destination: '/references/stacks-blockchain-api',
+      permanent: true,
+    },
+    {
       source: '/common/javascript_ref.html',
       destination: 'https://blockstack.github.io/blockstack.js/',
       permanent: true,

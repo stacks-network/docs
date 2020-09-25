@@ -73,7 +73,7 @@ The first time you run this, you'll see some logs indicating that the Rust code 
 INFO [1588108047.585] [src/chainstate/stacks/index/marf.rs:732] First-ever block 0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206
 ```
 
-Awesome! Your node is now connected to the testnet network. Your node will receive new blocks when they are produced, and you can use your [node's RPC API](/core/smart/rpc-api) to send transactions, fetch information for contracts and accounts, and more.
+Awesome! Your node is now connected to the testnet network. Your node will receive new blocks when they are produced, and you can use your [node's RPC API](/references/stacks-blockchain-api#stacks-node-rpc-api) to send transactions, fetch information for contracts and accounts, and more.
 
 ## Step 3: Mining Stacks token
 
