@@ -66,8 +66,16 @@ import {
   privateKeyToString,
   getAddressFromPrivateKey,
   TransactionVersion,
+  standardPrincipalCV,
+  uintCV,
+  serializeCV,
 } from '@blockstack/stacks-transactions';
-const { InfoApi, AccountsApi, Configuration } = require('@stacks/blockchain-api-client');
+const {
+  InfoApi,
+  AccountsApi,
+  SmartContractsApi,
+  Configuration,
+} = require('@stacks/blockchain-api-client');
 
 const apiConfig = new Configuration({
   fetchApi: fetch,
@@ -186,36 +194,41 @@ With this input, and the data from previous steps, we can determine the eligibil
 let microSTXoLockups = 50000;
 
 // read-only contract call
+const smartContracts = new SmartContractsApi(apiConfig);
+
+const contractCall = await smartContracts.callReadOnlyFunction({
+  stacksAddress: poxInfo.contract_id.split('.')[0],
+  contractName: poxInfo.contract_id.split('.')[1],
+  functionName: 'can-stack-stx',
+  readOnlyFunctionArgs: {
+    sender: principal,
+    arguments: [
+      `0x${serializeCV(standardPrincipalCV(principal)).toString('hex')}`,
+      `0x${serializeCV(uintCV(microSTXoLockups)).toString('hex')}`,
+      `0x${serializeCV(uintCV(poxInfo.reward_cycle_id)).toString('hex')}`,
+      `0x${serializeCV(uintCV(numberOfCycles)).toString('hex')}`,
+    ],
+  },
+});
+
+const isEligible = contractCall.result;
 ```
 
-If the users is eligible, the stacking action should be enabled on the UI.
+If the user is eligible, the stacking action should be enabled on the UI.
+
+-> For more information on this read-only API call, please review the [API references](https://blockstack.github.io/stacks-blockchain-api/#operation/call_read_only_function)
 
 ## Step 5: Add stacking action
-
--> The stacking contract identifier (`ST000000000000000000002AMW42H.pox`) is static.
 
 Next, your application should ask the user for the following input:
 
 - BTC reward address: This address will receive earnings
-- Reward cycles: The number of reward cycles to participate in
-- STX tokens: The amount of tokens that will be locked up
 
-> Using the cycle duration and next cycle timestamp, you can calculate the lockup duration: `next_cycle_timestamp + (cycle_duration * cycle_amount)`.
-
-!> It is strongly recommended to verify the input fields presented to the user
-
-With the user input, you can make an API call to obtain estimated rewards:
-
-````shell
-
-
-It it important to understand and point out to users that the rewards are _estimations_ based on previous reward cycles. The actual reward depends on a variety of parameters and amount would likely vary.
-
-Now that the user was presented with the reward estimates, the Stacking action should be enabled. The action will require signing a transaction:
+The Stacking action should be enabled. The action will require signing a transaction:
 
 ```js
 
-````
+```
 
 ## Step 6: Confirm lock-up and display status
 
