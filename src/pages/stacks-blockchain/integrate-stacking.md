@@ -53,7 +53,7 @@ In this tutorial, we will implement this Stacking flow:
 First install the stacks transactions library and an API client for the [Stacks 2.0 Blockchain API](/references/stacks-blockchain):
 
 ```shell
-npm install --save @blockstack/stacks-transactions@0.6.0 @stacks/blockchain-api-client
+npm install --save @blockstack/stacks-transactions@0.6.0 @stacks/blockchain-api-client c32check
 ```
 
 -> The API client is generated from the [OpenAPI specification](https://github.com/blockstack/stacks-blockchain-api/blob/master/docs/openapi.yaml) ([openapi-generator](https://github.com/OpenAPITools/openapi-generator)). Many other languages and frameworks are be supported by the generator.
@@ -69,11 +69,10 @@ import {
   getAddressFromPrivateKey,
   TransactionVersion,
   StacksTestnet,
-  standardPrincipalCV,
   uintCV,
-  serializeCV,
   tupleCV,
   makeContractCall,
+  bufferCVFromString,
 } from '@blockstack/stacks-transactions';
 const {
   InfoApi,
@@ -82,6 +81,7 @@ const {
   Configuration,
   TransactionsApi,
 } = require('@stacks/blockchain-api-client');
+const c32c = require('c32check');
 
 const apiConfig = new Configuration({
   fetchApi: fetch,
@@ -199,6 +199,11 @@ With this input, and the data from previous steps, we can determine the eligibil
 // micro-STX tokens to lockup, must be >= poxInfo.min_amount_ustx and <=accountSTXBalance
 let microSTXoLockups = 50000;
 
+// generate BTC from Stacks address
+const btcAddress = c32c.c32ToB58(principal);
+const version = bufferCV(Buffer.from('0', 'hex'));
+const hashbytes = bufferCV(btcAddress);
+
 // read-only contract call
 const smartContracts = new SmartContractsApi(apiConfig);
 
@@ -209,10 +214,13 @@ const contractCall = await smartContracts.callReadOnlyFunction({
   readOnlyFunctionArgs: {
     sender: principal,
     arguments: [
-      `0x${serializeCV(standardPrincipalCV(principal)).toString('hex')}`,
-      `0x${serializeCV(uintCV(microSTXoLockups)).toString('hex')}`,
-      `0x${serializeCV(uintCV(poxInfo.reward_cycle_id)).toString('hex')}`,
-      `0x${serializeCV(uintCV(numberOfCycles)).toString('hex')}`,
+      tupleCV({
+        hashbytes,
+        version,
+      }),
+      uintCV(microSTXoLockups),
+      uintCV(poxInfo.reward_cycle_id),
+      uintCV(numberOfCycles),
     ],
   },
 });
@@ -231,27 +239,21 @@ Next, the Stacking action can be enabled. Once the user confirms the action, a n
 ```js
 const tx = new TransactionsApi(apiConfig);
 
-// TODO: actuall parse BTC address into version, checksum
-const version = bufferCV(Buffer.from('01', 'hex'));
-const hashbytes = bufferCV(randomBytes(20));
-const address = tupleCV({
-  hashbytes,
-  version,
-});
-
-const contractAddress = poxInfo.contract_id.split('.')[0];
-const contractName = poxInfo.contract_id.split('.')[1];
-const functionName = 'stack-stx';
-const network = new StacksTestnet();
-
 const txOptions = {
-  contractAddress,
-  contractName,
-  functionName,
-  functionArgs: [uintCV(microSTXoLockups), address, uintCV(numberOfCycles)],
+  contractAddress: poxInfo.contract_id.split('.')[0],
+  contractName: poxInfo.contract_id.split('.')[1],
+  functionName: 'stack-stx',
+  functionArgs: [
+    uintCV(microSTXoLockups),
+    tupleCV({
+      hashbytes,
+      version,
+    }),
+    uintCV(numberOfCycles),
+  ],
   senderKey: privateKey,
   validateWithAbi: true,
-  network,
+  network: new StacksTestnet(),
 };
 
 const transaction = await makeContractCall(txOptions);
