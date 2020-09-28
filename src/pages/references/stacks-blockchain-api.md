@@ -30,6 +30,8 @@ While the Node RPC API doesn't give the same functionality as the hosted Stacks 
 - [GET /v2/fees/transfer](https://blockstack.github.io/stacks-blockchain-api/#operation/get_fee_transfer)
 - [GET /v2/info](https://blockstack.github.io/stacks-blockchain-api/#operation/get_core_api_info)
 
+~> Your local node exposes an HTTP server via port `20443`. The info endpoint would be `localhost:20443/v2/info`.
+
 ## Legacy API
 
 If you are looking for the Stacks 1.0 RPC endpoint references, please follow [this link](https://core.blockstack.org/).

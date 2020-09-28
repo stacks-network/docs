@@ -13,10 +13,10 @@ images:
 
 ## Introduction
 
-Make sure you've followed our guide for getting a Stacks 2.0 Testnet node up and running, once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
+Make sure you've followed the [Running testnet node](https://docs.blockstack.org/stacks-blockchain/running-testnet-node) tutorial. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
 
 [@page-reference | inline]
-| /stacks-blockchain/testnet-node
+| /stacks-blockchain/running-testnet-node
 
 ## Running a miner
 
@@ -42,7 +42,16 @@ After this runs, you'll probably see some installation logs, and at the end you 
 }
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and head over to [the Stacks testnet website](https://testnet.blockstack.org/faucet). In the BTC faucet section, past in your `btcAddress`, and submit. You'll be sent 0.5 testnet BTC to that address. **Don't lose this information** - we'll need to use the `privateKey` field later on.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and call the BTC faucet:
+
+```bash
+# replace <btc_address> with `btcAddress` property from your keychain
+curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/btc?address=<btc_address>" | json_pp
+```
+
+You'll be sent 0.5 testnet BTC to that address. **Don't lose this information** - we'll need to use the `privateKey` field later on.
+
+!> Make sure to complete the first
 
 Now, we need to configure out node to use this Bitcoin keychain. In the `stacks-blockchain` folder, create a new file called `testnet/stacks-node/conf/testnet-miner-conf.toml`.
 
