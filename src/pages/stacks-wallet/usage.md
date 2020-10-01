@@ -296,6 +296,6 @@ The current Stacks Wallet ([v3.0.0](https://github.com/blockstack/stacks-wallet/
 
 !> Downgrading your wallet is dangerous and will erase your Trezor, so make sure you have your seed phrase backed up.
 
-Alternatively to downgrading the firmware, you can use Stacks (STX) tokens with a [Ledger hardware device](https://www.ledger.com/). You can enter your seed phrase into the Ledger device to access your account.
+Alternatively to downgrading the firmware, you can use Stacks (STX) tokens with a [Ledger hardware device](https://www.ledger.com/). You can enter your seed phrase into the Ledger device to access your account. View the [Ledger documentation on how to restore a seed phrase to a Ledger device](https://support.ledger.com/hc/en-us/articles/360005434914-Restore-from-recovery-phrase). You will need the original 24-word Trezor recovery phrase which you backed up when setting up your Trezor.
 
 -> Only Ledger Nano S is currently supported by the v3.0.0 Stacks Wallet.
