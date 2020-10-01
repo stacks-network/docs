@@ -84,6 +84,24 @@ const stacksAddress = getAddressFromPrivateKey(
 );
 ```
 
+A second alternative would be to use [stacks-gen](https://github.com/psq/stacks-gen).  This tool will generate all the keys you need in one place, including the values needed for calling the stacking contract, and also a WIF key for use with `bitcoind`.
+
+```
+npx -q stacks-gen sk --testnet
+
+{
+  "phrase": "guide air pet hat friend anchor harvest dog depart matter deny awkward sign almost speak short dragon rare private fame depart elevator snake chef",
+  "private": "0351764dc07ee1ad038ff49c0e020799f0a350dd0769017ea09460e150a6401901",
+  "public": "022d82baea2d041ac281bebafab11571f45db4f163a9e3f8640b1c804a4ac6f662",
+  "stacks": "ST16JQQNQXVNGR8RZ1D52TMH5MFHTXVPHRV6YE19C",
+  "stacking": "{ hashbytes: 0x4d2bdeb7eeeb0c231f0b4a2d5225a3e3aeeed1c6, version: 0x00 }",
+  "btc": "mnYzsxxW271GkmyMnRfiopEkaEpeqLtDy8",
+  "wif": "cMh9kwaCEttgTQYkyMUYQVbdm5ZarZdBHErcq7mXUChXXCo7CFEh"
+}
+```
+
+Full documentation available at [stacks-gen](https://github.com/psq/stacks-gen).
+
 ## Querying
 
 ### Get Stacks (STX) balance and nonce
