@@ -78,6 +78,7 @@ const {
   serializeCV,
   deserializeCV,
   cvToString,
+  connectWebSocketClient,
 } = require('@blockstack/stacks-transactions');
 const {
   InfoApi,
@@ -278,24 +279,47 @@ const transaction = await makeContractCall(txOptions);
 
 const rawTx = transaction.serialize().toString('hex');
 
-const contractCall = tx.postCoreNodeTransactions({
+const txId = await tx.postCoreNodeTransactions({
   body: rawTx,
 });
 
 // this will return a new transaction ID
-console.log(contractCall);
+console.log(txId);
 ```
 
 The transaction completion will take several minutes. Concurrent stacking actions should be disabled to ensure the user doesn't lock up more tokens as expected.
 
 ## Step 6: Confirm lock-up
 
-The new transaction will not be completed immediately. It will stay in the `pending` status for a few minutes. We need to poll the status and wait until the transaction status changes to `success`.
+The new transaction will not be completed immediately. It will stay in the `pending` status for a few minutes. We need to poll the status and wait until the transaction status changes to `success`:
+
+```js
+let resp;
+const intervalID = setInterval(async () => {
+  resp = await tx.getTransactionById({ txId });
+  console.log(resp);
+  if (resp.tx_status === 'success') {
+    // stop polling
+    clearInterval(intervalID);
+    // update UI to display stacking status
+    return resp;
+  }
+}, 3000);
+```
 
 -> More details on the lifecycle of transactions can be found in the [transactions guide](/stacks-blockchain/transactions#lifecycle)
 
+Alternatively to the polling, the Stacks Blockchain API client library offers WebSockets. WebSockets can be used to subscribe to specific updates, like transaction status changes. Here is an example:
+
 ```js
-// TODO: check for transaction completion
+const client = await connectWebSocketClient('ws://stacks-node-api.blockstack.org/');
+
+const sub = await client.subscribeAddressTransactions(txId, event => {
+  console.log(event);
+  // update UI to display stacking status
+});
+
+await sub.unsubscribe();
 ```
 
 ## Step 6: Display Stacking status
@@ -308,8 +332,8 @@ With the completed transactions, Stacks tokens are locked up for the lockup dura
 
 ## Step 7: Display stacking history (optional)
 
--> How to obtain info: previous lock-ups, durations, dates, and rewards?
+-> Coming soon: how to obtain info previous lock-ups, durations, dates, and rewards?
 
 ## Notes on delegation
 
--> How to enable Stacking delegation?
+-> Coming soon: how to enable Stacking delegation?
