@@ -79,6 +79,7 @@ const {
   deserializeCV,
   cvToString,
   connectWebSocketClient,
+  broadcastTransaction,
 } = require('@blockstack/stacks-transactions');
 const {
   InfoApi,
@@ -159,7 +160,7 @@ Users need to have sufficient Stacks (STX) tokens to participate in Stacking. Wi
 const accounts = new AccountsApi(apiConfig);
 
 const accountBalance = await accounts.getAccountBalance({
-  stxAddress,
+  principal: stxAddress,
 });
 
 const accountSTXBalance = accountBalance.stx.balance;
@@ -277,14 +278,10 @@ const txOptions = {
 
 const transaction = await makeContractCall(txOptions);
 
-const rawTx = transaction.serialize().toString('hex');
+const contractCall = await broadcastTransaction(transaction, network);
 
-const txId = await tx.postCoreNodeTransactions({
-  body: rawTx,
-});
-
-// this will return a new transaction ID
-console.log(txId);
+// this will return a new transaction, including the transaction ID
+console.log(contractCall);
 ```
 
 The transaction completion will take several minutes. Concurrent stacking actions should be disabled to ensure the user doesn't lock up more tokens as expected.
@@ -296,7 +293,7 @@ The new transaction will not be completed immediately. It will stay in the `pend
 ```js
 let resp;
 const intervalID = setInterval(async () => {
-  resp = await tx.getTransactionById({ txId });
+  resp = await tx.getTransactionById({ contractCall.txId });
   console.log(resp);
   if (resp.tx_status === 'success') {
     // stop polling
@@ -314,7 +311,7 @@ Alternatively to the polling, the Stacks Blockchain API client library offers We
 ```js
 const client = await connectWebSocketClient('ws://stacks-node-api.blockstack.org/');
 
-const sub = await client.subscribeAddressTransactions(txId, event => {
+const sub = await client.subscribeAddressTransactions(contractCall.txId, event => {
   console.log(event);
   // update UI to display stacking status
 });
@@ -328,7 +325,26 @@ With the completed transactions, Stacks tokens are locked up for the lockup dura
 
 ```js
 // TODO: read-only call to 'get-stacker-info'
+const contractAddress = poxInfo.contract_id.split('.')[0];
+const contractName = poxInfo.contract_id.split('.')[1];
+const functionName = 'get-stacker-info';
+
+const stackingInfo = await smartContracts.callReadOnlyFunction({
+  contractAddress,
+  contractName,
+  functionName,
+  readOnlyFunctionArgs: {
+    sender: stxAddress,
+    arguments: [`0x${serializeCV(standardPrincipalCV(stxAddress)).toString('hex')}`],
+  },
+});
+
+const response = cvToString(deserializeCV(Buffer.from(stackingInfo.result.slice(2), 'hex')));
+
+res.json({ response });
 ```
+
+-> Coming soon: how to obtain rewards paid out to the stacker?
 
 ## Step 7: Display stacking history (optional)
 
