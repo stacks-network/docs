@@ -13,6 +13,26 @@ Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechani
 
 -> Fun fact: The Stacking consensus algorithm is implemented as a smart contract, using [Clarity](/smart-contracts/overview).
 
+## Stacking flow
+
+The Stacking mechanism can be presented as a flow of actions:
+
+![stacking flow](/images/stacking-illustration.png)
+
+1. Make API calls to get details about the upcoming reward cycle
+2. For a specific Stacks account, confirm eligibility (minimum Stacks tokens available and more)
+3. Confirm the BTC reward address and the lockup duration
+4. The transaction is broadcasted and the Stacks tokens will be locked-up
+5. The Stacking mechanism executes reward cycles and sends out rewards to the set BTC reward address
+6. During the lockup period, details about unlocking timing, rewards and more can be obtained
+7. Once the lockup period is passed, the tokens are released and accessible again
+8. Display reward history, including details like earnings for previous reward cycles
+
+If you would like to implement this flow in your own wallet, exchange, or any other application, please have a look at this tutorial:
+
+[@page-reference | inline]
+| /stacks-blockchain/integrate-stacking
+
 ## PoX mining
 
 PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of destroying the committed Bitcoin, it is transferred to eligible Stacks (STX) holders that participate in the Stacking protocol.
@@ -40,9 +60,6 @@ Stacks token holders do not automatically receive Stacking rewards. Instead, the
 - Set a Bitcoin address to receive rewards
 
 Token holders will have to use software like apps, exchanges, or wallets that support participation in Stacking.
-
-[@page-reference | inline]
-| /stacks-blockchain/integrate-stacking
 
 ## Stacking consensus algorithm
 

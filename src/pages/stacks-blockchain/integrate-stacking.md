@@ -17,9 +17,11 @@ In this tutorial, you will learn how to integrate Stacking by interacting with t
 
 This tutorial highlights the following functionality:
 
-- Reading wallet information and verifying Stacking eligibility
-- Initiating Stacking participation and locking up Stacks tokens by signing a transaction
-- Reading Stacking reward details
+- Generate Stacks accounts
+- Display stacking info
+- Verify stacking eligibility
+- Add stacking action
+- Display stacking status
 
 -> Alternatively to integration using JS libraries, you can [use the CLI](https://gist.github.com/kantai/c261ca04114231f0f6a7ce34f0d2499b).
 
@@ -35,18 +37,7 @@ node --version
 
 ## Overview
 
-In this tutorial, we will implement this Stacking flow:
-
-![The flow you'll be implementation in this tutorial](/images/stacking-illustration.png)
-
-1. Make API calls to get details about the upcoming reward cycle. The details include the next cycle timestamp, cycle duration, and estimated rewards
-2. For a specific Stacks wallet, confirm the minimum balance required and no locked-up tokens
-3. Enable participation by letting the Stacks wallet holder confirm the BTC reward address and the lockup duration. The action will result in a transaction that needs to be signed by the wallet holder
-4. The transaction is broadcasted. With the confirmation of the transaction, the Stacks tokens will be locked-up and inaccessible throughout the lockup period
-5. The Stacking mechanism executes reward cycles and sends out rewards to the set BTC reward address
-6. During the lockup period, make API calls to get details about unlocking timing, rewards collected and projected
-7. Once the lockup period is passed, the tokens are released and accessible again
-8. Display reward history, including details like earnings for previews reward cycles
+In this tutorial, we will implement the Stacking flow laid out in the [Stacking guide](/stacks-blockchain/stacking#stacking-flow).
 
 -> Check out the sample source code for this tutorial in this GitHub repository: [stacking-integration-sample](https://github.com/agraebe/stacking-integration-sample)
 
@@ -354,7 +345,17 @@ console.log({
 });
 ```
 
--> Coming soon: how to obtain rewards paid out to the stacker?
+To display the unlocking time, you need to use the `firstRewardCycle` and the `lockPeriod` fields.
+
+-> Coming soon: how to obtain rewards paid out to the stacker? how to find out if an account has stacked tokens?
+
+**Congratulations!** With the completion of this step, you successfully learnt how to ...
+
+- Generate Stacks accounts
+- Display stacking info
+- Verify stacking eligibility
+- Add stacking action
+- Display stacking status
 
 ## Step 7: Display stacking history (optional)
 
