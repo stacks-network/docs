@@ -80,6 +80,7 @@ const {
   cvToString,
   connectWebSocketClient,
   broadcastTransaction,
+  standardPrincipalCV,
 } = require('@blockstack/stacks-transactions');
 const {
   InfoApi,
@@ -280,7 +281,7 @@ const transaction = await makeContractCall(txOptions);
 
 const contractCall = await broadcastTransaction(transaction, network);
 
-// this will return a new transaction, including the transaction ID
+// this will return a new transaction ID
 console.log(contractCall);
 ```
 
@@ -324,13 +325,12 @@ await sub.unsubscribe();
 With the completed transactions, Stacks tokens are locked up for the lockup duration. During that time, your application can display the following details: unlocking time, amount of Stacks locked, and bitcoin address used for rewards.
 
 ```js
-// TODO: read-only call to 'get-stacker-info'
 const contractAddress = poxInfo.contract_id.split('.')[0];
 const contractName = poxInfo.contract_id.split('.')[1];
 const functionName = 'get-stacker-info';
 
 const stackingInfo = await smartContracts.callReadOnlyFunction({
-  contractAddress,
+  stacksAddress: contractAddress,
   contractName,
   functionName,
   readOnlyFunctionArgs: {
@@ -339,9 +339,19 @@ const stackingInfo = await smartContracts.callReadOnlyFunction({
   },
 });
 
-const response = cvToString(deserializeCV(Buffer.from(stackingInfo.result.slice(2), 'hex')));
+const response = deserializeCV(Buffer.from(stackingInfo.result.slice(2), 'hex'));
 
-res.json({ response });
+const data = response.value.data;
+
+console.log({
+  lockPeriod: cvToString(data['lock-period']),
+  amountSTX: cvToString(data['amount-ustx']),
+  firstRewardCycle: cvToString(data['first-reward-cycle']),
+  poxAddr: {
+    version: cvToString(data['pox-addr'].data.version),
+    hashbytes: cvToString(data['pox-addr'].data.hashbytes),
+  },
+});
 ```
 
 -> Coming soon: how to obtain rewards paid out to the stacker?
