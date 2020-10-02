@@ -52,7 +52,12 @@ git clone https://github.com/blockstack/stacks-blockchain.git; cd stacks-blockch
 Install the Stacks node by running:
 
 ```bash
-cargo install --path ./testnet/stacks-node
+cargo build --workspace --bin stacks-node
+# binary will be in target/debug/stacks-node
+./target/debug/stacks-node krypton
+# release build
+cargo build --workspace --release --bin stacks-node
+# binary will be in target/release/stacks-node
 ```
 
 -> This process will take a few minutes to complete
