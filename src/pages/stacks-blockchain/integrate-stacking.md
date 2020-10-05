@@ -209,7 +209,7 @@ const smartContracts = new SmartContractsApi(apiConfig);
 
 // read-only contract call
 const isEligible = await smartContracts.callReadOnlyFunction({
-  stacksAddress: poxInfo.contract_id.split('.')[0],
+  contractAddress: poxInfo.contract_id.split('.')[0],
   contractName: poxInfo.contract_id.split('.')[1],
   functionName: 'can-stack-stx',
   readOnlyFunctionArgs: {
@@ -321,7 +321,7 @@ const contractName = poxInfo.contract_id.split('.')[1];
 const functionName = 'get-stacker-info';
 
 const stackingInfo = await smartContracts.callReadOnlyFunction({
-  stacksAddress: contractAddress,
+  contractAddress,
   contractName,
   functionName,
   readOnlyFunctionArgs: {
