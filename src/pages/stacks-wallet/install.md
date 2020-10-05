@@ -22,7 +22,7 @@ by Blockstack PBC.
 
    This button downloads the software to your computer.
 
-3. Open a terminal window.
+3. To verify the authenticity of the downloaded package before installation, open a terminal window.
 
    To find the terminal software, enter `terminal` into the Spotlight search.
 
@@ -36,15 +36,17 @@ by Blockstack PBC.
    cd ~/Downloads
    ```
 
-5. In the terminal window, type the following Command
+5. In the terminal window, type the following command to verify the authenticity of the downloaded file `Stacks-Wallet-macOS-3.1.0-en-US.dmg`
 
    ```bash
-   shasum -a 512 Stacks-Wallet-macOS-3.0.0.dmg
+   shasum -a 512 Stacks-Wallet-macOS-3.1.0-en-US.dmg
    ```
 
    ![](/images/mac-shasum.png)
 
-6. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published [on this page](https://github.com/blockstack/stacks-wallet/releases).
+6. Verify that the resulting hash (a string of letters and numbers) is the same as the hash published [on the Stacks Wallet's Github repository](https://github.com/blockstack/stacks-wallet/releases).
+
+7. To proceed with installation, open the downloaded file and complete the setup.
 
 ## Windows Installation
 
@@ -52,7 +54,7 @@ by Blockstack PBC.
 
    This button downloads the software to your computer.
 
-2. Open a command prompt.
+2. To verify the authenticity of the downloaded package before installation, open a command prompt.
 
    To find the command prompt software, enter `command` into the Start menu.
 
@@ -66,7 +68,7 @@ by Blockstack PBC.
    cd <You-User-Directory>/Downloads
    ```
 
-4. In the command prompt window, type the following at the command prompt.
+4. In the command prompt window, type the following command to verify the authenticity of the downloaded file `Stacks-Wallet-win10-3.1.0-en-US.dmg`
 
    ```bash
    certUtil -hashfile Stacks-Wallet-win10-3.0.0.exe SHA512
@@ -74,15 +76,16 @@ by Blockstack PBC.
 
    ![](/images/windows-certutil.png)
 
-5. Verify that the resulting hash (a string of letters and numbers) is the same as the latest hash published [on this page](https://github.com/blockstack/stacks-wallet/releases).
+5. Verify that the resulting hash (a string of letters and numbers) is the same as the hash published [on the Stacks Wallet's Github repository](https://github.com/blockstack/stacks-wallet/releases).
 
 ## Additional requirement and option
 
-Sending and receiving Stacks (STX) does require a Bitcoin account. You also have the option to use the wallet with or without a hardware wallet.
+Sending and receiving Stacks (STX) does require a Bitcoin as fuel.
+You also have the option to use the wallet with or without a hardware wallet.
 
 ### Bitcoin account for fuel (required)
 
-You need very small fractions of Bitcoin to fuel your Stacks Wallet transactions. For example, .00025 Bitcoin can fuel several transactions. You can acquire this Bitcoin fuel and send it to the Stacks Wallet via a Coinbase or other Bitcoin account. Before you begin using the wallet transactions, make sure that you have such an account. You must create this account yourself.
+You need small amounts of Bitcoin to fuel your Stacks Wallet transactions. For example, 0.001 Bitcoin can fuel several transactions. You can acquire this Bitcoin fuel and send it to the Stacks Wallet's Bitcoin fuel address via a Coinbase or other Bitcoin account. You can view the Stacks Wallet's Bitcoin fuel address in the settings menu.
 
 ### Hardware wallet (optional but recommended)
 
@@ -92,7 +95,7 @@ If you have a paper wallet or a custodial wallet, you should set up a secondary 
 - [Ledger Nano S](https://www.ledger.com/)
 - Ledger Blue
 
--> Blockstack only supports the hardware wallets listed above. Other wallets, for example, the Trezor Model T, **are not supported**. If you have questions about wallet support, please [contact Blockstack support](mailto:support@blockstack.org).
+-> Blockstack only supports the hardware wallets listed above. Other wallets, for example, the Trezor Model T, **are not currently supported**. If you have questions about wallet support, please [contact Blockstack support](mailto:support@blockstack.org).
 
 For information on setting up a hardware wallet, refer to the vendor's
-documentation. We cannot help you set up your hardware wallet.
+documentation.
