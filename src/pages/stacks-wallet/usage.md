@@ -17,6 +17,7 @@ You use Stacks Wallet software to manage STX tokens. Using the wallet you can:
 - receive STX at a specific STX address
 - view balances on an address
 - review transaction history associated with an address
+- withdraw Bitcoin sent to the wallet's fuel address
 
 To send STX, you need Bitcoin in your wallet. Bitcoin is the "gas" for transactions on the Stacks blockchain. A **_very small_** amount of Bitcoin is required to send STX. The gas price fluctuates like any market and is driven by the price of Bitcoin. Gas is not required to receive STX.
 
@@ -40,9 +41,9 @@ The private key on your hardware wallet is used by the Stacks Wallet software to
 
 ### Software only wallet and a seed phrase
 
-You can use the Stacks Wallet software without a hardware device to create one or more software wallets. Each wallet has its own address which corresponds to a STX address on the Stacks blockchain. You access this address with a unique, **seed phrase**. The software generates a seed phrase for you when create a software-only wallet. The seed phrase consists of 24 words in a sequence. Both the word _and its position the sequence_ are important.
+You can use the Stacks Wallet software without a hardware wallet device. Each wallet has its own address which corresponds to a STX address on the Stacks blockchain. You access this address with a unique, **seed phrase**. The software generates a seed phrase for you when create a software-only wallet. The seed phrase consists of 24 words in a sequence. Both the word _and its position the sequence_ are important.
 
-Write down your seed phrase and store it in a secure location such as a safe deposit box. When you write the seed phrase down, include its position, for example,`1-frog, 2-horse, 3-building` and so on until you reach a final position `24-ocean`.
+Write down your seed phrase and store it in a secure location such as a safe deposit box.
 
 !> Do not lose your seed phrase. If you lose your seed phrase, you lose any STX tokens in that associated wallet. **No person or organization, including Blockstack, can recover a lost seed phrase**.
 
@@ -123,12 +124,9 @@ If you have an existing 24 word seed phrase from this or a previous version of t
    The system generates a seed phrase for you and prompts you to write it down.
    Don't lose your seed phrase. If you lose your seed phrase, you lose your STX tokens and can never get them back.
 
-5. Write down each word and its position, for example,`1 - frog`.
+5. Write down each word in the displayed order.
 6. Store your written seed phrase in a secure location such as a safe deposit box.
 7. Click **I've written down my seed phrase**.
-
-   The system prompts you to re-enter your seed phrase. The sequence numbers are out of order. For example, `5` may appear in the `1` position. Enter the corresponding `5` and `1` word as appropriate.
-
 8. Select **Done**.
 
    The system displays the balance for the address that corresponds to your seed phrase.
@@ -176,11 +174,11 @@ example.
 
 ## Add Bitcoin gas
 
-The Stacks Wallet uses very small amounts of Bitcoin to pay fees for sending transactions. You need very small fractions of Bitcoin (BTC) for gas. The cost of gas you need fluctuates with the market price of Bitcoin.
+The Stacks Wallet uses very small amounts of Bitcoin to pay fees for sending transactions. You need very small amounts of Bitcoin (BTC) for gas. The cost of gas you need fluctuates with the market price of Bitcoin.
 
-!> Very small amounts of Bitcoin are all you need to fuel transactions. **Never send an entire coin to your Stacks Wallet. Amounts such as .0002 BTC are plenty**.
+!> Very small amounts of Bitcoin are all you need to fuel transactions.
 
-You can only receive Bitcoin with Stacks Wallet; you cannot send Bitcoin. You need an account with Coinbase or similar exchange to buy Bitcoin and send it to the Stacks Wallet.
+You need an account with Coinbase or similar exchange to buy Bitcoin and send it to the Stacks Wallet.
 
 If you attempt to send STX with your wallet and you do not have enough Bitcoin to fuel the transaction, you see this dialog:
 
@@ -208,7 +206,9 @@ To increase your Bitcoin for transactions, do the following:
 
    ![](/images/gas-up-cb.gif)
 
-Review your Stacks Wallet settings to see the increase in your balance. Your BTC balance only appears in this area.
+Review your Stacks Wallet settings to see the increase in your balance. Your BTC balance only appears in this area. The Bitcoin fuel address is tied to your Stacks wallet private key. No one else including Blockstack can access the Bitcoin.
+
+To withdraw Bitcoin from the fuel address. Click on the `Withdraw BTC` button in the **Settings** dialog. Note that you can only withdraw the entire balance in one transaction.
 
 ## Send stacks
 
@@ -292,10 +292,10 @@ Due to technical compatibility issues, we are currently unable to fully support 
 
 -> The wallet only supports Trezor One, Ledger Nano S, and Ledger Blue. Other wallets, for example, the Trezor Model T, are not supported. If you have questions about wallet support, please [contact Blockstack support](emailto:support@blockstack.org).
 
-The current Stacks Wallet ([v3.0.0](https://github.com/blockstack/stacks-wallet/releases/tag/v3.0.0)) supports only the Trezor One device, and only up to firmware [version 1.8.3](https://wiki.trezor.io/Firmware_changelog). If you have a newer firmware, you will have to downgrade by [following instructions described on this page](https://wiki.trezor.io/Firmware_downgrade).
+The current Stacks Wallet ([v3.1.0](https://github.com/blockstack/stacks-wallet/releases/tag/v3.0.0)) supports only the Trezor One device, and only up to firmware [version 1.8.3](https://wiki.trezor.io/Firmware_changelog). If you have a newer firmware, you will have to downgrade by [following instructions described on this page](https://wiki.trezor.io/Firmware_downgrade).
 
-!> Downgrading your wallet is dangerous and will erase your Trezor, so make sure you have your seed phrase backed up.
+!> Downgrading your wallet is dangerous and will erase your Trezor, so make sure you have your Trezor seed phrase backed up.
 
-Alternatively to downgrading the firmware, you can use Stacks (STX) tokens with a [Ledger hardware device](https://www.ledger.com/). You can enter your seed phrase into the Ledger device to access your account. View the [Ledger documentation on how to restore a seed phrase to a Ledger device](https://support.ledger.com/hc/en-us/articles/360005434914-Restore-from-recovery-phrase). You will need the original 24-word Trezor recovery phrase which you backed up when setting up your Trezor.
+Alternatively to downgrading the firmware, you can use Stacks (STX) tokens with a [Ledger hardware device](https://www.ledger.com/). You can enter your Trezor seed phrase into the Ledger device to access your account. View the [Ledger documentation on how to restore a seed phrase to a Ledger device](https://support.ledger.com/hc/en-us/articles/360005434914-Restore-from-recovery-phrase). You will need the original 24-word Trezor recovery phrase which you backed up when setting up your Trezor.
 
--> Only Ledger Nano S is currently supported by the v3.0.0 Stacks Wallet.
+-> Only Ledger Nano S is currently supported by the v3.1.0 Stacks Wallet.
