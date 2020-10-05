@@ -11,7 +11,7 @@ Stacking rewards Stacks token holders with bitcoins for providing a valuable ser
 
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks 2.0 network.
 
--> Fun fact: The Stacking consensus algorithm is implemented as a smart contract, using [Clarity](/smart-contracts/overview).
+-> The Stacking consensus algorithm is implemented as a smart contract, using [Clarity](/smart-contracts/overview). [Read more about the contract](#stacking-contract).
 
 ## Stacking flow
 
@@ -71,3 +71,26 @@ Stacking is a built-in capability of PoX and is realized through a set of action
 - Token holders register for the next rewards cycle by broadcasting a signed message that locks up associated Stacks tokens for a protocol-specified lockup period, specifies a Bitcoin address to receive the funds, and votes on a Stacks chain tip
 - Multiple leaders can commit to the same chain tip. The leader that wins the election and the peers who also burn for that leader collectively share the reward, proportional to how much each one burned
 - Token holders' locked up tokens automatically unlock as soon as the lockup period is completed
+
+## Stacking contract
+
+Stacking is implemented as a smart contract using Clarity. On the testnet, you can always find the Stacking contract by this contract identifier: `ST000000000000000000002AMW42H.pox`.
+
+You can examine the contract sources ([`pox.clar`](https://github.com/blockstack/stacks-blockchain/blob/master/src/chainstate/stacks/boot/pox.clar)), but here is a summary of important methods:
+
+| Method                       | Input                                               | Output                 | Read-only | Description                                                                                                                                                                                   |
+| ---------------------------- | --------------------------------------------------- | ---------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Configuration**            |
+| `get-reward-set-size`        | Reward cycle                                        | Number of addresses    | ✅        | Get the size of the reward set                                                                                                                                                                |
+| `get-total-ustx-stacked`     | Reward cycle                                        | Amount of micro-Stacks | ✅        | Get amount stacked                                                                                                                                                                            |
+| `get-reward-set-pox-address` | Reward cycle                                        | Tuple/None             | ✅        | Get list of reward addresses and amount stacked                                                                                                                                               |
+| `get-stacking-minimum`       |                                                     |                        | ✅        | Minimum number of micro-Stacks to participate in Stacking                                                                                                                                     |
+| `get-pox-info`               |                                                     | Object                 | ✅        | Get PoX parameters, including cycle id, length, block height, and more. Also available in [Stacks Blockchain API](https://blockstack.github.io/stacks-blockchain-api/#operation/get_pox_info) |
+| **Stacking**                 |
+| `can-stack-stx`              | BTC address, amount, starting cycle, locking cycles | True/Error             | ✅        | Check if stacking participation is possible                                                                                                                                                   |
+| `stack-stx`                  | Amount, BTC address, locking cycles                 | Object/Error           |           | Participate in stacking                                                                                                                                                                       | Tuple/None |
+| `get-stacker-info`           | Stacks Address                                      |                        | ✅        | Get stacking details for a specific stacker                                                                                                                                                   |
+| **Rejection**                |
+| `get-pox-rejection`          | Stacks Address                                      | Tuple/None             | ✅        | Get rejection vote for Stacking address                                                                                                                                                       |
+| `is-pox-active`              | Reward cycle                                        | True/False             | ✅        | Get PoX rejection status for a reward cycle. Also available in [Stacks Blockchain API](https://blockstack.github.io/stacks-blockchain-api/#operation/get_pox_info)                            |
+| `reject-pox`                 |                                                     | True                   |           | Reject Stacking for this reward cycle. Sender votes all its micro-Stacks for rejection                                                                                                        |
