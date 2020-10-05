@@ -46,7 +46,7 @@ In this tutorial, we will implement the Stacking flow laid out in the [Stacking 
 First install the stacks transactions library and an API client for the [Stacks 2.0 Blockchain API](/references/stacks-blockchain):
 
 ```shell
-npm install --save @blockstack/stacks-transactions@0.6.0 @stacks/blockchain-api-client c32check
+npm install --save @blockstack/stacks-transactions @stacks/blockchain-api-client c32check
 ```
 
 -> The API client is generated from the [OpenAPI specification](https://github.com/blockstack/stacks-blockchain-api/blob/master/docs/openapi.yaml) ([openapi-generator](https://github.com/OpenAPITools/openapi-generator)). Many other languages and frameworks are be supported by the generator.
