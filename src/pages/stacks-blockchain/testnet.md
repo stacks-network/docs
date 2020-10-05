@@ -20,7 +20,7 @@ The work towards mainnet is split up into four sequential phases:
 
 - ✅ **Phase 1:** is a developer local setup, mono-node, assembling SIP 001, SIP 002, SIP 004 and SIP 005. With this version, developers can not only run Stacks 2.0 on their development machines, but also write, execute, and test smart contracts.
 - ✅ **Phase 2:** is the current version of our public testnet. This testnet includes SIP 003, and will be an open-membership public network, where participants will be able to validate and participate in mining testnet blocks.
-- [ ] **Phase 3:** is the most complex phase which implements consensus, mining, and stacking (earning BTC). It is currently being implemented.
+- ✅ **Phase 3:** is the most complex phase which implements consensus, mining, and stacking (earning BTC).
 - [ ] **Phase 4** is mainly focused on testing.
 
 -> Have a look at the [Stacks 2.0 Testnet page](https://www.blockstack.org/testnet#phases) for a roadmap, including capabilities released and planned for each phase.
