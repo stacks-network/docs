@@ -35,7 +35,7 @@ node --version
 First, install all the required libraries:
 
 ```bash
-npm install --save @blockstack/stacks-transactions@0.6.0 @stacks/blockchain-api-client cross-fetch
+npm install --save @blockstack/stacks-transactions @stacks/blockchain-api-client cross-fetch
 ```
 
 -> The API client is generated from the [OpenAPI specification](https://github.com/blockstack/stacks-blockchain-api/blob/master/docs/openapi.yaml) ([openapi-generator](https://github.com/OpenAPITools/openapi-generator)). Many other languages and frameworks are be supported by the generator.
