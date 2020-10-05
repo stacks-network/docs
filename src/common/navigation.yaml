@@ -53,12 +53,14 @@ sections:
           - path: /accounts
           - path: /transactions
           - path: /network
+          - path: /stacking
         sections:
           - title: Tutorials
             pages:
               - path: /managing-accounts
               - path: /sending-tokens
               - path: /running-testnet-node
+              - path: /integrate-stacking
           - title: Stacks 1.0
             pages:
               - path: /stacks-1.0-info
