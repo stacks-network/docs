@@ -42,10 +42,9 @@ PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of des
 Miners have to run a software (mining client, aka "miner") on their machines to participate in the PoX mechanism. The mining client implements the PoX mechanism, which ensures proper handling and incentives through four key phases:
 
 - Registration: Miners register for a future election by sending consensus data to the network
-- Commitment: Registered miners transfer bitcoins to participate in the election
+- Commitment: Registered miners transfer bitcoins to participate in the election. Committed bitcoins are sent to a set eligible Stacks tokens holders
 - Election: A verifiable random function chooses one miner to write a new block on the Stacks blockchain
 - Assembly: The elected miner writes the new block and collects rewards in form of new Stacks tokens
-- Distribution: Committed bitcoins are sent to a set eligible Stacks tokens holders
 
 [@page-reference | inline]
 | /mining
@@ -68,7 +67,7 @@ Stacking is a built-in capability of PoX and is realized through a set of action
 - Progression in Stacking consensus happens over reward cycles (with a fixed length). In each reward cycle, a set of Bitcoin addresses are iterated over
 - A reward cycle consists of two phases: prepare and reward
 - During the prepare phase, miners decide on an anchor block and a reward set. Mining any descendant forks of the anchor block requires transferring mining funds to the appropriate reward addresses. The reward set is the set of Bitcoin addresses which will receive funds in the reward cycle
-- Miners register as leader candidates for a future election by sending a key transaction that both burns cryptocurrency (proof-of-burn) and spends energy (proof-of-work). The transaction also registers the leader's preferred chain tip (must be a descendant of the anchor block) and commitment of funds to 5 addresses from the reward set
+- Miners register as leader candidates for a future election by sending a key transaction that burns cryptocurrency (proof-of-burn). The transaction also registers the leader's preferred chain tip (must be a descendant of the anchor block) and commitment of funds to 2 addresses from the reward set
 - Token holders register for the next rewards cycle by broadcasting a signed message that locks up associated Stacks tokens for a protocol-specified lockup period, specifies a Bitcoin address to receive the funds, and votes on a Stacks chain tip
 - Multiple leaders can commit to the same chain tip. The leader that wins the election and the peers who also burn for that leader collectively share the reward, proportional to how much each one burned
 - Token holders' locked up tokens automatically unlock as soon as the lockup period is completed
