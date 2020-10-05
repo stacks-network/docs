@@ -22,11 +22,11 @@ The Stacks 2.0 Blockchain API is centrally-hosted. However, every running Stacks
 While the Node RPC API doesn't give the same functionality as the hosted Stacks 2.0 Blockchain API, you get similar functionality in a way that is scoped to that specific node. The RPC API includes the following endpoints:
 
 - [POST /v2/transactions](https://blockstack.github.io/stacks-blockchain-api/#operation/post_core_node_transactions)
-- [GET /v2/contracts/interface/{stacks_address}/{contract_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/get_contract_interface)
-- [POST /v2/map_entry/{stacks_address}/{contract_name}/{map_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/get_contract_data_map_entry)
-- [GET /v2/contracts/source/{stacks_address}/{contract_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/get_contract_source)
+- [GET /v2/contracts/interface/{contract_address}/{contract_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/get_contract_interface)
+- [POST /v2/map_entry/{contract_address}/{contract_name}/{map_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/get_contract_data_map_entry)
+- [GET /v2/contracts/source/{contract_address}/{contract_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/get_contract_source)
 - [GET /v2/accounts/{principal}](https://blockstack.github.io/stacks-blockchain-api/#operation/get_account_info)
-- [POST /v2/contracts/call-read/{stacks_address}/{contract_name}/{function_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/call_read_only_function)
+- [POST /v2/contracts/call-read/{contract_address}/{contract_name}/{function_name}](https://blockstack.github.io/stacks-blockchain-api/#operation/call_read_only_function)
 - [GET /v2/fees/transfer](https://blockstack.github.io/stacks-blockchain-api/#operation/get_fee_transfer)
 - [GET /v2/info](https://blockstack.github.io/stacks-blockchain-api/#operation/get_core_api_info)
 
