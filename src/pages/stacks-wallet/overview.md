@@ -19,7 +19,7 @@ tokens.
 Every wallet has one or more cryptocurrency addresses. An address is similar to an account number,
 it is public and will be used by others to send tokens to you. Each address has a corresponding
 private key, which is used to sign outgoing transactions from your account. The wallet software
-securely manages this private key for you. When setting up a new wallet (when not using a hardware
+securely manages this private key for you. When setting up a new wallet (and not using a hardware
 wallet), you will be asked to write down a seed phrase. This seed phrase is the equivalent of your
 private key. You should keep it safe and **never reveal it to anyone.**
 
@@ -35,7 +35,7 @@ private key. You should keep it safe and **never reveal it to anyone.**
 When you send a transaction from the wallet, you are digitally signing a token transfer from your
 account and broadcasting this to the Blockchain network. After the network has received and
 validated your transaction, tokens will be moved from your account to the specified destination
-address. The transaction will be permanently recorded on the Blockchain and is irreversible.
+account. The transaction will be permanently recorded on the Blockchain and is irreversible.
 
 ## Large-scale or institutional token holders
 
