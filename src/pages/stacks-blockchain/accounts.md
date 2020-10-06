@@ -84,15 +84,18 @@ const stacksAddress = getAddressFromPrivateKey(
 );
 ```
 
-A second alternative would be to use [stacks-gen](https://github.com/psq/stacks-gen).  This tool will generate all the keys you need in one place, including the values needed for calling the stacking contract, and also a WIF key for use with `bitcoind`.
+A second alternative would be to use [stacks-gen](https://github.com/psq/stacks-gen). This tool will generate all the keys you need in one place, including the values needed for calling the stacking contract, and also a WIF key for use with `bitcoind`.
 
 #### stacks-gen prerequisite
-Install [npx](https://github.com/npm/npx) if not already installed.  (npx will check whether <command> exists in $PATH, or in the local project binaries, and execute that. If <command> is not found, it will be installed prior to execution).
+
+Install [npx](https://github.com/npm/npx) if not already installed. (npx will check whether <command> exists in \$PATH, or in the local project binaries, and execute that. If <command> is not found, it will be installed prior to execution).
+
 ```
 npm install -g npx
 ```
 
 #### stacks-gen usage
+
 ```
 npx -q stacks-gen sk --testnet
 
