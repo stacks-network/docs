@@ -5,20 +5,20 @@ description: Learn more about the Stacks blockchain
 
 ## Introduction
 
-The Stacks 2.0 blockchain connects to Bitcoin for security and enables decentralized apps and predictable smart contracts. Stacks 2.0 implements a new mining mechanism called Proof of Transfer (PoX). PoX anchors to Bitcoin security and makes it possible to reward holders of Stacks (STX) tokens, the native token of the Stacks 2.0 blockchain, with bitcoins.
+Stacks 2.0 is a layer 1 blockchain that enables people to register digital assets and write smart contracts. It connects to Bitcoin with a 1:1 block ratio, meaning anything that happens on the Stacks blockchain can be verified on the Bitcoin Blockchain. It implements a new mining mechanism called Proof of Transfer (PoX). PoX uses an established blockchain (in this case Bitcoin) to secure a new blockchain (Stacks).
 
--> The Stacks 2.0 blockchain is open-source and available on GitHub: [blockstack/stacks-blockstack](https://github.com/blockstack/stacks-blockchain).
+-> The Stacks 2.0 blockchain is open-source and the code is available on GitHub: [blockstack/stacks-blockstack](https://github.com/blockstack/stacks-blockchain).
 
 ## Status
 
-The Stacks 2.0 blockchain is in active development. While the final release ("mainnet") is in the works, you can already get familiar with Stacks 2.0 capabilities on the "testnet".
+The Stacks 2.0 blockchain is in active development. While the final release ("mainnet") is in the works, you can get familiar with its features on the "testnet".
 
-For more information on the testnet, have a look at this page:
+More information about the testnet:
 
 [@page-reference | inline]
 | /stacks-blockchain/testnet
 
-=> The health status of the Stacks 2.0 network can be reviewed using the [status checker](/stacks-blockchain/network#health-check)
+=> The status of the Stacks 2.0 network can be viewed on the [status checker](/stacks-blockchain/network#health-check)
 
 ## Explorer
 
@@ -31,17 +31,17 @@ You can view accounts, blocks, transactions, and smart contracts broadcasted to 
 [@page-reference | grid-small]
 | /stacks-blockchain/managing-accounts, /stacks-blockchain/sending-tokens, /stacks-blockchain/running-testnet-node
 
-## Capabilities
+## Features
 
 ### Clarity Smart Contracts
 
-A [Smart Contract](https://academy.binance.com/glossary/smart-contract) is code running on the Stacks Blockchain that executes autonomously.
+A [Smart Contract](https://academy.binance.com/glossary/smart-contract) is simply a program that runs on a blockchain.
 
-Smart contracts on the Stacks 2.0 blockchain are written in a new language called Clarity. This language gives developers a safe way to build complex smart contracts. It's main features are:
+Smart contracts on the Stacks 2.0 blockchain are written in a new programming language called **Clarity**. Clarity is distinct from other languages designed for writing smart contracts in a few ways:
 
-- **Predictability**: The Clarity language uses precise and unambiguous syntax that allows developers to predict exactly how their contracts will be executed
-- **Security**: The Clarity language allows users to supply their own conditions for transactions that ensure that a contract may never unexpectedly transfer a token owned by a user
-- **No compiling**: Contracts written in Clarity are broadcasted on the blockchain exactly as they are written by developers. This ensures that the code developers wrote, analyzed, and tested, is exactly what gets executed
+- **Predictability**: The Clarity language uses precise and unambiguous syntax that allows developers to predict exactly how their contracts will be executed.
+- **Security**: The Clarity language allows users to supply their own conditions for transactions that ensure that a contract may never unexpectedly transfer a token owned by a user.
+- **No compiler**: Contracts written in Clarity are broadcasted on the blockchain exactly as they are written by developers. This ensures that the code developers wrote, analyzed, and tested, is exactly what gets executed.
 
 -> The [Clarity open-source project](https://clarity-lang.org/) is supported by Blockstack and Algorand.
 
@@ -50,25 +50,28 @@ Smart contracts on the Stacks 2.0 blockchain are written in a new language calle
 
 ### Stacks Mining
 
-Mining is required to make the network trustworthy and secure, by verifying transaction information. Mining is the act of participation in the consensus mechanism of the Stacks 2.0 blockchain, called Proof of Transfer (PoX). To incentivize miners, who have to run mining software on their machine, they receive freshly minted Stacks (STX) tokens.
+Mining is required to make the network usable, trustworthy, and secure. Miners verify incoming transactions and participate in the consensus mechanism of the Stacks 2.0 blockchain, called Proof of Transfer (PoX). To incentivize mining, miners receive freshly minted Stacks (STX) tokens.
 
 [@page-reference | inline]
 | /mining
 
 ### Proof of Transfer (PoX)
 
-Proof of Transfer (PoX) is a consensus mechanism that leverages the security and stability of Bitcoin to create a new blockchain, without modifying the Bitcoin protocol. With the PoX mechanism, miners use Bitcoin to secure the Stacks 2.0 network. By anchoring onto the Bitcoin network, it is practically infeasible for malicious actors to have enough computational power or ownership stake to attack the Stacks 2.0 network.
+Proof of Transfer (PoX) is a novel consensus mechanism that leverages the security and stability of Bitcoin to create a new blockchain, without modifying the Bitcoin protocol.
 
-PoX makes it also possible to reward Stacks token holders with bitcoins, a feature called **Stacking**. With Stacking, Stacks (STX) token holders lock up STX tokens for a certain time. With that, they help secure the network by effectively acting as validators on the network, incentivizing honest behavior on the part of miners.
+Stacks (STX) miners transfer Bitcoin to other Stacks (STX) holders in order to mine blocks. This BTC reward mechanism is called **Stacking**.
 
-[@page-reference | inline]
-| /stacks-blockchain/stacking
+### Stacking
+
+Stacks (STX) token holders can help secure the network by participating in Stacking and locking up their Stacks (STX) tokens for a certain period of time. As a reward for this commitment, Stackers receive Bitcoin that miners transfer as part of Proof of Transfer (PoX).
+
+-> Proof of Transfer and Stacking are in active development and are coming soon
 
 ## Protocol specification
 
-The Stacks 2.0 blockchain specification consists a set of proposals, called Stacks improvement proposals (SIPs). Each SIP is aimed at describing the implementation of a part of the Stacks 2.0 blockchain. Together, all proposals contain concise technical specifications of features or standards and the rationale
-behind it.
+The Stacks 2.0 blockchain specification consists a set of proposals, called Stacks improvement proposals (SIPs). Each SIP describes the implementation of a part of the Stacks 2.0 blockchain. Together, all proposals contain concise technical specifications of features or standards and the rationale
+behind them.
 
-You can review the [SIP folder](https://github.com/blockstack/stacks-blockchain/blob/master/sip/) to find all proposals. Reading through the SIPs will help understand the Stacks 2.0 details on a propotcol level.
+These SIPs can be found [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/).
 
 -> See [SIP 000](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-000-stacks-improvement-proposal-process.md) for more details about the SIPs process..
