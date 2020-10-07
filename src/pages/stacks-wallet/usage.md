@@ -292,7 +292,7 @@ Due to technical compatibility issues, we are currently unable to fully support 
 
 -> The wallet only supports Trezor One, Ledger Nano S, and Ledger Blue. Other wallets, for example, the Trezor Model T, are not supported. If you have questions about wallet support, please [contact Blockstack support](emailto:support@blockstack.org).
 
-The current Stacks Wallet ([v3.1.0](https://github.com/blockstack/stacks-wallet/releases/tag/v3.0.0)) supports only the Trezor One device, and only up to firmware [version 1.8.3](https://wiki.trezor.io/Firmware_changelog). If you have a newer firmware, you will have to downgrade by [following instructions described on this page](https://wiki.trezor.io/Firmware_downgrade).
+The current Stacks Wallet ([v3.1.0](https://github.com/blockstack/stacks-wallet/releases/tag/v3.1.0)) supports only the Trezor One device, and only up to firmware [version 1.8.3](https://wiki.trezor.io/Firmware_changelog). If you have a newer firmware, you will have to downgrade by [following instructions described on this page](https://wiki.trezor.io/Firmware_downgrade).
 
 !> Downgrading your wallet is dangerous and will erase your Trezor, so make sure you have your Trezor seed phrase backed up.
 

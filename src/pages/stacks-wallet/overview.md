@@ -8,7 +8,7 @@ description: Learn about cryptocurrency wallets, STX, and the Stacks wallet.
 The Stacks Wallet is the application used to manage your Stacks (STX) token holdings. You can
 use it to view your token balance, send and receive tokens. This overview will introduce some
 basic concepts and terminology. If you have a good understanding of cryptocurrencies, you can
-skip to the [installation page](https://docs.blockstack.org/stacks-wallet/install).
+skip to the [installation page](/stacks-wallet/install).
 
 ## Wallets, addresses, and tokens
 
