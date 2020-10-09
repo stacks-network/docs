@@ -7,6 +7,8 @@ images:
 
 ## Introduction
 
+!> The Stacking implementation is still in development and could change in the coming weeks
+
 Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time.
 
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks 2.0 network.
@@ -76,4 +78,4 @@ Stacking is a built-in capability of PoX and is realized through a set of action
 
 Stacking is implemented as a smart contract using Clarity. On the testnet, you can always find the Stacking contract by this contract identifier: `ST000000000000000000002AMW42H.pox`.
 
--> Check out the [PoX contract reference](#todo) for more details
+-> A PoX contract reference is coming soon!
