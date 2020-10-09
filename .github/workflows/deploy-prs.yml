@@ -10,7 +10,7 @@ jobs:
         with:
           access_token: ${{ github.token }}
       - uses: actions/checkout@v2
-      - uses: aulneau/vercel-action@v19.0.2+3
+      - uses: aulneau/vercel-action@v20.0.0
         id: vercel_deployment_preview
         if: github.event_name == 'pull_request'
         with:
