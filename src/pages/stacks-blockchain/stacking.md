@@ -76,6 +76,4 @@ Stacking is a built-in capability of PoX and is realized through a set of action
 
 ## Stacking contract
 
-Stacking is implemented as a smart contract using Clarity. On the testnet, you can always find the Stacking contract by this contract identifier: `ST000000000000000000002AMW42H.pox`.
-
--> A PoX contract reference is coming soon!
+Check out the [Stacking contract reference](/references/stacking-contract) to see available methods and error codes.
