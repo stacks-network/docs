@@ -13,6 +13,8 @@ images:
 
 ## Introduction
 
+!> The Stacking implementation is still in development and could change in the coming weeks
+
 In this tutorial, you'll learn how to integrate Stacking by interacting with the respective smart contract, as well as reading data from the Stacks blockchain.
 
 This tutorial highlights the following functionality:
