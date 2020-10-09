@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: aulneau/vercel-action@v19.0.2+3
+      - uses: aulneau/vercel-action@v20.0.0
         id: vercel_prod_deployment
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
