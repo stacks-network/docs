@@ -17,16 +17,16 @@ images:
 ## Introduction
 
 In this tutorial, you will learn about Stacks authentication and storage by installing,
-running and reviewing the code for a "Todos" web app built with Blockstack and [React](https://reactjs.org/).
+running and reviewing the code for a "Todos" web app built with Stacks authentication and [React](https://reactjs.org/).
 
 This app highlights the following platform functionality:
 
-- Generate Secret Key with associated Blockstack username to authenticate app
+- Generate Secret Key with associated Stacks username to authenticate app
 - Add, edit and delete encrypted app data with Gaia
 - Decrypt data on Gaia for public sharing by URL
 - Unauthenticate and re-authenticate app with Secret Key
 
-[Preview the app](https://todos.blockstack.org) or [view its code on GitHub](https://github.com/blockstack/blockstack-todos).
+[Preview the app](https://todos.blockstack.org) or [view its code on GitHub](https://github.com/blockstack/stacks-todos).
 
 Existing familiarity with React is recommended for reviewing this app's code.
 
@@ -38,8 +38,8 @@ You must have recent versions of Git and [Node.js](https://nodejs.org/en/downloa
 ### Step 1: Install the code and its dependencies
 
 ```bash
-git clone https://github.com/blockstack/blockstack-todos
-cd blockstack-todos
+git clone https://github.com/blockstack/stacks-todos
+cd stacks-todos
 npm install
 ```
 
@@ -79,7 +79,7 @@ library that makes it easy to integrate Stacks authentication into the UI of any
 ![The Stacks Connect Modal](/images/todos-intro.png)
 
 Below, you can see the relevant parts of the [React component](https://reactjs.org/docs/react-component.html)
-that triggers this modal in [`src/components/Signin.jsx`](https://github.com/blockstack/blockstack-todos/blob/master/src/components/Signin.jsx):
+that triggers this modal in [`src/components/Signin.jsx`](https://github.com/blockstack/stacks-todos/blob/master/src/components/Signin.jsx):
 
 ```js
 // src/components/Signin.jsx
@@ -106,7 +106,7 @@ Stacks apps, one in which they authenticate with a _Secret Key_ that's used to e
 their private data.
 
 The modal displays the app's name and icon as configured in
-[`src/components/App.jsx`](https://github.com/blockstack/blockstack-todos/blob/master/src/components/App.jsx#L26):
+[`src/components/App.jsx`](https://github.com/blockstack/stacks-todos/blob/master/src/components/App.jsx#L26):
 
 ```jsx
 // src/components/App.jsx
@@ -118,8 +118,8 @@ appDetails: {
 
 ```
 
-This component loads the [`UserSession`](https://blockstack.github.io/blockstack.js/classes/usersession.html)
-module from a second Stacks library called [@stacks/auth](https://github.com/blockstack/blockstack.js/),
+This component loads the [`UserSession`](https://blockstack.github.io/stacks.js/classes/usersession.html)
+module from a second Stacks library called [@stacks/auth](https://github.com/blockstack/stacks.js/),
 which complements Stacks Connect by providing an API for many protocol-level operations, such as for
 authentication and storage.
 
@@ -133,7 +133,7 @@ const userSession = new UserSession({ appConfig });
 ```
 
 This module handles user session operations and is initiated using the
-[`appConfig`](https://github.com/blockstack/blockstack-todos/blob/master/src/assets/constants.js#L3) object,
+[`appConfig`](https://github.com/blockstack/stacks-todos/blob/master/src/assets/constants.js#L3) object,
 which contains an array of [scopes](/authentication/overview#scopes) that indicate just what permissions
 to grant during authentication:
 
@@ -144,7 +144,7 @@ export const appConfig = new AppConfig(['store_write', 'publish_data']);
 ```
 
 The `appDetails` and `userSession` objects are joined by the callback function
-[`finished`](https://github.com/blockstack/blockstack-todos/blob/master/src/components/App.jsx#L31)
+[`finished`](https://github.com/blockstack/stacks-todos/blob/master/src/components/App.jsx#L31)
 in configuring Stacks Connect for authentication with the `authOptions` object:
 
 ```js
@@ -158,7 +158,7 @@ finished: ({ userSession }) => {
 This function simply saves data about the user into the app's state upon authentication.
 
 Further down in the component we see in
-[`componentDidMount`](https://github.com/blockstack/blockstack-todos/blob/master/src/components/App.jsx#L46)
+[`componentDidMount`](https://github.com/blockstack/stacks-todos/blob/master/src/components/App.jsx#L46)
 that it checks upon mount to either process completion of authentication with `userSession.handlePendingSignIn()`
 or otherwise load session data into app state as above with `userSession.isUserSignedIn()`:
 
@@ -232,7 +232,7 @@ export const saveTasks = async (userSession, tasks, isPublic) => {
 };
 ```
 
-These todos are subsequently loaded using the [`getFile`](http://blockstack.github.io/blockstack.js/globals.html#getfile)
+These todos are subsequently loaded using the [`getFile`](http://blockstack.github.io/stacks.js/globals.html#getfile)
 method of the same object in the same module:
 
 ```jsx
@@ -268,8 +268,8 @@ The app will now show all of your todos to anyone who visits the URL displayed w
 Select "Sign out" to deauthenticate the app with your Stacks account.
 
 This triggers an event, which
-[under the hood](https://github.com/blockstack/blockstack-todos/blob/master/src/components/Header.jsx#L47)
-calls the [`signUserOut` method](https://blockstack.github.io/blockstack.js/classes/usersession.html#signuserout)
+[under the hood](https://github.com/blockstack/stacks-todos/blob/master/src/components/Header.jsx#L47)
+calls the [`signUserOut` method](https://blockstack.github.io/stacks.js/classes/usersession.html#signuserout)
 of the `UserSession` object.
 
 Now, visit the URL that was provided to you when you made your tasks public. This url is of the format `/todos/:username`, so if your username is `jane_doe.id.blockstack`, the URL would be [`localhost:3000/todos/jane_doe.id.blockstack`](http://localhost:3000/todos/jane_doe.id.blockstack).
@@ -301,5 +301,5 @@ You'll now see your todos as an authenticated user for the username you've chose
 ## Learn more
 
 Read [the Stacks Connect guide](/authentication/connect) and
-[the stacks.js reference](https://blockstack.github.io/blockstack.js/) to learn more about the
+[the stacks.js reference](https://blockstack.github.io/stacks.js/) to learn more about the
 libraries used in this tutorial.
