@@ -159,7 +159,7 @@ To make sure your app handles this gracefully, you'll need to handle the case wh
 
 `${authOptions.redirectTo}?authResponse=....`
 
-To finalize authentication with this flow, you'll need to utilize the `UserSession` methods `isSignInPending()` and `handlePendingSignIn()`. For more information, check out the [stacks.js API reference](https://blockstack.github.io/blockstack.js/).
+To finalize authentication with this flow, you'll need to utilize the `UserSession` methods `isSignInPending()` and `handlePendingSignIn()`. For more information, check out the [stacks.js API reference](https://blockstack.github.io/stacks.js/).
 
 ```js
 const userSession = new UserSession(appConfig);
