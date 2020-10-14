@@ -10,9 +10,9 @@
       },
       {
         "name": "delegate-stack-stx",
-        "input_type": "principal, uint, (tuple (hashbytes (buff 20)) (version (buff 1))), uint",
+        "input_type": "principal, uint, (tuple (hashbytes (buff 20)) (version (buff 1))), uint, uint",
         "output_type": "(response (tuple (lock-amount uint) (stacker principal) (unlock-burn-height uint)) int)",
-        "signature": "(delegate-stack-stx stacker amount-ustx pox-addr lock-period)",
+        "signature": "(delegate-stack-stx stacker amount-ustx pox-addr start-burn-ht lock-period)",
         "description": "As a delegate, stack the given principal's STX using `partial-stacked-by-cycle`.\nOnce the delegate has stacked > minimum, the delegate should call `stack-aggregation-commit`."
       },
       {
@@ -52,9 +52,9 @@
       },
       {
         "name": "stack-stx",
-        "input_type": "uint, (tuple (hashbytes (buff 20)) (version (buff 1))), uint",
+        "input_type": "uint, (tuple (hashbytes (buff 20)) (version (buff 1))), uint, uint",
         "output_type": "(response (tuple (lock-amount uint) (stacker principal) (unlock-burn-height uint)) int)",
-        "signature": "(stack-stx amount-ustx pox-addr lock-period)",
+        "signature": "(stack-stx amount-ustx pox-addr start-burn-ht lock-period)",
         "description": "Lock up some uSTX for stacking!  Note that the given amount here is in micro-STX (uSTX).\nThe STX will be locked for the given number of reward cycles (lock-period).\nThis is the self-service interface.  tx-sender will be the Stacker.\n\n* The given stacker cannot currently be stacking.\n* You will need the minimum uSTX threshold. This isn't determined until the reward cycle begins, but this\n   method still requires stacking over the _absolute minimum_ amount, which can be obtained by calling `get-stacking-minimum`.\n\nThe tokens will unlock and be returned to the Stacker (tx-sender) automatically."
       }
     ],
@@ -124,6 +124,11 @@
         "name": "ERR_DELEGATION_TOO_MUCH_LOCKED",
         "type": "int",
         "value": "22"
+      },
+      {
+        "name": "ERR_INVALID_START_BURN_HEIGHT",
+        "type": "int",
+        "value": "24"
       },
       {
         "name": "ERR_NOT_ALLOWED",
