@@ -240,6 +240,8 @@ At this point, your app shows Stacking details. If Stacking is executed and the 
 
 With this input, and the data from previous steps, we can determine the eligibility for the next reward cycle:
 
+-> Todo: Check the balance manually here - `can-stack-stx` doesn't check it anymore
+
 ```js
 // microstacks tokens to lockup, must be >= poxInfo.min_amount_ustx and <=accountSTXBalance
 let microstacksoLockup = poxInfo.min_amount_ustx;
