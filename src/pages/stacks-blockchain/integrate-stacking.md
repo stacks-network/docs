@@ -323,6 +323,8 @@ const contractCall = await broadcastTransaction(transaction, network);
 console.log(contractCall);
 ```
 
+-> The maximum number of microstacks that can be committed needs to exclude transaction fees required to broadcast the stacking action.
+
 The transaction completion will take several minutes. Concurrent stacking actions should be disabled to ensure the user doesn't lock up more tokens as expected.
 
 ## Step 6: Confirm lock-up
