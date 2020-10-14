@@ -208,6 +208,8 @@ res.json({
 });
 ```
 
+-> Todo: `minAmountSTX` should include transaction fees for a stacking contract call
+
 For testing purposes, you can use a faucet to obtain STX tokens:
 
 ```shell
@@ -322,6 +324,8 @@ const contractCall = await broadcastTransaction(transaction, network);
 // this will return a new transaction ID
 console.log(contractCall);
 ```
+
+-> Todo: Update `stack-stx` to represent most recent PoX implementation
 
 -> The maximum number of microstacks that can be committed needs to exclude transaction fees required to broadcast the stacking action.
 
