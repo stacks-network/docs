@@ -93,7 +93,7 @@ A transaction includes the following information. Multiple-byte fields are encod
 
 ## Construction
 
-The easiest way to construct well-formed transactions is by [using the Stacks Transactions JS library](https://github.com/blockstack/stacks-transactions-js#post-conditions). You can construct the following transaction types:
+The easiest way to construct well-formed transactions is by [using the Stacks Transactions JS library](https://github.com/blockstack/stacks.js/tree/master/packages/transactions#post-conditions). You can construct the following transaction types:
 
 - Stacks token transfer
 - Smart contract deploy
@@ -106,7 +106,7 @@ When constructing transactions, it is required to set the network the transactio
 ### Stacks Token transfer
 
 ```js
-import { makeSTXTokenTransfer, StacksTestnet } from '@blockstack/stacks-transactions';
+import { makeSTXTokenTransfer, StacksTestnet } from '@stacks/transactions';
 const BigNum = require('bn.js');
 
 const txOptions = {
@@ -127,7 +127,7 @@ const transaction = await makeSTXTokenTransfer(txOptions);
 ### Smart contract deployment
 
 ```js
-import { makeContractDeploy, StacksTestnet } from '@blockstack/stacks-transactions';
+import { makeContractDeploy, StacksTestnet } from '@stacks/transactions';
 const BigNum = require('bn.js');
 
 const txOptions = {
@@ -143,7 +143,7 @@ const transaction = await makeContractDeploy(txOptions);
 ### Smart contract function call
 
 ```js
-import { makeContractCall, BufferCV, StacksTestnet } from '@blockstack/stacks-transactions';
+import { makeContractCall, BufferCV, StacksTestnet } from '@stacks/transactions';
 const BigNum = require('bn.js');
 
 const txOptions = {
@@ -268,7 +268,7 @@ In order to broadcast transactions to and between nodes on the network, RLP data
 
 To support an API-friendly and human-readable representation, the [Stacks Blockchain API](/references/stacks-blockchain-api) converts transactions into a JSON format.
 
-=> [The Stacks Transactions JS library](https://github.com/blockstack/stacks-transactions-js) supports serialization of transactions.
+=> [The Stacks Transactions JS library](https://github.com/blockstack/stacks.js) supports serialization of transactions.
 
 ### Raw format
 
@@ -329,10 +329,10 @@ When called the Stacks Blockchain API or Node RPC API, transactions returned wil
 
 ### Deserializing
 
-Serialized, raw transactions can be deserialized without access to the internet using [the Stacks Transactions JS library](https://github.com/blockstack/stacks-transactions-js):
+Serialized, raw transactions can be deserialized without access to the internet using [the Stacks Transactions JS library](https://github.com/blockstack/stacks.js/tree/master/packages/transactions):
 
 ```js
-import { BufferReader, deserializeTransaction } from '@blockstack/stacks-transactions';
+import { BufferReader, deserializeTransaction } from '@stacks/transactions';
 
 // receive raw transaction
 const serializedTx = '808000000...';
