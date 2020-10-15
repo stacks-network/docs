@@ -12,7 +12,7 @@ images:
 
 In the world of smart contracts, everything is a blockchain transaction. You use tokens in your wallet to deploy a smart contract in a transaction, and each call to that contract after it's published is a transaction, too. That means that at each step, tokens are being exchanged as transaction fees. This tutorial introduces you to this mode of programming, which transforms blockchains into powerful state machines capable of executing complex logic.
 
-Clarity, Blockstack's smart contracting language, is based on LISP and uses its parenthesized notation. Clarity is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and [decidable](https://en.wikipedia.org/wiki/Recursive_language). To learn more basics about the language, see the [Introduction to Clarity](overview) topic.
+Clarity, the smart contracting language used on the Stacks Blockchain, is based on LISP and uses its parenthesized notation. Clarity is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and [decidable](https://en.wikipedia.org/wiki/Recursive_language). To learn more basics about the language, see the [Introduction to Clarity](overview) topic.
 
 By the end of this tutorial, you will:
 
@@ -37,11 +37,11 @@ The Stacks 2.0 blockchain is currently in development and could experience reset
 
 ### Optional: Install Visual Studio Code with Clarity Extensions
 
-[Visual Studio Code](https://code.visualstudio.com/) (aka VS Code) is a free development interface for which Blockstack has created custom extensions, to make it easier to create smart contracts with Clarity.
+[Visual Studio Code](https://code.visualstudio.com/) (aka VS Code) is a free development environment which has Clarity extensions, to make it easier to create smart contracts with Clarity.
 
 [Install Visual Studio Code](https://code.visualstudio.com/download) and install the following extensions for the best coding experience:
 
-- [Clarity](https://marketplace.visualstudio.com/items?itemName=blockstack.clarity), the official language extension by Blockstack that defines the Clarity language for VS Code and provides auto-complete and syntax highlighting.
+- [Clarity](https://marketplace.visualstudio.com/items?itemName=blockstack.clarity), the official language extension that defines the Clarity language for VS Code and provides auto-complete and syntax highlighting.
 - [clarity-lsp](https://marketplace.visualstudio.com/items?itemName=lgalabru.clarity-lsp), which adds inline help functionality for Clarity to VS Code
 - [Rainbow Brackets](https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets), which adds helpful colorization of matching pairs of parentheses while you code
 
@@ -103,7 +103,7 @@ Open up the [Stacks 2.0 Explorer Sandbox view](https://testnet-explorer.blocksta
 
 Here, we will run the code from `hello-world` right in the browser and create blockchain transactions right in the browser.
 
-You will be asked to sign in with or sign up for a Blockstack ID. Your new ID will include a new Stacks address, which is essentially a wallet that holds funds like STX tokens. STX tokens are consumed as fees to register digital assets on the network and to publish/execute smart contracts, among other functions on the network.
+You will be asked to sign in with or sign up for a Stacks ID. Your new ID will include a new Stacks address, which is essentially a wallet that holds funds like STX tokens. STX tokens are consumed as fees to register digital assets on the network and to publish/execute smart contracts, among other functions on the network.
 
 All of the following operations will happen on the Testnet. A Testnet is an alternative Stacks 2.0 blockchain, to be used for testing. Testnet STX tokens are separate and distinct from actual STX tokens, and are never supposed to have any value.
 
@@ -175,20 +175,20 @@ With the completion of this tutorial, you now:
 
 ## Optional: Get familiar with CLI
 
-The steps above provide an easy way to get started with contract deployment and contract calls. If you want to stay in the terminal and get access to more advanced capabilities, you should use the Blockstack CLI.
+The steps above provide an easy way to get started with contract deployment and contract calls. If you want to stay in the terminal and get access to more advanced capabilities, you should use the Stacks CLI.
 
 The following set of commands will achieve the same goals as the above workflow.
 
-Install an early release of the new Blockstack CLI for Stacks 2.0.
+Install an early release of the new Stacks CLI for Stacks 2.0.
 
 ```bash
-npm install --global "https://github.com/blockstack/cli-blockstack#feature/stacks-2.0-tx"
+npm install --global @stacks/cli
 ```
 
 Create a new Stacks address and save keychain details, using the `-t` flag to target Testnet. The new keychain details will be stored in the file `cli_keychain.json`:
 
 ```bash
-blockstack make_keychain -t > cli_keychain.json
+stx make_keychain -t > cli_keychain.json
 ```
 
 Review your new Stacks address details.
@@ -229,7 +229,7 @@ The response will include a `txId` property. This is the transaction that was in
 You need to wait up to a minute for the transaction to complete. After that, you can confirm that your balance increase by 0.5 STX.
 
 ```bash
-blockstack balance -t <stx_address>
+stx balance -t <stx_address>
 ```
 
 ```json
@@ -243,25 +243,25 @@ blockstack balance -t <stx_address>
 With sufficient funds on your account, you can deploy a contract file to Testnet. In this example, we are deploying the `hello-world.clar` contract with the name `hello-world`.
 
 ```bash
-# blockstack deploy_contract -t <contract_file_path> <contract_name> <fee> <nonce> <privateKey>
+# stx deploy_contract -t <contract_file_path> <contract_name> <fee> <nonce> <privateKey>
 # replace `nonce` with the value from the last balance check
 # replace `privateKey` with your private key from your keychain
 # replace `fee` with 2000. Usually, an estimate should be used but 2000 will be good enough for this tutorial
-blockstack deploy_contract -t ./hello-world.clar hello-world 2000 0 5a3f1f15245bb3fb
+stx deploy_contract -t ./hello-world.clar hello-world 2000 0 5a3f1f15245bb3fb
 ```
 
--> To learn more about the Blockstack CLI commands, you can run `blockstack-cli help all`.
+-> To learn more about the Stacks CLI commands, you can run `stx help all`.
 
 The command will return a new contract deploy transaction ID. You have to wait up to a minute for the contract to be broadcast to the network. Keep in mind that this operation will increase the `nonce` of your account.
 
 As soon as the contract is deployed, you can call a contract method. In this example, we are calling the `echo-number` function of the previously named `hello-world` contract. The method is defined as `read-only` and will return the result without generating a new transactions.
 
 ```bash
-# blockstack call_read_only_contract_func -t <stx_address> <contract_name> <function_name> <fee> <nonce> <privateKey>
+# stx call_read_only_contract_func -t <stx_address> <contract_name> <function_name> <fee> <nonce> <privateKey>
 # replace `stx_address` and `privateKey` with values from your keychain
 # replace `nonce` with the value from the last balance check + 1
 # replace `fee` with 2000. Usually, an estimate should be used but 2000 will be good enough for this tutorial
-blockstack call_read_only_contract_func -t <stx_address> hello-world echo-number 2000 1 5a3f1f15245bb3fb
+stx call_read_only_contract_func -t <stx_address> hello-world echo-number 2000 1 5a3f1f15245bb3fb
 ```
 
 => **Congratulations!** You can now deploy your smart contract and call public functions on the Testnet using the CLI.

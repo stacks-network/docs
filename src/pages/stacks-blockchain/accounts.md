@@ -24,15 +24,15 @@ An account is generated from a 24-word mnemonic phrase. This is often referred t
 
 !> If the seed phrase is lost, access to the associated account cannot be restored. No person or organization, including Blockstack, can recover a lost seed phrase.
 
-The easiest way to generate a new Stacks 2.0 account is to use the [Stacks 2.0 CLI](https://github.com/blockstack/cli-blockstack/tree/feature/stacks-2.0-tx):
+The easiest way to generate a new Stacks 2.0 account is to use the [Stacks CLI](https://github.com/blockstack/stacks.js/tree/master/packages/cli):
 
 ```bash
 # install CLI globally
-npm install --global "https://github.com/blockstack/cli-blockstack#feature/stacks-2.0-tx"
+npm install --global @stacks/cli
 
 # generate a new account and store details in a new file
 # '-t' option makes this a testnet account
-blockstack make_keychain -t > cli_keychain.json
+stx make_keychain -t > cli_keychain.json
 ```
 
 `make_keychain` creates the following file:
@@ -63,7 +63,7 @@ Note that a new account automatically exists for each new private key. There is 
 
 -> Addresses are created by generating the [RIPEMD-160 hash](https://en.wikipedia.org/wiki/RIPEMD#RIPEMD-160_hashes) of the [SHA256](https://en.bitcoinwiki.org/wiki/SHA-256) of the public key. BTC addresses are encoded with [Base58Check](https://en.bitcoin.it/wiki/Base58Check_encoding). For Stacks addresses, [c32check](https://github.com/blockstack/c32check) is used. Deriving an address from a public key can be done without internet access, for instance using the c32check `c32addressDecode` method.
 
-Alternatively to the CLI creation, the [Stacks Transactions JS](https://github.com/blockstack/stacks-transactions-js) library can be used:
+Alternatively to the CLI creation, the [Stacks Transactions JS](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library can be used:
 
 ```js
 import {
@@ -71,7 +71,7 @@ import {
   privateKeyToString,
   getAddressFromPrivateKey,
   TransactionVersion,
-} from '@blockstack/stacks-transactions';
+} from '@stacks/transactions';
 
 const privateKey = makeRandomPrivKey();
 
