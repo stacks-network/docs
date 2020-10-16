@@ -60,6 +60,7 @@ sections:
               - path: /managing-accounts
               - path: /sending-tokens
               - path: /running-testnet-node
+              - path: /running-in-docker
               - path: /integrate-stacking
           - title: Stacks 1.0
             pages:
