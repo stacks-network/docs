@@ -13,6 +13,7 @@ sections:
               - path: /counter-tutorial
               - path: /testing-contracts
               - path: /signing-transactions
+              - path: /setting-up-local-environment
       - path: /mining # is an overview page
 
   - title: Technology
