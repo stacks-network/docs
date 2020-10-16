@@ -12,29 +12,33 @@ images:
 ---
 
 ## Introduction:
+
 This tutorial will walk you through the following steps:
+
 - Run the node with Docker
 - Mine Stacks token with Docker
 
 ## Requirements:
+
 - a computer
 - [Docker](https://docs.docker.com/get-docker/)
 - a keyboard and monitor
 - `jq` binary (if not installed, run the commands **without** `| jq`)
 - dedicated directory to keep the config file(s)
-  - i.e. for *Nix, `$HOME/stacks`: `mkdir -p $HOME/stacks`
-
+  - i.e. for \*Nix, `$HOME/stacks`: `mkdir -p $HOME/stacks`
 
 ### Create Seed
-*Note: following command can take a few minutes to install dependencies and output data*
+
+_Note: following command can take a few minutes to install dependencies and output data_
 
 Generate keychain:
+
 ```bash
 docker run -i node:alpine npx blockstack-cli@1.1.0-beta.1 make_keychain -t | jq
 ```
 
+Example Output (_`EACCES` error can be ignored_):
 
-Example Output (*`EACCES` error can be ignored*):
 ```json
 {
   "mnemonic": "exhaust spin topic distance hole december impulse gate century absent breeze ostrich armed clerk oak peace want scrap auction sniff cradle siren blur blur",
@@ -47,16 +51,18 @@ Example Output (*`EACCES` error can be ignored*):
 }
 ```
 
-
 ### Request BTC from the faucet
-*replace 'btc_address' with `btcAddress` property from your keychain*
+
+_replace 'btc_address' with `btcAddress` property from your keychain_
 
 Request BTC:
+
 ```bash
 curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/btc?address=<btc_address>" | jq
 ```
 
 Example Output:
+
 ```json
 {
   "txid": "1970274d25f7ecb7f4ac1f992059d52fd9c393fdc1610b58ba1d279b7f6f8a0e",
@@ -65,15 +71,16 @@ Example Output:
 }
 ```
 
-
-
 ## Miner
+
 ### Config
+
 https://docs.blockstack.org/mining#running-a-miner
 
 To use the following config, you'll need to make a new `seed`, which you should have already generated from the above section.
 
 **Config.toml**:
+
 ```toml
 [node]
 working_dir = "/root/stacks-node/current"
@@ -112,9 +119,11 @@ Copy/Paste the above (with your specific `seed`) as `$HOME/stacks/Config.toml`
 You should now have a miner config located at `$HOME/stacks/Config.toml`
 
 ### Commands
-*Note*:  When these containers are stopped, all data is deleted. To persist the data across restarts, either use a docker bind-mount, or remove the `--rm` from the below commands.
+
+_Note_: When these containers are stopped, all data is deleted. To persist the data across restarts, either use a docker bind-mount, or remove the `--rm` from the below commands.
 
 **Without** DEBUG output:
+
 ```bash
 docker run -d \
   --name stacks_miner \
@@ -127,6 +136,7 @@ docker run -d \
 ```
 
 **With** DEBUG output:
+
 ```bash
 docker run -d \
   --name stacks_miner \
@@ -141,19 +151,21 @@ docker run -d \
 ```
 
 **Logs**:
+
 ```bash
 docker logs -f stacks_miner
 ```
 
-
 ## Follower
+
 https://docs.blockstack.org/stacks-blockchain/running-testnet-node
 
-
 ### Commands
-*Note*:  When these containers are stopped, all data is deleted. To persist the data across restarts, either use a docker bind-mount, or remove the `--rm` from the below commands.
+
+_Note_: When these containers are stopped, all data is deleted. To persist the data across restarts, either use a docker bind-mount, or remove the `--rm` from the below commands.
 
 **Without** DEBUG output:
+
 ```bash
 docker run -d \
   --name stacks_follower \
@@ -165,6 +177,7 @@ docker run -d \
 ```
 
 **With** DEBUG output:
+
 ```bash
 docker run -d \
   --name stacks_follower \
@@ -178,6 +191,7 @@ docker run -d \
 ```
 
 **Logs**:
+
 ```bash
 docker logs -f stacks_follower
 ```
