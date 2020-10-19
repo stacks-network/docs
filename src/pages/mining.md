@@ -111,10 +111,99 @@ cd ../..
 ./target/release/stacks-node start --config=./testnet/conf/krypton-follower-conf.toml
 ```
 
-## Enable debug logging
+### Enable debug logging
 
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
 
 ```bash
 BLOCKSTACK_DEBUG=1 stacks-node krypton
+```
+
+## Optional: Running with Docker
+
+Alternatively, you can run the testnet node with Docker.
+
+-> Ensure you have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
+
+### Create a config file directory
+
+You need a dedicated directory to keep the config file(s):
+
+```bash
+mkdir -p $HOME/stacks
+```
+
+### Generate keychain and get testnet tokens
+
+Generate a keychain:
+
+```bash
+docker run -i node:alpine npx blockstack-cli@1.1.0-beta.1 make_keychain -t
+```
+
+Run the faucet:
+
+```bash
+# replace <btc_address> with `btcAddress` property from your keychain
+curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/btc?address=<btc_address>" | json_pp
+```
+
+### Create configuration file
+
+Inside the new `$HOME/stacks` folder, you should create a new miner config `Config.toml`:
+
+```toml
+[node]
+working_dir = "/root/stacks-node/current"
+rpc_bind = "0.0.0.0:20443"
+p2p_bind = "0.0.0.0:20444"
+# Enter your private key here!
+seed = "replace-with-your-privateKey-from-above"
+miner = true
+
+[burnchain]
+chain = "bitcoin"
+mode = "krypton"
+peer_host = "bitcoind.krypton.blockstack.org"
+#process_exit_at_block_height = 5340
+#burnchain_op_tx_fee = 5500
+#commit_anchor_block_within = 10000
+rpc_port = 18443
+peer_port = 18444
+
+[[mstx_balance]]
+address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
+amount = 10000000000000000
+[[mstx_balance]]
+address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
+amount = 10000000000000000
+[[mstx_balance]]
+address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
+amount = 10000000000000000
+[[mstx_balance]]
+address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
+amount = 10000000000000000
+```
+
+-> Notice that this configuration differs from the one used to run the miner locally
+
+### Run the miner
+
+```bash
+docker run -d \
+  --name stacks_miner \
+  --rm \ # remove this to persist data across restarts
+  -e RUST_BACKTRACE="full" \ # remove to disable debug logs
+  -e BLOCKSTACK_DEBUG="1" \ # remove to disable debug logs
+  -v "$HOME/stacks/Config.toml:/src/stacks-node/Config.toml" \
+  -p 20443:20443 \
+  -p 20444:20444 \
+  blockstack/stacks-blockchain:v23.0.0.6-krypton \
+/bin/stacks-node start --config /src/stacks-node/Config.toml
+```
+
+You can review the node logs with this command:
+
+```bash
+docker logs -f stacks_miner
 ```
