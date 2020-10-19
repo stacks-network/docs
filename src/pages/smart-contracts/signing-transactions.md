@@ -34,7 +34,7 @@ import { openContractCall } from '@blockstack/connect';
 
 // Here's an example of options:
 const myStatus = 'hey there';
-const options = {
+const opts = {
   contractAddress: 'ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ',
   contractName: 'status',
   functionName: 'write-status!',
@@ -58,8 +58,7 @@ const options = {
 await openContractCall(opts);
 ```
 
-When calling `openContractCall`, you need to specify a few details. Here is the exact interface that describes what
-options you have:
+When calling `openContractCall`, you need to specify a few details. Here is the exact interface that describes what options you have:
 
 ```tsx
 interface ContractCallOptions {
