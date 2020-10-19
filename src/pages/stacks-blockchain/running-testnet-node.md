@@ -1,6 +1,6 @@
 ---
 title: Running a testnet node
-description: Learn how to set up and run a testnet node.
+description: Learn how to set up and run a testnet node
 icon: TestnetIcon
 duration: 15 minutes
 experience: beginners
@@ -81,6 +81,30 @@ INFO [1588108047.585] [src/chainstate/stacks/index/marf.rs:732] First-ever block
 **Awesome! Your node is now connected to the testnet network.**
 
 Your node will receive new blocks when they are produced, and you can use the [Stacks Node RPC API](/references/stacks-blockchain-api#stacks-node-rpc-api) to send transactions, fetch information for contracts and accounts, and more.
+
+## Optional: Running with Docker
+
+Alternatively, you can run the testnet node with Docker.
+
+-> Ensure you have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
+
+```bash
+docker run -d \
+  --name stacks_follower \
+  --rm \ # remove this to persist data across restarts
+  -e RUST_BACKTRACE="full" \ # remove to disable debug logs
+  -e BLOCKSTACK_DEBUG="1" \ # remove to disable debug logs
+  -p 20443:20443 \
+  -p 20444:20444 \
+  blockstack/stacks-blockchain:v23.0.0.6-krypton \
+/bin/stacks-node krypton
+```
+
+You can review the node logs with this command:
+
+```bash
+docker logs -f stacks_follower
+```
 
 ## Optional: Mining Stacks token
 
