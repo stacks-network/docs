@@ -58,7 +58,7 @@ const opts = {
 await openContractCall(opts);
 ```
 
-When calling `openContractCall`, you need to specify a few details. Here is the exact interface that describes what options you have:
+There are some required parameters needed when calling `openContractCall`. Here is the exact interface which describes what options you have:
 
 ```tsx
 interface ContractCallOptions {
