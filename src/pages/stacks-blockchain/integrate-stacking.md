@@ -51,7 +51,7 @@ Install the stacks transactions library and an API client for the [Stacks 2.0 Bl
 npm install --save @blockstack/stacks-transactions @stacks/blockchain-api-client c32check cross-fetch bn.js
 ```
 
--> The API client is generated from the [OpenAPI specification](https://github.com/blockstack/stacks-blockchain-api/blob/master/docs/openapi.yaml) ([openapi-generator](https://github.com/OpenAPITools/openapi-generator)). Many other languages and frameworks are be supported by the generator.
+-> The API client is generated from the [OpenAPI specification](https://github.com/blockstack/stacks-blockchain-api/blob/master/docs/openapi.yaml) ([openapi-generator](https://github.com/OpenAPITools/openapi-generator)). Many other languages and frameworks are supported by the generator.
 
 ## Step 2: Generating an account
 
