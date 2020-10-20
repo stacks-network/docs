@@ -111,15 +111,15 @@ To send the user straight to sign in, call `doOpenAuth(true)`.
 
 ### In ES6 (non-React) apps
 
-If you aren't using React, or just want a simpler API, then you can use the `showStacksConnect` method.
+If you aren't using React, or just want a simpler API, then you can use the `showConnect` method.
 
 ```jsx
-import { showStacksConnect } from '@stacks/connect';
+import { showConnect } from '@stacks/connect';
 
 const authOptions = {
   /** See docs above for options */
 };
-showStacksConnect(authOptions);
+showConnect(authOptions);
 ```
 
 #### Sign In
@@ -148,7 +148,7 @@ Then, you can use API methods under the `stacksConnect` global variable:
 const authOptions = {
   /** See docs above for options */
 };
-stacksConnect.showStacksConnect(authOptions);
+stacksConnect.showConnect(authOptions);
 ```
 
 ## Handling redirect fallbacks
