@@ -34,7 +34,7 @@ import { openContractCall } from '@blockstack/connect';
 
 // Here's an example of options:
 const myStatus = 'hey there';
-const opts = {
+const options = {
   contractAddress: 'ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ',
   contractName: 'status',
   functionName: 'write-status!',
@@ -55,7 +55,7 @@ const opts = {
   },
 };
 
-await openContractCall(opts);
+await openContractCall(options);
 ```
 
 There are some required parameters needed when calling `openContractCall`. Here is the exact interface which describes what options you have:
@@ -222,10 +222,10 @@ const MyComponent = () => {
   const { doContractCall } = useConnect();
 
   const onClick = async () => {
-    const opts = {
+    const options = {
       /** See examples above */
     };
-    await doContractCall(opts);
+    await doContractCall(options);
   };
 
   return <span onClick={onClick}>Call my contract</span>;
