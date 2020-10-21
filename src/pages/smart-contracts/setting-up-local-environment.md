@@ -32,7 +32,6 @@ For a complete local mocknet setup, you need the following services and tools:
 - [Stacks Node](https://github.com/blockstack/stacks-blockchain)
 - [Stacks Blockchain API](https://github.com/blockstack/stacks-blockchain-api)
 - [Stacks Explorer](https://github.com/blockstack/explorer)
-- [Stack Authenticator](https://github.com/blockstack/ux/tree/master/packages/app)
 - [Todo's web with Connect](https://github.com/blockstack/blockstack-todos/)
 
 ## Step 1: Set up Stacks Node and Blockchain API
@@ -167,23 +166,7 @@ node deploy-contract.js
 
 You will notice that the name of the new contract has a unix timestamp appended to it. This will ensure that you can redeploy the same file. It is a simple versioning mechanism. You have to make sure to always use the most recent contract name.
 
-## Step 5: Set up Stacks Authenticator
-
-Users of your web app will need to authenticate using their Secret Key before they could sign a Stacks transaction. The authentication needs to point to your local mocknet.
-
-Let's spin up the authentication service:
-
-```bash
-cd ..
-git clone https://github.com/blockstack/ux.git
-cd ux
-yarn
-yarn lerna run dev --scope @blockstack/app
-```
-
-Once completed, you can open up `http://localhost:8080` and see a screen that indicates you are not logged in.
-
-## Step 6: Create sample app
+## Step 5: Create sample app
 
 With all the previous services running, you are ready to integrate your smart contract inside an app. We will reuse the Stacks Todo's sample app:
 
@@ -197,27 +180,7 @@ yarn start
 
 The command will identify that port 3000 being used already (by the Explorer). Hit `Y` to accept using port 3001. Once the app is running, you should be able to open up `http://localhost:3001/` and see the homepage.
 
-!> Do not proceed with the login just yet. You need to change the authenticator URL to the local service
-
-### Point to local Stacks Authenticator
-
-Inside the `src/components/App.jsx` file update the `authOptions`:
-
-```js
-const authOptions = {
-  authOrigin: 'http://localhost:8080',
-};
-```
-
-Inside the `src/components/Signin.jsx` file, update the `doOpenAuth` call:
-
-```js
-<Button onClick={() => doOpenAuth(false, { authOrigin: 'http://localhost:8080' })}>
-  Get Started
-</Button>
-```
-
-With these two changes, you can try out the app again and log in this time! You should be able to create a new Secret Key and finally land on the Todo list view.
+You can try out the app and log in this time! You should be able to create a new Secret Key and finally land on the Todo list view.
 
 ### Add sample contract calls
 
@@ -265,7 +228,7 @@ const doReadOnlyCall = async name => {
 
 !> You have to replce the `contractName` field with your most recently deployed contract name
 
-Now, add a regular contract call method. This method will create and broadcast a new transaction to the network.
+Now, add a regular contract call method using the local mocknet as network. This method will create and broadcast a new transaction to the network.
 
 ```js
 const doContractCall = async name => {
@@ -273,7 +236,7 @@ const doContractCall = async name => {
     contractAddress: 'STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6',
     contractName: 'counter-1602876828853', // replace this
     functionName: name,
-    authOrigin: 'http://localhost:8080',
+    network,
     functionArgs: [],
     appDetails: {
       name: "To-do's",
