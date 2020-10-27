@@ -203,7 +203,7 @@ As such, it's paramount that users handle them with great care.
 
 The username will be used by the app to generate a URL for sharing your todos, should you choose to make them public.
 
-It is registered on the Stacks blockchain with the [Stacks Naming System (SNS)](/core/naming/introduction)
+It is registered on the Stacks blockchain with [BNS](/core/naming/introduction)
 and associated with your _Secret Key_.
 
 ![Choosing a user name example](/images/todos-username.svg)
