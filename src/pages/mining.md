@@ -125,14 +125,6 @@ Alternatively, you can run the testnet node with Docker.
 
 -> Ensure you have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
 
-### Create a config file directory
-
-You need a dedicated directory to keep the config file(s):
-
-```bash
-mkdir -p $HOME/stacks
-```
-
 ### Generate keychain and get testnet tokens
 
 Generate a keychain:
@@ -141,11 +133,19 @@ Generate a keychain:
 docker run -i node:alpine npx blockstack-cli@1.1.0-beta.1 make_keychain -t
 ```
 
-Run the faucet:
+Request BTC from the faucet:
 
 ```bash
 # replace <btc_address> with `btcAddress` property from your keychain
 curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/btc?address=<btc_address>" | json_pp
+```
+
+### Create a config file directory
+
+You need a dedicated directory to keep the config file(s):
+
+```bash
+mkdir -p $HOME/stacks
 ```
 
 ### Create configuration file
@@ -158,7 +158,7 @@ working_dir = "/root/stacks-node/current"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
 # Enter your private key here!
-seed = "replace-with-your-privateKey-from-above"
+seed = "replace-with-your-privateKey-from-generate-keychain-step"
 miner = true
 
 [burnchain]
@@ -189,16 +189,18 @@ amount = 10000000000000000
 
 ### Run the miner
 
+-> The ENV VARS `RUST_BACKTRACE` and `BLOCKSTACK_DEBUG` are optional. If removed, debug logs will be disabled
+
 ```bash
 docker run -d \
   --name stacks_miner \
-  --rm \ # remove this to persist data across restarts
-  -e RUST_BACKTRACE="full" \ # remove to disable debug logs
-  -e BLOCKSTACK_DEBUG="1" \ # remove to disable debug logs
+  --rm \
+  -e RUST_BACKTRACE="full" \
+  -e BLOCKSTACK_DEBUG="1" \
   -v "$HOME/stacks/Config.toml:/src/stacks-node/Config.toml" \
   -p 20443:20443 \
   -p 20444:20444 \
-  blockstack/stacks-blockchain:v23.0.0.6-krypton \
+  blockstack/stacks-blockchain:latest \
 /bin/stacks-node start --config /src/stacks-node/Config.toml
 ```
 
