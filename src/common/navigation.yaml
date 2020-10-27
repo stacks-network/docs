@@ -113,8 +113,8 @@ sections:
           - path: /stacking-contract
           - path: /stacks-blockchain-api
           - external:
-              href: 'https://blockstack.github.io/blockstack.js/'
-              title: blockstack.js
+              href: 'https://blockstack.github.io/stacks.js/'
+              title: Stacks.js
           - path: /faqs
           - path: /glossary
           - path: /deploy-tips

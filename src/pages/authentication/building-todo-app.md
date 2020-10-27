@@ -218,7 +218,7 @@ field and hitting "Enter".
 ![The authenticated view of the todos app](/images/todos-home-authenticated.svg)
 
 The data for all todos are saved as JSON to the Gaia hub linked to your Secret Key using the
-[`putFile`](http://blockstack.github.io/blockstack.js/globals.html#putfile) method of the `userSession` object in the
+[`putFile`](http://blockstack.github.io/stacks.js/classes/storage.html#putfile) method of the `userSession` object in the
 [`src/assets/data-store.js`](https://github.com/blockstack/blockstack-todos/blob/master/src/assets/data-store.js#L26) module:
 
 ```jsx

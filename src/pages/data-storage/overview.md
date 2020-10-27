@@ -57,13 +57,13 @@ Because `alice.id` has access to her zonefile, she can change where her profile 
 
 ~> Users with existing identities cannot yet migrate their data from one hub to another.
 
-Applications writing directly on behalf of `alice.id` do not need to perform a lookup. Instead, the [Blockstack authentication flow](http://blockstack.github.io/blockstack.js/index.html) provides Alice's chosen application root URL to the application. This authentication flow _is also_ within Alice's control because Alice's browser _must_ generate the authentication response.
+Applications writing directly on behalf of `alice.id` do not need to perform a lookup. Instead, the [Stacks authentication flow](http://blockstack.github.io/stacks.js/index.html) provides Alice's chosen application root URL to the application. This authentication flow _is also_ within Alice's control because Alice's browser _must_ generate the authentication response.
 
 ## Understand data storage
 
 A Gaia hub stores the written data _exactly_ as given. It offers minimal guarantees about the data. It does not ensure that data is validly formatted, contains valid signatures, or is encrypted. Rather, the design philosophy is that these concerns are client-side concerns.
 
-Client libraries (such as `blockstack.js`) are capable of providing these guarantees. Blockstack used a liberal definition of the [end-to-end principle](https://en.wikipedia.org/wiki/End-to-end_principle) to guide this design decision.
+Client libraries (such as `Stacks.js`) are capable of providing these guarantees. Blockstack used a liberal definition of the [end-to-end principle](https://en.wikipedia.org/wiki/End-to-end_principle) to guide this design decision.
 
 ## Gaia versus other storage systems
 

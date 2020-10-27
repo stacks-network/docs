@@ -220,8 +220,7 @@ $ curl -H "Authorization: bearer blockstack_integration_test_api_password" -H "O
 }
 ```
 
-Name info lookups are also supported (this should enable authenticating logins
-with `blockstack.js`, but I will need to double check).
+Name info lookups are also supported
 
 ```bash
 $ curl -H "Authorization: bearer XXXX" -H "Origin: http://localhost:3000" http://localhost:6270/v1/names/created_equal.self_evident_truth.id -s | python -m json.tool
