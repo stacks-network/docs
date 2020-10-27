@@ -61,19 +61,10 @@ They should not attempt to talk to a BNS indexer directly, because its API is no
 for consumption by any other process except for the API module.
 
 Registering and managing names require generating and sending blockchain
-transactions, which requires running a BNS client. We provide two reference
-BNS clients:
+transactions, which requires running a BNS client.
 
-- The [Blockstack Browser](https://github.com/blockstack/blockstack-browser) gives users
-  and developers a graphical UI to resolve, register and manage names. This is the recommended
-  way to interact with BNS.
-- The Blockstack CLI gives developers low-level
+- The [Stacks CLI](https://www.npmjs.com/package/@stacks/cli) gives developers low-level
   control over resolving, registering, and managing names.
-  A new CLI that uses [blockstack.js](https://github.com/blockstack/blockstack.js)
-  is under development, and will replace the existing CLI program.
-
-We recommend that new developers use the [Blockstack
-Browser](https://github.com/blockstack/blockstack-browser).
 
 Developers who want to make their own client programs that do not use
 the reference client library code should read the
