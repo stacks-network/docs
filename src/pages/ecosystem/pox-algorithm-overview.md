@@ -1,5 +1,5 @@
 
-# A short summary of the Proof of Transfer
+# A short summary of Proof of Transfer Mining
 
 Consensus algorithms for public blockchains require computing or financial resources to secure the blockchain.  The idea being to make it practically infeasible for any single malicious actor to have enough computing power or ownership stake to attack the network. 
 
