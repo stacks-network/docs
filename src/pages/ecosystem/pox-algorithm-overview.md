@@ -19,6 +19,5 @@ https://community.blockstack.org/pox
 Watch CEO Muneeb Ali, and Developer Evangelist Joe Bender give an overview of Stack's breakthrough **PoX** mining mechanism.\
 https://www.youtube.com/watch?v=NY_eUrIcWOY
 
-<Placeholder> Actual figures (as in current Source Code) related to the threshold for Stackers, Initial & Sunset phases, number of blocks per Reward Cycle, maximum BTC addresses per Reward Set etc..
 
-<Placeholder> A graphic illustrating the interaction between the various actors and components.
+  ![alt text](https://github.com/joshmatix/docs/blob/master/src/pages/PoX.jpg)
