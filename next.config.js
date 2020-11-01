@@ -9,6 +9,11 @@ const withFonts = require('next-fonts');
 async function redirects() {
   return [
     {
+      source: '/pox/overview.html',
+      destination: '/pox/overview',
+      permanent: true,
+    },
+    {
       source: '/browser/todo-list.html',
       destination: '/authentication/building-todo-app',
       permanent: true,
