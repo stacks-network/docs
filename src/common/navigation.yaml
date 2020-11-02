@@ -77,24 +77,7 @@ sections:
           - path: /install
           - path: /usage
           - path: /security
-      - path: /naming-services
-        pages:
-          - path: /overview
-          - path: /architecture
-          - path: /comparison
-          - path: /did
-          - path: /forks
-          - path: /namespaces
-          - path: /subdomains
-        sections:
-          - title: Tutorials
-            pages:
-              - path: /choose-name
-              - path: /create-namespace
-              - path: /resolve-name
-              - path: /register-name
-              - path: /manage-names
-              - path: /subdomains-tutorial
+      - path: /naming-system # is an overview page
       - path: /storage-hubs # this seems out of date, kill?
         pages:
           - path: /overview
