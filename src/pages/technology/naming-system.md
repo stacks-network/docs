@@ -124,7 +124,6 @@ between these name objects is presented below:
 
 [1] Requires the cooperation of a BNS name owner to broadcast its transactions
 
-
 ## Namespaces
 
 Namespaces are the top-level naming objects in BNS.
@@ -330,7 +329,6 @@ developers broadcast subdomain operations. Users would still own their
 subdomain names; the registrar simply gives developers a convenient
 way for them to register and manage them in the context of a
 particular application.
-
 
 # BNS and DID Standards
 
