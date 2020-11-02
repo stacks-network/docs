@@ -20,7 +20,21 @@ contributor only has to know how to write Markdown.
 
 ## Getting started
 
-To get started working locally with the site, a few things are needed:
+To get started you have two options:
+
+1. using web IDE Gitpod in your browser.
+2. working locally.
+
+### Working in browser
+
+The web IDE gitpod provides an environment to contibute directly from within your browser.
+
+To get started, you only have to a github account and open the link
+[https://gitpod.io/#https://github.com/blockstack/docs](https://gitpod.io/#https://github.com/blockstack/docs) in your browser.
+
+### Working Locally
+
+When workin locally with the site, a few things are needed:
 
 - Familiarity with `git`, GitHub, and the command line. [Read more here.](https://docs.github.com/en/github/getting-started-with-github/quickstart)
 - [`node` + `npm`,](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [`yarn` installed](https://yarnpkg.com/getting-started/install) on your machine.
