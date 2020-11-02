@@ -55,6 +55,12 @@ Install the Stacks node by running:
 cargo build --workspace --release --bin stacks-node
 # binary will be in target/release/stacks-node
 ```
+To install Stacks node with extra debugging symbols, run:
+
+```bash
+cargo build --workspace --bin stacks-node
+# binary will be in target/debug/stacks-node krypton
+```
 
 -> This process will take a few minutes to complete
 
@@ -62,11 +68,18 @@ cargo build --workspace --release --bin stacks-node
 
 You're all set to run a node that connects to the testnet network.
 
-Back in the command line, run:
+If installed without debugging symbols, run:
 
 ```bash
-stacks-node krypton
+target/release/stacks-node krypton
 ```
+
+If installed with debugging symbols, run:
+
+```bash
+target/debug/stacks-node krypton
+```
+
 
 The first time you run this, you'll see some logs indicating that the Rust code is being compiled. Once that's done, you should see some logs that look something like the this:
 
