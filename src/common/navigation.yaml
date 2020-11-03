@@ -26,7 +26,6 @@ sections:
             usePageTitles: true
             pages:
               - path: /building-todo-app
-              - path: /connect
       - path: /data-storage
         pages:
           - path: /overview
