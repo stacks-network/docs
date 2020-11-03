@@ -1,6 +1,6 @@
 ---
 title: Stacks token
-description: Learn about the native token of Blockstack
+description: Learn about the native token of Stacks
 icon: StacksIcon
 ---
 
@@ -44,7 +44,7 @@ The genesis block launch makes possible the following interactions:
 
 - Token holders can purchase names and namespaces with the Stacks token. Previously, names and namespaces required the purchaser to hold Bitcoin. Initially, this process relies on the Blockstack command-line interface (CLI).
 
-- Application developers can earn Stacks by building an application on the Blockstack ecosystem.
+- Application developers can earn Stacks by building an application on the Stacks ecosystem.
 
 - Any Stacks tokens held at the time of launch or after remain usable under the Stacks Blockchain platform.
 

@@ -95,7 +95,7 @@ If you have a paper wallet or a custodial wallet, you should set up a secondary 
 - [Ledger Nano S](https://www.ledger.com/)
 - Ledger Blue
 
--> Blockstack only supports the hardware wallets listed above. Other wallets, for example, the Trezor Model T, **are not currently supported**. If you have questions about wallet support, please [contact Blockstack support](mailto:support@blockstack.org).
+-> Stacks Wallet only supports the hardware wallets listed above. Other wallets, for example, the Trezor Model T, **are not currently supported**. If you have questions about wallet support, please [contact Blockstack support](mailto:support@blockstack.org).
 
 For information on setting up a hardware wallet, refer to the vendor's
 documentation.

@@ -20,7 +20,7 @@ decentralized network, built on the Stacks blockchain, for [authentication](/aut
 and [backend logic](/data-storage/indexing-overview). Just like Bitcoin, a decentralized network of applications is accessible to
 anyone and not controlled by any central authority.
 
-To learn more about the Blockstack network and decentralization, read the [Blockstack overview](/ecosystem/overview).
+To learn more about the Stacks network and decentralization, read the [Stacks overview](/ecosystem/overview).
 
 ### User-owned data
 

@@ -1,6 +1,6 @@
 ---
 title: Feature comparison
-description: This page describes some other naming systems in comparison to Blockstack.
+description: This page describes some other naming systems in comparison to Stacks.
 ---
 
 ## Introduction
@@ -8,9 +8,9 @@ description: This page describes some other naming systems in comparison to Bloc
 BNS is not the only naming system in wide-spread use, nor is it the only
 decentralized naming system that implements human-readable, globally-unique, and
 strongly-owned names. This page describes some other naming systems in
-comparison to Blockstack:
+comparison to Stacks:
 
-## Blockstack vs DNS
+## Stacks vs DNS
 
 Blockstack and DNS both implement naming systems, but in fundamentally
 different ways. Blockstack _can be used_ for resolving host names to IP

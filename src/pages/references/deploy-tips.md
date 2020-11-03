@@ -5,7 +5,7 @@ description: Learn some common methods for deploying your application.
 
 ## Introduction
 
-Stacks applications are web applications that authenticate users with Blockstack Auth and store data with Gaia.
+Stacks applications are web applications that authenticate users with Stacks Auth and store data with Gaia.
 Both of these technologies can be accessed on the client side. As such, Stacks apps tend to be simple in design and
 operation, since in many cases, they don’t have to host anything besides the application’s assets.
 
@@ -30,11 +30,11 @@ If you first populated your application with the Stacks application generator, y
 
 If you use the generator to build Javascript or Vue scaffolding, your project configuration files will be different.
 
-Regardless of which scaffolding you use, you must customize and extend this basic scaffolding as needed by your application. For example, you may want to add more properties to the `manifest.json` file. Since every application is different, Blockstack cannot give you specific instructions on how to do this. The steps you take are specific to your application.
+Regardless of which scaffolding you use, you must customize and extend this basic scaffolding as needed by your application. For example, you may want to add more properties to the `manifest.json` file. Since every application is different, Stacks Auth cannot give you specific instructions on how to do this. The steps you take are specific to your application.
 
 ## Stacks Authentication and deployment
 
-When your application authenticates users with Blockstack, your DApp at one URL requests a resource (an identity) from another DApp, the Blockstack Browser. A request for a resource outside of the origin (your new website) is called as a _cross-origin request_(CORs). Getting data in this manner can be risky, so you must configure your website security to allow interactions across origins.
+When your application authenticates users with Stacks, your DApp at one URL requests a resource (an identity) from another DApp, the Blockstack Browser. A request for a resource outside of the origin (your new website) is called as a _cross-origin request_(CORs). Getting data in this manner can be risky, so you must configure your website security to allow interactions across origins.
 
 You can think of CORS interactions as an apartment building with Security. For example, if you need to borrow a ladder, you could ask a neighbor in your building who has one. Security would likely not have a problem with this request (i.e., same-origin, your building). If you needed a particular tool, however, and you ordered it delivered from an online hardware store (i.e., cross-origin, another site), Security may request identification before allowing the delivery man into the apartment building. (Credit: [Codecademy](https://www.codecademy.com/articles/what-is-cors))
 

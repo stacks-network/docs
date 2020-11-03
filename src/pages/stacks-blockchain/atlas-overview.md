@@ -14,20 +14,20 @@ all chunks are available to clients.
 This document is aimed at developers and technical users.
 
 The reader of this document is expected to be familiar with the [Blockstack Naming Service](/core/naming/introduction)(BNS),
-as well as Blockstack's storage system [Gaia](https://github.com/blockstack/gaia). We advise the reader
+as well as Stacks's storage system [Gaia](https://github.com/blockstack/gaia). We advise the reader
 to familiarize themselves with both systems before approaching this document.
 
 ## Architecture
 
 Atlas is designed to integrate with BNS in order to allow users to
 store name state off-chain, encoded as a DNS zone file.
-The overwhelmingly-common use-cases in Blockstack are:
+The overwhelmingly-common use-cases in Stacks are:
 
 - Storing a name's routing information for its owners' [Gaia](https://github.com/blockstack/gaia)
   datastores.
 - Storing BNS subdomain transactions and associated state.
 
-Atlas is a middleware system in Blockstack. Most developers do not
+Atlas is a middleware system in Stacks. Most developers do not
 interact with it directly. BNS clients like the
 [Blockstack Browser](https://github.com/blockstack/blockstack-browser)
 automatically generate zone files for the names they register, and automatically
@@ -65,7 +65,7 @@ Blockchain     |                    Blockchain Peer Network                    |
                +---------------------------------------------------------------+
 
 
-Figure 1:  Location of Atlas in the Blockstack architecture.  Each BNS node
+Figure 1:  Location of Atlas in the Stacks architecture.  Each BNS node
 implements an Atlas peer.  An Atlas peer treats a name state value in BNS as
 the hash of a DNS zone file.  Atlas peers exchange zone files with one another
 until they each have a full replica of all known zone files.  Clients can look
@@ -77,7 +77,7 @@ allowing Stacks apps to read and write data in Gaia.
 
 Nevertheless, Atlas is a general-purpose content-addressed storage
 system that advanced developers can use to **host data in an immutable
-and durable manner.** Beyond its default use-case in Blockstack,
+and durable manner.** Beyond its default use-case in Stacks,
 Atlas is ideal for tasks like:
 
 - Announcing PGP public keys under a human-readable name

@@ -144,7 +144,7 @@ const SignInButton = () => {
 
 #### Sign In
 
-To send the user straight to sign in, skipping the built-in modal that introduces Blockstack, call `doOpenAuth(true)`.
+To send the user straight to sign in, skipping the built-in modal that introduces Stacks, call `doOpenAuth(true)`.
 
 ## Handling redirect fallbacks
 

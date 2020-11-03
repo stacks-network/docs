@@ -33,7 +33,7 @@ export const MDWrapper: React.FC<any> = React.memo(
     return (
       <>
         <Head>
-          <title>{getTitle(frontmatter)} | Blockstack</title>
+          <title>{getTitle(frontmatter)} | Stacks</title>
           <meta name="description" content={description} />
         </Head>
         <MetaLabels labels={labels} />

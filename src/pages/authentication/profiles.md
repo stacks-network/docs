@@ -1,6 +1,6 @@
 ---
 title: Guide to Profiles
-description: Learn about profiles on the Blockstack network
+description: Learn about profiles on the Stacks network
 ---
 
 ## About profiles
