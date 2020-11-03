@@ -21,7 +21,7 @@ running and reviewing the code for a "Todos" web app built with Stacks authentic
 
 This app highlights the following platform functionality:
 
-- Generate Secret Key with associated Stacks username to authenticate app
+- Generate Secret Key with associated BNS username to authenticate app
 - Add, edit and delete encrypted app data with Gaia
 - Decrypt data on Gaia for public sharing by URL
 - Unauthenticate and re-authenticate app with Secret Key
@@ -73,8 +73,7 @@ You should see the app's landing page:
 ### Step 1: Choose **Get started** to start onboarding into the app.
 
 The app displays a standardized introductory modal using
-[Stacks Connect](https://github.com/blockstack/ux/tree/master/packages/connect), a JavaScript
-library that makes it easy to integrate Stacks authentication into the UI of any web app.
+[Stacks Auth](https://github.com/blockstack/stacks.js/tree/master/packages/auth)
 
 ![The Stacks Connect Modal](/images/todos-intro.png)
 
@@ -84,7 +83,7 @@ that triggers this modal in [`src/components/Signin.jsx`](https://github.com/blo
 ```js
 // src/components/Signin.jsx
 
-import { useConnect } from '@stacks/connect';
+import { useConnect } from '@stacks/auth';
 
 export const Signin = () => {
   const { doOpenAuth } = useConnect();
@@ -95,7 +94,7 @@ export const Signin = () => {
 
 This component imports the [React hook](https://reactjs.org/docs/hooks-overview.html)
 [`useConnect`](https://github.com/blockstack/ux/blob/master/packages/connect/src/react/hooks/use-connect.ts)
-from the Stacks Connect library.
+from the Stacks Auth library.
 
 `useConnect` returns many helper functions such as
 [`doOpenAuth`](https://github.com/blockstack/ux/blob/master/packages/connect/src/react/hooks/use-connect.ts#L33),
@@ -112,16 +111,14 @@ The modal displays the app's name and icon as configured in
 // src/components/App.jsx
 
 appDetails: {
-    name: 'Blockstack App',
+    name: 'Stacks App',
     icon: window.location.origin + '/favicon.ico'
 }
 
 ```
 
 This component loads the [`UserSession`](https://blockstack.github.io/stacks.js/classes/usersession.html)
-module from a second Stacks library called [@stacks/auth](https://github.com/blockstack/stacks.js/),
-which complements Stacks Connect by providing an API for many protocol-level operations, such as for
-authentication and storage.
+module from `@stacks/auth`
 
 ```js
 import { UserSession } from '@stacks/auth';
@@ -145,7 +142,7 @@ export const appConfig = new AppConfig(['store_write', 'publish_data']);
 
 The `appDetails` and `userSession` objects are joined by the callback function
 [`finished`](https://github.com/blockstack/stacks-todos/blob/master/src/components/App.jsx#L31)
-in configuring Stacks Connect for authentication with the `authOptions` object:
+in configuring Stacks Auth for authentication with the `authOptions` object:
 
 ```js
 // src/components/App.jsx
