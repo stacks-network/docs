@@ -1,5 +1,5 @@
 ---
-title: Loccal development
+title: Local development
 description: Set up and run a mocknet with docker
 icon: TestnetIcon
 images:
