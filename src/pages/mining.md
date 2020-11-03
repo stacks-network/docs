@@ -221,15 +221,13 @@ Ensure you have the following prerequisites installed on your machine:
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - [helm](https://helm.sh/docs/intro/install/)
 
-### Generate keychain
+### Generate keychain and get testnet tokens
 
 Generate a keychain:
 
 ```bash
 docker run -i node:alpine npx blockstack-cli@1.1.0-beta.1 make_keychain -t
 ```
-
-### Request testnet tokens
 
 Request BTC from the faucet:
 
