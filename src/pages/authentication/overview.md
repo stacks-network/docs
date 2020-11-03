@@ -203,3 +203,77 @@ To decode the token and see what information it holds:
    ```
 
    The `iss` property is a decentralized identifier or `did`. This identifies the user and the user name to the application. The specific `did` is a `btc-addr`.
+
+## User profiles
+
+Profile data is stored using Gaia on the user's selected storage provider. An example of a `profile.json` file URL using
+default provided storage:
+
+```
+https://gaia.blockstack.org/hub/1EeZtGNdFrVB2AgLFsZbyBCF7UTZcEWhHk/profile.json
+```
+
+Follow these steps to create and register a profile for a BNS username (`identifier`):
+
+1. Create a JSON profile object
+2. Split up the profile into tokens, sign the tokens, and put them in a token file
+3. Create a zone file that points to the web location of the profile token file
+
+```jsx
+"account": [
+	{
+	  "@type": "Account",
+	  "service": "twitter",
+	  "identifier": "naval",
+	  "proofType": "http",
+	  "proofUrl": "https://twitter.com/naval/status/12345678901234567890"
+	}
+]
+```
+
+## Create a profile
+
+```jsx
+const profileOfNaval = {
+  '@context': 'http://schema.org/',
+  '@type': 'Person',
+  name: 'Naval Ravikant',
+  description: 'Co-founder of AngelList',
+};
+```
+
+## Sign a profile as a single token
+
+```jsx
+import { wrapProfileToken, Person } from '@stacks/profiles';
+
+const privateKey = 'e546ba96ee34220287d0c177418011addf8d71b32fb81ae8e33a1d7510fa5d0d01';
+
+const person = new Person(profileOfNaval);
+const token = person.toToken(privateKey);
+const tokenFile = [wrapProfileToken(token)];
+```
+
+## Verify an individual token
+
+```jsx
+import { verifyProfileToken } from '@stacks/profiles';
+
+try {
+  const decodedToken = verifyProfileToken(tokenFile[0].token, publicKey);
+} catch (e) {
+  console.log(e);
+}
+```
+
+## Recover a profile from a token file
+
+```jsx
+const recoveredProfile = Person.fromToken(tokenFile, publicKey);
+```
+
+## Validate profile schema
+
+```jsx
+const validationResults = Person.validateSchema(recoveredProfile);
+```
