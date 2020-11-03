@@ -1,14 +1,13 @@
 ---
 title: Proof of Transfer
-description: PoX uses the proof-of-work cryptocurrency of an established blockchain to secure a new blockchain.
-icon: BlockstackIcon
+description: Understand the proof-of-transfer consensus mechanism
 ---
 
-### A short summary of Proof of Transfer Mining
+### Overview
 
 Consensus algorithms for public blockchains require computing or financial resources to secure the blockchain. The idea being to make it practically infeasible for any single malicious actor to have enough computing power or ownership stake to attack the network.
 
-Mining mechanisms used by these algorithms are broadly divided into proof-of-work, in which nodes dedicate computing resources, and proof-of-stake, in which nodes dedicate financial resources to participate in the consensus algorithm.
+Mining mechanisms used by these algorithms are broadly divided into proof-of-work, in which nodes dedicate computing resources, and proof-of-stake, in which nodes dedicate financial resources to participate in the [consensus algorithm](/stacks-blockchain/stacking#stacking-consensus-algorithm).
 
 A variant of proof-of-work is proof-of-burn where miners compete by ‘burning’ (destroying) a proof-of-work cryptocurrency as a proxy for computing resources.
 
