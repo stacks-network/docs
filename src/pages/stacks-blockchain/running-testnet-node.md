@@ -119,6 +119,31 @@ You can review the node logs with this command:
 docker logs -f stacks_follower
 ```
 
+## Optional: Running in Kubernetes with Helm
+
+In addition, you're also able to run a testnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/helm/stacks-blockchain).
+
+-> Ensure you have the following prerequisites installed on your machine:
+  * [minikube](https://minikube.sigs.k8s.io/docs/start/) (Only needed if standing up a local Kubernetes cluster)
+  * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+  * [helm](https://helm.sh/docs/intro/install/)
+
+To install the chart with the release name `my-release` and run the node as a follower:
+
+```bash
+minikube start # Only run this if standing up a local Kubernetes cluster
+helm repo add blockstack https://charts.blockstack.xyz
+helm install my-release blockstack/stacks-blockchain
+```
+
+You can review the node logs with this command:
+
+```bash
+kubectl logs -l app.kubernetes.io/name=stacks-blockchain
+```
+
+For more information on the Helm chart and configuration options, please refer to the [chart's homepage](https://github.com/blockstack/stacks-blockchain/tree/master/helm/stacks-blockchain).
+
 ## Optional: Mining Stacks token
 
 Now that you have a running testnet node, you can easily set up a miner.
