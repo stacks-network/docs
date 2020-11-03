@@ -123,10 +123,11 @@ docker logs -f stacks_follower
 
 In addition, you're also able to run a testnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/helm/stacks-blockchain).
 
--> Ensure you have the following prerequisites installed on your machine:
-  * [minikube](https://minikube.sigs.k8s.io/docs/start/) (Only needed if standing up a local Kubernetes cluster)
-  * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-  * [helm](https://helm.sh/docs/intro/install/)
+Ensure you have the following prerequisites installed on your machine:
+
+- [minikube](https://minikube.sigs.k8s.io/docs/start/) (Only needed if standing up a local Kubernetes cluster)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [helm](https://helm.sh/docs/intro/install/)
 
 To install the chart with the release name `my-release` and run the node as a follower:
 
