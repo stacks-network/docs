@@ -214,18 +214,22 @@ docker logs -f stacks_miner
 
 In addition, you're also able to run a testnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/helm/stacks-blockchain).
 
--> Ensure you have the following prerequisites installed on your machine:
-  * [minikube](https://minikube.sigs.k8s.io/docs/start/) (Only needed if standing up a local Kubernetes cluster)
-  * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-  * [helm](https://helm.sh/docs/intro/install/)
+Ensure you have the following prerequisites installed on your machine:
 
-### Generate keychain and get testnet tokens
+- [Docker](https://docs.docker.com/get-docker/)
+- [minikube](https://minikube.sigs.k8s.io/docs/start/) (Only needed if standing up a local Kubernetes cluster)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [helm](https://helm.sh/docs/intro/install/)
+
+### Generate keychain
 
 Generate a keychain:
 
 ```bash
 docker run -i node:alpine npx blockstack-cli@1.1.0-beta.1 make_keychain -t
 ```
+
+### Request testnet tokens
 
 Request BTC from the faucet:
 
@@ -242,7 +246,8 @@ To install the chart with the release name `my-release` and run the node as a mi
 minikube start # Only run this if standing up a local Kubernetes cluster
 helm repo add blockstack https://charts.blockstack.xyz
 helm install my-release blockstack/stacks-blockchain \
-  --set config.node.miner=true --set config.node.seed="REPLACE-WITH-YOUR-PRIVATE-KEY"
+  --set config.node.miner=true \
+  --set config.node.seed="replace-with-your-privateKey-from-generate-keychain-step"
 ```
 
 You can review the node logs with this command:
