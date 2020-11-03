@@ -55,6 +55,7 @@ Install the Stacks node by running:
 cargo build --workspace --release --bin stacks-node
 # binary will be in target/release/stacks-node
 ```
+
 To install Stacks node with extra debugging symbols, run:
 
 ```bash
@@ -79,7 +80,6 @@ If installed with debugging symbols, run:
 ```bash
 target/debug/stacks-node krypton
 ```
-
 
 The first time you run this, you'll see some logs indicating that the Rust code is being compiled. Once that's done, you should see some logs that look something like the this:
 
