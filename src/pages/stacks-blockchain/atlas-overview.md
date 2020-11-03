@@ -72,7 +72,7 @@ until they each have a full replica of all known zone files.  Clients can look
 up zone files for names using the name's stat value as a zone file hash.  Clients
 can broadcast zone files to the network  if they match a previously-announced
 hash.  In practice, zone files store URLs to a name owner's Gaia hubs, thereby
-allowing Blockstack apps to read and write data in Gaia.
+allowing Stacks apps to read and write data in Gaia.
 ```
 
 Nevertheless, Atlas is a general-purpose content-addressed storage

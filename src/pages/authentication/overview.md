@@ -101,7 +101,7 @@ transit private key signs the app authentication request.
 ### Identity address private key
 
 The identity address private key is derived from the user's keychain phrase and
-is the private key of the Blockstack username that the user chooses to use to sign in
+is the private key of the Stacks username that the user chooses to use to sign in
 to the app. It is a secret owned by the user and never leaves the user's
 instance of the Blockstack App.
 
@@ -111,7 +111,7 @@ This private key signs the authentication response token for an app to indicate 
 
 The app private key is an app-specific private key that is generated from the
 user's identity address private key using the `domain_name` as input. It is
-deterministic in that for a given Blockstack username and `domain_name`, the same
+deterministic in that for a given Stacks username and `domain_name`, the same
 private key is generated each time.
 
 The app private key is securely shared with the app on each authentication, encrypted by the Blockstack App with the transit public key.
@@ -126,7 +126,7 @@ cryptocurrencies.
 
 This signature algorithm is indicated by specifying `ES256K` in the token's
 `alg` key, specifying that the JWT signature uses ECDSA with the secp256k1
-curve. Blockstack provide both [JavaScript](https://github.com/blockstack/jsontokens-js)
+curve. Stacks auth provide both [JavaScript](https://github.com/blockstack/jsontokens-js)
 and
 [Ruby](https://github.com/blockstack/ruby-jwt-blockstack/tree/ruby-jwt-blockstack)
 JWT libraries with support for this signing algorithm.

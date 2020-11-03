@@ -16,7 +16,7 @@ the 2018 launch, see the [announcement in the Blockstack forum](https://forum.bl
 
 ## A brief history of the Stacks token
 
-In 2017 Blockstack did a token sale. Participants became token holders when they
+In 2017 Blockstack PBC did a token sale. Participants became token holders when they
 received allocations of Stacks tokens in the genesis block. A genesis block is
 the first block of a blockchain.
 
@@ -33,7 +33,7 @@ draft state, token holders were in a lock down period.
 
 The initial block in the Stacks blockchain V1 allocates 1.32 billion
 tokens. The launch is the culmination of two year’s hard work across the greater
-Blockstack community. With the launch, Stacks tokens unlock for accredited token
+Stacks community. With the launch, Stacks tokens unlock for accredited token
 holders under a predetermined unlocking schedule. The events on the unlocking
 schedule are the same for each investor, **the dates of these events** depend on the
 holder's purchase date.

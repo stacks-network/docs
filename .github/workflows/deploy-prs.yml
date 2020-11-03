@@ -96,7 +96,7 @@ jobs:
               return md
             }
 
-            const firstLine = `Blockstack docs have been deployed with Vercel using the code from this PR!`;
+            const firstLine = `Stacks docs have been deployed with Vercel using the code from this PR!`;
             const {data} = await github.issues.listComments({
               ...context.repo,
               issue_number: context.issue.number,
@@ -113,10 +113,10 @@ jobs:
             const all_files = ${{steps.file_changes.outputs.files}}
 
             const commentBody = `
-            #### Blockstack Documentation
+            #### Stacks Documentation
             ${ firstLine }
 
-            - [Blockstack Docs](${prUrl})
+            - [Stacks Docs](${prUrl})
             ${createChangedPagesMarkdown([...changed, ...added], prUrl)}
             Built with commit ${context.sha}.
             `;

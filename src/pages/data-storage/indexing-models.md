@@ -12,7 +12,7 @@ in your distributed application using Radiks.
 
 ## Overview of Model class extension
 
-Blockstack provides a `Model` class you should extend to easily create, save, and fetch models.
+Stacks Radiks provides a `Model` class you should extend to easily create, save, and fetch models.
 To create a model class, import the `Model` class from `radiks` into your application.
 
 ```jsx

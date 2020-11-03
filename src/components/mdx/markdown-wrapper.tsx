@@ -8,7 +8,7 @@ import { MetaLabels } from '@components/meta-head';
 const defaultFrontmatter = {
   headings: [],
   description:
-    'Blockstack is an open-source and developer-friendly network for building decentralized apps and smart contracts.',
+    'Stacks is an open-source and developer-friendly network for building decentralized apps and smart contracts.',
 };
 
 export const MDWrapper: React.FC<any> = React.memo(

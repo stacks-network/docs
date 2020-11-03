@@ -5,7 +5,7 @@ description: Learn about the beta release of Collections and how you can start u
 
 ## Introduction
 
-Collections is the feature designed to make data portable among Blockstack applications. Sharing is accomplished by
+Collections is the feature designed to make data portable among Stacks applications. Sharing is accomplished by
 storing a user's data in a standardized format at a known, Gaia storage location. Collections associate user data with
 a user's decentralized ID. When users move among apps, the same data is available to each application the user authorizes.
 
@@ -131,7 +131,7 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
 ## How to add the Contact collections to your DApp
 
-In this section, you learn how to add `Contact` collection functionality to an existing application. Before beginning, make sure your application is using Blockstack auth and is storing data with Gaia. To start using the `Contact` collection in your Blockstack app, do the following:
+In this section, you learn how to add `Contact` collection functionality to an existing application. Before beginning, make sure your application is using Stacks auth and is storing data with Gaia. To start using the `Contact` collection in your Stacks app, do the following:
 
 1. Change to the root directory of your app project.
 2. Install the preview branch of the `blockstack.js`.

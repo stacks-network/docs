@@ -9,7 +9,7 @@ The intention is that each application can create its own BNS
 namespace for its own purposes. Applications can use namespaces for things like:
 
 - Giving users a SSO system, where each user registers their public key under a
-  username. Blockstack applications do this with names in the `.id` namespace,
+  username. Stacks applications do this with names in the `.id` namespace,
   for example.
 
 - Providing a subscription service, where each name is a 3rd party that provides

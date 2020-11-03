@@ -11,7 +11,7 @@ images:
 The Blockstack Network stores application data using a storage system called
 Gaia. Transactional metadata is stored on the Blockstack blockchain and user
 application data is stored in Gaia storage. Storing data off of the blockchain
-ensures that Blockstack applications can provide users with high performance and
+ensures that Stacks applications can provide users with high performance and
 high availability for data reads and writes without introducing central trust
 parties.
 

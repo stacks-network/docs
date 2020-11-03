@@ -5,8 +5,8 @@ description: Learn some common methods for deploying your application.
 
 ## Introduction
 
-Blockstack applications are web applications that authenticate users with Blockstack Auth and store data with Gaia.
-Both of these technologies can be accessed on the client side. As such, Blockstack apps tend to be simple in design and
+Stacks applications are web applications that authenticate users with Blockstack Auth and store data with Gaia.
+Both of these technologies can be accessed on the client side. As such, Stacks apps tend to be simple in design and
 operation, since in many cases, they don’t have to host anything besides the application’s assets.
 
 ## Where to deploy your application
@@ -17,7 +17,7 @@ Before users can interact with your application, you must deploy it on a server 
 - Build your application site for deployment.
 - Copy your generated application files to your production server.
 
-If you first populated your application with the Blockstack application generator, your application contains the starting blocks for configuring, building, and deploying your app. For example, the React template builds out a scaffolding with the following building blocks.
+If you first populated your application with the Stacks application generator, your application contains the starting blocks for configuring, building, and deploying your app. For example, the React template builds out a scaffolding with the following building blocks.
 
 | File or Directory          | Description                                                                                                                                                                    |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -32,7 +32,7 @@ If you use the generator to build Javascript or Vue scaffolding, your project co
 
 Regardless of which scaffolding you use, you must customize and extend this basic scaffolding as needed by your application. For example, you may want to add more properties to the `manifest.json` file. Since every application is different, Blockstack cannot give you specific instructions on how to do this. The steps you take are specific to your application.
 
-## Blockstack Authentication and deployment
+## Stacks Authentication and deployment
 
 When your application authenticates users with Blockstack, your DApp at one URL requests a resource (an identity) from another DApp, the Blockstack Browser. A request for a resource outside of the origin (your new website) is called as a _cross-origin request_(CORs). Getting data in this manner can be risky, so you must configure your website security to allow interactions across origins.
 
@@ -50,4 +50,4 @@ Consult the documentation for your hosting service to learn how to configure COR
 
 ## Deployment and Radiks
 
-If you are deploying a Blockstack application that uses Radiks, your deployment includes a server and a database component. You must take this into account when deploying your application. You may want to choose a service such as Heroku or Digital Ocean if your app uses Radiks.
+If you are deploying a Stacks application that uses Radiks, your deployment includes a server and a database component. You must take this into account when deploying your application. You may want to choose a service such as Heroku or Digital Ocean if your app uses Radiks.

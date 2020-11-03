@@ -112,7 +112,7 @@ The modal displays the app's name and icon as configured in
 // src/components/App.jsx
 
 appDetails: {
-    name: 'Blockstack App',
+    name: 'Stacks App',
     icon: window.location.origin + '/favicon.ico'
 }
 
