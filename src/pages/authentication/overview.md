@@ -120,7 +120,7 @@ The app private key is securely shared with the app on each authentication, encr
 
 Both the `authRequest` and the `authResponse` tokens are [JSON Web Tokens](https://jwt.io/), and they are passed via URL query strings.
 
-Stacks's authentication tokens are based on the [RFC 7519 OAuth JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519)
+Stacks authentication tokens are based on the [RFC 7519 OAuth JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519)
 with additional support for the `secp256k1` curve used by Bitcoin and many other
 cryptocurrencies.
 

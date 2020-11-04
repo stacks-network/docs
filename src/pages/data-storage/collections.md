@@ -18,7 +18,7 @@ particular. The following topics are covered:
 
 ## Understand how collections work
 
-One of Stacks's goals is to give users true data ownership by enabling _data portability_. Data portability allows
+One of the goals of the Stacks ecosystem is to give users true data ownership by enabling _data portability_. Data portability allows
 users to login with their digital ID on any app and have access to the same data. For example, if a user adds a photo of
 a Hawaiian vacation in one app, that photo enters the user's data pool. Then, when the user opens a second app, that
 same photo is available to the second app because the user data, including the photo, is shared via the user's
@@ -43,7 +43,7 @@ pre-release provides the `Contact` collection. A contact schema produces this st
 
 A collection schema is neither validated or enforced. The goal is to incentivize collection use rather that enforce use.
 
-Because malicious apps or apps with poor security controls may damage user data, Stacks believes collections should
+Because malicious apps or apps with poor security controls may damage user data, Stacks collections should
 include the ability for users to roll-back changes. For this reason, Stacks supports an event log and rollback
 mechanisms in collections. To support this rollback in the pre-release, collections data store is conceptually an event
 log. Every data write an app makes is stored as a separate file. By placing data in files it ensures that data is never
@@ -51,7 +51,7 @@ lost and files can be returned back to any previous state.
 
 ##### The Future of Collections Envisioned
 
-Stacks believes that collections should enable true data portability across applications for each decentralized ID.
+Stacks collections should enable true data portability across applications for each decentralized ID.
 The goal is to develop simple user interfaces to allow users to manage of application access and permissions to collection
 data. For example, in the future, users can rollback data to previous versions using management interfaces.
 For developers, collections can incentivize user adoption by reducing user friction. Users can easily try new apps and
