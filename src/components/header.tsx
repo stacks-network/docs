@@ -20,24 +20,27 @@ import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
 import { ForwardRefExoticComponentWithAs, forwardRefWithAs } from '@stacks/ui-core';
 import NextLink from 'next/link';
 import { ColorModeButton } from '@components/color-mode-button';
+import { SearchButton } from '@components/search-button';
 import { PAGE_WIDTH } from '@common/constants';
 import { border, transition } from '@common/utils';
 import { getCapsizeStyles } from '@components/mdx/typography';
 import { useTouchable } from '@common/hooks/use-touchable';
+import { useRouter } from 'next/router';
+import { IconButton } from './icon-button';
 
 const MenuButton = ({ ...rest }: any) => {
   const { isOpen, handleOpen, handleClose } = useMobileMenuState();
   const Icon = isOpen ? CloseIcon : MenuIcon;
   const handleClick = isOpen ? handleClose : handleOpen;
   return (
-    <Flex
+    <IconButton
       color="var(--colors-invert)"
       display={['flex', 'flex', 'none']}
       onClick={handleClick}
-      px={1}
+      px="base"
     >
       <Icon color="currentColor" />
-    </Flex>
+    </IconButton>
   );
 };
 
@@ -243,6 +246,7 @@ const Header = ({ hideSubBar, ...rest }: any) => {
             <LogoLink />
             <Flex alignItems="center">
               <Navigation />
+              <SearchButton />
               <ColorModeButton />
               <MenuButton />
             </Flex>
