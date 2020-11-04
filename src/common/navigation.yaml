@@ -17,9 +17,6 @@ sections:
 
   - title: Technology
     pages:
-#      - path: /pox
- #       pages:
-  #        - path: /overview
       - path: /authentication
         pages:
           - path: /overview

@@ -1,6 +1,7 @@
 ---
 title: Proof of Transfer
 description: Understand the proof-of-transfer consensus mechanism
+icon: TestnetIcon
 ---
 
 ### Overview
@@ -20,8 +21,8 @@ Other new blockchains can be anchored on the secure proof-of-work blockchain ins
 
 ### See also
 
-Read the full PoX whitepaper:
+Read the full PoX whitepaper:  
 https://community.blockstack.org/pox
-
-Watch CEO Muneeb Ali and Evangelist Joe Bender give an overview of Stack's breakthrough PoX mining mechanism.
+  
+Watch CEO Muneeb Ali and Evangelist Joe Bender give an overview of Stack's breakthrough PoX mining mechanism.  
 https://www.youtube.com/watch?v=NY_eUrIcWOY
