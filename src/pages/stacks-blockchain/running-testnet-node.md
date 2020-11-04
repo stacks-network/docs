@@ -52,12 +52,15 @@ git clone https://github.com/blockstack/stacks-blockchain.git; cd stacks-blockch
 Install the Stacks node by running:
 
 ```bash
-cargo build --workspace --bin stacks-node
-# binary will be in target/debug/stacks-node
-./target/debug/stacks-node krypton
-# release build
 cargo build --workspace --release --bin stacks-node
 # binary will be in target/release/stacks-node
+```
+
+To install Stacks node with extra debugging symbols, run:
+
+```bash
+cargo build --workspace --bin stacks-node
+# binary will be in target/debug/stacks-node krypton
 ```
 
 -> This process will take a few minutes to complete
@@ -66,10 +69,16 @@ cargo build --workspace --release --bin stacks-node
 
 You're all set to run a node that connects to the testnet network.
 
-Back in the command line, run:
+If installed without debugging symbols, run:
 
 ```bash
-stacks-node krypton
+target/release/stacks-node krypton
+```
+
+If installed with debugging symbols, run:
+
+```bash
+target/debug/stacks-node krypton
 ```
 
 The first time you run this, you'll see some logs indicating that the Rust code is being compiled. Once that's done, you should see some logs that look something like the this:
@@ -109,6 +118,32 @@ You can review the node logs with this command:
 ```bash
 docker logs -f stacks_follower
 ```
+
+## Optional: Running in Kubernetes with Helm
+
+In addition, you're also able to run a testnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/helm/stacks-blockchain).
+
+Ensure you have the following prerequisites installed on your machine:
+
+- [minikube](https://minikube.sigs.k8s.io/docs/start/) (Only needed if standing up a local Kubernetes cluster)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [helm](https://helm.sh/docs/intro/install/)
+
+To install the chart with the release name `my-release` and run the node as a follower:
+
+```bash
+minikube start # Only run this if standing up a local Kubernetes cluster
+helm repo add blockstack https://charts.blockstack.xyz
+helm install my-release blockstack/stacks-blockchain
+```
+
+You can review the node logs with this command:
+
+```bash
+kubectl logs -l app.kubernetes.io/name=stacks-blockchain
+```
+
+For more information on the Helm chart and configuration options, please refer to the [chart's homepage](https://github.com/blockstack/stacks-blockchain/tree/master/helm/stacks-blockchain).
 
 ## Optional: Mining Stacks token
 

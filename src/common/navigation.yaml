@@ -20,7 +20,6 @@ sections:
       - path: /authentication
         pages:
           - path: /overview
-          - path: /profiles
         sections:
           - title: Tutorials
             usePageTitles: true

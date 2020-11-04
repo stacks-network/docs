@@ -1,5 +1,5 @@
 ---
-title: Loccal development
+title: Local development
 description: Set up and run a mocknet with docker
 icon: TestnetIcon
 images:
@@ -266,10 +266,10 @@ curl localhost:20443/v2/info | jq
 
 **stacks-node-api**:
 
-- Ports `3700, 30999` are exposed to `localhost`
+- Ports `3700, 3999` are exposed to `localhost`
 
 ```bash
-curl localhost:3700/v2/info | jq
+curl localhost:3999/v2/info | jq
 ```
 
 **postgres**:
