@@ -142,7 +142,7 @@ export const appConfig = new AppConfig(['store_write', 'publish_data']);
 
 The `appDetails` and `userSession` objects are joined by the callback function
 [`finished`](https://github.com/blockstack/stacks-todos/blob/master/src/components/App.jsx#L31)
-in configuring Stacks authentication for authentication with the `authOptions` object:
+in configuring Stacks authentication with the `authOptions` object:
 
 ```js
 // src/components/App.jsx
