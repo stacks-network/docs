@@ -8,7 +8,7 @@ import { useColorMode } from '@common/hooks/use-color-mode';
 export const ColorModeButton = forwardRef((props: LinkProps, ref: Ref<HTMLDivElement>) => {
   const [colorMode, toggleColorMode] = useColorMode();
   return (
-    <IconButton onClick={toggleColorMode} title="Toggle color mode" {...props} ref={ref}>
+    <IconButton onClick={toggleColorMode} title="Toggle color mode" px="base" {...props} ref={ref}>
       {colorMode === 'dark' ? <DarkModeIcon /> : <LightModeIcon />}
     </IconButton>
   );

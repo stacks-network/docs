@@ -7,5 +7,6 @@ export const initialState: State = {
   activeSlug: '',
   setState: (value: any) => null,
   routes,
+  searchModal: 'closed',
 };
 export const AppStateContext = React.createContext<State>(initialState);
