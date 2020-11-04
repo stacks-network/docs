@@ -73,7 +73,7 @@ You should see the app's landing page:
 ### Step 1: Choose **Get started** to start onboarding into the app.
 
 The app displays a standardized introductory modal using
-[Stacks Auth](https://github.com/blockstack/stacks.js/tree/master/packages/auth)
+[Stacks authentication](https://github.com/blockstack/stacks.js/tree/master/packages/auth)
 
 ![The Stacks Connect Modal](/images/todos-intro.png)
 
@@ -94,7 +94,7 @@ export const Signin = () => {
 
 This component imports the [React hook](https://reactjs.org/docs/hooks-overview.html)
 [`useConnect`](https://github.com/blockstack/ux/blob/master/packages/connect/src/react/hooks/use-connect.ts)
-from the Stacks Auth library.
+from the Stacks authentication library.
 
 `useConnect` returns many helper functions such as
 [`doOpenAuth`](https://github.com/blockstack/ux/blob/master/packages/connect/src/react/hooks/use-connect.ts#L33),
@@ -142,7 +142,7 @@ export const appConfig = new AppConfig(['store_write', 'publish_data']);
 
 The `appDetails` and `userSession` objects are joined by the callback function
 [`finished`](https://github.com/blockstack/stacks-todos/blob/master/src/components/App.jsx#L31)
-in configuring Stacks Auth for authentication with the `authOptions` object:
+in configuring Stacks authentication for authentication with the `authOptions` object:
 
 ```js
 // src/components/App.jsx
