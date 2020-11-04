@@ -68,6 +68,9 @@ miner = true
 chain = "bitcoin"
 mode = "krypton"
 peer_host = "bitcoind.blockstack.org"
+#process_exit_at_block_height = 5340
+#burnchain_op_tx_fee = 5500
+#commit_anchor_block_within = 10000
 rpc_port = 18443
 peer_port = 18444
 
