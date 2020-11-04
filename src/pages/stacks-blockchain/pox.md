@@ -23,6 +23,6 @@ Other new blockchains can be anchored on the secure proof-of-work blockchain ins
 
 Read the full PoX whitepaper:  
 https://community.blockstack.org/pox
-  
+
 Watch CEO Muneeb Ali and Evangelist Joe Bender give an overview of Stack's breakthrough PoX mining mechanism.  
 https://www.youtube.com/watch?v=NY_eUrIcWOY
