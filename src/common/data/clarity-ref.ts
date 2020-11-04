@@ -24,8 +24,10 @@ const generateMarkdown = () => {
   let keywords = '';
   let functions = '';
 
-  CLARITY_REFERENCE.functions.forEach(entry => {
-    functions += `
+  CLARITY_REFERENCE.functions
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .forEach(entry => {
+      functions += `
 ### ${entry.name}
 
 **Signature:** ${inlineCode(entry.signature)}
@@ -42,10 +44,12 @@ ${entry.description.trim()}
 
 ${wrapInClarityTicks(entry.example)}
 `;
-  });
+    });
 
-  CLARITY_REFERENCE.keywords.forEach(entry => {
-    keywords += `### ${entry.name}
+  CLARITY_REFERENCE.keywords
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .forEach(entry => {
+      keywords += `### ${entry.name}
 
 **Output:** ${inlineCode(entry.output_type)}
 
@@ -56,7 +60,7 @@ ${entry.description.trim()}
 ${wrapInClarityTicks(entry.example)}
 
 `;
-  });
+    });
 
   return {
     keywords,
