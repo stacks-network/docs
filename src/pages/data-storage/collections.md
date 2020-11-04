@@ -24,7 +24,7 @@ a Hawaiian vacation in one app, that photo enters the user's data pool. Then, wh
 same photo is available to the second app because the user data, including the photo, is shared via the user's
 decentralized ID.
 
-How do collections work? Blockstack builds a library containing commonly used data schemes. Developers use these classes
+How do collections work? Hiro PBC builds a library containing commonly used data schemes. Developers use these classes
 and objects instead of creating their own, unique data schemes. Using a class from the collections library guarantees
 class data is stored in Gaia in that format; And, when retrieved, guarantees the same format is returned. This
 pre-release provides the `Contact` collection. A contact schema produces this structure:
@@ -98,7 +98,7 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
    The system starts the application and launches it in your browser at 127.0.0.1:3000
 
-9. Choose **Sign In with Blockstack**.
+9. Choose **Sign In with Stacks Auth**.
 
    The internet browser will display this pop-up
 

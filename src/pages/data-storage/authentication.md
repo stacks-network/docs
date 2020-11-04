@@ -1,5 +1,5 @@
 ---
-description: 'Storing user data with Blockstack'
+description: 'Storing user data with Stacks'
 ---
 
 ## Introduction
@@ -20,13 +20,13 @@ approves a sign-in, the Stacks authenticator responds to the application with an
 `authResponse` token. These tokens are <a href="https://jwt.io/" target="\_blank">JSON Web Tokens</a>, and they are
 passed via URL query strings.
 
-When a user chooses to "Sign in with Blockstack" on your DApp, the `redirectToSignIn()` method sends the user to the
+When a user chooses to "Sign in with Stacks Auth" on your DApp, the `redirectToSignIn()` method sends the user to the
 Stacks authenticator. The browser responds with an authentication token and an _app private key_.
 
 ![](/images/app-sign-in.png)
 
 The app private key is application-specific. It is generated from the user's identity address private key using the
-`appDomain` as input. This key is deterministic, meaning that for a given Blockstack ID and domain name, the same
+`appDomain` as input. This key is deterministic, meaning that for a given Stacks ID and domain name, the same
 private key is generated each time. The app private key is securely shared with the app on each authentication and
 encrypted by the Stacks authenticator. The key serves three functions, it:
 

@@ -1,19 +1,19 @@
 ---
 title: Overview
-description: 'Blockstack naming service (BNS)'
+description: 'Blockchain naming service (BNS)'
 ---
 
-# Blockstack Naming Service (BNS)
+# Blockchain Naming Service (BNS)
 
-This document gives an overview of how the Blockstack Naming Service work. This
+This document gives an overview of how the Blockchain Naming Service work. This
 section introduces you to BNS and explains the following concepts:
 
 The ([Stacks Node](https://github.com/blockstack/blockstack-core))
-repository is the reference implementation of the Blockstack Naming Service.
+repository is the reference implementation of the Blockchain Naming Service.
 
 ## What is BNS
 
-The Blockstack Naming Service (BNS) is a network system that binds names
+The Blockchain Naming Service (BNS) is a network system that binds names
 to off-chain state without relying on any central points of control.
 It does so by embedding a log of its control-plane messages within a public blockchain, like Bitcoin.
 

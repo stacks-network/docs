@@ -69,7 +69,7 @@ documentation.
 ### Smart contracts
 
 You can use smart contracts to decentralize your app’s backend logic, making it open and permissionless. Smart contracts
-on Blockstack are written in the [Clarity language](https://clarity-lang.org). View the smart contracts documentation or get started with a tutorial.
+on the Stacks blockchain are written in the [Clarity language](https://clarity-lang.org). View the smart contracts documentation or get started with a tutorial.
 
 [@page-reference | inline]
 | /smart-contracts/overview

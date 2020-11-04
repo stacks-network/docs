@@ -10,11 +10,11 @@ decentralized naming system that implements human-readable, globally-unique, and
 strongly-owned names. This page describes some other naming systems in
 comparison to Stacks:
 
-## Stacks vs DNS
+## Stacks BNS vs DNS
 
-Blockstack and DNS both implement naming systems, but in fundamentally
-different ways. Blockstack _can be used_ for resolving host names to IP
-addresses, but this is not its default use-case. The [Blockstack Naming
+Stacks BNS and DNS both implement naming systems, but in fundamentally
+different ways. Stacks BNS _can be used_ for resolving host names to IP
+addresses, but this is not its default use-case. The [Blockchain Naming
 Service](/core/naming/introduction) (BNS) instead behaves
 more like a decentralized
 [LDAP](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol) system for
@@ -25,45 +25,45 @@ serialization formats. However, it is important to recognize that this is the
 _only_ thing they have in common---BNS has fundamentally different semantics
 than DNS:
 
-- **Zone files**: Blockstack stores a DNS zone file for each name. However,
+- **Zone files**: Stacks' BNS stores a DNS zone file for each name. However,
   the semantics of a BNS zone file are nothing like the semantics of a DNS zone
   file---the only thing they have in common is their format.
-  A "standard" Blockstack zone files only have `URI` and `TXT` resource records
-  that point to the user's application data. Moreover, a Blockstack ID has a
+  A "standard" Stacks zone files only have `URI` and `TXT` resource records
+  that point to the user's application data. Moreover, a Stacks ID has a
   _history_ of zone files, and historic zone files can alter the way in which a
-  Blockstack ID gets resolved (DNS has no such concept). It is conceivable that an advanced
-  user could add `A` and `AAAA` records to their Blockstack ID's zone file,
-  but these are not honored by any Blockstack software at this time.
+  Stacks ID gets resolved (DNS has no such concept). It is conceivable that an advanced
+  user could add `A` and `AAAA` records to their Stacks ID's zone file,
+  but these are not honored by any Stacks software at this time.
 
-- **Subdomains**: Blockstack has the concept of a subdomain, but it is
-  semantically very different from a DNS subdomain. In Blockstack, a subdomain
-  is a Blockstack ID whose state and transaction history are anchored to the
-  blockchain, but stored within an on-chain Blockstack ID's zone file history.
+- **Subdomains**: Stacks BNS has the concept of a subdomain, but it is
+  semantically very different from a DNS subdomain. A Stacks BNS subdomain
+  is a Stacks ID whose state and transaction history are anchored to the
+  blockchain, but stored within an on-chain Stacks ID's zone file history.
   Unlike DNS subdomains, a BNS subdomain has
   its own owner and is a first-class BNS name---all subdomains are resolvable,
   and only the subdomain's owner can update the subdomain's records. The only thing BNS subdomains and DNS
   subdomains have in common is the name format (e.g. `foo.bar.baz` is a subdomain
   of `bar.baz` in both DNS and BNS).
 
-More details can be found in the [Blockstack vs
+More details can be found in the [Stacks BNS vs
 DNS](/core/naming/comparison) document. A feature
-comparison can be found at the end of the [Blockstack Naming
+comparison can be found at the end of the [Blockchain Naming
 Service](/core/naming/introduction) document.
 
-## Blockstack vs Namecoin
+## Stacks BNS vs Namecoin
 
 Namecoin also implements a decentralized naming service on top of a blockchain,
-just like BNS. In fact, early versions of Blockstack were built on Namecoin.
+just like BNS. In fact, early versions of BNS were built on Namecoin.
 However, [it was discovered](https://www.usenix.org/node/196209) that Namecoin's
 merged mining with Bitcoin regularly placed it under the _de facto_ control of a single
 miner. This prompted a re-architecting of the system to be _portable_ across
-blockchains, so that if Blockstack's underlying blockchain (currently Bitcoin)
+blockchains, so that if the underlying blockchain (currently Bitcoin)
 ever became insecure, the system could migrate to a more secure blockchain.
 
-A feature comparison can be found at the end of the [Blockstack Naming
+A feature comparison can be found at the end of the [Blockchain Naming
 Service](/core/naming/introduction) document.
 
-## Blockstack vs ENS
+## Stacks BNS vs ENS
 
 ENS also implements a decentralized naming system on top of a blockchain, but as
 a smart contract on Ethereum. Like BNS, ENS is geared towards resolving names

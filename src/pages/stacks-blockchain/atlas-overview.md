@@ -13,7 +13,7 @@ all chunks are available to clients.
 
 This document is aimed at developers and technical users.
 
-The reader of this document is expected to be familiar with the [Blockstack Naming Service](/core/naming/introduction)(BNS),
+The reader of this document is expected to be familiar with the [Blockchain Naming Service](/core/naming/introduction)(BNS),
 as well as Stacks's storage system [Gaia](https://github.com/blockstack/gaia). We advise the reader
 to familiarize themselves with both systems before approaching this document.
 

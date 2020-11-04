@@ -8,7 +8,7 @@ icon: StacksIcon
 
 Stacks is the name of a token developed by Blockstack Token LLC in 2017 and
 activated in the third quarter of 2018. This page discusses a brief history of
-the Stacks token and deployment on the Blockstack network as well as the current
+the Stacks token and deployment on the Stacks network as well as the current
 role of the Stacks token.
 
 If you are a developer interested in the specific technical changes related to

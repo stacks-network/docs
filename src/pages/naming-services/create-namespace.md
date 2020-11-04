@@ -1,6 +1,6 @@
 ---
 title: Creating a Namespace
-description: Learn how to create a namespace in the Blockstack Naming Service.
+description: Learn how to create a namespace in the Blockchain Naming Service.
 ---
 
 ## Introduction

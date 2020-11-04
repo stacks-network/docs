@@ -1,5 +1,5 @@
 ---
-title: Blockstack naming service (BNS)
+title: Blockchain naming service (BNS)
 description: The BNS node is the heart of the system. It is responsible for building up and replicating global name state.
 ---
 

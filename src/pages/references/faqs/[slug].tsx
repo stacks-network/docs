@@ -94,7 +94,7 @@ const FaqPage = props => {
   return (
     <>
       <Head>
-        <title>{title} | Blockstack</title>
+        <title>{title} | Stacks</title>
         <meta name="description" content={description} />
       </Head>
       <MDContents pageTop={() => <PageTop title={title} description={description} />} headings={[]}>

@@ -1,6 +1,6 @@
 ---
 title: Stacks API
-description: Step-by-step instructions for deploying a Blockstack API node on Debian or Ubuntu are below.
+description: Step-by-step instructions for deploying a Stacks API node on Debian or Ubuntu are below.
 duration: 30 minutes
 tags:
   - tutorial

@@ -88,7 +88,7 @@ the [`publish_data` scope](https://blockstack.github.io/stacks.js/enums/authscop
 
 ```jsx
 const options = {
-  user: 'ryan.id', // the Blockstack ID of the user for which to lookup the file
+  user: 'ryan.id', // the Stacks ID of the user for which to lookup the file
   app: 'https://BlockstackApp.com', // origin of the app this file is stored for
 };
 
