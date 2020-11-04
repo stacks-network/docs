@@ -1,11 +1,11 @@
 ---
 title: Overview
-description: 'Blockstack naming system (BNS)'
+description: 'Blockchain naming system (BNS)'
 ---
 
-# Blockstack Naming System (BNS)
+# Blockchain Naming System (BNS)
 
-The Blockstack Naming System (BNS) is a network system that binds names
+BNS is a network system that binds names
 to off-chain state without relying on any central points of control.
 The Stacks V1 blockchain implemented BNS through first-order name operations.
 In Stacks V2, BNS is instead implemented through a smart-contract loaded
