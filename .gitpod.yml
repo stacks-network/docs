@@ -1,0 +1,17 @@
+ports:
+  - port: 3000
+    onOpen: open-preview
+
+tasks:
+  - init: yarn
+    command: yarn dev
+
+vscode:
+  extensions:
+    - dbaeumer.vscode-eslint@2.1.8:02aHhbJ0Q4aGdjHXlTdVKg==
+    - yzhang.markdown-all-in-one@3.3.0:fRpb0skkyto7j5ibdwKGTA==
+    - DavidAnson.vscode-markdownlint@0.37.0:JsyciBGHwqfyaOd093YHWQ==
+    - esbenp.prettier-vscode@5.7.1:GDba64T6G+TUi1qmc6BE3A==
+    - ms-vscode.vscode-typescript-tslint-plugin@1.2.2:0nQ3PEEA0NPEt3UcbCYiIQ==
+    - streetsidesoftware.code-spell-checker@1.9.2:ZMxDUqspUlYQu1bGxj+4MA==
+    - mgmcdermott.vscode-language-babel@0.0.29:S51DUCuN3aq2IN94LSDd9A==

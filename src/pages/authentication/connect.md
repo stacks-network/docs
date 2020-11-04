@@ -51,7 +51,7 @@ The exact interface you'll use [is defined as](https://github.com/blockstack/ux/
 ```typescript
 export interface AuthOptions {
   redirectTo: string;
-  finished: (payload: FinishedData) => void;
+  onFinish: (payload: FinishedData) => void;
   sendToSignIn?: boolean;
   userSession?: UserSession;
   appDetails: {
@@ -65,49 +65,11 @@ export interface AuthOptions {
 | ------------ | ----------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | redirectTo   | string      |         | false    | The path in your app where users go after sign in.                                                                                                                                                                                                                                                            |
 | appDetails   | object      |         | false    | an object which includes `appName: string` and `appIcon: string`. This will speed up the process of loading your app's information during onboarding.                                                                                                                                                         |
-| finished     | function    |         | false    | A callback that can be invoked after authentication. This prevents having to do a whole page refresh in a new tab. One argument is passed to this callback, which is an object with `userSession` included. If included, then the `redirectTo` path is ignored, and the user will be logged in automatically. |
+| onFinish     | function    |         | false    | A callback that can be invoked after authentication. This prevents having to do a whole page refresh in a new tab. One argument is passed to this callback, which is an object with `userSession` included. If included, then the `redirectTo` path is ignored, and the user will be logged in automatically. |
+| finished     | function    |         | false    | **Deprecated**. Use `onFinish`.                                                                                                                                                                                                                                                                               |
 | sendToSignIn | boolean     | false   | true     | Whether the user should go straight to the 'sign in' flow (false) or be presented with the 'sign up' flow (true) instead.                                                                                                                                                                                     |
-| userSession  | UserSession |         | true     | pass a `UserSession` instance to use for authentication. If it's not passed, `@blockstack/connect` will create one for you.                                                                                                                                                                                   |
+| userSession  | UserSession |         | true     | pass a `UserSession` instance to use for authentication. If it's not passed, `@stacks/connect` will create one for you.                                                                                                                                                                                       |
 | userSession  | UserSession |         | false    | pass a `UserSession` instance to use for authentication. If it's not passed, `@stacks/connect` will create one for you.                                                                                                                                                                                       |
-
-### In React Apps
-
-If you're using `connect` in a React app, then the best option is to include `connect`'s React Provider and hooks in your React app.
-
-First, setup the `Connect` provider at the "top-level" of your app - probably next to wherever you would put a Redux provider, for example.
-
-```jsx
-import { Connect } from '@stacks/connect';
-
-const authOptions = {
-  redirectTo: '/',
-  finished: ({ userSession }) => {
-    console.log(userSession.loadUserData());
-  },
-  appDetails: {
-    name: 'My Cool App',
-    icon: 'https://example.com/icon.png',
-  },
-};
-
-const App = () => <Connect authOptions={authOptions}>// the rest of your app's components</Connect>;
-```
-
-Later, when you want to begin the onboarding process, use the `useConnect` hook to get `connect`'s `doOpenAuth` method.
-
-```jsx
-import { useConnect } from '@stacks/connect';
-
-const SignInButton = () => {
-  const { doOpenAuth } = useConnect();
-
-  return <Button onClick={doOpenAuth}>Sign In</Button>;
-};
-```
-
-#### Sign In
-
-To send the user straight to sign in, call `doOpenAuth(true)`.
 
 ### In ES6 (non-React) apps
 
@@ -125,12 +87,6 @@ showConnect(authOptions);
 #### Sign In
 
 To send the user straight to sign in, include `sendToSignIn: true` in your `authOptions`.
-
-#### Note about dependency size:
-
-If you're building a non-React app, note that importing `@stacks/connect` will add React dependencies to your JavaScript bundle. We recommend using something like [Webpack resolve aliases](https://webpack.js.org/configuration/resolve/) to replace `react` with `preact` in production, which reduces your bundle size. Check out [our own webpack.config.js file](https://github.com/blockstack/ux/blob/master/packages/connect/webpack.config.js#L87:L95) to see how we use this for production builds.
-
-If you're using the hosted version of `@stacks/connect` (described below), then you already have a production-optimized bundle.
 
 ### Using a hosted version of `@stacks/connect`
 
@@ -150,6 +106,45 @@ const authOptions = {
 };
 stacksConnect.showConnect(authOptions);
 ```
+
+### In React Apps
+
+If you're using `connect` in a React app, then the best option is to use the package `@stacks/connect-react`, utilizing [React Context Provider](https://reactjs.org/docs/context.html) and hooks in your React app.
+
+First, setup the `Connect` context provider at the "top-level" of your app - probably next to wherever you would put a Redux provider, for example.
+
+```jsx
+import { Connect } from '@stacks/connect-react';
+
+const authOptions = {
+  redirectTo: '/',
+  onFinish: ({ userSession }) => {
+    console.log(userSession.loadUserData());
+  },
+  appDetails: {
+    name: 'My Cool App',
+    icon: 'https://example.com/icon.png',
+  },
+};
+
+const App = () => <Connect authOptions={authOptions}>// the rest of your app's components</Connect>;
+```
+
+Later, when you want to begin the onboarding process, use the `useConnect` hook to get `connect`'s `doOpenAuth` method.
+
+```jsx
+import { useConnect } from '@stacks/connect-react';
+
+const SignInButton = () => {
+  const { doOpenAuth } = useConnect();
+
+  return <Button onClick={() => doOpenAuth()}>Sign In</Button>;
+};
+```
+
+#### Sign In
+
+To send the user straight to sign in, skipping the built-in modal that introduces Blockstack, call `doOpenAuth(true)`.
 
 ## Handling redirect fallbacks
 
