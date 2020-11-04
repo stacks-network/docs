@@ -48,12 +48,12 @@ sections:
       - path: /stacks-blockchain
         pages:
           - path: /overview
+          - path: /proof-of-transfer
           - path: /testnet
           - path: /accounts
           - path: /transactions
           - path: /network
           - path: /stacking
-          - path: /pox
           - path: /local-development
         sections:
           - title: Tutorials
