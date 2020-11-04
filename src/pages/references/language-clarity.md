@@ -11,25 +11,7 @@ import { ClarityKeywordReference, ClarityFunctionReference } from '@components/c
 The Clarity language uses a strong static type system. Function arguments
 and database schemas require specified types, and use of types is checked
 during contract launch. The type system does _not_ have a universal
-super type. The type system contains the following types:
-
-- `(tuple (key-name-0 key-type-0) (key-name-1 key-type-1) ...)` -
-  a typed tuple with named fields.
-- `(list max-len entry-type)` - a list of maximum length `max-len`, with
-  entries of type `entry-type`
-- `(response ok-type err-type)` - object used by public functions to commit
-  their changes or abort. May be returned or used by other functions as
-  well, however, only public functions have the commit/abort behavior.
-- `(optional some-type)` - an option type for objects that can either be
-  `(some value)` or `none`
-- `(buff max-len)` := byte buffer or maximum length `max-len`.
-- `(string-ascii max-len)` := ASCII string of maximum length `max-len`
-- `(string-utf8 max-len)` := UTF-8 string of maximum length `max-len`
-- `principal` := object representing a principal (whether a contract principal
-  or standard principal).
-- `bool` := boolean value (`true` or `false`)
-- `int` := signed 128-bit integer
-- `uint` := unsigned 128-bit integer
+super type.
 
 ## Public Functions
 
@@ -131,11 +113,3 @@ The following limitations are imposed on contract calls:
 3. `contract-call?` are for inter-contract calls only. Attempts to
    execute when the caller is also the callee will abort the
    transaction.
-
-## Keyword reference
-
-<ClarityKeywordReference {...props.mdx.keywords} />
-
-## Function reference
-
-<ClarityFunctionReference {...props.mdx.functions} />
