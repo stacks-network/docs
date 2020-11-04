@@ -25,7 +25,7 @@ First, we need to generate a keychain. With this keychain, we'll get some testne
 To get a keychain, the simplest way is to use the `blockstack-cli`. We'll use the `make_keychain` command, and pass `-t` to indicate that we want a testnet keychain.
 
 ```bash
-npx blockstack-cli@1.1.0-beta.1 make_keychain -t
+npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
 After this runs, you'll probably see some installation logs, and at the end you should see some JSON that looks like this:
@@ -130,7 +130,7 @@ Alternatively, you can run the testnet node with Docker.
 Generate a keychain:
 
 ```bash
-docker run -i node:alpine npx blockstack-cli@1.1.0-beta.1 make_keychain -t
+docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
 Request BTC from the faucet:
@@ -226,7 +226,7 @@ Ensure you have the following prerequisites installed on your machine:
 Generate a keychain:
 
 ```bash
-docker run -i node:alpine npx blockstack-cli@1.1.0-beta.1 make_keychain -t
+docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
 Request BTC from the faucet:
