@@ -17,7 +17,7 @@ Proof-of-transfer (PoX) is a new mining mechanism, that generalizes the concept 
 This allows network participants who are adding value to the new cryptocurrency network to earn a reward in a base cryptocurrency by actively participating in the consensus algorithm, PoX encourages a model where there is one extremely secure proof-of-work blockchain, say Bitcoin.
 
 Other new blockchains can be anchored on the secure proof-of-work blockchain instead of introducing new proof-of-work chains. PoX has the interesting property where participants can earn payouts in a separate, potentially more stable, base cryptocurrency while participating in the new blockchain network. This can help solve a bootstrapping problem for new blockchains by providing incentives for early participants. Further, PoX has a potential use case for funding ecosystem developer funds.
-<img src="/images/pox.png" alt="drawing" width="500"/>
+![<proof-of-transfer>](/images/proof-of-transfer.png)
 
 ### See also
 

@@ -54,7 +54,7 @@ sections:
           - path: /transactions
           - path: /network
           - path: /stacking
-          - path: /pox
+          - path: /proof-of-transfer
         sections:
           - title: Tutorials
             pages:
