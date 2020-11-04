@@ -121,7 +121,7 @@ docker logs -f stacks_follower
 
 ## Optional: Running in Kubernetes with Helm
 
-In addition, you're also able to run a testnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/helm/stacks-blockchain).
+In addition, you're also able to run a testnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
 
 Ensure you have the following prerequisites installed on your machine:
 
@@ -143,7 +143,7 @@ You can review the node logs with this command:
 kubectl logs -l app.kubernetes.io/name=stacks-blockchain
 ```
 
-For more information on the Helm chart and configuration options, please refer to the [chart's homepage](https://github.com/blockstack/stacks-blockchain/tree/master/helm/stacks-blockchain).
+For more information on the Helm chart and configuration options, please refer to the [chart's homepage](https://github.com/blockstack/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
 
 ## Optional: Mining Stacks token
 
