@@ -20,7 +20,6 @@ sections:
       - path: /authentication
         pages:
           - path: /overview
-          - path: /profiles
         sections:
           - title: Tutorials
             usePageTitles: true
@@ -55,6 +54,7 @@ sections:
           - path: /network
           - path: /stacking
           - path: /pox
+          - path: /local-development
         sections:
           - title: Tutorials
             pages:

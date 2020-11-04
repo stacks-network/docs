@@ -25,7 +25,7 @@ First, we need to generate a keychain. With this keychain, we'll get some testne
 To get a keychain, the simplest way is to use the `blockstack-cli`. We'll use the `make_keychain` command, and pass `-t` to indicate that we want a testnet keychain.
 
 ```bash
-npx blockstack-cli@1.1.0-beta.1 make_keychain -t
+npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
 After this runs, you'll probably see some installation logs, and at the end you should see some JSON that looks like this:
@@ -125,27 +125,27 @@ Alternatively, you can run the testnet node with Docker.
 
 -> Ensure you have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
 
+### Generate keychain and get testnet tokens
+
+Generate a keychain:
+
+```bash
+docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
+```
+
+Request BTC from the faucet:
+
+```bash
+# replace <btc_address> with `btcAddress` property from your keychain
+curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/btc?address=<btc_address>" | json_pp
+```
+
 ### Create a config file directory
 
 You need a dedicated directory to keep the config file(s):
 
 ```bash
 mkdir -p $HOME/stacks
-```
-
-### Generate keychain and get testnet tokens
-
-Generate a keychain:
-
-```bash
-docker run -i node:alpine npx blockstack-cli@1.1.0-beta.1 make_keychain -t
-```
-
-Run the faucet:
-
-```bash
-# replace <btc_address> with `btcAddress` property from your keychain
-curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/btc?address=<btc_address>" | json_pp
 ```
 
 ### Create configuration file
@@ -158,7 +158,7 @@ working_dir = "/root/stacks-node/current"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
 # Enter your private key here!
-seed = "replace-with-your-privateKey-from-above"
+seed = "replace-with-your-privateKey-from-generate-keychain-step"
 miner = true
 
 [burnchain]
@@ -189,16 +189,18 @@ amount = 10000000000000000
 
 ### Run the miner
 
+-> The ENV VARS `RUST_BACKTRACE` and `BLOCKSTACK_DEBUG` are optional. If removed, debug logs will be disabled
+
 ```bash
 docker run -d \
   --name stacks_miner \
-  --rm \ # remove this to persist data across restarts
-  -e RUST_BACKTRACE="full" \ # remove to disable debug logs
-  -e BLOCKSTACK_DEBUG="1" \ # remove to disable debug logs
+  --rm \
+  -e RUST_BACKTRACE="full" \
+  -e BLOCKSTACK_DEBUG="1" \
   -v "$HOME/stacks/Config.toml:/src/stacks-node/Config.toml" \
   -p 20443:20443 \
   -p 20444:20444 \
-  blockstack/stacks-blockchain:v23.0.0.6-krypton \
+  blockstack/stacks-blockchain:latest \
 /bin/stacks-node start --config /src/stacks-node/Config.toml
 ```
 
@@ -207,3 +209,49 @@ You can review the node logs with this command:
 ```bash
 docker logs -f stacks_miner
 ```
+
+## Optional: Running in Kubernetes with Helm
+
+In addition, you're also able to run a testnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/helm/stacks-blockchain).
+
+Ensure you have the following prerequisites installed on your machine:
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [minikube](https://minikube.sigs.k8s.io/docs/start/) (Only needed if standing up a local Kubernetes cluster)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [helm](https://helm.sh/docs/intro/install/)
+
+### Generate keychain and get testnet tokens
+
+Generate a keychain:
+
+```bash
+docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
+```
+
+Request BTC from the faucet:
+
+```bash
+# replace <btc_address> with `btcAddress` property from your keychain
+curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/btc?address=<btc_address>" | json_pp
+```
+
+### Install the chart and run the miner
+
+To install the chart with the release name `my-release` and run the node as a miner:
+
+```bash
+minikube start # Only run this if standing up a local Kubernetes cluster
+helm repo add blockstack https://charts.blockstack.xyz
+helm install my-release blockstack/stacks-blockchain \
+  --set config.node.miner=true \
+  --set config.node.seed="replace-with-your-privateKey-from-generate-keychain-step"
+```
+
+You can review the node logs with this command:
+
+```bash
+kubectl logs -l app.kubernetes.io/name=stacks-blockchain
+```
+
+For more information on the Helm chart and configuration options, please refer to the [chart's homepage](https://github.com/blockstack/stacks-blockchain/tree/master/helm/stacks-blockchain).
