@@ -97,7 +97,7 @@ miner = true
 
 #### working_dir (optional)
 
-Absolute path to the directory which the stacks-node will use for storing various data
+Absolute path to the directory which the stacks-node will use for storing various data.
 
 Example: `"/root/stacks-node"`
 
@@ -215,19 +215,19 @@ walk_interval = 30
 
 #### public_ip_address
 
-The advertised public IP of this stacks-node
+The advertised public IP of this stacks-node.
 
 Example: `"1.2.3.4:20444"`
 
 #### download_interval
 
-Time (in seconds) between attempts to download blocks
+Time (in seconds) between attempts to download blocks.
 
 Example: `10`
 
 #### walk_interval
 
-Time (in seconds) between attempts to walk the Merkle tree
+Time (in seconds) between attempts to walk the Merkle tree.
 
 Example: `30`
 
@@ -335,4 +335,5 @@ Example: `"STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"`
 #### amount
 
 The balance of micro-STX given to the address.
+
 Example: `10000000000000000`
