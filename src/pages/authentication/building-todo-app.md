@@ -38,8 +38,8 @@ You must have recent versions of Git and [Node.js](https://nodejs.org/en/downloa
 ### Step 1: Install the code and its dependencies
 
 ```bash
-git clone https://github.com/blockstack/stacks-todos
-cd stacks-todos
+git clone https://github.com/blockstack/blockstack-todos
+cd blockstack-todos
 npm install
 ```
 
@@ -54,12 +54,12 @@ You should see output similar to the following:
 ```bash
 Compiled successfully!
 
-You can now view bs-todo in the browser.
+You can now view Stacks-todo in the browser.
 
     http://localhost:3000/
 
 Note that the development build is not optimized.
-To create a production build, use npm run build.
+To create a production build, use yarn build.
 ```
 
 ### Step 3: Open your local browser to [`http://localhost:3000`](http://localhost:3000) if it doesn't open automatically.
