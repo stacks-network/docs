@@ -113,32 +113,32 @@ async function redirects() {
     },
     {
       source: '/core/naming/introduction.html',
-      destination: '/naming-services/overview',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
       source: '/core/naming/architecture.html',
-      destination: '/naming-services/architecture',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
       source: '/core/naming/namespaces.html',
-      destination: '/naming-services/namespaces',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
       source: '/core/naming/comparison.html',
-      destination: '/naming-services/comparison',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
       source: '/core/naming/tutorial_subdomains.html',
-      destination: '/naming-services/subdomains-tutorial',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
       source: '/core/naming/search.html',
-      destination: '/naming-services/overview',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
@@ -153,35 +153,39 @@ async function redirects() {
     },
     {
       source: '/core/naming/pickname.html',
-      destination: '/naming-services/choose-name',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
       source: '/core/naming/creationhowto.html',
-      destination: '/naming-services/create-namespace',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
       source: '/core/naming/resolving.html',
-      destination: '/naming-services/resolve-name',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
       source: '/core/naming/register.html',
-      destination: '/naming-services/register-name',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
       source: '/core/naming/manage.html',
-      destination: '/naming-services/manage-names',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
       source: '/core/naming/subdomains.html',
-      destination: '/naming-services/subdomains',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
-    { source: '/core/naming/forks.html', destination: '/naming-services/forks', permanent: true },
+    {
+      source: '/core/naming/forks.html',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
     {
       source: '/develop/collections.html',
       destination: '/data-storage/collections',
@@ -353,7 +357,8 @@ async function redirects() {
     { source: '/data-storage', destination: '/data-storage/overview', permanent: true },
     { source: '/data-indexing', destination: '/data-storage/indexing-overview', permanent: true },
     { source: '/stacks-wallet', destination: '/stacks-wallet/overview', permanent: true },
-    { source: '/naming-services', destination: '/naming-services/overview', permanent: true },
+    { source: '/naming-services', destination: '/technology/naming-system/', permanent: true },
+    { source: '/naming-system', destination: '/technology/naming-system/', permanent: true },
     { source: '/storage-hubs', destination: '/storage-hubs/overview', permanent: true },
     { source: '/references', destination: '/references/blockstack-cli', permanent: true },
     { source: '/ecosystem', destination: '/ecosystem/overview', permanent: true },
@@ -410,7 +415,88 @@ async function redirects() {
     },
     {
       source: '/naming-services/build-profile-search-index',
-      destination: '/naming-services/overview',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/build-profile-search-index',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/build-profile-search-index',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/build-profile-search-index',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+
+    {
+      source: '/naming-services/architecture',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/choose-name',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/comparison',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/create-namespace',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/did',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/forks',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/manage-names',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/namespaces',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/overview',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/register-name',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/resolve-name',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/subdomains',
+      destination: '/technology/naming-system/',
+      permanent: true,
+    },
+    {
+      source: '/naming-services/subdomains-tutorial',
+      destination: '/technology/naming-system/',
       permanent: true,
     },
     {
