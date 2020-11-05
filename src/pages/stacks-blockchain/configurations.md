@@ -7,40 +7,59 @@ images:
   sm: /images/pages/testnet-sm.svg
 ---
 
+## Installation
+
+See this page for installation instructions.
+[@page-reference | inline]
+| /stacks-blockchain/running-testnet-node
+
+## Usage
+
+`stacks-node sub-command`
+
 ## Command-line Subcommands and Options
 
 ### mocknet
 
 Start a node based on a fast local setup emulating a burnchain. Ideal for smart contract development.
 
+Example: `stacks-node mocknet`
+
 ### krypton (deprecated)
 
 Start a node that will join and stream blocks from the public krypton testnet, powered by Blockstack via (Proof of Transfer).
+
+Example: `stacks-node krypton`
 
 ### xenon
 
 Start a node that will join and stream blocks from the public xenon testnet, decentralized.
 
+Example: `stacks-node xenon`
+
 ### start
 
 Start a node with a config of your own. Can be used for joining a network, starting new chain, etc.
 
-#### Arguments:
+#### Arguments
 
-##### --config: relative or absolute path to the TOML config file
+**--config**: relative or absolute path to the TOML config file. Required.
 
-Example:
-stacks-node start --config=/path/to/config.toml
+Example: `stacks-node start --config=/path/to/config.toml`
 
-See [Configuration File Options](link to anchor) for more information.
+See [Configuration File Options](#configuration-file-options) for more information.
 
 #### version
 
 Displays information about the current version and the release cycle.
 
+Example: `stacks-node version`
+
 #### help
 
 Displays a help message.
+
+Example: `stacks-node help`
 
 ## Configuration File Options
 
@@ -50,17 +69,49 @@ The TOML configuration file has multiple sections under which an option may be p
 
 This section contains configuration options pertaining to the stacks-node.
 
+```toml
+[node]
+working_dir = "/root/stacks-node"
+rpc_bind = "0.0.0.0:20443"
+p2p_bind = "0.0.0.0:20444"
+data_url = "1.2.3.4:20443"
+p2p_address = "1.2.3.4:20444"
+bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@krypton.blockstack.org:20444"
+seed = "c9df981d33c8380d255edef003abdcd243a0eb74afdf6740e6c423e62aec6315"
+local_peer_seed = "c9df981d33c8380d255edef003abdcd243a0eb74afdf6740e6c423e62aec6315"
+miner = true
+prometheus_bind = "0.0.0.0:9153"
+```
+
+#### working_dir
+
+Absolute path to the directory which the stacks-node will use for storing various data
+
+Example: `"/root/stacks-node"`
+
 #### rpc_bind
 
-Address and port stacks-node should use for RPC connections.
+Address and port stacks-node should bind to for RPC connections.
 
 Example: `"0.0.0.0:20443"`
 
 #### p2p_bind
 
-Address and port stacks-node should use for P2P connections.
+Address and port stacks-node should bind to for P2P connections.
 
 Example: `"0.0.0.0:20444"`
+
+#### data_url (optional)
+
+Address and port from which the stacks-node will be receiving incoming rpc connections.
+
+Example: `"1.2.3.4:20443"`
+
+#### p2p_address (optional)
+
+Address and port from which the stacks-node will be receiving incoming p2p connections.
+
+Example: `"1.2.3.4:20444"`
 
 #### bootstrap_node (optional)
 
@@ -97,6 +148,15 @@ Example: `"0.0.0.0:9153"`
 
 ### Section: events_observer
 
+-> This section can be repeated multiple times.
+
+```toml
+[[events_observer]]
+endpoint = "address-to-my-local.stacks-node-api.com:3700"
+retry_count = 255
+events_keys = ["*"]
+```
+
 #### endpoint
 
 Address and port to a stacks-node-api to watch for events.
@@ -116,6 +176,19 @@ Event keys for which to watch.
 Example: `["*"]`
 
 ### Section: burnchain
+
+```toml
+[burnchain]
+chain = "bitcoin"
+mode = "krypton"
+peer_host = "bitcoind.krypton.blockstack.org"
+process_exit_at_block_height = 5340
+burnchain_op_tx_fee = 5500
+burn_fee_cap = 30000
+commit_anchor_block_within = 10000
+rpc_port = 18443
+peer_port = 18444
+```
 
 This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
 
@@ -177,7 +250,25 @@ Example: `10000`
 
 This section contains configuration options pertaining to the micro-STX balanaces for various addresses.
 
--> This section can be repeated multiple times.
+-> This section can be repeated multiple times, and thus is in double-brackets.
+
+```toml
+[[mstx_balance]]
+address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
+amount = 10000000000000000
+
+[[mstx_balance]]
+address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
+amount = 10000000000000000
+
+[[mstx_balance]]
+address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
+amount = 10000000000000000
+
+[[mstx_balance]]
+address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
+amount = 10000000000000000
+```
 
 #### address
 
