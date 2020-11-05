@@ -111,6 +111,10 @@ cd ../..
 ./target/release/stacks-node start --config=./testnet/conf/krypton-follower-conf.toml
 ```
 
+For a full reference of subcommands and configuration options used by `stacks-node`, please see this page.
+[@page-reference | inline]
+| /references/stacks-node-configuration
+
 ### Enable debug logging
 
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:

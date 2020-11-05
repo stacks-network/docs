@@ -1,29 +1,11 @@
 ---
-title: Node Configuration
+title: Stacks Node Configuration
 description: Configuration parameters and options for the stacks-node binary
 icon: TestnetIcon
 images:
   large: /images/pages/testnet.svg
   sm: /images/pages/testnet-sm.svg
 ---
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Subcommands](#subcommands)
-- [Configuration File Options](#configuration-file-options)
-  - [Section: node](#section-node)
-  - [Section: events_observer (optional)](#section-events_observer-optional)
-  - [Section: connection_options (optional)](#section-connection_options-optional)
-  - [Section: burnchain](#section-burnchain)
-  - [Section: mstx_balance](#section-mstx_balance)
-
-## Installation
-
-See this page for installation instructions.
-[@page-reference | inline]
-| /stacks-blockchain/running-testnet-node
 
 ## Usage
 
@@ -45,7 +27,7 @@ stacks-node mocknet
 
 ### krypton (deprecated)
 
-Start a node that will join and stream blocks from the public krypton testnet, powered by Blockstack via (Proof of Transfer).
+Start a node that will join and stream blocks from the public krypton testnet, powered by Blockstack via [Proof of Transfer](https://docs.blockstack.org/stacks-blockchain/overview#proof-of-transfer-pox).
 
 Example:
 
@@ -65,7 +47,7 @@ stacks-node xenon
 
 ### start
 
-Start a node with a config of your own. Can be used for joining a network, starting new chain, etc.
+Start a node with a config of your own. Can be used for joining a network, starting a new chain, or replacing default values used by the `mocknet` or `xenon` subcommands.
 
 #### Arguments
 
@@ -217,7 +199,7 @@ local_peer_seed = "replace-with-your-private-key"
 
 #### miner (optional)
 
-Determines whether the stacks-node is running a follower (`false`) or a miner (`true`).
+Determines whether the stacks-node is running a follower (`false`) or a miner (`true`). Defaults to `false` if omitted.
 
 [See this page for information on how to run a miner.](https://docs.blockstack.org/mining)
 
@@ -276,7 +258,7 @@ endpoint = "address-to-my-local.stacks-node-api.com:3700"
 
 #### retry_count
 
-Number of times to retry before failing.
+Number of times to retry sending events to the endpoint before failing.
 
 Example:
 
@@ -286,12 +268,21 @@ retry_count = 255
 
 #### events_keys
 
-Event keys for which to watch.
+Event keys for which to watch. The emitted node events can be restricted by account, function name and event type. Asterix ("\*") can be used to emit all events.
 
-Example:
+Examples:
 
 ```toml
 events_keys = ["*"]
+```
+
+```toml
+events_keys = [
+    "STGT7GSMZG7EA0TS6MVSKT5JC1DCDFGZWJJZXN8A.store::print",
+    "STGT7GSMZG7EA0TS6MVSKT5JC1DCDFGZWJJZXN8A.contract.ft-token",
+    "STGT7GSMZG7EA0TS6MVSKT5JC1DCDFGZWJJZXN8A.contract.nft-token",
+     "stx"
+]
 ```
 
 ### Section: connection_options (optional)
@@ -329,7 +320,7 @@ download_interval = 10
 
 #### walk_interval
 
-Time (in seconds) between attempts to walk the Merkle tree.
+Time (in seconds) between attempts to walk the neighborhood.
 
 Example:
 
@@ -338,6 +329,8 @@ walk_interval = 30
 ```
 
 ### Section: burnchain
+
+This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
 
 Example:
 
@@ -350,11 +343,9 @@ rpc_port = 18443
 peer_port = 18444
 ```
 
-This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
-
 #### chain
 
-The blockchain stacks-node binds to on the backend for proof-of-transfer.
+The blockchain stacks-node binds to on the backend for proof-of-transfer. Only value supported: `"bitcoin"`
 
 Example:
 
@@ -364,7 +355,7 @@ chain = "bitcoin"
 
 #### mode
 
-The profile of which to run stacks-node.
+The profile or test phase of which to run stacks-node. Valid values are `"mocknet"`, `"helium"`, `"neon"`, `"argon"`, `"krypton"`, `"xenon"`.
 
 Example:
 
@@ -374,7 +365,7 @@ mode = "krypton"
 
 #### peer_host
 
-Host running the BTC blockchain.
+Domain name of the host running the backend Bitcoin blockchain.
 
 Example:
 
@@ -444,9 +435,9 @@ commit_anchor_block_within = 10000
 
 ### Section: mstx_balance
 
-This section contains configuration options pertaining to the micro-STX balanaces for various addresses.
+This section contains configuration options pertaining to the genesis block allocation for an address in micro-STX. If a user changes these values, their node may be in conflict with other nodes on the network and find themselves unable to sync with other nodes.
 
--> This section can be repeated multiple times, and thus is in double-brackets.
+-> This section can be repeated multiple times, and thus is in double-brackets. Each section can define only one address.
 
 Example:
 
@@ -480,7 +471,7 @@ address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
 
 #### amount
 
-The balance of micro-STX given to the address.
+The balance of micro-STX given to the address at the start of the node.
 
 Example:
 
