@@ -7,6 +7,18 @@ images:
   sm: /images/pages/testnet-sm.svg
 ---
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Subcommands](#subcommands)
+- [Configuration File Options](#configuration-file-options)
+  - [Section: node](#section-node)
+  - [Section: events_observer (optional)](#section-events_observer-optional)
+  - [Section: connection_options (optional)](#section-connection_options-optional)
+  - [Section: burnchain](#section-burnchain)
+  - [Section: mstx_balance](#section-mstx_balance)
+
 ## Installation
 
 See this page for installation instructions.
@@ -69,7 +81,7 @@ To see a list of example configurations, [please see this page](https://github.c
 
 ### Section: node
 
-This section contains configuration options pertaining to the stacks-node.
+Contains various configuration options pertaining to the stacks-node.
 
 Example:
 
@@ -119,6 +131,12 @@ Public key, address, and port stacks-node should use to pull transaction data fr
 
 Example: `"048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@krypton.blockstack.org:20444"`
 
+#### wait_time_for_microblocks (optional)
+
+Time to wait (in milliseconds) for microblocks.
+
+Example: `15000`
+
 #### seed (optional)
 
 The private key to use for mining. Only needed if `miner` is set to `true`.
@@ -151,6 +169,8 @@ Example: `"0.0.0.0:9153"`
 
 ### Section: events_observer (optional)
 
+Contains options for watching events emitted by a local [stacks-blockchain-api](https://github.com/blockstack/stacks-blockchain-api) service.
+
 -> This section can be repeated multiple times.
 
 Example:
@@ -179,6 +199,37 @@ Example: `255`
 Event keys for which to watch.
 
 Example: `["*"]`
+
+### Section: connection_options (optional)
+
+Specifies configuration options for others connecting to the stacks node.
+
+Example:
+
+```toml
+[connection_options]
+public_ip_address = "1.2.3.4:20444"
+download_interval = 10
+walk_interval = 30
+```
+
+#### public_ip_address
+
+The advertised public IP of this stacks-node
+
+Example: `"1.2.3.4:20444"`
+
+#### download_interval
+
+Time (in seconds) between attempts to download blocks
+
+Example: `10`
+
+#### walk_interval
+
+Time (in seconds) between attempts to walk the Merkle tree
+
+Example: `30`
 
 ### Section: burnchain
 
@@ -245,7 +296,7 @@ Example: `30000`
 
 #### commit_anchor_block_within (optional)
 
-Sets the time period for commitments. Only used when `mode` is set to `"helium"`.
+Sets the time period (in milliseconds) for commitments. Only used when `mode` is set to `"helium"`.
 
 Example: `10000`
 
