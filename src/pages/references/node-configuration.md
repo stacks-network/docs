@@ -1,5 +1,5 @@
 ---
-title: Configurations
+title: Node Configuration
 description: Configuration parameters and options for the stacks-node binary
 icon: TestnetIcon
 images:
@@ -17,7 +17,7 @@ See this page for installation instructions.
 
 `stacks-node sub-command [--subcommand-option <value>]`
 
-## Command-line Subcommands and Options
+## Subcommands
 
 ### mocknet
 
@@ -71,18 +71,16 @@ To see a list of example configurations, [please see this page](https://github.c
 
 This section contains configuration options pertaining to the stacks-node.
 
+Example:
+
 ```toml
 [node]
-working_dir = "/root/stacks-node"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-data_url = "1.2.3.4:20443"
-p2p_address = "1.2.3.4:20444"
-bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@krypton.blockstack.org:20444"
-seed = "c9df981d33c8380d255edef003abdcd243a0eb74afdf6740e6c423e62aec6315"
-local_peer_seed = "c9df981d33c8380d255edef003abdcd243a0eb74afdf6740e6c423e62aec6315"
+bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@testnet-miner.blockstack.org:20444"
+# Enter your private key here!
+seed = "replace-with-your-private-key"
 miner = true
-prometheus_bind = "0.0.0.0:9153"
 ```
 
 #### working_dir (optional)
@@ -124,6 +122,7 @@ Example: `"048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3
 #### seed (optional)
 
 The private key to use for mining. Only needed if `miner` is set to `true`.
+
 [See this page for information on how to generate a private key.](https://docs.blockstack.org/mining)
 
 Example: `"replace-with-your-private-key"`
@@ -131,6 +130,7 @@ Example: `"replace-with-your-private-key"`
 #### local_peer_seed (optional)
 
 The private key to use for mining.
+
 [See this page for information on how to generate a private key.](https://docs.blockstack.org/mining)
 
 Example: `"replace-with-your-private-key"`
@@ -138,6 +138,7 @@ Example: `"replace-with-your-private-key"`
 #### miner (optional)
 
 Determines whether the stacks-node is running a follower (`false`) or a miner (`true`).
+
 [See this page for information on how to run a miner.](https://docs.blockstack.org/mining)
 
 Example: `true`
@@ -151,6 +152,8 @@ Example: `"0.0.0.0:9153"`
 ### Section: events_observer (optional)
 
 -> This section can be repeated multiple times.
+
+Example:
 
 ```toml
 [[events_observer]]
@@ -179,15 +182,13 @@ Example: `["*"]`
 
 ### Section: burnchain
 
+Example:
+
 ```toml
 [burnchain]
 chain = "bitcoin"
 mode = "krypton"
-peer_host = "bitcoind.krypton.blockstack.org"
-process_exit_at_block_height = 5340
-burnchain_op_tx_fee = 5500
-burn_fee_cap = 30000
-commit_anchor_block_within = 10000
+peer_host = "bitcoind.blockstack.org"
 rpc_port = 18443
 peer_port = 18444
 ```
@@ -244,7 +245,7 @@ Example: `30000`
 
 #### commit_anchor_block_within (optional)
 
-TODO
+Sets the time period for commitments. Only used when `mode` is set to `"helium"`.
 
 Example: `10000`
 
@@ -253,6 +254,8 @@ Example: `10000`
 This section contains configuration options pertaining to the micro-STX balanaces for various addresses.
 
 -> This section can be repeated multiple times, and thus is in double-brackets.
+
+Example:
 
 ```toml
 [[mstx_balance]]
