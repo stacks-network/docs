@@ -109,7 +109,6 @@ sections:
         usePageTitles: true
         pages:
           - path: /blockstack-cli
-          - path: /language-clarity
           - path: /stacking-contract
           - path: /stacks-blockchain-api
           - external:
@@ -118,6 +117,14 @@ sections:
           - path: /faqs
           - path: /glossary
           - path: /deploy-tips
+        sections:
+          - title: Clarity Language
+            usePageTitles: true
+            pages:
+              - path: /language-clarity
+              - path: /language-clarity-types
+              - path: /language-clarity-keywords
+              - path: /language-clarity-functions
   - title: Ecosystem
     pages:
       - path: /overview #pbc et al

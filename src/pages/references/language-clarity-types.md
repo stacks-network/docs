@@ -1,6 +1,6 @@
 ---
-title: Clarity Language
-description: See a detailed list of all keywords and functions for the Clarity language.
+title: Clarity Types
+description: See a detailed list of all types for the Clarity language.
 ---
 
 ## Clarity Type System
