@@ -1,5 +1,5 @@
 ---
-title: Clarity Keywords
+title: Keywords
 description: See a detailed list of all keywords for the Clarity language.
 ---
 
