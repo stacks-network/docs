@@ -227,6 +227,18 @@ Example:
 miner = true
 ```
 
+#### mine_microblocks (optional)
+
+Determines whether the stacks-node will mine microblocks. Will only take effect if `miner` is set to `true`.
+
+[See this page for information on how to run a miner.](https://docs.blockstack.org/mining)
+
+Example:
+
+```toml
+mine_microblocks = true
+```
+
 #### prometheus_bind (optional)
 
 Address and port stacks-node should open for Prometheus metrics collection.
