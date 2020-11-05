@@ -121,10 +121,10 @@ sections:
           - title: Clarity Language
             usePageTitles: true
             pages:
-              - path: /language-clarity
-              - path: /language-clarity-types
-              - path: /language-clarity-keywords
-              - path: /language-clarity-functions
+              - path: /language-overview
+              - path: /language-types
+              - path: /language-keywords
+              - path: /language-functions
   - title: Ecosystem
     pages:
       - path: /overview #pbc et al
