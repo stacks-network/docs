@@ -3,6 +3,11 @@ title: Signing transactions
 description: Learn how to sign transactions using Stacks Connect.
 experience: advanced
 duration: 30 minutes
+tags:
+  - tutorial
+images:
+  large: /images/pages/smart-contracts.svg
+  sm: /images/pages/smart-contracts-sm.svg
 ---
 
 ## Introduction
