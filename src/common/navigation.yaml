@@ -94,10 +94,10 @@ sections:
           - path: /blockstack-cli
           - path: /stacking-contract
           - path: /stacks-blockchain-api
+          - path: /stacks-node-configuration
           - external:
               href: 'https://blockstack.github.io/stacks.js/'
               title: Stacks.js
-          - path: /node-configuration
           - path: /faqs
           - path: /glossary
           - path: /deploy-tips
