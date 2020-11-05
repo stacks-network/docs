@@ -1,5 +1,5 @@
 ---
-title: Clarity Types
+title: Types
 description: See a detailed list of all types for the Clarity language.
 ---
 

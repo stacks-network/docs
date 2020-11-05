@@ -1,5 +1,5 @@
 ---
-title: Clarity Functions
+title: Functions
 description: See a detailed list of all functions for the Clarity language.
 ---
 

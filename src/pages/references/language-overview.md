@@ -1,5 +1,5 @@
 ---
-title: Clarity Language
+title: Overview
 description: Overview of the Clarity language constructs.
 ---
 
