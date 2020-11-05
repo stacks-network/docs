@@ -15,7 +15,7 @@ See this page for installation instructions.
 
 ## Usage
 
-`stacks-node sub-command`
+`stacks-node sub-command [--subcommand-option <value>]`
 
 ## Command-line Subcommands and Options
 
@@ -65,6 +65,8 @@ Example: `stacks-node help`
 
 The TOML configuration file has multiple sections under which an option may be placed.
 
+To see a list of example configurations, [please see this page](https://github.com/blockstack/stacks-blockchain/tree/master/testnet/stacks-node/conf).
+
 ### Section: node
 
 This section contains configuration options pertaining to the stacks-node.
@@ -83,7 +85,7 @@ miner = true
 prometheus_bind = "0.0.0.0:9153"
 ```
 
-#### working_dir
+#### working_dir (optional)
 
 Absolute path to the directory which the stacks-node will use for storing various data
 
@@ -133,7 +135,7 @@ The private key to use for mining.
 
 Example: `"replace-with-your-private-key"`
 
-#### miner
+#### miner (optional)
 
 Determines whether the stacks-node is running a follower (`false`) or a miner (`true`).
 [See this page for information on how to run a miner.](https://docs.blockstack.org/mining)
@@ -146,7 +148,7 @@ Address and port stacks-node should open for Prometheus metrics collection.
 
 Example: `"0.0.0.0:9153"`
 
-### Section: events_observer
+### Section: events_observer (optional)
 
 -> This section can be repeated multiple times.
 
@@ -222,25 +224,25 @@ peer_host's port stacks-node will connect to for P2P connections.
 
 Example: `18444`
 
-#### process_exit_at_block_height
+#### process_exit_at_block_height (optional)
 
 Block height of the burnchain at which the stacks-node will self-terminate. Used during the testnet phases for various testing cycles.
 
 Example: `5340`
 
-#### burnchain_op_tx_fee
+#### burnchain_op_tx_fee (optional)
 
-Transaction fee per each burnchain operation.
+Transaction fee per burnchain operation.
 
 Example: `5500`
 
-#### burn_fee_cap
+#### burn_fee_cap (optional)
 
 Max burn fee for a transaction.
 
 Example: `30000`
 
-#### commit_anchor_block_within
+#### commit_anchor_block_within (optional)
 
 TODO
 
