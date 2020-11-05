@@ -1,6 +1,6 @@
 ---
-title: Clarity Language
-description: See a detailed list of all keywords and functions for the Clarity language.
+title: Clarity Keywords
+description: See a detailed list of all keywords for the Clarity language.
 ---
 
 export { convertClarityRefToMdx as getStaticProps } from '@common/data/clarity-ref'
