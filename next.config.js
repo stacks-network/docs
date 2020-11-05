@@ -279,6 +279,11 @@ async function redirects() {
       permanent: true,
     },
     {
+      source: '/references/language-clarity',
+      destination: '/references/language-overview',
+      permanent: true,
+    },
+    {
       source: '/references/clarity-language',
       destination: '/references/language-clarity',
       permanent: true,
