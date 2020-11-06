@@ -30,6 +30,15 @@ Read more about the functionality provided by the Stacks 2.0 blockchain.
 Stacks 2.0 implements a new mining mechanism called Proof of Transfer ("PoX").
 PoX is a consensus algorithm between two blockchains. It uses an established blockchain (in this case Bitcoin) to secure a new blockchain (Stacks).
 
+## API
+
+You can use the Stacks 2.0 Blockchain API to query the blockchain and interact with smart contracts.
+
+[@page-reference | inline]
+| /understand-stacks/stacks-blockchain-api
+
+## Tutorials
+
 PoX connects to Bitcoin with a 1:1 block ratio, meaning anything that happens on the Stacks blockchain can be verified on the Bitcoin Blockchain.
 
 Instead of burning electricity on proof of work, PoX reuses already minted bitcoins as “proof of computation” and
