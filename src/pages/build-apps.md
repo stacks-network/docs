@@ -2,8 +2,8 @@
 title: Building decentralized apps
 description: Overview and guides for getting started building decentralized applications.
 images:
-  large: /images/pages/build-an-app.svg
-  sm: /images/pages/build-an-app-sm.svg
+  large: /images/pages/build-apps.svg
+  sm: /images/pages/build-apps-sm.svg
 ---
 
 ## Introduction
@@ -29,7 +29,7 @@ host, their users’ data. This protects users against security breaches and kee
 
 ### Smart contracts
 
-Decentralized apps can use [smart contracts](/smart-contracts/overview) to make their backend logic public, open, and
+Decentralized apps can use [smart contracts](/write-smart-contracts/overview) to make their backend logic public, open, and
 permissionless. Once published on the blockchain, no one really owns or controls a smart contract. They will execute when
 the terms are met, regardless of who interacts with it.
 
@@ -41,7 +41,7 @@ other apps without requiring permission or fear of being shut out.
 ## Getting started
 
 To build your decentralized app, you’ll use [authentication](/authentication/overview), [data storage](/data-storage/overview),
-[data indexing](/data-storage/indexing-overview) (optional), and [smart contracts](/smart-contracts/overview) (optional).
+[data indexing](/data-storage/indexing-overview) (optional), and [smart contracts](/write-smart-contracts/overview) (optional).
 Get started with the documentation and tutorials below.
 
 ### Authentication and data storage
@@ -72,16 +72,16 @@ You can use smart contracts to decentralize your app’s backend logic, making i
 on the Stacks blockchain are written in the [Clarity language](https://clarity-lang.org). View the smart contracts documentation or get started with a tutorial.
 
 [@page-reference | inline]
-| /smart-contracts/overview
+| /write-smart-contracts/overview
 
 [@page-reference | inline]
-| /smart-contracts/hello-world-tutorial
+| /write-smart-contracts/hello-world-tutorial
 
 [@page-reference | inline]
-| /smart-contracts/counter-tutorial
+| /write-smart-contracts/counter-tutorial
 
 [@page-reference | inline]
-| /smart-contracts/public-registry-tutorial
+| /write-smart-contracts/public-registry-tutorial
 
 ### Stacks.js
 

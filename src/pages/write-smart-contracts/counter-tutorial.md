@@ -203,7 +203,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 ## Step 4: Deploy and call the contract
 
 Your new smart contract is ready to be deployed to the Stacks 2.0 blockchain. You should be familiar with the steps
-from the ["Hello, World" tutorial](/smart-contracts/hello-world-tutorial#deploy-the-contract).
+from the ["Hello, World" tutorial](/write-smart-contracts/hello-world-tutorial#deploy-the-contract).
 
 As soon as you successfully deploy your contract, you can play around with the contract and verify the functionality by
 calling all public methods you implemented. Here's a suggested order:

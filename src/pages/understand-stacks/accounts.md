@@ -10,13 +10,13 @@ Stacks 2.0 accounts are entities that own assets, like Stacks (STX) tokens. An a
 If you want to jump right in to generate and query a new account, try this tutorial:
 
 [@page-reference | inline]
-| /stacks-blockchain/managing-accounts
+| /understand-stacks/managing-accounts
 
 -> The public-key signature system used for Stacks 2.0 accounts is [Ed25519](https://ed25519.cr.yp.to/).
 
 Assets cannot leave an account without an action from the account owner. All changes to assets (and the balances of the account) require a corresponding transaction.
 
--> The [transaction type](/stacks-blockchain/transactions#types) doesn't need to be a token transfer - contract deploy and contract call transactions can change the balances of an account
+-> The [transaction type](/understand-stacks/transactions#types) doesn't need to be a token transfer - contract deploy and contract call transactions can change the balances of an account
 
 ## Creation
 
@@ -53,7 +53,7 @@ stx make_keychain -t > cli_keychain.json
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `mnemonic`           | A 24-word seed phrase used to access the account, generated using [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) with 256 bits of entropy |
 | `keyInfo.address`    | Stacks address for the account                                                                                                                                     |
-| `keyInfo.privateKey` | Private key for the account. Required for [token transfers](/stacks-blockchain/transactions#stacks-token-transfer) and often referred to as `senderKey`            |
+| `keyInfo.privateKey` | Private key for the account. Required for [token transfers](/understand-stacks/transactions#stacks-token-transfer) and often referred to as `senderKey`            |
 | `keyInfo.index`      | Nonce for the account, starting at 0                                                                                                                               |
 | `keyInfo.btcAddress` | Corresponding BTC address for the account. A construct from the previous blockchain (Stacks 1.0) and currently unused.                                             |
 
@@ -110,7 +110,7 @@ npx -q stacks-gen sk --testnet
 }
 ```
 
--> The stacking object with hashbytes and a version represents the bitcoin address derived from the Stacks address. Read more about the [bitcoin address format](/stacks-blockchain/stacking#bitcoin-address).
+-> The stacking object with hashbytes and a version represents the bitcoin address derived from the Stacks address. Read more about the [bitcoin address format](/understand-stacks/stacking#bitcoin-address).
 
 Full documentation available at [stacks-gen](https://github.com/psq/stacks-gen).
 
@@ -204,4 +204,4 @@ Sample response:
 }
 ```
 
--> Read more about [pagination](/stacks-blockchain/transactions#pagination) to iterate through the entire result set of the asset events
+-> Read more about [pagination](/understand-stacks/transactions#pagination) to iterate through the entire result set of the asset events
