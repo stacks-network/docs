@@ -167,7 +167,7 @@ bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d
 
 #### wait_time_for_microblocks (optional)
 
-Time to wait (in milliseconds) for microblocks.
+The amount of time (in milliseconds) that a node will wait before trying to mine a block, after catching up to the anchored chain tip. This gives the current leader time to broadcast microblocks that will get included in that mined block.
 
 Example:
 
@@ -189,7 +189,7 @@ seed = "replace-with-your-private-key"
 
 #### local_peer_seed (optional)
 
-The private key to use for mining.
+The private key to use for signing P2P messages in the networking stack. It differentiates network peers and is used even by non-mining nodes.
 
 [See this page for information on how to generate a private key.](https://docs.blockstack.org/mining)
 
