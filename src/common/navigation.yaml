@@ -57,6 +57,7 @@ sections:
             usePageTitles: true
             pages:
               - path: /building-todo-app
+              - path: /building-with-angular
       - path: /data-storage
         pages:
           - path: /overview

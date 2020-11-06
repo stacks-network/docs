@@ -51,7 +51,7 @@ scalable consensus algorithm to increase the number of transactions it can
 process. This consensus algorithm is planned to be introduced in additional
 hard forks in 2019.
 
-Addtionally, a future Stacks blockchain will support truly decentralized mobile
+Additionally, a future Stacks blockchain will support truly decentralized mobile
 applications by removing the need to trust a remote Stacks Node.
 Instead, it will be possible for light clients to calculate the economic weight
 of different Stacks blockchain forks, and identify the fork with the most
