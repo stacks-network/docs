@@ -6,12 +6,12 @@ tags:
 ---
 
 ## Introduction
-The Clarity language makes use of a strong static [type system](https://docs.blockstack.org/references/language-clarity#clarity-type-system). This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide arguments of the specified types will result in your code failing to compile, or your `contract-call` transaction failing prior to execution.
+The Clarity language makes use of a strong static [type system](https://docs.blockstack.org/references/language-clarity#clarity-type-system). This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your `contract-call` transaction failing prior to execution.
 
 In order to build web applications that interact with Clarity contracts, we must include type information as a part of our function calls. The [@stacks/transactions](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below.
 
 ## Clarity Types
-The Clarity type system includes the following types:
+Values in Clarity can have the following types:
 
 - `(tuple (key-name-0 key-type-0) (key-name-1 key-type-1) ...)` - a typed tuple with named fields.
 - `(list max-len entry-type)` - a list of maximum length max-len, with entries of type entry-type
@@ -26,7 +26,7 @@ The Clarity type system includes the following types:
 - `uint` - unsigned 128-bit integer
 
 ## Constructing Clarity Values
-Clarity values can be constructed with functions provided by the **@stacks/transactions** library. These function simply output javascript objects that contain a value and a numerical representation of the Clarity type information (or in the case of Booleans and Optional None, just the type information). These Clarity value objects can then be easily serialized into `contract-call` transactions for interacting with Clarity contracts.
+Clarity values can be constructed with functions provided by the **@stacks/transactions** library. These function simply output javascript objects that contain a value and a numerical representation of the Clarity type information. These Clarity value objects can then be easily serialized into `contract-call` transactions for interacting with Clarity contracts.
 
 Here are examples of how to construct each type of Clarity value:
 
