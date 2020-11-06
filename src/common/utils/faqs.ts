@@ -10,7 +10,7 @@ export const getBetterNames = (id: number) => {
       return {
         title: 'Stacks Token',
         description: 'Questions relating to the native token of Stacks 2.0',
-        img: '/images/pages/mining.svg',
+        img: '/images/pages/start-mining.svg',
       };
     case 360007760554:
       return {

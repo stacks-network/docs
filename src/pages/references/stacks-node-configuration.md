@@ -29,7 +29,7 @@ stacks-node mocknet
 
 ### krypton (deprecated)
 
-Start a node that will join and stream blocks from the public krypton testnet, powered by Blockstack via [Proof of Transfer](https://docs.blockstack.org/stacks-blockchain/overview#proof-of-transfer-pox).
+Start a node that will join and stream blocks from the public krypton testnet, powered by Blockstack via [Proof of Transfer](/understand-stacks/overview#proof-of-transfer-pox).
 
 Example:
 
@@ -179,7 +179,7 @@ wait_time_for_microblocks = 15000
 
 The private key to use for mining. Only needed if `miner` is set to `true`.
 
-[See this page for information on how to generate a private key.](https://docs.blockstack.org/mining)
+[See this page for information on how to generate a private key.](/start-mining)
 
 Example:
 
@@ -191,7 +191,7 @@ seed = "replace-with-your-private-key"
 
 The private key to use for signing P2P messages in the networking stack. It differentiates network peers and is used even by non-mining nodes.
 
-[See this page for information on how to generate a private key.](https://docs.blockstack.org/mining)
+[See this page for information on how to generate a private key.](/start-mining)
 
 Example:
 
@@ -203,7 +203,7 @@ local_peer_seed = "replace-with-your-private-key"
 
 Determines whether the stacks-node is running a follower (`false`) or a miner (`true`). Defaults to `false` if omitted.
 
-[See this page for information on how to run a miner.](https://docs.blockstack.org/mining)
+[See this page for information on how to run a miner.](/start-mining)
 
 Example:
 
@@ -215,7 +215,7 @@ miner = true
 
 Determines whether the stacks-node will mine microblocks. Will only take effect if `miner` is set to `true`.
 
-[See this page for information on how to run a miner.](https://docs.blockstack.org/mining)
+[See this page for information on how to run a miner.](/start-mining)
 
 Example:
 

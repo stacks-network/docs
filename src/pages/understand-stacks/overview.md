@@ -1,6 +1,10 @@
 ---
 title: Overview
 description: Learn more about the Stacks blockchain
+icon: TestnetIcon
+images:
+  large: /images/pages/testnet.svg
+  sm: /images/pages/testnet-sm.svg
 ---
 
 ## Introduction
@@ -16,9 +20,9 @@ The Stacks 2.0 blockchain is in active development. While the final release ("ma
 More information about the testnet:
 
 [@page-reference | inline]
-| /stacks-blockchain/testnet
+| /understand-stacks/testnet
 
-=> The status of the Stacks 2.0 network can be viewed on the [status checker](/stacks-blockchain/network#health-check)
+=> The status of the Stacks 2.0 network can be viewed on the [status checker](/understand-stacks/network#health-check)
 
 ## Explorer
 
@@ -29,11 +33,11 @@ You can view accounts, blocks, transactions, and smart contracts broadcasted to 
 ## Tutorials
 
 [@page-reference | grid-small]
-| /stacks-blockchain/managing-accounts, /stacks-blockchain/sending-tokens, /stacks-blockchain/running-testnet-node
+| /understand-stacks/managing-accounts, /understand-stacks/sending-tokens, /understand-stacks/running-testnet-node
 
 ## Features
 
-A high-level summary of various technical aspects of the Stacks 2.0 blockchain can be found below in the [Technical Specifications](/stacks-blockchain/technical-specs).
+A high-level summary of various technical aspects of the Stacks 2.0 blockchain can be found below in the [Technical Specifications](/understand-stacks/technical-specs).
 
 ### Clarity Smart Contracts
 
@@ -48,18 +52,18 @@ Smart contracts on the Stacks 2.0 blockchain are written in a new programming la
 -> The [Clarity open-source project](https://clarity-lang.org/) is supported by Stacks and Algorand.
 
 [@page-reference | inline]
-| /smart-contracts/overview
+| /write-smart-contracts/overview
 
 ### Stacks Mining
 
 Mining is required to make the network usable, trustworthy, and secure. Miners verify incoming transactions and participate in the consensus mechanism of the Stacks 2.0 blockchain, called Proof of Transfer (PoX). To incentivize mining, miners receive freshly minted Stacks (STX) tokens.
 
 [@page-reference | inline]
-| /mining
+| /start-mining
 
 ### Proof of Transfer (PoX)
 
-[Proof of Transfer (PoX)](/stacks-blockchain/proof-of-transfer) is a novel consensus mechanism that leverages the security and stability of Bitcoin to create a new blockchain, without modifying the Bitcoin protocol.
+[Proof of Transfer (PoX)](/understand-stacks/proof-of-transfer) is a novel consensus mechanism that leverages the security and stability of Bitcoin to create a new blockchain, without modifying the Bitcoin protocol.
 
 Stacks (STX) miners transfer Bitcoin to other Stacks (STX) holders in order to mine blocks. This BTC reward mechanism is called **Stacking**.
 

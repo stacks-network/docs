@@ -206,4 +206,4 @@ For more information on the Helm chart and configuration options, please refer t
 Now that you have a running testnet node, you can easily set up a miner.
 
 [@page-reference | inline]
-| /mining
+| /start-mining

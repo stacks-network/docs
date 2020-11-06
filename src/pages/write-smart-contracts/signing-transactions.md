@@ -6,8 +6,8 @@ duration: 30 minutes
 tags:
   - tutorial
 images:
-  large: /images/pages/smart-contracts.svg
-  sm: /images/pages/smart-contracts-sm.svg
+  large: /images/pages/write-smart-contracts.svg
+  sm: /images/pages/write-smart-contracts-sm.svg
 ---
 
 ## Introduction

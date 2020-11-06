@@ -29,7 +29,7 @@ This tutorial highlights the following functionality:
 
 ## Requirements
 
-First, you'll need to understand the [Stacking mechanism](/stacks-blockchain/stacking).
+First, you'll need to understand the [Stacking mechanism](/understand-stacks/stacking).
 
 You'll also need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:
 
@@ -39,7 +39,7 @@ node --version
 
 ## Overview
 
-In this tutorial, we'll implement the Stacking flow laid out in the [Stacking guide](/stacks-blockchain/stacking#stacking-flow).
+In this tutorial, we'll implement the Stacking flow laid out in the [Stacking guide](/understand-stacks/stacking#stacking-flow).
 
 -> Check out the sample source code for this tutorial in this GitHub repository: [stacking-integration-sample](https://github.com/agraebe/stacking-integration-sample)
 
@@ -101,7 +101,7 @@ const stxAddress = getAddressFromPrivateKey(
 );
 ```
 
--> Review the [accounts guide](/stacks-blockchain/accounts) for more details
+-> Review the [accounts guide](/understand-stacks/accounts) for more details
 
 ## Step 3: Display stacking info
 
@@ -234,7 +234,7 @@ unlockingAt.setSeconds(
 
 At this point, your app shows Stacking details. If Stacking is executed and the user has enough funds, the user should be asked to provide input for the amount of microstacks to lockup and a bitcoin address to be used to pay out rewards.
 
--> The sample code used assumes usage of the bitcoin address associated with the Stacks account. You can replace this with an address provided by the users or read from your database. Read more about the [bitcoin address format](/stacks-blockchain/stacking#bitcoin-address).
+-> The sample code used assumes usage of the bitcoin address associated with the Stacks account. You can replace this with an address provided by the users or read from your database. Read more about the [bitcoin address format](/understand-stacks/stacking#bitcoin-address).
 
 With this input, and the data from previous steps, we can determine the eligibility for the next reward cycle:
 
@@ -348,7 +348,7 @@ const waitForTransactionSuccess = txId =>
 const resp = await waitForTransactionSuccess(contractCall.txId);
 ```
 
--> More details on the lifecycle of transactions can be found in the [transactions guide](/stacks-blockchain/transactions#lifecycle)
+-> More details on the lifecycle of transactions can be found in the [transactions guide](/understand-stacks/transactions#lifecycle)
 
 Alternatively to the polling, the Stacks Blockchain API client library offers WebSockets. WebSockets can be used to subscribe to specific updates, like transaction status changes. Here is an example:
 

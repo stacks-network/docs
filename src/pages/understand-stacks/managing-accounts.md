@@ -20,7 +20,7 @@ This tutorial will walk you through the following steps:
 - Reviewing account history
 - Getting account balances
 
--> This tutorial is NodeJS-specific. If you would like to understand how to manage Stacks 2.0 accounts using a different language/framework, please [review the accounts guide](/stacks-blockchain/accounts).
+-> This tutorial is NodeJS-specific. If you would like to understand how to manage Stacks 2.0 accounts using a different language/framework, please [review the accounts guide](/understand-stacks/accounts).
 
 ## Requirements
 
@@ -85,7 +85,7 @@ const stacksAddress = getAddressFromPrivateKey(
   console.log(accountInfo);
 ```
 
--> Note: A "principal" is any entity that can have a token balance. Find more details in the [Principals guide](/smart-contracts/principals).
+-> Note: A "principal" is any entity that can have a token balance. Find more details in the [Principals guide](/write-smart-contracts/principals).
 
 The API will respond with a balance, nonce (starting at zero), and respective proofs:
 
