@@ -2,8 +2,8 @@
 title: Write smart contracts
 description: Overview and guides for getting started with Clarity
 images:
-  large: /images/pages/smart-contracts.svg
-  sm: /images/pages/smart-contracts-sm.svg
+  large: /images/pages/write-smart-contracts.svg
+  sm: /images/pages/write-smart-contracts-sm.svg
 ---
 
 ## Introduction
@@ -61,9 +61,9 @@ Note some of the key Clarity language rules and limitations.
 
 ## Learning Clarity
 
-The tutorials are ordered from "beginner" to "advanced." Start with the [Hello World tutorial](/smart-contracts/hello-world-tutorial),
-then learn how to construct [a counter](/smart-contracts/counter-tutorial), and finally, learn how to
-[test your smart contracts](/smart-contracts/testing-contracts) using Mocha.
+The tutorials are ordered from "beginner" to "advanced." Start with the [Hello World tutorial](/write-smart-contracts/hello-world-tutorial),
+then learn how to construct [a counter](/write-smart-contracts/counter-tutorial), and finally, learn how to
+[test your smart contracts](/write-smart-contracts/testing-contracts) using Mocha.
 
 Once you've got the hang of the general workflow, environment, and language syntax, you should be ready to start writing
 contracts, referring to the [Clarity language reference](/references/language-overview) as you go.

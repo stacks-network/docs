@@ -31,14 +31,14 @@ By the end of this tutorial, you will...
 The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not running into any challenges related to the status of the network, please open up the [Status Checker](http://status.test-blockstack.com/)
 and confirm that all systems are operational. If some systems seem to have issues, it is best to wait until they are back up before you proceed with the next steps.
 
-Furthermore, the to-do app will interact with a smart contract deployed as `ST1234....todo-registry`. he contract source code is available at [github](https://github.com/friedger/blockstack-todos/blob/tut/step1/contracts/todo-registry.clar). There might be already a deployed version available on testnet. You can use the testnet explorer to search for it. Alternatively, You have to deploy the contract as described in the [hello world tutorial](/smart-contracts/hello-world-tutorial#step-5-deploy-the-contract). Then you have to use the corresponding contract address and name in this tutorial. Throughout this tutorial, we use `ST3YPJ6BBCZCMH71TV8BK50YC6QJTWEGCNDFWEQ15.todo-registry` as an example.
+Furthermore, the to-do app will interact with a smart contract deployed as `ST1234....todo-registry`. The contract source code is available at [github](https://github.com/friedger/blockstack-todos/blob/tut/step1/contracts/todo-registry.clar). There may already be a deployed version available on the testnet; the [testnet explorer](https://testnet-explorer.blockstack.org/) can be used to search for it. Alternatively, the contract can be deployed as described in the [hello world tutorial](/smart-contracts/hello-world-tutorial#step-5-deploy-the-contract). Then you have to use the corresponding contract address and name in this tutorial. Throughout this tutorial, we use `ST3YPJ6BBCZCMH71TV8BK50YC6QJTWEGCNDFWEQ15.todo-registry` as an example.
 
 ### Tutorials
 
 You should have followed the instructions of the to-do app tutorial. You should have the code ready on your local machine. It is also helpful to have a basic understanding of Clarity as explained in the counter tutorial. If you are using mocknet or a new, empty testnet you can create transactions following the tutorial about signing transactions.
 
 [@page-reference | grid]
-| /authentication/building-todo-app, /smart-contracts/counter-tutorial, /smart-contracts/signing-transactions
+| /authentication/building-todo-app, /write-smart-contracts/counter-tutorial, /write-smart-contracts/signing-transactions
 
 ### Check your to-do app
 
@@ -120,7 +120,7 @@ export const PublicUrlRegistrar = ({ userSession }) => {
 };
 ```
 
-It is a simple button that calls `doContractCall` method of the Connect library when clicked. The method makes an api call to the Stacks authenticator. The authenticator creates a contract call transaction that is signed by the user and then it is broadcasted to the Stacks 2.0 blockchain as explained in the [transaction signing tutorial](/smart-contracts/signing-transactions).
+It is a simple button that calls `doContractCall` method of the Connect library when clicked. The method makes an api call to the Stacks authenticator. The authenticator creates a contract call transaction that is signed by the user and then it is broadcasted to the Stacks 2.0 blockchain as explained in the [transaction signing tutorial](/write-smart-contracts/signing-transactions).
 
 Note how the arguments are created using `bufferCVFromString`. There are similar methods for all other Clarity types, like `uintCV` or `trueCV`. See the [documentation](https://github.com/blockstack/stacks-transactions-js#constructing-clarity-values) of the stacks-transactions library for more details.
 
@@ -451,7 +451,7 @@ In addition to `tx_result`, the transaction object also contains a timestamp (`b
 
 ## Fetch the first to-do list
 
-There are two other ways to get state information from the blockchain: read-only functions and data map entries. Read-only functions were already discussed in the [Clarity counter tutorial](/smart-contracts/counter-tutorial). They do not require a transaction to complete. Data maps in Clarity are maps that can be read by any user. See the [Clarity reference](https://docs.blockstack.org/references/language-functions#define-map) for more details.
+There are two other ways to get state information from the blockchain: read-only functions and data map entries. Read-only functions were already discussed in the [Clarity counter tutorial](/write-smart-contracts/counter-tutorial). They do not require a transaction to complete. Data maps in Clarity are maps that can be read by any user. See the [Clarity reference](/references/language-functions#define-map) for more details.
 
 The `todo-registry` contract defines a read-only function `owner-of?` that returns the owner of a registry entry and a data map for details about entries:
 

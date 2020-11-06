@@ -40,6 +40,8 @@ When workin locally with the site, a few things are needed:
 - [`node` + `npm`,](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [`yarn` installed](https://yarnpkg.com/getting-started/install) on your machine.
 - Some kind of code editor, such as VSCode, Sublime, or WebStorm.
 
+-> This project requires at least Node version 12
+
 ### Working with GitHub
 
 All of the code for this site is open source, located at the [GitHub repository here](https://github.com/blockstack/docs.blockstack).
@@ -132,7 +134,7 @@ If you are adding a new route, you have to add your route to a section contained
 sections:
   - pages:
       - path: /
-      - path: /build-an-app # is an overview page
+      - path: /build-apps # is an overview page
       - path: /smart-contracts
         pages:
           - path: /overview
