@@ -131,7 +131,7 @@ and
 [Ruby](https://github.com/blockstack/ruby-jwt-blockstack/tree/ruby-jwt-blockstack)
 JWT libraries with support for this signing algorithm.
 
--> The Stacks JWT implementation is different from other implementations because of the underlying cryptography we employ. There are libraries in [Javascript](https://github.com/blockstack/jsontokens-js) and [Ruby](https://github.com/blockstack/ruby-jwt-blockstack) available on the Blockstack Github to allow you to work with these tokens.
+-> The Stacks JWT implementation is different from other implementations because of the underlying cryptography we employ. There are libraries in [JavaScript](https://github.com/blockstack/jsontokens-js) and [Ruby](https://github.com/blockstack/ruby-jwt-blockstack) available on the Blockstack Github to allow you to work with these tokens.
 
 ### Example: authRequest payload schema
 

@@ -183,7 +183,7 @@ Building transactions that call functions in deployed clarity contracts requires
 | ASCII String     | `(define-data-var my-str (string-ascii 11) "hello world")`   | String value encoded in ASCII                                                                                                                                                       |
 | UTF-8 String     | `(define-data-var my-str (string-utf8 7) u"hello \u{1234}")` | String value encoded in UTF-8                                                                                                                                                       |
 
-The Stacks Transactions JS library contains Typescript types and classes that map to the Clarity types, in order to make it easy to construct well-typed Clarity values in Javascript. These types all extend the abstract class `ClarityValue`.
+The Stacks Transactions JS library contains TypeScript types and classes that map to the Clarity types, in order to make it easy to construct well-typed Clarity values in JavaScript. These types all extend the abstract class `ClarityValue`.
 
 Here are samples for Clarity value constructions using this library:
 
@@ -225,7 +225,7 @@ const tupCV = tupleCV({
 const l = listCV([trueCV(), falseCV()]);
 ```
 
-If you develop in Typescript, the type checker can help prevent you from creating wrongly-typed Clarity values. For example, the following code won't compile since in Clarity lists are homogeneous, meaning they can only contain values of a single type. It is important to include the type variable `BooleanCV` in this example, otherwise the typescript type checker won't know which type the list is of and won't enforce homogeneity.
+If you develop in TypeScript, the type checker can help prevent you from creating wrongly-typed Clarity values. For example, the following code won't compile since in Clarity lists are homogeneous, meaning they can only contain values of a single type. It is important to include the type variable `BooleanCV` in this example, otherwise the typescript type checker won't know which type the list is of and won't enforce homogeneity.
 
 ```js
 const l = listCV < BooleanCV > [trueCV(), intCV(1)];
