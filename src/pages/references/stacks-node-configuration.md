@@ -15,6 +15,8 @@ stacks-node sub-command [--subcommand-option <value>]
 
 ## Subcommands
 
+-> Note that the `stacks-node` binary may have deprecated commands that are not documented on this page. Deprecated commands may be accessible until they are fully removed from the sources.
+
 ### mocknet
 
 Start a node based on a fast local setup emulating a burnchain. Ideal for smart contract development.
@@ -37,7 +39,7 @@ stacks-node krypton
 
 ### xenon
 
-Start a node that will join and stream blocks from the public xenon testnet, decentralized.
+Start a node that will join and stream blocks from the public xenon testnet.
 
 Example:
 
@@ -281,7 +283,7 @@ events_keys = [
     "STGT7GSMZG7EA0TS6MVSKT5JC1DCDFGZWJJZXN8A.store::print",
     "STGT7GSMZG7EA0TS6MVSKT5JC1DCDFGZWJJZXN8A.contract.ft-token",
     "STGT7GSMZG7EA0TS6MVSKT5JC1DCDFGZWJJZXN8A.contract.nft-token",
-     "stx"
+    "stx"
 ]
 ```
 
@@ -345,7 +347,7 @@ peer_port = 18444
 
 #### chain
 
-The blockchain stacks-node binds to on the backend for proof-of-transfer. Only value supported: `"bitcoin"`
+The blockchain stacks-node binds to on the backend for proof-of-transfer. Only value supported: `"bitcoin"`.
 
 Example:
 
