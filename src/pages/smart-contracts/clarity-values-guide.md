@@ -1,6 +1,6 @@
 ---
 title: Clarity Values Guide
-description: Learn how to deal with Clarity Values in Javascript.
+description: Learn how to deal with Clarity Values in JavaScript.
 tags:
   - tutorial
 ---
