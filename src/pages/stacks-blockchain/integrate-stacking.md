@@ -234,7 +234,7 @@ unlockingAt.setSeconds(
 
 At this point, your app shows Stacking details. If Stacking is executed and the user has enough funds, the user should be asked to provide input for the amount of microstacks to lockup and a bitcoin address to be used to pay out rewards.
 
--> The sample code used assumes usage of the bitcoin address associated with the Stacks account. You can replace this with an address provided by the users or read from your database
+-> The sample code used assumes usage of the bitcoin address associated with the Stacks account. You can replace this with an address provided by the users or read from your database. Read more about the [bitcoin address format](/stacks-blockchain/stacking#bitcoin-address).
 
 With this input, and the data from previous steps, we can determine the eligibility for the next reward cycle:
 
