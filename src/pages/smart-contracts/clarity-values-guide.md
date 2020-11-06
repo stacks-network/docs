@@ -26,7 +26,7 @@ The Clarity type system includes the following types:
 - `uint` - unsigned 128-bit integer
 
 ## Constructing Clarity Values
-Clarity values can be constructed functions provided by the **@stacks/transactions** library. These function simply output javascript objects that contain a javascript value and a numerical representaiton of the Clarity type information (or in the case of Booleans and Optional None, just the type information). These Clarity value objects can then be easily serialized into a `contract-call` transactions for interacting with Clarity contracts.
+Clarity values can be constructed with functions provided by the **@stacks/transactions** library. These function simply output javascript objects that contain a value and a numerical representation of the Clarity type information (or in the case of Booleans and Optional None, just the type information). These Clarity value objects can then be easily serialized into `contract-call` transactions for interacting with Clarity contracts.
 
 Here are examples of how to construct each type of Clarity value:
 
@@ -122,9 +122,9 @@ broadcastTransaction(transaction, network);
 ## Utilizing Clarity Values from Transaction Responses
 If you successfully submit a `contract-call` transaction that calls a Clarity function, you may receive a resulting Clarity value in response.
 
-If using the transaction libraries `callReadOnlyFunction()` method, the result will be a `ClarityValue`. As mentioned above, `ClarityValues` are simply javascript objects containing a value and its associated Clarity type information. These object types are defined [here](https://github.com/blockstack/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types).
+If using the transaction library's `callReadOnlyFunction()` method, the result will be a `ClarityValue`. As mentioned above, `ClarityValues` are simply javascript objects containing a value and its associated Clarity type information. These object types are defined [here](https://github.com/blockstack/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types).
 
-## Deserializing Clarity Values from Hex
+### Deserializing Clarity Values from Hex
 If you receive a response from a transaction in the form of a Hex string, you can deserialize it into a Clarity value like so:
 
 ```javascript
