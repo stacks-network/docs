@@ -96,6 +96,7 @@ sections:
           - external:
               href: 'https://blockstack.github.io/stacks.js/'
               title: Stacks.js
+          - path: /clarity-js/clarity-js
           - path: /faqs
           - path: /glossary
           - path: /deploy-tips
