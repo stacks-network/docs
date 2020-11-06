@@ -118,7 +118,7 @@ const functionArguments = [
 ];
 ```
 
-If you're using Typescript, these Clarity types can be imported as `ContractCallArgumentType` from `@blockstack/connect`.
+If you're using TypeScript, these Clarity types can be imported as `ContractCallArgumentType` from `@blockstack/connect`.
 
 ## Stacks (STX) Token Transfers
 

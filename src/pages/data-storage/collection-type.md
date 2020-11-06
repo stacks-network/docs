@@ -18,11 +18,11 @@ npm install -g blockstack-collections
 
 You should also familiarize yourself with the [Collection](https://github.com/blockstack/blockstack-collections/blob/master/src/types/collection.ts) class and review [the existing Collection types](https://github.com/blockstack/blockstack-collections/tree/master/src/types). Keep in mind, someone else may have already added a custom type similar to what you want to add.
 
-Collection types can be written in `.js` Javascript or `.ts` (Typescript) files. Typescript is a typed superset of Javascript, you can [read the language documentation](https://www.typescriptlang.org/) to learn more.
+Collection types can be written in `.js` JavaScript or `.ts` (TypeScript) files. TypeScript is a typed superset of JavaScript, you can [read the language documentation](https://www.typescriptlang.org/) to learn more.
 
 ## Essential steps for creating a Collection type
 
-This section demonstrates how to create a new collection type using Typescript. While this is written in Typescript, the steps in Javascript are the same. Follow these steps to create a new collection type:
+This section demonstrates how to create a new collection type using TypeScript. While this is written in TypeScript, the steps in JavaScript are the same. Follow these steps to create a new collection type:
 
 1. Create a new `.ts` file and open it for editing.
 2. Import the `Collection` class.
@@ -85,7 +85,7 @@ This section demonstrates how to create a new collection type using Typescript. 
 
    ```jsx
    static fromObject(object: object) {
-     // Create from plain Javascript object
+     // Create from plain JavaScript object
      return new Contact(object)
    }
    static fromData(data: string) {

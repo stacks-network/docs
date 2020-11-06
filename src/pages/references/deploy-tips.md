@@ -28,7 +28,7 @@ If you first populated your application with the Stacks application generator, y
 | public/manifest.json       | A JSON file that describes your web application to the browser.                                                                                                                |
 | cors                       | Contains example deployment files for cross-origin request configuration.                                                                                                      |
 
-If you use the generator to build Javascript or Vue scaffolding, your project configuration files will be different.
+If you use the generator to build JavasScript or Vue scaffolding, your project configuration files will be different.
 
 Regardless of which scaffolding you use, you must customize and extend this basic scaffolding as needed by your application. For example, you may want to add more properties to the `manifest.json` file. Since every application is different, Stacks Auth cannot give you specific instructions on how to do this. The steps you take are specific to your application.
 
