@@ -221,13 +221,13 @@ Follow these steps to create and register a profile for a BNS username (`identif
 
 ```jsx
 "account": [
-	{
-	  "@type": "Account",
-	  "service": "twitter",
-	  "identifier": "naval",
-	  "proofType": "http",
-	  "proofUrl": "https://twitter.com/naval/status/12345678901234567890"
-	}
+  {
+    "@type": "Account",
+    "service": "twitter",
+    "identifier": "naval",
+    "proofType": "http",
+    "proofUrl": "https://twitter.com/naval/status/12345678901234567890"
+  }
 ]
 ```
 
