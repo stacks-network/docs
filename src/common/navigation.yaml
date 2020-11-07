@@ -77,24 +77,7 @@ sections:
           - path: /install
           - path: /usage
           - path: /security
-      - path: /naming-services
-        pages:
-          - path: /overview
-          - path: /architecture
-          - path: /comparison
-          - path: /did
-          - path: /forks
-          - path: /namespaces
-          - path: /subdomains
-        sections:
-          - title: Tutorials
-            pages:
-              - path: /choose-name
-              - path: /create-namespace
-              - path: /resolve-name
-              - path: /register-name
-              - path: /manage-names
-              - path: /subdomains-tutorial
+      - path: /naming-system # is an overview page
       - path: /storage-hubs # this seems out of date, kill?
         pages:
           - path: /overview
@@ -109,15 +92,23 @@ sections:
         usePageTitles: true
         pages:
           - path: /blockstack-cli
-          - path: /language-clarity
           - path: /stacking-contract
           - path: /stacks-blockchain-api
+          - path: /stacks-node-configuration
           - external:
               href: 'https://blockstack.github.io/stacks.js/'
               title: Stacks.js
           - path: /faqs
           - path: /glossary
           - path: /deploy-tips
+        sections:
+          - title: Clarity Language
+            usePageTitles: true
+            pages:
+              - path: /language-overview
+              - path: /language-types
+              - path: /language-keywords
+              - path: /language-functions
   - title: Ecosystem
     pages:
       - path: /overview #pbc et al
