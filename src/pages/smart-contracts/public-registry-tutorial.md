@@ -453,7 +453,7 @@ In addition to `tx_result`, the transaction object also contains a timestamp (`b
 
 ## Fetch the first to-do list
 
-There are two other ways to get state information from the blockchain: read-only functions and data map entries. Read-only functions were already discussed in the [Clarity counter tutorial](/smart-contracts/counter-tutorial). They do not require a transaction to complete. Data maps in Clarity are maps that can be read by any user. See the [Clarity reference](https://docs.blockstack.org/references/language-clarity#define-map) for more details.
+There are two other ways to get state information from the blockchain: read-only functions and data map entries. Read-only functions were already discussed in the [Clarity counter tutorial](/smart-contracts/counter-tutorial). They do not require a transaction to complete. Data maps in Clarity are maps that can be read by any user. See the [Clarity reference](https://docs.blockstack.org/references/language-functions#define-map) for more details.
 
 The `todo-registry` contract defines a read-only function `owner-of?` that returns the owner of a registry entry and a data map for details about entries:
 
