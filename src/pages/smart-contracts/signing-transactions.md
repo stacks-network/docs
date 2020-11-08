@@ -214,7 +214,7 @@ interface ContractDeployOptions {
 
 ## Usage in React Apps
 
-Make sure you follow the [setup instructions](/authentication/connect#in-react-apps) first. When you're using
+Make sure you follow the [setup instructions](/authentication/building-todo-app#onboard-into-your-first-stacks-app) first. When you're using
 `useConnect`, you don't have to specify `appDetails` - we'll pick that up from your existing configuration.
 
 Each transaction signing method is exposed through the `useConnect` hook, but they're prefixed with `do` instead of

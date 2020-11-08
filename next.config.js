@@ -33,6 +33,11 @@ async function redirects() {
       destination: '/authentication/connect',
       permanent: true,
     },
+    {
+      source: '/authentication/connect',
+      destination: 'https://blockstack.github.io/stacks.js',
+      permanent: true,
+    },
     { source: '/develop/profiles.html', destination: '/authentication/profiles', permanent: true },
     { source: '/storage/overview.html', destination: '/data-storage/overview', permanent: true },
     { source: '/develop/storage.html', destination: '/data-storage/overview', permanent: true },
