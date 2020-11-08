@@ -17,12 +17,16 @@ export const getStaticPaths = () => {
   Object.keys(stacksLibs).forEach(libKey => {
     const lib = stacksLibs[libKey];
     types.forEach(type => {
-      const files = fs.readdirSync(`./src/_data/${lib.path}/${type}`);
-      paths = paths.concat(
-        files.map(file => {
-          return { params: { file: file, lib: libKey, type } };
-        })
-      );
+      try {
+        const files = fs.readdirSync(`./src/_data/${lib.path}/${type}`);
+        paths = paths.concat(
+          files.map(file => {
+            return { params: { file: file, lib: libKey, type } };
+          })
+        );
+      } catch (e: any) {
+        //ignore
+      }
     });
   });
 

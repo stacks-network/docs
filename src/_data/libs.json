@@ -1,4 +1,5 @@
 {
   "clarity-js": { "lib": "@blockstack/clarity", "path": "clarity-js" },
-  "clarity-native-bin": { "lib": "@blockstack/clarity-native-bin", "path": "clarity-native-bin" }
+  "clarity-native-bin": { "lib": "@blockstack/clarity-native-bin", "path": "clarity-native-bin" },
+  "auth": { "lib": "@stacks/auth", "path": "auth" }
 }

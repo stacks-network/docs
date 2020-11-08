@@ -11,13 +11,19 @@ import stacksLibs from '_data/libs.json';
 
 const types = ['classes', 'enums', 'interfaces', 'modules'];
 
+const typeExists = (lib, type) => {
+  return fs.existsSync(`./src/_data/${lib.path}/${type}`);
+};
+
 export const getStaticPaths = () => {
   const paths = [];
 
   Object.keys(stacksLibs).forEach(libKey => {
     const lib = stacksLibs[libKey];
     types.forEach(type => {
-      paths.push({ params: { lib: libKey, type } });
+      if (typeExists(lib, type)) {
+        paths.push({ params: { lib: libKey, type } });
+      }
     });
   });
 
