@@ -91,6 +91,51 @@ INFO [1588108047.585] [src/chainstate/stacks/index/marf.rs:732] First-ever block
 
 Your node will receive new blocks when they are produced, and you can use the [Stacks Node RPC API](/references/stacks-blockchain-api#stacks-node-rpc-api) to send transactions, fetch information for contracts and accounts, and more.
 
+## Running the testnet node on Windows
+
+### Prerequisites
+
+Before you begin, check that you have the below necessary softwares installed on your PC
+
+- [MicrosoftC++BuildTools](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
+- [NodeJs](https://nodejs.org/en/download/).
+- [Git](https://git-scm.com/downloads).
+
+#### Optional Dependencies
+
+- [Python](https://www.python.org/downloads/).
+- [Rust](https://www.rust-lang.org/tools/install).
+
+### Download the Binary and run the follower node
+
+First, download the binary using the below link:
+
+<https://github.com/blockstack/stacks-blockchain/releases/download/v23.0.0.10-krypton/windows-x64.zip>
+
+Extract the binary .Open the command prompt from the folder where binary is extracted and execute the below command:
+
+```bash
+stacks-node krypton
+# This command will start the testnet follower node.
+```
+
+To execute Stacks node with extra debugging enabled, run:
+
+```bash
+set RUST_BACKTRACE=full
+set BLOCKSTACK_DEBUG=1
+stacks-node krypton
+# This command will execute the binary and start the follower node with debug enabled.
+```
+
+The first time you run this, you'll see some logs indicating that the Rust code is being compiled. Once that's done, you should see some logs that look something like the this:
+
+```bash
+INFO [1588108047.585] [src/chainstate/stacks/index/marf.rs:732] First-ever block 0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206
+```
+
+**Awesome! Your node is now connected to the testnet network.**
+
 ## Optional: Running with Docker
 
 Alternatively, you can run the testnet node with Docker.
