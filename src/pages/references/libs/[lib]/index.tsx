@@ -25,8 +25,11 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = async ({ params }) => {
   const libPath = stacksLibs[params.lib].path;
+  const readme = fs.readFileSync(`./src/_data/${libPath}/README.md`);
   const md = fs.readFileSync(`./src/_data/${libPath}/globals.md`);
-  const mdxSource = await renderToString(md.toString(), { components: Components });
+  const mdxSource = await renderToString(readme.toString() + '\n\n' + md.toString(), {
+    components: Components,
+  });
   return {
     props: {
       mdx: mdxSource,
