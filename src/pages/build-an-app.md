@@ -83,10 +83,7 @@ on the Stacks blockchain are written in the [Clarity language](https://clarity-l
 [@page-reference | inline]
 | /smart-contracts/public-registry-tutorial
 
-### Connect
+### Stacks.js
 
-Connect is a JavaScript library developed by Blockstack PBC that makes it easy to integrate authentication, data storage
+[Stacks.js](https://blockstack.github.io/stacks.js/) is a collection of JavaScript library developed by Blockstack PBC that makes it easy to integrate authentication, data storage
 and smart contracts functionality in a user-friendly way.
-
-[@page-reference | inline]
-| /authentication/connect
