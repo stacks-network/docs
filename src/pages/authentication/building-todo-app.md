@@ -297,6 +297,5 @@ You'll now see your todos as an authenticated user for the username you've chose
 
 ## Learn more
 
-Read [the Stacks Connect guide](/authentication/connect) and
-[the stacks.js reference](https://blockstack.github.io/stacks.js/) to learn more about the
+Read [the stacks.js reference](https://blockstack.github.io/stacks.js/) to learn more about the
 libraries used in this tutorial.
