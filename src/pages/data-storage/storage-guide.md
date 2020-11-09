@@ -17,10 +17,11 @@ Gaia storage is a key-value store.
 
 ## Creating a file
 
-Use the [UserSession.putFile](https://blockstack.github.io/stacks.js/classes/usersession.html#putfile) method:
+Use the [Storage.putFile](https://blockstack.github.io/stacks.js/classes/storage.html#putfile) method:
 
 ```tsx
 const userSession = new UserSession();
+const storage = new Storage({ userSession });
 const options: PutFileOptions = {
   encrypt: false,
 };
@@ -31,7 +32,7 @@ userSession.putFile('hello.txt', 'hello world!', options).then(() => {
 
 ## Creating an encrypted file
 
-Use the [UserSession.putFile](https://blockstack.github.io/stacks.js/classes/usersession.html#putfile) method and
+Use the [Storage.putFile](https://blockstack.github.io/stacks.js/classes/storage.html#putfile) method and
 pass `encrypt: true` within the options object. See the [`PutFileOptions` type definition here](https://blockstack.github.io/stacks.js/interfaces/putfileoptions.html#encrypt)
 
 ```tsx
@@ -48,16 +49,17 @@ userSession.putFile('message.txt', 'Secret hello!', options).then(() => {
 
 ## Reading a file
 
-Use the [UserSession.getFile](https://blockstack.github.io/stacks.js/classes/usersession.html#getfile) method:
+Use the [Storage.getFile](https://blockstack.github.io/stacks.js/classes/storage.html#getfile) method:
 
 ```tsx
 const userSession = new UserSession();
+const storage = new Storage({ userSession });
 
-const options: PutFileOptions = {
+const options: GetFileOptions = {
   decrypt: false,
 };
 
-userSession.getFile('hello.txt', options).then(fileContents => {
+storage.getFile('hello.txt', options).then(fileContents => {
   // get the contents of the file hello.txt
   assert(fileContents === 'hello world!');
 });
@@ -65,17 +67,18 @@ userSession.getFile('hello.txt', options).then(fileContents => {
 
 ## Reading an encrypted file
 
-Use the [UserSession.getFile](https://blockstack.github.io/stacks.js/classes/usersession.html#getfile) method and pass
+Use the [Storage.getFile](https://blockstack.github.io/stacks.js/classes/storage.html#getfile) method and pass
 `decrypt: true` within the options object. See the [`GetFileOptions` type definition here](https://blockstack.github.io/stacks.js/interfaces/getfileoptions.html#decrypt)
 
 ```tsx
 const userSession = new UserSession();
+const storage = new Storage({ userSession });
 
 const options: GetFileOptions = {
   decrypt: true,
 };
 
-userSession.getFile('message.txt', options).then(fileContents => {
+storage.getFile('message.txt', options).then(fileContents => {
   // get & decrypt the contents of the file /message.txt
   assert(fileContents === 'Secret hello!');
 });
@@ -90,10 +93,11 @@ the [`publish_data` scope](https://blockstack.github.io/stacks.js/enums/authscop
 const options = {
   user: 'ryan.id', // the Stacks ID of the user for which to lookup the file
   app: 'https://BlockstackApp.com', // origin of the app this file is stored for
+  decrypt: false,
 };
 
 const userSession = new UserSession();
-userSession.putFile('hello.txt', 'hello world!', options).then(fileContents => {
+storage.getFile('hello.txt', options).then(fileContents => {
   // get the contents of the file /message.txt
   assert(fileContents === 'hello world!');
 });
@@ -101,12 +105,13 @@ userSession.putFile('hello.txt', 'hello world!', options).then(fileContents => {
 
 ## Delete a file
 
-Use the [`UserSession.deleteFile`](https://blockstack.github.io/stacks.js/classes/usersession.html#deletefile) from the application's data store.
+Use the [`UserSession.deleteFile`](https://blockstack.github.io/stacks.js/classes/storage.html#deletefile) from the application's data store.
 
 ```jsx
 const userSession = new UserSession();
+const storage = new Storage({ userSession });
 
-userSession.deleteFile('hello.txt').then(() => {
+storage.deleteFile('hello.txt').then(() => {
   // hello.txt is now removed.
 });
 ```

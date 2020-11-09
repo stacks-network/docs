@@ -57,7 +57,7 @@ Mining is required to make the network usable, trustworthy, and secure. Miners v
 
 ### Proof of Transfer (PoX)
 
-Proof of Transfer (PoX) is a novel consensus mechanism that leverages the security and stability of Bitcoin to create a new blockchain, without modifying the Bitcoin protocol.
+[Proof of Transfer (PoX)](/stacks-blockchain/proof-of-transfer) is a novel consensus mechanism that leverages the security and stability of Bitcoin to create a new blockchain, without modifying the Bitcoin protocol.
 
 Stacks (STX) miners transfer Bitcoin to other Stacks (STX) holders in order to mine blocks. This BTC reward mechanism is called **Stacking**.
 

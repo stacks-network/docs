@@ -77,3 +77,32 @@ Stacking is a built-in capability of PoX and is realized through a set of action
 ## Stacking contract
 
 Check out the [Stacking contract reference](/references/stacking-contract) to see available methods and error codes.
+
+## Bitcoin address
+
+The Stacking contract needs a special format for the bitcoin address (the reward address). This is required in order to ensure that miners will be able to correctly construct the bitcoin transaction containing the reward address.
+
+The address must be specified in the following format using the Clarity language:
+
+```clar
+;; a tuple of a version and hashbytes buffer
+(pox-addr (tuple (version (buff 1)) (hashbytes (buff 20))))
+```
+
+The `version` buffer must represent what kind of bitcoin address is being submitted. It can be one of the following:
+
+```js
+SerializeP2PKH = 0x00,  // hash160(public-key), same as bitcoin's p2pkh
+SerializeP2SH = 0x01,   // hash160(multisig-redeem-script), same as bitcoin's multisig p2sh
+SerializeP2WPKH = 0x02, // hash160(segwit-program-00(p2pkh)), same as bitcoin's p2sh-p2wpkh
+SerializeP2WSH = 0x03,  // hash160(segwit-program-00(public-keys)), same as bitcoin's p2sh-p2wsh
+```
+
+The `hashbytes` are the 20 hash bytes of the bitcoin address. You can obtain that from a bitcoin library, for instance using [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib):
+
+```js
+const btc = require('bitcoinjs-lib');
+console.log(
+  '0x' + btc.address.fromBase58Check('1C56LYirKa3PFXFsvhSESgDy2acEHVAEt6').hash.toString('hex')
+);
+```

@@ -126,48 +126,47 @@ parses the markdown to get some information about the page, such as the title an
 
 #### Adding a new route
 
-If you are adding a new route, you have to add your route to a section contained within this file: `src/common/routes/all-routes.json`
+If you are adding a new route, you have to add your route to a section contained within this file: `src/common/navigation.yaml`
 
 ```bash showLineNumbers highlight=11
-docs.blockstack/
-  .github/
-  lib/
-  node_modules/
-  public/
-  src/
-    _data/
-    _includes/
-    common/
-      routes/
-        all-routes.json
-        get-routes.js
-        index.ts
-    components/
-    pages/
-  types/
+sections:
+  - pages:
+      - path: /
+      - path: /build-an-app # is an overview page
+      - path: /smart-contracts
+        pages:
+          - path: /overview
+          - path: /principals
+        sections:
+          - title: Tutorials
+            pages:
+              - path: /hello-world-tutorial
+              - path: /counter-tutorial
+              - path: /testing-contracts
+              - path: /public-registry-tutorial
+              - path: /signing-transactions
+      - path: /mining # is an overview page
+
+  - title: Technology
+    pages:
+      - path: /authentication
+        pages:
+          - path: /overview
+        sections:
+          - title: Tutorials
+            usePageTitles: true
+            pages:
+              - path: /building-todo-app
 ```
 
-Here is an example of adding a new route (see line #8):
-
-```json highlight=8
-  {
-    "title": "Data Storage",
-    "routes": [
-      { "path": "storage/overview" },
-      { "path": "develop/storage" },
-      { "path": "storage/authentication" },
-      { "path": "storage/write-to-read" },
-      { "path": "clarity/my-new-page" }
-    ]
-  },
-```
+Adding a new route requires to add a new `path`.
 
 The script will process that file and pull out the title from the frontmatter of the document.
 
 ### Non-standard pages
 
 There are a few pages within these docs that are non-standard markdown pages. This means they are using some kind of external data as their source,
-such as the [Clarity Reference page](/references/language-clarity), or the [Blockstack CLI page](/references/blockstack-cli). These pages are using a function of Next.js called
+such as the [Clarity Reference page](/references/language-overview), or the [Blockstack CLI page](/references/blockstack-cli). These pages are using a function of Next.js called
 [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) which allows us to
 fetch external data at runtime and use it in some way within our pages.
 
