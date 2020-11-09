@@ -4,7 +4,7 @@ description: Understand the proof-of-transfer consensus mechanism
 icon: TestnetIcon
 ---
 
-### Overview
+## Overview
 
 Consensus algorithms for public blockchains require computing or financial resources to secure the blockchain. The idea being to make it practically infeasible for any single malicious actor to have enough computing power or ownership stake to attack the network.
 
@@ -19,7 +19,7 @@ This allows network participants who are adding value to the new cryptocurrency 
 Other new blockchains can be anchored on the secure proof-of-work blockchain instead of introducing new proof-of-work chains. PoX has an interesting property where participants can earn payouts in a separate, potentially more stable, base cryptocurrency while participating in the new blockchain network. This can help solve a bootstrapping problem for new blockchains by providing incentives for early participants. Further, PoX has a potential use case for funding ecosystem developer funds.
 ![proof-of-transfer](/images/proof-of-transfer.png)
 
-### See also
+## See also
 
 - [Read the full PoX whitepaper](https://community.blockstack.org/pox)
 - [Watch CEO Muneeb Ali and Evangelist Joe Bender give an overview of Stack's breakthrough PoX mining mechanism](https://www.youtube.com/watch?v=NY_eUrIcWOY)
