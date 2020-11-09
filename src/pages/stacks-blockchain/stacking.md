@@ -82,8 +82,6 @@ Check out the [Stacking contract reference](/references/stacking-contract) to se
 
 The Stacking contract needs a special format for the bitcoin address (the reward address). This is required in order to ensure that miners will be able to correctly construct the bitcoin transaction containing the reward address.
 
-!> An invalid reward address could cause miners to be unable to mine a block
-
 The address must be specified in the following format using the Clarity language:
 
 ```clar
