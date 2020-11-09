@@ -72,12 +72,6 @@ sections:
               - path: /atlas-usage
               - path: /install-api
               - path: /installing-memcached
-      - path: /stacks-wallet
-        pages:
-          - path: /overview
-          - path: /install
-          - path: /usage
-          - path: /security
       - path: /naming-system # is an overview page
       - path: /storage-hubs # this seems out of date, kill?
         pages:

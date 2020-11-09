@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Routes
  *
@@ -64,7 +65,7 @@ const getHeadings = mdContent => {
 const routes = allRoutes.map(route => {
   try {
     const fileContent = fs.readFileSync(
-      path.join('./src/pages', (route === '/' ? 'index' : route) + '.md'),
+      path.join('./src/pages', `${route === '/' ? 'index' : route}.md`),
       'utf8'
     );
     const data = fm(fileContent);
@@ -77,6 +78,7 @@ const routes = allRoutes.map(route => {
   } catch (e) {
     console.error('ROUTES ERROR');
     console.warn(e);
+    throw new Error(e);
   }
 });
 
