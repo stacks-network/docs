@@ -49,6 +49,7 @@ sections:
         pages:
           - path: /overview
           - path: /testnet
+          - path: /proof-of-transfer
           - path: /accounts
           - path: /transactions
           - path: /network
