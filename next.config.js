@@ -258,12 +258,56 @@ async function redirects() {
       destination: 'https://blockstack.org/whitepaper.pdf',
       permanent: true,
     },
-    { source: '/org/wallet-intro.html', destination: '/stacks-wallet/overview', permanent: true },
-    { source: '/org/wallet-install.html', destination: '/stacks-wallet/install', permanent: true },
-    { source: '/org/wallet-use.html', destination: '/stacks-wallet/usage', permanent: true },
+    {
+      source: '/org/wallet-intro.html',
+      destination: 'https://blockstack.org/questions/what-is-the-stacks-wallet',
+      permanent: true,
+    },
+    {
+      source: '/org/wallet-install.html',
+      destination: 'https://blockstack.org/questions/how-do-i-install-the-stacks-wallet-v3-x',
+      permanent: true,
+    },
+    {
+      source: '/org/wallet-use.html',
+      destination: 'https://blockstack.org/questions/how-do-i-start-using-the-stacks-wallet-v3-x',
+      permanent: true,
+    },
+    {
+      source: '/stacks-wallet/overview',
+      destination: 'https://blockstack.org/questions/what-is-the-stacks-wallet',
+      permanent: true,
+    },
+    {
+      source: '/stacks-wallet/install',
+      destination: 'https://blockstack.org/questions/how-do-i-install-the-stacks-wallet-v3-x',
+      permanent: true,
+    },
+    {
+      source: '/stacks-wallet/usage',
+      destination: 'https://blockstack.org/questions/how-do-i-start-using-the-stacks-wallet-v3-x',
+      permanent: true,
+    },
+    {
+      source: '/stacks-wallet/security',
+      destination:
+        'https://blockstack.org/questions/how-should-i-secure-my-secret-key-for-the-stacks-wallet',
+      permanent: true,
+    },
+    {
+      source: '/stacks-wallet',
+      destination: 'https://blockstack.org/questions/what-is-the-stacks-wallet',
+      permanent: true,
+    },
+    {
+      source: '/org/secureref.html',
+      destination:
+        'https://blockstack.org/questions/how-should-i-secure-my-secret-key-for-the-stacks-wallet',
+      permanent: true,
+    },
     {
       source: '/org/wallet-troubleshoot.html',
-      destination: '/stacks-wallet/troubleshooting',
+      destination: 'https://blockstack.org/wallet',
       permanent: true,
     },
     {
@@ -344,7 +388,6 @@ async function redirects() {
       destination: '/storage-hubs/gaia-admin',
       permanent: true,
     },
-    { source: '/org/secureref.html', destination: '/stacks-wallet/security', permanent: true },
     {
       source: '/develop/overview_auth.html',
       destination: '/authentication/overview',
