@@ -39,8 +39,7 @@ up data in Gaia (such as profiles and app data).
 
 ```
                +--------------+       +---------------+       +----------------+
-clients        |  Blockstack  |       | blockstack.js |       | BNS API module |
-               |    Browser   |       |               |       |                |
+clients        |Authenticator |       |   Stacks.js   |       | BNS API module |
                +--------------+       +---------------+       +----------------+
                  ^          ^           ^           ^           ^            ^
                  |          |           |           |           |            |

@@ -6,7 +6,7 @@ description: 'Storing user data with Stacks'
 
 Stacks authentication is a bearer token-based authentication system. From an app user's perspective,
 login similar to third-party authentication techniques that they're familiar with. For an app developer,
-the flow is unlike the typical client-server flow of centralized sign-in services such as OAuth. With Blockstack
+the flow is unlike the typical client-server flow of centralized sign-in services such as OAuth. With Stacks Auth
 the authentication flow happens entirely client-side.
 
 In this section, you get an overview of the authentication system and learn how Gaia fits into it.
