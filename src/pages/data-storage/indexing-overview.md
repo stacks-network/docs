@@ -8,8 +8,8 @@ images:
 
 ## Introduction
 
-The Blockstack Radiks feature enables Blockstack decentralized applications (DApps) to index and store across data
-belonging to multiple users. Radiks works with Blockstack's Gaia Storage System. Using Radiks, you can build
+The Stacks Radiks feature enables Stacks decentralized applications (DApps) to index and store across data
+belonging to multiple users. Radiks works with Stacks's Gaia Storage System. Using Radiks, you can build
 multi-player DApps that:
 
 - index, store, and query application data
@@ -74,7 +74,7 @@ decentralized. A DApp that uses Radiks has these characteristics.
 
 ### Built on decentralized authentication
 
-Radiks is deeply tied to Blockstack authentication, which uses a blockchain and Gaia to give you full control over
+Radiks is deeply tied to Stacks authentication, which uses a blockchain and Gaia to give you full control over
 your user data.
 
 ### No data lock-in
@@ -90,7 +90,7 @@ All data is also stored in Gaia; no third-party can revoke access to this data.
 
 ### Maximum privacy
 
-All data is encrypted on the client-side before being stored anywhere using Blockstack authorization. The application
+All data is encrypted on the client-side before being stored anywhere using Stacks authorization. The application
 host cannot inspect, sell, or use user data in any way that a user doesn't explicitly authorize.
 
 If you are not familiar with Gaia, see [read the Gaia documentation](/storage/overview).

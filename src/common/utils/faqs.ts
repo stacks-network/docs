@@ -3,7 +3,7 @@ export const getBetterNames = (id: number) => {
     case 360007620914:
       return {
         title: 'General information',
-        description: 'General questions about Blockstack and the Stacks network',
+        description: 'General questions about Stacks and the Stacks network',
         img: '/images/pages/testnet.svg',
       };
     case 360007411853:

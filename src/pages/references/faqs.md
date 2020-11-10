@@ -1,6 +1,6 @@
 ---
 title: FAQs
-description: A knowledge base of question and answers related to the Blockstack ecosystem.
+description: A knowledge base of question and answers related to the Stacks ecosystem.
 duration: ''
 ---
 

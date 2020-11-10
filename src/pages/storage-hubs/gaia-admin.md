@@ -1,6 +1,6 @@
 ---
 title: Gaia admin
-description: 'Storing user data with Blockstack'
+description: 'Storing user data with Stacks'
 ---
 
 ## Introduction
