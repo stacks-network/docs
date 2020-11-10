@@ -38,7 +38,7 @@ For transactions mined in microblocks, the miner that produces the microblock re
 
 ## Reward maturity
 
-Miner rewards take 100 blocks to mature.
+Miner rewards, i.e. block rewards and transaction fees take 100 blocks on the bitcon blockchain to mature. After successful mining a block your rewards will appear in the Stacks account after ~24 hours.
 
 ## Mining with Proof-of-Transfer
 
@@ -49,3 +49,14 @@ Miners commit Bitcoin to **two** addresses in every leader block commit. The amo
 100,000 Bitcoin blocks **after** mining begins, the PoX sunset phase begins. During this phase, an increasing proportion of the block commit must be burnt. To burn this sunset fee, the miner must send the sunset fee amount to the first output of their block commit transaction (i.e., the OPRETURN output).
 
 400,000 Bitcoin blocks after the sunset phase begins, the sunset phase ends. After this point, PoX is no longer active, and miners must burn all of their leader block commits. They do so by sending Bitcoin to the canonical burn address `1111111111111111111114oLvT2`.
+
+## Probability to mine next block
+
+The miner who is selected to mine the next block is chosen depending on the amount of BTC the miners sent, i.e. transferred or burnt.
+
+The probability for a miner to mine next block equals the BTC miner send devided by the total BTC all miners send.
+
+To calculate the amount of BTC to send miners should:
+
+- Guess the price BTC/STX for the next day (100 blocks later)
+- Guess the total amount of BTCs committed by all miners
