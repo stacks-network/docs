@@ -5,7 +5,7 @@ description: Learn about the beta release of Collections and how you can start u
 
 ## Introduction
 
-Collections is the feature designed to make data portable among Blockstack applications. Sharing is accomplished by
+Collections is the feature designed to make data portable among Stacks applications. Sharing is accomplished by
 storing a user's data in a standardized format at a known, Gaia storage location. Collections associate user data with
 a user's decentralized ID. When users move among apps, the same data is available to each application the user authorizes.
 
@@ -18,13 +18,13 @@ particular. The following topics are covered:
 
 ## Understand how collections work
 
-One of Blockstack's goals is to give users true data ownership by enabling _data portability_. Data portability allows
+One of the goals of the Stacks ecosystem is to give users true data ownership by enabling _data portability_. Data portability allows
 users to login with their digital ID on any app and have access to the same data. For example, if a user adds a photo of
 a Hawaiian vacation in one app, that photo enters the user's data pool. Then, when the user opens a second app, that
 same photo is available to the second app because the user data, including the photo, is shared via the user's
 decentralized ID.
 
-How do collections work? Blockstack builds a library containing commonly used data schemes. Developers use these classes
+How do collections work? Stacks provides a library containing commonly used data schemes. Developers use these classes
 and objects instead of creating their own, unique data schemes. Using a class from the collections library guarantees
 class data is stored in Gaia in that format; And, when retrieved, guarantees the same format is returned. This
 pre-release provides the `Contact` collection. A contact schema produces this structure:
@@ -43,15 +43,15 @@ pre-release provides the `Contact` collection. A contact schema produces this st
 
 A collection schema is neither validated or enforced. The goal is to incentivize collection use rather that enforce use.
 
-Because malicious apps or apps with poor security controls may damage user data, Blockstack believes collections should
-include the ability for users to roll-back changes. For this reason, Blockstack supports an event log and rollback
+Because malicious apps or apps with poor security controls may damage user data, Stacks collections should
+include the ability for users to roll-back changes. For this reason, Stacks supports an event log and rollback
 mechanisms in collections. To support this rollback in the pre-release, collections data store is conceptually an event
 log. Every data write an app makes is stored as a separate file. By placing data in files it ensures that data is never
 lost and files can be returned back to any previous state.
 
 ##### The Future of Collections Envisioned
 
-Blockstack believes that collections should enable true data portability across applications for each decentralized ID.
+Stacks collections should enable true data portability across applications for each decentralized ID.
 The goal is to develop simple user interfaces to allow users to manage of application access and permissions to collection
 data. For example, in the future, users can rollback data to previous versions using management interfaces.
 For developers, collections can incentivize user adoption by reducing user friction. Users can easily try new apps and
@@ -98,7 +98,7 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
    The system starts the application and launches it in your browser at 127.0.0.1:3000
 
-9. Choose **Sign In with Blockstack**.
+9. Choose **Sign In with Stacks Auth**.
 
    The internet browser will display this pop-up
 
@@ -131,7 +131,7 @@ If you have `npm` installed, do the following to run the Contact Manager demo ap
 
 ## How to add the Contact collections to your DApp
 
-In this section, you learn how to add `Contact` collection functionality to an existing application. Before beginning, make sure your application is using Blockstack auth and is storing data with Gaia. To start using the `Contact` collection in your Blockstack app, do the following:
+In this section, you learn how to add `Contact` collection functionality to an existing application. Before beginning, make sure your application is using Stacks auth and is storing data with Gaia. To start using the `Contact` collection in your Stacks app, do the following:
 
 1. Change to the root directory of your app project.
 2. Install the preview branch of the `blockstack.js`.

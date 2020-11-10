@@ -1,6 +1,6 @@
 ---
 title: Authentication
-description: Blockstack Auth provides single sign on and authentication without third parties or remote servers.
+description: Stacks Auth provides single sign on and authentication without third parties or remote servers.
 images:
   large: /images/pages/authentication.svg
   sm: /images/pages/authentication-sm.svg
@@ -8,13 +8,13 @@ images:
 
 ## Authentication flow
 
-For an application developer, the application flow is similar to the typical client-server flow used by centralized sign in services (e.g., OAuth). However, with Blockstack, the authentication flow happens entirely client-side.
+For an application developer, the application flow is similar to the typical client-server flow used by centralized sign in services (e.g., OAuth). However, with Stacks auth, the authentication flow happens entirely client-side.
 
 A decentralized application and [the Blockstack App](https://github.com/blockstack/ux/tree/master/packages/app) communicate during the authentication flow by passing back and forth two tokens. The requesting application sends the Blockstack App an `authRequest` token. Once a user approves a sign-in, the Blockstack App responds to the application with an `authResponse` token. These tokens are <a href="https://jwt.io/" target="\_blank">JSON Web Tokens</a>, and they are passed via URL query strings.
 
 ![](/images/app-sign-in.png)
 
-When a user chooses to authenticate a decentralized application, it calls the `doOpenAuth()` method which sends an `authRequest` to the Blockstack App. Blockstack passes the token in via a URL query string in the `authRequest` parameter:
+When a user chooses to authenticate a decentralized application, it calls the `doOpenAuth()` method which sends an `authRequest` to the Blockstack App. Stacks auth passes the token in via a URL query string in the `authRequest` parameter:
 
 `https://app.blockstack.org/#/sign-up?authRequest=j902120cn829n1jnvoa...`
 
@@ -51,7 +51,7 @@ The following is an example manifest file.
 {
   "name": "Todo App",
   "start_url": "http://blockstack-todos.appartisan.com",
-  "description": "A simple todo app build on blockstack",
+  "description": "A simple todo app build on Stacks",
   "icons": [
     {
       "src": "http://blockstack-todos.appartisan.com/logo.png",
@@ -78,7 +78,7 @@ and Firebase have two different ways of configuring CORS. Consult your vendor do
 
 ## Key pairs
 
-Blockstack Auth makes extensive use of public key cryptography. Blockstack uses ECDSA with the `secp256k1` curve. The
+Stacks Auth makes extensive use of public key cryptography. Blockstack uses ECDSA with the `secp256k1` curve. The
 following sections describe the three public-private key pairs used in the authentication process:
 
 - how they're generated
@@ -101,7 +101,7 @@ transit private key signs the app authentication request.
 ### Identity address private key
 
 The identity address private key is derived from the user's keychain phrase and
-is the private key of the Blockstack username that the user chooses to use to sign in
+is the private key of the Stacks username that the user chooses to use to sign in
 to the app. It is a secret owned by the user and never leaves the user's
 instance of the Blockstack App.
 
@@ -111,7 +111,7 @@ This private key signs the authentication response token for an app to indicate 
 
 The app private key is an app-specific private key that is generated from the
 user's identity address private key using the `domain_name` as input. It is
-deterministic in that for a given Blockstack username and `domain_name`, the same
+deterministic in that for a given Stacks username and `domain_name`, the same
 private key is generated each time.
 
 The app private key is securely shared with the app on each authentication, encrypted by the Blockstack App with the transit public key.
@@ -120,18 +120,18 @@ The app private key is securely shared with the app on each authentication, encr
 
 Both the `authRequest` and the `authResponse` tokens are [JSON Web Tokens](https://jwt.io/), and they are passed via URL query strings.
 
-Blockstack's authentication tokens are based on the [RFC 7519 OAuth JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519)
+Stacks authentication tokens are based on the [RFC 7519 OAuth JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519)
 with additional support for the `secp256k1` curve used by Bitcoin and many other
 cryptocurrencies.
 
 This signature algorithm is indicated by specifying `ES256K` in the token's
 `alg` key, specifying that the JWT signature uses ECDSA with the secp256k1
-curve. Blockstack provide both [JavaScript](https://github.com/blockstack/jsontokens-js)
+curve. Stacks auth provide both [JavaScript](https://github.com/blockstack/jsontokens-js)
 and
 [Ruby](https://github.com/blockstack/ruby-jwt-blockstack/tree/ruby-jwt-blockstack)
 JWT libraries with support for this signing algorithm.
 
--> The Blockstack JWT implementation is different from other implementations because of the underlying cryptography we employ. There are libraries in [Javascript](https://github.com/blockstack/jsontokens-js) and [Ruby](https://github.com/blockstack/ruby-jwt-blockstack) available on the Blockstack Github to allow you to work with these tokens.
+-> The Stacks JWT implementation is different from other implementations because of the underlying cryptography we employ. There are libraries in [Javascript](https://github.com/blockstack/jsontokens-js) and [Ruby](https://github.com/blockstack/ruby-jwt-blockstack) available on the Blockstack Github to allow you to work with these tokens.
 
 ### Example: authRequest payload schema
 
@@ -163,7 +163,7 @@ const responsePayload = {
   private_key, // encrypted private key payload
   public_keys, // single entry array with public key
   profile, // profile object or null if passed by profile_url
-  username, // blockstack username (if any)
+  username, // Stacks username (if any)
   core_token, // encrypted core token payload
   email, // email if email scope is requested & email available
   profile_url, // url to signed profile token

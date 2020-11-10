@@ -47,7 +47,7 @@ In this task you create a **Space** which is where Gaia stores your files.
    ~> Choose a region that is both geographically close to you and that supports spaces. Currently, <strong>San Francisco</strong>, <strong>New York</strong>, <strong>Amsterdam</strong>, and <strong>Singapore</strong> support spaces.
 
    The geographical location of your server impacts latency for storing data.
-   You select a region close to you so that when you use Blockstack apps,
+   You select a region close to you so that when you use Stacks apps,
    storing data is quicker.
 
 3. Scroll down to **Finalize and Create**.
@@ -171,7 +171,7 @@ In this task, you add a droplet to your account. The droplet is a droplet is a c
 
    ~> Choose a region that is both geographically close to you and that supports spaces. Currently, <strong>San Francisco</strong>, <strong>New York</strong>, <strong>Amsterdam</strong>, and <strong>Singapore</strong> support spaces.
 
-   The geographical location of your server impacts latency for storing data. You select a region close to you so that when you use Blockstack apps, storing data is quicker.
+   The geographical location of your server impacts latency for storing data. You select a region close to you so that when you use Stacks apps, storing data is quicker.
 
 8. If you are using SSH, scroll to the **Add your SSH key** section and choose an SSH key to use. Otherwise,
 
@@ -365,7 +365,7 @@ You should have the console open as `root` on your Droplet. In this section, you
 
 14. Ensure the `proofsRequired` value is set to the number `0` (zero).
 
-  This will allow Blockstack user to write to your Gaia hub, without any social proofs required. You can change this later on, and do other things to lock-down this Gaia hub to just yourself, but that is outside the scope of this document.
+  This will allow Stacks user to write to your Gaia hub, without any social proofs required. You can change this later on, and do other things to lock-down this Gaia hub to just yourself, but that is outside the scope of this document.
 
   At this point, the `json.config` file should be completed and appear similar to the following &&mdash;; but with your values.
 

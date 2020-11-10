@@ -5,7 +5,7 @@ description: This section teaches you how to use the Atlas network.
 
 ## The API
 
-While the Blockstack software stack expects that Atlas-hosted data is made up of
+While the Stacks software stack expects that Atlas-hosted data is made up of
 DNS zone files, Atlas itself does not enforce this (nor does it care about the
 format of its chunks). It is designed as a general-purpose chunk store.
 Nevertheless, the ubiquitous use of Atlas to store data as DNS zone files has

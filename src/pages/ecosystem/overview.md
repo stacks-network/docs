@@ -1,21 +1,21 @@
 ---
-description: Learn about Blockstack and decentralization
+description: Learn about Stacks and decentralization
 icon: BlockstackIcon
 ---
 
-# Overview of Blockstack
+# Overview of Stacks
 
-Blockstack is a full-stack decentralized computing network that enables a new generation of applications where developers and users can interact fairly and securely. Blockstack uses blockchain technology to build protocols and developer tools designed to enable a fair and open Internet that returns digital rights to developers and consumers.
+Stacks is a full-stack decentralized computing network that enables a new generation of applications where developers and users can interact fairly and securely. Stacks uses blockchain technology to build protocols and developer tools designed to enable a fair and open Internet that returns digital rights to developers and consumers.
 
-## What is the Blockstack Ecosystem?
+## What is the Stacks Ecosystem?
 
-The Blockstack Ecosystem is the legal entities and community structures that support the Blockstack technology, the apps that rely on it, and the people that work with it. The ecosystem’s mission is to foster an open and decentralized Internet that establishes and protects privacy, security and freedom for all users.
+The Stacks Ecosystem is the legal entities and community structures that support the Stacks technology, the apps that rely on it, and the people that work with it. The ecosystem’s mission is to foster an open and decentralized Internet that establishes and protects privacy, security and freedom for all users.
 
 The documentation on this site focuses on the technologies produced by three entities in the ecosystem.
 
 ### Blockstack Public Benefit Corp (PBC)
 
-Blockstack Public Benefit Corp. (PBC) started development of the Blockstack
+Blockstack Public Benefit Corp. (PBC) started development of the Stacks
 platform in 2014 and launched an alpha of the platform in early 2017. The
 platform’s development philosophy followed two simple principles. First, create
 backend facilities that allow blockchain applications to be both performant and
@@ -25,13 +25,13 @@ developers to:
 
 - Build a blockchain application in any Javascript framework. The platform does not require learning a new programming language or extending an existing application stack.
 
-- Use well-defined REST endpoints that simplify and encapsulate the blockchain backend. The Blockstack Javascript API reduces blockchain-backed applications to familiar `GET` and `PUT` operations.
+- Use well-defined REST endpoints that simplify and encapsulate the blockchain backend. The Stacks Javascript API reduces blockchain-backed applications to familiar `GET` and `PUT` operations.
 
 - Access the Blockstack’s Naming System (BNS). The system has over 70K users that can immediately start using your application.
 
-- Scale quickly to large, performant production systems. Blockstack’s Gaia storage system gives fast, scalable performance on a level comparable to Amazon S3, Google Drive, or Azure.
+- Scale quickly to large, performant production systems. Stacks’s Gaia storage system gives fast, scalable performance on a level comparable to Amazon S3, Google Drive, or Azure.
 
-Using Blockstack’s technology developers can start building immediately on the
+Using Stacks’s technology developers can start building immediately on the
 blockchain with the knowledge you have today. You won’t need to spend time or
 effort developing expertise in specialized languages or technologies.
 

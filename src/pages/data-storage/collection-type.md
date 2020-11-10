@@ -4,7 +4,7 @@ title: Create a Collection type
 
 ## Introduction
 
-Collections support data portability between applications. Blockstack supplies a `Contact` collection for use by Blockstack applications. Developers can create additional collection types, use them in their own applications, and publish them so other developers can make use of them too.
+Collections support data portability between applications. Stacks supplies a `Contact` collection for use by Stacks applications. Developers can create additional collection types, use them in their own applications, and publish them so other developers can make use of them too.
 
 In this section, you learn the coding guidelines for creating and publishing a new `Collection` type. The following topics are included:
 
@@ -41,7 +41,7 @@ This section demonstrates how to create a new collection type using Typescript. 
 
 4. Give your `Collection` a unique identifier.
 
-   The Blockstack Collection frameworks uses this identifier to place Collection data into a corresponding Gaia storage bucket.
+   The Stacks Collection frameworks uses this identifier to place Collection data into a corresponding Gaia storage bucket.
 
    ```js
     static get collectionName(): string {
@@ -49,7 +49,7 @@ This section demonstrates how to create a new collection type using Typescript. 
     }
    ```
 
-   !> While you must specify a unique identifier, the Blockstack platform does not currently enforce uniqueness. If your `Collection` type shares the same identifier as another type, it will lead to data corruption for the user. In the future, the Blockstack platform will enforce unique collection names.
+   !> While you must specify a unique identifier, the Stacks platform does not currently enforce uniqueness. If your `Collection` type shares the same identifier as another type, it will lead to data corruption for the user. In the future, the Stacks platform will enforce unique collection names.
 
 5. Define a static `schema` constant.
 

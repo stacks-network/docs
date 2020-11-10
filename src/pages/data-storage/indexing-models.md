@@ -12,7 +12,7 @@ in your distributed application using Radiks.
 
 ## Overview of Model class extension
 
-Blockstack provides a `Model` class you should extend to easily create, save, and fetch models.
+Stacks Radiks provides a `Model` class you should extend to easily create, save, and fetch models.
 To create a model class, import the `Model` class from `radiks` into your application.
 
 ```jsx
@@ -87,7 +87,7 @@ Storing unencrypted fields is useful if you want to be able to query the field w
 A good use-case for storing decrypted fields is to store a `foreignId` that references a different model,
 for a "belongs-to" type of relationship.
 
-**Never add the `decrypted` option to fields that contain sensitive user data.** Blockstack data is
+**Never add the `decrypted` option to fields that contain sensitive user data.** Stacks data is
 stored in a decentralized Gaia storage and anyone can read the user's data. That's why encrypting it
 is so important. If you want to filter sensitive data, then you should do it on the client-side,
 after decrypting it.

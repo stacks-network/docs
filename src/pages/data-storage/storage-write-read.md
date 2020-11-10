@@ -1,5 +1,5 @@
 ---
-description: 'Storing user data with Blockstack'
+description: 'Storing user data with Stacks'
 ---
 
 ## Introduction
@@ -14,7 +14,7 @@ interact with a hub, and how to use them.
 Gaia is built on a driver model that supports many storage services. So, with
 very few lines of code, you can interact with providers on Amazon S3, Dropbox,
 and so forth. The simple `getFile()` and `putFile()` interfaces are kept simple
-because Blockstack assumes and wants to encourage a community of
+because Stacks assumes and wants to encourage a community of
 open-source-data-management libraries.
 
 The performance and simplicity-oriented guarantee of the Gaia specification is
@@ -72,7 +72,7 @@ with that address. The message itself is a challenge text, returned via the
 
 Reads can be done by everybody. The URLs to a user's app data are in a canonical location in their profile.
 For example, here's how you would get data from the [Banter](https://banter.pub/) app, stored under the
-Blockstack ID `gavin.id`.
+Stacks ID `gavin.id`.
 
 ### Step 1: Get the bucket URL
 
