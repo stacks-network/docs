@@ -28,6 +28,8 @@ The reward amounts are:
 
 These "halvings" are synchronized with Bitcoin halvings.
 
+![coinbase rewards](/images/pages/coinbase-rewards.png)
+
 ## Transaction fees
 
 Miners receives Stacks fees for transactions mined in any block they produce.
@@ -41,6 +43,8 @@ Miner rewards take 100 blocks to mature.
 ## Mining with Proof-of-Transfer
 
 Miners commit Bitcoin to **two** addresses in every leader block commit. The amount committed to each address must be the same. The addresses are chosen from the current reward set of Stacking participants. The choice of addresses is done using a verifiable-random-function, and determining the correct two addresses for a given block requires monitoring the stacks chain.
+
+![mining with pox](/images/pages/mining-with-pox.png)
 
 100,000 Bitcoin blocks **after** mining begins, the PoX sunset phase begins. During this phase, an increasing proportion of the block commit must be burnt. To burn this sunset fee, the miner must send the sunset fee amount to the first output of their block commit transaction (i.e., the OPRETURN output).
 
