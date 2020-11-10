@@ -54,6 +54,7 @@ sections:
           - path: /network
           - path: /stacking
           - path: /local-development
+          - path: /technical-specs
         sections:
           - title: Tutorials
             pages:
