@@ -1,16 +1,16 @@
 ---
-title: Clarity Values Guide
+title: Clarity Values
 description: Learn how to deal with Clarity Values in JavaScript.
-tags:
-  - tutorial
 ---
 
 ## Introduction
+
 The Clarity language makes use of a strong static [type system](https://docs.blockstack.org/references/language-clarity#clarity-type-system). This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your `contract-call` transaction failing prior to execution.
 
 In order to build web applications that interact with Clarity contracts, you will need to learn how to construct and use `ClarityValues`. The [@stacks/transactions](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below.
 
 ## Clarity Types
+
 Values in Clarity can have the following types:
 
 - `(tuple (key-name-0 key-type-0) (key-name-1 key-type-1) ...)` - a typed tuple with named fields.
@@ -26,6 +26,7 @@ Values in Clarity can have the following types:
 - `uint` - unsigned 128-bit integer
 
 ## Constructing Clarity Values and accessing their data
+
 Clarity values can be constructed with functions provided by the **@stacks/transactions** library. These functions simply output javascript objects that contain a value and a numerical representation of the Clarity type information.
 
 ```typescript
@@ -53,6 +54,7 @@ export enum ClarityType {
 Here are examples of how to construct each type of Clarity value, and how to access its data if it has any:
 
 ### Booleans
+
 ```typescript
 const t = trueCV();
 const f = falseCV();
@@ -61,6 +63,7 @@ const f = falseCV();
 Boolean Clarity Values don't contain any underlying data. They are simply objects with `type` information.
 
 ### Optional Values
+
 ```typescript
 const nothing: NoneCV = noneCV();
 const something: SomeCV = someCV(trueCV());
@@ -84,6 +87,7 @@ if (maybeVal.type === ClarityType.OptionalSome) {
 ```
 
 ### Buffers
+
 ```typescript
 const buffer = Buffer.from('foo');
 const bufCV: BufferCV = bufferCV(buffer);
@@ -93,6 +97,7 @@ console.log(bufCV.buffer);
 ```
 
 ### Integers
+
 ```typescript
 const i: IntCV = intCV(-10);
 const u: UIntCV = uintCV(10);
@@ -107,6 +112,7 @@ console.log(u.value);
 Clarity supports both integers and unsigned integers.
 
 ### Strings
+
 ```typescript
 const ascii: StringAsciiCV = stringAsciiCV('hello world');
 const utf8: StringUtf8CV = stringUtf8CV('hello 🌾');
@@ -121,6 +127,7 @@ console.log(utf8.data);
 Clarity supports both ascii and utf8 strings.
 
 ### Principals
+
 ```typescript
 const address = 'SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B';
 const contractName = 'contract-name';
@@ -158,6 +165,7 @@ console.log(cpCV.address);
 Both kinds of Clarity principal values contain `type` information and an `address` object. Contract principals also contain a `contractName`.
 
 ### Response Values
+
 ```typescript
 const errCV = responseErrorCV(trueCV());
 const okCV = responseOkCV(falseCV());
@@ -172,12 +180,13 @@ console.log(okCV.value);
 Response Clarity Values will either have the type `ClarityType.ResponseOk` or `ClarityType.ResponseErr`. They both contain a Clarity Value. Often this value will be an integer error code if the response is an `Error`.
 
 ### Tuples
+
 ```typescript
 const tupCV = tupleCV({
-  'a': intCV(1),
-  'b': trueCV(),
-  'c': falseCV()
-})
+  a: intCV(1),
+  b: trueCV(),
+  c: falseCV(),
+});
 
 console.log(tupCV.data['b']);
 // { type: ClarityType.BoolTrue }
@@ -188,8 +197,9 @@ Tuples in Clarity are typed and contain named fields. The tuple above, for examp
 Clarity tuples are represented in JavaScript as objects and a tuple's data can be accessed by its `data` field, where the underlying JS object is stored.
 
 ### Lists
+
 ```typescript
-const l = listCV([trueCV(), falseCV()])
+const l = listCV([trueCV(), falseCV()]);
 
 console.log(l.list[0]);
 // { type: ClarityType.BoolTrue }
@@ -200,12 +210,14 @@ Lists, in Clarity, are homogeneous, meaning they can only contain elements of a 
 A Clarity lists underlying data can be accessed via its `list` field.
 
 ## Using Clarity Values
+
 Now that you know how to construct _and_ deconstruct Clarity values, you can use them to build `contract-call` transactions that call smart contract functions.
 
 This is covered [here](https://docs.blockstack.org/stacks-blockchain/transactions#construction).
 
 ## Utilizing Clarity Values from Transaction Responses
-`Read-only` Clarity functions can return Clarity values as a response. These `read-only` functions can be accessed easily in JavaScript via the [`callReadOnlyFunction()`](https://github.com/blockstack/stacks.js/tree/master/packages/transactions#calling-read-only-contract-function) function included in `@stacks/transactions`, which returns a `ClarityValue`. 
+
+`Read-only` Clarity functions can return Clarity values as a response. These `read-only` functions can be accessed easily in JavaScript via the [`callReadOnlyFunction()`](https://github.com/blockstack/stacks.js/tree/master/packages/transactions#calling-read-only-contract-function) function included in `@stacks/transactions`, which returns a `ClarityValue`.
 
 As mentioned above, `ClarityValues` are simply javascript objects containing a value and its associated Clarity type information. These object types are defined [here](https://github.com/blockstack/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types).
 
@@ -244,6 +256,7 @@ if (result.type === ClarityType.ResponseOk) {
 ```
 
 ### Deserializing Clarity Values from Hex
+
 If you receive a response from a transaction in the form of a Hex string, you can deserialize it into a Clarity value like so:
 
 ```javascript
@@ -253,6 +266,7 @@ let cv = hexToCV('hex_string');
 ```
 
 ## Debugging Clarity Values
+
 Sometimes you might receive a Clarity value that you were not expecting. Logging the value to your console won't always prove to be useful, unless you have memorized the Clarity value type enum values.
 
 In order to figure out what kind of value you are dealing with, you can use the `cvToString()` function to convert the Clarity value to a more easily readable string.
@@ -260,19 +274,19 @@ In order to figure out what kind of value you are dealing with, you can use the 
 For example, calling `cvToString()` on a large `tuple` might yield something like:
 
 ```
-(tuple 
-  (a -1) 
-  (b u1) 
-  (c 0x74657374) 
-  (d true) 
-  (e (some true)) 
-  (f none) 
-  (g SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B) 
-  (h SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B.test) 
-  (i (ok true)) 
-  (j (err false)) 
-  (k (list true false)) 
-  (l (tuple (a true) (b false))) 
-  (m "hello world") 
+(tuple
+  (a -1)
+  (b u1)
+  (c 0x74657374)
+  (d true)
+  (e (some true))
+  (f none)
+  (g SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B)
+  (h SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B.test)
+  (i (ok true))
+  (j (err false))
+  (k (list true false))
+  (l (tuple (a true) (b false)))
+  (m "hello world")
   (n u"hello \u{1234}"))`
 ```
