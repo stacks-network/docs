@@ -308,6 +308,7 @@ const txOptions = {
       hashbytes,
       version,
     }),
+    uintCV(coreInfo.burn_block_height),
     uintCV(numberOfCycles),
   ],
   senderKey: privateKey.data.toString('hex'),
