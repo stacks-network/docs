@@ -66,4 +66,4 @@ then learn how to construct [a counter](/smart-contracts/counter-tutorial), and 
 [test your smart contracts](/smart-contracts/testing-contracts) using Mocha.
 
 Once you've got the hang of the general workflow, environment, and language syntax, you should be ready to start writing
-contracts, referring to the [Clarity language reference](/references/language-clarity) as you go.
+contracts, referring to the [Clarity language reference](/references/language-overview) as you go.
