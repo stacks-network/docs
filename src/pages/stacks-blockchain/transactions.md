@@ -391,7 +391,7 @@ The API will respond with a `HTTP 200 - OK` if the transactions was successfully
 There is no explicit time constraint between the construction of a valid signed transaction and when it can be broadcasted. There are, however, some constraint to be aware of. The following reasons can deem a transaction invalid after some period:
 
 - Token transfer: Nonce changed in-between construction and broadcast
-- Contract call or deploy: Block height is evaluated (with [`at-block`](/references/clarity-language#at-block)) and changed in-between construction and broadcast
+- Contract call or deploy: Block height is evaluated (with [`at-block`](/references/language-functions#at-block)) and changed in-between construction and broadcast
 
 ## Querying
 

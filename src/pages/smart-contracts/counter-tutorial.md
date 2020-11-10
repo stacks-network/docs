@@ -165,7 +165,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
    First, the [`begin`](/references/language-functions#begin) statement evaluates multiple expressions and returns the value of the last one. In this case, it is used to set a new value and return the new value.
 
-   Next, a [`var-set`](/references/language-functions#var-set) is used to set a new value for the `counter` variable. The new value is constructed using the [`+`](/references/language-functions#-add) (add) statement. This statement takes a number of integers and returns the result. Along with add, Clarity provides statements to subtract, multiply, and divide integers. Find more details in the [Clarity language reference](/references/language-clarity).
+   Next, a [`var-set`](/references/language-functions#var-set) is used to set a new value for the `counter` variable. The new value is constructed using the [`+`](/references/language-functions#-add) (add) statement. This statement takes a number of integers and returns the result. Along with add, Clarity provides statements to subtract, multiply, and divide integers. Find more details in the [Clarity language reference](/references/language-functions).
 
 5. Next, implement a new public function `decrement` to subtract `1` from the `counter` variable. You should have all knowledge needed to succeed at this!
 
