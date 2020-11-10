@@ -18,6 +18,11 @@ Make sure you've followed the [Running testnet node](/stacks-blockchain/running-
 [@page-reference | inline]
 | /stacks-blockchain/running-testnet-node
 
+If you want to learn more about the technical details of minig, please review the mining guide:
+
+[@page-reference | inline]
+| /stacks-blockchain/mining
+
 ## Running a miner
 
 First, we need to generate a keychain. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
@@ -115,8 +120,14 @@ cd ../..
 ```
 
 For a full reference of subcommands and configuration options used by `stacks-node`, please see this page.
+
 [@page-reference | inline]
 | /references/stacks-node-configuration
+
+To read more about the technical details of mining on the Stacks 2.0 network, have a look at the minig guide:
+
+[@page-reference | inline]
+| /stacks-blockchain/mining
 
 ### Enable debug logging
 

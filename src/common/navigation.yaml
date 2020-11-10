@@ -50,6 +50,7 @@ sections:
           - path: /overview
           - path: /testnet
           - path: /proof-of-transfer
+          - path: /mining
           - path: /accounts
           - path: /transactions
           - path: /network
