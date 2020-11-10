@@ -43,7 +43,7 @@ Smart contracts on the Stacks 2.0 blockchain are written in a new programming la
 - **Security**: The Clarity language allows users to supply their own conditions for transactions that ensure that a contract may never unexpectedly transfer a token owned by a user.
 - **No compiler**: Contracts written in Clarity are broadcasted on the blockchain exactly as they are written by developers. This ensures that the code developers wrote, analyzed, and tested, is exactly what gets executed.
 
--> The [Clarity open-source project](https://clarity-lang.org/) is supported by Blockstack and Algorand.
+-> The [Clarity open-source project](https://clarity-lang.org/) is supported by Stacks and Algorand.
 
 [@page-reference | inline]
 | /smart-contracts/overview

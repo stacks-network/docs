@@ -1,15 +1,15 @@
 ---
-title: Guide to Blockstack Storage
+title: Guide to Stacks Storage
 ---
 
 ## Introduction
 
-The Blockstack Platform stores application data in the Gaia Storage System. Transactional metadata is stored on the
-Blockstack blockchain and user application data is stored in Gaia storage. Storing data off of the blockchain ensures
-that Blockstack applications can provide users with high performance and high availability for data reads and writes
+The Stacks Platform stores application data in the Gaia Storage System. Transactional metadata is stored on the
+Stacks blockchain and user application data is stored in Gaia storage. Storing data off of the blockchain ensures
+that Stacks applications can provide users with high performance and high availability for data reads and writes
 without introducing central trust parties.
 
--> Blockstack Gaia Storage APIs and on-disk format will change in upcoming pre-releases breaking backward compatibility. File encryption is currently opt-in on a file by file basis. Certain storage features such as collections are not implemented in the current version. These features will be rolled out in future updates.
+-> Stacks Gaia Storage APIs and on-disk format will change in upcoming pre-releases breaking backward compatibility. File encryption is currently opt-in on a file by file basis. Certain storage features such as collections are not implemented in the current version. These features will be rolled out in future updates.
 
 ## How data is stored
 
@@ -91,7 +91,7 @@ the [`publish_data` scope](https://blockstack.github.io/stacks.js/enums/authscop
 
 ```jsx
 const options = {
-  user: 'ryan.id', // the Blockstack ID of the user for which to lookup the file
+  user: 'ryan.id', // the Stacks ID of the user for which to lookup the file
   app: 'https://BlockstackApp.com', // origin of the app this file is stored for
   decrypt: false,
 };

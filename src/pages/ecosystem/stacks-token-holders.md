@@ -1,6 +1,6 @@
 ---
 title: Stacks token holders
-description: Blockstack token holder documentation
+description: Stacks token holder documentation
 ---
 
 ## Introduction
@@ -38,7 +38,7 @@ potentially possible, are as follows:
 ![](/images/unlocking.png)
 
 Your specific unlock date depends on when you purchased or were granted tokens.
-You can use the Blockstack Explorer to discover how many tokens you have
+You can use the Stacks Explorer to discover how many tokens you have
 registered and when they will unlock.
 
 ## Have more questions?

@@ -1,6 +1,6 @@
 ---
-title: Blockstack API
-description: Step-by-step instructions for deploying a Blockstack API node on Debian or Ubuntu are below.
+title: Stacks API
+description: Step-by-step instructions for deploying a Stacks API node on Debian or Ubuntu are below.
 duration: 30 minutes
 tags:
   - tutorial
@@ -82,7 +82,7 @@ $ ./certbot-auto --nginx -d <your_domain>
 
 And copy the cert files to the path given in the nginx sites file earlier.
 
-- **Step 5:** Start nginx and the Blockstack API uwsgi server:
+- **Step 5:** Start nginx and the Stacks API uwsgi server:
 
 ```
 sudo systemctl restart blockstack_api

@@ -178,7 +178,7 @@ configure({
 
 #### Step 2: Add authentication to your application
 
-After your user logs in with Blockstack, you'll have some code to save the user's data in your applications `localStorage`. You'll want to use the same `UserSession` you configured with Radiks, which can be fetched from the `getConfig` method.
+After your user logs in with Stacks Auth, you'll have some code to save the user's data in your applications `localStorage`. You'll want to use the same `UserSession` you configured with Radiks, which can be fetched from the `getConfig` method.
 
 ```jsx
 import { User, getConfig } from 'radiks';
@@ -201,7 +201,7 @@ Calling `User.createWithCurrentUser` does the following:
 
 ### Build and run your application
 
-After you have added Radiks to your application, build and run the application. Test the application by logging in with your Blockstack ID. Create some data using the application. If you inspect the MongoDB database, you should see the encrypted data stored in the database.
+After you have added Radiks to your application, build and run the application. Test the application by logging in with your Stacks ID. Create some data using the application. If you inspect the MongoDB database, you should see the encrypted data stored in the database.
 
 You can specify the `mongoDBUrl` or the `maxLimit` option when initiating the Radiks server in your application.
 

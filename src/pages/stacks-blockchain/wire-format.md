@@ -1,16 +1,16 @@
 ---
 title: Bitcoin wire format
-description: Learn about the format of transactions used for name operations in the Blockstack network.
+description: Learn about the format of transactions used for name operations in the Stacks network.
 ---
 
 ## Introduction
 
-This page is for organizations who want to be able to create and send name operation transactions to the blockchain(s) Blockstack supports.
+This page is for organizations who want to be able to create and send name operation transactions to the blockchain(s) Stacks supports.
 It describes the transaction formats for the Bitcoin blockchain.
 
 ## Transaction format
 
-Each Bitcoin transaction for Blockstack contains signatures from two sets of keys: the name owner, and the payer. The owner `scriptSig` and `scriptPubKey` fields are generated from the key(s) that own the given name. The payer `scriptSig` and `scriptPubKey` fields are used to _subsidize_ the operation. The owner keys do not pay for any operations; the owner keys only control the minimum amount of BTC required to make the transaction standard. The payer keys only pay for the transaction's fees, and (when required) they pay the name fee.
+Each Bitcoin transaction for Stacks contains signatures from two sets of keys: the name owner, and the payer. The owner `scriptSig` and `scriptPubKey` fields are generated from the key(s) that own the given name. The payer `scriptSig` and `scriptPubKey` fields are used to _subsidize_ the operation. The owner keys do not pay for any operations; the owner keys only control the minimum amount of BTC required to make the transaction standard. The payer keys only pay for the transaction's fees, and (when required) they pay the name fee.
 
 This construction is meant to allow the payer to be wholly separate from the owner. The principal that owns the name can fund their own transactions, or they can create a signed transaction that carries out the desired operation and request some other principal (e.g. a parent organization) to actually pay for and broadcast the transaction.
 
@@ -32,7 +32,7 @@ Different operations require different outputs.
 
 ## Payload Format
 
-Each Blockstack transaction in Bitcoin describes the name operation within an `OP_RETURN` output. It encodes name ownership, name fees, and payments as `scriptPubKey` outputs. The specific operations are described below.
+Each Stacks transaction in Bitcoin describes the name operation within an `OP_RETURN` output. It encodes name ownership, name fees, and payments as `scriptPubKey` outputs. The specific operations are described below.
 
 Each `OP_RETURN` payload _always_ starts with the two-byte string `id` (called the "magic" bytes in this document), followed by a one-byte `op` that describes the operation.
 
@@ -296,7 +296,7 @@ Outputs:
 
 Notes:
 
-- The payer key should be an owner key for an existing name, since Blockstack users can subscribe to announcements from specific name-owners.
+- The payer key should be an owner key for an existing name, since Stacks users can subscribe to announcements from specific name-owners.
 
 ### NAMESPACE_PREORDER
 

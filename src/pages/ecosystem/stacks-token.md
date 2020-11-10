@@ -1,6 +1,6 @@
 ---
 title: Stacks token
-description: Learn about the native token of Blockstack
+description: Learn about the native token of Stacks
 icon: StacksIcon
 ---
 
@@ -8,7 +8,7 @@ icon: StacksIcon
 
 Stacks is the name of a token developed by Blockstack Token LLC in 2017 and
 activated in the third quarter of 2018. This page discusses a brief history of
-the Stacks token and deployment on the Blockstack network as well as the current
+the Stacks token and deployment on the Stacks network as well as the current
 role of the Stacks token.
 
 If you are a developer interested in the specific technical changes related to
@@ -16,7 +16,7 @@ the 2018 launch, see the [announcement in the Blockstack forum](https://forum.bl
 
 ## A brief history of the Stacks token
 
-In 2017 Blockstack did a token sale. Participants became token holders when they
+In 2017 Blockstack PBC did a token sale. Participants became token holders when they
 received allocations of Stacks tokens in the genesis block. A genesis block is
 the first block of a blockchain.
 
@@ -33,7 +33,7 @@ draft state, token holders were in a lock down period.
 
 The initial block in the Stacks blockchain V1 allocates 1.32 billion
 tokens. The launch is the culmination of two year’s hard work across the greater
-Blockstack community. With the launch, Stacks tokens unlock for accredited token
+Stacks community. With the launch, Stacks tokens unlock for accredited token
 holders under a predetermined unlocking schedule. The events on the unlocking
 schedule are the same for each investor, **the dates of these events** depend on the
 holder's purchase date.
@@ -44,7 +44,7 @@ The genesis block launch makes possible the following interactions:
 
 - Token holders can purchase names and namespaces with the Stacks token. Previously, names and namespaces required the purchaser to hold Bitcoin. Initially, this process relies on the Blockstack command-line interface (CLI).
 
-- Application developers can earn Stacks by building an application on the Blockstack ecosystem.
+- Application developers can earn Stacks by building an application on the Stacks ecosystem.
 
 - Any Stacks tokens held at the time of launch or after remain usable under the Stacks Blockchain platform.
 

@@ -8,7 +8,7 @@ import { MetaLabels } from '@components/meta-head';
 const defaultFrontmatter = {
   headings: [],
   description:
-    'Blockstack is an open-source and developer-friendly network for building decentralized apps and smart contracts.',
+    'Stacks is an open-source and developer-friendly network for building decentralized apps and smart contracts.',
 };
 
 export const MDWrapper: React.FC<any> = React.memo(
@@ -33,7 +33,7 @@ export const MDWrapper: React.FC<any> = React.memo(
     return (
       <>
         <Head>
-          <title>{getTitle(frontmatter)} | Blockstack</title>
+          <title>{getTitle(frontmatter)} | Stacks</title>
           <meta name="description" content={description} />
         </Head>
         <MetaLabels labels={labels} />

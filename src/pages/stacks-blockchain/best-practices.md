@@ -53,10 +53,10 @@ description: Helpful tips for getting a core node up and running.
 - Check `dmesg` for TCP SYN flooding. The solution here is to kill and restart the node.
 - To mitigate, install a rate-limiting proxy HTTP server in front of the node. We have a sample config for `nginx` [here](https://github.com/blockstack/atlas/blob/master/public_fleet/node/default).
 
-### No other Blockstack nodes contact my node
+### No other Stacks nodes contact my node
 
 - Verify that your IP address is publicly-routable, and that peers can communicate on TCP:6264
 
 ### People are attacking my Bitcoin node
 
-- Stick an `nginx` reverse proxy in front of your `bitcoind` node, and use our [nginx](https://github.com/blockstack/atlas/tree/master/public_fleet/bitcoind) scripts to limit API access to only the JSON-RPC methods Blockstack actually needs. Better yet, do what we do---build a statically-linked `bitcoind` binary from source that simply omits all of the RPC methods except the ones listed in the linked config file.
+- Stick an `nginx` reverse proxy in front of your `bitcoind` node, and use our [nginx](https://github.com/blockstack/atlas/tree/master/public_fleet/bitcoind) scripts to limit API access to only the JSON-RPC methods Stacks actually needs. Better yet, do what we do---build a statically-linked `bitcoind` binary from source that simply omits all of the RPC methods except the ones listed in the linked config file.

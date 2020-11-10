@@ -1,6 +1,6 @@
 ---
 title: Signing transactions
-description: Learn how to sign transactions using Blockstack Connect
+description: Learn how to sign transactions using Stacks Connect.
 experience: advanced
 duration: 30 minutes
 tags:
@@ -12,7 +12,7 @@ images:
 
 ## Introduction
 
-With Blockstack Connect, you can interact with the Stacks 2.0 blockchain, empowering your users to sign transactions and interact with smart contracts.
+With Stacks Connect, you can interact with the Stacks 2.0 blockchain, empowering your users to sign transactions and interact with smart contracts.
 
 This functionality currently operates on [the Stacks 2.0 Testnet](http://testnet.blockstack.org/). The user interface has been designed with developers in mind and prominently displays debug information. STX testnet tokens for paying transaction fees can be obtained for free with [the testnet faucet](https://testnet.blockstack.org/faucet). We will update this functionality and experience for mainnet upon its release.
 
