@@ -20,9 +20,13 @@ description: Summary of technical specifications of Stacks 2.0
 
 ## Stacking
 
-- Reward cycle length: 2000 BTC blocks (~2 weeks)
-- Two reward addresses / block, for a total of 4000 addresses every reward cycle
+- Stacking works in 2 phases
+  1. Prepare phase: In this phase an "anchor block" is chosen. The qualifying set of addresses ("reward set") is determined based on the snapshot of the chain at the anchor block. Length of prepare phase is 250 blocks (overlaps with reward cycle of the previous phase).
+  2. Reward phase: In this phase miner BTC commitments are distributed amongst the reward set. Reward cycle length is 2000 BTC blocks (~2 weeks).
+- Two reward addresses / block, for a total of 4000 addresses every reward cycle. The addresses are chosen using a VRF (verifiable random function), so each node can deterministically arrive at the same reward addresses for a given block.
 - Stacking threshold: 0.025% of the participating amount of STX when participation is between 25% and 100% and when participation is below 25%, the threshold level is always 0.00625 of the liquid supply of STX.
+- Delegation: An STX address can designate another address to participate in Stacking on its behalf.
+- Pooling: STX holders that individually do not meet the Stacking threshold can pool together their holdings to participate in Stacking. To do this, STX holders must set the (optional) reward address to the "delegate address". For more details, see [this reference](https://docs.blockstack.org/references/stacking-contract#delegate-stx).
 
 ## Accounts and Addresses
 
