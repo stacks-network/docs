@@ -7,6 +7,7 @@ description: Summary of technical specifications of Stacks 2.0
 
 - Proof of Transfer (PoX) as described in [SIP-007](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-007-stacking-consensus.md)
 - Network will transition to Proof of Burn (PoB) as described in [SIP-001](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md) after 10 years. More details [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md).
+- For more details, see [Proof of Transfer](/stacks-blockchain/proof-of-transfer).
 
 ## Proof of Transfer Mining
 
@@ -25,8 +26,9 @@ description: Summary of technical specifications of Stacks 2.0
   2. Reward phase: In this phase miner BTC commitments are distributed amongst the reward set. Reward cycle length is 2000 BTC blocks (~2 weeks).
 - Two reward addresses / block, for a total of 4000 addresses every reward cycle. The addresses are chosen using a VRF (verifiable random function), so each node can deterministically arrive at the same reward addresses for a given block.
 - Stacking threshold: 0.025% of the participating amount of STX when participation is between 25% and 100% and when participation is below 25%, the threshold level is always 0.00625 of the liquid supply of STX.
-- Delegation: An STX address can designate another address to participate in Stacking on its behalf.
+- Delegation: An STX address can designate another address to participate in Stacking on its behalf. [Relevant section in SIP-007](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-007-stacking-consensus.md#stacker-delegation).
 - Pooling: STX holders that individually do not meet the Stacking threshold can pool together their holdings to participate in Stacking. To do this, STX holders must set the (optional) reward address to the "delegate address". For more details, see [this reference](https://docs.blockstack.org/references/stacking-contract#delegate-stx).
+- Further reading: [Stacking](/stacks-blockchain/stacking)
 
 ## Accounts and Addresses
 
@@ -37,6 +39,7 @@ description: Summary of technical specifications of Stacks 2.0
 - Nonce counts number of times an account has authorized a transaction. Starts at 0, valid authorization must include the _next_ nonce value.
 - Assets are a map of all asset types -- STX, any on-chain assets specified by a Clarity contract (e.g. NFTs) -- to quantities owned by that account.
 - Accounts need not be explicit "created" or registered; all accounts implicitly exist and are instantiated on first-use.
+- Further reading: [Accounts](/stacks-blockchain/accounts)
 
 ## Transactions
 
@@ -49,4 +52,5 @@ description: Summary of technical specifications of Stacks 2.0
 - Two types of authorizations: standard authorization is where originating account is the same as paying account. _Sponsored_ authorization is where originating account and paying account are distinct. For instance, developers or service providers could pay for users to call their smart-contracts.
 - For sponsored authorization, first a user signs with the originating account and then a sponsor signs with the paying account.
 - Transaction encoding is described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-encoding).
-- Transaction signing and verification are described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying).
+- Transaction signing and verification are described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying) and [here](/stacks-blockchain/transactions.md#signature-and-verification)
+- Further reading: [Transactions](/stacks-blockchain/transactions)
