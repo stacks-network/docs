@@ -61,7 +61,8 @@ Note some of the key Clarity language rules and limitations.
 
 ## Learning Clarity
 
-The tutorials are ordered from "beginner" to "advanced." Start with the [Hello World tutorial](/smart-contracts/hello-world-tutorial),
+You can experiment Clarity directly from your browser, without any setup thanks to our [Interactive tour](/smart-contracts/interactive-tour).
+Once familiar with Clarity's syntax, you can learn see how Smart contracts can be written and deployed, using the [Hello World tutorial](/smart-contracts/hello-world-tutorial),
 then learn how to construct [a counter](/smart-contracts/counter-tutorial), and finally, learn how to
 [test your smart contracts](/smart-contracts/testing-contracts) using Mocha.
 
