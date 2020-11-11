@@ -25,13 +25,13 @@ This tutorial highlights the following functionality:
 - Add stacking action
 - Display stacking status
 
--> Alternatively to integration using JS libraries, you can [use the CLI](https://gist.github.com/kantai/c261ca04114231f0f6a7ce34f0d2499b).
+-> Alternatively to integration using JS libraries, you can use the [Rust CLI](https://gist.github.com/kantai/c261ca04114231f0f6a7ce34f0d2499b) or [JS CLI](https://github.com/blockstack/stacks.js/tree/master/packages/cli).
 
 ## Requirements
 
 First, you'll need to understand the [Stacking mechanism](/understand-stacks/stacking).
 
-You'll also need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:
+You'll also need [NodeJS](https://nodejs.org/en/download/) `12.10.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:
 
 ```bash
 node --version
@@ -41,174 +41,116 @@ node --version
 
 In this tutorial, we'll implement the Stacking flow laid out in the [Stacking guide](/understand-stacks/stacking#stacking-flow).
 
--> Check out the sample source code for this tutorial in this GitHub repository: [stacking-integration-sample](https://github.com/agraebe/stacking-integration-sample)
-
 ## Step 1: Integrate libraries
 
-Install the stacks transactions library and an API client for the [Stacks 2.0 Blockchain API](/references/stacks-blockchain):
+Install the stacking, network, transactions libraries and bn.js for large number handling:
 
 ```shell
-npm install --save @stacks/transactions @stacks/network @stacks/blockchain-api-client c32check cross-fetch bn.js
+npm install --save @stacks/stacking @stacks/network @stacks/transactions bn.js
 ```
 
--> The API client is generated from the [OpenAPI specification](https://github.com/blockstack/stacks-blockchain-api/blob/master/docs/openapi.yaml) ([openapi-generator](https://github.com/OpenAPITools/openapi-generator)). Many other languages and frameworks are supported by the generator.
+-> See additional [Stacking library reference](https://github.com/blockstack/stacks.js/tree/master/packages/stacking)
 
-## Step 2: Generating an account
+## Step 2: Generating an account and initialization
 
 To get started, let's create a new, random Stacks 2.0 account:
 
 ```js
-const fetch = require('cross-fetch');
 const BN = require('bn.js');
 const {
   makeRandomPrivKey,
   privateKeyToString,
   getAddressFromPrivateKey,
   TransactionVersion,
-  uintCV,
-  tupleCV,
-  makeContractCall,
-  bufferCV,
-  serializeCV,
-  deserializeCV,
-  cvToString,
-  connectWebSocketClient,
-  broadcastTransaction,
-  standardPrincipalCV,
 } = require('@stacks/transactions');
+
 const { StacksTestnet } = require('@stacks/network');
-const {
-  InfoApi,
-  AccountsApi,
-  SmartContractsApi,
-  Configuration,
-  TransactionsApi,
-} = require('@stacks/blockchain-api-client');
-const c32 = require('c32check');
 
-const apiConfig = new Configuration({
-  fetchApi: fetch,
-  basePath: 'https://stacks-node-api.blockstack.org',
-});
-
-// generate rnadom key
-const privateKey = makeRandomPrivKey();
+// generate random key or use an existing key
+const privateKey = privateKeyToString(makeRandomPrivKey());
 
 // get Stacks address
-const stxAddress = getAddressFromPrivateKey(
-  privateKeyToString(privateKey),
-  TransactionVersion.Testnet
-);
+const stxAddress = getAddressFromPrivateKey(privateKey, TransactionVersion.Testnet);
+
+// instantiate the Stacker class for testnet
+const stacker = new Stacker(stxAddress, new StacksTestnet());
 ```
 
 -> Review the [accounts guide](/understand-stacks/accounts) for more details
 
 ## Step 3: Display stacking info
 
-In order to inform users about the upcoming reward cycle, we need to obtain Stacking information:
-
-```js
-const info = new InfoApi(apiConfig);
-
-const poxInfo = await info.getPoxInfo();
-const coreInfo = await info.getCoreApiInfo();
-const blocktimeInfo = await info.getNetworkBlockTimes();
-
-console.log({ poxInfo, coreInfo, blocktimeInfo });
-```
-
--> Check out the API references for the 3 endpoints used here: [GET /v2/info](https://blockstack.github.io/stacks-blockchain-api/#operation/get_core_api_info), [GET v2/pox](https://blockstack.github.io/stacks-blockchain-api/#operation/get_pox_info), and [GET /extended/v1/info/network_block_times](https://blockstack.github.io/stacks-blockchain-api/#operation/get_network_block_times)
-
-The object, including PoX, core, and block time information, looks like this:
-
-```js
-{
-  poxInfo: {
-    contract_id: 'ST000000000000000000002AMW42H.pox',
-    first_burnchain_block_height: 0,
-    min_amount_ustx: 2000000000000,
-    registration_window_length: undefined,
-    rejection_fraction: 25,
-    reward_cycle_id: 4,
-    reward_cycle_length: 120
-  },
-  coreInfo: {
-    limit: undefined,
-    peer_version: 385875968,
-    burn_consensus: undefined,
-    burn_block_height: 605,
-    stable_burn_consensus: undefined,
-    stable_burn_block_height: 604,
-    server_version: 'blockstack-core 0.0.1 => 23.0.0.0 (master:5b816c2+, release build, linux [x86_64])',
-    network_id: 2147483648,
-    parent_network_id: 3669344250,
-    stacks_tip_height: 104,
-    stacks_tip: 'b05c6c5221b307ad41484ee527fa127ad1a09a0818ec64775309a3d4e4d40143',
-    stacks_tip_burn_block: undefined,
-    exit_at_block_height: null
-  },
-  blocktimeInfo: {
-    mainnet: { target_block_time: 600 },
-    testnet: { target_block_time: 120 }
-  }
-}
-```
-
--> Stacking execution will differ between mainnet and testnet in terms of cycle times and participation thresholds
+In order to inform users about the upcoming reward cycle, we can use the following methods to obtain information for Stacking:
 
 With the obtained PoX info, you can present whether Stacking has been executed in the next cycle, when the next cycle begins, the duration of a cycle, and the minimum microstacks required to participate:
 
 ```js
 // will Stacking be executed in the next cycle?
-const stackingExecution = poxInfo.rejection_votes_left_required > 0;
+const stackingEnabledNextCycle = await stacker.stackingEnabledNextCycle();
+// true
 
 // how long (in seconds) is a Stacking cycle?
-const cycleDuration = poxInfo.reward_cycle_length * blocktimeInfo.testnet.target_block_time;
+const cycleDuration = await stacker.getCycleDuration();
+// 120
 
 // how much time is left (in seconds) until the next cycle begins?
-const secondsToNextCycle =
-  (poxInfo.reward_cycle_length -
-    ((coreInfo.burn_block_height - poxInfo.first_burnchain_block_height - 1) %
-      poxInfo.reward_cycle_length)) *
-  blocktimeInfo.testnet.target_block_time;
-
-// the actual datetime of the next cycle start
-const nextCycleStartingAt = new Date();
-nextCycleStartingAt.setSeconds(nextCycleStartingAt.getSeconds() + secondsToNextCycle);
-
-console.log({
-  stackingExecution,
-  cycleDuration,
-  nextCycleStartingAt,
-  // minimum microstacks required to participate
-  minimumUSTX: poxInfo.min_amount_ustx,
-});
+const secondsUntilNextCycle = await stacker.secondsUntilNextCycle();
+// 600000
 ```
 
-Users need to have sufficient Stacks (STX) tokens to participate in Stacking. With the Stacking info, this can be verified easily:
+-> Note: cycle duration and participation thresholds will differ between mainnet and testnet
+
+You can also retrieve the raw PoX and core information using the methods below if required:
 
 ```js
-const accounts = new AccountsApi(apiConfig);
+const poxInfo = await stacker.getPoxInfo();
 
-const accountBalance = await accounts.getAccountBalance({
-  principal: stxAddress,
-});
+// poxInfo:
+// {
+//   contract_id: 'ST000000000000000000002AMW42H.pox',
+//   first_burnchain_block_height: 0,
+//   min_amount_ustx: 83335083333333,
+//   prepare_cycle_length: 30,
+//   rejection_fraction: 3333333333333333,
+//   reward_cycle_id: 17,
+//   reward_cycle_length: 120,
+//   rejection_votes_left_required: 0,
+//   total_liquid_supply_ustx: 40000840000000000
+// }
 
-const accountSTXBalance = new BN(accountBalance.stx.balance, 10);
-const minAmountSTX = new BN(poxInfo.min_amount_ustx, 10);
+const coreInfo = await stacker.getCoreInfo();
 
-// enough balance for participation?
-const canParticipate = accountSTXBalance.cmp(minAmountSTX) >= 0;
+// coreInfo:
+// {
+//   peer_version: 385875968,
+//   pox_consensus: 'bb88a6e6e65fa7c974d3f6e91a941d05cc3dff8e',
+//   burn_block_height: 2133,
+//   stable_pox_consensus: '2284451c3e623237def1f8caed1c11fa46b6f0cc',
+//   stable_burn_block_height: 2132,
+//   server_version: 'blockstack-core 0.0.1 => 23.0.0.0 (HEAD:a4deb7a+, release build, linux [x86_64])',
+//   network_id: 2147483648,
+//   parent_network_id: 3669344250,
+//   stacks_tip_height: 1797,
+//   stacks_tip: '016df36c6a154cb6114c469a28cc0ce8b415a7af0527f13f15e66e27aa480f94',
+//   stacks_tip_consensus_hash: 'bb88a6e6e65fa7c974d3f6e91a941d05cc3dff8e',
+//   unanchored_tip: '6b93d2c62fc07cf44302d4928211944d2debf476e5c71fb725fb298a037323cc',
+//   exit_at_block_height: null
+// }
 
-res.json({
-  stxAddress,
-  btcAddress: c32.c32ToB58(stxAddress),
-  accountSTXBalance: accountSTXBalance.toNumber(),
-  canParticipate,
-});
+const targetBlocktime = await stacker.getTargetBlockTime();
+
+// targetBlocktime:
+// 120
 ```
 
-For testing purposes, you can use a faucet to obtain STX tokens:
+Users need to have sufficient Stacks (STX) tokens to participate in Stacking. This can be verified easily:
+
+```js
+const hasMinStxAmount = await stacker.hasMinimumRequiredStxAmount();
+// true
+```
+
+For testing purposes, you can use the faucet to obtain testnet STX tokens:
 
 ```shell
 curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/stx?address=<stxAddress>&stacking=true"
@@ -223,108 +165,81 @@ Users can select how many cycles they would like to participate in. To help with
 let numberOfCycles = 3;
 
 // the projected datetime for the unlocking of tokens
-const unlockingAt = new Date(nextCycleStartingAt);
-unlockingAt.setSeconds(
-  unlockingAt.getSeconds() +
-    poxInfo.reward_cycle_length * numberOfCycles * blocktimeInfo.testnet.target_block_time
-);
+const unlockingAt = new Date(secondsUntilNextCycle);
+unlockingAt.setSeconds(unlockingAt.getSeconds() + cycleDuration * numberOfCycles);
 ```
 
 ## Step 4: Verify stacking eligibility
 
-At this point, your app shows Stacking details. If Stacking is executed and the user has enough funds, the user should be asked to provide input for the amount of microstacks to lockup and a bitcoin address to be used to pay out rewards.
-
--> The sample code used assumes usage of the bitcoin address associated with the Stacks account. You can replace this with an address provided by the users or read from your database. Read more about the [bitcoin address format](/understand-stacks/stacking#bitcoin-address).
+At this point, your app shows Stacking details. If Stacking will be executed and the user has enough funds, the user should be asked to provide input for the amount of microstacks to lockup and a Bitcoin address to receive the pay out rewards.
 
 With this input, and the data from previous steps, we can determine the eligibility for the next reward cycle:
 
 ```js
-// microstacks tokens to lockup, must be >= poxInfo.min_amount_ustx and <=accountSTXBalance
-let microstacksoLockup = poxInfo.min_amount_ustx;
+// user supplied parameters
+let btcAddress = '1Xik14zRm29UsyS6DjhYg4iZeZqsDa8D3';
+let cycles = 3;
 
-// derive bitcoin address from Stacks account and convert into required format
-const hashbytes = bufferCV(Buffer.from(c32.c32addressDecode(stxAddress)[1], 'hex'));
-const version = bufferCV(Buffer.from('01', 'hex'));
+const stackingEligibility = await stacker.canLockStx({ btcAddress, cycles });
 
-const smartContracts = new SmartContractsApi(apiConfig);
-
-const [contractAddress, contractName] = poxInfo.contract_id.split('.');
-
-// read-only contract call
-const isEligible = await smartContracts.callReadOnlyFunction({
-  contractAddress,
-  contractName,
-  functionName: 'can-stack-stx',
-  readOnlyFunctionArgs: {
-    sender: stxAddress,
-    arguments: [
-      `0x${serializeCV(
-        tupleCV({
-          hashbytes,
-          version,
-        })
-      ).toString('hex')}`,
-      `0x${serializeCV(uintCV(microstacksoLockup)).toString('hex')}`,
-      // explicilty check eligibility for next cycle
-      `0x${serializeCV(uintCV(poxInfo.reward_cycle_id)).toString('hex')}`,
-      `0x${serializeCV(uintCV(numberOfCycles)).toString('hex')}`,
-    ],
-  },
-});
-
-const response = cvToString(deserializeCV(Buffer.from(isEligible.result.slice(2), 'hex')));
-
-if (response.startsWith(`(err `)) {
-  // user cannot participate in stacking
-  // error codes: https://github.com/blockstack/stacks-blockchain/blob/master/src/chainstate/stacks/boot/pox.clar#L2
-  console.log({ isEligible: false, errorCode: response }));
-  return;
-}
-// success
-console.log({ isEligible: true });
+// stackingEligibility:
+// {
+//   eligible: false,
+//   reason: 'ERR_STACKING_INVALID_LOCK_PERIOD',
+// }
 ```
+
+-> Note that the eligibility check assumes the user will be stacking the maximum balance available in the account.
+
+-> The eligibility check is a read-only function call to the PoX smart contract which does not require broadcasting a transaction
 
 If the user is eligible, the stacking action should be enabled on the UI. If not, the respective error message should be shown to the user.
 
--> For more information on this read-only API call, please review the [API references](https://blockstack.github.io/stacks-blockchain-api/#operation/call_read_only_function)
+## Step 5: Lock STX to stack
 
-## Step 5: Add stacking action
-
-Next, the Stacking action should be implemented. Once the user confirms the action, a new transaction needs to be broadcasted to the network:
+Next, the Stacking action should be executed.
 
 ```js
-const tx = new TransactionsApi(apiConfig);
+// specify the reward BTC address
+const btcAddress = '1Xik14zRm29UsyS6DjhYg4iZeZqsDa8D3';
 
-const [contractAddress, contractName] = poxInfo.contract_id.split('.');
-const network = new StacksTestnet();
+// set the amount to lock in microstacks
+const amountMicroStx = new BN(100000000000);
 
-const txOptions = {
-  contractAddress,
-  contractName,
-  functionName: 'stack-stx',
-  functionArgs: [
-    uintCV(microstacksoLockup),
-    tupleCV({
-      hashbytes,
-      version,
-    }),
-    uintCV(coreInfo.burn_block_height),
-    uintCV(numberOfCycles),
-  ],
-  senderKey: privateKey.data.toString('hex'),
-  validateWithAbi: true,
-  network,
-};
+// set the number of cycles to lock
+const cycles = 10;
 
-const transaction = await makeContractCall(txOptions);
+// set the private key to the account
+const key = privateKey;
 
-const contractCall = await broadcastTransaction(transaction, network);
+// set the burnchain (BTC) block for stacking lock to start
+// you can find the current burnchain block height from coreInfo above
+const burnBlockHeight = 2136;
 
-// this will return a new transaction ID
-console.log(contractCall);
+// execute the stacking action by signing and broadcasting a transaction to the network
+stacker
+  .lockStx({
+    amountMicroStx,
+    poxAddress,
+    cycles,
+    key,
+    burnBlockHeight,
+  })
+  .then(response => {
+    // If successful, stackingResults will contain the txid for the Stacking transaction
+    // otherwise an error will be returned
+    if (response.hasOwnProperty('error')) {
+      console.log(response.error);
+      throw new Error('Stacking transaction failed');
+    } else {
+      console.log(`txid: ${response}`);
+      // txid: f6e9dbf6a26c1b73a14738606cb2232375d1b440246e6bbc14a45b3a66618481
+      return response;
+    }
+  });
 ```
 
-The transaction completion will take several minutes. Concurrent stacking actions should be disabled to ensure the user doesn't lock up more tokens as expected.
+The transaction completion will take several minutes. Only one stacking transaction from each account/address is active at any time. Multiple/concurrent stacking actions from the same account will fail.
 
 ## Step 6: Confirm lock-up
 
@@ -368,33 +283,23 @@ await sub.unsubscribe();
 With the completed transactions, Stacks tokens are locked up for the lockup duration. During that time, your application can display the following details: unlocking time, amount of Stacks locked, and bitcoin address used for rewards.
 
 ```js
-const [contractAddress, contractName] = poxInfo.contract_id.split('.');
-const functionName = 'get-stacker-info';
+const stackingStatus = await stacker.getStatus();
 
-const stackingInfo = await smartContracts.callReadOnlyFunction({
-  contractAddress,
-  contractName,
-  functionName,
-  readOnlyFunctionArgs: {
-    sender: stxAddress,
-    arguments: [`0x${serializeCV(standardPrincipalCV(stxAddress)).toString('hex')}`],
-  },
-});
-
-const response = deserializeCV(Buffer.from(stackingInfo.result.slice(2), 'hex'));
-
-const data = response.value.data;
-
-console.log({
-  lockPeriod: cvToString(data['lock-period']),
-  amountSTX: cvToString(data['amount-ustx']),
-  firstRewardCycle: cvToString(data['first-reward-cycle']),
-  poxAddr: {
-    version: cvToString(data['pox-addr'].data.version),
-    hashbytes: cvToString(data['pox-addr'].data.hashbytes),
-  },
-});
+// If stacking is active for the account, you will receive the stacking details
+// otherwise an error will be thrown
+// stackingStatus:
+// {
+//   amount_microstx: '80000000000000',
+//   first_reward_cycle: 18,
+//   lock_period: 10,
+//   pox_address: {
+//     version: '00',
+//     hashbytes: '05cf52a44bf3e6829b4f8c221cc675355bf83b7d'
+//   }
+// }
 ```
+
+-> Note that the `pox_address` property is the internal representation of the reward BTC address.
 
 To display the unlocking time, you need to use the `firstRewardCycle` and the `lockPeriod` fields.
 
