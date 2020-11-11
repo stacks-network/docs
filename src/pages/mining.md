@@ -223,6 +223,8 @@ To run your miner, run this in the command line:
 stacks-node start --config=testnet-miner-conf.toml
 ```
 
+-> Note : While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to keep on running the node.
+
 Your node should start. It will take some time to sync, and then your miner will be running!
 
 ### Enable debug logging in Windows

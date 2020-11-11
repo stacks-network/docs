@@ -97,7 +97,11 @@ Your node will receive new blocks when they are produced, and you can use the [S
 
 Before you begin, check that you have the below necessary softwares installed on your PC
 
-- [MicrosoftC++BuildTools](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
+- [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
+
+-> Tip: While installing the Microsoft Visual Studio Build tools using the above link, select the C++ Build tools option when prompted.
+![C++ Build Tools](/images/C++BuildTools.png)
+
 - [NodeJs](https://nodejs.org/en/download/).
 - [Git](https://git-scm.com/downloads).
 
@@ -123,7 +127,7 @@ stacks-node krypton
 # This command will start the testnet follower node.
 ```
 
--> Note : Sometimes windows might pop up a message to allow access. If so, allow access to keep on running the node.
+-> Note : While starting the node for the first time, windows defender will pop up with a message to allow access. If so, allow access to keep on running the node.
 
 To execute Stacks node with extra debugging enabled, run:
 
