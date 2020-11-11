@@ -164,7 +164,7 @@ Request BTC from faucet:
 
 We need to get some testnet BTC to that address. Grab the `btcAddress` field, and call the BTC faucet:
 
--> Note: The below command needs curl. If you are on Windows 10, version 1803 or later, your OS ships with a copy of curl, already set up and ready to use.
+-> **Note**: The below command needs curl. If you are on Windows 10, version 1803 or later, your OS ships with a copy of curl, already set up and ready to use.
 If not, [download and install curl](https://curl.se/windows/).
 
 ```bash
@@ -217,13 +217,14 @@ Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` c
 
 ### Run the miner
 
-To run your miner, run this in the command line:
+To start your miner, run this in the command line:
 
 ```bash
 stacks-node start --config=testnet-miner-conf.toml
 ```
 
--> Note : While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to keep on running the node.
+-> **Note** : While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
+![Windows Defender](/images/windows-defender.png)
 
 Your node should start. It will take some time to sync, and then your miner will be running!
 
