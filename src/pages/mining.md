@@ -22,7 +22,7 @@ Make sure you've followed the [Running testnet node](/stacks-blockchain/running-
 
 First, we need to generate a keychain. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
 
-To get a keychain, the simplest way is to use the `blockstack-cli`. We'll use the `make_keychain` command, and pass `-t` to indicate that we want a testnet keychain.
+To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `make_keychain` command, and pass `-t` to indicate that we want a testnet keychain.
 
 ```bash
 npx @stacks/cli make_keychain -t 2>/dev/null
@@ -128,11 +128,15 @@ BLOCKSTACK_DEBUG=1 stacks-node krypton
 
 ## Running a miner in Windows
 
+### Prerequisites
+
+Make sure you've followed the [Running the testnet node on Windows](stacks-blockchain/running-testnet-node#running-the-testnet-node-on-windows) tutorial before starting this tutorial.
+
 ### Generate keychain and get testnet tokens in Windows
 
 To setup the miner, first, we need to generate a keychain. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
 
-To get a keychain, the simplest way is to use the `stacks-cli`.We'll use the `stx make-keychain` command,and pass -t to indicate that we want a testnet keychain.
+To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command, and pass `-t` to indicate that we want a testnet keychain.
 
 Generate a keychain:
 
@@ -158,7 +162,10 @@ After this runs, you'll probably see some installation logs, and at the end you 
 
 Request BTC from faucet:
 
-We need to get some testnet BTC to that address. Grab the btcAddress field, and call the BTC faucet:
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and call the BTC faucet:
+
+-> Note: The below command needs curl. If you are on Windows 10, version 1803 or later, your OS ships with a copy of curl, already set up and ready to use.
+If not, [download and install curl](https://curl.se/windows/).
 
 ```bash
 # replace <btc_address> with `btcAddress` property from your keychain
@@ -169,7 +176,7 @@ You'll be sent 0.5 testnet BTC to that address. Don't lose this information - we
 
 ### Create configuration file
 
-Now, we need to configure our node to use this Bitcoin keychain. In the `folder where your binary is extracted`, create a new file called `testnet-miner-conf.toml`.
+Now, we need to configure our node to use this Bitcoin keychain. In the **folder where your binary is extracted**, create a new file called `testnet-miner-conf.toml`.
 
 Paste in the following configuration:
 
