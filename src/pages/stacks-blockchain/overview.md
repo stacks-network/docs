@@ -33,6 +33,8 @@ You can view accounts, blocks, transactions, and smart contracts broadcasted to 
 
 ## Features
 
+A high-level summary of various technical aspects of the Stacks 2.0 blockchain can be found below in the [Technical Specifications](/stacks-blockchain/technical-specs).
+
 ### Clarity Smart Contracts
 
 A [Smart Contract](https://academy.binance.com/glossary/smart-contract) is simply a program that runs on a blockchain.
