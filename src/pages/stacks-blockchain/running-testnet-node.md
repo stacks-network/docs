@@ -108,16 +108,22 @@ Before you begin, check that you have the below necessary softwares installed on
 
 ### Download the Binary and run the follower node
 
-First, download the binary using the below link:
+-> Note: Please make sure to download the new Binary and follow the below steps as and when a [new release build](https://github.com/blockstack/stacks-blockchain/releases/latest) is available.
 
-<https://github.com/blockstack/stacks-blockchain/releases/download/v23.0.0.10-krypton/windows-x64.zip>
+First, Visit the [Stacks Github releases repo](https://github.com/blockstack/stacks-blockchain/releases/latest). From the various binary list, click to download the Windows binary.Refer the image below.
+![BinaryList](/images/mining-windows.png)
 
-Extract the binary .Open the command prompt from the folder where binary is extracted and execute the below command:
+Next, click on save file and Press **Ok** in the popup window.
+![Windowspopup](/images/mining-windows-popup.png)
+
+Once saved, Extract the binary. Open the command prompt **from the folder where binary is extracted** and execute the below command:
 
 ```bash
 stacks-node krypton
 # This command will start the testnet follower node.
 ```
+
+-> Note : Sometimes windows might pop up a message to allow access. If so, allow access to keep on running the node.
 
 To execute Stacks node with extra debugging enabled, run:
 
