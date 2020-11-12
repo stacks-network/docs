@@ -152,7 +152,7 @@ const hasMinStxAmount = await stacker.hasMinimumRequiredStxAmount();
 // true or false
 ```
 
-For testing purposes, you can use the faucet to obtain testnet STX tokens. Replace <stxAddress> below with your address:
+For testing purposes, you can use the faucet to obtain testnet STX tokens. Replace `<stxAddress>` below with your address:
 
 ```shell
 curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/stx?address=<stxAddress>&stacking=true"
