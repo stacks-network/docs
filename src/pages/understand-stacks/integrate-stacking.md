@@ -89,7 +89,7 @@ With the obtained PoX info, you can present whether Stacking has been executed i
 ```js
 // will Stacking be executed in the next cycle?
 const stackingEnabledNextCycle = await stacker.stackingEnabledNextCycle();
-// true
+// true or false
 
 // how long (in seconds) is a Stacking cycle?
 const cycleDuration = await stacker.getCycleDuration();
@@ -149,10 +149,10 @@ Users need to have sufficient Stacks (STX) tokens to participate in Stacking. Th
 
 ```js
 const hasMinStxAmount = await stacker.hasMinimumRequiredStxAmount();
-// true
+// true or false
 ```
 
-For testing purposes, you can use the faucet to obtain testnet STX tokens:
+For testing purposes, you can use the faucet to obtain testnet STX tokens. Replace <stxAddress> below with your address:
 
 ```shell
 curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/stx?address=<stxAddress>&stacking=true"
@@ -245,9 +245,12 @@ The transaction completion will take several minutes. Only one stacking transact
 
 ## Step 6: Confirm lock-up
 
-The new transaction will not be completed immediately. It'll stay in the `pending` status for a few minutes. We need to poll the status and wait until the transaction status changes to `success`:
+The new transaction will not be completed immediately. It'll stay in the `pending` status for a few minutes. We need to poll the status and wait until the transaction status changes to `success`. We can use the [Stacks Blockchain API client library](https://docs.blockstack.org/references/stacks-blockchain) to check transaction status.
 
 ```js
+const { TransactionsApi } = require('@stacks/blockchain-api-client');}
+const tx = new TransactionsApi(apiConfig);
+
 const waitForTransactionSuccess = txId =>
   new Promise((resolve, reject) => {
     const pollingInterval = 3000;
