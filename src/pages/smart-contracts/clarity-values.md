@@ -257,12 +257,20 @@ if (result.type === ClarityType.ResponseOk) {
 
 ### Deserializing Clarity Values from Hex
 
-If you receive a response from a transaction in the form of a Hex string, you can deserialize it into a Clarity value like so:
+If you receive a response from a transaction in the form of a `hex` string, you can deserialize it into a Clarity value like so:
 
 ```javascript
 import { hexToCV } from '@stacks/transactions';
 
 let cv = hexToCV('hex_string');
+```
+
+Similarly, you can convert a Clarity value to `hex` string like so:
+
+```javascript
+import { cvToHex, trueCV } from '@stacks/transactions';
+
+let trueHex = cvToHex(trueCV());
 ```
 
 ## Debugging Clarity Values
