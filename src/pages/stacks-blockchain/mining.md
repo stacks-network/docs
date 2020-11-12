@@ -56,7 +56,7 @@ The miner who is selected to mine the next block is chosen depending on the amou
 
 The probability for a miner to mine next block equals the BTC miner send devided by the total BTC all miners send.
 
-To calculate the amount of BTC to send miners should:
+The minimum amount to sent is 20,000 sats. To calculate the amount of BTC to send miners should:
 
 - Guess the price BTC/STX for the next day (100 blocks later)
 - Guess the total amount of BTCs committed by all miners
