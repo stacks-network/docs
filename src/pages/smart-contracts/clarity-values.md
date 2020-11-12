@@ -7,7 +7,7 @@ description: Learn how to deal with Clarity Values in JavaScript.
 
 The Clarity language makes use of a strong static [type system](https://docs.blockstack.org/references/language-clarity#clarity-type-system). This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your contract call transactions failing prior to execution.
 
-In order to build web applications that interact with Clarity contracts, you will need to learn how to construct and use `ClarityValues`. The [@stacks/transactions](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below.
+In order to build web applications that interact with Clarity contracts, you will need to learn how to construct and use `ClarityValue` objects. The [@stacks/transactions](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below.
 
 ## Clarity Types
 
@@ -27,25 +27,25 @@ Values in Clarity can have the following types:
 
 ## Constructing Clarity Values and accessing their data
 
-Clarity values can be constructed with functions provided by the **@stacks/transactions** library. These functions simply output javascript objects that contain a value and a numerical representation of the Clarity type information.
+Clarity values can be constructed with functions provided by the [@stacks/transactions](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library. These functions simply output javascript objects that contain a value and a numerical representation of the Clarity type information. The Clarity types are encoded as follows:
 
 ```typescript
 export enum ClarityType {
-  Int = 0x00,
-  UInt = 0x01,
-  Buffer = 0x02,
-  BoolTrue = 0x03,
-  BoolFalse = 0x04,
-  PrincipalStandard = 0x05,
-  PrincipalContract = 0x06,
-  ResponseOk = 0x07,
-  ResponseErr = 0x08,
-  OptionalNone = 0x09,
-  OptionalSome = 0x0a,
-  List = 0x0b,
-  Tuple = 0x0c,
-  StringASCII = 0x0d,
-  StringUTF8 = 0x0e,
+  Int = 0,
+  UInt = 1,
+  Buffer = 2,
+  BoolTrue = 3,
+  BoolFalse = 4,
+  PrincipalStandard = 5,
+  PrincipalContract = 6,
+  ResponseOk = 7,
+  ResponseErr = 8,
+  OptionalNone = 9,
+  OptionalSome = 10,
+  List = 11,
+  Tuple = 12,
+  StringASCII = 13,
+  StringUTF8 = 14,
 }
 ```
 
@@ -57,7 +57,10 @@ Here are examples of how to construct each type of Clarity value, and how to acc
 
 ```typescript
 const t = trueCV();
+// { type: ClarityType.BoolTrue }
+
 const f = falseCV();
+// { type: ClarityType.BoolFalse }
 ```
 
 Boolean Clarity Values don't contain any underlying data. They are simply objects with `type` information.
@@ -66,10 +69,10 @@ Boolean Clarity Values don't contain any underlying data. They are simply object
 
 ```typescript
 const nothing: NoneCV = noneCV();
-const something: SomeCV = someCV(trueCV());
+// { type: ClarityType.OptionalNone }
 
-console.log(something.value);
-// { type: ClarityType.BoolTrue }
+const something: SomeCV = someCV(trueCV());
+// { type: ClarityType.OptionalSome, value: { type: 4 } }
 ```
 
 Optional Clarity Values can either be nothing (an empty type that has no data), or something (a wrapped value).
@@ -91,37 +94,43 @@ if (maybeVal.type === ClarityType.OptionalSome) {
 ```typescript
 const buffer = Buffer.from('foo');
 const bufCV: BufferCV = bufferCV(buffer);
-
-console.log(bufCV.buffer);
-// <Buffer 66 6f 6f>
+// { type: ClarityType.Buffer, buffer: <Buffer 66 6f 6f> }
 ```
 
 ### Integers
 
+Clarity supports both integers and unsigned integers.
+
 ```typescript
 const i: IntCV = intCV(-10);
+// { type: ClarityType.Int, value: BN { ... } }
+
 const u: UIntCV = uintCV(10);
-
-console.log(i.value);
-// -10
-
-console.log(u.value);
-// 10
+// { type: ClarityType.UInt, value: BN { ... } }
 ```
 
-Clarity supports both integers and unsigned integers.
+Clarity value ints store their underlying data as `BigNum` values from the [bn.js](https://github.com/indutny/bn.js/) library.
+
+In order to display/print Clarity (u)int values, use the `cvToString(val)` method.
+
+If you wish to perform arithmetic operations using Clarity (u)int values, you must use methods from the `BigNum` api on their underlying `BigNum` values, and the construct a new Clarity value out of the result. For example:
+
+```typescript
+const x = intCV(1);
+const y = intCV(2);
+
+x.value.add(y.value);
+// 3
+```
 
 ### Strings
 
 ```typescript
 const ascii: StringAsciiCV = stringAsciiCV('hello world');
+// { type: ClarityType.StringASCII, data: 'hello world' }
+
 const utf8: StringUtf8CV = stringUtf8CV('hello 🌾');
-
-console.log(ascii.data);
-// 'hello world'
-
-console.log(utf8.data);
-// 'hello 🌾'
+// { type: ClarityType.StringUTF8, data: 'hello 🌾' }
 ```
 
 Clarity supports both ascii and utf8 strings.
@@ -133,32 +142,29 @@ const address = 'SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B';
 const contractName = 'contract-name';
 
 const spCV = standardPrincipalCV(address);
-const cpCV = contractPrincipalCV(address, contractName);
-
-console.log(spCV.address);
 // {
-//     type: ClarityType.PrincipalStandard
-//     address: {
-//         type: StacksMessageType.Address,
-//         version: AddressVersion.MainnetSingleSig,
-//         hash160: "SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B"
-//     }
+//   type: ClarityType.PrincipalStandard
+//   address: {
+//       type: StacksMessageType.Address,
+//       version: AddressVersion.MainnetSingleSig,
+//       hash160: "SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B"
+//   }
 // }
 
-console.log(cpCV.address);
+const cpCV = contractPrincipalCV(address, contractName);
 // {
-//     type: ClarityType.PrincipalContract,j
-//     contractName: {
-//         type: StacksMessageType.LengthPrefixedString,
-//         content: 'contract-name',
-//         lengthPrefixBytes: 1,
-//         maxLengthBytes: 128,
-//     },
-//     address: {
-//         type: StacksMessageType.Address,
-//         version: AddressVersion.MainnetSingleSig,
-//         hash160: "SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B"
-//     }
+//   type: ClarityType.PrincipalContract,
+//   contractName: {
+//     type: StacksMessageType.LengthPrefixedString,
+//     content: 'contract-name',
+//     lengthPrefixBytes: 1,
+//     maxLengthBytes: 128,
+//   },
+//   address: {
+//     type: StacksMessageType.Address,
+//     version: AddressVersion.MainnetSingleSig,
+//     hash160: "SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B"
+//   }
 // }
 ```
 
@@ -168,13 +174,10 @@ Both kinds of Clarity principal values contain `type` information and an `addres
 
 ```typescript
 const errCV = responseErrorCV(trueCV());
+// { type: ResponseErr, value: { type: ClarityType.BoolTrue } }
+
 const okCV = responseOkCV(falseCV());
-
-console.log(errCV.value);
-// { type: ClarityType.BoolTrue }
-
-console.log(okCV.value);
-// { type: ClarityType.BoolFalse }
+// { type: ResponseOk, value: { type: ClarityType.BoolFalse } }
 ```
 
 Response Clarity Values will either have the type `ClarityType.ResponseOk` or `ClarityType.ResponseErr`. They both contain a Clarity Value. Often this value will be an integer error code if the response is an `Error`.
@@ -187,6 +190,14 @@ const tupCV = tupleCV({
   b: trueCV(),
   c: falseCV(),
 });
+// {
+//   type: ClarityType.Tuple,
+//   data: {
+//     a: { type: ClarityType.Int, value: BN { ... } },
+//     b: { type: ClarityType.BoolTrue },
+//     c: { type: ClarityType.BoolFalse },
+//   }
+// }
 
 console.log(tupCV.data['b']);
 // { type: ClarityType.BoolTrue }
@@ -200,6 +211,7 @@ Clarity tuples are represented in JavaScript as objects and a tuple's data can b
 
 ```typescript
 const l = listCV([trueCV(), falseCV()]);
+// { type: ClarityType.List, list: [{ type: ClarityType.BoolTrue }] }
 
 console.log(l.list[0]);
 // { type: ClarityType.BoolTrue }
@@ -211,9 +223,9 @@ A Clarity lists underlying data can be accessed via its `list` field.
 
 ## Using Clarity Values
 
-Now that you know how to construct _and_ deconstruct Clarity values, you can use them to build `contract-call` transactions that call smart contract functions.
+Now that you know how to construct _and_ deconstruct Clarity values, you can use them to build `contract-call` transactions that call smart contract functions, and you can utilize their responses.
 
-This is covered [here](https://docs.blockstack.org/stacks-blockchain/transactions#construction).
+This is covered in depth [here](https://docs.blockstack.org/stacks-blockchain/transactions#construction).
 
 ## Utilizing Clarity Values from Transaction Responses
 
@@ -255,7 +267,7 @@ if (result.type === ClarityType.ResponseOk) {
 }
 ```
 
-### Deserializing Clarity Values from Hex
+### ClarityValues to/from Hex
 
 If you receive a response from a transaction in the form of a `hex` string, you can deserialize it into a Clarity value like so:
 
