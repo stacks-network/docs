@@ -64,6 +64,8 @@ const {
   TransactionVersion,
 } = require('@stacks/transactions');
 
+const { Stacker } = require('@stacks/stacking');
+
 const { StacksTestnet } = require('@stacks/network');
 
 // generate random key or use an existing key
