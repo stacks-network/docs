@@ -6,7 +6,7 @@ import { useAppState } from '../common/hooks/use-app-state';
 import { MagnifyingGlass } from './icons/magnifying-glass';
 
 export const SearchButton = forwardRef((props: LinkProps, ref: Ref<HTMLDivElement>) => {
-  const { setState } = useAppState();
+  const { setState, searchModal } = useAppState();
 
   return (
     <IconButton
@@ -16,6 +16,7 @@ export const SearchButton = forwardRef((props: LinkProps, ref: Ref<HTMLDivElemen
       {...props}
       ref={ref}
     >
+      {searchModal}
       <MagnifyingGlass size={18} color={color('text-title')} />
     </IconButton>
   );
