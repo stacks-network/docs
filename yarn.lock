@@ -2795,27 +2795,6 @@ algoliasearch@^3.24.5:
     semver "^5.1.0"
     tunnel-agent "^0.6.0"
 
-<<<<<<< HEAD
-algoliasearch@^4.0.0, algoliasearch@^4.5.1:
-  version "4.8.2"
-  resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-4.8.2.tgz#499d187afe2169bc66c921cf7d5271c3fe0b3598"
-  integrity sha512-wQg1UpiXO6iXMXXyrmhKopjd3K4GGq5N/0qEjPB5OYzdvj4ju9rDIW8bYL9ghv9jD5IDrcyFsqCzlSKqn/RVXw==
-  dependencies:
-    "@algolia/cache-browser-local-storage" "4.8.2"
-    "@algolia/cache-common" "4.8.2"
-    "@algolia/cache-in-memory" "4.8.2"
-    "@algolia/client-account" "4.8.2"
-    "@algolia/client-analytics" "4.8.2"
-    "@algolia/client-common" "4.8.2"
-    "@algolia/client-recommendation" "4.8.2"
-    "@algolia/client-search" "4.8.2"
-    "@algolia/logger-common" "4.8.2"
-    "@algolia/logger-console" "4.8.2"
-    "@algolia/requester-browser-xhr" "4.8.2"
-    "@algolia/requester-common" "4.8.2"
-    "@algolia/requester-node-http" "4.8.2"
-    "@algolia/transporter" "4.8.2"
-=======
 algoliasearch@^4.0.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-4.4.0.tgz#25c356d8bdcf7e3f941633f61e1ac111ddcba404"
@@ -2855,7 +2834,6 @@ algoliasearch@^4.5.1:
     "@algolia/requester-common" "4.6.0"
     "@algolia/requester-node-http" "4.6.0"
     "@algolia/transporter" "4.6.0"
->>>>>>> feat: add mobile search
 
 ally.js@1.4.1:
   version "1.4.1"

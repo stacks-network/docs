@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Box,
   Flex,
@@ -33,7 +33,7 @@ const getLocalUrl = href => {
 function Hit({ hit, children }: any) {
   const url = getLocalUrl(hit.url);
   return (
-    <Link href={url} as={url} passHref scroll={!url.includes('#')}>
+    <Link href={url} as={url} passHref scroll={false}>
       <a>{children}</a>
     </Link>
   );
@@ -80,7 +80,6 @@ let DocSearchModal: any = null;
 
 export const SearchBox: React.FC<BoxProps> = React.memo(props => {
   const { setState, searchModal } = useAppState();
-  const isOpen = searchModal === 'open' && DocSearchModal;
 
   const importDocSearchModalIfNeeded = React.useCallback(function importDocSearchModalIfNeeded() {
     if (DocSearchModal) {
@@ -95,10 +94,11 @@ export const SearchBox: React.FC<BoxProps> = React.memo(props => {
   const onOpen = React.useCallback(
     function onOpen() {
       void importDocSearchModalIfNeeded().then(() => {
+        console.log('reopening');
         setState(state => ({ ...state, searchModal: 'open' }));
       });
     },
-    [importDocSearchModalIfNeeded, searchModal]
+    [importDocSearchModalIfNeeded]
   );
 
   const onClose = React.useCallback(
@@ -113,6 +113,7 @@ export const SearchBox: React.FC<BoxProps> = React.memo(props => {
   }, [searchModal]);
 
   const searchButtonRef = React.useRef(null);
+  const isOpen = Boolean(searchModal === 'open' && DocSearchModal);
 
   useDocSearchKeyboardEvents({ isOpen, onOpen, onClose, searchButtonRef });
 
