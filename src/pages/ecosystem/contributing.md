@@ -177,6 +177,14 @@ fetch external data at runtime and use it in some way within our pages.
 
 ## Tips and tricks
 
+### Style checks
+
+We use the [Google Developer documentation style guides](https://developers.google.com/style/) in this project. Make sure to install [vale](https://github.com/errata-ai/vale) and run the style checks before you create a PR:
+
+```bash
+yarn vale:check
+```
+
 ### Always use Markdown when possible
 
 It's possible to write standard HTML when writing in Markdown, but that should be avoided at all costs. We use `remark` to
