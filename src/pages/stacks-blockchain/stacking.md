@@ -56,7 +56,7 @@ Miners have to run a software (mining client, aka "miner") on their machines to 
 Stacks (STX) token holders do not automatically receive Stacking rewards. Instead, they must:
 
 - Commit to participation before a reward cycle begins
-- Hold ~94.000 Stacks (STX) tokens
+- Hold ~94,000 Stacks (STX) tokens
 - Lock up Stacks (STX) tokens for a specified period
 - Set a Bitcoin address to receive rewards
 
