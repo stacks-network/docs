@@ -47,14 +47,9 @@ After this runs, you'll probably see some installation logs, and at the end you 
 }
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and call the BTC faucet:
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
 
-```bash
-# replace <btc_address> with `btcAddress` property from your keychain
-curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/btc?address=<btc_address>" | json_pp
-```
-
-You'll be sent 0.5 testnet BTC to that address. **Don't lose this information** - we'll need to use the `privateKey` field later on.
+**Don't lose this information** - we'll need to use the `privateKey` field later on.
 
 Now, we need to configure out node to use this Bitcoin keychain. In the `stacks-blockchain` folder, create a new file called `testnet/stacks-node/conf/testnet-miner-conf.toml`.
 
@@ -173,17 +168,7 @@ After this runs, you'll probably see some installation logs, and at the end you 
 
 Request BTC from faucet:
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and call the BTC faucet:
-
--> **Note**: The below command needs curl. If you are on Windows 10, version 1803 or later, your OS ships with a copy of curl, already set up and ready to use.
-If not, [download and install curl](https://curl.se/windows/).
-
-```bash
-# replace <btc_address> with `btcAddress` property from your keychain
-curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/btc?address=<btc_address>"
-```
-
-You'll be sent 0.5 testnet BTC to that address. Don't lose this information - we'll need to use the `privateKey` field later on.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
 
 ### Create configuration file
 
@@ -263,12 +248,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
-Request BTC from the faucet:
-
-```bash
-# replace <btc_address> with `btcAddress` property from your keychain
-curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/btc?address=<btc_address>" | json_pp
-```
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
 
 ### Create a config file directory
 
@@ -359,12 +339,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
-Request BTC from the faucet:
-
-```bash
-# replace <btc_address> with `btcAddress` property from your keychain
-curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/btc?address=<btc_address>" | json_pp
-```
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
 
 ### Install the chart and run the miner
 
