@@ -56,17 +56,18 @@ npm install --save @stacks/stacking @stacks/network @stacks/transactions bn.js
 To get started, let's create a new, random Stacks 2.0 account:
 
 ```js
-const BN = require('bn.js');
-const {
+import {
   makeRandomPrivKey,
   privateKeyToString,
   getAddressFromPrivateKey,
   TransactionVersion,
-} = require('@stacks/transactions');
+} from '@stacks/transactions';
 
-const { Stacker } = require('@stacks/stacking');
+import { StackingClient } from '@stacks/stacking';
 
-const { StacksTestnet } = require('@stacks/network');
+import { StacksTestnet } from '@stacks/network';
+
+import BN from 'bn.js';
 
 // generate random key or use an existing key
 const privateKey = privateKeyToString(makeRandomPrivKey());
@@ -75,7 +76,7 @@ const privateKey = privateKeyToString(makeRandomPrivKey());
 const stxAddress = getAddressFromPrivateKey(privateKey, TransactionVersion.Testnet);
 
 // instantiate the Stacker class for testnet
-const stacker = new Stacker(stxAddress, new StacksTestnet());
+const client = new StackingClient(stxAddress, new StacksTestnet());
 ```
 
 -> Review the [accounts guide](/understand-stacks/accounts) for more details
@@ -88,15 +89,15 @@ With the obtained PoX info, you can present whether Stacking has been executed i
 
 ```js
 // will Stacking be executed in the next cycle?
-const stackingEnabledNextCycle = await stacker.stackingEnabledNextCycle();
+const stackingEnabledNextCycle = await client.isStackingEnabledNextCycle();
 // true or false
 
 // how long (in seconds) is a Stacking cycle?
-const cycleDuration = await stacker.getCycleDuration();
+const cycleDuration = await client.getCycleDuration();
 // 120
 
 // how much time is left (in seconds) until the next cycle begins?
-const secondsUntilNextCycle = await stacker.secondsUntilNextCycle();
+const secondsUntilNextCycle = await client.getSecondsUntilNextCycle();
 // 600000
 ```
 
@@ -105,7 +106,7 @@ const secondsUntilNextCycle = await stacker.secondsUntilNextCycle();
 You can also retrieve the raw PoX and core information using the methods below if required:
 
 ```js
-const poxInfo = await stacker.getPoxInfo();
+const poxInfo = await client.getPoxInfo();
 
 // poxInfo:
 // {
@@ -120,7 +121,7 @@ const poxInfo = await stacker.getPoxInfo();
 //   total_liquid_supply_ustx: 40000840000000000
 // }
 
-const coreInfo = await stacker.getCoreInfo();
+const coreInfo = await client.getCoreInfo();
 
 // coreInfo:
 // {
@@ -139,7 +140,7 @@ const coreInfo = await stacker.getCoreInfo();
 //   exit_at_block_height: null
 // }
 
-const targetBlocktime = await stacker.getTargetBlockTime();
+const targetBlocktime = await client.getTargetBlockTime();
 
 // targetBlocktime:
 // 120
@@ -148,7 +149,7 @@ const targetBlocktime = await stacker.getTargetBlockTime();
 Users need to have sufficient Stacks (STX) tokens to participate in Stacking. This can be verified easily:
 
 ```js
-const hasMinStxAmount = await stacker.hasMinimumRequiredStxAmount();
+const hasMinStxAmount = await client.hasMinimumStx();
 // true or false
 ```
 
@@ -182,7 +183,7 @@ With this input, and the data from previous steps, we can determine the eligibil
 let btcAddress = '1Xik14zRm29UsyS6DjhYg4iZeZqsDa8D3';
 let cycles = 3;
 
-const stackingEligibility = await stacker.canLockStx({ btcAddress, cycles });
+const stackingEligibility = await client.canStack({ btcAddress, cycles });
 
 // stackingEligibility:
 // {
@@ -211,20 +212,17 @@ const amountMicroStx = new BN(100000000000);
 // set the number of cycles to lock
 const cycles = 10;
 
-// set the private key to the account
-const key = privateKey;
-
 // set the burnchain (BTC) block for stacking lock to start
 // you can find the current burnchain block height from coreInfo above
 const burnBlockHeight = 2136;
 
 // execute the stacking action by signing and broadcasting a transaction to the network
-stacker
-  .lockStx({
+client
+  .stack({
     amountMicroStx,
     poxAddress,
     cycles,
-    key,
+    privateKey,
     burnBlockHeight,
   })
   .then(response => {
@@ -288,7 +286,7 @@ await sub.unsubscribe();
 With the completed transactions, Stacks tokens are locked up for the lockup duration. During that time, your application can display the following details: unlocking time, amount of Stacks locked, and bitcoin address used for rewards.
 
 ```js
-const stackingStatus = await stacker.getStatus();
+const stackingStatus = await client.getStatus();
 
 // If stacking is active for the account, you will receive the stacking details
 // otherwise an error will be thrown
@@ -304,7 +302,7 @@ const stackingStatus = await stacker.getStatus();
 // }
 ```
 
--> Note that the `pox_address` property is the internal representation of the reward BTC address.
+-> Note that the `pox_address` property is the PoX contract's internal representation of the reward BTC address.
 
 To display the unlocking time, you need to use the `firstRewardCycle` and the `lockPeriod` fields.
 
