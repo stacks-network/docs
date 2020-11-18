@@ -246,7 +246,7 @@ The transaction completion will take several minutes. Only one stacking transact
 The new transaction will not be completed immediately. It'll stay in the `pending` status for a few minutes. We need to poll the status and wait until the transaction status changes to `success`. We can use the [Stacks Blockchain API client library](https://docs.blockstack.org/references/stacks-blockchain) to check transaction status.
 
 ```js
-const { TransactionsApi } = require('@stacks/blockchain-api-client');}
+const { TransactionsApi } = require('@stacks/blockchain-api-client');
 const tx = new TransactionsApi(apiConfig);
 
 const waitForTransactionSuccess = txId =>
@@ -263,7 +263,8 @@ const waitForTransactionSuccess = txId =>
     }, pollingInterval);
   });
 
-const resp = await waitForTransactionSuccess(contractCall.txId);
+// note: txId should be defined previously
+const resp = await waitForTransactionSuccess(txId);
 ```
 
 -> More details on the lifecycle of transactions can be found in the [transactions guide](/understand-stacks/transactions#lifecycle)
@@ -273,7 +274,8 @@ Alternatively to the polling, the Stacks Blockchain API client library offers We
 ```js
 const client = await connectWebSocketClient('ws://stacks-node-api.blockstack.org/');
 
-const sub = await client.subscribeAddressTransactions(contractCall.txId, event => {
+// note: txId should be defined previously
+const sub = await client.subscribeAddressTransactions(txId, event => {
   console.log(event);
   // update UI to display stacking status
 });
