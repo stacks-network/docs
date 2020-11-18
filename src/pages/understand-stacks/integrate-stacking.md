@@ -296,13 +296,14 @@ const stackingStatus = await client.getStatus();
 // {
 //   stacked: true,
 //   details: {
-//    amount_microstx: '80000000000000',
-//    first_reward_cycle: 18,
-//    lock_period: 10,
-//    pox_address: {
-//      version: '00',
-//      hashbytes: '05cf52a44bf3e6829b4f8c221cc675355bf83b7d'
-//    }
+//     amount_microstx: '80000000000000',
+//     first_reward_cycle: 18,
+//     lock_period: 10,
+//     unlock_height: 3020,
+//     pox_address: {
+//       version: '00',
+//       hashbytes: '05cf52a44bf3e6829b4f8c221cc675355bf83b7d'
+//     }
 //   }
 // }
 ```
