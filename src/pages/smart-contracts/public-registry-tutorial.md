@@ -31,9 +31,7 @@ By the end of this tutorial, you will...
 The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not running into any challenges related to the status of the network, please open up the [Status Checker](http://status.test-blockstack.com/)
 and confirm that all systems are operational. If some systems seem to have issues, it is best to wait until they are back up before you proceed with the next steps.
 
-Furthermore, the to-do app will interact with a smart contract deployed as `ST25GX7MJA4FGEYYH5E7EBW30BYA4VG4VC1XETXXZ.todo-registry`, please verify that this contract exists by searching for it in the sandbox of the [testnet explorer](https://testnet-explorer.blockstack.org/txid/ST25GX7MJA4FGEYYH5E7EBW30BYA4VG4VC1XETXXZ.todo-registry).
-
-Alternatively, you can take the [contract source code](https://github.com/friedger/blockstack-todos/blob/tut/step1/contracts/todo-registry.clar) and deploy the contract as described in the [hello world tutorial](/smart-contracts/hello-world-tutorial#step-5-deploy-the-contract). Then you just have to use your own contract address and name in this tutorial.
+Furthermore, the to-do app will interact with a smart contract deployed as `ST1234....todo-registry`. he contract source code is available at [github](https://github.com/friedger/blockstack-todos/blob/tut/step1/contracts/todo-registry.clar). There might be already a deployed version available on testnet. You can use the testnet explorer to search for it. Alternatively, You have to deploy the contract as described in the [hello world tutorial](/smart-contracts/hello-world-tutorial#step-5-deploy-the-contract). Then you have to use the corresponding contract address and name in this tutorial. Throughout this tutorial, we use `ST3YPJ6BBCZCMH71TV8BK50YC6QJTWEGCNDFWEQ15.todo-registry` as an example.
 
 ### Tutorials
 
@@ -63,7 +61,7 @@ The contract was already written and deployed to the blockchain. Its address and
 
 ```js
 // src/assets/constants.jsx
-export const CONTRACT_ADDRESS = 'ST25GX7MJA4FGEYYH5E7EBW30BYA4VG4VC1XETXXZ';
+export const CONTRACT_ADDRESS = 'ST3YPJ6BBCZCMH71TV8BK50YC6QJTWEGCNDFWEQ15';
 export const CONTRACT_NAME = 'todo-registry';
 ```
 
