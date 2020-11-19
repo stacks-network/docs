@@ -23,7 +23,7 @@ The reward amounts are:
 
 - 1000 STX per block are released in the first 4 years of mining
 - 500 STX per block are released during the following 4 years
-- 250 Stacks tokens per block are released during the following 4 years
+- 250 STX per block are released during the following 4 years
 - 125 STX per block are released from then on indefinitely.
 
 These "halvings" are synchronized with Bitcoin halvings.
