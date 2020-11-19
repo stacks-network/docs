@@ -168,7 +168,7 @@ const cycleDuration = poxInfo.reward_cycle_length * blocktimeInfo.testnet.target
 // how much time is left (in seconds) until the next cycle begins?
 const secondsToNextCycle =
   (poxInfo.reward_cycle_length -
-    ((coreInfo.burn_block_height - poxInfo.first_burnchain_block_height) %
+    ((coreInfo.burn_block_height - poxInfo.first_burnchain_block_height - 1) %
       poxInfo.reward_cycle_length)) *
   blocktimeInfo.testnet.target_block_time;
 
