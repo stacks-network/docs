@@ -339,7 +339,7 @@ You should have the console open as `root` on your Droplet. In this section, you
    }
    ```
 
-````
+
 
  You'll find that the `driver` is set to `aws`. The DigitalOcean space API exactly mimics the S3 API. Since Gaia doesn't have a DigitalOcean driver, you can just use the `aws` driver with some special configuration.
 
@@ -394,7 +394,7 @@ You should have the console open as `root` on your Droplet. In this section, you
       "json": true
     }
   }
-````
+```
 
 15. Save your config file and close the `vim` editor.
 
