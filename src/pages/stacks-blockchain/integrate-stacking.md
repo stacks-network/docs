@@ -48,7 +48,7 @@ In this tutorial, we'll implement the Stacking flow laid out in the [Stacking gu
 Install the stacks transactions library and an API client for the [Stacks 2.0 Blockchain API](/references/stacks-blockchain):
 
 ```shell
-npm install --save @blockstack/stacks-transactions @stacks/blockchain-api-client c32check cross-fetch bn.js
+npm install --save @stacks/transactions @stacks/network @stacks/blockchain-api-client c32check cross-fetch bn.js
 ```
 
 -> The API client is generated from the [OpenAPI specification](https://github.com/blockstack/stacks-blockchain-api/blob/master/docs/openapi.yaml) ([openapi-generator](https://github.com/OpenAPITools/openapi-generator)). Many other languages and frameworks are supported by the generator.
@@ -65,7 +65,6 @@ const {
   privateKeyToString,
   getAddressFromPrivateKey,
   TransactionVersion,
-  StacksTestnet,
   uintCV,
   tupleCV,
   makeContractCall,
@@ -76,7 +75,8 @@ const {
   connectWebSocketClient,
   broadcastTransaction,
   standardPrincipalCV,
-} = require('@blockstack/stacks-transactions');
+} = require('@stacks/transactions');
+const { StacksTestnet } = require('@stacks/network');
 const {
   InfoApi,
   AccountsApi,

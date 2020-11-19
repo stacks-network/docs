@@ -58,9 +58,11 @@ const {
   broadcastTransaction,
   estimateTransfer,
   getNonce,
-  StacksTestnet,
   privateKeyToString,
 } = require('@stacks/transactions');
+const {
+    StacksTestnet,
+} = require ('@stacks/network);
 const { TransactionsApi, Configuration } = require('@stacks/blockchain-api-client');
 
 const apiConfig = new Configuration({
