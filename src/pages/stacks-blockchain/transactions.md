@@ -106,7 +106,9 @@ When constructing transactions, it is required to set the network the transactio
 ### Stacks Token transfer
 
 ```js
-import { makeSTXTokenTransfer, StacksTestnet } from '@stacks/transactions';
+import { makeSTXTokenTransfer } from '@stacks/transactions';
+import { StacksTestnet } from '@stacks/network';
+
 const BigNum = require('bn.js');
 
 const txOptions = {
@@ -127,7 +129,8 @@ const transaction = await makeSTXTokenTransfer(txOptions);
 ### Smart contract deployment
 
 ```js
-import { makeContractDeploy, StacksTestnet } from '@stacks/transactions';
+import { makeContractDeploy } from '@stacks/transactions';
+import { StacksTestnet } from '@stacks/network';
 const BigNum = require('bn.js');
 
 const txOptions = {
@@ -143,7 +146,9 @@ const transaction = await makeContractDeploy(txOptions);
 ### Smart contract function call
 
 ```js
-import { makeContractCall, BufferCV, StacksTestnet } from '@stacks/transactions';
+import { makeContractCall, BufferCV } from '@stacks/transactions';
+import { StacksTestnet } from '@stacks/network';
+
 const BigNum = require('bn.js');
 
 const txOptions = {
