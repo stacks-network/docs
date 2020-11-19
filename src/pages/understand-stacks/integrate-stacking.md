@@ -321,6 +321,14 @@ To display the unlocking time, you need to use the `firstRewardCycle` and the `l
 
 -> Coming soon: how to obtain info previous lock-ups, durations, dates, and rewards?
 
-## Notes on delegation
+## Implementing delegation
 
--> Coming soon: how to enable Stacking delegation?
+Flow:
+
+1. `delegate-stx`
+2. `delegator-stack-stx`
+3. `stack-aggregation-commit`
+
+Enable users to revoke delegation:
+
+- `revoke-delegate-stx`
