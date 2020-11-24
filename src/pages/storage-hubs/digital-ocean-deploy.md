@@ -369,7 +369,7 @@ You should have the console open as `root` on your Droplet. In this section, you
 
   At this point, the `json.config` file should be completed and appear similar to the following &&mdash;; but with your values.
 
-  ```json
+```json
   {
     "serverName": "moxie-gaiahub",
     "port": 4000,
