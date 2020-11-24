@@ -62,6 +62,7 @@ sections:
           - title: Tutorials
             pages:
               - path: /managing-accounts
+              - path: /cli-wallet-quickstart
               - path: /sending-tokens
               - path: /running-testnet-node
               - path: /integrate-stacking
