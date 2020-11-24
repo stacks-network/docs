@@ -97,7 +97,7 @@ provider = await ProviderRegistry.createProvider();
 helloWorldClient = new Client("SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.hello-world", "hello-world", provider);
 ```
 
-Take a look at the client initialization. It requires a contract id and name in the following format: `{contract_address}.{contract_identifier}`. The second field indicates the location of the smart contract file, without the `.clar` suffix. By default, the location is assumed to be relative to the `contracts` folder.
+Take a look at the client initialization. It requires a contract identifier in the following format: `{contract_address}.{contract_name}`. The second argument indicates the location of the smart contract file, without the `.clar` suffix. By default, the location is assumed to be relative to the `contracts` folder.
 
 As you can see above, a sample Stacks address and contract identifier is already provided for you. You don't need to modify anything.
 
