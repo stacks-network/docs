@@ -12,9 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set Node Version
-        uses: actions/setup-node@v1.4.2
+        uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: '14.x'
       - name: Install deps
         run: yarn --frozen-lockfile
       - name: Lint
