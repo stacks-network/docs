@@ -23,6 +23,33 @@ If you want to learn more about the technical details of minig, please review th
 [@page-reference | inline]
 | /stacks-blockchain/mining
 
+## Running bitcoind locally
+
+To participate as a miner on Xenon, you must have access to a testnet bitcoin node. One way to accomplish this is to run bitcoind locally. You'll need a computer with ~10-GB disk space.
+
+First, download the bitcoind software for your platform from https://bitcoin.org/en/download.
+
+Next, start bitcoind with the following configuration:
+
+```
+server=1
+rpcuser=your-bitcoind-username
+rpcpassword=your-bitcoind-password
+testnet=1
+txindex=0
+listen=1
+rpcserialversion=0
+maxorphantx=1
+banscore=1
+
+[test]
+bind=0.0.0.0:18443
+rpcbind=0.0.0.0:18444
+rpcport=18443
+```
+
+Finally, start bitcoind as follows: `$ bitcoind -conf=path/to/bitcoin.conf`. It will take a few hours for the node to synchronize with the Bitcoin testnet -- be patient!
+
 ## Running a miner
 
 First, we need to generate a keychain. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
@@ -59,18 +86,20 @@ Paste in the following configuration:
 [node]
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@testnet-miner.blockstack.org:20444"
+bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
 # Enter your private key here!
 seed = "replace-with-your-private-key"
 miner = true
 
 [burnchain]
 chain = "bitcoin"
-mode = "krypton"
-peer_host = "bitcoind.blockstack.org"
-#process_exit_at_block_height = 5340
-#burnchain_op_tx_fee = 5500
-#commit_anchor_block_within = 10000
+mode = "xenon" # if connecting to Krypton, set this to "krypton"
+# To mine on Xenon, you need to run bitcoind locally (details below)
+# For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and
+# omit `username` and `password`
+peer_host = "127.0.0.1"
+username = "your-bitcoind-username"
+password = "your-bitcoind-password"
 rpc_port = 18443
 peer_port = 18444
 
