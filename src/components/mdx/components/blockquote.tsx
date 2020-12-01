@@ -90,13 +90,7 @@ export const Blockquote: React.FC<BoxProps> = React.memo(
           {...styles}
         >
           {Icon && (
-            <Flex
-              alignItems="center"
-              height="28x"
-              flexShrink={0}
-              color={accent as any}
-              width="22px"
-            >
+            <Flex alignItems="center" height="28x" flexShrink={0} color={accent} width="22px">
               <Box position="absolute" top="16px" size="22px">
                 <Icon />
               </Box>
