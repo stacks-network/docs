@@ -1,6 +1,6 @@
 ---
-title: Building a Todo app
-description: Learn how to integrate authentication and data storage.
+title: Review Todos app
+description: Learn about Stacks authentication and storage by reviewing simple app
 experience: beginners
 duration: 30 minutes
 tags:
@@ -10,25 +10,25 @@ images:
   sm: /images/pages/todo-app-sm.svg
 ---
 
-# Building a Todo app
+# Learn from Todos app with Stacks
 
-![What you'll be creating in this tutorial](/images/todo-list-app.png)
+![What you'll be studying in this tutorial](/images/todos/home.png)
 
 ## Introduction
 
 In this tutorial, you will learn about Stacks authentication and storage by installing,
-running and reviewing the code for a "Todos" web app built with Stacks authentication and [React](https://reactjs.org/).
+running and reviewing the code for a "Todos" app built with Stacks authentication and storage.
 
 This app highlights the following platform functionality:
 
-- Generate Secret Key with associated BNS username to authenticate app
+- Generate _Secret Key_ with associated BNS username to authenticate app
 - Add, edit and delete encrypted app data with Gaia
 - Decrypt data on Gaia for public sharing by URL
-- Unauthenticate and re-authenticate app with Secret Key
+- Unauthenticate and re-authenticate app with _Secret Key_
 
-[Preview the app](https://todos.blockstack.org) or [view its code on GitHub](https://github.com/blockstack/stacks-todos).
+[Try the app](https://todos.blockstack.org) or [view its code on GitHub](https://github.com/blockstack/todos).
 
-Existing familiarity with React is recommended for reviewing this app's code.
+Existing familiarity with [React](https://reactjs.org/) is recommended for reviewing this app's code.
 
 ## Install and run the app
 
@@ -38,8 +38,7 @@ You must have recent versions of Git and [Node.js](https://nodejs.org/en/downloa
 ### Step 1: Install the code and its dependencies
 
 ```bash
-git clone https://github.com/blockstack/blockstack-todos
-cd blockstack-todos
+git clone https://github.com/blockstack/todos && cd todos
 npm install
 ```
 
@@ -54,7 +53,7 @@ You should see output similar to the following:
 ```bash
 Compiled successfully!
 
-You can now view Stacks-todo in the browser.
+You can now view todos in the browser.
 
     http://localhost:3000/
 
@@ -66,101 +65,79 @@ To create a production build, use yarn build.
 
 You should see the app's landing page:
 
-![The homepage of the todos app](/images/todos-home.png)
+!["Todos app landing" screen](/images/todos/landing.png)
 
 ## Onboard into your first Stacks app
 
 ### Step 1: Choose **Get started** to start onboarding into the app.
 
 The app displays a standardized introductory modal using
-[Stacks authentication](https://github.com/blockstack/stacks.js/tree/master/packages/auth)
+Stacks authentication.
 
-![The Stacks Connect Modal](/images/todos-intro.png)
+![The Stacks Connect Modal](/images/todos/get-started.png)
 
-Below, you can see the relevant parts of the [React component](https://reactjs.org/docs/react-component.html)
-that triggers this modal in [`src/components/Signin.jsx`](https://github.com/blockstack/stacks-todos/blob/master/src/components/Signin.jsx):
+This modal is displayed using the `authenticate` function exported by the `src/stacks.js` module, which organizes all Stacks resources needed across the app:
 
 ```js
-// src/components/Signin.jsx
+// src/stacks.js
 
-import { useConnect } from '@stacks/auth';
+import { AppConfig, UserSession, showBlockstackConnect } from '@stacks/auth';
+import { Person } from '@stacks/profile';
+import { Storage } from '@stacks/storage';
 
-export const Signin = () => {
-  const { doOpenAuth } = useConnect();
+const appConfig = new AppConfig(['store_write', 'publish_data']);
 
-  return <Button onClick={() => doOpenAuth()}>Get Started</Button>;
-};
-```
+export const userSession = new UserSession({ appConfig });
+export const storage = new Storage({ userSession });
 
-This component imports the [React hook](https://reactjs.org/docs/hooks-overview.html)
-[`useConnect`](https://github.com/blockstack/ux/blob/master/packages/connect/src/react/hooks/use-connect.ts)
-from the Stacks authentication library.
-
-`useConnect` returns many helper functions such as
-[`doOpenAuth`](https://github.com/blockstack/ux/blob/master/packages/connect/src/react/hooks/use-connect.ts#L33),
-which triggers this modal upon click of the "Get started" button.
-
-The modal is designed to prepare new users for a different type of relationship with
-Stacks apps, one in which they authenticate with a _Secret Key_ that's used to encrypt
-their private data.
-
-The modal displays the app's name and icon as configured in
-[`src/components/App.jsx`](https://github.com/blockstack/stacks-todos/blob/master/src/components/App.jsx#L26):
-
-```jsx
-// src/components/App.jsx
-
-appDetails: {
-    name: 'Stacks App',
-    icon: window.location.origin + '/favicon.ico'
+export function authenticate(sendToSignIn) {
+  showBlockstackConnect({
+    appDetails: {
+      name: 'Todos',
+      icon: window.location.origin + '/logo.svg',
+    },
+    redirectTo: '/',
+    finished: () => {
+      window.location.reload();
+    },
+    sendToSignIn: sendToSignIn,
+    userSession: userSession,
+  });
 }
 
+export function getUserData() {
+  return userSession.loadUserData();
+}
+
+export function getPerson() {
+  return new Person(getUserData().profile);
+}
 ```
 
-This component loads the [`UserSession`](https://blockstack.github.io/stacks.js/classes/usersession.html)
-module from `@stacks/auth`
+The `authenticate` function implements the `showBlockstackConnect` function imported from the `@stacks/auth` library.
 
-```js
-import { UserSession } from '@stacks/auth';
-import { appConfig } from '../assets/constants';
+`showBlockstackConnect` triggers the display of a modal that initiates the authentication process for users, one in which they'll authenticate with a _Secret Key_ that's used to encrypt their private data.
 
-// ...
+The `showBlockstackConnect` function accepts a number of properties within a parameter object such as:
 
-const userSession = new UserSession({ appConfig });
-```
+- The app's `name` and `icon`: provided as strings comprising the `appDetails` object property.
+- The `redirectTo` string: used to provide a URL to which the user should be redirected upon successful authentication. The `finished` callback serves a similar purpose by handling successful authentication within a context of a popup window.
+- The `sendToSignIn` boolean: used to indicate whether the user should proceed through the "registration" flow (in which they'll be given a newly generated _Secret Key_) or whether they should proceed through the "sign in" flow (in which they'll be prompted to enter an existing _Secret Key_).
+- The `userSession` object: used to pass the [scopes](/authentication/overview#scopes) needed by the app.
 
-This module handles user session operations and is initiated using the
-[`appConfig`](https://github.com/blockstack/stacks-todos/blob/master/src/assets/constants.js#L3) object,
-which contains an array of [scopes](/authentication/overview#scopes) that indicate just what permissions
-to grant during authentication:
+Note how the `userSession` object is created at the beginning of this module by leveraging an `AppConfig` object that's first initiated with all relevant scopes.
 
-```js
-// src/assets/constants.js
+The [`UserSession`](https://blockstack.github.io/stacks.js/classes/usersession.html) and [`AppConfig`](https://blockstack.github.io/stacks.js/classes/appconfig.html) classes are themselves imported from the `@stacks/auth` library.
 
-export const appConfig = new AppConfig(['store_write', 'publish_data']);
-```
-
-The `appDetails` and `userSession` objects are joined by the callback function
-[`finished`](https://github.com/blockstack/stacks-todos/blob/master/src/components/App.jsx#L31)
-in configuring Stacks authentication with the `authOptions` object:
-
-```js
-// src/components/App.jsx
-
-finished: ({ userSession }) => {
-  this.setState({ userData: userSession.loadUserData() });
-};
-```
-
-This function simply saves data about the user into the app's state upon authentication.
-
-Further down in the component we see in
-[`componentDidMount`](https://github.com/blockstack/stacks-todos/blob/master/src/components/App.jsx#L46)
-that it checks upon mount to either process completion of authentication with `userSession.handlePendingSignIn()`
-or otherwise load session data into app state as above with `userSession.isUserSignedIn()`:
+In the separate `src/components/App.jsx` component, we see how
+`componentDidMount` loads the user's data into the app's state, whether upon redirect post-authentication with `userSession.handlePendingSignIn()` or upon detection of an existing session with `userSession.isUserSignedIn()`:
 
 ```jsx
 // src/components/App.jsx
+
+import { userSession } from '../stacks';
+
+...
 
 componentDidMount() {
   if (userSession.isSignInPending()) {
@@ -176,10 +153,10 @@ componentDidMount() {
 
 ### Step 2: Choose **Get started** to generate a _Secret Key_.
 
-The app triggers a popup window in which [the Stacks App](https://github.com/blockstack/ux/tree/master/packages/app)
-is loaded from [`app.blockstack.org`](http://app.blockstack.org/) and begins generating a new _Secret Key_.
+The app triggers a popup window in which [Stacks Connect](https://github.com/blockstack/ux/tree/master/packages/app)
+loads from [`app.blockstack.org`](http://app.blockstack.org/) and begins generating a new _Secret Key_.
 
-![What the UI looks like when a new ID is generated](/images/todos-generation.svg)
+!["Secret Key generation" screen](/images/todos/secret-key-generation.png)
 
 ### Step 3: Choose **Copy Secret Key** to copy your _Secret Key_ to the clipboard.
 
@@ -190,20 +167,19 @@ all of the private data they create and manage with Stacks apps.
 _Secret Keys_ are like strong passwords. However, they can never be recovered if lost or reset if stolen.
 As such, it's paramount that users handle them with great care.
 
-![An example of a secret key](/images/todos-copy-secret-key.svg)
+!["Copy Secret Key" screen](/images/todos/copy-secret-key.png)
 
 ### Step 4: Choose **I've saved it** to confirm you've secured your _Secret Key_ in a suitable place.
 
-![An example of the I've saved it screen](/images/todos-ive-saved-it.svg)
+!["I've saved it" screen](/images/todos/saved-secret-key.png)
 
 ### Step 5: Enter a username value and choose **Continue**
 
 The username will be used by the app to generate a URL for sharing your todos, should you choose to make them public.
 
-It is registered on the Stacks blockchain with [BNS](/core/naming/introduction)
-and associated with your _Secret Key_.
+It is registered on the Stacks blockchain with [BNS](/core/naming/introduction) and associated with your _Secret Key_.
 
-![Choosing a user name example](/images/todos-username.svg)
+!["Choose username" screen](/images/todos/choose-username.png)
 
 ### Done: You've now completed onboarding into the app!
 
@@ -212,17 +188,16 @@ and associated with your _Secret Key_.
 Once you've authenticated the app, you can can start adding todos by entering values into the "Write your to do"
 field and hitting "Enter".
 
-![The authenticated view of the todos app](/images/todos-home-authenticated.svg)
+!["Todos app home" screen](/images/todos/home.png)
 
-The data for all todos are saved as JSON to the Gaia hub linked to your Secret Key using the
-[`putFile`](http://blockstack.github.io/stacks.js/classes/storage.html#putfile) method of the `userSession` object in the
-[`src/assets/data-store.js`](https://github.com/blockstack/blockstack-todos/blob/master/src/assets/data-store.js#L26) module:
+The data for all todos are saved as JSON to the Gaia hub linked to your Secret Key using the [`putFile`](http://blockstack.github.io/stacks.js/classes/storage.html#putfile) method of the `storage` object in the `src/data-store.js` module:
 
 ```jsx
-import { Storage } from '@stacks/storage';
+import { storage } from './stacks';
+
+...
 
 export const saveTasks = async (userSession, tasks, isPublic) => {
-  const storage = new Storage(userSession);
   await storage.putFile(TASKS_FILENAME, JSON.stringify({ tasks, isPublic }), {
     encrypt: !isPublic,
   });
@@ -233,20 +208,23 @@ These todos are subsequently loaded using the [`getFile`](http://blockstack.gith
 method of the same object in the same module:
 
 ```jsx
-import { Storage } from '@stacks/storage';
+import { storage } from './stacks';
+
+...
 
 export const fetchTasks = async (userSession, username) => {
-  const storage = new Storage(userSession);
   const tasksJSON = await storage.getFile(TASKS_FILENAME, {
     decrypt: false,
     username: username || undefined,
   });
-  // code to format and return the tasks
+  ...
 };
 ```
 
+Note how the `storage` object imported here is originally instantiated in the `stacks` module using `new Storage({ userSession });`, where `userSession` is the same object as used with authentication. It's provided here to ensure that all storage calls are made with the user's Gaia hub.
+
 By default, the `putFile` and `getFile` methods automatically encrypt data when saved and decrypt it when retrieved,
-using the user's Secret Key. This ensures that only the user has the ability to view this data.
+using the user's _Secret Key_. This ensures that only the user has the ability to view this data.
 
 When deleting a todo, the same `putFile` method is used to save a new JSON array of todos that excludes the deleted todo.
 
@@ -254,7 +232,7 @@ When deleting a todo, the same `putFile` method is used to save a new JSON array
 
 Select "Make public" to make your todos accessible to the public for sharing via URL.
 
-![Public todos view](/images/todos-public.svg)
+!["Public todos" screen](/images/todos/home-public.png)
 
 This will call `saveTasks` with the `isPublic` parameter set to `true`, which is used to disable encryption when using `putFile`.
 
@@ -264,38 +242,36 @@ The app will now show all of your todos to anyone who visits the URL displayed w
 
 Select "Sign out" to deauthenticate the app with your Stacks account.
 
-This triggers an event, which
-[under the hood](https://github.com/blockstack/stacks-todos/blob/master/src/components/Header.jsx#L47)
-calls the [`signUserOut` method](https://blockstack.github.io/stacks.js/classes/usersession.html#signuserout)
-of the `UserSession` object.
+This calls the [`signUserOut`](https://blockstack.github.io/stacks.js/classes/usersession.html#signuserout) method
+of the `userSession` object within `src/components/Header.jsx`.
 
-Now, visit the URL that was provided to you when you made your tasks public. This url is of the format `/todos/:username`, so if your username is `jane_doe.id.blockstack`, the URL would be [`localhost:3000/todos/jane_doe.id.blockstack`](http://localhost:3000/todos/jane_doe.id.blockstack).
+Now visit the URL that was provided to you when you made your tasks public. This URL has the format `/todos/:username`, so if your username were `janedoe.id.blockstack`, the URL would be `localhost:3000/todos/jane_doe.id.blockstack`.
 
 When you visit this page, the `TodoList.jsx` component detects that there is a username in the URL.
 When there is a username, it calls `fetchTasks`, this time providing the `username` argument. This `username`
-option is then passed to `getFile`, which will lookup where that user's tasks are stored.
+option is then passed to `getFile`, which will look up where that user's tasks are stored.
 
 ## Sign back in
 
 At this point, you will be logged out from the app but not you'll still have an active session with the Stacks
 app itself on [app.blockstack.org](https://app.blockstack.org). Navigate to app.blockstack.org and select "Sign out" there if you want to deauthenticate the Stacks app as well.
 
-Once signed out, select "Sign in" to sign back in with your _Secret Key_.
+Once signed out, select "Sign In" to sign back in with your _Secret Key_.
 
 If you've previously deauthenticated the Stacks app, you'll see a prompt to enter your _Secret Key_:
 
-![An example of a sign in screen](/images/todos-sign-in.svg)
+!["Sign in" screen](/images/todos/sign-in.png)
 
 The above screen will be ommitted if you have an active session with the Stacks app already.
 
 Then you'll be presented with the option to select an existing username associated with your _Secret Key_ or
 create a new one if you wish to authenticate the app with a different identity and data set:
 
-![An example of the choose an account screen](/images/todos-choose-account.svg)
+!["Choose account" screen](/images/todos/choose-account.png)
 
 You'll now see your todos as an authenticated user for the username you've chosen.
 
 ## Learn more
 
-Read [the stacks.js reference](https://blockstack.github.io/stacks.js/) to learn more about the
+Read [the Stacks.js reference](https://blockstack.github.io/stacks.js/) to learn more about the
 libraries used in this tutorial.
