@@ -35,9 +35,9 @@ Scopes define the permissions requested by an app for granting during authentica
 Apps may request any of the following scopes:
 
 | Scope          | Definition                                                                           |
-| -------------- | ------------------------------------------------------------------------------------ |
+| -------------- | ------------------------------------------------------------------------------------ | --- |
 | `store_write`  | Read and write data to the user's Gaia hub in an app-specific storage bucket.        |
-| `publish_data` | Publish data so that other users of the app can discover and interact with the user. |  |
+| `publish_data` | Publish data so that other users of the app can discover and interact with the user. |     |
 
 The permissions scope should be specified through the [`AppConfig`](https://blockstack.github.io/stacks.js/classes/appconfig.html)
 object. If no `scopes` array is provided to the `redirectToSignIn` or `makeAuthRequest` functions, the default is to request `['store_write']`.
@@ -50,11 +50,11 @@ The following is an example manifest file.
 ```json
 {
   "name": "Todo App",
-  "start_url": "http://blockstack-todos.appartisan.com",
+  "start_url": "http://todos.blockstack.org",
   "description": "A simple todo app build on Stacks",
   "icons": [
     {
-      "src": "http://blockstack-todos.appartisan.com/logo.png",
+      "src": "http://todos.blockstack.org/logo.png",
       "sizes": "400x400",
       "type": "image/png"
     }
