@@ -60,7 +60,7 @@ To install Stacks node with extra debugging symbols, run:
 
 ```bash
 cargo build --workspace --bin stacks-node
-# binary will be in target/debug/stacks-node krypton
+# binary will be in target/debug/stacks-node
 ```
 
 -> This process will take a few minutes to complete
@@ -72,13 +72,13 @@ You're all set to run a node that connects to the testnet network.
 If installed without debugging symbols, run:
 
 ```bash
-target/release/stacks-node krypton
+target/release/stacks-node xenon
 ```
 
 If installed with debugging symbols, run:
 
 ```bash
-target/debug/stacks-node krypton
+target/debug/stacks-node xenon
 ```
 
 The first time you run this, you'll see some logs indicating that the Rust code is being compiled. Once that's done, you should see some logs that look something like the this:
@@ -123,7 +123,7 @@ Next, click on save file and Press **Ok** in the popup window.
 Once saved, Extract the binary. Open the command prompt **from the folder where binary is extracted** and execute the below command:
 
 ```bash
-stacks-node krypton
+stacks-node xenon
 # This command will start the testnet follower node.
 ```
 
@@ -135,7 +135,7 @@ To execute Stacks node with extra debugging enabled, run:
 ```bash
 set RUST_BACKTRACE=full
 set BLOCKSTACK_DEBUG=1
-stacks-node krypton
+stacks-node xenon
 # This command will execute the binary and start the follower node with debug enabled.
 ```
 
@@ -164,7 +164,7 @@ docker run -d \
   -p 20443:20443 \
   -p 20444:20444 \
   blockstack/stacks-blockchain:latest \
-/bin/stacks-node krypton
+/bin/stacks-node xenon
 ```
 
 -> The ENV VARS `RUST_BACKTRACE` and `BLOCKSTACK_DEBUG` are optional. If removed, debug logs will be disabled

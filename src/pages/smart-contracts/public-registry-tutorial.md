@@ -184,7 +184,7 @@ Then subscribe for updates of the transaction status by creating a web socket cl
 useEffect(() => {
   let sub;
   const subscribe = async txId => {
-    const client = await connectWebSocketClient('ws://stacks-node-api.krypton.blockstack.org/');
+    const client = await connectWebSocketClient('ws://stacks-node-api.blockstack.org/');
     sub = await client.subscribeTxUpdates(txId, update => {
       console.log(update);
     });

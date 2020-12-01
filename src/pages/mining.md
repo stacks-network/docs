@@ -43,9 +43,9 @@ maxorphantx=1
 banscore=1
 
 [test]
-bind=0.0.0.0:18443
-rpcbind=0.0.0.0:18444
-rpcport=18443
+bind=0.0.0.0:18333
+rpcbind=0.0.0.0:18332
+rpcport=18332
 ```
 
 Finally, start bitcoind as follows: `$ bitcoind -conf=path/to/bitcoin.conf`. It will take a few hours for the node to synchronize with the Bitcoin testnet -- be patient!
@@ -100,8 +100,8 @@ mode = "xenon" # if connecting to Krypton, set this to "krypton"
 peer_host = "127.0.0.1"
 username = "your-bitcoind-username"
 password = "your-bitcoind-password"
-rpc_port = 18443
-peer_port = 18444
+rpc_port = 18333
+peer_port = 18332
 
 [[mstx_balance]]
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
@@ -158,7 +158,7 @@ To read more about the technical details of mining on the Stacks 2.0 network, ha
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
 
 ```bash
-BLOCKSTACK_DEBUG=1 stacks-node krypton
+BLOCKSTACK_DEBUG=1 stacks-node xenon
 ```
 
 ## Running a miner in Windows
@@ -302,6 +302,7 @@ miner = true
 
 [burnchain]
 chain = "bitcoin"
+# For Xenon, set to "xenon" and set `peer_host` to a local bitcoind as covered earlier.
 mode = "krypton"
 peer_host = "bitcoind.krypton.blockstack.org"
 #process_exit_at_block_height = 5340
