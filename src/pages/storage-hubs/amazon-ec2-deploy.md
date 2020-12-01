@@ -13,7 +13,7 @@ disk for file storage.
 
 -> This documentation is appropriate for advanced power users who are familiar with command line tools, `ssh`, and basic editing configuration files.
 
--> If you are planning on running an _open-membership hub_ or an _application-specific hub_, see [the section on Hub Operation](hub-operation).
+-> If you are planning on running an _open-membership hub_ or an _application-specific hub_, see [the Hub Overview](overview).
 
 ## Prerequisites you need
 

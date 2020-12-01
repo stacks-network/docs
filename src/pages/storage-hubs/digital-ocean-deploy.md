@@ -14,7 +14,7 @@ DigitalOcean provides you with a compute machines known as a **Droplets** and st
 
 <p>This documentation is appropriate for advanced power users who are familiar with command line tools, editing configuration files, and basic configuration of services of DNS or Nginx.</p>
 
-<p>If you are planning on running an <em>open-membership hub</em> or an <em>application-specific hub</em>, you'll should see <a href="/storage-hubs/overview">the section on Hub Operation</a></p>.
+<p>If you are planning on running an <em>open-membership hub</em> or an <em>application-specific hub</em>, refer to the <a href="/storage-hubs/overview">Hub Overview</a></p>.
 
 </div>
 
