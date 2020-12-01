@@ -1,29 +1,29 @@
 import React from 'react';
 import {
-  Flex,
   Box,
-  BlockstackIcon,
-  Stack,
-  color,
-  space,
   BoxProps,
   ChevronIcon,
-  FlexProps,
+  color,
   Fade,
+  Flex,
+  FlexProps,
+  space,
+  Stack,
+  StacksLogo,
+  StxInline,
 } from '@stacks/ui';
 import { Link, LinkProps, Text } from '@components/typography';
 import MenuIcon from 'mdi-react/MenuIcon';
 import CloseIcon from 'mdi-react/CloseIcon';
 import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
 
-import { css, ForwardRefExoticComponentWithAs, forwardRefWithAs } from '@stacks/ui-core';
+import { ForwardRefExoticComponentWithAs, forwardRefWithAs } from '@stacks/ui-core';
 import NextLink from 'next/link';
 import { ColorModeButton } from '@components/color-mode-button';
 import { PAGE_WIDTH } from '@common/constants';
 import { border, transition } from '@common/utils';
 import { getCapsizeStyles } from '@components/mdx/typography';
 import { useTouchable } from '@common/hooks/use-touchable';
-import { useRouter } from 'next/router';
 
 const MenuButton = ({ ...rest }: any) => {
   const { isOpen, handleOpen, handleClose } = useMobileMenuState();
@@ -86,8 +86,6 @@ const nav: NavItem[] = [
   { label: 'Discover apps', href: 'https://app.co/' },
 ];
 
-export const HEADER_HEIGHT = 132;
-
 const HeaderTextItem: ForwardRefExoticComponentWithAs<BoxProps & LinkProps, 'a'> = forwardRefWithAs<
   BoxProps & LinkProps,
   'a'
@@ -96,14 +94,14 @@ const HeaderTextItem: ForwardRefExoticComponentWithAs<BoxProps & LinkProps, 'a'>
     color={color('invert')}
     {...{
       ...getCapsizeStyles(16, 26),
-      color: 'currentColor',
-      ...rest,
       fontWeight: '400',
+      color: 'currentColor',
       _hover: {
-        cursor: 'pointer',
+        cursor: href ? 'pointer' : 'unset',
         textDecoration: href ? 'underline' : 'none',
         color: href ? color('accent') : 'currentColor',
       },
+      ...rest,
     }}
     as={as}
     href={href}
@@ -201,28 +199,28 @@ const Navigation: React.FC<BoxProps> = props => {
   );
 };
 
-const LogoLink = () => {
-  const { hover, active, bind } = useTouchable();
+const LogoLink = React.memo(() => {
   return (
     <NextLink href="/" passHref>
-      <Link _hover={{ textDecoration: 'none' }} as="a" display="flex" {...bind}>
+      <Link _hover={{ textDecoration: 'none' }} as="a" display="flex">
         <Flex as="span" alignItems="center">
-          <Box
-            as="span"
-            opacity={hover || active ? 0.75 : 1}
-            color={color('invert')}
-            mr={space('tight')}
+          <StacksLogo color={color('text-title')} />
+          <HeaderTextItem
+            fontWeight="500"
+            fontSize={1}
+            ml="tight"
+            pt="5px"
+            textTransform="uppercase"
+            color={color('text-caption')}
+            _hover={{ color: color('text-caption') }}
           >
-            <BlockstackIcon size="20px" />
-          </Box>
-          <HeaderTextItem as="span" transform="translateY(1px)">
-            Blockstack
+            Docs
           </HeaderTextItem>
         </Flex>
       </Link>
     </NextLink>
   );
-};
+});
 
 const Header = ({ hideSubBar, ...rest }: any) => {
   return (
