@@ -16,8 +16,12 @@ description: Summary of technical specifications of Stacks 2.0
   - 500 STX/block for following 4 years
   - 250 STX/block for subsequent 4 years
   - 125 STX/block in perpetuity after that
+- Coinbase rewards accumulate for "missed sortitions": If a Bitcoin block has no sortition (at height N), then any Stacks block mined in a subsequent sortition that builds off of any Stacks chain tip that existed at the penultimate sortition (at height N-1) may claim its coinbase. This encourages miners to keep mining even if Bitcoin fees are high.
+- Initial mining bonus: This is a special case of the above to incentivize early miners. Coinbase for all burnchain blocks between the first burn block height (to be chosen by independent miners as part of the Stacks 2.0 launch) and the first sortition winner accumulate and are distributed to miners over a fixed window (to be determined). For instance, say burn block height is 10000 and first sortition is at block 10500 and distribution window is 100 blocks, then coinbase for the first 500 blocks (10500 - 10000) will be distributed evenly to miners who win sortition over the subsequent 100 blocks.
 - Reward maturity window: 100 blocks, meaning leaders will earn the coinbase reward 100 blocks after the block they successfully mine.
 - Block interval: Stacks blockchain produces blocks at the same rate as the underlying burnchain. For Bitcoin, this is approximately every 10 minutes.
+- BTC commitment: Miners must commit atleast 11,000 satoshis (5500 sats / UTXO output; 2 outputs / block) to avoid "dust".
+- For more details, see [Mining](/stacks-blockchain/mining).
 
 ## Stacking
 
