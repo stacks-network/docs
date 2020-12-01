@@ -162,7 +162,7 @@ Public key, address, and port stacks-node should use to pull transaction data fr
 Example:
 
 ```toml
-bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@krypton.blockstack.org:20444"
+bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
 ```
 
 #### wait_time_for_microblocks (optional)
@@ -362,7 +362,7 @@ The profile or test phase of which to run stacks-node. Valid values are `"mockne
 Example:
 
 ```toml
-mode = "krypton"
+mode = "xenon"
 ```
 
 #### peer_host
@@ -372,7 +372,7 @@ Domain name of the host running the backend Bitcoin blockchain.
 Example:
 
 ```toml
-peer_host = "bitcoind.krypton.blockstack.org"
+peer_host = "bitcoind.xenon.blockstack.org"
 ```
 
 #### rpc_port
