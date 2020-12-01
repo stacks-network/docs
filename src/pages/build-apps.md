@@ -1,6 +1,6 @@
 ---
-title: Building decentralized apps
-description: Overview and guides for getting started building decentralized applications.
+title: Building apps with Stacks
+description: Resources for getting started with building apps on the network
 images:
   large: /images/pages/build-apps.svg
   sm: /images/pages/build-apps-sm.svg
@@ -8,7 +8,7 @@ images:
 
 ## Introduction
 
-Prefer to jump right in? Get started with this tutorial where you’ll create a decentralized to-do list app.
+Prefer to jump right in? Get started with this tutorial where you’ll learn by reviewing the code for a todos app built with Stacks.
 
 [@page-reference | inline]
 | /authentication/building-todo-app
