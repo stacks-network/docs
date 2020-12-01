@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import React, { Children } from 'react';
 import {
   Box,
@@ -14,7 +13,6 @@ import {
 import { ClipboardCheckIcon } from '@components/icons/clipboard-check';
 import { border, onlyText } from '@common/utils';
 import { css, ForwardRefExoticComponentWithAs, forwardRefWithAs, Theme } from '@stacks/ui-core';
-import { jsx } from '@emotion/react';
 import { Text } from '@components/typography';
 import { useHover } from 'use-events';
 import { IconButton } from '@components/icon-button';
