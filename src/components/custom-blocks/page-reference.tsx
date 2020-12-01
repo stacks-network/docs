@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, BoxProps, color, Grid, space } from '@stacks/ui';
+import { Box, Flex, BoxProps, color, Grid, space, StxInline } from '@stacks/ui';
 import { BlockstackLogo } from '@components/icons/blockstack-logo';
 import { StackIcon } from '@components/icons/stack';
 import { SitemapIcon } from '@components/icons/sitemap';
@@ -227,7 +227,11 @@ const GridCard: React.FC<BoxProps & { page?: any }> = React.memo(({ page, ...res
 const getIcon = (icon: string) => {
   switch (icon) {
     case 'BlockstackIcon':
-      return (p: BoxProps) => <BlockstackLogo size="32px" color="#9985FF" {...p} />;
+      return (p: BoxProps) => (
+        <Grid borderRadius="6px" placeItems="center" bg="#9985FF" size="32px" {...p}>
+          <StxInline size="20px" color={color('bg')} />
+        </Grid>
+      );
     case 'StacksIcon':
       return (p: BoxProps) => (
         <Grid borderRadius="6px" style={{ placeItems: 'center' }} bg="#9985FF" size="32px" {...p}>
