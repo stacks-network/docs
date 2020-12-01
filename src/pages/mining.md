@@ -94,7 +94,8 @@ miner = true
 [burnchain]
 chain = "bitcoin"
 mode = "xenon" # if connecting to Krypton, set this to "krypton"
-# To mine on Xenon, you need to run bitcoind locally (details below)
+# To mine on Xenon, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
 # For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and
 # omit `username` and `password`
 peer_host = "127.0.0.1"
@@ -140,7 +141,7 @@ The above code will compile an optimized binary. To use it, run:
 
 ```bash
 cd ../..
-./target/release/stacks-node start --config=./testnet/conf/krypton-follower-conf.toml
+./target/release/stacks-node start --config=./testnet/conf/xenon-follower-conf.toml
 ```
 
 For a full reference of subcommands and configuration options used by `stacks-node`, please see this page.
@@ -209,20 +210,23 @@ Paste in the following configuration:
 [node]
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@testnet-miner.blockstack.org:20444"
+bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
 # Enter your private key here!
 seed = "replace-with-your-private-key"
 miner = true
 
 [burnchain]
 chain = "bitcoin"
-mode = "krypton"
-peer_host = "bitcoind.blockstack.org"
-#process_exit_at_block_height = 5340
-#burnchain_op_tx_fee = 5500
-#commit_anchor_block_within = 10000
-rpc_port = 18443
-peer_port = 18444
+mode = "xenon" # if connecting to Krypton, set this to "krypton"
+# To mine on Xenon, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
+# For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and
+# omit `username` and `password`
+peer_host = "127.0.0.1"
+username = "your-bitcoind-username"
+password = "your-bitcoind-password"
+rpc_port = 18333
+peer_port = 18332
 
 [[mstx_balance]]
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
@@ -296,20 +300,23 @@ Inside the new `$HOME/stacks` folder, you should create a new miner config `Conf
 working_dir = "/root/stacks-node/current"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
+bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
 # Enter your private key here!
 seed = "replace-with-your-privateKey-from-generate-keychain-step"
 miner = true
 
 [burnchain]
 chain = "bitcoin"
-# For Xenon, set to "xenon" and set `peer_host` to a local bitcoind as covered earlier.
-mode = "krypton"
-peer_host = "bitcoind.krypton.blockstack.org"
-#process_exit_at_block_height = 5340
-#burnchain_op_tx_fee = 5500
-#commit_anchor_block_within = 10000
-rpc_port = 18443
-peer_port = 18444
+mode = "xenon" # if connecting to Krypton, set this to "krypton"
+# To mine on Xenon, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
+# For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and
+# omit `username` and `password`
+peer_host = "127.0.0.1"
+username = "your-bitcoind-username"
+password = "your-bitcoind-password"
+rpc_port = 18333
+peer_port = 18332
 
 [[mstx_balance]]
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
@@ -335,6 +342,7 @@ amount = 10000000000000000
 docker run -d \
   --name stacks_miner \
   --rm \
+  --network host \
   -e RUST_BACKTRACE="full" \
   -e BLOCKSTACK_DEBUG="1" \
   -v "$HOME/stacks/Config.toml:/src/stacks-node/Config.toml" \
