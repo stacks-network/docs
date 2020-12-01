@@ -4,7 +4,6 @@ import { Box, Flex, ChevronIcon, space, color, Grid } from '@stacks/ui';
 import hydrate from 'next-mdx-remote/hydrate';
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@reach/accordion';
 import { border } from '@common/utils';
-import { css } from '@stacks/ui-core';
 import { useRouter } from 'next/router';
 import { useActiveHeading } from '@common/hooks/use-active-heading';
 import { BackButton } from '@components/back-button';
@@ -29,12 +28,15 @@ const FAQItem = React.memo(({ faq, ...rest }: any) => {
             display: 'flex',
             width: '100%',
             outline: 'none',
+            bg: 'transparent',
+            border: '0',
             alignItems: 'center',
             justifyContent: 'space-between',
             py: space('extra-loose'),
             textAlign: 'left',
             color: isActive ? color('accent') : color('text-title'),
             _hover: {
+              cursor: 'pointer',
               color: color('accent'),
             },
           }}

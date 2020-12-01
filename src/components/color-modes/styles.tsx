@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import * as React from 'react';
 import { jsx, css, Global } from '@emotion/react';
 import { theme, generateCssVariables } from '@stacks/ui';
