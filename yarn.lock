@@ -1606,6 +1606,11 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.21.tgz#86d962471a5e160c59a6b32054aa55c0c7ca404e"
   integrity sha512-CgSNT9sq2LAlhEbVlPg7DwUQkypz+CWaWGcJbkgmp9WCAy6vW33CQ44UbKPiH3wet9o+UbXeQOqzZd041va83g==
 
+"@mdx-js/react@^1.6.22":
+  version "1.6.22"
+  resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.22.tgz#ae09b4744fddc74714ee9f9d6f17a66e77c43573"
+  integrity sha512-TDoPum4SHdfPiGSAaRBw7ECyI8VaHpK8GJugbJIJuqyh6kzw9ZLJZW3HGL3NNrJGxcAixUvqROm+YuQOo5eXtg==
+
 "@mdx-js/util@1.6.21":
   version "1.6.21"
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.21.tgz#25f97a0a1b76e78c16ae5d98c6c73e1be8d89e39"
@@ -1832,27 +1837,27 @@
   dependencies:
     type-detect "4.0.8"
 
-"@stacks/ui-core@^1.0.0-beta.6", "@stacks/ui-core@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@stacks/ui-core/-/ui-core-1.0.1.tgz#20838d2b8eb12b6ec39b037edc24d9d6e6a16d20"
-  integrity sha512-WwIoPu/nukascVtlh7ubtCCaEtHkqgbTibSpocNc8Ni3I1jXuRtzfU4ncHIrbjhF3IG3MFqsJ/DH8kcM2cUSjA==
+"@stacks/ui-core@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@stacks/ui-core/-/ui-core-6.0.0.tgz#c9fdabdb905d4249a6a76e53f65eeb4e96b9bfcd"
+  integrity sha512-TW1aeuTUS+5N1RRA4+FnR77W/M7TqdCYoDguknJ95QPhRE7//Gc6KwrBNuvYzuHseF7qkm5IiudZrwpRSsFYjw==
   dependencies:
     "@styled-system/should-forward-prop" "^5.1.5"
     camelcase "^6.0.0"
     micro-memoize "^4.0.9"
 
-"@stacks/ui-theme@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@stacks/ui-theme/-/ui-theme-1.1.2.tgz#5d8b7d15a7a25ce6e17ca2a4201dad8be36af0fb"
-  integrity sha512-CQ+mLH6B5Wy2WKFNC0JNQ09xVbzTkZhgJBu709p2GxTP2LHNHcEDwwykIlb2WdrXZqzKs9XNRZe6XvSDPVsI+Q==
+"@stacks/ui-theme@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@stacks/ui-theme/-/ui-theme-6.0.0.tgz#0f754477e56be4f28ce408ca5d7d13fb8ef03214"
+  integrity sha512-TS+NkZMdPwvSPILpNYLrrEWN/PAQ/NlGDOEHv+742G3p/f/fpMn1mDOiAjh+qSFMuVbX7Xi0EVaICHfshuYofw==
   dependencies:
     type-fest "^0.20.2"
     typescript "^4.1.2"
 
-"@stacks/ui-utils@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@stacks/ui-utils/-/ui-utils-1.0.1.tgz#df10608bd7df46c3af940b5abea314d7586774b0"
-  integrity sha512-NnvATN+FaurlKWXul9rSdeAQQ8PJe+nY4zER+gW7amd1bvOqvUN51723mspIyl95PvKGANE/Ka4lzqIDMKNY5g==
+"@stacks/ui-utils@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@stacks/ui-utils/-/ui-utils-6.0.0.tgz#da85b3f64d8630aee74aad4cc41508cb6258e711"
+  integrity sha512-e6hq0/cf+yFM9wH9N4wv3fZkwH2YM4OW+Q8BeuacAHNzmDeaDKjz3VKaGx44qTg5Ix4FDU5mJn9J961Lq1bEWg==
   dependencies:
     "@blockstack/stacks-blockchain-api-types" "^0.34.1"
     "@types/big.js" "^6.0.0"
@@ -1861,18 +1866,18 @@
     type-fest "^0.20.2"
     typescript "^4.1.2"
 
-"@stacks/ui@^3.0.0-alpha.16":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@stacks/ui/-/ui-3.0.1.tgz#50f8087bdb52d2375ccb347a13d4de2e8dcbeda8"
-  integrity sha512-Z1fsZIFS2CyxtOMJn14r9lVdiiFi/csJIwiTVGp/h1+N6tQsc/zG0hErVfOZmoej6GgQ8T8uNI5Z39vPOL570w==
+"@stacks/ui@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@stacks/ui/-/ui-6.0.0.tgz#f5dfa1f7b00221df9200eff67a3a57cd6d21a7fc"
+  integrity sha512-tVWd8FFooOjoEqVNItrDhlctwmy76J8qodk4nA3fUbID1gkRpaz7dwT8BzscFGiuDBWyhsRyKCHTvCA874H5vg==
   dependencies:
     "@popperjs/core" "^2.4.0"
     "@reach/alert" "^0.12.1"
     "@reach/auto-id" "^0.12.1"
     "@reach/rect" "^0.12.1"
-    "@stacks/ui-core" "^1.0.1"
-    "@stacks/ui-theme" "^1.1.2"
-    "@stacks/ui-utils" "^1.0.1"
+    "@stacks/ui-core" "^6.0.0"
+    "@stacks/ui-theme" "^6.0.0"
+    "@stacks/ui-utils" "^6.0.0"
     "@styled-system/should-forward-prop" "^5.1.5"
     "@styled-system/theme-get" "^5.1.2"
     "@types/flushable" "^1.0.1"
@@ -10848,10 +10853,15 @@ stylis@3.5.4:
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.5.4.tgz#f665f25f5e299cf3d64654ab949a57c768b73fbe"
   integrity sha512-8/3pSmthWM7lsPBKv7NXkzn2Uc9W7NotcwGNpJaa3k7WMM1XDCA4MgT5k/8BIexd5ydZdboXtU90XH9Ec4Bv/Q==
 
-stylis@^4.0.2, stylis@^4.0.3:
+stylis@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-4.0.3.tgz#0d714765f3f694a685550f0c45411ebf90a9bded"
   integrity sha512-iAxdFyR9cHKp4H5M2dJlDnvcb/3TvPprzlKjvYVbH7Sh+y8hjY/mUu/ssdcvVz6Z4lKI3vsoS0jAkMYmX7ozfA==
+
+stylis@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/stylis/-/stylis-4.0.4.tgz#5a86047c87928e9a6afc76dafcb03acba69115e0"
+  integrity sha512-V52wqQLk+xZW2v6dpiz1HEa/inSigsK/S+GjMJBrXQK/Xu2R7gHDzeJkdXIxDSiLu57ageN8HNuZCehATlQq2A==
 
 supports-color@^5.3.0:
   version "5.5.0"
