@@ -56,7 +56,9 @@ The miner who is selected to mine the next block is chosen depending on the amou
 
 The probability for a miner to mine next block equals the BTC miner send devided by the total BTC all miners send.
 
-The minimum amount to sent is 20,000 sats. To calculate the amount of BTC to send miners should:
+While there is no minimum BTC commitment enforced by the protocol, in practice, miners need to commit at least 11,000 satoshis: this is because each transaction includes two UTXO outputs for Proof-of-Transfer, and UTXOs smaller than 5500 satoshis run the risk of being treated as "[dust](https://unchained-capital.com/blog/dust-thermodynamics/)".
+
+To calculate the amount of BTC to send miners should:
 
 - Guess the price BTC/STX for the next day (100 blocks later)
 - Guess the total amount of BTCs committed by all miners
