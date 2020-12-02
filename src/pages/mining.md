@@ -48,7 +48,13 @@ rpcbind=0.0.0.0:18332
 rpcport=18332
 ```
 
-Finally, start bitcoind as follows: `$ bitcoind -conf=path/to/bitcoin.conf`. It will take a few hours for the node to synchronize with the Bitcoin testnet -- be patient!
+Finally, start bitcoind as follows:
+
+```bash
+bitcoind -conf=path/to/bitcoin.conf
+```
+
+It will take a few hours for the node to synchronize with the Bitcoin testnet -- be patient!
 
 ## Running a miner
 
@@ -82,7 +88,7 @@ The above BTC address will then need to be imported into the BTC testnet network
 bitcoin-cli -rpcport=18332 -rpcuser=your-user -rpcpassword=your-password importaddress <btcAddress from JSON above>
 ```
 
-Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address.
 
 Now, we need to configure our node to use this Bitcoin keychain. In the `stacks-blockchain` folder, create a new file called `testnet/stacks-node/conf/testnet-miner-conf.toml`.
 
