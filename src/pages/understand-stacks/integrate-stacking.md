@@ -181,9 +181,9 @@ With this input, and the data from previous steps, we can determine the eligibil
 ```js
 // user supplied parameters
 let btcAddress = '1Xik14zRm29UsyS6DjhYg4iZeZqsDa8D3';
-let cycles = 3;
+let numberOfCycles = 3;
 
-const stackingEligibility = await client.canStack({ btcAddress, cycles });
+const stackingEligibility = await client.canStack({ btcAddress, numberOfCycles });
 
 // stackingEligibility:
 // {
@@ -203,25 +203,20 @@ If the user is eligible, the stacking action should be enabled on the UI. If not
 Next, the Stacking action should be executed.
 
 ```js
-// specify the reward BTC address
-const btcAddress = '1Xik14zRm29UsyS6DjhYg4iZeZqsDa8D3';
-
 // set the amount to lock in microstacks
 const amountMicroStx = new BN(100000000000);
 
-// set the number of cycles to lock
-const cycles = 10;
-
 // set the burnchain (BTC) block for stacking lock to start
 // you can find the current burnchain block height from coreInfo above
-const burnBlockHeight = 2136;
+// and adding 3 blocks to provide a buffer for transaction to confirm
+const burnBlockHeight = 2133 + 3;
 
 // execute the stacking action by signing and broadcasting a transaction to the network
 client
   .stack({
     amountMicroStx,
-    poxAddress,
-    cycles,
+    poxAddress: btcAddress,
+    cycles: numberOfCycles,
     privateKey,
     burnBlockHeight,
   })
