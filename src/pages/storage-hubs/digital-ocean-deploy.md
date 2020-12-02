@@ -339,17 +339,14 @@ You should have the console open as `root` on your Droplet. In this section, you
    }
    ```
 
-
-
- You'll find that the `driver` is set to `aws`. The DigitalOcean space API exactly mimics the S3 API. Since Gaia doesn't have a DigitalOcean driver, you can just use the `aws` driver with some special configuration.
+You'll find that the `driver` is set to `aws`. The DigitalOcean space API exactly mimics the S3 API. Since Gaia doesn't have a DigitalOcean driver, you can just use the `aws` driver with some special configuration.
 
 5. Set the `serverName` to the droplet you just created.
 6. Set the `readURL` to the URL of the DigitalOcean space you just created.
 
- If your space URL called `https://meepers-hub-space.sfo2.digitaloceanspaces.com `, the `readURL` name is `https://meepers-hub-space.sfo2.digitaloceanspaces.com`.
-7. Set the `bucket` to the name of the DigitalOcean space you just created.
+If your space URL called `https://meepers-hub-space.sfo2.digitaloceanspaces.com `, the `readURL` name is `https://meepers-hub-space.sfo2.digitaloceanspaces.com`. 7. Set the `bucket` to the name of the DigitalOcean space you just created.
 
- If your space is called `meepers-hub-space`, the `bucket` value is `meepers-hub-space`.
+If your space is called `meepers-hub-space`, the `bucket` value is `meepers-hub-space`.
 
 8.  Go back to your DigitalOcean dashboard open to your space key.
 9.  Copy the **Key** and paste it into the `accessKeyId` value in the `config.json` file.
@@ -357,43 +354,43 @@ You should have the console open as `root` on your Droplet. In this section, you
 11. In the DigitalOcean dashboard, choose the Spaces page.
 12. Copy the section of your space URL that follows the name.
 
-  ![Space endpoint](/images/space-endpoint.png)
+![Space endpoint](/images/space-endpoint.png)
 
-  In this example, you would copy the `sfo2.digitaloceanspaces.com` section.
+In this example, you would copy the `sfo2.digitaloceanspaces.com` section.
 
 13. Paste the string you copied into the `endpoint` value.
 
 14. Ensure the `proofsRequired` value is set to the number `0` (zero).
 
-  This will allow Stacks user to write to your Gaia hub, without any social proofs required. You can change this later on, and do other things to lock-down this Gaia hub to just yourself, but that is outside the scope of this document.
+This will allow Stacks user to write to your Gaia hub, without any social proofs required. You can change this later on, and do other things to lock-down this Gaia hub to just yourself, but that is outside the scope of this document.
 
-  At this point, the `json.config` file should be completed and appear similar to the following &&mdash;; but with your values.
+At this point, the `json.config` file should be completed and appear similar to the following &&mdash;; but with your values.
 
 ```json
-  {
-    "serverName": "moxie-gaiahub",
-    "port": 4000,
-    "driver": "aws",
-    "readURL": "https://meepers-hub-space.sfo2.digitaloceanspaces.com",
-    "proofsConfig": {
-        "proofsRequired": 0
-    },
-    "pageSize": 20,
-    "bucket": "meepers-hub-space",
-    "awsCredentials": {
-      "endpoint": "sfo2.digitaloceanspaces.com",
-      "accessKeyId": "fb3J7AT/PGMGMPOA86EFLpx8IjGZQib99eXWjVR+QK0",
-      "secretAccessKey": "9ac685342eaa5bc4b44c13f3ecf43b001a3bdb9e2257114d44394d410dd91f66"
-    },
-    "argsTransport": {
-      "level": "debug",
-      "handleExceptions": true,
-      "stringify": true,
-      "timestamp": true,
-      "colorize": false,
-      "json": true
-    }
+{
+  "serverName": "moxie-gaiahub",
+  "port": 4000,
+  "driver": "aws",
+  "readURL": "https://meepers-hub-space.sfo2.digitaloceanspaces.com",
+  "proofsConfig": {
+    "proofsRequired": 0
+  },
+  "pageSize": 20,
+  "bucket": "meepers-hub-space",
+  "awsCredentials": {
+    "endpoint": "sfo2.digitaloceanspaces.com",
+    "accessKeyId": "fb3J7AT/PGMGMPOA86EFLpx8IjGZQib99eXWjVR+QK0",
+    "secretAccessKey": "9ac685342eaa5bc4b44c13f3ecf43b001a3bdb9e2257114d44394d410dd91f66"
+  },
+  "argsTransport": {
+    "level": "debug",
+    "handleExceptions": true,
+    "stringify": true,
+    "timestamp": true,
+    "colorize": false,
+    "json": true
   }
+}
 ```
 
 15. Save your config file and close the `vim` editor.
