@@ -19,7 +19,7 @@ const getUrl = pathname => {
 };
 
 const useImgix = (src: string) => {
-  if (process.env.NEXT_PUBLIC_STAGING || process.env.NODE_ENV !== 'production' || !src)
+  if (process.env.NODE_ENV !== 'production' || process.env.VERCEL_ENV !== 'production' || !src)
     return {
       src,
       srcset: undefined,
