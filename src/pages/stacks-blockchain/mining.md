@@ -56,7 +56,7 @@ The miner who is selected to mine the next block is chosen depending on the amou
 
 The probability for a miner to mine next block equals the BTC miner send devided by the total BTC all miners send.
 
-While there is no minimum BTC commitment enforced by the protocol, in practice, miners need to commit at least 11,000 satoshis: this is because each transaction includes two UTXO outputs for Proof-of-Transfer, and UTXOs smaller than 5500 satoshis run the risk of being treated as "[dust](https://unchained-capital.com/blog/dust-thermodynamics/)".
+While there is no minimum BTC commitment enforced by the protocol, in practice, there's a floor constrained by [dust](https://unchained-capital.com/blog/dust-thermodynamics/)": basically, if the fees for a transaction exceed the value of the spent output, it's considered dust. How dust is [calculated](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.cpp#L14) depends on a number of factors, we've found 5,500 satoshis to be good lower bound per [output](https://learnmeabitcoin.com/technical/output). Bitcoin transactions from Stacks miners contain two outputs (for Proof-of-Transfer), so a commitment of at least 11,000 satoshis / block is recommended.
 
 To calculate the amount of BTC to send miners should:
 
