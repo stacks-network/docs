@@ -8,10 +8,13 @@ images:
 
 ## Introduction
 
-Prefer to jump right in? Get started with this tutorial where you’ll learn by reviewing the code for a todos app built with Stacks.
+Prefer to jump right in? Get started with these tutorials such as creating a decentralized to-do list app
 
 [@page-reference | inline]
 | /authentication/building-todo-app
+
+[@page-reference | inline]
+| /authentication/building-with-angular
 
 ## What are decentralized apps?
 

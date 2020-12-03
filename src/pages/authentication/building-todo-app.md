@@ -1,6 +1,6 @@
 ---
-title: Review Todos app
-description: Learn about Stacks authentication and storage by reviewing simple app
+title: Building a Todo app
+description: Learn how to integrate authentication and data storage with React.
 experience: beginners
 duration: 30 minutes
 tags:
