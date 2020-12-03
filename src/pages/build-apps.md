@@ -1,6 +1,6 @@
 ---
 title: Building apps with Stacks
-description: Resources for getting started with building apps on the network
+description: Resources for getting started with building apps on the Stacks blockchain
 images:
   large: /images/pages/build-apps.svg
   sm: /images/pages/build-apps-sm.svg
