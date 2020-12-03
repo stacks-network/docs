@@ -1,18 +1,15 @@
 ---
-title: Building an app with Angular
-description: Learn how to integrate authentication within an Angular application
+title: Stacks Auth with Angular
+description: How to integrate authentication within an Angular application
 experience: beginners
 duration: 30 minutes
 tags:
   - tutorial
-# images:
-#   large: /images/pages/todo-app.svg
-#   sm: /images/pages/todo-app-sm.svg
+images:
+  sm: /images/pages/angular-app-sm.svg
 ---
 
 # Building an with Angular
-
-<!-- ![What you'll be creating in this tutorial](/images/todo-list-app.png) -->
 
 ## Getting started with Angular
 
@@ -36,9 +33,12 @@ Use the `ng new` command to scaffold a new project. We've named ours `ng-stacks-
 ng new --minimal --inline-style --inline-template
 ```
 
-Inside the newly created `ng-stacks-connect` directory, we can boot up the development server on [localhost:4200](http://localhost:4200).
+You'll be asked to enter some preferences: whether your app with use routing, and whether you want to use a CSS preprocessor like SASS. For sake of this tutorial, we're keeping things simple. No routing. No preprocessing.
+
+Inside the newly created `ng-stacks-connect` directory, let's boot up the development server which defaults to [localhost:4200](http://localhost:4200).
 
 ```sh
+cd ng-stacks-connect
 ng serve
 ```
 
@@ -85,9 +85,9 @@ We can use the CLI's generator to scaffold components.
 ng generate component
 ```
 
-Enter the name: `stacks-sign-in-button`. You'll find the newly generated component in `src/app/stacks-sign-in-button`.
+Enter the name: `stacks-sign-in-button`. You'll find the newly generated component in `src/app/stacks-sign-in-button/stacks-sign-in-button.component.ts`.
 
-Here's our Sign In button component
+Here's our Sign In button component. Let's replace this example with the following code.
 
 ```typescript
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
@@ -103,7 +103,7 @@ export class StacksSignInButtonComponent {
 
 ### 4.2 Connecting Stacks Connect
 
-Let's add this button to our `app-root` component (`app.component.ts`) and wire up the `(onSignIn)` event.
+Let's add this button to our `app-root` component (`app.component.ts`) and wire up the `(onSignIn)` event. Make sure to import `Subject` from `rxjs`.
 
 ```typescript
 @Component({
@@ -121,7 +121,7 @@ Here we're using an Rxjs `Subject` to represent a stream of sign in events. `sta
 
 ### 4.3 Authentication
 
-First, describe the auth options we need to pass to Connect. [Learn more about `AuthOptions` here](https://docs.blockstack.org/authentication/overview).
+First, describe the auth options we need to pass to Connect. [Learn more about `AuthOptions` here](https://docs.blockstack.org/authentication/overview). Let's modify the default component to look like this:
 
 ```typescript
 import { Component } from '@angular/core';
@@ -165,9 +165,10 @@ The output of `authResponse$` can be added to the template for debugging purpose
 
 ### 4.3 Loading text
 
-One problem with the current implementation is that there's a network delay while waiting to load the Connect library. Let's keep track of the loading state and display some text in the sign in button component.
+One problem with the current implementation is that there's a network delay while waiting to load the Connect library. Let's keep track of the loading state and display some text in the sign in button component. You'll need to `import { tap, switchMap } from 'rxjs/operators';`.
 
 ```typescript
+// src/app/app.component.ts
 isLoadingConnect$ = new BehaviorSubject(false);
 
 ngOnInit() {
@@ -201,6 +202,7 @@ export class StacksSignInButtonComponent {
 Then, pass the `isLoadingConnect$` Observable into the component, and hide it when the user has already authenticated.
 
 ```html
+// Edit src/app/app.component.ts
 <app-stacks-sign-in-button
   *ngIf="!(authResponse$ | async)"
   (onSignIn)="stacksAuth$.next()"
@@ -208,6 +210,6 @@ Then, pass the `isLoadingConnect$` Observable into the component, and hide it wh
 ></app-stacks-sign-in-button>
 ```
 
-## Next steps
+### Next steps
 
 This tutorial has shown you how to integrate Stacks Connect with an Angular application. You may want to consider abstracting the Stacks Connect logic behind an [Angular service](https://angular.io/guide/architecture-services), or using [Material Design](https://material.angular.io/) to theme your application.
