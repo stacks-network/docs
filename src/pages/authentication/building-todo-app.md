@@ -81,7 +81,7 @@ This modal is displayed using the `authenticate` function exported by the `src/s
 ```js
 // src/stacks.js
 
-import { AppConfig, UserSession, showBlockstackConnect } from '@stacks/auth';
+import { AppConfig, UserSession, showConnect } from '@stacks/auth';
 import { Person } from '@stacks/profile';
 import { Storage } from '@stacks/storage';
 
@@ -90,8 +90,8 @@ const appConfig = new AppConfig(['store_write', 'publish_data']);
 export const userSession = new UserSession({ appConfig });
 export const storage = new Storage({ userSession });
 
-export function authenticate(sendToSignIn) {
-  showBlockstackConnect({
+export function authenticate() {
+  showConnect({
     appDetails: {
       name: 'Todos',
       icon: window.location.origin + '/logo.svg',
@@ -100,7 +100,6 @@ export function authenticate(sendToSignIn) {
     finished: () => {
       window.location.reload();
     },
-    sendToSignIn: sendToSignIn,
     userSession: userSession,
   });
 }
@@ -114,15 +113,14 @@ export function getPerson() {
 }
 ```
 
-The `authenticate` function implements the `showBlockstackConnect` function imported from the `@stacks/auth` library.
+The `authenticate` function implements the `showConnect` function imported from the `@stacks/auth` library.
 
-`showBlockstackConnect` triggers the display of a modal that initiates the authentication process for users, one in which they'll authenticate with a _Secret Key_ that's used to encrypt their private data.
+`showConnect` triggers the display of a modal that initiates the authentication process for users, one in which they'll authenticate with a _Secret Key_ that's used to encrypt their private data.
 
-The `showBlockstackConnect` function accepts a number of properties within a parameter object such as:
+The `showConnect` function accepts a number of properties within a parameter object such as:
 
 - The app's `name` and `icon`: provided as strings comprising the `appDetails` object property.
 - The `redirectTo` string: used to provide a URL to which the user should be redirected upon successful authentication. The `finished` callback serves a similar purpose by handling successful authentication within a context of a popup window.
-- The `sendToSignIn` boolean: used to indicate whether the user should proceed through the "registration" flow (in which they'll be given a newly generated _Secret Key_) or whether they should proceed through the "sign in" flow (in which they'll be prompted to enter an existing _Secret Key_).
 - The `userSession` object: used to pass the [scopes](/authentication/overview#scopes) needed by the app.
 
 Note how the `userSession` object is created at the beginning of this module by leveraging an `AppConfig` object that's first initiated with all relevant scopes.
