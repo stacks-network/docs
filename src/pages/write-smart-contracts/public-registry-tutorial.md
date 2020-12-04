@@ -49,7 +49,7 @@ npm run start
 ```
 
 In your browser, you should see the to-do app.
-![What you the to-do app looks like so far](/images/todo-list-app.png)
+![What the to-do app looks like so far](/images/todos/landing.png)
 
 ## Registering a public URL
 
