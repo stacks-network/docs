@@ -10,7 +10,7 @@ images:
   sm: /images/pages/todo-app-sm.svg
 ---
 
-# Learn from Todos app with Stacks
+# Learn from a todos app built with Stacks
 
 ![What you'll be studying in this tutorial](/images/todos/home.png)
 
@@ -65,14 +65,14 @@ To create a production build, use yarn build.
 
 You should see the app's landing page:
 
-!["Todos app landing" screen](/images/todos/landing.png)
+!["Todos" app landing screen](/images/todos/landing.png)
 
 ## Onboard into your first Stacks app
 
 ### Step 1: Choose **Get started** to start onboarding into the app.
 
 The app displays a standardized introductory modal using
-Stacks authentication.
+Stacks Connect.
 
 ![The Stacks Connect Modal](/images/todos/get-started.png)
 
@@ -81,7 +81,7 @@ This modal is displayed using the `authenticate` function exported by the `src/a
 ```js
 // src/auth.js
 
-import { AppConfig, UserSession, showConnect } from '@stacks/auth';
+import { AppConfig, UserSession, showConnect } from '@stacks/connect';
 import { Person } from '@stacks/profile';
 
 const appConfig = new AppConfig(['store_write', 'publish_data']);
@@ -111,7 +111,7 @@ export function getPerson() {
 }
 ```
 
-The `authenticate` function implements the `showConnect` function imported from the `@stacks/auth` library.
+The `authenticate` function implements the `showConnect` function imported from the `@stacks/connect` library.
 
 `showConnect` triggers the display of a modal that initiates the authentication process for users, one in which they'll authenticate with a _Secret Key_ that's used to encrypt their private data.
 
@@ -149,7 +149,7 @@ componentDidMount() {
 
 ### Step 2: Choose **Get started** to generate a _Secret Key_.
 
-The app triggers a popup window in which [Stacks Connect](https://github.com/blockstack/ux/tree/master/packages/app)
+The app triggers a popup window in which [Stacks Authenticator](https://github.com/blockstack/ux/tree/master/packages/app)
 loads from [`app.blockstack.org`](http://app.blockstack.org/) and begins generating a new _Secret Key_.
 
 !["Secret Key generation" screen](/images/todos/secret-key-generation.png)
@@ -184,7 +184,7 @@ It is registered on the Stacks blockchain with [BNS](/core/naming/introduction) 
 Once you've authenticated the app, you can can start adding todos by entering values into the "Write your to do"
 field and hitting "Enter".
 
-!["Todos app home" screen](/images/todos/home.png)
+!["Todos" app home screen](/images/todos/home.png)
 
 The data for all todos are saved as JSON to the Gaia hub linked to your Secret Key using the [`putFile`](http://blockstack.github.io/stacks.js/classes/storage.html#putfile) method of the `storage` object in the `src/storage.js` module, which manages all data storage for the app:
 
@@ -251,7 +251,7 @@ Select "Sign out" to deauthenticate the app with your Stacks account.
 This calls the [`signUserOut`](https://blockstack.github.io/stacks.js/classes/usersession.html#signuserout) method
 of the `userSession` object within `src/components/Header.jsx`.
 
-Now visit the URL that was provided to you when you made your tasks public. This URL has the format `/todos/:username`, so if your username were `janedoe.id.blockstack`, the URL would be `localhost:3000/todos/jane_doe.id.blockstack`.
+Now visit the URL that was provided to you when you made your tasks public. This URL has the format `/todos/:username`, so if your username were `janedoe.id.blockstack`, the URL would be `localhost:3000/todos/janedoe.id.blockstack`.
 
 When you visit this page, the `TodoList.jsx` component detects that there is a username in the URL.
 When there is a username, it calls `fetchTasks`, this time providing the `username` argument. This `username`
