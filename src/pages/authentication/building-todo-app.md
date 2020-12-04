@@ -76,19 +76,17 @@ Stacks authentication.
 
 ![The Stacks Connect Modal](/images/todos/get-started.png)
 
-This modal is displayed using the `authenticate` function exported by the `src/stacks.js` module, which organizes all Stacks resources needed across the app:
+This modal is displayed using the `authenticate` function exported by the `src/auth.js` module, which organizes all Stacks resources needed for authentication in the app:
 
 ```js
-// src/stacks.js
+// src/auth.js
 
 import { AppConfig, UserSession, showConnect } from '@stacks/auth';
 import { Person } from '@stacks/profile';
-import { Storage } from '@stacks/storage';
 
 const appConfig = new AppConfig(['store_write', 'publish_data']);
 
 export const userSession = new UserSession({ appConfig });
-export const storage = new Storage({ userSession });
 
 export function authenticate() {
   showConnect({
@@ -133,7 +131,7 @@ In the separate `src/components/App.jsx` component, we see how
 ```jsx
 // src/components/App.jsx
 
-import { userSession } from '../stacks';
+import { userSession } from '../auth';
 
 ...
 
@@ -188,10 +186,15 @@ field and hitting "Enter".
 
 !["Todos app home" screen](/images/todos/home.png)
 
-The data for all todos are saved as JSON to the Gaia hub linked to your Secret Key using the [`putFile`](http://blockstack.github.io/stacks.js/classes/storage.html#putfile) method of the `storage` object in the `src/data-store.js` module:
+The data for all todos are saved as JSON to the Gaia hub linked to your Secret Key using the [`putFile`](http://blockstack.github.io/stacks.js/classes/storage.html#putfile) method of the `storage` object in the `src/storage.js` module, which manages all data storage for the app:
 
-```jsx
-import { storage } from './stacks';
+```js
+// src/storage.js
+
+import { userSession } from './auth';
+import { Storage } from '@stacks/storage';
+
+const storage = new Storage({ userSession });
 
 ...
 
@@ -205,8 +208,13 @@ export const saveTasks = async (userSession, tasks, isPublic) => {
 These todos are subsequently loaded using the [`getFile`](http://blockstack.github.io/stacks.js/globals.html#getfile)
 method of the same object in the same module:
 
-```jsx
-import { storage } from './stacks';
+```js
+// src/storage.js
+
+import { userSession } from './auth';
+import { Storage } from '@stacks/storage';
+
+const storage = new Storage({ userSession });
 
 ...
 
@@ -219,7 +227,7 @@ export const fetchTasks = async (userSession, username) => {
 };
 ```
 
-Note how the `storage` object imported here is originally instantiated in the `stacks` module using `new Storage({ userSession });`, where `userSession` is the same object as used with authentication. It's provided here to ensure that all storage calls are made with the user's Gaia hub.
+The `storage` object is instantiated with the `Storage` class of the `@stacks/storage` library and `userSession` to ensure that all storage calls are made with the user's Gaia hub.
 
 By default, the `putFile` and `getFile` methods automatically encrypt data when saved and decrypt it when retrieved,
 using the user's _Secret Key_. This ensures that only the user has the ability to view this data.
