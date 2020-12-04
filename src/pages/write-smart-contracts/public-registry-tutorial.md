@@ -80,7 +80,7 @@ Create a new file in the `src/components` folder named `PublicUrlRegistrar.js` a
 // src/components/PublicUrlRegistrar.jsx
 import React from 'react';
 import { Text } from '@blockstack/ui';
-import { useConnect } from '@stacks/connect';
+import { useConnect } from '@stacks/connect-react';
 import { bufferCVFromString } from '@stacks/transactions';
 import { CONTRACT_ADDRESS, CONTRACT_NAME } from '../assets/constants';
 
