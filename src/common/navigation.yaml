@@ -11,6 +11,7 @@ sections:
           - path: /transactions
           - path: /network
           - path: /stacking
+          - path: /command-line-interface
           - path: /local-development
           - path: /technical-specs
           - path: /stacks-blockchain-api
@@ -36,7 +37,6 @@ sections:
           - path: /overview
           - path: /principals
           - path: /values
-          - path: /cli-wallet-quickstart
         sections:
           - title: Tutorials
             pages:
