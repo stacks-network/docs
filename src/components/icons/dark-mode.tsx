@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, BoxProps } from '@stacks/ui';
 
 export const DarkModeIcon = (props: BoxProps) => (
-  <Box {...props}>
+  <Box as="svg" {...props}>
     <svg width="16" height="13" viewBox="0 0 16 13" fill="none">
       <path
         fillRule="evenodd"
