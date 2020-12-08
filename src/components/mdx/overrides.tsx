@@ -54,7 +54,7 @@ const GlobalStyles = (
         --docsearch-searchbox-background: var(--ifm-color-emphasis-300);
         --docsearch-searchbox-focus-background: ${color('bg')};
         --docsearch-searchbox-shadow: inset 0px 0px 1px 1px ${color('border')};
-        --docsearch-hit-color: var(--ifm-color-emphasis-800);
+        --docsearch-hit-color: ${color('accent')};
         --docsearch-hit-active-color: ${color('text-title')};
         --docsearch-hit-background: ${color('bg')};
         --docsearch-hit-shadow: inset 0px 0px 1px 1px ${color('border')};
@@ -82,6 +82,9 @@ const GlobalStyles = (
       .DocSearch-Reset:hover {
         color: ${color('accent')};
       }
+      .DocSearch-Cancel {
+        color: ${color('text-caption')};
+      }
       .DocSearch-Form {
         input {
           color: ${color('text-title')};
@@ -107,7 +110,11 @@ const GlobalStyles = (
       .DocSearch-MagnifierLabel {
         color: ${color('accent')};
       }
-
+      @media (max-width: 750px) {
+        .DocSearch-Dropdown {
+          max-height: calc(100vh - 124px);
+        }
+      }
       pre {
         display: inline-block;
       }

@@ -11,6 +11,7 @@ import {
   Stack,
   StacksLogo,
   StxInline,
+  IconButton,
 } from '@stacks/ui';
 import { Link, LinkProps, Text } from '@components/typography';
 import MenuIcon from 'mdi-react/MenuIcon';
@@ -26,7 +27,6 @@ import { border, transition } from '@common/utils';
 import { getCapsizeStyles } from '@components/mdx/typography';
 import { useTouchable } from '@common/hooks/use-touchable';
 import { useRouter } from 'next/router';
-import { IconButton } from './icon-button';
 
 const MenuButton = ({ ...rest }: any) => {
   const { isOpen, handleOpen, handleClose } = useMobileMenuState();
@@ -35,12 +35,10 @@ const MenuButton = ({ ...rest }: any) => {
   return (
     <IconButton
       color="var(--colors-invert)"
-      display={['flex', 'flex', 'none']}
+      display={['grid', 'grid', 'none']}
       onClick={handleClick}
-      px="base"
-    >
-      <Icon color="currentColor" />
-    </IconButton>
+      icon={Icon}
+    />
   );
 };
 
@@ -246,9 +244,11 @@ const Header = ({ hideSubBar, ...rest }: any) => {
             <LogoLink />
             <Flex alignItems="center">
               <Navigation />
-              <SearchButton />
-              <ColorModeButton />
-              <MenuButton />
+              <Stack isInline spacing="tight">
+                <SearchButton />
+                <ColorModeButton />
+                <MenuButton />
+              </Stack>
             </Flex>
           </Flex>
         </Box>

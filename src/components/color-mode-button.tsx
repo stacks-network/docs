@@ -1,15 +1,20 @@
 import React, { forwardRef, Ref } from 'react';
 import { LinkProps } from '@components/typography';
-import { DarkModeIcon } from '@components/icons/dark-mode';
-import { LightModeIcon } from '@components/icons/light-mode';
-import { IconButton } from '@components/icon-button';
+
+import { IconButton } from '@stacks/ui';
 import { useColorMode } from '@common/hooks/use-color-mode';
+import { IconSun, IconSunOff } from '@tabler/icons';
 
 export const ColorModeButton = forwardRef((props: LinkProps, ref: Ref<HTMLDivElement>) => {
   const [colorMode, toggleColorMode] = useColorMode();
+  const Icon = colorMode === 'dark' ? IconSun : IconSunOff;
   return (
-    <IconButton onClick={toggleColorMode} title="Toggle color mode" px="base" {...props} ref={ref}>
-      {colorMode === 'dark' ? <DarkModeIcon /> : <LightModeIcon />}
-    </IconButton>
+    <IconButton
+      onClick={toggleColorMode}
+      title="Toggle color mode"
+      icon={Icon}
+      ref={ref}
+      {...props}
+    />
   );
 });
