@@ -23,6 +23,29 @@ This tutorial will walk you through the following steps:
 
 ## Requirements
 
+In order to run a node, some software and hardware requirements need to be considered.
+
+### Hardware
+
+Running a node has no specialized hardware requirements. People were successful at running a node on Raspberry Pis, for instance.
+Minimum requirements are moving targets due to the nature of the project and some factors should be considered:
+
+- compiling node sources locally requires processing and storage resources
+- replicating the chainstate requires significant memory allocation (1.3+ GB)
+- chainstate size grows over time, increasing the memory requirements
+
+With these considerations in mind, we suggest hardware based on the general-purpose specification provided by GCP, the [E2 machine standard 2](https://cloud.google.com/compute/docs/machine-types#general_purpose):
+
+- 2 vCPUs
+- 8 GB memory
+- ~50-GB disk (preferably SSDs)
+
+It is also recommended to run the node with a publicly routable IP, that way other peers in the network will be able to connect to it.
+
+-> There is no difference in hardware you need to run a node versus a miner
+
+### Software
+
 If you use Linux, you may need to manually install [`libssl-dev`](https://wiki.openssl.org/index.php/Libssl_API) and other packages. In your command line, run the following to get all packages:
 
 ```bash
