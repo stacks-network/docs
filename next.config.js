@@ -456,6 +456,11 @@ async function redirects() {
       permanent: true,
     },
     {
+      source: '/stacks-blockchain/integrate-stacking',
+      destination: '/understand-stacks/integrate-stacking',
+      permanent: true,
+    },
+    {
       source: '/understand-stacks/atlas/usage',
       destination: '/understand-stacks/atlas-usage',
       permanent: true,
@@ -595,6 +600,11 @@ async function redirects() {
     {
       source: '/references/stacks-blockchain',
       destination: '/references/stacks-blockchain-api',
+      permanent: true,
+    },
+    {
+      source: '/mining',
+      destination: '/start-mining',
       permanent: true,
     },
   ];
