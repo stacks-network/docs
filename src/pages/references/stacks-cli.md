@@ -1,5 +1,6 @@
 ---
 title: Stacks CLI
+description: Interacting with the Stacks 2.0 Blockchain via CLI
 ---
 
 export { convertBlockstackCLIUsageToMdx as getStaticProps } from '@common/data/cli-ref'
@@ -26,6 +27,30 @@ You must install the command line before you can use the commands.
 You must have [Node.js](https://nodejs.org/en/download/) v12 or higher (v14 recommended). macOS and Linux users can avoid `sudo` or [permissions problems](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) or by using [`nvm`](https://github.com/nvm-sh/nvm). These instructions assume you are using a macOS or Linux system.
 
 To install the command line, do the following:
+
+### Step 1: [Download or `git clone` the command line repository code](https://github.com/blockstack/stacks.js/tree/master/packages/cli)
+
+Downloading or cloning the repo creates a `cli-blockstack` repository on your system.
+
+### Step 2: Change directory into the `cli-blockstack` directory
+
+```bash
+cd cli-blockstack
+```
+
+### Step 3: Install the dependencies with `npm`
+
+```bash
+npm install
+```
+
+### Step 4: Build the command line command
+
+```bash
+npm run build
+```
+
+### Step 5: Link the command
 
 ```bash
 npm install -g @stacks/cli
