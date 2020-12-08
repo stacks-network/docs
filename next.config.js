@@ -320,7 +320,8 @@ async function redirects() {
       destination: '/references/faqs/stacks-token',
       permanent: true,
     },
-    { source: '/core/cmdLineRef.html', destination: '/references/blockstack-cli', permanent: true },
+    { source: '/core/cmdLineRef.html', destination: '/references/stacks-cli', permanent: true },
+    { source: '/references/stx ', destination: '/references/stacks-cli', permanent: true },
     {
       source: '/core/smart/clarityref',
       destination: '/references/language-clarity',
@@ -418,7 +419,7 @@ async function redirects() {
     { source: '/naming-services', destination: '/technology/naming-system/', permanent: true },
     { source: '/naming-system', destination: '/technology/naming-system/', permanent: true },
     { source: '/storage-hubs', destination: '/storage-hubs/overview', permanent: true },
-    { source: '/references', destination: '/references/blockstack-cli', permanent: true },
+    { source: '/references', destination: '/references/stacks-cli', permanent: true },
     { source: '/ecosystem', destination: '/ecosystem/overview', permanent: true },
     {
       source: '/stacks-blockchain/testnet-node',

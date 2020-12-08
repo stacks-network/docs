@@ -90,7 +90,7 @@ sections:
       - path: /references
         usePageTitles: true
         pages:
-          - path: /blockstack-cli
+          - path: /stacks-cli
           - path: /stacking-contract
           - path: /stacks-blockchain-api
           - path: /stacks-node-configuration
