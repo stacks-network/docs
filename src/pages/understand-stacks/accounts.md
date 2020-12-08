@@ -53,6 +53,8 @@ stx make_keychain -t > cli_keychain.json
 }
 ```
 
+-> Check out the [Stacks CLI reference](/references/stacks-cli) for more details
+
 | Field                | Description                                                                                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `mnemonic`           | A 24-word seed phrase used to access the account, generated using [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) with 256 bits of entropy |

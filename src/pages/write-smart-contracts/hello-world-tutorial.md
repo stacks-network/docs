@@ -213,6 +213,8 @@ cat cli_keychain.json | json_pp
 }
 ```
 
+-> Check out the [Stacks CLI reference](/references/stacks-cli) for more details
+
 Make an API call to the Testnet faucet to get STX tokens.
 
 ```bash

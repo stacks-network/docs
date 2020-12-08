@@ -208,6 +208,8 @@ After this runs, you'll probably see some installation logs, and at the end you 
 }
 ```
 
+-> Check out the [Stacks CLI reference](/references/stacks-cli) for more details
+
 Request BTC from faucet:
 
 We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.

@@ -18,6 +18,8 @@ To install the Stacks CLI, run the following command in terminal.
 
 `npm install -g @stacks/cli`
 
+-> Check out the [Stacks CLI reference](/references/stacks-cli) for more details
+
 ## Creating a Wallet
 
 First, we are going to generate a new wallet for Testnet. To generate a wallet use the `make_keychain` command with the `-t` option for Testnet.
