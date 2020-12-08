@@ -31,10 +31,10 @@ Running a node has no specialized hardware requirements. People were successful 
 Minimum requirements are moving targets due to the nature of the project and some factors should be considered:
 
 - compiling node sources locally requires processing and storage resources
-- replicating the chainstate requires significant memory allocation (1.3+ GB)
+- replicating the chainstate requires significant memory allocation (1,3+ GB)
 - chainstate size grows over time, increasing the memory requirements
 
-With these considerations in mind, we suggest hardware based on the general-purpose specification provided by GCP, the [E2 machine standard 2](https://cloud.google.com/compute/docs/machine-types#general_purpose):
+With these considerations in mind, we suggest hardware based on a general-purpose specification provided by GCP, the [E2 machine standard 2](https://cloud.google.com/compute/docs/machine-types#general_purpose):
 
 - 2 vCPUs
 - 8 GB memory
