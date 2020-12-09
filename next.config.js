@@ -733,13 +733,13 @@ async function redirects() {
       permanent: true,
     },
     {
-      source: '/build-an-app',
-      destination: '/build-apps',
+      source: '/smart-contracts/clarity-values',
+      destination: '/write-smart-contracts/values',
       permanent: true,
     },
     {
-      source: '/smart-contracts/clarity-values',
-      destination: '/write-smart-contracts/values',
+      source: '/smart-contracts/public-registry-tutorial',
+      destination: '/write-smart-contracts/public-registry-tutorial',
       permanent: true,
     },
     {
