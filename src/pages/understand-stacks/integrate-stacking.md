@@ -414,12 +414,14 @@ To display the unlocking time, you need to use the `firstRewardCycle` and the `l
 
 ## Implementing delegation
 
-Flow:
+~> Right now, the tooling does not support the delegation flow. However, the delegation flow can be implemented with contract calls to the Stacking contract
 
-1. `delegate-stx`
-2. `delegator-stack-stx`
-3. `stack-aggregation-commit`
+Stacking delegation requires you to implement a different flow. Until the provided tooling supportS this flow, it is best to implement the required contract calls directly.
 
-Enable users to revoke delegation:
+Below is a description of contract calls required to integrate delegation:
 
-- `revoke-delegate-stx`
+1. Account holder call the [`delegate-stx`](/references/stacking-contract#delegate-stx) method and provide the delegator address, the amount accessible to the delegator, the address rewards should be send to, and the burn height at which the delegation relationship should be terminated
+2. For each delegation relationship that was created, the delegator calls the [`delegator-stack-stx`](/references/stacking-contract#delegate-stack-stx) method to lock up the STX token from the account holder. This method would need to be called until the delegator locked up enough STX tokens required to participate in Stacking
+3. With pooling being completed and the minimum STX token threshold reached, the delegator calls the [`stack-aggregation-commit`](/references/stacking-contract#stack-aggregation-commit) to confirm participation in the next cycle(s)
+
+In case STX token holders want to terminate the delegation relationship before it terminates as planned, they can call the [`revoke-delegate-stx`](http://localhost:3000/references/stacking-contract#revoke-delegate-stx) method
