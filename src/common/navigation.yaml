@@ -20,6 +20,7 @@ sections:
               - path: /sending-tokens
               - path: /running-testnet-node
               - path: /integrate-stacking
+              - path: /cli-stacking
           - title: Stacks 1.0
             pages:
               - path: /stacks-1.0-info
