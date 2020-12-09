@@ -35,6 +35,9 @@ If you would like to implement this flow in your own wallet, exchange, or any ot
 [@page-reference | inline]
 | /understand-stacks/integrate-stacking
 
+[@page-reference | inline]
+| /understand-stacks/stacking-using-CLI
+
 ### Delegation
 
 The Stacking flow is different for delegation use cases:
