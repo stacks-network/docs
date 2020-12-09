@@ -607,6 +607,131 @@ async function redirects() {
       destination: '/start-mining',
       permanent: true,
     },
+    {
+      source: '/smart-contracts/overview',
+      destination: '/write-smart-contracts/overview',
+      permanent: true,
+    },
+    {
+      source: '/smart-contracts/hello-world-tutorial',
+      destination: '/write-smart-contracts/hello-world-tutorial',
+      permanent: true,
+    },
+    {
+      source: '/smart-contracts/counter-tutorial',
+      destination: '/write-smart-contracts/counter-tutorial',
+      permanent: true,
+    },
+    {
+      source: '/smart-contracts/testing-contracts',
+      destination: '/write-smart-contracts/testing-contracts',
+      permanent: true,
+    },
+    {
+      source: '/smart-contracts/signing-transactions',
+      destination: '/write-smart-contracts/signing-transactions',
+      permanent: true,
+    },
+    {
+      source: '/smart-contracts/principals',
+      destination: '/write-smart-contracts/principals',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/running-testnet-node',
+      destination: '/understand-stacks/running-testnet-node',
+      permanent: true,
+    },
+    {
+      source: '/smart-contracts/cli-wallet-quickstart',
+      destination: '/write-smart-contracts/cli-wallet-quickstart',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/atlas-overview',
+      destination: '/understand-stacks/atlas-overview',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/atlas-how-it-works',
+      destination: '/understand-stacks/atlas-how-it-works',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/atlas-usage',
+      destination: '/understand-stacks/atlas-usage',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/wire-format',
+      destination: '/understand-stacks/wire-format',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/overview',
+      destination: '/understand-stacks/overview',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/testnet',
+      destination: '/understand-stacks/testnet',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/proof-of-transfer',
+      destination: '/understand-stacks/proof-of-transfer',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/mining',
+      destination: '/understand-stacks/mining',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/accounts',
+      destination: '/understand-stacks/accounts',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/transactions',
+      destination: '/understand-stacks/transactions',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/network',
+      destination: '/understand-stacks/network',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/stacking',
+      destination: '/understand-stacks/stacking',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/local-development',
+      destination: '/understand-stacks/local-development',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/technical-specs',
+      destination: '/understand-stacks/technical-specs',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/managing-accounts',
+      destination: '/understand-stacks/managing-accounts',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/sending-tokens',
+      destination: '/understand-stacks/sending-tokens',
+      permanent: true,
+    },
+    {
+      source: '/build-an-app',
+      destination: '/build-apps',
+      permanent: true,
+    },
   ];
 }
 
