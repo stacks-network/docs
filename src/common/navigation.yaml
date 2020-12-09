@@ -22,7 +22,8 @@ sections:
               - path: /sending-tokens
               - path: /running-testnet-node
               - path: /integrate-stacking
-              - path: /cli-stacking
+              - path: /stacking-using-CLI
+
           - title: Stacks 1.0
             pages:
               - path: /stacks-1.0-info
