@@ -732,6 +732,46 @@ async function redirects() {
       destination: '/build-apps',
       permanent: true,
     },
+    {
+      source: '/build-an-app',
+      destination: '/build-apps',
+      permanent: true,
+    },
+    {
+      source: '/smart-contracts/clarity-values',
+      destination: '/write-smart-contracts/values',
+      permanent: true,
+    },
+    {
+      source: '/smart-contracts/public-registry-tutorial',
+      destination: '/writing-smart-contracts/public-registry-tutorial',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/stacks-1.0-info',
+      destination: '/understand-stacks/stacks-1.0-info',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/best-practices',
+      destination: '/understand-stacks/best-practices',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/wire-format',
+      destination: '/understand-stacks/wire-format',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/install-api',
+      destination: '/understand-stacks/install-api',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain/installing-memcached',
+      destination: '/understand-stacks/installing-memcached',
+      permanent: true,
+    },
   ];
 }
 
