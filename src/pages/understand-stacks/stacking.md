@@ -39,14 +39,16 @@ If you would like to implement this flow in your own wallet, exchange, or any ot
 
 The Stacking flow is different for delegation use cases:
 
-- Before Stacking can be initiated for an account, the delegator needs to be granted permission to Stack on behalf of the account owner. The permission is restricted to the maximum amount the delegator is allowed to Stack. An account can only be associated with one single delegator
-- The account holder can optionally restrict the reward address that must be used and the expiration burn block height for the permission, thus limiting the time a delegator has permission to Stack
-- Delegators can lock Stacks from different accounts until they reach the minimum amount of Stacks required to participate in Stacking
-- Once a delegator locks enough Stacks, they can finalize and commit their participation in the next reward cycle(s). The delegator must send a commitment for each account they want to include
+![stacking flow](/images/stacking-delegation-illustration.png)
 
-The separation of locks and commits allows delegators to lock up Stacks multiple times with different stackers to build up enough STX to clear the minimum reward threshold (i.e. pooling)
+- Before Stacking can be initiated for a token holder, the delegator needs to be granted permission to Stack on behalf of the account owner. The permission is restricted to the maximum amount the delegator is allowed to Stack. An account can only be associated with one single delegator
+- The account has to define the delegation relationship. They can optionally restrict the reward address that must be used and the expiration burn block height for the permission, thus limiting the time a delegator has permission to Stack
+- Delegators have to lock Stacks from different accounts ("pooling phase") until they reach the minimum amount of Stacks required to participate in Stacking
+- Once a delegator locks enough STX tokens, they can finalize and commit their participation in the next reward cycle(s). The delegator must send a commitment for each account they want to include
+- Certain delegation relationships may allow the STX holder to receive the payout directly from the miner (step 5/6)
+- The termination of the delegation relationship can either happen automatically based on set expiration rules or by actively revoking delegation rights
 
--> Note that the delegation flow allows reward addresses to be used multiple times. This is not the case for the individual Stacking flow
+-> Note that the delegation flow allows reward addresses to be used multiple times. This is not the case for the individual Stacking flow.
 
 ## PoX mining
 
