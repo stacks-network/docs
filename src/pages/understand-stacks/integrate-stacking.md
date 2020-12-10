@@ -25,7 +25,7 @@ This tutorial highlights the following functionality:
 - Add stacking action
 - Display stacking status
 
--> Alternatively to integration using JS libraries, you can use the [Rust CLI](https://gist.github.com/kantai/c261ca04114231f0f6a7ce34f0d2499b) or [JS CLI](https://github.com/blockstack/stacks.js/tree/master/packages/cli).
+-> Alternatively to integration using JS libraries, you can use the [Rust CLI](https://gist.github.com/kantai/c261ca04114231f0f6a7ce34f0d2499b) or [JS CLI](/understand-stacks/stacking-using-CLI).
 
 ## Requirements
 
