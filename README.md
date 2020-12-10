@@ -14,7 +14,7 @@ If you are interested in contributing to the site and making changes, please ref
 
 The `src/_data/cli-reference.json` file is generated from the `blockstack-cli` subcommand `docs`.
 
-1. Install the latest version of the cli according to the instructions at: https://github.com/blockstack/cli-blockstack
+1. Install the latest version of the cli according to the instructions at: https://github.com/blockstack/stacks.js/tree/master/packages/cli
 
 2. Generate the json for the cli in the `docs.blockstack` repo.
 
