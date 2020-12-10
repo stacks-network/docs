@@ -44,9 +44,9 @@ When workin locally with the site, a few things are needed:
 
 ### Working with GitHub
 
-All of the code for this site is open source, located at the [GitHub repository here](https://github.com/blockstack/docs.blockstack).
+All of the code for this site is open source, located at the [GitHub repository here](https://github.com/blockstack/docs).
 Before you start editing anything, you will need to fork the repo so that you can have your own copy of the code under
-your GitHub profile. On the [repository's page](https://github.com/blockstack/docs.blockstack), you should be able to
+your GitHub profile. On the [repository's page](https://github.com/blockstack/docs), you should be able to
 see a button in the upper right of the screen that says "Fork". [You can read about Forking here.](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
 
 This is a generalized workflow for contributing to these docs:
