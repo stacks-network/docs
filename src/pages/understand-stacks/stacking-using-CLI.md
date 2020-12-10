@@ -1,10 +1,10 @@
 ---
 title: Stacking using the Stacks CLI
-description: Learn how use the Stacks CLI to participate in stacking
+description: Learn how use the Stacks CLI to participate in Stacking
 experience: beginner
 duration: 10 minutes
 tags:
-  - guide
+  - tutorial
 images:
   sm: /images/pages/stacking-rounded.svg
 ---
@@ -13,7 +13,7 @@ images:
 
 !> The Stacking implementation is still in development and could change in the coming weeks
 
-In this guide, you'll learn how to use the Stacks CLI to participate in stacking. The CLI is a great way to quickly try out stacking on testnet. To integrate stacking into your application, see the [stacking integration guide](/stacks-blockchain/integrate-stacking).
+In this tutorial, you'll learn how to use the Stacks CLI to participate in Stacking. The CLI is a great way to quickly try out Stacking on testnet. To integrate Stacking into your application, see the [Stacking integration guide](/stacks-blockchain/integrate-stacking).
 
 ## Requirements
 
@@ -31,7 +31,7 @@ You will also need to install the Stacks CLI from NPM:
 $ npm install @stacks/cli -g
 ```
 
-## Generate A New Key Pair
+## Generate An Account
 
 ```bash
 $ stx make_keychain -t
@@ -46,15 +46,15 @@ $ stx make_keychain -t
 }
 ```
 
-We'll be using this testnet key pair to perform stacking. But first we'll need to get some testnet tokens.
+We'll be using this testnet key pair to perform Stacking. But first we'll need to get some testnet tokens.
 
--> If you're stacking on mainnet, make sure you have an account with sufficient number of Stacks tokens to participate.
+-> If you're Stacking on mainnet, make sure you have an account with sufficient number of Stacks tokens to participate.
 
 ## Get Testnet Tokens Using The Faucet
 
 Use the following `curl` command to request tokens from the testnet node's faucet endpoint.
 
-Note that we used the address we generated above as a parameter.
+We use the address generated above as a parameter.
 
 ```bash
 curl -X POST https://stacks-node-api.xenon.blockstack.org/extended/v1/faucets/stx?address=ST1P3HXR80TKT48TKM2VTKCDBS4ET9396W0W2S3K8&stacking=true
@@ -62,10 +62,11 @@ curl -X POST https://stacks-node-api.xenon.blockstack.org/extended/v1/faucets/st
 
 ## Check Balance
 
-Confirm that the faucet transaction has completed by checking the balance of your address. The `-t` flag is used to indicate testnet.
+Confirm that the faucet transaction has completed by checking the balance of your address. The `-t` flag is used to indicate testnet. See the [CLI reference](references/blockstack-cli) for usage of flags.
 
 ```bash
 stx balance ST1P3HXR80TKT48TKM2VTKCDBS4ET9396W0W2S3K8 -t
+
 {
   "balance": "90000000000000",
   "locked": "0",
@@ -76,59 +77,43 @@ stx balance ST1P3HXR80TKT48TKM2VTKCDBS4ET9396W0W2S3K8 -t
 
 ## Check Stacking Eligibility
 
-Before we send the stacking transaction, we will need to check if we're eligible for stacking.
+Before we send the Stacking transaction, we will need to check if we're eligible for Stacking.
 
-This check ensure that we meet the minimum threshold amount of STX required in order to participate in stacking.
+This check ensures that we meet the minimum threshold amount of STX required in order to participate in Stacking.
 
 The arguments required for the `can_stack` command are:
 
-1. Amount to stack in microstacks, we'll use the entire balance in our account.
-
-   `90000000000000`
-
-2. Number of reward cycles to lock up your tokens for stacking, we'll use 10 here.
-
-   `10`
-
-3. BTC address to receive stacking rewards. We can use any valid BTC address.
-
-   `mqkccNX5h7Xy1YUku3X2fCFCC54x6HEiHk`
-
-4. The address that we will be stacking with. We'll use the address generated previously.
-
-   `ST1P3HXR80TKT48TKM2VTKCDBS4ET9396W0W2S3K8`
+| Parameter       | Description                                                                           | Value                                       |
+| --------------- | ------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `Amount`        | Amount to stack in microstacks, we'll use the entire balance in our account           | `90000000000000`                            |
+| `Reward cycles` | Number of reward cycles to lock up your tokens for Stacking                           | `10`                                        |
+| `BTC Address`   | BTC address to receive Stacking rewards. We can use any valid BTC address             | `mqkccNX5h7Xy1YUku3X2fCFCC54x6HEiHk`        |
+| `STX Address`   | The address that we will be Stacking with. We'll use the address generated previously | `ST1P3HXR80TKT48TKM2VTKCDBS4ET9396W0W2S3K8` |
 
 ```bash
 stx can_stack 90000000000000 10 mqkccNX5h7Xy1YUku3X2fCFCC54x6HEiHk ST1P3HXR80TKT48TKM2VTKCDBS4ET9396W0W2S3K8 -t
+
 { eligible: true }
 ```
 
-If we meet the conditions to participate in stacking, the command will return true.
+If we meet the conditions to participate in Stacking, the command will return true.
 
-## Stacking
+## Perform Stacking action
 
-Next, we will perform the stacking transaction using the `stack` command.
+Next, we will perform the Stacking transaction using the `stack` command.
 
 We need the following 4 arguments:
 
-1. Amount to stack in microstacks.
-
-   `90000000000000`
-
-2. Number of reward cycles to lock up your tokens for stacking.
-
-   `10`
-
-3. BTC address to receive stacking rewards. This is also referred to as the PoX address.
-
-   `mqkccNX5h7Xy1YUku3X2fCFCC54x6HEiHk`
-
-4. The private key to the address we're stacking with, which we generated previously.
-
-   `dca82f838f6e5a893cffc8efe861196252373a5b8b62c0b55ba3a0a7a28795d301`
+| Parameter       | Description                                                                           | Value                                                                |
+| --------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `Amount`        | Amount to stack in microstacks                                                        | `90000000000000`                                                     |
+| `Reward cycles` | Number of reward cycles to lock up your tokens for Stacking                           | `10`                                                                 |
+| `BTC Address`   | BTC address to receive Stacking rewards. This is also referred to as the PoX address. | `mqkccNX5h7Xy1YUku3X2fCFCC54x6HEiHk`                                 |
+| `Private Key`   | The private key to the address we're Stacking with, which we generated previously     | `dca82f838f6e5a893cffc8efe861196252373a5b8b62c0b55ba3a0a7a28795d301` |
 
 ```bash
 stx stack 90000000000000 10 mqkccNX5h7Xy1YUku3X2fCFCC54x6HEiHk dca82f838f6e5a893cffc8efe861196252373a5b8b62c0b55ba3a0a7a28795d301
+
 {
   txid: '0x2e33ad647a9cedacb718ce247967dc705bc0c878db899fdba5eae2437c6fa1e1',
   transaction: 'https://testnet-explorer.blockstack.org/txid/0x2e33ad647a9cedacb718ce247967dc705bc0c878db899fdba5eae2437c6fa1e1'
@@ -141,10 +126,11 @@ Now we should wait until the transaction is confirmed. This usually takes a few 
 
 ## Checking Stacking Status
 
-Once the transaction has been confirmed, we can check the stacking status using the `stacking_status` command:
+Once the transaction has been confirmed, we can check the Stacking status using the `stacking_status` command:
 
 ```bash
 stx stacking_status ST1P3HXR80TKT48TKM2VTKCDBS4ET9396W0W2S3K8 -t
+
 {
   amount_microstx: '90000000000000',
   first_reward_cycle: 25,
@@ -158,3 +144,5 @@ stx stacking_status ST1P3HXR80TKT48TKM2VTKCDBS4ET9396W0W2S3K8 -t
 ```
 
 Here we can see how many microstacks are locked and when they will unlock.
+
+Congratulations you have learned how to Stack using the CLI. To integrate Stacking into your app, check out the [Stacking integration guide](/stacks-blockchain/integrate-stacking).
