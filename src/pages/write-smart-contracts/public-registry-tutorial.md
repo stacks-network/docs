@@ -122,7 +122,7 @@ export const PublicUrlRegistrar = ({ userSession }) => {
 
 It is a simple button that calls `doContractCall` method of the Connect library when clicked. The method makes an api call to the Stacks authenticator. The authenticator creates a contract call transaction that is signed by the user and then it is broadcasted to the Stacks 2.0 blockchain as explained in the [transaction signing tutorial](/write-smart-contracts/signing-transactions).
 
-Note how the arguments are created using `bufferCVFromString`. There are similar methods for all other Clarity types, like `uintCV` or `trueCV`. See the [documentation](https://github.com/blockstack/stacks-transactions-js#constructing-clarity-values) of the stacks-transactions library for more details.
+Note how the arguments are created using `bufferCVFromString`. There are similar methods for all other Clarity types, like `uintCV` or `trueCV`. See the [documentation](https://github.com/blockstack/stacks.js/tree/master/packages/transactions#constructing-clarity-values) of the stacks-transactions library for more details.
 
 ### Step 3: Integrate the component in the app
 
