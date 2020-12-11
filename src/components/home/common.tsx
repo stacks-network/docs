@@ -10,7 +10,6 @@ import {
   color,
   FlexProps,
 } from '@stacks/ui';
-import { CONTENT_MAX_WIDTH } from '@common/constants';
 
 export const CircleIcon: React.FC<
   FlexProps & { icon: React.FC<any>; hover?: boolean; dark?: boolean }
@@ -40,7 +39,6 @@ export const SectionWrapper: React.FC<BoxProps> = props => (
     zIndex={99}
     position="relative"
     width="100%"
-    maxWidth={`${CONTENT_MAX_WIDTH}px`}
     overflow="hidden"
     pt={space('extra-loose')}
     {...props}
