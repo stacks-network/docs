@@ -5,7 +5,7 @@ import { Header } from '../header';
 import { Main } from '../main';
 import { Footer } from '../footer';
 
-import { PAGE_WIDTH, SIDEBAR_WIDTH } from '@common/constants';
+import { SIDEBAR_WIDTH } from '@common/constants';
 import { useWatchActiveHeadingChange } from '@common/hooks/use-active-heading';
 import { useRouter } from 'next/router';
 import { MobileMenu } from '@components/mobile-menu';
@@ -20,7 +20,7 @@ const BaseLayout: React.FC<{ isHome?: boolean }> = ({ children }) => {
       <MobileMenu />
       <Header />
       <Flex flexGrow={1} width="100%" mx="auto" px={['0', '0', 'extra-loose', 'extra-loose']}>
-        <Flex width="100%" flexGrow={1} maxWidth={`${PAGE_WIDTH}px`} mx="auto">
+        <Flex width="100%" flexGrow={1} mx="auto">
           <SideNav display={['none', 'none', 'block']} />
           <Flex
             flexGrow={1}
@@ -35,7 +35,7 @@ const BaseLayout: React.FC<{ isHome?: boolean }> = ({ children }) => {
             <Main mx="unset" width={'100%'}>
               <Flex
                 flexDirection={['column', 'column', 'row', 'row']}
-                maxWidth="108ch"
+                maxWidth="1175px"
                 mx="auto"
                 flexGrow={1}
               >

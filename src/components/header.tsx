@@ -22,7 +22,6 @@ import { ForwardRefExoticComponentWithAs, forwardRefWithAs } from '@stacks/ui-co
 import NextLink from 'next/link';
 import { ColorModeButton } from '@components/color-mode-button';
 import { SearchButton } from '@components/search-button';
-import { PAGE_WIDTH } from '@common/constants';
 import { border, transition } from '@common/utils';
 import { getCapsizeStyles } from '@components/mdx/typography';
 import { useTouchable } from '@common/hooks/use-touchable';
@@ -236,7 +235,6 @@ const Header = ({ hideSubBar, ...rest }: any) => {
               backdropFilter: 'blur(5px)',
             }}
             height="72px"
-            maxWidth={`${PAGE_WIDTH}px`}
             mx="auto"
             color={color('text-title')}
             {...rest}
