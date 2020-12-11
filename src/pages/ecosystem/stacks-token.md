@@ -38,7 +38,7 @@ holders under a predetermined unlocking schedule. The events on the unlocking
 schedule are the same for each investor, **the dates of these events** depend on the
 holder's purchase date.
 
--> **Note:** If you are a token holder and would like to review your unlocking schedule, visit the [For current token holders](/org/tokenholders) page in this documentation.
+-> **Note:** If you are a token holder and would like to review your unlocking schedule, visit the [For current token holders](/references/faqs/stacks-token) page in this documentation.
 
 The genesis block launch makes possible the following interactions:
 
