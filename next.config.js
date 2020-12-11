@@ -317,7 +317,7 @@ async function redirects() {
     },
     {
       source: '/org/tokenholders.html',
-      destination: '/ecosystem/stacks-token-holders',
+      destination: '/references/faqs/stacks-token',
       permanent: true,
     },
     { source: '/core/cmdLineRef.html', destination: '/references/blockstack-cli', permanent: true },
