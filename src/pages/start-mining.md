@@ -113,8 +113,8 @@ mode = "xenon" # if connecting to Krypton, set this to "krypton"
 peer_host = "127.0.0.1"
 username = "your-bitcoind-username"
 password = "your-bitcoind-password"
-rpc_port = 18333
-peer_port = 18332
+rpc_port = 18332
+peer_port = 18333
 
 [[mstx_balance]]
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
@@ -237,8 +237,8 @@ mode = "xenon" # if connecting to Krypton, set this to "krypton"
 peer_host = "127.0.0.1"
 username = "your-bitcoind-username"
 password = "your-bitcoind-password"
-rpc_port = 18333
-peer_port = 18332
+rpc_port = 18332
+peer_port = 18333
 
 [[mstx_balance]]
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
@@ -327,8 +327,8 @@ mode = "xenon" # if connecting to Krypton, set this to "krypton"
 peer_host = "127.0.0.1"
 username = "your-bitcoind-username"
 password = "your-bitcoind-password"
-rpc_port = 18333
-peer_port = 18332
+rpc_port = 18332
+peer_port = 18333
 
 [[mstx_balance]]
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
