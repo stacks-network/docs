@@ -1,6 +1,7 @@
 ---
 title: Integrate Stacking
 description: Learn how to add Stacking capabilities to your wallet or exchange
+icon: TestnetIcon
 experience: advanced
 duration: 60 minutes
 tags:
