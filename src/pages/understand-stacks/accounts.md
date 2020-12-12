@@ -1,6 +1,10 @@
 ---
 title: Accounts
 description: Guide to Stacks 2.0 accounts
+icon: TestnetIcon
+images:
+  large: /images/pages/testnet.svg
+  sm: /images/pages/testnet-sm.svg
 ---
 
 ## Introduction

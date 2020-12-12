@@ -1,6 +1,10 @@
 ---
 title: Network
 description: Guide to the Stacks 2.0 network
+icon: TestnetIcon
+images:
+  large: /images/pages/testnet.svg
+  sm: /images/pages/testnet-sm.svg
 ---
 
 ## Tokens
