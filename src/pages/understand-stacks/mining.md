@@ -54,7 +54,7 @@ Miners commit Bitcoin to **two** addresses in every leader block commit. The amo
 
 The miner who is selected to mine the next block is chosen depending on the amount of BTC the miners sent, i.e. transferred or burnt.
 
-The probability for a miner to mine next block equals the BTC miner send devided by the total BTC all miners send.
+The probability for a miner to mine the next block equals the BTC the miner sent divided by the total BTC all miners sent.
 
 While there is no minimum BTC commitment enforced by the protocol, in practice, there's a floor constrained by [dust](https://unchained-capital.com/blog/dust-thermodynamics/)": basically, if the fees for a transaction exceed the value of the spent output, it's considered dust. How dust is [calculated](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.cpp#L14) depends on a number of factors, we've found 5,500 satoshis to be good lower bound per [output](https://learnmeabitcoin.com/technical/output). Bitcoin transactions from Stacks miners contain two outputs (for Proof-of-Transfer), so a commitment of at least 11,000 satoshis / block is recommended.
 
