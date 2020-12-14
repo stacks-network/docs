@@ -9,7 +9,7 @@ images:
 
 ## Introduction
 
-This guide highlights some technical details related to minig on the Stacks 2.0 network.
+This guide highlights some technical details related to mining on the Stacks 2.0 network.
 
 ## Mining frequency
 
