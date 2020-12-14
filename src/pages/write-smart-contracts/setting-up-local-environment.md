@@ -64,17 +64,17 @@ npm install --global @stacks/cli
 
 # deploy the contract:
 # deploy_contract <SOURCE_FILE> <CONTRACT_NAME> <FEE> <NONCE> <PAYMENT_KEY> -t -T <NETWORK_ADDRESS>
-blockstack deploy_contract ./counter.clar counter 2000 0 cb3df38053d132895220b9ce471f6b676db5b9bf0b4adefb55f2118ece2478df01 -t -T http://localhost:20443
+stx deploy_contract ./counter.clar counter 2000 0 cb3df38053d132895220b9ce471f6b676db5b9bf0b4adefb55f2118ece2478df01 -t -T http://localhost:20443
 ```
 
 -> You can use one of the [default testnet keys](https://github.com/blockstack/stacks-blockchain-api/blob/e6e445b2cd1055f4bf25af7af646405783d5877e/src/api/routes/debug.ts#L36-L52) as your payment key
 
 The CLI will respond with a new contract deploy transaction:
 
-```js
+```json
 {
-  txid: '4bc11e1334c52852111142d55e5bbcfadbbb3441c44aa29a4bc507f7d2239377',
-  transaction: 'https://testnet-explorer.now.sh/txid/0x4bc11e1334c52852111142d55e5bbcfadbbb3441c44aa29a4bc507f7d2239377'
+  "txid": "0x149f2d252c0a1552bf15361970960ab95872d43f9a9e75d5ae1f60420d6e863b",
+  "transaction": "https://testnet-explorer.now.sh/txid/0x149f2d252c0a1552bf15361970960ab95872d43f9a9e75d5ae1f60420d6e863b"
 }
 ```
 
