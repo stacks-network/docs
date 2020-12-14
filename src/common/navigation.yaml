@@ -42,6 +42,7 @@ sections:
               - path: /hello-world-tutorial
               - path: /counter-tutorial
               - path: /testing-contracts
+              - path: /setting-up-local-environment
               - path: /signing-transactions
               - path: /public-registry-tutorial
       - path: /build-apps # is an overview page
