@@ -1,6 +1,9 @@
 ---
 title: Overview
-description: Overview of the Clarity language constructs.
+description: Overview of the Clarity language constructs
+images:
+  large: /images/pages/write-smart-contracts.svg
+  sm: /images/pages/write-smart-contracts-sm.svg
 ---
 
 export { convertClarityRefToMdx as getStaticProps } from '@common/data/clarity-ref'
