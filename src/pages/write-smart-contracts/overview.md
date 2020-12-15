@@ -11,6 +11,11 @@ images:
 Clarity is a programming language for writing smart contracts on the Stacks 2.0 blockchain. It supports programmatic
 control over digital assets.
 
+Prefer to jump right in? Get started with the Hello World tutorial:
+
+[@page-reference | inline]
+| /write-smart-contracts/hello-world-tutorial
+
 ## Smart contracts
 
 Smart contracts encode and enforce rules for modifying a particular set of data that is shared among people and entities
@@ -59,11 +64,14 @@ Note some of the key Clarity language rules and limitations.
 - There is support for lists, however, the only variable length lists in the language appear as function inputs; there is no support for list operations like append or join.
 - Variables are immutable.
 
-## Learning Clarity
+## Try a tutorial
 
-The tutorials are ordered from "beginner" to "advanced." Start with the [Hello World tutorial](/write-smart-contracts/hello-world-tutorial),
-then learn how to construct [a counter](/write-smart-contracts/counter-tutorial), and finally, learn how to
-[test your smart contracts](/write-smart-contracts/testing-contracts) using Mocha.
+[@page-reference | grid]
+| /write-smart-contracts/hello-world-tutorial, /write-smart-contracts/counter-tutorial, /write-smart-contracts/signing-transactions, /write-smart-contracts/public-registry-tutorial
 
-Once you've got the hang of the general workflow, environment, and language syntax, you should be ready to start writing
-contracts, referring to the [Clarity language reference](/references/language-overview) as you go.
+## Explore more
+
+For language details, references and more, check out the following:
+
+[@page-reference | grid]
+| /write-smart-contracts/principals, /write-smart-contracts/values, /references/language-overview
