@@ -1,0 +1,23 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^http://localhost"
+    },
+    {
+      "pattern": "^https://banter.pub"
+    }
+  ],
+  "replacementPatterns": [
+    {
+      "pattern": "^/public/images",
+      "replacement": "https://docs.blockstack.org/images"
+    },
+    {
+      "pattern": "^/",
+      "replacement": "https://docs.blockstack.org/"
+    }
+  ],
+  "timeout": "10s",
+  "retryOn429": true,
+  "retryCount": 5
+}

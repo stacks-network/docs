@@ -170,7 +170,7 @@ Op: `+`
 
 Description: This transaction sets the name state for a name to the given
 `value`. In practice, this is used to announce new DNS zone file hashes to the [Atlas
-network](/core/atlas/overview).
+network](/understand-stacks/atlas-overview).
 
 Example: [e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7](https://www.blocktrail.com/BTC/tx/e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7)
 
@@ -275,7 +275,7 @@ received, the following must be true:
 - The BNS nodes must list the sender's BNS name as being a "trusted message
   sender"
 - The message must have already been propagated through the [Atlas
-  network](/core/atlas/overview). This transaction references it by content hash.
+  network](/understand-stacks/atlas-overview). This transaction references it by content hash.
 
 `OP_RETURN` wire format:
 
@@ -396,7 +396,7 @@ Op: `;`
 
 Description: This transaction registers a name and some name state into a
 namespace that has been revealed, but not been launched. Only the namespace
-creator can import names. See the [namespace creation section](/core/naming/namespaces) for details.
+creator can import names. See the [namespace creation section](/technology/naming-system) for details.
 
 Example: [c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312](https://www.blocktrail.com/BTC/tx/c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312)
 

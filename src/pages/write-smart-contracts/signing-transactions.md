@@ -100,7 +100,7 @@ These types are named the same as they are in Clarity. The `value` that you pass
 - `bool` - can be "true", "false", "0" or "1"
 - `buff` - i.e. `"asdf"`
 - `principal` - This can be a contract principal, or a standard principal.
-  [Read more about principals](/core/smart/principals). Examples: `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ"`
+  [Read more about principals](/write-smart-contracts/principals). Examples: `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ"`
   or `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ.my-contract"`.
 
 Using these types, each argument is an object with the keys `type` and `value`. For example:

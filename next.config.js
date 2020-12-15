@@ -764,7 +764,12 @@ async function redirects() {
     },
     {
       source: '/stacks-blockchain/install-api',
-      destination: '/understand-stacks/install-api',
+      destination: '/understand-stacks/stacks-1.0-info',
+      permanent: true,
+    },
+    {
+      source: '/understand-stacks/install-api',
+      destination: '/understand-stacks/stacks-1.0-info',
       permanent: true,
     },
     {
