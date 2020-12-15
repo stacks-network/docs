@@ -6,7 +6,7 @@ description: Helpful tips for getting a core node up and running.
 ## Hardware and OS requirements
 
 - A 64-bit CPU running at at least 1 GHz is _highly_ recommended (but not strictly required)
-- You will need ~250MB RAM and ~10 GB disk free. Do **not** attempt to use a network-attached disk for this.
+- You will need ~250 MB RAM and ~10 GB disk free. Do **not** attempt to use a network-attached disk for this.
 - You should have at least 30,000 inodes free in your filesystem. Unless you are using a very small VM image, you almost certainly have enough (you can check with `df -i`).
 - TCP port 6264 should be open and support bidirectional traffic. If you want to use SSL, then port 6263 should be open.
 - A reliable Internet connection of DSL-like quality or higher
@@ -27,7 +27,7 @@ description: Helpful tips for getting a core node up and running.
 
 #### Best Practices for the Less Easy Way
 
-- Take a `blockstack-server.snapshots` database from a known-good node and pass `--expected_snapshots=/path/to/blockstack-server.snapshots`. This will force your bootstrapping node to verify that it reaches the same sequence of consensus hashes as it bootstraps (i.e. your node will detect any divergence from Blockstack's name history and abort early, instead of wasting your time).
+- Take a `blockstack-server.snapshots` database from a known-good node and pass `--expected_snapshots=/path/to/blockstack-server.snapshots`. This will force your bootstrapping node to verify that it reaches the same sequence of consensus hashes as it bootstraps (that is, your node will detect any divergence from Blockstack's name history and abort early, instead of wasting your time).
 - Make sure you're in a position to leave the node online at 100% CPU use for the duration of its bootstrapping period
 
 ### The Hard Way
@@ -55,8 +55,8 @@ description: Helpful tips for getting a core node up and running.
 
 ### No other Stacks nodes contact my node
 
-- Verify that your IP address is publicly-routable, and that peers can communicate on TCP:6264
+- Verify that your IP address is publicly routable, and that peers can communicate on TCP:6264
 
 ### People are attacking my Bitcoin node
 
-- Stick an `nginx` reverse proxy in front of your `bitcoind` node, and use our [nginx](https://github.com/blockstack/atlas/tree/master/public_fleet/bitcoind) scripts to limit API access to only the JSON-RPC methods Stacks actually needs. Better yet, do what we do---build a statically-linked `bitcoind` binary from source that simply omits all of the RPC methods except the ones listed in the linked config file.
+- Stick an `nginx` reverse proxy in front of your `bitcoind` node, and use our [nginx](https://github.com/blockstack/atlas/tree/master/public_fleet/bitcoind) scripts to limit API access to only the JSON-RPC methods Stacks actually needs. Better yet, do what we do---build a statically linked `bitcoind` binary from source that simply omits all of the RPC methods except the ones listed in the linked config file.

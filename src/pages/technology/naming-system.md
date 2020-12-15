@@ -148,7 +148,7 @@ forever.
 
 However, creating a namespace is not free. The namespace creator must _burn_
 cryptocurrency to do so. The shorter the namespace, the more cryptocurrency
-must be burned (i.e. short namespaces are more valuable than long namespaces).
+must be burned (that is, short namespaces are more valuable than long namespaces).
 For example, it cost Blockstack PBC 40 BTC to create the `.id` namespace in 2015
 (in transaction
 `5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b281`).
@@ -258,9 +258,9 @@ includes both the public key and signature, and the public key must hash to
 the previous subdomain operation's "addr=" field.
 
 The subdomain-creation and subdomain-transfer transactions for
-"cicero.res_publica.id" are broadcast by the owner of "res_publica.id".
+"cicero.res_publica.id" are broadcast by the owner of "res_publica.id."
 However, any on-chain name ("jude.id" in this case) can broadcast a subdomain
-update for "cicero.res_publica.id".
+update for "cicero.res_publica.id."
 ```
 
 Subdomain operations are ordered by sequence number, starting at 0. Each new
@@ -272,7 +272,7 @@ subdomain operation must include:
   operation.
 
 If two correctly-signed but conflicting subdomain operations are discovered
-(i.e. they have the same sequence number), the one that occurs earlier in the
+(that is, they have the same sequence number), the one that occurs earlier in the
 blockchain's history is accepted. Invalid subdomain operations are ignored.
 
 Combined, this ensures that a BNS node with all of the zone files with a given
@@ -344,7 +344,7 @@ Each name in BNS has an associated DID. The DID format for BNS is:
 
 Where:
 
-- `{address}` is an on-chain public key hash (e.g. a Bitcoin address).
+- `{address}` is an on-chain public key hash (for example a Bitcoin address).
 - `{index}` refers to the `nth` name this address created.
 
 For example, the DID for `personal.id` is
@@ -384,7 +384,7 @@ for subdomains, so the software can determine which code-path to take.
 
 - For on-chain BNS names, the `{address}` is the same as the Bitcoin address
   that owns the name. Currently, both version byte 0 and version byte 5
-  addresses are supported (i.e. addresses starting with `1` or `3`, meaning `p2pkh` and
+  addresses are supported (that is, addresses starting with `1` or `3`, meaning `p2pkh` and
   `p2sh` addresses).
 
 - For off-chain BNS subdomains, the `{address}` has version byte 63 for

@@ -50,7 +50,7 @@ The control of user data lies in the way that user data is accessed. When an app
 2. Read her profile URL from her `zonefile`.
 3. Fetch Alice's profile.
 4. _Verify_ that the profile is signed by `alice.id`'s key
-5. Read the `gaiaHubUrl` (e.g. `https://gaia.alice.org/`) out of the profile
+5. Read the `gaiaHubUrl` (for example `https://gaia.alice.org/`) out of the profile
 6. Fetch the file from `https://gaia.alice.org/data.txt`.
 
 Because `alice.id` has access to her zonefile, she can change where her profile is stored. For example, she may do this if the current profile's service provider or storage is compromised. To change where her profile is stored, she changes her Gaia hub URL to another Gaia hub URL. If a user has sufficient compute and storage resources, a user may run their own Gaia Storage System and bypass a commercial Gaia hub provider all together.

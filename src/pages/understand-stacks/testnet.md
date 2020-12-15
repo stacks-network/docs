@@ -12,7 +12,7 @@ The Stacks 2.0 testnet is a separate blockchain, to be used for testing. It is i
 
 -> Stacks (STX) tokens on the testnet are different from real tokens on the mainnet. They can be obtained at no cost through the faucet.
 
-With the completion of the Stacks 2.0 blockchain, a production-ready, stable version will be released as "mainnet". While work for the mainnet is in progress, the testnet reflects the most recent implementation of the Stacks 2.0 blockchain.
+With the completion of the Stacks 2.0 blockchain, a production-ready, stable version will be released as "mainnet." While work for the mainnet is in progress, the testnet reflects the most recent implementation of the Stacks 2.0 blockchain.
 
 ## Release phases
 

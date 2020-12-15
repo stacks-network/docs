@@ -95,10 +95,10 @@ interface ContractCallOptions {
 To be able to serialize your transaction properly, you need to provide the appropriate Clarity type with each argument.
 These types are named the same as they are in Clarity. The `value` that you pass must be a string. The types you can pass are:
 
-- `uint` - i.e. `"240"`
-- `int` - i.e. `"12"`
-- `bool` - can be "true", "false", "0" or "1"
-- `buff` - i.e. `"asdf"`
+- `uint` - for example `"240"`
+- `int` - for example `"12"`
+- `bool` - can be `true`, `false`, `0` or `1`
+- `buff` - for example `"asdf"`
 - `principal` - This can be a contract principal, or a standard principal.
   [Read more about principals](/write-smart-contracts/principals). Examples: `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ"`
   or `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ.my-contract"`.

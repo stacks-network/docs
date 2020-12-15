@@ -21,7 +21,7 @@ to familiarize themselves with both systems before approaching this document.
 
 Atlas is designed to integrate with BNS in order to allow users to
 store name state off-chain, encoded as a DNS zone file.
-The overwhelmingly-common use-cases in Stacks are:
+The common use-cases in Stacks are:
 
 - Storing a name's routing information for its owners' [Gaia](https://github.com/blockstack/gaia)
   datastores.

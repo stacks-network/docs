@@ -26,7 +26,7 @@ const options: PutFileOptions = {
   encrypt: false,
 };
 userSession.putFile('hello.txt', 'hello world!', options).then(() => {
-  // hello.txt exists now, and has the contents "hello world!".
+  // hello.txt exists now, and has the contents "hello world!."
 });
 ```
 
@@ -43,7 +43,7 @@ const options: PutFileOptions = {
 };
 
 userSession.putFile('message.txt', 'Secret hello!', options).then(() => {
-  // message.txt exists now, and has the contents "hello world!".
+  // message.txt exists now, and has the contents "hello world!."
 });
 ```
 

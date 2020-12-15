@@ -5,7 +5,7 @@ description: Learn how this site is built, and how you could contribute to it.
 
 ## Introduction
 
-Welcome! Thank you for your interest in contributing and helping make these docs as good as they can be! This page will
+Welcome. Thank you for your interest in contributing and helping make these docs as good as they can be. This page will
 outline how this site is built, its general structure, getting it running locally, and some helpful tips for using all of its features.
 
 ## Next.js, MDX, Markdown
@@ -13,7 +13,7 @@ outline how this site is built, its general structure, getting it running locall
 This docs site is built with [Next.js](https://github.com/vercel/next.js) and uses something called [MDX](https://mdxjs.com/).
 Next.js is a framework built on top of React, and MDX is a tool that enables writing React code (JSX) within standard
 Markdown files. In addition to being able to write JSX in Markdown, it allows the application to render out all of the
-Markdown content with React components! This means that we are able to do some pretty complex things while a
+Markdown content with React components. This means that we are able to do some pretty complex things while a
 contributor only has to know how to write Markdown.
 
 -> **Don't know what Markdown is?** Here is a [helpful guide](https://guides.github.com/features/mastering-markdown/) for learning it.
@@ -46,8 +46,8 @@ When workin locally with the site, a few things are needed:
 
 All of the code for this site is open source, located at the [GitHub repository here](https://github.com/blockstack/docs).
 Before you start editing anything, you will need to fork the repo so that you can have your own copy of the code under
-your GitHub profile. On the [repository's page](https://github.com/blockstack/docs), you should be able to
-see a button in the upper right of the screen that says "Fork". [You can read about Forking here.](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
+your GitHub profile. On the [repository's page](https://github.com/blockstack/docs.blockstack), you should be able to
+see a button in the upper right of the screen that says "Fork." [You can read about Forking here.](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
 
 This is a generalized workflow for contributing to these docs:
 
@@ -72,7 +72,7 @@ yarn run v1.22.4
 yarn clean:build-files && next dev
 rimraf .next
 ready - started server on http://localhost:3000
-warn  - You have enabled experimental feature(s).
+warn  - You have enabled experimental features.
 warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use them at your own risk.
 
 info  - Using external babel configuration from /Users/YOUR_USERNAME/oss/docs.blockstack/babel.config.js
@@ -230,7 +230,7 @@ Which will render:
 
 (define-public (test-emit-event)
     (begin
-        (print "Event! Hello world")
+        (print "Event. Hello world")
         (ok u1)))
 (begin (test-emit-event))
 
@@ -265,9 +265,9 @@ We use another remark plugin to generate certain kinds of alerts inline in our d
 
 => This will be a success style alert.
 
-~> This will be a warning style alert!
+~> This will be a warning style alert
 
-!> This will be a danger style alert!!!
+!> This will be a danger style alert
 ```
 
 Which renders:
@@ -278,6 +278,6 @@ Which renders:
 
 => This will be a success style alert.
 
-~> This will be a warning style alert!
+~> This will be a warning style alert
 
-!> This will be a danger style alert!!!
+!> This will be a danger style alert
