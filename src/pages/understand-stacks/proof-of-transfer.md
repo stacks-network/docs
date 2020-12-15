@@ -15,7 +15,7 @@ Mining mechanisms used by these algorithms are broadly divided into proof-of-wor
 
 A variant of proof-of-work is proof-of-burn where miners compete by ‘burning’ (destroying) a proof-of-work cryptocurrency as a proxy for computing resources.
 
-Proof-of-transfer (PoX) is a new mining mechanism, that generalizes the concept of proof-of-burn. PoX uses the proof-of-work cryptocurrency of an established blockchain to secure a new blockchain. However, unlike proof-of-burn rather than burning the cryptocurrency, miners transfer the committed cryptocurrency to some other participant(s) in the network.
+Proof-of-transfer (PoX) is a new mining mechanism, that generalizes the concept of proof-of-burn. PoX uses the proof-of-work cryptocurrency of an established blockchain to secure a new blockchain. However, unlike proof-of-burn rather than burning the cryptocurrency, miners transfer the committed cryptocurrency to some other participants in the network.
 
 This allows network participants who are adding value to the new cryptocurrency network to earn a reward in a base cryptocurrency by actively participating in the consensus algorithm, PoX encourages a model where there is one extremely secure proof-of-work blockchain, say Bitcoin.
 

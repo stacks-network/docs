@@ -308,7 +308,7 @@ Everything is fine, continue to the next step, step 8.</td>
 9) Choose to proceed.
 10) Extend the IP with the `PUBLIC_IP/hub_info` tag like so.
 
-    You should see a response from your Gaia hub!
+    You should see a response from your Gaia hub.
 
     ![Hub test](/images/aws-hub.png)
 

@@ -540,7 +540,7 @@ Now, you are ready to test your Gaia server and make sure it is up and running.
 3. Copy the IP address for it.
 4. In your browser, visit the page `MY_DROPLET_IP/hub_info`.
 
-   You should see a response from your Gaia hub!
+   You should see a response from your Gaia hub.
 
    ![Hub test](/images/hub-running.png)
 

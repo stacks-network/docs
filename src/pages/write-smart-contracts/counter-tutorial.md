@@ -75,10 +75,10 @@ counter contract test suite
 
 ... # error details
 
-npm ERR! Test failed.  See above for more details.
+npm ERR. Test failed.  See above for more details.
 ```
 
-It looks like we see some failed tests! That is on purpose - we will implement the new smart contract in the next steps! After every step in this tutorial, we will rerun the tests to ensure we're on the right track.
+It looks like we see some failed tests. That is on purpose - we will implement the new smart contract in the next steps. After every step in this tutorial, we will rerun the tests to ensure we're on the right track.
 
 ## Step 3: Developing a smart contract
 
@@ -141,7 +141,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
    To provide access to the `counter` variable from outside of the current smart contract, we need to declare a public function to get it. The last lines of the code add a public `get-counter` function. The [`var-get`](/references/language-functions#var-get) statement looks for a variable in the contract's data space and returns it.
 
-   With that, you are ready to rerun the tests!
+   With that, you are ready to rerun the tests
 
 3. Run the tests and review the results:
 
@@ -149,7 +149,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
    npm test
    ```
 
-   You should now only see 2 failing tests! `should start at zero` is passing, and you successfully build your first part of the contract. Congrats!
+   You should now only see 2 failing tests. `should start at zero` is passing, and you successfully build your first part of the contract. Congrats.
 
    However, we don't stop here. Let's implement increment and decrement functions.
 
@@ -167,7 +167,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
 
    Next, a [`var-set`](/references/language-functions#var-set) is used to set a new value for the `counter` variable. The new value is constructed using the [`+`](/references/language-functions#-add) (add) statement. This statement takes a number of integers and returns the result. Along with add, Clarity provides statements to subtract, multiply, and divide integers. Find more details in the [Clarity language reference](/references/language-functions).
 
-5. Next, implement a new public function `decrement` to subtract `1` from the `counter` variable. You should have all knowledge needed to succeed at this!
+5. Next, implement a new public function `decrement` to subtract `1` from the `counter` variable. You should have all knowledge needed to succeed at this
 
    Here is the final contract:
 
@@ -188,7 +188,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
        (ok (var-get counter))))
    ```
 
-   Done? Great! Run the tests and make sure all of them are passing. You are looking for 4 passed tests:
+   Done? Great. Run the tests and make sure all of them are passing. You are looking for 4 passed tests:
 
    ```bash
    counter contract test suite
@@ -216,7 +216,7 @@ calling all public methods you implemented. Here's a suggested order:
 
 -> As you can see, read-only function calls don't require a transaction to complete. This is because the method doesn't require a state change.
 
-=> Congratulations! You just implemented, deployed, and called your own Clarity smart contract.
+=> Congratulations. You just implemented, deployed, and called your own Clarity smart contract.
 
 With the completion of this tutorial, you:
 

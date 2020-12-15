@@ -1,5 +1,5 @@
 ---
-title: Hello, World!
+title: Hello, World
 description: Learn the basics of Clarity and write a simple Hello World smart contract.
 duration: 18 minutes
 experience: beginners
@@ -160,7 +160,7 @@ On the Sandbox view, switch to the [**Contract call**](https://testnet-explorer.
 
 After clicking **Search**, you will see the two public methods implemented in the smart contract.
 
-Locate the `(echo-number)` method, provide any integer for the `val` argument (e.g. 42) and click **Submit**. You will see the value you entered echoed back to you below the button:
+Locate the `(echo-number)` method, provide any integer for the `val` argument (for example 42) and click **Submit**. You will see the value you entered echoed back to you below the button:
 
 ```clarity
 Result: (ok 42)

@@ -51,7 +51,7 @@ npm run start
 You should see output similar to the following:
 
 ```bash
-Compiled successfully!
+Compiled successfully
 
 You can now view todos in the browser.
 
@@ -177,12 +177,12 @@ It is registered on the Stacks blockchain with [BNS](/technology/naming-system) 
 
 !["Choose username" screen](/images/todos/choose-username.png)
 
-### Done: You've now completed onboarding into the app!
+### Done: You've now completed onboarding into the app
 
 ## Add, edit and delete todos privately
 
 Once you've authenticated the app, you can can start adding todos by entering values into the "Write your to do"
-field and hitting "Enter".
+field and hitting "Enter."
 
 !["Todos" app home screen](/images/todos/home.png)
 

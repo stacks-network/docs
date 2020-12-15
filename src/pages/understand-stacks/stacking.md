@@ -54,7 +54,7 @@ The Stacking flow is different for delegation use cases:
 
 PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of destroying the committed Bitcoin, it is transferred to eligible Stacks (STX) holders that participate in the Stacking protocol.
 
--> A PoX miner can only receive newly-minted Stacks (STX) tokens when they transfer bitcoin to eligible owners of Stacks (STX) tokens
+-> A PoX miner can only receive newly minted Stacks (STX) tokens when they transfer bitcoin to eligible owners of Stacks (STX) tokens
 
 Miners have to run a software (mining client, aka "miner") on their machines to participate in the PoX mechanism. The mining client implements the PoX mechanism, which ensures proper handling and incentives through four key phases:
 

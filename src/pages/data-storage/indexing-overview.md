@@ -69,7 +69,7 @@ currently active key related to an organization.
 
 ## Is Radiks decentralized
 
-Although Radiks applications rely on a centrally-hosted database, an application using Radiks remains fundamentally
+Although Radiks applications rely on a centrally hosted database, an application using Radiks remains fundamentally
 decentralized. A DApp that uses Radiks has these characteristics.
 
 ### Built on decentralized authentication

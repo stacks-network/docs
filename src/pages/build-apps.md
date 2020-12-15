@@ -49,8 +49,7 @@ Get started with the documentation and tutorials below.
 
 ### Authentication and data storage
 
-Like a regular app, yours will require user authentication and data storage — but decentralized. Get started with the
-documentation below or try the tutorial.
+Like a regular app, yours will require user authentication and data storage, but decentralized. Get started with the documentation below or try the tutorial.
 
 [@page-reference | inline]
 | /authentication/overview

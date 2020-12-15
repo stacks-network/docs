@@ -18,8 +18,8 @@ The admin service relies on two configuration files, the hub's configuration and
 The admin service needs to know the following:
 
 - where the Gaia hub config file is located
-- which API key(s) to use when authenticating administrative requests
-- which command(s) to run to restart the Gaia hub on a config change
+- which API keys to use when authenticating administrative requests
+- which commands to run to restart the Gaia hub on a config change
 
 The following is the standard admin service config installed with your EC2 instance.
 
@@ -429,7 +429,7 @@ The following JSON schema details the possible parameters for a hub configuratio
     },
     "maxFileUploadSize": {
       "default": 20,
-      "description": "The maximum allowed POST body size in megabytes. \nThe content-size header is checked, and the POST body stream \nis monitoring while streaming from the client. \n[Recommended] Minimum 100KB (or approximately 0.1MB)",
+      "description": "The maximum allowed POST body size in megabytes. \nThe content-size header is checked, and the POST body stream \nis monitoring while streaming from the client. \n[Recommended] Minimum 100KB (or approximately 0.1 MB)",
       "minimum": 0.1,
       "type": "number"
     },

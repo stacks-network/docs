@@ -8,7 +8,7 @@ images:
 
 ## Authentication flow
 
-For an application developer, the application flow is similar to the typical client-server flow used by centralized sign in services (e.g., OAuth). However, with Stacks auth, the authentication flow happens entirely client-side.
+For an application developer, the application flow is similar to the typical client-server flow used by centralized sign in services (for example, OAuth). However, with Stacks auth, the authentication flow happens entirely client-side.
 
 A decentralized application and [the Blockstack App](https://github.com/blockstack/ux/tree/master/packages/app) communicate during the authentication flow by passing back and forth two tokens. The requesting application sends the Blockstack App an `authRequest` token. Once a user approves a sign-in, the Blockstack App responds to the application with an `authResponse` token. These tokens are <a href="https://jwt.io/" target="\_blank">JSON Web Tokens</a>, and they are passed via URL query strings.
 

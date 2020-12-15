@@ -5,14 +5,14 @@ description: Learn about the format of transactions used for name operations in 
 
 ## Introduction
 
-This page is for organizations who want to be able to create and send name operation transactions to the blockchain(s) Stacks supports.
+This page is for organizations who want to be able to create and send name operation transactions to the blockchains Stacks supports.
 It describes the transaction formats for the Bitcoin blockchain.
 
 ## Transaction format
 
-Each Bitcoin transaction for Stacks contains signatures from two sets of keys: the name owner, and the payer. The owner `scriptSig` and `scriptPubKey` fields are generated from the key(s) that own the given name. The payer `scriptSig` and `scriptPubKey` fields are used to _subsidize_ the operation. The owner keys do not pay for any operations; the owner keys only control the minimum amount of BTC required to make the transaction standard. The payer keys only pay for the transaction's fees, and (when required) they pay the name fee.
+Each Bitcoin transaction for Stacks contains signatures from two sets of keys: the name owner, and the payer. The owner `scriptSig` and `scriptPubKey` fields are generated from the keys that own the given name. The payer `scriptSig` and `scriptPubKey` fields are used to _subsidize_ the operation. The owner keys do not pay for any operations; the owner keys only control the minimum amount of BTC required to make the transaction standard. The payer keys only pay for the transaction's fees, and (when required) they pay the name fee.
 
-This construction is meant to allow the payer to be wholly separate from the owner. The principal that owns the name can fund their own transactions, or they can create a signed transaction that carries out the desired operation and request some other principal (e.g. a parent organization) to actually pay for and broadcast the transaction.
+This construction is meant to allow the payer to be wholly separate from the owner. The principal that owns the name can fund their own transactions, or they can create a signed transaction that carries out the desired operation and request some other principal (for example a parent organization) to actually pay for and broadcast the transaction.
 
 The general transaction layout is as follows:
 
@@ -26,7 +26,7 @@ The general transaction layout is as follows:
 (1) The owner `scriptSig` is _always_ the first input.
 (2) The `OP_RETURN` script that describes the name operation is _always_ the first output.
 (3) The owner `scriptPubKey` is _always_ the second output.
-(4) The payer can use as many payment inputs as (s)he likes.
+(4) The payer can use as many payment inputs as they like.
 (5) At most one output will be the "change" `scriptPubKey` for the payer.
 Different operations require different outputs.
 
@@ -65,7 +65,7 @@ Outputs:
 
 Notes:
 
-- `register_addr` is a base58check-encoded `ripemd160(sha256(pubkey))` (i.e. an address). This address **must not** have been used before in the underlying blockchain.
+- `register_addr` is a base58check-encoded `ripemd160(sha256(pubkey))` (that is, an address). This address **must not** have been used before in the underlying blockchain.
 - `script_pubkey` is either a `p2pkh` or `p2sh` compiled Bitcoin script for the payer's address.
 
 ### NAME_REGISTRATION
@@ -423,7 +423,7 @@ Outputs:
 Notes:
 
 - These transactions can only be sent between the `NAMESPACE_REVEAL` and `NAMESPACE_READY`.
-- The first `NAME_IMPORT` transaction **must** have a `scriptSig` input that matches the `NAMESPACE_REVEAL`'s second output (i.e. the reveal output).
+- The first `NAME_IMPORT` transaction **must** have a `scriptSig` input that matches the `NAMESPACE_REVEAL`'s second output (that is, the reveal output).
 - Any subsequent `NAME_IMPORT` transactions **may** have a `scriptSig` input whose public key is one of the first 300 extended public keys from the `NAMESPACE_REVEAL`'s `scriptSig` public key.
 
 ### NAMESPACE_READY

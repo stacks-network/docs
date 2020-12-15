@@ -109,7 +109,7 @@ class Person extends Model {
     isHuman: Boolean,
     likesDogs: {
       type: Boolean,
-      decrypted: true, // all users will know if this record likes dogs!
+      decrypted: true, // all users will know if this record likes dogs
     },
   };
 
@@ -166,7 +166,7 @@ To create an instance, pass some attributes to the constructor of that class:
 const person = new Person({
   name: 'Hank',
   isHuman: false,
-  likesDogs: false, // just an example, I love dogs!
+  likesDogs: false, // just an example, I love dogs
 });
 ```
 

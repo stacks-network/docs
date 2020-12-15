@@ -61,7 +61,7 @@ example below.
 
 Smart contracts themselves are principals and are represented by the
 smart contract's identifier -- which is the publishing address of the
-contract _and_ the contract's name, e.g.:
+contract _and_ the contract's name, for example:
 
 ```clarity
 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR.contract-name
@@ -69,7 +69,7 @@ contract _and_ the contract's name, e.g.:
 
 For convenience, smart contracts may write a contract's identifier in the
 form `.contract-name`. This will be expanded by the Clarity interpreter into
-a fully-qualified contract identifier that corresponds to the same
+a fully qualified contract identifier that corresponds to the same
 publishing address as the contract it appears in. For example, if the
 same publisher address, `SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR`, is
 publishing two contracts, `contract-A` and `contract-B`, the fully
@@ -149,7 +149,7 @@ This contract performs two different authorization checks:
 1. Before a ship is allowed to fly, the contract checks whether or not
    the transaction was created and signed by an authorized pilot. A
    pilot could, for example, call another contract, which then calls
-   the "fly-ship" public function on the pilot's behalf.
+   the `fly-ship` public function on the pilot's behalf.
 2. Before modifying the allowed-pilots for a given rocket ship, the
    contract checks that the transaction was signed by the owner of the
    rocket ship. Furthermore, the contract requires that this function
@@ -285,11 +285,11 @@ a smart contract rocket-ship-line:
 ;;  * authorize each employed pilot to the ship
 (define-public (add-managed-rocket (ship uint))
  (begin
-  ;; only the ceo may call this function!
+  ;; only the ceo may call this function
   (asserts! (is-eq tx-sender contract-caller line-ceo) (err u1))
   ;; start executing as the contract
    (as-contract (begin
-    ;; make sure the contract owns the ship!
+    ;; make sure the contract owns the ship
     (asserts! (contract-call? .rockets-base is-my-ship ship) (err u2))
     ;; register all of our pilots on the ship
     (add-pilots-to ship)))))

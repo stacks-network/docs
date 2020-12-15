@@ -14,7 +14,7 @@ Smart contracts and apps developed on the Stacks platform are natively integrate
 
 ### Status
 
-The Stacks 2.0 blockchain is in active development. While the final release ("mainnet") is in the works, you can get familiar with its features on the "testnet".
+The Stacks 2.0 blockchain is in active development. While the final release ("mainnet") is in the works, you can get familiar with its features on the "testnet."
 
 [@page-reference | inline]
 | /understand-stacks/testnet
