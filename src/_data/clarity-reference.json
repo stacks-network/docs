@@ -105,6 +105,14 @@
       "example": "(sqrti u11) ;; Returns u3\n(sqrti 1000000) ;; Returns 1000\n(sqrti u1) ;; Returns u1\n(sqrti 0) ;; Returns 0\n"
     },
     {
+      "name": "log2",
+      "input_type": "int | uint",
+      "output_type": "int | uint",
+      "signature": "(log2 n)",
+      "description": "Returns the power to which the number 2 must be raised to to obtain the value `n`, rounded down to the nearest integer. Fails on a negative numbers.",
+      "example": "(log2 u8) ;; Returns u3\n(log2 8) ;; Returns 3\n(log2 u1) ;; Returns u0\n(log2 1000) ;; Returns 9\n"
+    },
+    {
       "name": "xor",
       "input_type": "int, int | uint, uint",
       "output_type": "int | uint",
@@ -157,16 +165,16 @@
       "input_type": "((name2 AnyType) (name2 AnyType) ...), AnyType, ... A",
       "output_type": "A",
       "signature": "(let ((name1 expr1) (name2 expr2) ...) expr-body1 expr-body2 ... expr-body-last)",
-      "description": "The `let` function accepts a list of `variable name` and `expression` pairs,\nevaluating each expression and _binding_ it to the corresponding variable name. The _context_\ncreated by this set of bindings is used for evaluating its body expressions. The let expression returns the value of the last such body expression.",
-      "example": "(let ((a 2) (b (+ 5 6 7))) (print a) (print b) (+ a b)) ;; Returns 20"
+      "description": "The `let` function accepts a list of `variable name` and `expression` pairs,\nevaluating each expression and _binding_ it to the corresponding variable name.\n`let` bindings are sequential: when a `let` binding is evaluated, it may refer to prior binding.\nThe _context_ created by this set of bindings is used for evaluating its body expressions.\n The let expression returns the value of the last such body expression.\nNote: intermediary statements returning a response type must be checked",
+      "example": "(let ((a 2) (b (+ 5 6 7))) (print a) (print b) (+ a b)) ;; Returns 20\n(let ((a 5) (c (+ a 1)) (d (+ c 1)) (b (+ a c d))) (print a) (print b) (+ a b)) ;; Returns 23"
     },
     {
       "name": "map",
-      "input_type": "Function(A) -> B, (list A)",
-      "output_type": "(list B)",
-      "signature": "(map func list)",
-      "description": "The `map` function applies the input function `func` to each element of the\ninput list, and outputs a list containing the _outputs_ from those function applications.",
-      "example": "(map not (list true false true false)) ;; Returns (false true false true)"
+      "input_type": "Function(A, B, ..., N) -> X, (list A1 A2 ... Am), (list B1 B2 ... Bm), ..., (list N1 N2 ... Nm)",
+      "output_type": "(list X)",
+      "signature": "(map func list-A list-B ... list-N)",
+      "description": "The `map` function applies the input function `func` to each element of the\ninput lists, and outputs a list containing the _outputs_ from those function applications.",
+      "example": "\n(map not (list true false true false)) ;; Returns (false true false true)\n(map + (list 1 2 3) (list 1 2 3) (list 1 2 3)) ;; Returns (3 6 9)"
     },
     {
       "name": "fold",
@@ -209,6 +217,22 @@
       "example": "(len \"blockstack\") ;; Returns u10\n(len (list 1 2 3 4 5)) ;; Returns u5\n"
     },
     {
+      "name": "element-at",
+      "input_type": "buff|list A, uint",
+      "output_type": "(optional buff|A)",
+      "signature": "(element-at sequence index)",
+      "description": "The `element-at` function returns the element at `index` in the provided sequence.\nIf `index` is greater than or equal to `(len sequence)`, this function returns `none`.\nFor strings and buffers, this function will return 1-length strings or buffers.",
+      "example": "(element-at \"blockstack\" u5) ;; Returns (some \"s\")\n(element-at (list 1 2 3 4 5) u5) ;; Returns none\n(element-at (list 1 2 3 4 5) (+ u1 u2)) ;; Returns (some 4)\n(element-at \"abcd\" u1) ;; Returns (some \"b\")\n(element-at 0xfb01 u1) ;; Returns (some 0x01)\n"
+    },
+    {
+      "name": "index-of",
+      "input_type": "buff|list A, buff|A",
+      "output_type": "(optional uint)",
+      "signature": "(index-of sequence item)",
+      "description": "The `index-of` function returns the first index at which `item` can be\nfound in the provided sequence (using `is-eq` checks).\n\nIf this item is not found in the sequence (or an empty string/buffer is supplied), this\nfunction returns `none`.",
+      "example": "(index-of \"blockstack\" \"b\") ;; Returns (some u0)\n(index-of \"blockstack\" \"k\") ;; Returns (some u4)\n(index-of \"blockstack\" \"\") ;; Returns none\n(index-of (list 1 2 3 4 5) 6) ;; Returns none\n(index-of 0xfb01 0x01) ;; Returns (some u1)\n"
+    },
+    {
       "name": "list",
       "input_type": "A, ...",
       "output_type": "(list A)",
@@ -238,7 +262,7 @@
       "output_type": "(optional (tuple))",
       "signature": "(map-get? map-name key-tuple)",
       "description": "The `map-get?` function looks up and returns an entry from a contract's data map.\nThe value is looked up using `key-tuple`.\nIf there is no value associated with that key in the data map, the function returns a `none` option. Otherwise,\nit returns `(some value)`.",
-      "example": "(define-map names-map ((name (string-ascii 10))) ((id int)))\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(map-get? names-map (tuple (name \"blockstack\"))) ;; Returns (some (tuple (id 1337)))\n(map-get? names-map ((name \"blockstack\"))) ;; Same command, using a shorthand for constructing the tuple\n"
+      "example": "(define-map names-map { name: (string-ascii 10) } { id: int })\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(map-get? names-map (tuple (name \"blockstack\"))) ;; Returns (some (tuple (id 1337)))\n(map-get? names-map { name: \"blockstack\" }) ;; Same command, using a shorthand for constructing the tuple\n"
     },
     {
       "name": "map-set",
@@ -246,7 +270,7 @@
       "output_type": "bool",
       "signature": "(map-set map-name key-tuple value-tuple)",
       "description": "The `map-set` function sets the value associated with the input key to the\ninputted value. This function performs a _blind_ update; whether or not a value is already associated\nwith the key, the function overwrites that existing association.\n\nNote: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state,\nand therefore the maximum size of a value that may be inserted into a map is MAX_CLARITY_VALUE - 1.",
-      "example": "(define-map names-map ((name (string-ascii 10))) ((id int)))\n(map-set names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true\n(map-set names-map ((name \"blockstack\")) ((id 1337))) ;; Same command, using a shorthand for constructing the tuple\n"
+      "example": "(define-map names-map { name: (string-ascii 10) } { id: int })\n(map-set names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true\n(map-set names-map (tuple (name \"blockstack\")) (tuple (id 1337))) ;; Same command, using a shorthand for constructing the tuple\n"
     },
     {
       "name": "map-insert",
@@ -254,7 +278,7 @@
       "output_type": "bool",
       "signature": "(map-insert map-name key-tuple value-tuple)",
       "description": "The `map-insert` function sets the value associated with the input key to the\ninputted value if and only if there is not already a value associated with the key in the map.\nIf an insert occurs, the function returns `true`. If a value already existed for\nthis key in the data map, the function returns `false`.\n\nNote: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state,\nand therefore the maximum size of a value that may be inserted into a map is MAX_CLARITY_VALUE - 1.",
-      "example": "(define-map names-map ((name (string-ascii 10))) ((id int)))\n(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true\n(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns false\n(map-insert names-map ((name \"blockstack\")) ((id 1337))) ;; Same command, using a shorthand for constructing the tuple\n"
+      "example": "(define-map names-map { name: (string-ascii 10) } { id: int })\n(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true\n(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns false\n(map-insert names-map (tuple (name \"blockstack\")) (tuple (id 1337))) ;; Same command, using a shorthand for constructing the tuple\n"
     },
     {
       "name": "map-delete",
@@ -262,7 +286,7 @@
       "output_type": "bool",
       "signature": "(map-delete map-name key-tuple)",
       "description": "The `map-delete` function removes the value associated with the input key for\nthe given map. If an item exists and is removed, the function returns `true`.\nIf a value did not exist for this key in the data map, the function returns `false`.",
-      "example": "(define-map names-map ((name (string-ascii 10))) ((id int)))\n(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true\n(map-delete names-map { name: \"blockstack\" }) ;; Returns true\n(map-delete names-map { name: \"blockstack\" }) ;; Returns false\n(map-delete names-map ((name \"blockstack\"))) ;; Same command, using a shorthand for constructing the tuple\n"
+      "example": "(define-map names-map { name: (string-ascii 10) } { id: int })\n(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true\n(map-delete names-map { name: \"blockstack\" }) ;; Returns true\n(map-delete names-map { name: \"blockstack\" }) ;; Returns false\n(map-delete names-map (tuple (name \"blockstack\"))) ;; Same command, using a shorthand for constructing the tuple\n"
     },
     {
       "name": "tuple",
@@ -278,14 +302,22 @@
       "output_type": "A",
       "signature": "(get key-name tuple)",
       "description": "The `get` function fetches the value associated with a given key from the supplied typed tuple.\nIf an `Optional` value is supplied as the inputted tuple, `get` returns an `Optional` type of the specified key in\nthe tuple. If the supplied option is a `(none)` option, get returns `(none)`.",
-      "example": "(define-map names-map ((name (string-ascii 12))) ((id int)))\n(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true\n(get id (tuple (name \"blockstack\") (id 1337))) ;; Returns 1337\n(get id (map-get? names-map (tuple (name \"blockstack\")))) ;; Returns (some 1337)\n(get id (map-get? names-map (tuple (name \"non-existent\")))) ;; Returns none\n"
+      "example": "(define-map names-map { name: (string-ascii 12) } { id: int })\n(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true\n(get id (tuple (name \"blockstack\") (id 1337))) ;; Returns 1337\n(get id (map-get? names-map (tuple (name \"blockstack\")))) ;; Returns (some 1337)\n(get id (map-get? names-map (tuple (name \"non-existent\")))) ;; Returns none\n"
+    },
+    {
+      "name": "merge",
+      "input_type": "tuple, tuple",
+      "output_type": "tuple",
+      "signature": "(merge tuple { key1: val1 })",
+      "description": "The `merge` function returns a new tuple with the combined fields, without mutating the supplied tuples.",
+      "example": "(define-map users { id: int } { name: (string-ascii 12), address: (optional principal) })\n(map-insert users { id: 1337 } { name: \"john\", address: none }) ;; Returns true\n(let ((user (unwrap-panic (map-get? users { id: 1337 }))))\n    (merge user { address: (some 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) })) ;; Returns (tuple (address (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)) (name \"john\"))"
     },
     {
       "name": "begin",
       "input_type": "AnyType, ... A",
       "output_type": "A",
       "signature": "(begin expr1 expr2 expr3 ... expr-last)",
-      "description": "The `begin` function evaluates each of its input expressions, returning the\nreturn value of the last such expression.",
+      "description": "The `begin` function evaluates each of its input expressions, returning the\nreturn value of the last such expression.\nNote: intermediary statements returning a response type must be checked.",
       "example": "(begin (+ 1 2) 4 5) ;; Returns 5"
     },
     {
@@ -430,7 +462,7 @@
       "output_type": "A",
       "signature": "(default-to default-value option-value)",
       "description": "The `default-to` function attempts to 'unpack' the second argument: if the argument is\na `(some ...)` option, it returns the inner value of the option. If the second argument is a `(none)` value,\n`default-to` it returns the value of `default-value`.",
-      "example": "\n(define-map names-map ((name (string-ascii 12))) ((id int)))\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(default-to 0 (get id (map-get? names-map (tuple (name \"blockstack\"))))) ;; Returns 1337\n(default-to 0 (get id (map-get? names-map (tuple (name \"non-existant\"))))) ;; Returns 0\n"
+      "example": "\n(define-map names-map { name: (string-ascii 12) } { id: int })\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(default-to 0 (get id (map-get? names-map (tuple (name \"blockstack\"))))) ;; Returns 1337\n(default-to 0 (get id (map-get? names-map (tuple (name \"non-existant\"))))) ;; Returns 0\n"
     },
     {
       "name": "asserts!",
@@ -446,7 +478,7 @@
       "output_type": "A",
       "signature": "(unwrap! option-input thrown-value)",
       "description": "The `unwrap!` function attempts to 'unpack' the first argument: if the argument is\nan option type, and the argument is a `(some ...)` option, `unwrap!` returns the inner value of the\noption. If the argument is a response type, and the argument is an `(ok ...)` response, `unwrap!` returns\n the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `(none)` value,\n`unwrap!` _returns_ `thrown-value` from the current function and exits the current control-flow.",
-      "example": "\n(define-map names-map ((name (string-ascii 12))) ((id int)))\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(define-private (get-name-or-err (name (string-ascii 12)))\n  (let ((raw-name (unwrap! (map-get? names-map { name: name }) (err 1))))\n       (ok raw-name)))\n\n(get-name-or-err \"blockstack\") ;; Returns (ok (tuple (id 1337)))\n(get-name-or-err \"non-existant\") ;; Returns (err 1)"
+      "example": "\n(define-map names-map { name: (string-ascii 12) } { id: int })\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(define-private (get-name-or-err (name (string-ascii 12)))\n  (let ((raw-name (unwrap! (map-get? names-map { name: name }) (err 1))))\n       (ok raw-name)))\n\n(get-name-or-err \"blockstack\") ;; Returns (ok (tuple (id 1337)))\n(get-name-or-err \"non-existant\") ;; Returns (err 1)"
     },
     {
       "name": "unwrap-err!",
@@ -462,7 +494,7 @@
       "output_type": "A",
       "signature": "(unwrap-panic option-input)",
       "description": "The `unwrap` function attempts to 'unpack' its argument: if the argument is\nan option type, and the argument is a `(some ...)` option, this function returns the inner value of the\noption. If the argument is a response type, and the argument is an `(ok ...)` response, it returns\n the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `(none)` value,\n`unwrap` throws a runtime error, aborting any further processing of the current transaction.",
-      "example": "\n(define-map names-map ((name (string-ascii 12))) ((id int)))\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(unwrap-panic (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))\n(unwrap-panic (map-get? names-map { name: \"non-existant\" })) ;; Throws a runtime exception\n"
+      "example": "\n(define-map names-map { name: (string-ascii 12) } { id: int })\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(unwrap-panic (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))\n(unwrap-panic (map-get? names-map { name: \"non-existant\" })) ;; Throws a runtime exception\n"
     },
     {
       "name": "unwrap-err-panic",
@@ -486,7 +518,7 @@
       "output_type": "A",
       "signature": "(try! option-input)",
       "description": "The `try!` function attempts to 'unpack' the first argument: if the argument is\nan option type, and the argument is a `(some ...)` option, `try!` returns the inner value of the\noption. If the argument is a response type, and the argument is an `(ok ...)` response, `try!` returns\n the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `none` value,\n`try!` _returns_ either `none` or the `(err ...)` value from the current function and exits the current control-flow.",
-      "example": "\n(define-map names-map ((name (string-ascii 12))) ((id int)))\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(try! (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))\n(define-private (checked-even (x int))\n  (if (is-eq (mod x 2) 0)\n      (ok x)\n      (err false)))\n(define-private (double-if-even (x int))\n  (ok (* 2 (try! (checked-even x)))))\n(double-if-even 10) ;; Returns (ok 20)\n(double-if-even 3) ;; Returns (err false)\n"
+      "example": "\n(define-map names-map { name: (string-ascii 12) } { id: int })\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(try! (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))\n(define-private (checked-even (x int))\n  (if (is-eq (mod x 2) 0)\n      (ok x)\n      (err false)))\n(define-private (double-if-even (x int))\n  (ok (* 2 (try! (checked-even x)))))\n(double-if-even 10) ;; Returns (ok 20)\n(double-if-even 3) ;; Returns (err false)\n"
     },
     {
       "name": "is-ok",
@@ -502,7 +534,7 @@
       "output_type": "bool",
       "signature": "(is-none value)",
       "description": "`is-none` tests a supplied option value, returning `true` if the option value is `(none)`,\nand `false` if it is a `(some ...)`.",
-      "example": "\n(define-map names-map ((name (string-ascii 12))) ((id int)))\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(is-none (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns false\n(is-none (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns true"
+      "example": "\n(define-map names-map { name: (string-ascii 12) } { id: int })\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(is-none (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns false\n(is-none (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns true"
     },
     {
       "name": "is-err",
@@ -518,7 +550,7 @@
       "output_type": "bool",
       "signature": "(is-some value)",
       "description": "`is-some` tests a supplied option value, returning `true` if the option value is `(some ...)`,\nand `false` if it is a `none`.",
-      "example": "\n(define-map names-map ((name (string-ascii 12))) ((id int)))\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(is-some (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns true\n(is-some (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns false"
+      "example": "\n(define-map names-map { name: (string-ascii 12) } { id: int })\n(map-set names-map { name: \"blockstack\" } { id: 1337 })\n(is-some (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns true\n(is-some (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns false"
     },
     {
       "name": "filter",
@@ -638,7 +670,7 @@
       "output_type": "Not Applicable",
       "signature": "(define-map map-name ((key-name-0 key-type-0) ...) ((val-name-0 val-type-0) ...))",
       "description": "`define-map` is used to define a new datamap for use in a smart contract. Such\nmaps are only modifiable by the current smart contract.\n\nMaps are defined with a key tuple type and value tuple type. These are defined using a list\nof name and type pairs, e.g., a key type might be `((id int))`, which is a tuple with a single \"id\"\nfield of type `int`.\n\nLike other kinds of definition statements, `define-map` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).",
-      "example": "\n(define-map squares ((x int)) ((square int)))\n(define-private (add-entry (x int))\n  (map-insert squares ((x 2)) ((square (* x x)))))\n(add-entry 1)\n(add-entry 2)\n(add-entry 3)\n(add-entry 4)\n(add-entry 5)\n"
+      "example": "\n(define-map squares { x: int } { square: int })\n(define-private (add-entry (x int))\n  (map-insert squares { x: 2 } { square: (* x x) }))\n(add-entry 1)\n(add-entry 2)\n(add-entry 3)\n(add-entry 4)\n(add-entry 5)\n"
     },
     {
       "name": "define-data-var",
