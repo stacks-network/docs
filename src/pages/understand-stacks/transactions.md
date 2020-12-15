@@ -229,7 +229,7 @@ const tupCV = tupleCV({
 const l = listCV([trueCV(), falseCV()]);
 ```
 
-If you develop in TypeScript, the type checker can help prevent you from creating wrongly-typed Clarity values. For example, the following code won't compile since in Clarity lists are homogeneous, meaning they can only contain values of a single type. It is important to include the type variable `BooleanCV` in this example, otherwise the typescript type checker won't know which type the list is of and won't enforce homogeneity.
+If you develop in Typescript, the type checker can help prevent you from creating wrongly typed Clarity values. For example, the following code won't compile since in Clarity lists are homogeneous, meaning they can only contain values of a single type. It is important to include the type variable `BooleanCV` in this example, otherwise the typescript type checker won't know which type the list is of and won't enforce homogeneity.
 
 ```js
 const l = listCV < BooleanCV > [trueCV(), intCV(1)];

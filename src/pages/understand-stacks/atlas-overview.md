@@ -64,13 +64,13 @@ Blockchain     |                    Blockchain Peer Network                    |
                +---------------------------------------------------------------+
 
 
-Figure 1:  Location of Atlas in the Stacks architecture.  Each BNS node
-implements an Atlas peer.  An Atlas peer treats a name state value in BNS as
-the hash of a DNS zone file.  Atlas peers exchange zone files with one another
-until they each have a full replica of all known zone files.  Clients can look
-up zone files for names using the name's stat value as a zone file hash.  Clients
-can broadcast zone files to the network  if they match a previously-announced
-hash.  In practice, zone files store URLs to a name owner's Gaia hubs, thereby
+Figure 1:  Location of Atlas in the Stacks architecture Each BNS node
+implements an Atlas peer An Atlas peer treats a name state value in BNS as
+the hash of a DNS zone file Atlas peers exchange zone files with one another
+until they each have a full replica of all known zone files Clients can look
+up zone files for names using the name's stat value as a zone file hash Clients
+can broadcast zone files to the network  if they match a previously announced
+hash In practice, zone files store URLs to a name owner's Gaia hubs, thereby
 allowing Stacks apps to read and write data in Gaia.
 ```
 

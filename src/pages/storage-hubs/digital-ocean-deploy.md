@@ -7,7 +7,7 @@ description: Learn how to run a Gaia hub on DigitalOcean
 
 This teaches you how to run a Gaia storage hub on DigitalOcean (DO). DigitalOcean is an affordable and convenient cloud computing provider. This example uses DigitalOcean Spaces for file storage. A space is equivalent to AWS's S3 file storage solution.
 
-DigitalOcean provides you with a compute machines known as a **Droplets** and storage called a **Spaces**. You need both to run a Gaia hub. The Gaia hub setup you create here, requires get a Digital Droplet with Docker pre-installed and a 250 GB Space. Droplets and storage each run for $5/month or a total of $10/month.
+DigitalOcean provides you with a compute machines known as a **Droplets** and storage called a **Spaces**. You need both to run a Gaia hub. The Gaia hub setup you create here, requires get a Digital Droplet with Docker pre-installed and a 250 GB Space. Droplets and storage each run for \$5/month or a total of \$10/month.
 
 <div class="uk-card uk-card-default uk-card-body">
 <h5>Is this tutorial for you?</h5>
@@ -103,8 +103,8 @@ On your local workstation, create a bucket policy to grant read permission on yo
 
    For example, if your space is named `meepers`, after editing the line you would have:
 
-   ```
-   "Resource": "arn:aws:s3:::meepers/*"
+   ```yaml
+   'Resource': 'arn:aws:s3:::meepers/*'
    ```
 
    Be sure not to change any of the other fields, especially `Version`.
@@ -112,13 +112,13 @@ On your local workstation, create a bucket policy to grant read permission on yo
 7. Save and close the file.
 8. Use `s3cmd` to enact the policy.
 
-   ```
+   ```bash
    s3cmd setpolicy gaiahub-policy s3://<SPACE_NAME>
    ```
 
    Be sure to `SPACE_NAME` with the name of your space, for example:
 
-   ```
+   ```bash
    s3cmd setpolicy gaiahub-policy s3://meepers
    ```
 
@@ -140,7 +140,7 @@ On your local workstation, create a bucket policy to grant read permission on yo
 
 2. Use `s3cmd` to enact the configuration.
 
-   ```
+   ```bash
    s3cmd setcors gaiahub-cors.xml s3://<SPACE_NAME>
    ```
 
@@ -177,7 +177,7 @@ In this task, you add a droplet to your account. The droplet is a droplet is a c
 
 9. Scroll down to the **Finalize and create** section.
 
-10. **Choose a hostname** for your droplet such as `moxie-gaiahub`.
+10. **Choose a hostname** for your droplet such as `moxie-gaiahub.`
 
 11. Review your choices then click **Create** to start your droplet running.
 
@@ -224,7 +224,7 @@ A droplet console emulates the access you would have if you were sitting down wi
 
     The system logins you in and gives you a welcome message. At the conclusion of the message, you are at the console prompt.
 
-    ```
+    ```bash
     Welcome to DigitalOcean's One-Click Docker Droplet.
     To keep this Droplet secure, the UFW firewall is enabled.
     All ports are BLOCKED except 22 (SSH), 2375 (Docker) and 2376 (Docker).
@@ -253,7 +253,7 @@ A droplet console emulates the access you would have if you were sitting down wi
 
 4. Enter a name for the key.
 
-   It is helpful to choose descriptive name like `gai-hub-key`.
+   It is helpful to choose a descriptive name, like `gai-hub-key`.
 
 5. Press the check mark.
 
@@ -273,13 +273,13 @@ You should have the console open as `root` on your Droplet. In this section, you
 
 1. Copy the Gaia code into your droplet using the `git clone` command.
 
-   ```
+   ```bash
    root@meepers:~# git clone https://github.com/blockstack/gaia.git
    ```
 
    Successful output from this command looks like the following.
 
-   ```
+   ```bash
    Cloning into 'gaia'...
    remote: Enumerating objects: 63, done.
    remote: Counting objects: 100% (63/63), done.
@@ -294,48 +294,48 @@ You should have the console open as `root` on your Droplet. In this section, you
 
 2. Change to `hub` directory in the `gaia` code.
 
-   ```
+   ```bash
    cd gaia/hub
    ```
 
 3. Copy the configuration sample to a new `config.json` file.
 
-   ```
+   ```bash
    cp config.do.sample.json config.json
    ```
 
 4. Edit your new `config.json` file with `vi` or `vim`.
 
-   ```
+   ```bash
    vi config.json
    ```
 
    You now need to edit this JSON file to have it store files on your DigitalOcean space.
 
-   ```
+   ```json
    {
-    "serverName": "DROPLET_NAME",
-    "port": 4000,
-    "driver": "aws",
-    "readURL": "SPACE_URL",
-    "proofsConfig": {
-      "proofsRequired": 0
-    },
-    "pageSize": 20,
-    "bucket": "SPACE_NAME",
-    "awsCredentials": {
+     "serverName": "DROPLET_NAME",
+     "port": 4000,
+     "driver": "aws",
+     "readURL": "SPACE_URL",
+     "proofsConfig": {
+       "proofsRequired": 0
+     },
+     "pageSize": 20,
+     "bucket": "SPACE_NAME",
+     "awsCredentials": {
        "endpoint": "SPACE_LOCATION",
        "accessKeyId": "YOUR_ACCESS_KEY",
        "secretAccessKey": ""
-    },
-    "argsTransport": {
-      "level": "debug",
-      "handleExceptions": true,
-      "stringify": true,
-      "timestamp": true,
-      "colorize": false,
-      "json": true
-    }
+     },
+     "argsTransport": {
+       "level": "debug",
+       "handleExceptions": true,
+       "stringify": true,
+       "timestamp": true,
+       "colorize": false,
+       "json": true
+     }
    }
    ```
 
@@ -344,12 +344,12 @@ You'll find that the `driver` is set to `aws`. The DigitalOcean space API exactl
 5. Set the `serverName` to the droplet you just created.
 6. Set the `readURL` to the URL of the DigitalOcean space you just created.
 
-If your space URL called `https://meepers-hub-space.sfo2.digitaloceanspaces.com`, the `readURL` name is `https://meepers-hub-space.sfo2.digitaloceanspaces.com`. 7. Set the `bucket` to the name of the DigitalOcean space you just created.
+If your space URL called `https://meepers-hub-space.sfo2.digitaloceanspaces.com,` the `readURL` name is `https://meepers-hub-space.sfo2.digitaloceanspaces.com.` 7. Set the `bucket` to the name of the DigitalOcean space you just created.
 
-If your space is called `meepers-hub-space`, the `bucket` value is `meepers-hub-space`.
+If your space is called `meepers-hub-space,` the `bucket` value is `meepers-hub-space`.
 
-8.  Go back to your DigitalOcean dashboard open to your space key.
-9.  Copy the **Key** and paste it into the `accessKeyId` value in the `config.json` file.
+8. Go back to your DigitalOcean dashboard open to your space key.
+9. Copy the **Key** and paste it into the `accessKeyId` value in the `config.json` file.
 10. Copy the **Secret** and paste it into the `secretAccessKey` value in the `config.json` file.
 11. In the DigitalOcean dashboard, choose the Spaces page.
 12. Copy the section of your space URL that follows the name.
@@ -364,7 +364,7 @@ In this example, you would copy the `sfo2.digitaloceanspaces.com` section.
 
 This will allow Stacks user to write to your Gaia hub, without any social proofs required. You can change this later on, and do other things to lock-down this Gaia hub to just yourself, but that is outside the scope of this document.
 
-At this point, the `json.config` file should be completed and appear similar to the following &&mdash;; but with your values.
+At this point, the `json.config` file should be completed and appear similar to the following, but with your values.
 
 ```json
 {
@@ -393,7 +393,7 @@ At this point, the `json.config` file should be completed and appear similar to 
 }
 ```
 
-15. Save your config file and close the `vim` editor.
+1.  Save your config file and close the `vim` editor.
 
 The system returns you back to the prompt.
 
@@ -403,16 +403,13 @@ While your console is still in the the `gaia/hub` folder, build the `gaia.hub` i
 
 1. Enter the following `docker` command at the console command line.
 
-```
-
+```bash
 docker build -t gaia.hub .
-
 ```
 
 This build users the `Dockerfile` already in the `gaia/hub` folder. The output of the command is similar to the following:
 
-```
-
+```bash
 ....
 
 npm WARN gaia-hub@2.3.4 No license field.
@@ -430,7 +427,6 @@ Removing intermediate container ae459cc0865b
 ---> b1ced6c39784
 Successfully built b1ced6c39784
 Successfully tagged gaia.hub:latest
-
 ```
 
 2. Run your Gaia hub image.
@@ -450,7 +446,7 @@ This runs your Gaia hub on port `3000`. If everything runs successfully, the las
 
 4. Run the the image again with this new command.
 
-   ```
+   ```bash
    docker run --restart=always -v ~/gaia/hub/config.json:/src/hub/config.json -p 3000:3000 -e CONFIG_PATH=/src/hub/config.json -d gaia.hub
    ```
 
@@ -470,14 +466,14 @@ In this task, you set up a simple Nginx reverse proxy to serve your Docker conta
 
 1. Install nginx into the droplet.
 
-   ```
+   ```bash
    sudo apt-get install nginx
    ```
 
 2. Enter `y` to confirm the installation.
 3. Edit the nginx default configuration file.
 
-   ```
+   ```bash
    vi /etc/nginx/sites-available/default
    ```
 
@@ -510,7 +506,7 @@ In this task, you set up a simple Nginx reverse proxy to serve your Docker conta
 5. Save and close the file.
 6. Run `nginx -t` to make sure you have no syntax errors.
 
-   ```
+   ```bash
    root@meepers:~/gaia/hub# nginx -t
    nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
    nginx: configuration file /etc/nginx/nginx.conf test is successful
@@ -518,13 +514,13 @@ In this task, you set up a simple Nginx reverse proxy to serve your Docker conta
 
 7. Restart `nginx` with your new configuration.
 
-   ```
+   ```bash
    systemctl restart nginx
    ```
 
 8. Allow access to your Gaia hub by exposing port 80 to the public.
 
-   ```
+   ```bash
    ufw allow 80
    ```
 
@@ -546,7 +542,7 @@ Now, you are ready to test your Gaia server and make sure it is up and running.
 
    The `read_url_prefix` should be combine from the bucket and endpoint create
    in your `config.json` file, for example,
-   `https://meepers-hub-space.s3.amazonaws.com/`.
+   `https://meepers-hub-space.s3.amazonaws.com/.`
 
 ## Task 11: Configure a domain name
 

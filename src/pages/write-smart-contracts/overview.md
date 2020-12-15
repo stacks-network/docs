@@ -45,7 +45,7 @@ Clarity differs from most other smart contract languages in two essential ways:
 Using an interpreted language ensures that the executed code is human-readable and auditable. A decidable language
 like Clarity makes it possible to determine precisely which code is going to be executed, for any function.
 
-A Clarity smart contract is composed of two parts &mdash; a data space and a set of functions. Only the associated
+A Clarity smart contract is composed of two parts, a data space and a set of functions. Only the associated
 smart contract may modify its corresponding data space on the blockchain. Functions may be private and thus callable
 only from within the smart contract, or public and thus callable from other contracts. Users call smart contracts'
 public functions by broadcasting a transaction on the blockchain which invokes the public function. Contracts

@@ -108,7 +108,7 @@ For example, this code will replicate the chunk to not only
 13.65.207.163:6264, 52.225.128.191:6264, node.blockstack.org:6264, 23.102.162.7:6264, 52.167.230.235:6264, 23.102.162.124:6264, 52.151.59.26:6264, 13.92.134.106:6264
 >>>
 >>> for neighbor in neighbors:
-...    result = blockstack.lib.client.put_zonefiles(neighbor, [data_b64])
+..   result = blockstack.lib.client.put_zonefiles(neighbor, [data_b64])
 ...    assert result['saved'][0] == 1
 ...
 >>>
