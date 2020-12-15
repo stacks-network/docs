@@ -25,8 +25,8 @@ const storage = new Storage({ userSession });
 const options: PutFileOptions = {
   encrypt: false,
 };
-userSession.putFile('hello.txt', 'hello world!', options).then(() => {
-  // hello.txt exists now, and has the contents "hello world!."
+userSession.putFile('hello.txt', 'hello world', options).then(() => {
+  // hello.txt exists now, and has the contents "hello world"
 });
 ```
 
@@ -42,8 +42,8 @@ const options: PutFileOptions = {
   encrypt: true,
 };
 
-userSession.putFile('message.txt', 'Secret hello!', options).then(() => {
-  // message.txt exists now, and has the contents "hello world!."
+userSession.putFile('message.txt', 'Secret hello', options).then(() => {
+  // message.txt exists now, and has the contents "Secret hello"
 });
 ```
 
