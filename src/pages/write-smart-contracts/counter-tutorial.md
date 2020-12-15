@@ -20,7 +20,7 @@ In this tutorial, you learn how to implement a smart contract that stores and ma
 
 ## Prerequisites
 
-=> Before you get started, you should complete the [Hello World tutorial](hello-world-tutorial).
+=> Before you get started, you should complete the [Hello World tutorial](/write-smart-contracts/hello-world-tutorial).
 
 ### Check the Stacks 2.0 status
 
@@ -48,7 +48,7 @@ You will be asked to select a project template. Press down with your arrow keys 
 ❯ Counter
 ```
 
-Finally, the project dependencies are installed and your project is ready for development. Because you already completed the [Hello World tutorial](tutorial), the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
+Finally, the project dependencies are installed and your project is ready for development. Because you already completed the [Hello World tutorial](/write-smart-contracts/hello-world-tutorial), the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
 
 ## Step 2: Running tests
 

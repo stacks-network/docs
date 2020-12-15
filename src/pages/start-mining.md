@@ -178,7 +178,7 @@ BLOCKSTACK_DEBUG=1 stacks-node xenon
 
 ### Prerequisites
 
-Make sure you've followed the [Running the testnet node on Windows](understand-stacks/running-testnet-node#running-the-testnet-node-on-windows) tutorial before starting this tutorial.
+Make sure you've followed the [Running the testnet node on Windows](/understand-stacks/running-testnet-node#running-the-testnet-node-on-windows) tutorial before starting this tutorial.
 
 ### Generate keychain and get testnet tokens in Windows
 

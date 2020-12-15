@@ -118,4 +118,4 @@ storage.deleteFile('hello.txt').then(() => {
 
 ## Related Information
 
-To learn more about the guarantees provided by Gaia, see [Storage write and read](/storage/write-to-read)
+To learn more about the guarantees provided by Gaia, see [Storage write and read](/data-storage/storage-write-read)

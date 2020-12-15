@@ -56,5 +56,5 @@ description: Summary of technical specifications of Stacks 2.0
 - Two types of authorizations: standard authorization is where originating account is the same as paying account. _Sponsored_ authorization is where originating account and paying account are distinct. For instance, developers or service providers could pay for users to call their smart-contracts.
 - For sponsored authorization, first a user signs with the originating account and then a sponsor signs with the paying account.
 - Transaction encoding is described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-encoding) and [here](/understand-stacks/transactions#encoding)
-- Transaction signing and verification are described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying) and [here](/understand-stacks/transactions.md#signature-and-verification)
+- Transaction signing and verification are described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying) and [here](/understand-stacks/transactions#signature-and-verification)
 - Further reading: [Transactions](/understand-stacks/transactions)

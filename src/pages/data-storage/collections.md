@@ -72,7 +72,7 @@ $ which npm
 
 If you have `npm` installed, do the following to run the Contact Manager demo app:
 
-1. If you have a local Blockstack installed, [uninstall it](/browser/local_browser).
+1. If you have a local Blockstack installed, uninstall it.
 
 2. Download and install the [Collections Alpha Build](https://github.com/blockstack/blockstack-browser/releases/tag/collections-alpha.1) of the Blockstack Browser client for your OS.
 
