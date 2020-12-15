@@ -30,7 +30,7 @@ You should store a JSON configuration file either in the top-level directory of 
 ```
 
 You can specify the logging level, the backend driver, the credentials
-for that backend driver, and the `readURL` of the hub. Typically, this is the URL for the compute resource on the cloud computing provider &mdash; where the hub service is running.
+for that backend driver, and the `readURL` of the hub. Typically, this is the URL for the compute resource on the cloud computing provider, where the hub service is running.
 
 ### Require the correct hub URL
 
@@ -80,7 +80,7 @@ different users.
 ### Private-user hub
 
 A private-user hub receives requests for a single user. Requests are controlled
-via _whitelisting_ the addresses allowed to write files. Recall that each application uses a different app- and user-specific address. It follows, to
+via _whitelisting_ the addresses allowed to write files. Recall that each application uses a different app and user-specific address. It follows, to
 support application storage, your configuration must add to the whitelist each application you wish to use.
 
 Alternatively, the user's client can use the authentication scheme and generate

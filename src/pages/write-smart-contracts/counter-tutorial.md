@@ -75,7 +75,7 @@ counter contract test suite
 
 ... # error details
 
-npm ERR. Test failed.  See above for more details.
+npm ERR. Test failed. See above for more details.
 ```
 
 It looks like we see some failed tests. That is on purpose - we will implement the new smart contract in the next steps. After every step in this tutorial, we will rerun the tests to ensure we're on the right track.

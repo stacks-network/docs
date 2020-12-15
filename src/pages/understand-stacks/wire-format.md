@@ -43,7 +43,7 @@ Op: `?`
 Description: This transaction commits to the _hash_ of a name. It is the first
 transaction of two transactions that must be sent to register a name in BNS.
 
-Example: [6730ae09574d5935ffabe3dd63a9341ea54fafae62fde36c27738e9ee9c4e889](https://www.blocktrail.com/BTC/tx/6730ae09574d5935ffabe3dd63a9341ea54fafae62fde36c27738e9ee9c4e889)
+Example: [`6730ae09574d5935ffabe3dd63a9341ea54fafae62fde36c27738e9ee9c4e889`](https://www.blocktrail.com/BTC/tx/6730ae09574d5935ffabe3dd63a9341ea54fafae62fde36c27738e9ee9c4e889)
 
 `OP_RETURN` wire format:
 
@@ -76,7 +76,7 @@ Description: This transaction reveals the name whose hash was announced by a
 previous `NAME_PREORDER`. It is the second of two transactions that must be
 sent to register a name in BNS.
 
-Example: [55b8b42fc3e3d23cbc0f07d38edae6a451dfc512b770fd7903725f9e465b2925](https://www.blocktrail.com/BTC/tx/55b8b42fc3e3d23cbc0f07d38edae6a451dfc512b770fd7903725f9e465b2925)
+Example: [`55b8b42fc3e3d23cbc0f07d38edae6a451dfc512b770fd7903725f9e465b2925`](https://www.blocktrail.com/BTC/tx/55b8b42fc3e3d23cbc0f07d38edae6a451dfc512b770fd7903725f9e465b2925)
 
 `OP_RETURN` wire format (2 variations allowed):
 
@@ -121,7 +121,7 @@ Op: `:`
 Description: This transaction renews a name in BNS. The name must still be
 registered and not expired, and owned by the transaction sender.
 
-Example: [e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65](https://www.blocktrail.com/BTC/tx/e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65)
+Example: [`e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65`](https://www.blocktrail.com/BTC/tx/e543211b18e5d29fd3de7c0242cb017115f6a22ad5c6d51cf39e2b87447b7e65)
 
 `OP_RETURN` wire format (2 variations allowed):
 
@@ -172,7 +172,7 @@ Description: This transaction sets the name state for a name to the given
 `value`. In practice, this is used to announce new DNS zone file hashes to the [Atlas
 network](/understand-stacks/atlas-overview).
 
-Example: [e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7](https://www.blocktrail.com/BTC/tx/e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7)
+Example: [`e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7`](https://www.blocktrail.com/BTC/tx/e2029990fa75e9fc642f149dad196ac6b64b9c4a6db254f23a580b7508fc34d7)
 
 `OP_RETURN` wire format:
 
@@ -207,7 +207,7 @@ Op: `>`
 Description: This transaction changes the public key hash that owns the name in
 BNS.
 
-Example: [7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24](https://www.blocktrail.com/BTC/tx/7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24)
+Example: [`7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24`](https://www.blocktrail.com/BTC/tx/7a0a3bb7d39b89c3638abc369c85b5c028d0a55d7804ba1953ff19b0125f3c24)
 
 `OP_RETURN` wire format:
 
@@ -242,7 +242,7 @@ Description: This transaction destroys a registered name. Its name state value
 in BNS will be cleared, and no further transactions will be able to affect the
 name until it expires (if its namespace allows it to expire at all).
 
-Example: [eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f](https://www.blocktrail.com/BTC/tx/eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f)
+Example: [`eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f`](https://www.blocktrail.com/BTC/tx/eb2e84a45cf411e528185a98cd5fb45ed349843a83d39fd4dff2de47adad8c8f)
 
 `OP_RETURN` wire format:
 
@@ -305,7 +305,7 @@ Op: `*`
 Description: This transaction announces the _hash_ of a new namespace. It is the
 first of three transactions that must be sent to create a namespace.
 
-Example: [5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28](https://www.blocktrail.com/BTC/tx/5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28)
+Example: [`5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28`](https://www.blocktrail.com/BTC/tx/5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b28)
 
 `OP_RETURN` wire format:
 
@@ -334,9 +334,9 @@ Notes:
 Op: `&`
 
 Description: This transaction reveals the namespace ID and namespace rules
-for a previously-anounced namespace hash (sent by a previous `NAMESPACE_PREORDER`).
+for a previously anounced namespace hash (sent by a previous `NAMESPACE_PREORDER`).
 
-Example: [ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32](https://www.blocktrail.com/BTC/tx/ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32)
+Example: [`ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32`](https://www.blocktrail.com/BTC/tx/ab54b1c1dd5332dc86b24ca2f88b8ca0068485edf0c322416d104c5b84133a32)
 
 `OP_RETURN` wire format:
 
@@ -385,10 +385,10 @@ Example:
 
 With the above example configuration, the following are true:
 
-- The price of "john" would be 2 \* 10^8, since "john" falls into bucket 4 and has no punctuation or numerics.
-- The price of "john1" would be 2 \* 10^6, since "john1" falls into bucket 5 but has a number (and thus receives a 10x discount)
-- The price of "john_1" would be 2 \* 10^6, since "john_1" falls into bucket 6 but has a number and punctuation (and thus receives a 10x discount)
-- The price of "j0hn_1" would be 2 \* 10^5, since "j0hn_1" falls into bucket 6 but has a number and punctuation and lacks vowels (and thus receives a 100x discount)
+- The price of `john` would be 2 \* 10^8, since `john` falls into bucket 4 and has no punctuation or numerics.
+- The price of `john1` would be 2 \* 10^6, since `john1` falls into bucket 5 but has a number (and thus receives a 10x discount)
+- The price of `john_1` would be 2 \* 10^6, since `john_1` falls into bucket 6 but has a number and punctuation (and thus receives a 10x discount)
+- The price of `j0hn_1` would be 2 \* 10^5, since `j0hn_1` falls into bucket 6 but has a number and punctuation and lacks vowels (and thus receives a 100x discount)
 
 ### NAME_IMPORT
 
@@ -398,7 +398,7 @@ Description: This transaction registers a name and some name state into a
 namespace that has been revealed, but not been launched. Only the namespace
 creator can import names. See the [namespace creation section](/technology/naming-system) for details.
 
-Example: [c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312](https://www.blocktrail.com/BTC/tx/c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312)
+Example: [`c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312`](https://www.blocktrail.com/BTC/tx/c698ac4b4a61c90b2c93dababde867dea359f971e2efcf415c37c9a4d9c4f312)
 
 `OP_RETURN` wire format:
 
@@ -434,7 +434,7 @@ Description: This transaction launches a namesapce. Only the namespace creator
 can send this transaction. Once sent, anyone can register names in the
 namespace.
 
-Example: [2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032](https://www.blocktrail.com/BTC/tx/2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032)
+Example: [`2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032`](https://www.blocktrail.com/BTC/tx/2bf9a97e3081886f96c4def36d99a677059fafdbd6bdb6d626c0608a1e286032)
 
 `OP_RETURN` wire format:
 
@@ -464,7 +464,7 @@ Op: `$`
 
 Description: This transaction transfers tokens from one account to another. Only `STACKS` tokens can be transferred at this time. The transaction encodes the number of _micro-Stacks_ to send.
 
-Example: [093983ca71a6a9dd041c0bdb8b3012824d726ee26fe51da8335a06e8a08c2798](https://www.blocktrail.com/BTC/tx/093983ca71a6a9dd041c0bdb8b3012824d726ee26fe51da8335a06e8a08c2798)
+Example: [`093983ca71a6a9dd041c0bdb8b3012824d726ee26fe51da8335a06e8a08c2798`](https://www.blocktrail.com/BTC/tx/093983ca71a6a9dd041c0bdb8b3012824d726ee26fe51da8335a06e8a08c2798)
 
 `OP_RETURN` wire format:
 

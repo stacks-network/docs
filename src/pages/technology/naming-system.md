@@ -16,7 +16,7 @@ Names in BNS have three properties:
 - **Names are globally unique.** The protocol does not allow name collisions, and all
   well-behaved nodes resolve a given name to the same state.
 - **Names are human-meaningful.** Each name is chosen by its creator.
-- **Names are strongly-owned.** Only the name's owner can change the state it
+- **Names are strongly owned.** Only the name's owner can change the state it
   resolves to. Specifically, a name is owned by one or more ECDSA private keys.
 
 The Stacks blockchain insures that each node's BNS view is
@@ -45,12 +45,12 @@ When you look up someone's PGP key on a keyserver, you are resolving
 their key ID to their public key.
 
 What kinds of things do we want to be true about names? In BNS, names are
-globally unique, names are human-meaningful, and names are strongly-owned.
+globally unique, names are human-meaningful, and names are strongly owned.
 However, if you look at these examples, you'll see that each of them only
 guarantees _two_ of these properties. This limits how useful they can be.
 
 - In DNS and social media, names are globally unique and human-readable, but not
-  strongly-owned. The system operator has the
+  strongly owned. The system operator has the
   final say as to what each names resolves to.
 
   - **Problem**: Clients must trust the system to make the right
@@ -58,7 +58,7 @@ guarantees _two_ of these properties. This limits how useful they can be.
     no one but the system administrators can make these changes.
 
 - In Git, branch names are human-meaningful
-  and strongly-owned, but not globally unique. Two different Git nodes may resolve the same
+  and strongly owned, but not globally unique. Two different Git nodes may resolve the same
   branch name to different unrelated repository states.
 
   - **Problem**: Since names can refer to conflicting state, developers
@@ -158,7 +158,7 @@ characters `a-z`, `0-9`, `-`, and `_`.
 
 ## Subdomains
 
-BNS names are strongly-owned because the owner of its private key can generate
+BNS names are strongly owned because the owner of its private key can generate
 valid transactions that update its zone file hash and owner. However, this comes at the
 cost of requiring a name owner to pay for the underlying transaction in the
 blockchain. Moreover, this approach limits the rate of BNS name registrations
@@ -168,7 +168,7 @@ BNS overcomes this with subdomains. A **BNS subdomain** is a type of
 BNS name whose state and owner are stored outside of the blockchain,
 but whose existence and operation history are anchored to the
 blockchain. Like their on-chain counterparts, subdomains are globally
-unique, strongly-owned, and human-readable. BNS gives them their own
+unique, strongly owned, and human-readable. BNS gives them their own
 name state and public keys. Unlike on-chain names, subdomains can be
 created and managed cheaply, because they are broadcast to the BNS
 network in batches. A single blockchain transaction can send up to 120
@@ -251,9 +251,9 @@ The lifecycle of a subdomain and its operations is shown in Figure 2.
    block                      block                      block
 
 
-Figure 2:  Subdomain lifetime with respect to on-chain name operations.  A new
+Figure 2:  Subdomain lifetime with respect to on-chain name operations .A new
 subdomain operation will only be accepted if it has a later "sequence=" number,
-and a valid signature in "sig=" over the transaction body.  The "sig=" field
+and a valid signature in "sig=" over the transaction body .The "sig=" field
 includes both the public key and signature, and the public key must hash to
 the previous subdomain operation's "addr=" field.
 
@@ -271,7 +271,7 @@ subdomain operation must include:
 - A signature from the corresponding private key over the entire subdomain
   operation.
 
-If two correctly-signed but conflicting subdomain operations are discovered
+If two correctly signed but conflicting subdomain operations are discovered
 (that is, they have the same sequence number), the one that occurs earlier in the
 blockchain's history is accepted. Invalid subdomain operations are ignored.
 
