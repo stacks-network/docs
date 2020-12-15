@@ -6,7 +6,7 @@ experience: beginners
 tags:
   - tutorial
 images:
-  large: /images/pages/hello-world-app.svg
+  large: /images/pages/hello-world.svg
   sm: /images/pages/hello-world-sm.svg
 ---
 
@@ -21,41 +21,31 @@ By the end of this tutorial, you will:
 - Have a working Clarity starter project and local dev environment
 - Understand basic Clarity language design principles
 - Deploy a contract to the Stacks 2.0 blockchain and call its public methods
-- Understand how to use the Explorer Sandbox functionality
+- Understand how to use the Stacks CLI
 
 ## Prerequisites
-
-### Set up your Node environment
-
-You will need [NodeJS](https://nodejs.org/en/download/) `8.12.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:
-
-```bash
-node --version
-```
 
 ### Check the Stacks 2.0 status
 
 The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not running into any challenges related to the status of the network, please open up the [Status Checker](http://status.test-blockstack.com/) and confirm that all systems are operational. If some systems seem to have issues, it is best to wait until they are back up before you proceed with the next steps.
 
-### Optional: Install Visual Studio Code with Clarity Extensions
+## Step 1: Open the playground
 
-[Visual Studio Code](https://code.visualstudio.com/) (aka VS Code) is a free development environment which has Clarity extensions, to make it easier to create smart contracts with Clarity.
+To avoid setting things up on your machine, we will run all instructions inside a virtual container inside your browser window, using a project called Gitpod.
 
-[Install Visual Studio Code](https://code.visualstudio.com/download) and install the following extensions for the best coding experience:
+**[Open this Gitpod in a new browser window](https://gitpod.io/#https://github.com/agraebe/clarity-onboarding-playground)**
 
-- [Clarity](https://marketplace.visualstudio.com/items?itemName=blockstack.clarity), the official language extension that defines the Clarity language for VS Code and provides auto-complete and syntax highlighting.
-- [clarity-lsp](https://marketplace.visualstudio.com/items?itemName=lgalabru.clarity-lsp), which adds inline help functionality for Clarity to VS Code
-- [Rainbow Brackets](https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets), which adds helpful colorization of matching pairs of parentheses while you code
+You will be asked to login with a Github account. Follow the steps described on the screen. Once completed, the code editor window will be shown:
 
--> If you need help installing extensions, review [Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-gallery) in the Visual Studio Code docs.
+![new gitpod](/images/pages/clarity/gitpod-new.png)
 
-## Step 1: Download a starter project
+The Gitpod playground comes pre-installed with the [Stacks CLI](/references/stacks-cli).
 
-Using your terminal, run the following command to create a new folder and initialize a new project:
+## Step 2: Set up a starter project
+
+Using the terminal window on the bottom of the screen, run the following command to initialize a new project:
 
 ```bash
-# create and go to new `hello-world` project folder
-mkdir hello-world; cd hello-world
 npm init clarity-starter
 ```
 
@@ -67,9 +57,17 @@ After the starter project is loaded up, you have to select a project template (u
   Counter
 ```
 
-## Step 2: Review the contract
+Next, you'll be asked to name the folder that will be created for the project. Hit ENTER to accept the default:
 
-Select **File** > **Add Folder to Workspace** in VS Code, and add the `hello-world` folder you created in the previous step. Then, navigate to `contracts/hello-world.clar`.
+```bash
+? Project name: (clarity-hello-world)
+```
+
+Wait a few seconds until all project dependencies are installed. Once completed, you will see a new folder on the left side of the screen (`clarity-hello-world`). This is where your new Clarity project can be found. Open the project folder and get familiar with the structure.
+
+## Step 3: Review the contract
+
+Inside the project folder, open the `contracts/hello-world.clar` file.
 
 You will see that the program and each statement is enclosed in `()` (parentheses), and the smart contract consists of two functions.
 
@@ -87,135 +85,47 @@ On the first line, a new public function `say-hi` is declared. Public functions 
 
 The function doesn't take any parameters and simply returns "hello world" using the [`ok`](/references/language-functions#ok) response constructor.
 
-The second function, `echo-number`, is a [read-only function](/references/language-functions#define-read-only). Read-only functions are also public, but as the name implies, they can not change and variables or datamaps. `echo-number` takes an input parameter of the type `int`. Along with integer, Clarity supports the following [types](/references/language-types):
+The second function, `echo-number`, is a [read-only function](/references/language-functions#define-read-only). Read-only functions are also public, but as the name implies, they can not change and variables or datamaps. `echo-number` takes an input parameter of the type `int`.
 
-- `uint`: 16-byte unsigned integer
-- `principal`: spending entity, roughly equivalent to a Stacks address
-- `boolean`: `true` or `false`
-- `buff`: fixed-length byte buffers
-- `string-ascii`: string containing ascii characters only
-- `string-utf8`: string containing utf8 characters
-- `tuple`: named fields in keys and values
+-> Clarity supports a variety of other [types](/references/language-types)
 
 `echo-number` uses an [`ok`](/references/language-functions#ok) response to return the value passed to the function.
 
-## Step 3: Access the Explorer Sandbox
+In the following steps, we will use this simple contract to deploy and run on the Stacks blockchain.
 
--> This tutorial uses a developer preview release of the [Stacks 2.0 Explorer](https://testnet-explorer.blockstack.org/). Please feel free to report issues or request enhancements on the [blockstack/explorer](https://github.com/blockstack/explorer/issues/new) repository. For more details about this release, see the [Explore the Stacks 2.0 Testnet](https://forum.blockstack.org/t/explore-the-stacks-2-0-testnet-with-the-new-explorer-developer-preview/10889) post in the Blockstack forums. If you encounter trouble using the Explorer Sandbox, try falling back to [the CLI instructions at the end of this page](#get-familiar-with-cli-optional).
+## Step 4: Create a Stacks account
 
-Open up the [Stacks 2.0 Explorer Sandbox view](https://testnet-explorer.blockstack.org/sandbox). The Explorer Sandbox is a web-enabled view of the Stacks 2.0 blockchain, and has tools for validating contracts, testing out transactions, and generating tokens.
-
-Here, we will run the code from `hello-world` right in the browser and create blockchain transactions right in the browser.
-
-You will be asked to sign in with or sign up for a Stacks ID. Your new ID will include a new Stacks address, which is essentially a wallet that holds funds like STX tokens. STX tokens are consumed as fees to register digital assets on the network and to publish/execute smart contracts, among other functions on the network.
-
-All of the following operations will happen on the Testnet. A Testnet is an alternative Stacks 2.0 blockchain, to be used for testing. Testnet STX tokens are separate and distinct from actual STX tokens, and are never supposed to have any value.
-
-Follow the steps on the screen to complete the process.
-
-![The faucet tab of the Stacks 2.0 Testnet Explorer](/images/faucet.png)
-
-Once completed, you will see the Sandbox view and your newly generated Stacks address for testing purposes.
-
-## Step 4: Obtain STX tokens
-
-Uploading and calling smart contracts requires fees to be paid to the network to process the transactions. The Testnet Explorer features the capability to request STX tokens that can be used to pay the fees ("STX faucet").
-
-On the [**STX faucet**](https://testnet-explorer.blockstack.org/sandbox?tab=faucet) screen, your new Stacks address will be prefilled. Click **Request STX** to receive 0.5 STX.
-
-On the right side of the screen ("Recent transactions"), you will notice that a new transaction was generated for you. A transaction usually takes up to a minute to complete, because it needs to be broadcast and confirmed by the network.
-
-Wait a few seconds until the transaction completes (the loading indicator will disappear and a green dot will show up on the icon). You don't need to refresh the page manually. However, if you wish to see the details of your faucet request, you can click on the transaction.
-
-![Screenshot of faucet request submission](/images/faucet-transfer.png)
-
-## Step 5: Deploy the contract
-
-A deployed contract on the Testnet is like a cloud function (comparable to serverless functions). It allows you to execute code remotely on the Stacks 2.0 network.
-
-On the Sandbox view, switch to the [**Contract deploy**](https://testnet-explorer.blockstack.org/sandbox?tab=contract-deploy) tab, and do the following:
-
-1. Enter a name for the contract under **Contract name** that uses lower-case letters, dashes, and numbers only.
-2. Replace code in the text area under **Contract source code (editable)** with the contents of `contracts/hello-world.clar`.
-3. Ignore the **Choose from sample** drop-down for now. After completing this tutorial you can come back to the Explorer Sandbox and use this drop-down to try other sample contracts.
-4. Ignore the **Fee** field. It should be set to 2000 micro-STX (1 STX = 1000000 micro-STX)
-5. Click **Deploy contract**.
-
--> In production, you would estimate the fees that are required to be paid using methods provided by the Stacks 2.0 network. The estimate would, for instance, be based on the size of the contract. For the purpose of this tutorial, we will keep it simple and accept the default fee.
-
-![deploy](/images/contract-deploy.png)
-
-On the right, inside the "Recent transactions" feed, you will notice that another transaction appearing.
-
-Wait a few seconds until the transaction completes. In the meantime, you can click on the transaction and review the details. You will notice that every deployed smart contracts' source code is publicly verifiable.
-
-## Step 6: Call the public method
-
-On the Sandbox view, switch to the [**Contract call**](https://testnet-explorer.blockstack.org/sandbox?tab=contract-call) tab, and enter the following details:
-
-- **Contract address**: Your generated Stacks address. Hover over the "identity view" on the top right side of the screen to copy your full address and paste it in here.
-- **Contract name**: Whatever you entered as your contract name in the previous step. If you forgot, you can review your recent transactions by following the link on the upper-right, and look up your contract creation transaction. \* **Contract name**: Whatever you entered as your contract name in the previous step. If you forgot, you can review your recent transactions.
-
-![Screenshot of the Sandbox's contract call screen](/images/sandbox-call.png)
-
-After clicking **Search**, you will see the two public methods implemented in the smart contract.
-
-Locate the `(echo-number)` method, provide any integer for the `val` argument (for example 42) and click **Submit**. You will see the value you entered echoed back to you below the button:
-
-```clarity
-Result: (ok 42)
-```
-
-![sandbox-call](/images/sandbox-calltx.png)
-
-=> **Congratulations!** You just deployed your smart contract and called a public function on the Stacks 2.0 blockchain.
-
-With the completion of this tutorial, you now:
-
-- Have a working Clarity starter project and local dev environment
-- Understand basic Clarity language design principles
-- Have deployed a contract to the Stacks 2.0 blockchain and called its public methods
-- Understand how to use the Explorer Sandbox functionality
-
-## Optional: Get familiar with CLI
-
-The steps above provide an easy way to get started with contract deployment and contract calls. If you want to stay in the terminal and get access to more advanced capabilities, you should use the Stacks CLI.
-
-The following set of commands will achieve the same goals as the above workflow.
-
-Install an early release of the new Stacks CLI for Stacks 2.0.
+The container you are using comes pre-installed with Stacks CLI. Back inside the terminal, run the following command to create a new [Stacks 2.0 account](/understand-stacks/accounts):
 
 ```bash
-npm install --global @stacks/cli
+stx make_keychain -t | json_pp > cli_keychain.json
 ```
 
-Create a new Stacks address and save keychain details, using the `-t` flag to target Testnet. The new keychain details will be stored in the file `cli_keychain.json`:
+This command creates a new address and saves the details in a JSON file.
 
-```bash
-stx make_keychain -t > cli_keychain.json
-```
+-> The `-t` option generates an account for the [testnet](/understand-stacks/testnet). It cannot be used on the mainnet
 
-Review your new Stacks address details.
-
-```bash
-cat cli_keychain.json | json_pp
-```
+Review your new Stacks account details by opening up the file `cli_keychain.json` from the left navigation bar.
 
 ```json
 {
-  "mnemonic": "aaa bbb ccc ddd ...",
   "keyInfo": {
-    "address": "STJRM2AMVF90ER6G3RW1QTF85E3HZH37006D5ER1",
-    "privateKey": "5a3f1f15245bb3fb...",
+    "address": "STNBNMTXV9ERHEDCQA3WE2S4PTF8ANSC24EBDKS2",
+    "btcAddress": "mjQtUz4kD7QsfAnxuPKKNM2EjFiomb9P8p",
     "index": 0,
-    "btcAddress": "biwSd6KTEvJcyX2R8oyfgj5REuLzczMYC1"
-  }
+    "privateKey": "416ce94972b13eee84943a0c42275c9f61f7..."
+  },
+  "mnemonic": "cup core apple emotion chalk absorb ..."
 }
 ```
 
 -> Check out the [Stacks CLI reference](/references/stacks-cli) for more details
 
-Make an API call to the Testnet faucet to get STX tokens.
+## Step 5: Obtain testing tokens
+
+Uploading and calling smart contracts requires fees to be paid to the network to process the transactions. Let's get some testnet tokens, so we can pay the fees in the next steps.
+
+The **STX faucet** is an API endpoint we can call to request testnet tokens for the new account. In the terminal, run the following command:
 
 ```bash
 # replace <stx_address> with `address` property from your keychain
@@ -227,47 +137,88 @@ The response will include a `txId` property. This is the transaction that was in
 ```json
 {
   "success": true,
-  "txId": "0xabc123",
-  "txRaw": "8080000000040..."
+  "txId": "0xf2f0402f9f4c4d43b382690c4f7b97e24d5ff5dd5c619e3615daa64dca7ef4bc",
+  "txRaw": "8080000000040016..."
 }
 ```
 
-You need to wait up to a minute for the transaction to complete. After that, you can confirm that your balance increase by 0.5 STX.
+-> You can also review the transaction status and details using the [Explorer](https://testnet-explorer.blockstack.org/)
+
+You need to wait up to a minute for the transaction to complete. Type the following in your terminal to check the balance:
 
 ```bash
 stx balance -t <stx_address>
 ```
 
+Once the transaction is successfully processed, you can see that your new balance is `500000`, which equals 0.5 Stacks (STX) tokens.
+
 ```json
 {
   //  in microstacks (1 STX = 1000000 microstacks)
   "balance": "500000",
+  "locked": "0",
+  "unlock_height": 0,
   "nonce": 0
 }
 ```
 
-With sufficient funds on your account, you can deploy a contract file to Testnet. In this example, we are deploying the `hello-world.clar` contract with the name `hello-world`.
+## Step 6: Deploy the contract
+
+A deployed contract on the Testnet is like a cloud function (comparable to serverless functions). It allows you to execute code remotely on the Stacks 2.0 network.
+
+Let's deploy the reviewed contract file (`hello-world.clar`). Inside the terminal, run the following command:
 
 ```bash
 # stx deploy_contract -t <contract_file_path> <contract_name> <fee> <nonce> <privateKey>
-# replace `nonce` with the value from the last balance check
 # replace `privateKey` with your private key from your keychain
-# replace `fee` with 2000. Usually, an estimate should be used but 2000 will be good enough for this tutorial
-stx deploy_contract -t ./hello-world.clar hello-world 2000 0 5a3f1f15245bb3fb
+stx deploy_contract -t clarity-hello-world/contracts/hello-world.clar hello-world 2000 0 <privateKey>
 ```
 
--> To learn more about the Stacks CLI commands, you can run `stx help all`.
+A new contract deploy transaction ID will be returned:
 
-The command will return a new contract deploy transaction ID. You have to wait up to a minute for the contract to be broadcast to the network. Keep in mind that this operation will increase the `nonce` of your account.
+```bash
+09adc98490c9f900d3149e74322e07ff6d1bf49660a08d8104c4dc66430bc3c0
+```
 
-As soon as the contract is deployed, you can call a contract method. In this example, we are calling the `echo-number` function of the previously named `hello-world` contract. The method is defined as `read-only` and will return the result without generating a new transactions.
+The `deploy_contract` command takes the file contents and deploys a new contract with the name `hello-world`. With that name, the fully qualified contract identifier for the new account will be `STNBNMTXV9ERHEDCQA3WE2S4PTF8ANSC24EBDKS2.hello-world`.
+
+~> Your address will be different. The contract identifier is essentially a naming convention to address deployed contract. It is based on the dot notation: `<address>.<contract_id>`
+
+Ideally, you should estimate the minimal fees that are required to be paid. The estimate would, for instance, be based on the size of the contract. For this tutorial, we will keep it simple and accept the default fee of `2000` (equals 0.02 STX).
+
+You have to wait up to a minute for the contract to be broadcasted to the network. In the meantime, you can open the transaction with the Explorer. You will notice that every deployed smart contracts' source code is publicly verifiable.
+
+-> Keep in mind that this operation increases the `nonce` of your account. [Read more about nonces](/understand-stacks/network#nonces)
+
+## Step 7: Call the public method
+
+As soon as the contract is deployed, you can call one of its methods. In this example, we are calling the `echo-number` function.
+
+-> The method is defined as `read-only` and will return the result [without generating a new transaction](/understand-stacks/network#read-only-function-calls)
 
 ```bash
 # stx call_read_only_contract_func -t <stx_address> <contract_name> <function_name> <fee> <nonce> <privateKey>
 # replace `stx_address` and `privateKey` with values from your keychain
-# replace `nonce` with the value from the last balance check + 1
-# replace `fee` with 2000. Usually, an estimate should be used but 2000 will be good enough for this tutorial
-stx call_read_only_contract_func -t <stx_address> hello-world echo-number 2000 1 5a3f1f15245bb3fb
+stx call_read_only_contract_func -t <stx_address> hello-world echo-number 2000 1 <privateKey>
 ```
 
-=> **Congratulations!** You can now deploy your smart contract and call public functions on the Testnet using the CLI.
+The command will look up the contract method definition on the network, identify that it requires an input parameter, and ask you for an integer to set `val`. Enter 42 an hit ENTER.
+
+```bash
+42
+```
+
+The method will now be executed on the network. Once completed, the command will respond with the value you just entered, `42`:
+
+```bash
+(ok 42)
+```
+
+=> **Congratulations!** You can now deploy your smart contract and call public functions on the Testnet using the CLI. You just deployed your smart contract and called a public function on the testnet of the Stacks blockchain using the Stacks CLI.
+
+With the completion of this tutorial, you now:
+
+- Have a working Clarity starter project
+- Understand basic Clarity language design principles
+- Deployed a contract on the Stacks blockchain and called a public method
+- Understand how to use the Stacks CLI

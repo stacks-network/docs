@@ -11,12 +11,12 @@ description: All you need to build decentralized apps, write smart contracts, an
 ## Get started
 
 [@page-reference | grid]
-| /build-apps, /write-smart-contracts/overview, /start-mining
+| /write-smart-contracts/overview, /build-apps, /start-mining
 
 ## Try a tutorial
 
 [@page-reference | grid]
-| /authentication/building-todo-app, /write-smart-contracts/counter-tutorial, /understand-stacks/running-testnet-node
+| /write-smart-contracts/hello-world-tutorial, /authentication/building-todo-app, /understand-stacks/running-testnet-node
 
 ## Explore more
 
