@@ -28,7 +28,6 @@ sections:
               - path: /atlas-overview
               - path: /atlas-how-it-works
               - path: /atlas-usage
-              - path: /install-api
               - path: /installing-memcached
       - path: /build-apps # is an overview page
       - path: /write-smart-contracts

@@ -344,7 +344,7 @@ You'll find that the `driver` is set to `aws`. The DigitalOcean space API exactl
 5. Set the `serverName` to the droplet you just created.
 6. Set the `readURL` to the URL of the DigitalOcean space you just created.
 
-If your space URL called `https://meepers-hub-space.sfo2.digitaloceanspaces.com `, the `readURL` name is `https://meepers-hub-space.sfo2.digitaloceanspaces.com`. 7. Set the `bucket` to the name of the DigitalOcean space you just created.
+If your space URL called `https://meepers-hub-space.sfo2.digitaloceanspaces.com`, the `readURL` name is `https://meepers-hub-space.sfo2.digitaloceanspaces.com`. 7. Set the `bucket` to the name of the DigitalOcean space you just created.
 
 If your space is called `meepers-hub-space`, the `bucket` value is `meepers-hub-space`.
 

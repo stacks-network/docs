@@ -93,4 +93,4 @@ All data is also stored in Gaia; no third-party can revoke access to this data.
 All data is encrypted on the client-side before being stored anywhere using Stacks authorization. The application
 host cannot inspect, sell, or use user data in any way that a user doesn't explicitly authorize.
 
-If you are not familiar with Gaia, see [read the Gaia documentation](/storage/overview).
+If you are not familiar with Gaia, see [read the Gaia documentation](/data-storage/overview).
