@@ -400,7 +400,7 @@ Each service plays a particular role in running your Gaia hub.
       </tr>
       <tr>
          <td><code>nginx</code></td>
-         <td>Runs an Nginx proxy in front of the Gaia Hub. This service does things like rate-limiting, SSL termination, and redirects to HTTPS.  Your nginx service relies on your hub's <code>readURL</code> to make requests. Changes to a hub's <code>readURL</code> must be reflected in the <code>nginx</code> service configuration in <code>/gaia/nginx/conf.d/default.conf</code></td>
+         <td>Runs an Nginx proxy in front of the Gaia Hub. This service does things like rate-limiting, SSL termination, and redirects to HTTPS. Your nginx service relies on your hub's <code>readURL</code> to make requests. Changes to a hub's <code>readURL</code> must be reflected in the <code>nginx</code> service configuration in <code>/gaia/nginx/conf.d/default.conf</code></td>
       </tr>
       <tr>
          <td><code>gaia-admin</code></td>
@@ -409,7 +409,7 @@ Each service plays a particular role in running your Gaia hub.
       <tr>
          <td><code>gaia-reader</code></td>
          <td>The Gaia read side-car services get file requests on URLs that start with
-         your Gaia hub's <code>readURL</code>.  You can determine your Gaia hub's read URL by either
+         your Gaia hub's <code>readURL</code>. You can determine your Gaia hub's read URL by either
          looking for the <code>readURL</code> key in your Gaia hub's config file. This value is  or by looking for
          the <code>read_url_prefix</code> field in the data returned by a <code>HUB_URL/hub_info</code> page on your
          Gaia hub.</td>

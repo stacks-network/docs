@@ -150,9 +150,9 @@ chunks that are currently most at-risk for disappearing due to node failure.
 
 Figure 2:  Relationship between Atlas node chunk inventory and BNS name state.
 Some name operations announce name state in the blockchain, which Atlas
-interprets as a chunk hash.  The Atlas node builds up a vector of which chunks
+interprets as a chunk hash. The Atlas node builds up a vector of which chunks
 it has and which ones it does not, and announces it to other Atlas peers so
-they can fetch chunks they are missing.  In this example, the node's
+they can fetch chunks they are missing. In this example, the node's
 inventory vector is [1, 0, 1], since the 0th and 2nd chunks are present
 but the 1st chunk is missing.
 ```
