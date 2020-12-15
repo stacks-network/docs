@@ -29,9 +29,9 @@ blockchain in order to independently verify that an app's global shared state ha
 Not every decentralized application requires smart contracts, but Clarity unlocks interesting capabilities for
 decentralized applications. Examples of use cases include, but are not limited to:
 
-- Access control (e.g. pay to access)
-- Non-fungible (e.g. collectibles) and fungible tokens (e.g. stablecoins)
-- Business model templates (e.g. subscriptions)
+- Access control (for example pay to access)
+- Non-fungible (for example collectibles) and fungible tokens (for example stablecoins)
+- Business model templates (for example subscriptions)
 - App-specific blockchains
 - Decentralized Autonomous Organizations
 

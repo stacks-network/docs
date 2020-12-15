@@ -63,7 +63,7 @@ You should see the following response:
 3 passing (412ms)
 ```
 
-Great, all tests are passing! Now, let's have a look at the test implementation. That helps understand how to interact with Clarity smart contracts.
+Great, all tests are passing. Now, let's have a look at the test implementation. That helps understand how to interact with Clarity smart contracts.
 
 ## Interact with contracts
 
@@ -140,4 +140,4 @@ With the completion of this tutorial, you:
 - Created a working Clarity starter project
 - Understood how to test Clarity contracts
 
-Congratulations!
+Congratulations.

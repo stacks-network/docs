@@ -133,7 +133,7 @@ To use the `PublicUrlRegistrar` component, open `Sharer.jsx` and add the followi
 <PublicUrlRegistrar userSession={userSession} />
 ```
 
-Now, you should be able to register your public to-do list on the blockchain when you click on "Register on-chain".
+Now, you should be able to register your public to-do list on the blockchain when you click on "Register on-chain."
 
 ![How to register the public to-do list](/images/todos-register-on-chain.png)
 
@@ -379,7 +379,7 @@ const fetchActivities = useCallback(async () => {
 
 ### Step 3: Filter for successful contract calls
 
-Contract calls could fail with an error, e.g. if the public url is too long. The transactions should be filtered for successful contract calls:
+Contract calls could fail with an error, for example if the public url is too long. The transactions should be filtered for successful contract calls:
 
 ```js
 const contractCallsOnly = r => {
@@ -445,7 +445,7 @@ In addition to `tx_result`, the transaction object also contains a timestamp (`b
 
 -> Note: The `AccountsApi` and other Api methods provide parameters to page through the results using `limit` and `offset`. See [the docs](https://blockstack.github.io/stacks-blockchain-api/client/interfaces/getaccounttransactionsrequest.html) for more details.
 
-=> Congratulations! You just implemented a list of recent activities that was fetched from the blockchain.
+=> Congratulations. You just implemented a list of recent activities that was fetched from the blockchain.
 
 ![How recent activities look like](/images/todos-recent-activities.png)
 
@@ -599,7 +599,7 @@ Update the UI to display the data of the first registry entry.
 }
 ```
 
-=> Congratulations! You just called read-only functions and map entries from the public registry — without managing a server.
+=> Congratulations. You just called read-only functions and map entries from the public registry, without managing a server.
 
 With the completion of this tutorial, you:
 

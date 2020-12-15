@@ -98,8 +98,8 @@ Paste in the following configuration:
 [node]
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
-# Enter your private key here!
+bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@testnet-miner.blockstack.org:20444"
+# Enter your private key here
 seed = "replace-with-your-private-key"
 miner = true
 
@@ -138,7 +138,7 @@ To run your miner, run this in the command line:
 stacks-node start --config=./testnet/stacks-node/conf/testnet-miner-conf.toml
 ```
 
-Your node should start. It will take some time to sync, and then your miner will be running!
+Your node should start. It will take some time to sync, and then your miner will be running.
 
 ### Creating an optimized binary
 
@@ -224,8 +224,8 @@ Paste in the following configuration:
 [node]
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
-# Enter your private key here!
+bootstrap_node = "048dd4f26101715853533dee005f0915375854fd5be73405f679c1917a5d4d16aaaf3c4c0d7a9c132a36b8c5fe1287f07dad8c910174d789eb24bdfb5ae26f5f27@testnet-miner.blockstack.org:20444"
+# Enter your private key here
 seed = "replace-with-your-private-key"
 miner = true
 
@@ -269,7 +269,7 @@ stacks-node start --config=testnet-miner-conf.toml
 -> **Note** : While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
 ![Windows Defender](/images/windows-defender.png)
 
-Your node should start. It will take some time to sync, and then your miner will be running!
+Your node should start. It will take some time to sync, and then your miner will be running.
 
 ### Enable debug logging in Windows
 
@@ -299,7 +299,7 @@ We need to get some testnet BTC to that address. Grab the `btcAddress` field, an
 
 ### Create a config file directory
 
-You need a dedicated directory to keep the config file(s):
+You need a dedicated directory to keep the config files:
 
 ```bash
 mkdir -p $HOME/stacks
@@ -314,8 +314,7 @@ Inside the new `$HOME/stacks` folder, you should create a new miner config `Conf
 working_dir = "/root/stacks-node/current"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
-# Enter your private key here!
+# Enter your private key here
 seed = "replace-with-your-privateKey-from-generate-keychain-step"
 miner = true
 

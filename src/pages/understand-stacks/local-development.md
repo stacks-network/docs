@@ -174,9 +174,7 @@ explorer:
     - api
 ```
 
-To disable this service, simply comment the section with `#`
-
-i.e.
+To disable this service, simply comment the section with `#`. For example:
 
 ```yaml
 #  explorer:
@@ -291,7 +289,7 @@ export PGPASSWORD='postgres' && psql --host localhost -p 5432 -U postgres -d sta
 
 If you have a port conflict, typically this means you already have a process using that same port.
 
-To resolve, find the port you have in use (i.e. `5432` and edit the [`.env`](https://github.com/blockstack/stacks-local-dev/blob/master/.env) file to use the new port)
+To resolve, find the port you have in use (for example, `5432` and edit the [`.env`](https://github.com/blockstack/stacks-local-dev/blob/master/.env) file to use the new port)
 
 ```bash
 netstat -anl | grep 5432

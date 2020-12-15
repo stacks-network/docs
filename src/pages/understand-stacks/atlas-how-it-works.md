@@ -30,7 +30,7 @@ will remain online for long periods of time. The sampling algorithm accounts
 for this with the following tweaks:
 
 - If the neighbors of the visited node _N_ are all unresponsive, the random
-  walk resets to a randomly-chosen known neighbor. There is no back-tracking on
+  walk resets to a randomly chosen known neighbor. There is no back-tracking on
   the peer graph in this case.
 
 - The transition probability from _N_ to a live neighbor is _NOT_ `min(1, degree(neighbor)/degree(N))` like it is in the vanilla MH algorithm. Instead,
@@ -41,7 +41,7 @@ for this with the following tweaks:
   but only reports a random subset of peers that have met a minimum health threshold.
 
 - A new neighbor is only selected if it belongs to the same [BNS
-  fork-set](/naming-services/overview#bns-forks) (i.e. it reports
+  fork-set](/naming-services/overview#bns-forks) (for example, it reports
   as having a recent valid consensus hash).
 
 The algorithm was adapted from the work from [Lee, Xu, and
@@ -64,7 +64,7 @@ It can do so at any point in time after the chunk was first stored,
 because only the peers who maintain the chunk's hash bucket have to store it.
 This is a _fundamental_ problem with structured overlay networks
 that perform request routing based on content hash---they give the attacker
-insight as to the path(s) the queries take through the peer graph, and thus
+insight as to the paths the queries take through the peer graph, and thus
 reduce the number of paths the attacker must disrupt in order to censor the
 chunk.
 
@@ -89,7 +89,7 @@ contacts a given DHT node has an equal chance of becoming its neighbor.
 The node will instead rank a set of peers as being more or less ideal
 for being neighbors. In DHTs, the degree of preference a node exhibits to
 another node is usually a function of the node's self-given node identifier
-(e.g. a node might want to select neighbors based on proximity in the key
+(for example a node might want to select neighbors based on proximity in the key
 space).
 
 The preferential attachment property means that an adaptive adversary can game the node's

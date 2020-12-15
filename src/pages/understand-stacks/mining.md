@@ -38,7 +38,7 @@ For transactions mined in microblocks, the miner that produces the microblock re
 
 ## Reward maturity
 
-Miner rewards, i.e. block rewards and transaction fees take 100 blocks on the bitcon blockchain to mature. After successful mining a block your rewards will appear in the Stacks account after ~24 hours.
+Miner rewards, that is, block rewards and transaction fees take 100 blocks on the bitcon blockchain to mature. After successful mining a block your rewards will appear in the Stacks account after ~24 hours.
 
 ## Mining with Proof-of-Transfer
 
@@ -46,13 +46,13 @@ Miners commit Bitcoin to **two** addresses in every leader block commit. The amo
 
 ![mining with pox](/images/pages/mining-with-pox.png)
 
-100,000 Bitcoin blocks **after** mining begins, the PoX sunset phase begins. During this phase, an increasing proportion of the block commit must be burnt. To burn this sunset fee, the miner must send the sunset fee amount to the first output of their block commit transaction (i.e., the OPRETURN output).
+100,000 Bitcoin blocks **after** mining begins, the PoX sunset phase begins. During this phase, an increasing proportion of the block commit must be burnt. To burn this sunset fee, the miner must send the sunset fee amount to the first output of their block commit transaction (that is, the OPRETURN output).
 
 400,000 Bitcoin blocks after the sunset phase begins, the sunset phase ends. After this point, PoX is no longer active, and miners must burn all of their leader block commits. They do so by sending Bitcoin to the canonical burn address `1111111111111111111114oLvT2`.
 
 ## Probability to mine next block
 
-The miner who is selected to mine the next block is chosen depending on the amount of BTC the miners sent, i.e. transferred or burnt.
+The miner who is selected to mine the next block is chosen depending on the amount of BTC the miners sent, that is, transferred or burnt.
 
 The probability for a miner to mine the next block equals the BTC the miner sent divided by the total BTC all miners sent.
 

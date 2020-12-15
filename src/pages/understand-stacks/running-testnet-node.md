@@ -109,7 +109,7 @@ The first time you run this, you'll see some logs indicating that the Rust code 
 INFO [1588108047.585] [src/chainstate/stacks/index/marf.rs:732] First-ever block 0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206
 ```
 
-**Awesome! Your node is now connected to the testnet network.**
+**Awesome. Your node is now connected to the testnet network.**
 
 Your node will receive new blocks when they are produced, and you can use the [Stacks Node RPC API](/references/stacks-blockchain-api#stacks-node-rpc-api) to send transactions, fetch information for contracts and accounts, and more.
 
@@ -136,7 +136,7 @@ Before you begin, check that you have the below necessary softwares installed on
 
 -> **Note**: Please make sure to download the new Binary and follow the below steps as and when a [new release build](https://github.com/blockstack/stacks-blockchain/releases/latest) is available.
 
-First, Visit the [Stacks Github releases repo](https://github.com/blockstack/stacks-blockchain/releases/latest). From the various binary list, click to download the Windows binary.Refer the image below.
+First, Visit the [Stacks Github releases repo](https://github.com/blockstack/stacks-blockchain/releases/latest). From the various binary list, click to download the Windows binary. Refer the image below.
 ![BinaryList](/images/mining-windows.png)
 
 Next, click on save file and Press **Ok** in the popup window.
@@ -167,7 +167,7 @@ The first time you run this, you'll see some logs indicating that the Rust code 
 INFO [1588108047.585] [src/chainstate/stacks/index/marf.rs:732] First-ever block 0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206
 ```
 
-**Awesome! Your node is now connected to the testnet network.**
+**Awesome. Your node is now connected to the testnet network.**
 
 ## Optional: Running with Docker
 
