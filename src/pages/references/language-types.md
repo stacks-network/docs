@@ -21,10 +21,9 @@ The type system contains the following types:
   `(some value)` or `none`
 - `(buff max-len)` := byte buffer or maximum length `max-len`.
 - `(string-ascii max-len)` := ASCII string of maximum length `max-len`
-- `(string-utf8 max-len)` := UTF-8 string of maximum length `max-len`
+- `(string-utf8 max-len)` := UTF-8 string of maximum length `max-len` (u"A smiley face emoji \u{1F600} as a utf8 string")
 - `principal` := object representing a principal (whether a contract principal
   or standard principal).
 - `bool` := boolean value (`true` or `false`)
 - `int` := signed 128-bit integer
 - `uint` := unsigned 128-bit integer
-- `u"string"` := UTF-8 string (UTF-8 bytestring `u"\u{string}"`)
