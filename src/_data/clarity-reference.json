@@ -510,7 +510,7 @@
       "output_type": "C",
       "signature": "(match opt-input some-binding-name some-branch none-branch) |\n(match-resp input ok-binding-name ok-branch err-binding-name err-branch)",
       "description": "The `match` function is used to test and destructure optional and response types.\n\nIf the `input` is an optional, it tests whether the provided\n`input` is a `some` or `none` option, and evaluates `some-branch` or\n`none-branch` in each respective case.\n\nWithin the `some-branch`, the _contained value_ of the `input`\nargument is bound to the provided `some-binding-name` name.\n\nOnly _one_ of the branches will be evaluated (similar to `if` statements).\n\nIf the `input` is a response, it tests whether the provided `input` is\nan `ok` or `err` response type, and evaluates `ok-branch` or\n`err-branch` in each respective case.\n\nWithin the `ok-branch`, the _contained ok value_ of the `input`\nargument is bound to the provided `ok-binding-name` name.\n\nWithin the `err-branch`, the _contained err value_ of the `input`\nargument is bound to the provided `err-binding-name` name.\n\nOnly _one_ of the branches will be evaluated (similar to `if` statements).\n\nNote: Type checking requires that the type of both the ok and err parts of the\nresponse object be determinable. For situations in which one of the parts of a response\nis untyped, you should use `unwrap-panic` or `unwrap-err-panic` instead of `match`.",
-      "example": "\n(define-private (add-10 (x (optional int)))\n  (match x\n  value (+ 10 value)\n  10))\n(add-10 (some 5)) ;; returns 15\n(add-10 none) ;; returns 10\n\n(define-private (add-or-pass-err (x (response int (string-ascii 10))) (to-add int))\n  (match x\n   value (+ to-add value)\n   err-value (err err-value)))\n(add-or-pass-err (ok 5) 20) ;; returns 25\n(add-or-pass-err (err \"ERROR\") 20) ;; returns (err \"ERROR\")\n"
+      "example": "\n(define-private (add-10 (x (optional int)))\n  (match x\n  value (+ 10 value)\n  10))\n(add-10 (some 5)) ;; Returns 15\n(add-10 none) ;; Returns 10\n\n(define-private (add-or-pass-err (x (response int (string-ascii 10))) (to-add int))\n  (match x\n   value (+ to-add value)\n   err-value (err err-value)))\n(add-or-pass-err (ok 5) 20) ;; Returns 25\n(add-or-pass-err (err \"ERROR\") 20) ;; Returns (err \"ERROR\")\n"
     },
     {
       "name": "try!",
@@ -566,7 +566,7 @@
       "output_type": "uint",
       "signature": "(ft-get-balance token-name principal)",
       "description": "`ft-get-balance` returns `token-name` balance of the principal `principal`.\nThe token type must have been defined using `define-fungible-token`.",
-      "example": "\n(define-fungible-token stackaroo)\n(ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)\n(ft-get-balance stackaroo 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; returns u100\n"
+      "example": "\n(define-fungible-token stackaroo)\n(ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)\n(ft-get-balance stackaroo 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns u100\n"
     },
     {
       "name": "nft-get-owner?",
@@ -582,7 +582,7 @@
       "output_type": "(response bool uint)",
       "signature": "(ft-transfer? token-name amount sender recipient)",
       "description": "`ft-transfer?` is used to increase the token balance for the `recipient` principal for a token\ntype defined using `define-fungible-token` by debiting the `sender` principal.\n\nThis function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns\none of the following error codes:\n\n`(err u1)` -- `sender` does not have enough balance to transfer\n`(err u2)` -- `sender` and `recipient` are the same principal\n`(err u3)` -- amount to send is non-positive\n",
-      "example": "\n(define-fungible-token stackaroo)\n(ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)\n(ft-transfer? stackaroo u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; returns (ok true)\n(ft-transfer? stackaroo u60 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; returns (err u1)\n"
+      "example": "\n(define-fungible-token stackaroo)\n(ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)\n(ft-transfer? stackaroo u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)\n(ft-transfer? stackaroo u60 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u1)\n"
     },
     {
       "name": "nft-transfer?",
@@ -590,7 +590,7 @@
       "output_type": "(response bool uint)",
       "signature": "(nft-transfer? asset-class asset-identifier sender recipient)",
       "description": "`nft-transfer?` is used to change the owner of an asset identified by `asset-identifier`\nfrom `sender` to `recipient`. The `asset-class` must have been defined by `define-non-fungible-token` and `asset-identifier`\nmust be of the type specified in that definition.\n\nThis function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns\none of the following error codes:\n\n`(err u1)` -- `sender` does not own the asset\n`(err u2)` -- `sender` and `recipient` are the same principal\n`(err u3)` -- asset identified by asset-identifier does not exist\n",
-      "example": "\n(define-non-fungible-token stackaroo (string-ascii 40))\n(nft-mint? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)\n(nft-transfer? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; returns (ok true)\n(nft-transfer? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; returns (err u1)\n(nft-transfer? stackaroo \"Stacka\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; returns (err u3)\n"
+      "example": "\n(define-non-fungible-token stackaroo (string-ascii 40))\n(nft-mint? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)\n(nft-transfer? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)\n(nft-transfer? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u1)\n(nft-transfer? stackaroo \"Stacka\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u3)\n"
     },
     {
       "name": "nft-mint?",
@@ -598,7 +598,7 @@
       "output_type": "(response bool uint)",
       "signature": "(nft-mint? asset-class asset-identifier recipient)",
       "description": "`nft-mint?` is used to instantiate an asset and set that asset's owner to the `recipient` principal.\nThe asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in\nthat definition.\n\nIf an asset identified by `asset-identifier` _already exists_, this function will return an error with the following error code:\n\n`(err u1)`\n\nOtherwise, on successfuly mint, it returns `(ok true)`.\n",
-      "example": "\n(define-non-fungible-token stackaroo (string-ascii 40))\n(nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; returns (ok true)\n"
+      "example": "\n(define-non-fungible-token stackaroo (string-ascii 40))\n(nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)\n"
     },
     {
       "name": "ft-mint?",
@@ -606,7 +606,31 @@
       "output_type": "(response bool uint)",
       "signature": "(ft-mint? token-name amount recipient)",
       "description": "`ft-mint?` is used to increase the token balance for the `recipient` principal for a token\ntype defined using `define-fungible-token`. The increased token balance is _not_ transfered from another principal, but\nrather minted.  \n\nIf a non-positive amount is provided to mint, this function returns `(err 1)`. Otherwise, on successfuly mint, it\nreturns `(ok true)`.\n",
-      "example": "\n(define-fungible-token stackaroo)\n(ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; returns (ok true)\n"
+      "example": "\n(define-fungible-token stackaroo)\n(ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)\n"
+    },
+    {
+      "name": "ft-get-supply",
+      "input_type": "TokenName",
+      "output_type": "uint",
+      "signature": "(ft-get-supply token-name)",
+      "description": "`ft-get-balance` returns `token-name` circulating supply.\nThe token type must have been defined using `define-fungible-token`.",
+      "example": "\n(define-fungible-token stackaroo)\n(ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)\n(ft-get-supply stackaroo) ;; Returns u100\n"
+    },
+    {
+      "name": "ft-burn?",
+      "input_type": "TokenName, uint, principal",
+      "output_type": "(response bool uint)",
+      "signature": "(ft-burn? token-name amount sender)",
+      "description": "`ft-burn?` is used to decrease the token balance for the `sender` principal for a token\ntype defined using `define-fungible-token`. The decreased token balance is _not_ transfered to another principal, but\nrather destroyed, reducing the circulating supply.  \n\nIf a non-positive amount is provided to burn, this function returns `(err 1)`. Otherwise, on successfuly burn, it\nreturns `(ok true)`.\n",
+      "example": "\n(define-fungible-token stackaroo)\n(ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)\n(ft-burn? stackaroo u50 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)\n"
+    },
+    {
+      "name": "nft-burn?",
+      "input_type": "AssetName, A, principal",
+      "output_type": "(response bool uint)",
+      "signature": "(nft-burn? asset-class asset-identifier recipient)",
+      "description": "`nft-burn?` is used to burn an asset and remove that asset's owner from the `recipient` principal.\nThe asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in\nthat definition.\n\nIf an asset identified by `asset-identifier` _doesn't exist_, this function will return an error with the following error code:\n\n`(err u1)`\n\nOtherwise, on successfuly burn, it returns `(ok true)`.\n",
+      "example": "\n(define-non-fungible-token stackaroo (string-ascii 40))\n(nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)\n(nft-burn? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)\n"
     },
     {
       "name": "stx-get-balance",
@@ -614,7 +638,7 @@
       "output_type": "uint",
       "signature": "(stx-get-balance owner)",
       "description": "`stx-get-balance` is used to query the STX balance of the `owner` principal.\n\nThis function returns the STX balance of the `owner` principal. In the event that the `owner`\nprincipal isn't materialized, it returns 0.\n",
-      "example": "\n(stx-get-balance 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; returns u0\n(stx-get-balance (as-contract tx-sender)) ;; returns u10000\n"
+      "example": "\n(stx-get-balance 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns u0\n(stx-get-balance (as-contract tx-sender)) ;; Returns u1000\n"
     },
     {
       "name": "stx-transfer?",
@@ -622,7 +646,7 @@
       "output_type": "(response bool uint)",
       "signature": "(stx-transfer? amount sender recipient)",
       "description": "`stx-transfer?` is used to increase the STX balance for the `recipient` principal\nby debiting the `sender` principal. The `sender` principal _must_ be equal to the current context's `tx-sender`.\n\nThis function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns\none of the following error codes:\n\n`(err u1)` -- `sender` does not have enough balance to transfer\n`(err u2)` -- `sender` and `recipient` are the same principal\n`(err u3)` -- amount to send is non-positive\n`(err u4)` -- the `sender` principal is not the current `tx-sender`\n",
-      "example": "\n(as-contract\n  (stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; returns (ok true)\n(as-contract\n  (stx-transfer? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender)) ;; returns (err u4)\n"
+      "example": "\n(as-contract\n  (stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (ok true)\n(as-contract\n  (stx-transfer? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender)) ;; Returns (err u4)\n"
     },
     {
       "name": "stx-burn?",
@@ -630,7 +654,7 @@
       "output_type": "(response bool uint)",
       "signature": "(stx-burn? amount sender)",
       "description": "`stx-burn?` debits the `sender` principal's STX holdings by `amount`, destroying\nthe STX. The `sender` principal _must_ be equal to the current context's `tx-sender`.\n\nThis function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns\none of the following error codes:\n\n`(err u1)` -- `sender` does not have enough balance to transfer\n`(err u3)` -- amount to send is non-positive\n`(err u4)` -- the `sender` principal is not the current `tx-sender`\n",
-      "example": "\n(as-contract\n  (stx-burn? u60 tx-sender)) ;; returns (ok true)\n(as-contract\n  (stx-burn? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; returns (err u4)\n"
+      "example": "\n(as-contract\n  (stx-burn? u60 tx-sender)) ;; Returns (ok true)\n(as-contract\n  (stx-burn? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (err u4)\n"
     },
     {
       "name": "define-constant",
@@ -638,7 +662,7 @@
       "output_type": "Not Applicable",
       "signature": "(define-constant name expression)",
       "description": "`define-constant` is used to define a private constant value in a smart contract.\nThe expression passed into the definition is evaluated at contract launch, in the order that it is\nsupplied in the contract. This can lead to undefined function or undefined variable errors in the\nevent that a function or variable used in the expression has not been defined before the constant.\n\nLike other kinds of definition statements, `define-constant` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).\n",
-      "example": "\n(define-constant four (+ 2 2))\n(+ 4 four) ;; returns 8\n"
+      "example": "\n(define-constant four (+ 2 2))\n(+ 4 four) ;; Returns 8\n"
     },
     {
       "name": "define-private",
@@ -646,7 +670,7 @@
       "output_type": "Not Applicable",
       "signature": "(define-private (function-name (arg-name-0 arg-type-0) (arg-name-1 arg-type-1) ...) function-body)",
       "description": "`define-private` is used to define _private_ functions for a smart contract. Private\nfunctions may not be called from other smart contracts, nor may they be invoked directly by users.\nInstead, these functions may only be invoked by other functions defined in the same smart contract.\n\nLike other kinds of definition statements, `define-private` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).\n\nPrivate functions may return any type.",
-      "example": "\n(define-private (max-of (i1 int) (i2 int))\n  (if (> i1 i2)\n      i1\n      i2))\n(max-of 4 6) ;; returns 6\n"
+      "example": "\n(define-private (max-of (i1 int) (i2 int))\n  (if (> i1 i2)\n      i1\n      i2))\n(max-of 4 6) ;; Returns 6\n"
     },
     {
       "name": "define-public",
