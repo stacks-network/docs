@@ -27,3 +27,4 @@ The type system contains the following types:
 - `bool` := boolean value (`true` or `false`)
 - `int` := signed 128-bit integer
 - `uint` := unsigned 128-bit integer
+- `u"string"` := UTF-8 string (UTF-8 bytestring `u"\u{string}"`)
