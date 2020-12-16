@@ -121,7 +121,7 @@ Here we're using an Rxjs `Subject` to represent a stream of sign in events. `sta
 
 ### 4.3 Authentication
 
-First, describe the auth options we need to pass to Connect. [Learn more about `AuthOptions` here](https://docs.blockstack.org/authentication/overview). Let's modify the default component to look like this:
+First, describe the auth options we need to pass to Connect. [Learn more about `AuthOptions` here](/authentication/overview). Let's modify the default component to look like this:
 
 ```typescript
 import { Component } from '@angular/core';
