@@ -112,7 +112,7 @@ We need the following 4 arguments:
 | `Private Key`   | The private key to the address we're Stacking with, which we generated previously     | `dca82f838f6e5a893cffc8efe861196252373a5b8b62c0b55ba3a0a7a28795d301` |
 
 ```bash
-stx stack 90000000000000 10 mqkccNX5h7Xy1YUku3X2fCFCC54x6HEiHk dca82f838f6e5a893cffc8efe861196252373a5b8b62c0b55ba3a0a7a28795d301
+stx stack 90000000000000 10 mqkccNX5h7Xy1YUku3X2fCFCC54x6HEiHk dca82f838f6e5a893cffc8efe861196252373a5b8b62c0b55ba3a0a7a28795d301 -t
 
 {
   txid: '0x2e33ad647a9cedacb718ce247967dc705bc0c878db899fdba5eae2437c6fa1e1',
