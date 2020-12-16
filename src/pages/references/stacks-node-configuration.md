@@ -435,7 +435,7 @@ Example:
 commit_anchor_block_within = 10000
 ```
 
-### Section: mstx_balance
+### Section: ustx_balance
 
 This section contains configuration options pertaining to the genesis block allocation for an address in micro-STX. If a user changes these values, their node may be in conflict with other nodes on the network and find themselves unable to sync with other nodes.
 
@@ -444,19 +444,19 @@ This section contains configuration options pertaining to the genesis block allo
 Example:
 
 ```toml
-[[mstx_balance]]
+[[ustx_balance]]
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
 amount = 10000000000000000
 
-[[mstx_balance]]
+[[ustx_balance]]
 address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
 amount = 10000000000000000
 
-[[mstx_balance]]
+[[ustx_balance]]
 address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
 amount = 10000000000000000
 
-[[mstx_balance]]
+[[ustx_balance]]
 address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
 amount = 10000000000000000
 ```
