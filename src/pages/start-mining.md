@@ -116,16 +116,16 @@ password = "your-bitcoind-password"
 rpc_port = 18332
 peer_port = 18333
 
-[[mstx_balance]]
+[[ustx_balance]]
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
 amount = 10000000000000000
-[[mstx_balance]]
+[[ustx_balance]]
 address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
 amount = 10000000000000000
-[[mstx_balance]]
+[[ustx_balance]]
 address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
 amount = 10000000000000000
-[[mstx_balance]]
+[[ustx_balance]]
 address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
 amount = 10000000000000000
 ```
@@ -240,16 +240,16 @@ password = "your-bitcoind-password"
 rpc_port = 18332
 peer_port = 18333
 
-[[mstx_balance]]
+[[ustx_balance]]
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
 amount = 10000000000000000
-[[mstx_balance]]
+[[ustx_balance]]
 address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
 amount = 10000000000000000
-[[mstx_balance]]
+[[ustx_balance]]
 address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
 amount = 10000000000000000
-[[mstx_balance]]
+[[ustx_balance]]
 address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
 amount = 10000000000000000
 ```
@@ -330,16 +330,16 @@ password = "your-bitcoind-password"
 rpc_port = 18332
 peer_port = 18333
 
-[[mstx_balance]]
+[[ustx_balance]]
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
 amount = 10000000000000000
-[[mstx_balance]]
+[[ustx_balance]]
 address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
 amount = 10000000000000000
-[[mstx_balance]]
+[[ustx_balance]]
 address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
 amount = 10000000000000000
-[[mstx_balance]]
+[[ustx_balance]]
 address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
 amount = 10000000000000000
 ```
