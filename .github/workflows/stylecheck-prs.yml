@@ -2,6 +2,8 @@ name: stylecheck
 on:
   pull_request:
     branches: [master]
+    paths:
+      - '**.md'
 
 jobs:
   stylecheck:
@@ -20,7 +22,7 @@ jobs:
         with:
           styles: https://github.com/errata-ai/Google/releases/latest/download/Google.zip
           config: https://raw.githubusercontent.com/blockstack/docs/master/.vale/vale.ini
-          files: "${{ steps.get_changed_files.outputs.all }}"
+          files: '${{ steps.get_changed_files.outputs.all }}'
           onlyAnnotateModifiedLines: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
