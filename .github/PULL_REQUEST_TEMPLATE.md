@@ -1,6 +1,6 @@
 ## Description
 
-Describe the changes that where made in this pull request. When possible start the motivations behind the change. Be sure to also include the following information:
+Describe the changes that were made in this pull request. When possible start with the motivations behind the change. Be sure to also include the following information:
 
 1. Motivation for change?
 2. What was changed?
