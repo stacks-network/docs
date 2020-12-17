@@ -6,6 +6,7 @@ on:
 jobs:
   stylecheck:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
       - name: checkout
         uses: actions/checkout@v2
