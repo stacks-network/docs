@@ -15,7 +15,7 @@ jobs:
         with:
           token: ${{ github.token }}
       - name: Run vale
-        uses: errata-ai/vale-action@v1.3.0
+        uses: errata-ai/vale-action@master
         with:
           styles: https://github.com/errata-ai/Google/releases/latest/download/Google.zip
           config: https://raw.githubusercontent.com/blockstack/docs/master/.vale/vale.ini
