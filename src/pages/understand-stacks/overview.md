@@ -38,13 +38,6 @@ miners represent their cost of mining in bitcoins directly.
 [@page-reference | inline]
 | /understand-stacks/proof-of-transfer
 
-### API
-
-You can use the Stacks 2.0 Blockchain API to query the blockchain and interact with smart contracts.
-
-[@page-reference | inline]
-| /understand-stacks/stacks-blockchain-api
-
 ### Mining
 
 Mining is required to make the network usable, trustworthy, and secure. Miners verify incoming transactions, participate in the consensus mechanism, and write new blocks to the blockchain.
