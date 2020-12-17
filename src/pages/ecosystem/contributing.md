@@ -182,7 +182,7 @@ fetch external data at runtime and use it in some way within our pages.
 We use the [Google Developer documentation style guides](https://developers.google.com/style/) in this project. Make sure to install [vale](https://github.com/errata-ai/vale) and run the style checks before you create a PR:
 
 ```bash
-yarn vale:check
+yarn check:style
 ```
 
 ### Always use Markdown when possible

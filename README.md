@@ -15,7 +15,7 @@ If you are interested in contributing to the site and making changes, please ref
 This repository uses [vale](https://github.com/errata-ai/vale) to run style checks. Make sure to install the tool and run the following command before creating a PR in order to check for styling issues:
 
 ```bash
-yarn vale:check
+yarn check:style
 ```
 
 ### Blockstack CLI reference
