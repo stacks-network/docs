@@ -77,14 +77,18 @@ Stacks ID `gavin.id`.
 ### Step 1: Get the bucket URL
 
 ```bash
-$ BUCKET_URL="$(curl -sL https://core.blockstack.org/v1/users/gavin.id | jq -r '."gavin.id"["profile"]["apps"]["https://banter.pub"]')" ￼
-$ echo "$BUCKET_URL" ￼ https://gaia.blockstack.org/hub/16E485MVpR3QpmjVkRgej7ya2Vnzu3jyTR/
+BUCKET_URL="$(curl -sL https://core.blockstack.org/v1/users/gavin.id | jq -r '."gavin.id"["profile"]["apps"]["https://banter.pub"]')" ￼
+echo "$BUCKET_URL" ￼ https://gaia.blockstack.org/hub/16E485MVpR3QpmjVkRgej7ya2Vnzu3jyTR/
 ```
 
 ### Step 2: Get the data
 
 ```bash
-$ curl -sL "${BUCKET_URL%%/}/Message/3e866af471d0-4072-beba-06ad1e7ad4bd" ￼ {"content":"Anyone here?","votes":[],"createdBy":"gavin.id",...}
+curl -sL "${BUCKET_URL%%/}/Message/3e866af471d0-4072-beba-06ad1e7ad4bd"
+```
+
+```bash
+￼{"content":"Anyone here?","votes":[],"createdBy":"gavin.id",...}
 ```
 
 This data is public and unencrypted. The same works for encrypted data. Only the holder of the private key used for encryption would be able to decrypt the data.

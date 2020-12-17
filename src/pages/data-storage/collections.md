@@ -66,7 +66,10 @@ The tutorial relies on the `npm` dependency manager. Before you begin, verify
 you have installed `npm` using the `which` command to verify.
 
 ```bash
-$ which npm
+which npm
+```
+
+```bash
 /usr/local/bin/npm
 ```
 

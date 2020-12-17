@@ -18,8 +18,8 @@ The `src/_data/cli-reference.json` file is generated from the `stx` subcommand `
 
 2. Generate the json for the cli in the `docs.blockstack` repo.
 
-   ```
-   $ stx docs > src/_data/cli-reference.json
+   ```bash
+   stx docs > src/_data/cli-reference.json
    ```
 
 ### Clarity Reference

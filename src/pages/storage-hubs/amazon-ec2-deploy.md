@@ -29,7 +29,10 @@ Finally, setting up the SSL certificates on your EC2 instance requires you to us
 command line on your workstation. Make sure you have the `watch` command installed using the `which` command.
 
 ```bash
-$ which watch
+which watch
+```
+
+```bash
 /usr/local/bin/watch
 ```
 
@@ -370,7 +373,10 @@ ssh -t -i <your keyfile.pem> core@<public ip address>
 Your EC2 instance is running several `docker` services that support the Gaia hub. You can list these services using the `docker ps` command.
 
 ```bash
-$ docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Command}}\t{{.Names}}"
+docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Command}}\t{{.Names}}"
+```
+
+```bash
 CONTAINER ID        IMAGE                                   COMMAND                  NAMES
 6b170ce9b0d6        nginx:alpine                            "nginx -g 'daemon of…"   nginx
 91c5ff651586        quay.io/blockstack/gaia-hub:v2.5.3      "docker-entrypoint.s…"   gaia-hub
@@ -472,8 +478,11 @@ Each service plays a particular role in running your Gaia hub.
 
 You can `cat` the various services to see what settings they are using.
 
+```bash
+cat /etc/systemd/system/reset-ssl-certs.service
 ```
-$ cat /etc/systemd/system/reset-ssl-certs.service
+
+```yaml
 # reset-ssl-certs.service
 [Unit]
 Description=Reset Gaia to first boot
