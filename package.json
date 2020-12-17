@@ -121,7 +121,7 @@
     "dev": "yarn clean:build-files && next dev",
     "build:cli-reference": "stx docs > src/_data/cli-reference.json",
     "export": "next export",
-    "lint": "yarn lint:eslint && yarn lint:prettier && yarn vale:check",
+    "lint": "yarn lint:eslint && yarn lint:prettier && yarn check:style",
     "lint:eslint": "eslint \"src/**/*.{ts,tsx}\" -f unix",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" -f unix --fix",
     "lint:prettier": "prettier --check \"src/**/*.{ts,tsx,md,mdx}\" *.js",
