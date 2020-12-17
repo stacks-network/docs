@@ -1,4 +1,4 @@
-name: Stylecheck
+name: stylecheck
 on:
   pull_request:
     branches: [master]
@@ -7,14 +7,14 @@ jobs:
   stylecheck:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v2
-      - name: Get Changed Files
+      - name: get Changed Files
         id: get_changed_files
         uses: lots0logs/gh-action-get-changed-files@2.1.4
         with:
           token: ${{ github.token }}
-      - name: Run vale
+      - name: run vale
         uses: errata-ai/vale-action@master
         with:
           styles: https://github.com/errata-ai/Google/releases/latest/download/Google.zip
