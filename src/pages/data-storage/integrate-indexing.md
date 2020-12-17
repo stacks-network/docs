@@ -67,7 +67,10 @@ the database name.
 #### Step 2: Start the `radiks-server` in the command line to confirm your installation.
 
 ```bash
-$ radiks-server
+radiks-server
+```
+
+```bash
 (node:37750) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option `useUnifiedTopology: true` to the MongoClient constructor.
 radiks-server is ready on http://localhost:1260
 ```
@@ -106,7 +109,10 @@ yarn add radiks
 #### Step 1: Start the mongo shell application.
 
 ```bash
-$ mongo
+mongo
+```
+
+```bash
 MongoDB shell version v4.2.0
 connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
 Implicit session: session `{ "id" : UUID("8d43cf80-490d-4cac-8bd6-40eec5c128de") }`

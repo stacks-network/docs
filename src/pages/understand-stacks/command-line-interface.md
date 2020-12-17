@@ -104,13 +104,14 @@ In order to send tokens, the CLI command requires 5 parameters:
 The CLI command to use with these parameters is `send_tokens`:
 
 ```bash
-$ stx send_tokens ST2KMMVJAB00W5Z6XWTFPH6B13JE9RJ2DCSHYX0S7 1000 200 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t
+stx send_tokens ST2KMMVJAB00W5Z6XWTFPH6B13JE9RJ2DCSHYX0S7 1000 200 0 381314da39a45f43f45ffd33b5d8767d1a38db0da71fea50ed9508e048765cf301 -t
+```
 
+```json
 {
-  txid: '0xd32de0d66b4a07e0d7eeca320c37a10111c8c703315e79e17df76de6950c622c',
-  transaction: 'https://testnet-explorer.blockstack.org/txid/0xd32de0d66b4a07e0d7eeca320c37a10111c8c703315e79e17df76de6950c622c'
+  "txid": "0xd32de0d66b4a07e0d7eeca320c37a10111c8c703315e79e17df76de6950c622c",
+  "transaction": "https://testnet-explorer.blockstack.org/txid/0xd32de0d66b4a07e0d7eeca320c37a10111c8c703315e79e17df76de6950c622c"
 }
-
 ```
 
 With this command we’re sending 1000 microstacks to the Stacks address `ST2KMMVJAB00W5Z6XWTFPH6B13JE9RJ2DCSHYX0S7`.

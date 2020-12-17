@@ -45,7 +45,7 @@ npm install
 ### Step 2: Run the application:
 
 ```bash
-$ npm run start
+npm run start
 ```
 
 You should see output similar to the following:

@@ -64,10 +64,13 @@ Once you have the project on your computer and the dependencies have been instal
 `yarn dev` and it should give you a message such as:
 
 ```bash
-➜  docs.blockstack git:(feat/my-helpful-contribution) ✗ yarn dev
+yarn dev
+```
+
+```bash
 yarn run v1.22.4
-$ yarn clean:build-files && next dev
-$ rimraf .next
+yarn clean:build-files && next dev
+rimraf .next
 ready - started server on http://localhost:3000
 warn  - You have enabled experimental feature(s).
 warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use them at your own risk.
