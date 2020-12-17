@@ -9,11 +9,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: get Changed Files
+      - name: get changed Files
         id: get_changed_files
         uses: lots0logs/gh-action-get-changed-files@2.1.4
         with:
-          token: ${{ github.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: run vale
         uses: errata-ai/vale-action@master
         with:
@@ -22,4 +22,4 @@ jobs:
           files: "${{ steps.get_changed_files.outputs.all }}"
           onlyAnnotateModifiedLines: true
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
