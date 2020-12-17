@@ -99,9 +99,12 @@ changes will only take effect when the Gaia hub is reloaded. You can do this
 as follows:
 
 ```bash
-$ export API_KEY="hello"
-$ curl -H "Authorization: bearer $API_KEY" -X POST http://localhost:8009/v1/admin/reload
-{"result":"OK"}
+export API_KEY="hello"
+curl -H "Authorization: bearer $API_KEY" -X POST http://localhost:8009/v1/admin/reload
+```
+
+```json
+{ "result": "OK" }
 ```
 
 When you `POST` to this endpoint, the admin service runs the command described
@@ -127,8 +130,12 @@ settings.
 To read the Gaia hub settings, you would run the following:
 
 ```bash
-$ export API_KEY="hello"
-$ curl -H "Authorization: bearer $API_KEY" http://localhost:8009/v1/admin/config {"config":{"port":4000,"proofsConfig":{"proofsRequired":0}}}
+export API_KEY="hello"
+curl -H "Authorization: bearer $API_KEY" http://localhost:8009/v1/admin/config
+```
+
+```json
+{ "config": { "port": 4000, "proofsConfig": { "proofsRequired": 0 } } }
 ```
 
 ### Set the hub configuration (`POST /v1/admin/config`)
@@ -137,9 +144,12 @@ To set Gaia hub settings, you simply `POST` the changed JSON fields to this
 endpoint.
 
 ```bash
-$ export API_KEY="hello"
-$ curl -H "Authorization: bearer $API_KEY" -H 'Content-Type: application/json' -X POST --data-raw '{"port": 3001}' http://localhost:8009/v1/admin/config
-{"message":"Config updated -- you should reload your Gaia hub now."}
+export API_KEY="hello"
+curl -H "Authorization: bearer $API_KEY" -H 'Content-Type: application/json' -X POST --data-raw '{"port": 3001}' http://localhost:8009/v1/admin/config
+```
+
+```json
+{ "message": "Config updated -- you should reload your Gaia hub now." }
 ```
 
 If the settings were successfully applied, the method returns a message to reload your Gaia hub. You can set multiple drivers' settings with a single call. For example, you can set:
@@ -217,19 +227,32 @@ values, you get an HTTP 400 error.
 Use the `/v1/admin/config` endpoint to read and write storage driver settings. To get the current driver settings, you would run:
 
 ```bash
-$ export API_KEY="hello"
-$ curl -H "Authorization: bearer $API_KEY" http://localhost:8009/v1/admin/config
-{"config":{"driver":"disk","readURL":"http://localhost:4001/","pageSize":20,"diskSettings":{"storageRootDirectory":"/tmp/gaia-disk"}}}
+export API_KEY="hello"
+curl -H "Authorization: bearer $API_KEY" http://localhost:8009/v1/admin/config
+```
+
+```json
+{
+  "config": {
+    "driver": "disk",
+    "readURL": "http://localhost:4001/",
+    "pageSize": 20,
+    "diskSettings": { "storageRootDirectory": "/tmp/gaia-disk" }
+  }
+}
 ```
 
 To update the driver settings, you would run:
 
 ```bash
-$ export API_KEY="hello"
-$ export AWS_ACCESS_KEY="<hidden>"
-$ export AWS_SECRET_KEY="<hidden>"
-$ curl -H "Authorization: bearer $API_KEY" -H 'Content-Type: application/json' -X POST --data-raw "{\"driver\": \"aws\", \"awsCredentials\": {\"accessKeyId\": \"$AWS_ACCESS_KEY\", \"secretAccessKey\": \"$AWS_SECRET_KEY\"}}" http://localhost:8009/v1/admin/config
-{"message":"Config updated -- you should reload your Gaia hub now."}
+export API_KEY="hello"
+export AWS_ACCESS_KEY="<hidden>"
+export AWS_SECRET_KEY="<hidden>"
+curl -H "Authorization: bearer $API_KEY" -H 'Content-Type: application/json' -X POST --data-raw "{\"driver\": \"aws\", \"awsCredentials\": {\"accessKeyId\": \"$AWS_ACCESS_KEY\", \"secretAccessKey\": \"$AWS_SECRET_KEY\"}}" http://localhost:8009/v1/admin/config
+```
+
+```json
+{ "message": "Config updated -- you should reload your Gaia hub now." }
 ```
 
 ## Example: Read and write the whitelist
@@ -239,26 +262,34 @@ This endpoint lets you read and write the `whitelist` section of a Gaia hub, to 
 To get the current whitelist, you would run the following:
 
 ```bash
-$ export API_KEY="hello"
-$ curl -H "Authorization: bearer $API_KEY" http://localhost:8009/v1/admin/config
-{"config":{"whitelist":["15hUKXg1URbQsmaEHKFV2vP9kCeCsT8gUu"]}}
+export API_KEY="hello"
+curl -H "Authorization: bearer $API_KEY" http://localhost:8009/v1/admin/config
+```
+
+```json
+{ "config": { "whitelist": ["15hUKXg1URbQsmaEHKFV2vP9kCeCsT8gUu"] } }
 ```
 
 To set the whitelist, you must set the _entire_ whitelist. To set the list, pass a command such as the following:
 
 ```bash
-$ export API_KEY="hello"
-$ curl -H "Authorization: bearer $API_KEY" -H 'Content-Type: application/json' -X POST --data-raw '{"whitelist": ["1KDcaHsYJqD7pwHtpDn6sujCVQCY2e1ktw", "15hUKXg1URbQsmaEHKFV2vP9kCeCsT8gUu"]}' http://localhost:8009/v1/admin/config
-{"message":"Config updated -- you should reload your Gaia hub now."}
+export API_KEY="hello"
+curl -H "Authorization: bearer $API_KEY" -H 'Content-Type: application/json' -X POST --data-raw '{"whitelist": ["1KDcaHsYJqD7pwHtpDn6sujCVQCY2e1ktw", "15hUKXg1URbQsmaEHKFV2vP9kCeCsT8gUu"]}' http://localhost:8009/v1/admin/config
+```
+
+```json
+{ "message": "Config updated -- you should reload your Gaia hub now." }
 ```
 
 ## View logs for the hub or admin service
 
 The logs for each Gaia service are maintained by their respective Docker containers. To view the log for a particular service, use the `docker logs` command. For example, to get the logs for the hub:
 
+```bash
+docker logs docker_hub_1
 ```
-$ docker logs docker_hub_1
 
+```bash
 > gaia-hub@2.3.4 start /src/hub
 > npm run build && node lib/index.js
 
