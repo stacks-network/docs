@@ -71,7 +71,7 @@ Note some of the key Clarity language rules and limitations.
 
 ## Explore more
 
-For language details, references and more, check out the following:
+For language details and references, check out the following:
 
 [@page-reference | grid]
 | /write-smart-contracts/principals, /write-smart-contracts/values, /references/language-overview
