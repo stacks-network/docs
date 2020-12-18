@@ -16,7 +16,7 @@ In the world of smart contracts, everything is a blockchain transaction. You use
 
 Clarity, the smart contracting language used on the Stacks Blockchain, is based on LISP and uses its parenthesized notation. Clarity is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and [decidable](https://en.wikipedia.org/wiki/Recursive_language). To learn more basics about the language, see the [Introduction to Clarity](/write-smart-contracts/overview) topic.
 
-By the end of this tutorial, you will:
+By the end of this tutorial, you:
 
 - Have a working Clarity starter project and local dev environment
 - Understand basic Clarity language design principles
@@ -27,21 +27,21 @@ By the end of this tutorial, you will:
 
 ### Check the Stacks 2.0 status
 
-The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not running into any challenges related to the status of the network, please open up the [Status Checker](http://status.test-blockstack.com/) and confirm that all systems are operational. If some systems seem to have issues, it is best to wait until they are back up before you proceed with the next steps.
+The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not running into any challenges related to the status of the network, please open up the [Status Checker](http://status.test-blockstack.com/) and confirm that all systems are operational. If some systems seem to have issues, it's best to wait until they are back up before you proceed with the next steps.
 
-## Step 1: Open the playground
+## Step 1: open the playground
 
-To avoid setting things up on your machine, we will run all instructions inside a virtual container inside your browser window, using a project called Gitpod.
+To avoid setting things up on your machine, you can run all instructions inside a virtual container inside your browser window, using a project called Gitpod.
 
 **[Open this Gitpod in a new browser window](https://gitpod.io/#https://github.com/agraebe/clarity-onboarding-playground)**
 
-You will be asked to login with a Github account. Follow the steps described on the screen. Once completed, the code editor window will be shown:
+You are asked to login with a Github account. Follow the steps described on the screen. Once completed, the code editor window is shown:
 
 ![new gitpod](/images/pages/clarity/gitpod-new.png)
 
 The Gitpod playground comes pre-installed with the [Stacks CLI](/references/stacks-cli).
 
-## Step 2: Set up a starter project
+## Step 2: set up a starter project
 
 Using the terminal window on the bottom of the screen, run the following command to initialize a new project:
 
@@ -57,19 +57,19 @@ After the starter project is loaded up, you have to select a project template (u
   Counter
 ```
 
-Next, you'll be asked to name the folder that will be created for the project. Hit ENTER to accept the default:
+Next, you are asked to name the folder that is created for the project. Hit ENTER to accept the default:
 
 ```bash
 ? Project name: (clarity-hello-world)
 ```
 
-Wait a few seconds until all project dependencies are installed. Once completed, you will see a new folder on the left side of the screen (`clarity-hello-world`). This is where your new Clarity project can be found. Open the project folder and get familiar with the structure.
+Wait a few seconds while all project dependencies install. Once completed, you can see a new folder on the left side of the screen (`clarity-hello-world`). This is where your new Clarity project is located. Open the project folder and get familiar with the structure.
 
-## Step 3: Review the contract
+## Step 3: review the contract
 
 Inside the project folder, open the `contracts/hello-world.clar` file.
 
-You will see that the program and each statement is enclosed in `()` (parentheses), and the smart contract consists of two functions.
+You can see that the program and each statement is enclosed in `()` (parentheses), and the smart contract consists of two functions.
 
 ```clarity
 (define-public (say-hi)
@@ -81,7 +81,7 @@ You will see that the program and each statement is enclosed in `()` (parenthese
 
 On the first line, a new public function `say-hi` is declared. Public functions are callable from other smart contracts, enabling developers to break complex tasks into smaller, simpler smart contracts (an exercise in [separating concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)).
 
--> To create private functions, you would use the `define-private` keyword. Private functions can only be executed by the current smart contract. Only public functions can be called from other contracts.
+-> To create private functions, you would use the `define-private` keyword. Only the current smart contract can run private functions. Only public functions can be called from other contracts.
 
 The function doesn't take any parameters and simply returns "hello world" using the [`ok`](/references/language-functions#ok) response constructor.
 
@@ -91,9 +91,9 @@ The second function, `echo-number`, is a [read-only function](/references/langua
 
 `echo-number` uses an [`ok`](/references/language-functions#ok) response to return the value passed to the function.
 
-In the following steps, we will use this simple contract to deploy and run on the Stacks blockchain.
+In the following steps, you can use this sample contract to deploy and run on the Stacks blockchain.
 
-## Step 4: Create a Stacks account
+## Step 4: create a Stacks account
 
 The container you are using comes pre-installed with Stacks CLI. Back inside the terminal, run the following command to create a new [Stacks 2.0 account](/understand-stacks/accounts):
 
@@ -103,7 +103,7 @@ stx make_keychain -t | json_pp > cli_keychain.json
 
 This command creates a new address and saves the details in a JSON file.
 
--> The `-t` option generates an account for the [testnet](/understand-stacks/testnet). It cannot be used on the mainnet
+-> The `-t` option generates an account for the [testnet](/understand-stacks/testnet). It can't be used on the mainnet
 
 Review your new Stacks account details by opening up the file `cli_keychain.json` from the left navigation bar.
 
@@ -121,18 +121,18 @@ Review your new Stacks account details by opening up the file `cli_keychain.json
 
 -> Check out the [Stacks CLI reference](/references/stacks-cli) for more details
 
-## Step 5: Obtain testing tokens
+## Step 5: obtain testing tokens
 
-Uploading and calling smart contracts requires fees to be paid to the network to process the transactions. Let's get some testnet tokens, so we can pay the fees in the next steps.
+Uploading and calling smart contracts requires you to pay fees to the network in order to process the transactions. You need to get some testnet tokens, so you can pay the fees in the next steps.
 
-The **STX faucet** is an API endpoint we can call to request testnet tokens for the new account. In the terminal, run the following command:
+The **STX faucet** is an API endpoint you can call to request testnet tokens for the new account. In the terminal, run the following command:
 
 ```bash
 # replace <stx_address> with `address` property from your keychain
 curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/stx?address=<stx_address>" | json_pp
 ```
 
-The response will include a `txId` property. This is the transaction that was initiated to transfer funds to your Stacks address.
+The response includes a `txId` property. This is the transaction that was initiated to transfer funds to your Stacks address.
 
 ```json
 {
@@ -144,13 +144,13 @@ The response will include a `txId` property. This is the transaction that was in
 
 -> You can also review the transaction status and details using the [Explorer](https://testnet-explorer.blockstack.org/)
 
-You need to wait up to a minute for the transaction to complete. Type the following in your terminal to check the balance:
+You need to wait up to a minute for the transaction to complete. Type the following in your terminal to see the balance:
 
 ```bash
 stx balance -t <stx_address>
 ```
 
-Once the transaction is successfully processed, you can see that your new balance is `500000`, which equals 0.5 Stacks (STX) tokens.
+Once the transaction is successfully processed, you can see that your new balance is `500000`. This equals 0.5 Stacks (STX) tokens.
 
 ```json
 {
@@ -162,11 +162,11 @@ Once the transaction is successfully processed, you can see that your new balanc
 }
 ```
 
-## Step 6: Deploy the contract
+## Step 6: deploy the contract
 
 A deployed contract on the Testnet is like a cloud function (comparable to serverless functions). It allows you to execute code remotely on the Stacks 2.0 network.
 
-Let's deploy the reviewed contract file (`hello-world.clar`). Inside the terminal, run the following command:
+Now, you can deploy the reviewed contract file (`hello-world.clar`). Inside the terminal, run the following command:
 
 ```bash
 # stx deploy_contract -t <contract_file_path> <contract_name> <fee> <nonce> <privateKey>
@@ -174,27 +174,27 @@ Let's deploy the reviewed contract file (`hello-world.clar`). Inside the termina
 stx deploy_contract -t clarity-hello-world/contracts/hello-world.clar hello-world 2000 0 <privateKey>
 ```
 
-A new contract deploy transaction ID will be returned:
+A new contract deploy transaction ID is returned:
 
 ```bash
 09adc98490c9f900d3149e74322e07ff6d1bf49660a08d8104c4dc66430bc3c0
 ```
 
-The `deploy_contract` command takes the file contents and deploys a new contract with the name `hello-world`. With that name, the fully qualified contract identifier for the new account will be `STNBNMTXV9ERHEDCQA3WE2S4PTF8ANSC24EBDKS2.hello-world`.
+The `deploy_contract` command takes the file contents and deploys a new contract with the name `hello-world`. With that name, the fully qualified contract identifier for the new account is `STNBNMTXV9ERHEDCQA3WE2S4PTF8ANSC24EBDKS2.hello-world`.
 
-~> Your address will be different. The contract identifier is essentially a naming convention to address deployed contract. It is based on the dot notation: `<address>.<contract_id>`
+~> Your address is different. The contract identifier is essentially a naming convention to address deployed contract. It's based on the dot notation: `<address>.<contract_id>`
 
-Ideally, you should estimate the minimal fees that are required to be paid. The estimate would, for instance, be based on the size of the contract. For this tutorial, we will keep it simple and accept the default fee of `2000` (equals 0.02 STX).
+Ideally, you should estimate the minimal fees you need to pay. The estimate is based on the size of the contract and more. For this tutorial, you can keep it simple and accept the default fee of `2000` (equals 0.02 STX).
 
-You have to wait up to a minute for the contract to be broadcasted to the network. In the meantime, you can open the transaction with the Explorer. You will notice that every deployed smart contracts' source code is publicly verifiable.
+You have to wait up to a minute for the contract to broadcast to the network. In the meantime, you can open the transaction with the Explorer. Notice that every deployed smart contracts' source code is publicly verifiable.
 
 -> Keep in mind that this operation increases the `nonce` of your account. [Read more about nonces](/understand-stacks/network#nonces)
 
-## Step 7: Call the public method
+## Step 7: call the public method
 
-As soon as the contract is deployed, you can call one of its methods. In this example, we are calling the `echo-number` function.
+As soon as the contract deploys, you can call one of its methods. In this example, you are calling the `echo-number` function.
 
--> The method is defined as `read-only` and will return the result [without generating a new transaction](/understand-stacks/network#read-only-function-calls)
+-> This is a `read-only` method, so it returns the result [without generating a new transaction](/understand-stacks/network#read-only-function-calls)
 
 ```bash
 # stx call_read_only_contract_func -t <stx_address> <contract_name> <function_name> <fee> <nonce> <privateKey>
@@ -202,13 +202,13 @@ As soon as the contract is deployed, you can call one of its methods. In this ex
 stx call_read_only_contract_func -t <stx_address> hello-world echo-number 2000 1 <privateKey>
 ```
 
-The command will look up the contract method definition on the network, identify that it requires an input parameter, and ask you for an integer to set `val`. Enter 42 an hit ENTER.
+The command looks up the contract method definition on the network, identify that it requires an input parameter, and ask you for an integer to set `val`. Enter 42 an hit ENTER.
 
 ```bash
 42
 ```
 
-The method will now be executed on the network. Once completed, the command will respond with the value you just entered, `42`:
+The method is now executed on the network. Once completed, the command responds with the value you just entered, `42`:
 
 ```bash
 (ok 42)
