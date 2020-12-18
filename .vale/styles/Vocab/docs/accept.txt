@@ -2,3 +2,4 @@ Stacks
 Bitcoin
 STX
 BTC
+CLI
