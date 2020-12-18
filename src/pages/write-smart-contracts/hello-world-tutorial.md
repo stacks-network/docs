@@ -27,7 +27,7 @@ By the end of this tutorial, you:
 
 ### Check the Stacks 2.0 status
 
-The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not running into any challenges related to the status of the network, please open up the [Status Checker](http://status.test-blockstack.com/) and confirm that all systems are operational. If some systems seem to have issues, it's best to wait until they are back up before you proceed with the next steps.
+The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not running into any challenges related to the status of the network, please open up the [Status Checker](http://status.test-blockstack.com/) and confirm that all systems are operational. If some systems seem to have issues, it's best to wait until they're back up before you proceed with the next steps.
 
 ## Step 1: open the playground
 
@@ -35,7 +35,7 @@ To avoid setting things up on your machine, you can run all instructions inside 
 
 **[Open this Gitpod in a new browser window](https://gitpod.io/#https://github.com/agraebe/clarity-onboarding-playground)**
 
-You are asked to login with a Github account. Follow the steps described on the screen. Once completed, the code editor window is shown:
+Gitpod will require you to login with a Github account. Follow the steps described on the screen. Once completed, you can see code editor window:
 
 ![new gitpod](/images/pages/clarity/gitpod-new.png)
 
@@ -57,19 +57,19 @@ After the starter project is loaded up, you have to select a project template (u
   Counter
 ```
 
-Next, you are asked to name the folder that is created for the project. Hit ENTER to accept the default:
+Next, you need to name the project folder. Hit ENTER to accept the default:
 
 ```bash
 ? Project name: (clarity-hello-world)
 ```
 
-Wait a few seconds while all project dependencies install. Once completed, you can see a new folder on the left side of the screen (`clarity-hello-world`). This is where your new Clarity project is located. Open the project folder and get familiar with the structure.
+Wait a few seconds while all project dependencies install. Once completed, you can see a new folder on the left side of the screen (`clarity-hello-world`). This is the location of your new Clarity project. Open the project folder and get familiar with the structure.
 
 ## Step 3: review the contract
 
 Inside the project folder, open the `contracts/hello-world.clar` file.
 
-You can see that the program and each statement is enclosed in `()` (parentheses), and the smart contract consists of two functions.
+You can see that `()` (parentheses) enclose the program and each statement. The smart contract also consists of two functions:
 
 ```clarity
 (define-public (say-hi)
@@ -81,7 +81,7 @@ You can see that the program and each statement is enclosed in `()` (parentheses
 
 On the first line, a new public function `say-hi` is declared. Public functions are callable from other smart contracts, enabling developers to break complex tasks into smaller, simpler smart contracts (an exercise in [separating concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)).
 
--> To create private functions, you would use the `define-private` keyword. Only the current smart contract can run private functions. Only public functions can be called from other contracts.
+-> To create private functions, you would use the `define-private` keyword. Only the current smart contract can run private functions. Other contract can only call public functions.
 
 The function doesn't take any parameters and simply returns "hello world" using the [`ok`](/references/language-functions#ok) response constructor.
 
@@ -103,7 +103,7 @@ stx make_keychain -t | json_pp > cli_keychain.json
 
 This command creates a new address and saves the details in a JSON file.
 
--> The `-t` option generates an account for the [testnet](/understand-stacks/testnet). It can't be used on the mainnet
+-> The `-t` option generates an account for the [testnet](/understand-stacks/testnet). It can't function on the mainnet
 
 Review your new Stacks account details by opening up the file `cli_keychain.json` from the left navigation bar.
 
@@ -123,7 +123,7 @@ Review your new Stacks account details by opening up the file `cli_keychain.json
 
 ## Step 5: obtain testing tokens
 
-Uploading and calling smart contracts requires you to pay fees to the network in order to process the transactions. You need to get some testnet tokens, so you can pay the fees in the next steps.
+Uploading and calling smart contracts requires you to pay network fees to process the transactions. You need to get some testnet tokens, so you can pay the fees in the next steps.
 
 The **STX faucet** is an API endpoint you can call to request testnet tokens for the new account. In the terminal, run the following command:
 
@@ -132,7 +132,7 @@ The **STX faucet** is an API endpoint you can call to request testnet tokens for
 curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/stx?address=<stx_address>" | json_pp
 ```
 
-The response includes a `txId` property. This is the transaction that was initiated to transfer funds to your Stacks address.
+The response includes a `txId` property. This is the transaction that transfers funds to your Stacks address.
 
 ```json
 {
@@ -174,7 +174,7 @@ Now, you can deploy the reviewed contract file (`hello-world.clar`). Inside the 
 stx deploy_contract -t clarity-hello-world/contracts/hello-world.clar hello-world 2000 0 <privateKey>
 ```
 
-A new contract deploy transaction ID is returned:
+The command returns a new contract deploy transaction ID:
 
 ```bash
 09adc98490c9f900d3149e74322e07ff6d1bf49660a08d8104c4dc66430bc3c0
@@ -184,7 +184,7 @@ The `deploy_contract` command takes the file contents and deploys a new contract
 
 ~> Your address is different. The contract identifier is essentially a naming convention to address deployed contract. It's based on the dot notation: `<address>.<contract_id>`
 
-Ideally, you should estimate the minimal fees you need to pay. The estimate is based on the size of the contract and more. For this tutorial, you can keep it simple and accept the default fee of `2000` (equals 0.02 STX).
+Ideally, you should estimate the minimal fees you need to pay. Factors like the size of the contract (amopngst others) determine the estimate. For this tutorial, you can keep it simple and accept the default fee of `2000` (equals 0.02 STX).
 
 You have to wait up to a minute for the contract to broadcast to the network. In the meantime, you can open the transaction with the Explorer. Notice that every deployed smart contracts' source code is publicly verifiable.
 
