@@ -63,8 +63,8 @@ When you develop your contract in a test-driven fashion, you will aim to complet
 npm install --global @stacks/cli
 
 # deploy the contract:
-# deploy_contract <SOURCE_FILE> <CONTRACT_NAME> <FEE> <NONCE> <PAYMENT_KEY> -t -T <NETWORK_ADDRESS>
-stx deploy_contract ./counter.clar counter 2000 0 cb3df38053d132895220b9ce471f6b676db5b9bf0b4adefb55f2118ece2478df01 -t -T http://localhost:20443
+# deploy_contract <SOURCE_FILE> <CONTRACT_NAME> <FEE> <NONCE> <PAYMENT_KEY> -t -I <NETWORK_ADDRESS>
+stx deploy_contract ./counter.clar counter 2000 0 cb3df38053d132895220b9ce471f6b676db5b9bf0b4adefb55f2118ece2478df01 -t -I http://localhost:20443
 ```
 
 -> You can use one of the [default testnet keys](https://github.com/blockstack/stacks-blockchain-api/blob/e6e445b2cd1055f4bf25af7af646405783d5877e/src/api/routes/debug.ts#L36-L52) as your payment key
@@ -95,12 +95,12 @@ With all the previous services running and a working smart contract, you are rea
 ```bash
 git clone https://github.com/blockstack/blockstack-todos.git
 cd blockstack-todos
-npm install --saveDev @stacks/network@1.0.0-beta.8
+npm install --saveDev @stacks/connect @stacks/network @stacks/transactions lodash-es
 npm install
 npm run start
 ```
 
-The command will identify that port 3000 being used already (by the Explorer running inside Docker). Hit `Y` to accept using port 3001. Once the app is running, a new windoe will open up ([http://localhost:3001/](http://localhost:3001/)), displaying the homepage.
+The command will identify that port 3000 being used already (by the Explorer running inside Docker). Hit `Y` to accept using port 3001. Once the app is running, a new window will open up ([http://localhost:3001/](http://localhost:3001/)), displaying the homepage.
 
 ### Add contract calls
 
@@ -109,10 +109,11 @@ Let's add a few sample contract calls to the application! You will use the `coun
 Open the todo project with the editor of your choice. Inside the `src/components/TodoList.jsx` file, add a few more imports:
 
 ```js
-import { openContractCall } from '@blockstack/connect';
 import { Button } from '@blockstack/ui';
-import { callReadOnlyFunction, cvToString } from '@blockstack/stacks-transactions';
+import { openContractCall } from '@stacks/connect';
+import { callReadOnlyFunction, cvToString } from '@stacks/transactions';
 import { StacksMocknet } from '@stacks/network';
+import { getPerson } from '../auth';
 ```
 
 Next, add a read-only contract call method.
@@ -120,12 +121,6 @@ Next, add a read-only contract call method.
 -> Read-only contract calls do not require transactions to be created or broadcasted to the network. The read-only calls are regular API calls that return the result
 
 ```js
-...
-// const { userSession } = authOptions;
-
-// load user data from session
-const userData = userSession.loadUserData();
-
 const doReadOnlyCall = async name => {
   const opts = {
     contractAddress: 'STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6',
@@ -133,7 +128,7 @@ const doReadOnlyCall = async name => {
     functionName: name,
     functionArgs: [],
     network: new StacksMocknet(),
-    senderAddress: userData.profile.stxAddress,
+    senderAddress: getPerson().stxAddress,
   };
 
   const resp = await callReadOnlyFunction(opts);
@@ -142,7 +137,7 @@ const doReadOnlyCall = async name => {
 };
 ```
 
-Now, add a regular contract call method right below the privous code. This method will create and broadcast a new transaction to the network.
+Now, add a regular contract call method right below the previous code. This method will create and broadcast a new transaction to the network.
 
 ```js
 const doContractCall = async name => {
