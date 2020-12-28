@@ -7,6 +7,13 @@ description: Summary of technical specifications of Stacks 2.0
 
 - Proof of Transfer (PoX) as described in [SIP-007](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-007-stacking-consensus.md)
 - Network will transition to Proof of Burn (PoB) as described in [SIP-001](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md) after 10 years. More details [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md).
+- Threat model
+  - 51% of malicious Stacks mining power can perform a double-spend attack
+  - 51% of malicious Bitcoin mining power can reorg the Stacks chain
+- Different actors and their roles
+  - STX Miners: package transactions into blocks, mine them through a Bitcoin transaction, propagate them, and if they win the block race, append microblocks to their winning block until the next block is mined. The next block confirms the microblock stream.
+  - STX Holders: May alter the calculation of block limits (subject to a miner veto) and may vote to disable Proof-of-Transfer rewards for a reward cycle.
+- Transactions are considered final when the corresponding "block commit" transaction on Bitcoin is finalized. Typically this can by 3-6 confirmations.
 - For more details, see [Proof of Transfer](/understand-stacks/proof-of-transfer).
 
 ## Proof of Transfer Mining
@@ -26,7 +33,7 @@ description: Summary of technical specifications of Stacks 2.0
 ## Stacking
 
 - Stacking works in 2 phases
-  1. Prepare phase: In this phase an "anchor block" is chosen. The qualifying set of addresses ("reward set") is determined based on the snapshot of the chain at the anchor block. Length of prepare phase is 250 blocks (overlaps with reward cycle of the previous phase).
+  1. Prepare phase: In this phase an "anchor block" is chosen. The qualifying set of addresses ("reward set") is determined based on the snapshot of the chain at the anchor block. Length of prepare phase is 100 blocks (overlaps with reward cycle of the previous phase).
   2. Reward phase: In this phase miner BTC commitments are distributed amongst the reward set. Reward cycle length is 2000 BTC blocks (~2 weeks).
 - Two reward addresses / block, for a total of 4000 addresses every reward cycle. The addresses are chosen using a VRF (verifiable random function), so each node can deterministically arrive at the same reward addresses for a given block.
 - Stacking threshold: 0.025% of the participating amount of STX when participation is between 25% and 100% and when participation is below 25%, the threshold level is always 0.00625 of the liquid supply of STX.
@@ -57,4 +64,5 @@ description: Summary of technical specifications of Stacks 2.0
 - For sponsored authorization, first a user signs with the originating account and then a sponsor signs with the paying account.
 - Transaction encoding is described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-encoding) and [here](/understand-stacks/transactions#encoding)
 - Transaction signing and verification are described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying) and [here](/understand-stacks/transactions#signature-and-verification)
+- All transactions impacting account balance are atomic — a transfer operation could not increment one account’s balance without decrementing another’s. However, transactions that perform multiple account actions (e.g., transferring from multiple accounts) may partially complete.
 - Further reading: [Transactions](/understand-stacks/transactions)
