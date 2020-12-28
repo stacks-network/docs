@@ -11,8 +11,8 @@ description: Summary of technical specifications of Stacks 2.0
   - 51% of malicious Stacks mining power can perform a double-spend attack
   - 51% of malicious Bitcoin mining power can reorg the Stacks chain
 - Different actors and their roles
-  - STX Miners: package transactions into blocks, mine them through a Bitcoin transaction, propagate them, and if they win the block race, append microblocks to their winning block until the next block is mined. The next block confirms the microblock stream.
-  - STX Holders: May alter the calculation of block limits (subject to a miner veto) and may vote to disable Proof-of-Transfer rewards for a reward cycle.
+  - Stacks Miners package transactions into blocks, mine them through a Bitcoin transaction, propagate them, and if they win the block race, append microblocks to their winning block until the next block is mined. The next block confirms the microblock stream.
+  - Stacks Holders may alter the calculation of block limits (subject to a miner veto) and may vote to disable Proof-of-Transfer rewards for a reward cycle.
 - Transactions are considered final when the corresponding "block commit" transaction on Bitcoin is finalized. Typically this can by 3-6 confirmations.
 - For more details, see [Proof of Transfer](/understand-stacks/proof-of-transfer).
 
@@ -64,5 +64,5 @@ description: Summary of technical specifications of Stacks 2.0
 - For sponsored authorization, first a user signs with the originating account and then a sponsor signs with the paying account.
 - Transaction encoding is described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-encoding) and [here](/understand-stacks/transactions#encoding)
 - Transaction signing and verification are described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying) and [here](/understand-stacks/transactions#signature-and-verification)
-- All transactions impacting account balance are atomic — a transfer operation could not increment one account’s balance without decrementing another’s. However, transactions that perform multiple account actions (e.g., transferring from multiple accounts) may partially complete.
+- All transactions impacting account balance are atomic, a transfer operation can not increment one account’s balance without decrementing another’s. However, transactions that perform multiple account actions (for example, transferring from multiple accounts) may partially complete.
 - Further reading: [Transactions](/understand-stacks/transactions)
