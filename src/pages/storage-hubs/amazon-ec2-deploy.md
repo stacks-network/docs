@@ -538,7 +538,7 @@ This procedures requires you to interact from a workstation command line with yo
    For example:
 
    ```
-   $ ssh -t -i /Users/manthony/gaia.pem -A core@34.219.71.143 "sudo systemctl restart gaia.service"
+   ssh -t -i /Users/manthony/gaia.pem -A core@34.219.71.143 "sudo systemctl restart gaia.service"
    Connection to 34.219.71.143 closed.
    ```
 
@@ -557,7 +557,7 @@ This procedures requires you to interact from a workstation command line with yo
    For example:
 
    ```
-   $ ssh -t -i /Users/manthony/gaia.pem -A core@34.219.71.143 "sudo systemctl restart reset-ssl-certs.service"
+   ssh -t -i /Users/manthony/gaia.pem -A core@34.219.71.143 "sudo systemctl restart reset-ssl-certs.service"
    Connection to 34.219.71.143 closed.
    ```
 

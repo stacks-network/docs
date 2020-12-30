@@ -22,19 +22,22 @@ First, you'll need to understand the [Stacking mechanism](/stacks-blockchain/sta
 You'll also need [NodeJS](https://nodejs.org/en/download/) `12.10.0` or higher to complete this tutorial. You can verify your installation by opening up your terminal and run the following command:
 
 ```bash
-$ node --version
+node --version
 ```
 
 You will also need to install the Stacks CLI from NPM:
 
 ```bash
-$ npm install @stacks/cli -g
+npm install @stacks/cli -g
 ```
 
 ## Generate An Account
 
 ```bash
-$ stx make_keychain -t
+stx make_keychain -t
+```
+
+```json
 {
   "mnemonic": "turn food juice small swing junior trip crouch slot wood nephew own tourist hazard tomato follow trust just project traffic spirit oil diary blue",
   "keyInfo": {
@@ -62,7 +65,7 @@ curl -X POST https://stacks-node-api.xenon.blockstack.org/extended/v1/faucets/st
 
 ## Check Balance
 
-Confirm that the faucet transaction has completed by checking the balance of your address. The `-t` flag is used to indicate testnet. See the [CLI reference](references/blockstack-cli) for usage of flags.
+Confirm that the faucet transaction has completed by checking the balance of your address. The `-t` flag is used to indicate testnet. See the [CLI reference](/references/stacks-cli) for usage of flags.
 
 ```bash
 stx balance ST1P3HXR80TKT48TKM2VTKCDBS4ET9396W0W2S3K8 -t

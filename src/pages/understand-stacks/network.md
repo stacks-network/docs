@@ -76,7 +76,7 @@ The API will respond with the block time (in seconds):
 
 Smart contracts can expose public function calls. For functions that make state modifications to the blockchain, transactions need to be generated and broadcasted.
 
-However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](/references/stacks-blockchain-api).
+However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api).
 
 -> Read-only function calls do not require transaction fees
 
@@ -104,7 +104,7 @@ Sample response for a successful call:
 
 ## Querying
 
-Stacks 2.0 network details can be queried using the [Stacks Blockchain API](/references/stacks-blockchain-api) and the [status checker](http://status.test-blockstack.com/).
+Stacks 2.0 network details can be queried using the [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api) and the [status checker](http://status.test-blockstack.com/).
 
 ### Health check
 
