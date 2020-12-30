@@ -12,7 +12,7 @@ images:
 
 ## Introduction
 
-The [Stacks Blockchain API](/references/stacks-blockchain-api) is an API that helps app developers to view and use the state of the Stacks 2.0 Blockchain.
+The [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api) is an API that helps app developers to view and use the state of the Stacks 2.0 Blockchain.
 
 In this tutorial you will extend a to-do app to share individual lists publicly using the Stacks 2.0 blockchain. The to-do app was built in the [to-do app tutorial](/authentication/building-todo-app). The registry of shared to-do lists is implemented by a Clarity smart contract named [`todo-registry`](https://github.com/friedger/blockstack-todos/blob/tut/public-registry/contracts/todo-registry.clar). Data from this contract will be shown in the to-do app. The final app will look like this:
 

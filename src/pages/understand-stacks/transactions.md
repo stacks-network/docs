@@ -275,7 +275,7 @@ A well-formed transaction construct is encoded in [Recursive Length Prefix ("RLP
 
 In order to broadcast transactions to and between nodes on the network, RLP data is represented in hexadecimal string (also called the **raw format**).
 
-To support an API-friendly and human-readable representation, the [Stacks Blockchain API](/references/stacks-blockchain-api) converts transactions into a JSON format.
+To support an API-friendly and human-readable representation, the [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api) converts transactions into a JSON format.
 
 => [The Stacks Transactions JS library](https://github.com/blockstack/stacks.js) supports serialization of transactions.
 
@@ -404,7 +404,7 @@ There is no explicit time constraint between the construction of a valid signed 
 
 ## Querying
 
-Transactions on the Stacks 2.0 network can be queried using the [Stacks Blockchain API](/references/stacks-blockchain-api). The API exposes two interfaces, a RESTful JSON API and a WebSockets API.
+Transactions on the Stacks 2.0 network can be queried using the [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api). The API exposes two interfaces, a RESTful JSON API and a WebSockets API.
 
 For convenience, a Postman Collection was created and published: [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/614feab5c108d292bffa)
 
