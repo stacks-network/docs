@@ -1,19 +1,17 @@
 ---
-title: Running a testnet node
-description: Learn how to set up and run a testnet node
-icon: TestnetIcon
+title: Running a mainnet node
+description: Learn how to set up and run a mainnet node
+icon: MainnetIcon
 duration: 15 minutes
 experience: beginners
 tags:
   - tutorial
 images:
-  large: /images/pages/testnet.svg
-  sm: /images/pages/testnet-sm.svg
+  large: /images/pages/mainnet.svg
+  sm: /images/pages/mainnet-sm.svg
 ---
 
 ## Introduction
-
--> Note: The Stacks 2.0 testnet is currently in development. As part of the testnet, you can run a node and connect it to a public network.
 
 This tutorial will walk you through the following steps:
 
@@ -67,17 +65,17 @@ source $HOME/.cargo/env
 
 Download and unzip the distributable which cooresponds to your environment [from the latest release](https://github.com/blockstack/stacks-blockchain/releases/latest).
 
-If you're running on Windows, [please follow our instructions from installing a node on Windows.](#running-the-testnet-node-on-windows)
+If you're running on Windows, [please follow our instructions from installing a node on Windows.](#running-the-mainnet-node-on-windows)
 
 ### Step 2: Run the binary
 
 To run the `stacks-node` binary, execute the following:
 
 ```bash
-./stacks-node xenon
+./stacks-node mainnet
 ```
 
-**Awesome. Your node is now connected to the testnet network.**
+**Awesome. Your node is now connected to the mainnet network.**
 
 Your node will receive new blocks when they are produced, and you can use the [Stacks Node RPC API](/understand-stacks/stacks-blockchain-api#proxied-stacks-node-rpc-api-endpoints) to send transactions, fetch information for contracts and accounts, and more.
 
@@ -111,18 +109,18 @@ cargo build --workspace --bin stacks-node
 
 ### Step 2: Run the node
 
-You're all set to run a node that connects to the testnet network.
+You're all set to run a node that connects to the mainnet network.
 
 If installed without debugging symbols, run:
 
 ```bash
-target/release/stacks-node xenon
+target/release/stacks-node mainnet
 ```
 
 If installed with debugging symbols, run:
 
 ```bash
-target/debug/stacks-node xenon
+target/debug/stacks-node mainnet
 ```
 
 The first time you run this, you'll see some logs indicating that the Rust code is being compiled. Once that's done, you should see some logs that look something like the this:
@@ -131,7 +129,7 @@ The first time you run this, you'll see some logs indicating that the Rust code 
 INFO [1588108047.585] [src/chainstate/stacks/index/marf.rs:732] First-ever block 0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206
 ```
 
-## Running the testnet node on Windows
+## Running the mainnet node on Windows
 
 ### Prerequisites
 
@@ -163,8 +161,8 @@ Next, click on save file and Press **Ok** in the popup window.
 Once saved, Extract the binary. Open the command prompt **from the folder where binary is extracted** and execute the below command:
 
 ```bash
-stacks-node xenon
-# This command will start the testnet follower node.
+stacks-node mainnet
+# This command will start the mainnet follower node.
 ```
 
 -> **Note** : While starting the node for the first time, windows defender will pop up with a message to allow access. If so, allow access to run the node.
@@ -175,7 +173,7 @@ To execute Stacks node with extra debugging enabled, run:
 ```bash
 set RUST_BACKTRACE=full
 set BLOCKSTACK_DEBUG=1
-stacks-node xenon
+stacks-node mainnet
 # This command will execute the binary and start the follower node with debug enabled.
 ```
 
@@ -185,7 +183,7 @@ The first time you run this, you'll see some logs indicating that the Rust code 
 INFO [1588108047.585] [src/chainstate/stacks/index/marf.rs:732] First-ever block 0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206
 ```
 
-**Awesome. Your node is now connected to the testnet network.**
+**Awesome. Your node is now connected to the mainnet network.**
 
 ## Optional: Running with Docker
 
@@ -199,7 +197,7 @@ docker run -d \
   -p 20443:20443 \
   -p 20444:20444 \
   blockstack/stacks-blockchain \
-  stacks-node xenon
+  stacks-node mainnet
 ```
 
 -> To enable debug logging, add the ENV VARS `RUST_BACKTRACE="full"` and `BLOCKSTACK_DEBUG="1"`.
@@ -212,7 +210,7 @@ docker logs -f stacks_follower
 
 ## Optional: Running in Kubernetes with Helm
 
-In addition, you're also able to run a testnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
+In addition, you're also able to run a mainnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
 
 Ensure you have the following prerequisites installed on your machine:
 
@@ -238,7 +236,7 @@ For more information on the Helm chart and configuration options, please refer t
 
 ## Optional: Mining Stacks token
 
-Now that you have a running testnet node, you can easily set up a miner.
+Now that you have a running mainnet node, you can easily set up a miner.
 
 [@page-reference | inline]
 | /start-mining

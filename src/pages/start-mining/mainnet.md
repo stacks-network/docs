@@ -1,7 +1,7 @@
 ---
-title: Mine Stacks tokens
-description: Set up and run a miner on the Stacks 2.0 testnet
-icon: TestnetIcon
+title: Mine mainnet Stacks tokens
+description: Set up and run a miner on the Stacks 2.0 mainnet
+icon: MainnetIcon
 experience: beginners
 duration: 10 minutes
 tags:
@@ -13,10 +13,15 @@ images:
 
 ## Introduction
 
-Make sure you've followed the [Running testnet node](/understand-stacks/running-testnet-node) tutorial. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
+Make sure you've followed the [Running mainnet node](/understand-stacks/running-mainnet-node) tutorial. Once completed it's only a few more steps to run a proof-of-burn miner on the mainnet.
 
 [@page-reference | inline]
-| /understand-stacks/running-testnet-node
+| /understand-stacks/running-mainnet-node
+
+If you're interested in mining on the testnet, you can find instructions on how to do that here:
+
+[@page-reference | inline]
+| /start-mining/testnet
 
 If you want to learn more about the technical details of mining, please review the mining guide:
 
@@ -25,7 +30,7 @@ If you want to learn more about the technical details of mining, please review t
 
 ## Running bitcoind locally
 
-To participate as a miner on Xenon, you must have access to a testnet bitcoin node. One way to accomplish this is to run bitcoind locally. You'll need a computer with ~10-GB disk space.
+To participate as a miner on mainnet, you must have access to a mainnet bitcoin node. One way to accomplish this is to run bitcoind locally. [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements)
 
 First, download the bitcoind software for your platform from https://bitcoin.org/en/download.
 
@@ -35,17 +40,14 @@ Next, start bitcoind with the following configuration:
 server=1
 rpcuser=your-bitcoind-username
 rpcpassword=your-bitcoind-password
-testnet=1
 txindex=0
 listen=1
 rpcserialversion=0
 maxorphantx=1
 banscore=1
-
-[test]
-bind=0.0.0.0:18333
-rpcbind=0.0.0.0:18332
-rpcport=18332
+bind=0.0.0.0:8333
+rpcbind=0.0.0.0:8332
+rpcport=8332
 ```
 
 Finally, start bitcoind as follows:
@@ -54,16 +56,16 @@ Finally, start bitcoind as follows:
 bitcoind -conf=path/to/bitcoin.conf
 ```
 
-It will take a few hours for the node to synchronize with the Bitcoin testnet -- be patient!
+It may take a few days for the node to synchronize with the Bitcoin mainnet.
 
 ## Running a miner
 
-First, we need to generate a keychain. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
+First, a keychain needs to be generated. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining.
 
-To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `make_keychain` command, and pass `-t` to indicate that we want a testnet keychain.
+To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `make_keychain` command.
 
 ```bash
-npx @stacks/cli make_keychain -t 2>/dev/null
+npx @stacks/cli make_keychain 2>/dev/null
 ```
 
 After this runs, you'll probably see some installation logs, and at the end you should see some JSON that looks like this:
@@ -82,15 +84,15 @@ After this runs, you'll probably see some installation logs, and at the end you 
 
 **Don't lose this information** - we'll need to use the `privateKey` field later on.
 
-The above BTC address will then need to be imported into the BTC testnet network.
+The above BTC address will then need to be imported into the BTC network.
 
 ```bash
-bitcoin-cli -rpcport=18332 -rpcuser=your-user -rpcpassword=your-password importaddress <btcAddress from JSON above>
+bitcoin-cli -rpcport=8332 -rpcuser=your-user -rpcpassword=your-password importaddress <btcAddress from JSON above>
 ```
 
-Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address.
+Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
-Now, we need to configure our node to use this Bitcoin keychain. In the `stacks-blockchain` folder, create a new file called `testnet/stacks-node/conf/testnet-miner-conf.toml`.
+Now, we need to configure our node to use this Bitcoin keychain. In the `stacks-blockchain` folder, create a new file called `mainnet-miner-conf.toml`.
 
 Paste in the following configuration:
 
@@ -98,36 +100,19 @@ Paste in the following configuration:
 [node]
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
 # Enter your private key here
 seed = "replace-with-your-private-key"
 miner = true
 
 [burnchain]
 chain = "bitcoin"
-mode = "xenon" # if connecting to Krypton, set this to "krypton"
-# To mine on Xenon, you need to run bitcoind locally
-# Details can be found in above section, 'Running bitcoind locally'
-# For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and
-# omit `username` and `password`
+mode = "mainnet"
+# peer_host should point to your local bitcoind node
 peer_host = "127.0.0.1"
 username = "your-bitcoind-username"
 password = "your-bitcoind-password"
-rpc_port = 18332
-peer_port = 18333
-
-[[ustx_balance]]
-address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
-amount = 10000000000000000
+rpc_port = 8332
+peer_port = 8333
 ```
 
 Now, grab your `privateKey` from earlier, when you ran the `make_keychain` command. Replace the `seed` field with your private key. Save and close this configuration file.
@@ -135,7 +120,7 @@ Now, grab your `privateKey` from earlier, when you ran the `make_keychain` comma
 To run your miner, run this in the command line:
 
 ```bash
-stacks-node start --config=./testnet/stacks-node/conf/testnet-miner-conf.toml
+stacks-node start --config=./mainnet-miner-conf.toml
 ```
 
 Your node should start. It will take some time to sync, and then your miner will be running.
@@ -153,7 +138,7 @@ The above code will compile an optimized binary. To use it, run:
 
 ```bash
 cd ../..
-./target/release/stacks-node start --config=./testnet/conf/xenon-follower-conf.toml
+./target/release/stacks-node start --config=./mainnet-miner-conf.toml
 ```
 
 For a full reference of subcommands and configuration options used by `stacks-node`, please see this page.
@@ -171,26 +156,26 @@ To read more about the technical details of mining on the Stacks 2.0 network, ha
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
 
 ```bash
-BLOCKSTACK_DEBUG=1 stacks-node xenon
+BLOCKSTACK_DEBUG=1 stacks-node mainnet
 ```
 
 ## Running a miner in Windows
 
 ### Prerequisites
 
-Make sure you've followed the [Running the testnet node on Windows](/understand-stacks/running-testnet-node#running-the-testnet-node-on-windows) tutorial before starting this tutorial.
+Make sure you've followed the [Running the mainnet node on Windows](/understand-stacks/running-mainnet-node#running-the-mainnet-node-on-windows) tutorial and [Running itcoind locally](#running-bitcoind-locally) section above before starting this tutorial.
 
-### Generate keychain and get testnet tokens in Windows
+### Generate keychain and get mainnet tokens in Windows
 
-To setup the miner, first, we need to generate a keychain. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
+To setup the miner, first we need to generate a keychain. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining.
 
-To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command, and pass `-t` to indicate that we want a testnet keychain.
+To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command.
 
 Generate a keychain:
 
 ```bash
 npm install --global @stacks/cli
-stx make_keychain -t > cli_keychain.json
+stx make_keychain > cli_keychain.json
 type cli_keychain.json
 ```
 
@@ -210,13 +195,17 @@ After this runs, you'll probably see some installation logs, and at the end you 
 
 -> Check out the [Stacks CLI reference](/references/stacks-cli) for more details
 
-Request BTC from faucet:
+The above BTC address will then need to be imported into the BTC network.
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+```bash
+bitcoin-cli -rpcport=8332 -rpcuser=your-user -rpcpassword=your-password importaddress <btcAddress from JSON above>
+```
+
+Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
 ### Create configuration file
 
-Now, we need to configure our node to use this Bitcoin keychain. In the **folder where your binary is extracted**, create a new file called `testnet-miner-conf.toml`.
+Now, we need to configure our node to use this Bitcoin keychain. In the **folder where your binary is extracted**, create a new file called `mainnet-miner-conf.toml`.
 
 Paste in the following configuration:
 
@@ -224,36 +213,19 @@ Paste in the following configuration:
 [node]
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
 # Enter your private key here
 seed = "replace-with-your-private-key"
 miner = true
 
 [burnchain]
 chain = "bitcoin"
-mode = "xenon" # if connecting to Krypton, set this to "krypton"
-# To mine on Xenon, you need to run bitcoind locally
-# Details can be found in above section, 'Running bitcoind locally'
-# For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and
-# omit `username` and `password`
+mode = "mainnet"
+# peer_host should point to your local bitcoind node
 peer_host = "127.0.0.1"
 username = "your-bitcoind-username"
 password = "your-bitcoind-password"
-rpc_port = 18332
-peer_port = 18333
-
-[[ustx_balance]]
-address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
-amount = 10000000000000000
+rpc_port = 8332
+peer_port = 8333
 ```
 
 Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` command. Replace the seed field with your private key. Save and close this configuration file.
@@ -263,7 +235,7 @@ Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` c
 To start your miner, run this in the command line:
 
 ```bash
-stacks-node start --config=testnet-miner-conf.toml
+stacks-node start --config=mainnet-miner-conf.toml
 ```
 
 -> **Note** : While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
@@ -278,24 +250,24 @@ In case you are running into issues or would like to see verbose logging, you ca
 ```bash
 set RUST_BACKTRACE=full;
 set BLOCKSTACK_DEBUG=1;
-stacks-node start --config=testnet-miner-conf.toml
+stacks-node start --config=mainnet-miner-conf.toml
 ```
 
 ## Optional: Running with Docker
 
-Alternatively, you can run the testnet node with Docker.
+Alternatively, you can run the mainnet node with Docker.
 
 -> Ensure you have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
 
-### Generate keychain and get testnet tokens
+### Generate keychain and get tokens
 
 Generate a keychain:
 
 ```bash
-docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
+docker run -i node:14-alpine npx @stacks/cli make_keychain 2>/dev/null
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+We need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
 ### Create a config file directory
 
@@ -311,41 +283,22 @@ Inside the new `$HOME/stacks` folder, you should create a new miner config `Conf
 
 ```toml
 [node]
-working_dir = "/root/stacks-node/current"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
 # Enter your private key here
-seed = "replace-with-your-privateKey-from-generate-keychain-step"
+seed = "replace-with-your-private-key"
 miner = true
 
 [burnchain]
 chain = "bitcoin"
-mode = "xenon" # if connecting to Krypton, set this to "krypton"
-# To mine on Xenon, you need to run bitcoind locally
-# Details can be found in above section, 'Running bitcoind locally'
-# For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and
-# omit `username` and `password`
+mode = "mainnet"
+# peer_host should point to your local bitcoind node
 peer_host = "127.0.0.1"
 username = "your-bitcoind-username"
 password = "your-bitcoind-password"
-rpc_port = 18332
-peer_port = 18333
-
-[[ustx_balance]]
-address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
-amount = 10000000000000000
+rpc_port = 8332
+peer_port = 8333
 ```
-
--> Notice that this configuration differs from the one used to run the miner locally
 
 ### Start the miner
 
@@ -373,7 +326,7 @@ docker logs -f stacks_miner
 
 ## Optional: Running in Kubernetes with Helm
 
-In addition, you're also able to run a testnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
+In addition, you're also able to run a mainnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
 
 Ensure you have the following prerequisites installed on your machine:
 
@@ -382,15 +335,15 @@ Ensure you have the following prerequisites installed on your machine:
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - [helm](https://helm.sh/docs/intro/install/)
 
-### Generate keychain and get some testnet tokens
+### Generate keychain and get some tokens
 
 Generate a keychain:
 
 ```bash
-docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
+docker run -i node:14-alpine npx @stacks/cli make_keychain 2>/dev/null
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+We need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
 ### Install the chart and run the miner
 
@@ -401,7 +354,8 @@ minikube start # Only run this if standing up a local Kubernetes cluster
 helm repo add blockstack https://charts.blockstack.xyz
 helm install my-release blockstack/stacks-blockchain \
   --set config.node.miner=true \
-  --set config.node.seed="replace-with-your-privateKey-from-generate-keychain-step"
+  --set config.node.seed="replace-with-your-privateKey-from-generate-keychain-step" \
+  --set config.burnchain.mode="mainnet"
 ```
 
 You can review the node logs with this command:
