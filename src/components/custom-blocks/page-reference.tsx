@@ -244,6 +244,12 @@ const getIcon = (icon: string) => {
           <SitemapIcon size="24px" color={color('bg')} />
         </Grid>
       );
+    case 'MainnetIcon':
+      return (p: BoxProps) => (
+        <Grid borderRadius="6px" style={{ placeItems: 'center' }} bg="#9985FF" size="32px" {...p}>
+          <SitemapIcon size="24px" color={color('bg')} />
+        </Grid>
+      );
     default:
       return (p: BoxProps) => <BlockstackLogo size="32px" color={color('accent')} {...p} />;
   }
