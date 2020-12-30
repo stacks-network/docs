@@ -605,7 +605,7 @@ async function redirects() {
     },
     {
       source: '/mining',
-      destination: '/start-mining',
+      destination: '/start-mining/mainnet',
       permanent: true,
     },
     {

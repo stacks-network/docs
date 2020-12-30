@@ -1,0 +1,18 @@
+<svg width="65" height="65" xmlns="http://www.w3.org/2000/svg">
+ <mask height="65" width="65" y="0" x="0" maskUnits="userSpaceOnUse" id="mask0">
+  <rect id="svg_1" fill="#F0F0F5" height="64" width="64" y="0.36813" x="0.97095"/>
+ </mask>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="602" width="802" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_2" mask="url(#mask0)">
+   <rect id="svg_3" fill="#9985FF" height="64" width="64" y="0.36813" x="0.97095"/>
+   <ellipse id="svg_5" fill="white" transform="matrix(1,0,0,-1,32.7286,32.0683) " ry="10.7381" rx="10.6667"/>
+   <ellipse opacity="0.64" ry="16.74972" rx="16" id="svg_6" cy="32.5" cx="32.5" stroke-width="null" fill="white"/>
+  </g>
+ </g>
+</svg>
