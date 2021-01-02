@@ -18,7 +18,7 @@ Make sure you've followed the [Running testnet node](/understand-stacks/running-
 [@page-reference | inline]
 | /understand-stacks/running-testnet-node
 
-If you want to learn more about the technical details of minig, please review the mining guide:
+If you want to learn more about the technical details of mining, please review the mining guide:
 
 [@page-reference | inline]
 | /understand-stacks/mining
