@@ -223,6 +223,12 @@ Example:
 mine_microblocks = true
 ```
 
+#### microblock_frequency (optional)
+
+#### max_microblocks (optional)
+
+#### pox_sync_sample_secs (optional)
+
 #### prometheus_bind (optional)
 
 Address and port stacks-node should open for Prometheus metrics collection.
@@ -232,6 +238,26 @@ Example:
 ```toml
 prometheus_bind = "0.0.0.0:9153"
 ```
+
+#### deny_nodes (optional)
+
+List of nodes that must not be added to neighbors
+
+Example:
+
+```toml
+deny_nodes = ???
+```
+
+#### use_test_genesis_chainstate (optional)
+Boolean flag to indicate to use a small genesis block, e.g for testing purposes or on mocknet
+
+Example:
+
+```toml
+use_test_genesis_chainstate = true
+```
+
 
 ### Section: events_observer (optional)
 
