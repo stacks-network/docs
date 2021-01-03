@@ -104,7 +104,11 @@ miner = true
 
 [burnchain]
 chain = "bitcoin"
-mode = "xenon"
+mode = "xenon" # if connecting to Krypton, set this to "krypton"
+# To mine on Xenon, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
+# For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and
+# omit `username` and `password`
 peer_host = "127.0.0.1"
 rpc_port = 18332
 peer_port = 18333
