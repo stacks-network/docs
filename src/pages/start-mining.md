@@ -18,7 +18,7 @@ Make sure you've followed the [Running testnet node](/understand-stacks/running-
 [@page-reference | inline]
 | /understand-stacks/running-testnet-node
 
-If you want to learn more about the technical details of minig, please review the mining guide:
+If you want to learn more about the technical details of mining, please review the mining guide:
 
 [@page-reference | inline]
 | /understand-stacks/mining
@@ -27,7 +27,7 @@ If you want to learn more about the technical details of minig, please review th
 
 To participate as a miner on Xenon, you must have access to a testnet bitcoin node. One way to accomplish this is to run bitcoind locally. You'll need a computer with ~10-GB disk space.
 
-First, download the bitcoind software for your platform from https://bitcoin.org/en/download.
+First, download the bitcoind software for your platform from <https://bitcoin.org/en/download>.
 
 Next, start bitcoind with the following configuration:
 
@@ -98,8 +98,8 @@ Paste in the following configuration:
 [node]
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-seed = "<YOUR_SEED>"
-local_peer_seed = "<YOUR_SEED>"
+bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
+seed = "replace-with-your-private-key"
 miner = true
 bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
 
