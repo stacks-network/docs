@@ -110,10 +110,10 @@ mode = "xenon" # if connecting to Krypton, set this to "krypton"
 # For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and
 # omit `username` and `password`
 peer_host = "127.0.0.1"
+username = "your-bitcoind-username"
+password = "your-bitcoind-password"
 rpc_port = 18332
 peer_port = 18333
-username = "xenon"
-password = "password"
 
 [[ustx_balance]]
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
