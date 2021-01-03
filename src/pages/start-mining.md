@@ -98,16 +98,16 @@ Paste in the following configuration:
 [node]
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
+bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
 seed = "replace-with-your-private-key"
 miner = true
-bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
 
 [burnchain]
 chain = "bitcoin"
-mode = "xenon" # if connecting to Krypton, set this to "krypton" 
-# To mine on Xenon, you need to run bitcoind locally 
-# Details can be found in above section, 'Running bitcoind locally' 
-# For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and 
+mode = "xenon" # if connecting to Krypton, set this to "krypton"
+# To mine on Xenon, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
+# For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and
 # omit `username` and `password`
 peer_host = "127.0.0.1"
 username = "your-bitcoind-username"
