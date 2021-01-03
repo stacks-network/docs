@@ -104,8 +104,7 @@ bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d77769
 
 [burnchain]
 chain = "bitcoin"
-mode = "xenon"
-# if connecting to Krypton, set this to "krypton" mode = "xenon"
+mode = "xenon" # if connecting to Krypton, set this to "krypton" 
 # To mine on Xenon, you need to run bitcoind locally 
 # Details can be found in above section, 'Running bitcoind locally' 
 # For Krypton, set peer_host to `bitcoind.krypton.blockstack.org` and 
