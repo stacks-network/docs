@@ -15,7 +15,7 @@ STX amounts should be stored as integers (8 bytes long), and represent the amoun
 
 ## Fees
 
-Fees are used to incentivize miners to confirm transactions on the Stacks 2.0 blockchain. The fee is calculated based on the estimate fee rate and the size of the [raw transaction](http://localhost:3000/understand-stacks/transactions#serialization) in bytes. The fee rate is a market determined variable. For the [testnet](/understand-stacks/testnet), it is set to 1 micro-STX.
+Fees are used to incentivize miners to confirm transactions on the Stacks 2.0 blockchain. The fee is calculated based on the estimate fee rate and the size of the [raw transaction](/understand-stacks/transactions#serialization) in bytes. The fee rate is a market determined variable. For the [testnet](/understand-stacks/testnet), it is set to 1 micro-STX.
 
 Fee estimates can obtained through the [`GET /v2/fees/transfer`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_fee_transfer) endpoint:
 
@@ -103,7 +103,7 @@ Sample response for a successful call:
 }
 ```
 
--> To set the function call arguments and read the result, [Clarity values](http://localhost:3000/understand-stacks/transactions#clarity-value-types) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library supports these operations
+-> To set the function call arguments and read the result, [Clarity values](/understand-stacks/transactions#clarity-value-types) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library supports these operations
 
 ## Querying
 
