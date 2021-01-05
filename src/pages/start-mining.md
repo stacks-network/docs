@@ -47,6 +47,7 @@ bind=0.0.0.0:18333
 rpcbind=0.0.0.0:18332
 rpcport=18332
 ```
+
 Finally, start bitcoind as follows:
 
 ```bash
