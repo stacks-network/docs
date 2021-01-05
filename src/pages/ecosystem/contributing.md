@@ -148,11 +148,9 @@ sections:
               - path: /hello-world-tutorial
               - path: /counter-tutorial
               - path: /testing-contracts
-              - path: /public-registry-tutorial
-              - path: /signing-transactions
       - path: /mining # is an overview page
 
-  - title: Technology
+  - title: Technology ## NEEDS UPDATE ONCE STABLE
     pages:
       - path: /authentication
         pages:

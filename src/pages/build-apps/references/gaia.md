@@ -1,6 +1,6 @@
 ---
-title: A decentralized storage architecture
-description: Storing user data with Stacks
+title: Gaia
+description: Decentralized storage architecture for off-chain data
 images:
   large: /images/pages/data-storage.svg
   sm: /images/pages/data-storage-sm.svg
@@ -8,11 +8,13 @@ images:
 
 ## Introduction
 
-The Stacks Network stores application data using a storage system called
-Gaia. Transactional metadata is stored on the Stacks blockchain and user
-application data is stored in Gaia storage. Storing data off of the blockchain
-ensures that Stacks applications can provide users with high performance and
-high availability for data reads and writes without introducing central trust
+Apps built with the Stacks blockchain store off-chain data using a storage system called
+Gaia.
+
+Whereas public transactional metadata is best stored on the Stacks blockchain, user
+application data can often be stored more efficiently and privately in Gaia storage.
+
+Storing data off of the blockchain ensures that Stacks applications can provide users with high performance and high availability for data reads and writes without introducing central trust
 parties.
 
 ## Understand Gaia in the Stacks architecture
@@ -63,7 +65,13 @@ Applications writing directly on behalf of `alice.id` do not need to perform a l
 
 A Gaia hub stores the written data _exactly_ as given. It offers minimal guarantees about the data. It does not ensure that data is validly formatted, contains valid signatures, or is encrypted. Rather, the design philosophy is that these concerns are client-side concerns.
 
-Client libraries (such as `Stacks.js`) are capable of providing these guarantees. Blockstack used a liberal definition of the [end-to-end principle](https://en.wikipedia.org/wiki/End-to-end_principle) to guide this design decision.
+Client libraries (such as `Stacks.js`) are capable of providing these guarantees. A liberal definition of the [end-to-end principle](https://en.wikipedia.org/wiki/End-to-end_principle) guides this design decision.
+
+When an application writes to a Gaia hub, an authentication token, key, and the data are passed to the Gaia hub.
+
+![Gaia writes](/images/gaia-writes.png)
+
+The token ensures the app has the authorization to write to the hub on the user's behalf.
 
 ## Gaia versus other storage systems
 

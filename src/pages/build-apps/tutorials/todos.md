@@ -1,6 +1,6 @@
 ---
-title: Building a Todo app
-description: Learn how to integrate authentication and data storage with React.
+title: Todos app
+description: Review authentication and data storage integration
 experience: beginners
 duration: 30 minutes
 tags:
@@ -9,8 +9,6 @@ images:
   large: /images/pages/todo-app.svg
   sm: /images/pages/todo-app-sm.svg
 ---
-
-# Learn from a todos app built with Stacks
 
 ![What you'll be studying in this tutorial](/images/todos/home.png)
 

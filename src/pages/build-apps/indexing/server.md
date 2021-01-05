@@ -1,6 +1,6 @@
 ---
-title: Server tips and tricks
-description: Some tips and tricks for working with a Radiks server.
+title: Server
+description: Tips and tricks for working with Radiks server
 ---
 
 ## Access the MongoDB collection

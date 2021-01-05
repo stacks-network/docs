@@ -1,6 +1,6 @@
 ---
-title: Integrate Radiks
-description: Learn how to setup Radiks with your application
+title: Radiks
+description: Learn how to setup Radiks with your app
 icon: BlockstackIcon
 duration: 1 hour
 experience: intermediate
