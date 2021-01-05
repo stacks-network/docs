@@ -67,7 +67,7 @@ Note some of the key Clarity language rules and limitations.
 ## Try a tutorial
 
 [@page-reference | grid]
-| /write-smart-contracts/hello-world-tutorial, /write-smart-contracts/counter-tutorial, /write-smart-contracts/signing-transactions, /write-smart-contracts/public-registry-tutorial
+| /write-smart-contracts/hello-world-tutorial, /write-smart-contracts/counter-tutorial, /build-apps/guides/transaction-signing, /build-apps/tutorials/public-registry
 
 ## Explore more
 

@@ -1,6 +1,6 @@
 ---
-title: Collections (Preview)
-description: Learn about the beta release of Collections and how you can start using it.
+title: Overview
+description: Store data in standardized formats
 ---
 
 ## Introduction

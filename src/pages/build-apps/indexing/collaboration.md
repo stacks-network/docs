@@ -1,6 +1,6 @@
 ---
-title: Collaborate with groups
-description: A key feature of Radiks is support for private collaboration between multiple users.
+title: Collaboration
+description: Support private collaboration between multiple users with Radiks
 ---
 
 ## Introduction

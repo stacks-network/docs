@@ -1,26 +1,28 @@
 ---
-title: Authentication
-description: Stacks Auth provides single sign on and authentication without third parties or remote servers.
+title: Stacks Connect
+description: Open protocol for connecting apps built with Stacks
 images:
   large: /images/pages/authentication.svg
   sm: /images/pages/authentication-sm.svg
 ---
 
+Stacks Connect is an open protocol for connecting apps built with the Stacks blockchain, such as consumer apps with authenticators and wallets.
+
 ## Authentication flow
 
-For an application developer, the application flow is similar to the typical client-server flow used by centralized sign in services (for example, OAuth). However, with Stacks auth, the authentication flow happens entirely client-side.
+For an application developer, the application flow is similar to the typical client-server flow used by centralized sign in services (for example, OAuth). However, with Stacks Connect, the authentication flow happens entirely client-side.
 
-A decentralized application and [the Blockstack App](https://github.com/blockstack/ux/tree/master/packages/app) communicate during the authentication flow by passing back and forth two tokens. The requesting application sends the Blockstack App an `authRequest` token. Once a user approves a sign-in, the Blockstack App responds to the application with an `authResponse` token. These tokens are <a href="https://jwt.io/" target="\_blank">JSON Web Tokens</a>, and they are passed via URL query strings.
+An app and authenticator, such as [the Stacks Wallet](https://blockstack.org/wallet), communicate during the authentication flow by passing back and forth two tokens. The requesting application sends the authenticator an `authRequest` token. Once a user approves a sign-in, the authenticator responds to the application with an `authResponse` token. These tokens are <a href="https://jwt.io/" target="\_blank">JSON Web Tokens</a>, and they are passed via URL query strings.
 
 ![](/images/app-sign-in.png)
 
-When a user chooses to authenticate a decentralized application, it calls the `doOpenAuth()` method which sends an `authRequest` to the Blockstack App. Stacks auth passes the token in via a URL query string in the `authRequest` parameter:
+When a user chooses to authenticate a decentralized application, it calls the `doOpenAuth()` method which sends an `authRequest` to the authenticator. Stacks auth passes the token in via a URL query string in the `authRequest` parameter:
 
 `https://app.blockstack.org/#/sign-up?authRequest=j902120cn829n1jnvoa...`
 
-When the Blockstack App receives the request, it generates an (`authResponse`) token to the application using an _ephemeral transit key_ . The ephemeral transit key is just used for the particular instance of the application, in this case, to sign the `authRequest`. The application stores the ephemeral transit key during the request generation. The public portion of the transit key is passed in the `authRequest` token. The Blockstack App uses the public portion of the key to encrypt an _app-private key_ which is returned via the `authResponse`.
+When the authenticator receives the request, it generates an (`authResponse`) token to the application using an _ephemeral transit key_ . The ephemeral transit key is just used for the particular instance of the application, in this case, to sign the `authRequest`. The application stores the ephemeral transit key during the request generation. The public portion of the transit key is passed in the `authRequest` token. The authenticator uses the public portion of the key to encrypt an _app-private key_ which is returned via the `authResponse`.
 
-During sign in, the Blockstack App generates the app-private key from the user's _identity-address private_ key and the application's `appDomain`. The app private key serves three functions:
+During sign in, the authenticator generates the app-private key from the user's _identity-address private_ key and the application's `appDomain`. The app private key serves three functions:
 
 - It is used to create the credentials that give an app access to the Gaia storage bucket for that specific app.
 - It is used in the end-to-end encryption of files stored for the app in the user's Gaia storage.
@@ -62,7 +64,7 @@ The following is an example manifest file.
 }
 ```
 
-The Blockstack App retrieves the manifest file from the app during the authentication process and displays the
+The Stacks Wallet retrieves the manifest file from the app during the authentication process and displays the
 information in it such as the app `name` and to the user during sign in. The location of the app manifest file is specific
 in the authentication request token and **must** be on the same origin as the app requesting authentication.
 
@@ -88,13 +90,13 @@ following sections describe the three public-private key pairs used in the authe
 ### Transit private key
 
 The transit private is an ephemeral key that is used to encrypt secrets that
-need to be passed from the Blockstack App to the decentralized app during the
+need to be passed from the authenticator to the decentralized app during the
 authentication process. It is randomly generated by the app at the beginning of
 the authentication response.
 
 The public key that corresponds to the transit private key is stored in a single
 element array in the `public_keys` key of the authentication request token. The
-Blockstack App encrypts secret data such as the app private key using this
+authenticator encrypts secret data such as the app private key using this
 public key and sends it back to the app when the user signs in to the app. The
 transit private key signs the app authentication request.
 
@@ -103,7 +105,7 @@ transit private key signs the app authentication request.
 The identity address private key is derived from the user's keychain phrase and
 is the private key of the Stacks username that the user chooses to use to sign in
 to the app. It is a secret owned by the user and never leaves the user's
-instance of the Blockstack App.
+instance of the authenticator.
 
 This private key signs the authentication response token for an app to indicate that the user approves sign in to that app.
 
@@ -114,7 +116,7 @@ user's identity address private key using the `domain_name` as input. It is
 deterministic in that for a given Stacks username and `domain_name`, the same
 private key is generated each time.
 
-The app private key is securely shared with the app on each authentication, encrypted by the Blockstack App with the transit public key.
+The app private key is securely shared with the app on each authentication, encrypted by the authenticator with the transit public key.
 
 ## JSON Web Token signatures
 
@@ -144,9 +146,9 @@ const requestPayload = {
   public_keys, // single entry array with public key of transit key
   domain_name, // app origin
   manifest_uri, // url to manifest file - must be hosted on app origin
-  redirect_uri, // url to which the Blockstack App redirects user on auth approval - must be hosted on app origin
+  redirect_uri, // url to which the authenticator redirects user on auth approval - must be hosted on app origin
   version, // version tuple
-  do_not_include_profile, // a boolean flag asking Blockstack App to send profile url instead of profile object
+  do_not_include_profile, // a boolean flag asking authenticator to send profile url instead of profile object
   supports_hub_url, // a boolean flag indicating gaia hub support
   scopes, // an array of string values indicating scopes requested by the app
 };
@@ -277,3 +279,7 @@ const recoveredProfile = Person.fromToken(tokenFile, publicKey);
 ```jsx
 const validationResults = Person.validateSchema(recoveredProfile);
 ```
+
+### Transaction signing
+
+TBD: info on transaction signing protocol
