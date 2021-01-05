@@ -98,7 +98,7 @@ async function redirects() {
     },
     {
       source: '/develop/connect/use-with-clarity.html',
-      destination: '/write-smart-contracts/signing-transactions',
+      destination: '/build-apps/transaction-signing',
       permanent: true,
     },
     {
@@ -118,32 +118,32 @@ async function redirects() {
     },
     {
       source: '/core/naming/introduction.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/core/naming/architecture.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/core/naming/namespaces.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/core/naming/comparison.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/core/naming/tutorial_subdomains.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/core/naming/search.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
@@ -158,37 +158,37 @@ async function redirects() {
     },
     {
       source: '/core/naming/pickname.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/core/naming/creationhowto.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/core/naming/resolving.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/core/naming/register.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/core/naming/manage.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/core/naming/subdomains.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/core/naming/forks.html',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
@@ -416,8 +416,8 @@ async function redirects() {
     { source: '/data-storage', destination: '/data-storage/overview', permanent: true },
     { source: '/data-indexing', destination: '/data-storage/indexing-overview', permanent: true },
     { source: '/stacks-wallet', destination: '/stacks-wallet/overview', permanent: true },
-    { source: '/naming-services', destination: '/technology/naming-system/', permanent: true },
-    { source: '/naming-system', destination: '/technology/naming-system/', permanent: true },
+    { source: '/naming-services', destination: '/build-apps/references/bns', permanent: true },
+    { source: '/naming-system', destination: '/build-apps/references/bns', permanent: true },
     { source: '/storage-hubs', destination: '/storage-hubs/overview', permanent: true },
     { source: '/references', destination: '/references/stacks-cli', permanent: true },
     { source: '/ecosystem', destination: '/ecosystem/overview', permanent: true },
@@ -499,88 +499,88 @@ async function redirects() {
     },
     {
       source: '/naming-services/build-profile-search-index',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/build-profile-search-index',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/build-profile-search-index',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/build-profile-search-index',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
 
     {
       source: '/naming-services/architecture',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/choose-name',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/comparison',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/create-namespace',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/did',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/forks',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/manage-names',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/namespaces',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/overview',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/register-name',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/resolve-name',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/subdomains',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
       source: '/naming-services/subdomains-tutorial',
-      destination: '/technology/naming-system/',
+      destination: '/build-apps/references/bns',
       permanent: true,
     },
     {
@@ -630,7 +630,7 @@ async function redirects() {
     },
     {
       source: '/smart-contracts/signing-transactions',
-      destination: '/write-smart-contracts/signing-transactions',
+      destination: '/build-apps/transaction-signing',
       permanent: true,
     },
     {
@@ -740,12 +740,12 @@ async function redirects() {
     },
     {
       source: '/smart-contracts/public-registry-tutorial',
-      destination: '/write-smart-contracts/public-registry-tutorial',
+      destination: '/build-apps/tutorial/public-registry',
       permanent: true,
     },
     {
       source: '/smart-contracts/public-registry-tutorial',
-      destination: '/writing-smart-contracts/public-registry-tutorial',
+      destination: '/build-apps/tutorial/public-registry',
       permanent: true,
     },
     {
