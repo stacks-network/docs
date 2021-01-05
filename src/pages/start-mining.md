@@ -47,12 +47,13 @@ bind=0.0.0.0:18333
 rpcbind=0.0.0.0:18332
 rpcport=18332
 ```
-
 Finally, start bitcoind as follows:
 
 ```bash
 bitcoind -conf=path/to/bitcoin.conf
 ```
+
+This configuration optimizes bitcond for use with proof of transfer (no tx index, low banscore, low orphan tx). See for more details about running bitcoind [here](https://en.bitcoinwiki.org/wiki/Running_Bitcoind).
 
 It will take a few hours for the node to synchronize with the Bitcoin testnet -- be patient!
 
