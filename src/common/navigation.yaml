@@ -45,57 +45,39 @@ sections:
               - path: /hello-world-tutorial
               - path: /counter-tutorial
               - path: /testing-contracts
-              - path: /signing-transactions
-              - path: /public-registry-tutorial
-      - path: /build-apps # is an overview page
+      - path: /build-apps
+        pages:
+          - path: /overview
+        sections:
+          - title: Guides
+            usePageTitles: true
+            pages:
+              - path: /guides/authentication
+              - path: /guides/transaction-signing
+              - path: /guides/data-storage
+
+          - title: Tutorials
+            usePageTitles: true
+            pages:
+              - path: /tutorials/todos
+              - path: /tutorials/angular
+              - path: /tutorials/indexing
+              - path: /tutorials/public-registry
+
+          - title: References
+            usePageTitles: true
+            pages:
+              - path: /references/stacks-connect
+              - path: /references/bns
+              - path: /references/gaia
+              - external:
+                  href: 'https://blockstack.github.io/stacks.js/'
+                  title: Stacks.js
       - path: /start-mining
         pages:
           - path: /mainnet
           - path: /testnet
-
-  - title: Technology
-    pages:
-      - path: /authentication
-        pages:
-          - path: /overview
-        sections:
-          - title: Tutorials
-            usePageTitles: true
-            pages:
-              - path: /building-todo-app
-              - path: /building-with-angular
-      - path: /data-storage
-        pages:
-          - path: /overview
-          - path: /storage-guide
-          - path: /authentication
-          - path: /storage-write-read
-          - path: /collections
-          - path: /collection-type
-        sections:
-          - title: Data Indexing
-            usePageTitles: true
-            pages:
-              - path: /indexing-overview
-              - path: /indexing-models
-              - path: /indexing-collaborate
-              - path: /indexing-server-extras
-          - title: Tutorials
-            pages:
-              - path: /integrate-indexing
-      - path: /naming-system # is an overview page
-      - path: /storage-hubs # this seems out of date, kill?
-        pages:
-          - path: /overview
-          - path: /gaia-admin
-        sections:
-          - title: Tutorials
-            usePageTitles: true
-            pages:
-              - path: /amazon-ec2-deploy
-              - path: /digital-ocean-deploy
       - path: /references
-        usePageTitles: true
         pages:
           - path: /stacks-cli
           - path: /stacking-contract
@@ -117,6 +99,7 @@ sections:
               - path: /language-types
               - path: /language-keywords
               - path: /language-functions
+
   - title: Ecosystem
     pages:
       - path: /overview #pbc et al

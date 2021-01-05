@@ -1,7 +1,9 @@
 ---
 title: Overview
-description: Store data in standardized formats
+description: Store data in standardized formats with Collections
 ---
+
+~> Collections are an experimental feature not yet recommended for production. Please report issues and contribute through [the blockstack-collections repository](https://github.com/blockstack/blockstack-collections/).
 
 ## Introduction
 
@@ -11,8 +13,6 @@ a user's decentralized ID. When users move among apps, the same data is availabl
 
 On this page, you learn what collections are and how to use them. You'll learn about the `Contact` collection in
 particular. The following topics are covered:
-
--> This is a preview release of the `Contact` collections. This release allows developers to try out the new collections functionality and we are interested in collecting feedback. Please feel free to report issues or request enhancements with collections or `Contacts` themselves on the [blockstack-collections repository](https://github.com/blockstack/blockstack-collections/issues/new).
 
 ~> If you encounter problems with `blockstack.js` you can [file issues or request enhancements on its repo](https://github.com/blockstack/blockstack.js/issues/new).
 
