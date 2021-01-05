@@ -24,7 +24,7 @@ This app highlights the following platform functionality:
 - Generate _Secret Key_ with associated BNS username to authenticate app
 - Add, edit and delete encrypted app data with Gaia
 - Decrypt data on Gaia for public sharing by URL
-- Unauthenticate and re-authenticate app with _Secret Key_
+- Deauthenticate and re-authenticate app with _Secret Key_
 
 [Try the app](https://todos.blockstack.org) or [view its code on GitHub](https://github.com/blockstack/todos).
 
@@ -181,7 +181,7 @@ It is registered on the Stacks blockchain with [BNS](/technology/naming-system) 
 
 ## Add, edit and delete todos privately
 
-Once you've authenticated the app, you can can start adding todos by entering values into the "Write your to do"
+Once you've authenticated the app, you can start adding todos by entering values into the "Write your to do"
 field and hitting "Enter."
 
 !["Todos" app home screen](/images/todos/home.png)
@@ -268,7 +268,7 @@ If you've previously deauthenticated the Stacks app, you'll see a prompt to ente
 
 !["Sign in" screen](/images/todos/sign-in.png)
 
-The above screen will be ommitted if you have an active session with the Stacks app already.
+The above screen will be omitted if you have an active session with the Stacks app already.
 
 Then you'll be presented with the option to select an existing username associated with your _Secret Key_ or
 create a new one if you wish to authenticate the app with a different identity and data set:
