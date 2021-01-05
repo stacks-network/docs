@@ -3,6 +3,8 @@ title: Types
 description: Create new collection types
 ---
 
+~> Collections are an experimental feature not yet recommended for production. Please report issues and contribute through [the blockstack-collections repository](https://github.com/blockstack/blockstack-collections/).
+
 ## Introduction
 
 Collections support data portability between applications. Stacks supplies a `Contact` collection for use by Stacks applications. Developers can create additional collection types, use them in their own applications, and publish them so other developers can make use of them too.
