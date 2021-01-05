@@ -97,7 +97,7 @@ In order to send tokens, the CLI command requires 5 parameters:
 
 - **Recipient Address**: The Stacks address of the recipient
 - **Amount**: The number of Stacks to send denoted in microstacks (1 STX = 1000000 microstacks)
-- **Fee Rate**: The transaction fee rate for this transaction. You can safely set a fee rate of 1 for Testnet
+- **Fee Rate**: The transaction fee rate for this transaction. You can safely set a fee rate of 200 for Testnet
 - **Nonce**: The nonce is a number that needs to be incremented monotonically for each transaction from the account. This ensures transactions are not duplicated
 - **Private Key**: This is the private key corresponding to your account that was generated when
 
