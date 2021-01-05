@@ -1,5 +1,6 @@
 ---
-title: Create a Collection type
+title: Types
+description: Create new collection types
 ---
 
 ## Introduction

@@ -1,6 +1,6 @@
 ---
-title: Create and use models
-description: Model and query application data with Radiks.
+title: Models
+description: Model and query application data with Radiks
 ---
 
 ## Introduction
