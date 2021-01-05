@@ -1,8 +1,7 @@
 ---
-title: Signing transactions
-description: Learn how to sign transactions using Stacks Connect.
-experience: advanced
-duration: 30 minutes
+title: Transaction signing
+description: Prompt users to sign and broadcast transactions to the Stacks blockchain
+experience: beginners
 tags:
   - tutorial
 images:
@@ -12,15 +11,19 @@ images:
 
 ## Introduction
 
-With Stacks Connect, you can interact with the Stacks 2.0 blockchain, empowering your users to sign transactions and interact with smart contracts.
+This guide explains how to prompt users to sign transactions and broadcast them to the Stacks blockchain by implementing the `connect` package of [Stacks.js](https://blockstack.github.io/stacks.js/).
 
-This functionality currently operates on [the Stacks 2.0 Testnet](http://testnet.blockstack.org/). The user interface has been designed with developers in mind and prominently displays debug information. STX testnet tokens for paying transaction fees can be obtained for free with [the testnet faucet](https://testnet.blockstack.org/faucet). We will update this functionality and experience for mainnet upon its release.
+Transaction signing provides a way for users execute [smart contracts written in Clarity](/write-smart-contracts/overview) that are relevant to your app then handle the result immediately.
+
+Users can sign transactions that exchange fungible or non-fungible tokens with upfront guarantees while retaining complete control over their digital assets.
+
+See [the public registry tutorial](/build-apps/tutorials/public-registry) for a concrete example of this functionality in practice.
 
 ## How it works
 
 For your app's users to be able to execute a smart contract function, they need to sign and broadcast a transaction.
-It's important that users remain in control of the private keys that sign these transactions. Connect provides an
-easy-to-use workflow that allows your users to securely sign transactions.
+
+It's important that users remain in control of the private keys that sign these transactions. Connect provides an easy-to-use workflow that allows your users to securely sign transactions.
 
 Connect allows you to open the authenticator with parameters indicating the details of the transaction - like the smart
 contract address, function name, and specific arguments. Your users get the chance to see these details, and then sign
@@ -35,9 +38,8 @@ with it.
 To initiate a contract call transaction, use the `openContractCall` function.
 
 ```tsx
-import { openContractCall } from '@blockstack/connect';
+import { openContractCall } from '@stacks/connect';
 
-// Here's an example of options:
 const myStatus = 'hey there';
 const options = {
   contractAddress: 'ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ',
@@ -118,14 +120,14 @@ const functionArguments = [
 ];
 ```
 
-If you're using TypeScript, these Clarity types can be imported as `ContractCallArgumentType` from `@blockstack/connect`.
+If you're using TypeScript, these Clarity types can be imported as `ContractCallArgumentType` from `@stacks/connect`.
 
 ## Stacks (STX) Token Transfers
 
 STX token transfers can be initiated with the `openSTXTransfer` function.
 
 ```tsx
-import { openSTXTransfer } from '@blockstack/connect';
+import { openSTXTransfer } from '@stacks/connect';
 
 openSTXTransfer({
   recipient: 'ST2EB9WEQNR9P0K28D2DC352TM75YG3K0GT7V13CV',
@@ -158,18 +160,18 @@ interface STXTransferOptions {
 }
 ```
 
-| parameter  | type     | optional | description                                                                                                                                                                   |
-| ---------- | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| recipient  | string   | false    | The STX Address for the recipient of this STX transfer                                                                                                                        |
-| amount     | string   | false    | The amount of microstacks (µSTX) to be transferred. This argument is a string to prevent floating point errors. There are 1,000,000 µSTX per STX.                             |
-| memo       | string   | true     | An optional memo to include in the transaction.                                                                                                                               |
-| appDetails | object   | false    | A dictionary that includes `name` and `icon`                                                                                                                                  |
-| finished   | function | false    | A callback that is fired when the transaction is signed and broadcasted. Your callback will receive an object back with a `txId` and a `txRaw`, both of which are strings.    |
-| authOrigin | string   | true     | The location of the authenticator. This is only necessary when developing the authenticator locally, or when using beta features. Defaults to `"https://app.blockstack.org"`. |
+| parameter  | type     | optional | description                                                                                                                                                                |
+| ---------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| recipient  | string   | false    | The STX Address for the recipient of this STX transfer                                                                                                                     |
+| amount     | string   | false    | The amount of microstacks (µSTX) to be transferred. This argument is a string to prevent floating point errors. There are 1,000,000 µSTX per STX.                          |
+| memo       | string   | true     | An optional memo to include in the transaction.                                                                                                                            |
+| appDetails | object   | false    | A dictionary that includes `name` and `icon`                                                                                                                               |
+| finished   | function | false    | A callback that is fired when the transaction is signed and broadcasted. Your callback will receive an object back with a `txId` and a `txRaw`, both of which are strings. |
+| authOrigin | string   | true     | Location of the authenticator to use for signing. Defaults `"https://app.blockstack.org"`.                                                                                 |
 
-## Deploying Clarity Contracts
+## Deploy smart contract
 
-To allow your app's users to deploy arbitrary Clarity contracts, use the `openContractDeploy` method.
+To allow your app's users to deploy Clarity smart contracts, use the `openContractDeploy` method.
 
 ```tsx
 import { openContractDeploy } from '@blockstack/connect';
@@ -221,7 +223,7 @@ Each transaction signing method is exposed through the `useConnect` hook, but th
 `open`, to remain consistent with our React action naming standards.
 
 ```tsx
-import { useConnect } from '@blockstack/connect';
+import { useConnect } from '@stacks/connect';
 
 const MyComponent = () => {
   const { doContractCall } = useConnect();
@@ -236,3 +238,9 @@ const MyComponent = () => {
   return <span onClick={onClick}>Call my contract</span>;
 };
 ```
+
+## Network settings
+
+TBD: instructions on toggling network
+
+You may find it useful to request testnet STX from [the faucet](https://testnet.blockstack.org/faucet) while developing and testing your app with the Stacks testnet.

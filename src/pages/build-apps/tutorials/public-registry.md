@@ -1,5 +1,5 @@
 ---
-title: Building a public registry
+title: Public registry
 description: Learn how to read state from the Stacks blockchain.
 duration: 60 minutes
 experience: intermediate

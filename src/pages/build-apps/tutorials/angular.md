@@ -1,5 +1,5 @@
 ---
-title: Stacks Auth with Angular
+title: Angular
 description: How to integrate authentication within an Angular application
 experience: beginners
 duration: 30 minutes

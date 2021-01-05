@@ -1,6 +1,6 @@
 ---
-title: Indexing overview
-description: Using Radiks you can build multi-player apps that index, store, and query user data.
+title: Overview
+description: Build multi-player apps that index, store, and query user data with Radiks
 images:
   large: /images/pages/radiks.svg
   sm: /images/pages/radiks-sm.svg
