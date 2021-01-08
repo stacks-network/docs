@@ -609,6 +609,11 @@ async function redirects() {
       permanent: true,
     },
     {
+      source: '/start-mining',
+      destination: '/start-mining/mainnet',
+      permanent: true,
+    },
+    {
       source: '/smart-contracts/overview',
       destination: '/write-smart-contracts/overview',
       permanent: true,
