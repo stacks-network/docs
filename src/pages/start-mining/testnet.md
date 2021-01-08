@@ -31,7 +31,7 @@ First, download the bitcoind software for your platform from https://bitcoin.org
 
 Next, start bitcoind with the following configuration:
 
-```
+```toml
 server=1
 rpcuser=your-bitcoind-username
 rpcpassword=your-bitcoind-password
@@ -63,10 +63,10 @@ First, a keychain needs to be generated. With this keychain, we'll get some test
 To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `make_keychain` command, and pass `-t` to indicate that we want a testnet keychain.
 
 ```bash
-npx @stacks/cli make_keychain -t 2>/dev/null
+npx @stacks/cli make_keychain -t 2>/dev/null | json_pp > keychain.txt
 ```
 
-After this runs, you'll probably see some installation logs, and at the end you should see some JSON that looks like this:
+After this runs, you should see some JSON in the new `keychain.txt` file that looks like this:
 
 ```json
 {
