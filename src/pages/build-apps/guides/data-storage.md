@@ -11,13 +11,17 @@ images:
 
 ## Introduction
 
-This guide explains how to save and retrieve data for users with [Gaia](/build-apps/references/gaia) by implementing the `connect` and `storage` packages of [Stacks.js](https://blockstack.github.io/stacks.js/).
+This guide explains how to save and retrieve data for users with [Gaia](/build-apps/references/gaia) by implementing the [`connect`](https://github.com/blockstack/ux/tree/master/packages/connect#stacksconnect) and [`storage`](https://github.com/blockstack/ux/tree/master/packages/storage#stacksstorage) packages of Stacks.js.
 
 Data storage provides a way for users to save both public and private data off-chain while retaining complete control over it.
 
 Storing data off of the blockchain ensures that apps can provide users with high performance and high availability for data reads and writes without the involvement of centralized parties that could comprise their privacy or accessibility.
 
 See [the Todos app tutorial](/build-apps/tutorials/todos) for a concrete example of this functionality in practice.
+
+## Authentication
+
+TODO: Add indicator that authentication guide should be followed first
 
 ## How data is stored
 
