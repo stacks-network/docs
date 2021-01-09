@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@blockstack/eslint-config'],
+  extends: ['@stacks/eslint-config'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     createDefaultProgram: true,
