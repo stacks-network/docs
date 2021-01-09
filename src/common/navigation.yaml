@@ -60,19 +60,36 @@ sections:
             usePageTitles: true
             pages:
               - path: /tutorials/todos
-              - path: /tutorials/angular
-              - path: /tutorials/indexing
               - path: /tutorials/public-registry
+              - path: /tutorials/angular
 
-          - title: References
+          - title: Stacks.js References
             usePageTitles: true
             pages:
-              - path: /references/stacks-connect
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/auth#stacksauth'
+                  title: auth
+              - external:
+                  href: 'https://github.com/blockstack/ux/tree/master/packages/connect#stacksconnect'
+                  title: connect
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/storage#stacksstorage'
+                  title: storage
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/network#stacksnetwork'
+                  title: network
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/stacking#stacksstacking'
+                  title: stacking
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/transactions#stackstransactions'
+                  title: transactions
+
+          - title: Protocols
+            usePageTitles: true
+            pages:
               - path: /references/bns
               - path: /references/gaia
-              - external:
-                  href: 'https://blockstack.github.io/stacks.js/'
-                  title: Stacks.js
       - path: /start-mining
         pages:
           - path: /mainnet
