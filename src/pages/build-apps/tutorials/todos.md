@@ -69,10 +69,9 @@ You should see the app's landing page:
 
 ### Step 1: Choose **Get started** to start onboarding into the app.
 
-The app displays a standardized introductory modal using
-Stacks Connect.
+The app displays a standardized introductory modal using the `@stacks/connect` library.
 
-![The Stacks Connect Modal](/images/todos/get-started.png)
+![Modal displayed by showConnect function](/images/todos/get-started.png)
 
 This modal is displayed using the `authenticate` function exported by the `src/auth.js` module, which organizes all Stacks resources needed for authentication in the app:
 
@@ -109,7 +108,7 @@ export function getPerson() {
 }
 ```
 
-The `authenticate` function implements the `showConnect` function imported from the `@stacks/connect` library.
+The `authenticate` function implements the `showConnect` function imported from the `connect` package of Stacks.js.
 
 `showConnect` triggers the display of a modal that initiates the authentication process for users, one in which they'll authenticate with a _Secret Key_ that's used to encrypt their private data.
 
