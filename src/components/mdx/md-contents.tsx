@@ -11,6 +11,7 @@ import { getCapsizeStyles } from '@components/mdx/typography';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from '@components/mdx';
 import { css, Theme, ThemeUICSSObject } from '@stacks/ui-core';
+
 export const styleOverwrites: ThemeUICSSObject = {
   '& > section': {
     '&:nth-child(2)': {
@@ -18,6 +19,9 @@ export const styleOverwrites: ThemeUICSSObject = {
         mt: 0,
       },
     },
+  },
+  '.custom-block + *': {
+    mt: space('extra-loose'),
   },
   section: {
     '& > *:not(pre):not(ul):not(ol):not(img):not([data-reach-accordion]):not(section):not(hr)': {

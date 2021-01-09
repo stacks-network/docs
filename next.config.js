@@ -783,6 +783,11 @@ async function redirects() {
       destination: '/understand-stacks/installing-memcached',
       permanent: true,
     },
+    {
+      source: '/en-US/:slug*',
+      destination: '/:slug*',
+      permanent: true,
+    },
   ];
 }
 
