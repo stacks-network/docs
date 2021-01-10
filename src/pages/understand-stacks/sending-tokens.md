@@ -149,7 +149,9 @@ If not specified, the transaction builder will automatically lookup the latest n
 The updated nonce for each account can be retrieved manually using the `getNonce()` function:
 
 ```js
-getNonce(senderAddress);
+const senderAddress = 'SJ2FYQ8Z7JY9BWYZ5WM53SKR6CK7WHJF0691NZ942';
+
+const senderNonce = getNonce(senderAddress);
 ```
 
 ## Step 4: Broadcasting transaction
@@ -157,7 +159,7 @@ getNonce(senderAddress);
 Next, we will broadcast the transaction to the Testnet using the `network` object we created earlier:
 
 ```js
-const txId = await broadcastTransaction(transaction, testnet);
+const txId = await broadcastTransaction(transaction, network);
 ```
 
 As soon as the `broadcastTransaction` is completed, a transaction ID is returned.
