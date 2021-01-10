@@ -17,7 +17,7 @@ Transaction signing provides a way for users execute [Clarity smart contracts](/
 
 Users can sign transactions that exchange fungible or non-fungible tokens with upfront guarantees while retaining complete control over their digital assets.
 
-See [the public registry tutorial](/build-apps/tutorials/public-registry) for a concrete example of this functionality in practice.
+[See the public registry tutorial](/build-apps/tutorials/public-registry) for a concrete example of this functionality in practice.
 
 ## How it works
 
