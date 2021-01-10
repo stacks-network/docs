@@ -19,6 +19,15 @@ Storing data off the Stacks blockchain ensures that apps can provide users with 
 
 [See the Todos app tutorial](/build-apps/tutorials/todos) for a concrete example of this functionality in practice.
 
+## Install dependencies
+
+The following dependencies must be installed:
+
+```
+npm install @stacks/connect
+npm install @stacks/storage
+```
+
 ## Initiate session
 
 Users must authenticate to an app before the `storage` package will work to save or retrieve data on their behalf.
