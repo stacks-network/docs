@@ -2,8 +2,8 @@
 title: Write smart contracts
 description: Overview and guides for getting started with Clarity
 images:
-  large: /images/pages/write-smart-contracts.svg
-  sm: /images/pages/write-smart-contracts-sm.svg
+  large: /images/contract.svg
+  sm: /images/contract.svg
 ---
 
 ## Introduction
