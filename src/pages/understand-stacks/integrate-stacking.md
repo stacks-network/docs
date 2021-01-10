@@ -169,7 +169,7 @@ Users can select how many cycles they would like to participate in. To help with
 let numberOfCycles = 3;
 
 // the projected datetime for the unlocking of tokens
-const unlockingAt = new Date(secondsUntilNextCycle);
+const unlockingAt = new Date(new Date().getTime() + secondsUntilNextCycle);
 unlockingAt.setSeconds(unlockingAt.getSeconds() + cycleDuration * numberOfCycles);
 ```
 
@@ -184,7 +184,10 @@ With this input, and the data from previous steps, we can determine the eligibil
 let btcAddress = '1Xik14zRm29UsyS6DjhYg4iZeZqsDa8D3';
 let numberOfCycles = 3;
 
-const stackingEligibility = await client.canStack({ btcAddress, numberOfCycles });
+const stackingEligibility = await client.canStack({
+  poxAddress: btcAddress,
+  cycles: numberOfCycles,
+});
 
 // stackingEligibility:
 // {
