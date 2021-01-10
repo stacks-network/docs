@@ -10,17 +10,22 @@ async function redirects() {
   return [
     {
       source: '/browser/todo-list.html',
-      destination: '/authentication/building-todo-app',
+      destination: '/build-apps/tutorials/todos',
       permanent: true,
     },
     {
       source: '/develop/zero_to_dapp_1.html',
-      destination: '/authentication/building-todo-app',
+      destination: '/build-apps/tutorials/todos',
       permanent: true,
     },
     {
       source: '/browser/hello-blockstack.html',
-      destination: '/authentication/building-todo-app',
+      destination: '/build-apps/tutorials/todos',
+      permanent: true,
+    },
+    {
+      source: '/authentication/building-todo-app',
+      destination: '/build-apps/tutorials/todos',
       permanent: true,
     },
     {
@@ -39,8 +44,26 @@ async function redirects() {
       permanent: true,
     },
     { source: '/develop/profiles.html', destination: '/authentication/profiles', permanent: true },
-    { source: '/storage/overview.html', destination: '/data-storage/overview', permanent: true },
-    { source: '/develop/storage.html', destination: '/data-storage/overview', permanent: true },
+    {
+      source: '/storage/overview.html',
+      destination: '/build-apps/references/gaia',
+      permanent: true,
+    },
+    {
+      source: '/develop/storage.html',
+      destination: '/build-apps/references/gaia',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/overview',
+      destination: '/build-apps/references/gaia',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/overview',
+      destination: '/build-apps/references/gaia',
+      permanent: true,
+    },
     {
       source: '/storage/authentication.html',
       destination: '/data-storage/authentication',
@@ -74,6 +97,11 @@ async function redirects() {
     {
       source: '/develop/radiks-server-extras.html',
       destination: '/data-storage/indexing-server-extras',
+      permanent: true,
+    },
+    {
+      source: '/authentication/building-with-angular',
+      destination: '/build-apps/tutorials/angular',
       permanent: true,
     },
     {
@@ -193,12 +221,22 @@ async function redirects() {
     },
     {
       source: '/develop/collections.html',
-      destination: '/data-storage/collections',
+      destination: '/build-apps/collections/overview',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/collections',
+      destination: '/build-apps/collections/overview',
       permanent: true,
     },
     {
       source: '/develop/collection-type.html',
-      destination: '/data-storage/collections-type',
+      destination: '/build-apps/collections/types',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/collections-type',
+      destination: '/build-apps/collections/types',
       permanent: true,
     },
     {
@@ -396,7 +434,17 @@ async function redirects() {
     },
     {
       source: '/develop/overview_auth.html',
-      destination: '/authentication/overview',
+      destination: '/build-apps/guides/authentication',
+      permanent: true,
+    },
+    {
+      source: '/authentication/overview',
+      destination: '/build-apps/guides/authentication',
+      permanent: true,
+    },
+    {
+      source: '/build-apps',
+      destination: '/build-apps/overview',
       permanent: true,
     },
     { source: '/org/terms.html', destination: '/references/glossary', permanent: true },
@@ -413,8 +461,18 @@ async function redirects() {
       destination: '/write-smart-contracts/overview',
       permanent: true,
     },
-    { source: '/data-storage', destination: '/data-storage/overview', permanent: true },
-    { source: '/data-indexing', destination: '/data-storage/indexing-overview', permanent: true },
+    { source: '/data-storage', destination: '/build-apps/references/gaia', permanent: true },
+    {
+      source: '/data-storage/overview',
+      destination: '/build-apps/references/gaia',
+      permanent: true,
+    },
+    { source: '/data-indexing', destination: '/build-apps/indexing/overview', permanent: true },
+    {
+      source: '/data-storage/indexing-overview',
+      destination: '/build-apps/indexing/overview',
+      permanent: true,
+    },
     { source: '/stacks-wallet', destination: '/stacks-wallet/overview', permanent: true },
     { source: '/naming-services', destination: '/build-apps/references/bns', permanent: true },
     { source: '/naming-system', destination: '/build-apps/references/bns', permanent: true },
@@ -469,27 +527,52 @@ async function redirects() {
     // data indexing changes
     {
       source: '/data-indexing/overview',
-      destination: '/data-storage/indexing-overview',
+      destination: '/build-apps/indexing/overview',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/indexing-overview',
+      destination: '/build-apps/indexing/overview',
       permanent: true,
     },
     {
       source: '/data-indexing/integrate',
-      destination: '/data-storage/integrate-indexing',
+      destination: '/build-apps/tutorials/indexing',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/integrate-indexing',
+      destination: '/build-apps/tutorials/indexing',
       permanent: true,
     },
     {
       source: '/data-indexing/models',
-      destination: '/data-storage/indexing-models',
+      destination: '/build-apps/indexing/models',
       permanent: true,
     },
     {
       source: '/data-indexing/collaborate',
-      destination: '/data-storage/indexing-collaborate',
+      destination: '/build-apps/indexing/collaboration',
       permanent: true,
     },
     {
       source: '/data-indexing/server-extras',
-      destination: '/data-storage/indexing-server-extras',
+      destination: '/build-apps/indexing/server',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/indexing-models',
+      destination: '/build-apps/indexing/models',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/indexing-collaborate',
+      destination: '/build-apps/indexing/collaboration',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/indexing-server-extras',
+      destination: '/build-apps/indexing/server',
       permanent: true,
     },
     {
@@ -503,21 +586,10 @@ async function redirects() {
       permanent: true,
     },
     {
-      source: '/naming-services/build-profile-search-index',
+      source: '/technology/naming-system',
       destination: '/build-apps/references/bns',
       permanent: true,
     },
-    {
-      source: '/naming-services/build-profile-search-index',
-      destination: '/build-apps/references/bns',
-      permanent: true,
-    },
-    {
-      source: '/naming-services/build-profile-search-index',
-      destination: '/build-apps/references/bns',
-      permanent: true,
-    },
-
     {
       source: '/naming-services/architecture',
       destination: '/build-apps/references/bns',
@@ -634,6 +706,11 @@ async function redirects() {
       permanent: true,
     },
     {
+      source: '/write-smart-contracts/signing-transactions',
+      destination: '/build-apps/transaction-signing',
+      permanent: true,
+    },
+    {
       source: '/smart-contracts/principals',
       destination: '/write-smart-contracts/principals',
       permanent: true,
@@ -745,6 +822,11 @@ async function redirects() {
     },
     {
       source: '/smart-contracts/public-registry-tutorial',
+      destination: '/build-apps/tutorial/public-registry',
+      permanent: true,
+    },
+    {
+      source: '/write-smart-contracts/public-registry-tutorial',
       destination: '/build-apps/tutorial/public-registry',
       permanent: true,
     },
