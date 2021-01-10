@@ -1,12 +1,13 @@
 ---
-title: Angular
-description: How to integrate authentication within an Angular application
+title: Angular app
+description: How to integrate authentication into an Angular app
 experience: beginners
 duration: 30 minutes
 tags:
   - tutorial
 images:
-  sm: /images/pages/angular-app-sm.svg
+  large: /images/pages/hello-world.svg
+  sm: /images/pages/hello-world-sm.svg
 ---
 
 # Building an with Angular

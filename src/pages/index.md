@@ -1,24 +1,29 @@
 ---
-title: Documentation
-description: All you need to build decentralized apps, write smart contracts, and start mining
+title: Stacks documentation
+description: Write Clarity smart contracts, build apps, and starting mining with the Stacks blockchain
 ---
 
-## Understand the Stacks blockchain
-
-[@page-reference | inline]
-| /understand-stacks/overview
-
-## Get started
+## Understand Stacks
 
 [@page-reference | grid]
-| /write-smart-contracts/overview, /build-apps, /start-mining
+| /understand-stacks/overview, /understand-stacks/proof-of-transfer, /understand-stacks/testnet
 
-## Try a tutorial
+## Write smart contracts
 
 [@page-reference | grid]
-| /write-smart-contracts/hello-world-tutorial, /authentication/building-todo-app, /understand-stacks/running-testnet-node
+| /write-smart-contracts/overview, /write-smart-contracts/hello-world-tutorial
 
-## Explore more
+## Build apps
+
+[@page-reference | grid]
+| /build-apps/guides/authentication, /build-apps/guides/transaction-signing, /build-apps/guides/data-storage
+
+## Start mining
+
+[@page-reference | grid]
+| /start-mining, /understand-stacks/running-testnet-node
+
+## Ecosystem
 
 [@page-reference | grid-small]
-| /ecosystem/overview, /ecosystem/stacks-token, /understand-stacks/proof-of-transfer
+| /ecosystem/overview, /ecosystem/stacks-token, /ecosystem/contributing
