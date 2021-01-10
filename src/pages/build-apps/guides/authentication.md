@@ -189,11 +189,9 @@ This private key signs the authentication response token for an app to indicate 
 ### App private key
 
 The app private key is an app-specific private key that is generated from the
-user's identity address private key using the `domain_name` as input. It is
-deterministic in that for a given Stacks username and `domain_name`, the same
-private key is generated each time.
+user's identity address private key using the `domain_name` as input.
 
-The app private key is securely shared with the app on each authentication, encrypted by the authenticator with the transit public key.
+The app private key is securely shared with the app on each authentication, encrypted by the authenticator with the transit public key. Because the transit key is only stored on the client side, this prevents a man-in-the-middle attack where a server or internet provider could potentially snoop on the app private key.
 
 ## authRequest Payload Schema
 
@@ -224,7 +222,7 @@ const responsePayload = {
   iss, // legacy decentralized identifier (string prefix + identity address) - this uniquely identifies the user
   private_key, // encrypted private key payload
   public_keys, // single entry array with public key
-  profile, // profile object or null if passed by profile_url
+  profile, // profile object
   username, // Stacks username (if any)
   core_token, // encrypted core token payload
   email, // email if email scope is requested & email available
@@ -257,7 +255,8 @@ To decode a token and see what data it holds:
      "version": "1.3.1",
      "do_not_include_profile": true,
      "supports_hub_url": true,
-     "scopes": ["store_write", "publish_data"]
+     "scopes": ["store_write", "publish_data"],
+     "private_key": "4447bfa55a55a2dd555648a1d02f08d759aea5f945cc15db08f"
    }
    ```
 

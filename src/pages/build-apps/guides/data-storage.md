@@ -68,7 +68,7 @@ let options = {
   encrypt: true,
 };
 
-storage.putFile(fileName, JSON.stringify(fileData), options).then(() => {
+let fileUrl = storage.putFile(fileName, JSON.stringify(fileData), options).then(() => {
   // Handle any execution after data has been saved
 });
 ```
@@ -78,6 +78,8 @@ The `options` parameter object contains an `encrypt` property that when set to `
 If the `encrypt` property is set to `false`, the data will be saved completely unencrypted and available to everyone online with public access to the user's Gaia hub.
 
 Whereas saving privately encrypted data is possible for all authenticated apps with the [`store_write`](https://blockstack.github.io/stacks.js/enums/authscope.html#store_write) scope, the user must have previously granted the [`publish_data`](https://blockstack.github.io/stacks.js/enums/authscope.html#publish_data) scope as well during authentication for the app to save publicly unencrypted data.
+
+The `putFile` method returns the URL where the the file can be retrieved from the user's Gaia hub, as used here to set the value of `fileUrl`.
 
 -> Note that you'll need to save an entirely new string of modified data using `putFile` with the same `fileName` every time you want to update a record. There is no separate update method.
 
