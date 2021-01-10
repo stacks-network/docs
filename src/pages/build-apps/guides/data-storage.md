@@ -15,199 +15,145 @@ This guide explains how to save and retrieve data for users with [Gaia](/build-a
 
 Data storage provides a way for users to save both public and private data off-chain while retaining complete control over it.
 
-Storing data off of the blockchain ensures that apps can provide users with high performance and high availability for data reads and writes without the involvement of centralized parties that could comprise their privacy or accessibility.
+Storing data off the Stacks blockchain ensures that apps can provide users with high performance and high availability for data reads and writes without the involvement of centralized parties that could compromise their privacy or accessibility.
 
-See [the Todos app tutorial](/build-apps/tutorials/todos) for a concrete example of this functionality in practice.
+[See the Todos app tutorial](/build-apps/tutorials/todos) for a concrete example of this functionality in practice.
 
-## Authentication
+## Initiate session
 
-TODO: Add indicator that authentication guide should be followed first
+Users must authenticate to an app before the `storage` package will work to save or retrieve data on their behalf.
 
-## How data is stored
+[See the authentication guide](/build-apps/guides/authentication) before proceeding to integrate the following data storage capabilities in cases where `userSession.isUserSignedIn()` returns `true`.
 
-Gaia storage is a key-value store.
+## Save data for session user
 
-## Creating a file
+Gaia serves as a key-value store in which data is saved and retrieved as files to and from Gaia hubs owned by, or managed for, users.
 
-Use the [Storage.putFile](https://blockstack.github.io/stacks.js/classes/storage.html#putfile) method:
+The default Gaia hub for users who authenticate to apps with [the Stacks Wallet](https://blockstack.org/wallet) is run by Hiro PBC at `https://gaia.blockstack.org/`. It supports files up to 25 megabytes in size.
 
-```tsx
-const userSession = new UserSession();
+-> We recommend breaking data instances greater than 25 MB into several files, saving them individually, and recomposing them on retrieval.
+
+These files can comprise any type of data such as text, image, video or binary.
+
+Files are often saved as strings that represent stringified JSON objects and contain a variety of properties for a particular model.
+
+To save a file, first instantiate a `storage` object using the `userSession` object for an authenticated user. Then proceed to call its `putFile` method with relevant parameters:
+
+```js
+import { AppConfig, UserSession } from '@stacks/connect';
+import { Storage } from '@stacks/storage';
+
+const appConfig = new AppConfig(['store_write', 'publish_data']);
+const userSession = new UserSession({ appConfig });
 const storage = new Storage({ userSession });
-const options: PutFileOptions = {
-  encrypt: false,
+
+let fileName = 'car.json';
+
+let fileData = {
+  color: 'blue'
+  electric: true,
+  purchaseDate: '2019-04-03',
 };
-userSession.putFile('hello.txt', 'hello world', options).then(() => {
-  // hello.txt exists now, and has the contents "hello world"
-});
-```
 
-## Creating an encrypted file
-
-Use the [Storage.putFile](https://blockstack.github.io/stacks.js/classes/storage.html#putfile) method and
-pass `encrypt: true` within the options object. See the [`PutFileOptions` type definition here](https://blockstack.github.io/stacks.js/interfaces/putfileoptions.html#encrypt)
-
-```tsx
-const userSession = new UserSession();
-
-const options: PutFileOptions = {
+let options = {
   encrypt: true,
 };
 
-userSession.putFile('message.txt', 'Secret hello', options).then(() => {
-  // message.txt exists now, and has the contents "Secret hello"
+storage.putFile(fileName, JSON.stringify(fileData), options).then(() => {
+  // Handle any execution after data has been saved
 });
 ```
 
-## Reading a file
+The `options` parameter object contains an `encrypt` property that when set to `true` indicates that the data should be encrypted with the user's app private key before saved to their Gaia hub. All data will be encrypted as such by default if the `encrypt` property or the `options` object itself is omitted entirely.
 
-Use the [Storage.getFile](https://blockstack.github.io/stacks.js/classes/storage.html#getfile) method:
+If the `encrypt` property is set to `false`, the data will be saved completely unencrypted and available to everyone online with public access to the user's Gaia hub.
 
-```tsx
-const userSession = new UserSession();
+Whereas saving privately encrypted data is possible for all authenticated apps with the [`store_write`](https://blockstack.github.io/stacks.js/enums/authscope.html#store_write) scope, the user must have previously granted the [`publish_data`](https://blockstack.github.io/stacks.js/enums/authscope.html#publish_data) scope as well during authentication for the app to save publicly unencrypted data.
+
+-> Note that you'll need to save an entirely new string of modified data using `putFile` with the same `fileName` every time you want to update a record. There is no separate update method.
+
+## Get data for session user
+
+To retrieve data previously saved for a user with an app, call the `getFile` method available from the `storage` object:
+
+```js
+import { AppConfig, UserSession } from '@stacks/connect';
+import { Storage } from '@stacks/storage';
+
+const appConfig = new AppConfig(['store_write', 'publish_data']);
+const userSession = new UserSession({ appConfig });
 const storage = new Storage({ userSession });
 
-const options: GetFileOptions = {
-  decrypt: false,
-};
+let fileName = 'car.json';
 
-storage.getFile('hello.txt', options).then(fileContents => {
-  // get the contents of the file hello.txt
-  assert(fileContents === 'hello world!');
-});
-```
-
-## Reading an encrypted file
-
-Use the [Storage.getFile](https://blockstack.github.io/stacks.js/classes/storage.html#getfile) method and pass
-`decrypt: true` within the options object. See the [`GetFileOptions` type definition here](https://blockstack.github.io/stacks.js/interfaces/getfileoptions.html#decrypt)
-
-```tsx
-const userSession = new UserSession();
-const storage = new Storage({ userSession });
-
-const options: GetFileOptions = {
+const options = {
   decrypt: true,
 };
 
-storage.getFile('message.txt', options).then(fileContents => {
-  // get & decrypt the contents of the file /message.txt
-  assert(fileContents === 'Secret hello!');
+storage.getFile(fileName, options).then(fileData => {
+  // Handle any execution that uses decrypted fileData
 });
 ```
 
-## Reading another user's unencrypted file
+Note how the `decrypt` property in the `options` object here should implement the same boolean value as used for `encrypt` initially upon saving the data with `putFile`. The `decrypt` property will default to `true` if omitted.
 
-In order for files to be publicly readable, the app must request
-the [`publish_data` scope](https://blockstack.github.io/stacks.js/enums/authscope.html#publish_data) during authentication.
+Encrypted files need `decrypt` set to `true` so the app knows to decrypt the data with the user's app private key before made available in the callback here as `fileData`.
 
-```jsx
-const options = {
-  user: 'ryan.id', // the Stacks ID of the user for which to lookup the file
-  app: 'https://BlockstackApp.com', // origin of the app this file is stored for
-  decrypt: false,
-};
+## Get data for other user
 
-const userSession = new UserSession();
-storage.getFile('hello.txt', options).then(fileContents => {
-  // get the contents of the file /message.txt
-  assert(fileContents === 'hello world!');
-});
-```
+Apps can also retrieve public data saved by users other than the one with the active session, granted those users have registered usernames via the [Blockchain Naming System](/build-apps/references/bns).
 
-## Delete a file
+Simply indicate the username of such a user in the `options` object:
 
-Use the [`UserSession.deleteFile`](https://blockstack.github.io/stacks.js/classes/storage.html#deletefile) from the application's data store.
+```js
+import { AppConfig, UserSession } from '@stacks/connect';
+import { Storage } from '@stacks/storage';
 
-```jsx
-const userSession = new UserSession();
+const appConfig = new AppConfig(['store_write', 'publish_data']);
+const userSession = new UserSession({ appConfig });
 const storage = new Storage({ userSession });
 
-storage.deleteFile('hello.txt').then(() => {
-  // hello.txt is now removed.
+let fileName = 'car.json';
+
+const options = {
+  username: 'markmhendrickson.id.blockstack',
+};
+
+storage.getFile(fileName, options).then(fileData => {
+  // Handle any execution that uses decrypted fileData
 });
 ```
 
-## Write-to and Read-from URL Guarantees
+This `getFile` call will retrieve data found at the given `fileName` path from the storage bucket of the Gaia hub that maps to the user who registered the given `username` and this particular app as hosted at the current domain.
 
-Gaia is built on a driver model that supports many storage services. So, with
-very few lines of code, you can interact with providers on Amazon S3, Dropbox,
-and so forth. The simple `getFile()` and `putFile()` interfaces are kept simple
-because Stacks assumes and wants to encourage a community of
-open-source-data-management libraries.
+Set an additional `app` property within `options` to retrieve data for a user as saved by an app hosted at a separate domain:
 
-The performance and simplicity-oriented guarantee of the Gaia specification is
-that when an application submits a write-to
-`https://myhub.service.org/store/foo/bar` URL, the application is guaranteed to
-be able to read from the `https://myreads.com/foo/bar` URL. Note that, while the
-prefix in the write-to url (for example,`myhub.service.org/store`) and the read-from URL
-(`https://myreads.com`) are different, the `foo/bar` suffixes are the same.
-
-By default, `putFile()` encrypts information while `getFile()` decrypts it by default. Data stored in an
-encrypted format means only the user that stored it can view it. For applications that want other users to
-view data, the application should set the `encrypt` option to `false`. And, corresponding, the `decrypt`
-option on `getFile()` should also be `false`.
-
-Consistent, identical suffixes allow an application to know _exactly_ where a
-written file can be read from, given the read prefix. The Gaia service defines a `hub_info` endpoint to obtain
-that read prefix:
-
-```bash
-GET /hub_info/
+```js
+const options = {
+  app: 'example.org'
+  username: 'markmhendrickson.id.blockstack',
+};
 ```
 
-The endpoint returns a JSON object with a `read_url_prefix`, for example, if my service returns:
+This will cause the `getFile` call to retrieve data found in a separate storage bucket for the indicated app on the user's Gaia hub.
 
-```jsx
-{ ...,
-  "read_url_prefix": "https://myservice.org/read/"
-}
+## Delete data for session user
+
+Call the `deleteFile` method on `storage` to remove data found at a particular file path for the active session user:
+
+```js
+import { AppConfig, UserSession } from '@stacks/connect';
+import { Storage } from '@stacks/storage';
+
+const appConfig = new AppConfig(['store_write', 'publish_data']);
+const userSession = new UserSession({ appConfig });
+const storage = new Storage({ userSession });
+
+let fileName = 'car.json';
+
+storage.deleteFile(fileName).then(() => {
+  // Handle any execution after file has been deleted
+});
 ```
 
-The data be read with this `getFile()` and this address:
-
-```
-https://myservice.org/read/1DHvWDj834zPAkwMhpXdYbCYh4PomwQfzz/0/profile.json
-```
-
-The application is guaranteed that the profile is written with `putFile()` this request address:
-
-```
-https://myservice.org/store/1DHvWDj834zPAkwMhpXdYbCYh4PomwQfzz/0/profile.json
-```
-
-When you use the `putFile()` method it takes the user data and POSTs it to the user's Gaia storage hub.
-The data POSTs directly to the hub, the blockchain is not used and no data is stored there. The limit on
-file upload is currently 25mb.
-
-## Address-based access-control
-
-Access control in a Gaia storage hub is performed on a per-address basis.
-Writes to URLs `/store/<address>/<file>` are allowed only if the writer can
-demonstrate that they control _that_ address. This is achieved via the
-authentication token which is a message _signed_ by the private key associated
-with that address. The message itself is a challenge text, returned via the
-`/hub_info/` endpoint.
-
-Reads can be done by everybody. The URLs to a user's app data are in a canonical location in their profile.
-For example, here's how you would get data from the [Banter](https://banter.pub/) app, stored under the
-Stacks ID `gavin.id`.
-
-### Step 1: Get the bucket URL
-
-```bash
-BUCKET_URL="$(curl -sL https://core.blockstack.org/v1/users/gavin.id | jq -r '."gavin.id"["profile"]["apps"]["https://banter.pub"]')" ￼
-echo "$BUCKET_URL" ￼ https://gaia.blockstack.org/hub/16E485MVpR3QpmjVkRgej7ya2Vnzu3jyTR/
-```
-
-### Step 2: Get the data
-
-```bash
-curl -sL "${BUCKET_URL%%/}/Message/3e866af471d0-4072-beba-06ad1e7ad4bd"
-```
-
-```bash
-￼{"content":"Anyone here?","votes":[],"createdBy":"gavin.id",...}
-```
-
-This data is public and unencrypted. The same works for encrypted data. Only the holder of the private key used for encryption would be able to decrypt the data.
+-> Apps can save and delete data only for the active session user.
