@@ -12,48 +12,56 @@ images:
 
 ## Introduction
 
-The [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api) is an API that helps app developers to view and use the state of the Stacks 2.0 Blockchain.
+The [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api) is an API that helps app developers to view and use the state of the Stacks blockchain.
 
-In this tutorial you will extend a to-do app to share individual lists publicly using the Stacks 2.0 blockchain. The to-do app was built in the [to-do app tutorial](/authentication/building-todo-app). The registry of shared to-do lists is implemented by a Clarity smart contract named [`todo-registry`](https://github.com/friedger/blockstack-todos/blob/tut/public-registry/contracts/todo-registry.clar). Data from this contract will be shown in the to-do app. The final app will look like this:
+In this tutorial you will extend [the todos app](/build-app/tutorial/todos) to share individual lists publicly using the Stacks blockchain.
+
+The registry of shared todos lists is implemented by a Clarity smart contract named [`todo-registry`](https://github.com/friedger/blockstack-todos/blob/tut/public-registry/contracts/todo-registry.clar). Data from this contract will be shown in the todos app.
+
+The final app will look like this:
 
 ![What you'll be creating in this tutorial](/images/todos-public-registry.png)
 
-By the end of this tutorial, you will...
+By the end of this tutorial, you will have:
 
-- Have observed transactions while they are added to the blockchain.
-- Have consumed APIs to show recent transactions, data map entries and read-only functions.
-- Have experienced serializing and deserializing Clarity values.
+- Observed transactions while they are added to the blockchain
+- Consumed APIs to show recent transactions, data map entries and read-only functions
+- Experienced serializing and deserializing Clarity values
 
 ## Prerequisites
 
-### Check the Stacks 2.0 status
+### Check testnet status
 
-The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not running into any challenges related to the status of the network, please open up the [Status Checker](http://status.test-blockstack.com/)
+To make sure you're not running into any challenges related to testnet status, please open up the [Status Checker](http://status.test-blockstack.com/)
 and confirm that all systems are operational. If some systems seem to have issues, it is best to wait until they are back up before you proceed with the next steps.
 
-Furthermore, the to-do app will interact with a smart contract deployed as `ST1234....todo-registry`. The contract source code is available at [github](https://github.com/friedger/blockstack-todos/blob/tut/step1/contracts/todo-registry.clar). There may already be a deployed version available on the testnet; the [testnet explorer](https://testnet-explorer.blockstack.org/) can be used to search for it. Alternatively, the contract can be deployed as described in the [hello world tutorial](/smart-contracts/hello-world-tutorial#step-5-deploy-the-contract). Then you have to use the corresponding contract address and name in this tutorial. Throughout this tutorial, we use `ST3YPJ6BBCZCMH71TV8BK50YC6QJTWEGCNDFWEQ15.todo-registry` as an example.
+Furthermore, the todos app will interact with a smart contract deployed as `ST1234....todo-registry`. The contract source code is available at [GitHub](https://github.com/friedger/blockstack-todos/blob/tut/step1/contracts/todo-registry.clar).
+
+There may already be a deployed version available on the testnet; the [testnet explorer](https://testnet-explorer.blockstack.org/) can be used to search for it.
+
+Alternatively, the contract can be deployed as described in the [hello world tutorial](/smart-contracts/hello-world-tutorial#step-5-deploy-the-contract). Then you have to use the corresponding contract address and name in this tutorial. Throughout this tutorial, we use `ST3YPJ6BBCZCMH71TV8BK50YC6QJTWEGCNDFWEQ15.todo-registry` as an example.
 
 ### Tutorials
 
-You should have followed the instructions of the to-do app tutorial. You should have the code ready on your local machine. It is also helpful to have a basic understanding of Clarity as explained in the counter tutorial. If you are using mocknet or a new, empty testnet you can create transactions following the tutorial about signing transactions.
+You should have followed the instructions of the todos app tutorial. You should have the code ready on your local machine. It is also helpful to have a basic understanding of Clarity as explained in the counter tutorial. If you are using mocknet or a new, empty testnet you can create transactions following the tutorial about signing transactions.
 
 [@page-reference | grid]
-| /authentication/building-todo-app, /write-smart-contracts/counter-tutorial, /build-app/guides/signing-transactions
+| , /build-apps/guides/transaction-signing, /build-apps/tutorials/todos, /write-smart-contracts/counter-tutorial
 
-### Check your to-do app
+### Check your todos app
 
-In your code repository of the to-do app, launch the app by running the `start` command.
+In your code repository of the todos app, launch the app by running the `start` command.
 
 ```
 npm run start
 ```
 
-In your browser, you should see the to-do app.
-![What the to-do app looks like so far](/images/todos/landing.png)
+In your browser, you should see the todos app.
+![What the todos app looks like so far](/images/todos/landing.png)
 
 ## Registering a public URL
 
-The Connect library (that is already used for authentication in the to-do app) provides also methods to create, sign and broadcast transactions to the Stacks 2.0 blockchain as explained in the signing transaction tutorial.
+The Connect library (that is already used for authentication in the todos app) provides also methods to create, sign and broadcast transactions to the Stacks blockchain as explained in the signing transaction tutorial.
 
 ### Step 1: Define contract
 
@@ -120,7 +128,7 @@ export const PublicUrlRegistrar = ({ userSession }) => {
 };
 ```
 
-It is a simple button that calls `doContractCall` method of the Connect library when clicked. The method makes an api call to the Stacks authenticator. The authenticator creates a contract call transaction that is signed by the user and then it is broadcasted to the Stacks 2.0 blockchain as explained in the [transaction signing tutorial](/build-app/guides/signing-transactions).
+It is a simple button that calls `doContractCall` method of the Connect library when clicked. The method makes an api call to the Stacks authenticator. The authenticator creates a contract call transaction that is signed by the user and then it is broadcasted to the Stacks blockchain as explained in the [transaction signing tutorial](/build-app/guides/signing-transactions).
 
 Note how the arguments are created using `bufferCVFromString`. There are similar methods for all other Clarity types, like `uintCV` or `trueCV`. See the [documentation](https://github.com/blockstack/stacks.js/tree/master/packages/transactions#constructing-clarity-values) of the stacks-transactions library for more details.
 
@@ -133,9 +141,9 @@ To use the `PublicUrlRegistrar` component, open `Sharer.jsx` and add the followi
 <PublicUrlRegistrar userSession={userSession} />
 ```
 
-Now, you should be able to register your public to-do list on the blockchain when you click on "Register on-chain."
+Now, you should be able to register your public todos list on the blockchain when you click on "Register on-chain."
 
-![How to register the public to-do list](/images/todos-register-on-chain.png)
+![How to register the public todos list](/images/todos-register-on-chain.png)
 
 ## Waiting for transactions
 
@@ -143,7 +151,7 @@ The method `doContractCall` has a callback `finished` that is called after the u
 
 ### Step 1: Add dependency
 
-Add the Stacks Blockchain API client library to `package.json` in the root folder of the to-do list app:
+Add the Stacks Blockchain API client library to `package.json` in the root folder of the todos list app:
 
 ```bash
 npm add @stacks/blockchain-api-client
@@ -299,7 +307,7 @@ You should now be able to see an update in the UI if the transaction was success
 
 ## Show recent activities
 
-Similar to the `TransactionApi`, the `AccountsApi` provides easy access to account-related information. The api will be used in this section to show recent activities for the to-do list registry.
+Similar to the `TransactionApi`, the `AccountsApi` provides easy access to account-related information. The api will be used in this section to show recent activities for the todos list registry.
 
 ### Step 1: Create recent activities component
 
@@ -338,7 +346,7 @@ export const RecentActivities = () => {
     >
       <Box px={3} background="#efefef">
         <Text fontWeight="500" display="block" mb={0} fontSize={3}>
-          Public To-Do List Registry
+          Public Todos List Registry
         </Text>
         <Text fontWeight="500" display="block" mb={0} fontSize={2}>
           Recent Activities:{' '}
@@ -449,7 +457,7 @@ In addition to `tx_result`, the transaction object also contains a timestamp (`b
 
 ![How recent activities look like](/images/todos-recent-activities.png)
 
-## Fetch the first to-do list
+## Fetch the first todos list
 
 There are two other ways to get state information from the blockchain: read-only functions and data map entries. Read-only functions were already discussed in the [Clarity counter tutorial](/write-smart-contracts/counter-tutorial). They do not require a transaction to complete. Data maps in Clarity are maps that can be read by any user. See the [Clarity reference](/references/language-functions#define-map) for more details.
 
@@ -467,7 +475,7 @@ The `todo-registry` contract defines a read-only function `owner-of?` that retur
 )
 ```
 
-Let's add the owner information and the details for the first ever registered to-do list (with `registry-id` 1) to the `RecentActivities` component. The `SmartContractsApi` of the client library provides methods to read these data from the blockchain.
+Let's add the owner information and the details for the first ever registered todos list (with `registry-id` 1) to the `RecentActivities` component. The `SmartContractsApi` of the client library provides methods to read these data from the blockchain.
 
 ### Step 1: Add state variable for first registration
 
@@ -493,7 +501,7 @@ useEffect(() => {
 }, [fetchActivities, fetchRegistration]);
 ```
 
-### Step 2: Query owner of the first to-do list
+### Step 2: Query owner of the first todos list
 
 To query the read-only functions of the smart contract, a `SmartContractsApi` object needs to be created, in the same way as the `AccountsApi` object.
 
@@ -587,7 +595,7 @@ Update the UI to display the data of the first registry entry.
   firstRegistration && (
     <>
       <Text fontWeight="500" display="block" mb={0} fontSize={0}>
-        First registration in 'Public To-Do List registry' by
+        First registration in 'Public Todos List registry' by
       </Text>
       <Text fontSize={2}>
         <a href={firstRegistration.url}>{firstRegistration.name}</a>{' '}
