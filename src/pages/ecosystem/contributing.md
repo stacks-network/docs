@@ -141,29 +141,28 @@ If you are adding a new route, you have to add your route to a section contained
 sections:
   - pages:
       - path: /
-      - path: /build-apps # is an overview page
-      - path: /smart-contracts
+      - path: /understand-stacks
         pages:
           - path: /overview
-          - path: /principals
+          - path: /testnet
+          - path: /proof-of-transfer
+          - path: /mining
+          - path: /accounts
+          - path: /transactions
+          - path: /network
+          - path: /stacking
+          - path: /command-line-interface
+          - path: /local-development
+          - path: /technical-specs
+          - path: /stacks-blockchain-api
         sections:
           - title: Tutorials
             pages:
-              - path: /hello-world-tutorial
-              - path: /counter-tutorial
-              - path: /testing-contracts
-      - path: /mining # is an overview page
-
-  - title: Technology ## NEEDS UPDATE ONCE STABLE
-    pages:
-      - path: /authentication
-        pages:
-          - path: /overview
-        sections:
-          - title: Tutorials
-            usePageTitles: true
-            pages:
-              - path: /building-todo-app
+              - path: /managing-accounts
+              - path: /sending-tokens
+              - path: /running-testnet-node
+              - path: /integrate-stacking
+              - path: /stacking-using-CLI
 ```
 
 Adding a new route requires to add a new `path`.
