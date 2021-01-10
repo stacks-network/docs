@@ -319,7 +319,7 @@ it.
 
 Because subdomain names are cheap, developers may be inclined to run
 subdomain registrars on behalf of their applications. For example,
-the name `personal.id` is used to register Blockstack application users without
+the name `personal.id` is used to register usernames without
 requiring them to spend any Bitcoin.
 
 We supply a reference implementation of a [BNS Subdomain
