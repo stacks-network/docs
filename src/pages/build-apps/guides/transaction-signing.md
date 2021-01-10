@@ -5,13 +5,13 @@ experience: beginners
 tags:
   - tutorial
 images:
-  large: /images/pages/write-smart-contracts.svg
-  sm: /images/pages/write-smart-contracts-sm.svg
+  large: /images/transaction-signing.svg
+  sm: /images/transaction-signing.svg
 ---
 
 ## Introduction
 
-This guide explains how to prompt users to sign transactions and broadcast them to the Stacks blockchain by implementing the `connect` package of [Stacks.js](https://blockstack.github.io/stacks.js/).
+This guide explains how to prompt users to sign [transactions](/understand-stacks/transactions) and broadcast them to the Stacks blockchain by implementing the `connect` package of [Stacks.js](https://blockstack.github.io/stacks.js/).
 
 Transaction signing provides a way for users execute [Clarity smart contracts](/write-smart-contracts/overview) that are relevant to your app then handle the result immediately.
 

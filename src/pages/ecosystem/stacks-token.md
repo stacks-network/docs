@@ -2,6 +2,9 @@
 title: Stacks token
 description: Learn about the native token of Stacks
 icon: StacksIcon
+images:
+  large: /images/stx.svg
+  sm: /images/stx.svg
 ---
 
 # Learn more about the Stacks token

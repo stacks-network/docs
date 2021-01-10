@@ -1,6 +1,10 @@
 ---
 title: How to contribute
 description: Learn how this site is built, and how you could contribute to it.
+icon: BlockstackIcon
+images:
+  large: /images/contribute.svg
+  sm: /images/contribute.svg
 ---
 
 ## Introduction
