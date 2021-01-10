@@ -49,6 +49,14 @@ The first two of these functions are particularly relevant to [data storage with
 
 [Learn more about keypairs](#key-pairs) used by authentication.
 
+## Install dependency
+
+The following dependency must be installed:
+
+```
+npm install @stacks/connect
+```
+
 ## Initiate userSession object
 
 Apps keep track of user authentication state with the `userSession` object, initiated with the `UserSession` and `AppConfig` classes:
@@ -143,6 +151,12 @@ The authenticated state can later be detected by the `isUserSignedIn` method in 
 If the user has indeed confirmed authentication in the context of a popup window, the authenticator will resolve the pending authentication state automatically with the app within the parent window.
 
 It will then trigger the `finished` function provided above, which can be used similarly to save the user's information into their session as retrieved with `userSession.loadUserData()`.
+
+## Usage in React Apps
+
+Import the `useConnect` from the `connect` package to integrate transaction signing more seamlessly into React apps.
+
+TODO: Add guidance for authentication with React
 
 ## Key pairs
 
