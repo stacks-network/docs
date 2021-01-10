@@ -92,7 +92,7 @@ interface STXTransferOptions {
 Call the `openContractDeploy` function provided by the `connect` package to trigger the display of a transaction signing prompt for deploying a smart contract:
 
 ```tsx
-import { openContractDeploy } from '@blockstack/connect';
+import { openContractDeploy } from '@stack/connect';
 
 const codeBody = '(begin (print "hello, world"))';
 
