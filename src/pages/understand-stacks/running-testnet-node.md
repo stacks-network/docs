@@ -7,8 +7,8 @@ experience: beginners
 tags:
   - tutorial
 images:
-  large: /images/pages/testnet.svg
-  sm: /images/pages/testnet-sm.svg
+  large: /images/cli.svg
+  sm: /images/cli.svg
 ---
 
 ## Introduction

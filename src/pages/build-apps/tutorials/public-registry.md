@@ -1,13 +1,13 @@
 ---
-title: Public registry
-description: Learn how to read state from the Stacks blockchain.
+title: Public registry app
+description: Learn how to write and read state from the Stacks blockchain
 duration: 60 minutes
 experience: intermediate
 tags:
   - tutorial
 images:
-  large: /images/pages/todo-app.svg
-  sm: /images/pages/todo-app-sm.svg
+  large: /images/registry.svg
+  sm: /images/registry.svg
 ---
 
 ## Introduction
@@ -141,7 +141,7 @@ Now, you should be able to register your public to-do list on the blockchain whe
 
 The method `doContractCall` has a callback `finished` that is called after the user confirmed the transaction. This does not mean that the blockchain has accepted and included the transaction on the blockchain. It just means that the transaction was broadcasted to the network. The transaction id is returned in the `finished` callback as `data.txId`. This id can be used to find the transaction and its processing status on the blockchain. The [Stack Blockchain API client library](https://blockstack.github.io/stacks-blockchain-api/client/index.html) provides a convenient method to subscribe to the progress using web sockets.
 
-### Step 1: Add depedency
+### Step 1: Add dependency
 
 Add the Stacks Blockchain API client library to `package.json` in the root folder of the to-do list app:
 
@@ -149,7 +149,7 @@ Add the Stacks Blockchain API client library to `package.json` in the root folde
 npm add @stacks/blockchain-api-client
 ```
 
-### Step 2: Store the transaction id
+### Step 2: Store the transaction ID
 
 Create a react state variable in the `PublicUrlRegistrar` component that holds the transaction id.
 

@@ -1,6 +1,9 @@
 ---
 description: Learn about Stacks and decentralization
 icon: BlockstackIcon
+images:
+  large: /images/pages/ecosystem.svg
+  sm: /images/pages/ecosystem.svg
 ---
 
 # Overview of Stacks

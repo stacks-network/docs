@@ -3,8 +3,8 @@ title: Proof of Transfer
 description: Understand the proof-of-transfer consensus mechanism
 icon: TestnetIcon
 images:
-  large: /images/pages/testnet.svg
-  sm: /images/pages/testnet-sm.svg
+  large: /images/stacking.svg
+  sm: /images/stacking.svg
 ---
 
 ## Overview

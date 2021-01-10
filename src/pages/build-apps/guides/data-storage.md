@@ -5,8 +5,8 @@ experience: beginners
 tags:
   - tutorial
 images:
-  large: /images/pages/write-smart-contracts.svg
-  sm: /images/pages/write-smart-contracts-sm.svg
+  large: /images/gears.svg
+  sm: /images/gears.svg
 ---
 
 ## Introduction

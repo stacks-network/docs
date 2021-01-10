@@ -3,8 +3,8 @@ title: Overview
 description: Learn more about the Stacks 2.0 blockchain
 icon: TestnetIcon
 images:
-  large: /images/pages/testnet.svg
-  sm: /images/pages/testnet-sm.svg
+  large: /images/nodes.svg
+  sm: /images/nodes.svg
 ---
 
 ## Introduction
