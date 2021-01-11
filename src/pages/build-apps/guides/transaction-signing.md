@@ -137,21 +137,54 @@ interface ContractDeployOptions {
 
 ## Prompt to execute contract
 
-Call the `openContractCall` function provided by the `connect` package to trigger the display of a transaction signing prompt for executing a contract:
+Call the `openContractCall` function provided by the `connect` package to trigger the display of a transaction signing prompt for executing a contract.
+
+As an example, consider this simple Clarity contract:
+
+```clarity
+(define-public
+  (my-func
+    (arg-uint uint)
+    (arg-int int)
+    (arg-buff (buff 20))
+    (arg-string-ascii (string-ascii 20))
+    (arg-string-utf8 (string-utf8 20))
+    (arg-principal principal)
+    (arg-bool bool)
+  )
+  (ok u0)
+)
+```
+
+To execute this function, invoke the `openContractCall` method. Use the `ClarityValue` types from `@stacks/transactions` to construct properly formatted arguments.
 
 ```tsx
 import { openContractCall } from '@stacks/connect';
+import {
+  uintCV,
+  intCV,
+  bufferCV,
+  stringAsciiCV,
+  stringUtf8CV,
+  standardPrincipalCV,
+  trueCV,
+} from '@stacks/transactions';
+
+const functionArgs = [
+  uintCV(1234),
+  intCV(-234),
+  bufferCV(Buffer.from('hello, world')),
+  stringAsciiCV('hey-ascii'),
+  stringUtf8CV('hey-utf8'),
+  standardPrincipalCV('STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6'),
+  trueCV(),
+];
 
 const options = {
   contractAddress: 'ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ',
-  contractName: 'status',
-  functionName: 'write-status!',
-  functionArgs: [
-    {
-      type: 'buff',
-      value: 'hello world',
-    },
-  ],
+  contractName: 'my-contract',
+  functionName: 'my-func',
+  functionArgs,
   authOrigin,
   appDetails: {
     name: 'My App',
@@ -173,7 +206,7 @@ interface ContractCallOptions {
   contractAddress: string;
   functionName: string;
   contractName: string;
-  functionArgs?: any[];
+  functionArgs?: ClarityValue[];
   authOrigin?: string;
   appDetails: {
     name: string;
@@ -183,44 +216,15 @@ interface ContractCallOptions {
 }
 ```
 
-| parameter       | type     | required | description                                                                                                                                                                                          |
-| --------------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| contractAddress | string   | true     | Stacks address to which contract is deployed                                                                                                                                                         |
-| contractName    | string   | true     | Name of contract to sign                                                                                                                                                                             |
-| functionName    | string   | true     | Name of function for signing / execution, which needs to be a [public function](/references/language-functions#define-public).                                                                       |
-| functionArgs    | array    | true     | Arguments for calling the function. [Provide the Clarity type with each argument](#passing-clarity-types-with-function-arguments). Defaults to `[]`.                                                 |
-| appDetails      | object   | true     | Dictionary that requires `name` and `icon` for app                                                                                                                                                   |
-| finished        | function | true     | Callback executed by app when transaction has been signed and broadcasted. It received an object back with `txId` and `txRaw` properties, both of which are strings.                                 |
-| authOrigin      | string   | false    | URL of authenticator to use for prompting signature and broadcast. Defaults to `https://wallet.hiro.so` for the Stacks Wallet, which is handled by the Stacks Wallet browser extension if installed. |
-
-### Passing Clarity types with function arguments
-
-To serialize your transaction properly, you'll need to provide an appropriate [Clarity type](/references/language-types) for each function argument.
-
-These types are named the same as in Clarity and must be passed as strings:
-
-- `uint`: Unsigned integer (e.g. `"240"`)
-- `int`: Signed integer (e.g. `"12"`)
-- `bool`: Boolean (e.g. `true` or `false`, `0` or `1`)
-- `buff`: Buffer (e.g. `"hello world"`)
-- `principal`: [Contract or standard principal](/write-smart-contracts/principals) (e.g. `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ"`) or `"ST22T6ZS7HVWEMZHHFK77H4GTNDTWNPQAX8WZAKHJ.my-contract"`.
-
-Argument are provided in an array of objects with keys `type` and `value`:
-
-```tsx
-const functionArguments = [
-  {
-    type: 'buff',
-    value: 'hello, world',
-  },
-  {
-    type: 'uint',
-    value: '1',
-  },
-];
-```
-
--> If you're using TypeScript, these Clarity types can be imported as `ContractCallArgumentType` from `@stacks/connect`.
+| parameter       | type             | required | description                                                                                                                                                                                                  |
+| --------------- | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| contractAddress | string           | true     | Stacks address to which contract is deployed                                                                                                                                                                 |
+| contractName    | string           | true     | Name of contract to sign                                                                                                                                                                                     |
+| functionName    | string           | true     | Name of function for signing / execution, which needs to be a [public function](/references/language-functions#define-public).                                                                               |
+| functionArgs    | `ClarityValue[]` | true     | Arguments for calling the function. [Learn more about constructing clarity values](https://github.com/blockstack/stacks.js/tree/master/packages/transactions#constructing-clarity-values). Defaults to `[]`. |
+| appDetails      | object           | true     | Dictionary that requires `name` and `icon` for app                                                                                                                                                           |
+| finished        | function         | true     | Callback executed by app when transaction has been signed and broadcasted. It received an object back with `txId` and `txRaw` properties, both of which are strings.                                         |
+| authOrigin      | string           | false    | URL of authenticator to use for prompting signature and broadcast. Defaults to `https://wallet.hiro.so` for the Stacks Wallet, which is handled by the Stacks Wallet browser extension if installed.         |
 
 ## Usage in React Apps
 
