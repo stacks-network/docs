@@ -17,10 +17,7 @@ multi-player DApps that:
 - display real-time updates that reflect in progress changes
 - support collaboration among sets of users
 
-Want to jump right in and start integrating indexing into your app? Try this tutorial:
-
-[@page-reference | inline]
-| /data-storage/integrate-indexing
+Want to jump right in and start integrating indexing into your app? [Try this tutorial](/build-apps/tutorials/indexing).
 
 ## Why use Radiks?
 
@@ -93,4 +90,4 @@ All data is also stored in Gaia; no third-party can revoke access to this data.
 All data is encrypted on the client-side before being stored anywhere using Stacks authorization. The application
 host cannot inspect, sell, or use user data in any way that a user doesn't explicitly authorize.
 
-If you are not familiar with Gaia, see [read the Gaia documentation](/data-storage/overview).
+If you are not familiar with Gaia, see [read the Gaia documentation](/build-apps/references/gaia).
