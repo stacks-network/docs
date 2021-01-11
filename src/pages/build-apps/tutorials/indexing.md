@@ -224,4 +224,4 @@ The `maxLimit` option is the maximum `limit` field used inside the mongo queries
 
 ## Where to go next
 
-Creating models for your application's data is where radiks truly becomes helpful. To learn how to use models, see the [Create and use models](/data-storage/indexing-models) section.
+Creating models for your application's data is where radiks truly becomes helpful. To learn how to use models, see the [Create and use models](/build-apps/indexing/models) section.

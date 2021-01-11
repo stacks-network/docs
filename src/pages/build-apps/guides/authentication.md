@@ -1,9 +1,6 @@
 ---
 title: Authentication
 description: Register and sign in users with identities on the Stacks blockchain
-experience: beginners
-tags:
-  - tutorial
 images:
   large: /images/pages/write-smart-contracts.svg
   sm: /images/pages/write-smart-contracts-sm.svg
@@ -17,7 +14,10 @@ Authentication provides a way for users to identify themselves to an app while r
 
 Users who register for your app can subsequently authenticate to any other app with support for the [Blockchain Naming System](/build-apps/references/bns) and vice versa.
 
-[See the Todos app tutorial](/build-apps/tutorials/todos) for a concrete example of this functionality in practice.
+See the Todos app tutorial for a concrete example of this functionality in practice.
+
+[@page-reference]
+| /build-apps/tutorials/todos
 
 ## How it works
 
@@ -154,9 +154,20 @@ It will then trigger the `finished` function provided above, which can be used s
 
 ## Usage in React Apps
 
-Import the `useConnect` from the `connect` package to integrate transaction signing more seamlessly into React apps.
+Import the `useConnect` from the [`connect-react`](https://github.com/blockstack/ux/tree/master/packages/connect-react) package to integrate authentication more seamlessly into React apps.
 
-TODO: Add guidance for authentication with React
+```
+npm install @stacks/connect-react
+```
+
+```jsx
+import { useConnect } from '@stacks/connect-react';
+
+const AuthButton = () => {
+  const { doOpenAuth } = useConnect();
+  return <Button onClick={() => doOpenAuth()}>Authenticate</Button>;
+};
+```
 
 ## Key pairs
 

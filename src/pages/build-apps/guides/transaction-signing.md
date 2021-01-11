@@ -1,9 +1,6 @@
 ---
 title: Transaction signing
 description: Prompt users to sign and broadcast transactions to the Stacks blockchain
-experience: beginners
-tags:
-  - tutorial
 images:
   large: /images/transaction-signing.svg
   sm: /images/transaction-signing.svg
@@ -11,9 +8,9 @@ images:
 
 ## Introduction
 
-This guide explains how to prompt users to sign [transactions](/understand-stacks/transactions) and broadcast them to the Stacks blockchain by implementing the `connect` package of [Stacks.js](https://blockstack.github.io/stacks.js/).
+This guide explains how to prompt users to sign [transactions](/understand-stacks/transactions) and broadcast them to the Stacks blockchain by implementing the [`connect`](https://github.com/blockstack/ux/tree/master/packages/connect#stacksconnect) package of Stacks.js.
 
-Transaction signing provides a way for users execute [Clarity smart contracts](/write-smart-contracts/overview) that are relevant to your app then handle the result immediately.
+Transaction signing provides a way for users execute [Clarity smart contracts](/write-smart-contracts/overview) that are relevant to your app then handle the result as appropriate.
 
 Users can sign transactions that exchange fungible or non-fungible tokens with upfront guarantees that help them retain control over their digital assets.
 
@@ -23,7 +20,10 @@ There are three types of transactions:
 2. Contract deployment
 3. Contract execution
 
-[See the public registry tutorial](/build-apps/tutorials/public-registry) for a concrete example of this functionality in practice.
+See the public registry tutorial for a concrete example of this functionality in practice.
+
+[@page-reference]
+| /build-apps/tutorials/public-registry
 
 ## Install dependency
 
@@ -195,7 +195,7 @@ interface ContractCallOptions {
 
 ### Passing Clarity types with function arguments
 
-To serialize your transaction properly, you'll need to provide an appropriate Clarity type for each function argument.
+To serialize your transaction properly, you'll need to provide an appropriate [Clarity type](/references/language-types) for each function argument.
 
 These types are named the same as in Clarity and must be passed as strings:
 
@@ -224,7 +224,11 @@ const functionArguments = [
 
 ## Usage in React Apps
 
-Import the `useConnect` from the `connect` package to integrate transaction signing more seamlessly into React apps.
+Import the `useConnect` from the [`connect-react`](https://github.com/blockstack/ux/tree/master/packages/connect-react) package to integrate transaction signing more seamlessly into React apps.
+
+```
+npm install @stacks/connect-react
+```
 
 Each transaction signing method is itself available as a function returned by `useConnect` though prefixed with `do` for consistency with React action naming standards:
 
@@ -235,7 +239,7 @@ Each transaction signing method is itself available as a function returned by `u
 Use these functions with the same parameters as outlined above. However, you don't have to specify `appDetails` since they are detected automatically if `useConnect` has been used already for authentication.
 
 ```tsx
-import { useConnect } from '@stacks/connect';
+import { useConnect } from '@stacks/connect-react';
 
 const MyComponent = () => {
   const { doContractCall } = useConnect();
@@ -250,10 +254,6 @@ const MyComponent = () => {
   return <span onClick={onClick}>Call my contract</span>;
 };
 ```
-
-## Change network
-
-TBD: Instructions for changing between mainnet, testnet and local networks
 
 ## Request testnet STX from faucet
 
