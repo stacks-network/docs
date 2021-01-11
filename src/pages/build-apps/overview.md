@@ -14,7 +14,7 @@ Unlike most cloud-based apps, they are "decentralized" since they don't depend o
 
 This page provides information on how to build such apps using [Stacks.js](https://github.com/blockstack/stacks.js) and other libraries that make integration of the Stacks blockchain easy for front-end developers.
 
-Three main types of integration are available:
+Three main integrations are available:
 
 - **Authentication**: Register and sign in users with identities with the Stacks blockchain
 - **Transaction signing**: Prompt users to sign and broadcast transactions to the Stacks blockchain
