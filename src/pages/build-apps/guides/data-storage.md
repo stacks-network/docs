@@ -1,9 +1,6 @@
 ---
 title: Data storage
 description: Save and retrieve data for users with Gaia
-experience: beginners
-tags:
-  - tutorial
 images:
   large: /images/gears.svg
   sm: /images/gears.svg
@@ -17,15 +14,17 @@ Data storage provides a way for users to save both public and private data off-c
 
 Storing data off the Stacks blockchain ensures that apps can provide users with high performance and high availability for data reads and writes without the involvement of centralized parties that could compromise their privacy or accessibility.
 
-[See the Todos app tutorial](/build-apps/tutorials/todos) for a concrete example of this functionality in practice.
+See the Todos app tutorial](/build-apps/tutorials/todos for a concrete example of this functionality in practice.
+
+[@page-reference]
+| /build-apps/tutorials/todos
 
 ## Install dependencies
 
 The following dependencies must be installed:
 
 ```
-npm install @stacks/connect
-npm install @stacks/storage
+npm install @stacks/connect @stacks/storage
 ```
 
 ## Initiate session

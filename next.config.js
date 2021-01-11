@@ -51,7 +51,17 @@ async function redirects() {
     },
     {
       source: '/develop/storage.html',
-      destination: '/build-apps/references/gaia',
+      destination: '/build-apps/guides/data-storage',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/storage-write-read',
+      destination: '/build-apps/guides/data-storage',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/storage-guide',
+      destination: '/build-apps/guides/data-storage',
       permanent: true,
     },
     {
@@ -60,8 +70,8 @@ async function redirects() {
       permanent: true,
     },
     {
-      source: '/data-storage/overview',
-      destination: '/build-apps/references/gaia',
+      source: '/data-storage/authentication',
+      destination: '/build-apps/guides/authentication',
       permanent: true,
     },
     {
@@ -126,7 +136,7 @@ async function redirects() {
     },
     {
       source: '/develop/connect/use-with-clarity.html',
-      destination: '/build-apps/transaction-signing',
+      destination: '/build-apps/guides/transaction-signing',
       permanent: true,
     },
     {
@@ -231,6 +241,11 @@ async function redirects() {
     },
     {
       source: '/develop/collection-type.html',
+      destination: '/build-apps/collections/types',
+      permanent: true,
+    },
+    {
+      source: '/data-storage/collection-type',
       destination: '/build-apps/collections/types',
       permanent: true,
     },
@@ -707,12 +722,12 @@ async function redirects() {
     },
     {
       source: '/smart-contracts/signing-transactions',
-      destination: '/build-apps/transaction-signing',
+      destination: '/build-apps/guides/transaction-signing',
       permanent: true,
     },
     {
       source: '/write-smart-contracts/signing-transactions',
-      destination: '/build-apps/transaction-signing',
+      destination: '/build-apps/guides/transaction-signing',
       permanent: true,
     },
     {
@@ -822,17 +837,17 @@ async function redirects() {
     },
     {
       source: '/smart-contracts/public-registry-tutorial',
-      destination: '/build-apps/tutorial/public-registry',
+      destination: '/build-apps/tutorials/public-registry',
       permanent: true,
     },
     {
       source: '/smart-contracts/public-registry-tutorial',
-      destination: '/build-apps/tutorial/public-registry',
+      destination: '/build-apps/tutorials/public-registry',
       permanent: true,
     },
     {
       source: '/write-smart-contracts/public-registry-tutorial',
-      destination: '/build-apps/tutorial/public-registry',
+      destination: '/build-apps/tutorials/public-registry',
       permanent: true,
     },
     {
