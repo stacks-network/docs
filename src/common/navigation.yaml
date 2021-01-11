@@ -97,7 +97,6 @@ sections:
       - path: /references
         pages:
           - path: /stacks-cli
-          - path: /stacking-contract
           - external:
               href: 'https://blockstack.github.io/stacks-blockchain-api/'
               title: Stacks Blockchain API
@@ -109,6 +108,11 @@ sections:
           - path: /glossary
           - path: /deploy-tips
         sections:
+          - title: Contracts
+            usePageTitles: true
+            pages:
+              - path: /bns-contract
+              - path: /stacking-contract
           - title: Clarity Language
             usePageTitles: true
             pages:
