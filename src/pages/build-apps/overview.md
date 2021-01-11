@@ -16,7 +16,7 @@ This page provides information on how to build such apps using [Stacks.js](https
 
 Three main integrations are available:
 
-- **Authentication**: Register and sign in users with identities with the Stacks blockchain
+- **Authentication**: Register and sign users in with identities on the Stacks blockchain
 - **Transaction signing**: Prompt users to sign and broadcast transactions to the Stacks blockchain
 - **Data storage**: Save and retrieve data for users with [Gaia](/build-apps/references/gaia)
 
