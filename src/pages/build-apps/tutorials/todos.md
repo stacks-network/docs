@@ -116,7 +116,7 @@ The `showConnect` function accepts a number of properties within a parameter obj
 
 - The app's `name` and `icon`: provided as strings comprising the `appDetails` object property.
 - The `redirectTo` string: used to provide a URL to which the user should be redirected upon successful authentication. The `finished` callback serves a similar purpose by handling successful authentication within a context of a popup window.
-- The `userSession` object: used to pass the [scopes](/authentication/overview#scopes) needed by the app.
+- The `userSession` object: used to pass the [scopes](/build-apps/guides/authentication#initiate-usersession-object) needed by the app.
 
 Note how the `userSession` object is created at the beginning of this module by leveraging an `AppConfig` object that's first initiated with all relevant scopes.
 

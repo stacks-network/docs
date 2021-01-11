@@ -14,7 +14,7 @@ images:
 
 ## Getting started with Angular
 
-In this tutorial, you'll learn how to work with Stacks Connect when using [Angular](https://angular.io/) as your framework of choice. It builds on what you've learnt in the [Authentication Overview](/authentication/overview).
+In this tutorial, you'll learn how to work with Stacks Connect when using [Angular](https://angular.io/) as your framework of choice. It builds on what you've learnt in the [Authentication Overview](/build-apps/guides/authentication).
 
 -> This article presumes some familiarity with [Angular](https://angular.io/), as well as [Reactive Extensions (RxJS)](https://rxjs.dev/).
 
@@ -122,7 +122,7 @@ Here we're using an Rxjs `Subject` to represent a stream of sign in events. `sta
 
 ### 4.3 Authentication
 
-First, describe the auth options we need to pass to Connect. [Learn more about `AuthOptions` here](/authentication/overview). Let's modify the default component to look like this:
+First, describe the auth options we need to pass to Connect. [Learn more about `AuthOptions` here](/build-apps/guides/authentication). Let's modify the default component to look like this:
 
 ```typescript
 import { Component } from '@angular/core';
