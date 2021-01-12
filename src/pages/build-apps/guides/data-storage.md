@@ -14,7 +14,7 @@ Data storage provides a way for users to save both public and private data off-c
 
 Storing data off the Stacks blockchain ensures that apps can provide users with high performance and high availability for data reads and writes without the involvement of centralized parties that could compromise their privacy or accessibility.
 
-See the Todos app tutorial](/build-apps/tutorials/todos for a concrete example of this functionality in practice.
+See the Todos app tutorial for a concrete example of this functionality in practice.
 
 [@page-reference]
 | /build-apps/tutorials/todos
@@ -31,7 +31,10 @@ npm install @stacks/connect @stacks/storage
 
 Users must authenticate to an app before the `storage` package will work to save or retrieve data on their behalf.
 
-[See the authentication guide](/build-apps/guides/authentication) before proceeding to integrate the following data storage capabilities in cases where `userSession.isUserSignedIn()` returns `true`.
+See the authentication guide before proceeding to integrate the following data storage capabilities in cases where `userSession.isUserSignedIn()` returns `true`.
+
+[@page-reference]
+| /build-apps/guides/authentication
 
 ## Save data for session user
 
@@ -63,7 +66,7 @@ let fileData = {
   purchaseDate: '2019-04-03',
 };
 
-let options = {
+const options = {
   encrypt: true,
 };
 
@@ -80,7 +83,7 @@ Whereas saving privately encrypted data is possible for all authenticated apps w
 
 The `putFile` method returns the URL where the the file can be retrieved from the user's Gaia hub, as used here to set the value of `fileUrl`.
 
--> Note that you'll need to save an entirely new string of modified data using `putFile` with the same `fileName` every time you want to update a record. There is no separate update method.
+-> You'll need to save an entirely new string of modified data using `putFile` with the same `fileName` every time you want to update a record. There is no separate update method.
 
 ## Get data for session user
 
