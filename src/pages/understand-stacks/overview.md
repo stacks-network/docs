@@ -81,7 +81,7 @@ Clarity is distinct from other languages designed for writing smart contracts in
 
 Stacks 2.0 enabled building decentralized apps that are user-owned and avoid centralized servers.
 
-[@page-reference | inline]
+[@page-reference | grid]
 | /build-apps/overview, /build-apps/guides/authentication, /build-apps/guides/transaction-signing, /build-apps/guides/data-storage
 
 ## Guides
