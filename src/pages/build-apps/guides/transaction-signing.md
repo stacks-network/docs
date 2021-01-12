@@ -37,7 +37,10 @@ npm install @stacks/connect
 
 Users must authenticate to an app before the `connect` package will work to prompt them for signing and broadcasting transactions to the Stacks blockchain with an authenticator such as [the Stacks Wallet](https://blockstack.org/wallet).
 
-[See the authentication guide](/build-apps/guides/authentication) before proceeding to integrate the following transaction signing capabilities in cases where `userSession.isUserSignedIn()` returns `true`.
+See the authentication guide before proceeding to integrate the following transaction signing capabilities in cases where `userSession.isUserSignedIn()` returns `true`.
+
+[@page-reference]
+| /build-apps/guides/authentication
 
 ## Prompt to transfer STX
 
@@ -92,7 +95,7 @@ interface STXTransferOptions {
 Call the `openContractDeploy` function provided by the `connect` package to trigger the display of a transaction signing prompt for deploying a smart contract:
 
 ```tsx
-import { openContractDeploy } from '@stack/connect';
+import { openContractDeploy } from '@stacks/connect';
 
 const codeBody = '(begin (print "hello, world"))';
 
@@ -240,7 +243,7 @@ Each transaction signing method is itself available as a function returned by `u
 - `openSTXTransfer` as `doSTXTransfer`
 - `openContractDeploy` as `doContractDeploy`
 
-Use these functions with the same parameters as outlined above. However, you don't have to specify `appDetails` since they are detected automatically if `useConnect` has been used already for authentication.
+Use these functions with the same parameters as outlined above. However, you don't have to specify `appDetails` since they are detected automatically if `useConnect` has been used already [for authentication](/build-apps/guides/authentication#usage-in-react-apps).
 
 ```tsx
 import { useConnect } from '@stacks/connect-react';
