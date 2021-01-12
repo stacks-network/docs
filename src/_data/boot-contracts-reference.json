@@ -88,6 +88,13 @@
         "description": "Returns true if the provided namespace is available."
       },
       {
+        "name": "can-receive-name",
+        "input_type": "principal",
+        "output_type": "(response bool int)",
+        "signature": "(can-receive-name owner)",
+        "description": "Returns true if the provided name can be received. That is, if it is not curretly owned, a previous lease is expired, and the name wasn't revoked."
+      },
+      {
         "name": "get-name-price",
         "input_type": "(buff 20), (buff 48)",
         "output_type": "(response uint int)",
