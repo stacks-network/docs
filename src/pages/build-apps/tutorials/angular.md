@@ -49,7 +49,7 @@ ng serve
 npm install --save @stacks/connect blockstack
 ```
 
--> Note that we're also installing the `blockstack` package, as it's a [peer dependency](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#peerdependencies) of Stacks Connect
+-> We're also installing the `blockstack` package, as it's a [peer dependency](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#peerdependencies) of Stacks Connect
 
 ## 3. Declare missing globals
 
