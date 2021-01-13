@@ -117,6 +117,7 @@ miner = true
 #### working_dir (optional)
 
 Absolute path to the directory which the stacks-node will use for storing various data.
+Until [issue 1576](https://github.com/blockstack/stacks-blockchain/issues/1576) is resolved, this option is unsupported -- use at your own risk.
 
 Example:
 
@@ -404,35 +405,27 @@ Example:
 peer_port = 8333
 ```
 
-#### process_exit_at_block_height (optional)
-
-Block height of the burnchain at which the stacks-node will self-terminate. Used during the testnet phases for various testing cycles.
-
-Example:
-
-```toml
-process_exit_at_block_height = 5340
-```
-
-#### burnchain_op_tx_fee (optional)
-
-Transaction fee per burnchain operation.
-
-Example:
-
-```toml
-burnchain_op_tx_fee = 5500
-```
-
 #### burn_fee_cap (optional)
 
-Max burn fee for a transaction.
+Maximum amount (in Satoshis) of "burn commitment" to broadcast for the next block's leader election.
 
 Example:
 
 ```toml
 burn_fee_cap = 30000
 ```
+
+#### satoshis_per_byte (optional)
+
+Amount (in Satoshis) per [virtual byte](https://en.bitcoin.it/wiki/Weight_units). This is used to compute the transaction fees.
+
+Example:
+
+```toml
+satoshis_per_byte = 50
+```
+
+So total transaction cost would be `(estimated_tx_size * satoshis_per_byte) + burn_fee_cap`.
 
 #### commit_anchor_block_within (optional)
 
