@@ -174,7 +174,7 @@ To execute Stacks node with extra debugging enabled, run:
 
 ```bash
 set RUST_BACKTRACE=full
-set BLOCKSTACK_DEBUG=1
+set STACKS_LOG_DEBUG=1
 stacks-node xenon
 # This command will execute the binary and start the follower node with debug enabled.
 ```
@@ -202,7 +202,7 @@ docker run -d \
   stacks-node xenon
 ```
 
--> To enable debug logging, add the ENV VARS `RUST_BACKTRACE="full"` and `BLOCKSTACK_DEBUG="1"`.
+-> To enable debug logging, add the ENV VARS `RUST_BACKTRACE="full"` and `STACKS_LOG_DEBUG="1"`.
 
 You can review the node logs with this command:
 
