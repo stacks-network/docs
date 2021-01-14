@@ -156,7 +156,7 @@ To read more about the technical details of mining on the Stacks 2.0 network, ha
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
 
 ```bash
-BLOCKSTACK_DEBUG=1 stacks-node mainnet
+STACKS_LOG_DEBUG=1 stacks-node mainnet
 ```
 
 ## Running a miner in Windows
@@ -249,7 +249,7 @@ In case you are running into issues or would like to see verbose logging, you ca
 
 ```bash
 set RUST_BACKTRACE=full;
-set BLOCKSTACK_DEBUG=1;
+set STACKS_LOG_DEBUG=1;
 stacks-node start --config=mainnet-miner-conf.toml
 ```
 
@@ -302,7 +302,7 @@ peer_port = 8333
 
 ### Start the miner
 
--> The ENV VARS `RUST_BACKTRACE` and `BLOCKSTACK_DEBUG` are optional. If removed, debug logs will be disabled
+-> The ENV VARS `RUST_BACKTRACE` and `STACKS_LOG_DEBUG` are optional. If removed, debug logs will be disabled
 
 ```bash
 docker run -d \
@@ -310,7 +310,7 @@ docker run -d \
   --rm \
   --network host \
   -e RUST_BACKTRACE="full" \
-  -e BLOCKSTACK_DEBUG="1" \
+  -e STACKS_LOG_DEBUG="1" \
   -v "$HOME/stacks/Config.toml:/src/stacks-node/Config.toml" \
   -p 20443:20443 \
   -p 20444:20444 \
