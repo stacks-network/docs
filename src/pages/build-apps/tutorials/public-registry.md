@@ -82,7 +82,7 @@ The contract function `register` takes two arguments:
 (define-public (register (name (buff 30)) (url (buff 255))) ...)
 ```
 
-Create a new file in the `src/components` folder named `PublicUrlRegistrar.js` and add the `PublicUrlRegistrar` component:
+Create a new filed named `PublicUrlRegistrar.jsx` in the `src/components` folder and add the `PublicUrlRegistrar` component:
 
 ```js
 // src/components/PublicUrlRegistrar.jsx
