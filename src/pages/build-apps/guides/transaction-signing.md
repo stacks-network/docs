@@ -268,7 +268,7 @@ The `txId` property can be used to provide a link to view the transaction in the
 ```ts
 const onFinish = data => {
   const explorerTransactionUrl = 'https://explorer.stacks.co/txid/${data.txId}';
-  console.log('View in explorer:', explorerTransactionUrl);
+  console.log('View transaction in explorer:', explorerTransactionUrl);
 };
 ```
 
