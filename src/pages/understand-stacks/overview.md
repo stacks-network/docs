@@ -103,7 +103,7 @@ Ready to get started with Stacks? Try one of our existing tutorials:
 Developing on the Stacks blockchain is much simpler with the our tooling.
 
 - **Network health checker**: Check the status of the network with the [status checker](/understand-stacks/network#health-check)
-- **Explorer**: View accounts, blocks, transactions, and smart contracts broadcasted to the Stacks blockchain using the [Stacks 2.0 Explorer](https://testnet-explorer.blockstack.org/)
+- **Explorer**: View accounts, blocks, transactions, and smart contracts broadcasted to the Stacks blockchain using the [Stacks Explorer](https://explorer.stacks.co/)
 - **API**: Read and interact with the blockchain and with smart contract using the [Stacks 2.0 Blockchain API](/understand-stacks/stacks-blockchain-api)
 - **CLI**: Use the [Stacks CLI](/understand-stacks/command-line-interface) inside your terminal
 - **Libraries**: Use the [Stacks Javascript libraries](https://blockstack.github.io/stacks.js/) to integrate with the Stacks blockchain
