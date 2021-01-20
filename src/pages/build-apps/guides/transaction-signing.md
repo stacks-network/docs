@@ -77,7 +77,8 @@ openSTXTransfer({
     name: 'My App',
     icon: window.location.origin + '/my-app-logo.svg',
   },
-  finished: data => {
+  onFinish: data => {
+    console.log('Stacks Transaction:', data.stacksTransaction);
     console.log('Transaction ID:', data.txId);
     console.log('Raw transaction:', data.txRaw);
   },
@@ -97,7 +98,7 @@ interface STXTransferOptions {
     name: string;
     icon: string;
   };
-  finished: (data: FinishedTxData) => void;
+  onFinish: (data: FinishedTxData) => void;
 }
 ```
 
@@ -106,7 +107,7 @@ interface STXTransferOptions {
 | recipient  | string        | true     | STX address for recipient of transfer                                                                                                                                                                |
 | amount     | string        | true     | Amount of microstacks (1 STX = 1,000,000 microstacks) to be transferred provided as string to prevent floating point errors.                                                                         |
 | appDetails | object        | true     | Dictionary that requires `name` and `icon` for app                                                                                                                                                   |
-| finished   | function      | true     | Callback executed by app when transaction has been signed and broadcasted. It received an object back with `txId` and `txRaw` properties, both of which are strings.                                 |
+| onFinish   | function      | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option)                                                                                             |
 | memo       | string        | false    | Optional memo for inclusion with transaction                                                                                                                                                         |
 | authOrigin | string        | false    | URL of authenticator to use for prompting signature and broadcast. Defaults to `https://wallet.hiro.so` for the Stacks Wallet, which is handled by the Stacks Wallet browser extension if installed. |
 | network    | StacksNetwork | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)                                                                                                       |
@@ -127,7 +128,8 @@ openContractDeploy({
     name: 'My App',
     icon: window.location.origin + '/my-app-logo.svg',
   },
-  finished: data => {
+  onFinish: data => {
+    console.log('Stacks Transaction:', data.stacksTransaction);
     console.log('Transaction ID:', data.txId);
     console.log('Raw transaction:', data.txRaw);
   },
@@ -141,11 +143,12 @@ interface ContractDeployOptions {
   codeBody: string;
   contractName: string;
   authOrigin?: string;
+  network: StacksNetwork;
   appDetails: {
     name: string;
     icon: string;
   };
-  finished: (data: FinishedTxData) => void;
+  onFinish: (data: FinishedTxData) => void;
 }
 ```
 
@@ -154,7 +157,7 @@ interface ContractDeployOptions {
 | codeBody     | string        | true     | Clarity source code for contract                                                                                                                                                                     |
 | contractName | string        | true     | Name for contract                                                                                                                                                                                    |
 | appDetails   | object        | true     | Dictionary that requires `name` and `icon` for app                                                                                                                                                   |
-| finished     | function      | true     | Callback executed by app when transaction has been signed and broadcasted. It received an object back with `txId` and `txRaw` properties, both of which are strings.                                 |
+| onFinish     | function      | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option)                                                                                             |
 | authOrigin   | string        | false    | URL of authenticator to use for prompting signature and broadcast. Defaults to `https://wallet.hiro.so` for the Stacks Wallet, which is handled by the Stacks Wallet browser extension if installed. |
 | network      | StacksNetwork | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)                                                                                                       |
 
@@ -215,7 +218,8 @@ const options = {
     name: 'My App',
     icon: window.location.origin + '/my-app-logo.svg',
   },
-  finished: data => {
+  onFinish: data => {
+    console.log('Stacks Transaction:', data.stacksTransaction);
     console.log('Transaction ID:', data.txId);
     console.log('Raw transaction:', data.txRaw);
   },
@@ -232,25 +236,42 @@ interface ContractCallOptions {
   functionName: string;
   contractName: string;
   functionArgs?: ClarityValue[];
+  network: StacksNetwork;
   authOrigin?: string;
   appDetails: {
     name: string;
     icon: string;
   };
-  finished: (data: FinishedTxData) => void;
+  onFinish: (data: FinishedTxData) => void;
 }
 ```
 
 | parameter       | type             | required | description                                                                                                                                                                                                  |
-| --------------- | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| --------------- | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- |
 | contractAddress | string           | true     | Stacks address to which contract is deployed                                                                                                                                                                 |
 | contractName    | string           | true     | Name of contract to sign                                                                                                                                                                                     |
 | functionName    | string           | true     | Name of function for signing / execution, which needs to be a [public function](/references/language-functions#define-public).                                                                               |
 | functionArgs    | `ClarityValue[]` | true     | Arguments for calling the function. [Learn more about constructing clarity values](https://github.com/blockstack/stacks.js/tree/master/packages/transactions#constructing-clarity-values). Defaults to `[]`. |
 | appDetails      | object           | true     | Dictionary that requires `name` and `icon` for app                                                                                                                                                           |
-| finished        | function         | true     | Callback executed by app when transaction has been signed and broadcasted. It received an object back with `txId` and `txRaw` properties, both of which are strings.                                         |
+| onFinish        | function         | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option)                                                                                                     |     |
 | authOrigin      | string           | false    | URL of authenticator to use for prompting signature and broadcast. Defaults to `https://wallet.hiro.so` for the Stacks Wallet, which is handled by the Stacks Wallet browser extension if installed.         |
 | network         | StacksNetwork    | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)                                                                                                               |
+
+## Getting the signed transaction back after completion {#onFinish-option}
+
+Each transaction signing method from `@stacks/connect` allows you to specify an `onFinish` callback. This callback will be triggered after the user has successfully broadcasted their transaction. The transaction will be broadcasted, but it will be pending until it has been mined on the Stacks blockchain.
+
+You can access some information about this transaction via the arguments passed to `onFinish`. Your callback will be fired with a single argument, which is an object with the following properties:
+
+```ts
+interface FinishedTxData {
+  stacksTransaction: StacksTransaction;
+  txRaw: string;
+  txId: string;
+}
+```
+
+The `StacksTransaction` type comes from the [`@stacks/transactions`](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library.
 
 ## Specifying the network for a transaction {#network-option}
 
