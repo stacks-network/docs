@@ -65,14 +65,11 @@ Call the `openSTXTransfer` function provided by the `connect` package to trigger
 import { openSTXTransfer } from '@stacks/connect';
 import { StacksTestnet } from '@stacks/network';
 
-const network = new StacksTestnet();
-
 openSTXTransfer({
   recipient: 'ST2EB9WEQNR9P0K28D2DC352TM75YG3K0GT7V13CV',
   amount: '100',
   memo: 'Reimbursement',
-  authOrigin,
-  network,
+  network: new StacksTestnet(), // for mainnet, `new StacksMainnet()`
   appDetails: {
     name: 'My App',
     icon: window.location.origin + '/my-app-logo.svg',
@@ -92,7 +89,6 @@ interface STXTransferOptions {
   recipient: string;
   amount: string;
   memo?: string;
-  authOrigin?: string;
   network: StacksNetwork;
   appDetails: {
     name: string;
@@ -102,15 +98,14 @@ interface STXTransferOptions {
 }
 ```
 
-| parameter  | type          | required | description                                                                                                                                                                                          |
-| ---------- | ------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| recipient  | string        | true     | STX address for recipient of transfer                                                                                                                                                                |
-| amount     | string        | true     | Amount of microstacks (1 STX = 1,000,000 microstacks) to be transferred provided as string to prevent floating point errors.                                                                         |
-| appDetails | object        | true     | Dictionary that requires `name` and `icon` for app                                                                                                                                                   |
-| onFinish   | function      | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option)                                                                                             |
-| memo       | string        | false    | Optional memo for inclusion with transaction                                                                                                                                                         |
-| authOrigin | string        | false    | URL of authenticator to use for prompting signature and broadcast. Defaults to `https://wallet.hiro.so` for the Stacks Wallet, which is handled by the Stacks Wallet browser extension if installed. |
-| network    | StacksNetwork | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)                                                                                                       |
+| parameter  | type          | required | description                                                                                                                  |
+| ---------- | ------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| recipient  | string        | true     | STX address for recipient of transfer                                                                                        |
+| amount     | string        | true     | Amount of microstacks (1 STX = 1,000,000 microstacks) to be transferred provided as string to prevent floating point errors. |
+| appDetails | object        | true     | Dictionary that requires `name` and `icon` for app                                                                           |
+| onFinish   | function      | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option)                     |
+| memo       | string        | false    | Optional memo for inclusion with transaction                                                                                 |
+| network    | StacksNetwork | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)                               |
 
 ## Prompt to deploy smart contract
 
@@ -142,7 +137,6 @@ Several parameters are available for calling `openContractDeploy`. Here's the ex
 interface ContractDeployOptions {
   codeBody: string;
   contractName: string;
-  authOrigin?: string;
   network: StacksNetwork;
   appDetails: {
     name: string;
@@ -152,14 +146,13 @@ interface ContractDeployOptions {
 }
 ```
 
-| parameter    | type          | required | description                                                                                                                                                                                          |
-| ------------ | ------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| codeBody     | string        | true     | Clarity source code for contract                                                                                                                                                                     |
-| contractName | string        | true     | Name for contract                                                                                                                                                                                    |
-| appDetails   | object        | true     | Dictionary that requires `name` and `icon` for app                                                                                                                                                   |
-| onFinish     | function      | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option)                                                                                             |
-| authOrigin   | string        | false    | URL of authenticator to use for prompting signature and broadcast. Defaults to `https://wallet.hiro.so` for the Stacks Wallet, which is handled by the Stacks Wallet browser extension if installed. |
-| network      | StacksNetwork | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)                                                                                                       |
+| parameter    | type          | required | description                                                                                              |
+| ------------ | ------------- | -------- | -------------------------------------------------------------------------------------------------------- |
+| codeBody     | string        | true     | Clarity source code for contract                                                                         |
+| contractName | string        | true     | Name for contract                                                                                        |
+| appDetails   | object        | true     | Dictionary that requires `name` and `icon` for app                                                       |
+| onFinish     | function      | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option) |
+| network      | StacksNetwork | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)           |
 
 -> Contracts will deploy to the Stacks address of the authenticated user.
 
@@ -213,7 +206,6 @@ const options = {
   contractName: 'my-contract',
   functionName: 'my-func',
   functionArgs,
-  authOrigin,
   appDetails: {
     name: 'My App',
     icon: window.location.origin + '/my-app-logo.svg',
@@ -237,7 +229,6 @@ interface ContractCallOptions {
   contractName: string;
   functionArgs?: ClarityValue[];
   network: StacksNetwork;
-  authOrigin?: string;
   appDetails: {
     name: string;
     icon: string;
@@ -254,7 +245,6 @@ interface ContractCallOptions {
 | functionArgs    | `ClarityValue[]` | true     | Arguments for calling the function. [Learn more about constructing clarity values](https://github.com/blockstack/stacks.js/tree/master/packages/transactions#constructing-clarity-values). Defaults to `[]`. |
 | appDetails      | object           | true     | Dictionary that requires `name` and `icon` for app                                                                                                                                                           |
 | onFinish        | function         | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option)                                                                                                     |     |
-| authOrigin      | string           | false    | URL of authenticator to use for prompting signature and broadcast. Defaults to `https://wallet.hiro.so` for the Stacks Wallet, which is handled by the Stacks Wallet browser extension if installed.         |
 | network         | StacksNetwork    | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)                                                                                                               |
 
 ## Getting the signed transaction back after completion {#onFinish-option}
