@@ -65,7 +65,13 @@ curl -X POST https://stacks-node-api.xenon.blockstack.org/extended/v1/faucets/st
 
 ## Check Balance
 
-Confirm that the faucet transaction has completed by checking the balance of your address. The `-t` flag is used to indicate testnet. See the [CLI reference](/references/stacks-cli) for usage of flags.
+It will take some time for the transaction to confirm on the network.  You can check the progress at `explorer.stacks.co`
+
+```bash
+https://explorer.stacks.co/txid/<txId>?chain=testnet
+```
+
+Once you've had a nice cup of tea, confirm that the faucet transaction has completed by checking the balance of your address. The `-t` flag is used to indicate testnet. See the [CLI reference](/references/stacks-cli) for usage of flags.
 
 ```bash
 stx balance ST1P3HXR80TKT48TKM2VTKCDBS4ET9396W0W2S3K8 -t
