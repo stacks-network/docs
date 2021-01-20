@@ -12,13 +12,6 @@ images:
 Stacks 2.0 is a layer-1 blockchain that connects to Bitcoin and brings smart contracts and decentralized apps to it.
 Smart contracts and apps developed on the Stacks platform are natively integrated with the security, stability, and economic power of Bitcoin.
 
-### Status
-
-The Stacks 2.0 blockchain is in active development. While the final release ("mainnet") is in the works, you can get familiar with its features on the "testnet."
-
-[@page-reference | inline]
-| /understand-stacks/testnet
-
 ## Capabilities
 
 Read more about the functionality provided by the Stacks 2.0 blockchain.
