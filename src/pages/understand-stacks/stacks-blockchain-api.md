@@ -14,7 +14,8 @@ The Stacks 2.0 Blockchain API allows you to query the Stacks 2.0 blockchain and 
 The RESTful JSON API can be used without any authorization. The basepath for the API is:
 
 ```bash
-https://stacks-node-api.blockstack.org/
+# for mainnet, replace `testnet` with `mainnet`
+https://stacks-node-api.testnet.stacks.co/
 ```
 
 -> Check out the [API references](https://blockstack.github.io/stacks-blockchain-api/) for more details
@@ -69,7 +70,8 @@ import { Configuration AccountsApi } from '@stacks/blockchain-api-client';
 (async () => {
   const apiConfig = new Configuration({
     fetchApi: fetch,
-    basePath: 'https://stacks-node-api.blockstack.org', // defaults to http://localhost:3999
+    // for mainnet, replace `testnet` with `mainnet`
+    basePath: 'https://stacks-node-api.testnet.stacks.co', // defaults to http://localhost:3999
   });
 
   // initiate the /accounts API with the basepath and fetch library
@@ -102,7 +104,8 @@ import {
 (async () => {
   const apiConfig: Configuration = new Configuration({
     fetchApi: fetch,
-    basePath: 'https://stacks-node-api.blockstack.org', // defaults to http://localhost:3999
+    // for mainnet, replace `testnet` with `mainnet`
+    basePath: 'https://stacks-node-api.testnet.stacks.co', // defaults to http://localhost:3999
   });
 
   const principal: string = 'ST000000000000000000002AMW42H';
@@ -225,14 +228,15 @@ import { uintCV, UIntCV, cvToHex, hexToCV, ClarityType } from '@stacks/transacti
 (async () => {
   const apiConfig: Configuration = new Configuration({
     fetchApi: fetch,
-    basePath: 'https://stacks-node-api.blockstack.org', // defaults to http://localhost:3999
+    // for mainnet, replace `testnet` with `mainnet`
+    basePath: 'https://stacks-node-api.testnet.stacks.co', // defaults to http://localhost:3999
   });
 
   const contractsApi: SmartContractsApiInterface = new SmartContractsApi(apiConfig);
 
   const principal: string = 'ST000000000000000000002AMW42H';
 
-  // use most recent from: https://stacks-node-api.blockstack.org/v2/pox
+  // use most recent from: https://stacks-node-api.<mainnet/testnet>.stacks.co/v2/pox
   const rewardCycle: UIntCV = uintCV(22);
 
   // call a read-only function

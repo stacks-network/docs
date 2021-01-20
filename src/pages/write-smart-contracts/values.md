@@ -238,7 +238,7 @@ const contractAddress = 'ST3KC0MTNW34S1ZXD36JYKFD3JJMWA01M55DSJ4JE';
 const contractName = 'kv-store';
 const functionName = 'get-value';
 const buffer = bufferCVFromString('foo');
-const network = new StacksTestnet();
+const network = new StacksTestnet(); // for mainnet, use `StacksMainnet()`
 const senderAddress = 'ST2F4BK4GZH6YFBNHYDDGN4T1RKBA7DA1BJZPJEJJ';
 
 const options = {

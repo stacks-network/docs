@@ -56,7 +56,8 @@ const { AccountsApi, FaucetsApi, Configuration } = require('@stacks/blockchain-a
 
 const apiConfig = new Configuration({
   fetchApi: fetch,
-  basePath: 'https://stacks-node-api.blockstack.org',
+  // for mainnet, replace `testnet` with `mainnet`
+  basePath: 'https://stacks-node-api.testnet.stacks.co',
 });
 
 const privateKey = makeRandomPrivKey();
@@ -135,7 +136,7 @@ The API will respond with a new transaction ID and confirmation that the faucet 
 }
 ```
 
--> Note: Wait a few minutes for the transaction to complete. You can review the status using the Explorer, by navigating to the following URL: `https://testnet-explorer.blockstack.org/txid/<txid>`.
+-> Note: Wait a few minutes for the transaction to complete. You can review the status using the Explorer, by navigating to the following URL: `https://explorer.stacks.co/txid/<txid>`.
 
 Assuming the faucet transaction was successfully processed, you can review the account history. We are expecting at least one transactions to show up in the account history.
 
