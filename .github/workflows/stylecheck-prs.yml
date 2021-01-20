@@ -21,7 +21,6 @@ jobs:
         uses: errata-ai/vale-action@master
         with:
           styles: https://github.com/errata-ai/Google/releases/latest/download/Google.zip
-          config: https://raw.githubusercontent.com/blockstack/docs/master/.vale/vale.ini
           files: '${{ steps.get_changed_files.outputs.all }}'
           onlyAnnotateModifiedLines: true
         env:
