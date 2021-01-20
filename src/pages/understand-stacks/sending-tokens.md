@@ -62,12 +62,14 @@ const {
 } = require('@stacks/transactions');
 const {
     StacksTestnet,
+    StacksMainnet,
 } = require ('@stacks/network);
 const { TransactionsApi, Configuration } = require('@stacks/blockchain-api-client');
 
 const apiConfig = new Configuration({
   fetchApi: fetch,
-  basePath: 'https://stacks-node-api.blockstack.org',
+  // for mainnet, replace `testnet` with `mainnet`
+  basePath: 'https://stacks-node-api.testnet.stacks.co',
 });
 
 const key = 'edf9aee84d9b7abc145504dde6726c64f369d37ee34ded868fabd876c26570bc01';
@@ -93,6 +95,7 @@ const fee = new BN(2000);
 const nonce = new BN(0);
 
 // override default setting to broadcast to the Testnet network
+// for mainnet, use `StacksMainnet()`
 const network = new StacksTestnet();
 
 const memo = 'hello world';

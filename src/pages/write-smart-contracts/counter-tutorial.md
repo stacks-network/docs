@@ -25,7 +25,7 @@ In this tutorial, you learn how to implement a smart contract that stores and ma
 ### Check the Stacks 2.0 status
 
 The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not
-running into any challenges related to the status of the network, please open up the [Status Checker](http://status.test-blockstack.com/)
+running into any challenges related to the status of the network, please open up the [Status Checker](https://stacks-status.com/)
 and confirm that all systems are operational. If some systems seem to have issues, it is best to wait until they are back up before you proceed with the next steps.
 
 ## Step 1: Downloading counter starter project

@@ -32,12 +32,12 @@ By the end of this tutorial, you will have:
 
 ### Check testnet status
 
-To make sure you're not running into any challenges related to testnet status, please open up the [Status Checker](http://status.test-blockstack.com/)
+To make sure you're not running into any challenges related to our network, please open up the [Status Checker](https://stacks-status.com/)
 and confirm that all systems are operational. If some systems seem to have issues, it is best to wait until they are back up before you proceed with the next steps.
 
 Furthermore, the todos app will interact with a smart contract deployed as `ST1234....todo-registry`. The contract source code is available at [GitHub](https://github.com/friedger/blockstack-todos/blob/tut/step1/contracts/todo-registry.clar).
 
-There may already be a deployed version available on the testnet; the [testnet explorer](https://testnet-explorer.blockstack.org/) can be used to search for it.
+There may already be a deployed version available on the testnet; the [Stacks Explorer](https://explorer.stacks.co/) can be used to search for it.
 
 Alternatively, the contract can be deployed as described in the [hello world tutorial](/smart-contracts/hello-world-tutorial#step-5-deploy-the-contract). Then you have to use the corresponding contract address and name in this tutorial. Throughout this tutorial, we use `ST3YPJ6BBCZCMH71TV8BK50YC6QJTWEGCNDFWEQ15.todo-registry` as an example.
 

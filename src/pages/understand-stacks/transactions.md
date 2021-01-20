@@ -111,7 +111,7 @@ When constructing transactions, it is required to set the network the transactio
 
 ```js
 import { makeSTXTokenTransfer } from '@stacks/transactions';
-import { StacksTestnet } from '@stacks/network';
+import { StacksTestnet, StacksMainnet } from '@stacks/network';
 
 const BigNum = require('bn.js');
 
@@ -119,7 +119,7 @@ const txOptions = {
   recipient: 'SP3FGQ8Z7JY9BWYZ5WM53E0M9NK7WHJF0691NZ159',
   amount: new BigNum(12345),
   senderKey: 'b244296d5907de9864c0b0d51f98a13c52890be0404e83f273144cd5b9960eed01',
-  network: new StacksTestnet(),
+  network: new StacksTestnet(), // for mainnet, use `StacksMainnet()`
   memo: 'test memo',
   nonce: new BigNum(0), // set a nonce manually if you don't want builder to fetch from a Stacks node
   fee: new BigNum(200), // set a tx fee if you don't want the builder to estimate
@@ -134,14 +134,14 @@ const transaction = await makeSTXTokenTransfer(txOptions);
 
 ```js
 import { makeContractDeploy } from '@stacks/transactions';
-import { StacksTestnet } from '@stacks/network';
+import { StacksTestnet, StacksMainnet } from '@stacks/network';
 const BigNum = require('bn.js');
 
 const txOptions = {
   contractName: 'contract_name',
   codeBody: fs.readFileSync('/path/to/contract.clar').toString(),
   senderKey: 'b244296d5907de9864c0b0d51f98a13c52890be0404e83f273144cd5b9960eed01',
-  network: new StacksTestnet(),
+  network: new StacksTestnet(), // for mainnet, use `StacksMainnet()`
 };
 
 const transaction = await makeContractDeploy(txOptions);
@@ -151,7 +151,7 @@ const transaction = await makeContractDeploy(txOptions);
 
 ```js
 import { makeContractCall, BufferCV } from '@stacks/transactions';
-import { StacksTestnet } from '@stacks/network';
+import { StacksTestnet, StacksMainnet } from '@stacks/network';
 
 const BigNum = require('bn.js');
 
@@ -163,7 +163,7 @@ const txOptions = {
   senderKey: 'b244296d5907de9864c0b0d51f98a13c52890be0404e83f273144cd5b9960eed01',
   // attempt to fetch this contracts interface and validate the provided functionArgs
   validateWithAbi: true,
-  network: new StacksTestnet(),
+  network: new StacksTestnet(), // for mainnet, use `StacksMainnet()`
 };
 
 const transaction = await makeContractCall(txOptions);
@@ -390,7 +390,8 @@ A sponsored transaction is one where a second signer sets and pays the transacti
 With a serialized transaction in the [raw format](#raw-format), it can be broadcasted to the network using the [`POST /v2/transactions`](https://blockstack.github.io/stacks-blockchain-api/#operation/post_core_node_transactions) endpoint:
 
 ```bash
-curl --location --request POST 'https://stacks-node-api.blockstack.org/v2/transactions' \
+# for mainnet, replace `testnet` with `mainnet`
+curl --location --request POST 'https://stacks-node-api.testnet.stacks.co/v2/transactions' \
 --header 'Content-Type: text/plain' \
 --data-raw '<tx_raw_format>'
 ```
@@ -417,7 +418,8 @@ For convenience, a Postman Collection was created and published: [![Run in Postm
 Recent transactions can be obtained through the [`GET /extended/v1/tx`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_transaction_list) endpoint:
 
 ```bash
-curl 'https://stacks-node-api.blockstack.org/extended/v1/tx'
+# for mainnet, replace `testnet` with `mainnet`
+curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/tx'
 ```
 
 Sample response:
@@ -454,7 +456,8 @@ Sample response:
 Mempool (registered, but not processed) transactions can be obtained using the [`GET /extended/v1/tx/mempool`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_mempool_transaction_list) endpoint:
 
 ```bash
-curl 'https://stacks-node-api.blockstack.org/extended/v1/tx/mempool'
+# for mainnet, replace `testnet` with `mainnet`
+curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/tx/mempool'
 ```
 
 Sample response:
@@ -492,7 +495,8 @@ Sample response:
 Recent transactions can be filtered by [transaction type](/understand-stacks/transactions#types) using the `type` query parameter:
 
 ```bash
-curl 'https://stacks-node-api.blockstack.org/extended/v1/tx/?type=contract_call'
+# for mainnet, replace `testnet` with `mainnet`
+curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/tx/?type=contract_call'
 ```
 
 ### Get transaction by ID
@@ -500,7 +504,8 @@ curl 'https://stacks-node-api.blockstack.org/extended/v1/tx/?type=contract_call'
 A specific transaction can be obtained using the [`GET /extended/v1/tx/<tx_id>`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_transaction_by_id) endpoint:
 
 ```bash
-curl 'https://stacks-node-api.blockstack.org/extended/v1/tx/<tx_id>'
+# for mainnet, replace `testnet` with `mainnet`
+curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/tx/<tx_id>'
 ```
 
 Sample response:

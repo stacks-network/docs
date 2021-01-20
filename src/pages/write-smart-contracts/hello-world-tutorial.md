@@ -27,7 +27,7 @@ By the end of this tutorial, you:
 
 ### Check the Stacks 2.0 status
 
-The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not running into any challenges related to the status of the network, please open up the [Status Checker](http://status.test-blockstack.com/) and confirm that all systems are operational. If some systems seem to have issues, it's best to wait until they're back up before you proceed with the next steps.
+The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not running into any challenges related to the status of the network, please open up the [Status Checker](https://stacks-status.com/) and confirm that all systems are operational. If some systems seem to have issues, it's best to wait until they're back up before you proceed with the next steps.
 
 ## Step 1: open the playground
 
@@ -129,7 +129,7 @@ The **STX faucet** is an API endpoint you can call to request testnet tokens for
 
 ```bash
 # replace <stx_address> with `address` property from your keychain
-curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/stx?address=<stx_address>" | json_pp
+curl -XPOST "https://stacks-node-api.testnet.stacks.co/extended/v1/faucets/stx?address=<stx_address>" | json_pp
 ```
 
 The response includes a `txId` property. This is the transaction that transfers funds to your Stacks address.
@@ -142,7 +142,7 @@ The response includes a `txId` property. This is the transaction that transfers 
 }
 ```
 
--> You can also review the transaction status and details using the [Explorer](https://testnet-explorer.blockstack.org/)
+-> You can also review the transaction status and details using the [Stacks Explorer](https://explorer.stacks.co/)
 
 You need to wait up to a minute for the transaction to complete. Type the following in your terminal to see the balance:
 

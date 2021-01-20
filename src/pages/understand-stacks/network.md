@@ -20,7 +20,8 @@ Fees are used to incentivize miners to confirm transactions on the Stacks 2.0 bl
 Fee estimates can obtained through the [`GET /v2/fees/transfer`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_fee_transfer) endpoint:
 
 ```bash
-curl 'https://stacks-node-api.blockstack.org/v2/fees/transfer'
+# for mainnet, replace `testnet` with `mainnet`
+curl 'https://stacks-node-api.testnet.stacks.co/v2/fees/transfer'
 ```
 
 The API will respond with the fee rate (as integer):
@@ -56,7 +57,8 @@ The time to mine a block, to confirm transactions, will eventually match the exp
 The block time is hardcoded and will change throughout the implementation phases of the [testnet](/understand-stacks/testnet). The current block time can be obtained through the [`GET /extended/v1/info/network_block_times`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_network_block_times) endpoint:
 
 ```bash
-curl 'https://stacks-node-api.blockstack.org/extended/v1/info/network_block_times'
+# for mainnet, replace `testnet` with `mainnet`
+curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/info/network_block_times'
 ```
 
 The API will respond with the block time (in seconds):
@@ -83,7 +85,8 @@ However, for read-only function calls, transactions are **not** required. Instea
 A read-only contract call can be done using the [`POST /v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>`](https://blockstack.github.io/stacks-blockchain-api/#operation/call_read_only_function) endpoint:
 
 ```bash
-curl --location --request POST 'https://stacks-node-api.blockstack.org/v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>' \
+# for mainnet, replace `testnet` with `mainnet`
+curl --location --request POST 'https://stacks-node-api.testnet.stacks.co/v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "sender": "<stx_address>.<contract_name>",
@@ -104,62 +107,19 @@ Sample response for a successful call:
 
 ## Querying
 
-Stacks 2.0 network details can be queried using the [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api) and the [status checker](http://status.test-blockstack.com/).
+Stacks 2.0 network details can be queried using the [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api).
 
 ### Health check
 
-The [status checker](http://status.test-blockstack.com/) is a service that provides a user interface to quickly review the health of the Stacks 2.0 blockchain (including uptime and block rate).
-
-The status checker can also be queried programmatically:
-
-```bash
-curl 'http://status.test-blockstack.com/json'
-```
-
-Sample response:
-
-```js
-{
-    "masterNodePings":[{"timestamp":1599861000,"value":1}, ...],
-    "sidecarPings":[{"timestamp":1599861000,"value":1}, ...],
-    "calculatingBlockRate":false,
-    "averageBlockRate":18.38961038961039,
-    "blockRateDuration":6.416666666666667,
-    "blockRateUnits":"blocks/hr",
-    "blockRateStatus":0,
-    "showLastHourAverage":true,
-    "lastHourAverageBlockRate":16.8,
-    "lastHourBlockRateStatus":0,
-    "lastStacksChainTipHeight":"916",
-    "lastStacksChainTipHeightTime":"1599861000",
-    "lastBurnBlockHeight":"1946",
-    "blockProgressStatus":0,
-    "lastChainReset":"1599663900",
-    "exitAtBlock":"5340",
-    "estimatedTimeUntilReset":"4d 17h 8m",
-    "seededFaucetTx":{"txid":"22415022359fcd419873e1d451fefd5be74f368f2857626a996efe0127680979","broadcasted":"1599858480","status":"success"},"
-    seededTokenTransferTx":{"txid":"2250569c4d26d1da163ad1b940a27cde9db73d1b523f3fb50b13b7068f85903e","broadcasted":"1599858960","status":"success"},
-    "seededContractDeployTx":{"txid":"65d85019231035bf3c549a8cb71ad46c3ac231bfb7269eee3bfff2dd9a60a606","broadcasted":"1599859680","status":"success"},"
-    seededContractCallTx":{"txid":"e9d3e85b850c2d7ab3dc60fa48021e60a70e076519906a0c9e82ee52aab63e4c","broadcasted":"1599860160","status":"success"},
-    "reseedAbortError":null,
-    "reseedingStep":"0"
-}
-```
-
-The easiest way of identifying the health is by looking at the `blockRateStatus` property:
-
-| **Block Rate Value** | **Status**                                                                                                                                                                                   |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `0`                  | Online. All checks are successful                                                                                                                                                            |
-| `1`                  | Slow. The network produces new blocks at slower rate as expected. Transaction confirmation times will likely take longer than the [set block time](/understand-stacks/network#confirmations) |
-| `2`                  | Degraded. The network seems not to be fully operational                                                                                                                                      |
+The [status checker](https://stacks-status.com/) is a service that provides a user interface to quickly review the health of the Stacks 2.0 blockchain.
 
 ### Network info
 
 The network information can be obtained using the [`GET /v2/info`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_core_api_info) endpoint:
 
 ```bash
-curl 'https://stacks-node-api.blockstack.org/v2/info'
+# for mainnet, replace `testnet` with `mainnet`
+curl 'https://stacks-node-api.testnet.stacks.co/v2/info'
 ```
 
 Sample response:

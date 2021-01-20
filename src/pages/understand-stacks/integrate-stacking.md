@@ -66,7 +66,7 @@ import {
 
 import { StackingClient } from '@stacks/stacking';
 
-import { StacksTestnet } from '@stacks/network';
+import { StacksTestnet, StacksMainnet } from '@stacks/network';
 
 import BN from 'bn.js';
 
@@ -74,9 +74,11 @@ import BN from 'bn.js';
 const privateKey = privateKeyToString(makeRandomPrivKey());
 
 // get Stacks address
+// for mainnet, remove the TransactionVersion
 const stxAddress = getAddressFromPrivateKey(privateKey, TransactionVersion.Testnet);
 
 // instantiate the Stacker class for testnet
+// for mainnet, use `new StacksMainnet()`
 const client = new StackingClient(stxAddress, new StacksTestnet());
 ```
 
@@ -157,7 +159,7 @@ const hasMinStxAmount = await client.hasMinimumStx();
 For testing purposes, you can use the faucet to obtain testnet STX tokens. Replace `<stxAddress>` below with your address:
 
 ```shell
-curl -XPOST "https://stacks-node-api.blockstack.org/extended/v1/faucets/stx?address=<stxAddress>&stacking=true"
+curl -XPOST "https://stacks-node-api.testnet.stacks.co/extended/v1/faucets/stx?address=<stxAddress>&stacking=true"
 ```
 
 You'll have to wait a few minutes for the transaction to complete.
