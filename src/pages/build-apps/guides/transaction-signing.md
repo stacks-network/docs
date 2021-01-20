@@ -263,6 +263,15 @@ interface FinishedTxData {
 
 The `StacksTransaction` type comes from the [`@stacks/transactions`](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library.
 
+The `txId` property can be used to provide a link to view the transaction in the explorer.
+
+```ts
+const onFinish = data => {
+  const explorerTransactionUrl = 'https://explorer.stacks.co/txid/${data.txId}';
+  console.log('View in explorer:', explorerTransactionUrl);
+};
+```
+
 ## Specifying the network for a transaction {#network-option}
 
 All of the methods included on this page accept a `network` option. By default, Connect uses a testnet network option. You can import a network configuration from the [`@stacks/network`](https://github.com/blockstack/stacks.js/tree/master/packages/network) package.
