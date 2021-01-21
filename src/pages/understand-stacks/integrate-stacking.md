@@ -331,7 +331,7 @@ Stacking delegation requires you to implement a different flow. Until the provid
 
 Below is a description of contract calls required to integrate delegation:
 
-1. Account holders call the [`delegate-stx`](/references/stacking-contract#delegate-stx) method and provide the delegator address, the amount accessible to the delegator, the address rewards should be send to, and the burn height at which the delegation relationship should be terminated
+1. Account holders call the [`delegate-stx`](/references/stacking-contract#delegate-stx) method and provide the delegator address, the amount accessible to the delegator, the address rewards should be sent to, and the burn height at which the delegation relationship should be terminated
 2. For each delegation relationship that was created, the delegator calls the [`delegator-stack-stx`](/references/stacking-contract#delegate-stack-stx) method to lock up the STX token from the account holder. This method must be called until the delegator locked up enough STX tokens required to participate in Stacking
 3. With pooling being completed and the minimum STX token threshold reached, the delegator calls the [`stack-aggregation-commit`](/references/stacking-contract#stack-aggregation-commit) to confirm participation in the next cycle(s)
 
