@@ -208,7 +208,7 @@ The command looks up the contract method definition on the network, identify tha
 42
 ```
 
-The method is now executed on the network. Once completed, the command responds with the value you just entered, `42`:
+The method is now executed on the network. This can take a while. Once completed, the corresponding transaction contains the respond with the value you just entered, `42`:
 
 ```bash
 (ok 42)
