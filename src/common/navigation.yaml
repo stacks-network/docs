@@ -23,6 +23,7 @@ sections:
               - path: /running-mainnet-node
               - path: /running-testnet-node
               - path: /integrate-stacking
+              - path: /integrate-stacking-delegation
               - path: /stacking-using-CLI
 
           - title: Stacks 1.0
