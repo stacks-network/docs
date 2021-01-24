@@ -311,8 +311,6 @@ const stackingStatus = await client.getStatus();
 
 To display the unlocking time, you need to use the `firstRewardCycle` and the `lockPeriod` fields.
 
-// TODO: Rewards and get-stacker-info
-
 **Congratulations!** With the completion of this step, you successfully learnt how to ...
 
 - Generate Stacks accounts
@@ -320,3 +318,14 @@ To display the unlocking time, you need to use the `firstRewardCycle` and the `l
 - Verify stacking eligibility
 - Add stacking action
 - Display stacking status
+
+## Optional: Rewards
+
+Currently, the Stacking library does not provide methods to get the paid rewards for a set address. However, the [Stacks Blockchain API exposes endpoints](https://blockstack.github.io/stacks-blockchain-api/#tag/Burnchain) to get more details.
+
+As an example, if you want to get the rewards paid to `btcAddress`, you can make the following API call:
+
+```shell
+# for mainnet, replace `testnet` with `mainnet`
+curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/burnchain/rewards/<btcAddress>'
+```
