@@ -38,7 +38,7 @@ If you would like to implement this flow in your own wallet, exchange, or any ot
 [@page-reference | inline]
 | /understand-stacks/stacking-using-CLI
 
-### Delegation
+## Stacking delegation flow
 
 The Stacking flow is different for delegation use cases:
 
