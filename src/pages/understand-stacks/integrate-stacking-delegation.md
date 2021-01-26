@@ -45,7 +45,7 @@ curl -XPOST "https://stacks-node-api.testnet.stacks.co/extended/v1/faucets/stx?a
 
 ## Step 1: Integrate libraries
 
-Install the stacking, network, transactions libraries and bn.js for large number handling:
+Install the stacking, network, transactions libraries, and bn.js for large number handling:
 
 ```shell
 npm install --save @stacks/stacking @stacks/network @stacks/transactions bn.js
@@ -55,7 +55,7 @@ npm install --save @stacks/stacking @stacks/network @stacks/transactions bn.js
 
 ## Step 2: Delegate STX tokens
 
-To get started, delegate STX tokens as an account holder:
+To get started, delegate STX tokens as an account holder.
 
 ```js
 import { getNonce } from '@stacks/transactions';
@@ -130,7 +130,7 @@ const delegatorClient = new StackingClient(delegatorAddress, network);
 const delegetateStackResponses = await delegatorClient.delegateStackStx({
   stacker: address,
   amountMicroStx,
-  poxAddress: delegatePoxAddress, // if set in step 2, this needs to match `poxAddress`
+  poxAddress: delegatePoxAddress, // if set by the user, this needs to match what was set earlier
   burnBlockHeight,
   cycles,
   privateKey: delegatorPrivateKey,
@@ -143,7 +143,11 @@ const delegetateStackResponses = await delegatorClient.delegateStackStx({
 ```
 
 This function calls the [`delegator-stack-stx`](/references/stacking-contract#delegate-stack-stx) method of the Stacking contract to lock up the STX token from the account holder.
-This method must be called until the delegator locked up enough STX tokens required to participate in Stacking.
+The delegator must call this method multiple times (for all stackers), until enough tokens are locked up to participate in Stacking.
+
+-> Reward slots are assigned based on number of STX tokens locked up for a specific Bitcoin reward address
+
+If users set their own Bitcoin reward address, the delegator has to stack tokens with that address. This would prompt reward payouts directly to the user. However, in this case, a single user will only qualify for a reward slot if the minimum Stacking threshold for the set Bitcoin reward address is reached (~70k STX at the time of writing). If the threshold is not reached, multiple users can set the same Bitcoin reward address to accumulate enough STX tokens to reach the minimum.
 
 ## Step 4: Commit to Stacking
 
