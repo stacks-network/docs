@@ -127,8 +127,7 @@ const delegatorPrivateKey = 'd48f215481c16cbe6426f8e557df9b78895661971d717351265
 const delegatePoxAddress = 'msiYwJCvXEzjgq6hDwD9ueBka6MTfN962Z';
 
 // if you call this method multiple times during the same block, you need to increase the nonce manually
-let nonce = getNonce(delegatorAddress, network);
-nonce = nonce.add(new BN(1));
+const nonce = getNonce(delegatorAddress, network).add(new BN(1));
 
 const delegatorClient = new StackingClient(delegatorAddress, network);
 
