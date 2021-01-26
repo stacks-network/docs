@@ -331,8 +331,10 @@ Stacking delegation requires you to implement a different flow. Until the provid
 
 Below is a description of contract calls required to integrate delegation:
 
-1. Account holders call the [`delegate-stx`](/references/stacking-contract#delegate-stx) method and provide the delegator address, the amount accessible to the delegator, the address rewards should be sent to, and the burn height at which the delegation relationship should be terminated
-2. For each delegation relationship that was created, the delegator calls the [`delegator-stack-stx`](/references/stacking-contract#delegate-stack-stx) method to lock up the STX token from the account holder. This method must be called until the delegator locked up enough STX tokens required to participate in Stacking
+1. Account holders call the [`delegate-stx`](/references/stacking-contract#delegate-stx) method and provide the delegator address, the amount accessible to the delegator, the address rewards should be send to, and the burn height at which the delegation relationship should be terminated. This needs to happen only once. The account holder can specify a delegation amount that is higher that their balance
+2. For each delegation relationship that was created, the delegator calls the [`delegate-stack-stx`](/references/stacking-contract#delegate-stack-stx) method to lock up the STX token from the account holder. This method must be called during each cycle (unless specified for multiple cycles) and until the delegator locked up enough STX tokens required to participate in Stacking. This method will check the account balances. Once successfully executed, the STX tokens in the account will be locked up
 3. With pooling being completed and the minimum STX token threshold reached, the delegator calls the [`stack-aggregation-commit`](/references/stacking-contract#stack-aggregation-commit) to confirm participation in the next cycle(s)
 
-In case STX token holders want to terminate the delegation relationship before it terminates as planned, they can call the [`revoke-delegate-stx`](http://localhost:3000/references/stacking-contract#revoke-delegate-stx) method
+In case STX token holders want to terminate the delegation relationship before it terminates as planned, they can call the [`revoke-delegate-stx`](http://localhost:3000/references/stacking-contract#revoke-delegate-stx) method.
+
+-> A delegator doesn't need to _own_ a minimum amount ot STX token to reach the threshold. However, they need funds to pay for transaction fees on the network.
