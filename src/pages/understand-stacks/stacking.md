@@ -22,8 +22,8 @@ The Stacking mechanism can be presented as a flow of actions:
 1. Make API calls to get details about the upcoming reward cycle
 2. For a specific Stacks account, confirm eligibility
 3. Confirm the BTC reward address and the lockup duration
-4. The transaction is broadcasted and the Stacks (STX) tokens will be locked-up
-5. The Stacking mechanism executes reward cycles. With each mined block, it sends out rewards to 2 BTC reward addresses. With 1000 blocks in each cycle, that's 2000 rewards per cycle.
+4. The transaction is broadcasted and the Stacks (STX) tokens will be locked-up. This needs to happen before the prepare phase of the next reward cycle (last 100 bitcoin blocks of the ongoing reward phase)
+5. The Stacking mechanism executes reward cycles and sends out rewards to the set BTC reward address
 6. During the lockup period, details about unlocking timing, rewards and more can be obtained
 7. Once the lockup period is passed, the tokens are released and accessible again
 8. Display reward history, including details like earnings for previous reward cycles
@@ -77,7 +77,7 @@ Miners have to run a software (mining client, aka "miner") on their machines to 
 Stacks (STX) token holders do not automatically receive Stacking rewards. Instead, they must:
 
 - Commit to participation before a reward cycle begins
-- Hold ~94,000 Stacks (STX) tokens (at the moment of writing; increases over time)
+- At the time of writing: Hold ~70,000 Stacks (STX) tokens - or pool with others to reach the minimum
 - Lock up Stacks (STX) tokens for a specified period
 - Set a Bitcoin address to receive rewards
 
