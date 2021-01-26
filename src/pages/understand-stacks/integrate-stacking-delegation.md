@@ -43,10 +43,6 @@ You can use the faucet to obtain testnet STX tokens for the test account. Replac
 curl -XPOST "https://stacks-node-api.testnet.stacks.co/extended/v1/faucets/stx?address=<stxAddress>&stacking=true"
 ```
 
-## Overview
-
-In this tutorial, we'll implement the Stacking delegation flow laid out in the [Stacking guide](/understand-stacks/stacking#stacking-delegation-flow).
-
 ## Step 1: Integrate libraries
 
 Install the stacking, network, transactions libraries and bn.js for large number handling:
