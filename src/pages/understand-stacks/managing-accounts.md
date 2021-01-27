@@ -75,8 +75,7 @@ const stacksAddress = getAddressFromPrivateKey(
   TransactionVersion.Testnet // remove for Mainnet addresses
 );
 
-...
-
+(async () => {
   const accounts = new AccountsApi(apiConfig);
 
   const accountInfo = await accounts.getAccountInfo({
@@ -84,6 +83,7 @@ const stacksAddress = getAddressFromPrivateKey(
   });
 
   console.log(accountInfo);
+})();  
 ```
 
 -> Note: A "principal" is any entity that can have a token balance. Find more details in the [Principals guide](/write-smart-contracts/principals).
