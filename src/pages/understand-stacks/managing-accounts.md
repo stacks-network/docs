@@ -45,7 +45,7 @@ npm install --save @stacks/transactions @stacks/blockchain-api-client cross-fetc
 To get started, let's generate a new, random Stacks 2.0 private key:
 
 ```js
-import fetch from 'cross-fetch';
+const { fetch } = require('cross-fetch');
 const {
   makeRandomPrivKey,
   privateKeyToString,
