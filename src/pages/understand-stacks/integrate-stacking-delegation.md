@@ -63,8 +63,12 @@ import { StacksTestnet, StacksMainnet } from '@stacks/network';
 import { StackingClient } from '@stacks/stacking';
 import BN from 'bn.js';
 
-const network = new StacksTestnet();
 // for mainnet: const network = new StacksMainnet();
+const network = new StacksTestnet();
+
+// the stacker STX address
+const address = 'ST3XKKN4RPV69NN1PHFDNX3TYKXT7XPC4N8KC1ARH';
+
 const client = new StackingClient(address, network);
 
 // how much to stack, in microSTX
@@ -76,9 +80,6 @@ const delegateTo = 'ST2MCYPWTFMD2MGR5YY695EJG0G1R4J2BTJPRGM7H';
 // burn height at which the delegation relationship should be revoked (optional)
 const untilBurnBlockHeight = 5000;
 
-// a BTC address for reward payouts
-const poxAddress = 'mvuYDknzDtPgGqm2GnbAbmGMLwiyW3AwFP';
-
 // private key of the account holder for transaction signing
 const privateKey = 'd48f215481c16cbe6426f8e557df9b78895661971d71735126545abddcd5377001';
 
@@ -86,7 +87,6 @@ const delegetateResponse = await client.delegateStx({
   amountMicroStx,
   delegateTo,
   untilBurnBlockHeight, // optional
-  poxAddress, // optional
   privateKey,
 });
 
@@ -104,9 +104,6 @@ This method calls the [`delegate-stx`](/references/stacking-contract#delegate-st
 With an established delegation relationship, the delegator can stack STX tokens on behalf of the account holder.
 
 ```js
-// the stacks STX address
-const address = 'ST3XKKN4RPV69NN1PHFDNX3TYKXT7XPC4N8KC1ARH';
-
 // block height at which to stack
 const burnBlockHeight = 2000;
 
@@ -120,17 +117,18 @@ const cycles = 3;
 const delegatorPrivateKey = 'd48f215481c16cbe6426f8e557df9b78895661971d71735126545abddcd5377001';
 
 // the BTC address for reward payouts; either to the delegator or to the BTC address set by the account holder
-const delegatePoxAddress = 'msiYwJCvXEzjgq6hDwD9ueBka6MTfN962Z';
+const delegatorBtcAddress = 'msiYwJCvXEzjgq6hDwD9ueBka6MTfN962Z';
 
-// if you call this method multiple times during the same block, you need to increase the nonce manually
-const nonce = getNonce(delegatorAddress, network).add(new BN(1));
+// if you call this method multiple times in the same block, you need to increase the nonce manually
+let nonce = getNonce(delegatorAddress, network);
+nonce = nonce.add(new BN(1));
 
 const delegatorClient = new StackingClient(delegatorAddress, network);
 
 const delegetateStackResponses = await delegatorClient.delegateStackStx({
   stacker: address,
   amountMicroStx,
-  poxAddress: delegatePoxAddress, // if set by the user, this needs to match what was set earlier
+  poxAddress: delegatorBtcAddress,
   burnBlockHeight,
   cycles,
   privateKey: delegatorPrivateKey,
@@ -142,25 +140,23 @@ const delegetateStackResponses = await delegatorClient.delegateStackStx({
 //   }
 ```
 
-This function calls the [`delegator-stack-stx`](/references/stacking-contract#delegate-stack-stx) method of the Stacking contract to lock up the STX token from the account holder.
+This function calls the [`delegate-stack-stx`](/references/stacking-contract#delegate-stack-stx) method of the Stacking contract to lock up the STX token from the account holder.
 The delegator must call this method multiple times (for all stackers), until enough tokens are locked up to participate in Stacking.
 
--> Reward slots are assigned based on number of STX tokens locked up for a specific Bitcoin reward address
-
-If users set their own Bitcoin reward address, the delegator has to stack tokens with that address. This would prompt reward payouts directly to the user. However, in this case, a single user will only qualify for a reward slot if the minimum Stacking threshold for the set Bitcoin reward address is reached (~70k STX at the time of writing). If the threshold is not reached, multiple users can set the same Bitcoin reward address to accumulate enough STX tokens to reach the minimum.
+-> Reward slots are assigned based on the number of STX tokens locked up for a specific Bitcoin reward address
 
 ## Step 4: Commit to Stacking
 
-As soon as pooling is completed and the minimum STX token threshold reached, the delegator needs to confirm participation for the next cycle(s):
+As soon as pooling completes (minimum STX token threshold reached), the delegator needs to confirm participation for the next cycle(s):
 
 ```js
 // reward cycle id to commit to
 const rewardCycle = 12;
 
 const delegetateCommitResponse = await delegatorClient.stackAggregationCommit({
-  poxAddress: delegatePoxAddress, // this must be the delegator bitcoin address
+  poxAddress: delegatorBtcAddress, // this must be the delegator bitcoin address
   rewardCycle,
-  privateKey: privateKeyDelegate,
+  privateKey: delegatorPrivateKey,
 });
 
 // {
