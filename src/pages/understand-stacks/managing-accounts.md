@@ -127,9 +127,9 @@ async function runFaucetStx() {
   const faucetTx = await faucets.runFaucetStx({
     address: stacksAddress,
   });
-};  
-
-console.log(faucetTx);
+  
+  return faucetTx;
+};
 ```
 
 The API will respond with a new transaction ID and confirmation that the faucet run was successful:
@@ -152,7 +152,7 @@ async function getAccountTransactions() {
     principal: stacksAddress,
   });
   
-  console.log(history);
+  return history;
 }  
 ```
 
@@ -212,6 +212,8 @@ async function getAccountTransactions() {
     limit: 50,
     offset: 50,
   });
+  
+  return history;
 }  
 ```
 
@@ -225,7 +227,7 @@ async function getAccountBalance() {
     principal: stacksAddress,
   });
 
-  console.log(balances);
+  return balances;
 }  
 ```
 
