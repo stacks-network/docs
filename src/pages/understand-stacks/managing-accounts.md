@@ -79,7 +79,7 @@ const accounts = new AccountsApi(apiConfig);
 
 async function getAccountInfo() {
   const accountInfo = await accounts.getAccountInfo({
-    principal: stacksAddress
+    principal: stacksAddress,
   });
 
   return accountInfo;
@@ -111,9 +111,9 @@ async function getAccountInfoWithoutProof() {
     principal: stacksAddress,
     proof: 0,
   });
-  
+
   return accountInfo;
-};
+}
 ```
 
 ## Step 4: Reviewing account history
@@ -127,9 +127,9 @@ async function runFaucetStx() {
   const faucetTx = await faucets.runFaucetStx({
     address: stacksAddress,
   });
-  
+
   return faucetTx;
-};
+}
 ```
 
 The API will respond with a new transaction ID and confirmation that the faucet run was successful:
@@ -151,9 +151,9 @@ async function getAccountTransactions() {
   const history = await accounts.getAccountTransactions({
     principal: stacksAddress,
   });
-  
+
   return history;
-}  
+}
 ```
 
 The API will respond with a paginatable list of transactions associated with the account:
@@ -212,9 +212,9 @@ async function getAccountTransactions() {
     limit: 50,
     offset: 50,
   });
-  
+
   return history;
-}  
+}
 ```
 
 ## Step 5: Getting account balances
@@ -228,7 +228,7 @@ async function getAccountBalance() {
   });
 
   return balances;
-}  
+}
 ```
 
 The API will respond with the following breakdown of token balances:
