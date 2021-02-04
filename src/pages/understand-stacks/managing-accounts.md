@@ -75,9 +75,9 @@ const stacksAddress = getAddressFromPrivateKey(
   TransactionVersion.Testnet // remove for Mainnet addresses
 );
 
-async function getAccountInfo() {
-  const accounts = new AccountsApi(apiConfig);
+const accounts = new AccountsApi(apiConfig);
 
+async function getAccountInfo() {
   const accountInfo = await accounts.getAccountInfo({
     principal: stacksAddress
   });
@@ -106,7 +106,7 @@ The `balance` property represents the Stacks token balance, as hex-encoded strin
 Proofs, provided as hex-encoded strings, can be removed from the responses by setting the `proof` parameter:
 
 ```js
-async function getAccountInfo() {
+async function getAccountInfoWithoutProof() {
   const accountInfo = await accounts.getAccountInfo({
     principal: stacksAddress,
     proof: 0,
