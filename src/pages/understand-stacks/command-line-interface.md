@@ -7,7 +7,7 @@ The Stacks CLI enables interactions with the Stacks 2.0 blockchain through a set
 
 ## Installation
 
-First, ensure tou have `npm` installed. Next, run the following command in your terminal:
+First, ensure you have `npm` installed. Next, run the following command in your terminal:
 
 `npm install -g @stacks/cli`
 
