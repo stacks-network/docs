@@ -326,3 +326,124 @@ const MyComponent = () => {
 ## Request testnet STX from faucet
 
 You may find it useful to request testnet STX from [the Stacks Explorer sandbox](https://explorer.stacks.co/sandbox?chain=testnet) while developing your app with the Stacks testnet.
+
+## Transaction request / response payload
+
+Under the hood, `@stacks/connect` will serialize and deserialize data between your app and the Stacks Wallet.
+
+These payloads are tokens that conform to the [JSON Web Token (JWT) standard](https://tools.ietf.org/html/rfc7519) with additional support for the `secp256k1` curve used by Bitcoin and many other cryptocurrencies.
+
+### Transaction Request Payload
+
+When an application triggers an transaction from `@stacks/connect`, the options of that transaction are serialized into a `transactionRequest` payload. The `transactionRequest` is similar to the [authRequest](/build-apps/guides/authentication.md#authrequest-payload-schema) payload used for authentication.
+
+The transaction request payload has the following schema, in addition to the standard JWT required fields:
+
+```ts
+interface TransactionRequest {
+  appDetails?: {
+    name: string;
+    icon: string;
+  };
+  // 1 = "allow", 2 = "deny".
+  postConditionMode?: PostConditionMode; // number
+  // Serialized version of post conditions
+  postConditions?: string[];
+  // JSON serialized version of `StacksNetwork`
+  // This allows the app to specify their default desired network.
+  // The user may switch networks before broadcasting their transaction.
+  network?: {
+    coreApiUrl: string;
+    chainID: ChainID; // number
+  };
+  // `AnchorMode` defined in `@stacks/transactions`
+  anchorMode?: AnchorMode; // number
+  // The desired default stacks address to sign with.
+  // There is no guarantee that the transaction is signed with this address;
+  stxAddress?: string;
+  txType: TransactionDetails; // see below
+}
+
+export enum TransactionTypes {
+  ContractCall = 'contract_call',
+  ContractDeploy = 'smart_contract',
+  STXTransfer = 'token_transfer',
+}
+
+interface ContractCallPayload extends TransactionRequest {
+  contractAddress: string;
+  contractName: string;
+  functionName: string;
+  // Serialized Clarity values to be used as arguments in the contract call
+  functionArgs: string[];
+  txType: TransactionTypes.ContractCall;
+}
+
+interface ContractDeployPayload extends TransactinRequest {
+  contractName: string;
+  // raw source code for this contract
+  codeBody: string;
+  txType: TransactionTypes.ContractDeploy;
+}
+
+interface StxTransferPayload extends TransactionRequest {
+  recipient: string;
+  // amount for this transaction, in microstacks
+  amount: string;
+  memo?: string;
+  txType: TransactionTypes.STXTransfer;
+}
+```
+
+### Transaction Response payload
+
+After the user signs and broadcasts a transaction, a `transactionResponse` payload is sent back to your app.
+
+```ts
+interface TransactionResponse {
+  txId: string;
+  // hex serialized version of this transaction
+  txRaw: string;
+}
+```
+
+## StacksProvider injected variable
+
+When users have the [Stacks Wallet for Web](https://www.hiro.so/wallet/install-web) browser extension installed, the extension will inject a global `StacksProvider` variable into the JavaScript context of your web application. This allows your JavaScript code to hook into the extension, and make authentication and transaction requests. `@stacks/connect` automatically detects and uses this global variable for you.
+
+At the moment, only the Stacks Wallet for Web browser extension includes a `StacksProvider`, however, ideally more wallets (and mobile wallets) support this format, so that your app can be compatible with any Stacks Wallet that has functionality to embed web applications.
+
+In your web application, you can check to see if the user has a compatible wallet installed by checking for the presence of `window.StacksProvider`.
+
+Here is the interface for the `StacksProvider` variable.
+
+```ts
+interface StacksProvider {
+  /**
+   * Make a transaction request
+   *
+   * @param payload - a JSON web token representing a transaction request
+   */
+  transactionRequest(payload: string): Promise<TransactionResponse>;
+  /**
+   * Make an authentication request
+   *
+   * @param payload - a JSON web token representing an auth request
+   *
+   * @returns an authResponse string in the form of a JSON web token
+   */
+  authenticationRequest(payload: string): Promise<string>;
+  getProductInfo:
+    | undefined
+    | (() => {
+        version: string;
+        name: string;
+        meta?: {
+          tag?: string;
+          commit?: string;
+          [key: string]: any;
+        };
+        [key: string]: any;
+      });
+}
+```
