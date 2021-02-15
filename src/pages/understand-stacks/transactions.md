@@ -16,7 +16,7 @@ If you want to jump right in and broadcast your first transaction, try this tuto
 [@page-reference | inline]
 | /understand-stacks/sending-tokens
 
--> The information on this page is based on a design proposal. You can find more conceptual details in this document: [SIP 005: Blocks, Transaction, Accounts](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md).
+-> The information on this page is based on a design proposal. You can find more conceptual details in this document: [SIP 005: Blocks, Transaction, Accounts](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md).
 
 ## Lifecycle
 
@@ -87,13 +87,13 @@ The signing flow for sponsored transactions would be to have the user first sign
 
 A transaction includes the following information. Multiple-byte fields are encoded as big-endian.
 
-| **Type**        | **Description**                                                                                                                                                                                                           |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Version number  | Network version. `0x80` for testnet, `0x0` for mainnet                                                                                                                                                                    |
-| Chain ID        | Chain instance ID. `0x80000000` for testnet, `0x00000001` for mainnet                                                                                                                                                     |
-| Authorization   | Type of authorization (`0x04` for standard, `0x05` for sponsored) and [spending conditions](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-authorization) |
-| Post-conditions | List of post-conditions, each including a [type ID and variable-length condition body](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-post-conditions-1)  |
-| Payload         | Transaction type and variable-length [payload](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-payloads-1)                                                 |
+| **Type**        | **Description**                                                                                                                                                                                                    |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Version number  | Network version. `0x80` for testnet, `0x0` for mainnet                                                                                                                                                             |
+| Chain ID        | Chain instance ID. `0x80000000` for testnet, `0x00000001` for mainnet                                                                                                                                              |
+| Authorization   | Type of authorization (`0x04` for standard, `0x05` for sponsored) and [spending conditions](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-authorization) |
+| Post-conditions | List of post-conditions, each including a [type ID and variable-length condition body](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-post-conditions-1)  |
+| Payload         | Transaction type and variable-length [payload](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-payloads-1)                                                 |
 
 ## Construction
 
@@ -171,7 +171,7 @@ const transaction = await makeContractCall(txOptions);
 
 ### Clarity value types
 
-Building transactions that call functions in deployed clarity contracts requires you to construct valid Clarity Values to pass to the function as arguments. The [Clarity type system](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-002-smart-contract-language.md#clarity-type-system) contains the following types:
+Building transactions that call functions in deployed clarity contracts requires you to construct valid Clarity Values to pass to the function as arguments. The [Clarity type system](https://github.com/stacksgov/sips/blob/main/sips/sip-002/sip-002-smart-contract-language.md#clarity-type-system) contains the following types:
 
 | Type             | Declaration                                                  | Description                                                                                                                                                                         |
 | ---------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

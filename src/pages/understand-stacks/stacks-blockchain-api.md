@@ -196,7 +196,7 @@ Using the `limit` and `offset` properties, you can paginate through the entire l
 
 ## Requesting proofs
 
-Several endpoints will by default request the [MARF Merkel Proof](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-004-materialized-view.md#marf-merkle-proofs).
+Several endpoints will by default request the [MARF Merkel Proof](https://github.com/stacksgov/sips/blob/main/sips/sip-004/sip-004-materialized-view.md#marf-merkle-proofs).
 
 Provided with the proof, a client can verify the value, cumulative energy spent, and the number of confirmation for the response value provided by the API.
 
