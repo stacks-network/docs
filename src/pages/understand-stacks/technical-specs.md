@@ -5,8 +5,8 @@ description: Summary of technical specifications of Stacks 2.0
 
 ## Consensus
 
-- Proof of Transfer (PoX) as described in [SIP-007](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-007-stacking-consensus.md)
-- Network will transition to Proof of Burn (PoB) as described in [SIP-001](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md) after 10 years. More details [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-001-burn-election.md).
+- Proof of Transfer (PoX) as described in [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md)
+- Network will transition to Proof of Burn (PoB) as described in [SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md) after 10 years. More details [here](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
 - Threat model
   - 51% of malicious Stacks mining power can perform a double-spend attack
   - 51% of malicious Bitcoin mining power can reorg the Stacks chain
@@ -37,7 +37,7 @@ description: Summary of technical specifications of Stacks 2.0
   2. Reward phase: In this phase miner BTC commitments are distributed amongst the reward set. Reward cycle length is 2000 BTC blocks (~2 weeks).
 - Two reward addresses / block, for a total of 4000 addresses every reward cycle. The addresses are chosen using a VRF (verifiable random function), so each node can deterministically arrive at the same reward addresses for a given block.
 - Stacking threshold: 0.025% of the participating amount of STX when participation is between 25% and 100% and when participation is below 25%, the threshold level is always 0.00625 of the liquid supply of STX.
-- Delegation: An STX address can designate another address to participate in Stacking on its behalf. [Relevant section in SIP-007](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-007-stacking-consensus.md#stacker-delegation).
+- Delegation: An STX address can designate another address to participate in Stacking on its behalf. [Relevant section in SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md#stacker-delegation).
 - Pooling: STX holders that individually do not meet the Stacking threshold can pool together their holdings to participate in Stacking. To do this, STX holders must set the (optional) reward address to the "delegate address." For more details, see [this reference](https://docs.blockstack.org/references/stacking-contract#delegate-stx).
 - Further reading: [Stacking](/stacks-blockchain/stacking)
 
@@ -63,7 +63,7 @@ description: Summary of technical specifications of Stacks 2.0
 - Two types of authorizations: standard authorization is where originating account is the same as paying account. _Sponsored_ authorization is where originating account and paying account are distinct. For instance, developers or service providers could pay for users to call their smart-contracts.
 - For sponsored authorization, first a user signs with the originating account and then a sponsor signs with the paying account.
 - Mempool limit for concurrent pending transactions is 25 per account
-- Transaction encoding is described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-encoding) and [here](/understand-stacks/transactions#encoding)
-- Transaction signing and verification are described [here](https://github.com/blockstack/stacks-blockchain/blob/master/sip/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying) and [here](/understand-stacks/transactions#signature-and-verification)
+- Transaction encoding is described [here](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-encoding) and [here](/understand-stacks/transactions#encoding)
+- Transaction signing and verification are described [here](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying) and [here](/understand-stacks/transactions#signature-and-verification)
 - All transactions impacting account balance are atomic, a transfer operation can not increment one account’s balance without decrementing another’s. However, transactions that perform multiple account actions (for example, transferring from multiple accounts) may partially complete.
 - Further reading: [Transactions](/understand-stacks/transactions)
