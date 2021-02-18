@@ -49,7 +49,7 @@ Thanks to this design choice, we were able to generate parts of our Javascript c
 
 ## Javascript client library
 
-A generated JS Client is available for consumption of this API. The client library enables typesafe REST and WebSocket communication. [Please review the client documentation for more details](https://blockstack.github.io/stacks-blockchain-api/client/index.html).
+A generated JS Client is available for consumption of this API. The client library enables typesafe REST and WebSocket communication. [Please review the client documentation for more details](https://blockstack.github.io/stacks-blockchain-api/).
 
 The client is made up of three components:
 
