@@ -34,7 +34,3 @@ The `src/_data/cli-reference.json` file is generated from the `stx` subcommand `
 
 There is a json file that is generated via the `stacks-blockchain` repo, which automatically brings it over to this repo
 via a github action.
-
-### FAQs
-
-All of the FAQs found at `/reference/faqs` are pulled dynamically from the zendesk api and rendered in this project.
