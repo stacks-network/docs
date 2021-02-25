@@ -43,4 +43,4 @@ registered and when they will unlock.
 
 ## Have more questions?
 
-For a list of frequent questions and answers about STX tokens, [see the Stacks token FAQs](/references/faqs/stacks-token).
+For a list of frequent questions and answers about STX tokens, [see the Stacks token FAQs](/references/faqs).
