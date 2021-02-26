@@ -6,7 +6,7 @@
         "input_type": "(buff 20), (buff 48), principal, (buff 20)",
         "output_type": "(response bool int)",
         "signature": "(name-import namespace name beneficiary zonefile-hash)",
-        "description": "Import name to a revealed namespace. Each imported name is given both an owner and some off-chain state."
+        "description": "Imports name to a revealed namespace. Each imported name is given both an owner and some off-chain state."
       },
       {
         "name": "name-preorder",
@@ -27,7 +27,7 @@
         "input_type": "(buff 20), (buff 48), uint, (optional principal), (optional (buff 20))",
         "output_type": "(response bool int)",
         "signature": "(name-renewal namespace name stx-to-burn new-owner zonefile-hash)",
-        "description": "Depending in the namespace rules, a name can expire. For example, names in the .id namespace expire after 2 years. You need to send a name reveal every so often to keep your name.\n\nYou will pay the registration cost of your name to the namespace's designated burn address when you renew it.\nWhen a name expires, it enters a month-long \"grace period\" (5000 blocks). \n\nIt will stop resolving in the grace period, and all of the above operations will cease to be honored by the BNS consensus rules.\nYou may, however, send a NAME_RENEWAL during this grace period to preserve your name.\nIf your name is in a namespace where names do not expire, then you never need to use this transaction."
+        "description": "Depending in the namespace rules, a name can expire. For example, names in the .id namespace expire after 2 years. You need to send a name renewal every so often to keep your name.\n\nYou will pay the registration cost of your name to the namespace's designated burn address when you renew it.\nWhen a name expires, it enters a \"grace period\". The period is set to 5000 blocks (a month) but can be configured for each namespace. \n\nIt will stop resolving in the grace period, and all of the above operations will cease to be honored by the BNS consensus rules.\nYou may, however, send a NAME_RENEWAL during this grace period to preserve your name. After the grace period, everybody can register that name again.\nIf your name is in a namespace where names do not expire, then you never need to use this transaction."
       },
       {
         "name": "name-revoke",
@@ -41,14 +41,14 @@
         "input_type": "(buff 20), (buff 48), principal, (optional (buff 20))",
         "output_type": "(response bool int)",
         "signature": "(name-transfer namespace name new-owner zonefile-hash)",
-        "description": "Changes the name's public key hash. You would send one of these transactions if you wanted to:\n* Change your private key\n* Send the name to someone else\n\nWhen transferring a name, you have the option to also clear the name's zone file hash (i.e. set it to null). This is useful for when you send the name to someone else, so the recipient's name does not resolve to your zone file."
+        "description": "Changes the name's public key hash. You would send a name transfer transaction if you wanted to:\n* Change your private key\n* Send the name to someone else or\n* Update your zone file\n\nWhen transferring a name, you have the option to also clear the name's zone file hash (i.e. set it to null). This is useful for when you send the name to someone else, so the recipient's name does not resolve to your zone file."
       },
       {
         "name": "name-update",
         "input_type": "(buff 20), (buff 48), (buff 20)",
         "output_type": "(response bool int)",
         "signature": "(name-update namespace name zonefile-hash)",
-        "description": "Changes the name's zone file hash. You would send one of these transactions if you wanted to change the name's zone file contents. For example, you would do this if you want to deploy your own Gaia hub and want other people to read from it."
+        "description": "Changes the name's zone file hash. You would send a name update transaction if you wanted to change the name's zone file contents. For example, you would do this if you want to deploy your own Gaia hub and want other people to read from it."
       },
       {
         "name": "namespace-preorder",
@@ -69,7 +69,7 @@
         "input_type": "(buff 20), (buff 20), uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, principal",
         "output_type": "(response bool int)",
         "signature": "(namespace-reveal namespace namespace-salt p-func-base p-func-coeff p-func-b1 p-func-b2 p-func-b3 p-func-b4 p-func-b5 p-func-b6 p-func-b7 p-func-b8 p-func-b9 p-func-b10 p-func-b11 p-func-b12 p-func-b13 p-func-b14 p-func-b15 p-func-b16 p-func-non-alpha-discount p-func-no-vowel-discount lifetime namespace-import)",
-        "description": "Reveals the salt and the namespace ID (pafter a namespace preorder). It reveals how long names last in this namespace before they expire or must be renewed, and it sets a price function for the namespace that determines how cheap or expensive names its will be."
+        "description": "Reveals the salt and the namespace ID (after a namespace preorder). It reveals how long names last in this namespace before they expire or must be renewed, and it sets a price function for the namespace that determines how cheap or expensive names its will be."
       }
     ],
     "read_only_functions": [
@@ -99,14 +99,14 @@
         "input_type": "(buff 20), (buff 48)",
         "output_type": "(response uint int)",
         "signature": "(get-name-price namespace name)",
-        "description": "Get the price for a name."
+        "description": "Gets the price for a name."
       },
       {
         "name": "get-namespace-price",
         "input_type": "(buff 20)",
         "output_type": "(response uint int)",
         "signature": "(get-namespace-price namespace)",
-        "description": "Get the price for a namespace."
+        "description": "Gets the price for a namespace."
       },
       {
         "name": "get-namespace-properties",
@@ -134,7 +134,7 @@
         "input_type": "principal",
         "output_type": "(response (tuple (name (buff 48)) (namespace (buff 20))) (tuple (code int) (name (optional (tuple (name (buff 48)) (namespace (buff 20)))))))",
         "signature": "(resolve-principal owner)",
-        "description": "Returns the name for a principal, if there is one."
+        "description": "Returns the registered name that a principal owns if there is one. A principal can only own one name at a time."
       }
     ],
     "error_codes": [
