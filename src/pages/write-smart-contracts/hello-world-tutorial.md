@@ -197,9 +197,9 @@ As soon as the contract deploys, you can call one of its methods. In this exampl
 -> This is a `read-only` method, so it returns the result [without generating a new transaction](/understand-stacks/network#read-only-function-calls)
 
 ```bash
-# stx call_read_only_contract_func -t <stx_address> <contract_name> <function_name> <fee> <nonce> <privateKey>
-# replace `stx_address` and `privateKey` with values from your keychain
-stx call_read_only_contract_func -t <stx_address> hello-world echo-number 2000 1 <privateKey>
+# stx call_read_only_contract_func -t <stx_address> <contract_name> <function_name> <stx_address>
+# replace `stx_address` with the value from your keychain
+stx call_read_only_contract_func -t <stx_address> hello-world echo-number <stx_address>
 ```
 
 The command looks up the contract method definition on the network, identify that it requires an input parameter, and ask you for an integer to set `val`. Enter 42 an hit ENTER.
