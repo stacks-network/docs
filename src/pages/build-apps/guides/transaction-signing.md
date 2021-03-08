@@ -27,12 +27,12 @@ See the public registry tutorial for a concrete example of this functionality in
 
 ## Install dependency
 
-~> With the recent launch of the Stacks Blockchain, the production release of `@stacks/connect` does not include a few key changes to help you build apps that integrate with the Stacks Mainnet and Testnet. If you're following this guide, you should install a beta version of `@stacks/connect` with the `canary` tag on NPM, as described below. We expect this code to be officially released into the `@stacks/connect` package soon.
+~> In order to utilize the latest transaction signing with the Stacks Wallet, use version 5 of the `@stacks/connect` NPM package.
 
 The following dependency must be installed:
 
 ```
-npm install @stacks/connect@canary
+npm install @stacks/connect@^5
 ```
 
 ## Initiate session
