@@ -93,6 +93,14 @@ Clone this repository:
 git clone https://github.com/blockstack/stacks-blockchain.git; cd stacks-blockchain
 ```
 
+Optionally, set env vars for a specific version, commit hash and branch:
+
+```bash
+export STACKS_NODE_VERSION=2.0.9
+export GIT_BRANCH=master
+export GIT_COMMIT=e7f178b
+```
+
 Install the Stacks node by running:
 
 ```bash
