@@ -119,7 +119,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
    What you see are four one-line comments. In Clarity, a comment line is started with `;;`. As you can see, the
    comments indicate the structure of the smart contract we are going to implement.
 
-   Let's declare a counter variable and define a public getter method:
+   Let's declare a counter variable and define a read-only getter method:
 
    ```clarity
     ;; define counter variable
@@ -128,7 +128,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
     ...
 
     ;; counter getter
-    (define-public (get-counter)
+    (define-read-only (get-counter)
       (ok (var-get counter)))
    ```
 
@@ -139,7 +139,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
    The `counter` variable is stored in the data space associated with the smart contract. The variable is persisted and
    acts as the global shared state.
 
-   To provide access to the `counter` variable from outside of the current smart contract, we need to declare a public function to get it. The last lines of the code add a public `get-counter` function. The [`var-get`](/references/language-functions#var-get) statement looks for a variable in the contract's data space and returns it.
+   To provide access to the `counter` variable from outside of the current smart contract, we need to declare a read-only function to get it. The last lines of the code add a read-only `get-counter` function. The [`var-get`](/references/language-functions#var-get) statement looks for a variable in the contract's data space and returns it.
 
    With that, you are ready to rerun the tests
 
@@ -174,7 +174,7 @@ Let's get familiar with the tests to understand what the new smart contract shou
    ```clarity
    (define-data-var counter int 0)
 
-   (define-public (get-counter)
+   (define-read-only (get-counter)
      (ok (var-get counter)))
 
    (define-public (increment)
