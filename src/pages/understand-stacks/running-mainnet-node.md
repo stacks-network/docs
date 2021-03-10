@@ -91,6 +91,15 @@ Clone this repository:
 git clone https://github.com/blockstack/stacks-blockchain.git; cd stacks-blockchain
 ```
 
+Change the below values to reflect the version, branch, and git commit of the source code being built for accuracy:
+
+```bash
+# The following values are just an example
+export STACKS_NODE_VERSION=2.0.9
+export GIT_BRANCH=master
+export GIT_COMMIT=e7f178b
+```
+
 Install the Stacks node by running:
 
 ```bash
