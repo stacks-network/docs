@@ -184,7 +184,7 @@ The `deploy_contract` command takes the file contents and deploys a new contract
 
 ~> Your address is different. The contract identifier is essentially a naming convention to address deployed contract. It's based on the dot notation: `<address>.<contract_id>`
 
-Ideally, you should estimate the minimal fees you need to pay. Factors like the size of the contract (amopngst others) determine the estimate. For this tutorial, you can keep it simple and accept the default fee of `2000` (equals 0.02 STX).
+Ideally, you should estimate the minimal fees you need to pay. Factors like the size of the contract (amongst others) determine the estimate. For this tutorial, you can keep it simple and accept the default fee of `2000` (equals 0.02 STX).
 
 You have to wait up to a minute for the contract to broadcast to the network. In the meantime, you can open the transaction with the Explorer. Notice that every deployed smart contracts' source code is publicly verifiable.
 
