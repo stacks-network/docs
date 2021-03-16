@@ -59,13 +59,13 @@ Post-conditions are meant to be added by the user (or by the user's wallet softw
 
 ### Attributes
 
-Each transaction includes a field that describes zero or more post-conditions that must all be true when the transaction finishes running. A post-condition includes the following information:
+Each transaction includes a field that describes zero or more post-conditions that must all be true when the transaction finishes running. The post-condition describes only properties of the owner of the asset before the transaction happend. For a transfer transaction, the post-condition is about the sender, for a burn transaction, the post-condition is about the previous owner. A post-condition includes the following information:
 
 | **Attribute**                                  | **Sample**                                  | **Description**                                                                           |
 | ---------------------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [Principal](/write-smart-contracts/principals) | `SP2ZD731ANQZT6J4K3F5N8A40ZXWXC1XFXHVVQFKE` | Sender of the transaction, can be a Stacks address or a contract                          |
-| Asset name                                     | `STX`                                       | Asset to apply conditions to (could be Stacks, fungible, or non-fungible tokens)          |
-| Comparator                                     | `>=`                                        | Compare operation to be applied (could define "how much" or "whether or not")             |
+| [Principal](/write-smart-contracts/principals) | `SP2ZD731ANQZT6J4K3F5N8A40ZXWXC1XFXHVVQFKE` | original owner of the asset, can be a Stacks address or a contract                          |
+| Asset id                                     | `STX`                                       | Asset to apply conditions to (could be Stacks, fungible, or non-fungible tokens)          |
+| Comparator                                     | `>=`                                        | Compare operation to be applied (could define "how much" or "whether or not the asset is owned")             |
 | Literal                                        | `1000000`                                   | Integer or boolean value used to compare instances of the asset against via the condition |
 
 ### Evaluation modes
