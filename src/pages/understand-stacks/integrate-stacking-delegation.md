@@ -117,7 +117,7 @@ const cycles = 3;
 const delegatorPrivateKey = 'd48f215481c16cbe6426f8e557df9b78895661971d71735126545abddcd5377001';
 
 // the BTC address for reward payouts; either to the delegator or to the BTC address set by the account holder
-// must start with "1" or "3". Native Segwit (starts with “bc1”) is not supported
+// must start with "1" or "3". Native Segwit (starts with "bc1") is not supported
 const delegatorBtcAddress = 'msiYwJCvXEzjgq6hDwD9ueBka6MTfN962Z';
 
 // if you call this method multiple times in the same block, you need to increase the nonce manually
