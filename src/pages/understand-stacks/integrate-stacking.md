@@ -181,6 +181,7 @@ With this input, and the data from previous steps, we can determine the eligibil
 
 ```js
 // user supplied parameters
+// BTC address must start with "1" or "3". Native Segwit (starts with “bc1”) is not supported
 let btcAddress = '1Xik14zRm29UsyS6DjhYg4iZeZqsDa8D3';
 let numberOfCycles = 3;
 

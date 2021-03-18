@@ -39,6 +39,7 @@ description: Summary of technical specifications of Stacks 2.0
 - Stacking threshold: 0.025% of the participating amount of STX when participation is between 25% and 100% and when participation is below 25%, the threshold level is always 0.00625 of the liquid supply of STX.
 - Delegation: An STX address can designate another address to participate in Stacking on its behalf. [Relevant section in SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md#stacker-delegation).
 - Pooling: STX holders that individually do not meet the Stacking threshold can pool together their holdings to participate in Stacking. To do this, STX holders must set the (optional) reward address to the "delegate address." For more details, see [this reference](https://docs.blockstack.org/references/stacking-contract#delegate-stx).
+- Only two types of BTC reward addresses are supported: [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash) or [Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash). Native Segwit is not supported.
 - Further reading: [Stacking](/stacks-blockchain/stacking)
 
 ## Accounts and Addresses
