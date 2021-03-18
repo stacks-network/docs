@@ -25,7 +25,7 @@ PoX is a consensus algorithm between two blockchains. It uses an established blo
 
 PoX connects to Bitcoin with a 1:1 block ratio, meaning anything that happens on the Stacks blockchain can be verified on the Bitcoin Blockchain.
 
-Instead of burning electricity on proof of work, PoX reuses already minted bitcoins as “proof of computation” and
+Instead of burning electricity on proof of work, PoX reuses already minted bitcoins as "proof of computation" and
 miners represent their cost of mining in bitcoins directly.
 
 [@page-reference | inline]

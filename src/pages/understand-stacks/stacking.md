@@ -101,7 +101,7 @@ Check out the [Stacking contract reference](/references/stacking-contract) to se
 
 ## Bitcoin address
 
-!> You must provide a BTC address in one of two formats: [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), which starts with "1". Or, [Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), which starts with "3". The "Native Segwit" format (which starts with “bc1”), for example, is not supported.
+!> You must provide a BTC address in one of two formats: [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), which starts with "1". Or, [Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), which starts with "3". The "Native Segwit" format (which starts with "bc1"), for example, is not supported.
 
 The Stacking contract needs a special format for the bitcoin address (the reward address). This is required in order to ensure that miners will be able to correctly construct the bitcoin transaction containing the reward address.
 
