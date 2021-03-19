@@ -70,7 +70,7 @@ Miners have to run a software (mining client, aka "miner") on their machines to 
 - Assembly: The elected miner writes the new block and collects rewards in form of new Stacks (STX) tokens
 
 [@page-reference | inline]
-| /start-mining
+| /start-mining/mainnet, /start-mining/testnet
 
 ## Token holder eligibility
 
