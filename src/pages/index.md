@@ -21,7 +21,7 @@ description: Write Clarity smart contracts, build apps, and starting mining with
 ## Start mining
 
 [@page-reference | grid]
-| /start-mining/mainnet, /start-mining/testnet, /understand-stacks/running-testnet-node
+| /start-mining/mainnet, /start-mining/testnet, /understand-stacks/running-testnet-node, /understand-stacks/running-mainnet-node
 
 ## Ecosystem
 
