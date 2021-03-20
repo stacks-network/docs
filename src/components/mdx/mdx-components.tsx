@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Pre,
   THead,
@@ -24,6 +23,7 @@ import {
 import { Img } from '@components/mdx/image';
 import { Code } from '@components/mdx/components';
 import { PageReference } from '@components/custom-blocks/page-reference';
+import { Faucet } from '@components/custom-blocks/faucet';
 
 export const Components = {
   h1: () => null,
@@ -55,4 +55,5 @@ export const Components = {
 export const MDXComponents = {
   ...Components,
   pagereference: PageReference,
+  faucet: Faucet,
 };

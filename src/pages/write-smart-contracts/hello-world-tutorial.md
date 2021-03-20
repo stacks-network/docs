@@ -125,24 +125,7 @@ Review your new Stacks account details by opening up the file `cli_keychain.json
 
 Uploading and calling smart contracts requires you to pay network fees to process the transactions. You need to get some testnet tokens, so you can pay the fees in the next steps.
 
-The **STX faucet** is an API endpoint you can call to request testnet tokens for the new account. In the terminal, run the following command:
-
-```bash
-# replace <stx_address> with `address` property from your keychain
-curl -XPOST "https://stacks-node-api.testnet.stacks.co/extended/v1/faucets/stx?address=<stx_address>" | json_pp
-```
-
-The response includes a `txId` property. This is the transaction that transfers funds to your Stacks address.
-
-```json
-{
-  "success": true,
-  "txId": "0xf2f0402f9f4c4d43b382690c4f7b97e24d5ff5dd5c619e3615daa64dca7ef4bc",
-  "txRaw": "8080000000040016..."
-}
-```
-
--> You can also review the transaction status and details using the [Stacks Explorer](https://explorer.stacks.co/)
+[@faucet]
 
 You need to wait up to a minute for the transaction to complete. Type the following in your terminal to see the balance:
 
