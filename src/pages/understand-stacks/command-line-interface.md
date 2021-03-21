@@ -23,10 +23,10 @@ stx <command> -t
 
 -> For account usage, that means adresses generated will _only_ be available for the specific network. An account generated for the testnet cannot be used on the mainnet.
 
-By default, using the `-t` flag causes the CLI to connect to the testnet node at `http://stacks-node-api.blockstack.org:20443`. To specify a node to connect to, add the `-H` flag followed by the URL of the node:
+By default, using the `-t` flag causes the CLI to connect to the testnet node at `http://stacks-node-api.blockstack.org:20443`. To specify a node to connect to, add the `-I` flag followed by the URL of the node:
 
 ```bash
-stx <command> -H "http://localhost:20443"
+stx <command> -I "http://localhost:20443"
 ```
 
 ## Account
