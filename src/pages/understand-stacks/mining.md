@@ -17,7 +17,7 @@ A new Stacks block may be mined once per Bitcoin block. To be considered for min
 
 ## Coinbase Rewards
 
-Miners receive coinbase rewards for blocks they mine. These rewards are shared (proportional to the amount committed to) with an user burn support operations that support the block.
+Miners receive coinbase rewards for blocks they mine.
 
 The reward amounts are:
 
