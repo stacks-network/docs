@@ -67,4 +67,5 @@ description: Summary of technical specifications of Stacks 2.0
 - Transaction encoding is described [here](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-encoding) and [here](/understand-stacks/transactions#encoding)
 - Transaction signing and verification are described [here](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying) and [here](/understand-stacks/transactions#signature-and-verification)
 - All transactions impacting account balance are atomic, a transfer operation can not increment one account’s balance without decrementing another’s. However, transactions that perform multiple account actions (for example, transferring from multiple accounts) may partially complete.
+- Transactions can include a memo string (max 34 bytes)
 - Further reading: [Transactions](/understand-stacks/transactions)
