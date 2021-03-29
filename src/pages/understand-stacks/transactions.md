@@ -535,3 +535,11 @@ Sample response:
   ]
 }
 ```
+
+## Garbage Collection
+
+Broadcasted transactions will stay in the mempool for 256 blocks (~42 hours). If a transactions is not confirmed within that time, it will be removed from the mempool.
+
+!> Most transactions stay in the mempool due to nonce issues. If you see a transaction pending for an unusual time, review the nonce of the account and the transaction.
+
+If a transaction is removed from the mempool, the transaction was not processed and no changes were made to the blockchain state.
