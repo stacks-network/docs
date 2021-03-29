@@ -40,7 +40,7 @@ The API will respond with the fee rate (as integer):
 
 ## Nonces
 
-Every account carries a [nonce property](https://en.wikipedia.org/wiki/Cryptographic_nonce) that indicates the number of transactions processed for the given account. Nonces are one-time codes and are incremented by 1 on every transaction.
+Every account carries a [nonce property](https://en.wikipedia.org/wiki/Cryptographic_nonce) that indicates the number of transactions processed for the given account. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction.
 
 Nonces are added to all transactions and help identify them in order to ensure transactions are processed in order and to avoid duplicated processing.
 
