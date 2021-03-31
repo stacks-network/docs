@@ -235,7 +235,7 @@ Occasionally, docker can get **stuck** and not allow new containers to start. If
 
 ### BNS username not found
 
-The mocknet is launched without the import of Stacks 1.0 name, only the test genesis chain state is imported. To change that comment out the corresponding line in `stacks-follower/Config.toml.template` like this:
+The mocknet is launched without the import of Stacks 1.0 name, only the test genesis chain state is imported. To change that comment out the corresponding line in `stacks-node-follower/Config.toml.template` like this:
 
 ```
 # use_test_genesis_chainstate = true
