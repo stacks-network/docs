@@ -80,6 +80,9 @@ const delegateTo = 'ST2MCYPWTFMD2MGR5YY695EJG0G1R4J2BTJPRGM7H';
 // burn height at which the delegation relationship should be revoked (optional)
 const untilBurnBlockHeight = 5000;
 
+// hash of bitcoin address that the delegator has to use to receive the pool's rewards (optional)
+const poxAddress = undefined;
+
 // private key of the account holder for transaction signing
 const privateKey = 'd48f215481c16cbe6426f8e557df9b78895661971d71735126545abddcd5377001';
 
@@ -87,6 +90,7 @@ const delegetateResponse = await client.delegateStx({
   amountMicroStx,
   delegateTo,
   untilBurnBlockHeight, // optional
+  poxAddress, // optional
   privateKey,
 });
 
@@ -95,13 +99,37 @@ const delegetateResponse = await client.delegateStx({
 // }
 ```
 
-This method calls the [`delegate-stx`](/references/stacking-contract#delegate-stx) method of the Stacking contract.
+This method calls the [`delegate-stx`](/references/stacking-contract#delegate-stx) method of the Stacking contract. Note, that the amount can be higher or lower than the current account balance. Delegation does not yet lock the STX tokens, users can still transfer them.
 
 -> To avoid handling private keys, it is recommended to use the [Stacks Wallet](https://www.hiro.so/wallet) to sign the delegation transaction
 
-## Step 3: Stack STX tokens
+**Congratulations!** With the completion of this step, you successfully learnt how to use the Stacking library to ...
 
-With an established delegation relationship, the delegator can stack STX tokens on behalf of the account holder.
+- Delegate STX tokens as an account holder
+
+
+## Optional: Revoke delegation rights
+
+Delegators will be able to Stack STX tokens on the account holder's behalf until either the set burn height is reached or the account holder revokes the rights.
+
+To revoke delegation rights, the account holder can call the `revokeDelegatestx` method.
+
+```js
+const revokeResponse = await client.revokeDelegateStx(privateKey);
+
+// {
+//   txid: '0xf6e9dbf6a26c1b73a14738606cb2232375d1b440246e6bbc14a45b3a66618481',
+// }
+```
+
+This method calls the [`revoke-delegate-stx`](/references/stacking-contract#revoke-delegate-stx) method of the Stacking contract.
+
+-> To avoid handling private keys, it is recommended to use the [Stacks Wallet](https://www.hiro.so/wallet) to sign the revoke transaction
+
+
+## Step 3: Stack delegated STX tokens
+
+With an established delegation relationship, the delegator can stack STX tokens on behalf of the account holder. This happens usually in a different client app than the delegation.
 
 ```js
 // block height at which to stack
@@ -142,7 +170,8 @@ const delegetateStackResponses = await delegatorClient.delegateStackStx({
 ```
 
 This function calls the [`delegate-stack-stx`](/references/stacking-contract#delegate-stack-stx) method of the Stacking contract to lock up the STX token from the account holder.
-The delegator must call this method multiple times (for all stackers), until enough tokens are locked up to participate in Stacking.
+
+The delegator must call this method multiple times (for all stackers), until enough tokens are locked up to participate in Stacking. This is the first part of delegated stacking for the delegator.
 
 -> Reward slots are assigned based on the number of STX tokens locked up for a specific Bitcoin reward address
 
@@ -165,28 +194,17 @@ const delegetateCommitResponse = await delegatorClient.stackAggregationCommit({
 // }
 ```
 
-This method calls the [`stack-aggregation-commit`](/references/stacking-contract#stack-aggregation-commit) function of the Stacking contract.
+
+This method calls the [`stack-aggregation-commit`](/references/stacking-contract#stack-aggregation-commit) function of the Stacking contract. This call also includes locked Stacks from previous cycles. This is the second part of delegated stacking for the delegator.
+
+This method has to be called once for each reward cycle, even if all account holders have already locked their Stacks for several cycles in a row. If no new account holders are added to the pool, then this method call can be made even several cycles before the actual rewards cycle.
+
+Locking delegated Stacks together with a aggregation commits can be done several times before the cycle starts as long as the minimum increment amount of locked Stacks is met.
+
 
 **Congratulations!** With the completion of this step, you successfully learnt how to use the Stacking library to ...
 
-- Delegate STX tokens as an account holder
 - Stack STX token on behalf of an account holder
 - Commit to Stacking with all delegated STX tokens
 
-## Optional: Revoke delegation rights
 
-Delegators will be able to Stack STX tokens on the account holder's behalf until either the set burn height is reached or the account holder revokes the rights.
-
-To revoke delegation rights, the account holder can call the `revokeDelegatestx` method.
-
-```js
-const revokeResponse = await client.revokeDelegateStx(privateKey);
-
-// {
-//   txid: '0xf6e9dbf6a26c1b73a14738606cb2232375d1b440246e6bbc14a45b3a66618481',
-// }
-```
-
-This method calls the [`revoke-delegate-stx`](/references/stacking-contract#revoke-delegate-stx) method of the Stacking contract.
-
--> To avoid handling private keys, it is recommended to use the [Stacks Wallet](https://www.hiro.so/wallet) to sign the revoke transaction
