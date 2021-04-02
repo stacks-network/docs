@@ -149,7 +149,7 @@ componentDidMount() {
 The app triggers a popup window in which [Stacks Authenticator](https://github.com/blockstack/ux/tree/master/packages/app)
 loads from [`app.blockstack.org`](http://app.blockstack.org/) and begins generating a new _Secret Key_.
 
-!["Secret Key generation" screen](/images/todos/secret-key-generation.png)
+!["Secremt Key generation" screen](/images/todos/secret-key-generation.png)
 
 ### Step 3: Choose **Copy Secret Key** to copy your _Secret Key_ to the clipboard.
 
