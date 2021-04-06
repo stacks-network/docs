@@ -131,7 +131,6 @@ You can also run the following at anytime to ensure the local images are up to d
 docker-compose pull
 ```
 
-
 ### Services Running in Mocknet
 
 **docker-compose Mocknet service names**:
