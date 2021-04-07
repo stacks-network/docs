@@ -143,7 +143,7 @@ Set an additional `app` property within `options` to retrieve data for a user as
 
 ```js
 const options = {
-  app: 'example.org'
+  app: 'https://example.org'
   username: 'markmhendrickson.id.blockstack',
 };
 ```
