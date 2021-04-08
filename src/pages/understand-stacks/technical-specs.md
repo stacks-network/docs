@@ -6,7 +6,7 @@ description: Summary of technical specifications of Stacks 2.0
 ## Consensus
 
 - Proof of Transfer (PoX) as described in [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md)
-- Network will transition to Proof of Burn (PoB) as described in [SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md) after 10 years. More details [here](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
+- Network will transition to Proof of Burn (PoB) as described in [SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md) after 10 years. [Learn more about Proof-of-Burn in SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
 - Threat model
   - 51% of malicious Stacks mining power can perform a double-spend attack
   - 51% of malicious Bitcoin mining power can reorg the Stacks chain
@@ -65,8 +65,8 @@ description: Summary of technical specifications of Stacks 2.0
 - For sponsored authorization, first a user signs with the originating account and then a sponsor signs with the paying account.
 - Mempool limit for concurrent pending transactions is 25 per account
 - Pending mempool transactions will be garbage-collected [256 blocks after receipt](https://github.com/blockstack/stacks-blockchain/blob/master/src/core/mempool.rs#L62). With 10 minutes target block time, this would equal ~42 hours
-- Transaction encoding is described [here](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-encoding) and [here](/understand-stacks/transactions#encoding)
-- Transaction signing and verification are described [here](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying) and [here](/understand-stacks/transactions#signature-and-verification)
+- [Learn more about transaction encoding in SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-encoding) and [and in our encoding documentation](/understand-stacks/transactions#encoding)
+- [Transaction signing and verification are described in SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying) and [in our documentation](/understand-stacks/transactions#signature-and-verification)
 - All transactions impacting account balance are atomic, a transfer operation can not increment one account’s balance without decrementing another’s. However, transactions that perform multiple account actions (for example, transferring from multiple accounts) may partially complete.
 - Transactions can include a memo string (max 34 bytes)
 - Further reading: [Transactions](/understand-stacks/transactions)
