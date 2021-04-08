@@ -65,7 +65,7 @@ Clarity is distinct from other languages designed for writing smart contracts in
 
 - **Predictability**: The Clarity language uses precise and unambiguous syntax that allows developers to predict exactly how their contracts will be executed.
 - **Security**: The Clarity language allows users to supply their own conditions for transactions that ensure that a contract may never unexpectedly transfer a token owned by a user.
-- **No compiler**: Contracts written in Clarity are broadcasted on the Bitcoin blockchain exactly as they are written by developers. This ensures that the code developers wrote, analyzed, and tested, is exactly what gets executed.
+- **No compiler**: Contracts written in Clarity are broadcasted on the Stacks blockchain exactly as they are written by developers. This ensures that the code developers wrote, analyzed, and tested, is exactly what gets executed.
 
 [@page-reference | inline]
 | /write-smart-contracts/overview
