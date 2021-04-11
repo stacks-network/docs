@@ -85,7 +85,7 @@ On the first line, a new public function `say-hi` is declared. Public functions 
 
 The function doesn't take any parameters and simply returns "hello world" using the [`ok`](/references/language-functions#ok) response constructor.
 
-The second function, `echo-number`, is a [read-only function](/references/language-functions#define-read-only). Read-only functions are also public, but as the name implies, they can not change and variables or datamaps. `echo-number` takes an input parameter of the type `int`.
+The second function, `echo-number`, is a [read-only function](/references/language-functions#define-read-only). Read-only functions are also public, but as the name implies, they can not change any variables or datamaps. `echo-number` takes an input parameter of the type `int`.
 
 -> Clarity supports a variety of other [types](/references/language-types)
 
@@ -202,13 +202,13 @@ As soon as the contract deploys, you can call one of its methods. In this exampl
 stx call_read_only_contract_func -t <stx_address> hello-world echo-number <stx_address>
 ```
 
-The command looks up the contract method definition on the network, identify that it requires an input parameter, and ask you for an integer to set `val`. Enter 42 an hit ENTER.
+The command looks up the contract method definition on the network, identifies that it requires an input parameter, and asks you for an integer to set `val`. Enter 42 and hit ENTER.
 
 ```bash
 42
 ```
 
-The method is now executed on the network. This can take a while. Once completed, the corresponding transaction contains the respond with the value you just entered, `42`:
+The method is now executed on the network. This can take a while. Once completed, the corresponding transaction contains the response with the value you just entered, `42`:
 
 ```bash
 (ok 42)
