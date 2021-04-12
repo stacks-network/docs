@@ -103,9 +103,7 @@ This method calls the [`delegate-stx`](/references/stacking-contract#delegate-st
 
 -> To avoid handling private keys, it is recommended to use the [Stacks Wallet](https://www.hiro.so/wallet) to sign the delegation transaction
 
-**Congratulations!** With the completion of this step, you successfully learnt how to use the Stacking library to ...
-
-- Delegate STX tokens as an account holder
+**Congratulations!** With the completion of this step, you successfully learnt how to use the Stacking library to delegate STX tokens as an account holder.
 
 
 ## Optional: Revoke delegation rights
