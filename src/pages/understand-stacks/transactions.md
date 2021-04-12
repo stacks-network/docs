@@ -392,7 +392,7 @@ With a serialized transaction in the [raw format](#raw-format), it can be broadc
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
 curl --location --request POST 'https://stacks-node-api.testnet.stacks.co/v2/transactions' \
---header 'Content-Type: text/plain' \
+--header 'Content-Type: application/octet-stream' \
 --data-raw '<tx_raw_format>'
 ```
 
