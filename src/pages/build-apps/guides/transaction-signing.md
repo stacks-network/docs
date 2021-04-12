@@ -238,13 +238,13 @@ interface ContractCallOptions {
 ```
 
 | parameter       | type             | required | description                                                                                                                                                                                                  |
-| --------------- | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| --------------- | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- |
 | contractAddress | string           | true     | Stacks address to which contract is deployed                                                                                                                                                                 |
 | contractName    | string           | true     | Name of contract to sign                                                                                                                                                                                     |
 | functionName    | string           | true     | Name of function for signing / execution, which needs to be a [public function](/references/language-functions#define-public).                                                                               |
 | functionArgs    | `ClarityValue[]` | true     | Arguments for calling the function. [Learn more about constructing clarity values](https://github.com/blockstack/stacks.js/tree/master/packages/transactions#constructing-clarity-values). Defaults to `[]`. |
 | appDetails      | object           | true     | Dictionary that requires `name` and `icon` for app                                                                                                                                                           |
-| onFinish        | function         | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option)                                                                                                     |  |
+| onFinish        | function         | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option)                                                                                                     |     |
 | network         | StacksNetwork    | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)                                                                                                               |
 
 ## Getting the signed transaction back after completion {#onFinish-option}
