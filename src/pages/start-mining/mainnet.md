@@ -113,6 +113,14 @@ username = "your-bitcoind-username"
 password = "your-bitcoind-password"
 rpc_port = 8332
 peer_port = 8333
+
+# optional - may help speed up sync time
+[connection_options]
+read_only_call_limit_write_length = 0
+read_only_call_limit_read_length = 100000
+read_only_call_limit_write_count = 0
+read_only_call_limit_read_count = 30
+read_only_call_limit_runtime = 1000000000
 ```
 
 Now, grab your `privateKey` from earlier, when you ran the `make_keychain` command. Replace the `seed` field with your private key. Save and close this configuration file.
@@ -226,6 +234,14 @@ username = "your-bitcoind-username"
 password = "your-bitcoind-password"
 rpc_port = 8332
 peer_port = 8333
+
+# optional - may help speed up sync time
+[connection_options]
+read_only_call_limit_write_length = 0
+read_only_call_limit_read_length = 100000
+read_only_call_limit_write_count = 0
+read_only_call_limit_read_count = 30
+read_only_call_limit_runtime = 1000000000
 ```
 
 Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` command. Replace the seed field with your private key. Save and close this configuration file.
@@ -298,6 +314,14 @@ username = "your-bitcoind-username"
 password = "your-bitcoind-password"
 rpc_port = 8332
 peer_port = 8333
+
+# optional - may help speed up sync time
+[connection_options]
+read_only_call_limit_write_length = 0
+read_only_call_limit_read_length = 100000
+read_only_call_limit_write_count = 0
+read_only_call_limit_read_count = 30
+read_only_call_limit_runtime = 1000000000
 ```
 
 ### Start the miner
