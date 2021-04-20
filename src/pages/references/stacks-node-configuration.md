@@ -27,9 +27,9 @@ Example:
 stacks-node mocknet
 ```
 
-### krypton (deprecated)
+### krypton
 
-Start a node that will join and stream blocks from the public krypton testnet, powered by Blockstack via [Proof of Transfer](/understand-stacks/overview#proof-of-transfer-pox).
+Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](/understand-stacks/overview#proof-of-transfer-pox).
 
 Example:
 
@@ -467,7 +467,7 @@ Example:
 commit_anchor_block_within = 10000
 ```
 
-### Section: ustx_balance (testnet only)
+### Section: ustx_balance (testnet/regtest only)
 
 This section contains configuration options pertaining to the genesis block allocation for an address in micro-STX. If a user changes these values, their node may be in conflict with other nodes on the network and find themselves unable to sync with other nodes.
 
