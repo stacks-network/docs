@@ -8,7 +8,7 @@ images:
 
 ## About testnet
 
-The testnet is a separate blockchain from the Stacks mainnet analogous to a staging environnment. It's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment. The testnet is reset frequently.
+The testnet is a separate blockchain from the Stacks mainnet analogous to a staging environnment. It's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment.
 
 ## Testnet nodes
 

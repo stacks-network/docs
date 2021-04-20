@@ -5,6 +5,7 @@ sections:
         pages:
           - path: /overview
           - path: /testnet
+          - path: /regtest
           - path: /proof-of-transfer
           - path: /mining
           - path: /accounts
@@ -22,6 +23,7 @@ sections:
               - path: /sending-tokens
               - path: /running-mainnet-node
               - path: /running-testnet-node
+              - path: /running-regtest-node
               - path: /integrate-stacking
               - path: /integrate-stacking-delegation
               - path: /stacking-using-CLI

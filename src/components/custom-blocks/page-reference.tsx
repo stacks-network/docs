@@ -238,6 +238,12 @@ const getIcon = (icon: string) => {
           <StackIcon size="24px" color={color('bg')} />
         </Grid>
       );
+    case 'RegtestIcon':
+      return (p: BoxProps) => (
+        <Grid borderRadius="6px" style={{ placeItems: 'center' }} bg="#9985FF" size="32px" {...p}>
+          <SitemapIcon size="24px" color={color('bg')} />
+        </Grid>
+      );
     case 'TestnetIcon':
       return (p: BoxProps) => (
         <Grid borderRadius="6px" style={{ placeItems: 'center' }} bg="#9985FF" size="32px" {...p}>
