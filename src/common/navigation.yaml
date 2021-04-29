@@ -6,7 +6,9 @@ sections:
         pages:
           - path: /overview
           - path: /testnet
-          - path: /regtest
+          - path: /proof-of-transfer
+          - path: /bitcoin
+          - path: /mining
           - path: /accounts
           - path: /transactions
           - path: /network
@@ -42,10 +44,11 @@ sections:
           - path: /overview
           - path: /principals
           - path: /values
-          - path: /clarinet
+          - path: /tokens
         sections:
           - title: Tutorials
             pages:
+              - path: /my-own-nft
               - path: /hello-world-tutorial
               - path: /counter-tutorial
               - path: /billboard-tutorial
