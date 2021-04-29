@@ -69,7 +69,7 @@
         "input_type": "(buff 20), (buff 20), uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, principal",
         "output_type": "(response bool int)",
         "signature": "(namespace-reveal namespace namespace-salt p-func-base p-func-coeff p-func-b1 p-func-b2 p-func-b3 p-func-b4 p-func-b5 p-func-b6 p-func-b7 p-func-b8 p-func-b9 p-func-b10 p-func-b11 p-func-b12 p-func-b13 p-func-b14 p-func-b15 p-func-b16 p-func-non-alpha-discount p-func-no-vowel-discount lifetime namespace-import)",
-        "description": "Reveals the salt and the namespace ID (after a namespace preorder). It reveals how long names last in this namespace before they expire or must be renewed, and it sets a price function for the namespace that determines how cheap or expensive names its will be."
+        "description": "Reveals the salt and the namespace ID (after a namespace preorder). It reveals how long names last in this namespace before they expire or must be renewed, and it sets a price function for the namespace that determines how cheap or expensive names its will be.All of the parameters prefixed by `p` make up the `price function`. These parameters govern the pricing and lifetime of names in the namespace.\n\nThe rules for a namespace are as follows:\n* a name can fall into one of 16 buckets, measured by length. Bucket 16 incorporates all names at least 16 characters long.\n* the pricing structure applies a multiplicative penalty for having numeric characters, or punctuation characters.\n* the price of a name in a bucket is `((coeff) * (base) ^ (bucket exponent)) / ((numeric discount multiplier) * (punctuation discount multiplier))`\n\nExample:\n\n* base = 10\n* coeff = 2\n* nonalpha discount: 10\n* no-vowel discount: 10\n* buckets 1, 2: 9\n* buckets 3, 4, 5, 6: 8\n* buckets 7, 8, 9, 10, 11, 12, 13, 14: 7\n* buckets 15, 16+:"
       }
     ],
     "read_only_functions": [
@@ -361,7 +361,7 @@
         "input_type": "uint, principal, (optional uint), (optional (tuple (hashbytes (buff 20)) (version (buff 1))))",
         "output_type": "(response bool int)",
         "signature": "(delegate-stx amount-ustx delegate-to until-burn-ht pox-addr)",
-        "description": "Delegate to `delegate-to` the ability to stack from a given address.\nThis method _does not_ lock the funds, rather, it allows the delegate to issue the stacking lock.\n\nThe caller specifies:\n * amount-ustx: the total amount of ustx the delegate may be allowed to lock\n * until-burn-ht: an optional burn height at which this delegation expiration\n * pox-addr: an optional address to which any rewards *must* be sent"
+        "description": "Delegate to `delegate-to` the ability to stack from a given address.\nThis method _does not_ lock the funds, rather, it allows the delegate to issue the stacking lock.\n\nThe caller specifies:\n * amount-ustx: the total amount of ustx the delegate may be allowed to lock\n * until-burn-ht: an optional burn height at which this delegation expiration\n * pox-addr: an optional p2pkh or p2sh address to which any rewards *must* be sent"
       },
       {
         "name": "disallow-contract-caller",
@@ -396,7 +396,7 @@
         "input_type": "uint, (tuple (hashbytes (buff 20)) (version (buff 1))), uint, uint",
         "output_type": "(response (tuple (lock-amount uint) (stacker principal) (unlock-burn-height uint)) int)",
         "signature": "(stack-stx amount-ustx pox-addr start-burn-ht lock-period)",
-        "description": "Lock up some uSTX for stacking!  Note that the given amount here is in micro-STX (uSTX).\nThe STX will be locked for the given number of reward cycles (lock-period).\nThis is the self-service interface.  tx-sender will be the Stacker.\n\n* The given stacker cannot currently be stacking.\n* You will need the minimum uSTX threshold. This isn't determined until the reward cycle begins, but this\n   method still requires stacking over the _absolute minimum_ amount, which can be obtained by calling `get-stacking-minimum`.\n\nThe tokens will unlock and be returned to the Stacker (tx-sender) automatically."
+        "description": "Lock up some uSTX for stacking!  Note that the given amount here is in micro-STX (uSTX).\nThe STX will be locked for the given number of reward cycles (lock-period).\nThis is the self-service interface.  tx-sender will be the Stacker.\n\n* The given stacker cannot currently be stacking.\n* You will need the minimum uSTX threshold. This isn't determined until the reward cycle begins, but this\n   method still requires stacking over the _absolute minimum_ amount, which can be obtained by calling `get-stacking-minimum`.\n* The pox-addr argument must represent a valid reward address.  Right now, this must be a Bitcoin\np2pkh or p2sh address.  It cannot be a native Segwit address, but it may be a p2wpkh-p2sh or p2wsh-p2sh address.\n\nThe tokens will unlock and be returned to the Stacker (tx-sender) automatically."
       }
     ],
     "read_only_functions": [
