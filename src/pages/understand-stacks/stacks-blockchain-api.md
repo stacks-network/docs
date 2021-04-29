@@ -169,23 +169,31 @@ Here is a sample response:
   "limit": 10,
   "offset": 0,
   "total": 101922,
-  "results": [
-    {
-      "tx_id": "0x5e9f3933e358df6a73fec0d47ce3e1062c20812c129f5294e6f37a8d27c051d9",
-      "tx_status": "success",
-      "tx_type": "coinbase",
-      "fee_rate": "0",
-      "sender_address": "ST3WCQ6S0DFT7YHF53M8JPKGDS1N1GSSR91677XF1",
-      "sponsored": false,
-      "post_condition_mode": "deny",
-      "block_hash": "0x58412b50266debd0c35b1a20348ad9c0f17e5525fb155a97033256c83c9e2491",
-      "block_height": 3231,
-      "burn_block_time": 1594230455,
-      "canonical": true,
-      "tx_index": 0,
-      "coinbase_payload": {
-        "data": "0x0000000000000000000000000000000000000000000000000000000000000000"
-      }
+  "results": [{
+    "tx_id": "0x924e0a688664851f5f96b437fabaec19b7542cfcaaf92a97eae43384cacd83d0",
+    "nonce": 308,
+    "fee_rate": "0",
+    "sender_address": "ST39F7SA0AKH7RB363W3NE2DTHD3P32ZHNX2KE7J9",
+    "sponsored": false,
+    "post_condition_mode": "deny",
+    "post_conditions": [],
+    "anchor_mode": "on_chain_only",
+    "block_hash": "0x17ceb3da5f36aab351d6b14f5aa77f85bb6b800b954b2f24c564579f80116d99",
+    "parent_block_hash": "0xe0d1e8d216a77526ae2ce40294fc77038798a179a6532bb8980d3c2183f58de6",
+    "block_height": 14461,
+    "burn_block_time": 1622875042,
+    "burn_block_time_iso": "2021-06-05T06:37:22.000Z",
+    "canonical": true,
+    "tx_index": 0,
+    "tx_status": "success",
+    "tx_result": { ... },
+    "microblock_hash": "",
+    "microblock_sequence": 2147483647,
+    "microblock_canonical": true,
+    "event_count": 0,
+    "events": [],
+    "tx_type": "coinbase",
+    "coinbase_payload": { ... }
     },
     { ... }
   ]
@@ -289,6 +297,65 @@ While the Node RPC API doesn't give the same functionality as the hosted Stacks 
 This API supports [v1.4.6 of the Rosetta specification](https://www.rosetta-api.org/). This industry open standard makes it simple to integrate blockchain deployment and interaction.
 
 -> Find all Data and Construction Rosetta endpoints [here](https://blockstack.github.io/stacks-blockchain-api/#tag/Rosetta)
+
+## Microblocks support
+
+!> API support for [microblocks](/understand-stacks/mining#microblocks) is current being worked on. New API endpoints are documented [here](https://stacks-blockchain-api-git-feat-microblocks-blockstack.vercel.app/#tag/Microblocks). The details are subject to change for now.
+
+The [transaction anchor mode](/understand-stacks/transactions#anchor-mode) defines if a transaction should be included in a microblock. If so, the latency for a transaction to be confirmed can be reduced.
+
+The API allows querying the most recently streamed microblocks:
+
+```bash
+# for mainnet, remove `.testnet`
+curl 'https://stacks-node-api-microblocks.testnet.stacks.co/extended/v1/microblock'
+```
+
+```json
+{
+  "limit": 20,
+  "offset": 0,
+  "total": 8766,
+  "results": [
+    {
+      "canonical": true,
+      "microblock_canonical": true,
+      "microblock_hash": "0xe6897aab881208185e3fb6ba58d9d9e35c43c68f13fbb892b20cebd39ac69567",
+      "microblock_sequence": 0,
+      "microblock_parent_hash": "0xe0d1e8d216a77526ae2ce40294fc77038798a179a6532bb8980d3c2183f58de6",
+      "parent_index_block_hash": "0x178cd9a37bf38f6b85d9f18e65588e60782753b1463ae080fb9865938b0898ea",
+      "block_height": 14461,
+      "parent_block_height": 14460,
+      "parent_block_hash": "0xe0d1e8d216a77526ae2ce40294fc77038798a179a6532bb8980d3c2183f58de6",
+      "block_hash": "0x17ceb3da5f36aab351d6b14f5aa77f85bb6b800b954b2f24c564579f80116d99",
+      "txs": ["0x0622e096dec7e2f6e8f7d95f732e04d238b7381aea8d0aecffae026c53e73e05"]
+    }
+  ]
+}
+```
+
+Microblocks are a trdeoff between finality and latency. The initial confirmation of a transaction inside a microblock does not imply finality. Microblocks are subject to reorganization. Thus, the order of processing for confirmed transactions can change. Only once the microblock was added to an anchor block, finality can be assumed.
+
+## Nonce handling
+
+Developer have to keep track of the last nonce used in a transaction. The API provides an endpoint to make nonce handling simpler:
+
+```bash
+# for mainnet, remove `.testnet`
+# replace <principal> with your STX address
+curl 'https://stacks-node-api-microblocks.testnet.stacks.co/extended/v1/address/<principal>/nonces'
+```
+
+```json
+{
+  "last_executed_tx_nonce": 5893,
+  "last_mempool_tx_nonce": null,
+  "possible_next_nonce": 5894,
+  "detected_missing_nonces": []
+}
+```
+
+You can use the `possible_next_nonce` property as the nonce for your next transaction.
 
 ## Running an API server
 
