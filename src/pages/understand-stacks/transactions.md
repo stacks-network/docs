@@ -51,6 +51,39 @@ A sample of each transaction type can be found in the [Stacks Blockchain API res
 
 ~> Read-only contract call calls do **not** require transactions. Read more about it in the [network guide](/understand-stacks/network#read-only-function-calls).
 
+## Anchor mode
+
+Transactions can be mined either in an anchor block or in a microblock. If microblock-anchoring is selected, the transaction can be confirmed much quicker that the target block time. However, microblocks can be subject to re-organization, thus changing the order of transaction processing:
+
+![microblock-states](/images/microblock-states.png)
+
+If your transaction relies on a state that could be altered by a previous transactions with serious implications, you should carefully evalute if microblock-anchoring should be set.
+
+The anchor mode has three options:
+
+- `OnChainOnly` The transaction MUST be included in an anchored block
+- `OffChainOnly`: The transaction MUST be included in a microblock
+- `Any`: The leader can choose where to include the transaction
+
+Here is an example where the transaction must be included in a microblock:
+
+```js
+import { AnchorMode, makeSTXTokenTransfer } from '@stacks/transactions';
+import { StacksTestnet, StacksMainnet } from '@stacks/network';
+
+const BigNum = require('bn.js');
+
+const txOptions = {
+  recipient: 'SP3FGQ8Z7JY9BWYZ5WM53E0M9NK7WHJF0691NZ159',
+  amount: new BigNum(12345),
+  senderKey: 'b244296d5907de9864c0b0d51f98a13c52890be0404e83f273144cd5b9960eed01',
+  network: new StacksTestnet(), // for mainnet, use `StacksMainnet()`
+  anchorMode: AnchorMode.OffChainOnly, // must be included in a microblock
+};
+
+const transaction = await makeSTXTokenTransfer(txOptions);
+```
+
 ## Post-conditions
 
 Transaction post-conditions are a feature meant to limit the damage malicious smart contract developers and smart contract bugs can do in terms of destroying a user's assets. Post-conditions are executed whenever a contract is instantiated or a public method of an existing contract is executed. Whenever a post-condition fails, a transaction will be forced to abort.
@@ -304,35 +337,37 @@ When called the Stacks Blockchain API or Node RPC API, transactions returned wil
 
 ```js
 {
-  "tx_id": "0x19e25515652dad41ef675bd0670964e3d537b80ec19cf6ca6f1dd65d5bc642c6",
-  "tx_status": "success",
-  "tx_type": "token_transfer",
+  "tx_id": "0x77cb1bf0804f09ad24b4c494a6c00d5b10bb0afbb94a0d646fa9640eff338e37",
+  "nonce": 5893,
   "fee_rate": "180",
-  "sender_address": "STJTXEJPJPPVDNA9B052NSRRBGQCFNKVS178VGH1",
+  "sender_address": "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6",
   "sponsored": false,
   "post_condition_mode": "deny",
-  "block_hash": "0x9080f6df3e0be0d6de67569330e547346a44c8ecd30d9d76b5edd1b49e2c22f6",
-  "block_height": 3190,
-  "burn_block_time": 1594227992,
+  "post_conditions": [],
+  "anchor_mode": "any",
+  "block_hash": "0xf1e54a3acd04232f1362c09d5096b095363158348303396ea5fc5092e1d8788f",
+  "parent_block_hash": "0x3de356eb5afa5d7b781f6a925d31d69d218b772ec995930b4e15d92bd15443f9",
+  "block_height": 13984,
+  "burn_block_time": 1622678407,
+  "burn_block_time_iso": "2021-06-03T00:00:07.000Z",
   "canonical": true,
-  "tx_index": 1,
-  "token_transfer": {
-    "recipient_address": "ST1RZG804V6Y0N4XHQD3ZE2GE3XSCV3VHRKMA3GB0",
-    "amount": "10000",
-    "memo": "0x00000000000000000000000000000000000000000000000000000000000000000000"
+  "tx_index": 2,
+  "tx_status": "success",
+  "tx_result": {
+    "hex": "0x0703",
+    "repr": "(ok true)"
   },
-  "events": [
-    {
-      "event_index": 0,
-      "event_type": "stx_asset",
-      "asset": {
-        "asset_event_type": "transfer",
-        "sender": "STJTXEJPJPPVDNA9B052NSRRBGQCFNKVS178VGH1",
-        "recipient": "ST1RZG804V6Y0N4XHQD3ZE2GE3XSCV3VHRKMA3GB0",
-        "amount": "10000"
-      }
-    }
-  ]
+  "microblock_hash": "",
+  "microblock_sequence": 2147483647,
+  "microblock_canonical": true,
+  "event_count": 1,
+  "events": [],
+  "tx_type": "token_transfer",
+  "token_transfer": {
+    "recipient_address": "STZ4C5RT4WH4JGRQA5E0ZF5PPSQCVY1WRB6E2CGW",
+    "amount": "500000000",
+    "memo": "0x46617563657400000000000000000000000000000000000000000000000000000000"
+  }
 }
 ```
 
