@@ -95,6 +95,15 @@ sections:
         pages:
           - path: /mainnet
           - path: /testnet
+      - path: /storage-hubs
+        pages:
+          - path: /overview
+          - path: /gaia-admin
+        sections:
+          - title: Tutorials
+            usePageTitles: true
+            pages:
+              - path: /amazon-ec2-deploy
       - path: /references
         pages:
           - path: /stacks-cli
