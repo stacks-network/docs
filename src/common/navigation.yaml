@@ -98,7 +98,6 @@ sections:
       - path: /storage-hubs
         pages:
           - path: /overview
-          - path: /gaia-admin
         sections:
           - title: Tutorials
             usePageTitles: true
