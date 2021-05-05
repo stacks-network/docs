@@ -56,23 +56,28 @@ it runs on.
    ![CloudFormation email](/images/cloudformation-email.png)
 
    iv. Enter the name of the S3 bucket to create for data storage in the **GaiaBucketName** field. The name will be
-   combined with the stack name to create a unique S3 bucket.
+   combined with the stack name to create a unique S3 bucket. This will be ignored if _GaiaStorageType_ is set to `disk`.
 
    ![CloudFormation bucket name](/images/cloudformation-bucket.png)
 
-   v. Select an available **InstanceType** from the drop-down. The default value is `t2.micro`.
+   v. Select the **GaiaStorageType** of which to use as a backend for the Gaia Hub. `s3` will cause an S3 bucket to be created
+   based on the name given above. `disk` will attach a separate EBS volume to the EC2 instance for Hub storage.
 
-   vi. In the **KeyName** drop-down, select an [EC2 KeyPair](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:)
+   ![CloudFormation storage type](/images/cloudformation-storage-type.png)
+
+   vi. Select an available **InstanceType** from the drop-down. The default value is `t2.micro`.
+
+   vii. In the **KeyName** drop-down, select an [EC2 KeyPair](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:)
    to enable SSH access to the EC2 instance. You should download the `.pem` keyfile for this pair from the EC2 console.
 
    For more information see the [EC2 key pair documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#prepare-key-pair).
 
    ![CloudFormation key name](/images/cloudformation-keyname.png)
 
-   vii. Leave the **SSHLocation** field with the default value of `0.0.0.0/0` to enable SSH access from any IP address.
+   viii. Leave the **SSHLocation** field with the default value of `0.0.0.0/0` to enable SSH access from any IP address.
    If you wish to restrict SSH access to the EC2 instance to a certain IP, you can update this field.
 
-   viii. Select a subnet and virtual private cluster (VPC) from the **SubnetId** and **VpcId** drop-downs to designate
+   ix. Select a subnet and virtual private cluster (VPC) from the **SubnetId** and **VpcId** drop-downs to designate
    where to deploy the Gaia hub instance.
 
    ![CloudFormation subnet and VPC](/images/cloudformation-subnet.png)
