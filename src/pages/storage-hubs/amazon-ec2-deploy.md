@@ -24,9 +24,9 @@ is similar on other domain name providers.
 
 Use a link in the table to launch the CloudFormation template in the AWS region that you wish to deploy a Gaia hub.
 
-| Template name            | Description                                                   | Launch                                                               |
-| ------------------------ | ------------------------------------------------------------- | -------------------------------------------------------------------- |
-| Gaia Hub EC2 (us-east-1) | Deploys a Gaia hub service on EC2 with an S3 storage provider | [![](/images/cloudformation-launch-stack-button.png)][ec2-us-east-1] |
+| Template name            | Description                                                          | Launch                                                               |
+| ------------------------ | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Gaia Hub EC2 (us-east-1) | Deploys a Gaia hub service on EC2 with an S3 or EBS storage provider | [![](/images/cloudformation-launch-stack-button.png)][ec2-us-east-1] |
 
 ## Task 1: Configure the CloudFormation template
 
