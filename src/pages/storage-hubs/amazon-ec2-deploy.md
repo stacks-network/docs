@@ -154,6 +154,6 @@ to the tags don't take effect until the instance is rebooted.
 
 ![EC2 instances](/images/ec2-instances.png)
 
-[ec2-us-east-1]: https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=Gaia&templateURL=https://cf-templates-18jq0t04gve7c-us-east-1.s3.amazonaws.com/cloudformation.yaml
+[ec2-us-east-1]: https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=gaia&templateURL=https://cf-templates-18jq0t04gve7c-us-east-1.s3.amazonaws.com/cloudformation.yaml
 [freenom]: https://freenom.com
 [ec2 instances console]: https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances
