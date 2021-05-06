@@ -77,7 +77,7 @@ it runs on.
    viii. Leave the **SSHLocation** field with the default value of `0.0.0.0/0` to enable SSH access from any IP address.
    If you wish to restrict SSH access to the EC2 instance to a certain IP, you can update this field.
 
-   ix. Select a subnet and virtual private cluster (VPC) from the **SubnetId** and **VpcId** drop-downs to designate
+   ix. Select a _public_ subnet and its associated virtual private cloud (VPC) from the **SubnetId** and **VpcId** drop-downs to designate
    where to deploy the Gaia hub instance.
 
    ![CloudFormation subnet and VPC](/images/cloudformation-subnet.png)
