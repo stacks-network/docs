@@ -7,13 +7,13 @@ description: Use a template to deploy a Gaia hub on Amazon EC2
 
 The template provided on this page provides an easy way to deploy a Gaia hub directly to Amazon EC2. You can use this
 template to deploy your own Gaia hub to your Amazon Web Services (AWS) account. Amazon EC2 is an affordable and
-convenient cloud computing provider. The template provides a one-click deploy for Amazon EC2 with an S3 provider for
-file storage.
+convenient cloud computing provider. The template provides a one-click deploy for Amazon EC2 with either S3 or ECS as a
+storage provider.
 
 ## Prerequisites
 
 This procedure uses Amazon CloudFormation to configure an EC2 cloud compute provider to run the Gaia hub service with
-an S3 provider for file storage. You should have access to an AWS account either through your personal account or
+an S3 or ECS provider for file storage. You should have access to an AWS account either through your personal account or
 through a corporate account. This account should have permissions to create resources.
 
 Additionally, you must also own a domain name and be able to update the DNS records associated with that domain name.
@@ -34,7 +34,7 @@ Before launching your Gaia hub, you must configure the template with the appropr
 it runs on.
 
 1. Launch the template using the **Launch stack** button in the preceding table.
-2. Review the **Prepare template** and **Template source** fields to ensure that they are populated.
+2. Review the **Prepare template** and **Template source** fields to ensure that the fields contain template values.
 
 ![CloudFormation specify template](/images/cloudformation-specify-template.png)
 
@@ -55,13 +55,15 @@ it runs on.
 
    ![CloudFormation email](/images/cloudformation-email.png)
 
-   iv. Enter the name of the S3 bucket to create for data storage in the **GaiaBucketName** field. The name will be
-   combined with the stack name to create a unique S3 bucket. This will be ignored if _GaiaStorageType_ is set to `disk`.
+   iv. Enter the name of the S3 bucket to create for data storage in the **GaiaBucketName** field. The template combines
+   this name with the stack name to create a unique S3 bucket. The template ignores this field if **GaiaStorageType** is
+   set to `disk`.
 
    ![CloudFormation bucket name](/images/cloudformation-bucket.png)
 
-   v. Select the **GaiaStorageType** of which to use as a backend for the Gaia Hub. `s3` will cause an S3 bucket to be created
-   based on the name given above. `disk` will attach a separate EBS volume to the EC2 instance for Hub storage.
+   v. Select the **GaiaStorageType** of which to use as a backend for the Gaia Hub. Selecting `s3` causes the template
+   to create an S3 bucket based on the name given in the previous step. Selecting `disk` causes the template to attach a
+   separate EBS volume to the EC2 instance for Hub storage.
 
    ![CloudFormation storage type](/images/cloudformation-storage-type.png)
 
@@ -110,7 +112,7 @@ the **PublicIP** and copy it to configure your domain name.
 ## Task 3: Configure a domain name
 
 Connect your domain to the Gaia hub EC2 instance by creating an `A` record for the domain DNS entry, and enter the
-public IP from the previous step. In general, this procedure will be similar depending on your hostname provider.
+public IP from the previous step. In general, this procedure is similar depending on your hostname provider.
 
 If you are using a free domain from [freenom], use the following procedure:
 
@@ -125,7 +127,7 @@ If you are using a free domain from [freenom], use the following procedure:
 5. Click **Save Changes** to update the DNS record.
 
 -> It can take up to 15 minutes for your DNS record changes to propagate. In a terminal, use the command
-`dig A +short <yourdomain.co>` to check if the changes have propagated. If the output of this command is the container
+`dig A +short <yourdomain.co>` to review if the changes have propagated. If the output of this command is the container
 public IP, the changes were successful.
 
 ## Accessing your Gaia hub with SSH
@@ -149,8 +151,8 @@ To modify the instance in place, navigate to the [EC2 instances console][] and t
 **Filter instances** field. Select the instance from the search suggestion, then click the instance to select it.
 
 On the **Tags** tab, you can click **Manage tags** to update the relevant key value pairs for the instance. If you make
-changes to these tags, click **Save**, then select **Reboot instance** from the **Instance state** drop-down. Changes
-to the tags don't take effect until the instance is rebooted.
+changes to these tags, click **Save**, then select **Reboot instance** from the **Instance state** drop-down. Changes to
+the tags are only applied to the instance at reboot.
 
 ![EC2 instances](/images/ec2-instances.png)
 
