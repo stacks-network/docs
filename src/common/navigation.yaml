@@ -130,8 +130,8 @@ sections:
               - path: /language-keywords
               - path: /language-functions
 
-  - title: Ecosystem
-    pages:
-      - path: /overview #pbc et al
-      - path: /stacks-token
-      - path: /contributing
+      - path: /ecosystem
+        pages:
+          - path: /overview #pbc et al
+          - path: /stacks-token
+          - path: /contributing
