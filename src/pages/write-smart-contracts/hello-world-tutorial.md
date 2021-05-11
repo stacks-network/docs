@@ -217,7 +217,8 @@ name, the fully qualified contract identifier for the new account is
 It's based on the dot notation: `<address>.<contract_id>`
 
 Ideally, you should estimate the minimal fees you need to pay. Factors like the size of the contract (among others)
-determine the estimate. For this tutorial, you can keep it simple and accept the default fee of `2000` (0.02 STX).
+determine the estimate. For this tutorial, you can keep it simple and accept the default fee of `2000` micro-STX
+(0.02 STX).
 
 The testnet can take several minutes to deploy the contract. You can monitor the status of the deployment on the testnet
 Explorer using the URL format `https://explorer.stacks.co/txid/<transaction_id>?chain=testnet`. Note that you can't
