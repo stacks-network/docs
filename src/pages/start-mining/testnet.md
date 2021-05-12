@@ -90,52 +90,25 @@ bitcoin-cli -rpcport=18332 -rpcuser=your-user -rpcpassword=your-password importa
 
 Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address.
 
-Now, we need to configure our node to use this Bitcoin keychain. In the `stacks-blockchain` folder, create a new file called `testnet/stacks-node/conf/testnet-miner-conf.toml`.
+Now, we need to configure our node to use this Bitcoin keychain. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
-Paste in the following configuration:
+Update the following properties:
 
 ```toml
 [node]
-rpc_bind = "0.0.0.0:20443"
-p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@testnet.stacks.co:20444"
-# Enter your private key here
+...
 seed = "replace-with-your-private-key"
-miner = true
-# optional - may help speed up sync time in testnet
-wait_time_for_microblocks = 10000
+local_peer_seed = "replace-with-your-private-key"
+...
 
 [burnchain]
-chain = "bitcoin"
-mode = "xenon"
+...
 # To mine on Xenon, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
-username = "your-bitcoind-username"
-password = "your-bitcoind-password"
-rpc_port = 18332
-peer_port = 18333
-
-[[ustx_balance]]
-address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
-amount = 10000000000000000
-
-# optional - may help speed up sync time
-[connection_options]
-read_only_call_limit_write_length = 0
-read_only_call_limit_read_length = 100000
-read_only_call_limit_write_count = 0
-read_only_call_limit_read_count = 30
-read_only_call_limit_runtime = 1000000000
+username = "<USERNAME>"
+password = "<PASSWORD>"
+...
 ```
 
 Now, grab your `privateKey` from earlier, when you ran the `make_keychain` command. Replace the `seed` field with your private key. Save and close this configuration file.
@@ -161,7 +134,7 @@ The above code will compile an optimized binary. To use it, run:
 
 ```bash
 cd ../..
-./target/release/stacks-node start --config=./testnet/conf/xenon-follower-conf.toml
+./target/release/stacks-node start --config=./testnet/conf/testnet-follower-conf.toml
 ```
 
 For a full reference of subcommands and configuration options used by `stacks-node`, please see this page.
@@ -222,54 +195,27 @@ Request BTC from faucet:
 
 We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
 
-### Create configuration file
+### Update configuration file
 
-Now, we need to configure our node to use this Bitcoin keychain. In the **folder where your binary is extracted**, create a new file called `testnet-miner-conf.toml`.
+Now, we need to configure our node to use this Bitcoin keychain. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
-Paste in the following configuration:
+Update the following properties:
 
 ```toml
 [node]
-rpc_bind = "0.0.0.0:20443"
-p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@testnet.stacks.co:20444"
-# Enter your private key here
+...
 seed = "replace-with-your-private-key"
-miner = true
-# optional - may help speed up sync time in testnet
-wait_time_for_microblocks = 10000
+local_peer_seed = "replace-with-your-private-key"
+...
 
 [burnchain]
-chain = "bitcoin"
-mode = "xenon"
+...
 # To mine on Xenon, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
-username = "your-bitcoind-username"
-password = "your-bitcoind-password"
-rpc_port = 18332
-peer_port = 18333
-
-[[ustx_balance]]
-address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
-amount = 10000000000000000
-
-# optional - may help speed up sync time
-[connection_options]
-read_only_call_limit_write_length = 0
-read_only_call_limit_read_length = 100000
-read_only_call_limit_write_count = 0
-read_only_call_limit_read_count = 30
-read_only_call_limit_runtime = 1000000000
+username = "<USERNAME>"
+password = "<PASSWORD>"
+...
 ```
 
 Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` command. Replace the seed field with your private key. Save and close this configuration file.
@@ -279,7 +225,7 @@ Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` c
 To start your miner, run this in the command line:
 
 ```bash
-stacks-node start --config=testnet-miner-conf.toml
+stacks-node start --config=testnet/stacks-node/conf/testnet-miner-conf.toml
 ```
 
 -> **Note** : While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
@@ -313,64 +259,30 @@ docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 
 We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
 
-### Create a config file directory
+### Update config file
 
-You need a dedicated directory to keep the config files:
+Now, we need to configure our node to use this Bitcoin keychain. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
-```bash
-mkdir -p $HOME/stacks
-```
-
-### Create config file
-
-Inside the new `$HOME/stacks` folder, you should create a new miner config `Config.toml`:
+Update the following properties:
 
 ```toml
 [node]
-working_dir = "/root/stacks-node/current"
-rpc_bind = "0.0.0.0:20443"
-p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@testnet.stacks.co:20444"
-# Enter your private key here
+...
 seed = "replace-with-your-private-key"
-miner = true
-# optional - may help speed up sync time in testnet
-wait_time_for_microblocks = 10000
+local_peer_seed = "replace-with-your-private-key"
+...
 
 [burnchain]
-chain = "bitcoin"
-mode = "xenon"
+...
 # To mine on Xenon, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
-username = "your-bitcoind-username"
-password = "your-bitcoind-password"
-rpc_port = 18332
-peer_port = 18333
-
-[[ustx_balance]]
-address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
-amount = 10000000000000000
-[[ustx_balance]]
-address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
-amount = 10000000000000000
-
-# optional - may help speed up sync time
-[connection_options]
-read_only_call_limit_write_length = 0
-read_only_call_limit_read_length = 100000
-read_only_call_limit_write_count = 0
-read_only_call_limit_read_count = 30
-read_only_call_limit_runtime = 1000000000
+username = "<USERNAME>"
+password = "<PASSWORD>"
+...
 ```
 
--> Notice that this configuration differs from the one used to run the miner locally
+Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` command. Replace the seed field with your private key. Save and close this configuration file.
 
 ### Start the miner
 
@@ -383,11 +295,11 @@ docker run -d \
   --network host \
   -e RUST_BACKTRACE="full" \
   -e STACKS_LOG_DEBUG="1" \
-  -v "$HOME/stacks/Config.toml:/src/stacks-node/Config.toml" \
+  -v "$(pwd))/testnet/stacks-node/conf/testnet-miner-conf.toml:/src/stacks-node/testnet-miner-conf.toml" \
   -p 20443:20443 \
   -p 20444:20444 \
   blockstack/stacks-blockchain:latest \
-/bin/stacks-node start --config /src/stacks-node/Config.toml
+/bin/stacks-node start --config /src/stacks-node/testnet-miner-conf.toml
 ```
 
 You can review the node logs with this command:
