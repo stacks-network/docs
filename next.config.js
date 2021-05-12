@@ -901,7 +901,7 @@ module.exports = withFonts(
       trailingSlash: true,
     },
     env: {
-      FATHOM_ID: 'EPNTIXUM',
+      FATHOM_ID: 'FOEMPXUV',
     },
     redirects,
     pageExtensions: ['js', 'ts', 'tsx', 'md', 'mdx'],
