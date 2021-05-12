@@ -9,23 +9,63 @@ images:
 
 ## Introduction
 
-TK
+A fundamental use of blockchain technology is the representation, store, and transfer of value between users of a
+blockchain. Cryptocurrency is a very common use of blockchain technology, and remains one of the primary drivers
+of adoption of blockchain technology. Cryptocurrencies are represented by blockchain tokens: representative units
+within a given blockchain ecosystem. Blockchain tokens can extend beyond just digital currency, however, and recent
+developments throughout the cryptocurrency community have demonstrated potential for the use of blockchain to tokenize
+and represent not just money but other tangible assets.
+
+A blockchain token is a digital asset that can be verifiably owned by a user of a blockchain. Blockchain tokens are
+governed by a set of rules that are defined by either the blockchain itself (in the case of native tokens) or by a
+smart contract on a blockchain. Rules can vary depending on the nature and the use of the token.
+
+Tokens on a blockchain fall into two general categories, depending on their properties: [fungible][] or
+[non-fungible][]. The following sections discuss the properties of both types of tokens, and provide information about
+implementation of the two types of tokens on Stacks.
 
 ## Fungible tokens
 
-TK
+A core property of any token on a blockchain is fungibility. A fungible token is a token that's mutually interchangable
+or capable of mutual substitution. In other words, one quantity or part of a fungible token can be replaced by an
+equal quantity or part of the same fungible token. Fungible tokens are often used to represent real-world fungible
+assets like currency. The STX token is an example of a fungible token. Other examples include stablecoins, tokens that
+represent voting rights in a DAO, or tokens that algorithmically track the price of stocks.
+
+Fungible tokens form one of the most important value propositions for blockchain technology, the ability to store value
+and exchange that value through both internal and external transactions. Because fungible tokens can be divided into
+smaller parts and recombined into the same value representation, they serve a great utility for transferring value
+between blockchain users.
+
+The primary fungible token on the Stacks blockchain is the native token, STX. Because the Stacks blockchain allows for
+the creation of [smart contracts][], other fungible tokens can be created on the Stacks blockchain as well. [SIP-010][]
+specifies the standard for fungible tokens on the Stacks blockchain. This specification defines the functions and traits
+that a fungible token on Stacks _must_ have. By complying with this standard, fungible tokens on Stacks can be easily
+represented by wallets that support Stacks.
 
 ## Non-fungible tokens (NFTs)
 
-TK
+Non-fungible tokens (NFTs) are a type of token that are not interchangeable. NFTs have unique traits (usually in the
+form of attached metadata) that restrict the abillity to replace them with identical tokens. An NFT is a token that is
+unique, such as a piece of art, or ownership rights to a real-world asset such as a house.
+
+NFTs alone don't have an inherent value, like a currency. The value of an NFT is derived from the assets that the NFT
+represents. The use of NFTs are myriad, including digital art, collectibles, domain names, and representation of
+ownership of content rights. NFTs can be used as digital certificates that track the authenticty of real world items, or
+digitize the ownership rights to property.
+
+As with fungible tokens, NFTs on the Stacks blockchain are created with [smart contracts][]. [SIP-009][] specifies the
+standard for NFTs on the Stacks blockchain. This specification defines the functions and traits that an NFT _must_ have,
+but most NFTs have more functions or traits attached than those solely described by the specification. By complying with
+this standard, non-fungible tokens on Stacks can be easily represented by wallets that support Stacks.
 
 ## Further reading
 
-TK
+- [The Difference Between Fungible and Non-Fungible Tokens](https://101blockchains.com/fungible-vs-non-fungible-tokens/)
+- [Explain It Like I Am 5: NFTs](https://messari.io/article/explain-it-like-i-am-5-nfts)
 
-## Scratch
-
-- Good content in here: https://messari.io/article/explain-it-like-i-am-5-nfts
-- 101 Blockchains article on FT vs. NFT - https://101blockchains.com/fungible-vs-non-fungible-tokens/
-- SIP-009
-- SIP-010
+[fungible]: #fungible-tokens
+[non-fungible]: #non-fungible-tokens-nfts
+[smart contracts]: /write-smart-contracts/overview
+[sip-010]: https://github.com/hstove/sips/blob/feat/sip-10-ft/sips/sip-010/sip-010-fungible-token-standard.md
+[sip-009]: https://github.com/friedger/sips/blob/main/sips/sips/sip-009-nft-standard.md
