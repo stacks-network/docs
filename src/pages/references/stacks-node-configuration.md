@@ -340,6 +340,36 @@ Example:
 walk_interval = 30
 ```
 
+#### read_only_call_limit_read_length
+
+Total amount of data in bytes allowed to be retrieved from a read-only smart-contract call.
+
+Example:
+
+```toml
+read_only_call_limit_read_length = 100000
+```
+
+#### read_only_call_limit_read_count
+
+Total amount of data pieces allowed to be retrieved from a read-only smart-contract call.
+
+Example:
+
+```toml
+read_only_call_limit_read_count = 30
+```
+
+#### read_only_call_limit_runtime
+
+Total execution cost limit for executing read-only smart-contracts.
+
+Example:
+
+```toml
+read_only_call_limit_runtime = 1000000000
+```
+
 ### Section: burnchain
 
 This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
