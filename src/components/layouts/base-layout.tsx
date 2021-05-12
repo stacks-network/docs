@@ -36,7 +36,7 @@ const BaseLayout: React.FC<{ isHome?: boolean }> = ({ children }) => {
               <Flex
                 flexDirection={['column', 'column', 'row', 'row']}
                 maxWidth={`${CONTENT_MAX_WIDTH}px`}
-                pl={4}
+                pl="base"
                 mx="auto"
                 flexGrow={1}
               >
