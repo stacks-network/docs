@@ -10,11 +10,11 @@
   "replacementPatterns": [
     {
       "pattern": "^/public/images",
-      "replacement": "https://docs.blockstack.org/images"
+      "replacement": "https://docs.stacks.co/images"
     },
     {
       "pattern": "^/",
-      "replacement": "https://docs.blockstack.org/"
+      "replacement": "https://docs.stacks.co/"
     }
   ],
   "timeout": "10s",
