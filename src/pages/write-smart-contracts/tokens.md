@@ -3,8 +3,8 @@ title: Tokens
 description: Learn about token support within Clarity
 icon: TestnetIcon
 images:
-  large: /images/pages/hello-world.svg
-  sm: /images/pages/hello-world-sm.svg
+  large: /images/pages/nft/token.png
+  sm: /images/pages/nft/token.png
 ---
 
 ## Introduction

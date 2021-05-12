@@ -7,8 +7,8 @@ tags:
   - tutorial
 icon: TestnetIcon
 images:
-  large: /images/pages/hello-world.svg
-  sm: /images/pages/hello-world-sm.svg
+  large: /images/pages/nft/nft.png
+  sm: /images/pages/nft/nft.png
 ---
 
 ![What you'll build in this tutorial](/images/pages/nft/nft-preview.png)
