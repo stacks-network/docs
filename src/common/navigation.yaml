@@ -71,7 +71,7 @@ sections:
                   href: 'https://github.com/blockstack/stacks.js/tree/master/packages/auth#stacksauth'
                   title: auth
               - external:
-                  href: 'https://github.com/blockstack/ux/tree/master/packages/connect#stacksconnect'
+                  href: 'https://github.com/blockstack/connect#readme'
                   title: connect
               - external:
                   href: 'https://github.com/blockstack/stacks.js/tree/master/packages/storage#stacksstorage'
