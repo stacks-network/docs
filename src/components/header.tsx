@@ -9,7 +9,6 @@ import {
   FlexProps,
   space,
   Stack,
-  StacksLogo,
   StxInline,
   IconButton,
 } from '@stacks/ui';
@@ -20,6 +19,7 @@ import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
 
 import { ForwardRefExoticComponentWithAs, forwardRefWithAs } from '@stacks/ui-core';
 import NextLink from 'next/link';
+import { StacksDocsLogo } from '@components/stacks-docs-logo';
 import { ColorModeButton } from '@components/color-mode-button';
 import { SearchButton } from '@components/search-button';
 import { border, transition } from '@common/utils';
@@ -204,18 +204,7 @@ const LogoLink = React.memo(() => {
     <NextLink href="/" passHref>
       <Link _hover={{ textDecoration: 'none' }} as="a" display="flex">
         <Flex as="span" alignItems="center">
-          <StacksLogo color={color('text-title')} />
-          <HeaderTextItem
-            fontWeight="500"
-            fontSize={1}
-            ml="tight"
-            pt="5px"
-            textTransform="uppercase"
-            color={color('text-caption')}
-            _hover={{ color: color('text-caption') }}
-          >
-            Docs
-          </HeaderTextItem>
+          <StacksDocsLogo color={color('text-title')} />
         </Flex>
       </Link>
     </NextLink>
