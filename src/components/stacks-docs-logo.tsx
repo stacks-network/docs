@@ -7,7 +7,7 @@ export const StacksDocsLogo: ForwardRefExoticComponentWithAs<BoxProps, 'svg'> = 
   BoxProps,
   'svg'
 >((props, ref) => {
-  const { width = '170px', color = 'white', as = 'svg', ...rest } = props;
+  const { width = '156px', color = 'white', as = 'svg', ...rest } = props;
   return (
     <Box
       display="block"
