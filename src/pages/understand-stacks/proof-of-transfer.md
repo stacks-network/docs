@@ -28,7 +28,7 @@ There are a multitude of reasons that Stacks chose Bitcoin as the blockchain to 
 
 Bitcoin champions immutability, and has stood the test of time. It has been proven that influencing or attacking the network would be infeasible or impractical for any potential hackers. It is one of the only cryptocurrencies to bridge the mainstream chasm and gain immense public attention. Bitcoin is now a household name, and is being recognized by governments, large corporations, and legacy banking institutions. Lastly, Bitcoin has been cemented as a reliable store of value, and is the perfect infrastructure to plug into the proof-of-transfer consensus mechanism.
 
-<img width="629" alt="Screen Shot 2021-05-17 at 3 00 20 PM" src="https://user-images.githubusercontent.com/10453432/118653476-90215800-b7b5-11eb-805a-cd76f213a84d.png">
+![btc-stacks](/images/btc-stacks.png)
 
 ## Blocks and Microblocks
 
@@ -36,7 +36,7 @@ The Stacks blockchain allows for increased transaction throughput using a mechan
 
 However, in between Stacks anchor blocks settling on the Bitcoin blockchain, there are also a varying number of microblocks that enable drastically more transactions to be processed by orders of magnitude. This allows Stacks transaction throughput to scale independently of Bitcoin, while still periodically establishing finality with the Bitcoin chain. The Stacks blockchain adopts a block streaming model whereby each leader can adaptively select and package transactions into their block as they arrive in the mempool. Therefore when an anchor block is confirmed, all of the transactions in the parent microblock stream are packaged and processed. This is an unprecedented method for achieving scalability without creating a totally separate protocol from Bitcoin.
 
-<img width="719" alt="Screen Shot 2021-05-17 at 3 00 34 PM" src="https://user-images.githubusercontent.com/10453432/118653666-c65ed780-b7b5-11eb-847f-66278121b5e5.png">
+![stx-microblock](/images/stx-microblocks.png)
 
 ## Unlocking Bitcoin Capital
 
