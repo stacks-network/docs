@@ -24,7 +24,7 @@ Other new blockchains can be anchored on the secure proof-of-work blockchain ins
 
 ## Why Bitcoin?
 
-There are a multitude of reasons that Stacks chose Bitcoin as the blockchain to power consensus. It is the the one of the oldest blockchain protocols having launched in 2009, and has benefited from all the industry learnings that have occurred since that time. It is far and away the most valuable blockchain network, and BTC has held the highest market cap of any cryptocurrency for the past decade.
+There are a multitude of reasons that Stacks chose Bitcoin as the blockchain to power consensus. It is one of the oldest blockchain protocols having launched in 2009, and has benefited from all the industry learnings that have occurred since that time. It is far and away the most valuable blockchain network, and BTC has held the highest market cap of any cryptocurrency for the past decade.
 
 Bitcoin champions immutability, and has stood the test of time. It has been proven that influencing or attacking the network would be infeasible or impractical for any potential hackers. It is one of the only cryptocurrencies to bridge the mainstream chasm and gain immense public attention. Bitcoin is now a household name, and is being recognized by governments, large corporations, and legacy banking institutions. Lastly, Bitcoin has been cemented as a reliable store of value, and is the perfect infrastructure to plug into the proof-of-transfer consensus mechanism.
 
