@@ -47,7 +47,7 @@ represented by wallets that support Stacks.
 
 The [SIP-010][] standard is an interface definition that allows Stacks applications and wallets to interact with
 fungible tokens in a standard way. Supporting the standard reduces complexity for token creators to get their tokens
-into the ecosystem. Under the [SIP-009][] standard, fungible tokens must have the following characteristics:
+into the ecosystem. Under the [SIP-010][] standard, fungible tokens must have the following characteristics:
 
 - Ability to transfer a specified amount of the token to a recipient (`transfer`). The recipient is required to be a
   Stacks principal.
