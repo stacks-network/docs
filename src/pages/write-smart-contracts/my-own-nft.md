@@ -31,16 +31,7 @@ By the end of this tutorial, you:
 
 ## Prerequisites
 
-## Step 1: understand NFT standard
-
-Similarly to NFT standards in Ethereum (see [EIP 721](https://eips.ethereum.org/EIPS/eip-721)), [SIP009](https://github.com/stacksgov/sips/pull/3) is an interface definition that the Stacks ecosystem aligned on. With support for this standard across wallets and tools, it becomes easy to interact with NFTs. Here are the contract characteristcs are required by the standard:
-
-- Ability to obtain the last token identifier (`get-last-token-id`). This id represents the upper limit of NFTs issued by the contract
-- A URI to metadata associated with a specific token identifier. (`get-token-uri`). This URI could resolve to a JSON file with information about the creator, associated media files, descriptions, signatures, and more
-- Ability to verify the owner for a given token identifier (`get-owner`). The owner resolves to a [Stacks principal](/write-smart-contracts/principals)
-- Ability to transfer an NFT to a recipient (`transfer`). The recipient is required to be a Stacks principal as well
-
-## Step 2: obtain STX for testing
+## Step 1: obtain STX for testing
 
 Uploading and calling smart contracts requires you to pay network fees to process the transactions. You need to get some testnet tokens, so you can pay the fees in the next steps.
 
@@ -52,7 +43,7 @@ Once the faucet call was send, you will see a confirmation: "STX coming your way
 
 Once the transaction is successfully processed, you can see that your new balance on the right side of the Sandbox view.
 
-## Step 3: deploy your NFT contract
+## Step 2: deploy your NFT contract
 
 Open up the [Sandbox deploy view](https://explorer.stacks.co/sandbox/deploy?chain=testnet). You should see a Clarity code editor with a "hello world" code snippet. Replace the entire code with the following:
 
@@ -115,7 +106,7 @@ With the contract code and name defined, you can hit the "Deploy" button. It wil
 
 Verify that all the information is correct and hit "Confirm" to deploy your contract! You need to wait up to a minute for the transaction to complete.
 
-## Step 4: claim your new NFT
+## Step 3: claim your new NFT
 
 // TODO
 

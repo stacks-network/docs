@@ -11,10 +11,10 @@ images:
 
 A fundamental use of blockchain technology is the representation, store, and transfer of value between users of a
 blockchain. Cryptocurrency is a very common use of blockchain technology, and remains one of the primary drivers
-of adoption of blockchain technology. Cryptocurrencies are represented by blockchain tokens: representative units
-within a given blockchain ecosystem. Blockchain tokens can extend beyond just digital currency, however, and recent
-developments throughout the cryptocurrency community have demonstrated potential for the use of blockchain to tokenize
-and represent not just money but other tangible assets.
+of adoption of blockchain technology. Cryptocurrencies are represented by blockchain tokens: individual units of
+value within a given blockchain ecosystem. Blockchain tokens can extend beyond just digital currency, however, and
+recent developments throughout the cryptocurrency community have demonstrated potential for the use of blockchain to
+tokenize and represent not just money but other tangible assets.
 
 A blockchain token is a digital asset that can be verifiably owned by a user of a blockchain. Blockchain tokens are
 governed by a set of rules that are defined by either the blockchain itself (in the case of native tokens) or by a
@@ -43,6 +43,28 @@ specifies the standard for fungible tokens on the Stacks blockchain. This specif
 that a fungible token on Stacks _must_ have. By complying with this standard, fungible tokens on Stacks can be easily
 represented by wallets that support Stacks.
 
+### Understanding the fungible token standard
+
+The [SIP-010][] standard is an interface definition that allows Stacks applications and wallets to interact with
+fungible tokens in a standard way. Supporting the standard reduces complexity for token creators to get their tokens
+into the ecosystem. Under the [SIP-009][] standard, fungible tokens must have the following characteristics:
+
+- Ability to transfer a specified amount of the token to a recipient (`transfer`). The recipient is required to be a
+  Stacks principal.
+- Ability to obtain the human-readable name of the token (`get-name`).
+- Ability to obtain a short name (ticker symbol) for the token (`get-symbol`).
+- Ability to get the number of decimals in the token representation (`get-decimals`). This is used to construct a
+  representation of the token that humans would be familiar dealing with. For example, the US dollar has 2 decimals, if
+  the base unit is cents.
+- Ability to get the balance of the token for a particular Stacks principal (`get-balance-of`).
+- Ability to get the total supply of the token (`get-total-supply`).
+- A URI to metadata associated with the token (`get-token-uri`). This can resolve to off-chain metadata about the
+  token or contract, such as an image icon for the token or a description.
+
+### Examples of fungible tokens on Stacks
+
+- [Nothing](https://nothingtoken.com/) ([contract](https://explorer.stacks.co/txid/0x022bed728d648ff1a68036c40f3aff8136ee22fee18380731df0ab9d76d3c4a9?chain=mainnet))
+
 ## Non-fungible tokens (NFTs)
 
 Non-fungible tokens (NFTs) are a type of token that are not interchangeable. NFTs have unique traits (usually in the
@@ -58,6 +80,24 @@ As with fungible tokens, NFTs on the Stacks blockchain are created with [smart c
 standard for NFTs on the Stacks blockchain. This specification defines the functions and traits that an NFT _must_ have,
 but most NFTs have more functions or traits attached than those solely described by the specification. By complying with
 this standard, non-fungible tokens on Stacks can be easily represented by wallets that support Stacks.
+
+### Understanding the non-fungible token standard
+
+The [SIP-009][] standard is an interface definition that the Stacks ecosystem
+aligned on. With support for this standard across wallets and tools, it becomes easy to interact with NFTs. Under the
+[SIP-009][] standard, NFT contract must have the following characteristics:
+
+- Ability to obtain the last token identifier (`get-last-token-id`). This id represents the upper limit of NFTs issued
+  by the contract.
+- A URI to metadata associated with a specific token identifier. (`get-token-uri`). This URI could resolve to a JSON
+  file with information about the creator, associated media files, descriptions, signatures, and more.
+- Ability to verify the owner for a given token identifier (`get-owner`). The owner resolves to a
+  [Stacks principal](/write-smart-contracts/principals).
+- Ability to transfer an NFT to a recipient (`transfer`). The recipient is required to be a Stacks principal.
+
+### Examples of NFTs on Stacks
+
+- [This is #1](https://thisisnumberone.com) ([contract](https://explorer.stacks.co/txid/SP3QSAJQ4EA8WXEDSRRKMZZ29NH91VZ6C5X88FGZQ.thisisnumberone-v2?chain=mainnet))
 
 ## Further reading
 
