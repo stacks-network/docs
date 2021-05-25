@@ -90,7 +90,7 @@ bitcoin-cli -rpcport=18332 -rpcuser=your-user -rpcpassword=your-password importa
 
 Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address.
 
-Now, we need to configure our node to use this Bitcoin keychain. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/blockstack/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
 Update the following properties:
 
@@ -197,7 +197,7 @@ We need to get some testnet BTC to that address. Grab the `btcAddress` field, an
 
 ### Update configuration file
 
-Now, we need to configure our node to use this Bitcoin keychain. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/blockstack/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
 Update the following properties:
 
@@ -261,7 +261,7 @@ We need to get some testnet BTC to that address. Grab the `btcAddress` field, an
 
 ### Update config file
 
-Now, we need to configure our node to use this Bitcoin keychain. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/blockstack/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
 Update the following properties:
 

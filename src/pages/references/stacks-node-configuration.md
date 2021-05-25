@@ -342,7 +342,7 @@ walk_interval = 30
 
 #### read_only_call_limit_read_length
 
-Total amount of data in bytes allowed to be retrieved from a read-only smart-contract call.
+Total number of bytes allowed to be read by an individual read-only function call.
 
 Example:
 
@@ -352,7 +352,7 @@ read_only_call_limit_read_length = 100000
 
 #### read_only_call_limit_read_count
 
-Total amount of data pieces allowed to be retrieved from a read-only smart-contract call.
+Total number of independent read operations permitted for an individual read-only function call.
 
 Example:
 
@@ -362,7 +362,7 @@ read_only_call_limit_read_count = 30
 
 #### read_only_call_limit_runtime
 
-Total execution cost limit for executing read-only smart-contracts.
+[Runtime cost](https://github.com/stacksgov/sips/blob/2d3fd9bf8da7a04f588d90ff6252173d7609d7bf/sips/sip-006/sip-006-runtime-cost-assessment.md#introduction) limit for an individual read-only function call.
 
 Example:
 
