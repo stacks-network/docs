@@ -26,15 +26,6 @@ sections:
               - path: /integrate-stacking-delegation
               - path: /stacking-using-CLI
 
-          - title: Stacks 1.0
-            pages:
-              - path: /stacks-1.0-info
-              - path: /best-practices
-              - path: /wire-format
-              - path: /atlas-overview
-              - path: /atlas-how-it-works
-              - path: /atlas-usage
-              - path: /installing-memcached
       - path: /write-smart-contracts
         pages:
           - path: /overview
