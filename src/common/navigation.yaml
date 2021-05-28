@@ -27,10 +27,12 @@ sections:
               - path: /stacking-using-CLI
 
       - path: /write-smart-contracts
+        usePageTitles: true
         pages:
           - path: /overview
           - path: /principals
           - path: /values
+          - path: /clarinet
         sections:
           - title: Tutorials
             pages:
