@@ -34,7 +34,7 @@ cargo install clarinet --locked
 Once you have installed Clarinet, you can begin a new Clarinet project with the command:
 
 ```sh
-clarinet new my-contract && cd my-project
+clarinet new my-project && cd my-project
 ```
 
 This command creates a new directory and populates it with boilerplate configuration and testing files. The `toml` files
@@ -164,6 +164,7 @@ unit tests as you develop the contract.
 An example unit test for the `echo-number` function is provided below:
 
 ```ts
+...
 Clarinet.test({
   name: 'the echo-number function returns the input value ok',
   async fn(chain: Chain) {
@@ -195,4 +196,4 @@ Clarity calls in Deno, review the [Deno Clarity library][].
 [test harness]: #testing-with-the-test-harness
 [clarity language reference]: http://localhost:3000/references/language-functions
 [asserts]: https://deno.land/std@0.90.0/testing/asserts.ts
-[Deno Clarity library]: https://deno.land/x/clarinet@v0.6.0/index.ts
+[deno clarity library]: https://deno.land/x/clarinet@v0.6.0/index.ts
