@@ -31,6 +31,6 @@ The regtest faucet provides you with free Stacks Token (STX) to test with. These
 
 The Explorer does not yet list `regtest` as an available network by default. Before requesting STX tokens from the Explorer, you'll have to first add the `regtest` network to the Explorer by selecting Network, then "Add a network" in the top right. The URL of the regtest API is `[https://stacks-node-api.regtest.stacks.co](https://stacks-node-api.regtest.stacks.co)`
 
-Once completed, navigate to the "Faucet" tab from the link above and click on "Request STX" button. If you would like to get enough STX tokens to try out [Stacking](/understand-stacks/stacking), you should click on "I want to stack".
+Once completed, navigate to the "Faucet" tab from the link above and click on "Request STX" button. If you would like to get enough STX tokens to try out [Stacking](/understand-stacks/stacking), you should click on "I want to stack."
 
 > The Explorer Sandbox requires you to login with a Secret Key
