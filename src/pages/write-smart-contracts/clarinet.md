@@ -81,7 +81,7 @@ Clarinet provides several powerful methods to test and interact with your smart 
 section, you can always check your Clarity syntax using the `clarinet check` command. This validates any smart contracts
 you are currently developing in the active project.
 
-There are two methods in Clarinet you can use to test smart contracts: the [console][], an interactive Clarity REPL, and
+There are two tools in Clarinet you can use to test smart contracts: the [console][], an interactive Clarity REPL, and
 the [test harness][], a testing framework written in Typescript.
 
 ### Testing with the console
