@@ -8,7 +8,7 @@ images:
 
 ## About regtest
 
-The regtest is a separate blockchain from the Stacks mainnet analogous to a development environnment. Similar to the testnet, it's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment. However, it differs by producing a new BTC and STX block every two minutes, making it much more suitable for rapid development. The regtest is reset more regularly than testnet.
+The regtest is a separate blockchain from the Stacks mainnet analogous to a development environnment. Similar to the testnet, it's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment. However, it differs by producing a new BTC and STX block every 2 minutes, making it much more suitable for rapid development. The regtest is reset more regularly than testnet.
 
 ## Regtest nodes
 
