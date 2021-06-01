@@ -14,6 +14,7 @@ images:
 ## Introduction
 
 -> Note: The Stacks 2.0 regtest is similar to the testnet, however BTC and STX blocks are produced at a much faster rate at 1 block every 2 minutes. Making it ideal for rapid development.
+
 -> **Warning:** There is an [open issue](https://github.com/blockstack/stacks-blockchain/issues/2596) to address degraded performance when syncing a stacks-node with the regtest network. Until this issue is closed, syncing a node on the regtest network may take longer than syncing a testnet or mainnet node. If only using the [regtest API](https://stacks-node-api.regtest.stacks.co/extended/v1/status), this issue should not affect you.
 
 This tutorial will walk you through the following steps:
