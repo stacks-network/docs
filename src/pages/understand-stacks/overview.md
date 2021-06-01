@@ -89,7 +89,7 @@ Read one of our guides to understand the ins and outs of the Stacks 2.0 blockcha
 Ready to get started with Stacks? Try one of our existing tutorials:
 
 [@page-reference | grid-small]
-| /understand-stacks/managing-accounts, /understand-stacks/sending-tokens, /understand-stacks/running-testnet-node, /understand-stacks/integrate-stacking
+| /understand-stacks/managing-accounts, /understand-stacks/sending-tokens, /understand-stacks/running-testnet-node, /understand-stacks/running-regtest-node, /understand-stacks/integrate-stacking
 
 ## Developer tooling
 
