@@ -1,8 +1,8 @@
 ---
 title: Counter tutorial
-description: Learn how to write a simple smart contract in the Clarity language.
-experience: intermediate
-duration: 30 minutes
+description: Learn how to write a simple counter in Clarity.
+experience: beginner
+duration: 20 minutes
 tags:
   - tutorial
 images:
@@ -12,214 +12,246 @@ images:
 
 ## Introduction
 
-In this tutorial, you learn how to implement a smart contract that stores and manipulates an integer value on the Stacks 2.0 blockchain. By the end of this tutorial, you will ...
+This tutorial introduces variables in Clarity, and demonstrates how to interact with them through a simple incrementing
+and decrementing counter. This tutorial builds on concepts introduced in the [hello world tutorial][] and continues to
+exercise [Clarinet][] as a local development environment.
 
-- Have experienced test-driven development with Clarity
-- Understand more Clarity language design principles
-- Have a working Clarity counter smart contract
+In this tutorial you will:
+
+- Create a new Clarinet project
+- Add a new Clarity contract to the project
+- Populate the contract with a variable and read variable function
+- Populate the contract with an increment and a decrement function
+- Execute the functions in a local, simulated blockchain
+- Optionally, deploy and test the contract on the testnet blockchain
 
 ## Prerequisites
 
-=> Before you get started, you should complete the [Hello World tutorial](/write-smart-contracts/hello-world-tutorial).
+For this tutorial, you should have a local installation of Clarinet. Refer to [Installing Clarinet][] for instructions
+on how to set up your local environment. You should also have a text editor or IDE to edit the Clarity smart contract.
 
-### Check the Stacks 2.0 status
+### Optional prerequisites
 
-The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not
-running into any challenges related to the status of the network, please open up the [Status Checker](https://stacks-status.com/)
-and confirm that all systems are operational. If some systems seem to have issues, it is best to wait until they are back up before you proceed with the next steps.
+While this tutorial primarily focuses on local smart contract development, you may wish to deploy your contract to
+a live blockchain. For simplicity, contract deployment is performed using the [testnet sandbox][]. If you wish to
+complete the optional deployment step, you should have the [Stacks Web Wallet][] installed, and you should request
+testnet STX tokens from the [testnet faucet][] on the testnet explorer. Note that requesting testnet STX from the faucet
+can take up to 15 minutes, so you may wish to request the tokens before beginning the tutorial.
 
-## Step 1: Downloading counter starter project
+## Step 1: create a new project
 
-In this step, you initialize a starter project with additional counter tutorial files:
+With Clarinet installed locally, open a new terminal window and create a new Clarinet project with the command:
 
-Using your terminal, run the following command to create a new folder and initialize a new project:
-
-```bash
-# create and go to new `counter` project folder
-mkdir counter; cd counter
-npm init clarity-starter
+```sh
+clarinet new clarity-counter && cd clarity-counter
 ```
 
-You will be asked to select a project template. Press down with your arrow keys to choose `Counter` and hit **ENTER**:
+This command creates a new directory for your smart contract project, populated with boilerplate configuration and
+testing files. Creating a new project only creates the Clarinet configuration, in the next step you can add a contract
+to the project.
 
-```bash
-? Select a project template: (Use arrow keys)
-  Hello World
-❯ Counter
+## Step 2: create a new contract
+
+From the `clarity-counter` directory, create a new Clarity contract with the command:
+
+```sh
+clarinet contract new counter
 ```
 
-Finally, the project dependencies are installed and your project is ready for development. Because you already completed the [Hello World tutorial](/write-smart-contracts/hello-world-tutorial), the project structure is familiar to you. The main difference is that we have additional tests for a new counter smart contract.
+This command adds a new `counter.clar` file in the `contracts` directory, and adds a `counter_test.ts` file to
+the `test` directory. This tutorial ignores the test file, but for production contracts, you can create [unit tests][]
+using it.
 
-## Step 2: Running tests
+## Step 3: define variables
 
-Smart contracts are often developed in a test-driven approach. This not only improves code quality, but also removes the need to push every iteration to the blockchain before executing it. We will do the same in this project. Now, let's run the tests and review the results:
+Open the `contracts/counter.clar` file in a text editor or IDE. Delete the boilerplate comments, for the purpose of
+this tutorial they're not necessary.
 
-Still in the project root directory, run the following command:
+In this step, you'll add a variable to the contract, and define a read-only function to output the value of that
+variable.
 
-```bash
-npm test
+Start by defining the variable on the first line
+
+```clarity
+;; define counter variable
+(define-data-var counter int 0)
 ```
 
-You should see the following response:
+The [`define-data-var`][] statement initializes a new integer variable named `counter` and sets the initial value to
+`0`. It's important to note that all definition statements in Clarity need to be at the top of the file.
 
-```bash
-counter contract test suite
-    ✓ should have a valid syntax
-    deploying an instance of the contract
-    1) should start at zero
-    2) should increment
-    3) should decrement
+The `counter` variable is stored in the data space associated with the smart contract. The variable is persisted and
+acts as a global shared state.
 
-1 passing (734ms)
-3 failing
+To provide access to the `counter` variable from outside the contract that it's defined in, you should declare a
+`read-only` function to get the value. Add this function below the variable definition:
 
-... # error details
-
-npm ERR. Test failed. See above for more details.
+```clarity
+;; counter getter
+(define-read-only (get-counter)
+  (ok (var-get counter)))
 ```
 
-It looks like we see some failed tests. That is on purpose - we will implement the new smart contract in the next steps. After every step in this tutorial, we will rerun the tests to ensure we're on the right track.
+The [`var-get`][] statement looks for a variable in the contract's data space and returns it.
 
-## Step 3: Developing a smart contract
+Your contract code should now look like this:
 
-Let's get familiar with the tests to understand what the new smart contract should look like
+```clarity
+;; define counter variable
+(define-data-var counter int 0)
 
-1. In your editor, take a quick look at the test file associated with the counter smart contract: `test/counter.ts`
+;; counter getter
+(define-read-only (get-counter)
+  (ok (var-get counter)))
+```
 
-   ```bash
-   cat test/counter.ts
-   ```
+At this point, you can check your contract code to ensure the syntax is correct. In the `clarity-counter` directory in
+your terminal, use the command:
 
-   You will see a [Mocha](https://mochajs.org/) test suite. This file describes the tests for the counter smart contract.
-   Notice how the smart contract is instantiated on line 8 of file `counter.ts`
+```sh
+clarinet check
+```
 
-   ```jsx
-   counterClient = new Client(
-     'SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.counter',
-     'counter',
-     provider
-   );
-   ```
+If there are no errors, the command returns no output. If there are errors, verify that your contract is exactly as
+listed in the preceding section. You can also use the [`clarinet console`][] to interact with the `get-counter`
+function:
 
-   That tells us that the new smart contract is named `counter` and that it should be found in the following file:
-   `contracts/counter.clar`. Note that the `contracts` folder is assumed as the base folder and that every Clarity file
-   has the suffix `.clar`.
+```clarity
+(contract-call? .counter get-counter)
+```
 
-   The file was already created during the project setup.
+The console should return `(ok 0)`.
 
-2. Using your editor, open `contracts/counter.clar`. You will notice the file already includes some content:
+## Step 4: define counter functions
 
-   ```clarity
-   ;; define counter variable
-   ;; increment method
-   ;; decrement method
-   ;; counter getter
-   ```
+In this step, you'll add functions to increment and decrement the counter variable. Add the `increment` function to
+the contract after the counter getter:
 
-   What you see are four one-line comments. In Clarity, a comment line is started with `;;`. As you can see, the
-   comments indicate the structure of the smart contract we are going to implement.
+```clarity
+;; increment method
+(define-public (increment)
+  (begin
+    (var-set counter (+ (var-get counter) 1))
+    (ok (var-get counter))))
+```
 
-   Let's declare a counter variable and define a read-only getter method:
+The [`begin`][] statement evaluates multiple expressions and returns the value of the last on. In this case, it
+evaluates an expression to set a new value for the `counter` variable, and then returns the new value.
 
-   ```clarity
-    ;; define counter variable
-    (define-data-var counter int 0)
+The first expression in the `begin` statement is the [`var-set`][] expression, which sets a new value for the counter
+variable. The new value is constructed using the [`+`] (add) statement. This statement takes a number of integer
+arguments and returns the sum of the integers. Along with add, Clarity provides statements to subtract, multiply, and
+divide integers. Find more details in the [Clarity language reference][].
 
-    ...
+Next, implement a new public function `decrement` to subtract `1` from the counter variable:
 
-    ;; counter getter
-    (define-read-only (get-counter)
-      (ok (var-get counter)))
-   ```
+```clarity
+;; decrement method
+(define-public (decrement)
+  (begin
+    (var-set counter (- (var-get counter) 1))
+    (ok (var-get counter))))
+```
 
-   The [`define-data-var`](/references/language-functions#define-data-var) statement initializes a
-   new integer variable named `counter` and sets the value to `0`. It is important to note that all definition statements
-   in Clarity need to be at the top of the file.
+At this point the contract is complete. The full `counter.clar` file should look like this:
 
-   The `counter` variable is stored in the data space associated with the smart contract. The variable is persisted and
-   acts as the global shared state.
+```clarity
+;; define counter variable
+(define-data-var counter int 0)
 
-   To provide access to the `counter` variable from outside of the current smart contract, we need to declare a read-only function to get it. The last lines of the code add a read-only `get-counter` function. The [`var-get`](/references/language-functions#var-get) statement looks for a variable in the contract's data space and returns it.
+;; counter getter
+(define-read-only (get-counter)
+  (ok (var-get counter)))
 
-   With that, you are ready to rerun the tests
+;; increment method
+(define-public (increment)
+  (begin
+    (var-set counter (+ (var-get counter) 1))
+    (ok (var-get counter))))
 
-3. Run the tests and review the results:
+;; decrement method
+(define-public (decrement)
+  (begin
+    (var-set counter (- (var-get counter) 1))
+    (ok (var-get counter))))
+```
 
-   ```bash
-   npm test
-   ```
+## Step 5: interact with the contract on the Clarinet console
 
-   You should now only see 2 failing tests. `should start at zero` is passing, and you successfully build your first part of the contract. Congrats.
+Run `clarinet check` again to verify that the syntax in your contract is correct. If there are no errors, the command
+returns no output. Use the following command to launch the local console:
 
-   However, we don't stop here. Let's implement increment and decrement functions.
+```sh
+clarinet console
+```
 
-4. Add the following lines to the `counter.clar` file (below the increment method comment) and take a few seconds to review them:
+You'll use the console to interact with the functions in your contract. Call the `increment` function to increment the
+counter in the console:
 
-   ```clarity
-   ;; increment method
-   (define-public (increment)
-     (begin
-       (var-set counter (+ (var-get counter) 1))
-       (ok (var-get counter))))
-   ```
+```clarity
+(contract-call? .counter increment)
+```
 
-   First, the [`begin`](/references/language-functions#begin) statement evaluates multiple expressions and returns the value of the last one. In this case, it is used to set a new value and return the new value.
+The console should return (ok 1). Try calling the `decrement` function to decrement the counter back to 0.
 
-   Next, a [`var-set`](/references/language-functions#var-set) is used to set a new value for the `counter` variable. The new value is constructed using the [`+`](/references/language-functions#-add) (add) statement. This statement takes a number of integers and returns the result. Along with add, Clarity provides statements to subtract, multiply, and divide integers. Find more details in the [Clarity language reference](/references/language-functions).
+```clarity
+(contract-call? .counter decrement)
+```
 
-5. Next, implement a new public function `decrement` to subtract `1` from the `counter` variable. You should have all knowledge needed to succeed at this
+-> You have now learned the basics of working with variables in Clarity, and developed further practice with the
+Clarinet development tool. You may wish to optionally deploy the contract to the testnet, described in the next and
+final step.
 
-   Here is the final contract:
+## Optional: deploy and test the contract on the testnet
 
-   ```clarity
-   (define-data-var counter int 0)
+For this tutorial, you'll use the [testnet sandbox][] to deploy your smart contract. Make sure you have connected your
+[Stacks web wallet][] to the sandbox using the **Connect wallet** button, then copy and paste your smart contract into
+the Clarity code editor on the **Write & Deploy** page. Edit the contract name or use the randomly generated name
+provided to you.
 
-   (define-read-only (get-counter)
-     (ok (var-get counter)))
+![Counter testnet sandbox](/images/counter-testnet-sandbox.png)
 
-   (define-public (increment)
-     (begin
-       (var-set counter (+ (var-get counter) 1))
-       (ok (var-get counter))))
+Click **Deploy** to deploy the contract to the blockchain. This will display the Stacks web wallet window with
+information about the transaction. Verify that the transaction looks correct, and the network is set to `Testnet`, and
+click **Confirm**.
 
-   (define-public (decrement)
-     (begin
-       (var-set counter (- (var-get counter) 1))
-       (ok (var-get counter))))
-   ```
+The contract is added to the miners mempool, and included in the next block of the blockchain. This process can take up
+to 15 minutes to complete. You can review it on the [transactions][] page of the explorer or in the activity field
+of your web wallet.
 
-   Done? Great. Run the tests and make sure all of them are passing. You are looking for 4 passed tests:
+When your contract is confirmed, navigate to the [call a contract][] page of the sandbox, and search for your contract.
+Enter your wallet address in the top field, you can copy this address by clicking the Stacks web wallet icon and
+clicking the **Copy address** button. Enter the contract name in the bottom field, in this case `counter`. Click
+**Get Contract** to view the contract.
 
-   ```bash
-   counter contract test suite
-       ✓ should have a valid syntax (39ms)
-       deploying an instance of the contract
-       ✓ should start at zero
-       ✓ should increment (133ms)
-       ✓ should decrement (177ms)
-       4 passing (586ms)
-   ```
+Click the `increment` function in the function summary, then click **Call Function** to perform the function call in the
+sandbox. This will display the Stacks web wallet with information about the transaction. Verify the information, then
+click **Confirm** to execute the function call.
 
-## Step 4: Deploy and call the contract
+The function call is added to the miners mempool, and is executed in the next block of the blockchain. This process
+can take up to 15 minutes to complete. You can review it on the [transactions][] page of the explorer or in the
+activity field of your web wallet.
 
-Your new smart contract is ready to be deployed to the Stacks 2.0 blockchain. You should be familiar with the steps
-from the ["Hello, World" tutorial](/write-smart-contracts/hello-world-tutorial#deploy-the-contract).
+When the transaction is complete, you can access the transaction summary page from the activity panel in your web
+wallet. The transaction summary page displays the output of the function.
 
-As soon as you successfully deploy your contract, you can play around with the contract and verify the functionality by
-calling all public methods you implemented. Here's a suggested order:
+Try calling the other public functions from the [call a contract][] page.
 
-- Call the `get-counter` method. It should return `0`
-- Call the `increment` method and let the transaction complete
-- Call the `get-counter` method. It should return `1`
-- Call the `decrement` method and let the transaction complete
-- Call the `get-counter` method. It should return `0`
+=> You have now learned one method of deploying and interacting with smart contracts on Stacks. You have also learned
+the strengths of performing local development without having to wait for block times.
 
--> As you can see, read-only function calls don't require a transaction to complete. This is because the method doesn't require a state change.
-
-=> Congratulations. You just implemented, deployed, and called your own Clarity smart contract.
-
-With the completion of this tutorial, you:
-
-- Experienced test-driven development with Clarity
-- Understood more Clarity language design principles
-- Developed a working Clarity counter smart contract and called its public methods
+[hello world tutorial]: /write-smart-contracts/hello-world
+[clarinet]: /write-smart-contracts/clarinet
+[installing clarinet]: /write-smart-contracts/clarinet#installing-clarinet
+[`define-data-var`]: /references/language-functions#define-data-var
+[testnet sandbox]: https://explorer.stacks.co/sandbox/deploy?chain=testnet
+[stacks web wallet]: https://www.hiro.so/wallet/install-web
+[testnet faucet]: https://explorer.stacks.co/sandbox/faucet?chain=testnet
+[unit tests]: /write-smart-contracts/clarinet#testing-with-clarinet
+[`var-get`]: /references/language-functions#var-get
+[`clarinet console`]: /write-smart-contracts/clarinet#testing-with-the-console
+[`begin`]: /references/language-functions#begin
+[`var-set`]: /references/language-functions#var-set
+[`+`]: /references/language-functions#-add
+[clarity language reference]: /references/language-functions
+[transactions]: https://explorer.stacks.co/transactions?chain=testnet
