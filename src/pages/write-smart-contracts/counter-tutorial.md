@@ -192,7 +192,7 @@ counter in the console:
 (contract-call? .counter increment)
 ```
 
-The console should return (ok 1). Try calling the `decrement` function to decrement the counter back to 0.
+The console should return `(ok 1)`. Try calling the `decrement` function to decrement the counter back to 0.
 
 ```clarity
 (contract-call? .counter decrement)
