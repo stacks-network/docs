@@ -233,6 +233,8 @@ Enter your wallet address in the top field, you can copy this address by clickin
 clicking the **Copy address** button. Enter the contract name in the bottom field, in this case `hello-world`. Click
 **Get Contract** to view the contract.
 
+![Hello world sandbox contract](/images/hello-world-sandbox-contract.png)
+
 Click the `say-hi` function in the function summary, then click **Call Function** to perform the function call in the
 sandbox. This will display the Stacks web wallet with information about the transaction. Verify the information, then
 click **Confirm** to execute the function call.
@@ -241,10 +243,13 @@ The function call is added to the miners mempool, and is executed in the next bl
 can take up to 15 minutes to complete. You can review it on the [transactions][] page of the explorer or in the
 activity field of your web wallet.
 
-=> You have now learned one method of deploying and interacting with smart contracts on Stacks. You have also learned
-the strengths of performing local development without having to wait block times.
+When the transaction is complete, you can access the transaction summary page from the activity panel in your web
+wallet. The transaction summary page displays the output of the function:
 
-![Hello world sandbox contract](/images/hello-world-sandbox-contract.png)
+![Hello world transaction summary](/images/hello-world-transaction-summary.png)
+
+=> You have now learned one method of deploying and interacting with smart contracts on Stacks. You have also learned
+the strengths of performing local development without having to wait for block times.
 
 [clarinet]: /write-smart-contracts/clarinet
 [installing clarinet]: /write-smart-contracts/clarinet#installing-clarinet
