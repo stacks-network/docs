@@ -1,5 +1,5 @@
 ---
-title: Testing Clarity code
+title: Testing Clarity code with JS and Mocha
 description: Learn to Test Clarity Contract Code with JavaScript and Mocha.
 experience: advanced
 duration: 15 minutes
