@@ -143,4 +143,7 @@ sections:
         pages:
           - path: /overview #pbc et al
           - path: /stacks-token
+          - external:
+              href: 'https://github.com/friedger/awesome-stacks'
+              title: Awesome Stacks
           - path: /contributing
