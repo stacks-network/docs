@@ -81,6 +81,7 @@ The [`define-data-var`][] statement initializes a new integer variable named `co
 `0`. It's important to note that all definition statements in Clarity need to be at the top of the file.
 
 The `counter` variable is stored in the data space associated with the smart contract. The variable is persisted and
+
 acts as a global shared state.
 
 To provide access to the `counter` variable from outside the contract that it's defined in, you should declare a
@@ -121,6 +122,9 @@ function:
 ```
 
 The console should return `(ok 0)`.
+
+-> Changes to your contract will not be loaded into the Clarinet console until it is restarted. Close the console with
+`Ctrl + C` before proceding to the next step.
 
 ## Step 4: define counter functions
 
