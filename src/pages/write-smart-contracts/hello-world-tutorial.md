@@ -98,7 +98,7 @@ The function doesn't take any parameters and simply returns "hello world" using 
 The second function is a [read-only function][] called `echo-number`.
 
 ```clarity
-(define-read-only (echo number (val int))
+(define-read-only (echo-number (val int))
   (ok val))
 ```
 
