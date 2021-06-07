@@ -85,7 +85,7 @@ Stacks 2.0 enabled building decentralized apps that are user-owned and avoid cen
 Read one of our guides to understand the ins and outs of the Stacks 2.0 blockchain.
 
 [@page-reference | grid-small]
-| /understand-stacks/accounts, /understand-stacks/transactions, /understand-stacks/network
+| /understand-stacks/accounts, /understand-stacks/transactions, /understand-stacks/network, /understand-stacks/microblocks
 
 ## Try it out
 

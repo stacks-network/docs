@@ -53,11 +53,7 @@ A sample of each transaction type can be found in the [Stacks Blockchain API res
 
 ## Anchor mode
 
-Transactions can be mined either in an anchor block or in a microblock. If microblock-anchoring is selected, the transaction can be confirmed much quicker that the target block time. However, microblocks can be subject to re-organization, thus changing the order of transaction processing:
-
-![microblock-states](/images/microblock-states.png)
-
-If your transaction relies on a state that could be altered by a previous transactions with serious implications, you should carefully evalute if microblock-anchoring should be set.
+Transactions can be mined either in an anchor block or in a [microblock](/understand-stacks/microblocks). If microblock-anchoring is selected, the transaction can be confirmed much quicker that the target block time.
 
 The anchor mode has three options:
 

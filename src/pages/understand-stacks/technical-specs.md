@@ -61,7 +61,7 @@ description: Summary of technical specifications of Stacks 2.0
   1. _originating account_ is the account that creates, _authorizes_ and sends the transaction
   2. _paying account_ is the account that is billed by the leader for the cost of validating and executing the transaction
   3. _sending account_ is the account that identifies who is currently executing the transaction: this can change as a transaction executes via the `as-contract` Clarity function
-- Transactions can be batched or streamed into blocks. The behavior can be controlled by the anchor mode of a transaction. With streaming (microblocks), a faster confirmation time is possible.
+- Transactions can be batched or streamed into blocks. The behavior can be controlled by the anchor mode of a transaction. With streaming ([microblocks](/understand-stacks/microblocks)), a faster confirmation time is possible.
 - Two types of authorizations: standard authorization is where originating account is the same as paying account. _Sponsored_ authorization is where originating account and paying account are distinct. For instance, developers or service providers could pay for users to call their smart-contracts.
 - For sponsored authorization, first a user signs with the originating account and then a sponsor signs with the paying account.
 - Mempool limit for concurrent pending transactions is 25 per account
