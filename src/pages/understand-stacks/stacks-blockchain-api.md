@@ -300,9 +300,7 @@ This API supports [v1.4.6 of the Rosetta specification](https://www.rosetta-api.
 
 ## Microblocks support
 
-!> API support for [microblocks](/understand-stacks/mining#microblocks) is current being worked on. New API endpoints are documented [here](https://stacks-blockchain-api-git-feat-microblocks-blockstack.vercel.app/#tag/Microblocks). The details are subject to change for now.
-
-The [transaction anchor mode](/understand-stacks/transactions#anchor-mode) defines if a transaction should be included in a microblock. If so, the latency for a transaction to be confirmed can be reduced.
+!> API support for [microblocks](/understand-stacks/microblocks) is current being worked on. New API endpoints are documented [here](https://stacks-blockchain-api-git-feat-microblocks-blockstack.vercel.app/#tag/Microblocks). The details are subject to changes.
 
 The API allows querying the most recently streamed microblocks:
 
@@ -333,8 +331,6 @@ curl 'https://stacks-node-api-microblocks.testnet.stacks.co/extended/v1/microblo
   ]
 }
 ```
-
-Microblocks are a trdeoff between finality and latency. The initial confirmation of a transaction inside a microblock does not imply finality. Microblocks are subject to reorganization. Thus, the order of processing for confirmed transactions can change. Only once the microblock was added to an anchor block, finality can be assumed.
 
 ## Nonce handling
 
