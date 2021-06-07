@@ -51,12 +51,13 @@ sections:
               - path: /guides/transaction-signing
               - path: /guides/data-storage
 
-          - title: Tutorials
+          - title: Example Apps
             usePageTitles: true
             pages:
-              - path: /tutorials/todos
-              - path: /tutorials/public-registry
-              - path: /tutorials/angular
+              - path: /examples/todos
+              - path: /examples/heystack
+              - path: /examples/public-registry
+              - path: /examples/angular
 
           - title: Stacks.js References
             usePageTitles: true
@@ -73,6 +74,9 @@ sections:
               - external:
                   href: 'https://github.com/blockstack/stacks.js/tree/master/packages/transactions'
                   title: transactions
+              - external:
+                  href: 'https://github.com/blockstack/stacks-blockchain-api/tree/master/client'
+                  title: blockchain-api-client
               - external:
                   href: 'https://github.com/blockstack/stacks.js/tree/master/packages/stacking'
                   title: 'stacking'
