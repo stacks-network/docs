@@ -29,7 +29,7 @@ While integration is possible for any type of app, most of the resources availab
 [@page-reference | grid]
 | /build-apps/guides/authentication, /build-apps/guides/transaction-signing, /build-apps/guides/data-storage
 
-## Tutorials
+## Example apps
 
 [@page-reference | grid]
-| /build-apps/tutorials/todos, /build-apps/tutorials/public-registry, /build-apps/tutorials/angular, /build-apps/tutorials/radiks
+| /build-apps/examples/todos, /build-apps/examples/heystack, /build-apps/examples/public-registry, /build-apps/examples/angular
