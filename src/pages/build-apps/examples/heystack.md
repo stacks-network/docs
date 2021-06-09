@@ -10,17 +10,18 @@ images:
 ## Introduction
 
 This example application demonstrates important features of the Stacks blockchain, and is a case study for how a frontend
-web application can interact with a Clarity smart contract. The full source of the application is provided, this page
-highlights important code snippets and design patterns to help you learn how to develop your own Stacks application.
+web application can interact with a Clarity smart contract. The full source of the application is provided and
+completely open source for you to use or modify. This page highlights important code snippets and design patterns to
+help you learn how to develop your own Stacks application.
 
-This app highlights the following platform features:
+This app showcases the following platform features:
 
 - Authenticating users with the web wallet
 - Using a smart contract to store data on the blockchain
 - Minting new fungible tokens with a [SIP-010][] compliant smart contract
 - Creating and monitoring transactions on the Stacks blockchain using [Stacks.js][]
 
-You can access the [online version][heystack] of the Heystack app to interact with it. The source for Heystack is also
+You can access the [online version of the Heystack app][heystack] to interact with it. The source for Heystack is also
 available on [Github][heystack_gh]. This page assumes some familiarity with [React][].
 
 ## Heystack overview
@@ -36,8 +37,13 @@ every like that their messages receive.
 
 ## Review smart contracts
 
-Heystack depends on two smart contracts to execute the backend functions of the app on the Stacks blockchain: a contract
-for handling the messaging content, and a contract for minting and distributing the $HEY token.
+Heystack depends on two smart contracts to execute the backend functions of the app on the Stacks blockchain:
+
+- a contract for handling the messaging content
+- a contract for minting and distributing the $HEY token
+
+As a best practice, these two contracts are separate because of the different functionality they handle. This is an
+exercise in [separation of concerns][].
 
 ### Content contract
 
@@ -617,3 +623,4 @@ const AccountNameComponent = memo(() => {
 [`src/common/hooks/use-publish-hey.ts`]: https://github.com/blockstack/heystack/blob/main/src/common/hooks/use-publish-hey.ts
 [`src/store/hey.ts`]: https://github.com/blockstack/heystack/blob/main/src/store/hey.ts
 [`src/components/user-area.tsx`]: https://github.com/blockstack/heystack/blob/22e4e9020f8bbb404e8c1e36f32f000050f90818/src/components/user-area.tsx#L62
+[separation of concerns]: https://en.wikipedia.org/wiki/Separation_of_concerns
