@@ -3,3 +3,10 @@ Bitcoin
 STX
 BTC
 CLI
+DAO
+LISP
+NFT
+NFTs
+SIP
+Clarinet
+Clarity

@@ -20,7 +20,6 @@ jobs:
       - name: run vale
         uses: errata-ai/vale-action@master
         with:
-          styles: https://github.com/errata-ai/Google/releases/latest/download/Google.zip
           files: '${{ steps.get_changed_files.outputs.all }}'
           onlyAnnotateModifiedLines: true
         env:
