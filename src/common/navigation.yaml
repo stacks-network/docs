@@ -2,6 +2,7 @@ sections:
   - pages:
       - path: /
       - path: /understand-stacks
+        usePageTitles: true
         pages:
           - path: /overview
           - path: /testnet
@@ -18,12 +19,14 @@ sections:
           - path: /stacks-blockchain-api
         sections:
           - title: Tutorials
+            usePageTitles: true
             pages:
               - path: /managing-accounts
               - path: /sending-tokens
               - path: /running-mainnet-node
               - path: /running-testnet-node
               - path: /running-regtest-node
+              - path: /running-api-node
               - path: /integrate-stacking
               - path: /integrate-stacking-delegation
               - path: /stacking-using-CLI
