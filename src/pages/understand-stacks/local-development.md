@@ -31,7 +31,7 @@ This guide helps you understand how to set up and run a mocknet for local develo
 ```bash
   cp sample.env .env
 ```
- 
+
 3. Start the Mocknet:
 
 ```bash

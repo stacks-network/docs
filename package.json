@@ -79,6 +79,7 @@
     "remark-squeeze-paragraphs": "^4.0.0",
     "remark-unwrap-images": "2.0.0",
     "remark-vscode": "^1.0.0-beta.2",
+    "shiki-twoslash": "^1.4.1",
     "strip-markdown": "^4.0.0",
     "stylis": "^4.0.6",
     "swr": "^0.3.11",
