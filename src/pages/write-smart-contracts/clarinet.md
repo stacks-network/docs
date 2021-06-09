@@ -184,8 +184,8 @@ Clarinet.test({
 });
 ```
 
-For more information on assertions, review [asserts][] in the Deno standard library. For more information on the available
-Clarity calls in Deno, review the [Deno Clarity library][].
+For more information on assertions, review [asserts][] in the Deno standard library. For more information on the
+available Clarity calls in Deno, review the [Deno Clarinet library][].
 
 ## Additional reading
 
@@ -194,6 +194,6 @@ Clarity calls in Deno, review the [Deno Clarity library][].
 [clarinet]: https://github.com/hirosystems/clarinet
 [console]: #testing-with-the-console
 [test harness]: #testing-with-the-test-harness
-[clarity language reference]: http://localhost:3000/references/language-functions
+[clarity language reference]: /references/language-functions
 [asserts]: https://deno.land/std@0.90.0/testing/asserts.ts
-[deno clarity library]: https://deno.land/x/clarinet@v0.6.0/index.ts
+[deno clarinet library]: https://github.com/hirosystems/clarinet/blob/master/deno/index.ts
