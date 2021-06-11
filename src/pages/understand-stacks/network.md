@@ -48,7 +48,7 @@ Nonces are added to all transactions and help identify them in order to ensure t
 
 When a new [token transfer transaction](/understand-stacks/transactions#stacks-token-transfer) is constructed, the most recent nonce of the account needs to fetched and set.
 
-> The API provides an endpoint to [simplify nonce handling](/understand-stacks/stacks-blockchain-api#nonce-handling).
+-> The API provides an endpoint to [simplify nonce handling](/understand-stacks/stacks-blockchain-api#nonce-handling).
 
 ## Confirmations
 
@@ -56,7 +56,7 @@ The Stacks 2.0 network is anchored onto the bitcoin network. This allows transac
 
 The time to mine a block, to confirm transactions, will eventually match the expected "block time" of the bitcoin network: 10 minutes.
 
-> Transactions can also be mined in microblocks, reducing the latency significantly. Learn more [here](/understand-stacks/microblocks).
+-> Transactions can also be mined in [microblocks](/understand-stacks/microblocks), reducing the latency significantly.
 
 The block time is hardcoded and will change throughout the implementation phases of the [testnet](/understand-stacks/testnet). The current block time can be obtained through the [`GET /extended/v1/info/network_block_times`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_network_block_times) endpoint:
 
