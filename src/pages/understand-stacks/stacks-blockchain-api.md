@@ -300,7 +300,8 @@ This API supports [v1.4.6 of the Rosetta specification](https://www.rosetta-api.
 
 ## Microblocks support
 
-!> API support for [microblocks](/understand-stacks/microblocks) is current being worked on. New API endpoints are documented [here](https://stacks-blockchain-api-git-feat-microblocks-blockstack.vercel.app/#tag/Microblocks). The details are subject to changes.
+!> API support for microblocks is a work-in-progress. Review the [API documentation][microblocks_api] carefully to
+ensure that you are up-to-date on the latest implementation details for microblocks.
 
 The API allows querying the most recently streamed microblocks:
 
@@ -334,7 +335,8 @@ curl 'https://stacks-node-api-microblocks.testnet.stacks.co/extended/v1/microblo
 
 ## Nonce handling
 
-Developer have to keep track of the last nonce used in a transaction. The API provides an endpoint to make nonce handling simpler:
+In order to prevent stuck transactions, you must track the next available nonce for principals issuing transactions. The
+API provides an endpoint to make nonce handling simpler:
 
 ```bash
 # for mainnet, remove `.testnet`
@@ -361,3 +363,5 @@ While Hiro provides a hosted API server of the Stacks Blockchain API, anyone can
 | /understand-stacks/local-development
 
 -> Once started, the API will be available on `localhost:3999`
+
+[microblocks_api]: https://stacks-blockchain-api-git-feat-microblocks-blockstack.vercel.app/#tag/Microblocks
