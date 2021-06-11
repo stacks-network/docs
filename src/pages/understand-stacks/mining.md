@@ -65,12 +65,13 @@ To calculate the amount of BTC to send miners should:
 
 ## Microblocks
 
-Unlike most existing blockchains, Stacks blocks are not produced atomically. Instead, leaders may dynamically package transactions into a sequence of microblocks as they are received from users.
+The Stacks blockchain produces blocks at the same rate as the Bitcoin blockchain. In order to provide lower latency
+transactions, miners can opt to enable microblocks. Microblocks allow the current block leader to stream transactions
+and include their state transitions in the current epoch.
 
-A leader can "stream" a block over the course of its tenure by selecting transactions from the mempool as they arrive and packaging them into microblocks. These microblocks contain small batches of transactions, which are organized into a hash chain to encode the order in which they were processed. If a leader produces microblocks, then the new chain tip the next leader builds off of will be the last microblock the new leader has seen.
+If a block leader opts to produce microblocks, the next leader builds the chain tip off the last microblock that the
+current leader produces.
 
-The advantage of the streaming approach is that a leader's transaction can be included in a block during the current epoch, reducing latency.
+The block streaming model is described in [SIP-001][].
 
-Whether a transactions should be included in a microbloc can be [defined in the transaction encoding](/understand-stacks/transactions#anchor-mode).
-
-> More details can be found in [SIP001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
+[sip-001]: https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md#operation-as-a-leader
