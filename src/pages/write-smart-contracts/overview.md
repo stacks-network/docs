@@ -1,5 +1,5 @@
 ---
-title: Write smart contracts
+title: Clarity overview
 description: Overview and guides for getting started with Clarity
 images:
   large: /images/contract.svg
@@ -48,9 +48,9 @@ Clarity differs from most other smart contract languages in two essential ways:
 - The language is decidable (not Turing complete)
 
 Using an interpreted language ensures that the executed code is human-readable and auditable. A decidable language
-like Clarity makes it possible to determine precisely which code is going to be executed, for any function.
+like Clarity makes it possible to determine precisely which code will be executed, for any function.
 
-A Clarity smart contract is composed of two parts, a data space and a set of functions. Only the associated
+A Clarity smart contract consists of two parts, a data space and a set of functions. Only the associated
 smart contract may modify its corresponding data space on the blockchain. Functions may be private and thus callable
 only from within the smart contract, or public and thus callable from other contracts. Users call smart contracts'
 public functions by broadcasting a transaction on the blockchain which invokes the public function. Contracts
@@ -60,7 +60,7 @@ Note some of the key Clarity language rules and limitations.
 
 - The only primitive types are booleans, integers, buffers, and principals.
 - Recursion is illegal and there are no anonymous functions.
-- Looping may only be performed via `map`, `filter`, or `fold`.
+- Looping is only performed via `map`, `filter`, or `fold`.
 - There is support for lists, however, the only variable length lists in the language appear as function inputs; there is no support for list operations like append or join.
 - Variables are immutable.
 
@@ -71,7 +71,7 @@ Note some of the key Clarity language rules and limitations.
 
 ## Explore more
 
-For language details and references, check out the following:
+For language details and references, see the following:
 
 [@page-reference | grid]
 | /write-smart-contracts/principals, /write-smart-contracts/values, /references/language-overview

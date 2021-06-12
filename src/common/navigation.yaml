@@ -2,9 +2,11 @@ sections:
   - pages:
       - path: /
       - path: /understand-stacks
+        usePageTitles: true
         pages:
           - path: /overview
           - path: /testnet
+          - path: /regtest
           - path: /proof-of-transfer
           - path: /bitcoin
           - path: /mining
@@ -18,29 +20,25 @@ sections:
           - path: /stacks-blockchain-api
         sections:
           - title: Tutorials
+            usePageTitles: true
             pages:
               - path: /managing-accounts
               - path: /sending-tokens
               - path: /running-mainnet-node
               - path: /running-testnet-node
+              - path: /running-regtest-node
+              - path: /running-api-node
               - path: /integrate-stacking
               - path: /integrate-stacking-delegation
               - path: /stacking-using-CLI
 
-          - title: Stacks 1.0
-            pages:
-              - path: /stacks-1.0-info
-              - path: /best-practices
-              - path: /wire-format
-              - path: /atlas-overview
-              - path: /atlas-how-it-works
-              - path: /atlas-usage
-              - path: /installing-memcached
       - path: /write-smart-contracts
+        usePageTitles: true
         pages:
           - path: /overview
           - path: /principals
           - path: /values
+          - path: /clarinet
           - path: /tokens
         sections:
           - title: Tutorials
@@ -52,6 +50,9 @@ sections:
       - path: /build-apps
         pages:
           - path: /overview
+          - external:
+              href: https://github.com/blockstack/stacks.js/tree/master/migration-guide.md
+              title: Migrating from Blockstack.js
         sections:
           - title: Guides
             usePageTitles: true
@@ -60,34 +61,53 @@ sections:
               - path: /guides/transaction-signing
               - path: /guides/data-storage
 
-          - title: Tutorials
+          - title: Example Apps
             usePageTitles: true
             pages:
-              - path: /tutorials/todos
-              - path: /tutorials/public-registry
-              - path: /tutorials/angular
+              - path: /examples/todos
+              - path: /examples/heystack
+              - path: /examples/public-registry
+              - path: /examples/angular
 
           - title: Stacks.js References
             usePageTitles: true
             pages:
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/auth#stacksauth'
-                  title: auth
-              - external:
-                  href: 'https://github.com/blockstack/ux/tree/master/packages/connect#stacksconnect'
+                  href: 'https://github.com/blockstack/connect#readme'
                   title: connect
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/storage#stacksstorage'
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/auth'
+                  title: auth
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/storage'
                   title: storage
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/network#stacksnetwork'
-                  title: network
-              - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/stacking#stacksstacking-'
-                  title: stacking
-              - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/transactions#stackstransactions-'
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/transactions'
                   title: transactions
+              - external:
+                  href: 'https://github.com/blockstack/stacks-blockchain-api/tree/master/client'
+                  title: blockchain-api-client
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/stacking'
+                  title: 'stacking'
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/keychain'
+                  title: 'keychain'
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/network'
+                  title: 'network'
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/encryption'
+                  title: 'encryption'
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/profile'
+                  title: 'profile'
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/common'
+                  title: common
+              - external:
+                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/bns'
+                  title: bns
 
           - title: Protocols
             usePageTitles: true
@@ -98,6 +118,14 @@ sections:
         pages:
           - path: /mainnet
           - path: /testnet
+      - path: /storage-hubs
+        pages:
+          - path: /overview
+        sections:
+          - title: Tutorials
+            usePageTitles: true
+            pages:
+              - path: /amazon-ec2-deploy
       - path: /references
         pages:
           - path: /stacks-cli
@@ -125,8 +153,11 @@ sections:
               - path: /language-keywords
               - path: /language-functions
 
-  - title: Ecosystem
-    pages:
-      - path: /overview #pbc et al
-      - path: /stacks-token
-      - path: /contributing
+      - path: /ecosystem
+        pages:
+          - path: /overview #pbc et al
+          - path: /stacks-token
+          - external:
+              href: 'https://github.com/friedger/awesome-stacks'
+              title: Awesome Stacks
+          - path: /contributing

@@ -28,7 +28,6 @@ swap:
   Android device: Android-powered device
   android: Android
   API explorer: APIs Explorer
-  application: app
   approx\.: approximately
   authN: authentication
   authZ: authorization
@@ -38,7 +37,6 @@ swap:
   chapter: documents|pages|sections
   check box: checkbox
   check: select
-  CLI: command-line tool
   click on: click|click in
   Cloud: Google Cloud Platform|GCP
   Container Engine: Kubernetes Engine
@@ -75,6 +73,6 @@ swap:
   tablename: table name
   tablet: device
   touch: tap
-  url:  URL
+  url: URL
   vs\.: versus
   World Wide Web: web

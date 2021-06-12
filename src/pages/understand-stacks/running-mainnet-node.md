@@ -16,7 +16,7 @@ images:
 This tutorial will walk you through the following steps:
 
 - Download and install the node software
-- Run the node
+- Run the node against mainnet
 - Mine Stacks token
 
 ## Requirements

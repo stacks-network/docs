@@ -22,6 +22,32 @@ This allows network participants who are adding value to the new cryptocurrency 
 Other new blockchains can be anchored on the secure proof-of-work blockchain instead of introducing new proof-of-work chains. PoX has an interesting property where participants can earn payouts in a separate, potentially more stable, base cryptocurrency while participating in the new blockchain network. This can help solve a bootstrapping problem for new blockchains by providing incentives for early participants. Further, PoX has a potential use case for funding ecosystem developer funds.
 ![proof-of-transfer](/images/proof-of-transfer.png)
 
+## Why Bitcoin?
+
+There are a multitude of reasons that Stacks chose Bitcoin as the blockchain to power consensus. It is one of the oldest blockchain protocols having launched in 2009, and has benefited from all the industry learnings that have occurred since that time. It is far and away the most valuable blockchain network, and BTC has held the highest market cap of any cryptocurrency for the past decade.
+
+Bitcoin champions immutability, and has stood the test of time. It has been proven that influencing or attacking the network would be infeasible or impractical for any potential hackers. It is one of the only cryptocurrencies to bridge the mainstream chasm and gain immense public attention. Bitcoin is now a household name, and is being recognized by governments, large corporations, and legacy banking institutions. Lastly, Bitcoin has been cemented as a reliable store of value, and is the perfect infrastructure to plug into the proof-of-transfer consensus mechanism.
+
+![btc-stacks](/images/btc-stacks.png)
+
+## Blocks and Microblocks
+
+The Stacks blockchain allows for increased transaction throughput using a mechanism called microblocks. Bitcoin and Stacks progress in lockstep, and their blocks are confirmed simultaneously. On Stacks, this is referred to as an ‘anchor block’. An entire block of Stacks transactions corresponds to a single Bitcoin transaction. This significantly improves cost/byte ratio for processing Stacks transactions. Because of simultaneous block production, Bitcoin acts as a rate-limiter for creating Stacks blocks, thereby preventing denial-of-service attacks on its peer network.
+
+However, in between Stacks anchor blocks settling on the Bitcoin blockchain, there are also a varying number of microblocks that allow rapid settlement of Stacks transactions with a high degree of confidence. This allows Stacks transaction throughput to scale independently of Bitcoin, while still periodically establishing finality with the Bitcoin chain. The Stacks blockchain adopts a block streaming model whereby each leader can adaptively select and package transactions into their block as they arrive in the mempool. Therefore when an anchor block is confirmed, all of the transactions in the parent microblock stream are packaged and processed. This is an unprecedented method for achieving scalability without creating a totally separate protocol from Bitcoin.
+
+![stx-microblock](/images/stx-microblocks.png)
+
+## Unlocking Bitcoin Capital
+
+Stacks also unlocks the over $1+ trillion in capital that exists in the Bitcoin ecosystem, and gives Bitcoiners new opportunities to use and earn BTC. Bitcoin invented the art of the “HODL”, and Bitcoiners are watching and waiting for interesting applications to be built that expand BTC’s usability. Stacks made the deliberate design decision to not create a totally independent network, and instead take advantage of the preexisting network effect of Bitcoin.
+
+In this way, Stacks is an accessible accompaniment to the Bitcoin ecosystem, and the two networks working in tandem enables totally novel ways of using BTC. The dApp and DeFi ecosystem burgeoning on Stacks will encourage less active BTC addresses to begin experimenting with interactive applications of cryptocurrency. By locking up STX on the network and participating in the Stacking mechanism, users have the opportunity to earn a familiar, native currency like BTC while also enriching the Stacks protocol.
+
+## Clarity and the Bitcoin State
+
+Clarity smart contracts also have unique visibility into the state of the Bitcoin blockchain. This means that contract logic in a Clarity file has the ability to trigger when specific Bitcoin transactions have been confirmed. Clarity smart contracts have a built in Simple Payment Verification (SPV) proofs for Bitcoin that make interacting with Bitcoin’s state much simpler for developers. Additionally, Clarity contracts will potentially fork with the original Bitcoin chain. Therefore, in an edge case where Bitcoin forks, developers wouldn’t have to worry about adjusting the deployment of their smart contracts.
+
 ## See also
 
 - [Read the full PoX whitepaper](https://community.blockstack.org/pox)

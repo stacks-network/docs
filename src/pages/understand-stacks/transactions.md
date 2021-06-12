@@ -403,6 +403,38 @@ There is no explicit time constraint between the construction of a valid signed 
 - Token transfer: Nonce changed in-between construction and broadcast
 - Contract call or deploy: Block height is evaluated (with [`at-block`](/references/language-functions#at-block)) and changed in-between construction and broadcast
 
+## Mempool
+
+Once a transaction has been successfully broadcast to the network, the transaction is added to the mempool of the node
+that received the broadcast. From the [Bitcoin wiki][]: "a node's memory pool contains all 0-confirmation transactions
+across the entire network that that particular node knows about." So, the set of transactions in the mempool might be
+different for each node in the network. For example, when you query the mempool endpoints on
+`stacks-node-api.mainnet.stacks.co`, the response reflects the set of unconfirmed transactions known to the nodes that
+service that API.
+
+Miners can employ different heuristics and strategies for deciding which transactions to admit into the mempool and
+which transactions to include from the mempool when mining a block. Some transactions may be rejected outright (for
+example, if there are insufficient funds at an address) while others might be accepted into the mempool, but not mined
+into a block indefinitely (for example if fees are too low). Transactions that are admitted in the mempool but not yet
+mined are said to be "pending." The current implementation of [stacks-blockchain][] discards pending mempool
+transactions after [256 blocks][].
+
+### Best practices
+
+- **Nonce:** it's crucial that transactions use the correct nonce. Using an incorrect nonce makes it less likely that
+  the transaction is mined in a timely manner. To determine the correct nonce, query the [`accounts`][] endpoint of
+  the node you intend to broadcast your transaction to. The value of the `nonce` field of the response is the next nonce
+  that the node expects to consume for that account. Nonce starts at `0`, so the first transaction from an account should
+  be set to `nonce=0`.
+- **Transaction chaining:** even when using the correct nonce, transactions might arrive at a node out-of-order. For
+  instance, a transaction with `nonce=1` may arrive in the mempool before the `nonce=0` transaction. Stacks nodes admit
+  such out-of-order transactions in the mempool, but only up to a limit ([25 in the current implementation][]). So, you
+  should limit and chain of unconfirmed transactions from a single account to less than 25. Making this limit higher has
+  downsides, discussed in [this issue](https://github.com/blockstack/stacks-blockchain/issues/2384). If you need to send
+  more than 25 transactions per block, consider using multiple accounts or a smart-contract based approach. See
+  [this tool](https://www.npmjs.com/package/@stacks/send-many-stx-cli), for example, that allows up to 200 token
+  transfers in a single transaction.
+
 ## Querying
 
 Transactions on the Stacks 2.0 network can be queried using the [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api). The API exposes two interfaces, a RESTful JSON API and a WebSockets API.
@@ -543,3 +575,9 @@ Broadcasted transactions will stay in the mempool for 256 blocks (~42 hours). If
 !> Most transactions stay in the mempool due to nonce issues. If you see a transaction pending for an unusual time, review the nonce of the account and the transaction.
 
 If a transaction is removed from the mempool, the transaction was not processed and no changes were made to the blockchain state.
+
+[bitcoin wiki]: https://en.bitcoin.it/wiki/Vocabulary#Memory_pool
+[256 blocks]: https://github.com/blockstack/stacks-blockchain/blob/master/src/core/mempool.rs#L59
+[stacks-blockchain]: https://github.com/blockstack/stacks-blockchain
+[`accounts`]: /understand-stacks/accounts#get-stacks-stx-balance-and-nonce
+[25 in the current implementation]: https://github.com/blockstack/stacks-blockchain/blob/08c4b9d61b48b99475c0197e7e7fea50c7fb0e29/src/core/mempool.rs#L66
