@@ -45,10 +45,10 @@ sections:
         sections:
           - title: Tutorials
             pages:
-              - path: /my-own-nft
               - path: /hello-world-tutorial
               - path: /counter-tutorial
               - path: /testing-contracts
+              - path: /my-own-nft
       - path: /build-apps
         pages:
           - path: /overview

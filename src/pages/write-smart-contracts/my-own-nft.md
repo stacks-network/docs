@@ -37,7 +37,7 @@ Install [Stacks Wallet for web](https://www.hiro.so/wallet/install-web) - a Fire
 
 Uploading and calling smart contracts requires you to pay network fees to process the transactions. You need to get some testnet tokens, so you can pay the fees in the next steps.
 
-The **STX faucet** allows you request testnet tokens. To run the faucet, open up the [Sandbox faucet view](https://explorer.stacks.co/sandbox/faucet?chain=testnet) and click on "Request STX":
+The **STX faucet** allows you request testnet tokens. To run the faucet, open up the [Explorer Sandbox faucet view](https://explorer.stacks.co/sandbox/faucet?chain=testnet) and click on "Request STX":
 
 ![faucet](/images/pages/nft/faucet.png)
 
@@ -115,16 +115,37 @@ With the contract code and name defined, you can hit the "Deploy" button. It wil
 
 ![faucet](/images/pages/nft/wallet.png)
 
-Verify that all the information is correct and hit "Confirm" to deploy your contract! You need to wait up to a minute for the transaction to complete.
+Verify that all the information is correct and hit "Confirm" to deploy your contract! Like with the faucet transaction, you need to wait up to 2 minutes for the transaction to complete.
+
+You can open the new transaction in a new browser tab to keep track of the state:
+
+![open-tab](/images/pages/nft/open-tab.png)
 
 ## Step 3: claim your new NFT
 
-// TODO
+Now that your NFT contract was deployed, you can claim one of them! The fastest way to do that is through the Sandbox.
 
-=> **Congratulations!** You can now ...
+First, open the transaction tab and copy the contract name:
 
-With the completion of this tutorial, you:
+![contract-name](/images/pages/nft/contract-name.png)
 
--
+Next, go to the [Explorer Sandbox contract call view](https://explorer.stacks.co/sandbox/contract-call?chain=testnet). Select the first input area, paste your contract name (CTRL + V), and hit 'Get Contract'.
 
-## Bonus: collect a rare SWAG NFT
+You will see the contract interaction view, which includes contract details and available functions to run:
+
+![contract-interaction](/images/pages/nft/contract-interaction.png)
+
+Select the "claim" method and click "call function". A wallet approval window will open up. Hit 'confirm'.
+
+Just like the last time, open up the transaction in a new browser tab and wait for it to complete.
+
+Once completed, you will see that the transaction not only minted one of your new NFTs but also an **excluse SWAG NFT** that is limited to the first 100 developers who completed this tutorial:
+
+![nft-claimed](/images/pages/nft/nft-claimed.png)
+
+=> **Congratulations!** You now have ...
+
+- familiarity with the Explorer Sandbox
+- a working Clarity smart contract based on the SIP009 standard
+- your own NFT on the Stacks 2.0 testnet
+- a very rare SWAG NFT you can brag about
