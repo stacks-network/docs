@@ -182,7 +182,7 @@
       "output_type": "B",
       "signature": "(fold func list initial-value)",
       "description": "The `fold` special form applies the input function `func` to each element of the\ninput list _and_ the output of the previous application of the `fold` function. When invoked on\nthe first list element, it uses the `initial-value` as the second input. `fold` returns the last\nvalue returned by the successive applications. Note that the first argument is not evaluated thus\nhas to be a literal function name.",
-      "example": "(fold * (list 2 2 2) 1) ;; Returns 8\n(fold * (list 2 2 2) 0) ;; Returns 0\n;; calculates (- 11 (- 7 (- 3 2)))\n(fold - (list 3 7 11) 2) ;; Returns 5 \n(fold concat \"cdef\" \"ab\")   ;; Returns \"fedcab\"\n(fold concat (list \"cd\" \"ef\") \"ab\")   ;; Returns \"efcdab\""
+      "example": "(fold * (list 2 2 2) 1) ;; Returns 8\n(fold * (list 2 2 2) 0) ;; Returns 0\n;; calculates (- 11 (- 7 (- 3 2)))\n(fold - (list 3 7 11) 2) ;; Returns 5 \n(define-private (concat-string (a (string-ascii 20)) (b (string-ascii 20))) (unwrap-panic (as-max-len? (concat a b) u20)))\n(fold concat-string \"cdef\" \"ab\")   ;; Returns \"fedcab\"\n(fold concat-string (list \"cd\" \"ef\") \"ab\")   ;; Returns \"efcdab\""
     },
     {
       "name": "append",
@@ -510,7 +510,7 @@
       "output_type": "C",
       "signature": "(match opt-input some-binding-name some-branch none-branch) |\n(match-resp input ok-binding-name ok-branch err-binding-name err-branch)",
       "description": "The `match` function is used to test and destructure optional and response types.\n\nIf the `input` is an optional, it tests whether the provided\n`input` is a `some` or `none` option, and evaluates `some-branch` or\n`none-branch` in each respective case.\n\nWithin the `some-branch`, the _contained value_ of the `input`\nargument is bound to the provided `some-binding-name` name.\n\nOnly _one_ of the branches will be evaluated (similar to `if` statements).\n\nIf the `input` is a response, it tests whether the provided `input` is\nan `ok` or `err` response type, and evaluates `ok-branch` or\n`err-branch` in each respective case.\n\nWithin the `ok-branch`, the _contained ok value_ of the `input`\nargument is bound to the provided `ok-binding-name` name.\n\nWithin the `err-branch`, the _contained err value_ of the `input`\nargument is bound to the provided `err-binding-name` name.\n\nOnly _one_ of the branches will be evaluated (similar to `if` statements).\n\nNote: Type checking requires that the type of both the ok and err parts of the\nresponse object be determinable. For situations in which one of the parts of a response\nis untyped, you should use `unwrap-panic` or `unwrap-err-panic` instead of `match`.",
-      "example": "\n(define-private (add-10 (x (optional int)))\n  (match x\n  value (+ 10 value)\n  10))\n(add-10 (some 5)) ;; Returns 15\n(add-10 none) ;; Returns 10\n\n(define-private (add-or-pass-err (x (response int (string-ascii 10))) (to-add int))\n  (match x\n   value (+ to-add value)\n   err-value (err err-value)))\n(add-or-pass-err (ok 5) 20) ;; Returns 25\n(add-or-pass-err (err \"ERROR\") 20) ;; Returns (err \"ERROR\")\n"
+      "example": "\n(define-private (add-10 (x (optional int)))\n  (match x\n  value (+ 10 value)\n  10))\n(add-10 (some 5)) ;; Returns 15\n(add-10 none) ;; Returns 10\n\n(define-private (add-or-pass-err (x (response int (string-ascii 10))) (to-add int))\n  (match x\n   value (ok (+ to-add value))\n   err-value (err err-value)))\n(add-or-pass-err (ok 5) 20) ;; Returns (ok 25)\n(add-or-pass-err (err \"ERROR\") 20) ;; Returns (err \"ERROR\")\n"
     },
     {
       "name": "try!",
@@ -690,10 +690,10 @@
     },
     {
       "name": "define-map",
-      "input_type": "MapName, KeyTupleDefinition, MapTupleDefinition",
+      "input_type": "MapName, TypeDefinition, TypeDefinition",
       "output_type": "Not Applicable",
-      "signature": "(define-map map-name ((key-name-0 key-type-0) ...) ((val-name-0 val-type-0) ...))",
-      "description": "`define-map` is used to define a new datamap for use in a smart contract. Such\nmaps are only modifiable by the current smart contract.\n\nMaps are defined with a key tuple type and value tuple type. These are defined using a list\nof name and type pairs, e.g., a key type might be `((id int))`, which is a tuple with a single \"id\"\nfield of type `int`.\n\nLike other kinds of definition statements, `define-map` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).",
+      "signature": "(define-map map-name key-type value-type)",
+      "description": "`define-map` is used to define a new datamap for use in a smart contract. Such\nmaps are only modifiable by the current smart contract.\n\nMaps are defined with a key type and value type, often these types are tuple types.\n\nLike other kinds of definition statements, `define-map` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).",
       "example": "\n(define-map squares { x: int } { square: int })\n(define-private (add-entry (x int))\n  (map-insert squares { x: 2 } { square: (* x x) }))\n(add-entry 1)\n(add-entry 2)\n(add-entry 3)\n(add-entry 4)\n(add-entry 5)\n"
     },
     {
@@ -742,7 +742,7 @@
       "output_type": "Not Applicable",
       "signature": "(impl-trait trait-identifier)",
       "description": "`impl-trait` can be use for asserting that a contract is fully implementing a given trait.\nAdditional checks are being performed when the contract is being published, rejecting the deployment if the\ncontract is violating the trait specification.\n\nTrait identifiers can either be using the sugared syntax (.token-a.token-trait), or be fully qualified\n('SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait).\n\nLike other kinds of definition statements, `impl-trait` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put such a statement in the middle of a function body).\n",
-      "example": "\n(impl-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)\n"
+      "example": "\n(impl-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)\n(define-public (get-balance (account principal))\n  (ok u0))\n(define-public (transfer? (from principal) (to principal) (amount uint))\n  (ok u0))\n"
     }
   ],
   "keywords": [

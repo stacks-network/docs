@@ -92,35 +92,26 @@ bitcoin-cli -rpcport=8332 -rpcuser=your-user -rpcpassword=your-password importad
 
 Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
-Now, we need to configure our node to use this Bitcoin keychain. In the `stacks-blockchain` folder, create a new file called `mainnet-miner-conf.toml`.
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/blockstack/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
 
-Paste in the following configuration:
+Update the following properties:
 
 ```toml
 [node]
-rpc_bind = "0.0.0.0:20443"
-p2p_bind = "0.0.0.0:20444"
+...
 # Enter your private key here
 seed = "replace-with-your-private-key"
-miner = true
+local_peer_seed = "replace-with-your-private-key"
+...
 
 [burnchain]
-chain = "bitcoin"
-mode = "mainnet"
-# peer_host should point to your local bitcoind node
+...
+# To mine on mainnet, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
-username = "your-bitcoind-username"
-password = "your-bitcoind-password"
-rpc_port = 8332
-peer_port = 8333
-
-# optional - may help speed up sync time
-[connection_options]
-read_only_call_limit_write_length = 0
-read_only_call_limit_read_length = 100000
-read_only_call_limit_write_count = 0
-read_only_call_limit_read_count = 30
-read_only_call_limit_runtime = 1000000000
+username = "<USERNAME>"
+password = "<PASSWORD>"
+...
 ```
 
 Now, grab your `privateKey` from earlier, when you ran the `make_keychain` command. Replace the `seed` field with your private key. Save and close this configuration file.
@@ -128,7 +119,7 @@ Now, grab your `privateKey` from earlier, when you ran the `make_keychain` comma
 To run your miner, run this in the command line:
 
 ```bash
-stacks-node start --config=./mainnet-miner-conf.toml
+stacks-node start --config=./testnet/stacks-node/conf/mainnet-miner-conf.toml
 ```
 
 Your node should start. It will take some time to sync, and then your miner will be running.
@@ -211,37 +202,28 @@ bitcoin-cli -rpcport=8332 -rpcuser=your-user -rpcpassword=your-password importad
 
 Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
-### Create configuration file
+### Update configuration file
 
-Now, we need to configure our node to use this Bitcoin keychain. In the **folder where your binary is extracted**, create a new file called `mainnet-miner-conf.toml`.
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/blockstack/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
 
-Paste in the following configuration:
+Update the following properties:
 
 ```toml
 [node]
-rpc_bind = "0.0.0.0:20443"
-p2p_bind = "0.0.0.0:20444"
+...
 # Enter your private key here
 seed = "replace-with-your-private-key"
-miner = true
+local_peer_seed = "replace-with-your-private-key"
+...
 
 [burnchain]
-chain = "bitcoin"
-mode = "mainnet"
-# peer_host should point to your local bitcoind node
+...
+# To mine on mainnet, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
-username = "your-bitcoind-username"
-password = "your-bitcoind-password"
-rpc_port = 8332
-peer_port = 8333
-
-# optional - may help speed up sync time
-[connection_options]
-read_only_call_limit_write_length = 0
-read_only_call_limit_read_length = 100000
-read_only_call_limit_write_count = 0
-read_only_call_limit_read_count = 30
-read_only_call_limit_runtime = 1000000000
+username = "<USERNAME>"
+password = "<PASSWORD>"
+...
 ```
 
 Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` command. Replace the seed field with your private key. Save and close this configuration file.
@@ -251,7 +233,7 @@ Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` c
 To start your miner, run this in the command line:
 
 ```bash
-stacks-node start --config=mainnet-miner-conf.toml
+stacks-node start --config=testnet/stacks-node/conf/mainnet-miner-conf.toml
 ```
 
 -> **Note** : While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
@@ -285,44 +267,31 @@ docker run -i node:14-alpine npx @stacks/cli make_keychain 2>/dev/null
 
 We need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
-### Create a config file directory
+### Update configuration file
 
-You need a dedicated directory to keep the config files:
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/blockstack/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
 
-```bash
-mkdir -p $HOME/stacks
-```
-
-### Create config file
-
-Inside the new `$HOME/stacks` folder, you should create a new miner config `Config.toml`:
+Update the following properties:
 
 ```toml
 [node]
-rpc_bind = "0.0.0.0:20443"
-p2p_bind = "0.0.0.0:20444"
+...
 # Enter your private key here
 seed = "replace-with-your-private-key"
-miner = true
+local_peer_seed = "replace-with-your-private-key"
+...
 
 [burnchain]
-chain = "bitcoin"
-mode = "mainnet"
-# peer_host should point to your local bitcoind node
+...
+# To mine on mainnet, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
-username = "your-bitcoind-username"
-password = "your-bitcoind-password"
-rpc_port = 8332
-peer_port = 8333
-
-# optional - may help speed up sync time
-[connection_options]
-read_only_call_limit_write_length = 0
-read_only_call_limit_read_length = 100000
-read_only_call_limit_write_count = 0
-read_only_call_limit_read_count = 30
-read_only_call_limit_runtime = 1000000000
+username = "<USERNAME>"
+password = "<PASSWORD>"
+...
 ```
+
+Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` command. Replace the seed field with your private key. Save and close this configuration file.
 
 ### Start the miner
 
@@ -335,11 +304,11 @@ docker run -d \
   --network host \
   -e RUST_BACKTRACE="full" \
   -e STACKS_LOG_DEBUG="1" \
-  -v "$HOME/stacks/Config.toml:/src/stacks-node/Config.toml" \
+  -v "$(pwd)/testnet/stacks-node/conf/mainnet-miner-conf.toml:/src/stacks-node/mainnet-miner-conf.toml" \
   -p 20443:20443 \
   -p 20444:20444 \
   blockstack/stacks-blockchain:latest \
-/bin/stacks-node start --config /src/stacks-node/Config.toml
+/bin/stacks-node start --config /src/stacks-node/mainnet-miner-conf.toml
 ```
 
 You can review the node logs with this command:

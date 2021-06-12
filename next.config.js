@@ -9,6 +9,21 @@ const withFonts = require('next-fonts');
 async function redirects() {
   return [
     {
+      source: '/build-apps/tutorials/todos',
+      destination: '/build-apps/examples/todos',
+      permanent: true,
+    },
+    {
+      source: '/build-apps/tutorials/public-registry',
+      destination: '/build-apps/examples/public-registry',
+      permanent: true,
+    },
+    {
+      source: '/build-apps/tutorials/angular',
+      destination: '/build-apps/examples/angular',
+      permanent: true,
+    },
+    {
       source: '/browser/todo-list.html',
       destination: '/build-apps/tutorials/todos',
       permanent: true,
@@ -901,7 +916,7 @@ module.exports = withFonts(
       trailingSlash: true,
     },
     env: {
-      FATHOM_ID: 'EPNTIXUM',
+      FATHOM_ID: 'FOEMPXUV',
     },
     redirects,
     pageExtensions: ['js', 'ts', 'tsx', 'md', 'mdx'],

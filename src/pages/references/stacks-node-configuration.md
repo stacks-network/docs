@@ -27,9 +27,9 @@ Example:
 stacks-node mocknet
 ```
 
-### krypton (deprecated)
+### krypton
 
-Start a node that will join and stream blocks from the public krypton testnet, powered by Blockstack via [Proof of Transfer](/understand-stacks/overview#proof-of-transfer-pox).
+Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](/understand-stacks/overview#proof-of-transfer-pox).
 
 Example:
 
@@ -340,6 +340,36 @@ Example:
 walk_interval = 30
 ```
 
+#### read_only_call_limit_read_length
+
+Total number of bytes allowed to be read by an individual read-only function call.
+
+Example:
+
+```toml
+read_only_call_limit_read_length = 100000
+```
+
+#### read_only_call_limit_read_count
+
+Total number of independent read operations permitted for an individual read-only function call.
+
+Example:
+
+```toml
+read_only_call_limit_read_count = 30
+```
+
+#### read_only_call_limit_runtime
+
+[Runtime cost](https://github.com/stacksgov/sips/blob/2d3fd9bf8da7a04f588d90ff6252173d7609d7bf/sips/sip-006/sip-006-runtime-cost-assessment.md#introduction) limit for an individual read-only function call.
+
+Example:
+
+```toml
+read_only_call_limit_runtime = 1000000000
+```
+
 ### Section: burnchain
 
 This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
@@ -437,7 +467,7 @@ Example:
 commit_anchor_block_within = 10000
 ```
 
-### Section: ustx_balance (testnet only)
+### Section: ustx_balance (testnet/regtest only)
 
 This section contains configuration options pertaining to the genesis block allocation for an address in micro-STX. If a user changes these values, their node may be in conflict with other nodes on the network and find themselves unable to sync with other nodes.
 

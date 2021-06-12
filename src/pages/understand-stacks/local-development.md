@@ -26,16 +26,22 @@ This guide helps you understand how to set up and run a mocknet for local develo
   git clone https://github.com/blockstack/stacks-local-dev ./stacks-local-dev && cd ./stacks-local-dev
 ```
 
-2. Start the Mocknet:
+2. Copy sample.env to .env:
 
 ```bash
-docker-compose up -d
+  cp sample.env .env
 ```
 
-3. Stop the Mocknet:
+3. Start the Mocknet:
 
 ```bash
-docker-compose down
+./manage.sh mocknet up
+```
+
+4. Stop the Mocknet:
+
+```bash
+./manage.sh mocknet down
 ```
 
 ## Env Vars

@@ -1,8 +1,8 @@
 ---
 title: Hello, World
 description: Learn the basics of Clarity and write a simple Hello World smart contract.
-duration: 18 minutes
-experience: beginners
+duration: 15 minutes
+experience: beginner
 tags:
   - tutorial
 images:
@@ -12,64 +12,103 @@ images:
 
 ## Introduction
 
-In the world of smart contracts, everything is a blockchain transaction. You use tokens in your wallet to deploy a smart contract in a transaction, and each call to that contract after it's published is a transaction, too. That means that at each step, tokens are being exchanged as transaction fees. This tutorial introduces you to this mode of programming, which transforms blockchains into powerful state machines capable of executing complex logic.
+In the world of smart contracts, everything is a blockchain transaction. You use tokens in your wallet to deploy a
+smart contract in a transaction, and each call to that contract after it's published is also a transaction. Because
+block times can affect how quickly a function is executed and returned, it's advantageous to perform local development
+and testing of smart contracts with a simulated blockchain, so that functions execute immediately. This tutorial
+introduces you to local smart contract development with [Clarinet][], a development tool for building and testing
+Clarity smart contracts.
 
-Clarity, the smart contracting language used on the Stacks Blockchain, is based on LISP and uses its parenthesized notation. Clarity is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and [decidable](https://en.wikipedia.org/wiki/Recursive_language). To learn more basics about the language, see the [Introduction to Clarity](/write-smart-contracts/overview) topic.
+Clarity, the smart contract language used on the Stacks Blockchain, is a LISP-based language and uses its
+parenthesized notation. Clarity is an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and
+[decidable](https://en.wikipedia.org/wiki/Recursive_language). To learn more basics about the language, see the
+[Introduction to Clarity](/write-smart-contracts/overview) topic.
 
-By the end of this tutorial, you:
+In this tutorial you will:
 
-- Have a working Clarity starter project and local dev environment
-- Understand basic Clarity language design principles
-- Deploy a contract to the Stacks 2.0 blockchain and call its public methods
-- Understand how to use the Stacks CLI
+- Create a new Clarinet project
+- Add a new Clarity contract to the project
+- Populate the contract with 2 types of functions
+- Execute the functions in a local, simulated blockchain
+- Optionally, deploy and test the contract on the testnet blockchain
 
 ## Prerequisites
 
-### Check the Stacks 2.0 status
+For this tutorial, you should have a local installation of Clarinet. Refer to [Installing Clarinet][] for instructions
+on how to set up your local environment. You should also have a text editor or IDE to edit the Clarity smart contract.
 
-The Stacks 2.0 blockchain is currently in development and could experience resets and downtimes. To make sure you're not running into any challenges related to the status of the network, please open up the [Status Checker](https://stacks-status.com/) and confirm that all systems are operational. If some systems seem to have issues, it's best to wait until they're back up before you proceed with the next steps.
+Note that you could also complete the coding portion of this tutorial in an online REPL such as [clarity.tools][]. If
+you are using the online REPL, you can skip to [step 3][] of the tutorial and enter the code into the sandbox.
 
-## Step 1: open the playground
+### Optional prerequisites
 
-To avoid setting things up on your machine, you can run all instructions inside a virtual container inside your browser window, using a project called Gitpod.
+While this tutorial primarily focuses on local smart contract development, you may wish to deploy your contract to
+a live blockchain. For simplicity, contract deployment is performed using the [testnet sandbox][]. If you wish to
+complete the optional deployment step, you should have the [Stacks Web Wallet][] installed, and you should request
+testnet STX tokens from the [testnet faucet][] on the testnet explorer. Note that requesting testnet STX from the faucet
+can take up to 15 minutes, so you may wish to request the tokens before beginning the tutorial.
 
-**[Open this Gitpod in a new browser window](https://gitpod.io/#https://github.com/agraebe/clarity-onboarding-playground)**
+## Step 1: create a new project
 
-Gitpod will require you to login with a Github account. Follow the steps described on the screen. Once completed, you can see code editor window:
+With Clarinet installed locally, open a new terminal window and create a new Clarinet project with the command:
 
-![new gitpod](/images/pages/clarity/gitpod-new.png)
-
-The Gitpod playground comes pre-installed with the [Stacks CLI](/references/stacks-cli).
-
-## Step 2: set up a starter project
-
-Using the terminal window on the bottom of the screen, run the following command to initialize a new project:
-
-```bash
-npm init clarity-starter
+```sh
+clarinet new clarity-hello-world && cd clarity-hello-world
 ```
 
-After the starter project is loaded up, you have to select a project template (using your arrow keys). Select `Hello World`, which is the default, by hitting ENTER.
+This command creates a new directory for your smart contract project, populated with boilerplate configuration and
+testing files. Creating a new project only creates the Clarinet configuration, in the next step you can add a contract
+to the project.
 
-```bash
-? Select a project template: (Use arrow keys)
-❯ Hello World
-  Counter
+## Step 2: create a new contract
+
+From the `clarity-hello-world` directory, create a new Clarity contract with the command:
+
+```sh
+clarinet contract new hello-world
 ```
 
-Next, you need to name the project folder. Hit ENTER to accept the default:
+This command adds a new `hello-world.clar` file in the `contracts` directory, and adds a `hello-world_test.ts` file to
+the `test` directory. This tutorial ignores the test file, but for production contracts, you can create [unit tests][]
+using it.
 
-```bash
-? Project name: (clarity-hello-world)
+## Step 3: add code to the hello-world contract
+
+Open the `contracts/hello-world.clar` file in a text editor or IDE. Delete the boilerplate comments, for the purpose of
+this tutorial they're not necessary.
+
+For this tutorial, you'll add two Clarity functions to the contract. Clarity functions are fully enclosed in
+parentheses, and whitespace doesn't matter.
+
+The first function is a public function called `say-hi`.
+
+```clarity
+(define-public (say-hi)
+  (ok "hello world"))
 ```
 
-Wait a few seconds while all project dependencies install. Once completed, you can see a new folder on the left side of the screen (`clarity-hello-world`). This is the location of your new Clarity project. Open the project folder and get familiar with the structure.
+Public functions in Clarity are callable from other smart contracts, which enables you to break complex tasks into
+smaller, simpler smart contraxcts (an exercise in [separating concerns][]).
 
-## Step 3: review the contract
+-> To create private functions, you would use the `define-private` keyword. Private functions can only be called from
+within the smart contract they're declared in. External contracts can only call public functions.
 
-Inside the project folder, open the `contracts/hello-world.clar` file.
+The function doesn't take any parameters and simply returns "hello world" using the [`ok`][] response constructor.
 
-You can see that `()` (parentheses) enclose the program and each statement. The smart contract also consists of two functions:
+The second function is a [read-only function][] called `echo-number`.
+
+```clarity
+(define-read-only (echo-number (val int))
+  (ok val))
+```
+
+Read-only functions are also public functions, but as the name implies, they can't change any variables or datamaps.
+`echo-number` takes an input parameter of type `int` and uses an [`ok`][] response to return the value passed to the
+function.
+
+-> Clarity supports a variety of other [types](/references/language-types)
+
+The full `contracts/hello-world.clar` file should look like this:
 
 ```clarity
 (define-public (say-hi)
@@ -79,146 +118,149 @@ You can see that `()` (parentheses) enclose the program and each statement. The 
   (ok val))
 ```
 
-On the first line, a new public function `say-hi` is declared. Public functions are callable from other smart contracts, enabling developers to break complex tasks into smaller, simpler smart contracts (an exercise in [separating concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)).
+In the following steps you can interact with this contract in the local console. You can optionally deploy this contract
+to the testnet and interact with it on a live blockchain.
 
--> To create private functions, you would use the `define-private` keyword. Only the current smart contract can run private functions. Other contract can only call public functions.
+## Step 4: interact with the contract in the Clarinet console
 
-The function doesn't take any parameters and simply returns "hello world" using the [`ok`](/references/language-functions#ok) response constructor.
+In the `clarity-hello-world` directory in your terminal, use the following command to verify that the syntax in
+your contract is correct:
 
-The second function, `echo-number`, is a [read-only function](/references/language-functions#define-read-only). Read-only functions are also public, but as the name implies, they can not change any variables or datamaps. `echo-number` takes an input parameter of the type `int`.
-
--> Clarity supports a variety of other [types](/references/language-types)
-
-`echo-number` uses an [`ok`](/references/language-functions#ok) response to return the value passed to the function.
-
-In the following steps, you can use this sample contract to deploy and run on the Stacks blockchain.
-
-## Step 4: create a Stacks account
-
-The container you are using comes pre-installed with Stacks CLI. Back inside the terminal, run the following command to create a new [Stacks 2.0 account](/understand-stacks/accounts):
-
-```bash
-stx make_keychain -t | json_pp > cli_keychain.json
+```sh
+clarinet check
 ```
 
-This command creates a new address and saves the details in a JSON file.
+If there are no errors, the command returns no output. If there are errors, verify that your
+contract is exactly as listed in the preceding section.
 
--> The `-t` option generates an account for the [testnet](/understand-stacks/testnet). It can't function on the mainnet
+In the same directory, use the following command to launch the local console:
 
-Review your new Stacks account details by opening up the file `cli_keychain.json` from the left navigation bar.
-
-```json
-{
-  "keyInfo": {
-    "address": "STNBNMTXV9ERHEDCQA3WE2S4PTF8ANSC24EBDKS2",
-    "btcAddress": "mjQtUz4kD7QsfAnxuPKKNM2EjFiomb9P8p",
-    "index": 0,
-    "privateKey": "416ce94972b13eee84943a0c42275c9f61f7..."
-  },
-  "mnemonic": "cup core apple emotion chalk absorb ..."
-}
+```sh
+clarinet console
 ```
 
--> Check out the [Stacks CLI reference](/references/stacks-cli) for more details
+This console is a Clarinet read-eval-print loop (REPL) that executes Clarity code instantly when a function is called.
+When the Clarinet console is invoked, it provides a summary of the available contracts and the simulated wallets in
+memory:
 
-## Step 5: obtain testing tokens
+```sh
+clarity-repl v0.11.1
+Enter "::help" for usage hints.
+Connected to a transient in-memory database.
+Contracts
++-------------------------------------------------------+-------------------------+
+| Contract identifier                                   | Public functions        |
++-------------------------------------------------------+-------------------------+
+| ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8QE.hello-world | (echo-number (val int)) |
+|                                                       | (say-hi)                |
++-------------------------------------------------------+-------------------------+
 
-Uploading and calling smart contracts requires you to pay network fees to process the transactions. You need to get some testnet tokens, so you can pay the fees in the next steps.
-
-The **STX faucet** is an API endpoint you can call to request testnet tokens for the new account. In the terminal, run the following command:
-
-```bash
-# replace <stx_address> with `address` property from your keychain
-curl -XPOST "https://stacks-node-api.testnet.stacks.co/extended/v1/faucets/stx?address=<stx_address>" | json_pp
+Initialized balances
++------------------------------------------------------+---------+
+| Address                                              | STX     |
++------------------------------------------------------+---------+
+| ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8QE (deployer) | 1000000 |
++------------------------------------------------------+---------+
+| ST1J4G6RR643BCG8G8SR6M2D9Z9KXT2NJDRK3FBTK (wallet_1) | 1000000 |
++------------------------------------------------------+---------+
+| ST20ATRN26N9P05V2F1RHFRV24X8C8M3W54E427B2 (wallet_2) | 1000000 |
++------------------------------------------------------+---------+
+| ST21HMSJATHZ888PD0S0SSTWP4J61TCRJYEVQ0STB (wallet_3) | 1000000 |
++------------------------------------------------------+---------+
+| ST2QXSK64YQX3CQPC530K79XWQ98XFAM9W3XKEH3N (wallet_4) | 1000000 |
++------------------------------------------------------+---------+
+| ST3DG3R65C9TTEEW5BC5XTSY0M1JM7NBE7GVWKTVJ (wallet_5) | 1000000 |
++------------------------------------------------------+---------+
+| ST3R3B1WVY7RK5D3SV5YTH01XSX1S4NN5B3QK2X0W (wallet_6) | 1000000 |
++------------------------------------------------------+---------+
+| ST3ZG8F9X4VKVTVQB2APF4NEYEE1HQHC2EDBF09JN (wallet_7) | 1000000 |
++------------------------------------------------------+---------+
+| STEB8ZW46YZJ40E3P7A287RBJFWPHYNQ2AB5ECT8 (wallet_8)  | 1000000 |
++------------------------------------------------------+---------+
+| STFCVYY1RJDNJHST7RRTPACYHVJQDJ7R1DWTQHQA (wallet_9)  | 1000000 |
++------------------------------------------------------+---------+
 ```
 
-The response includes a `txId` property. This is the transaction that transfers funds to your Stacks address.
+The console provides the ability to interact with your contract using Clarity commands. Call the `say-hi` function
+with the following command:
 
-```json
-{
-  "success": true,
-  "txId": "0xf2f0402f9f4c4d43b382690c4f7b97e24d5ff5dd5c619e3615daa64dca7ef4bc",
-  "txRaw": "8080000000040016..."
-}
+```clarity
+(contract-call? .hello-world say-hi)
 ```
 
--> You can also review the transaction status and details using the [Stacks Explorer](https://explorer.stacks.co/)
+The console immediately returns `(ok "hello world")`, the expected return value of the function.
 
-You need to wait up to a minute for the transaction to complete. Type the following in your terminal to see the balance:
+Next, call the `echo-number` function:
 
-```bash
-stx balance -t <stx_address>
+```clarity
+(contract-call? .hello-world echo-number 42)
 ```
 
-Once the transaction is successfully processed, you can see that your new balance is `500000`. This equals 0.5 Stacks (STX) tokens.
+The console immediately returns `(ok 42)`, the expected return value of the function with the parameters you called it
+with.
 
-```json
-{
-  //  in microstacks (1 STX = 1000000 microstacks)
-  "balance": "500000",
-  "locked": "0",
-  "unlock_height": 0,
-  "nonce": 0
-}
+Try calling the `echo-number` function with an incorrect type, in this case an unsigned integer:
+
+```clarity
+(contract-call? .hello-world echo-number u42)
 ```
 
-## Step 6: deploy the contract
+The console should return `Analysis error: expecting expression of type 'int', found 'uint'`, indicating that the call
+to the contract was invalid due to the incorrect type.
 
-A deployed contract on the Testnet is like a cloud function (comparable to serverless functions). It allows you to execute code remotely on the Stacks 2.0 network.
+=> You have now learned the basics of Clarity and working with the Clarinet development tool. You may
+wish to optionally deploy the contract to the testnet, described in the next and final step.
 
-Now, you can deploy the reviewed contract file (`hello-world.clar`). Inside the terminal, run the following command:
+## Optional: deploy and test the contract on the testnet
 
-```bash
-# stx deploy_contract -t <contract_file_path> <contract_name> <fee> <nonce> <privateKey>
-# replace `privateKey` with your private key from your keychain
-stx deploy_contract -t clarity-hello-world/contracts/hello-world.clar hello-world 2000 0 <privateKey>
-```
+For this tutorial, you'll use the [testnet sandbox][] to deploy your smart contract. Make sure you have connected your
+[Stacks web wallet][] to the sandbox using the **Connect wallet** button, then copy and paste your smart contract into
+the Clarity code editor on the **Write & Deploy** page. Edit the contract name or use the randomly generated name
+provided to you.
 
-The command returns a new contract deploy transaction ID:
+![Hello world testnet sandbox](/images/hello-world-testnet-sandbox.png)
 
-```bash
-09adc98490c9f900d3149e74322e07ff6d1bf49660a08d8104c4dc66430bc3c0
-```
+Click **Deploy** to deploy the contract to the blockchain. This will display the Stacks web wallet window with
+information about the transaction. Verify that the transaction looks correct, and the network is set to `Testnet`, and
+click **Confirm**.
 
-The `deploy_contract` command takes the file contents and deploys a new contract with the name `hello-world`. With that name, the fully qualified contract identifier for the new account is `STNBNMTXV9ERHEDCQA3WE2S4PTF8ANSC24EBDKS2.hello-world`.
+The contract is added to the miners mempool, and included in the next block of the blockchain. This process can take up
+to 15 minutes to complete. You can review it on the [transactions][] page of the explorer or in the activity field
+of your web wallet.
 
-~> Your address is different. The contract identifier is essentially a naming convention to address deployed contract. It's based on the dot notation: `<address>.<contract_id>`
+When your contract is confirmed, navigate to the [call a contract][] page of the sandbox, and search for your contract.
+Enter your wallet address in the top field, you can copy this address by clicking the Stacks web wallet icon and
+clicking the **Copy address** button. Enter the contract name in the bottom field, in this case `hello-world`. Click
+**Get Contract** to view the contract.
 
-Ideally, you should estimate the minimal fees you need to pay. Factors like the size of the contract (amongst others) determine the estimate. For this tutorial, you can keep it simple and accept the default fee of `2000` (equals 0.02 STX).
+![Hello world sandbox contract](/images/hello-world-sandbox-contract.png)
 
-You have to wait up to a minute for the contract to broadcast to the network. In the meantime, you can open the transaction with the Explorer. Notice that every deployed smart contracts' source code is publicly verifiable.
+Click the `say-hi` function in the function summary, then click **Call Function** to perform the function call in the
+sandbox. This will display the Stacks web wallet with information about the transaction. Verify the information, then
+click **Confirm** to execute the function call.
 
--> Keep in mind that this operation increases the `nonce` of your account. [Read more about nonces](/understand-stacks/network#nonces)
+The function call is added to the miners mempool, and is executed in the next block of the blockchain. This process
+can take up to 15 minutes to complete. You can review it on the [transactions][] page of the explorer or in the
+activity field of your web wallet.
 
-## Step 7: call the public method
+When the transaction is complete, you can access the transaction summary page from the activity panel in your web
+wallet. The transaction summary page displays the output of the function:
 
-As soon as the contract deploys, you can call one of its methods. In this example, you are calling the `echo-number` function.
+![Hello world transaction summary](/images/hello-world-transaction-summary.png)
 
--> This is a `read-only` method, so it returns the result [without generating a new transaction](/understand-stacks/network#read-only-function-calls)
+=> You have now learned one method of deploying and interacting with smart contracts on Stacks. You have also learned
+the strengths of performing local development without having to wait for block times.
 
-```bash
-# stx call_read_only_contract_func -t <stx_address> <contract_name> <function_name> <stx_address>
-# replace `stx_address` with value from your keychain
-stx call_read_only_contract_func -t <stx_address> hello-world echo-number <stx_address>
-```
-
-The command looks up the contract method definition on the network, identifies that it requires an input parameter, and asks you for an integer to set `val`. Enter 42 and hit ENTER.
-
-```bash
-42
-```
-
-The method is now executed on the network. This can take a while. Once completed, the corresponding transaction contains the response with the value you just entered, `42`:
-
-```bash
-(ok 42)
-```
-
-=> **Congratulations!** You can now deploy your smart contract and call public functions on the Testnet using the CLI. You just deployed your smart contract and called a public function on the testnet of the Stacks blockchain using the Stacks CLI.
-
-With the completion of this tutorial, you now:
-
-- Have a working Clarity starter project
-- Understand basic Clarity language design principles
-- Deployed a contract on the Stacks blockchain and called a public method
-- Understand how to use the Stacks CLI
+[clarinet]: /write-smart-contracts/clarinet
+[installing clarinet]: /write-smart-contracts/clarinet#installing-clarinet
+[clarity.tools]: https://clarity.tools
+[testnet sandbox]: https://explorer.stacks.co/sandbox/deploy?chain=testnet
+[stacks web wallet]: https://www.hiro.so/wallet/install-web
+[testnet faucet]: https://explorer.stacks.co/sandbox/faucet?chain=testnet
+[step 3]: #step-3-add-code-to-the-hello-world-contract
+[unit tests]: /write-smart-contracts/clarinet#testing-with-clarinet
+[separating concerns]: https://en.wikipedia.org/wiki/Separation_of_concerns
+[`ok`]: /references/language-functions#ok
+[read-only function]: /references/language-functions#define-read-only
+[transactions]: https://explorer.stacks.co/transactions?chain=testnet
+[call a contract]: https://explorer.stacks.co/sandbox/contract-call?chain=testnet

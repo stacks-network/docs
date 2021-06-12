@@ -13,12 +13,10 @@ images:
 
 ## Introduction
 
--> Note: The Stacks 2.0 testnet is currently in development. As part of the testnet, you can run a node and connect it to a public network.
-
 This tutorial will walk you through the following steps:
 
 - Download and install the node software
-- Run the node
+- Run the node against testnet
 - Mine Stacks token
 
 ## Requirements
@@ -198,7 +196,7 @@ INFO [1588108047.585] [src/chainstate/stacks/index/marf.rs:732] First-ever block
 
 ## Optional: Running with Docker
 
-Alternatively, you can run the mainnet node with Docker.
+Alternatively, you can run the testnet node with Docker.
 
 -> Ensure you have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
 

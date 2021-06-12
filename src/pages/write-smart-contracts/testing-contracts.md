@@ -1,5 +1,5 @@
 ---
-title: Testing Clarity code
+title: Testing Clarity code with JS and Mocha
 description: Learn to Test Clarity Contract Code with JavaScript and Mocha.
 experience: advanced
 duration: 15 minutes
@@ -124,7 +124,7 @@ await helloWorldClient.deployContract();
 Finally, you will find snippets that call the public `say-hi` function of the contract:
 
 ```js
-const query = helloWorldClient.createQuery({ function: { name: 'say-hi', args: [] } });
+const query = helloWorldClient.createQuery({ method: { name: 'say-hi', args: [] } });
 const receipt = await helloWorldClient.submitQuery(query);
 const result = Result.unwrapString(receipt);
 ```

@@ -7,7 +7,7 @@ export const useFathom = () => {
 
   useEffect(() => {
     Fathom.load(process.env.FATHOM_ID, {
-      includedDomains: ['docs.blockstack.org'],
+      includedDomains: ['docs.stacks.co'],
     });
 
     function onRouteChangeComplete() {
