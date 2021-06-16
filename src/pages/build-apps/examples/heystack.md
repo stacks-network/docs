@@ -35,6 +35,10 @@ user sends a message on the platform, they must sign the message with the [Stack
 wallet) and pay a small gas fee in STX. A user spends a $HEY token to send every message, and recieves a $HEY token for
 every like that their messages receive.
 
+The following video provides a brief overview of the Heystack application:
+
+<br /><iframe width="560" height="315" src="https://www.youtube.com/embed/2_xAIctJqGw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Review smart contracts
 
 Heystack depends on two smart contracts to execute the backend functions of the app on the Stacks blockchain:
@@ -594,6 +598,13 @@ const AccountNameComponent = memo(() => {
 });
 ...
 ```
+
+## Development walkthrough video
+
+If you would like to learn more about the Heystack application and how it was developed, the following video presents
+specific implementation details.
+
+<br /><iframe width="560" height="315" src="https://www.youtube.com/embed/e-IfT5CI-Gw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 [heystack]: https://heystack.xyz
 [stacks.js]: https://github.com/blockstack/stacks.js
