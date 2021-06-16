@@ -41,7 +41,7 @@ it runs on.
 3. Click **Next**.
 4. Specify configuration details for your Gaia hub:
 
-   i. Enter the **Stack name**. This name must be unique within your AWS account.
+   i. Enter the **Stack name**. This name must be lowercase and unique within your AWS account.
 
    ![CloudFormation stack name](/images/cloudformation-stack-name.png)
 
