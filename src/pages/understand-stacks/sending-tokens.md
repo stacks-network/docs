@@ -63,7 +63,7 @@ const {
 const {
     StacksTestnet,
     StacksMainnet,
-} = require ('@stacks/network);
+} = require ('@stacks/network');
 const { TransactionsApi, Configuration } = require('@stacks/blockchain-api-client');
 
 const apiConfig = new Configuration({
