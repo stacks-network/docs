@@ -73,37 +73,37 @@ sections:
                   href: 'https://github.com/blockstack/connect#readme'
                   title: connect
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/auth'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/auth.html'
                   title: auth
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/storage'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/storage.html'
                   title: storage
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/transactions'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/transactions.html'
                   title: transactions
               - external:
-                  href: 'https://github.com/blockstack/stacks-blockchain-api/tree/master/client'
+                  href: 'https://blockstack.github.io/stacks-blockchain-api/client/index.html'
                   title: blockchain-api-client
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/stacking'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/stacking.html'
                   title: 'stacking'
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/keychain'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/keychain.html'
                   title: 'keychain'
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/network'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/network.html'
                   title: 'network'
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/encryption'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/encryption.html'
                   title: 'encryption'
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/profile'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/profile.html'
                   title: 'profile'
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/common'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/common.html'
                   title: common
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/bns'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/bns.html'
                   title: bns
 
           - title: Protocols
