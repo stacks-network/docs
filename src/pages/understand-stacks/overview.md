@@ -14,9 +14,12 @@ Smart contracts and apps developed on the Stacks platform are natively integrate
 
 ## Capabilities
 
-Read more about the functionality provided by the Stacks 2.0 blockchain.
+Read more about the features provided by the Stacks 2.0 blockchain.
 
 -> Check out the [technical specifications](/understand-stacks/technical-specs) for a brief overview
+
+A detailed [comparison of the Stacks blockchain to other blockchain technologies][] is available at the Stacks
+Foundation blog.
 
 ### Consensus mechanism
 
@@ -100,3 +103,5 @@ Developing on the Stacks blockchain is much simpler with the our tooling.
 - **API**: Read and interact with the blockchain and with smart contract using the [Stacks 2.0 Blockchain API](/understand-stacks/stacks-blockchain-api)
 - **CLI**: Use the [Stacks CLI](/understand-stacks/command-line-interface) inside your terminal
 - **Libraries**: Use the [Stacks Javascript libraries](https://blockstack.github.io/stacks.js/) to integrate with the Stacks blockchain
+
+[comparison of the stacks blockchain to other blockchain technologies]: https://stacks.org/stacks-blockchain
