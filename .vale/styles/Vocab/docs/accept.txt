@@ -10,3 +10,4 @@ NFTs
 SIP
 Clarinet
 Clarity
+application
