@@ -4,6 +4,8 @@ link: 'https://developers.google.com/style/capitalization#capitalization-in-titl
 level: warning
 scope: heading
 match: $sentence
+indicators:
+  - ':'
 exceptions:
   - Azure
   - CLI
