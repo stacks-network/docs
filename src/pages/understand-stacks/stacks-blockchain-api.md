@@ -65,7 +65,7 @@ It is important to note that the JS client requires setting the underlying HTTP 
 
 ```js
 import fetch from 'cross-fetch';
-import { Configuration AccountsApi } from '@stacks/blockchain-api-client';
+import { Configuration, AccountsApi } from '@stacks/blockchain-api-client';
 
 (async () => {
   const apiConfig = new Configuration({
