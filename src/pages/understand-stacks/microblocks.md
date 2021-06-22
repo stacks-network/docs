@@ -24,8 +24,8 @@ block leaders can produce blocks on the Stacks blockchain either by batching tra
 Microblocks are the product of the streaming model.
 
 If a block leader has elected to mine microblocks, the leader selects transactions from the mempool and package them
-into microblocks during the current epoch. Transactions included in microblocks don't achieve finality until they're
-included in an anchor block, but can assumed to be highly likely to achieve finality in the order in which the leader
+into microblocks during the current epoch. Transactions included in microblocks don't achieve finality until they've
+been confirmed by an anchor block, but can be assumed to be highly likely to achieve finality in the order in which the leader
 packaged them.
 
 While there is a high degree of confidence that streamed blocks are finalized in the order in which a block leader
