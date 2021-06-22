@@ -37,7 +37,7 @@ implications, you should carefully consider whether it should be performed using
 
 ## Enabling microblocks
 
-Miners can choose to enable or disable microblocks in their mining configuration. As a best practice, you should enable
+Miners can choose to enable or disable microblocks in their mining configuration. As a best practice, miners should enable
 microblock mining. When an application or user submits a transaction, the transaction can include an argument that
 requires the transaction to be in a microblock, an anchor block, or in either.
 
@@ -56,7 +56,7 @@ information, see [mining microblocks][].
 
 Stacks allows you to choose how any transaction should be included on the blockchain by the miners. This flexibility
 means you can submit transactions that require low latency processing for inclusion in microblocks, and require that
-high stakes transactions wait for anchor block finality.
+highly order-dependent transactions wait for anchor block finality.
 
 ### Stacks.js libraries
 
@@ -80,7 +80,7 @@ microblocks, the following best practices are recommended.
 
 Nonce handling with microblocks is challenging because the next account nonce must take into account any nonce values
 included in microblocks, which may not yet be included in an anchor block. The Stacks Blockchain API
-[provides an endpoint][] to retrieve the next none for a given principal.
+[provides an endpoint][] to retrieve the next nonce for a given principal.
 
 ### Application design
 
