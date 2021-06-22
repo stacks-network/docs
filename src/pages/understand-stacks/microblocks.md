@@ -19,7 +19,7 @@ still inheriting the security of Bitcoin.
 
 ## Transaction states
 
-The Stacks block production model is described in [SIP-001][]. The standard outlines the mechanism by which elected
+The [Stacks block production model][] is described in SIP-001. The standard outlines the mechanism by which elected
 block leaders can produce blocks on the Stacks blockchain either by batching transactions or by streaming them.
 Microblocks are the product of the streaming model.
 
@@ -28,9 +28,13 @@ into microblocks during the current epoch. Transactions included in microblocks 
 been confirmed by an anchor block, but can be assumed to be highly likely to achieve finality in the order in which the leader
 packaged them.
 
-While there is a high degree of confidence that streamed blocks are finalized in the order in which a block leader
-selects them, there is still a chance that microblocks can be reorganized in an anchor block. The processing order of
-transactions in microblocks can change depending on on how the microblock is finalized in the anchor block.
+A primary feature of any blockchain is that it can be reordered by the miners in order to avoid malicious actors in the
+mining pool. Because of this reordering ability, any transaction (whether it is included in an anchor block or a
+microblock) is subject to potential reordering. As more blocks are added to the chain, the likelihood of a transaction
+being reordered decreases. For example, many exchanges wait until at least 3 Bitcoin blocks have been added to report
+a transaction as fully confirmed. This would be known as a 3 block confirmation. Microblocks provide between a 0-1 block
+confirmation. A transaction that has been included in a microblock is likely to remain in that order, and the order of
+the transaction is known (unlike a transaction in mempool).
 
 -> If a transaction is dependent on a chain state that could by altered by previous transactions with serious
 implications, you should carefully consider whether it should be performed using microblocks.
@@ -88,7 +92,7 @@ The state of microblock transactions should be carefully communicated to users. 
 included in an anchor block, and your application design should reflect this.
 
 [proof-of-transfer consensus mechanism]: /understand-stacks/proof-of-transfer
-[sip-001]: https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md#operation-as-a-leader
+[stacks block production model]: https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md#operation-as-a-leader
 [mining microblocks]: /understand-stacks/mining#microblocks
 [anchor mode]: /understand-stacks/transactions#anchor-mode
 [anchormode]: https://stacks-js-git-master-blockstack.vercel.app/enums/transactions.anchormode.html
