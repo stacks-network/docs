@@ -75,6 +75,10 @@ depends_on = []
 At this point, you can begin editing your smart contract in the `contracts` directory. At any point while you are
 developing, you can use the command `clarinet check` to check the syntax of your smart contract.
 
+For a more in-depth overview of developing with Clarinet, review this comprehensive walkthrough video.
+
+<br /><iframe width="560" height="315" src="https://www.youtube.com/embed/zERDftjl6k8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Testing with Clarinet
 
 Clarinet provides several powerful methods to test and interact with your smart contracts. As mentioned in the previous
@@ -167,14 +171,15 @@ An example unit test for the `echo-number` function is provided below:
 ...
 Clarinet.test({
   name: 'the echo-number function returns the input value ok',
-  async fn(chain: Chain) {
+  async fn(chain: Chain, accounts: Map<string, Account>) {
     const testNum = '42';
+    let deployerWallet = accounts.get('deployer')!;
     let block = chain.mineBlock([
       Tx.contractCall(
-        'ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8QE.my-contract',
+        `${deployerWallet.address}.my-contract`,
         'echo-number',
         [testNum],
-        'ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8QE'
+        deployerWallet.address,
       ),
     ]);
     assertEquals(block.receipts.length, 1); // assert that the block received a single tx

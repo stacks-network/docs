@@ -62,3 +62,16 @@ To calculate the amount of BTC to send miners should:
 
 - Guess the price BTC/STX for the next day (100 blocks later)
 - Guess the total amount of BTCs committed by all miners
+
+## Microblocks
+
+The Stacks blockchain produces blocks at the same rate as the Bitcoin blockchain. In order to provide lower latency
+transactions, miners can opt to enable microblocks. Microblocks allow the current block leader to stream transactions
+and include their state transitions in the current epoch.
+
+If a block leader opts to produce microblocks, the next leader builds the chain tip off the last microblock that the
+current leader produces.
+
+The block streaming model is described in [SIP-001][].
+
+[sip-001]: https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md#operation-as-a-leader
