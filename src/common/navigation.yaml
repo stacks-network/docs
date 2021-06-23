@@ -28,8 +28,6 @@ sections:
               - path: /running-testnet-node
               - path: /running-regtest-node
               - path: /running-api-node
-              - path: /integrate-stacking
-              - path: /integrate-stacking-delegation
               - path: /stacking-using-CLI
 
       - path: /write-smart-contracts
@@ -58,6 +56,8 @@ sections:
               - path: /guides/authentication
               - path: /guides/transaction-signing
               - path: /guides/data-storage
+              - path: /guides/integrate-stacking
+              - path: /guides/integrate-stacking-delegation
 
           - title: Example Apps
             usePageTitles: true

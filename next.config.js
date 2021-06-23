@@ -9,6 +9,16 @@ const withFonts = require('next-fonts');
 async function redirects() {
   return [
     {
+      source: '/understand-stacks/integrate-stacking',
+      destination: '/build-apps/guides/integrate-stacking',
+      permanent: true,
+    },
+    {
+      source: '/understand-stacks/integrate-stacking-delegation',
+      destination: '/build-apps/guides/integrate-stacking-delegation',
+      permanent: true,
+    },
+    {
       source: '/build-apps/tutorials/todos',
       destination: '/build-apps/examples/todos',
       permanent: true,
