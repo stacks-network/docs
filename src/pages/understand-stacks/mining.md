@@ -1,5 +1,5 @@
 ---
-title: Understand Mining
+title: Mining
 description: A guide to mining on Stacks 2.0
 icon: TestnetIcon
 images:
