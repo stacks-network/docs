@@ -28,13 +28,12 @@ into microblocks during the current epoch. Transactions included in microblocks 
 been confirmed by an anchor block, but can be assumed to be highly likely to achieve finality in the order in which the leader
 packaged them.
 
-A primary feature of any blockchain is that it can be reordered by the miners in order to avoid malicious actors in the
-mining pool. Because of this reordering ability, any transaction (whether it is included in an anchor block or a
-microblock) is subject to potential reordering. As more blocks are added to the chain, the likelihood of a transaction
-being reordered decreases. For example, many exchanges wait until at least 3 Bitcoin blocks have been added to report
-a transaction as fully confirmed. This would be known as a 3 block confirmation. Microblocks provide between a 0-1 block
-confirmation. A transaction that has been included in a microblock is likely to remain in that order, and the order of
-the transaction is known (unlike a transaction in mempool).
+In most blockchains, transactions can be re-ordered and chain history can be re-written with support from enough miners.
+This allows a blockchain to recover from certain types of attacks, as miners can collectively agree to rewrite history
+and omit malicious blocks. As more blocks are added on top of a block that includes a transaction, the likelihood of a
+transaction being reordered decreases. For example, many exchanges wait until at least 3 Bitcoin blocks have been added
+to report a transaction as fully confirmed (3 block confirmation). Microblocks provide between 0 block and 1 block
+confirmation.
 
 -> If a transaction is dependent on a chain state that could by altered by previous transactions with serious
 implications, you should carefully consider whether it should be performed using microblocks.
