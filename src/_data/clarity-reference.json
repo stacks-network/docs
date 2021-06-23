@@ -253,7 +253,7 @@
       "input_type": "VarName, AnyType",
       "output_type": "bool",
       "signature": "(var-set var-name expr1)",
-      "description": "The `var-set` function sets the value associated with the input variable to the\ninputted value.",
+      "description": "The `var-set` function sets the value associated with the input variable to the\ninputted value. The function always returns `true`.",
       "example": "\n(define-data-var cursor int 6)\n(var-get cursor) ;; Returns 6\n(var-set cursor (+ (var-get cursor) 1)) ;; Returns true\n(var-get cursor) ;; Returns 7"
     },
     {
