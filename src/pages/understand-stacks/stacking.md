@@ -1,5 +1,5 @@
 ---
-title: Understand Stacking
+title: Stacking
 description: Introduction to the reward mechanism of Proof-of-Transfer
 images:
   sm: /images/pages/stacking-rounded.svg
