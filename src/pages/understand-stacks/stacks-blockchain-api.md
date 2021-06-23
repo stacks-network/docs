@@ -83,7 +83,6 @@ import { Configuration, AccountsApi } from '@stacks/blockchain-api-client';
   });
 
   console.log(txs);
-
 })().catch(console.error);
 ```
 
