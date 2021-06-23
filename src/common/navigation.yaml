@@ -7,12 +7,12 @@ sections:
           - path: /overview
           - path: /testnet
           - path: /regtest
-          - path: /proof-of-transfer
-          - path: /mining
-          - path: /microblocks
           - path: /accounts
           - path: /transactions
           - path: /network
+          - path: /proof-of-transfer
+          - path: /mining
+          - path: /microblocks
           - path: /stacking
           - path: /command-line-interface
           - path: /local-development
