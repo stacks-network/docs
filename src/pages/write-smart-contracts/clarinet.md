@@ -22,12 +22,8 @@ and testing on a live blockchain, and deploying the final contract to the mainne
 
 ## Installing Clarinet
 
-The best way to install Clarinet is through the Rust package manager, Cargo. If you have a working installation of
-[Rust](https://www.rust-lang.org/tools/install), use the following command to install Clarinet.
-
-```sh
-cargo install clarinet --locked
-```
+You can download a release from [github/hirosystems/clarinet](https://github.com/hirosystems/clarinet/releases/latest) or 
+try installing it from source code as described [here](https://github.com/hirosystems/clarinet#install-from-source-using-cargo).
 
 ## Developing a Clarity smart contract
 
