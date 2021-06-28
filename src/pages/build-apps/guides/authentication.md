@@ -98,7 +98,7 @@ function authenticate() {
       icon: window.location.origin + '/my-app-logo.svg',
     },
     redirectTo: '/',
-    finished: () => {
+    onFinish: () => {
       let userData = userSession.loadUserData();
       // Save or otherwise utilize userData post-authentication
     },
@@ -114,7 +114,7 @@ function authenticate() {
 The `showConnect` function accepts a number of properties within a parameter object such as:
 
 - The app's `name` and `icon`: provided as strings comprising the `appDetails` object property.
-- The `redirectTo` string: used to provide a URL to which the user should be redirected upon successful authentication. The `finished` callback serves a similar purpose by handling successful authentication within a context of a popup window.
+- The `redirectTo` string: used to provide a URL to which the user should be redirected upon successful authentication. The `onFinish` callback serves a similar purpose by handling successful authentication within a context of a popup window.
 - The `userSession` object initiated above.
 
 Once the user selects the button presented in this modal, they are passed to the Stacks Wallet for authenticator with the `authRequest` token as a GET parameter. From there they can confirm authentication and generate a new _Secret Key_ or Stacks identity before doing so, as needed before coming back to the app.
@@ -150,7 +150,7 @@ The authenticated state can later be detected by the `isUserSignedIn` method in 
 
 If the user has indeed confirmed authentication in the context of a popup window, the authenticator will resolve the pending authentication state automatically with the app within the parent window.
 
-It will then trigger the `finished` function provided above, which can be used similarly to save the user's information into their session as retrieved with `userSession.loadUserData()`.
+It will then trigger the `onFinish` function provided above, which can be used similarly to save the user's information into their session as retrieved with `userSession.loadUserData()`.
 
 ## Usage in React Apps
 
