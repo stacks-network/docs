@@ -29,6 +29,8 @@ The best way to install Clarinet is through the Rust package manager, Cargo. If 
 cargo install clarinet --locked
 ```
 
+Some user's might receive the following error: *Could not find 'clarinet' in registry....*. In this case, you should [build from source](https://github.com/hirosystems/clarinet#install-from-source-using-cargo).
+
 ## Developing a Clarity smart contract
 
 Once you have installed Clarinet, you can begin a new Clarinet project with the command:
