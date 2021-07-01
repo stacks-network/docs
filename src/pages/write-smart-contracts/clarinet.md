@@ -20,6 +20,8 @@ Clarinet is a useful tool for developing smart contracts, and should be used as 
 that involves building and testing the contract locally, deploying the final draft contract to a testnet environment
 and testing on a live blockchain, and deploying the final contract to the mainnet.
 
+When developing smart contracts, you may also want to use the [Clarity Visual Studio Code plugin][].
+
 ## Installing Clarinet
 
 You can download a release from the [Clarinet repository](https://github.com/hirosystems/clarinet/releases/latest) or 
@@ -198,3 +200,4 @@ available Clarity calls in Deno, review the [Deno Clarinet library][].
 [clarity language reference]: /references/language-functions
 [asserts]: https://deno.land/std@0.90.0/testing/asserts.ts
 [deno clarinet library]: https://github.com/hirosystems/clarinet/blob/master/deno/index.ts
+[clarity visual studio code plugin]: https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp
