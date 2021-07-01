@@ -22,7 +22,7 @@ and testing on a live blockchain, and deploying the final contract to the mainne
 
 ## Installing Clarinet
 
-You can download a release from [github/hirosystems/clarinet](https://github.com/hirosystems/clarinet/releases/latest) or 
+You can download a release from the [Clarinet repository](https://github.com/hirosystems/clarinet/releases/latest) or 
 try [installing it from source code](https://github.com/hirosystems/clarinet#install-from-source-using-cargo).
 
 ## Developing a Clarity smart contract
