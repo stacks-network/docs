@@ -27,7 +27,9 @@ Because smart contracts are programs that exist in a blockchain, anyone can quer
 to execute them. A smart contract execution can result in new transactions being written to the blockchain.
 
 Apps can take advantage of smart contracts to manage a global state that is visible to the public. Anyone can audit the
-blockchain in order to independently verify that an app's global shared state has been managed correctly according to the smart contract's rules.
+blockchain to independently verify that an app's global shared state has been managed correctly according to the smart contract's rules.
+
+There is a [Clarity Visual Studio Code plugin][] available for syntax assistance and debugging.
 
 ## Use cases
 
@@ -48,7 +50,7 @@ Clarity differs from most other smart contract languages in two essential ways:
 - The language is decidable (not Turing complete)
 
 Using an interpreted language ensures that the executed code is human-readable and auditable. A decidable language
-like Clarity makes it possible to determine precisely which code will be executed, for any function.
+like Clarity makes it possible to determine precisely which code is executed, for any function.
 
 A Clarity smart contract consists of two parts, a data space and a set of functions. Only the associated
 smart contract may modify its corresponding data space on the blockchain. Functions may be private and thus callable
@@ -75,3 +77,5 @@ For language details and references, see the following:
 
 [@page-reference | grid]
 | /write-smart-contracts/principals, /write-smart-contracts/values, /references/language-overview
+
+[clarity visual studio code plugin]: https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp
