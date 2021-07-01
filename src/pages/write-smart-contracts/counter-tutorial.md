@@ -30,6 +30,8 @@ In this tutorial you will:
 For this tutorial, you should have a local installation of Clarinet. Refer to [Installing Clarinet][] for instructions
 on how to set up your local environment. You should also have a text editor or IDE to edit the Clarity smart contract.
 
+If you are using Visual Studio Code, you may want to install the [Clarity Visual Studio Code plugin][].
+
 ### Optional prerequisites
 
 While this tutorial primarily focuses on local smart contract development, you may wish to deploy your contract to
@@ -259,3 +261,4 @@ the strengths of performing local development without having to wait for block t
 [`+`]: /references/language-functions#-add
 [clarity language reference]: /references/language-functions
 [transactions]: https://explorer.stacks.co/transactions?chain=testnet
+[clarity visual studio code plugin]: https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp
