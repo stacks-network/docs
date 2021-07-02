@@ -87,7 +87,7 @@ function doesn't execute.
 ```clarity
 ;; public functions
 (define-public (set-message (message (string-utf8 500)))
-    (var-set billboard-message message)
+    (ok (var-set billboard-message message))
 )
 ```
 
