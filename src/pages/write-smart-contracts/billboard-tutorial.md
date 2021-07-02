@@ -118,9 +118,10 @@ Clarity are public, and should be grouped with other public functions in the con
 ```
 
 It's a best practice to define codes to a descriptive constant for Clarity smart contracts. This makes the code easier
-to understand for readers. Under the `constants` comment, define a STX transfer error constant. Assign the value `u0` to
-the constant. There is no standard for error constants in Clarity, this value is used because it's the first error the
-contract defines. Error constants should be defined at the top of the contract, usually preceding data variables.
+to understand for readers and makes errors reusable across contract methods. Under the `constants` comment, define a STX
+transfer error constant. Assign the value `u0` to the constant. There is no standard for error constants in Clarity,
+this value is used because it's the first error the contract defines. Error constants should be defined at the top of
+the contract, usually preceding data variables.
 
 ```clarity
 ;; error consts
