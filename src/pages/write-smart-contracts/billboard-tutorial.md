@@ -34,6 +34,8 @@ smart contract.
 For developing the unit test, it's recommended that you have an IDE with Typescript support, such as
 [Visual Studio Code][].
 
+If you are using Visual Studio Code, you may want to install the [Clarity Visual Studio Code plugin][].
+
 ## Step 1: set up the project
 
 With Clarinet installed locally, open a new terminal window and create a new Clarinet project. Add a smart contract and
@@ -61,7 +63,7 @@ maximum length of the variable, for this tutorial use the value `500` to allow f
 define the initial value for the variable.
 
 ```clarity
-;; data maps and vars
+;; data vars
 (define-data-var billboard-message (string-utf8 500) u"Hello world!")
 ```
 
@@ -83,6 +85,7 @@ matches the type of the `billboard-message` variable. Clarity's type checking en
 function doesn't execute.
 
 ```clarity
+;; public functions
 (define-public (set-message (message (string-utf8 500)))
     (var-set billboard-message message)
 )
@@ -100,12 +103,15 @@ First, you should define a variable to track the price of updating the billboard
 cost to update the billboard is 100 micro-STX or 0.0001 STX.
 
 ```clarity
+;; data vars
 (define-data-var price uint u100)
 ```
 
-You also should define a read-only getter function returns the value of the `price` variable.
+You also should define a read-only getter function returns the value of the `price` variable. Read-only functions in
+Clarity are public, and should be grouped with other public functions in the contract.
 
 ```clarity
+;; public functions
 (define-read-only (get-price)
     (var-get price)
 )
@@ -114,9 +120,10 @@ You also should define a read-only getter function returns the value of the `pri
 It's a best practice to define codes to a descriptive constant for Clarity smart contracts. This makes the code easier
 to understand for readers. Under the `constants` comment, define a STX transfer error constant. Assign the value `u0` to
 the constant. There is no standard for error constants in Clarity, this value is used because it's the first error the
-contract defines.
+contract defines. Error constants should be defined at the top of the contract, usually preceding data variables.
 
 ```clarity
+;; error consts
 (define-constant ERR_STX_TRANSFER u0)
 ```
 
@@ -144,6 +151,8 @@ If the token transfer is successful, the function sets the new `billboard-messag
 `new-price`. Finally, the function returns `(ok new-price)`. It's generally a good practice to have public functions
 return `ok` when successfully executed.
 
+-> This function should replace the existing `set-message` function defined previously.
+
 ```clarity
 (define-public (set-message (message (string-utf8 500)))
     (let ((cur-price (var-get price))
@@ -170,7 +179,7 @@ At this point, the final contract should look like this:
 ;; error consts
 (define-constant ERR_STX_TRANSFER u0)
 
-;; data maps/vars
+;; data vars
 (define-data-var billboard-message (string-utf8 500) u"Hello World!")
 (define-data-var price uint u100)
 
@@ -202,6 +211,8 @@ At this point, the final contract should look like this:
 )
 ```
 
+Use `clarinet check` to ensure that your Clarity code is well-formed and error-free.
+
 ## Step 5: write a contract test
 
 At this point, the contract functions as intended, and can be deployed to the blockchain. However, it's good practice
@@ -212,12 +223,32 @@ alter the way the functions behave.
 Open the `tests/billboard_test.ts` file in your IDE. In this step, you will add a single automated test to exercise the
 `set-message` and `get-message` functions of the contract.
 
+Using the Clarinet library, define variables to get a wallet address principal from the Clarinet configuration, and the
+balance of that address on the chain.
+
+The functional part of the test is defined using the `chain.mineBlock()` function, which simulates the mining of a
+block. Within that function, the test makes four contract calls (`Tx.contractCall()`), two calls to `set-message` and
+two calls to `get-message`.
+
+Once the simulated block is mined, the test can make assertions about the chain state. This is accomplished using the
+`assertEquals()` function and the `expect` function. In this case, the test asserts that the once the simulated block
+is mined, the block height is now equal to `2`, and that the number of receipts (contract calls) in the block are
+exactly `4`.
+
+The test can then make assertions about the return values of the contract. The test checks that the result of the
+transaction calls to `get-message` match the string values that the calls to `set-message` contain. This covers the
+capability of both contract functions.
+
+Finally, the test asserts that STX are transferred from the transaction caller wallet, covering the price updating and
+token transfer. The test verifies that the addresses of the wallets match the expected addresses, and that the amount
+transferred is the expected amount.
+
 ```ts
-import { Clarinet, Tx, Chain, Account, types } from 'https://deno.land/x/clarinet@v0.10.0/index.ts';
+import { Clarinet, Tx, Chain, Account, types } from 'https://deno.land/x/clarinet@v0.12.0/index.ts';
 import { assertEquals } from 'https://deno.land/std@0.90.0/testing/asserts.ts';
 
 Clarinet.test({
-  name: 'Ensure that the message can be set',
+  name: 'A quick demo on how to assert expectations',
   async fn(chain: Chain, accounts: Map<string, Account>) {
     let wallet_1 = accounts.get('wallet_1')!;
 
@@ -238,37 +269,23 @@ Clarinet.test({
 
     block.receipts[3].result.expectUtf8('testing...');
 
+    let [event] = block.receipts[0].events;
+    let { sender, recipient, amount } = event.stx_transfer_event;
+    sender.expectPrincipal('ST1J4G6RR643BCG8G8SR6M2D9Z9KXT2NJDRK3FBTK');
+    recipient.expectPrincipal('ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8QE.billboard');
+    amount.expectInt(100);
+
     assetMaps = chain.getAssetsMaps();
     assertEquals(assetMaps.assets['STX'][wallet_1.address], balance - 210);
   },
 });
 ```
 
-Modify the default imports in the boilerplate to include `{ Clarinet, Tx, Chain, Account, types }` from the `clarinet`
-Deno library.
+Try running `clarinet test` to see the output of the unit test.
 
-Give the test a descriptive name using the `name` field, then modify the test function to include the `chain` and
-`accounts` arguments. Make sure that you define a type for each of the arguments to satisfy the Typescript compiler.
-
-Using the Clarinet library, define variables to get a wallet address principal from the Clarinet configuration, and the
-balance of that address on the chain.
-
-The functional part of the test is defined using the `chain.mineBlock()` function, which simulates the mining of a
-block. Within that function, the test makes 4 contract calls (`Tx.contractCall()`), 2 calls to `set-message` and 2 calls
-to `get-message`.
-
-Once the simulated block is mined, the test can make assertions about the chain state. This is accomplished using the
-`assertEquals()` function and the `expect` function. In this case, the test asserts that the once the simulated block
-is mined, the block height is now equal to `2`, and that the number of receipts (contract calls) in the block are
-exactly `4`.
-
-The test can then make assertions about the return values of the contract. The test checks that the result of the
-transaction calls to `get-message` match the string values that the calls to `set-message` contain. This covers the
-capability of both contract functions. Finally, the test asserts that STX were transferred from the transaction
-caller wallet, covering the price updating and token transfer.
-
--> You have now learned how to store and update data on chain with a variable, and how to transfer STX tokens from
-a contract caller to a new principal address.
+=> You have now learned how to store and update data on chain with a variable, and how to transfer STX tokens from
+a contract caller to a new principal address. Additionally, you have learned how to write a unit test for a simple
+Clarity contract using Clarinet.
 
 [counter tutorial]: /write-smart-contracts/counter-tutorial
 [clarinet]: /write-smart-contracts/clarinet
@@ -279,3 +296,4 @@ a contract caller to a new principal address.
 [`stx-transfer?`]: /references/language-functions#stx-transfer
 [`as-contract`]: /references/language-functions#as-contract
 [`unwrap!`]: /references/language-functions#unwrap
+[clarity visual studio code plugin]: https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp
