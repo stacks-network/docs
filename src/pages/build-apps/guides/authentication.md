@@ -98,7 +98,7 @@ function authenticate() {
       icon: window.location.origin + '/my-app-logo.svg',
     },
     redirectTo: '/',
-    finished: () => {
+    onFinish: () => {
       let userData = userSession.loadUserData();
       // Save or otherwise utilize userData post-authentication
     },
