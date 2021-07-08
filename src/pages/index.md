@@ -3,11 +3,6 @@ title: Stacks documentation
 description: Write Clarity smart contracts, build apps, and starting mining with the Stacks blockchain
 ---
 
-## NEW: Get started with NFTs
-
-[@page-reference | grid]
-| /understand-stacks/bitcoin, /write-smart-contracts/tokens, /write-smart-contracts/my-own-nft
-
 ## Understand Stacks
 
 [@page-reference | grid]
@@ -16,7 +11,7 @@ description: Write Clarity smart contracts, build apps, and starting mining with
 ## Write smart contracts
 
 [@page-reference | grid]
-| /write-smart-contracts/overview, /write-smart-contracts/hello-world-tutorial
+| /write-smart-contracts/overview, /write-smart-contracts/hello-world-tutorial, /write-smart-contracts/tokens, /write-smart-contracts/nft
 
 ## Build apps
 

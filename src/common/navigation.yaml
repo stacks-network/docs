@@ -8,7 +8,6 @@ sections:
           - path: /testnet
           - path: /regtest
           - path: /proof-of-transfer
-          - path: /bitcoin
           - path: /mining
           - path: /accounts
           - path: /transactions
@@ -45,8 +44,8 @@ sections:
             pages:
               - path: /hello-world-tutorial
               - path: /counter-tutorial
+              - path: /nft
               - path: /testing-contracts
-              - path: /my-own-nft
       - path: /build-apps
         pages:
           - path: /overview
