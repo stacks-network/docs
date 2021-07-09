@@ -34,6 +34,11 @@ async function redirects() {
       permanent: true,
     },
     {
+      source: '/ecosystem/contributing',
+      destination: '/contributing',
+      permanent: true,
+    },
+    {
       source: '/browser/todo-list.html',
       destination: '/build-apps/tutorials/todos',
       permanent: true,
