@@ -186,6 +186,10 @@ We use the [Google Developer documentation style guides](https://developers.goog
 yarn check:style
 ```
 
+### Use Conventional Commits
+
+We use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) as and commits naming convention. Use it while contributing, please.
+
 ### Always use Markdown when possible
 
 It's possible to write standard HTML when writing in Markdown, but that should be avoided at all costs. We use `remark` to
