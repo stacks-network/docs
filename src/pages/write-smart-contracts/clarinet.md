@@ -24,7 +24,7 @@ When developing smart contracts, you may also want to use the [Clarity Visual St
 
 ## Installing Clarinet
 
-You can download a release from the [Clarinet repository](https://github.com/hirosystems/clarinet/releases/latest) or 
+You can download a release from the [Clarinet repository](https://github.com/hirosystems/clarinet/releases/latest) or
 try [installing it from source code](https://github.com/hirosystems/clarinet#install-from-source-using-cargo).
 
 ## Developing a Clarity smart contract
