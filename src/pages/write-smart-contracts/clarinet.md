@@ -20,14 +20,12 @@ Clarinet is a useful tool for developing smart contracts, and should be used as 
 that involves building and testing the contract locally, deploying the final draft contract to a testnet environment
 and testing on a live blockchain, and deploying the final contract to the mainnet.
 
+When developing smart contracts, you may also want to use the [Clarity Visual Studio Code plugin][].
+
 ## Installing Clarinet
 
-The best way to install Clarinet is through the Rust package manager, Cargo. If you have a working installation of
-[Rust](https://www.rust-lang.org/tools/install), use the following command to install Clarinet.
-
-```sh
-cargo install clarinet --locked
-```
+You can download a release from the [Clarinet repository](https://github.com/hirosystems/clarinet/releases/latest) or
+try [installing it from source code](https://github.com/hirosystems/clarinet#install-from-source-using-cargo).
 
 ## Developing a Clarity smart contract
 
@@ -74,6 +72,10 @@ depends_on = []
 
 At this point, you can begin editing your smart contract in the `contracts` directory. At any point while you are
 developing, you can use the command `clarinet check` to check the syntax of your smart contract.
+
+For a more in-depth overview of developing with Clarinet, review this comprehensive walkthrough video.
+
+<br /><iframe width="560" height="315" src="https://www.youtube.com/embed/zERDftjl6k8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Testing with Clarinet
 
@@ -167,14 +169,15 @@ An example unit test for the `echo-number` function is provided below:
 ...
 Clarinet.test({
   name: 'the echo-number function returns the input value ok',
-  async fn(chain: Chain) {
+  async fn(chain: Chain, accounts: Map<string, Account>) {
     const testNum = '42';
+    let deployerWallet = accounts.get('deployer')!;
     let block = chain.mineBlock([
       Tx.contractCall(
-        'ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8QE.my-contract',
+        `${deployerWallet.address}.my-contract`,
         'echo-number',
         [testNum],
-        'ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8QE'
+        deployerWallet.address,
       ),
     ]);
     assertEquals(block.receipts.length, 1); // assert that the block received a single tx
@@ -197,3 +200,4 @@ available Clarity calls in Deno, review the [Deno Clarinet library][].
 [clarity language reference]: /references/language-functions
 [asserts]: https://deno.land/std@0.90.0/testing/asserts.ts
 [deno clarinet library]: https://github.com/hirosystems/clarinet/blob/master/deno/index.ts
+[clarity visual studio code plugin]: https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp

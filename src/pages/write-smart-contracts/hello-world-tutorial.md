@@ -40,6 +40,8 @@ on how to set up your local environment. You should also have a text editor or I
 Note that you could also complete the coding portion of this tutorial in an online REPL such as [clarity.tools][]. If
 you are using the online REPL, you can skip to [step 3][] of the tutorial and enter the code into the sandbox.
 
+If you are using Visual Studio Code, you may want to install the [Clarity Visual Studio Code plugin][].
+
 ### Optional prerequisites
 
 While this tutorial primarily focuses on local smart contract development, you may wish to deploy your contract to
@@ -264,3 +266,4 @@ the strengths of performing local development without having to wait for block t
 [read-only function]: /references/language-functions#define-read-only
 [transactions]: https://explorer.stacks.co/transactions?chain=testnet
 [call a contract]: https://explorer.stacks.co/sandbox/contract-call?chain=testnet
+[clarity visual studio code plugin]: https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp

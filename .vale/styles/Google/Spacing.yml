@@ -4,5 +4,5 @@ link: 'https://developers.google.com/style/sentence-spacing'
 level: error
 nonword: true
 tokens:
-  - '[.?!] {2,}[A-Z]'
-  - '[.?!][A-Z]'
+  - '[a-z][.?!] {2,}[A-Z]'
+  - '[a-z][.?!][A-Z]'
