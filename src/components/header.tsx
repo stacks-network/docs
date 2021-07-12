@@ -78,7 +78,7 @@ const nav: NavItem[] = [
       },
       {
         label: 'Discord',
-        href: 'https://discord.com/invite/6PcCMU',
+        href: 'https://discord.gg/zrvWsQC',
       },
     ],
   },

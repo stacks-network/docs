@@ -1,5 +1,5 @@
 ---
-title: Understand Mining
+title: Mining
 description: A guide to mining on Stacks 2.0
 icon: TestnetIcon
 images:
@@ -15,9 +15,9 @@ This guide highlights some technical details related to mining on the Stacks 2.0
 
 A new Stacks block may be mined once per Bitcoin block. To be considered for mining a block, a miner must have a block commit included in a Bitcoin block. If a miner wishes to update their commitment after submission, they may use Bitcoin Replace-By-Fee.
 
-## Coinbase Rewards
+## Coinbase rewards
 
-Miners receive coinbase rewards for blocks they mine.
+Miners receive coinbase rewards for blocks they win.
 
 The reward amounts are:
 
@@ -38,11 +38,11 @@ For transactions mined in microblocks, the miner that produces the microblock re
 
 ## Reward maturity
 
-Miner rewards, that is, block rewards and transaction fees take 100 blocks on the bitcon blockchain to mature. After successful mining a block your rewards will appear in the Stacks account after ~24 hours.
+Block rewards and transaction fees take 100 blocks on the Bitcoin blockchain to mature. After successfully mining a block your rewards appear in your Stacks account after ~24 hours.
 
-## Mining with Proof-of-Transfer
+## Mining with proof-of-transfer
 
-Miners commit Bitcoin to **two** addresses in every leader block commit. The amount committed to each address must be the same. The addresses are chosen from the current reward set of Stacking participants. The choice of addresses is done using a verifiable-random-function, and determining the correct two addresses for a given block requires monitoring the stacks chain.
+Miners commit Bitcoin to **two** addresses in every leader block commit. The amount committed to each address must be the same. The addresses are chosen from the current reward set of stacking participants. Addresses are chosen using a verifiable-random-function, and determining the correct two addresses for a given block requires monitoring the Stacks chain.
 
 ![mining with pox](/images/pages/mining-with-pox.png)
 
@@ -62,3 +62,16 @@ To calculate the amount of BTC to send miners should:
 
 - Guess the price BTC/STX for the next day (100 blocks later)
 - Guess the total amount of BTCs committed by all miners
+
+## Microblocks
+
+The Stacks blockchain produces blocks at the same rate as the Bitcoin blockchain. In order to provide lower latency
+transactions, miners can opt to enable microblocks. Microblocks allow the current block leader to stream transactions
+and include their state transitions in the current epoch.
+
+If a block leader opts to produce microblocks, the next leader builds the chain tip off the last microblock that the
+current leader produces.
+
+The block streaming model is described in [SIP-001][].
+
+[sip-001]: https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md#operation-as-a-leader

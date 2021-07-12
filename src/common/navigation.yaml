@@ -7,17 +7,24 @@ sections:
           - path: /overview
           - path: /testnet
           - path: /regtest
-          - path: /proof-of-transfer
-          - path: /mining
           - path: /accounts
           - path: /transactions
           - path: /network
+          - path: /proof-of-transfer
+          - path: /mining
+          - path: /microblocks
           - path: /stacking
           - path: /command-line-interface
           - path: /local-development
           - path: /technical-specs
           - path: /stacks-blockchain-api
         sections:
+          - title: Community
+            usePageTitles: true
+            pages:
+              - external:
+                  href: 'https://github.com/friedger/awesome-stacks-chain'
+                  title: 'Awesome Stacks'
           - title: Tutorials
             usePageTitles: true
             pages:
@@ -27,8 +34,6 @@ sections:
               - path: /running-testnet-node
               - path: /running-regtest-node
               - path: /running-api-node
-              - path: /integrate-stacking
-              - path: /integrate-stacking-delegation
               - path: /stacking-using-CLI
 
       - path: /write-smart-contracts
@@ -45,6 +50,7 @@ sections:
               - path: /hello-world-tutorial
               - path: /counter-tutorial
               - path: /nft
+              - path: /billboard-tutorial
               - path: /testing-contracts
       - path: /build-apps
         pages:
@@ -59,6 +65,8 @@ sections:
               - path: /guides/authentication
               - path: /guides/transaction-signing
               - path: /guides/data-storage
+              - path: /guides/integrate-stacking
+              - path: /guides/integrate-stacking-delegation
 
           - title: Example Apps
             usePageTitles: true
@@ -75,37 +83,37 @@ sections:
                   href: 'https://github.com/blockstack/connect#readme'
                   title: connect
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/auth'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/auth.html'
                   title: auth
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/storage'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/storage.html'
                   title: storage
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/transactions'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/transactions.html'
                   title: transactions
               - external:
-                  href: 'https://github.com/blockstack/stacks-blockchain-api/tree/master/client'
+                  href: 'https://blockstack.github.io/stacks-blockchain-api/client/index.html'
                   title: blockchain-api-client
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/stacking'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/stacking.html'
                   title: 'stacking'
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/keychain'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/keychain.html'
                   title: 'keychain'
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/network'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/network.html'
                   title: 'network'
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/encryption'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/encryption.html'
                   title: 'encryption'
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/profile'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/profile.html'
                   title: 'profile'
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/common'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/common.html'
                   title: common
               - external:
-                  href: 'https://github.com/blockstack/stacks.js/tree/master/packages/bns'
+                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/bns.html'
                   title: bns
 
           - title: Protocols
@@ -152,11 +160,4 @@ sections:
               - path: /language-keywords
               - path: /language-functions
 
-      - path: /ecosystem
-        pages:
-          - path: /overview #pbc et al
-          - path: /stacks-token
-          - external:
-              href: 'https://github.com/friedger/awesome-stacks'
-              title: Awesome Stacks
-          - path: /contributing
+      - path: /contributing

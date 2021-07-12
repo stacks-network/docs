@@ -1,5 +1,5 @@
 ---
-title: Understanding the Stacks CLI
+title: Stacks CLI
 description: Learn more about the Stacks CLI capabilities
 ---
 

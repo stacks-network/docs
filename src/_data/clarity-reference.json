@@ -133,7 +133,7 @@
       "input_type": "bool, ...",
       "output_type": "bool",
       "signature": "(or b1 b2 ...)",
-      "description": "Returns `true` if any boolean inputs are `true`. Importantly, the supplied arguments are evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `false`, the function short-circuits, and no subsequent arguments are evaluated.",
+      "description": "Returns `true` if any boolean inputs are `true`. Importantly, the supplied arguments are evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `true`, the function short-circuits, and no subsequent arguments are evaluated.",
       "example": "(or true false) ;; Returns true\n(or (is-eq (+ 1 2) 1) (is-eq 4 4)) ;; Returns true\n(or (is-eq (+ 1 2) 1) (is-eq 3 4)) ;; Returns false\n(or (is-eq (+ 1 2) 3) (is-eq 4 4)) ;; Returns true\n"
     },
     {
@@ -162,7 +162,7 @@
     },
     {
       "name": "let",
-      "input_type": "((name2 AnyType) (name2 AnyType) ...), AnyType, ... A",
+      "input_type": "((name1 AnyType) (name2 AnyType) ...), AnyType, ... A",
       "output_type": "A",
       "signature": "(let ((name1 expr1) (name2 expr2) ...) expr-body1 expr-body2 ... expr-body-last)",
       "description": "The `let` function accepts a list of `variable name` and `expression` pairs,\nevaluating each expression and _binding_ it to the corresponding variable name.\n`let` bindings are sequential: when a `let` binding is evaluated, it may refer to prior binding.\nThe _context_ created by this set of bindings is used for evaluating its body expressions.\n The let expression returns the value of the last such body expression.\nNote: intermediary statements returning a response type must be checked",
@@ -253,7 +253,7 @@
       "input_type": "VarName, AnyType",
       "output_type": "bool",
       "signature": "(var-set var-name expr1)",
-      "description": "The `var-set` function sets the value associated with the input variable to the\ninputted value.",
+      "description": "The `var-set` function sets the value associated with the input variable to the\ninputted value. The function always returns `true`.",
       "example": "\n(define-data-var cursor int 6)\n(var-get cursor) ;; Returns 6\n(var-set cursor (+ (var-get cursor) 1)) ;; Returns true\n(var-get cursor) ;; Returns 7"
     },
     {
