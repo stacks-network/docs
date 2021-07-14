@@ -14,7 +14,7 @@ Data storage provides a way for users to save both public and private data off-c
 
 Storing data off the Stacks blockchain ensures that apps can provide users with high performance and high availability for data reads and writes without the involvement of centralized parties that could compromise their privacy or accessibility.
 
-See the Todos app tutorial for a concrete example of this functionality in practice.
+See the To-dos app tutorial for a concrete example of this feature in practice.
 
 [@page-reference]
 | /build-apps/tutorials/todos
