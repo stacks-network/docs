@@ -62,7 +62,7 @@ docker pull blockstack/stacks-blockchain
 Create a directory structure for the service data with the following command:
 
 ```sh
-mkdir -p ./stacks-node/{persistent-data/stacks-blockchain,config} && cd stacks-node
+mkdir -p ./stacks-node/{persistent-data/stacks-blockchain/mainnet,config/mainnet} && cd stacks-node
 ```
 
 ## Step 2: running Stacks blockchain
@@ -100,8 +100,8 @@ Start the [`stacks-blockchain`][] container with the following command:
 ```sh
 docker run -d --rm \
   --name stacks-blockchain \
-  -v $(pwd)/persistent-data/stacks-blockchain:/root/stacks-node/data \
-  -v $(pwd)/config:/src/stacks-node \
+  -v $(pwd)/persistent-data/stacks-blockchain/mainnet:/root/stacks-node/data \
+  -v $(pwd)/config/mainnet:/src/stacks-node \
   -p 20443:20443 \
   -p 20444:20444 \
   blockstack/stacks-blockchain \
@@ -171,6 +171,6 @@ docker stop stacks-blockchain
 ## Additional reading
 
 - [Running an API instance with Docker][]
-
-[running an api instance with docker]: /understand-stacks/running-api-node
-[`stacks-blockchain`]: https://github.com/blockstack/stacks-blockchain
+  [running a testnet node with docker]: /understand-stacks/running-testnet-node
+  [running an api instance with docker]: /understand-stacks/running-api-node
+  [`stacks-blockchain`]: https://github.com/blockstack/stacks-blockchain
