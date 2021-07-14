@@ -62,54 +62,10 @@ docker pull blockstack/stacks-blockchain
 Create a directory structure for the service data with the following command:
 
 ```sh
-mkdir -p ./stacks-node/{persistent-data/stacks-blockchain/testnet,config/testnet} && cd stacks-node
+mkdir -p ./stacks-node/persistent-data/stacks-blockchain/testnet && cd stacks-node
 ```
 
 ## Step 2: running Stacks blockchain
-
-First, create the `./config/Config.toml` file and add the following content to the
-file using a text editor:
-
-```toml
-[node]
-working_dir = "/root/stacks-node/data"
-rpc_bind = "0.0.0.0:20443"
-p2p_bind = "0.0.0.0:20444"
-bootstrap_node="047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@testnet.stacks.co:20444"
-wait_time_for_microblocks = 10000
-
-[burnchain]
-chain = "bitcoin"
-mode = "xenon"
-peer_host = "bitcoin.testnet.blockstack.com"
-username = "blockstack"
-password = "blockstacksystem"
-rpc_port = 18332
-peer_port = 18333
-
-[[ustx_balance]]
-address = "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2"
-amount = 10000000000000000
-
-[[ustx_balance]]
-address = "ST319CF5WV77KYR1H3GT0GZ7B8Q4AQPY42ETP1VPF"
-amount = 10000000000000000
-
-[[ustx_balance]]
-address = "ST221Z6TDTC5E0BYR2V624Q2ST6R0Q71T78WTAX6H"
-amount = 10000000000000000
-
-[[ustx_balance]]
-address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
-amount = 10000000000000000
-
-[connection_options]
-read_only_call_limit_write_length = 0
-read_only_call_limit_read_length = 100000
-read_only_call_limit_write_count = 0
-read_only_call_limit_read_count = 30
-read_only_call_limit_runtime = 1000000000
-```
 
 Start the [`stacks-blockchain`][] container with the following command:
 
@@ -117,11 +73,10 @@ Start the [`stacks-blockchain`][] container with the following command:
 docker run -d --rm \
   --name stacks-blockchain \
   -v $(pwd)/persistent-data/stacks-blockchain/testnet:/root/stacks-node/data \
-  -v $(pwd)/config/testnet:/src/stacks-node \
   -p 20443:20443 \
   -p 20444:20444 \
   blockstack/stacks-blockchain \
-/bin/stacks-node start --config /src/stacks-node/Config.toml
+/bin/stacks-node xenon
 ```
 
 You can verify the running [`stacks-blockchain`][] container with the command:
