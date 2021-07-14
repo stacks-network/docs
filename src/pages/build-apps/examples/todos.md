@@ -1,5 +1,5 @@
 ---
-title: Todos app
+title: To-dos app
 description: Review authentication and data storage integration
 experience: beginners
 duration: 30 minutes
@@ -15,7 +15,7 @@ images:
 ## Introduction
 
 In this tutorial, you will learn about Stacks authentication and storage by installing,
-running and reviewing the code for a "Todos" app built with Stacks authentication and storage.
+running and reviewing the code for a "To-dos" app built with Stacks authentication and storage.
 
 This app highlights the following platform functionality:
 
@@ -51,7 +51,7 @@ You should see output similar to the following:
 ```bash
 Compiled successfully
 
-You can now view todos in the browser.
+You can now view to-dos in the browser.
 
     http://localhost:3000/
 
@@ -63,7 +63,7 @@ To create a production build, use yarn build.
 
 You should see the app's landing page:
 
-!["Todos" app landing screen](/images/todos/landing.png)
+!["To-dos" app landing screen](/images/todos/landing.png)
 
 ## Onboard into your first Stacks app
 
@@ -122,7 +122,7 @@ Note how the `userSession` object is created at the beginning of this module by 
 
 The [`UserSession`](https://blockstack.github.io/stacks.js/classes/usersession.html) and [`AppConfig`](https://blockstack.github.io/stacks.js/classes/appconfig.html) classes are themselves imported from the `@stacks/auth` library.
 
-In the separate `src/components/App.jsx` component, we see how
+In the separate `src/components/App.jsx` component, you can see how
 `componentDidMount` loads the user's data into the app's state, whether upon redirect post-authentication with `userSession.handlePendingSignIn()` or upon detection of an existing session with `userSession.isUserSignedIn()`:
 
 ```jsx
@@ -168,7 +168,7 @@ As such, it's paramount that users handle them with great care.
 
 ### Step 5: Enter a username value and choose **Continue**
 
-The username will be used by the app to generate a URL for sharing your todos, should you choose to make them public.
+The username will be used by the app to generate a URL for sharing your to-dos, should you choose to make them public.
 
 It is registered on the Stacks blockchain with [BNS](/technology/naming-system) and associated with your _Secret Key_.
 
@@ -176,14 +176,14 @@ It is registered on the Stacks blockchain with [BNS](/technology/naming-system) 
 
 ### Done: You've now completed onboarding into the app
 
-## Add, edit and delete todos privately
+## Add, edit and delete to-dos privately
 
-Once you've authenticated the app, you can start adding todos by entering values into the "Write your to do"
+Once you've authenticated the app, you can start adding to-dos by entering values into the "Write your to do"
 field and hitting "Enter."
 
-!["Todos" app home screen](/images/todos/home.png)
+!["To-dos" app home screen](/images/todos/home.png)
 
-The data for all todos are saved as JSON to the Gaia hub linked to your Secret Key using the [`putFile`](http://blockstack.github.io/stacks.js/classes/storage.html#putfile) method of the `storage` object in the `src/storage.js` module, which manages all data storage for the app:
+The data for all to-dos are saved as JSON to the Gaia hub linked to your Secret Key using the [`putFile`](http://blockstack.github.io/stacks.js/classes/storage.html#putfile) method of the `storage` object in the `src/storage.js` module, which manages all data storage for the app:
 
 ```js
 // src/storage.js
@@ -202,7 +202,7 @@ export const saveTasks = async (userSession, tasks, isPublic) => {
 };
 ```
 
-These todos are subsequently loaded using the [`getFile`](http://blockstack.github.io/stacks.js/globals.html#getfile)
+These to-dos are subsequently loaded using the [`getFile`](http://blockstack.github.io/stacks.js/globals.html#getfile)
 method of the same object in the same module:
 
 ```js
@@ -229,17 +229,17 @@ The `storage` object is instantiated with the `Storage` class of the `@stacks/st
 By default, the `putFile` and `getFile` methods automatically encrypt data when saved and decrypt it when retrieved,
 using the user's _Secret Key_. This ensures that only the user has the ability to view this data.
 
-When deleting a todo, the same `putFile` method is used to save a new JSON array of todos that excludes the deleted todo.
+When deleting a todo, the same `putFile` method is used to save a new JSON array of to-dos that excludes the deleted todo.
 
-## Publish your todos publicly
+## Publish your to-dos publicly
 
-Select "Make public" to make your todos accessible to the public for sharing via URL.
+Select "Make public" to make your to-dos accessible to the public for sharing via URL.
 
-!["Public todos" screen](/images/todos/home-public.png)
+!["Public to-dos" screen](/images/todos/home-public.png)
 
 This will call `saveTasks` with the `isPublic` parameter set to `true`, which is used to disable encryption when using `putFile`.
 
-The app will now show all of your todos to anyone who visits the URL displayed with your Stacks username as a suffix.
+The app will now show all of your to-dos to anyone who visits the URL displayed with your Stacks username as a suffix.
 
 ## Sign out and see your public tasks
 
@@ -265,14 +265,14 @@ If you've previously deauthenticated the Stacks app, you'll see a prompt to ente
 
 !["Sign in" screen](/images/todos/sign-in.png)
 
-The above screen will be omitted if you have an active session with the Stacks app already.
+The preceding screen is omitted if you have an active session with the Stacks app already.
 
 Then you'll be presented with the option to select an existing username associated with your _Secret Key_ or
 create a new one if you wish to authenticate the app with a different identity and data set:
 
 !["Choose account" screen](/images/todos/choose-account.png)
 
-You'll now see your todos as an authenticated user for the username you've chosen.
+You'll now see your to-dos as an authenticated user for the username you've chosen.
 
 ## Learn more
 
