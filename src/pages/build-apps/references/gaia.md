@@ -44,7 +44,7 @@ writes to data storage by requiring a valid authentication token from a requesto
 
 ![Gaiastorage](/images/gaia-storage.png)
 
-Gaia's approach to decentralization focuses on user control of data and its storage. Users can choose a Gaia hub provider. If a user can choose which Gaia hub provider to use, then that choice is all the decentralization required to enable user-controlled applications. Moreover, Gaia a uniform API to access for applications to access that data.
+Gaia's approach to decentralization focuses on user control of data and its storage. Users can choose a Gaia hub provider. If a user can choose which Gaia hub provider to use, then that choice is all the decentralization required to enable user-controlled applications. Moreover, Gaia defines a uniform API for applications to access that data.
 
 The control of user data lies in the way that user data is accessed. When an application fetches a file `data.txt` for a given user `alice.id`, the lookup will follow these steps:
 
@@ -52,14 +52,14 @@ The control of user data lies in the way that user data is accessed. When an app
 2. Read her profile URL from her `zonefile`.
 3. Fetch Alice's profile.
 4. _Verify_ that the profile is signed by `alice.id`'s key
-5. Read the `gaiaHubUrl` (for example `https://gaia.alice.org/`) out of the profile
-6. Fetch the file from `https://gaia.alice.org/data.txt`.
+5. Find the read-only url out of the profile's `appsMeta` section (e.g. `https://example-app.gaia.alice.org`).
+6. Fetch the file from `https://example-app.gaia.alice.org/data.txt`.
 
-Because `alice.id` has access to her zonefile, she can change where her profile is stored. For example, she may do this if the current profile's service provider or storage is compromised. To change where her profile is stored, she changes her Gaia hub URL to another Gaia hub URL. If a user has sufficient compute and storage resources, a user may run their own Gaia Storage System and bypass a commercial Gaia hub provider all together.
+Because `alice.id` has access to her [zonefile](https://docs.stacks.co/references/bns-contract#name-update), she can change where her profile is stored. For example, she may do this if the current profile's service provider or storage is compromised. To change where her profile is stored, she changes her Gaia hub URL to another Gaia hub URL. If a user has sufficient compute and storage resources, a user may run their own Gaia Storage System and bypass a commercial Gaia hub provider all together.
 
 ~> Users with existing identities cannot yet migrate their data from one hub to another.
 
-Applications writing directly on behalf of `alice.id` do not need to perform a lookup. Instead, the [Stacks authentication flow](http://blockstack.github.io/stacks.js/index.html) provides Alice's chosen application root URL to the application. This authentication flow _is also_ within Alice's control because Alice's browser _must_ generate the authentication response.
+Applications writing directly on behalf of `alice.id` do not need to perform a lookup. Instead, the [Stacks authentication flow](http://blockstack.github.io/stacks.js/index.html) provides Alice's chosen gaia hub URL to the application. This authentication flow _is also_ within Alice's control because Alice's wallet _must_ generate the authentication response.
 
 ## Understand data storage
 
