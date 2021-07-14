@@ -1,6 +1,6 @@
 ---
 title: Running a mainnet node
-description: Learn how to set up and run a mainnet node
+description: Set up and run a mainnet node with Docker
 icon: MainnetIcon
 duration: 15 minutes
 experience: beginners
@@ -57,7 +57,6 @@ persistent data from the services. Download and configure the Docker images with
 
 ```sh
 docker pull blockstack/stacks-blockchain
-docker network create stacks-blockchain > /dev/null 2>&1
 ```
 
 Create a directory structure for the service data with the following command:
@@ -66,7 +65,7 @@ Create a directory structure for the service data with the following command:
 mkdir -p ./stacks-node/{persistent-data/stacks-blockchain,config} && cd stacks-node
 ```
 
-## Step 4: running Stacks blockchain
+## Step 2: running Stacks blockchain
 
 First, create the `./config/Config.toml` file and add the following content to the
 file using a text editor:
@@ -101,7 +100,6 @@ Start the [`stacks-blockchain`][] container with the following command:
 ```sh
 docker run -d --rm \
   --name stacks-blockchain \
-  --net=stacks-blockchain \
   -v $(pwd)/persistent-data/stacks-blockchain:/root/stacks-node/data \
   -v $(pwd)/config:/src/stacks-node \
   -p 20443:20443 \
@@ -116,7 +114,23 @@ You can verify the running [`stacks-blockchain`][] container with the command:
 docker ps --filter name=stacks-blockchain
 ```
 
-## Step 5: verifying the services
+## Step 3: verifying the services
+
+_Note: the initial burnchain header sync can take several minutes, until this is done the following commands will not work_
+
+To verify the [`stacks-blockchain`][] burnchain header sync progress:
+
+```sh
+docker logs stacks-blockchain
+```
+
+The output should be similar to the following:
+
+```
+INFO [1626290705.886954] [src/burnchains/bitcoin/spv.rs:926] [main] Syncing Bitcoin headers: 1.2% (8000 out of 691034)
+INFO [1626290748.103291] [src/burnchains/bitcoin/spv.rs:926] [main] Syncing Bitcoin headers: 1.4% (10000 out of 691034)
+INFO [1626290776.956535] [src/burnchains/bitcoin/spv.rs:926] [main] Syncing Bitcoin headers: 1.7% (12000 out of 691034)
+```
 
 To verify the [`stacks-blockchain`][] tip height is progressing use the following command:
 
@@ -146,7 +160,6 @@ If the instance is running you should recieve terminal output similar to the fol
 }
 ```
 
-
 ## Stopping the mainnet node
 
 Use the following commands to stop the local mainnet node:
@@ -157,10 +170,7 @@ docker stop stacks-blockchain
 
 ## Additional reading
 
-- [Running an API instance with Docker][] in the `stacks-blockchain-api` repo
-- [Running an API instance from source][] in the `stacks-blockchain-api` repo
+- [Running an API instance with Docker][]
 
-[running an api instance with docker]: https://github.com/blockstack/stacks-blockchain-api/blob/master/running_an_api.md
-[running an api instance from source]: https://github.com/blockstack/stacks-blockchain-api/blob/master/running_api_from_source.md
+[running an api instance with docker]: /understand-stacks/running-api-node
 [`stacks-blockchain`]: https://github.com/blockstack/stacks-blockchain
-[`stacks-blockchain-api`]: https://github.com/blockstack/stacks-blockchain-api
