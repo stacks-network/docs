@@ -14,7 +14,7 @@ Authentication provides a way for users to identify themselves to an app while r
 
 Users who register for your app can subsequently authenticate to any other app with support for the [Blockchain Naming System](/build-apps/references/bns) and vice versa.
 
-See the Todos app tutorial for a concrete example of this functionality in practice.
+See the To-dos app tutorial for a concrete example of this feature in practice.
 
 [@page-reference]
 | /build-apps/tutorials/todos
