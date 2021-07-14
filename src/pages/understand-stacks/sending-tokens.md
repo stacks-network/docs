@@ -60,10 +60,7 @@ const {
   getNonce,
   privateKeyToString,
 } = require('@stacks/transactions');
-const {
-    StacksTestnet,
-    StacksMainnet,
-} = require ('@stacks/network');
+const { StacksTestnet, StacksMainnet } = require('@stacks/network');
 const { TransactionsApi, Configuration } = require('@stacks/blockchain-api-client');
 
 const apiConfig = new Configuration({
