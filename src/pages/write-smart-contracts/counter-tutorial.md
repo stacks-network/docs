@@ -262,3 +262,4 @@ the strengths of performing local development without having to wait for block t
 [clarity language reference]: /references/language-functions
 [transactions]: https://explorer.stacks.co/transactions?chain=testnet
 [clarity visual studio code plugin]: https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp
+[call a contract]: https://explorer.stacks.co/sandbox/contract-call?chain=testnet
