@@ -11,7 +11,7 @@ description: Write Clarity smart contracts, build apps, and starting mining with
 ## Write smart contracts
 
 [@page-reference | grid]
-| /write-smart-contracts/overview, /write-smart-contracts/hello-world-tutorial
+| /write-smart-contracts/overview, /write-smart-contracts/hello-world-tutorial, /write-smart-contracts/tokens, /write-smart-contracts/nft
 
 ## Build apps
 

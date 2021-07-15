@@ -43,11 +43,13 @@ sections:
           - path: /principals
           - path: /values
           - path: /clarinet
+          - path: /tokens
         sections:
           - title: Tutorials
             pages:
               - path: /hello-world-tutorial
               - path: /counter-tutorial
+              - path: /nft
               - path: /billboard-tutorial
               - path: /testing-contracts
       - path: /build-apps
