@@ -225,7 +225,7 @@ complexity or changing the contract, having pre-written, working tests can help 
 alter the way that contract functions behave.
 
 Open the `tests/my-nft_test.ts` file in your IDE. In this step, you will add a single automated test to verify the
-``get-last-token-id` and `get-token-uri` functions of the contract.
+`get-last-token-id` and `get-token-uri` functions of the contract.
 
 The test uses the `chain.mineBlock()` function to simulate the mining of a block. Within that simulated block, the test
 makes 2 contract calls (`Tx.contractCall()`), one each to each of the contract functions under test.
@@ -266,18 +266,20 @@ like to try deploying your contract to the testnet, proceed with the following o
 For this tutorial, you'll use the [testnet sandbox](https://explorer.stacks.co/sandbox/deploy?chain=testnet) to deploy
 your smart contract. Make sure you have connected your [Stacks web wallet](https://www.hiro.so/wallet/install-web) to
 the sandbox using the **Connect wallet** button, then copy and paste the `my-nft.clar` smart contract into the Clarity
-code editor on the **Write & Deploy** page. Edit the contract name or use the randomly generated name provided to you.
+code editor on the [Write & Deploy](https://explorer.stacks.co/sandbox/deploy?chain=testnet) page. Edit the contract name or use the randomly generated name provided to you.
 
 Click **Deploy** to deploy the contract to the blockchain. This will display the Stacks web wallet window with
 information about the transaction. Verify that the transaction looks correct, and the network is set to `Testnet`, and
 click **Confirm**.
 
-The deployment process can take up to 15 minutes to complete. You can review it on the [transactions](https://explorer.stacks.co/transactions?chain=testnet)
-page of the explorer, or in the activity field of your web wallet.
+The deployment process can take up to 15 minutes to complete. You can review it on the
+[transactions](https://explorer.stacks.co/transactions?chain=testnet) page of the explorer, or in the activity field of
+your web wallet.
 
-When your contract is confirmed, navigate to the **Call a contract** page of the sandbox, and search for your contract.
-Enter your wallet address in the top field, can you copy this address by clicking the Stacks web wallet icon and
-clicking the **Copy address** button. Enter the contract name in the bottom field, in this case `my-nft`. Click
+When your contract is confirmed, navigate to the
+[Call a contract](https://explorer.stacks.co/sandbox/contract-call?chain=testnet) page of the sandbox, and search for
+your contract. Enter your wallet address in the top field, can you copy this address by clicking the Stacks web wallet
+icon and clicking the **Copy address** button. Enter the contract name in the bottom field, in this case `my-nft`. Click
 **Get contract** to view the contract.
 
 Click the `claim` function in the function summary, then click **Call function** to perform the function call in the
