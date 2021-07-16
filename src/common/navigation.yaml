@@ -49,7 +49,7 @@ sections:
             pages:
               - path: /hello-world-tutorial
               - path: /counter-tutorial
-              - path: /nft
+              - path: /nft-tutorial
               - path: /billboard-tutorial
               - path: /testing-contracts
       - path: /build-apps
