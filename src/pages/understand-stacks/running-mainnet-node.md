@@ -116,7 +116,7 @@ docker ps --filter name=stacks-blockchain
 
 ## Step 3: verifying the services
 
-_Note: the initial burnchain header sync can take several minutes, until this is done the following commands will not work_
+-> The initial burnchain header sync can take several minutes, until this is done the following commands will not work
 
 To verify the [`stacks-blockchain`][] burnchain header sync progress:
 
