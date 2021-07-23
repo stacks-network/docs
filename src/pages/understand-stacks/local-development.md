@@ -132,7 +132,7 @@ sudo chmod 755 $DESTINATION
 You can run the following at anytime to ensure the local images are up to date:
 
 ```bash
-./manage.sh mocknet up
+./manage.sh mocknet pull
 ```
 
 ### Services Running in Mocknet
