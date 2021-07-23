@@ -70,7 +70,7 @@ EXPLORER_PORT_LOCAL=3001
 
 Docker will still use the default ports _internally_ - this modification will only affect how the **host** OS accesses the services.
 
-For example, to access postgres (using the **new** port `5433`) after running `docker-compose up -d`:
+For example, to access postgres (using the **new** port `5433`) after running `./manage.sh mocknet up`:
 
 ```bash
 export PGPASSWORD='postgres' && psql --host localhost -p 5433 -U postgres -d stacks_node_api
@@ -107,7 +107,7 @@ If you update this value to something other than `postgres`, you'll have to adju
 POSTGRES_PASSWORD=postgres
 ```
 
-## docker-compose
+## Running a local mocknet
 
 ### Install/Update docker-compose
 
@@ -129,17 +129,15 @@ sudo chmod 755 $DESTINATION
 
 ### Ensure all images are up to date
 
-Running the mocknet explicitly via `docker-compose up/down` should also update the images used.
-
-You can also run the following at anytime to ensure the local images are up to date:
+You can run the following at anytime to ensure the local images are up to date:
 
 ```bash
-docker-compose pull
+./manage.sh mocknet up
 ```
 
 ### Services Running in Mocknet
 
-**docker-compose Mocknet service names**:
+**Mocknet service names**:
 
 - follower
 - api
@@ -153,51 +151,33 @@ docker-compose pull
 
 #### Starting Mocknet Services
 
-1. Start all services:
+Start all services:
 
-```bash
-docker-compose up -d
-```
-
-2. Start specific service:
-
-```bash
-docker-compose start <compose service>
-```
+    ```bash
+    ./manage.sh mocknet up
+    ```
 
 #### Stopping Mocknet Services
 
-1. Stop all services:
+Stop all services:
 
-```bash
-docker-compose down
-```
+    ```bash
+    ./manage.sh mocknet down
+    ```
 
-2. Stop specific service:
+Or restart:
 
-```bash
-docker-compose stop <compose service>
-```
-
-3. Restart:
-
-```bash
-docker-compose restart <compose service>
-```
+    ```bash
+    ./manage.sh mocknet restart
+    ```
 
 #### Retrieving Mocknet logs
 
-1. Tail logs with docker-compose:
+Tail logs with docker-compose:
 
-```bash
-docker-compose logs -f <compose service>
-```
-
-2. Tail logs through `docker`:
-
-```bash
-docker logs -f <docker container name>
-```
+    ```bash
+    ./manage.sh mocknet logs
+    ```
 
 ## Accessing the services
 
