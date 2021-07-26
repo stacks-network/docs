@@ -159,10 +159,11 @@ const senderNonce = getNonce(senderAddress);
 Next, we will broadcast the transaction to the Testnet using the `network` object we created earlier:
 
 ```js
-const txId = await broadcastTransaction(transaction, network);
+const broadcastResponse = await broadcastTransaction(transaction, network);
+const txID = broadcastResponse.txid;
 ```
 
-As soon as the `broadcastTransaction` is completed, a transaction ID is returned.
+As soon as the `broadcastTransaction` is completed, a JSON object with the transaction ID (`txid`) is returned.
 
 ~> Keep in mind that the existence of a transaction ID does not mean the transaction has been successfully processed. Please review the [transaction lifecycle](/understand-stacks/transactions#lifecycle) for more details.
 
