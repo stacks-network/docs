@@ -61,7 +61,7 @@ const storage = new Storage({ userSession });
 let fileName = 'car.json';
 
 let fileData = {
-  color: 'blue'
+  color: 'blue',
   electric: true,
   purchaseDate: '2019-04-03',
 };
@@ -143,7 +143,7 @@ Set an additional `app` property within `options` to retrieve data for a user as
 
 ```js
 const options = {
-  app: 'https://example.org'
+  app: 'https://example.org',
   username: 'markmhendrickson.id.blockstack',
 };
 ```
