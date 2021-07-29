@@ -12,7 +12,7 @@ images:
 Microblocks are a protocol-level feature of the Stacks blockchain that solve the technical challenge of transaction
 latency. Because each Stacks block is anchored to a Bitcoin block through the [Proof-of-Transfer consensus mechanism][],
 Stacks is necessarily limited to the same block times as the Bitcoin network. Microblocks allow the Stacks blockchain to
-perform state transitions with a high degree of confidence between final settlements against Bitcoin.
+perform state transitions between anchor blocks.
 
 Microblocks are a powerful mechanism for developers to create performant, high quality applications on Stacks, while
 still inheriting the security of Bitcoin.
@@ -24,16 +24,36 @@ block leaders can produce blocks on the Stacks blockchain either by batching tra
 Microblocks are the product of the streaming model.
 
 If a block leader has elected to mine microblocks, the leader selects transactions from the mempool and package them
-into microblocks during the current epoch. Transactions included in microblocks don't achieve finality until they've
-been confirmed by an anchor block, but can be assumed to be highly likely to achieve finality in the order in which the leader
-packaged them.
+into microblocks during the current epoch. Microblocks are blocks of transactions included by a miner after the previous
+anchor block has been mined, but before the next block is selected. Transactions included in microblocks are processed by
+the network: their results are known.
 
-In most blockchains, transactions can be re-ordered and chain history can be re-written with support from enough miners.
-This allows a blockchain to recover from certain types of attacks, as miners can collectively agree to rewrite history
-and omit malicious blocks. As more blocks are added on top of a block that includes a transaction, the likelihood of a
-transaction being reordered decreases. For example, many exchanges wait until at least 3 Bitcoin blocks have been added
-to report a transaction as fully confirmed (3 block confirmation). Microblocks provide between 0 block and 1 block
-confirmation.
+Consider a transaction from the perspective of the number of block confirmations it has. A transaction included in a
+microblock might have the following example lifecycle:
+
+```
+Transaction 1 is broadcast to the mempool. It has 0 confirmations.
+Transaction 1 is included in a microblock. It still has 0 confirmations, but the results of the transaction are known
+Transaction 1 is included in the next anchor block. It has 1 confirmation.
+The next Stacks block confirms the previous block. Transaction 1 has 2 confirmations.
+The next Stacks block confirms the previous block. Transaction 1 has 3 confirmations.
+...
+```
+
+Consider a similar transaction that is not included in a microblock:
+
+```
+Transaction 2 is broadcast to the mempool. It has 0 confirmations.
+Transaction 2 is included in the next anchor block. It has 1 confirmation.
+The next Stacks block confirms the previous block. Transaction 2 has 2 confirmations.
+The next Stacks block confirms the previous block. Transaction 2 has 3 confirmations.
+```
+
+The lifecycles of the two transactions are similar, but the difference is pending state. Many Bitcoin wallets display
+0-confirmation balances: your wallet balance with any mempool transactions already applied. This is useful because it
+tells you when you've sent a transaction or received one. With smart contracts, displaying pending state is not as
+straightforward, because smart contracts do not just transfer inputs to outputs, they may call other contracts, emit
+events, or perform other computations. A transaction processed in a microblock generates all that information.
 
 -> If a transaction is dependent on a chain state that could by altered by previous transactions with serious
 implications, you should carefully consider whether it should be performed using microblocks.
@@ -57,9 +77,13 @@ information, see [mining microblocks][].
 
 ## Developing with microblocks
 
-Stacks allows you to choose how any transaction should be included on the blockchain by the miners. This flexibility
-means you can submit transactions that require low latency processing for inclusion in microblocks, and require that
-highly order-dependent transactions wait for anchor block finality.
+In most cases, information from transactions included in microblocks should be treated like information from any other
+block. Wallets and explorers should display the consequences of microblock transactions as the current state of the
+network. This state should be acknowledged as tentative.
+
+A microblock transaction can end up being reorganized in the next block rather than just being confirmed as-is. Because
+of this, your UI should communicate to users if the outputs of a transaction changed, or if the transaction's associated
+block changed. This is the same outcome as if a 1-block fork occurred.
 
 ### Stacks.js libraries
 
@@ -89,6 +113,30 @@ included in microblocks, which may not yet be included in an anchor block. The S
 
 The state of microblock transactions should be carefully communicated to users. No transaction is final until it's
 included in an anchor block, and your application design should reflect this.
+
+The following guidelines are provided as an initial set of best practices for UI design when incorporating microblocks
+into your application.
+
+#### Explorers
+
+Display pending state, but warn that a transaction is still pending. Indicate visually that displayed balances depend
+on pending state.
+
+#### Wallets
+
+Display pending state, but warn that a transaction is still pending. Indicate visually that displayed balances depend
+on pending state.
+
+#### Exchanges
+
+Continue to count confirmations, microblocks should be considered pending.
+
+#### Applications
+
+Microblock communication is highly app-dependent. For some applications, displaying a pending or 0-confirmation
+transaction as confirmed may be fine. For example, storing data on the chain, or querying the BNS contract. For other
+applications, such as the transfer of real value, waiting for 3-confirmations would be prudent before displaying the
+state as confirmed.
 
 [proof-of-transfer consensus mechanism]: /understand-stacks/proof-of-transfer
 [stacks block production model]: https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md#operation-as-a-leader
