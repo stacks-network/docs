@@ -24,8 +24,47 @@ When developing smart contracts, you may also want to use the [Clarity Visual St
 
 ## Installing Clarinet
 
-You can download a release from the [Clarinet repository](https://github.com/hirosystems/clarinet/releases/latest) or
-try [installing it from source code](https://github.com/hirosystems/clarinet#install-from-source-using-cargo).
+Clarinet is available in the Homebrew and Winget package managers. Installing from a package manager is the recommended
+installation method.
+
+### Installing from Homebrew (MacOS and Linux)
+
+Install Clarinet from Homebrew with the command:
+
+```sh
+brew install clarinet
+```
+
+### Installing from winget (Windows)
+
+With the winget package manager installed, use the following command:
+
+```sh
+winget install clarinet
+```
+
+### Installing from a binary release
+
+You can download a release from the [Clarinet repository](https://github.com/hirosystems/clarinet/releases/latest).
+Unzip the binary, then copy it to a location that is already in your path, such as `/usr/local/bin`.
+
+```sh
+unzip clarinet-linux-x64.zip -d .
+chmod +x ./clarinet
+mv ./clarinet /usr/local/bin
+```
+
+If you are using MacOS, you may get security warnings when trying to run the precompiled binary. You can resolve the
+security warning with the command:
+
+```sh
+xattr -d com.apple.quarantine /path/to/downloaded/clarinet
+```
+
+### Installing from source
+
+Follow the [procedure](https://github.com/hirosystems/clarinet#install-from-source-using-cargo) outlined in the Clarinet
+repository to install from source.
 
 ## Developing a Clarity smart contract
 
