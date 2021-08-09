@@ -43,6 +43,8 @@ sections:
           - path: /overview
           - path: /principals
           - path: /values
+          - path: /clarinet
+          - path: /devnet
           - path: /tokens
         sections:
           - title: Tutorials
