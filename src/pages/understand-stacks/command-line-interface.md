@@ -83,7 +83,7 @@ The response will look like this:
 }
 ```
 
--> To receive testnet STX tokens, please use the faucet [faucet](https://testnet.blockstack.org/faucet)
+-> To receive testnet STX tokens, please use the [faucet](https://explorer.stacks.co/sandbox/faucet)
 
 Take note that the nonce for the account is `0`. This number is important for transaction broadcasting.
 
