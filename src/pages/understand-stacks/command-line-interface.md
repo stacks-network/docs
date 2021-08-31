@@ -15,7 +15,7 @@ First, ensure you have `npm` installed. Next, run the following command in your 
 
 ## Network selection
 
-By default, the CLI will attempt to interact with the mainnet of the Stacks 2.0 blockchian. However, it is possible to override the network and set it to the testnet:
+By default, the CLI will attempt to interact with the mainnet of the Stacks 2.0 blockchain. However, it is possible to override the network and set it to the testnet:
 
 ```bash
 stx <command> -t
