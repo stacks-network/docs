@@ -90,6 +90,7 @@ interface STXTransferOptions {
   amount: string;
   memo?: string;
   network: StacksNetwork;
+  fee: number,
   appDetails: {
     name: string;
     icon: string;
@@ -106,6 +107,7 @@ interface STXTransferOptions {
 | onFinish   | function      | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option)                     |
 | memo       | string        | false    | Optional memo for inclusion with transaction                                                                                 |
 | network    | StacksNetwork | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)                               |
+| fee    | number | false    | Optional fee amount in microstacks (1 STX = 1,000,000 microstacks) for overwriting the wallet's default fee value. [Read more](https://forum.stacks.org/t/mempool-congestion-on-stacks-observations-and-next-steps-from-hiro/12325/5) |
 
 ## Prompt to deploy smart contract
 
@@ -138,6 +140,7 @@ interface ContractDeployOptions {
   codeBody: string;
   contractName: string;
   network: StacksNetwork;
+  fee: number,
   appDetails: {
     name: string;
     icon: string;
@@ -153,6 +156,7 @@ interface ContractDeployOptions {
 | appDetails   | object        | true     | Dictionary that requires `name` and `icon` for app                                                       |
 | onFinish     | function      | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option) |
 | network      | StacksNetwork | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)           |
+| fee    | number | false    | Optional fee amount in microstacks (1 STX = 1,000,000 microstacks) for overwriting the wallet's default fee value. [Read more](https://forum.stacks.org/t/mempool-congestion-on-stacks-observations-and-next-steps-from-hiro/12325/5) |
 
 -> Contracts will deploy to the Stacks address of the authenticated user.
 
@@ -229,6 +233,7 @@ interface ContractCallOptions {
   contractName: string;
   functionArgs?: ClarityValue[];
   network: StacksNetwork;
+  fee: number,
   appDetails: {
     name: string;
     icon: string;
@@ -237,15 +242,16 @@ interface ContractCallOptions {
 }
 ```
 
-| parameter       | type             | required | description                                                                                                                                                                                                  |
-| --------------- | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- |
-| contractAddress | string           | true     | Stacks address to which contract is deployed                                                                                                                                                                 |
+| parameter    | type          | required | description                                                                                              |
+| ------------ | ------------- | -------- | -------------------------------------------------------------------------------------------------------- |
+| contractAddress | string           | true     | Stacks address to which contract is deployed  |
 | contractName    | string           | true     | Name of contract to sign                                                                                                                                                                                     |
 | functionName    | string           | true     | Name of function for signing / execution, which needs to be a [public function](/references/language-functions#define-public).                                                                               |
 | functionArgs    | `ClarityValue[]` | true     | Arguments for calling the function. [Learn more about constructing clarity values](https://github.com/blockstack/stacks.js/tree/master/packages/transactions#constructing-clarity-values). Defaults to `[]`. |
 | appDetails      | object           | true     | Dictionary that requires `name` and `icon` for app                                                                                                                                                           |
 | onFinish        | function         | true     | Callback executed by app when transaction has been signed and broadcasted. [Read more](#onFinish-option)                                                                                                     |     |
-| network         | StacksNetwork    | false    | Specify the network that this transaction should be completed on. [Read more](#network-option)                                                                                                               |
+| network         | StacksNetwork    | false    | Specify the network that this transaction should be completed on. [Read more](#network-option) |
+| fee             | number           | false    | Optional fee amount in microstacks (1 STX = 1,000,000 microstacks) for overwriting the wallet's default fee value. [Read more](https://forum.stacks.org/t/mempool-congestion-on-stacks-observations-and-next-steps-from-hiro/12325/5) |
 
 ## Getting the signed transaction back after completion {#onFinish-option}
 
