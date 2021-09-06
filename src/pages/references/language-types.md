@@ -19,7 +19,7 @@ The type system contains the following types:
   well, however, only public functions have the commit/abort behavior.
 - `(optional some-type)` - an option type for objects that can either be
   `(some value)` or `none`
-- `(buff max-len)` := byte buffer or maximum length `max-len`.
+- `(buff max-len)` := byte buffer of maximum length `max-len`.
 - `(string-ascii max-len)` := ASCII string of maximum length `max-len`
 - `(string-utf8 max-len)` := UTF-8 string of maximum length `max-len` (u"A smiley face emoji \u{1F600} as a utf8 string")
 - `principal` := object representing a principal (whether a contract principal
