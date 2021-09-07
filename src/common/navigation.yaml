@@ -6,7 +6,8 @@ sections:
         pages:
           - path: /overview
           - path: /testnet
-          - path: /regtest
+          - path: /proof-of-transfer
+          - path: /mining
           - path: /accounts
           - path: /transactions
           - path: /network
