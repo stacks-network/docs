@@ -75,7 +75,7 @@ clarinet new my-project && cd my-project
 ```
 
 This command creates a new directory and populates it with boilerplate configuration and testing files. The `toml` files
-located in the `settings` directory control the Clarinet environment. For example, the `Development.toml` file contains
+located in the `settings` directory control the Clarinet environment. For example, the `Devnet.toml` file contains
 definitions for wallets in the local REPL environment, and their starting balances (in STX).
 
 ```toml
@@ -128,7 +128,7 @@ the [test harness][], a testing framework written in Typescript.
 ### Testing with the console
 
 The Clarinet console is an interactive Clarity REPL that runs in-memory. Any contracts configured in the current project
-are automatically loaded into memory. Additionally, wallets defined in the `settings/Development.toml` file are
+are automatically loaded into memory. Additionally, wallets defined in the `settings/Devnet.toml` file are
 initialized with STX tokens for testing purposes. When the console runs, it provides a summary of the deployed
 contracts, their public functions, as well as wallet addresses and balances.
 
