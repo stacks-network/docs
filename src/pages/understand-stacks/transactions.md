@@ -283,14 +283,6 @@ const standardSTXPostCondition = makeStandardSTXPostCondition(
   amount
 );
 
-const postConditions = [
-  makeStandardSTXPostCondition(
-    postConditionAddress,
-    postConditionCode,
-    postConditionAmount
-  )
-];
-
 const txOptions = {
   ..., // other transaction options
   postConditions: [standardSTXPostCondition]
