@@ -11,8 +11,6 @@ sections:
           - path: /accounts
           - path: /transactions
           - path: /network
-          - path: /proof-of-transfer
-          - path: /mining
           - path: /microblocks
           - path: /stacking
           - path: /command-line-interface
