@@ -32,7 +32,7 @@ These "halvings" are synchronized with Bitcoin halvings.
 
 ## Transaction fees
 
-Miners receives Stacks fees for transactions mined in any block they produce.
+Miners receive Stacks fees for transactions mined in any block they produce.
 
 For transactions mined in microblocks, the miner that produces the microblock receives 40% of the fees, while the miner that confirms the microblock receives 60% of the fees.
 
