@@ -1,7 +1,9 @@
 ---
 title: Stacks documentation
-description: Write Clarity smart contracts, build apps, and starting mining with the Stacks blockchain
+description: Learn about Stacks mining, the STX token, and the Clarity smart contract language
 ---
+
+-> Content related to developer tools and app development has recently moved to [docs.hiro.so](https://docs.hiro.so/). For more information on the content move, see [this post](https://forum.stacks.org/t/the-evolution-of-the-stacks-documentation-and-a-new-hiro-docs-site/12343) on the Stacks forum.
 
 ## Understand Stacks
 
@@ -11,19 +13,9 @@ description: Write Clarity smart contracts, build apps, and starting mining with
 ## Write smart contracts
 
 [@page-reference | grid]
-| /write-smart-contracts/overview, /write-smart-contracts/hello-world-tutorial, /write-smart-contracts/tokens, /write-smart-contracts/nft-tutorial
-
-## Build apps
-
-[@page-reference | grid]
-| /build-apps/guides/authentication, /build-apps/guides/transaction-signing, /build-apps/guides/data-storage
+| /write-smart-contracts/overview, /write-smart-contracts/tokens
 
 ## Start mining
 
 [@page-reference | grid]
-| /start-mining/mainnet, /start-mining/testnet, /understand-stacks/running-mainnet-node, /understand-stacks/running-testnet-node, /understand-stacks/running-regtest-node
-
-## Ecosystem
-
-[@page-reference | grid-small]
-| /ecosystem/overview, /ecosystem/stacks-token, /ecosystem/contributing
+| /start-mining/mainnet, /start-mining/testnet

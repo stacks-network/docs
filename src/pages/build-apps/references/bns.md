@@ -1,6 +1,9 @@
 ---
 title: Blockchain Naming System
 description: Binds Stacks usernames to off-chain state
+images:
+  large: /images/nodes.svg
+  sm: /images/nodes.svg
 ---
 
 Blockchain Naming System (BNS) is a network system that binds Stacks usernames
