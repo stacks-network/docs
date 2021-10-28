@@ -51,11 +51,6 @@ The Stacking flow is different for delegation use cases:
 - Certain delegation relationships may allow the STX holder to receive the payout directly from the miner (step 5/6)
 - The termination of the delegation relationship can either happen automatically based on set expiration rules or by actively revoking delegation rights
 
-If you would like to implement this flow in your own wallet, exchange, or any other application, please have a look at this tutorial:
-
-[@page-reference | inline]
-| /understand-stacks/integrate-stacking-delegation
-
 ## PoX mining
 
 PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of sending the committed Bitcoin to a burn address, it's transferred to eligible STX holders that participate in the stacking protocol.

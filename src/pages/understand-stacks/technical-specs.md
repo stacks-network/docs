@@ -27,7 +27,7 @@ description: Summary of technical specifications of Stacks 2.0
 - Initial mining bonus: This is a special case of the above to incentivize early miners. Coinbase for all burnchain blocks between the first burn block height (to be chosen by independent miners as part of the Stacks 2.0 launch) and the first sortition winner accumulate and are distributed to miners over a fixed window (to be determined). For instance, say burn block height is 10,000 and first sortition is at block 10500 and distribution window is 100 blocks, then coinbase for the first 500 blocks (10,500 - 10,000) will be distributed evenly to miners who win sortition over the subsequent 100 blocks.
 - Reward maturity window: 100 blocks, meaning leaders will earn the coinbase reward 100 blocks after the block they successfully mine.
 - Block interval: Stacks blockchain produces blocks at the same rate as the underlying burnchain. For Bitcoin, this is approximately every 10 minutes.
-- BTC commitment: Miners must commit atleast 11,000 satoshis (5,500 sats / [UTXO output](https://learnmeabitcoin.com/technical/utxo)); 2 outputs / block) to avoid "dust".
+- BTC commitment: Miners must commit at least 11,000 satoshis (5,500 sats / [UTXO output](https://learnmeabitcoin.com/technical/utxo)); 2 outputs / block) to avoid "dust."
 - For more details, see [Mining](/understand-stacks/mining).
 
 ## Stacking
@@ -55,7 +55,7 @@ description: Summary of technical specifications of Stacks 2.0
 
 ## Transactions
 
-- [Transaction types](/understand-stacks/transactions#types): coinbase, token-transfer, contract-deploy, contract-call, poison-microblock.
+- Transaction types: coinbase, token-transfer, contract-deploy, contract-call, poison-microblock.
 - Only standard accounts (not contracts) can pay transaction fees.
 - Transaction execution is governed by 3 accounts (may or may not be distinct)
   1. _originating account_ is the account that creates, _authorizes_ and sends the transaction
@@ -66,8 +66,7 @@ description: Summary of technical specifications of Stacks 2.0
 - For sponsored authorization, first a user signs with the originating account and then a sponsor signs with the paying account.
 - Mempool limit for concurrent pending transactions is 25 per account
 - Pending mempool transactions will be garbage-collected [256 blocks after receipt](https://github.com/blockstack/stacks-blockchain/blob/master/src/core/mempool.rs#L62). With 10 minutes target block time, this would equal ~42 hours
-- [Learn more about transaction encoding in SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-encoding) and [and in our encoding documentation](/understand-stacks/transactions#encoding)
-- [Transaction signing and verification are described in SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying) and [in our documentation](/understand-stacks/transactions#signature-and-verification)
+- [Learn more about transaction encoding in SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-encoding)
+- [Transaction signing and verification are described in SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-signing-and-verifying)
 - All transactions impacting account balance are atomic, a transfer operation can not increment one account’s balance without decrementing another’s. However, transactions that perform multiple account actions (for example, transferring from multiple accounts) may partially complete.
 - Transactions can include a memo string (max 34 bytes)
-- Further reading: [Transactions](/understand-stacks/transactions)

@@ -143,5 +143,5 @@ docker stop stacks-blockchain
 
 - [Running an API instance with Docker][]
   [running a mainnet node with docker]: /understand-stacks/running-mainnet-node
-  [running an api instance with docker]: /understand-stacks/running-api-node
+  [running an api instance with docker]: https://docs.hiro.do/get-started/running-api-node
   [`stacks-blockchain`]: https://github.com/blockstack/stacks-blockchain

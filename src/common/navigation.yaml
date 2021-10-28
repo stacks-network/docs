@@ -13,27 +13,14 @@ sections:
           - path: /network
           - path: /microblocks
           - path: /stacking
-          - path: /command-line-interface
-          - path: /local-development
           - path: /technical-specs
           - path: /stacks-blockchain-api
         sections:
-          - title: Community
-            usePageTitles: true
-            pages:
-              - external:
-                  href: 'https://github.com/friedger/awesome-stacks-chain'
-                  title: 'Awesome Stacks'
           - title: Tutorials
             usePageTitles: true
             pages:
-              - path: /managing-accounts
-              - path: /sending-tokens
               - path: /running-mainnet-node
               - path: /running-testnet-node
-              - path: /running-regtest-node
-              - path: /running-api-node
-              - path: /stacking-using-CLI
 
       - path: /write-smart-contracts
         usePageTitles: true
@@ -41,101 +28,47 @@ sections:
           - path: /overview
           - path: /principals
           - path: /values
-          - path: /clarinet
-          - path: /devnet
           - path: /tokens
         sections:
-          - title: Tutorials
+          - title: Resources
             pages:
-              - path: /hello-world-tutorial
-              - path: /counter-tutorial
-              - path: /nft-tutorial
-              - path: /billboard-tutorial
-              - path: /testing-contracts
+              - external:
+                href: 'https://stacks.org/clarity-universe'
+                title: Clarity Universe
+              - external:
+                href: 'https://docs.hiro.so/tutorials'
+                title: Hiro Clarity tutorials
       - path: /build-apps
         pages:
           - path: /overview
-          - external:
-              href: https://github.com/blockstack/stacks.js/tree/master/migration-guide.md
-              title: Migrating from Blockstack.js
         sections:
-          - title: Guides
+          - title: References
             usePageTitles: true
             pages:
-              - path: /guides/authentication
-              - path: /guides/transaction-signing
-              - path: /guides/data-storage
-              - path: /guides/integrate-stacking
-              - path: /guides/integrate-stacking-delegation
-
-          - title: Example Apps
-            usePageTitles: true
-            pages:
-              - path: /examples/todos
-              - path: /examples/heystack
-              - path: /examples/public-registry
-              - path: /examples/angular
-
-          - title: Stacks.js References
-            usePageTitles: true
-            pages:
-              - external:
-                  href: 'https://github.com/blockstack/connect#readme'
-                  title: connect
-              - external:
-                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/auth.html'
-                  title: auth
-              - external:
-                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/storage.html'
-                  title: storage
-              - external:
-                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/transactions.html'
-                  title: transactions
-              - external:
-                  href: 'https://blockstack.github.io/stacks-blockchain-api/client/index.html'
-                  title: blockchain-api-client
-              - external:
-                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/stacking.html'
-                  title: 'stacking'
-              - external:
-                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/keychain.html'
-                  title: 'keychain'
-              - external:
-                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/network.html'
-                  title: 'network'
-              - external:
-                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/encryption.html'
-                  title: 'encryption'
-              - external:
-                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/profile.html'
-                  title: 'profile'
-              - external:
-                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/common.html'
-                  title: common
-              - external:
-                  href: 'https://stacks-js-git-master-blockstack.vercel.app/modules/bns.html'
-                  title: bns
-
-          - title: Protocols
-            usePageTitles: true
-            pages:
+              - path: /references/authentication
               - path: /references/bns
               - path: /references/gaia
+
+          - title: Community
+            usePageTitles: true
+            pages:
+              - external:
+                  href: 'https://github.com/friedger/awesome-stacks-chain'
+                  title: Awesome Stacks
+              - external:
+                  href: 'https://docs.hiro.so/example-apps'
+                  title: Hiro example apps
+
       - path: /start-mining
         pages:
           - path: /mainnet
           - path: /testnet
-      - path: /storage-hubs
-        pages:
-          - path: /overview
-        sections:
-          - title: Tutorials
-            usePageTitles: true
-            pages:
-              - path: /amazon-ec2-deploy
+
       - path: /references
         pages:
-          - path: /stacks-cli
+          - path: /faqs
+          - path: /glossary
+          - path: /deploy-tips
           - external:
               href: 'https://blockstack.github.io/stacks-blockchain-api/'
               title: Stacks Blockchain API
@@ -143,9 +76,6 @@ sections:
           - external:
               href: 'https://blockstack.github.io/stacks.js/'
               title: Stacks.js
-          - path: /faqs
-          - path: /glossary
-          - path: /deploy-tips
         sections:
           - title: Contracts
             usePageTitles: true
