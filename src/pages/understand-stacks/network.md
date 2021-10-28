@@ -15,7 +15,7 @@ STX amounts should be stored as integers (8 bytes long), and represent the amoun
 
 ## Fees
 
-Fees are used to incentivize miners to confirm transactions on the Stacks 2.0 blockchain. The fee is calculated based on the estimate fee rate and the size of the [raw transaction](/understand-stacks/transactions#serialization) in bytes. The fee rate is a market determined variable. For the [testnet](/understand-stacks/testnet), it is set to 1 micro-STX.
+Fees are used to incentivize miners to confirm transactions on the Stacks 2.0 blockchain. The fee is calculated based on the estimate fee rate and the size of the raw transaction in bytes. The fee rate is a market determined variable. For the [testnet](/understand-stacks/testnet), it is set to 1 micro-STX.
 
 Fee estimates can obtained through the [`GET /v2/fees/transfer`](https://blockstack.github.io/stacks-blockchain-api/#operation/get_fee_transfer) endpoint:
 
@@ -46,9 +46,9 @@ Nonces are added to all transactions and help identify them in order to ensure t
 
 -> The consensus mechanism also ensures that transactions aren't "replayed" in two ways. First, nodes query its unspent transaction outputs (UTXOs) in order to satisfy their spending conditions in a new transaction. Second, messages sent between nodes review sequence numbers.
 
-When a new [token transfer transaction](/understand-stacks/transactions#stacks-token-transfer) is constructed, the most recent nonce of the account needs to fetched and set.
+When a new token transfer transaction is constructed, the most recent nonce of the account needs to fetched and set.
 
--> The API provides an endpoint to [simplify nonce handling](/understand-stacks/stacks-blockchain-api#nonce-handling).
+-> The API provides an endpoint to [simplify nonce handling](https://docs.hiro.so/get-started/stacks-blockchain-api#nonce-handling).
 
 ## Confirmations
 
@@ -82,7 +82,7 @@ The API will respond with the block time (in seconds):
 
 Smart contracts can expose public function calls. For functions that make state modifications to the blockchain, transactions need to be generated and broadcasted.
 
-However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api).
+However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api).
 
 -> Read-only function calls do not require transaction fees
 
@@ -107,11 +107,11 @@ Sample response for a successful call:
 }
 ```
 
--> To set the function call arguments and read the result, [Clarity values](/understand-stacks/transactions#clarity-value-types) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library supports these operations
+-> To set the function call arguments and read the result, [Clarity values](/write-smart-contracts/values) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library supports these operations
 
 ## Querying
 
-Stacks 2.0 network details can be queried using the [Stacks Blockchain API](/understand-stacks/stacks-blockchain-api).
+Stacks 2.0 network details can be queried using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api).
 
 ### Health check
 

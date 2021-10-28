@@ -13,10 +13,7 @@ images:
 
 ## Introduction
 
-Make sure you've followed the [Running mainnet node](/understand-stacks/running-mainnet-node) tutorial. Once completed it's only a few more steps to run a proof-of-burn miner on the mainnet.
-
-[@page-reference | inline]
-| /understand-stacks/running-mainnet-node
+Make sure you've followed the [Running mainnet node](/understand-stacks/running-mainnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the mainnet.
 
 If you're interested in mining on the testnet, you can find instructions on how to do that here:
 

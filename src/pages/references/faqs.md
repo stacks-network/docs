@@ -13,7 +13,7 @@ Developers, get started building apps and contracts on the [developer page at st
 
 ## Stacks Network
 
-Learn more about the network behind the user-owned internet on Bitcoin in the [Understand Stacks chapter](https://docs.blockstack.org/understand-stacks/overview) in the docs.
+Learn more about the network behind the user-owned internet on Bitcoin in the [Understand Stacks chapter](/understand-stacks/overview) in the docs.
 
 ## Stacks Token
 

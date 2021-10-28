@@ -67,7 +67,7 @@ requires the transaction to be in a microblock, an anchor block, or in either.
 ### Transactions
 
 Transactions include an option that controls if a miner should include them in microblocks or in anchor blocks. The
-[anchor mode][] transaction option is an optional argument that controls whether a transaction must be included in
+anchor mode transaction option is an optional argument that controls whether a transaction must be included in
 an anchor block or a microblock, or is eligible for either.
 
 ### Mining
@@ -141,8 +141,7 @@ state as confirmed.
 [proof-of-transfer consensus mechanism]: /understand-stacks/proof-of-transfer
 [stacks block production model]: https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md#operation-as-a-leader
 [mining microblocks]: /understand-stacks/mining#microblocks
-[anchor mode]: /understand-stacks/transactions#anchor-mode
 [anchormode]: https://stacks-js-git-master-blockstack.vercel.app/enums/transactions.anchormode.html
-[stacks blockchain api guide]: /understand-stacks/stacks-blockchain-api#microblocks-support
+[stacks blockchain api guide]: https://docs.hiro.so/getting-started/stacks-blockchain-api#microblocks-support
 [provides an endpoint]: /stacks-blockchain-api#nonce-handling
 [microblocks_api]: https://stacks-blockchain-api-git-feat-microblocks-blockstack.vercel.app/#tag/Microblocks
