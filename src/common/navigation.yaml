@@ -33,11 +33,11 @@ sections:
           - title: Resources
             pages:
               - external:
-                href: 'https://stacks.org/clarity-universe'
-                title: Clarity Universe
+                  href: 'https://stacks.org/clarity-universe'
+                  title: Clarity Universe
               - external:
-                href: 'https://docs.hiro.so/tutorials'
-                title: Hiro Clarity tutorials
+                  href: 'https://docs.hiro.so/tutorials'
+                  title: Hiro Clarity tutorials
       - path: /build-apps
         pages:
           - path: /overview
