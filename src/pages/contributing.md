@@ -56,6 +56,7 @@ see a button in the upper right of the screen that says "Fork." [You can read ab
 This is a generalized workflow for contributing to these docs:
 
 - Clone your fork to your local machine with this command `git clone git@github.com:<YOUR_USERNAME>/docs.blockstack.git`
+- Enter your project folder `cd docs.blockstack`
 - Create a branch `git checkout -b feat/my-feature-branch`.
 - Run the command `yarn` to install all of the dependencies.
 - Make the changes you wish and then commit them with this kind of message: `git commit -am "feat: some new feature or content"`.

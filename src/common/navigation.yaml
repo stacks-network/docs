@@ -70,7 +70,7 @@ sections:
           - path: /glossary
           - path: /deploy-tips
           - external:
-              href: 'https://blockstack.github.io/stacks-blockchain-api/'
+              href: 'https://hirosystems.github.io/stacks-blockchain-api/'
               title: Stacks Blockchain API
           - path: /stacks-node-configuration
           - external:
