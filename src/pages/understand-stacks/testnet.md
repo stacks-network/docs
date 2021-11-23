@@ -21,7 +21,7 @@ https://stacks-node-api.testnet.stacks.co/
 
 ### Faucet
 
-The testnet faucet provides you with free Stacks Token (STX) to test with. These are not the same as STX on mainnet and have no value. You can get STX from the faucet on the [Stacks Explorer Sandbox](https://explorer.stacks.co/sandbox/faucet?chain=testnet), or using the [API](https://blockstack.github.io/stacks-blockchain-api/#tag/Faucets).
+The testnet faucet provides you with free Stacks Token (STX) to test with. These are not the same as STX on mainnet and have no value. You can get STX from the faucet on the [Stacks Explorer Sandbox](https://explorer.stacks.co/sandbox/faucet?chain=testnet), or using the [API](https://hirosystems.github.io/stacks-blockchain-api/#tag/Faucets).
 
 To get STX tokens from within the Explorer Sandbox, navigate to the "Faucet" tab and click "Request STX" button. If you would like to get enough STX tokens to try out [Stacking](/understand-stacks/stacking), and click "I want to stack."
 
