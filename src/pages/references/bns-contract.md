@@ -8,7 +8,7 @@ import { BNSErrorcodeReference, BNSFunctionReference } from '@components/bns-ref
 
 ## Introduction
 
-The [Blockchain Naming System (BNS)](/understand-stacks/protocols/bns) is implemented as a smart contract using Clarity.
+The [Blockchain Naming System (BNS)](/build-apps/references/bns) is implemented as a smart contract using Clarity.
 
 Below is a list of public and read-only functions as well as error codes that can be returned by those methods.
 

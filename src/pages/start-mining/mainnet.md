@@ -189,7 +189,7 @@ After this runs, you'll probably see some installation logs, and at the end you 
 }
 ```
 
--> Check out the [Stacks CLI reference](/references/stacks-cli) for more details
+-> Check out the [Stacks CLI reference](https://docs.hiro.so/references/stacks-cli) for more details
 
 The above BTC address will then need to be imported into the BTC network.
 
