@@ -348,59 +348,59 @@ async function redirects() {
     { source: '/org/token.html', destination: '/ecosystem/stacks-token', permanent: true },
     {
       source: '/org/whitepaper-blockchain.html',
-      destination: 'https://blockstack.org/whitepaper.pdf',
+      destination: 'https://community.stacks.org/pox',
       permanent: true,
     },
     {
       source: '/org/wallet-intro.html',
-      destination: 'https://blockstack.org/questions/what-is-the-stacks-wallet',
+      destination: 'https://www.hiro.so/questions/what-is-the-stacks-wallet',
       permanent: true,
     },
     {
       source: '/org/wallet-install.html',
-      destination: 'https://blockstack.org/questions/how-do-i-install-the-stacks-wallet-v3-x',
+      destination: 'https://www.hiro.so/wallet',
       permanent: true,
     },
     {
       source: '/org/wallet-use.html',
-      destination: 'https://blockstack.org/questions/how-do-i-start-using-the-stacks-wallet-v3-x',
+      destination: 'https://www.hiro.so/wallet',
       permanent: true,
     },
     {
       source: '/stacks-wallet/overview',
-      destination: 'https://blockstack.org/questions/what-is-the-stacks-wallet',
+      destination: 'https://www.hiro.so/questions/what-is-the-stacks-wallet',
       permanent: true,
     },
     {
       source: '/stacks-wallet/install',
-      destination: 'https://blockstack.org/questions/how-do-i-install-the-stacks-wallet-v3-x',
+      destination: 'https://www.hiro.so/wallet',
       permanent: true,
     },
     {
       source: '/stacks-wallet/usage',
-      destination: 'https://blockstack.org/questions/how-do-i-start-using-the-stacks-wallet-v3-x',
+      destination: 'https://www.hiro.so/wallet',
       permanent: true,
     },
     {
       source: '/stacks-wallet/security',
       destination:
-        'https://blockstack.org/questions/how-should-i-secure-my-secret-key-for-the-stacks-wallet',
+        'https://www.hiro.so/questions/how-should-i-secure-my-secret-key-for-the-stacks-wallet',
       permanent: true,
     },
     {
       source: '/stacks-wallet',
-      destination: 'https://blockstack.org/questions/what-is-the-stacks-wallet',
+      destination: 'https://www.hiro.so/questions/what-is-the-stacks-wallet',
       permanent: true,
     },
     {
       source: '/org/secureref.html',
       destination:
-        'https://blockstack.org/questions/how-should-i-secure-my-secret-key-for-the-stacks-wallet',
+        'https://www.hiro.so/questions/how-should-i-secure-my-secret-key-for-the-stacks-wallet',
       permanent: true,
     },
     {
       source: '/org/wallet-troubleshoot.html',
-      destination: 'https://blockstack.org/wallet',
+      destination: 'https://www.hiro.so/wallet',
       permanent: true,
     },
     {
@@ -442,7 +442,7 @@ async function redirects() {
     },
     {
       source: '/common/javascript_ref.html',
-      destination: 'https://blockstack.github.io/blockstack.js/',
+      destination: 'https://blockstack.github.io/stacks.js/',
       permanent: true,
     },
     {

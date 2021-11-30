@@ -2,11 +2,11 @@
 
 # Stacks documentation
 
-![A screenshot of docs.blockstack.org](/public/images/docs-homepage.png)
+![A screenshot of docs.stacks.co](/public/images/docs-homepage.png)
 
 ## Running and building the site locally
 
-If you are interested in contributing to the site and making changes, please refer to our [contributing guide here](https://docs.blockstack.org/ecosystem/contributing).
+If you are interested in contributing to the site and making changes, please refer to our [contributing guide here](https://docs.stacks.co/contributing).
 
 ## Generated documentation
 

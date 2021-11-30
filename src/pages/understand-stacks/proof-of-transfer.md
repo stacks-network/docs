@@ -53,5 +53,5 @@ Clarity smart contracts also have unique visibility into the state of the Bitcoi
 
 ## See also
 
-- [Read the full PoX whitepaper](https://community.blockstack.org/pox)
+- [Read the full PoX whitepaper](https://community.stacks.org/pox)
 - [Watch CEO Muneeb Ali and Evangelist Joe Bender give an overview of Stack's breakthrough PoX mining mechanism](https://www.youtube.com/watch?v=NY_eUrIcWOY)
