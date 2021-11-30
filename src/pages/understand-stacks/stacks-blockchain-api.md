@@ -24,7 +24,7 @@ https://stacks-node-api.testnet.stacks.co/
 
 The [stacks-node implementation](https://github.com/blockstack/stacks-blockchain/) exposes JSON RPC endpoints.
 
-All `/v2/` routes a proxied to a Blockstack PBC-hosted Stacks Node. For a trustless architecture, you should make these requests to a self-hosted node.
+All `/v2/` routes a proxied to a Hiro-hosted Stacks Node. For a trustless architecture, you should make these requests to a self-hosted node.
 
 ## Proxied Stacks Node RPC API endpoints
 

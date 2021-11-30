@@ -86,17 +86,17 @@ async function redirects() {
     },
     {
       source: '/develop/storage.html',
-      destination: '/build-apps/guides/data-storage',
+      destination: '/build-apps/references/gaia',
       permanent: true,
     },
     {
       source: '/data-storage/storage-write-read',
-      destination: '/build-apps/guides/data-storage',
+      destination: '/build-apps/references/gaia',
       permanent: true,
     },
     {
       source: '/data-storage/storage-guide',
-      destination: '/build-apps/guides/data-storage',
+      destination: '/build-apps/references/gaia',
       permanent: true,
     },
     {
@@ -111,37 +111,37 @@ async function redirects() {
     },
     {
       source: '/storage/authentication.html',
-      destination: '/data-storage/authentication',
+      destination: '/build-apps/references/authentication',
       permanent: true,
     },
     {
       source: '/storage/write-to-read.html',
-      destination: '/data-storage/storage-write-read',
+      destination: '/build-apps/references/gaia',
       permanent: true,
     },
     {
       source: '/develop/radiks-intro.html',
-      destination: '/data-storage/indexing-overview',
+      destination: '/build-apps/references/gaia',
       permanent: true,
     },
     {
       source: '/develop/radiks-setup.html',
-      destination: '/data-storage/integrate-indexing',
+      destination: '/build-apps/references/gaia',
       permanent: true,
     },
     {
       source: '/develop/radiks-models.html',
-      destination: '/data-storage/indexing-models',
+      destination: '/build-apps/references/gaia',
       permanent: true,
     },
     {
       source: '/develop/radiks-collaborate.html',
-      destination: '/data-storage/indexing-collaborate',
+      destination: '/build-apps/references/gaia',
       permanent: true,
     },
     {
       source: '/develop/radiks-server-extras.html',
-      destination: '/data-storage/indexing-server-extras',
+      destination: '/build-apps/references/gaia',
       permanent: true,
     },
     {
@@ -171,7 +171,7 @@ async function redirects() {
     },
     {
       source: '/develop/connect/use-with-clarity.html',
-      destination: '/build-apps/guides/transaction-signing',
+      destination: 'https://docs.hiro.so/get-started/transactions#signature-and-verification',
       permanent: true,
     },
     {
@@ -408,8 +408,16 @@ async function redirects() {
       destination: '/references/faqs/stacks-token',
       permanent: true,
     },
-    { source: '/core/cmdLineRef.html', destination: '/references/stacks-cli', permanent: true },
-    { source: '/references/stx ', destination: '/references/stacks-cli', permanent: true },
+    {
+      source: '/core/cmdLineRef.html',
+      destination: 'https://docs.hiro.so/references/stacks-cli',
+      permanent: true,
+    },
+    {
+      source: '/references/stx ',
+      destination: 'https://docs.hiro.so/references/stacks-cli',
+      permanent: true,
+    },
     {
       source: '/core/smart/clarityref',
       destination: '/references/language-clarity',
@@ -527,7 +535,11 @@ async function redirects() {
     { source: '/naming-services', destination: '/build-apps/references/bns', permanent: true },
     { source: '/naming-system', destination: '/build-apps/references/bns', permanent: true },
     { source: '/storage-hubs', destination: '/storage-hubs/overview', permanent: true },
-    { source: '/references', destination: '/references/stacks-cli', permanent: true },
+    {
+      source: '/references',
+      destination: 'https://docs.hiro.so/references/stacks-cli',
+      permanent: true,
+    },
     { source: '/ecosystem', destination: '/ecosystem/overview', permanent: true },
     {
       source: '/stacks-blockchain/testnet-node',
@@ -757,12 +769,12 @@ async function redirects() {
     },
     {
       source: '/smart-contracts/signing-transactions',
-      destination: '/build-apps/guides/transaction-signing',
+      destination: 'https://docs.hiro.so/get-started/transactions#signature-and-verification',
       permanent: true,
     },
     {
       source: '/write-smart-contracts/signing-transactions',
-      destination: '/build-apps/guides/transaction-signing',
+      destination: 'https://docs.hiro.so/get-started/transactions#signature-and-verification',
       permanent: true,
     },
     {

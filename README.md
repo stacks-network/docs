@@ -18,7 +18,7 @@ This repository uses [vale](https://github.com/errata-ai/vale) to run style chec
 yarn check:style
 ```
 
-### Blockstack CLI reference
+### Stacks CLI reference
 
 The `src/_data/cli-reference.json` file is generated from the `stx` subcommand `docs`.
 
