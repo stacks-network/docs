@@ -144,4 +144,4 @@ state as confirmed.
 [anchormode]: https://stacks-js-git-master-blockstack.vercel.app/enums/transactions.anchormode.html
 [stacks blockchain api guide]: https://docs.hiro.so/getting-started/stacks-blockchain-api#microblocks-support
 [provides an endpoint]: /stacks-blockchain-api#nonce-handling
-[microblocks_api]: https://stacks-blockchain-api-git-feat-microblocks-blockstack.vercel.app/#tag/Microblocks
+[microblocks_api]: https://docs.hiro.so/api#tag/Microblocks

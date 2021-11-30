@@ -65,7 +65,7 @@ const nav: NavItem[] = [
     children: [
       {
         label: 'Documentation',
-        href: 'https://docs.blockstack.org/',
+        href: 'https://docs.stacks.co/',
         target: '_self',
       },
       {
@@ -73,17 +73,16 @@ const nav: NavItem[] = [
         href: 'https://github.com/blockstack',
       },
       {
-        label: 'Papers',
-        href: 'https://www.blockstack.org/papers',
+        label: 'Resources',
+        href: 'https://www.stacks.co/learn/learning-resources',
       },
       {
         label: 'Discord',
-        href: 'https://discord.gg/zrvWsQC',
+        href: 'https://discord.gg/5DJaBrf',
       },
     ],
   },
-  { label: 'Testnet', href: 'https://www.blockstack.org/testnet' },
-  { label: 'Discover apps', href: 'https://app.co/' },
+  { label: 'Discover apps', href: 'https://www.stacks.co/explore/discover-apps' },
 ];
 
 const HeaderTextItem: ForwardRefExoticComponentWithAs<BoxProps & LinkProps, 'a'> = forwardRefWithAs<
