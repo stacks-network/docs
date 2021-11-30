@@ -17,7 +17,7 @@ STX amounts should be stored as integers (8 bytes long), and represent the amoun
 
 Fees are used to incentivize miners to confirm transactions on the Stacks 2.0 blockchain. The fee is calculated based on the estimate fee rate and the size of the raw transaction in bytes. The fee rate is a market determined variable. For the [testnet](/understand-stacks/testnet), it is set to 1 micro-STX.
 
-Fee estimates can obtained through the [`GET /v2/fees/transfer`](https://hirosystems.github.io/stacks-blockchain-api/#operation/get_fee_transfer) endpoint:
+Fee estimates can obtained through the [`GET /v2/fees/transfer`](https://docs.hiro.so/api#operation/get_fee_transfer) endpoint:
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
@@ -58,7 +58,7 @@ The time to mine a block, to confirm transactions, will eventually match the exp
 
 -> Transactions can also be mined in [microblocks](/understand-stacks/microblocks), reducing the latency significantly.
 
-The block time is hardcoded and will change throughout the implementation phases of the [testnet](/understand-stacks/testnet). The current block time can be obtained through the [`GET /extended/v1/info/network_block_times`](https://hirosystems.github.io/stacks-blockchain-api/#operation/get_network_block_times) endpoint:
+The block time is hardcoded and will change throughout the implementation phases of the [testnet](/understand-stacks/testnet). The current block time can be obtained through the [`GET /extended/v1/info/network_block_times`](https://docs.hiro.so/api#operation/get_network_block_times) endpoint:
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
@@ -86,7 +86,7 @@ However, for read-only function calls, transactions are **not** required. Instea
 
 -> Read-only function calls do not require transaction fees
 
-A read-only contract call can be done using the [`POST /v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>`](https://hirosystems.github.io/stacks-blockchain-api/#operation/call_read_only_function) endpoint:
+A read-only contract call can be done using the [`POST /v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>`](https://docs.hiro.so/api#operation/call_read_only_function) endpoint:
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
@@ -119,7 +119,7 @@ The [status checker](https://stacks-status.com/) is a service that provides a us
 
 ### Network info
 
-The network information can be obtained using the [`GET /v2/info`](https://hirosystems.github.io/stacks-blockchain-api/#operation/get_core_api_info) endpoint:
+The network information can be obtained using the [`GET /v2/info`](https://docs.hiro.so/api#operation/get_core_api_info) endpoint:
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`

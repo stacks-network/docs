@@ -8,7 +8,7 @@ import { StackingErrorcodeReference, StackingFunctionReference } from '@componen
 
 ## Introduction
 
-Stacking is implemented as a smart contract using Clarity. You can always find the Stacking contract identifier using the Stacks Blockchain API [`v2/pox` endpoint](https://hirosystems.github.io/stacks-blockchain-api/#operation/get_pox_info).
+Stacking is implemented as a smart contract using Clarity. You can always find the Stacking contract identifier using the Stacks Blockchain API [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get_pox_info).
 
 Below is a list of public and read-only functions as well as error codes that can be returned by those methods.
 
