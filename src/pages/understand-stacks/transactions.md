@@ -38,6 +38,6 @@ The Stacks 2.0 supports a set of different transaction types:
 | Contract call     | `contract_call`     | Contract call for a public, non read-only function                                                                                                                                                    |
 | Poison Microblock | `poison_microblock` | Punish leaders who intentionally equivocate about the microblocks they package                                                                                                                        |
 
-A sample of each transaction type can be found in the [Stacks Blockchain API response definition for transactions](https://hirosystems.github.io/stacks-blockchain-api/#operation/get_transaction_by_id).
+A sample of each transaction type can be found in the [Stacks Blockchain API response definition for transactions](https://docs.hiro.so/api#operation/get_transaction_by_id).
 
 ~> Read-only contract call calls do **not** require transactions. Read more about it in the [network guide](/understand-stacks/network#read-only-function-calls).
