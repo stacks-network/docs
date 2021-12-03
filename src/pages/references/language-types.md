@@ -10,7 +10,7 @@ images:
 
 The type system contains the following types:
 
-- `(tuple (key-name-0 key-type-0) (key-name-1 key-type-1) ...)` -
+- `{label-0: value-type-0, name-1 value-type-1, ...}` -
   a group of data values with named fields, aka (_record_)[https://www.cs.cornell.edu/courses/cs312/2004fa/lectures/lecture3.htm].
 - `(list max-len entry-type)` - a list of maximum length `max-len`, with
   entries of type `entry-type`
