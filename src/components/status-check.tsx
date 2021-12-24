@@ -11,7 +11,7 @@ import { STATUS_CHECKER_URL } from '@common/constants';
 import { css } from '@stacks/ui-core';
 import { getCapsizeStyles } from '@components/mdx/typography';
 
-const fetcher = url => fetch(url).then(r => r.json());
+const fetcher = url => fetch(url.replace(navigator.language, '')).then(r => r.json());
 
 type Status = 'online' | 'slow' | 'degraded' | 'loading' | undefined;
 
