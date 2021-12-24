@@ -937,10 +937,6 @@ async function redirects() {
 
 module.exports = withFonts(
   withBundleAnalyzer({
-    i18n: {
-      locales: ['en-US'],
-      defaultLocale: 'en-US',
-    },
     experimental: {
       modern: true,
       polyfillsOptimization: true,
@@ -979,17 +975,19 @@ module.exports = withFonts(
         if (splitChunks) {
           const cacheGroups = splitChunks.cacheGroups;
           const test = /[\\/]node_modules[\\/](preact|preact-render-to-string|preact-context-provider)[\\/]/;
-          if (cacheGroups.framework) {
-            cacheGroups.preact = Object.assign({}, cacheGroups.framework, {
+          if (cacheGroups?.framework) {
+            cacheGroups.preact = Object.assign({}, cacheGroups?.framework, {
               test,
             });
             cacheGroups.commons.name = 'framework';
           } else {
-            cacheGroups.preact = {
-              name: 'commons',
-              chunks: 'all',
-              test,
-            };
+            if (typeof cacheGroups !== 'undefined') {
+              cacheGroups.preact = {
+                name: 'commons',
+                chunks: 'all',
+                test,
+              };
+            }
           }
         }
 

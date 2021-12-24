@@ -1,9 +1,7 @@
 import { Components } from '@components/mdx/mdx-components';
 import renderToString from 'next-mdx-remote/render-to-string';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { remarkPlugins } = require('../../../lib/remark-plugins');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { rehypePlugins } = require('../../../lib/rehype-plugins');
 
 // eslint-disable-next-line @typescript-eslint/restrict-plus-operands

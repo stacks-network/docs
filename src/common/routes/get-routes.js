@@ -8,6 +8,7 @@
  * This data is used to dynamically generate the sidenav.
  *
  */
+
 const fm = require('front-matter');
 const fs = require('fs-extra');
 const path = require('path');
@@ -46,6 +47,7 @@ const getFlatMap = navigation => {
         });
         return [...pages, ...sectionPages];
       } else {
+        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
         return `${section.title ? '/' + slugify(section.title) : ''}${page.path}`;
       }
     })
@@ -63,9 +65,11 @@ const getHeadings = mdContent => {
 };
 
 const routes = allRoutes.map(route => {
+  // detect the locale
+  // index.${locale}.md
   try {
     const fileContent = fs.readFileSync(
-      path.join('./src/pages', `${route === '/' ? 'index' : route}.md`),
+      path.join('./src/pages', `${route === '/' ? 'index' : route}/index.md`),
       'utf8'
     );
     const data = fm(fileContent);

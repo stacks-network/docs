@@ -25,5 +25,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/restrict-template-expressions': 0,
+    '@typescript-eslint/require-await': 0,
+    '@typescript-eslint/no-var-requires': 0,
   },
 };
