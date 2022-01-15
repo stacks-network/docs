@@ -185,7 +185,7 @@ rpc_port = 8332
 peer_port = 8333
 ```
 
-The rpc configuration of your bitcoin node is out of the scope of this document, but you can find more information [here](https://developer.bitcoin.org/examples/intro.html).
+The rpc configuration of your bitcoin node is out of the scope of this document, but you can find more information on how to set it up [here](https://developer.bitcoin.org/examples/intro.html).
 
 ## Additional reading
 
