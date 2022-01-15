@@ -168,6 +168,25 @@ Use the following commands to stop the local mainnet node:
 docker stop stacks-blockchain
 ```
 
+## Optional. Run stacks node with own bitcoin node
+
+It's encouraged to use your own bitcoin node when possible.
+
+To do this simply update the `stacks-node/config/mainnet/Config.toml` file with the details of your bitcoin node. For example:
+
+```
+[burnchain]
+chain = "bitcoin"
+mode = "mainnet"
+peer_host = "localhost"
+username = "rpc username"
+password = "rpc password"
+rpc_port = 8332
+peer_port = 8333
+```
+
+The rpc configuration of your bitcoin node is out of the scope of this document, but you can find more information [here](https://developer.bitcoin.org/examples/intro.html).
+
 ## Additional reading
 
 - [Running an API instance with Docker][]
