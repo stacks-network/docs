@@ -249,7 +249,7 @@ const Search = dynamic(() => import('@components/search'));
 
 export const MDContents: React.FC<any> = ({ pageTop: PageTop = null, headings, children }) => {
   const router = useRouter();
-  const isHome = router.pathname === '/';
+  const isHome = router.pathname === '/index/';
 
   return (
     <>

@@ -12,7 +12,7 @@ import { MobileMenu } from '@components/mobile-menu';
 
 const BaseLayout: React.FC<{ isHome?: boolean }> = ({ children }) => {
   const router = useRouter();
-  const isHome = router.pathname === '/';
+  const isHome = router.pathname === '/index/';
 
   useWatchActiveHeadingChange();
   return (
