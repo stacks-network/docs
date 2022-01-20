@@ -44,7 +44,7 @@ const capitalize = s => {
 };
 
 const convertToTitle = (path: string) =>
-  !path ? null : path === '/index/' ? 'Home' : capitalize(path.replace('/', '').replace(/-/g, ' '));
+  !path ? null : path === '/' ? 'Home' : capitalize(path.replace('/', '').replace(/-/g, ' '));
 
 const PageItem = React.forwardRef(
   (
