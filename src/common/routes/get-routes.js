@@ -65,8 +65,6 @@ const getHeadings = mdContent => {
 };
 
 const routes = allRoutes.map(route => {
-  // detect the locale
-  // index.${locale}.md
   try {
     const fileContent = fs.readFileSync(
       path.join('./src/pages', `${route === '/' ? 'index' : route}/index.md`),
