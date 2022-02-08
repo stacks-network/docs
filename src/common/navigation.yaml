@@ -1,6 +1,6 @@
 sections:
   - pages:
-      - path: /
+      - path: /index
       - path: /understand-stacks
         usePageTitles: true
         pages:
