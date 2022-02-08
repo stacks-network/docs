@@ -75,7 +75,7 @@ async function redirects() {
     },
     {
       source: '/authentication/connect',
-      destination: 'https://blockstack.github.io/stacks.js',
+      destination: 'https://stacks.js.org/',
       permanent: true,
     },
     { source: '/develop/profiles.html', destination: '/authentication/profiles', permanent: true },
