@@ -74,7 +74,7 @@ sections:
               title: Stacks Blockchain API
           - path: /stacks-node-configuration
           - external:
-              href: 'https://blockstack.github.io/stacks.js/'
+              href: 'https://stacks.js.org/'
               title: Stacks.js
         sections:
           - title: Contracts
