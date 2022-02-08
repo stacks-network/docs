@@ -947,14 +947,6 @@ module.exports = withFonts(
       FATHOM_ID: 'FOEMPXUV',
     },
     redirects,
-    async rewrites() {
-       return [
-         {
-           source: '/',
-           destination: '/index',
-        },
-      ];
-    },
     pageExtensions: ['js', 'ts', 'tsx', 'md', 'mdx'],
     webpack: (config, options) => {
       config.module.rules.push({
