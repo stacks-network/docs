@@ -117,7 +117,6 @@ miner = true
 #### working_dir (optional)
 
 Absolute path to the directory which the stacks-node will use for storing various data.
-Until [issue 1576](https://github.com/blockstack/stacks-blockchain/issues/1576) is resolved, this option is unsupported -- use at your own risk.
 
 Example:
 
