@@ -943,6 +943,10 @@ module.exports = withFonts(
       jsconfigPaths: true,
       trailingSlash: true,
     },
+    i18n: {
+      locales: ['en-US', 'es'],
+      defaultLocale: 'en-US',
+    },
     env: {
       FATHOM_ID: 'FOEMPXUV',
     },
