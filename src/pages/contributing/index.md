@@ -34,7 +34,7 @@ To get started you have two options:
 The web IDE gitpod provides an environment to contibute directly from within your browser.
 
 To get started, you only have to a github account and open the link
-[https://gitpod.io/#https://github.com/blockstack/docs](https://gitpod.io/#https://github.com/blockstack/docs) in your browser.
+[https://gitpod.io/#https://github.com/stacks-network/docs](https://gitpod.io/#https://github.com/stacks-network/docs) in your browser.
 
 ### Working Locally
 
@@ -48,9 +48,9 @@ When workin locally with the site, a few things are needed:
 
 ### Working with GitHub
 
-All of the code for this site is open source, located at the [GitHub repository here](https://github.com/blockstack/docs).
+All of the code for this site is open source, located at the [GitHub repository here](https://github.com/stacks-network/docs).
 Before you start editing anything, you will need to fork the repo so that you can have your own copy of the code under
-your GitHub profile. On the [repository's page](https://github.com/blockstack/docs.blockstack), you should be able to
+your GitHub profile. On the [repository's page](https://github.com/stacks-network/docs), you should be able to
 see a button in the upper right of the screen that says "Fork." [You can read about Forking here.](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
 
 This is a generalized workflow for contributing to these docs:
