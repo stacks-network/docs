@@ -22,7 +22,7 @@ https://stacks-node-api.testnet.stacks.co/
 
 ### Stacks Node RPC API
 
-The [stacks-node implementation](https://github.com/blockstack/stacks-blockchain/) exposes JSON RPC endpoints.
+The [stacks-node implementation](https://github.com/stacks-network/stacks-blockchain/) exposes JSON RPC endpoints.
 
 All `/v2/` routes a proxied to a Hiro-hosted Stacks Node. For a trustless architecture, you should make these requests to a self-hosted node.
 

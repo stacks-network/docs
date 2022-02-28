@@ -30,13 +30,13 @@ The API will respond with the fee rate (as integer):
 1
 ```
 
-[The Stacks Transactions JS library](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) supports fee estimation for:
+[The Stacks Transactions JS library](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) supports fee estimation for:
 
 - token transfers (`estimateTransfer`)
 - contract deploys (`estimateContractDeploy`)
 - non read-only contract calls (`estimateContractFunctionCall`)
 
--> For an implementation using a different language than JavaScript, please review [this reference implementation](https://github.com/blockstack/stacks.js/blob/master/packages/transactions/src/builders.ts#L97).
+-> For an implementation using a different language than JavaScript, please review [this reference implementation](https://github.com/hirosystems/stacks.js/blob/master/packages/transactions/src/builders.ts#L97).
 
 ## Nonces
 
@@ -107,7 +107,7 @@ Sample response for a successful call:
 }
 ```
 
--> To set the function call arguments and read the result, [Clarity values](/write-smart-contracts/values) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library supports these operations
+-> To set the function call arguments and read the result, [Clarity values](/write-smart-contracts/values) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations
 
 ## Querying
 
