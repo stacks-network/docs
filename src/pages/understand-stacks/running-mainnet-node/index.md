@@ -192,4 +192,4 @@ The rpc configuration of your bitcoin node is out of the scope of this document,
 - [Running an API instance with Docker][]
   [running a testnet node with docker]: /understand-stacks/running-testnet-node
   [running an api instance with docker]: https://docs.hiro.so/get-started/running-api-node
-  [`stacks-blockchain`]: https://github.com/blockstack/stacks-blockchain
+  [`stacks-blockchain`]: https://github.com/stacks-network/stacks-blockchain

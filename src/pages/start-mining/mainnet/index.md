@@ -89,7 +89,7 @@ bitcoin-cli -rpcport=8332 -rpcuser=your-user -rpcpassword=your-password importad
 
 Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
-Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/blockstack/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
 
 Update the following properties:
 
@@ -201,7 +201,7 @@ Once imported, we need to get some BTC to that address. You should be able to tr
 
 ### Update configuration file
 
-Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/blockstack/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
 
 Update the following properties:
 
@@ -266,7 +266,7 @@ We need to get some BTC to that address. You should be able to transfer BTC to t
 
 ### Update configuration file
 
-Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/blockstack/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/blockstack/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
 
 Update the following properties:
 
@@ -316,7 +316,7 @@ docker logs -f stacks_miner
 
 ## Optional: Running in Kubernetes with Helm
 
-In addition, you're also able to run a mainnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/blockstack/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
+In addition, you're also able to run a mainnet node in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/stacks-network/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
 
 Ensure you have the following prerequisites installed on your machine:
 
@@ -354,4 +354,4 @@ You can review the node logs with this command:
 kubectl logs -l app.kubernetes.io/name=stacks-blockchain
 ```
 
-For more information on the Helm chart and configuration options, please refer to the [chart's homepage](https://github.com/blockstack/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
+For more information on the Helm chart and configuration options, please refer to the [chart's homepage](https://github.com/stacks-network/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
