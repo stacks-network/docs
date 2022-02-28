@@ -326,7 +326,7 @@ the name `personal.id` is used to register usernames without
 requiring them to spend any Bitcoin.
 
 We supply a reference implementation of a [BNS Subdomain
-Registrar](https://github.com/blockstack/subdomain-registrar) to help
+Registrar](https://github.com/stacks-network/subdomain-registrar) to help
 developers broadcast subdomain operations. Users would still own their
 subdomain names; the registrar simply gives developers a convenient
 way for them to register and manage them in the context of a

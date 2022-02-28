@@ -1,4 +1,4 @@
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/blockstack/docs)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/stacks-network/docs)
 
 # Stacks documentation
 
@@ -22,9 +22,9 @@ yarn check:style
 
 The `src/_data/cli-reference.json` file is generated from the `stx` subcommand `docs`.
 
-1. Install the latest version of the cli according to the instructions at: https://github.com/blockstack/stacks.js/tree/master/packages/cli
+1. Install the latest version of the cli according to the instructions at: https://github.com/hirosystems/stacks.js/tree/master/packages/cli
 
-2. Generate the json for the cli in the `docs.blockstack` repo.
+2. Generate the json for the cli in the `docs.stacks` repo.
 
    ```bash
    stx docs > src/_data/cli-reference.json

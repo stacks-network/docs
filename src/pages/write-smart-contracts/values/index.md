@@ -10,7 +10,7 @@ images:
 
 The Clarity language makes use of a strong static [type system](/references/language-clarity#clarity-type-system). This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your contract call transactions failing prior to execution.
 
-In order to build web applications that interact with Clarity contracts, you will need to learn how to construct and use `ClarityValue` objects. The [@stacks/transactions](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below.
+In order to build web applications that interact with Clarity contracts, you will need to learn how to construct and use `ClarityValue` objects. The [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below.
 
 ## Clarity Types
 
@@ -21,7 +21,7 @@ Please see the following page for information on Clarity Types:
 
 ## Constructing Clarity Values and accessing their data
 
-Clarity values can be constructed with functions provided by the [@stacks/transactions](https://github.com/blockstack/stacks.js/tree/master/packages/transactions) library. These functions simply output javascript objects that contain a value and a numerical representation of the Clarity type information. The Clarity types are encoded as follows:
+Clarity values can be constructed with functions provided by the [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library. These functions simply output javascript objects that contain a value and a numerical representation of the Clarity type information. The Clarity types are encoded as follows:
 
 ```typescript
 export enum ClarityType {
@@ -223,9 +223,9 @@ This is covered in depth [here](/understand-stacks/transactions#construction).
 
 ## Utilizing Clarity Values from Transaction Responses
 
-`Read-only` Clarity functions can return Clarity values as a response. These `read-only` functions can be accessed easily in JavaScript via the [`callReadOnlyFunction()`](https://github.com/blockstack/stacks.js/tree/master/packages/transactions#calling-read-only-contract-function) function included in `@stacks/transactions`, which returns a `ClarityValue`.
+`Read-only` Clarity functions can return Clarity values as a response. These `read-only` functions can be accessed easily in JavaScript via the [`callReadOnlyFunction()`](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions#calling-read-only-contract-function) function included in `@stacks/transactions`, which returns a `ClarityValue`.
 
-As mentioned above, `ClarityValues` are simply javascript objects containing a value and its associated Clarity type information. These object types are defined [here](https://github.com/blockstack/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types).
+As mentioned above, `ClarityValues` are simply javascript objects containing a value and its associated Clarity type information. These object types are defined [here](https://github.com/hirosystems/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types).
 
 When you are calling a `read-only` contract function, you will always know what type the function will return, since functions in Clarity are strongly typed.
 

@@ -97,7 +97,7 @@ stacks-node help
 
 The TOML configuration file has multiple sections under which an option may be placed.
 
-To see a list of example configurations, [please see this page](https://github.com/blockstack/stacks-blockchain/tree/master/testnet/stacks-node/conf).
+To see a list of example configurations, [please see this page](https://github.com/stacks-network/stacks-blockchain/tree/master/testnet/stacks-node/conf).
 
 ### Section: node
 
@@ -244,7 +244,7 @@ prometheus_bind = "0.0.0.0:9153"
 
 ### Section: events_observer (optional)
 
-Contains options for watching events emitted by a local [stacks-blockchain-api](https://github.com/blockstack/stacks-blockchain-api) service.
+Contains options for watching events emitted by a local [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service.
 
 -> This section can be repeated multiple times.
 
