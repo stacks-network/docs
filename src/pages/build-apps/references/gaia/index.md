@@ -78,7 +78,7 @@ The token ensures the app has the authorization to write to the hub on the user'
 Here's how Gaia stacks up against other decentralized storage systems. Features
 that are common to all storage systems are omitted for brevity.
 
-| Features                                   | [Gaia](https://github.com/stacks-network/gaia) | [Sia](https://sia.tech/) | [Storj](https://storj.io/) | [IPFS](https://ipfs.io/) | [DAT](https://datproject.org/) | [SSB](https://www.scuttlebutt.nz/) |
+| Features                                   | [Gaia](https://github.com/blockstack/gaia) | [Sia](https://sia.tech/) | [Storj](https://storj.io/) | [IPFS](https://ipfs.io/) | [DAT](https://datproject.org/) | [SSB](https://www.scuttlebutt.nz/) |
 | ------------------------------------------ | ------------------------------------------ | ------------------------ | -------------------------- | ------------------------ | ------------------------------ | ---------------------------------- |
 | User controls where data is hosted         | X                                          |                          |                            |                          |                                |                                    |
 | Data can be viewed in a normal Web browser | X                                          |                          |                            | X                        |                                |                                    |
