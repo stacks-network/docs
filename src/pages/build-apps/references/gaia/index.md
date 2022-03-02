@@ -95,6 +95,3 @@ that are common to all storage systems are omitted for brevity.
 | Data is content-addressed                  |                                            | X                        | X                          | X                        | X                              | X                                  |
 
 
-## Deploy your own GAIA Hub
-
-You can deploy your own GAIA Hub by following [these instructions](https://github.com/stacks-network/gaia/tree/master/deploy).
