@@ -93,5 +93,3 @@ that are common to all storage systems are omitted for brevity.
 | Data is globally addressable               | X                                          | X                        | X                          | X                        | X                              |                                    |
 | Needs a cryptocurrency to work             |                                            | X                        | X                          |                          |                                |                                    |
 | Data is content-addressed                  |                                            | X                        | X                          | X                        | X                              | X                                  |
-
-
