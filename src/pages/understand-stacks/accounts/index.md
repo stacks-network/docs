@@ -56,12 +56,11 @@ stx make_keychain -t > cli_keychain.json
 | Field                | Description                                                                                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `mnemonic`           | A 24-word seed phrase used to access the account, generated using [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) with 256 bits of entropy |
-| `keyInfo.address`    | Stacks address for the account                                                                                                                                     |
 | `keyInfo.privateKey` | Private key for the account. Required for token transfers and often referred to as `senderKey`                                                                     |
+| `keyInfo.address`    | Stacks address for the account                                                                                                                                     |
+| `keyInfo.btcAddress` | Corresponding BTC address for the account.                                                                                                                         |
+| `keyInfo.wif`        | Private key of the btcAddress in compressed format.                                                                                                                |
 | `keyInfo.index`      | Nonce for the account, starting at 0                                                                                                                               |
-| `keyInfo.btcAddress` | Corresponding BTC address for the account. A construct from the previous blockchain (Stacks 1.0) and currently unused.                                             |
-
--> `btcAddress` was used in the old, Stacks 1.0, blockchain. Stacks 1.0 accounts would pay for occurring transaction fees with the corresponding BTC account. This is **not** the case for Stacks 2.0 accounts anymore and the field is a leftover
 
 Note that a new account automatically exists for each new private key. There is no need to manually instantiate an account on the Stacks 2.0 blockchain.
 
