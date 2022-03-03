@@ -42,10 +42,11 @@ stx make_keychain -t > cli_keychain.json
 {
   "mnemonic": "aaa bbb ccc ddd ...",
   "keyInfo": {
-    "address": "STJRM2AMVF90ER6G3RW1QTF85E3HZH37006D5ER1",
     "privateKey": "5a3f1f15245bb3fb...",
-    "index": 0,
-    "btcAddress": "biwSd6KTEvJcyX2R8oyfgj5REuLzczMYC1"
+    "address": "STJRM2AMVF90ER6G3RW1QTF85E3HZH37006D5ER1",
+    "btcAddress": "biwSd6KTEvJcyX2R8oyfgj5REuLzczMYC1",
+    "wif": "L4HXn7PLmzoNW...",
+    "index": 0
   }
 }
 ```
