@@ -935,6 +935,15 @@ async function redirects() {
   ];
 }
 
+async function rewrites() {
+  return [
+    {
+      source: '/:path*',
+      destination: '/en/:path*',
+    },
+  ];
+}
+
 module.exports = withFonts(
   withBundleAnalyzer({
     experimental: {
@@ -947,6 +956,7 @@ module.exports = withFonts(
       FATHOM_ID: 'FOEMPXUV',
     },
     redirects,
+    rewrites,
     pageExtensions: ['js', 'ts', 'tsx', 'md', 'mdx'],
     webpack: (config, options) => {
       config.module.rules.push({
