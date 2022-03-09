@@ -68,8 +68,9 @@ const routes = allRoutes.map(route => {
   // detect the locale
   // index.${locale}.md
   try {
+    console.log('JONATHON', route);
     const fileContent = fs.readFileSync(
-      path.join('./src/pages', `${route === '/' ? 'index' : route}/index.md`),
+      path.join('./src/pages/en', `${route === '/' ? 'index' : route}.md`),
       'utf8'
     );
     const data = fm(fileContent);
