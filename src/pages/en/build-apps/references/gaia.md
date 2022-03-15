@@ -93,3 +93,8 @@ that are common to all storage systems are omitted for brevity.
 | Data is globally addressable               | X                                          | X                        | X                          | X                        | X                              |                                    |
 | Needs a cryptocurrency to work             |                                            | X                        | X                          |                          |                                |                                    |
 | Data is content-addressed                  |                                            | X                        | X                          | X                        | X                              | X                                  |
+
+
+## Deploy your GAIA Hub
+
+Steps to deploy your own GAIA Hub can be found [here](https://github.com/stacks-network/gaia/blob/master/deploy/README.md)
