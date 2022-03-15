@@ -29,7 +29,7 @@ The Stacks blockchain addresses performance problems using a layered approach. T
 
 When an identity is created, its creation is recorded in the Stacks blockchain. Identities make up the primary data stored into the Stacks blockchain. These identities correspond to routing data in the OSI stack. The routing data is stored in the Atlas Peer Network, the second layer. Every core node that joins the Stacks Network is able to obtain an entire copy of this routing data. Stacks uses the routing data to associate identities (domain names, user names, and application names) with a particular storage location in the final layer, the Gaia Storage System.
 
-A Gaia Storage System consists of a _hub service_ and storage resource on a cloud software provider. The storage provider can be any commercial provider such as Azure, DigitalOcean, Amazon EC2, and so forth. Typically the compute resource and the storage resource reside same cloud vendor, though this is not a requirement. Gaia currently has driver support for S3 and Azure Blob Storage, but the driver model allows for other backend support as well.
+A Gaia Storage System consists of a _hub service_ and storage resource on a cloud software provider. The storage provider can be any commercial provider such as Azure, DigitalOcean, Amazon EC2, and so forth. Typically the compute resource and the storage resource reside same cloud vendor, though this is not a requirement. Gaia currently has driver support for S3, Azure Blob Storage, Google Cloud and local disk, but the driver model allows for other backend support as well.
 
 Gaia stores data as a simple key-value store. When an identity is created, a corresponding data store is associated with that identity on Gaia. When a user logs into a dApp,
 the authentication process gives the application the URL of a Gaia hub, which
@@ -65,7 +65,7 @@ Applications writing directly on behalf of `alice.id` do not need to perform a l
 
 A Gaia hub stores the written data _exactly_ as given. It offers minimal guarantees about the data. It does not ensure that data is validly formatted, contains valid signatures, or is encrypted. Rather, the design philosophy is that these concerns are client-side concerns.
 
-Client libraries (such as `Stacks.js`) are capable of providing these guarantees. A liberal definition of the [end-to-end principle](https://en.wikipedia.org/wiki/End-to-end_principle) guides this design decision.
+Client libraries (such as [`Stacks.js`](https://stacks.js.org/)) are capable of providing these guarantees. A liberal definition of the [end-to-end principle](https://en.wikipedia.org/wiki/End-to-end_principle) guides this design decision.
 
 When an application writes to a Gaia hub, an authentication token, key, and the data are passed to the Gaia hub.
 
