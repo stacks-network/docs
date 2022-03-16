@@ -70,7 +70,7 @@ const nav: NavItem[] = [
       },
       {
         label: 'GitHub',
-        href: 'https://github.com/blockstack',
+        href: 'https://github.com/stacks-network',
       },
       {
         label: 'Resources',
