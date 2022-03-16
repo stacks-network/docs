@@ -55,8 +55,8 @@ see a button in the upper right of the screen that says "Fork." [You can read ab
 
 This is a generalized workflow for contributing to these docs:
 
-- Clone your fork to your local machine with this command `git clone git@github.com:<YOUR_USERNAME>/docs.blockstack.git`
-- Enter your project folder `cd docs.blockstack`
+- Clone your fork to your local machine with this command `git clone git@github.com:<YOUR_USERNAME>/docs.git stacks_docs`
+- Enter your project folder `cd stacks_docs`
 - Create a branch `git checkout -b feat/my-feature-branch`.
 - Run the command `yarn` to install all of the dependencies.
 - Make the changes you wish and then commit them with this kind of message: `git commit -am "feat: some new feature or content"`.
@@ -73,15 +73,17 @@ yarn dev
 ```
 
 ```bash
-yarn run v1.22.4
-yarn clean:build-files && next dev
-rimraf .next
-ready - started server on http://localhost:3000
-warn  - You have enabled experimental features.
+yarn run v1.22.17
+$ yarn clean:build-files && next dev
+$ rimraf .next && rimraf .cache
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+warn  - You have enabled experimental feature(s).
 warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use them at your own risk.
 
-info  - Using external babel configuration from /Users/YOUR_USERNAME/oss/docs.blockstack/babel.config.js
-event - compiled successfully
+info  - Disabled SWC as replacement for Babel because of custom Babel configuration "babel.config.js" https://nextjs.org/docs/messages/swc-disabled
+info  - automatically enabled Fast Refresh for 1 custom loader
+info  - Using external babel configuration from /home/alejandro/stacks-network_docs/babel.config.js
+event - compiled client and server successfully in 13.5s (680 modules)
 ```
 
 The docs site will be accessible at this url: [`http://localhost:3000`](http://localhost:3000).
@@ -91,10 +93,10 @@ The docs site will be accessible at this url: [`http://localhost:3000`](http://l
 ### Pages
 
 If you are interested in only adding new documentation content to the site, the files that will be important to you are
-located within `docs.blockstack/src/pages/*`:
+located within `./src/pages/*`:
 
 ```bash showLineNumbers highlight=11
-docs.blockstack/
+stacks_docs/
   .github/
   lib/
   node_modules/
