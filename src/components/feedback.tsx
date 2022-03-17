@@ -125,7 +125,7 @@ export const FeedbackSection: React.FC<BoxProps> = props => {
         mt={space(['extra-loose', 'extra-loose', 'base-loose'])}
       >
         <Link
-          href={`https://github.com/stacks-network/docs/edit/master/src/pages${editPage}/index.md`}
+          href={`https://github.com/stacks-network/docs/edit/master/src/pages${editPage}.md`}
           target="_blank"
           rel="nofollow noopener noreferrer"
           fontSize="14px"
