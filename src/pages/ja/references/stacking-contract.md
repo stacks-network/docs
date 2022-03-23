@@ -3,7 +3,7 @@ title: Stacking Contract
 description: See a detailed list of all functions and error codes of the Stacking contract.
 ---
 
-export { convertStackingRefToMdx as getStaticProps } from '@common/data/stacking-ref' import { StackingErrorcodeReference, StackingFunctionReference } from '@components/stacking-ref'
+export { convertStackingRefToMdx as getStaticProps } from '@common/data/stacking-ref'; import { StackingErrorcodeReference, StackingFunctionReference } from '@components/stacking-ref';
 
 ## Introduction
 
