@@ -3,7 +3,7 @@ title: BNS Contract
 description: See a detailed list of all functions and error codes of the BNS contract.
 ---
 
-export { convertBNSRefToMdx as getStaticProps } from '@common/data/bns-ref' import { BNSErrorcodeReference, BNSFunctionReference } from '@components/bns-ref'
+export { convertBNSRefToMdx as getStaticProps } from '@common/data/bns-ref'; import { BNSErrorcodeReference, BNSFunctionReference } from '@components/bns-ref';
 
 ## Introduction
 
