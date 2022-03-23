@@ -2,7 +2,7 @@
   "name": "@blockstack/docs",
   "version": "1.0.0",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.27",
@@ -124,8 +124,8 @@
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "lint:eslint": "eslint \"src/**/*.{ts,tsx}\" -f unix",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" -f unix --fix",
-    "lint:prettier": "prettier --check \"src/**/*.{ts,tsx,md,mdx}\" *.js",
-    "lint:prettier:fix": "prettier --write \"src/**/*.{ts,tsx,md,mdx}\" *.js",
+    "lint:prettier": "prettier --check \"src/**/*.{ts,tsx,mdx}\" \"src/pages/en/**/*.md\" *.js",
+    "lint:prettier:fix": "prettier --write \"src/**/*.{ts,tsx,mdx}\" \"src/pages/en/**/*.md\" *.js",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "npm run typecheck -- --watch",
     "check:urls": "find . -type f -name '*.md' ! -path './node_modules/*' ! -path './_site/*' | xargs -L1 npx markdown-link-check -q -c mlc_config.json",
