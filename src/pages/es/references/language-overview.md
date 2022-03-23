@@ -6,7 +6,7 @@ images:
   sm: /images/pages/write-smart-contracts-sm.svg
 ---
 
-export { convertClarityRefToMdx as getStaticProps } from '@common/data/clarity-ref' import { ClarityKeywordReference, ClarityFunctionReference } from '@components/clarity-ref'
+export { convertClarityRefToMdx as getStaticProps } from '@common/data/clarity-ref'; import { ClarityKeywordReference, ClarityFunctionReference } from '@components/clarity-ref';
 
 ## Clarity Type System
 
