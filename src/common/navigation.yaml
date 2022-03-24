@@ -38,6 +38,14 @@ sections:
               - external:
                   href: 'https://docs.hiro.so/tutorials'
                   title: Hiro Clarity tutorials
+          - title: Clarity Language
+            usePageTitles: true
+            pages:
+              - path: /language-overview
+              - path: /language-types
+              - path: /language-keywords
+              - path: /language-functions
+
       - path: /build-apps
         pages:
           - path: /overview
@@ -82,12 +90,5 @@ sections:
             pages:
               - path: /bns-contract
               - path: /stacking-contract
-          - title: Clarity Language
-            usePageTitles: true
-            pages:
-              - path: /language-overview
-              - path: /language-types
-              - path: /language-keywords
-              - path: /language-functions
 
       - path: /contributing
