@@ -953,6 +953,10 @@ module.exports = withFonts(
     env: {
       FATHOM_ID: 'FOEMPXUV',
     },
+    i18n: {
+      locales: ['en-US', 'es'],
+      defaultLocale: 'en-US',
+    },
     redirects,
     rewrites,
     pageExtensions: ['js', 'ts', 'tsx', 'md', 'mdx'],
