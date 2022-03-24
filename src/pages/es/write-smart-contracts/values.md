@@ -75,9 +75,9 @@ If you are dealing with a function or contract function that returns an `Optiona
 ```typescript
 const maybeVal: OptionalCV = await callReadOnlyFunction(...);
 
-if (maybeVal.type === ClarityType.OptionalSome) {
+if (maybeVal.type === ClarityType. OptionalSome) {
   console.log(maybeVal.value);
-} else if (maybeVal.type === ClarityType.OptionalNone) {
+} else if (maybeVal.type === ClarityType. OptionalNone) {
   // deal with `none` value
 }
 ```
@@ -96,10 +96,10 @@ Clarity supports both integers and unsigned integers.
 
 ```typescript
 const i: IntCV = intCV(-10);
-// { type: ClarityType.Int, value: BN { ... } }
+// { type: ClarityType.Int, value: } }
 
 const u: UIntCV = uintCV(10);
-// { type: ClarityType.UInt, value: BN { ... } }
+// { type: ClarityType.UInt, value: } }
 ```
 
 Clarity value ints store their underlying data as `BigNum` values from the [bn.js](https://github.com/indutny/bn.js/) library.
@@ -253,9 +253,9 @@ const options = {
 // returns a Response
 const result: ResponseCV = await callReadOnlyFunction(options);
 
-if (result.type === ClarityType.ResponseOk) {
+if (result.type === ClarityType. ResponseOk) {
   console.log(cvToString(result.value));
-} else if (result.type === ClarityType.ResponseErr) {
+} else if (result.type === ClarityType. ResponseErr) {
   throw new Error(`kv-store contract error: ${result.value.data}`);
 }
 ```
