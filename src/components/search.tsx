@@ -19,6 +19,7 @@ import Link from 'next/link';
 import { getCapsizeStyles } from '@components/mdx/typography';
 import { useAppState } from '@common/hooks/use-app-state';
 import { css, Theme } from '@stacks/ui-core';
+import { SEARCH_DOCS } from '@common/constants_that_require_translations';
 
 const getLocalUrl = href => {
   const _url = new URL(href);
@@ -189,7 +190,7 @@ export const SearchBox: React.FC<BoxProps> = React.memo(props => {
                 ...getCapsizeStyles(14, 28),
               }}
             >
-              Search docs
+              {SEARCH_DOCS}
             </Text>
           </Flex>
           <Stack isInline spacing="3px" pr="base">
