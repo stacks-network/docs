@@ -241,7 +241,6 @@ const LogoLink = React.memo(() => {
 });
 
 const Header = ({ hideSubBar, ...rest }: any) => {
-  console.log('rest', useRouter().locale);
   return (
     <>
       <HeaderWrapper>
