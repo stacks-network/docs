@@ -96,6 +96,7 @@ curl --location --request POST 'https://stacks-node-api.testnet.stacks.co/v2/con
   "sender": "<stx_address>.<contract_name>",
   "arguments": [<clarity_value>, ...]
 }'
+}'
 ```
 
 Sample response for a successful call:
