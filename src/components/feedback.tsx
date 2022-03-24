@@ -20,6 +20,7 @@ import { getHeadingStyles } from '@components/mdx/typography';
 import { css } from '@stacks/ui-core';
 import { StatusCheck } from '@components/status-check';
 import { useColorMode } from '@common/hooks/use-color-mode';
+import { EDIT_PAGE_IN_GITHUB } from '@common/constants_that_require_translations';
 
 const Icon: React.FC<BoxProps & { icon: React.FC<any> }> = ({ icon: IconComponent, ...props }) => {
   const { bind, hover, active } = useTouchable();
@@ -129,7 +130,7 @@ export const FeedbackSection: React.FC<BoxProps> = props => {
           rel="nofollow noopener noreferrer"
           fontSize="14px"
         >
-          Edit this page on GitHub
+          {EDIT_PAGE_IN_GITHUB}
         </Link>
         <StatusCheck mt={space('base-loose')} />
       </Flex>

@@ -26,6 +26,11 @@ import { border, transition } from '@common/utils';
 import { getCapsizeStyles } from '@components/mdx/typography';
 import { useTouchable } from '@common/hooks/use-touchable';
 import { useRouter } from 'next/router';
+import {
+  COMMUNITY,
+  LANGUAGES,
+  LEARNING_RESOURCES,
+} from '@common/constants_that_require_translations';
 
 const MenuButton = ({ ...rest }: any) => {
   const { isOpen, handleOpen, handleClose } = useMobileMenuState();
@@ -73,9 +78,15 @@ const nav: NavItem[] = [
         href: 'https://github.com/stacks-network',
       },
       {
-        label: 'Resources',
+        label: LEARNING_RESOURCES,
         href: 'https://www.stacks.co/learn/learning-resources',
       },
+    ],
+  },
+  {
+    label: COMMUNITY,
+    href: '',
+    children: [
       {
         label: 'Discord',
         href: 'https://discord.gg/5DJaBrf',
@@ -87,6 +98,20 @@ const nav: NavItem[] = [
     ],
   },
   { label: 'Discover apps', href: 'https://www.stacks.co/explore/discover-apps' },
+  {
+    label: LANGUAGES,
+    href: '',
+    children: [
+      {
+        label: 'English',
+        href: '/en',
+      },
+      {
+        label: 'Spanish',
+        href: '/es',
+      },
+    ],
+  },
 ];
 
 const HeaderTextItem: ForwardRefExoticComponentWithAs<BoxProps & LinkProps, 'a'> = forwardRefWithAs<
