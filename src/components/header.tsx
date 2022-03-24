@@ -80,6 +80,10 @@ const nav: NavItem[] = [
         label: 'Discord',
         href: 'https://discord.gg/5DJaBrf',
       },
+      {
+        label: 'Forum',
+        href: 'https://forum.stacks.org',
+      },
     ],
   },
   { label: 'Discover apps', href: 'https://www.stacks.co/explore/discover-apps' },
