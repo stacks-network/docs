@@ -84,6 +84,12 @@ sections:
           - external:
               href: 'https://stacks.js.org/'
               title: Stacks.js
+          - external:
+              href: 'https://www.stacks.co/learn/learning-resources'
+              title: Learning Resources
+          - external:
+              href: 'https://www.stacks.co/explore/discover-apps'
+              title: Discover Apps
         sections:
           - title: Contracts
             usePageTitles: true
