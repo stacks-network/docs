@@ -99,6 +99,14 @@ local_peer_seed = "replace-with-your-private-key"
 
 [burnchain]
 ...
+[node]
+...
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
 # To mine on Xenon, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
@@ -204,6 +212,14 @@ local_peer_seed = "replace-with-your-private-key"
 
 [burnchain]
 ...
+[node]
+...
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
 # To mine on Xenon, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
@@ -259,6 +275,14 @@ Now, we need to configure our node to use this Bitcoin keychain. Clone the [stac
 Update the following properties:
 
 ```toml
+[node]
+...
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
 [node]
 ...
 seed = "replace-with-your-private-key"
