@@ -1,6 +1,6 @@
 ---
-title: Build apps with Stacks
-description: Authenticate users, sign transactions and store data with the Stacks blockchain
+title: Crea apps con Stacks
+description: Identificación de usuarios, firma de transacciones y almacenamiento de datos en la cadena de bloques Stacks
 images:
   large: /images/pages/build-apps.svg
   sm: /images/pages/build-apps-sm.svg
