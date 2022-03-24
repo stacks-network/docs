@@ -9,10 +9,9 @@ images:
 
 ## Introduction
 
-Welcome. Thank you for your interest in contributing and helping make these docs as good as they can be. This page will
-outline how this site is built, its general structure, getting it running locally, and some helpful tips for using all of its features.
+Welcome. Thank you for your interest in contributing and helping make these docs as good as they can be. This page outlines how this site is built, its general structure, getting it running locally, and some helpful tips for using all of its features.
 
-These steps should only be followed to make changes on the general structure of the site and documents written in English. To make changes on pages in other languages, please refer to translations instead. This means that in the folder /src/pages/ you should any make changes in /src/pages/en, as changes in any other locale (/src/pages/es or /src/pages/fr for example) will be overwritten.
+These steps should only be followed to make changes on the general structure of the site and documents written in English. To make changes on pages in other languages, please refer to translations instead. This means that in the folder /src/pages/ you should any make changes in /src/pages/en, as changes in any other locale (/src/pages/es or /src/pages/fr for example) are overwritten.
 
 ## Next.js, MDX, Markdown
 
