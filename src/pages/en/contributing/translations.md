@@ -16,8 +16,8 @@ To help with translation please go to [this page](https://crowdin.com/project/do
 
 All help is appreciated.
 
-Note to Github users: Please don't add any translations via our GitHub repository, as the translated pages get rewritten from Crowin, so you must use this tool instead.
+Note to Github users: please don't add any translations via our GitHub repository, as the translated pages get rewritten from Crowin, so you must use this tool instead.
 
 ## Adding a language
 
-Want to add a new language that doesn't show in Crowin? Great! Let us know, and we will add it.
+Want to add a new language that doesn't show in Crowin? Great! Let us know!
