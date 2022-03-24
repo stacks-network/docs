@@ -83,7 +83,7 @@ const publicKey = getPublicKey(privateKey);
 
 const stacksAddress = getAddressFromPrivateKey(
   privateKeyToString(privateKey),
-  TransactionVersion.Testnet // remove for Mainnet addresses
+  TransactionVersion. Testnet // remove for Mainnet addresses
 );
 ```
 
