@@ -65,25 +65,6 @@ interface NavItem {
 
 const nav: NavItem[] = [
   {
-    label: 'Start building',
-    href: '',
-    children: [
-      {
-        label: 'Documentation',
-        href: 'https://docs.stacks.co/',
-        target: '_self',
-      },
-      {
-        label: 'GitHub',
-        href: 'https://github.com/stacks-network',
-      },
-      {
-        label: LEARNING_RESOURCES,
-        href: 'https://www.stacks.co/learn/learning-resources',
-      },
-    ],
-  },
-  {
     label: COMMUNITY,
     href: '',
     children: [
@@ -95,9 +76,12 @@ const nav: NavItem[] = [
         label: 'Forum',
         href: 'https://forum.stacks.org',
       },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/stacks-network',
+      },
     ],
   },
-  { label: 'Discover apps', href: 'https://www.stacks.co/explore/discover-apps' },
   {
     label: LANGUAGES,
     href: '',
