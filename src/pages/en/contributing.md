@@ -12,6 +12,8 @@ images:
 Welcome. Thank you for your interest in contributing and helping make these docs as good as they can be. This page will
 outline how this site is built, its general structure, getting it running locally, and some helpful tips for using all of its features.
 
+These steps should only be followed to make changes on the general structure of the site and documents written in English. To make changes on pages in other languages, please refer to translations instead. This means that in the folder /src/pages/ you should any make changes in /src/pages/en, as changes in any other locale (/src/pages/es or /src/pages/fr for example) will be overwritten.
+
 ## Next.js, MDX, Markdown
 
 This docs site is built with [Next.js](https://github.com/vercel/next.js) and uses something called [MDX](https://mdxjs.com/).
