@@ -143,6 +143,7 @@ const NavItem: React.FC<FlexProps & { item: NavItem }> = ({ item, ...props }) =>
   const { hover, active, bind } = useTouchable({
     behavior: 'link',
   });
+
   return (
     <Flex justifyContent="center" position="relative" {...props} {...bind}>
       <HeaderTextItem
@@ -240,6 +241,7 @@ const LogoLink = React.memo(() => {
 });
 
 const Header = ({ hideSubBar, ...rest }: any) => {
+  console.log('rest', useRouter().locale);
   return (
     <>
       <HeaderWrapper>
