@@ -137,5 +137,5 @@ docker stop stacks-blockchain
 
 - [Running an API instance with Docker][]
 
-  [`stacks-blockchain`]: https://github.com/stacks-network/stacks-blockchain
   [Running an API instance with Docker]: https://docs.hiro.so/get-started/running-api-node
+  [`stacks-blockchain`]: https://github.com/stacks-network/stacks-blockchain
