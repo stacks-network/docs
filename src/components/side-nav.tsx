@@ -14,6 +14,7 @@ import { css } from '@stacks/ui-core';
 import { SmartLink } from '@components/mdx';
 import { useMobileMenuState } from '@common/hooks/use-mobile-menu';
 import { useTheme } from '@emotion/react';
+import { HOME } from '@common/constants_that_require_translations';
 
 const Wrapper: React.FC<BoxProps & { containerProps?: BoxProps }> = ({
   width = `${SIDEBAR_WIDTH}px`,
@@ -44,7 +45,7 @@ const capitalize = s => {
 };
 
 const convertToTitle = (path: string) =>
-  !path ? null : path === '/' ? 'Home' : capitalize(path.replace('/', '').replace(/-/g, ' '));
+  !path ? null : path === '/' ? HOME : capitalize(path.replace('/', '').replace(/-/g, ' '));
 
 const PageItem = React.forwardRef(
   (
