@@ -97,4 +97,4 @@ sections:
               - path: /bns-contract
               - path: /stacking-contract
 
-      - path: /contributing
+      - path: /contribute
