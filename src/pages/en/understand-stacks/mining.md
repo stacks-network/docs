@@ -46,10 +46,6 @@ Miners commit Bitcoin to **two** addresses in every leader block commit. The amo
 
 ![mining with pox](/images/pages/mining-with-pox.png)
 
-100,000 Bitcoin blocks **after** mining begins, the PoX sunset phase begins. During this phase, an increasing proportion of the block commit must be burnt. To burn this sunset fee, the miner must send the sunset fee amount to the first output of their block commit transaction (that is, the OPRETURN output).
-
-400,000 Bitcoin blocks after the sunset phase begins, the sunset phase ends. After this point, PoX is no longer active, and miners must burn all of their leader block commits. They do so by sending Bitcoin to the canonical burn address `1111111111111111111114oLvT2`.
-
 ## Probability to mine next block
 
 The miner who is selected to mine the next block is chosen depending on the amount of BTC the miners sent, that is, transferred or burnt.
