@@ -30,14 +30,6 @@ sections:
           - path: /values
           - path: /tokens
         sections:
-          - title: Resources
-            pages:
-              - external:
-                  href: 'https://stacks.org/clarity-universe'
-                  title: Clarity Universe
-              - external:
-                  href: 'https://docs.hiro.so/tutorials'
-                  title: Hiro Clarity tutorials
           - title: Clarity Language
             usePageTitles: true
             pages:
@@ -45,6 +37,17 @@ sections:
               - path: /language-types
               - path: /language-keywords
               - path: /language-functions
+          - title: Resources
+            pages:
+              - external:
+                  href: 'https://book.clarity-lang.org/'
+                  title: Clarity Book
+              - external:
+                  href: 'https://stacks.org/clarity-universe'
+                  title: Clarity Universe
+              - external:
+                  href: 'https://docs.hiro.so/tutorials'
+                  title: Hiro Clarity tutorials
 
       - path: /build-apps
         pages:
