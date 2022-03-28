@@ -80,6 +80,18 @@ const nav: NavItem[] = [
         label: 'GitHub',
         href: 'https://github.com/stacks-network',
       },
+      {
+        label: 'Mailing List',
+        href: 'https://stacks.org/updates',
+      },
+      {
+        label: 'Twitter',
+        href: 'https://twitter.com/stacks',
+      },
+      {
+        label: 'Youtube',
+        href: 'https://www.youtube.com/channel/UC3J2iHnyt2JtOvtGVf_jpHQ',
+      },
     ],
   },
   {
