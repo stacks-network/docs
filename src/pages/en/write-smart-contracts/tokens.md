@@ -61,10 +61,6 @@ into the ecosystem. Under the [SIP-010][] standard, fungible tokens must have th
 - A URI to metadata associated with the token (`get-token-uri`). This can resolve to off-chain metadata about the
   token or contract, such as an image icon for the token or a description.
 
-### Examples of fungible tokens on Stacks
-
-- [Nothing](https://nothingtoken.com/) ([contract](https://explorer.stacks.co/txid/0x022bed728d648ff1a68036c40f3aff8136ee22fee18380731df0ab9d76d3c4a9?chain=mainnet))
-
 ## Non-fungible tokens (NFTs)
 
 Non-fungible tokens (NFTs) are a type of token that are not interchangeable. NFTs have unique traits (usually in the
@@ -94,10 +90,6 @@ aligned on. With support for this standard across wallets and tools, it becomes 
 - Ability to verify the owner for a given token identifier (`get-owner`). The owner resolves to a
   [Stacks principal](/write-smart-contracts/principals).
 - Ability to transfer an NFT to a recipient (`transfer`). The recipient is required to be a Stacks principal.
-
-### Examples of NFTs on Stacks
-
-- [This is #1](https://thisisnumberone.com) ([contract](https://explorer.stacks.co/txid/SP3QSAJQ4EA8WXEDSRRKMZZ29NH91VZ6C5X88FGZQ.thisisnumberone-v2?chain=mainnet))
 
 ## Further reading
 
