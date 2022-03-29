@@ -14,7 +14,7 @@ If you are interested in translation this site to multiple languages, please ref
 
 ## Style checks
 
-This repository uses [vale](https://github.com/errata-ai/vale) to run style checks. Make sure to install the tool and run the following command before creating a PR in order to check for styling issues:
+This repository uses [vale](https://github.com/errata-ai/vale) to run style checks. Make sure to [install the tool](https://docs.errata.ai/vale/install) and run the following command before creating a PR in order to check for styling issues:
 
 ```bash
 yarn check:style
