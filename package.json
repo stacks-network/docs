@@ -129,7 +129,7 @@
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "npm run typecheck -- --watch",
     "check:urls": "find . -type f -name '*.md' ! -path './node_modules/*' ! -path './_site/*' | xargs -L1 npx markdown-link-check -q -c mlc_config.json",
-    "check:style": "vale --no-exit --output=JSON --glob='*.{md}' --config='.vale/vale.ini' ./src/pages > .vale/check.json"
+    "check:style": "vale --no-exit --output=JSON --glob='*.{md}' --config='./.vale.ini' ./src/pages > .vale/check.json"
   },
   "husky": {
     "hooks": {
