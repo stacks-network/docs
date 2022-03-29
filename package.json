@@ -91,6 +91,7 @@
     "unist-util-visit": "^2.0.3",
     "use-events": "^1.4.2",
     "use-is-in-viewport": "^1.0.9",
+    "vale": "^0.1.0",
     "yaml-loader": "^0.6.0"
   },
   "devDependencies": {
