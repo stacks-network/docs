@@ -48,7 +48,7 @@ Create a new project and enter its directory:
 clarinet new my-project && cd my-project
 ```
 
-Create a new contract inside my project:
+Create a new contract inside `my-project`:
 
 ```bash
 clarinet contract new mycoolcontract
