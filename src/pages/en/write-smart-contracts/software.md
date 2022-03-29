@@ -15,7 +15,7 @@ Clarity LSP repository is available [here](https://github.com/hirosystems/clarit
 
 ## Clarity REPL
 
-A read–eval–print loop (REPL), also termed an interactive toplevel or language shell, is a simple, interactive computer programming environment that takes single user inputs (i.e., single expressions), evaluates (executes) them, and returns the result to the user; a program written in a REPL environment is executed piecewise.
+A read—eval—print loop (REPL), also termed an interactive toplevel or language shell, is a simple, interactive computer programming environment that takes single user inputs (that is, single expressions), evaluates (executes) them, and returns the result to the user; a program written in a REPL environment is executed piecewise.
 
 ![Clarity-repl](https://github.com/hirosystems/clarity-repl/blob/develop/docs/images/screenshot.png?raw=true)
 
