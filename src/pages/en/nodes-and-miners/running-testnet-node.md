@@ -15,14 +15,11 @@ images:
 
 This procedure demonstrates how to run a local testnet node using Docker images.
 
--> This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on
-Windows.
+-> This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on Windows.
 
 ## Prerequisites
 
-Running a node has no specialized hardware requirements. Users have been successful in running nodes on Raspberry Pi
-boards and other system-on-chip architectures. In order to complete this procedure, you must have the following software
-installed on the node host machine:
+Running a node has no specialized hardware requirements. Users have been successful in running nodes on Raspberry Pi boards and other system-on-chip architectures. In order to complete this procedure, you must have the following software installed on the node host machine:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [curl](https://curl.se/download.html)
@@ -30,9 +27,7 @@ installed on the node host machine:
 
 ### Firewall configuration
 
-In order for the API node services to work correctly, you must configure any network firewall rules to allow traffic on
-the ports discussed in this section. The details of network and firewall configuration are highly specific to your
-machine and network, so a detailed example isn't provided.
+In order for the API node services to work correctly, you must configure any network firewall rules to allow traffic on the ports discussed in this section. The details of network and firewall configuration are highly specific to your machine and network, so a detailed example isn't provided.
 
 The following ports must open on the host machine:
 
@@ -52,8 +47,7 @@ These egress ports are for syncing [`stacks-blockchain`][] and Bitcoin headers. 
 
 ## Step 1: initial setup
 
-In order to run the testnet node, you must download the Docker images and create a directory structure to hold the
-persistent data from the services. Download and configure the Docker images with the following commands:
+In order to run the testnet node, you must download the Docker images and create a directory structure to hold the persistent data from the services. Download and configure the Docker images with the following commands:
 
 ```sh
 docker pull blockstack/stacks-blockchain
@@ -141,7 +135,5 @@ docker stop stacks-blockchain
 
 ## Additional reading
 
-- [Running an API instance with Docker][]
-  [running a mainnet node with docker]: /understand-stacks/running-mainnet-node
-  [running an api instance with docker]: https://docs.hiro.so/get-started/running-api-node
-  [`stacks-blockchain`]: https://github.com/stacks-network/stacks-blockchain
+- [Running a Stacks API node](https://docs.hiro.so/get-started/running-api-node)
+- [Running a Stacks mainnet node](running-mainnet-node)
