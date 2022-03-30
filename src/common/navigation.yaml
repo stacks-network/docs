@@ -15,12 +15,7 @@ sections:
           - path: /stacking
           - path: /technical-specs
           - path: /stacks-blockchain-api
-        sections:
-          - title: Tutorials
-            usePageTitles: true
-            pages:
-              - path: /running-mainnet-node
-              - path: /running-testnet-node
+# Add a page on governance/SIPs
 
       - path: /write-smart-contracts
         usePageTitles: true
@@ -56,38 +51,51 @@ sections:
       - path: /build-apps
         pages:
           - path: /overview
+          - path: /deploy-tips
         sections:
           - title: References
             usePageTitles: true
             pages:
               - path: /references/authentication
               - path: /references/bns
-              - path: /references/gaia
-
-          - title: Community
-            usePageTitles: true
-            pages:
-              - external:
-                  href: 'https://github.com/friedger/awesome-stacks-chain'
-                  title: Awesome Stacks
               - external:
                   href: 'https://docs.hiro.so/example-apps'
                   title: Hiro example apps
 
-      - path: /start-mining
+      - path: /nodes-and-miners
         pages:
-          - path: /mainnet
-          - path: /testnet
+          - path: /overview
+          - path: /stacks-node-configuration
+        sections:
+          - title: Nodes
+            usePageTitles: true
+            pages:
+              - path: /running-mainnet-node
+              - path: /running-testnet-node
+
+          - title: Miners
+            usePageTitles: true
+            pages:
+              - path: /miner-mainnet
+              - path: /miner-testnet
+
+
+      - path: /noteworthy-contracts
+        pages:
+          - path: /bns-contract
+          - path: /stacking-contract
+        # Add more important contracts
+
+      - path: /gaia
+        pages:
+          - path: /overview
 
       - path: /references
         pages:
-          - path: /faqs
           - path: /glossary
-          - path: /deploy-tips
           - external:
               href: 'https://hirosystems.github.io/stacks-blockchain-api/'
               title: Stacks Blockchain API
-          - path: /stacks-node-configuration
           - external:
               href: 'https://stacks.js.org/'
               title: Stacks.js
@@ -97,12 +105,9 @@ sections:
           - external:
               href: 'https://www.stacks.co/explore/discover-apps'
               title: Discover Apps
-        sections:
-          - title: Contracts
-            usePageTitles: true
-            pages:
-              - path: /bns-contract
-              - path: /stacking-contract
+          - external:
+              href: 'https://github.com/friedger/awesome-stacks-chain'
+              title: Awesome Stacks
 
       - path: /contribute
         pages:

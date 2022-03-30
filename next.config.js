@@ -9,6 +9,41 @@ const withFonts = require('next-fonts');
 async function redirects() {
   return [
     {
+      source: '/build-apps/references/gaia',
+      destination: '/gaia',
+      permanent: true,
+    },
+    {
+      source: '/gaia',
+      destination: '/gaia/overview',
+      permanent: true,
+    },
+    {
+      source: '/references/bns-contract',
+      destination: '/noteworthy-contracts/bns-contract',
+      permanent: true,
+    },
+    {
+      source: '/references/stacking-contract',
+      destination: '/noteworthy-contracts/stacking-contract',
+      permanent: true,
+    },
+    {
+      source: '/references/deploy-tips',
+      destination: '/build-apps/deploy-tips',
+      permanent: true,
+    },
+    {
+      source: '/references/stacks-node-configuration',
+      destination: '/nodes-and-miners/stacks-node-configuration',
+      permanent: true,
+    },
+    {
+      source: '/nodes-and-miners',
+      destination: '/nodes-and-miners/overview',
+      permanent: true,
+    },
+    {
       source: '/contribute',
       destination: '/contribute/overview',
       permanent: true,
@@ -88,30 +123,34 @@ async function redirects() {
       destination: 'https://stacks.js.org/',
       permanent: true,
     },
-    { source: '/develop/profiles.html', destination: '/authentication/profiles', permanent: true },
+    {
+      source: '/develop/profiles.html',
+      destination: '/authentication/profiles',
+      permanent: true,
+    },
     {
       source: '/storage/overview.html',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     {
       source: '/develop/storage.html',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     {
       source: '/data-storage/storage-write-read',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     {
       source: '/data-storage/storage-guide',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     {
       source: '/data-storage/overview',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     {
@@ -126,32 +165,32 @@ async function redirects() {
     },
     {
       source: '/storage/write-to-read.html',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     {
       source: '/develop/radiks-intro.html',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     {
       source: '/develop/radiks-setup.html',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     {
       source: '/develop/radiks-models.html',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     {
       source: '/develop/radiks-collaborate.html',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     {
       source: '/develop/radiks-server-extras.html',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     {
@@ -191,7 +230,7 @@ async function redirects() {
     },
     {
       source: '/core/smart/testnet-node.html',
-      destination: '/understand-stacks/running-testnet-node',
+      destination: '/nodes-and-miners/running-testnet-node',
       permanent: true,
     },
     {
@@ -231,12 +270,12 @@ async function redirects() {
     },
     {
       source: '/core/faq_technical.html',
-      destination: '/references/faqs',
+      destination: '/',
       permanent: true,
     },
     {
       source: '/faqs/allfaqs',
-      destination: '/references/faqs',
+      destination: '/',
       permanent: true,
     },
     {
@@ -344,18 +383,26 @@ async function redirects() {
       destination: '/understand-stacks/atlas-usage',
       permanent: true,
     },
-    { source: '/org/overview.html', destination: '/ecosystem/overview', permanent: true },
+    {
+      source: '/org/overview.html',
+      destination: '/ecosystem/overview',
+      permanent: true,
+    },
     {
       source: '/faqs/allFAQS.html',
-      destination: '/references/faqs',
+      destination: '/',
       permanent: true,
     },
     {
       source: '/core/faq_technical.html',
-      destination: '/references/faqs',
+      destination: '/',
       permanent: true,
     },
-    { source: '/org/token.html', destination: '/ecosystem/stacks-token', permanent: true },
+    {
+      source: '/org/token.html',
+      destination: '/ecosystem/stacks-token',
+      permanent: true,
+    },
     {
       source: '/org/whitepaper-blockchain.html',
       destination: 'https://community.stacks.org/pox',
@@ -415,7 +462,7 @@ async function redirects() {
     },
     {
       source: '/org/tokenholders.html',
-      destination: '/references/faqs/stacks-token',
+      destination: '/',
       permanent: true,
     },
     {
@@ -513,10 +560,21 @@ async function redirects() {
       destination: '/build-apps/overview',
       permanent: true,
     },
-    { source: '/org/terms.html', destination: '/references/glossary', permanent: true },
-    // overview redirects
-    { source: '/stacks-blockchain', destination: '/understand-stacks/overview', permanent: true },
-    { source: '/smart-contracts', destination: '/write-smart-contracts/overview', permanent: true },
+    {
+      source: '/org/terms.html',
+      destination: '/references/glossary',
+      permanent: true,
+    },
+    {
+      source: '/stacks-blockchain',
+      destination: '/understand-stacks/overview',
+      permanent: true,
+    },
+    {
+      source: '/smart-contracts',
+      destination: '/write-smart-contracts/overview',
+      permanent: true,
+    },
     {
       source: '/understand-stacks',
       destination: '/understand-stacks/overview',
@@ -527,10 +585,10 @@ async function redirects() {
       destination: '/write-smart-contracts/overview',
       permanent: true,
     },
-    { source: '/data-storage', destination: '/build-apps/references/gaia', permanent: true },
+    { source: '/data-storage', destination: '/gaia', permanent: true },
     {
       source: '/data-storage/overview',
-      destination: '/build-apps/references/gaia',
+      destination: '/gaia',
       permanent: true,
     },
     { source: '/data-indexing', destination: '/build-apps/indexing/overview', permanent: true },
@@ -539,24 +597,44 @@ async function redirects() {
       destination: '/build-apps/indexing/overview',
       permanent: true,
     },
-    { source: '/stacks-wallet', destination: '/stacks-wallet/overview', permanent: true },
-    { source: '/naming-services', destination: '/build-apps/references/bns', permanent: true },
-    { source: '/naming-system', destination: '/build-apps/references/bns', permanent: true },
-    { source: '/storage-hubs', destination: '/storage-hubs/overview', permanent: true },
+    {
+      source: '/stacks-wallet',
+      destination: '/stacks-wallet/overview',
+      permanent: true,
+    },
+    {
+      source: '/naming-services',
+      destination: '/build-apps/references/bns',
+      permanent: true,
+    },
+    {
+      source: '/naming-system',
+      destination: '/build-apps/references/bns',
+      permanent: true,
+    },
+    {
+      source: '/storage-hubs',
+      destination: '/storage-hubs/overview',
+      permanent: true,
+    },
     {
       source: '/references',
       destination: 'https://docs.hiro.so/references/stacks-cli',
       permanent: true,
     },
-    { source: '/ecosystem', destination: '/ecosystem/overview', permanent: true },
+    {
+      source: '/ecosystem',
+      destination: '/ecosystem/overview',
+      permanent: true,
+    },
     {
       source: '/stacks-blockchain/testnet-node',
-      destination: '/understand-stacks/running-testnet-node',
+      destination: '/nodes-and-miners/running-testnet-node',
       permanent: true,
     },
     {
       source: '/understand-stacks/testnet-node',
-      destination: '/understand-stacks/running-testnet-node',
+      destination: '/nodes-and-miners/running-testnet-node',
       permanent: true,
     },
     {
@@ -747,12 +825,12 @@ async function redirects() {
     },
     {
       source: '/mining',
-      destination: '/start-mining/mainnet',
+      destination: '/nodes-and-miners/miner-mainnet',
       permanent: true,
     },
     {
       source: '/start-mining',
-      destination: '/start-mining/mainnet',
+      destination: '/nodes-and-miners/miner-mainnet',
       permanent: true,
     },
     {
@@ -792,7 +870,7 @@ async function redirects() {
     },
     {
       source: '/stacks-blockchain/running-testnet-node',
-      destination: '/understand-stacks/running-testnet-node',
+      destination: '/nodes-and-miners/running-testnet-node',
       permanent: true,
     },
     {
