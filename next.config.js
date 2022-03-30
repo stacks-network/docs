@@ -9,6 +9,11 @@ const withFonts = require('next-fonts');
 async function redirects() {
   return [
     {
+      source: '/contribute',
+      destination: '/contribute/overview',
+      permanent: true,
+    },
+    {
       source: '/references/language-functions',
       destination: '/write-smart-contracts/language-functions',
       permanent: true,
