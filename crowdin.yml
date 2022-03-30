@@ -3,3 +3,9 @@ files:
     translation: /src/pages/%two_letters_code%/**/%original_file_name%
   - source: /src/common/constants_that_require_translations.ts
     translation: /src/common/constants_that_require_translations_%two_letters_code%.%file_extension%
+  - source: /src/_data/boot-contracts-reference.json
+    translation: /src/_data/boot-contracts-reference_%two_letters_code%.%file_extension%
+  - source: /src/_data/clarity-reference.json
+    translation: /src/_data/clarity-reference_%two_letters_code%.%file_extension%
+  - source: /src/_data/glossary.csv
+    translation: /src/_data/glossary_%two_letters_code%.%file_extension%
