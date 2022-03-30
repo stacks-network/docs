@@ -1,5 +1,5 @@
 ---
-title: Gaia
+title: Gaia overview
 description: Decentralized storage architecture for off-chain data
 images:
   large: /images/pages/data-storage.svg
@@ -8,14 +8,11 @@ images:
 
 ## Introduction
 
-Apps built with the Stacks blockchain store off-chain data using a storage system called
-Gaia.
+Apps built with the Stacks blockchain store off-chain data using a storage system called Gaia.
 
-Whereas public transactional metadata is best stored on the Stacks blockchain, user
-application data can often be stored more efficiently and privately in Gaia storage.
+Whereas public transactional metadata is best stored on the Stacks blockchain, user application data can often be stored more efficiently and privately in Gaia storage.
 
-Storing data off of the blockchain ensures that Stacks applications can provide users with high performance and high availability for data reads and writes without introducing central trust
-parties.
+Storing data off of the blockchain ensures that Stacks applications can provide users with high performance and high availability for data reads and writes without introducing central trust parties.
 
 ## Understand Gaia in the Stacks architecture
 
@@ -39,8 +36,7 @@ The Stacks blockchain stores only identity data. Data created by the actions of 
 
 ## User control or how is Gaia decentralized?
 
-A Gaia hub runs as a service which writes to data storage. The storage itself is a simple key-value store. The hub service
-writes to data storage by requiring a valid authentication token from a requestor. Typically, the hub service runs on a compute resource and the storage itself on separate, dedicated storage resource. Typically, both resources belong to the same cloud computing provider.
+A Gaia hub runs as a service which writes to data storage. The storage itself is a simple key-value store. The hub service writes to data storage by requiring a valid authentication token from a requestor. Typically, the hub service runs on a compute resource and the storage itself on separate, dedicated storage resource. Typically, both resources belong to the same cloud computing provider.
 
 ![Gaiastorage](/images/gaia-storage.png)
 
@@ -75,8 +71,7 @@ The token ensures the app has the authorization to write to the hub on the user'
 
 ## Gaia versus other storage systems
 
-Here's how Gaia stacks up against other decentralized storage systems. Features
-that are common to all storage systems are omitted for brevity.
+Here's how Gaia stacks up against other decentralized storage systems. Features that are common to all storage systems are omitted for brevity.
 
 | Features                                   | [Gaia](https://github.com/stacks-network/gaia) | [Sia](https://sia.tech/) | [Storj](https://storj.io/) | [IPFS](https://ipfs.io/) | [DAT](https://datproject.org/) | [SSB](https://www.scuttlebutt.nz/) |
 | ------------------------------------------ | ---------------------------------------------- | ------------------------ | -------------------------- | ------------------------ | ------------------------------ | ---------------------------------- |
