@@ -142,7 +142,7 @@ For a full reference of subcommands and configuration options used by `stacks-no
 [@page-reference | inline]
 | /references/stacks-node-configuration
 
-To read more about the technical details of mining on the Stacks 2.0 network, have a look at the minig guide:
+To read more about the technical details of mining on the Stacks 2.0 network, have a look at the mining guide:
 
 [@page-reference | inline]
 | /understand-stacks/mining
@@ -159,7 +159,7 @@ STACKS_LOG_DEBUG=1 stacks-node mainnet
 
 ### Prerequisites
 
-Make sure you've followed the [Running the mainnet node on Windows](/understand-stacks/running-mainnet-node#running-the-mainnet-node-on-windows) tutorial and [Running itcoind locally](#running-bitcoind-locally) section above before starting this tutorial.
+Make sure you've followed the [Running the mainnet node on Windows](/understand-stacks/running-mainnet-node#running-the-mainnet-node-on-windows) tutorial and [Running bitcoind locally](#running-bitcoind-locally) section above before starting this tutorial.
 
 ### Generate keychain and get mainnet tokens in Windows
 
