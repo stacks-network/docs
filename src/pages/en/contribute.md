@@ -196,16 +196,12 @@ We use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/
 
 ### Always use Markdown when possible
 
-It's possible to write standard HTML when writing in Markdown, but that should be avoided at all costs. We use `remark` to
-processes all Markdown, giving us things like automatically opening all external links in new windows, and adding IDs to headers.
-When we write things in HTML, such as a link or image, we don't get the benefit of the remark plugins as consistently as we would
-if we stuck to standar Markdown.
+It's possible to write standard HTML when writing in Markdown, but that should be avoided at all costs. We use `remark` to processes all Markdown, giving us things like automatically opening all external links in new windows, and adding IDs to headers.
+When we write things in HTML, such as a link or image, we don't get the benefit of the remark plugins as consistently as we would if we stuck to standard Markdown.
 
 ### Code blocks
 
-The site uses `react-prism-renderer` and `prismjs` to add syntax highlighting to all of our code. You can see a full
-list of [languages supported here](https://github.com/PrismJS/prism/tree/master/components). We have a custom language
-definition for `clarity`, our smart contracting language located here. To add a new language, see this file: [`components/codeblock/index.tsx`](#).
+The site uses `react-prism-renderer` and `prismjs` to add syntax highlighting to all of our code. You can see a full list of [languages supported here](https://github.com/PrismJS/prism/tree/master/components). We have a custom language definition for `clarity`, our smart contracting language located here. To add a new language, see this file: [`components/codeblock/index.tsx`](#).
 
 To write a code block, you need to wrap your code in ` ```language `, and end your code block with ` ``` `. Here is an example of ` ```clarity `.
 
