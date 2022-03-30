@@ -50,4 +50,4 @@ Consult the documentation for your hosting service to learn how to configure COR
 
 ## Deployment and Radiks
 
-If you are deploying a Stacks application that uses Radiks, your deployment includes a server and a database component. You must take this into account when deploying your application. You may want to choose a service such as Heroku or Digital Ocean if your app uses Radiks.
+If you are deploying a Stacks application that uses [Radiks](https://github.com/stacks-network/radiks), your deployment includes a server and a database component. You must take this into account when deploying your application. You may want to choose a service such as [Heroku](https://www.heroku.com) or [Digital Ocean](https://www.digitalocean.com) if your app uses Radiks.
