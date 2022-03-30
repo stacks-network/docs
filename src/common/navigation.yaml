@@ -30,6 +30,10 @@ sections:
           - path: /values
           - path: /tokens
         sections:
+          - title: Clarity Development Software
+            usePageTitles: true
+            pages:
+              - path: /software       
           - title: Clarity Language
             usePageTitles: true
             pages:
@@ -101,4 +105,8 @@ sections:
               - path: /stacking-contract
 
       - path: /contribute
+        pages:
+          - path: /overview
+          - path: /docs
+          - path: /translations
       
