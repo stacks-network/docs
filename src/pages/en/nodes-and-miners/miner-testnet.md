@@ -13,7 +13,7 @@ images:
 
 ## Introduction
 
-Make sure you've followed the [Running testnet node](/understand-stacks/running-testnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
+Make sure you've followed the [Running testnet node](/nodes-and-miners/running-testnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
 
 If you want to learn more about the technical details of mining, please review the mining guide:
 
@@ -156,7 +156,7 @@ STACKS_LOG_DEBUG=1 stacks-node xenon
 
 ### Prerequisites
 
-Make sure you've followed the [Running the testnet node on Windows](/understand-stacks/running-testnet-node#running-the-testnet-node-on-windows) tutorial before starting this tutorial.
+Make sure you've followed the [running the testnet node](/nodes-and-miners/running-testnet-node) tutorial before starting this tutorial.
 
 ### Generate keychain and get testnet tokens in Windows
 
@@ -225,8 +225,12 @@ To start your miner, run this in the command line:
 stacks-node start --config=testnet/stacks-node/conf/testnet-miner-conf.toml
 ```
 
+<!-- markdown-link-check-disable -->
+
 -> **Note** : While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
 ![Windows Defender](/images/windows-defender.png)
+
+<!-- markdown-link-check-enable-->
 
 Your node should start. It will take some time to sync, and then your miner will be running.
 

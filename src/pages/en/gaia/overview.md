@@ -55,7 +55,7 @@ Because `alice.id` has access to her [zonefile](https://docs.stacks.co/reference
 
 ~> Users with existing identities cannot yet migrate their data from one hub to another.
 
-Applications writing directly on behalf of `alice.id` do not need to perform a lookup. Instead, the [Stacks authentication flow](http://blockstack.github.io/stacks.js/index.html) provides Alice's chosen gaia hub URL to the application. This authentication flow _is also_ within Alice's control because Alice's wallet _must_ generate the authentication response.
+Applications writing directly on behalf of `alice.id` do not need to perform a lookup. Instead, the [Stacks authentication flow](https://stacks.js.org) provides Alice's chosen gaia hub URL to the application. This authentication flow _is also_ within Alice's control because Alice's wallet _must_ generate the authentication response.
 
 ## Understand data storage
 

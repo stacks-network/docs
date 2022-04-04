@@ -182,5 +182,8 @@ The rpc configuration of your bitcoin node is out of the scope of this document,
 
 ## Additional reading
 
+<!-- markdown-link-check-disable -->
+
 - [Running a Stacks API node](https://docs.hiro.so/get-started/running-api-node)
 - [Running a Stacks testnet node](running-testnet-node)
+<!-- markdown-link-check-enable-->
