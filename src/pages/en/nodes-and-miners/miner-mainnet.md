@@ -13,7 +13,7 @@ images:
 
 ## Introduction
 
-Make sure you've followed the [Running mainnet node](/understand-stacks/running-mainnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the mainnet.
+Make sure you've followed the [Running mainnet node](/nodes-and-miners/running-mainnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the mainnet.
 
 If you're interested in mining on the testnet, you can find instructions on how to do that here:
 
@@ -87,7 +87,11 @@ The above BTC address will then need to be imported into the BTC network.
 bitcoin-cli -rpcport=8332 -rpcuser=your-user -rpcpassword=your-password importaddress <btcAddress from JSON above>
 ```
 
+<!-- markdown-link-check-disable -->
+
 Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
+
+<!-- markdown-link-check-enable-->
 
 Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
 
@@ -159,7 +163,7 @@ STACKS_LOG_DEBUG=1 stacks-node mainnet
 
 ### Prerequisites
 
-Make sure you've followed the [Running the mainnet node on Windows](/understand-stacks/running-mainnet-node#running-the-mainnet-node-on-windows) tutorial and [Running bitcoind locally](#running-bitcoind-locally) section above before starting this tutorial.
+Make sure are [running a node](/nodes-and-miners/running-mainnet-node) and [running bitcoind locally](#running-bitcoind-locally) before starting this tutorial.
 
 ### Generate keychain and get mainnet tokens in Windows
 
