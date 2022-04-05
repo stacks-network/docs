@@ -11,7 +11,7 @@ images:
 The type system contains the following types:
 
 - `{label-0: value-type-0, label-1: value-type-1, ...}` -
-  a group of data values with named fields, aka (_record_)[https://www.cs.cornell.edu/courses/cs312/2004fa/lectures/lecture3.htm].
+  a group of data values with named fields, aka [_record_](https://www.cs.cornell.edu/courses/cs312/2004fa/lectures/lecture3.htm).
 - `(list max-len entry-type)` - a list of maximum length `max-len`, with
   entries of type `entry-type`
 - `(response ok-type err-type)` - object used by public functions to commit
