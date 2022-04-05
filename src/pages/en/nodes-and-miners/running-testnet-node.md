@@ -135,5 +135,8 @@ docker stop stacks-blockchain
 
 ## Additional reading
 
+<!-- markdown-link-check-disable -->
+
 - [Running a Stacks API node](https://docs.hiro.so/get-started/running-api-node)
 - [Running a Stacks mainnet node](running-mainnet-node)
+<!-- markdown-link-check-enable-->
