@@ -1,0 +1,20 @@
+{
+    "ignorePatterns": [
+		{
+			"pattern": "^https:\/\/www\.coinbase\.com\b"
+		},
+		{
+			"pattern": "^https:\/\/www\.kraken\.com\b"
+		}
+	],
+    "replacementPatterns": [
+        {
+            "pattern": "^/",
+            "replacement": "/github/workspace/"
+        }
+    ],
+    "aliveStatusCodes": [
+        200,
+        429
+    ]
+}
