@@ -141,7 +141,7 @@ state as confirmed.
 [proof-of-transfer consensus mechanism]: /understand-stacks/proof-of-transfer
 [stacks block production model]: https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md#operation-as-a-leader
 [mining microblocks]: /understand-stacks/mining#microblocks
-[anchormode]: https://stacks-js-git-master-blockstack.vercel.app/enums/transactions.anchormode.html
+[anchormode]: https://stacks.js.org/enums/transactions.AnchorMode.html
 [stacks blockchain api guide]: https://docs.hiro.so/get-started/stacks-blockchain-api#microblocks-support
 [provides an endpoint]: https://docs.hiro.so/get-started/stacks-blockchain-api#nonce-handling
 [microblocks_api]: https://docs.hiro.so/api#tag/Microblocks

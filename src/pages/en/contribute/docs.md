@@ -176,7 +176,7 @@ The script will process that file and pull out the title from the frontmatter of
 ### Non-standard pages
 
 There are a few pages within these docs that are non-standard markdown pages. This means they are using some kind of external data as their source,
-such as the [Clarity Reference page](/references/language-overview), or the [Stacks CLI page](https://docs.hiro.so/references/stacks-cli). These pages are using a function of Next.js called
+such as the [Clarity Reference page](/write-smart-contracts/language-overview), or the [Stacks CLI page](https://docs.hiro.so/references/stacks-cli). These pages are using a function of Next.js called
 [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) which allows us to
 fetch external data at runtime and use it in some way within our pages.
 
