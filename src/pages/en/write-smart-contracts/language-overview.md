@@ -22,17 +22,17 @@ Functions specified via `define-public` statements are _public_
 functions and these are the only types of functions which may
 be called directly through signed blockchain transactions. In addition
 to being callable directly from a transaction (see the Stacks wire formats
-for more details on Stacks transactions), public function may be called
+for more details on Stacks transactions), public functions may be called
 by other smart contracts.
 
 Public functions _must_ return a `(response ...)` type. This is used
 by Clarity to determine whether or not to materialize any changes from
 the execution of the function. If a function returns an `(err ...)`
-type, and mutations on the blockchain state from executing the
+type, any mutations on the blockchain state from executing the
 function (and any function that it called during execution) will be
 aborted.
 
-In addition to function defined via `define-public`, contracts may expose
+In addition to functions defined via `define-public`, contracts may expose
 read-only functions. These functions, defined via `define-read-only`, are
 callable by other smart contracts, and may be queryable via public blockchain
 explorers. These functions _may not_ mutate any blockchain state. Unlike normal
@@ -43,7 +43,7 @@ public functions, read-only functions may return any type.
 A smart contract may call functions from other smart contracts using a
 `(contract-call?)` function.
 
-This function returns a response type result-- the return value of the
+This function returns a response type result -- the return value of the
 called smart contract function.
 
 We distinguish 2 different types of `contract-call?`:
@@ -94,7 +94,7 @@ Or imported from an existing contract:
 
 Looking at trait conformance, callee contracts have two different paths.
 They can either be "compatible" with a trait by defining methods
-matching some of the methods defined in a trait, or explicitely declare
+matching some of the methods defined in a trait, or explicitly declare
 conformance using the `impl-trait` statement:
 
 ```clarity

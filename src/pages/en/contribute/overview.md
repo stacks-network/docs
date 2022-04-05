@@ -9,6 +9,8 @@ images:
 
 You can contribute to the Stacks ecosystem in multiple ways:
 
+<!-- markdown-link-check-disable -->
+
 ### Documentation
 
 Contribute to the Stacks Docs on this website. More info [here](docs).
@@ -16,6 +18,8 @@ Contribute to the Stacks Docs on this website. More info [here](docs).
 ### Translations
 
 Help with translations. More details [here](translations).
+
+<!-- markdown-link-check-enable-->
 
 ### Articles
 
