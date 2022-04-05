@@ -20,3 +20,4 @@ jobs:
       with:
         use-verbose-mode: 'yes'
         folder-path: 'src/pages/en/'
+        config-file: '.github/workflows/.mlc_config.json'
