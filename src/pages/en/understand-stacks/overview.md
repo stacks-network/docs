@@ -16,7 +16,11 @@ Smart contracts and apps developed on the Stacks platform are natively integrate
 
 Read more about the features provided by the Stacks 2.0 blockchain.
 
--> Check out the [technical specifications](/understand-stacks/technical-specs) for a brief overview
+<!-- markdown-link-check-disable -->
+
+-> Check out the [technical specifications](technical-specs) for a brief overview
+
+<!-- markdown-link-check-enable-->
 
 A detailed [comparison of the Stacks blockchain to other blockchain technologies][] is available at the Stacks
 Foundation blog.
