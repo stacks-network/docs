@@ -1352,12 +1352,12 @@
   dependencies:
     "@emotion/memoize" "0.7.4"
 
-"@emotion/memoize@0.7.4", "@emotion/memoize@^0.7.1":
+"@emotion/memoize@0.7.4":
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.4.tgz#19bf0f5af19149111c40d98bb0cf82119f5d9eeb"
   integrity sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==
 
-"@emotion/memoize@^0.7.4", "@emotion/memoize@^0.7.5":
+"@emotion/memoize@^0.7.1", "@emotion/memoize@^0.7.4", "@emotion/memoize@^0.7.5":
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.5.tgz#2c40f81449a4e554e9fc6396910ed4843ec2be50"
   integrity sha512-igX9a37DR2ZPGYtV6suZ6whr8pTFtyHL3K/oLUotxpSVO2ASaprmAe2Dkq7tBo7CRY7MMDrAa9nuQP9/YG8FxQ==
@@ -1797,9 +1797,9 @@
     prettier "2.5"
 
 "@stacks/ui-core@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@stacks/ui-core/-/ui-core-7.0.0.tgz#74a0c72ed6a3100e170d2391e9b077fc37af1a5e"
-  integrity sha512-2CAGzlR9VUYLHe1U6nc3IEt94fquzXi0vpeOCHHkVW8Eyf83y2O/Swm/N4eMWoVde72dy2+/rdexTwUE7BfYTA==
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/@stacks/ui-core/-/ui-core-7.3.0.tgz#7d4dd4d60206e795ca6b7109dfbaea74f878fda2"
+  integrity sha512-q3ZBu2uk/MMFsBGNZ8aT6stbwqaHuQTatDwS2A8a1gM+Csb/souJD6uY0Nf3R/z4IDCUGT6SYlvd8+lYgTAxzA==
   dependencies:
     "@styled-system/should-forward-prop" "^5.1.5"
     camelcase "^6.0.0"
@@ -2872,9 +2872,9 @@ camelcase-css@2.0.1:
   integrity sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==
 
 camelcase@^6.0.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.2.0.tgz#924af881c9d525ac9d87f40d964e5cea982a1809"
-  integrity sha512-c7wVvbw3f37nuobQNtgsgG9POC9qMbNuMQmTCqZv23b6MIz0fcYpBiOlv9gEN/hdLdnZTDQhg6e9Dq5M1vKvfg==
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.3.0.tgz#5685b95eb209ac9c0c177467778c9c84df58ba9a"
+  integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228:
   version "1.0.30001294"
