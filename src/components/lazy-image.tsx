@@ -131,7 +131,7 @@ export const LazyImage: ForwardRefExoticComponentWithAs<BoxProps, 'img'> = forwa
           maxWidth="100%"
           width={['100%', '100%', 'inherit', 'inherit']}
           display="block"
-          as={(animated.img as unknown) as 'img'}
+          as={animated.img as unknown as 'img'}
           zIndex={99}
           style={
             {
