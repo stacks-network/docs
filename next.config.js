@@ -1074,7 +1074,8 @@ module.exports = withFonts(
         const splitChunks = config.optimization && config.optimization.splitChunks;
         if (splitChunks) {
           const cacheGroups = splitChunks.cacheGroups;
-          const test = /[\\/]node_modules[\\/](preact|preact-render-to-string|preact-context-provider)[\\/]/;
+          const test =
+            /[\\/]node_modules[\\/](preact|preact-render-to-string|preact-context-provider)[\\/]/;
           if (cacheGroups?.framework) {
             cacheGroups.preact = Object.assign({}, cacheGroups?.framework, {
               test,
