@@ -5,6 +5,8 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
+    "@babel/helper-builder-react-jsx": "^7.16.7",
+    "@babel/helper-builder-react-jsx-experimental": "^7.12.11",
     "@docsearch/css": "^1.0.0-alpha.27",
     "@docsearch/react": "^1.0.0-alpha.27",
     "@emotion/babel-plugin": "^11.1.2",
