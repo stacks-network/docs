@@ -29,7 +29,8 @@
         "common/*"
       ]
     },
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "incremental": true
   },
   "exclude": [
     "node_modules",
