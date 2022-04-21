@@ -1957,9 +1957,9 @@
     "@styled-system/css" "^5.1.5"
 
 "@tabler/icons@^1.38.1":
-  version "1.38.1"
-  resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-1.38.1.tgz#11e43f7c41bf2a91c5e7c28cea60841a6caabdb8"
-  integrity sha512-hWEsUwCKo2sdiDNUG74IHhDEUIz+f1Kq5kQ36BP8YiqVrNHTsblbL8vNj5n+KMqxzScF2mjqKJffRxqkvqnJNg==
+  version "1.66.0"
+  resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-1.66.0.tgz#411630b5c8997e42d7f4fe920054bb7750975b50"
+  integrity sha512-lSm1uDymlWdBbGN3TuqvzQbV3kIwcTJo0QTJJbSb5py+ivxSI/Fat/t+pA7/JqLm9rUU+CXuVj3PONSUTanxpg==
 
 "@tippyjs/react@^4.2.0":
   version "4.2.0"
