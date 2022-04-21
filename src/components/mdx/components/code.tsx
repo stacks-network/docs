@@ -92,103 +92,102 @@ const CodeCopyButton: React.FC<
   );
 };
 
-export const Code: React.FC<
-  BoxProps & { highlight?: string; lang?: string; lines: number }
-> = React.memo(
-  React.forwardRef(({ children, highlight, lang, lines, ...rest }, ref) => {
-    const [hover, bind] = useHover();
-    const numbers = getHighlightLineNumbers(highlight);
-    const convertSingleChildToString = child => onlyText(child).replace(/\n/g, '');
-    const tokenLines = Children.toArray(children).map(convertSingleChildToString);
-    const codeString = tokenLines.join('\n').replace(/\n\n\n/g, '\n\n');
-    const { hasCopied, onCopy } = useClipboard(codeString);
-    const hasLineNumbers = lines > LINE_MINIMUM && lang !== 'bash';
+export const Code: React.FC<BoxProps & { highlight?: string; lang?: string; lines: number }> =
+  React.memo(
+    React.forwardRef(({ children, highlight, lang, lines, ...rest }, ref) => {
+      const [hover, bind] = useHover();
+      const numbers = getHighlightLineNumbers(highlight);
+      const convertSingleChildToString = child => onlyText(child).replace(/\n/g, '');
+      const tokenLines = Children.toArray(children).map(convertSingleChildToString);
+      const codeString = tokenLines.join('\n').replace(/\n\n\n/g, '\n\n');
+      const { hasCopied, onCopy } = useClipboard(codeString);
+      const hasLineNumbers = lines > LINE_MINIMUM && lang !== 'bash';
 
-    return (
-      <Box
-        overflow="hidden"
-        position="relative"
-        css={(theme: Theme) =>
-          css({
-            '.token-line': {
-              counterIncrement: 'line',
-              '&__empty': {
-                height: '24px',
-              },
-              '.comment': {
-                color: 'rgba(255,255,255,0.5) !important',
-              },
-              ...generateCssStylesForHighlightedLines(numbers),
-              display: 'flex',
-              fontSize: '14px',
-              pl: !hasLineNumbers
-                ? space(['extra-loose', 'extra-loose', '20px', '20px'])
-                : undefined,
-              '&:before': hasLineNumbers
-                ? {
-                    flexShrink: 0,
-                    content: 'counter(line, decimal-leading-zero)',
-                    display: 'grid',
-                    placeItems: 'center',
-                    color: themeColor('ink.400'),
-                    mr: '16px',
-                    width: '42px',
-                    fontSize: '12px',
-                    transform: 'translateY(1px)',
-                    borderRight: '1px solid rgb(39,41,46)',
-                  }
-                : {},
-            },
-          })(theme) as any
-        }
-        {...bind}
-      >
+      return (
         <Box
-          className={lines <= 3 ? 'no-line-numbers' : ''}
+          overflow="hidden"
           position="relative"
-          ref={ref as any}
-          overflowX="auto"
-        >
-          <Box as="code" {...(rest as any)}>
-            <Box height="16px" width="100%" />
-            <Box
-              as="span"
-              position="absolute"
-              color="transparent"
-              top="16px"
-              pr={space(['extra-loose', 'extra-loose', '20px', '20px'])}
-              left={
-                lines <= LINE_MINIMUM || lang === 'bash'
+          css={(theme: Theme) =>
+            css({
+              '.token-line': {
+                counterIncrement: 'line',
+                '&__empty': {
+                  height: '24px',
+                },
+                '.comment': {
+                  color: 'rgba(255,255,255,0.5) !important',
+                },
+                ...generateCssStylesForHighlightedLines(numbers),
+                display: 'flex',
+                fontSize: '14px',
+                pl: !hasLineNumbers
                   ? space(['extra-loose', 'extra-loose', '20px', '20px'])
-                  : '58px'
-              }
-              zIndex={99}
-            >
-              {codeString}
+                  : undefined,
+                '&:before': hasLineNumbers
+                  ? {
+                      flexShrink: 0,
+                      content: 'counter(line, decimal-leading-zero)',
+                      display: 'grid',
+                      placeItems: 'center',
+                      color: themeColor('ink.400'),
+                      mr: '16px',
+                      width: '42px',
+                      fontSize: '12px',
+                      transform: 'translateY(1px)',
+                      borderRight: '1px solid rgb(39,41,46)',
+                    }
+                  : {},
+              },
+            })(theme) as any
+          }
+          {...bind}
+        >
+          <Box
+            className={lines <= 3 ? 'no-line-numbers' : ''}
+            position="relative"
+            ref={ref as any}
+            overflowX="auto"
+          >
+            <Box as="code" {...(rest as any)}>
+              <Box height="16px" width="100%" />
+              <Box
+                as="span"
+                position="absolute"
+                color="transparent"
+                top="16px"
+                pr={space(['extra-loose', 'extra-loose', '20px', '20px'])}
+                left={
+                  lines <= LINE_MINIMUM || lang === 'bash'
+                    ? space(['extra-loose', 'extra-loose', '20px', '20px'])
+                    : '58px'
+                }
+                zIndex={99}
+              >
+                {codeString}
+              </Box>
+              <Box
+                as="span"
+                style={{
+                  userSelect: 'none',
+                  pointerEvents: 'none',
+                }}
+                display="flex"
+                flexDirection="column"
+              >
+                {children}
+              </Box>
+              <Box height="16px" width="100%" />
             </Box>
-            <Box
-              as="span"
-              style={{
-                userSelect: 'none',
-                pointerEvents: 'none',
-              }}
-              display="flex"
-              flexDirection="column"
-            >
-              {children}
-            </Box>
-            <Box height="16px" width="100%" />
           </Box>
+          <Fade in={hover}>
+            {styles => (
+              <CodeCopyButton styles={styles} hasCopied={hasCopied} lines={lines} onCopy={onCopy} />
+            )}
+          </Fade>
         </Box>
-        <Fade in={hover}>
-          {styles => (
-            <CodeCopyButton styles={styles} hasCopied={hasCopied} lines={lines} onCopy={onCopy} />
-          )}
-        </Fade>
-      </Box>
-    );
-  })
-);
+      );
+    })
+  );
 
 const preProps = {
   display: 'inline',

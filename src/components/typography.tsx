@@ -8,26 +8,22 @@ export const Text: ForwardRefExoticComponentWithAs<BoxProps, 'span'> = forwardRe
   'span'
 >((props, ref) => <Box as="span" ref={ref} color={color('text-body')} {...props} />);
 
-export const Caption: ForwardRefExoticComponentWithAs<
-  BoxProps,
-  'span'
-> = forwardRefWithAs((props, ref) => (
-  <Text
-    style={{ userSelect: 'none' }}
-    color={color('text-caption')}
-    display="inline-block"
-    ref={ref}
-    {...getCapsizeStyles(14, 22)}
-    {...props}
-  />
-));
+export const Caption: ForwardRefExoticComponentWithAs<BoxProps, 'span'> = forwardRefWithAs(
+  (props, ref) => (
+    <Text
+      style={{ userSelect: 'none' }}
+      color={color('text-caption')}
+      display="inline-block"
+      ref={ref}
+      {...getCapsizeStyles(14, 22)}
+      {...props}
+    />
+  )
+);
 
-export const Title: ForwardRefExoticComponentWithAs<
-  BoxProps,
-  'span'
-> = React.forwardRef((props, ref) => (
-  <Text ref={ref} display="inline-block" color={color('text-title')} {...props} />
-));
+export const Title: ForwardRefExoticComponentWithAs<BoxProps, 'span'> = React.forwardRef(
+  (props, ref) => <Text ref={ref} display="inline-block" color={color('text-title')} {...props} />
+);
 
 export type LinkProps = BoxProps & Partial<React.AnchorHTMLAttributes<HTMLAnchorElement>>;
 

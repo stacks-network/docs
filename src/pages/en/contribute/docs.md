@@ -124,7 +124,6 @@ Frontmatter is the top part of any markdown document that is written in a langua
 title: This is my page title
 description: A short, concise sentence describing what is on this page
 ---
-
 ```
 
 Frontmatter gives us the ability to define some things within a page that the site can use, such as a page title or page description.
