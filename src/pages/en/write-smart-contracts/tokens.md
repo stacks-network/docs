@@ -99,5 +99,5 @@ aligned on. With support for this standard across wallets and tools, it becomes 
 [fungible]: #fungible-tokens
 [non-fungible]: #non-fungible-tokens-nfts
 [smart contracts]: /write-smart-contracts/overview
-[sip-010]: https://github.com/hstove/sips/blob/feat/sip-10-ft/sips/sip-010/sip-010-fungible-token-standard.md
-[sip-009]: https://github.com/friedger/sips/blob/main/sips/sips/sip-009-nft-standard.md
+[sip-010]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
+[sip-009]: https://github.com/stacksgov/sips/blob/main/sips/sip-009/sip-009-nft-standard.md
