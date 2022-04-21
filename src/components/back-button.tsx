@@ -26,9 +26,7 @@ export const BackButton = ({ href, ...rest }) => (
       display="flex !important"
       {...rest}
     >
-      <Box as="span" mr={space('extra-tight')}>
-        <ArrowLeftIcon size="16px" />
-      </Box>
+      <Box as="span" mr={space('extra-tight')}></Box>
       <Text color={'currentColor'}>Back</Text>
     </Flex>
   </Wrapper>

@@ -181,9 +181,7 @@ const BackItem = props => (
     alignItems="center"
     {...props}
   >
-    <Box mr={space('extra-tight')}>
-      <ArrowLeftIcon size="16px" />
-    </Box>
+    <Box mr={space('extra-tight')}></Box>
     <PageItem textDecoration="none" mb={'0px'} color={'currentColor'}>
       Back
     </PageItem>

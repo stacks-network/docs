@@ -40,9 +40,7 @@ const LinkButton = React.memo(({ link, onClick, ...rest }: BoxProps & { link: st
           href={link}
           display="block"
           ml={space('tight')}
-        >
-          <LinkIcon size="1rem" />
-        </Link>
+        ></Link>
       </Tooltip>
     </Box>
   );
@@ -69,9 +67,7 @@ const Hashtag = () => (
     size="20px"
     left={['12px', '12px', '-20px', '-20px']}
     color={color('text-caption')}
-  >
-    <HashtagIcon size="1rem" />
-  </Flex>
+  ></Flex>
 );
 
 export const Heading: ForwardRefExoticComponentWithAs<

@@ -11,9 +11,7 @@ import '@docsearch/css';
 const MyApp: React.FC<AppProps> = ({ Component, pageProps, ...rest }) => (
   <CacheProvider value={cache}>
     <ThemeProvider theme={theme}>
-      <AppWrapper {...rest}>
-        <Component {...pageProps} />
-      </AppWrapper>
+      <AppWrapper {...rest}></AppWrapper>
     </ThemeProvider>
   </CacheProvider>
 );
