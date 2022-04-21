@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, color, space } from '@stacks/ui';
+import { Flex, Box, color } from '@stacks/ui';
 import ArrowLeftIcon from 'mdi-react/ArrowLeftIcon';
 import { Text } from '@components/typography';
 import Link from 'next/link';
@@ -26,7 +26,7 @@ export const BackButton = ({ href, ...rest }) => (
       display="flex !important"
       {...rest}
     >
-      <Box as="span" mr={space('extra-tight')}>
+      <Box as="span" mr={}>
         <ArrowLeftIcon size="16px" />
       </Box>
       <Text color={'currentColor'}>Back</Text>
