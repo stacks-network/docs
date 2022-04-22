@@ -115,4 +115,8 @@ sections:
           - path: /overview
           - path: /docs
           - path: /translations
+
+      - path: /faq
+        pages:
+          - path: /overview
       

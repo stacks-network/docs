@@ -220,7 +220,7 @@ async function redirects() {
     },
     {
       source: '/develop/connect/use-with-clarity.html',
-      destination: 'https://docs.hiro.so/get-started/transactions#signature-and-verification',
+      destination: '/write-smart-contracts/overview',
       permanent: true,
     },
     {
@@ -472,7 +472,7 @@ async function redirects() {
     },
     {
       source: '/references/stx ',
-      destination: 'https://docs.hiro.so/references/stacks-cli',
+      destination: '/references/glossary',
       permanent: true,
     },
     {
@@ -619,7 +619,7 @@ async function redirects() {
     },
     {
       source: '/references',
-      destination: 'https://docs.hiro.so/references/stacks-cli',
+      destination: '/references/glossary',
       permanent: true,
     },
     {
