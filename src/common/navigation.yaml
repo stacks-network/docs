@@ -108,6 +108,7 @@ sections:
           - external:
               href: 'https://github.com/friedger/awesome-stacks-chain'
               title: Awesome Stacks
+          - path: /stacks-info-sites
 
       - path: /contribute
         pages:
