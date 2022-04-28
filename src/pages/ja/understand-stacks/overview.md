@@ -15,7 +15,11 @@ Stacks 2.0 is a layer-1 blockchain that connects to Bitcoin and brings smart con
 
 Read more about the features provided by the Stacks 2.0 blockchain.
 
+<!-- markdown-link-check-disable -->
+
 -> Check out the [technical specifications](/understand-stacks/technical-specs) for a brief overview
+
+<!-- markdown-link-check-enable-->
 
 A detailed [comparison of the Stacks blockchain to other blockchain technologies][] is available at the Stacks Foundation blog.
 
