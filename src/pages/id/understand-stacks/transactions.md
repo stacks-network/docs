@@ -1,43 +1,43 @@
 ---
-title: Transactions
-description: Guide to Stacks 2.0 transactions
+title: Transaksi
+description: Panduan untuk transaksi Stacks 2.0
 icon: TestnetIcon
 images:
   large: /images/transaction-signing.svg
   sm: /images/transaction-signing.svg
 ---
 
-## Introduction
+## Pengantar
 
-Transactions are the fundamental unit of execution in the Stacks blockchain. Each transaction is originated from a [Stacks 2.0 account](/understand-stacks/accounts), and is retained in the Stacks blockchain history for eternity. This guide helps you understand Stacks 2.0 transactions.
+Transaksi adalah unit dasar eksekusi di blockchain Stacks. Setiap transaksi berasal dari [akun Stacks 2.0](/understand-stacks/accounts), dan disimpan dalam riwayat blockchain Stacks untuk selamanya. Panduan ini akan membantu Anda memahami transaksi Stacks 2.0.
 
-## Lifecycle
+## Siklus hidup
 
-Transactions go through phases before being finally confirmed, and available for all, on the Stacks 2.0 network.
+Transaksi melewati fase sebelum akhirnya dikonfirmasi, dan tersedia untuk semua, di jaringan Stacks 2.0.
 
-![Transaction lifecycle](/images/tx-lifecycle.png)
+![Siklus hidup transaksi](/images/tx-lifecycle.png)
 
-- **Generate**: Transactions are assembled according to the encoding specification.
-- **Validate and sign**: Transactions are validated to confirm they are well-formed. Required signatures are filled in.
-- **Broadcast**: Transactions are sent to a node.
-- **Register**: A miner receives transactions, verifies, and adds them to the ["mempool,"](https://academy.binance.com/en/glossary/mempool) a holding area for all the pending transactions.
-- **Process**: Miners review the mempool and select transactions for the next block to be mined. Depending on the transaction type, different actions can happen during this step. For example, post-conditions could be verified for a token transfer, smart-contract defined tokens could be minted, or an attempt to call an existing smart contract method could be made.
-- **Confirm**: Miners successfully mine blocks with a set of transactions. The transactions inside are successfully propagated to the network.
+- **Membuat**: Transaksi dibuat sesuai dengan spesifikasi pengkodean.
+- **Validasi dan tanda tangan**: Transaksi divalidasi untuk memastikan transaksi dilakukan dengan baik. Tanda tangan diperlukan untuk diisi.
+- **Broadcast**: Transaksi dikirim ke noda.
+- **Daftar**: Seorang penambang menerima transaksi, memverifikasi, dan menambahkannya ke ["mempool"](https://academy.binance.com/en/glossary/mempool), area penyimpanan untuk semua transaksi yang tertunda.
+- **Proses**: Penambang meninjau mempool dan memilih transaksi untuk blok berikutnya yang akan ditambang. Tergantung pada jenis transaksi, tindakan yang berbeda dapat terjadi dalam langkah ini. Misalnya, pasca kondisi dapat diverifikasi untuk transfer token, token yang ditentukan kontrak cerdas dapat dicetak, atau upaya untuk memanggil metode kontrak cerdas yang ada dapat dilakukan.
+- **Konfirmasi**: Penambang berhasil menambang blok dengan serangkaian transaksi. Transaksi di dalam berhasil disebarkan ke jaringan.
 
--> A transaction can have one of three states once it is registered: `pending`, `success`, or `failed`.
+> Sebuah transaksi dapat memiliki salah satu dari tiga status setelah didaftarkan: `tertunda`, `berhasil`, atau `gagal`.
 
-## Types
+## Jenis
 
-The Stacks 2.0 supports a set of different transaction types:
+Stacks 2.0 mendukung serangkaian jenis transaksi yang berbeda:
 
-| **Type**          | **Value**           | **Description**                                                                                                                                                                                       |
-| ----------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Coinbase          | `coinbase`          | The first transaction in a new block (an entity holding several transactions). Used to register for block rewards. These are not manually generated and broadcasted like other types of transactions. |
-| Token transfer    | `token_transfer`    | Asset transfer from a sender to a recipient                                                                                                                                                           |
-| Contract deploy   | `smart_contract`    | Contract instantiation                                                                                                                                                                                |
-| Contract call     | `contract_call`     | Contract call for a public, non read-only function                                                                                                                                                    |
-| Poison Microblock | `poison_microblock` | Punish leaders who intentionally equivocate about the microblocks they package                                                                                                                        |
+| **Jenis**          | **Nilai**           | **Deskripsi**                                                                                                                                                                                   |
+| ------------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Coinbase           | `coinbase`          | Transaksi pertama di blok baru (entitas yang memegang beberapa transaksi). Digunakan untuk mendaftar hadiah blok. Ini tidak dibuat dan disiarkan secara manual seperti jenis transaksi lainnya. |
+| Transfer token     | `token_transfer`    | Transfer aset dari pengirim ke penerima                                                                                                                                                         |
+| Penyebaran kontrak | `smart_contract`    | Instansiasi kontrak                                                                                                                                                                             |
+| Panggilan kontrak  | `contract_call`     | Panggilan kontrak untuk fungsi publik, non read-only                                                                                                                                            |
+| Mikroblok Poison   | `poison_microblock` | Menghukum para pemimpin yang dengan sengaja mengelak tentang mikroblok yang telah mereka kemas                                                                                                  |
 
-A sample of each transaction type can be found in the [Stacks Blockchain API response definition for transactions](https://docs.hiro.so/api#operation/get_transaction_by_id).
+Contoh setiap jenis transaksi dapat ditemukan di [Definisi respon Stacks Blockchain API untuk transaksi](https://docs.hiro.so/api#operation/get_transaction_by_id).
 
-~> Read-only contract call calls do **not** require transactions. Read more about it in the [network guide](/understand-stacks/network#read-only-function-calls).
+~> Panggilan kontrak read-only **tidak** memerlukan transaksi. Baca lebih lanjut tentangnya di [panduan jaringan](/understand-stacks/network#read-only-function-calls).
