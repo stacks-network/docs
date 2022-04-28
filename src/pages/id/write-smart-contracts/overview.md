@@ -1,58 +1,58 @@
 ---
-title: Clarity overview
-description: Overview and guides for getting started with Clarity
+title: Ringkasan Clarity
+description: Ringkasan dan panduan untuk memulai Clarity
 images:
   large: /images/contract.svg
   sm: /images/contract.svg
 ---
 
-## Introduction
+## Pengantar
 
-Clarity is a programming language for writing smart contracts on the Stacks 2.0 blockchain. It supports programmatic control over digital assets.
+Clarity adalah bahasa kontrak pintar yang **dapat ditentukan** yang mengoptimalkan prediktabilitas dan keamanan, dirancang untuk blockchain Stacks. Kontrak pintar memungkinkan pengembang untuk mengkodekan logika bisnis penting di blockchain.
 
-## Smart contracts
+## Kontrak pintar
 
-Smart contracts encode and enforce rules for modifying a particular set of data that is shared among people and entities who don't necessarily trust each other. For example, a smart contract can hold funds in escrow until multiple parties agree to release them, create its own ledger and keep track of its own novel tokens (fungible or non-fungible), and even help make supply chains more transparent.
+Kontrak pintar mengkodekan dan menegakkan aturan untuk memodifikasi kumpulan data tertentu yang dibagikan di antara orang-orang dan entitas yang belum tentu saling percaya satu sama lain. Misalnya, kontrak pintar dapat menyimpan dana dalam escrow sampai beberapa pihak setuju untuk melepaskan dana tersebut, membuat buku besar sendiri dan melacak token barunya sendiri (sepadan atau tidak sepadan), dan bahkan membantu membuat rantai pasokan lebih transparan.
 
-Because smart contracts are programs that exist in a blockchain, anyone can query them, and anyone can submit transactions to execute them. A smart contract execution can result in new transactions being written to the blockchain.
+Karena kontrak pintar adalah program yang ada di blockchain, siapa pun dapat mengquerikan, dan siapa pun dapat mengirimkan transaksi untuk menjalankannya. Menjalankan kontrak pintar dapat menghasilkan transaksi baru yang ditulis ke blockchain.
 
-Apps can take advantage of smart contracts to manage a global state that is visible to the public. Anyone can audit the blockchain to independently verify that an app's global shared state has been managed correctly according to the smart contract's rules.
+Aplikasi dapat memanfaatkan kontrak pintar untuk mengelola status global yang dapat dilihat oleh publik. Siapa pun dapat mengaudit blockchain untuk memverifikasi secara independen bahwa status bersama global aplikasi telah dikelola dengan benar sesuai dengan aturan kontrak pintar.
 
-There is a [Clarity Visual Studio Code plugin][] available for syntax assistance and debugging.
+Ada [plugin Clarity Visual Studio Code][] yang tersedia untuk bantuan sintaks dan debugging.
 
-## Use cases
+## Kasus penggunaan
 
-Not every decentralized application requires smart contracts, but Clarity unlocks interesting capabilities for decentralized applications. Examples of use cases include, but are not limited to:
+Tidak semua aplikasi terdesentralisasi memerlukan kontrak pintar, tetapi Clarity membuka kemampuan menarik untuk aplikasi  yang terdesentralisasi. Contoh dari kasus penggunaan termasuk, namun tidak terbatas pada:
 
-- Access control (for example pay to access)
-- Non-fungible (for example collectibles) and fungible tokens (for example stablecoins)
-- Business model templates (for example subscriptions)
-- App-specific blockchains
+- Kontrol akses (misalnya membayar untuk bisa mengakses)
+- Non-fungible (misalnya barang koleksi) dan token fungible (misalnya stablecoin)
+- Template model bisnis (misalnya langganan)
+- Blockchain khusus aplikasi
 - Decentralized Autonomous Organizations
 
-## Language design
+## Desain bahasa
 
-Clarity differs from most other smart contract languages in two essential ways:
+Clarity berbeda dari kebanyakan bahasa kontrak pintar lainnya dalam dua hal penting yaitu:
 
-- The language is interpreted and broadcast on the blockchain as is (not compiled)
-- The language is decidable (not Turing complete)
+- Bahasa diinterpretasikan dan disiarkan di blockchain sebagaimana adanya (tidak dikompilasi)
+- Bahasa dapat ditentukan (tidak Turing lengkap)
 
-Using an interpreted language ensures that the executed code is human-readable and auditable. A decidable language like Clarity makes it possible to determine precisely which code is executed, for any function.
+Menggunakan bahasa yang diinterpretasikan memastikan bahwa kode yang dieksekusi dapat dibaca oleh manusia dan dapat diaudit. Bahasa yang dapat ditentukan seperti Clarity memungkinkan untuk menentukan dengan tepat kode mana yang bisa dijalankan, untuk fungsi apa pun.
 
-A Clarity smart contract consists of two parts, a data space and a set of functions. Only the associated smart contract may modify its corresponding data space on the blockchain. Functions may be private and thus callable only from within the smart contract, or public and thus callable from other contracts. Users call smart contracts' public functions by broadcasting a transaction on the blockchain which invokes the public function. Contracts can also call public functions from other smart contracts.
+Kontrak pintar Clarity terdiri dari dua bagian, ruang data dan serangkaian fungsi. Hanya kontrak pintar terkait yang dapat mengubah ruang data terkait di blockchain. Fungsi mungkin bersifat privat dan dengan demikian hanya dapat dipanggil dari dalam kontrak pintar, atau publik dan dengan demikian dapat dipanggil dari kontrak lain. Pengguna memanggil fungsi publik kontrak pintar dengan menyiarkan transaksi di blockchain yang dapat memanggil fungsi publik. Kontrak juga dapat memanggil fungsi publik dari kontrak pintar lainnya.
 
-Note some of the key Clarity language rules and limitations.
+Perhatikan beberapa aturan dan batasan bahasa Clarity utama.
 
-- The only primitive types are booleans, integers, buffers, and principals.
-- Recursion is illegal and there are no anonymous functions.
-- Looping is only performed via `map`, `filter`, or `fold`.
-- There is support for lists, however, the only variable length lists in the language appear as function inputs; there is no support for list operations like append or join.
-- Variables are immutable.
+- Satu-satunya tipe primitif adalah boolean, integer, buffer, dan prinsipal.
+- Rekursi adalah ilegal dan tidak memiliki fungsi anonim.
+- Looping hanya dilakukan melalui `map`, `filter`, atau `fold`.
+- Ada dukungan untuk daftar, namun, satu-satunya daftar panjang variabel dalam bahasa yang muncul sebagai input fungsi; tidak ada dukungan untuk operasi daftar seperti menambahkan atau bergabung.
+- Variabel tidak dapat diubah.
 
-## Explore more
+## Jelajahi lebih banyak
 
-For language details and references, see the following:
+Untuk detail dan referensi bahasa, lihat berikut ini:
 
 [@page-reference | grid] | /write-smart-contracts/principals, /write-smart-contracts/values, /references/language-overview
 
-[Clarity Visual Studio Code plugin]: https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp
+[plugin Clarity Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp
