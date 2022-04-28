@@ -1,27 +1,30 @@
 ---
-title: Build apps with Stacks
-description: Authenticate users, sign transactions and store data with the Stacks blockchain
+title: Membangun aplikasi dengan Stacks
+description: Mengautentikasi pengguna, Menandatangani transaksi, dan menyimpan data dengan blockchain Stacks
 images:
   large: /images/pages/build-apps.svg
   sm: /images/pages/build-apps-sm.svg
 ---
 
-## Introduction
+## Pengantar
 
-Apps built with the Stacks blockchain give users control over their digital identities, assets, and data.
+Aplikasi yang dibuat dengan blockchain Stacks memberi pengguna kendali atas identitas digital, aset, dan data mereka.
 
-Unlike most cloud-based apps, they are "decentralized" since they don't depend on any centralized platform, server, or database to function. Rather, they use the Stacks blockchain to authenticate users and facilitate read and write requests for them without any single point of failure or trust.
+Tidak seperti kebanyakan aplikasi berbasis cloud, mereka "terdesentralisasi" karena tidak bergantung pada platform, server, atau database terpusat untuk bisa berfungsi. Sebaliknya, mereka menggunakan blockchain Stacks untuk mengautentikasi pengguna dan memfasilitasi permintaan baca dan tulis untuk mereka tanpa satu titik kegagalan atau kepercayaan.
 
-Stacks provides three main functions for building apps:
+Stacks menyediakan tiga fungsi utama untuk membangun aplikasi:
 
-- **Authentication**: Register and sign users in with identities on the Stacks blockchain
-- **Transaction signing**: Prompt users to sign and broadcast transactions to the Stacks blockchain
+<!-- markdown-link-check-disable -->
+
+- **Autentikasi**: Mendaftarkan dan login pengguna dengan identitas di blockchain Stacks
+- **Penandatanganan transaksi**: Meminta pengguna untuk menandatangani dan menyiarkan transaksi ke blockchain Stacks
 - **Data storage**: Save and retrieve data for users with [Gaia](/build-apps/references/gaia)
+<!-- markdown-link-check-enable-->
 
-All three of these integrations can be used together to create powerful new user experiences that rival or exceed those of traditional apps—all while protecting your users' digital rights.
+Ketiga integrasi ini dapat digunakan bersama untuk menciptakan pengalaman pengguna baru yang kuat yang menyaingi atau melampaui aplikasi tradisional—semuanya untuk melindungi hak digital pengguna Anda.
 
-While integration is possible for any type of app, most of the resources available here are for web developers experienced with JavaScript. See [Hiro developer docs](https://docs.hiro.so) for more information on the available app development libraries for Stacks.
+Meskipun integrasi dimungkinkan untuk semua jenis aplikasi, sebagian besar sumber daya yang tersedia di sini adalah untuk pengembang web yang berpengalaman dengan JavaScript. Lihat [Dokumen developer Hiro](https://docs.hiro.so) untuk informasi selengkapnya tentang pustaka pengembangan aplikasi yang tersedia untuk Stacks.
 
-## References
+## Referensi
 
 [@page-reference | grid] | /build-apps/references/authentication, /build-apps/references/bns, /build-apps/references/gaia
