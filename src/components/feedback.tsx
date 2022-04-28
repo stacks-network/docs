@@ -18,7 +18,6 @@ import { border } from '@common/utils';
 import { useRouter } from 'next/router';
 import { getHeadingStyles } from '@components/mdx/typography';
 import { css } from '@stacks/ui-core';
-import { StatusCheck } from '@components/status-check';
 import { useColorMode } from '@common/hooks/use-color-mode';
 import { EDIT_PAGE_IN_GITHUB } from '@common/constants_that_require_translations';
 
@@ -132,7 +131,6 @@ export const FeedbackSection: React.FC<BoxProps> = props => {
         >
           {EDIT_PAGE_IN_GITHUB}
         </Link>
-        <StatusCheck mt={space('base-loose')} />
       </Flex>
     </Flex>
   );
