@@ -1,6 +1,10 @@
+[![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/stacks-network/docs)
+[![Crowdin](https://badges.crowdin.net/docsstacksco/localized.svg)](https://crowdin.com/project/docsstacksco)
 
 # Stacks documentation
+
+This repository stores the files for the Stacks documentation website on [docs.stacks.co](https://docs.stacks.co)
 
 ![A screenshot of docs.stacks.co](/public/images/docs-homepage.png)
 
@@ -8,17 +12,9 @@
 
 If you are interested in contributing to the site and making changes, please refer to our [contributing guide here](https://docs.stacks.co/contribute).
 
-If you are interested in translation this site to multiple languages, please refer to the [translations guide](https://docs.stacks.co/contribute/translations)
+If you are interested in contributing to the tranlations of this site to multiple languages, please refer to the [translations guide](https://docs.stacks.co/contribute/translations)
 
 ## Generated documentation
-
-## Style checks
-
-This repository uses [vale](https://github.com/errata-ai/vale) to run style checks. Make sure to [install the tool](https://docs.errata.ai/vale/install) and run the following command before creating a PR in order to check for styling issues:
-
-```bash
-yarn check:style
-```
 
 ### Stacks CLI reference
 
