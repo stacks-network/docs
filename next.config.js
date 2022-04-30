@@ -638,6 +638,11 @@ async function redirects() {
       permanent: true,
     },
     {
+      source: '/understand-stacks/running-testnet-node',
+      destination: '/nodes-and-miners/running-testnet-node',
+      permanent: true,
+    },
+    {
       source: '/stacks-blockchain/atlas/overview',
       destination: '/understand-stacks/atlas-overview',
       permanent: true,
