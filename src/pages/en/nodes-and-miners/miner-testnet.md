@@ -22,7 +22,7 @@ If you want to learn more about the technical details of mining, please review t
 
 ## Running bitcoind locally
 
-To participate as a miner on Xenon, you must have access to a testnet bitcoin node. One way to accomplish this is to run bitcoind locally. [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements)
+To participate as a miner on Testnet, you must have access to a testnet bitcoin node. One way to accomplish this is to run bitcoind locally. [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements)
 
 First, download the bitcoind software for your platform from https://bitcoin.org/en/download.
 
@@ -100,7 +100,7 @@ local_peer_seed = "replace-with-your-private-key"
 
 [burnchain]
 ...
-# To mine on Xenon, you need to run bitcoind locally
+# To mine on Testnet, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
 username = "<USERNAME>"
@@ -149,7 +149,7 @@ To read more about the technical details of mining on the Stacks 2.0 network, ha
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
 
 ```bash
-STACKS_LOG_DEBUG=1 stacks-node xenon
+STACKS_LOG_DEBUG=1 stacks-node testnet
 ```
 
 ## Running a miner in Windows
@@ -207,7 +207,7 @@ local_peer_seed = "replace-with-your-private-key"
 
 [burnchain]
 ...
-# To mine on Xenon, you need to run bitcoind locally
+# To mine on Testnet, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
 username = "<USERNAME>"
@@ -275,7 +275,7 @@ local_peer_seed = "replace-with-your-private-key"
 
 [burnchain]
 ...
-# To mine on Xenon, you need to run bitcoind locally
+# To mine on Testnet, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
 username = "<USERNAME>"
