@@ -70,7 +70,7 @@ docker run -d --rm \
   -p 20443:20443 \
   -p 20444:20444 \
   blockstack/stacks-blockchain \
-/bin/stacks-node xenon
+/bin/stacks-node testnet
 ```
 
 Anda dapat memverifikasi kontainer [`stacks-blockchain`][] yang sedang berjalan dengan perintah:
