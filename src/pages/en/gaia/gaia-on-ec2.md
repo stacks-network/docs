@@ -28,12 +28,16 @@ Use a link in the table to launch the [CloudFormation](https://console.aws.amazo
 
 You need to configure the template with the appropiate values for your hub and domain it runs on.
 
-Enter the following URL for the template and click `Next`.
+Select `Upload a template file`, upload the template file `cloudformation.yaml` file and click `Next`.
+
+The latest `cloudformation.yaml` file can be downloaded [here](https://raw.githubusercontent.com/stacks-network/gaia/master/deploy/cloudformation.yaml). On most browsers you can right-click on that page and click on `Save page as` to download the file. Alternatively, you can copy/paste the text into a text file called `cloudformation.yaml`.
+
+Alternatively, you can enter following S3 URL which was the latest version at the time of this writting.
 ```
-https://cf-templates-18jq0t04gve7c-us-east-1.s3.amazonaws.com/cloudformation.yaml
+https://s3-external-1.amazonaws.com/cf-templates-vzldibfi2mw8-us-east-1/2022122ByM-cloudformation.yaml
 ```
 
-![Specify template](/images/cloudformation-specify-template.png)
+![Specify template](/public/images/cloudformation-specify-template.png)
 
 ### Step 3 - Specify stack details
 
