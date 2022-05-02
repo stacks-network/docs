@@ -89,6 +89,7 @@ sections:
       - path: /gaia
         pages:
           - path: /overview
+          - path: /gaia-on-ec2
 
       - path: /references
         pages:
