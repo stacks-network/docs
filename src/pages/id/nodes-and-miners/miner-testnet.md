@@ -21,7 +21,7 @@ Jika Anda ingin mempelajari lebih lanjut tentang detail teknis penambangan, sila
 
 ## Menjalankan bitcoind secara lokal
 
-Untuk berpartisipasi sebagai penambang di Xenon, Anda harus memiliki akses ke noda bitcoin testnet. Salah satu cara untuk mencapai ini adalah dengan menjalankan bitcoind secara lokal. [Pastikan komputer Anda memenuhi persyaratan perangkat keras minimum sebelum melanjutkan.](https://bitcoin.org/en/bitcoin-core/features/requirements)
+To participate as a miner on Testnet, you must have access to a testnet bitcoin node. Salah satu cara untuk mencapai ini adalah dengan menjalankan bitcoind secara lokal. [Pastikan komputer Anda memenuhi persyaratan perangkat keras minimum sebelum melanjutkan.](https://bitcoin.org/en/bitcoin-core/features/requirements)
 
 Pertama, unduh perangkat lunak bitcoind untuk platform Anda dari https://bitcoin.org/en/download.
 
@@ -99,11 +99,12 @@ local_peer_seed = "replace-with-your-private-key"
 
 [burnchain]
 ...
-# To mine on Xenon, you need to run bitcoind locally
+# To mine on Testnet, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
 username = "<USERNAME>"
 password = "<PASSWORD>"
+...
 ```
 
 Sekarang, ambil `privateKey` Anda dari sebelumnya, ketika Anda menjalankan perintah `make_keychain`. Ganti bidang `seed` dengan kunci privat Anda. Simpan dan tutup file konfigurasi ini.
@@ -145,7 +146,7 @@ Untuk membaca lebih lanjut tentang detail teknis penambangan di jaringan Stacks 
 Jika Anda mengalami masalah atau ingin melihat pencatatan verbose, Anda dapat menjalankan noda dengan pencatatan debug yang diaktifkan. Di baris perintah, jalankan:
 
 ```bash
-STACKS_LOG_DEBUG=1 stacks-node xenon
+STACKS_LOG_DEBUG=1 stacks-node testnet
 ```
 
 ## Menjalankan penambang di Windows
@@ -203,7 +204,7 @@ local_peer_seed = "replace-with-your-private-key"
 
 [burnchain]
 ...
-# To mine on Xenon, you need to run bitcoind locally
+# To mine on Testnet, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
 username = "<USERNAME>"
@@ -270,7 +271,7 @@ local_peer_seed = "replace-with-your-private-key"
 
 [burnchain]
 ...
-# To mine on Xenon, you need to run bitcoind locally
+# To mine on Testnet, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
 username = "<USERNAME>"
