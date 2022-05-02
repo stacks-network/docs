@@ -1,31 +1,31 @@
 ---
-title: Accounts
-description: Guide to Stacks 2.0 accounts
+title: Akun
+description: Panduan untuk akun Stacks 2.0
 icon: TestnetIcon
 images:
   large: /images/pages/testnet.svg
   sm: /images/pages/testnet-sm.svg
 ---
 
-## Introduction
+## Pengantar
 
-Stacks 2.0 accounts are entities that own assets, like Stacks (STX) tokens. An account has an address, private key, nonce, and one or more asset balances.
+Akun dalam Stacks 2.0 adalah suatu entitas yang memiliki aset, seperti token Stacks (STX). Suatu akun memiliki alamat, kunci rahasia, nonce, dan satu atau lebih saldo aset.
 
-If you want to jump right in to generate and query a new account, try this tutorial:
+Jika Anda ingin langsung ke pembuatan dan mencari sebuah akun baru, coba tutorial berikut ini:
 
--> The public-key signature system used for Stacks 2.0 accounts is [Ed25519](https://ed25519.cr.yp.to/).
+-> Sistem tanda-tangan kunci publik yang digunakan untuk akun Stacks 2.0 adalah [Ed25519](https://ed25519.cr.yp.to/).
 
-Assets cannot leave an account without an action from the account owner. All changes to assets (and the balances of the account) require a corresponding transaction.
+Aset tidak bisa meninggalkan suatu akun tanpa tindakan dari pemilik akun. Semua perubahan terhadap aset (dan saldo dari akun) membutuhkan transaksi terkait.
 
--> The transaction type doesn't need to be a token transfer - contract deploy and contract call transactions can change the balances of an account
+-> Jenis transaksi tidak perlu berupa transfer token - penerapan kontrak dan transaksi pemanggilan kontrak dapat mengubah saldo dari suatu akun
 
-## Creation
+## Pembuatan
 
-An account is generated from a 24-word mnemonic phrase. This is often referred to as the **seed phrase**. The seed phrase provides access to Stacks 2.0 accounts.
+Suatu akun dibuat dari frasa 24-kata mnemonic. Hal ini sering disebut juga sebagai **frasa seed**. Frasa seed memberikan akses ke akun Stacks 2.0.
 
-!> If the seed phrase is lost, access to the associated account cannot be restored. No person or organization, including Blockstack, can recover a lost seed phrase.
+!> Jika frasa seed hilang, akses ke akun yang berkaitan tidak bisa dipulihkan. Tidak ada seseorang atau organisasi, termasuk Blockstacks, yang dapat memulihkan frasa seed yang hilang.
 
-The easiest way to generate a new Stacks 2.0 account is to use the [Stacks CLI](https://github.com/hirosystems/stacks.js/tree/master/packages/cli):
+Cara paling mudah untuk membuat sebuah akun Stacks 2.0 baru adalah dengan [Stacks CLI](https://github.com/hirosystems/stacks.js/tree/master/packages/cli):
 
 ```bash
 # install CLI globally
@@ -36,7 +36,7 @@ npm install --global @stacks/cli
 stx make_keychain -t > cli_keychain.json
 ```
 
-`make_keychain` creates the following file:
+`make_keychain` membuat file berikut:
 
 ```js
 {
@@ -51,22 +51,22 @@ stx make_keychain -t > cli_keychain.json
 }
 ```
 
--> Check out the [Stacks CLI reference](https://docs.hiro.so/references/stacks-cli) for more details
+-> Lihat [referensi CLI Stacks](https://docs.hiro.so/references/stacks-cli) untuk lebih lanjut
 
-| Field                | Description                                                                                                                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `mnemonic`           | A 24-word seed phrase used to access the account, generated using [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) with 256 bits of entropy |
-| `keyInfo.privateKey` | Private key for the account. Required for token transfers and often referred to as `senderKey`                                                                     |
-| `keyInfo.address`    | Stacks address for the account                                                                                                                                     |
-| `keyInfo.btcAddress` | Corresponding BTC address for the account.                                                                                                                         |
-| `keyInfo.wif`        | Private key of the btcAddress in compressed format.                                                                                                                |
-| `keyInfo.index`      | Nonce for the account, starting at 0                                                                                                                               |
+| Bidang               | Deskripsi                                                                                                                                                                   |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mnemonic`           | Sebuah frasa seed 240kata digunakan untuk mengakses akun, dibuat menggunakan [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) dengan 256 bit entropi |
+| `keyInfo.privateKey` | Kunci privat untuk akun. Dibutuhkan untuk transfer token dan sering dirujuk sebagai `senderKey`                                                                             |
+| `keyInfo.address`    | Alamat Stacks untuk akun                                                                                                                                                    |
+| `keyInfo.btcAddress` | Alamat BTC yang sesuai untuk akun.                                                                                                                                          |
+| `keyInfo.wif`        | Kunci privat btcAddress dalam format terkompresi.                                                                                                                           |
+| `keyInfo.index`      | Nonce untuk akun, dimulai dari 0                                                                                                                                            |
 
-Note that a new account automatically exists for each new private key. There is no need to manually instantiate an account on the Stacks 2.0 blockchain.
+Perlu dicatat bahwa akun baru secara otomatis tersedia untuk setiap kunci privat. Tidak perlu memulai proses pembuatan akun di blockchain Stacks 2.0.
 
--> Addresses are created by generating the [RIPEMD-160 hash](https://en.wikipedia.org/wiki/RIPEMD#RIPEMD-160_hashes) of the [SHA256](https://en.bitcoinwiki.org/wiki/SHA-256) of the public key. BTC addresses are encoded with [Base58Check](https://en.bitcoin.it/wiki/Base58Check_encoding). For Stacks addresses, [c32check](https://github.com/stacks-network/c32check) is used. Deriving an address from a public key can be done without internet access, for instance using the c32check `c32addressDecode` method.
+-> Alamat dapat dihasilkan dengan [RIPEMD-160 hash](https://en.wikipedia.org/wiki/RIPEMD#RIPEMD-160_hashes) dari kunci publik [SHA256](https://en.bitcoinwiki.org/wiki/SHA-256). Alamat BTC dikodekan dengan [Base58Check](https://en.bitcoin.it/wiki/Base58Check_encoding). Untuk alamat Stacks, [c32check](https://github.com/stacks-network/c32check) digunakan. Menurunkan suatu alamat dari kunci publik dapat dilakukan tanpa adanya akses internet, contohnya menggunakan metode c32check `c32addressDecode`.
 
-Alternatively to the CLI creation, the [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library can be used:
+Sebagai alternatif untuk pembuatan CLI, pustaka [Transaksi Stacks JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) dapat digunakan:
 
 ```js
 import {
@@ -87,17 +87,17 @@ const stacksAddress = getAddressFromPrivateKey(
 );
 ```
 
-A second alternative would be to use [stacks-gen](https://github.com/psq/stacks-gen). This tool will generate all the keys you need in one place, including the values needed for calling the stacking contract, and also a WIF key for use with `bitcoind`.
+Alternatif lain dapat menggunakan [stacks-gen](https://github.com/psq/stacks-gen). Alat ini dapat membuat semua kunci yang dibutuhkan dalam satu tempat, termasuk nilai yang dibutuhkan untuk memanggil kontrak stacking, dan juga kunci WIF untuk digunakan dengan `bitcoind`.
 
-#### stacks-gen prerequisite
+#### prasyarat stacks-gen
 
-Install [npx](https://github.com/npm/npx) if not already installed. (npx will check whether `<command>` exists in \$PATH, or in the local project binaries, and execute that. If `<command>` is not found, it will be installed prior to execution).
+Install [npx](https://github.com/npm/npx) jika belum terpasang. (npx akan mengecek apakah `<command>` sudah ada di \$PATH, atau di daftar file biner proyek lokal dan menjalankannya. Jika `<command>` tidak ditemukan, program akan terpasang sebelum dijalankan).
 
 ```
 npm install -g npx
 ```
 
-#### stacks-gen usage
+#### penggunaan stacks-gen
 
 ```
 npx -q stacks-gen sk --testnet
@@ -113,22 +113,27 @@ npx -q stacks-gen sk --testnet
 }
 ```
 
--> The stacking object with hashbytes and a version represents the bitcoin address derived from the Stacks address. Read more about the [bitcoin address format](/understand-stacks/stacking#bitcoin-address).
+-> Objek stacking dengan byte hash dan suatu versi yang merepresentasikan alamat bitcoin yang diturunkan dari alamat Stacks. Baca lebih lanjut di [ format alamat bitcoin](/understand-stacks/stacking#bitcoin-address).
 
-Full documentation available at [stacks-gen](https://github.com/psq/stacks-gen).
+Dokumentasi lengkap terdapat di [stacks-gen](https://github.com/psq/stacks-gen).
 
-## Querying
+## Melakukan query
 
-### Get Stacks (STX) balance and nonce
+### Mendapatkan saldo dan nonce Stacks (STX)
 
-STX balance and nonce can be obtained through the [`GET /v2/accounts/<stx_address>`](https://docs.hiro.so/api#operation/get_account_info) endpoint:
+Saldo dan nonce STX dapat diperoleh melalui`GET /v2/accounts/<stx_address>`</ a> endpoint:</p> 
+
+
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/v2/accounts/<stx_address>'
 ```
 
-Sample response:
+
+Contoh respon:
+
+
 
 ```js
 {
@@ -137,18 +142,26 @@ Sample response:
 }
 ```
 
--> The balance string represents an unsigned 128-bit integer (big-endian) in hex encoding
 
-### Get all token balances
+-> String saldo merepresentasikan integer 128-bit yang tidak ditandatangani (big-endian) dalam pengkodean hex
 
-All token balances can be obtained through the [`GET /extended/v1/address/<stx_address>/balances`](https://docs.hiro.so/api#operation/get_account_balance) endpoint:
+
+
+### Dapatkan semua saldo token
+
+Semua saldo token dapat diperoleh melalui [`GET /extended/v1/address/<stx_address>/balances`](https://docs.hiro.so/api#operation/get_account_balance) endpoint:
+
+
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/address/<stx_address>/balances'
 ```
 
-Sample response:
+
+Contoh respon:
+
+
 
 ```js
 {
@@ -162,18 +175,24 @@ Sample response:
 }
 ```
 
--> Stacks accounts cannot hold bitcoins. The best way to obtain corresponding BTC balances is to derive the BTC address from the Stacks address (using [`c32check`](https://github.com/stacks-network/c32check#c32tob58-b58toc32)) and query the Bitcoin network.
 
-### Get all asset events
+-> Akun Stacks tidak dapat menyimpan bitcoin. Cara terbaik untuk mendapatkan saldo BTC yang sesuai adalah dengan mendapatkan alamat BTC dari alamat Stacks (menggunakan [`c32check</ code></a>) dan kueri jaringan Bitcoin.</p>
 
-All asset events associated with the account can be obtained through the [`GET /extended/v1/address/<stx_address>/assets`](https://docs.hiro.so/api#operation/get_account_balance) endpoint:
+<h3 spaces-before="0">Dapatkan semua event aset</h3>
+
+<p spaces-before="0">Semua event aset yang terkait dengan akun dapat diperoleh melalui <a href="https://docs.hiro.so/api#operation/get_account_balance"><code>GET /extended/v1/address/<stx_address>/ aset`](https://github.com/stacks-network/c32check#c32tob58-b58toc32) endpoint:
+
+
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/address/<stx_address>/assets'
 ```
 
-Sample response:
+
+Contoh respon:
+
+
 
 ```js
 {
