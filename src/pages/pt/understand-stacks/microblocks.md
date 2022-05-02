@@ -23,8 +23,7 @@ Consider a transaction from the perspective of the number of block confirmations
 
 ```
 Transaction 1 is broadcast to the mempool. It has 0 confirmations.
-Transaction 1 is included in a microblock. It still has 0 confirmations, but the results of the transaction are known
-Transaction 1 is included in the next anchor block. It has 1 confirmation.
+Transaction 1 is included in a microblock. It still has 0 confirmations, but the results of the transaction are known Transaction 1 is included in the next anchor block. It has 1 confirmation.
 The next Stacks block confirms the previous block. Transaction 1 has 2 confirmations.
 The next Stacks block confirms the previous block. Transaction 1 has 3 confirmations.
 ...
