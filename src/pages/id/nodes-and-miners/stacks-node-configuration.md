@@ -37,14 +37,14 @@ Contoh:
 stacks-node krypton
 ```
 
-### xenon
+### testnet
 
-Memulai noda yang akan bergabung dan mengalirkan blok dari testnet xenon publik.
+Start a node that will join and stream blocks from the public testnet.
 
 Contoh:
 
 ```bash
-stacks-node xenon
+stacks-node testnet
 ```
 
 ### mainnet
@@ -59,7 +59,7 @@ stacks-node mainnet
 
 ### mulai
 
-Memulai noda dengan konfigurasi Anda sendiri. Dapat digunakan untuk bergabung dengan jaringan, memulai rantai baru, atau mengganti nilai default yang digunakan oleh subperintah `mocknet` atau `xenon`.
+Memulai noda dengan konfigurasi Anda sendiri. Can be used for joining a network, starting a new chain, or replacing default values used by the `mocknet` or `testnet` subcommands.
 
 #### Argumen
 
@@ -171,7 +171,7 @@ Kunci publik, alamat, dan noda-stacks port harus digunakan untuk menarik data tr
 Contoh:
 
 ```toml
-bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
+bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@testnet.blockstack.org:20444"
 ```
 
 #### wait_time_for_microblocks (opsional)
