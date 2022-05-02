@@ -154,12 +154,9 @@ The lifecycle of a subdomain and its operations is shown in Figure 2.
 |  NAME_UPDATE   |<--------|  NAME_UPDATE   |<--------|  NAME_UPDATE   |<---- ...
 +----------------+         +----------------+         +----------------+
    blockchain                 blockchain                 blockchain
-   block                      block                      block
-
-
-Figure 2:  Subdomain lifetime with respect to on-chain name operations .A new
+   block                      block                      block Figure 2:  Subdomain lifetime with respect to on-chain name operations . A new
 subdomain operation will only be accepted if it has a later "sequence=" number,
-and a valid signature in "sig=" over the transaction body .The "sig=" field
+and a valid signature in "sig=" over the transaction body . The "sig=" field
 includes both the public key and signature, and the public key must hash to
 the previous subdomain operation's "addr=" field.
 
