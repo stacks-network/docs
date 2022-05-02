@@ -43,7 +43,7 @@ However, in between Stacks anchor blocks settling on the Bitcoin blockchain, the
 
 ## Unlocking Bitcoin capital
 
-Stacks also unlocks the hundreds of billions in capital in Bitcoin, and gives Bitcoiners new opportunities to use and earn BTC. Stacks is a accompaniment to the Bitcoin ecosystem, and the two networks working in tandem enables totally novel ways of using BTC. The Stacks ecosystem makes interactive cryptocurrency applications available to Bitcoin holders. Additionally, By stacking STX tokens and participating in the PoX consensus mechanism, users have the opportunity to earn BTC while securing the Stacks chain.
+Stacks also unlocks the hundreds of billions in capital in Bitcoin, and gives Bitcoiners new opportunities to use and earn BTC. Stacks is a accompaniment to the Bitcoin ecosystem, and the two networks working in tandem enables totally novel ways of using BTC. The Stacks ecosystem makes interactive cryptocurrency applications available to Bitcoin holders. Additionally, by stacking STX tokens and participating in the PoX consensus mechanism, users have the opportunity to earn BTC while securing the Stacks chain.
 
 ![Unlocking Bitcoin](/images/pox-unlocking-btc.png)
 
