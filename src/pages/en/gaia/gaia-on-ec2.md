@@ -33,6 +33,7 @@ Select `Upload a template file`, upload the template file `cloudformation.yaml` 
 The latest `cloudformation.yaml` file can be downloaded [here](https://raw.githubusercontent.com/stacks-network/gaia/master/deploy/cloudformation.yaml). On most browsers you can right-click on that page and click on `Save page as` to download the file. Alternatively, you can copy/paste the text into a text file called `cloudformation.yaml`.
 
 Alternatively, you can enter following S3 URL which was the latest version at the time of this writting.
+
 ```
 https://s3-external-1.amazonaws.com/cf-templates-vzldibfi2mw8-us-east-1/2022122ByM-cloudformation.yaml
 ```
@@ -44,18 +45,18 @@ https://s3-external-1.amazonaws.com/cf-templates-vzldibfi2mw8-us-east-1/2022122B
 Specify the stack details and then click `Next`:
 ![Specify template](/images/cloudformation-specify-stack-details.png)
 
-|Field|Value | Notes |
-|---|---|---|
-|Stack name| *a unique name in your AWS account* |
-|DomainName| *your-domain* |
-|EmailAddress | *your email address*|
-|GaiaBucketName| *S3 bucket name* | The template combines this name with the stack name to create a unique S3 bucket. The template ignores this field if GaiaStorageType is set to `disk`. |
-|GaiaStorageType| `s3` or `disk` | Select the GaiaStorageType of which to use as a backend for the Gaia Hub. Selecting `s3` causes the template to create an S3 bucket based on the name given in the previous field. Selecting `disk` causes the template to attach a separate EBS volume to the EC2 instance for Hub storage.
-|InstaceType| t2.micro | Select the instance type you want. Default value is `t2.micro`.
-|KeyName||In the KeyName drop-down, select an [EC2 KeyPair](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:) to enable SSH access to the EC2 instance. You should download the `.pem` keyfile for this pair from the EC2 console. For more information see the [EC2 key pair documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#prepare-key-pair)
-|SSHLocation|0.0.0.0/0|Leave the SSHLocation field with the default value of `0.0.0.0/0` to enable SSH access from any IP address. If you wish to restrict SSH access to the EC2 instance to a certain IP, you can update this field.
-|SubnetId|*subnetid*|Select a public subnet
-|VpcId|*vpcid*|
+| Field           | Value                               | Notes                                                                                                                                                                                                                                                                                                                                                                                            |
+| --------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Stack name      | _a unique name in your AWS account_ |
+| DomainName      | _your-domain_                       |
+| EmailAddress    | _your email address_                |
+| GaiaBucketName  | _S3 bucket name_                    | The template combines this name with the stack name to create a unique S3 bucket. The template ignores this field if GaiaStorageType is set to `disk`.                                                                                                                                                                                                                                           |
+| GaiaStorageType | `s3` or `disk`                      | Select the GaiaStorageType of which to use as a backend for the Gaia Hub. Selecting `s3` causes the template to create an S3 bucket based on the name given in the previous field. Selecting `disk` causes the template to attach a separate EBS volume to the EC2 instance for Hub storage.                                                                                                     |
+| InstaceType     | t2.micro                            | Select the instance type you want. Default value is `t2.micro`.                                                                                                                                                                                                                                                                                                                                  |
+| KeyName         |                                     | In the KeyName drop-down, select an [EC2 KeyPair](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:) to enable SSH access to the EC2 instance. You should download the `.pem` keyfile for this pair from the EC2 console. For more information see the [EC2 key pair documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#prepare-key-pair) |
+| SSHLocation     | 0.0.0.0/0                           | Leave the SSHLocation field with the default value of `0.0.0.0/0` to enable SSH access from any IP address. If you wish to restrict SSH access to the EC2 instance to a certain IP, you can update this field.                                                                                                                                                                                   |
+| SubnetId        | _subnetid_                          | Select a public subnet                                                                                                                                                                                                                                                                                                                                                                           |
+| VpcId           | _vpcid_                             |
 
 ### Step 4 - Configure stack options
 
@@ -73,7 +74,7 @@ Review the configuration of your Gaia hub, select the checkbox to acknowledge th
 
 Your stack can take several minutes to launch. You can monitor the Events tab of your hub to review the current progress of the launch. When the launch is complete, the Outputs tab displays information about the hub. Select the PublicIP and copy it to configure your domain name.
 
-Create an `A` DNS record pointing to the given IP in your domain. 
+Create an `A` DNS record pointing to the given IP in your domain.
 
 Wait a few minutes for the DNS record to propagate, and your should be able to access your Gaia hub with SSH.
 
