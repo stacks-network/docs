@@ -1,0 +1,2 @@
+# List of files ignored by eslint
+src/common/constants_that_require_translations_??.ts
