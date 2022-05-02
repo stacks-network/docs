@@ -8,7 +8,7 @@ images:
 
 ## Introduction
 
-The Clarity language makes use of a strong static [type system](/references/language-clarity#clarity-type-system). This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your contract call transactions failing prior to execution.
+The Clarity language makes use of a strong static [type system](/write-smart-contracts/language-types). This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your contract call transactions failing prior to execution.
 
 In order to build web applications that interact with Clarity contracts, you will need to learn how to construct and use `ClarityValue` objects. The [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below.
 
