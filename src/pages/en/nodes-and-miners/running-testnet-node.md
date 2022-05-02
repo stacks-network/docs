@@ -70,7 +70,7 @@ docker run -d --rm \
   -p 20443:20443 \
   -p 20444:20444 \
   blockstack/stacks-blockchain \
-/bin/stacks-node xenon
+/bin/stacks-node testnet
 ```
 
 You can verify the running [`stacks-blockchain`][] container with the command:
