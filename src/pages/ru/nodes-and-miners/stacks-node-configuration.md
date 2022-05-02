@@ -37,14 +37,14 @@ Example:
 stacks-node krypton
 ```
 
-### xenon
+### testnet
 
-Start a node that will join and stream blocks from the public xenon testnet.
+Start a node that will join and stream blocks from the public testnet.
 
 Example:
 
 ```bash
-stacks-node xenon
+stacks-node testnet
 ```
 
 ### mainnet
@@ -59,7 +59,7 @@ stacks-node mainnet
 
 ### start
 
-Start a node with a config of your own. Can be used for joining a network, starting a new chain, or replacing default values used by the `mocknet` or `xenon` subcommands.
+Start a node with a config of your own. Can be used for joining a network, starting a new chain, or replacing default values used by the `mocknet` or `testnet` subcommands.
 
 #### Arguments
 
@@ -171,7 +171,7 @@ Public key, address, and port stacks-node should use to pull transaction data fr
 Example:
 
 ```toml
-bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@xenon.blockstack.org:20444"
+bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@testnet.blockstack.org:20444"
 ```
 
 #### wait_time_for_microblocks (optional)
