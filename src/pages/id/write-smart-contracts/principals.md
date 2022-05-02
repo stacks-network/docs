@@ -1,20 +1,20 @@
 ---
-title: Principals
-description: 'Clarity: Understanding Principals'
+title: Prinsipal
+description: 'Clarity: Memahami Prinsipal'
 images:
   large: /images/pages/write-smart-contracts.svg
   sm: /images/pages/write-smart-contracts-sm.svg
 ---
 
-## Introduction
+## Pengantar
 
-_Principals_ are a Clarity native type that represents an entity that can have a token balance. This section discusses principals and how they are used in the Clarity.
+_Prinsipal_ adalah tipe native Clarity yang mewakili entitas yang dapat memiliki saldo token. Bagian ini membahas prinsip-prinsip dan bagaimana mereka digunakan dalam Clarity.
 
-## Principals and tx-sender
+## Prinsipal dan tx-sender
 
-Assets in the smart contracting language and blockchain are "owned" by objects of the principal type, meaning that any object of the principal type may own an asset. For the case of public-key hash and multi-signature Stacks addresses, a given principal can operate on their assets by issuing a signed transaction on the blockchain. _Smart contracts_ may also be principals (represented by the smart contract's identifier), however, there is no private key associated with the smart contract, and it cannot broadcast a signed transaction on the blockchain.
+Aset dalam bahasa kontrak pintar dan blockchain "dimiliki" oleh objek dari tipe utama, yang berarti bahwa objek apa pun dari tipe utama dapat memiliki aset. Untuk kasus alamat Stacks dari hash kunci-publik dan multi-tanda tangan, prinsipal tertentu dapat beroperasi pada aset mereka dengan mengeluarkan transaksi yang ditandatangani di blockchain. _Kontrak pintar_ mungkin juga prinsipal (direpresentasikan oleh pengidentifikasi kontrak pintar), namun, tidak ada kunci privat yang terkait dengan kontrak pintar, dan tidak dapat menyiarkan transaksi yang ditandatangani pada blockchain.
 
-A Clarity contract can use a globally defined `tx-sender` variable to obtain the current principal. The following example defines a transaction type that transfers `amount` microSTX from the sender to a recipient if amount is a multiple of 10, otherwise returning a 400 error code.
+Kontrak Clarity dapat menggunakan variabel `tx sender` yang ditentukan secara global untuk mendapatkan prinsipal saat ini. Contoh berikut mendefinisikan jenis transaksi yang mentransfer `amount` microSTX dari pengirim ke penerima jika jumlahnya kelipatan 10, jika tidak maka akan mengembalikan kode kesalahan 400.
 
 ```clarity
 (define-public (transfer-to-recipient! (recipient principal) (amount uint))
@@ -23,7 +23,7 @@ A Clarity contract can use a globally defined `tx-sender` variable to obtain the
       (err u400)))
 ```
 
-Clarity provides an additional variable to help smart contracts authenticate a transaction sender. The keyword `contract-caller` returns the principal that _called_ the current contract. If an inter-contract call occurred, `contract-caller` returns the last contract in the stack of callers. For example, suppose there are three contracts A, B, and C, each with an `invoke` function such that `A::invoke` calls `B::invoke` and `B::invoke` calls `C::invoke`.
+Clarity menyediakan variabel tambahan untuk membantu kontrak pintar mengautentikasi pengirim transaksi. Kata kunci `contract-caller` mengembalikan prinsipal yang _memanggil_ kontrak saat ini. Jika panggilan antar-kontrak terjadi, `contract-caller` mengembalikan kontrak terakhir di Stacks pemanggil. Misalnya, ada tiga kontrak A, B, dan C, masing-masing dengan fungsi `invoke` sedemikian rupa sehingga `A::invoke` memanggil `B::invoke` dan `B::invoke` memanggil `C::invoke`.
 
 When a user Bob issues a transaction that calls `A::invoke`, the value of `contract-caller` in each successive invoke function's body would change:
 
@@ -33,9 +33,9 @@ in B::invoke,  contract-caller = A
 in C::invoke,  contract-caller = B
 ```
 
-This allows contracts to make assertions and perform authorization checks using not only the `tx-sender` (which in this example, would always be "Bob"), but also using the `contract-caller`. This could be used to ensure that a particular function is only ever called directly and never called via an inter-contract call (by asserting that `tx-sender` and `contract-caller` are equal). We provide an example of a two different types of authorization checks in the rocket ship example below.
+Hal ini memungkinkan kontrak untuk membuat pernyataan dan melakukan pemeriksaan otorisasi tidak hanya menggunakan `tx-sender` (yang dalam contoh ini, akan selalu menjadi "Bob"), tetapi juga menggunakan `contract-caller`. Ini dapat digunakan untuk memastikan bahwa fungsi tertentu hanya dipanggil secara langsung dan tidak pernah dipanggil melalui panggilan antar-kontrak (dengan menyatakan bahwa `tx-sender` dan `contract-caller` adalah sama). Kami memberikan contoh dua jenis pemeriksaan otorisasi yang berbeda dalam contoh kapal roket di bawah ini.
 
-## Smart contracts as principals
+## Kontrak pintar sebagai prinsipal
 
 Smart contracts themselves are principals and are represented by the smart contract's identifier -- which is the publishing address of the contract _and_ the contract's name, for example:
 
@@ -43,7 +43,7 @@ Smart contracts themselves are principals and are represented by the smart contr
 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR.contract-name
 ```
 
-For convenience, smart contracts may write a contract's identifier in the form `.contract-name`. This will be expanded by the Clarity interpreter into a fully qualified contract identifier that corresponds to the same publishing address as the contract it appears in. For example, if the same publisher address, `SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR`, is publishing two contracts, `contract-A` and `contract-B`, the fully qualified identifier for the contracts would be:
+Untuk kenyamanan, kontrak pintar dapat menulis pengidentifikasi kontrak dalam bentuk `.contract-name`. Ini akan diperluas oleh juru bahasa Clarity menjadi pengidentifikasi kontrak yang sepenuhnya memenuhi syarat yang sesuai dengan alamat penerbitan yang sama dengan kontrak tempat kontrak tersebut muncul. Misalnya, jika alamat penerbit yang sama, `SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR`, menerbitkan dua kontrak, `contract-A` dan `contract-B`, pengidentifikasi yang sepenuhnya memenuhi syarat untuk kontrak akan menjadi:
 
 ```clarity
 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR.contract-A
@@ -58,7 +58,7 @@ But, in the contract source code, if the developer wishes to call a function fro
 
 This allows the smart contract developer to modularize their applications across multiple smart contracts _without_ knowing the publishing key a priori.
 
-In order for a smart contract to operate on assets it owns, smart contracts may use the special `(as-contract ...)` function. This function executes the expression (passed as an argument) with the `tx-sender` set to the contract's principal, rather than the current sender. The `as-contract` function returns the value of the provided expression.
+Agar kontrak cerdas dapat beroperasi pada aset yang dimilikinya, kontrak cerdas dapat menggunakan fungsi khusus `(as-contract ...)`. Fungsi ini menjalankan ekspresi (diteruskan sebagai argumen) dengan `tx-sender` disetel ke prinsipal kontrak, bukan pengirim saat ini. Fungsi `as-contract` yaitu mengembalikan nilai ekspresi yang diberikan.
 
 For example, a smart contract that implements something like a "token faucet" could be implemented as so:
 
@@ -79,25 +79,25 @@ For example, a smart contract that implements something like a "token faucet" co
         (ok stx-amount)))
 ```
 
-In this example, the public function `claim-from-faucet`:
+Dalam contoh ini, fungsi publik `claim-from-faucet`:
 
-- Checks if the sender has claimed from the faucet before.
-- Assigns the tx sender to a `requester` variable.
-- Adds an entry to the tracking map.
-- Uses `as-contract` to send 1 microstack
+- Memeriksa apakah pengirim telah mengklaim dari faucet sebelumnya.
+- Menetapkan tx sender ke variabel `requester`.
+- Menambahkan entri ke peta pelacakan.
+- Menggunakan `as-contract` untuk mengirim 1 mikrostack
 
-Unlike other principals, there is no private key associated with a smart contract. As it lacks a private key, a Clarity smart contract cannot broadcast a signed transaction on the blockchain.
+Tidak seperti prinsipal lainnya, tidak ada kunci privat yang terkait dengan kontrak pintar. Karena tidak memiliki kunci privat, kontrak pintar Clarity tidak dapat menyiarkan transaksi yang ditandatangani di blockchain.
 
-## Example: Authorization checks
+## Contoh: Pemeriksaan otorisasi
 
-The interactions between `tx-sender`, `contract-caller` and `as-contract` are subtle, but are important when performing authorization checks in a contract. In this example contract, we'll show two different kinds of authorization checks a contract may wish to perform, and then walk through how different ways in which contract functions may be called will pass or fail those checks.
+Interaksi antara `tx-sender`, `contract-caller` dan `as-contract` tidak begitu terlihat, tetapi penting saat melakukan pemeriksaan otorisasi dalam sebuah kontrak. Dalam contoh kontrak ini, kami akan menunjukkan dua jenis pemeriksaan otorisasi yang berbeda yang mungkin akan dilakukan oleh suatu kontrak, dan kemudian membahas bagaimana cara yang berbeda dalam memanggil fungsi kontrak akan berhasil atau gagal dalam pemeriksaan tersebut.
 
-This contract defines a "rocket-ship" non-fungible-token that a principal may own and manage the authorized pilots. Pilots are principals that are allowed to "fly" the rocket ship.
+Kontrak ini mendefinisikan sebuah "kapal roket" token-yang tidak-sepadan di mana prinsipal dapat memiliki dan mengelola pilot resmi. Pilot adalah prinsipal yang diizinkan untuk "menerbangkan" kapal roket.
 
-This contract performs two different authorization checks:
+Kontrak ini melakukan dua pemeriksaan otorisasi yang berbeda:
 
-1. Before a ship is allowed to fly, the contract checks whether or not the transaction was created and signed by an authorized pilot. A pilot could, for example, call another contract, which then calls the `fly-ship` public function on the pilot's behalf.
-2. Before modifying the allowed-pilots for a given rocket ship, the contract checks that the transaction was signed by the owner of the rocket ship. Furthermore, the contract requires that this function be called _directly_ by the ship's owner, rather than through a inter-contract-call.
+1. Sebelum kapal diizinkan untuk terbang, kontrak akan memeriksa apakah transaksi dibuat dan ditandatangani oleh pilot yang berwenang atau tidak. Seorang pilot dapat, misalnya, memanggil kontrak lain, yang kemudian memanggil fungsi publik `fly-ship` atas nama pilot.
+2. Sebelum memodifikasi pilot yang diizinkan untuk kapal roket tertentu, kontrak tersebut memeriksa bahwa transaksi tersebut ditandatangani oleh pemilik kapal roket. Selanjutnya, kontrak mensyaratkan bahwa fungsi ini dipanggil _langsung_ oleh pemilik kapal, bukan melalui panggilan antar-kontrak.
 
 The second type of check is more restrictive than the first check, and is helpful for guarding very sensitive routines --- it protects users from unknowingly calling a function on a malicious contract that subsequently tries to call sensitive functions on another contract.
 
@@ -177,9 +177,9 @@ The second type of check is more restrictive than the first check, and is helpfu
            (err u4)))))
 ```
 
-### Extending functionality: Multi-flyer contract
+### Memperluas fungsionalitas: Kontrak multi-flyer
 
-The authorization scheme for `fly-ship` allows pilots to fly rocket-ships from other contracts. This allows other contracts to provide new functionality built around calling that function.
+Skema otorisasi untuk `fly-ship` memungkinkan pilot untuk menerbangkan roket dari kontrak lain. Ini memungkinkan kontrak lain untuk menyediakan fungsionalitas baru yang dibangun di sekitar pemanggilan fungsi tersebut.
 
 For example, we can create a contract that calls `fly-ship` for multiple rocket-ships in a single transaction:
 
@@ -196,9 +196,9 @@ For example, we can create a contract that calls `fly-ship` for multiple rocket-
   (ok (map call-fly ships)))
 ```
 
-### Authorization for Contract-Owned Assets
+### Otorisasi untuk Aset Milik Kontrak
 
-The check in `authorize-pilot` protects users from malicious contracts, but how would such a scheme support contract-owned assets? This is what the `as-contract` function is used for. The `as-contract` function executes the supplied closure as if the sender of the transaction was the current contract, rather than the user -- it does this by updating `tx-sender` to the current contract principal. We can use this to, for example, create a smart contract rocket-ship-line:
+Pemeriksaan `authorize-pilot` melindungi pengguna dari kontrak berbahaya, tetapi bagaimana skema tersebut mendukung aset yang dimiliki kontrak? Inilah gunanya fungsi dari `as-contract`. Fungsi `as-contract` menjalankan penutupan yang diberikan seolah-olah pengirim transaksi adalah kontrak saat ini, bukan pengguna -- fungsi ini dilakukan dengan memperbarui `tx sender` ke prinsip kontrak saat ini. Kita dapat menggunakan ini untuk, misalnya, membuat kontrak kapal roket pintar:
 
 ```clarity
 ;;
@@ -235,4 +235,4 @@ The check in `authorize-pilot` protects users from malicious contracts, but how 
   (fold add-pilot-via-fold (var-get employed-pilots) (ok ship)))
 ```
 
-In order for the contract to add each pilot to a new ship, the contract must call `authorize-pilot`. However, the contract wants to perform this action on behalf of a ship the _contract_ owns, not the transaction sender. To do this, the contract uses `as-contract`.
+Agar kontrak dapat menambahkan setiap pilot ke kapal baru, kontrak harus memanggil `otorisasi-pilot`. Namun, kontrak ingin melakukan tindakan ini atas nama kapal yang _kontrak_ miliki, bukan pengirim transaksi. Untuk melakukan ini, kontrak menggunakan `as-contract`.
