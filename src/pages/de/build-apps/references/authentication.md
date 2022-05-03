@@ -26,11 +26,11 @@ When a user chooses to authenticate an app, it sends the `authRequest` token to 
 
 `https://wallet.hiro.so/...?authRequest=j902120cn829n1jnvoa...`
 
-When the authenticator receives the request, it generates an `authResponse` token for the app using an _ephemeral transit key_ . The ephemeral transit key is just used for the particular instance of the app, in this case, to sign the `authRequest`.
+The authenticator generates the app private key from the user's _identity address private key_ and the app's domain. The app private key serves three functions:
 
 The app stores the ephemeral transit key during request generation. The public portion of the transit key is passed in the `authRequest` token. The authenticator uses the public portion of the key to encrypt an _app private key_ which is returned via the `authResponse`.
 
-The authenticator generates the app private key from the user's _identity address private key_ and the app's domain. The app private key serves three functions:
+When the authenticator receives the request, it generates an `authResponse` token for the app using an _ephemeral transit key_ . The ephemeral transit key is just used for the particular instance of the app, in this case, to sign the `authRequest`. The app private key serves three functions:
 
 1. It is used to create credentials that give the app access to a storage bucket in the user's Gaia hub
 2. It is used in the end-to-end encryption of files stored for the app in the user's Gaia storage.
