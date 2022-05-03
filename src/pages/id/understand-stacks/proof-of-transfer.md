@@ -1,57 +1,57 @@
 ---
 title: Proof of Transfer
-description: Understand the proof-of-transfer consensus mechanism
+description: Memahami mekanisme konsensus proof-of-transfer
 icon: TestnetIcon
 images:
   large: /images/stacking.svg
   sm: /images/stacking.svg
 ---
 
-## Overview
+## Ringkasan
 
-Consensus algorithms for blockchains require compute or financial resources to secure the blockchain. The general practice of decentralized consensus is to make it practically infeasible for any single malicious actor to have enough computing power or ownership stake to attack the network.
+Algoritma konsensus untuk blockchain membutuhkan sumber daya komputasi atau finansial untuk mengamankan blockchain. Praktik umum dari konsensus terdesentralisasi adalah dengan membuatnya secara praktis tidak memungkinkan bagi setiap aktor jahat untuk memiliki kekuatan komputasi yang cukup atau kepemilikan saham untuk menyerang jaringan.
 
-Popular consensus mechanisms in modern blockchains include proof-of-work, in which nodes dedicate computing resources, and proof-of-stake, in which nodes dedicate financial resources to secure the network.
+Mekanisme konsensus populer di blockchain modern termasuk proof-of-work, di mana noda mendedikasikan sumber daya komputasi, dan proof-of-stake, di mana noda mendedikasikan sumber daya keuangan untuk mengamankan jaringan.
 
-Proof-of-burn is a novel consensus mechanism where miners compete by ‘burning’ (destroying) a proof-of-work cryptocurrency as a proxy for computing resources.
+Proof-of-burn adalah mekanisme konsensus baru di mana para penambang bersaing dengan 'membakar' (menghancurkan) mata uang kripto proof-of-work sebagai proxy untuk sumber daya komputasi.
 
-Proof-of-transfer (PoX) is an extension of the proof-of-burn mechanism. PoX uses the proof-of-work cryptocurrency of an established blockchain to secure a new blockchain. However, unlike proof-of-burn, rather than burning the cryptocurrency, miners transfer the committed cryptocurrency to some other participants in the network.
+Proof-of-transfer (PoX) adalah perpanjangan dari mekanisme proof-of-burn. PoX menggunakan mata uang kripto proof-of-work dari blockchain yang sudah ada untuk mengamankan blockchain baru. Namun, tidak seperti proof-of-burn, alih-alih membakar mata uang kripto, penambang mentransfer mata uang kripto yang berkomitmen ke beberapa peserta lain dalam jaringan.
 
-![PoX mechanism](/images/pox-mechanism.png)
+![Mekanisme PoX](/images/pox-mechanism.png)
 
-This allows network participants to secure the PoX cryptocurrency network and earn a reward in the base cryptocurrency. Thus, proof-of-transfer blockchains are anchored on their chosen proof-of-work chain. Stacks uses [Bitcoin](#why-bitcoin) as its anchor chain.
+Ini memungkinkan peserta jaringan untuk mengamankan jaringan mata uang kripto PoX dan mendapatkan hadiah dalam mata uang kripto dasar. Maka dari itu, blockchain proof-of-transfer terkait pada rantai proof-of-work pilihan mereka. Stacks menggunakan [Bitcoin](#why-bitcoin) sebagai rantai tertautnya.
 
-![PoX participants](/images/pox-participants.png)
+![Peserta PoX](/images/pox-participants.png)
 
-## Why Bitcoin?
+## Mengapa Bitcoin?
 
-There are a number of reasons that Stacks chose Bitcoin as the blockchain to power consensus. It's the oldest blockchain protocol, having launched in 2009, and has become a recognized asset outside of the cryptocurrency community. BTC has held the highest market capitalization of any cryptocurrency for the past decade.
+Ada beberapa alasan mengapa Stacks memilih Bitcoin sebagai blockchain untuk mendukung konsensus. Ini adalah protokol blockchain tertua, yang diluncurkan pada tahun 2009, dan telah menjadi aset yang diakui di luar komunitas mata uang kripto. BTC telah memegang kapitalisasi pasar tertinggi dari semua mata uang kripto selama dekade terakhir ini.
 
-Bitcoin champions simplicity and stability, and has stood the test of time. Influencing or attacking the network is infeasible or impractical for any potential hackers. It's one of the only cryptocurrencies to capture public attention. Bitcoin is a household name, and is recognized as an asset by governments, large corporations, and legacy banking institutions. Lastly, Bitcoin is largely considered a reliable store of value, and provides extensive infrastructure to support the proof-of-transfer consensus mechanism.
+Bitcoin unggul pada kesederhanaan dan stabilitas, dan telah teruji oleh waktu. Mempengaruhi atau menyerang jaringan akan menjadi sulit atau tidak praktis bagi peretas yang berpotensial. Ini adalah satu-satunya mata uang kripto yang menarik perhatian publik. Bitcoin adalah nama rumah tangga, dan diakui sebagai aset oleh pemerintah, perusahaan besar, dan lembaga perbankan warisan. Terakhir, Bitcoin sebagian besar dianggap sebagai penyimpan nilai yang andal, dan menyediakan infrastruktur yang luas untuk mendukung mekanisme konsensus proof-of-transfer.
 
-SIP-001 provides a full [list of reasons why Bitcoin was chosen to secure Stacks](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
+SIP-001 memberikan [daftar lengkap alasan mengapa Bitcoin dipilih untuk mengamankan Stacks](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
 
 ![btc-stacks](/images/pox-why-bitcoin.png)
 
-## Blocks and microblocks
+## Blok dan mikroblok
 
-The Stacks blockchain allows for increased transaction throughput using a mechanism called microblocks. Bitcoin and Stacks progress in lockstep, and their blocks are confirmed simultaneously. On Stacks, this is referred to as an ‘anchor block’. An entire block of Stacks transactions corresponds to a single Bitcoin transaction. This significantly improves cost/byte ratio for processing Stacks transactions. Because of simultaneous block production, Bitcoin acts as a rate-limiter for creating Stacks blocks, thereby preventing denial-of-service attacks on its peer network.
+Blockchain Stacks memungkinkan peningkatan transaksi melalui mekanisme yang disebut mikroblok. Bitcoin dan Stacks berkembang secara bertahap, dan blok mereka dikonfirmasi secara bersamaan. Di Stacks, ini disebut sebagai 'blok tertaut'. Seluruh blok transaksi Stacks sesuai dengan satu transaksi Bitcoin. Ini secara signifikan meningkatkan rasio biaya/byte untuk memproses transaksi Stacks. Karena produksi blok yang secara simultan, Bitcoin bertindak sebagai pembatas kecepatan untuk membuat blok Stacks, sehingga mencegah serangan penolakan layanan pada jaringan rekanannya.
 
-However, in between Stacks anchor blocks settling on the Bitcoin blockchain, there are also a varying number of microblocks that allow rapid settlement of Stacks transactions with a high degree of confidence. This allows Stacks transaction throughput to scale independently of Bitcoin, while still periodically establishing finality with the Bitcoin chain. The Stacks blockchain adopts a block streaming model whereby each leader can adaptively select and package transactions into their block as they arrive in the mempool. Therefore when an anchor block is confirmed, all of the transactions in the parent microblock stream are packaged and processed. This is an unprecedented method for achieving scalability without creating a totally separate protocol from Bitcoin.
+Namun, di antara blok terkait Stacks yang menetap di blockchain Bitcoin, ada juga sejumlah mikroblok yang memungkinkan penyelesaian transaksi Stacks secara cepat dengan tingkat kepercayaan yang tinggi. Hal ini memungkinkan transaksi Stacks untuk menskalakan secara independen dari Bitcoin, sambil tetap secara berkala menetapkan finalitas dengan rantai Bitcoin. Blockchain Stacks mengadopsi model streaming blok di mana setiap pemimpin dapat secara adaptif memilih dan mengemas transaksi ke dalam blok mereka saat mereka tiba di mempool. Oleh karena itu ketika blok terkait dikonfirmasi, semua transaksi dalam aliran mikroblok induk dikemas dan diproses. Ini merupakan metode yang belum pernah terjadi sebelumnya untuk mencapai skalabilitas tanpa membuat protokol yang benar-benar terpisah dari Bitcoin.
 
-![stx-microblock](/images/stx-microblocks.png)
+![stx-mikroblok](/images/stx-microblocks.png)
 
-## Unlocking Bitcoin capital
+## Membuka kunci modal Bitcoin
 
-Stacks also unlocks the hundreds of billions in capital in Bitcoin, and gives Bitcoiners new opportunities to use and earn BTC. Stacks is a accompaniment to the Bitcoin ecosystem, and the two networks working in tandem enables totally novel ways of using BTC. The Stacks ecosystem makes interactive cryptocurrency applications available to Bitcoin holders. Additionally, By stacking STX tokens and participating in the PoX consensus mechanism, users have the opportunity to earn BTC while securing the Stacks chain.
+Stacks juga membuka ratusan miliar modal dalam Bitcoin, dan memberi para Bitcoiner peluang baru untuk menggunakan dan mendapatkan BTC. Stacks merupakan pendamping ekosistem Bitcoin, dan dua jaringan yang bekerja bersama-sama memungkinkan cara yang benar-benar baru dalam menggunakan BTC. Ekosistem Stacks membuat aplikasi mata uang kripto yang interaktif tersedia untuk pemegang Bitcoin. Selain itu, dengan stacking token STX dan berpartisipasi dalam mekanisme konsensus PoX, pengguna memiliki kesempatan untuk mendapatkan BTC sambil mengamankan rantai Stacks.
 
-![Unlocking Bitcoin](/images/pox-unlocking-btc.png)
+![Membuka kunci Bitcoin](/images/pox-unlocking-btc.png)
 
-## Clarity and the Bitcoin state
+## Clarity dan status Bitcoin
 
-Clarity smart contracts also have unique visibility into the state of the Bitcoin blockchain. This means that contract logic in a Clarity file has the ability to trigger when specific Bitcoin transactions are confirmed. Clarity smart contracts have a built in Simple Payment Verification (SPV) proofs for Bitcoin that make interacting with Bitcoin’s state much simpler for developers. Additionally, Clarity contracts can fork with the original Bitcoin chain. Therefore, in an edge case where Bitcoin forks, developers wouldn’t have to worry about adjusting the deployment of their smart contracts.
+Kontrak pintar Clarity juga memiliki visibilitas unik ke dalam status blockchain Bitcoin. Ini berarti bahwa logika kontrak dalam file Clarity memiliki kemampuan untuk memicu ketika transaksi Bitcoin tertentu dikonfirmasi. Kontrak cerdas Clarity memiliki bukti Verifikasi Pembayaran Sederhana (SPV) bawaan untuk Bitcoin yang membuat interaksi dengan status Bitcoin menjadi lebih mudah bagi pengembang. Selain itu, kontrak Clarity dapat bercabang dengan rantai Bitcoin yang asli. Oleh karena itu, dalam kasus di mana Bitcoin bercabang, pengembang tidak perlu khawatir untuk menyesuaikan penerapan kontrak pintar mereka.
 
-## See also
+## Lihat juga
 
-- [Read the full PoX whitepaper](https://community.stacks.org/pox)
-- [Watch CEO Muneeb Ali and Evangelist Joe Bender give an overview of Stack's breakthrough PoX mining mechanism](https://www.youtube.com/watch?v=NY_eUrIcWOY)
+- [Baca whitepaper PoX lengkap](https://community.stacks.org/pox)
+- [Tonton CEO Muneeb Ali dan Evangelist Joe Bender memberikan ringkasan tentang mekanisme penambangan PoX terobosan Stack](https://www.youtube.com/watch?v=NY_eUrIcWOY)
