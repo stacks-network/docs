@@ -35,10 +35,6 @@ The [SIP-010][] standard is an interface definition that allows Stacks applicati
 - Ability to get the total supply of the token (`get-total-supply`).
 - A URI to metadata associated with the token (`get-token-uri`). This can resolve to off-chain metadata about the token or contract, such as an image icon for the token or a description.
 
-### Examples of fungible tokens on Stacks
-
-- [Nothing](https://nothingtoken.com/) ([contract](https://explorer.stacks.co/txid/0x022bed728d648ff1a68036c40f3aff8136ee22fee18380731df0ab9d76d3c4a9?chain=mainnet))
-
 ## Non-fungible tokens (NFTs)
 
 Non-fungible tokens (NFTs) are a type of token that are not interchangeable. NFTs have unique traits (usually in the form of attached metadata) that restrict the abillity to replace them with identical tokens. An NFT is a token that is unique, such as a piece of art, or ownership rights to a real-world asset such as a house.
@@ -56,10 +52,6 @@ The [SIP-009][] standard is an interface definition that the Stacks ecosystem al
 - Ability to verify the owner for a given token identifier (`get-owner`). The owner resolves to a [Stacks principal](/write-smart-contracts/principals).
 - Ability to transfer an NFT to a recipient (`transfer`). The recipient is required to be a Stacks principal.
 
-### Examples of NFTs on Stacks
-
-- [This is #1](https://thisisnumberone.com) ([contract](https://explorer.stacks.co/txid/SP3QSAJQ4EA8WXEDSRRKMZZ29NH91VZ6C5X88FGZQ.thisisnumberone-v2?chain=mainnet))
-
 ## Further reading
 
 - [The Difference Between Fungible and Non-Fungible Tokens](https://101blockchains.com/fungible-vs-non-fungible-tokens/)
@@ -68,5 +60,5 @@ The [SIP-009][] standard is an interface definition that the Stacks ecosystem al
 [fungible]: #fungible-tokens
 [non-fungible]: #non-fungible-tokens-nfts
 [smart contracts]: /write-smart-contracts/overview
-[SIP-010]: https://github.com/hstove/sips/blob/feat/sip-10-ft/sips/sip-010/sip-010-fungible-token-standard.md
-[SIP-009]: https://github.com/friedger/sips/blob/main/sips/sips/sip-009-nft-standard.md
+[SIP-010]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
+[SIP-009]: https://github.com/stacksgov/sips/blob/main/sips/sip-009/sip-009-nft-standard.md
