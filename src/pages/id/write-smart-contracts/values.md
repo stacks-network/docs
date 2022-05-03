@@ -1,26 +1,26 @@
 ---
-title: Clarity Values
-description: Learn how to deal with Clarity Values in JavaScript
+title: Nilai Clarity
+description: Pelajari cara menangani Nilai Clarity dalam JavaScript
 images:
   large: /images/pages/write-smart-contracts.svg
   sm: /images/pages/write-smart-contracts-sm.svg
 ---
 
-## Introduction
+## Pengantar
 
-The Clarity language makes use of a strong static [type system](/references/language-clarity#clarity-type-system). This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your contract call transactions failing prior to execution.
+Bahasa Clarity menggunakan [type system](/write-smart-contracts/language-types) statis yang kuat. Ini berarti bahwa setiap fungsi yang didefinisikan dalam Clarity mengharapkan argumen dari tipe tertentu, dan bahwa kegagalan untuk memberikan argumen yang diketik dengan benar akan mengakibatkan kode Anda gagal dikompilasi, atau transaksi panggilan kontrak Anda gagal sebelum dijalankan.
 
-In order to build web applications that interact with Clarity contracts, you will need to learn how to construct and use `ClarityValue` objects. The [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below.
+Untuk membangun aplikasi web yang berinteraksi dengan kontrak Clarity, Anda perlu mempelajari cara membuat dan menggunakan objek `ClarityValue`. Pustaka [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) mempermudah semua, seperti yang akan kami tunjukkan di bawah ini.
 
-## Clarity Types
+## Tipe Clarity
 
-Please see the following page for information on Clarity Types:
+Silakan lihat halaman berikut untuk informasi tentang tipe Clarity:
 
 [@page-reference | inline] | /references/language-types
 
-## Constructing Clarity Values and accessing their data
+## Membangun Nilai Clarity dan mengakses datanya
 
-Clarity values can be constructed with functions provided by the [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library. These functions simply output javascript objects that contain a value and a numerical representation of the Clarity type information. The Clarity types are encoded as follows:
+Nilai Clarity dapat dibuat dengan fungsi yang disediakan oleh pustaka [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions). Fungsi-fungsi ini hanya menampilkan objek javascript yang berisi nilai dan representasi numerik dari informasi jenis Clarity. Jenis Clarity dikodekan sebagai berikut:
 
 ```typescript
 export enum ClarityType {
@@ -42,11 +42,11 @@ export enum ClarityType {
 }
 ```
 
-`ClarityValue` objects can be serialized and included in transactions that interact with published Clarity contracts.
+Objek `ClarityValue` dapat diserialkan dan disertakan dalam transaksi yang berinteraksi dengan kontrak Clarity yang dipublikasikan.
 
-Here are examples of how to construct each type of Clarity value, and how to access its data if it has any:
+Berikut adalah contoh cara membangun setiap jenis nilai Clarity, dan cara mengakses datanya jika ada:
 
-### Booleans
+### Boolean
 
 ```typescript
 const t = trueCV();
@@ -56,9 +56,9 @@ const f = falseCV();
 // { type: ClarityType.BoolFalse }
 ```
 
-Boolean Clarity Values don't contain any underlying data. They are simply objects with `type` information.
+Nilai Clarity Boolean tidak berisi data yang mendasarinya. Mereka hanyalah objek dengan informasi `type`.
 
-### Optional Values
+### Nilai Opsi
 
 ```typescript
 const nothing: NoneCV = noneCV();
@@ -68,9 +68,9 @@ const something: SomeCV = someCV(trueCV());
 // { type: ClarityType.OptionalSome, value: { type: 4 } }
 ```
 
-Optional Clarity Values can either be nothing (an empty type that has no data), or something (a wrapped value).
+Nilai Clarity Opsional dapat berupa (tipe kosong yang tidak memiliki data), atau sesuatu (nilai yang dikemas).
 
-If you are dealing with a function or contract function that returns an `OptionalCV`, you should always check what type it is before trying to access its value.
+Jika Anda berurusan dengan fungsi atau fungsi kontrak yang mengembalikan `OptionalCV`, Anda harus selalu memeriksa jenisnya sebelum mencoba mengakses nilainya.
 
 ```typescript
 const maybeVal: OptionalCV = await callReadOnlyFunction(...);
@@ -82,7 +82,7 @@ if (maybeVal.type === ClarityType.OptionalSome) {
 }
 ```
 
-### Buffers
+### Buffer
 
 ```typescript
 const buffer = Buffer.from('foo');
@@ -90,9 +90,9 @@ const bufCV: BufferCV = bufferCV(buffer);
 // { type: ClarityType.Buffer, buffer: <Buffer 66 6f 6f> }
 ```
 
-### Integers
+### Bilangan bulat
 
-Clarity supports both integers and unsigned integers.
+Clarity mendukung bilangan bulat dan bilangan bulat yang tidak ditandatangani.
 
 ```typescript
 const i: IntCV = intCV(-10);
@@ -102,11 +102,11 @@ const u: UIntCV = uintCV(10);
 // { type: ClarityType.UInt, value: BN { ... } }
 ```
 
-Clarity value ints store their underlying data as `BigNum` values from the [bn.js](https://github.com/indutny/bn.js/) library.
+Int nilai Clarity menyimpan data dasarnya sebagai nilai `BigNum` dari pustaka [bn.js](https://github.com/indutny/bn.js/).
 
-In order to display/print Clarity (u)int values, use the `cvToString(val)` method.
+Untuk menampilkan/mencetak nilai Clarity (u)int, gunakan metode `cvToString(val)`.
 
-If you wish to perform arithmetic operations using Clarity (u)int values, you must use methods from the `BigNum` api on their underlying `BigNum` values, and the construct a new Clarity value out of the result. For example:
+Jika Anda ingin melakukan operasi aritmatika menggunakan nilai Clarity (u)int, Anda harus menggunakan metode dari api `BigNum` pada nilai `BigNum` yang mendasarinya, dan membangun nilai Clarity baru keluar dari hasil. Misalnya:
 
 ```typescript
 const x = intCV(1);
@@ -116,7 +116,7 @@ x.value.add(y.value);
 // 3
 ```
 
-### Strings
+### String
 
 ```typescript
 const ascii: StringAsciiCV = stringAsciiCV('hello world');
@@ -126,9 +126,9 @@ const utf8: StringUtf8CV = stringUtf8CV('hello 🌾');
 // { type: ClarityType.StringUTF8, data: 'hello 🌾' }
 ```
 
-Clarity supports both ascii and utf8 strings.
+Clarity mendukung string ascii dan utf8.
 
-### Principals
+### Prinsipal
 
 ```typescript
 const address = 'SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B';
@@ -161,9 +161,9 @@ const cpCV = contractPrincipalCV(address, contractName);
 // }
 ```
 
-Both kinds of Clarity principal values contain `type` information and an `address` object. Contract principals also contain a `contractName`.
+Kedua jenis nilai prinsipal Clarity berisi informasi `type` dan objek `address`. Prinsipal kontrak juga berisi `contractName`.
 
-### Response Values
+### Nilai Respons
 
 ```typescript
 const errCV = responseErrorCV(trueCV());
@@ -173,9 +173,9 @@ const okCV = responseOkCV(falseCV());
 // { type: ResponseOk, value: { type: ClarityType.BoolFalse } }
 ```
 
-Response Clarity Values will either have the type `ClarityType.ResponseOk` or `ClarityType.ResponseErr`. They both contain a Clarity Value. Often this value will be an integer error code if the response is an `Error`.
+Nilai Clarity Respons akan memiliki jenis `ClarityType.ResponseOk` atau `ClarityType.ResponseErr`. Keduanya mengandung Nilai Clarity. Seringkali nilai ini akan menjadi kode kesalahan bilangan bulat jika responsnya adalah `Error`.
 
-### Tuples
+### Tuple
 
 ```typescript
 const tupCV = tupleCV({
@@ -196,11 +196,11 @@ console.log(tupCV.data['b']);
 // { type: ClarityType.BoolTrue }
 ```
 
-Tuples in Clarity are typed and contain named fields. The tuple above, for example, contains three fields with the names **a**, **b** and **c**, and the types of their values are `Int`, `Boolean` and `Boolean`, respectively.
+Tuple di Clarity diketik dan berisi bidang yang memiliki nama. Tuple di atas, misalnya, berisi tiga bidang dengan nama **a**, **b** dan **c**, dan jenis nilainya masing-masing adalah `Int`, `Boolean` dan `Boolean`.
 
-Clarity tuples are represented in JavaScript as objects and a tuple's data can be accessed by its `data` field, where the underlying JS object is stored.
+Tuple Clarity direpresentasikan dalam JavaScript sebagai objek dan data tuple dapat diakses oleh bidang `data`, tempat objek JS yang mendasarinya disimpan.
 
-### Lists
+### Daftar
 
 ```typescript
 const l = listCV([trueCV(), falseCV()]);
@@ -210,27 +210,27 @@ console.log(l.list[0]);
 // { type: ClarityType.BoolTrue }
 ```
 
-Lists, in Clarity, are homogeneous, meaning they can only contain elements of a singular (Clarity) type. Make sure to avoid constructing lists that have elements of multiple types.
+Daftar, dalam Clarity, bersifat homogen, artinya daftar tersebut hanya dapat berisi elemen bertipe tunggal (Clarity). Pastikan untuk menghindari membuat daftar yang memiliki elemen dari beberapa jenis.
 
-A Clarity lists underlying data can be accessed via its `list` field.
+Data yang mendasari daftar Clarity dapat diakses melalui bidang `list`.
 
-## Using Clarity Values
+## Menggunakan Nilai Clarity
 
-Now that you know how to construct _and_ deconstruct Clarity values, you can use them to build `contract-call` transactions that call smart contract functions, and you can utilize their responses.
+Sekarang setelah Anda mengetahui cara membuat _dan_ mendekonstruksi nilai Clarity, Anda dapat menggunakannya untuk membuat transaksi `contract-call` yang memanggil fungsi kontrak pintar, dan Anda dapat memanfaatkan respons dari mereka.
 
-This is covered in depth [here](/understand-stacks/transactions#construction).
+Ini dibahas secara mendalam [di sini](/understand-stacks/transactions#construction).
 
-## Utilizing Clarity Values from Transaction Responses
+## Memanfaatkan Nilai Clarity dari Respons Transaksi
 
-`Read-only` Clarity functions can return Clarity values as a response. These `read-only` functions can be accessed easily in JavaScript via the [`callReadOnlyFunction()`](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions#calling-read-only-contract-function) function included in `@stacks/transactions`, which returns a `ClarityValue`.
+`Read-only` Fungsi Clarity dapat mengembalikan nilai Clarity sebagai respons. Fungsi `read-only` ini dapat diakses dengan mudah di JavaScript melalui [`callReadOnlyFunction()`](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions#calling-read -only-contract-function) fungsi yang disertakan dalam `@stacks/transactions`, yang mengembalikan `ClarityValue`.
 
-As mentioned above, `ClarityValues` are simply javascript objects containing a value and its associated Clarity type information. These object types are defined [here](https://github.com/hirosystems/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types).
+Seperti disebutkan di atas, `ClarityValues` hanyalah objek javascript yang berisi nilai dan informasi jenis Clarity yang terkait. Jenis objek ini ditentukan [di sini](https://github.com/hirosystems/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types).
 
-When you are calling a `read-only` contract function, you will always know what type the function will return, since functions in Clarity are strongly typed.
+Ketika Anda memanggil fungsi kontrak `read-only`, Anda akan selalu tahu jenis fungsi yang akan dikembalikan, karena fungsi di Clarity diketik dengan kuat.
 
-It is common for Clarity functions to return values wrapped in a `Response`, in order to indicate if there was success or an error.
+Fungsi Clarity biasanya mengembalikan nilai yang dikemas dengan `Response`, untuk menunjukkan apakah berhasil atau ada kesalahan.
 
-Since every `ClarityValue` has a `type` field, the type of the result of a `read-only` function call can be checked and acted upon like so:
+Karena setiap `ClarityValue` memiliki bidang `type`, jenis hasil dari panggilan fungsi `read-only` dapat diperiksa dan ditindaklanjuti seperti di bawah ini:
 
 ```typescript
 const contractAddress = 'ST3KC0MTNW34S1ZXD36JYKFD3JJMWA01M55DSJ4JE';
@@ -260,9 +260,9 @@ if (result.type === ClarityType.ResponseOk) {
 }
 ```
 
-### ClarityValues to/from Hex
+### Nilai Clarity ke/dari Hex
 
-If you receive a response from a transaction in the form of a `hex` string, you can deserialize it into a Clarity value like so:
+Jika Anda menerima respons dari transaksi dalam bentuk string `hex`, Anda dapat melakukan deserialize menjadi nilai Clarity seperti berikut:
 
 ```javascript
 import { hexToCV } from '@stacks/transactions';
@@ -270,7 +270,7 @@ import { hexToCV } from '@stacks/transactions';
 let cv = hexToCV('hex_string');
 ```
 
-Similarly, you can convert a Clarity value to `hex` string like so:
+Demikian pula, Anda dapat mengkonversi nilai Clarity menjadi string `hex` seperti:
 
 ```javascript
 import { cvToHex, trueCV } from '@stacks/transactions';
@@ -278,13 +278,13 @@ import { cvToHex, trueCV } from '@stacks/transactions';
 let trueHex = cvToHex(trueCV());
 ```
 
-## Debugging Clarity Values
+## Mendebug Nilai Clarity
 
-Sometimes you might receive a Clarity value that you were not expecting. Logging the value to your console won't always prove to be useful, unless you have memorized the Clarity value type enum values.
+Terkadang Anda mungkin menerima nilai Clarity yang tidak Anda harapkan. Mencatat nilai ke konsol Anda tidak akan selalu terbukti bermanfaat, kecuali Anda telah mengingat nilai enum tipe nilai Clarity.
 
-In order to figure out what kind of value you are dealing with, you can use the `cvToString()` function to convert the Clarity value to a more easily readable string.
+Untuk mengetahui jenis nilai yang Anda hadapi, Anda dapat menggunakan fungsi `cvToString()` untuk mengonversi nilai Clarity menjadi string yang lebih mudah dibaca.
 
-For example, calling `cvToString()` on a large `tuple` might yield something like:
+Misalnya, memanggil `cvToString()` pada `tuple` besar kemungkinan akan menghasilkan sesuatu seperti:
 
 ```
 (tuple
