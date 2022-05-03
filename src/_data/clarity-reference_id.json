@@ -694,7 +694,7 @@
       "output_type": "Not Applicable",
       "signature": "(define-map map-name key-type value-type)",
       "description": "`define-map` is used to define a new datamap for use in a smart contract. Such\nmaps are only modifiable by the current smart contract.\n\nMaps are defined with a key type and value type, often these types are tuple types.\n\nLike other kinds of definition statements, `define-map` may only be used at the top level of a smart contract\ndefinition (i.e., you cannot put a define statement in the middle of a function body).",
-      "example": "\n(define-map squares { x: int } { square: int })\n(define-private (add-entry (x int))\n  (map-insert squares { x: x } { square: (* x x) }))\n(add-entry 1)\n(add-entry 2)\n(add-entry 3)\n(add-entry 4)\n(add-entry 5)"
+      "example": "\n(define-map squares { x: int } { square: int })\n(define-private (add-entry (x int))\n  (map-insert squares { x: 2 } { square: (* x x) }))\n(add-entry 1)\n(add-entry 2)\n(add-entry 3)\n(add-entry 4)\n(add-entry 5)\n"
     },
     {
       "name": "define-data-var",
