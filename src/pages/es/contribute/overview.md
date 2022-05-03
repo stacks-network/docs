@@ -11,17 +11,17 @@ You can contribute to the Stacks ecosystem in multiple ways:
 
 <!-- markdown-link-check-disable -->
 
-### Documentation
+### Documentación
 
 Contribute to the Stacks Docs on this website. More info [here](docs).
 
-### Translations
+### Traducciones
 
-Help with translations. More details [here](translations).
+Ayuda con las traducciones. Más detalles [aquí](translations).
 
 <!-- markdown-link-check-enable-->
 
-### Articles
+### Artículos
 
 Write an article or a blog post about Stacks. A good place to start is [Stacks Forum](https://forum.stacks.org).
 
