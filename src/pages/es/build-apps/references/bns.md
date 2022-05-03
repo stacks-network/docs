@@ -24,7 +24,7 @@ The biggest consequence for developers is that in BNS, reading name state is fas
 
 We rely on naming systems in everyday life, and they play a critical role in many different applications. For example, when you look up a friend on social media, you are using the platform's naming system to resolve their name to their profile. When you look up a website, you are using the Domain Name Service to resolve the hostname to its host's IP address. When you check out a Git branch, you are using your Git client to resolve the branch name to a commit hash. When you look up someone's PGP key on a keyserver, you are resolving their key ID to their public key.
 
-What kinds of things do we want to be true about names? In BNS, names are globally unique, names are human-meaningful, and names are strongly owned. However, if you look at these examples, you'll see that each of them only guarantees _two_ of these properties. This limits how useful they can be.
+What kinds of things do we want to be true about names? In BNS, names are globally unique, names are human-meaningful, and names are strongly owned. In BNS, names are globally unique, names are human-meaningful, and names are strongly owned. However, if you look at these examples, you'll see that each of them only guarantees _two_ of these properties. This limits how useful they can be.
 
 - In DNS and social media, names are globally unique and human-readable, but not strongly owned. The system operator has the final say as to what each names resolves to.
 
