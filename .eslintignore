@@ -1,2 +1,13 @@
 # List of files ignored by eslint
-src/common/constants_that_require_translations_??.ts
+# src/common/constants_that_require_translations_??.ts
+src/common/constants_that_require_translations_de.ts
+src/common/constants_that_require_translations_es.ts
+src/common/constants_that_require_translations_fr.ts
+src/common/constants_that_require_translations_hi.ts
+src/common/constants_that_require_translations_id.ts
+src/common/constants_that_require_translations_ja.ts
+src/common/constants_that_require_translations_ko.ts
+src/common/constants_that_require_translations_pt.ts
+src/common/constants_that_require_translations_ru.ts
+src/common/constants_that_require_translations_tr.ts
+src/common/constants_that_require_translations_zh.ts
