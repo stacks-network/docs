@@ -9,13 +9,13 @@ images:
 
 ## Tokens
 
-Stacks (STX) tokens are the native tokens on the Stacks 2.0 blockchain. The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX).
+Stacks (STX) tokens are the native tokens on the Stacks 2.0 blockchain. The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX). The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX).
 
-STX amounts should be stored as integers (8 bytes long), and represent the amount of micro-STX. For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6).
+STX amounts should be stored as integers (8 bytes long), and represent the amount of micro-STX. For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6). For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6).
 
 ## Fees
 
-Fees are used to incentivize miners to confirm transactions on the Stacks 2.0 blockchain. The fee is calculated based on the estimate fee rate and the size of the raw transaction in bytes. The fee rate is a market determined variable. For the [testnet](/understand-stacks/testnet), it is set to 1 micro-STX.
+Fees are used to incentivize miners to confirm transactions on the Stacks 2.0 blockchain. The fee is calculated based on the estimate fee rate and the size of the raw transaction in bytes. The fee rate is a market determined variable. For the [testnet](/understand-stacks/testnet), it is set to 1 micro-STX. The fee is calculated based on the estimate fee rate and the size of the raw transaction in bytes. The fee rate is a market determined variable. For the [testnet](/understand-stacks/testnet), it is set to 1 micro-STX.
 
 Fee estimates can obtained through the [`GET /v2/fees/transfer`](https://docs.hiro.so/api#operation/get_fee_transfer) endpoint:
 
@@ -40,7 +40,7 @@ The API will respond with the fee rate (as integer):
 
 ## Nonces
 
-Every account carries a [nonce property](https://en.wikipedia.org/wiki/Cryptographic_nonce) that indicates the number of transactions processed for the given account. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction.
+Every account carries a [nonce property](https://en.wikipedia.org/wiki/Cryptographic_nonce) that indicates the number of transactions processed for the given account. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction.
 
 Nonces are added to all transactions and help identify them in order to ensure transactions are processed in order and to avoid duplicated processing.
 
@@ -52,13 +52,13 @@ When a new token transfer transaction is constructed, the most recent nonce of t
 
 ## Confirmations
 
-The Stacks 2.0 network is anchored onto the bitcoin network. This allows transactions on Stacks to inherit the same finality and security of the Bitcoin blockchain.
+The Stacks 2.0 network is anchored onto the bitcoin network. This allows transactions on Stacks to inherit the same finality and security of the Bitcoin blockchain. This allows transactions on Stacks to inherit the same finality and security of the Bitcoin blockchain.
 
 The time to mine a block, to confirm transactions, will eventually match the expected "block time" of the bitcoin network: 10 minutes.
 
 -> Transactions can also be mined in [microblocks](/understand-stacks/microblocks), reducing the latency significantly.
 
-The block time is hardcoded and will change throughout the implementation phases of the [testnet](/understand-stacks/testnet). The current block time can be obtained through the [`GET /extended/v1/info/network_block_times`](https://docs.hiro.so/api#operation/get_network_block_times) endpoint:
+The block time is hardcoded and will change throughout the implementation phases of the [testnet](/understand-stacks/testnet). The block time is hardcoded and will change throughout the implementation phases of the [testnet](/understand-stacks/testnet). The current block time can be obtained through the [`GET /extended/v1/info/network_block_times`](https://docs.hiro.so/api#operation/get_network_block_times) endpoint:
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
@@ -80,9 +80,9 @@ The API will respond with the block time (in seconds):
 
 ## Read-only function calls
 
-Smart contracts can expose public function calls. For functions that make state modifications to the blockchain, transactions need to be generated and broadcasted.
+Smart contracts can expose public function calls. Smart contracts can expose public function calls. For functions that make state modifications to the blockchain, transactions need to be generated and broadcasted.
 
-However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api).
+However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api). Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api).
 
 -> Read-only function calls do not require transaction fees
 
@@ -96,6 +96,7 @@ curl --location --request POST 'https://stacks-node-api.testnet.stacks.co/v2/con
   "sender": "<stx_address>.<contract_name>",
   "arguments": [<clarity_value>, ...]
 }'
+}'
 ```
 
 Sample response for a successful call:
@@ -107,7 +108,7 @@ Sample response for a successful call:
 }
 ```
 
--> To set the function call arguments and read the result, [Clarity values](/write-smart-contracts/values) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations
+-> To set the function call arguments and read the result, [Clarity values](/write-smart-contracts/values) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations
 
 ## Querying
 
