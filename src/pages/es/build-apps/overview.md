@@ -1,6 +1,6 @@
 ---
-title: Build apps with Stacks
-description: Authenticate users, sign transactions and store data with the Stacks blockchain
+title: Crea apps con Stacks
+description: Identificación de usuarios, firma de transacciones y almacenamiento de datos en la cadena de bloques Stacks
 images:
   large: /images/pages/build-apps.svg
   sm: /images/pages/build-apps-sm.svg
@@ -14,9 +14,12 @@ Unlike most cloud-based apps, they are "decentralized" since they don't depend o
 
 Stacks provides three main functions for building apps:
 
+<!-- markdown-link-check-disable -->
+
 - **Authentication**: Register and sign users in with identities on the Stacks blockchain
 - **Transaction signing**: Prompt users to sign and broadcast transactions to the Stacks blockchain
 - **Data storage**: Save and retrieve data for users with [Gaia](/build-apps/references/gaia)
+<!-- markdown-link-check-enable-->
 
 All three of these integrations can be used together to create powerful new user experiences that rival or exceed those of traditional apps—all while protecting your users' digital rights.
 
