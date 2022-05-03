@@ -1,38 +1,38 @@
 ---
-title: Stacks Blockchain API
-description: Interacting with the Stacks 2.0 Blockchain via API
+title: API Blockchain Stacks
+description: Berinteraksi dengan Blockchain Stacks 2.0 melalui API
 images:
   sm: /images/pages/testnet-sm.svg
 ---
 
-## Introduction
+## Pengantar
 
-The Stacks 2.0 Blockchain API allows you to query the Stacks 2.0 blockchain and interact with smart contracts. It was built to maintain pageable materialized views of the Stacks 2.0 Blockchain.
+API Blockchain Stacks 2.0 memungkinkan Anda untuk melakukan query blockchain Stacks 2.0 dan berinteraksi dengan kontrak pintar. Dibangun untuk menjaga tampilan halaman dari Stacks 2.0 Blockchain.
 
-~> The RESTful API is developed by Hiro. Hiro also hosts a public API node for easy onboarding. Using it requires you to trust the hosted server, but provides a faster onboarding experience. You can [run your own API server](https://docs.hiro.so/get-started/running-api-node)
+> API RESTful dikembangkan oleh Hiro. Hiro juga melakukan hosting noda API publik untuk kemudahan onboarding. Dalam menggunakannya, Anda harus mempercayai server yang dihosting,  memberikan pengalaman onboarding yang lebih cepat. Anda dapat [menjalankan server API Anda sendiri](https://docs.hiro.so/get-started/running-api-node)
 
-The RESTful JSON API can be used without any authorization. The basepath for the API is:
+API JSON RESTful dapat digunakan tanpa otorisasi apa pun. Jalur dasar untuk API adalah:
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
 https://stacks-node-api.testnet.stacks.co/
 ```
 
--> This documentation only covers endpoints that are exposed on a Stacks node, referred to as the RPC API. For full documentation on the RESTful API, check out the [Hiro's API reference](https://docs.hiro.so/api).
+> Dokumentasi ini hanya mencakup endpoint yang diekspos pada noda Stacks, yang disebut sebagai API RPC. Untuk dokumentasi lengkap tentang API RESTful, lihat [referensi API Hiro](https://docs.hiro.so/api).
 
-### Stacks Node RPC API
+### API RPC Noda Stacks
 
-The [stacks-node implementation](https://github.com/stacks-network/stacks-blockchain/) exposes JSON RPC endpoints.
+[Implementasi noda-stacks](https://github.com/stacks-network/stacks-blockchain/) mengekspos endpoint RPC JSON.
 
-All `/v2/` routes a proxied to a Hiro-hosted Stacks Node. For a trustless architecture, you should make these requests to a self-hosted node.
+Semua `/v2/` merutekan proxy ke Noda Stacks yang dihosting oleh Hiro. Untuk arsitektur tanpa kepercayaan, Anda harus membuat permintaan ini ke noda yang dihosting sendiri.
 
-## Proxied Stacks Node RPC API endpoints
+## Endpoint API RPC Noda Stacks yang diproxy
 
-The Stacks 2.0 Blockchain API is centrally hosted. However, every running Stacks node exposes an RPC API, which allows you to interact with the underlying blockchain. Instead of using a centrally hosted API, you can directly access the RPC API of a locally hosted Node.
+API Blockchain Stacks 2.0 dihosting secara terpusat. Namun, setiap noda Stacks yang berjalan memperlihatkan API RPC, yang memungkinkan Anda berinteraksi dengan blockchain yang mendasarinya. Alih-alih menggunakan API yang dihosting secara terpusat, Anda dapat langsung mengakses API RPC dari noda yang dihosting secara lokal.
 
--> The Stacks Blockchain API proxies to Node RPC endpoints
+-> Proxy API Blockchain Stacks ke endpoint Noda RPC
 
-While the Node RPC API doesn't give the same functionality as the hosted Stacks 2.0 Blockchain API, you get similar functionality in a way that is scoped to that specific node. The RPC API includes the following endpoints:
+Meskipun Noda RPC API tidak memberikan fungsionalitas yang sama seperti API Blockchain Stacks 2.0 yang dihosting, Anda mendapatkan fungsionalitas serupa dengan cara yang dicakupkan ke noda tertentu. API RPC mencakup endpoint berikut:
 
 - [POST /v2/transactions](https://docs.hiro.so/api#operation/post_core_node_transactions)
 - [GET /v2/contracts/interface/{contract_address}/{contract_name}](https://docs.hiro.so/api#operation/get_contract_interface)
@@ -43,4 +43,4 @@ While the Node RPC API doesn't give the same functionality as the hosted Stacks 
 - [GET /v2/fees/transfer](https://docs.hiro.so/api#operation/get_fee_transfer)
 - [GET /v2/info](https://docs.hiro.so/api#operation/get_core_api_info)
 
-~> If you run a local node, it exposes an HTTP server on port `20443`. The info endpoint would be `localhost:20443/v2/info`.
+> Jika Anda menjalankan noda lokal, itu akan mengekspos server HTTP pada port `20443`. Endpoint info adalah `localhost:20443/v2/info`.
