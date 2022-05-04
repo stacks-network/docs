@@ -86,7 +86,3 @@ Berikut ini adalah cara Gaia menghadapi sistem penyimpanan terdesentralisasi lai
 | Data dapat dialamatkan secara global                  | X                                              | X                        | X                          | X                        | X                              |                                    |
 | Membutuhkan mata uang kripto untuk bekerja            |                                                | X                        | X                          |                          |                                |                                    |
 | Data ditujukan untuk konten                           |                                                | X                        | X                          | X                        | X                              | X                                  |
-
-## Menerapkan hub GAIA Anda
-
-Langkah-langkah untuk menerapkan hub GAIA Anda sendiri dapat ditemukan [di sini](https://github.com/stacks-network/gaia/blob/master/deploy/README.md)
