@@ -88,7 +88,3 @@ Here's how Gaia stacks up against other decentralized storage systems. Features 
 | Data is globally addressable               | X                                              | X                        | X                          | X                        | X                              |                                    |
 | Needs a cryptocurrency to work             |                                                | X                        | X                          |                          |                                |                                    |
 | Data is content-addressed                  |                                                | X                        | X                          | X                        | X                              | X                                  |
-
-## Deploy your GAIA hub
-
-Steps to deploy your own GAIA hub can be found [here](https://github.com/stacks-network/gaia/blob/master/deploy/README.md)
