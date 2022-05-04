@@ -1037,12 +1037,6 @@ async function rewrites() {
 
 module.exports = withFonts(
   withBundleAnalyzer({
-    experimental: {
-      modern: true,
-      polyfillsOptimization: true,
-      jsconfigPaths: true,
-      trailingSlash: true,
-    },
     env: {
       FATHOM_ID: 'FOEMPXUV',
     },
