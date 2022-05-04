@@ -38,11 +38,11 @@ Anda dapat menganggap interaksi CORS sebagai gedung apartemen dengan Keamanan. M
 
 Cara Anda mengkonfigurasi COR bergantung pada perusahaan yang Anda gunakan untuk menghost aplikasi web Anda. Generator aplikasi menambahkan direktori `cors` ke perancah aplikasi Anda. Direktori ini berisi file untuk Netlify (`_headers` dan `_redirects`) serta satu untuk Firebase (`firebase.json`). Konfigurasi pada direktori `cors` membuat file `manifest.json` aplikasi Anda dapat diakses oleh aplikasi lain (misalnya, ke Browser Stacks). Jika Anda menerapkan ke layanan selain Netlify atau Firebase, Anda harus mengkonfigurasi CORS pada layanan tersebut untuk menyertakan header berikut saat menayangkan `manifest.json`:
 
-````html
+```html
 Access-Control-Allow-Origin: * Access-Control-Allow-Headers: "X-Requested-With, Content-Type,
 Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding" Access-Control-Allow-Methods:
-"POST, GET, OPTIONS, DELETE, PUT"```
-````
+"POST, GET, OPTIONS, DELETE, PUT"
+```
 
 Lihat dokumentasi untuk layanan hosting Anda untuk mempelajari cara mengkonfigurasi CORS pada layanan tersebut.
 
