@@ -103,8 +103,16 @@ const nav: NavItem[] = [
         href: '/en',
       },
       {
+        label: 'Indonesian',
+        href: '/id',
+      },
+      {
         label: 'Spanish',
         href: '/es',
+      },
+      {
+        label: 'Add another language...',
+        href: '/contribute/translations',
       },
     ],
   },
