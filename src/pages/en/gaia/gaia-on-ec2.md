@@ -38,7 +38,7 @@ Alternatively, you can enter following S3 URL which was the latest version at th
 https://s3-external-1.amazonaws.com/cf-templates-vzldibfi2mw8-us-east-1/2022122ByM-cloudformation.yaml
 ```
 
-![Specify template](/public/images/cloudformation-specify-template.png)
+![Specify template](/images/cloudformation-specify-template.png)
 
 ### Step 3 - Specify stack details
 
