@@ -40,11 +40,11 @@ You can think of CORS interactions as an apartment building with Security. For e
 
 The way you configure CORs depends on which company you use to host your web application. The application generator adds a `cors` directory to your application scaffolding. This directory contains files for Netlify (`_headers` and `_redirects`) as well as one for Firebase (`firebase.json`). The configurations in the `cors` directory make your application's `manifest.json` file accessible to other applications (for example, to the Stacks Browser). If you are deploying to a service other than Netlify or Firebase, you must configure CORS on that service to include the following headers when serving `manifest.json`:
 
-````html
+```html
 Access-Control-Allow-Origin: * Access-Control-Allow-Headers: "X-Requested-With, Content-Type,
 Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding" Access-Control-Allow-Methods:
-"POST, GET, OPTIONS, DELETE, PUT"```
-````
+"POST, GET, OPTIONS, DELETE, PUT"
+```
 
 Consult the documentation for your hosting service to learn how to configure CORS on that service.
 
