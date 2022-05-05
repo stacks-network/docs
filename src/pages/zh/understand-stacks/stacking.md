@@ -129,3 +129,7 @@ console.log(
   '0x' + btc.address.fromBase58Check('1C56LYirKa3PFXFsvhSESgDy2acEHVAEt6').hash.toString('hex')
 );
 ```
+
+## Chossing the right Stacking strategy
+
+[Here](https://blog.stacks.co/stacking-strategy) is an interesting article that may help you choose the right Stacking stategy.
