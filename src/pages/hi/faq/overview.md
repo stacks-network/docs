@@ -42,3 +42,7 @@ Submitting multiple transactions for the same action can slow things down in a f
 
 - If the total spent in 2 or 3 transactions is more than can be spent in a single transaction, the transactions appear unmineable.
 - If the fees for multiple transactions exceed the STX balance, the transactions will be unmineable.
+
+## What are .btc domains?
+
+[This forum post](https://forum.stacks.org/t/btc-domains-are-live/12065) explains all the benefits of .btc domains. They can currently be purchased in [btc.us](https://btc.us/)
