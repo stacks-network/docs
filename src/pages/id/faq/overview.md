@@ -42,3 +42,7 @@ Mengirimkan beberapa transaksi untuk tindakan yang sama dapat memperlambat segal
 
 - Jika total yang dibelanjakan dalam 2 atau 3 transaksi lebih dari yang dapat dihabiskan dalam satu transaksi, transaksi tersebut tampaknya tidak dapat ditambang.
 - Jika biaya untuk beberapa transaksi melebihi saldo STX, transaksi tidak dapat ditambang.
+
+## What are .btc domains?
+
+[This forum post](https://forum.stacks.org/t/btc-domains-are-live/12065) explains all the benefits of .btc domains. They can currently be purchased in [btc.us](https://btc.us/)
