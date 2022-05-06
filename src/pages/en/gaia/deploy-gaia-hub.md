@@ -5,11 +5,11 @@ description: Steps and tutorials
 
 ## Deploy your GAIA hub
 
-Gaia Hub currently can be deployed on:
+Steps to deploy your own GAIA hub on Linux can be found [here](./setup-linux)
 
+Regardless of what server the Gaia Hub runs on, the storage it uses can currently be deployed on multiple platforms:
+
+- Local disk (the server itself)
 - Amazon S3
 - Azure Blob Storage
-- Local disk
 - Google Cloud
-
-Steps to deploy your own GAIA hub can be found [here](https://github.com/stacks-network/gaia/blob/master/deploy/README.md)
