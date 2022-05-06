@@ -94,7 +94,13 @@ sections:
             usePageTitles: true
             pages:
               - path: /deploy-gaia-hub
+              - path: /setup-linux
+              - path: /setup-mac
               - path: /gaia-on-ec2
+          - title: Configuring GAIA Hub
+            usePageTitles: true
+            pages:
+              - path: /configuration
       - path: /references
         pages:
           - path: /glossary
