@@ -127,6 +127,6 @@ console.log(
 );
 ```
 
-## Chossing the right Stacking strategy
+## Choosing the right Stacking strategy
 
 [Here](https://blog.stacks.co/stacking-strategy) is an interesting article that may help you choose the right Stacking stategy.
