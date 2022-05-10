@@ -89,7 +89,12 @@ sections:
       - path: /gaia
         pages:
           - path: /overview
-
+        sections:
+          - title: Deploy your GAIA Hub
+            usePageTitles: true
+            pages:
+              - path: /deploy-gaia-hub
+              - path: /gaia-on-ec2
       - path: /references
         pages:
           - path: /glossary
