@@ -98,9 +98,10 @@ Perbarui properti berikut:
 ```toml
 [node]
 ...
-# Enter your private key here
+# Masukkan kunci privat Anda di sini
 seed = "replace-with-your-private-key"
 local_peer_seed = "replace-with-your-private-key"
+...
 
 [burnchain]
 ...
