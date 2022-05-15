@@ -60,6 +60,6 @@ Kunci privat ini menandatangani token respons autentikasi untuk aplikasi yang me
 
 ### Kunci privat aplikasi
 
-The app private key is an app-specific private key that is generated from the user's identity address private key using the `domain_name` as input.
+Kunci privat aplikasi adalah kunci privat khusus aplikasi yang dihasilkan dari identitas alamat kunci privat pengguna menggunakan `domain_name` sebagai masukan.
 
 Kunci privat aplikasi dibagikan secara aman dengan aplikasi pada setiap autentikasi, dan dienkripsi oleh autentikator dengan kunci publik transit. Karena kunci transit hanya disimpan di sisi klien, ini akan mencegah serangan man-in-the-middle di mana server atau penyedia internet berpotensi mengintip kunci privat aplikasi.
