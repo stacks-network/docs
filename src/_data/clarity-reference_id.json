@@ -14,7 +14,7 @@
       "output_type": "int | uint",
       "signature": "(- i1 i2...)",
       "description": "Subtracts a variable number of integer inputs and returns the result. In the event of an _underflow_, throws a runtime error.",
-      "example": "(- 2 1 1) ;; Returns 0\n(- 0 3) ;; Returns -3"
+      "example": "(- 2 1 1) ;; Returns 0\n(- 0 3) ;; Returns -3\n"
     },
     {
       "name": "* (multiply)",
@@ -22,7 +22,7 @@
       "output_type": "int | uint",
       "signature": "(* i1 i2...)",
       "description": "Multiplies a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.",
-      "example": "(* 2 3) ;; Returns 6\n(* 5 2) ;; Returns 10\n(* 2 2 2) ;; Returns 8"
+      "example": "(* 2 3) ;; Returns 6\n(* 5 2) ;; Returns 10\n(* 2 2 2) ;; Returns 8\n"
     },
     {
       "name": "/ (divide)",
@@ -46,7 +46,7 @@
       "output_type": "bool",
       "signature": "(<= i1 i2)",
       "description": "Compares two integers, returning true if `i1` is less than or equal to `i2` and `false` otherwise.",
-      "example": "<= 1 1) ;; Returns true\n(<= 5 2) ;; Returns false"
+      "example": "(<= 1 1) ;; Returns true\n(<= 5 2) ;; Returns false\n"
     },
     {
       "name": "< (less than)",
@@ -54,7 +54,7 @@
       "output_type": "bool",
       "signature": "(< i1 i2)",
       "description": "Compares two integers, returning `true` if `i1` is less than `i2` and `false` otherwise.",
-      "example": "(< 1 2) ;; Returns true\n(< 5 2) ;; Returns false"
+      "example": "(< 1 2) ;; Returns true\n(< 5 2) ;; Returns false\n"
     },
     {
       "name": "> (greater than)",
