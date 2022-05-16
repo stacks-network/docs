@@ -121,19 +121,14 @@ Dokumentasi lengkap terdapat di [stacks-gen](https://github.com/psq/stacks-gen).
 
 ### Mendapatkan saldo dan nonce Stacks (STX)
 
-Saldo dan nonce STX dapat diperoleh melalui`GET /v2/accounts/<stx_address>`</ a> endpoint:</p> 
-
-
+Saldo dan nonce STX dapat diperoleh melalui [`GET /v2/accounts/<stx_address>`](https://docs.hiro.so/api#operation/get_account_info) endpoint:
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/v2/accounts/<stx_address>'
 ```
 
-
 Contoh respon:
-
-
 
 ```js
 {
@@ -142,26 +137,18 @@ Contoh respon:
 }
 ```
 
-
 -> String saldo merepresentasikan integer 128-bit yang tidak ditandatangani (big-endian) dalam pengkodean hex
-
-
 
 ### Dapatkan semua saldo token
 
 Semua saldo token dapat diperoleh melalui [`GET /extended/v1/address/<stx_address>/balances`](https://docs.hiro.so/api#operation/get_account_balance) endpoint:
-
-
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/address/<stx_address>/balances'
 ```
 
-
 Contoh respon:
-
-
 
 ```js
 {
@@ -175,24 +162,18 @@ Contoh respon:
 }
 ```
 
-
 -> Akun Stacks tidak dapat menyimpan bitcoin. Cara terbaik untuk mendapatkan saldo BTC yang sesuai adalah dengan mendapatkan alamat BTC dari alamat Stacks (menggunakan [`c32check</ code></a>) dan kueri jaringan Bitcoin.</p>
 
 <h3 spaces-before="0">Dapatkan semua event aset</h3>
 
 <p spaces-before="0">Semua event aset yang terkait dengan akun dapat diperoleh melalui <a href="https://docs.hiro.so/api#operation/get_account_balance"><code>GET /extended/v1/address/<stx_address>/ aset`](https://github.com/stacks-network/c32check#c32tob58-b58toc32) endpoint:
 
-
-
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/address/<stx_address>/assets'
 ```
 
-
 Contoh respon:
-
-
 
 ```js
 {
