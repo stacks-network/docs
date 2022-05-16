@@ -9,7 +9,7 @@ images:
 
 API Blockchain Stacks 2.0 memungkinkan Anda untuk melakukan query blockchain Stacks 2.0 dan berinteraksi dengan kontrak pintar. Dibangun untuk menjaga tampilan halaman dari Stacks 2.0 Blockchain.
 
-> API RESTful dikembangkan oleh Hiro. Hiro juga melakukan hosting noda API publik untuk kemudahan onboarding. Dalam menggunakannya, Anda harus mempercayai server yang dihosting,  memberikan pengalaman onboarding yang lebih cepat. Anda dapat [menjalankan server API Anda sendiri](https://docs.hiro.so/get-started/running-api-node)
+> API RESTful dikembangkan oleh Hiro. Hiro juga melakukan hosting noda API publik untuk kemudahan onboarding. Dalam menggunakannya, Anda harus mempercayai server yang dihosting, memberikan pengalaman onboarding yang lebih cepat. Anda dapat [menjalankan server API Anda sendiri](https://docs.hiro.so/get-started/running-api-node)
 
 API JSON RESTful dapat digunakan tanpa otorisasi apa pun. Jalur dasar untuk API adalah:
 
