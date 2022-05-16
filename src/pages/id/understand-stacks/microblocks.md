@@ -86,7 +86,7 @@ The following guidelines are provided as an initial set of best practices for UI
 
 #### Penjelajah
 
-Menampilkan status tertunda, namun memperingatkan bahwa transaksi masih tertunda. Diindikasikan secara visual bahwa saldo yang ditampilkan bergantung pada status  tertunda.
+Menampilkan status tertunda, namun memperingatkan bahwa transaksi masih tertunda. Diindikasikan secara visual bahwa saldo yang ditampilkan bergantung pada status tertunda.
 
 #### Wallet
 
