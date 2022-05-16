@@ -10,7 +10,7 @@ images:
 
 Clarity is a **decidable** smart contract language that optimizes for predictability and security, designed for the Stacks blockchain. Smart contracts allow developers to encode essential business logic on a blockchain.
 
-## Smart contracts
+## Contratos inteligentes
 
 Smart contracts encode and enforce rules for modifying a particular set of data that is shared among people and entities who don't necessarily trust each other. For example, a smart contract can hold funds in escrow until multiple parties agree to release them, create its own ledger and keep track of its own novel tokens (fungible or non-fungible), and even help make supply chains more transparent.
 
