@@ -48,4 +48,4 @@ Lihat dokumentasi untuk layanan hosting Anda untuk mempelajari cara mengkonfigur
 
 ## Penerapan dan Radiks
 
-Jika Anda menerapkan aplikasi Stacks yang menggunakan [Radiks](https://github.com/stacks-network/radiks), penerapan Anda mencakup server dan komponen database. Anda harus mempertimbangkan hal ini saat menerapkan aplikasi Anda. Anda mungkin ingin memilih layanan seperti [Heroku](https://www.heroku.com) atau Digital Ocean< /a> jika aplikasi Anda menggunakan Radiks.</p>
+Jika Anda menerapkan aplikasi Stacks yang menggunakan [Radiks](https://github.com/stacks-network/radiks), penerapan Anda mencakup server dan komponen database. Anda harus mempertimbangkan hal ini saat menerapkan aplikasi Anda. Anda mungkin ingin memilih layanan seperti [Heroku](https://www.heroku.com) atau [Digital Ocean](https://www.digitalocean.com) jika aplikasi Anda menggunakan Radiks.
