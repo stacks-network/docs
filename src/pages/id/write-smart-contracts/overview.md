@@ -22,7 +22,7 @@ Ada [plugin Clarity Visual Studio Code][] yang tersedia untuk bantuan sintaks da
 
 ## Kasus penggunaan
 
-Tidak semua aplikasi terdesentralisasi memerlukan kontrak pintar, tetapi Clarity membuka kemampuan menarik untuk aplikasi  yang terdesentralisasi. Contoh dari kasus penggunaan termasuk, namun tidak terbatas pada:
+Tidak semua aplikasi terdesentralisasi memerlukan kontrak pintar, tetapi Clarity membuka kemampuan menarik untuk aplikasi yang terdesentralisasi. Contoh dari kasus penggunaan termasuk, namun tidak terbatas pada:
 
 - Kontrol akses (misalnya membayar untuk bisa mengakses)
 - Non-fungible (misalnya barang koleksi) dan token fungible (misalnya stablecoin)
