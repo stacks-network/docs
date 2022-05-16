@@ -1,72 +1,64 @@
 ---
-title: Tokens
-description: Learn about token support within Clarity
+title: Token
+description: Pelajari tentang dukungan token dalam Clarity
 icon: TestnetIcon
 images:
   large: /images/pages/nft/token.png
   sm: /images/pages/nft/token.png
 ---
 
-## Introduction
+## Pengantar
 
-A fundamental use of blockchain technology is the representation, store, and transfer of value between users of a blockchain. Cryptocurrency is a very common use of blockchain technology, and remains one of the primary drivers of adoption of blockchain technology. Cryptocurrencies are represented by blockchain tokens: individual units of value within a given blockchain ecosystem. Blockchain tokens can extend beyond just digital currency, however, and recent developments throughout the cryptocurrency community have demonstrated potential for the use of blockchain to tokenize and represent not just money but other tangible assets.
+Penggunaan mendasar dari teknologi blockchain adalah representasi, penyimpanan, dan transfer nilai antara pengguna blockchain. Mata uang kripto adalah penggunaan teknologi blockchain yang sangat umum, dan tetap menjadi salah satu pendorong utama adopsi teknologi blockchain. Mata uang kripto direpresentasikan oleh token blockchain: unit nilai individual dalam ekosistem blockchain tertentu. Token Blockchain dapat melampaui mata uang digital, bagaimanapun, dan perkembangan terakhir di seluruh komunitas mata uang kripto telah menunjukkan potensi penggunaan blockchain untuk tokenize dan merepresentasikan tidak hanya uang tetapi aset berwujud lainnya.
 
-A blockchain token is a digital asset that can be verifiably owned by a user of a blockchain. Blockchain tokens are governed by a set of rules that are defined by either the blockchain itself (in the case of native tokens) or by a smart contract on a blockchain. Rules can vary depending on the nature and the use of the token.
+Token blockchain adalah aset digital yang dapat diverifikasi dan dimiliki oleh pengguna blockchain. Token Blockchain diatur oleh seperangkat aturan yang ditentukan oleh blockchain itu sendiri (dalam kasus token asli) atau oleh kontrak pintar pada blockchain. Aturan dapat bervariasi tergantung pada sifat dan penggunaan token.
 
-Tokens on a blockchain fall into two general categories, depending on their properties: [fungible][] or [non-fungible][]. The following sections discuss the properties of both types of tokens, and provide information about implementation of the two types of tokens on Stacks.
+Token pada blockchain terbagi dalam dua kategori umum, tergantung pada propertinya: [sepadan][] atau [tidak-sepadan][]. Bagian berikut membahas properti dari kedua jenis token, dan memberikan informasi tentang penerapan kedua jenis token di Stacks.
 
 ## Fungible tokens
 
-A core property of any token on a blockchain is fungibility. A fungible token is a token that's mutually interchangable or capable of mutual substitution. In other words, one quantity or part of a fungible token can be replaced by an equal quantity or part of the same fungible token. Fungible tokens are often used to represent real-world fungible assets like currency. The STX token is an example of a fungible token. Other examples include stablecoins, tokens that represent voting rights in a DAO, or tokens that algorithmically track the price of stocks.
+Properti inti dari token apa pun di blockchain adalah fungibilitas. Token yang sepadan adalah token yang dapat saling dipertukarkan atau mampu saling menggantikan. Dengan kata lain, satu kuantitas atau bagian dari token yang sepadan dapat diganti dengan jumlah yang sama atau bagian dari token yang sepadan yang sama. Token yang sepadan sering digunakan untuk merepresentasikan dunia nyata yang sepadan seperti mata uang. Token STX adalah contoh dari token yang sepadan. Contoh lain termasuk stablecoin, token yang mewakili hak suara dalam DAO, atau token yang secara algoritma melacak harga saham.
 
-Fungible tokens form one of the most important value propositions for blockchain technology, the ability to store value and exchange that value through both internal and external transactions. Because fungible tokens can be divided into smaller parts and recombined into the same value representation, they serve a great utility for transferring value between blockchain users.
+Token yang sepadan membentuk salah satu proposisi nilai terpenting untuk teknologi blockchain, kemampuan untuk menyimpan nilai dan menukar nilai tersebut melalui transaksi internal dan eksternal. Karena token yang sepadan dapat dibagi menjadi bagian-bagian yang lebih kecil dan digabungkan kembali menjadi representasi nilai yang sama, mereka melayani utilitas yang hebat untuk mentransfer nilai antara pengguna blockchain.
 
-The primary fungible token on the Stacks blockchain is the native token, STX. Because the Stacks blockchain allows for the creation of [smart contracts][], other fungible tokens can be created on the Stacks blockchain as well. [SIP-010][] specifies the standard for fungible tokens on the Stacks blockchain. This specification defines the functions and traits that a fungible token on Stacks _must_ have. By complying with this standard, fungible tokens on Stacks can be easily represented by wallets that support Stacks.
+Token utama yang sepadan pada blockchain Stacks adalah token asli, STX. Karena blockchain Stacks memungkinkan pembuatan [kontrak pintar][], token yang dapat dipertukarkan lainnya juga dapat dibuat di blockchain Stacks. [SIP-010][] menentukan standar untuk token yang dapat dipertukarkan pada blockchain Stacks. Spesifikasi ini mendefinisikan fungsi dan sifat yang _harus_ dimiliki oleh token yang sepadan pada Stacks. Dengan mematuhi standar ini, token yang sepadan pada Stacks dapat dengan mudah direpresentasikan oleh wallet yang mendukung Stacks.
 
-### Understanding the fungible token standard
+### Memahami standar token yang sepadan
 
-The [SIP-010][] standard is an interface definition that allows Stacks applications and wallets to interact with fungible tokens in a standard way. Supporting the standard reduces complexity for token creators to get their tokens into the ecosystem. Under the [SIP-010][] standard, fungible tokens must have the following characteristics:
+Standar [SIP-010][] adalah definisi antarmuka yang memungkinkan aplikasi dan dompet Stacks untuk berinteraksi token yang sepadan dengan cara standar. Mendukung standar mengurangi kompleksitas pembuat token untuk memasukkan token mereka ke dalam ekosistem. Di bawah standar [SIP-010][], token yang dapat dipertukarkan harus memiliki karakteristik berikut:
 
-- Ability to transfer a specified amount of the token to a recipient (`transfer`). The recipient is required to be a Stacks principal.
-- Ability to obtain the human-readable name of the token (`get-name`).
-- Ability to obtain a short name (ticker symbol) for the token (`get-symbol`).
-- Ability to get the number of decimals in the token representation (`get-decimals`). This is used to construct a representation of the token that humans would be familiar dealing with. For example, the US dollar has 2 decimals, if the base unit is cents.
-- Ability to get the balance of the token for a particular Stacks principal (`get-balance-of`).
-- Ability to get the total supply of the token (`get-total-supply`).
-- A URI to metadata associated with the token (`get-token-uri`). This can resolve to off-chain metadata about the token or contract, such as an image icon for the token or a description.
+- Kemampuan untuk mentransfer sejumlah token tertentu ke penerima (`transfer`). Penerima harus menjadi prinsipal Stacks.
+- Kemampuan untuk mendapatkan nama token yang dapat dibaca oleh manusia (`get-name`).
+- Kemampuan untuk mendapatkan nama pendek (simbol ticker) untuk token (`get-symbol`).
+- Kemampuan untuk mendapatkan jumlah desimal dalam representasi token (`get-decimals`). Ini digunakan untuk membangun representasi token yang biasa dihadapi oleh seseorang. Misalnya, dolar AS memiliki 2 desimal, jika satuan dasarnya adalah sen.
+- Kemampuan untuk mendapatkan saldo token untuk prinsipal Stacks tertentu (`get-balance-of`).
+- Kemampuan untuk mendapatkan total pasokan token (`get-total-supply`).
+- URI ke metadata yang terkait dengan token (`get-token-uri`). Ini dapat menyelesaikan metadata luar-rantai tentang token atau kontrak, seperti ikon gambar untuk token atau deskripsi.
 
-### Examples of fungible tokens on Stacks
+## Non-fungible tokens (NFT)
 
-- [Nothing](https://nothingtoken.com/) ([contract](https://explorer.stacks.co/txid/0x022bed728d648ff1a68036c40f3aff8136ee22fee18380731df0ab9d76d3c4a9?chain=mainnet))
+Non-fungible tokens (NFT) adalah jenis token yang tidak dapat dipertukarkan. NFT memiliki sifat unik (biasanya dalam bentuk metadata lampiran) yang membatasi kemampuan untuk menggantinya dengan token yang identik. NFT adalah token yang unik, seperti karya seni, atau hak kepemilikan atas aset nyata seperti rumah.
 
-## Non-fungible tokens (NFTs)
+NFT sendiri tidak memiliki nilai bawaan, seperti mata uang. Nilai NFT berasal dari aset yang direpresentasikan oleh NFT. Penggunaan NFT sangat banyak, termasuk seni digital, koleksi, nama domain, dan representasi kepemilikan hak konten. NFT dapat digunakan sebagai sertifikat digital yang melacak keaslian barang nyata, atau mendigitalkan hak kepemilikan atas properti.
 
-Non-fungible tokens (NFTs) are a type of token that are not interchangeable. NFTs have unique traits (usually in the form of attached metadata) that restrict the abillity to replace them with identical tokens. An NFT is a token that is unique, such as a piece of art, or ownership rights to a real-world asset such as a house.
+Seperti token yang sepadan, NFT di blockchain Stacks dibuat dengan [kontrak pintar][]. [SIP-009][] menentukan standar untuk NFT di blockchain Stacks. Spesifikasi ini mendefinisikan fungsi dan sifat yang _harus_ dimiliki, tetapi sebagian besar NFT memiliki lebih banyak fungsi atau sifat yang dilampirkan daripada yang hanya dijelaskan oleh spesifikasi. Dengan mematuhi standar ini, token yang tidak sepadan pada Stacks dapat dengan mudah direpresentasikan oleh wallet yang mendukung Stacks.
 
-NFTs alone don't have an inherent value, like a currency. The value of an NFT is derived from the assets that the NFT represents. The use of NFTs are myriad, including digital art, collectibles, domain names, and representation of ownership of content rights. NFTs can be used as digital certificates that track the authenticty of real world items, or digitize the ownership rights to property.
+### Memahami standar token yang tidak sepadan
 
-As with fungible tokens, NFTs on the Stacks blockchain are created with [smart contracts][]. [SIP-009][] specifies the standard for NFTs on the Stacks blockchain. This specification defines the functions and traits that an NFT _must_ have, but most NFTs have more functions or traits attached than those solely described by the specification. By complying with this standard, non-fungible tokens on Stacks can be easily represented by wallets that support Stacks.
+Standar [SIP-009][] adalah definisi antarmuka yang ekosistem Stacks selaras. Dengan dukungan untuk standar ini di seluruh dompet dan alat, akan menjadi makin mudah untuk berinteraksi dengan NFT. Di bawah standar [SIP-009][], kontrak NFT harus memiliki karakteristik sebagai berikut:
 
-### Understanding the non-fungible token standard
+- Kemampuan untuk mendapatkan pengidentifikasi token terakhir (`get-last-token-id`). Id ini merepresentasikan batas atas NFT yang dikeluarkan oleh kontrak.
+- URI ke metadata yang terkait dengan pengidentifikasi token tertentu. (`get-token-uri`). URI ini dapat diselesaikan menjadi file JSON dengan informasi tentang pembuatnya, file media terkait, deskripsi, tanda tangan, dan banyak lagi.
+- Kemampuan untuk memverifikasi pemilik untuk pengidentifikasi token yang diberikan (`get-owner`). Pemilik memutuskan untuk [Stacks principal](/write-smart-contracts/principals).
+- Kemampuan untuk mentransfer NFT ke penerima (`transfer`). Penerima harus menjadi prinsipal Stacks.
 
-The [SIP-009][] standard is an interface definition that the Stacks ecosystem aligned on. With support for this standard across wallets and tools, it becomes easy to interact with NFTs. Under the [SIP-009][] standard, NFT contract must have the following characteristics:
+## Bacaan lebih lanjut
 
-- Ability to obtain the last token identifier (`get-last-token-id`). This id represents the upper limit of NFTs issued by the contract.
-- A URI to metadata associated with a specific token identifier. (`get-token-uri`). This URI could resolve to a JSON file with information about the creator, associated media files, descriptions, signatures, and more.
-- Ability to verify the owner for a given token identifier (`get-owner`). The owner resolves to a [Stacks principal](/write-smart-contracts/principals).
-- Ability to transfer an NFT to a recipient (`transfer`). The recipient is required to be a Stacks principal.
+- [Perbedaan Antara Token Fungible dan Non-Fungible](https://101blockchains.com/fungible-vs-non-fungible-tokens/)
+- [Jelaskan Seperti Saya 5: NFT](https://messari.io/article/explain-it-like-i-am-5-nfts)
 
-### Examples of NFTs on Stacks
-
-- [This is #1](https://thisisnumberone.com) ([contract](https://explorer.stacks.co/txid/SP3QSAJQ4EA8WXEDSRRKMZZ29NH91VZ6C5X88FGZQ.thisisnumberone-v2?chain=mainnet))
-
-## Further reading
-
-- [The Difference Between Fungible and Non-Fungible Tokens](https://101blockchains.com/fungible-vs-non-fungible-tokens/)
-- [Explain It Like I Am 5: NFTs](https://messari.io/article/explain-it-like-i-am-5-nfts)
-
-[fungible]: #fungible-tokens
-[non-fungible]: #non-fungible-tokens-nfts
-[smart contracts]: /write-smart-contracts/overview
-[SIP-010]: https://github.com/hstove/sips/blob/feat/sip-10-ft/sips/sip-010/sip-010-fungible-token-standard.md
-[SIP-009]: https://github.com/friedger/sips/blob/main/sips/sips/sip-009-nft-standard.md
+[sepadan]: #fungible-tokens
+[tidak-sepadan]: #non-fungible-tokens-nfts
+[kontrak pintar]: /write-smart-contracts/overview
+[SIP-010]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
+[SIP-009]: https://github.com/stacksgov/sips/blob/main/sips/sip-009/sip-009-nft-standard.md

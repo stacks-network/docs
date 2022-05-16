@@ -92,7 +92,7 @@ Stacking is a built-in capability of PoX and occurs through a set of actions on 
 - During the prepare phase, miners decide on an anchor block and a reward set. Mining any descendant forks of the anchor block requires transferring mining funds to the appropriate reward addresses. The reward set is the set of Bitcoin addresses which are eligible to receive funds in the reward cycle
 - Miners register as leader candidates for a future election by sending a key transaction that burns cryptocurrency. The transaction also registers the leader's preferred chain tip (must be a descendant of the anchor block) and commitment of funds to 2 addresses from the reward set
 - Token holders register for the next rewards cycle by broadcasting a signed message that locks up associated STX tokens for a protocol-specified lockup period, specifies a Bitcoin address to receive the funds, and votes on a Stacks chain tip
-- Multiple leaders can commit to the same chain tip. The leader that wins the election and the peers who also burn for that leader collectively share the reward, proportional to how much each one burned
+- Multiple leaders can commit to the same chain tip. Multiple leaders can commit to the same chain tip. The leader that wins the election and the peers who also burn for that leader collectively share the reward, proportional to how much each one burned
 - Token holders' locked up tokens automatically unlock as soon as the lockup period finishes
 
 ## Stacking contract
@@ -115,10 +115,7 @@ The address must be specified in the following format using the Clarity language
 The `version` buffer must represent what kind of bitcoin address is being submitted. It can be one of the following:
 
 ```js
-SerializeP2PKH  = 0x00, // hash160(public-key), same as bitcoin's p2pkh
-SerializeP2SH   = 0x01, // hash160(multisig-redeem-script), same as bitcoin's multisig p2sh
-SerializeP2WPKH = 0x02, // hash160(segwit-program-00(p2pkh)), same as bitcoin's p2sh-p2wpkh
-SerializeP2WSH  = 0x03, // hash160(segwit-program-00(public-keys)), same as bitcoin's p2sh-p2wsh
+SerializeP2PKH  = 0x00, // hash160(public-key), same as bitcoin's p2pkh SerializeP2SH   = 0x01, // hash160(multisig-redeem-script), same as bitcoin's multisig p2sh SerializeP2WPKH = 0x02, // hash160(segwit-program-00(p2pkh)), same as bitcoin's p2sh-p2wpkh SerializeP2WSH  = 0x03, // hash160(segwit-program-00(public-keys)), same as bitcoin's p2sh-p2wsh
 ```
 
 The `hashbytes` are the 20 hash bytes of the bitcoin address. You can obtain that from a bitcoin library, for instance using [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib):
@@ -129,3 +126,7 @@ console.log(
   '0x' + btc.address.fromBase58Check('1C56LYirKa3PFXFsvhSESgDy2acEHVAEt6').hash.toString('hex')
 );
 ```
+
+## Choosing the right Stacking strategy
+
+[Here](https://blog.stacks.co/stacking-strategy) is an interesting article that may help you choose the right Stacking stategy.

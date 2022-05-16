@@ -1,69 +1,73 @@
 ---
-title: Overview
-description: Learn more about the Stacks 2.0 blockchain
+title: Ringkasan
+description: Pelajari lebih lanjut tentang blockchain Stacks 2.0
 icon: TestnetIcon
 images:
   large: /images/nodes.svg
   sm: /images/nodes.svg
 ---
 
-## Introduction
+## Pengantar
 
-Stacks 2.0 is a layer-1 blockchain that connects to Bitcoin and brings smart contracts and decentralized apps to it. Smart contracts and apps developed on the Stacks platform are natively integrated with the security, stability, and economic power of Bitcoin.
+Stacks 2.0 adalah blockchain lapisan-1 yang terhubung ke Bitcoin dan membawa kontrak pintar dan aplikasi terdesentralisasi ke dalamnya. Kontrak pintar dan aplikasi yang dikembangkan di platform Stacks secara native terintegrasi dengan keamanan, stabilitas, dan kekuatan ekonomi Bitcoin.
 
-## Capabilities
+## Kemampuan
 
-Read more about the features provided by the Stacks 2.0 blockchain.
+Baca lebih lanjut tentang fitur-fitur yang disediakan blockchain Stacks 2.0.
+
+<!-- markdown-link-check-disable -->
 
 -> Check out the [technical specifications](/understand-stacks/technical-specs) for a brief overview
 
+<!-- markdown-link-check-enable-->
+
 A detailed [comparison of the Stacks blockchain to other blockchain technologies][] is available at the Stacks Foundation blog.
 
-### Consensus mechanism
+### Mekanisme konsensus
 
-Stacks 2.0 implements a new mining mechanism called Proof of Transfer ("PoX"). PoX is a consensus algorithm between two blockchains. It uses an established blockchain (in this case Bitcoin) to secure a new blockchain (Stacks).
+Stacks 2.0 mengimplementasikan mekanisme penambangan baru yang disebut Proof of Transfer ("PoX"). PoX adalah algoritma konsensus antara dua blockchain. Menggunakan blockchain yang sudah mapan (dalam hal ini Bitcoin) untuk mengamankan blockchain baru (Stacks).
 
-PoX connects to Bitcoin with a 1:1 block ratio, meaning anything that happens on the Stacks blockchain can be verified on the Bitcoin Blockchain.
+PoX terhubung ke Bitcoin dengan rasio blok 1:1, artinya apa pun yang terjadi di blockchain Stacks dapat diverifikasi di Blockchain Bitcoin.
 
 Instead of burning electricity on proof of work, PoX reuses already minted bitcoins as "proof of computation" and miners represent their cost of mining in bitcoins directly.
 
 [@page-reference | inline] | /understand-stacks/proof-of-transfer
 
-### Mining
+### Menambang
 
-Mining is required to make the network usable, trustworthy, and secure. Miners verify incoming transactions, participate in the consensus mechanism, and write new blocks to the blockchain.
+Menambang diperlukan untuk membuat jaringan dapat digunakan, dapat dipercaya, dan aman. Penambang memverifikasi transaksi masuk, berpartisipasi dalam mekanisme konsensus, dan menulis blok baru ke blockchain.
 
-To incentivize mining, miners receive freshly minted Stacks (STX) tokens if they win the bid for becoming the leader of the next round.
+Untuk memberi insentif pada penambangan, penambang menerima token Stacks (STX) yang baru dicetak jika mereka memenangkan tawaran untuk menjadi pemimpin putaran berikutnya.
 
 [@page-reference | inline] | /understand-stacks/mining
 
 ### Stacking
 
-Bitcoins used for miner bids are sent to a set of specific addresses corresponding to Stacks (STX) tokens holders that are actively participating in consensus ("Stackers"). Thus, rather than being destroyed, the bitcoins consumed in the mining process go to productive Stacks holders as a reward based on their holdings of Stacks and participation in the Stacking algorithm.
+Bitcoin yang digunakan untuk tawaran penambang dikirim ke sekumpulan alamat spesifik yang sesuai dengan pemegang token Stacks (STX) yang secara aktif berpartisipasi dalam konsensus ("Stackers"). Jadi, alih-alih dihancurkan, bitcoin yang digunakan dalam proses penambangan diberikan kepada pemegang Stacks yang produktif sebagai hadiah berdasarkan kepemilikan Stacks dan partisipasi mereka dalam algoritma Stacking.
 
-Stackers have to lock up their Stacks (STX) tokens for a certain period of time.
+Stacker harus mengunci token Stacks (STX) mereka untuk jangka waktu tertentu.
 
 [@page-reference | inline] | /understand-stacks/stacking
 
-### Smart contracts
+### Kontrak pintar
 
-Clarity is a new language for smart contracts on the Stacks 2.0 blockchain. The Clarity smart contract language optimizes for predictability and security.
+Clarity adalah bahasa baru untuk kontrak pintar di blockchain Stacks 2.0. Bahasa kontrak cerdas Clarity mengoptimalkan prediktabilitas dan keamanan.
 
-Stacks 2.0 anchors clarity smart contracts to Bitcoin making it possible for smart contracts to operate based on actions seen on the bitcoin blockchain.
+Stacks 2.0 menambatkan kontrak pintar Clarity ke Bitcoin sehingga memungkinkan kontrak pintar untuk beroperasi berdasarkan tindakan yang terlihat pada blockchain bitcoin.
 
--> The [Clarity open-source project](https://clarity-lang.org/) is supported by Stacks and [Algorand](https://www.algorand.com/)
+>[Proyek open-source Clarity](https://clarity-lang.org/) didukung oleh Stacks dan [Algorand](https://www.algorand.com/)
 
-Clarity is distinct from other languages designed for writing smart contracts in a few ways:
+Clarity berbeda dari bahasa lain yang dirancang untuk menulis kontrak pintar dalam beberapa cara:
 
-- **Predictability**: The Clarity language uses precise and unambiguous syntax that allows developers to predict exactly how their contracts will be executed.
-- **Security**: The Clarity language allows users to supply their own conditions for transactions that ensure that a contract may never unexpectedly transfer a token owned by a user.
-- **No compiler**: Contracts written in Clarity are broadcasted on the Stacks blockchain exactly as they are written by developers. This ensures that the code developers wrote, analyzed, and tested, is exactly what gets executed.
+- **Prediktabilitas**: Bahasa Clarity menggunakan sintaks yang tepat dan tidak ambigu yang memungkinkan pengembang memprediksi dengan tepat bagaimana kontrak mereka akan dijalankan.
+- **Keamanan**: Bahasa Clarity memungkinkan pengguna untuk menyediakan kondisi mereka sendiri untuk transaksi yang memastikan bahwa kontrak tidak akan pernah tiba-tiba mentransfer token yang dimiliki oleh pengguna.
+- **Tidak ada kompiler**: Kontrak yang ditulis dalam Clarity disebarkan di blockchain Stacks persis seperti yang ditulis oleh pengembang. Ini memastikan bahwa pengembang kode yang menulis, menganalisis, dan menguji, persis seperti yang dijalankan.
 
 [@page-reference | inline] | /write-smart-contracts/overview
 
-## Guides
+## Panduan
 
-Read one of our guides to understand the ins and outs of the Stacks 2.0 blockchain.
+Baca salah satu panduan kami untuk memahami seluk beluk blockchain Stacks 2.0.
 
 [@page-reference | grid-small] | /understand-stacks/accounts, /understand-stacks/transactions, /understand-stacks/network, /understand-stacks/microblocks
 

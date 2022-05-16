@@ -50,10 +50,10 @@ Here are examples of how to construct each type of Clarity value, and how to acc
 
 ```typescript
 const t = trueCV();
-// { type: ClarityType.BoolTrue }
+// { type: ClarityType. BoolTrue }
 
 const f = falseCV();
-// { type: ClarityType.BoolFalse }
+// { type: ClarityType. BoolFalse }
 ```
 
 Boolean Clarity Values don't contain any underlying data. They are simply objects with `type` information.
@@ -62,10 +62,10 @@ Boolean Clarity Values don't contain any underlying data. They are simply object
 
 ```typescript
 const nothing: NoneCV = noneCV();
-// { type: ClarityType.OptionalNone }
+// { type: ClarityType. OptionalNone }
 
 const something: SomeCV = someCV(trueCV());
-// { type: ClarityType.OptionalSome, value: { type: 4 } }
+// { type: ClarityType. OptionalSome, value: { type: 4 } }
 ```
 
 Optional Clarity Values can either be nothing (an empty type that has no data), or something (a wrapped value).
@@ -75,9 +75,9 @@ If you are dealing with a function or contract function that returns an `Optiona
 ```typescript
 const maybeVal: OptionalCV = await callReadOnlyFunction(...);
 
-if (maybeVal.type === ClarityType.OptionalSome) {
+if (maybeVal.type === ClarityType. OptionalSome) {
   console.log(maybeVal.value);
-} else if (maybeVal.type === ClarityType.OptionalNone) {
+} else if (maybeVal.type === ClarityType. OptionalNone) {
   // deal with `none` value
 }
 ```
@@ -87,7 +87,7 @@ if (maybeVal.type === ClarityType.OptionalSome) {
 ```typescript
 const buffer = Buffer.from('foo');
 const bufCV: BufferCV = bufferCV(buffer);
-// { type: ClarityType.Buffer, buffer: <Buffer 66 6f 6f> }
+// { type: ClarityType. Buffer, buffer: <Buffer 66 6f 6f> }
 ```
 
 ### Integers
@@ -96,7 +96,7 @@ Clarity supports both integers and unsigned integers.
 
 ```typescript
 const i: IntCV = intCV(-10);
-// { type: ClarityType.Int, value: BN { ... } }
+// { type: ClarityType. Int, value: BN { ... } }
 
 const u: UIntCV = uintCV(10);
 // { type: ClarityType.UInt, value: BN { ... } }
@@ -120,10 +120,10 @@ x.value.add(y.value);
 
 ```typescript
 const ascii: StringAsciiCV = stringAsciiCV('hello world');
-// { type: ClarityType.StringASCII, data: 'hello world' }
+// { type: ClarityType. StringASCII, data: 'hello world' }
 
 const utf8: StringUtf8CV = stringUtf8CV('hello 🌾');
-// { type: ClarityType.StringUTF8, data: 'hello 🌾' }
+// { type: ClarityType. StringUTF8, data: 'hello 🌾' }
 ```
 
 Clarity supports both ascii and utf8 strings.
@@ -136,26 +136,26 @@ const contractName = 'contract-name';
 
 const spCV = standardPrincipalCV(address);
 // {
-//   type: ClarityType.PrincipalStandard
+//   type: ClarityType. PrincipalStandard
 //   address: {
-//       type: StacksMessageType.Address,
-//       version: AddressVersion.MainnetSingleSig,
+//       type: StacksMessageType. Address,
+//       version: AddressVersion. MainnetSingleSig,
 //       hash160: "SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B"
 //   }
 // }
 
 const cpCV = contractPrincipalCV(address, contractName);
 // {
-//   type: ClarityType.PrincipalContract,
+//   type: ClarityType. PrincipalContract,
 //   contractName: {
-//     type: StacksMessageType.LengthPrefixedString,
+//     type: StacksMessageType. LengthPrefixedString,
 //     content: 'contract-name',
 //     lengthPrefixBytes: 1,
 //     maxLengthBytes: 128,
 //   },
 //   address: {
-//     type: StacksMessageType.Address,
-//     version: AddressVersion.MainnetSingleSig,
+//     type: StacksMessageType. Address,
+//     version: AddressVersion. MainnetSingleSig,
 //     hash160: "SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B"
 //   }
 // }
@@ -167,13 +167,13 @@ Both kinds of Clarity principal values contain `type` information and an `addres
 
 ```typescript
 const errCV = responseErrorCV(trueCV());
-// { type: ResponseErr, value: { type: ClarityType.BoolTrue } }
+// { type: ResponseErr, value: { type: ClarityType. BoolTrue } }
 
 const okCV = responseOkCV(falseCV());
-// { type: ResponseOk, value: { type: ClarityType.BoolFalse } }
+// { type: ResponseOk, value: { type: ClarityType. BoolFalse } }
 ```
 
-Response Clarity Values will either have the type `ClarityType.ResponseOk` or `ClarityType.ResponseErr`. They both contain a Clarity Value. Often this value will be an integer error code if the response is an `Error`.
+Response Clarity Values will either have the type `ClarityType. ResponseOk` or `ClarityType. ResponseErr`. They both contain a Clarity Value. Often this value will be an integer error code if the response is an `Error`.
 
 ### Tuples
 
@@ -184,16 +184,16 @@ const tupCV = tupleCV({
   c: falseCV(),
 });
 // {
-//   type: ClarityType.Tuple,
+//   type: ClarityType. Tuple,
 //   data: {
-//     a: { type: ClarityType.Int, value: BN { ... } },
-//     b: { type: ClarityType.BoolTrue },
-//     c: { type: ClarityType.BoolFalse },
+//     a: { type: ClarityType. Int, value: BN { ... } },
+//     b: { type: ClarityType. BoolTrue },
+//     c: { type: ClarityType. BoolFalse },
 //   }
 // }
 
 console.log(tupCV.data['b']);
-// { type: ClarityType.BoolTrue }
+// { type: ClarityType. BoolTrue }
 ```
 
 Tuples in Clarity are typed and contain named fields. The tuple above, for example, contains three fields with the names **a**, **b** and **c**, and the types of their values are `Int`, `Boolean` and `Boolean`, respectively.
@@ -204,10 +204,10 @@ Clarity tuples are represented in JavaScript as objects and a tuple's data can b
 
 ```typescript
 const l = listCV([trueCV(), falseCV()]);
-// { type: ClarityType.List, list: [{ type: ClarityType.BoolTrue }] }
+// { type: ClarityType. List, list: [{ type: ClarityType. BoolTrue }] }
 
 console.log(l.list[0]);
-// { type: ClarityType.BoolTrue }
+// { type: ClarityType. BoolTrue }
 ```
 
 Lists, in Clarity, are homogeneous, meaning they can only contain elements of a singular (Clarity) type. Make sure to avoid constructing lists that have elements of multiple types.
@@ -253,9 +253,9 @@ const options = {
 // returns a Response
 const result: ResponseCV = await callReadOnlyFunction(options);
 
-if (result.type === ClarityType.ResponseOk) {
+if (result.type === ClarityType. ResponseOk) {
   console.log(cvToString(result.value));
-} else if (result.type === ClarityType.ResponseErr) {
+} else if (result.type === ClarityType. ResponseErr) {
   throw new Error(`kv-store contract error: ${result.value.data}`);
 }
 ```

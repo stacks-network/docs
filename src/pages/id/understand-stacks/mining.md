@@ -1,74 +1,70 @@
 ---
-title: Mining
-description: A guide to mining on Stacks 2.0
+title: Menambang
+description: Panduan untuk menambang di Stacks 2.0
 icon: TestnetIcon
 images:
   large: /images/pages/testnet.svg
   sm: /images/pages/testnet-sm.svg
 ---
 
-## Introduction
+## Pengantar
 
-This guide highlights some technical details related to mining on the Stacks 2.0 network.
+Panduan ini menggaris bawahi beberapa detail teknis terkait menambang pada jaringan Stacks 2.0.
 
-## Mining frequency
+## Frekuensi menambang
 
-A new Stacks block may be mined once per Bitcoin block. To be considered for mining a block, a miner must have a block commit included in a Bitcoin block. If a miner wishes to update their commitment after submission, they may use Bitcoin Replace-By-Fee.
+Blok Stacks baru dapat ditambang satu kali per blok Bitcoin. Untuk dapat dipertimbangkan menambang sebuah blok, seorang penambang harus memiliki komit blok yang disertakan dalam blok Bitcoin. Jika penambang ingin memperbarui komitmen mereka setelah pengumpulan, mereka dapat menggunakan Bitcoin Replace-By-Fee.
 
-## Coinbase rewards
+## Hadiah coinbase
 
-Miners receive coinbase rewards for blocks they win.
+Penambang menerima hadiah coinbase untuk blok yang mereka menangkan.
 
-The reward amounts are:
+Jumlah hadiahnya adalah:
 
-- 1000 STX per block are released in the first 4 years of mining
-- 500 STX per block are released during the following 4 years
-- 250 STX per block are released during the following 4 years
-- 125 STX per block are released from then on indefinitely.
+- 1000 STX per blok dikeluarkan pada 4 tahun pertama penambangan
+- 500 STX per blok dikeluarkan selama 4 tahun berikutnya
+- 250 STX per blok dikeluarkan selama 4 tahun berikutnya
+- 125 STX per blok dikeluarkan mulai dari saat itu dan seterusnya.
 
-These "halvings" are synchronized with Bitcoin halvings.
+"Halving" ini disinkronkan dengan halving Bitcoin.
 
-![coinbase rewards](/images/pages/coinbase-rewards.png)
+![hadiah coinbase](/images/pages/coinbase-rewards.png)
 
-## Transaction fees
+## Biaya transaksi
 
-Miners receive Stacks fees for transactions mined in any block they produce.
+Penambang menerima biaya Stacks untuk transaksi yang ditambang untuk setiap blok yang mereka produksi.
 
-For transactions mined in microblocks, the miner that produces the microblock receives 40% of the fees, while the miner that confirms the microblock receives 60% of the fees.
+Untuk transaksi yang ditambang di mikroblok, penambang yang memproduksi mikroblok menerima 40% dari biaya, sedangkan penambang yang mengkonfirmasi mikroblok menerima 60% dari biaya.
 
-## Reward maturity
+## Maturitas hadiah
 
-Block rewards and transaction fees take 100 blocks on the Bitcoin blockchain to mature. After successfully mining a block your rewards appear in your Stacks account after ~24 hours.
+Hadiah blok dan biaya transaksi membutuhkan 100 blok pada jaringan Bitcoin untuk menjadi matur. Setelah berhasil menambang blok, hadiah akan muncul di akun Stacks selama kurang lebih ~24 jam.
 
-## Mining with proof-of-transfer
+## Menambang menggunakan proof-of-transfer
 
-Miners commit Bitcoin to **two** addresses in every leader block commit. The amount committed to each address must be the same. The addresses are chosen from the current reward set of stacking participants. Addresses are chosen using a verifiable-random-function, and determining the correct two addresses for a given block requires monitoring the Stacks chain.
+Penambang berkomitmen mengeluarkan Bitcoin ke **dua** alamat pada setiap pemilihan ketua blok. Jumlah yang dikomit untuk setiap alamat harus sama. Alamat dipilih dari peserta penerima hadiah stacking saat ini. Alamat dipilih menggunakan fungsi-acak-terverifikasi, dan menentukan dua alamat yang tepat untuk blok tertentu memerlukan pemantauan rantai Stacks.
 
-![mining with pox](/images/pages/mining-with-pox.png)
+![menambang dengan pox](/images/pages/mining-with-pox.png)
 
-100,000 Bitcoin blocks **after** mining begins, the PoX sunset phase begins. During this phase, an increasing proportion of the block commit must be burnt. To burn this sunset fee, the miner must send the sunset fee amount to the first output of their block commit transaction (that is, the OPRETURN output).
+## Kemungkinan untuk menambang blok berikutnya
 
-400,000 Bitcoin blocks after the sunset phase begins, the sunset phase ends. After this point, PoX is no longer active, and miners must burn all of their leader block commits. They do so by sending Bitcoin to the canonical burn address `1111111111111111111114oLvT2`.
+Penambang yang dipilih untuk menambang blok berikutnya dipilih tergantung pada jumlah BTC yang dikirim oleh penambang, yaitu ditransfer atau dibakar.
 
-## Probability to mine next block
+Kemungkinan penambang untuk menambang blok berikutnya sama dengan BTC yang dikirim penambang dibagi dengan total BTC yang dikirim oleh semua penambang.
 
-The miner who is selected to mine the next block is chosen depending on the amount of BTC the miners sent, that is, transferred or burnt.
+Meskipun tidak ada komitmen BTC minimum yang diwajibkan oleh protokol, dalam praktiknya, ada batasan yang dibatasi oleh [dust](https://unchained-capital.com/blog/dust-thermodynamics/)": yang pada dasarnya, jika biaya untuk suatu transaksi melebihi nilai pengeluaran yang dikeluarkan, itu dianggap sebagai dust. Bagaimana dust [dihitung](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.cpp#L14) tergantung dari beberapa faktor, kita menemukan bahwa 5.500 satoshi adalah batas bawah untuk setiap [keluaran](https://learnmeabitcoin.com/technical/output). Transaksi Bitcoin dari penambang Stacks memiliki dua keluaran (untuk Proof-of-Transfer), jadi suatu komitmen paling tidak 11,000 satoshi / blok yang direkomendasikan.
 
-The probability for a miner to mine the next block equals the BTC the miner sent divided by the total BTC all miners sent.
+Untuk menghitung jumlah BTC yang dikirim penambang harus:
 
-While there is no minimum BTC commitment enforced by the protocol, in practice, there's a floor constrained by [dust](https://unchained-capital.com/blog/dust-thermodynamics/)": basically, if the fees for a transaction exceed the value of the spent output, it's considered dust. How dust is [calculated](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.cpp#L14) depends on a number of factors, we've found 5,500 satoshis to be good lower bound per [output](https://learnmeabitcoin.com/technical/output). Bitcoin transactions from Stacks miners contain two outputs (for Proof-of-Transfer), so a commitment of at least 11,000 satoshis / block is recommended.
+- Menebak harga BTC/STX untuk hari berikutnya (100 blok kemudian)
+- Menebak jumlah BTC yang digunakan oleh semua penambang
 
-To calculate the amount of BTC to send miners should:
+## Mikroblok
 
-- Guess the price BTC/STX for the next day (100 blocks later)
-- Guess the total amount of BTCs committed by all miners
+Jaringan blokchain Stacks membuat blok pada kecepatan yang sama seperti blockchain Bitcoin. Untuk menghasilkan latensi transaksi yang lebih rendah, penambang dapat mengaktifkan mikroblok. Mikroblok memungkinkan pemimpin blok saat ini untuk mengalirkan transaksi dan memasukkan status transisinya ke dalam epoch saat ini.
 
-## Microblocks
+Jika suatu pemimpin blok memilih untuk memproduksi mikroblok, pemimpin berikutnya harus membuat rantai dari ujung transaksi mikroblok yang pemimpin saat ini hasilkan.
 
-The Stacks blockchain produces blocks at the same rate as the Bitcoin blockchain. In order to provide lower latency transactions, miners can opt to enable microblocks. Microblocks allow the current block leader to stream transactions and include their state transitions in the current epoch.
-
-If a block leader opts to produce microblocks, the next leader builds the chain tip off the last microblock that the current leader produces.
-
-The block streaming model is described in [SIP-001][].
+Model streaming blok dijelaskan di [SIP-001][].
 
 [SIP-001]: https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md#operation-as-a-leader

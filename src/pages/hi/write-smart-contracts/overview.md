@@ -8,7 +8,7 @@ images:
 
 ## Introduction
 
-Clarity is a programming language for writing smart contracts on the Stacks 2.0 blockchain. It supports programmatic control over digital assets.
+Clarity is a **decidable** smart contract language that optimizes for predictability and security, designed for the Stacks blockchain. Smart contracts allow developers to encode essential business logic on a blockchain.
 
 ## Smart contracts
 
