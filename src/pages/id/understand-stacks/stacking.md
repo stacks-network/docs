@@ -91,8 +91,8 @@ Stacking adalah kemampuan bawaan PoX dan terjadi melalui serangkaian tindakan pa
 - Siklus penghargaan terdiri dari dua fase: persiapan dan penghargaan
 - Selama fase persiapan, penambang memutuskan blok terkait dan mengumpulkan hadiah. Menambang cabang turunan dari blok terkait memerlukan transfer dana penambangan ke alamat hadiah yang sesuai. Kumpulan hadiah adalah kumpulan alamat Bitcoin yang memenuhi syarat untuk menerima dana dalam siklus hadiah
 - Penambang mendaftar sebagai kandidat pemimpin untuk pemilihan di masa depan dengan mengirimkan transaksi kunci yang dapat membakar mata uang kripto. Transaksi juga mendaftarkan ujung rantai pilihan pemimpin (harus merupakan turunan dari blok terkait) dan komitmen dana ke 2 alamat dari kumpulan hadiah
-- Pemegang Token mendaftar untuk siklus hadiah berikutnya dengan menyiarkan pesan yang ditandatangani yang mengunci token STX terkait untuk periode penguncian yang ditentukan protokol, menentukan alamat Bitcoin untuk menerima dana, dan memberikan suara pada ujung rantai Stacks.
-- Beberapa pemimpin dapat berkomitmen pada ujung rantai yang sama. Pemimpin yang memenangkan pemilihan dan rekan-rekan yang juga mendukung pemimpin itu secara kolektif berbagi hadiah, sebanding dengan berapa banyak yang dibakar oleh masing-masing.
+- Pemegang Token mendaftar untuk siklus hadiah berikutnya dengan menyiarkan pesan yang ditandatangani yang mengunci token STX terkait untuk periode penguncian yang ditentukan protokol, menentukan alamat Bitcoin untuk menerima dana, dan memberikan suara pada ujung rantai Stacks
+- Beberapa pemimpin dapat berkomitmen pada ujung rantai yang sama. Pemimpin yang memenangkan pemilihan dan rekan-rekan yang juga mendukung pemimpin itu secara kolektif berbagi hadiah, sebanding dengan berapa banyak yang dibakar oleh masing-masing
 - Token yang dikunci pemegang Token secara otomatis akan terbuka setelah periode penguncian selesai
 
 ## Kontrak Stacking
@@ -101,7 +101,7 @@ Lihat [Referensi kontrak stacking](/references/stacking-contract) untuk melihat 
 
 ## Alamat bitcoin
 
-!> Anda harus memberikan alamat BTC dalam salah satu dari dua format: [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), yang dimulai dengan <kode>1</kode>. Atau, [Saksi Terpisah / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), yang dimulai dengan `3`. Format "Native Segwit" (yang dimulai dengan "bc1"), misalnya, tidak didukung.
+!> Anda harus memberikan alamat BTC dalam salah satu dari dua format: [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), yang dimulai dengan `1`. Atau, [Saksi Terpisah / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), yang dimulai dengan `3`. Format "Native Segwit" (yang dimulai dengan "bc1"), misalnya, tidak didukung.
 
 Kontrak Stacking memerlukan format khusus untuk alamat Bitcoin (alamat hadiah). Ini diperlukan untuk memastikan bahwa penambang dapat dengan benar membuat transaksi Bitcoin yang berisi alamat hadiah.
 
