@@ -71,7 +71,7 @@ description: Summary of technical specifications of Stacks 2.0
 - All transactions impacting account balance are atomic, a transfer operation can not increment one account’s balance without decrementing another’s. However, transactions that perform multiple account actions (for example, transferring from multiple accounts) may partially complete.
 - Transactions can include a memo string (max 34 bytes)
 
-## See also
+## Vea también
 
 - [Read the full Stacks 2.0: Apps and Smart Contracts for Bitcoin whitepaper](https://cloudflare-ipfs.com/ipfs/QmaGgiVHymeDjAc3aF1AwyhiFFwN97pme5m536cHT4FsAW).
 
