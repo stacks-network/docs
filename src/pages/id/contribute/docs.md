@@ -9,7 +9,7 @@ images:
 
 ## Pengantar
 
-Selamat datang. Terima kasih atas minat Anda yang ingin berkontribusi dan membantu membuat dokumen ini menjadi lebih baik Halaman ini menguraikan bagaimana situs ini dibuat, struktur umumnya, menjalankannya secara lokal, dan beberapa tips bermanfaat untuk menggunakan semua fiturnya.
+Selamat datang. Terima kasih atas minat Anda yang ingin berkontribusi dan membantu membuat dokumen ini menjadi lebih baik. Halaman ini menguraikan bagaimana situs ini dibuat, struktur umumnya, menjalankannya secara lokal, dan beberapa tips bermanfaat untuk menggunakan semua fiturnya.
 
 Langkah-langkah ini hanya boleh diikuti untuk membuat perubahan pada struktur umum dari situs dan dokumen yang ditulis dalam bahasa Inggris. **Untuk membuat perubahan dalam bahasa lain**, lihat [terjemahan](/contribute/translations). Pada folder /src/pages/ Anda harus membuat perubahan di /src/pages/en, karena perubahan di lokal lain (misalnya /src/pages/es atau /src/pages/fr) akan ditimpa.
 
@@ -112,7 +112,6 @@ Frontmatter adalah bagian atas dari dokumen markdown yang ditulis dalam bahasa y
 title: This is my page title
 description: A short, concise sentence describing what is on this page
 ---
-
 ```
 
 Frontmatter memberi kita kemampuan untuk mendefinisikan beberapa hal dalam halaman yang dapat digunakan situs, seperti judul halaman atau deskripsi halaman. Saat menambahkan halaman baru, silakan sertakan `title` dan `description`.
@@ -161,7 +160,7 @@ Skrip akan memproses file tersebut dan mengeluarkan judul dari frontmatter dokum
 
 ### Halaman non-standar
 
-Ada beberapa halaman dalam dokumen ini yang merupakan halaman markdown non-standar. Ini berarti mereka menggunakan beberapa jenis data eksternal sebagai sumbernya, seperti [Halaman Referensi Clarity](/write-smart-contracts/language-overview), atau [Halaman CLI Stacks](https://docs.hiro.so/references/stacks-cli). Halaman ini menggunakan fungsi Next.js yang disebut <a href="https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation" `getStaticProps`</a> yang memungkinkan kita untuk mengambil data eksternal saat runtime dan menggunakannya dalam beberapa cara di halaman kita.
+Ada beberapa halaman dalam dokumen ini yang merupakan halaman markdown non-standar. Ini berarti mereka menggunakan beberapa jenis data eksternal sebagai sumbernya, seperti [Halaman Referensi Clarity](/write-smart-contracts/language-overview), atau [Halaman CLI Stacks](https://docs.hiro.so/references/stacks-cli). Halaman ini menggunakan fungsi Next.js yang disebut [ `getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) yang memungkinkan kita untuk mengambil data eksternal saat runtime dan menggunakannya dalam beberapa cara di halaman kita.
 
 ## Tips dan trik
 
