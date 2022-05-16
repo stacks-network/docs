@@ -162,11 +162,11 @@ Contoh respon:
 }
 ```
 
--> Akun Stacks tidak dapat menyimpan bitcoin. Cara terbaik untuk mendapatkan saldo BTC yang sesuai adalah dengan mendapatkan alamat BTC dari alamat Stacks (menggunakan [`c32check</ code></a>) dan kueri jaringan Bitcoin.</p>
+-> Akun Stacks tidak dapat menyimpan bitcoin. Cara terbaik untuk mendapatkan saldo BTC yang sesuai adalah dengan mendapatkan alamat BTC dari alamat Stacks (menggunakan [`c32check`](https://github.com/stacks-network/c32check#c32tob58-b58toc32)) dan kueri jaringan Bitcoin.
 
-<h3 spaces-before="0">Dapatkan semua event aset</h3>
+### Dapatkan semua event aset
 
-<p spaces-before="0">Semua event aset yang terkait dengan akun dapat diperoleh melalui <a href="https://docs.hiro.so/api#operation/get_account_balance"><code>GET /extended/v1/address/<stx_address>/ aset`](https://github.com/stacks-network/c32check#c32tob58-b58toc32) endpoint:
+Semua event aset yang terkait dengan akun dapat diperoleh melalui [`GET /extended/v1/address/<stx_address>/ aset`](https://docs.hiro.so/api#operation/get_account_balance) endpoint:
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
