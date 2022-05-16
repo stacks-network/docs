@@ -1,6 +1,6 @@
 ---
-title: Stacks info sites
-description: A list of sites on alphabetical order that display status and stats of the Stacks network.
+title: Sitios web con información Stacks
+description: Un listado de sitios web en orden alfabético con muestran el estado y estadísticas de la red Stacks.
 ---
 
 ### [Haystack](https://haystack.tools/mempool)

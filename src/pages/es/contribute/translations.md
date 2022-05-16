@@ -1,16 +1,16 @@
 ---
-title: How to contribute with translations
-description: Want to help tranlating these docs to your local language?
+title: Como contribuir con las traducciones
+description: '¿Quieres ayudar a traducir la documentación a tu propio idioma?'
 ---
 
-## Help with translations
+## Ayuda con las traducciones
 
 Translations are managed with Crowin.  
 Anybody can colaborate and no technichal skills are required, as it's all done on the browser.
 
 To help with translation please go to [this page](https://crowdin.com/project/docsstacksco), click any language and start translating.
 
-All help is appreciated.
+Toda ayuda es bienvenida.
 
 -> Please don't add any translations to the Github repository, as the translated pages get rewritten from Crowin. Translations need to be added on Crowin intead.
 
