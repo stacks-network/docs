@@ -1041,7 +1041,7 @@ module.exports = withFonts(
       FATHOM_ID: 'FOEMPXUV',
     },
     i18n: {
-      locales: ['en-US', 'es'],
+      locales: ['en-US', 'es', 'id'],
       defaultLocale: 'en-US',
     },
     redirects,
