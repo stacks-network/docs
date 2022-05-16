@@ -17,25 +17,25 @@ sections:
           - path: /stacks-blockchain-api
 # Add a page on governance/SIPs
 
-      - path: /write-smart-contracts
+      - path: ./write-smart-contracts
         usePageTitles: true
         pages:
-          - path: /overview
-          - path: /principals
-          - path: /values
-          - path: /tokens
+          - path: overview
+          - path: principals
+          - path: values
+          - path: tokens
         sections:
           - title: Clarity Development Software
             usePageTitles: true
             pages:
-              - path: /software       
+              - path: software       
           - title: Clarity Language
             usePageTitles: true
             pages:
-              - path: /language-overview
-              - path: /language-types
-              - path: /language-keywords
-              - path: /language-functions
+              - path: language-overview
+              - path: language-types
+              - path: language-keywords
+              - path: language-functions
           - title: Resources
             pages:
               - external:
