@@ -6,11 +6,11 @@ images:
   sm: /images/pages/data-storage-sm.svg
 ---
 
-## Introduction
+## Pengantar
 
 The template provided on this page provides an easy way to deploy a Gaia hub directly to Amazon EC2. You can use this template to deploy your own Gaia hub to your Amazon Web Services (AWS) account. Amazon EC2 is an affordable and convenient cloud computing provider. The template provides a one-click deploy for Amazon EC2 with either S3 or EBS as a storage provider.
 
-## Prerequisites
+## Prasyarat
 
 This procedure uses Amazon CloudFormation to configure an EC2 cloud compute provider to run the Gaia hub service with an S3 or EBS provider for file storage. You should have access to an AWS account either through your personal account or through a corporate account. This account should have permissions to create resources.
 
@@ -44,7 +44,7 @@ https://s3-external-1.amazonaws.com/cf-templates-vzldibfi2mw8-us-east-1/2022122B
 
 Specify the stack details and then click `Next`: ![Specify template](/images/cloudformation-specify-stack-details.png)
 
-| Field           | Value                               | Notes                                                                                                                                                                                                                                                                                                                                                                                            |
+| Bidang          | Nilai                               | Notes                                                                                                                                                                                                                                                                                                                                                                                            |
 | --------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Stack name      | _a unique name in your AWS account_ |                                                                                                                                                                                                                                                                                                                                                                                                  |
 | DomainName      | _your-domain_                       |                                                                                                                                                                                                                                                                                                                                                                                                  |
