@@ -1,12 +1,12 @@
 ---
-title: Authentication
+title: Autenticación
 description: Register and sign in users with identities on the Stacks blockchain
 images:
   large: /images/pages/write-smart-contracts.svg
   sm: /images/pages/write-smart-contracts-sm.svg
 ---
 
-## Introduction
+## Introducción
 
 This guide explains how authentication is performed on the Stacks blockchain.
 
@@ -14,7 +14,7 @@ Authentication provides a way for users to identify themselves to an app while r
 
 Users who register for your app can subsequently authenticate to any other app with support for the [Blockchain Naming System](/build-apps/references/bns) and vice versa.
 
-## How it works
+## Cómo funciona
 
 The authentication flow with Stacks is similar to the typical client-server flow used by centralized sign in services (for example, OAuth). However, with Stacks the authentication flow happens entirely client-side.
 
@@ -40,7 +40,7 @@ Finally, the app private key is deterministic, meaning that the same private key
 
 The first two of these functions are particularly relevant to [data storage with Stacks.js](https://docs.stacks.co/build-apps/references/gaia).
 
-## Key pairs
+## Parejas de llaves
 
 Authentication with Stacks makes extensive use of public key cryptography generally and ECDSA with the `secp256k1` curve in particular.
 

@@ -10,7 +10,7 @@ images:
 
 This guide explains how authentication is performed on the Stacks blockchain.
 
-Authentication provides a way for users to identify themselves to an app while retaining complete control over their credentials and personal details. It can be integrated alone or used in conjunction with [transaction signing](https://docs.hiro.so/get-started/transactions#signature-and-verification) and [data storage](https://docs.stacks.co/build-apps/references/gaia), for which it is a prerequisite.
+Authentication provides a way for users to identify themselves to an app while retaining complete control over their credentials and personal details. It can be integrated alone or used in conjunction with [transaction signing](https://docs.hiro.so/get-started/transactions#signature-and-verification) and [data storage](https://docs.stacks.co/gaia/overview), for which it is a prerequisite.
 
 Users who register for your app can subsequently authenticate to any other app with support for the [Blockchain Naming System](/build-apps/references/bns) and vice versa.
 

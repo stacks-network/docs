@@ -1,57 +1,57 @@
 ---
-title: Proof of Transfer
-description: Understand the proof-of-transfer consensus mechanism
+title: Prueba de transferencia
+description: Conozca el mecanismo de consenso de prueba de transferencia
 icon: TestnetIcon
 images:
   large: /images/stacking.svg
   sm: /images/stacking.svg
 ---
 
-## Overview
+## Descripción general
 
-Consensus algorithms for blockchains require compute or financial resources to secure the blockchain. The general practice of decentralized consensus is to make it practically infeasible for any single malicious actor to have enough computing power or ownership stake to attack the network.
+Los algoritmos de consenso para los *blockchains* requieren recursos computacionales o financieros para lograr que el *blockchain* sea seguro. La práctica general del consenso descentralizado consiste en lograr que sea prácticamente inviable que cualquier actor malicioso tenga suficiente poder computacional o participación en la propiedad para atacar la red.
 
-Popular consensus mechanisms in modern blockchains include proof-of-work, in which nodes dedicate computing resources, and proof-of-stake, in which nodes dedicate financial resources to secure the network.
+Los mecanismos de consenso populares en los *blockchain* modernos incluyen la prueba de trabajo, en la que los nodos dedican recursos computacionales, y la prueba de participación, en la que los nodos dedican recursos financieros para proteger la red.
 
-Proof-of-burn is a novel consensus mechanism where miners compete by ‘burning’ (destroying) a proof-of-work cryptocurrency as a proxy for computing resources.
+La prueba de quemado es un nuevo mecanismo de consenso en el que los mineros compiten por «quemar» (destruir) una criptomoneda obtenida por medio de la prueba de trabajo en reemplazo de los recursos informáticos.
 
-Proof-of-transfer (PoX) is an extension of the proof-of-burn mechanism. PoX uses the proof-of-work cryptocurrency of an established blockchain to secure a new blockchain. However, unlike proof-of-burn, rather than burning the cryptocurrency, miners transfer the committed cryptocurrency to some other participants in the network.
+La prueba de transferencia (PoX) es una extensión del mecanismo de prueba de quemado. La Pox utiliza la criptomoneda obtenida por medio de la prueba de trabajo de un *blockchain* establecido para anclar uno nuevo. Sin embargo, a diferencia de la prueba de quemado, en lugar de quemar esta criptomoneda, los mineros la transfieren a otros participantes en la red.
 
-![PoX mechanism](/images/pox-mechanism.png)
+![Mecanismo de PoX](/images/pox-mechanism.png)
 
-This allows network participants to secure the PoX cryptocurrency network and earn a reward in the base cryptocurrency. Thus, proof-of-transfer blockchains are anchored on their chosen proof-of-work chain. Stacks uses [Bitcoin](#why-bitcoin) as its anchor chain.
+Esto permite que los participantes de dicha red aseguren la red de la criptomoneda  y ganen una recompensa en la criptomoneda base. Así, los *blockchain* que utilizan la prueba de transferencia están anclados a la cadena de prueba de trabajo elegida. Stacks utiliza [Bitcoin](#why-bitcoin) como su cadena de anclaje.
 
-![PoX participants](/images/pox-participants.png)
+![Participantes de la PoX](/images/pox-participants.png)
 
-## Why Bitcoin?
+## ¿Por qué Bitcoin?
 
-There are a number of reasons that Stacks chose Bitcoin as the blockchain to power consensus. It's the oldest blockchain protocol, having launched in 2009, and has become a recognized asset outside of the cryptocurrency community. BTC has held the highest market capitalization of any cryptocurrency for the past decade.
+Hay una serie de razones por las que Stacks eligió a Bitcoin como el *blockchain* para generar consenso. Es el protocolo de *blockchain* más antiguo, lanzado en 2009, y se ha convertido en un activo reconocido fuera de la comunidad relacionada con las criptomonedas. BTC ha contado con una mayor capitalización en el mercado en comparación con cualquier otra criptomoneda durante la última década.
 
-Bitcoin champions simplicity and stability, and has stood the test of time. Influencing or attacking the network is infeasible or impractical for any potential hackers. It's one of the only cryptocurrencies to capture public attention. Bitcoin is a household name, and is recognized as an asset by governments, large corporations, and legacy banking institutions. Lastly, Bitcoin is largely considered a reliable store of value, and provides extensive infrastructure to support the proof-of-transfer consensus mechanism.
+Bitcoin defiende la simplicidad y la estabilidad, y ha superado la prueba del tiempo. Influir o atacar la red es inviable o poco práctico para cualquier posible *hacker*. Es una de las pocas criptomonedas que captan la atención pública. Bitcoin es un nombre popular y es reconocido como un activo por gobiernos, grandes corporaciones e instituciones bancarias tradicionales. Por último, Bitcoin se considera, en gran medida, una forma de almacenamiento de valor fiable y proporciona una amplia infraestructura para apoyar el mecanismo de consenso de prueba de transferencia.
 
-SIP-001 provides a full [list of reasons why Bitcoin was chosen to secure Stacks](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
+El SIP-001 proporciona una lista completa [de las razones por las que Bitcoin fue elegido para asegurar Stacks](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
 
 ![btc-stacks](/images/pox-why-bitcoin.png)
 
-## Blocks and microblocks
+## Bloques y microbloques
 
-The Stacks blockchain allows for increased transaction throughput using a mechanism called microblocks. Bitcoin and Stacks progress in lockstep, and their blocks are confirmed simultaneously. On Stacks, this is referred to as an ‘anchor block’. An entire block of Stacks transactions corresponds to a single Bitcoin transaction. This significantly improves cost/byte ratio for processing Stacks transactions. Because of simultaneous block production, Bitcoin acts as a rate-limiter for creating Stacks blocks, thereby preventing denial-of-service attacks on its peer network.
+El *blockchain* de Stacks permite aumentar el rendimiento de las transacciones mediante un mecanismo denominado microbloques. Bitcoin y Stacks progresan al mismo tiempo, y sus bloques se confirman simultáneamente. En Stacks, esto se denomina «bloque de anclaje». Un bloque de transacciones de Stacks completo corresponde a una sola transacción en Bitcoin. Esto mejora significativamente la relación coste/byte para el procesamiento de las transacciones en Stacks. Debido a la creación simultánea de bloques, Bitcoin limita la velocidad con la que se crean los bloques en Stacks, evitando así ataques de denegación de servicio a dicha red.
 
-However, in between Stacks anchor blocks settling on the Bitcoin blockchain, there are also a varying number of microblocks that allow rapid settlement of Stacks transactions with a high degree of confidence. This allows Stacks transaction throughput to scale independently of Bitcoin, while still periodically establishing finality with the Bitcoin chain. The Stacks blockchain adopts a block streaming model whereby each leader can adaptively select and package transactions into their block as they arrive in the mempool. Therefore when an anchor block is confirmed, all of the transactions in the parent microblock stream are packaged and processed. This is an unprecedented method for achieving scalability without creating a totally separate protocol from Bitcoin.
+Sin embargo, entre los bloques de anclaje de Stacks que se asientan en *blockchain* Bitcoin, también hay un número variable de microbloques que permiten asentar rápidamente las transacciones de Stacks con un alto grado de confianza. Esto logra que el rendimiento de las transacciones de Stacks escale independientemente de Bitcoin, al mismo tiempo que las mismas se asienten periódicamente, pero de forma definitiva, en la cadena Bitcoin. El *blockchain* Stacks adopta un modelo de flujo de bloques en el que cada líder puede seleccionar y agrupar, de forma adaptativa, las transacciones en su bloque a medida que llegan al mempool. Por lo tanto, cuando se confirma un bloque de anclaje, se agrupan y procesan todas las transacciones en el flujo principal del microbloque. Este es un método sin precedentes que permite lograr escalabilidad sin crear un protocolo totalmente separado de Bitcoin.
 
 ![stx-microblock](/images/stx-microblocks.png)
 
-## Unlocking Bitcoin capital
+## Desbloquear el capital de Bitcoin
 
-Stacks also unlocks the hundreds of billions in capital in Bitcoin, and gives Bitcoiners new opportunities to use and earn BTC. Stacks is a accompaniment to the Bitcoin ecosystem, and the two networks working in tandem enables totally novel ways of using BTC. The Stacks ecosystem makes interactive cryptocurrency applications available to Bitcoin holders. Additionally, By stacking STX tokens and participating in the PoX consensus mechanism, users have the opportunity to earn BTC while securing the Stacks chain.
+Stacks también desbloquea los cientos de miles de millones de capital en Bitcoin, y ofrece a los Bitcoiners nuevas oportunidades para utilizar y ganar BTC. Stacks acompaña al ecosistema de Bitcoin, y el trabajo conjunto de estas redes da lugar a formas totalmente novedosas a la hora de usar BTC. El ecosistema de Stacks pone a disposición de los poseedores de Bitcoin aplicaciones para criptomoneda interactivas. Además, al hacer stacking de los tókenes STX y al participar en el mecanismo de consenso PoX, los usuarios tienen la oportunidad de ganar BTC mientras aseguran la cadena Stacks.
 
-![Unlocking Bitcoin](/images/pox-unlocking-btc.png)
+![Desbloquear Bitcoin](/images/pox-unlocking-btc.png)
 
-## Clarity and the Bitcoin state
+## Clarity y el estado Bitcoin
 
-Clarity smart contracts also have unique visibility into the state of the Bitcoin blockchain. This means that contract logic in a Clarity file has the ability to trigger when specific Bitcoin transactions are confirmed. Clarity smart contracts have a built in Simple Payment Verification (SPV) proofs for Bitcoin that make interacting with Bitcoin’s state much simpler for developers. Additionally, Clarity contracts can fork with the original Bitcoin chain. Therefore, in an edge case where Bitcoin forks, developers wouldn’t have to worry about adjusting the deployment of their smart contracts.
+Los contratos inteligentes de Clarity también tienen una visibilidad única en relación con el estado del *blockchain* Bitcoin. Esto significa que la lógica del contrato en un archivo de Clarity tiene la capacidad de activarse cuando se confirman ciertas transacciones de Bitcoin. Los contratos inteligentes en Clarity tienen pruebas de verificación de pago simple (SPV) integradas para Bitcoin que hacen que la interacción con el estado de Bitcoin sea mucho más sencilla para los desarrolladores. Además, los contratos en Clarity pueden bifurcarse de la cadena Bitcoin original. Por lo tanto, en el caso extremo en el que Bitcoin se bifurcase, los desarrolladores no tendrían que preocuparse por ajustar el despliegue de sus contratos inteligentes.
 
-## See also
+## Vea también
 
-- [Read the full PoX whitepaper](https://community.stacks.org/pox)
-- [Watch CEO Muneeb Ali and Evangelist Joe Bender give an overview of Stack's breakthrough PoX mining mechanism](https://www.youtube.com/watch?v=NY_eUrIcWOY)
+- [Lea el whitepaper completo de PoX](https://community.stacks.org/pox)
+- [Vea al CEO Muneeb Ali y al experto Joe Bender brindar una visión general del revolucionario mecanismo de minería de Stacks PoX](https://www.youtube.com/watch?v=NY_eUrIcWOY)

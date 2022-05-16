@@ -1,65 +1,65 @@
 ---
-title: Authentication
-description: Register and sign in users with identities on the Stacks blockchain
+title: Autentikasi
+description: Daftar dan masuk pengguna menggunakan identitas pada blockchain Stacks
 images:
   large: /images/pages/write-smart-contracts.svg
   sm: /images/pages/write-smart-contracts-sm.svg
 ---
 
-## Introduction
+## Pengantar
 
-This guide explains how authentication is performed on the Stacks blockchain.
+Panduan ini menjelaskan bagaimana autentikasi dilakukan pada blockchain Stacks.
 
-Authentication provides a way for users to identify themselves to an app while retaining complete control over their credentials and personal details. It can be integrated alone or used in conjunction with [transaction signing](https://docs.hiro.so/get-started/transactions#signature-and-verification) and [data storage](https://docs.stacks.co/build-apps/references/gaia), for which it is a prerequisite.
+Autentikasi menyediakan cara bagi pengguna untuk mengidentifikasi diri mereka ke aplikasi sambil mempertahankan kontrol penuh atas kredensial dan detail pribadinya. Ini dapat diintegrasikan sendiri atau digunakan bersama dengan [penandatanganan transaksi](https://docs.hiro.so/get-started/transactions#signature-and-verification) dan [penyimpanan data](https://docs.stacks.co/gaia/overview), yang merupakan prasyarat.
 
-Users who register for your app can subsequently authenticate to any other app with support for the [Blockchain Naming System](/build-apps/references/bns) and vice versa.
+Pengguna yang mendaftar untuk aplikasi Anda selanjutnya dapat mengautentikasi ke aplikasi lain dengan dukungan untuk [Sistem Penamaan Blockchain](/build-apps/references/bns) dan sebaliknya.
 
-## How it works
+## Cara kerjanya
 
-The authentication flow with Stacks is similar to the typical client-server flow used by centralized sign in services (for example, OAuth). However, with Stacks the authentication flow happens entirely client-side.
+Alur autentikasi dengan Stacks mirip dengan alur klien-server biasa yang digunakan oleh layanan masuk terpusat (misalnya, OAuth). Namun, dengan Stacks alur autentikasi terjadi sepenuhnya di sisi klien.
 
-An app and authenticator, such as [the Stacks Wallet](https://www.hiro.so/wallet/install-web), communicate during the authentication flow by passing back and forth two tokens. The requesting app sends the authenticator an `authRequest` token. Once a user approves authentication, the authenticator responds to the app with an `authResponse` token.
+Aplikasi dan autentikator, seperti [Wallet Stacks](https://www.hiro.so/wallet/install-web), berkomunikasi selama alur autentikasi dengan meneruskan dua token. Aplikasi yang melakukan permintaan mengirimkan token `authRequest` kepada autentikator. Setelah pengguna menyetujui autentikasi, autentikator merespons aplikasi dengan token `authResponse`.
 
-These tokens are are based on [a JSON Web Token (JWT) standard](https://tools.ietf.org/html/rfc7519) with additional support for the `secp256k1` curve used by Bitcoin and many other cryptocurrencies. They are passed via URL query strings.
+Token ini didasarkan pada [standar JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519) dengan dukungan tambahan untuk kurva `secp256k1` yang digunakan oleh Bitcoin dan banyak mata uang kripto lainnya. Mereka diteruskan melalui string kueri URL.
 
-When a user chooses to authenticate an app, it sends the `authRequest` token to the authenticator via a URL query string with an equally named parameter:
+Saat pengguna memilih untuk mengautentikasi aplikasi, itu akan mengirimkan token `authRequest` ke autentikator melalui string kueri URL dengan parameter yang bernama sama yaitu:
 
 `https://wallet.hiro.so/...?authRequest=j902120cn829n1jnvoa...`
 
-When the authenticator receives the request, it generates an `authResponse` token for the app using an _ephemeral transit key_ . The ephemeral transit key is just used for the particular instance of the app, in this case, to sign the `authRequest`.
+Saat autentikator menerima permintaan, autentikator akan menghasilkan token `authResponse` untuk aplikasi dengan menggunakan _kunci transit sementara_ . Kunci transit sementara hanya digunakan untuk contoh aplikasi tertentu, dalam hal ini, untuk menandatangani `authRequest`.
 
-The app stores the ephemeral transit key during request generation. The public portion of the transit key is passed in the `authRequest` token. The authenticator uses the public portion of the key to encrypt an _app private key_ which is returned via the `authResponse`.
+Aplikasi menyimpan kunci transit sementara selama pembuatan permintaan. Bagian publik dari kunci transit diteruskan dalam token `authRequest`. Autentikator menggunakan bagian publik dari kunci untuk mengenkripsi _kunci privat aplikasi_ yang dikembalikan melalui `authResponse`.
 
-The authenticator generates the app private key from the user's _identity address private key_ and the app's domain. The app private key serves three functions:
+Autentikator membuat kunci privat aplikasi dari _identitas alamat kunci privat_ pengguna dan domain aplikasi. Kunci privat aplikasi memiliki tiga fungsi:
 
-1. It is used to create credentials that give the app access to a storage bucket in the user's Gaia hub
-2. It is used in the end-to-end encryption of files stored for the app in the user's Gaia storage.
-3. It serves as a cryptographic secret that apps can use to perform other cryptographic functions.
+1. Digunakan untuk membuat kredensial yang memberikan akses aplikasi ke keranjang penyimpanan di hub Gaia pengguna
+2. Digunakan dalam enkripsi ujung-ke-ujung dari file yang disimpan untuk aplikasi di penyimpanan pengguna Gaia.
+3. Berfungsi sebagai rahasia kriptografi yang dapat digunakan aplikasi untuk melakukan fungsi kriptografi lainnya.
 
-Finally, the app private key is deterministic, meaning that the same private key will always be generated for a given Stacks address and domain.
+Terakhir, kunci privat aplikasi bersifat deterministik, artinya kunci privat yang sama akan selalu dibuat untuk alamat dan domain Stacks tertentu.
 
 The first two of these functions are particularly relevant to [data storage with Stacks.js](https://docs.stacks.co/build-apps/references/gaia).
 
-## Key pairs
+## Pasangan kunci
 
-Authentication with Stacks makes extensive use of public key cryptography generally and ECDSA with the `secp256k1` curve in particular.
+Autentikasi dengan Stacks akan membuat ekstensif jika menggunakan kriptografi kunci publik secara umum dan ECDSA dengan kurva `secp256k1` secara khusus.
 
-The following sections describe the three public-private key pairs used, including how they're generated, where they're used and to whom private keys are disclosed.
+Bagian berikut menjelaskan tiga pasangan kunci publik-privat yang digunakan, termasuk bagaimana mereka dibuat, di mana mereka digunakan dan kepada siapa kunci privat diungkapkan.
 
-### Transit private key
+### Kunci privat transit
 
-The transit private is an ephemeral key that is used to encrypt secrets that need to be passed from the authenticator to the app during the authentication process. It is randomly generated by the app at the beginning of the authentication response.
+Privat transit adalah kunci sementara yang digunakan untuk mengenkripsi rahasia yang perlu diteruskan dari autentikator ke aplikasi selama proses autentikasi. Ini dibuat secara acak oleh aplikasi di awal respons autentikasi.
 
-The public key that corresponds to the transit private key is stored in a single element array in the `public_keys` key of the authentication request token. The authenticator encrypts secret data such as the app private key using this public key and sends it back to the app when the user signs in to the app. The transit private key signs the app authentication request.
+Kunci publik yang sesuai dengan kunci privat transit disimpan dalam susunan elemen tunggal dalam `public_keys` dari token permintaan autentikasi. Autentikator mengenkripsi data rahasia seperti kunci privat aplikasi menggunakan kunci publik ini dan mengirimkannya kembali ke aplikasi saat pengguna masuk ke aplikasi. Kunci privat transit menandatangani permintaan autentikasi aplikasi.
 
-### Identity address private key
+### Identitas alamat kunci privat
 
-The identity address private key is derived from the user's keychain phrase and is the private key of the Stacks username that the user chooses to use to sign in to the app. It is a secret owned by the user and never leaves the user's instance of the authenticator.
+Identitas alamat kunci privat berasal dari frasa keychain pengguna dan merupakan kunci privat dari nama pengguna Stacks yang dipilih pengguna untuk masuk ke aplikasi. Ini merupakan rahasia yang dimiliki oleh pengguna dan jangan pernah meninggalkan rahasia pengguna dari autentikator.
 
-This private key signs the authentication response token for an app to indicate that the user approves sign in to that app.
+Kunci privat ini menandatangani token respons autentikasi untuk aplikasi yang menunjukkan bahwa pengguna telah menyetujui masuk ke aplikasi tersebut.
 
-### App private key
+### Kunci privat aplikasi
 
-The app private key is an app-specific private key that is generated from the user's identity address private key using the `domain_name` as input.
+Kunci privat aplikasi adalah kunci privat khusus aplikasi yang dihasilkan dari identitas alamat kunci privat pengguna menggunakan `domain_name` sebagai masukan.
 
-The app private key is securely shared with the app on each authentication, encrypted by the authenticator with the transit public key. Because the transit key is only stored on the client side, this prevents a man-in-the-middle attack where a server or internet provider could potentially snoop on the app private key.
+Kunci privat aplikasi dibagikan secara aman dengan aplikasi pada setiap autentikasi, dan dienkripsi oleh autentikator dengan kunci publik transit. Karena kunci transit hanya disimpan di sisi klien, ini akan mencegah serangan man-in-the-middle di mana server atau penyedia internet berpotensi mengintip kunci privat aplikasi.

@@ -1,5 +1,5 @@
 ---
-title: Microblocks
+title: Microbloques
 description: Guide to Stacks Microblocks
 icon: TestnetIcon
 images:
@@ -7,7 +7,7 @@ images:
   sm: /images/pages/testnet-sm.svg
 ---
 
-## Introduction
+## Introducción
 
 Microblocks are a protocol-level feature of the Stacks blockchain that solve the technical challenge of transaction latency. Because each Stacks block is anchored to a Bitcoin block through the [Proof-of-Transfer consensus mechanism][], Stacks is necessarily limited to the same block times as the Bitcoin network. Microblocks allow the Stacks blockchain to perform state transitions between anchor blocks.
 
