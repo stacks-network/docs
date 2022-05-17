@@ -12,7 +12,7 @@ This is a step by step guide to deploy the [Stacks Blockchain on DigitalOcean](h
 1. Go to the [Stacks Blockchain page](https://marketplace.digitalocean.com/apps/stacks-blockchain) in DigitalOcean's marketplace. Click on `Create Stacks Blockchain Droplet`.
 
 2. Choose a plan (it will only allow you to select a plan that meets the minimum requirements) and your prefered datacenter region.
-![](/images/sh_digitalocean-choose-plan.png)
+   ![](/images/sh_digitalocean-choose-plan.png)
 
 3. Enter a root password or enable SSH keys if your prefer.
 
@@ -26,7 +26,7 @@ This is a step by step guide to deploy the [Stacks Blockchain on DigitalOcean](h
 
 ![](/images/sh_digitalocean-created-droplet.png)
 
-6. Congratulations! You are now running the Stacks Blockchain. You can click on ` Console`  for a terminal window to open or login using SSH to the public IP you've been assigned to with user `root`.
+6. Congratulations! You are now running the Stacks Blockchain. You can click on ` Console` for a terminal window to open or login using SSH to the public IP you've been assigned to with user `root`.
 
 ![](/images/sh_digitalocean-console-button.png)
 ![](/images/sh_digitalocean-console.png)
