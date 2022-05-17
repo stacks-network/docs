@@ -78,6 +78,11 @@ sections:
             pages:
               - path: /miner-mainnet
               - path: /miner-testnet
+          
+          - title: Third-party-providers
+            userPageTitles: true
+            pages:
+              - path: /digitalocean
 
 
       - path: /noteworthy-contracts
