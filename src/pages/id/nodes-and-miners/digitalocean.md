@@ -1,13 +1,13 @@
 ---
 title: Stacks on DigitalOcean
 description: A guide to setup Stacks on DigitalOcean
-experience: beginners
+experience: pemula
 duration: 5 minutes
 tags:
   - tutorial
 ---
 
-## Introduction
+## Pengantar
 
 This is a step by step guide to deploy the [Stacks Blockchain on DigitalOcean](https://marketplace.digitalocean.com/apps/stacks-blockchain). Code is hosted on this [Github repository](https://github.com/stacks-network/stacks-blockchain-docker).
 
@@ -19,8 +19,7 @@ Go to the [Stacks Blockchain page](https://marketplace.digitalocean.com/apps/sta
 
 #### Step 2
 
-Choose a plan (it will only allow you to select a plan that meets the minimum requirements) and your prefered datacenter region.
-![](/images/sh_digitalocean-choose-plan.png)
+Choose a plan (it will only allow you to select a plan that meets the minimum requirements) and your prefered datacenter region. ![](/images/sh_digitalocean-choose-plan.png)
 
 #### Step 3
 
@@ -44,8 +43,7 @@ You will need to wait a few seconds for the droplet to get created. Once created
 
 Congratulations! You are now running the Stacks Blockchain. You can click on `Console` for a terminal window to open or login using SSH to the public IP you've been assigned to with user `root`.
 
-![](/images/sh_digitalocean-console-button.png)
-![](/images/sh_digitalocean-console.png)
+![](/images/sh_digitalocean-console-button.png) ![](/images/sh_digitalocean-console.png)
 
 ## Getting started after deploying Stacks Blockchain
 
