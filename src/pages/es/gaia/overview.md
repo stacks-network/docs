@@ -1,12 +1,12 @@
 ---
-title: Gaia overview
-description: Decentralized storage architecture for off-chain data
+title: Gaia - Información general
+description: Arquitectura de almacenamiento descentralizado para datos fuera de la cadena
 images:
   large: /images/pages/data-storage.svg
   sm: /images/pages/data-storage-sm.svg
 ---
 
-## Introduction
+## Introducción
 
 Apps built with the Stacks blockchain store off-chain data using a storage system called Gaia.
 
@@ -14,7 +14,7 @@ Whereas public transactional metadata is best stored on the Stacks blockchain, u
 
 Storing data off of the blockchain ensures that Stacks applications can provide users with high performance and high availability for data reads and writes without introducing central trust parties.
 
-## Understand Gaia in the Stacks architecture
+## Comprender a Gaia en la arquitectura de Stacks
 
 The following diagram depicts the Stacks architecture and Gaia's place in it:
 
