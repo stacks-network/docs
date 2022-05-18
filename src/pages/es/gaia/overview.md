@@ -55,7 +55,7 @@ Because `alice.id` has access to her [zonefile](https://docs.stacks.co/reference
 
 Applications writing directly on behalf of `alice.id` do not need to perform a lookup. Instead, the [Stacks authentication flow](https://stacks.js.org) provides Alice's chosen gaia hub URL to the application. This authentication flow _is also_ within Alice's control because Alice's wallet _must_ generate the authentication response.
 
-## Understand data storage
+## Entendiendo el almacenamiento de datos
 
 A Gaia hub stores the written data _exactly_ as given. It offers minimal guarantees about the data. It does not ensure that data is validly formatted, contains valid signatures, or is encrypted. Rather, the design philosophy is that these concerns are client-side concerns.
 
@@ -67,22 +67,22 @@ When an application writes to a Gaia hub, an authentication token, key, and the 
 
 The token ensures the app has the authorization to write to the hub on the user's behalf.
 
-## Gaia versus other storage systems
+## Gaia versus otros sistemas de almacenamiento
 
 Here's how Gaia stacks up against other decentralized storage systems. Features that are common to all storage systems are omitted for brevity.
 
-| Features                                   | [Gaia](https://github.com/stacks-network/gaia) | [Sia](https://sia.tech/) | [Storj](https://storj.io/) | [IPFS](https://ipfs.io/) | [DAT](https://datproject.org/) | [SSB](https://www.scuttlebutt.nz/) |
-| ------------------------------------------ | ---------------------------------------------- | ------------------------ | -------------------------- | ------------------------ | ------------------------------ | ---------------------------------- |
-| User controls where data is hosted         | X                                              |                          |                            |                          |                                |                                    |
-| Data can be viewed in a normal Web browser | X                                              |                          |                            | X                        |                                |                                    |
-| Data is read/write                         | X                                              |                          |                            |                          | X                              | X                                  |
-| Data can be deleted                        | X                                              |                          |                            |                          | X                              | X                                  |
-| Data can be listed                         | X                                              | X                        | X                          |                          | X                              | X                                  |
-| Deleted data space is reclaimed            | X                                              | X                        | X                          | X                        |                                |                                    |
-| Data lookups have predictable performance  | X                                              |                          | X                          |                          |                                |                                    |
-| Writes permission can be delegated         | X                                              |                          |                            |                          |                                |                                    |
-| Listing permission can be delegated        | X                                              |                          |                            |                          |                                |                                    |
-| Supports multiple backends natively        | X                                              |                          | X                          |                          |                                |                                    |
-| Data is globally addressable               | X                                              | X                        | X                          | X                        | X                              |                                    |
-| Needs a cryptocurrency to work             |                                                | X                        | X                          |                          |                                |                                    |
-| Data is content-addressed                  |                                                | X                        | X                          | X                        | X                              | X                                  |
+| Funcionalidades                               | [Gaia](https://github.com/stacks-network/gaia) | [Sia](https://sia.tech/) | [Storj](https://storj.io/) | [IPFS](https://ipfs.io/) | [DAT](https://datproject.org/) | [SSB](https://www.scuttlebutt.nz/) |
+| --------------------------------------------- | ---------------------------------------------- | ------------------------ | -------------------------- | ------------------------ | ------------------------------ | ---------------------------------- |
+| El usuario controla donde se alojan los datos | X                                              |                          |                            |                          |                                |                                    |
+| Data can be viewed in a normal Web browser    | X                                              |                          |                            | X                        |                                |                                    |
+| Datos de lectura/escritura                    | X                                              |                          |                            |                          | X                              | X                                  |
+| Se pueden eliminar datos                      | X                                              |                          |                            |                          | X                              | X                                  |
+| Data can be listed                            | X                                              | X                        | X                          |                          | X                              | X                                  |
+| Deleted data space is reclaimed               | X                                              | X                        | X                          | X                        |                                |                                    |
+| Data lookups have predictable performance     | X                                              |                          | X                          |                          |                                |                                    |
+| Writes permission can be delegated            | X                                              |                          |                            |                          |                                |                                    |
+| Listing permission can be delegated           | X                                              |                          |                            |                          |                                |                                    |
+| Supports multiple backends natively           | X                                              |                          | X                          |                          |                                |                                    |
+| Data is globally addressable                  | X                                              | X                        | X                          | X                        | X                              |                                    |
+| Needs a cryptocurrency to work                |                                                | X                        | X                          |                          |                                |                                    |
+| Data is content-addressed                     |                                                | X                        | X                          | X                        | X                              | X                                  |
