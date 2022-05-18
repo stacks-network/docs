@@ -1,11 +1,11 @@
 ---
-title: Overview
-description: Nodes and Miners
+title: Descripción general
+description: Nodos y Mineros
 icon: BlockstackIcon
 ---
 
-Here are all the steps to run nodes and miners, both on mainnet and testnet.
+Aquí están todos los pasos para ejecutar nodos y mineros, tanto en mainnet como en testnet.
 
-## What's a Stacks node?
+## ¿Qué es un nodo de Stacks?
 
-## What's a Stacks miner?
+## ¿Qué es un minero de Stacks?
