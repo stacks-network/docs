@@ -1,0 +1,4 @@
+# Add 'traslations-es' to any change in /src/pages/ folder or subfolders except for EN files
+translations:
+  - any: ['src/pages/**/*', '!src/pages/en/**/*']
+
