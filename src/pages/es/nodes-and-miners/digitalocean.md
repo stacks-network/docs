@@ -1,17 +1,17 @@
 ---
-title: Stacks on DigitalOcean
-description: A guide to setup Stacks on DigitalOcean
-experience: beginners
-duration: 5 minutes
+title: Stacks en DigitalOcean
+description: Una guía para configurar Stacks en DigitalOcean
+experience: principiantes
+duration: 5 minutos
 tags:
   - tutorial
 ---
 
-## Introduction
+## Introducción
 
 This is a step by step guide to deploy the [Stacks Blockchain on DigitalOcean](https://marketplace.digitalocean.com/apps/stacks-blockchain). Code is hosted on this [Github repository](https://github.com/stacks-network/stacks-blockchain-docker).
 
-## Steps
+## Pasos
 
 #### Step 1
 
