@@ -1,6 +1,6 @@
 ---
 title: Cómo colaborar
-description: Learn how this site is built, and how you could contribute to it.
+description: Aprende cómo se construye este sitio y cómo puedes contribuir a él.
 icon: BlockstackIcon
 images:
   large: /images/contribute.svg
@@ -21,18 +21,18 @@ This docs site is built with [Next.js](https://github.com/vercel/next.js) and us
 
 ## Primeros pasos
 
-To get started you have two options:
+Para empezar tienes dos opciones:
 
 1. using web IDE Gitpod in your browser.
 2. working locally.
 
-### Trabajando en el navegador
+### Trabajar en el navegador
 
 The web IDE gitpod provides an environment to contibute directly from within your browser.
 
 To get started, you only have to a github account and open the link [https://gitpod.io/#https://github.com/stacks-network/docs](https://gitpod.io/#https://github.com/stacks-network/docs) in your browser.
 
-### Trabajando localmente
+### Trabajar localmente
 
 When workin locally with the site, a few things are needed:
 
@@ -40,9 +40,9 @@ When workin locally with the site, a few things are needed:
 - [`node` + `npm`,](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [`yarn` installed](https://yarnpkg.com/getting-started/install) on your machine.
 - Some kind of code editor, such as VSCode, Sublime, or WebStorm.
 
--> This project requires at least Node version 12
+-> Este proyecto requiere al menos la versión 12 de Node
 
-### Working with GitHub
+### Trabajando en Github
 
 All of the code for this site is open source, located at the [GitHub repository here](https://github.com/stacks-network/docs). Before you start editing anything, you will need to fork the repo so that you can have your own copy of the code under your GitHub profile. On the [repository's page](https://github.com/stacks-network/docs), you should be able to see a button in the upper right of the screen that says "Fork." [You can read about Forking here.](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
 

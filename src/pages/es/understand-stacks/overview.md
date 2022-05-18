@@ -25,7 +25,7 @@ Una comparación detallada [del blockchain Stacks con otras tecnologías de bloc
 
 ### Mecanismo de consenso
 
-Stacks 2.0 implementa un nuevo mecanismo de minería llamado Prueba de Transferencia (PoX). PoX es un algoritmo de consenso entre dos blockchains que utiliza uno ya establecido (en este caso Bitcoin) para anclar uno nuevo (Stacks). It uses an established blockchain (in this case Bitcoin) to secure a new blockchain (Stacks).
+Stacks 2.0 implementa un nuevo mecanismo de minería llamado Prueba de Transferencia (PoX). PoX es un algoritmo de consenso entre dos blockchains que utiliza uno ya establecido (en este caso Bitcoin) para anclar uno nuevo (Stacks). Utiliza un blockchain bien establecido (en este caso Bitcoin) para asegurar una nueva blockchain (Stacks).
 
 PoX tiene una relación de 1:1 por bloque con Bitcoin, lo que significa que cualquier cosa que suceda en el blockchain de Stacks puede verificarse en el blockchainde Bitcoin.
 
