@@ -1,25 +1,25 @@
 ---
-title: Stacking Contract
-description: See a detailed list of all functions and error codes of the Stacking contract.
+title: Contrato de Stacking
+description: Vea una lista detallada de todas las funciones y códigos de error del contrato de Stacking.
 ---
 
 export { convertStackingRefToMdx as getStaticProps } from '@common/data/stacking-ref';
 import { StackingErrorcodeReference, StackingFunctionReference } from '@components/stacking-ref';
 
-## Introduction
+## Introducción
 
-Stacking is implemented as a smart contract using Clarity. You can always find the Stacking contract identifier using the Stacks Blockchain API [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get_pox_info).
+El Stacking se implementa como un contrato inteligente utilizando Clarity. Siempre puede encontrar el identificador de contrato de Stacking usando el API de Stacks Blockchain [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get_pox_info).
 
-Below is a list of public and read-only functions as well as error codes that can be returned by those methods.
+A continuación se muestra una lista de funciones públicas y de sólo lectura así como códigos de error que pueden ser devueltos por esos métodos.
 
-## Public functions
+## Funciones públicas
 
 <StackingFunctionReference {...props.mdx.publicFunctions} />
 
-## Read-only functions
+## Funciones de solo lectura
 
 <StackingFunctionReference {...props.mdx.readonlyFunctions} />
 
-## Error codes
+## Códigos de error
 
 <StackingErrorcodeReference {...props.mdx.errorCodes} />
