@@ -1,13 +1,13 @@
 ---
 title: Tokens
-description: Learn about token support within Clarity
+description: Aprende acerca del soporte de tokens en Clarity
 icon: TestnetIcon
 images:
   large: /images/pages/nft/token.png
   sm: /images/pages/nft/token.png
 ---
 
-## Introduction
+## Introducción
 
 A fundamental use of blockchain technology is the representation, store, and transfer of value between users of a blockchain. Cryptocurrency is a very common use of blockchain technology, and remains one of the primary drivers of adoption of blockchain technology. Cryptocurrencies are represented by blockchain tokens: individual units of value within a given blockchain ecosystem. Blockchain tokens can extend beyond just digital currency, however, and recent developments throughout the cryptocurrency community have demonstrated potential for the use of blockchain to tokenize and represent not just money but other tangible assets.
 
@@ -15,7 +15,7 @@ A blockchain token is a digital asset that can be verifiably owned by a user of 
 
 Tokens on a blockchain fall into two general categories, depending on their properties: [fungible][] or [non-fungible][]. The following sections discuss the properties of both types of tokens, and provide information about implementation of the two types of tokens on Stacks.
 
-## Fungible tokens
+## Tokens fungibles
 
 A core property of any token on a blockchain is fungibility. A fungible token is a token that's mutually interchangable or capable of mutual substitution. In other words, one quantity or part of a fungible token can be replaced by an equal quantity or part of the same fungible token. Fungible tokens are often used to represent real-world fungible assets like currency. The STX token is an example of a fungible token. Other examples include stablecoins, tokens that represent voting rights in a DAO, or tokens that algorithmically track the price of stocks.
 
@@ -35,7 +35,7 @@ The [SIP-010][] standard is an interface definition that allows Stacks applicati
 - Ability to get the total supply of the token (`get-total-supply`).
 - A URI to metadata associated with the token (`get-token-uri`). This can resolve to off-chain metadata about the token or contract, such as an image icon for the token or a description.
 
-## Non-fungible tokens (NFTs)
+## Tokens no fungibles (NFTs)
 
 Non-fungible tokens (NFTs) are a type of token that are not interchangeable. NFTs have unique traits (usually in the form of attached metadata) that restrict the abillity to replace them with identical tokens. An NFT is a token that is unique, such as a piece of art, or ownership rights to a real-world asset such as a house.
 
@@ -52,10 +52,10 @@ The [SIP-009][] standard is an interface definition that the Stacks ecosystem al
 - Ability to verify the owner for a given token identifier (`get-owner`). The owner resolves to a [Stacks principal](/write-smart-contracts/principals).
 - Ability to transfer an NFT to a recipient (`transfer`). The recipient is required to be a Stacks principal.
 
-## Further reading
+## Lectura adicional
 
-- [The Difference Between Fungible and Non-Fungible Tokens](https://101blockchains.com/fungible-vs-non-fungible-tokens/)
-- [Explain It Like I Am 5: NFTs](https://messari.io/article/explain-it-like-i-am-5-nfts)
+- [La Diferencia entre tokens fungibles y no fungibles](https://101blockchains.com/fungible-vs-non-fungible-tokens/)
+- [Explícalo como si tuviera 5 años: NFTs](https://messari.io/article/explain-it-like-i-am-5-nfts)
 
 [fungible]: #fungible-tokens
 [non-fungible]: #non-fungible-tokens-nfts

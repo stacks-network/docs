@@ -1,12 +1,12 @@
 ---
-title: Clarity overview
+title: Visión general de Clarity
 description: Overview and guides for getting started with Clarity
 images:
   large: /images/contract.svg
   sm: /images/contract.svg
 ---
 
-## Introduction
+## Introducción
 
 Clarity is a **decidable** smart contract language that optimizes for predictability and security, designed for the Stacks blockchain. Smart contracts allow developers to encode essential business logic on a blockchain.
 
@@ -20,7 +20,7 @@ Apps can take advantage of smart contracts to manage a global state that is visi
 
 There is a [Clarity Visual Studio Code plugin][] available for syntax assistance and debugging.
 
-## Use cases
+## Casos de uso
 
 Not every decentralized application requires smart contracts, but Clarity unlocks interesting capabilities for decentralized applications. Examples of use cases include, but are not limited to:
 
@@ -30,7 +30,7 @@ Not every decentralized application requires smart contracts, but Clarity unlock
 - App-specific blockchains
 - Decentralized Autonomous Organizations
 
-## Language design
+## Diseño del lenguaje
 
 Clarity differs from most other smart contract languages in two essential ways:
 
@@ -49,9 +49,9 @@ Note some of the key Clarity language rules and limitations.
 - There is support for lists, however, the only variable length lists in the language appear as function inputs; there is no support for list operations like append or join.
 - Variables are immutable.
 
-## Explore more
+## Explora más
 
-For language details and references, see the following:
+Para más detalles y referencias del lenguaje, mira lo siguiente:
 
 [@page-reference | grid] | /write-smart-contracts/principals, /write-smart-contracts/values, /references/language-overview
 
