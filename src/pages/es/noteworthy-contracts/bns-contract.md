@@ -1,25 +1,25 @@
 ---
-title: BNS Contract
-description: See a detailed list of all functions and error codes of the BNS contract.
+title: Contrato BNS
+description: Vea una lista detallada de todas las funciones y códigos de error del contrato BNS.
 ---
 
 export { convertBNSRefToMdx as getStaticProps } from '@common/data/bns-ref';
 import { BNSErrorcodeReference, BNSFunctionReference } from '@components/bns-ref';
 
-## Introduction
+## Introducción
 
-The [Blockchain Naming System (BNS)](/build-apps/references/bns) is implemented as a smart contract using Clarity.
+El [Blockchain Naming System (BNS)](/build-apps/references/bns) se implementa como un contrato inteligente usando Clarity.
 
-Below is a list of public and read-only functions as well as error codes that can be returned by those methods.
+A continuación se muestra una lista de funciones públicas y de sólo lectura así como códigos de error que pueden ser devueltos por esos métodos.
 
-## Public functions
+## Funciones públicas
 
 <BNSFunctionReference {...props.mdx.publicFunctions} />
 
-## Read-only functions
+## Funciones de solo lectura
 
 <BNSFunctionReference {...props.mdx.readonlyFunctions} />
 
-## Error codes
+## Códigos de error
 
 <BNSErrorcodeReference {...props.mdx.errorCodes} />
