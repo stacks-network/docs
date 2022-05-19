@@ -54,4 +54,4 @@ Kontrak pintar Clarity juga memiliki visibilitas unik ke dalam status blockchain
 ## Lihat juga
 
 - [Baca whitepaper PoX lengkap](https://community.stacks.org/pox)
-- [Tonton CEO Muneeb Ali dan Evangelist Joe Bender memberikan ringkasan tentang mekanisme penambangan PoX terobosan Stack](https://www.youtube.com/watch?v=NY_eUrIcWOY)
+- [Watch Executive Chair of Hiro Muneeb Ali and Evangelist Joe Bender give an overview of Stack's breakthrough PoX mining mechanism](https://www.youtube.com/watch?v=NY_eUrIcWOY)

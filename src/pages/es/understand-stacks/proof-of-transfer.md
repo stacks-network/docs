@@ -54,4 +54,4 @@ Los contratos inteligentes de Clarity también tienen una visibilidad única en 
 ## Vea también
 
 - [Lea el whitepaper completo de PoX](https://community.stacks.org/pox)
-- [Vea al CEO Muneeb Ali y al experto Joe Bender brindar una visión general del revolucionario mecanismo de minería de Stacks PoX](https://www.youtube.com/watch?v=NY_eUrIcWOY)
+- [Watch Executive Chair of Hiro Muneeb Ali and Evangelist Joe Bender give an overview of Stack's breakthrough PoX mining mechanism](https://www.youtube.com/watch?v=NY_eUrIcWOY)
