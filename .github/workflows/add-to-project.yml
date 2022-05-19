@@ -6,7 +6,7 @@ on:
       - opened
   pull_request:
     branches: [master]
-    
+
 jobs:
   add-to-project:
     name: Add issue to project
@@ -15,4 +15,4 @@ jobs:
       - uses: actions/add-to-project@main
         with:
           project-url: https://github.com/stacks-network/docs/projects/2
-          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
