@@ -11,3 +11,4 @@ src/common/constants_that_require_translations_pt.ts
 src/common/constants_that_require_translations_ru.ts
 src/common/constants_that_require_translations_tr.ts
 src/common/constants_that_require_translations_zh.ts
+src/common/constants_that_require_translations_vi.ts
