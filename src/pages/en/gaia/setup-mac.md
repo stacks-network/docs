@@ -10,45 +10,42 @@ The following assumes you have [Docker Installed](https://docs.docker.com/docker
 
 In your working directory:
 
-1. clone a copy of the [gaia repo](https://github.com/stacks-network/gaia):
+**1. Clone a copy of the [gaia repo](https://github.com/stacks-network/gaia):**
 
-   ```
-   $ git clone \
-         -b master \
-         --single-branch \
-         https://github.com/stacks-network/gaia \
-     gaia
-   ```
+```bash
+$ git clone -b master --single-branch https://github.com/stacks-network/gaia
+```
 
-1. Change your cwd:
+**2. Change your cwd:**
 
-   ```
-   $ cd gaia/deploy/docker
-   ```
+```bash
+$ cd gaia/deploy/docker
+```
 
-1. Create a copy of sample-disk.env and fill out the values:
+**3. Create a copy of sample-disk.env and fill out the values:**
 
-   ```
-   $ cp sample-disk.env disk.env
-   # Update the DOMAIN_NAME variable to `localhost`
-   ```
+```
+$ cp sample-disk.env disk.env
+# Update the DOMAIN_NAME variable to `localhost`
+```
 
-1. Start the server:
+**4. Start the server:**
 
-   ```
-   $ docker-compose -f docker-compose-base.yaml -f docker-compose-disk.yaml --env-file disk.env up
-   ```
+```
+$ docker-compose -f docker-compose-base.yaml -f docker-compose-disk.yaml --env-file disk.env up
+```
 
-1. Verify the server is responding locally:
-   ```
-   $ curl -sk https://localhost/hub_info | jq
-     {
-       "challenge_text": "[\"gaiahub\",\"0\",\"gaia-0\",\"blockstack_storage_please_sign\"]",
-       "latest_auth_version": "v1",
-       "max_file_upload_size_megabytes": 20,
-       "read_url_prefix": "https://localhost/reader/"
-     }
-   ```
+**5. Verify the server is responding locally:**
+
+```
+$ curl -sk https://localhost/hub_info | jq
+  {
+    "challenge_text": "[\"gaiahub\",\"0\",\"gaia-0\",\"blockstack_storage_please_sign\"]",
+    "latest_auth_version": "v1",
+    "max_file_upload_size_megabytes": 20,
+    "read_url_prefix": "https://localhost/reader/"
+  }
+```
 
 ### Modifying the configuration for your gaia-hub
 
