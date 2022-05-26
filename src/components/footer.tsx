@@ -16,20 +16,7 @@ const Footer = ({ hidePagination, ...rest }: any) => {
           justifyContent={['flex-end', 'flex-end', 'flex-start']}
           mt={['extra-loose', 'extra-loose', 'loose']}
           alignItems="center"
-        >
-          <Caption mt={['loose', 'loose', 'unset']} mr="tight">
-            Powered by
-          </Caption>
-          <Box
-            mt={['loose', 'loose', 'unset']}
-            href="https://vercel.com/?utm_source=blockstack&utm_campaign=oss"
-            as="a"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <VercelLogo opacity={0.85} />
-          </Box>
-        </Flex>
+        ></Flex>
       </SectionWrapper>
     </Section>
   );
