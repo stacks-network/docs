@@ -102,6 +102,7 @@ const nav: NavItem[] = [
         label: 'English',
         href: '/en',
       },
+      /*
       {
         label: 'Indonesian',
         href: '/id',
@@ -110,6 +111,7 @@ const nav: NavItem[] = [
         label: 'Spanish',
         href: '/es',
       },
+      */
       {
         label: 'Add another language...',
         href: '/contribute/translations',
