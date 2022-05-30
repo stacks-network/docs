@@ -1,0 +1,13 @@
+name: Auto approve translations
+on:
+  pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+    - uses: hmarr/auto-approve-action@v2
+      if: github.actor == 'bot-translations'
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
