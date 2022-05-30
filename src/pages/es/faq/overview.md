@@ -1,9 +1,9 @@
 ---
 title: FAQ
-description: Frequently Asked Questions
+description: Preguntas frecuentes
 ---
 
-## Why is my transfer still pending?
+## ¿Por qué mi transferencia sigue pendiente?
 
 Commonly it's because your fee is too low or your [nonce](#what-is-nonce) is incorrect.
 
