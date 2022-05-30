@@ -103,7 +103,13 @@ export const TableOfContents = ({
               <Item
                 limit={limit}
                 level={heading.level}
-                slug={slugify(heading.content)}
+                slug={
+                  heading.content[0] === '-'
+                    ? `--${slugify(heading.content)}`
+                    : new RegExp(/\W/).test(heading.content[0])
+                    ? `-${slugify(heading.content)}`
+                    : slugify(heading.content)
+                }
                 label={heading.content}
                 key={index}
               />
