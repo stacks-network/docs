@@ -9,63 +9,70 @@ images:
 
 ## Pengantar
 
-Selamat datang. Terima kasih atas minat Anda yang ingin berkontribusi dan membantu membuat dokumen ini menjadi lebih baik. Halaman ini menguraikan bagaimana situs ini dibuat, struktur umumnya, menjalankannya secara lokal, dan beberapa tips bermanfaat untuk menggunakan semua fiturnya.
+Selamat datang. Terima kasih atas minat Anda yang ingin berkontribusi dan membantu membuat dokumen ini menjadi lebih baik.
 
-Langkah-langkah ini hanya boleh diikuti untuk membuat perubahan pada struktur umum dari situs dan dokumen yang ditulis dalam bahasa Inggris. **Untuk membuat perubahan dalam bahasa lain**, lihat [terjemahan](/contribute/translations). Pada folder /src/pages/ Anda harus membuat perubahan di /src/pages/en, karena perubahan di lokal lain (misalnya /src/pages/es atau /src/pages/fr) akan ditimpa.
+They are two different ways to colaborate to the docs:
 
-## Next.js, MDX, Markdown
+- Easiest way: Simply [add an issue on github](https://github.com/stacks-network/docs/issues/new) and enter there the next article you will like to add or modify. The only requirement here is to have a registered account on GitHub.
+- Standard way: Follow the [steps below](#getting-started) to clone this repo and make changes locally. This requires more technical skills.
 
-Situs dokumen ini dibuat dengan [Next.js](https://github.com/vercel/next.js) dan menggunakan sesuatu yang disebut [MDX](https://mdxjs.com/). Next.js adalah kerangka kerja yang dibangun di atas React, dan MDX adalah alat yang memungkinkan penulisan kode React (JSX) dalam file Markdown standar. Selain dapat menulis JSX di Markdown, ini memungkinkan aplikasi untuk merender semua konten Markdown dengan komponen React. Ini berarti bahwa kita dapat melakukan beberapa hal yang cukup rumit sementara kontributor hanya perlu tahu cara menulis Markdown.
+This page outlines how this site is built, its general structure, getting it running locally, and some helpful tips for using all of its features.
 
--> **Tidak tahu apa itu Markdown?** Berikut adalah [panduan bermanfaat ](https://guides.github.com/features/mastering-markdown/) untuk mempelajarinya.
+These steps should only be followed to make changes on the general structure of the site and documents written in English. **To make changes in other languages**, please refer to [translations](/contribute/translations) instead. This means that in the folder `/src/pages/` you should an make changes in `/src/pages/en`, as changes in any other locale (`/src/pages/es` or `/src/pages/fr` for example) are overwritten.
 
-## Memulai
+### Next.js, MDX, Markdown
 
-Untuk memulai Anda memiliki dua pilihan:
+This docs site is built with [Next.js](https://github.com/vercel/next.js) and uses something called [MDX](https://mdxjs.com/). Next.js is a framework built on top of React, and MDX is a tool that enables writing React code (JSX) within standard Markdown files. In addition to being able to write JSX in Markdown, it allows the application to render out all of the Markdown content with React components. This means that we are able to do some pretty complex things while a contributor only has to know how to write Markdown.
+
+-> **Don't know what Markdown is?** Here is a [helpful guide](https://guides.github.com/features/mastering-markdown/) for learning it.
+
+## Getting started
+
+To get started you have two options:
 
 1. menggunakan web IDE Gitpod di browser Anda.
 2. bekerja secara lokal.
 
-### Bekerja di browser
+### Working in browser
 
-Web IDE Gitpod menyediakan tempat untuk berkontribusi langsung dari browser Anda.
+The web IDE gitpod provides an environment to contibute directly from within your browser.
 
-Untuk memulai, Anda hanya perlu memiliki akun github dan membuka tautan [https://gitpod.io/#https://github.com/stacks-network/docs](https://gitpod.io/#https://github.com/stacks-network/docs) di browser Anda.
+To get started, you only have to a github account and open the link [https://gitpod.io/#https://github.com/stacks-network/docs](https://gitpod.io/#https://github.com/stacks-network/docs) in your browser.
 
-### Bekerja secara Lokal
+### Working Locally
 
-Saat bekerja secara lokal dengan situs, beberapa hal di bawah ini diperlukan:
+When working locally with the site, a few things are needed:
 
-- Familier dengan `git`, GitHub, dan baris perintah. [Baca selengkapnya di sini.](https://docs.github.com/en/github/getting-started-with-github/quickstart)
-- [`node` + `npm`,](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) dan [`yarn` terpasang](https://yarnpkg.com/getting-started/install) di mesin Anda.
-- Beberapa jenis editor kode, seperti VSCode, Sublime, atau WebStorm.
+- Familiarity with `git`, GitHub, and the command line. [Read more here.](https://docs.github.com/en/github/getting-started-with-github/quickstart)
+- [`node` + `npm`,](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [`yarn` installed](https://yarnpkg.com/getting-started/install) on your machine.
+- Some kind of code editor, such as VSCode, Sublime, or WebStorm.
 
--> Proyek ini membutuhkan setidaknya Noda versi 12
+-> This project requires at least Node version 12
 
-### Bekerja dengan GitHub
+### Working with GitHub
 
-Semua kode untuk situs ini adalah open source, terletak di [repositori GitHub di sini](https://github.com/stacks-network/docs). Sebelum Anda mulai mengedit apa pun, Anda perlu melakukan pencabangan repo sehingga Anda dapat memiliki salinan kode sendiri di bawah profil GitHub Anda. Pada [halaman repositori](https://github.com/stacks-network/docs), Anda seharusnya dapat melihat tombol di kanan atas layar yang bertuliskan "Fork." [Anda dapat membaca tentang Forking di sini.](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
+All of the code for this site is open source, located at the [GitHub repository here](https://github.com/stacks-network/docs). Before you start editing anything, you will need to fork the repo so that you can have your own copy of the code under your GitHub profile. On the [repository's page](https://github.com/stacks-network/docs), you should be able to see a button in the upper right of the screen that says "Fork." [You can read about Forking here.](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
 
-Ini adalah alur kerja umum untuk berkontribusi pada dokumen ini:
+This is a generalized workflow for contributing to these docs:
 
-- Kloning fork Anda ke mesin lokal Anda dengan perintah ini `git clone git@github.com:<YOUR_USERNAME>/docs.git stacks_docs`
-- Masukkan folder proyek Anda `cd stacks_docs`
-- Buat cabang `git checkout -b feat/my-feature-branch`.
-- Jalankan perintah `yarn` untuk menginstal semua dependensi.
-- Buat perubahan yang Anda inginkan, lalu lakukan dengan pesan seperti ini: `git commit -am "feat: some new feature or content"`.
-- Dorong ke GitHub dengan `git push --set-upstream origin feature/my-feature-branch`.
-- Kunjungi GitHub dan buat permintaan tarik Anda.
+- Clone your fork to your local machine with this command `git clone git@github.com:<YOUR_USERNAME>/docs.git stacks_docs`
+- Enter your project folder `cd stacks_docs`
+- Create a branch `git checkout -b feat/my-feature-branch`.
+- Run the command `yarn` to install all of the dependencies.
+- Make the changes you wish and then commit them with this kind of message: `git commit -am "feat: some new feature or content"`.
+- Push to to GitHub with `git push --set-upstream origin feature/my-feature-branch`.
+- Visit GitHub and make your pull request.
 
-### Menjalankan situs secara lokal
+### Running the site locally
 
-Setelah Anda memiliki proyek di komputer Anda dan dependensi telah diinstal melalui perintah `yarn`, Anda dapat menjalankan `yarn dev` dan akan ada pesan seperti di bawah ini:
+Once you have the project on your computer and the dependencies have been installed via the `yarn` command, you can run `yarn dev` and it should give you a message such as:
 
 ```bash
 yarn dev
 ```
 
 ```bash
-yarn run v1.22.17
+yarn run v1.22.19
 $ yarn clean:build-files && next dev
 $ rimraf .next && rimraf .cache
 ready - started server on 0.0.0.0:3000, url: http://localhost:3000
@@ -78,34 +85,35 @@ info  - Using external babel configuration from /home/alejandro/stacks-network_d
 event - compiled client and server successfully in 13.5s (680 modules)
 ```
 
-Situs dokumen akan dapat diakses di url ini: [`http://localhost:3000`](http://localhost:3000).
+The docs site will be accessible at this url: [`http://localhost:3000`](http://localhost:3000).
 
-## Struktur proyek
+## Project structure
 
-### Halaman
+### Pages
 
-Jika Anda hanya tertarik untuk menambahkan konten dokumentasi baru ke situs, file yang penting bagi Anda berada di `./src/pages/*`:
+If you are interested in only adding new documentation content to the site, the files that will be important to you are located within `./src/pages/en/*`:
 
-```bash showLineNumbers highlight=11
+```bash showLineNumbers highlight=12
 stacks_docs/
   .github/
+  .vale
   lib/
-  node_modules/
   public/
   src/
     _data/
-    _includes/
     common/
     components/
+    includes/
     pages/
+      en/
   types/
 ```
 
-Perutean untuk situs ini berbasis file, artinya jika Anda membuat folder di dalam `/pages` bernama `clarity` dan kemudian file bernama `overview.md`, Anda akan dapat menavigasi ke `http://localhost:3000/clarity/overview` dan Anda akan melihat konten apa pun yang ada di file markdown tersebut.
+The routing for this site is file based, meaning if you created a folder within `/pages/en` named `clarity` and in it a file named `overview.md`, you would be able to navigate to `http://localhost:3000/clarity/overview` and you would see whatever content is in that markdown file.
 
 ### Frontmatter
 
-Frontmatter adalah bagian atas dari dokumen markdown yang ditulis dalam bahasa yang disebut [YAML](https://yaml.org/). Bisa terlihat seperti ini:
+Frontmatter is the top part of any markdown document that is written in a language called [YAML](https://yaml.org/). It looks like this:
 
 ```yaml
 ---
@@ -114,17 +122,17 @@ description: A short, concise sentence describing what is on this page
 ---
 ```
 
-Frontmatter memberi kita kemampuan untuk mendefinisikan beberapa hal dalam halaman yang dapat digunakan situs, seperti judul halaman atau deskripsi halaman. Saat menambahkan halaman baru, silakan sertakan `title` dan `description`.
+Frontmatter gives us the ability to define some things within a page that the site can use, such as a page title or page description. When adding any new page, please include a `title` and `description`.
 
--> **Tahukah Anda?** Istilah _Frontmatter_ berasal dari bagian awal sebuah buku yang merinci hal-hal seperti: nama dan alamat penerbit, informasi hak cipta, daftar isi, dll.
+-> **Did you know?** The term _Frontmatter_ comes from the section in a book at the beginning detailing things like: publisher’s name and address, copyright information, table of contents, etc.
 
-### Sidebar dinamis
+### Dynamic sidebar
 
-Navigasi sidebar dibuat dengan cara yang sebagian dinamis. Aplikasi mencari melalui daftar jalur dan memparsing markdown untuk mendapatkan beberapa informasi tentang halaman, seperti judul dan heading yang terdapat di dalam halaman.
+The sidebar navigation is generated in a partially dynamic way. The application searches through a list of paths and parses the markdown to get some information about the page, such as the title and headings contained within the page.
 
 #### Menambahkan rute baru
 
-Jika Anda menambahkan rute baru, Anda harus menambahkan rute Anda ke bagian yang ada di dalam file ini: `src/common/navigation.yaml`
+If you are adding a new route, you have to add your route to a section contained within this file: `src/common/navigation.yaml`
 
 ```bash showLineNumbers highlight=11
 sections:
@@ -139,52 +147,56 @@ sections:
           - path: /accounts
           - path: /transactions
           - path: /network
+          - path: /microblocks
           - path: /stacking
-          - path: /command-line-interface
-          - path: /local-development
           - path: /technical-specs
           - path: /stacks-blockchain-api
         sections:
-          - title: Tutorials
+          - title:  Clarity Development Software
+            usePageTitles: true
             pages:
-              - path: /managing-accounts
-              - path: /sending-tokens
-              - path: /running-testnet-node
-              - path: /integrate-stacking
-              - path: /stacking-using-CLI
+              - path: /software
 ```
 
-Menambahkan rute baru perlu menambahkan `path` baru.
+Adding a new route requires to add a new `path` line.
 
-Skrip akan memproses file tersebut dan mengeluarkan judul dari frontmatter dokumen.
+The script will process that file and pull out the title from the frontmatter of the document.
 
-### Halaman non-standar
+### Non-standard pages
 
-Ada beberapa halaman dalam dokumen ini yang merupakan halaman markdown non-standar. Ini berarti mereka menggunakan beberapa jenis data eksternal sebagai sumbernya, seperti [Halaman Referensi Clarity](/write-smart-contracts/language-overview), atau [Halaman CLI Stacks](https://docs.hiro.so/references/stacks-cli). Halaman ini menggunakan fungsi Next.js yang disebut [ `getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) yang memungkinkan kita untuk mengambil data eksternal saat runtime dan menggunakannya dalam beberapa cara di halaman kita.
+There are a few pages within these docs that are non-standard markdown pages. This means they are using some kind of external data as their source, such as the [Clarity Reference page](/write-smart-contracts/language-overview), or the [Stacks CLI page](https://docs.hiro.so/references/stacks-cli). These pages are using a function of Next.js called [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) which allows us to fetch external data at runtime and use it in some way within our pages.
 
-## Tips dan trik
+## Tips and tricks
 
-### Pemeriksaan gaya
+### Code formatter
 
-Kami menggunakan [panduan gaya dokumentasi Pengembang Google](https://developers.google.com/style/) dalam proyek ini. Pastikan untuk menginstal [vale](https://github.com/errata-ai/vale) dan menjalankan pemeriksaan gaya sebelum Anda membuat PR:
+We use [Prettier](https://prettier.io/docs/en/install.html) to check the format the code.
+
+You can install prettier with the following command:
 
 ```bash
-yarn check:style
+npm install --save-dev --save-exact prettier
 ```
 
-### Gunakan Commit Konvensional
+And execute prettier with the following command:
 
-Kami menggunakan [Commit Konvensional](https://www.conventionalcommits.org/en/v1.0.0/) sebagai konvensi penamaan commit. Silakan gunakan sambil berkontribusi.
+```bash
+npx prettier --write mynewfiletocheck.md
+```
 
-### Selalu gunakan Markdown jika memungkinkan
+### Use Conventional Commits
 
-Memungkinkan untuk menulis HTML standar saat menulis dalam markdown, tetapi harus dihindari dengan cara apa pun. Kami menggunakan `remark` untuk memproses semua Markdown, ini akan memberi kami hal-hal seperti membuka semua tautan eksternal secara otomatis di jendela baru, dan menambahkan ID ke header. Ketika kami menulis sesuatu dalam HTML, seperti tautan atau gambar, kami tidak mendapatkan manfaat dari plugin remark secara konsisten seperti yang kami lakukan jika kami menggunakan Markdown standar.
+We use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) as and commits naming convention. Use it while contributing, please.
 
-### Blok kode
+### Always use Markdown when possible
 
-Situs ini menggunakan `react-prisma-renderer` dan `prismjs` untuk menambahkan penggarisbawahan sintaks ke semua kode. Anda dapat melihat daftar lengkap [bahasa yang didukung di sini](https://github.com/PrismJS/prism/tree/master/components). Kami memiliki definisi bahasa khusus untuk `clarity`, bahasa kontrak cerdas kami terletak di sini. Untuk menambahkan bahasa baru, lihat file ini: [`components/codeblock/index.tsx`](#).
+It's possible to write standard HTML when writing in Markdown, but that should be avoided at all costs. We use `remark` to processes all Markdown, giving us things like automatically opening all external links in new windows, and adding IDs to headers. When we write things in HTML, such as a link or image, we don't get the benefit of the remark plugins as consistently as we would if we stuck to standard Markdown.
 
-Untuk menulis blok kode, Anda perlu mengemas kode Anda dalam ` ```bahasa `, dan mengakhiri blok kode Anda dengan ` ``` `. Berikut adalah contoh ` ```clarity `.
+### Code blocks
+
+The site uses `react-prism-renderer` and `prismjs` to add syntax highlighting to all of our code. You can see a full list of [languages supported here](https://github.com/PrismJS/prism/tree/master/components). We have a custom language definition for `clarity`, our smart contracting language located here.
+
+To write a code block, you need to wrap your code in ` ```language `, and end your code block with ` ``` `. Here is an example of ` ```clarity `.
 
 ```clarity
 (define-data-var counter int 0)
@@ -195,11 +207,11 @@ Untuk menulis blok kode, Anda perlu mengemas kode Anda dalam ` ```bahasa `, dan 
 
 #### Penggarisbawahan garis
 
-Anda dapat meneruskan beberapa data tambahan untuk memberi tahu komponen agar menggarisbawahi baris tertentu:
+You can pass some extra data to tell the component to highlight specific lines:
 
 ` ```clarity highlight=1,4-6,13-17,28-32 `
 
-Yang akan membuat:
+Which will render:
 
 ```clarity highlight=1,4-6,13-17,28-32
 (define-constant sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
@@ -240,30 +252,30 @@ Yang akan membuat:
         (ok u1)))
 ```
 
-### Peringatan
+### Alerts
 
-Kami menggunakan plugin remark lain untuk menghasilkan beberapa jenis peringatan sebaris dalam dokumentasi kami.
+We use another remark plugin to generate certain kinds of alerts inline in our documentation.
 
 ```md
-> Ini adalah blockquote standar (non-peringatan).
+> This is a standard blockquote (non-alert).
 
--> Ini adalah peringatan untuk catatan standar.
+-> This will be a standard note style alert.
 
-=> Ini adalah peringatan untuk sukses.
+=> This will be a success style alert.
 
-~> Ini adalah peringatan untuk waspada
+~> This will be a warning style alert
 
-!> Ini adalah peringatan untuk bahaya
+!> This will be a danger style alert
 ```
 
-Yang membuat:
+Which renders:
 
 > Ini adalah blockquote standar (non-peringatan).
 
--> Ini adalah peringatan untuk catatan standar.
+-> This will be a standard note style alert.
 
-=> Ini adalah peringatan untuk sukses.
+=> This will be a success style alert.
 
-~> Ini adalah peringatan untuk waspada
+~> This will be a warning style alert
 
-!> Ini adalah peringatan untuk bahaya
+!> This will be a danger style alert
