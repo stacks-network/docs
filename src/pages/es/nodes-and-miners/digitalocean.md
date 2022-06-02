@@ -9,13 +9,13 @@ tags:
 
 ## Introducción
 
-This is a step by step guide to deploy the [Stacks Blockchain on DigitalOcean](https://marketplace.digitalocean.com/apps/stacks-blockchain). Code is hosted on this [Github repository](https://github.com/stacks-network/stacks-blockchain-docker).
+Esta es una guía paso a paso para desplegar el [Stacks Blockchain en DigitalOcean](https://marketplace.digitalocean.com/apps/stacks-blockchain). El código está alojado en este [repositorio de Github](https://github.com/stacks-network/stacks-blockchain-docker).
 
 ## Pasos
 
 #### Paso 1
 
-Go to the [Stacks Blockchain page](https://marketplace.digitalocean.com/apps/stacks-blockchain) in DigitalOcean's marketplace. Click on `Create Stacks Blockchain Droplet`.
+Vaya a la página [Stacks Blockchain](https://marketplace.digitalocean.com/apps/stacks-blockchain) en el mercado de DigitalOcean. Haga clic en `Create Stacks Blockchain Droplet`.
 
 #### Paso 2
 
@@ -73,7 +73,7 @@ Manual control is also possible via the [manage.sh script](https://github.com/st
 
 Full details on how to use the manage.sh script is [available here](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/README.md#quickstart).
 
-## API Creation
+## Creación de API
 
 In addition to creating a Droplet from the Stacks Blockchain 1-Click App via the control panel, you can also use the [DigitalOcean API](https://digitalocean.com/docs/api).
 

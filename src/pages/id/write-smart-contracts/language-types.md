@@ -10,14 +10,16 @@ images:
 
 Sistem tipe ini berisi:
 
-- `{label-0: value-type-0, label-1: value-type-1, ...}` - suatu grup dari nilai data dengan field yang bernama, aka [_catatan_](https://www.cs.cornell.edu/courses/cs312/2004fa/lectures/lecture3.htm).
-- `(list max-len entry-type)` - daftar panjang maksimum `max-len`, dengan entri bertipe `entry-type`
-- `(respons ok-type err-type)` - objek yang digunakan oleh fungsi publik untuk melakukan perubahan atau pembatalan. Dapat dikembalikan atau digunakan oleh fungsi lain juga, namun, hanya fungsi publik yang memiliki perilaku komit/batalkan.
-- `(optional some-type)` - tipe opsi untuk objek dapat berupa `(some value)` atau `none`
-- `(buff max-len)` := buffer byte dengan panjang maksimum `max-len`.
-- `(string-ascii max-len)` := String ASCII dengan panjang maksimum `max-len`
-- `(string-utf8 max-len)` := UTF-8 string dengan panjang maksimum `max-len` (u"A smiley face emoji \u{1F600} sebagai string utf8 ")
-- `principal` := objek yang mewakili prinsipal (apakah prinsipal kontrak atau prinsipal standar).
-- `bool` := nilai boolean (`true` atau `false`)
-- `int` := bilangan bulat 128-bit yang ditandatangani
-- `uint` := bilangan bulat 128-bit yang tidak ditandatangani
+| Tipe                                                  | Notes                                                                                                                                                                                |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `int`                                                 | signed 128-bit integer                                                                                                                                                               |
+| `uint`                                                | unsigned 128-bit integer                                                                                                                                                             |
+| `bool`                                                | boolean value (`true` or `false`)                                                                                                                                                    |
+| `principal`                                           | object representing a principal (whether a contract principal or standard principal)                                                                                                 |
+| `(buff max-len)`                                      | byte buffer of maximum length `max-len`.                                                                                                                                             |
+| `(string-ascii max-len)`                              | ASCII string of maximum length `max-len`                                                                                                                                             |
+| `(string-utf8 max-len)`                               | UTF-8 string of maximum length `max-len` (u"A smiley face emoji \u{1F600} as a utf8 string")                                                                                        |
+| `(list max-len entry-type)`                           | list of maximum length `max-len`, with entries of type `entry-type`                                                                                                                  |
+| `{label-0: value-type-0, label-1: value-type-1, ...}` | tuple, group of data values with named fields                                                                                                                                        |
+| `(optional some-type)`                                | an option type for objects that can either be `(some value)` or `none`                                                                                                               |
+| `(response ok-type err-type)`                         | object used by public functions to commit their changes or abort. May be returned or used by other functions as well, however, only public functions have the commit/abort behavior. |
