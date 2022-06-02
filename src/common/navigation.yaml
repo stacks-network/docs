@@ -52,6 +52,7 @@ sections:
         pages:
           - path: /overview
           - path: /deploy-tips
+          - path: /nocodeclarity
         sections:
           - title: References
             usePageTitles: true
