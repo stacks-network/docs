@@ -52,7 +52,7 @@ bitcoind -conf=path/to/bitcoin.conf
 
 It may take a few hours for the node to synchronize with the Bitcoin testnet.
 
-## Running a miner
+## Exécution d'un mineur
 
 First, a keychain needs to be generated. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
 
@@ -88,7 +88,7 @@ Once imported, we need to get some testnet BTC to that address. Grab the `btcAdd
 
 Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
-Update the following properties:
+Mettez à jour les propriétés suivantes :
 
 ```toml
 [node]
@@ -193,7 +193,7 @@ We need to get some testnet BTC to that address. Grab the `btcAddress` field, an
 
 Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
-Update the following properties:
+Mettez à jour les propriétés suivantes :
 
 ```toml
 [node]
@@ -260,7 +260,7 @@ We need to get some testnet BTC to that address. Grab the `btcAddress` field, an
 
 Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
-Update the following properties:
+Mettez à jour les propriétés suivantes :
 
 ```toml
 [node]
