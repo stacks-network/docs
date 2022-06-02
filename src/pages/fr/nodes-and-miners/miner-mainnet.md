@@ -13,7 +13,7 @@ images:
 
 ## Introduction
 
-Make sure you've followed the [Running mainnet node](/nodes-and-miners/running-mainnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the mainnet.
+Assurez-vous d'avoir suivi la procédure [Exécution du noeud principal](/nodes-and-miners/running-mainnet-node). Une fois terminé, il ne reste plus que quelques étapes pour faire fonctionner un mineur Proof-of-Burn sur le réseau principal.
 
 If you're interested in mining on the testnet, you can find instructions on how to do that here:
 
@@ -53,7 +53,7 @@ bitcoind -conf=path/to/bitcoin.conf
 
 It may take a few days for the node to synchronize with the Bitcoin mainnet.
 
-## Running a miner
+## Exécution d'un mineur
 
 First, a keychain needs to be generated. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining.
 
@@ -93,7 +93,7 @@ Once imported, we need to get some BTC to that address. You should be able to tr
 
 Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
 
-Update the following properties:
+Mettez à jour les propriétés suivantes :
 
 ```toml
 [node]
@@ -203,7 +203,7 @@ Once imported, we need to get some BTC to that address. You should be able to tr
 
 Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
 
-Update the following properties:
+Mettez à jour les propriétés suivantes :
 
 ```toml
 [node]
@@ -267,7 +267,7 @@ We need to get some BTC to that address. You should be able to transfer BTC to t
 
 Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/mainnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/mainnet-miner-conf.toml).
 
-Update the following properties:
+Mettez à jour les propriétés suivantes :
 
 ```toml
 [node]
