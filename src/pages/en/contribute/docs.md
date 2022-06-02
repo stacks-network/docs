@@ -9,11 +9,18 @@ images:
 
 ## Introduction
 
-Welcome. Thank you for your interest in contributing and helping make these docs as good as they can be. This page outlines how this site is built, its general structure, getting it running locally, and some helpful tips for using all of its features.
+Welcome. Thank you for your interest in contributing and helping make these docs as good as they can be.
 
-These steps should only be followed to make changes on the general structure of the site and documents written in English. **To make changes in other languages**, please refer to [translations](/contribute/translations) instead. This means that in the folder /src/pages/ you should any make changes in /src/pages/en, as changes in any other locale (/src/pages/es or /src/pages/fr for example) are overwritten.
+They are two different ways to colaborate to the docs:
 
-## Next.js, MDX, Markdown
+- Easiest way: Simply [add an issue on github](https://github.com/stacks-network/docs/issues/new) and enter there the next article you will like to add or modify. The only requirement here is to have a registered account on GitHub.
+- Standard way: Follow the [steps below](#getting-started) to clone this repo and make changes locally. This requires more technical skills.
+
+This page outlines how this site is built, its general structure, getting it running locally, and some helpful tips for using all of its features.
+
+These steps should only be followed to make changes on the general structure of the site and documents written in English. **To make changes in other languages**, please refer to [translations](/contribute/translations) instead. This means that in the folder `/src/pages/` you should an make changes in `/src/pages/en`, as changes in any other locale (`/src/pages/es` or `/src/pages/fr` for example) are overwritten.
+
+### Next.js, MDX, Markdown
 
 This docs site is built with [Next.js](https://github.com/vercel/next.js) and uses something called [MDX](https://mdxjs.com/).
 Next.js is a framework built on top of React, and MDX is a tool that enables writing React code (JSX) within standard
@@ -34,12 +41,11 @@ To get started you have two options:
 
 The web IDE gitpod provides an environment to contibute directly from within your browser.
 
-To get started, you only have to a github account and open the link
-[https://gitpod.io/#https://github.com/stacks-network/docs](https://gitpod.io/#https://github.com/stacks-network/docs) in your browser.
+To get started, you only have to a github account and open the link [https://gitpod.io/#https://github.com/stacks-network/docs](https://gitpod.io/#https://github.com/stacks-network/docs) in your browser.
 
 ### Working Locally
 
-When workin locally with the site, a few things are needed:
+When working locally with the site, a few things are needed:
 
 - Familiarity with `git`, GitHub, and the command line. [Read more here.](https://docs.github.com/en/github/getting-started-with-github/quickstart)
 - [`node` + `npm`,](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [`yarn` installed](https://yarnpkg.com/getting-started/install) on your machine.
@@ -66,15 +72,14 @@ This is a generalized workflow for contributing to these docs:
 
 ### Running the site locally
 
-Once you have the project on your computer and the dependencies have been installed via the `yarn` command, you can run
-`yarn dev` and it should give you a message such as:
+Once you have the project on your computer and the dependencies have been installed via the `yarn` command, you can run `yarn dev` and it should give you a message such as:
 
 ```bash
 yarn dev
 ```
 
 ```bash
-yarn run v1.22.17
+yarn run v1.22.19
 $ yarn clean:build-files && next dev
 $ rimraf .next && rimraf .cache
 ready - started server on 0.0.0.0:3000, url: http://localhost:3000
@@ -93,27 +98,25 @@ The docs site will be accessible at this url: [`http://localhost:3000`](http://l
 
 ### Pages
 
-If you are interested in only adding new documentation content to the site, the files that will be important to you are
-located within `./src/pages/*`:
+If you are interested in only adding new documentation content to the site, the files that will be important to you are located within `./src/pages/en/*`:
 
-```bash showLineNumbers highlight=11
+```bash showLineNumbers highlight=12
 stacks_docs/
   .github/
+  .vale
   lib/
-  node_modules/
   public/
   src/
     _data/
-    _includes/
     common/
     components/
+    includes/
     pages/
+      en/
   types/
 ```
 
-The routing for this site is file based, meaning if you created a folder within `/pages` named `clarity` and a then file
-named `overview.md`, you would be able to navigate to `http://localhost:3000/clarity/overview` and you would see whatever
-content is in that markdown file.
+The routing for this site is file based, meaning if you created a folder within `/pages/en` named `clarity` and in it a file named `overview.md`, you would be able to navigate to `http://localhost:3000/clarity/overview` and you would see whatever content is in that markdown file.
 
 ### Frontmatter
 
@@ -153,40 +156,41 @@ sections:
           - path: /accounts
           - path: /transactions
           - path: /network
+          - path: /microblocks
           - path: /stacking
-          - path: /command-line-interface
-          - path: /local-development
           - path: /technical-specs
           - path: /stacks-blockchain-api
         sections:
-          - title: Tutorials
+          - title:  Clarity Development Software
+            usePageTitles: true
             pages:
-              - path: /managing-accounts
-              - path: /sending-tokens
-              - path: /running-testnet-node
-              - path: /integrate-stacking
-              - path: /stacking-using-CLI
+              - path: /software
 ```
 
-Adding a new route requires to add a new `path`.
+Adding a new route requires to add a new `path` line.
 
 The script will process that file and pull out the title from the frontmatter of the document.
 
 ### Non-standard pages
 
-There are a few pages within these docs that are non-standard markdown pages. This means they are using some kind of external data as their source,
-such as the [Clarity Reference page](/write-smart-contracts/language-overview), or the [Stacks CLI page](https://docs.hiro.so/references/stacks-cli). These pages are using a function of Next.js called
-[`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) which allows us to
-fetch external data at runtime and use it in some way within our pages.
+There are a few pages within these docs that are non-standard markdown pages. This means they are using some kind of external data as their source, such as the [Clarity Reference page](/write-smart-contracts/language-overview), or the [Stacks CLI page](https://docs.hiro.so/references/stacks-cli). These pages are using a function of Next.js called [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) which allows us to fetch external data at runtime and use it in some way within our pages.
 
 ## Tips and tricks
 
-### Style checks
+### Code formatter
 
-We use the [Google Developer documentation style guides](https://developers.google.com/style/) in this project. Make sure to install [vale](https://github.com/errata-ai/vale) and run the style checks before you create a PR:
+We use [Prettier](https://prettier.io/docs/en/install.html) to check the format the code.
+
+You can install prettier with the following command:
 
 ```bash
-yarn check:style
+npm install --save-dev --save-exact prettier
+```
+
+And execute prettier with the following command:
+
+```bash
+npx prettier --write mynewfiletocheck.md
 ```
 
 ### Use Conventional Commits
@@ -200,7 +204,7 @@ When we write things in HTML, such as a link or image, we don't get the benefit 
 
 ### Code blocks
 
-The site uses `react-prism-renderer` and `prismjs` to add syntax highlighting to all of our code. You can see a full list of [languages supported here](https://github.com/PrismJS/prism/tree/master/components). We have a custom language definition for `clarity`, our smart contracting language located here. To add a new language, see this file: [`components/codeblock/index.tsx`](#).
+The site uses `react-prism-renderer` and `prismjs` to add syntax highlighting to all of our code. You can see a full list of [languages supported here](https://github.com/PrismJS/prism/tree/master/components). We have a custom language definition for `clarity`, our smart contracting language located here.
 
 To write a code block, you need to wrap your code in ` ```language `, and end your code block with ` ``` `. Here is an example of ` ```clarity `.
 
