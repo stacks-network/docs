@@ -1,9 +1,9 @@
 ---
 title: FAQ
-description: Frequently Asked Questions
+description: Preguntas frecuentes
 ---
 
-## Why is my transfer still pending?
+## ¿Por qué mi transferencia sigue pendiente?
 
 Commonly it's because your fee is too low or your [nonce](#what-is-nonce) is incorrect.
 
@@ -13,7 +13,7 @@ There is also this [script](https://github.com/citycoins/scripts/blob/main/getne
 
 There is also this [script](https://github.com/citycoins/scripts/blob/main/gettxstatus.js) to track a pending transaction until it reaches a final status.
 
-## What is Nonce?
+## ¿Qué es Nonce?
 
 A nonce is used to make sure that every transaction goes in right order. Nonce starts at 0, so the very first transaction from an address should set to nonce=0. You can find the nonce of your wallet address by searching the address in any [Stacks blockchain explorer](https://explorer.stacks.co/). You can also user `$ stx balance <address>`.
 
