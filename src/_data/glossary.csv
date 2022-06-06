@@ -2,8 +2,7 @@ Term,Definition
 App Review,An incentive mechanism for application developers in the early stage (first four years) of the ecosystem and helps with bootstrapping the two-sided market.
 Atlas,A peer network provide a global index for discovery.
 Bitcoin (BTC) address,<p>A string of letters and numbers.</p> <p><code>3E53XjqK4Cxt71BGeP2VhpcotM8LZ853C8</code></p> <p>Sharing this address allows  anyone to send Bitcoin to the address.</p>
-block,"A discrete group of records written to a blockchain that can effectively be identified and referenced by the
-use of headers that contain a digital fingerprint of the records each block contains."
+block,"A discrete group of records written to a blockchain that can effectively be identified and referenced by the use of headers that contain a digital fingerprint of the records each block contains."
 blockchain,A database created and shared by the members of a peer-to-peer computer network which each member of that network can independently trust due to the rules governing the database’s creation. A blockchain can therefore be used to replace centralized databases.
 Blockchain Name System (BNS),"Replacement for DNS. More info <a href="/references/bns-contract">here</a>"
 Blockstack Browser,A deprecated application for accessing identity and storage.
