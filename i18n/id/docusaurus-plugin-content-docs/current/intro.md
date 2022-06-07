@@ -1,9 +1,9 @@
 ---
-sidebar_label: "Inicio"
+sidebar_label: "Beranda"
 sidebar_position: 1
 ---
 
-# Stacks Docs Intro
+# Stacks Docs Introduction
 
 Welcome to the community driven official Stacks Documentation.
 
