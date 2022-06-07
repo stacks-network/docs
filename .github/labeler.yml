@@ -1,12 +1,13 @@
-# Add 'traslations-es' to any change in /src/pages/ folder or subfolders except for EN files
+# Add labels when specific files are changed
 translations:
-  - any: ['src/pages/**/*', '!src/pages/en/**/*']
+  - any: ['i18n/**/*']
 
 documentation:
-  - any: ['src/pages/en/**/*.md']
+  - any: ['docs/**/*.md', 'docs/**/*.mdx']
 
 dependencies:
   - 'package.json'
+  - 'package-lock-json'
 
-navigation:
-  - 'src/navigation.yaml'
+docusaurus-config:
+  - 'docusaurus.config.js'
