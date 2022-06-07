@@ -1,3 +1,5 @@
+# This only works for external links
+# (local links are already checked in normal build)
 name: Check Markdown links
 
 on: 
@@ -19,5 +21,5 @@ jobs:
       uses: gaurav-nelson/github-action-markdown-link-check@v1
       with:
         use-verbose-mode: 'yes'
-        folder-path: 'src/pages/en/'
-        config-file: '.github/workflows/.mlc_config.json'
+        folder-path: 'docs/'
+        config-file: '.github/workflows/.markdown-link-check_config.json'

@@ -1,0 +1,23 @@
+  pull_request:
+    branches: [master]
+
+jobs:
+  code_quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.5.0
+        with:
+          access_token: ${{ github.token }}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set Node Version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install deps
+        run: yarn --frozen-lockfile
+      - name: Lint
+        run: yarn lint
+      - name: Typecheck
+        run: yarn typecheck
