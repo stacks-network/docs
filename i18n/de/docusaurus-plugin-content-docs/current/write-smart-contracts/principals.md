@@ -151,6 +151,9 @@ The second type of check is more restrictive than the first check, and is helpfu
                (ok false)))))
 ;;
 ;; Authorize a new pilot.
+               (ok false)))))
+;;
+;; Authorize a new pilot.
 ;;
 ;;  here we want to ensure that this function
 ;;   was called _directly_ by the user by
