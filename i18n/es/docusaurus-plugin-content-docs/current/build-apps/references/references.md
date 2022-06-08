@@ -1,6 +1,6 @@
 ---
-title: References
-sidebar_label: References
+title: Referencias
+sidebar_label: Referencias
 ---
 
 [Autenticación](./authentication)
