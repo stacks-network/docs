@@ -604,8 +604,8 @@ integer.
 #### description:
 The `sha512/256` function computes `SHA512/256(x)` (the SHA512 algorithm with the 512/256 initialization vector, truncated
 to 256 bits) of the inputted value.
-If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
-integer.
+If an integer (128 bit)
+is supplied the hash is computed over the little-endian representation of the integer.
 #### example: 
 ```clarity
 (sha512/256 1) ;; Returns 0x515a7e92e7c60522db968d81ff70b80818fc17aeabbec36baf0dda2812e94a86```
