@@ -14,9 +14,10 @@ If you are interested in contributing to the site and making changes, please ref
 
 If you are interested in contributing to the tranlations of this site to multiple languages, please refer to the [translations guide](https://docs.stacks.co/contribute/translations)
 
-This website uses [Docusaurus 2](https://docusaurus.io/). A local version can be run by cloning this repo and typing the following command.
+This website uses [Docusaurus 2](https://docusaurus.io/). A local version can be run by cloning this repo and typing the following commands.
 
 ```
+npm install
 npx docusaurus start
 ```
 
