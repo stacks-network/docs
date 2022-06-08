@@ -157,7 +157,7 @@ Make sure are [running a node](running-mainnet-node) and [running bitcoind local
 
 ### Generate keychain and get mainnet tokens in Windows
 
-To setup the miner, first we need to generate a keychain. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining.
+To setup the miner, first we need to generate a keychain. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining. First, a keychain needs to be generated. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining.
 
 To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `make_keychain` command. To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command.
 
@@ -267,7 +267,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain 2>/dev/null
 ```
 
-We need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
+We need to get some BTC to that address. We need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
 ### Update configuration file
 
@@ -347,7 +347,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain 2>/dev/null
 ```
 
-We need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
+We need to get some BTC to that address. We need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
 ### Install the chart and run the miner
 
