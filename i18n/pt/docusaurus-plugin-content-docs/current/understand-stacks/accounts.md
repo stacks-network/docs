@@ -14,16 +14,14 @@ If you want to jump right in to generate and query a new account, try this tutor
 
 Assets cannot leave an account without an action from the account owner. All changes to assets (and the balances of the account) require a corresponding transaction.
 
-:::tip
-The transaction type doesn't need to be a token transfer - contract deploy and contract call transactions can change the balances of an account
+:::tip The transaction type doesn't need to be a token transfer - contract deploy and contract call transactions can change the balances of an account
 :::
 
 ## Creation
 
 An account is generated from a 24-word mnemonic phrase. This is often referred to as the **seed phrase**. The seed phrase provides access to Stacks 2.0 accounts.
 
-:::danger
-If the seed phrase is lost, access to the associated account cannot be restored. No person or organization, including Blockstack, can recover a lost seed phrase.
+:::danger If the seed phrase is lost, access to the associated account cannot be restored. No person or organization, including Blockstack, can recover a lost seed phrase.
 :::
 
 The easiest way to generate a new Stacks 2.0 account is to use the [Stacks CLI](https://github.com/hirosystems/stacks.js/tree/master/packages/cli):
@@ -138,8 +136,7 @@ Sample response:
 }
 ```
 
-:::tip
-The balance string represents an unsigned 128-bit integer (big-endian) in hex encoding
+:::tip The balance string represents an unsigned 128-bit integer (big-endian) in hex encoding
 :::
 
 ### Get all token balances
