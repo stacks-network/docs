@@ -295,7 +295,7 @@ docker logs -f stacks_miner
 
 ## Opsional: Berjalan di Kubernetes dengan Helm
 
-Selain itu, Anda juga dapat menjalankan noda testnet di klaster Kubernetes menggunakan [bagan Helm blockchain-stacks](https://github.com/stacks-network/stacks-blockchain/tree/master/deployment/helm/stacks- blockchain).
+Selain itu, Anda juga dapat menjalankan noda testnet di klaster Kubernetes menggunakan \[bagan Helm blockchain-stacks\](https://github.com/stacks-network/stacks-blockchain/tree/master/deployment/helm/stacks- blockchain).
 
 Pastikan Anda telah menginstal prasyarat berikut di mesin Anda:
 
