@@ -32,7 +32,7 @@ Gaia menyimpan data sebagai penyimpanan nilai kunci sederhana. Saat identitas di
 
 Blockchain Stacks hanya menyimpan data identitas. Data yang dibuat oleh tindakan dari identitas yang disimpan dalam Sistem Penyimpanan Gaia. Setiap pengguna memiliki data profil. Saat pengguna berinteraksi dengan dApp yang terdesentralisasi, aplikasi tersebut menyimpan data aplikasi atas nama pengguna. Karena Gaia menyimpan data pengguna dan aplikasi dari blockchain, Stacks DApp biasanya lebih berkinerja daripada DApps yang dibuat di blockchain lain.
 
-## Kontrol pengguna atau cara Gaia didesentralisasi
+## Kontrol pengguna atau cara Gaia didesentralisasi?
 
 Hub Gaia berjalan sebagai layanan yang menulis ke penyimpanan data. Penyimpanan itu sendiri adalah penyimpanan nilai kunci sederhana. Layanan hub menulis ke penyimpanan data dengan meminta token autentikasi yang valid dari pemohon. Biasanya, layanan hub berjalan pada sumber daya komputasi dan penyimpanan itu sendiri pada sumber daya penyimpanan khusus yang terpisah. Biasanya, kedua sumber daya milik penyedia komputasi cloud yang sama.
 
