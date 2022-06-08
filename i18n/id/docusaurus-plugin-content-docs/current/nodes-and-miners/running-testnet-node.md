@@ -121,7 +121,6 @@ Jika kejadian sedang berjalan, Anda akan menerima keluaran terminal yang mirip d
   "unanchored_seq": 0,
   "exit_at_block_height": null
 }
-
 ```
 
 ## Menghentikan noda testnet
