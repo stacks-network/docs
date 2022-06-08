@@ -5,9 +5,9 @@ sidebar_position: 1
 
 # Stacks Docs Intro
 
-Welcome to the community driven official Stacks Documentation.
+Bienvenido a la documentación oficial de Stacks impulsada por la comunidad.
 
-Learn about Stacks mining, the STX token, and the Clarity smart contract language.
+Aprende sobre el minado de Stacks, el token STX y el lenguaje de programación de contratos inteligentes, Clarity.
 
 ![](/img/Bitcoinet-L_2.svg)
 
