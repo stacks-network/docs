@@ -11,9 +11,9 @@ description: Launch apps for the Stacks blockchain through no code platforms lik
 
 ## Stacks Plug-In on bubble
 
-The [Stacks-No-Code-Plugin](https://github.com/nocodeclarity/Stacks-No-Code-Plugin) released in May 2022 and it can easily be installed on Bubble with a few clicks allowing users to deploy applications with no coding knowledge. [Bubble](https://bubble.io/blog/explaining-bubble-to-investors/) is the first No Code platform that the Stacks plugin launched on. More platforms are in the roadmap of NoCodeClarity, founded by Christopher Perceptions and Sergio Gongora. The Stacks plugin was created through the support of the Stacks Foundation via a grant in January 2022 and NoCodeClarity was awarded a $100,000 grant in June 2022 to expand the roadmap.
+The [Stacks-No-Code-Plugin](https://github.com/nocodeclarity/Stacks-No-Code-Plugin) released in May 2022 and it can easily be installed on Bubble with a few clicks allowing users to deploy applications with no coding knowledge. [Bubble](https://bubble.io/blog/explaining-bubble-to-investors/) is the first No Code platform that the Stacks plugin launched on. More platforms are in the roadmap of NoCodeClarity, founded by Christopher Perceptions and Sergio Gongora. The Stacks plugin was created through the support of the Stacks Foundation via a grant in January 2022 and NoCodeClarity was awarded a $100,000 grant in June 2022 to expand the roadmap. [Bubble](https://bubble.io/blog/explaining-bubble-to-investors/) is the first No Code platform that the Stacks plugin launched on. More platforms are in the roadmap of NoCodeClarity, founded by Christopher Perceptions and Sergio Gongora. The Stacks plugin was created through the support of the Stacks Foundation via a grant in January 2022 and NoCodeClarity was awarded a $100,000 grant in June 2022 to expand the roadmap.
 
-Additional [instructions](https://s3.amazonaws.com/appforest_uf/f1654202471526x991633667675927800/Instructions%20v2.docx.pdf) are also available. Tutorials and step by step guides will be released soon.
+Additional [instructions](https://s3.amazonaws.com/appforest_uf/f1654202471526x991633667675927800/Instructions%20v2.docx.pdf) are also available. Tutorials and step by step guides will be released soon. Tutorials and step by step guides will be released soon.
 
 ## Demo page
 

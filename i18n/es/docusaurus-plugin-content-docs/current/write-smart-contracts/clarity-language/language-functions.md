@@ -130,8 +130,7 @@ Tries to convert the `int` argument to a `uint`. Will cause a runtime error and 
 #### input: `int, int | uint, uint`
 #### output: `int | uint`
 #### signature: `(mod i1 i2)`
-#### description:
-Returns the integer remainder from integer dividing `i1` by `i2`. In the event of a division by zero, throws a runtime error.
+#### description: Returns the integer remainder from integer dividing `i1` by `i2`. In the event of a division by zero, throws a runtime error.
 #### example: 
 ```clarity
 (mod 2 3) ;; Returns 2
@@ -259,8 +258,7 @@ The `if` function admits a boolean argument and two expressions which must retur
 #### input: `((name1 AnyType) (name2 AnyType) ...), AnyType, ... A`
 #### output: `A`
 #### signature: `(let ((name1 expr1) (name2 expr2) ...) expr-body1 expr-body2 ... expr-body-last)`
-#### description:
-The `let` function accepts a list of `variable name` and `expression` pairs,
+#### description: The `let` function accepts a list of `variable name` and `expression` pairs,
 evaluating each expression and _binding_ it to the corresponding variable name.
 `let` bindings are sequential: when a `let` binding is evaluated, it may refer to prior binding.
 The _context_ created by this set of bindings is used for evaluating its body expressions.
@@ -275,8 +273,7 @@ Note: intermediary statements returning a response type must be checked`
 #### input: `Function(A, B, ..., N) -> X, sequence_A, sequence_B, ..., sequence_N`
 #### output: `(list X)`
 #### signature: `(map func sequence_A sequence_B ... sequence_N)`
-#### description:
-The `map` function applies the function `func` to each corresponding element of the input sequences,
+#### description: The `map` function applies the function `func` to each corresponding element of the input sequences,
 and outputs a _list_ of the same type containing the outputs from those function applications.
 Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
 for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
@@ -331,8 +328,7 @@ The `append` function takes a list and another value with the same entry type, a
 #### input: `sequence_A, sequence_A`
 #### output: `sequence_A`
 #### signature: `(concat sequence1 sequence2)`
-#### description:
-The `concat` function takes two sequences of the same type,
+#### description: The `concat` function takes two sequences of the same type,
 and returns a concatenated sequence of the same type, with the resulting
 sequence_len = sequence1_len + sequence2_len.
 Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
@@ -420,8 +416,7 @@ The `list` function constructs a list composed of the inputted values. Each supp
 #### input: `VarName`
 #### output: `A`
 #### signature: `(var-get var-name)`
-#### description:
-The `var-get` function looks up and returns an entry from a contract's data map.
+#### description: The `var-get` function looks up and returns an entry from a contract's data map.
 The value is looked up using `var-name`.
 #### example: 
 ```clarity
@@ -432,8 +427,7 @@ The value is looked up using `var-name`.
 #### input: `VarName, AnyType`
 #### output: `bool`
 #### signature: `(var-set var-name expr1)`
-#### description:
-The `var-set` function sets the value associated with the input variable to the
+#### description: The `var-set` function sets the value associated with the input variable to the
 inputted value. The function always returns `true`.
 #### example: 
 ```clarity
@@ -523,8 +517,7 @@ There is a shorthand using curly brackets of the form {key0: expr0, key1: expr, 
 #### input: `KeyName, (tuple) | (optional (tuple))`
 #### output: `A`
 #### signature: `(get key-name tuple)`
-#### description:
-The `get` function fetches the value associated with a given key from the supplied typed tuple.
+#### description: The `get` function fetches the value associated with a given key from the supplied typed tuple.
 If an `Optional` value is supplied as the inputted tuple, `get` returns an `Optional` type of the specified key in
 the tuple. If the supplied option is a `(none)` option, get returns `(none)`.
 #### example: 
@@ -553,8 +546,7 @@ The `merge` function returns a new tuple with the combined fields, without mutat
 #### input: `AnyType, ... A`
 #### output: `A`
 #### signature: `(begin expr1 expr2 expr3 ... expr-last)`
-#### description:
-The `begin` function evaluates each of its input expressions, returning the
+#### description: The `begin` function evaluates each of its input expressions, returning the
 return value of the last such expression.
 Note: intermediary statements returning a response type must be checked.
 #### example: 
@@ -565,8 +557,7 @@ Note: intermediary statements returning a response type must be checked.
 #### input: `buff|uint|int`
 #### output: `(buff 20)`
 #### signature: `(hash160 value)`
-#### description:
-The `hash160` function computes `RIPEMD160(SHA256(x))` of the inputted value.
+#### description: The `hash160` function computes `RIPEMD160(SHA256(x))` of the inputted value.
 If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
 integer.
 #### example: 
@@ -577,8 +568,7 @@ integer.
 #### input: `buff|uint|int`
 #### output: `(buff 32)`
 #### signature: `(sha256 value)`
-#### description:
-The `sha256` function computes `SHA256(x)` of the inputted value.
+#### description: The `sha256` function computes `SHA256(x)` of the inputted value.
 If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
 integer.
 #### example: 
@@ -589,8 +579,7 @@ integer.
 #### input: `buff|uint|int`
 #### output: `(buff 64)`
 #### signature: `(sha512 value)`
-#### description:
-The `sha512` function computes `SHA512(x)` of the inputted value.
+#### description: The `sha512` function computes `SHA512(x)` of the inputted value.
 If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
 integer.
 #### example: 
@@ -601,8 +590,7 @@ integer.
 #### input: `buff|uint|int`
 #### output: `(buff 32)`
 #### signature: `(sha512/256 value)`
-#### description:
-The `sha512/256` function computes `SHA512/256(x)` (the SHA512 algorithm with the 512/256 initialization vector, truncated
+#### description: The `sha512/256` function computes `SHA512/256(x)` (the SHA512 algorithm with the 512/256 initialization vector, truncated
 to 256 bits) of the inputted value.
 If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
 integer.
@@ -614,8 +602,7 @@ integer.
 #### input: `buff|uint|int`
 #### output: `(buff 32)`
 #### signature: `(keccak256 value)`
-#### description:
-The `keccak256` function computes `KECCAK256(value)` of the inputted value.
+#### description: The `keccak256` function computes `KECCAK256(value)` of the inputted value.
 Note that this differs from the `NIST SHA-3` (that is, FIPS 202) standard. If an integer (128 bit)
 is supplied the hash is computed over the little-endian representation of the integer.
 #### example: 
@@ -663,8 +650,7 @@ The signature includes 64 bytes plus an optional additional recovery id (00..03)
 #### input: `A`
 #### output: `A`
 #### signature: `(print expr)`
-#### description:
-The `print` function evaluates and returns its input expression. On Stacks Core
+#### description: The `print` function evaluates and returns its input expression. On Stacks Core
 nodes configured for development (as opposed to production mining nodes), this function prints the resulting value to `STDOUT` (standard output).
 #### example: 
 ```clarity
@@ -673,9 +659,7 @@ nodes configured for development (as opposed to production mining nodes), this f
 ### contract-call?
 #### input: `ContractName, PublicFunctionName, Arg0, ...`
 #### output: `(response A B)`
-#### signature: `(contract-call? .contract-name function-name arg0 arg1 ...)`
-#### description:
-The `contract-call?` function executes the given public function of the given contract.
+#### signature: `(contract-call? The `contract-call?` function executes the given public function of the given contract.
 You _may not_ use this function to call a public function defined in the current contract. If the public
 function returns _err_, any database changes resulting from calling `contract-call?` are aborted.
 If the function returns _ok_, database changes occurred.
@@ -700,8 +684,7 @@ principal and executes `expr` with that context. It returns the resulting value 
 #### input: `Trait`
 #### output: `principal`
 #### signature: `(contract-of .contract-name)`
-#### description:
-The `contract-of` function returns the principal of the contract implementing the trait.
+#### description: The `contract-of` function returns the principal of the contract implementing the trait.
 #### example: 
 ```clarity
 
@@ -783,8 +766,7 @@ The `err` function constructs a response type from the input value. Use `err` fo
 #### input: `A`
 #### output: `(response A B)`
 #### signature: `(ok value)`
-#### description:
-The `ok` function constructs a response type from the input value. Use `ok` for
+#### description: The `ok` function constructs a response type from the input value. Use `ok` for
 creating return values in public functions. An _ok_ value indicates that any database changes during
 the processing of the function should materialize.
 #### example: 
@@ -795,8 +777,7 @@ the processing of the function should materialize.
 #### input: `A`
 #### output: `(optional A)`
 #### signature: `(some value)`
-#### description:
-The `some` function constructs a `optional` type from the input value.
+#### description: The `some` function constructs a `optional` type from the input value.
 #### example: 
 ```clarity
 (some 1) ;; Returns (some 1)
@@ -806,8 +787,7 @@ The `some` function constructs a `optional` type from the input value.
 #### input: `A, (optional A)`
 #### output: `A`
 #### signature: `(default-to default-value option-value)`
-#### description:
-The `default-to` function attempts to 'unpack' the second argument: if the argument is
+#### description: The `default-to` function attempts to 'unpack' the second argument: if the argument is
 a `(some ...)` option, it returns the inner value of the option. If the second argument is a `(none)` value,
 `default-to` it returns the value of `default-value`.
 #### example: 
@@ -899,8 +879,7 @@ The `unwrap-err` function attempts to 'unpack' the first argument: if the argume
 #### output: `C`
 #### signature: `(match opt-input some-binding-name some-branch none-branch) |
 (match-resp input ok-binding-name ok-branch err-binding-name err-branch)`
-#### description:
-The `match` function is used to test and destructure optional and response types.
+#### description: The `match` function is used to test and destructure optional and response types.
 
 If the `input` is an optional, it tests whether the provided
 `input` is a `some` or `none` option, and evaluates `some-branch` or
@@ -1059,7 +1038,7 @@ The `func` argument must be a literal function name.
 #### output: `(optional principal)`
 #### signature: `(nft-get-owner? asset-class asset-identifier)`
 #### description:
-`nft-get-owner?` returns the owner of an asset, identified by `asset-identifier`, or `none` if the asset does not exist. The asset type must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
+`nft-get-owner?` returns the owner of an asset, identified by `asset-identifier`, or `none` if the asset does not exist. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
 #### example:
 ```clarity
 
@@ -1113,7 +1092,7 @@ This function returns (ok true) if the transfer is successful. In the event of a
 #### output: `(response bool uint)`
 #### signature: `(nft-mint? asset-class asset-identifier recipient)`
 #### description:
-`nft-mint?` is used to instantiate an asset and set that asset's owner to the `recipient` principal. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
+`nft-burn?` is used to burn an asset and remove that asset's owner from the `recipient` principal. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
 
 If an asset identified by `asset-identifier` _already exists_, this function will return an error with the following error code:
 

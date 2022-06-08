@@ -1,6 +1,6 @@
 ---
 title: Linux
-description: Steps to setup a GAIA hub on a Linux server (fresh install). This example is using Debian, but should work on any Linux distribution. It uses docker compose in the backgroud.
+description: Steps to setup a GAIA hub on a Linux server (fresh install). This example is using Debian, but should work on any Linux distribution. It uses docker compose in the backgroud. This example is using Debian, but should work on any Linux distribution. It uses docker compose in the backgroud.
 tags:
   - tutorial
   - gaia
@@ -13,14 +13,14 @@ This configuration will setup the following 4 docker containers:
 - Gaia admin on TCP port 8009.
 - Gaia reader on TCP port 8008
 
-**1. Update the system and install the dependencies and software we will use to test:**
+**1. 1. Update the system and install the dependencies and software we will use to test:**
 
 ```bash
 apt update && apt upgrade -y && apt install -y git vim gnupg jq
 ```
 
-**2. Install [docker](https://docs.docker.com/engine/install/debian/) and [docker-compose](https://docs.docker.com/compose/cli-command/#install-on-linux)** in your OS.  
-For our example we install _docker_ with:
+**2. **2. Install [docker](https://docs.docker.com/engine/install/debian/) and [docker-compose](https://docs.docker.com/compose/cli-command/#install-on-linux)** in your OS.  
+For our example we install _docker_ with:</p>
 
 ```bash
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -42,14 +42,14 @@ curl -SL https://github.com/docker/compose/releases/download/${VERSION_DC}/docke
 chmod +x ${DESTINATION_DC}/docker-compose
 ```
 
-**3. Clone the GAIA repository** and enter it's docker directory.
+**3. **3. Clone the GAIA repository** and enter it's docker directory.</p>
 
 ```bash
 git clone https://github.com/stacks-network/gaia.git && cd gaia/deploy/docker
 ```
 
-**4. Copy and edit appropiate .env file**.  
-In the folder `./deploy/docker/` they are different sample files for different configurations like using aws, azure or disk among others. In this example we will store the data localy so we will copy the _disk_ file and update the domain and email fields. Please change `gaia.site.com` and `gaiarocks@mydomain.com` accordingly. Note you need both for the SSL certificate to be created correctly.
+**4. **4. Copy and edit appropiate .env file**.  
+In the folder `./deploy/docker/` they are different sample files for different configurations like using aws, azure or disk among others. In this example we will store the data localy so we will copy the _disk_ file and update the domain and email fields. Please change `gaia.site.com` and `gaiarocks@mydomain.com` accordingly. Note you need both for the SSL certificate to be created correctly. In this example we will store the data localy so we will copy the _disk_ file and update the domain and email fields. Please change `gaia.site.com` and `gaiarocks@mydomain.com` accordingly. Note you need both for the SSL certificate to be created correctly.</p>
 
 ```bash
 export MYGAIADOMAIN=gaia.site.com
@@ -60,7 +60,7 @@ sed -i 's/my-email@example.com/'"$MYGAIAEMAIL"'/g' disk.env
 
 ```
 
-**5. Start GAIA HUB service**
+**5. 5. Start GAIA HUB service**
 
 To start GAIA HUB
 
@@ -80,7 +80,7 @@ To view GAIA HUB status
 ./gaiahub.sh status
 ```
 
-**6. Verify server works locally** with the following command:
+**6. **6. Verify server works locally** with the following command:</p>
 
 ```bash
 curl -sk http://localhost/hub_info | jq
@@ -97,7 +97,7 @@ A correct result should look similar to this:
     }
 ```
 
-**7. Test your GAIA HUB** Running `gaia_test.js` will test your GAIA Hub, by trying to connect to it, uploading a file and downloading it again.
+**7. **7. Test your GAIA HUB** Running `gaia_test.js` will test your GAIA Hub, by trying to connect to it, uploading a file and downloading it again.</p>
 
 First install all required dependencies with:
 

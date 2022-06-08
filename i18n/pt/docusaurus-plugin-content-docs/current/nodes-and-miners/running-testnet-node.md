@@ -9,8 +9,7 @@ tags:
 
 This procedure demonstrates how to run a local testnet node using Docker images.
 
-:::warning
-This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on Windows.
+:::warning This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on Windows.
 :::
 
 ## Prerequisites
@@ -77,8 +76,7 @@ docker ps --filter name=stacks-blockchain
 
 ## Step 3: verifying the services
 
-:::info
-The initial burnchain header sync can take several minutes, until this is done the following commands will not work
+:::info The initial burnchain header sync can take several minutes, until this is done the following commands will not work
 :::
 
 To verify the [`stacks-blockchain`][] burnchain header sync progress:

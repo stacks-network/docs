@@ -14,7 +14,7 @@ Detailed list of all functions for the Clarity language.
 #### output: `int | uint`
 #### signature: `(+ i1 i2...)`
 #### description:
-Adds a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.
+Adds a variable number of integer inputs and returns the result. Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error.
 #### example:
 ```clarity
 (+ 1 2 3) ;; Returns 6
@@ -25,7 +25,7 @@ Adds a variable number of integer inputs and returns the result. In the event of
 #### output: `int | uint`
 #### signature: `(- i1 i2...)`
 #### description:
-Subtracts a variable number of integer inputs and returns the result. In the event of an _underflow_, throws a runtime error.
+Subtracts a variable number of integer inputs and returns the result. Subtracts a variable number of integer inputs and returns the result. In the event of an _underflow_, throws a runtime error.
 #### example:
 ```clarity
 (- 2 1 1) ;; Returns 0
@@ -37,7 +37,7 @@ Subtracts a variable number of integer inputs and returns the result. In the eve
 #### output: `int | uint`
 #### signature: `(* i1 i2...)`
 #### description:
-Multiplies a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.
+Multiplies a variable number of integer inputs and returns the result. Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error.
 #### example:
 ```clarity
 (* 2 3) ;; Returns 6
@@ -50,7 +50,7 @@ Multiplies a variable number of integer inputs and returns the result. In the ev
 #### output: `int | uint`
 #### signature: `(/ i1 i2...)`
 #### description:
-Integer divides a variable number of integer inputs and returns the result. In the event of division by zero, throws a runtime error.
+Integer divides a variable number of integer inputs and returns the result. In the event of division by zero, throws a runtime error. In the event of division by zero, throws a runtime error.
 #### example:
 ```clarity
 (/ 2 3) ;; Returns 0
@@ -111,7 +111,7 @@ Compares two integers, returning `true` if `i1` is greater than `i2` and false o
 #### output: `int`
 #### signature: `(to-int u)`
 #### description:
-Tries to convert the `uint` argument to an `int`. Will cause a runtime error and abort if the supplied argument is >= `pow(2, 127)``
+Tries to convert the `uint` argument to an `int`. Tries to convert the `uint` argument to an `int`. Will cause a runtime error and abort if the supplied argument is >= `pow(2, 127)``
 #### example:
 ```clarity
 (to-int u238) ;; Returns 238```
@@ -136,6 +136,21 @@ Returns the integer remainder from integer dividing `i1` by `i2`. In the event o
 ```clarity
 (mod 2 3) ;; Returns 2
 (mod 5 2) ;; Returns 1
+(mod 7 1) ;; Returns 0 Will cause a runtime error and abort if the supplied argument is negative.
+#### example: 
+```clarity
+(to-uint 238) ;; Returns u238```
+
+### mod
+#### input: `int, int | uint, uint`
+#### output: `int | uint`
+#### signature: `(mod i1 i2)`
+#### description:
+Returns the integer remainder from integer dividing `i1` by `i2`. In the event of a division by zero, throws a runtime error.
+#### example: 
+```clarity
+(mod 2 3) ;; Returns 2
+(mod 5 2) ;; Returns 1
 (mod 7 1) ;; Returns 0
 ```
 
@@ -144,7 +159,7 @@ Returns the integer remainder from integer dividing `i1` by `i2`. In the event o
 #### output: `int | uint`
 #### signature: `(pow i1 i2)`
 #### description:
-Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error.
+Returns the result of raising `i1` to the power of `i2`. Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error.
 #### example:
 ```clarity
 (pow 2 3) ;; Returns 8
@@ -157,7 +172,7 @@ Returns the result of raising `i1` to the power of `i2`. In the event of an _ove
 #### output: `int | uint`
 #### signature: `(sqrti n)`
 #### description:
-Returns the largest integer that is less than or equal to the square root of `n`.  Fails on a negative numbers.
+Returns the largest integer that is less than or equal to the square root of `n`.  Fails on a negative numbers.  Fails on a negative numbers.
 #### example:
 ```clarity
 (sqrti u11) ;; Returns u3
@@ -171,7 +186,7 @@ Returns the largest integer that is less than or equal to the square root of `n`
 #### output: `int | uint`
 #### signature: `(log2 n)`
 #### description:
-Returns the power to which the number 2 must be raised to to obtain the value `n`, rounded down to the nearest integer. Fails on a negative numbers.
+Returns the power to which the number 2 must be raised to to obtain the value `n`, rounded down to the nearest integer. Fails on a negative numbers. Fails on a negative numbers.
 #### example:
 ```clarity
 (log2 u8) ;; Returns u3
@@ -197,7 +212,7 @@ Returns the result of bitwise exclusive or'ing `i1` with `i2`.
 #### output: `bool`
 #### signature: `(and b1 b2 ...)`
 #### description:
-Returns `true` if all boolean inputs are `true`. Importantly, the supplied arguments are evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `false`, the function short-circuits, and no subsequent arguments are evaluated.
+Returns `true` if all boolean inputs are `true`. Importantly, the supplied arguments are evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `false`, the function short-circuits, and no subsequent arguments are evaluated. Importantly, the supplied arguments are evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `false`, the function short-circuits, and no subsequent arguments are evaluated.
 #### example:
 ```clarity
 (and true false) ;; Returns false
@@ -210,7 +225,7 @@ Returns `true` if all boolean inputs are `true`. Importantly, the supplied argum
 #### output: `bool`
 #### signature: `(or b1 b2 ...)`
 #### description:
-Returns `true` if any boolean inputs are `true`. Importantly, the supplied arguments are evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `true`, the function short-circuits, and no subsequent arguments are evaluated.
+Returns `true` if any boolean inputs are `true`. Importantly, the supplied arguments are evaluated in-order and lazily. Returns `true` if any boolean inputs are `true`. Importantly, the supplied arguments are evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `true`, the function short-circuits, and no subsequent arguments are evaluated.
 #### example:
 ```clarity
 (or true false) ;; Returns true
@@ -236,7 +251,7 @@ Returns the inverse of the boolean input.
 #### output: `bool`
 #### signature: `(is-eq v1 v2...)`
 #### description:
-Compares the inputted values, returning `true` if they are all equal. Note that _unlike_ the `(and ...)` function, `(is-eq ...)` will _not_ short-circuit. All values supplied to is-eq _must_ be the same type.
+Compares the inputted values, returning `true` if they are all equal. Note that _unlike_ the `(and ...)` function, `(is-eq ...)` will _not_ short-circuit. All values supplied to is-eq _must_ be the same type. Note that _unlike_ the `(and ...)` function, `(is-eq ...)` will _not_ short-circuit. All values supplied to is-eq _must_ be the same type.
 #### example:
 ```clarity
 (is-eq 1 1) ;; Returns true
@@ -249,9 +264,22 @@ Compares the inputted values, returning `true` if they are all equal. Note that 
 #### output: `A`
 #### signature: `(if bool1 expr1 expr2)`
 #### description:
-The `if` function admits a boolean argument and two expressions which must return the same type. In the case that the boolean input is `true`, the `if` function evaluates and returns `expr1`. If the boolean input is `false`, the `if` function evaluates and returns `expr2`.
+The `if` function admits a boolean argument and two expressions which must return the same type. In the case that the boolean input is `true`, the `if` function evaluates and returns `expr1`. The `if` function admits a boolean argument and two expressions which must return the same type. In the case that the boolean input is `true`, the `if` function evaluates and returns `expr1`. If the boolean input is `false`, the `if` function evaluates and returns `expr2`.
 #### example:
 ```clarity
+(if true 1 2) ;; Returns 1
+(if (> 1 2) 1 2) ;; Returns 2```
+
+### let
+#### input: `((name1 AnyType) (name2 AnyType) ...), AnyType, ... A`
+#### output: `A`
+#### signature: `(let ((name1 expr1) (name2 expr2) ...) expr-body1 expr-body2 ... expr-body-last)`
+#### description:
+The `let` function accepts a list of `variable name` and `expression` pairs,
+evaluating each expression and _binding_ it to the corresponding variable name.
+`let` bindings are sequential: when a `let` binding is evaluated, it may refer to prior binding.
+The _context_ created by this set of bindings is used for evaluating its body expressions.
+ The let expression returns the value of the last such body expression.
 (if true 1 2) ;; Returns 1
 (if (> 1 2) 1 2) ;; Returns 2```
 
@@ -291,6 +319,19 @@ Also, note that, no matter what kind of sequences the inputs are, the output is 
 (map a-or-b u\"aca\") ;; Returns (u\"a\" u\"b\" u\"a\")
 (define-private (zero-or-one (char (buff 1))) (if (is-eq char 0x00) 0x00 0x01))
 (map zero-or-one 0x000102) ;; Returns (0x00 0x01 0x01)
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
+for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
+The `func` argument must be a literal function name.
+Also, note that, no matter what kind of sequences the inputs are, the output is always a list.
+#### example: 
+```clarity
+
+(map not (list true false true false)) ;; Returns (false true false true)
+(map + (list 1 2 3) (list 1 2 3) (list 1 2 3)) ;; Returns (3 6 9)
+(define-private (a-or-b (char (string-utf8 1))) (if (is-eq char u\"a\") u\"a\" u\"b\"))
+(map a-or-b u\"aca\") ;; Returns (u\"a\" u\"b\" u\"a\")
+(define-private (zero-or-one (char (buff 1))) (if (is-eq char 0x00) 0x00 0x01))
+(map zero-or-one 0x000102) ;; Returns (0x00 0x01 0x01)
 ```
 
 ### fold
@@ -300,7 +341,7 @@ Also, note that, no matter what kind of sequences the inputs are, the output is 
 #### description:
 The `fold` function condenses `sequence_A` into a value of type `B` by recursively applies the function `func` to each element of the input sequence _and_ the output of a previous application of `func`.
 
-`fold` uses `initial_B` in the initial application of `func`, along with the first element of `sequence_A`. The resulting value of type `B` is used for the next application of `func`, along with the next element of `sequence_A` and so on. `fold` returns the last value of type `B` returned by these successive applications `func`.
+`fold` uses `initial_B` in the initial application of `func`, along with the first element of `sequence_A`. The resulting value of type `B` is used for the next application of `func`, along with the next element of `sequence_A` and so on. `fold` returns the last value of type `B` returned by these successive applications `func`. The resulting value of type `B` is used for the next application of `func`, along with the next element of `sequence_A` and so on. `fold` returns the last value of type `B` returned by these successive applications `func`.
 
 Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. The `func` argument must be a literal function name. `
 #### example:
@@ -311,6 +352,10 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
 ;; calculates (- 11 (- 7 (- 3 2)))
 (fold - (list 3 7 11) 2) ;; Returns 5 
 (define-private (concat-string (a (string-ascii 20)) (b (string-ascii 20))) (unwrap-panic (as-max-len? (concat a b) u20)))
+(fold concat-string \"cdef\" \"ab\")   ;; Returns \"fedcab\"
+(fold concat-string (list \"cd\" \"ef\") \"ab\")   ;; Returns \"efcdab\"
+(define-private (concat-buff (a (buff 20)) (b (buff 20))) (unwrap-panic (as-max-len? (concat a b) u20)))
+(fold concat-buff 0x03040506 0x0102)   ;; Returns 0x060504030102 (concat a b) u20)))
 (fold concat-string \"cdef\" \"ab\")   ;; Returns \"fedcab\"
 (fold concat-string (list \"cd\" \"ef\") \"ab\")   ;; Returns \"efcdab\"
 (define-private (concat-buff (a (buff 20)) (b (buff 20))) (unwrap-panic (as-max-len? (concat a b) u20)))
@@ -343,19 +388,29 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
 (concat (list 1 2) (list 3 4)) ;; Returns (1 2 3 4)
 (concat \"hello \" \"world\") ;; Returns \"hello world\"
 (concat 0x0102 0x0304) ;; Returns 0x01020304
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
+`
+#### example: 
+```clarity
+
+(concat (list 1 2) (list 3 4)) ;; Returns (1 2 3 4)
+(concat \"hello \" \"world\") ;; Returns \"hello world\"
+(concat 0x0102 0x0304) ;; Returns 0x01020304
 ```
 
 ### as-max-len?
 #### input: `sequence_A, uint`
 #### output: `sequence_A`
-#### signature: `(as-max-len? sequence max_length)`
+#### signature: `(as-max-len? sequence max_length)` sequence max_length)</code>
 #### description:
-The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument. The function returns an optional type. If the input sequence length is less than or equal to the supplied max_length, this returns `(some sequence)`, otherwise it returns `none`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`. `
+The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument. The function returns an optional type. If the input sequence length is less than or equal to the supplied max_length, this returns `(some sequence)`, otherwise it returns `none`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`. ` The function returns an optional type. If the input sequence length is less than or equal to the supplied max_length, this returns `(some sequence)`, otherwise it returns `none`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`. `
 #### example:
 ```clarity
 
-(as-max-len? (list 2 2 2) u3) ;; Returns (some (2 2 2))
+(as-max-len? (as-max-len? (list 2 2 2) u3) ;; Returns (some (2 2 2))
 (as-max-len? (list 1 2 3) u2) ;; Returns none
+(as-max-len? \"hello\" u10) ;; Returns (some \"hello\")
+(as-max-len? 0x010203 u10) ;; Returns (some 0x010203) (list 1 2 3) u2) ;; Returns none
 (as-max-len? \"hello\" u10) ;; Returns (some \"hello\")
 (as-max-len? 0x010203 u10) ;; Returns (some 0x010203)
 ```
@@ -365,7 +420,7 @@ The `as-max-len?` function takes a sequence argument and a uint-valued, literal 
 #### output: `uint`
 #### signature: `(len sequence)`
 #### description:
-The `len` function returns the length of a given sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`. `
+The `len` function returns the length of a given sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`. ` Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`. `
 #### example:
 ```clarity
 
@@ -379,7 +434,7 @@ The `len` function returns the length of a given sequence. Applicable sequence t
 #### output: `(optional A)`
 #### signature: `(element-at sequence index)`
 #### description:
-The `element-at` function returns the element at `index` in the provided sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. `
+The `element-at` function returns the element at `index` in the provided sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. ` Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. `
 #### example:
 ```clarity
 
@@ -395,7 +450,7 @@ The `element-at` function returns the element at `index` in the provided sequenc
 #### output: `(optional uint)`
 #### signature: `(index-of sequence item)`
 #### description:
-The `index-of` function returns the first index at which `item` can be found, using `is-eq` checks, in the provided sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. If the target item is not found in the sequence (or if an empty string or buffer is supplied), this function returns `none`. `
+The `index-of` function returns the first index at which `item` can be found, using `is-eq` checks, in the provided sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. If the target item is not found in the sequence (or if an empty string or buffer is supplied), this function returns `none`. ` Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. The `func` argument must be a literal function name. ` If the target item is not found in the sequence (or if an empty string or buffer is supplied), this function returns `none`. `
 #### example:
 ```clarity
 
@@ -411,7 +466,7 @@ The `index-of` function returns the first index at which `item` can be found, us
 #### output: `(list A)`
 #### signature: `(list expr1 expr2 expr3 ...)`
 #### description:
-The `list` function constructs a list composed of the inputted values. Each supplied value must be of the same type.
+The `list` function constructs a list composed of the inputted values. Each supplied value must be of the same type. Each supplied value must be of the same type.
 #### example:
 ```clarity
 (list (+ 1 2) 4 5) ;; Returns (3 4 5)```
@@ -458,6 +513,42 @@ it returns `(some value)`.
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (map-get? names-map (tuple (name \"blockstack\"))) ;; Returns (some (tuple (id 1337)))
 (map-get? names-map { name: \"blockstack\" }) ;; Same command, using a shorthand for constructing the tuple
+The value is looked up using `var-name`.
+#### example: 
+```clarity
+(define-data-var cursor int 6)
+(var-get cursor) ;; Returns 6```
+
+### var-set
+#### input: `VarName, AnyType`
+#### output: `bool`
+#### signature: `(var-set var-name expr1)`
+#### description:
+The `var-set` function sets the value associated with the input variable to the
+inputted value. The function always returns `true`.
+#### example: 
+```clarity
+
+(define-data-var cursor int 6)
+(var-get cursor) ;; Returns 6
+(var-set cursor (+ (var-get cursor) 1)) ;; Returns true
+(var-get cursor) ;; Returns 7```
+
+### map-get?
+#### input: `MapName, tuple`
+#### output: `(optional (tuple))`
+#### signature: `(map-get? map-name key-tuple)`
+#### description:
+The `map-get?` function looks up and returns an entry from a contract's data map.
+The value is looked up using `key-tuple`.
+If there is no value associated with that key in the data map, the function returns a `none` option. Otherwise,
+it returns `(some value)`.
+#### example: 
+```clarity
+(define-map names-map { name: (string-ascii 10) } { id: int })
+(map-set names-map { name: \"blockstack\" } { id: 1337 })
+(map-get? names-map (tuple (name \"blockstack\"))) ;; Returns (some (tuple (id 1337)))
+(map-get? names-map { name: \"blockstack\" }) ;; Same command, using a shorthand for constructing the tuple
 ```
 
 ### map-set
@@ -465,7 +556,7 @@ it returns `(some value)`.
 #### output: `bool`
 #### signature: `(map-set map-name key-tuple value-tuple)`
 #### description:
-The `map-set` function sets the value associated with the input key to the inputted value. This function performs a _blind_ update; whether or not a value is already associated with the key, the function overwrites that existing association.
+The `map-set` function sets the value associated with the input key to the inputted value. The `map-set` function sets the value associated with the input key to the inputted value. This function performs a _blind_ update; whether or not a value is already associated with the key, the function overwrites that existing association.
 
 Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX_CLARITY_VALUE - 1.
 #### example:
@@ -480,7 +571,7 @@ Note: the `value-tuple` requires 1 additional byte for storage in the materializ
 #### output: `bool`
 #### signature: `(map-insert map-name key-tuple value-tuple)`
 #### description:
-The `map-insert` function sets the value associated with the input key to the inputted value if and only if there is not already a value associated with the key in the map. If an insert occurs, the function returns `true`. If a value already existed for this key in the data map, the function returns `false`.
+The `map-insert` function sets the value associated with the input key to the inputted value if and only if there is not already a value associated with the key in the map. If an insert occurs, the function returns `true`. If a value already existed for this key in the data map, the function returns `false`. If an insert occurs, the function returns `true`. If a value already existed for this key in the data map, the function returns `false`.
 
 Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX_CLARITY_VALUE - 1.
 #### example:
@@ -496,7 +587,7 @@ Note: the `value-tuple` requires 1 additional byte for storage in the materializ
 #### output: `bool`
 #### signature: `(map-delete map-name key-tuple)`
 #### description:
-The `map-delete` function removes the value associated with the input key for the given map. If an item exists and is removed, the function returns `true`. If a value did not exist for this key in the data map, the function returns `false`.
+The `map-delete` function removes the value associated with the input key for the given map. If an item exists and is removed, the function returns `true`. The `map-delete` function removes the value associated with the input key for the given map. If an item exists and is removed, the function returns `true`. If a value did not exist for this key in the data map, the function returns `false`.
 #### example:
 ```clarity
 (define-map names-map { name: (string-ascii 10) } { id: int })
@@ -511,7 +602,7 @@ The `map-delete` function removes the value associated with the input key for th
 #### output: `(tuple (key-name A) (key-name-2 B) ...)`
 #### signature: `(tuple (key0 expr0) (key1 expr1) ...)`
 #### description:
-The `tuple` special form constructs a typed tuple from the supplied key and expression pairs. A `get` function can use typed tuples as input to select specific values from a given tuple. Key names may not appear multiple times in the same tuple definition. Supplied expressions are evaluated and associated with the expressions' paired key name.
+The `tuple` special form constructs a typed tuple from the supplied key and expression pairs. A `get` function can use typed tuples as input to select specific values from a given tuple. Key names may not appear multiple times in the same tuple definition. Supplied expressions are evaluated and associated with the expressions' paired key name. A `get` function can use typed tuples as input to select specific values from a given tuple. Key names may not appear multiple times in the same tuple definition. Supplied expressions are evaluated and associated with the expressions' paired key name.
 
 There is a shorthand using curly brackets of the form {key0: expr0, key1: expr, ...}`
 #### example:
@@ -525,6 +616,15 @@ There is a shorthand using curly brackets of the form {key0: expr0, key1: expr, 
 #### signature: `(get key-name tuple)`
 #### description:
 The `get` function fetches the value associated with a given key from the supplied typed tuple.
+If an `Optional` value is supplied as the inputted tuple, `get` returns an `Optional` type of the specified key in
+the tuple. If the supplied option is a `(none)` option, get returns `(none)`.
+#### example: 
+```clarity
+(define-map names-map { name: (string-ascii 12) } { id: int })
+(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true
+(get id (tuple (name \"blockstack\") (id 1337))) ;; Returns 1337
+(get id (map-get? names-map (tuple (name \"blockstack\")))) ;; Returns (some 1337)
+(get id (map-get? names-map (tuple (name \"non-existent\")))) ;; Returns none
 If an `Optional` value is supplied as the inputted tuple, `get` returns an `Optional` type of the specified key in
 the tuple. If the supplied option is a `(none)` option, get returns `(none)`.
 #### example: 
@@ -714,9 +814,9 @@ The `contract-of` function returns the principal of the contract implementing th
 ### principal-of?
 #### input: `(buff 33)`
 #### output: `(response principal uint)`
-#### signature: `(principal-of? public-key)`
+#### signature: `(principal-of? public-key)` public-key)</code>
 #### description:
-The `principal-of?` function returns the principal derived from the provided public key. If the `public-key` is invalid, it will return the error code `(err u1).`. `
+The `principal-of?` function returns the principal derived from the provided public key. The `principal-of?` function returns the principal derived from the provided public key. If the `public-key` is invalid, it will return the error code `(err u1).`. ` `
 #### example:
 ```clarity
 (principal-of? 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns (ok ST1AW6EKPGT61SQ9FNVDS17RKNWT8ZP582VF9HSCP)```
@@ -774,7 +874,7 @@ The `id-header-hash` is the block identifier value that must be used as input to
 #### output: `(response A B)`
 #### signature: `(err value)`
 #### description:
-The `err` function constructs a response type from the input value. Use `err` for creating return values in public functions. An _err_ value indicates that any database changes during the processing of the function should be rolled back.
+The `err` function constructs a response type from the input value. Use `err` for creating return values in public functions. The `err` function constructs a response type from the input value. Use `err` for creating return values in public functions. An _err_ value indicates that any database changes during the processing of the function should be rolled back.
 #### example:
 ```clarity
 (err true) ;; Returns (err true)```
@@ -822,9 +922,9 @@ a `(some ...)` option, it returns the inner value of the option. If the second a
 ### asserts!
 #### input: `bool, C`
 #### output: `bool`
-#### signature: `(asserts! bool-expr thrown-value)`
+#### signature: `(asserts! signature: <code>(asserts! bool-expr thrown-value)`
 #### description:
-The `asserts!` function admits a boolean argument and asserts its evaluation: if bool-expr is `true`, `asserts!` returns `true` and proceeds in the program execution. If the supplied argument is returning a false value, `asserts!` _returns_ `thrown-value` and exits the current control-flow.
+The `asserts!` function admits a boolean argument and asserts its evaluation: if bool-expr is `true`, `asserts!` returns `true` and proceeds in the program execution. If the supplied argument is returning a false value, `asserts!` _returns_ `thrown-value` and exits the current control-flow. If the supplied argument is returning a false value, `asserts!` _returns_ `thrown-value` and exits the current control-flow.
 #### example:
 ```clarity
 (asserts! (is-eq 1 1) (err 1)) ;; Returns true```
@@ -888,7 +988,7 @@ option. If the argument is a response type, and the argument is an `(ok ...)` re
 #### output: `B`
 #### signature: `(unwrap-err-panic response-input)`
 #### description:
-The `unwrap-err` function attempts to 'unpack' the first argument: if the argument is an `(err ...)` response, `unwrap` returns the inner value of the `err`. If the supplied argument is an `(ok ...)` value, `unwrap-err` throws a runtime error, aborting any further processing of the current transaction.
+The `unwrap-err` function attempts to 'unpack' the first argument: if the argument is an `(err ...)` response, `unwrap` returns the inner value of the `err`. If the supplied argument is an `(ok ...)` value, `unwrap-err` throws a runtime error, aborting any further processing of the current transaction. If the supplied argument is an `(ok ...)` value, `unwrap-err` throws a runtime error, aborting any further processing of the current transaction.
 #### example:
 ```clarity
 (unwrap-err-panic (err 1)) ;; Returns 1
@@ -942,18 +1042,61 @@ is untyped, you should use `unwrap-panic` or `unwrap-err-panic` instead of `matc
    err-value (err err-value)))
 (add-or-pass-err (ok 5) 20) ;; Returns (ok 25)
 (add-or-pass-err (err \"ERROR\") 20) ;; Returns (err \"ERROR\")
+
+If the `input` is an optional, it tests whether the provided
+`input` is a `some` or `none` option, and evaluates `some-branch` or
+`none-branch` in each respective case.
+
+Within the `some-branch`, the _contained value_ of the `input`
+argument is bound to the provided `some-binding-name` name.
+
+Only _one_ of the branches will be evaluated (similar to `if` statements).
+
+If the `input` is a response, it tests whether the provided `input` is
+an `ok` or `err` response type, and evaluates `ok-branch` or
+`err-branch` in each respective case.
+
+Within the `ok-branch`, the _contained ok value_ of the `input`
+argument is bound to the provided `ok-binding-name` name.
+
+Within the `err-branch`, the _contained err value_ of the `input`
+argument is bound to the provided `err-binding-name` name.
+
+Only _one_ of the branches will be evaluated (similar to `if` statements).
+
+Note: Type checking requires that the type of both the ok and err parts of the
+response object be determinable. For situations in which one of the parts of a response
+is untyped, you should use `unwrap-panic` or `unwrap-err-panic` instead of `match`.
+#### example: 
+```clarity
+
+(define-private (add-10 (x (optional int)))
+  (match x
+  value (+ 10 value)
+  10))
+(add-10 (some 5)) ;; Returns 15
+(add-10 none) ;; Returns 10
+
+(define-private (add-or-pass-err (x (response int (string-ascii 10))) (to-add int))
+  (match x
+   value (ok (+ to-add value))
+   err-value (err err-value)))
+(add-or-pass-err (ok 5) 20) ;; Returns (ok 25)
+(add-or-pass-err (err \"ERROR\") 20) ;; Returns (err \"ERROR\")
 ```
 
 ### try!
 #### input: `(optional A) | (response A B)`
 #### output: `A`
-#### signature: `(try! option-input)`
+#### signature: `(try! signature: <code>(try! option-input)`
 #### description:
-The `try!` function attempts to 'unpack' the first argument: if the argument is an option type, and the argument is a `(some ...)` option, `try!` returns the inner value of the option. If the argument is a response type, and the argument is an `(ok ...)` response, `try!` returns the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `none` value, `try!` _returns_ either `none` or the `(err ...)` value from the current function and exits the current control-flow.
+The `try!` function attempts to 'unpack' the first argument: if the argument is an option type, and the argument is a `(some ...)` option, `try!` returns the inner value of the option. If the argument is a response type, and the argument is an `(ok ...)` response, `try!` returns the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `none` value, `try!` _returns_ either `none` or the `(err ...)` value from the current function and exits the current control-flow. If the argument is a response type, and the argument is an `(ok ...)` response, `try!` returns the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `none` value, `try!` _returns_ either `none` or the `(err ...)` value from the current function and exits the current control-flow.
 #### example:
 ```clarity
 
 (define-map names-map { name: (string-ascii 12) } { id: int })
+(map-set names-map { name: \"blockstack\" } { id: 1337 })
+(try! (map-get? (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (try! (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))
 (define-private (checked-even (x int))
@@ -962,6 +1105,8 @@ The `try!` function attempts to 'unpack' the first argument: if the argument is 
       (err false)))
 (define-private (double-if-even (x int))
   (ok (* 2 (try! (checked-even x)))))
+(double-if-even 10) ;; Returns (ok 20)
+(double-if-even 3) ;; Returns (err false) (checked-even x)))))
 (double-if-even 10) ;; Returns (ok 20)
 (double-if-even 3) ;; Returns (err false)
 ```
@@ -1045,7 +1190,7 @@ The `func` argument must be a literal function name.
 #### output: `uint`
 #### signature: `(ft-get-balance token-name principal)`
 #### description:
-`ft-get-balance` returns `token-name` balance of the principal `principal`. The token type must have been defined using `define-fungible-token`.
+`ft-get-balance` returns `token-name` balance of the principal `principal`. The token type must have been defined using `define-fungible-token`. The token type must have been defined using `define-fungible-token`.
 #### example:
 ```clarity
 
@@ -1057,26 +1202,28 @@ The `func` argument must be a literal function name.
 ### nft-get-owner?
 #### input: `AssetName, A`
 #### output: `(optional principal)`
-#### signature: `(nft-get-owner? asset-class asset-identifier)`
+#### signature: `(nft-get-owner? asset-class asset-identifier)` asset-class asset-identifier)</code>
 #### description:
-`nft-get-owner?` returns the owner of an asset, identified by `asset-identifier`, or `none` if the asset does not exist. The asset type must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
+`nft-get-owner?` returns the owner of an asset, identified by `asset-identifier`, or `none` if the asset does not exist. The asset type must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition. The asset type must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
 #### example:
 ```clarity
 
 (define-non-fungible-token stackaroo (string-ascii 40))
+(nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true) stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
+(nft-get-owner? (define-non-fungible-token stackaroo (string-ascii 40))
 (nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
 (nft-get-owner? stackaroo \"Roo\") ;; Returns (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
-(nft-get-owner? stackaroo \"Too\") ;; Returns none
+(nft-get-owner? stackaroo \"Too\") ;; Returns none stackaroo \"Too\") ;; Returns none
 ```
 
 ### ft-transfer?
 #### input: `TokenName, uint, principal, principal`
 #### output: `(response bool uint)`
-#### signature: `(ft-transfer? token-name amount sender recipient)`
+#### signature: `(ft-transfer? signature: <code>(ft-transfer? token-name amount sender recipient)`
 #### description:
-`ft-transfer?` is used to increase the token balance for the `recipient` principal for a token type defined using `define-fungible-token` by debiting the `sender` principal. In contrast to `stx-transfer?`, any user can transfer the assets. When used, relevant guards need to be added.
+`ft-transfer?` is used to increase the token balance for the `recipient` principal for a token type defined using `define-fungible-token` by debiting the `sender` principal. In contrast to `stx-transfer?`, any user can transfer the assets. When used, relevant guards need to be added. In contrast to `stx-transfer?`, any user can transfer the assets. When used, relevant guards need to be added.
 
-This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
+This function returns (ok true) if the transfer is successful. This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
 
 `(err u1)` -- `sender` does not have enough balance to transfer `(err u2)` -- `sender` and `recipient` are the same principal `(err u3)` -- amount to send is non-positive `
 #### example:
@@ -1091,18 +1238,18 @@ This function returns (ok true) if the transfer is successful. In the event of a
 ### nft-transfer?
 #### input: `AssetName, A, principal, principal`
 #### output: `(response bool uint)`
-#### signature: `(nft-transfer? asset-class asset-identifier sender recipient)`
+#### signature: `(nft-transfer? signature: <code>(nft-transfer? asset-class asset-identifier sender recipient)`
 #### description:
-`nft-transfer?` is used to change the owner of an asset identified by `asset-identifier` from `sender` to `recipient`. The `asset-class` must have been defined by `define-non-fungible-token` and `asset-identifier` must be of the type specified in that definition. In contrast to `stx-transfer?`, any user can transfer the asset. When used, relevant guards need to be added.
+`nft-transfer?` is used to change the owner of an asset identified by `asset-identifier` from `sender` to `recipient`. The `asset-class` must have been defined by `define-non-fungible-token` and `asset-identifier` must be of the type specified in that definition. In contrast to `stx-transfer?`, any user can transfer the asset. When used, relevant guards need to be added. The `asset-class` must have been defined by `define-non-fungible-token` and `asset-identifier` must be of the type specified in that definition. In contrast to `stx-transfer?`, any user can transfer the asset. When used, relevant guards need to be added.
 
-This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
+This function returns (ok true) if the transfer is successful. This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
 
 `(err u1)` -- `sender` does not own the asset `(err u2)` -- `sender` and `recipient` are the same principal `(err u3)` -- asset identified by asset-identifier does not exist `
 #### example:
 ```clarity
 
 (define-non-fungible-token stackaroo (string-ascii 40))
-(nft-mint? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
+(nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true) stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
 (nft-transfer? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 (nft-transfer? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u1)
 (nft-transfer? stackaroo \"Stacka\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u3)
@@ -1124,22 +1271,22 @@ Otherwise, on successfuly mint, it returns `(ok true)`. `
 ```clarity
 
 (define-non-fungible-token stackaroo (string-ascii 40))
-(nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
+(nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true) stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
 
 ### ft-mint?
 #### input: `TokenName, uint, principal`
 #### output: `(response bool uint)`
-#### signature: `(ft-mint? token-name amount recipient)`
+#### signature: `(ft-mint? token-name amount recipient)` token-name amount recipient)</code>
 #### description:
-`ft-mint?` is used to increase the token balance for the `recipient` principal for a token type defined using `define-fungible-token`. The increased token balance is _not_ transfered from another principal, but rather minted.
+`ft-mint?` is used to increase the token balance for the `recipient` principal for a token type defined using `define-fungible-token`. The increased token balance is _not_ transfered from another principal, but rather minted. The increased token balance is _not_ transfered from another principal, but rather minted.
 
-If a non-positive amount is provided to mint, this function returns `(err 1)`. Otherwise, on successfuly mint, it returns `(ok true)`. `
+If a non-positive amount is provided to mint, this function returns `(err 1)`. Otherwise, on successfuly mint, it returns `(ok true)`. ` Otherwise, on successfuly mint, it returns `(ok true)`. ` `
 #### example:
 ```clarity
 
 (define-fungible-token stackaroo)
-(ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
+(ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true) stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
 
 ### ft-get-supply
@@ -1147,11 +1294,12 @@ If a non-positive amount is provided to mint, this function returns `(err 1)`. O
 #### output: `uint`
 #### signature: `(ft-get-supply token-name)`
 #### description:
-`ft-get-balance` returns `token-name` circulating supply. The token type must have been defined using `define-fungible-token`.
+`ft-get-balance` returns `token-name` circulating supply. `ft-get-balance` returns `token-name` circulating supply. The token type must have been defined using `define-fungible-token`.
 #### example:
 ```clarity
 
 (define-fungible-token stackaroo)
+(ft-mint? (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
 (ft-get-supply stackaroo) ;; Returns u100
 ```
@@ -1159,37 +1307,39 @@ If a non-positive amount is provided to mint, this function returns `(err 1)`. O
 ### ft-burn?
 #### input: `TokenName, uint, principal`
 #### output: `(response bool uint)`
-#### signature: `(ft-burn? token-name amount sender)`
+#### signature: `(ft-burn? token-name amount sender)` token-name amount sender)</code>
 #### description:
-`ft-burn?` is used to decrease the token balance for the `sender` principal for a token type defined using `define-fungible-token`. The decreased token balance is _not_ transfered to another principal, but rather destroyed, reducing the circulating supply.
+`ft-burn?` is used to decrease the token balance for the `sender` principal for a token type defined using `define-fungible-token`. The decreased token balance is _not_ transfered to another principal, but rather destroyed, reducing the circulating supply. The decreased token balance is _not_ transfered to another principal, but rather destroyed, reducing the circulating supply.
 
-If a non-positive amount is provided to burn, this function returns `(err 1)`. Otherwise, on successfuly burn, it returns `(ok true)`. `
+If a non-positive amount is provided to burn, this function returns `(err 1)`. Otherwise, on successfuly burn, it returns `(ok true)`. ` Otherwise, on successfuly burn, it returns `(ok true)`. `
 #### example:
 ```clarity
 
 (define-fungible-token stackaroo)
+(ft-mint? (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
-(ft-burn? stackaroo u50 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
+(ft-burn? stackaroo u50 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true) stackaroo u50 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
 
 ### nft-burn?
 #### input: `AssetName, A, principal`
 #### output: `(response bool uint)`
-#### signature: `(nft-burn? asset-class asset-identifier recipient)`
+#### signature: `(nft-burn? signature: <code>(nft-burn? asset-class asset-identifier recipient)`
 #### description:
-`nft-burn?` is used to burn an asset and remove that asset's owner from the `recipient` principal. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
+`nft-burn?` is used to burn an asset and remove that asset's owner from the `recipient` principal. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition. `nft-mint?` is used to instantiate an asset and set that asset's owner to the `recipient` principal. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
 
 If an asset identified by `asset-identifier` _doesn't exist_, this function will return an error with the following error code:
 
 `(err u1)`
 
-Otherwise, on successfuly burn, it returns `(ok true)`. `
+Otherwise, on successfuly burn, it returns `(ok true)`. ` `
 #### example:
 ```clarity
 
 (define-non-fungible-token stackaroo (string-ascii 40))
+(nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true) (define-non-fungible-token stackaroo (string-ascii 40))
 (nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
-(nft-burn? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
+(nft-burn? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true) stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
 
 ### stx-get-balance
@@ -1199,7 +1349,7 @@ Otherwise, on successfuly burn, it returns `(ok true)`. `
 #### description:
 `stx-get-balance` is used to query the STX balance of the `owner` principal.
 
-This function returns the STX balance of the `owner` principal. In the event that the `owner` principal isn't materialized, it returns 0. `
+This function returns the STX balance of the `owner` principal. In the event that the `owner` principal isn't materialized, it returns 0. ` In the event that the `owner` principal isn't materialized, it returns 0. `
 #### example:
 ```clarity
 
@@ -1210,39 +1360,41 @@ This function returns the STX balance of the `owner` principal. In the event tha
 ### stx-transfer?
 #### input: `uint, principal, principal`
 #### output: `(response bool uint)`
-#### signature: `(stx-transfer? amount sender recipient)`
+#### signature: `(stx-transfer? amount sender recipient)` amount sender recipient)</code>
 #### description:
-`stx-transfer?` is used to increase the STX balance for the `recipient` principal by debiting the `sender` principal. The `sender` principal _must_ be equal to the current context's `tx-sender`.
+`stx-transfer?` is used to increase the STX balance for the `recipient` principal by debiting the `sender` principal. The `sender` principal _must_ be equal to the current context's `tx-sender`. The `sender` principal _must_ be equal to the current context's `tx-sender`.
 
-This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
+This function returns (ok true) if the transfer is successful. This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
 
 `(err u1)` -- `sender` does not have enough balance to transfer `(err u2)` -- `sender` and `recipient` are the same principal `(err u3)` -- amount to send is non-positive `(err u4)` -- the `sender` principal is not the current `tx-sender` `
 #### example:
 ```clarity
 
 (as-contract
+  (stx-transfer? (as-contract
   (stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (ok true)
 (as-contract
-  (stx-transfer? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender)) ;; Returns (err u4)
+  (stx-transfer? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender)) ;; Returns (err u4) u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender)) ;; Returns (err u4)
 ```
 
 ### stx-burn?
 #### input: `uint, principal`
 #### output: `(response bool uint)`
-#### signature: `(stx-burn? amount sender)`
+#### signature: `(stx-burn? amount sender)` amount sender)</code>
 #### description:
-`stx-burn?` debits the `sender` principal's STX holdings by `amount`, destroying the STX. The `sender` principal _must_ be equal to the current context's `tx-sender`.
+`stx-burn?` debits the `sender` principal's STX holdings by `amount`, destroying the STX. The `sender` principal _must_ be equal to the current context's `tx-sender`. The `sender` principal _must_ be equal to the current context's `tx-sender`.
 
-This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
+This function returns (ok true) if the transfer is successful. This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
 
 `(err u1)` -- `sender` does not have enough balance to transfer `(err u3)` -- amount to send is non-positive `(err u4)` -- the `sender` principal is not the current `tx-sender` `
 #### example:
 ```clarity
 
 (as-contract
+  (stx-burn? (as-contract
   (stx-burn? u60 tx-sender)) ;; Returns (ok true)
 (as-contract
-  (stx-burn? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (err u4)
+  (stx-burn? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (err u4) u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (err u4)
 ```
 
 ### define-constant
@@ -1250,9 +1402,9 @@ This function returns (ok true) if the transfer is successful. In the event of a
 #### output: `Not Applicable`
 #### signature: `(define-constant name expression)`
 #### description:
-`define-constant` is used to define a private constant value in a smart contract. The expression passed into the definition is evaluated at contract launch, in the order that it is supplied in the contract. This can lead to undefined function or undefined variable errors in the event that a function or variable used in the expression has not been defined before the constant.
+`define-constant` is used to define a private constant value in a smart contract. The expression passed into the definition is evaluated at contract launch, in the order that it is supplied in the contract. This can lead to undefined function or undefined variable errors in the event that a function or variable used in the expression has not been defined before the constant. The expression passed into the definition is evaluated at contract launch, in the order that it is supplied in the contract. This can lead to undefined function or undefined variable errors in the event that a function or variable used in the expression has not been defined before the constant.
 
-Like other kinds of definition statements, `define-constant` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body). `
+Like other kinds of definition statements, `define-constant` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body). ` `
 #### example:
 ```clarity
 
@@ -1265,7 +1417,7 @@ Like other kinds of definition statements, `define-constant` may only be used at
 #### output: `Not Applicable`
 #### signature: `(define-private (function-name (arg-name-0 arg-type-0) (arg-name-1 arg-type-1) ...) function-body)`
 #### description:
-`define-private` is used to define _private_ functions for a smart contract. Private functions may not be called from other smart contracts, nor may they be invoked directly by users. Instead, these functions may only be invoked by other functions defined in the same smart contract.
+`define-private` is used to define _private_ functions for a smart contract. `define-private` is used to define _private_ functions for a smart contract. Private functions may not be called from other smart contracts, nor may they be invoked directly by users. Instead, these functions may only be invoked by other functions defined in the same smart contract. Instead, these functions may only be invoked by other functions defined in the same smart contract.
 
 Like other kinds of definition statements, `define-private` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
 
@@ -1285,11 +1437,11 @@ Private functions may return any type.
 #### output: `Not Applicable`
 #### signature: `(define-public (function-name (arg-name-0 arg-type-0) (arg-name-1 arg-type-1) ...) function-body)`
 #### description:
-`define-public` is used to define a _public_ function and transaction for a smart contract. Public functions are callable from other smart contracts and may be invoked directly by users by submitting a transaction to the Stacks blockchain.
+`define-public` is used to define a _public_ function and transaction for a smart contract. Public functions are callable from other smart contracts and may be invoked directly by users by submitting a transaction to the Stacks blockchain. Public functions are callable from other smart contracts and may be invoked directly by users by submitting a transaction to the Stacks blockchain.
 
 Like other kinds of definition statements, `define-public` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
 
-Public functions _must_ return a ResponseType (using either `ok` or `err`). Any datamap modifications performed by a public function is aborted if the function returns an `err` type. Public functions may be invoked by other contracts via `contract-call?`.
+Public functions _must_ return a ResponseType (using either `ok` or `err`). Any datamap modifications performed by a public function is aborted if the function returns an `err` type. Public functions may be invoked by other contracts via `contract-call?`. Any datamap modifications performed by a public function is aborted if the function returns an `err` type. Public functions may be invoked by other contracts via `contract-call?`.
 #### example:
 ```clarity
 
@@ -1303,11 +1455,11 @@ Public functions _must_ return a ResponseType (using either `ok` or `err`). Any 
 #### output: `Not Applicable`
 #### signature: `(define-read-only (function-name (arg-name-0 arg-type-0) (arg-name-1 arg-type-1) ...) function-body)`
 #### description:
-`define-read-only` is used to define a _public read-only_ function for a smart contract. Such functions are callable from other smart contracts.
+`define-read-only` is used to define a _public read-only_ function for a smart contract. Such functions are callable from other smart contracts. Such functions are callable from other smart contracts.
 
 Like other kinds of definition statements, `define-read-only` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
 
-Read-only functions may return any type. However, read-only functions may not perform any datamap modifications, or call any functions which perform such modifications. This is enforced both during type checks and during the execution of the function. Public read-only functions may be invoked by other contracts via `contract-call?`.
+Read-only functions may return any type. Read-only functions may return any type. However, read-only functions may not perform any datamap modifications, or call any functions which perform such modifications. This is enforced both during type checks and during the execution of the function. Public read-only functions may be invoked by other contracts via `contract-call?`. This is enforced both during type checks and during the execution of the function. Public read-only functions may be invoked by other contracts via `contract-call?`.
 #### example:
 ```clarity
 
@@ -1336,6 +1488,23 @@ definition (i.e., you cannot put a define statement in the middle of a function 
 (add-entry 2)
 (add-entry 3)
 (add-entry 4)
+(add-entry 5) Such
+maps are only modifiable by the current smart contract.
+
+Maps are defined with a key type and value type, often these types are tuple types.
+
+Like other kinds of definition statements, `define-map` may only be used at the top level of a smart contract
+definition (i.e., you cannot put a define statement in the middle of a function body).
+#### example: 
+```clarity
+
+(define-map squares { x: int } { square: int })
+(define-private (add-entry (x int))
+  (map-insert squares { x: 2 } { square: (* x x) }))
+(add-entry 1)
+(add-entry 2)
+(add-entry 3)
+(add-entry 4)
 (add-entry 5)
 ```
 
@@ -1344,7 +1513,7 @@ definition (i.e., you cannot put a define statement in the middle of a function 
 #### output: `Not Applicable`
 #### signature: `(define-data-var var-name type value)`
 #### description:
-`define-data-var` is used to define a new persisted variable for use in a smart contract. Such variable are only modifiable by the current smart contract.
+`define-data-var` is used to define a new persisted variable for use in a smart contract. Such variable are only modifiable by the current smart contract. Such variable are only modifiable by the current smart contract.
 
 Persisted variable are defined with a type and a value.
 
@@ -1366,7 +1535,7 @@ Like other kinds of definition statements, `define-data-var` may only be used at
 #### description:
 `define-fungible-token` is used to define a new fungible token class for use in the current contract.
 
-The second argument, if supplied, defines the total supply of the fungible token. This ensures that all calls to the `ft-mint?` function will never be able to create more than `total-supply` tokens. If any such call were to increase the total supply of tokens passed that amount, that invocation of `ft-mint?` will result in a runtime error and abort.
+The second argument, if supplied, defines the total supply of the fungible token. This ensures that all calls to the `ft-mint?` function will never be able to create more than `total-supply` tokens. The second argument, if supplied, defines the total supply of the fungible token. This ensures that all calls to the `ft-mint?` function will never be able to create more than `total-supply` tokens. If any such call were to increase the total supply of tokens passed that amount, that invocation of `ft-mint?` will result in a runtime error and abort.
 
 Like other kinds of definition statements, `define-fungible-token` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
 
@@ -1383,7 +1552,7 @@ Tokens defined using `define-fungible-token` may be used in `ft-transfer?`, `ft-
 #### output: `Not Applicable`
 #### signature: `(define-non-fungible-token asset-name asset-identifier-type)`
 #### description:
-`define-non-fungible-token` is used to define a new non-fungible token class for use in the current contract. Individual assets are identified by their asset identifier, which must be of the type `asset-identifier-type`. Asset identifiers are _unique_ identifiers.
+`define-non-fungible-token` is used to define a new non-fungible token class for use in the current contract. Individual assets are identified by their asset identifier, which must be of the type `asset-identifier-type`. Asset identifiers are _unique_ identifiers. Individual assets are identified by their asset identifier, which must be of the type `asset-identifier-type`. Asset identifiers are _unique_ identifiers.
 
 Like other kinds of definition statements, `define-non-fungible-token` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
 
@@ -1399,15 +1568,16 @@ Assets defined using `define-non-fungible-token` may be used in `nft-transfer?`,
 #### output: `Not Applicable`
 #### signature: `(define-trait trait-name ((func1-name (arg1-type arg2-type ...) (return-type))))`
 #### description:
-`define-trait` is used to define a new trait definition for use in a smart contract. Other contracts can implement a given trait and then have their contract identifier being passed as function arguments in order to be called dynamically with `contract-call?`.
+`define-trait` is used to define a new trait definition for use in a smart contract. `define-trait` is used to define a new trait definition for use in a smart contract. Other contracts can implement a given trait and then have their contract identifier being passed as function arguments in order to be called dynamically with `contract-call?`.
 
 Traits are defined with a name, and a list functions defined with a name, a list of argument types, and return type.
 
-Like other kinds of definition statements, `define-trait` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body). `
+Like other kinds of definition statements, `define-trait` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body). ` `
 #### example:
 ```clarity
 
 (define-trait token-trait
+    ((transfer? (define-trait token-trait
     ((transfer? (principal principal uint) (response uint uint))
      (get-balance (principal) (response uint uint))))
 ```
@@ -1417,11 +1587,11 @@ Like other kinds of definition statements, `define-trait` may only be used at th
 #### output: `Not Applicable`
 #### signature: `(use-trait trait-alias trait-identifier)`
 #### description:
-`use-trait` is used to bring a trait, defined in another contract, to the current contract. Subsequent references to an imported trait are signaled with the syntax `<trait-alias>`.
+`use-trait` is used to bring a trait, defined in another contract, to the current contract. Subsequent references to an imported trait are signaled with the syntax `<trait-alias>`. Subsequent references to an imported trait are signaled with the syntax `<trait-alias>`.
 
-Traits import are defined with a name, used as an alias, and a trait identifier. Trait identifiers can either be using the sugared syntax (.token-a.token-trait), or be fully qualified ('SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait).
+Traits import are defined with a name, used as an alias, and a trait identifier. Traits import are defined with a name, used as an alias, and a trait identifier. Trait identifiers can either be using the sugared syntax (.token-a.token-trait), or be fully qualified ('SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait).
 
-Like other kinds of definition statements, `use-trait` may only be used at the top level of a smart contract definition (i.e., you cannot put such a statement in the middle of a function body). `
+Like other kinds of definition statements, `use-trait` may only be used at the top level of a smart contract definition (i.e., you cannot put such a statement in the middle of a function body). ` `
 #### example:
 ```clarity
 
@@ -1436,12 +1606,12 @@ Like other kinds of definition statements, `use-trait` may only be used at the t
 #### output: `Not Applicable`
 #### signature: `(impl-trait trait-identifier)`
 #### description:
-`impl-trait` can be use for asserting that a contract is fully implementing a given trait. Additional checks are being performed when the contract is being published, rejecting the deployment if the contract is violating the trait specification.
+`impl-trait` can be use for asserting that a contract is fully implementing a given trait. `impl-trait` can be use for asserting that a contract is fully implementing a given trait. Additional checks are being performed when the contract is being published, rejecting the deployment if the contract is violating the trait specification.
 
 Trait identifiers can either be using the sugared syntax (.token-a.token-trait), or be fully qualified ('SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait).
 
-Like other kinds of definition statements, `impl-trait` may only be used at the top level of a smart contract definition (i.e., you cannot put such a statement in the middle of a function body). `
+Like other kinds of definition statements, `impl-trait` may only be used at the top level of a smart contract definition (i.e., you cannot put such a statement in the middle of a function body). ` `
 #### example:
 ```clarity
 
-(impl-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait) (define-public (get-balance (account principal)) (ok u0)) (define-public (transfer? (from principal) (to principal) (amount uint)) (ok u0)) " }
+(impl-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait) (define-public (get-balance (account principal)) (ok u0)) (define-public (transfer? (from principal) (to principal) (amount uint)) (ok u0)) " } (from principal) (to principal) (amount uint)) (ok u0)) " }

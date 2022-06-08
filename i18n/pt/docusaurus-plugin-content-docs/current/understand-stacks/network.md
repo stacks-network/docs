@@ -41,8 +41,7 @@ Every account carries a [nonce property](https://en.wikipedia.org/wiki/Cryptogra
 
 Nonces are added to all transactions and help identify them in order to ensure transactions are processed in order and to avoid duplicated processing.
 
-:::tip
-The consensus mechanism also ensures that transactions aren't "replayed" in two ways. First, nodes query its unspent transaction outputs (UTXOs) in order to satisfy their spending conditions in a new transaction. Second, messages sent between nodes review sequence numbers.
+:::tip The consensus mechanism also ensures that transactions aren't "replayed" in two ways. First, nodes query its unspent transaction outputs (UTXOs) in order to satisfy their spending conditions in a new transaction. Second, messages sent between nodes review sequence numbers.
 :::
 
 When a new token transfer transaction is constructed, the most recent nonce of the account needs to fetched and set.
@@ -83,8 +82,7 @@ Smart contracts can expose public function calls. For functions that make state 
 
 However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api).
 
-:::tip
-Read-only function calls do not require transaction fees
+:::tip Read-only function calls do not require transaction fees
 :::
 
 A read-only contract call can be done using the [`POST /v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>`](https://docs.hiro.so/api#operation/call_read_only_function) endpoint:
@@ -96,6 +94,7 @@ curl --location --request POST 'https://stacks-node-api.testnet.stacks.co/v2/con
 --data-raw '{
   "sender": "<stx_address>.<contract_name>",
   "arguments": [<clarity_value>, ...]
+}'
 }'
 }'
 ```

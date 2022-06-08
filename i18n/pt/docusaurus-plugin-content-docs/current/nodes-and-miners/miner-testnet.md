@@ -210,8 +210,7 @@ stacks-node start --config=testnet/stacks-node/conf/testnet-miner-conf.toml
 
 <!-- markdown-link-check-disable -->
 
-:::note
-While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
+:::note While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
 ::: ![Windows Defender](/img/windows-defender.png)
 
 <!-- markdown-link-check-enable-->

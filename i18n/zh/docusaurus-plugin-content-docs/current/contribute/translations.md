@@ -5,7 +5,7 @@ description: Want to help tranlating these docs to your local language?
 
 ## Help with translations
 
-Translations are managed with Crowin.  
+Translations are managed with Crowdin.  
 Anybody can colaborate and no technichal skills are required, as it's all done on the browser.
 
 To help with translation please go to [this page](https://crowdin.com/project/docsstacksco), click any language and start translating.
@@ -13,13 +13,13 @@ To help with translation please go to [this page](https://crowdin.com/project/do
 All help is appreciated.
 
 :::caution
-Please don't add any translations to the Github repository, as the translated pages get rewritten from Crowin. Translations need to be added on Crowin intead.
+Please don't add any translations to the Github repository, as the translated pages get rewritten from Crowdin. Translations need to be added on Crodin intead.
 :::
 
 ### Common issues on translations
 
 When translating in Crowdin, please only translate the texts and not the html code.
 
-If you acccidently modify the html tags you will get errors like shown below (`Seems like some formating tags are missing` or `Translation contains tag that source text doesn't have`). These errors will prevent your translation getting published until the tags are left as they were in the original text.
+If you acccidently modify the html tags you will get errors like shown below (`Seems like some formating tags are missing` or `Translation contains tag that source text doesn't have`). These errors will prevent your translation getting published until the tags are left as they were in the original text. These errors will prevent your translation getting published until the tags are left as they were in the original text.
 
 ![](/img/crowdin-qa-issue-formatting_tags_missing.png) ![](/img/crowdin-qa-issue-tag_source.png)

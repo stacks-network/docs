@@ -6,9 +6,9 @@ sidebar_position: 2
 
 ## Introduction
 
-The Clarity language makes use of a strong static type system. This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your contract call transactions failing prior to execution.
+The Clarity language makes use of a strong static type system. The Clarity language makes use of a strong static type system. This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your contract call transactions failing prior to execution.
 
-In order to build web applications that interact with Clarity contracts, you will need to learn how to construct and use `ClarityValue` objects. The [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below. The [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below.
+In order to build web applications that interact with Clarity contracts, you will need to learn how to construct and use `ClarityValue` objects. The [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below. The [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below. The [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below.
 
 ## Clarity Types
 
@@ -16,7 +16,7 @@ Please see the following page for information on [Clarity Types](../write-smart-
 
 ## Constructing Clarity Values and accessing their data
 
-Clarity values can be constructed with functions provided by the [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library. These functions simply output javascript objects that contain a value and a numerical representation of the Clarity type information. The Clarity types are encoded as follows: These functions simply output javascript objects that contain a value and a numerical representation of the Clarity type information. The Clarity types are encoded as follows:
+Clarity values can be constructed with functions provided by the [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library. These functions simply output javascript objects that contain a value and a numerical representation of the Clarity type information. The Clarity types are encoded as follows: These functions simply output javascript objects that contain a value and a numerical representation of the Clarity type information. The Clarity types are encoded as follows: These functions simply output javascript objects that contain a value and a numerical representation of the Clarity type information. The Clarity types are encoded as follows:
 
 ```typescript
 export enum ClarityType {
@@ -52,7 +52,7 @@ const f = falseCV();
 // { type: ClarityType.BoolFalse }
 ```
 
-Boolean Clarity Values don't contain any underlying data. They are simply objects with `type` information. They are simply objects with `type` information.
+Boolean Clarity Values don't contain any underlying data. They are simply objects with `type` information. They are simply objects with `type` information. They are simply objects with `type` information.
 
 ### Optional Values
 
@@ -102,7 +102,7 @@ Clarity value ints store their underlying data as `BigNum` values from the [bn.j
 
 In order to display/print Clarity (u)int values, use the `cvToString(val)` method.
 
-If you wish to perform arithmetic operations using Clarity (u)int values, you must use methods from the `BigNum` api on their underlying `BigNum` values, and the construct a new Clarity value out of the result. For example: For example:
+If you wish to perform arithmetic operations using Clarity (u)int values, you must use methods from the `BigNum` api on their underlying `BigNum` values, and the construct a new Clarity value out of the result. For example: For example: For example:
 
 ```typescript
 const x = intCV(1);
@@ -157,7 +157,7 @@ const cpCV = contractPrincipalCV(address, contractName);
 // }
 ```
 
-Both kinds of Clarity principal values contain `type` information and an `address` object. Contract principals also contain a `contractName`. Contract principals also contain a `contractName`.
+Both kinds of Clarity principal values contain `type` information and an `address` object. Contract principals also contain a `contractName`. Contract principals also contain a `contractName`. Contract principals also contain a `contractName`.
 
 ### Response Values
 
@@ -169,7 +169,7 @@ const okCV = responseOkCV(falseCV());
 // { type: ResponseOk, value: { type: ClarityType.BoolFalse } }
 ```
 
-Response Clarity Values will either have the type `ClarityType.ResponseOk` or `ClarityType.ResponseErr`. They both contain a Clarity Value. Often this value will be an integer error code if the response is an `Error`. They both contain a Clarity Value. Often this value will be an integer error code if the response is an `Error`.
+Response Clarity Values will either have the type `ClarityType.ResponseOk` or `ClarityType.ResponseErr`. They both contain a Clarity Value. Often this value will be an integer error code if the response is an `Error`. They both contain a Clarity Value. Often this value will be an integer error code if the response is an `Error`. They both contain a Clarity Value. Often this value will be an integer error code if the response is an `Error`.
 
 ### Tuples
 
@@ -192,7 +192,7 @@ console.log(tupCV.data['b']);
 // { type: ClarityType.BoolTrue }
 ```
 
-Tuples in Clarity are typed and contain named fields. Tuples in Clarity are typed and contain named fields. The tuple above, for example, contains three fields with the names **a**, **b** and **c**, and the types of their values are `Int`, `Boolean` and `Boolean`, respectively.
+Tuples in Clarity are typed and contain named fields. Tuples in Clarity are typed and contain named fields. The tuple above, for example, contains three fields with the names **a**, **b** and **c**, and the types of their values are `Int`, `Boolean` and `Boolean`, respectively. Tuples in Clarity are typed and contain named fields. The tuple above, for example, contains three fields with the names **a**, **b** and **c**, and the types of their values are `Int`, `Boolean` and `Boolean`, respectively.
 
 Clarity tuples are represented in JavaScript as objects and a tuple's data can be accessed by its `data` field, where the underlying JS object is stored.
 
@@ -206,7 +206,7 @@ console.log(l.list[0]);
 // { type: ClarityType.BoolTrue }
 ```
 
-Lists, in Clarity, are homogeneous, meaning they can only contain elements of a singular (Clarity) type. Make sure to avoid constructing lists that have elements of multiple types. Make sure to avoid constructing lists that have elements of multiple types.
+Lists, in Clarity, are homogeneous, meaning they can only contain elements of a singular (Clarity) type. Make sure to avoid constructing lists that have elements of multiple types. Make sure to avoid constructing lists that have elements of multiple types. Make sure to avoid constructing lists that have elements of multiple types.
 
 A Clarity lists underlying data can be accessed via its `list` field.
 
@@ -218,9 +218,9 @@ This is covered in depth [here](../understand-stacks/transactions#construction).
 
 ## Utilizing Clarity Values from Transaction Responses
 
-`Read-only` Clarity functions can return Clarity values as a response. `Read-only` Clarity functions can return Clarity values as a response. These `read-only` functions can be accessed easily in JavaScript via the [`callReadOnlyFunction()`](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions#calling-read-only-contract-function) function included in `@stacks/transactions`, which returns a `ClarityValue`.
+`Read-only` Clarity functions can return Clarity values as a response. `Read-only` Clarity functions can return Clarity values as a response. `Read-only` Clarity functions can return Clarity values as a response. These `read-only` functions can be accessed easily in JavaScript via the [`callReadOnlyFunction()`](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions#calling-read-only-contract-function) function included in `@stacks/transactions`, which returns a `ClarityValue`.
 
-As mentioned above, `ClarityValues` are simply javascript objects containing a value and its associated Clarity type information. These object types are defined [here](https://github.com/hirosystems/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types). These object types are defined [here](https://github.com/hirosystems/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types).
+As mentioned above, `ClarityValues` are simply javascript objects containing a value and its associated Clarity type information. These object types are defined [here](https://github.com/hirosystems/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types). As mentioned above, `ClarityValues` are simply javascript objects containing a value and its associated Clarity type information. These object types are defined [here](https://github.com/hirosystems/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types). These object types are defined [here](https://github.com/hirosystems/stacks.js/tree/1f2b5fd8bdf1c2b5866e8171163594d7708a8c7a/packages/transactions/src/clarity/types).
 
 When you are calling a `read-only` contract function, you will always know what type the function will return, since functions in Clarity are strongly typed.
 
@@ -276,7 +276,7 @@ let trueHex = cvToHex(trueCV());
 
 ## Debugging Clarity Values
 
-Sometimes you might receive a Clarity value that you were not expecting. Sometimes you might receive a Clarity value that you were not expecting. Logging the value to your console won't always prove to be useful, unless you have memorized the Clarity value type enum values.
+Sometimes you might receive a Clarity value that you were not expecting. Sometimes you might receive a Clarity value that you were not expecting. Sometimes you might receive a Clarity value that you were not expecting. Logging the value to your console won't always prove to be useful, unless you have memorized the Clarity value type enum values.
 
 In order to figure out what kind of value you are dealing with, you can use the `cvToString()` function to convert the Clarity value to a more easily readable string.
 

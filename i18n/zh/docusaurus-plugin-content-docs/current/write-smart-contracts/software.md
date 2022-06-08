@@ -12,7 +12,7 @@ This makes programming in Clarity easier and much more intuitive.
 
 ![Clarity LSP Screenshot](https://github.com/hirosystems/clarity-lsp/raw/HEAD/doc/images/screenshot.png?raw=true)
 
-Clarity LSP repository is available [here](https://github.com/hirosystems/clarity-lsp). The extension for Visual Studio Code can be downloaded directly from [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp), but can be and older version. For a more up to date version you can also download it from [open-vsx](https://open-vsx.org/extension/hirosystems/clarity-lsp).
+Clarity LSP repository is available [here](https://github.com/hirosystems/clarity-lsp). The extension for Visual Studio Code can be downloaded directly from [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp), but can be and older version. For a more up to date version you can also download it from [open-vsx](https://open-vsx.org/extension/hirosystems/clarity-lsp). The extension for Visual Studio Code can be downloaded directly from [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp), but can be and older version. For a more up to date version you can also download it from [open-vsx](https://open-vsx.org/extension/hirosystems/clarity-lsp).
 
 ## Clarity REPL
 
@@ -24,11 +24,11 @@ Instructions on how to install Clarity REPL can be found [here](https://github.c
 
 ## Clarinet
 
-Clarinet is a Clarity runtime packaged as a command line tool, designed to facilitate smart contract understanding, development, testing and deployment. Clarinet consists of a Clarity REPL and a testing harness, which, when used together allow you to rapidly develop and test a Clarity smart contract, with the need to deploy the contract to a local devnet or testnet.
+Clarinet is a Clarity runtime packaged as a command line tool, designed to facilitate smart contract understanding, development, testing and deployment. Clarinet is a Clarity runtime packaged as a command line tool, designed to facilitate smart contract understanding, development, testing and deployment. Clarinet consists of a Clarity REPL and a testing harness, which, when used together allow you to rapidly develop and test a Clarity smart contract, with the need to deploy the contract to a local devnet or testnet.
 
 ![Clarinet](https://github.com/hirosystems/clarinet/blob/develop/docs/images/demo.gif?raw=true)
 
-Installation instructions, including build from source instructions can be found [here](https://github.com/hirosystems/clarinet). If you prefer you can directly download the latest compiled realease for Windows, Mac and Linux [here](https://github.com/hirosystems/clarinet/releases).
+Installation instructions, including build from source instructions can be found [here](https://github.com/hirosystems/clarinet). If you prefer you can directly download the latest compiled realease for Windows, Mac and Linux [here](https://github.com/hirosystems/clarinet/releases). If you prefer you can directly download the latest compiled realease for Windows, Mac and Linux [here](https://github.com/hirosystems/clarinet/releases).
 
 [Clarinet 101](https://www.youtube.com/playlist?list=PL5Ujm489LoJaAz9kUJm8lYUWdGJ2AnQTb) contains multiple Clarinet video tutorials
 
@@ -41,7 +41,7 @@ $ clarinet --version
 clarinet 0.70
 ```
 
-More detailed information on using Clarinet is available [here](https://book.clarity-lang.org/ch07-00-using-clarinet.html). However to get you started, the following commands are important to know.
+More detailed information on using Clarinet is available [here](https://book.clarity-lang.org/ch07-00-using-clarinet.html). However to get you started, the following commands are important to know. However to get you started, the following commands are important to know.
 
 Create a new project and enter its directory:
 

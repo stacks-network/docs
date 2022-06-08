@@ -1078,7 +1078,7 @@ The `func` argument must be a literal function name.
 
 This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
 
-`(err u1)` -- `sender` does not have enough balance to transfer `(err u2)` -- `sender` and `recipient` are the same principal `(err u3)` -- amount to send is non-positive `
+`(err u1)` -- `sender` does not have enough balance to transfer `(err u2)` -- `sender` and `recipient` are the same principal `(err u3)` -- amount to send is non-positive
 #### example:
 ```clarity
 
@@ -1097,7 +1097,7 @@ This function returns (ok true) if the transfer is successful. In the event of a
 
 This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
 
-`(err u1)` -- `sender` does not own the asset `(err u2)` -- `sender` and `recipient` are the same principal `(err u3)` -- asset identified by asset-identifier does not exist `
+`(err u1)` -- `sender` does not own the asset `(err u2)` -- `sender` and `recipient` are the same principal `(err u3)` -- asset identified by asset-identifier does not exist
 #### example:
 ```clarity
 

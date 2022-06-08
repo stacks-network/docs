@@ -217,8 +217,7 @@ To start your miner, run this in the command line:
 stacks-node start --config=testnet/stacks-node/conf/mainnet-miner-conf.toml
 ```
 
-:::note
-While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
+:::note While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
 ::: ![Windows Defender](/img/windows-defender.png)
 
 Your node should start. It will take some time to sync, and then your miner will be running.
