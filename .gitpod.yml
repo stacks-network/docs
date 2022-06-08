@@ -3,5 +3,5 @@ ports:
     onOpen: open-preview
 
 tasks:
-  - init: yarn install
-    command: yarn dev
+  - init: npm install
+    command: npx docusaurus start
