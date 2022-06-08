@@ -2,12 +2,12 @@
 title: Crea apps con Stacks
 description: Identificación de usuarios, firma de transacciones y almacenamiento de datos en la cadena de bloques Stacks
 sidebar_position: 3
-sidebar_label: Build apps
+sidebar_label: Crear apps
 ---
 
-## Introduction
+## Introducción
 
-Apps built with the Stacks blockchain give users control over their digital identities, assets, and data.
+Las aplicaciones construidas con la cadena de bloques Stacks dan control a los usuarios sobre sus identidades, activos y datos digitales.
 
 Unlike most cloud-based apps, they are "decentralized" since they don't depend on any centralized platform, server, or database to function. Rather, they use the Stacks blockchain to authenticate users and facilitate read and write requests for them without any single point of failure or trust.
 
@@ -24,7 +24,7 @@ All three of these integrations can be used together to create powerful new user
 
 While integration is possible for any type of app, most of the resources available here are for web developers experienced with JavaScript. See [Hiro developer docs](https://docs.hiro.so) for more information on the available app development libraries for Stacks.
 
-## [References](references)
+## [Referencias](references)
 
 [Autenticación](references/authentication)
 

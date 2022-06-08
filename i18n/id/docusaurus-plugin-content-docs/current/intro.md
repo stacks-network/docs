@@ -3,11 +3,11 @@ sidebar_label: "Beranda"
 sidebar_position: 1
 ---
 
-# Pengenalan Musim
+# Stacks Pendahuluan
 
-Welcome to the community driven official Stacks Documentation.
+Selamat datang di Dokumentasi Stacks resmi yang digerakkan oleh komunitas.
 
-Learn about Stacks mining, the STX token, and the Clarity smart contract language.
+Belajar tentang penambangan Stacks, token STX, dan bahasa pemrograman kontrak pintar Clarity.
 
 ![](/img/Bitcoinet-L_2.svg)
 
