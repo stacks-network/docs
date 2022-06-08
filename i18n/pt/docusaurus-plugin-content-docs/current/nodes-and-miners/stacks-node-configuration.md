@@ -172,7 +172,7 @@ bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d77769
 
 #### wait_time_for_microblocks (optional)
 
-The amount of time (in milliseconds) that a node will wait before trying to mine a block, after catching up to the anchored chain tip. This gives the current leader time to broadcast microblocks that will get included in that mined block.
+The amount of time (in milliseconds) that a node will wait before trying to mine a block, after catching up to the anchored chain tip. This gives the current leader time to broadcast microblocks that will get included in that mined block. This gives the current leader time to broadcast microblocks that will get included in that mined block.
 
 Example:
 
@@ -234,8 +234,7 @@ prometheus_bind = "0.0.0.0:9153"
 
 Contains options for watching events emitted by a local [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service.
 
-:::info
-This section can be repeated multiple times.
+:::info This section can be repeated multiple times.
 :::
 
 Example:
@@ -460,8 +459,7 @@ commit_anchor_block_within = 10000
 
 This section contains configuration options pertaining to the genesis block allocation for an address in micro-STX. If a user changes these values, their node may be in conflict with other nodes on the network and find themselves unable to sync with other nodes.
 
-:::info
-This section can repeat multiple times, and thus is in double-brackets. Each section can define only one address. This section is ignored if running a node on mainnet.
+:::info This section can repeat multiple times, and thus is in double-brackets. Each section can define only one address. This section is ignored if running a node on mainnet.
 :::
 
 Example:
