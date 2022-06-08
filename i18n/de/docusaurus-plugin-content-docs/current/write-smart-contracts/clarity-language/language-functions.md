@@ -261,6 +261,11 @@ The `if` function admits a boolean argument and two expressions which must retur
 #### signature: `(let ((name1 expr1) (name2 expr2) ...) expr-body1 expr-body2 ... expr-body-last)`
 #### description:
 The `let` function accepts a list of `variable name` and `expression` pairs,
+evaluating each expression and _binding_ it to the corresponding variable name. A`
+#### output: `A`
+#### signature: `(let ((name1 expr1) (name2 expr2) ...) expr-body1 expr-body2 ... expr-body-last)`
+#### description:
+The `let` function accepts a list of `variable name` and `expression` pairs,
 evaluating each expression and _binding_ it to the corresponding variable name.
 `let` bindings are sequential: when a `let` binding is evaluated, it may refer to prior binding.
 The _context_ created by this set of bindings is used for evaluating its body expressions.
@@ -551,6 +556,11 @@ The `merge` function returns a new tuple with the combined fields, without mutat
 
 ### begin
 #### input: `AnyType, ... A`
+#### output: `A`
+#### signature: `(begin expr1 expr2 expr3 ... expr-last)`
+#### description:
+The `begin` function evaluates each of its input expressions, returning the
+return value of the last such expression. A`
 #### output: `A`
 #### signature: `(begin expr1 expr2 expr3 ... expr-last)`
 #### description:
