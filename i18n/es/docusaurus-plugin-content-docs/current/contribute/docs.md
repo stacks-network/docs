@@ -150,7 +150,7 @@ sections:
           - path: /technical-specs
           - path: /stacks-blockchain-api
         sections:
-          - title:  Clarity Development Software
+          - title: Clarity Development Software
             usePageTitles: true
             pages:
               - path: /software
@@ -226,6 +226,16 @@ Which will render:
 
 (define-public (test-emit-event)
     (begin
+        (print "Event. novel-token-19 u12 sender))
+(begin (ft-transfer? novel-token-19 u2 sender recipient))
+
+(define-non-fungible-token hello-nft uint)
+(begin (nft-mint? hello-nft u1 sender))
+(begin (nft-mint? hello-nft u2 sender))
+(begin (nft-transfer? hello-nft u1 sender recipient))
+
+(define-public (test-emit-event)
+    (begin
         (print "Event. Hello world")
         (ok u1)))
 (begin (test-emit-event))
@@ -233,6 +243,21 @@ Which will render:
 (define-public (test-event-types)
     (begin
         (unwrap-panic (ft-mint? novel-token-19 u3 recipient))
+        (unwrap-panic (nft-mint? hello-nft u2 recipient))
+        (unwrap-panic (stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR))
+        (unwrap-panic (stx-burn? u20 tx-sender))
+        (ok u1)))
+
+(define-map store ((key (buff 32))) ((value (buff 32))))
+(define-public (get-value (key (buff 32)))
+    (begin
+        (match (map-get? store ((key key)))
+            entry (ok (get value entry))
+            (err 0))))
+(define-public (set-value (key (buff 32)) (value (buff 32)))
+    (begin
+        (map-set store ((key key)) ((value value)))
+        (ok u1))) novel-token-19 u3 recipient))
         (unwrap-panic (nft-mint? hello-nft u2 recipient))
         (unwrap-panic (stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR))
         (unwrap-panic (stx-burn? u20 tx-sender))
