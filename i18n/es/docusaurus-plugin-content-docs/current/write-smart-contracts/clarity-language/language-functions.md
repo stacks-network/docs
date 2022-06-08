@@ -1090,7 +1090,7 @@ This function returns (ok true) if the transfer is successful. In the event of a
 ### nft-mint?
 #### input: `AssetName, A, principal`
 #### output: `(response bool uint)`
-#### signature: `(nft-mint? signature: <code>(nft-burn? asset-class asset-identifier recipient)`
+#### signature: `(nft-mint? asset-class asset-identifier recipient)`
 #### description:
 `nft-burn?` is used to burn an asset and remove that asset's owner from the `recipient` principal. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
 
@@ -1109,7 +1109,7 @@ Otherwise, on successfuly mint, it returns `(ok true)`. `
 ### ft-mint?
 #### input: `TokenName, uint, principal`
 #### output: `(response bool uint)`
-#### signature: `(ft-mint? token-name amount recipient)` token-name amount recipient)</code>
+#### signature: `(ft-mint? token-name amount recipient)`
 #### description:
 `ft-mint?` is used to increase the token balance for the `recipient` principal for a token type defined using `define-fungible-token`. The increased token balance is _not_ transfered from another principal, but rather minted.
 
@@ -1131,7 +1131,6 @@ If a non-positive amount is provided to mint, this function returns `(err 1)`. O
 ```clarity
 
 (define-fungible-token stackaroo)
-(ft-mint? (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
 (ft-get-supply stackaroo) ;; Returns u100
 ```
@@ -1139,7 +1138,7 @@ If a non-positive amount is provided to mint, this function returns `(err 1)`. O
 ### ft-burn?
 #### input: `TokenName, uint, principal`
 #### output: `(response bool uint)`
-#### signature: `(ft-burn? token-name amount sender)` token-name amount sender)</code>
+#### signature: `(ft-burn? token-name amount sender)`
 #### description:
 `ft-burn?` is used to decrease the token balance for the `sender` principal for a token type defined using `define-fungible-token`. The decreased token balance is _not_ transfered to another principal, but rather destroyed, reducing the circulating supply.
 
@@ -1148,17 +1147,16 @@ If a non-positive amount is provided to burn, this function returns `(err 1)`. O
 ```clarity
 
 (define-fungible-token stackaroo)
-(ft-mint? (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
-(ft-burn? stackaroo u50 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true) stackaroo u50 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
+(ft-burn? stackaroo u50 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
 
 ### nft-burn?
 #### input: `AssetName, A, principal`
 #### output: `(response bool uint)`
-#### signature: `(nft-burn? signature: <code>(nft-burn? asset-class asset-identifier recipient)`
+#### signature: `(nft-burn? asset-class asset-identifier recipient)`
 #### description:
-`stx-burn?` debits the `sender` principal's STX holdings by `amount`, destroying the STX. The `sender` principal _must_ be equal to the current context's `tx-sender`.
+`nft-burn?` is used to burn an asset and remove that asset's owner from the `recipient` principal. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
 
 If an asset identified by `asset-identifier` _doesn't exist_, this function will return an error with the following error code:
 
@@ -1169,9 +1167,8 @@ Otherwise, on successfuly burn, it returns `(ok true)`. `
 ```clarity
 
 (define-non-fungible-token stackaroo (string-ascii 40))
-(nft-mint? (define-non-fungible-token stackaroo (string-ascii 40))
 (nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
-(nft-burn? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true) stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
+(nft-burn? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
 
 ### stx-get-balance
@@ -1192,7 +1189,7 @@ This function returns the STX balance of the `owner` principal. In the event tha
 ### stx-transfer?
 #### input: `uint, principal, principal`
 #### output: `(response bool uint)`
-#### signature: `(stx-transfer? amount sender recipient)` amount sender recipient)</code>
+#### signature: `(stx-transfer? amount sender recipient)`
 #### description:
 `stx-transfer?` is used to increase the STX balance for the `recipient` principal by debiting the `sender` principal. The `sender` principal _must_ be equal to the current context's `tx-sender`.
 
@@ -1203,16 +1200,15 @@ This function returns (ok true) if the transfer is successful. In the event of a
 ```clarity
 
 (as-contract
-  (stx-transfer? (as-contract
   (stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (ok true)
 (as-contract
-  (stx-transfer? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender)) ;; Returns (err u4) u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender)) ;; Returns (err u4)
+  (stx-transfer? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender)) ;; Returns (err u4)
 ```
 
 ### stx-burn?
 #### input: `uint, principal`
 #### output: `(response bool uint)`
-#### signature: `(stx-burn? amount sender)` amount sender)</code>
+#### signature: `(stx-burn? amount sender)`
 #### description:
 `stx-burn?` debits the `sender` principal's STX holdings by `amount`, destroying the STX. The `sender` principal _must_ be equal to the current context's `tx-sender`.
 
@@ -1223,10 +1219,9 @@ This function returns (ok true) if the transfer is successful. In the event of a
 ```clarity
 
 (as-contract
-  (stx-burn? (as-contract
   (stx-burn? u60 tx-sender)) ;; Returns (ok true)
 (as-contract
-  (stx-burn? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (err u4) u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (err u4)
+  (stx-burn? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (err u4)
 ```
 
 ### define-constant
@@ -1392,7 +1387,6 @@ Like other kinds of definition statements, `define-trait` may only be used at th
 ```clarity
 
 (define-trait token-trait
-    ((transfer? (define-trait token-trait
     ((transfer? (principal principal uint) (response uint uint))
      (get-balance (principal) (response uint uint))))
 ```
@@ -1429,4 +1423,4 @@ Like other kinds of definition statements, `impl-trait` may only be used at the 
 #### example:
 ```clarity
 
-(impl-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait) (define-public (get-balance (account principal)) (ok u0)) (define-public (transfer? (from principal) (to principal) (amount uint)) (ok u0)) " } (from principal) (to principal) (amount uint)) (ok u0)) " }
+(impl-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait) (define-public (get-balance (account principal)) (ok u0)) (define-public (transfer? (from principal) (to principal) (amount uint)) (ok u0)) " }
