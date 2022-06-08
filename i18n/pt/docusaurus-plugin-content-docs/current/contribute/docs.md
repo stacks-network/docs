@@ -43,8 +43,7 @@ When working locally with the site, a few things are needed:
 - [`node` + `npm`,](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [`yarn` installed](https://yarnpkg.com/getting-started/install) on your machine.
 - Some kind of code editor, such as VSCode, Sublime, or WebStorm.
 
-:::note
-This project requires at least Node version 12
+:::note This project requires at least Node version 12
 :::
 
 ### Working with GitHub
