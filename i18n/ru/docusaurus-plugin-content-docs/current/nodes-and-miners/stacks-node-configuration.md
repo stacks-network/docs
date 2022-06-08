@@ -241,8 +241,7 @@ This section can be repeated multiple times.
 Example:
 
 ```toml
-[[events_observer]]
-endpoint = "address-to-my-local.stacks-node-api.com:3700"
+[[events_observer]] endpoint = "address-to-my-local.stacks-node-api.com:3700"
 retry_count = 255
 events_keys = ["*"]
 ```
@@ -467,20 +466,16 @@ This section can repeat multiple times, and thus is in double-brackets. Each sec
 Example:
 
 ```toml
-[[ustx_balance]]
-address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
+[[ustx_balance]] address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
 amount = 10000000000000000
 
-[[ustx_balance]]
-address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
+[[ustx_balance]] address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
 amount = 10000000000000000
 
-[[ustx_balance]]
-address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
+[[ustx_balance]] address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
 amount = 10000000000000000
 
-[[ustx_balance]]
-address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
+[[ustx_balance]] address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
 amount = 10000000000000000
 ```
 
