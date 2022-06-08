@@ -140,7 +140,7 @@ The consensus algorithm used in the Stacks blockchain where miners destroy a pro
 A proof-of-work system or proof-of-work mining is a mining mechanism where miners must expend computing power to solve complicated cryptographic puzzles, and prove that they have done so by writing the solution to the blockchain, in order to be allowed to add blocks to a blockchain. This is the mining system used, for example, by Bitcoin.
 
 #### public key,
-Public and private key pair comprise of two uniquely related cryptographic keys. It looks like a long random string of letters and numbers: `3048 0241 00C9 18FA CF8D EB2D EFD5 FD37 89B9 E069 EA97 FC20 …` The exact format of the public and private key depend on the software you use to create them.
+Public and private key pair comprise of two uniquely related cryptographic keys. It looks like a long random string of letters and numbers: `3048 0241 00C9 18FA CF8D EB2D EFD5 FD37 89B9 E069 EA97 FC20 … ` The exact format of the public and private key depend on the software you use to create them.
 
 #### Public Key Infrastructure (PKI),A system which returns a cryptographic public key associated with a name.
 
