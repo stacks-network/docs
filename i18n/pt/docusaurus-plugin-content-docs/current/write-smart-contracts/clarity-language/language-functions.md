@@ -120,8 +120,7 @@ Tries to convert the `uint` argument to an `int`. Will cause a runtime error and
 #### input: `int`
 #### output: `uint`
 #### signature: `(to-uint i)`
-#### description:
-Tries to convert the `int` argument to a `uint`. Will cause a runtime error and abort if the supplied argument is negative.
+#### description: Tries to convert the `int` argument to a `uint`. Will cause a runtime error and abort if the supplied argument is negative.
 #### example: 
 ```clarity
 (to-uint 238) ;; Returns u238```
@@ -130,8 +129,7 @@ Tries to convert the `int` argument to a `uint`. Will cause a runtime error and 
 #### input: `int, int | uint, uint`
 #### output: `int | uint`
 #### signature: `(mod i1 i2)`
-#### description:
-Returns the integer remainder from integer dividing `i1` by `i2`. In the event of a division by zero, throws a runtime error.
+#### description: Returns the integer remainder from integer dividing `i1` by `i2`. In the event of a division by zero, throws a runtime error.
 #### example: 
 ```clarity
 (mod 2 3) ;; Returns 2
@@ -259,8 +257,7 @@ The `if` function admits a boolean argument and two expressions which must retur
 #### input: `((name1 AnyType) (name2 AnyType) ...), AnyType, ... A`
 #### output: `A`
 #### signature: `(let ((name1 expr1) (name2 expr2) ...) expr-body1 expr-body2 ... expr-body-last)`
-#### description:
-The `let` function accepts a list of `variable name` and `expression` pairs,
+#### description: The `let` function accepts a list of `variable name` and `expression` pairs,
 evaluating each expression and _binding_ it to the corresponding variable name.
 `let` bindings are sequential: when a `let` binding is evaluated, it may refer to prior binding.
 The _context_ created by this set of bindings is used for evaluating its body expressions.
@@ -275,8 +272,7 @@ Note: intermediary statements returning a response type must be checked`
 #### input: `Function(A, B, ..., N) -> X, sequence_A, sequence_B, ..., sequence_N`
 #### output: `(list X)`
 #### signature: `(map func sequence_A sequence_B ... sequence_N)`
-#### description:
-The `map` function applies the function `func` to each corresponding element of the input sequences,
+#### description: The `map` function applies the function `func` to each corresponding element of the input sequences,
 and outputs a _list_ of the same type containing the outputs from those function applications.
 Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
 for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
@@ -331,8 +327,7 @@ The `append` function takes a list and another value with the same entry type, a
 #### input: `sequence_A, sequence_A`
 #### output: `sequence_A`
 #### signature: `(concat sequence1 sequence2)`
-#### description:
-The `concat` function takes two sequences of the same type,
+#### description: The `concat` function takes two sequences of the same type,
 and returns a concatenated sequence of the same type, with the resulting
 sequence_len = sequence1_len + sequence2_len.
 Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
@@ -420,8 +415,7 @@ The `list` function constructs a list composed of the inputted values. Each supp
 #### input: `VarName`
 #### output: `A`
 #### signature: `(var-get var-name)`
-#### description:
-The `var-get` function looks up and returns an entry from a contract's data map.
+#### description: The `var-get` function looks up and returns an entry from a contract's data map.
 The value is looked up using `var-name`.
 #### example: 
 ```clarity
@@ -432,8 +426,7 @@ The value is looked up using `var-name`.
 #### input: `VarName, AnyType`
 #### output: `bool`
 #### signature: `(var-set var-name expr1)`
-#### description:
-The `var-set` function sets the value associated with the input variable to the
+#### description: The `var-set` function sets the value associated with the input variable to the
 inputted value. The function always returns `true`.
 #### example: 
 ```clarity
@@ -447,8 +440,7 @@ inputted value. The function always returns `true`.
 #### input: `MapName, tuple`
 #### output: `(optional (tuple))`
 #### signature: `(map-get? map-name key-tuple)`
-#### description:
-The `map-get?` function looks up and returns an entry from a contract's data map.
+#### description: The `map-get?` function looks up and returns an entry from a contract's data map.
 The value is looked up using `key-tuple`.
 If there is no value associated with that key in the data map, the function returns a `none` option. Otherwise,
 it returns `(some value)`.
@@ -523,8 +515,7 @@ There is a shorthand using curly brackets of the form {key0: expr0, key1: expr, 
 #### input: `KeyName, (tuple) | (optional (tuple))`
 #### output: `A`
 #### signature: `(get key-name tuple)`
-#### description:
-The `get` function fetches the value associated with a given key from the supplied typed tuple.
+#### description: The `get` function fetches the value associated with a given key from the supplied typed tuple.
 If an `Optional` value is supplied as the inputted tuple, `get` returns an `Optional` type of the specified key in
 the tuple. If the supplied option is a `(none)` option, get returns `(none)`.
 #### example: 
@@ -553,8 +544,7 @@ The `merge` function returns a new tuple with the combined fields, without mutat
 #### input: `AnyType, ... A`
 #### output: `A`
 #### signature: `(begin expr1 expr2 expr3 ... expr-last)`
-#### description:
-The `begin` function evaluates each of its input expressions, returning the
+#### description: The `begin` function evaluates each of its input expressions, returning the
 return value of the last such expression.
 Note: intermediary statements returning a response type must be checked.
 #### example: 
@@ -565,8 +555,7 @@ Note: intermediary statements returning a response type must be checked.
 #### input: `buff|uint|int`
 #### output: `(buff 20)`
 #### signature: `(hash160 value)`
-#### description:
-The `hash160` function computes `RIPEMD160(SHA256(x))` of the inputted value.
+#### description: The `hash160` function computes `RIPEMD160(SHA256(x))` of the inputted value.
 If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
 integer.
 #### example: 
@@ -577,8 +566,7 @@ integer.
 #### input: `buff|uint|int`
 #### output: `(buff 32)`
 #### signature: `(sha256 value)`
-#### description:
-The `sha256` function computes `SHA256(x)` of the inputted value.
+#### description: The `sha256` function computes `SHA256(x)` of the inputted value.
 If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
 integer.
 #### example: 
@@ -589,8 +577,7 @@ integer.
 #### input: `buff|uint|int`
 #### output: `(buff 64)`
 #### signature: `(sha512 value)`
-#### description:
-The `sha512` function computes `SHA512(x)` of the inputted value.
+#### description: The `sha512` function computes `SHA512(x)` of the inputted value.
 If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
 integer.
 #### example: 
@@ -601,8 +588,7 @@ integer.
 #### input: `buff|uint|int`
 #### output: `(buff 32)`
 #### signature: `(sha512/256 value)`
-#### description:
-The `sha512/256` function computes `SHA512/256(x)` (the SHA512 algorithm with the 512/256 initialization vector, truncated
+#### description: The `sha512/256` function computes `SHA512/256(x)` (the SHA512 algorithm with the 512/256 initialization vector, truncated
 to 256 bits) of the inputted value.
 If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
 integer.
@@ -614,8 +600,7 @@ integer.
 #### input: `buff|uint|int`
 #### output: `(buff 32)`
 #### signature: `(keccak256 value)`
-#### description:
-The `keccak256` function computes `KECCAK256(value)` of the inputted value.
+#### description: The `keccak256` function computes `KECCAK256(value)` of the inputted value.
 Note that this differs from the `NIST SHA-3` (that is, FIPS 202) standard. If an integer (128 bit)
 is supplied the hash is computed over the little-endian representation of the integer.
 #### example: 
@@ -626,8 +611,7 @@ is supplied the hash is computed over the little-endian representation of the in
 #### input: `(buff 32), (buff 65)`
 #### output: `(response (buff 33) uint)`
 #### signature: `(secp256k1-recover? message-hash signature)`
-#### description:
-The `secp256k1-recover?` function recovers the public key used to sign the message  which sha256 is `message-hash`
+#### description: The `secp256k1-recover?` function recovers the public key used to sign the message  which sha256 is `message-hash`
     with the provided `signature`.
     If the signature does not match, it will return the error code `(err u1).`.
     If the signature is invalid, it will return the error code `(err u2).`.
@@ -642,8 +626,7 @@ The `secp256k1-recover?` function recovers the public key used to sign the messa
 #### input: `(buff 32), (buff 64) | (buff 65), (buff 33)`
 #### output: `bool`
 #### signature: `(secp256k1-verify message-hash signature public-key)`
-#### description:
-The `secp256k1-verify` function verifies that the provided signature of the message-hash
+#### description: The `secp256k1-verify` function verifies that the provided signature of the message-hash
 was signed with the private key that generated the public key.
 The `message-hash` is the `sha256` of the message.
 The signature includes 64 bytes plus an optional additional recovery id (00..03) for a total of 64 or 65 bytes.
@@ -663,8 +646,7 @@ The signature includes 64 bytes plus an optional additional recovery id (00..03)
 #### input: `A`
 #### output: `A`
 #### signature: `(print expr)`
-#### description:
-The `print` function evaluates and returns its input expression. On Stacks Core
+#### description: The `print` function evaluates and returns its input expression. On Stacks Core
 nodes configured for development (as opposed to production mining nodes), this function prints the resulting value to `STDOUT` (standard output).
 #### example: 
 ```clarity
@@ -674,8 +656,7 @@ nodes configured for development (as opposed to production mining nodes), this f
 #### input: `ContractName, PublicFunctionName, Arg0, ...`
 #### output: `(response A B)`
 #### signature: `(contract-call? .contract-name function-name arg0 arg1 ...)`
-#### description:
-The `contract-call?` function executes the given public function of the given contract.
+#### description: The `contract-call?` function executes the given public function of the given contract.
 You _may not_ use this function to call a public function defined in the current contract. If the public
 function returns _err_, any database changes resulting from calling `contract-call?` are aborted.
 If the function returns _ok_, database changes occurred.
@@ -689,8 +670,7 @@ If the function returns _ok_, database changes occurred.
 #### input: `A`
 #### output: `A`
 #### signature: `(as-contract expr)`
-#### description:
-The `as-contract` function switches the current context's `tx-sender` value to the _contract's_
+#### description: The `as-contract` function switches the current context's `tx-sender` value to the _contract's_
 principal and executes `expr` with that context. It returns the resulting value of `expr`.
 #### example: 
 ```clarity
@@ -700,8 +680,7 @@ principal and executes `expr` with that context. It returns the resulting value 
 #### input: `Trait`
 #### output: `principal`
 #### signature: `(contract-of .contract-name)`
-#### description:
-The `contract-of` function returns the principal of the contract implementing the trait.
+#### description: The `contract-of` function returns the principal of the contract implementing the trait.
 #### example: 
 ```clarity
 
@@ -725,8 +704,7 @@ The `principal-of?` function returns the principal derived from the provided pub
 #### input: `(buff 32), A`
 #### output: `A`
 #### signature: `(at-block id-block-hash expr)`
-#### description:
-The `at-block` function evaluates the expression `expr` _as if_ it were evaluated at the end of the
+#### description: The `at-block` function evaluates the expression `expr` _as if_ it were evaluated at the end of the
 block indicated by the _block-hash_ argument. The `expr` closure must be read-only.
 
 Note: The block identifying hash must be a hash returned by the `id-header-hash` block information
@@ -746,8 +724,7 @@ The function returns the result of evaluating `expr`.
 #### input: `BlockInfoPropertyName, BlockHeightInt`
 #### output: `(optional buff) | (optional uint)`
 #### signature: `(get-block-info? prop-name block-height-expr)`
-#### description:
-The `get-block-info?` function fetches data for a block of the given block height. The
+#### description: The `get-block-info?` function fetches data for a block of the given block height. The
 value and type returned are determined by the specified `BlockInfoPropertyName`. If the provided `BlockHeightInt` does
 not correspond to an existing block prior to the current block, the function returns `none`. The currently available property names
 are `time`, `header-hash`, `burnchain-header-hash`, `id-header-hash`, `miner-address`, and `vrf-seed`.
@@ -783,8 +760,7 @@ The `err` function constructs a response type from the input value. Use `err` fo
 #### input: `A`
 #### output: `(response A B)`
 #### signature: `(ok value)`
-#### description:
-The `ok` function constructs a response type from the input value. Use `ok` for
+#### description: The `ok` function constructs a response type from the input value. Use `ok` for
 creating return values in public functions. An _ok_ value indicates that any database changes during
 the processing of the function should materialize.
 #### example: 
@@ -795,8 +771,7 @@ the processing of the function should materialize.
 #### input: `A`
 #### output: `(optional A)`
 #### signature: `(some value)`
-#### description:
-The `some` function constructs a `optional` type from the input value.
+#### description: The `some` function constructs a `optional` type from the input value.
 #### example: 
 ```clarity
 (some 1) ;; Returns (some 1)
@@ -806,8 +781,7 @@ The `some` function constructs a `optional` type from the input value.
 #### input: `A, (optional A)`
 #### output: `A`
 #### signature: `(default-to default-value option-value)`
-#### description:
-The `default-to` function attempts to 'unpack' the second argument: if the argument is
+#### description: The `default-to` function attempts to 'unpack' the second argument: if the argument is
 a `(some ...)` option, it returns the inner value of the option. If the second argument is a `(none)` value,
 `default-to` it returns the value of `default-value`.
 #### example: 
@@ -833,8 +807,7 @@ The `asserts!` function admits a boolean argument and asserts its evaluation: if
 #### input: `(optional A) | (response A B), C`
 #### output: `A`
 #### signature: `(unwrap! option-input thrown-value)`
-#### description:
-The `unwrap!` function attempts to 'unpack' the first argument: if the argument is
+#### description: The `unwrap!` function attempts to 'unpack' the first argument: if the argument is
 an option type, and the argument is a `(some ...)` option, `unwrap!` returns the inner value of the
 option. If the argument is a response type, and the argument is an `(ok ...)` response, `unwrap!` returns
  the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `(none)` value,
@@ -855,8 +828,7 @@ option. If the argument is a response type, and the argument is an `(ok ...)` re
 #### input: `(response A B), C`
 #### output: `B`
 #### signature: `(unwrap-err! response-input thrown-value)`
-#### description:
-The `unwrap-err!` function attempts to 'unpack' the first argument: if the argument
+#### description: The `unwrap-err!` function attempts to 'unpack' the first argument: if the argument
 is an `(err ...)` response, `unwrap-err!` returns the inner value of the `err`.
 If the supplied argument is an `(ok ...)` value,
 `unwrap-err!` _returns_ `thrown-value` from the current function and exits the current control-flow.
@@ -868,8 +840,7 @@ If the supplied argument is an `(ok ...)` value,
 #### input: `(optional A) | (response A B)`
 #### output: `A`
 #### signature: `(unwrap-panic option-input)`
-#### description:
-The `unwrap` function attempts to 'unpack' its argument: if the argument is
+#### description: The `unwrap` function attempts to 'unpack' its argument: if the argument is
 an option type, and the argument is a `(some ...)` option, this function returns the inner value of the
 option. If the argument is a response type, and the argument is an `(ok ...)` response, it returns
  the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `(none)` value,
@@ -899,8 +870,7 @@ The `unwrap-err` function attempts to 'unpack' the first argument: if the argume
 #### output: `C`
 #### signature: `(match opt-input some-binding-name some-branch none-branch) |
 (match-resp input ok-binding-name ok-branch err-binding-name err-branch)`
-#### description:
-The `match` function is used to test and destructure optional and response types.
+#### description: The `match` function is used to test and destructure optional and response types.
 
 If the `input` is an optional, it tests whether the provided
 `input` is a `some` or `none` option, and evaluates `some-branch` or
@@ -1023,8 +993,7 @@ and `false` if it is a `none`.
 #### input: `Function(A) -> bool, sequence_A`
 #### output: `sequence_A`
 #### signature: `(filter func sequence)`
-#### description:
-The `filter` function applies the input function `func` to each element of the
+#### description: The `filter` function applies the input function `func` to each element of the
 input sequence, and returns the same sequence with any elements removed for which `func` returned `false`.
 Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
 for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
