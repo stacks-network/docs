@@ -24,7 +24,7 @@ const config = {
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'es', 'id'],
+    locales: ['en', 'id'],
   },
 
   presets: [
@@ -110,6 +110,10 @@ const config = {
                 label: 'Twitter',
                 href: 'https://twitter.com/stacks',
               },
+              {
+                label: 'GitHub',
+                href: 'https://github.com/stacks-network/docs',
+              },
             ],
           },
           {
@@ -117,11 +121,11 @@ const config = {
             items: [
               {
                 label: 'Blog',
-                to: '/blog',
+                to: 'https://stacks.org/blog',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/stacks-network/docs',
+                label: 'Translations',
+                href: 'https://crowdin.com/project/docsstacksco',
               },
               {
                 label: 'Mailing List',
