@@ -5,22 +5,23 @@ description: Learn how this site is built, and how you could contribute to it.
 
 ## Introduction
 
-Welcome. Thank you for your interest in contributing and helping make these docs as good as they can be.
+Welcome. Welcome. Thank you for your interest in contributing and helping make these docs as good as they can be.
 
 They are two different ways to colaborate to the docs:
 
-- Easiest way: Simply [add an issue on github](https://github.com/stacks-network/docs/issues/new) and enter there the next article you will like to add or modify. The only requirement here is to have a registered account on GitHub.
-- Standard way: Follow the [steps below](#getting-started) to clone this repo and make changes locally. This requires more technical skills.
+- Easiest way: Simply [add an issue on github](https://github.com/stacks-network/docs/issues/new) and enter there the next article you will like to add or modify. The only requirement here is to have a registered account on GitHub. The only requirement here is to have a registered account on GitHub.
+- Standard way: Follow the [steps below](#getting-started) to clone this repo and make changes locally. This requires more technical skills. This requires more technical skills.
 
 This page outlines how this site is built, its general structure, getting it running locally, and some helpful tips for using all of its features.
 
-These steps should only be followed to make changes on the general structure of the site and documents written in English. **To make changes in other languages**, please refer to [translations](translations) instead. This means that in the folder `/src/pages/` you should an make changes in `/src/pages/en`, as changes in any other locale (`/src/pages/es` or `/src/pages/fr` for example) are overwritten.
+These steps should only be followed to make changes on the general structure of the site and documents written in English. These steps should only be followed to make changes on the general structure of the site and documents written in English. **To make changes in other languages**, please refer to [translations](translations) instead. This means that in the folder `/src/pages/` you should an make changes in `/src/pages/en`, as changes in any other locale (`/src/pages/es` or `/src/pages/fr` for example) are overwritten. This means that in the folder `/src/pages/` you should an make changes in `/src/pages/en`, as changes in any other locale (`/src/pages/es` or `/src/pages/fr` for example) are overwritten.
 
 ### Next.js, MDX, Markdown
 
-This docs site is built with [Next.js](https://github.com/vercel/next.js) and uses something called [MDX](https://mdxjs.com/). Next.js is a framework built on top of React, and MDX is a tool that enables writing React code (JSX) within standard Markdown files. In addition to being able to write JSX in Markdown, it allows the application to render out all of the Markdown content with React components. This means that we are able to do some pretty complex things while a contributor only has to know how to write Markdown.
+This docs site is built with [Next.js](https://github.com/vercel/next.js) and uses something called [MDX](https://mdxjs.com/). This docs site is built with [Next.js](https://github.com/vercel/next.js) and uses something called [MDX](https://mdxjs.com/). Next.js is a framework built on top of React, and MDX is a tool that enables writing React code (JSX) within standard Markdown files. In addition to being able to write JSX in Markdown, it allows the application to render out all of the Markdown content with React components. This means that we are able to do some pretty complex things while a contributor only has to know how to write Markdown. In addition to being able to write JSX in Markdown, it allows the application to render out all of the Markdown content with React components. This means that we are able to do some pretty complex things while a contributor only has to know how to write Markdown.
 
-:::tip Don't know what Markdown is? Here is a [helpful guide](https://guides.github.com/features/mastering-markdown/) for learning it. :::
+:::tip Don't know what Markdown is?
+:::tip Don't know what Markdown is? Here is a [helpful guide](https://guides.github.com/features/mastering-markdown/) for learning it. ::: :::
 
 ## Getting started
 
@@ -39,7 +40,7 @@ To get started, you only have to a github account and open the link [https://git
 
 When working locally with the site, a few things are needed:
 
-- Familiarity with `git`, GitHub, and the command line. [Read more here.](https://docs.github.com/en/github/getting-started-with-github/quickstart)
+- Familiarity with `git`, GitHub, and the command line. Familiarity with `git`, GitHub, and the command line. [Read more here.](https://docs.github.com/en/github/getting-started-with-github/quickstart)
 - [`node` + `npm`,](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [`yarn` installed](https://yarnpkg.com/getting-started/install) on your machine.
 - Some kind of code editor, such as VSCode, Sublime, or WebStorm.
 
@@ -49,7 +50,7 @@ This project requires at least Node version 12
 
 ### Working with GitHub
 
-All of the code for this site is open source, located at the [GitHub repository here](https://github.com/stacks-network/docs). Before you start editing anything, you will need to fork the repo so that you can have your own copy of the code under your GitHub profile. On the [repository's page](https://github.com/stacks-network/docs), you should be able to see a button in the upper right of the screen that says "Fork." [You can read about Forking here.](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
+All of the code for this site is open source, located at the [GitHub repository here](https://github.com/stacks-network/docs). Before you start editing anything, you will need to fork the repo so that you can have your own copy of the code under your GitHub profile. On the [repository's page](https://github.com/stacks-network/docs), you should be able to see a button in the upper right of the screen that says "Fork." [You can read about Forking here.](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) Before you start editing anything, you will need to fork the repo so that you can have your own copy of the code under your GitHub profile. On the [repository's page](https://github.com/stacks-network/docs), you should be able to see a button in the upper right of the screen that says "Fork." [You can read about Forking here.](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
 
 This is a generalized workflow for contributing to these docs:
 
@@ -75,6 +76,12 @@ $ yarn clean:build-files && next dev
 $ rimraf .next && rimraf .cache
 ready - started server on 0.0.0.0:3000, url: http://localhost:3000
 warn  - You have enabled experimental feature(s).
+warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use them at your own risk.
+
+info  - Disabled SWC as replacement for Babel because of custom Babel configuration "babel.config.js" https://nextjs.org/docs/messages/swc-disabled
+info  - automatically enabled Fast Refresh for 1 custom loader
+info  - Using external babel configuration from /home/alejandro/stacks-network_docs/babel.config.js
+event - compiled client and server successfully in 13.5s (680 modules)
 warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use them at your own risk.
 
 info  - Disabled SWC as replacement for Babel because of custom Babel configuration "babel.config.js" https://nextjs.org/docs/messages/swc-disabled
@@ -111,7 +118,7 @@ The routing for this site is file based, meaning if you created a folder within 
 
 ### Frontmatter
 
-Frontmatter is the top part of any markdown document that is written in a language called [YAML](https://yaml.org/). It looks like this:
+Frontmatter is the top part of any markdown document that is written in a language called [YAML](https://yaml.org/). It looks like this: It looks like this:
 
 ```yaml
 ---
@@ -120,13 +127,14 @@ description: A short, concise sentence describing what is on this page
 ---
 ```
 
-Frontmatter gives us the ability to define some things within a page that the site can use, such as a page title or page description. When adding any new page, please include a `title` and `description`.
+Frontmatter gives us the ability to define some things within a page that the site can use, such as a page title or page description. When adding any new page, please include a `title` and `description`. When adding any new page, please include a `title` and `description`.
 
+:::tip Did you know?
 :::tip Did you know? The term _Frontmatter_ comes from the section in a book at the beginning detailing things like: publisher’s name and address, copyright information, table of contents, etc. :::
 
 ### Dynamic sidebar
 
-The sidebar navigation is generated in a partially dynamic way. The application searches through a list of paths and parses the markdown to get some information about the page, such as the title and headings contained within the page.
+The sidebar navigation is generated in a partially dynamic way. The sidebar navigation is generated in a partially dynamic way. The application searches through a list of paths and parses the markdown to get some information about the page, such as the title and headings contained within the page.
 
 #### Adding a new route
 
@@ -162,7 +170,7 @@ The script will process that file and pull out the title from the frontmatter of
 
 ### Non-standard pages
 
-There are a few pages within these docs that are non-standard markdown pages. This means they are using some kind of external data as their source, such as the [Clarity Reference page](../write-smart-contracts/clarity-language/language-keywords), or the [Stacks CLI page](https://docs.hiro.so/references/stacks-cli). These pages are using a function of Next.js called [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) which allows us to fetch external data at runtime and use it in some way within our pages.
+There are a few pages within these docs that are non-standard markdown pages. There are a few pages within these docs that are non-standard markdown pages. This means they are using some kind of external data as their source, such as the [Clarity Reference page](../write-smart-contracts/clarity-language/language-keywords), or the [Stacks CLI page](https://docs.hiro.so/references/stacks-cli). These pages are using a function of Next.js called [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) which allows us to fetch external data at runtime and use it in some way within our pages. These pages are using a function of Next.js called [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) which allows us to fetch external data at runtime and use it in some way within our pages.
 
 ## Tips and tricks
 
@@ -184,17 +192,17 @@ npx prettier --write mynewfiletocheck.md
 
 ### Use Conventional Commits
 
-We use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) as and commits naming convention. Use it while contributing, please.
+We use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) as and commits naming convention. Use it while contributing, please. Use it while contributing, please.
 
 ### Always use Markdown when possible
 
-It's possible to write standard HTML when writing in Markdown, but that should be avoided at all costs. We use `remark` to processes all Markdown, giving us things like automatically opening all external links in new windows, and adding IDs to headers. When we write things in HTML, such as a link or image, we don't get the benefit of the remark plugins as consistently as we would if we stuck to standard Markdown.
+It's possible to write standard HTML when writing in Markdown, but that should be avoided at all costs. We use `remark` to processes all Markdown, giving us things like automatically opening all external links in new windows, and adding IDs to headers. When we write things in HTML, such as a link or image, we don't get the benefit of the remark plugins as consistently as we would if we stuck to standard Markdown. We use `remark` to processes all Markdown, giving us things like automatically opening all external links in new windows, and adding IDs to headers. When we write things in HTML, such as a link or image, we don't get the benefit of the remark plugins as consistently as we would if we stuck to standard Markdown.
 
 ### Code blocks
 
-The site uses `react-prism-renderer` and `prismjs` to add syntax highlighting to all of our code. You can see a full list of [languages supported here](https://github.com/PrismJS/prism/tree/master/components). We have a custom language definition for `clarity`, our smart contracting language located here.
+The site uses `react-prism-renderer` and `prismjs` to add syntax highlighting to all of our code. You can see a full list of [languages supported here](https://github.com/PrismJS/prism/tree/master/components). We have a custom language definition for `clarity`, our smart contracting language located here. You can see a full list of [languages supported here](https://github.com/PrismJS/prism/tree/master/components). We have a custom language definition for `clarity`, our smart contracting language located here.
 
-To write a code block, you need to wrap your code in ` ```language `, and end your code block with ` ``` `. Here is an example of ` ```clarity `.
+To write a code block, you need to wrap your code in ` ```language `, and end your code block with ` ``` `. Here is an example of ` ```clarity `. Here is an example of ` ```clarity `.
 
 ```clarity
 (define-data-var counter int 0)
@@ -257,10 +265,25 @@ You can use the following admonitions to highlight content.
 ```md
 :::note
 Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+:::note
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 :::
 
 :::tip
 Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+:::
+
+:::info
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+:::
+
+:::caution
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+:::
+
+:::danger
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+::: Check [this `api`](#).
 :::
 
 :::info
@@ -280,30 +303,30 @@ Which renders:
 
 :::note
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+Some **content** with _markdown_ `syntax`. Check [this `api`](#). Check [this `api`](#).
 
 :::
 
 :::tip
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+Some **content** with _markdown_ `syntax`. Check [this `api`](#). Check [this `api`](#).
 
 :::
 
 :::info
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+Some **content** with _markdown_ `syntax`. Check [this `api`](#). Check [this `api`](#).
 
 :::
 
 :::caution
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+Some **content** with _markdown_ `syntax`. Check [this `api`](#). Check [this `api`](#).
 
 :::
 
 :::danger
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+Some **content** with _markdown_ `syntax`. Check [this `api`](#). Check [this `api`](#).
 
 :::
