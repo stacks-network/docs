@@ -152,7 +152,7 @@ Make sure you've followed the [running the testnet node](running-testnet-node) t
 
 ### Generate keychain and get testnet tokens in Windows
 
-To setup the miner, first, we need to generate a keychain. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
+To setup the miner, first, we need to generate a keychain. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining. First, a keychain needs to be generated. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
 
 To get a keychain, the simplest way is to use the `stacks-cli`. To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command, and pass `-t` to indicate that we want a testnet keychain.
 
@@ -182,7 +182,7 @@ After this runs, you'll probably see some installation logs, and at the end you 
 
 Request BTC from faucet:
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
 
 ### Update configuration file
 
@@ -260,7 +260,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
 
 ### Update config file
 
@@ -338,7 +338,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
 
 ### Install the chart and run the miner
 
