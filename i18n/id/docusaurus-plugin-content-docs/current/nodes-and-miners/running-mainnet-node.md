@@ -176,7 +176,7 @@ rpc_port = 8332
 peer_port = 8333
 ```
 
-Konfigurasi rpc noda bitcoin Anda berada di luar cakupan dokumen ini, namun Anda dapat menemukan informasi lebih lanjut tentang cara menyiapkannya [ di sini](https://developer.bitcoin.org/examples/intro.html)
+Konfigurasi rpc noda bitcoin Anda berada di luar cakupan dokumen ini, namun Anda dapat menemukan informasi lebih lanjut tentang cara menyiapkannya [ di sini](https://developer.bitcoin.org/examples/intro.html).
 
 ## Bacaan tambahan
 

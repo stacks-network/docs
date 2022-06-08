@@ -37,8 +37,7 @@ The next Stacks block confirms the previous block. Transaction 2 has 3 confirmat
 
 The lifecycles of the two transactions are similar, but the difference is pending state. Many Bitcoin wallets display 0-confirmation balances: your wallet balance with any mempool transactions already applied. This is useful because it tells you when you've sent a transaction or received one. With smart contracts, displaying pending state is not as straightforward, because smart contracts do not just transfer inputs to outputs, they may call other contracts, emit events, or perform other computations. A transaction processed in a microblock generates all that information.
 
-:::tip
-If a transaction is dependent on a chain state that could by altered by previous transactions with serious
+:::tip If a transaction is dependent on a chain state that could by altered by previous transactions with serious
 implications, you should carefully consider whether it should be performed using microblocks.
 :::
 

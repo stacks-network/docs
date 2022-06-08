@@ -7,7 +7,7 @@ description: Vea una lista detallada de todas las funciones y códigos de error 
 
 El Stacking se implementa como un contrato inteligente utilizando Clarity. Siempre puede encontrar el identificador de contrato de Stacking usando el API de Stacks Blockchain [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get_pox_info).
 
-Below is a list of public and read-only functions as well as error codes that can be returned by those methods:
+A continuación se muestra una lista de funciones públicas y de sólo lectura así como códigos de error que pueden ser devueltos por esos métodos:
 
 * [Funciones públicas](#public-functions)
 * [Funciones de solo lectura](#read-only-functions)

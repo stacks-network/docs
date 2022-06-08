@@ -3,7 +3,7 @@ sidebar_label: "Beranda"
 sidebar_position: 1
 ---
 
-# Stacks Docs Introduction
+# Pengenalan Musim
 
 Welcome to the community driven official Stacks Documentation.
 

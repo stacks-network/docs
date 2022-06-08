@@ -48,8 +48,7 @@ The Stacking flow is different for delegation use cases:
 
 PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of sending the committed Bitcoin to a burn address, it's transferred to eligible STX holders that participate in the stacking protocol.
 
-:::note
-A PoX miner can only receive newly minted STX tokens when they transfer Bitcoin to eligible owners of STX tokens
+:::note A PoX miner can only receive newly minted STX tokens when they transfer Bitcoin to eligible owners of STX tokens
 :::
 
 ![Mining flow](/img/pox-mining-flow.png)
@@ -87,7 +86,7 @@ Stacking is a built-in capability of PoX and occurs through a set of actions on 
 - During the prepare phase, miners decide on an anchor block and a reward set. Mining any descendant forks of the anchor block requires transferring mining funds to the appropriate reward addresses. The reward set is the set of Bitcoin addresses which are eligible to receive funds in the reward cycle
 - Miners register as leader candidates for a future election by sending a key transaction that burns cryptocurrency. The transaction also registers the leader's preferred chain tip (must be a descendant of the anchor block) and commitment of funds to 2 addresses from the reward set
 - Token holders register for the next rewards cycle by broadcasting a signed message that locks up associated STX tokens for a protocol-specified lockup period, specifies a Bitcoin address to receive the funds, and votes on a Stacks chain tip
-- Multiple leaders can commit to the same chain tip. Multiple leaders can commit to the same chain tip. The leader that wins the election and the peers who also burn for that leader collectively share the reward, proportional to how much each one burned
+- Multiple leaders can commit to the same chain tip. Multiple leaders can commit to the same chain tip. Multiple leaders can commit to the same chain tip. The leader that wins the election and the peers who also burn for that leader collectively share the reward, proportional to how much each one burned
 - Token holders' locked up tokens automatically unlock as soon as the lockup period finishes
 
 ## Bitcoin address

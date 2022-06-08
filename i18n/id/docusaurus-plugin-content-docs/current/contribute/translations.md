@@ -5,15 +5,15 @@ description: Want to help tranlating these docs to your local language?
 
 ## Bantuan untuk terjemahan
 
-Terjemahan dikelola dengan Crowin.  
-Siapa saja dapat berkolaborasi dan tidak diperlukan keterampilan teknis, karena semuanya dilakukan di browser.
+Translations are managed with Crowdin.  
+Anybody can colaborate and no technichal skills are required, as it's all done on the browser.
 
 Untuk membantu penerjemahan, buka [halaman ini](https://crowdin.com/project/docsstacksco), klik bahasa apa saja dan mulailah menerjemahkan.
 
 Semua bantuan akan dihargai.
 
 :::caution
-Please don't add any translations to the Github repository, as the translated pages get rewritten from Crowin. Terjemahan perlu ditambahkan pada Crowin.
+Please don't add any translations to the Github repository, as the translated pages get rewritten from Crowdin. Translations need to be added on Crodin intead.
 :::
 
 ### Common issues on translations

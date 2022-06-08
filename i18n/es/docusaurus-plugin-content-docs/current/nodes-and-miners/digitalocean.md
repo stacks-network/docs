@@ -39,7 +39,7 @@ You will need to wait a few seconds for the droplet to get created. Once created
 
 ### Paso 6
 
-Congratulations! You are now running the Stacks Blockchain. You can click on `Console` for a terminal window to open or login using SSH to the public IP you've been assigned to with user `root`.
+Congratulations! Congratulations! You are now running the Stacks Blockchain. You can click on `Console` for a terminal window to open or login using SSH to the public IP you've been assigned to with user `root`.
 
 ![](/img/sh_digitalocean-console-button.png) ![](/img/sh_digitalocean-console.png)
 

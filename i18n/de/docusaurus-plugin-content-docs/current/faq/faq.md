@@ -25,7 +25,7 @@ If you have a transaction nonce that is less than your account nonce, the transa
 
 If you have a transaction nonce that is equal to your account nonce, then that transaction is valid and should be the next in line to be processed next.
 
-If you have a transaction nonce that is higher than your account nonce, then there needs to be a chain of transactions starting with your account nonce in order for it to be processed. E.g. Your account nonce is 10 but the pending transaction has a nonce of 12. It will not be mineable until a transaction with nonces 10 and 11 are processed.
+If you have a transaction nonce that is higher than your account nonce, then there needs to be a chain of transactions starting with your account nonce in order for it to be processed. E.g. E.g. Your account nonce is 10 but the pending transaction has a nonce of 12. It will not be mineable until a transaction with nonces 10 and 11 are processed.
 
 ## Whats a Replace-by-fee (RBF)?
 
@@ -33,9 +33,9 @@ A replace-by-fee (RBF) transaction tells the blockchain that you would like to r
 
 This can be used to effectively **cancel a transaction** by replacing it with something else, like a small STX transfer to another owned address.
 
-This can be used to **raise the fee for a pending transaction** so it is considered by miners during periods of high congestion. This can also be used to _resubmit_ a transaction, in the sense that the RBF transaction gets a new txid and gets considered again (or faster) by miners. E.g. I submit my transaction with 1 STX fee at block 54,123. By block 54,133 I see my tx hasn’t been picked up, so I RBF with 1.1 STX. Then wait 10 blocks again, and RBF again if not received. There’s a balance between doing this too often and keeping a consistent pace, but it has been seen to help get transactions through, especially when new ones are constantly flooding in.
+This can be used to **raise the fee for a pending transaction** so it is considered by miners during periods of high congestion. This can also be used to _resubmit_ a transaction, in the sense that the RBF transaction gets a new txid and gets considered again (or faster) by miners. E.g. E.g. I submit my transaction with 1 STX fee at block 54,123. By block 54,133 I see my tx hasn’t been picked up, so I RBF with 1.1 STX. Then wait 10 blocks again, and RBF again if not received. There’s a balance between doing this too often and keeping a consistent pace, but it has been seen to help get transactions through, especially when new ones are constantly flooding in.
 
-The replacement transaction needs to use the same nonce as the original transaction with a fee increase of at least 0.000001 STX. E.g. Your original transaction has a fee of 0.03 STX, the new RBF transaction must have a fee of 0.030001 STX or above.
+The replacement transaction needs to use the same nonce as the original transaction with a fee increase of at least 0.000001 STX. E.g. E.g. Your original transaction has a fee of 0.03 STX, the new RBF transaction must have a fee of 0.030001 STX or above.
 
 RBF transactions process in one of two ways:
 

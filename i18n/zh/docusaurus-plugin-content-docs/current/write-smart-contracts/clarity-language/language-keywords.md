@@ -14,7 +14,7 @@ Detailed list of all keywords for the Clarity language.
 ### contract-caller
 #### output: `principal`
 #### description:
-Returns the caller of the current contract context. If this contract is the first one called by a signed transaction, the caller will be equal to the signing principal. If `contract-call?` was used to invoke a function from a new contract, `contract-caller` changes to the _calling_ contract's principal. If `as-contract` is used to change the `tx-sender` context, `contract-caller` _also_ changes to the same contract principal.
+Returns the caller of the current contract context. If this contract is the first one called by a signed transaction, the caller will be equal to the signing principal. Returns the caller of the current contract context. If this contract is the first one called by a signed transaction, the caller will be equal to the signing principal. If `contract-call?` was used to invoke a function from a new contract, `contract-caller` changes to the _calling_ contract's principal. If `as-contract` is used to change the `tx-sender` context, `contract-caller` _also_ changes to the same contract principal. If `as-contract` is used to change the `tx-sender` context, `contract-caller` _also_ changes to the same contract principal.
 #### example:
 ```clarity
 (print contract-caller) ;; Will print out a Stacks address of the transaction sender

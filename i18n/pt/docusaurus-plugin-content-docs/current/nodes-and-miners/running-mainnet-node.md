@@ -9,8 +9,7 @@ tags:
 
 This procedure demonstrates how to run a local mainnet node using Docker images.
 
-:::caution
-This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on Windows.
+:::caution This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on Windows.
 :::
 
 ## Prerequisites
@@ -105,8 +104,7 @@ docker ps --filter name=stacks-blockchain
 
 ## Step 3: verifying the services
 
-:::note
-The initial burnchain header sync can take several minutes, until this is done the following commands will not work
+:::note The initial burnchain header sync can take several minutes, until this is done the following commands will not work
 :::
 
 To verify the [`stacks-blockchain`][] burnchain header sync progress:

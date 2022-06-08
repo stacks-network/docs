@@ -5,7 +5,7 @@ description: See a detailed list of all functions and error codes of the Stackin
 
 ## Introduction
 
-Stacking is implemented as a smart contract using Clarity. You can always find the Stacking contract identifier using the Stacks Blockchain API [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get_pox_info).
+Stacking is implemented as a smart contract using Clarity. Stacking is implemented as a smart contract using Clarity. You can always find the Stacking contract identifier using the Stacks Blockchain API [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get_pox_info).
 
 Below is a list of public and read-only functions as well as error codes that can be returned by those methods:
 
@@ -20,7 +20,7 @@ Below is a list of public and read-only functions as well as error codes that ca
 #### output: `(response bool int)`
 #### signature: `(allow-contract-caller caller until-burn-ht)`
 #### description:
-Give a contract-caller authorization to call stacking methods. Normally, stacking methods may only be invoked by _direct_ transactions (i.e., the `tx-sender` issues a direct `contract-call` to the stacking methods).
+Give a contract-caller authorization to call stacking methods. Give a contract-caller authorization to call stacking methods. Normally, stacking methods may only be invoked by _direct_ transactions (i.e., the `tx-sender` issues a direct `contract-call` to the stacking methods).
 
 By issuing an allowance, the tx-sender may call through the allowed contract.
 
@@ -71,7 +71,7 @@ Note that unlike Stacking, rejecting PoX does not lock the tx-sender's tokens: P
 #### output: `(response bool int)`
 #### signature: `(revoke-delegate-stx)`
 #### description:
-Revoke a Stacking delegate relationship. A particular Stacker may only have one delegate, so this method does not take any parameters, and just revokes the Stacker's current delegate (if one exists).
+Revoke a Stacking delegate relationship. Revoke a Stacking delegate relationship. A particular Stacker may only have one delegate, so this method does not take any parameters, and just revokes the Stacker's current delegate (if one exists).
 
 ### stack-aggregation-commit
 #### input: `(tuple (hashbytes (buff 20)) (version (buff 1))), uint`
@@ -96,15 +96,15 @@ This ensures that each entry in the reward set returned to the stacks-node is gr
 #### output: `(response (tuple (lock-amount uint) (stacker principal) (unlock-burn-height uint)) int)`
 #### signature: `(stack-stx amount-ustx pox-addr start-burn-ht lock-period)`
 #### description:
-Lock up some uSTX for stacking!  Note that the given amount here is in micro-STX (uSTX).
+Lock up some uSTX for stacking!  Note that the given amount here is in micro-STX (uSTX).  Note that the given amount here is in micro-STX (uSTX).
 
 The STX will be locked for the given number of reward cycles (lock-period).
 
-This is the self-service interface.  tx-sender will be the Stacker.
+This is the self-service interface.  tx-sender will be the Stacker.  tx-sender will be the Stacker.
 
 * The given stacker cannot currently be stacking.
-* You will need the minimum uSTX threshold. This isn't determined until the reward cycle begins, but this method still requires stacking over the _absolute minimum_ amount, which can be obtained by calling `get-stacking-minimum`.
-* The pox-addr argument must represent a valid reward address.  Right now, this must be a Bitcoin p2pkh or p2sh address.  It cannot be a native Segwit address, but it may be a p2wpkh-p2sh or p2wsh-p2sh address.
+* You will need the minimum uSTX threshold. You will need the minimum uSTX threshold. This isn't determined until the reward cycle begins, but this method still requires stacking over the _absolute minimum_ amount, which can be obtained by calling `get-stacking-minimum`.
+* The pox-addr argument must represent a valid reward address.  Right now, this must be a Bitcoin p2pkh or p2sh address.  The pox-addr argument must represent a valid reward address.  Right now, this must be a Bitcoin p2pkh or p2sh address.  It cannot be a native Segwit address, but it may be a p2wpkh-p2sh or p2wsh-p2sh address.
 
 The tokens will unlock and be returned to the Stacker (tx-sender) automatically.
 
@@ -136,7 +136,7 @@ Returns the amount of uSTX that a given principal used to reject a PoX cycle.
 #### output: `(optional (tuple (amount-ustx uint) (first-reward-cycle uint) (lock-period uint) (pox-addr (tuple (hashbytes (buff 20)) (version (buff 1))))))`
 #### signature: `(get-stacker-info stacker)`
 #### description:
-Returns the _current_ stacking information for `stacker.  If the information is expired, or if there's never been such a stacker, then returns none.
+Returns the _current_ stacking information for `stacker.  If the information is expired, or if there's never been such a stacker, then returns none.  If the information is expired, or if there's never been such a stacker, then returns none.
 
 ### get-stacking-minimum
 #### input: ``

@@ -7,13 +7,13 @@ tags:
 
 ## Introduction
 
-Make sure you've followed the [Running testnet node](running-testnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
+Make sure you've followed the [Running testnet node](running-testnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
 
 If you want to learn more about the technical details of mining, please review the [mining guide](../understand-stacks/mining).
 
 ## Running bitcoind locally
 
-To participate as a miner on Testnet, you must have access to a testnet bitcoin node. One way to accomplish this is to run bitcoind locally. [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements)
+To participate as a miner on Testnet, you must have access to a testnet bitcoin node. One way to accomplish this is to run bitcoind locally. [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements) One way to accomplish this is to run bitcoind locally. [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements)
 
 First, download the bitcoind software for your platform from https://bitcoin.org/en/download.
 
@@ -46,9 +46,9 @@ It may take a few hours for the node to synchronize with the Bitcoin testnet.
 
 ## Running a miner
 
-First, a keychain needs to be generated. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
+First, a keychain needs to be generated. First, a keychain needs to be generated. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
 
-To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `make_keychain` command, and pass `-t` to indicate that we want a testnet keychain.
+To get a keychain, the simplest way is to use the `stacks-cli`. To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `make_keychain` command, and pass `-t` to indicate that we want a testnet keychain.
 
 ```bash
 npx @stacks/cli make_keychain -t 2>/dev/null | json_pp > keychain.txt
@@ -76,13 +76,21 @@ The above BTC address will then need to be imported into the BTC testnet network
 bitcoin-cli -rpcport=18332 -rpcuser=your-user -rpcpassword=your-password importaddress <btcAddress from JSON above>
 ```
 
-Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address.
+Once imported, we need to get some testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent `0.01` testnet BTC to that address.
 
-Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
 Update the following properties:
 
 ```toml
+[node]
+...
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
 [node]
 ...
 seed = "replace-with-your-private-key"
@@ -99,7 +107,7 @@ password = "<PASSWORD>"
 ...
 ```
 
-Now, grab your `privateKey` from earlier, when you ran the `make_keychain` command. Replace the `seed` field with your private key. Save and close this configuration file.
+Now, grab your `privateKey` from earlier, when you ran the `make_keychain` command. Replace the `seed` field with your private key. Save and close this configuration file. Replace the `seed` field with your private key. Save and close this configuration file.
 
 To run your miner, run this in the command line:
 
@@ -107,20 +115,21 @@ To run your miner, run this in the command line:
 stacks-node start --config=./testnet/stacks-node/conf/testnet-miner-conf.toml
 ```
 
-Your node should start. It will take some time to sync, and then your miner will be running.
+Your node should start. Your node should start. It will take some time to sync, and then your miner will be running.
 
 ### Creating an optimized binary
 
-The steps above are great for trying to run a node temporarily. If you want to host a node on a server somewhere, you might want to generate an optimized binary. To do so, use the same configuration as above, but run:
+The steps above are great for trying to run a node temporarily. The steps above are great for trying to run a node temporarily. If you want to host a node on a server somewhere, you might want to generate an optimized binary. To do so, use the same configuration as above, but run: To do so, use the same configuration as above, but run:
 
 ```bash
 cd testnet/stacks-node
 cargo build --release --bin stacks-node
 ```
 
-The above code will compile an optimized binary. To use it, run:
+The above code will compile an optimized binary. To use it, run: To use it, run:
 
 ```bash
+cd ../..
 cd ../..
 ./target/release/stacks-node start --config=./testnet/conf/testnet-follower-conf.toml
 ```
@@ -129,7 +138,7 @@ To read more about the technical details of mining on the Stacks 2.0 network, ha
 
 ### Enable debug logging
 
-In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
+In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run: In the command line, run:
 
 ```bash
 STACKS_LOG_DEBUG=1 stacks-node testnet
@@ -143,9 +152,9 @@ Make sure you've followed the [running the testnet node](running-testnet-node) t
 
 ### Generate keychain and get testnet tokens in Windows
 
-To setup the miner, first, we need to generate a keychain. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
+To setup the miner, first, we need to generate a keychain. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining. First, a keychain needs to be generated. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
 
-To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command, and pass `-t` to indicate that we want a testnet keychain.
+To get a keychain, the simplest way is to use the `stacks-cli`. To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command, and pass `-t` to indicate that we want a testnet keychain.
 
 Generate a keychain:
 
@@ -173,15 +182,23 @@ After this runs, you'll probably see some installation logs, and at the end you 
 
 Request BTC from faucet:
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
 
 ### Update configuration file
 
-Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
 Update the following properties:
 
 ```toml
+[node]
+...
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
 [node]
 ...
 seed = "replace-with-your-private-key"
@@ -198,7 +215,7 @@ password = "<PASSWORD>"
 ...
 ```
 
-Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` command. Replace the seed field with your private key. Save and close this configuration file.
+Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` command. Replace the seed field with your private key. Save and close this configuration file. Replace the seed field with your private key. Save and close this configuration file.
 
 ### Run the miner
 
@@ -212,15 +229,16 @@ stacks-node start --config=testnet/stacks-node/conf/testnet-miner-conf.toml
 
 :::note
 While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
+:::  If so, allow access to run the node.
 ::: ![Windows Defender](/img/windows-defender.png)
 
 <!-- markdown-link-check-enable-->
 
-Your node should start. It will take some time to sync, and then your miner will be running.
+Your node should start. Your node should start. It will take some time to sync, and then your miner will be running.
 
 ### Enable debug logging in Windows
 
-In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
+In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run: In the command line, run:
 
 ```bash
 set RUST_BACKTRACE=full;
@@ -232,7 +250,7 @@ stacks-node start --config=testnet-miner-conf.toml
 
 Alternatively, you can run the testnet node with Docker.
 
-:::warning Ensure you have [Docker](https://docs.docker.com/get-docker/) installed on your machine. :::
+:::warning Ensure you have [Docker](https://docs.docker.com/get-docker/) installed on your machine. ::: :::
 
 ### Generate keychain and get testnet tokens
 
@@ -242,15 +260,23 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
 
 ### Update config file
 
-Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
 Update the following properties:
 
 ```toml
+[node]
+...
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
 [node]
 ...
 seed = "replace-with-your-private-key"
@@ -267,11 +293,11 @@ password = "<PASSWORD>"
 ...
 ```
 
-Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` command. Replace the seed field with your private key. Save and close this configuration file.
+Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` command. Replace the seed field with your private key. Save and close this configuration file. Replace the seed field with your private key. Save and close this configuration file.
 
 ### Start the miner
 
-:::info The ENV VARS `RUST_BACKTRACE` and `STACKS_LOG_DEBUG` are optional. If removed, debug logs will be disabled :::
+:::info The ENV VARS `RUST_BACKTRACE` and `STACKS_LOG_DEBUG` are optional. If removed, debug logs will be disabled ::: If removed, debug logs will be disabled :::
 
 ```bash
 docker run -d \
@@ -312,7 +338,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
 
 ### Install the chart and run the miner
 

@@ -29,8 +29,7 @@ All `/v2/` routes a proxied to a Hiro-hosted Stacks Node. For a trustless archit
 
 The Stacks 2.0 Blockchain API is centrally hosted. However, every running Stacks node exposes an RPC API, which allows you to interact with the underlying blockchain. Instead of using a centrally hosted API, you can directly access the RPC API of a locally hosted Node.
 
-:::tip
-The Stacks Blockchain API proxies to Node RPC endpoints
+:::tip The Stacks Blockchain API proxies to Node RPC endpoints
 :::
 
 While the Node RPC API doesn't give the same functionality as the hosted Stacks 2.0 Blockchain API, you get similar functionality in a way that is scoped to that specific node. The RPC API includes the following endpoints:
