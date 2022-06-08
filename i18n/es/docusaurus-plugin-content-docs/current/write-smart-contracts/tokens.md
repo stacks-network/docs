@@ -18,7 +18,7 @@ A core property of any token on a blockchain is fungibility. A fungible token is
 
 Fungible tokens form one of the most important value propositions for blockchain technology, the ability to store value and exchange that value through both internal and external transactions. Because fungible tokens can be divided into smaller parts and recombined into the same value representation, they serve a great utility for transferring value between blockchain users.
 
-The primary fungible token on the Stacks blockchain is the native token, STX. Because the Stacks blockchain allows for the creation of \[smart contracts\]\[\], other fungible tokens can be created on the Stacks blockchain as well. [SIP-010][] specifies the standard for fungible tokens on the Stacks blockchain. [SIP-010][] specifies the standard for fungible tokens on the Stacks blockchain. This specification defines the functions and traits that a fungible token on Stacks _must_ have.
+The primary fungible token on the Stacks blockchain is the native token, STX. Because the Stacks blockchain allows for the creation of \[smart contracts\]\[\], other fungible tokens can be created on the Stacks blockchain as well. [SIP-010][] specifies the standard for fungible tokens on the Stacks blockchain. This specification defines the functions and traits that a fungible token on Stacks _must_ have. This specification defines the functions and traits that a fungible token on Stacks _must_ have.
 
 ### Understanding the fungible token standard
 
