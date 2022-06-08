@@ -32,7 +32,6 @@ The callee is a known, invariant contract available on-chain when the caller con
 
 ```clarity
 (contract-call?
-    (contract-call?
     .registrar
     register-name
     name-to-register)
@@ -51,7 +50,6 @@ The callee is passed as an argument, and typed as a trait reference (`<A>`).
                      (owner-b principal)))
      (begin
          (unwrap! (contract-call? token-a transfer-from? owner-a owner-b amount-a))
-         (unwrap! (contract-call? token-b transfer-from? owner-b owner-a amount-b)))) (contract-call? token-a transfer-from? owner-a owner-b amount-a))
          (unwrap! (contract-call? token-b transfer-from? owner-b owner-a amount-b))))
 ```
 
@@ -59,7 +57,7 @@ Traits can either be locally defined:
 
 ```clarity
 (define-trait can-transfer-tokens (
-    (transfer-from? (principal principal uint) (response uint))) (principal principal uint) (response uint)))
+    (transfer-from? (principal principal uint) (response uint)))
 ```
 
 Or imported from an existing contract:
