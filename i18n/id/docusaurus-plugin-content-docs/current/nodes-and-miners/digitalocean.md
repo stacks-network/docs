@@ -1,5 +1,5 @@
 ---
-title: Stacks on DigitalOcean
+title: Stacks di DigitalOcean
 description: A guide to setup Stacks on DigitalOcean
 tags:
   - tutorial
