@@ -12,8 +12,7 @@ To help with translation please go to [this page](https://crowdin.com/project/do
 
 All help is appreciated.
 
-:::caution
-Please don't add any translations to the Github repository, as the translated pages get rewritten from Crowin. Translations need to be added on Crowin intead.
+:::caution Please don't add any translations to the Github repository, as the translated pages get rewritten from Crowin. Translations need to be added on Crowin intead.
 :::
 
 ### Common issues on translations
