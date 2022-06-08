@@ -19,8 +19,7 @@ This configuration will setup the following 4 docker containers:
 apt update && apt upgrade -y && apt install -y git vim gnupg jq
 ```
 
-**2. Install [docker](https://docs.docker.com/engine/install/debian/) and [docker-compose](https://docs.docker.com/compose/cli-command/#install-on-linux)** in your OS.  
-For our example we install _docker_ with:
+**3. Clone the GAIA repository** and enter it's docker directory.
 
 ```bash
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -42,7 +41,7 @@ curl -SL https://github.com/docker/compose/releases/download/${VERSION_DC}/docke
 chmod +x ${DESTINATION_DC}/docker-compose
 ```
 
-**3. Clone the GAIA repository** and enter it's docker directory.
+**7. Test your GAIA HUB** Running `gaia_test.js` will test your GAIA Hub, by trying to connect to it, uploading a file and downloading it again.
 
 ```bash
 git clone https://github.com/stacks-network/gaia.git && cd gaia/deploy/docker
@@ -97,7 +96,7 @@ A correct result should look similar to this:
     }
 ```
 
-**7. Test your GAIA HUB** Running `gaia_test.js` will test your GAIA Hub, by trying to connect to it, uploading a file and downloading it again.
+**2. Test your GAIA HUB** Running `gaia_test.js` will test your GAIA Hub, by trying to connect to it, uploading a file and downloading it again.
 
 First install all required dependencies with:
 
@@ -114,16 +113,10 @@ node ./deploy/gaia_test.js https://yourgaiaurl
 A correct result will be something like this:
 
 ```
-Will run a test for the GAIA HUB: https://gaia.mydomain.com
-Generating some test keys...
-Private key:  5aacc60fc2a429e1f02be139f3cac82061c6a980********************
-Public key:   025691f17f2ab80dc4af363bb9c7aac59e9e1db6ae8ff668202582a3f4ec9678ff
-Address:      15n8Xo8acRvSZghJG2dxJ8dCdzDMYicUuS
+Will run a test for the GAIA HUB: https://gaia.mydomain.com Generating some test keys...
+Private key:  5aacc60fc2a429e1f02be139f3cac82061c6a980******************** Public key:   025691f17f2ab80dc4af363bb9c7aac59e9e1db6ae8ff668202582a3f4ec9678ff Address:      15n8Xo8acRvSZghJG2dxJ8dCdzDMYicUuS
 [DEBUG] connectToGaiaHub: https://gaia.mydomain.com/hub_info
-[DEBUG] uploadToGaiaHub: uploading testing.txt to https://gaia.mydomain.com
-File uploaded successfully.
-Upload to gaia hub thinks it can read it from: https://gaia.mydomain.com/reader/15n8Xo8acRvSZghJG2dxJ8dCdzDMYicUuS/testing.txt
-Hub info thinks it can read it from          : https://gaia.mydomain.com/reader/15n8Xo8acRvSZghJG2dxJ8dCdzDMYicUuS/testing.txt
-Let's now try to fetch the uploaded file...
+[DEBUG] uploadToGaiaHub: uploading testing.txt to https://gaia.mydomain.com File uploaded successfully.
+Upload to gaia hub thinks it can read it from: https://gaia.mydomain.com/reader/15n8Xo8acRvSZghJG2dxJ8dCdzDMYicUuS/testing.txt Hub info thinks it can read it from          : https://gaia.mydomain.com/reader/15n8Xo8acRvSZghJG2dxJ8dCdzDMYicUuS/testing.txt Let's now try to fetch the uploaded file...
 File fetched successfully. Contents of file: GAIA ROCKS!
 ```
