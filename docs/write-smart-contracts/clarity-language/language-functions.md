@@ -114,7 +114,8 @@ Compares two integers, returning `true` if `i1` is greater than `i2` and false o
 Tries to convert the `uint` argument to an `int`. Will cause a runtime error and abort if the supplied argument is >= `pow(2, 127)``
 #### example: 
 ```clarity
-(to-int u238) ;; Returns 238```
+(to-int u238) ;; Returns 238
+```
     
 ### to-uint
 #### input: `int`
@@ -124,7 +125,8 @@ Tries to convert the `uint` argument to an `int`. Will cause a runtime error and
 Tries to convert the `int` argument to a `uint`. Will cause a runtime error and abort if the supplied argument is negative.
 #### example: 
 ```clarity
-(to-uint 238) ;; Returns u238```
+(to-uint 238) ;; Returns u238
+```
     
 ### mod
 #### input: `int, int | uint, uint`
@@ -258,7 +260,8 @@ which must return the same type. In the case that the boolean input is `true`, t
 #### example: 
 ```clarity
 (if true 1 2) ;; Returns 1
-(if (> 1 2) 1 2) ;; Returns 2```
+(if (> 1 2) 1 2) ;; Returns 2
+```
     
 ### let
 #### input: `((name1 AnyType) (name2 AnyType) ...), AnyType, ... A`
@@ -274,7 +277,8 @@ Note: intermediary statements returning a response type must be checked`
 #### example: 
 ```clarity
 (let ((a 2) (b (+ 5 6 7))) (print a) (print b) (+ a b)) ;; Returns 20
-(let ((a 5) (c (+ a 1)) (d (+ c 1)) (b (+ a c d))) (print a) (print b) (+ a b)) ;; Returns 23```
+(let ((a 5) (c (+ a 1)) (d (+ c 1)) (b (+ a c d))) (print a) (print b) (+ a b)) ;; Returns 23
+```
     
 ### map
 #### input: `Function(A, B, ..., N) -> X, sequence_A, sequence_B, ..., sequence_N`
@@ -289,7 +293,6 @@ The `func` argument must be a literal function name.
 Also, note that, no matter what kind of sequences the inputs are, the output is always a list.
 #### example: 
 ```clarity
-
 (map not (list true false true false)) ;; Returns (false true false true)
 (map + (list 1 2 3) (list 1 2 3) (list 1 2 3)) ;; Returns (3 6 9)
 (define-private (a-or-b (char (string-utf8 1))) (if (is-eq char u\"a\") u\"a\" u\"b\"))
@@ -316,10 +319,9 @@ applications `func`.
 Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
 for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
 The `func` argument must be a literal function name.
-`
+
 #### example: 
 ```clarity
-
 (fold * (list 2 2 2) 1) ;; Returns 8
 (fold * (list 2 2 2) 0) ;; Returns 0
 ;; calculates (- 11 (- 7 (- 3 2)))
@@ -340,8 +342,9 @@ The `append` function takes a list and another value with the same entry type,
 and outputs a list of the same type with max_len += 1.
 #### example: 
 ```clarity
-(append (list 1 2 3 4) 5) ;; Returns (1 2 3 4 5)```
-    
+(append (list 1 2 3 4) 5) ;; Returns (1 2 3 4 5)
+```
+
 ### concat
 #### input: `sequence_A, sequence_A`
 #### output: `sequence_A`
@@ -351,10 +354,9 @@ The `concat` function takes two sequences of the same type,
 and returns a concatenated sequence of the same type, with the resulting
 sequence_len = sequence1_len + sequence2_len.
 Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
-`
+
 #### example: 
 ```clarity
-
 (concat (list 1 2) (list 3 4)) ;; Returns (1 2 3 4)
 (concat \"hello \" \"world\") ;; Returns \"hello world\"
 (concat 0x0102 0x0304) ;; Returns 0x01020304
@@ -372,13 +374,12 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
 `
 #### example: 
 ```clarity
-
 (as-max-len? (list 2 2 2) u3) ;; Returns (some (2 2 2))
 (as-max-len? (list 1 2 3) u2) ;; Returns none
 (as-max-len? \"hello\" u10) ;; Returns (some \"hello\")
 (as-max-len? 0x010203 u10) ;; Returns (some 0x010203)
 ```
-    
+
 ### len
 #### input: `sequence_A`
 #### output: `uint`
@@ -389,7 +390,6 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
     `
 #### example: 
 ```clarity
-
 (len \"blockstack\") ;; Returns u10
 (len (list 1 2 3 4 5)) ;; Returns u5
 (len 0x010203) ;; Returns u3
@@ -406,7 +406,6 @@ for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(
 `
 #### example: 
 ```clarity
-
 (element-at \"blockstack\" u5) ;; Returns (some \"s\")
 (element-at (list 1 2 3 4 5) u5) ;; Returns none
 (element-at (list 1 2 3 4 5) (+ u1 u2)) ;; Returns (some 4)
@@ -425,17 +424,15 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
 for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
 If the target item is not found in the sequence (or if an empty string or buffer is
 supplied), this function returns `none`.
-`
 #### example: 
 ```clarity
-
 (index-of \"blockstack\" \"b\") ;; Returns (some u0)
 (index-of \"blockstack\" \"k\") ;; Returns (some u4)
 (index-of \"blockstack\" \"\") ;; Returns none
 (index-of (list 1 2 3 4 5) 6) ;; Returns none
 (index-of 0xfb01 0x01) ;; Returns (some u1)
 ```
-    
+
 ### list
 #### input: `A, ...`
 #### output: `(list A)`
@@ -445,8 +442,9 @@ The `list` function constructs a list composed of the inputted values. Each
 supplied value must be of the same type.
 #### example: 
 ```clarity
-(list (+ 1 2) 4 5) ;; Returns (3 4 5)```
-    
+(list (+ 1 2) 4 5) ;; Returns (3 4 5)
+```
+   
 ### var-get
 #### input: `VarName`
 #### output: `A`
@@ -457,7 +455,8 @@ The value is looked up using `var-name`.
 #### example: 
 ```clarity
 (define-data-var cursor int 6)
-(var-get cursor) ;; Returns 6```
+(var-get cursor) ;; Returns 6
+```
     
 ### var-set
 #### input: `VarName, AnyType`
@@ -468,12 +467,12 @@ The `var-set` function sets the value associated with the input variable to the
 inputted value. The function always returns `true`.
 #### example: 
 ```clarity
-
 (define-data-var cursor int 6)
 (var-get cursor) ;; Returns 6
 (var-set cursor (+ (var-get cursor) 1)) ;; Returns true
-(var-get cursor) ;; Returns 7```
-    
+(var-get cursor) ;; Returns 7
+```
+  
 ### map-get?
 #### input: `MapName, tuple`
 #### output: `(optional (tuple))`
@@ -560,7 +559,8 @@ There is a shorthand using curly brackets of the form {key0: expr0, key1: expr, 
 #### example: 
 ```clarity
 (tuple (name \"blockstack\") (id 1337)) ;; using tuple
-    {name: \"blockstack\", id: 1337} ;; using curly brackets```
+{name: \"blockstack\", id: 1337} ;; using curly brackets
+```
     
 ### get
 #### input: `KeyName, (tuple) | (optional (tuple))`
@@ -590,7 +590,8 @@ The `merge` function returns a new tuple with the combined fields, without mutat
 (define-map users { id: int } { name: (string-ascii 12), address: (optional principal) })
 (map-insert users { id: 1337 } { name: \"john\", address: none }) ;; Returns true
 (let ((user (unwrap-panic (map-get? users { id: 1337 }))))
-    (merge user { address: (some 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) })) ;; Returns (tuple (address (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)) (name \"john\"))```
+(merge user { address: (some 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) })) ;; Returns (tuple (address (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)) (name \"john\"))
+```
     
 ### begin
 #### input: `AnyType, ... A`
@@ -602,8 +603,9 @@ return value of the last such expression.
 Note: intermediary statements returning a response type must be checked.
 #### example: 
 ```clarity
-(begin (+ 1 2) 4 5) ;; Returns 5```
-    
+(begin (+ 1 2) 4 5) ;; Returns 5
+```
+  
 ### hash160
 #### input: `buff|uint|int`
 #### output: `(buff 20)`
@@ -614,7 +616,8 @@ If an integer (128 bit) is supplied the hash is computed over the little-endian 
 integer.
 #### example: 
 ```clarity
-(hash160 0) ;; Returns 0xe4352f72356db555721651aa612e00379167b30f```
+(hash160 0) ;; Returns 0xe4352f72356db555721651aa612e00379167b30f
+```
     
 ### sha256
 #### input: `buff|uint|int`
@@ -626,7 +629,8 @@ If an integer (128 bit) is supplied the hash is computed over the little-endian 
 integer.
 #### example: 
 ```clarity
-(sha256 0) ;; Returns 0x374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb```
+(sha256 0) ;; Returns 0x374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb
+```
     
 ### sha512
 #### input: `buff|uint|int`
@@ -638,8 +642,9 @@ If an integer (128 bit) is supplied the hash is computed over the little-endian 
 integer.
 #### example: 
 ```clarity
-(sha512 1) ;; Returns 0x6fcee9a7b7a7b821d241c03c82377928bc6882e7a08c78a4221199bfa220cdc55212273018ee613317c8293bb8d1ce08d1e017508e94e06ab85a734c99c7cc34```
-    
+(sha512 1) ;; Returns 0x6fcee9a7b7a7b821d241c03c82377928bc6882e7a08c78a4221199bfa220cdc55212273018ee613317c8293bb8d1ce08d1e017508e94e06ab85a734c99c7cc34
+```
+  
 ### sha512/256
 #### input: `buff|uint|int`
 #### output: `(buff 32)`
@@ -651,7 +656,8 @@ If an integer (128 bit) is supplied the hash is computed over the little-endian 
 integer.
 #### example: 
 ```clarity
-(sha512/256 1) ;; Returns 0x515a7e92e7c60522db968d81ff70b80818fc17aeabbec36baf0dda2812e94a86```
+(sha512/256 1) ;; Returns 0x515a7e92e7c60522db968d81ff70b80818fc17aeabbec36baf0dda2812e94a86
+```
     
 ### keccak256
 #### input: `buff|uint|int`
@@ -663,7 +669,8 @@ Note that this differs from the `NIST SHA-3` (that is, FIPS 202) standard. If an
 is supplied the hash is computed over the little-endian representation of the integer.
 #### example: 
 ```clarity
-(keccak256 0) ;; Returns 0xf490de2920c8a35fabeb13208852aa28c76f9be9b03a4dd2b3c075f7a26923b4```
+(keccak256 0) ;; Returns 0xf490de2920c8a35fabeb13208852aa28c76f9be9b03a4dd2b3c075f7a26923b4
+```
     
 ### secp256k1-recover?
 #### input: `(buff 32), (buff 65)`
@@ -679,7 +686,8 @@ The `secp256k1-recover?` function recovers the public key used to sign the messa
 ```clarity
 (secp256k1-recover? 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04
  0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a1301)
- ;; Returns (ok 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110)```
+ ;; Returns (ok 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110)
+ ```
     
 ### secp256k1-verify
 #### input: `(buff 32), (buff 64) | (buff 65), (buff 33)`
@@ -700,7 +708,8 @@ The signature includes 64 bytes plus an optional additional recovery id (00..03)
  0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns true
 (secp256k1-verify 0x0000000000000000000000000000000000000000000000000000000000000000
  0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
- 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns false```
+ 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns false
+ ```
     
 ### print
 #### input: `A`
@@ -711,7 +720,8 @@ The `print` function evaluates and returns its input expression. On Stacks Core
 nodes configured for development (as opposed to production mining nodes), this function prints the resulting value to `STDOUT` (standard output).
 #### example: 
 ```clarity
-(print (+ 1 2 3)) ;; Returns 6```
+(print (+ 1 2 3)) ;; Returns 6
+```
     
 ### contract-call?
 #### input: `ContractName, PublicFunctionName, Arg0, ...`
@@ -726,7 +736,8 @@ If the function returns _ok_, database changes occurred.
 ```clarity
 
 ;; instantiate the sample-contracts/tokens.clar contract first!
-(as-contract (contract-call? .tokens mint! u19)) ;; Returns (ok u19)```
+(as-contract (contract-call? .tokens mint! u19)) ;; Returns (ok u19)
+```
     
 ### as-contract
 #### input: `A`
@@ -737,7 +748,8 @@ The `as-contract` function switches the current context's `tx-sender` value to t
 principal and executes `expr` with that context. It returns the resulting value of `expr`.
 #### example: 
 ```clarity
-(as-contract tx-sender) ;; Returns S1G2081040G2081040G2081040G208105NK8PE5.docs-test```
+(as-contract tx-sender) ;; Returns S1G2081040G2081040G2081040G208105NK8PE5.docs-test
+```
     
 ### contract-of
 #### input: `Trait`
@@ -747,7 +759,6 @@ principal and executes `expr` with that context. It returns the resulting value 
 The `contract-of` function returns the principal of the contract implementing the trait.
 #### example: 
 ```clarity
-
 (use-trait token-a-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)
 (define-public (forward-get-balance (user principal) (contract <token-a-trait>))
   (begin
@@ -764,7 +775,8 @@ The `principal-of?` function returns the principal derived from the provided pub
     `
 #### example: 
 ```clarity
-(principal-of? 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns (ok ST1AW6EKPGT61SQ9FNVDS17RKNWT8ZP582VF9HSCP)```
+(principal-of? 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns (ok ST1AW6EKPGT61SQ9FNVDS17RKNWT8ZP582VF9HSCP)
+```
     
 ### at-block
 #### input: `(buff 32), A`
@@ -779,13 +791,13 @@ property. This hash uniquely identifies Stacks blocks and is unique across Stack
 `header-hash` is unique within the context of a single fork, it is not unique across Stacks forks.
 
 The function returns the result of evaluating `expr`.
-`
+
 #### example: 
 ```clarity
-
 (define-data-var data int 1)
 (at-block 0x0000000000000000000000000000000000000000000000000000000000000000 block-height) ;; Returns u0
-(at-block (get-block-info? id-header-hash 0) (var-get data)) ;; Throws NoSuchDataVariable because `data` wasn't initialized at block height 0```
+(at-block (get-block-info? id-header-hash 0) (var-get data)) ;; Throws NoSuchDataVariable because `data` wasn't initialized at block height 0
+```
     
 ### get-block-info?
 #### input: `BlockInfoPropertyName, BlockHeightInt`
@@ -806,7 +818,7 @@ The `header-hash`, `burnchain-header-hash`, `id-header-hash`, and `vrf-seed` pro
 The `miner-address` property returns a `principal` corresponding to the miner of the given block.
 
 The `id-header-hash` is the block identifier value that must be used as input to the `at-block` function.
-`
+
 #### example: 
 ```clarity
 (get-block-info? time u0) ;; Returns (some u1557860301)
@@ -824,8 +836,9 @@ creating return values in public functions. An _err_ value indicates that any da
 the processing of the function should be rolled back.
 #### example: 
 ```clarity
-(err true) ;; Returns (err true)```
-    
+(err true) ;; Returns (err true)
+```
+   
 ### ok
 #### input: `A`
 #### output: `(response A B)`
@@ -836,7 +849,8 @@ creating return values in public functions. An _ok_ value indicates that any dat
 the processing of the function should materialize.
 #### example: 
 ```clarity
-(ok 1) ;; Returns (ok 1)```
+(ok 1) ;; Returns (ok 1)
+```
     
 ### some
 #### input: `A`
@@ -847,7 +861,8 @@ The `some` function constructs a `optional` type from the input value.
 #### example: 
 ```clarity
 (some 1) ;; Returns (some 1)
-(is-none (some 2)) ;; Returns false```
+(is-none (some 2)) ;; Returns false
+```
     
 ### default-to
 #### input: `A, (optional A)`
@@ -859,13 +874,12 @@ a `(some ...)` option, it returns the inner value of the option. If the second a
 `default-to` it returns the value of `default-value`.
 #### example: 
 ```clarity
-
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (default-to 0 (get id (map-get? names-map (tuple (name \"blockstack\"))))) ;; Returns 1337
 (default-to 0 (get id (map-get? names-map (tuple (name \"non-existant\"))))) ;; Returns 0
 ```
-    
+
 ### asserts!
 #### input: `bool, C`
 #### output: `bool`
@@ -877,7 +891,8 @@ If the supplied argument is returning a false value, `asserts!` _returns_ `throw
 control-flow.
 #### example: 
 ```clarity
-(asserts! (is-eq 1 1) (err 1)) ;; Returns true```
+(asserts! (is-eq 1 1) (err 1)) ;; Returns true
+```
     
 ### unwrap!
 #### input: `(optional A) | (response A B), C`
@@ -891,7 +906,6 @@ option. If the argument is a response type, and the argument is an `(ok ...)` re
 `unwrap!` _returns_ `thrown-value` from the current function and exits the current control-flow.
 #### example: 
 ```clarity
-
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (define-private (get-name-or-err (name (string-ascii 12)))
@@ -899,7 +913,8 @@ option. If the argument is a response type, and the argument is an `(ok ...)` re
        (ok raw-name)))
 
 (get-name-or-err \"blockstack\") ;; Returns (ok (tuple (id 1337)))
-(get-name-or-err \"non-existant\") ;; Returns (err 1)```
+(get-name-or-err \"non-existant\") ;; Returns (err 1)
+```
     
 ### unwrap-err!
 #### input: `(response A B), C`
@@ -912,7 +927,8 @@ If the supplied argument is an `(ok ...)` value,
 `unwrap-err!` _returns_ `thrown-value` from the current function and exits the current control-flow.
 #### example: 
 ```clarity
-(unwrap-err! (err 1) false) ;; Returns 1```
+(unwrap-err! (err 1) false) ;; Returns 1
+```
     
 ### unwrap-panic
 #### input: `(optional A) | (response A B)`
@@ -926,7 +942,6 @@ option. If the argument is a response type, and the argument is an `(ok ...)` re
 `unwrap` throws a runtime error, aborting any further processing of the current transaction.
 #### example: 
 ```clarity
-
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (unwrap-panic (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))
@@ -945,7 +960,8 @@ If the supplied argument is an `(ok ...)` value,
 #### example: 
 ```clarity
 (unwrap-err-panic (err 1)) ;; Returns 1
-(unwrap-err-panic (ok 1)) ;; Throws a runtime exception```
+(unwrap-err-panic (ok 1)) ;; Throws a runtime exception
+```
     
 ### match
 #### input: `(optional A) name expression expression | (response A B) name expression name expression`
@@ -1009,7 +1025,6 @@ option. If the argument is a response type, and the argument is an `(ok ...)` re
 `try!` _returns_ either `none` or the `(err ...)` value from the current function and exits the current control-flow.
 #### example: 
 ```clarity
-
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (try! (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))
@@ -1033,7 +1048,8 @@ and `false` if it was an `err`.
 #### example: 
 ```clarity
 (is-ok (ok 1)) ;; Returns true
-(is-ok (err 1)) ;; Returns false```
+(is-ok (err 1)) ;; Returns false
+```
     
 ### is-none
 #### input: `(optional A)`
@@ -1044,11 +1060,11 @@ and `false` if it was an `err`.
 and `false` if it is a `(some ...)`.
 #### example: 
 ```clarity
-
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (is-none (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns false
-(is-none (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns true```
+(is-none (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns true
+```
     
 ### is-err
 #### input: `(response A B)`
@@ -1060,7 +1076,8 @@ and `false` if it was an `ok`.
 #### example: 
 ```clarity
 (is-err (ok 1)) ;; Returns false
-(is-err (err 1)) ;; Returns true```
+(is-err (err 1)) ;; Returns true
+```
     
 ### is-some
 #### input: `(optional A)`
@@ -1075,7 +1092,8 @@ and `false` if it is a `none`.
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (is-some (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns true
-(is-some (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns false```
+(is-some (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns false
+```
     
 ### filter
 #### input: `Function(A) -> bool, sequence_A`
@@ -1107,7 +1125,6 @@ The `func` argument must be a literal function name.
 The token type must have been defined using `define-fungible-token`.
 #### example: 
 ```clarity
-
 (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
 (ft-get-balance stackaroo 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns u100
@@ -1123,7 +1140,6 @@ The asset type must have been defined using `define-non-fungible-token`, and the
 that definition.
 #### example: 
 ```clarity
-
 (define-non-fungible-token stackaroo (string-ascii 40))
 (nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
 (nft-get-owner? stackaroo \"Roo\") ;; Returns (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
@@ -1148,7 +1164,6 @@ one of the following error codes:
 `
 #### example: 
 ```clarity
-
 (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
 (ft-transfer? stackaroo u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
@@ -1174,7 +1189,6 @@ one of the following error codes:
 `
 #### example: 
 ```clarity
-
 (define-non-fungible-token stackaroo (string-ascii 40))
 (nft-mint? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
 (nft-transfer? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
@@ -1199,7 +1213,6 @@ Otherwise, on successfuly mint, it returns `(ok true)`.
 `
 #### example: 
 ```clarity
-
 (define-non-fungible-token stackaroo (string-ascii 40))
 (nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
@@ -1218,7 +1231,6 @@ returns `(ok true)`.
 `
 #### example: 
 ```clarity
-
 (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
@@ -1232,7 +1244,6 @@ returns `(ok true)`.
 The token type must have been defined using `define-fungible-token`.
 #### example: 
 ```clarity
-
 (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
 (ft-get-supply stackaroo) ;; Returns u100
@@ -1249,7 +1260,7 @@ rather destroyed, reducing the circulating supply.
 
 If a non-positive amount is provided to burn, this function returns `(err 1)`. Otherwise, on successfuly burn, it
 returns `(ok true)`.
-`
+
 #### example: 
 ```clarity
 
@@ -1275,7 +1286,6 @@ Otherwise, on successfuly burn, it returns `(ok true)`.
 `
 #### example: 
 ```clarity
-
 (define-non-fungible-token stackaroo (string-ascii 40))
 (nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 (nft-burn? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
@@ -1290,10 +1300,9 @@ Otherwise, on successfuly burn, it returns `(ok true)`.
 
 This function returns the STX balance of the `owner` principal. In the event that the `owner`
 principal isn't materialized, it returns 0.
-`
+
 #### example: 
 ```clarity
-
 (stx-get-balance 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns u0
 (stx-get-balance (as-contract tx-sender)) ;; Returns u1000
 ```
@@ -1313,7 +1322,7 @@ one of the following error codes:
 `(err u2)` -- `sender` and `recipient` are the same principal
 `(err u3)` -- amount to send is non-positive
 `(err u4)` -- the `sender` principal is not the current `tx-sender`
-`
+
 #### example: 
 ```clarity
 
@@ -1337,10 +1346,9 @@ one of the following error codes:
 `(err u1)` -- `sender` does not have enough balance to transfer
 `(err u3)` -- amount to send is non-positive
 `(err u4)` -- the `sender` principal is not the current `tx-sender`
-`
+
 #### example: 
 ```clarity
-
 (as-contract
   (stx-burn? u60 tx-sender)) ;; Returns (ok true)
 (as-contract
@@ -1357,9 +1365,8 @@ The expression passed into the definition is evaluated at contract launch, in th
 supplied in the contract. This can lead to undefined function or undefined variable errors in the
 event that a function or variable used in the expression has not been defined before the constant.
 
-Like other kinds of definition statements, `define-constant` may only be used at the top level of a smart contract
-definition (i.e., you cannot put a define statement in the middle of a function body).
-`
+Like other kinds of definition statements, `define-constant` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
+
 #### example: 
 ```clarity
 
@@ -1382,7 +1389,6 @@ definition (i.e., you cannot put a define statement in the middle of a function 
 Private functions may return any type.
 #### example: 
 ```clarity
-
 (define-private (max-of (i1 int) (i2 int))
   (if (> i1 i2)
       i1
@@ -1407,7 +1413,6 @@ a public function is aborted if the function returns an `err` type. Public funct
 contracts via `contract-call?`.
 #### example: 
 ```clarity
-
 (define-public (hello-world (input int))
   (begin (print (+ 2 input))
          (ok input)))
@@ -1431,9 +1436,9 @@ the execution of the function. Public read-only functions may
 be invoked by other contracts via `contract-call?`.
 #### example: 
 ```clarity
-
 (define-read-only (just-return-one-hundred)
-  (* 10 10))```
+  (* 10 10))
+  ```
     
 ### define-map
 #### input: `MapName, TypeDefinition, TypeDefinition`
@@ -1449,7 +1454,6 @@ Like other kinds of definition statements, `define-map` may only be used at the 
 definition (i.e., you cannot put a define statement in the middle of a function body).
 #### example: 
 ```clarity
-
 (define-map squares { x: int } { square: int })
 (define-private (add-entry (x int))
   (map-insert squares { x: 2 } { square: (* x x) }))
@@ -1474,7 +1478,6 @@ Like other kinds of definition statements, `define-data-var` may only be used at
 definition (i.e., you cannot put a define statement in the middle of a function body).
 #### example: 
 ```clarity
-
 (define-data-var size int 0)
 (define-private (set-size (value int))
   (var-set size value))
@@ -1499,7 +1502,6 @@ definition (i.e., you cannot put a define statement in the middle of a function 
 Tokens defined using `define-fungible-token` may be used in `ft-transfer?`, `ft-mint?`, and `ft-get-balance` functions`
 #### example: 
 ```clarity
-
 (define-fungible-token stacks)
 (define-fungible-token limited-supply-stacks u100)
 ```
@@ -1519,7 +1521,6 @@ definition (i.e., you cannot put a define statement in the middle of a function 
 Assets defined using `define-non-fungible-token` may be used in `nft-transfer?`, `nft-mint?`, and `nft-get-owner?` functions`
 #### example: 
 ```clarity
-
 (define-non-fungible-token names (buff 50))
 ```
     
@@ -1536,15 +1537,14 @@ Traits are defined with a name, and a list functions defined with a name, a list
 
 Like other kinds of definition statements, `define-trait` may only be used at the top level of a smart contract
 definition (i.e., you cannot put a define statement in the middle of a function body).
-`
+
 #### example: 
 ```clarity
-
 (define-trait token-trait
     ((transfer? (principal principal uint) (response uint uint))
      (get-balance (principal) (response uint uint))))
 ```
-    
+   
 ### use-trait
 #### input: `VarName, TraitIdentifier`
 #### output: `Not Applicable`
@@ -1558,10 +1558,8 @@ using the sugared syntax (.token-a.token-trait), or be fully qualified ('SPAXYA5
 
 Like other kinds of definition statements, `use-trait` may only be used at the top level of a smart contract
 definition (i.e., you cannot put such a statement in the middle of a function body).
-    `
 #### example: 
 ```clarity
-
 (use-trait token-a-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)
 (define-public (forward-get-balance (user principal) (contract <token-a-trait>))
   (begin
@@ -1582,14 +1580,12 @@ Trait identifiers can either be using the sugared syntax (.token-a.token-trait),
 
 Like other kinds of definition statements, `impl-trait` may only be used at the top level of a smart contract
 definition (i.e., you cannot put such a statement in the middle of a function body).
-`
+
 #### example: 
 ```clarity
-
 (impl-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)
 (define-public (get-balance (account principal))
   (ok u0))
 (define-public (transfer? (from principal) (to principal) (amount uint))
   (ok u0))
-"
-    }
+```
