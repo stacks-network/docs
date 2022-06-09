@@ -1,17 +1,17 @@
 ---
-title: Contribute to docs
+title: Contribuir a la documentación
 description: Learn how this site is built, and how you can contribute to it.
 ---
 
-## Introduction
+## Introducción
 
-Bienvenido. Thank you for your interest in contributing and helping make these docs as good as they can be.
+Bienvenido. Gracias por su interés en contribuir y ayudar a que estos documentos sean tan buenos como puedan ser.
 
 This docs site is built on the open source platform [Discosaurus 2](https://docusaurus.io/) and uses most of its content is written in Markdown files.
 
-:::tip Don't know what Markdown is? Here is a [helpful guide](https://guides.github.com/features/mastering-markdown/) for learning it. :::
+:::tip ¿No sabes qué es Markdown? Aquí hay una [guía útil](https://guides.github.com/features/mastering-markdown/) para aprenderlo. :::
 
-You will need a [Github](https://www.github.com) account to add or edit any content.
+Necesitarás una cuenta de [GitHub](https://www.github.com) para añadir o editar cualquier contenido.
 
 To edit any page, just click on the *Edit this page* button at the bottom of each page and submit your changes online.
 
@@ -19,9 +19,9 @@ To add new content, they are two different ways to do it:
 
 - Easiest way: Simply [add an issue on github](https://github.com/stacks-network/docs/issues/new) and enter there the next article you will like to add or modify.
 
-- Standard way: Follow the [steps below](#getting-started) make a pull request. You can also test the site locally. This requires a bit more technical skills.
+- Standard way: Follow the [steps below](#getting-started) make a pull request. También puedes probar el sitio localmente. Esto requiere un poco más de conocimientos técnicos.
 
-All the docs in English are stored in the folder `/docs/`.
+Todos los documentos en inglés se almacenan en la carpeta `/docs/`.
 
 To add new English content simply add a markdown file (.md) into any subfolder in docs, and it will be automatically displayed in the category of that folder.
 
