@@ -28,15 +28,16 @@ Use a link in the table to launch the [CloudFormation](https://console.aws.amazo
 
 You need to configure the template with the appropiate values for your hub and domain it runs on.
 
-Select `Upload a template file`, upload the template file `cloudformation.yaml` file and click `Next`.
+Select `Template is ready` and `Amazon S3 URL` and enter the following Amazon S3 URL:
+```
+https://s3-external-1.amazonaws.com/cf-templates-vzldibfi2mw8-us-east-1/2022160J6G-cloudformation.yaml
+```
+
+If you prefer you can instead select `Template is ready` and `Upload a template file` to upload the template file `cloudformation.yaml`.
 
 The latest `cloudformation.yaml` file can be downloaded [here](https://raw.githubusercontent.com/stacks-network/gaia/master/deploy/cloudformation.yaml). On most browsers you can right-click on that page and click on `Save page as` to download the file. Alternatively, you can copy/paste the text into a text file called `cloudformation.yaml`.
 
-Alternatively, you can enter following S3 URL which was the latest version at the time of this writting.
-
-```
-https://s3-external-1.amazonaws.com/cf-templates-vzldibfi2mw8-us-east-1/2022122ByM-cloudformation.yaml
-```
+Then click `Next`.
 
 ![Specify template](/img/cloudformation-specify-template.png)
 
@@ -47,7 +48,7 @@ Specify the stack details and then click `Next`:
 
 | Field           | Value                               | Notes                                                                                                                                                                                                                                                                                                                                                                                            |
 | --------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Stack name      | _a unique name in your AWS account_ |
+| Stack name      | _a unique name in your AWS account_ | e.g.: my_gaia_hub
 | DomainName      | _your-domain_                       |
 | EmailAddress    | _your email address_                |
 | GaiaBucketName  | _S3 bucket name_                    | The template combines this name with the stack name to create a unique S3 bucket. The template ignores this field if GaiaStorageType is set to `disk`.                                                                                                                                                                                                                                           |
@@ -60,7 +61,7 @@ Specify the stack details and then click `Next`:
 
 ### Step 4 - Configure stack options
 
-Configure any stack options that fit your desired setup and click `Next`. All these fields are optinal.
+Configure any stack options that fit your desired setup and click `Next`. All these fields are optional.
 
 ![Specify template](/img/cloudformation-stack-options.png)
 
@@ -85,3 +86,16 @@ To SSH into your Gaia hub EC2 host directly, you must have the keyfile used in c
 ```bash
 ssh -i <your keyfile.pem> admin@<public_ip_address>
 ```
+
+:::tip
+If you can only access using SSH with the IP but not with the DNS name and you wish to to do, you can optionally activate it following these steps:
+
+    Open your [AWS Console](https://console.aws.amazon.com)
+    Click on `Service` -> VPC
+    Open Your VPCs
+    Select your VPC connected to your Gaia Hub
+    Click `Actions` -> `Edit DNS Hostnames` -> Change `DNS hostnames` to `Enable`
+:::
+## Graphical representation of the cloudformation template
+
+![](/img/cloudformation-gaia-template1-designer.png)
