@@ -5,7 +5,7 @@ tags:
   - tutorial
 ---
 
-## Introduction
+## Introducción
 
 This procedure demonstrates how to run a local testnet node using Docker images.
 
