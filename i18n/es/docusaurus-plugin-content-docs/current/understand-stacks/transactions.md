@@ -4,7 +4,7 @@ description: Guide to Stacks 2.0 transactions
 sidebar_position: 6
 ---
 
-## Introduction
+## Introducción
 
 Transactions are the fundamental unit of execution in the Stacks blockchain. Each transaction is originated from a [Stacks 2.0 account](accounts), and is retained in the Stacks blockchain history for eternity. This guide helps you understand Stacks 2.0 transactions.
 
