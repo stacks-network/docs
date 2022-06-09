@@ -88,7 +88,7 @@ ssh -i <your keyfile.pem> admin@<public_ip_address>
 ```
 
 :::tip
-If you can only access using SSH with the IP but not with the DNS name and you wish to to do, you can optionally activate it following these steps:
+If you can only access SSH with the IP but not with the DNS name and you wish to do so, you can optionally activate it by following these steps:
 
     Open your [AWS Console](https://console.aws.amazon.com)
     Click on `Service` -> VPC
