@@ -3,7 +3,7 @@ title: Autenticación
 description: Register and sign in users with identities on the Stacks blockchain
 ---
 
-## Introduction
+## Introducción
 
 This guide explains how authentication is performed on the Stacks blockchain.
 
