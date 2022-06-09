@@ -62,9 +62,9 @@ Integer divides a variable number of integer inputs and returns the result. In t
 #### input: `int, int | uint, uint`
 #### output: `bool`
 #### signature: `(>= i1 i2)`
-#### description:
+#### deskripsi:
 Compares two integers, returning `true` if `i1` is greater than or equal to `i2` and `false` otherwise.
-#### example:
+#### contoh:
 ```clarity
 (>= 1 1) ;; Returns true
 (>= 5 2) ;; Returns true
@@ -74,9 +74,9 @@ Compares two integers, returning `true` if `i1` is greater than or equal to `i2`
 #### input: `int, int | uint, uint`
 #### output: `bool`
 #### signature: `(<= i1 i2)`
-#### description:
+#### deskripsi:
 Compares two integers, returning true if `i1` is less than or equal to `i2` and `false` otherwise.
-#### example:
+#### contoh:
 ```clarity
 (<= 1 1) ;; Returns true
 (<= 5 2) ;; Returns false
@@ -86,9 +86,9 @@ Compares two integers, returning true if `i1` is less than or equal to `i2` and 
 #### input: `int, int | uint, uint`
 #### output: `bool`
 #### signature: `(< i1 i2)`
-#### description:
+#### deskripsi:
 Compares two integers, returning `true` if `i1` is less than `i2` and `false` otherwise.
-#### example:
+#### contoh:
 ```clarity
 (< 1 2) ;; Returns true
 (< 5 2) ;; Returns false
@@ -98,9 +98,9 @@ Compares two integers, returning `true` if `i1` is less than `i2` and `false` ot
 #### input: `int, int | uint, uint`
 #### output: `bool`
 #### signature: `(> i1 i2)`
-#### description:
+#### deskripsi:
 Compares two integers, returning `true` if `i1` is greater than `i2` and false otherwise.
-#### example:
+#### contoh:
 ```clarity
 (> 1 2) ;; Returns false
 (> 5 2) ;; Returns true
@@ -110,9 +110,9 @@ Compares two integers, returning `true` if `i1` is greater than `i2` and false o
 #### input: `uint`
 #### output: `int`
 #### signature: `(to-int u)`
-#### description:
+#### deskripsi:
 Tries to convert the `uint` argument to an `int`. Will cause a runtime error and abort if the supplied argument is >= `pow(2, 127)``
-#### example:
+#### contoh:
 ```clarity
 (to-int u238) ;; Returns 238```
 
@@ -143,9 +143,9 @@ Returns the integer remainder from integer dividing `i1` by `i2`. In the event o
 #### input: `int, int | uint, uint`
 #### output: `int | uint`
 #### signature: `(pow i1 i2)`
-#### description:
+#### deskripsi:
 Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error.
-#### example:
+#### contoh:
 ```clarity
 (pow 2 3) ;; Returns 8
 (pow 2 2) ;; Returns 4
