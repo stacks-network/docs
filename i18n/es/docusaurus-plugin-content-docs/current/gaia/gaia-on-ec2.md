@@ -6,7 +6,7 @@ tags:
   - gaia
 ---
 
-## Introduction
+## Introducción
 
 The template provided on this page provides an easy way to deploy a Gaia hub directly to Amazon EC2. You can use this template to deploy your own Gaia hub to your Amazon Web Services (AWS) account. Amazon EC2 is an affordable and convenient cloud computing provider. The template provides a one-click deploy for Amazon EC2 with either S3 or EBS as a storage provider.
 
