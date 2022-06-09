@@ -17,7 +17,7 @@ Additional [instructions](https://s3.amazonaws.com/appforest_uf/f1654202471526x9
 
 The Stacks-No-Code-Plugin code is [publicly available on Github](https://github.com/nocodeclarity/Stacks-No-Code-Plugin).
 
-![](/static/img/bubble-stacks-plugin.png)
+![](/img/bubble-stacks-plugin.png)
 
 ## Demo page
 
