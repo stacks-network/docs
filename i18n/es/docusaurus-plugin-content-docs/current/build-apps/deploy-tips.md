@@ -3,17 +3,17 @@ title: Deploy tips
 description: Learn some common methods for deploying your application.
 ---
 
-## Introduction
+## Introducción
 
-Stacks applications are web applications that authenticate users with Stacks Auth and store data with Gaia. Both of these technologies can be accessed on the client side. As such, Stacks apps tend to be simple in design and operation, since in many cases, they don’t have to host anything besides the application’s assets.
+Las aplicaciones de Stacks son aplicaciones web que autentifican a los usuarios con Stacks Auth y almacenan datos con Gaia. Ambas tecnologías pueden ser accesibles desde el lado del cliente. Como tal, las aplicaciones de Stacks tienden a ser simples en diseño y operación, dado que en muchos casos, no tienen que alojar nada aparte de los assets de la aplicación.
 
-## Where to deploy your application
+## Donde hacer el despliegue tu aplicación
 
-Before users can interact with your application, you must deploy it on a server that is accessible over the internet. Deploying requires that you:
+Antes de que los usuarios puedan interactuar con tu aplicación, debes desplegarla en un servidor que sea accesible a través de internet. Desplegar requiere que:
 
-- Configure or customize the files in the `public` directory.
-- Build your application site for deployment.
-- Copy your generated application files to your production server.
+- Configure o personalice los archivos en el directorio `público`.
+- Construya su aplicación para el despliegue.
+- Copie los archivos generados por su aplicación en su servidor de producción.
 
 If you first populated your application with the Stacks application generator, your application contains the starting blocks for configuring, building, and deploying your app. For example, the React template builds out a scaffolding with the following building blocks.
 
