@@ -3,7 +3,7 @@ title: NoCodeClarity
 description: Launch apps for the Stacks blockchain through no code platforms like Bubble.
 ---
 
-## Introduction
+## Introducción
 
 ![](https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1653407713550x759333524803365600%2FLogo%2520of%2520NoCodeClarity.png?w=128&h=70&auto=compress&dpr=1&fit=max)
 
