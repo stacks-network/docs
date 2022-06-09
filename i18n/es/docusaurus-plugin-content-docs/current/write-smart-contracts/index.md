@@ -1,11 +1,11 @@
 ---
 title: Visión general de Clarity
-description: Overview and guides for getting started with Clarity
+description: Resumen y guías para comenzar con Clarity
 sidebar_label: Escribe contratos inteligentes
 sidebar_position: 2
 ---
 
-## Introduction
+## Introducción
 
 Clarity is a **decidable** smart contract language that optimizes for predictability and security, designed for the Stacks blockchain. Smart contracts allow developers to encode essential business logic on a blockchain.
 
@@ -25,7 +25,7 @@ Not every decentralized application requires smart contracts, but Clarity unlock
 
 - Access control (for example pay to access)
 - Non-fungible (for example collectibles) and fungible tokens (for example stablecoins)
-- Business model templates (for example subscriptions)
+- Plantillas de modelo de negocio (por ejemplo suscripciones)
 - App-specific blockchains
 - Decentralized Autonomous Organizations
 
@@ -46,9 +46,9 @@ Note some of the key Clarity language rules and limitations.
 - Recursion is illegal and there are no anonymous functions.
 - Looping is only performed via `map`, `filter`, or `fold`.
 - There is support for lists, however, the only variable length lists in the language appear as function inputs; there is no support for list operations like append or join.
-- Variables are immutable.
+- Las variables son inmutables.
 
-## Explora más
+## Explorar más
 
 Para más detalles y referencias del lenguaje, mira lo siguiente:
 

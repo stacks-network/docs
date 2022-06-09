@@ -1,6 +1,6 @@
 ---
-title: Deploy Gaia Hub
-description: Steps and tutorials
+title: Desplegar un Hub de Gaia
+description: Guías y tutoriales
 ---
 
 ## Deploy your GAIA hub
