@@ -15,7 +15,7 @@ Antes de que los usuarios puedan interactuar con tu aplicación, debes desplegar
 - Construya su aplicación para el despliegue.
 - Copie los archivos generados por su aplicación en su servidor de producción.
 
-If you first populated your application with the Stacks application generator, your application contains the starting blocks for configuring, building, and deploying your app. For example, the React template builds out a scaffolding with the following building blocks.
+Si primero completó su aplicación con el generador de aplicaciones de Stacks, su aplicación ya contiene los bloques iniciales para configurar, construir y desplegar su aplicación. For example, the React template builds out a scaffolding with the following building blocks.
 
 | File or Directory          | Description                                                                                                                                                                    |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
