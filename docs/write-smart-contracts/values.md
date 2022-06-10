@@ -81,7 +81,7 @@ if (maybeVal.type === ClarityType.OptionalSome) {
 ### Buffers
 
 ```typescript
-const buffer = Buffer.from('foo');
+const buffer = Buffer.from("foo");
 const bufCV: BufferCV = bufferCV(buffer);
 // { type: ClarityType.Buffer, buffer: <Buffer 66 6f 6f> }
 ```
@@ -115,10 +115,10 @@ x.value.add(y.value);
 ### Strings
 
 ```typescript
-const ascii: StringAsciiCV = stringAsciiCV('hello world');
+const ascii: StringAsciiCV = stringAsciiCV("hello world");
 // { type: ClarityType.StringASCII, data: 'hello world' }
 
-const utf8: StringUtf8CV = stringUtf8CV('hello 🌾');
+const utf8: StringUtf8CV = stringUtf8CV("hello 🌾");
 // { type: ClarityType.StringUTF8, data: 'hello 🌾' }
 ```
 
@@ -127,8 +127,8 @@ Clarity supports both ascii and utf8 strings.
 ### Principals
 
 ```typescript
-const address = 'SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B';
-const contractName = 'contract-name';
+const address = "SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B";
+const contractName = "contract-name";
 
 const spCV = standardPrincipalCV(address);
 // {
@@ -188,7 +188,7 @@ const tupCV = tupleCV({
 //   }
 // }
 
-console.log(tupCV.data['b']);
+console.log(tupCV.data["b"]);
 // { type: ClarityType.BoolTrue }
 ```
 
@@ -229,12 +229,12 @@ It is common for Clarity functions to return values wrapped in a `Response`, in 
 Since every `ClarityValue` has a `type` field, the type of the result of a `read-only` function call can be checked and acted upon like so:
 
 ```typescript
-const contractAddress = 'ST3KC0MTNW34S1ZXD36JYKFD3JJMWA01M55DSJ4JE';
-const contractName = 'kv-store';
-const functionName = 'get-value';
-const buffer = bufferCVFromString('foo');
+const contractAddress = "ST3KC0MTNW34S1ZXD36JYKFD3JJMWA01M55DSJ4JE";
+const contractName = "kv-store";
+const functionName = "get-value";
+const buffer = bufferCVFromString("foo");
 const network = new StacksTestnet(); // for mainnet, use `StacksMainnet()`
-const senderAddress = 'ST2F4BK4GZH6YFBNHYDDGN4T1RKBA7DA1BJZPJEJJ';
+const senderAddress = "ST2F4BK4GZH6YFBNHYDDGN4T1RKBA7DA1BJZPJEJJ";
 
 const options = {
   contractAddress,
@@ -261,15 +261,15 @@ if (result.type === ClarityType.ResponseOk) {
 If you receive a response from a transaction in the form of a `hex` string, you can deserialize it into a Clarity value like so:
 
 ```javascript
-import { hexToCV } from '@stacks/transactions';
+import { hexToCV } from "@stacks/transactions";
 
-let cv = hexToCV('hex_string');
+let cv = hexToCV("hex_string");
 ```
 
 Similarly, you can convert a Clarity value to `hex` string like so:
 
 ```javascript
-import { cvToHex, trueCV } from '@stacks/transactions';
+import { cvToHex, trueCV } from "@stacks/transactions";
 
 let trueHex = cvToHex(trueCV());
 ```

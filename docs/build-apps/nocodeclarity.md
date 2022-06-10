@@ -29,6 +29,6 @@ NodeCodeClarity has their own [youtube channel](https://www.youtube.com/channel/
 
 Videos:
 
-* [NoCodeClarity Setup](https://www.youtube.com/watch?v=WanXlpBGl0w)
-* [NoCodeClarity - Part 1 of the plugin](https://www.youtube.com/watch?v=o6d3hrzNqVI&t=248s)
-* [NoCodeClarity - Part 2 of the plugin](https://www.youtube.com/watch?v=0rzMdsrRg80)
+- [NoCodeClarity Setup](https://www.youtube.com/watch?v=WanXlpBGl0w)
+- [NoCodeClarity - Part 1 of the plugin](https://www.youtube.com/watch?v=o6d3hrzNqVI&t=248s)
+- [NoCodeClarity - Part 2 of the plugin](https://www.youtube.com/watch?v=0rzMdsrRg80)

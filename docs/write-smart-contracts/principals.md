@@ -1,6 +1,6 @@
 ---
 title: Principals
-description: 'Clarity: Understanding Principals'
+description: "Clarity: Understanding Principals"
 sidebar_position: 1
 ---
 

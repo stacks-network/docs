@@ -1,11 +1,10 @@
 ---
 title: Resources
-description: 'Resources'
+description: "Resources"
 sidebar_position: 8
 ---
 
 # External resources
-
 
 [Clarity book](https://book.clarity-lang.org/)
 

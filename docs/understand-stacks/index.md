@@ -5,6 +5,7 @@ sidebar_position: 1
 ---
 
 ![](/img/SBC-L-2x-10.png)
+
 ## Introduction
 
 Stacks 2.0 is a layer-1 blockchain that connects to Bitcoin and brings smart contracts and decentralized apps to it.
@@ -20,12 +21,13 @@ Read more about the features provided by the Stacks 2.0 blockchain.
 Check out the [technical specifications](technical-specs) for a brief overview
 :::
 
-
 <!-- markdown-link-check-enable-->
 
 A detailed [comparison of the Stacks blockchain to other blockchain technologies][] is available at the Stacks
 Foundation blog.
+
 ### Consensus mechanism
+
 ![](/img/pages/stacking.svg)
 Stacks 2.0 implements a new mining mechanism called Proof of Transfer ("PoX").
 PoX is a consensus algorithm between two blockchains. It uses an established blockchain (in this case Bitcoin) to secure a new blockchain (Stacks).
@@ -35,8 +37,8 @@ PoX connects to Bitcoin with a 1:1 block ratio, meaning anything that happens on
 Instead of burning electricity on proof of work, PoX reuses already minted bitcoins as "proof of computation" and
 miners represent their cost of mining in bitcoins directly.
 
-
 [Read more about Proof of Transfer](proof-of-transfer)
+
 ### Mining
 
 ![](/img/pages/testnet-sm.svg)
@@ -69,7 +71,6 @@ Stacks 2.0 anchors clarity smart contracts to Bitcoin making it possible for sma
 The [Clarity open-source project](https://clarity-lang.org/) is supported by Stacks and [Algorand](https://www.algorand.com/)
 :::
 
-
 Clarity is distinct from other languages designed for writing smart contracts in a few ways:
 
 - **Predictability**: The Clarity language uses precise and unambiguous syntax that allows developers to predict exactly how their contracts will be executed.
@@ -82,9 +83,9 @@ Clarity is distinct from other languages designed for writing smart contracts in
 
 Read one of our guides to understand the ins and outs of the Stacks 2.0 blockchain.
 
-* [Account](../understand-stacks/accounts)
-* [Transactions](../understand-stacks/transactions)
-* [Network](../understand-stacks/network)
-* [Microblocks](../understand-stacks/microblocks)
+- [Account](../understand-stacks/accounts)
+- [Transactions](../understand-stacks/transactions)
+- [Network](../understand-stacks/network)
+- [Microblocks](../understand-stacks/microblocks)
 
 [comparison of the stacks blockchain to other blockchain technologies]: https://stacks.org/stacks-blockchain

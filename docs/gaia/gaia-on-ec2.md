@@ -29,6 +29,7 @@ Use a link in the table to launch the [CloudFormation](https://console.aws.amazo
 You need to configure the template with the appropiate values for your hub and domain it runs on.
 
 Select `Template is ready` and `Amazon S3 URL` and enter the following Amazon S3 URL:
+
 ```
 https://s3-external-1.amazonaws.com/cf-templates-vzldibfi2mw8-us-east-1/2022160J6G-cloudformation.yaml
 ```
@@ -48,7 +49,7 @@ Specify the stack details and then click `Next`:
 
 | Field           | Value                               | Notes                                                                                                                                                                                                                                                                                                                                                                                            |
 | --------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Stack name      | _a unique name in your AWS account_ | e.g.: my_gaia_hub
+| Stack name      | _a unique name in your AWS account_ | e.g.: my_gaia_hub                                                                                                                                                                                                                                                                                                                                                                                |
 | DomainName      | _your-domain_                       |
 | EmailAddress    | _your email address_                |
 | GaiaBucketName  | _S3 bucket name_                    | The template combines this name with the stack name to create a unique S3 bucket. The template ignores this field if GaiaStorageType is set to `disk`.                                                                                                                                                                                                                                           |
@@ -95,7 +96,9 @@ If you can only access SSH with the IP but not with the DNS name and you wish to
     Open Your VPCs
     Select your VPC connected to your Gaia Hub
     Click `Actions` -> `Edit DNS Hostnames` -> Change `DNS hostnames` to `Enable`
+
 :::
+
 ## Graphical representation of the cloudformation template
 
 ![](/img/cloudformation-gaia-template1-designer.png)

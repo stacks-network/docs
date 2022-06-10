@@ -122,9 +122,12 @@ SerializeP2WSH  = 0x03, // hash160(segwit-program-00(public-keys)), same as bitc
 The `hashbytes` are the 20 hash bytes of the bitcoin address. You can obtain that from a bitcoin library, for instance using [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib):
 
 ```js
-const btc = require('bitcoinjs-lib');
+const btc = require("bitcoinjs-lib");
 console.log(
-  '0x' + btc.address.fromBase58Check('1C56LYirKa3PFXFsvhSESgDy2acEHVAEt6').hash.toString('hex')
+  "0x" +
+    btc.address
+      .fromBase58Check("1C56LYirKa3PFXFsvhSESgDy2acEHVAEt6")
+      .hash.toString("hex")
 );
 ```
 

@@ -31,4 +31,3 @@ While integration is possible for any type of app, most of the resources availab
 [BNS](references/bns)
 
 [Gaia](../gaia/)
-

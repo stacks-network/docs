@@ -15,7 +15,7 @@ Here is a [helpful guide](https://guides.github.com/features/mastering-markdown/
 
 You will need a [Github](https://www.github.com) account to add or edit any content.
 
-To edit any page, just click on the *Edit this page* button at the bottom of each page and submit your changes online.
+To edit any page, just click on the _Edit this page_ button at the bottom of each page and submit your changes online.
 
 To add new content, they are two different ways to do it:
 
@@ -27,8 +27,9 @@ All the docs in English are stored in the folder `/docs/`.
 
 To add new English content simply add a markdown file (.md) into any subfolder in docs, and it will be automatically displayed in the category of that folder.
 
-All the docs in other languages are stored under the folder `i18n`, but these files should never be edited using GitHub as they are overwritten by Crowdin every time new translations are added.  **To make changes in other languages**, you must do so using Crowdin.
+All the docs in other languages are stored under the folder `i18n`, but these files should never be edited using GitHub as they are overwritten by Crowdin every time new translations are added. **To make changes in other languages**, you must do so using Crowdin.
 Please refer to [translations](translations) instead.
+
 ## Getting started
 
 To get started you have two options:
@@ -74,16 +75,18 @@ This is a generalized workflow for contributing to these docs:
 ### Running and building the site locally
 
 You can build the entire site with the following command:
+
 ```bash
 npm run build
 ```
 
 You can start the page locally with the following command:
+
 ```bash
 npx docusaurus start
 ```
-The docs site will be accessible at this url: [`http://localhost:3000`](http://localhost:3000).
 
+The docs site will be accessible at this url: [`http://localhost:3000`](http://localhost:3000).
 
 ### Pages
 
@@ -152,6 +155,7 @@ To write a code block, you need to wrap your code in ` ```language `, and end yo
 (define-public (get-counter)
  (ok (var-get counter)))
 ```
+
 ### Admonitions
 
 You can use the following admonitions to highlight content.
