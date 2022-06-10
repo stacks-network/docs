@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-*You may use the following template to add new documentation to docs.stacks.co*
+*You can use the following template to add new documentation to docs.stacks.co. You can drag and drop images or screenshots if needed.*
 ---
 title: Name of my new article
 description: 

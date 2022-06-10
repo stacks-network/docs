@@ -1,7 +1,7 @@
 ---
 name: Edit documentation
 about: Use this to make changes on already published page
-title: ''
+title: "[Edit docs]"
 labels: documentation
 assignees: ''
 
