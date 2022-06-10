@@ -566,6 +566,7 @@ const config = {
           },
           {
             from: [
+              '/gaia/gaia-on-ec2',
               '/gaia/setup-on-ec2',
             ],
             to: '/docs/gaia/gaia-on-ec2',
