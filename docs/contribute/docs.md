@@ -12,7 +12,7 @@ This docs site is built on the open source platform [Discosaurus 2](https://docu
 :::tip Don't know what Markdown is?
 Want to learn? Here is a [helpful guide](https://guides.github.com/features/mastering-markdown/).
 
-Don't want to learn it? No need to. Write [in plain text an issue on Github](https://github.com/stacks-network/docs/issues/new?template=add-documentation.md)
+Don't want to learn it? No need to. Write [in plain text an issue on Github](https://github.com/stacks-network/docs/issues/new?assignees=&labels=documentation&template=add-documentation.md&title=%5BAdd+docs%5D)
 :::
 
 :::info
@@ -25,7 +25,7 @@ To add new content, they are two different ways to do it, the [easy way](#easy-w
 
 ## Easy way
 
-[**Simply click here and enter the text of the article you wish to add.**](https://github.com/stacks-network/docs/issues/new?template=add-documentation.md)
+[**Simply click here and enter the text of the article you wish to add.**](https://github.com/stacks-network/docs/issues/new?assignees=&labels=documentation&template=add-documentation.md&title=%5BAdd+docs%5D)
 
 This will open up an issue on github using our template.
 ## Advanced way
