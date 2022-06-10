@@ -4,7 +4,7 @@ description: A guide to mining on Stacks 2.0
 sidebar_position: 4
 ---
 
-## Introduction
+## Introducción
 
 This guide highlights some technical details related to mining on the Stacks 2.0 network.
 

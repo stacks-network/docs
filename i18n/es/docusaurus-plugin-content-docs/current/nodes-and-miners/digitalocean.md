@@ -5,7 +5,7 @@ tags:
   - tutorial
 ---
 
-## Introduction
+## Introducción
 
 Esta es una guía paso a paso para desplegar el [Stacks Blockchain en DigitalOcean](https://marketplace.digitalocean.com/apps/stacks-blockchain). El código está alojado en este [repositorio de Github](https://github.com/stacks-network/stacks-blockchain-docker).
 

@@ -4,7 +4,7 @@ description: Interacting with the Stacks 2.0 Blockchain via API
 sidebar_position: 11
 ---
 
-## Introduction
+## Introducción
 
 The Stacks 2.0 Blockchain API allows you to query the Stacks 2.0 blockchain and interact with smart contracts. It was built to maintain pageable materialized views of the Stacks 2.0 Blockchain.
 

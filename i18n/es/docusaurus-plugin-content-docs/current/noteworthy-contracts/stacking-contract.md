@@ -3,7 +3,7 @@ title: Contrato de Stacking
 description: Vea una lista detallada de todas las funciones y códigos de error del contrato de Stacking.
 ---
 
-## Introduction
+## Introducción
 
 El Stacking se implementa como un contrato inteligente utilizando Clarity. Siempre puede encontrar el identificador de contrato de Stacking usando el API de Stacks Blockchain [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get_pox_info).
 

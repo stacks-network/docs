@@ -4,7 +4,7 @@ description: Learn how to deal with Clarity Values in JavaScript
 sidebar_position: 2
 ---
 
-## Introduction
+## Introducción
 
 The Clarity language makes use of a strong static type system. This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your contract call transactions failing prior to execution.
 
