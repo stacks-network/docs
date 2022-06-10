@@ -1,5 +1,5 @@
 ---
-title: Preguntas frecuentes
+title: General FAQs
 description: Preguntas frecuentes
 sidebar_label: "Preguntas Frecuentes"
 sidebar_position: 7
@@ -9,9 +9,9 @@ sidebar_position: 7
 
 ## ¿Por qué mi transferencia sigue pendiente?
 
-Commonly it's because your fee is too low or your [nonce](#what-is-nonce) is incorrect.
+Comúnmente es porque la comisión es demasiado baja o el [nonce](#what-is-nonce) es incorrecto.
 
-More information can be found [here](https://www.hiro.so/wallet-faq/why-is-my-stacks-transaction-pending). There are also [best practices and known issues](https://forum.stacks.org/t/transactions-in-mempool-best-practices-and-known-issues/11659) and [diagnosing pending transactions](https://forum.stacks.org/t/diagnosing-pending-transactions/11908).
+Puede encontrar más información [aquí](https://www.hiro.so/wallet-faq/why-is-my-stacks-transaction-pending). There are also [best practices and known issues](https://forum.stacks.org/t/transactions-in-mempool-best-practices-and-known-issues/11659) and [diagnosing pending transactions](https://forum.stacks.org/t/diagnosing-pending-transactions/11908).
 
 There is also this [script](https://github.com/citycoins/scripts/blob/main/getnetworkstatus.js) to look at either the first 200 transactions or all the transactions in the mempool, to then return the maximum adn average fee values. We've noticed that using 1.5-2x the average fee in the mempool will generally get things processed within 6-10 blocks even during high congestion.
 

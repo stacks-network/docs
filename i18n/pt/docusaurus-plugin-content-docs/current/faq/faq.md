@@ -1,5 +1,5 @@
 ---
-title: FAQs
+title: General FAQs
 description: Frequently Asked Questions
 sidebar_label: "FAQ"
 sidebar_position: 7

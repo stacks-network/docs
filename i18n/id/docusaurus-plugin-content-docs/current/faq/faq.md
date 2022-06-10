@@ -1,5 +1,5 @@
 ---
-title: FAQs
+title: General FAQs
 description: Pertanyaan Umum
 sidebar_label: "Pertanyaan Umum (FAQ)"
 sidebar_position: 7

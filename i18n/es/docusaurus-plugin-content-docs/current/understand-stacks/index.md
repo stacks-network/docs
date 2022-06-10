@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 ![](/img/SBC-L-2x-10.png)
-## Introduction
+## Introducción
 
 Stacks 2.0 es una cadena de bloques de transacciones blockchain de primera capa que se conecta a Bitcoin, permitiendo contratos inteligentes y aplicaciones descentralizadas. Los contratos inteligentes y las aplicaciones desarrollados en la plataforma de Stacks se integran de forma nativa con Bitcoin, incorporándo así su seguridad, estabilidad y poder económico.
 

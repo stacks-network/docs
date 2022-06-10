@@ -5,7 +5,7 @@ tags:
   - tutorial
 ---
 
-## Introduction
+## Introducción
 
 Make sure you've followed the [Running testnet node](running-testnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
 

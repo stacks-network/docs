@@ -4,7 +4,7 @@ description: Aprende acerca del soporte de tokens en Clarity
 sidebar_position: 3
 ---
 
-## Introduction
+## Introducción
 
 A fundamental use of blockchain technology is the representation, store, and transfer of value between users of a blockchain. Cryptocurrency is a very common use of blockchain technology, and remains one of the primary drivers of adoption of blockchain technology. Cryptocurrencies are represented by blockchain tokens: individual units of value within a given blockchain ecosystem. Blockchain tokens can extend beyond just digital currency, however, and recent developments throughout the cryptocurrency community have demonstrated potential for the use of blockchain to tokenize and represent not just money but other tangible assets.
 
