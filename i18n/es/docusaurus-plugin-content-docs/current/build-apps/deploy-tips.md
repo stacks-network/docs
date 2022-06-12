@@ -17,14 +17,14 @@ Antes de que los usuarios puedan interactuar con tu aplicación, debes desplegar
 
 Si primero completó su aplicación con el generador de aplicaciones de Stacks, su aplicación ya contiene los bloques iniciales para configurar, construir y desplegar su aplicación. Por ejemplo, la plantilla de React construye un andamio con los siguientes bloques de construcción.
 
-| Archivos o Directorio      | Descripción                                                                                                                                                                    |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| node_modules/react-scripts | A set of scripts for that helps you kick off React projects without configuring, so you do not have to set up your project by yourself.                                        |
-| package.json               | Contains a scripts section that includes a reference to the react-scripts, which are a dependency. This script creates a build directory containing your files for deployment. |
-| public/favicon.ico         | An example shortcut icon.                                                                                                                                                      |
-| public/index.html          | An entry page for an application.                                                                                                                                              |
-| public/manifest.json       | A JSON file that describes your web application to the browser.                                                                                                                |
-| cors                       | Contains example deployment files for cross-origin request configuration.                                                                                                      |
+| Archivos o Directorio      | Descripción                                                                                                                                                                                          |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| node_modules/react-scripts | Un conjunto de scripts para que te ayude a iniciar proyectos React sin configuración, para que no tenga que configurar su proyecto usted mismo.                                                      |
+| package.json               | Contiene una sección de scripts que incluye una referencia a los react-scripts, que son una dependencia. Este script crea un directorio de compilación que contiene los archivos para el despliegue. |
+| public/favicon.ico         | Un ejemplo de ícono de atajo.                                                                                                                                                                        |
+| public/index.html          | Página de entrada de una aplicación.                                                                                                                                                                 |
+| public/manifest.json       | Un archivo JSON que describe tu aplicación web en el navegador.                                                                                                                                      |
+| cors                       | Contains example deployment files for cross-origin request configuration.                                                                                                                            |
 
 If you use the generator to build JavasScript or Vue scaffolding, your project configuration files will be different.
 
