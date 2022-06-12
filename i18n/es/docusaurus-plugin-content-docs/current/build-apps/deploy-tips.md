@@ -1,6 +1,6 @@
 ---
-title: Deploy tips
-description: Learn some common methods for deploying your application.
+title: Consejos para el despliegue
+description: Aprende algunos métodos comunes para desplegar tu aplicación.
 ---
 
 ## Introducción
@@ -15,9 +15,9 @@ Antes de que los usuarios puedan interactuar con tu aplicación, debes desplegar
 - Construya su aplicación para el despliegue.
 - Copie los archivos generados por su aplicación en su servidor de producción.
 
-Si primero completó su aplicación con el generador de aplicaciones de Stacks, su aplicación ya contiene los bloques iniciales para configurar, construir y desplegar su aplicación. For example, the React template builds out a scaffolding with the following building blocks.
+Si primero completó su aplicación con el generador de aplicaciones de Stacks, su aplicación ya contiene los bloques iniciales para configurar, construir y desplegar su aplicación. Por ejemplo, la plantilla de React construye un andamio con los siguientes bloques de construcción.
 
-| File or Directory          | Description                                                                                                                                                                    |
+| Archivos o Directorio      | Descripción                                                                                                                                                                    |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | node_modules/react-scripts | A set of scripts for that helps you kick off React projects without configuring, so you do not have to set up your project by yourself.                                        |
 | package.json               | Contains a scripts section that includes a reference to the react-scripts, which are a dependency. This script creates a build directory containing your files for deployment. |
