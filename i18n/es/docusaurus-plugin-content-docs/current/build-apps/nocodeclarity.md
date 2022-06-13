@@ -1,15 +1,15 @@
 ---
 title: NoCodeClarity
-description: Launch apps for the Stacks blockchain through no code platforms like Bubble.
+description: Lanzar aplicaciones para la cadena de bloques de Stackas a través de plataformas sin código como Bubble.
 ---
 
 ## Introducción
 
 ![](https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1653407713550x759333524803365600%2FLogo%2520of%2520NoCodeClarity.png?w=179&h=84&auto=compress&dpr=1&fit=max)
 
-[NoCodeClarity](https://nocodeclarity.com) allows people to create applications for the Stacks blockchain without coding.
+[NoCodeClarity](https://nocodeclarity.com) permite a la gente crear aplicaciones para el blockchain de Stacks sin programar.
 
-## Stacks Plug-In on bubble
+## Plug-In de Stacks en bubble
 
 The [Stacks-No-Code-Plugin](https://bubble.io/plugin/the-stacks-plug-in-1645467277638x949839693014368300) released in May 2022 and it can easily be installed on Bubble with a few clicks allowing users to deploy applications with no coding knowledge. [Bubble](https://bubble.io/blog/explaining-bubble-to-investors/) is the first No Code platform that the Stacks plugin launched on. More platforms are in the roadmap of NoCodeClarity, founded by Christopher Perceptions and Sergio Gongora. The Stacks plugin was created through the support of the Stacks Foundation via a grant in January 2022 and NoCodeClarity was awarded a $100,000 grant in June 2022 to expand the roadmap.
 
@@ -19,15 +19,15 @@ The Stacks-No-Code-Plugin code is [publicly available on Github](https://github.
 
 ![](/img/bubble-stacks-plugin.png)
 
-## Demo page
+## Página de demostración
 
-A demo page is available [here](https://test-stacks-plugin.bubbleapps.io/version-test)
+Una página de demostración está disponible [aquí](https://test-stacks-plugin.bubbleapps.io/version-test)
 
-## NoCodeClarity videos
+## Vídeos NoCodeClarity
 
-NodeCodeClarity has their own [youtube channel](https://www.youtube.com/channel/UC9Ep0VQ-GQ-yDzt-wmIElRA).
+NodeCodeClarity tiene su propio [canal de youtube](https://www.youtube.com/channel/UC9Ep0VQ-GQ-yDzt-wmIElRA).
 
-Videos:
+Vídeos:
 
 * [NoCodeClarity Setup](https://www.youtube.com/watch?v=WanXlpBGl0w)
 * [NoCodeClarity - Part 1 of the plugin](https://www.youtube.com/watch?v=o6d3hrzNqVI&t=248s)

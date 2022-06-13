@@ -13,7 +13,7 @@ This procedure demonstrates how to run a local mainnet node using Docker images.
 This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on Windows.
 :::
 
-## Prerequisites
+## Prerrequisitos
 
 Running a node has no specialized hardware requirements. Users have been successful in running nodes on Raspberry Pi boards and other system-on-chip architectures. In order to complete this procedure, you must have the following software installed on the node host machine:
 
@@ -21,7 +21,7 @@ Running a node has no specialized hardware requirements. Users have been success
 - [curl](https://curl.se/download.html)
 - [jq](https://stedolan.github.io/jq/download/)
 
-### Firewall configuration
+### Configuración del firewall
 
 In order for the API node services to work correctly, you must configure any network firewall rules to allow traffic on the ports discussed in this section. The details of network and firewall configuration are highly specific to your machine and network, so a detailed example isn't provided.
 
@@ -41,7 +41,7 @@ Egress:
 
 These egress ports are for syncing [`stacks-blockchain`][] and Bitcoin headers. If they're not open, the sync will fail.
 
-## Step 1: initial setup
+## Paso 1: configuración inicial
 
 In order to run the mainnet node, you must download the Docker images and create a directory structure to hold the persistent data from the services. Download and configure the Docker images with the following commands:
 
@@ -55,7 +55,7 @@ Create a directory structure for the service data with the following command:
 mkdir -p ./stacks-node/{persistent-data/stacks-blockchain/mainnet,config/mainnet} && cd stacks-node
 ```
 
-## Step 2: running Stacks blockchain
+## Paso 2: ejecutar Stacks blockchain
 
 First, create the `./config/mainnet/Config.toml` file and add the following content to the file using a text editor:
 
@@ -103,7 +103,7 @@ You can verify the running [`stacks-blockchain`][] container with the command:
 docker ps --filter name=stacks-blockchain
 ```
 
-## Step 3: verifying the services
+## Paso 3: verificar los servicios
 
 :::note
 The initial burnchain header sync can take several minutes, until this is done the following commands will not work
@@ -151,7 +151,7 @@ If the instance is running you should recieve terminal output similar to the fol
 }
 ```
 
-## Stopping the mainnet node
+## Detener el nodo mainnet
 
 Use the following commands to stop the local mainnet node:
 
@@ -159,7 +159,7 @@ Use the following commands to stop the local mainnet node:
 docker stop stacks-blockchain
 ```
 
-## Optional. Run stacks node with own bitcoin node
+## Opcional. Ejecutar un nodo de stacks con su propio nodo bitcoin
 
 It's encouraged to use your own bitcoin node when possible.
 
@@ -178,7 +178,7 @@ peer_port = 8333
 
 The rpc configuration of your bitcoin node is out of the scope of this document, but you can find more information on how to set it up [here](https://developer.bitcoin.org/examples/intro.html).
 
-## Additional reading
+## Lecturas adicionales
 
 <!-- markdown-link-check-disable -->
 

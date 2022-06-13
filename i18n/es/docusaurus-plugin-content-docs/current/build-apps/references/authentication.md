@@ -1,19 +1,19 @@
 ---
 title: Autenticación
-description: Register and sign in users with identities on the Stacks blockchain
+description: Registrar e iniciar sesión de usuarios con identidades en la blockchain de Stacks
 ---
 
 ## Introducción
 
-This guide explains how authentication is performed on the Stacks blockchain.
+Esta guía explica cómo se realiza la autenticación en el blockchain de Stacks.
 
-Authentication provides a way for users to identify themselves to an app while retaining complete control over their credentials and personal details. It can be integrated alone or used in conjunction with [transaction signing](https://docs.hiro.so/get-started/transactions#signature-and-verification) and [data storage](https://docs.stacks.co/build-apps/references/gaia), for which it is a prerequisite.
+La autenticación proporciona una forma para que los usuarios se identifiquen a sí mismos en una aplicación mientras conservan el control total sobre sus credenciales y datos personales. Puede integrarse solo o utilizarse en conjunto con [la firma de transacciones](https://docs.hiro.so/get-started/transactions#signature-and-verification) y [el almacenamiento de datos](https://docs.stacks.co/gaia/overview), para lo cual es un requisito previo.
 
-Users who register for your app can subsequently authenticate to any other app with support for the [Blockchain Naming System](bns) and vice versa.
+Los usuarios que se registren en su aplicación pueden autenticarse posteriormente en cualquier otra aplicación con soporte para el [Blockchain Naming System (BNS)](bns) y viceversa.
 
 ## Cómo funciona
 
-The authentication flow with Stacks is similar to the typical client-server flow used by centralized sign in services (for example, OAuth). However, with Stacks the authentication flow happens entirely client-side.
+El flujo de autenticación con Stacks es similar al típico flujo cliente-servidor utilizado por los servicios de registro centralizado (por ejemplo, OAuth). Sin embargo, con Stacks el flujo de autentificación ocurre enteramente del lado del cliente.
 
 An app and authenticator, such as [the Stacks Wallet](https://www.hiro.so/wallet/install-web), communicate during the authentication flow by passing back and forth two tokens. The requesting app sends the authenticator an `authRequest` token. Once a user approves authentication, the authenticator responds to the app with an `authResponse` token.
 

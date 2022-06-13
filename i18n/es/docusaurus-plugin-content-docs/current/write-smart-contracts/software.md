@@ -1,10 +1,10 @@
 ---
-title: Clarity development software
-description: The following tools are useful when developing Clarity smart contracts
+title: Software de desarrollo de Clarity
+description: Las siguientes herramientas son útiles para desarrollar contratos inteligentes con Clarity
 sidebar_position: 4
 ---
 
-## Language Server Protocol for Clarity (including Visual Studio Code extension)
+## Protocolo del Servidor de Idioma (LSP en inglés) para Clarity (incluyendo extensión de Visual Studio Code)
 
 The Language Server Protocol (LSP) defines the protocol used between an editor or IDE and a language server that provides language features like auto complete, go to definition, find all references etc.
 
@@ -20,7 +20,7 @@ A read—eval—print loop (REPL), also termed an interactive toplevel or langua
 
 ![Clarity-repl](https://github.com/hirosystems/clarity-repl/blob/develop/docs/images/screenshot.png?raw=true)
 
-Instructions on how to install Clarity REPL can be found [here](https://github.com/hirosystems/clarity-repl).
+Las instrucciones sobre cómo instalar Clarity REPL se pueden encontrar [aquí](https://github.com/hirosystems/clarity-repl).
 
 ## Clarinet
 
@@ -32,7 +32,7 @@ Installation instructions, including build from source instructions can be found
 
 [Clarinet 101](https://www.youtube.com/playlist?list=PL5Ujm489LoJaAz9kUJm8lYUWdGJ2AnQTb) contains multiple Clarinet video tutorials
 
-### Getting started with Clarinet
+### Primeros pasos con Clarinet
 
 You can verify you have Clarinet installed by checking its version:
 
