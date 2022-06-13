@@ -7,11 +7,11 @@ description: Learn how this site is built, and how you can contribute to it.
 
 Gracias por su interés en contribuir y ayudar a que estos documentos sean tan buenos como puedan ser.
 
-This docs site is built on the open source platform [Discosaurus 2](https://docusaurus.io/) and most of its content is written in Markdown files. All of the code for this site is free and open source, located at the [GitHub repository here](https://github.com/stacks-network/docs).
+Este sitio de documentación está construido en la plataforma de código abierto [Discosaurus 2](https://docusaurus. io/) y la mayor parte de su contenido está escrito en archivos Markdown. Todo el código para este sitio es libre y de código abierto, ubicado en el [repositorio de GitHub aquí](https://github.com/stacks-network/docs).
 
-:::tip ¿No sabes qué es Markdown? Want to learn? Here is a [helpful guide](https://guides.github.com/features/mastering-markdown/).
+:::tip ¿No sabes qué es Markdown? ¿Quieres aprender? Aquí hay una [guía útil](https://guides.github.com/features/mastering-markdown/) para aprenderlo.
 
-Don't want to learn it? No need to. Write [in plain text an issue on Github](https://github.com/stacks-network/docs/issues/new?assignees=&labels=documentation&template=add-documentation.md&title=%5BAdd+docs%5D) :::
+¿No quieres aprenderlo? No es necesario. Write [in plain text an issue on Github](https://github.com/stacks-network/docs/issues/new?assignees=&labels=documentation&template=add-documentation.md&title=%5BAdd+docs%5D) :::
 
 :::info You need a free [Github](https://www.github.com) account to add or edit any content. :::
 
@@ -19,12 +19,12 @@ To edit any page, just click on the *Edit this page* button at the bottom of eac
 
 To add new content, they are two different ways to do it, the [easy way](#easy-way) and the [advanced way](#advanced-way).
 
-## Easy way
+## Forma fácil
 
 [**Simply click here and enter the text of the article you wish to add.**](https://github.com/stacks-network/docs/issues/new?assignees=&labels=documentation&template=add-documentation.md&title=%5BAdd+docs%5D)
 
 This will open up an issue on github using our template.
-## Advanced way
+## Forma avanzada
 
 For more advanced changes you can follow the next steps.
 
@@ -42,7 +42,7 @@ You can also test the site locally using this method.
 7. Push to to GitHub with `git push --set-upstream origin feature/my-feature-branch`.
 8. Visit GitHub and make your pull request.
 
-## Aditional information
+## Información adicional
 ### Running and building the site locally (optional)
 
 You can start the page locally with the following command. This is enough to preview your changes.
@@ -60,13 +60,13 @@ After you finished your changes, you can also build the entire site with the fol
 npm run build
 ```
 
-### An alternative: Working in browser
+### Una alternativa: trabajar en el navegador
 
 As an alterative to working locally, you can also use the web IDE gitpod that provides an environment to contribute directly from within your browser.
 
 You only need to have a github account and open [this link](https://gitpod.io/#https://github.com/stacks-network/docs).
 
-### Folder structure of the site
+### Estructura de los ficheros
 
 If you are interested in only adding new documentation content to the site, the files that will be important to you are located within `./docs/*`:
 
@@ -122,11 +122,11 @@ And execute prettier with the following command:
 npx prettier --write mynewfiletocheck.md
 ```
 -->
-### Use Conventional Commits
+### Usar "Commits Convencionales"
 
 We use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) as and commits naming convention. Use it while contributing, please.
 
-### Code blocks
+### Bloques de código
 
 To write a code block, you need to wrap your code in ` ```language `, and end your code block with ` ``` `. Here is an example of ` ```clarity `.
 
@@ -136,60 +136,60 @@ To write a code block, you need to wrap your code in ` ```language `, and end yo
 (define-public (get-counter)
  (ok (var-get counter)))
 ```
-### Admonitions
+### Avisos
 
-You can use the following admonitions to highlight content.
+Puede utilizar los siguientes avisos para resaltar el contenido.
 
 ```md
 :::note
-Some **content** with _markdown_ `syntax`.
+Algo de **contenido** con `formato` markdown.
 :::
 
 :::tip
-Some **content** with _markdown_ `syntax`.
+Algo de **contenido** con `formato` markdown.
 :::
 
 :::info
-Some **content** with _markdown_ `syntax`.
+Algo de **contenido** con `formato` markdown.
 :::
 
 :::caution
-Some **content** with _markdown_ `syntax`.
+Algo de **contenido** con `formato` markdown.
 :::
 
 :::danger
-Some **content** with _markdown_ `syntax`.
+Algo de **contenido** con `formato` markdown.
 :::
 ```
 
-Which renders:
+Se visualiza como:
 
 :::note
 
-Some **content** with _markdown_ `syntax`.
+Algo de **contenido** con `syntax` markdown.
 
 :::
 
 :::tip
 
-Some **content** with _markdown_ `syntax`.
+Algo de **contenido** con `syntax` markdown.
 
 :::
 
 :::info
 
-Some **content** with _markdown_ `syntax`.
+Algo de **contenido** con `syntax` markdown.
 
 :::
 
 :::caution
 
-Some **content** with _markdown_ `syntax`.
+Algo de **contenido** con `syntax` markdown.
 
 :::
 
 :::danger
 
-Some **content** with _markdown_ `syntax`.
+Algo de **contenido** con `syntax` markdown.
 
 :::
