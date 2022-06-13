@@ -1,14 +1,14 @@
 ---
-title: Resources
-description: 'Resources'
+title: Recursos
+description: 'Recursos'
 sidebar_position: 8
 ---
 
-# External resources
+# Recursos externos
 
 
-[Clarity book](https://book.clarity-lang.org/)
+[Libro de Clarity](https://book.clarity-lang.org/)
 
-[Clarity Universe](https://stacks.org/clarity-universe)
+[Universo de Clarity](https://stacks.org/clarity-universe)
 
-[Hiro Clarity tutorials](https://docs.hiro.so/tutorials)
+[Tutoriales Clarity de Hiro](https://docs.hiro.so/tutorials)

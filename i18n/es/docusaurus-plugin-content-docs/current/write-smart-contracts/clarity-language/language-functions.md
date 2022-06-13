@@ -667,7 +667,7 @@ The `as-contract` function switches the current context's `tx-sender` value to t
 
 ### contract-of
 #### input: `Trait`
-#### output: `principal`
+#### salida: `principal`
 #### signature: `(contract-of .contract-name)`
 #### description:
 The `contract-of` function returns the principal of the contract implementing the trait.
