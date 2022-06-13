@@ -54,7 +54,7 @@ stx make_keychain -t > cli_keychain.json
 
 :::tip Check out the [Stacks CLI reference](https://docs.hiro.so/references/stacks-cli) for more details :::
 
-| Field                | Description                                                                                                                                                        |
+| Field                | Descripción                                                                                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `mnemonic`           | A 24-word seed phrase used to access the account, generated using [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) with 256 bits of entropy |
 | `keyInfo.privateKey` | Private key for the account. Required for token transfers and often referred to as `senderKey`                                                                     |
