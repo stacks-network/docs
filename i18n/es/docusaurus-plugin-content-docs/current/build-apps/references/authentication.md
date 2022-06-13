@@ -37,7 +37,7 @@ Finally, the app private key is deterministic, meaning that the same private key
 
 The first two of these functions are particularly relevant to [data storage with Stacks.js](https://docs.stacks.co/docs/gaia).
 
-## Parejas de llaves
+## Par de Claves
 
 Authentication with Stacks makes extensive use of public key cryptography generally and ECDSA with the `secp256k1` curve in particular.
 
