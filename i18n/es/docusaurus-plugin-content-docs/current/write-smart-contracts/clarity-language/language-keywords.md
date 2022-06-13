@@ -1,19 +1,19 @@
 ---
-title: Keywords
-description: See a detailed list of all keywords for the Clarity language.
+title: Palabras clave
+description: Vea una lista detallada de todas las palabras clave para el lenguaje Clarity.
 tags:
   - clarity
 ---
 
 ![](/img/keywords.jpg)
-## Keyword reference
+## Referencia de palabra clave
 
 Detailed list of all keywords for the Clarity language.
 
 
 ### contract-caller
-#### output: `principal`
-#### description:
+#### salida: `principal`
+#### descripción:
 Returns the caller of the current contract context. If this contract is the first one called by a signed transaction, the caller will be equal to the signing principal. If `contract-call?` was used to invoke a function from a new contract, `contract-caller` changes to the _calling_ contract's principal. If `as-contract` is used to change the `tx-sender` context, `contract-caller` _also_ changes to the same contract principal.
 #### ejemplo:
 ```clarity
@@ -21,7 +21,7 @@ Returns the caller of the current contract context. If this contract is the firs
 ```
 
 ### tx-sender
-#### output: `principal`
+#### salida: `principal`
 #### description:
 Returns the original sender of the current transaction, or if `as-contract` was called to modify the sending context, it returns that contract principal.
 #### ejemplo:
