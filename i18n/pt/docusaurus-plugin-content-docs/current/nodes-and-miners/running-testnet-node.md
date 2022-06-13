@@ -9,7 +9,7 @@ tags:
 
 This procedure demonstrates how to run a local testnet node using Docker images.
 
-:::warning This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on Windows.
+:::caution This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on Windows.
 :::
 
 ## Prerequisites
