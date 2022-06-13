@@ -15,7 +15,7 @@ Contribute to the Stacks Docs on this website. More info [here](docs).
 
 ### Translations
 
-Help with translations. More details [here](translations).
+Help us reach more people with translations. More details [here](translations).
 
 <!-- markdown-link-check-enable-->
 
