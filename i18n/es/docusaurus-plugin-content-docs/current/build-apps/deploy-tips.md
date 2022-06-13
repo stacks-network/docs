@@ -1,6 +1,6 @@
 ---
-title: Deploy tips
-description: Learn some common methods for deploying your application.
+title: Consejos para el despliegue
+description: Aprende algunos métodos comunes para desplegar tu aplicación.
 ---
 
 ## Introducción
@@ -15,26 +15,26 @@ Antes de que los usuarios puedan interactuar con tu aplicación, debes desplegar
 - Construya su aplicación para el despliegue.
 - Copie los archivos generados por su aplicación en su servidor de producción.
 
-If you first populated your application with the Stacks application generator, your application contains the starting blocks for configuring, building, and deploying your app. For example, the React template builds out a scaffolding with the following building blocks.
+Si primero completó su aplicación con el generador de aplicaciones de Stacks, su aplicación ya contiene los bloques iniciales para configurar, construir y desplegar su aplicación. Por ejemplo, la plantilla de React construye un andamio con los siguientes bloques de construcción.
 
-| File or Directory          | Description                                                                                                                                                                    |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| node_modules/react-scripts | A set of scripts for that helps you kick off React projects without configuring, so you do not have to set up your project by yourself.                                        |
-| package.json               | Contains a scripts section that includes a reference to the react-scripts, which are a dependency. This script creates a build directory containing your files for deployment. |
-| public/favicon.ico         | An example shortcut icon.                                                                                                                                                      |
-| public/index.html          | An entry page for an application.                                                                                                                                              |
-| public/manifest.json       | A JSON file that describes your web application to the browser.                                                                                                                |
-| cors                       | Contains example deployment files for cross-origin request configuration.                                                                                                      |
+| Archivos o Directorio      | Descripción                                                                                                                                                                                          |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| node_modules/react-scripts | Un conjunto de scripts para que te ayude a iniciar proyectos React sin configuración, para que no tenga que configurar su proyecto usted mismo.                                                      |
+| package.json               | Contiene una sección de scripts que incluye una referencia a los react-scripts, que son una dependencia. Este script crea un directorio de compilación que contiene los archivos para el despliegue. |
+| public/favicon.ico         | Un ejemplo de ícono de atajo.                                                                                                                                                                        |
+| public/index.html          | Página de entrada de una aplicación.                                                                                                                                                                 |
+| public/manifest.json       | Un archivo JSON que describe tu aplicación web en el navegador.                                                                                                                                      |
+| cors                       | Contiene ejemplos de archivos de despliegue para la configuración de solicitudes de origen cruzado.                                                                                                  |
 
-If you use the generator to build JavasScript or Vue scaffolding, your project configuration files will be different.
+Si usa el generador para construir en JavasScript o Vue scaffolding, los archivos de configuración de su proyecto serán diferentes.
 
-Regardless of which scaffolding you use, you must customize and extend this basic scaffolding as needed by your application. For example, you may want to add more properties to the `manifest.json` file. Since every application is different, Stacks Auth cannot give you specific instructions on how to do this. The steps you take are specific to your application.
+Independientemente de cuál sea el andamio que utilice, debe personalizar y extender este andamio básico según su aplicación lo necesite. Por ejemplo, puede querer agregar más propiedades al archivo `manifest.json`. Dado que cada aplicación es diferente, Stacks Auth no puede dar instrucciones específicas sobre cómo hacerlo. Los pasos que usted tome son específicos de su aplicación.
 
-## Stacks Authentication and deployment
+## Autenticación y despliegue en Stacks
 
-When your application authenticates users with Stacks, the Stacks Wallet at on URL requests a resource (the app manifest) from your DApp. A request for a resource outside of the origin (the Stacks Wallet) is called as a _cross-origin request_(CORs). Getting data in this manner can be risky, so you must configure your website security to allow interactions across origins.
+Cuando la aplicación autentifica a los usuarios con Stacks, la billetera de Stacks en la URL solicita un recurso (el manifiesto de la aplicación) de tu DApp. Una solicitud para un recurso fuera del origen (la billetera de Stacks) es llamada como una solicitud de _de origen cruzado_(CORs). Obtener datos de esta manera puede ser arriesgado, por lo que debe configurar la seguridad de su sitio web para permitir interacciones entre orígenes.
 
-You can think of CORS interactions as an apartment building with Security. For example, if you need to borrow a ladder, you could ask a neighbor in your building who has one. Security would likely not have a problem with this request (that is, same-origin, your building). If you needed a particular tool, however, and you ordered it delivered from an online hardware store (that is, cross-origin, another site), Security may request identification before allowing the delivery man into the apartment building. (Credit: Codecademy)
+Puedes pensar en las interacciones CORS como un edificio de apartamentos con seguridad. Por ejemplo, si necesita tomar prestado una escalera, podría preguntar a un vecino en el edificio que tiene uno. Probablemente la seguridad no tendría ningún problema con esta petición (es decir, el mismo origen, de su edificio). Sin embargo, si necesitaba una herramienta en particular, y la ordenó desde una tienda de hardware online (es decir, de origen cruzado, de otro sitio), La seguridad puede solicitar la identificación antes de permitir al hombre del delivery entrar en el edificio de apartamentos. (Créditos: Codecademy)
 
 The way you configure CORs depends on which company you use to host your web application. The application generator adds a `cors` directory to your application scaffolding. This directory contains files for Netlify (`_headers` and `_redirects`) as well as one for Firebase (`firebase.json`). The configurations in the `cors` directory make your application's `manifest.json` file accessible to other applications (for example, to the Stacks Browser). If you are deploying to a service other than Netlify or Firebase, you must configure CORS on that service to include the following headers when serving `manifest.json`:
 
