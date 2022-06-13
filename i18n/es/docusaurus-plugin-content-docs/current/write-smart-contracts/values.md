@@ -1,16 +1,16 @@
 ---
-title: Clarity Values
-description: Learn how to deal with Clarity Values in JavaScript
+title: Valores de Clarity
+description: Aprenda cómo tratar con Clarity Values en JavaScript
 sidebar_position: 2
 ---
 
 ## Introducción
 
-The Clarity language makes use of a strong static type system. This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your contract call transactions failing prior to execution.
+El lenguaje de Clarity hace uso de un sistema de tipo estático fuerte. This simply means that every function defined in Clarity expects arguments of specific types, and that a failure to provide properly typed arguments will result in your code failing to compile, or your contract call transactions failing prior to execution.
 
 In order to build web applications that interact with Clarity contracts, you will need to learn how to construct and use `ClarityValue` objects. The [@stacks/transactions](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library makes this easy, as we will demonstrate below.
 
-## Clarity Types
+## Tipos de Clarity
 
 Please see the following page for information on [Clarity Types](../write-smart-contracts/clarity-language/language-types).
 
