@@ -1,10 +1,10 @@
 ---
-title: Technical Specifications
-description: Summary of technical specifications of Stacks 2.0
+title: Especificaciones técnicas
+description: Resumen de las especificaciones técnicas de Stacks 2.0
 sidebar_position: 10
 ---
 
-## Consensus
+## Consenso
 
 - Proof of Transfer (PoX) as described in [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md)
 - Network will transition to Proof of Burn (PoB) as described in [SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md) after 10 years. [Learn more about Proof-of-Burn in SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
@@ -17,7 +17,7 @@ sidebar_position: 10
 - Transactions are considered final when the corresponding "block commit" transaction on Bitcoin is finalized. Typically this can by 3-6 confirmations.
 - For more details, see [Proof of Transfer](proof-of-transfer).
 
-## Proof of Transfer Mining
+## Minería en Prueba de transferencia
 
 - Coinbase reward schedule:
   - 1000 STX/block for first 4 years
@@ -43,7 +43,7 @@ sidebar_position: 10
 - Only two types of BTC reward addresses are supported: [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash) or [Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash). Native Segwit is not supported.
 - Further reading: [Stacking](stacking)
 
-## Accounts and Addresses
+## Cuentas y direcciones
 
 - Transactions in the Stacks blockchain originate from, are paid for by, and execute under the authority of accounts
 - An account is fully specified by its address + nonce + assets
@@ -54,7 +54,7 @@ sidebar_position: 10
 - Accounts need not be explicit "created" or registered; all accounts implicitly exist and are instantiated on first-use.
 - Further reading: [Accounts](accounts)
 
-## Transactions
+## Transacciones
 
 - Transaction types: coinbase, token-transfer, contract-deploy, contract-call, poison-microblock.
 - Only standard accounts (not contracts) can pay transaction fees.

@@ -36,7 +36,7 @@ Cuando la aplicación autentifica a los usuarios con Stacks, la billetera de Sta
 
 Puedes pensar en las interacciones CORS como un edificio de apartamentos con seguridad. Por ejemplo, si necesita tomar prestado una escalera, podría preguntar a un vecino en el edificio que tiene uno. Probablemente la seguridad no tendría ningún problema con esta petición (es decir, el mismo origen, de su edificio). Sin embargo, si necesitaba una herramienta en particular, y la ordenó desde una tienda de hardware online (es decir, de origen cruzado, de otro sitio), La seguridad puede solicitar la identificación antes de permitir al hombre del delivery entrar en el edificio de apartamentos. (Créditos: Codecademy)
 
-The way you configure CORs depends on which company you use to host your web application. The application generator adds a `cors` directory to your application scaffolding. This directory contains files for Netlify (`_headers` and `_redirects`) as well as one for Firebase (`firebase.json`). The configurations in the `cors` directory make your application's `manifest.json` file accessible to other applications (for example, to the Stacks Browser). If you are deploying to a service other than Netlify or Firebase, you must configure CORS on that service to include the following headers when serving `manifest.json`:
+La forma en que configure los CORs depende de la empresa que utilice para alojar su aplicación web. El generador de aplicaciones añade un directorio de `cors` a su aplicación de andamios. Este directorio contiene archivos para Netlify (`_headers` y `_redirects`) así como uno para Firebase (`firebase. hijo`). Las configuraciones en el directorio `cors` hacen que el archivo `manifest.json` de su aplicación sea accesible para otras aplicaciones (por ejemplo, para el navegador Stacks). Si está desplegando en un servicio distinto a Netlify o Firebase, debe configurar CORS en ese servicio para incluir las siguientes cabeceras al servir el `manifest.json`:
 
 ```html
 Access-Control-Allow-Origin: * Access-Control-Allow-Headers: "X-Requested-With, Content-Type,
@@ -44,8 +44,8 @@ Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding" Access-Co
 "POST, GET, OPTIONS, DELETE, PUT"
 ```
 
-Consult the documentation for your hosting service to learn how to configure CORS on that service.
+Consulte la documentación de su servicio de hosting para aprender cómo configurar CORS en ese servicio.
 
-## Deployment and Radiks
+## Despliegue y Radiks
 
-If you are deploying a Stacks application that uses [Radiks](https://github.com/stacks-network/radiks), your deployment includes a server and a database component. You must take this into account when deploying your application. You may want to choose a service such as [Heroku](https://www.heroku.com) or [Digital Ocean](https://www.digitalocean.com) if your app uses Radiks.
+Si está desplegando una aplicación Stacks que utiliza [Radiks](https://github.com/stacks-network/radiks), su implementación incluye un servidor y un componente de base de datos. Debe tener esto en cuenta al desplegar su aplicación. Puede que quieras elegir un servicio como [Heroku](https://www.heroku.com) o [Digital Ocean](https://www.digitalocean.com) si tu aplicación utiliza Radiks.

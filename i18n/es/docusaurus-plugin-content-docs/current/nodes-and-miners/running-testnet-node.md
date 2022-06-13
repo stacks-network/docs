@@ -21,7 +21,7 @@ Running a node has no specialized hardware requirements. Users have been success
 - [curl](https://curl.se/download.html)
 - [jq](https://stedolan.github.io/jq/download/)
 
-### Firewall configuration
+### Configuración del firewall
 
 In order for the API node services to work correctly, you must configure any network firewall rules to allow traffic on the ports discussed in this section. The details of network and firewall configuration are highly specific to your machine and network, so a detailed example isn't provided.
 
@@ -41,7 +41,7 @@ Egress:
 
 These egress ports are for syncing [`stacks-blockchain`][] and Bitcoin headers. If they're not open, the sync will fail.
 
-## Step 1: initial setup
+## Paso 1: configuración inicial
 
 In order to run the testnet node, you must download the Docker images and create a directory structure to hold the persistent data from the services. Download and configure the Docker images with the following commands:
 
@@ -55,7 +55,7 @@ Create a directory structure for the service data with the following command:
 mkdir -p ./stacks-node/persistent-data/stacks-blockchain/testnet && cd stacks-node
 ```
 
-## Step 2: running Stacks blockchain
+## Paso 2: ejecutar Stacks blockchain
 
 Start the [`stacks-blockchain`][] container with the following command:
 
@@ -75,7 +75,7 @@ You can verify the running [`stacks-blockchain`][] container with the command:
 docker ps --filter name=stacks-blockchain
 ```
 
-## Step 3: verifying the services
+## Paso 3: verificar los servicios
 
 :::info
 The initial burnchain header sync can take several minutes, until this is done the following commands will not work
@@ -131,7 +131,7 @@ Use the following commands to stop the local testnet node:
 docker stop stacks-blockchain
 ```
 
-## Additional reading
+## Lecturas adicionales
 
 <!-- markdown-link-check-disable -->
 
