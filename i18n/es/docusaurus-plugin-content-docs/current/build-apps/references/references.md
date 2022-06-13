@@ -7,4 +7,4 @@ sidebar_label: Referencias
 
 [Blockchain Naming System](./bns)
 
-[Hiro example apps](https://docs.hiro.so/example-apps)
+[Ejemplo de aplicaciones en Hiro](https://docs.hiro.so/example-apps)
