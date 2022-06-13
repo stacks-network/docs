@@ -13,7 +13,7 @@ Los usuarios que se registren en su aplicación pueden autenticarse posteriormen
 
 ## Cómo funciona
 
-El flujo de autenticación con Stacks es similar al típico flujo cliente-servidor utilizado por los servicios de registro centralizado (por ejemplo, OAuth). However, with Stacks the authentication flow happens entirely client-side.
+El flujo de autenticación con Stacks es similar al típico flujo cliente-servidor utilizado por los servicios de registro centralizado (por ejemplo, OAuth). Sin embargo, con Stacks el flujo de autentificación ocurre enteramente del lado del cliente.
 
 An app and authenticator, such as [the Stacks Wallet](https://www.hiro.so/wallet/install-web), communicate during the authentication flow by passing back and forth two tokens. The requesting app sends the authenticator an `authRequest` token. Once a user approves authentication, the authenticator responds to the app with an `authResponse` token.
 
