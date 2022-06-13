@@ -15,7 +15,7 @@ Berkontribusi pada Stacks Docs di situs web ini. Info lebih lanjut [di sini](doc
 
 ### Terjemahan
 
-Bantuan untuk terjemahan. Detail lebih lanjut [di sini](translations).
+Help us reach more people with translations. Detail lebih lanjut [di sini](translations).
 
 <!-- markdown-link-check-enable-->
 

@@ -9,7 +9,7 @@ tags:
 
 Prosedur ini menunjukkan cara menjalankan noda testnet lokal menggunakan gambar Docker.
 
-:::warning
+:::caution
 This procedure focuses on Unix-like operating systems (Linux and MacOS). Prosedur ini belum diuji pada Windows.
 :::
 

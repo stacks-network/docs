@@ -21,7 +21,7 @@ The Stacks-No-Code-Plugin code is [publicly available on Github](https://github.
 
 ## Página de demostración
 
-Una página de demostración está disponible [aquí](https://test-stacks-plugin.bubbleapps.io/version-test)
+A demo page is available [here](https://test-stacks-plugin.bubbleapps.io/version-test).
 
 ## Vídeos NoCodeClarity
 
@@ -32,3 +32,4 @@ Vídeos:
 * [NoCodeClarity Setup](https://www.youtube.com/watch?v=WanXlpBGl0w)
 * [NoCodeClarity - Part 1 of the plugin](https://www.youtube.com/watch?v=o6d3hrzNqVI&t=248s)
 * [NoCodeClarity - Part 2 of the plugin](https://www.youtube.com/watch?v=0rzMdsrRg80)
+* [Sneak Peek of the No Code Stacks Wallet Template](https://www.youtube.com/watch?v=Xe6Yv0rF6XM)
