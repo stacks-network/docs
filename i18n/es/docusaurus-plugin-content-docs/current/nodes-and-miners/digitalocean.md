@@ -21,17 +21,17 @@ Choose a plan (it will only allow you to select a plan that meets the minimum re
 
 #### Paso 3
 
-Enter a root password or enable SSH keys if your prefer.
+Introduzca una contraseña de root o active las claves SSH si lo prefiere.
 
 ![](/img/sh_digitalocean-choose-authentication.png)
 
 #### Paso 4
 
-You can leave the rest of the options as they are and click on `Create Droplet`
+Puedes dejar el resto de las opciones tal y como están y hacer clic en `Create Droplet`
 
 #### Paso 5
 
-You will need to wait a few seconds for the droplet to get created. Once created click on it to see more information.
+Necesitarás esperar unos segundos para que el droplet se cree. Una vez creado haga clic en él para ver más información.
 
 ![](/img/sh_digitalocean-creating-droplet.png)
 
@@ -39,7 +39,7 @@ You will need to wait a few seconds for the droplet to get created. Once created
 
 ### Paso 6
 
-Congratulations! Congratulations! You are now running the Stacks Blockchain. You can click on `Console` for a terminal window to open or login using SSH to the public IP you've been assigned to with user `root`.
+¡Felicidades! Ahora está ejecutando Stacks Blockchain. Puede hacer clic en `Console` para que una ventana de terminal abra o inicie sesión usando SSH a la IP pública a la que se le ha asignado con el usuario `root`.
 
 ![](/img/sh_digitalocean-console-button.png) ![](/img/sh_digitalocean-console.png)
 
@@ -51,7 +51,7 @@ To keep track of the progress, you can `ssh root@your_droplet_public_ipv4` to th
 
 Once the stacks blockchain starts to sync with peers, application ports will open and nginx port 80 will now start proxying requests.
 
-Use `http://your_droplet_public_ipv4` to access the data directly, with output being similar to:
+Use `http://your_droplet_public_ipv4` para acceder a los datos directamente, siendo la salida similar a:
 
 ```json
 {
