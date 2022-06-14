@@ -248,6 +248,12 @@ const config = {
           },
           {
             from: [
+              '/contribute/translations',
+            ],
+            to: '/docs/contribute/translations',
+          },
+          {
+            from: [
               '/build-apps',
               '/build-apps/overview',
               '/references/deploy-tips',

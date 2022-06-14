@@ -23,7 +23,7 @@ A discrete group of records written to a blockchain that can effectively be iden
 A database created and shared by the members of a peer-to-peer computer network which each member of that network can independently trust due to the rules governing the database’s creation. A blockchain can therefore be used to replace centralized databases.
 
 #### Blockchain Name System (BNS)
-Replacement for DNS. More info [here](../noteworthy-contracts/bns-contract)
+Replacement for DNS. More info [here](../noteworthy-contracts/bns-contract).
 
 #### Blockstack Browser
 A deprecated application for accessing identity and storage.
@@ -37,8 +37,7 @@ Looks like a bitcoin address but starts with `ID` for example:
 Burning a token means that the token is transferred to an address that is a black hole—one that is not owned by any entity and for which guessing the applicable private key is effectively impossible based on known mathematical principles. This effectively destroys the token by making it unavailable for future use and decreases the total number of tokens available from that point forward.
 
 #### consensus hash
-A consensus hash is a cryptographic hash that each node calculates at each block. It is derived from the accepted state transitions in the last-processed block
- and a geometric series of prior-calculated consensus hashes.
+A consensus hash is a cryptographic hash that each node calculates at each block. It is derived from the accepted state transitions in the last-processed block and a geometric series of prior-calculated consensus hashes.
 
 #### Consensus rules
 "The rules governing the creation of new valid records in a blockchain database
@@ -100,7 +99,7 @@ An identifier in the Blockstack, for example meepers.id.blockstack.  This is you
 A way to identify a person or an organization on the Stacks network. An identity is unique, both `meepers.id.blockstack` or `chad.id` are examples of IDs.
 
 #### identity management (IDM)
-Identity management, also known as identity and access management is, in computer security, the security and business discipline that enables the right individuals to access the right resources at the right times and for the right reason"
+Identity management, also known as identity and access management is, in computer security, the security and business discipline that enables the right individuals to access the right resources at the right times and for the right reason".
 
 #### know your customer (KYC)
 Or KYC, is a popular term used in the banking or financial field. KYC is a process where financial institutions, insurers and other companies obtain information about the identity and address of the customers as part of risk management.
@@ -108,11 +107,12 @@ Or KYC, is a popular term used in the banking or financial field. KYC is a proce
 #### light clients
 Clients that can independently validate the existence of transactions by downloading only block headers and not the entire blockchain.
 
-#### Magic Recovery Code
+#### Magic recovery code
 
 An long encrypted string, for example: 
  `36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5WXxSTazJsUjOA...` 
-Do not share the QR code that accompanied your recovery code either. This is a QR code: ![](/img/qr-code.png)
+Do not share the QR code that accompanied your recovery code either. This is a QR code:
+![](/img/qr-code.png)
 
 #### mesh network
 A local network topology in which the infrastructure nodes (i.e. bridges, switches, and other infrastructure devices) connect directly, dynamically and non-hierarchically to as many other nodes as possible and cooperate with one another to efficiently route data from/to clients.
@@ -149,17 +149,18 @@ The consensus algorithm used in the Stacks blockchain where miners destroy a pro
 #### proof-of-work
 A proof-of-work system or proof-of-work mining is a mining mechanism where miners must expend computing power to solve complicated cryptographic puzzles, and prove that they have done so by writing the solution to the blockchain, in order to be allowed to add blocks to a blockchain. This is the mining system used, for example, by Bitcoin.
 
-#### public key,
+#### public key
 Public and private key pair comprise of two uniquely related cryptographic keys. It looks like a long random string of letters and numbers: 
 `3048 0241 00C9 18FA CF8D EB2D EFD5 FD37 89B9 E069 EA97 FC20 …` 
 The exact format of the public and private key depend on the software you use to create them.
 
-#### Public Key Infrastructure (PKI),A system which returns a cryptographic public key associated with a name.
+#### Public Key Infrastructure (PKI)
+A system which returns a cryptographic public key associated with a name.
 
 #### replicated state machines (RSMs)
 This is a model for reasoning about distributed computer programs -- any program (plus it's input) can be represented as a state machine, and when trying to get a distributed set of servers to agree on the output of an algorithm, you can model that process as N different state machines"
 
-#### Secret Recovery Key,
+#### Secret recovery Key,
 Used to access an identity on the Stacks blockchain. A 24-word sequence of words for example: 
 `applied binge crisp pictorial fiery` 
 ` dancing agreeable frogs light finish ping apple`
@@ -185,11 +186,12 @@ The Stacks blockchain is the custom blockchain being developed for use by the St
 #### Stacks Explorer
 An application that allow you to view and search transactions in the blockchain. For example, https://explorer.stacks.co.
 
-#### Stacks Node
+#### Stacks node
 A complete version of our open-source software available on Github at https://github.com/stacks-network/stacks-blockchain/ that governs the creation of the blockchain, the smart contracts that may be written to our blockchain, and other systems that make up the Stacks network, when run on the systems and devices of our users and developers.
 
-#### Stacks Wallet
-An application for accessing assets, identity and storage. Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/).
+#### Stacks wallet
+An application for accessing assets, identity and storage.
+Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/).
 
 #### storage hub
 An Gaia instance run by a hub provider or software. A Gaia hub stores data in separate, addressed location.
@@ -215,13 +217,14 @@ A layer that sits on top of a blockchain that introduces new functionality and o
 #### wallet address
 A wallet address is the form in which a public key can be presented and recorded on a blockchain. Wallet addresses are therefore used to assign the ownership of digital assets on the Blockstack network.
 
-#### watch-only wallet,A wallet without send and receive ability. You can view only balances and transaction history.
+#### watch-only wallet
+A wallet without send and receive ability. You can view only balances and transaction history.
 
-#### Web of trust mining
+#### web of trust mining
 Web-of-trust mining provides incentive mechanisms for users where an initial trusted-set of unique users is curated in the genesis block and, in the future, the initial set of users can expand the web-of-trust after the network goes live.
 
-#### Web3
+#### web3
 The exact definition is still under discussion, but it general refers to the 3rd generation of the web that is based on blockchain technology and incorporates decentralized and token-based economics.
 
-#### Zone file
+#### zone file
 A Domain Name System (DNS) zone file is a text file that describes a DNS zone. A DNS zone is a subset, often a single domain, of the hierarchical domain name structure of the DNS.
