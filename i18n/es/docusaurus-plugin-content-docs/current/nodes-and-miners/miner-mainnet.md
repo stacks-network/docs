@@ -141,7 +141,7 @@ STACKS_LOG_DEBUG=1 stacks-node mainnet
 
 ## Running a miner in Windows
 
-### Prerequisites
+### Prerrequisitos
 
 Make sure are [running a node](running-mainnet-node) and [running bitcoind locally](#running-bitcoind-locally) before starting this tutorial.
 
