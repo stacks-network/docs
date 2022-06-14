@@ -3,7 +3,7 @@ sidebar_label: "Inicio"
 sidebar_position: 1
 ---
 
-# Stacks Docs Intro
+# Introducción de la documentación de Stacks
 
 Bienvenido a la documentación oficial de Stacks impulsada por la comunidad.
 
