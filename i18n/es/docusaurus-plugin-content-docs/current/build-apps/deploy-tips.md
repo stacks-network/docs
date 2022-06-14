@@ -15,7 +15,7 @@ Antes de que los usuarios puedan interactuar con tu aplicación, debes desplegar
 - Construya su aplicación para el despliegue.
 - Copie los archivos generados por su aplicación en su servidor de producción.
 
-Si primero completó su aplicación con el generador de aplicaciones de Stacks, su aplicación ya contiene los bloques iniciales para configurar, construir y desplegar su aplicación. Por ejemplo, la plantilla de React construye un andamio con los siguientes bloques de construcción.
+Si primero completó su aplicación con el generador de aplicaciones de Stacks, su aplicación ya contiene los bloques iniciales para configurar, construir y desplegar su aplicación. Por ejemplo, la plantilla de React genera un andamio con los siguientes bloques de construcción.
 
 | Archivos o Directorio      | Descripción                                                                                                                                                                                          |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
