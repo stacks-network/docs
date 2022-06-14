@@ -1,30 +1,30 @@
 ---
-title: Contribute
-description: Contribute to the Stacks ecosystem.
+title: Contribuir
+description: Contribuir al ecosistema de Stacks.
 sidebar_position: 8
-sidebar_label: "Contribute"
+sidebar_label: "Contribuir"
 ---
 
-You can contribute to the Stacks ecosystem in multiple ways:
+Puedes contribuir al ecosistema de Stacks de múltiples maneras:
 
 <!-- markdown-link-check-disable -->
 
 ### Documentación
 
-Contribute to the Stacks Docs on this website. More info [here](docs).
+Contribuye a la documentación de Stacks en este sitio web. Más información [aquí](docs).
 
 ### Traducciones
 
-Help us reach more people with translations. Más detalles [aquí](translations).
+Ayúdanos a llegar a más personas con traducciones. Más información [aquí](translations).
 
 <!-- markdown-link-check-enable-->
 
 ### Artículos
 
-Write an article or a blog post about Stacks. A good place to start is [Stacks Forum](https://forum.stacks.org).
+Escribe un artículo o un post en un blog sobre Stacks. Un buen lugar para comenzar es [Foro de Stacks](https://forum.stacks.org).
 
 ### Github
 
-If you are familiar with Github they are multiple repositories of the Stack Ecosystem that you can contribute to.
+Si estas familiarizado con Github hay varios repositorios del ecosistema de Stacks al que puedes contribuir.
 
 - https://github.com/stacks-network/
