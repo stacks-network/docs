@@ -21,7 +21,7 @@ A discrete group of records written to a blockchain that can effectively be iden
 A database created and shared by the members of a peer-to-peer computer network which each member of that network can independently trust due to the rules governing the database’s creation. A blockchain can therefore be used to replace centralized databases.
 
 #### Blockchain Name System (BNS)
-Replacement for DNS. More info [here](../noteworthy-contracts/bns-contract)
+Replacement for DNS. More info [here](../noteworthy-contracts/bns-contract).
 
 #### Blockstack Browser
 A deprecated application for accessing identity and storage.
@@ -52,12 +52,12 @@ A digital asset which utilises cryptography peer-to-peer networking and a public
 The practise and study of encryption and decryption - encoding data so that it can only be decoded by specific individuals. A system for encrypting and decrypting data is a cryptosystem.
 
 #### DAO
-See Decentralized Autonomous Organization.
+Ver Organización Autónoma Desdentralizada
 
 #### decentralized application (DApp)
 A DApp is a service that enables direct interaction between end users and providers (e.g. connecting buyers and sellers in some marketplace, owners and stores in file storage). A term coined by Ethereum. See their glossary: http://ethdocs.org/en/latest/glossary.html#dapp"
 
-#### Decentralized Autonomous Organization
+#### Organización Autónoma Descentralizada (DAO)
 A type of contract or suite of contracts on the blockchain that is intented to codify, enforce or automate the processes of an organization.
 
 #### digital asset
@@ -66,7 +66,7 @@ Also referred to as a crypto-asset. Any set of unique digital information—incl
 #### digital fingerprint
 A digital fingerprint is a unique number of a fixed length that can be produced by running any set of digital information through something called a cryptographic hash function. Each set of digital information (including a digital asset, and the digital record of any network operation on that digital asset) should (as a practical matter) have a unique digital fingerprint, which allows that set of digital information to be identified. However, it is almost impossible to recreate a digital asset from its digital fingerprint. The Blockstack network uses industry-standard algorithms such as SHA-256 to create digital fingerprints.
 
-#### digital signature
+#### firma digital
 A digital signature is a sequence of digital information combining a user’s private key and any digital information that the user wishes to sign. Any other party can use the user’s paired public key to verify that the digital signature is authentic, i.e. that the public key was generated from a particular piece of digital information and the user’s private key.
 
 #### distributed hash tables (DHT)
@@ -81,18 +81,18 @@ The term fork is used to refer both to any situation where there are two or more
 #### Gaia
 Decentralized storage architecture for off-chain data. More info [here](../gaia).
 
-#### genesis block
+#### bloque génesis
 The genesis block is the first block of the Stacks blockchain, which will create the initial 1.32 billion Stacks Tokens.
 
 #### id.blockstack
 An identifier in the Blockstack, for example meepers.id.blockstack.  This is your name & identity that is registered in the .id namespace on Blockstack. Your personal data and storage are built around this ID. Apps that want to access your data use your permission and identity to find it.  An id is usually a shorthand for a longer, hash ID string, for example ID-1Fj9kkw15P51Fj9kkw15P5xJmyefWhLKrQMKNPREfaqsJ"
 
-#### identity
+#### identidad
 
 A way to identify a person or an organization on the Stacks network. An identity is unique, both `meepers.id.blockstack` or `chad.id` are examples of IDs.
 
 #### identity management (IDM)
-Identity management, also known as identity and access management is, in computer security, the security and business discipline that enables the right individuals to access the right resources at the right times and for the right reason"
+Identity management, also known as identity and access management is, in computer security, the security and business discipline that enables the right individuals to access the right resources at the right times and for the right reason".
 
 #### know your customer (KYC)
 Or KYC, is a popular term used in the banking or financial field. KYC is a process where financial institutions, insurers and other companies obtain information about the identity and address of the customers as part of risk management.
@@ -100,14 +100,14 @@ Or KYC, is a popular term used in the banking or financial field. KYC is a proce
 #### light clients
 Clients that can independently validate the existence of transactions by downloading only block headers and not the entire blockchain.
 
-#### Magic Recovery Code
+#### Magic recovery code
 
 An long encrypted string, for example: `36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5WXxSTazJsUjOA...` Do not share the QR code that accompanied your recovery code either. This is a QR code: ![](/img/qr-code.png)
 
-#### mesh network
+#### red de malla
 A local network topology in which the infrastructure nodes (i.e. bridges, switches, and other infrastructure devices) connect directly, dynamically and non-hierarchically to as many other nodes as possible and cooperate with one another to efficiently route data from/to clients.
 
-#### mining
+#### minería
 Mining generally refers to the process of performing certain functions for a network such as adding new records to a blockchain in exchange for mining rewards; it may also refer to other mechanisms whereby rewards (usually in the form of cryptocurrency) are provided for performing other tasks helpful to the network.
 
 #### mining power
@@ -116,16 +116,16 @@ A miner’s (or group of miners’) mining power is equal to the probability it 
 #### mining rewards
 Mining rewards are newly issued tokens received by miners in exchange for adding new records to the blockchain or other activities beneficial to the network.
 
-#### name
+#### nombre
 An identifier or name. Names are a type of digital asset in the Stacks network. If you have signed into the Stacks Wallet, you might have created a name. If an application developer registered an application within Stacks, then they registered a name. Public Stacking pools can also have a name.
 
 #### network operation
 A network operation is any change to the information about a digital asset (or smart contract) stored on a blockchain, including, for example, a change in the digital asset’s owner, or a change in the location at which it is stored on the network. How and when these network operations are performed for each digital asset is governed, on the Blockstack network, either by the Stacks Node software or a smart contract.
 
 #### NFT
-Non fungible token.
+Token no fungible.
 
-#### private key
+#### llave privada
 
 Private keys matches a corresponding public key.  A public key also looks like a string of letters and numbers:
 
@@ -139,18 +139,19 @@ The consensus algorithm used in the Stacks blockchain where miners destroy a pro
 #### proof-of-work
 A proof-of-work system or proof-of-work mining is a mining mechanism where miners must expend computing power to solve complicated cryptographic puzzles, and prove that they have done so by writing the solution to the blockchain, in order to be allowed to add blocks to a blockchain. This is the mining system used, for example, by Bitcoin.
 
-#### public key,
+#### public key
 Public and private key pair comprise of two uniquely related cryptographic keys. It looks like a long random string of letters and numbers: `3048 0241 00C9 18FA CF8D EB2D EFD5 FD37 89B9 E069 EA97 FC20 …` The exact format of the public and private key depend on the software you use to create them.
 
-#### Public Key Infrastructure (PKI),A system which returns a cryptographic public key associated with a name.
+#### Public Key Infrastructure (PKI)
+A system which returns a cryptographic public key associated with a name.
 
 #### replicated state machines (RSMs)
 This is a model for reasoning about distributed computer programs -- any program (plus it's input) can be represented as a state machine, and when trying to get a distributed set of servers to agree on the output of an algorithm, you can model that process as N different state machines"
 
-#### Secret Recovery Key,
+#### Secret recovery Key,
 Used to access an identity on the Stacks blockchain. A 24-word sequence of words for example: `applied binge crisp pictorial fiery` `dancing agreeable frogs light finish ping apple`
 
-#### seed phrase
+#### Frase semilla
 
 Used to access Stacks Wallet software. The seed phrase consists of 24 words in a sequence. Both the word *and its position the sequence*  are important. Write down your seed phrase and store it in a secure location such as a safe deposit box. When you write the seed phrase down, include its position, for example,`1-frog, 2-horse, 3-building` and so on until you reach a final position `24-ocean`.
 #### smart contract
@@ -169,10 +170,10 @@ The Stacks blockchain is the custom blockchain being developed for use by the St
 #### Stacks Explorer
 An application that allow you to view and search transactions in the blockchain. For example, https://explorer.stacks.co.
 
-#### Stacks Node
+#### Stacks node
 A complete version of our open-source software available on Github at https://github.com/stacks-network/stacks-blockchain/ that governs the creation of the blockchain, the smart contracts that may be written to our blockchain, and other systems that make up the Stacks network, when run on the systems and devices of our users and developers.
 
-#### Stacks Wallet
+#### Stacks wallet
 An application for accessing assets, identity and storage. Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/).
 
 #### storage hub
@@ -181,7 +182,7 @@ An Gaia instance run by a hub provider or software. A Gaia hub stores data in se
 #### storage provider
 A third-party company cloud or software provider that hosts one or more Gaia storage hubs.
 
-#### transaction
+#### transacción
 A transaction is a unit of work within a block.
 
 #### transaction fee
@@ -199,13 +200,14 @@ A layer that sits on top of a blockchain that introduces new functionality and o
 #### wallet address
 A wallet address is the form in which a public key can be presented and recorded on a blockchain. Wallet addresses are therefore used to assign the ownership of digital assets on the Blockstack network.
 
-#### watch-only wallet,A wallet without send and receive ability. You can view only balances and transaction history.
+#### watch-only wallet
+A wallet without send and receive ability. You can view only balances and transaction history.
 
-#### Web of trust mining
+#### web of trust mining
 Web-of-trust mining provides incentive mechanisms for users where an initial trusted-set of unique users is curated in the genesis block and, in the future, the initial set of users can expand the web-of-trust after the network goes live.
 
-#### Web3
+#### web3
 The exact definition is still under discussion, but it general refers to the 3rd generation of the web that is based on blockchain technology and incorporates decentralized and token-based economics.
 
-#### Zone file
+#### zone file
 A Domain Name System (DNS) zone file is a text file that describes a DNS zone. A DNS zone is a subset, often a single domain, of the hierarchical domain name structure of the DNS.
