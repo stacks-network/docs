@@ -13,7 +13,7 @@ This procedure demonstrates how to run a local testnet node using Docker images.
 This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on Windows.
 :::
 
-## Prerequisites
+## Prerrequisitos
 
 Running a node has no specialized hardware requirements. Users have been successful in running nodes on Raspberry Pi boards and other system-on-chip architectures. In order to complete this procedure, you must have the following software installed on the node host machine:
 
