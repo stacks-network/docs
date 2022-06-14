@@ -12,7 +12,7 @@ This repository stores the files for the Stacks documentation website on [docs.s
 
 If you are interested in contributing to the site and making changes, please refer to our [contributing guide here](https://docs.stacks.co/contribute).
 
-If you are interested in contributing to the tranlations of this site to multiple languages, please refer to the [translations guide](https://docs.stacks.co/contribute/translations)
+If you are interested in contributing to the tranlations of this site to multiple languages, please refer to the [translations guide](https://docs.stacks.co/docs/contribute/translations)
 
 This website uses [Docusaurus 2](https://docusaurus.io/). A local version can be run by cloning this repo and typing the following commands.
 
