@@ -1,12 +1,12 @@
 ---
 title: Testnet
-description: Test your smart contracts and apps
+description: Prueba tus contratos inteligentes y aplicaciones
 sidebar_position: 2
 ---
 
 ## Acerca de Testnet
 
-The testnet is a separate blockchain from the Stacks mainnet analogous to a staging environnment. It's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment. It produces blocks at roughly the same rate as mainnet; about 1 block every 10 minutes on average. The Stacks testnet is rarely reset.
+La red de pruebas (testnet) es una blockchain separado de la red principal de Stacks análoga a un entorno de pruebas. It's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment. It produces blocks at roughly the same rate as mainnet; about 1 block every 10 minutes on average. The Stacks testnet is rarely reset.
 
 ### Faucet
 

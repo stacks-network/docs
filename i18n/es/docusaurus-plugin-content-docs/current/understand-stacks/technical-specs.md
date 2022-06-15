@@ -8,7 +8,7 @@ sidebar_position: 10
 
 - Proof of Transfer (PoX) as described in [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md)
 - Network will transition to Proof of Burn (PoB) as described in [SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md) after 10 years. [Learn more about Proof-of-Burn in SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
-- Threat model
+- Modelo de amenaza
   - 51% of malicious Stacks mining power can perform a double-spend attack
   - 51% of malicious Bitcoin mining power can reorg the Stacks chain
 - Different actors and their roles
