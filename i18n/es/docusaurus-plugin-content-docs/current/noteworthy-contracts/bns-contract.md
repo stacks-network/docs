@@ -113,7 +113,7 @@ The rules for a namespace are as follows:
 
 * the price of a name in a bucket is `((coeff) * (base) ^ (bucket exponent)) / ((numeric discount multiplier) * (punctuation discount multiplier))`
 
-Example:
+Ejemplo:
 
 * base = 10
 * coeff = 2

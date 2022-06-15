@@ -32,15 +32,15 @@ También puede probar el sitio localmente utilizando este método.
 ### Pasos
 
 1. Haga un Fork del [repositorio de documentos](https://github. com/stacks-network/docs) haciendo clic en el botón *Fork* en la parte superior derecha de la pantalla.
-2. Clona tu fork a tu máquina local con este comando `git clone git@githubATI<Your_USERNAME>/docs.git stacks_docs`
-3. Enter your project folder `cd stacks_docs`
-4. Create a branch `git checkout -b feat/my-feature-branch`.
-5. You can optionally preview your changes in real time with:
-    - `npm install` (to install dependencies).
-    - `npx docusaurus start` to start a local copy of the site. A web browser will open at http://localhost:3000, so you can see a preview of yourhanges in real time.
-6. Make the changes you wish and then commit them with this kind of message: `git commit -am "feat: some new feature or content"`.
-7. Push to to GitHub with `git push --set-upstream origin feature/my-feature-branch`.
-8. Visit GitHub and make your pull request.
+2. Clona el fork a tu máquina local con este comando `git clone git@github.com:<YOUR_USERNAME>/docs.git stacks_docs`
+3. Entre a la carpeta del proyecto `cd stacks_docs`
+4. Crea una rama `git checkout -b feat/my-feature-branch`.
+5. Opcionalmente puede previsualizar sus cambios en tiempo real con:
+    - `npm install` (para instalar dependencias).
+    - `npx docusaurus start` para iniciar una copia local del sitio. Un navegador web se abrirá en http://localhost:3000, para que pueda ver una vista previa de sus cambios en tiempo real.
+6. Haga los cambios que desee y luego haga un commit con este tipo de mensaje: `git commit -am "feat: some new feature or content"`.
+7. Haga Push a Github con `git push --set-upstream origin feature/my-feature-branch`.
+8. Visite GitHub y haga su pull request.
 
 ## Información adicional
 ### Running and building the site locally (optional)

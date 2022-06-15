@@ -47,11 +47,11 @@ implications, you should carefully consider whether it should be performed using
 
 Miners can choose to enable or disable microblocks in their mining configuration. As a best practice, miners should enable microblock mining. When an application or user submits a transaction, the transaction can include an argument that requires the transaction to be in a microblock, an anchor block, or in either.
 
-### Transactions
+### Transacciones
 
 Transactions include an option that controls if a miner should include them in microblocks or in anchor blocks. The anchor mode transaction option is an optional argument that controls whether a transaction must be included in an anchor block or a microblock, or is eligible for either.
 
-### Mining
+### Minería
 
 Stacks miners must enable microblocks in their miner configuration to implement the block streaming model. For more information, see [mining microblocks](../understand-stacks/mining#microblocks).
 

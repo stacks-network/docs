@@ -29,14 +29,14 @@ PoX tiene una relación de 1:1 por bloque con Bitcoin, lo que significa que cual
 En lugar de gastar electricidad como prueba de trabajo, PoX reutiliza los bitcóines ya acuñados como "prueba de cómputo", y los mineros representan su costo de minería directamente en bitcóines.
 
 
-[Read more about Proof of Transfer](proof-of-transfer)
-### Mining
+[Leer más sobre "Proof of Transfer"](proof-of-transfer)
+### Minería
 
 ![](/img/pages/testnet-sm.svg) Minar es necesario para lograr que la red sea utilizable, fiable y segura. Los mineros verifican las transacciones entrantes, participan en el mecanismo de consenso y escriben nuevos bloques en el blockchain.
 
 Para incentivar la minería, los mineros reciben tókenes de Stacks (STX) recién acuñados al ganar la subasta que les permiten convertirse líderes de la próxima ronda.
 
-[Read more about Mining](minería)
+[Leer más sobre minería](minería)
 
 ### Stacking
 
@@ -44,7 +44,7 @@ Los bitcóines utilizados en las pujas de los mineros se envían a un conjunto d
 
 Quienes poseen Stacks tienen que bloquear sus tókenes (STX) durante un período de tiempo determinado.
 
-[Read more about Stacking](stacking)
+[Leer más sobre Stacking](stacking)
 
 ### Contratos inteligentes
 
@@ -61,15 +61,15 @@ Clarity es diferente de otros lenguajes diseñados para escribir contratos intel
 - **Seguridad**: El lenguaje Clarity permite que los usuarios establezcan sus propias condiciones para las transacciones, lo que garantiza que un contrato nunca pueda transferir inesperadamente en token de un usuario.
 - **Sin compilador**: Los contratos escritos con Clarity se transmiten al blockchain de Stacks tal cual fueron creados por los desarrolladores. Esto garantiza que el código que los desarrolladores escribieron, analizaron y probaron, sea exactamente lo que se ejecuta.
 
-[Read more about Clarity](../write-smart-contracts/clarity-language/)
+[Leer más sobre Clarity](../write-smart-contracts/clarity-language/)
 
 ## Guías
 
 Lea una de nuestras guías para entender los pormenores del blockchain Stacks 2.0.
 
-* [Account](../understand-stacks/accounts)
-* [Transactions](../understand-stacks/transactions)
-* [Network](../understand-stacks/network)
+* [Cuenta](../understand-stacks/accounts)
+* [Transacciones](../understand-stacks/transactions)
+* [Red](../understand-stacks/network)
 * [Microbloques](../understand-stacks/microblocks)
 
 [Comparación del blockchain de Stacks con otras tecnologías de blockchain]: https://stacks.org/stacks-blockchain ""
