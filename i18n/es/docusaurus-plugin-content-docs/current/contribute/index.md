@@ -1,7 +1,7 @@
 ---
 title: Contribuir
 description: Contribuir al ecosistema de Stacks.
-sidebar_position: 8
+sidebar_position: 10
 sidebar_label: "Contribuir"
 ---
 

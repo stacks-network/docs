@@ -1,6 +1,6 @@
 ---
 title: MacOS
-description: MacOS for local testing/development
+description: MacOS para pruebas/desarrollo local
 tags:
   - tutorial
 ---
@@ -10,9 +10,9 @@ The following assumes you have [Docker Installed](https://docs.docker.com/docker
 - Recommended to also have [MacOS Homebrew](https://docs.brew.sh/Installation) installed
 - Use Homebrew to install jq with `brew install jq`
 
-In your working directory:
+En su directorio de trabajo:
 
-**1. Clone a copy of the [gaia repo](https://github.com/stacks-network/gaia):**
+**1. Clona una copia del [ repositorio de gaia](https://github.com/stacks-network/gaia):**
 
 ```bash
 $ git clone -b master --single-branch https://github.com/stacks-network/gaia
@@ -28,16 +28,16 @@ $ cd gaia/deploy/docker
 
 ```
 $ cp sample-disk.env disk.env
-# Update the DOMAIN_NAME variable to `localhost`
+# Cambia la variable DOMAIN_NAME a `localhost`
 ```
 
-**4. Start the server:**
+**4. Inicia un servidor:**
 
 ```
 $ docker-compose -f docker-compose-base.yaml -f docker-compose-disk.yaml --env-file disk.env up
 ```
 
-**5. Verify the server is responding locally:**
+**5. Verificar que el servidor está respondiendo localmente:**
 
 ```
 $ curl -sk https://localhost/hub_info | jq
@@ -51,7 +51,7 @@ $ curl -sk https://localhost/hub_info | jq
 
 ### Modifying the configuration for your gaia-hub
 
-Two methods exist:
+Existen dos métodos:
 
 1. Edit the `gaia/deploy/configs/gaia/hub-config.json` using `vim` or other
 

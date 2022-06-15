@@ -1,11 +1,11 @@
 ---
-title: Deploy tips
-description: Learn some common methods for deploying your application.
+title: Aides au déploiement
+description: Apprenez quelques méthodes courantes pour déployer votre application.
 ---
 
 ## Introduction
 
-Les applications stacks sont des applications web qui authentifient les utilisateurs avec Stacks Auth et stockent des données avec Gaia. Ces deux technologies sont accessibles du côté client. As such, Stacks apps tend to be simple in design and operation, since in many cases, they don’t have to host anything besides the application’s assets.
+Les applications stacks sont des applications web qui authentifient les utilisateurs avec Stacks Auth et stockent des données avec Gaia. Ces deux technologies sont accessibles du côté client. En tant que tel, les applications de Stacks tendent à être simples dans la conception et le fonctionnement. Dans de nombreux cas, ils n’ont pas à héberger quoi que ce soit en dehors des ressources de l’application.
 
 ## Où déployer son application
 
@@ -17,10 +17,10 @@ Before users can interact with your application, you must deploy it on a server 
 
 If you first populated your application with the Stacks application generator, your application contains the starting blocks for configuring, building, and deploying your app. For example, the React template builds out a scaffolding with the following building blocks.
 
-| File or Directory          | Description                                                                                                                                                                    |
+| Fichier ou dossier         | Description                                                                                                                                                                    |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | node_modules/react-scripts | A set of scripts for that helps you kick off React projects without configuring, so you do not have to set up your project by yourself.                                        |
-| package.json               | Contains a scripts section that includes a reference to the react-scripts, which are a dependency. This script creates a build directory containing your files for deployment. |
+| paquet.json                | Contains a scripts section that includes a reference to the react-scripts, which are a dependency. This script creates a build directory containing your files for deployment. |
 | public/favicon.ico         | An example shortcut icon.                                                                                                                                                      |
 | public/index.html          | An entry page for an application.                                                                                                                                              |
 | public/manifest.json       | A JSON file that describes your web application to the browser.                                                                                                                |

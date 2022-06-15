@@ -36,7 +36,7 @@ En lugar de gastar electricidad como prueba de trabajo, PoX reutiliza los bitcó
 
 Para incentivar la minería, los mineros reciben tókenes de Stacks (STX) recién acuñados al ganar la subasta que les permiten convertirse líderes de la próxima ronda.
 
-[Leer más sobre minería](minería)
+[Leer más sobre minería](mining)
 
 ### Stacking
 
