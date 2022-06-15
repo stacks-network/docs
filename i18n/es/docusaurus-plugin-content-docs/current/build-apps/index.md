@@ -9,9 +9,9 @@ sidebar_label: Crear apps
 
 Las aplicaciones construidas con la cadena de bloques Stacks dan control a los usuarios sobre sus identidades, activos y datos digitales.
 
-Unlike most cloud-based apps, they are "decentralized" since they don't depend on any centralized platform, server, or database to function. Rather, they use the Stacks blockchain to authenticate users and facilitate read and write requests for them without any single point of failure or trust.
+A diferencia de la mayoría de las aplicaciones basadas en la nube, son "descentralizadas", ya que no dependen de ninguna plataforma, servidor o base de datos centralizada para funcionar. Más bien, usan la blockchain de Stacks para autenticar usuarios y facilitar la lectura y escritura de peticiones para ellos sin ningún punto único de fallo o confianza.
 
-Stacks provides three main functions for building apps:
+Stacks proporciona tres funciones principales para construir aplicaciones:
 
 <!-- markdown-link-check-disable -->
 
