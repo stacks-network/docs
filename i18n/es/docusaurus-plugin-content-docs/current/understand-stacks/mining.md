@@ -1,6 +1,6 @@
 ---
 title: Minería
-description: A guide to mining on Stacks 2.0
+description: Una guía para la minería en Stacks 2.0
 sidebar_position: 4
 ---
 
@@ -8,7 +8,7 @@ sidebar_position: 4
 
 This guide highlights some technical details related to mining on the Stacks 2.0 network.
 
-## Mining frequency
+## Frecuencia de minería
 
 A new Stacks block may be mined once per Bitcoin block. To be considered for mining a block, a miner must have a block commit included in a Bitcoin block. If a miner wishes to update their commitment after submission, they may use Bitcoin Replace-By-Fee.
 
@@ -27,13 +27,13 @@ These "halvings" are synchronized with Bitcoin halvings.
 
 ![coinbase rewards](/img/pages/coinbase-rewards.png)
 
-## Transaction fees
+## Comisiones de las transacciones
 
 Miners receive Stacks fees for transactions mined in any block they produce.
 
 For transactions mined in microblocks, the miner that produces the microblock receives 40% of the fees, while the miner that confirms the microblock receives 60% of the fees.
 
-## Reward maturity
+## Madurez de recompensa
 
 Block rewards and transaction fees take 100 blocks on the Bitcoin blockchain to mature. After successfully mining a block your rewards appear in your Stacks account after ~24 hours.
 
