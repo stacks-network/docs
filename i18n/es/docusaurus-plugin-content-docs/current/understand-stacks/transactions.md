@@ -1,5 +1,5 @@
 ---
-title: Transactions
+title: Transacciones
 description: Guide to Stacks 2.0 transactions
 sidebar_position: 6
 ---
