@@ -5,9 +5,9 @@ description: Learn some common methods for deploying your application.
 
 ## Introduction
 
-Stacks applications are web applications that authenticate users with Stacks Auth and store data with Gaia. Both of these technologies can be accessed on the client side. As such, Stacks apps tend to be simple in design and operation, since in many cases, they don’t have to host anything besides the application’s assets.
+Les applications stacks sont des applications web qui authentifient les utilisateurs avec Stacks Auth et stockent des données avec Gaia. Ces deux technologies sont accessibles du côté client. As such, Stacks apps tend to be simple in design and operation, since in many cases, they don’t have to host anything besides the application’s assets.
 
-## Where to deploy your application
+## Où déployer son application
 
 Before users can interact with your application, you must deploy it on a server that is accessible over the internet. Deploying requires that you:
 
