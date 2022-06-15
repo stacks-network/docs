@@ -1,21 +1,21 @@
 ---
-title: Running a testnet node
-description: Set up and run a testnet node with Docker
+title: Ejecutar un nodo testnet
+description: Configurar y ejecutar un nodo testnet con Docker
 tags:
   - tutorial
 ---
 
 ## Introducción
 
-This procedure demonstrates how to run a local testnet node using Docker images.
+Este procedimiento demuestra cómo ejecutar un nodo local testnet usando imágenes Docker.
 
 :::caution
-This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on Windows.
+Este procedimiento se centra en sistemas operativos de tipo Unix (Linux y MacOS). Este procedimiento no ha sido probado en Windows.
 :::
 
 ## Prerrequisitos
 
-Running a node has no specialized hardware requirements. Users have been successful in running nodes on Raspberry Pi boards and other system-on-chip architectures. In order to complete this procedure, you must have the following software installed on the node host machine:
+Ejecutar un nodo no tiene requerimientos de hardware especiales. Los usuarios han tenido éxito ejecutando nodos en las dispostivos Raspberry Pi y otras arquitecturas de sistema on-chip. Para completar este procedimiento, debe tener instalado el siguiente software:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [curl](https://curl.se/download.html)
@@ -23,23 +23,23 @@ Running a node has no specialized hardware requirements. Users have been success
 
 ### Configuración del firewall
 
-In order for the API node services to work correctly, you must configure any network firewall rules to allow traffic on the ports discussed in this section. The details of network and firewall configuration are highly specific to your machine and network, so a detailed example isn't provided.
+Para que los servicios del nodo API funcionen correctamente, debe configurar cualquier regla de firewall de red para permitir el tráfico en los puertos discutidos en esta sección. Los detalles de la configuración de red y firewall son muy específicos para su máquina y red, por lo que no se proporciona un ejemplo detallado.
 
-The following ports must open on the host machine:
+Los siguientes puertos deben abrirse en la máquina host:
 
-Ingress:
+Entrada:
 
-- stacks-blockchain (open to `0.0.0.0/0`):
+- stacks-blockchain (abierto a `0.0.0.0/0`):
   - `20443 TCP`
   - `20444 TCP`
 
-Egress:
+Salida:
 
 - `18332`
 - `18333`
 - `20443-20444`
 
-These egress ports are for syncing [`stacks-blockchain`][] and Bitcoin headers. If they're not open, the sync will fail.
+Estos puertos de salida son para sincronizar las cabeceras de [`stacks-blockchain`][] y Bitcoin. Si no están abiertos, la sincronización fallará.
 
 ## Paso 1: configuración inicial
 
@@ -123,9 +123,9 @@ If the instance is running you should recieve terminal output similar to the fol
 }
 ```
 
-## Stopping the testnet node
+## Detener el nodo testnet
 
-Use the following commands to stop the local testnet node:
+Utilice los siguientes comandos para detener el nodo local testnet:
 
 ```sh
 docker stop stacks-blockchain
@@ -135,6 +135,6 @@ docker stop stacks-blockchain
 
 <!-- markdown-link-check-disable -->
 
-- [Running a Stacks API node](https://docs.hiro.so/get-started/running-api-node)
-- [Running a Stacks mainnet node](running-mainnet-node)
+- [Ejecutar un nodo API de Stacks](https://docs.hiro.so/get-started/running-api-node)
+- [Ejecutando un nodo Stacks mainnet](running-mainnet-node)
 <!-- markdown-link-check-enable-->
