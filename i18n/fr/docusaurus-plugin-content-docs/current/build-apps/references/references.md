@@ -3,8 +3,8 @@ title: References
 sidebar_label: References
 ---
 
-[Authentication](./authentication)
+[Authentification](./authentication)
 
-[Blockchain Naming System](./bns)
+[Systeme de Noms sur Blockchain](./bns)
 
-[Hiro example apps](https://docs.hiro.so/example-apps)
+[Exemple d'applications par Hiro](https://docs.hiro.so/example-apps)
