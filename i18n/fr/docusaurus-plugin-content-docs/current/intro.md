@@ -3,10 +3,10 @@ sidebar_label: "Home"
 sidebar_position: 1
 ---
 
-# Stacks Docs Introduction
+# Introduction a la Documentation de Stacks
 
-Welcome to the community driven official Stacks Documentation.
+Bienvenue à la documentation officielle de Stacks, apportée par la communautée.
 
-Learn about Stacks mining, the STX token, and the Clarity smart contract language.
+Découvre le minage de Stacks, le jeton STX et le language de programmes Clarity.
 
 ![](/img/Bitcoinet-L_2.svg)

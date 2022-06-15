@@ -15,11 +15,9 @@ Assets in the smart contracting language and blockchain are "owned" by objects o
 A Clarity contract can use a globally defined `tx-sender` variable to obtain the current principal. The following example defines a transaction type that transfers `amount` microSTX from the sender to a recipient if amount is a multiple of 10, otherwise returning a 400 error code.
 
 ```clarity
-(define-public (transfer-to-recipient! (define-public (transfer-to-recipient! (define-public (transfer-to-recipient! (recipient principal) (amount uint))
+(define-public (transfer-to-recipient! (recipient principal) (amount uint))
   (if (is-eq (mod amount 10) 0)
       (stx-transfer? amount tx-sender recipient)
-      (err u400))) amount tx-sender recipient)
-      (err u400))) amount tx-sender recipient)
       (err u400)))
 ```
 
@@ -53,7 +51,7 @@ For convenience, smart contracts may write a contract's identifier in the form `
 But, in the contract source code, if the developer wishes to call a function from `contract-A` in `contract-B`, they can write
 
 ```clarity
-(contract-call? (contract-call? (contract-call? .contract-A public-function-foo)
+(contract-call? .contract-A public-function-foo)
 ```
 
 This allows the smart contract developer to modularize their applications across multiple smart contracts _without_ knowing the publishing key a priori.
@@ -74,12 +72,6 @@ For example, a smart contract that implements something like a "token faucet" co
 (define-public (claim-from-faucet)
     (let ((requester tx-sender)) ;; set a local variable requester = tx-sender
         (asserts! (is-none (map-get? claimed-before {sender: requester})) (err err-already-claimed))
-        (unwrap! (as-contract (stx-transfer? stx-amount tx-sender requester)) (err err-faucet-empty))
-        (map-set claimed-before {sender: requester} {claimed: true})
-        (ok stx-amount))) (is-none (map-get? claimed-before {sender: requester})) (err err-already-claimed))
-        (unwrap! (as-contract (stx-transfer? stx-amount tx-sender requester)) (err err-faucet-empty))
-        (map-set claimed-before {sender: requester} {claimed: true})
-        (ok stx-amount))) (is-none (map-get? claimed-before {sender: requester})) (err err-already-claimed))
         (unwrap! (as-contract (stx-transfer? stx-amount tx-sender requester)) (err err-faucet-empty))
         (map-set claimed-before {sender: requester} {claimed: true})
         (ok stx-amount)))
@@ -137,10 +129,6 @@ The second type of check is more restrictive than the first check, and is helpfu
 
 ;; this function will print a message
 ;;  (and emit an event) if the tx-sender was
-;;  an authorized flyer. rocket-ship ship)))
-
-;; this function will print a message
-;;  (and emit an event) if the tx-sender was
 ;;  an authorized flyer.
 ;;
 ;;  here we use tx-sender, because we want
@@ -157,31 +145,6 @@ The second type of check is more restrictive than the first check, and is helpfu
         (begin (print "Tried to fly without permission!")
                (ok false)))))
 ;;
-;; Authorize a new pilot. (asserts! (is-eq tx-sender contract-caller) (err u1))
-   ;; sender must own the rocket ship
-   (asserts! (is-eq (some tx-sender)
-                  (nft-get-owner? rocket-ship ship)) (err u2))
-   (let ((prev-pilots (default-to
-                         (list)
-                         (get pilots (map-get? allowed-pilots { rocket-ship: ship })))))
-    ;; don't add a pilot already in the list
-    (asserts! (not (contains pilot prev-pilots)) (err u3))
-    ;; append to the list, and check that it is less than
-    ;;  the allowed maximum
-    (match (as-max-len? (append prev-pilots pilot) u10)
-           next-pilots
-             (ok (map-set allowed-pilots {rocket-ship: ship} {pilots: next-pilots}))
-           ;; too many pilots already
-           (err u4)))))
-               (ok true))
-        (begin (print "Tried to fly without permission!")
-               (ok false)))))
-;;
-;; Authorize a new pilot.
-               (ok true))
-        (begin (print "Tried to fly without permission!")
-               (ok false)))))
-;;
 ;; Authorize a new pilot.
 ;;
 ;;  here we want to ensure that this function
@@ -194,22 +157,9 @@ The second type of check is more restrictive than the first check, and is helpfu
  (begin
    ;; sender must equal caller: an intermediate contract is
    ;;  not issuing this call.
-   (asserts! (asserts! (is-eq tx-sender contract-caller) (err u1))
+   (asserts! (is-eq tx-sender contract-caller) (err u1))
    ;; sender must own the rocket ship
    (asserts! (is-eq (some tx-sender)
-                  (nft-get-owner? rocket-ship ship)) (err u2))
-   (let ((prev-pilots (default-to
-                         (list)
-                         (get pilots (map-get? allowed-pilots { rocket-ship: ship })))))
-    ;; don't add a pilot already in the list
-    (asserts! (not (contains pilot prev-pilots)) (err u3))
-    ;; append to the list, and check that it is less than
-    ;;  the allowed maximum
-    (match (as-max-len? (append prev-pilots pilot) u10)
-           next-pilots
-             (ok (map-set allowed-pilots {rocket-ship: ship} {pilots: next-pilots}))
-           ;; too many pilots already
-           (err u4))))) (is-eq (some tx-sender)
                   (nft-get-owner? rocket-ship ship)) (err u2))
    (let ((prev-pilots (default-to
                          (list)
@@ -238,19 +188,6 @@ For example, we can create a contract that calls `fly-ship` for multiple rocket-
 
 (define-private (call-fly (ship uint))
   (unwrap! (contract-call? .rockets-base fly-ship ship) false))
-;; try to fly all the ships, returning a list of whether
-;;  or not we were able to fly the supplied ships
-(define-public (fly-all (ships (list 10 uint)))
-  (ok (map call-fly ships))) (contract-call? ;;
-;; rockets-multi.clar
-;;
-
-(define-private (call-fly (ship uint))
-  (unwrap! (contract-call? .rockets-base fly-ship ship) false))
-;; try to fly all the ships, returning a list of whether
-;;  or not we were able to fly the supplied ships
-(define-public (fly-all (ships (list 10 uint)))
-  (ok (map call-fly ships))) (contract-call? .rockets-base fly-ship ship) false))
 ;; try to fly all the ships, returning a list of whether
 ;;  or not we were able to fly the supplied ships
 (define-public (fly-all (ships (list 10 uint)))
@@ -287,33 +224,9 @@ The check in `authorize-pilot` protects users from malicious contracts, but how 
 
 ;; add all the pilots to a ship using fold --
 ;;  the fold checks the return type of previous calls,
-;;  skipping subsequent contract-calls if one fails. (is-eq tx-sender contract-caller line-ceo) (err u1))
-  ;; start executing as the contract
-   (as-contract (begin
-    ;; make sure the contract owns the ship
-    (asserts! (contract-call? (is-eq tx-sender contract-caller line-ceo) (err u1))
-  ;; start executing as the contract
-   (as-contract (begin
-    ;; make sure the contract owns the ship
-    (asserts! (contract-call? .rockets-base is-my-ship ship) (err u2))
-    ;; register all of our pilots on the ship
-    (add-pilots-to ship)))))
-
-;; add all the pilots to a ship using fold --
-;;  the fold checks the return type of previous calls,
 ;;  skipping subsequent contract-calls if one fails.
 (define-private (add-pilot-via-fold (pilot principal) (prior-result (response uint uint)))
   (let ((ship (try! prior-result)))
-    (try! (contract-call? .rockets-base authorize-pilot ship pilot))
-    (ok ship)))
-(define-private (add-pilots-to (ship uint))
-  (fold add-pilot-via-fold (var-get employed-pilots) (ok ship))) prior-result)))
-    (try! (contract-call? (define-private (add-pilot-via-fold (pilot principal) (prior-result (response uint uint)))
-  (let ((ship (try! prior-result)))
-    (try! (contract-call? .rockets-base authorize-pilot ship pilot))
-    (ok ship)))
-(define-private (add-pilots-to (ship uint))
-  (fold add-pilot-via-fold (var-get employed-pilots) (ok ship))) prior-result)))
     (try! (contract-call? .rockets-base authorize-pilot ship pilot))
     (ok ship)))
 (define-private (add-pilots-to (ship uint))

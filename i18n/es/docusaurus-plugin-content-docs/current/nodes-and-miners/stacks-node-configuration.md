@@ -1,23 +1,23 @@
 ---
-title: Stacks Node Configuration
-description: Configuration parameters and options for the stacks-node binary
+title: Configuración del nodo de Stacks
+description: Parámetros de configuración y opciones para el binario stacks-node
 ---
 
-## Usage
+## Uso
 
 ```bash
 stacks-node sub-command [--subcommand-option <value>]
 ```
 
-## Subcommands
+## Subcomandos
 
-:::note The `stacks-node` binary may have deprecated commands that are not documented on this page. Deprecated commands may be accessible until they are fully removed from the sources. :::
+:::note El binario `stacks-node` puede tener comandos obsoletos que no están documentados en esta página. Los comandos obsoletos pueden ser accesibles hasta que sean eliminados completamente del código fuente. :::
 
 ### mocknet
 
 Start a node based on a fast local setup emulating a burnchain. Ideal for smart contract development.
 
-Example:
+Ejemplo:
 
 ```bash
 stacks-node mocknet
@@ -27,7 +27,7 @@ stacks-node mocknet
 
 Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](../understand-stacks#consensus-mechanism). sidebar_position: 1
 
-Example:
+Ejemplo:
 
 ```bash
 stacks-node krypton
@@ -37,7 +37,7 @@ stacks-node krypton
 
 Start a node that will join and stream blocks from the public testnet.
 
-Example:
+Ejemplo:
 
 ```bash
 stacks-node testnet
@@ -47,7 +47,7 @@ stacks-node testnet
 
 Start a node that joins and streams blocks from the public mainnet.
 
-Example:
+Ejemplo:
 
 ```bash
 stacks-node mainnet
@@ -57,11 +57,11 @@ stacks-node mainnet
 
 Start a node with a config of your own. Can be used for joining a network, starting a new chain, or replacing default values used by the `mocknet` or `testnet` subcommands.
 
-#### Arguments
+#### Argumentos
 
 **--config**: relative or absolute path to the TOML config file. Required.
 
-Example:
+Ejemplo:
 
 ```bash
 stacks-node start --config=/path/to/config.toml
@@ -71,9 +71,9 @@ See [Configuration File Options](#configuration-file-options) for more informati
 
 #### version
 
-Displays information about the current version and the release cycle.
+Muestra información sobre la versión actual y el ciclo de lanzamiento.
 
-Example:
+Ejemplo:
 
 ```bash
 stacks-node version
@@ -81,25 +81,25 @@ stacks-node version
 
 #### help
 
-Displays a help message.
+Muestra un mensaje de ayuda.
 
-Example:
+Ejemplo:
 
 ```bash
 stacks-node help
 ```
 
-## Configuration File Options
+## Opciones de configuración
 
 The TOML configuration file has multiple sections under which an option may be placed.
 
 To see a list of example configurations, [please see this page](https://github.com/stacks-network/stacks-blockchain/tree/master/testnet/stacks-node/conf).
 
-### Section: node
+### Sección: node
 
 Contains various configuration options pertaining to the stacks-node.
 
-Example:
+Ejemplo:
 
 ```toml
 [node]
@@ -114,7 +114,7 @@ miner = true
 
 Absolute path to the directory which the stacks-node will use for storing various data.
 
-Example:
+Ejemplo:
 
 ```toml
 working_dir = "/root/stacks-node"
@@ -124,7 +124,7 @@ working_dir = "/root/stacks-node"
 
 Address and port stacks-node should bind to for RPC connections.
 
-Example:
+Ejemplo:
 
 ```toml
 rpc_bind = "0.0.0.0:20443"
@@ -134,7 +134,7 @@ rpc_bind = "0.0.0.0:20443"
 
 Address and port stacks-node should bind to for P2P connections.
 
-Example:
+Ejemplo:
 
 ```toml
 p2p_bind = "0.0.0.0:20444"
@@ -144,7 +144,7 @@ p2p_bind = "0.0.0.0:20444"
 
 Address and port from which the stacks-node will be receiving incoming rpc connections.
 
-Example:
+Ejemplo:
 
 ```toml
 data_url = "1.2.3.4:20443"
@@ -154,7 +154,7 @@ data_url = "1.2.3.4:20443"
 
 Address and port from which the stacks-node will be receiving incoming p2p connections.
 
-Example:
+Ejemplo:
 
 ```toml
 p2p_address = "1.2.3.4:20444"
@@ -164,7 +164,7 @@ p2p_address = "1.2.3.4:20444"
 
 Public key, address, and port stacks-node should use to pull transaction data from when starting.
 
-Example:
+Ejemplo:
 
 ```toml
 bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@testnet.blockstack.org:20444"
@@ -174,7 +174,7 @@ bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d77769
 
 The amount of time (in milliseconds) that a node will wait before trying to mine a block, after catching up to the anchored chain tip. This gives the current leader time to broadcast microblocks that will get included in that mined block.
 
-Example:
+Ejemplo:
 
 ```toml
 wait_time_for_microblocks = 15000
@@ -184,7 +184,7 @@ wait_time_for_microblocks = 15000
 
 The private key to use for mining. Only needed if `miner` is set to `true`.
 
-Example:
+Ejemplo:
 
 ```toml
 seed = "replace-with-your-private-key"
@@ -194,7 +194,7 @@ seed = "replace-with-your-private-key"
 
 The private key to use for signing P2P messages in the networking stack. It differentiates network peers and is used even by non-mining nodes.
 
-Example:
+Ejemplo:
 
 ```toml
 local_peer_seed = "replace-with-your-private-key"
@@ -204,7 +204,7 @@ local_peer_seed = "replace-with-your-private-key"
 
 Determines whether the stacks-node is running a follower (`false`) or a miner (`true`). Defaults to `false` if omitted.
 
-Example:
+Ejemplo:
 
 ```toml
 miner = true
@@ -214,7 +214,7 @@ miner = true
 
 Determines whether the stacks-node will mine microblocks. Will only take effect if `miner` is set to `true`.
 
-Example:
+Ejemplo:
 
 ```toml
 mine_microblocks = true
@@ -224,7 +224,7 @@ mine_microblocks = true
 
 Address and port stacks-node should open for Prometheus metrics collection.
 
-Example:
+Ejemplo:
 
 ```toml
 prometheus_bind = "0.0.0.0:9153"
@@ -238,7 +238,7 @@ Contains options for watching events emitted by a local [stacks-blockchain-api](
 This section can be repeated multiple times.
 :::
 
-Example:
+Ejemplo:
 
 ```toml
 [[events_observer]]
@@ -251,7 +251,7 @@ events_keys = ["*"]
 
 Address and port to a stacks-node-api to watch for events.
 
-Example:
+Ejemplo:
 
 ```toml
 endpoint = "address-to-my-local.stacks-node-api.com:3700"
@@ -261,7 +261,7 @@ endpoint = "address-to-my-local.stacks-node-api.com:3700"
 
 Number of times to retry sending events to the endpoint before failing.
 
-Example:
+Ejemplo:
 
 ```toml
 retry_count = 255
@@ -290,7 +290,7 @@ events_keys = [
 
 Specifies configuration options for others connecting to the stacks node.
 
-Example:
+Ejemplo:
 
 ```toml
 [connection_options]
@@ -303,7 +303,7 @@ walk_interval = 30
 
 The advertised public IP of this stacks-node.
 
-Example:
+Ejemplo:
 
 ```toml
 public_ip_address = "1.2.3.4:20444"
@@ -313,7 +313,7 @@ public_ip_address = "1.2.3.4:20444"
 
 Time (in seconds) between attempts to download blocks.
 
-Example:
+Ejemplo:
 
 ```toml
 download_interval = 60
@@ -323,7 +323,7 @@ download_interval = 60
 
 Time (in seconds) between attempts to walk the neighborhood.
 
-Example:
+Ejemplo:
 
 ```toml
 walk_interval = 30
@@ -333,7 +333,7 @@ walk_interval = 30
 
 Total number of bytes allowed to be read by an individual read-only function call.
 
-Example:
+Ejemplo:
 
 ```toml
 read_only_call_limit_read_length = 100000
@@ -343,7 +343,7 @@ read_only_call_limit_read_length = 100000
 
 Total number of independent read operations permitted for an individual read-only function call.
 
-Example:
+Ejemplo:
 
 ```toml
 read_only_call_limit_read_count = 30
@@ -353,17 +353,17 @@ read_only_call_limit_read_count = 30
 
 [Runtime cost](https://github.com/stacksgov/sips/blob/2d3fd9bf8da7a04f588d90ff6252173d7609d7bf/sips/sip-006/sip-006-runtime-cost-assessment.md#introduction) limit for an individual read-only function call.
 
-Example:
+Ejemplo:
 
 ```toml
 read_only_call_limit_runtime = 1000000000
 ```
 
-### Section: burnchain
+### Sección: burnchain
 
 This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
 
-Example:
+Ejemplo:
 
 ```toml
 [burnchain]
@@ -378,7 +378,7 @@ peer_port = 8333
 
 The blockchain stacks-node binds to on the backend for proof-of-transfer. Only value supported: `"bitcoin"`.
 
-Example:
+Ejemplo:
 
 ```toml
 chain = "bitcoin"
@@ -388,7 +388,7 @@ chain = "bitcoin"
 
 The profile or test phase of which to run stacks-node. Valid values are `"mocknet"`, `"helium"`, `"neon"`, `"argon"`, `"krypton"`, `"xenon"`.
 
-Example:
+Ejemplo:
 
 ```toml
 mode = "xenon"
@@ -398,7 +398,7 @@ mode = "xenon"
 
 Domain name of the host running the backend Bitcoin blockchain. It's required to either run a personal Bitcoin node locally, or to use a publicly hosted Bitcoin node.
 
-Example:
+Ejemplo:
 
 ```toml
 peer_host = "your.bitcoind.node.org"
@@ -408,7 +408,7 @@ peer_host = "your.bitcoind.node.org"
 
 peer_host's port stacks-node will connect to for RPC connections.
 
-Example:
+Ejemplo:
 
 ```toml
 rpc_port = 8332
@@ -418,7 +418,7 @@ rpc_port = 8332
 
 peer_host's port stacks-node will connect to for P2P connections.
 
-Example:
+Ejemplo:
 
 ```toml
 peer_port = 8333
@@ -428,7 +428,7 @@ peer_port = 8333
 
 Maximum amount (in Satoshis) of "burn commitment" to broadcast for the next block's leader election.
 
-Example:
+Ejemplo:
 
 ```toml
 burn_fee_cap = 30000
@@ -438,7 +438,7 @@ burn_fee_cap = 30000
 
 Amount (in Satoshis) per [virtual byte](https://en.bitcoin.it/wiki/Weight_units). This is used to compute the transaction fees.
 
-Example:
+Ejemplo:
 
 ```toml
 satoshis_per_byte = 50
@@ -450,7 +450,7 @@ So total transaction cost would be `(estimated_tx_size * satoshis_per_byte) + bu
 
 Sets the time period (in milliseconds) for commitments. Only used when `mode` is set to `"helium"`.
 
-Example:
+Ejemplo:
 
 ```toml
 commit_anchor_block_within = 10000
@@ -464,7 +464,7 @@ This section contains configuration options pertaining to the genesis block allo
 This section can repeat multiple times, and thus is in double-brackets. Each section can define only one address. This section is ignored if running a node on mainnet.
 :::
 
-Example:
+Ejemplo:
 
 ```toml
 [[ustx_balance]]
@@ -486,9 +486,9 @@ amount = 10000000000000000
 
 #### address
 
-Address which maintains a micro-STX balance.
+Dirección que mantiene un balance micro-STX.
 
-Example:
+Ejemplo:
 
 ```toml
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
@@ -496,9 +496,9 @@ address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
 
 #### amount
 
-The balance of micro-STX given to the address at the start of the node.
+El balance de micro-STX dado a la dirección al arranque del nodo.
 
-Example:
+Ejemplo:
 
 ```toml
 amount = 10000000000000000

@@ -1,5 +1,5 @@
 ---
-title: Network
+title: Red
 description: Guide to the Stacks 2.0 network
 sidebar_position: 7
 ---

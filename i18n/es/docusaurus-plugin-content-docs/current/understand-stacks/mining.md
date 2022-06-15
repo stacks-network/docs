@@ -1,5 +1,5 @@
 ---
-title: Mining
+title: Minería
 description: A guide to mining on Stacks 2.0
 sidebar_position: 4
 ---

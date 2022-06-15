@@ -9,19 +9,19 @@ Una lista de términos comunmente utilizados en el ecosistema.
 An incentive mechanism for application developers in the early stage (first four years) of the ecosystem and helps with bootstrapping the two-sided market.
 
 #### Atlas
-A peer network provide a global index for discovery.
+Una red de pares proporciona un índice global para su descubrimiento.
 
 #### Bitcoin (BTC) address
 A string of letters and numbers. `3E53XjqK4Cxt71BGeP2VhpcotM8LZ853C8` Sharing this address allows  anyone to send Bitcoin to the address.
 
-#### block
+#### bloque
 A discrete group of records written to a blockchain that can effectively be identified and referenced by the use of headers that contain a digital fingerprint of the records each block contains.
 
 #### blockchain
 A database created and shared by the members of a peer-to-peer computer network which each member of that network can independently trust due to the rules governing the database’s creation. A blockchain can therefore be used to replace centralized databases.
 
 #### Blockchain Name System (BNS)
-Replacement for DNS. More info [here](../noteworthy-contracts/bns-contract).
+Sustituto del DNS. Más información [aquí](../noteworthy-contracts/bns-contract).
 
 #### Blockstack Browser
 A deprecated application for accessing identity and storage.
@@ -139,7 +139,7 @@ The consensus algorithm used in the Stacks blockchain where miners destroy a pro
 #### proof-of-work
 A proof-of-work system or proof-of-work mining is a mining mechanism where miners must expend computing power to solve complicated cryptographic puzzles, and prove that they have done so by writing the solution to the blockchain, in order to be allowed to add blocks to a blockchain. This is the mining system used, for example, by Bitcoin.
 
-#### public key
+#### clave pública
 Public and private key pair comprise of two uniquely related cryptographic keys. It looks like a long random string of letters and numbers: `3048 0241 00C9 18FA CF8D EB2D EFD5 FD37 89B9 E069 EA97 FC20 …` The exact format of the public and private key depend on the software you use to create them.
 
 #### Public Key Infrastructure (PKI)
@@ -154,7 +154,7 @@ Used to access an identity on the Stacks blockchain. A 24-word sequence of words
 #### Frase semilla
 
 Used to access Stacks Wallet software. The seed phrase consists of 24 words in a sequence. Both the word *and its position the sequence*  are important. Write down your seed phrase and store it in a secure location such as a safe deposit box. When you write the seed phrase down, include its position, for example,`1-frog, 2-horse, 3-building` and so on until you reach a final position `24-ocean`.
-#### smart contract
+#### contrato inteligente
 A smart contract is a computer program written to a blockchain such as the Stacks blockchain by developers. This computer program defines the various network operations that can be performed on the digital assets on the blockchain, the computations that can be performed using the smart contract, along with defining various important properties of the respective digital assets like ownership rights and the cost in fuel required to register the digital assets.
 
 #### soft fork
@@ -170,10 +170,10 @@ The Stacks blockchain is the custom blockchain being developed for use by the St
 #### Stacks Explorer
 An application that allow you to view and search transactions in the blockchain. For example, https://explorer.stacks.co.
 
-#### Stacks node
+#### Nodo de Stacks
 A complete version of our open-source software available on Github at https://github.com/stacks-network/stacks-blockchain/ that governs the creation of the blockchain, the smart contracts that may be written to our blockchain, and other systems that make up the Stacks network, when run on the systems and devices of our users and developers.
 
-#### Stacks wallet
+#### Monedero de Stacks
 An application for accessing assets, identity and storage. Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/).
 
 #### storage hub
@@ -194,7 +194,7 @@ Economic platforms having two distinct user groups that provide each other with 
 #### username
 A shorthand name for your id.blockstack.
 
-#### virtual blockchain
+#### blockchain virtual
 A layer that sits on top of a blockchain that introduces new functionality and operations without requiring changes to the underlying blockchain.
 
 #### wallet address

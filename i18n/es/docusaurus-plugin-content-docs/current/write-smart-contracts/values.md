@@ -92,10 +92,10 @@ Clarity supports both integers and unsigned integers.
 
 ```typescript
 const i: IntCV = intCV(-10);
-// { type: ClarityType.Int, value: } }
+// { type: ClarityType.Int, value: BN { ... } }
 
 const u: UIntCV = uintCV(10);
-// { type: ClarityType.UInt, value: } }
+// { type: ClarityType.UInt, value: BN { ... } }
 ```
 
 Clarity value ints store their underlying data as `BigNum` values from the [bn.js](https://github.com/indutny/bn.js/) library.
