@@ -1,9 +1,14 @@
 ---
 title: NFTs on Stacks
 description: A list of sites that operate NFTs on Stacks
+sidebar_position: 3
 ---
 
 List of sites that operate NFTS on Stacks on alphabetical order.
+
+:::tip Are we missing one?
+Please edit this page to add any relevant new site that we are missing.
+:::
 
 ### [Byzantion](https://byzantion.xyz/)
 
