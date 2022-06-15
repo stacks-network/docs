@@ -1,5 +1,5 @@
 ---
-title: General FAQs
+title: Preguntas frecuentes generales
 description: Preguntas frecuentes
 sidebar_label: "Preguntas Frecuentes"
 sidebar_position: 7
