@@ -64,6 +64,10 @@ After you finished your changes, you can also build the entire site with the fol
 npm run build
 ```
 
+:::tip
+`npx docusaurus start` will only load the default language (english). To test all languages you can build with `npm run build` and then preview your build with `npm run serve`.
+:::
+
 ### An alternative: Working in browser
 
 As an alterative to working locally, you can also use the web IDE gitpod that provides an environment to contribute directly from within your browser.
