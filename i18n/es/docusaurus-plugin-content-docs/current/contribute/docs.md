@@ -1,6 +1,6 @@
 ---
 title: Contribuir a la documentación
-description: Learn how this site is built, and how you can contribute to it.
+description: Aprende cómo se construye este sitio y cómo puedes contribuir a él.
 ---
 
 ## Introducción
@@ -11,28 +11,28 @@ Este sitio de documentación está construido en la plataforma de código abiert
 
 :::tip ¿No sabes qué es Markdown? ¿Quieres aprender? Aquí hay una [guía útil](https://guides.github.com/features/mastering-markdown/) para aprenderlo.
 
-¿No quieres aprenderlo? No es necesario. Write [in plain text an issue on Github](https://github.com/stacks-network/docs/issues/new?assignees=&labels=documentation&template=add-documentation.md&title=%5BAdd+docs%5D) :::
+¿No quieres aprenderlo? No es necesario. Escribe [en texto plano una observaciòn en Github](https://github.com/stacks-network/docs/issues/new?assignees=&labels=documentation&template=add-documentation.md&title=%5BAdd+docs%5D):::
 
-:::info You need a free [Github](https://www.github.com) account to add or edit any content. :::
+:::info Necesitas una cuenta gratuita en [GitHub](https://www.github.com) para añadir o editar cualquier contenido. :::
 
-To edit any page, just click on the *Edit this page* button at the bottom of each page and submit your changes online.
+Para editar cualquier página, solo haga clic en el botón *Editar esta página* en la parte inferior de cada página y envíe sus cambios en línea.
 
-To add new content, they are two different ways to do it, the [easy way](#easy-way) and the [advanced way](#advanced-way).
+Para añadir nuevo contenido, existen dos formas diferentes de hacerlo, la [forma fácil](#easy-way) y la [forma avanzada](#advanced-way).
 
 ## Forma fácil
 
-[**Simply click here and enter the text of the article you wish to add.**](https://github.com/stacks-network/docs/issues/new?assignees=&labels=documentation&template=add-documentation.md&title=%5BAdd+docs%5D)
+[**Simplemente haga clic aquí e ingrese el texto del artículo que desea añadir.**](https://github.com/stacks-network/docs/issues/new?assignees=&labels=documentation&template=add-documentation.md&title=%5BAdd+docs%5D)
 
-This will open up an issue on github using our template.
+Esto abrirá una observación en github usando nuestra plantilla.
 ## Forma avanzada
 
-For more advanced changes you can follow the next steps.
+Para cambios más avanzados puede seguir los siguientes pasos.
 
-You can also test the site locally using this method.
+También puede probar el sitio localmente utilizando este método.
 ### Pasos
 
-1. Fork the [docs reposiroty](https://github.com/stacks-network/docs) by clicking on the *Fork* button in the upper right of the screen.
-2. Clone your fork to your local machine with this command `git clone git@github.com:<YOUR_USERNAME>/docs.git stacks_docs`
+1. Haga un Fork del [repositorio de documentos](https://github. com/stacks-network/docs) haciendo clic en el botón *Fork* en la parte superior derecha de la pantalla.
+2. Clona tu fork a tu máquina local con este comando `git clone git@githubATI<Your_USERNAME>/docs.git stacks_docs`
 3. Enter your project folder `cd stacks_docs`
 4. Create a branch `git checkout -b feat/my-feature-branch`.
 5. You can optionally preview your changes in real time with:

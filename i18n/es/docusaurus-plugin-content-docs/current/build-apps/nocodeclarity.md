@@ -11,17 +11,17 @@ description: Lanzar aplicaciones para la cadena de bloques de Stackas a través 
 
 ## Plug-In de Stacks en bubble
 
-The [Stacks-No-Code-Plugin](https://bubble.io/plugin/the-stacks-plug-in-1645467277638x949839693014368300) released in May 2022 and it can easily be installed on Bubble with a few clicks allowing users to deploy applications with no coding knowledge. [Bubble](https://bubble.io/blog/explaining-bubble-to-investors/) is the first No Code platform that the Stacks plugin launched on. More platforms are in the roadmap of NoCodeClarity, founded by Christopher Perceptions and Sergio Gongora. The Stacks plugin was created through the support of the Stacks Foundation via a grant in January 2022 and NoCodeClarity was awarded a $100,000 grant in June 2022 to expand the roadmap.
+El [Stacks-No-Code-Plugin](https://bubble.io/plugin/the-stacks-plug-in-1645467277638x949839693014368300) fue lanzado en mayo de 2022 y se puede instalar fácilmente en Bubble con unos pocos clics permitiendo a los usuarios desplegar aplicaciones sin conocimientos de programación. [Bubble](https://bubble.io/blog/explaining-bubble-to-investors/) es la primera plataforma No Code en la que se lanzó el plugin de Stacks. Más plataformas están en la hoja de ruta de NoCodeClarity, fundada por Christopher Perceptions y Sergio Gongora. El plugin de Stacks fue creado a través del apoyo de la Fundación Stacks mediante una subvención en enero de 2022 y NoCodeClarity fue premiada con una subvención adicional de $100,000 en junio de 2022 para ampliar la hoja de ruta.
 
-Additional [instructions](https://s3.amazonaws.com/appforest_uf/f1654202471526x991633667675927800/Instructions%20v2.docx.pdf) are also available. Tutorials and step by step guides will be released soon.
+También están disponibles [instrucciones](https://s3.amazonaws.com/appforest_uf/f1654202471526x991633667675927800/Instructions%20v2.docx.pdf) adicionales. Los tutoriales y las guías paso a paso serán publicadas pronto.
 
-The Stacks-No-Code-Plugin code is [publicly available on Github](https://github.com/nocodeclarity/Stacks-No-Code-Plugin).
+El código de Stacks-No-Code-Plugin está [disponible públicamente en Github](https://github.com/nocodeclarity/Stacks-No-Code-Plugin).
 
 ![](/img/bubble-stacks-plugin.png)
 
 ## Página de demostración
 
-A demo page is available [here](https://test-stacks-plugin.bubbleapps.io/version-test).
+Una página de demostración está disponible [aquí](https://test-stacks-plugin.bubbleapps.io/version-test).
 
 ## Vídeos NoCodeClarity
 
@@ -29,7 +29,7 @@ NodeCodeClarity tiene su propio [canal de youtube](https://www.youtube.com/chann
 
 Vídeos:
 
-* [NoCodeClarity Setup](https://www.youtube.com/watch?v=WanXlpBGl0w)
-* [NoCodeClarity - Part 1 of the plugin](https://www.youtube.com/watch?v=o6d3hrzNqVI&t=248s)
-* [NoCodeClarity - Part 2 of the plugin](https://www.youtube.com/watch?v=0rzMdsrRg80)
-* [Sneak Peek of the No Code Stacks Wallet Template](https://www.youtube.com/watch?v=Xe6Yv0rF6XM)
+* [Configuración de NoCodeClarity](https://www.youtube.com/watch?v=WanXlpBGl0w)
+* [NoCodeClarity - Parte 1 sobre el plugin](https://www.youtube.com/watch?v=o6d3hrzNqVI&t=248s)
+* [NoCodeClarity - Parte 2 sobre el plugin](https://www.youtube.com/watch?v=0rzMdsrRg80)
+* [Adelanto del template de la billetera No Code de Stacks](https://www.youtube.com/watch?v=Xe6Yv0rF6XM)

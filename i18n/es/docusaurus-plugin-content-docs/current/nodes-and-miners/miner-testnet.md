@@ -137,7 +137,7 @@ STACKS_LOG_DEBUG=1 stacks-node testnet
 
 ## Running a miner in Windows
 
-### Prerequisites
+### Prerrequisitos
 
 Make sure you've followed the [running the testnet node](running-testnet-node) tutorial before starting this tutorial.
 
