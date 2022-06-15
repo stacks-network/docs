@@ -1,7 +1,14 @@
 ---
 title: Stacks info sites
 description: A list of sites on alphabetical order that display status and stats of the Stacks network.
+sidebar_position: 1
 ---
+
+A list of sites on alphabetical order that display status and stats of the Stacks network.
+
+:::tip Are we missing one?
+Please edit this page to add any relevant new site that we are missing.
+:::
 
 ### [Haystack](https://haystack.tools/mempool)
 

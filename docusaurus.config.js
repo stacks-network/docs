@@ -373,6 +373,14 @@ const config = {
             to: '/docs/write-smart-contracts/principals',
           },
           {
+            from: '/write-smart-contracts/software',
+            to: '/docs/write-smart-contracts/software',
+          },
+          {
+            from: '/write-smart-contracts/tokens',
+            to: '/docs/write-smart-contracts/tokens',
+          },
+          {
             from: [
               '/write-smart-contracts/clarity-language',
               '/write-smart-contracts/language-overview',
@@ -383,10 +391,6 @@ const config = {
               '/smart-contracts/clarity-values',
             ],
             to: '/docs/write-smart-contracts/clarity-language/',
-          },
-          {
-            from: '/write-smart-contracts/software',
-            to: '/docs/write-smart-contracts/software',
           },
           {
             from: '/write-smart-contracts/types',
