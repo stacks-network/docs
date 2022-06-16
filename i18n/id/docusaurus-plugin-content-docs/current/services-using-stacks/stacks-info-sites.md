@@ -1,6 +1,6 @@
 ---
 title: Situs info Stacks
-description: Daftar situs berdasarkan abjad yang menampilkan status dan statistik jaringan Stacks.
+description: Status and stats of the Stacks network.
 sidebar_position: 1
 ---
 
