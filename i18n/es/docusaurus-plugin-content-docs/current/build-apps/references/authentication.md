@@ -15,22 +15,22 @@ Los usuarios que se registren en su aplicación pueden autenticarse posteriormen
 
 El flujo de autenticación con Stacks es similar al típico flujo cliente-servidor utilizado por los servicios de registro centralizado (por ejemplo, OAuth). Sin embargo, con Stacks el flujo de autentificación ocurre enteramente del lado del cliente.
 
-An app and authenticator, such as [the Stacks Wallet](https://www.hiro.so/wallet/install-web), communicate during the authentication flow by passing back and forth two tokens. The requesting app sends the authenticator an `authRequest` token. Once a user approves authentication, the authenticator responds to the app with an `authResponse` token.
+Una aplicación y autenticador, como [la billetera de Stacks](https://www. hiro. so/wallet/install-web), se comunican durante el flujo de autenticación pasando dos tokens de ida y vuelta. La aplicación solicitante envía al autenticador un token `authRequest`. Una vez que un usuario aprueba la autenticación, el autenticador responde a la aplicación con un token `authResponse`.
 
-These tokens are are based on [a JSON Web Token (JWT) standard](https://tools.ietf.org/html/rfc7519) with additional support for the `secp256k1` curve used by Bitcoin and many other cryptocurrencies. They are passed via URL query strings.
+Estos tokens están basados en [un estándar JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519) con soporte adicional para la curva `secp256k1` utilizada por Bitcoin y muchas otras criptomonedas. Se pasan a través de URL query strings.
 
-When a user chooses to authenticate an app, it sends the `authRequest` token to the authenticator via a URL query string with an equally named parameter:
+Cuando un usuario elige autenticar una aplicación, envía el token `authRequest` al autenticador a través de una URL query string con un parámetro igualmente nombrado:
 
 `https://wallet.hiro.so/...?authRequest=j902120cn829n1jnvoa...`
 
-When the authenticator receives the request, it generates an `authResponse` token for the app using an _ephemeral transit key_ . The ephemeral transit key is just used for the particular instance of the app, in this case, to sign the `authRequest`.
+Cuando el autenticador recibe la solicitud, genera un token `authResponse` para la aplicación usando una _clave de tránsito efímera_. La clave de tránsito efímera solo se utiliza para la instancia particular de la aplicación, en este caso, para firmar el `authRequest`.
 
-The app stores the ephemeral transit key during request generation. The public portion of the transit key is passed in the `authRequest` token. The authenticator uses the public portion of the key to encrypt an _app private key_ which is returned via the `authResponse`.
+La aplicación almacena la clave de tránsito efímera durante la generación de solicitudes. La parte pública de la clave de tránsito se pasa en el token `authRequest`. El autenticador utiliza la porción pública de la clave para cifrar una _clave privada de la aplicación_ que se devuelve a través del `authResponse`.
 
-The authenticator generates the app private key from the user's _identity address private key_ and the app's domain. The app private key serves three functions:
+El autenticador genera la clave privada de la aplicación desde _la clave privada de la dirección de identidad_ del usuario y el dominio de la aplicación. La clave privada de la aplicación cumple tres funciones:
 
-1. It is used to create credentials that give the app access to a storage bucket in the user's Gaia hub
-2. It is used in the end-to-end encryption of files stored for the app in the user's Gaia storage.
+1. Se utiliza para crear credenciales que dan a la aplicación acceso a un bucket de almacenamiento en el hub de Gaia del usuario
+2. Se utiliza en el cifrado de extremo a extremo de los archivos almacenados para la aplicación en el almacenamiento Gaia del usuario.
 3. It serves as a cryptographic secret that apps can use to perform other cryptographic functions.
 
 Finally, the app private key is deterministic, meaning that the same private key will always be generated for a given Stacks address and domain.
