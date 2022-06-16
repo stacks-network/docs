@@ -1,6 +1,6 @@
 ---
 title: Stacking
-description: Introduction to the reward mechanism of Proof-of-Transfer
+description: Introducción al mecanismo de recompensa de la prueba de transferencia
 sidebar_position: 9
 ---
 
@@ -14,11 +14,11 @@ Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechani
 
 :::info The Stacking consensus algorithm is implemented as a smart contract, using [Clarity](../write-smart-contracts/). [Read more about the contract](../noteworthy-contracts/stacking-contract). :::
 
-## Stacking flow
+## Flujo del Stacking
 
 The Stacking mechanism can be presented as a flow of actions:
 
-![Stacking flow](/img/stacking-illustration.png)
+![Flujo del Stacking](/img/stacking-illustration.png)
 
 1. Make API calls to get details about the upcoming reward cycle
 2. For a specific Stacks account, confirm eligibility

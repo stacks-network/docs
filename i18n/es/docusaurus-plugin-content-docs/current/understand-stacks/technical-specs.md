@@ -15,7 +15,7 @@ sidebar_position: 10
   - Stacks Miners package transactions into blocks, mine them through a Bitcoin transaction, propagate them, and if they win the block race, append microblocks to their winning block until the next block is mined. The next block confirms the microblock stream.
   - Stacks Holders may alter the calculation of block limits (subject to a miner veto) and may vote to disable Proof-of-Transfer rewards for a reward cycle.
 - Transactions are considered final when the corresponding "block commit" transaction on Bitcoin is finalized. Typically this can by 3-6 confirmations.
-- For more details, see [Proof of Transfer](proof-of-transfer).
+- Para obtener más información, consulte [Prueba de Transferencia](proof-of-transfer).
 
 ## Minería en Prueba de transferencia
 
