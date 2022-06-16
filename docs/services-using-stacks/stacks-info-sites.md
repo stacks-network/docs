@@ -1,6 +1,6 @@
 ---
 title: Stacks info sites
-description: Status and stats of the Stacks network.
+description: A list of sites on alphabetical order that display status and stats of the Stacks network.
 sidebar_position: 1
 ---
 
