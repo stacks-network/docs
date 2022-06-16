@@ -15,48 +15,48 @@ Los usuarios que se registren en su aplicación pueden autenticarse posteriormen
 
 El flujo de autenticación con Stacks es similar al típico flujo cliente-servidor utilizado por los servicios de registro centralizado (por ejemplo, OAuth). Sin embargo, con Stacks el flujo de autentificación ocurre enteramente del lado del cliente.
 
-An app and authenticator, such as [the Stacks Wallet](https://www.hiro.so/wallet/install-web), communicate during the authentication flow by passing back and forth two tokens. The requesting app sends the authenticator an `authRequest` token. Once a user approves authentication, the authenticator responds to the app with an `authResponse` token.
+Una aplicación y autenticador, como [la billetera de Stacks](https://www. hiro. so/wallet/install-web), se comunican durante el flujo de autenticación pasando dos tokens de ida y vuelta. La aplicación solicitante envía al autenticador un token `authRequest`. Una vez que un usuario aprueba la autenticación, el autenticador responde a la aplicación con un token `authResponse`.
 
-These tokens are are based on [a JSON Web Token (JWT) standard](https://tools.ietf.org/html/rfc7519) with additional support for the `secp256k1` curve used by Bitcoin and many other cryptocurrencies. They are passed via URL query strings.
+Estos tokens están basados en [un estándar JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519) con soporte adicional para la curva `secp256k1` utilizada por Bitcoin y muchas otras criptomonedas. Se pasan a través de URL query strings.
 
-When a user chooses to authenticate an app, it sends the `authRequest` token to the authenticator via a URL query string with an equally named parameter:
+Cuando un usuario elige autenticar una aplicación, envía el token `authRequest` al autenticador a través de una URL query string con un parámetro igualmente nombrado:
 
 `https://wallet.hiro.so/...?authRequest=j902120cn829n1jnvoa...`
 
-When the authenticator receives the request, it generates an `authResponse` token for the app using an _ephemeral transit key_ . The ephemeral transit key is just used for the particular instance of the app, in this case, to sign the `authRequest`.
+Cuando el autenticador recibe la solicitud, genera un token `authResponse` para la aplicación usando una _clave de tránsito efímera_. La clave de tránsito efímera solo se utiliza para la instancia particular de la aplicación, en este caso, para firmar el `authRequest`.
 
-The app stores the ephemeral transit key during request generation. The public portion of the transit key is passed in the `authRequest` token. The authenticator uses the public portion of the key to encrypt an _app private key_ which is returned via the `authResponse`.
+La aplicación almacena la clave de tránsito efímera durante la generación de solicitudes. La parte pública de la clave de tránsito se pasa en el token `authRequest`. El autenticador utiliza la porción pública de la clave para cifrar una _clave privada de la aplicación_ que se devuelve a través del `authResponse`.
 
-The authenticator generates the app private key from the user's _identity address private key_ and the app's domain. The app private key serves three functions:
+El autenticador genera la clave privada de la aplicación desde _la clave privada de la dirección de identidad_ del usuario y el dominio de la aplicación. La clave privada de la aplicación cumple tres funciones:
 
-1. It is used to create credentials that give the app access to a storage bucket in the user's Gaia hub
-2. It is used in the end-to-end encryption of files stored for the app in the user's Gaia storage.
-3. It serves as a cryptographic secret that apps can use to perform other cryptographic functions.
+1. Se utiliza para crear credenciales que dan a la aplicación acceso a un bucket de almacenamiento en el hub de Gaia del usuario
+2. Se utiliza en el cifrado de extremo a extremo de los archivos almacenados para la aplicación en el almacenamiento Gaia del usuario.
+3. Sirve como un secreto criptográfico que las aplicaciones pueden usar para realizar otras funciones criptográficas.
 
-Finally, the app private key is deterministic, meaning that the same private key will always be generated for a given Stacks address and domain.
+Por último, la clave privada de la aplicación es determinista, lo que significa que siempre se generará la misma clave privada para una dirección y un dominio de Stacks determinados.
 
-The first two of these functions are particularly relevant to [data storage with Stacks.js](https://docs.stacks.co/docs/gaia).
+Las dos primeras de estas funciones son particularmente relevantes para el [almacenamiento de datos con Stacks.js](https://docs.stacks.co/docs/gaia).
 
 ## Par de Claves
 
-Authentication with Stacks makes extensive use of public key cryptography generally and ECDSA with the `secp256k1` curve in particular.
+La autenticación con Stacks hace un uso extensivo de la criptografía de clave pública en general y ECDSA con la curva `secp256k1` en particular.
 
-The following sections describe the three public-private key pairs used, including how they're generated, where they're used and to whom private keys are disclosed.
+Las siguientes secciones describen los tres pares de claves públicas-privadas utilizados, incluyendo cómo se generan, dónde se utilizan y a quién se revelan las claves privadas.
 
-### Transit private key
+### Clave privada de tránsito
 
-The transit private is an ephemeral key that is used to encrypt secrets that need to be passed from the authenticator to the app during the authentication process. It is randomly generated by the app at the beginning of the authentication response.
+La clave privada de tránsito es una clave efímera que se utiliza para cifrar los secretos que deben pasar del autenticador a la aplicación durante el proceso de autenticación. Es generado aleatoriamente por la aplicación al principio de la respuesta de autenticación.
 
-The public key that corresponds to the transit private key is stored in a single element array in the `public_keys` key of the authentication request token. The authenticator encrypts secret data such as the app private key using this public key and sends it back to the app when the user signs in to the app. The transit private key signs the app authentication request.
+La clave pública que corresponde a la clave privada de tránsito está almacenada en un único elemento array en la clave `public_keys` del token de solicitud de autenticación. El autenticador encripta datos secretos como la clave privada de la aplicación utilizando esta clave pública y lo envía de vuelta a la aplicación cuando el usuario inició sesión en la aplicación. La clave privada de tránsito firma la solicitud de autenticación de la aplicación.
 
-### Identity address private key
+### Clave privada de la dirección de identidad
 
-The identity address private key is derived from the user's keychain phrase and is the private key of the Stacks username that the user chooses to use to sign in to the app. It is a secret owned by the user and never leaves the user's instance of the authenticator.
+La clave privada de la dirección de identidad se deriva de la frase del llavero del usuario y es la clave privada del nombre de usuario de Stacks que el usuario elige utilizar para iniciar sesión a la aplicación. Es un secreto propiedad del usuario y nunca deja la instancia del autenticador del usuario.
 
-This private key signs the authentication response token for an app to indicate that the user approves sign in to that app.
+Esta clave privada firma el token de respuesta de autenticación para una aplicación para indicar que el usuario aprueba el inicio de sesión en esa aplicación.
 
-### App private key
+### Clave privada de la App
 
-The app private key is an app-specific private key that is generated from the user's identity address private key using the `domain_name` as input.
+La clave privada de la aplicación es una clave privada específica de la aplicación que es generada a partir de la clave privada de la dirección de identidad del usuario utilizando el `domain_name` como entrada.
 
-The app private key is securely shared with the app on each authentication, encrypted by the authenticator with the transit public key. Because the transit key is only stored on the client side, this prevents a man-in-the-middle attack where a server or internet provider could potentially snoop on the app private key.
+La clave privada de la aplicación es compartida de forma segura con la aplicación en cada autenticación, encriptada por el autenticador con la clave pública de tránsito. Debido a que la clave de tránsito sólo se almacena en el lado del cliente esto previene un ataque man-in-the-middle en el que un servidor o proveedor de Internet podría potencialmente espiar la clave privada de la aplicación.
