@@ -107,11 +107,12 @@ Or KYC, is a popular term used in the banking or financial field. KYC is a proce
 #### light clients
 Clients that can independently validate the existence of transactions by downloading only block headers and not the entire blockchain.
 
-#### Magic recovery code
+#### magic recovery code
 
 An long encrypted string, for example: 
  `36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5WXxSTazJsUjOA...` 
 Do not share the QR code that accompanied your recovery code either. This is a QR code:
+
 ![](/img/qr-code.png)
 
 #### mesh network
@@ -190,7 +191,7 @@ An application that allow you to view and search transactions in the blockchain.
 A complete version of our open-source software available on Github at https://github.com/stacks-network/stacks-blockchain/ that governs the creation of the blockchain, the smart contracts that may be written to our blockchain, and other systems that make up the Stacks network, when run on the systems and devices of our users and developers.
 
 #### Stacks wallet
-An application for accessing assets, identity and storage.
+An application for accessing assets, identity and storage. More information and example [here](../services-using-stacks/wallets).
 Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/).
 
 #### storage hub
