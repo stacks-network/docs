@@ -1,14 +1,24 @@
 ---
-title: Swaps
-description: A list of sites that allow Swaps
+title: DeFi
+description: De-Fi sites on Stacks
 sidebar_position: 2
 ---
 
-They are multiple sites that allow you to make swaps using the Stacks blockchain.
+They are multiple De-Fi sites that operate on the Stacks blockchain.
 
 :::tip Are we missing one?
 Please edit this page to add any relevant new site that we are missing.
 :::
+
+## Alex
+
+[Alex](https://app.alexlab.co)
+![](/img/sh_alex.png)
+
+## Arkadiko
+
+[Arkadiko](https://arkadiko.finance/)
+![](/img/sh_arkadiko.png)
 
 ## Catamaran Swaps
 
@@ -27,3 +37,10 @@ Please edit this page to add any relevant new site that we are missing.
 [Neoswap](https://neoswap.party)
 
 ![](/img/sh_neoswap.png)
+
+## Stackswap
+
+[Stackswap](https://app.stackswap.org/v2)
+
+![](/img/sh_stackswap.png)
+
