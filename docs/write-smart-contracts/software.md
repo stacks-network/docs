@@ -10,8 +10,7 @@ The Language Server Protocol (LSP) defines the protocol used between an editor o
 
 This makes programming in Clarity easier and much more intuitive.
 
-![Clarity LSP Screenshot](https://raw.githubusercontent.com/hirosystems/clarity-lsp/21b64298ca117dc41358eb9dce4605cc4a448a4c/images/screenshot.png?raw=true)
-
+![Clarity LSP Screenshot](https://github.com/hirosystems/clarity-lsp/raw/HEAD/doc/images/screenshot.png?raw=true)
 
 Clarity LSP repository is available [here](https://github.com/hirosystems/clarity-lsp). The extension for Visual Studio Code can be downloaded directly from [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp), but can be and older version. For a more up to date version you can also download it from [open-vsx](https://open-vsx.org/extension/hirosystems/clarity-lsp).
 
