@@ -11,9 +11,9 @@ Los nombres en BNS tienen tres propiedades:
 
 - **Los nombres son únicos a nivel global.** El protocolo no permite colisiones de nombres, y todos los nodos que se comportan correctamente resuelven un nombre dado al mismo estado.
 - **Los nombres tienen un significado humano.** Cada nombre es elegido por su creador.
-- **Names are strongly owned.** Only the name's owner can change the state it resolves to. Specifically, a name is owned by one or more ECDSA private keys.
+- **Los nombres tienen una propiedad sólida.** Sólo el propietario del nombre puede cambiar el estado al que se resuelve. Específicamente, un nombre es propiedad de una o varias claves privadas ECDSA.
 
-The Stacks blockchain insures that each node's BNS view is synchronized to all of the other nodes in the world, so queries on one node will be the same on other nodes. Stacks blockchain nodes allow a name's owner to bind up to 40Kb of off-chain state to their name, which will be replicated to all other Stacks blockchain nodes via a P2P network.
+La blockchain de Stacks asegura que la vista del BNS de cada nodo está sincronizada para todos los demás nodos del mundo, por lo que las consultas en un nodo seran las mismas en otros nodos. Los nodos de la blockchain de Stacks permiten al propietario de un nombre enlazar hasta 40Kb de estado off-chain a su nombre, el cual será replicado a todos los demás nodos de blockchain de Stacks a través de una red P2P.
 
 The biggest consequence for developers is that in BNS, reading name state is fast and cheap but writing name state is slow and expensive. This is because registering and modifying names requires one or more transactions to be sent to the underlying blockchain, and BNS nodes will not process them until they are sufficiently confirmed. Users and developers need to acquire and spend the requisite cryptocurrency (STX) to send BNS transactions.
 
