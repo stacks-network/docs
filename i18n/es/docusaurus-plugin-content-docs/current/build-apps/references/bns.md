@@ -45,25 +45,25 @@ Los nombres de BNS tienen las tres propiedades, y ninguno de estos problemas. Es
 
 Los nombres de BNS están organizados en una jerarquía de nombres global. Hay tres capas diferentes en esta jerarquía relacionadas con el nombramiento:
 
-- **Namespaces**. Estos son los nombres de nivel superior en la jerarquía. Una analogía con los namespaces de BNS son los DNS de dominios de nivel superior. Los namespaces de BNS existentes incluyen `.id`, `.podcast`, and `.helloworld`. Todos los otros nombres pertenecen exactamente a un namespace. Cualquiera puede crear un namespace, pero para que un namespace sea persistente, debe ser _publicado_ para que cualquiera pueda registrar nombres en él. Namespaces are not owned by their creators.
+- **Namespaces**. Estos son los nombres de nivel superior en la jerarquía. Una analogía con los namespaces de BNS son los DNS de dominios de nivel superior. Los namespaces de BNS existentes incluyen `.id`, `.podcast`, and `.helloworld`. Todos los otros nombres pertenecen exactamente a un namespace. Cualquiera puede crear un namespace, pero para que un namespace sea persistente, debe ser _publicado_ para que cualquiera pueda registrar nombres en él. Namespaces no son propiedad de sus creadores.
 
-- **BNS names**. These are names whose records are stored directly on the blockchain. The ownership and state of these names are controlled by sending blockchain transactions. Example names include `verified.podcast` and `muneeb.id`. Anyone can create a BNS name, as long as the namespace that contains it exists already.
+- **Nombres BNS**. Son nombres cuyos registros se almacenan directamente en la blockchain. La propiedad y estado de estos nombres están controlados por el envío de transacciones de blockchain. Algunos ejemplos de nombres son `verified.podcast` and `muneeb.id`. Cualquiera puede crear un Nombre BNS, siempre y cuando el namespace que lo contenga ya exista.
 
-- **BNS subdomains**. These are names whose records are stored off-chain, but are collectively anchored to the blockchain. The ownership and state for these names lives within the P2P network data. While BNS subdomains are owned by separate private keys, a BNS name owner must broadcast their subdomain state. Example subdomains include `jude.personal.id` and `podsaveamerica.verified.podcast`. Unlike BNS namespaces and names, the state of BNS subdomains is _not_ part of the blockchain consensus rules.
+- **Subdominios BNS**. Estos son nombres cuyos registros se almacenan off-chain, pero están colectivamente anclados a la blockchain. La propiedad y el estado de estos nombres viven dentro de los datos de la red P2P. Mientras que los subdominios de BNS son propiedad de claves privadas separadas, el propietario de un nombre BNS debe difundir el estado de su subdominio. Algunos ejemplos de subdominios son `jude.personal.id` and `podsaveamerica.verified.podcast`. A diferencia de los namespace y los nombres de BNS, el estado de los subdominios BNS _no es_ parte de las reglas de consenso de la blockchain.
 
-A feature comparison matrix summarizing the similarities and differences between these name objects is presented below:
+Una matriz de comparación de características que resume las similitudes y diferencias entre estos objetos de nombre se presenta a continuación:
 
-| Feature                                | **Namespaces** | **BNS names** | **BNS Subdomains** |
-| -------------------------------------- | -------------- | ------------- | ------------------ |
-| Globally unique                        | X              | X             | X                  |
-| Human-meaningful                       | X              | X             | X                  |
-| Owned by a private key                 |                | X             | X                  |
-| Anyone can create                      | X              | X             | [1]                |
-| Owner can update                       |                | X             | [1]                |
-| State hosted on-chain                  | X              | X             |                    |
-| State hosted off-chain                 |                | X             | X                  |
-| Behavior controlled by consensus rules | X              | X             |                    |
-| May have an expiration date            |                | X             |                    |
+| Características                        | **Namespaces** | **Nombres BNS** | **Subdominios BNS** |
+| -------------------------------------- | -------------- | --------------- | ------------------- |
+| Único a nivel global                   | X              | X               | X                   |
+| Significado humano                     | X              | X               | X                   |
+| Propiedad de una clave privada         |                | X               | X                   |
+| Cualquiera puede crearla               | X              | X               | [1]                 |
+| Owner can update                       |                | X               | [1]                 |
+| State hosted on-chain                  | X              | X               |                     |
+| State hosted off-chain                 |                | X               | X                   |
+| Behavior controlled by consensus rules | X              | X               |                     |
+| May have an expiration date            |                | X               |                     |
 
 [1] Requires the cooperation of a BNS name owner to broadcast its transactions
 
