@@ -8,12 +8,12 @@ sidebar_position: 4
 
 The Language Server Protocol (LSP) defines the protocol used between an editor or IDE and a language server that provides language features like auto complete, go to definition, find all references etc.
 
-This makes programming in Clarity easier and much more intuitive.
+Esto hace que la programación en Clarity sea más fácil y mucho más intuitiva.
 
 ![Clarity LSP Screenshot](https://raw.githubusercontent.com/hirosystems/clarity-lsp/21b64298ca117dc41358eb9dce4605cc4a448a4c/images/screenshot.png?raw=true)
 
 
-Clarity LSP repository is available [here](https://github.com/hirosystems/clarity-lsp). The extension for Visual Studio Code can be downloaded directly from [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp), but can be and older version. For a more up to date version you can also download it from [open-vsx](https://open-vsx.org/extension/hirosystems/clarity-lsp).
+El repositorio de Clarity LSP está disponible [aquí](https://github.com/hirosystems/clarity-lsp). La extensión para Visual Studio Code se puede descargar directamente desde [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp), pero podría ser una versión anterior. Para una versión más actualizada también puedes descargarla desde [open-vsx](https://open-vsx.org/extension/hirosystems/clarity-lsp).
 
 ## Clarity REPL
 
@@ -29,13 +29,13 @@ Clarinet is a Clarity runtime packaged as a command line tool, designed to facil
 
 ![Clarinet](https://github.com/hirosystems/clarinet/blob/develop/docs/images/demo.gif?raw=true)
 
-Installation instructions, including build from source instructions can be found [here](https://github.com/hirosystems/clarinet). If you prefer you can directly download the latest compiled realease for Windows, Mac and Linux [here](https://github.com/hirosystems/clarinet/releases).
+Las instrucciones de instalación, incluyendo la compilación del código fuente se pueden encontrar [aquí](https://github.com/hirosystems/clarinet). If you prefer you can directly download the latest compiled realease for Windows, Mac and Linux [here](https://github.com/hirosystems/clarinet/releases).
 
 [Clarinet 101](https://www.youtube.com/playlist?list=PL5Ujm489LoJaAz9kUJm8lYUWdGJ2AnQTb) contains multiple Clarinet video tutorials
 
 ### Primeros pasos con Clarinet
 
-You can verify you have Clarinet installed by checking its version:
+Puede verificar que tiene instalado Clarinet comprobando su versión:
 
 ```bash
 $ clarinet --version
@@ -44,31 +44,31 @@ clarinet 0.70
 
 More detailed information on using Clarinet is available [here](https://book.clarity-lang.org/ch07-00-using-clarinet.html). However to get you started, the following commands are important to know.
 
-Create a new project and enter its directory:
+Crear un nuevo proyecto y entrar en su directorio:
 
 ```bash
 clarinet new my-project && cd my-project
 ```
 
-Create a new contract inside `my-project`:
+Crear un nuevo contrato dentro de `mi-proyecto`:
 
 ```bash
 clarinet contract new mycoolcontract
 ```
 
-Check the sintax of Clarity:
+Compruebe la sintaxis de Clarity:
 
 ```bash
 clarity check
 ```
 
-To test your contract:
+Para probar su contrato:
 
 ```bash
 clarinet test
 ```
 
-Enter Clarinet's console:
+Entrar en la consola de Clarinet:
 
 ```bash
 clarinet console
