@@ -10,7 +10,8 @@ Language Server Protocol (LSP) mendefinisikan protokol yang digunakan antara edi
 
 Ini membuat pemrograman di Clarity lebih mudah dan lebih intuitif.
 
-![Tangkapan Layar Clarity LSP](https://github.com/hirosystems/clarity-lsp/raw/HEAD/doc/images/screenshot.png?raw=true)
+![Tangkapan Layar Clarity LSP](https://raw.githubusercontent.com/hirosystems/clarity-lsp/21b64298ca117dc41358eb9dce4605cc4a448a4c/images/screenshot.png?raw=true)
+
 
 Repositori Clarity LSP tersedia [di sini](https://github.com/hirosystems/clarity-lsp). Ekstensi untuk Visual Studio Code dapat diunduh langsung dari [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp), tetapi mungkin untuk versi lebih lama. Untuk versi yang lebih terbaru, Anda juga dapat mengunduhnya dari [open-vsx](https://open-vsx.org/extension/hirosystems/clarity-lsp).
 

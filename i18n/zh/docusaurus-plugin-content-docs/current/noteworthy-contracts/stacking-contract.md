@@ -56,7 +56,7 @@ The caller specifies:
 Revokes authorization from a contract to invoke stacking methods through contract-calls
 
 ### reject-pox
-#### input: ``
+#### input:
 #### output: `(response bool int)`
 #### signature: `(reject-pox)`
 #### description:
@@ -67,7 +67,7 @@ Reject Stacking for this reward cycle.
 Note that unlike Stacking, rejecting PoX does not lock the tx-sender's tokens: PoX rejection acts like a coin vote.
 
 ### revoke-delegate-stx
-#### input: ``
+#### input:
 #### output: `(response bool int)`
 #### signature: `(revoke-delegate-stx)`
 #### description:
@@ -118,7 +118,7 @@ The tokens will unlock and be returned to the Stacker (tx-sender) automatically.
 Evaluate if a participant can stack an amount of STX for a given period.
 
 ### get-pox-info
-#### input: ``
+#### input:
 #### output: `(response (tuple (current-rejection-votes uint) (first-burnchain-block-height uint) (min-amount-ustx uint) (prepare-cycle-length uint) (rejection-fraction uint) (reward-cycle-id uint) (reward-cycle-length uint) (total-liquid-supply-ustx uint)) UnknownType)`
 #### signature: `(get-pox-info)`
 #### description:
@@ -139,7 +139,7 @@ Returns the amount of uSTX that a given principal used to reject a PoX cycle.
 Returns the _current_ stacking information for `stacker.  If the information is expired, or if there's never been such a stacker, then returns none.  If the information is expired, or if there's never been such a stacker, then returns none.
 
 ### get-stacking-minimum
-#### input: ``
+#### input:
 #### output: `uint`
 #### signature: `(get-stacking-minimum)`
 #### description:

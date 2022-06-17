@@ -92,7 +92,11 @@ Stacking adalah kemampuan bawaan PoX dan terjadi melalui serangkaian tindakan pa
 
 ## Alamat bitcoin
 
-:::danger You must provide a BTC address in one of two formats: [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), which starts with `1`. Atau, [Saksi Terpisah / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), yang dimulai dengan `3`. Format "Native Segwit" (yang dimulai dengan "bc1"), misalnya, tidak didukung. :::
+:::danger You must provide a BTC address in one of two formats:
+
+* [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), which starts with `1`.
+
+* [Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), which starts with `3`. The "Native Segwit" format (which starts with `bc1`), for example, is not supported. :::
 
 Kontrak Stacking memerlukan format khusus untuk alamat Bitcoin (alamat hadiah). Ini diperlukan untuk memastikan bahwa penambang dapat dengan benar membuat transaksi Bitcoin yang berisi alamat hadiah.
 
@@ -124,3 +128,38 @@ console.log(
 ## Choosing the right Stacking strategy
 
 [Here](https://blog.stacks.co/stacking-strategy) is an interesting article that may help you choose the right Stacking stategy.
+
+
+## Where to Stacks?
+
+You can Stack on your own, on a pool or on an exchange:
+### Stacking on your own
+
+Stacking on your own is non-custodial.
+
+Stacking on your own requires a protocol minimum (amount changes but about 100,000 STX).
+
+[Hiro Wallet](https://www.hiro.so/wallet) allows stacking on your own.
+
+### Stacking on a pool
+
+Stacking on a pool allows Stacking without the requirement of the protocol minumum.
+
+Some available pools are:
+
+| Pool                                                | Jenis         | Pays rewards in | Fee | Minimum amount |
+| --------------------------------------------------- | ------------- |:---------------:| --- |:--------------:|
+| [Friedger's Pool](https://pool.friedger.de/)        | Non custodial |   STX or xBTC   | No  |     40 STX     |
+| [Planbetter](https://planbetter.org/)               | Non custodial |       BTC       | 5%  |    200 STX     |
+| [Stacked](https://staking.staked.us/stacks-staking) | Non custodial |       BTC       |     |  100,000 STX   |
+| [Xverse](https://www.xverse.app/)                   | Non custodial |       BTC       | No  |    100 STX     |
+
+### Stacking on an exchange
+
+Stacking on an exchange is custodial, meaning you are trusting the exchange with your Stacks.
+
+Several exchanges allow Stacking directly on their sites. Examples are [Okcoin](https://www.okcoin.com) and [Binance](https://www.binance.com/en/staking)
+
+## Stacking statistics
+
+You can view all sorts of Stacking data and statistics on [Stacking Club](https://stacking.club)

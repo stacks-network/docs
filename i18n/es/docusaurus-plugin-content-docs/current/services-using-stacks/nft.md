@@ -1,6 +1,6 @@
 ---
-title: NFTs en Stacks
-description: Una lista de sitios web que operan NFTs en Stacks
+title: NFTs
+description: NFTs en Stacks
 sidebar_position: 3
 ---
 
@@ -25,3 +25,6 @@ Please edit this page to add any relevant new site that we are missing.
 
 ![captura de pantalla de página web](/img/sh_nft_stacksart.png)
 
+### [Superfandom](https://superfandom.io/)
+
+![website-screenshot](/img/sh_superfandom.png)
