@@ -45,7 +45,7 @@ Los nombres de BNS tienen las tres propiedades, y ninguno de estos problemas. Es
 
 Los nombres de BNS están organizados en una jerarquía de nombres global. Hay tres capas diferentes en esta jerarquía relacionadas con el nombramiento:
 
-- **Namespaces**. Estos son los nombres de nivel superior en la jerarquía. An analogy to BNS namespaces are DNS top-level domains. Existing BNS namespaces include `.id`, `.podcast`, and `.helloworld`. All other names belong to exactly one namespace. Anyone can create a namespace, but in order for the namespace to be persisted, it must be _launched_ so that anyone can register names in it. Namespaces are not owned by their creators.
+- **Namespaces**. Estos son los nombres de nivel superior en la jerarquía. Una analogía con los namespaces de BNS son los DNS de dominios de nivel superior. Los namespaces de BNS existentes incluyen `.id`, `.podcast`, and `.helloworld`. Todos los otros nombres pertenecen exactamente a un namespace. Cualquiera puede crear un namespace, pero para que un namespace sea persistente, debe ser _publicado_ para que cualquiera pueda registrar nombres en él. Namespaces are not owned by their creators.
 
 - **BNS names**. These are names whose records are stored directly on the blockchain. The ownership and state of these names are controlled by sending blockchain transactions. Example names include `verified.podcast` and `muneeb.id`. Anyone can create a BNS name, as long as the namespace that contains it exists already.
 
