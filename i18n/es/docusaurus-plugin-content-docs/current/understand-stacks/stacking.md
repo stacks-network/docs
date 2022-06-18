@@ -12,16 +12,16 @@ Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuabl
 
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks 2.0 network.
 
-:::info The Stacking consensus algorithm is implemented as a smart contract, using [Clarity](../write-smart-contracts/). [Read more about the contract](../noteworthy-contracts/stacking-contract). :::
+:::info The Stacking consensus algorithm is implemented as a smart contract, using [Clarity](../write-smart-contracts/). [Lea más sobre el contrato](../noteworthy-contracts/stacking-contract). :::
 
 ## Flujo del Stacking
 
-The Stacking mechanism can be presented as a flow of actions:
+El mecanismo de Stacking puede presentarse como un flujo de acciones:
 
 ![Flujo del Stacking](/img/stacking-illustration.png)
 
 1. Make API calls to get details about the upcoming reward cycle
-2. For a specific Stacks account, confirm eligibility
+2. Para una cuenta de Stacks específica, confirmar elegibilidad
 3. Confirm the BTC reward address and the lockup duration
 4. The transaction is broadcasted and the STX tokens are locked. This needs to happen before the prepare phase of the next reward cycle, the last 100 Bitcoin blocks of the ongoing reward phase
 5. The Stacking mechanism executes reward cycles and sends out rewards to the set BTC reward address
@@ -38,13 +38,13 @@ The Stacking flow is different for delegation use cases:
 ![Delegated tacking flow](/img/stacking-delegation-illustration.png)
 
 - Before Stacking can be initiated for a token holder, the delegator needs to be granted permission to Stack on behalf of the account owner. The permission is restricted to the maximum amount the delegator is allowed to Stack. The maximum amount is not limited by the available funds and can be set much higher. An account can only be associated with one single delegator
-- The account has to define the delegation relationship. They can optionally restrict the Bitcoin reward address that must be used for payouts, and the expiration burn block height for the permission, thus limiting the time a delegator has permission to Stack
+- La cuenta tiene que definir la relación de delegación. They can optionally restrict the Bitcoin reward address that must be used for payouts, and the expiration burn block height for the permission, thus limiting the time a delegator has permission to Stack
 - Delegators have to lock Stacks from different accounts ("pooling phase") until they reach the minimum amount of Stacks required to participate in Stacking
 - Once a delegator locks enough STX tokens, they can finalize and commit their participation in the next reward cycle
 - Certain delegation relationships may allow the STX holder to receive the payout directly from the miner (step 5/6)
 - The termination of the delegation relationship can either happen automatically based on set expiration rules or by actively revoking delegation rights
 
-## PoX mining
+## Minería de PoX
 
 PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of sending the committed Bitcoin to a burn address, it's transferred to eligible STX holders that participate in the stacking protocol.
 
@@ -63,11 +63,11 @@ Miners run Stacks nodes with mining enabled to participate in the PoX mechanism.
 
 ## Token holder eligibility
 
-Stacks (STX) token holders don't automatically receive stacking rewards. Instead, they must:
+Stacks (STX) token holders don't automatically receive stacking rewards. En su lugar, deben hacer:
 
 - Commit to participation before a reward cycle begins
 - Commit the minimum amount of STX tokens to secure a reward slot, or pool with others to reach the minimum
-- Lock up STX tokens for a specified period
+- Bloquear tokens STX para un período específico
 - Provide a supported Bitcoin address to receive rewards (native segwit is not supported)
 
 The following diagram describes how the minimum STX tokens per slot is determined. More information on [dynamic minimums for stacking](https://stacking.club) is available at stacking.club.
@@ -83,7 +83,7 @@ Stacking is a built-in capability of PoX and occurs through a set of actions on 
 ![PoX cycles](/img/pox-cycles.png)
 
 - Stacking happens over reward cycles with a fixed length. In each reward cycle, a set of Bitcoin addresses associated with stacking participants receive BTC rewards
-- A reward cycle consists of two phases: prepare and reward
+- Un ciclo de recompensa consta de dos fases: preparar y recompensar
 - During the prepare phase, miners decide on an anchor block and a reward set. Mining any descendant forks of the anchor block requires transferring mining funds to the appropriate reward addresses. The reward set is the set of Bitcoin addresses which are eligible to receive funds in the reward cycle
 - Miners register as leader candidates for a future election by sending a key transaction that burns cryptocurrency. The transaction also registers the leader's preferred chain tip (must be a descendant of the anchor block) and commitment of funds to 2 addresses from the reward set
 - Token holders register for the next rewards cycle by broadcasting a signed message that locks up associated STX tokens for a protocol-specified lockup period, specifies a Bitcoin address to receive the funds, and votes on a Stacks chain tip
