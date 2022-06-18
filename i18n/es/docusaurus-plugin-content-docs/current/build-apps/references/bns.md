@@ -78,11 +78,11 @@ Controlan algunas propiedades de los nombres que contienen:
 - Quién (si hay alguien) recibe las tarifas de registro del nombre
 - Quien tiene permitido crear el namespace con sus nombres iniciales.
 
-At the time of this writing, by far the largest BNS namespace is the `.id` namespace. Names in the `.id` namespace are meant for resolving user identities. Short names in `.id` are more expensive than long names, and have to be renewed by their owners every two years. Name registration fees are not paid to anyone in particular---they are instead sent to a "black hole" where they are rendered unspendable (the intention is to discourage ID squatters).
+En el momento de escribir este artículo, el namespace de BNS más grande es el `.id`. Los nombres en el namespace `.id` están diseñados para resolver identidades de usuario. Los nombres cortos en `.id` son más caros que los nombres largos, y tienen que ser renovados por sus propietarios cada dos años. Las tarifas de registro de nombres no son pagadas a nadie en particular---en su lugar son enviadas a un "agujero negro" donde no se pueden gastar (la intención es desalentar a los ocupantes de ID).
 
-Unlike DNS, _anyone_ can create a namespace and set its properties. Namespaces are created on a first-come first-serve basis, and once created, they last forever.
+A diferencia del DNS, _cualquiera_ puede crear un namespace y establecer sus propiedades. Los namespaces se crean por orden de llegada, y una vez creados, duran para siempre.
 
-However, creating a namespace is not free. The namespace creator must _burn_ cryptocurrency to do so. The shorter the namespace, the more cryptocurrency must be burned (that is, short namespaces are more valuable than long namespaces). For example, it cost Blockstack PBC 40 BTC to create the `.id` namespace in 2015 (in transaction `5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b281`).
+Sin embargo, crear un namespace no es gratis. The namespace creator must _burn_ cryptocurrency to do so. The shorter the namespace, the more cryptocurrency must be burned (that is, short namespaces are more valuable than long namespaces). For example, it cost Blockstack PBC 40 BTC to create the `.id` namespace in 2015 (in transaction `5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b281`).
 
 Namespaces can be between 1 and 19 characters long, and are composed of the characters `a-z`, `0-9`, `-`, and `_`.
 
