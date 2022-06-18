@@ -53,30 +53,30 @@ Los nombres de BNS están organizados en una jerarquía de nombres global. Hay t
 
 Una matriz de comparación de características que resume las similitudes y diferencias entre estos objetos de nombre se presenta a continuación:
 
-| Características                        | **Namespaces** | **Nombres BNS** | **Subdominios BNS** |
-| -------------------------------------- | -------------- | --------------- | ------------------- |
-| Único a nivel global                   | X              | X               | X                   |
-| Significado humano                     | X              | X               | X                   |
-| Propiedad de una clave privada         |                | X               | X                   |
-| Cualquiera puede crearla               | X              | X               | [1]                 |
-| Owner can update                       |                | X               | [1]                 |
-| State hosted on-chain                  | X              | X               |                     |
-| State hosted off-chain                 |                | X               | X                   |
-| Behavior controlled by consensus rules | X              | X               |                     |
-| May have an expiration date            |                | X               |                     |
+| Características                                  | **Namespaces** | **Nombres BNS** | **Subdominios BNS** |
+| ------------------------------------------------ | -------------- | --------------- | ------------------- |
+| Único a nivel global                             | X              | X               | X                   |
+| Significado humano                               | X              | X               | X                   |
+| Propiedad de una clave privada                   |                | X               | X                   |
+| Cualquiera puede crearla                         | X              | X               | [1]                 |
+| El propietario puede actualizar                  |                | X               | [1]                 |
+| Estado alojado on-chain                          | X              | X               |                     |
+| Estado alojado off-chain                         |                | X               | X                   |
+| Comportamiento controlado por reglas de consenso | X              | X               |                     |
+| Puede tener una fecha de vencimiento             |                | X               |                     |
 
-[1] Requires the cooperation of a BNS name owner to broadcast its transactions
+[1] Requiere la cooperación de un propietario de nombre BNS para emitir sus transacciones
 
 ## Namespaces
 
-Namespaces are the top-level naming objects in BNS.
+Los namespaces son los objetos de nombre de nivel superior en BNS.
 
-They control a few properties about the names within them:
+Controlan algunas propiedades de los nombres que contienen:
 
-- How expensive they are to register
-- How long they last before they have to be renewed
-- Who (if anyone) receives the name registration fees
-- Who is allowed to seed the namespace with its initial names.
+- Qué tan caros son para registrarse
+- Cuánto tiempo duran antes de que tengan que renovarse
+- Quién (si hay alguien) recibe las tarifas de registro del nombre
+- Quien tiene permitido crear el namespace con sus nombres iniciales.
 
 At the time of this writing, by far the largest BNS namespace is the `.id` namespace. Names in the `.id` namespace are meant for resolving user identities. Short names in `.id` are more expensive than long names, and have to be renewed by their owners every two years. Name registration fees are not paid to anyone in particular---they are instead sent to a "black hole" where they are rendered unspendable (the intention is to discourage ID squatters).
 
