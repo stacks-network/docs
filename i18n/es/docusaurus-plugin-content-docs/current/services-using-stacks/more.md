@@ -1,13 +1,13 @@
 ---
-title: More
-description: More services built on Stacks.
+title: Más
+description: Más servicios construidos en Stacks.
 sidebar_position: 5
 ---
 
-List of sites on alphabetical order added by the community.
+Lista de sitios añadidos por la comunidad en orden alfabético.
 
-:::tip Are we missing one?
-Please edit this page to add any relevant new site that we are missing.
+:::tip ¿Falta uno?
+Por favor edita esta página para agregar cualquier sitio web relevante que falte.
 :::
 
 ## Citycoins
@@ -18,6 +18,6 @@ Please edit this page to add any relevant new site that we are missing.
 
 ## Sigle
 
-[Sigle](https://www.sigle.io/) is a decentralised and open source web 3 writing platform.
+[Sigle](https://www.sigle.io/) es una plataforma de escritura web 3 descentralizada y de código abierto.
 
 ![](/img/sh_sigle.png)
