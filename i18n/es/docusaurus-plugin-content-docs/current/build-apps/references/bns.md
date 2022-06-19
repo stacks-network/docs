@@ -82,13 +82,13 @@ En el momento de escribir este artículo, el namespace de BNS más grande es el 
 
 A diferencia del DNS, _cualquiera_ puede crear un namespace y establecer sus propiedades. Los namespaces se crean por orden de llegada, y una vez creados, duran para siempre.
 
-Sin embargo, crear un namespace no es gratis. The namespace creator must _burn_ cryptocurrency to do so. The shorter the namespace, the more cryptocurrency must be burned (that is, short namespaces are more valuable than long namespaces). For example, it cost Blockstack PBC 40 BTC to create the `.id` namespace in 2015 (in transaction `5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b281`).
+Sin embargo, crear un namespace no es gratis. El creador del namespace debe _quemar la criptomoneda_ para hacerlo. Cuanto más corto sea el espacio de nombres, más criptomoneda debe ser quemado (es decir, los namespace cortos son más valiosos que los namespace largos). Por ejemplo, le cuesta a Blockstack PBC 40 BTC crear el namespace `.id` en 2015 (en la transacción `5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b281`).
 
-Namespaces can be between 1 and 19 characters long, and are composed of the characters `a-z`, `0-9`, `-`, and `_`.
+Los namespace pueden tener entre 1 y 19 caracteres de longitud y están compuestos por los caracteres `a-z`, `0-9`, `-`, y `_`.
 
-## Subdomains
+## Subdominios
 
-BNS names are strongly owned because the owner of its private key can generate valid transactions that update its zone file hash and owner. However, this comes at the cost of requiring a name owner to pay for the underlying transaction in the blockchain. Moreover, this approach limits the rate of BNS name registrations and operations to the underlying blockchain's transaction bandwidth.
+Los nombres de BNS tienen una propiedad sólida porque el propietario de su clave privada puede generar transacciones válidas que que actualizan el hash y el propietario de su archivo de zona. Sin embargo, esto tiene el coste de de exigir al propietario del nombre que pague por la transacción subyacente en la blockchain. Moreover, this approach limits the rate of BNS name registrations and operations to the underlying blockchain's transaction bandwidth.
 
 BNS overcomes this with subdomains. A **BNS subdomain** is a type of BNS name whose state and owner are stored outside of the blockchain, but whose existence and operation history are anchored to the blockchain. Like their on-chain counterparts, subdomains are globally unique, strongly owned, and human-readable. BNS gives them their own name state and public keys. Unlike on-chain names, subdomains can be created and managed cheaply, because they are broadcast to the BNS network in batches. A single blockchain transaction can send up to 120 subdomain operations.
 
