@@ -6,8 +6,8 @@ sidebar_position: 1
 
 Un listado de sitios web en orden alfabético con muestran el estado y estadísticas de la red Stacks.
 
-:::tip Are we missing one?
-Please edit this page to add any relevant new site that we are missing.
+:::tip ¿Falta uno?
+Por favor edita esta página para agregar cualquier sitio web relevante que falte.
 :::
 
 ### [Haystack](https://haystack.tools/mempool)
