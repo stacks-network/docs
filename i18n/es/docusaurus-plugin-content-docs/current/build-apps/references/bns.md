@@ -119,7 +119,7 @@ Cada registro `TXT` en este archivo de zona codifica una creación de subdominio
   "last_txid": "d87a22ebab3455b7399bfef8a41791935f94bc97aee55967edd5a87f22cce339",
   "status": "registered_subdomain",
   "zonefile_hash": "e7acc97fd42c48ed94fd4d41f674eddbee5557e3",
-  "zonefile_txt": "$ORIGIN 1yeardaily\n$TTL 3600\n_http. tcp URI 10 1 \"https://ph.dotpodcast.co/1yeardaily/head.json\"\n"
+  "zonefile_txt": "$ORIGIN 1yeardaily\n$TTL 3600\n_http._tcp URI 10 1 \"https://ph.dotpodcast.co/1yeardaily/head.json\"\n"
 }
 ```
 
@@ -192,13 +192,13 @@ Once created, a subdomain owner can use any on-chain name owner to broadcast a s
 
 If the subdomain owner wants to change the address of their subdomain, they need to sign a subdomain-transfer operation and give it to the on-chain name owner who created the subdomain. They then package it into a zone file and broadcast it.
 
-### Subdomain Registrars
+### Registros de subdominio
 
 Because subdomain names are cheap, developers may be inclined to run subdomain registrars on behalf of their applications. For example, the name `personal.id` is used to register usernames without requiring them to spend any Bitcoin.
 
 We supply a reference implementation of a [BNS Subdomain Registrar](https://github.com/stacks-network/subdomain-registrar) to help developers broadcast subdomain operations. Users would still own their subdomain names; the registrar simply gives developers a convenient way for them to register and manage them in the context of a particular application.
 
-# BNS and DID Standards
+# Estándares BNS y DID
 
 BNS names are compliant with the emerging [Decentralized Identity Foundation](http://identity.foundation) protocol specification for decentralized identifiers (DIDs).
 
@@ -208,7 +208,7 @@ Each name in BNS has an associated DID. The DID format for BNS is:
     did:stack:v0:{address}-{index}
 ```
 
-Where:
+Dónde:
 
 - `{address}` is an on-chain public key hash (for example a Bitcoin address).
 - `{index}` refers to the `nth` name this address created.
@@ -221,7 +221,7 @@ The purpose of a DID is to provide an eternal identifier for a public key. The p
 
 Stacks Blockchain implements a DID method of its own in order to be compatible with other systems that use DIDs for public key resolution. In order for a DID to be resolvable, all of the following must be true for a name:
 
-- The name must exist
+- El nombre debe existir
 - The name's zone file hash must be the hash of a well-formed DNS zone file
 - The DNS zone file must be present in the Stacks node's data.
 - The DNS zone file must contain a `URI` resource record that points to a signed JSON Web Token
