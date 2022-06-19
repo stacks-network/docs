@@ -82,19 +82,19 @@ En el momento de escribir este artículo, el namespace de BNS más grande es el 
 
 A diferencia del DNS, _cualquiera_ puede crear un namespace y establecer sus propiedades. Los namespaces se crean por orden de llegada, y una vez creados, duran para siempre.
 
-Sin embargo, crear un namespace no es gratis. The namespace creator must _burn_ cryptocurrency to do so. The shorter the namespace, the more cryptocurrency must be burned (that is, short namespaces are more valuable than long namespaces). For example, it cost Blockstack PBC 40 BTC to create the `.id` namespace in 2015 (in transaction `5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b281`).
+Sin embargo, crear un namespace no es gratis. El creador del namespace debe _quemar la criptomoneda_ para hacerlo. Cuanto más corto sea el espacio de nombres, más criptomoneda debe ser quemado (es decir, los namespace cortos son más valiosos que los namespace largos). Por ejemplo, le cuesta a Blockstack PBC 40 BTC crear el namespace `.id` en 2015 (en la transacción `5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b281`).
 
-Namespaces can be between 1 and 19 characters long, and are composed of the characters `a-z`, `0-9`, `-`, and `_`.
+Los namespace pueden tener entre 1 y 19 caracteres de longitud y están compuestos por los caracteres `a-z`, `0-9`, `-`, y `_`.
 
-## Subdomains
+## Subdominios
 
-BNS names are strongly owned because the owner of its private key can generate valid transactions that update its zone file hash and owner. However, this comes at the cost of requiring a name owner to pay for the underlying transaction in the blockchain. Moreover, this approach limits the rate of BNS name registrations and operations to the underlying blockchain's transaction bandwidth.
+Los nombres de BNS tienen una propiedad sólida porque el propietario de su clave privada puede generar transacciones válidas que que actualizan el hash y el propietario de su archivo de zona. Sin embargo, esto tiene el coste de de exigir al propietario del nombre que pague por la transacción subyacente en la blockchain. Además, este enfoque limita la tasa de registros y operaciones de nombres BNS y operaciones al ancho de banda de las transacciones de la blockchain subyacente.
 
-BNS overcomes this with subdomains. A **BNS subdomain** is a type of BNS name whose state and owner are stored outside of the blockchain, but whose existence and operation history are anchored to the blockchain. Like their on-chain counterparts, subdomains are globally unique, strongly owned, and human-readable. BNS gives them their own name state and public keys. Unlike on-chain names, subdomains can be created and managed cheaply, because they are broadcast to the BNS network in batches. A single blockchain transaction can send up to 120 subdomain operations.
+BNS supera esto con los subdominios. A **BNS subdomain** is a type of BNS name whose state and owner are stored outside of the blockchain, but whose existence and operation history are anchored to the blockchain. Al igual que sus contrapartes on-chain, los subdominios son globalmente únicos, tienen una propiedad sólida y son legibles por el ser humano. BNS les da su propio estado de nombre y claves públicas. A diferencia de los nombres on-chain, los subdominios pueden ser creados y gestionados económicamente, porque son emitidos a la red de BNS en lotes. Una sola transacción de la blockchain puede enviar hasta 120 operaciones de subdominio.
 
-This is achieved by storing subdomain records in the BNS name zone files. An on-chain name owner broadcasts subdomain operations by encoding them as `TXT` records within a DNS zone file. To broadcast the zone file, the name owner sets the new zone file hash with a `NAME_UPDATE` transaction and replicates the zone file. This, in turn, replicates all subdomain operations it contains, and anchors the set of subdomain operations to an on-chain transaction. The BNS node's consensus rules ensure that only valid subdomain operations from _valid_ `NAME_UPDATE` transactions will ever be stored.
+Esto se logra almacenando registros de subdominios en los archivos de zona de nombres de BNS. An on-chain name owner broadcasts subdomain operations by encoding them as `TXT` records within a DNS zone file. Para transmitir el archivo de zonas, el propietario del nombre establece el nuevo hash del archivo de zona con una transacción de `NAME_UPDATE` y replica el archivo de zona. Esto, a su vez, replica todas las operaciones del subdominio que contiene, y ancla el conjunto de operaciones de subdominio a una transacción on-chain. Las reglas de consenso del nodo BNS aseguran que solo operaciones de subdominio válidas de transacciones _validas_ de `NAME_UPDATE` sean almacenadas.
 
-For example, the name `verified.podcast` once wrote the zone file hash `247121450ca0e9af45e85a82e61cd525cd7ba023`, which is the hash of the following zone file:
+Por ejemplo, el nombre `verified.podcast` una vez escribió el hash del archivo de zona `247121450ca0e9af45e85a82e61cd525cd7ba023`, que es el hash del siguiente archivo de zona:
 
 ```bash
 $TTL 3600
@@ -110,7 +110,7 @@ onea TXT "owner=1MwPD6dH4fE3gQ9mCov81L1DEQWT7E85qH" "seqn=0" "parts=1" "zf0=JE9S
 _http._tcp URI 10 1 "https://dotpodcast.co/"
 ```
 
-Each `TXT` record in this zone file encodes a subdomain-creation. For example, `1yeardaily.verified.podcast` resolves to:
+Cada registro `TXT` en este archivo de zona codifica una creación de subdominio. Por ejemplo, `1yeardaily.verified.podcast` resuelve a:
 
 ```json
 {
@@ -123,20 +123,20 @@ Each `TXT` record in this zone file encodes a subdomain-creation. For example, `
 }
 ```
 
-This information was extracted from the `1yeardaily` `TXT` resource record in the zone file for `verified.podcast`.
+Esta información fue extraída del `1yeardaily` `TXT` en el archivo de la zona para `verified.podcast`.
 
-### Subdomain Lifecycle
+### Ciclo de vida del subdominio
 
-Note that `1yeardaily.verified.podcast` has a different public key hash (address) than `verified.podcast`. A BNS node will only process a subsequent subdomain operation on `1yeardaily.verified.podcast` if it includes a signature from this address's private key. `verified.podcast` cannot generate updates; only the owner of `1yeardaily.verified.podcast can do so`.
+Ten en cuenta que `1yeardaily.verified.podcast` tiene un hash de clave pública diferente (dirección) que `verified.podcast`. Un nodo BNS sólo procesará una operación de subdominio posterior en `1yeardaily.verified.podcast` si incluye una firma de la clave privada de esta dirección. `verified.podcast` no puede generar actualizaciones; sólo el propietario de `1yeardaily.verified.podcast` puede hacerlo.
 
-The lifecycle of a subdomain and its operations is shown in Figure 2.
+El ciclo de vida de un subdominio y sus operaciones se muestran en la Figura 2.
 
 ```
-   subdomain                  subdomain                  subdomain
-   creation                   update                     transfer
+   creación de             Actualización de              Transferencia de
+   Subdominio                 Subdominio                     Subdominio
 +----------------+         +----------------+         +----------------+
 | cicero         |         | cicero         |         | cicero         |
-| owner="1Et..." | signed  | owner="1Et..." | signed  | owner="1cJ..." |
+| owner="1Et..." | firmado | owner="1Et..." | firmado | owner="1cJ..." |
 | zf0="7e4..."   |<--------| zf0="111..."   |<--------| zf0="111..."   |<---- ...
 | seqn=0         |         | seqn=1         |         | seqn=2         |
 |                |         | sig="xxxx"     |         | sig="xxxx"     |
@@ -145,7 +145,8 @@ The lifecycle of a subdomain and its operations is shown in Figure 2.
         |        off-chain         |                          |
 ~ ~ ~ ~ | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~|~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ | ~ ~ ~ ~ ~ ~ ~ ...
         |         on-chain         |                          |
-        V                          V (zone file hash    )     V
+        V                          V (hash de                 V 
+                                archivo de zona )     
 +----------------+         +----------------+         +----------------+
 | res_publica.id |         |    jude.id     |         | res_publica.id |
 |  NAME_UPDATE   |<--------|  NAME_UPDATE   |<--------|  NAME_UPDATE   |<---- ...
@@ -154,31 +155,31 @@ The lifecycle of a subdomain and its operations is shown in Figure 2.
    block                      block                      block
 
 
-Figure 2:  Subdomain lifetime with respect to on-chain name operations .A new
-subdomain operation will only be accepted if it has a later "sequence=" number,
-and a valid signature in "sig=" over the transaction body .The "sig=" field
-includes both the public key and signature, and the public key must hash to
-the previous subdomain operation's "addr=" field.
+Figura 2: Vida útil del subdominio con respecto a las operaciones de nombre on-chain. Una nueva 
+operación de subdominio solo será aceptada si tiene un número posterior de "sequence=" 
+y una firma válida en "sig=" sobre el cuerpo de la transacción. El campo "sig=" 
+incluye tanto la clave pública como la firma, y la clave pública debe tener un hash con el campo 
+"addr=" de la operación de subdominio anterior.
 
-The subdomain-creation and subdomain-transfer transactions for
-"cicero.res_publica.id" are broadcast by the owner of "res_publica.id."
-However, any on-chain name ("jude.id" in this case) can broadcast a subdomain
-update for "cicero.res_publica.id."
+Las transacciones de creación de subdominio y transferencia de subdominio para
+"cicero.res_publica.id" son emitidas por el propietario de "res_publica.id"
+Sin embargo, cualquier nombre on-chain ("jude.id" en este caso) puede transmitir una actualización de subdominio
+para "cicero.res_publica.id."
 ```
 
-Subdomain operations are ordered by sequence number, starting at 0. Each new subdomain operation must include:
+Las operaciones de subdominios se ordenan por número de secuencia, comenzando en 0. Cada nueva operación de subdominio debe incluir:
 
-- The next sequence number
-- The public key that hashes to the previous subdomain transaction's address
-- A signature from the corresponding private key over the entire subdomain operation.
+- El siguiente número de secuencia
+- La clave pública que tiene el hash de la dirección de la transacción del subdominio anterior
+- Una firma de la clave privada correspondiente sobre toda la operación del subdominio.
 
-If two correctly signed but conflicting subdomain operations are discovered (that is, they have the same sequence number), the one that occurs earlier in the blockchain's history is accepted. Invalid subdomain operations are ignored.
+Si se descubren dos operaciones de subdominio correctamente firmadas pero en conflicto (es decir, tienen el mismo número de secuencia), se acepta el que ocurre antes en el historial de blockchain. Las operaciones de subdominio no válidas son ignoradas.
 
-Combined, this ensures that a BNS node with all of the zone files with a given subdomain's operations will be able to determine the valid sequence of state-transitions it has undergone, and determine the current zone file and public key hash for the subdomain.
+Combinado, esto garantiza que un nodo BNS con todos los archivos de zona con las operaciones de un subdominio determinado será capaz de determinar la secuencia válida de transiciones de estado por la que ha pasado, y determinar el archivo de zona actual y el hash de la clave pública del subdominio.
 
-### Subdomain Creation and Management
+### Creación y gestión de subdominios
 
-Unlike an on-chain name, a subdomain owner needs an on-chain name owner's help to broadcast their subdomain operations. In particular:
+A diferencia de un nombre on-chain, un propietario de subdominio necesita la ayuda del propietario del nombre on-chain para transmitir sus operaciones de subdominio. En particular:
 
 - A subdomain-creation transaction can only be processed by the owner of the on-chain name that shares its suffix. For example, only the owner of `res_publica.id` can broadcast subdomain-creation transactions for subdomain names ending in `.res_publica.id`.
 - A subdomain-transfer transaction can only be broadcast by the owner of the on-chain name that created it. For example, the owner of `cicero.res_publica.id` needs the owner of `res_publica.id` to broadcast a subdomain-transfer transaction to change `cicero.res_publica.id`'s public key.
@@ -191,13 +192,13 @@ Once created, a subdomain owner can use any on-chain name owner to broadcast a s
 
 If the subdomain owner wants to change the address of their subdomain, they need to sign a subdomain-transfer operation and give it to the on-chain name owner who created the subdomain. They then package it into a zone file and broadcast it.
 
-### Subdomain Registrars
+### Registros de subdominio
 
 Because subdomain names are cheap, developers may be inclined to run subdomain registrars on behalf of their applications. For example, the name `personal.id` is used to register usernames without requiring them to spend any Bitcoin.
 
 We supply a reference implementation of a [BNS Subdomain Registrar](https://github.com/stacks-network/subdomain-registrar) to help developers broadcast subdomain operations. Users would still own their subdomain names; the registrar simply gives developers a convenient way for them to register and manage them in the context of a particular application.
 
-# BNS and DID Standards
+# Estándares BNS y DID
 
 BNS names are compliant with the emerging [Decentralized Identity Foundation](http://identity.foundation) protocol specification for decentralized identifiers (DIDs).
 
@@ -207,7 +208,7 @@ Each name in BNS has an associated DID. The DID format for BNS is:
     did:stack:v0:{address}-{index}
 ```
 
-Where:
+Dónde:
 
 - `{address}` is an on-chain public key hash (for example a Bitcoin address).
 - `{index}` refers to the `nth` name this address created.
@@ -220,7 +221,7 @@ The purpose of a DID is to provide an eternal identifier for a public key. The p
 
 Stacks Blockchain implements a DID method of its own in order to be compatible with other systems that use DIDs for public key resolution. In order for a DID to be resolvable, all of the following must be true for a name:
 
-- The name must exist
+- El nombre debe existir
 - The name's zone file hash must be the hash of a well-formed DNS zone file
 - The DNS zone file must be present in the Stacks node's data.
 - The DNS zone file must contain a `URI` resource record that points to a signed JSON Web Token

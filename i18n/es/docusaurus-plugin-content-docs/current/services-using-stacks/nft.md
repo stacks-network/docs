@@ -6,8 +6,8 @@ sidebar_position: 3
 
 Lista de sitios web que operan NFTS en Stacks en orden alfabético.
 
-:::tip Are we missing one?
-Please edit this page to add any relevant new site that we are missing.
+:::tip ¿Falta uno?
+Por favor edita esta página para agregar cualquier sitio web relevante que falte.
 :::
 
 ### [Byzantion](https://byzantion.xyz/)
