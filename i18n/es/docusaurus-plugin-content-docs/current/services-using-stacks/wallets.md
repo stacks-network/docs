@@ -6,8 +6,8 @@ sidebar_position: 4
 
 A list of hardware and software wallets for Stacks
 
-:::tip Are we missing one?
-Please edit this page to add any relevant new site that we are missing.
+:::tip ¿Falta uno?
+Por favor edita esta página para agregar cualquier sitio web relevante que falte.
 :::
 
 ## Boom

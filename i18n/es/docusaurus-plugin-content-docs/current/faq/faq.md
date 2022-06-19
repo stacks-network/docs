@@ -51,15 +51,15 @@ Submitting multiple transactions for the same action can slow things down in a f
 
 [This forum post](https://forum.stacks.org/t/btc-domains-are-live/12065) explains all the benefits of .btc domains. Actualmente se pueden comprar en [btc.us](https://btc.us/)
 
-## What is the blockchain trilemma?
+## ¿Cuál es el trilema del blockchain?
 
 ## Stacks vs. Solana vs. Polygon: How Do They Compare From a Developer Perspective?
 
-[This blog post answers the question](https://www.hiro.so/blog/stacks-vs-solana-vs-polygon-how-do-they-compare-from-a-developer-perspective).
+[Esta tema del blog responde a la pregunta](https://www.hiro.so/blog/stacks-vs-solana-vs-polygon-how-do-they-compare-from-a-developer-perspective).
 
 ## What Does Lightning’s Taro Proposal Mean for Stacks?
 
-[This blog post answers the question](https://www.hiro.so/blog/what-does-lightnings-taro-proposal-mean-for-stacks).
+[Esta tema del blog responde a la pregunta](https://www.hiro.so/blog/what-does-lightnings-taro-proposal-mean-for-stacks).
 
 
 ## Is Stacks a [PoS chain](https://en.wikipedia.org/wiki/Proof_of_stake)?[¹][]
@@ -72,7 +72,7 @@ The act of block production requires an extrinsic expenditure — it is not tied
 
 No.
 
-For two key reasons.
+Por dos razones fundamentales.
 
 First, the history of all Stacks blocks produced is recorded to Bitcoin. This means that the act of producing a private Stacks fork is at least as hard as reorging the Bitcoin chain. This in turn makes it so attacks on the chain that rely on creating private forks (such as selfish mining and double-spending) are much harder to carry out profitably, since all honest participants can see the attack coming before it happens and have a chance to apply countermeasures. Sidechains offer no such security benefit.
 
