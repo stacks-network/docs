@@ -1,7 +1,7 @@
 ---
-title: Governance
-description: Governance
+title: Gobernanza
+description: Gobernanza
 sidebar_position: 9
 ---
 
-This page needs contributions. Help us write it!
+Esta página necesita contribuciones. ¡Ayúdanos a escribirlo!
