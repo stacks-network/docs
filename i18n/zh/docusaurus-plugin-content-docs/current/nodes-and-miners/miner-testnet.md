@@ -7,13 +7,13 @@ tags:
 
 ## Introduction
 
-Make sure you've followed the [Running testnet node](running-testnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
+Make sure you've followed the [Running testnet node](running-testnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
 
 If you want to learn more about the technical details of mining, please review the [mining guide](../understand-stacks/mining).
 
 ## Running bitcoind locally
 
-To participate as a miner on Testnet, you must have access to a testnet bitcoin node. One way to accomplish this is to run bitcoind locally. [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements) One way to accomplish this is to run bitcoind locally. [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements)
+To participate as a miner on Testnet, you must have access to a testnet bitcoin node. One way to accomplish this is to run bitcoind locally. [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements) One way to accomplish this is to run bitcoind locally. [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements) One way to accomplish this is to run bitcoind locally. [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements)
 
 First, download the bitcoind software for your platform from https://bitcoin.org/en/download.
 
@@ -46,7 +46,7 @@ It may take a few hours for the node to synchronize with the Bitcoin testnet.
 
 ## Running a miner
 
-First, a keychain needs to be generated. First, a keychain needs to be generated. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
+First, a keychain needs to be generated. First, a keychain needs to be generated. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining. First, a keychain needs to be generated. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
 
 To get a keychain, the simplest way is to use the `stacks-cli`. To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `make_keychain` command, and pass `-t` to indicate that we want a testnet keychain.
 
@@ -76,17 +76,36 @@ The above BTC address will then need to be imported into the BTC testnet network
 bitcoin-cli -rpcport=18332 -rpcuser=your-user -rpcpassword=your-password importaddress <btcAddress from JSON above>
 ```
 
-Once imported, we need to get some testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent `0.01` testnet BTC to that address.
+Once imported, we need to get some testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent `0.01` testnet BTC to that address. We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address. You'll be sent `0.01` testnet BTC to that address.
 
-Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
+Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. Now, we need to configure our node to use this Bitcoin keychain. Clone the [stacks-blockchain repository](https://github.com/stacks-network/stacks-blockchain) to your local machine if you haven't already. In the `stacks-blockchain` folder, modify the file at [`testnet/stacks-node/conf/testnet-miner-conf.toml`](https://github.com/stacks-network/stacks-blockchain/blob/master/testnet/stacks-node/conf/testnet-miner-conf.toml).
 
 Update the following properties:
 
 ```toml
 [node]
 ...
+[node]
+...
 seed = "replace-with-your-private-key"
 local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+[node]
+...
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+# To mine on Testnet, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
+peer_host = "127.0.0.1"
+username = "<USERNAME>"
+password = "<PASSWORD>"
 ...
 
 [burnchain]
@@ -131,6 +150,7 @@ The above code will compile an optimized binary. To use it, run: To use it, run:
 ```bash
 cd ../..
 cd ../..
+cd ../..
 ./target/release/stacks-node start --config=./testnet/conf/testnet-follower-conf.toml
 ```
 
@@ -154,7 +174,7 @@ Make sure you've followed the [running the testnet node](running-testnet-node) t
 
 To setup the miner, first, we need to generate a keychain. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining. First, a keychain needs to be generated. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
 
-To get a keychain, the simplest way is to use the `stacks-cli`. To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command, and pass `-t` to indicate that we want a testnet keychain.
+To get a keychain, the simplest way is to use the `stacks-cli`. To get a keychain, the simplest way is to use the `stacks-cli`. To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command, and pass `-t` to indicate that we want a testnet keychain.
 
 Generate a keychain:
 
@@ -182,7 +202,7 @@ After this runs, you'll probably see some installation logs, and at the end you 
 
 Request BTC from faucet:
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
 
 ### Update configuration file
 
@@ -193,8 +213,27 @@ Update the following properties:
 ```toml
 [node]
 ...
+[node]
+...
 seed = "replace-with-your-private-key"
 local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+[node]
+...
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+# To mine on Testnet, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
+peer_host = "127.0.0.1"
+username = "<USERNAME>"
+password = "<PASSWORD>"
 ...
 
 [burnchain]
@@ -250,7 +289,7 @@ stacks-node start --config=testnet-miner-conf.toml
 
 Alternatively, you can run the testnet node with Docker.
 
-:::warning Ensure you have [Docker](https://docs.docker.com/get-docker/) installed on your machine. ::: :::
+:::warning Ensure you have [Docker](https://docs.docker.com/get-docker/) installed on your machine. ::: ::: :::
 
 ### Generate keychain and get testnet tokens
 
@@ -260,7 +299,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
 
 ### Update config file
 
@@ -271,8 +310,27 @@ Update the following properties:
 ```toml
 [node]
 ...
+[node]
+...
 seed = "replace-with-your-private-key"
 local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+[node]
+...
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+# To mine on Testnet, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
+peer_host = "127.0.0.1"
+username = "<USERNAME>"
+password = "<PASSWORD>"
 ...
 
 [burnchain]
@@ -338,7 +396,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address. Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address. You'll be sent 0.01 testnet BTC to that address.
 
 ### Install the chart and run the miner
 
