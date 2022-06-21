@@ -6,9 +6,9 @@ sidebar_position: 7
 
 ## Tokens
 
-Stacks (STX) tokens are the native tokens on the Stacks 2.0 blockchain. The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX). The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX). The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX).
+Stacks (STX) tokens are the native tokens on the Stacks 2.0 blockchain. The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX). The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX). The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX). The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX).
 
-STX amounts should be stored as integers (8 bytes long), and represent the amount of micro-STX. For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6). For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6). For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6).
+STX amounts should be stored as integers (8 bytes long), and represent the amount of micro-STX. For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6). For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6). For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6). For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6).
 
 ## Fees
 
@@ -33,11 +33,11 @@ The API will respond with the fee rate (as integer):
 - contract deploys (`estimateContractDeploy`)
 - non read-only contract calls (`estimateContractFunctionCall`)
 
-:::tip For an implementation using a different language than JavaScript, please review [this reference implementation](https://github.com/hirosystems/stacks.js/blob/master/packages/transactions/src/builders.ts#L97). ::: :::
+:::tip For an implementation using a different language than JavaScript, please review [this reference implementation](https://github.com/hirosystems/stacks.js/blob/master/packages/transactions/src/builders.ts#L97). ::: ::: :::
 
 ## Nonces
 
-Every account carries a [nonce property](https://en.wikipedia.org/wiki/Cryptographic_nonce) that indicates the number of transactions processed for the given account. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction.
+Every account carries a [nonce property](https://en.wikipedia.org/wiki/Cryptographic_nonce) that indicates the number of transactions processed for the given account. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction.
 
 Nonces are added to all transactions and help identify them in order to ensure transactions are processed in order and to avoid duplicated processing.
 
@@ -48,17 +48,17 @@ The consensus mechanism also ensures that transactions aren't "replayed" in two 
 
 When a new token transfer transaction is constructed, the most recent nonce of the account needs to fetched and set.
 
-:::tip The API provides an endpoint to [simplify nonce handling](https://docs.hiro.so/get-started/stacks-blockchain-api#nonce-handling). ::: :::
+:::tip The API provides an endpoint to [simplify nonce handling](https://docs.hiro.so/get-started/stacks-blockchain-api#nonce-handling). ::: ::: :::
 
 ## Confirmations
 
-The Stacks 2.0 network is anchored onto the bitcoin network. This allows transactions on Stacks to inherit the same finality and security of the Bitcoin blockchain. This allows transactions on Stacks to inherit the same finality and security of the Bitcoin blockchain. This allows transactions on Stacks to inherit the same finality and security of the Bitcoin blockchain.
+The Stacks 2.0 network is anchored onto the bitcoin network. This allows transactions on Stacks to inherit the same finality and security of the Bitcoin blockchain. This allows transactions on Stacks to inherit the same finality and security of the Bitcoin blockchain. This allows transactions on Stacks to inherit the same finality and security of the Bitcoin blockchain. This allows transactions on Stacks to inherit the same finality and security of the Bitcoin blockchain.
 
 The time to mine a block, to confirm transactions, will eventually match the expected "block time" of the bitcoin network: 10 minutes.
 
-:::tip Transactions can also be mined in [microblocks](microblocks), reducing the latency significantly. ::: :::
+:::tip Transactions can also be mined in [microblocks](microblocks), reducing the latency significantly. ::: ::: :::
 
-The block time is hardcoded and will change throughout the implementation phases of the [testnet](testnet). The block time is hardcoded and will change throughout the implementation phases of the [testnet](testnet). The block time is hardcoded and will change throughout the implementation phases of the [testnet](/understand-stacks/testnet). The current block time can be obtained through the [`GET /extended/v1/info/network_block_times`](https://docs.hiro.so/api#operation/get_network_block_times) endpoint:
+The block time is hardcoded and will change throughout the implementation phases of the [testnet](testnet). The block time is hardcoded and will change throughout the implementation phases of the [testnet](testnet). The block time is hardcoded and will change throughout the implementation phases of the [testnet](/understand-stacks/testnet). The current block time can be obtained through the [`GET /extended/v1/info/network_block_times`](https://docs.hiro.so/api#operation/get_network_block_times) endpoint: The block time is hardcoded and will change throughout the implementation phases of the [testnet](testnet). The block time is hardcoded and will change throughout the implementation phases of the [testnet](/understand-stacks/testnet). The current block time can be obtained through the [`GET /extended/v1/info/network_block_times`](https://docs.hiro.so/api#operation/get_network_block_times) endpoint:
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
@@ -80,9 +80,9 @@ The API will respond with the block time (in seconds):
 
 ## Read-only function calls
 
-Smart contracts can expose public function calls. Smart contracts can expose public function calls. For functions that make state modifications to the blockchain, transactions need to be generated and broadcasted. Smart contracts can expose public function calls. For functions that make state modifications to the blockchain, transactions need to be generated and broadcasted.
+Smart contracts can expose public function calls. Smart contracts can expose public function calls. For functions that make state modifications to the blockchain, transactions need to be generated and broadcasted. Smart contracts can expose public function calls. For functions that make state modifications to the blockchain, transactions need to be generated and broadcasted. Smart contracts can expose public function calls. For functions that make state modifications to the blockchain, transactions need to be generated and broadcasted.
 
-However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api). However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api). Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api).
+However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api). However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api). Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api). However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api). Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api).
 
 :::tip
 Read-only function calls do not require transaction fees
@@ -100,6 +100,7 @@ curl --location --request POST 'https://stacks-node-api.testnet.stacks.co/v2/con
 }'
 }'
 }'
+}'
 ```
 
 Sample response for a successful call:
@@ -111,7 +112,7 @@ Sample response for a successful call:
 }
 ```
 
-:::tip To set the function call arguments and read the result, [Clarity values](../write-smart-contracts/values) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations ::: The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations :::
+:::tip To set the function call arguments and read the result, [Clarity values](../write-smart-contracts/values) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations ::: The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations ::: The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations :::
 
 ## Querying
 
