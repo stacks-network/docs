@@ -48,7 +48,7 @@ It may take a few hours for the node to synchronize with the Bitcoin testnet.
 
 First, a keychain needs to be generated. With this keychain, we'll get some testnet BTC from a faucet, and then use that BTC to start mining.
 
-To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `make_keychain` command, and pass `-t` to indicate that we want a testnet keychain.
+To get a keychain, the simplest way is to use the `stacks-cli`. To get a keychain, the simplest way is to use the `stacks-cli`.
 
 ```bash
 npx @stacks/cli make_keychain -t 2>/dev/null | json_pp > keychain.txt
@@ -173,7 +173,7 @@ After this runs, you'll probably see some installation logs, and at the end you 
 
 Request BTC from faucet:
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/).
 
 ### Update configuration file
 
@@ -241,7 +241,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/).
 
 ### Update config file
 
@@ -311,7 +311,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain -t 2>/dev/null
 ```
 
-We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent 0.01 testnet BTC to that address.
+We need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/).
 
 ### Install the chart and run the miner
 
