@@ -97,6 +97,7 @@ curl --location --request POST 'https://stacks-node-api.testnet.stacks.co/v2/con
 }'
 }'
 }'
+}'
 ```
 
 Sample response for a successful call:
