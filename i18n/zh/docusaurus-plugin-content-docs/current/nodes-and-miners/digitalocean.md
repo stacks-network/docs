@@ -7,13 +7,13 @@ tags:
 
 ## Introduction
 
-This is a step by step guide to deploy the [Stacks Blockchain on DigitalOcean](https://marketplace.digitalocean.com/apps/stacks-blockchain). Code is hosted on this [Github repository](https://github.com/stacks-network/stacks-blockchain-docker). Code is hosted on this [Github repository](https://github.com/stacks-network/stacks-blockchain-docker).
+This is a step by step guide to deploy the [Stacks Blockchain on DigitalOcean](https://marketplace.digitalocean.com/apps/stacks-blockchain). Code is hosted on this [Github repository](https://github.com/stacks-network/stacks-blockchain-docker). Code is hosted on this [Github repository](https://github.com/stacks-network/stacks-blockchain-docker). Code is hosted on this [Github repository](https://github.com/stacks-network/stacks-blockchain-docker).
 
 ## Steps
 
 #### Step 1
 
-Go to the [Stacks Blockchain page](https://marketplace.digitalocean.com/apps/stacks-blockchain) in DigitalOcean's marketplace. Click on `Create Stacks Blockchain Droplet`. Click on `Create Stacks Blockchain Droplet`.
+Go to the [Stacks Blockchain page](https://marketplace.digitalocean.com/apps/stacks-blockchain) in DigitalOcean's marketplace. Click on `Create Stacks Blockchain Droplet`. Click on `Create Stacks Blockchain Droplet`. Click on `Create Stacks Blockchain Droplet`.
 
 #### Step 2
 
@@ -31,7 +31,7 @@ You can leave the rest of the options as they are and click on `Create Droplet`
 
 #### Step 5
 
-You will need to wait a few seconds for the droplet to get created. Once created click on it to see more information. Once created click on it to see more information.
+You will need to wait a few seconds for the droplet to get created. Once created click on it to see more information. Once created click on it to see more information. Once created click on it to see more information.
 
 ![](/img/sh_digitalocean-creating-droplet.png)
 
@@ -39,7 +39,7 @@ You will need to wait a few seconds for the droplet to get created. Once created
 
 ### Step 6
 
-Congratulations! You are now running the Stacks Blockchain. Congratulations! You are now running the Stacks Blockchain. You can click on `Console` for a terminal window to open or login using SSH to the public IP you've been assigned to with user `root`.
+Congratulations! Congratulations! You are now running the Stacks Blockchain. Congratulations! You are now running the Stacks Blockchain. You can click on `Console` for a terminal window to open or login using SSH to the public IP you've been assigned to with user `root`. Congratulations! You are now running the Stacks Blockchain. You can click on `Console` for a terminal window to open or login using SSH to the public IP you've been assigned to with user `root`.
 
 ![](/img/sh_digitalocean-console-button.png) ![](/img/sh_digitalocean-console.png)
 
@@ -75,7 +75,7 @@ Full details on how to use the manage.sh script is [available here](https://gith
 
 In addition to creating a Droplet from the Stacks Blockchain 1-Click App via the control panel, you can also use the [DigitalOcean API](https://digitalocean.com/docs/api).
 
-As an example, to create a 4GB Stacks Blockchain Droplet in the SFO2 region, you can use the following curl command. You’ll need to either save your [API access token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) to an environment variable or substitute it into the command below. You’ll need to either save your [API access token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) to an environment variable or substitute it into the command below.
+As an example, to create a 4GB Stacks Blockchain Droplet in the SFO2 region, you can use the following curl command. You’ll need to either save your [API access token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) to an environment variable or substitute it into the command below. As an example, to create a 4GB Stacks Blockchain Droplet in the SFO2 region, you can use the following curl command. You’ll need to either save your [API access token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) to an environment variable or substitute it into the command below. You’ll need to either save your [API access token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) to an environment variable or substitute it into the command below.
 
 ```bash
 curl -X POST -H 'Content-Type: application/json' \
