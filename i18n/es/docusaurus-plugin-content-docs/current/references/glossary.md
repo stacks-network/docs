@@ -176,7 +176,7 @@ An application that allow you to view and search transactions in the blockchain.
 A complete version of our open-source software available on Github at https://github.com/stacks-network/stacks-blockchain/ that governs the creation of the blockchain, the smart contracts that may be written to our blockchain, and other systems that make up the Stacks network, when run on the systems and devices of our users and developers.
 
 #### Monedero de Stacks
-An application for accessing assets, identity and storage. More information and example [here](../services-using-stacks/wallets). Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/).
+An application for accessing assets, identity and storage. Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/). More information and example [here](../services-using-stacks/wallets).
 
 #### storage hub
 An Gaia instance run by a hub provider or software. A Gaia hub stores data in separate, addressed location.
