@@ -41,7 +41,7 @@ curl -SL https://github.com/docker/compose/releases/download/${VERSION_DC}/docke
 chmod +x ${DESTINATION_DC}/docker-compose
 ```
 
-**7. Test your GAIA HUB** Running `gaia_test.js` will test your GAIA Hub, by trying to connect to it, uploading a file and downloading it again.
+**2. Test your GAIA HUB** Running `gaia_test.js` will test your GAIA Hub, by trying to connect to it, uploading a file and downloading it again.
 
 ```bash
 git clone https://github.com/stacks-network/gaia.git && cd gaia/deploy/docker
