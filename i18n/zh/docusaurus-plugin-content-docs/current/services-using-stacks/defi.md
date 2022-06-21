@@ -8,7 +8,7 @@ They are multiple De-Fi sites that operate on the Stacks blockchain.
 
 :::tip Are we missing one?
 Please edit this page to add any relevant new site that we are missing.
-:::
+::: Please edit this page to add any relevant new site that we are missing. :::
 
 ## Alex
 
@@ -26,7 +26,7 @@ Please edit this page to add any relevant new site that we are missing.
 
 ## Lnswap
 
-[LNSWAP](https://www.lnswap.org). Non custiodial crypto currency exchange
+[LNSWAP](https://www.lnswap.org). Non custiodial crypto currency exchange Non custiodial crypto currency exchange
 
 ![](/img/sh_lnswap.png)
 
