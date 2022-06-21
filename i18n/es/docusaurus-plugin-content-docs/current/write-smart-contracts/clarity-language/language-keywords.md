@@ -22,7 +22,7 @@ Returns the caller of the current contract context. If this contract is the firs
 
 ### tx-sender
 #### salida: `principal`
-#### description:
+#### descripción:
 Returns the original sender of the current transaction, or if `as-contract` was called to modify the sending context, it returns that contract principal.
 #### ejemplo:
 ```clarity
@@ -31,7 +31,7 @@ Returns the original sender of the current transaction, or if `as-contract` was 
 
 ### block-height
 #### output: `uint`
-#### description:
+#### descripción:
 Returns the current block height of the Stacks blockchain as an uint
 #### ejemplo:
 ```clarity
@@ -40,7 +40,7 @@ Returns the current block height of the Stacks blockchain as an uint
 
 ### burn-block-height
 #### output: `uint`
-#### description:
+#### descripción:
 Returns the current block height of the underlying burn blockchain as a uint
 #### ejemplo:
 ```clarity
@@ -49,7 +49,7 @@ Returns the current block height of the underlying burn blockchain as a uint
 
 ### none
 #### output: `(optional ?)`
-#### description:
+#### descripción:
 Represents the _none_ option indicating no value for a given optional (analogous to a null value).
 #### ejemplo:
 ```clarity
@@ -63,7 +63,7 @@ Represents the _none_ option indicating no value for a given optional (analogous
 
 ### true
 #### output: `bool`
-#### description:
+#### descripción:
 Boolean true constant.
 #### ejemplo:
 ```clarity
@@ -73,7 +73,7 @@ Boolean true constant.
 
 ### false
 #### output: `bool`
-#### description:
+#### descripción:
 Boolean false constant.
 #### ejemplo:
 ```clarity
@@ -83,7 +83,7 @@ Boolean false constant.
 
 ### stx-liquid-supply
 #### output: `uint`
-#### description:
+#### descripción:
 Returns the total number of micro-STX (uSTX) that are liquid in the system as of this block.
 #### ejemplo:
 ```clarity
@@ -92,7 +92,7 @@ Returns the total number of micro-STX (uSTX) that are liquid in the system as of
 
 ### is-in-regtest
 #### output: `bool`
-#### description:
+#### descripción:
 Returns whether or not the code is running in a regression test
 #### ejemplo:
 ```clarity

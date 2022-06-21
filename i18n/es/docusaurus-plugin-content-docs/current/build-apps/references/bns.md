@@ -181,9 +181,9 @@ Combinado, esto garantiza que un nodo BNS con todos los archivos de zona con las
 
 A diferencia de un nombre on-chain, un propietario de subdominio necesita la ayuda del propietario del nombre on-chain para transmitir sus operaciones de subdominio. En particular:
 
-- A subdomain-creation transaction can only be processed by the owner of the on-chain name that shares its suffix. For example, only the owner of `res_publica.id` can broadcast subdomain-creation transactions for subdomain names ending in `.res_publica.id`.
-- A subdomain-transfer transaction can only be broadcast by the owner of the on-chain name that created it. For example, the owner of `cicero.res_publica.id` needs the owner of `res_publica.id` to broadcast a subdomain-transfer transaction to change `cicero.res_publica.id`'s public key.
-- In order to send a subdomain-creation or subdomain-transfer, all of an on-chain name owner's zone files must be present in the Atlas network. This lets the BNS node prove the _absence_ of any conflicting subdomain-creation and subdomain-transfer operations when processing new zone files.
+- Una transacción de creación de subdominios solo puede ser procesada por el propietario del nombre on-chain que comparte su sufijo. Por ejemplo, solo el dueño de `res_publica.id` puede transmitir transacciones de creación de subdominios para nombres de subdominio que terminan en `.res_publica.id`.
+- Una transacción de transferencia de subdominio sólo puede ser emitida por el propietario del nombre on-chain que la creó. Por ejemplo, el dueño de `cicero.res_publica.id` necesita al dueño de `res_publica.id` para transmitir una transacción de transferencia de subdominio para cambiar la clave pública `cicero.res_publica.id`.
+- Para enviar una creación de subdominio o transferencia de subdominio, todos los archivos de zona del propietario del nombre on-chain deben estar presentes en la red de Atlas. Esto permite al nodo BNS demostrar la _ausencia_ de cualquier operación conflictiva de creación y operaciones de transferencia de subdominios al procesar nuevos archivos de zona.
 - A subdomain update transaction can be broadcast by _any_ on-chain name owner, but the subdomain owner needs to find one who will cooperate. For example, the owner of `verified.podcast` can broadcast a subdomain-update transaction created by the owner of `cicero.res_publica.id`.
 
 That said, to create a subdomain, the subdomain owner generates a subdomain-creation operation for their desired name and gives it to the on-chain name owner.
