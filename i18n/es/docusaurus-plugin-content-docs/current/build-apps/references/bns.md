@@ -21,7 +21,7 @@ La mayor consecuencia para los desarrolladores es que en BNS, el estado del nomb
 
 Nos basamos en nombrar sistemas en la vida cotidiana, y ellos juegan un papel crítico en muchas aplicaciones diferentes. Por ejemplo, cuando buscas un amigo en las redes sociales, está usando el sistema de nomenclatura de la plataforma para asociar su nombre a su perfil. Cuando buscas un sitio web, estás utilizando el Servicio de Nombre de Dominio para asociar el nombre de host a la dirección IP de su host. Cuando revisa una rama de Git, está usando su cliente Git para asociar el nombre de la rama a un commit hash. Cuando buscamos la clave PGP de alguien en un servidor de claves, esta asociando su clave ID a su clave pública.
 
-¿Qué tipo de cosas queremos que sean ciertas sobre los nombres? En BNS, los nombres son únicos globalmente, tienen significado humano y tienen una propiedad sólida. Sin embargo, si observas estos ejemplos, verás que cada uno de ellos solo garantiza _dos_ de estas propiedades. Esto limita lo útiles que pueden ser.
+¿Qué tipo de cosas queremos que sean ciertas sobre los nombres? En BNS, los nombres son únicos globalmente, tienen significado humano y tienen una propiedad sólida. En BNS, los nombres son únicos globalmente, tienen significado humano y tienen una propiedad sólida. Sin embargo, si observas estos ejemplos, verás que cada uno de ellos solo garantiza _dos_ de estas propiedades. Esto limita lo útiles que pueden ser.
 
 - En DNS y redes sociales, los nombres son globalmente únicos y legibles, pero no tienen una propiedad sólida. El operador del sistema tiene la última palabra sobre a qué se asocia cada nombre.
 
@@ -161,6 +161,8 @@ y una firma válida en "sig=" sobre el cuerpo de la transacción. El campo "sig=
 incluye tanto la clave pública como la firma, y la clave pública debe tener un hash con el campo 
 "addr=" de la operación de subdominio anterior.
 
+Las transacciones de creación de subdominio y transferencia de subdominio para
+"cicero.res_publica.id" son emitidas por el propietario de "res_publica.id"
 Las transacciones de creación de subdominio y transferencia de subdominio para
 "cicero.res_publica.id" son emitidas por el propietario de "res_publica.id"
 Sin embargo, cualquier nombre on-chain ("jude.id" en este caso) puede transmitir una actualización de subdominio
