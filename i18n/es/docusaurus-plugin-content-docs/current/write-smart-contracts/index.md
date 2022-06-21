@@ -40,7 +40,7 @@ Using an interpreted language ensures that the executed code is human-readable a
 
 A Clarity smart contract consists of two parts, a data space and a set of functions. Only the associated smart contract may modify its corresponding data space on the blockchain. Functions may be private and thus callable only from within the smart contract, or public and thus callable from other contracts. Users call smart contracts' public functions by broadcasting a transaction on the blockchain which invokes the public function. Contracts can also call public functions from other smart contracts.
 
-Note some of the key Clarity language rules and limitations.
+Tenga en cuenta algunas de las reglas y limitaciones del lenguaje Clarity.
 
 - The only primitive types are booleans, integers, buffers, and principals.
 - Recursion is illegal and there are no anonymous functions.

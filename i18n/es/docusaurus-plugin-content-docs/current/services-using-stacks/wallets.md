@@ -10,6 +10,11 @@ A list of hardware and software wallets for Stacks
 Por favor edita esta página para agregar cualquier sitio web relevante que falte.
 :::
 
+## Blockchain.com
+
+[Blockchain.com](https://www.blockchain.com/wallet)
+
+![](/img/sh_blockchain.png)
 ## Boom
 
 [Boom](https://boom.money)

@@ -19,7 +19,7 @@ A continuación se muestra una lista de funciones públicas y de sólo lectura a
 #### input: `principal, (optional uint)`
 #### output: `(response bool int)`
 #### signature: `(allow-contract-caller caller until-burn-ht)`
-#### description:
+#### descripción:
 Give a contract-caller authorization to call stacking methods. Normally, stacking methods may only be invoked by _direct_ transactions (i.e., the `tx-sender` issues a direct `contract-call` to the stacking methods).
 
 By issuing an allowance, the tx-sender may call through the allowed contract.
@@ -28,7 +28,7 @@ By issuing an allowance, the tx-sender may call through the allowed contract.
 #### input: `principal, uint, (tuple (hashbytes (buff 20)) (version (buff 1))), uint, uint`
 #### output: `(response (tuple (lock-amount uint) (stacker principal) (unlock-burn-height uint)) int)`
 #### signature: `(delegate-stack-stx stacker amount-ustx pox-addr start-burn-ht lock-period)`
-#### description:
+#### descripción:
 As a delegate, stack the given principal's STX using `partial-stacked-by-cycle`.
 
 Once the delegate has stacked > minimum, the delegate should call `stack-aggregation-commit`.
@@ -37,7 +37,7 @@ Once the delegate has stacked > minimum, the delegate should call `stack-aggrega
 #### input: `uint, principal, (optional uint), (optional (tuple (hashbytes (buff 20)) (version (buff 1))))`
 #### output: `(response bool int)`
 #### signature: `(delegate-stx amount-ustx delegate-to until-burn-ht pox-addr)`
-#### description:
+#### descripción:
 Delegate to `delegate-to` the ability to stack from a given address.
 
 This method _does not_ lock the funds, rather, it allows the delegate to issue the stacking lock.
@@ -52,14 +52,14 @@ The caller specifies:
 #### input: `principal`
 #### output: `(response bool int)`
 #### signature: `(disallow-contract-caller caller)`
-#### description:
+#### descripción:
 Revokes authorization from a contract to invoke stacking methods through contract-calls
 
 ### reject-pox
-#### input:
+#### entrada:
 #### output: `(response bool int)`
 #### signature: `(reject-pox)`
-#### description:
+#### descripción:
 Reject Stacking for this reward cycle.
 
 `tx-sender` votes all its uSTX for rejection.
@@ -67,17 +67,17 @@ Reject Stacking for this reward cycle.
 Note that unlike Stacking, rejecting PoX does not lock the tx-sender's tokens: PoX rejection acts like a coin vote.
 
 ### revoke-delegate-stx
-#### input:
+#### entrada:
 #### output: `(response bool int)`
 #### signature: `(revoke-delegate-stx)`
-#### description:
+#### descripción:
 Revoke a Stacking delegate relationship. A particular Stacker may only have one delegate, so this method does not take any parameters, and just revokes the Stacker's current delegate (if one exists).
 
 ### stack-aggregation-commit
 #### input: `(tuple (hashbytes (buff 20)) (version (buff 1))), uint`
 #### output: `(response bool int)`
 #### signature: `(stack-aggregation-commit pox-addr reward-cycle)`
-#### description:
+#### descripción:
 Commit partially stacked STX.
 
 This allows a stacker/delegate to lock fewer STX than the minimal threshold in multiple transactions,
@@ -95,7 +95,7 @@ This ensures that each entry in the reward set returned to the stacks-node is gr
 #### input: `uint, (tuple (hashbytes (buff 20)) (version (buff 1))), uint, uint`
 #### output: `(response (tuple (lock-amount uint) (stacker principal) (unlock-burn-height uint)) int)`
 #### signature: `(stack-stx amount-ustx pox-addr start-burn-ht lock-period)`
-#### description:
+#### descripción:
 Lock up some uSTX for stacking!  Note that the given amount here is in micro-STX (uSTX).
 
 The STX will be locked for the given number of reward cycles (lock-period).
@@ -114,49 +114,49 @@ The tokens will unlock and be returned to the Stacker (tx-sender) automatically.
 #### input: `(tuple (hashbytes (buff 20)) (version (buff 1))), uint, uint, uint`
 #### output: `(response bool int)`
 #### signature: `(can-stack-stx pox-addr amount-ustx first-reward-cycle num-cycles)`
-#### description:
+#### descripción:
 Evaluate if a participant can stack an amount of STX for a given period.
 
 ### get-pox-info
-#### input:
+#### entrada:
 #### output: `(response (tuple (current-rejection-votes uint) (first-burnchain-block-height uint) (min-amount-ustx uint) (prepare-cycle-length uint) (rejection-fraction uint) (reward-cycle-id uint) (reward-cycle-length uint) (total-liquid-supply-ustx uint)) UnknownType)`
 #### signature: `(get-pox-info)`
-#### description:
+#### descripción:
 Returns information about PoX status.
 
 ### get-pox-rejection
 #### input: `principal, uint`
 #### output: `(optional (tuple (amount uint)))`
 #### signature: `(get-pox-rejection stacker reward-cycle)`
-#### description:
+#### descripción:
 Returns the amount of uSTX that a given principal used to reject a PoX cycle.
 
 ### get-stacker-info
 #### input: `principal`
 #### output: `(optional (tuple (amount-ustx uint) (first-reward-cycle uint) (lock-period uint) (pox-addr (tuple (hashbytes (buff 20)) (version (buff 1))))))`
 #### signature: `(get-stacker-info stacker)`
-#### description:
+#### descripción:
 Returns the _current_ stacking information for `stacker.  If the information is expired, or if there's never been such a stacker, then returns none.
 
 ### get-stacking-minimum
-#### input:
+#### entrada:
 #### output: `uint`
 #### signature: `(get-stacking-minimum)`
-#### description:
+#### descripción:
 Returns the absolute minimum amount that could be validly Stacked (the threshold to Stack in a given reward cycle may be higher than this
 
 ### get-total-ustx-stacked
 #### input: `uint`
 #### output: `uint`
 #### signature: `(get-total-ustx-stacked reward-cycle)`
-#### description:
+#### descripción:
 Returns the amount of currently participating uSTX in the given cycle.
 
 ### is-pox-active
 #### input: `uint`
 #### output: `bool`
 #### signature: `(is-pox-active reward-cycle)`
-#### description:
+#### descripción:
 Returns whether or not PoX has been rejected at a given PoX cycle.
 ## Códigos de error
 
