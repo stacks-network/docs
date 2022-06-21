@@ -15,7 +15,8 @@ reader-config.json
 
 ## GAIA Admin Service
 
-You can also use the GAIA Admin Service to remotely administer it with an API Key. It will require you to install `npm` with a `apt install npm`. Once `npm` is installed you can continue with the steps in the [GAIA Admin Service](https://github.com/stacks-network/gaia/blob/master/admin/README.md).
+You can also use the GAIA Admin Service to remotely administer it with an API Key. It will require you to install `npm` with a `apt install npm`.
+Once `npm` is installed you can continue with the steps in the [GAIA Admin Service](https://github.com/stacks-network/gaia/blob/master/admin/README.md).
 
 ## Driver Selection
 
@@ -32,7 +33,9 @@ Set the driver you wish to use in your [config.json](https://github.com/stacks-n
 
 These driver may require you to provide additional credentials for performing writes to the backends. See `config.sample.json` for fields for those credentials. In some cases, the driver can use a system configured credential for the backend (e.g., if you are logged into your AWS CLI account, and run the hub from that environment, it won't need to read credentials from your `config.json`).
 
-_Note:_ The disk driver requires a \*nix like filesystem interface, and will not work correctly when trying to run in a Windows environment.
+:::caution
+The disk driver requires a \*nix like filesystem interface, and will not work correctly when trying to run in a Windows environment.
+:::
 
 ## Note on SSL
 
@@ -42,15 +45,10 @@ Otherwise, a reverse proxy web server such as nginx or Apache can be used.
 
 ## Require Correct Hub URL
 
-If you turn on the `requireCorrectHubUrl` option in your `config.json`
-file, your Gaia hub will require that authentication requests
-correctly include the `hubURL` they are trying to connect with. This
-is used to prevent a malicious gaia hub from using an authentication
-token for itself on other Gaia hubs.
+If you turn on the `requireCorrectHubUrl` option in your `config.json` file, your Gaia hub will require that authentication requests correctly include the `hubURL` they are trying to connect with.
+This is used to prevent a malicious gaia hub from using an authentication token for itself on other Gaia hubs.
 
-By default, the Gaia hub will validate that the supplied URL matches
-`https://${config.serverName}`, but if there are multiple valid URLs
-for clients to reach the hub at, you can include a list in your `config.json`:
+By default, the Gaia hub will validate that the supplied URL matches `https://${config.serverName}`, but if there are multiple valid URLs for clients to reach the hub at, you can include a list in your `config.json`:
 
 ```javascript
 {
@@ -64,7 +62,10 @@ for clients to reach the hub at, you can include a list in your `config.json`:
 
 ## The readURL parameter
 
-By default, the gaia hub drivers will return read URLs which point directly at the written content. For example, an S3 driver would return the URL directly to the S3 file. However, if you configure a CDN or domain to point at that same bucket, you can use the `readURL` parameter to tell the gaia hub that files can be read from the given URL. For example, the `hub.blockstack.org` Gaia Hub is configured to return a read URL that looks like `https://gaia.blockstack.org/hub/`.
+By default, the gaia hub drivers will return read URLs which point directly at the written content.
+For example, an S3 driver would return the URL directly to the S3 file.
+However, if you configure a CDN or domain to point at that same bucket, you can use the `readURL` parameter to tell the gaia hub that files can be read from the given URL.
+For example, the `hub.blockstack.org` Gaia Hub is configured to return a read URL that looks like `https://gaia.blockstack.org/hub/`.
 
 Unset this configuration parameter if you do not intend to deploy any caching.
 
