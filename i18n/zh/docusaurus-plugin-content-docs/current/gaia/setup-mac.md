@@ -12,32 +12,32 @@ The following assumes you have [Docker Installed](https://docs.docker.com/docker
 
 In your working directory:
 
-**1. 1. Clone a copy of the [gaia repo](https://github.com/stacks-network/gaia):**
+**1. 1. 1. Clone a copy of the [gaia repo](https://github.com/stacks-network/gaia):**
 
 ```bash
 $ git clone -b master --single-branch https://github.com/stacks-network/gaia
 ```
 
-**2. 2. Change your cwd:**
+**2. 2. 2. Change your cwd:**
 
 ```bash
 $ cd gaia/deploy/docker
 ```
 
-**3. 3. Create a copy of sample-disk.env and fill out the values:**
+**3. 3. 3. Create a copy of sample-disk.env and fill out the values:**
 
 ```
 $ cp sample-disk.env disk.env
 # Update the DOMAIN_NAME variable to `localhost`
 ```
 
-**4. 4. Start the server:**
+**4. 4. 4. Start the server:**
 
 ```
 $ docker-compose -f docker-compose-base.yaml -f docker-compose-disk.yaml --env-file disk.env up
 ```
 
-**5. 5. Verify the server is responding locally:**
+**5. 5. 5. Verify the server is responding locally:**
 
 ```
 $ curl -sk https://localhost/hub_info | jq
