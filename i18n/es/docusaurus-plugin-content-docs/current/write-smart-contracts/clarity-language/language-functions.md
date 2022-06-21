@@ -10,7 +10,7 @@ tags:
 Lista detallada de todas las funciones de Clarity.
 
 ### + (add)
-#### entrada: `int, ... | uint, ...`
+#### entrada: `A`
 #### salida: `int | uint`
 #### firma: `(+ i1 i2...)`
 #### descripción:
@@ -46,7 +46,7 @@ Multiplies a variable number of integer inputs and returns the result. In the ev
 ```
 
 ### / (divide)
-#### entrada: `int, ... | uint, ...`
+#### entrada: `A`
 #### salida: `int | uint`
 #### signature: `(/ i1 i2...)`
 #### descripción:
@@ -212,7 +212,7 @@ Returns `true` if all boolean inputs are `true`. Importantly, the supplied argum
 #### salida: `bool`
 #### signature: `(or b1 b2 ...)`
 #### descripción:
-Returns `true` if any boolean inputs are `true`. Importantly, the supplied arguments are evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `true`, the function short-circuits, and no subsequent arguments are evaluated.
+Returns `true` if any boolean inputs are `true`. Importantly, the supplied arguments are evaluated in-order and lazily. Importantly, the supplied arguments are evaluated in-order and lazily.
 #### ejemplo:
 ```clarity
 (or true false) ;; Returns true
@@ -261,7 +261,7 @@ The `if` function admits a boolean argument and two expressions which must retur
 ### let
 #### entrada: `((name1 AnyType) (name2 AnyType) ...), AnyType, ... A`
 #### salida: `A`
-#### signature: `(let ((name1 expr1) (name2 expr2) ...) expr-body1 expr-body2 ... expr-body-last)`
+#### signature: `(asserts! bool-expr thrown-value)`
 #### descripción:
 The `let` function accepts a list of `variable name` and `expression` pairs, evaluating each expression and _binding_ it to the corresponding variable name. `let` bindings are sequential: when a `let` binding is evaluated, it may refer to prior binding. The _context_ created by this set of bindings is used for evaluating its body expressions. The let expression returns the value of the last such body expression. Note: intermediary statements returning a response type must be checked`
 #### ejemplo:
@@ -273,9 +273,9 @@ The `let` function accepts a list of `variable name` and `expression` pairs, eva
 ### map
 #### input: `Function(A, B, ..., N) -> X, sequence_A, sequence_B, ..., sequence_N`
 #### output: `(list X)`
-#### signature: `(map func sequence_A sequence_B ... sequence_N)`
+#### signature: `(map-get? map-name key-tuple)`
 #### descripción:
-The `map` function applies the function `func` to each corresponding element of the input sequences, and outputs a _list_ of the same type containing the outputs from those function applications. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. The `func` argument must be a literal function name. Also, note that, no matter what kind of sequences the inputs are, the output is always a list.
+Also, note that, no matter what kind of sequences the inputs are, the output is always a list. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. The `func` argument must be a literal function name. The `map` function applies the function `func` to each corresponding element of the input sequences, and outputs a _list_ of the same type containing the outputs from those function applications.
 #### ejemplo:
 ```clarity
 (map not (list true false true false)) ;; Returns (false true false true)
@@ -326,7 +326,7 @@ The `append` function takes a list and another value with the same entry type, a
 #### output: `sequence_A`
 #### signature: `(concat sequence1 sequence2)`
 #### descripción:
-The `concat` function takes two sequences of the same type, and returns a concatenated sequence of the same type, with the resulting sequence_len = sequence1_len + sequence2_len. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
+The `func` argument must be a literal function name. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
 
 #### ejemplo:
 ```clarity
@@ -338,9 +338,9 @@ The `concat` function takes two sequences of the same type, and returns a concat
 ### as-max-len?
 #### input: `sequence_A, uint`
 #### output: `sequence_A`
-#### signature: `(as-max-len? sequence max_length)`
+#### signature: `(map func sequence_A sequence_B ... sequence_N)`
 #### descripción:
-The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument. The function returns an optional type. If the input sequence length is less than or equal to the supplied max_length, this returns `(some sequence)`, otherwise it returns `none`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`. `
+The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument. The function returns an optional type. If the input sequence length is less than or equal to the supplied max_length, this returns `(some sequence)`, otherwise it returns `none`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. `
 #### ejemplo:
 ```clarity
 (as-max-len? (list 2 2 2) u3) ;; Returns (some (2 2 2))
@@ -354,7 +354,7 @@ The `as-max-len?` function takes a sequence argument and a uint-valued, literal 
 #### output: `uint`
 #### signature: `(len sequence)`
 #### descripción:
-The `len` function returns the length of a given sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`. `
+The `len` function returns the length of a given sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. `
 #### ejemplo:
 ```clarity
 (len \"blockstack\") ;; Returns u10
@@ -440,6 +440,7 @@ The `map-get?` function looks up and returns an entry from a contract's data map
 (define-map names-map { name: (string-ascii 10) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (map-get? names-map (tuple (name \"blockstack\"))) ;; Returns (some (tuple (id 1337)))
+(map-get? names-map { name: \"blockstack\" }) ;; Same command, using a shorthand for constructing the tuple names-map (tuple (name \"blockstack\"))) ;; Returns (some (tuple (id 1337)))
 (map-get? names-map { name: \"blockstack\" }) ;; Same command, using a shorthand for constructing the tuple
 ```
 
@@ -515,6 +516,7 @@ The `get` function fetches the value associated with a given key from the suppli
 (map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true
 (get id (tuple (name \"blockstack\") (id 1337))) ;; Returns 1337
 (get id (map-get? names-map (tuple (name \"blockstack\")))) ;; Returns (some 1337)
+(get id (map-get? names-map (tuple (name \"non-existent\")))) ;; Returns none names-map (tuple (name \"blockstack\")))) ;; Returns (some 1337)
 (get id (map-get? names-map (tuple (name \"non-existent\")))) ;; Returns none
 ```
 
@@ -529,13 +531,14 @@ The `merge` function returns a new tuple with the combined fields, without mutat
 (define-map users { id: int } { name: (string-ascii 12), address: (optional principal) })
 (map-insert users { id: 1337 } { name: \"john\", address: none }) ;; Returns true
 (let ((user (unwrap-panic (map-get? users { id: 1337 }))))
+(merge user { address: (some 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) })) ;; Returns (tuple (address (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)) (name \"john\")) users { id: 1337 }))))
 (merge user { address: (some 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) })) ;; Returns (tuple (address (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)) (name \"john\"))
 ```
 
 ### begin
-#### input: `AnyType, ... A`
+#### entrada: `int, ... A`
 #### output: `A`
-#### signature: `(begin expr1 expr2 expr3 ... expr-last)`
+#### signature: `(contract-call? .contract-name function-name arg0 arg1 ...)`
 #### descripción:
 The `begin` function evaluates each of its input expressions, returning the return value of the last such expression. Note: intermediary statements returning a response type must be checked.
 #### ejemplo:
@@ -601,12 +604,14 @@ The `keccak256` function computes `KECCAK256(value)` of the inputted value. Note
 ### secp256k1-recover?
 #### input: `(buff 32), (buff 65)`
 #### output: `(response (buff 33) uint)`
-#### signature: `(secp256k1-recover? message-hash signature)`
+#### signature: `(secp256k1-recover? message-hash signature)` message-hash signature)</code>
 #### descripción:
 The `secp256k1-recover?` function recovers the public key used to sign the message  which sha256 is `message-hash` with the provided `signature`. If the signature does not match, it will return the error code `(err u1).`. If the signature is invalid, it will return the error code `(err u2).`. The signature includes 64 bytes plus an additional recovery id (00..03) for a total of 65 bytes.
 #### ejemplo:
 ```clarity
 (secp256k1-recover? 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04
+ 0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a1301)
+ ;; Returns (ok 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04
  0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a1301)
  ;; Returns (ok 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110)
  ```
@@ -644,13 +649,14 @@ The `print` function evaluates and returns its input expression. On Stacks Core 
 ### contract-call?
 #### input: `ContractName, PublicFunctionName, Arg0, ...`
 #### output: `(response A B)`
-#### signature: `(contract-call? .contract-name function-name arg0 arg1 ...)`
+#### signature: `(principal-of? public-key)` .contract-name function-name arg0 arg1 ...)</code>
 #### descripción:
 The `contract-call?` function executes the given public function of the given contract. You _may not_ use this function to call a public function defined in the current contract. If the public function returns _err_, any database changes resulting from calling `contract-call?` are aborted. If the function returns _ok_, database changes occurred.
 #### ejemplo:
 ```clarity
 
 ;; instantiate the sample-contracts/tokens.clar contract first!
+(as-contract (contract-call? .tokens mint! u19)) ;; Returns (ok u19)
 (as-contract (contract-call? .tokens mint! u19)) ;; Returns (ok u19)
 ```
 
@@ -682,12 +688,12 @@ The `contract-of` function returns the principal of the contract implementing th
 ### principal-of?
 #### input: `(buff 33)`
 #### output: `(response principal uint)`
-#### signature: `(principal-of? public-key)`
+#### signature: `(begin expr1 expr2 expr3 ... expr-last)`
 #### description:
 The `principal-of?` function returns the principal derived from the provided public key. If the `public-key` is invalid, it will return the error code `(err u1).`. `
 #### ejemplo:
 ```clarity
-(principal-of? 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns (ok ST1AW6EKPGT61SQ9FNVDS17RKNWT8ZP582VF9HSCP)
+(principal-of? (principal-of? 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns (ok ST1AW6EKPGT61SQ9FNVDS17RKNWT8ZP582VF9HSCP)
 ```
 
 ### at-block
@@ -697,7 +703,7 @@ The `principal-of?` function returns the principal derived from the provided pub
 #### descripción:
 The `at-block` function evaluates the expression `expr` _as if_ it were evaluated at the end of the block indicated by the _block-hash_ argument. The `expr` closure must be read-only.
 
-Note: The block identifying hash must be a hash returned by the `id-header-hash` block information property. This hash uniquely identifies Stacks blocks and is unique across Stacks forks. While the hash returned by `header-hash` is unique within the context of a single fork, it is not unique across Stacks forks.
+This hash uniquely identifies Stacks blocks and is unique across Stacks forks. Note: The block identifying hash must be a hash returned by the `id-header-hash` block information property. While the hash returned by `header-hash` is unique within the context of a single fork, it is not unique across Stacks forks.
 
 The function returns the result of evaluating `expr`.
 
@@ -705,17 +711,19 @@ The function returns the result of evaluating `expr`.
 ```clarity
 (define-data-var data int 1)
 (at-block 0x0000000000000000000000000000000000000000000000000000000000000000 block-height) ;; Returns u0
+(at-block (get-block-info? (define-data-var data int 1)
+(at-block 0x0000000000000000000000000000000000000000000000000000000000000000 block-height) ;; Returns u0
 (at-block (get-block-info? id-header-hash 0) (var-get data)) ;; Throws NoSuchDataVariable because `data` wasn't initialized at block height 0
 ```
 
 ### get-block-info?
 #### input: `BlockInfoPropertyName, BlockHeightInt`
 #### output: `(optional buff) | (optional uint)`
-#### signature: `(get-block-info? prop-name block-height-expr)`
+#### signature: `(get-block-info? signature: <code>(get-block-info? prop-name block-height-expr)`
 #### descripción:
 The `get-block-info?` function fetches data for a block of the given block height. The value and type returned are determined by the specified `BlockInfoPropertyName`. If the provided `BlockHeightInt` does not correspond to an existing block prior to the current block, the function returns `none`. The currently available property names are `time`, `header-hash`, `burnchain-header-hash`, `id-header-hash`, `miner-address`, and `vrf-seed`.
 
-The `time` property returns an integer value of the block header time field. This is a Unix epoch timestamp in seconds which roughly corresponds to when the block was mined. **Warning**: this does not increase monotonically with each block and block times are accurate only to within two hours. See [BIP113](https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki) for more information.
+This is a Unix epoch timestamp in seconds which roughly corresponds to when the block was mined. The `time` property returns an integer value of the block header time field. **Warning**: this does not increase monotonically with each block and block times are accurate only to within two hours. See [BIP113](https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki) for more information.
 
 The `header-hash`, `burnchain-header-hash`, `id-header-hash`, and `vrf-seed` properties return a 32-byte buffer.
 
@@ -775,24 +783,25 @@ The `default-to` function attempts to 'unpack' the second argument: if the argum
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (default-to 0 (get id (map-get? names-map (tuple (name \"blockstack\"))))) ;; Returns 1337
+(default-to 0 (get id (map-get? names-map (tuple (name \"non-existant\"))))) ;; Returns 0 names-map (tuple (name \"blockstack\"))))) ;; Returns 1337
 (default-to 0 (get id (map-get? names-map (tuple (name \"non-existant\"))))) ;; Returns 0
 ```
 
 ### asserts!
 #### input: `bool, C`
 #### output: `bool`
-#### signature: `(asserts! bool-expr thrown-value)`
+#### signature: `(let ((name1 expr1) (name2 expr2) ...) expr-body1 expr-body2 ... expr-body-last)`
 #### descripción:
 The `asserts!` function admits a boolean argument and asserts its evaluation: if bool-expr is `true`, `asserts!` returns `true` and proceeds in the program execution. If the supplied argument is returning a false value, `asserts!` _returns_ `thrown-value` and exits the current control-flow.
 #### ejemplo:
 ```clarity
-(asserts! (is-eq 1 1) (err 1)) ;; Returns true
+(asserts! (asserts! (is-eq 1 1) (err 1)) ;; Returns true
 ```
 
 ### unwrap!
 #### input: `(optional A) | (response A B), C`
 #### output: `A`
-#### signature: `(unwrap! option-input thrown-value)`
+#### entrada: `int, ... | uint, ...`
 #### descripción:
 The `unwrap!` function attempts to 'unpack' the first argument: if the argument is an option type, and the argument is a `(some ...)` option, `unwrap!` returns the inner value of the option. If the argument is a response type, and the argument is an `(ok ...)` response, `unwrap!` returns the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `(none)` value, `unwrap!` _returns_ `thrown-value` from the current function and exits the current control-flow.
 #### ejemplo:
@@ -804,18 +813,22 @@ The `unwrap!` function attempts to 'unpack' the first argument: if the argument 
        (ok raw-name)))
 
 (get-name-or-err \"blockstack\") ;; Returns (ok (tuple (id 1337)))
+(get-name-or-err \"non-existant\") ;; Returns (err 1) (map-get? names-map { name: name }) (err 1))))
+       (ok raw-name)))
+
+(get-name-or-err \"blockstack\") ;; Returns (ok (tuple (id 1337)))
 (get-name-or-err \"non-existant\") ;; Returns (err 1)
 ```
 
 ### unwrap-err!
 #### input: `(response A B), C`
 #### output: `B`
-#### signature: `(unwrap-err! response-input thrown-value)`
+#### signature: `(unwrap-err! signature: <code>(unwrap-err! response-input thrown-value)`
 #### descripción:
 The `unwrap-err!` function attempts to 'unpack' the first argument: if the argument is an `(err ...)` response, `unwrap-err!` returns the inner value of the `err`. If the supplied argument is an `(ok ...)` value, `unwrap-err!` _returns_ `thrown-value` from the current function and exits the current control-flow.
 #### ejemplo:
 ```clarity
-(unwrap-err! (err 1) false) ;; Returns 1
+(unwrap-err! (unwrap-err! (err 1) false) ;; Returns 1
 ```
 
 ### unwrap-panic
@@ -829,6 +842,7 @@ The `unwrap` function attempts to 'unpack' its argument: if the argument is an o
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (unwrap-panic (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))
+(unwrap-panic (map-get? names-map { name: \"non-existant\" })) ;; Throws a runtime exception names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))
 (unwrap-panic (map-get? names-map { name: \"non-existant\" })) ;; Throws a runtime exception
 ```
 
@@ -888,7 +902,7 @@ Note: Type checking requires that the type of both the ok and err parts of the r
 ### try!
 #### input: `(optional A) | (response A B)`
 #### output: `A`
-#### signature: `(try! option-input)`
+#### input: `AnyType, ... A`
 #### descripción:
 The `try!` function attempts to 'unpack' the first argument: if the argument is an option type, and the argument is a `(some ...)` option, `try!` returns the inner value of the option. If the argument is a response type, and the argument is an `(ok ...)` response, `try!` returns the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `none` value, `try!` _returns_ either `none` or the `(err ...)` value from the current function and exits the current control-flow.
 #### ejemplo:
@@ -929,6 +943,7 @@ The `try!` function attempts to 'unpack' the first argument: if the argument is 
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (is-none (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns false
+(is-none (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns true names-map { name: \"blockstack\" }))) ;; Returns false
 (is-none (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns true
 ```
 
@@ -955,8 +970,10 @@ The `try!` function attempts to 'unpack' the first argument: if the argument is 
 
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
+(is-some (get id (map-get? (define-map names-map { name: (string-ascii 12) } { id: int })
+(map-set names-map { name: \"blockstack\" } { id: 1337 })
 (is-some (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns true
-(is-some (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns false
+(is-some (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns false names-map { name: \"non-existant\" }))) ;; Returns false
 ```
 
 ### filter
@@ -991,9 +1008,9 @@ The `filter` function applies the input function `func` to each element of the i
 ### nft-get-owner?
 #### input: `AssetName, A`
 #### output: `(optional principal)`
-#### signature: `(nft-get-owner? asset-class asset-identifier)`
+#### signature: `(nft-get-owner? The asset must have been defined using <code>define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
 #### descripción:
-`nft-get-owner?` returns the owner of an asset, identified by `asset-identifier`, or `none` if the asset does not exist. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
+`nft-burn?` is used to burn an asset and remove that asset's owner from the `recipient` principal. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
 #### ejemplo:
 ```clarity
 (define-non-fungible-token stackaroo (string-ascii 40))
@@ -1369,5 +1386,6 @@ Like other kinds of definition statements, `impl-trait` may only be used at the 
 (define-public (get-balance (account principal))
   (ok u0))
 (define-public (transfer? (from principal) (to principal) (amount uint))
+  (ok u0)) (from principal) (to principal) (amount uint))
   (ok u0))
 ```
