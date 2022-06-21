@@ -149,7 +149,7 @@ Make sure are [running a node](running-mainnet-node) and [running bitcoind local
 
 To setup the miner, first we need to generate a keychain. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining.
 
-To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command.
+To get a keychain, the simplest way is to use the `stacks-cli`. To get a keychain, the simplest way is to use the `stacks-cli`.
 
 Generate a keychain:
 
