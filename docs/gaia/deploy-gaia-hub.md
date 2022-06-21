@@ -13,7 +13,3 @@ Regardless of what server the Gaia Hub runs on, the storage it uses can currentl
 - Amazon S3
 - Azure Blob Storage
 - Google Cloud
-
-:::tip
-Support for IPFS is under development.
-:::
