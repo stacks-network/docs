@@ -23,7 +23,7 @@ Below is a list of public and read-only functions as well as error codes that ca
 #### Output: `(response bool int)`
 #### Signature: `(name-import namespace name beneficiary zonefile-hash)`
 #### Description:
-Imports name to a revealed namespace. Imports name to a revealed namespace. Each imported name is given both an owner and some off-chain state.
+Imports name to a revealed namespace. Imports name to a revealed namespace. Each imported name is given both an owner and some off-chain state. Imports name to a revealed namespace. Each imported name is given both an owner and some off-chain state.
 
 ### name-preorder
 
@@ -31,7 +31,7 @@ Imports name to a revealed namespace. Imports name to a revealed namespace. Each
 #### Output: `(response uint int)`
 #### Signature: `(name-preorder hashed-salted-fqn stx-to-burn)`
 #### Description:
-Preorders a name by telling all BNS nodes the salted hash of the BNS name. It pays the registration fee to the namespace owner's designated address. It pays the registration fee to the namespace owner's designated address.
+Preorders a name by telling all BNS nodes the salted hash of the BNS name. It pays the registration fee to the namespace owner's designated address. It pays the registration fee to the namespace owner's designated address. It pays the registration fee to the namespace owner's designated address.
 
 ### name-register
 
@@ -47,9 +47,9 @@ Reveals the salt and the name to all BNS nodes, and assigns the name an initial 
 #### Output: `(response bool int)`
 #### Signature: `(name-renewal namespace name stx-to-burn new-owner zonefile-hash)`
 #### Description:
-Depending in the namespace rules, a name can expire. For example, names in the .id namespace expire after 2 years. You need to send a name renewal every so often to keep your name. For example, names in the .id namespace expire after 2 years. You need to send a name renewal every so often to keep your name.
+Depending in the namespace rules, a name can expire. For example, names in the .id namespace expire after 2 years. You need to send a name renewal every so often to keep your name. For example, names in the .id namespace expire after 2 years. You need to send a name renewal every so often to keep your name. For example, names in the .id namespace expire after 2 years. You need to send a name renewal every so often to keep your name.
 
-You will pay the registration cost of your name to the namespace's designated burn address when you renew it. When a name expires, it enters a \"grace period\". The period is set to 5000 blocks (a month) but can be configured for each namespace. When a name expires, it enters a \"grace period\". The period is set to 5000 blocks (a month) but can be configured for each namespace.
+You will pay the registration cost of your name to the namespace's designated burn address when you renew it. When a name expires, it enters a \"grace period\". The period is set to 5000 blocks (a month) but can be configured for each namespace. When a name expires, it enters a \"grace period\". The period is set to 5000 blocks (a month) but can be configured for each namespace. When a name expires, it enters a \"grace period\". The period is set to 5000 blocks (a month) but can be configured for each namespace.
 
 It will stop resolving in the grace period, and all of the above operations will cease to be honored by the BNS consensus rules. You may, however, send a NAME_RENEWAL during this grace period to preserve your name. After the grace period, everybody can register that name again. If your name is in a namespace where names do not expire, then you never need to use this transaction.
 ### name-revoke
@@ -58,7 +58,7 @@ It will stop resolving in the grace period, and all of the above operations will
 #### Output: `(response bool int)`
 #### Signature: `(name-revoke namespace name)`
 #### Description:
-Makes a name unresolvable. Makes a name unresolvable. The BNS consensus rules stipulate that once a name is revoked, no one can change its public key hash or its zone file hash.  The name's zone file hash is set to null to prevent it from resolving. You should only do this if your private key is compromised, or if you want to render your name unusable for whatever reason.  The name's zone file hash is set to null to prevent it from resolving. You should only do this if your private key is compromised, or if you want to render your name unusable for whatever reason.
+Makes a name unresolvable. Makes a name unresolvable. Makes a name unresolvable. The BNS consensus rules stipulate that once a name is revoked, no one can change its public key hash or its zone file hash.  The name's zone file hash is set to null to prevent it from resolving. You should only do this if your private key is compromised, or if you want to render your name unusable for whatever reason.  The name's zone file hash is set to null to prevent it from resolving. You should only do this if your private key is compromised, or if you want to render your name unusable for whatever reason.  The name's zone file hash is set to null to prevent it from resolving. You should only do this if your private key is compromised, or if you want to render your name unusable for whatever reason.
 
 ### name-transfer
 
@@ -66,12 +66,12 @@ Makes a name unresolvable. Makes a name unresolvable. The BNS consensus rules st
 #### Output: `(response bool int)`
 #### Signature: `(name-transfer namespace name new-owner zonefile-hash)`
 #### Description:
-Changes the name's public key hash. Changes the name's public key hash. You would send a name transfer transaction if you wanted to:
+Changes the name's public key hash. Changes the name's public key hash. You would send a name transfer transaction if you wanted to: Changes the name's public key hash. You would send a name transfer transaction if you wanted to:
 * Change your private key
 * Send the name to someone else or
 * Update your zone file
 
-When transferring a name, you have the option to also clear the name's zone file hash (i.e. set it to null). This is useful for when you send the name to someone else, so the recipient's name does not resolve to your zone file. This is useful for when you send the name to someone else, so the recipient's name does not resolve to your zone file.
+When transferring a name, you have the option to also clear the name's zone file hash (i.e. set it to null). This is useful for when you send the name to someone else, so the recipient's name does not resolve to your zone file. This is useful for when you send the name to someone else, so the recipient's name does not resolve to your zone file. This is useful for when you send the name to someone else, so the recipient's name does not resolve to your zone file.
 
 ### name-update
 
@@ -79,7 +79,7 @@ When transferring a name, you have the option to also clear the name's zone file
 #### Output: `(response bool int)`
 #### Signature: `(name-update namespace name zonefile-hash)`
 #### Description:
-Changes the name's zone file hash. Changes the name's zone file hash. You would send a name update transaction if you wanted to change the name's zone file contents. For example, you would do this if you want to deploy your own Gaia hub and want other people to read from it. For example, you would do this if you want to deploy your own Gaia hub and want other people to read from it.
+Changes the name's zone file hash. Changes the name's zone file hash. You would send a name update transaction if you wanted to change the name's zone file contents. For example, you would do this if you want to deploy your own Gaia hub and want other people to read from it. For example, you would do this if you want to deploy your own Gaia hub and want other people to read from it. Changes the name's zone file hash. You would send a name update transaction if you wanted to change the name's zone file contents. For example, you would do this if you want to deploy your own Gaia hub and want other people to read from it. For example, you would do this if you want to deploy your own Gaia hub and want other people to read from it.
 
 ### namespace-preorder
 
@@ -87,7 +87,7 @@ Changes the name's zone file hash. Changes the name's zone file hash. You would 
 #### Output: `(response uint int)`
 #### Signature: `(namespace-preorder hashed-salted-namespace stx-to-burn)`
 #### Description:
-Registers the salted hash of the namespace with BNS nodes, and burns the requisite amount of cryptocurrency. Additionally, this step proves to the BNS nodes that user has honored the BNS consensus rules by including a recent consensus hash in the transaction. Returns pre-order's expiration date (in blocks). Additionally, this step proves to the BNS nodes that user has honored the BNS consensus rules by including a recent consensus hash in the transaction. Returns pre-order's expiration date (in blocks).
+Registers the salted hash of the namespace with BNS nodes, and burns the requisite amount of cryptocurrency. Additionally, this step proves to the BNS nodes that user has honored the BNS consensus rules by including a recent consensus hash in the transaction. Returns pre-order's expiration date (in blocks). Additionally, this step proves to the BNS nodes that user has honored the BNS consensus rules by including a recent consensus hash in the transaction. Returns pre-order's expiration date (in blocks). Additionally, this step proves to the BNS nodes that user has honored the BNS consensus rules by including a recent consensus hash in the transaction. Returns pre-order's expiration date (in blocks).
 
 ### namespace-ready
 
@@ -95,7 +95,7 @@ Registers the salted hash of the namespace with BNS nodes, and burns the requisi
 #### Output: `(response bool int)`
 #### Signature: `(namespace-ready namespace)`
 #### Description:
-Launches the namespace and makes it available to the public. Launches the namespace and makes it available to the public. Once a namespace is launched, anyone can register a name in it if they pay the appropriate amount of cryptocurrency.
+Launches the namespace and makes it available to the public. Launches the namespace and makes it available to the public. Launches the namespace and makes it available to the public. Once a namespace is launched, anyone can register a name in it if they pay the appropriate amount of cryptocurrency.
 
 ### namespace-reveal
 
@@ -103,11 +103,11 @@ Launches the namespace and makes it available to the public. Launches the namesp
 #### Output: `(response bool int)`
 #### Signature: `(namespace-reveal namespace namespace-salt p-func-base p-func-coeff p-func-b1 p-func-b2 p-func-b3 p-func-b4 p-func-b5 p-func-b6 p-func-b7 p-func-b8 p-func-b9 p-func-b10 p-func-b11 p-func-b12 p-func-b13 p-func-b14 p-func-b15 p-func-b16 p-func-non-alpha-discount p-func-no-vowel-discount lifetime namespace-import)`
 #### Description:
-Reveals the salt and the namespace ID (after a namespace preorder). Reveals the salt and the namespace ID (after a namespace preorder). It reveals how long names last in this namespace before they expire or must be renewed, and it sets a price function for the namespace that determines how cheap or expensive names its will be.All of the parameters prefixed by `p` make up the `price function`. These parameters govern the pricing and lifetime of names in the namespace. These parameters govern the pricing and lifetime of names in the namespace.
+Reveals the salt and the namespace ID (after a namespace preorder). Reveals the salt and the namespace ID (after a namespace preorder). Reveals the salt and the namespace ID (after a namespace preorder). It reveals how long names last in this namespace before they expire or must be renewed, and it sets a price function for the namespace that determines how cheap or expensive names its will be.All of the parameters prefixed by `p` make up the `price function`. These parameters govern the pricing and lifetime of names in the namespace. These parameters govern the pricing and lifetime of names in the namespace. These parameters govern the pricing and lifetime of names in the namespace.
 
 The rules for a namespace are as follows:
 
-* a name can fall into one of 16 buckets, measured by length. a name can fall into one of 16 buckets, measured by length. Bucket 16 incorporates all names at least 16 characters long.
+* a name can fall into one of 16 buckets, measured by length. a name can fall into one of 16 buckets, measured by length. Bucket 16 incorporates all names at least 16 characters long. a name can fall into one of 16 buckets, measured by length. Bucket 16 incorporates all names at least 16 characters long.
 
 * the pricing structure applies a multiplicative penalty for having numeric characters, or punctuation characters.
 
@@ -149,7 +149,7 @@ Returns true if the provided namespace is available.
 #### Output: `(response bool int)`
 #### Signature: `(can-receive-name owner)`
 #### Description:
-Returns true if the provided name can be received. Returns true if the provided name can be received. That is, if it is not curretly owned, a previous lease is expired, and the name wasn't revoked.
+Returns true if the provided name can be received. Returns true if the provided name can be received. That is, if it is not curretly owned, a previous lease is expired, and the name wasn't revoked. Returns true if the provided name can be received. That is, if it is not curretly owned, a previous lease is expired, and the name wasn't revoked.
 
 ### get-name-price
 
@@ -197,7 +197,7 @@ Get name registration details.
 #### Output: `(response (tuple (name (buff 48)) (namespace (buff 20))) (tuple (code int) (name (optional (tuple (name (buff 48)) (namespace (buff 20)))))))`
 #### Signature: `(resolve-principal owner)`
 #### Description:
-Returns the registered name that a principal owns if there is one. A principal can only own one name at a time. A principal can only own one name at a time.
+Returns the registered name that a principal owns if there is one. A principal can only own one name at a time. Returns the registered name that a principal owns if there is one. A principal can only own one name at a time. A principal can only own one name at a time.
 
 ## Error codes
 

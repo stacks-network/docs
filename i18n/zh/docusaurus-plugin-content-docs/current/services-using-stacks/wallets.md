@@ -8,7 +8,7 @@ A list of hardware and software wallets for Stacks
 
 :::tip Are we missing one?
 Please edit this page to add any relevant new site that we are missing.
-:::
+::: Please edit this page to add any relevant new site that we are missing. :::
 
 ## Blockchain.com
 

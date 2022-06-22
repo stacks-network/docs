@@ -15,7 +15,7 @@ Los usuarios que se registren en su aplicación pueden autenticarse posteriormen
 
 El flujo de autenticación con Stacks es similar al típico flujo cliente-servidor utilizado por los servicios de registro centralizado (por ejemplo, OAuth). Sin embargo, con Stacks el flujo de autentificación ocurre enteramente del lado del cliente.
 
-Una aplicación y autenticador, como [la billetera de Stacks](https://www. hiro. so/wallet/install-web), se comunican durante el flujo de autenticación pasando dos tokens de ida y vuelta. La aplicación solicitante envía al autenticador un token `authRequest`. Una vez que un usuario aprueba la autenticación, el autenticador responde a la aplicación con un token `authResponse`.
+La aplicación almacena la clave de tránsito efímera durante la generación de solicitudes. La parte pública de la clave de tránsito se pasa en el token `authRequest`. El autenticador utiliza la porción pública de la clave para cifrar una _clave privada de la aplicación_ que se devuelve a través del `authResponse`.
 
 Estos tokens están basados en [un estándar JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519) con soporte adicional para la curva `secp256k1` utilizada por Bitcoin y muchas otras criptomonedas. Se pasan a través de URL query strings.
 
@@ -25,7 +25,7 @@ Cuando un usuario elige autenticar una aplicación, envía el token `authRequest
 
 Cuando el autenticador recibe la solicitud, genera un token `authResponse` para la aplicación usando una _clave de tránsito efímera_. La clave de tránsito efímera solo se utiliza para la instancia particular de la aplicación, en este caso, para firmar el `authRequest`.
 
-La aplicación almacena la clave de tránsito efímera durante la generación de solicitudes. La parte pública de la clave de tránsito se pasa en el token `authRequest`. El autenticador utiliza la porción pública de la clave para cifrar una _clave privada de la aplicación_ que se devuelve a través del `authResponse`.
+La aplicación almacena la clave de tránsito efímera durante la generación de solicitudes. La aplicación solicitante envía al autenticador un token `authRequest`. El autenticador utiliza la porción pública de la clave para cifrar una _clave privada de la aplicación_ que se devuelve a través del `authResponse`.
 
 El autenticador genera la clave privada de la aplicación desde _la clave privada de la dirección de identidad_ del usuario y el dominio de la aplicación. La clave privada de la aplicación cumple tres funciones:
 
