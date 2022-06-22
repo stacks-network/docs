@@ -88,9 +88,29 @@ Update the following properties:
 ```toml
 [node]
 ...
+[node]
+...
 # Enter your private key here
 seed = "replace-with-your-private-key"
 local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+[node]
+...
+# Enter your private key here
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+# To mine on mainnet, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
+peer_host = "127.0.0.1"
+username = "<USERNAME>"
+password = "<PASSWORD>"
 ...
 
 [burnchain]
@@ -158,7 +178,7 @@ Make sure are [running a node](running-mainnet-node) and [running bitcoind local
 
 To setup the miner, first we need to generate a keychain. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining.
 
-To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command.
+To get a keychain, the simplest way is to use the `stacks-cli`. To get a keychain, the simplest way is to use the `stacks-cli`.
 
 Generate a keychain:
 
@@ -201,9 +221,29 @@ Update the following properties:
 ```toml
 [node]
 ...
+[node]
+...
 # Enter your private key here
 seed = "replace-with-your-private-key"
 local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+[node]
+...
+# Enter your private key here
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+# To mine on mainnet, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
+peer_host = "127.0.0.1"
+username = "<USERNAME>"
+password = "<PASSWORD>"
 ...
 
 [burnchain]
@@ -276,9 +316,29 @@ Update the following properties:
 ```toml
 [node]
 ...
+[node]
+...
 # Enter your private key here
 seed = "replace-with-your-private-key"
 local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+[node]
+...
+# Enter your private key here
+seed = "replace-with-your-private-key"
+local_peer_seed = "replace-with-your-private-key"
+...
+
+[burnchain]
+...
+# To mine on mainnet, you need to run bitcoind locally
+# Details can be found in above section, 'Running bitcoind locally'
+peer_host = "127.0.0.1"
+username = "<USERNAME>"
+password = "<PASSWORD>"
 ...
 
 [burnchain]

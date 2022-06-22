@@ -6,8 +6,8 @@ sidebar_position: 2
 
 They are multiple De-Fi sites that operate on the Stacks blockchain.
 
-:::tip Are we missing one?
-Please edit this page to add any relevant new site that we are missing.
+:::tip ¿Falta uno?
+Por favor edita esta página para agregar cualquier sitio web relevante que falte.
 :::
 
 ## Alex

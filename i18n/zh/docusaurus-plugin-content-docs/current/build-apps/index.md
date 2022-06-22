@@ -9,7 +9,7 @@ sidebar_label: Build apps
 
 Apps built with the Stacks blockchain give users control over their digital identities, assets, and data.
 
-Unlike most cloud-based apps, they are "decentralized" since they don't depend on any centralized platform, server, or database to function. Rather, they use the Stacks blockchain to authenticate users and facilitate read and write requests for them without any single point of failure or trust. Rather, they use the Stacks blockchain to authenticate users and facilitate read and write requests for them without any single point of failure or trust. Rather, they use the Stacks blockchain to authenticate users and facilitate read and write requests for them without any single point of failure or trust.
+Unlike most cloud-based apps, they are "decentralized" since they don't depend on any centralized platform, server, or database to function. Rather, they use the Stacks blockchain to authenticate users and facilitate read and write requests for them without any single point of failure or trust. Rather, they use the Stacks blockchain to authenticate users and facilitate read and write requests for them without any single point of failure or trust. Rather, they use the Stacks blockchain to authenticate users and facilitate read and write requests for them without any single point of failure or trust. Rather, they use the Stacks blockchain to authenticate users and facilitate read and write requests for them without any single point of failure or trust.
 
 Stacks provides three main functions for building apps:
 
@@ -22,7 +22,7 @@ Stacks provides three main functions for building apps:
 
 All three of these integrations can be used together to create powerful new user experiences that rival or exceed those of traditional apps—all while protecting your users' digital rights.
 
-While integration is possible for any type of app, most of the resources available here are for web developers experienced with JavaScript. See [Hiro developer docs](https://docs.hiro.so) for more information on the available app development libraries for Stacks. See [Hiro developer docs](https://docs.hiro.so) for more information on the available app development libraries for Stacks. See [Hiro developer docs](https://docs.hiro.so) for more information on the available app development libraries for Stacks.
+While integration is possible for any type of app, most of the resources available here are for web developers experienced with JavaScript. See [Hiro developer docs](https://docs.hiro.so) for more information on the available app development libraries for Stacks. See [Hiro developer docs](https://docs.hiro.so) for more information on the available app development libraries for Stacks. See [Hiro developer docs](https://docs.hiro.so) for more information on the available app development libraries for Stacks. See [Hiro developer docs](https://docs.hiro.so) for more information on the available app development libraries for Stacks.
 
 ## [References](references)
 

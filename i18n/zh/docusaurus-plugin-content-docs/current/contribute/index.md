@@ -11,17 +11,17 @@ You can contribute to the Stacks ecosystem in multiple ways:
 
 ### Documentation
 
-Contribute to the Stacks Docs on this website. Contribute to the Stacks Docs on this website. More info [here](docs).
+Contribute to the Stacks Docs on this website. Contribute to the Stacks Docs on this website. More info [here](docs). Contribute to the Stacks Docs on this website. More info [here](docs).
 
 ### Translations
 
-Help us reach more people with translations. Help with translations. More details [here](translations).
+Help us reach more people with translations. Help with translations. More details [here](translations). Help with translations. More details [here](translations).
 
 <!-- markdown-link-check-enable-->
 
 ### Articles
 
-Write an article or a blog post about Stacks. A good place to start is [Stacks Forum](https://forum.stacks.org). A good place to start is [Stacks Forum](https://forum.stacks.org).
+Write an article or a blog post about Stacks. A good place to start is [Stacks Forum](https://forum.stacks.org). Write an article or a blog post about Stacks. A good place to start is [Stacks Forum](https://forum.stacks.org). A good place to start is [Stacks Forum](https://forum.stacks.org).
 
 ### Github
 

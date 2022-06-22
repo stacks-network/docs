@@ -32,7 +32,9 @@ Set the driver you wish to use in your [config.json](https://github.com/stacks-n
 
 These driver may require you to provide additional credentials for performing writes to the backends. See `config.sample.json` for fields for those credentials. In some cases, the driver can use a system configured credential for the backend (e.g., if you are logged into your AWS CLI account, and run the hub from that environment, it won't need to read credentials from your `config.json`).
 
-_Note:_ The disk driver requires a \*nix like filesystem interface, and will not work correctly when trying to run in a Windows environment.
+:::caution
+The disk driver requires a \*nix like filesystem interface, and will not work correctly when trying to run in a Windows environment.
+:::
 
 ## Note on SSL
 

@@ -60,7 +60,8 @@ const config = {
         title: 'Stacks Documentation',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/favicon-dark.svg',
+          //src: 'img/favicon-dark.svg',
+          src: 'img/stacks_with_interior_white_exterior_transparent.png',
         },
         items: [
           {

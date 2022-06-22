@@ -12,11 +12,12 @@ This procedure demonstrates how to run a local testnet node using Docker images.
 :::caution
 This procedure focuses on Unix-like operating systems (Linux and MacOS). This procedure has not been tested on Windows.
 ::: This procedure has not been tested on Windows.
+::: This procedure has not been tested on Windows.
 :::
 
 ## Prerequisites
 
-Running a node has no specialized hardware requirements. Running a node has no specialized hardware requirements. Users have been successful in running nodes on Raspberry Pi boards and other system-on-chip architectures. In order to complete this procedure, you must have the following software installed on the node host machine: In order to complete this procedure, you must have the following software installed on the node host machine:
+Running a node has no specialized hardware requirements. Running a node has no specialized hardware requirements. Users have been successful in running nodes on Raspberry Pi boards and other system-on-chip architectures. In order to complete this procedure, you must have the following software installed on the node host machine: In order to complete this procedure, you must have the following software installed on the node host machine: Running a node has no specialized hardware requirements. Users have been successful in running nodes on Raspberry Pi boards and other system-on-chip architectures. In order to complete this procedure, you must have the following software installed on the node host machine: In order to complete this procedure, you must have the following software installed on the node host machine:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [curl](https://curl.se/download.html)
@@ -40,11 +41,11 @@ Egress:
 - `18333`
 - `20443-20444`
 
-These egress ports are for syncing [`stacks-blockchain`][] and Bitcoin headers. If they're not open, the sync will fail. If they're not open, the sync will fail.
+These egress ports are for syncing [`stacks-blockchain`][] and Bitcoin headers. If they're not open, the sync will fail. If they're not open, the sync will fail. If they're not open, the sync will fail.
 
 ## Step 1: initial setup
 
-In order to run the testnet node, you must download the Docker images and create a directory structure to hold the persistent data from the services. Download and configure the Docker images with the following commands: Download and configure the Docker images with the following commands:
+In order to run the testnet node, you must download the Docker images and create a directory structure to hold the persistent data from the services. Download and configure the Docker images with the following commands: Download and configure the Docker images with the following commands: Download and configure the Docker images with the following commands:
 
 ```sh
 docker pull blockstack/stacks-blockchain
