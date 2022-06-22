@@ -215,30 +215,30 @@ Dónde:
 - `{address}` es un hash de clave pública on-chain (por ejemplo una dirección de Bitcoin).
 - `{index}` se refiere al nombre `nth` esta dirección creada.
 
-Por ejemplo, el DID para `personal.id` es `did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0`, porque el nombre `personal. d` fue el primer nombre creado por `1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV`.
+Por ejemplo, el DID para `personal.id` es `did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0`, porque el nombre `personal.id` fue el primer nombre creado por `1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV`.
 
-Otro ejemplo, el DID para `jude.id` es `did:stack:v0:16EMaNw3pkn3v6f2BgnSs53zAKH4Q8YJg-1`. Here, the address `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` had created one earlier name in history prior to this one (which happens to be `abcdefgh123456.id`).
+Otro ejemplo, el DID para `jude.id` es `did:stack:v0:16EMaNw3pkn3v6f2BgnSs53zAKH4Q8YJg-1`. Aquí, la dirección `16EMaNw3pkn3v6f2BgnSs53zAKH4Q8YJg` había creado un nombre anterior históricamente anterior a esta (que parece ser `abcdefgh123456.id`).
 
-The purpose of a DID is to provide an eternal identifier for a public key. The public key may change, but the DID will not.
+El propósito de un DID es proporcionar un identificador eterno para una clave pública. La clave pública puede cambiar, pero el DID no.
 
-Stacks Blockchain implements a DID method of its own in order to be compatible with other systems that use DIDs for public key resolution. In order for a DID to be resolvable, all of the following must be true for a name:
+La blockchain de Stacks implementa un método DID propio para ser compatible con otros sistemas que usan DIDs para la resolución de clave pública. In order for a DID to be resolvable, all of the following must be true for a name:
 
 - El nombre debe existir
-- The name's zone file hash must be the hash of a well-formed DNS zone file
-- The DNS zone file must be present in the Stacks node's data.
-- The DNS zone file must contain a `URI` resource record that points to a signed JSON Web Token
-- The public key that signed the JSON Web Token (and is included with it) must hash to the address that owns the name
+- El hash del archivo de zona del nombre debe ser el hash de un archivo de zona DNS bien formado
+- El archivo de zona DNS debe estar presente en los datos del nodo de Stacks.
+- El archivo de zona DNS debe contener un registro de recursos de `URI` que apunta a un JSON Web Token firmado
+- La clave pública que firmó el JSON Web Token (y está incluida con él) debe hacer hash a la dirección que posee el nombre
 
-Not all names will have DIDs that resolve to public keys. However, names created by standard tooling will have DIDs that do.
+No todos los nombres tendrán DIDs que resuelvan claves públicas. Sin embargo, los nombres creados por herramientas estándar sí que tendrán DIDs.
 
-A RESTful API is under development.
+Una API RESTful está en desarrollo.
 
-## DID Encoding for Subdomains
+## Codificación DID para subdominios
 
-Every name and subdomain in BNS has a DID. The encoding is slightly different for subdomains, so the software can determine which code-path to take.
+Cada nombre y subdominio en BNS tiene un DID. La codificación es ligeramente diferente para los subdominios, por lo que el software puede determinar qué code-path tomar.
 
-- For on-chain BNS names, the `{address}` is the same as the Bitcoin address that owns the name. Currently, both version byte 0 and version byte 5 addresses are supported (that is, addresses starting with `1` or `3`, meaning `p2pkh` and `p2sh` addresses).
+- Para nombres BNS on-chain, la `{address}` es la misma que la dirección Bitcoin que posee el nombre. Actualmente, las dirección tanto del byte de la versión 0 como del byte de la versión 5 son soportadas (es decir, direcciones que empiezan con `1` o `3`, significando `p2pkh` y `p2sh` direcciones).
 
-- For off-chain BNS subdomains, the `{address}` has version byte 63 for subdomains owned by a single private key, and version byte 50 for subdomains owned by a m-of-n set of private keys. That is, subdomain DID addresses start with `S` or `M`, respectively.
+- Para subdominios BNS off-chain, el `{address}` tiene la versión del byte 63 para subdominios propiedad de una sola clave privada, y la versión 50 del byte para subdominios propiedad de un conjunto m-of-n de claves privadas. Es decir, las direcciones DID de subdominio comienzan con `S` o `M`, respectivamente.
 
-The `{index}` field for a subdomain's DID is distinct from the `{index}` field for a BNS name's DID, even if the same created both names and subdomains. For example, the name `abcdefgh123456.id` has the DID `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-0`, because it was the first name created by `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg`. However, `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` _also_ created `jude.statism.id` as its first subdomain name. The DID for `jude.statism.id` is `did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0`. Note that the address `SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i` encodes the same public key hash as the address `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` (the only difference between these two strings is that the first is base58check-encoded with version byte 0, and the second is encoded with version byte 63).
+El campo `{index}` para el DID de un subdominio es distinto del campo `{index}` para el DID de un nombre BNS, incluso si el mismo creó nombres y subdominios. Por ejemplo, el nombre `abcdefgh123456. d` tiene el DID `did:stack:v0:16EMaNw3pkn3v6f2BgnSs53zAKH4Q8YJg-0`, porque era el primer nombre creado por `16EMaNw3pkn3v6f2BgnSs53zAKH4Q8YJg`. Sin embargo, `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` _también_ creó `jude.statism.id` como su primer nombre de subdominio. El DID para `jude.statism.id` es `did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0`. Tenga en cuenta que la dirección `SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i`codifica el mismo hash de clave pública que la dirección `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` (la única diferencia entre estos dos strings es que la primera está codificada en base58checkcon la versión byte 0,  y el segundo está codificado con la versión byte 63).
