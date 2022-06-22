@@ -186,13 +186,13 @@ A diferencia de un nombre on-chain, un propietario de subdominio necesita la ayu
 - Una transacción de creación de subdominios solo puede ser procesada por el propietario del nombre on-chain que comparte su sufijo. Por ejemplo, solo el dueño de `res_publica.id` puede transmitir transacciones de creación de subdominios para nombres de subdominio que terminan en `.res_publica.id`.
 - Una transacción de transferencia de subdominio sólo puede ser emitida por el propietario del nombre on-chain que la creó. Por ejemplo, el dueño de `cicero.res_publica.id` necesita al dueño de `res_publica.id` para transmitir una transacción de transferencia de subdominio para cambiar la clave pública `cicero.res_publica.id`.
 - Para enviar una creación de subdominio o transferencia de subdominio, todos los archivos de zona del propietario del nombre on-chain deben estar presentes en la red de Atlas. Esto permite al nodo BNS demostrar la _ausencia_ de cualquier operación conflictiva de creación y operaciones de transferencia de subdominios al procesar nuevos archivos de zona.
-- A subdomain update transaction can be broadcast by _any_ on-chain name owner, but the subdomain owner needs to find one who will cooperate. For example, the owner of `verified.podcast` can broadcast a subdomain-update transaction created by the owner of `cicero.res_publica.id`.
+- A subdomain update transaction can be broadcast by _any_ on-chain name owner, but the subdomain owner needs to find one who will cooperate. Por ejemplo, el dueño de `verified.podcast` puede transmitir una transacción de actualización de subdominio creada por el dueño de `cicero.res_publica.id`.
 
-That said, to create a subdomain, the subdomain owner generates a subdomain-creation operation for their desired name and gives it to the on-chain name owner.
+Dicho esto, para crear un subdominio, el dueño del subdominio genera una operación de creación de subdominios para el nombre deseado y lo otorhga al propietario del nombre on-chain.
 
-Once created, a subdomain owner can use any on-chain name owner to broadcast a subdomain-update operation. To do so, they generate and sign the requisite subdomain operation and give it to an on-chain name owner, who then packages it with other subdomain operations into a DNS zone file and broadcasts it to the network.
+Una vez creado, un propietario de subdominio puede usar cualquier propietario de nombre on-chain para transmitir una operación de actualización de subdominios. Para hacerlo, generan y firman la operación de subdominio solicitada y se la dan a un propietario de nombre on-chain, quien luego lo empaqueta con otras operaciones de subdominio en un archivo de zona DNS y lo transmite a la red.
 
-If the subdomain owner wants to change the address of their subdomain, they need to sign a subdomain-transfer operation and give it to the on-chain name owner who created the subdomain. They then package it into a zone file and broadcast it.
+Si el propietario del subdominio quiere cambiar la dirección de su subdominio, necesita firmar una operación de transferencia de subdominio y dársela al propietario del nombre on-chain que creó el subdominio. Luego lo empaquetan en un archivo de zona y lo transmiten.
 
 ### Registros de subdominio
 
@@ -202,9 +202,9 @@ We supply a reference implementation of a [BNS Subdomain Registrar](https://gith
 
 # Estándares BNS y DID
 
-BNS names are compliant with the emerging [Decentralized Identity Foundation](http://identity.foundation) protocol specification for decentralized identifiers (DIDs).
+Los nombres de BNS son compatibles con el emergente protocolo de especificación para identificadores descentralizados (DIDs) [Fundación de la Identidad Descentralizada](http://identity. foundation).
 
-Each name in BNS has an associated DID. The DID format for BNS is:
+Cada nombre en BNS tiene un DID asociado. El formato DID para BNS es:
 
 ```bash
     did:stack:v0:{address}-{index}
@@ -212,12 +212,12 @@ Each name in BNS has an associated DID. The DID format for BNS is:
 
 Dónde:
 
-- `{address}` is an on-chain public key hash (for example a Bitcoin address).
-- `{index}` refers to the `nth` name this address created.
+- `{address}` es un hash de clave pública on-chain (por ejemplo una dirección de Bitcoin).
+- `{index}` se refiere al nombre `nth` esta dirección creada.
 
-For example, the DID for `personal.id` is `did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0`, because the name `personal.id` was the first-ever name created by `1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV`.
+Por ejemplo, el DID para `personal.id` es `did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0`, porque el nombre `personal. d` fue el primer nombre creado por `1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV`.
 
-As another example, the DID for `jude.id` is `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-1`. Here, the address `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` had created one earlier name in history prior to this one (which happens to be `abcdefgh123456.id`).
+Otro ejemplo, el DID para `jude.id` es `did:stack:v0:16EMaNw3pkn3v6f2BgnSs53zAKH4Q8YJg-1`. Here, the address `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` had created one earlier name in history prior to this one (which happens to be `abcdefgh123456.id`).
 
 The purpose of a DID is to provide an eternal identifier for a public key. The public key may change, but the DID will not.
 
