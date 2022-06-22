@@ -8,7 +8,7 @@ List of sites on alphabetical order added by the community.
 
 :::tip Are we missing one?
 Please edit this page to add any relevant new site that we are missing.
-:::
+::: Please edit this page to add any relevant new site that we are missing. :::
 
 ## Citycoins
 

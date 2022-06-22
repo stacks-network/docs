@@ -18,8 +18,7 @@ To get STX tokens from within the Explorer Sandbox, navigate to the "Faucet" tab
 
 You can also try out [Stacking](stacking) by clicking on `I want to stack`.
 
-:::note
-The Explorer Sandbox requires you to login with a Stacks wallet
+:::note The Explorer Sandbox requires you to login with a Stacks wallet
 :::
 
 ### Testnet API

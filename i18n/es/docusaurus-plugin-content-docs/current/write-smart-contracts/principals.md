@@ -15,9 +15,10 @@ Assets in the smart contracting language and blockchain are "owned" by objects o
 A Clarity contract can use a globally defined `tx-sender` variable to obtain the current principal. The following example defines a transaction type that transfers `amount` microSTX from the sender to a recipient if amount is a multiple of 10, otherwise returning a 400 error code.
 
 ```clarity
-(define-public (transfer-to-recipient! (recipient principal) (amount uint))
+(define-public (transfer-to-recipient! (define-public (transfer-to-recipient! (recipient principal) (amount uint))
   (if (is-eq (mod amount 10) 0)
       (stx-transfer? amount tx-sender recipient)
+      (err u400))) amount tx-sender recipient)
       (err u400)))
 ```
 
@@ -51,7 +52,7 @@ For convenience, smart contracts may write a contract's identifier in the form `
 But, in the contract source code, if the developer wishes to call a function from `contract-A` in `contract-B`, they can write
 
 ```clarity
-(contract-call? .contract-A public-function-foo)
+(contract-call? (contract-call? .contract-A public-function-foo)
 ```
 
 This allows the smart contract developer to modularize their applications across multiple smart contracts _without_ knowing the publishing key a priori.
@@ -72,6 +73,9 @@ For example, a smart contract that implements something like a "token faucet" co
 (define-public (claim-from-faucet)
     (let ((requester tx-sender)) ;; set a local variable requester = tx-sender
         (asserts! (is-none (map-get? claimed-before {sender: requester})) (err err-already-claimed))
+        (unwrap! (as-contract (stx-transfer? stx-amount tx-sender requester)) (err err-faucet-empty))
+        (map-set claimed-before {sender: requester} {claimed: true})
+        (ok stx-amount))) (is-none (map-get? claimed-before {sender: requester})) (err err-already-claimed))
         (unwrap! (as-contract (stx-transfer? stx-amount tx-sender requester)) (err err-faucet-empty))
         (map-set claimed-before {sender: requester} {claimed: true})
         (ok stx-amount)))
@@ -138,9 +142,22 @@ The second type of check is more restrictive than the first check, and is helpfu
 (define-public (fly-ship (ship uint))
   (let ((pilots (default-to
                    (list)
-                   (get pilots (map-get? allowed-pilots { rocket-ship: ship })))))
-    (if (contains tx-sender pilots)
-        (begin (print "Flew the rocket-ship!")
+                   (get pilots (map-get? (asserts! (is-eq tx-sender contract-caller) (err u1))
+   ;; sender must own the rocket ship
+   (asserts! (is-eq (some tx-sender)
+                  (nft-get-owner? rocket-ship ship)) (err u2))
+   (let ((prev-pilots (default-to
+                         (list)
+                         (get pilots (map-get? allowed-pilots { rocket-ship: ship })))))
+    ;; don't add a pilot already in the list
+    (asserts! (not (contains pilot prev-pilots)) (err u3))
+    ;; append to the list, and check that it is less than
+    ;;  the allowed maximum
+    (match (as-max-len? (append prev-pilots pilot) u10)
+           next-pilots
+             (ok (map-set allowed-pilots {rocket-ship: ship} {pilots: next-pilots}))
+           ;; too many pilots already
+           (err u4)))))
                (ok true))
         (begin (print "Tried to fly without permission!")
                (ok false)))))

@@ -39,7 +39,7 @@ Necesitarás esperar unos segundos para que el droplet se cree. Una vez creado h
 
 ### Paso 6
 
-¡Felicidades! Ahora está ejecutando Stacks Blockchain. Puede hacer clic en `Console` para que una ventana de terminal abra o inicie sesión usando SSH a la IP pública a la que se le ha asignado con el usuario `root`.
+¡Felicidades! ¡Felicidades! Ahora está ejecutando Stacks Blockchain. Puede hacer clic en `Console` para que una ventana de terminal abra o inicie sesión usando SSH a la IP pública a la que se le ha asignado con el usuario `root`.
 
 ![](/img/sh_digitalocean-console-button.png) ![](/img/sh_digitalocean-console.png)
 

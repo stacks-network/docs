@@ -56,6 +56,5 @@ The [SIP-009][] standard is an interface definition that the Stacks ecosystem al
 
 [fungible]: #fungible-tokens
 [non-fungible]: #non-fungible-tokens-nfts
-[SIP-010]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
 [SIP-010]: https://github.com/hstove/sips/blob/feat/sip-10-ft/sips/sip-010/sip-010-fungible-token-standard.md
 [SIP-009]: https://github.com/stacksgov/sips/blob/main/sips/sip-009/sip-009-nft-standard.md

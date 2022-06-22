@@ -165,7 +165,7 @@ The second type of check is more restrictive than the first check, and is helpfu
  (begin
    ;; sender must equal caller: an intermediate contract is
    ;;  not issuing this call.
-   (asserts! (is-eq tx-sender contract-caller) (err u1))
+   (asserts! (asserts! (is-eq tx-sender contract-caller) (err u1))
    ;; sender must own the rocket ship
    (asserts! (is-eq (some tx-sender)
                   (nft-get-owner? rocket-ship ship)) (err u2))
@@ -176,11 +176,7 @@ The second type of check is more restrictive than the first check, and is helpfu
     (asserts! (not (contains pilot prev-pilots)) (err u3))
     ;; append to the list, and check that it is less than
     ;;  the allowed maximum
-    (match (as-max-len? (append prev-pilots pilot) u10)
-           next-pilots
-             (ok (map-set allowed-pilots {rocket-ship: ship} {pilots: next-pilots}))
-           ;; too many pilots already
-           (err u4)))))
+    (match (as-max-len?
 ```
 
 ### Extending functionality: Multi-flyer contract

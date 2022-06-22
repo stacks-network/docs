@@ -21,7 +21,7 @@ La mayor consecuencia para los desarrolladores es que en BNS, el estado del nomb
 
 Nos basamos en nombrar sistemas en la vida cotidiana, y ellos juegan un papel crítico en muchas aplicaciones diferentes. Por ejemplo, cuando buscas un amigo en las redes sociales, está usando el sistema de nomenclatura de la plataforma para asociar su nombre a su perfil. Cuando buscas un sitio web, estás utilizando el Servicio de Nombre de Dominio para asociar el nombre de host a la dirección IP de su host. Cuando revisa una rama de Git, está usando su cliente Git para asociar el nombre de la rama a un commit hash. Cuando buscamos la clave PGP de alguien en un servidor de claves, esta asociando su clave ID a su clave pública.
 
-¿Qué tipo de cosas queremos que sean ciertas sobre los nombres? En BNS, los nombres son únicos globalmente, tienen significado humano y tienen una propiedad sólida. Sin embargo, si observas estos ejemplos, verás que cada uno de ellos solo garantiza _dos_ de estas propiedades. Esto limita lo útiles que pueden ser.
+¿Qué tipo de cosas queremos que sean ciertas sobre los nombres? En BNS, los nombres son únicos globalmente, tienen significado humano y tienen una propiedad sólida. En BNS, los nombres son únicos globalmente, tienen significado humano y tienen una propiedad sólida. Sin embargo, si observas estos ejemplos, verás que cada uno de ellos solo garantiza _dos_ de estas propiedades. Esto limita lo útiles que pueden ser.
 
 - En DNS y redes sociales, los nombres son globalmente únicos y legibles, pero no tienen una propiedad sólida. El operador del sistema tiene la última palabra sobre a qué se asocia cada nombre.
 
@@ -163,6 +163,8 @@ incluye tanto la clave pública como la firma, y la clave pública debe tener un
 
 Las transacciones de creación de subdominio y transferencia de subdominio para
 "cicero.res_publica.id" son emitidas por el propietario de "res_publica.id"
+Las transacciones de creación de subdominio y transferencia de subdominio para
+"cicero.res_publica.id" son emitidas por el propietario de "res_publica.id"
 Sin embargo, cualquier nombre on-chain ("jude.id" en este caso) puede transmitir una actualización de subdominio
 para "cicero.res_publica.id."
 ```
@@ -184,13 +186,13 @@ A diferencia de un nombre on-chain, un propietario de subdominio necesita la ayu
 - Una transacción de creación de subdominios solo puede ser procesada por el propietario del nombre on-chain que comparte su sufijo. Por ejemplo, solo el dueño de `res_publica.id` puede transmitir transacciones de creación de subdominios para nombres de subdominio que terminan en `.res_publica.id`.
 - Una transacción de transferencia de subdominio sólo puede ser emitida por el propietario del nombre on-chain que la creó. Por ejemplo, el dueño de `cicero.res_publica.id` necesita al dueño de `res_publica.id` para transmitir una transacción de transferencia de subdominio para cambiar la clave pública `cicero.res_publica.id`.
 - Para enviar una creación de subdominio o transferencia de subdominio, todos los archivos de zona del propietario del nombre on-chain deben estar presentes en la red de Atlas. Esto permite al nodo BNS demostrar la _ausencia_ de cualquier operación conflictiva de creación y operaciones de transferencia de subdominios al procesar nuevos archivos de zona.
-- A subdomain update transaction can be broadcast by _any_ on-chain name owner, but the subdomain owner needs to find one who will cooperate. For example, the owner of `verified.podcast` can broadcast a subdomain-update transaction created by the owner of `cicero.res_publica.id`.
+- A subdomain update transaction can be broadcast by _any_ on-chain name owner, but the subdomain owner needs to find one who will cooperate. Por ejemplo, el dueño de `verified.podcast` puede transmitir una transacción de actualización de subdominio creada por el dueño de `cicero.res_publica.id`.
 
-That said, to create a subdomain, the subdomain owner generates a subdomain-creation operation for their desired name and gives it to the on-chain name owner.
+Dicho esto, para crear un subdominio, el dueño del subdominio genera una operación de creación de subdominios para el nombre deseado y lo otorhga al propietario del nombre on-chain.
 
-Once created, a subdomain owner can use any on-chain name owner to broadcast a subdomain-update operation. To do so, they generate and sign the requisite subdomain operation and give it to an on-chain name owner, who then packages it with other subdomain operations into a DNS zone file and broadcasts it to the network.
+Una vez creado, un propietario de subdominio puede usar cualquier propietario de nombre on-chain para transmitir una operación de actualización de subdominios. Para hacerlo, generan y firman la operación de subdominio solicitada y se la dan a un propietario de nombre on-chain, quien luego lo empaqueta con otras operaciones de subdominio en un archivo de zona DNS y lo transmite a la red.
 
-If the subdomain owner wants to change the address of their subdomain, they need to sign a subdomain-transfer operation and give it to the on-chain name owner who created the subdomain. They then package it into a zone file and broadcast it.
+Si el propietario del subdominio quiere cambiar la dirección de su subdominio, necesita firmar una operación de transferencia de subdominio y dársela al propietario del nombre on-chain que creó el subdominio. Luego lo empaquetan en un archivo de zona y lo transmiten.
 
 ### Registros de subdominio
 
@@ -200,9 +202,9 @@ We supply a reference implementation of a [BNS Subdomain Registrar](https://gith
 
 # Estándares BNS y DID
 
-BNS names are compliant with the emerging [Decentralized Identity Foundation](http://identity.foundation) protocol specification for decentralized identifiers (DIDs).
+Los nombres de BNS son compatibles con el emergente protocolo de especificación para identificadores descentralizados (DIDs) [Fundación de la Identidad Descentralizada](http://identity. foundation).
 
-Each name in BNS has an associated DID. The DID format for BNS is:
+Cada nombre en BNS tiene un DID asociado. El formato DID para BNS es:
 
 ```bash
     did:stack:v0:{address}-{index}
@@ -210,33 +212,33 @@ Each name in BNS has an associated DID. The DID format for BNS is:
 
 Dónde:
 
-- `{address}` is an on-chain public key hash (for example a Bitcoin address).
-- `{index}` refers to the `nth` name this address created.
+- `{address}` es un hash de clave pública on-chain (por ejemplo una dirección de Bitcoin).
+- `{index}` se refiere al nombre `nth` esta dirección creada.
 
-For example, the DID for `personal.id` is `did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0`, because the name `personal.id` was the first-ever name created by `1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV`.
+Por ejemplo, el DID para `personal.id` es `did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0`, porque el nombre `personal.id` fue el primer nombre creado por `1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV`.
 
-As another example, the DID for `jude.id` is `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-1`. Here, the address `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` had created one earlier name in history prior to this one (which happens to be `abcdefgh123456.id`).
+Otro ejemplo, el DID para `jude.id` es `did:stack:v0:16EMaNw3pkn3v6f2BgnSs53zAKH4Q8YJg-1`. Aquí, la dirección `16EMaNw3pkn3v6f2BgnSs53zAKH4Q8YJg` había creado un nombre anterior históricamente anterior a esta (que parece ser `abcdefgh123456.id`).
 
-The purpose of a DID is to provide an eternal identifier for a public key. The public key may change, but the DID will not.
+El propósito de un DID es proporcionar un identificador eterno para una clave pública. La clave pública puede cambiar, pero el DID no.
 
-Stacks Blockchain implements a DID method of its own in order to be compatible with other systems that use DIDs for public key resolution. In order for a DID to be resolvable, all of the following must be true for a name:
+La blockchain de Stacks implementa un método DID propio para ser compatible con otros sistemas que usan DIDs para la resolución de clave pública. In order for a DID to be resolvable, all of the following must be true for a name:
 
 - El nombre debe existir
-- The name's zone file hash must be the hash of a well-formed DNS zone file
-- The DNS zone file must be present in the Stacks node's data.
-- The DNS zone file must contain a `URI` resource record that points to a signed JSON Web Token
-- The public key that signed the JSON Web Token (and is included with it) must hash to the address that owns the name
+- El hash del archivo de zona del nombre debe ser el hash de un archivo de zona DNS bien formado
+- El archivo de zona DNS debe estar presente en los datos del nodo de Stacks.
+- El archivo de zona DNS debe contener un registro de recursos de `URI` que apunta a un JSON Web Token firmado
+- La clave pública que firmó el JSON Web Token (y está incluida con él) debe hacer hash a la dirección que posee el nombre
 
-Not all names will have DIDs that resolve to public keys. However, names created by standard tooling will have DIDs that do.
+No todos los nombres tendrán DIDs que resuelvan claves públicas. Sin embargo, los nombres creados por herramientas estándar sí que tendrán DIDs.
 
-A RESTful API is under development.
+Una API RESTful está en desarrollo.
 
-## DID Encoding for Subdomains
+## Codificación DID para subdominios
 
-Every name and subdomain in BNS has a DID. The encoding is slightly different for subdomains, so the software can determine which code-path to take.
+Cada nombre y subdominio en BNS tiene un DID. La codificación es ligeramente diferente para los subdominios, por lo que el software puede determinar qué code-path tomar.
 
-- For on-chain BNS names, the `{address}` is the same as the Bitcoin address that owns the name. Currently, both version byte 0 and version byte 5 addresses are supported (that is, addresses starting with `1` or `3`, meaning `p2pkh` and `p2sh` addresses).
+- Para nombres BNS on-chain, la `{address}` es la misma que la dirección Bitcoin que posee el nombre. Actualmente, las dirección tanto del byte de la versión 0 como del byte de la versión 5 son soportadas (es decir, direcciones que empiezan con `1` o `3`, significando `p2pkh` y `p2sh` direcciones).
 
-- For off-chain BNS subdomains, the `{address}` has version byte 63 for subdomains owned by a single private key, and version byte 50 for subdomains owned by a m-of-n set of private keys. That is, subdomain DID addresses start with `S` or `M`, respectively.
+- Para subdominios BNS off-chain, el `{address}` tiene la versión del byte 63 para subdominios propiedad de una sola clave privada, y la versión 50 del byte para subdominios propiedad de un conjunto m-of-n de claves privadas. Es decir, las direcciones DID de subdominio comienzan con `S` o `M`, respectivamente.
 
-The `{index}` field for a subdomain's DID is distinct from the `{index}` field for a BNS name's DID, even if the same created both names and subdomains. For example, the name `abcdefgh123456.id` has the DID `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-0`, because it was the first name created by `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg`. However, `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` _also_ created `jude.statism.id` as its first subdomain name. The DID for `jude.statism.id` is `did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0`. Note that the address `SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i` encodes the same public key hash as the address `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` (the only difference between these two strings is that the first is base58check-encoded with version byte 0, and the second is encoded with version byte 63).
+El campo `{index}` para el DID de un subdominio es distinto del campo `{index}` para el DID de un nombre BNS, incluso si el mismo creó nombres y subdominios. Por ejemplo, el nombre `abcdefgh123456. d` tiene el DID `did:stack:v0:16EMaNw3pkn3v6f2BgnSs53zAKH4Q8YJg-0`, porque era el primer nombre creado por `16EMaNw3pkn3v6f2BgnSs53zAKH4Q8YJg`. Sin embargo, `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` _también_ creó `jude.statism.id` como su primer nombre de subdominio. El DID para `jude.statism.id` es `did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0`. Tenga en cuenta que la dirección `SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i`codifica el mismo hash de clave pública que la dirección `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` (la única diferencia entre estos dos strings es que la primera está codificada en base58checkcon la versión byte 0,  y el segundo está codificado con la versión byte 63).

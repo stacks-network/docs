@@ -67,7 +67,7 @@ Also referred to as a crypto-asset. Any set of unique digital information—incl
 A digital fingerprint is a unique number of a fixed length that can be produced by running any set of digital information through something called a cryptographic hash function. Each set of digital information (including a digital asset, and the digital record of any network operation on that digital asset) should (as a practical matter) have a unique digital fingerprint, which allows that set of digital information to be identified. However, it is almost impossible to recreate a digital asset from its digital fingerprint. The Blockstack network uses industry-standard algorithms such as SHA-256 to create digital fingerprints.
 
 #### digital signature
-A digital signature is a sequence of digital information combining a user’s private key and any digital information that the user wishes to sign. A digital signature is a sequence of digital information combining a user’s private key and any digital information that the user wishes to sign. Any other party can use the user’s paired public key to verify that the digital signature is authentic, i.e. that the public key was generated from a particular piece of digital information and the user’s private key.
+A digital signature is a sequence of digital information combining a user’s private key and any digital information that the user wishes to sign. A digital signature is a sequence of digital information combining a user’s private key and any digital information that the user wishes to sign. Any other party can use the user’s paired public key to verify that the digital signature is authentic, i.e. that the public key was generated from a particular piece of digital information and the user’s private key. A digital signature is a sequence of digital information combining a user’s private key and any digital information that the user wishes to sign. Any other party can use the user’s paired public key to verify that the digital signature is authentic, i.e. that the public key was generated from a particular piece of digital information and the user’s private key.
 
 #### distributed hash tables (DHT)
 A form of network used to store some content in the form of key/value pairs. ... ... This experimental project try to avoid keeping all the blockchain, but instead prefers to store it in a DHT.
@@ -176,7 +176,7 @@ An application that allow you to view and search transactions in the blockchain.
 A complete version of our open-source software available on Github at https://github.com/stacks-network/stacks-blockchain/ that governs the creation of the blockchain, the smart contracts that may be written to our blockchain, and other systems that make up the Stacks network, when run on the systems and devices of our users and developers.
 
 #### Stacks wallet
-An application for accessing assets, identity and storage. More information and example [here](../services-using-stacks/wallets). Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/).
+An application for accessing assets, identity and storage. Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/). More information and example [here](../services-using-stacks/wallets).
 
 #### storage hub
 An Gaia instance run by a hub provider or software. A Gaia hub stores data in separate, addressed location.
