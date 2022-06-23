@@ -7,7 +7,7 @@ description: Aprende cómo se construye este sitio y cómo puedes contribuir a �
 
 Gracias por su interés en contribuir y ayudar a que estos documentos sean tan buenos como puedan ser.
 
-Este sitio de documentación está construido en la plataforma de código abierto \[Discosaurus 2\](https://docusaurus. io/) y la mayor parte de su contenido está escrito en archivos Markdown. Todo el código para este sitio es libre y de código abierto, ubicado en el [repositorio de GitHub aquí](https://github.com/stacks-network/docs).
+Este sitio de documentación está construido en la plataforma de código abierto [Discosaurus 2](https://docusaurus.io/) y la mayor parte de su contenido está escrito en archivos Markdown. Todo el código para este sitio es libre y de código abierto, ubicado en el [repositorio de GitHub aquí](https://github.com/stacks-network/docs).
 
 :::tip ¿No sabes qué es Markdown? ¿Quieres aprender? Aquí hay una [guía útil](https://guides.github.com/features/mastering-markdown/) para aprenderlo.
 
@@ -31,7 +31,7 @@ Para cambios más avanzados puede seguir los siguientes pasos.
 También puede probar el sitio localmente utilizando este método.
 ### Pasos
 
-1. Haga un Fork del \[repositorio de documentos\](https://github. com/stacks-network/docs) haciendo clic en el botón *Fork* en la parte superior derecha de la pantalla.
+1. Haga un Fork del [repositorio de documentos](https://github.com/stacks-network/docs) haciendo clic en el botón *Fork* en la parte superior derecha de la pantalla.
 2. Clona el fork a tu máquina local con este comando `git clone git@github.com:<YOUR_USERNAME>/docs.git stacks_docs`
 3. Entre a la carpeta del proyecto `cd stacks_docs`
 4. Crea una rama `git checkout -b feat/my-feature-branch`.
