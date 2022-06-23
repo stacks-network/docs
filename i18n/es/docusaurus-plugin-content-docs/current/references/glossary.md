@@ -52,7 +52,7 @@ A digital asset which utilises cryptography peer-to-peer networking and a public
 The practise and study of encryption and decryption - encoding data so that it can only be decoded by specific individuals. A system for encrypting and decrypting data is a cryptosystem.
 
 #### DAO
-Ver Organización Autónoma Desdentralizada
+Ver Organización Autónoma Desdentralizada.
 
 #### decentralized application (DApp)
 A DApp is a service that enables direct interaction between end users and providers (e.g. connecting buyers and sellers in some marketplace, owners and stores in file storage). A term coined by Ethereum. See their glossary: http://ethdocs.org/en/latest/glossary.html#dapp"
