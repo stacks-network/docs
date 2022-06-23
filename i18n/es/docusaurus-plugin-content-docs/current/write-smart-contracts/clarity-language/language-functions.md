@@ -440,7 +440,6 @@ The `map-get?` function looks up and returns an entry from a contract's data map
 (define-map names-map { name: (string-ascii 10) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (map-get? names-map (tuple (name \"blockstack\"))) ;; Returns (some (tuple (id 1337)))
-(map-get? names-map { name: \"blockstack\" }) ;; Same command, using a shorthand for constructing the tuple names-map (tuple (name \"blockstack\"))) ;; Returns (some (tuple (id 1337)))
 (map-get? names-map { name: \"blockstack\" }) ;; Same command, using a shorthand for constructing the tuple
 ```
 
@@ -513,10 +512,9 @@ The `get` function fetches the value associated with a given key from the suppli
 #### ejemplo:
 ```clarity
 (define-map names-map { name: (string-ascii 12) } { id: int })
-(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true
-(get id (tuple (name \"blockstack\") (id 1337))) ;; Returns 1337
+(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Devuelve true
+(get id (tuple (name \"blockstack\") (id 1337))) ;; Devuelve 1337
 (get id (map-get? names-map (tuple (name \"blockstack\")))) ;; Returns (some 1337)
-(get id (map-get? names-map (tuple (name \"non-existent\")))) ;; Returns none names-map (tuple (name \"blockstack\")))) ;; Returns (some 1337)
 (get id (map-get? names-map (tuple (name \"non-existent\")))) ;; Returns none
 ```
 
@@ -528,15 +526,14 @@ The `get` function fetches the value associated with a given key from the suppli
 The `merge` function returns a new tuple with the combined fields, without mutating the supplied tuples.
 #### ejemplo:
 ```clarity
-(define-map users { id: int } { name: (string-ascii 12), address: (optional principal) })
+(define-map users { id: int } { name: (string-ascii 12), address: (optional principal) }) 
 (map-insert users { id: 1337 } { name: \"john\", address: none }) ;; Returns true
 (let ((user (unwrap-panic (map-get? users { id: 1337 }))))
-(merge user { address: (some 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) })) ;; Returns (tuple (address (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)) (name \"john\")) users { id: 1337 }))))
 (merge user { address: (some 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) })) ;; Returns (tuple (address (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)) (name \"john\"))
 ```
 
 ### begin
-#### entrada: `int, ... A`
+#### entrada: `AnyType, ... A`
 #### output: `A`
 #### signature: `(contract-call? .contract-name function-name arg0 arg1 ...)`
 #### descripción:
@@ -604,14 +601,12 @@ The `keccak256` function computes `KECCAK256(value)` of the inputted value. Note
 ### secp256k1-recover?
 #### input: `(buff 32), (buff 65)`
 #### output: `(response (buff 33) uint)`
-#### signature: `(secp256k1-recover? message-hash signature)` message-hash signature)</code>
+#### signature: `(secp256k1-recover? message-hash signature)`
 #### descripción:
 The `secp256k1-recover?` function recovers the public key used to sign the message  which sha256 is `message-hash` with the provided `signature`. If the signature does not match, it will return the error code `(err u1).`. If the signature is invalid, it will return the error code `(err u2).`. The signature includes 64 bytes plus an additional recovery id (00..03) for a total of 65 bytes.
 #### ejemplo:
 ```clarity
 (secp256k1-recover? 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04
- 0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a1301)
- ;; Returns (ok 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04
  0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a1301)
  ;; Returns (ok 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110)
  ```
@@ -649,14 +644,13 @@ The `print` function evaluates and returns its input expression. On Stacks Core 
 ### contract-call?
 #### input: `ContractName, PublicFunctionName, Arg0, ...`
 #### output: `(response A B)`
-#### signature: `(principal-of? public-key)` .contract-name function-name arg0 arg1 ...)</code>
+#### firma: `(contract-call? .contract-name function-name arg0 arg1 ...)`
 #### descripción:
 The `contract-call?` function executes the given public function of the given contract. You _may not_ use this function to call a public function defined in the current contract. If the public function returns _err_, any database changes resulting from calling `contract-call?` are aborted. If the function returns _ok_, database changes occurred.
 #### ejemplo:
 ```clarity
 
 ;; instantiate the sample-contracts/tokens.clar contract first!
-(as-contract (contract-call? .tokens mint! u19)) ;; Returns (ok u19)
 (as-contract (contract-call? .tokens mint! u19)) ;; Returns (ok u19)
 ```
 
@@ -783,25 +777,24 @@ The `default-to` function attempts to 'unpack' the second argument: if the argum
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (default-to 0 (get id (map-get? names-map (tuple (name \"blockstack\"))))) ;; Returns 1337
-(default-to 0 (get id (map-get? names-map (tuple (name \"non-existant\"))))) ;; Returns 0 names-map (tuple (name \"blockstack\"))))) ;; Returns 1337
 (default-to 0 (get id (map-get? names-map (tuple (name \"non-existant\"))))) ;; Returns 0
 ```
 
 ### asserts!
 #### input: `bool, C`
 #### output: `bool`
-#### signature: `(let ((name1 expr1) (name2 expr2) ...) expr-body1 expr-body2 ... expr-body-last)`
+#### firma: `(asserts! bool-expr thrown-value)`
 #### descripción:
 The `asserts!` function admits a boolean argument and asserts its evaluation: if bool-expr is `true`, `asserts!` returns `true` and proceeds in the program execution. If the supplied argument is returning a false value, `asserts!` _returns_ `thrown-value` and exits the current control-flow.
 #### ejemplo:
 ```clarity
-(asserts! (asserts! (is-eq 1 1) (err 1)) ;; Returns true
+(asserts! (is-eq 1 1) (err 1)) ;; Devuelve true
 ```
 
 ### unwrap!
 #### input: `(optional A) | (response A B), C`
 #### output: `A`
-#### entrada: `int, ... | uint, ...`
+#### firma: `(unwrap! | uint, ...`
 #### descripción:
 The `unwrap!` function attempts to 'unpack' the first argument: if the argument is an option type, and the argument is a `(some ...)` option, `unwrap!` returns the inner value of the option. If the argument is a response type, and the argument is an `(ok ...)` response, `unwrap!` returns the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `(none)` value, `unwrap!` _returns_ `thrown-value` from the current function and exits the current control-flow.
 #### ejemplo:
@@ -813,22 +806,18 @@ The `unwrap!` function attempts to 'unpack' the first argument: if the argument 
        (ok raw-name)))
 
 (get-name-or-err \"blockstack\") ;; Returns (ok (tuple (id 1337)))
-(get-name-or-err \"non-existant\") ;; Returns (err 1) (map-get? names-map { name: name }) (err 1))))
-       (ok raw-name)))
-
-(get-name-or-err \"blockstack\") ;; Returns (ok (tuple (id 1337)))
 (get-name-or-err \"non-existant\") ;; Returns (err 1)
 ```
 
 ### unwrap-err!
 #### input: `(response A B), C`
 #### output: `B`
-#### signature: `(unwrap-err! signature: <code>(unwrap-err! response-input thrown-value)`
+#### signature: `(unwrap-err! response-input thrown-value)`
 #### descripción:
 The `unwrap-err!` function attempts to 'unpack' the first argument: if the argument is an `(err ...)` response, `unwrap-err!` returns the inner value of the `err`. If the supplied argument is an `(ok ...)` value, `unwrap-err!` _returns_ `thrown-value` from the current function and exits the current control-flow.
 #### ejemplo:
 ```clarity
-(unwrap-err! (unwrap-err! (err 1) false) ;; Returns 1
+(unwrap-err! (err 1) false) ;; Returns 1
 ```
 
 ### unwrap-panic
@@ -842,7 +831,6 @@ The `unwrap` function attempts to 'unpack' its argument: if the argument is an o
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (unwrap-panic (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))
-(unwrap-panic (map-get? names-map { name: \"non-existant\" })) ;; Throws a runtime exception names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))
 (unwrap-panic (map-get? names-map { name: \"non-existant\" })) ;; Throws a runtime exception
 ```
 
@@ -902,7 +890,7 @@ Note: Type checking requires that the type of both the ok and err parts of the r
 ### try!
 #### input: `(optional A) | (response A B)`
 #### output: `A`
-#### input: `AnyType, ... A`
+#### firma: `(try! A`
 #### descripción:
 The `try!` function attempts to 'unpack' the first argument: if the argument is an option type, and the argument is a `(some ...)` option, `try!` returns the inner value of the option. If the argument is a response type, and the argument is an `(ok ...)` response, `try!` returns the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `none` value, `try!` _returns_ either `none` or the `(err ...)` value from the current function and exits the current control-flow.
 #### ejemplo:
@@ -970,10 +958,8 @@ The `try!` function attempts to 'unpack' the first argument: if the argument is 
 
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
-(is-some (get id (map-get? (define-map names-map { name: (string-ascii 12) } { id: int })
-(map-set names-map { name: \"blockstack\" } { id: 1337 })
-(is-some (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns true
-(is-some (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns false names-map { name: \"non-existant\" }))) ;; Returns false
+(is-some (get id (map-get? names-map { name: \"blockstack\" }))) ;; Devuelve true
+(is-some (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns false
 ```
 
 ### filter
@@ -1015,7 +1001,7 @@ The `filter` function applies the input function `func` to each element of the i
 ```clarity
 (define-non-fungible-token stackaroo (string-ascii 40))
 (nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
-(nft-get-owner? stackaroo \"Roo\") ;; Returns (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
+(nft-get-owner? stackaroo \"Roo\") ;; Devuelve (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
 (nft-get-owner? stackaroo \"Too\") ;; Returns none
 ```
 
@@ -1077,7 +1063,7 @@ Otherwise, on successfuly mint, it returns `(ok true)`. `
 ### ft-mint?
 #### input: `TokenName, uint, principal`
 #### output: `(response bool uint)`
-#### signature: `(ft-mint? token-name amount recipient)`
+#### firma: `(ft-mint? token-name amount recipient)`
 #### descripción:
 `ft-mint?` is used to increase the token balance for the `recipient` principal for a token type defined using `define-fungible-token`. The increased token balance is _not_ transfered from another principal, but rather minted.
 
@@ -1385,7 +1371,6 @@ Like other kinds of definition statements, `impl-trait` may only be used at the 
 (impl-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)
 (define-public (get-balance (account principal))
   (ok u0))
-(define-public (transfer? (from principal) (to principal) (amount uint))
-  (ok u0)) (from principal) (to principal) (amount uint))
+(define-public (transfer?  (from principal) (to principal) (amount uint))
   (ok u0))
 ```
