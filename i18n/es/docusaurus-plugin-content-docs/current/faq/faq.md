@@ -13,21 +13,21 @@ Comúnmente es porque la comisión es demasiado baja o el [nonce](#what-is-nonce
 
 Puede encontrar más información [aquí](https://www.hiro.so/wallet-faq/why-is-my-stacks-transaction-pending). También hay [buenas prácticas y problemas conocidos](https://forum. stacks. org/t/transactions-in-mempool-best-practices-and-known-issues/11659) y [diagnóstico de transacciones pendientes](https://forum. stacks. org/t/diagnosing-pending-transactions/11908).
 
-There is also this [script](https://github.com/citycoins/scripts/blob/main/getnetworkstatus.js) to look at either the first 200 transactions or all the transactions in the mempool, to then return the maximum adn average fee values. We've noticed that using 1.5-2x the average fee in the mempool will generally get things processed within 6-10 blocks even during high congestion.
+También existe este [script](https://github.com/citycoins/scripts/blob/main/getnetworkstatus.js) para ver las primeras 200 transacciones o todas las transacciones en el mempool, para luego devolver los valores máximos y valores promedios de las comisiones. Hemos notado que usando 1.5-2x la cuota promedio en el mempool generalmente se procesará dentro de 6-10 bloques incluso durante una congestión alta.
 
-There is also this [script](https://github.com/citycoins/scripts/blob/main/gettxstatus.js) to track a pending transaction until it reaches a final status.
+También existe este [script](https://github.com/citycoins/scripts/blob/main/gettxstatus.js) para rastrear una transacción pendiente hasta que alcance un estado final.
 
 ## ¿Qué es Nonce?
 
-Un nonce se utiliza para asegurarse de que cada transacción vaya en orden correcto. Nonce comienza en 0, por lo que la primera transacción desde una dirección debe ajustarse a nonce=0. You can find the nonce of your wallet address by searching the address in any [Stacks blockchain explorer](https://explorer.stacks.co/). You can also user `$ stx balance <address>`.
+Un nonce se utiliza para asegurarse de que cada transacción vaya en orden correcto. Nonce comienza en 0, por lo que la primera transacción desde una dirección debe ajustarse a nonce=0. Puede encontrar el nonce de su dirección de billetera buscando la dirección en cualquier [explorador de blockchain de Stacks](https://explorer. stacks. co/). También puede usar `$ stx balance <address>`.
 
-If you have a transaction nonce that is less than your account nonce, the transaction is unmineable and will (should) disappear after 256 blocks. Esto no afecta a las transacciones futuras y, por lo tanto, puede ser simplemente ignorado, están en el pasado.
+Si usted tiene un nonce de transacción que es menor que el nonce de su cuenta, la transacción no se podrá minar y (debería) desaparecer después de 256 bloques. Esto no afecta a las transacciones futuras y, por lo tanto, puede ser simplemente ignorado, están en el pasado.
 
-If you have a transaction nonce that is equal to your account nonce, then that transaction is valid and should be the next in line to be processed next.
+Si tienes un nonce de transacción que es igual al nonce de tu cuenta, entonces esa transacción es válida y debe ser la siguiente en línea a ser procesada a continuación.
 
-If you have a transaction nonce that is higher than your account nonce, then there needs to be a chain of transactions starting with your account nonce in order for it to be processed. Por ejemplo: Your account nonce is 10 but the pending transaction has a nonce of 12. It will not be mineable until a transaction with nonces 10 and 11 are processed.
+Si tienes un nonce de transacción que es mayor que el nonce de tu cuenta, entonces tiene que haber una cadena de transacciones comenzando con tu nonce de cuenta para que se pueda procesar. Por ejemplo: El nonce de tu cuenta es 10 pero la transacción pendiente tiene un nonce de 12. No será posible minar hasta que las transacciones con un nonce 10 y 11 sean procesadas.
 
-## Whats a Replace-by-fee (RBF)?
+## ¿Qué es la Sustitución por comisión (RBF)?
 
 A replace-by-fee (RBF) transaction tells the blockchain that you would like to replace one transaction with another, while specifying a fee that is higher than the original transaction fee. A transaction can be replaced with **any other transaction**, and is not limited to the same operation.
 
