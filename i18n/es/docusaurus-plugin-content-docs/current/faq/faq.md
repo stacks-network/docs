@@ -40,20 +40,20 @@ La transacción de reemplazo necesita usar el mismo nonce que la transacción or
 Las transacciones RBF se procesan de dos maneras:
 
 - Si los mineros escogen la transacción original antes de que la transacción RBF sea recibida, entonces la transacción original se procesa y la transacción de reemplazo pasa a un estado de no minable. Con el tiempo desaparecerá y no afectará a las transacciones futuras.
-- If miners pick up the replaced transaction then the new transaction is processed instead of the original, and the status of the original transaction is set to “droppped_replaced_by_fee”. This status is not shown on the explorer but can be seen when querying the txid.
+- Si los mineros recogen la transacción reemplazada entonces la nueva transacción se procesa en lugar del original, y el estado de la transacción original se establece en “droppped_replaced_by_fee”. Este estado no se muestra en el explorador pero puede verse al consultar el txid.
 
-Submitting multiple transactions for the same action can slow things down in a few ways.
+Enviar múltiples transacciones para la misma acción puede ralentizar las cosas de varias maneras.
 
-- If the total spent in 2 or 3 transactions is more than can be spent in a single transaction, the transactions appear unmineable.
-- If the fees for multiple transactions exceed the STX balance, the transactions will be unmineable.
+- Si el total gastado en 2 o 3 transacciones es más de lo que se puede gastar en una sola transacción, las transacciones aparecen como no minables.
+- Si las comisiones de las transacciones múltiples superan el saldo de STX, las transacciones serán no minables.
 
 ## ¿Qué son los dominios .btc?
 
-[This forum post](https://forum.stacks.org/t/btc-domains-are-live/12065) explains all the benefits of .btc domains. Actualmente se pueden comprar en [btc.us](https://btc.us/)
+[Esta publicación del foro](https://forum.stacks.org/t/btc-domains-are-live/12065) explica todos los beneficios de los dominios .btc. Actualmente se pueden comprar en [btc.us](https://btc.us/)
 
 ## ¿Cuál es el trilema del blockchain?
 
-## Stacks vs. Solana vs. Polygon: How Do They Compare From a Developer Perspective?
+## Stacks vs. Solana vs. Polygon: ¿Cómo se comparan desde la perspectiva de un desarrollador?
 
 [Esta tema del blog responde a la pregunta](https://www.hiro.so/blog/stacks-vs-solana-vs-polygon-how-do-they-compare-from-a-developer-perspective).
 
