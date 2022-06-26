@@ -29,13 +29,13 @@ Si tienes un nonce de transacción que es mayor que el nonce de tu cuenta, enton
 
 ## ¿Qué es la Sustitución por comisión (RBF)?
 
-A replace-by-fee (RBF) transaction tells the blockchain that you would like to replace one transaction with another, while specifying a fee that is higher than the original transaction fee. A transaction can be replaced with **any other transaction**, and is not limited to the same operation.
+Una transacción de sustitución por comisión (RBF) a le dice a la blockchain que le gustaría reemplazar una transacción por otra, mientras se especifica una comisión que es mayor que la comisión de transacción original. Una transacción puede ser reemplazada con **cualquier otra transacción**, y no está limitada a la misma operación.
 
-This can be used to effectively **cancel a transaction** by replacing it with something else, like a small STX transfer to another owned address.
+Esto puede utilizarse para **cancelar eficazmente una transacción** reemplazándola por otra cosa, como una pequeña transferencia STX a otra dirección de nuestra propiedad.
 
-This can be used to **raise the fee for a pending transaction** so it is considered by miners during periods of high congestion. This can also be used to _resubmit_ a transaction, in the sense that the RBF transaction gets a new txid and gets considered again (or faster) by miners. Por ejemplo: I submit my transaction with 1 STX fee at block 54,123. By block 54,133 I see my tx hasn’t been picked up, so I RBF with 1.1 STX. Then wait 10 blocks again, and RBF again if not received. There’s a balance between doing this too often and keeping a consistent pace, but it has been seen to help get transactions through, especially when new ones are constantly flooding in.
+Esto puede utilizarse para **elevar la comisión por una transacción pendiente** para que sea considerada por los mineros durante periodos de alta congestión. Esto también puede utilizarse para _volver a enviar_ una transacción, en el sentido de que la transacción RBF recibe un nuevo txid y es considerada de nuevo (o más rápido) por los mineros. Por ejemplo: Yo envío mi transacción con 1 STX de comisión en el bloque 54,123. Por bloque 54,133 veo que mi tx no ha sido recogida, así que envío un RBF con 1.1 STX. Luego espero 10 bloques de nuevo, y envío un RBF otra vez si no se recibe. Hay que encontrar el equilibrio entre hacer esto con demasiada frecuencia y mantener un ritmo constante, pero se ha visto que ayuda a concretar las transacciones, especialmente cuando las nuevas llegan constantemente.
 
-The replacement transaction needs to use the same nonce as the original transaction with a fee increase of at least 0.000001 STX. Por ejemplo: Your original transaction has a fee of 0.03 STX, the new RBF transaction must have a fee of 0.030001 STX or above.
+La transacción de reemplazo necesita usar el mismo nonce que la transacción original con un aumento de comisión de al menos 0.000001 STX. Por ejemplo: Su transacción original tiene una comisión de 0.03 STX, la nueva transacción RBF debe tener una comisión de 0.030001 STX o superior.
 
 RBF transactions process in one of two ways:
 
