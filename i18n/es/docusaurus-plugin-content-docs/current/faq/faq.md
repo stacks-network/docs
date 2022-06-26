@@ -37,9 +37,9 @@ Esto puede utilizarse para **elevar la comisión por una transacción pendiente*
 
 La transacción de reemplazo necesita usar el mismo nonce que la transacción original con un aumento de comisión de al menos 0.000001 STX. Por ejemplo: Su transacción original tiene una comisión de 0.03 STX, la nueva transacción RBF debe tener una comisión de 0.030001 STX o superior.
 
-RBF transactions process in one of two ways:
+Las transacciones RBF se procesan de dos maneras:
 
-- If miners pick up the original transaction before the RBF transaction is received, then the original transaction is processed and the replacement transaction goes into an unmineable state. It will eventually disappear and doesn’t affect future transactions.
+- Si los mineros escogen la transacción original antes de que la transacción RBF sea recibida, entonces la transacción original se procesa y la transacción de reemplazo pasa a un estado de no minable. Con el tiempo desaparecerá y no afectará a las transacciones futuras.
 - If miners pick up the replaced transaction then the new transaction is processed instead of the original, and the status of the original transaction is set to “droppped_replaced_by_fee”. This status is not shown on the explorer but can be seen when querying the txid.
 
 Submitting multiple transactions for the same action can slow things down in a few ways.
