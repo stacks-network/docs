@@ -57,12 +57,12 @@ Enviar múltiples transacciones para la misma acción puede ralentizar las cosas
 
 [Esta tema del blog responde a la pregunta](https://www.hiro.so/blog/stacks-vs-solana-vs-polygon-how-do-they-compare-from-a-developer-perspective).
 
-## What Does Lightning’s Taro Proposal Mean for Stacks?
+## ¿Qué significa la propuesta de Taro de Lightning para Stacks?
 
 [Esta tema del blog responde a la pregunta](https://www.hiro.so/blog/what-does-lightnings-taro-proposal-mean-for-stacks).
 
 
-## Is Stacks a [PoS chain](https://en.wikipedia.org/wiki/Proof_of_stake)?[¹][]
+## ¿Es Stacks una [cadena PoS](https://en.wikipedia.org/wiki/Proof_of_stake)?[¹][]
 
 No.
 
