@@ -66,24 +66,24 @@ Enviar múltiples transacciones para la misma acción puede ralentizar las cosas
 
 No.
 
-The act of block production requires an extrinsic expenditure — it is not tied to owning the native token, as would be required in PoS. The only way to produce blocks in the Stacks chain is to transfer Bitcoin to a predetermined randomized list of Bitcoin addresses. Moreover, the Stacks blockchain can fork, and there exists a protocol to rank forks by quality independent of the set of miners and the tokens they hold. These two properties further distinguish it from PoS chains, which cannot fork due to the inability to identify a canonical fork without trusting a 3rd party to decree a particular fork as valid. The ability to fork allows the Stacks blockchain to survive failure modes that would crash a PoS chain.
+El acto de producción de bloques requiere un gasto extrínseco — no está vinculado a poseer el token nativo, como sería necesario en PoS. La única forma de producir bloques en la cadena de Stacks es transferir Bitcoin a una lista predeterminada aleatorizada de direcciones de Bitcoin. Además, la blockchain de Stacks puede bifurcarse, y existe un protocolo para clasificar las bifurcaciones según su calidad, independientemente del conjunto de mineros y de los tokens que posean. Estas dos propiedades lo distinguen aún más de las cadenas PoS, que no puede bifurcarse debido a la incapacidad de identificar un fork canónico sin confiar en que un tercero decrete un fork en particular como válido. La capacidad de bifurcarse permite que la blockchain de Stacks sobreviva a modos de fallo que harían colapsar una cadena PoS.
 
-## Is Stacks a [sidechain](https://en.bitcoin.it/wiki/Sidechain)?[¹][]
+## ¿Es Stacks una [cadena lateral o sidechain](https://en.bitcoin.it/wiki/Sidechain)?[¹][]
 
 No.
 
 Por dos razones fundamentales.
 
-First, the history of all Stacks blocks produced is recorded to Bitcoin. This means that the act of producing a private Stacks fork is at least as hard as reorging the Bitcoin chain. This in turn makes it so attacks on the chain that rely on creating private forks (such as selfish mining and double-spending) are much harder to carry out profitably, since all honest participants can see the attack coming before it happens and have a chance to apply countermeasures. Sidechains offer no such security benefit.
+Primero, el historial de todos los bloques de Stacks producidos se registra en Bitcoin. Esto significa que el acto de producir una bifurcación privada de Stacks es al menos tan duro como reordenar la cadena de Bitcoin. Esto a su vez hace que los ataques a la cadena que dependen de la creación de bifurcaciones privadas (como la minería egoísta y el doble gasto) sean mucho más difíciles de llevar a cabo de manera rentable, ya que todos los participantes honrados pueden ver el ataque antes de que ocurra y tener la oportunidad de aplicar contramedidas. Las cadenas laterales no ofrecen tal beneficio de seguridad.
 
-Second, the Stacks blockchain has its own token; it does not represent pegged Bitcoin. This means that the safety of the canonical fork of the Stacks blockchain is underpinned by its entire token economy’s value, whereas the safety of a sidechain’s canonical fork is underpinned only by whatever system-specific measures incentivize its validators to produce blocks honestly, or the Bitcoin miners’ willingness to process peg-in requests (whichever is the weaker guarantee).
+En segundo lugar, la blockchain de Stacks tiene su propio token; no vinculado a Bitcoin. Esto significa que la seguridad de la bifurcación canónica de la blockchain de Stacks está respaldada por el valor de toda su economía de tokens, mientras que la seguridad de la bifurcación canónica de una sidechain está respaldada únicamente por cualquier medida específica del sistema que incentive a sus validadores a producir bloques de forma honesta, o por la voluntad de los mineros de Bitcoin de procesar las solicitudes de peg-in (cualquiera que sea la garantía más débil).
 
 
-## Is Stacks a [layer-2 system](https://academy.binance.com/en/glossary/layer-2) for Bitcoin?[¹][]
+## Es Stacks un [sistema de capa 2](https://academy.binance.com/en/glossary/layer-2) para Bitcoin?[¹][]
 
 No.
 
-Stacks blockchain is a layer-1 blockchain, which uses a novel and unique mining protocol called proof-of-transfer (PoX). A PoX blockchain runs in parallel to another blockchain (Bitcoin in Stacks’ case), which it uses as a reliable broadcast medium for its block headers. It's a sovereign system in its own right. The Stacks blockchain state is distinct from Bitcoin, and is wholly maintained by and for Stacks nodes. Stacks transactions are separate from Bitcoin transactions. Layer-2 systems like Lightning are designed to help scale Bitcoin payment transactions, whereas Stacks is designed to bring new use-cases to Bitcoin through smart contracts. Stacks is not designed as a Bitcoin layer-2 scalability solution.
+La blockchain de Stacks es una cadena de bloques de capa 1, que utiliza un nuevo y único protocolo de minado llamado prueba de transferencia (PoX). Una blockchain de PoX corre en paralelo a otra blockchain (Bitcoin en caso de Stacks), la que utiliza como un medio de emisión fiable para sus cabeceras de bloque. Es un sistema soberano por derecho propio. El estado de la blockchain de Stacks es distinto de Bitcoin, y es totalmente mantenido por y para los nodos de Stacks. Las transacciones de Stacks están separadas de las transacciones de Bitcoin. Los sistemas de Capa 2 como Lightning están diseñados para ayudar a escalar las transacciones de pago de Bitcoin, mientras que Stacks está diseñado para llevar nuevos casos de uso a Bitcoin a través de contratos inteligentes. Stacks no está diseñada como una solución de escalabilidad de capa 2 de Bitcoin.
 
 
 ## Is Stacks a [merged-mined chain](https://en.bitcoin.it/wiki/Merged_mining_specification)?[¹][]
