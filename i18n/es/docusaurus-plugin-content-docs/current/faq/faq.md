@@ -17,7 +17,7 @@ También existe este [script](https://github.com/citycoins/scripts/blob/main/get
 
 También existe este [script](https://github.com/citycoins/scripts/blob/main/gettxstatus.js) para rastrear una transacción pendiente hasta que alcance un estado final.
 
-## ¿Qué es Nonce?
+## ¿Qué es el Nonce?
 
 Un nonce se utiliza para asegurarse de que cada transacción vaya en orden correcto. Nonce comienza en 0, por lo que la primera transacción desde una dirección debe ajustarse a nonce=0. Puede encontrar el nonce de su dirección de billetera buscando la dirección en cualquier [explorador de blockchain de Stacks](https://explorer. stacks. co/). También puede usar `$ stx balance <address>`.
 
