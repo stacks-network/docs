@@ -11,86 +11,86 @@ sidebar_position: 8
 
 Comúnmente es porque la comisión es demasiado baja o el [nonce](#what-is-nonce) es incorrecto.
 
-Puede encontrar más información [aquí](https://www.hiro.so/wallet-faq/why-is-my-stacks-transaction-pending). There are also [best practices and known issues](https://forum.stacks.org/t/transactions-in-mempool-best-practices-and-known-issues/11659) and [diagnosing pending transactions](https://forum.stacks.org/t/diagnosing-pending-transactions/11908).
+Puede encontrar más información [aquí](https://www.hiro.so/wallet-faq/why-is-my-stacks-transaction-pending). También hay [buenas prácticas y problemas conocidos](https://forum. stacks. org/t/transactions-in-mempool-best-practices-and-known-issues/11659) y [diagnóstico de transacciones pendientes](https://forum. stacks. org/t/diagnosing-pending-transactions/11908).
 
-There is also this [script](https://github.com/citycoins/scripts/blob/main/getnetworkstatus.js) to look at either the first 200 transactions or all the transactions in the mempool, to then return the maximum adn average fee values. We've noticed that using 1.5-2x the average fee in the mempool will generally get things processed within 6-10 blocks even during high congestion.
+También existe este [script](https://github.com/citycoins/scripts/blob/main/getnetworkstatus.js) para ver las primeras 200 transacciones o todas las transacciones en el mempool, para luego devolver los valores máximos y valores promedios de las comisiones. Hemos notado que usando 1.5-2x la cuota promedio en el mempool generalmente se procesará dentro de 6-10 bloques incluso durante una congestión alta.
 
-There is also this [script](https://github.com/citycoins/scripts/blob/main/gettxstatus.js) to track a pending transaction until it reaches a final status.
+También existe este [script](https://github.com/citycoins/scripts/blob/main/gettxstatus.js) para rastrear una transacción pendiente hasta que alcance un estado final.
 
-## ¿Qué es Nonce?
+## ¿Qué es el Nonce?
 
-Un nonce se utiliza para asegurarse de que cada transacción vaya en orden correcto. Nonce comienza en 0, por lo que la primera transacción desde una dirección debe ajustarse a nonce=0. You can find the nonce of your wallet address by searching the address in any [Stacks blockchain explorer](https://explorer.stacks.co/). You can also user `$ stx balance <address>`.
+Un nonce se utiliza para asegurarse de que cada transacción vaya en orden correcto. Nonce comienza en 0, por lo que la primera transacción desde una dirección debe ajustarse a nonce=0. Puede encontrar el nonce de su dirección de billetera buscando la dirección en cualquier [explorador de blockchain de Stacks](https://explorer. stacks. co/). También puede usar `$ stx balance <address>`.
 
-If you have a transaction nonce that is less than your account nonce, the transaction is unmineable and will (should) disappear after 256 blocks. Esto no afecta a las transacciones futuras y, por lo tanto, puede ser simplemente ignorado, están en el pasado.
+Si usted tiene un nonce de transacción que es menor que el nonce de su cuenta, la transacción no se podrá minar y (debería) desaparecer después de 256 bloques. Esto no afecta a las transacciones futuras y, por lo tanto, puede ser simplemente ignorado, están en el pasado.
 
-If you have a transaction nonce that is equal to your account nonce, then that transaction is valid and should be the next in line to be processed next.
+Si tienes un nonce de transacción que es igual al nonce de tu cuenta, entonces esa transacción es válida y debe ser la siguiente en línea a ser procesada a continuación.
 
-If you have a transaction nonce that is higher than your account nonce, then there needs to be a chain of transactions starting with your account nonce in order for it to be processed. Por ejemplo: Your account nonce is 10 but the pending transaction has a nonce of 12. It will not be mineable until a transaction with nonces 10 and 11 are processed.
+Si tienes un nonce de transacción que es mayor que el nonce de tu cuenta, entonces tiene que haber una cadena de transacciones comenzando con tu nonce de cuenta para que se pueda procesar. Por ejemplo: El nonce de tu cuenta es 10 pero la transacción pendiente tiene un nonce de 12. No será posible minar hasta que las transacciones con un nonce 10 y 11 sean procesadas.
 
-## Whats a Replace-by-fee (RBF)?
+## ¿Qué es la Sustitución por comisión (RBF)?
 
-A replace-by-fee (RBF) transaction tells the blockchain that you would like to replace one transaction with another, while specifying a fee that is higher than the original transaction fee. A transaction can be replaced with **any other transaction**, and is not limited to the same operation.
+Una transacción de sustitución por comisión (RBF) a le dice a la blockchain que le gustaría reemplazar una transacción por otra, mientras se especifica una comisión que es mayor que la comisión de transacción original. Una transacción puede ser reemplazada con **cualquier otra transacción**, y no está limitada a la misma operación.
 
-This can be used to effectively **cancel a transaction** by replacing it with something else, like a small STX transfer to another owned address.
+Esto puede utilizarse para **cancelar eficazmente una transacción** reemplazándola por otra cosa, como una pequeña transferencia STX a otra dirección de nuestra propiedad.
 
-This can be used to **raise the fee for a pending transaction** so it is considered by miners during periods of high congestion. This can also be used to _resubmit_ a transaction, in the sense that the RBF transaction gets a new txid and gets considered again (or faster) by miners. Por ejemplo: I submit my transaction with 1 STX fee at block 54,123. By block 54,133 I see my tx hasn’t been picked up, so I RBF with 1.1 STX. Then wait 10 blocks again, and RBF again if not received. There’s a balance between doing this too often and keeping a consistent pace, but it has been seen to help get transactions through, especially when new ones are constantly flooding in.
+Esto puede utilizarse para **elevar la comisión por una transacción pendiente** para que sea considerada por los mineros durante periodos de alta congestión. Esto también puede utilizarse para _volver a enviar_ una transacción, en el sentido de que la transacción RBF recibe un nuevo txid y es considerada de nuevo (o más rápido) por los mineros. Por ejemplo: Yo envío mi transacción con 1 STX de comisión en el bloque 54,123. Por bloque 54,133 veo que mi tx no ha sido recogida, así que envío un RBF con 1.1 STX. Luego espero 10 bloques de nuevo, y envío un RBF otra vez si no se recibe. Hay que encontrar el equilibrio entre hacer esto con demasiada frecuencia y mantener un ritmo constante, pero se ha visto que ayuda a concretar las transacciones, especialmente cuando las nuevas llegan constantemente.
 
-The replacement transaction needs to use the same nonce as the original transaction with a fee increase of at least 0.000001 STX. Por ejemplo: Your original transaction has a fee of 0.03 STX, the new RBF transaction must have a fee of 0.030001 STX or above.
+La transacción de reemplazo necesita usar el mismo nonce que la transacción original con un aumento de comisión de al menos 0.000001 STX. Por ejemplo: Su transacción original tiene una comisión de 0.03 STX, la nueva transacción RBF debe tener una comisión de 0.030001 STX o superior.
 
-RBF transactions process in one of two ways:
+Las transacciones RBF se procesan de dos maneras:
 
-- If miners pick up the original transaction before the RBF transaction is received, then the original transaction is processed and the replacement transaction goes into an unmineable state. It will eventually disappear and doesn’t affect future transactions.
-- If miners pick up the replaced transaction then the new transaction is processed instead of the original, and the status of the original transaction is set to “droppped_replaced_by_fee”. This status is not shown on the explorer but can be seen when querying the txid.
+- Si los mineros escogen la transacción original antes de que la transacción RBF sea recibida, entonces la transacción original se procesa y la transacción de reemplazo pasa a un estado de no minable. Con el tiempo desaparecerá y no afectará a las transacciones futuras.
+- Si los mineros recogen la transacción reemplazada entonces la nueva transacción se procesa en lugar del original, y el estado de la transacción original se establece en “droppped_replaced_by_fee”. Este estado no se muestra en el explorador pero puede verse al consultar el txid.
 
-Submitting multiple transactions for the same action can slow things down in a few ways.
+Enviar múltiples transacciones para la misma acción puede ralentizar las cosas de varias maneras.
 
-- If the total spent in 2 or 3 transactions is more than can be spent in a single transaction, the transactions appear unmineable.
-- If the fees for multiple transactions exceed the STX balance, the transactions will be unmineable.
+- Si el total gastado en 2 o 3 transacciones es más de lo que se puede gastar en una sola transacción, las transacciones aparecen como no minables.
+- Si las comisiones de las transacciones múltiples superan el saldo de STX, las transacciones serán no minables.
 
 ## ¿Qué son los dominios .btc?
 
-[This forum post](https://forum.stacks.org/t/btc-domains-are-live/12065) explains all the benefits of .btc domains. Actualmente se pueden comprar en [btc.us](https://btc.us/)
+[Esta publicación del foro](https://forum.stacks.org/t/btc-domains-are-live/12065) explica todos los beneficios de los dominios .btc. Actualmente se pueden comprar en [btc.us](https://btc.us/)
 
 ## ¿Cuál es el trilema del blockchain?
 
-## Stacks vs. Solana vs. Polygon: How Do They Compare From a Developer Perspective?
+## Stacks vs. Solana vs. Polygon: ¿Cómo se comparan desde la perspectiva de un desarrollador?
 
 [Esta tema del blog responde a la pregunta](https://www.hiro.so/blog/stacks-vs-solana-vs-polygon-how-do-they-compare-from-a-developer-perspective).
 
-## What Does Lightning’s Taro Proposal Mean for Stacks?
+## ¿Qué significa la propuesta de Taro de Lightning para Stacks?
 
 [Esta tema del blog responde a la pregunta](https://www.hiro.so/blog/what-does-lightnings-taro-proposal-mean-for-stacks).
 
 
-## Is Stacks a [PoS chain](https://en.wikipedia.org/wiki/Proof_of_stake)?[¹][]
+## ¿Es Stacks una [cadena PoS](https://en.wikipedia.org/wiki/Proof_of_stake)?[¹][]
 
 No.
 
-The act of block production requires an extrinsic expenditure — it is not tied to owning the native token, as would be required in PoS. The only way to produce blocks in the Stacks chain is to transfer Bitcoin to a predetermined randomized list of Bitcoin addresses. Moreover, the Stacks blockchain can fork, and there exists a protocol to rank forks by quality independent of the set of miners and the tokens they hold. These two properties further distinguish it from PoS chains, which cannot fork due to the inability to identify a canonical fork without trusting a 3rd party to decree a particular fork as valid. The ability to fork allows the Stacks blockchain to survive failure modes that would crash a PoS chain.
+El acto de producción de bloques requiere un gasto extrínseco — no está vinculado a poseer el token nativo, como sería necesario en PoS. La única forma de producir bloques en la cadena de Stacks es transferir Bitcoin a una lista predeterminada aleatorizada de direcciones de Bitcoin. Además, la blockchain de Stacks puede bifurcarse, y existe un protocolo para clasificar las bifurcaciones según su calidad, independientemente del conjunto de mineros y de los tokens que posean. Estas dos propiedades lo distinguen aún más de las cadenas PoS, que no puede bifurcarse debido a la incapacidad de identificar un fork canónico sin confiar en que un tercero decrete un fork en particular como válido. La capacidad de bifurcarse permite que la blockchain de Stacks sobreviva a modos de fallo que harían colapsar una cadena PoS.
 
-## Is Stacks a [sidechain](https://en.bitcoin.it/wiki/Sidechain)?[¹][]
+## ¿Es Stacks una [cadena lateral o sidechain](https://en.bitcoin.it/wiki/Sidechain)?[¹][]
 
 No.
 
 Por dos razones fundamentales.
 
-First, the history of all Stacks blocks produced is recorded to Bitcoin. This means that the act of producing a private Stacks fork is at least as hard as reorging the Bitcoin chain. This in turn makes it so attacks on the chain that rely on creating private forks (such as selfish mining and double-spending) are much harder to carry out profitably, since all honest participants can see the attack coming before it happens and have a chance to apply countermeasures. Sidechains offer no such security benefit.
+Primero, el historial de todos los bloques de Stacks producidos se registra en Bitcoin. Esto significa que el acto de producir una bifurcación privada de Stacks es al menos tan duro como reordenar la cadena de Bitcoin. Esto a su vez hace que los ataques a la cadena que dependen de la creación de bifurcaciones privadas (como la minería egoísta y el doble gasto) sean mucho más difíciles de llevar a cabo de manera rentable, ya que todos los participantes honrados pueden ver el ataque antes de que ocurra y tener la oportunidad de aplicar contramedidas. Las cadenas laterales no ofrecen tal beneficio de seguridad.
 
-Second, the Stacks blockchain has its own token; it does not represent pegged Bitcoin. This means that the safety of the canonical fork of the Stacks blockchain is underpinned by its entire token economy’s value, whereas the safety of a sidechain’s canonical fork is underpinned only by whatever system-specific measures incentivize its validators to produce blocks honestly, or the Bitcoin miners’ willingness to process peg-in requests (whichever is the weaker guarantee).
-
-
-## Is Stacks a [layer-2 system](https://academy.binance.com/en/glossary/layer-2) for Bitcoin?[¹][]
-
-No.
-
-Stacks blockchain is a layer-1 blockchain, which uses a novel and unique mining protocol called proof-of-transfer (PoX). A PoX blockchain runs in parallel to another blockchain (Bitcoin in Stacks’ case), which it uses as a reliable broadcast medium for its block headers. It's a sovereign system in its own right. The Stacks blockchain state is distinct from Bitcoin, and is wholly maintained by and for Stacks nodes. Stacks transactions are separate from Bitcoin transactions. Layer-2 systems like Lightning are designed to help scale Bitcoin payment transactions, whereas Stacks is designed to bring new use-cases to Bitcoin through smart contracts. Stacks is not designed as a Bitcoin layer-2 scalability solution.
+En segundo lugar, la blockchain de Stacks tiene su propio token; no vinculado a Bitcoin. Esto significa que la seguridad de la bifurcación canónica de la blockchain de Stacks está respaldada por el valor de toda su economía de tokens, mientras que la seguridad de la bifurcación canónica de una sidechain está respaldada únicamente por cualquier medida específica del sistema que incentive a sus validadores a producir bloques de forma honesta, o por la voluntad de los mineros de Bitcoin de procesar las solicitudes de peg-in (cualquiera que sea la garantía más débil).
 
 
-## Is Stacks a [merged-mined chain](https://en.bitcoin.it/wiki/Merged_mining_specification)?[¹][]
+## Es Stacks un [sistema de capa 2](https://academy.binance.com/en/glossary/layer-2) para Bitcoin?[¹][]
 
 No.
 
-The only block producers on the Stacks chain are Stacks miners. Bitcoin miners do not participate in Stacks block validation, and do not claim Stacks block rewards. Moreover, Stacks is not a [blind merged-mined chain](https://github.com/bitcoin/bips/blob/master/bip-0301.mediawiki), because STX block winners are public and randomly chosen (instead of highest-bid-wins), and its tokens are minted according to a schedule that is independent of the degree of miner commitment or Bitcoin transferred (instead of minted only by one-way pegs from Bitcoin). This ensures that Stacks is able to make forward progress without opt-in from Bitcoin miners, and it ensures that Stacks miners are adequately compensated for keeping the system alive regardless of transaction volume.
+La blockchain de Stacks es una cadena de bloques de capa 1, que utiliza un nuevo y único protocolo de minado llamado prueba de transferencia (PoX). Una blockchain de PoX corre en paralelo a otra blockchain (Bitcoin en caso de Stacks), la que utiliza como un medio de emisión fiable para sus cabeceras de bloque. Es un sistema soberano por derecho propio. El estado de la blockchain de Stacks es distinto de Bitcoin, y es totalmente mantenido por y para los nodos de Stacks. Las transacciones de Stacks están separadas de las transacciones de Bitcoin. Los sistemas de Capa 2 como Lightning están diseñados para ayudar a escalar las transacciones de pago de Bitcoin, mientras que Stacks está diseñado para llevar nuevos casos de uso a Bitcoin a través de contratos inteligentes. Stacks no está diseñada como una solución de escalabilidad de capa 2 de Bitcoin.
+
+
+## ¿Es Stacks una [cadena de minería combinada](https://en.bitcoin.it/wiki/Merged_mining_specification)?[¹][]
+
+No.
+
+Los únicos productores de bloques en la cadena de Stacks son los mineros de Stacks. Los mineros de bitcoin no participan en la validación de bloques de Stacks y no reclaman recompensas de bloques de Stacks. Moreover, Stacks is not a [blind merged-mined chain](https://github.com/bitcoin/bips/blob/master/bip-0301.mediawiki), because STX block winners are public and randomly chosen (instead of highest-bid-wins), and its tokens are minted according to a schedule that is independent of the degree of miner commitment or Bitcoin transferred (instead of minted only by one-way pegs from Bitcoin). This ensures that Stacks is able to make forward progress without opt-in from Bitcoin miners, and it ensures that Stacks miners are adequately compensated for keeping the system alive regardless of transaction volume.
 
 ## Whats the difference between Stacks and Ethereum?[²][]
 **Computation and Storage** Stacks does all computation and storage outside of the blockchain, and uses the blockchain only as a “shared source of truth” between clients. By contrast, Ethereum does all computation and most application storage in the blockchain itself. Like Ethereum, if two Stacks nodes see the same underlying blockchain, they will independently run the same computations and produce the same state. Unlike Ethereum, there is no Stacks-specific blockchain.
