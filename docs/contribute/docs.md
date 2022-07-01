@@ -74,8 +74,8 @@ You only need to have a github account and open [this link](https://gitpod.io/#h
 
 If you are interested in only adding new documentation content to the site, the files that will be important to you are located within `./docs/*`:
 
-```bash showLineNumbers highlight=12
-stacks_docs/
+```bash
+docs/
   build-apps
   contribute/
   faq/
