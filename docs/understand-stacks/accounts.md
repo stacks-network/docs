@@ -8,10 +8,10 @@ sidebar_position: 5
 
 Stacks 2.0 accounts are entities that own assets, like Stacks (STX) tokens. An account has an address, private key, nonce, and one or more asset balances.
 
-If you want to jump right in to generate and query a new account, try this tutorial:
-
 :::tip
-The public-key signature system used for Stacks 2.0 accounts is [Ed25519](https://ed25519.cr.yp.to/).
+The encryption algorithm used in Stacks 2.0 is **[secp256k1](https://en.bitcoinwiki.org/wiki/Secp256k1)**.
+
+Additionally, [Ed25519](https://ed25519.cr.yp.to/) is also used just for the VRF (Verifiable Random Function).
 :::
 
 Assets cannot leave an account without an action from the account owner. All changes to assets (and the balances of the account) require a corresponding transaction.
