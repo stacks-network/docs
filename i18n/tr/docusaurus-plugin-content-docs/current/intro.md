@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Home"
+sidebar_label: "Ana sayfa"
 sidebar_position: 1
 ---
 
-# Stacks Docs Introduction
+# Stacks Dokümanları Tanıtımı
 
-Welcome to the community driven official Stacks Documentation.
+Topluluk odaklı resmi Stacks Dokümantasyonuna hoş geldiniz.
 
-Learn about Stacks mining, the STX token, and the Clarity smart contract language.
+Stacks madenciliği, STX token ve Clarity akıllı sözleşme dili hakkında bilgi edinin.
 
 ![](/img/Bitcoinet-L_2.svg)
