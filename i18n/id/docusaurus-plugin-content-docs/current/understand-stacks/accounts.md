@@ -8,9 +8,9 @@ sidebar_position: 5
 
 Akun dalam Stacks 2.0 adalah suatu entitas yang memiliki aset, seperti token Stacks (STX). Suatu akun memiliki alamat, kunci rahasia, nonce, dan satu atau lebih saldo aset.
 
-Jika Anda ingin langsung ke pembuatan dan mencari sebuah akun baru, coba tutorial berikut ini:
+:::tip The encryption algorithm used in Stacks 2.0 is **[secp256k1](https://en.bitcoinwiki.org/wiki/Secp256k1)**.
 
-:::tip The public-key signature system used for Stacks 2.0 accounts is [Ed25519](https://ed25519.cr.yp.to/). :::
+Additionally, [Ed25519](https://ed25519.cr.yp.to/) is also used just for the VRF (Verifiable Random Function). :::
 
 Aset tidak bisa meninggalkan suatu akun tanpa tindakan dari pemilik akun. Semua perubahan terhadap aset (dan saldo dari akun) membutuhkan transaksi terkait.
 
