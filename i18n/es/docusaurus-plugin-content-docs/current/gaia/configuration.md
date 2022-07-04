@@ -5,7 +5,7 @@ description: Configurando Gaia Hub
 
 ## Archivos de configuración
 
-The following configuration files exist in the folder `deploy/configs/gaia/`:
+Los siguientes archivos de configuración existen en la carpeta `deploy/configs/gaia/`:
 
 ```
 admin-config.json
@@ -15,11 +15,11 @@ reader-config.json
 
 ## Servicio de administración de GAIA
 
-You can also use the GAIA Admin Service to remotely administer it with an API Key. It will require you to install `npm` with a `apt install npm`. Once `npm` is installed you can continue with the steps in the [GAIA Admin Service](https://github.com/stacks-network/gaia/blob/master/admin/README.md).
+También puede utilizar el servicio de administración de GAIA para administrarlo de forma remota con un API Key. Requerirá instalar `npm` con una `apt install npm`. Una vez que `npm` esté instalado, puede continuar con los pasos en el [Servicio de administración de GAIA](https://github.com/stacks-network/gaia/blob/master/admin/README.md).
 
-## Driver Selection
+## Selección de Controlador
 
-The Gaia hub currently supports the following drivers:
+El centro de Gaia actualmente soporta los siguientes controladores:
 
 ```
 'aws' == Amazon S3
@@ -28,7 +28,7 @@ The Gaia hub currently supports the following drivers:
 'google-cloud' === Google Cloud Storage
 ```
 
-Set the driver you wish to use in your [config.json](https://github.com/stacks-network/gaia/blob/master/hub/config.sample.json) file with the `driver` parameter. Many drivers additionally accept the `bucket` parameter, which controls the bucket name that files should be written to.
+Establezca el controlador que desea utilizar en el archivo [config.json](https://github.com/stacks-network/gaia/blob/master/hub/config.sample.json) con el parámetro `driver`. Many drivers additionally accept the `bucket` parameter, which controls the bucket name that files should be written to.
 
 Estos controladores pueden requerir que proporcione credenciales adicionales para realizar escrituras en los backends. See `config.sample.json` for fields for those credentials. In some cases, the driver can use a system configured credential for the backend (e.g., if you are logged into your AWS CLI account, and run the hub from that environment, it won't need to read credentials from your `config.json`).
 
