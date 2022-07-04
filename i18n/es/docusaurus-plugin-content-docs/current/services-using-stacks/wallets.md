@@ -1,10 +1,10 @@
 ---
 title: Wallets
-description: Wallets for Stacks
+description: Wallets para Stacks
 sidebar_position: 4
 ---
 
-A list of hardware and software wallets for Stacks
+Un listado de wallets de hardware y software para Stacks
 
 :::tip ¿Falta uno?
 Por favor edita esta página para agregar cualquier sitio web relevante que falte.
