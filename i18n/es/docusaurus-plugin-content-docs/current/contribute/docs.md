@@ -60,17 +60,17 @@ Una vez finalizados los cambios, puedes construir un site entero con el siguient
 npm run build
 ```
 
-:::consejo `npx docusaurus start` solo se carga la lengua por defecto (inglés). To test all languages you can build with `npm run build` and then preview your build with `npm run serve`. :::
+:::consejo `npx docusaurus start` solo se carga la lengua por defecto (inglés). Para testear todos los lenguajes puedes crear una versión con `npm run build` y luego previsualizarla con `npm run serve`. :::
 
 ### Una alternativa: trabajar en el navegador
 
-As an alterative to working locally, you can also use the web IDE gitpod that provides an environment to contribute directly from within your browser.
+Como alternativa a trabajar en local, también puedes usar el IDE web gitpod que porvee un entorno para contrubuir directamente desde tu navegador.
 
-You only need to have a github account and open [this link](https://gitpod.io/#https://github.com/stacks-network/docs).
+Solo necesitas un cuenta de GitHub y abrir [este link](https://gitpod.io/#https://github.com/stacks-network/docs).
 
 ### Estructura de los ficheros
 
-If you are interested in only adding new documentation content to the site, the files that will be important to you are located within `./docs/*`:
+Si te interesa añadir nuevo contenido de documentación en este sitio, los ficheros que relevantes están en `./docs/*`:
 
 ```bash
 docs/
