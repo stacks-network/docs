@@ -28,7 +28,7 @@ El centro de Gaia actualmente soporta los siguientes controladores:
 'google-cloud' === Google Cloud Storage
 ```
 
-Establezca el controlador que desea utilizar en el archivo [config.json](https://github.com/stacks-network/gaia/blob/master/hub/config.sample.json) con el parámetro `driver`. Many drivers additionally accept the `bucket` parameter, which controls the bucket name that files should be written to.
+Establezca el controlador que desea utilizar en el archivo [config.json](https://github.com/stacks-network/gaia/blob/master/hub/config.sample.json) con el parámetro `driver`. Muchos controladores aceptan adicionalmente el parámetro `bucket`, que controla el nombre del cubo en el que deben escribirse los archivos.
 
 Estos controladores pueden requerir que proporcione credenciales adicionales para realizar escrituras en los backends. See `config.sample.json` for fields for those credentials. In some cases, the driver can use a system configured credential for the backend (e.g., if you are logged into your AWS CLI account, and run the hub from that environment, it won't need to read credentials from your `config.json`).
 
