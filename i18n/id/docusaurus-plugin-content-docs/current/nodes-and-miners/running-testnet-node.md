@@ -39,7 +39,7 @@ Jalan keluar:
 - `18333`
 - `20443-20444`
 
-Port keluar ini untuk menyinkronkan [`stacks-blockchain`][] dan header Bitcoin. Jika tidak terbuka, sinkronisasi akan gagal.
+These egress ports are for syncing stacks-blockchain and Bitcoin headers. Jika tidak terbuka, sinkronisasi akan gagal.
 
 ## Langkah 1: pengaturan awal
 
@@ -57,7 +57,7 @@ mkdir -p ./stacks-node/persistent-data/stacks-blockchain/testnet && cd stacks-no
 
 ## Langkah 2: menjalankan blockchain Stacks
 
-Mulai kontainer [`stacks-blockchain`][] dengan perintah berikut:
+Start the stacks-blockchain container with the following command:
 
 ```sh
 docker run -d --rm \
@@ -69,7 +69,7 @@ docker run -d --rm \
 /bin/stacks-node testnet
 ```
 
-Anda dapat memverifikasi kontainer [`stacks-blockchain`][] yang sedang berjalan dengan perintah:
+You can verify the running stacks-blockchain container with the command:
 
 ```sh
 docker ps --filter name=stacks-blockchain
@@ -81,7 +81,7 @@ docker ps --filter name=stacks-blockchain
 The initial burnchain header sync can take several minutes, until this is done the following commands will not work
 :::
 
-Untuk memverifikasi kemajuan sinkronisasi header [`stacks-blockchain`][] burnchain:
+To verify the stacks-blockchain burnchain header sync progress:
 
 ```sh
 docker logs stacks-blockchain
@@ -95,7 +95,7 @@ INFO [1626290748.103291] [src/burnchains/bitcoin/spv.rs:926] [main] Syncing Bitc
 INFO [1626290776.956535] [src/burnchains/bitcoin/spv.rs:926] [main] Syncing Bitcoin headers: 1.7% (12000 out of 2034380)
 ```
 
-Untuk memverifikasi tinggi [`stacks-blockchain`][] yang sedang berlangsung, gunakan perintah berikut:
+To verify the stacks-blockchain tip height is progressing use the following command:
 
 ```sh
 curl -sL localhost:20443/v2/info | jq

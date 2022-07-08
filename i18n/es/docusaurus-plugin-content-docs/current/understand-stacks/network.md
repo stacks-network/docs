@@ -110,7 +110,7 @@ Sample response for a successful call:
 
 :::tip To set the function call arguments and read the result, [Clarity values](../write-smart-contracts/values) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations :::
 
-## Querying
+## Consultas
 
 Stacks 2.0 network details can be queried using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api).
 

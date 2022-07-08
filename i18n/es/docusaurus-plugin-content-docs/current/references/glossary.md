@@ -5,8 +5,8 @@ description: Una lista de términos comunmente utilizados en el ecosistema.
 
 Una lista de términos comunmente utilizados en el ecosistema.
 
-#### App Review
-An incentive mechanism for application developers in the early stage (first four years) of the ecosystem and helps with bootstrapping the two-sided market.
+#### Revisiones de Aplicación
+Un mecanismo de incentivos para los desarrolladores de aplicaciones en la fase inicial (primeros cuatro años) del ecosistema y para impulsar el autodesarrollo del mercado.
 
 #### Atlas
 Una red de pares proporciona un índice global para su descubrimiento.
