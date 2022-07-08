@@ -2,7 +2,7 @@
     "label": "Servicios usando Stacks",
     "position": 6,
     "link": {
-        "type": "índice-generado",
-        "description": "An 'always incomplete' list of services that use Stacks."
+        "type": "generated-index",
+        "description": "Una lista \"siempre incompleta\" de servicios que utilizan Stacks."
     }
 }
