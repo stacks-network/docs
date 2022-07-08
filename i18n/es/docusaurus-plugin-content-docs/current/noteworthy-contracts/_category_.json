@@ -2,7 +2,7 @@
     "label": "Contratos destacables",
     "position": 4,
     "link": {
-        "type": "índice-generado",
+        "type": "generated-index",
         "description": "Contratos específicos desplegados en Clarity que son dignos de mención."
     }
 }
