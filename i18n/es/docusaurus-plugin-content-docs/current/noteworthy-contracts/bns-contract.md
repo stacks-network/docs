@@ -23,7 +23,7 @@ A continuación se muestra una lista de funciones públicas y de sólo lectura a
 #### Output: `(response bool int)`
 #### Firma: `(name-import namespace name beneficiary zonefile-hash)`
 #### Descripción:
-Imports name to a revealed namespace. Each imported name is given both an owner and some off-chain state.
+Importa nombre a un namespace revelado. Cada nombre importado recibe tanto un propietario como un estado fuera de la cadena.
 
 ### name-preorder
 
@@ -31,7 +31,7 @@ Imports name to a revealed namespace. Each imported name is given both an owner 
 #### Output: `(response uint int)`
 #### Firma: `(name-preorder hashed-salted-fqn stx-to-burn)`
 #### Descripción:
-Preorders a name by telling all BNS nodes the salted hash of the BNS name. It pays the registration fee to the namespace owner's designated address.
+Preordena un nombre diciendo a todos los nodos BNS el hash salt del nombre BNS. Se paga la cuota de registro a la dirección designada por el propietario del espacio de nombres.
 
 ### name-register
 
@@ -39,7 +39,7 @@ Preorders a name by telling all BNS nodes the salted hash of the BNS name. It pa
 #### Output: `(response bool int)`
 #### Signature: `(name-register namespace name salt zonefile-hash)`
 #### Descripción:
-Reveals the salt and the name to all BNS nodes, and assigns the name an initial public key hash and zone file hash.
+Revela la salt y el nombre a todos los nodos BNS, y asigna a el nombre un hash de clave pública inicial y un hash del archivo de zona.
 
 ### name-renewal
 

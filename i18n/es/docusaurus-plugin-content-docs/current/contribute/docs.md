@@ -43,34 +43,34 @@ También puede probar el sitio localmente utilizando este método.
 8. Visite GitHub y haga su pull request.
 
 ## Información adicional
-### Running and building the site locally (optional)
+### Ejecutando y construyendo el sitio en local (opcional)
 
-You can start the page locally with the following command. This is enough to preview your changes.
+Puedes iniciar la página en local con el siguiente comando. Esto es suficiente para previsualizar tus cambios.
 ```bash
 npx docusaurus start
 ```
 
-Before running this command for the first time you will need to run `npm install` to install dependencies.
+Antes de ejecutar este comando por primera vez, debes de ejecutar `npm install` para instalar las dependencias.
 
-The docs site will be accessible at this url: [`http://localhost:3000`](http://localhost:3000).
+La página de docs será accesible en la siguiente url: [`http://localhost:3000`](http://localhost:3000).
 
 
-After you finished your changes, you can also build the entire site with the following command (not usually needed):
+Una vez finalizados los cambios, puedes construir un site entero con el siguiente comando (normalmente no es necesario):
 ```bash
 npm run build
 ```
 
-:::tip `npx docusaurus start` will only load the default language (english). To test all languages you can build with `npm run build` and then preview your build with `npm run serve`. :::
+:::consejo `npx docusaurus start` solo se carga la lengua por defecto (inglés). Para testear todos los lenguajes puedes crear una versión con `npm run build` y luego previsualizarla con `npm run serve`. :::
 
 ### Una alternativa: trabajar en el navegador
 
-As an alterative to working locally, you can also use the web IDE gitpod that provides an environment to contribute directly from within your browser.
+Como alternativa a trabajar en local, también puedes usar el IDE web gitpod que porvee un entorno para contrubuir directamente desde tu navegador.
 
-You only need to have a github account and open [this link](https://gitpod.io/#https://github.com/stacks-network/docs).
+Solo necesitas un cuenta de GitHub y abrir [este link](https://gitpod.io/#https://github.com/stacks-network/docs).
 
 ### Estructura de los ficheros
 
-If you are interested in only adding new documentation content to the site, the files that will be important to you are located within `./docs/*`:
+Si te interesa añadir nuevo contenido de documentación en este sitio, los ficheros que relevantes están en `./docs/*`:
 
 ```bash
 docs/

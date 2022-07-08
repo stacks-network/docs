@@ -1,6 +1,6 @@
 ---
-title: Accounts
-description: Guide to Stacks 2.0 accounts
+title: Cuentas
+description: Guía de cuentas de Stacks 2.0
 sidebar_position: 5
 ---
 
@@ -8,9 +8,9 @@ sidebar_position: 5
 
 Stacks 2.0 accounts are entities that own assets, like Stacks (STX) tokens. An account has an address, private key, nonce, and one or more asset balances.
 
-:::tip The encryption algorithm used in Stacks 2.0 is **[secp256k1](https://en.bitcoinwiki.org/wiki/Secp256k1)**.
+:::tip El algoritmo de cifrado utilizado en Stacks 2.0 es **[secp256k1](https://en.bitcoinwiki.org/wiki/Secp256k1)**.
 
-Additionally, [Ed25519](https://ed25519.cr.yp.to/) is also used just for the VRF (Verifiable Random Function). :::
+Adicionalmente, [Ed25519](https://ed25519.cr.yp.to/) también se utiliza solo para la VRF (función aleatoria verificable). :::
 
 Assets cannot leave an account without an action from the account owner. All changes to assets (and the balances of the account) require a corresponding transaction.
 
@@ -29,7 +29,7 @@ If the seed phrase is lost, access to the associated account cannot be restored.
 The easiest way to generate a new Stacks 2.0 account is to use the [Stacks CLI](https://github.com/hirosystems/stacks.js/tree/master/packages/cli):
 
 ```bash
-# install CLI globally
+# instalar CLI globalmente
 npm install --global @stacks/cli
 
 # generate a new account and store details in a new file
@@ -37,7 +37,7 @@ npm install --global @stacks/cli
 stx make_keychain -t > cli_keychain.json
 ```
 
-`make_keychain` creates the following file:
+`make_keychain` crea la siguiente línea:
 
 ```js
 {
@@ -54,7 +54,7 @@ stx make_keychain -t > cli_keychain.json
 
 :::tip Check out the [Stacks CLI reference](https://docs.hiro.so/references/stacks-cli) for more details :::
 
-| Field                | Descripción                                                                                                                                                        |
+| Campo                | Descripción                                                                                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `mnemonic`           | A 24-word seed phrase used to access the account, generated using [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) with 256 bits of entropy |
 | `keyInfo.privateKey` | Private key for the account. Required for token transfers and often referred to as `senderKey`                                                                     |
@@ -118,7 +118,7 @@ npx -q stacks-gen sk --testnet
 
 Full documentation available at [stacks-gen](https://github.com/psq/stacks-gen).
 
-## Querying
+## Consultas
 
 ### Get Stacks (STX) balance and nonce
 

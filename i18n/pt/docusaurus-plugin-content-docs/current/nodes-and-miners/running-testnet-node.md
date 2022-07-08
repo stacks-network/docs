@@ -38,7 +38,7 @@ Egress:
 - `18333`
 - `20443-20444`
 
-These egress ports are for syncing [`stacks-blockchain`][] and Bitcoin headers. If they're not open, the sync will fail.
+These egress ports are for syncing stacks-blockchain and Bitcoin headers. If they're not open, the sync will fail.
 
 ## Step 1: initial setup
 
@@ -56,7 +56,7 @@ mkdir -p ./stacks-node/persistent-data/stacks-blockchain/testnet && cd stacks-no
 
 ## Step 2: running Stacks blockchain
 
-Start the [`stacks-blockchain`][] container with the following command:
+Start the stacks-blockchain container with the following command:
 
 ```sh
 docker run -d --rm \
@@ -68,7 +68,7 @@ docker run -d --rm \
 /bin/stacks-node testnet
 ```
 
-You can verify the running [`stacks-blockchain`][] container with the command:
+You can verify the running stacks-blockchain container with the command:
 
 ```sh
 docker ps --filter name=stacks-blockchain
@@ -79,7 +79,7 @@ docker ps --filter name=stacks-blockchain
 :::info The initial burnchain header sync can take several minutes, until this is done the following commands will not work
 :::
 
-To verify the [`stacks-blockchain`][] burnchain header sync progress:
+To verify the stacks-blockchain burnchain header sync progress:
 
 ```sh
 docker logs stacks-blockchain
@@ -93,7 +93,7 @@ INFO [1626290748.103291] [src/burnchains/bitcoin/spv.rs:926] [main] Syncing Bitc
 INFO [1626290776.956535] [src/burnchains/bitcoin/spv.rs:926] [main] Syncing Bitcoin headers: 1.7% (12000 out of 2034380)
 ```
 
-To verify the [`stacks-blockchain`][] tip height is progressing use the following command:
+To verify the stacks-blockchain tip height is progressing use the following command:
 
 ```sh
 curl -sL localhost:20443/v2/info | jq
