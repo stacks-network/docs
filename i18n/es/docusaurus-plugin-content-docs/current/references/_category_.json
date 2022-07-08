@@ -2,7 +2,7 @@
     "label": "Referencias",
     "position": 7,
     "link": {
-        "type": "índice-generado",
+        "type": "generated-index",
         "description": "Referencias de Stacks."
     }
 }
