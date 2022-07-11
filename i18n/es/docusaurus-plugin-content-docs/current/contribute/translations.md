@@ -5,15 +5,15 @@ description: '¿Quieres ayudar a traducir la documentación a tu propio idioma?'
 
 ## Ayuda con las traducciones
 
-Translations are managed with Crowdin.  
-Anybody can colaborate and no technichal skills are required, as it's all done on the browser.
+Las traducciones se gestionan con Crowdin.  
+Cualquiera puede colaborar y no se requieren habilidades técnicas, ya que todo se hace en el navegador.
 
 Para ayudarte con la traducción, ve a [esta página](https://crowdin.com/project/docsstacksco), haz clic en cualquier idioma y empieza a traducir.
 
 Toda ayuda es bienvenida.
 
 :::caution
-Please don't add any translations to the Github repository, as the translated pages get rewritten from Crowdin. Translations need to be added on Crodin intead.
+Por favor, no añadas ninguna traducción al repositorio de Github, ya que las páginas traducidas son reescritas desde Crowdin. Es necesario añadir las traducciones en Crodin en vez.
 :::
 
 ### Problemas comunes en las traducciones
