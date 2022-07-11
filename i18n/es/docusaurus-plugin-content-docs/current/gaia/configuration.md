@@ -30,21 +30,21 @@ El centro de Gaia actualmente soporta los siguientes controladores:
 
 Establezca el controlador que desea utilizar en el archivo [config.json](https://github.com/stacks-network/gaia/blob/master/hub/config.sample.json) con el parámetro `driver`. Muchos controladores aceptan adicionalmente el parámetro `bucket`, que controla el nombre del cubo en el que deben escribirse los archivos.
 
-Estos controladores pueden requerir que proporcione credenciales adicionales para realizar escrituras en los backends. See `config.sample.json` for fields for those credentials. In some cases, the driver can use a system configured credential for the backend (e.g., if you are logged into your AWS CLI account, and run the hub from that environment, it won't need to read credentials from your `config.json`).
+Estos controladores pueden requerir que proporcione credenciales adicionales para realizar escrituras en los backends. Vea `config.sample.json` para ver los campos para esas credenciales. En algunos casos, el controlador puede usar una credencial configurada del sistema para el backend (p.ej. si ha iniciado sesión en su cuenta de AWS CLI, y ejecuta el hub desde ese entorno, no necesitará leer las credenciales de su `config.json`).
 
-_Note:_ The disk driver requires a \*nix like filesystem interface, and will not work correctly when trying to run in a Windows environment. :::
+_Nota:_ El controlador de disco requiere una interfaz de sistema de archivos similar a la de \*nix, y no funcionará correctamente al intentar ejecutarse en un entorno Windows. :::
 
 ## Nota sobre SSL
 
-We _strongly_ recommend that you deploy your Gaia hub with SSL enabled. Otherwise, the tokens used to authenticate with the Gaia hub may be stolen by attackers, which could allow them to execute writes on your behalf.  
-Configuration options are available to run the hub with an `https` Node.js server.  
-Otherwise, a reverse proxy web server such as nginx or Apache can be used.
+Le recomendamos _encarecidamente_ que despliegue su hub Gaia con SSL habilitado. De lo contrario, los tokens utilizados para autenticarse con el Hub de Gaia pueden ser robados por atacantes, lo que podría permitirles ejecutar escrituras en tu nombre.  
+Las opciones de configuración están disponibles para ejecutar el hub con un nodo `https` en un servidor Node.js  
+De lo contrario, se puede utilizar un servidor web proxy inverso, como nginx o Apache.
 
 ## Requiere URL correcta del Hub
 
-If you turn on the `requireCorrectHubUrl` option in your `config.json` file, your Gaia hub will require that authentication requests correctly include the `hubURL` they are trying to connect with. This is used to prevent a malicious gaia hub from using an authentication token for itself on other Gaia hubs.
+Si activa la opción `requireCorrectHubUrl` en el archivo `config.json`, su hub Gaia requerirá que las solicitudes de autenticación incluyan correctamente la `hubURL` con la que están intentando conectarse. Esto se utiliza para evitar que un hub malicioso de gaia utilice un token de autenticación para sí mismo en otros hubs de Gaia.
 
-By default, the Gaia hub will validate that the supplied URL matches `https://${config.serverName}`, but if there are multiple valid URLs for clients to reach the hub at, you can include a list in your `config.json`:
+Por defecto, el hub de Gaia validará que la URL proporcionada coincida con `https://${config.serverName}`, pero si hay múltiples URLs válidas para que los clientes puedan acceder al hub, puede incluir una lista en `config.json`:
 
 ```javascript
 {
@@ -58,16 +58,16 @@ By default, the Gaia hub will validate that the supplied URL matches `https://${
 
 ## El parámetro readURL
 
-By default, the gaia hub drivers will return read URLs which point directly at the written content. Por ejemplo, un controlador S3 devolvería la URL directamente al archivo S3. However, if you configure a CDN or domain to point at that same bucket, you can use the `readURL` parameter to tell the gaia hub that files can be read from the given URL. For example, the `hub.blockstack.org` Gaia Hub is configured to return a read URL that looks like `https://gaia.blockstack.org/hub/`.
+Por defecto, los controladores de los hub de gaia devolverán URLs de lectura que apuntan directamente al contenido escrito. Por ejemplo, un controlador S3 devolvería la URL directamente al archivo S3. Sin embargo, si configura un CDN o dominio para apuntar a ese mismo bucket, puedes usar el parámetro `readURL` para decirle al hub de gaia que los archivos pueden ser leídos desde la URL dada. Por ejemplo, el `hub.blockstack.org` Gaia Hub está configurado para devolver una URL de lectura que se vea `https://gaia.blockstack.org/hub/`.
 
-Unset this configuration parameter if you do not intend to deploy any caching.
+Desactive este parámetro de configuración si no tiene intención de desplegar ningún caché.
 
-## Minimum Proofs Requirement
+## Requisitos mínimos de pruebas
 
-The gaia hub can also be configured to require a minimum number of social proofs in a user's profile to accept writes from that user. Esto puede utilizarse como una especie de mecanismo de control de spam. However, we recommend for the smoothest operation of your gaia hub, to set the `proofsConfig.proofsRequired` configuration key to `0`.
+El Hub de gaia también puede configurarse para que requiera un número mínimo de pruebas sociales en el perfil de un usuario para aceptar escrituras de ese usuario. Esto puede utilizarse como una especie de mecanismo de control de spam. Sin embargo, recomendamos para el funcionamiento más fluido de su hub de gaia, para establecer el `testsConfig.parallsRequired` la clave de configuración a `0`.
 
-## CDN & Replicated Hubs
+## CDN & Hubs Duplicados
 
 - https://docs.microsoft.com/en-us/azure/storage/blobs/storage-https-custom-domain-cdn
 
-- The hub implementation is designed to be ran from a single Node.js instance. If the hub instance is sharded (e.g. replicated hubs via load balancing), then any given `bucket` (identified by URI segment) must be served by the same instance, At least a couple elements of the Gaia Hub depend on this: token invalidation in-memory caching, and resource endpoint 409 contention behavior.
+- La implementación del hub está diseñada para ejecutarse desde una única instancia de Node.js. Si la instancia del hub está fragmentada (por ejemplo, hubs replicados a través de balanceo de carga), entonces cualquier `bucket` (identificado por el segmento URI) debe ser servido por la misma instancia, Al menos un par de elementos del Gaia Hub dependen de esto: la invalidación de tokens en la memoria caché, y el comportamiento de contención del endpoint de recursos 409.
