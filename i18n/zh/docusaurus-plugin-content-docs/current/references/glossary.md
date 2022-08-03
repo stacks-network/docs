@@ -46,7 +46,7 @@ The part of a network that carries signaling traffic and is responsible for rout
 A server that runs Stacks Blockchain services.
 
 #### crypto-asset
-A digital asset which utilises cryptography peer-to-peer networking and a public ledger to regulate the creation of new units verify transactions, and secure the transactions without the intervention of any middleman.
+A digital asset which utilises cryptography, peer-to-peer networking and a public ledger to regulate the creation of new units, verify transactions and secure the transactions without the intervention of any middleman.
 
 #### cryptography
 The practise and study of encryption and decryption - encoding data so that it can only be decoded by specific individuals. A system for encrypting and decrypting data is a cryptosystem. The practise and study of encryption and decryption - encoding data so that it can only be decoded by specific individuals. A system for encrypting and decrypting data is a cryptosystem. A system for encrypting and decrypting data is a cryptosystem.
@@ -102,7 +102,7 @@ Clients that can independently validate the existence of transactions by downloa
 
 #### magic recovery code
 
-An long encrypted string, for example: `36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5WXxSTazJsUjOA...` Do not share the QR code that accompanied your recovery code either. This is a QR code: This is a QR code: This is a QR code:
+A long encrypted string, for example: `36mWivFdy0YPH2z31EflpQz/Y0UMrOrJ++lH=0EI7c3mop2JuRBm5WXxSTazJsUjOA...` Do not share the QR code that accompanied your recovery code either. This is a QR code:
 
 ![](/img/qr-code.png)
 
@@ -179,7 +179,7 @@ A complete version of our open-source software available on Github at https://gi
 An application for accessing assets, identity and storage. More information and example [here](../services-using-stacks/wallets). An application for accessing assets, identity and storage. Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/).
 
 #### storage hub
-An Gaia instance run by a hub provider or software. An Gaia instance run by a hub provider or software. A Gaia hub stores data in separate, addressed location. An Gaia instance run by a hub provider or software. A Gaia hub stores data in separate, addressed location.
+A Gaia instance run by a hub provider or software. A Gaia hub stores data in a separate, addressed location.
 
 #### storage provider
 A third-party company cloud or software provider that hosts one or more Gaia storage hubs.
