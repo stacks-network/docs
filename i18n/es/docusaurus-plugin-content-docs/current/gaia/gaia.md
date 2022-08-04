@@ -8,7 +8,7 @@ tags:
 
 ## Introducción
 
-Apps built with the Stacks blockchain store off-chain data using a storage system called Gaia.
+Las aplicaciones construidas en la blockchain de Stacks almacena datos fuera de cadena usando un sistema de almacenamiento llamado Gaia.
 
 Whereas public transactional metadata is best stored on the Stacks blockchain, user application data can often be stored more efficiently and privately in Gaia storage.
 
