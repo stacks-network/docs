@@ -85,26 +85,26 @@ docs/
   write-smart-contracts/
 ```
 
-The routing for this site is file based, meaning if you created a folder within `/docs/gaia/` named `testing` and in it a file named `test1.md`, you would be able to navigate to `http://localhost:3000/gaia/testing/test1` and you would see whatever content is in that markdown file.
+La ruta de este sitio está basada en archivos, es decir, si creaste una carpeta dentro de `/docs/gaia/` nombrada `testing` y en ella un archivo llamado `test1. d`, podrías navegar a `http://localhost:3000/gaia/testing/test1` y verías cualquier contenido en ese archivo de markdown.
 
 Todos los documentos en inglés se almacenan en la carpeta `/docs/`.
 
-To add new English content simply add a markdown file (.md) into any subfolder in docs, and it will be automatically displayed in the category of that folder.
+Para añadir nuevos contenidos en inglés simplemente agregue un archivo markdown (.md) en cualquier subcarpeta en docs, y se mostrará automáticamente en la categoría de esa carpeta.
 
-All the docs in other languages are stored under the folder `i18n`, but these files should never be edited using GitHub as they are overwritten by Crowdin every time new translations are added.  **To make changes in other languages**, you must do so using Crowdin. Please refer to [translations](translations) instead.
+Todos los documentos en otros idiomas se almacenan bajo la carpeta `i18n`, pero estos archivos nunca deben editarse usando GitHub, ya que son sobrescritos por Crowdin cada vez que se agregan nuevas traducciones.  **Para hacer cambios en otros idiomas**, debes hacerlo usando Crowdin. Por favor, consulta [traducciones](translations) en su lugar.
 
 ### Frontmatter
 
-Frontmatter is the top part of any markdown document that is written in a language called [YAML](https://yaml.org/). It looks like this:
+Frontmatter es la parte superior de cualquier documento markdown que esté escrito en un idioma llamado [YAML](https://yaml.org/). Se verá así:
 
 ```yaml
 ---
-title: This is my page title
-description: A short, concise sentence describing what is on this page
+title: Este es mi título de página
+description: Una frase breve y concisa que describe lo que está en esta página
 ---
 ```
 
-Frontmatter gives us the ability to define some things within a page that the site can use, such as a page title or page description. When adding any new page, please include a `title` and `description`.
+Frontmatter nos da la capacidad de definir algunas cosas dentro de una página que el sitio puede usar, como un título de página o descripción de página. Al agregar cualquier nueva página, por favor incluya un `tittle` y `description`.
 
 
 <!--
@@ -126,11 +126,11 @@ npx prettier --write mynewfiletocheck.md
 -->
 ### Usar "Commits Convencionales"
 
-We use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) as and commits naming convention. Use it while contributing, please.
+Utilizamos los [Commits Convencionales](https://www.conventionalcommits.org/en/v1.0.0/) y la convención de nombres de commits. Utilízalo mientras contribuyes, por favor.
 
 ### Bloques de código
 
-To write a code block, you need to wrap your code in ` ```language `, and end your code block with ` ``` `. Here is an example of ` ```clarity `.
+Para escribir un bloque de código, necesitas envolver tu código en ` ```language `, y termina tu bloque de código con ` ``` `. Aquí hay un ejemplo de ` ```clarity `.
 
 ```clarity
 (define-data-var counter int 0)
