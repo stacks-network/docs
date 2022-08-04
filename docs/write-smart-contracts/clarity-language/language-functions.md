@@ -245,7 +245,7 @@ is-eq _must_ be the same type.
 ```clarity
 (is-eq 1 1) ;; Returns true
 (is-eq true false) ;; Returns false
-(is-eq "abc" 234 234) ;; Throws type error
+(is-eq \"abc\" 234 234) ;; Throws type error
 ```
     
 ### if
@@ -295,8 +295,8 @@ Also, note that, no matter what kind of sequences the inputs are, the output is 
 ```clarity
 (map not (list true false true false)) ;; Returns (false true false true)
 (map + (list 1 2 3) (list 1 2 3) (list 1 2 3)) ;; Returns (3 6 9)
-(define-private (a-or-b (char (string-utf8 1))) (if (is-eq char u"a") u"a" u"b"))
-(map a-or-b u"aca") ;; Returns (u"a" u"b" u"a")
+(define-private (a-or-b (char (string-utf8 1))) (if (is-eq char u\"a\") u\"a\" u\"b\"))
+(map a-or-b u\"aca\") ;; Returns (u\"a\" u\"b\" u\"a\")
 (define-private (zero-or-one (char (buff 1))) (if (is-eq char 0x00) 0x00 0x01))
 (map zero-or-one 0x000102) ;; Returns (0x00 0x01 0x01)
 ```
@@ -327,8 +327,8 @@ The `func` argument must be a literal function name.
 ;; calculates (- 11 (- 7 (- 3 2)))
 (fold - (list 3 7 11) 2) ;; Returns 5 
 (define-private (concat-string (a (string-ascii 20)) (b (string-ascii 20))) (unwrap-panic (as-max-len? (concat a b) u20)))
-(fold concat-string "cdef" "ab")   ;; Returns "fedcab"
-(fold concat-string (list "cd" "ef") "ab")   ;; Returns "efcdab"
+(fold concat-string \"cdef\" \"ab\")   ;; Returns \"fedcab\"
+(fold concat-string (list \"cd\" \"ef\") \"ab\")   ;; Returns \"efcdab\"
 (define-private (concat-buff (a (buff 20)) (b (buff 20))) (unwrap-panic (as-max-len? (concat a b) u20)))
 (fold concat-buff 0x03040506 0x0102)   ;; Returns 0x060504030102
 ```
@@ -358,7 +358,7 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
 #### example: 
 ```clarity
 (concat (list 1 2) (list 3 4)) ;; Returns (1 2 3 4)
-(concat "hello " "world") ;; Returns "hello world"
+(concat \"hello \" \"world\") ;; Returns \"hello world\"
 (concat 0x0102 0x0304) ;; Returns 0x01020304
 ```
     
@@ -376,7 +376,7 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
 ```clarity
 (as-max-len? (list 2 2 2) u3) ;; Returns (some (2 2 2))
 (as-max-len? (list 1 2 3) u2) ;; Returns none
-(as-max-len? "hello" u10) ;; Returns (some "hello")
+(as-max-len? \"hello\" u10) ;; Returns (some \"hello\")
 (as-max-len? 0x010203 u10) ;; Returns (some 0x010203)
 ```
 
@@ -390,7 +390,7 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
     `
 #### example: 
 ```clarity
-(len "blockstack") ;; Returns u10
+(len \"blockstack\") ;; Returns u10
 (len (list 1 2 3 4 5)) ;; Returns u5
 (len 0x010203) ;; Returns u3
 ```
@@ -406,10 +406,10 @@ for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(
 `
 #### example: 
 ```clarity
-(element-at "blockstack" u5) ;; Returns (some "s")
+(element-at \"blockstack\" u5) ;; Returns (some \"s\")
 (element-at (list 1 2 3 4 5) u5) ;; Returns none
 (element-at (list 1 2 3 4 5) (+ u1 u2)) ;; Returns (some 4)
-(element-at "abcd" u1) ;; Returns (some "b")
+(element-at \"abcd\" u1) ;; Returns (some \"b\")
 (element-at 0xfb01 u1) ;; Returns (some 0x01)
 ```
     
@@ -426,9 +426,9 @@ If the target item is not found in the sequence (or if an empty string or buffer
 supplied), this function returns `none`.
 #### example: 
 ```clarity
-(index-of "blockstack" "b") ;; Returns (some u0)
-(index-of "blockstack" "k") ;; Returns (some u4)
-(index-of "blockstack" "") ;; Returns none
+(index-of \"blockstack\" \"b\") ;; Returns (some u0)
+(index-of \"blockstack\" \"k\") ;; Returns (some u4)
+(index-of \"blockstack\" \"\") ;; Returns none
 (index-of (list 1 2 3 4 5) 6) ;; Returns none
 (index-of 0xfb01 0x01) ;; Returns (some u1)
 ```
@@ -485,9 +485,9 @@ it returns `(some value)`.
 #### example: 
 ```clarity
 (define-map names-map { name: (string-ascii 10) } { id: int })
-(map-set names-map { name: "blockstack" } { id: 1337 })
-(map-get? names-map (tuple (name "blockstack"))) ;; Returns (some (tuple (id 1337)))
-(map-get? names-map { name: "blockstack" }) ;; Same command, using a shorthand for constructing the tuple
+(map-set names-map { name: \"blockstack\" } { id: 1337 })
+(map-get? names-map (tuple (name \"blockstack\"))) ;; Returns (some (tuple (id 1337)))
+(map-get? names-map { name: \"blockstack\" }) ;; Same command, using a shorthand for constructing the tuple
 ```
     
 ### map-set
@@ -504,8 +504,8 @@ and therefore the maximum size of a value that may be inserted into a map is MAX
 #### example: 
 ```clarity
 (define-map names-map { name: (string-ascii 10) } { id: int })
-(map-set names-map { name: "blockstack" } { id: 1337 }) ;; Returns true
-(map-set names-map (tuple (name "blockstack")) (tuple (id 1337))) ;; Same command, using a shorthand for constructing the tuple
+(map-set names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true
+(map-set names-map (tuple (name \"blockstack\")) (tuple (id 1337))) ;; Same command, using a shorthand for constructing the tuple
 ```
     
 ### map-insert
@@ -523,9 +523,9 @@ and therefore the maximum size of a value that may be inserted into a map is MAX
 #### example: 
 ```clarity
 (define-map names-map { name: (string-ascii 10) } { id: int })
-(map-insert names-map { name: "blockstack" } { id: 1337 }) ;; Returns true
-(map-insert names-map { name: "blockstack" } { id: 1337 }) ;; Returns false
-(map-insert names-map (tuple (name "blockstack")) (tuple (id 1337))) ;; Same command, using a shorthand for constructing the tuple
+(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true
+(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns false
+(map-insert names-map (tuple (name \"blockstack\")) (tuple (id 1337))) ;; Same command, using a shorthand for constructing the tuple
 ```
     
 ### map-delete
@@ -539,10 +539,10 @@ If a value did not exist for this key in the data map, the function returns `fal
 #### example: 
 ```clarity
 (define-map names-map { name: (string-ascii 10) } { id: int })
-(map-insert names-map { name: "blockstack" } { id: 1337 }) ;; Returns true
-(map-delete names-map { name: "blockstack" }) ;; Returns true
-(map-delete names-map { name: "blockstack" }) ;; Returns false
-(map-delete names-map (tuple (name "blockstack"))) ;; Same command, using a shorthand for constructing the tuple
+(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true
+(map-delete names-map { name: \"blockstack\" }) ;; Returns true
+(map-delete names-map { name: \"blockstack\" }) ;; Returns false
+(map-delete names-map (tuple (name \"blockstack\"))) ;; Same command, using a shorthand for constructing the tuple
 ```
     
 ### tuple
@@ -558,8 +558,8 @@ associated with the expressions' paired key name.
 There is a shorthand using curly brackets of the form {key0: expr0, key1: expr, ...}`
 #### example: 
 ```clarity
-(tuple (name "blockstack") (id 1337)) ;; using tuple
-{name: "blockstack", id: 1337} ;; using curly brackets
+(tuple (name \"blockstack\") (id 1337)) ;; using tuple
+{name: \"blockstack\", id: 1337} ;; using curly brackets
 ```
     
 ### get
@@ -573,10 +573,10 @@ the tuple. If the supplied option is a `(none)` option, get returns `(none)`.
 #### example: 
 ```clarity
 (define-map names-map { name: (string-ascii 12) } { id: int })
-(map-insert names-map { name: "blockstack" } { id: 1337 }) ;; Returns true
-(get id (tuple (name "blockstack") (id 1337))) ;; Returns 1337
-(get id (map-get? names-map (tuple (name "blockstack")))) ;; Returns (some 1337)
-(get id (map-get? names-map (tuple (name "non-existent")))) ;; Returns none
+(map-insert names-map { name: \"blockstack\" } { id: 1337 }) ;; Returns true
+(get id (tuple (name \"blockstack\") (id 1337))) ;; Returns 1337
+(get id (map-get? names-map (tuple (name \"blockstack\")))) ;; Returns (some 1337)
+(get id (map-get? names-map (tuple (name \"non-existent\")))) ;; Returns none
 ```
     
 ### merge
@@ -588,9 +588,9 @@ The `merge` function returns a new tuple with the combined fields, without mutat
 #### example: 
 ```clarity
 (define-map users { id: int } { name: (string-ascii 12), address: (optional principal) })
-(map-insert users { id: 1337 } { name: "john", address: none }) ;; Returns true
+(map-insert users { id: 1337 } { name: \"john\", address: none }) ;; Returns true
 (let ((user (unwrap-panic (map-get? users { id: 1337 }))))
-(merge user { address: (some 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) })) ;; Returns (tuple (address (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)) (name "john"))
+(merge user { address: (some 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) })) ;; Returns (tuple (address (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)) (name \"john\"))
 ```
     
 ### begin
@@ -875,9 +875,9 @@ a `(some ...)` option, it returns the inner value of the option. If the second a
 #### example: 
 ```clarity
 (define-map names-map { name: (string-ascii 12) } { id: int })
-(map-set names-map { name: "blockstack" } { id: 1337 })
-(default-to 0 (get id (map-get? names-map (tuple (name "blockstack"))))) ;; Returns 1337
-(default-to 0 (get id (map-get? names-map (tuple (name "non-existant"))))) ;; Returns 0
+(map-set names-map { name: \"blockstack\" } { id: 1337 })
+(default-to 0 (get id (map-get? names-map (tuple (name \"blockstack\"))))) ;; Returns 1337
+(default-to 0 (get id (map-get? names-map (tuple (name \"non-existant\"))))) ;; Returns 0
 ```
 
 ### asserts!
@@ -907,13 +907,13 @@ option. If the argument is a response type, and the argument is an `(ok ...)` re
 #### example: 
 ```clarity
 (define-map names-map { name: (string-ascii 12) } { id: int })
-(map-set names-map { name: "blockstack" } { id: 1337 })
+(map-set names-map { name: \"blockstack\" } { id: 1337 })
 (define-private (get-name-or-err (name (string-ascii 12)))
   (let ((raw-name (unwrap! (map-get? names-map { name: name }) (err 1))))
        (ok raw-name)))
 
-(get-name-or-err "blockstack") ;; Returns (ok (tuple (id 1337)))
-(get-name-or-err "non-existant") ;; Returns (err 1)
+(get-name-or-err \"blockstack\") ;; Returns (ok (tuple (id 1337)))
+(get-name-or-err \"non-existant\") ;; Returns (err 1)
 ```
     
 ### unwrap-err!
@@ -943,9 +943,9 @@ option. If the argument is a response type, and the argument is an `(ok ...)` re
 #### example: 
 ```clarity
 (define-map names-map { name: (string-ascii 12) } { id: int })
-(map-set names-map { name: "blockstack" } { id: 1337 })
-(unwrap-panic (map-get? names-map { name: "blockstack" })) ;; Returns (tuple (id 1337))
-(unwrap-panic (map-get? names-map { name: "non-existant" })) ;; Throws a runtime exception
+(map-set names-map { name: \"blockstack\" } { id: 1337 })
+(unwrap-panic (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))
+(unwrap-panic (map-get? names-map { name: \"non-existant\" })) ;; Throws a runtime exception
 ```
     
 ### unwrap-err-panic
@@ -1010,7 +1010,7 @@ is untyped, you should use `unwrap-panic` or `unwrap-err-panic` instead of `matc
    value (ok (+ to-add value))
    err-value (err err-value)))
 (add-or-pass-err (ok 5) 20) ;; Returns (ok 25)
-(add-or-pass-err (err "ERROR") 20) ;; Returns (err "ERROR")
+(add-or-pass-err (err \"ERROR\") 20) ;; Returns (err \"ERROR\")
 ```
     
 ### try!
@@ -1026,8 +1026,8 @@ option. If the argument is a response type, and the argument is an `(ok ...)` re
 #### example: 
 ```clarity
 (define-map names-map { name: (string-ascii 12) } { id: int })
-(map-set names-map { name: "blockstack" } { id: 1337 })
-(try! (map-get? names-map { name: "blockstack" })) ;; Returns (tuple (id 1337))
+(map-set names-map { name: \"blockstack\" } { id: 1337 })
+(try! (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))
 (define-private (checked-even (x int))
   (if (is-eq (mod x 2) 0)
       (ok x)
@@ -1061,9 +1061,9 @@ and `false` if it is a `(some ...)`.
 #### example: 
 ```clarity
 (define-map names-map { name: (string-ascii 12) } { id: int })
-(map-set names-map { name: "blockstack" } { id: 1337 })
-(is-none (get id (map-get? names-map { name: "blockstack" }))) ;; Returns false
-(is-none (get id (map-get? names-map { name: "non-existant" }))) ;; Returns true
+(map-set names-map { name: \"blockstack\" } { id: 1337 })
+(is-none (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns false
+(is-none (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns true
 ```
     
 ### is-err
@@ -1090,9 +1090,9 @@ and `false` if it is a `none`.
 ```clarity
 
 (define-map names-map { name: (string-ascii 12) } { id: int })
-(map-set names-map { name: "blockstack" } { id: 1337 })
-(is-some (get id (map-get? names-map { name: "blockstack" }))) ;; Returns true
-(is-some (get id (map-get? names-map { name: "non-existant" }))) ;; Returns false
+(map-set names-map { name: \"blockstack\" } { id: 1337 })
+(is-some (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns true
+(is-some (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns false
 ```
     
 ### filter
@@ -1110,8 +1110,8 @@ The `func` argument must be a literal function name.
 ```clarity
 
 (filter not (list true false true false)) ;; Returns (false false)
-(define-private (is-a (char (string-utf8 1))) (is-eq char u"a"))
-(filter is-a u"acabd") ;; Returns u"aa"
+(define-private (is-a (char (string-utf8 1))) (is-eq char u\"a\"))
+(filter is-a u\"acabd\") ;; Returns u\"aa\"
 (define-private (is-zero (char (buff 1))) (is-eq char 0x00))
 (filter is-zero 0x00010002) ;; Returns 0x0000
 ```
@@ -1141,9 +1141,9 @@ that definition.
 #### example: 
 ```clarity
 (define-non-fungible-token stackaroo (string-ascii 40))
-(nft-mint? stackaroo "Roo" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
-(nft-get-owner? stackaroo "Roo") ;; Returns (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
-(nft-get-owner? stackaroo "Too") ;; Returns none
+(nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
+(nft-get-owner? stackaroo \"Roo\") ;; Returns (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)
+(nft-get-owner? stackaroo \"Too\") ;; Returns none
 ```
     
 ### ft-transfer?
@@ -1190,10 +1190,10 @@ one of the following error codes:
 #### example: 
 ```clarity
 (define-non-fungible-token stackaroo (string-ascii 40))
-(nft-mint? stackaroo "Roo" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
-(nft-transfer? stackaroo "Roo" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
-(nft-transfer? stackaroo "Roo" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u1)
-(nft-transfer? stackaroo "Stacka" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u3)
+(nft-mint? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
+(nft-transfer? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
+(nft-transfer? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u1)
+(nft-transfer? stackaroo \"Stacka\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u3)
 ```
     
 ### nft-mint?
@@ -1214,7 +1214,7 @@ Otherwise, on successfuly mint, it returns `(ok true)`.
 #### example: 
 ```clarity
 (define-non-fungible-token stackaroo (string-ascii 40))
-(nft-mint? stackaroo "Roo" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
+(nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
     
 ### ft-mint?
@@ -1287,8 +1287,8 @@ Otherwise, on successfuly burn, it returns `(ok true)`.
 #### example: 
 ```clarity
 (define-non-fungible-token stackaroo (string-ascii 40))
-(nft-mint? stackaroo "Roo" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
-(nft-burn? stackaroo "Roo" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
+(nft-mint? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
+(nft-burn? stackaroo \"Roo\" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
     
 ### stx-get-balance
