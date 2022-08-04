@@ -8,23 +8,23 @@ tags:
 
 ## Introducción
 
-Las aplicaciones construidas en la blockchain de Stacks almacena datos fuera de cadena usando un sistema de almacenamiento llamado Gaia.
+Las aplicaciones construidas en la blockchain de Stacks almacenan datos fuera de cadena usando un sistema de almacenamiento llamado Gaia.
 
-Whereas public transactional metadata is best stored on the Stacks blockchain, user application data can often be stored more efficiently and privately in Gaia storage.
+Mientras que los metadatos transaccionales públicos se almacenan mejor en la blockchain de Stacks, los datos de las aplicaciones de los usuarios pueden almacenarse a menudo de forma más eficiente y privada en el almacenamiento de Gaia.
 
-Storing data off of the blockchain ensures that Stacks applications can provide users with high performance and high availability for data reads and writes without introducing central trust parties.
+Almacenar datos fuera de la blockchain asegura que las aplicaciones de Stacks pueden proporcionar a los usuarios un alto rendimiento y una alta disponibilidad para lecturas y escrituras de datos sin introducir partes de confianza centrales.
 
 ## Comprender a Gaia en la arquitectura de Stacks
 
-The following diagram depicts the Stacks architecture and Gaia's place in it:
+El siguiente diagrama representa la arquitectura de Stacks y el lugar de Gaia en él.
 
 ![Stacks Architecture](/img/architecture.png)
 
-Blockchains require consensus among large numbers of people, so they can be slow. Additionally, a blockchain is not designed to hold a lot of data. This means using a blockchain for every bit of data a user might write and store is expensive. For example, imagine if an application were storing every tweet in the chain.
+Las Blockchains requieren un consenso entre un gran número de personas, por lo que pueden ser lentas. Adicionalmente, una blockchain no está diseñada para contener muchos datos. Esto significa que usar una blockchain por cada bit de datos que un usuario pueda escribir y almacenar es caro. Por ejemplo, imagínese si una aplicación estaba almacenando cada tweet en la cadena.
 
-The Stacks blockchain addresses performance problems using a layered approach. The base layer consists of the Stacks blockchain and the Blockchain Naming System (BNS). The blockchain governs ownership of identities in the Stacks network. Identities can be names such as domain names, usernames, or application names.
+La blockchain de Stacks aborda los problemas de rendimiento mediante un enfoque por capas. La capa base consiste en la blockchain de Stacks y el Blockchain Naming System (BNS). La Blockchain gobierna la propiedad de identidades en la red de Stacks. Las identidades pueden ser nombres como nombres de dominio, nombres de usuario o nombres de aplicaciones.
 
-When an identity is created, its creation is recorded in the Stacks blockchain. Identities make up the primary data stored into the Stacks blockchain. These identities correspond to routing data in the OSI stack. The routing data is stored in the Atlas Peer Network, the second layer. Every core node that joins the Stacks Network is able to obtain an entire copy of this routing data. Stacks uses the routing data to associate identities (domain names, user names, and application names) with a particular storage location in the final layer, the Gaia Storage System.
+Cuando se crea una identidad, su creación se registra en la blockchain de Stacks. Las identidades componen los datos principales almacenados en la blockchain de Stacks. These identities correspond to routing data in the OSI stack. The routing data is stored in the Atlas Peer Network, the second layer. Every core node that joins the Stacks Network is able to obtain an entire copy of this routing data. Stacks uses the routing data to associate identities (domain names, user names, and application names) with a particular storage location in the final layer, the Gaia Storage System.
 
 A Gaia Storage System consists of a _hub service_ and storage resource on a cloud software provider. The storage provider can be any commercial provider such as Azure, DigitalOcean, Amazon EC2, and so forth. Typically the compute resource and the storage resource reside same cloud vendor, though this is not a requirement. Gaia currently has driver support for S3, Azure Blob Storage, Google Cloud Platform and local disk, but the driver model allows for other backend support as well.
 
