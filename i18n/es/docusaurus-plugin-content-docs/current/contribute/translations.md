@@ -20,6 +20,6 @@ Por favor, no añadas ninguna traducción al repositorio de Github, ya que las p
 
 Al traducir en Crowdin, por favor traduce los textos y no el código html.
 
-If you acccidently modify the html tags you will get errors like shown below (`Seems like some formating tags are missing` or `Translation contains tag that source text doesn't have`). These errors will prevent your translation getting published until the tags are left as they were in the original text.
+Si accidentalmente modificas las etiquetas html, obtendrás errores como los que se muestran a continuación (`Seems like some formating tags are missing` o `Translation contains tag that source text doesn't have`). Estos errores evitarán que tu traducción se publique hasta que las etiquetas se dejen como en el texto original.
 
 ![](/img/crowdin-qa-issue-formatting_tags_missing.png) ![](/img/crowdin-qa-issue-tag_source.png)
