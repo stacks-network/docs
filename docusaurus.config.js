@@ -148,10 +148,10 @@ const config = {
       //Algolio docsearch support
       algolia: {
         // The application ID provided by Algolia
-        appId: '${{ secrets.ALGOLIA_API_ID }}',
+        appId: "YRIGH3WCGU",
   
         // Public API key: it is safe to commit it
-        apiKey: '${{ secrets.ALGOLIA_API_KEY }}',
+        apiKey: '8e46f26b8360e5030da62471366bac29',
   
         indexName: 'stacks',
   
