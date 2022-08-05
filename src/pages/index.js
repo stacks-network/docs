@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -6,6 +6,8 @@ import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import styles from './index.module.css';
+
+import { webVitals } from '@site/src/components/HomepageFeatures/reportWebVitals';
 
 //Added to redirect the main page to the docs
 import {Redirect} from '@docusaurus/router';
@@ -31,6 +33,11 @@ function HomepageHeader() {
 
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
+
+  useEffect(() => {
+    webVitals();
+  }, []);
+
   //Changed return to redirect to docs directly
   return <Redirect to="/docs/intro" />;
   /*
@@ -46,4 +53,3 @@ export default function Home() {
   );
   */
 }
-
