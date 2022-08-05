@@ -7,7 +7,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import styles from './index.module.css';
 
-import { webVitals } from './reportWebVitals';
+import { webVitals } from '@site/src/components/HomepageFeatures/reportWebVitals';
 
 //Added to redirect the main page to the docs
 import {Redirect} from '@docusaurus/router';
