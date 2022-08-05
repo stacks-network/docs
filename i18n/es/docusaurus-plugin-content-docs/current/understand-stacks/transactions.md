@@ -27,7 +27,7 @@ Transactions go through phases before being finally confirmed, and available for
 
 The Stacks 2.0 supports a set of different transaction types:
 
-| **Type**          | **Value**           | **Descripción**                                                                                                                                                                                       |
+| **Type**          | **Valor**           | **Descripción**                                                                                                                                                                                       |
 | ----------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Coinbase          | `coinbase`          | The first transaction in a new block (an entity holding several transactions). Used to register for block rewards. These are not manually generated and broadcasted like other types of transactions. |
 | Token transfer    | `token_transfer`    | Asset transfer from a sender to a recipient                                                                                                                                                           |
