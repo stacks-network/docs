@@ -54,25 +54,25 @@ Especifique los detalles de stacks y luego haga clic en `Next`: ![Specify templa
 | GaiaStorageType | `s3` o `disk`                        | Seleccione el GaiaStorageType que se utilizará como un backend para el Hub de Gaia. Seleccionar `s3` hace que la plantilla cree un bucket de S3 basado en el nombre dado en el campo anterior. Al seleccionar `disk`, la plantilla adjunta un volumen EBS independiente a la instancia EC2 para el almacenamiento del Hub.                                                                                                    |
 | InstaceType     | t2.micro                             | Seleccione el tipo de instancia que desee. El valor predeterminado es `t2.micro`.                                                                                                                                                                                                                                                                                                                                             |
 | KeyName         |                                      | En la lista desplegable KeyName selecciona un [EC2 KeyPair](https://console. aws. amazon. com/ec2/v2/home? region=us-east-1#KeyPairs:) para habilitar el acceso SSH a la instancia EC2. Deberías descargar el archivo keyfile `.pem` para este par desde la consola EC2. Para más información vea la [documentación de EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#prepare-key-pair) |
-| SSHLocation     | 0.0.0.0/0                            | Leave the SSHLocation field with the default value of `0.0.0.0/0` to enable SSH access from any IP address. If you wish to restrict SSH access to the EC2 instance to a certain IP, you can update this field.                                                                                                                                                                                                                |
-| SubnetId        | _subnetid_                           | Select a public subnet                                                                                                                                                                                                                                                                                                                                                                                                        |
+| SSHLocation     | 0.0.0.0/0                            | Deje el campo SSHLocation con el valor predeterminado de `0.0.0.0/0` para habilitar el acceso SSH desde cualquier dirección IP. Si desea restringir el acceso SSH a la instancia de EC2 a una determinada IP, puede actualizar este campo.                                                                                                                                                                                    |
+| SubnetId        | _subnetId_                           | Seleccione una subred pública                                                                                                                                                                                                                                                                                                                                                                                                 |
 | VpcId           | _vpcid_                              |                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
-### Step 4 - Configure stack options
+### Paso 4 - Configurar las opciones de stack
 
-Configure any stack options that fit your desired setup and click `Next`. All these fields are optional.
+Configure cualquier opción de stack que se ajuste a la configuración deseada y haga clic en `Next`. Todos estos campos son opcionales.
 
 ![Specify template](/img/cloudformation-stack-options.png)
 
-### Step 5 - Review
+### Paso 5 - Revisión
 
-Review the configuration of your Gaia hub, select the checkbox to acknowledge that AWS may create IAM resources with custom names and click on `Create stack`.
+Revise la configuración de su hub Gaia, selecciona la casilla de verificación para reconocer que AWS puede crear recursos IAM con nombres personalizados y haz clic en `Create stack`.
 
 ![Specify template](/img/cloudformation-iam-resources.png)
 
-### Step 6 - Retrieve the public IP of your Gaia hub
+### Paso 6 - Recuperar la IP pública de tu Hub de Gaia
 
-Your stack can take several minutes to launch. You can monitor the Events tab of your hub to review the current progress of the launch. When the launch is complete, the Outputs tab displays information about the hub. Select the PublicIP and copy it to configure your domain name.
+Tu stack puede tardar varios minutos en lanzarse. Puede monitorear la pestaña Eventos de su hub para revisar el progreso actual del lanzamiento. Cuando el lanzamiento se haya completado, la pestaña Salidas muestra información sobre el hub. Seleccione PublicIP y cópielo para configurar su nombre de dominio.
 
 Create an `A` DNS record pointing to the given IP in your domain.
 
