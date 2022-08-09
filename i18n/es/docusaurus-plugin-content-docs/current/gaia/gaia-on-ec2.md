@@ -74,9 +74,9 @@ Revise la configuración de su hub Gaia, selecciona la casilla de verificación 
 
 Tu stack puede tardar varios minutos en lanzarse. Puede monitorear la pestaña Eventos de su hub para revisar el progreso actual del lanzamiento. Cuando el lanzamiento se haya completado, la pestaña Salidas muestra información sobre el hub. Seleccione PublicIP y cópielo para configurar su nombre de dominio.
 
-Create an `A` DNS record pointing to the given IP in your domain.
+Crea un registro DNS `A` apuntando a la IP dada en tu dominio.
 
-Wait a few minutes for the DNS record to propagate, and your should be able to access your Gaia hub with SSH.
+Espere unos minutos para que el registro DNS se propague, y debería ser capaz de acceder al hub de Gaia con SSH.
 
 ## Accessing your Gaia hub with SSH
 
