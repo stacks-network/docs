@@ -5,10 +5,10 @@ tags:
   - tutorial
 ---
 
-The following assumes you have [Docker Installed](https://docs.docker.com/docker-for-mac/install/)
+Lo siguiente asume que tienes [Docker instalado](https://docs. docker. com/docker-for-mac/install/)
 
-- Recommended to also have [MacOS Homebrew](https://docs.brew.sh/Installation) installed
-- Use Homebrew to install jq with `brew install jq`
+- Recomendado tener instalado [MacOS Homebrew](https://docs.brew.sh/Installation)
+- Usa Homebrew para instalar jq con `brew install jq`
 
 En su directorio de trabajo:
 
@@ -18,13 +18,13 @@ En su directorio de trabajo:
 $ git clone -b master --single-branch https://github.com/stacks-network/gaia
 ```
 
-**2. Change your cwd:**
+**2. Cambiar tu cwd:**
 
 ```bash
 $ cd gaia/deploy/docker
 ```
 
-**3. Create a copy of sample-disk.env and fill out the values:**
+**3. Crear una copia de sample-disk.env y rellena los valores:**
 
 ```
 $ cp sample-disk.env disk.env
@@ -49,15 +49,15 @@ $ curl -sk https://localhost/hub_info | jq
   }
 ```
 
-### Modifying the configuration for your gaia-hub
+### Modificando la configuración de tu gaia-Hub
 
 Existen dos métodos:
 
-1. Edit the `gaia/deploy/configs/gaia/hub-config.json` using `vim` or other
+1. Editar el `gaia/deploy/configs/gaia/hub-config.json` usando `vim` u otro
 
-- requires a restart of the containers: `docker-compose -f docker-compose-base.yaml -f docker-compose-disk.yaml --env-file disk.env restart`
+- requiere reiniciar los contenedores: `docker-compose -f docker-compose-base.yaml -f docker-compose-disk.yaml --env-file disk.env restart`
 
-2. Use the running `admin` container to modify any config values, and also reload the hub when complete:
+2. Utilice el contenedor `admin` en ejecución para modificar cualquier valor de configuración, y también recargar el hub cuando se haya completado:
 
 - [GitHub - Gaia Admin README.md](https://github.com/stacks-network/gaia/blob/master/admin/README.md)
 
