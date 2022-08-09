@@ -49,7 +49,7 @@ git clone https://github.com/stacks-network/gaia.git && cd gaia/deploy/docker
 ```
 
 **4. Copia y edita el archivo .env appropiado**.  
-En la carpeta `. deploy/docker/` son archivos de ejemplo diferentes para diferentes configuraciones como el uso de aws, azure o disco entre otros. In this example we will store the data localy so we will copy the _disk_ file and update the domain and email fields. Por favor, cambie `gaia.site.com` y `gaiarocks@mydomain.com` como corresponda. Tenga en cuenta que necesita ambos para que el certificado SSL se cree correctamente.
+En la carpeta `. deploy/docker/` son archivos de ejemplo diferentes para diferentes configuraciones como el uso de aws, azure o disco entre otros. En este ejemplo almacenaremos los datos localmente para que copiemos el archivo _de disco_ y actualicemos el dominio y los campos de correo electrónico. Por favor, cambie `gaia.site.com` y `gaiarocks@mydomain.com` como corresponda. Tenga en cuenta que necesita ambos para que el certificado SSL se cree correctamente.
 
 ```bash
 export MYGAIADOMAIN=gaia.site.com
@@ -105,7 +105,7 @@ Primero instale todas las dependencias requeridas con:
 npm install
 ```
 
-Then, from the root folder of the project type:
+Luego, desde la carpeta raíz del tipo de proyecto:
 
 ```bash
 node ./deploy/gaia_test.js https://yourgaiaurl
