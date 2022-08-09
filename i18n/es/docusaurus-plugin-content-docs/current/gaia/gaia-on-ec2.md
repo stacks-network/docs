@@ -22,7 +22,7 @@ Además, también debe poseer un nombre de dominio y ser capaz de actualizar los
 
 Utilice un enlace en la tabla para lanzar la plantilla [CloudFormation](https://console.aws.amazon.com/cloudformation/) en la región de AWS en donde desea desplegar un hub de Gaia.
 
-![Create stack](/img/cloudformation-create-stack.png)
+![Crear stack](/img/cloudformation-create-stack.png)
 
 ### Paso 2 - Configurar stack usando la plantilla
 
@@ -39,11 +39,11 @@ El último archivo de `cloudformation.yaml` puede descargarse [aquí](https://ra
 
 Luego haz clic en `Next`.
 
-![Specify template](/img/cloudformation-specify-template.png)
+![Especificar plantilla](/img/cloudformation-specify-template.png)
 
 ### Paso 3 - Especificar detalles de stack
 
-Especifique los detalles de stacks y luego haga clic en `Next`: ![Specify template](/img/cloudformation-specify-stack-details.png)
+Especifique los detalles de stacks y luego haga clic en `Next`: ![Especificar plantilla](/img/cloudformation-specify-stack-details.png)
 
 | Campo           | Valor                                | Notas                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | --------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,13 +62,13 @@ Especifique los detalles de stacks y luego haga clic en `Next`: ![Specify templa
 
 Configure cualquier opción de stack que se ajuste a la configuración deseada y haga clic en `Next`. Todos estos campos son opcionales.
 
-![Specify template](/img/cloudformation-stack-options.png)
+![Especificar plantilla](/img/cloudformation-stack-options.png)
 
 ### Paso 5 - Revisión
 
 Revise la configuración de su hub Gaia, selecciona la casilla de verificación para reconocer que AWS puede crear recursos IAM con nombres personalizados y haz clic en `Create stack`.
 
-![Specify template](/img/cloudformation-iam-resources.png)
+![Especificar plantilla](/img/cloudformation-iam-resources.png)
 
 ### Paso 6 - Recuperar la IP pública de tu Hub de Gaia
 
@@ -78,22 +78,22 @@ Crea un registro DNS `A` apuntando a la IP dada en tu dominio.
 
 Espere unos minutos para que el registro DNS se propague, y debería ser capaz de acceder al hub de Gaia con SSH.
 
-## Accessing your Gaia hub with SSH
+## Accediendo a tu hub de Gaia con SSH
 
-To SSH into your Gaia hub EC2 host directly, you must have the keyfile used in container creation. Access the host with the following command in your terminal:
+Para que el SSH entre directamente en el host de tu hub EC2 de Gaia, debes tener el keyfile usado en la creación de contenedores. Accede al host con el siguiente comando en tu terminal:
 
 ```bash
 ssh -i <your keyfile.pem> admin@<public_ip_address>
 ```
 
-:::tip If you can only access SSH with the IP but not with the DNS name and you wish to do so, you can optionally activate it by following these steps:
+:::tip Si sólo puede acceder a SSH con la IP pero no con el nombre DNS y desea hacerlo, puedes activarlo siguiendo estos pasos:
 
-    Open your [AWS Console](https://console.aws.amazon.com)
-    Click on `Service` -> VPC
-    Open Your VPCs
-    Select your VPC connected to your Gaia Hub
-    Click `Actions` -> `Edit DNS Hostnames` -> Change `DNS hostnames` to `Enable`
+    Abre tu [Consola AWS](https://console.aws.amazon. om)
+    Haga clic en `Servicio` -> VPC
+    Abra sus VPCs
+    Seleccione su VPC conectado a su Gaia Hub
+    Haga clic en `Acciones` -> `Editar nombres de host DNS` -> Cambie `nombres de host DNS` a `Activar`
 :::
-## Graphical representation of the cloudformation template
+## Representación gráfica de la plantilla de cloudformation
 
 ![](/img/cloudformation-gaia-template1-designer.png)
