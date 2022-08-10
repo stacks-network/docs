@@ -8,92 +8,92 @@ tags:
 
 ## Introducción
 
-The template provided on this page provides an easy way to deploy a Gaia hub directly to Amazon EC2. You can use this template to deploy your own Gaia hub to your Amazon Web Services (AWS) account. Amazon EC2 is an affordable and convenient cloud computing provider. The template provides a one-click deploy for Amazon EC2 with either S3 or EBS as a storage provider.
+La plantilla proporcionada en esta página proporciona una forma fácil de desplegar un hub de Gaia directamente en Amazon EC2. Puede utilizar esta plantilla para desplegar su propio hub de Gaia en su cuenta de Amazon Web Services (AWS). Amazon EC2 es un proveedor de computación en la nube asequible y conveniente. La plantilla proporciona un despliegue de un solo clic para Amazon EC2 con S3 o EBS como proveedor de almacenamiento.
 
-## Prerrequisitos
+## Pre requisitos
 
-This procedure uses Amazon CloudFormation to configure an EC2 cloud compute provider to run the Gaia hub service with an S3 or EBS provider for file storage. You should have access to an AWS account either through your personal account or through a corporate account. This account should have permissions to create resources.
+Este procedimiento utiliza Amazon CloudFormation para configurar un proveedor de computación en la nube EC2 para ejecutar el servicio de Hub de Gaia con un proveedor S3 o EBS para el almacenamiento de archivos. Usted debe tener acceso a una cuenta AWS ya sea a través de su cuenta personal o a través de una cuenta corporativa. Esta cuenta debe tener permisos para crear recursos.
 
-Additionally, you must also own a domain name and be able to update the DNS records associated with that domain name.
+Además, también debe poseer un nombre de dominio y ser capaz de actualizar los registros DNS asociados con ese nombre de dominio.
 
 ## Pasos a seguir
 
 ### Paso 1 - Crear Stack
 
-Use a link in the table to launch the [CloudFormation](https://console.aws.amazon.com/cloudformation/) template in the AWS region that you wish to deploy a Gaia hub.
+Utilice un enlace en la tabla para lanzar la plantilla [CloudFormation](https://console.aws.amazon.com/cloudformation/) en la región de AWS en donde desea desplegar un hub de Gaia.
 
-![Create stack](/img/cloudformation-create-stack.png)
+![Crear stack](/img/cloudformation-create-stack.png)
 
-### Step 2 - Setup stack using template
+### Paso 2 - Configurar stack usando la plantilla
 
-You need to configure the template with the appropiate values for your hub and domain it runs on.
+Debe configurar la plantilla con los valores adecuados para su hub y el dominio en el que se ejecuta.
 
-Select `Template is ready` and `Amazon S3 URL` and enter the following Amazon S3 URL:
+Seleccione `Template is ready` y `Amazon S3 URL` e introduzca la siguiente URL de Amazon S3:
 ```
 https://s3-external-1.amazonaws.com/cf-templates-vzldibfi2mw8-us-east-1/2022160J6G-cloudformation.yaml
 ```
 
-If you prefer you can instead select `Template is ready` and `Upload a template file` to upload the template file `cloudformation.yaml`.
+Si lo prefiere, puede seleccionar `Template is ready` y `Upload a template file` para subir un archivo de plantilla `cloudformation.yaml`.
 
-The latest `cloudformation.yaml` file can be downloaded [here](https://raw.githubusercontent.com/stacks-network/gaia/master/deploy/cloudformation.yaml). On most browsers you can right-click on that page and click on `Save page as` to download the file. Alternatively, you can copy/paste the text into a text file called `cloudformation.yaml`.
+El último archivo de `cloudformation.yaml` puede descargarse [aquí](https://raw.githubusercontent.com/stacks-network/gaia/master/deploy/cloudformation.yaml). En la mayoría de los navegadores puede hacer clic derecho en esa página y hacer clic en `Guardar página como` para descargar el archivo. Alternativamente, puede copiar/pegar el texto en un archivo de texto llamado `cloudformation.yaml`.
 
-Then click `Next`.
+Luego haz clic en `Next`.
 
-![Specify template](/img/cloudformation-specify-template.png)
+![Especificar plantilla](/img/cloudformation-specify-template.png)
 
-### Step 3 - Specify stack details
+### Paso 3 - Especificar detalles de stack
 
-Specify the stack details and then click `Next`: ![Specify template](/img/cloudformation-specify-stack-details.png)
+Especifique los detalles de stacks y luego haga clic en `Next`: ![Especificar plantilla](/img/cloudformation-specify-stack-details.png)
 
-| Field           | Value                               | Notas                                                                                                                                                                                                                                                                                                                                                                                            |
-| --------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Stack name      | _a unique name in your AWS account_ | e.g.: my_gaia_hub                                                                                                                                                                                                                                                                                                                                                                              |
-| DomainName      | _your-domain_                       |                                                                                                                                                                                                                                                                                                                                                                                                  |
-| EmailAddress    | _your email address_                |                                                                                                                                                                                                                                                                                                                                                                                                  |
-| GaiaBucketName  | _S3 bucket name_                    | The template combines this name with the stack name to create a unique S3 bucket. The template ignores this field if GaiaStorageType is set to `disk`.                                                                                                                                                                                                                                           |
-| GaiaStorageType | `s3` or `disk`                      | Select the GaiaStorageType of which to use as a backend for the Gaia Hub. Selecting `s3` causes the template to create an S3 bucket based on the name given in the previous field. Selecting `disk` causes the template to attach a separate EBS volume to the EC2 instance for Hub storage.                                                                                                     |
-| InstaceType     | t2.micro                            | Select the instance type you want. Default value is `t2.micro`.                                                                                                                                                                                                                                                                                                                                  |
-| KeyName         |                                     | In the KeyName drop-down, select an [EC2 KeyPair](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:) to enable SSH access to the EC2 instance. You should download the `.pem` keyfile for this pair from the EC2 console. For more information see the [EC2 key pair documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#prepare-key-pair) |
-| SSHLocation     | 0.0.0.0/0                           | Leave the SSHLocation field with the default value of `0.0.0.0/0` to enable SSH access from any IP address. If you wish to restrict SSH access to the EC2 instance to a certain IP, you can update this field.                                                                                                                                                                                   |
-| SubnetId        | _subnetid_                          | Select a public subnet                                                                                                                                                                                                                                                                                                                                                                           |
-| VpcId           | _vpcid_                             |                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Campo           | Valor                                | Notas                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| --------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Stack name      | _un nombre único en tu cuenta AWS_   | e.j.: my_gaia_hub                                                                                                                                                                                                                                                                                                                                                                                                           |
+| DomainName      | _tu-dominio_                         |                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| EmailAddress    | _tu dirección de correo electrónico_ |                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| GaiaBucketName  | _S3 bucket name_                     | La plantilla combina este nombre con el nombre del stack para crear un bucket de S3 único. La plantilla ignora este campo si GaiaStorageType está establecido en `disk`.                                                                                                                                                                                                                                                      |
+| GaiaStorageType | `s3` o `disk`                        | Seleccione el GaiaStorageType que se utilizará como un backend para el Hub de Gaia. Seleccionar `s3` hace que la plantilla cree un bucket de S3 basado en el nombre dado en el campo anterior. Al seleccionar `disk`, la plantilla adjunta un volumen EBS independiente a la instancia EC2 para el almacenamiento del Hub.                                                                                                    |
+| InstaceType     | t2.micro                             | Seleccione el tipo de instancia que desee. El valor predeterminado es `t2.micro`.                                                                                                                                                                                                                                                                                                                                             |
+| KeyName         |                                      | En la lista desplegable KeyName selecciona un [EC2 KeyPair](https://console. aws. amazon. com/ec2/v2/home? region=us-east-1#KeyPairs:) para habilitar el acceso SSH a la instancia EC2. Deberías descargar el archivo keyfile `.pem` para este par desde la consola EC2. Para más información vea la [documentación de EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#prepare-key-pair) |
+| SSHLocation     | 0.0.0.0/0                            | Deje el campo SSHLocation con el valor predeterminado de `0.0.0.0/0` para habilitar el acceso SSH desde cualquier dirección IP. Si desea restringir el acceso SSH a la instancia de EC2 a una determinada IP, puede actualizar este campo.                                                                                                                                                                                    |
+| SubnetId        | _subnetId_                           | Seleccione una subred pública                                                                                                                                                                                                                                                                                                                                                                                                 |
+| VpcId           | _vpcid_                              |                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
-### Step 4 - Configure stack options
+### Paso 4 - Configurar las opciones de stack
 
-Configure any stack options that fit your desired setup and click `Next`. All these fields are optional.
+Configure cualquier opción de stack que se ajuste a la configuración deseada y haga clic en `Next`. Todos estos campos son opcionales.
 
-![Specify template](/img/cloudformation-stack-options.png)
+![Especificar plantilla](/img/cloudformation-stack-options.png)
 
-### Step 5 - Review
+### Paso 5 - Revisión
 
-Review the configuration of your Gaia hub, select the checkbox to acknowledge that AWS may create IAM resources with custom names and click on `Create stack`.
+Revise la configuración de su hub Gaia, selecciona la casilla de verificación para reconocer que AWS puede crear recursos IAM con nombres personalizados y haz clic en `Create stack`.
 
-![Specify template](/img/cloudformation-iam-resources.png)
+![Especificar plantilla](/img/cloudformation-iam-resources.png)
 
-### Step 6 - Retrieve the public IP of your Gaia hub
+### Paso 6 - Recuperar la IP pública de tu Hub de Gaia
 
-Your stack can take several minutes to launch. You can monitor the Events tab of your hub to review the current progress of the launch. When the launch is complete, the Outputs tab displays information about the hub. Select the PublicIP and copy it to configure your domain name.
+Tu stack puede tardar varios minutos en lanzarse. Puede monitorear la pestaña Eventos de su hub para revisar el progreso actual del lanzamiento. Cuando el lanzamiento se haya completado, la pestaña Salidas muestra información sobre el hub. Seleccione PublicIP y cópielo para configurar su nombre de dominio.
 
-Create an `A` DNS record pointing to the given IP in your domain.
+Crea un registro DNS `A` apuntando a la IP dada en tu dominio.
 
-Wait a few minutes for the DNS record to propagate, and your should be able to access your Gaia hub with SSH.
+Espere unos minutos para que el registro DNS se propague, y debería ser capaz de acceder al hub de Gaia con SSH.
 
-## Accessing your Gaia hub with SSH
+## Accediendo a tu hub de Gaia con SSH
 
-To SSH into your Gaia hub EC2 host directly, you must have the keyfile used in container creation. Access the host with the following command in your terminal:
+Para que el SSH entre directamente en el host de tu hub EC2 de Gaia, debes tener el keyfile usado en la creación de contenedores. Accede al host con el siguiente comando en tu terminal:
 
 ```bash
 ssh -i <your keyfile.pem> admin@<public_ip_address>
 ```
 
-:::tip If you can only access SSH with the IP but not with the DNS name and you wish to do so, you can optionally activate it by following these steps:
+:::tip Si sólo puede acceder a SSH con la IP pero no con el nombre DNS y desea hacerlo, puedes activarlo siguiendo estos pasos:
 
-    Open your [AWS Console](https://console.aws.amazon.com)
-    Click on `Service` -> VPC
-    Open Your VPCs
-    Select your VPC connected to your Gaia Hub
-    Click `Actions` -> `Edit DNS Hostnames` -> Change `DNS hostnames` to `Enable`
+    Abre tu [Consola AWS](https://console.aws.amazon. om)
+    Haga clic en `Servicio` -> VPC
+    Abra sus VPCs
+    Seleccione su VPC conectado a su Gaia Hub
+    Haga clic en `Acciones` -> `Editar nombres de host DNS` -> Cambie `nombres de host DNS` a `Activar`
 :::
-## Graphical representation of the cloudformation template
+## Representación gráfica de la plantilla de cloudformation
 
 ![](/img/cloudformation-gaia-template1-designer.png)
