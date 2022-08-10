@@ -28,7 +28,6 @@ stacks-node mocknet
 ### krypton
 
 Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](../understand-stacks#consensus-mechanism).
-sidebar_position: 1
 
 Example:
 
