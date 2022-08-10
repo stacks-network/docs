@@ -32,7 +32,7 @@ echo \
 apt update && apt install -y docker-ce docker-ce-cli containerd.io
 ```
 
-Install _docker-compose_ by downloading the [latest-release](https://github.com/docker/compose/releases):
+Instala _docker-compose_ descargando la [última versión](https://github.com/docker/compose/releases):
 
 ```bash
 VERSION_DC=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq .name -r)
@@ -42,14 +42,14 @@ curl -SL https://github.com/docker/compose/releases/download/${VERSION_DC}/docke
 chmod +x ${DESTINATION_DC}/docker-compose
 ```
 
-**3. Clone the GAIA repository** and enter it's docker directory.
+**3. Clona el repositorio de GAIA** e introduce su directorio de docker.
 
 ```bash
 git clone https://github.com/stacks-network/gaia.git && cd gaia/deploy/docker
 ```
 
-**4. Copy and edit appropiate .env file**.  
-In the folder `./deploy/docker/` they are different sample files for different configurations like using aws, azure or disk among others. In this example we will store the data localy so we will copy the _disk_ file and update the domain and email fields. Por favor, cambie `gaia.site.com` y `gaiarocks@mydomain.com` como corresponda. Tenga en cuenta que necesita ambos para que el certificado SSL se cree correctamente.
+**4. Copia y edita el archivo .env appropiado**.  
+En la carpeta `. deploy/docker/` son archivos de ejemplo diferentes para diferentes configuraciones como el uso de aws, azure o disco entre otros. En este ejemplo almacenaremos los datos localmente para que copiemos el archivo _de disco_ y actualicemos el dominio y los campos de correo electrónico. Por favor, cambie `gaia.site.com` y `gaiarocks@mydomain.com` como corresponda. Tenga en cuenta que necesita ambos para que el certificado SSL se cree correctamente.
 
 ```bash
 export MYGAIADOMAIN=gaia.site.com
@@ -105,7 +105,7 @@ Primero instale todas las dependencias requeridas con:
 npm install
 ```
 
-Then, from the root folder of the project type:
+Luego, desde la carpeta raíz del tipo de proyecto:
 
 ```bash
 node ./deploy/gaia_test.js https://yourgaiaurl
