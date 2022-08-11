@@ -1,7 +1,6 @@
 ---
 title: Running a testnet node
 description: Set up and run a testnet node with Docker
-sidebar_position: 2
 tags:
   - tutorial
 ---
