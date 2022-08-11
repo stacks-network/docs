@@ -1,7 +1,6 @@
 ---
 title: Mine mainnet Stacks tokens
 description: Set up and run a miner on the Stacks 2.0 mainnet
-sidebar_position: 5
 tags:
   - tutorial
 ---
