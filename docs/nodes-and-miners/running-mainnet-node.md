@@ -1,7 +1,6 @@
 ---
 title: Running a mainnet node
 description: Set up and run a mainnet node with Docker
-sidebar_position: 3
 tags:
   - tutorial
 ---
