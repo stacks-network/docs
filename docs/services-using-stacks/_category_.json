@@ -1,6 +1,6 @@
 {
     "label": "Services using Stacks",
-    "position": 6,
+    "position": 8,
     "link": {
       "type": "generated-index",
       "description": "An 'always incomplete' list of services that use Stacks."
