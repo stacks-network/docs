@@ -1,6 +1,7 @@
 ---
 title: Ejecutar un nodo testnet
 description: Configurar y ejecutar un nodo testnet con Docker
+sidebar_position: 2
 tags:
   - tutorial
 ---
@@ -13,7 +14,7 @@ Este procedimiento demuestra cómo ejecutar un nodo local testnet usando imágen
 Este procedimiento se centra en sistemas operativos de tipo Unix (Linux y MacOS). Este procedimiento no ha sido probado en Windows.
 :::
 
-## Prerrequisitos
+## Pre requisitos
 
 Ejecutar un nodo no tiene requerimientos de hardware especiales. Los usuarios han tenido éxito ejecutando nodos en las dispostivos Raspberry Pi y otras arquitecturas de sistema on-chip. Para completar este procedimiento, debe tener instalado el siguiente software:
 
