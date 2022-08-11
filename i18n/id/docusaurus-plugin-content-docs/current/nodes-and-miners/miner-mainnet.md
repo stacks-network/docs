@@ -1,6 +1,7 @@
 ---
 title: Menambang token Stacks mainnet
 description: Menyiapkan dan menjalankan penambang di mainnet Stacks 2.0
+sidebar_position: 5
 tags:
   - tutorial
 ---

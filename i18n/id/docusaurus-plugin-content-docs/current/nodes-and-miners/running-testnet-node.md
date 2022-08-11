@@ -1,6 +1,7 @@
 ---
 title: Menjalankan noda testnet
 description: Menyiapkan dan menjalankan noda testnet dengan Docker
+sidebar_position: 2
 tags:
   - tutorial
 ---

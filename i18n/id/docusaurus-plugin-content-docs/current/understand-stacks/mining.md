@@ -8,6 +8,8 @@ sidebar_position: 4
 
 Panduan ini menggaris bawahi beberapa detail teknis terkait menambang pada jaringan Stacks 2.0.
 
+For steps on how to setup your own miner please refer to [miner on tesnet](nodes-and-miners/miner-testnet.md) and [miner on mainnet](nodes-and-miners/miner-testnet.md).
+
 ## Frekuensi menambang
 
 Blok Stacks baru dapat ditambang satu kali per blok Bitcoin. Untuk dapat dipertimbangkan menambang sebuah blok, seorang penambang harus memiliki komit blok yang disertakan dalam blok Bitcoin. Jika penambang ingin memperbarui komitmen mereka setelah pengumpulan, mereka dapat menggunakan Bitcoin Replace-By-Fee.

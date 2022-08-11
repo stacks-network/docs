@@ -1,6 +1,7 @@
 ---
 title: Mine mainnet Stacks tokens
 description: Set up and run a miner on the Stacks 2.0 mainnet
+sidebar_position: 5
 tags:
   - tutorial
 ---
@@ -141,7 +142,7 @@ STACKS_LOG_DEBUG=1 stacks-node mainnet
 
 ## Running a miner in Windows
 
-### Prerrequisitos
+### Pre requisitos
 
 Make sure are [running a node](running-mainnet-node) and [running bitcoind locally](#running-bitcoind-locally) before starting this tutorial.
 

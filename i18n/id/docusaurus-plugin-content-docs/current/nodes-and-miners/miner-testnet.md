@@ -1,6 +1,7 @@
 ---
 title: Menambang token Stacks testnet
 description: Menyiapkan dan menjalankan penambang di testnet Stacks 2.0
+sidebar_position: 4
 tags:
   - tutorial
 ---
