@@ -1,6 +1,7 @@
 ---
 title: Konfigurasi Noda Stacks
 description: Parameter konfigurasi dan opsi untuk biner noda-stacks
+sidebar_position: 6
 ---
 
 ## Pemakaian
@@ -25,7 +26,7 @@ stacks-node mocknet
 
 ### krypton
 
-Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](../understand-stacks#consensus-mechanism). sidebar_position: 1
+Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](../understand-stacks#consensus-mechanism).
 
 Contoh:
 

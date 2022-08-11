@@ -1,6 +1,7 @@
 ---
 title: Stacks di DigitalOcean
 description: A guide to setup Stacks on DigitalOcean
+sidebar_position: 1
 tags:
   - tutorial
 ---

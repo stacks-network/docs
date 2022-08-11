@@ -1,6 +1,7 @@
 ---
 title: Configuración del nodo de Stacks
 description: Parámetros de configuración y opciones para el binario stacks-node
+sidebar_position: 6
 ---
 
 ## Uso
@@ -25,7 +26,7 @@ stacks-node mocknet
 
 ### krypton
 
-Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](../understand-stacks#consensus-mechanism). sidebar_position: 1
+Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](../understand-stacks#consensus-mechanism).
 
 Ejemplo:
 

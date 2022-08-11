@@ -1,6 +1,7 @@
 ---
 title: Mine testnet Stacks tokens
 description: Set up and run a miner on the Stacks 2.0 testnet
+sidebar_position: 4
 tags:
   - tutorial
 ---
@@ -137,7 +138,7 @@ STACKS_LOG_DEBUG=1 stacks-node testnet
 
 ## Running a miner in Windows
 
-### Prerrequisitos
+### Pre requisitos
 
 Make sure you've followed the [running the testnet node](running-testnet-node) tutorial before starting this tutorial.
 

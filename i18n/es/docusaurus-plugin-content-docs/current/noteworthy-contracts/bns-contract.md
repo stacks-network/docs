@@ -1,6 +1,6 @@
 ---
 title: Contrato BNS
-description: Vea una lista detallada de todas las funciones y códigos de error del contrato BNS.
+description: The Blockchain Naming System.
 ---
 
 ![](/img/satoshi-btc.png)

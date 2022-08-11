@@ -8,6 +8,8 @@ sidebar_position: 4
 
 This guide highlights some technical details related to mining on the Stacks 2.0 network.
 
+For steps on how to setup your own miner please refer to [miner on tesnet](nodes-and-miners/miner-testnet.md) and [miner on mainnet](nodes-and-miners/miner-testnet.md).
+
 ## Mining frequency
 
 A new Stacks block may be mined once per Bitcoin block. To be considered for mining a block, a miner must have a block commit included in a Bitcoin block. If a miner wishes to update their commitment after submission, they may use Bitcoin Replace-By-Fee. To be considered for mining a block, a miner must have a block commit included in a Bitcoin block. If a miner wishes to update their commitment after submission, they may use Bitcoin Replace-By-Fee. To be considered for mining a block, a miner must have a block commit included in a Bitcoin block. If a miner wishes to update their commitment after submission, they may use Bitcoin Replace-By-Fee. To be considered for mining a block, a miner must have a block commit included in a Bitcoin block. If a miner wishes to update their commitment after submission, they may use Bitcoin Replace-By-Fee.

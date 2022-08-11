@@ -1,6 +1,6 @@
 ---
 title: Kontrak BNS
-description: Lihat daftar rinci semua fungsi dan kode kesalahan kontrak BNS.
+description: The Blockchain Naming System.
 ---
 
 ![](/img/satoshi-btc.png)

@@ -1,6 +1,7 @@
 ---
 title: Menjalankan noda mainnet
 description: Menyiapkan dan menjalankan node mainnet dengan Docker
+sidebar_position: 3
 tags:
   - tutorial
 ---

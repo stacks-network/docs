@@ -2,7 +2,7 @@
 title: General FAQs
 description: Pertanyaan Umum
 sidebar_label: "Pertanyaan Umum (FAQ)"
-sidebar_position: 8
+sidebar_position: 10
 ---
 
 ![](/img/glasses.png)
