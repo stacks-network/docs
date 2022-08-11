@@ -1,7 +1,7 @@
 ---
 title: Noda dan Penambang
 description: Noda dan Penambang
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 Berikut adalah semua langkah untuk menjalankan noda dan penambang, baik di mainnet maupun testnet.
