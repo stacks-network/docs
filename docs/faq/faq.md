@@ -2,7 +2,7 @@
 title: General FAQs
 description: Frequently Asked Questions
 sidebar_label: "FAQ"
-sidebar_position: 8
+sidebar_position: 10
 ---
 
 ![](/img/glasses.png)
