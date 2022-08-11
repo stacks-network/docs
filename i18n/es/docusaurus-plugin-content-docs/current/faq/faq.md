@@ -2,7 +2,7 @@
 title: Preguntas frecuentes generales
 description: Preguntas frecuentes
 sidebar_label: "Preguntas Frecuentes"
-sidebar_position: 8
+sidebar_position: 10
 ---
 
 ![](/img/glasses.png)
