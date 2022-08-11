@@ -1,7 +1,7 @@
 ---
 title: Miner costs and fees
 description: Miner Cost and Fee Estimation
-sidebar_position: 10
+sidebar_position: 8
 ---
 
 ## Configuring Cost and Fee Estimation

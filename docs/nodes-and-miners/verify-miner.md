@@ -1,6 +1,7 @@
 ---
 title: Verify Miner
 description: Verify node is operating as miner
+sidebar_position: 7
 ---
 
 You can verify that your node is operating as a miner by checking its log output to verify that it was able to find its Bitcoin UTXOs:

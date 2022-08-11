@@ -1,6 +1,7 @@
 ---
 title: Stacks Node Configuration
 description: Configuration parameters and options for the stacks-node binary
+sidebar_position: 6
 ---
 
 ## Usage

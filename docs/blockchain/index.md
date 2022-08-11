@@ -4,7 +4,9 @@ description: Stacks Blockchain
 sidebar_position: 6
 ---
 
-Here is a guide to start working locally with the Stacks Blockchain.
+Below is a guide to start working locally with the Stacks Blockchain.
+
+Code repository is [here](https://github.com/stacks-network/stacks-blockchain).
 
 ## Getting started with the Stacks Blockchain
 
