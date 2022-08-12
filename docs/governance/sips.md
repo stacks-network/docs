@@ -34,11 +34,11 @@ Anyone in the Stacks community can submit a SIP.
 
 There are several ways you can get involved with the SIP process:
 
-* **Joining the weekly SIP Meeting call** listed [here](https://community.stacks.org/events).
+* **Join the weekly SIP Meeting call** listed [here](https://community.stacks.org/events).
 
 * **SIP Editor**.  SIP editors help SIP authors make sure their SIPs are well-formed and follow the right process.  They help get SIPs ready for deep review by advancing it them from Draft to Accepted status.  If you want to become a SIP editor, open an issue with your name and email to ask to be added to the list of SIP editors.
 
-* **Joining a Consideration Advisory Board**.  SIPs fall under the purview of one or more considerations.
+* **Join a CAB** (Consideration Advisory Board). SIPs fall under the purview of one or more considerations.
 A full list is in [this github](https://github.com/stacksgov/sips/tree/main/considerations) directory. Currently they are: Diversity, Economics, Ethics, Governance and Technical.
 Members of SIP consideration advisory boards use their domain expertise to give Accepted SIPs a deep read, and give the authors any/all feedback to help make the SIP workable. If you want to join a board, reach out to the board's chairperson via the listed contact information.
 
