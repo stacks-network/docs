@@ -14,6 +14,10 @@ Whereas public transactional metadata is best stored on the Stacks blockchain, u
 
 Storing data off of the blockchain ensures that Stacks applications can provide users with high performance and high availability for data reads and writes without introducing central trust parties.
 
+:::tip
+Latest whitepaper of GAIA (May 2022) is available [here](https://dev1-gaia-hub.s3.amazonaws.com/GAIA_Whitepaper.pdf)
+:::
+
 ## Understand Gaia in the Stacks architecture
 
 The following diagram depicts the Stacks architecture and Gaia's place in it:
