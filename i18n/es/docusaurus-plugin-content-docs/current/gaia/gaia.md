@@ -14,6 +14,8 @@ Mientras que los metadatos transaccionales públicos se almacenan mejor en la bl
 
 Almacenar datos fuera de la blockchain asegura que las aplicaciones de Stacks pueden proporcionar a los usuarios un alto rendimiento y una alta disponibilidad para lecturas y escrituras de datos sin introducir partes de confianza centrales.
 
+:::tip Latest whitepaper of GAIA (May 2022) is available [here](https://dev1-gaia-hub.s3.amazonaws.com/GAIA_Whitepaper.pdf) :::
+
 ## Comprender a Gaia en la arquitectura de Stacks
 
 El siguiente diagrama representa la arquitectura de Stacks y el lugar de Gaia en él.

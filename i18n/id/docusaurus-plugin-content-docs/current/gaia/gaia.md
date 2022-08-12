@@ -14,6 +14,8 @@ Sementara metadata transaksional publik paling baik disimpan di blockchain Stack
 
 Menyimpan data dari blockchain memastikan bahwa aplikasi Stacks dapat memberi pengguna kinerja tinggi dan ketersediaan tinggi untuk baca dan tulis data tanpa memperkenalkan pihak kepercayaan pusat.
 
+:::tip Latest whitepaper of GAIA (May 2022) is available [here](https://dev1-gaia-hub.s3.amazonaws.com/GAIA_Whitepaper.pdf) :::
+
 ## Memahami Gaia dalam arsitektur Stacks
 
 Diagram berikut menggambarkan arsitektur Stacks dan tempat Gaia di dalamnya:
