@@ -16,10 +16,6 @@ The SIPs are located in the [stacksgov/sips](https://github.com/stacksgov/sips) 
 
 Anyone in the Stacks community can submit a SIP.
 
-:::tip Stacks Improvement Proposals Community Calls
-SIP Meeting calls are recorded and available [here](https://www.youtube.com/playlist?list=PLg717Ri_rTnx5kuaWqp3cUAtwQk_yzslT)
-:::
-
 ## Ratified SIPSs
 
 - [x] [SIP 001: Burn Election](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md)
