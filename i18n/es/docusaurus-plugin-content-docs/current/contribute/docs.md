@@ -162,6 +162,10 @@ Algo de **contenido** con `formato` markdown.
 :::danger
 Algo de **contenido** con `formato` markdown.
 :::
+
+:::tip My personalized title
+Some **content** with _markdown_ `syntax`.
+:::
 ```
 
 Se visualiza como:
@@ -191,6 +195,12 @@ Algo de **contenido** con `syntax` markdown.
 :::
 
 :::danger
+
+Algo de **contenido** con `syntax` markdown.
+
+:::
+
+:::tip My personalized title
 
 Algo de **contenido** con `syntax` markdown.
 
