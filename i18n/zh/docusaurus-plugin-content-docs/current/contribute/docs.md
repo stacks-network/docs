@@ -192,6 +192,10 @@ Some **content** with _markdown_ `syntax`.
 :::danger
 Some **content** with _markdown_ `syntax`.
 :::
+
+:::tip My personalized title
+Some **content** with _markdown_ `syntax`.
+:::
 ```
 
 Which renders:
@@ -221,6 +225,12 @@ Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 :::
 
 :::danger
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::tip My personalized title
 
 Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 
