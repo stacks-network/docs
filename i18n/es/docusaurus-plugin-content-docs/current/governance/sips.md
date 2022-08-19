@@ -4,7 +4,7 @@ description: SIPs
 sidebar_position: 9
 ---
 
-## Stacks Improvement Proposals (SIPs)
+## Propuestas de Mejora de Stacks (SIPs)
 
 Stacks improvement proposals (SIPs) are aimed at describing the implementation of the Stacks blockchain, as well as proposing improvements.
 
@@ -18,7 +18,7 @@ Anyone in the Stacks community can submit a SIP.
 
 :::tip Stacks Improvement Proposals Community Calls SIP Meeting calls are recorded and available [here](https://www.youtube.com/playlist?list=PLg717Ri_rTnx5kuaWqp3cUAtwQk_yzslT) :::
 
-## Ratified SIPSs
+## SIPS ratificados
 
 - [x] [SIP 001: Burn Election](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md)
 - [x] [SIP 002: Clarity, a language for predictable smart contracts](https://github.com/stacksgov/sips/blob/main/sips/sip-002/sip-002-smart-contract-language.md)
@@ -32,9 +32,9 @@ Anyone in the Stacks community can submit a SIP.
 - [x] [SIP 010: Standard Trait Definition for Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md)
 - [x] [SIP 012: Burn Height Selection for a Network Upgrade to Introduce New Cost-Limits](https://github.com/stacksgov/sips/blob/main/sips/sip-012/sip-012-cost-limits-network-upgrade.md)
 
-## How to Get Involved
+## Cómo implicarse
 
-There are several ways you can get involved with the SIP process:
+Hay varias maneras en que puedes involucrarte en el proceso SIP:
 
 * **Join the weekly SIP Meeting call** listed [here](https://community.stacks.org/events).
 

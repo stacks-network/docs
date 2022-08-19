@@ -30,9 +30,9 @@ Cuando se crea una identidad, su creación se registra en la blockchain de Stack
 
 Un sistema de almacenamiento Gaia consiste en un _centro de servicio_ y un recurso de almacenamiento en un proveedor de software en la nube. El proveedor de almacenamiento puede ser cualquier proveedor comercial como Azure, DigitalOcean, Amazon EC2, etcétera. Normalmente, el recurso de cómputo y el recurso de almacenamiento residen en el mismo proveedor de la nube, aunque esto no es un requisito. Gaia actualmente tiene soporte para controladores para S3, Azure Blob Storage, Google Cloud Platform y disco local, pero el modelo de controlador también permite otro soporte de backend.
 
-Gaia almacena datos como un simple almacén clave-valor. When an identity is created, a corresponding data store is associated with that identity on Gaia. When a user logs into a dApp, the authentication process gives the application the URL of a Gaia hub, which then writes to storage on behalf of that user.
+Gaia almacena datos como un simple almacén clave-valor. Cuando se crea una identidad, un almacén de datos correspondiente se asocia con esa identidad en Gaia. Cuando un usuario inicia sesión en una dApp, el proceso de autenticación da a la aplicación la URL de un hub de Gaia, que entonces escribe en el almacenamiento en nombre de ese usuario.
 
-The Stacks blockchain stores only identity data. Data created by the actions of an identity is stored in a Gaia Storage System. Each user has profile data. When a user interacts with a decentralized dApp that application stores application data on behalf of the user. Because Gaia stores user and application data off the blockchain, a Stacks DApp is typically more performant than DApps created on other blockchains.
+La blockchain de Stacks almacena sólo datos de identidad. Data created by the actions of an identity is stored in a Gaia Storage System. Each user has profile data. When a user interacts with a decentralized dApp that application stores application data on behalf of the user. Because Gaia stores user and application data off the blockchain, a Stacks DApp is typically more performant than DApps created on other blockchains.
 
 ## User control or how is Gaia decentralized?
 
