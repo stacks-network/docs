@@ -32,5 +32,6 @@ Activated on January 14th 2021
 
 Released on 2018, October 30th UTC+6 at Bitcoin block height 547921
 
+This hard fork addresses registration of digital assets with Stacks token and also distribution of Stacks token to the existing purchasers.
 More info [here](https://blog.blockstack.org/the-launch-of-the-stacks-genesis-block/?ref=docs-website).
 
