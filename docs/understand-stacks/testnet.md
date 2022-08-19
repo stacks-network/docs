@@ -25,7 +25,7 @@ The Explorer Sandbox requires you to login with a Stacks wallet
 
 ### Testnet API
 
-The hosted [Stacks Blockchain API](../blockchain/stacks-blockchain-api) for the testnet is available at this base URL:
+The hosted Stacks Blockchain API for the testnet is available at this base URL:
 
 ```shell
 https://stacks-node-api.testnet.stacks.co/
