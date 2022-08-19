@@ -23,7 +23,7 @@ You can also try out [Stacking](stacking) by clicking on `I want to stack`.
 
 ### Testnet API
 
-The hosted [Stacks Blockchain API](stacks-blockchain-api) for the testnet is available at this base URL:
+The hosted Stacks Blockchain API for the testnet is available at this base URL:
 
 ```shell
 https://stacks-node-api.testnet.stacks.co/
