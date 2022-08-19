@@ -1,6 +1,7 @@
 ---
 title: Stacks Blockchain Networks
 description: Stacks Blockchain Networks
+sidebar_position: 2
 ---
 
 ### Stacks Blockchain Networks
