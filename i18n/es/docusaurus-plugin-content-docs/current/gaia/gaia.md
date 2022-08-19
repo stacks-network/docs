@@ -32,9 +32,9 @@ Un sistema de almacenamiento Gaia consiste en un _centro de servicio_ y un recur
 
 Gaia almacena datos como un simple almacén clave-valor. Cuando se crea una identidad, un almacén de datos correspondiente se asocia con esa identidad en Gaia. Cuando un usuario inicia sesión en una dApp, el proceso de autenticación da a la aplicación la URL de un hub de Gaia, que entonces escribe en el almacenamiento en nombre de ese usuario.
 
-La blockchain de Stacks almacena sólo datos de identidad. Data created by the actions of an identity is stored in a Gaia Storage System. Each user has profile data. When a user interacts with a decentralized dApp that application stores application data on behalf of the user. Because Gaia stores user and application data off the blockchain, a Stacks DApp is typically more performant than DApps created on other blockchains.
+La blockchain de Stacks almacena sólo datos de identidad. Los datos creados por las acciones de una identidad se almacenan en el sistema de almacenamiento de Gaia. Cada usuario tiene datos de perfil. Cuando un usuario interactúa con una dApp descentralizada, esa aplicación almacena los datos de la aplicación en nombre del usuario. Debido a que Gaia almacena datos de usuarios y aplicaciones fuera de la blockchain, una DApp de Stacks es normalmente más eficiente que DApps creadas en otras blockchains.
 
-## User control or how is Gaia decentralized?
+## Control del usuario o ¿Cómo se descentraliza Gaia?
 
 A Gaia hub runs as a service which writes to data storage. The storage itself is a simple key-value store. The hub service writes to data storage by requiring a valid authentication token from a requestor. Typically, the hub service runs on a compute resource and the storage itself on separate, dedicated storage resource. Typically, both resources belong to the same cloud computing provider.
 
