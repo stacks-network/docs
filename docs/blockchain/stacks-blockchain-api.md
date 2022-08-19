@@ -1,7 +1,7 @@
 ---
 title: Stacks Blockchain API
 description: Interacting with the Stacks 2.0 Blockchain via API
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 ## Introduction
