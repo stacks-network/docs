@@ -18,6 +18,8 @@ Anyone in the Stacks community can submit a SIP.
 
 :::tip Stacks Improvement Proposals Community Calls
 SIP Meeting calls are recorded and available [here](https://www.youtube.com/playlist?list=PLg717Ri_rTnx5kuaWqp3cUAtwQk_yzslT)
+
+More details of the meetings are available [here](https://github.com/stacksgov/sips/issues/19)
 :::
 
 ## Ratified SIPSs
