@@ -8,7 +8,9 @@ sidebar_position: 9
 
 This page needs contributions. Help us write it!
 
-Governance in web3 is driven by the community.
+Governance in web3 is driven by the community. 
+
+How can I get involved ?
 
 [Governance Resources website](https://resources.stacksgov.com)
 
