@@ -533,12 +533,13 @@ const config = {
           },
           {
           from: [
+            '/docs/understand-stacks/stacks-blockchain-api',
             '/understand-stacks/stacks-blockchain-api',
             '/core/smart/rpc-api.html',
             '/core/smart/rpc-api',
             '/references/stacks-rpc-api',
           ],
-          to: '/docs/understand-stacks/stacks-blockchain-api',
+          to: '/docs/blockchain/stacks-blockchain-api',
           },
           { 
             from: [
