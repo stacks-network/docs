@@ -6,11 +6,11 @@ sidebar_position: 9
 
 ## Propuestas de Mejora de Stacks (SIPs)
 
-Stacks improvement proposals (SIPs) are aimed at describing the implementation of the Stacks blockchain, as well as proposing improvements.
+Las propuestas de mejora de Stacks (SIPs) tienen como objetivo describir la implementación de la blockchain de Stacks, asi como proponer mejoras.
 
-The SIP process [(SIP-000)](https://github.com/stacksgov/sips/blob/main/sips/sip-000/sip-000-stacks-improvement-proposal-process.md) describes how to make a SIP and get it ratified.
+El proceso SIP [(SIP-000)](https://github.com/stacksgov/sips/blob/main/sips/sip-000/sip-000-stacks-improvement-proposal-process.md) describe cómo hacer un SIP y conseguir que se ratifique.
 
-They should contain concise technical specifications of features or standards and the rationale behind it. SIPs are intended to be the primary medium for proposing new features, for collecting community input on a system-wide issue, and for documenting design decisions.
+Deberían contener especificaciones técnicas concisas de las características o estándares y la justificación de las mismas. SIPs están destinados a ser el primer medio para proponer nuevas características, para recolectar las aportaciones de la comunidad sobre un tema que afecta a todo el sistema y para documentar las decisiones de diseño.
 
 The SIPs are located in the [stacksgov/sips](https://github.com/stacksgov/sips) repository as part of the [Stacks Community Governance organization](https://github.com/stacksgov).
 
