@@ -20,7 +20,7 @@ Almacenar datos fuera de la blockchain asegura que las aplicaciones de Stacks pu
 
 El siguiente diagrama representa la arquitectura de Stacks y el lugar de Gaia en él.
 
-![Stacks Architecture](/img/architecture.png)
+![Arquitectura de Stacks](/img/architecture.png)
 
 Las Blockchains requieren un consenso entre un gran número de personas, por lo que pueden ser lentas. Adicionalmente, una blockchain no está diseñada para contener muchos datos. Esto significa que usar una blockchain por cada bit de datos que un usuario pueda escribir y almacenar es caro. Por ejemplo, imagínese si una aplicación estaba almacenando cada tweet en la cadena.
 
@@ -36,57 +36,57 @@ La blockchain de Stacks almacena sólo datos de identidad. Los datos creados por
 
 ## Control del usuario o ¿Cómo se descentraliza Gaia?
 
-Un hub de Gaia funciona como un servicio que escribe en el almacenamiento de datos. El almacenamiento en sí mismo es un simple almacén clave-valor. El servicio del Hub escribe en el almacenamiento de datos requiriendo un token de autenticación válido de un solicitante. Typically, the hub service runs on a compute resource and the storage itself on separate, dedicated storage resource. Typically, both resources belong to the same cloud computing provider.
+Un hub de Gaia funciona como un servicio que escribe en el almacenamiento de datos. El almacenamiento en sí mismo es un simple almacén clave-valor. El servicio del Hub escribe en el almacenamiento de datos requiriendo un token de autenticación válido de un solicitante. Por lo general, el servicio del Hub se ejecuta en un recurso de cómputo y el almacenamiento propiamente dicho en un recurso de almacenamiento dedicado y separado. Por lo general, ambos recursos pertenecen al mismo proveedor de computación en la nube.
 
 ![Gaiastorage](/img/gaia-storage.png)
 
-Gaia's approach to decentralization focuses on user control of data and its storage. Users can choose a Gaia hub provider. If a user can choose which Gaia hub provider to use, then that choice is all the decentralization required to enable user-controlled applications. Moreover, Gaia defines a uniform API for applications to access that data.
+El enfoque de Gaia hacia la descentralización se centra en el control de los datos por parte del usuario y su almacenamiento. Los usuarios pueden elegir un proveedor de Hub de Gaia. Si un usuario puede elegir qué proveedor de hub de Gaia utilizar, entonces esa opción es toda la descentralización necesaria para permitir aplicaciones controladas por el usuario. Además, Gaia define una API uniforme para aplicaciones para acceder a esos datos.
 
-The control of user data lies in the way that user data is accessed. When an application fetches a file `data.txt` for a given user `alice.id`, the lookup will follow these steps:
+El control de los datos del usuario reside en la forma en que se accede a los datos del usuario. Cuando una aplicación obtiene un archivo `data.txt` para un usuario determinado `alice.id`, la búsqueda seguirá estos pasos:
 
-1. Fetch the `zonefile` for `alice.id`.
-2. Read her profile URL from her `zonefile`.
-3. Fetch Alice's profile.
-4. _Verify_ that the profile is signed by `alice.id`'s key
-5. Find the read-only url out of the profile's `appsMeta` section (e.g. `https://example-app.gaia.alice.org`).
-6. Fetch the file from `https://example-app.gaia.alice.org/data.txt`.
+1. Obtenga el `zonefile` para `alice.id`.
+2. Lea su URL de perfil desde su `zonefile`.
+3. Busque el perfil de Alice.
+4. _Verificar_ que el perfil esté firmado por la clave de `alice.id`
+5. Encuentre la url de solo lectura de la sección `appsMeta` del perfil (por ejemplo, `https://example-app.gaia.alice.org`).
+6. Obtenga el archivo de `https://example-app.gaia.alice.org/data.txt`.
 
-Because `alice.id` has access to her [zonefile](https://docs.stacks.co/references/bns-contract#name-update), she can change where her profile is stored. For example, she may do this if the current profile's service provider or storage is compromised. To change where her profile is stored, she changes her Gaia hub URL to another Gaia hub URL. If a user has sufficient compute and storage resources, a user may run their own Gaia Storage System and bypass a commercial Gaia hub provider all together.
+Debido a que `alice.id` tiene acceso a su [zonefile](https://docs.stacks.co/references/bns-contract#name-update), puede cambiar donde se almacena su perfil. Por ejemplo, puede hacer esto si el proveedor de servicios o el almacenamiento del perfil actual se ven comprometidos. Para cambiar donde se almacena su perfil, cambia su URL del hub de Gaia a otra URL del hub de Gaia. Si un usuario tiene suficientes recursos de cómputo y almacenamiento, puede ejecutar su propio Sistema de Almacenamiento de Gaia y eludir un proveedor comercial de hubs de Gaia.
 
-:::caution
-Users with existing identities cannot yet migrate their data from one hub to another.
+:::precaución
+Los usuarios con identidades existentes aún no pueden migrar sus datos de un hub a otro.
 :::
 
-Applications writing directly on behalf of `alice.id` do not need to perform a lookup. Instead, the [Stacks authentication flow](https://stacks.js.org) provides Alice's chosen gaia hub URL to the application. This authentication flow _is also_ within Alice's control because Alice's wallet _must_ generate the authentication response.
+Las aplicaciones que escriben directamente en nombre de `alice.id` no necesitan realizar una búsqueda. En su lugar, el [flujo de autenticación de Stacks](https://stacks.js.org) proporciona la URL del hub de gaia elegido por Alice a la aplicación. Este flujo de autenticación _también está_ bajo el control de Alice porque la billetera de Alice_ debe_ generar la respuesta de autenticación.
 
 ## Entendiendo el almacenamiento de datos
 
-A Gaia hub stores the written data _exactly_ as given. It offers minimal guarantees about the data. It does not ensure that data is validly formatted, contains valid signatures, or is encrypted. Rather, the design philosophy is that these concerns are client-side concerns.
+Un hub de Gaia almacena los datos escritos _exactamente_ como se ha dado. Ofreciendo garantías mínimas sobre los datos. No se asegura de que los datos tengan un formato válido, que contengan firmas válidas o que estén cifrados. Más bien, la filosofía del diseño es que estas preocupaciones son del lado del cliente.
 
-Client libraries (such as [`Stacks.js`](https://stacks.js.org/)) are capable of providing these guarantees. A liberal definition of the [end-to-end principle](https://en.wikipedia.org/wiki/End-to-end_principle) guides this design decision.
+Las librerías de clientes (como [`Stacks.js`](https://stacks.js.org/)) son capaces de proporcionar estas garantías. Una definición liberal del [principio de extremo a extremo](https://en.wikipedia.org/wiki/End-to-end_principle) guía esta decisión de diseño.
 
-When an application writes to a Gaia hub, an authentication token, key, and the data are passed to the Gaia hub.
+Cuando una aplicación escribe en un hub de Gaia, se pasan al hub de Gaia un token de autenticación, una clave, y los datos.
 
 ![Gaia writes](/img/gaia-writes.png)
 
-The token ensures the app has the authorization to write to the hub on the user's behalf.
+El token asegura que la aplicación tenga la autorización para escribir en el hub en nombre del usuario.
 
 ## Gaia versus otros sistemas de almacenamiento
 
-Here's how Gaia stacks up against other decentralized storage systems. Features that are common to all storage systems are omitted for brevity.
+Así es como Gaia se compara contra otros sistemas de almacenamiento descentralizados. Las características que son comunes a todos los sistemas de almacenamiento se omiten por razones de brevedad.
 
-| Funcionalidades                               | [Gaia](https://github.com/stacks-network/gaia) | [Sia](https://sia.tech/) | [Storj](https://storj.io/) | [IPFS](https://ipfs.io/) | [DAT](https://datproject.org/) | [SSB](https://www.scuttlebutt.nz/) |
-| --------------------------------------------- | ---------------------------------------------- | ------------------------ | -------------------------- | ------------------------ | ------------------------------ | ---------------------------------- |
-| El usuario controla donde se alojan los datos | X                                              |                          |                            |                          |                                |                                    |
-| Data can be viewed in a normal Web browser    | X                                              |                          |                            | X                        |                                |                                    |
-| Datos de lectura/escritura                    | X                                              |                          |                            |                          | X                              | X                                  |
-| Se pueden eliminar datos                      | X                                              |                          |                            |                          | X                              | X                                  |
-| Data can be listed                            | X                                              | X                        | X                          |                          | X                              | X                                  |
-| Deleted data space is reclaimed               | X                                              | X                        | X                          | X                        |                                |                                    |
-| Data lookups have predictable performance     | X                                              |                          | X                          |                          |                                |                                    |
-| Writes permission can be delegated            | X                                              |                          |                            |                          |                                |                                    |
-| Listing permission can be delegated           | X                                              |                          |                            |                          |                                |                                    |
-| Supports multiple backends natively           | X                                              |                          | X                          |                          |                                |                                    |
-| Data is globally addressable                  | X                                              | X                        | X                          | X                        | X                              |                                    |
-| Needs a cryptocurrency to work                |                                                | X                        | X                          |                          |                                |                                    |
-| Data is content-addressed                     |                                                | X                        | X                          | X                        | X                              | X                                  |
+| Funcionalidades                                         | [Gaia](https://github.com/stacks-network/gaia) | [Sia](https://sia.tech/) | [Storj](https://storj.io/) | [IPFS](https://ipfs.io/) | [DAT](https://datproject.org/) | [SSB](https://www.scuttlebutt.nz/) |
+| ------------------------------------------------------- | ---------------------------------------------- | ------------------------ | -------------------------- | ------------------------ | ------------------------------ | ---------------------------------- |
+| El usuario controla donde se alojan los datos           | X                                              |                          |                            |                          |                                |                                    |
+| Los datos se pueden ver en un navegador web normal      | X                                              |                          |                            | X                        |                                |                                    |
+| Datos de lectura/escritura                              | X                                              |                          |                            |                          | X                              | X                                  |
+| Se pueden eliminar datos                                | X                                              |                          |                            |                          | X                              | X                                  |
+| Los datos pueden ser listados                           | X                                              | X                        | X                          |                          | X                              | X                                  |
+| Se recupera el espacio de datos borrados                | X                                              | X                        | X                          | X                        |                                |                                    |
+| Las búsquedas de datos tienen un rendimiento predecible | X                                              |                          | X                          |                          |                                |                                    |
+| El permiso de escritura puede ser delegado              | X                                              |                          |                            |                          |                                |                                    |
+| El permiso de listado puede ser delegado                | X                                              |                          |                            |                          |                                |                                    |
+| Soporta múltiples backends de forma nativa              | X                                              |                          | X                          |                          |                                |                                    |
+| Los datos son direccionables globalmente                | X                                              | X                        | X                          | X                        | X                              |                                    |
+| Necesita una criptomoneda para funcionar                |                                                | X                        | X                          |                          |                                |                                    |
+| Los datos están orientados al contenido                 |                                                | X                        | X                          | X                        | X                              | X                                  |
