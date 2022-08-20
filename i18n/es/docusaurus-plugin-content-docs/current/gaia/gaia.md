@@ -36,7 +36,7 @@ La blockchain de Stacks almacena sólo datos de identidad. Los datos creados por
 
 ## Control del usuario o ¿Cómo se descentraliza Gaia?
 
-A Gaia hub runs as a service which writes to data storage. The storage itself is a simple key-value store. The hub service writes to data storage by requiring a valid authentication token from a requestor. Typically, the hub service runs on a compute resource and the storage itself on separate, dedicated storage resource. Typically, both resources belong to the same cloud computing provider.
+Un hub de Gaia funciona como un servicio que escribe en el almacenamiento de datos. El almacenamiento en sí mismo es un simple almacén clave-valor. El servicio del Hub escribe en el almacenamiento de datos requiriendo un token de autenticación válido de un solicitante. Typically, the hub service runs on a compute resource and the storage itself on separate, dedicated storage resource. Typically, both resources belong to the same cloud computing provider.
 
 ![Gaiastorage](/img/gaia-storage.png)
 
