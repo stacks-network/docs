@@ -538,6 +538,7 @@ const config = {
             '/core/smart/rpc-api.html',
             '/core/smart/rpc-api',
             '/references/stacks-rpc-api',
+            '/references/stacks-blockchain-api',
           ],
           to: '/docs/blockchain/stacks-blockchain-api',
           },
