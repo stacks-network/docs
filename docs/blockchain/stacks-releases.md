@@ -19,9 +19,9 @@ All releases are published [here](https://github.com/stacks-network/stacks-block
 Scheduled for release at the end of 2022.
 
 #### Stacks 2.05
-
 Activated on [Bitcoin block 713000](https://explorer.stacks.co/txid/0xece8e369310b5ff9b92ef11181ae0d2457ac0c821376d4a96c4998763e22ad04?chain=mainnet).
 
+This breaking change enables storage cost for list to be based on actual length and change in number of indexed I/O operations.
 More info on this [blog post](https://www.stacks.org/stacks-2-05?ref=docs-website).
 
 #### Stacks 2.0
