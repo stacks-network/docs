@@ -78,7 +78,7 @@ This will avoid the need of running the script with root privileges for all oper
 
 ### Configuration files you can edit
 
-The following files can be modified to personalize your node configuration, but generally most of them should be left as-is. All these files will be created from the sample copy if they don't exist at runtime (for example `.env` is created from [`sample.env`](sample.env) ). However these files will never be modified by the application once created and will never be pushed back to github, so your changes will be safe.
+The following files can be modified to personalize your node configuration, but generally most of them should be left as-is. All these files will be created from the sample copy if they don't exist at runtime (for example `.env` is created from `sample.env`). However these files will never be modified by the application once created and will never be pushed back to github, so your changes will be safe.
 
 * `.env`
 * `./conf/mainnet/Config.toml`
