@@ -12,7 +12,7 @@ La gobernancia en la web 3 es impulsada por la comunidad.
 
 ¿Cómo participar?
 
-[Governance Resources website](https://resources.stacksgov.com)
+[Sitio web de Recursos de Gobernanza](https://resources.stacksgov.com)
 
 [Github - Gobernanza de la Comunidad Stacks](https://github.com/stacksgov)
 
