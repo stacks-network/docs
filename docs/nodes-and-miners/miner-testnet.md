@@ -8,7 +8,7 @@ tags:
 
 ## Introduction
 
-Make sure you've followed the [Running testnet node](running-testnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
+Make sure you've followed the [Run a node](run-a-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
 
 If you want to learn more about the technical details of mining, please review the [mining guide](../understand-stacks/mining).
 
@@ -140,7 +140,7 @@ STACKS_LOG_DEBUG=1 stacks-node testnet
 
 ### Prerequisites
 
-Make sure you've followed the [running the testnet node](running-testnet-node) tutorial before starting this tutorial.
+Make sure are [running a testnet node](run-a-node) before starting this tutorial.
 
 ### Generate keychain and get testnet tokens in Windows
 
