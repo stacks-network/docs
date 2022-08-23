@@ -1,5 +1,5 @@
 ---
-title: Running a node
+title: Run a node
 description: Set up and run a Stacks node
 sidebar_position: 1
 tags:
@@ -10,104 +10,7 @@ tags:
 
 Run your own Stacks Blockchain node easily with just few commands.
 
-This tutorial describes a simple and effective way to run a Stacks node using public scripts hosted in [Stacks Blockchain repository](https://github.com/stacks-network/stacks-blockchain-docker). Valid for mainnet, testnet and mocknet.
-
-
-## **Requirements:**
-
-- [Docker](https://docs.docker.com/get-docker/) >= `17.09`
-- [docker-compose](https://github.com/docker/compose/releases/) >= `1.27.4`
-- [git](https://git-scm.com/downloads)
-- [jq binary](https://stedolan.github.io/jq/download/)
-- [sed](https://www.gnu.org/software/sed/)
-- Machine with (at a minimum):
-  - 4GB memory
-  - 1 Vcpu
-  - 50GB storage (600GB if you optionally also run the bitcoin mainnet node)
-
-:::caution MacOS with an M1 processor is NOT recommended
-
-The way Docker for Mac on an Arm chip is designed makes the I/O incredibly slow, and blockchains are **_very_** heavy on I/O.
-This only seems to affect MacOS, other Arm based systems like Raspberry Pi's seem to work fine.
-
-:::
-
-
-### Install/Update docker-compose
-
-:::note
-`docker-compose` executable is required, even though recent versions of Docker contain `compose` natively
-:::
-
-- [Install Docker-compose](https://docs.docker.com/compose/install/)
-- [Docker Desktop for Mac](https://docs.docker.com/docker-for-mac/install/)
-- [Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/)
-- [Docker Engine for Linux](https://docs.docker.com/engine/install/#server)
-
-First, check if you have `docker-compose` installed locally.
-
-To do that, run this command in your terminal :
-
-```bash
-docker-compose --version
-```
-
-Output should look something very similar to this :
-
-```
-docker-compose version 1.27.4, build 40524192
-```
-
-If the command is not found, or the version is < `1.27.4`, run the following to install the latest to `/usr/local/bin/docker-compose`:
-
-```bash
-#You will need to have jq installed, or this snippet won't run.
-VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq .name -r)
-DESTINATION=/usr/local/bin/docker-compose
-sudo curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
-sudo chmod 755 $DESTINATION
-```
-
-### Security note on docker
-
-The Docker daemon always runs as the root user so by default you will need root privileges to interact with it.
-
-The script `manage.sh` uses docker, so to avoid the requirement of needing to run the script with root privileges it is prefered to be able to *manage Docker as a non-root user*, following [these simple tests](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
-
-This will avoid the need of running the script with root privileges for all operations except the removal of data.
-
-### Configuration files you can edit
-
-The following files can be modified to personalize your node configuration, but generally most of them should be left as-is. All these files will be created from the sample copy if they don't exist at runtime (for example `.env` is created from `sample.env`). However these files will never be modified by the application once created and will never be pushed back to github, so your changes will be safe.
-
-* `.env`
-* `./conf/mainnet/Config.toml`
-* `./conf/mainnet/bitcoin.conf`
-* `./conf/testnet/Config.toml`
-* `./conf/testnet/bitcoin.conf`
-
-By default:
-
-- BNS data is **not** enabled/imported
-  - To enable, uncomment `# BNS_IMPORT_DIR=/bns-data` in `./env`
-    - Download BNS data: `./manage.sh bns`
-- Fungible token metadata is **not** enabled
-  - To enable, uncomment `# STACKS_API_ENABLE_FT_METADATA=1` in `./env`
-- Non-Fungible token metadata is **not** enabled
-  - To enable, uncomment `# STACKS_API_ENABLE_NFT_METADATA=1` in `./env`
-- Verbose logging is **not** enabled
-  - To enable, uncomment `# VERBOSE=true` in `./env`
-- Bitcoin blockchain folder is configured in `BITCOIN_BLOCKCHAIN_FOLDER` in `./env`
-
-### Local Data Dirs
-
-Directories will be created on first start that will store persistent data under `./persistent-data/<folder>`
-
-`<folder>` can be 1 of:
-
-- mainnet
-- testnet
-- mocknet
+This tutorial describes a simple and effective [quickstart](#quickstart) to run a Stacks node using public scripts hosted in [Stacks Blockchain repository](https://github.com/stacks-network/stacks-blockchain-docker). Valid for mainnet, testnet and mocknet.
 
 ## **Quickstart**
 
@@ -125,7 +28,7 @@ cp sample.env .env
 
 _You may also use a symlink as an alternative to copying: `ln -s sample.env .env`_
 
-3. **Ensure all images are up to date**
+3. **Optionally, ensure all images are up to date**
 
 ```bash
 ./manage.sh -n <network> -a pull
@@ -257,8 +160,11 @@ As the bitcoin blockchain can be large (over 500GB) you optionally change this v
 
 ## **Accessing the services**
 
-_Note_: For networks other than `mocknet`, downloading the initial headers can take several minutes. Until the headers are downloaded, the `/v2/info` endpoints won't return any data. \
+:::tip
+For networks other than `mocknet`, downloading the initial headers can take several minutes. Until the headers are downloaded, the `/v2/info` endpoints won't return any data.
+
 Use the command `./manage.sh -n <network> -a logs` to check the sync progress.
+:::
 
 **stacks-blockchain**:
 
@@ -352,3 +258,100 @@ _**API Missing Parent Block Error**_:
 ./manage.sh -n <network> -a reset
 ./manage.sh -n <network> -a restart
 ```
+
+
+## **Requirements:**
+
+- [Docker](https://docs.docker.com/get-docker/) >= `17.09`
+- [docker-compose](https://github.com/docker/compose/releases/) >= `1.27.4`
+- [git](https://git-scm.com/downloads)
+- [jq binary](https://stedolan.github.io/jq/download/)
+- [sed](https://www.gnu.org/software/sed/)
+- Machine with (at a minimum):
+  - 4GB memory
+  - 1 Vcpu
+  - 50GB storage (600GB if you optionally also run the bitcoin mainnet node)
+
+:::caution MacOS with an M1 processor is NOT recommended
+
+The way Docker for Mac on an Arm chip is designed makes the I/O incredibly slow, and blockchains are **_very_** heavy on I/O.
+This only seems to affect MacOS, other Arm based systems like Raspberry Pi's seem to work fine.
+
+:::
+
+
+### Install/Update docker-compose
+
+:::note
+`docker-compose` executable is required, even though recent versions of Docker contain `compose` natively
+:::
+
+- [Install Docker-compose](https://docs.docker.com/compose/install/)
+- [Docker Desktop for Mac](https://docs.docker.com/docker-for-mac/install/)
+- [Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/)
+- [Docker Engine for Linux](https://docs.docker.com/engine/install/#server)
+
+First, check if you have `docker-compose` installed locally.
+
+To do that, run this command in your terminal :
+
+```bash
+docker-compose --version
+```
+
+Output should look something very similar to this :
+
+```
+docker-compose version 1.27.4, build 40524192
+```
+
+If the command is not found, or the version is < `1.27.4`, run the following to install the latest to `/usr/local/bin/docker-compose`:
+
+```bash
+#You will need to have jq installed, or this snippet won't run.
+VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq .name -r)
+DESTINATION=/usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
+sudo chmod 755 $DESTINATION
+```
+
+### Security note on docker
+
+The Docker daemon always runs as the root user so by default you will need root privileges to interact with it.
+
+The script `manage.sh` uses docker, so to avoid the requirement of needing to run the script with root privileges it is prefered to be able to *manage Docker as a non-root user*, following [these simple tests](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
+
+This will avoid the need of running the script with root privileges for all operations except the removal of data.
+
+### Configuration files you can edit
+
+The following files can be modified to personalize your node configuration, but generally most of them should be left as-is. All these files will be created from the sample copy if they don't exist at runtime (for example `.env` is created from `sample.env`). However these files will never be modified by the application once created and will never be pushed back to github, so your changes will be safe.
+
+* `.env`
+* `./conf/mainnet/Config.toml`
+* `./conf/mainnet/bitcoin.conf`
+* `./conf/testnet/Config.toml`
+* `./conf/testnet/bitcoin.conf`
+
+By default:
+
+- BNS data is **not** enabled/imported
+  - To enable, uncomment `# BNS_IMPORT_DIR=/bns-data` in `./env`
+    - Download BNS data: `./manage.sh bns`
+- Fungible token metadata is **not** enabled
+  - To enable, uncomment `# STACKS_API_ENABLE_FT_METADATA=1` in `./env`
+- Non-Fungible token metadata is **not** enabled
+  - To enable, uncomment `# STACKS_API_ENABLE_NFT_METADATA=1` in `./env`
+- Verbose logging is **not** enabled
+  - To enable, uncomment `# VERBOSE=true` in `./env`
+- Bitcoin blockchain folder is configured in `BITCOIN_BLOCKCHAIN_FOLDER` in `./env`
+
+### Local Data Dirs
+
+Directories will be created on first start that will store persistent data under `./persistent-data/<folder>`
+
+`<folder>` can be 1 of:
+
+- mainnet
+- testnet
+- mocknet

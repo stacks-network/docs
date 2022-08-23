@@ -12,7 +12,7 @@ stacks-node sub-command [--subcommand-option <value>]
 
 ## Subcommands
 
-:::note
+:::caution
 The `stacks-node` binary may have deprecated commands that are not documented on this page. Deprecated commands may be accessible until they are fully removed from the sources.
 :::
 

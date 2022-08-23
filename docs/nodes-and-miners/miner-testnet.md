@@ -8,7 +8,7 @@ tags:
 
 ## Introduction
 
-Make sure you've followed the [Running testnet node](running-testnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
+Make sure you've followed the [Run a node](run-a-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
 
 If you want to learn more about the technical details of mining, please review the [mining guide](../understand-stacks/mining).
 
