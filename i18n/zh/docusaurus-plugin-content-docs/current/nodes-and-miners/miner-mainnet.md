@@ -8,7 +8,7 @@ tags:
 
 ## Introduction
 
-Make sure you've followed the [Running mainnet node](running-mainnet-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the mainnet. Once completed it's only a few more steps to run a proof-of-burn miner on the mainnet. Once completed it's only a few more steps to run a proof-of-burn miner on the mainnet.
+Make sure you've followed the [run a node](run-a-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the mainnet.
 
 If you're interested in mining on the testnet, you can find instructions on how to do that [here](miner-testnet):
 
@@ -175,7 +175,7 @@ STACKS_LOG_DEBUG=1 stacks-node mainnet
 
 ### Prerequisites
 
-Make sure are [running a node](running-mainnet-node) and [running bitcoind locally](#running-bitcoind-locally) before starting this tutorial.
+Make sure are [running a node](run-a-node) and [running bitcoind locally](#running-bitcoind-locally) before starting this tutorial.
 
 ### Generate keychain and get mainnet tokens in Windows
 
