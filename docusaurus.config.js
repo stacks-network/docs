@@ -10,7 +10,7 @@ const config = {
   tagline: 'Stacks Documentation rocks!',
   url: 'https://docs.stacks.co',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',//'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon-dark.svg',
 
@@ -228,6 +228,10 @@ const config = {
           },
           {
             from: [
+              '/docs/nodes-and-miners/running-mainnet-node',
+              '/nodes-and-miners/running-mainnet-node',
+
+              '/docs/nodes-and-miners/running-testnet-node',
               '/nodes-and-miners/running-testnet-node',
               '/core/smart/testnet-node.html',
               '/stacks-blockchain/testnet-node',
@@ -235,19 +239,13 @@ const config = {
               '/understand-stacks/running-testnet-node',
               '/stacks-blockchain/running-testnet-node',
             ],
-            to: '/docs/nodes-and-miners/running-testnet-node',
-          },
-          {
-            from: [
-              '/nodes-and-miners/running-mainnet-node',
-              '/mining',
-              '/start-mining',
-            ],
-            to: '/docs/nodes-and-miners/running-mainnet-node',
+            to: '/docs/nodes-and-miners/run-a-node',
           },
           {
             from: [
               '/nodes-and-miners/miner-mainnet',
+              '/start-mining',
+              '/mining',
             ],
             to: '/docs/nodes-and-miners/miner-mainnet',
           },
