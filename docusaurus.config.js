@@ -10,7 +10,7 @@ const config = {
   tagline: 'Stacks Documentation rocks!',
   url: 'https://docs.stacks.co',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',//'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon-dark.svg',
 
