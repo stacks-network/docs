@@ -144,7 +144,7 @@ STACKS_LOG_DEBUG=1 stacks-node mainnet
 
 ### Prerequisites
 
-Make sure are [running a node](running-mainnet-node) and [running bitcoind locally](#running-bitcoind-locally) before starting this tutorial.
+Make sure are [running a node](run-a-node) and [running bitcoind locally](#running-bitcoind-locally) before starting this tutorial.
 
 ### Generate keychain and get mainnet tokens in Windows
 
