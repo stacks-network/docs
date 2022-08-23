@@ -1,7 +1,7 @@
 ---
 title: Stacks en DigitalOcean
 description: Una guía para configurar Stacks en DigitalOcean
-sidebar_position: 1
+sidebar_position: 4
 tags:
   - tutorial
 ---

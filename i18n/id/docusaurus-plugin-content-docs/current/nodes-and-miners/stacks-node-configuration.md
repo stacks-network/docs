@@ -12,7 +12,7 @@ stacks-node sub-command [--subcommand-option <value>]
 
 ## Subperintah
 
-:::note The `stacks-node` binary may have deprecated commands that are not documented on this page. Perintah yang tidak digunakan lagi mungkin dapat diakses hingga sepenuhnya dihapus dari sumbernya. :::
+:::caution The `stacks-node` binary may have deprecated commands that are not documented on this page. Perintah yang tidak digunakan lagi mungkin dapat diakses hingga sepenuhnya dihapus dari sumbernya. :::
 
 ### mocknet
 

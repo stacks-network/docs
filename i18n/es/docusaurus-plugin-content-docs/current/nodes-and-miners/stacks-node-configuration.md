@@ -12,7 +12,7 @@ stacks-node sub-command [--subcommand-option <value>]
 
 ## Subcomandos
 
-:::note El binario `stacks-node` puede tener comandos obsoletos que no están documentados en esta página. Los comandos obsoletos pueden ser accesibles hasta que sean eliminados completamente del código fuente. :::
+:::caution The `stacks-node` binary may have deprecated commands that are not documented on this page. Los comandos obsoletos pueden ser accesibles hasta que sean eliminados completamente del código fuente. :::
 
 ### mocknet
 

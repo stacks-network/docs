@@ -8,7 +8,7 @@ tags:
 
 ## Pengantar
 
-Make sure you've followed the [Running testnet node](running-testnet-node) procedure. Setelah selesai, tinggal beberapa langkah lagi untuk menjalankan penambang proof-of-burn di testnet.
+Make sure you've followed the [Run a node](run-a-node) procedure. Setelah selesai, tinggal beberapa langkah lagi untuk menjalankan penambang proof-of-burn di testnet.
 
 If you want to learn more about the technical details of mining, please review the [mining guide](../understand-stacks/mining).
 
@@ -140,7 +140,7 @@ STACKS_LOG_DEBUG=1 stacks-node testnet
 
 ### Prasyarat
 
-Make sure you've followed the [running the testnet node](running-testnet-node) tutorial before starting this tutorial.
+Make sure are [running a testnet node](run-a-node) before starting this tutorial.
 
 ### Membuat keychain dan mendapatkan token testnet di Windows
 
