@@ -44,7 +44,7 @@ cargo test testnet  -- --test-threads=1
 
 ### Encode and sign transactions
 
-Here, we have generated a keypair that will be used for signing the upcoming transactions:
+在这里，我们产生了一个将用于签署即将进行的交易的关键词：
 
 ```bash
 cargo run --bin blockstack-cli generate-sk --testnet
