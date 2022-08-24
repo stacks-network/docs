@@ -1,5 +1,5 @@
 ---
-title: Stacks on DigitalOcean
+title: 数码海洋上的应用
 description: A guide to setup Stacks on DigitalOcean
 sidebar_position: 4
 tags:
