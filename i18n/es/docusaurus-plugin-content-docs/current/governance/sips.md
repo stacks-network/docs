@@ -33,6 +33,7 @@ Más detalles de las reuniones están disponibles [aquí](https://github.com/sta
 - [x] [SIP 009: Definición de rasgos estándar para Tokens no Fungibles](https://github.com/stacksgov/sips/blob/main/sips/sip-009/sip-009-nft-standard.md)
 - [x] [SIP 010: Definición de rasgos estándar para Tokens Fungibles](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md)
 - [x] [SIP 012: Selección del tamaño de quema para una actualización de la red para introducir nuevos límites de coste](https://github.com/stacksgov/sips/blob/main/sips/sip-012/sip-012-cost-limits-network-upgrade.md)
+- [x] [SIP-016: Metadata for Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-016/sip-016-token-metadata.md)
 
 ## Cómo implicarse
 
