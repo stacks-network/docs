@@ -35,6 +35,7 @@ More details of the meetings are available [here](https://github.com/stacksgov/s
 - [x] [SIP 009: Standard Trait Definition for Non-Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-009/sip-009-nft-standard.md)
 - [x] [SIP 010: Standard Trait Definition for Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md)
 - [x] [SIP 012: Burn Height Selection for a Network Upgrade to Introduce New Cost-Limits](https://github.com/stacksgov/sips/blob/main/sips/sip-012/sip-012-cost-limits-network-upgrade.md)
+- [x] [SIP-016: Metadata for Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-016/sip-016-token-metadata.md)
 
 ## How to Get Involved
 
