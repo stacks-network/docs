@@ -17,7 +17,11 @@ Detailed list of all functions for the Clarity language.
 Adds a variable number of integer inputs and returns the result. Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error.
 #### example:
 ```clarity
-(+ 1 2 3) ;; Returns 6
+(+ 1 2 3)   ;; Returns 6
+(+ 2 3)     ;; Returns 5
+(+ 1 2 3 4) ;; Returns 10
+(+ 9 -3)    ;; Returns 6
+(+ -3 -2)   ;; Returns -5
 ```
 
 ### - (subtract)
@@ -29,7 +33,9 @@ Subtracts a variable number of integer inputs and returns the result. Subtracts 
 #### example:
 ```clarity
 (- 2 1 1) ;; Returns 0
-(- 0 3) ;; Returns -3
+(- 0 3)   ;; Returns -3
+(- 5 -3)  ;; Returns 8
+(- -4 -5) ;; Returns 1
 ```
 
 ### * (multiply)
@@ -40,9 +46,11 @@ Subtracts a variable number of integer inputs and returns the result. Subtracts 
 Multiplies a variable number of integer inputs and returns the result. Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error.
 #### example:
 ```clarity
-(* 2 3) ;; Returns 6
-(* 5 2) ;; Returns 10
+(* 2 3)   ;; Returns 6
+(* 5 2)   ;; Returns 10
 (* 2 2 2) ;; Returns 8
+(* 3 -2)  ;; Returns -6
+(* -1 -2) ;; Returns 2
 ```
 
 ### / (divide)
@@ -50,12 +58,16 @@ Multiplies a variable number of integer inputs and returns the result. Returns t
 #### output: `int | uint`
 #### signature: `(/ i1 i2...)`
 #### description:
-Integer divides a variable number of integer inputs and returns the result. In the event of division by zero, throws a runtime error. In the event of division by zero, throws a runtime error.
+Divides a variable number of integer inputs and returns the _integer part_ of the result. In the event of _division by zero_, throws a runtime error.
+
 #### example:
 ```clarity
-(/ 2 3) ;; Returns 0
-(/ 5 2) ;; Returns 2
-(/ 4 2 2) ;; Returns 1
+(/ 2 3)    ;; Returns 0
+(/ 5 2)    ;; Returns 2
+(/ 4 2 2)  ;; Returns 1
+(/ -10 2)  ;; Returns -5
+(/ -8 -2)  ;; Returns 4
+(/ -9 4)   ;; Returns -2
 ```
 
 ### >= (greater than or equal)
