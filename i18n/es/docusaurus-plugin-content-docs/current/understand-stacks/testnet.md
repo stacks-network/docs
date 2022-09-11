@@ -12,19 +12,19 @@ La red de pruebas (testnet) es una blockchain separado de la red principal de St
 
 El faucet de testnet proporciona Stacks Token (STX) gratis para probar. Estos no son los mismos que STX en mainnet y no tienen valor. Puedes obtener STX en el faucet del [Sandbox de Stacks Explorer ](https://explorer.stacks.co/sandbox/faucet?chain=testnet)o usando la [API](https://docs.hiro.so/api#tag/Faucets).
 
-To get STX tokens from within the Explorer Sandbox, navigate to the "Faucet" tab on the left and click "Request STX" button.
+Para obtener tokens STX desde el menú del explorador, vaya a la pestaña "Faucet" de la izquierda y haga clic en el botón "Solicitar STX".
 
 ![](/img/stx_faucet.png)
 
-You can also try out [Stacking](stacking) by clicking on `I want to stack`.
+También puedes probar hacer [Stacking](stacking) dando clic en `I want to stack`.
 
 :::note
-The Explorer Sandbox requires you to login with a Stacks wallet
+El Sandbox del explorador requiere iniciar sesión con una Stacks wallet
 :::
 
 ### Testnet API
 
-The hosted Stacks Blockchain API for the testnet is available at this base URL:
+La API Stacks Blockchain para la red de pruebas testnet está disponible en esta URL base:
 
 ```shell
 https://stacks-node-api.testnet.stacks.co/
