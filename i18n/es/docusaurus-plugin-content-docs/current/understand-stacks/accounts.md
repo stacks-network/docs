@@ -6,27 +6,27 @@ sidebar_position: 5
 
 ## Introducción
 
-Stacks 2.0 accounts are entities that own assets, like Stacks (STX) tokens. An account has an address, private key, nonce, and one or more asset balances.
+Las cuentas Stacks 2.0 son entidades que poseen assets, como los tokens de Stacks (STX). Una cuenta contiene una dirección, clave privada, un nonce, y uno o más saldos de activos.
 
 :::tip El algoritmo de cifrado utilizado en Stacks 2.0 es **[secp256k1](https://en.bitcoinwiki.org/wiki/Secp256k1)**.
 
 Adicionalmente, [Ed25519](https://ed25519.cr.yp.to/) también se utiliza solo para la VRF (función aleatoria verificable). :::
 
-Assets cannot leave an account without an action from the account owner. All changes to assets (and the balances of the account) require a corresponding transaction.
+Los assets no pueden dejar una cuenta sin una acción del propietario de la cuenta. Todos los cambios en los assets (y los saldos de la cuenta) requieren una transacción correspondiente.
 
 :::tip
-The transaction type doesn't need to be a token transfer - contract deploy and contract call transactions can change the balances of an account
+El tipo de transacción no necesita ser una transferencia de tokens - el deploy del contrato y las llamadas de contrato pueden cambiar los balances de una cuenta
 :::
 
-## Creation
+## Creación
 
-An account is generated from a 24-word mnemonic phrase. This is often referred to as the **seed phrase**. The seed phrase provides access to Stacks 2.0 accounts.
+Una cuenta se genera a partir de una frase mnemónica de 24 palabras. Esto a menudo se le conoce como **la frase semilla**. La frase semilla proporciona acceso a las cuentas Stacks 2.0.
 
 :::danger
-If the seed phrase is lost, access to the associated account cannot be restored. No person or organization, including Blockstack, can recover a lost seed phrase.
+Si la frase de semilla se pierde, el acceso a la cuenta asociada no se puede recuperar. No person or organization, including Blockstack, can recover a lost seed phrase.
 :::
 
-The easiest way to generate a new Stacks 2.0 account is to use the [Stacks CLI](https://github.com/hirosystems/stacks.js/tree/master/packages/cli):
+La forma más fácil de generar una nueva cuenta de Stacks 2.0 es utilizar la [CLI de Stacks](https://github.com/hirosystems/stacks.js/tree/master/packages/cli):
 
 ```bash
 # instalar CLI globalmente
@@ -54,14 +54,14 @@ stx make_keychain -t > cli_keychain.json
 
 :::tip Check out the [Stacks CLI reference](https://docs.hiro.so/references/stacks-cli) for more details :::
 
-| Campo                | Descripción                                                                                                                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `mnemonic`           | A 24-word seed phrase used to access the account, generated using [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) with 256 bits of entropy |
-| `keyInfo.privateKey` | Private key for the account. Required for token transfers and often referred to as `senderKey`                                                                     |
-| `keyInfo.address`    | Stacks address for the account                                                                                                                                     |
-| `keyInfo.btcAddress` | Corresponding BTC address for the account.                                                                                                                         |
-| `keyInfo.wif`        | Private key of the btcAddress in compressed format.                                                                                                                |
-| `keyInfo.index`      | Nonce for the account, starting at 0                                                                                                                               |
+| Campo                | Descripción                                                                                                                                                                           |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mnemonic`           | Una frase semilla de 24 palabras utilizada para acceder a la cuenta, generada usando [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) con 256 bits de entropía |
+| `keyInfo.privateKey` | Clave privada para la cuenta. Requerida para transferencias de tokens y a menudo llamada como `senderKey`                                                                             |
+| `keyInfo.address`    | Dirección Stack para la cuenta                                                                                                                                                        |
+| `keyInfo.btcAddress` | Dirección BTC correspondiente para la cuenta.                                                                                                                                         |
+| `keyInfo.wif`        | Clave privada de btcAddress en formato comprimido.                                                                                                                                    |
+| `keyInfo.index`      | Nonce para la cuenta, iniciando en 0                                                                                                                                                  |
 
 Note that a new account automatically exists for each new private key. There is no need to manually instantiate an account on the Stacks 2.0 blockchain.
 
