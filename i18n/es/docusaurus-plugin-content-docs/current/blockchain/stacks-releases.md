@@ -4,10 +4,8 @@ description: Stacks Blockchain Releases
 sidebar_position: 2
 ---
 
-::: info
-
-Esta página necesita contribuciones. Help us improve it.
-
+:::info
+This page needs contributions. Help us improve it.
 :::
 
 ### Stacks Blockchain Releases
@@ -17,6 +15,8 @@ All releases are published [here](https://github.com/stacks-network/stacks-block
 ### Stacks 2.1
 
 Scheduled for release at the end of 2022.
+
+More information on [what to expect with Stacks 2.1](https://stacks.org/stacks-21-what-to-expect).
 
 #### Stacks 2.05
 Activated on [Bitcoin block 713000](https://explorer.stacks.co/txid/0xece8e369310b5ff9b92ef11181ae0d2457ac0c821376d4a96c4998763e22ad04?chain=mainnet).
