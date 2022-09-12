@@ -46,43 +46,43 @@ El flujo de Staking es diferente para los casos de uso de la delegación:
 
 ## Minería de PoX
 
-PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of sending the committed Bitcoin to a burn address, it's transferred to eligible STX holders that participate in the stacking protocol.
+La minería PoX es una modificación de la minería Proof-of-Burn (PoB) en lugar de enviar el bitcoin entregado a una dirección de quemado, se transfiere a los poseedores elegibles de STX que participan en el protocolo de Stacking.
 
 :::note
-A PoX miner can only receive newly minted STX tokens when they transfer Bitcoin to eligible owners of STX tokens
+Un minero de PoX solo puede recibir tokens STX recién mintados cuando transfieren bitcoins a los dueños elegibles de tokens STX
 :::
 
 ![Mining flow](/img/pox-mining-flow.png)
 
-Miners run Stacks nodes with mining enabled to participate in the PoX mechanism. The node implements the PoX mechanism, which ensures proper handling and incentives through four key phases:
+Los mineros ejecutan los nodos de Stacks con minería habilitada para participar en el mecanismo PoX. El nodo implementa el mecanismo PoX, que garantiza un manejo adecuado e incentivos a través de cuatro fases clave:
 
-- Registration: miners register for a future election by sending consensus data to the network
-- Commitment: registered miners transfer Bitcoin to participate in the election. Committed BTC are sent to a set participating STX token holders
-- Election: a verifiable random function chooses one miner to write a new block on the Stacks blockchain
-- Assembly: the elected miner writes the new block and collects rewards in form of new STX tokens
+- Registro: los mineros se registran para una futura elección enviando datos de consenso a la red
+- Compromiso: los mineros registrados transfieren Bitcoin para participar en la elección. Los BTC comprometidos se envían a un conjunto titulares de tokens STX participantes
+- Elección: una función aleatoria verificable elige un minero para escribir un nuevo bloque en la blockchain de Stacks
+- Ensamblado: el minero elegido escribe el nuevo bloque y recolecta recompensas en forma de nuevos tokens STX
 
-## Token holder eligibility
+## Elegibilidad del poseedor del token
 
-Stacks (STX) token holders don't automatically receive stacking rewards. En su lugar, deben hacer:
+Los poseedores de tokens Stacks (STX) no reciben automáticamente recompensas de Stacking. En su lugar, deben hacer:
 
-- Commit to participation before a reward cycle begins
-- Commit the minimum amount of STX tokens to secure a reward slot, or pool with others to reach the minimum
+- Comprometerse a participar antes de que comience un ciclo de recompensas
+- Compromete la cantidad mínima de tokens STX para asegurar un slot de recompensas, o agrupe con otros para alcanzar el mínimo
 - Bloquear tokens STX para un período específico
-- Provide a supported Bitcoin address to receive rewards (native segwit is not supported)
+- Proporcionar una dirección de Bitcoin compatible para recibir recompensas (segwit nativo no es compatible)
 
-The following diagram describes how the minimum STX tokens per slot is determined. More information on [dynamic minimums for stacking](https://stacking.club) is available at stacking.club.
+El siguiente diagrama describe cómo se determinan los tokens mínimos de STX por slot. Más información sobre [mínimos dinámicos para stacking](https://stacking.club) está disponible en stacking.club.
 
 ![Dynamic minimum for individual eligibility](/img/stacking-dynamic-minimum.png)
 
-Token holders have a variety of providers and tools to support their participation in Stacking. The Stacks website contains a [list of stacking providers and pools](https://stacks.org/stacking#earn).
+Los poseedores de token tienen una variedad de proveedores y herramientas para apoyar su participación en Stacking. El sitio web de Stacks contiene una [lista de proveedores de stacking y pools](https://stacks.org/stacking#earn).
 
-## Stacking in the PoX consensus algorithm
+## Staking en el algoritmo de consenso de PoX
 
-Stacking is a built-in capability of PoX and occurs through a set of actions on the Stacks blockchain. The [full proof-of-transfer implementation details](https://github.com/stacks-network/stacks-blockchain/blob/develop/sip/sip-007-stacking-consensus.md) are in SIP-007. Below is a summary of the most relevant actions of the algorithm.
+El Stacking es una capacidad integrada de PoX y se produce a través de un conjunto de acciones en la blockchain de Stacks. Los [detalles completos de la implementación de proof-of-transfer](https://github.com/stacks-network/stacks-blockchain/blob/develop/sip/sip-007-stacking-consensus.md) están en SIP-007. A continuación se muestra un resumen de las acciones más relevantes del algoritmo.
 
 ![PoX cycles](/img/pox-cycles.png)
 
-- Stacking happens over reward cycles with a fixed length. In each reward cycle, a set of Bitcoin addresses associated with stacking participants receive BTC rewards
+- Stacking happens over reward cycles with a fixed length. En cada ciclo de recompensa, un conjunto de direcciones de Bitcoin asociadas con los participantes de staking reciben recompensas BTC
 - Un ciclo de recompensa consta de dos fases: preparar y recompensar
 - During the prepare phase, miners decide on an anchor block and a reward set. Mining any descendant forks of the anchor block requires transferring mining funds to the appropriate reward addresses. The reward set is the set of Bitcoin addresses which are eligible to receive funds in the reward cycle
 - Miners register as leader candidates for a future election by sending a key transaction that burns cryptocurrency. The transaction also registers the leader's preferred chain tip (must be a descendant of the anchor block) and commitment of funds to 2 addresses from the reward set
