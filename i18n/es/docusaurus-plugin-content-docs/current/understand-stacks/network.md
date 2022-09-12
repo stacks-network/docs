@@ -1,23 +1,23 @@
 ---
 title: Red
-description: Guide to the Stacks 2.0 network
+description: Guía de la red Stacks 2.0
 sidebar_position: 7
 ---
 
 ## Tokens
 
-Stacks (STX) tokens are the native tokens on the Stacks 2.0 blockchain. The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX).
+Los tokens de Stacks (STX) son los tokens nativos en la blockchain Stacks 2.0. La fracción más pequeña es un micro-STX. 1,000,000 micro-STX hacen un Stack (STX).
 
-STX amounts should be stored as integers (8 bytes long), and represent the amount of micro-STX. For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6).
+Los montos de STX deben almacenarse como enteros (8 bytes de longitud), y representados en montos de micro-STX. Para propósitos de visualización, el micro-STX se divide entre 1,000,00 (precisión decimal de 6).
 
-## Fees
+## Comisiones
 
-Fees are used to incentivize miners to confirm transactions on the Stacks 2.0 blockchain. The fee is calculated based on the estimate fee rate and the size of the raw transaction in bytes. The fee rate is a market determined variable. For the [testnet](testnet), it is set to 1 micro-STX.
+Las comisiones se utilizan para compensar a los mineros por confirmar las transacciones en la blockchain Stacks 2.0. La comisión se calcula en base a la tasa estimada de comisión y al tamaño de la transacción en peso bruto en bytes. La tasa de comisión es una variable determinada por el mercado. Para la [testnet](testnet)se establece en 1 micro-STX.
 
-Fee estimates can obtained through the [`GET /v2/fees/transfer`](https://docs.hiro.so/api#operation/get_fee_transfer) endpoint:
+Las estimaciones de comisiones pueden obtenerse a través del endpoint [`GET /v2/fees/transfer`](https://docs.hiro.so/api#operation/get_fee_transfer):
 
 ```bash
-# for mainnet, replace `testnet` with `mainnet`
+# para mainnet, reemplazar `testnet` por `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/v2/fees/transfer'
 ```
 
@@ -127,7 +127,7 @@ The network information can be obtained using the [`GET /v2/info`](https://docs.
 curl 'https://stacks-node-api.testnet.stacks.co/v2/info'
 ```
 
-Sample response:
+Ejemplo de respuesta:
 
 ```js
 {
