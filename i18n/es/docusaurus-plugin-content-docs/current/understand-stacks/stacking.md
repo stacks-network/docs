@@ -6,13 +6,13 @@ sidebar_position: 9
 
 ## Introducción
 
-Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time.
+Stacking recompensa a los poseedores de tokens Stacks (STX) con bitcoins por brindar un valioso servicio a la red al bloquear sus tokens durante un tiempo determinado.
 
 ![](/img/stacking.png)
 
-Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks 2.0 network.
+Stacking es una acción integrada, requerida por el mecanismo de "proof-of-transfer" (PoX). El mecanismo PoX es ejecutado por todos los mineros de la red Stacks 2.0.
 
-:::info The Stacking consensus algorithm is implemented as a smart contract, using [Clarity](../write-smart-contracts/). [Lea más sobre el contrato](../noteworthy-contracts/stacking-contract). :::
+:::info El algoritmo de consenso de staking se implementa como un contrato inteligente, usando [Clarity](../write-smart-contracts/). [Lea más sobre el contrato](../noteworthy-contracts/stacking-contract). :::
 
 ## Flujo del Stacking
 
@@ -20,103 +20,103 @@ El mecanismo de Stacking puede presentarse como un flujo de acciones:
 
 ![Flujo del Stacking](/img/stacking-illustration.png)
 
-1. Make API calls to get details about the upcoming reward cycle
+1. Realizar llamadas API para obtener detalles sobre el próximo ciclo de recompensas
 2. Para una cuenta de Stacks específica, confirmar elegibilidad
-3. Confirm the BTC reward address and the lockup duration
-4. The transaction is broadcasted and the STX tokens are locked. This needs to happen before the prepare phase of the next reward cycle, the last 100 Bitcoin blocks of the ongoing reward phase
-5. The Stacking mechanism executes reward cycles and sends out rewards to the set BTC reward address
-6. During the lockup period, details about unlocking timing, rewards and more can be obtained
-7. Once the lockup period is passed, the tokens are released and accessible again
-8. Display reward history, including details like earnings for previous reward cycles
+3. Confirmar la dirección de recompensa de BTC y la duración del bloqueo
+4. La transacción se transmite y los tokens STX se bloquean. Esto debe suceder antes de la fase de preparación del próximo ciclo de recompensas, los últimos 100 bloques de Bitcoin de la fase de recompensas en curso
+5. El mecanismo de Staking ejecuta ciclos de recompensa y envía recompensas a la dirección de recompensa BTC establecida
+6. Durante el período de bloqueo, se pueden obtener detalles sobre el tiempo de desbloqueo, recompensas y más
+7. Una vez que pasa el período de bloqueo, los tokens son liberados y accesibles de nuevo
+8. Muestra el historial de recompensas, incluyendo detalles como ganancias de ciclos de recompensa anteriores
 
-:::info Keep in mind that the target duration for a reward cycles is ~2 weeks. This duration is based on the target block time of the network (10 minutes) and can be higher at times due to [confirmation time variances](https://www.blockchain.com/charts/median-confirmation-time) of the bitcoin network. :::
+:::info Ten en cuenta que la duración de un ciclo de recompensa es de ~2 semanas. Esta duración se basa en el tiempo de bloque objetivo de la red (10 minutos) y puede ser mayor a veces debido a [variaciones de tiempo de confirmación](https://www.blockchain.com/charts/median-confirmation-time) de la red bitcoin. :::
 
-## Stacking delegation flow
+## Flujo de delegación Staking
 
-The Stacking flow is different for delegation use cases:
+El flujo de Staking es diferente para los casos de uso de la delegación:
 
 ![Delegated tacking flow](/img/stacking-delegation-illustration.png)
 
-- Before Stacking can be initiated for a token holder, the delegator needs to be granted permission to Stack on behalf of the account owner. The permission is restricted to the maximum amount the delegator is allowed to Stack. The maximum amount is not limited by the available funds and can be set much higher. An account can only be associated with one single delegator
-- La cuenta tiene que definir la relación de delegación. They can optionally restrict the Bitcoin reward address that must be used for payouts, and the expiration burn block height for the permission, thus limiting the time a delegator has permission to Stack
-- Delegators have to lock Stacks from different accounts ("pooling phase") until they reach the minimum amount of Stacks required to participate in Stacking
-- Once a delegator locks enough STX tokens, they can finalize and commit their participation in the next reward cycle
-- Certain delegation relationships may allow the STX holder to receive the payout directly from the miner (step 5/6)
-- The termination of the delegation relationship can either happen automatically based on set expiration rules or by actively revoking delegation rights
+- Antes de que se pueda iniciar el Stacking para un poseedor de tokens, el delegador necesita que se le conceda permiso en nombre del propietario de la cuenta. El permiso está restringido a la cantidad máxima que el delegado puede delegar. La cantidad máxima no está limitada por los fondos disponibles y puede establecerse mucho más alta. Una cuenta sólo puede ser asociada con un solo delegador
+- La cuenta tiene que definir la relación de delegación. Opcionalmente pueden restringir la dirección de recompensa de Bitcoin que debe ser utilizada para los pagos, y la altura del bloque de caducidad para el permiso, limitando así el tiempo que un delegador tiene permiso para delegar
+- Los Delegadores deben bloquear Stacks de diferentes cuentas ("fase de pool") hasta que alcancen la cantidad mínima de Stacks requeridos para participar en Stacking
+- Una vez que un delegador bloquea suficientes tokens STX, pueden finalizar y comprometer su participación en el próximo ciclo de recompensas
+- Ciertas relaciones de delegación pueden permitir al titular de STX recibir el pago directamente del minero (paso 5/6)
+- La terminación de la relación con la delegación puede ocurrir automáticamente según las reglas de vencimiento establecidas o mediante la revocación activa de los derechos de delegación
 
 ## Minería de PoX
 
-PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of sending the committed Bitcoin to a burn address, it's transferred to eligible STX holders that participate in the stacking protocol.
+La minería PoX es una modificación de la minería Proof-of-Burn (PoB) en lugar de enviar el bitcoin entregado a una dirección de quemado, se transfiere a los poseedores elegibles de STX que participan en el protocolo de Stacking.
 
 :::note
-A PoX miner can only receive newly minted STX tokens when they transfer Bitcoin to eligible owners of STX tokens
+Un minero de PoX solo puede recibir tokens STX recién mintados cuando transfieren bitcoins a los dueños elegibles de tokens STX
 :::
 
 ![Mining flow](/img/pox-mining-flow.png)
 
-Miners run Stacks nodes with mining enabled to participate in the PoX mechanism. The node implements the PoX mechanism, which ensures proper handling and incentives through four key phases:
+Los mineros ejecutan los nodos de Stacks con minería habilitada para participar en el mecanismo PoX. El nodo implementa el mecanismo PoX, que garantiza un manejo adecuado e incentivos a través de cuatro fases clave:
 
-- Registration: miners register for a future election by sending consensus data to the network
-- Commitment: registered miners transfer Bitcoin to participate in the election. Committed BTC are sent to a set participating STX token holders
-- Election: a verifiable random function chooses one miner to write a new block on the Stacks blockchain
-- Assembly: the elected miner writes the new block and collects rewards in form of new STX tokens
+- Registro: los mineros se registran para una futura elección enviando datos de consenso a la red
+- Compromiso: los mineros registrados transfieren Bitcoin para participar en la elección. Los BTC comprometidos se envían a un conjunto titulares de tokens STX participantes
+- Elección: una función aleatoria verificable elige un minero para escribir un nuevo bloque en la blockchain de Stacks
+- Ensamblado: el minero elegido escribe el nuevo bloque y recolecta recompensas en forma de nuevos tokens STX
 
-## Token holder eligibility
+## Elegibilidad del poseedor del token
 
-Stacks (STX) token holders don't automatically receive stacking rewards. En su lugar, deben hacer:
+Los poseedores de tokens Stacks (STX) no reciben automáticamente recompensas de Stacking. En su lugar, deben hacer:
 
-- Commit to participation before a reward cycle begins
-- Commit the minimum amount of STX tokens to secure a reward slot, or pool with others to reach the minimum
+- Comprometerse a participar antes de que comience un ciclo de recompensas
+- Compromete la cantidad mínima de tokens STX para asegurar un slot de recompensas, o agrupe con otros para alcanzar el mínimo
 - Bloquear tokens STX para un período específico
-- Provide a supported Bitcoin address to receive rewards (native segwit is not supported)
+- Proporcionar una dirección de Bitcoin compatible para recibir recompensas (segwit nativo no es compatible)
 
-The following diagram describes how the minimum STX tokens per slot is determined. More information on [dynamic minimums for stacking](https://stacking.club) is available at stacking.club.
+El siguiente diagrama describe cómo se determinan los tokens mínimos de STX por slot. Más información sobre [mínimos dinámicos para stacking](https://stacking.club) está disponible en stacking.club.
 
 ![Dynamic minimum for individual eligibility](/img/stacking-dynamic-minimum.png)
 
-Token holders have a variety of providers and tools to support their participation in Stacking. The Stacks website contains a [list of stacking providers and pools](https://stacks.org/stacking#earn).
+Los poseedores de token tienen una variedad de proveedores y herramientas para apoyar su participación en Stacking. El sitio web de Stacks contiene una [lista de proveedores de stacking y pools](https://stacks.org/stacking#earn).
 
-## Stacking in the PoX consensus algorithm
+## Staking en el algoritmo de consenso de PoX
 
-Stacking is a built-in capability of PoX and occurs through a set of actions on the Stacks blockchain. The [full proof-of-transfer implementation details](https://github.com/stacks-network/stacks-blockchain/blob/develop/sip/sip-007-stacking-consensus.md) are in SIP-007. Below is a summary of the most relevant actions of the algorithm.
+El Stacking es una capacidad integrada de PoX y se produce a través de un conjunto de acciones en la blockchain de Stacks. Los [detalles completos de la implementación de proof-of-transfer](https://github.com/stacks-network/stacks-blockchain/blob/develop/sip/sip-007-stacking-consensus.md) están en SIP-007. A continuación se muestra un resumen de las acciones más relevantes del algoritmo.
 
 ![PoX cycles](/img/pox-cycles.png)
 
-- Stacking happens over reward cycles with a fixed length. In each reward cycle, a set of Bitcoin addresses associated with stacking participants receive BTC rewards
+- El Stacking ocurre sobre ciclos de recompensa con una duración fija. En cada ciclo de recompensa, un conjunto de direcciones de Bitcoin asociadas con los participantes de staking reciben recompensas BTC
 - Un ciclo de recompensa consta de dos fases: preparar y recompensar
-- During the prepare phase, miners decide on an anchor block and a reward set. Mining any descendant forks of the anchor block requires transferring mining funds to the appropriate reward addresses. The reward set is the set of Bitcoin addresses which are eligible to receive funds in the reward cycle
-- Miners register as leader candidates for a future election by sending a key transaction that burns cryptocurrency. The transaction also registers the leader's preferred chain tip (must be a descendant of the anchor block) and commitment of funds to 2 addresses from the reward set
-- Token holders register for the next rewards cycle by broadcasting a signed message that locks up associated STX tokens for a protocol-specified lockup period, specifies a Bitcoin address to receive the funds, and votes on a Stacks chain tip
-- Multiple leaders can commit to the same chain tip. The leader that wins the election and the peers who also burn for that leader collectively share the reward, proportional to how much each one burned
-- Token holders' locked up tokens automatically unlock as soon as the lockup period finishes
+- Durante la fase de preparación, los mineros deciden un bloque de anclaje y un conjunto de recompensas. Minar cualquier bifurcación descendiente del bloque ancla requiere transferir fondos de minería a las direcciones de recompensa apropiadas. El conjunto de recompensas es el conjunto de direcciones de Bitcoin que son elegibles para recibir fondos en el ciclo de recompensa
+- Los mineros se registran como candidatos líderes para una futura elección enviando una transacción clave que quema criptomoneda. La transacción también registra la sugerencia de cadena preferida del líder (debe ser un descendiente del bloque ancla) y los fondos comprometidos a 2 direcciones del conjunto de recompensas
+- Los poseedores de token se registran para el próximo ciclo de recompensas mediante la transmición un mensaje firmado que bloquea los tokens STX asociados durante un período de bloqueo especificado en el protocolo, especifica una dirección de Bitcoin para recibir los fondos, y vota en el tip de la cadena de Stacks
+- Múltiples líderes pueden comprometerse con la misma tip de la cadena. El líder que gana la elección y los compañeros que también queman por ese líder comparten colectivamente la recompensa, proporcional a cuánto se quemó cada uno
+- Los tokens bloqueadas de los tenedores de tokens se desbloquean automáticamente tan pronto como finaliza el período de bloqueo
 
-## Bitcoin address
+## Dirección de Bitcoin
 
-:::danger You must provide a BTC address in one of two formats:
+:::danger Debes proporcionar una dirección BTC en uno de dos formatos:
 
-* [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), which starts with `1`.
+* [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), que comienza con `1`.
 
-* [Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), which starts with `3`. The "Native Segwit" format (which starts with `bc1`), for example, is not supported. :::
+* [ Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), que comienza con `3`. El formato "Native Segwit" (que comienza con `bc1`), por ejemplo, no es compatible. :::
 
-The Stacking contract needs a special format for the Bitcoin address (the reward address). This is required to ensure that miners are able to correctly construct the Bitcoin transaction containing the reward address.
+El contrato de stacking necesita un formato especial para la dirección de Bitcoin (la dirección de recompensa). Esto es necesario para asegurar que los mineros puedan construir correctamente la transacción de Bitcoin que contiene la dirección de recompensa.
 
-The address must be specified in the following format using the Clarity language:
+La dirección debe especificarse en el siguiente formato utilizando el lenguaje de Clarity:
 
 ```clar
-;; a tuple of a version and hashbytes buffer
-(pox-addr (tuple (version (buff 1)) (hashbytes (buff 20))))
+;; una tupla de una versión y buffer de hashbytes
+(pox-addr (tuple (versión (buff 1)) (hashbytes (buff 20))))
 ```
 
-The `version` buffer must represent what kind of bitcoin address is being submitted. It can be one of the following:
+La `versión` del búfer debe representar qué tipo de dirección de bitcoin está siendo enviada. Puede ser uno de los siguientes:
 
 ```js
-SerializeP2PKH  = 0x00, // hash160(public-key), same as bitcoin's p2pkh
-SerializeP2SH   = 0x01, // hash160(multisig-redeem-script), same as bitcoin's multisig p2sh
-SerializeP2WPKH = 0x02, // hash160(segwit-program-00(p2pkh)), same as bitcoin's p2sh-p2wpkh
-SerializeP2WSH  = 0x03, // hash160(segwit-program-00(public-keys)), same as bitcoin's p2sh-p2wsh
+SerializeP2PKH = 0x00, // hash160(public-key), igual que p2pkh de bitcoin
+SerializeP2SH = 0x01, // hash160(multisig-redeem-script), al igual que el multisig p2sh de bitcoin,
+SerializeP2WPKH = 0x02, // hash160(segwit-program-00(p2pkh)), igual que el p2sh-p2wpkh
+SerializeP2WSH = 0x03, // hash160(segwit-program-00(public-keys)), igual que el p2sh-p2wsh de bitcoin
 ```
 
-The `hashbytes` are the 20 hash bytes of the bitcoin address. You can obtain that from a bitcoin library, for instance using [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib):
+Los `hashbytes` son los 20 hash bytes de la dirección bitcoin. Puedes obtenerlo de una librería de bitcoin, por ejemplo usando [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib):
 
 ```js
 const btc = require('bitcoinjs-lib');
@@ -125,41 +125,41 @@ console.log(
 );
 ```
 
-## Choosing the right Stacking strategy
+## Elegir la estrategia de Stacking adecuada
 
-[Here](https://blog.stacks.co/stacking-strategy) is an interesting article that may help you choose the right Stacking stategy.
+[Aquí](https://blog.stacks.co/stacking-strategy) hay un artículo interesante que puede ayudarle a elegir la estrategia de staking adecuada.
 
 
 ## Where to Stacks?
 
-You can Stack on your own, on a pool or on an exchange:
-### Stacking on your own
+Puedes acumular solo, en un pool o en un exchange:
+### Staking por tu cuenta
 
-Stacking on your own is non-custodial.
+Staking por su cuenta no es custodial.
 
-Stacking on your own requires a protocol minimum (amount changes but about 100,000 STX).
+Staking por su cuenta requiere un mínimo de protocolo (cantidad cambia pero alrededor de 100.000 STX).
 
-[Hiro Wallet](https://www.hiro.so/wallet) allows stacking on your own.
+[Hiro Wallet](https://www.hiro.so/wallet) permite hacer staking por tu cuenta.
 
 ### Stacking on a pool
 
-Stacking on a pool allows Stacking without the requirement of the protocol minumum.
+Hacer stacking en un pool permite acumular sin el requisito del mínimo de protocolo.
 
-Some available pools are:
+Algunos pools disponibles son:
 
-| Pool                                                | Type          | Pays rewards in | Fee | Minimum amount |
-| --------------------------------------------------- | ------------- |:---------------:| --- |:--------------:|
-| [Friedger's Pool](https://pool.friedger.de/)        | Non custodial |   STX or xBTC   | No  |     40 STX     |
-| [Planbetter](https://planbetter.org/)               | Non custodial |       BTC       | 5%  |    200 STX     |
-| [Stacked](https://staking.staked.us/stacks-staking) | Non custodial |       BTC       |     |  100,000 STX   |
-| [Xverse](https://www.xverse.app/)                   | Non custodial |       BTC       | No  |    100 STX     |
+| Pool                                                | Tipo          | Pays rewards in | Fee | Cantidad mínima |
+| --------------------------------------------------- | ------------- |:---------------:| --- |:---------------:|
+| [Friedger's Pool](https://pool.friedger.de/)        | Non custodial |   STX or xBTC   | No  |     40 STX      |
+| [Planbetter](https://planbetter.org/)               | Non custodial |       BTC       | 5%  |     200 STX     |
+| [Stacked](https://staking.staked.us/stacks-staking) | Non custodial |       BTC       |     |   100,000 STX   |
+| [Xverse](https://www.xverse.app/)                   | Non custodial |       BTC       | No  |     100 STX     |
 
-### Stacking on an exchange
+### Hacer Staking en un exchange
 
-Stacking on an exchange is custodial, meaning you are trusting the exchange with your Stacks.
+Hacer Stacking en un exchange es custodial, lo que significa que confías tus Stacks al exchange.
 
-Several exchanges allow Stacking directly on their sites. Examples are [Okcoin](https://www.okcoin.com) and [Binance](https://www.binance.com/en/staking)
+Varios exchanges permiten hacer stacking directamente en sus sitios. Ejemplos son [Okcoin](https://www.okcoin.com) y [Binance](https://www.binance.com/en/staking)
 
-## Stacking statistics
+## Estadísticas de stacking
 
-You can view all sorts of Stacking data and statistics on [Stacking Club](https://stacking.club)
+Puedes ver todo tipo de datos de stacking y estadísticas en [Stacking Club](https://stacking.club)

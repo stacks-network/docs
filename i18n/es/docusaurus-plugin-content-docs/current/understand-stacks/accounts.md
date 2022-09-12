@@ -23,7 +23,7 @@ El tipo de transacción no necesita ser una transferencia de tokens - el deploy 
 Una cuenta se genera a partir de una frase mnemónica de 24 palabras. Esto a menudo se le conoce como **la frase semilla**. La frase semilla proporciona acceso a las cuentas Stacks 2.0.
 
 :::danger
-Si la frase de semilla se pierde, el acceso a la cuenta asociada no se puede recuperar. No person or organization, including Blockstack, can recover a lost seed phrase.
+Si la frase de semilla se pierde, el acceso a la cuenta asociada no se puede recuperar. Ninguna persona u organización, incluyendo Blockstack, puede recuperar una frase de semilla perdida.
 :::
 
 La forma más fácil de generar una nueva cuenta de Stacks 2.0 es utilizar la [CLI de Stacks](https://github.com/hirosystems/stacks.js/tree/master/packages/cli):
@@ -63,11 +63,11 @@ stx make_keychain -t > cli_keychain.json
 | `keyInfo.wif`        | Clave privada de btcAddress en formato comprimido.                                                                                                                                    |
 | `keyInfo.index`      | Nonce para la cuenta, iniciando en 0                                                                                                                                                  |
 
-Note that a new account automatically exists for each new private key. There is no need to manually instantiate an account on the Stacks 2.0 blockchain.
+Ten en cuenta que existe una nueva cuenta automáticamente para cada nueva clave privada. No hay necesidad de instanciar manualmente una cuenta en la blockchain Stacks 2.0.
 
-:::tip Addresses are created by generating the [RIPEMD-160 hash](https://en.wikipedia.org/wiki/RIPEMD#RIPEMD-160_hashes) of the [SHA256](https://en.bitcoinwiki.org/wiki/SHA-256) of the public key. BTC addresses are encoded with [Base58Check](https://en.bitcoin.it/wiki/Base58Check_encoding). For Stacks addresses, [c32check](https://github.com/stacks-network/c32check) is used. Deriving an address from a public key can be done without internet access, for instance using the c32check `c32addressDecode` method. :::
+:::tip Las direcciones se crean generando el [hash RIPEMD-160](https://en.wikipedia.org/wiki/RIPEMD#RIPEMD-160_hashes) del [SHA256](https://en.bitcoinwiki.org/wiki/SHA-256) de la clave pública. Las direcciones BTC están codificadas con [Base58Check](https://en.bitcoin.it/wiki/Base58Check_encoding). Para direcciones Stacks, se utiliza [c32check](https://github.com/stacks-network/c32check). Se puede obtener una dirección de una clave pública sin acceso a Internet, por ejemplo utilizando el método c32check `c32addressDecode`. :::
 
-Alternatively to the CLI creation, the [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library can be used:
+Alternativamente a la creación con CLI, se puede utilizar la librería [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions):
 
 ```js
 import {
@@ -79,26 +79,26 @@ import {
 
 const privateKey = makeRandomPrivKey();
 
-// Get public key from private
+// Obtener clave pública de privada
 const publicKey = getPublicKey(privateKey);
 
 const stacksAddress = getAddressFromPrivateKey(
   privateKeyToString(privateKey),
-  TransactionVersion. Testnet // remove for Mainnet addresses
+  TransactionVersion: Testnet // quitar esta línea para direcciones Mainnet
 );
 ```
 
-A second alternative would be to use [stacks-gen](https://github.com/psq/stacks-gen). This tool will generate all the keys you need in one place, including the values needed for calling the stacking contract, and also a WIF key for use with `bitcoind`.
+Una segunda alternativa sería utilizar [stacks-gen](https://github.com/psq/stacks-gen). Esta herramienta generará todas las claves que necesita en un solo lugar, incluyendo los valores necesarios para llamar al contrato de staking, y también una clave WIF para usar con `bitcoind`.
 
-#### stacks-gen prerequisite
+#### prerrequisito de stacks-gen
 
-Install [npx](https://github.com/npm/npx) if not already installed. (npx will check whether `<command>` exists in \$PATH, or in the local project binaries, and execute that. If `<command>` is not found, it will be installed prior to execution).
+Instalar [npx](https://github.com/npm/npx) si no está instalado. (npx comprobará si `<command>` existe en \$PATH, o en los binarios locales del proyecto y lo ejecuta. If `<command>` is not found, it will be installed prior to execution).
 
 ```
 npm install -g npx
 ```
 
-#### stacks-gen usage
+#### uso de stacks-gen
 
 ```
 npx -q stacks-gen sk --testnet
@@ -114,22 +114,22 @@ npx -q stacks-gen sk --testnet
 }
 ```
 
-:::tip The stacking object with hashbytes and a version represents the bitcoin address derived from the Stacks address. Read more about the [bitcoin address format](stacking#bitcoin-address). :::
+:::tip El objeto stacking con hashbytes y una versión representa la dirección bitcoin derivada de la dirección de pilas. Lea más sobre el [formato de dirección bitcoin](stacking#bitcoin-address). :::
 
-Full documentation available at [stacks-gen](https://github.com/psq/stacks-gen).
+La documentación completa está disponible en [stacks-gen](https://github.com/psq/stacks-gen).
 
 ## Consultas
 
-### Get Stacks (STX) balance and nonce
+### Obtener el balance de Stacks (STX) y nonce
 
-STX balance and nonce can be obtained through the [`GET /v2/accounts/<stx_address>`](https://docs.hiro.so/api#operation/get_account_info) endpoint:
+El saldo STX y nonce se pueden obtener a través del endpoint [`GET /v2/accounts/<stx_address>`](https://docs.hiro.so/api#operation/get_account_info):
 
 ```bash
-# for mainnet, replace `testnet` with `mainnet`
+# para mainnet, reemplazar `testnet` por `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/v2/accounts/<stx_address>'
 ```
 
-Sample response:
+Ejemplo de respuesta:
 
 ```js
 {
@@ -139,19 +139,19 @@ Sample response:
 ```
 
 :::tip
-The balance string represents an unsigned 128-bit integer (big-endian) in hex encoding
+La cadena de balance representa un entero sin signo de 128-bit (big-endian) en codificación hexadecimal
 :::
 
-### Get all token balances
+### Obtener los balances de todos los tokens
 
-All token balances can be obtained through the [`GET /extended/v1/address/<stx_address>/balances`](https://docs.hiro.so/api#operation/get_account_balance) endpoint:
+Todos los balances de tokens se pueden obtener a través del endpoint [`GET /extended/v1/address/<stx_address>/balances`](https://docs.hiro.so/api#operation/get_account_balance):
 
 ```bash
-# for mainnet, replace `testnet` with `mainnet`
+# para mainnet, reemplazar `testnet` por `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/address/<stx_address>/balances'
 ```
 
-Sample response:
+Ejemplo de respuesta:
 
 ```js
 {
@@ -165,18 +165,18 @@ Sample response:
 }
 ```
 
-:::tip Stacks accounts cannot hold bitcoins. The best way to obtain corresponding BTC balances is to derive the BTC address from the Stacks address (using [`c32check`](https://github.com/stacks-network/c32check#c32tob58-b58toc32)) and query the Bitcoin network. :::
+:::tip Las cuentas Stacks no pueden contener bitcoins. La mejor manera de obtener los balances BTC correspondientes es derivar la dirección BTC de la dirección Stacks (usando [`c32check`](https://github.com/stacks-network/c32check#c32tob58-b58toc32)) y consultar la red Bitcoin. :::
 
-### Get all asset events
+### Obtener todos los eventos de los asset
 
-All asset events associated with the account can be obtained through the [`GET /extended/v1/address/<stx_address>/assets`](https://docs.hiro.so/api#operation/get_account_balance) endpoint:
+Todos los eventos de asset asociados con la cuenta se pueden obtener a través del endpoint [`GET /extended/v1/address/<stx_address>/assets`](https://docs.hiro.so/api#operation/get_account_balance):
 
 ```bash
-# for mainnet, replace `testnet` with `mainnet`
-curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/address/<stx_address>/assets'
+# para mainnet, reemplazar `testnet` por `mainnet`
+curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/address/<stx_address>/balances'
 ```
 
-Sample response:
+Ejemplo de respuesta:
 
 ```js
 {
