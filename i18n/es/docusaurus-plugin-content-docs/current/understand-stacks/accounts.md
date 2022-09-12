@@ -67,7 +67,7 @@ Note that a new account automatically exists for each new private key. There is 
 
 :::tip Addresses are created by generating the [RIPEMD-160 hash](https://en.wikipedia.org/wiki/RIPEMD#RIPEMD-160_hashes) of the [SHA256](https://en.bitcoinwiki.org/wiki/SHA-256) of the public key. BTC addresses are encoded with [Base58Check](https://en.bitcoin.it/wiki/Base58Check_encoding). For Stacks addresses, [c32check](https://github.com/stacks-network/c32check) is used. Deriving an address from a public key can be done without internet access, for instance using the c32check `c32addressDecode` method. :::
 
-Alternatively to the CLI creation, the [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library can be used:
+Alternativamente a la creación con CLI, se puede utilizar la librería [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions):
 
 ```js
 import {
@@ -88,7 +88,7 @@ const stacksAddress = getAddressFromPrivateKey(
 );
 ```
 
-A second alternative would be to use [stacks-gen](https://github.com/psq/stacks-gen). This tool will generate all the keys you need in one place, including the values needed for calling the stacking contract, and also a WIF key for use with `bitcoind`.
+Una segunda alternativa sería utilizar [stacks-gen](https://github.com/psq/stacks-gen). Esta herramienta generará todas las claves que necesita en un solo lugar, incluyendo los valores necesarios para llamar al contrato de staking, y también una clave WIF para usar con `bitcoind`.
 
 #### stacks-gen prerequisite
 
