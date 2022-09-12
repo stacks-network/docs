@@ -1,70 +1,70 @@
 ---
 title: Red
-description: Guide to the Stacks 2.0 network
+description: Guía de la red Stacks 2.0
 sidebar_position: 7
 ---
 
 ## Tokens
 
-Stacks (STX) tokens are the native tokens on the Stacks 2.0 blockchain. The smallest fraction is one micro-STX. 1,000,000 micro-STX make one Stacks (STX).
+Los tokens de Stacks (STX) son los tokens nativos en la blockchain Stacks 2.0. La fracción más pequeña es un micro-STX. 1,000,000 micro-STX hacen un Stack (STX).
 
-STX amounts should be stored as integers (8 bytes long), and represent the amount of micro-STX. For display purposes, micro-STX are divided by 1,000,000 (decimal precision of 6).
+Los montos de STX deben almacenarse como enteros (8 bytes de longitud), y representados en montos de micro-STX. Para propósitos de visualización, el micro-STX se divide entre 1,000,00 (precisión decimal de 6).
 
-## Fees
+## Comisiones
 
-Fees are used to incentivize miners to confirm transactions on the Stacks 2.0 blockchain. The fee is calculated based on the estimate fee rate and the size of the raw transaction in bytes. The fee rate is a market determined variable. For the [testnet](testnet), it is set to 1 micro-STX.
+Las comisiones se utilizan para compensar a los mineros por confirmar las transacciones en la blockchain Stacks 2.0. La comisión se calcula en base a la tasa estimada de comisión y al tamaño de la transacción en peso bruto en bytes. La tasa de comisión es una variable determinada por el mercado. Para la [testnet](testnet)se establece en 1 micro-STX.
 
-Fee estimates can obtained through the [`GET /v2/fees/transfer`](https://docs.hiro.so/api#operation/get_fee_transfer) endpoint:
+Las estimaciones de comisiones pueden obtenerse a través del endpoint [`GET /v2/fees/transfer`](https://docs.hiro.so/api#operation/get_fee_transfer):
 
 ```bash
-# for mainnet, replace `testnet` with `mainnet`
+# para mainnet, reemplazar `testnet` por `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/v2/fees/transfer'
 ```
 
-The API will respond with the fee rate (as integer):
+La API responderá con la tasa de comisión (como entero):
 
 ```json
 1
 ```
 
-[The Stacks Transactions JS library](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) supports fee estimation for:
+[La librería Stacks JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) soporta estimación de comisiones para:
 
-- token transfers (`estimateTransfer`)
-- contract deploys (`estimateContractDeploy`)
-- non read-only contract calls (`estimateContractFunctionCall`)
+- transferencias de token (`estimateTransfer`)
+- publicación de contrato (`estimateContractDeploy`)
+- llamadas a contrato sin solo-lectura (`estimateContractFunctionCall`)
 
 :::tip For an implementation using a different language than JavaScript, please review [this reference implementation](https://github.com/hirosystems/stacks.js/blob/master/packages/transactions/src/builders.ts#L97). :::
 
 ## Nonces
 
-Every account carries a [nonce property](https://en.wikipedia.org/wiki/Cryptographic_nonce) that indicates the number of transactions processed for the given account. Nonces are one-time codes, starting at `0` for new accounts, and incremented by 1 on every transaction.
+Cada cuenta lleva una [propiedad nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) que indica el número de transacciones procesadas para la cuenta dada. Las nonces son códigos de un solo uso, comenzando en `0` para cuentas nuevas e incrementado en 1 en cada transacción.
 
-Nonces are added to all transactions and help identify them in order to ensure transactions are processed in order and to avoid duplicated processing.
+Los onces se añaden a todas las transacciones y ayudan a identificarlas con el fin de asegurar que las transacciones se procesan en orden y para evitar un proceso duplicado.
 
 :::tip
-The consensus mechanism also ensures that transactions aren't "replayed" in two ways. First, nodes query its unspent transaction outputs (UTXOs) in order to satisfy their spending conditions in a new transaction. Second, messages sent between nodes review sequence numbers.
+El mecanismo de consenso también asegura que las transacciones no sean "repetidas" de dos maneras. En primer lugar, los nodos consultan las transacciones no gastadas (UTXOs) en orden de satisfacer sus condiciones de gasto en una nueva transacción. En segundo lugar, mensajes son enviados entre nodos para revisar la secuencia de números.
 :::
 
-When a new token transfer transaction is constructed, the most recent nonce of the account needs to fetched and set.
+Cuando se construye una nueva transacción de transferencia de tokens, se debe obtener y establecer el nonce más reciente de la cuenta.
 
-:::tip The API provides an endpoint to [simplify nonce handling](https://docs.hiro.so/get-started/stacks-blockchain-api#nonce-handling). :::
+:::tip La API proporciona un endpoint para [simplificar el manejo de nonce](https://docs.hiro.so/get-started/stacks-blockchain-api#nonce-handling). :::
 
-## Confirmations
+## Confirmaciones
 
-The Stacks 2.0 network is anchored onto the bitcoin network. This allows transactions on Stacks to inherit the same finality and security of the Bitcoin blockchain.
+La red Stacks 2.0 está anclada a la red bitcoin. Esto permite que las transacciones en Stacks hereden la misma finalidad y seguridad de la blockchain de Bitcoin.
 
-The time to mine a block, to confirm transactions, will eventually match the expected "block time" of the bitcoin network: 10 minutes.
+El tiempo para minar un bloque, para confirmar las transacciones, eventualmente coincidirá con el "tiempo de bloque" esperado de la red bitcoin: 10 minutos.
 
-:::tip Transactions can also be mined in [microblocks](microblocks), reducing the latency significantly. :::
+:::tip Las transacciones también se pueden ser minadas en [microbloques](microblocks), reduciendo la latencia significativamente. :::
 
-The block time is hardcoded and will change throughout the implementation phases of the [testnet](testnet). The current block time can be obtained through the [`GET /extended/v1/info/network_block_times`](https://docs.hiro.so/api#operation/get_network_block_times) endpoint:
+El tiempo del bloque está codificado y cambiará a lo largo de las fases de implementación de la [red de pruebas](testnet). El tiempo actual del bloque se puede obtener a través del endpoint [`GET /extended/v1/info/network_block_times`](https://docs.hiro.so/api#operation/get_network_block_times):
 
 ```bash
-# for mainnet, replace `testnet` with `mainnet`
+# para mainnet, reemplazar `testnet` por `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/info/network_block_times'
 ```
 
-The API will respond with the block time (in seconds):
+La API responderá con el tiempo del bloque (en segundos):
 
 ```js
 {
@@ -77,29 +77,27 @@ The API will respond with the block time (in seconds):
 }
 ```
 
-## Read-only function calls
+## Llamadas a funciones de solo-lectura
 
-Smart contracts can expose public function calls. For functions that make state modifications to the blockchain, transactions need to be generated and broadcasted.
+Los contratos inteligentes pueden exponer las llamadas a funciones públicas. Para las funciones que hacen modificaciones de estado a la blockchain, las transacciones deben ser generadas y transmitidas.
 
-However, for read-only function calls, transactions are **not** required. Instead, these calls can be done using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api).
+Sin embargo, para llamadas de solo-lectura, las transacciones **no son** requeridas. En su lugar, estas llamadas se pueden hacer utilizando la [API de Stacks Blockchain](https://docs.hiro.so/get-started/stacks-blockchain-api).
 
-:::tip
-Read-only function calls do not require transaction fees
-:::
+:::caution Llamadas de contratos solo-lectura no requieren transacciones:::
 
-A read-only contract call can be done using the [`POST /v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>`](https://docs.hiro.so/api#operation/call_read_only_function) endpoint:
+Se puede hacer una llamada de solo-lectura utilizando el endpoint [`POST /v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>`](https://docs.hiro.so/api#operation/call_read_only_function):
 
 ```bash
-# for mainnet, replace `testnet` with `mainnet`
-curl --location --request POST 'https://stacks-node-api.testnet.stacks.co/v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>' \
+# para mainnet, reemplazar `testnet` por `mainnet`
+curl --location --request POST 'https://stacks-node-api.testnet.stacks. o/v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "sender": "<stx_address>.<contract_name>",
-  "arguments": [<clarity_value>, ...]
+  "sender":<stx_address>.<contract_name>",
+  "arguments": [<clarity_value>,
 }'
 ```
 
-Sample response for a successful call:
+Ejemplo de respuesta para una llamada exitosa:
 
 ```js
 {
@@ -108,26 +106,26 @@ Sample response for a successful call:
 }
 ```
 
-:::tip To set the function call arguments and read the result, [Clarity values](../write-smart-contracts/values) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations :::
+:::tip Para establecer los argumentos de llamada a la función y leer el resultado, [Los valores de Claridad](../write-smart-contracts/values) necesitan ser serializados en una cadena hexadecimal. La librería [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) soporta estas operaciones :::
 
 ## Consultas
 
-Stacks 2.0 network details can be queried using the [Stacks Blockchain API](https://docs.hiro.so/get-started/stacks-blockchain-api).
+Los detalles de la red de Stacks 2.0 pueden ser consultados usando la [API de Stacks Blockchain](https://docs.hiro.so/get-started/stacks-blockchain-api).
 
-### Health check
+### Comprobación de estado
 
-The [status checker](https://stacks-status.com/) is a service that provides a user interface to quickly review the health of the Stacks 2.0 blockchain.
+El [comprobador de estado](https://stacks-status.com/) es un servicio que proporciona una interfaz de usuario para revisar rápidamente la salud de la blockchain de Stacks 2.0.
 
-### Network info
+### Información de la red
 
-The network information can be obtained using the [`GET /v2/info`](https://docs.hiro.so/api#operation/get_core_api_info) endpoint:
+La información de la red se puede obtener usando el endpoint [`GET /v2/info`](https://docs.hiro.so/api#operation/get_core_api_info):
 
 ```bash
-# for mainnet, replace `testnet` with `mainnet`
+# para mainnet, reemplazar `testnet` por `mainnet`
 curl 'https://stacks-node-api.testnet.stacks.co/v2/info'
 ```
 
-Sample response:
+Ejemplo de respuesta:
 
 ```js
 {
