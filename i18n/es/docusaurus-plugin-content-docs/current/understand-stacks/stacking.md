@@ -147,7 +147,7 @@ Stacking on a pool allows Stacking without the requirement of the protocol minum
 
 Some available pools are:
 
-| Pool                                                | Type          | Pays rewards in | Fee | Minimum amount |
+| Pool                                                | Tipo          | Pays rewards in | Fee | Minimum amount |
 | --------------------------------------------------- | ------------- |:---------------:| --- |:--------------:|
 | [Friedger's Pool](https://pool.friedger.de/)        | Non custodial |   STX or xBTC   | No  |     40 STX     |
 | [Planbetter](https://planbetter.org/)               | Non custodial |       BTC       | 5%  |    200 STX     |
