@@ -6,13 +6,13 @@ sidebar_position: 9
 
 ## Introducción
 
-Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time.
+Stacking recompensa a los poseedores de tokens Stacks (STX) con bitcoins por brindar un valioso servicio a la red al bloquear sus tokens durante un tiempo determinado.
 
 ![](/img/stacking.png)
 
-Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks 2.0 network.
+Stacking es una acción integrada, requerida por el mecanismo de "proof-of-transfer" (PoX). El mecanismo PoX es ejecutado por todos los mineros de la red Stacks 2.0.
 
-:::info The Stacking consensus algorithm is implemented as a smart contract, using [Clarity](../write-smart-contracts/). [Lea más sobre el contrato](../noteworthy-contracts/stacking-contract). :::
+:::info El algoritmo de consenso de staking se implementa como un contrato inteligente, usando [Clarity](../write-smart-contracts/). [Lea más sobre el contrato](../noteworthy-contracts/stacking-contract). :::
 
 ## Flujo del Stacking
 
@@ -20,29 +20,29 @@ El mecanismo de Stacking puede presentarse como un flujo de acciones:
 
 ![Flujo del Stacking](/img/stacking-illustration.png)
 
-1. Make API calls to get details about the upcoming reward cycle
+1. Realizar llamadas API para obtener detalles sobre el próximo ciclo de recompensas
 2. Para una cuenta de Stacks específica, confirmar elegibilidad
-3. Confirm the BTC reward address and the lockup duration
-4. The transaction is broadcasted and the STX tokens are locked. This needs to happen before the prepare phase of the next reward cycle, the last 100 Bitcoin blocks of the ongoing reward phase
-5. The Stacking mechanism executes reward cycles and sends out rewards to the set BTC reward address
-6. During the lockup period, details about unlocking timing, rewards and more can be obtained
-7. Once the lockup period is passed, the tokens are released and accessible again
-8. Display reward history, including details like earnings for previous reward cycles
+3. Confirmar la dirección de recompensa de BTC y la duración del bloqueo
+4. La transacción se transmite y los tokens STX se bloquean. Esto debe suceder antes de la fase de preparación del próximo ciclo de recompensas, los últimos 100 bloques de Bitcoin de la fase de recompensas en curso
+5. El mecanismo de Staking ejecuta ciclos de recompensa y envía recompensas a la dirección de recompensa BTC establecida
+6. Durante el período de bloqueo, se pueden obtener detalles sobre el tiempo de desbloqueo, recompensas y más
+7. Una vez que pasa el período de bloqueo, los tokens son liberados y accesibles de nuevo
+8. Muestra el historial de recompensas, incluyendo detalles como ganancias de ciclos de recompensa anteriores
 
-:::info Keep in mind that the target duration for a reward cycles is ~2 weeks. This duration is based on the target block time of the network (10 minutes) and can be higher at times due to [confirmation time variances](https://www.blockchain.com/charts/median-confirmation-time) of the bitcoin network. :::
+:::info Ten en cuenta que la duración de un ciclo de recompensa es de ~2 semanas. Esta duración se basa en el tiempo de bloque objetivo de la red (10 minutos) y puede ser mayor a veces debido a [variaciones de tiempo de confirmación](https://www.blockchain.com/charts/median-confirmation-time) de la red bitcoin. :::
 
-## Stacking delegation flow
+## Flujo de delegación Staking
 
-The Stacking flow is different for delegation use cases:
+El flujo de Staking es diferente para los casos de uso de la delegación:
 
 ![Delegated tacking flow](/img/stacking-delegation-illustration.png)
 
-- Before Stacking can be initiated for a token holder, the delegator needs to be granted permission to Stack on behalf of the account owner. The permission is restricted to the maximum amount the delegator is allowed to Stack. The maximum amount is not limited by the available funds and can be set much higher. An account can only be associated with one single delegator
-- La cuenta tiene que definir la relación de delegación. They can optionally restrict the Bitcoin reward address that must be used for payouts, and the expiration burn block height for the permission, thus limiting the time a delegator has permission to Stack
-- Delegators have to lock Stacks from different accounts ("pooling phase") until they reach the minimum amount of Stacks required to participate in Stacking
-- Once a delegator locks enough STX tokens, they can finalize and commit their participation in the next reward cycle
-- Certain delegation relationships may allow the STX holder to receive the payout directly from the miner (step 5/6)
-- The termination of the delegation relationship can either happen automatically based on set expiration rules or by actively revoking delegation rights
+- Antes de que se pueda iniciar el Stacking para un poseedor de tokens, el delegador necesita que se le conceda permiso en nombre del propietario de la cuenta. El permiso está restringido a la cantidad máxima que el delegado puede delegar. La cantidad máxima no está limitada por los fondos disponibles y puede establecerse mucho más alta. Una cuenta sólo puede ser asociada con un solo delegador
+- La cuenta tiene que definir la relación de delegación. Opcionalmente pueden restringir la dirección de recompensa de Bitcoin que debe ser utilizada para los pagos, y la altura del bloque de caducidad para el permiso, limitando así el tiempo que un delegador tiene permiso para delegar
+- Los Delegadores deben bloquear Stacks de diferentes cuentas ("fase de pool") hasta que alcancen la cantidad mínima de Stacks requeridos para participar en Stacking
+- Una vez que un delegador bloquea suficientes tokens STX, pueden finalizar y comprometer su participación en el próximo ciclo de recompensas
+- Ciertas relaciones de delegación pueden permitir al titular de STX recibir el pago directamente del minero (paso 5/6)
+- La terminación de la relación con la delegación puede ocurrir automáticamente según las reglas de vencimiento establecidas o mediante la revocación activa de los derechos de delegación
 
 ## Minería de PoX
 
