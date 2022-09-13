@@ -89,7 +89,7 @@ Las siguientes pautas se proporcionan como un conjunto inicial de buenas prácti
 
 Mostrar estado pendiente, pero advertir que una transacción todavía está pendiente. Indique visualmente que los saldos mostrados dependen del estado pendiente.
 
-#### Wallets
+#### Billeteras
 
 Mostrar estado pendiente, pero advertir que una transacción todavía está pendiente. Indicate visually that displayed balances depend on pending state.
 
