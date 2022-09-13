@@ -6,7 +6,7 @@ sidebar_position: 8
 
 ## Introducción
 
-Los microbloques son una característica a nivel de protocolo de la blockchain de Stacks que resuelven el desafío técnico de latencia de transacción. Porque cada bloque de Stacks está anclado a un bloque de Bitcoins a través del [mecanismo de consenso Proof-of-Transfer](../understand-stacks/proof-of-transfer), Stacks está necesariamente limitada a los mismos tiempos de bloqueo que la red Bitcoin. Los microbloques permiten a la blockchain de Stacks realizar transiciones de estado entre bloques de anclaje.
+Los microbloques son una característica a nivel de protocolo de la blockchain de Stacks que resuelven el desafío técnico de latencia de transacción. Porque cada bloque de Stacks está anclado a un bloque de Bitcoin a través del [mecanismo de consenso Proof-of-Transfer](../understand-stacks/proof-of-transfer), Stacks está necesariamente limitada a los mismos tiempos de bloques que la red Bitcoin. Los microbloques permiten a la blockchain de Stacks realizar transiciones de estado entre bloques de anclaje.
 
 Los microbloques son un potente mecanismo para que los desarrolladores creen aplicaciones de alta calidad y rendimiento en Stacks, mientras que todavía heredan la seguridad de Bitcoin.
 
