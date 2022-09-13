@@ -14,7 +14,7 @@ Los microbloques son un potente mecanismo para que los desarrolladores creen apl
 
 El [modelo de producción de bloques de Stacks](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.) se describe en SIP-001. El estándar delimita el mecanismo mediante el cual los líderes de bloques elegidos pueden producir bloques en la blockchain de Stacks ya sea por lotes de transacciones o por transmisión de ellas. Los microbloques son el producto del modelo de transimisión.
 
-Si un líder de bloque ha elegido minar microbloques, el líder selecciona las transacciones del mempool y las empaqueta en microbloques durante el epoch actual. Los microbloques son bloques de transacciones incluidas por un minero después del bloque de anclaje anterior haya sido minado, pero antes de que el siguiente bloque sea seleccionado. Transactions included in microblocks are processed by the network: their results are known.
+Si un líder de bloque ha elegido minar microbloques, el líder selecciona las transacciones del mempool y las empaqueta en microbloques durante el epoch actual. Los microbloques son bloques de transacciones incluidas por un minero después de que el bloque de anclaje anterior haya sido minado, pero antes de que el siguiente bloque sea seleccionado. Las transacciones incluidas en microbloques son procesadas por la red: sus resultados son conocidos.
 
 Considere una transacción desde la perspectiva del número de confirmaciones que el bloque tiene. Una transacción incluida en un microbloque podría tener el siguiente ejemplo de ciclo de vida:
 
@@ -27,7 +27,7 @@ El próximo bloque de Stacks confirma el bloque anterior. La transacción 1 tien
 ...
 ```
 
-Considera una transacción similar que no está incluida en un microbloque:
+Considere una transacción similar que no está incluida en un microbloque:
 
 ```
 La transacción 2 se transmite al mempool. Tiene 0 confirmaciones.
