@@ -6,15 +6,15 @@ sidebar_position: 10
 
 ## Consenso
 
-- Proof of Transfer (PoX) as described in [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md)
-- Network will transition to Proof of Burn (PoB) as described in [SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md) after 10 years. [Learn more about Proof-of-Burn in SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
+- Prueba de Transferencia (PoX) como se describe en [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md)
+- La red pasará a la Prueba de Burn (PoB) como se describe en [SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md) después de 10 años. [Más información sobre Proof-of-Burn en SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
 - Modelo de amenaza
-  - 51% of malicious Stacks mining power can perform a double-spend attack
-  - 51% of malicious Bitcoin mining power can reorg the Stacks chain
-- Different actors and their roles
-  - Stacks Miners package transactions into blocks, mine them through a Bitcoin transaction, propagate them, and if they win the block race, append microblocks to their winning block until the next block is mined. The next block confirms the microblock stream.
-  - Stacks Holders may alter the calculation of block limits (subject to a miner veto) and may vote to disable Proof-of-Transfer rewards for a reward cycle.
-- Transactions are considered final when the corresponding "block commit" transaction on Bitcoin is finalized. Typically this can by 3-6 confirmations.
+  - El 51% del poder de minería maliciosa en Stacks puede realizar un ataque de doble gasto
+  - El 51% del poder de minería maliciosa de Bitcoin puede reorganizar la cadena de Stacks
+- Diferentes actores y sus funciones
+  - Los mineros de Stacks empaquetan transacciones en bloques, las minan a través de una transacción de Bitcoin, las propagan y, si ganan la carrera de bloques, agregan microbloques a su bloque ganador hasta que se mina el siguiente bloque. El siguiente bloque confirma el flujo de microbloques.
+  - Los holders de Stacks pueden alterar el cálculo de los límites de bloque (sujeto al veto de los mineros) y pueden votar para dashabilitar las recompensas de prueba de transferencia por un ciclo de recompensa.
+- Las transacciones se consideran definitivas cuando finaliza la correspondiente transacción de "commit de bloque" en Bitcoin. Normalmente esto puede ser por 3-6 confirmaciones.
 - Para obtener más información, consulte [Prueba de Transferencia](proof-of-transfer).
 
 ## Minería en Prueba de transferencia

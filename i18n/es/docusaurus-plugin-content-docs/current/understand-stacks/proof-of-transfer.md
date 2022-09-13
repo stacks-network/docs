@@ -4,7 +4,7 @@ description: Conozca el mecanismo de consenso de prueba de transferencia
 sidebar_position: 3
 ---
 
-## Overview
+## Visión general
 
 Los algoritmos de consenso para los *blockchains* requieren recursos computacionales o financieros para lograr que el *blockchain* sea seguro. La práctica general del consenso descentralizado consiste en lograr que sea prácticamente inviable que cualquier actor malicioso tenga suficiente poder computacional o participación en la propiedad para atacar la red.
 
@@ -51,4 +51,4 @@ Los contratos inteligentes de Clarity también tienen una visibilidad única en 
 ## Vea también
 
 - [Lea el whitepaper completo de PoX](https://community.stacks.org/pox)
-- [Watch Executive Chair of Hiro Muneeb Ali and Evangelist Joe Bender give an overview of Stack's breakthrough PoX mining mechanism](https://www.youtube.com/watch?v=NY_eUrIcWOY)
+- [Ver al Presidente Ejecutivo de Hiro Muneeb Ali y Evangelista Joe Bender dar una visión general del revolucionario mecanismo de minería PoX de Stack](https://www.youtube.com/watch?v=NY_eUrIcWOY)

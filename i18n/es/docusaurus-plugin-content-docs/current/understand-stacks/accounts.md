@@ -92,7 +92,7 @@ Una segunda alternativa sería utilizar [stacks-gen](https://github.com/psq/stac
 
 #### prerrequisito de stacks-gen
 
-Instalar [npx](https://github.com/npm/npx) si no está instalado. (npx comprobará si `<command>` existe en \$PATH, o en los binarios locales del proyecto y lo ejecuta. If `<command>` is not found, it will be installed prior to execution).
+Instalar [npx](https://github.com/npm/npx) si no está instalado. (npx comprobará si `<command>` existe en \$PATH, o en los binarios locales del proyecto y lo ejecuta. Si `<command>` no se encuentra, se instalará antes de la ejecución).
 
 ```
 npm install -g npx
