@@ -185,7 +185,7 @@ Returns the largest integer that is less than or equal to the square root of `n`
 #### output: `int | uint`
 #### signature: `(log2 n)`
 #### description:
-Returns the _integer part_ of the power to which the number 2 must be raised to to obtain the value `n`. Fails on zero or a negative numbers.
+Returns the _integer part_ of the power to which the number 2 must be raised to obtain the value `n`. Fails on zero or a negative number.
 #### example: 
 ```clarity
 (log2 u8)   ;; Returns u3
