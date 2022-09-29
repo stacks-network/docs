@@ -285,10 +285,12 @@ Returns the power to which the number 2 must be raised to to obtain the value `n
 
 #### example:
 
+Returns the _integer part_ of the power to which the number 2 must be raised to obtain the value `n`. Fails on zero or a negative number.
+
 ```clarity
-(log2 u8) ;; Returns u3
-(log2 8) ;; Returns 3
-(log2 u1) ;; Returns u0
+(log2 u8)   ;; Returns u3
+(log2 8)    ;; Returns 3
+(log2 u1)   ;; Returns u0
 (log2 1000) ;; Returns 9
 ```
 
