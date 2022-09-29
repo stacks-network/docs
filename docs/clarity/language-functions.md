@@ -287,6 +287,8 @@ Returns the _integer part_ of the power to which the number 2 must be raised to 
 
 #### example:
 
+Returns the _integer part_ of the power to which the number 2 must be raised to obtain the value `n`. Fails on zero or a negative number.
+
 ```clarity
 (log2 u8)   ;; Returns u3
 (log2 8)    ;; Returns 3
