@@ -52,6 +52,8 @@ Perhatikan beberapa aturan dan batasan bahasa Clarity utama.
 
 Untuk detail dan referensi bahasa, lihat berikut ini:
 
-[Clarity language overview](./clarity-language/) [Understating Principals](principals) [Clarity Values](values)
+- [Clarity language overview](./clarity-language/)
+- [Understating Principals](principals)
+- [Nilai Clarity](values)
 
 [plugin Clarity Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp
