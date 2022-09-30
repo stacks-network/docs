@@ -56,7 +56,7 @@ Buat kontrak baru di dalam `my-project`:
 clarinet contract new mycoolcontract
 ```
 
-Periksa sintaks Clarity:
+Check the syntax of Clarity:
 
 ```bash
 clarity check
