@@ -12,14 +12,14 @@ Le dépôt de code est [ici](https://github.com/stacks-network/stacks-blockchain
 
 ### Download and build stacks-blockchain
 
-The first step is to ensure that you have Rust and the support software installed.
+La première étape est de s'assurer que Rust et le logiciel de support sont installés.
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 :::info
-For building on Windows, follow the rustup installer instructions at https://rustup.rs/
+Pour compiler sous Windows, suivez les instructions de l'installateur de rustup sur https://rustup.rs/
 :::
 
 From there, you can clone the Stacks Blockchain repository:
@@ -30,21 +30,21 @@ git clone --depth=1 https://github.com/stacks-network/stacks-blockchain.git
 cd stacks-blockchain
 ```
 
-Then build the project:
+Puis construisez le projet :
 
 ```bash
 cargo build
 ```
 
-Run the tests:
+Exécutez les tests :
 
 ```bash
 cargo test testnet  -- --test-threads=1
 ```
 
-### Encode and sign transactions
+### Encoder et signer les transactions
 
-Here, we have generated a keypair that will be used for signing the upcoming transactions:
+Ici, nous allons générer une paire de clés qui sera utilisée pour signer les opérations à venir :
 
 ```bash
 cargo run --bin blockstack-cli generate-sk --testnet
@@ -57,9 +57,9 @@ cargo run --bin blockstack-cli generate-sk --testnet
 # }
 ```
 
-This keypair is already registered in the `testnet-follower-conf.toml` file, so it can be used as presented here.
+Ce pavé numérique est déjà enregistré dans le fichier `testnet-follower-conf.toml` , donc il peut être utilisé comme présenté ici.
 
-We will interact with the following simple contract `kv-store`. In our examples, we will assume this contract is saved to `./kv-store.clar`:
+Nous allons interagir avec le contrat simple suivant `kv-store`. In our examples, we will assume this contract is saved to `./kv-store.clar`:
 
 ```scheme
 (define-map store { key: (string-ascii 32) } { value: (string-ascii 32) })
@@ -75,37 +75,37 @@ We will interact with the following simple contract `kv-store`. In our examples,
         (ok true)))
 ```
 
-We want to publish this contract on chain, then issue some transactions that interact with it by setting some keys and getting some values, so we can observe read and writes.
+Nous voulons publier ce contrat sur la chaîne, puis émettre des transactions qui interagissent avec lui en transférant des clés et en récupérer des valeurs, afin que nous puissions observer la lecture et l'écriture.
 
-Our first step is to generate and sign, using your private key, the transaction that will publish the contract `kv-store`. To do that, we will use the subcommand `blockstack-cli` that has the following usage:
+Notre première étape est de générer et de signer, à l'aide de votre clé privée, la transaction qui publiera le contrat `kv-store`. Pour cela, nous utiliserons la sous-commande `blockstack-cli` qui a l'usage suivant :
 
 ```bash
 blockstack-cli (options) publish [publisher-secret-key-hex] [fee-rate] [nonce] [contract-name] [file-name.clar]
 ```
 
-With the following arguments:
+Avec les paramètres suivants:
 
 ```bash
 cargo run --bin blockstack-cli publish b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001 515 0 kv-store ./kv-store.clar --testnet
 ```
 
-The `515` is the transaction fee, denominated in microSTX. Right now, the testnet requires one microSTX per byte minimum, and this transaction should be less than 515 bytes. The third argument `0` is a nonce, that must be increased monotonically with each new transaction.
+Le `515` correspond aux frais de transaction, libellés en microSTX. Pour l'instant, le réseau de test nécessite un microSTX par octet minimum, et cette transaction devrait être inférieure à 515 octets. Le troisième argument `0` est une nonce, qui doit être augmenté de façon monotonique à chaque nouvelle transaction.
 
-This command will output the **binary format** of the transaction. In our case, we want to pipe this output and dump it to a file that will be used later in this tutorial.
+Cette commande affichera le **format binaire** de la transaction. Dans notre cas, nous voulons récupérer cette sortie et la copier dans un fichier qui sera utilisé plus tard dans ce tutoriel.
 
 ```bash
 cargo run --bin blockstack-cli publish b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001 515 0 kv-store ./kv-store.clar --testnet | xxd -r -p > tx1.bin
 ```
 
-### Run the testnet
+### Exécuter le testnet
 
-You can observe the state machine in action locally by running:
+Vous pouvez observer la machine d'état en action (localement) en exécutant :
 
 ```bash
 cargo stacks-node start --config=./testnet/stacks-node/conf/testnet-follower-conf.toml
 ```
 
-`testnet-follower-conf.toml` is a configuration file that you can use for setting genesis balances or configuring Event observers. You can grant an address an initial account balance by adding the following entries:
+`testnet-follower-conf.toml` est un fichier de configuration que vous pouvez utiliser pour mettre en place des balances genesis ou configurer des observateurs d'événements. Vous pouvez accorder à une adresse un solde initial du compte en ajoutant les entrées suivantes:
 
 ```
 [[ustx_balance]]
@@ -137,7 +137,7 @@ To do that, we will use the subcommand:
 cargo run --bin blockstack-cli contract-call --help
 ```
 
-With the following arguments:
+Avec les paramètres suivants:
 
 ```bash
 cargo run --bin blockstack-cli contract-call b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001 500 1 ST2ZRX0K27GW0SP3GJCEMHD95TQGJMKB7G9Y0X1MH kv-store get-value -e \"foo\" --testnet | xxd -r -p > tx2.bin
