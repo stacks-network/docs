@@ -1,14 +1,14 @@
 ---
-title: Blockchain
-description: Stacks Blockchain
+title: Blochain
+description: Blockchain Stacks
 sidebar_position: 6
 ---
 
-Below is a guide to start working locally with the Stacks Blockchain.
+Vous trouverez ci-dessous un guide pour commencer à travailler localement avec la blockchain.
 
-Code repository is [here](https://github.com/stacks-network/stacks-blockchain).
+Le dépôt de code est [ici](https://github.com/stacks-network/stacks-blockchain).
 
-## Getting started with the Stacks Blockchain
+## Commencer avec la Blockchain Stacks
 
 ### Download and build stacks-blockchain
 
