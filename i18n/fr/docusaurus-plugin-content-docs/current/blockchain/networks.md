@@ -1,13 +1,13 @@
 ---
-title: Stacks Blockchain Networks
-description: Stacks Blockchain Networks
+title: Les réseaux de la blockchain Stacks
+description: Les réseaux de la blockchain Stacks
 sidebar_position: 3
 ---
 
-### Stacks Blockchain Networks
+### Les réseaux de la blockchain Stacks
 
-- [x] **Krypton** is a Stacks 2 testnet with a fixed, two-minute block time, called `regtest`. Regtest is generally unstable for regular use, and is reset often. See the [regtest documentation](understand-stacks/testnet) for more information on using regtest.
+- [x] **Krypton** est un réseau de test Stacks 2 avec un temps de bloc fixe de deux minutes, appelé `regtest`. Regtest est généralement instable pour une utilisation régulière, et est souvent réinitialisé. Consultez la [documentation du regtest](understand-stacks/testnet) pour plus d'informations sur l'utilisation de regtest.
 
-- [x] **Testnet** (old Xenon) is the Stacks 2 public testnet, which runs PoX against the Bitcoin testnet. It is the full implementation of the Stacks 2 blockchain, and should be considered a stable testnet for developing Clarity smart contracts. See the [testnet documentation](understand-stacks/testnet) for more information on the public testnet.
+- [x] **Testnet** (anciennement Xenon) est le réseau de test public de Stacks 2, qui tourne PoX (preuve de transaction) basé sur le réseau de test Bitcoin. C'est l'implémentation complète de la blockchain de Stacks 2, et devrait être considérée comme un réseau de test stable pour le développement de contrats intelligents Clarity . Reportez-vous à [la documentation du testnet](understand-stacks/testnet) pour plus d'informations sur le réseau testnet public.
 
-- [x] **Mainnet** is the fully functional Stacks 2 blockchain, see the [Stacks overview](understand-stacks/) for information on running a Stacks node, mining, stacking, and writing Clarity smart contracts.
+- [x] **Le réseau principal** est la blockchain de Stacks 2 entièrement fonctionnelle, voir la [vue d'ensemble des Stacks](understand-stacks/) pour plus d'informations sur l'exécution d'un noeud Stacks, le minage, le stacking et l'écriture de contrats intelligents Clarity .
