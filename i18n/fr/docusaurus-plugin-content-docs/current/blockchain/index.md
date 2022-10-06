@@ -113,25 +113,25 @@ address = "ST2VHM28V9E5QCRD6C73215KAPSBKQGPWTEE5CMQT"
 amount = 100000000
 ```
 
-The `address` field is the Stacks testnet address, and the `amount` field is the number of microSTX to grant to it in the genesis block. The addresses of the private keys used in the tutorial below are already added.
+Le champ `adresse` est l'adresse du réseau de test de Stacks, et le champ `amount` est le nombre de microSTX à y accorder dans le bloc genèse. Les adresses des clés privées utilisées dans le tutoriel ci-dessous sont déjà ajoutées.
 
-### Publish your contract
+### Publiez votre contrat
 
-Assuming that the testnet is running, we can publish our `kv-store` contract.
+En supposant que le réseau de test fonctionne, nous pouvons publier notre contrat de `kv-store`.
 
-In another terminal (or file explorer), you can move the `tx1.bin` generated earlier, to the mempool:
+Dans un autre terminal (ou explorateur de fichiers), vous pouvez déplacer le `tx1.bin` généré plus tôt, vers le mempool:
 
 ```bash
 curl -X POST -H "Content-Type: application/octet-stream" --data-binary @./tx1.bin http://localhost:20443/v2/transactions
 ```
 
-In the terminal window running the testnet, you can observe the state machine's reactions.
+Dans la fenêtre de terminal exécutant le testnet, vous pouvez observer les réactions de la machine d'état.
 
-### Reading from / Writing to the contract
+### Lecture depuis / Écriture vers le contrat
 
-Now that our contract has been published on chain, let's try to submit some read / write transactions. We will start by trying to read the value associated with the key `foo`.
+Maintenant que notre contrat a été publié sur la chaîne, nous allons essayer de soumettre quelques transactions en lecture / écriture. Nous allons commencer par essayer de lire la valeur associée à la clé `foo`.
 
-To do that, we will use the subcommand:
+Pour cela, nous utiliserons la sous-commande :
 
 ```bash
 cargo run --bin blockstack-cli contract-call --help
@@ -143,36 +143,36 @@ Avec les paramètres suivants:
 cargo run --bin blockstack-cli contract-call b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001 500 1 ST2ZRX0K27GW0SP3GJCEMHD95TQGJMKB7G9Y0X1MH kv-store get-value -e \"foo\" --testnet | xxd -r -p > tx2.bin
 ```
 
-`contract-call` generates and signs a contract-call transaction.
+`contract` génère et signe une transaction d'appels contractuels.
 
-We can submit the transaction by moving it to the mempool path:
+Nous pouvons soumettre la transaction en la déplaçant dans le chemin de mempool :
 
 ```bash
 curl -X POST -H "Content-Type: application/octet-stream" --data-binary @./tx2.bin http://localhost:20443/v2/transactions
 ```
 
-Similarly, we can generate a transaction that would be setting the key `foo` to the value `bar`:
+De même, nous pouvons générer une transaction qui définirait la clé `foo` à la valeur `bar`:
 
 ```bash
 cargo run --bin blockstack-cli contract-call b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001 500 2 ST2ZRX0K27GW0SP3GJCEMHD95TQGJMKB7G9Y0X1MH kv-store set-value -e \"foo\" -e \"bar\" --testnet | xxd -r -p > tx3.bin
 ```
 
-And submit it by moving it to the mempool path:
+Et soumettez-le en le déplaçant sur le chemin de mempool :
 
 ```bash
 curl -X POST -H "Content-Type: application/octet-stream" --data-binary @./tx3.bin http://localhost:20443/v2/transactions
 ```
 
-Finally, we can issue a third transaction, reading the key `foo` again, for ensuring that the previous transaction has successfully updated the state machine:
+Enfin, nous pouvons effectuer une troisième transaction, en lisant à nouveau la clé `foo` . pour s'assurer que la transaction précédente a bien mis à jour la machine d'état :
 
 ```bash
 cargo run --bin blockstack-cli contract-call b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001 500 3 ST2ZRX0K27GW0SP3GJCEMHD95TQGJMKB7G9Y0X1MH kv-store get-value -e \"foo\" --testnet | xxd -r -p > tx4.bin
 ```
 
-And submit this last transaction by moving it to the mempool path:
+Et soumettez cette dernière transaction en la déplaçant dans le chemin de mempool :
 
 ```bash
 curl -X POST -H "Content-Type: application/octet-stream" --data-binary @./tx4.bin http://localhost:20443/v2/transactions
 ```
 
-Congratulations, you can now [write your own smart contracts with Clarity](write-smart-contracts/).
+Félicitations, vous pouvez maintenant [écrire vos propres contrats intelligents avec Clarity](write-smart-contracts/).
