@@ -1,32 +1,32 @@
 ---
-title: Stacks Blockchain API
-description: Interacting with the Stacks 2.0 Blockchain via API
+title: API de la blockchain Stacks
+description: Interagir avec la Blockchain Stacks 2.0 via l'API
 sidebar_position: 4
 ---
 
 ## Introduction
 
-:::tip API Documentation Official API Documentation is available [here](https://stacks-network.github.io/stacks-blockchain/). :::
+:::tip API Documentation La documentation officielle de l'API est disponible [ici](https://stacks-network.github.io/stacks-blockchain/). :::
 
 
-The Stacks 2.0 Blockchain API allows you to query the Stacks 2.0 blockchain and interact with smart contracts. It was built to maintain pageable materialized views of the Stacks 2.0 Blockchain.
+L'API de la Blockchain Stacks 2.0 vous permet de interroger la blockchain Stacks 2.0 et d'interagir avec des contrats intelligents. Il a été construit pour maintenir des vues matérialisées paginables de la blockchain Stacks 2.0.
 
-:::caution The RESTful API is developed by Hiro. Hiro also hosts a public API node for easy onboarding. Using it requires you to trust the hosted server, but provides a faster onboarding experience. You can [run your own API server](https://docs.hiro.so/get-started/running-api-node) :::
+:::prudence L'API RESTful est développée par Hiro. Hiro héberge également un noeud d'API public pour faciliter l'intégration. L'utiliser nécessite de faire confiance au serveur hébergé, mais offre une expérience d'intégration plus rapide. Vous pouvez [exécuter votre propre serveur API](https://docs.hiro.so/get-started/running-api-node) :::
 
-The RESTful JSON API can be used without any authorization. The basepath for the API is:
+L'API JSON RESTful peut être utilisée sans aucune autorisation. Le chemin de base de l'API est :
 
 ```bash
-# for mainnet, replace `testnet` with `mainnet`
+# pour mainnet, remplacez `testnet` par `mainnet`
 https://stacks-node-api.testnet.stacks.co/
 ```
 
-:::note This documentation only covers endpoints that are exposed on a Stacks node, referred to as the RPC API. For full documentation on the RESTful API, check out the [Hiro's API reference](https://docs.hiro.so/api). :::
+:::note Cette documentation ne couvre que les points de terminaison qui sont exposés sur un noeud Stacks, appelé l'API RPC. Pour une documentation complète sur l'API RESTful, consultez la [référence de l'API Hiro](https://docs.hiro.so/api). :::
 
-### Stacks Node RPC API
+### API RPC d'un noeud Stacks
 
-The [stacks-node implementation](https://github.com/stacks-network/stacks-blockchain/) exposes JSON RPC endpoints.
+L' [implémentation de stacks-node](https://github.com/stacks-network/stacks-blockchain/) expose les points d'entrée JSON RPC.
 
-All `/v2/` routes a proxied to a Hiro-hosted Stacks Node. For a trustless architecture, you should make these requests to a self-hosted node.
+Tous les accès `/v2/` passent par un proxy Stacks hébergé par Hiro. Pour une architecture sans confiance, vous devriez faire ces requêtes à un noeud auto-hébergé.
 
 ## Proxied Stacks Node RPC API endpoints
 
