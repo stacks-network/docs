@@ -1,16 +1,16 @@
 ---
-title: Blockchain Naming System
-description: Binds Stacks usernames to off-chain state
+title: Système de nommage de la blockchain
+description: Lier les noms d'utilisateur aux états hors chaîne
 ---
 
-Blockchain Naming System (BNS) is a network system that binds Stacks usernames to off-chain state without relying on any central points of control.
+Le système de nommage Blockchain (BNS) est un système de réseau qui lie les noms d'utilisateur "à l'état hors chaîne" sans s'appuyer sur aucun point de contrôle central.
 
-The Stacks V1 blockchain implemented BNS through first-order name operations. In Stacks V2, BNS is instead implemented through a smart-contract loaded during the genesis block.
+La blockchain de Stacks V1 a implémenté BNS à travers des opérations de noms de premier ordre (?). Dans les piles V2, le BNS a été remplacé par un contrat intelligent chargé durant le bloc genèse.
 
-Names in BNS have three properties:
+Les noms dans BNS ont trois propriétés :
 
-- **Names are globally unique.** The protocol does not allow name collisions, and all well-behaved nodes resolve a given name to the same state.
-- **Names are human-meaningful.** Each name is chosen by its creator.
+- **Les noms sont globalement uniques.** Le protocole n'autorise pas les collisions de noms, et tous les noeuds de confiance résolvent un nom donné de la même façon.
+- **Les noms sont en langage naturel.** Chaque nom est choisi par son créateur.
 - **Names are strongly owned.** Only the name's owner can change the state it resolves to. Specifically, a name is owned by one or more ECDSA private keys.
 
 The Stacks blockchain insures that each node's BNS view is synchronized to all of the other nodes in the world, so queries on one node will be the same on other nodes. Stacks blockchain nodes allow a name's owner to bind up to 40Kb of off-chain state to their name, which will be replicated to all other Stacks blockchain nodes via a P2P network.
