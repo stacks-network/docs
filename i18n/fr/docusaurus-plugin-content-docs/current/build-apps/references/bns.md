@@ -49,9 +49,9 @@ Les noms de BNS sont organisés en une hiérarchie globale de noms. Il y a trois
 
 - **Les noms BNS**. Ce sont des noms dont les enregistrements sont stockés directement sur la blockchain . La propriété et l'état de ces noms sont contrôlés par l'envoi de transactions blockchain. Les exemples de noms incluent `verified.podcast` et `muneeb.id`. N'importe qui peut créer un nom BNS, à condition que l'espace de noms le contienne déjà.
 
-- **Les sous-domaines BNS**. Ce sont des noms dont les enregistrements sont stockés hors chaîne, mais sont ancrés collectivement dans la blockchain. La propriété et l'état de ces noms vivent dans les données du réseau P2P. Alors que les sous-domaines BNS sont détenus par des clés privées séparées, le propriétaire d'un nom BNS doit diffuser son état de sous-domaine. Les exemples de sous-domaines comprennent `jude.personal.id` et `podsaveamerica.verified.podcast`. Unlike BNS namespaces and names, the state of BNS subdomains is _not_ part of the blockchain consensus rules.
+- **Les sous-domaines BNS**. Ce sont des noms dont les enregistrements sont stockés hors chaîne, mais sont ancrés collectivement dans la blockchain. La propriété et l'état de ces noms vivent dans les données du réseau P2P. Alors que les sous-domaines BNS sont détenus par des clés privées séparées, le propriétaire d'un nom BNS doit diffuser son état de sous-domaine. Les exemples de sous-domaines comprennent `jude.personal.id` et `podsaveamerica.verified.podcast`. Contrairement aux espaces de noms et noms BNS, l'état des sous-domaines BNS ne fait _pas_ partie des règles de consensus de la blockchain.
 
-A feature comparison matrix summarizing the similarities and differences between these name objects is presented below:
+Une matrice de comparaison de fonctionnalités résumant les similitudes et les différences entre ces objets de nom est présentée ci-dessous:
 
 | Feature                                | **Namespaces** | **BNS names** | **BNS Subdomains** |
 | -------------------------------------- | -------------- | ------------- | ------------------ |
