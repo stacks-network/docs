@@ -28,15 +28,15 @@ L' [implémentation de stacks-node](https://github.com/stacks-network/stacks-blo
 
 Tous les accès `/v2/` passent par un proxy Stacks hébergé par Hiro. Pour une architecture sans confiance, vous devriez faire ces requêtes à un noeud auto-hébergé.
 
-## Proxied Stacks Node RPC API endpoints
+## Points d'entrée du proxy Hiro pour de l'API RPC Stacks
 
-The Stacks 2.0 Blockchain API is centrally hosted. However, every running Stacks node exposes an RPC API, which allows you to interact with the underlying blockchain. Instead of using a centrally hosted API, you can directly access the RPC API of a locally hosted Node.
+L'API Stacks 2.0 Blockchain est hébergée de façon centralisée. Cependant, chaque nœud Stacks en cours d’exécution expose une API RPC, qui vous permet d’interagir avec la blockchain. Au lieu d'utiliser une API hébergée de manière centralisée, vous pouvez directement accéder à l'API RPC d'un noeud hébergé localement.
 
 :::tip
-The Stacks Blockchain API proxies to Node RPC endpoints
+Les proxy API de la Blockchain Stacks vers les points RPC de Node
 :::
 
-While the Node RPC API doesn't give the same functionality as the hosted Stacks 2.0 Blockchain API, you get similar functionality in a way that is scoped to that specific node. The RPC API includes the following endpoints:
+Bien que le noeud API RPC ne donne pas les mêmes fonctionnalités que ceux de la Blockchain Stacks API 2.0 , vous obtenez des fonctionnalités similaires d'une manière qui est étendue à ce noeud spécifique. L'API RPC inclut les points d'entrée suivants :
 
 - [POST /v2/transactions](https://docs.hiro.so/api#operation/post_core_node_transactions)
 - [GET /v2/contracts/interface/{contract_address}/{contract_name}](https://docs.hiro.so/api#operation/get_contract_interface)
@@ -47,4 +47,4 @@ While the Node RPC API doesn't give the same functionality as the hosted Stacks 
 - [GET /v2/fees/transfer](https://docs.hiro.so/api#operation/get_fee_transfer)
 - [GET /v2/info](https://docs.hiro.so/api#operation/get_core_api_info)
 
-:::caution If you run a local node, it exposes an HTTP server on port `20443`. The info endpoint would be `localhost:20443/v2/info`. :::
+:::caution Si vous exécutez un noeud local, il expose un serveur HTTP sur le port `20443`. Le point d'accès info serait `localhost:20443/v2/info`. :::
