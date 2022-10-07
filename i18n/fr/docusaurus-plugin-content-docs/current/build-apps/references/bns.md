@@ -13,43 +13,43 @@ Les noms dans BNS ont trois propriétés :
 - **Les noms sont en langage naturel.** Chaque nom est choisi par son créateur.
 - **Les noms sont inaliénables.** Seul le propriétaire du nom peut changer l'état auquel il se réfère. Plus précisément, un nom est détenu par une ou plusieurs clés privées ECDSA.
 
-La blockchain Stacks assure que la vue BNS de chaque nœud est synchronisée avec tous les autres nœuds du monde, de sorte que les requêtes sur un nœud seront les mêmes sur les autres nœuds. Stacks blockchain nodes allow a name's owner to bind up to 40Kb of off-chain state to their name, which will be replicated to all other Stacks blockchain nodes via a P2P network.
+La blockchain Stacks assure que la vue BNS de chaque nœud est synchronisée avec tous les autres nœuds du monde, de sorte que les requêtes sur un nœud seront les mêmes sur les autres nœuds. Les nœuds de la blockchain Stacks permettent au propriétaire d'un nom de se lier jusqu'à 40 Ko d'état hors chaîne à leur nom, qui sera répliquée à tous les autres nœuds de blockchain de Stacks via un réseau P2P.
 
-The biggest consequence for developers is that in BNS, reading name state is fast and cheap but writing name state is slow and expensive. This is because registering and modifying names requires one or more transactions to be sent to the underlying blockchain, and BNS nodes will not process them until they are sufficiently confirmed. Users and developers need to acquire and spend the requisite cryptocurrency (STX) to send BNS transactions.
+La plus grande conséquence pour les développeurs est qu'en BNS, la lecture de l'état du nom est rapide et bon marché, mais l'écriture de l'état du nom est lente et coûteuse. C'est parce que l'enregistrement et la modification des noms nécessitent d'envoyer une ou plusieurs transactions à la blockchain sous-jacente, et les nœuds BNS ne les traiteront pas jusqu'à ce qu'ils soient suffisamment confirmés. Les utilisateurs et les développeurs ont besoin d'acquérir et de dépenser la cryptomonnaie requise (STX) pour envoyer des transactions BNS.
 
-## Motivation behind naming systems
+## Motivation derrière des systèmes de nommage
 
-We rely on naming systems in everyday life, and they play a critical role in many different applications. For example, when you look up a friend on social media, you are using the platform's naming system to resolve their name to their profile. When you look up a website, you are using the Domain Name Service to resolve the hostname to its host's IP address. When you check out a Git branch, you are using your Git client to resolve the branch name to a commit hash. When you look up someone's PGP key on a keyserver, you are resolving their key ID to their public key.
+Nous comptons sur les systèmes de nommage dans la vie de tous les jours, et ils jouent un rôle critique dans de nombreuses applications différentes. Par exemple, lorsque vous regardez un ami sur les réseaux sociaux, vous utilisez le système de nommage de la plate-forme pour lier leur nom à leur profil. Lorsque vous consultez un site Web, vous utilisez le Domain Name Service pour résoudre le nom d'hôte à l'adresse IP de son hôte. Lorsque vous consultez une branche Git, vous utilisez votre client Git pour résoudre le nom de la branche à un hachage de livraison. Lorsque vous regardez la clé PGP de quelqu'un sur un serveur de clés, vous résolvez son ID de clé à sa clé publique.
 
-What kinds of things do we want to be true about names? In BNS, names are globally unique, names are human-meaningful, and names are strongly owned. However, if you look at these examples, you'll see that each of them only guarantees _two_ of these properties. This limits how useful they can be.
+Quelles sortes de choses voulons-nous être vraies en ce qui concerne les noms? En BNS, les noms sont globalement uniques, les noms ont un sens humain, et les noms sont inaliénables. Cependant, si vous regardez ces exemples, vous verrez que chacun d'eux garantit seulement _deux_ de ces propriétés. Cela limite leur utilité.
 
-- In DNS and social media, names are globally unique and human-readable, but not strongly owned. The system operator has the final say as to what each names resolves to.
+- Dans le DNS et les médias sociaux, les noms sont globalement uniques et lisibles par l'homme, mais pas uniques. L'opérateur système a le dernier mot l'appartenance de chaque nom.
 
-  - **Problem**: Clients must trust the system to make the right choice in what a given name resolves to. This includes trusting that no one but the system administrators can make these changes.
+  - **Problème**: Les clients doivent faire confiance au système pour faire le bon choix dans ce qu'un nom donné signifie. Cela inclut la confiance que personne d'autre que les administrateurs système peuvent apporter ces modifications.
 
-- In Git, branch names are human-meaningful and strongly owned, but not globally unique. Two different Git nodes may resolve the same branch name to different unrelated repository states.
+- Dans Git, les noms de branches sont en langage humain et irrévocables, mais pas globalement uniques. Deux nœuds Git différents peuvent avoir le même nom de branche appartenant à différents dépôt non liés.
 
-  - **Problem**: Since names can refer to conflicting state, developers have to figure out some other mechanism to resolve ambiguities. In Git's case, the user has to manually intervene.
+  - **Problème**: Puisque les noms peuvent faire référence à un état conflictuel, les développeurs doivent trouver un autre mécanisme pour résoudre les ambiguïtés. Dans le cas de Gitit , l'utilisateur doit intervenir manuellement.
 
-- In PGP, names are key IDs. They are are globally unique and cryptographically owned, but not human-readable. PGP key IDs are derived from the keys they reference.
-  - **Problem**: These names are difficult for most users to remember since they do not carry semantic information relating to their use in the system.
+- En PGP, les noms sont des clés d'identification. Ils sont uniques au niveau mondial et sont détenus de manière cryptographique, mais pas lisibles par l'homme. Les identifiants de clés PGP sont dérivés des clés qu'ils référencent.
+  - **Problème**: Ces noms sont difficiles à retenir pour la plupart des utilisateurs puisqu'ils ne transmettent pas d'informations sémantiques relatives à leur utilisation dans le système.
 
-BNS names have all three properties, and none of these problems. This makes it a powerful tool for building all kinds of network applications. With BNS, we can do the following and more:
+Les noms BNS ont les trois propriétés et aucun de ces problèmes. Cela en fait un outil puissant pour construire toutes sortes d'applications réseau. Avec BNS, nous pouvons faire ce qui suit et plus:
 
-- Build domain name services where hostnames can't be hijacked.
-- Build social media platforms where user names can't be stolen by phishers.
-- Build version control systems where repository branches do not conflict.
-- Build public-key infrastructure where it's easy for users to discover and remember each other's keys.
+- Construire des services de noms de domaine où les noms de domaine ne peuvent pas être détournés.
+- Construire des plateformes de réseaux sociaux où les noms d'utilisateurs ne peuvent pas être volés par des hameçonneurs.
+- Construire des systèmes de contrôle de version où les branches du dépôt ne sont pas en conflit.
+- Construire une infrastructure à clé publique où il est facile pour les utilisateurs de découvrir et se souvenir des clés de chacun.
 
-## Organization of BNS
+## Organisation du BNS
 
-BNS names are organized into a global name hierarchy. There are three different layers in this hierarchy related to naming:
+Les noms de BNS sont organisés en une hiérarchie globale de noms. Il y a trois couches différentes dans cette hiérarchie liée au nommage :
 
-- **Namespaces**. These are the top-level names in the hierarchy. An analogy to BNS namespaces are DNS top-level domains. Existing BNS namespaces include `.id`, `.podcast`, and `.helloworld`. All other names belong to exactly one namespace. Anyone can create a namespace, but in order for the namespace to be persisted, it must be _launched_ so that anyone can register names in it. Namespaces are not owned by their creators.
+- **Les espaces de nommage**. Ce sont les noms de premier niveau dans la hiérarchie. Une analogie avec les espaces de noms BNS sont des domaines de premier niveau DNS. Les espaces de noms BNS existants incluent `.id`, `.podcast`, et `.helloworld`. Tous les autres noms appartiennent à exactement un espace de noms. N'importe qui peut créer un espace de noms, mais afin que l'espace de noms soit maintenu, il doit être _launched_ pour que n'importe qui puisse y enregistrer des noms. Les espaces de nommage ne sont pas détenus par leurs créateurs.
 
-- **BNS names**. These are names whose records are stored directly on the blockchain. The ownership and state of these names are controlled by sending blockchain transactions. Example names include `verified.podcast` and `muneeb.id`. Anyone can create a BNS name, as long as the namespace that contains it exists already.
+- **Les noms BNS**. Ce sont des noms dont les enregistrements sont stockés directement sur la blockchain . La propriété et l'état de ces noms sont contrôlés par l'envoi de transactions blockchain. Les exemples de noms incluent `verified.podcast` et `muneeb.id`. N'importe qui peut créer un nom BNS, à condition que l'espace de noms le contienne déjà.
 
-- **BNS subdomains**. These are names whose records are stored off-chain, but are collectively anchored to the blockchain. The ownership and state for these names lives within the P2P network data. While BNS subdomains are owned by separate private keys, a BNS name owner must broadcast their subdomain state. Example subdomains include `jude.personal.id` and `podsaveamerica.verified.podcast`. Unlike BNS namespaces and names, the state of BNS subdomains is _not_ part of the blockchain consensus rules.
+- **Les sous-domaines BNS**. Ce sont des noms dont les enregistrements sont stockés hors chaîne, mais sont ancrés collectivement dans la blockchain. La propriété et l'état de ces noms vivent dans les données du réseau P2P. Alors que les sous-domaines BNS sont détenus par des clés privées séparées, le propriétaire d'un nom BNS doit diffuser son état de sous-domaine. Les exemples de sous-domaines comprennent `jude.personal.id` et `podsaveamerica.verified.podcast`. Unlike BNS namespaces and names, the state of BNS subdomains is _not_ part of the blockchain consensus rules.
 
 A feature comparison matrix summarizing the similarities and differences between these name objects is presented below:
 
