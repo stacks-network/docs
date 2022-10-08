@@ -17,7 +17,7 @@ La blockchain Stacks assure que la vue BNS de chaque nœud est synchronisée ave
 
 La plus grande conséquence pour les développeurs est qu'en BNS, la lecture de l'état du nom est rapide et bon marché, mais l'écriture de l'état du nom est lente et coûteuse. C'est parce que l'enregistrement et la modification des noms nécessitent d'envoyer une ou plusieurs transactions à la blockchain sous-jacente, et les nœuds BNS ne les traiteront pas jusqu'à ce qu'ils soient suffisamment confirmés. Les utilisateurs et les développeurs ont besoin d'acquérir et de dépenser la cryptomonnaie requise (STX) pour envoyer des transactions BNS.
 
-## Motivation derrière des systèmes de nommage
+## Raison d'être des systèmes de nommage
 
 Nous comptons sur les systèmes de nommage dans la vie de tous les jours, et ils jouent un rôle critique dans de nombreuses applications différentes. Par exemple, lorsque vous regardez un ami sur les réseaux sociaux, vous utilisez le système de nommage de la plate-forme pour lier leur nom à leur profil. Lorsque vous consultez un site Web, vous utilisez le Domain Name Service pour résoudre le nom d'hôte à l'adresse IP de son hôte. Lorsque vous consultez une branche Git, vous utilisez votre client Git pour résoudre le nom de la branche à un hachage de livraison. Lorsque vous regardez la clé PGP de quelqu'un sur un serveur de clés, vous résolvez son ID de clé à sa clé publique.
 
@@ -53,27 +53,27 @@ Les noms de BNS sont organisés en une hiérarchie globale de noms. Il y a trois
 
 Une matrice de comparaison de fonctionnalités résumant les similitudes et les différences entre ces objets de nom est présentée ci-dessous:
 
-| Feature                                | **Namespaces** | **BNS names** | **BNS Subdomains** |
-| -------------------------------------- | -------------- | ------------- | ------------------ |
-| Globally unique                        | X              | X             | X                  |
-| Human-meaningful                       | X              | X             | X                  |
-| Owned by a private key                 |                | X             | X                  |
-| Anyone can create                      | X              | X             | [1]                |
-| Owner can update                       |                | X             | [1]                |
-| State hosted on-chain                  | X              | X             |                    |
-| State hosted off-chain                 |                | X             | X                  |
-| Behavior controlled by consensus rules | X              | X             |                    |
-| May have an expiration date            |                | X             |                    |
+| Fonctionalité                                     | **Espaces de nommage** | **Noms BNS** | **Sous-domaines BNS** |
+| ------------------------------------------------- | ---------------------- | ------------ | --------------------- |
+| Globalement unique                                | X                      | X            | X                     |
+| Langage humain                                    | X                      | X            | X                     |
+| Détenu par une clé privée                         |                        | X            | X                     |
+| Tout le monde peut créer                          | X                      | X            | [1]                   |
+| Le propriétaire peut mettre à jour                |                        | X            | [1]                   |
+| État hébergé sur la chaîne                        | X                      | X            |                       |
+| Etat hébergé hors de la chaîne                    |                        | X            | X                     |
+| Comportement contrôlé par des règles de consensus | X                      | X            |                       |
+| Peut avoir une date d'expiration                  |                        | X            |                       |
 
-[1] Requires the cooperation of a BNS name owner to broadcast its transactions
+[1] Nécessite la coopération d'un propriétaire du nom BNS pour diffuser ses transactions
 
-## Namespaces
+## Espaces de nommage
 
-Namespaces are the top-level naming objects in BNS.
+Les espaces de noms sont les objets de nommage de premier niveau dans BNS.
 
-They control a few properties about the names within them:
+Ils contrôlent quelques propriétés inhérentes aux noms :
 
-- How expensive they are to register
+- Combien coûte leur enregistrement
 - How long they last before they have to be renewed
 - Who (if anyone) receives the name registration fees
 - Who is allowed to seed the namespace with its initial names.
