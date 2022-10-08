@@ -709,7 +709,8 @@ The `secp256k1-recover?` function recovers the public key used to sign the messa
 The `secp256k1-verify` function verifies that the provided signature of the message-hash
 was signed with the private key that generated the public key.
 The `message-hash` is the `sha256` of the message.
-The signature includes 64 bytes plus an optional additional recovery id (00..03) for a total of 64 or 65 bytes.
+The signature includes 64 bytes plus an optional additional recovery id (00..03) for a total of 64 or 65 bytes. 
+The function throws an unchecked error if the buffers have a wrong length.
 #### example: 
 ```clarity
 (secp256k1-verify 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04
