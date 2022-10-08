@@ -74,11 +74,11 @@ Les espaces de noms sont les objets de nommage de premier niveau dans BNS.
 Ils contrôlent quelques propriétés inhérentes aux noms :
 
 - Combien coûte leur enregistrement
-- How long they last before they have to be renewed
-- Who (if anyone) receives the name registration fees
-- Who is allowed to seed the namespace with its initial names.
+- La durée avant de nécessiter leur renouvellement
+- Qui (le cas échéant) reçoit les frais d'enregistrement du nom
+- Qui est autorisé à initialiser l'espace de noms avec ses noms initiaux.
 
-At the time of this writing, by far the largest BNS namespace is the `.id` namespace. Names in the `.id` namespace are meant for resolving user identities. Short names in `.id` are more expensive than long names, and have to be renewed by their owners every two years. Name registration fees are not paid to anyone in particular---they are instead sent to a "black hole" where they are rendered unspendable (the intention is to discourage ID squatters).
+Au moment de cette écriture, le plus grand espace de noms BNS est l'espace de noms `.id` . Les noms de l'espace de noms `.id` sont destinés à résoudre les identités de l'utilisateur . Short names in `.id` are more expensive than long names, and have to be renewed by their owners every two years. Name registration fees are not paid to anyone in particular---they are instead sent to a "black hole" where they are rendered unspendable (the intention is to discourage ID squatters).
 
 Unlike DNS, _anyone_ can create a namespace and set its properties. Namespaces are created on a first-come first-serve basis, and once created, they last forever.
 
