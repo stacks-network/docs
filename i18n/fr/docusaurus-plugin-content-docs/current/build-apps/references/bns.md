@@ -92,9 +92,9 @@ Les noms des BNS sont fortement détenus car le propriétaire de sa clé privée
 
 BNS surmonte cela avec des sous-domaines. Un **sous-domaine BNS** est un type de nom BNS dont l'état et le propriétaire sont stockés en dehors de la blockchain, mais dont l'existence et l'historique des opérations sont ancrées dans la blockchain . Comme leurs homologues sur la chaîne, les sous-domaines sont globalement uniques, fortement possédés et en langage humain. BNS leur donne leur propre état de nom et clés publiques. Contrairement aux noms on-chain, les sous-domaines peuvent être créés et gérés à coût réduit, car ils sont diffusés sur le réseau BNS en lots. Une seule transaction blockchain peut envoyer jusqu'à 120 opérations de sous-domaine .
 
-Ceci est réalisé en stockant les enregistrements de sous-domaine dans les fichiers de zone de noms BNS. Un propriétaire de noms on-chain diffuse des opérations de sous-domaine en les encodant en tant qu'enregistrements `TXT` dans un fichier de zone DNS. To broadcast the zone file, the name owner sets the new zone file hash with a `NAME_UPDATE` transaction and replicates the zone file. This, in turn, replicates all subdomain operations it contains, and anchors the set of subdomain operations to an on-chain transaction. The BNS node's consensus rules ensure that only valid subdomain operations from _valid_ `NAME_UPDATE` transactions will ever be stored.
+Ceci est réalisé en stockant les enregistrements de sous-domaine dans les fichiers de zone de noms BNS. Un propriétaire de noms on-chain diffuse des opérations de sous-domaine en les encodant en tant qu'enregistrements `TXT` dans un fichier de zone DNS. Pour diffuser le fichier de zone, le nom propriétaire définit le hachage du nouveau fichier de zone avec une transaction `NAME_UPDATE` et réplique le fichier de zone. Ceci réplique, à son tour, toutes les opérations du sous-domaine qu'elle contient, et ancre l'ensemble des opérations de sous-domaine à une transaction sur la chaîne. Les règles de consensus du noeud BNS assurent que seules opérations de sous-domaine valides de __ `transactions NAME_UPDATE` valides ne seront jamais stockées.
 
-For example, the name `verified.podcast` once wrote the zone file hash `247121450ca0e9af45e85a82e61cd525cd7ba023`, which is the hash of the following zone file:
+Par exemple, le nom `a été vérifié. odcast` une fois écrit le hachage du fichier de zone `247121450ca0e9af45e85a82e61cd525cd7ba023`, qui est le hachage du fichier de zone suivant :
 
 ```bash
 $TTL 3600
@@ -110,7 +110,7 @@ onea TXT "owner=1MwPD6dH4fE3gQ9mCov81L1DEQWT7E85qH" "seqn=0" "parts=1" "zf0=JE9S
 _http._tcp URI 10 1 "https://dotpodcast.co/"
 ```
 
-Each `TXT` record in this zone file encodes a subdomain-creation. For example, `1yeardaily.verified.podcast` resolves to:
+Chaque enregistrement `TXT` dans ce fichier de zone encode une création de sous-domaine. Par exemple, `1yeardaily.verified.podcast` se correspond à:
 
 ```json
 {
@@ -123,13 +123,13 @@ Each `TXT` record in this zone file encodes a subdomain-creation. For example, `
 }
 ```
 
-This information was extracted from the `1yeardaily` `TXT` resource record in the zone file for `verified.podcast`.
+Cette information a été extraite de l'enregistrement de la ressource `1yeardaily` `TXT` dans le fichier de zone pour `verified.podcast`.
 
-### Subdomain Lifecycle
+### Cycle de vie des sous-domaines
 
-Note that `1yeardaily.verified.podcast` has a different public key hash (address) than `verified.podcast`. A BNS node will only process a subsequent subdomain operation on `1yeardaily.verified.podcast` if it includes a signature from this address's private key. `verified.podcast` cannot generate updates; only the owner of `1yeardaily.verified.podcast can do so`.
+Notez que `1yeardaily.verified.podcast` a une clé publique différente de `verified.podcast`. Un noeud BNS ne traitera une opération de sous-domaine ultérieure le `1yeardy. erified.podcast` que s'il contient une signature de la clé privée de cette adresse. `verified.podcast` ne peut pas générer mises à jour ; seul le propriétaire de `1yeardaily.verified.podcast`. peut le faire
 
-The lifecycle of a subdomain and its operations is shown in Figure 2.
+Le cycle de vie d'un sous-domaine et de ses opérations est affiché dans la figure 2.
 
 ```
    subdomain                  subdomain                  subdomain
@@ -154,34 +154,34 @@ The lifecycle of a subdomain and its operations is shown in Figure 2.
    block                      block                      block
 
 
-Figure 2:  Subdomain lifetime with respect to on-chain name operations .A new
-subdomain operation will only be accepted if it has a later "sequence=" number,
-and a valid signature in "sig=" over the transaction body .The "sig=" field
-includes both the public key and signature, and the public key must hash to
-the previous subdomain operation's "addr=" field.
+Figure 2 : durée de vie du sous-domaine en ce qui concerne les opérations de noms on-chain . nouvelle
+opération de sous-domaine ne sera acceptée que si elle a un numéro "séquence=" ultérieur,
+et une signature valide en "sig=" sur le corps de la transaction. e champ "sig="
+inclut à la fois la clé publique et la signature, et la clé publique doit être hachée sur
+le champ "addr=" de l'opération précédente de sous-domaine.
 
-The subdomain-creation and subdomain-transfer transactions for
-"cicero.res_publica.id" are broadcast by the owner of "res_publica.id."
-However, any on-chain name ("jude.id" in this case) can broadcast a subdomain
-update for "cicero.res_publica.id."
+Les transactions de création de sous-domaine et de transfert de sous-domaine pour
+"cicero.res_publica.id" sont diffusées par le propriétaire de "res_publica.id".
+Cependant, tout nom sur chaîne ("jude.id" dans ce cas) peut diffuser une mise à jour de sous-domaine
+pour "cicero.res_publica.id".
 ```
 
-Subdomain operations are ordered by sequence number, starting at 0. Each new subdomain operation must include:
+Les opérations de sous-domaine sont ordonnées par numéro de séquence, à partir de 0. Chaque nouvelle opération de sous-domaine doit inclure :
 
-- The next sequence number
-- The public key that hashes to the previous subdomain transaction's address
-- A signature from the corresponding private key over the entire subdomain operation.
+- Le numéro d'ordre suivant
+- La clé publique qui hache à l'adresse de la précédente transaction de sous-domaine
+- Une signature de la clé privée correspondante sur l'ensemble du sous-domaine opération.
 
-If two correctly signed but conflicting subdomain operations are discovered (that is, they have the same sequence number), the one that occurs earlier in the blockchain's history is accepted. Invalid subdomain operations are ignored.
+Si deux opérations de sous-domaine correctement signées mais conflictuelles sont découvertes (c.-à-d. ils ont le même numéro de séquence), celui qui se produit plus tôt dans l'histoire de la blockchain est accepté. Les opérations de sous-domaine non valides sont ignorées.
 
-Combined, this ensures that a BNS node with all of the zone files with a given subdomain's operations will be able to determine the valid sequence of state-transitions it has undergone, and determine the current zone file and public key hash for the subdomain.
+Combiné, cela garantit qu'un noeud BNS avec tous les fichiers de zone avec les opérations d'un sous-domaine donné sera en mesure de déterminer la séquence valide de transitions d'état qu'il a soumises, et déterminez le fichier de zone actuel et le hachage de la clé publique pour le sous-domaine.
 
-### Subdomain Creation and Management
+### Création et gestion de sous-domaine
 
-Unlike an on-chain name, a subdomain owner needs an on-chain name owner's help to broadcast their subdomain operations. In particular:
+Contrairement à un nom on-chaîne, un propriétaire de sous-domaine a besoin de l'aide du propriétaire de noms sur chaîne pour diffuser ses opérations de sous-domaine. En particulier :
 
-- A subdomain-creation transaction can only be processed by the owner of the on-chain name that shares its suffix. For example, only the owner of `res_publica.id` can broadcast subdomain-creation transactions for subdomain names ending in `.res_publica.id`.
-- A subdomain-transfer transaction can only be broadcast by the owner of the on-chain name that created it. For example, the owner of `cicero.res_publica.id` needs the owner of `res_publica.id` to broadcast a subdomain-transfer transaction to change `cicero.res_publica.id`'s public key.
+- Une transaction de création de sous-domaine ne peut être traitée que par le propriétaire du nom sur qui partage son suffixe. Par exemple, seul le propriétaire de `res_publica.id` peut diffuser des transactions de création de sous-domaine pour les noms de sous-domaine se terminant par `.res_publica.id`.
+- Une transaction de transfert de sous-domaine ne peut être diffusée que par le propriétaire du nom sur la chaîne qui l'a créé. For example, the owner of `cicero.res_publica.id` needs the owner of `res_publica.id` to broadcast a subdomain-transfer transaction to change `cicero.res_publica.id`'s public key.
 - In order to send a subdomain-creation or subdomain-transfer, all of an on-chain name owner's zone files must be present in the Atlas network. This lets the BNS node prove the _absence_ of any conflicting subdomain-creation and subdomain-transfer operations when processing new zone files.
 - A subdomain update transaction can be broadcast by _any_ on-chain name owner, but the subdomain owner needs to find one who will cooperate. For example, the owner of `verified.podcast` can broadcast a subdomain-update transaction created by the owner of `cicero.res_publica.id`.
 
