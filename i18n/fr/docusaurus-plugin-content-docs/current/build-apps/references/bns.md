@@ -182,12 +182,10 @@ Contrairement à un nom on-chaîne, un propriétaire de sous-domaine a besoin de
 
 - Une transaction de création de sous-domaine ne peut être traitée que par le propriétaire du nom sur qui partage son suffixe. Par exemple, seul le propriétaire de `res_publica.id` peut diffuser des transactions de création de sous-domaine pour les noms de sous-domaine se terminant par `.res_publica.id`.
 - Une transaction de transfert de sous-domaine ne peut être diffusée que par le propriétaire du nom sur la chaîne qui l'a créé. For example, the owner of `cicero.res_publica.id` needs the owner of `res_publica.id` to broadcast a subdomain-transfer transaction to change `cicero.res_publica.id`'s public key.
-  <<<<<<< HEAD
 - In order to send a subdomain-creation or subdomain-transfer, all of an on-chain name owner's zone files must be present in the Atlas network. Cela permet au noeud BNS de prouver l'\_absence<0> de tout conflit d'opération de création ou de transfert de sous-domaines lors de la création des nouveaux fichiers de zones.</p></li>
 - # Une transaction de mise à jour de sous-domaine peut être diffusée par _n'importe quel propriétaire de nom sur la chaîne,_ mais le propriétaire du sous-domaine doit trouver celui qui coopérera. Par exemple, le propriétaire de `verified.podcast` peut diffuser une transaction de mise à jour de sous-domaine créée par le propriétaire de `cicero.res_publica.id`.</ul>
 - In order to send a subdomain-creation or subdomain-transfer, all of an on-chain name owner's zone files must be present in the Atlas network. This lets the BNS node prove the _absence_ of any conflicting subdomain-creation and subdomain-transfer operations when processing new zone files.
 - A subdomain update transaction can be broadcast by _any_ on-chain name owner, but the subdomain owner needs to find one who will cooperate. For example, the owner of `verified.podcast` can broadcast a subdomain-update transaction created by the owner of `cicero.res_publica.id`.
-  > > > > > > > fd65b73b (New translations bns.md (French))
 
 Cela dit, pour créer un sous-domaine, le propriétaire du sous-domaine génère une opération de création de sous-domaine pour le nom désiré et le donne au propriétaire du nom sur la chaîne.
 
@@ -225,10 +223,16 @@ Le but d'un DID est de fournir un identifiant éternel pour une clé publique. L
 Stacks Blockchain implémente une méthode DID en elle-même afin d'être compatible avec d'autres systèmes qui utilisent DID pour la résolution de clé publique. Pour qu'un DID soit résolu, tout ce qui suit doit être vrai pour un nom :
 
 - Le nom doit exister
+  <<<<<<< HEAD
 - Le hachage du fichier de zone du nom doit être le hachage d'un fichier de zone DNS bien formé
 - Le fichier de zone DNS doit être présent dans les données du noeud Stacks.
 - Le fichier de zone DNS doit contenir un enregistrement de la ressource `URI` qui pointe vers un jeton web JSON signé
-- La clé publique qui a signé le jeton Web JSON (et qui est inclus avec celui-ci) doit être hachée à l'adresse qui est propriétaire du nom
+- # La clé publique qui a signé le jeton Web JSON (et qui est inclus avec celui-ci) doit être hachée à l'adresse qui est propriétaire du nom
+- The name's zone file hash must be the hash of a well-formed DNS zone file
+- The DNS zone file must be present in the Stacks node's data.
+- The DNS zone file must contain a `URI` resource record that points to a signed JSON Web Token
+- The public key that signed the JSON Web Token (and is included with it) must hash to the address that owns the name
+  > > > > > > > 52225480 (New translations bns.md (French))
 
 Tous les noms n'auront pas forcément de DIDs qui seront résolus pour les clés publiques. Cependant, les noms créés par l'outil standard auront les DIDs qui le font.
 
