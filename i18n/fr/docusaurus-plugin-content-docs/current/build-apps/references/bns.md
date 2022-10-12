@@ -182,45 +182,45 @@ Contrairement à un nom on-chaîne, un propriétaire de sous-domaine a besoin de
 
 - Une transaction de création de sous-domaine ne peut être traitée que par le propriétaire du nom sur qui partage son suffixe. Par exemple, seul le propriétaire de `res_publica.id` peut diffuser des transactions de création de sous-domaine pour les noms de sous-domaine se terminant par `.res_publica.id`.
 - Une transaction de transfert de sous-domaine ne peut être diffusée que par le propriétaire du nom sur la chaîne qui l'a créé. For example, the owner of `cicero.res_publica.id` needs the owner of `res_publica.id` to broadcast a subdomain-transfer transaction to change `cicero.res_publica.id`'s public key.
-- In order to send a subdomain-creation or subdomain-transfer, all of an on-chain name owner's zone files must be present in the Atlas network. This lets the BNS node prove the _absence_ of any conflicting subdomain-creation and subdomain-transfer operations when processing new zone files.
-- A subdomain update transaction can be broadcast by _any_ on-chain name owner, but the subdomain owner needs to find one who will cooperate. For example, the owner of `verified.podcast` can broadcast a subdomain-update transaction created by the owner of `cicero.res_publica.id`.
+- In order to send a subdomain-creation or subdomain-transfer, all of an on-chain name owner's zone files must be present in the Atlas network. Cela permet au noeud BNS de prouver l'_absence<0> de tout conflit d'opération de création ou de transfert de sous-domaines lors de la création des nouveaux fichiers de zones.</p></li>
+- Une transaction de mise à jour de sous-domaine peut être diffusée par _n'importe quel propriétaire de nom sur la chaîne,_ mais le propriétaire du sous-domaine doit trouver celui qui coopérera. Par exemple, le propriétaire de `verified.podcast` peut diffuser une transaction de mise à jour de sous-domaine créée par le propriétaire de `cicero.res_publica.id`.</ul>
 
-That said, to create a subdomain, the subdomain owner generates a subdomain-creation operation for their desired name and gives it to the on-chain name owner.
+Cela dit, pour créer un sous-domaine, le propriétaire du sous-domaine génère une opération de création de sous-domaine pour le nom désiré et le donne au propriétaire du nom sur la chaîne.
 
-Once created, a subdomain owner can use any on-chain name owner to broadcast a subdomain-update operation. To do so, they generate and sign the requisite subdomain operation and give it to an on-chain name owner, who then packages it with other subdomain operations into a DNS zone file and broadcasts it to the network.
+Une fois créé, un propriétaire de sous-domaine peut utiliser n'importe quel propriétaire de nom sur la chaîne pour diffuser une opération de mise à jour de sous-domaine. Pour ce faire, ils génèrent et signent l'opération de sous-domaine requise et la donnent à un propriétaire de nom sur la chaîne, qui l'empaquete alors avec d'autres opérations de sous-domaine dans un fichier de zone DNS et le diffuse sur le réseau.
 
-If the subdomain owner wants to change the address of their subdomain, they need to sign a subdomain-transfer operation and give it to the on-chain name owner who created the subdomain. They then package it into a zone file and broadcast it.
+Si le sous-propriétaire du sous-domaine veut changer l'adresse de son sous-domaine, il a besoin de signer une opération de transfert de sous-domaine et la donner au propriétaire du nom sur chaîne qui a créé le sous-domaine. Ils l'empaquetent ensuite dans un fichier de zone et diffusent .
 
-### Subdomain Registrars
+### Enregistreurs de sous-domaine
 
-Because subdomain names are cheap, developers may be inclined to run subdomain registrars on behalf of their applications. For example, the name `personal.id` is used to register usernames without requiring them to spend any Bitcoin.
+Parce que les noms de sous-domaine sont bon marché, les développeurs peuvent être enclins à exécuter des demandes d'enregistrement de sous-domaine pour le compte de leurs applications. Par exemple, le nom `personal.id` est utilisé pour enregistrer des noms d'utilisateur sans les obliger à faire une transaction Bitcoin.
 
-We supply a reference implementation of a [BNS Subdomain Registrar](https://github.com/stacks-network/subdomain-registrar) to help developers broadcast subdomain operations. Users would still own their subdomain names; the registrar simply gives developers a convenient way for them to register and manage them in the context of a particular application.
+Nous fournissons une implémentation de référence d'un [Enregistrement BNS ](https://github.com/stacks-network/subdomain-registrar) pour aider les développeurs à diffuser des opérations de sous-domaine. Les utilisateurs posséderaient toujours leurs noms de sous-domaine; le bureau d’enregistrement donne simplement aux développeurs un moyen pratique de les enregistrer et de les gérer dans le contexte d’une application particulière.
 
-# BNS and DID Standards
+# Normes BNS et DID
 
-BNS names are compliant with the emerging [Decentralized Identity Foundation](http://identity.foundation) protocol specification for decentralized identifiers (DIDs).
+Les noms BNS sont conformes à la spécification de [de la Fondation d’identité décentralisée](http://identity.foundation) protocole pour les identifiants décentralisés (DID).
 
-Each name in BNS has an associated DID. The DID format for BNS is:
+Chaque nom dans BNS a un DID associé. Le format DID pour BNS est :
 
 ```bash
     did:stack:v0:{address}-{index}
 ```
 
-Where:
+Où :
 
-- `{address}` is an on-chain public key hash (for example a Bitcoin address).
-- `{index}` refers to the `nth` name this address created.
+- `{address}` est un hachage de clé publique sur chaîne (par exemple une adresse Bitcoin).
+- `{index}` fait référence au `nème` nom que cette adresse a créé.
 
-For example, the DID for `personal.id` is `did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0`, because the name `personal.id` was the first-ever name created by `1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV`.
+Par exemple, le DID pour `personal.id` est `did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0`, parce que le nom `personal.id` a été le tout premier nom créé par `1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV`.
 
-As another example, the DID for `jude.id` is `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-1`. Here, the address `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` had created one earlier name in history prior to this one (which happens to be `abcdefgh123456.id`).
+Comme autre exemple, le DID pour `jude.id` est `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-1`. Ici, l'adresse `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` avait créé un prénom plus tôt dans l'histoire avant celui-ci (qui se trouve être `abcdefgh123456. d`).
 
-The purpose of a DID is to provide an eternal identifier for a public key. The public key may change, but the DID will not.
+Le but d'un DID est de fournir un identifiant éternel pour une clé publique. La clé publique peut changer, mais le DID ne changera pas.
 
-Stacks Blockchain implements a DID method of its own in order to be compatible with other systems that use DIDs for public key resolution. In order for a DID to be resolvable, all of the following must be true for a name:
+Stacks Blockchain implémente une méthode DID en elle-même afin d'être compatible avec d'autres systèmes qui utilisent DID pour la résolution de clé publique. Pour qu'un DID soit résolu, tout ce qui suit doit être vrai pour un nom :
 
-- The name must exist
+- Le nom doit exister
 - The name's zone file hash must be the hash of a well-formed DNS zone file
 - The DNS zone file must be present in the Stacks node's data.
 - The DNS zone file must contain a `URI` resource record that points to a signed JSON Web Token
