@@ -223,7 +223,6 @@ Le but d'un DID est de fournir un identifiant éternel pour une clé publique. L
 Stacks Blockchain implémente une méthode DID en elle-même afin d'être compatible avec d'autres systèmes qui utilisent DID pour la résolution de clé publique. Pour qu'un DID soit résolu, tout ce qui suit doit être vrai pour un nom :
 
 - Le nom doit exister
-  <<<<<<< HEAD
 - Le hachage du fichier de zone du nom doit être le hachage d'un fichier de zone DNS bien formé
 - Le fichier de zone DNS doit être présent dans les données du noeud Stacks.
 - Le fichier de zone DNS doit contenir un enregistrement de la ressource `URI` qui pointe vers un jeton web JSON signé
@@ -232,7 +231,6 @@ Stacks Blockchain implémente une méthode DID en elle-même afin d'être compat
 - The DNS zone file must be present in the Stacks node's data.
 - The DNS zone file must contain a `URI` resource record that points to a signed JSON Web Token
 - The public key that signed the JSON Web Token (and is included with it) must hash to the address that owns the name
-  > > > > > > > 52225480 (New translations bns.md (French))
 
 Tous les noms n'auront pas forcément de DIDs qui seront résolus pour les clés publiques. Cependant, les noms créés par l'outil standard auront les DIDs qui le font.
 
