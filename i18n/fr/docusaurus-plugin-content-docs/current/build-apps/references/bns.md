@@ -221,21 +221,21 @@ Le but d'un DID est de fournir un identifiant éternel pour une clé publique. L
 Stacks Blockchain implémente une méthode DID en elle-même afin d'être compatible avec d'autres systèmes qui utilisent DID pour la résolution de clé publique. Pour qu'un DID soit résolu, tout ce qui suit doit être vrai pour un nom :
 
 - Le nom doit exister
-- The name's zone file hash must be the hash of a well-formed DNS zone file
-- The DNS zone file must be present in the Stacks node's data.
-- The DNS zone file must contain a `URI` resource record that points to a signed JSON Web Token
-- The public key that signed the JSON Web Token (and is included with it) must hash to the address that owns the name
+- Le hachage du fichier de zone du nom doit être le hachage d'un fichier de zone DNS bien formé
+- Le fichier de zone DNS doit être présent dans les données du noeud Stacks.
+- Le fichier de zone DNS doit contenir un enregistrement de la ressource `URI` qui pointe vers un jeton web JSON signé
+- La clé publique qui a signé le jeton Web JSON (et qui est inclus avec celui-ci) doit être hachée à l'adresse qui est propriétaire du nom
 
-Not all names will have DIDs that resolve to public keys. However, names created by standard tooling will have DIDs that do.
+Tous les noms n'auront pas forcément de DIDs qui seront résolus pour les clés publiques. Cependant, les noms créés par l'outil standard auront les DIDs qui le font.
 
-A RESTful API is under development.
+Une API RESTful est en cours de développement.
 
-## DID Encoding for Subdomains
+## Encodage DID pour les sous-domaines
 
-Every name and subdomain in BNS has a DID. The encoding is slightly different for subdomains, so the software can determine which code-path to take.
+Chaque nom et sous-domaine dans BNS a un DID. L'encodage est un peu différent pour les sous-domaines, donc le logiciel peut déterminer quel façon de coder choisir.
 
-- For on-chain BNS names, the `{address}` is the same as the Bitcoin address that owns the name. Currently, both version byte 0 and version byte 5 addresses are supported (that is, addresses starting with `1` or `3`, meaning `p2pkh` and `p2sh` addresses).
+- Pour les noms de BNS on-chain, le `{address}` est le même que l'adresse Bitcoin qui détient le nom. Actuellement, les adresses d'octets de version 0 et d'octets de version 5 sont prises en charge (c.-à-d. adresses commençant par `1` ou `3`, signifiant `p2pkh` et `p2sh` adresses).
 
-- For off-chain BNS subdomains, the `{address}` has version byte 63 for subdomains owned by a single private key, and version byte 50 for subdomains owned by a m-of-n set of private keys. That is, subdomain DID addresses start with `S` or `M`, respectively.
+- Pour les sous-domaines BNS hors chaîne BNS, le `{address}` a un octet de version 63 pour sous-domaines appartenant à une seule clé privée, et l'octet de version 50 pour les sous-domaines appartenant à un ensemble m-of-n de clés privées. C'est-à-dire que les adresses DID de sous-domaine commencent par `S` ou `M`, respectivement.
 
-The `{index}` field for a subdomain's DID is distinct from the `{index}` field for a BNS name's DID, even if the same created both names and subdomains. For example, the name `abcdefgh123456.id` has the DID `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-0`, because it was the first name created by `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg`. However, `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` _also_ created `jude.statism.id` as its first subdomain name. The DID for `jude.statism.id` is `did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0`. Note that the address `SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i` encodes the same public key hash as the address `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` (the only difference between these two strings is that the first is base58check-encoded with version byte 0, and the second is encoded with version byte 63).
+Le champ `{index}` pour un DID d'un sous-domaine est distinct du champ `{index}` pour le DID d'un BNS, même si la même chose crée des noms et des sous-domaines. Par exemple, le nom `abcdefgh123456. d` a le DID `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-0`, parce que c'était le prénom créé par `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg`. Cependant, `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` _a aussi_ créé `jude.statism.id` comme premier nom de sous-domaine. Le DID pour `jude.statism.id` est `did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0`. Notez que l'adresse `SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i` encode la même clé publique de hachage que l'adresse `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` (la seule différence entre ces deux chaînes est que le premier est codé en base58check avec la version byte 0, et la seconde est encodée avec la version byte 63).
