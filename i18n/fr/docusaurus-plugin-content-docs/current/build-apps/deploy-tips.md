@@ -28,11 +28,11 @@ Si vous avez d'abord bâti votre application avec le générateur d'applications
 
 Si vous utilisez le générateur pour construire votre structure avec JavasScript ou Vue, les fichiers de configuration de votre projet seront différents.
 
-Quel que soit le langage que vous utilisez, vous devez personnaliser et étendre le squelette de base selon les besoins de votre application. Par exemple, vous pourriez vouloir ajouter plus de propriétés au fichier `manifest.json`. Since every application is different, Stacks Auth cannot give you specific instructions on how to do this. The steps you take are specific to your application.
+Quel que soit le langage que vous utilisez, vous devez personnaliser et étendre le squelette de base selon les besoins de votre application. Par exemple, vous pourriez vouloir ajouter plus de propriétés au fichier `manifest.json`. Comme chaque application est différente, Stacks Auth ne propose pas d'instructions spécifiques pour le faire. Les étapes que vous définissez sont spécifiques à votre application.
 
-## Stacks Authentication and deployment
+## Authentification Stacks et déploiement
 
-When your application authenticates users with Stacks, the Stacks Wallet at on URL requests a resource (the app manifest) from your DApp. A request for a resource outside of the origin (the Stacks Wallet) is called as a _cross-origin request_(CORs). Getting data in this manner can be risky, so you must configure your website security to allow interactions across origins.
+When your application authenticates users with Stacks, the Stacks Wallet at on URL requests a resource (the app manifest) from your DApp. Une requête pour une ressource en dehors du domaine d'origine (le Portefeuille de Stacks) est appelée comme une requête _cross-origin_(CORs). Obtenir des données de cette manière peut être risqué, vous devez donc configurer la sécurité de votre site Web pour permettre des interactions entre les origines.
 
 You can think of CORS interactions as an apartment building with Security. For example, if you need to borrow a ladder, you could ask a neighbor in your building who has one. Security would likely not have a problem with this request (that is, same-origin, your building). If you needed a particular tool, however, and you ordered it delivered from an online hardware store (that is, cross-origin, another site), Security may request identification before allowing the delivery man into the apartment building. (Credit: Codecademy)
 
