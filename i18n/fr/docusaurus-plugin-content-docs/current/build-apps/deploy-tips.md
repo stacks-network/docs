@@ -5,30 +5,30 @@ description: Apprenez quelques méthodes courantes pour déployer votre applicat
 
 ## Introduction
 
-Les applications stacks sont des applications web qui authentifient les utilisateurs avec Stacks Auth et stockent des données avec Gaia. Ces deux technologies sont accessibles du côté client. En tant que tel, les applications de Stacks tendent à être simples dans la conception et le fonctionnement. Dans de nombreux cas, ils n’ont pas à héberger quoi que ce soit en dehors des ressources de l’application.
+Les applications Stacks sont des applications web qui authentifient les utilisateurs avec Stacks Auth et stockent des données avec Gaia. Ces deux technologies sont accessibles du côté client. En tant que tel, les applications de Stacks tendent à être simples dans la conception et le fonctionnement. Dans de nombreux cas, ils n’ont pas à héberger quoi que ce soit en dehors des ressources de l’application.
 
 ## Où déployer son application
 
-Before users can interact with your application, you must deploy it on a server that is accessible over the internet. Deploying requires that you:
+Avant que les utilisateurs puissent interagir avec votre application, vous devez le déployer sur un serveur accessible sur Internet. Le déploiement nécessite que vous :
 
-- Configure or customize the files in the `public` directory.
-- Build your application site for deployment.
-- Copy your generated application files to your production server.
+- Configuriez ou personnalisiez les fichiers dans le répertoire `public`.
+- Construisiez votre site d'application pour le déploiement.
+- Copiez vos fichiers d'application générés sur votre serveur de production.
 
-If you first populated your application with the Stacks application generator, your application contains the starting blocks for configuring, building, and deploying your app. For example, the React template builds out a scaffolding with the following building blocks.
+Si vous avez d'abord bâti votre application avec le générateur d'applications Stacks, votre application contient les blocs de départ pour configurer, construire et déployer votre application. Par exemple, le modèle React possède une structure avec les blocs de construction suivants.
 
-| Fichier ou dossier         | Description                                                                                                                                                                    |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| node_modules/react-scripts | A set of scripts for that helps you kick off React projects without configuring, so you do not have to set up your project by yourself.                                        |
-| paquet.json                | Contains a scripts section that includes a reference to the react-scripts, which are a dependency. This script creates a build directory containing your files for deployment. |
-| public/favicon.ico         | An example shortcut icon.                                                                                                                                                      |
-| public/index.html          | An entry page for an application.                                                                                                                                              |
-| public/manifest.json       | A JSON file that describes your web application to the browser.                                                                                                                |
-| cors                       | Contains example deployment files for cross-origin request configuration.                                                                                                      |
+| Fichier ou dossier         | Description                                                                                                                                                                            |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| node_modules/react-scripts | Un ensemble de scripts pour vous aider à démarrer les projets React sans configuration, pour que vous n'ayez pas à configurer votre projet par vous-même.                              |
+| package.json               | Contient une section de scripts qui inclut une référence aux scripts de react, qui sont une dépendance. Ce script crée un répertoire de compilation contenant vos fichiers à déployer. |
+| public/favicon.ico         | Un exemple d'icône de raccourci.                                                                                                                                                       |
+| public/index.html          | Une page d'accueil pour une application.                                                                                                                                               |
+| public/manifest.json       | Un fichier JSON qui décrit votre application Web au navigateur.                                                                                                                        |
+| cors                       | Contient des exemples de fichiers de déploiement pour la configuration des requêtes multi-origines.                                                                                    |
 
-If you use the generator to build JavasScript or Vue scaffolding, your project configuration files will be different.
+Si vous utilisez le générateur pour construire votre structure avec JavasScript ou Vue, les fichiers de configuration de votre projet seront différents.
 
-Regardless of which scaffolding you use, you must customize and extend this basic scaffolding as needed by your application. For example, you may want to add more properties to the `manifest.json` file. Since every application is different, Stacks Auth cannot give you specific instructions on how to do this. The steps you take are specific to your application.
+Quel que soit le langage que vous utilisez, vous devez personnaliser et étendre le squelette de base selon les besoins de votre application. Par exemple, vous pourriez vouloir ajouter plus de propriétés au fichier `manifest.json`. Since every application is different, Stacks Auth cannot give you specific instructions on how to do this. The steps you take are specific to your application.
 
 ## Stacks Authentication and deployment
 
