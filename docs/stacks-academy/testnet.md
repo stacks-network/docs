@@ -13,7 +13,7 @@ It produces blocks at roughly the same rate as mainnet; about 1 block every 10 m
 
 The testnet faucet provides you with free Stacks Token (STX) to test with. These are not the same as STX on mainnet and have no value. You can get STX from the faucet on the [Stacks Explorer Sandbox](https://explorer.stacks.co/sandbox/faucet?chain=testnet), or using the [API](https://docs.hiro.so/api#tag/Faucets).
 
-To get STX tokens from within the Explorer Sandbox, navigate to the "Faucet" tab on the left and click "Request STX" button. 
+To get STX tokens from within the Explorer Sandbox, navigate to the "Faucet" tab on the left and click "Request STX" button.
 
 ![](/img/stx_faucet.png)
 
