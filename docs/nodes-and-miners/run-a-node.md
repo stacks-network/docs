@@ -1,5 +1,5 @@
 ---
-title: Run a node
+title: Run a Node with Docker
 description: Set up and run a Stacks node
 sidebar_position: 1
 tags:
@@ -66,7 +66,7 @@ _You may also use a symlink as an alternative to copying: `ln -s sample.env .env
 
 - Export docker log files to `./exported-logs`:
 
-This will create one log file for every running service, for example: postgres.log, stacks-blockain.log, stacks-blockchain-api.log and bitcoin-core.log.  
+This will create one log file for every running service, for example: postgres.log, stacks-blockain.log, stacks-blockchain-api.log and bitcoin-core.log.
 Notice that each time you run this command the log files will be overwritten.
 
 ```bash
@@ -92,17 +92,17 @@ Notice that each time you run this command the log files will be overwritten.
 ```bash
 $ sudo ./manage.sh -n <network> -a reset
 
-Please confirm what persistent data you wish to delete: 
+Please confirm what persistent data you wish to delete:
 
-0. Cancel                 
-1. Delete Persistent data for Stacks testnet only and leave Bitcoin blockchain data unaffected. 
-2. Delete Persistent data for Stacks testnet and Bitcoin blockchain data in ./persistent-data/blockchain-bitcoin 
-3. Delete Persistent data for Bitcoin blockchain data in ./persistent-data/blockchain-bitcoin only. 
-Please note that BNS data will never get deleted. 
+0. Cancel
+1. Delete Persistent data for Stacks testnet only and leave Bitcoin blockchain data unaffected.
+2. Delete Persistent data for Stacks testnet and Bitcoin blockchain data in ./persistent-data/blockchain-bitcoin
+3. Delete Persistent data for Bitcoin blockchain data in ./persistent-data/blockchain-bitcoin only.
+Please note that BNS data will never get deleted.
 
 Type 0, 1, 2 or 3: 2
 
-Ok. Delete Stacks and Bitcoin data. 
+Ok. Delete Stacks and Bitcoin data.
 [ Success ]      Persistent data deleted for Bitcoin blockchain.
 [ Success ]      Persistent data deleted for Stacks testnet.
 
