@@ -1,14 +1,20 @@
 ---
 title: Gaia
 description: Decentralized storage architecture for off-chain data
-sidebar_position: 5
+sidebar_position: 6
 tags:
   - gaia
 ---
 
 ## Introduction
 
-Apps built with the Stacks blockchain store off-chain data using a storage system called Gaia.
+Apps built with the Stacks blockchain can store off-chain data using a storage system called Gaia.
+
+Gaia is a unique approach to decentralized storage that focuses primarily on user-ownership of data, rather than immutabile on-chain storage. The emphasis here is on user control.
+
+While on-chain storage solutions like IPFS and Arweave are designed for immutable, censorship-resistant, permanent storage, they cannot be deemed as providing user control of the data since the user cannot modify or remove the data once it has been deployed.
+
+Gaia solves a different problem of allowing users to be in control of where their data is stored while connecting the access of that data to their on-chain Stacks identity.
 
 Whereas public transactional metadata is best stored on the Stacks blockchain, user application data can often be stored more efficiently and privately in Gaia storage.
 

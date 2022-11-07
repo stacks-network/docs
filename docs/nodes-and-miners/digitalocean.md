@@ -1,7 +1,7 @@
 ---
-title: Stacks on DigitalOcean
+title: Run a Node with Digital Ocean
 description: A guide to setup Stacks on DigitalOcean
-sidebar_position: 4
+sidebar_position: 2
 tags:
   - tutorial
 ---
