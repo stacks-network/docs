@@ -224,6 +224,8 @@ Returns the integer remainder from integer dividing `i1` by `i2`. In the event o
 
 #### example:
 
+#### example:
+
 ```clarity
 (mod 2 3) ;; Returns 2
 (mod 5 2) ;; Returns 1
@@ -281,16 +283,14 @@ Returns the largest integer that is less than or equal to the square root of `n`
 
 #### description:
 
-Returns the power to which the number 2 must be raised to to obtain the value `n`, rounded down to the nearest integer. Fails on a negative numbers.
+Returns the _integer part_ of the power to which the number 2 must be raised to obtain the value `n`. Fails on zero or a negative number.
 
 #### example:
 
-Returns the _integer part_ of the power to which the number 2 must be raised to obtain the value `n`. Fails on zero or a negative number.
-
 ```clarity
-(log2 u8)   ;; Returns u3
-(log2 8)    ;; Returns 3
-(log2 u1)   ;; Returns u0
+(log2 u8) ;; Returns u3
+(log2 8) ;; Returns 3
+(log2 u1) ;; Returns u0
 (log2 1000) ;; Returns 9
 ```
 
@@ -1764,7 +1764,7 @@ Otherwise, on successfully mint, it returns `(ok true)`.
 #### description:
 
 `ft-mint?` is used to increase the token balance for the `recipient` principal for a token
-type defined using `define-fungible-token`. The increased token balance is _not_ transferred from another principal, but
+type defined using `define-fungible-token`. The increased token balance is _not_ transfered from another principal, but
 rather minted.
 
 If a non-positive amount is provided to mint, this function returns `(err 1)`. Otherwise, on successfully mint, it
@@ -1810,7 +1810,7 @@ The token type must have been defined using `define-fungible-token`.
 #### description:
 
 `ft-burn?` is used to decrease the token balance for the `sender` principal for a token
-type defined using `define-fungible-token`. The decreased token balance is _not_ transferred to another principal, but
+type defined using `define-fungible-token`. The decreased token balance is _not_ transfered to another principal, but
 rather destroyed, reducing the circulating supply.
 
 If a non-positive amount is provided to burn, this function returns `(err 1)`. Otherwise, on successfully burn, it
