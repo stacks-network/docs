@@ -1,7 +1,7 @@
 ---
 title: Mine testnet Stacks tokens
 description: Set up and run a miner on the Stacks 2.0 testnet
-sidebar_position: 4
+sidebar_position: 5
 tags:
   - tutorial
 ---

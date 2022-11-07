@@ -1,11 +1,11 @@
 ---
 title: Nodes and Miners
 description: Nodes and Miners
-sidebar_position: 7
+sidebar_position: 5
 ---
 
-Here are all the steps to run nodes and miners, both on mainnet and testnet.
+This section will walk through the technical setup steps required to run Stacks nodes and miners. There are multiple options available for running a node, including Docker, Digital Ocean, and Render.
 
-## What's a Stacks node?
+Running your own Stacks node is a great way to increase the decentralization of the ecosystem and not have to rely on third-party, centralized providers.
 
-## What's a Stacks miner?
+Although it does take some more effort and setup, it's a valuable exercise in understanding how the different pieces of a Stacks Dapp interact with each other.
