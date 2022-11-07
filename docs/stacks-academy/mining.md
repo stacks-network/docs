@@ -1,7 +1,7 @@
 ---
 title: Mining
 description: A guide to mining on Stacks 2.0
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 ## Introduction
