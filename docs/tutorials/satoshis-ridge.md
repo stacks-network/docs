@@ -3,7 +3,7 @@ title: Satoshi's Ridge (Deep Dive)
 description: A comprehensive overview of building useful Stacks dapps
 sidebar_position: 2
 ---
-# Nakamotors (Deep Dive)
+# Satoshi's Ridge (Deep Dive)
 Alright so you've taken the quickstart tutorial and know how to get started building on Stacks. Maybe you've read a bit of [Stacks Academy](../stacks-academy/) and understand why Stacks is unique ad what benefits it provides.
 
 Now you want to know how to actually build real-world dapps that are actually useful using Stacks.
@@ -20,11 +20,11 @@ We'll be covering:
 * Utilizing Bitcoin in our Stacks dapp
 * Creating a smooth, enjoyable frontend with Remix and Micro-Stacks
 * Utilizing oracle data with Redstone
+* Off-chain data storage
 * Self-hosting our own Stacks node
-* Deploying our app to Fly
+* Deploying our app to Fly.io
 * Deploying our contracts to Stacks testnet with Clarinet
-
-We'll be doing all of this by creating an app that will take full advantage of Stacks' Bitcoin connection by allowing us to create a decentralized organization based on Bitcoin.
+* Potential improvements to make
 
 Let's do this.
 
