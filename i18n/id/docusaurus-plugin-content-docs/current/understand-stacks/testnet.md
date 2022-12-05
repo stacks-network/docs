@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Tentang testnet
 
-Testnet adalah blockchain terpisah dari mainnet Stacks yang dianalogikan sebagai lingkungan staging. Testnet adalah jaringan yang digunakan oleh pengembang untuk menguji aplikasi, kontrak pintar, atau perubahan protokol mereka dalam lingkungan seperti produksi. Testnet menghasilkan blok dengan kecepatan yang kira-kira sama dengan mainnet; sekitar 1 blok setiap 10 menit rata-rata. Testnet Stacks jarang diatur ulang.
+The testnet is a separate blockchain from the Stacks mainnet analogous to a staging environment. Testnet adalah jaringan yang digunakan oleh pengembang untuk menguji aplikasi, kontrak pintar, atau perubahan protokol mereka dalam lingkungan seperti produksi. Testnet menghasilkan blok dengan kecepatan yang kira-kira sama dengan mainnet; sekitar 1 blok setiap 10 menit rata-rata. Testnet Stacks jarang diatur ulang.
 
 ### Faucet
 
