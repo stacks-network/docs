@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## About testnet
 
-The testnet is a separate blockchain from the Stacks mainnet analogous to a staging environment. It's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment. It produces blocks at roughly the same rate as mainnet; about 1 block every 10 minutes on average. The Stacks testnet is rarely reset. It's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment. It produces blocks at roughly the same rate as mainnet; about 1 block every 10 minutes on average. The Stacks testnet is rarely reset. It's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment. It produces blocks at roughly the same rate as mainnet; about 1 block every 10 minutes on average. The Stacks testnet is rarely reset. It's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment. It produces blocks at roughly the same rate as mainnet; about 1 block every 10 minutes on average. The Stacks testnet is rarely reset.
+The testnet is a separate blockchain from the Stacks mainnet analogous to a staging environment. It's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment. It produces blocks at roughly the same rate as mainnet; about 1 block every 10 minutes on average. The Stacks testnet is rarely reset.
 
 ### Faucet
 
