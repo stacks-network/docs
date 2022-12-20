@@ -3,7 +3,9 @@ title: Hello Stacks (Quickstart)
 description: A quick introduction to building dapps with Stacks
 sidebar_position: 2
 ---
+
 # Hello Stacks (Quickstart Tutorial)
+
 Looking to see what building on Stacks is all about? You're in the right place.
 
 This tutorial is designed to take you from never having worked with Stacks before to a complete app in about an hour.
@@ -15,6 +17,7 @@ It does assume a basic familiarity with blockchain and smart contract technology
 Let's get started.
 
 ## What We're Building
+
 We're going to be building a very simple practice application called Hello Stacks. Hello Stacks allows users to post a message to the Stacks blockchain and automatically generates a link for others to view that message.
 
 Here's a brief overview video of what it looks like.
@@ -30,9 +33,11 @@ You can also view the finished code in the `master` branch of that same repo.
 Let's get started by getting everything set up.
 
 ## Wallet Setup
+
 The very first thing you'll need to do is set up the Hiro wallet extension. This is how you can get STX tokens and interact with Stacks dapps. All you need to do right now is visit Hiro's [wallet page](https://wallet.hiro.so/) and install it. We'll set it up later with our dev environment.
 
 ## Code Setup
+
 If you want to use the starter repo, you can clone that, run `yarn` and move on to the next section, titled '[Writing Our Smart Contract](#writing-our-smart-contract)'.
 
 Otherwise, follow along if you want to start from scratch. If you are brand new to Stacks and are not familiar with the tooling ecosystem like Clarinet, Stacks.js, etc. I highly recommend following along to get everything set up on your own.
@@ -108,16 +113,13 @@ Now we need to tell Tailwind where our content is coming from and change out pro
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: 'jit',
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  mode: "jit",
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
 Add the Tailwind directvies to the `index.css` file.
@@ -134,12 +136,12 @@ Now we need to modify our `App.jsx` file to make sure Tailwind is working.
 function App() {
   return (
     <div className="flex justify-center items-center h-screen">
-        <h1 className="text-3xl">Hello Stacks</h1>
+      <h1 className="text-3xl">Hello Stacks</h1>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
 ```
 
 You can also delete the `App.css` file.
@@ -151,6 +153,7 @@ Now run `yarn dev` and make sure everything is working. Your screen should look 
 Awesome! We have our set up out of the way, now we can start actually coding. We're going to start with our smart contract and learn a bit about Clarity in the process.
 
 ## Writing Our Smart Contract
+
 Clarity is a smart contract language that has been purpose-built to help developers write safe, secure smart contracts.
 
 It took a lot of the lessons learned from the Solidity hacks over the years and used them to create something much more secure and safe.
@@ -223,6 +226,7 @@ Here we are calling the function we just created and passing a message of "Hello
 You should get an `ok` message returned here, which indicates that our function was called successfully.
 
 ## Running a Local Stacks Devnet
+
 One of the coolest features of Clarinet is that it allows us to set up an entire mock Stacks network on our local machine for testing.
 
 This comes complete with a local block explorer and sandbox environment so we can further test our contracts.
@@ -284,6 +288,7 @@ Here you can see a lot of information about the transaction, including the fact 
 Let's get our frontend set up so we can see how to do this with a UI and also read this information from the chain.
 
 ## Adding a UI
+
 For this tutorial, we'll be using [Stacks.js](https://www.hiro.so/stacks-js), a JS library from Hiro that helps us interact with the Stacks chain, our Hiro wallet, and our contracts. Another option is [Micro-Stacks](https://micro-stacks.dev/), a community-created resource.
 
 Since this is not a React tutorial, I'm going to give you all the boilerplate at once so you can just copy and paste this into `App.jsx` and we'll add the Stacks-specific stuff together.
@@ -382,7 +387,12 @@ Some users get an error about the `regenerator-runtime` dependency being missing
 And import a couple things from it at the top of our `App.jsx` file.
 
 ```jsx
-import { AppConfig, UserSession, AuthDetails, showConnect } from "@stacks/connect";
+import {
+  AppConfig,
+  UserSession,
+  AuthDetails,
+  showConnect,
+} from "@stacks/connect";
 ```
 
 Now let's use `AppConfig` which is charge of setting some config options for the wallet to read and `UserSession`, which will actually handle the wallet authentication.
@@ -390,7 +400,7 @@ Now let's use `AppConfig` which is charge of setting some config options for the
 Below the state declarations, add the following.
 
 ```jsx
-const appConfig = new AppConfig(['store_write'])
+const appConfig = new AppConfig(["store_write"]);
 const userSession = new UserSession({ appConfig });
 ```
 
@@ -399,22 +409,22 @@ Here we are setting up an app that needs permission to store and write data to t
 We also need to add a few details for the Hiro wallet to display to people interacting with our app. We can do that with the following line:
 
 ```jsx
- const appDetails = {
-    name: "Hello Stacks",
-    icon: "https://freesvg.org/img/1541103084.png",
-  }
+const appDetails = {
+  name: "Hello Stacks",
+  icon: "https://freesvg.org/img/1541103084.png",
+};
 ```
 
 We'll use this when we set up the connect function, which we can do right now in the `connectWallet` function.
 
 ```jsx
 const connectWallet = () => {
-    showConnect({
-        appDetails,
-        onFinish: () => window.location.reload(),
-        userSession
-    })
-  };
+  showConnect({
+    appDetails,
+    onFinish: () => window.location.reload(),
+    userSession,
+  });
+};
 ```
 
 Here we are using the `showConnect` function to actually trigger the Hiro wallet to show up, allowing the user to authenticate. From there we are triggering a page refresh when the authentication finishes and setting the `userSession` variable, which handles the data for our logged in user.
@@ -433,13 +443,13 @@ And we will also add a `useEffect` call to set this data on page load.
 
 ```jsx
 useEffect(() => {
-if (userSession.isSignInPending()) {
+  if (userSession.isSignInPending()) {
     userSession.handlePendingSignIn().then((userData) => {
-    setUserData(userData);
+      setUserData(userData);
     });
-} else if (userSession.isUserSignedIn()) {
+  } else if (userSession.isUserSignedIn()) {
     setUserData(userSession.loadUserData());
-}
+  }
 }, []);
 
 console.log(userData);
@@ -450,35 +460,39 @@ Now we have access to our authenticated user data, but we need to actually utili
 The first thing we'll do is hide the 'Connect Wallet' button if there is currently an authenticated user. Change the code that renders our button to the following.
 
 ```jsx
-{!userData && (
+{
+  !userData && (
     <button
-        className="p-4 bg-indigo-500 rounded text-white"
-        onClick={connectWallet}
+      className="p-4 bg-indigo-500 rounded text-white"
+      onClick={connectWallet}
     >
-        Connect Wallet
+      Connect Wallet
     </button>
-)}
+  );
+}
 ```
 
 We also want to hide the form to submit a message if we are not authenticated.
 
 ```jsx
-{userData && (
+{
+  userData && (
     <div className="flex gap-4">
-        <input
+      <input
         className="p-4 border border-indigo-500 rounded"
         placeholder="Write message here..."
         onChange={handleMessageChange}
         value={message}
-        />
-        <button
+      />
+      <button
         className="p-4 bg-indigo-500 rounded text-white"
         onClick={submitMessage}
-        >
+      >
         Submit New Message
-        </button>
+      </button>
     </div>
-)}
+  );
+}
 ```
 
 Alright, now we need to actually implement the functionality that will call our `hello-stacks` contract. To do that, we need to use Stacks.js to send a transaction, we'll do that in the `submitMessage` function.
@@ -492,7 +506,12 @@ yarn add @stacks/transactions @stacks/network
 And import a couple things from those at the top.
 
 ```jsx
-import { AppConfig, UserSession, showConnect, openContractCall } from "@stacks/connect";
+import {
+  AppConfig,
+  UserSession,
+  showConnect,
+  openContractCall,
+} from "@stacks/connect";
 import { StacksMocknet } from "@stacks/network";
 import { stringUtf8CV } from "@stacks/transactions";
 ```
@@ -509,24 +528,22 @@ And finally we can add the code to initiate the transaction.
 
 ```jsx
 const submitMessage = async (e) => {
-    e.preventDefault()
+  e.preventDefault();
 
-    const network = new StacksMocknet()
+  const network = new StacksMocknet();
 
-    const options = {
-      contractAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      contractName: 'hello-stacks',
-      functionName: 'write-message',
-      functionArgs: [
-        stringUtf8CV(message),
-      ],
-      network,
-      appDetails,
-      onFinish: ({ txId }) => console.log(txId)
-    }
-
-    await openContractCall(options)
+  const options = {
+    contractAddress: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
+    contractName: "hello-stacks",
+    functionName: "write-message",
+    functionArgs: [stringUtf8CV(message)],
+    network,
+    appDetails,
+    onFinish: ({ txId }) => console.log(txId),
   };
+
+  await openContractCall(options);
+};
 ```
 
 What we are doing here is calling our contract (I got the address from the local block explorer) using the `openContractCall` function and passing in some options.
@@ -543,9 +560,14 @@ Here's our current `App.jsx` file in its entirety.
 
 ```jsx
 import { useEffect, useState } from "react";
-import { AppConfig, UserSession, showConnect, openContractCall } from "@stacks/connect";
+import {
+  AppConfig,
+  UserSession,
+  showConnect,
+  openContractCall,
+} from "@stacks/connect";
 import { StacksMocknet } from "@stacks/network";
-import { stringUtf8CV } from '@stacks/transactions'
+import { stringUtf8CV } from "@stacks/transactions";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -585,23 +607,21 @@ function App() {
   };
 
   const submitMessage = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const network = new StacksMocknet()
+    const network = new StacksMocknet();
 
     const options = {
-      contractAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-      contractName: 'hello-stacks',
-      functionName: 'write-message',
-      functionArgs: [
-        stringUtf8CV(message),
-      ],
+      contractAddress: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
+      contractName: "hello-stacks",
+      functionName: "write-message",
+      functionArgs: [stringUtf8CV(message)],
       network,
       appDetails,
-      onFinish: ({ txId }) => console.log(txId)
-    }
+      onFinish: ({ txId }) => console.log(txId),
+    };
 
-    await openContractCall(options)
+    await openContractCall(options);
   };
 
   const handleTransactionChange = (e) => {
@@ -670,6 +690,7 @@ If you click 'Confirm' you should see the transaction id logged in the console a
 ![new transaction](./tx-proof.png)
 
 ## Retrieving Messages
+
 Now that we can write a message to the chain, we also want to add functionality so that we can retrieve a message from the chain.
 
 We'll do that by having users enter in a transaction ID and we'll query the chain for that transaction and the event data associated with it.
@@ -680,12 +701,15 @@ Let's set that up in our `retrieveMessage` function.
 
 ```jsx
 const retrieveMessage = async () => {
-    const retrievedMessage = await fetch('http://localhost:3999/extended/v1/tx/events?' + new URLSearchParams({
-        tx_id: transactionId
-    }))
-    const responseJson = await retrievedMessage.json()
-    setCurrentMessage(responseJson.events[0].contract_log.value.repr)
-  };
+  const retrievedMessage = await fetch(
+    "http://localhost:3999/extended/v1/tx/events?" +
+      new URLSearchParams({
+        tx_id: transactionId,
+      })
+  );
+  const responseJson = await retrievedMessage.json();
+  setCurrentMessage(responseJson.events[0].contract_log.value.repr);
+};
 ```
 
 Here we are using `fetch` to call the Stacks API and passing our transaction as a query parameter to get the events and then digging down through that returned data to get the printed message.
@@ -695,34 +719,41 @@ You can view the documentation for this specific API call on [Hiro's website](ht
 If you run this you should see the message printed at the bottom of the screen.
 
 ## Wrapping Up and Next Steps
+
 Here we've just gone over a very simple and very brief example of a Stacks application. This was meant to give you a high level introduction to the Stacks ecosystem and how you might begin building Stacks dapps.
 
 There is obvisouly a lot more to learn, so here are a few good places to continue your learning.
 
 ### Stacks Academy
+
 Stacks Academy is your guide to all things Stacks. This comprehensive walkthrough will cover key concepts about Stacks so you can learn everything you need to know about how it works.
 
 [View Stacks Academy](../stacks-academy/)
 
 ### Clarity Book
+
 The Clarity Book, Clarity of Mind, is the go-to resource for mastering Clarity. It will teach you Clarity developmenet from start to finish so you can begin writing high-quality Clarity smart contracts.
 
 [Read the Clarity Book](https://book.clarity-lang.org/)
 
 ### Clarity Universe
-Prefer a more immersive experience? Clarity Universe is a cohort-based guide to learning Clarity, complete with live instruction and office hours so you can master Clarity.
+
+Prefer a more immersive experience? Clarity Universe is a start-to-finish guide to learning Clarity, with self-paced option and a guided cohort-based option.
 
 [Enroll in Clarity Universe](https://clarity-lang.org/universe)
 
 ### Community Tutorials
+
 There is an ever-growing list of tutorials created by members of the Stacks community so you can learn how to accomplish different tasks and build useful things with Stacks.
 
 [View Community Tutorials](../tutorials/community-tutorials.md)
 
 ### Go Pro
+
 Looking to get paid to build something awesome with Stacks? Be sure to see all the different opportunities available to you like full-time jobs, grants, the startup accelerator, and more.
 
 [Go Pro](../going-pro/)
 
 ### Get Involved
+
 Finally, be sure to get involved in the Stacks community by [joining Discord](https://discord.gg/5DJaBrf) and [checking out the website](https://stacks.co) to learn more about Stacks.

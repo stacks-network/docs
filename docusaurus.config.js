@@ -55,6 +55,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+        docs: {
+            sidebar: {
+                hideable: true,
+            }
+        },
       navbar: {
         title: "Stacks Documentation",
         logo: {
@@ -85,9 +90,9 @@ const config = {
             label: "Grants",
           },
           {
-            href: "https://stacks.ac",
+            href: "https://github.com/friedger/awesome-stacks-chain",
             position: "left",
-            label: "Startup Accelerator",
+            label: "Awesome Stacks",
           },
           /*
           {to: '/blog', label: 'Blog', position: 'left'},
