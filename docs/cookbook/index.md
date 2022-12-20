@@ -9,7 +9,7 @@ The Stacks Cookbook is a collection of sample apps and smart contracts to serve 
 
 Many of these cookbook recipes have been pulled from other tutorials and linked here for easy access. Links to full tutorials and sample code have been included for reference and further exploration.
 
-Got an idea you think would make a good addition? Ping [Kenny on Twitter](https://twitter.com/KenTheRogers).
+Got an idea you think would make a good addition? We're always [accepting contributions](../contribute/).
 
 ## Bitcoin Integration
 
