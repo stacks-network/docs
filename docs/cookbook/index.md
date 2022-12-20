@@ -34,3 +34,15 @@ Creating a Fungible Token
 Simple stacking pool
 
 Continuous stacking
+
+## Frontend
+
+Post conditions with Stacks.js
+
+Authentication with Stacks.js
+
+Sending transactions with Stacks.js
+
+## Complete Apps
+
+Sup
