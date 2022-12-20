@@ -1,7 +1,7 @@
 ---
 title: Types
 description: See a detailed list of all types for the Clarity language.
-sidebar_position: 1
+sidebar_position: 2
 tags:
   - clarity
 ---

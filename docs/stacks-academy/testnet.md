@@ -1,7 +1,7 @@
 ---
 title: Testnet
 description: Test your smart contracts and apps
-sidebar_position: 11
+sidebar_position: 12
 ---
 
 ## About testnet

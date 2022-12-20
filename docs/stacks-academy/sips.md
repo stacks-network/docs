@@ -1,7 +1,7 @@
 ---
 title: SIPs
 description: SIPs
-sidebar_position: 9
+sidebar_position: 2
 ---
 
 ## Stacks Improvement Proposals (SIPs)
@@ -50,5 +50,5 @@ A full list is in [this github](https://github.com/stacksgov/sips/tree/main/cons
 Members of SIP consideration advisory boards use their domain expertise to give Accepted SIPs a deep read, and give the authors any/all feedback to help make the SIP workable. If you want to join a board, reach out to the board's chairperson via the listed contact information.
 
 * **Steering Committee**.  The Steering Committee organizes the consideration advisory boards and votes to advance Recommended SIPs to Activation-in-Progress status, and then to either Ratified or Rejected status.
-Once they are in the process of being activated, they use a SIP's Activation section to determine whether or not the Stacks ecosystem has ratified or rejected the SIP. 
+Once they are in the process of being activated, they use a SIP's Activation section to determine whether or not the Stacks ecosystem has ratified or rejected the SIP.
 Joining this committee requires the consent of the Stacks Foundation board.

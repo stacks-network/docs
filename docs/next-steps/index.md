@@ -1,10 +1,15 @@
 ---
-title: Going Pro
+title: Next Steps
 description: A guide to making a living in the Stacks world
 sidebar_position: 7
 ---
-# How to Make a Living Building on Stacks
+# Furthering Your Stacks Skills and Career
 The Stacks ecosystem is rapidly growing, and there are currently multiple ways for interested developers to monetize their hard work and make a living building the next generation of the Internet.
+
+## Awesome Stacks
+Awesome Stacks is a community-curated collection of resources for learning and building on Stacks. It has tons of helpful developer tools, companies, and learning resources to help you further your Stacks knowledge.
+
+[View Awesome Stacks Repo](https://github.com/friedger/awesome-stacks-chain)
 
 ## Grow Your Skills
 The first step to going pro is to level-up your skills. The best way to do that is through Clarity Universe, a comprehensive Clarity training camp that will take you from Stacks beginner to Clarity smart contract developer.

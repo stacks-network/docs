@@ -2,7 +2,7 @@
 title: Clarity Overview
 description: Overview and guides for getting started with Clarity
 sidebar_label: Clarity
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 Clarity is a **decidable** smart contract language that optimizes for predictability and security, designed for the Stacks blockchain. Smart contracts allow developers to encode essential business logic on a blockchain.
