@@ -14,6 +14,8 @@ These tutorials have been created by various members of the Stacks community. Ha
 * [Build a DEX on Stacks](https://www.pointer.gg/tutorials/build-a-dex-with-stacks/56abb3a4-05c1-4608-b096-f82189e9f759)
 * [NFT Tutorial](https://docs.hiro.so/tutorials/clarity-nft)
 * [Billboard Tutorial](https://docs.hiro.so/tutorials/clarity-billboard)
+* [Integrating NFTs Into a Game](https://gamefi-stacks.gitbook.io/gamefistacks/tutorials/integrate-nfts-into-game)
+* [Building on Stacks](https://github.com/amoweolubusayo/stacks-clarinet-tutorial)
 
 ## Video Tutorials
 * [Web3 for Bitcoin](https://www.crowdcast.io/e/web3-for-bitcoin/)

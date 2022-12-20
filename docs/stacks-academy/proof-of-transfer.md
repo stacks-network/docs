@@ -1,7 +1,7 @@
 ---
 title: Proof of Transfer
 description: Understand the proof-of-transfer consensus mechanism
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 In the previous section, we took a look at the vision and ethos of Stacks. We talked a lot about it being connected to Bitcoin and how it enables expanding functionality without modifying Bitcoin itself.
@@ -68,6 +68,13 @@ The ultimate goal of all this is to enable the vision of web3, building a decent
 ![Unlocking Bitcoin](/img/pox-unlocking-btc.png)
 
 We also recommend [reading the full PoX whitepaper](https://community.stacks.org/pox), as it breaks down the reasoning behind creating a PoX chain and the unique benefits we get from doing so.
+
+## Proof of Transfer Contracts and Technical Details
+The Proof of Transfer functionality is implemented on the Stacks chain via a [Clarity smart contract](https://explorer.stacks.co/txid/0xfc878ab9c29f3d822a96ee73898000579bdf69619a174e748672eabfc7cfc589). An overview of this contract is [available in the docs](../clarity/stacking-contract.md).
+
+You can see the original design for stacking and proof of transfer by reading the relevant SIP, [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md). You can also utilize [Hiro's API](https://docs.hiro.so/api#tag/Info/operation/get_pox_info) to get proof of transfer details including the relevant contract address.
+
+However, since Stacks mainnet launched in January 2021, several shortcomings have been recognized in the stacking process, which are being corrected in the next major network epoch, Stacks 2.1 You can read more about these changes in [SIP-015](https://github.com/stacksgov/sips/blob/feat/sip-015/sips/sip-015/sip-015-network-upgrade.md), the SIP responsible for managing the upgrade to 2.1.
 
 ### Got another question
 Have another question not answered here? Post in on Stack Overflow under the appropriate tag(s) and post the link to the Stack Overflow question in the Stacks Discord in the appropriate channel.

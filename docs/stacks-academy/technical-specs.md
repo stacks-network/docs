@@ -1,7 +1,7 @@
 ---
 title: Technical Specifications
 description: Summary of technical specifications of Stacks 2.0
-sidebar_position: 12
+sidebar_position: 13
 ---
 
 ## Consensus
