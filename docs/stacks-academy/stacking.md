@@ -1,7 +1,7 @@
 ---
 title: Stacking
 description: Introduction to the reward mechanism of Proof-of-Transfer
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 ## Introduction
