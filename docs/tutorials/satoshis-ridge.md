@@ -2,36 +2,53 @@
 title: Satoshi's Ridge (Deep Dive)
 description: A comprehensive overview of building useful Stacks dapps
 sidebar_position: 2
+draft: true
 ---
-# Satoshi's Ridge (Deep Dive)
-Alright so you've taken the quickstart tutorial and know how to get started building on Stacks. Maybe you've read a bit of [Stacks Academy](../stacks-academy/) and understand why Stacks is unique ad what benefits it provides.
 
-Now you want to know how to actually build real-world dapps that are actually useful using Stacks.
+# Satoshi's Ridge (Deep Dive)
+
+Alright so you've taken the [quickstart tutorial](./hello-stacks.md) and know how to get started building on Stacks. Maybe you've read a bit of [Stacks Academy](../stacks-academy/) and understand why Stacks is unique ad what benefits it provides.
+
+Now you want to know how to actually build real-world Bitcoin-first dapps using Stacks as the udnerlying programming layer.
 
 You're in the right place.
 
-This comprehensive tutorial is designed to teach you everything you need to know about building on Stacks. We'll be introducing all the important tools and concepts with links out to additional resources for you to dive deeper into what you need.
+This comprehensive tutorial is designed to teach you everything you need to know about building Bitcoin dapps. We'll be introducing all the important tools and concepts with links out to additional resources for you to dive deeper into what you need.
 
 We'll be covering:
 
-* Setup with Hiro's starter packages
-* TDD with Clarity and Clarinet
-* Writing robust, secure Clarity contracts
-* Utilizing Bitcoin in our Stacks dapp
-* Creating a smooth, enjoyable frontend with Remix and Micro-Stacks
-* Utilizing oracle data with Redstone
-* Off-chain data storage
-* Self-hosting our own Stacks node
-* Deploying our app to Fly.io
-* Deploying our contracts to Stacks testnet with Clarinet
-* Potential improvements to make
+- TDD with Clarity and Clarinet
+- Writing robust, secure Clarity contracts
+- Utilizing Bitcoin in our Stacks dapp
+- Creating a smooth, enjoyable frontend with Remix and Micro-Stacks
+- Utilizing oracle data with Redstone
+- Off-chain data storage
+- Self-hosting our own Stacks node
+- Deploying our app to Fly.io
+- Deploying our contracts to Stacks testnet with Clarinet
+- Potential improvements to make
 
 Let's do this.
 
-## What We're Building
-We're going to be building Satoshi's Ridge, a  platform for creating a Bitcoin-based mini-society a la Balaji's [Network State](https://thenetworkstate.com/). If you aren't familiar with The Network State, don't worry. We're basically building a platform that enables us to create a decentralized organization and mini-economy based around Bitcoin.
+## Prerequisites
 
-In The Network State, one of the key ideas is that a network state should have a singular unifying focus. In the case of Satoshi's Ridge, that unifying focus is that of voluntary regulation.
+We won't be covering Bitcoin programming in this tutorial. If you are familiar with the technical aspects of how Bitcoin works (public/private keys, derivation paths, transactions, etc.), we highly recommend giving [Learn Me a Bitcoin](https://learnmeabitcoin.com/) a read. it will arm you with all of the knowledge you'll need to be successful here.
+
+While you won't need to do any actual Bitcoin programming, it will be very helpful to know how Bitcoin works under the hood to know why we are doing some of the things we are doing here.
+
+## What is a Bitcoin Dapp?
+
+The ultimate goal of Stacks is to unlock Bitcoin's potential as latent capital and bring the same functionality as Ethereum has to Bitcoin. But there is a key difference between the two. We can't do that by changing Bitcoin itself. Bitcoin's simplicity and resistance to change may make it more difficult to build on top of, but it is arguable one of its strengths.
+
+Instead, we need to create separate layers that add additional functionality without modify Bitcoin itself. Stacks is one such layer. The grand vision of Stacks is to serve as a programming layer for Bitcoin, being completely invisible to the end user in many cases. That is the kind of dapp we'll be building here.
+
+In order to dive deeper into how we actually go about doing that, check out the [BTC Connection](../stacks-academy/btc-connection.md) section of the docs.
+
+## What We're Building
+
+We're going to be building Satoshi's Ridge, a platform for creating a Bitcoin-based mini-society a la Balaji's [Network State](https://thenetworkstate.com/). If you aren't familiar with The Network State, don't worry. We're basically building a platform that enables us to create a decentralized organization and mini-economy based around Bitcoin.
+
+In The Network State, one of the key ideas is that a network state should have a singular unifying focus. In the case of Satoshi's Ridge, the unifying focus is that of voluntary regulation.
 
 So the primary goal of Satoshi's Ridge is to create a small network state whose focus is on conceiving of and building voluntary regulation systems.
 

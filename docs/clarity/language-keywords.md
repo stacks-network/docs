@@ -1,7 +1,7 @@
 ---
 title: Keywords
 description: See a detailed list of all keywords for the Clarity language.
-sidebar_position: 2
+sidebar_position: 4
 tags:
   - clarity
 ---
