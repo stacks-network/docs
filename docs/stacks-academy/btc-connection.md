@@ -164,7 +164,7 @@ Here are the basics of how it works:
 
 2. After LP (liquidity provider) sends funds to the HTLC address and the block is confirmed, the payment is considered in escrow.
 
-3. Now Stacks comes in by reading the Bitcoin state and verifying that deposit actually occurred on the BTC chain, and escrows the corresponding amount of xBTC if it did. If for some reason that were to fail, the LP is still in control of their BTC funds
+3. Now Stacks comes in by reading the Bitcoin state and verifying that deposit actually occurred on the BTC chain, and escrows the corresponding amount of xBTC if it did. If for some reason that were to fail, the LP is still in control of their BTC funds.
 
 4. Once that escrow is confirmed, LP signs a Stacks transaction that transfers control of the BTC over to Magic, at which point Magic controls the BTC and xBTC is transferred to the Zest liquidity pool. Zest tokens are then minted on the Stacks chain, representing a claim token for the LP's BTC funds
 
