@@ -159,6 +159,12 @@ Returns the integer remainder from integer dividing `i1` by `i2`. In the event o
 #### signature: `(pow i1 i2)`
 #### description:
 Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error.
+Note: Corner cases are handled with the following rules:
+  * if both `i1` and `i2` are `0`, return `1`
+  * if `i1` is `1`, return `1`
+  * if `i1` is `0`, return `0`
+  * if `i2` is `1`, return `i1`
+  * if `i2` is negative or greater than `u32::MAX`, throw a runtime error
 #### example: 
 ```clarity
 (pow 2 3) ;; Returns 8
@@ -376,7 +382,7 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
     
 ### as-max-len?
 #### input: `sequence_A, uint`
-#### output: `sequence_A`
+#### output: `(optional sequence_A)`
 #### signature: `(as-max-len? sequence max_length)`
 #### description:
 The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument.
@@ -709,7 +715,8 @@ The `secp256k1-recover?` function recovers the public key used to sign the messa
 The `secp256k1-verify` function verifies that the provided signature of the message-hash
 was signed with the private key that generated the public key.
 The `message-hash` is the `sha256` of the message.
-The signature includes 64 bytes plus an optional additional recovery id (00..03) for a total of 64 or 65 bytes.
+The signature includes 64 bytes plus an optional additional recovery id (00..03) for a total of 64 or 65 bytes. 
+The function throws an unchecked error if the buffers have a wrong length.
 #### example: 
 ```clarity
 (secp256k1-verify 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04
