@@ -6,23 +6,23 @@ sidebar_position: 6
 
 A continuación hay una guía para empezar a trabajar localmente con la Blockchain de Stacks.
 
-Code repository is [here](https://github.com/stacks-network/stacks-blockchain).
+El código está alojado en este [repositorio de Github](https://github.com/stacks-network/stacks-blockchain).
 
-## Getting started with the Stacks Blockchain
+## Empezando con la Blockchain de Stacks
 
-### Download and build stacks-blockchain
+### Descargar y compilar la blockchain de Stacks
 
-The first step is to ensure that you have Rust and the support software installed.
+El primer paso es asegurarse de que tiene Rust y el software de soporte instalado.
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 :::info
-For building on Windows, follow the rustup installer instructions at https://rustup.rs/
+Para compilar en Windows, sigue las instrucciones del instalador de rustup en https://rustup.rs/
 :::
 
-From there, you can clone the Stacks Blockchain repository:
+Desde allí, puede clonar el repositorio de la Blockchain de Stacks:
 
 ```bash
 git clone --depth=1 https://github.com/stacks-network/stacks-blockchain.git
@@ -30,21 +30,21 @@ git clone --depth=1 https://github.com/stacks-network/stacks-blockchain.git
 cd stacks-blockchain
 ```
 
-Then build the project:
+Luego compile el proyecto:
 
 ```bash
 cargo build
 ```
 
-Run the tests:
+Ejecuta las pruebas:
 
 ```bash
 cargo test testnet  -- --test-threads=1
 ```
 
-### Encode and sign transactions
+### Codificar y firmar transacciones
 
-Here, we have generated a keypair that will be used for signing the upcoming transactions:
+Aquí, hemos generado un par de claves que se utilizará para firmar las próximas transacciones:
 
 ```bash
 cargo run --bin blockstack-cli generate-sk --testnet
@@ -57,7 +57,7 @@ cargo run --bin blockstack-cli generate-sk --testnet
 # }
 ```
 
-This keypair is already registered in the `testnet-follower-conf.toml` file, so it can be used as presented here.
+Este par de claves ya está registrado en el archivo `testnet-follower-conf.toml`, por lo que puede ser usado como se presenta aquí.
 
 We will interact with the following simple contract `kv-store`. In our examples, we will assume this contract is saved to `./kv-store.clar`:
 
