@@ -51,3 +51,5 @@ const submitMessage = async (e) => {
   await openContractCall(options);
 };
 ```
+
+For more details on the different types of transactions you can send, the [Stacks.js docs]() have multiple examples.
