@@ -9,7 +9,7 @@ draft: true
 
 Alright so you've taken the [quickstart tutorial](./hello-stacks.md) and know how to get started building on Stacks. Maybe you've read a bit of [Stacks Academy](../stacks-academy/) and understand why Stacks is unique ad what benefits it provides.
 
-Now you want to know how to actually build real-world Bitcoin-first dapps using Stacks as the udnerlying programming layer.
+Now you want to know how to actually build real-world Bitcoin-first dapps using Stacks as the underlying programming layer.
 
 You're in the right place.
 
