@@ -52,4 +52,4 @@ const submitMessage = async (e) => {
 };
 ```
 
-For more details on the different types of transactions you can send, the [Stacks.js docs]() have multiple examples.
+For more details on the different types of transactions you can send, the [Stacks.js docs](https://stacks.js.org/modules/_stacks_transactions) have multiple examples.
