@@ -521,7 +521,7 @@ We're importing the network we'll be calling the transaction on and a utility he
 Now we need to add a new constant to hold the network that we are using. In our case we want to be using `Mocknet`, which we can add using the following right under our current state declarations.
 
 ```jsx
-
+const network = new StacksMocknet();
 ```
 
 And finally we can add the code to initiate the transaction.
