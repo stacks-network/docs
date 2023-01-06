@@ -6,8 +6,9 @@ sidebar_position: 5
 
 ## Introduction
 
-Microblocks are a protocol-level feature of the Stacks blockchain that solve the technical challenge of transaction
-latency. Because each Stacks block is anchored to a Bitcoin block through the [Proof-of-Transfer consensus mechanism](../understand-stacks/proof-of-transfer),
+Microblocks are a protocol-level feature of the Stacks blockchain that solve the technical challenge of transaction latency.
+
+Because each Stacks block is anchored to a Bitcoin block through the [Proof-of-Transfer consensus mechanism](../stacks-academy/proof-of-transfer),
 Stacks is necessarily limited to the same block times as the Bitcoin network. Microblocks allow the Stacks blockchain to
 perform state transitions between anchor blocks.
 
@@ -72,7 +73,7 @@ an anchor block or a microblock, or is eligible for either.
 ### Mining
 
 Stacks miners must enable microblocks in their miner configuration to implement the block streaming model. For more
-information, see [mining microblocks](../understand-stacks/mining#microblocks).
+information, see [mining microblocks](../stacks-academy/mining#microblocks).
 
 ## Developing with microblocks
 
