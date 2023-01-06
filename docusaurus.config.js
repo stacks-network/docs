@@ -108,7 +108,7 @@ const config = {
             items: [
               {
                 label: "Main docs",
-                to: "/docs/intro",
+                to: "/docs",
               },
             ],
           },
@@ -212,7 +212,7 @@ const config = {
               "/org/overview.html",
               "/org/token.html",
             ],
-            to: "/docs/intro",
+            to: "/docs",
           },
           {
             from: [
@@ -620,7 +620,7 @@ const config = {
               "/org/terms.html",
               "/docs/references/glossary",
             ],
-            to: "/docs/intro",
+            to: "/docs",
           },
         ],
       },
