@@ -13,7 +13,7 @@ Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuabl
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks 2.0 network.
 
 :::info
-Stacking functionality is implemented as a smart contract, using [Clarity](../write-smart-contracts/). [Read more about the contract](../noteworthy-contracts/stacking-contract).
+Stacking functionality is implemented as a smart contract, using [Clarity](../clarity/). [Read more about the contract](../clarity/noteworthy-contracts/stacking-contract).
 :::
 
 ## Stacking flow
@@ -83,10 +83,10 @@ Stacking is a built-in capability of PoX and occurs through a set of actions on 
 :::danger
 You must provide a BTC address in one of two formats:
 
-* [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), which starts with `1`.
+- [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), which starts with `1`.
 
-* [Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), which starts with `3`. The "Native Segwit" format (which starts with `bc1`), for example, is not supported.
-:::
+- [Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), which starts with `3`. The "Native Segwit" format (which starts with `bc1`), for example, is not supported.
+  :::
 
 The Stacking contract needs a special format for the Bitcoin address (the reward address). This is required to ensure that miners are able to correctly construct the Bitcoin transaction containing the reward address.
 
@@ -109,9 +109,12 @@ SerializeP2WSH  = 0x03, // hash160(segwit-program-00(public-keys)), same as bitc
 The `hashbytes` are the 20 hash bytes of the bitcoin address. You can obtain that from a bitcoin library, for instance using [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib):
 
 ```js
-const btc = require('bitcoinjs-lib');
+const btc = require("bitcoinjs-lib");
 console.log(
-  '0x' + btc.address.fromBase58Check('1C56LYirKa3PFXFsvhSESgDy2acEHVAEt6').hash.toString('hex')
+  "0x" +
+    btc.address
+      .fromBase58Check("1C56LYirKa3PFXFsvhSESgDy2acEHVAEt6")
+      .hash.toString("hex")
 );
 ```
 
@@ -119,10 +122,10 @@ console.log(
 
 [Here](https://blog.stacks.co/stacking-strategy) is an interesting article that may help you choose the right Stacking stategy.
 
-
 ## Where to Stack?
 
 You can Stack on your own, on a pool or on an exchange:
+
 ### Stacking on your own
 
 Stacking on your own is non-custodial.
@@ -137,12 +140,12 @@ Stacking on a pool allows Stacking without the requirement of the protocol minum
 
 Some available pools are:
 
-| Pool | Type | Pays rewards in | Fee | Minimum amount |
-|------| -----|:---------------:|-----|:--------------:|
-| [Friedger's Pool](https://pool.friedger.de/)       | Non custodial | STX or xBTC | No | 40 STX      |
-| [Planbetter](https://planbetter.org/)              | Non custodial | BTC         | 5% | 200 STX     |
-| [Stacked](https://staking.staked.us/stacks-staking)| Non custodial | BTC         |    | 100,000 STX |
-| [Xverse](https://www.xverse.app/)                  | Non custodial | BTC         | No | 100 STX     |
+| Pool                                                | Type          | Pays rewards in | Fee | Minimum amount |
+| --------------------------------------------------- | ------------- | :-------------: | --- | :------------: |
+| [Friedger's Pool](https://pool.friedger.de/)        | Non custodial |   STX or xBTC   | No  |     40 STX     |
+| [Planbetter](https://planbetter.org/)               | Non custodial |       BTC       | 5%  |    200 STX     |
+| [Stacked](https://staking.staked.us/stacks-staking) | Non custodial |       BTC       |     |  100,000 STX   |
+| [Xverse](https://www.xverse.app/)                   | Non custodial |       BTC       | No  |    100 STX     |
 
 ### Stacking on an exchange
 
