@@ -389,16 +389,10 @@ const config = {
               "/write-smart-contracts/principals",
               "/core/smart/principals.html",
               "/smart-contracts/principals",
+              "/write-smart-contracts/software",
+              "/write-smart-contracts/tokens",
             ],
-            to: "/docs/write-smart-contracts/principals",
-          },
-          {
-            from: "/write-smart-contracts/software",
-            to: "/docs/write-smart-contracts/software",
-          },
-          {
-            from: "/write-smart-contracts/tokens",
-            to: "/docs/write-smart-contracts/tokens",
+            to: "/docs/clarity/crash-course",
           },
           {
             from: [
