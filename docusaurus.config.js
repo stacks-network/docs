@@ -116,7 +116,7 @@ const config = {
             items: [
               {
                 label: "Main docs",
-                to: "/docs/intro",
+                to: "/docs",
               },
             ],
           },
@@ -220,7 +220,7 @@ const config = {
               "/org/overview.html",
               "/org/token.html",
             ],
-            to: "/docs/intro",
+            to: "/docs",
           },
           {
             from: [
@@ -444,7 +444,7 @@ const config = {
               "/core/faq_technical.html",
               "/docs/faq",
             ],
-            to: "/docs/intro/",
+            to: "/docs",
           },
           {
             from: [
@@ -564,9 +564,9 @@ const config = {
               "/core/smart/rpc-api.html",
               "/core/smart/rpc-api",
               "/references/stacks-rpc-api",
-              "/docs/stacks-academy/stacks-blockchain-api",
+              "/docs/understand-stacks/stacks-blockchain-api",
             ],
-            to: "/docs/understand-stacks/stacks-blockchain-api",
+            to: "/docs/stacks-academy/stacks-blockchain-api",
           },
           {
             from: [
@@ -638,7 +638,7 @@ const config = {
               "/org/terms.html",
               "/docs/references/glossary",
             ],
-            to: "/docs/intro",
+            to: "/docs",
           },
         ],
       },
