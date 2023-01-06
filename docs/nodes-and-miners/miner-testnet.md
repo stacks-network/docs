@@ -10,7 +10,7 @@ tags:
 
 Make sure you've followed the [Run a node](run-a-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
 
-If you want to learn more about the technical details of mining, please review the [mining guide](../understand-stacks/mining).
+If you want to learn more about the technical details of mining, please review the [mining guide](../stacks-academy/mining).
 
 ## Running bitcoind locally
 
@@ -126,7 +126,7 @@ cd ../..
 ./target/release/stacks-node start --config=./testnet/conf/testnet-follower-conf.toml
 ```
 
-To read more about the technical details of mining on the Stacks 2.0 network, have a look at [the minig guide](../understand-stacks/mining):
+To read more about the technical details of mining on the Stacks 2.0 network, have a look at [the minig guide](../stacks-academy/mining):
 
 ### Enable debug logging
 

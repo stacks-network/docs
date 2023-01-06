@@ -115,7 +115,7 @@ Sample response for a successful call:
 ```
 
 :::tip
-To set the function call arguments and read the result, [Clarity values](../write-smart-contracts/values) need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations
+To set the function call arguments and read the result, Clarity values need to be serialized into a hexadecimal string. The [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library supports these operations
 :::
 
 ## Querying
