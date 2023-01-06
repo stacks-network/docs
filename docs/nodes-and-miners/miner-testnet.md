@@ -195,7 +195,25 @@ stacks-node start --config=$HOME/testnet-miner-conf.toml
 
 Your node should start. It will take some time to sync, and then your miner will be running.
 
-### Enable Debug Logging
+### Creating an optimized binary
+
+The steps above are great for trying to run a node temporarily. If you want to host a node on a server somewhere, you might want to generate an optimized binary. To do so, use the same configuration as above, but run:
+
+```bash
+cd testnet/stacks-node
+cargo build --release --bin stacks-node
+```
+
+The above code will compile an optimized binary. To use it, run:
+
+```bash
+cd ../..
+./target/release/stacks-node start --config=./testnet/conf/testnet-follower-conf.toml
+```
+
+To read more about the technical details of mining on the Stacks 2.0 network, have a look at [the minig guide](../stacks-academy/mining):
+
+### Enable debug logging
 
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
 
