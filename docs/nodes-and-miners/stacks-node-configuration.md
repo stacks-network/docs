@@ -12,12 +12,85 @@ stacks-node sub-command [--subcommand-option <value>]
 
 ### Subcommands
 
-- `mocknet`: start a mocknet instance using defaults
-- `testnet`: start a testnet instance using defaults (chainstate is not persistent)
-- `mainnet`: start a mainnet instance using defaults (chainstate is not persistent)
-- `start`: combined with `--config`, starts an instance with a specified configuration file
-- `version`: displays binary version
-- `help`: displays the help message
+:::caution
+The `stacks-node` binary may have deprecated commands that are not documented on this page. Deprecated commands may be accessible until they are fully removed from the sources.
+:::
+
+### mocknet
+
+Start a node based on a fast local setup emulating a burnchain. Ideal for smart contract development.
+
+Example:
+
+```bash
+stacks-node mocknet
+```
+
+### krypton
+
+Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](../stacks-academy/proof-of-transfer.md).
+
+Example:
+
+```bash
+stacks-node krypton
+```
+
+### testnet
+
+Start a node that will join and stream blocks from the public testnet.
+
+Example:
+
+```bash
+stacks-node testnet
+```
+
+### mainnet
+
+Start a node that joins and streams blocks from the public mainnet.
+
+Example:
+
+```bash
+stacks-node mainnet
+```
+
+### start
+
+Start a node with a config of your own. Can be used for joining a network, starting a new chain, or replacing default values used by the `mocknet` or `testnet` subcommands.
+
+#### Arguments
+
+**--config**: relative or absolute path to the TOML config file. Required.
+
+Example:
+
+```bash
+stacks-node start --config=/path/to/config.toml
+```
+
+See [Configuration File Options](#configuration-file-options) for more information.
+
+#### version
+
+Displays information about the current version and the release cycle.
+
+Example:
+
+```bash
+stacks-node version
+```
+
+#### help
+
+Displays a help message.
+
+Example:
+
+```bash
+stacks-node help
+```
 
 ## Configuration File Options
 

@@ -21,6 +21,7 @@ To participate as a miner on mainnet, you must have access to a mainnet bitcoin 
 - [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements#system-requirements)
 
 First, download a [bitcoin binary](https://bitcoin.org/en/download), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/main/bitcoin.md#source-install)
+If you want to learn more about the technical details of mining, please review the [mining guide](../stacks-academy/mining):
 
 :::tip
 It is recommened to use a persistent location for the chainstate, in the steps below we're using `/bitcoin`
@@ -180,7 +181,25 @@ stacks-node start --config=$HOME/mainnet-miner-conf.toml
 
 Your node should start. It will take some time to sync, and then your miner will be running.
 
-### Enable Debug Logging
+### Creating an optimized binary
+
+The steps above are great for trying to run a node temporarily. If you want to host a node on a server somewhere, you might want to generate an optimized binary. To do so, use the same configuration as above, but run:
+
+```bash
+cd testnet/stacks-node
+cargo build --release --bin stacks-node
+```
+
+The above code will compile an optimized binary. To use it, run:
+
+```bash
+cd ../..
+./target/release/stacks-node start --config=./mainnet-miner-conf.toml
+```
+
+To read more about the technical details of mining on the Stacks 2.0 network, have a look at [the mining guide](../stacks-academy/mining).
+
+### Enable debug logging
 
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
 
