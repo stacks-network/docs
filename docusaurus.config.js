@@ -55,11 +55,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-        docs: {
-            sidebar: {
-                hideable: true,
-            }
+      docs: {
+        sidebar: {
+          hideable: true,
         },
+      },
       navbar: {
         title: "Stacks Documentation",
         logo: {
@@ -227,14 +227,14 @@ const config = {
               "/noteworthy-contracts/bns-contract",
               "/references/bns-contract",
             ],
-            to: "/docs/noteworthy-contracts/bns-contract",
+            to: "/docs/clarity/noteworthy-contracts/bns-contract",
           },
           {
             from: [
               "/noteworthy-contracts/stacking-contract",
               "/references/stacking-contract",
             ],
-            to: "/docs/noteworthy-contracts/stacking-contract",
+            to: "/docs/clarity/noteworthy-contracts/stacking-contract",
           },
           {
             from: ["/nodes-and-miners", "/nodes-and-miners/overview"],
@@ -251,7 +251,6 @@ const config = {
             from: [
               "/docs/nodes-and-miners/running-mainnet-node",
               "/nodes-and-miners/running-mainnet-node",
-
               "/docs/nodes-and-miners/running-testnet-node",
               "/nodes-and-miners/running-testnet-node",
               "/core/smart/testnet-node.html",
@@ -309,16 +308,11 @@ const config = {
               "/data-indexing/overview",
               "/data-indexing",
               "/data-indexing/integrate",
+              "/docs/build-apps",
+              "/build-apps/deploy-tips",
+              "/build-apps/nocodeclarity",
             ],
-            to: "/docs/build-apps/",
-          },
-          {
-            from: ["/build-apps/deploy-tips"],
-            to: "/docs/build-apps/deploy-tips",
-          },
-          {
-            from: ["/build-apps/nocodeclarity"],
-            to: "/docs/build-apps/nocodeclarity",
+            to: "/docs/cookbook/",
           },
           {
             from: [
@@ -333,7 +327,7 @@ const config = {
               "/develop/connect/overview.html",
               "/develop/overview_auth.html",
             ],
-            to: "/docs/build-apps/references/authentication",
+            to: "/docs/stacks-academy/authentication",
           },
           {
             from: [
@@ -369,7 +363,7 @@ const config = {
               "/naming-services/subdomains",
               "/naming-services/subdomains-tutorial",
             ],
-            to: "/docs/build-apps/references/bns",
+            to: "/docs/stacks-academy/bns",
           },
           /*
           {
@@ -396,23 +390,17 @@ const config = {
               "/core/smart/overview.html",
               "/develop/connect/use-with-clarity.html",
             ],
-            to: "/docs/write-smart-contracts/",
+            to: "/docs/clarity/",
           },
           {
             from: [
               "/write-smart-contracts/principals",
               "/core/smart/principals.html",
               "/smart-contracts/principals",
+              "/write-smart-contracts/software",
+              "/write-smart-contracts/tokens",
             ],
-            to: "/docs/write-smart-contracts/principals",
-          },
-          {
-            from: "/write-smart-contracts/software",
-            to: "/docs/write-smart-contracts/software",
-          },
-          {
-            from: "/write-smart-contracts/tokens",
-            to: "/docs/write-smart-contracts/tokens",
+            to: "/docs/clarity/crash-course",
           },
           {
             from: [
@@ -424,22 +412,29 @@ const config = {
               "/references/language-clarity",
               "/smart-contracts/clarity-values",
             ],
-            to: "/docs/write-smart-contracts/clarity-language/",
+            to: "/docs/clarity/",
           },
           {
-            from: "/write-smart-contracts/types",
-            to: "/docs/write-smart-contracts/clarity-language/language-types",
+            from: [
+              "/write-smart-contracts/types",
+              "/docs/write-smart-contracts/clarity-language/language-types",
+            ],
+            to: "/docs/clarity/language-types",
           },
           {
-            from: "/write-smart-contracts/language-keywords",
-            to: "/docs/write-smart-contracts/clarity-language/language-keywords",
+            from: [
+              "/write-smart-contracts/language-keywords",
+              "/docs/write-smart-contracts/clarity-language/language-keywords",
+            ],
+            to: "/docs/clarity/language-keywords",
           },
           {
             from: [
               "/write-smart-contracts/language-functions",
               "/references/language-functions",
+              "/docs/write-smart-contracts/clarity-language/language-functions",
             ],
-            to: "/docs/write-smart-contracts/clarity-language/language-functions",
+            to: "/docs/clarity/language-functions",
           },
           {
             from: [
@@ -447,8 +442,9 @@ const config = {
               "/faqs/allfaqs",
               "/faqs/allFAQS.html",
               "/core/faq_technical.html",
+              "/docs/faq",
             ],
-            to: "/docs/faq/",
+            to: "/docs/intro/",
           },
           {
             from: [
@@ -471,63 +467,84 @@ const config = {
               "/core/atlas/overview.html",
               "/core/atlas/howitworks.html",
               "/core/atlas/howtouse.html",
+              "/docs/understand-stacks/",
             ],
-            to: "/docs/understand-stacks/",
+            to: "/docs/stacks-academy/",
           },
           {
-            from: ["/understand-stacks/testnet", "/stacks-blockchain/testnet"],
-            to: "/docs/understand-stacks/testnet",
+            from: [
+              "/understand-stacks/testnet",
+              "/stacks-blockchain/testnet",
+              "/docs/understand-stacks/testnet",
+            ],
+            to: "/docs/stacks-academy/testnet",
           },
           {
             from: [
               "/understand-stacks/proof-of-transfer",
               "/stacks-blockchain/proof-of-transfer",
+              "/docs/understand-stacks/proof-of-transfer",
             ],
 
-            to: "/docs/understand-stacks/proof-of-transfer",
+            to: "/docs/stacks-academy/proof-of-transfer",
           },
           {
-            from: ["/understand-stacks/mining", "/stacks-blockchain/mining"],
-            to: "/docs/understand-stacks/mining",
+            from: [
+              "/understand-stacks/mining",
+              "/stacks-blockchain/mining",
+              "/docs/understand-stacks/mining",
+            ],
+            to: "/docs/stacks-academy/mining",
           },
           {
             from: [
               "/understand-stacks/accounts",
               "/stacks-blockchain/accounts",
               "/stacks-blockchain/managing-accounts",
+              "/docs/understand-stacks/accounts",
             ],
-            to: "/docs/understand-stacks/accounts",
+            to: "/docs/stacks-academy/accounts",
           },
           {
             from: [
               "/understand-stacks/transactions",
               "/stacks-blockchain/transactions",
+              "/docs/understand-stacks/transactions",
             ],
-            to: "/docs/understand-stacks/transactions",
+            to: "/docs/stacks-academy/transactions",
           },
           {
-            from: ["/understand-stacks/network/", "/stacks-blockchain/network"],
-            to: "/docs/understand-stacks/network",
+            from: [
+              "/understand-stacks/network/",
+              "/stacks-blockchain/network",
+              "/docs/understand-stacks/network",
+            ],
+            to: "/docs/stacks-academy/network",
           },
           {
-            from: ["/understand-stacks/microblocks/"],
-            to: "/docs/understand-stacks/microblocks",
+            from: [
+              "/understand-stacks/microblocks/",
+              "/docs/understand-stacks/microblocks",
+            ],
+            to: "/docs/stacks-academy/microblocks",
           },
           {
             from: [
               "/understand-stacks/stacking",
               "/stacks-blockchain/stacking",
               "/stacks-blockchain/integrate-stacking",
+              "/docs/understand-stacks/stacking",
             ],
-            to: "/docs/understand-stacks/stacking",
+            to: "/docs/stacks-academy/stacking",
           },
           {
             from: [
               "/understand-stacks/technical-specs",
               "/org/whitepaper-blockchain.html",
               "/stacks-blockchain/technical-specs",
+              "/docs/understand-stacks/technical-specs",
             ],
-            to: "/docs/understand-stacks/technical-specs",
+            to: "/docs/stacks-academy/technical-specs",
           },
           {
             from: [
@@ -537,8 +554,9 @@ const config = {
               "/core/smart/rpc-api",
               "/references/stacks-rpc-api",
               "/references/stacks-blockchain-api",
+              "/docs/blockchain/stacks-blockchain-api",
             ],
-            to: "/docs/blockchain/stacks-blockchain-api",
+            to: "/docs/stacks-academy/stacks-blockchain-api",
           },
           {
             from: [
@@ -546,6 +564,7 @@ const config = {
               "/core/smart/rpc-api.html",
               "/core/smart/rpc-api",
               "/references/stacks-rpc-api",
+              "/docs/stacks-academy/stacks-blockchain-api",
             ],
             to: "/docs/understand-stacks/stacks-blockchain-api",
           },
@@ -617,8 +636,9 @@ const config = {
               "/references/glossary",
               "/references/stx",
               "/org/terms.html",
+              "/docs/references/glossary",
             ],
-            to: "/docs/references/glossary",
+            to: "/docs/intro",
           },
         ],
       },
