@@ -748,11 +748,11 @@ There is an ever-growing list of tutorials created by members of the Stacks comm
 
 [View Community Tutorials](../tutorials/community-tutorials.md)
 
-### Go Pro
+### Next Steps
 
 Looking to get paid to build something awesome with Stacks? Be sure to see all the different opportunities available to you like full-time jobs, grants, the startup accelerator, and more.
 
-[Go Pro](../going-pro/)
+[Next Steps](../next-steps/)
 
 ### Get Involved
 

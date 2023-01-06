@@ -12,7 +12,7 @@ Make sure you've followed the [run a node](run-a-node) procedure. Once completed
 
 If you're interested in mining on the testnet, you can find instructions on how to do that [here](miner-testnet):
 
-If you want to learn more about the technical details of mining, please review the [mining guide](../understand-stacks/mining):
+If you want to learn more about the technical details of mining, please review the [mining guide](../stacks-academy/mining):
 
 ## Running bitcoind locally
 
@@ -130,7 +130,7 @@ cd ../..
 ./target/release/stacks-node start --config=./mainnet-miner-conf.toml
 ```
 
-To read more about the technical details of mining on the Stacks 2.0 network, have a look at [the mining guide](../understand-stacks/mining).
+To read more about the technical details of mining on the Stacks 2.0 network, have a look at [the mining guide](../stacks-academy/mining).
 
 ### Enable debug logging
 
