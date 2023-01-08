@@ -32,12 +32,6 @@ Please edit this page to add any relevant new site that we are missing.
 
 ![](/img/sh_hirowallet.png)
 
-## Neptune
-
-[Neptune](https://neptunewallet.io)
-
-![](/img/sh_neptunewallet.png)
-
 ## Xverse
 
 [Xverse](https://www.xverse.app/)
