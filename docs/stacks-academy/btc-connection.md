@@ -173,9 +173,13 @@ The cool thing is that this all happens in a single Stacks block, because Stacks
 
 To dive deeper into the details of how Zest is building a Bitcoin-first application, [check out their docs](https://zestprotocol.gitbook.io/zest/what-is-zest-protocol/the-technology-under-the-hood), and if you are interested in building something like this out for yourself, check out their smart contracts.
 
-## Bitcoin-First Clarity Code Examples
+## How to Build Bitcoin-First Dapps with Stacks
 
 We are currently working on a Stacks Cookbook, which will provide numerous examples for how to build Bitcoin-first apps using both Clarity and frontend Stacks and Bitcoin libraries.
+
+Until then, you can take a look at Magic and Zest, the protocols mentioned above, to see how they are going about facilitating this process using xBTC and model your applications after them.
+
+We are in the very early stages of being able to unlock and use BTC in decentralized applications, and much more content and tools will be created in the coming year to make this process easier for developers.
 
 ## What's Next?
 
