@@ -52,6 +52,8 @@ Tenga en cuenta algunas de las reglas y limitaciones del lenguaje Clarity.
 
 Para más detalles y referencias del lenguaje, mira lo siguiente:
 
-[Clarity language overview](./clarity-language/) [Understating Principals](principals) [Clarity Values](values)
+- [Clarity language overview](./clarity-language/)
+- [Understating Principals](principals)
+- [Valores de Clarity](values)
 
 [Clarity Visual Studio Code plugin]: https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp

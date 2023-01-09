@@ -1,100 +1,100 @@
 ---
-title: Blockchain Naming System
-description: Binds Stacks usernames to off-chain state
+title: Système de nommage de la blockchain
+description: Lier les noms d'utilisateur aux états hors chaîne
 ---
 
-Blockchain Naming System (BNS) is a network system that binds Stacks usernames to off-chain state without relying on any central points of control.
+Le système de nommage Blockchain (BNS) est un système de réseau qui lie les noms d'utilisateur "à l'état hors chaîne" sans s'appuyer sur aucun point de contrôle central.
 
-The Stacks V1 blockchain implemented BNS through first-order name operations. In Stacks V2, BNS is instead implemented through a smart-contract loaded during the genesis block.
+La blockchain de Stacks V1 a implémenté BNS à travers des opérations de noms de premier ordre (?). Dans les piles V2, le BNS a été remplacé par un contrat intelligent chargé durant le bloc genèse.
 
-Names in BNS have three properties:
+Les noms dans BNS ont trois propriétés :
 
-- **Names are globally unique.** The protocol does not allow name collisions, and all well-behaved nodes resolve a given name to the same state.
-- **Names are human-meaningful.** Each name is chosen by its creator.
-- **Names are strongly owned.** Only the name's owner can change the state it resolves to. Specifically, a name is owned by one or more ECDSA private keys.
+- **Les noms sont globalement uniques.** Le protocole n'autorise pas les collisions de noms, et tous les noeuds de confiance résolvent un nom donné de la même façon.
+- **Les noms sont en langage naturel.** Chaque nom est choisi par son créateur.
+- **Les noms sont inaliénables.** Seul le propriétaire du nom peut changer l'état auquel il se réfère. Plus précisément, un nom est détenu par une ou plusieurs clés privées ECDSA.
 
-The Stacks blockchain insures that each node's BNS view is synchronized to all of the other nodes in the world, so queries on one node will be the same on other nodes. Stacks blockchain nodes allow a name's owner to bind up to 40Kb of off-chain state to their name, which will be replicated to all other Stacks blockchain nodes via a P2P network.
+La blockchain Stacks assure que la vue BNS de chaque nœud est synchronisée avec tous les autres nœuds du monde, de sorte que les requêtes sur un nœud seront les mêmes sur les autres nœuds. Les nœuds de la blockchain Stacks permettent au propriétaire d'un nom de se lier jusqu'à 40 Ko d'état hors chaîne à leur nom, qui sera répliquée à tous les autres nœuds de blockchain de Stacks via un réseau P2P.
 
-The biggest consequence for developers is that in BNS, reading name state is fast and cheap but writing name state is slow and expensive. This is because registering and modifying names requires one or more transactions to be sent to the underlying blockchain, and BNS nodes will not process them until they are sufficiently confirmed. Users and developers need to acquire and spend the requisite cryptocurrency (STX) to send BNS transactions.
+La plus grande conséquence pour les développeurs est qu'en BNS, la lecture de l'état du nom est rapide et bon marché, mais l'écriture de l'état du nom est lente et coûteuse. C'est parce que l'enregistrement et la modification des noms nécessitent d'envoyer une ou plusieurs transactions à la blockchain sous-jacente, et les nœuds BNS ne les traiteront pas jusqu'à ce qu'ils soient suffisamment confirmés. Les utilisateurs et les développeurs ont besoin d'acquérir et de dépenser la cryptomonnaie requise (STX) pour envoyer des transactions BNS.
 
-## Motivation behind naming systems
+## Raison d'être des systèmes de nommage
 
-We rely on naming systems in everyday life, and they play a critical role in many different applications. For example, when you look up a friend on social media, you are using the platform's naming system to resolve their name to their profile. When you look up a website, you are using the Domain Name Service to resolve the hostname to its host's IP address. When you check out a Git branch, you are using your Git client to resolve the branch name to a commit hash. When you look up someone's PGP key on a keyserver, you are resolving their key ID to their public key.
+Nous comptons sur les systèmes de nommage dans la vie de tous les jours, et ils jouent un rôle critique dans de nombreuses applications différentes. Par exemple, lorsque vous regardez un ami sur les réseaux sociaux, vous utilisez le système de nommage de la plate-forme pour lier leur nom à leur profil. Lorsque vous consultez un site Web, vous utilisez le Domain Name Service pour résoudre le nom d'hôte à l'adresse IP de son hôte. Lorsque vous consultez une branche Git, vous utilisez votre client Git pour résoudre le nom de la branche à un hachage de livraison. Lorsque vous regardez la clé PGP de quelqu'un sur un serveur de clés, vous résolvez son ID de clé à sa clé publique.
 
-What kinds of things do we want to be true about names? In BNS, names are globally unique, names are human-meaningful, and names are strongly owned. However, if you look at these examples, you'll see that each of them only guarantees _two_ of these properties. This limits how useful they can be.
+Quelles sortes de choses voulons-nous être vraies en ce qui concerne les noms? En BNS, les noms sont globalement uniques, les noms ont un sens humain, et les noms sont inaliénables. Cependant, si vous regardez ces exemples, vous verrez que chacun d'eux garantit seulement _deux_ de ces propriétés. Cela limite leur utilité.
 
-- In DNS and social media, names are globally unique and human-readable, but not strongly owned. The system operator has the final say as to what each names resolves to.
+- Dans le DNS et les médias sociaux, les noms sont globalement uniques et lisibles par l'homme, mais pas uniques. L'opérateur système a le dernier mot l'appartenance de chaque nom.
 
-  - **Problem**: Clients must trust the system to make the right choice in what a given name resolves to. This includes trusting that no one but the system administrators can make these changes.
+  - **Problème**: Les clients doivent faire confiance au système pour faire le bon choix dans ce qu'un nom donné signifie. Cela inclut la confiance que personne d'autre que les administrateurs système peuvent apporter ces modifications.
 
-- In Git, branch names are human-meaningful and strongly owned, but not globally unique. Two different Git nodes may resolve the same branch name to different unrelated repository states.
+- Dans Git, les noms de branches sont en langage humain et irrévocables, mais pas globalement uniques. Deux nœuds Git différents peuvent avoir le même nom de branche appartenant à différents dépôt non liés.
 
-  - **Problem**: Since names can refer to conflicting state, developers have to figure out some other mechanism to resolve ambiguities. In Git's case, the user has to manually intervene.
+  - **Problème**: Puisque les noms peuvent faire référence à un état conflictuel, les développeurs doivent trouver un autre mécanisme pour résoudre les ambiguïtés. Dans le cas de Gitit , l'utilisateur doit intervenir manuellement.
 
-- In PGP, names are key IDs. They are are globally unique and cryptographically owned, but not human-readable. PGP key IDs are derived from the keys they reference.
-  - **Problem**: These names are difficult for most users to remember since they do not carry semantic information relating to their use in the system.
+- En PGP, les noms sont des clés d'identification. Ils sont uniques au niveau mondial et sont détenus de manière cryptographique, mais pas lisibles par l'homme. Les identifiants de clés PGP sont dérivés des clés qu'ils référencent.
+  - **Problème**: Ces noms sont difficiles à retenir pour la plupart des utilisateurs puisqu'ils ne transmettent pas d'informations sémantiques relatives à leur utilisation dans le système.
 
-BNS names have all three properties, and none of these problems. This makes it a powerful tool for building all kinds of network applications. With BNS, we can do the following and more:
+Les noms BNS ont les trois propriétés et aucun de ces problèmes. Cela en fait un outil puissant pour construire toutes sortes d'applications réseau. Avec BNS, nous pouvons faire ce qui suit et plus:
 
-- Build domain name services where hostnames can't be hijacked.
-- Build social media platforms where user names can't be stolen by phishers.
-- Build version control systems where repository branches do not conflict.
-- Build public-key infrastructure where it's easy for users to discover and remember each other's keys.
+- Construire des services de noms de domaine où les noms de domaine ne peuvent pas être détournés.
+- Construire des plateformes de réseaux sociaux où les noms d'utilisateurs ne peuvent pas être volés par des hameçonneurs.
+- Construire des systèmes de contrôle de version où les branches du dépôt ne sont pas en conflit.
+- Construire une infrastructure à clé publique où il est facile pour les utilisateurs de découvrir et se souvenir des clés de chacun.
 
-## Organization of BNS
+## Organisation du BNS
 
-BNS names are organized into a global name hierarchy. There are three different layers in this hierarchy related to naming:
+Les noms de BNS sont organisés en une hiérarchie globale de noms. Il y a trois couches différentes dans cette hiérarchie liée au nommage :
 
-- **Namespaces**. These are the top-level names in the hierarchy. An analogy to BNS namespaces are DNS top-level domains. Existing BNS namespaces include `.id`, `.podcast`, and `.helloworld`. All other names belong to exactly one namespace. Anyone can create a namespace, but in order for the namespace to be persisted, it must be _launched_ so that anyone can register names in it. Namespaces are not owned by their creators.
+- **Les espaces de nommage**. Ce sont les noms de premier niveau dans la hiérarchie. Une analogie avec les espaces de noms BNS sont des domaines de premier niveau DNS. Les espaces de noms BNS existants incluent `.id`, `.podcast`, et `.helloworld`. Tous les autres noms appartiennent à exactement un espace de noms. N'importe qui peut créer un espace de noms, mais afin que l'espace de noms soit maintenu, il doit être _launched_ pour que n'importe qui puisse y enregistrer des noms. Les espaces de nommage ne sont pas détenus par leurs créateurs.
 
-- **BNS names**. These are names whose records are stored directly on the blockchain. The ownership and state of these names are controlled by sending blockchain transactions. Example names include `verified.podcast` and `muneeb.id`. Anyone can create a BNS name, as long as the namespace that contains it exists already.
+- **Les noms BNS**. Ce sont des noms dont les enregistrements sont stockés directement sur la blockchain . La propriété et l'état de ces noms sont contrôlés par l'envoi de transactions blockchain. Les exemples de noms incluent `verified.podcast` et `muneeb.id`. N'importe qui peut créer un nom BNS, à condition que l'espace de noms le contienne déjà.
 
-- **BNS subdomains**. These are names whose records are stored off-chain, but are collectively anchored to the blockchain. The ownership and state for these names lives within the P2P network data. While BNS subdomains are owned by separate private keys, a BNS name owner must broadcast their subdomain state. Example subdomains include `jude.personal.id` and `podsaveamerica.verified.podcast`. Unlike BNS namespaces and names, the state of BNS subdomains is _not_ part of the blockchain consensus rules.
+- **Les sous-domaines BNS**. Ce sont des noms dont les enregistrements sont stockés hors chaîne, mais sont ancrés collectivement dans la blockchain. La propriété et l'état de ces noms vivent dans les données du réseau P2P. Alors que les sous-domaines BNS sont détenus par des clés privées séparées, le propriétaire d'un nom BNS doit diffuser son état de sous-domaine. Les exemples de sous-domaines comprennent `jude.personal.id` et `podsaveamerica.verified.podcast`. Contrairement aux espaces de noms et noms BNS, l'état des sous-domaines BNS ne fait _pas_ partie des règles de consensus de la blockchain.
 
-A feature comparison matrix summarizing the similarities and differences between these name objects is presented below:
+Une matrice de comparaison de fonctionnalités résumant les similitudes et les différences entre ces objets de nom est présentée ci-dessous:
 
-| Feature                                | **Namespaces** | **BNS names** | **BNS Subdomains** |
-| -------------------------------------- | -------------- | ------------- | ------------------ |
-| Globally unique                        | X              | X             | X                  |
-| Human-meaningful                       | X              | X             | X                  |
-| Owned by a private key                 |                | X             | X                  |
-| Anyone can create                      | X              | X             | [1]                |
-| Owner can update                       |                | X             | [1]                |
-| State hosted on-chain                  | X              | X             |                    |
-| State hosted off-chain                 |                | X             | X                  |
-| Behavior controlled by consensus rules | X              | X             |                    |
-| May have an expiration date            |                | X             |                    |
+| Fonctionalité                                     | **Espaces de nommage** | **Noms BNS** | **Sous-domaines BNS** |
+| ------------------------------------------------- | ---------------------- | ------------ | --------------------- |
+| Globalement unique                                | X                      | X            | X                     |
+| Langage humain                                    | X                      | X            | X                     |
+| Détenu par une clé privée                         |                        | X            | X                     |
+| Tout le monde peut créer                          | X                      | X            | [1]                   |
+| Le propriétaire peut mettre à jour                |                        | X            | [1]                   |
+| État hébergé sur la chaîne                        | X                      | X            |                       |
+| Etat hébergé hors de la chaîne                    |                        | X            | X                     |
+| Comportement contrôlé par des règles de consensus | X                      | X            |                       |
+| Peut avoir une date d'expiration                  |                        | X            |                       |
 
-[1] Requires the cooperation of a BNS name owner to broadcast its transactions
+[1] Nécessite la coopération d'un propriétaire du nom BNS pour diffuser ses transactions
 
-## Namespaces
+## Espaces de nommage
 
-Namespaces are the top-level naming objects in BNS.
+Les espaces de noms sont les objets de nommage de premier niveau dans BNS.
 
-They control a few properties about the names within them:
+Ils contrôlent quelques propriétés inhérentes aux noms :
 
-- How expensive they are to register
-- How long they last before they have to be renewed
-- Who (if anyone) receives the name registration fees
-- Who is allowed to seed the namespace with its initial names.
+- Combien coûte leur enregistrement
+- La durée avant de nécessiter leur renouvellement
+- Qui (le cas échéant) reçoit les frais d'enregistrement du nom
+- Qui est autorisé à initialiser l'espace de noms avec ses noms initiaux.
 
-At the time of this writing, by far the largest BNS namespace is the `.id` namespace. Names in the `.id` namespace are meant for resolving user identities. Short names in `.id` are more expensive than long names, and have to be renewed by their owners every two years. Name registration fees are not paid to anyone in particular---they are instead sent to a "black hole" where they are rendered unspendable (the intention is to discourage ID squatters).
+Au moment de cette écriture, le plus grand espace de noms BNS est l'espace de noms `.id` . Les noms de l'espace de noms `.id` sont destinés à résoudre les identités de l'utilisateur . Les noms abrégés en `.id` sont plus chers que les noms longs, et doivent être renouvelés par leurs propriétaires tous les deux ans. Les frais d'enregistrement d'un nom ne sont pas payés à qui que ce soit en particulier ---ils sont plutôt envoyés à un « trou noir » où ils sont rendus inutilisables (l'intention est de décourager les squatteurs d'identification).
 
-Unlike DNS, _anyone_ can create a namespace and set its properties. Namespaces are created on a first-come first-serve basis, and once created, they last forever.
+Contrairement aux DNS, _n'importe qui_ peut créer un espace de noms et définir ses propriétés. Les espaces de noms sont créés sur la base du premier arrivé, et une fois créés, ils durent pour toujours.
 
-However, creating a namespace is not free. The namespace creator must _burn_ cryptocurrency to do so. The shorter the namespace, the more cryptocurrency must be burned (that is, short namespaces are more valuable than long namespaces). For example, it cost Blockstack PBC 40 BTC to create the `.id` namespace in 2015 (in transaction `5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b281`).
+Cependant, la création d'un espace de noms n'est pas libre. Le créateur d'espace de noms doit _brûler_ de la cryptomonnaie pour le faire. Plus l'espace de noms est court, plus la cryptomonnaie doit être brûlée (c'est-à-dire que les espaces de noms courts sont plus précieux que les espaces de noms longs). Par exemple, il a coûté à Blockstack PBC 40 BTC pour créer l'espace de noms `.id` en 2015 (dans la transaction `5f00b8e609821edd6f3369ee4ee86e03ea34b890e242236cdb66ef6c9c6a1b281`).
 
-Namespaces can be between 1 and 19 characters long, and are composed of the characters `a-z`, `0-9`, `-`, and `_`.
+Les espaces de noms peuvent contenir entre 1 et 19 caractères, et sont composés des caractères `a-z`, `0-9`, `-`, et `_`.
 
-## Subdomains
+## Sous-domaines
 
-BNS names are strongly owned because the owner of its private key can generate valid transactions that update its zone file hash and owner. However, this comes at the cost of requiring a name owner to pay for the underlying transaction in the blockchain. Moreover, this approach limits the rate of BNS name registrations and operations to the underlying blockchain's transaction bandwidth.
+Les noms des BNS sont fortement détenus car le propriétaire de sa clé privée peut générer des transactions valides qui mettent à jour le hachage et le propriétaire de son fichier de zone. Cependant, cela demande d'obliger le propriétaire du nom à payer la transaction sous-jacente dans la blockchain de . De plus, cette approche limite le taux d'enregistrement des noms BNS et les opérations à la bande passante transactionnelle de la blockchain sous-jacente.
 
-BNS overcomes this with subdomains. A **BNS subdomain** is a type of BNS name whose state and owner are stored outside of the blockchain, but whose existence and operation history are anchored to the blockchain. Like their on-chain counterparts, subdomains are globally unique, strongly owned, and human-readable. BNS gives them their own name state and public keys. Unlike on-chain names, subdomains can be created and managed cheaply, because they are broadcast to the BNS network in batches. A single blockchain transaction can send up to 120 subdomain operations.
+BNS surmonte cela avec des sous-domaines. Un **sous-domaine BNS** est un type de nom BNS dont l'état et le propriétaire sont stockés en dehors de la blockchain, mais dont l'existence et l'historique des opérations sont ancrées dans la blockchain . Comme leurs homologues sur la chaîne, les sous-domaines sont globalement uniques, fortement possédés et en langage humain. BNS leur donne leur propre état de nom et clés publiques. Contrairement aux noms on-chain, les sous-domaines peuvent être créés et gérés à coût réduit, car ils sont diffusés sur le réseau BNS en lots. Une seule transaction blockchain peut envoyer jusqu'à 120 opérations de sous-domaine .
 
-This is achieved by storing subdomain records in the BNS name zone files. An on-chain name owner broadcasts subdomain operations by encoding them as `TXT` records within a DNS zone file. To broadcast the zone file, the name owner sets the new zone file hash with a `NAME_UPDATE` transaction and replicates the zone file. This, in turn, replicates all subdomain operations it contains, and anchors the set of subdomain operations to an on-chain transaction. The BNS node's consensus rules ensure that only valid subdomain operations from _valid_ `NAME_UPDATE` transactions will ever be stored.
+Ceci est réalisé en stockant les enregistrements de sous-domaine dans les fichiers de zone de noms BNS. Un propriétaire de noms on-chain diffuse des opérations de sous-domaine en les encodant en tant qu'enregistrements `TXT` dans un fichier de zone DNS. Pour diffuser le fichier de zone, le nom propriétaire définit le hachage du nouveau fichier de zone avec une transaction `NAME_UPDATE` et réplique le fichier de zone. Ceci réplique, à son tour, toutes les opérations du sous-domaine qu'elle contient, et ancre l'ensemble des opérations de sous-domaine à une transaction sur la chaîne. Les règles de consensus du noeud BNS assurent que seules opérations de sous-domaine valides de __ `transactions NAME_UPDATE` valides ne seront jamais stockées.
 
-For example, the name `verified.podcast` once wrote the zone file hash `247121450ca0e9af45e85a82e61cd525cd7ba023`, which is the hash of the following zone file:
+Par exemple, le nom `a été vérifié. odcast` une fois écrit le hachage du fichier de zone `247121450ca0e9af45e85a82e61cd525cd7ba023`, qui est le hachage du fichier de zone suivant :
 
 ```bash
 $TTL 3600
@@ -110,7 +110,7 @@ onea TXT "owner=1MwPD6dH4fE3gQ9mCov81L1DEQWT7E85qH" "seqn=0" "parts=1" "zf0=JE9S
 _http._tcp URI 10 1 "https://dotpodcast.co/"
 ```
 
-Each `TXT` record in this zone file encodes a subdomain-creation. For example, `1yeardaily.verified.podcast` resolves to:
+Chaque enregistrement `TXT` dans ce fichier de zone encode une création de sous-domaine. Par exemple, `1yeardaily.verified.podcast` se correspond à:
 
 ```json
 {
@@ -123,13 +123,13 @@ Each `TXT` record in this zone file encodes a subdomain-creation. For example, `
 }
 ```
 
-This information was extracted from the `1yeardaily` `TXT` resource record in the zone file for `verified.podcast`.
+Cette information a été extraite de l'enregistrement de la ressource `1yeardaily` `TXT` dans le fichier de zone pour `verified.podcast`.
 
-### Subdomain Lifecycle
+### Cycle de vie des sous-domaines
 
-Note that `1yeardaily.verified.podcast` has a different public key hash (address) than `verified.podcast`. A BNS node will only process a subsequent subdomain operation on `1yeardaily.verified.podcast` if it includes a signature from this address's private key. `verified.podcast` cannot generate updates; only the owner of `1yeardaily.verified.podcast can do so`.
+Notez que `1yeardaily.verified.podcast` a une clé publique différente de `verified.podcast`. Un noeud BNS ne traitera une opération de sous-domaine ultérieure le `1yeardy. erified.podcast` que s'il contient une signature de la clé privée de cette adresse. `verified.podcast` ne peut pas générer mises à jour ; seul le propriétaire de `1yeardaily.verified.podcast`. peut le faire
 
-The lifecycle of a subdomain and its operations is shown in Figure 2.
+Le cycle de vie d'un sous-domaine et de ses opérations est affiché dans la figure 2.
 
 ```
    subdomain                  subdomain                  subdomain
@@ -154,88 +154,88 @@ The lifecycle of a subdomain and its operations is shown in Figure 2.
    block                      block                      block
 
 
-Figure 2:  Subdomain lifetime with respect to on-chain name operations .A new
-subdomain operation will only be accepted if it has a later "sequence=" number,
-and a valid signature in "sig=" over the transaction body .The "sig=" field
-includes both the public key and signature, and the public key must hash to
-the previous subdomain operation's "addr=" field.
+Figure 2 : durée de vie du sous-domaine en ce qui concerne les opérations de noms on-chain . nouvelle
+opération de sous-domaine ne sera acceptée que si elle a un numéro "séquence=" ultérieur,
+et une signature valide en "sig=" sur le corps de la transaction. e champ "sig="
+inclut à la fois la clé publique et la signature, et la clé publique doit être hachée sur
+le champ "addr=" de l'opération précédente de sous-domaine.
 
-The subdomain-creation and subdomain-transfer transactions for
-"cicero.res_publica.id" are broadcast by the owner of "res_publica.id."
-However, any on-chain name ("jude.id" in this case) can broadcast a subdomain
-update for "cicero.res_publica.id."
+Les transactions de création de sous-domaine et de transfert de sous-domaine pour
+"cicero.res_publica.id" sont diffusées par le propriétaire de "res_publica.id".
+Cependant, tout nom sur chaîne ("jude.id" dans ce cas) peut diffuser une mise à jour de sous-domaine
+pour "cicero.res_publica.id".
 ```
 
-Subdomain operations are ordered by sequence number, starting at 0. Each new subdomain operation must include:
+Les opérations de sous-domaine sont ordonnées par numéro de séquence, à partir de 0. Chaque nouvelle opération de sous-domaine doit inclure :
 
-- The next sequence number
-- The public key that hashes to the previous subdomain transaction's address
-- A signature from the corresponding private key over the entire subdomain operation.
+- Le numéro d'ordre suivant
+- La clé publique qui hache à l'adresse de la précédente transaction de sous-domaine
+- Une signature de la clé privée correspondante sur l'ensemble du sous-domaine opération.
 
-If two correctly signed but conflicting subdomain operations are discovered (that is, they have the same sequence number), the one that occurs earlier in the blockchain's history is accepted. Invalid subdomain operations are ignored.
+Si deux opérations de sous-domaine correctement signées mais conflictuelles sont découvertes (c.-à-d. ils ont le même numéro de séquence), celui qui se produit plus tôt dans l'histoire de la blockchain est accepté. Les opérations de sous-domaine non valides sont ignorées.
 
-Combined, this ensures that a BNS node with all of the zone files with a given subdomain's operations will be able to determine the valid sequence of state-transitions it has undergone, and determine the current zone file and public key hash for the subdomain.
+Combiné, cela garantit qu'un noeud BNS avec tous les fichiers de zone avec les opérations d'un sous-domaine donné sera en mesure de déterminer la séquence valide de transitions d'état qu'il a soumises, et déterminez le fichier de zone actuel et le hachage de la clé publique pour le sous-domaine.
 
-### Subdomain Creation and Management
+### Création et gestion de sous-domaine
 
-Unlike an on-chain name, a subdomain owner needs an on-chain name owner's help to broadcast their subdomain operations. In particular:
+Contrairement à un nom on-chaîne, un propriétaire de sous-domaine a besoin de l'aide du propriétaire de noms sur chaîne pour diffuser ses opérations de sous-domaine. En particulier :
 
-- A subdomain-creation transaction can only be processed by the owner of the on-chain name that shares its suffix. For example, only the owner of `res_publica.id` can broadcast subdomain-creation transactions for subdomain names ending in `.res_publica.id`.
-- A subdomain-transfer transaction can only be broadcast by the owner of the on-chain name that created it. For example, the owner of `cicero.res_publica.id` needs the owner of `res_publica.id` to broadcast a subdomain-transfer transaction to change `cicero.res_publica.id`'s public key.
-- In order to send a subdomain-creation or subdomain-transfer, all of an on-chain name owner's zone files must be present in the Atlas network. This lets the BNS node prove the _absence_ of any conflicting subdomain-creation and subdomain-transfer operations when processing new zone files.
-- A subdomain update transaction can be broadcast by _any_ on-chain name owner, but the subdomain owner needs to find one who will cooperate. For example, the owner of `verified.podcast` can broadcast a subdomain-update transaction created by the owner of `cicero.res_publica.id`.
+- Une transaction de création de sous-domaine ne peut être traitée que par le propriétaire du nom sur qui partage son suffixe. Par exemple, seul le propriétaire de `res_publica.id` peut diffuser des transactions de création de sous-domaine pour les noms de sous-domaine se terminant par `.res_publica.id`.
+- Une transaction de transfert de sous-domaine ne peut être diffusée que par le propriétaire du nom sur la chaîne qui l'a créé. For example, the owner of `cicero.res_publica.id` needs the owner of `res_publica.id` to broadcast a subdomain-transfer transaction to change `cicero.res_publica.id`'s public key.
+- In order to send a subdomain-creation or subdomain-transfer, all of an on-chain name owner's zone files must be present in the Atlas network. Cela permet au noeud BNS de prouver l'_absence<0> de tout conflit d'opération de création ou de transfert de sous-domaines lors de la création des nouveaux fichiers de zones.</p></li>
+- Une transaction de mise à jour de sous-domaine peut être diffusée par _n'importe quel propriétaire de nom sur la chaîne,_ mais le propriétaire du sous-domaine doit trouver celui qui coopérera. Par exemple, le propriétaire de `verified.podcast` peut diffuser une transaction de mise à jour de sous-domaine créée par le propriétaire de `cicero.res_publica.id`.</ul>
 
-That said, to create a subdomain, the subdomain owner generates a subdomain-creation operation for their desired name and gives it to the on-chain name owner.
+Cela dit, pour créer un sous-domaine, le propriétaire du sous-domaine génère une opération de création de sous-domaine pour le nom désiré et le donne au propriétaire du nom sur la chaîne.
 
-Once created, a subdomain owner can use any on-chain name owner to broadcast a subdomain-update operation. To do so, they generate and sign the requisite subdomain operation and give it to an on-chain name owner, who then packages it with other subdomain operations into a DNS zone file and broadcasts it to the network.
+Une fois créé, un propriétaire de sous-domaine peut utiliser n'importe quel propriétaire de nom sur la chaîne pour diffuser une opération de mise à jour de sous-domaine. Pour ce faire, ils génèrent et signent l'opération de sous-domaine requise et la donnent à un propriétaire de nom sur la chaîne, qui l'empaquete alors avec d'autres opérations de sous-domaine dans un fichier de zone DNS et le diffuse sur le réseau.
 
-If the subdomain owner wants to change the address of their subdomain, they need to sign a subdomain-transfer operation and give it to the on-chain name owner who created the subdomain. They then package it into a zone file and broadcast it.
+Si le sous-propriétaire du sous-domaine veut changer l'adresse de son sous-domaine, il a besoin de signer une opération de transfert de sous-domaine et la donner au propriétaire du nom sur chaîne qui a créé le sous-domaine. Ils l'empaquetent ensuite dans un fichier de zone et diffusent .
 
-### Subdomain Registrars
+### Enregistreurs de sous-domaine
 
-Because subdomain names are cheap, developers may be inclined to run subdomain registrars on behalf of their applications. For example, the name `personal.id` is used to register usernames without requiring them to spend any Bitcoin.
+Parce que les noms de sous-domaine sont bon marché, les développeurs peuvent être enclins à exécuter des demandes d'enregistrement de sous-domaine pour le compte de leurs applications. Par exemple, le nom `personal.id` est utilisé pour enregistrer des noms d'utilisateur sans les obliger à faire une transaction Bitcoin.
 
-We supply a reference implementation of a [BNS Subdomain Registrar](https://github.com/stacks-network/subdomain-registrar) to help developers broadcast subdomain operations. Users would still own their subdomain names; the registrar simply gives developers a convenient way for them to register and manage them in the context of a particular application.
+Nous fournissons une implémentation de référence d'un [Enregistrement BNS ](https://github.com/stacks-network/subdomain-registrar) pour aider les développeurs à diffuser des opérations de sous-domaine. Les utilisateurs posséderaient toujours leurs noms de sous-domaine; le bureau d’enregistrement donne simplement aux développeurs un moyen pratique de les enregistrer et de les gérer dans le contexte d’une application particulière.
 
-# BNS and DID Standards
+# Normes BNS et DID
 
-BNS names are compliant with the emerging [Decentralized Identity Foundation](http://identity.foundation) protocol specification for decentralized identifiers (DIDs).
+Les noms BNS sont conformes à la spécification de [de la Fondation d’identité décentralisée](http://identity.foundation) protocole pour les identifiants décentralisés (DID).
 
-Each name in BNS has an associated DID. The DID format for BNS is:
+Chaque nom dans BNS a un DID associé. Le format DID pour BNS est :
 
 ```bash
     did:stack:v0:{address}-{index}
 ```
 
-Where:
+Où :
 
-- `{address}` is an on-chain public key hash (for example a Bitcoin address).
-- `{index}` refers to the `nth` name this address created.
+- `{address}` est un hachage de clé publique sur chaîne (par exemple une adresse Bitcoin).
+- `{index}` fait référence au `nème` nom que cette adresse a créé.
 
-For example, the DID for `personal.id` is `did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0`, because the name `personal.id` was the first-ever name created by `1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV`.
+Par exemple, le DID pour `personal.id` est `did:stack:v0:1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV-0`, parce que le nom `personal.id` a été le tout premier nom créé par `1dARRtzHPAFRNE7Yup2Md9w18XEQAtLiV`.
 
-As another example, the DID for `jude.id` is `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-1`. Here, the address `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` had created one earlier name in history prior to this one (which happens to be `abcdefgh123456.id`).
+Comme autre exemple, le DID pour `jude.id` est `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-1`. Ici, l'adresse `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` avait créé un prénom plus tôt dans l'histoire avant celui-ci (qui se trouve être `abcdefgh123456. d`).
 
-The purpose of a DID is to provide an eternal identifier for a public key. The public key may change, but the DID will not.
+Le but d'un DID est de fournir un identifiant éternel pour une clé publique. La clé publique peut changer, mais le DID ne changera pas.
 
-Stacks Blockchain implements a DID method of its own in order to be compatible with other systems that use DIDs for public key resolution. In order for a DID to be resolvable, all of the following must be true for a name:
+Stacks Blockchain implémente une méthode DID en elle-même afin d'être compatible avec d'autres systèmes qui utilisent DID pour la résolution de clé publique. Pour qu'un DID soit résolu, tout ce qui suit doit être vrai pour un nom :
 
-- The name must exist
-- The name's zone file hash must be the hash of a well-formed DNS zone file
-- The DNS zone file must be present in the Stacks node's data.
-- The DNS zone file must contain a `URI` resource record that points to a signed JSON Web Token
-- The public key that signed the JSON Web Token (and is included with it) must hash to the address that owns the name
+- Le nom doit exister
+- Le hachage du fichier de zone du nom doit être le hachage d'un fichier de zone DNS bien formé
+- Le fichier de zone DNS doit être présent dans les données du noeud Stacks.
+- Le fichier de zone DNS doit contenir un enregistrement de la ressource `URI` qui pointe vers un jeton web JSON signé
+- La clé publique qui a signé le jeton Web JSON (et qui est inclus avec celui-ci) doit être hachée à l'adresse qui est propriétaire du nom
 
-Not all names will have DIDs that resolve to public keys. However, names created by standard tooling will have DIDs that do.
+Tous les noms n'auront pas forcément de DIDs qui seront résolus pour les clés publiques. Cependant, les noms créés par l'outil standard auront les DIDs qui le font.
 
-A RESTful API is under development.
+Une API RESTful est en cours de développement.
 
-## DID Encoding for Subdomains
+## Encodage DID pour les sous-domaines
 
-Every name and subdomain in BNS has a DID. The encoding is slightly different for subdomains, so the software can determine which code-path to take.
+Chaque nom et sous-domaine dans BNS a un DID. L'encodage est un peu différent pour les sous-domaines, donc le logiciel peut déterminer quel façon de coder choisir.
 
-- For on-chain BNS names, the `{address}` is the same as the Bitcoin address that owns the name. Currently, both version byte 0 and version byte 5 addresses are supported (that is, addresses starting with `1` or `3`, meaning `p2pkh` and `p2sh` addresses).
+- Pour les noms de BNS on-chain, le `{address}` est le même que l'adresse Bitcoin qui détient le nom. Actuellement, les adresses d'octets de version 0 et d'octets de version 5 sont prises en charge (c.-à-d. adresses commençant par `1` ou `3`, signifiant `p2pkh` et `p2sh` adresses).
 
-- For off-chain BNS subdomains, the `{address}` has version byte 63 for subdomains owned by a single private key, and version byte 50 for subdomains owned by a m-of-n set of private keys. That is, subdomain DID addresses start with `S` or `M`, respectively.
+- Pour les sous-domaines BNS hors chaîne BNS, le `{address}` a un octet de version 63 pour sous-domaines appartenant à une seule clé privée, et l'octet de version 50 pour les sous-domaines appartenant à un ensemble m-of-n de clés privées. C'est-à-dire que les adresses DID de sous-domaine commencent par `S` ou `M`, respectivement.
 
-The `{index}` field for a subdomain's DID is distinct from the `{index}` field for a BNS name's DID, even if the same created both names and subdomains. For example, the name `abcdefgh123456.id` has the DID `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-0`, because it was the first name created by `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg`. However, `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` _also_ created `jude.statism.id` as its first subdomain name. The DID for `jude.statism.id` is `did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0`. Note that the address `SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i` encodes the same public key hash as the address `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` (the only difference between these two strings is that the first is base58check-encoded with version byte 0, and the second is encoded with version byte 63).
+Le champ `{index}` pour un DID d'un sous-domaine est distinct du champ `{index}` pour le DID d'un BNS, même si la même chose crée des noms et des sous-domaines. Par exemple, le nom `abcdefgh123456. d` a le DID `did:stack:v0:16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg-0`, parce que c'était le prénom créé par `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg`. Cependant, `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` _a aussi_ créé `jude.statism.id` comme premier nom de sous-domaine. Le DID pour `jude.statism.id` est `did:stack:v0:SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i-0`. Notez que l'adresse `SSXMcDiCZ7yFSQSUj7mWzmDcdwYhq97p2i` encode la même clé publique de hachage que l'adresse `16EMaNw3pkn3v6f2BgnSSs53zAKH4Q8YJg` (la seule différence entre ces deux chaînes est que le premier est codé en base58check avec la version byte 0, et la seconde est encodée avec la version byte 63).

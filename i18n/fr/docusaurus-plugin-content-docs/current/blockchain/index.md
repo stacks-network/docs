@@ -1,25 +1,25 @@
 ---
-title: Blockchain
-description: Stacks Blockchain
+title: Blochain
+description: Blockchain Stacks
 sidebar_position: 6
 ---
 
-Below is a guide to start working locally with the Stacks Blockchain.
+Vous trouverez ci-dessous un guide pour commencer à travailler localement avec la blockchain.
 
-Code repository is [here](https://github.com/stacks-network/stacks-blockchain).
+Le dépôt de code est [ici](https://github.com/stacks-network/stacks-blockchain).
 
-## Getting started with the Stacks Blockchain
+## Commencer avec la Blockchain Stacks
 
 ### Download and build stacks-blockchain
 
-The first step is to ensure that you have Rust and the support software installed.
+La première étape est de s'assurer que Rust et le logiciel de support sont installés.
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 :::info
-For building on Windows, follow the rustup installer instructions at https://rustup.rs/
+Pour compiler sous Windows, suivez les instructions de l'installateur de rustup sur https://rustup.rs/
 :::
 
 From there, you can clone the Stacks Blockchain repository:
@@ -30,21 +30,21 @@ git clone --depth=1 https://github.com/stacks-network/stacks-blockchain.git
 cd stacks-blockchain
 ```
 
-Then build the project:
+Puis construisez le projet :
 
 ```bash
 cargo build
 ```
 
-Run the tests:
+Exécutez les tests :
 
 ```bash
 cargo test testnet  -- --test-threads=1
 ```
 
-### Encode and sign transactions
+### Encoder et signer les transactions
 
-Here, we have generated a keypair that will be used for signing the upcoming transactions:
+Ici, nous allons générer une paire de clés qui sera utilisée pour signer les opérations à venir :
 
 ```bash
 cargo run --bin blockstack-cli generate-sk --testnet
@@ -57,9 +57,9 @@ cargo run --bin blockstack-cli generate-sk --testnet
 # }
 ```
 
-This keypair is already registered in the `testnet-follower-conf.toml` file, so it can be used as presented here.
+Ce pavé numérique est déjà enregistré dans le fichier `testnet-follower-conf.toml` , donc il peut être utilisé comme présenté ici.
 
-We will interact with the following simple contract `kv-store`. In our examples, we will assume this contract is saved to `./kv-store.clar`:
+Nous allons interagir avec le contrat simple suivant `kv-store`. In our examples, we will assume this contract is saved to `./kv-store.clar`:
 
 ```scheme
 (define-map store { key: (string-ascii 32) } { value: (string-ascii 32) })
@@ -75,37 +75,37 @@ We will interact with the following simple contract `kv-store`. In our examples,
         (ok true)))
 ```
 
-We want to publish this contract on chain, then issue some transactions that interact with it by setting some keys and getting some values, so we can observe read and writes.
+Nous voulons publier ce contrat sur la chaîne, puis émettre des transactions qui interagissent avec lui en transférant des clés et en récupérer des valeurs, afin que nous puissions observer la lecture et l'écriture.
 
-Our first step is to generate and sign, using your private key, the transaction that will publish the contract `kv-store`. To do that, we will use the subcommand `blockstack-cli` that has the following usage:
+Notre première étape est de générer et de signer, à l'aide de votre clé privée, la transaction qui publiera le contrat `kv-store`. Pour cela, nous utiliserons la sous-commande `blockstack-cli` qui a l'usage suivant :
 
 ```bash
 blockstack-cli (options) publish [publisher-secret-key-hex] [fee-rate] [nonce] [contract-name] [file-name.clar]
 ```
 
-With the following arguments:
+Avec les paramètres suivants:
 
 ```bash
 cargo run --bin blockstack-cli publish b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001 515 0 kv-store ./kv-store.clar --testnet
 ```
 
-The `515` is the transaction fee, denominated in microSTX. Right now, the testnet requires one microSTX per byte minimum, and this transaction should be less than 515 bytes. The third argument `0` is a nonce, that must be increased monotonically with each new transaction.
+Le `515` correspond aux frais de transaction, libellés en microSTX. Pour l'instant, le réseau de test nécessite un microSTX par octet minimum, et cette transaction devrait être inférieure à 515 octets. Le troisième argument `0` est une nonce, qui doit être augmenté de façon monotonique à chaque nouvelle transaction.
 
-This command will output the **binary format** of the transaction. In our case, we want to pipe this output and dump it to a file that will be used later in this tutorial.
+Cette commande affichera le **format binaire** de la transaction. Dans notre cas, nous voulons récupérer cette sortie et la copier dans un fichier qui sera utilisé plus tard dans ce tutoriel.
 
 ```bash
 cargo run --bin blockstack-cli publish b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001 515 0 kv-store ./kv-store.clar --testnet | xxd -r -p > tx1.bin
 ```
 
-### Run the testnet
+### Exécuter le testnet
 
-You can observe the state machine in action locally by running:
+Vous pouvez observer la machine d'état en action (localement) en exécutant :
 
 ```bash
 cargo stacks-node start --config=./testnet/stacks-node/conf/testnet-follower-conf.toml
 ```
 
-`testnet-follower-conf.toml` is a configuration file that you can use for setting genesis balances or configuring Event observers. You can grant an address an initial account balance by adding the following entries:
+`testnet-follower-conf.toml` est un fichier de configuration que vous pouvez utiliser pour mettre en place des balances genesis ou configurer des observateurs d'événements. Vous pouvez accorder à une adresse un solde initial du compte en ajoutant les entrées suivantes:
 
 ```
 [[ustx_balance]]
@@ -113,66 +113,66 @@ address = "ST2VHM28V9E5QCRD6C73215KAPSBKQGPWTEE5CMQT"
 amount = 100000000
 ```
 
-The `address` field is the Stacks testnet address, and the `amount` field is the number of microSTX to grant to it in the genesis block. The addresses of the private keys used in the tutorial below are already added.
+Le champ `adresse` est l'adresse du réseau de test de Stacks, et le champ `amount` est le nombre de microSTX à y accorder dans le bloc genèse. Les adresses des clés privées utilisées dans le tutoriel ci-dessous sont déjà ajoutées.
 
-### Publish your contract
+### Publiez votre contrat
 
-Assuming that the testnet is running, we can publish our `kv-store` contract.
+En supposant que le réseau de test fonctionne, nous pouvons publier notre contrat de `kv-store`.
 
-In another terminal (or file explorer), you can move the `tx1.bin` generated earlier, to the mempool:
+Dans un autre terminal (ou explorateur de fichiers), vous pouvez déplacer le `tx1.bin` généré plus tôt, vers le mempool:
 
 ```bash
 curl -X POST -H "Content-Type: application/octet-stream" --data-binary @./tx1.bin http://localhost:20443/v2/transactions
 ```
 
-In the terminal window running the testnet, you can observe the state machine's reactions.
+Dans la fenêtre de terminal exécutant le testnet, vous pouvez observer les réactions de la machine d'état.
 
-### Reading from / Writing to the contract
+### Lecture depuis / Écriture vers le contrat
 
-Now that our contract has been published on chain, let's try to submit some read / write transactions. We will start by trying to read the value associated with the key `foo`.
+Maintenant que notre contrat a été publié sur la chaîne, nous allons essayer de soumettre quelques transactions en lecture / écriture. Nous allons commencer par essayer de lire la valeur associée à la clé `foo`.
 
-To do that, we will use the subcommand:
+Pour cela, nous utiliserons la sous-commande :
 
 ```bash
 cargo run --bin blockstack-cli contract-call --help
 ```
 
-With the following arguments:
+Avec les paramètres suivants:
 
 ```bash
 cargo run --bin blockstack-cli contract-call b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001 500 1 ST2ZRX0K27GW0SP3GJCEMHD95TQGJMKB7G9Y0X1MH kv-store get-value -e \"foo\" --testnet | xxd -r -p > tx2.bin
 ```
 
-`contract-call` generates and signs a contract-call transaction.
+`contract` génère et signe une transaction d'appels contractuels.
 
-We can submit the transaction by moving it to the mempool path:
+Nous pouvons soumettre la transaction en la déplaçant dans le chemin de mempool :
 
 ```bash
 curl -X POST -H "Content-Type: application/octet-stream" --data-binary @./tx2.bin http://localhost:20443/v2/transactions
 ```
 
-Similarly, we can generate a transaction that would be setting the key `foo` to the value `bar`:
+De même, nous pouvons générer une transaction qui définirait la clé `foo` à la valeur `bar`:
 
 ```bash
 cargo run --bin blockstack-cli contract-call b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001 500 2 ST2ZRX0K27GW0SP3GJCEMHD95TQGJMKB7G9Y0X1MH kv-store set-value -e \"foo\" -e \"bar\" --testnet | xxd -r -p > tx3.bin
 ```
 
-And submit it by moving it to the mempool path:
+Et soumettez-le en le déplaçant sur le chemin de mempool :
 
 ```bash
 curl -X POST -H "Content-Type: application/octet-stream" --data-binary @./tx3.bin http://localhost:20443/v2/transactions
 ```
 
-Finally, we can issue a third transaction, reading the key `foo` again, for ensuring that the previous transaction has successfully updated the state machine:
+Enfin, nous pouvons effectuer une troisième transaction, en lisant à nouveau la clé `foo` . pour s'assurer que la transaction précédente a bien mis à jour la machine d'état :
 
 ```bash
 cargo run --bin blockstack-cli contract-call b8d99fd45da58038d630d9855d3ca2466e8e0f89d3894c4724f0efc9ff4b51f001 500 3 ST2ZRX0K27GW0SP3GJCEMHD95TQGJMKB7G9Y0X1MH kv-store get-value -e \"foo\" --testnet | xxd -r -p > tx4.bin
 ```
 
-And submit this last transaction by moving it to the mempool path:
+Et soumettez cette dernière transaction en la déplaçant dans le chemin de mempool :
 
 ```bash
 curl -X POST -H "Content-Type: application/octet-stream" --data-binary @./tx4.bin http://localhost:20443/v2/transactions
 ```
 
-Congratulations, you can now [write your own smart contracts with Clarity](write-smart-contracts/).
+Félicitations, vous pouvez maintenant [écrire vos propres contrats intelligents avec Clarity](write-smart-contracts/).
