@@ -237,6 +237,7 @@ A complete version of our open-source software available on Github at https://gi
 #### Stacks wallet
 
 An application for accessing assets, identity and storage.
+
 Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/).
 
 #### storage hub
