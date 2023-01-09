@@ -116,9 +116,13 @@ The genesis block is the first block of the Stacks blockchain, which will create
 
 An identifier in the Blockstack, for example meepers.id.blockstack. This is your name & identity that is registered in the .id namespace on Blockstack. Your personal data and storage are built around this ID. Apps that want to access your data use your permission and identity to find it. An id is usually a shorthand for a longer, hash ID string, for example ID-1Fj9kkw15P51Fj9kkw15P5xJmyefWhLKrQMKNPREfaqsJ"
 
-#### identity
+#### Identity management (IDM)
 
-A way to identify a person or an organization on the Stacks network. An identity is unique, both `meepers.id.blockstack` or `chad.id` are examples of IDs.
+Identity management, also known as identity and access management is, in computer security, the security and business discipline that enables the right individuals to access the right resources at the right times and for the right reason.
+
+#### Know your customer (KYC)
+
+KYC is a popular term used in the banking or financial field. KYC is a process where financial institutions, insurers and other companies obtain information about the identity and address of the customers as part of risk management.
 
 #### identity management (IDM)
 
@@ -168,7 +172,7 @@ A network operation is any change to the information about a digital asset (or s
 
 Non fungible token.
 
-#### private key
+#### Private key
 
 Private keys matches a corresponding public key. A public key also looks like a string of letters and numbers:
 
@@ -188,6 +192,7 @@ A proof-of-work system or proof-of-work mining is a mining mechanism where miner
 
 Public and private key pair comprise of two uniquely related cryptographic keys. It looks like a long random string of letters and numbers:
 `3048 0241 00C9 18FA CF8D EB2D EFD5 FD37 89B9 E069 EA97 FC20 …`
+
 The exact format of the public and private key depend on the software you use to create them.
 
 #### Public Key Infrastructure (PKI)
