@@ -29,7 +29,7 @@ A database created and shared by the members of a peer-to-peer computer network 
 
 #### Blockchain Name System (BNS)
 
-Replacement for DNS. More info [here](../noteworthy-contracts/bns-contract).
+Replacement for DNS. More info [here](../clarity/noteworthy-contracts/bns-contract).
 
 #### Blockstack Browser
 
@@ -236,7 +236,7 @@ A complete version of our open-source software available on Github at https://gi
 
 #### Stacks wallet
 
-An application for accessing assets, identity and storage. More information and example [here](../services-using-stacks/wallets).
+An application for accessing assets, identity and storage.
 Examples are the [Hiro Wallet](https://www.hiro.so/wallet), [xverse](https://www.xverse.app/) and [dcent](https://dcentwallet.com/).
 
 #### storage hub
