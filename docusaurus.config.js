@@ -560,16 +560,6 @@ const config = {
           },
           {
             from: [
-              "/understand-stacks/stacks-blockchain-api",
-              "/core/smart/rpc-api.html",
-              "/core/smart/rpc-api",
-              "/references/stacks-rpc-api",
-              "/docs/understand-stacks/stacks-blockchain-api",
-            ],
-            to: "/docs/stacks-academy/stacks-blockchain-api",
-          },
-          {
-            from: [
               "/gaia",
               "/gaia/overview",
               "/build-apps/references/gaia",
