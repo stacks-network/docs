@@ -21,9 +21,17 @@ Por favor edita esta página para agregar cualquier sitio web relevante que falt
 
 ![captura de pantalla de página web](/img/sh_nft_megapont.png)
 
+### [Satoshibles](https://satoshibles.com/)
+
+![captura de pantalla de página web](/img/sh_nft_satoshibles.png)
+
 ### [StacksArt](https://www.stacksart.com/)
 
-![captura de pantalla de página web](/img/sh_nft_stacksart.png)
+![website-screenshot](/img/sh_nft_stacksart.png)
+
+### [StacksBridge](https://stacksbridge.com/)
+
+![website-screenshot](/img/sh_nft_stacksbridge.png)
 
 ### [Superfandom](https://superfandom.io/)
 
