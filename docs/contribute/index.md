@@ -21,10 +21,10 @@ Help us reach more people with translations. More details [here](translations).
 
 ### Articles
 
-Write an article or a blog post about Stacks. A good place to start is [Stacks Forum](https://forum.stacks.org).
+Write an article or a blog post about Stacks. A good place to start is the [Stacks Forum](https://forum.stacks.org).
 
 ### Github
 
-If you are familiar with Github they are multiple repositories of the Stack Ecosystem that you can contribute to.
+If you are familiar with Github there are multiple repositories of the Stacks Ecosystem that you can contribute to.
 
 - https://github.com/stacks-network/
