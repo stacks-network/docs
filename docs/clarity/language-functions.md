@@ -1291,7 +1291,7 @@ a `(some ...)` option, it returns the inner value of the option. If the second a
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (default-to 0 (get id (map-get? names-map (tuple (name \"blockstack\"))))) ;; Returns 1337
-(default-to 0 (get id (map-get? names-map (tuple (name \"non-existant\"))))) ;; Returns 0
+(default-to 0 (get id (map-get? names-map (tuple (name \"non-existent\"))))) ;; Returns 0
 ```
 
 ### asserts!
@@ -1341,7 +1341,7 @@ the inner value of the `ok`. If the supplied argument is either an `(err ...)` o
        (ok raw-name)))
 
 (get-name-or-err \"blockstack\") ;; Returns (ok (tuple (id 1337)))
-(get-name-or-err \"non-existant\") ;; Returns (err 1)
+(get-name-or-err \"non-existent\") ;; Returns (err 1)
 ```
 
 ### unwrap-err!
@@ -1387,7 +1387,7 @@ the inner value of the `ok`. If the supplied argument is either an `(err ...)` o
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (unwrap-panic (map-get? names-map { name: \"blockstack\" })) ;; Returns (tuple (id 1337))
-(unwrap-panic (map-get? names-map { name: \"non-existant\" })) ;; Throws a runtime exception
+(unwrap-panic (map-get? names-map { name: \"non-existent\" })) ;; Throws a runtime exception
 ```
 
 ### unwrap-err-panic
@@ -1541,7 +1541,7 @@ and `false` if it is a `(some ...)`.
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (is-none (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns false
-(is-none (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns true
+(is-none (get id (map-get? names-map { name: \"non-existent\" }))) ;; Returns true
 ```
 
 ### is-err
@@ -1584,7 +1584,7 @@ and `false` if it is a `none`.
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: \"blockstack\" } { id: 1337 })
 (is-some (get id (map-get? names-map { name: \"blockstack\" }))) ;; Returns true
-(is-some (get id (map-get? names-map { name: \"non-existant\" }))) ;; Returns false
+(is-some (get id (map-get? names-map { name: \"non-existent\" }))) ;; Returns false
 ```
 
 ### filter
@@ -1720,7 +1720,7 @@ one of the following error codes:
 (nft-mint? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
 (nft-transfer? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 (nft-transfer? stackaroo \"Roo\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u1)
-(nft-transfer? stackaroo \"Stacka\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u3)
+(nft-transfer? stackaroo \"Stacks\" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u3)
 ```
 
 ### nft-mint?
@@ -1741,7 +1741,7 @@ If an asset identified by `asset-identifier` _already exists_, this function wil
 
 `(err u1)`
 
-Otherwise, on successfuly mint, it returns `(ok true)`.
+Otherwise, on successfully mint, it returns `(ok true)`.
 `
 
 #### example:
@@ -1762,10 +1762,10 @@ Otherwise, on successfuly mint, it returns `(ok true)`.
 #### description:
 
 `ft-mint?` is used to increase the token balance for the `recipient` principal for a token
-type defined using `define-fungible-token`. The increased token balance is _not_ transfered from another principal, but
+type defined using `define-fungible-token`. The increased token balance is _not_ transferred from another principal, but
 rather minted.
 
-If a non-positive amount is provided to mint, this function returns `(err 1)`. Otherwise, on successfuly mint, it
+If a non-positive amount is provided to mint, this function returns `(err 1)`. Otherwise, on successfully mint, it
 returns `(ok true)`.
 `
 
@@ -1808,10 +1808,10 @@ The token type must have been defined using `define-fungible-token`.
 #### description:
 
 `ft-burn?` is used to decrease the token balance for the `sender` principal for a token
-type defined using `define-fungible-token`. The decreased token balance is _not_ transfered to another principal, but
+type defined using `define-fungible-token`. The decreased token balance is _not_ transferred to another principal, but
 rather destroyed, reducing the circulating supply.
 
-If a non-positive amount is provided to burn, this function returns `(err 1)`. Otherwise, on successfuly burn, it
+If a non-positive amount is provided to burn, this function returns `(err 1)`. Otherwise, on successfully burn, it
 returns `(ok true)`.
 
 #### example:
@@ -1841,7 +1841,7 @@ If an asset identified by `asset-identifier` _doesn't exist_, this function will
 
 `(err u1)`
 
-Otherwise, on successfuly burn, it returns `(ok true)`.
+Otherwise, on successfully burn, it returns `(ok true)`.
 `
 
 #### example:

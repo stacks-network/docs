@@ -18,7 +18,7 @@ Go to the [Stacks Blockchain page](https://marketplace.digitalocean.com/apps/sta
 
 #### Step 2
 
-Choose a plan (it will only allow you to select a plan that meets the minimum requirements) and your prefered datacenter region.
+Choose a plan (it will only allow you to select a plan that meets the minimum requirements) and your preferred datacenter region.
 ![](/img/sh_digitalocean-choose-plan.png)
 
 #### Step 3

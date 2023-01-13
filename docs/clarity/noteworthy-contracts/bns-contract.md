@@ -205,7 +205,7 @@ Returns true if the provided namespace is available.
 
 #### Description:
 
-Returns true if the provided name can be received. That is, if it is not curretly owned, a previous lease is expired, and the name wasn't revoked.
+Returns true if the provided name can be received. That is, if it is not currently owned, a previous lease is expired, and the name wasn't revoked.
 
 ### get-name-price
 
@@ -413,7 +413,7 @@ Returns the registered name that a principal owns if there is one. A principal c
 
 #### value: `2020`
 
-### ERR_NAME_COULD_NOT_BE_TRANSFERED
+### ERR_NAME_COULD_NOT_BE_TRANSFERRED
 
 #### type: `int`
 

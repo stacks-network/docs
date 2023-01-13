@@ -19,7 +19,7 @@ The reserves are publicly visible [here](https://open.wrapped.com/reserves/).
 
 ## Examples of uses
 
-[Friedger Mining Pool](https://pool.friedger.de/) currrently supports Stacking rewards payments in xBTC (optional).
+[Friedger Mining Pool](https://pool.friedger.de/) currently supports Stacking rewards payments in xBTC (optional).
 
 ## More information
 

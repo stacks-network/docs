@@ -61,39 +61,13 @@ const config = {
         },
       },
       navbar: {
-        title: "Stacks Documentation",
+        title: "Stacks",
         logo: {
           alt: "Stacks Logo",
           //src: 'img/favicon-dark.svg',
           src: "img/stacks_with_interior_white_exterior_transparent.png",
         },
         items: [
-          {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "Docs",
-          },
-          {
-            href: "https://clarity-lang.org/universe",
-            position: "left",
-            label: "Clarity Universe",
-          },
-          {
-            href: "https://stacks.co/jobs",
-            position: "left",
-            label: "Jobs",
-          },
-          {
-            href: "https://stacks.org/grants",
-            position: "left",
-            label: "Grants",
-          },
-          {
-            href: "https://github.com/friedger/awesome-stacks-chain",
-            position: "left",
-            label: "Awesome Stacks",
-          },
           /*
           {to: '/blog', label: 'Blog', position: 'left'},
           */
