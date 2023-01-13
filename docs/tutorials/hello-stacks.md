@@ -122,7 +122,7 @@ module.exports = {
 };
 ```
 
-Add the Tailwind directvies to the `index.css` file.
+Add the Tailwind directives to the `index.css` file.
 
 ```css
 @tailwind base;
@@ -209,7 +209,7 @@ The second argument is the body of the function, but this can only contain a sin
 
 Again, there is much more information on how Clarity works in the [Clarity Book](https://book.clarity-lang.org/), this is just a high-level introduction to get you familiar.
 
-Within this `begin` block we are doing two things. First we are pringing the contents of our message to the blockchain, this will actually post the contents of this message to the chain when we send this transaction, something we'll look at soon.
+Within this `begin` block we are doing two things. First we are bringing the contents of our message to the blockchain, this will actually post the contents of this message to the chain when we send this transaction, something we'll look at soon.
 
 Then we are returning a response of `ok`, indicating success, with the message "Message printed".
 
@@ -221,7 +221,7 @@ We can test this right now using the Clarinet console. In the `contracts` folder
 (contract-call? .hello-stacks write-message u"Hello there")
 ```
 
-Here we are calling the function we just created and passing a message of "Hello there". We prifix that with a `u` to indicate this is a UTF8 string.
+Here we are calling the function we just created and passing a message of "Hello there". We prefix that with a `u` to indicate this is a UTF8 string.
 
 You should get an `ok` message returned here, which indicates that our function was called successfully.
 
@@ -269,7 +269,7 @@ So now we need to set up our Hiro wallet extension that we set up at the beginni
 Make sure you copy your secret key before you sign out. You'll need it to restore your Hiro wallet when you are done developing.
 :::
 
-Go ahead and copy the mnemoic listed in the `Devnet.toml` file and use that to import your local wallet into the Hiro wallet. Then we can use that for interacting with our local Devnet chain.
+Go ahead and copy the mnemonic listed in the `Devnet.toml` file and use that to import your local wallet into the Hiro wallet. Then we can use that for interacting with our local Devnet chain.
 
 Once you do that, go ahead and restart `clarinet integrate`.
 
@@ -722,7 +722,7 @@ If you run this you should see the message printed at the bottom of the screen.
 
 Here we've just gone over a very simple and very brief example of a Stacks application. This was meant to give you a high level introduction to the Stacks ecosystem and how you might begin building Stacks dapps.
 
-There is obvisouly a lot more to learn, so here are a few good places to continue your learning.
+There is obviously a lot more to learn, so here are a few good places to continue your learning.
 
 ### Stacks Academy
 
@@ -732,7 +732,7 @@ Stacks Academy is your guide to all things Stacks. This comprehensive walkthroug
 
 ### Clarity Book
 
-The Clarity Book, Clarity of Mind, is the go-to resource for mastering Clarity. It will teach you Clarity developmenet from start to finish so you can begin writing high-quality Clarity smart contracts.
+The Clarity Book, Clarity of Mind, is the go-to resource for mastering Clarity. It will teach you Clarity development from start to finish so you can begin writing high-quality Clarity smart contracts.
 
 [Read the Clarity Book](https://book.clarity-lang.org/)
 

@@ -120,7 +120,7 @@ console.log(
 
 ## Choosing the right Stacking strategy
 
-[Here](https://blog.stacks.co/stacking-strategy) is an interesting article that may help you choose the right Stacking stategy.
+[Here](https://blog.stacks.co/stacking-strategy) is an interesting article that may help you choose the right Stacking strategy.
 
 ## Where to Stack?
 
@@ -136,7 +136,7 @@ Stacking on your own requires a protocol minimum (amount changes but about 100,0
 
 ### Stacking on a pool
 
-Stacking on a pool allows Stacking without the requirement of the protocol minumum.
+Stacking on a pool allows Stacking without the requirement of the protocol minimum.
 
 Some available pools are:
 

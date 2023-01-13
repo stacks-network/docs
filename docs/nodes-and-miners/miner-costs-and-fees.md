@@ -26,3 +26,5 @@ Cost estimators are **not** consensus-critical components, but rather can be use
 
 The `fuzzed_weighted_median_fee_rate` uses a median estimate from a window of the fees paid in the last `fee_rate_window_size` blocks.
 Estimates are then randomly "fuzzed" using uniform random fuzz of size up to `fee_rate_fuzzer_fraction` of the base estimate.
+
+There is also a [mining calculator](https://friedger.id/mining-calculator/) that can help you with this process.

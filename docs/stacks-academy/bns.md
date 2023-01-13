@@ -140,7 +140,7 @@ namespace. Names in the `.id` namespace are meant for resolving user
 identities. Short names in `.id` are more expensive than long names, and have
 to be renewed by their owners every two years. Name registration fees are not
 paid to anyone in particular---they are instead sent to a "black hole" where
-they are rendered unspendable (the intention is to discourage ID squatters).
+they are rendered non-spendable (the intention is to discourage ID squatters).
 
 Unlike DNS, _anyone_ can create a namespace and set its properties. Namespaces
 are created on a first-come first-serve basis, and once created, they last

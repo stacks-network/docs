@@ -47,7 +47,7 @@ The next Stacks block confirms the previous block. Transaction 2 has 2 confirmat
 The next Stacks block confirms the previous block. Transaction 2 has 3 confirmations.
 ```
 
-The lifecycles of the two transactions are similar, but the difference is pending state. Many Bitcoin wallets display
+The lifecycle of the two transactions is similar, but the difference is pending state. Many Bitcoin wallets display
 0-confirmation balances: your wallet balance with any mempool transactions already applied. This is useful because it
 tells you when you've sent a transaction or received one. With smart contracts, displaying pending state is not as
 straightforward, because smart contracts do not just transfer inputs to outputs, they may call other contracts, emit

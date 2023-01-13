@@ -62,11 +62,11 @@ A server that runs Stacks Blockchain services.
 
 #### crypto-asset
 
-A digital asset which utilises cryptography, peer-to-peer networking and a public ledger to regulate the creation of new units, verify transactions and secure the transactions without the intervention of any middleman.
+A digital asset which utilizes cryptography, peer-to-peer networking and a public ledger to regulate the creation of new units, verify transactions and secure the transactions without the intervention of any middleman.
 
 #### cryptography
 
-The practise and study of encryption and decryption - encoding data so that it can only be decoded by specific individuals. A system for encrypting and decrypting data is a cryptosystem.
+The practice and study of encryption and decryption - encoding data so that it can only be decoded by specific individuals. A system for encrypting and decrypting data is a cryptographic system.
 
 #### DAO
 
@@ -78,7 +78,7 @@ A DApp is a service that enables direct interaction between end users and provid
 
 #### Decentralized Autonomous Organization
 
-A type of contract or suite of contracts on the blockchain that is intented to codify, enforce or automate the processes of an organization.
+A type of contract or suite of contracts on the blockchain that is intended to codify, enforce or automate the processes of an organization.
 
 #### digital asset
 
