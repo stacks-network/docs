@@ -30,7 +30,7 @@ Please edit this page to add any relevant new site that we are missing.
 
 ![website-screenshot](/img/sh_stxstats.png)
 
-### [Novuminsights](https://stacks.novuminsights.com/health)
+### [Novum Insights](https://stacks.novuminsights.com/health)
 
 ![website-screenshot](/img/sh_novuminsights.png)
 

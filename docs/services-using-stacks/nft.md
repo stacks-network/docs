@@ -15,6 +15,7 @@ Please edit this page to add any relevant new site that we are missing.
 ![website-screenshot](/img/sh_nft_byzantion.png)
 
 ### [Gamma](https://gamma.io/)
+
 ![website-screenshot](/img/sh_nft_gamma.png)
 
 ### [Megapont](https://www.megapont.com/)
