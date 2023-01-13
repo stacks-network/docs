@@ -76,4 +76,4 @@ sidebar_position: 13
 
 - [Read the full Stacks 2.0: Apps and Smart Contracts for Bitcoin whitepaper](https://cloudflare-ipfs.com/ipfs/QmaGgiVHymeDjAc3aF1AwyhiFFwN97pme5m536cHT4FsAW).
 
-- [Watch Aaron Blankstein video on Stacks whitepater v2](https://www.youtube.com/watch?v=Wd-Bfe8Sn-Y).
+- [Watch Aaron Blankstein video on Stacks whitepaper v2](https://www.youtube.com/watch?v=Wd-Bfe8Sn-Y).

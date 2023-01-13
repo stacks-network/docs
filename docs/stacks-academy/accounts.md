@@ -82,7 +82,7 @@ import {
   getAddressFromPrivateKey,
   TransactionVersion,
   getPublicKey,
-} from '@stacks/transactions';
+} from "@stacks/transactions";
 
 const privateKey = makeRandomPrivKey();
 

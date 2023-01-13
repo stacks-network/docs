@@ -1,8 +1,7 @@
 ---
 title: Bitcoin Connection
 description: How Stacks is connected to Bitcoin
-sidebar_position: 2
-draft: true
+sidebar_position: 3
 ---
 
 At the very beginning of these docs, we described Stacks as bringing smart contract functionality to Bitcoin, without modifying Bitcoin itself.
@@ -17,7 +16,7 @@ Let's get into it.
 
 ## Stacks Among Other Bitcoin Layers
 
-In the [last section](./what-is-stacks.md) we covered what Stacks actually is and waht problem it is solving, but this is not a new problem. The Bitcoin write problem has been a bit of a holy grail problem in the crypro world for a while now.
+In the [last section](./what-is-stacks.md) we covered what Stacks actually is and what problem it is solving, but this is not a new problem. The Bitcoin write problem has been a bit of a holy grail problem in the crypto world for a while now.
 
 Bitcoin is the OG cryptocurrency and has the largest market cap, but it also some of the least functionality, which means if we want to make it a productive asset and use it to build a decentralized economy, we need to take a layered approach and let Bitcoin do what it does best, while creating additional layers on top of it to add functionality.
 
@@ -25,7 +24,7 @@ So how does Stacks compare to some of the other approaches to layering on top of
 
 ### Lightning
 
-Lightning is probably the most well-known Bitcoin layer, and is primarily designed to address scalability issues. Lightning functions as a separate P2P network fomr Bitcoin, allowing participants to conduct move their BTC from the main chain to Lightning, conduct multiple transactions on Lightning, and then send the final result to the BTC chain where it is finalized.
+Lightning is probably the most well-known Bitcoin layer, and is primarily designed to address scalability issues. Lightning functions as a separate P2P network from Bitcoin, allowing participants to conduct move their BTC from the main chain to Lightning, conduct multiple transactions on Lightning, and then send the final result to the BTC chain where it is finalized.
 
 This is actually a completely separate problem from what Stacks is trying to address. Where Lightning takes the existing functionality of Bitcoin and makes it much more scalable, Stacks is seeking to expand Bitcoin's functionality to do things you can't do now.
 
@@ -53,9 +52,9 @@ RSK is also EVM-compatible, where Stacks uses Clarity and the Clarity VM.
 
 [Liquid](https://liquid.net/) is a federated network focused on unlocking more advanced financial capabilities with Bitcoin. Being federated, Liquid is not an open network, and thus not decentralized.
 
-The Liquid consensus mechanism is managed by 15 functonaries, who handle the transaction processing and validating. Liquid also does not support general-purpose applications, but is solely focused on financial applications.
+The Liquid consensus mechanism is managed by 15 functionaries, who handle the transaction processing and validating. Liquid also does not support general-purpose applications, but is solely focused on financial applications.
 
-This was a brief overview of these other Bitcoin projects, for anotehr perspective, Hiro wrote an [excellent post](https://www.hiro.so/blog/building-on-bitcoin-project-comparison) comparing Stacks with other Bitcoin projects.
+This was a brief overview of these other Bitcoin projects, for another perspective, Hiro wrote an [excellent post](https://www.hiro.so/blog/building-on-bitcoin-project-comparison) comparing Stacks with other Bitcoin projects.
 
 ## Why Does Stacks Need a Token?
 
@@ -65,7 +64,7 @@ Let's start by looking at the fundamental reason why tokens exist: to fund the m
 
 Bitcoin is a token. It is a cryptocurrency that is used to incentivize miners to add new blocks to the chain. In Bitcoin's case, mining rewards are set on a predefined schedule, and once those mining rewards run out, the chain will need to survive on transaction fees alone.
 
-The purpose of a blockchain is to have a permanent historical record of every transaction that has ever occured on the chain. Blockchains are basically ledgers. The token aspect is used as an incentive mechanism to secure the chain.
+The purpose of a blockchain is to have a permanent historical record of every transaction that has ever occurred on the chain. Blockchains are basically ledgers. The token aspect is used as an incentive mechanism to secure the chain.
 
 This is why networks like Lightning and other P2P networks don't need tokens, they don't need to maintain a historical record. When we are talking about a system that is supposed to maintain a global financial system, it is important for the maintenance of that system to be incentivized correctly.
 
@@ -151,7 +150,7 @@ Specifically, it needs a tighter connection to the Bitcoin chain than PoX curren
 
 Second, it needs a completely trustless, decentralized two-way peg between the Stacks chain and Bitcoin, so that end users only have to send Bitcoin to an address, have things happen on the Stacks side, and have Bitcoin returned to them.
 
-These issues are currently being addresse with sBTC and the Stacks Nakamoto Release, both of which you can [read about on Stacks' website](https://www.stacks.co/learn/sbtc).
+These issues are currently being addressed with sBTC and the Stacks Nakamoto Release, both of which you can [read about on Stacks' website](https://www.stacks.co/learn/sbtc).
 
 ## Bitcoin-First Applications in the Wild
 
@@ -165,7 +164,7 @@ Here are the basics of how it works:
 
 2. After LP (liquidity provider) sends funds to the HTLC address and the block is confirmed, the payment is considered in escrow.
 
-3. Now Stacks comes in by reading the Bitcoin state and verifying that deposit actually occured on the BTC chain, and escrows the corresponding amount of xBTC if it did. If for some reason that were to fail, the LP is still in control of their BTC funds
+3. Now Stacks comes in by reading the Bitcoin state and verifying that deposit actually occurred on the BTC chain, and escrows the corresponding amount of xBTC if it did. If for some reason that were to fail, the LP is still in control of their BTC funds
 
 4. Once that escrow is confirmed, LP signs a Stacks transaction that transfers control of the BTC over to Magic, at which point Magic controls the BTC and xBTC is transferred to the Zest liquidity pool. Zest tokens are then minted on the Stacks chain, representing a claim token for the LP's BTC funds
 

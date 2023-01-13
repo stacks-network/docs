@@ -3,15 +3,17 @@ title: Post Conditions
 description: What post conditions are and how they work
 sidebar_position: 10
 ---
+
 Post conditions are one of the most interesting and unique aspects of Stacks.
 
-From the beginning, safety adn security has been at the heart of the Stacks ethos and formed the foundation of arechitecture decisions when building it.
+From the beginning, safety and security has been at the heart of the Stacks ethos and formed the foundation of architecture decisions when building it.
 
 Like Clarity, Stacks' smart contract programming language, post conditions were specifically built and design to solve the problem of user safety when interacting with blockchain applications.
 
 So what are they and how do they work?
 
 ## How Post Conditions Work
+
 Post conditions are conditions that are set on the client side to ensure that a smart contract does not perform any unexpected behavior.
 
 Let's look at an example to make this more concrete.

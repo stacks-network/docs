@@ -46,7 +46,7 @@ It may take a few days for the node to synchronize with the Bitcoin mainnet.
 
 ## Running a miner
 
-First, a keychain needs to be generated. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining.
+First, a keychain needs to be generated. With this keychain, we'll purchase some BTC from a cryptocurrency exchange, and then use that BTC to start mining.
 
 To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `make_keychain` command.
 
@@ -148,7 +148,7 @@ Make sure are [running a node](run-a-node) and [running bitcoind locally](#runni
 
 ### Generate keychain and get mainnet tokens in Windows
 
-To setup the miner, first we need to generate a keychain. With this keychain, we'll purchase some BTC from a crytpocurrency exchange, and then use that BTC to start mining.
+To setup the miner, first we need to generate a keychain. With this keychain, we'll purchase some BTC from a cryptocurrency exchange, and then use that BTC to start mining.
 
 To get a keychain, the simplest way is to use the `stacks-cli`. We'll use the `stx make-keychain` command.
 
@@ -184,7 +184,7 @@ The above BTC address will then need to be imported into the BTC network.
 bitcoin-cli -rpcport=8332 -rpcuser=your-user -rpcpassword=your-password importaddress <btcAddress from JSON above>
 ```
 
-Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
+Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a cryptocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
 ### Update configuration file
 
@@ -253,7 +253,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain 2>/dev/null
 ```
 
-We need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
+We need to get some BTC to that address. You should be able to transfer BTC to this address using a cryptocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
 ### Update configuration file
 
@@ -326,7 +326,7 @@ Generate a keychain:
 docker run -i node:14-alpine npx @stacks/cli make_keychain 2>/dev/null
 ```
 
-We need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
+We need to get some BTC to that address. You should be able to transfer BTC to this address using a cryptocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
 ### Install the chart and run the miner
 

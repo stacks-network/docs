@@ -11,7 +11,7 @@ The process and code are much the same.
 
 Just like with the NFT, it's a good idea to create a trait when you create a fungible token so that different tools and protocols and be confident in building interfaces for those tokens.
 
-Since FTs may be divisible, the [FT official mainnet deployment trait adress](https://explorer.stacks.co/txid/0x99e01721e57adc2c24f7d371b9d302d581dba1d27250c7e25ea5f241af14c387?chain=mainnet) has additional functions.
+Since FTs may be divisible, the [FT official mainnet deployment trait address](https://explorer.stacks.co/txid/0x99e01721e57adc2c24f7d371b9d302d581dba1d27250c7e25ea5f241af14c387?chain=mainnet) has additional functions.
 
 ```clarity
 (define-trait sip-010-trait

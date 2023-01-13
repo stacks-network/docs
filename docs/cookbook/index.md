@@ -17,6 +17,8 @@ Swapping between Bitcoin and Stacks addresses
 
 Swapping between xBTC and BTC
 
+Verifying a transaction on the BTC chain
+
 ## DAOs
 
 Creating a simple DAO with ExecutorDAO
