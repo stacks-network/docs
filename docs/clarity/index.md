@@ -7,7 +7,7 @@ sidebar_position: 4
 
 Clarity is a **decidable** smart contract language that optimizes for predictability and security, designed for the Stacks blockchain. Smart contracts allow developers to encode essential business logic on a blockchain.
 
-The design decisions behind Clarity were based heavily on taking lessons learned in common Solidity exploits and creating a langauge that has been purpose-built for safety and security in mind.
+The design decisions behind Clarity were based heavily on taking lessons learned in common Solidity exploits and creating a language that has been purpose-built for safety and security in mind.
 
 These docs serve primarily as a reference for the functions and keywords that you can use in Clarity.
 
@@ -19,7 +19,7 @@ The following section is an excerpt from the excellent book, [Clarity of Mind](h
 
 The number of smart contract languages grows by the year. Choosing a first language can be challenging, especially for a beginner. The choice is largely dictated by the ecosystem you are interested in, although some languages are applicable to more than just one platform. Each language has its own upsides and downsides and it is out of the scope of this book to look at all of them. Instead, we will focus on what sets Clarity apart and why it is a prime choice if you require the utmost security and transparency.
 
-One of the core precepts of Clarity is that it is secure by design. The design process was guided by examining common pitfalls, mistakes, and vulnerabilities in the field of smart contract engineering as a whole. There are countless real world examples of where developer failure led to the loss or theft of vast amounts of tokens. To name two big ones: an issue that has become known as the Parity bug led to the irreparable loss of millions of dollars worth of Ethereum. Second, the hacking of The DAO (a "Decentralised Autonomous Organisation") caused financial damage so great that the Ethereum Foundation decided to issue a contentious hard fork that undid the theft. These and many other mistakes could have been prevented in the design of the language itself.
+One of the core precepts of Clarity is that it is secure by design. The design process was guided by examining common pitfalls, mistakes, and vulnerabilities in the field of smart contract engineering as a whole. There are countless real world examples of where developer failure led to the loss or theft of vast amounts of tokens. To name two big ones: an issue that has become known as the Parity bug led to the irreparable loss of millions of dollars worth of Ethereum. Second, the hacking of The DAO (a "Decentralized Autonomous Organization") caused financial damage so great that the Ethereum Foundation decided to issue a contentious hard fork that undid the theft. These and many other mistakes could have been prevented in the design of the language itself.
 
 ### Clarity is interpreted, not compiled
 
@@ -51,7 +51,7 @@ Public contract calls must return a so-called response that indicates success or
 
 ### Composition over inheritance
 
-Clarity adopts a composition over inheritance. It means that Clarity smart contracts do not inherit from one another like you see in languages like Solidity. Developers instead define traits which are then implemented by different smart contracts. It allows contracts to conform to different interfaces with greater flexibility. There is no need to worry about complex class trees and contracts with implicit inherited behaviour.
+Clarity adopts a composition over inheritance. It means that Clarity smart contracts do not inherit from one another like you see in languages like Solidity. Developers instead define traits which are then implemented by different smart contracts. It allows contracts to conform to different interfaces with greater flexibility. There is no need to worry about complex class trees and contracts with implicit inherited behavior.
 
 ### Access to the base chain: Bitcoin
 

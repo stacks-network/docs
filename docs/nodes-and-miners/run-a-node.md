@@ -66,7 +66,7 @@ _You may also use a symlink as an alternative to copying: `ln -s sample.env .env
 
 - Export docker log files to `./exported-logs`:
 
-This will create one log file for every running service, for example: postgres.log, stacks-blockain.log, stacks-blockchain-api.log and bitcoin-core.log.
+This will create one log file for every running service, for example: postgres.log, stacks-blockchain.log, stacks-blockchain-api.log and bitcoin-core.log.
 Notice that each time you run this command the log files will be overwritten.
 
 ```bash
@@ -87,7 +87,7 @@ Notice that each time you run this command the log files will be overwritten.
 
 8. **Delete** all data in `./persistent-data/<network>` and/or data of the Bitcoin blockchain.
 
-    This data is owned by root, so you will need to run it with sudo privileges so it can delete the data.
+   This data is owned by root, so you will need to run it with sudo privileges so it can delete the data.
 
 ```bash
 $ sudo ./manage.sh -n <network> -a reset
@@ -134,16 +134,16 @@ Ok. Delete Stacks and Bitcoin data.
 
 Stacks needs to use a Bitcoin node, and by default when you run a Stacks node you will be using a public Bitcoin node, which is configured in the `.env` file. Default values is `BITCOIN_NODE=bitcoin.mainnet.stacks.org`.
 
-However, you can optionaly run both nodes together and configured in a way that you Stacks node will use your own Bitcoin node instead of a public one.
+However, you can optionally run both nodes together and configured in a way that you Stacks node will use your own Bitcoin node instead of a public one.
 
 If you run the script with a bitcoin node it will download and build it directly from source for increased security. This process which only needs to happen once can take up to 20-30 minutes depending on the speed of your system. Also, once the bitcoin node is up and running it will need an additional time for sync for the first time (can be hours for testnet and days for mainnet).
 
 ### Why run Stacks node with your own Bitcoin node?
 
-Because running your own Bitcoin node will give you higher security and improved perfomance.
+Because running your own Bitcoin node will give you higher security and improved performance.
 
-* **Improved perfomance**: The Bitcoin node will serve you blocks faster, as well as UTXOs for your miner (if you run one).
-* **Higher security**: The Bitcoin node will also have validated all bitcoin transactions the Stacks node consumes. If you don't run your own Bitcoin node, you're relying on the SPV headers to vouch for the validity of Bitcoin blocks.
+- **Improved performance**: The Bitcoin node will serve you blocks faster, as well as UTXOs for your miner (if you run one).
+- **Higher security**: The Bitcoin node will also have validated all bitcoin transactions the Stacks node consumes. If you don't run your own Bitcoin node, you're relying on the SPV headers to vouch for the validity of Bitcoin blocks.
 
 The disadvantage of running your own Bitcoin node is that you need the extra space to store the Bitcoin blockchain (about 500GB) and the initial time it will take to download this data the first time.
 
@@ -156,7 +156,7 @@ Example: `./manage.sh -n mainnet -a start -f bitcoin` or `./manage.sh -n testnet
 ### Bitcoin node configuration
 
 In the `.env` file there is the variable `BITCOIN_BLOCKCHAIN_FOLDER`.
-As the bitcoin blockchain can be large (over 500GB) you optionally change this variable to any location of your choosing. If you have previously used the [bitcoin core application](https://bitcoin.org/en/bitcoin-core/) and already have the bitcoin blockchain synced, you can use the same data folder and avoid redownloading the entire bitcoin blockchain.
+As the bitcoin blockchain can be large (over 500GB) you optionally change this variable to any location of your choosing. If you have previously used the [bitcoin core application](https://bitcoin.org/en/bitcoin-core/) and already have the bitcoin blockchain synced, you can use the same data folder and avoid re-downloading the entire bitcoin blockchain.
 
 ## **Accessing the services**
 
@@ -259,7 +259,6 @@ _**API Missing Parent Block Error**_:
 ./manage.sh -n <network> -a restart
 ```
 
-
 ## **Requirements:**
 
 - [Docker](https://docs.docker.com/get-docker/) >= `17.09`
@@ -278,7 +277,6 @@ The way Docker for Mac on an Arm chip is designed makes the I/O incredibly slow,
 This only seems to affect MacOS, other Arm based systems like Raspberry Pi's seem to work fine.
 
 :::
-
 
 ### Install/Update docker-compose
 
@@ -319,7 +317,7 @@ sudo chmod 755 $DESTINATION
 
 The Docker daemon always runs as the root user so by default you will need root privileges to interact with it.
 
-The script `manage.sh` uses docker, so to avoid the requirement of needing to run the script with root privileges it is prefered to be able to *manage Docker as a non-root user*, following [these simple tests](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
+The script `manage.sh` uses docker, so to avoid the requirement of needing to run the script with root privileges it is preferred to be able to _manage Docker as a non-root user_, following [these simple tests](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
 
 This will avoid the need of running the script with root privileges for all operations except the removal of data.
 
@@ -327,11 +325,11 @@ This will avoid the need of running the script with root privileges for all oper
 
 The following files can be modified to personalize your node configuration, but generally most of them should be left as-is. All these files will be created from the sample copy if they don't exist at runtime (for example `.env` is created from `sample.env`). However these files will never be modified by the application once created and will never be pushed back to github, so your changes will be safe.
 
-* `.env`
-* `./conf/mainnet/Config.toml`
-* `./conf/mainnet/bitcoin.conf`
-* `./conf/testnet/Config.toml`
-* `./conf/testnet/bitcoin.conf`
+- `.env`
+- `./conf/mainnet/Config.toml`
+- `./conf/mainnet/bitcoin.conf`
+- `./conf/testnet/Config.toml`
+- `./conf/testnet/bitcoin.conf`
 
 By default:
 

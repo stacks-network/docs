@@ -3,10 +3,12 @@ title: What is Stacks?
 description: An introduction to Stacks
 sidebar_position: 1
 ---
+
 # What is Stacks?
+
 We can get an idea of the goal and ethos behind Stacks by looking at [how Satoshi envisioned generalizing Bitcoin](https://satoshi.nakamotoinstitute.org/posts/bitcointalk/threads/244/#222) back in 2010:
 
->"...to be a completely separate network and separate block chain, yet share CPU power with Bitcoin...all networks in the world would share combined CPU power, increasing the total strength."
+> "...to be a completely separate network and separate block chain, yet share CPU power with Bitcoin...all networks in the world would share combined CPU power, increasing the total strength."
 
 This is major theme in the design decisions for Stacks.
 
@@ -32,10 +34,12 @@ There's a lot of jargon, possible assumptions, controversy, and cool technology 
 </div>
 
 ## Stacks and the Purpose of Blockchain Technology
+
 When evaluating new blockchain technologies, it's important to keep the original intent and purpose of them intact. If we go back to Bitcoin, it was originally designed to be:
-* Decentralized
-* Immutable
-* Secure
+
+- Decentralized
+- Immutable
+- Secure
 
 You've likely heard of the blockchain trilemma, the problem of trying to balance the decentralization, scalability, and security of a blockchain network.
 
@@ -54,17 +58,18 @@ Bitcoin is also not scalable. Because every new block must propagate to every no
 While most new blockchain protocols popping up these days see these properties as negatives and seek to eliminate them, Stacks takes a different approach.
 
 ## The Stacks Way
+
 Stacks takes a pyramid approach, where you have the foundational settlement layer at the bottom (Bitcoin), and then a layer on top of that to add smart contracts and programmability (Stacks), and then layers on top of that for scalability and speed (Hiro's Subnets).
 
 By taking this approach, we are able to have all of the same functionality as chains like Ethereum without all of the drawbacks of having a massively complex chain.
 
-So Stacks is a layer 2 for Bitcoin?
+So Stacks is a Bitcoin layer with some unique properties, like having its own token, that allow it to maintain a historical ledger of all of its transactions and operate with its own security budget.
 
-Not quite.
+This is one of the things that separates Stacks from other Bitcoin layers like Lightning.
 
-Stacks is a sovereign blockchain with its own token and separate consensus mechanism called Proof of Transfer. This unique consensus mechanism is what allows Stacks to serve as smart contracts for Bitcoin. We'll cover that in detail in the next section.
+Lightning doesn't add any additional functionality to Bitcoin, it simply helps to scale functionality Bitcoin already has and help it operate faster. Lightning is also ephemeral, it has no permanent state that it keeps track of, and so is unsuitable for things like smart contracts that need to keep track of data and maintain state.
 
-An example of a Layer 2 for Bitcoin would be Lightning. It doesn't add any additional functionality, it simply helps to scale functionality the L1 already has. Contrast this to Stacks, which adds additional functionality to Bitcoin but still ultiamtely settles down to Bitcoin (we'll cover this next in the section on Proof of Transfer).
+Contrast this to Stacks, which adds additional functionality to Bitcoin but still ultimately settles down to Bitcoin (we'll cover this next in the section on Proof of Transfer).
 
 This is also what separates Stacks from L2 scaling solutions on Ethereum like Polygon or Arbitrum. The benefit we get here is that we can maintain a separation of concerns and keep Bitcoin simple and sturdy, chugging along producing blocks, and add additional layers for functionality and speed. But if those other layers were to be compromised, that would not affect the foundational layer at all.
 
@@ -72,7 +77,7 @@ This is an important property when we are talking about building blockchains tha
 
 ![btc-stacks](/img/pox-why-bitcoin.png)
 
-Sooo it's a side chain?
+_Sounds like a sidechain_.
 
 Nope. We'll get into the technical details of how this works in the next section, but because Stacks records its entire history to Bitcoin, it is at least as hard to re-org the Stacks chain as it is Bitcoin. This is a key differentiator from side chains, which do not have their history recorded to their primary chain.
 
