@@ -29,7 +29,7 @@ A database created and shared by the members of a peer-to-peer computer network 
 
 #### Blockchain Name System (BNS)
 
-Replacement for DNS. More info [here](../noteworthy-contracts/bns-contract).
+Replacement for DNS. More info [here](../clarity/noteworthy-contracts/bns-contract).
 
 #### Blockstack Browser
 
