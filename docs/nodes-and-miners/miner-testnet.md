@@ -211,7 +211,7 @@ cd ../..
 ./target/release/stacks-node start --config=./testnet/conf/testnet-follower-conf.toml
 ```
 
-To read more about the technical details of mining on the Stacks 2.0 network, have a look at [the minig guide](../stacks-academy/mining):
+To read more about the technical details of mining on the Stacks 2.0 network, have a look at [the mining guide](../stacks-academy/mining):
 
 ### Enable debug logging
 
