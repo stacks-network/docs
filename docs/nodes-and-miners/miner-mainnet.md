@@ -10,7 +10,7 @@ tags:
 
 For more on the technical details of mining, please review the [mining guide](../stacks-academy/mining)
 
-The following is an abridged version of the [walkthrough here](https://github.com/stacksfoundation/miner-docs), written for a Linux system. If you're on Windows or MacOS, there will be some slight modifications needed ([PR's welcome!](../contribute/docs))
+The following is an abridged version of the [walkthrough here](https://github.com/stacksfoundation/miner-docs), written for a Linux system. If you're on Windows or MacOS, there will be some slight modifications needed ([PR's welcome!](../contribute/docs)).
 
 If you're interested in mining on the Stacks testnet, you can find instructions on how to do that [here](miner-testnet):
 
