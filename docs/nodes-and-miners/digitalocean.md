@@ -8,7 +8,9 @@ tags:
 
 ## Introduction
 
-This is a step by step guide to deploy the [Stacks Blockchain on DigitalOcean](https://marketplace.digitalocean.com/apps/stacks-blockchain). Code is hosted on this [Github repository](https://github.com/stacks-network/stacks-blockchain-docker).
+This is a step by step guide to deploy the [Stacks Blockchain on DigitalOcean](https://marketplace.digitalocean.com/apps/stacks-blockchain).
+
+Build code is hosted on this [Github repository](https://github.com/stacksfoundation/stacks-machine-images) using the [methods from here](https://github.com/stacks-network/stacks-blockchain-docker)
 
 ## Steps
 
@@ -18,12 +20,12 @@ Go to the [Stacks Blockchain page](https://marketplace.digitalocean.com/apps/sta
 
 #### Step 2
 
-Choose a plan (it will only allow you to select a plan that meets the minimum requirements) and your preferred datacenter region.
+Choose a plan (it will only allow you to select a droplet that meets the minimum requirements) and your preferred datacenter region.
 ![](/img/sh_digitalocean-choose-plan.png)
 
 #### Step 3
 
-Enter a root password or enable SSH keys if your prefer.
+Enter a root password or [enable SSH keys](https://docs.digitalocean.com/products/droplets/how-to/add-ssh-keys/) if your prefer.
 
 ![](/img/sh_digitalocean-choose-authentication.png)
 
@@ -81,7 +83,8 @@ In addition to creating a Droplet from the Stacks Blockchain 1-Click App via the
 As an example, to create a 4GB Stacks Blockchain Droplet in the SFO2 region, you can use the following curl command. You’ll need to either save your [API access token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) to an environment variable or substitute it into the command below.
 
 ```bash
-curl -X POST -H 'Content-Type: application/json' \
+$ export TOKEN=<digitalocean API token>
+$ curl -X POST -H 'Content-Type: application/json' \
      -H 'Authorization: Bearer '$TOKEN'' -d \
     '{"name":"choose_a_name","region":"sfo2","size":"s-2vcpu-4gb","image":"stacksfoundation-stacksblockchain"}' \
     "https://api.digitalocean.com/v2/droplets"

@@ -10,6 +10,8 @@ tags:
 
 Make sure you've followed the [Run a node](run-a-node) procedure. Once completed it's only a few more steps to run a proof-of-burn miner on the testnet.
 
+Alternatively, there is also a [full mining walkthrough here](https://github.com/stacksfoundation/miner-docs/tree/testnet) with scripts to get a miner up and running.
+
 If you want to learn more about the technical details of mining, please review the [mining guide](../stacks-academy/mining).
 
 ## Running bitcoind locally
@@ -22,14 +24,18 @@ Next, start bitcoind with the following configuration:
 
 ```toml
 server=1
-rpcuser=your-bitcoind-username
-rpcpassword=your-bitcoind-password
 testnet=1
-txindex=0
-listen=1
-rpcserialversion=0
-maxorphantx=1
+#disablewallet=1
+datadir=/bitcoin
+rpcuser=btcuser
+rpcpassword=btcpass
+rpcallowip=0.0.0.0/0
+dbcache=512
 banscore=1
+rpcthreads=256
+rpcworkqueue=256
+rpctimeout=100
+txindex=1
 
 [test]
 bind=0.0.0.0:18333
@@ -43,7 +49,19 @@ Finally, start bitcoind as follows:
 bitcoind -conf=path/to/bitcoin.conf
 ```
 
-It may take a few hours for the node to synchronize with the Bitcoin testnet.
+It will take a few days for the node to synchronize with the Bitcoin mainnet.
+
+While it's syncing, you can track the progress with `bitcoin-cli` or a logfile (will be located where the chainstate is stored):
+
+```bash
+$ bitcoin-cli \
+ -rpcconnect=localhost \
+ -rpcport=18332 \
+ -rpcuser=your-bitcoind-username \
+ -rpcpassword=your-bitcoind-password \
+getblockchaininfo | jq .blocks
+2416844
+```
 
 ## Running a miner
 
@@ -95,8 +113,8 @@ local_peer_seed = "replace-with-your-private-key"
 # To mine on Testnet, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
-username = "<USERNAME>"
-password = "<PASSWORD>"
+username = "<bitcoin config rpcuser>"
+password = "<bitcoin config rpcpassword>"
 ...
 ```
 
@@ -196,8 +214,8 @@ local_peer_seed = "replace-with-your-private-key"
 # To mine on Testnet, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
-username = "<USERNAME>"
-password = "<PASSWORD>"
+username = "<bitcoin config rpcuser>"
+password = "<bitcoin config rpcpassword>"
 ...
 ```
 
@@ -268,8 +286,8 @@ local_peer_seed = "replace-with-your-private-key"
 # To mine on Testnet, you need to run bitcoind locally
 # Details can be found in above section, 'Running bitcoind locally'
 peer_host = "127.0.0.1"
-username = "<USERNAME>"
-password = "<PASSWORD>"
+username = "<bitcoin config rpcuser>"
+password = "<bitcoin config rpcpassword>"
 ...
 ```
 
