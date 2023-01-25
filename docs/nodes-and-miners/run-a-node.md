@@ -8,9 +8,9 @@ tags:
 
 ## Stacks Blockchain with Docker
 
-Run your own Stacks Blockchain node on Docker with just few commands using [stacks-blockchain-docker](https://github.com/stacks-network/stacks-blockchain-docker)
+Run your own Stacks Blockchain node using [docker-compose](https://docs.docker.com/compose/) with just few commands using [stacks-blockchain-docker](https://github.com/stacks-network/stacks-blockchain-docker)
 
-- [Quickstart](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/README.md)
+- [Quickstart](./run-a-node#quickstart)
 - [Requirements](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/docs/requirements.md)
 - [Docker Setup](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/docs/docker.md)
 - [Configuration](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/docs/config.md)
@@ -19,19 +19,28 @@ Run your own Stacks Blockchain node on Docker with just few commands using [stac
 
 ## **Requirements:**
 
-⚠️ `docker-compose` version `2.2.2` or greater is **required**
+The **minimum viable requirements** are listed below.
 
-- Machine with (at a minimum):
-  - 4GB memory
-  - 1 Vcpu (the more CPU, the faster the node will respond and the faster it will sync)
-  - 100GB storage (>= 150GB is recommended)
+While you _can_ run a node using these specs, it's _recommended_ to assign more than the minimum for better performance.
 
-:::caution MacOS with an M1 processor is NOT recommended
+- ⚠️ [docker-compose](https://docs.docker.com/compose/install/) version `2.2.2` or greater is **required**
+- **4GB memory**
+- **1 Vcpu** ( _minimum of 2 Vcpu is recommended_ )
+- **100GB disk** ( _minimum of 150GB SSD is recommended_ )
 
-The way Docker for Mac on an Arm chip is designed makes the I/O incredibly slow, and blockchains are **_very_** heavy on I/O.
-This only seems to affect MacOS, other Arm based systems like Raspberry Pi's seem to work fine.
+:::caution MacOS with an ARM processor is NOT recommended
+
+The way Docker for Mac on an Arm CPU is designed makes the I/O incredibly slow, and blockchains are **_very_** heavy on I/O.
+This only seems to affect MacOS, other Arm based systems like Raspberry Pi work as expected.
+:::
 
 ## **Quickstart**
+
+The `<network>` placeholder used below can be replaced with one of:
+
+- mainnet
+- testnet
+- mocknet
 
 1. **Clone the stacks-blockchain-docker repository locally**
 
@@ -39,39 +48,36 @@ This only seems to affect MacOS, other Arm based systems like Raspberry Pi's see
 git clone https://github.com/stacks-network/stacks-blockchain-docker && cd stacks-blockchain-docker
 ```
 
-2. **Copy `.env` file**
-
-   _If file `.env` doesn't exist when launched it will be created from `sample.env` automatically._
-
-```bash
-cp sample.env .env
-```
-
-_You may also use a symlink as an alternative to copying: `ln -s sample.env .env`_
-
-3. **Start the Services**
+2. **Start the Services**
 
 ```bash
 ./manage.sh -n <network> -a start
 ```
 
-- With an optional HTTP proxy on port `80`:
+:::note With an optional HTTP proxy on port 80:
 
 ```bash
 ./manage.sh -n <network> -a start -f proxy
 ```
+
+:::
 
 ## **Accessing the services**
 
 :::tip
 For networks other than `mocknet`, downloading the initial headers can take several minutes. Until the headers are downloaded, the `/v2/info` endpoints won't return any data.
 
-Use the command `./manage.sh -n <network> -a logs` to check the sync progress.
+Follow the logs to track the sync progress:
+
+```bash
+./manage.sh -n <network> -a logs
+```
+
 :::
 
 **stacks-blockchain**:
 
-- Ports `20443-20444` are exposed to `localhost`
+- Ports `20443-20444` are exposed on `localhost`
 
 ```bash
 curl -sL localhost:20443/v2/info | jq -r
@@ -79,25 +85,27 @@ curl -sL localhost:20443/v2/info | jq -r
 
 **stacks-blockchain-api**:
 
-- Port `3999` are exposed to `localhost`
+- Port `3999` is exposed on `localhost`
 
 ```bash
-curl -sL localhost:3999/v2/info | jq -r
+curl -sL localhost:3999 | jq -r
 ```
 
 **proxy**:
 
-- Port `80` is exposed to `localhost`
+- Port `80` is exposed on `localhost`
 
 ```bash
 curl -sL localhost/v2/info | jq -r
-curl -sL localhost/ | jq -r
+curl -sL localhost | jq -r
 ```
 
 ---
 
 ## Upgrades
 
-⚠️ For schema-breaking upgrades to running instances of this repo, you'll need to [run the event-replay](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/docs/upgrade.md):
+:::caution
+For schema-breaking upgrades to running instances of this repo, you'll need to [run an event-replay](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/docs/upgrade.md):
+:::
 
 ---
