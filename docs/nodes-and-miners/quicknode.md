@@ -18,7 +18,7 @@ Once you are signed in, getting set up with your own Stacks node is a matter of 
 
 From there, you just need to select Stacks, your desired network, and your desired QuickNode plan level.
 
-That's it.
+_That's it._
 
 You now have an API endpoint URL you can use to connect to Stacks.
 
@@ -42,4 +42,4 @@ const network = new StacksTestnet({ url: "<QUICKNODE_ENDPOINT_HERE>" });
 
 Then you can call transactions like you normally would using the `@stacks/transactions` library.
 
-If you need more information on how to do this, refer to the [Hello Stacks](../tutorials/hello-stacks.md) tutorial.
+For an example of how to do this, please refer to the [Hello Stacks](../tutorials/hello-stacks.md) tutorial.
