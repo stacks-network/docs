@@ -18,22 +18,12 @@ The `stacks-node` binary may have deprecated commands that are not documented on
 
 ### mocknet
 
-Start a node based on a fast local setup emulating a burnchain. Ideal for smart contract development.
+Start a node based on a fast local setup emulating a burnchain. Ideal for smart contract and local dapp development.
 
 Example:
 
 ```bash
 stacks-node mocknet
-```
-
-### krypton
-
-Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](../stacks-academy/proof-of-transfer.md).
-
-Example:
-
-```bash
-stacks-node krypton
 ```
 
 ### testnet
@@ -352,9 +342,9 @@ Example:
 
 ```toml
 prometheus_bind = "0.0.0.0:9153"
-```
+``` -->
 
-### Section: events_observer (optional)
+<!-- ### Section: events_observer (optional)
 
 Contains options for watching events emitted by a local [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service.
 
@@ -408,9 +398,9 @@ events_keys = [
     "STGT7GSMZG7EA0TS6MVSKT5JC1DCDFGZWJJZXN8A.contract.nft-token",
     "stx"
 ]
-```
+``` -->
 
-### Section: connection_options (optional)
+<!-- ### Section: connection_options (optional)
 
 Specifies configuration options for others connecting to the stacks node.
 
@@ -481,9 +471,9 @@ Example:
 
 ```toml
 read_only_call_limit_runtime = 1000000000
-```
+``` -->
 
-### Section: burnchain
+<!-- ### Section: burnchain
 
 This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
 
@@ -578,9 +568,9 @@ Example:
 
 ```toml
 commit_anchor_block_within = 10000
-```
+``` -->
 
-### Section: ustx_balance (testnet/regtest only)
+<!-- ### Section: ustx_balance (testnet/regtest only)
 
 This section contains configuration options pertaining to the genesis block allocation for an address in micro-STX. If a user changes these values, their node may be in conflict with other nodes on the network and find themselves unable to sync with other nodes.
 
