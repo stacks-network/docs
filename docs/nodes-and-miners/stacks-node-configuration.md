@@ -18,22 +18,12 @@ The `stacks-node` binary may have deprecated commands that are not documented on
 
 ### mocknet
 
-Start a node based on a fast local setup emulating a burnchain. Ideal for smart contract development.
+Start a node based on a fast local setup emulating a burnchain. Ideal for smart contract and local dapp development.
 
 Example:
 
 ```bash
 stacks-node mocknet
-```
-
-### krypton
-
-Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](../stacks-academy/proof-of-transfer.md).
-
-Example:
-
-```bash
-stacks-node krypton
 ```
 
 ### testnet
@@ -94,15 +84,98 @@ stacks-node help
 
 ## Configuration File Options
 
-The TOML configuration file has multiple sections under which an option may be placed.
+The Stacks Blockchain configuration file has multiple sections under which an option may be placed.
 
-To see a list of example configurations, [please see this page](https://github.com/stacks-network/stacks-blockchain/tree/master/testnet/stacks-node/conf).
+- node
+- events_observer
+- connection_options
+- burnchain
+- ustx_balance
 
-### Section: node
+To see several example configurations, [please see this page](https://github.com/stacks-network/stacks-blockchain/tree/master/testnet/stacks-node/conf).
 
-Contains various configuration options pertaining to the stacks-node.
+### `[[node]]`
 
-Example:
+Contains various configuration options for the stacks-node binary.
+
+| Name                      | Optional | Default Value | Description                                                         |
+| ------------------------- | -------- | ------------- | ------------------------------------------------------------------- |
+| working_dir               | ✅       | null          | Absolute path to the directory where chainstate data will be stored |
+| rpc_bind                  | ❌       | null          | description                                                         |
+| p2p_bind                  | ❌       | null          | description                                                         |
+| data_url                  | ✅       | null          | description                                                         |
+| p2p_address               | ✅       | null          | description                                                         |
+| bootstrap_node            | ✅       | null          | description                                                         |
+| wait_time_for_microblocks | ✅       | null          | description                                                         |
+| seed                      | ✅       | null          | description                                                         |
+| local_peer_seed           | ✅       | null          | description                                                         |
+| miner                     | ✅       | null          | description                                                         |
+| mock_miner                | ✅       | null          | description                                                         |
+| mine_microblocks          | ✅       | null          | description                                                         |
+| prometheus_bind           | ✅       | null          | description                                                         |
+
+### `[[events_observer]]` (optional)
+
+:::info
+This section is optional and not required
+:::
+Contains options for sending events emitted to the [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service.
+
+| Name        | Optional | Default Value | Description |
+| ----------- | -------- | ------------- | ----------- |
+| endpoint    | ✅       | null          | description |
+| retry_count | ✅       | null          | description |
+| events_keys | ✅       | null          | description |
+
+### `[[connection_options]]` (optional)
+
+:::info
+This section is optional and not required
+:::
+Specifies configuration options for others connecting to the stacks node.
+
+| Name                             | Optional | Default Value | Description |
+| -------------------------------- | -------- | ------------- | ----------- |
+| public_ip_address                | ✅       | null          | description |
+| download_interval                | ✅       | null          | description |
+| walk_interval                    | ✅       | null          | description |
+| read_only_call_limit_read_length | ✅       | null          | description |
+| read_only_call_limit_read_count  | ✅       | null          | description |
+| read_only_call_limit_runtime     | ✅       | null          | description |
+
+### `[[burnchain]]`
+
+This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
+
+| Name                       | Optional | Default Value | Description |
+| -------------------------- | -------- | ------------- | ----------- |
+| chain                      | ❌       | null          | description |
+| mode                       | ❌       | null          | description |
+| peer_host                  | ❌       | null          | description |
+| rpc_port                   | ❌       | null          | description |
+| peer_port                  | ❌       | null          | description |
+| burn_fee_cap               | ✅       | null          | description |
+| satoshis_per_byte          | ✅       | null          | description |
+| commit_anchor_block_within | ✅       | null          | description |
+
+### `[[ustx_balance]]`
+
+- `mocknet`/`testnet` only
+
+This section contains configuration options pertaining to the genesis block allocation for an address in micro-STX. If a user changes these values, their node may be in conflict with other nodes on the network and find themselves unable to sync with other nodes.
+
+:::info
+This section is only required for the `testnet` and `mocknet` networks.
+
+This section can repeat multiple times, and thus is in double-brackets. Each section can define only one address. This section is ignored if running a node on mainnet.
+:::
+
+| Name    | Optional | Default Value | Description |
+| ------- | -------- | ------------- | ----------- |
+| address | ✅       | null          | description |
+| amount  | ✅       | null          | description |
+
+<!-- Example:
 
 ```toml
 [node]
@@ -231,9 +304,9 @@ Example:
 
 ```toml
 prometheus_bind = "0.0.0.0:9153"
-```
+``` -->
 
-### Section: events_observer (optional)
+<!-- ### Section: events_observer (optional)
 
 Contains options for watching events emitted by a local [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service.
 
@@ -287,9 +360,9 @@ events_keys = [
     "STGT7GSMZG7EA0TS6MVSKT5JC1DCDFGZWJJZXN8A.contract.nft-token",
     "stx"
 ]
-```
+``` -->
 
-### Section: connection_options (optional)
+<!-- ### Section: connection_options (optional)
 
 Specifies configuration options for others connecting to the stacks node.
 
@@ -360,9 +433,9 @@ Example:
 
 ```toml
 read_only_call_limit_runtime = 1000000000
-```
+``` -->
 
-### Section: burnchain
+<!-- ### Section: burnchain
 
 This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
 
@@ -457,9 +530,9 @@ Example:
 
 ```toml
 commit_anchor_block_within = 10000
-```
+``` -->
 
-### Section: ustx_balance (testnet/regtest only)
+<!-- ### Section: ustx_balance (testnet/regtest only)
 
 This section contains configuration options pertaining to the genesis block allocation for an address in micro-STX. If a user changes these values, their node may be in conflict with other nodes on the network and find themselves unable to sync with other nodes.
 
@@ -505,4 +578,4 @@ Example:
 
 ```toml
 amount = 10000000000000000
-```
+``` -->
