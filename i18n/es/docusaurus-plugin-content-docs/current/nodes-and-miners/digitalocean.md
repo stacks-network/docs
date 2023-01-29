@@ -76,7 +76,7 @@ Los detalles completos sobre cómo usar el script manage.sh están [disponibles 
 
 Además de crear un Droplet desde la aplicación de Stacks Blockchain 1-Click a través del panel de control, también puedes usar la [API de DigitalOcean](https://digitalocean.com/docs/api).
 
-Como ejemplo, para crear un Droplet de 4GB Stacks Blockchain en la región SFO2, puede utilizar el siguiente comando curl. You’ll need to either save your [API access token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) to an environment variable or substitute it into the command below.
+Como ejemplo, para crear un Droplet de 4GB Stacks Blockchain en la región SFO2, puede utilizar el siguiente comando curl. Tendrás que guardar tu [token de acceso a la API](https://docs.digitalocean.com/reference/api/create-personal-access-token/) en una variable de entorno o sustituirlo en el siguiente comando.
 
 ```bash
 curl -X POST -H 'Content-Type: application/json' \
