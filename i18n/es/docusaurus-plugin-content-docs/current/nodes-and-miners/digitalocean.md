@@ -18,7 +18,7 @@ Vaya a la página [Stacks Blockchain](https://marketplace.digitalocean.com/apps/
 
 #### Paso 2
 
-Choose a plan (it will only allow you to select a plan that meets the minimum requirements) and your prefered datacenter region. ![](/img/sh_digitalocean-choose-plan.png)
+Elija un plan (solo le permitirá seleccionar un plan que cumpla con los requisitos mínimos) y su región de datacenter preferida. ![](/img/sh_digitalocean-choose-plan.png)
 
 #### Paso 3
 
@@ -46,11 +46,11 @@ Necesitarás esperar unos segundos para que el droplet se cree. Una vez creado h
 
 ## Empezando después de desplegar Stacks Blockchain
 
-Once droplet is launched, initial startup can take several minutes while BNS data is imported (this is a one time operation).
+Una vez que se ejecuta el droplet, el arranque inicial puede tardar varios minutos mientras se importan los datos de BNS (esta es una operación que se realiza una sola vez).
 
-To keep track of the progress, you can `ssh root@your_droplet_public_ipv4` to the host and run: `/opt/stacks-blockchain-docker/manage.sh -n mainnet -a logs`.
+Para hacer un seguimiento del progreso, puedes hacer `root@your_droplet_public_ipv4` al host y ejecutar: `/opt/stacks-blockchain-docker/manage.sh -n mainnet -a logs`.
 
-Once the stacks blockchain starts to sync with peers, application ports will open and nginx port 80 will now start proxying requests.
+Una vez que la blockchain de Stacks comienza a sincronizar con los pares, los puertos de la aplicación se abrirán y el puerto nginx 80 comenzará ahora a empezar a enviar peticiones.
 
 Use `http://your_droplet_public_ipv4` para acceder a los datos directamente, siendo la salida similar a:
 
@@ -66,17 +66,17 @@ Use `http://your_droplet_public_ipv4` para acceder a los datos directamente, sie
 }
 ```
 
-All services are managed by a [systemd unit file](https://github.com/stacksfoundation/stacks-machine-images/blob/master/files/etc/systemd/system/stacks.service) that is set to start on boot.
+Todos los servicios son administrados por un [systemd unit file](https://github.com/stacksfoundation/stacks-machine-images/blob/master/files/etc/systemd/system/stacks.service) que está configurado para comenzar al arrancar.
 
-Manual control is also possible via the [manage.sh script](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/manage.sh) at `/opt/stacks-blockchain-docker/manage.sh` on the host.
+El control manual también es posible a través del script [manage.sh](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/manage.sh) en `/opt/stacks-blockchain-docker/manage.sh` en el host.
 
-Full details on how to use the manage.sh script is [available here](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/README.md#quickstart).
+Los detalles completos sobre cómo usar el script manage.sh están [disponibles aquí](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/README.md#quickstart).
 
 ## Creación de API
 
-In addition to creating a Droplet from the Stacks Blockchain 1-Click App via the control panel, you can also use the [DigitalOcean API](https://digitalocean.com/docs/api).
+Además de crear un Droplet desde la aplicación de Stacks Blockchain 1-Click a través del panel de control, también puedes usar la [API de DigitalOcean](https://digitalocean.com/docs/api).
 
-As an example, to create a 4GB Stacks Blockchain Droplet in the SFO2 region, you can use the following curl command. You’ll need to either save your [API access token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) to an environment variable or substitute it into the command below.
+Como ejemplo, para crear un Droplet de 4GB Stacks Blockchain en la región SFO2, puede utilizar el siguiente comando curl. You’ll need to either save your [API access token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) to an environment variable or substitute it into the command below.
 
 ```bash
 curl -X POST -H 'Content-Type: application/json' \
