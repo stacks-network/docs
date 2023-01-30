@@ -1,7 +1,7 @@
 ---
 title: Microblocks
 description: Guide to Stacks Microblocks
-sidebar_position: 5out tutorials)
+sidebar_position: 5
 ---
 
 ## Introduction
