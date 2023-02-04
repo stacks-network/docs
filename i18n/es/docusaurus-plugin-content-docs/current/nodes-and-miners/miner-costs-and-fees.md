@@ -1,6 +1,6 @@
 ---
-title: Miner costs and fees
-description: Miner Cost and Fee Estimation
+title: Costes de Minería y Estimación de comisiones
+description: Costes de Minería y Estimación de comisiones
 sidebar_position: 8
 ---
 
