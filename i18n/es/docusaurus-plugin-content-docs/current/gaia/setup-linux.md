@@ -1,6 +1,6 @@
 ---
 title: Linux
-description: Pasos para configurar un hub GAIA en un servidor Linux (instalación nueva). Este ejemplo está usando Debian, pero debería funcionar en cualquier distribución de Linux. Utiliza docker compose por detras.
+description: Pasos para configurar un hub GAIA en un servidor Linux (instalación nueva). Este ejemplo está usando Debian, pero debería funcionar en cualquier distribución de Linux. It uses docker compose in the background.
 tags:
   - tutorial
   - gaia
@@ -19,8 +19,7 @@ Esta configuración configurará los siguientes 4 contenedores docker:
 apt update && apt upgrade -y && apt install -y git vim gnupg jq
 ```
 
-**2. Instala [docker](https://docs.docker.com/engine/install/debian/) y [docker-compose](https://docs.docker.com/compose/cli-command/#install-on-linux)** en tu sistema operativo.  
-Para nuestro ejemplo instalamos _docker_ con:
+**2. Install [docker](https://docs.docker.com/engine/install/debian/) and [docker-compose](https://docs.docker.com/compose/cli-command/#install-on-linux)** in your OS. For our example we install _docker_ with:
 
 ```bash
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -48,8 +47,7 @@ chmod +x ${DESTINATION_DC}/docker-compose
 git clone https://github.com/stacks-network/gaia.git && cd gaia/deploy/docker
 ```
 
-**4. Copia y edita el archivo .env appropiado**.  
-En la carpeta `. deploy/docker/` son archivos de ejemplo diferentes para diferentes configuraciones como el uso de aws, azure o disco entre otros. En este ejemplo almacenaremos los datos localmente para que copiemos el archivo _de disco_ y actualicemos el dominio y los campos de correo electrónico. Por favor, cambie `gaia.site.com` y `gaiarocks@mydomain.com` como corresponda. Tenga en cuenta que necesita ambos para que el certificado SSL se cree correctamente.
+**4. Copy and edit appropriate .env file**. In the folder `./deploy/docker/` they are different sample files for different configurations like using aws, azure or disk among others. In this example we will store the data locally so we will copy the _disk_ file and update the domain and email fields. Por favor, cambie `gaia.site.com` y `gaiarocks@mydomain.com` como corresponda. Tenga en cuenta que necesita ambos para que el certificado SSL se cree correctamente.
 
 ```bash
 export MYGAIADOMAIN=gaia.site.com
