@@ -26,9 +26,10 @@ Use a link in the table to launch the [CloudFormation](https://console.aws.amazo
 
 ### Step 2 - Setup stack using template
 
-You need to configure the template with the appropiate values for your hub and domain it runs on.
+You need to configure the template with the appropriate values for your hub and domain it runs on.
 
 Select `Template is ready` and `Amazon S3 URL` and enter the following Amazon S3 URL:
+
 ```
 https://s3-external-1.amazonaws.com/cf-templates-vzldibfi2mw8-us-east-1/2022160J6G-cloudformation.yaml
 ```
@@ -52,7 +53,7 @@ Specify the stack details and then click `Next`: ![Specify template](/img/cloudf
 | EmailAddress    | _your email address_                |                                                                                                                                                                                                                                                                                                                                                                                                  |
 | GaiaBucketName  | _S3 bucket name_                    | The template combines this name with the stack name to create a unique S3 bucket. The template ignores this field if GaiaStorageType is set to `disk`.                                                                                                                                                                                                                                           |
 | GaiaStorageType | `s3` or `disk`                      | Select the GaiaStorageType of which to use as a backend for the Gaia Hub. Selecting `s3` causes the template to create an S3 bucket based on the name given in the previous field. Selecting `disk` causes the template to attach a separate EBS volume to the EC2 instance for Hub storage.                                                                                                     |
-| InstaceType     | t2.micro                            | Select the instance type you want. Default value is `t2.micro`.                                                                                                                                                                                                                                                                                                                                  |
+| InstanceType    | t2.micro                            | Select the instance type you want. Default value is `t2.micro`.                                                                                                                                                                                                                                                                                                                                  |
 | KeyName         |                                     | In the KeyName drop-down, select an [EC2 KeyPair](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:) to enable SSH access to the EC2 instance. You should download the `.pem` keyfile for this pair from the EC2 console. For more information see the [EC2 key pair documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#prepare-key-pair) |
 | SSHLocation     | 0.0.0.0/0                           | Leave the SSHLocation field with the default value of `0.0.0.0/0` to enable SSH access from any IP address. If you wish to restrict SSH access to the EC2 instance to a certain IP, you can update this field.                                                                                                                                                                                   |
 | SubnetId        | _subnetid_                          | Select a public subnet                                                                                                                                                                                                                                                                                                                                                                           |
@@ -90,7 +91,9 @@ ssh -i <your keyfile.pem> admin@<public_ip_address>
 
     Open your [AWS Console](https://console.aws.amazon.com)
     Click on `Service` -> VPC Open Your VPCs Select your VPC connected to your Gaia Hub Click `Actions` -> `Edit DNS Hostnames` -> Change `DNS hostnames` to `Enable`
+
 :::
+
 ## Graphical representation of the cloudformation template
 
 ![](/img/cloudformation-gaia-template1-designer.png)
