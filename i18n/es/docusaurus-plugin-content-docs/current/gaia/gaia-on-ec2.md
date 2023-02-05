@@ -26,9 +26,10 @@ Utilice un enlace en la tabla para lanzar la plantilla [CloudFormation](https://
 
 ### Paso 2 - Configurar stack usando la plantilla
 
-Debe configurar la plantilla con los valores adecuados para su hub y el dominio en el que se ejecuta.
+You need to configure the template with the appropriate values for your hub and domain it runs on.
 
 Seleccione `Template is ready` y `Amazon S3 URL` e introduzca la siguiente URL de Amazon S3:
+
 ```
 https://s3-external-1.amazonaws.com/cf-templates-vzldibfi2mw8-us-east-1/2022160J6G-cloudformation.yaml
 ```
@@ -52,7 +53,7 @@ Especifique los detalles de stacks y luego haga clic en `Next`: ![Especificar pl
 | EmailAddress    | _tu dirección de correo electrónico_ |                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | GaiaBucketName  | _S3 bucket name_                     | La plantilla combina este nombre con el nombre del stack para crear un bucket de S3 único. La plantilla ignora este campo si GaiaStorageType está establecido en `disk`.                                                                                                                                                                                                                                                      |
 | GaiaStorageType | `s3` o `disk`                        | Seleccione el GaiaStorageType que se utilizará como un backend para el Hub de Gaia. Seleccionar `s3` hace que la plantilla cree un bucket de S3 basado en el nombre dado en el campo anterior. Al seleccionar `disk`, la plantilla adjunta un volumen EBS independiente a la instancia EC2 para el almacenamiento del Hub.                                                                                                    |
-| InstaceType     | t2.micro                             | Seleccione el tipo de instancia que desee. El valor predeterminado es `t2.micro`.                                                                                                                                                                                                                                                                                                                                             |
+| InstanceType    | t2.micro                             | Seleccione el tipo de instancia que desee. El valor predeterminado es `t2.micro`.                                                                                                                                                                                                                                                                                                                                             |
 | KeyName         |                                      | En la lista desplegable KeyName selecciona un [EC2 KeyPair](https://console. aws. amazon. com/ec2/v2/home? region=us-east-1#KeyPairs:) para habilitar el acceso SSH a la instancia EC2. Deberías descargar el archivo keyfile `.pem` para este par desde la consola EC2. Para más información vea la [documentación de EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#prepare-key-pair) |
 | SSHLocation     | 0.0.0.0/0                            | Deje el campo SSHLocation con el valor predeterminado de `0.0.0.0/0` para habilitar el acceso SSH desde cualquier dirección IP. Si desea restringir el acceso SSH a la instancia de EC2 a una determinada IP, puede actualizar este campo.                                                                                                                                                                                    |
 | SubnetId        | _subnetId_                           | Seleccione una subred pública                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -93,7 +94,9 @@ ssh -i <your keyfile.pem> admin@<public_ip_address>
     Abra sus VPCs
     Seleccione su VPC conectado a su Gaia Hub
     Haga clic en `Acciones` -> `Editar nombres de host DNS` -> Cambie `nombres de host DNS` a `Activar`
+
 :::
+
 ## Representación gráfica de la plantilla de cloudformation
 
 ![](/img/cloudformation-gaia-template1-designer.png)
