@@ -1,14 +1,20 @@
 ---
 title: Gaia
 description: Arquitectura de almacenamiento descentralizado para datos fuera de la cadena
-sidebar_position: 5
+sidebar_position: 6
 tags:
   - gaia
 ---
 
 ## Introducción
 
-Las aplicaciones construidas en la blockchain de Stacks almacenan datos fuera de cadena usando un sistema de almacenamiento llamado Gaia.
+Apps built with the Stacks blockchain can store off-chain data using a storage system called Gaia.
+
+Gaia is a unique approach to decentralized storage that focuses primarily on user-ownership of data, rather than immutable on-chain storage. The emphasis here is on user control.
+
+While on-chain storage solutions like IPFS and Arweave are designed for immutable, censorship-resistant permanent storage, they cannot be deemed as providing user control of the data since the user cannot modify or remove the data once it has been deployed.
+
+Gaia solves a different problem of allowing users to be in control of where their data is stored while connecting the access of that data to their on-chain Stacks identity.
 
 Mientras que los metadatos transaccionales públicos se almacenan mejor en la blockchain de Stacks, los datos de las aplicaciones de los usuarios pueden almacenarse a menudo de forma más eficiente y privada en el almacenamiento de Gaia.
 
@@ -38,7 +44,7 @@ La blockchain de Stacks almacena sólo datos de identidad. Los datos creados por
 
 Un hub de Gaia funciona como un servicio que escribe en el almacenamiento de datos. El almacenamiento en sí mismo es un simple almacén clave-valor. El servicio del Hub escribe en el almacenamiento de datos requiriendo un token de autenticación válido de un solicitante. Por lo general, el servicio del Hub se ejecuta en un recurso de cómputo y el almacenamiento propiamente dicho en un recurso de almacenamiento dedicado y separado. Por lo general, ambos recursos pertenecen al mismo proveedor de computación en la nube.
 
-![Gaiastorage](/img/gaia-storage.png)
+![Gai storage](/img/gaia-storage.png)
 
 El enfoque de Gaia hacia la descentralización se centra en el control de los datos por parte del usuario y su almacenamiento. Los usuarios pueden elegir un proveedor de Hub de Gaia. Si un usuario puede elegir qué proveedor de hub de Gaia utilizar, entonces esa opción es toda la descentralización necesaria para permitir aplicaciones controladas por el usuario. Además, Gaia define una API uniforme para aplicaciones para acceder a esos datos.
 
