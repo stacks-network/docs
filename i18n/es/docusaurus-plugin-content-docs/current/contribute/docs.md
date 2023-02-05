@@ -7,7 +7,7 @@ description: Aprende cómo se construye este sitio y cómo puedes contribuir a �
 
 Gracias por su interés en contribuir y ayudar a que estos documentos sean tan buenos como puedan ser.
 
-Este sitio de documentación está construido en la plataforma de código abierto [Discosaurus 2](https://docusaurus.io/) y la mayor parte de su contenido está escrito en archivos Markdown. Todo el código para este sitio es libre y de código abierto, ubicado en el [repositorio de GitHub aquí](https://github.com/stacks-network/docs).
+This docs site is built on the open source platform [Docusaurus 2](https://docusaurus.io/) and most of its content is written in Markdown files. Todo el código para este sitio es libre y de código abierto, ubicado en el [repositorio de GitHub aquí](https://github.com/stacks-network/docs).
 
 :::tip ¿No sabes qué es Markdown? ¿Quieres aprender? Aquí hay una [guía útil](https://guides.github.com/features/mastering-markdown/) para aprenderlo.
 
@@ -15,7 +15,7 @@ Este sitio de documentación está construido en la plataforma de código abiert
 
 :::info Necesitas una cuenta gratuita en [GitHub](https://www.github.com) para añadir o editar cualquier contenido. :::
 
-Para editar cualquier página, solo haga clic en el botón *Editar esta página* en la parte inferior de cada página y envíe sus cambios en línea.
+To edit any page, just click on the _Edit this page_ button at the bottom of each page and submit your changes online.
 
 Para añadir nuevo contenido, existen dos formas diferentes de hacerlo, la [forma fácil](#easy-way) y la [forma avanzada](#advanced-way).
 
@@ -24,28 +24,32 @@ Para añadir nuevo contenido, existen dos formas diferentes de hacerlo, la [form
 [**Simplemente haga clic aquí e ingrese el texto del artículo que desea añadir.**](https://github.com/stacks-network/docs/issues/new?assignees=&labels=documentation&template=add-documentation.md&title=%5BAdd+docs%5D)
 
 Esto abrirá una observación en github usando nuestra plantilla.
+
 ## Forma avanzada
 
 Para cambios más avanzados puede seguir los siguientes pasos.
 
 También puede probar el sitio localmente utilizando este método.
+
 ### Pasos
 
-1. Haga un Fork del [repositorio de documentos](https://github.com/stacks-network/docs) haciendo clic en el botón *Fork* en la parte superior derecha de la pantalla.
+1. Fork the [docs repository](https://github.com/stacks-network/docs) by clicking on the _Fork_ button in the upper right of the screen.
 2. Clona el fork a tu máquina local con este comando `git clone git@github.com:<YOUR_USERNAME>/docs.git stacks_docs`
 3. Entre a la carpeta del proyecto `cd stacks_docs`
 4. Crea una rama `git checkout -b feat/my-feature-branch`.
 5. Opcionalmente puede previsualizar sus cambios en tiempo real con:
-    - `npm install` (para instalar dependencias).
-    - `npx docusaurus start` para iniciar una copia local del sitio. Un navegador web se abrirá en http://localhost:3000, para que pueda ver una vista previa de sus cambios en tiempo real.
+   - `npm install` (para instalar dependencias).
+   - `npx docusaurus start` para iniciar una copia local del sitio. A web browser will open at http://localhost:3000, so you can see a preview of your changes in real time.
 6. Haga los cambios que desee y luego haga un commit con este tipo de mensaje: `git commit -am "feat: some new feature or content"`.
 7. Haga Push a Github con `git push --set-upstream origin feature/my-feature-branch`.
 8. Visite GitHub y haga su pull request.
 
-## Información adicional
+## Additional information
+
 ### Ejecutando y construyendo el sitio en local (opcional)
 
 Puedes iniciar la página en local con el siguiente comando. Esto es suficiente para previsualizar tus cambios.
+
 ```bash
 npx docusaurus start
 ```
@@ -54,8 +58,8 @@ Antes de ejecutar este comando por primera vez, debes de ejecutar `npm install` 
 
 La página de docs será accesible en la siguiente url: [`http://localhost:3000`](http://localhost:3000).
 
-
 Una vez finalizados los cambios, puedes construir un site entero con el siguiente comando (normalmente no es necesario):
+
 ```bash
 npm run build
 ```
@@ -91,7 +95,7 @@ Todos los documentos en inglés se almacenan en la carpeta `/docs/`.
 
 Para añadir nuevos contenidos en inglés simplemente agregue un archivo markdown (.md) en cualquier subcarpeta en docs, y se mostrará automáticamente en la categoría de esa carpeta.
 
-Todos los documentos en otros idiomas se almacenan bajo la carpeta `i18n`, pero estos archivos nunca deben editarse usando GitHub, ya que son sobrescritos por Crowdin cada vez que se agregan nuevas traducciones.  **Para hacer cambios en otros idiomas**, debes hacerlo usando Crowdin. Por favor, consulta [traducciones](translations) en su lugar.
+Todos los documentos en otros idiomas se almacenan bajo la carpeta `i18n`, pero estos archivos nunca deben editarse usando GitHub, ya que son sobrescritos por Crowdin cada vez que se agregan nuevas traducciones. **Para hacer cambios en otros idiomas**, debes hacerlo usando Crowdin. Por favor, consulta [traducciones](translations) en su lugar.
 
 ### Frontmatter
 
@@ -124,6 +128,7 @@ And execute prettier with the following command:
 npx prettier --write mynewfiletocheck.md
 ```
 -->
+
 ### Usar "Commits Convencionales"
 
 Utilizamos los [Commits Convencionales](https://www.conventionalcommits.org/en/v1.0.0/) y la convención de nombres de commits. Utilízalo mientras contribuyes, por favor.
@@ -138,6 +143,7 @@ Para escribir un bloque de código, necesitas envolver tu código en ` ```langua
 (define-public (get-counter)
  (ok (var-get counter)))
 ```
+
 ### Avisos
 
 Puede utilizar los siguientes avisos para resaltar el contenido.
