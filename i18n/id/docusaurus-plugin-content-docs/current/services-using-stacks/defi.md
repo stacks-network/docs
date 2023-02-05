@@ -26,7 +26,7 @@ Please edit this page to add any relevant new site that we are missing.
 
 ## Lnswap
 
-[LNSWAP](https://www.lnswap.org). Non custiodial crypto currency exchange
+[LNSWAP](https://www.lnswap.org). Non-custodial crypto currency exchange
 
 ![](/img/sh_lnswap.png)
 
@@ -41,4 +41,3 @@ Please edit this page to add any relevant new site that we are missing.
 [Stackswap](https://app.stackswap.org/v2)
 
 ![](/img/sh_stackswap.png)
-
