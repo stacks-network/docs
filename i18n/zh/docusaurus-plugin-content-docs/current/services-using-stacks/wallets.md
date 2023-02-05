@@ -8,13 +8,14 @@ A list of hardware and software wallets for Stacks
 
 :::tip Are we missing one?
 Please edit this page to add any relevant new site that we are missing.
-::: Please edit this page to add any relevant new site that we are missing. :::
+:::
 
 ## Blockchain.com
 
 [Blockchain.com](https://www.blockchain.com/wallet)
 
 ![](/img/sh_blockchain.png)
+
 ## Boom
 
 [Boom](https://boom.money)
@@ -26,6 +27,7 @@ Please edit this page to add any relevant new site that we are missing.
 [D'CENT](https://dcentwallet.com)
 
 ![](/img/sh_dcent.png)
+
 ## Hiro Wallet
 
 [Hiro Wallet](https://www.hiro.so/wallet)
