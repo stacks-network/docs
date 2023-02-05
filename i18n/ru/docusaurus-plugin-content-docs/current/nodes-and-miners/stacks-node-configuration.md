@@ -1,7 +1,7 @@
 ---
 title: Stacks Node Configuration
 description: Configuration parameters and options for the stacks-node binary
-sidebar_position: 6
+sidebar_position: 4
 ---
 
 ## Usage
@@ -10,97 +10,141 @@ sidebar_position: 6
 stacks-node sub-command [--subcommand-option <value>]
 ```
 
-## Subcommands
+### Subcommands
 
-:::caution The `stacks-node` binary may have deprecated commands that are not documented on this page. Deprecated commands may be accessible until they are fully removed from the sources. :::
-
-### mocknet
-
-Start a node based on a fast local setup emulating a burnchain. Ideal for smart contract development.
-
-Example:
-
-```bash
-stacks-node mocknet
-```
-
-### krypton
-
-Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](../understand-stacks#consensus-mechanism).
-
-Example:
-
-```bash
-stacks-node krypton
-```
-
-### testnet
-
-Start a node that will join and stream blocks from the public testnet.
-
-Example:
-
-```bash
-stacks-node testnet
-```
-
-### mainnet
-
-Start a node that joins and streams blocks from the public mainnet.
-
-Example:
-
-```bash
-stacks-node mainnet
-```
-
-### start
-
-Start a node with a config of your own. Can be used for joining a network, starting a new chain, or replacing default values used by the `mocknet` or `testnet` subcommands.
-
-#### Arguments
-
-**--config**: relative or absolute path to the TOML config file. Required.
-
-Example:
-
-```bash
-stacks-node start --config=/path/to/config.toml
-```
-
-See [Configuration File Options](#configuration-file-options) for more information.
-
-#### version
-
-Displays information about the current version and the release cycle.
-
-Example:
-
-```bash
-stacks-node version
-```
-
-#### help
-
-Displays a help message.
-
-Example:
-
-```bash
-stacks-node help
-```
+- `mocknet`: start a mocknet instance using defaults
+- `testnet`: start a testnet instance using defaults (chainstate is not persistent)
+- `mainnet`: start a mainnet instance using defaults (chainstate is not persistent)
+- `start`: combined with `--config`, starts an instance with a specified configuration file
+- `version`: displays binary version
+- `help`: displays the help message
 
 ## Configuration File Options
 
-The TOML configuration file has multiple sections under which an option may be placed.
+The Stacks Blockchain configuration file has multiple sections under which an option may be placed.
 
-To see a list of example configurations, [please see this page](https://github.com/stacks-network/stacks-blockchain/tree/master/testnet/stacks-node/conf).
+- [node](./stacks-node-configuration#node)
+- [events_observer](./stacks-node-configuration#events_observer)
+- [connection_options](./stacks-node-configuration#connection_options)
+- [burnchain](./stacks-node-configuration#burnchain)
+- [ustx_balance](./stacks-node-configuration#ustx_balance)
 
-### Section: node
+For reference, several configuration file examples are [available here](https://github.com/stacks-network/stacks-blockchain/tree/master/testnet/stacks-node/conf)
 
-Contains various configuration options pertaining to the stacks-node.
+- [Example mainnet follower configuration](./stacks-node-configuration#example-mainnet-follower-configuration)
 
-Example:
+### node
+
+Contains various configuration options for the stacks-node binary.
+
+| Name                        | Required | Description                                                                                                       |
+| --------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
+| rpc_bind                    | ✓        | IPv4 address and port to open for RPC connections                                                                 |
+| p2p_bind                    | ✓        | IPv4 address and port to open for P2P connections                                                                 |
+| working_dir                 |          | Absolute path to the directory where chainstate data will be stored                                               |
+| data_url                    |          | IPv4 address and port for incoming RPC connections                                                                |
+| p2p_address                 |          | IPv4 address and port for incoming P2P connections                                                                |
+| bootstrap_node              |          | Public key, IPv4 address, and port to bootstrap the chainstate                                                    |
+| wait_time_for_microblocks |          | The amount of time in ms to wait before trying to mine a block after catching up to the anchored chain tip        |
+| seed                        |          | The [private key](./miner-mainnet#generate-a-keychain) to use for mining. Only needed if `miner` is set to `true` |
+| local_peer_seed           |          | The [private key](./miner-mainnet#generate-a-keychain) to use for signing P2P messages in the networking stack    |
+| miner                       |          | Determines whether the node is running a follower (`false`) or a miner (`true`). Defaults to `false`              |
+| mock_miner                  |          | Simulates running a miner (typically used for debugging)                                                          |
+| mine_microblocks            |          | Determines whether the node will mine microblocks. Will only take effect if `miner` is set to `true`              |
+| prometheus_bind             |          | Address and port for Prometheus metrics collection.                                                               |
+
+### events_observer
+
+:::info This section is _optional_ and not required
+
+However, if this section is added, **all** fields are required ::: Contains options for sending events emitted to the [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service.
+
+| Name        | Required | Description                                                                                                                                                           |
+| ----------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| endpoint    | ✓        | Address and port to a [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service                                                           |
+| retry_count | ✓        | Number of times to retry sending events to the endpoint before failing                                                                                                |
+| events_keys | ✓        | Event keys for which to watch. The emitted node events can be restricted by account, function name and event type. Asterix ("\*") can be used to emit all events. | |
+
+### connection_options
+
+:::info This section is _optional_ and not required.
+
+However, if this section is added, **all** fields are required :::
+
+Specifies configuration options for others connecting to the stacks node.
+
+| Name                                 | Required | Description                                                                                                                                                 |
+| ------------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| public_ip_address                  | ✓        | Public IPv4 to advertise to other nodes                                                                                                                     |
+| download_interval                    | ✓        | Time (in seconds) between attempts to download blocks                                                                                                       |
+| walk_interval                        | ✓        | Time (in seconds) between attempts to walk the list of neighbors                                                                                            |
+| read_only_call_limit_read_length | ✓        | Total number of bytes allowed to be read by an individual read-only function call                                                                           |
+| read_only_call_limit_read_count  | ✓        | Total number of independent read operations permitted for an individual read-only function call                                                             |
+| read_only_call_limit_runtime     | ✓        | [Runtime cost](https://github.com/stacksgov/sips/blob/main/sips/sip-006/sip-006-runtime-cost-assessment.md) limit for an individual read-only function call |
+
+### burnchain
+
+This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
+
+| Name      | Required | Description                                                                                                          |
+| --------- | -------- | -------------------------------------------------------------------------------------------------------------------- |
+| chain     | ✓        | The blockchain stacks-node binds to on the backend for proof-of-transfer. Only value supported: `bitcoin`            |
+| mode      | ✓        | The profile or test phase of which to run stacks-node. Valid values are [ `mocknet`, `testnet`, `xenon`, `mainnet` ] |
+| peer_host |          | FQDN of the host running the backend Bitcoin blockchain                                                              |
+| rpc_port  |          | RPC port of `peer_host`                                                                                              |
+| peer_port |          | P2P port of `peer_host`                                                                                              |
+
+#### Mining
+
+| Name                         | Required | Description                                                                                        |
+| ---------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
+| burn_fee_cap               | ✓        | Maximum amount (in sats) of "burn commitment" to broadcast for the next block's leader election    |
+| satoshis_per_byte          | ✓        | [Amount (in sats) per byte](https://bitcoinfees.net/) - Used to calculate the transaction fees     |
+| commit_anchor_block_within |          | Sets the time period (in milliseconds) for commitments. Only used when `mode` is set to `mocknet`. |
+
+### ustx_balance
+
+- `mocknet`/`testnet` only
+
+This section contains configuration options allocating microSTX per address in the genesis block
+
+This section can repeat multiple times, but each section can only define a single address.
+
+:::info This section is only required for the `testnet` and `mocknet` networks.
+
+However, if this section is added, **all** fields are required :::
+
+| Name    | Required | Description                                                           |
+| ------- | -------- | --------------------------------------------------------------------- |
+| address | ✓        | Address which maintains a microSTX balance                            |
+| amount  | ✓        | The balance of microSTX given to the address at the start of the node |
+
+## Example Mainnet Follower Configuration
+
+```toml
+[node]
+working_dir = "/stacks-blockchain"
+rpc_bind = "0.0.0.0:20443"
+p2p_bind = "0.0.0.0:20444"
+bootstrap_node = "02da7a464ac770ae8337a343670778b93410f2f3fef6bea98dd1c3e9224459d36b@seed-0.mainnet.stacks.co:20444,02afeae522aab5f8c99a00ddf75fbcb4a641e052dd48836408d9cf437344b63516@seed-1.mainnet.stacks.co:20444,03652212ea76be0ed4cd83a25c06e57819993029a7b9999f7d63c36340b34a4e62@seed-2.mainnet.stacks.co:20444"
+
+[burnchain]
+chain = "bitcoin"
+mode = "mainnet"
+peer_host = "localhost"
+username = "user"
+password = "pass"
+rpc_port = 8332
+peer_port = 8333
+
+[[events_observer]]
+endpoint = "localhost:3700"
+retry_count = 255
+events_keys = ["*"]
+```
+
+
+<!-- Example:
 
 ```toml
 [node]
@@ -242,7 +286,8 @@ This section can be repeated multiple times.
 Example:
 
 ```toml
-[[events_observer]] endpoint = "address-to-my-local.stacks-node-api.com:3700"
+[[events_observer]]
+endpoint = "address-to-my-local.stacks-node-api.com:3700"
 retry_count = 255
 events_keys = ["*"]
 ```
@@ -467,16 +512,20 @@ This section can repeat multiple times, and thus is in double-brackets. Each sec
 Example:
 
 ```toml
-[[ustx_balance]] address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
+[[ustx_balance]]
+address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
 amount = 10000000000000000
 
-[[ustx_balance]] address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
+[[ustx_balance]]
+address = "ST11NJTTKGVT6D1HY4NJRVQWMQM7TVAR091EJ8P2Y"
 amount = 10000000000000000
 
-[[ustx_balance]] address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
+[[ustx_balance]]
+address = "ST1HB1T8WRNBYB0Y3T7WXZS38NKKPTBR3EG9EPJKR"
 amount = 10000000000000000
 
-[[ustx_balance]] address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
+[[ustx_balance]]
+address = "STRYYQQ9M8KAF4NS7WNZQYY59X93XEKR31JP64CP"
 amount = 10000000000000000
 ```
 
@@ -498,4 +547,4 @@ Example:
 
 ```toml
 amount = 10000000000000000
-```
+``` -->
