@@ -1,28 +1,30 @@
 ---
-title: Stacks en DigitalOcean
+title: Run a Node with Digital Ocean
 description: Una guía para configurar Stacks en DigitalOcean
-sidebar_position: 4
+sidebar_position: 2
 tags:
   - tutorial
 ---
 
 ## Introducción
 
-Esta es una guía paso a paso para desplegar el [Stacks Blockchain en DigitalOcean](https://marketplace.digitalocean.com/apps/stacks-blockchain). El código está alojado en este [repositorio de Github](https://github.com/stacks-network/stacks-blockchain-docker).
+This is a step by step guide to deploy the [Stacks Blockchain](https://github.com/stacks-network/stacks-blockchain) on [DigitalOcean](https://digitalocean.com).
+
+Build code is hosted on this [Github repository](https://github.com/stacksfoundation/stacks-machine-images) using the [methods from here](https://github.com/stacks-network/stacks-blockchain-docker)
 
 ## Pasos
 
 #### Paso 1
 
-Vaya a la página [Stacks Blockchain](https://marketplace.digitalocean.com/apps/stacks-blockchain) en el mercado de DigitalOcean. Haga clic en `Create Stacks Blockchain Droplet`.
+Vaya a la página [Stacks Blockchain](https://marketplace.digitalocean.com/apps/stacks-blockchain) en el mercado de DigitalOcean. Haga clic en `Create Stacks Blockchain Droplet`. ![](/img/sh_digitalocean-marketplace.png)
 
 #### Paso 2
 
-Elija un plan (solo le permitirá seleccionar un plan que cumpla con los requisitos mínimos) y su región de datacenter preferida. ![](/img/sh_digitalocean-choose-plan.png)
+Choose a plan (it will only allow you to select a droplet that meets the minimum requirements) and your preferred datacenter region. ![](/img/sh_digitalocean-choose-plan.png)
 
 #### Paso 3
 
-Introduzca una contraseña de root o active las claves SSH si lo prefiere.
+Enter a root password or [enable SSH keys](https://docs.digitalocean.com/products/droplets/how-to/add-ssh-keys/) if your prefer.
 
 ![](/img/sh_digitalocean-choose-authentication.png)
 
@@ -46,41 +48,48 @@ Necesitarás esperar unos segundos para que el droplet se cree. Una vez creado h
 
 ## Empezando después de desplegar Stacks Blockchain
 
-Una vez que se ejecuta el droplet, el arranque inicial puede tardar varios minutos mientras se importan los datos de BNS (esta es una operación que se realiza una sola vez).
+Once the droplet is launched, the initial startup can take several minutes while BNS data is imported (this is a one time operation) and the Bitcoin headers are synced.
 
 Para hacer un seguimiento del progreso, puedes hacer `root@your_droplet_public_ipv4` al host y ejecutar: `/opt/stacks-blockchain-docker/manage.sh -n mainnet -a logs`.
 
-Una vez que la blockchain de Stacks comienza a sincronizar con los pares, los puertos de la aplicación se abrirán y el puerto nginx 80 comenzará ahora a empezar a enviar peticiones.
+After the stacks blockchain finishes the initial header sync and starts to sync with its peers, the application ports will open (`20443` and `3999`) and HTTP port `80` will now start proxying requests.
 
 Use `http://your_droplet_public_ipv4` para acceder a los datos directamente, siendo la salida similar a:
 
 ```json
 {
-  "server_version": "stacks-blockchain-api v3.0.3 (master:cd0c8aef)",
+  "server_version": "stacks-blockchain-api v6.2.3 (master:77ab3ae2)",
   "status": "ready",
   "chain_tip": {
-    "block_height": 16220,
-    "block_hash": "0x3123fba9c0de6b569573494cf83c1d5d198a66bfd5f48ef97949b6bf11ba13be",
-    "index_block_hash": "0xeec960fbbd6186b4ccac85ce12adba72be497d881f81e077305c90955b51a6ae"
+    "block_height": 91820,
+    "block_hash": "0x06b276e85f238151414616618ae0adaf5eeda4eac6cad5bbefceeb37948ab275",
+    "index_block_hash": "0x4d7c075d7ab0f90b1dbc175f5c42b7344265d00cfef202dd9681d95388eeed8c",
+    "microblock_hash": "0xcf4f9037cc10696b2812b617ca105885be625c6acf8ad67e71bb4c09fa6ebb21",
+    "microblock_sequence": 4
   }
 }
 ```
+
+:::tip For the full list of API endpoints for the Stacks Blockchain, consult the [Hiro API Docs](https://docs.hiro.so/api) :::
 
 Todos los servicios son administrados por un [systemd unit file](https://github.com/stacksfoundation/stacks-machine-images/blob/master/files/etc/systemd/system/stacks.service) que está configurado para comenzar al arrancar.
 
 El control manual también es posible a través del script [manage.sh](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/manage.sh) en `/opt/stacks-blockchain-docker/manage.sh` en el host.
 
-Los detalles completos sobre cómo usar el script manage.sh están [disponibles aquí](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/README.md#quickstart).
+Full details on how to use the manage.sh script is [available here](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/docs/usage.md).
 
-## Creación de API
+## Launching a Droplet using the DigitalOcean API
 
 Además de crear un Droplet desde la aplicación de Stacks Blockchain 1-Click a través del panel de control, también puedes usar la [API de DigitalOcean](https://digitalocean.com/docs/api).
 
 Como ejemplo, para crear un Droplet de 4GB Stacks Blockchain en la región SFO2, puede utilizar el siguiente comando curl. Tendrás que guardar tu [token de acceso a la API](https://docs.digitalocean.com/reference/api/create-personal-access-token/) en una variable de entorno o sustituirlo en el siguiente comando.
 
+:::note _The `name`, `region` and `size` values below are hardcoded, so adjust as desired._ :::
+
 ```bash
-curl -X POST -H 'Content-Type: application/json' \
+$ export TOKEN=<digitalocean API token>
+$ curl -X POST -H 'Content-Type: application/json' \
      -H 'Authorization: Bearer '$TOKEN'' -d \
-    '{"name":"choose_a_name","region":"sfo2","size":"s-2vcpu-4gb","image":"stacksfoundation-stacksblockchain"}' \
+    '{"name":"stacks-blockchain","region":"sfo2","size":"s-2vcpu-4gb","image":"stacksfoundation-stacksblockchain"}' \
     "https://api.digitalocean.com/v2/droplets"
 ```
