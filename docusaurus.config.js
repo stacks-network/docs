@@ -3,18 +3,9 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Stacks Docs",
-  tagline: "Documentation for the Stacks blockchain and ecosystem.",
-  url: "https://docs.stacks.co",
-  baseUrl: "/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon-dark.svg",
   title: "Stacks Docs",
   tagline: "Documentation for the Stacks blockchain and ecosystem.",
   url: "https://docs.stacks.co",
@@ -27,8 +18,6 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "stacks-network", // Usually your GitHub org/user name.
   projectName: "docs", // Usually your repo name.
-  organizationName: "stacks-network", // Usually your GitHub org/user name.
-  projectName: "docs", // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -36,22 +25,17 @@ const config = {
   i18n: {
     defaultLocale: "en",
     locales: ["en", "es", "id"],
-    defaultLocale: "en",
-    locales: ["en", "es", "id"],
   },
 
   presets: [
     [
       "classic",
-      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/stacks-network/docs/tree/master/",
           editUrl: "https://github.com/stacks-network/docs/tree/master/",
         },
         blog: {
@@ -60,10 +44,8 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             "https://github.com/stacks-network/docs/tree/master/packages/create-docusaurus/templates/shared/",
-            "https://github.com/stacks-network/docs/tree/master/packages/create-docusaurus/templates/shared/",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
           customCss: require.resolve("./src/css/custom.css"),
         },
       }),
