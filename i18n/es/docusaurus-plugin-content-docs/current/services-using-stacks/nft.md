@@ -1,29 +1,30 @@
 ---
 title: NFTs
-description: NFTs en Stacks
+description: NFTs on Stacks
 sidebar_position: 3
 ---
 
-Lista de sitios web que operan NFTS en Stacks en orden alfabético.
+List of sites that operate NFTS on Stacks on alphabetical order.
 
-:::tip ¿Falta uno?
-Por favor edita esta página para agregar cualquier sitio web relevante que falte.
+:::tip Are we missing one?
+Please edit this page to add any relevant new site that we are missing.
 :::
 
 ### [Byzantion](https://byzantion.xyz/)
 
-![captura de pantalla de página web](/img/sh_nft_byzantion.png)
+![website-screenshot](/img/sh_nft_byzantion.png)
 
 ### [Gamma](https://gamma.io/)
-![captura de pantalla de página web](/img/sh_nft_gamma.png)
+
+![website-screenshot](/img/sh_nft_gamma.png)
 
 ### [Megapont](https://www.megapont.com/)
 
-![captura de pantalla de página web](/img/sh_nft_megapont.png)
+![website-screenshot](/img/sh_nft_megapont.png)
 
 ### [Satoshibles](https://satoshibles.com/)
 
-![captura de pantalla de página web](/img/sh_nft_satoshibles.png)
+![website-screenshot](/img/sh_nft_satoshibles.png)
 
 ### [StacksArt](https://www.stacksart.com/)
 
