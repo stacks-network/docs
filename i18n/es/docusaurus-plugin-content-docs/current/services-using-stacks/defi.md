@@ -1,13 +1,13 @@
 ---
 title: DeFi
-description: Sitios De-Fi en Stacks
+description: De-Fi sites on Stacks
 sidebar_position: 2
 ---
 
 They are multiple De-Fi sites that operate on the Stacks blockchain.
 
-:::tip ¿Falta uno?
-Por favor edita esta página para agregar cualquier sitio web relevante que falte.
+:::tip Are we missing one?
+Please edit this page to add any relevant new site that we are missing.
 :::
 
 ## Alex
@@ -20,13 +20,13 @@ Por favor edita esta página para agregar cualquier sitio web relevante que falt
 
 ## Catamaran Swaps
 
-[Catamaran Swaps](https://www.catamaranswaps.org/) permite el intercambio de activos digitales sin requirimiento de confianza.
+[Catamaran Swaps](https://www.catamaranswaps.org/) allows trustless exchange of digital assets.
 
 ![](/img/sh_catamaran.png)
 
 ## Lnswap
 
-[LNSWAP](https://www.lnswap.org). Non custiodial crypto currency exchange
+[LNSWAP](https://www.lnswap.org). Non-custodial crypto currency exchange
 
 ![](/img/sh_lnswap.png)
 
@@ -41,4 +41,3 @@ Por favor edita esta página para agregar cualquier sitio web relevante que falt
 [Stackswap](https://app.stackswap.org/v2)
 
 ![](/img/sh_stackswap.png)
-
