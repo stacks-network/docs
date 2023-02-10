@@ -5,11 +5,11 @@ sidebar_position: 1
 
 # Stacks Docs
 
-**Stacks brings smart contract functionality to Bitcoin, without modifying Bitcoin itself.**
+**Stacks is Bitcoin L2 that brings smart contract functionality to Bitcoin, without modifying Bitcoin itself.**
 
 These docs serve as:
 
-1. An introduction to Stacks (what it is, why you should care, how to build on it),
+1. An introduction to Stacks (what it is, why you should care, how to build Bitcoin apps with it),
 2. A reference guide to various aspects of the Stacks ecosystem
 3. A collection of tutorials and code samples to help you learn and build
 
@@ -17,7 +17,7 @@ If you see something you think you might want to contribute, [please do so](/doc
 
 ## Tutorials
 
-Looking to understand how to build full-stack dapps on Stacks? These tutorials will give you a solid introduction. At the moment we have an intro tutorial and a collection of community-created tutorials, with a comprehensive deep-dive tutorial covering BTC integration on the way.
+Looking to understand how to build full-stack Bitcoin dapps with Stacks? These tutorials will give you a solid introduction. At the moment we have an intro tutorial and a collection of community-created tutorials focusing on Stacks and Clarity specifically, with a comprehensive deep-dive tutorial series covering Bitcoin-first development on the way.
 
 [View Hello Stacks Tutorial](/docs/tutorials/hello-stacks)
 
