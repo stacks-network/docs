@@ -10,28 +10,11 @@ We can get an idea of the goal and ethos behind Stacks by looking at [how Satosh
 
 > "...to be a completely separate network and separate block chain, yet share CPU power with Bitcoin...all networks in the world would share combined CPU power, increasing the total strength."
 
-This is major theme in the design decisions for Stacks.
+This is major theme in the design decisions for Stacks. A bit of a contradiction in the Bitcoin world, the Stacks network is a Bitcoin L2, but it does have its own token.
 
-There's a lot of jargon, possible assumptions, controversy, and cool technology wrapped up in those statements. So let's get started by getting a 30,000 foot view of what exactly Stacks is.
+This is an intentional and critical design decision primarily for the purpose of maintaining decentralization, rather than needing to rely on a federation.
 
-## Stacks Explained in (Slightly Less Than) 10 Minutes
-
-<div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
-  <iframe
-    src="https://www.loom.com/embed/158047e5036b434aa484ae26a1ba6de1"
-    frameborder="0"
-    webkitallowfullscreen
-    mozallowfullscreen
-    allowfullscreen
-    style={{
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-    }}
-  ></iframe>
-</div>
+If that's confusing or you are skeptical, that's understandable, we'll be diving deeper into these ideas as we go through Stacks Academy.
 
 ## Stacks and the Purpose of Blockchain Technology
 
@@ -51,19 +34,23 @@ Bitcoin is the most decentralized, most secure, and most immutable blockchain ne
 
 Bitcoin is very slow compared to other networks. Bitcoin only has a new block written once every 10 minutes or so, making its throughput negligible compared to networks designed for speed like Solana.
 
-Bitcoin is also boring. Ethereum came along after Bitcoin and sought to do the same thing for software that Bitcoin did for money. Ethereum's goal is to be a decentralized supercomputer of sorts, serving as a global compute environment for smart contracts (code that is written to a blockchain).
+Bitcoin is also "boring". Ethereum came along after Bitcoin and sought to do the same thing for software that Bitcoin did for money. Ethereum's goal is to be a decentralized supercomputer of sorts, serving as a global compute environment for smart contracts (code that is written to a blockchain).
 
 Bitcoin is also not scalable. Because every new block must propagate to every node on the network, Bitcoin can only run as fast as the slowest node in the network. Now we are seeing the rise of modular blockchain networks like Cosmos that are designed to make it easy for people to spin up their own blockchain networks.
 
-While most new blockchain protocols popping up these days see these properties as negatives and seek to eliminate them, Stacks takes a different approach.
+While most new blockchain protocols popping up these days see these properties as negatives and seek to eliminate them, the Stacks community sees things differently.
 
 ## The Stacks Way
 
 Stacks takes a pyramid approach, where you have the foundational settlement layer at the bottom (Bitcoin), and then a layer on top of that to add smart contracts and programmability (Stacks), and then layers on top of that for scalability and speed (Hiro's Subnets).
 
-By taking this approach, we are able to have all of the same functionality as chains like Ethereum without all of the drawbacks of having a massively complex chain.
+Additionally, there are other layers on top of Bitcoin that serve different purpose and have their own mechanisms and philosophies like Lightning, RSK, and Liquid.
 
-So Stacks is a Bitcoin layer with some unique properties, like having its own token, that allow it to maintain a historical ledger of all of its transactions and operate with its own security budget.
+By taking this layered approach, we are able to have all of the same functionality as chains like Ethereum without all of the drawbacks of having a massively complex chain.
+
+So Stacks is a Bitcoin layer 2 with some unique properties, like having its own token, that acts as an incentive mechanism to maintain a historical ledger of all of its transactions and operate with its own security budget.
+
+The only alternative to this model is a federated model like what Liquid uses. Stacks' design decisions operate under the idea that decentralization is more important than rejecting altcoins.
 
 This is one of the things that separates Stacks from other Bitcoin layers like Lightning.
 
@@ -79,7 +66,7 @@ This is an important property when we are talking about building blockchains tha
 
 _Sounds like a sidechain_.
 
-Nope. We'll get into the technical details of how this works in the next section, but because Stacks records its entire history to Bitcoin, it is at least as hard to re-org the Stacks chain as it is Bitcoin. This is a key differentiator from side chains, which do not have their history recorded to their primary chain.
+Not quite. We'll get into the technical details of how this works in the next section, but because Stacks records its entire history to Bitcoin, it is at least as hard to re-org the Stacks chain as it is Bitcoin. This is a key differentiator from side chains, which do not have their history recorded to their primary chain.
 
 Second, Stacks has its own token, it does not represent pegged Bitcoin. While this may ruffle some feathers among some people in the Bitcoin community, it has several advantages.
 
