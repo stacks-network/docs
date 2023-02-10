@@ -1,6 +1,6 @@
 ---
 title: Linux
-description: Steps to setup a GAIA hub on a Linux server (fresh install). This example is using Debian, but should work on any Linux distribution. It uses docker compose in the backgroud.
+description: Steps to setup a GAIA hub on a Linux server (fresh install). This example is using Debian, but should work on any Linux distribution. It uses docker compose in the background.
 tags:
   - tutorial
   - gaia
@@ -19,7 +19,7 @@ This configuration will setup the following 4 docker containers:
 apt update && apt upgrade -y && apt install -y git vim gnupg jq
 ```
 
-**2. Install [docker](https://docs.docker.com/engine/install/debian/) and [docker-compose](https://docs.docker.com/compose/cli-command/#install-on-linux)** in your OS.  
+**2. Install [docker](https://docs.docker.com/engine/install/debian/) and [docker-compose](https://docs.docker.com/compose/cli-command/#install-on-linux)** in your OS.
 For our example we install _docker_ with:
 
 ```bash
@@ -48,8 +48,8 @@ chmod +x ${DESTINATION_DC}/docker-compose
 git clone https://github.com/stacks-network/gaia.git && cd gaia/deploy/docker
 ```
 
-**4. Copy and edit appropiate .env file**.  
-In the folder `./deploy/docker/` they are different sample files for different configurations like using aws, azure or disk among others. In this example we will store the data localy so we will copy the _disk_ file and update the domain and email fields. Please change `gaia.site.com` and `gaiarocks@mydomain.com` accordingly. Note you need both for the SSL certificate to be created correctly.
+**4. Copy and edit appropriate .env file**.
+In the folder `./deploy/docker/` they are different sample files for different configurations like using aws, azure or disk among others. In this example we will store the data locally so we will copy the _disk_ file and update the domain and email fields. Please change `gaia.site.com` and `gaiarocks@mydomain.com` accordingly. Note you need both for the SSL certificate to be created correctly.
 
 ```bash
 export MYGAIADOMAIN=gaia.site.com
