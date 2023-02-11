@@ -1,13 +1,13 @@
 ---
 title: BNS Contract
-description: The Bitcoin Naming System.
+description: The Bitcoin Name System.
 ---
 
 ![](/img/satoshi-btc.png)
 
 ## Pengantar
 
-The Bitcoin Naming System (BNS) is implemented as a smart contract using Clarity.
+The Bitcoin Name System (BNS) is implemented as a smart contract using Clarity.
 
 Below is a list of public and read-only functions as well as error codes that can be returned by those methods:
 
