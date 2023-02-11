@@ -1,10 +1,10 @@
 ---
-title: Bitcoin Naming System
+title: Bitcoin Name System
 description: Binds Stacks usernames to off-chain state
 sidebar_position: 8
 ---
 
-Bitcoin Naming System (BNS) is a network system that binds Stacks usernames to off-chain state without relying on any central points of control.
+Bitcoin Name System (BNS) is a network system that binds Stacks usernames to off-chain state without relying on any central points of control.
 
 The Stacks V1 blockchain implemented BNS through first-order name operations. In Stacks V2, BNS is instead implemented through a smart-contract loaded during the genesis block. In Stacks V2, BNS is instead implemented through a smart-contract loaded during the genesis block. In Stacks V2, BNS is instead implemented through a smart-contract loaded during the genesis block. In Stacks V2, BNS is instead implemented through a smart-contract loaded during the genesis block.
 
@@ -18,9 +18,9 @@ The Stacks blockchain insures that each node's BNS view is synchronized to all o
 
 The biggest consequence for developers is that in BNS, reading name state is fast and cheap but writing name state is slow and expensive. This is because registering and modifying names requires one or more transactions to be sent to the underlying blockchain, and BNS nodes will not process them until they are sufficiently confirmed. Users and developers need to acquire and spend the requisite cryptocurrency (STX) to send BNS transactions. This is because registering and modifying names requires one or more transactions to be sent to the underlying blockchain, and BNS nodes will not process them until they are sufficiently confirmed. Users and developers need to acquire and spend the requisite cryptocurrency (STX) to send BNS transactions. This is because registering and modifying names requires one or more transactions to be sent to the underlying blockchain, and BNS nodes will not process them until they are sufficiently confirmed. Users and developers need to acquire and spend the requisite cryptocurrency (STX) to send BNS transactions.
 
-## Motivation behind naming systems
+## Motivation behind name systems
 
-We rely on naming systems in everyday life, and they play a critical role in many different applications. For example, when you look up a friend on social media, you are using the platform's naming system to resolve their name to their profile. When you look up a website, you are using the Domain Name Service to resolve the hostname to its host's IP address. We rely on naming systems in everyday life, and they play a critical role in many different applications. For example, when you look up a friend on social media, you are using the platform's naming system to resolve their name to their profile. When you look up a website, you are using the Domain Name Service to resolve the hostname to its host's IP address. When you check out a Git branch, you are using your Git client to resolve the branch name to a commit hash. When you look up someone's PGP key on a keyserver, you are resolving their key ID to their public key. When you look up someone's PGP key on a keyserver, you are resolving their key ID to their public key.
+We rely on name systems in everyday life, and they play a critical role in many different applications. For example, when you look up a friend on social media, you are using the platform's name system to resolve their name to their profile. When you look up a website, you are using the Domain Name Service to resolve the hostname to its host's IP address. We rely on naming systems in everyday life, and they play a critical role in many different applications. For example, when you look up a friend on social media, you are using the platform's naming system to resolve their name to their profile. When you look up a website, you are using the Domain Name Service to resolve the hostname to its host's IP address. When you check out a Git branch, you are using your Git client to resolve the branch name to a commit hash. When you look up someone's PGP key on a keyserver, you are resolving their key ID to their public key. When you look up someone's PGP key on a keyserver, you are resolving their key ID to their public key.
 
 What kinds of things do we want to be true about names? In BNS, names are globally unique, names are human-meaningful, and names are strongly owned. However, if you look at these examples, you'll see that each of them only guarantees _two_ of these properties. This limits how useful they can be. What kinds of things do we want to be true about names? In BNS, names are globally unique, names are human-meaningful, and names are strongly owned. However, if you look at these examples, you'll see that each of them only guarantees _two_ of these properties. This limits how useful they can be. In BNS, names are globally unique, names are human-meaningful, and names are strongly owned. However, if you look at these examples, you'll see that each of them only guarantees _two_ of these properties. This limits how useful they can be. However, if you look at these examples, you'll see that each of them only guarantees _two_ of these properties. This limits how useful they can be.
 
@@ -70,7 +70,7 @@ A feature comparison matrix summarizing the similarities and differences between
 
 ## Namespaces
 
-Namespaces are the top-level naming objects in BNS.
+Namespaces are the top-level name objects in BNS.
 
 They control a few properties about the names within them:
 
