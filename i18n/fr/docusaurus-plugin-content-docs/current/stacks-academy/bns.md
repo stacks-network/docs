@@ -1,10 +1,10 @@
 ---
-title: Bitcoin Naming System
+title: Bitcoin Name System
 description: Lier les noms d'utilisateur aux états hors chaîne
 sidebar_position: 8
 ---
 
-Bitcoin Naming System (BNS) is a network system that binds Stacks usernames to off-chain state without relying on any central points of control.
+Bitcoin Name System (BNS) is a network system that binds Stacks usernames to off-chain state without relying on any central points of control.
 
 La blockchain de Stacks V1 a implémenté BNS à travers des opérations de noms de premier ordre (?). Dans les piles V2, le BNS a été remplacé par un contrat intelligent chargé durant le bloc genèse.
 
@@ -18,9 +18,9 @@ La blockchain Stacks assure que la vue BNS de chaque nœud est synchronisée ave
 
 La plus grande conséquence pour les développeurs est qu'en BNS, la lecture de l'état du nom est rapide et bon marché, mais l'écriture de l'état du nom est lente et coûteuse. C'est parce que l'enregistrement et la modification des noms nécessitent d'envoyer une ou plusieurs transactions à la blockchain sous-jacente, et les nœuds BNS ne les traiteront pas jusqu'à ce qu'ils soient suffisamment confirmés. Les utilisateurs et les développeurs ont besoin d'acquérir et de dépenser la cryptomonnaie requise (STX) pour envoyer des transactions BNS.
 
-## Raison d'être des systèmes de nommage
+## Motivation behind name systems
 
-Nous comptons sur les systèmes de nommage dans la vie de tous les jours, et ils jouent un rôle critique dans de nombreuses applications différentes. Par exemple, lorsque vous regardez un ami sur les réseaux sociaux, vous utilisez le système de nommage de la plate-forme pour lier leur nom à leur profil. Lorsque vous consultez un site Web, vous utilisez le Domain Name Service pour résoudre le nom d'hôte à l'adresse IP de son hôte. Lorsque vous consultez une branche Git, vous utilisez votre client Git pour résoudre le nom de la branche à un hachage de livraison. Lorsque vous regardez la clé PGP de quelqu'un sur un serveur de clés, vous résolvez son ID de clé à sa clé publique.
+We rely on name systems in everyday life, and they play a critical role in many different applications. For example, when you look up a friend on social media, you are using the platform's name system to resolve their name to their profile. Lorsque vous consultez un site Web, vous utilisez le Domain Name Service pour résoudre le nom d'hôte à l'adresse IP de son hôte. Lorsque vous consultez une branche Git, vous utilisez votre client Git pour résoudre le nom de la branche à un hachage de livraison. Lorsque vous regardez la clé PGP de quelqu'un sur un serveur de clés, vous résolvez son ID de clé à sa clé publique.
 
 Quelles sortes de choses voulons-nous être vraies en ce qui concerne les noms? En BNS, les noms sont globalement uniques, les noms ont un sens humain, et les noms sont inaliénables. Cependant, si vous regardez ces exemples, vous verrez que chacun d'eux garantit seulement _deux_ de ces propriétés. Cela limite leur utilité.
 
@@ -70,7 +70,7 @@ Une matrice de comparaison de fonctionnalités résumant les similitudes et les 
 
 ## Espaces de nommage
 
-Les espaces de noms sont les objets de nommage de premier niveau dans BNS.
+Namespaces are the top-level name objects in BNS.
 
 Ils contrôlent quelques propriétés inhérentes aux noms :
 
