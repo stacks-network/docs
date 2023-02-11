@@ -1,10 +1,10 @@
 ---
-title: Système de nommage de la blockchain
+title: Bitcoin Naming System
 description: Lier les noms d'utilisateur aux états hors chaîne
 sidebar_position: 8
 ---
 
-Le système de nommage Blockchain (BNS) est un système de réseau qui lie les noms d'utilisateur "à l'état hors chaîne" sans s'appuyer sur aucun point de contrôle central.
+Bitcoin Naming System (BNS) is a network system that binds Stacks usernames to off-chain state without relying on any central points of control.
 
 La blockchain de Stacks V1 a implémenté BNS à travers des opérations de noms de premier ordre (?). Dans les piles V2, le BNS a été remplacé par un contrat intelligent chargé durant le bloc genèse.
 
