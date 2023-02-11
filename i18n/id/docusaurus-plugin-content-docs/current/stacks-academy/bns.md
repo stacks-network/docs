@@ -1,10 +1,10 @@
 ---
-title: Bitcoin Naming System
+title: Bitcoin Name System
 description: Mengikat nama pengguna Stacks ke status luar-rantai
 sidebar_position: 8
 ---
 
-Bitcoin Naming System (BNS) is a network system that binds Stacks usernames to off-chain state without relying on any central points of control.
+Bitcoin Name System (BNS) is a network system that binds Stacks usernames to off-chain state without relying on any central points of control.
 
 Blockchain Stacks V1 mengimplementasikan BNS melalui operasi nama urutan pertama. Di Stacks V2, BNS diimplementasikan melalui kontrak pintar yang dimuat selama blok genesis.
 
@@ -18,9 +18,9 @@ Blockchain Stacks memastikan bahwa tampilan BNS setiap noda disinkronkan ke semu
 
 Konsekuensi terbesar bagi pengembang adalah bahwa di BNS, membaca status nama prosesnya akan cepat dan murah namun menulis status nama prosesnya akan lambat dan mahal. Ini karena mendaftarkan dan mengubah nama memerlukan satu atau lebih transaksi untuk dikirim ke blockchain yang mendasarinya, dan noda BNS tidak akan memprosesnya sampai mereka telah dikonfirmasi. Pengguna dan pengembang perlu memperoleh dan membelanjakan mata uang kripto (STX) yang diperlukan untuk mengirim transaksi BNS.
 
-## Motivasi di balik sistem penamaan
+## Motivation behind name systems
 
-Kami mengandalkan sistem penamaan dalam kehidupan sehari-hari, dan sistem penamaan memainkan peran penting dalam banyak aplikasi yang berbeda. Misalnya, ketika Anda mencari teman di media sosial, Anda menggunakan sistem penamaan platform untuk mencari nama agar menemukan profil mereka. Ketika Anda mencari situs web, Anda menggunakan Domain Name Service untuk mencari nama host ke alamat IP hostnya. Ketika Anda memeriksa cabang Git, Anda menggunakan klien Git Anda untuk mencari nama cabang ke commit hash. Ketika Anda mencari kunci PGP milik seseorang di keyserver, Anda mencari ID kunci mereka ke kunci publik mereka.
+We rely on name systems in everyday life, and they play a critical role in many different applications. For example, when you look up a friend on social media, you are using the platform's name system to resolve their name to their profile. Ketika Anda mencari situs web, Anda menggunakan Domain Name Service untuk mencari nama host ke alamat IP hostnya. Ketika Anda memeriksa cabang Git, Anda menggunakan klien Git Anda untuk mencari nama cabang ke commit hash. Ketika Anda mencari kunci PGP milik seseorang di keyserver, Anda mencari ID kunci mereka ke kunci publik mereka.
 
 Hal seperti apa yang kita inginkan untuk menjadi kenyataan mengenai penamaan? Di BNS, nama bersifat unik secara global, nama memiliki makna yang manusiawi, dan nama dimiliki secara penuh. Namun, jika Anda melihat contoh ini, Anda akan melihat bahwa masing-masing hanya menjamin _dua_ properti ini. Ini untuk membatasi seberapa bergunanya mereka.
 
@@ -70,7 +70,7 @@ A feature comparison matrix summarizing the similarities and differences between
 
 ## Ruang nama
 
-Ruang nama adalah objek penamaan level atas pada BNS.
+Namespaces are the top-level name objects in BNS.
 
 Ruang nama mengontrol beberapa properti tentang nama-nama di dalamnya:
 
