@@ -1,10 +1,10 @@
 ---
-title: Bitcoin Naming System
+title: Bitcoin Name System
 description: Binds Stacks usernames to off-chain state
 sidebar_position: 8
 ---
 
-Bitcoin Naming System (BNS) is a network system that binds Stacks usernames
+Bitcoin Name System (BNS) is a network system that binds Stacks usernames
 to off-chain state without relying on any central points of control.
 
 The Stacks V1 blockchain implemented BNS through first-order name operations.
@@ -32,11 +32,11 @@ the underlying blockchain, and BNS nodes will not process them until they are
 sufficiently confirmed. Users and developers need to acquire and spend
 the requisite cryptocurrency (STX) to send BNS transactions.
 
-## Motivation behind naming systems
+## Motivation behind name systems
 
-We rely on naming systems in everyday life, and they play a critical
+We rely on name systems in everyday life, and they play a critical
 role in many different applications. For example, when you look up a
-friend on social media, you are using the platform's naming system to resolve
+friend on social media, you are using the platform's name system to resolve
 their name to their profile. When you look up a website, you are using the
 Domain Name Service to
 resolve the hostname to its host's IP address. When you check out a Git branch, you
@@ -126,7 +126,7 @@ between these name objects is presented below:
 
 ## Namespaces
 
-Namespaces are the top-level naming objects in BNS.
+Namespaces are the top-level name objects in BNS.
 
 They control a few properties about the names within them:
 
