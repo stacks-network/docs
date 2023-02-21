@@ -12,8 +12,8 @@ export const FunctionsReferences = ({ toc }) => {
     const id = nameToId(func.name, func.version);
     // ugly hack to customize table of content from non-markdown content
     // https://github.com/facebook/docusaurus/issues/6201
-    if (!toc.find((t) => t.id === id))
-      toc.push({ id, level: 3, value: func.name });
+    const value = func.name.replace(">", "&gt;").replace("<", "&lt;");
+    if (!toc.find((t) => t.id === id)) toc.push({ id, level: 3, value });
     return <FunctionReference key={id} {...{ id, func }} />;
   });
 };
