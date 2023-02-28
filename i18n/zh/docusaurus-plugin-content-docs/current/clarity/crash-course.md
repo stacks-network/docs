@@ -38,7 +38,7 @@ Clarity takes inspiration from LISP, and you can think of everything in Clarity 
 
 So here we are saying that we want to:
 
-1. Call a function called `define-read-only`. This is a built-in function, one of many that you can refer to [in the docs](./language-functions.md).
+1. Call a function called `define-read-only`. This is a built-in function, one of many that you can refer to [in the docs](./language-functions.mdx).
 
 2. Pass it a parameter of hello, which corresponds to the method signature type.
 
@@ -50,7 +50,7 @@ Why am I describing this as if we are calling a function? Because we are, and it
 
 Let's expand on this concept a bit by deleting this and writing a new function.
 
-```clojure
+```clarity
 (define-data-var count int 0)
 (define-public (add-number (number int))
     (let
@@ -101,7 +101,7 @@ So this `let` function is a way of wrapping a multi-step function into a single 
 
 But it does one other crucial thing at the beginning. This line:
 
-```clojure
+```clarity
 (current-count count)
 ```
 
