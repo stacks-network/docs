@@ -1,0 +1,551 @@
+{
+  "bns": {
+    "public_functions": [
+      {
+        "name": "name-import",
+        "input_type": "(buff 20), (buff 48), principal, (buff 20)",
+        "output_type": "(response bool int)",
+        "signature": "(name-import namespace name beneficiary zonefile-hash)",
+        "description": "Imports name to a revealed namespace. Each imported name is given both an owner and some off-chain state."
+      },
+      {
+        "name": "name-preorder",
+        "input_type": "(buff 20), uint",
+        "output_type": "(response uint int)",
+        "signature": "(name-preorder hashed-salted-fqn stx-to-burn)",
+        "description": "Preorders a name by telling all BNS nodes the salted hash of the BNS name. It pays the registration fee to the namespace owner's designated address."
+      },
+      {
+        "name": "name-register",
+        "input_type": "(buff 20), (buff 48), (buff 20), (buff 20)",
+        "output_type": "(response bool int)",
+        "signature": "(name-register namespace name salt zonefile-hash)",
+        "description": "Reveals the salt and the name to all BNS nodes, and assigns the name an initial public key hash and zone file hash."
+      },
+      {
+        "name": "name-renewal",
+        "input_type": "(buff 20), (buff 48), uint, (optional principal), (optional (buff 20))",
+        "output_type": "(response bool int)",
+        "signature": "(name-renewal namespace name stx-to-burn new-owner zonefile-hash)",
+        "description": "Depending in the namespace rules, a name can expire. For example, names in the .id namespace expire after 2 years. You need to send a name renewal every so often to keep your name.\n\nYou will pay the registration cost of your name to the namespace's designated burn address when you renew it.\nWhen a name expires, it enters a \"grace period\". The period is set to 5000 blocks (a month) but can be configured for each namespace. \n\nIt will stop resolving in the grace period, and all of the above operations will cease to be honored by the BNS consensus rules.\nYou may, however, send a NAME_RENEWAL during this grace period to preserve your name. After the grace period, everybody can register that name again.\nIf your name is in a namespace where names do not expire, then you never need to use this transaction."
+      },
+      {
+        "name": "name-revoke",
+        "input_type": "(buff 20), (buff 48)",
+        "output_type": "(response bool int)",
+        "signature": "(name-revoke namespace name)",
+        "description": "Makes a name unresolvable. The BNS consensus rules stipulate that once a name is revoked, no one can change its public key hash or its zone file hash.  The name's zone file hash is set to null to prevent it from resolving. You should only do this if your private key is compromised, or if you want to render your name unusable for whatever reason."
+      },
+      {
+        "name": "name-transfer",
+        "input_type": "(buff 20), (buff 48), principal, (optional (buff 20))",
+        "output_type": "(response bool int)",
+        "signature": "(name-transfer namespace name new-owner zonefile-hash)",
+        "description": "Changes the name's public key hash. You would send a name transfer transaction if you wanted to:\n* Change your private key\n* Send the name to someone else or\n* Update your zone file\n\nWhen transferring a name, you have the option to also clear the name's zone file hash (i.e. set it to null). This is useful for when you send the name to someone else, so the recipient's name does not resolve to your zone file."
+      },
+      {
+        "name": "name-update",
+        "input_type": "(buff 20), (buff 48), (buff 20)",
+        "output_type": "(response bool int)",
+        "signature": "(name-update namespace name zonefile-hash)",
+        "description": "Changes the name's zone file hash. You would send a name update transaction if you wanted to change the name's zone file contents. For example, you would do this if you want to deploy your own Gaia hub and want other people to read from it."
+      },
+      {
+        "name": "namespace-preorder",
+        "input_type": "(buff 20), uint",
+        "output_type": "(response uint int)",
+        "signature": "(namespace-preorder hashed-salted-namespace stx-to-burn)",
+        "description": "Registers the salted hash of the namespace with BNS nodes, and burns the requisite amount of cryptocurrency. Additionally, this step proves to the BNS nodes that user has honored the BNS consensus rules by including a recent consensus hash in the transaction. Returns pre-order's expiration date (in blocks)."
+      },
+      {
+        "name": "namespace-ready",
+        "input_type": "(buff 20)",
+        "output_type": "(response bool int)",
+        "signature": "(namespace-ready namespace)",
+        "description": "Launches the namespace and makes it available to the public. Once a namespace is launched, anyone can register a name in it if they pay the appropriate amount of cryptocurrency."
+      },
+      {
+        "name": "namespace-reveal",
+        "input_type": "(buff 20), (buff 20), uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, principal",
+        "output_type": "(response bool int)",
+        "signature": "(namespace-reveal namespace namespace-salt p-func-base p-func-coeff p-func-b1 p-func-b2 p-func-b3 p-func-b4 p-func-b5 p-func-b6 p-func-b7 p-func-b8 p-func-b9 p-func-b10 p-func-b11 p-func-b12 p-func-b13 p-func-b14 p-func-b15 p-func-b16 p-func-non-alpha-discount p-func-no-vowel-discount lifetime namespace-import)",
+        "description": "Reveals the salt and the namespace ID (after a namespace preorder). It reveals how long names last in this namespace before they expire or must be renewed, and it sets a price function for the namespace that determines how cheap or expensive names its will be.All of the parameters prefixed by `p` make up the `price function`. These parameters govern the pricing and lifetime of names in the namespace.\n\nThe rules for a namespace are as follows:\n* a name can fall into one of 16 buckets, measured by length. Bucket 16 incorporates all names at least 16 characters long.\n* the pricing structure applies a multiplicative penalty for having numeric characters, or punctuation characters.\n* the price of a name in a bucket is `((coeff) * (base) ^ (bucket exponent)) / ((numeric discount multiplier) * (punctuation discount multiplier))`\n\nExample:\n\n* base = 10\n* coeff = 2\n* nonalpha discount: 10\n* no-vowel discount: 10\n* buckets 1, 2: 9\n* buckets 3, 4, 5, 6: 8\n* buckets 7, 8, 9, 10, 11, 12, 13, 14: 7\n* buckets 15, 16+:"
+      }
+    ],
+    "read_only_functions": [
+      {
+        "name": "can-name-be-registered",
+        "input_type": "(buff 20), (buff 48)",
+        "output_type": "(response bool int)",
+        "signature": "(can-name-be-registered namespace name)",
+        "description": "Returns true if the provided name can be registered."
+      },
+      {
+        "name": "can-namespace-be-registered",
+        "input_type": "(buff 20)",
+        "output_type": "(response bool UnknownType)",
+        "signature": "(can-namespace-be-registered namespace)",
+        "description": "Returns true if the provided namespace is available."
+      },
+      {
+        "name": "can-receive-name",
+        "input_type": "principal",
+        "output_type": "(response bool int)",
+        "signature": "(can-receive-name owner)",
+        "description": "Returns true if the provided name can be received. That is, if it is not curretly owned, a previous lease is expired, and the name wasn't revoked."
+      },
+      {
+        "name": "get-name-price",
+        "input_type": "(buff 20), (buff 48)",
+        "output_type": "(response uint int)",
+        "signature": "(get-name-price namespace name)",
+        "description": "Gets the price for a name."
+      },
+      {
+        "name": "get-namespace-price",
+        "input_type": "(buff 20)",
+        "output_type": "(response uint int)",
+        "signature": "(get-namespace-price namespace)",
+        "description": "Gets the price for a namespace."
+      },
+      {
+        "name": "get-namespace-properties",
+        "input_type": "(buff 20)",
+        "output_type": "(response (tuple (namespace (buff 20)) (properties (tuple (can-update-price-function bool) (launched-at (optional uint)) (lifetime uint) (namespace-import principal) (price-function (tuple (base uint) (buckets (list 16 uint)) (coeff uint) (no-vowel-discount uint) (nonalpha-discount uint))) (revealed-at uint)))) int)",
+        "signature": "(get-namespace-properties namespace)",
+        "description": "Get namespace properties."
+      },
+      {
+        "name": "is-name-lease-expired",
+        "input_type": "(buff 20), (buff 48)",
+        "output_type": "(response bool int)",
+        "signature": "(is-name-lease-expired namespace name)",
+        "description": "Return true if the provided name lease is expired."
+      },
+      {
+        "name": "name-resolve",
+        "input_type": "(buff 20), (buff 48)",
+        "output_type": "(response (tuple (lease-ending-at (optional uint)) (lease-started-at uint) (owner principal) (zonefile-hash (buff 20))) int)",
+        "signature": "(name-resolve namespace name)",
+        "description": "Get name registration details."
+      },
+      {
+        "name": "resolve-principal",
+        "input_type": "principal",
+        "output_type": "(response (tuple (name (buff 48)) (namespace (buff 20))) (tuple (code int) (name (optional (tuple (name (buff 48)) (namespace (buff 20)))))))",
+        "signature": "(resolve-principal owner)",
+        "description": "Returns the registered name that a principal owns if there is one. A principal can only own one name at a time."
+      }
+    ],
+    "error_codes": [
+      {
+        "name": "ERR_INSUFFICIENT_FUNDS",
+        "type": "int",
+        "value": "4001"
+      },
+      {
+        "name": "ERR_NAMESPACE_ALREADY_EXISTS",
+        "type": "int",
+        "value": "1006"
+      },
+      {
+        "name": "ERR_NAMESPACE_ALREADY_LAUNCHED",
+        "type": "int",
+        "value": "1014"
+      },
+      {
+        "name": "ERR_NAMESPACE_BLANK",
+        "type": "int",
+        "value": "1013"
+      },
+      {
+        "name": "ERR_NAMESPACE_CHARSET_INVALID",
+        "type": "int",
+        "value": "1016"
+      },
+      {
+        "name": "ERR_NAMESPACE_HASH_MALFORMED",
+        "type": "int",
+        "value": "1015"
+      },
+      {
+        "name": "ERR_NAMESPACE_NOT_FOUND",
+        "type": "int",
+        "value": "1005"
+      },
+      {
+        "name": "ERR_NAMESPACE_NOT_LAUNCHED",
+        "type": "int",
+        "value": "1007"
+      },
+      {
+        "name": "ERR_NAMESPACE_OPERATION_UNAUTHORIZED",
+        "type": "int",
+        "value": "1011"
+      },
+      {
+        "name": "ERR_NAMESPACE_PREORDER_ALREADY_EXISTS",
+        "type": "int",
+        "value": "1003"
+      },
+      {
+        "name": "ERR_NAMESPACE_PREORDER_CLAIMABILITY_EXPIRED",
+        "type": "int",
+        "value": "1009"
+      },
+      {
+        "name": "ERR_NAMESPACE_PREORDER_EXPIRED",
+        "type": "int",
+        "value": "1002"
+      },
+      {
+        "name": "ERR_NAMESPACE_PREORDER_LAUNCHABILITY_EXPIRED",
+        "type": "int",
+        "value": "1010"
+      },
+      {
+        "name": "ERR_NAMESPACE_PREORDER_NOT_FOUND",
+        "type": "int",
+        "value": "1001"
+      },
+      {
+        "name": "ERR_NAMESPACE_PRICE_FUNCTION_INVALID",
+        "type": "int",
+        "value": "1008"
+      },
+      {
+        "name": "ERR_NAMESPACE_STX_BURNT_INSUFFICIENT",
+        "type": "int",
+        "value": "1012"
+      },
+      {
+        "name": "ERR_NAMESPACE_UNAVAILABLE",
+        "type": "int",
+        "value": "1004"
+      },
+      {
+        "name": "ERR_NAME_ALREADY_CLAIMED",
+        "type": "int",
+        "value": "2011"
+      },
+      {
+        "name": "ERR_NAME_BLANK",
+        "type": "int",
+        "value": "2010"
+      },
+      {
+        "name": "ERR_NAME_CHARSET_INVALID",
+        "type": "int",
+        "value": "2022"
+      },
+      {
+        "name": "ERR_NAME_CLAIMABILITY_EXPIRED",
+        "type": "int",
+        "value": "2012"
+      },
+      {
+        "name": "ERR_NAME_COULD_NOT_BE_MINTED",
+        "type": "int",
+        "value": "2020"
+      },
+      {
+        "name": "ERR_NAME_COULD_NOT_BE_TRANSFERED",
+        "type": "int",
+        "value": "2021"
+      },
+      {
+        "name": "ERR_NAME_EXPIRED",
+        "type": "int",
+        "value": "2008"
+      },
+      {
+        "name": "ERR_NAME_GRACE_PERIOD",
+        "type": "int",
+        "value": "2009"
+      },
+      {
+        "name": "ERR_NAME_HASH_MALFORMED",
+        "type": "int",
+        "value": "2017"
+      },
+      {
+        "name": "ERR_NAME_NOT_FOUND",
+        "type": "int",
+        "value": "2013"
+      },
+      {
+        "name": "ERR_NAME_NOT_RESOLVABLE",
+        "type": "int",
+        "value": "2019"
+      },
+      {
+        "name": "ERR_NAME_OPERATION_UNAUTHORIZED",
+        "type": "int",
+        "value": "2006"
+      },
+      {
+        "name": "ERR_NAME_PREORDERED_BEFORE_NAMESPACE_LAUNCH",
+        "type": "int",
+        "value": "2018"
+      },
+      {
+        "name": "ERR_NAME_PREORDER_ALREADY_EXISTS",
+        "type": "int",
+        "value": "2016"
+      },
+      {
+        "name": "ERR_NAME_PREORDER_EXPIRED",
+        "type": "int",
+        "value": "2002"
+      },
+      {
+        "name": "ERR_NAME_PREORDER_FUNDS_INSUFFICIENT",
+        "type": "int",
+        "value": "2003"
+      },
+      {
+        "name": "ERR_NAME_PREORDER_NOT_FOUND",
+        "type": "int",
+        "value": "2001"
+      },
+      {
+        "name": "ERR_NAME_REVOKED",
+        "type": "int",
+        "value": "2014"
+      },
+      {
+        "name": "ERR_NAME_STX_BURNT_INSUFFICIENT",
+        "type": "int",
+        "value": "2007"
+      },
+      {
+        "name": "ERR_NAME_TRANSFER_FAILED",
+        "type": "int",
+        "value": "2015"
+      },
+      {
+        "name": "ERR_NAME_UNAVAILABLE",
+        "type": "int",
+        "value": "2004"
+      },
+      {
+        "name": "ERR_PANIC",
+        "type": "int",
+        "value": "0"
+      },
+      {
+        "name": "ERR_PRINCIPAL_ALREADY_ASSOCIATED",
+        "type": "int",
+        "value": "3001"
+      }
+    ]
+  },
+  "pox": {
+    "public_functions": [
+      {
+        "name": "allow-contract-caller",
+        "input_type": "principal, (optional uint)",
+        "output_type": "(response bool int)",
+        "signature": "(allow-contract-caller caller until-burn-ht)",
+        "description": "Give a contract-caller authorization to call stacking methods. Normally, stacking methods may\nonly be invoked by _direct_ transactions (i.e., the `tx-sender` issues a direct `contract-call` to the stacking methods).\nBy issuing an allowance, the tx-sender may call through the allowed contract."
+      },
+      {
+        "name": "delegate-stack-stx",
+        "input_type": "principal, uint, (tuple (hashbytes (buff 20)) (version (buff 1))), uint, uint",
+        "output_type": "(response (tuple (lock-amount uint) (stacker principal) (unlock-burn-height uint)) int)",
+        "signature": "(delegate-stack-stx stacker amount-ustx pox-addr start-burn-ht lock-period)",
+        "description": "As a delegate, stack the given principal's STX using `partial-stacked-by-cycle`.\nOnce the delegate has stacked > minimum, the delegate should call `stack-aggregation-commit`."
+      },
+      {
+        "name": "delegate-stx",
+        "input_type": "uint, principal, (optional uint), (optional (tuple (hashbytes (buff 20)) (version (buff 1))))",
+        "output_type": "(response bool int)",
+        "signature": "(delegate-stx amount-ustx delegate-to until-burn-ht pox-addr)",
+        "description": "Delegate to `delegate-to` the ability to stack from a given address.\nThis method _does not_ lock the funds, rather, it allows the delegate to issue the stacking lock.\n\nThe caller specifies:\n * amount-ustx: the total amount of ustx the delegate may be allowed to lock\n * until-burn-ht: an optional burn height at which this delegation expiration\n * pox-addr: an optional p2pkh or p2sh address to which any rewards *must* be sent"
+      },
+      {
+        "name": "disallow-contract-caller",
+        "input_type": "principal",
+        "output_type": "(response bool int)",
+        "signature": "(disallow-contract-caller caller)",
+        "description": "Revokes authorization from a contract to invoke stacking methods through contract-calls"
+      },
+      {
+        "name": "reject-pox",
+        "input_type": "",
+        "output_type": "(response bool int)",
+        "signature": "(reject-pox)",
+        "description": "Reject Stacking for this reward cycle.\n`tx-sender` votes all its uSTX for rejection.\nNote that unlike Stacking, rejecting PoX does not lock the tx-sender's tokens: PoX rejection acts like a coin vote."
+      },
+      {
+        "name": "revoke-delegate-stx",
+        "input_type": "",
+        "output_type": "(response bool int)",
+        "signature": "(revoke-delegate-stx)",
+        "description": "Revoke a Stacking delegate relationship. A particular Stacker may only have one delegate,\nso this method does not take any parameters, and just revokes the Stacker's current delegate (if one exists)."
+      },
+      {
+        "name": "stack-aggregation-commit",
+        "input_type": "(tuple (hashbytes (buff 20)) (version (buff 1))), uint",
+        "output_type": "(response bool int)",
+        "signature": "(stack-aggregation-commit pox-addr reward-cycle)",
+        "description": "Commit partially stacked STX.\n\nThis allows a stacker/delegate to lock fewer STX than the minimal threshold in multiple transactions,\nso long as:\n   1. The pox-addr is the same.\n   2. This \"commit\" transaction is called _before_ the PoX anchor block.\nThis ensures that each entry in the reward set returned to the stacks-node is greater than the threshold,\n  but does not require it be all locked up within a single transaction"
+      },
+      {
+        "name": "stack-stx",
+        "input_type": "uint, (tuple (hashbytes (buff 20)) (version (buff 1))), uint, uint",
+        "output_type": "(response (tuple (lock-amount uint) (stacker principal) (unlock-burn-height uint)) int)",
+        "signature": "(stack-stx amount-ustx pox-addr start-burn-ht lock-period)",
+        "description": "Lock up some uSTX for stacking!  Note that the given amount here is in micro-STX (uSTX).\nThe STX will be locked for the given number of reward cycles (lock-period).\nThis is the self-service interface.  tx-sender will be the Stacker.\n\n* The given stacker cannot currently be stacking.\n* You will need the minimum uSTX threshold. This isn't determined until the reward cycle begins, but this\n   method still requires stacking over the _absolute minimum_ amount, which can be obtained by calling `get-stacking-minimum`.\n* The pox-addr argument must represent a valid reward address.  Right now, this must be a Bitcoin\np2pkh or p2sh address.  It cannot be a native Segwit address, but it may be a p2wpkh-p2sh or p2wsh-p2sh address.\n\nThe tokens will unlock and be returned to the Stacker (tx-sender) automatically."
+      }
+    ],
+    "read_only_functions": [
+      {
+        "name": "can-stack-stx",
+        "input_type": "(tuple (hashbytes (buff 20)) (version (buff 1))), uint, uint, uint",
+        "output_type": "(response bool int)",
+        "signature": "(can-stack-stx pox-addr amount-ustx first-reward-cycle num-cycles)",
+        "description": "Evaluate if a participant can stack an amount of STX for a given period."
+      },
+      {
+        "name": "get-pox-info",
+        "input_type": "",
+        "output_type": "(response (tuple (current-rejection-votes uint) (first-burnchain-block-height uint) (min-amount-ustx uint) (prepare-cycle-length uint) (rejection-fraction uint) (reward-cycle-id uint) (reward-cycle-length uint) (total-liquid-supply-ustx uint)) UnknownType)",
+        "signature": "(get-pox-info)",
+        "description": "Returns information about PoX status."
+      },
+      {
+        "name": "get-pox-rejection",
+        "input_type": "principal, uint",
+        "output_type": "(optional (tuple (amount uint)))",
+        "signature": "(get-pox-rejection stacker reward-cycle)",
+        "description": "Returns the amount of uSTX that a given principal used to reject a PoX cycle."
+      },
+      {
+        "name": "get-stacker-info",
+        "input_type": "principal",
+        "output_type": "(optional (tuple (amount-ustx uint) (first-reward-cycle uint) (lock-period uint) (pox-addr (tuple (hashbytes (buff 20)) (version (buff 1))))))",
+        "signature": "(get-stacker-info stacker)",
+        "description": "Returns the _current_ stacking information for `stacker.  If the information\nis expired, or if there's never been such a stacker, then returns none."
+      },
+      {
+        "name": "get-stacking-minimum",
+        "input_type": "",
+        "output_type": "uint",
+        "signature": "(get-stacking-minimum)",
+        "description": "Returns the absolute minimum amount that could be validly Stacked (the threshold to Stack in\na given reward cycle may be higher than this"
+      },
+      {
+        "name": "get-total-ustx-stacked",
+        "input_type": "uint",
+        "output_type": "uint",
+        "signature": "(get-total-ustx-stacked reward-cycle)",
+        "description": "Returns the amount of currently participating uSTX in the given cycle."
+      },
+      {
+        "name": "is-pox-active",
+        "input_type": "uint",
+        "output_type": "bool",
+        "signature": "(is-pox-active reward-cycle)",
+        "description": "Returns whether or not PoX has been rejected at a given PoX cycle."
+      }
+    ],
+    "error_codes": [
+      {
+        "name": "ERR_DELEGATION_EXPIRES_DURING_LOCK",
+        "type": "int",
+        "value": "21"
+      },
+      {
+        "name": "ERR_DELEGATION_POX_ADDR_REQUIRED",
+        "type": "int",
+        "value": "23"
+      },
+      {
+        "name": "ERR_DELEGATION_TOO_MUCH_LOCKED",
+        "type": "int",
+        "value": "22"
+      },
+      {
+        "name": "ERR_INVALID_START_BURN_HEIGHT",
+        "type": "int",
+        "value": "24"
+      },
+      {
+        "name": "ERR_NOT_ALLOWED",
+        "type": "int",
+        "value": "19"
+      },
+      {
+        "name": "ERR_STACKING_ALREADY_DELEGATED",
+        "type": "int",
+        "value": "20"
+      },
+      {
+        "name": "ERR_STACKING_ALREADY_REJECTED",
+        "type": "int",
+        "value": "17"
+      },
+      {
+        "name": "ERR_STACKING_ALREADY_STACKED",
+        "type": "int",
+        "value": "3"
+      },
+      {
+        "name": "ERR_STACKING_EXPIRED",
+        "type": "int",
+        "value": "5"
+      },
+      {
+        "name": "ERR_STACKING_INSUFFICIENT_FUNDS",
+        "type": "int",
+        "value": "1"
+      },
+      {
+        "name": "ERR_STACKING_INVALID_AMOUNT",
+        "type": "int",
+        "value": "18"
+      },
+      {
+        "name": "ERR_STACKING_INVALID_LOCK_PERIOD",
+        "type": "int",
+        "value": "2"
+      },
+      {
+        "name": "ERR_STACKING_INVALID_POX_ADDRESS",
+        "type": "int",
+        "value": "13"
+      },
+      {
+        "name": "ERR_STACKING_NO_SUCH_PRINCIPAL",
+        "type": "int",
+        "value": "4"
+      },
+      {
+        "name": "ERR_STACKING_PERMISSION_DENIED",
+        "type": "int",
+        "value": "9"
+      },
+      {
+        "name": "ERR_STACKING_POX_ADDRESS_IN_USE",
+        "type": "int",
+        "value": "12"
+      },
+      {
+        "name": "ERR_STACKING_STX_LOCKED",
+        "type": "int",
+        "value": "6"
+      },
+      {
+        "name": "ERR_STACKING_THRESHOLD_NOT_MET",
+        "type": "int",
+        "value": "11"
+      },
+      {
+        "name": "ERR_STACKING_UNREACHABLE",
+        "type": "int",
+        "value": "255"
+      }
+    ]
+  }
+}

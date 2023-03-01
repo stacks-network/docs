@@ -1,6 +1,16 @@
 {
   "functions": [
     {
+      "name": "* (multiply)",
+      "snippet": "* ${1:expr-1} ${2:expr-2}",
+      "input_type": "int, ... | uint, ...",
+      "output_type": "int | uint",
+      "signature": "(* i1 i2...)",
+      "description": "Multiplies a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.",
+      "example": "(* 2 3) ;; Returns 6\n(* 5 2) ;; Returns 10\n(* 2 2 2) ;; Returns 8\n",
+      "version": "Clarity1"
+    },
+    {
       "name": "+ (add)",
       "snippet": "+ ${1:expr-1} ${2:expr-2}",
       "input_type": "int, ... | uint, ...",
@@ -18,16 +28,6 @@
       "signature": "(- i1 i2...)",
       "description": "Subtracts a variable number of integer inputs and returns the result. In the event of an _underflow_, throws a runtime error.",
       "example": "(- 2 1 1) ;; Returns 0\n(- 0 3) ;; Returns -3\n",
-      "version": "Clarity1"
-    },
-    {
-      "name": "* (multiply)",
-      "snippet": "* ${1:expr-1} ${2:expr-2}",
-      "input_type": "int, ... | uint, ...",
-      "output_type": "int | uint",
-      "signature": "(* i1 i2...)",
-      "description": "Multiplies a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.",
-      "example": "(* 2 3) ;; Returns 6\n(* 5 2) ;; Returns 10\n(* 2 2 2) ;; Returns 8\n",
       "version": "Clarity1"
     },
     {
@@ -1193,30 +1193,6 @@
   ],
   "keywords": [
     {
-      "name": "contract-caller",
-      "snippet": "contract-caller",
-      "output_type": "principal",
-      "description": "Returns the caller of the current contract context. If this contract is the first one called by a signed transaction,\nthe caller will be equal to the signing principal. If `contract-call?` was used to invoke a function from a new contract, `contract-caller`\nchanges to the _calling_ contract's principal. If `as-contract` is used to change the `tx-sender` context, `contract-caller` _also_ changes\nto the same contract principal.",
-      "example": "(print contract-caller) ;; Will print out a Stacks address of the transaction sender",
-      "version": "Clarity1"
-    },
-    {
-      "name": "tx-sender",
-      "snippet": "tx-sender",
-      "output_type": "principal",
-      "description": "Returns the original sender of the current transaction, or if `as-contract` was called to modify the sending context, it returns that\ncontract principal.",
-      "example": "(print tx-sender) ;; Will print out a Stacks address of the transaction sender",
-      "version": "Clarity1"
-    },
-    {
-      "name": "tx-sponsor?",
-      "snippet": "tx-sponsor?",
-      "output_type": "optional principal",
-      "description": "Returns the sponsor of the current transaction if there is a sponsor, otherwise returns None.",
-      "example": "(print tx-sponsor?) ;; Will print out an optional value containing the Stacks address of the transaction sponsor",
-      "version": "Clarity2"
-    },
-    {
       "name": "block-height",
       "snippet": "block-height",
       "output_type": "uint",
@@ -1241,6 +1217,22 @@
       "version": "Clarity2"
     },
     {
+      "name": "contract-caller",
+      "snippet": "contract-caller",
+      "output_type": "principal",
+      "description": "Returns the caller of the current contract context. If this contract is the first one called by a signed transaction,\nthe caller will be equal to the signing principal. If `contract-call?` was used to invoke a function from a new contract, `contract-caller`\nchanges to the _calling_ contract's principal. If `as-contract` is used to change the `tx-sender` context, `contract-caller` _also_ changes\nto the same contract principal.",
+      "example": "(print contract-caller) ;; Will print out a Stacks address of the transaction sender",
+      "version": "Clarity1"
+    },
+    {
+      "name": "false",
+      "snippet": "false",
+      "output_type": "bool",
+      "description": "Boolean false constant.",
+      "example": "\n(and true false) ;; Evaluates to false\n(or false true)  ;; Evaluates to true\n",
+      "version": "Clarity1"
+    },
+    {
       "name": "is-in-mainnet",
       "snippet": "is-in-mainnet",
       "output_type": "bool",
@@ -1257,27 +1249,19 @@
       "version": "Clarity1"
     },
     {
-      "name": "stx-liquid-supply",
-      "snippet": "stx-liquid-supply",
-      "output_type": "uint",
-      "description": "Returns the total number of micro-STX (uSTX) that are liquid in the system as of this block.",
-      "example": "(print stx-liquid-supply) ;; Will print out the total number of liquid uSTX",
-      "version": "Clarity1"
-    },
-    {
-      "name": "false",
-      "snippet": "false",
-      "output_type": "bool",
-      "description": "Boolean false constant.",
-      "example": "\n(and true false) ;; Evaluates to false\n(or false true)  ;; Evaluates to true\n",
-      "version": "Clarity1"
-    },
-    {
       "name": "none",
       "snippet": "none",
       "output_type": "(optional ?)",
       "description": "Represents the _none_ option indicating no value for a given optional (analogous to a null value).",
       "example": "\n(define-public (only-if-positive (a int))\n  (if (> a 0)\n      (some a)\n      none))\n(only-if-positive 4) ;; Returns (some 4)\n(only-if-positive (- 3)) ;; Returns none\n",
+      "version": "Clarity1"
+    },
+    {
+      "name": "stx-liquid-supply",
+      "snippet": "stx-liquid-supply",
+      "output_type": "uint",
+      "description": "Returns the total number of micro-STX (uSTX) that are liquid in the system as of this block.",
+      "example": "(print stx-liquid-supply) ;; Will print out the total number of liquid uSTX",
       "version": "Clarity1"
     },
     {
@@ -1287,6 +1271,22 @@
       "description": "Boolean true constant.",
       "example": "\n(and true false) ;; Evaluates to false\n(or false true)  ;; Evaluates to true\n",
       "version": "Clarity1"
+    },
+    {
+      "name": "tx-sender",
+      "snippet": "tx-sender",
+      "output_type": "principal",
+      "description": "Returns the original sender of the current transaction, or if `as-contract` was called to modify the sending context, it returns that\ncontract principal.",
+      "example": "(print tx-sender) ;; Will print out a Stacks address of the transaction sender",
+      "version": "Clarity1"
+    },
+    {
+      "name": "tx-sponsor?",
+      "snippet": "tx-sponsor?",
+      "output_type": "optional principal",
+      "description": "Returns the sponsor of the current transaction if there is a sponsor, otherwise returns None.",
+      "example": "(print tx-sponsor?) ;; Will print out an optional value containing the Stacks address of the transaction sponsor",
+      "version": "Clarity2"
     }
   ]
 }
