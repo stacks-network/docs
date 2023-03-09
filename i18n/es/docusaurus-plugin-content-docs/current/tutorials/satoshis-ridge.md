@@ -38,9 +38,9 @@ While you won't need to do any actual Bitcoin programming, it will be very helpf
 
 ## What is a Bitcoin Dapp?
 
-The ultimate goal of Stacks is to unlock Bitcoin's potential as latent capital and bring the same functionality as Ethereum has to Bitcoin. But there is a key difference between the two. We can't do that by changing Bitcoin itself. Bitcoin's simplicity and resistance to change may make it more difficult to build on top of, but it is arguable one of its strengths.
+The ultimate goal of Stacks is to unlock Bitcoin's potential as latent capital and bring the same functionality as Ethereum has to Bitcoin. But there is a key difference between the two. We can't do that by changing Bitcoin itself. Bitcoin's simplicity and resistance to change may make it more difficult to build on top of, but it is arguably one of its strengths.
 
-Instead, we need to create separate layers that add additional functionality without modify Bitcoin itself. Stacks is one such layer. The grand vision of Stacks is to serve as a programming layer for Bitcoin, being completely invisible to the end user in many cases. That is the kind of dapp we'll be building here.
+Instead, we need to create separate layers that add additional functionality without modifying Bitcoin itself. Stacks is one such layer. The grand vision of Stacks is to serve as a programming layer for Bitcoin, being completely invisible to the end user in many cases. That is the kind of dapp we'll be building here.
 
 In order to dive deeper into how we actually go about doing that, check out the [BTC Connection](../stacks-academy/btc-connection.md) section of the docs.
 
