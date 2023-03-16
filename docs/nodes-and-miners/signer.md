@@ -10,8 +10,6 @@ All signing parties must run an instance of a signer node.
 
 To run a signer node, you’ll need access to run `bitcoind` in addition to a Stacks node.
 
-There is a minimum threshold for how many signer nodes need to be running at any given time in order for BTC stacking rewards to be paid out.
-
 ## Running a Bitcoin Full Node
 
 The first step is to get a Bitcoin full node up and running.
@@ -55,10 +53,11 @@ After this runs, you should see some JSON printed to the screen that looks like 
 ```
 
 :::warning
-**Do not lose this information** - we'll need to use the `privateKey` and `btcAddress` fields in later steps.
+**Do not lose this information** - we'll need to use the `privateKey` when we set up our config file.
 :::
 
 The above `btcAddress` (mkRYR7KkPB1wjxNjVz3HByqAvVz8c4B6ND) will then need to be imported into the bitcoin testnet network.
+
 :::note
 Be sure to replace `<btcAddress from JSON above>` with the bitcoin address in the "Generate a keychain" step
 :::
@@ -73,13 +72,42 @@ importaddress <btcAddress from JSON above>
 
 ## Setting Up a Stacks Signer
 
-Now that you have your Bitcoin and Stacks nodes running and your master private key generated, it's time to download the [stacks-signer binary](https://github.com/Trust-Machines/core-eng/tree/main/stacks-signer).
+Now that you have your Bitcoin and Stacks nodes running and your private key generated, it's time to download the [stacks-signer binary](https://github.com/Trust-Machines/core-eng/tree/main/stacks-signer).
 
 We'll need the private key we generated in order to fill in some of the configuration options in the Stacks signer.
 
-## Questions
+## Running the Stacks Signer
 
-- Do users need to run an instance of stacks signer and a stacks node? Or is a stacks signer an implementation of a stacks node?
-- Where do users enter the configuration options for the stacks signer? I can't find anywhere for them to add their private keys
-- What CLI commands do they need to run to get the signer running? I can't find those either. I don't know Rust so it's very possible I'm just not seeing them because I can't understand the code.
-- Is there anything I've written so far that is incorrect? Struggling to wrap my head around how the whole process works and what users actually need to do to run a signer.
+Once you have the configuration options set, you can run this command to get your signer up and running. The stacks signer comes with sensible defaults, so you may not need to change anything here unless you have a specific reason to.
+
+`cargo run -- --id 1 --config conf/signer.toml`
+
+Repeat this process in separate terminals for as many signers as you are going to run.
+
+## Questions, Answers, and In-Progress Features
+
+There is quite a bit of functionality that is still in development, here are some questions and answers regarding some of the more nebulous aspects of this existing documentation.
+
+**Is there anywhere I can look to see what all the different config options mean?**
+the option name and the source code are the only 'documentation' currently. toml supports comments so having the default config include comment lines would go a long way.
+
+**How do users set what Stacks RPC endpoint they are connecting to in the signer? I see that option in the coordinator, but not the signer. It seems like all a signer has to do is choose a relay server to connect to, but the bulk of the work is on the coordinator to set private keys and RPC endpoints. So does a signer not need to connect directly to a Stacks node? What about bitcoind?**
+a signer communicates with other signers through the in-development relay feature of stacks-node. currently the signer config http_relay_url points to a stand-in app to relay data to other signers. this signer config item should change to stacks_node_rpc_url.
+
+**Does the relay URL correspond to a relay server that a signer would connect to, and does that then correspond to a specific coordinator that they would be connecting to?**
+currently the relay is the bridge between all signers and the coordinator. the stacks-node will take on that role in the future. the config file should reflect this now, so i'll note that as a todo.
+
+**How does a signer find and choose a relay server to connect to?**
+I imagine this is the same as setting up a new stacks-node - the default config file has a seed that points to a hiro.so node.
+
+**Coordinators do need to generate new private keys correct? Do they do that through the CLI like I outlined in the doc and add that to their toml file?**
+The coordinator is not currently using a local private key and the config file has no setting currently for it. This feature is not flushed out yet so it may change. There is also some confusing terminology around this key. I'll call it the communication key as it would be used to encrypt traffic between coordinator and signers. The config file has spots for the stx address private key and the btc address private key, but I imagine the communication key will be generated and stored automatically with no config impact other than a folder to store working files in general.
+
+**How do signers determine what configuration options to set in their toml file?**
+like stacks-node, the distributed config file will have sensible defaults. I expect that a signer will work with no config edits once the infrastructure is in place - the mainnet stacks nodes include all required sbtc functionality.
+
+**Does a DKG signing round correspond to a 2 week stacking cycle where we generate a new list of public keys to act as signers?**
+A signing round is run any time a btc operation is needed, such as on every peg-in and peg-out operation, so its happening all the time.
+
+**What are the minimum and recommended hardware requirements for running the signers/coordinators/relays?**
+this hasn't been investigated but its safe to say the requirements will be less than a stacks-node, or put another way stacks-signer and stacks-coordinator will run on anything stacks-node runs on.
