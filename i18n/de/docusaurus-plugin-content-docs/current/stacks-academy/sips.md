@@ -17,7 +17,7 @@ The SIPs are located in the [stacksgov/sips](https://github.com/stacksgov/sips) 
 Anyone in the Stacks community can submit a SIP.
 
 :::tip Stacks Improvement Proposals Community Calls
-Add the [weekly community SIP call](https://www.addevent.com/event/IJ15791776) to your calendar.
+Add the [weekly community SIP call](https://www.addevent.com/event/wS15955379) to your calendar.
 
 SIP Meeting calls are recorded and available [here](https://www.youtube.com/playlist?list=PLg717Ri_rTnx5kuaWqp3cUAtwQk_yzslT)
 
@@ -37,7 +37,10 @@ More details of the meetings are available [here](https://github.com/stacksgov/s
 - [x] [SIP 009: Standard Trait Definition for Non-Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-009/sip-009-nft-standard.md)
 - [x] [SIP 010: Standard Trait Definition for Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md)
 - [x] [SIP 012: Burn Height Selection for a Network Upgrade to Introduce New Cost-Limits](https://github.com/stacksgov/sips/blob/main/sips/sip-012/sip-012-cost-limits-network-upgrade.md)
+- [x] [SIP-015: Stacks Upgrade of Proof-of-Transfer and Clarity](https://github.com/stacksgov/sips/blob/main/sips/sip-015/sip-015-network-upgrade.md)
 - [x] [SIP-016: Metadata for Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-016/sip-016-token-metadata.md)
+- [x] [SIP-018: Signed Structured Data](https://github.com/stacksgov/sips/blob/main/sips/sip-018/sip-018-signed-structured-data.md)
+- [x] [SIP-020: Bitwise Operations in Clarity](https://github.com/stacksgov/sips/blob/main/sips/sip-020/sip-020-bitwise-ops.md)
 
 ## How to Get Involved
 
