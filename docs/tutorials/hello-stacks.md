@@ -390,8 +390,8 @@ And import a couple things from it at the top of our `App.jsx` file.
 import {
   AppConfig,
   UserSession,
-  AuthDetails,
   showConnect,
+  openContractCall,
 } from "@stacks/connect";
 ```
 
@@ -468,7 +468,7 @@ The first thing we'll do is hide the 'Connect Wallet' button if there is current
     >
       Connect Wallet
     </button>
-  );
+  )
 }
 ```
 
@@ -491,7 +491,7 @@ We also want to hide the form to submit a message if we are not authenticated.
         Submit New Message
       </button>
     </div>
-  );
+  )
 }
 ```
 
@@ -518,7 +518,7 @@ import { stringUtf8CV } from "@stacks/transactions";
 
 We're importing the network we'll be calling the transaction on and a utility helper from the `transactions` package that will help to encode our data in a format that the Clarity contract can understand.
 
-Now we need to add a new constant to hold the network that we are using. In our case we want to be using `Mocknet`, which we can add using the following right under our current state declarations.
+Now we need to add a new constant to hold the network that we are using. In our case we want to be using `Mocknet`, which we can add using the following to the `submitMessage` function.
 
 ```jsx
 const network = new StacksMocknet();
