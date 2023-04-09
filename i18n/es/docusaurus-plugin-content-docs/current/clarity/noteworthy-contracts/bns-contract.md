@@ -27,7 +27,7 @@ A continuación se muestra una lista de funciones públicas y de solo lectura, a
 
 #### Descripción:
 
-Importa un nombre a un espacio de nombres revelado. Each imported name is given both an owner and some off-chain state.
+Importa un nombre a un namespace revelado. A cada nombre importado se le asigna tanto un propietario como un estado off-chain.
 
 ### name-preorder
 
@@ -39,7 +39,7 @@ Importa un nombre a un espacio de nombres revelado. Each imported name is given 
 
 #### Descripción:
 
-Preorders a name by telling all BNS nodes the salted hash of the BNS name. It pays the registration fee to the namespace owner's designated address.
+Reserva un nombre informando a todos los nodos de BNS el hash salt del nombre de BNS. Se paga la tarifa de registro a la dirección designada por el propietario del namespace.
 
 ### name-register
 
@@ -51,7 +51,7 @@ Preorders a name by telling all BNS nodes the salted hash of the BNS name. It pa
 
 #### Descripción:
 
-Reveals the salt and the name to all BNS nodes, and assigns the name an initial public key hash and zone file hash.
+Revela el salt y el nombre a todos los nodos BNS, y asigna a el nombre un hash de clave pública inicial y un hash del archivo de zona.
 
 ### name-renewal
 
@@ -63,11 +63,11 @@ Reveals the salt and the name to all BNS nodes, and assigns the name an initial 
 
 #### Descripción:
 
-Depending in the namespace rules, a name can expire. For example, names in the .id namespace expire after 2 years. You need to send a name renewal every so often to keep your name.
+Dependiendo de las reglas del namespace, un nombre puede expirar. Por ejemplo, los nombres en el namespace .id expiran después de 2 años. Necesitas enviar una renovación de nombre de vez en cuando para mantener tu nombre.
 
-You will pay the registration cost of your name to the namespace's designated burn address when you renew it. When a name expires, it enters a \"grace period\". The period is set to 5000 blocks (a month) but can be configured for each namespace.
+Pagará el coste de registro de su nombre a la dirección de grabación designada por el namespace cuando lo renueve. Cuando un nombre caduca, ingresa a un \"período de gracia\". El período está fijado en 5000 bloques (un mes) pero puede configurarse para cada namespace.
 
-It will stop resolving in the grace period, and all of the above operations will cease to be honored by the BNS consensus rules. You may, however, send a NAME_RENEWAL during this grace period to preserve your name. After the grace period, everybody can register that name again. If your name is in a namespace where names do not expire, then you never need to use this transaction.
+Dejará de resolverse en el período de gracia, y todas las operaciones anteriores dejarán de ser reconocidas por las reglas de consenso de BNS. Sin embargo, puede enviar un NAME_RENEWAL durante este período de gracia para preservar su nombre. Después del período de gracia, cualquier persona puede registrar ese nombre nuevamente. Si su nombre está en un namespace donde los nombres no caducan, entonces nunca necesitará usar esta transacción.
 
 ### name-revoke
 
