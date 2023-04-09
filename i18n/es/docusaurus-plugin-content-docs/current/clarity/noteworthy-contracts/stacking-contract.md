@@ -8,13 +8,13 @@ sidebar_position: 6
 
 Stacking is implemented as a smart contract using Clarity. You can always find the Stacking contract identifier using the Stacks Blockchain API [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get_pox_info).
 
-Below is a list of public and read-only functions as well as error codes that can be returned by those methods:
+A continuación se muestra una lista de funciones públicas y de solo lectura, así como los códigos de error que pueden devolver esos métodos:
 
-- [Public functions](#public-functions)
-- [Read-only functions](#read-only-functions)
-- [Error codes](#error-codes)
+- [Funciones públicas](#public-functions)
+- [Funciones de solo lectura](#read-only-functions)
+- [Códigos de error](#error-codes)
 
-## Public functions
+## Funciones públicas
 
 ### allow-contract-caller
 
@@ -149,7 +149,7 @@ This is the self-service interface. tx-sender will be the Stacker.
 
 The tokens will unlock and be returned to the Stacker (tx-sender) automatically.
 
-## Read-only functions
+## Funciones de solo lectura
 
 ### can-stack-stx
 
@@ -235,7 +235,7 @@ Returns the amount of currently participating uSTX in the given cycle.
 
 Returns whether or not PoX has been rejected at a given PoX cycle.
 
-## Error codes
+## Códigos de error
 
 ### ERR_DELEGATION_EXPIRES_DURING_LOCK
 
