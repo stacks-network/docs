@@ -1,21 +1,21 @@
 ---
-title: BNS Contract
-description: The Bitcoin Name System.
+title: Contrato BNS
+description: El Sistema de Nombres de Bitcoin.
 ---
 
 ![](/img/satoshi-btc.png)
 
 ## Introducción
 
-The Bitcoin Name System (BNS) is implemented as a smart contract using Clarity.
+El Sistema de Nombres Bitcoin (Bitcoin Name System, en inglés abreviado como BNS) se implementa como un contrato inteligente usando Clarity.
 
-Below is a list of public and read-only functions as well as error codes that can be returned by those methods:
+A continuación se muestra una lista de funciones públicas y de solo lectura, así como los códigos de error que pueden devolver esos métodos:
 
-- [Public functions](#public-functions)
-- [Read-only functions](#read-only-functions)
-- [Error codes](#error-codes)
+- [Funciones públicas](#public-functions)
+- [Funciones de solo lectura](#read-only-functions)
+- [Códigos de error](#error-codes)
 
-## Public functions
+## Funciones públicas
 
 ### name-import
 
@@ -25,9 +25,9 @@ Below is a list of public and read-only functions as well as error codes that ca
 
 #### Signature: `(name-import namespace name beneficiary zonefile-hash)`
 
-#### Description:
+#### Descripción:
 
-Imports name to a revealed namespace. Each imported name is given both an owner and some off-chain state.
+Importa un nombre a un espacio de nombres revelado. Each imported name is given both an owner and some off-chain state.
 
 ### name-preorder
 
@@ -37,7 +37,7 @@ Imports name to a revealed namespace. Each imported name is given both an owner 
 
 #### Signature: `(name-preorder hashed-salted-fqn stx-to-burn)`
 
-#### Description:
+#### Descripción:
 
 Preorders a name by telling all BNS nodes the salted hash of the BNS name. It pays the registration fee to the namespace owner's designated address.
 
@@ -49,7 +49,7 @@ Preorders a name by telling all BNS nodes the salted hash of the BNS name. It pa
 
 #### Signature: `(name-register namespace name salt zonefile-hash)`
 
-#### Description:
+#### Descripción:
 
 Reveals the salt and the name to all BNS nodes, and assigns the name an initial public key hash and zone file hash.
 
@@ -61,7 +61,7 @@ Reveals the salt and the name to all BNS nodes, and assigns the name an initial 
 
 #### Signature: `(name-renewal namespace name stx-to-burn new-owner zonefile-hash)`
 
-#### Description:
+#### Descripción:
 
 Depending in the namespace rules, a name can expire. For example, names in the .id namespace expire after 2 years. You need to send a name renewal every so often to keep your name.
 
@@ -77,7 +77,7 @@ It will stop resolving in the grace period, and all of the above operations will
 
 #### Signature: `(name-revoke namespace name)`
 
-#### Description:
+#### Descripción:
 
 Makes a name unresolvable. The BNS consensus rules stipulate that once a name is revoked, no one can change its public key hash or its zone file hash. The name's zone file hash is set to null to prevent it from resolving. You should only do this if your private key is compromised, or if you want to render your name unusable for whatever reason.
 
@@ -89,7 +89,7 @@ Makes a name unresolvable. The BNS consensus rules stipulate that once a name is
 
 #### Signature: `(name-transfer namespace name new-owner zonefile-hash)`
 
-#### Description:
+#### Descripción:
 
 Changes the name's public key hash. You would send a name transfer transaction if you wanted to:
 
@@ -107,7 +107,7 @@ When transferring a name, you have the option to also clear the name's zone file
 
 #### Signature: `(name-update namespace name zonefile-hash)`
 
-#### Description:
+#### Descripción:
 
 Changes the name's zone file hash. You would send a name update transaction if you wanted to change the name's zone file contents. For example, you would do this if you want to deploy your own Gaia hub and want other people to read from it.
 
@@ -119,7 +119,7 @@ Changes the name's zone file hash. You would send a name update transaction if y
 
 #### Signature: `(namespace-preorder hashed-salted-namespace stx-to-burn)`
 
-#### Description:
+#### Descripción:
 
 Registers the salted hash of the namespace with BNS nodes, and burns the requisite amount of cryptocurrency. Additionally, this step proves to the BNS nodes that user has honored the BNS consensus rules by including a recent consensus hash in the transaction. Returns pre-order's expiration date (in blocks).
 
@@ -131,7 +131,7 @@ Registers the salted hash of the namespace with BNS nodes, and burns the requisi
 
 #### Signature: `(namespace-ready namespace)`
 
-#### Description:
+#### Descripción:
 
 Launches the namespace and makes it available to the public. Once a namespace is launched, anyone can register a name in it if they pay the appropriate amount of cryptocurrency.
 
@@ -143,7 +143,7 @@ Launches the namespace and makes it available to the public. Once a namespace is
 
 #### Signature: `(namespace-reveal namespace namespace-salt p-func-base p-func-coeff p-func-b1 p-func-b2 p-func-b3 p-func-b4 p-func-b5 p-func-b6 p-func-b7 p-func-b8 p-func-b9 p-func-b10 p-func-b11 p-func-b12 p-func-b13 p-func-b14 p-func-b15 p-func-b16 p-func-non-alpha-discount p-func-no-vowel-discount lifetime namespace-import)`
 
-#### Description:
+#### Descripción:
 
 Reveals the salt and the namespace ID (after a namespace preorder). It reveals how long names last in this namespace before they expire or must be renewed, and it sets a price function for the namespace that determines how cheap or expensive names its will be.All of the parameters prefixed by `p` make up the `price function`. These parameters govern the pricing and lifetime of names in the namespace.
 
@@ -166,7 +166,7 @@ Example:
 - buckets 7, 8, 9, 10, 11, 12, 13, 14: 7
 - buckets 15, 16+:
 
-## Read-only functions
+## Funciones de solo lectura
 
 ### can-name-be-registered
 
@@ -176,7 +176,7 @@ Example:
 
 #### Signature: `(can-name-be-registered namespace name)`
 
-#### Description:
+#### Descripción:
 
 Returns true if the provided name can be registered.
 
@@ -188,7 +188,7 @@ Returns true if the provided name can be registered.
 
 #### Signature: `(can-namespace-be-registered namespace)`
 
-#### Description:
+#### Descripción:
 
 Returns true if the provided namespace is available.
 
@@ -200,7 +200,7 @@ Returns true if the provided namespace is available.
 
 #### Signature: `(can-receive-name owner)`
 
-#### Description:
+#### Descripción:
 
 Returns true if the provided name can be received. That is, if it is not currently owned, a previous lease is expired, and the name wasn't revoked.
 
@@ -212,7 +212,7 @@ Returns true if the provided name can be received. That is, if it is not current
 
 #### Signature: `(get-name-price namespace name)`
 
-#### Description:
+#### Descripción:
 
 Gets the price for a name.
 
@@ -224,7 +224,7 @@ Gets the price for a name.
 
 #### Signature: `(get-namespace-price namespace)`
 
-#### Description:
+#### Descripción:
 
 Gets the price for a namespace.
 
@@ -236,7 +236,7 @@ Gets the price for a namespace.
 
 #### Signature: `(get-namespace-properties namespace)`
 
-#### Description:
+#### Descripción:
 
 Get namespace properties.
 
@@ -248,7 +248,7 @@ Get namespace properties.
 
 #### Signature: `(is-name-lease-expired namespace name)`
 
-#### Description:
+#### Descripción:
 
 Return true if the provided name lease is expired.
 
@@ -260,7 +260,7 @@ Return true if the provided name lease is expired.
 
 #### Signature: `(name-resolve namespace name)`
 
-#### Description:
+#### Descripción:
 
 Get name registration details.
 
@@ -272,11 +272,11 @@ Get name registration details.
 
 #### Signature: `(resolve-principal owner)`
 
-#### Description:
+#### Descripción:
 
 Returns the registered name that a principal owns if there is one. A principal can only own one name at a time.
 
-## Error codes
+## Códigos de error
 
 ### ERR_INSUFFICIENT_FUNDS
 
