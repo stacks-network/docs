@@ -79,7 +79,7 @@ Dejará de resolverse en el período de gracia, y todas las operaciones anterior
 
 #### Descripción:
 
-Makes a name unresolvable. The BNS consensus rules stipulate that once a name is revoked, no one can change its public key hash or its zone file hash. The name's zone file hash is set to null to prevent it from resolving. You should only do this if your private key is compromised, or if you want to render your name unusable for whatever reason.
+Hace que un nombre no se pueda resolver. Las reglas de consenso de BNS estipulan que una vez que se revoca un nombre, nadie puede cambiar su hash de clave pública ni su hash de archivo de zona. El hash del archivo de zona del nombre se establece en nulo para evitar que se resuelva. Deberías hacer esto solo si tu clave privada ha sido comprometida, o si deseas que tu nombre no se pueda usar por alguna razón.
 
 ### name-transfer
 
@@ -91,13 +91,13 @@ Makes a name unresolvable. The BNS consensus rules stipulate that once a name is
 
 #### Descripción:
 
-Changes the name's public key hash. You would send a name transfer transaction if you wanted to:
+Cambia el hash de clave pública del nombre. Enviarías una transacción de transferencia de nombre si quisieras:
 
-- Change your private key
-- Send the name to someone else or
-- Update your zone file
+- Cambiar tu llave privada
+- Enviar el nombre a otra persona o
+- Actualizar tu archivo de zona
 
-When transferring a name, you have the option to also clear the name's zone file hash (i.e. set it to null). This is useful for when you send the name to someone else, so the recipient's name does not resolve to your zone file.
+Al transferir un nombre, tienes la opción de también borrar el hash del archivo de zona del nombre (es decir, establecerlo en nulo). Esto es útil cuando envías el nombre a otra persona, para que el nombre del destinatario no resuelva a tu archivo de zona.
 
 ### name-update
 
@@ -109,7 +109,7 @@ When transferring a name, you have the option to also clear the name's zone file
 
 #### Descripción:
 
-Changes the name's zone file hash. You would send a name update transaction if you wanted to change the name's zone file contents. For example, you would do this if you want to deploy your own Gaia hub and want other people to read from it.
+Cambia el hash del archivo de zona del nombre. Enviarías una transacción de actualización de nombre si quisieras cambiar el contenido del archivo de la zona del nombre. Por ejemplo, harías esto si quieres desplegar tu propio hub de Gaia y deseas que otras personas lean desde él.
 
 ### namespace-preorder
 
