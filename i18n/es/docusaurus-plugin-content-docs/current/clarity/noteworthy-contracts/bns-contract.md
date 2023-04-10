@@ -121,7 +121,7 @@ Cambia el hash del archivo de zona del nombre. Enviarías una transacción de ac
 
 #### Descripción:
 
-Registers the salted hash of the namespace with BNS nodes, and burns the requisite amount of cryptocurrency. Additionally, this step proves to the BNS nodes that user has honored the BNS consensus rules by including a recent consensus hash in the transaction. Returns pre-order's expiration date (in blocks).
+Registra el hash salted del namespace con los nodos de BNS y quema la cantidad requerida de criptomoneda. Además, este paso demuestra a los nodos de BNS que el usuario ha respetado las reglas de consenso de BNS al incluir un hash de consenso reciente en la transacción. Devuelve la fecha de vencimiento del pre-pedido (en bloques).
 
 ### namespace-ready
 
@@ -133,7 +133,7 @@ Registers the salted hash of the namespace with BNS nodes, and burns the requisi
 
 #### Descripción:
 
-Launches the namespace and makes it available to the public. Once a namespace is launched, anyone can register a name in it if they pay the appropriate amount of cryptocurrency.
+Lanza el namespace y lo hace disponible al público. Una vez que se lanza un namespace, cualquiera puede registrar un nombre en él si paga la cantidad apropiada de criptomonedas.
 
 ### namespace-reveal
 
@@ -145,22 +145,22 @@ Launches the namespace and makes it available to the public. Once a namespace is
 
 #### Descripción:
 
-Reveals the salt and the namespace ID (after a namespace preorder). It reveals how long names last in this namespace before they expire or must be renewed, and it sets a price function for the namespace that determines how cheap or expensive names its will be.All of the parameters prefixed by `p` make up the `price function`. These parameters govern the pricing and lifetime of names in the namespace.
+Revela el salt y el ID del namespace (después de una preo orden del namespace). Muestra cuánto tiempo duran los nombres en este namespace antes de que caduquen o deban ser renovados, y establece una función de precio para el namespace que determina cuán barato o caro serán sus nombres. Todos los parámetros prefijados por `p` componen la `price function`. Estos parámetros rigen el precio y el tiempo de vida de los nombres en el namespace.
 
-The rules for a namespace are as follows:
+Las reglas para un namespace son las siguientes:
 
-- a name can fall into one of 16 buckets, measured by length. Bucket 16 incorporates all names at least 16 characters long.
+- un nombre puede caer en uno de los 16 buckets, medidos por longitud. El bucket 16 incorpora todos los nombres al menos de 16 caracteres de longitud.
 
-- the pricing structure applies a multiplicative penalty for having numeric characters, or punctuation characters.
+- la estructura de precios aplica una penalización multiplicativa por tener caracteres numéricos, o caracteres de puntuación.
 
-- the price of a name in a bucket is `((coeff) * (base) ^ (bucket exponent)) / ((numeric discount multiplier) * (punctuation discount multiplier))`
+- el precio de un nombre en un bucket es `((coeff) * (base) ^ (exponente del bucket)) / ((multiplicador de descuento numérico) * (multiplicador de descuento de puntuación))`
 
-Example:
+Ejemplo:
 
 - base = 10
 - coeff = 2
-- nonalpha discount: 10
-- no-vowel discount: 10
+- descuento nonalpha: 10
+- descuento no-vocal: 10
 - buckets 1, 2: 9
 - buckets 3, 4, 5, 6: 8
 - buckets 7, 8, 9, 10, 11, 12, 13, 14: 7
@@ -178,7 +178,7 @@ Example:
 
 #### Descripción:
 
-Returns true if the provided name can be registered.
+Devuelve verdadero si el nombre proporcionado puede ser registrado.
 
 ### can-namespace-be-registered
 
@@ -190,7 +190,7 @@ Returns true if the provided name can be registered.
 
 #### Descripción:
 
-Returns true if the provided namespace is available.
+Devuelve verdadero si el namespace proporcionado está disponible.
 
 ### can-receive-name
 
@@ -202,7 +202,7 @@ Returns true if the provided namespace is available.
 
 #### Descripción:
 
-Returns true if the provided name can be received. That is, if it is not currently owned, a previous lease is expired, and the name wasn't revoked.
+Devuelve verdadero si el nombre proporcionado puede ser recibido. Es decir, si actualmente no está en propiedad de alguien, un arrendamiento anterior ha caducado y el nombre no ha sido revocado.
 
 ### get-name-price
 
@@ -226,7 +226,7 @@ Gets the price for a name.
 
 #### Descripción:
 
-Gets the price for a namespace.
+Obtiene el precio de un namespace.
 
 ### get-namespace-properties
 
@@ -238,7 +238,7 @@ Gets the price for a namespace.
 
 #### Descripción:
 
-Get namespace properties.
+Obtener propiedades del namespace.
 
 ### is-name-lease-expired
 
@@ -250,7 +250,7 @@ Get namespace properties.
 
 #### Descripción:
 
-Return true if the provided name lease is expired.
+Devuelve verdadero si el contrato de arrendamiento del nombre proporcionado ha caducado.
 
 ### name-resolve
 
@@ -262,7 +262,7 @@ Return true if the provided name lease is expired.
 
 #### Descripción:
 
-Get name registration details.
+Obtener detalles de registro de nombres.
 
 ### resolve-principal
 
@@ -274,7 +274,7 @@ Get name registration details.
 
 #### Descripción:
 
-Returns the registered name that a principal owns if there is one. A principal can only own one name at a time.
+Devuelve el nombre registrado que posee un principal si existe alguno. Un principal solo puede poseer un nombre a la vez.
 
 ## Códigos de error
 
