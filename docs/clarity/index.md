@@ -21,6 +21,28 @@ The number of smart contract languages grows by the year. Choosing a first langu
 
 One of the core precepts of Clarity is that it is secure by design. The design process was guided by examining common pitfalls, mistakes, and vulnerabilities in the field of smart contract engineering as a whole. There are countless real world examples of where developer failure led to the loss or theft of vast amounts of tokens. To name two big ones: an issue that has become known as the Parity bug led to the irreparable loss of millions of dollars worth of Ethereum. Second, the hacking of The DAO (a "Decentralized Autonomous Organization") caused financial damage so great that the Ethereum Foundation decided to issue a contentious hard fork that undid the theft. These and many other mistakes could have been prevented in the design of the language itself.
 
+### Should smart contracts be Turing complete?
+
+We will discover new applications for smart contracts. These applications will go beyond current smart contracts, traditional contracts, and may even open new economic opportunities. Given these possibilities, how should we build our smart contracts? What characteristics should our smart contract languages have?
+
+It is good practice to separate data from programs.  Should smart contracts be data, or programs, or something in between? If smart contracts are data, then should the programs that execute-them be Turing complete or perhaps less powerful? If smart contracts are programs, then what language should smart contracts be written in? What characteristics should this programming language have?
+
+The Church-Turing thesis is the hypothesis that all formal notions of computation are captured by Turing machines or modern computers. A programming language is Turing complete if it captures all formal notions of computation.  Many programming languages are Turing complete. For example, Python, C++, Rust, Java, and Lisp are all Turing complete. 
+
+Consider a program and its input. In the worst case, determining this program’s output is impossible. Validating a program, on a particular input, is done by generating a proof-of-correctness. Proofs-of-correctness are logical proofs that can be mechanically validated. Finding proofs-of-correctness for programs and their input is undecidable. Kurt G\”odel showed there are undecidability logical statements. This indicates all programs in Turing complete languages cannot be validated in the worst case.  Thus, Turing complete smart contract languages must allow contracts that cannot be validated.
+
+A peak at Raymond Smullyan’s approach to undecidability[Link text](/raymond_smullyan_on_undecidability.md).
+
+Alonzo Church and Alan Turing showed there are problems that are uncomputable. Uncomputable problems cannot be solved by any Turing machine. Hence, assuming the Church-Turing thesis, these uncomputable problems cannot be solved by any computer.
+[Link text](/uncomputable_problems.md)
+
+Turing complete languages are very expressive. In fact, assuming the Church-Turing thesis,
+Turing complete languages are as expressive as possible in some sense. Is there a trade-off? What types of problems can occur with uncomputable problems and programs whose validity may be undecidable?
+
+As smart contracts subsume parts of contract law, consider the large body of laws and regulations for tax law. For instance, US tax law and regulations take up several million words.  International tax law and regulations pushes these numbers much higher.  Are these laws and regulations programs or are they data?  If tax law is written in a Turing complete language, then the law may codify uncomputable problems.  It is an accountant’s nightmare for their advice to be undecidable.
+
+Clarity is non-Turing complete, yet very expressive. This makes it so that Clarity is decidable and cannot encode uncomputable problems. There are discussions and papers on smart contract languages such as Solidity that propose subsets of Solidity that are non-Turing complete. These subsets are decidable and cannot encode uncomputable problems.  However, there is no consensus on which subsets to work with.
+
 ### Clarity is interpreted, not compiled
 
 Clarity code is interpreted and committed to the chain exactly as written. Solidity and other languages are compiled to byte-code before it is submitted to the chain. The danger of compiled smart contract languages is two-fold: first, a compiler adds a layer of complexity. A bug in the compiler may lead to different byte-code than was intended and thus carries the risk of introducing a vulnerability. Second, byte-code is not human-readable, which makes it very hard to verify what the smart contract is actually doing. Ask yourself, would you sign a contract you cannot read? If your answer is no, then why should it be any different for smart contracts?2 With Clarity, what you see is what you get.
