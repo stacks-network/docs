@@ -108,12 +108,11 @@ and initialize it with
 npx tailwindcss init -p
 ```
 
-Now we need to tell Tailwind where our content is coming from and change out processing mode to "Just-In-Time" by modifying the `tailwind.config.js` file to look like this.
+Now we need to tell Tailwind where our content is coming from by modifying the content config option in the `tailwind.config.js` file to look like this.
 
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: "jit",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
@@ -390,7 +389,6 @@ And import a couple things from it at the top of our `App.jsx` file.
 import {
   AppConfig,
   UserSession,
-  AuthDetails,
   showConnect,
 } from "@stacks/connect";
 ```
@@ -529,8 +527,6 @@ And finally we can add the code to initiate the transaction.
 ```jsx
 const submitMessage = async (e) => {
   e.preventDefault();
-
-  const network = new StacksMocknet();
 
   const options = {
     contractAddress: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
