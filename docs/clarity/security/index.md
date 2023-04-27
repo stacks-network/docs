@@ -19,4 +19,4 @@ This section is a work in progress and [contributions are always welcome](../../
 
 This is an often-discussed property of Clarity, and is in contrast to Solidity and most other languages, which are Turing-complete. Turing-completeness is often seen as an advantage and a necessity in fully-expressive languages, but it comes with some dangers and disadvantages that we'll explore in this section.
 
-[Read More](./non-turing-complete.md)
+[Read More](./decidable.md)
