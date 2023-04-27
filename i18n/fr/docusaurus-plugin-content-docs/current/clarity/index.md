@@ -27,7 +27,7 @@ Clarity code is interpreted and committed to the chain exactly as written. Solid
 
 ### Clarity is decidable
 
-A decidable language has the property that from the code itself, you can know with certainty what the program will do. This avoids issues like the halting problem. With Clarity you know for sure that given any input, the program will halt in a finite number of steps. In simple terms: it is guaranteed that program execution will end. Decidability also allows for complete static analysis of the call graph so you get an accurate picture of the exact cost before execution. There is no way for a Clarity call to "run out of gas" in the middle of the call. If you are unsure what this means, let it not worry you for now. The serious advantage of decidability will become more apparent over time.
+A decidable language has the property that from the code itself, you can know with certainty what the program will do. This avoids issues like the halting problem. With Clarity you know for sure that given any input, the program will halt in a finite number of steps. In simple terms: it is guaranteed that program execution will end. Decidability also allows for complete static analysis of the call graph so you get an accurate picture of the exact cost before execution. There is no way for a Clarity call to "run out of gas" in the middle of the call. We explore this idea more, along with a discussion on Turing completeness, in the [security deep dive on decidability](./security/decidable.md).
 
 ### Clarity does not permit reentrancy
 
