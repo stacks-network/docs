@@ -29,22 +29,22 @@ const FunctionReference = ({ id, func }) => {
         Introduced in: <b>{func.version.replace("Clarity", "Clarity ")}</b>
       </p>
 
-      <h4>
-        input: <code>{func.input_type}</code>
-      </h4>
+      <p>
+        <b>input:</b> <code>{func.input_type}</code>
+      </p>
 
-      <h4>
-        output: <code>{func.output_type}</code>
-      </h4>
+      <p>
+        <b>output:</b> <code>{func.output_type}</code>
+      </p>
 
-      <h4>
-        signature: <code>{func.signature}</code>
-      </h4>
+      <p>
+        <b>signature:</b> <code>{func.signature}</code>
+      </p>
 
-      <h4>description:</h4>
+      <p><b>description:</b></p>
       <ReactMarkdown>{func.description}</ReactMarkdown>
 
-      <h4>example:</h4>
+      <p><b>example:</b></p>
       <CodeBlock className="language-clarity">{func.example.trim()}</CodeBlock>
     </MDXContent>
   );
