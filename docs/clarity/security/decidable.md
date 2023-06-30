@@ -7,15 +7,18 @@ sidebar_position: 1
 
 ## What does it mean for a language to be Non-Turing Complete or Decidable?
 
-Non-Turing complete and decidable are two terms you will often hear in regards to the security advantages of Clarity, but what do they mean?
+Non-Turing complete and decidable are two terms you will often hear about the security advantages of Clarity, but what do they mean?
 
-While related, they are not quite interchangeable, and there are a few differences.
+While related, they are not quite interchangeable, since there are a few differences.
 
 ### Non-Turing Complete
 
-A system or language is considered non-Turing complete if it cannot simulate a Turing machine, which is an abstract model of computation. Non-Turing complete systems have limited computational power compared to Turing complete systems, which can simulate any Turing machine. Examples of non-Turing complete systems include finite state machines and some domain-specific languages (like Clarity).
+A system or language is non-Turing complete if it cannot simulate a Turing machine, which is an abstract model of computation. Non-Turing complete systems have limited computational power compared to Turing complete systems.
+A Turing-complete system or language can simulate any Turing machine. Examples of non-Turing complete systems include finite state machines and some domain-specific languages (like Clarity).
 
-Non-Turing complete languages typically cannot express all possible algorithms, especially those involving unbounded loops or recursion. This last property is especially important in the context of Clarity, as it makes it so that features like unbounded loops and reentrancy are disallowed at a language level.
+Non-Turing complete languages typically cannot express all possible algorithms.
+Specifically, some problems whose solutions require unbounded loops or recursion cannot be expressed using 
+non-Turing complete languages. This last property is especially important in the context of Clarity, as it makes it so that features like unbounded loops and reentrancy are disallowed at a language level.
 
 ### Decidable
 
@@ -29,7 +32,7 @@ Before we dive into specifics, let's first set the context and viewpoint we shou
 
 As you explore further into the security properties of Solidity and Clarity, you'll see that there are always mitigation steps that _can_ be taken by developers to help address some of these security issues.
 
-The main issue with that thinking is that it opens up smart contract security to greater human error. If we can preserve functionality while mitigating the chance of human error as much as possible, we should do so.
+The main issue, with this line of thinking, is it increases the odds of human error in smart contract security. If we can preserve functionality while mitigating the chance of human error as much as possible, we should do so.
 
 ## Should smart contracts be Turing complete?
 
@@ -72,7 +75,7 @@ Solidity allows for unbounded loops, recursion, and dynamic function calls, whic
 
 One practical example is the issue of a specific kind of DoS attack in Solidity, where the contract is rendered inoperable because of unbounded execution constraints. An example of this is the GovernMental attack, where a mapping that needed to be deleted for a payout became so large that working with it exceeded the block gas limit.
 
-There are a few different properties of Clarity's language design that will prevent a problem like this.
+There are a few different properties of Clarity's language design that prevents such DoS attacks.
 
 The reason that the analysis system can accurately estimate the execution cost is because certain functionality is intentionally limited in Clarity.
 
@@ -86,7 +89,7 @@ Lists, on the other hand, which are iterable, do require the developer to define
 
 So how would we implement a mapping of an undefined size in Clarity? We wouldn't, because it's an anti-pattern in smart contract design.
 
-Instead, Clarity would force us as developers to think of a better solution to our problem, like implementing a way for users to handle mapping/list element operations themselves, instead of mass operations handled at the contract level.
+Instead, Clarity forces us to think of a better solution to our problem. For example, implementing a way for users to handle mapping/list element operations themselves, instead of mass operations handled at the contract level.
 
 If you [analyze the GovernMental attack](https://hackernoon.com/smart-contract-attacks-part-2-ponzi-games-gone-wrong-d5a8b1a98dd8#h-attack-2-call-stack-attack), you'll see that it took advantage of multiple security issues, all of which are mitigated in Clarity. You'll also see that a fix was added to make it economically infeasible to carry out this type of attack again.
 
@@ -102,13 +105,13 @@ You can view some more common smart contract vulnerabilities and how they are mi
 
 This has second-order effects as well when we look at security testing and auditing. One of the common tools for testing smart contracts is formal verification, where we mathematically prove that certain properties of smart contracts will or will not remain true in all cases.
 
-This can lead to the path explosion problem, where there are so many paths available that formal verification becomes incredibly difficult. This problem is greatly mitigated in Clarity, since there is not chance of a program encountering an unbounded loop.
+This can lead to the path explosion problem, where there are so many paths available that formal verification becomes incredibly difficult. This problem is mitigated in Clarity, since there is not chance of a program encountering an unbounded loop.
 
 This leads us to a more general mental model for thinking about decidability as smart contracts continue to become a larger part of our economy. Remember that the goal with blockchain systems is to create an open, transparent, fair financial system.
 
 This means that smart contracts will be responsible for managing large amounts of wealth for ever-growing amounts of people. As smart contracts encompass more financial structures, their complexity and usage will grow.
 
-Complexity is the enemy of security, and the more complex a system is, the more danger there is in creating uncomputable problems when there are no hard restrictions on the execution steps that can be taken.
+Complexity is the enemy of security. The more complex a system is, the more danger there is in creating uncomputable problems when there are no hard restrictions on the execution steps that can be taken.
 
 This is deadly in financial infrastructure that is not only open and transparent, but immutable. Let's explore this idea of uncomputability a bit more.
 
