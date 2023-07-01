@@ -13,11 +13,9 @@ Got an idea you think would make a good addition? We're always [accepting contri
 
 ## Bitcoin Integration
 
-Swapping between Bitcoin and Stacks addresses
+Getting a Stacks address from a public key
 
-Swapping between xBTC and BTC
-
-Verifying a transaction on the BTC chain
+[Verifying a transaction on the BTC chain](./verifying-a-btc-tx-was-mined.md)
 
 ## DAOs
 
@@ -32,8 +30,6 @@ Creating a BTC-backed DAO treasury
 [Creating a Fungible Token](./creating-an-ft.md)
 
 Minting an NFT with Bitcoin
-
-Airdropping an NFT to a Bitcoin address
 
 ## Stacking and Mining
 
