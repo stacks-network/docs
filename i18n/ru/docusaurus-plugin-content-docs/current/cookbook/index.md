@@ -19,6 +19,10 @@ Getting a Stacks address from a public key
 
 [Verifying a transaction on the BTC chain](./verifying-a-btc-tx-was-mined.md)
 
+Get Sats per STX price
+
+[Parsing a Bitcoin transaction](./parse-a-btc-tx.md)
+
 ## DAOs
 
 Creating a simple DAO with ExecutorDAO
@@ -43,10 +47,6 @@ Simple mining pool
 
 Proof of PoX payout
 
-## Oracles
-
-Creating a simple BTC price oracle
-
 ## Frontend
 
 [Post conditions with Stacks.js](./post-conditions)
@@ -54,6 +54,8 @@ Creating a simple BTC price oracle
 [Authentication with Stacks.js](./stacks-js-auth)
 
 [Sending transactions with Stacks.js](./stacks-js-sending-transactions)
+
+Authenticating with Sign in with Stacks
 
 ## Complete Apps
 
