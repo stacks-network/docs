@@ -13,7 +13,7 @@ Got an idea you think would make a good addition? We're always [accepting contri
 
 ## Bitcoin Integration
 
-[Sending Bitcoin with Hiro wallet](./sending-bitcoin-with-hiro-wallet.md)
+[Envoi de Bitcoin avec le portefeuille Hiro](./sending-bitcoin-with-hiro-wallet.md)
 
 Getting a Stacks address from a public key
 
