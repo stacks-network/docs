@@ -1,38 +1,38 @@
 ---
-title: Sending Bitcoin with Hiro Wallet
-description: Initiate a basic Bitcoin transaction with the Hiro wallet
+title: Envoi de Bitcoin avec le portefeuille Hiro
+description: Lancer une transaction standard Bitcoin avec le portefeuille Hiro
 ---
 
-Using Hiro's web wallet, we can easily initiate a simple Bitcoin transaction using only a few lines of code.
+En utilisant le portefeuille web d'Hiro, nous pouvons facilement initier une transaction Bitcoin simple avec seulement quelques lignes de code.
 
-You'll need to be authenticated with the Hiro wallet for this to work, with you can see how to do in the [Authentication with Stacks.js](./stacks-js-auth) recipe.
+Vous devrez être authentifié avec le portefeuille Hiro pour que cela fonctionne, consultez comment faire dans le guide [Authentification avec Stacks.js](./stacks-js-auth).
 
-Once you have the wallet hooked up, you can use the Hiro wallet API to initiate a simple Bitcoin transaction in your JS app like this.
+Une fois que vous avez connecté le portefeuille, vous pouvez utiliser l'API Hiro Wallet pour initier une simple transaction Bitcoin dans votre application JS de cette façon.
 
 ```javascript
 const sendBitcoin = async () => {
-  const resp = await window.btc?.request("sendTransfer", {
-    address: "tb1qya9wtp4dyq67ldxz2pyuz40esvgd0cgx9s3pjl", //replace this with whatever address you want to send to
-    amount: "10000", // the amount you want to send denoted in satoshis
+  const resp = attendre window.btc?. equest("sendTransfer", {
+    adresse: "tb1qya9wtp4dyq67ldxz2pyuz40esvgd0cgx9s3pjl", //remplacez ceci par n'importe quelle adresse que vous voulez envoyer au montant de
+    : "10000", // le montant que vous voulez envoyer en satoshis
   });
 
-  // Storing txid in local storage
-  // We'll get back the transaction IF, which we can then use to do whatever we want
-  if (typeof window !== "undefined") {
-    localStorage.setItem("txid", JSON.stringify(resp.result.txid));
+  // Stockage de txid dans le stockage local
+  // Nous récupérerons la transaction IF, que nous pouvons ensuite utiliser pour faire ce que nous voulons
+  si (typeof window ! = "undefined") {
+    localStorage. etItem("txid", JSON.stringify(resp.resultat. xid));
   }
 
-  // We may want to do something once this transaction has confirmed, so we can set it to pending here and then use an API like mempool.space to query the Bitcoin chain for information about this transaction
+  // Nous pouvons vouloir faire quelque chose une fois cette transaction confirmée, pour que nous puissions le mettre en attente ici et ensuite utiliser une API comme mempool. le rythme de requête de la chaîne Bitcoin pour obtenir des informations sur cette transaction
   localStorage.setItem("txStatus", "pending");
 };
 ```
 
-Then all we would do is hook up our button to call this `sendBitcoin` function.
+Ensuite, tout ce que nous ferions est de brancher notre bouton pour appeler cette fonction `sendBitcoins`.
 
 ```javascript
 <button onClick={sendBitcoin}>Send Bitcoin</button>
 ```
 
-You can take a look at the [Verifying a transaction on the BTC chain](./verifying-a-btc-tx-was-mined.md) recipe to see a more complex user flow of verifying a transaction was mined using this returned ID as a starting point.
+Vous pouvez jeter un coup d'œil au guide [Vérifier une transaction sur la chaîne BTC](./verifying-a-btc-tx-was-mined.md) pour voir un flux utilisateur plus complexe de vérification d'une transaction qui a été miné en utilisant cet ID retourné comme point de départ.
 
-You can take a look at a bit more info about this simple API on the [Hiro wallet developer docs](https://hirowallet.gitbook.io/developers/bitcoin/sign-transactions/sending-bitcoin).
+Vous pouvez jeter un coup d'oeil à un peu plus d'informations sur cette simple API sur la [documentation du développeur de portefeuille Hiro](https://hirowallet.gitbook.io/developers/bitcoin/sign-transactions/sending-bitcoin).
