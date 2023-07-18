@@ -8,7 +8,7 @@ Clarity makes creating NFTs incredibly easy. With built-in functions for creatin
 Let's see how.
 
 :::tip
-Code for this recipe has been pulled from [this NFT tutorial](https://blog.developerdao.com/building-an-nft-with-stacks-and-clarity) from Developer DAO.
+For a more in-depth discussion of NFTs in Clarity and how to create them, check out the [NFTs chapter in the Clarity book](https://book.clarity-lang.org/ch10-01-sip009-nft-standard.html).
 :::
 
 ## Trait
