@@ -1,23 +1,23 @@
 ---
-title: BNS Contract
-description: The Bitcoin Name System.
+title: Kontrak BNS
+description: Sebuah Sistem Penamaan Bitcoin.
 ---
 
 ![](/img/satoshi-btc.png)
 
 ## Pengantar
 
-The Bitcoin Name System (BNS) is implemented as a smart contract using Clarity.
+BNS (Bitcoin Name System) dijalankan sebagai kontrak pintar menggunakan Clarity.
 
-Below is a list of public and read-only functions as well as error codes that can be returned by those methods:
+Berikut adalah daftar fungsi publik dan hanya baca (read-only), serta kode kesalahan yang dapat dikembalikan oleh metode-metode tersebut:
 
-- [Public functions](#public-functions)
-- [Read-only functions](#read-only-functions)
-- [Error codes](#error-codes)
+- [Fungsi yang dapat diakses publik](#public-functions)
+- [Fungsi dengan akses baca saja](#read-only-functions)
+- [Kode galat](#error-codes)
 
-## Public functions
+## Fungsi yang dapat diakses publik
 
-### name-import
+### nama-impor
 
 #### Input: `(buff 20), (buff 48), principal, (buff 20)`
 
@@ -166,7 +166,7 @@ Example:
 - buckets 7, 8, 9, 10, 11, 12, 13, 14: 7
 - buckets 15, 16+:
 
-## Read-only functions
+## Fungsi dengan akses baca saja
 
 ### can-name-be-registered
 
@@ -276,7 +276,7 @@ Get name registration details.
 
 Returns the registered name that a principal owns if there is one. A principal can only own one name at a time.
 
-## Error codes
+## Kode galat
 
 ### ERR_INSUFFICIENT_FUNDS
 
