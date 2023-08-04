@@ -27,7 +27,7 @@ Berikut adalah daftar fungsi publik dan hanya baca (read-only), serta kode kesal
 
 #### Description:
 
-Imports name to a revealed namespace. Each imported name is given both an owner and some off-chain state.
+Menyertakan nama ke dalam ruang nama yang terbuka. Setiap nama yang diimpor diberikan pemilik dan beberapa keadaan di luar rantai blok.
 
 ### name-preorder
 
@@ -39,7 +39,7 @@ Imports name to a revealed namespace. Each imported name is given both an owner 
 
 #### Description:
 
-Preorders a name by telling all BNS nodes the salted hash of the BNS name. It pays the registration fee to the namespace owner's designated address.
+Memesan nama dengan memberitahukan seluruh node BNS hash yang diacak dari nama BNS. Biaya pendaftaran dibayarkan ke alamat yang telah ditetapkan oleh pemilik ruang nama.
 
 ### name-register
 
@@ -51,7 +51,7 @@ Preorders a name by telling all BNS nodes the salted hash of the BNS name. It pa
 
 #### Description:
 
-Reveals the salt and the name to all BNS nodes, and assigns the name an initial public key hash and zone file hash.
+Mengungkapkan salt dan nama ke semua node BNS, dan menetapkan hash kunci publik awal dan hash file zona untuk nama tersebut.
 
 ### name-renewal
 
