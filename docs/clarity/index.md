@@ -23,7 +23,7 @@ One of the core precepts of Clarity is that it is secure by design. The design p
 
 ### Clarity is interpreted, not compiled
 
-Clarity code is interpreted and committed to the chain exactly as written. Solidity and other languages are compiled to byte-code before it is submitted to the chain. The danger of compiled smart contract languages is two-fold: first, a compiler adds a layer of complexity. A bug in the compiler may lead to different byte-code than was intended and thus carries the risk of introducing a vulnerability. Second, byte-code is not human-readable, which makes it very hard to verify what the smart contract is actually doing. Ask yourself, would you sign a contract you cannot read? If your answer is no, then why should it be any different for smart contracts?2 With Clarity, what you see is what you get.
+Clarity code is interpreted and committed to the chain exactly as written. Solidity and other languages are compiled to byte-code before it is submitted to the chain. The danger of compiled smart contract languages is two-fold: first, a compiler adds a layer of complexity. A bug in the compiler may lead to different byte-code than was intended and thus carries the risk of introducing a vulnerability. Second, byte-code is not human-readable, which makes it very hard to verify what the smart contract is actually doing. Ask yourself, would you sign a contract you cannot read? If your answer is no, then why should it be any different for smart contracts? With Clarity, what you see is what you get.
 
 ### Clarity is decidable
 
