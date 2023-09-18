@@ -198,7 +198,7 @@ Parce que les noms de sous-domaine sont bon marché, les développeurs peuvent �
 
 Nous fournissons une implémentation de référence d'un [Enregistrement BNS ](https://github.com/stacks-network/subdomain-registrar) pour aider les développeurs à diffuser des opérations de sous-domaine. Les utilisateurs posséderaient toujours leurs noms de sous-domaine; le bureau d’enregistrement donne simplement aux développeurs un moyen pratique de les enregistrer et de les gérer dans le contexte d’une application particulière.
 
-# Normes BNS et DID
+## BNS and DID Standards
 
 Les noms BNS sont conformes à la spécification de [de la Fondation d’identité décentralisée](http://identity.foundation) protocole pour les identifiants décentralisés (DID).
 
@@ -231,7 +231,7 @@ Tous les noms n'auront pas forcément de DIDs qui seront résolus pour les clés
 
 Une API RESTful est en cours de développement.
 
-## Encodage DID pour les sous-domaines
+## DID Encoding for Subdomains
 
 Chaque nom et sous-domaine dans BNS a un DID. L'encodage est un peu différent pour les sous-domaines, donc le logiciel peut déterminer quel façon de coder choisir.
 
