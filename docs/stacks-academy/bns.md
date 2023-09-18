@@ -330,7 +330,7 @@ subdomain names; the registrar simply gives developers a convenient
 way for them to register and manage them in the context of a
 particular application.
 
-# BNS and DID Standards
+## BNS and DID Standards
 
 BNS names are compliant with the emerging
 [Decentralized Identity Foundation](http://identity.foundation) protocol
