@@ -201,7 +201,7 @@ Because subdomain names are cheap, developers may be inclined to run subdomain r
 
 We supply a reference implementation of a [BNS Subdomain Registrar](https://github.com/stacks-network/subdomain-registrar) to help developers broadcast subdomain operations. Users would still own their subdomain names; the registrar simply gives developers a convenient way for them to register and manage them in the context of a particular application.
 
-# Estándares BNS y DID
+## BNS and DID Standards
 
 Los nombres de BNS son compatibles con el emergente protocolo de especificación para identificadores descentralizados (DIDs) [Fundación de la Identidad Descentralizada](http://identity. foundation).
 
@@ -234,7 +234,7 @@ No todos los nombres tendrán DIDs que resuelvan claves públicas. Sin embargo, 
 
 Una API RESTful está en desarrollo.
 
-## Codificación DID para subdominios
+## DID Encoding for Subdomains
 
 Cada nombre y subdominio en BNS tiene un DID. La codificación es ligeramente diferente para los subdominios, por lo que el software puede determinar qué code-path tomar.
 
