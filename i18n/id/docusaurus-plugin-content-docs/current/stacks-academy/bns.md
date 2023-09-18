@@ -197,7 +197,7 @@ Karena nama subdomain murah, pengembang mungkin cenderung menjalankan pendaftar 
 
 Kami menyediakan implementasi referensi [Pendaftar Subdomain BNS](https://github.com/stacks-network/subdomain-registrar) untuk membantu pengembang menyiarkan operasi subdomain. Pengguna akan tetap memiliki nama subdomain mereka; pendaftar hanya memberi pengembang cara yang nyaman bagi mereka untuk mendaftar dan mengelolanya dalam konteks aplikasi tertentu.
 
-# Standar BNS dan DID
+## BNS and DID Standards
 
 BNS names are compliant with the emerging [Decentralized Identity Foundation](http://identity.foundation) protocol specification for decentralized identifiers (DIDs).
 
@@ -230,7 +230,7 @@ Tidak semua nama akan memiliki DID yang menjadi kunci publik. Namun, nama yang d
 
 API RESTful sedang dalam pengembangan.
 
-## Pengkodean DID untuk Subdomain
+## DID Encoding for Subdomains
 
 Setiap nama dan subdomain di BNS memiliki DID. Pengkodean sedikit berbeda untuk subdomain, sehingga perangkat lunak dapat menentukan jalur kode mana yang harus diambil.
 
