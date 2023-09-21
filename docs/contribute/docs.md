@@ -21,7 +21,7 @@ You need a free [Github](https://www.github.com) account to add or edit any cont
 
 To edit any page, just click on the _Edit this page_ button at the bottom of each page and submit your changes online.
 
-To add new content, they are two different ways to do it, the [easy way](#easy-way) and the [advanced way](#advanced-way).
+To add new content, there are two different ways to do it, the [easy way](#easy-way) and the [advanced way](#advanced-way).
 
 ## Easy way
 
@@ -45,7 +45,7 @@ You can also test the site locally using this method.
    - `npm install` (to install dependencies).
    - `npx docusaurus start` to start a local copy of the site. A web browser will open at http://localhost:3000, so you can see a preview of your changes in real time.
 6. Make the changes you wish and then commit them with this kind of message: `git commit -am "feat: some new feature or content"`.
-7. Push to to GitHub with `git push --set-upstream origin feature/my-feature-branch`.
+7. Push to GitHub with `git push --set-upstream origin feature/my-feature-branch`.
 8. Visit GitHub and make your pull request.
 
 ## Additional information
@@ -74,7 +74,7 @@ npm run build
 
 ### An alternative: Working in browser
 
-As an alterative to working locally, you can also use the web IDE gitpod that provides an environment to contribute directly from within your browser.
+As an alternative to working locally, you can also use the web IDE gitpod that provides an environment to contribute directly from within your browser.
 
 You only need to have a github account and open [this link](https://gitpod.io/#https://github.com/stacks-network/docs).
 
