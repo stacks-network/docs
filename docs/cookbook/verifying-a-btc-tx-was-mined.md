@@ -45,7 +45,7 @@ Here's a basic example where we are calling [Blockstream's API](https://github.c
 
 We can get all the information we need with nothing but the transaction ID, which will usually be passed to us when we use a wallet like [Hiro's web wallet](https://hirowallet.gitbook.io/developers/bitcoin/sign-transactions/sending-bitcoin) to initiate the Bitcoin transaction.
 
-Let's go through the code we can use to implement this. For full context, this code is taken from the example [bitbadge](https://github.com/kenrogers/bitbadge) repo, which you can take a look at. For a complete ste-by-step walkthrough of how to implement this, check out the [Bitcoin Primer](https://bitcoinprimer.dev).
+Let's go through the code we can use to implement this. For full context, this code is taken from the example [bitbadge](https://github.com/kenrogers/bitbadge) repo, which you can take a look at. For a complete step-by-step walkthrough of how to implement this, check out the [Bitcoin Primer](https://bitcoinprimer.dev).
 
 Here's the mint function:
 
