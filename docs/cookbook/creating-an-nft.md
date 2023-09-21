@@ -37,7 +37,7 @@ The official mainnet trait can be [found on the Stacks Explorer](https://explore
 )
 ```
 
-All we are doing here is defining the function signatures for functions we'll need to implement in out Clarity contract, which we can see a simple version of below.
+All we are doing here is defining the function signatures for functions we'll need to implement in our Clarity contract, which we can see a simple version of below.
 
 ## Clarity Code
 
