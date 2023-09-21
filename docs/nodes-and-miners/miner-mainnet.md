@@ -24,7 +24,7 @@ First, download a [bitcoin binary](https://bitcoin.org/en/download), or [build f
 If you want to learn more about the technical details of mining, please review the [mining guide](../stacks-academy/mining):
 
 :::tip
-It is recommened to use a persistent location for the chainstate, in the steps below we're using `/bitcoin`
+It is recommended to use a persistent location for the chainstate, in the steps below we're using `/bitcoin`
 :::
 
 ### Update the Bitcoin Configuration File
@@ -86,7 +86,7 @@ First, download a [stacks blockchain binary](https://github.com/stacks-network/s
 _There may be some extra requirements to building, [defined here](https://github.com/stacksfoundation/miner-docs/blob/main/prerequisites.md#install-required-packages)_
 
 :::tip
-It is recommened to use a persistent location for the chainstate, in the steps below we're using `/stacks-blockchain`
+It is recommended to use a persistent location for the chainstate, in the steps below we're using `/stacks-blockchain`
 :::
 
 ### Generate a keychain
@@ -132,7 +132,7 @@ importaddress <btcAddress from JSON above>
 
 <!-- markdown-link-check-disable -->
 
-Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
+Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a cryptocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
 <!-- markdown-link-check-enable-->
 
@@ -211,7 +211,7 @@ We need to get some BTC to that address. You should be able to transfer BTC to t
 
 ### Update Stacks Blockchain Docker Configuration File
 
-Use the steps oulined above to create the [configuration file](miner-mainnet#update-the-stacks-blockchain-configuration-file)
+Use the steps outlined above to create the [configuration file](miner-mainnet#update-the-stacks-blockchain-configuration-file)
 
 ### Start the Stacks Blockchain miner with Docker
 
