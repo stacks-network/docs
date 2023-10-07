@@ -4,7 +4,7 @@ description: Guide to Stacks 2.0 accounts
 sidebar_position: 7
 ---
 
-## Introduction
+## Introdução
 
 Stacks 2.0 accounts are entities that own assets, like Stacks (STX) tokens. An account has an address, private key, nonce, and one or more asset balances.
 
