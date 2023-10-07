@@ -4,7 +4,7 @@ description: Guide to Stacks Microblocks
 sidebar_position: 5
 ---
 
-## Introduction
+## Introdução
 
 Microblocks are a protocol-level feature of the Stacks blockchain that solve the technical challenge of transaction latency.
 
