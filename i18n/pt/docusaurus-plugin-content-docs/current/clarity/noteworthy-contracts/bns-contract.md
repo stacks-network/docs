@@ -5,7 +5,7 @@ description: The Bitcoin Name System.
 
 ![](/img/satoshi-btc.png)
 
-## Introduction
+## Introdução
 
 The Bitcoin Name System (BNS) is implemented as a smart contract using Clarity.
 
