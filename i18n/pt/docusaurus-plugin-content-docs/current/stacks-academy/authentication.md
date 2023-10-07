@@ -1,18 +1,18 @@
 ---
-title: Authentication
-description: Register and sign in users with identities on the Stacks blockchain
+title: Autenticação
+description: Registre e faça login de usuários com identidades no blockchain Stacks
 sidebar_position: 8
 ---
 
-## Introduction
+## Introdução
 
-This guide explains how authentication is performed on the Stacks blockchain.
+Este guia explica como a autenticação é realizada na blockchain Stacks.
 
-Authentication provides a way for users to identify themselves to an app while retaining complete control over their credentials and personal details. It can be integrated alone or used in conjunction with [transaction signing](https://docs.hiro.so/get-started/transactions#signature-and-verification) and [data storage](https://docs.stacks.co/build-apps/references/gaia), for which it is a prerequisite.
+A autenticação fornece uma maneira de os usuários se identificarem a um aplicativo, mantendo o controle total sobre suas credenciais e dados pessoais. It can be integrated alone or used in conjunction with [transaction signing](https://docs.hiro.so/get-started/transactions#signature-and-verification) and [data storage](https://docs.stacks.co/build-apps/references/gaia), for which it is a prerequisite.
 
-Users who register for your app can subsequently authenticate to any other app with support for the [Blockchain Naming System](bns) and vice versa.
+Os usuários que se registrarem em seu aplicativo podem, posteriormente, autenticar em qualquer outro aplicativo com suporte para o sistema de nomes [de Blockchain](bns) e vice-versa.
 
-## How it works
+## Como isso funciona
 
 The authentication flow with Stacks is similar to the typical client-server flow used by centralized sign in services (for example, OAuth). However, with Stacks the authentication flow happens entirely client-side.
 
