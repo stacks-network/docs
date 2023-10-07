@@ -6,7 +6,7 @@ tags:
   - gaia
 ---
 
-## Introduction
+## Introdução
 
 Apps built with the Stacks blockchain can store off-chain data using a storage system called Gaia.
 
