@@ -4,7 +4,7 @@ description: Introduction to the reward mechanism of Proof-of-Transfer
 sidebar_position: 11
 ---
 
-## Introduction
+## Introdução
 
 Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time.
 
