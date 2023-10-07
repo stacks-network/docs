@@ -6,7 +6,7 @@ tags:
   - tutorial
 ---
 
-## Introduction
+## Introdução
 
 For more on the technical details of mining, please review the [mining guide](../stacks-academy/mining)
 
