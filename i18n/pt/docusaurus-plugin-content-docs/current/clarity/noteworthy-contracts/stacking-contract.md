@@ -4,7 +4,7 @@ description: See a detailed list of all functions and error codes of the Stackin
 sidebar_position: 6
 ---
 
-## Introduction
+## Introdução
 
 Stacking is implemented as a smart contract using Clarity. You can always find the Stacking contract identifier using the Stacks Blockchain API [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get_pox_info).
 
