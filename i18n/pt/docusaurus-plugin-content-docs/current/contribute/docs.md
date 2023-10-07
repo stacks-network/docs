@@ -3,7 +3,7 @@ title: Contribute to docs
 description: Learn how this site is built, and how you can contribute to it.
 ---
 
-## Introduction
+## Introdução
 
 Thank you for your interest in contributing and helping make these docs as good as they can be.
 
