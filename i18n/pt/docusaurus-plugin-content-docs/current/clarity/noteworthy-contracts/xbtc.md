@@ -5,7 +5,7 @@ description: Wrapped BTC on Stacks
 
 ![](/img/xbtc-icon.webp)
 
-## Introduction
+## Introdução
 
 [Wrapped.com](https://www.wrapped.com) has brought Bitcoin (xBTC) to the Stacks ecosystem.
 
