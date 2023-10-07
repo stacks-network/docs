@@ -6,7 +6,7 @@ tags:
   - tutorial
 ---
 
-## Introduction
+## Introdução
 
 This is a step by step guide to deploy the [Stacks Blockchain](https://github.com/stacks-network/stacks-blockchain) on [DigitalOcean](https://digitalocean.com).
 
