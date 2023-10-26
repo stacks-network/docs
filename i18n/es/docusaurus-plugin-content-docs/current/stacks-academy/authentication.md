@@ -18,7 +18,7 @@ El flujo de autenticación con Stacks es similar al típico flujo cliente-servid
 
 La aplicación almacena la clave de tránsito efímera durante la generación de solicitudes. La parte pública de la clave de tránsito se pasa en el token `authRequest`. El autenticador utiliza la porción pública de la clave para cifrar una _clave privada de la aplicación_ que se devuelve a través del `authResponse`.
 
-Estos tokens están basados en [un estándar JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519) con soporte adicional para la curva `secp256k1` utilizada por Bitcoin y muchas otras criptomonedas. Se pasan a través de URL query strings.
+These tokens are based on [a JSON Web Token (JWT) standard](https://tools.ietf.org/html/rfc7519) with additional support for the `secp256k1` curve used by Bitcoin and many other cryptocurrencies. Se pasan a través de URL query strings.
 
 Cuando un usuario elige autenticar una aplicación, envía el token `authRequest` al autenticador a través de una URL query string con un parámetro igualmente nombrado:
 
