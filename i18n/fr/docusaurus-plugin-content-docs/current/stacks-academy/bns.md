@@ -32,7 +32,7 @@ Quelles sortes de choses voulons-nous être vraies en ce qui concerne les noms? 
 
   - **Problème**: Puisque les noms peuvent faire référence à un état conflictuel, les développeurs doivent trouver un autre mécanisme pour résoudre les ambiguïtés. Dans le cas de Gitit , l'utilisateur doit intervenir manuellement.
 
-- En PGP, les noms sont des clés d'identification. Ils sont uniques au niveau mondial et sont détenus de manière cryptographique, mais pas lisibles par l'homme. Les identifiants de clés PGP sont dérivés des clés qu'ils référencent.
+- En PGP, les noms sont des clés d'identification. They are globally unique and cryptographically owned, but not human-readable. Les identifiants de clés PGP sont dérivés des clés qu'ils référencent.
   - **Problème**: Ces noms sont difficiles à retenir pour la plupart des utilisateurs puisqu'ils ne transmettent pas d'informations sémantiques relatives à leur utilisation dans le système.
 
 Les noms BNS ont les trois propriétés et aucun de ces problèmes. Cela en fait un outil puissant pour construire toutes sortes d'applications réseau. Avec BNS, nous pouvons faire ce qui suit et plus:
