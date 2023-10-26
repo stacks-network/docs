@@ -18,7 +18,7 @@ Alur autentikasi dengan Stacks mirip dengan alur klien-server biasa yang digunak
 
 Aplikasi dan autentikator, seperti [Wallet Stacks](https://www.hiro.so/wallet/install-web), berkomunikasi selama alur autentikasi dengan meneruskan dua token. Aplikasi yang melakukan permintaan mengirimkan token `authRequest` kepada autentikator. Setelah pengguna menyetujui autentikasi, autentikator merespons aplikasi dengan token `authResponse`.
 
-Token ini didasarkan pada [standar JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519) dengan dukungan tambahan untuk kurva `secp256k1` yang digunakan oleh Bitcoin dan banyak mata uang kripto lainnya. Mereka diteruskan melalui string kueri URL.
+These tokens are based on [a JSON Web Token (JWT) standard](https://tools.ietf.org/html/rfc7519) with additional support for the `secp256k1` curve used by Bitcoin and many other cryptocurrencies. Mereka diteruskan melalui string kueri URL.
 
 Saat pengguna memilih untuk mengautentikasi aplikasi, itu akan mengirimkan token `authRequest` ke autentikator melalui string kueri URL dengan parameter yang bernama sama yaitu:
 
