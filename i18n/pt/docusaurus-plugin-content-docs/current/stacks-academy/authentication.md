@@ -18,7 +18,7 @@ O fluxo de autenticação com Stacks é semelhante ao fluxo típico do servidor 
 
 An app and authenticator, such as [the Stacks Wallet](https://www.hiro.so/wallet/install-web), communicate during the authentication flow by passing back and forth two tokens. O aplicativo de solicitação envia ao autenticador um token `authRequest`. Assim que um usuário aprova a autenticação, o autenticador responde ao aplicativo com um token `authResponse`.
 
-These tokens are are based on [a JSON Web Token (JWT) standard](https://tools.ietf.org/html/rfc7519) with additional support for the `secp256k1` curve used by Bitcoin and many other cryptocurrencies. They are passed via URL query strings.
+These tokens are based on [a JSON Web Token (JWT) standard](https://tools.ietf.org/html/rfc7519) with additional support for the `secp256k1` curve used by Bitcoin and many other cryptocurrencies. They are passed via URL query strings.
 
 When a user chooses to authenticate an app, it sends the `authRequest` token to the authenticator via a URL query string with an equally named parameter:
 
