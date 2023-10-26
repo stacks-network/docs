@@ -18,7 +18,7 @@ Le flux d'authentification avec Stacks est similaire au flux typique client-serv
 
 Une application et un authentificateur tels que [le Portefeuille Stacks](https://www.hiro.so/wallet/install-web), communiquent pendant le flux d'authentification en transmettant deux jetons. L'application initiatrice envoie à l'authentificateur un jeton `authRequest`. Une fois qu'un utilisateur approuve l'authentification, l'authentificateur répond à l'application avec un jeton `authResponse`.
 
-Ces jetons sont basés sur [une norme JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519) avec une prise en charge supplémentaire de la courbe `secp256k1` utilisée par Bitcoin et de nombreuses autres crypto-monnaies. Ils sont passés via des requêtes d'URL.
+These tokens are based on [a JSON Web Token (JWT) standard](https://tools.ietf.org/html/rfc7519) with additional support for the `secp256k1` curve used by Bitcoin and many other cryptocurrencies. Ils sont passés via des requêtes d'URL.
 
 Lorsqu'un utilisateur choisit d'authentifier une application, il envoie le jeton `authRequest` à l'authentificateur via une requête URL avec un paramètre également nommé :
 
