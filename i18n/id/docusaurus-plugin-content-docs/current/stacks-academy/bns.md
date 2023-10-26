@@ -32,7 +32,7 @@ Hal seperti apa yang kita inginkan untuk menjadi kenyataan mengenai penamaan? Di
 
   - **Permasalahan**: Karena nama dapat merujuk ke dalam keadaan yang bertentangan, pengembang harus mencari tahu beberapa mekanisme lain untuk menyelesaikan ambiguitas. Dalam kasus Git, pengguna harus melakukan intervensi secara manual.
 
-- Di PGP, nama adalah ID kunci. Mereka unik secara global dan dimiliki secara kriptografis, tetapi tidak dapat dibaca oleh manusia. ID kunci PGP berasal dari kunci yang mereka referensikan.
+- Di PGP, nama adalah ID kunci. They are globally unique and cryptographically owned, but not human-readable. ID kunci PGP berasal dari kunci yang mereka referensikan.
   - **Problem**: These names are difficult for most users to remember since they do not carry semantic information relating to their use in the system.
 
 Nama BNS memiliki ketiga properti ini, dan tidak memiliki satu permasalahan pun. Ini dapat menjadikannya alat yang ampuh untuk membangun semua jenis aplikasi jaringan. Dengan BNS, kita dapat melakukan hal berikut dan banyak lagi:
