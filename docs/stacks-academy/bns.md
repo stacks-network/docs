@@ -65,8 +65,7 @@ guarantees _two_ of these properties. This limits how useful they can be.
     have to figure out some other mechanism to resolve ambiguities. In Git's
     case, the user has to manually intervene.
 
-- In PGP, names are key IDs. They are
-  are globally unique and cryptographically owned, but not human-readable. PGP
+- In PGP, names are key IDs. They are globally unique and cryptographically owned, but not human-readable. PGP
   key IDs are derived from the keys they reference.
   - **Problem**: These names are difficult for most users to
     remember since they do not carry semantic information relating to their use in the system.
