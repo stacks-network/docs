@@ -742,7 +742,7 @@ Prefer a more immersive experience? Clarity Universe is a start-to-finish guide 
 
 [Enroll in Clarity Universe](https://clarity-lang.org/universe)
 
-### Community Tutorials
+### Tutoriales de la comunidad
 
 There is an ever-growing list of tutorials created by members of the Stacks community so you can learn how to accomplish different tasks and build useful things with Stacks.
 
