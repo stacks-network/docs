@@ -5,7 +5,7 @@ description: Initiate a basic Bitcoin transaction with the Hiro wallet
 
 Using Hiro's web wallet, we can easily initiate a simple Bitcoin transaction using only a few lines of code.
 
-You'll need to be authenticated with the Hiro wallet for this to work, with you can see how to do in the [Authentication with Stacks.js](./stacks-js-auth) recipe.
+You'll need to be authenticated with the Hiro wallet for this to work, which you can see how to do in the [Authentication with Stacks.js](./stacks-js-auth) recipe.
 
 Once you have the wallet hooked up, you can use the Hiro wallet API to initiate a simple Bitcoin transaction in your JS app like this.
 

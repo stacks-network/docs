@@ -7,7 +7,7 @@ tags:
 ---
 
 We're always looking for new hosting providers that enable anyone to run the Stacks Blockchain.
-Below, you'll find some examples on the current providers that are know to support running a node.
+Below, you'll find some examples of the current providers that are known to support running a node.
 
 ## Quicknode
 

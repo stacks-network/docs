@@ -26,7 +26,7 @@ Choose a plan (it will only allow you to select a droplet that meets the minimum
 
 #### Step 3
 
-Enter a root password or [enable SSH keys](https://docs.digitalocean.com/products/droplets/how-to/add-ssh-keys/) if your prefer.
+Enter a root password or [enable SSH keys](https://docs.digitalocean.com/products/droplets/how-to/add-ssh-keys/) if you prefer.
 
 ![](/img/sh_digitalocean-choose-authentication.png)
 

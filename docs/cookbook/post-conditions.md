@@ -3,7 +3,7 @@ title: Post Conditions
 description: Working with Stacks post conditions
 ---
 
-The content in this recipe has ben pulled from the [tutorial on post conditions](https://dev.to/stacks/understanding-stacks-post-conditions-e65). Post conditions are an additional safety feature built into the Stacks chain itself that help to protect end users.
+The content in this recipe has been pulled from the [tutorial on post conditions](https://dev.to/stacks/understanding-stacks-post-conditions-e65). Post conditions are an additional safety feature built into the Stacks chain itself that help to protect end users.
 
 Rather than being a function of Clarity smart contracts, they are implemented on the client side and meant to be an additional failsafe against malicious contracts.
 
@@ -11,7 +11,7 @@ Put simply, post conditions are a set of conditions that must be met before a us
 
 So they are sent as part of the transaction when the user initiates it, meaning we need a frontend library to utilize them.
 
-Whenever you are transferring an asset (fungible or non-fungible) from one address to another, you should taker advantage of post conditions.
+Whenever you are transferring an asset (fungible or non-fungible) from one address to another, you should take advantage of post conditions.
 
 We're going to use [Stacks.js](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions#post-conditions) to familiarize ourselves with them.
 

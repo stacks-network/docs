@@ -23,7 +23,7 @@ To participate as a miner on testnet, you must have access to a testnet bitcoin 
 First, download a [bitcoin binary](https://bitcoin.org/en/download), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/main/bitcoin.md#source-install)
 
 :::tip
-It is recommened to use a persistent location for the chainstate, in the steps below we're using `/bitcoin`
+It is recommended to use a persistent location for the chainstate, in the steps below we're using `/bitcoin`
 :::
 
 ### Update the Bitcoin Configuration File
@@ -89,7 +89,7 @@ First, download a [stacks blockchain binary](https://github.com/stacks-network/s
 _There may be some extra requirements to building, [defined here](https://github.com/stacksfoundation/miner-docs/blob/main/prerequisites.md#install-required-packages)_
 
 :::tip
-It is recommened to use a persistent location for the chainstate, in the steps below we're using `/stacks-blockchain`
+It is recommended to use a persistent location for the chainstate, in the steps below we're using `/stacks-blockchain`
 :::
 
 ### Generate a keychain
@@ -225,7 +225,7 @@ Now, we need to get some tBTC. Grab the `btcAddress` field, and paste it into th
 
 ### Update Stacks Blockchain Docker Configuration File
 
-Use the steps oulined above to create the [configuration file](miner-testnet#update-the-stacks-blockchain-configuration-file)
+Use the steps outlined above to create the [configuration file](miner-testnet#update-the-stacks-blockchain-configuration-file)
 
 ### Start the Stacks Blockchain miner with Docker
 
