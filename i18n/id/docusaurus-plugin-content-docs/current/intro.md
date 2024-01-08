@@ -15,6 +15,18 @@ These docs serve as:
 
 If you see something you think you might want to contribute, [please do so](/docs/contribute)! We are always looking for good contributions from the community.
 
+:::note
+Stacks is currently in the middle of a major upgrade called the Nakamoto Release. The next section is dedicated to describing how Nakamoto works and the benefits it brings.
+
+Keep in mind that other sections of this documentation apply to the pre-Nakamoto version of Stacks, and will be updated when it is released.
+:::
+
+## Nakamoto
+
+The Nakamoto Release is an upcoming hard fork on the Stacks network designed to bring several benefits, chief among them are increased transaction throughput and 100% Bitcoin finality. Nakamoto is designed to make Stacks a true Bitcoin L2 and further unlock the decentralized Bitcoin economy.
+
+[Learn More About Nakamoto](/docs/nakamoto)
+
 ## Tutorials
 
 Looking to understand how to build full-stack Bitcoin dapps with Stacks? These tutorials will give you a solid introduction. At the moment we have an intro tutorial and a collection of community-created tutorials focusing on Stacks and Clarity specifically, with a comprehensive deep-dive tutorial series covering Bitcoin-first development on the way.
