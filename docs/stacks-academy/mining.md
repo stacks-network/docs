@@ -8,7 +8,7 @@ sidebar_position: 4
 
 This guide highlights some technical details related to mining on the Stacks 2.0 network.
 
-For steps on how to setup your own miner please refer to [miner on testnet](nodes-and-miners/miner-testnet.md) and [miner on mainnet](nodes-and-miners/miner-testnet.md).
+For steps on how to setup your own miner please refer to [miner on testnet](nodes-and-miners/miner-testnet.md) and [miner on mainnet](nodes-and-miners/miner-mainnet.md).
 
 ## Mining frequency
 
