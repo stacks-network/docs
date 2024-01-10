@@ -10,30 +10,11 @@ A list of sites on alphabetical order that display status and stats of the Stack
 Please edit this page to add any relevant new site that we are missing.
 :::
 
-### [Haystack](https://haystack.tools/mempool)
 
-![website-screenshot](/img/sh_haystacks.png)
+### [Obycode StacksStat](https://obycode.github.io/stacks-stats/block/)
 
-### [Stacksdata](https://stacksdata.info/)
-
-![website-screenshot](/img/sh_stacksdata.png)
-
-### [Stacksonchain](https://stacksonchain.com)
-
-![website-screenshot](/img/sh_stacksonchain.png)
+![website-screenshot](/img/obycode_screenshot.png)
 
 ### [Status Hiro](https://status.hiro.so/)
 
 ![website-screenshot](/img/sh_statushiro.png)
-
-### [Stxstats](https://www.stxstats.co/)
-
-![website-screenshot](/img/sh_stxstats.png)
-
-### [Novum Insights](https://stacks.novuminsights.com/health)
-
-![website-screenshot](/img/sh_novuminsights.png)
-
-### [Onstacks](https://app.onstacks.com/)
-
-![website-screenshot](/img/sh_onstacks.png)
