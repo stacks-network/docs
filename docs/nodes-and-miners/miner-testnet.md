@@ -190,7 +190,7 @@ amount = 10000000000000000
 To run your miner, run this in the command line:
 
 ```bash
-stacks-node start --config=$HOME/testnet-miner-conf.toml
+stacks-node start --config $HOME/testnet-miner-conf.toml
 ```
 
 Your node should start. It will take some time to sync, and then your miner will be running.
@@ -200,7 +200,7 @@ Your node should start. It will take some time to sync, and then your miner will
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
 
 ```bash
-STACKS_LOG_DEBUG=1 stacks-node start --config=$HOME/testnet-miner-conf.toml
+STACKS_LOG_DEBUG=1 stacks-node start --config $HOME/testnet-miner-conf.toml
 ```
 
 ---

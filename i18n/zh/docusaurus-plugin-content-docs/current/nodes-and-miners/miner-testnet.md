@@ -132,7 +132,7 @@ Now, grab your `privateKey` from earlier, when you ran the `make_keychain` comma
 To run your miner, run this in the command line:
 
 ```bash
-stacks-node start --config=./testnet/stacks-node/conf/testnet-miner-conf.toml
+stacks-node start --config ./testnet/stacks-node/conf/testnet-miner-conf.toml
 ```
 
 Your node should start. Your node should start. It will take some time to sync, and then your miner will be running.
@@ -152,7 +152,7 @@ The above code will compile an optimized binary. To use it, run: To use it, run:
 cd ../..
 cd ../..
 cd ../..
-./target/release/stacks-node start --config=./testnet/conf/testnet-follower-conf.toml
+./target/release/stacks-node start --config ./testnet/conf/testnet-follower-conf.toml
 ```
 
 To read more about the technical details of mining on the Stacks 2.0 network, have a look at [the minig guide](../understand-stacks/mining):
@@ -262,14 +262,14 @@ Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` c
 To start your miner, run this in the command line:
 
 ```bash
-stacks-node start --config=testnet/stacks-node/conf/testnet-miner-conf.toml
+stacks-node start --config testnet/stacks-node/conf/testnet-miner-conf.toml
 ```
 
 <!-- markdown-link-check-disable -->
 
 :::note
 While starting the node for the first time, windows defender might pop up with a message to allow access. If so, allow access to run the node.
-:::  If so, allow access to run the node.
+::: If so, allow access to run the node.
 ::: ![Windows Defender](/img/windows-defender.png)
 
 <!-- markdown-link-check-enable-->
@@ -283,7 +283,7 @@ In case you are running into issues or would like to see verbose logging, you ca
 ```bash
 set RUST_BACKTRACE=full;
 set STACKS_LOG_DEBUG=1;
-stacks-node start --config=testnet-miner-conf.toml
+stacks-node start --config testnet-miner-conf.toml
 ```
 
 ## Optional: Running with Docker

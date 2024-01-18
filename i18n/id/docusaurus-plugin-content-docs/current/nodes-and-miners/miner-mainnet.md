@@ -109,7 +109,7 @@ Sekarang, ambil `privateKey` Anda dari sebelumnya, ketika Anda menjalankan perin
 Untuk menjalankan penambang Anda, jalankan ini di baris perintah:
 
 ```bash
-stacks-node start --config=./testnet/stacks-node/conf/mainnet-miner-conf.toml
+stacks-node start --config ./testnet/stacks-node/conf/mainnet-miner-conf.toml
 ```
 
 Noda Anda akan dimulai. Ini akan memakan waktu untuk menyinkronkan, dan kemudian penambang Anda akan berjalan.
@@ -127,7 +127,7 @@ Kode di atas akan mengkompilasi biner yang dioptimalkan. Untuk menggunakannya, j
 
 ```bash
 cd ../..
-./target/release/stacks-node start --config=./mainnet-miner-conf.toml
+./target/release/stacks-node start --config ./mainnet-miner-conf.toml
 ```
 
 To read more about the technical details of mining on the Stacks 2.0 network, have a look at [the mining guide](../understand-stacks/mining).
@@ -215,7 +215,7 @@ Sekarang, ambil `privateKey` Anda dari sebelumnya, ketika Anda menjalankan perin
 Untuk memulai penambang Anda, jalankan ini di baris perintah:
 
 ```bash
-stacks-node start --config=testnet/stacks-node/conf/mainnet-miner-conf.toml
+stacks-node start --config testnet/stacks-node/conf/mainnet-miner-conf.toml
 ```
 
 :::note
@@ -231,7 +231,7 @@ Jika Anda mengalami masalah atau ingin melihat pencatatan verbose, Anda dapat me
 ```bash
 set RUST_BACKTRACE=full;
 set STACKS_LOG_DEBUG=1;
-stacks-node start --config=mainnet-miner-conf.toml
+stacks-node start --config mainnet-miner-conf.toml
 ```
 
 ## Opsional: Berjalan dengan Docker

@@ -65,7 +65,7 @@ Start a node with a config of your own. Can be used for joining a network, start
 Ejemplo:
 
 ```bash
-stacks-node start --config=/path/to/config.toml
+stacks-node start --config /path/to/config.toml
 ```
 
 See [Configuration File Options](#configuration-file-options) for more information.

@@ -138,7 +138,7 @@ Now, grab your `privateKey` from earlier, when you ran the `make_keychain` comma
 To run your miner, run this in the command line:
 
 ```bash
-stacks-node start --config=./testnet/stacks-node/conf/mainnet-miner-conf.toml
+stacks-node start --config ./testnet/stacks-node/conf/mainnet-miner-conf.toml
 ```
 
 Your node should start. It will take some time to sync, and then your miner will be running.
@@ -156,7 +156,7 @@ The above code will compile an optimized binary. To use it, run:
 
 ```bash
 cd ../..
-./target/release/stacks-node start --config=./mainnet-miner-conf.toml
+./target/release/stacks-node start --config ./mainnet-miner-conf.toml
 ```
 
 To read more about the technical details of mining on the Stacks 2.0 network, have a look at [the mining guide](../understand-stacks/mining).
@@ -273,7 +273,7 @@ Now, grab your `privateKey` from earlier, when you ran the `stx make_keychain` c
 To start your miner, run this in the command line:
 
 ```bash
-stacks-node start --config=testnet/stacks-node/conf/mainnet-miner-conf.toml
+stacks-node start --config testnet/stacks-node/conf/mainnet-miner-conf.toml
 ```
 
 :::note
@@ -289,7 +289,7 @@ In case you are running into issues or would like to see verbose logging, you ca
 ```bash
 set RUST_BACKTRACE=full;
 set STACKS_LOG_DEBUG=1;
-stacks-node start --config=mainnet-miner-conf.toml
+stacks-node start --config mainnet-miner-conf.toml
 ```
 
 ## Optional: Running with Docker

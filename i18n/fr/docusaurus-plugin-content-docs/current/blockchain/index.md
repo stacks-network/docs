@@ -102,7 +102,7 @@ cargo run --bin blockstack-cli publish b8d99fd45da58038d630d9855d3ca2466e8e0f89d
 Vous pouvez observer la machine d'état en action (localement) en exécutant :
 
 ```bash
-cargo stacks-node start --config=./testnet/stacks-node/conf/testnet-follower-conf.toml
+cargo stacks-node start --config ./testnet/stacks-node/conf/testnet-follower-conf.toml
 ```
 
 `testnet-follower-conf.toml` est un fichier de configuration que vous pouvez utiliser pour mettre en place des balances genesis ou configurer des observateurs d'événements. Vous pouvez accorder à une adresse un solde initial du compte en ajoutant les entrées suivantes:

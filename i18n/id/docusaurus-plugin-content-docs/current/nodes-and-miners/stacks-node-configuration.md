@@ -65,7 +65,7 @@ Memulai noda dengan konfigurasi Anda sendiri. Can be used for joining a network,
 Contoh:
 
 ```bash
-stacks-node start --config=/path/to/config.toml
+stacks-node start --config /path/to/config.toml
 ```
 
 Lihat [Opsi File Konfigurasi](#configuration-file-options) untuk informasi lebih lanjut.
