@@ -85,7 +85,7 @@ Pemegang token Stacks (STX) tidak secara otomatis menerima hadiah stacking. Seba
 - Komit untuk berpartisipasi sebelum siklus hadiah dimulai
 - Komit mengenai jumlah minimum token STX untuk mengamankan slot hadiah, atau menggabungkan dengan orang lain untuk mencapai jumlah minimum
 - Mengunci token STX untuk periode tertentu
-- Memberikan alamat Bitcoin yang didukung untuk menerima hadiah (native segwit tidak didukung)
+- Provide a supported Bitcoin address to receive rewards (p2pkh, p2sh, SegWit, or Taproot)
 
 Diagram berikut menjelaskan cara token STX minimal per slot ditentukan. Informasi lebih lanjut tentang [minimal dinamis untuk stacking](https://stacking.club) tersedia di stacking.club.
 
@@ -109,11 +109,9 @@ Stacking adalah kemampuan bawaan PoX dan terjadi melalui serangkaian tindakan pa
 
 ## Alamat bitcoin
 
-:::danger You must provide a BTC address in one of two formats:
-
-- [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), which starts with `1`.
-
-- [Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), which starts with `3`. The "Native Segwit" format (which starts with `bc1`), for example, is not supported. :::
+:::note
+Currently, all 4 address types are supported: Legacy, SegWit, Native SegWit, and Taproot.
+:::
 
 Kontrak Stacking memerlukan format khusus untuk alamat Bitcoin (alamat hadiah). Ini diperlukan untuk memastikan bahwa penambang dapat dengan benar membuat transaksi Bitcoin yang berisi alamat hadiah.
 
