@@ -85,7 +85,7 @@ Los poseedores de tokens Stacks (STX) no reciben automáticamente recompensas de
 - Comprometerse a participar antes de que comience un ciclo de recompensas
 - Compromete la cantidad mínima de tokens STX para asegurar un slot de recompensas, o agrupe con otros para alcanzar el mínimo
 - Bloquear tokens STX para un período específico
-- Proporcionar una dirección de Bitcoin compatible para recibir recompensas (segwit nativo no es compatible)
+- Provide a supported Bitcoin address to receive rewards (p2pkh, p2sh, SegWit, or Taproot)
 
 El siguiente diagrama describe cómo se determinan los tokens mínimos de STX por slot. Más información sobre [mínimos dinámicos para stacking](https://stacking.club) está disponible en stacking.club.
 
@@ -109,11 +109,9 @@ El Stacking es una capacidad integrada de PoX y se produce a través de un conju
 
 ## Dirección de Bitcoin
 
-:::danger Debes proporcionar una dirección BTC en uno de dos formatos:
-
-- [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), que comienza con `1`.
-
-- [ Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash), que comienza con `3`. El formato "Native Segwit" (que comienza con `bc1`), por ejemplo, no es compatible. :::
+:::note
+Currently, all 4 address types are supported: Legacy, SegWit, Native SegWit, and Taproot.
+:::
 
 El contrato de stacking necesita un formato especial para la dirección de Bitcoin (la dirección de recompensa). Esto es necesario para asegurar que los mineros puedan construir correctamente la transacción de Bitcoin que contiene la dirección de recompensa.
 
