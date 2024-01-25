@@ -40,7 +40,7 @@ sidebar_position: 13
 - Ambang stacking: 0,025% dari jumlah partisipasi STX ketika partisipasi antara 25% dan 100% dan ketika partisipasi di bawah 25%, tingkat ambang selalu 0,00625 dari pasokan likuiditas STX.
 - Delegasi: Alamat STX dapat menunjuk alamat lain untuk berpartisipasi dalam Stacking atas namanya. [Bagian yang relevan dalam SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md#stacker-delegation).
 - Gabungan: Pemegang STX yang secara individu tidak memenuhi ambang Stacking dapat menggabungkan kepemilikan mereka untuk berpartisipasi dalam Stacking. Untuk melakukan ini, pemegang STX harus mengatur alamat hadiah (opsional) ke "alamat delegasi." Untuk lebih jelasnya, lihat [referensi ini](https://docs.stacks.co/references/stacking-contract#delegate-stx).
-- Hanya dua jenis alamat hadiah BTC yang didukung: [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash) atau [Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay_to_script_hash). Native Segwit tidak didukung.
+- All 4 address types are supported: Legacy, SegWit, Native SegWit, and Taproot
 - Further reading: [Stacking](stacking)
 
 ## Akun dan Alamat
