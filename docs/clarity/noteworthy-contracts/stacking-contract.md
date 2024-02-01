@@ -145,7 +145,7 @@ This is the self-service interface. tx-sender will be the Stacker.
 
 - The given stacker cannot currently be stacking.
 - You will need the minimum uSTX threshold. This isn't determined until the reward cycle begins, but this method still requires stacking over the _absolute minimum_ amount, which can be obtained by calling `get-stacking-minimum`.
-- The pox-addr argument must represent a valid reward address. Right now, this must be a Bitcoin p2pkh or p2sh address. It cannot be a native Segwit address, but it may be a p2wpkh-p2sh or p2wsh-p2sh address.
+- The pox-addr argument must represent a valid reward address (p2pkh, p2sh, SegWit, or Taproot).
 
 The tokens will unlock and be returned to the Stacker (tx-sender) automatically.
 
