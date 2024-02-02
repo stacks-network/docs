@@ -146,4 +146,4 @@ CMD ["stacks-signer", "run", "--config", "/config/signer.toml"]
 https\://github.com/stacksfoundation/miner-docs/blob/main/stacks-blockchain.md
 https\://github.com/stacksfoundation/miner-docs/blob/main/scripts/install_stacks.sh
 
-Minimum Requirements: run a full node, run the signer binary. 1 cpu, 4gb of ram, 150GB of storage as a minimum offhand
+Minimum Requirements: run a full node, run the signer binary. 1 cpu, 4gb of ram, 150GB of storage as a minimum.
