@@ -1,4 +1,4 @@
-root: ./docs/
+root: ./
 
 redirects:
   clarity: overview.md
