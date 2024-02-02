@@ -1,13 +1,13 @@
 ---
-title: Sitios web con información Stacks
+title: Stacks info sites
 description: Status and stats of the Stacks network.
 sidebar_position: 1
 ---
 
-Un listado de sitios web en orden alfabético con muestran el estado y estadísticas de la red Stacks.
+A list of sites on alphabetical order that display status and stats of the Stacks network.
 
-:::tip ¿Falta uno?
-Por favor edita esta página para agregar cualquier sitio web relevante que falte.
+:::tip Are we missing one?
+Please edit this page to add any relevant new site that we are missing.
 :::
 
 ### [Haystack](https://haystack.tools/mempool)
@@ -30,7 +30,7 @@ Por favor edita esta página para agregar cualquier sitio web relevante que falt
 
 ![website-screenshot](/img/sh_stxstats.png)
 
-### [Novuminsights](https://stacks.novuminsights.com/health)
+### [Novum Insights](https://stacks.novuminsights.com/health)
 
 ![website-screenshot](/img/sh_novuminsights.png)
 

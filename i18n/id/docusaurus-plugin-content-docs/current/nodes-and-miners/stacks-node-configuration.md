@@ -1,7 +1,7 @@
 ---
 title: Konfigurasi Noda Stacks
 description: Parameter konfigurasi dan opsi untuk biner noda-stacks
-sidebar_position: 6
+sidebar_position: 4
 ---
 
 ## Pemakaian
@@ -10,97 +10,141 @@ sidebar_position: 6
 stacks-node sub-command [--subcommand-option <value>]
 ```
 
-## Subperintah
+### Subcommands
 
-:::caution The `stacks-node` binary may have deprecated commands that are not documented on this page. Perintah yang tidak digunakan lagi mungkin dapat diakses hingga sepenuhnya dihapus dari sumbernya. :::
-
-### mocknet
-
-Memulai noda berdasarkan penyiapan lokal cepat yang meniru burnchain. Ideal untuk pengembangan kontrak pintar.
-
-Contoh:
-
-```bash
-stacks-node mocknet
-```
-
-### krypton
-
-Start a node that will join and stream blocks from the public krypton regtest, powered by Blockstack via [Proof of Transfer](../understand-stacks#consensus-mechanism).
-
-Contoh:
-
-```bash
-stacks-node krypton
-```
-
-### testnet
-
-Start a node that will join and stream blocks from the public testnet.
-
-Contoh:
-
-```bash
-stacks-node testnet
-```
-
-### mainnet
-
-Memulai noda yang bergabung dan mengalirkan blok dari mainnet publik.
-
-Contoh:
-
-```bash
-stacks-node mainnet
-```
-
-### mulai
-
-Memulai noda dengan konfigurasi Anda sendiri. Can be used for joining a network, starting a new chain, or replacing default values used by the `mocknet` or `testnet` subcommands.
-
-#### Argumen
-
-**--config**: jalur relatif atau absolut ke file konfigurasi TOML. Diperlukan.
-
-Contoh:
-
-```bash
-stacks-node start --config=/path/to/config.toml
-```
-
-Lihat [Opsi File Konfigurasi](#configuration-file-options) untuk informasi lebih lanjut.
-
-#### versi
-
-Menampilkan informasi tentang versi saat ini dan siklus rilis.
-
-Contoh:
-
-```bash
-stacks-node version
-```
-
-#### bantuan
-
-Menampilkan pesan bantuan.
-
-Contoh:
-
-```bash
-stacks-node help
-```
+- `mocknet`: start a mocknet instance using defaults
+- `testnet`: start a testnet instance using defaults (chainstate is not persistent)
+- `mainnet`: start a mainnet instance using defaults (chainstate is not persistent)
+- `start`: combined with `--config`, starts an instance with a specified configuration file
+- `version`: displays binary version
+- `help`: displays the help message
 
 ## Opsi File Konfigurasi
 
-File konfigurasi TOML memiliki beberapa bagian di mana opsi dapat ditempatkan.
+The Stacks Blockchain configuration file has multiple sections under which an option may be placed.
 
-Untuk melihat daftar contoh konfigurasi, [lihat halaman ini](https://github.com/stacks-network/stacks-blockchain/tree/master/testnet/stacks-node/conf) .
+- [node](./stacks-node-configuration#node)
+- [events_observer](./stacks-node-configuration#events_observer)
+- [connection_options](./stacks-node-configuration#connection_options)
+- [burnchain](./stacks-node-configuration#burnchain)
+- [ustx_balance](./stacks-node-configuration#ustx_balance)
 
-### Bagian: noda
+For reference, several configuration file examples are [available here](https://github.com/stacks-network/stacks-blockchain/tree/master/testnet/stacks-node/conf)
 
-Berisi berbagai opsi konfigurasi yang berkaitan dengan noda-stacks.
+- [Example mainnet follower configuration](./stacks-node-configuration#example-mainnet-follower-configuration)
 
-Contoh:
+### node
+
+Contains various configuration options for the stacks-node binary.
+
+| Name                        | Required | Deskripsi                                                                                                         |
+| --------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
+| rpc_bind                    | ✓        | IPv4 address and port to open for RPC connections                                                                 |
+| p2p_bind                    | ✓        | IPv4 address and port to open for P2P connections                                                                 |
+| working_dir                 |          | Absolute path to the directory where chainstate data will be stored                                               |
+| data_url                    |          | IPv4 address and port for incoming RPC connections                                                                |
+| p2p_address                 |          | IPv4 address and port for incoming P2P connections                                                                |
+| bootstrap_node              |          | Public key, IPv4 address, and port to bootstrap the chainstate                                                    |
+| wait_time_for_microblocks |          | The amount of time in ms to wait before trying to mine a block after catching up to the anchored chain tip        |
+| seed                        |          | The [private key](./miner-mainnet#generate-a-keychain) to use for mining. Only needed if `miner` is set to `true` |
+| local_peer_seed           |          | The [private key](./miner-mainnet#generate-a-keychain) to use for signing P2P messages in the networking stack    |
+| miner                       |          | Determines whether the node is running a follower (`false`) or a miner (`true`). Defaults to `false`              |
+| mock_miner                  |          | Simulates running a miner (typically used for debugging)                                                          |
+| mine_microblocks            |          | Determines whether the node will mine microblocks. Will only take effect if `miner` is set to `true`              |
+| prometheus_bind             |          | Address and port for Prometheus metrics collection.                                                               |
+
+### events_observer
+
+:::info This section is _optional_ and not required
+
+However, if this section is added, **all** fields are required ::: Contains options for sending events emitted to the [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service.
+
+| Name        | Required | Deskripsi                                                                                                                                                                                  |
+| ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| endpoint    | ✓        | Address and port to a [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service                                                                                |
+| retry_count | ✓        | Number of times to retry sending events to the endpoint before failing                                                                                                                     |
+| events_keys | ✓        | Kunci event yang harus ditonton. Event noda yang dipancarkan dapat dibatasi oleh akun, nama fungsi, dan jenis peristiwa. Asterix ("\*") dapat digunakan untuk memancarkan semua event. | |
+
+### connection_options
+
+:::info This section is _optional_ and not required.
+
+However, if this section is added, **all** fields are required :::
+
+Menentukan opsi konfigurasi untuk orang lain yang terhubung ke noda stacks.
+
+| Name                                 | Required | Deskripsi                                                                                                                                                   |
+| ------------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| public_ip_address                  | ✓        | Public IPv4 to advertise to other nodes                                                                                                                     |
+| download_interval                    | ✓        | Time (in seconds) between attempts to download blocks                                                                                                       |
+| walk_interval                        | ✓        | Time (in seconds) between attempts to walk the list of neighbors                                                                                            |
+| read_only_call_limit_read_length | ✓        | Total number of bytes allowed to be read by an individual read-only function call                                                                           |
+| read_only_call_limit_read_count  | ✓        | Total number of independent read operations permitted for an individual read-only function call                                                             |
+| read_only_call_limit_runtime     | ✓        | [Runtime cost](https://github.com/stacksgov/sips/blob/main/sips/sip-006/sip-006-runtime-cost-assessment.md) limit for an individual read-only function call |
+
+### burnchain
+
+Bagian ini berisi opsi konfigurasi yang berkaitan dengan blockchain yang diikat oleh noda-stacks di backend untuk proof-of-transfer (BTC).
+
+| Name      | Required | Deskripsi                                                                                                               |
+| --------- | -------- | ----------------------------------------------------------------------------------------------------------------------- |
+| chain     | ✓        | Noda-stacks blockchain mengikat pada backend untuk proof-of-transfer. Only value supported: `bitcoin`                   |
+| mode      | ✓        | Profil atau fase pengujian untuk menjalankan noda-stacks. Valid values are [ `mocknet`, `testnet`, `xenon`, `mainnet` ] |
+| peer_host |          | FQDN of the host running the backend Bitcoin blockchain                                                                 |
+| rpc_port  |          | RPC port of `peer_host`                                                                                                 |
+| peer_port |          | P2P port of `peer_host`                                                                                                 |
+
+#### Penambangan
+
+| Name                         | Required | Deskripsi                                                                                             |
+| ---------------------------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| burn_fee_cap               | ✓        | Maximum amount (in sats) of "burn commitment" to broadcast for the next block's leader election       |
+| satoshis_per_byte          | ✓        | [Amount (in sats) per byte](https://bitcoinfees.net/) - Used to calculate the transaction fees        |
+| commit_anchor_block_within |          | Menetapkan periode waktu (dalam milidetik) untuk komitmen. Only used when `mode` is set to `mocknet`. |
+
+### ustx_balance
+
+- `mocknet`/`testnet` only
+
+This section contains configuration options allocating microSTX per address in the genesis block
+
+This section can repeat multiple times, but each section can only define a single address.
+
+:::info This section is only required for the `testnet` and `mocknet` networks.
+
+However, if this section is added, **all** fields are required :::
+
+| Name    | Required | Deskripsi                                                             |
+| ------- | -------- | --------------------------------------------------------------------- |
+| address | ✓        | Address which maintains a microSTX balance                            |
+| amount  | ✓        | The balance of microSTX given to the address at the start of the node |
+
+## Example Mainnet Follower Configuration
+
+```toml
+[node]
+working_dir = "/stacks-blockchain"
+rpc_bind = "0.0.0.0:20443"
+p2p_bind = "0.0.0.0:20444"
+bootstrap_node = "02da7a464ac770ae8337a343670778b93410f2f3fef6bea98dd1c3e9224459d36b@seed-0.mainnet.stacks.co:20444,02afeae522aab5f8c99a00ddf75fbcb4a641e052dd48836408d9cf437344b63516@seed-1.mainnet.stacks.co:20444,03652212ea76be0ed4cd83a25c06e57819993029a7b9999f7d63c36340b34a4e62@seed-2.mainnet.stacks.co:20444"
+
+[burnchain]
+chain = "bitcoin"
+mode = "mainnet"
+peer_host = "localhost"
+username = "user"
+password = "pass"
+rpc_port = 8332
+peer_port = 8333
+
+[[events_observer]]
+endpoint = "localhost:3700"
+retry_count = 255
+events_keys = ["*"]
+```
+
+
+<!-- Example:
 
 ```toml
 [node]
@@ -111,11 +155,11 @@ seed = "replace-with-your-private-key"
 miner = true
 ```
 
-#### working_dir (opsional)
+#### working_dir (optional)
 
-Jalur absolut ke direktori yang akan digunakan noda-stacks untuk menyimpan berbagai data.
+Absolute path to the directory which the stacks-node will use for storing various data.
 
-Contoh:
+Example:
 
 ```toml
 working_dir = "/root/stacks-node"
@@ -123,9 +167,9 @@ working_dir = "/root/stacks-node"
 
 #### rpc_bind
 
-Alamat dan port noda-stacks harus diikat untuk koneksi RPC.
+Address and port stacks-node should bind to for RPC connections.
 
-Contoh:
+Example:
 
 ```toml
 rpc_bind = "0.0.0.0:20443"
@@ -133,113 +177,113 @@ rpc_bind = "0.0.0.0:20443"
 
 #### p2p_bind
 
-Alamat dan port noda-stacks harus diikat untuk koneksi RPC.
+Address and port stacks-node should bind to for P2P connections.
 
-Contoh:
+Example:
 
 ```toml
 p2p_bind = "0.0.0.0:20444"
 ```
 
-#### data_url (opsional)
+#### data_url (optional)
 
-Alamat dan port dari mana noda-stacks akan menerima koneksi rpc yang masuk.
+Address and port from which the stacks-node will be receiving incoming rpc connections.
 
-Contoh:
+Example:
 
 ```toml
 data_url = "1.2.3.4:20443"
 ```
 
-#### p2p_address (opsional)
+#### p2p_address (optional)
 
-Alamat dan port dari mana noda-stacks akan menerima koneksi p2p yang masuk.
+Address and port from which the stacks-node will be receiving incoming p2p connections.
 
-Contoh:
+Example:
 
 ```toml
 p2p_address = "1.2.3.4:20444"
 ```
 
-#### bootstrap_node (opsional)
+#### bootstrap_node (optional)
 
-Kunci publik, alamat, dan noda-stacks port harus digunakan untuk menarik data transaksi dari saat memulai.
+Public key, address, and port stacks-node should use to pull transaction data from when starting.
 
-Contoh:
+Example:
 
 ```toml
 bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@testnet.blockstack.org:20444"
 ```
 
-#### wait_time_for_microblocks (opsional)
+#### wait_time_for_microblocks (optional)
 
-Jumlah waktu (dalam milidetik) yang akan ditunggu oleh sebuah noda sebelum mencoba menambang sebuah blok, setelah mengejar ujung rantai yang ditautkan. Ini dapat memberi waktu untuk menyiarkan mikroblok yang akan disertakan dalam blok yang ditambang tersebut.
+The amount of time (in milliseconds) that a node will wait before trying to mine a block, after catching up to the anchored chain tip. This gives the current leader time to broadcast microblocks that will get included in that mined block.
 
-Contoh:
+Example:
 
 ```toml
 wait_time_for_microblocks = 15000
 ```
 
-#### seed (opsional)
+#### seed (optional)
 
-Kunci privat yang digunakan untuk menambang. Hanya diperlukan jika `miner` disetel ke `true`.
+The private key to use for mining. Only needed if `miner` is set to `true`.
 
-Contoh:
+Example:
 
 ```toml
 seed = "replace-with-your-private-key"
 ```
 
-#### local_peer_seed (opsional)
+#### local_peer_seed (optional)
 
-Kunci privat yang digunakan untuk menandatangani pesan P2P di jaringan Stacks. Ini membedakan peer jaringan dan digunakan bahkan oleh noda non-penambangan.
+The private key to use for signing P2P messages in the networking stack. It differentiates network peers and is used even by non-mining nodes.
 
-Contoh:
+Example:
 
 ```toml
 local_peer_seed = "replace-with-your-private-key"
 ```
 
-#### miner (opsional)
+#### miner (optional)
 
-Menentukan apakah noda-stacks menjalankan pengikut (`false`) atau penambang (`true`). Default ke `false` jika dihilangkan.
+Determines whether the stacks-node is running a follower (`false`) or a miner (`true`). Defaults to `false` if omitted.
 
-Contoh:
+Example:
 
 ```toml
 miner = true
 ```
 
-#### mine_microblocks (opsional)
+#### mine_microblocks (optional)
 
-Menentukan apakah noda-stacks akan menambang mikroblok. Hanya akan berlaku jika `miner` disetel ke `true`.
+Determines whether the stacks-node will mine microblocks. Will only take effect if `miner` is set to `true`.
 
-Contoh:
+Example:
 
 ```toml
 mine_microblocks = true
 ```
 
-#### prometheus_bind (opsional)
+#### prometheus_bind (optional)
 
-Alamat dan port noda-stacks harus terbuka untuk pengumpulan metrik Prometheus.
+Address and port stacks-node should open for Prometheus metrics collection.
 
-Contoh:
+Example:
 
 ```toml
 prometheus_bind = "0.0.0.0:9153"
 ```
 
-### Bagian: events_observer (opsional)
+### Section: events_observer (optional)
 
-Berisi opsi untuk menonton event yang dipancarkan oleh layanan [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) lokal.
+Contains options for watching events emitted by a local [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service.
 
 :::info
 This section can be repeated multiple times.
 :::
 
-Contoh:
+Example:
 
 ```toml
 [[events_observer]]
@@ -250,9 +294,9 @@ events_keys = ["*"]
 
 #### endpoint
 
-Alamat dan port ke api-noda-stacks untuk menonton event.
+Address and port to a stacks-node-api to watch for events.
 
-Contoh:
+Example:
 
 ```toml
 endpoint = "address-to-my-local.stacks-node-api.com:3700"
@@ -260,9 +304,9 @@ endpoint = "address-to-my-local.stacks-node-api.com:3700"
 
 #### retry_count
 
-Frekuensi pengiriman ulang event ke endpoint sebelum gagal.
+Number of times to retry sending events to the endpoint before failing.
 
-Contoh:
+Example:
 
 ```toml
 retry_count = 255
@@ -270,9 +314,9 @@ retry_count = 255
 
 #### events_keys
 
-Kunci event yang harus ditonton. Event noda yang dipancarkan dapat dibatasi oleh akun, nama fungsi, dan jenis peristiwa. Asterix ("\*") dapat digunakan untuk memancarkan semua event.
+Event keys for which to watch. The emitted node events can be restricted by account, function name and event type. Asterix ("\*") can be used to emit all events.
 
-Contoh:
+Examples:
 
 ```toml
 events_keys = ["*"]
@@ -287,11 +331,11 @@ events_keys = [
 ]
 ```
 
-### Bagian: connection_options (opsional)
+### Section: connection_options (optional)
 
-Menentukan opsi konfigurasi untuk orang lain yang terhubung ke noda stacks.
+Specifies configuration options for others connecting to the stacks node.
 
-Contoh:
+Example:
 
 ```toml
 [connection_options]
@@ -302,9 +346,9 @@ walk_interval = 30
 
 #### public_ip_address
 
-IP publik yang diiklankan dari noda-stacks ini.
+The advertised public IP of this stacks-node.
 
-Contoh:
+Example:
 
 ```toml
 public_ip_address = "1.2.3.4:20444"
@@ -312,9 +356,9 @@ public_ip_address = "1.2.3.4:20444"
 
 #### download_interval
 
-Waktu (dalam detik) antara upaya mengunduh blok.
+Time (in seconds) between attempts to download blocks.
 
-Contoh:
+Example:
 
 ```toml
 download_interval = 60
@@ -322,9 +366,9 @@ download_interval = 60
 
 #### walk_interval
 
-Waktu (dalam detik) antara upaya untuk berjalan di sekitar lingkungan.
+Time (in seconds) between attempts to walk the neighborhood.
 
-Contoh:
+Example:
 
 ```toml
 walk_interval = 30
@@ -332,9 +376,9 @@ walk_interval = 30
 
 #### read_only_call_limit_read_length
 
-Jumlah total byte yang diizinkan untuk dibaca oleh panggilan fungsi read-only individual.
+Total number of bytes allowed to be read by an individual read-only function call.
 
-Contoh:
+Example:
 
 ```toml
 read_only_call_limit_read_length = 100000
@@ -342,9 +386,9 @@ read_only_call_limit_read_length = 100000
 
 #### read_only_call_limit_read_count
 
-Jumlah total operasi baca independen yang diizinkan untuk panggilan fungsi read-only individual.
+Total number of independent read operations permitted for an individual read-only function call.
 
-Contoh:
+Example:
 
 ```toml
 read_only_call_limit_read_count = 30
@@ -352,19 +396,19 @@ read_only_call_limit_read_count = 30
 
 #### read_only_call_limit_runtime
 
-Batas [Biaya runtime](https://github.com/stacksgov/sips/blob/2d3fd9bf8da7a04f588d90ff6252173d7609d7bf/sips/sip-006/sip-006-runtime-cost-assessment.md#introduction) untuk panggilan fungsi read-only individual.
+[Runtime cost](https://github.com/stacksgov/sips/blob/2d3fd9bf8da7a04f588d90ff6252173d7609d7bf/sips/sip-006/sip-006-runtime-cost-assessment.md#introduction) limit for an individual read-only function call.
 
-Contoh:
+Example:
 
 ```toml
 read_only_call_limit_runtime = 1000000000
 ```
 
-### Bagian: burnchain
+### Section: burnchain
 
-Bagian ini berisi opsi konfigurasi yang berkaitan dengan blockchain yang diikat oleh noda-stacks di backend untuk proof-of-transfer (BTC).
+This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
 
-Contoh:
+Example:
 
 ```toml
 [burnchain]
@@ -377,9 +421,9 @@ peer_port = 8333
 
 #### chain
 
-Noda-stacks blockchain mengikat pada backend untuk proof-of-transfer. Hanya nilai yang didukung: `"bitcoin"`.
+The blockchain stacks-node binds to on the backend for proof-of-transfer. Only value supported: `"bitcoin"`.
 
-Contoh:
+Example:
 
 ```toml
 chain = "bitcoin"
@@ -387,9 +431,9 @@ chain = "bitcoin"
 
 #### mode
 
-Profil atau fase pengujian untuk menjalankan noda-stacks. Nilai yang valid adalah `"mocknet"`, `"helium"`, `"neon"`, `"argon"`, ` "krypton"`, `"xenon"`.
+The profile or test phase of which to run stacks-node. Valid values are `"mocknet"`, `"helium"`, `"neon"`, `"argon"`, `"krypton"`, `"xenon"`.
 
-Contoh:
+Example:
 
 ```toml
 mode = "xenon"
@@ -397,9 +441,9 @@ mode = "xenon"
 
 #### peer_host
 
-Nama domain host yang menjalankan blockchain Bitcoin backend. Diperlukan untuk menjalankan noda Bitcoin pribadi secara lokal, atau menggunakan noda Bitcoin yang dihosting secara publik.
+Domain name of the host running the backend Bitcoin blockchain. It's required to either run a personal Bitcoin node locally, or to use a publicly hosted Bitcoin node.
 
-Contoh:
+Example:
 
 ```toml
 peer_host = "your.bitcoind.node.org"
@@ -407,9 +451,9 @@ peer_host = "your.bitcoind.node.org"
 
 #### rpc_port
 
-port peer_host noda-stacks akan terhubung untuk koneksi RPC.
+peer_host's port stacks-node will connect to for RPC connections.
 
-Contoh:
+Example:
 
 ```toml
 rpc_port = 8332
@@ -417,55 +461,55 @@ rpc_port = 8332
 
 #### peer_port
 
-port peer_host noda-stacks akan terhubung untuk koneksi P2P.
+peer_host's port stacks-node will connect to for P2P connections.
 
-Contoh:
+Example:
 
 ```toml
 peer_port = 8333
 ```
 
-#### burn_fee_cap (opsional)
+#### burn_fee_cap (optional)
 
-Jumlah maksimum (dalam Satoshi) dari "komitmen bakar" untuk disiarkan untuk pemilihan blok berikutnya.
+Maximum amount (in Satoshis) of "burn commitment" to broadcast for the next block's leader election.
 
-Contoh:
+Example:
 
 ```toml
 burn_fee_cap = 30000
 ```
 
-#### satoshis_per_byte (opsional)
+#### satoshis_per_byte (optional)
 
-Jumlah (dalam Satoshi) per [byte virtual](https://en.bitcoin.it/wiki/Weight_units). Ini digunakan untuk menghitung biaya transaksi.
+Amount (in Satoshis) per [virtual byte](https://en.bitcoin.it/wiki/Weight_units). This is used to compute the transaction fees.
 
-Contoh:
+Example:
 
 ```toml
 satoshis_per_byte = 50
 ```
 
-Jadi total biaya transaksi adalah `(estimated_tx_size * satoshis_per_byte) + burn_fee_cap`.
+So total transaction cost would be `(estimated_tx_size * satoshis_per_byte) + burn_fee_cap`.
 
-#### commit_anchor_block_within (opsional)
+#### commit_anchor_block_within (optional)
 
-Menetapkan periode waktu (dalam milidetik) untuk komitmen. Hanya digunakan bila `mode` disetel ke `"helium"`.
+Sets the time period (in milliseconds) for commitments. Only used when `mode` is set to `"helium"`.
 
-Contoh:
+Example:
 
 ```toml
 commit_anchor_block_within = 10000
 ```
 
-### Bagian: ustx_balance (hanya testnet/regtest)
+### Section: ustx_balance (testnet/regtest only)
 
-Bagian ini berisi opsi konfigurasi yang berkaitan dengan alokasi blok genesis untuk alamat di mikro-STX. Jika pengguna mengubah nilai-nilai ini, noda mereka mungkin bertentangan dengan noda lain di jaringan dan tidak dapat menyinkronkan dengan noda lain.
+This section contains configuration options pertaining to the genesis block allocation for an address in micro-STX. If a user changes these values, their node may be in conflict with other nodes on the network and find themselves unable to sync with other nodes.
 
 :::info
-This section can repeat multiple times, and thus is in double-brackets. Setiap bagian hanya dapat mendefinisikan satu alamat. Bagian ini diabaikan jika menjalankan noda di mainnet.
+This section can repeat multiple times, and thus is in double-brackets. Each section can define only one address. This section is ignored if running a node on mainnet.
 :::
 
-Contoh:
+Example:
 
 ```toml
 [[ustx_balance]]
@@ -487,9 +531,9 @@ amount = 10000000000000000
 
 #### address
 
-Alamat yang menjaga saldo mikro-STX.
+Address which maintains a micro-STX balance.
 
-Contoh:
+Example:
 
 ```toml
 address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
@@ -497,10 +541,10 @@ address = "STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6"
 
 #### amount
 
-Saldo micro-STX diberikan ke alamat di awal noda.
+The balance of micro-STX given to the address at the start of the node.
 
-Contoh:
+Example:
 
 ```toml
 amount = 10000000000000000
-```
+``` -->

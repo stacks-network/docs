@@ -1,0 +1,8 @@
+{
+  "label": "Kontrak Penting",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Kontrak Clarity yang telah diimplementasikan secara khusus yang pantas disebutkan."
+  }
+}

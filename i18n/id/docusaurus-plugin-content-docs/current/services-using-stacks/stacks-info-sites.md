@@ -1,10 +1,10 @@
 ---
-title: Situs info Stacks
+title: Stacks info sites
 description: Status and stats of the Stacks network.
 sidebar_position: 1
 ---
 
-Daftar situs berdasarkan abjad yang menampilkan status dan statistik jaringan Stacks.
+A list of sites on alphabetical order that display status and stats of the Stacks network.
 
 :::tip Are we missing one?
 Please edit this page to add any relevant new site that we are missing.
@@ -30,7 +30,7 @@ Please edit this page to add any relevant new site that we are missing.
 
 ![website-screenshot](/img/sh_stxstats.png)
 
-### [Novuminsights](https://stacks.novuminsights.com/health)
+### [Novum Insights](https://stacks.novuminsights.com/health)
 
 ![website-screenshot](/img/sh_novuminsights.png)
 

@@ -1,14 +1,20 @@
 ---
 title: Gaia
 description: Arsitektur penyimpanan terdesentralisasi untuk data luar-rantai
-sidebar_position: 5
+sidebar_position: 6
 tags:
   - gaia
 ---
 
 ## Pengantar
 
-Aplikasi yang dibuat dengan blockchain Stacks menyimpan data luar-rantai menggunakan sistem penyimpanan yang disebut Gaia.
+Apps built with the Stacks blockchain can store off-chain data using a storage system called Gaia.
+
+Gaia is a unique approach to decentralized storage that focuses primarily on user-ownership of data, rather than immutable on-chain storage. The emphasis here is on user control.
+
+While on-chain storage solutions like IPFS and Arweave are designed for immutable, censorship-resistant permanent storage, they cannot be deemed as providing user control of the data since the user cannot modify or remove the data once it has been deployed.
+
+Gaia solves a different problem of allowing users to be in control of where their data is stored while connecting the access of that data to their on-chain Stacks identity.
 
 Sementara metadata transaksional publik paling baik disimpan di blockchain Stacks, data aplikasi pengguna seringkali dapat disimpan lebih efisien dan pribadi di penyimpanan Gaia.
 
@@ -38,7 +44,7 @@ Blockchain Stacks hanya menyimpan data identitas. Data yang dibuat oleh tindakan
 
 Hub Gaia berjalan sebagai layanan yang menulis ke penyimpanan data. Penyimpanan itu sendiri adalah penyimpanan nilai kunci sederhana. Layanan hub menulis ke penyimpanan data dengan meminta token autentikasi yang valid dari pemohon. Biasanya, layanan hub berjalan pada sumber daya komputasi dan penyimpanan itu sendiri pada sumber daya penyimpanan khusus yang terpisah. Biasanya, kedua sumber daya milik penyedia komputasi cloud yang sama.
 
-![Penyimpanan Gaia](/img/gaia-storage.png)
+![Gai storage](/img/gaia-storage.png)
 
 Pendekatan Gaia terhadap desentralisasi berfokus pada kontrol pengguna atas data dan penyimpanannya. Pengguna dapat memilih penyedia hub Gaia. Jika pengguna dapat memilih penyedia hub Gaia mana yang akan digunakan, maka pilihan itu adalah semua desentralisasi yang diperlukan untuk mengaktifkan aplikasi yang dikontrol oleh pengguna. Selain itu, Gaia mendefinisikan API seragam untuk aplikasi untuk mengakses data tersebut.
 

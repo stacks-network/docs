@@ -18,6 +18,6 @@ Please edit this page to add any relevant new site that we are missing.
 
 ## Sigle
 
-[Sigle](https://www.sigle.io/) is a decentralised and open source web 3 writing platform.
+[Sigle](https://www.sigle.io/) is a decentralized and open source web 3 writing platform.
 
 ![](/img/sh_sigle.png)

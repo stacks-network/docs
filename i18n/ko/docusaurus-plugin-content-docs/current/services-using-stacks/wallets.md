@@ -15,6 +15,7 @@ Please edit this page to add any relevant new site that we are missing.
 [Blockchain.com](https://www.blockchain.com/wallet)
 
 ![](/img/sh_blockchain.png)
+
 ## Boom
 
 [Boom](https://boom.money)
@@ -26,17 +27,12 @@ Please edit this page to add any relevant new site that we are missing.
 [D'CENT](https://dcentwallet.com)
 
 ![](/img/sh_dcent.png)
+
 ## Hiro Wallet
 
 [Hiro Wallet](https://www.hiro.so/wallet)
 
 ![](/img/sh_hirowallet.png)
-
-## Neptune
-
-[Neptune](https://neptunewallet.io)
-
-![](/img/sh_neptunewallet.png)
 
 ## Xverse
 
