@@ -1,7 +1,7 @@
 root: ./docs/
 
 redirects:
-  clarity/: overview.md
+  clarity: overview.md
   clarity/crash-course: clarity/crash-course.md
   clarity/language-functions: clarity/language-functions.md
   clarity/language-keywords: clarity/language-keywords.md
@@ -10,12 +10,12 @@ redirects:
   clarity/noteworthy-contracts/stacking-contract: clarity/example-contracts/stacking.md
   clarity/noteworthy-contracts/xbtc: clarity/example-contracts.md
   clarity/sample-contracts: clarity/example-contracts.md
-  clarity/security/: clarity/decidability.md
+  clarity/security: clarity/decidability.md
   clarity/security/decidable: clarity/decidability.md
-  contribute/: /
+  contribute: /
   contribute/docs: /
   contribute/translations: /
-  cookbook/: tutorials/hello-stacks-quickstart-tutorial.md
+  cookbook: tutorials/hello-stacks-quickstart-tutorial.md
   cookbook/creating-an-ft: tutorials/hello-stacks-quickstart-tutorial.md
   cookbook/creating-an-nft: tutorials/hello-stacks-quickstart-tutorial.md
   cookbook/get-sats-per-stx: tutorials/hello-stacks-quickstart-tutorial.md
@@ -25,22 +25,22 @@ redirects:
   cookbook/stacks-js-auth: tutorials/hello-stacks-quickstart-tutorial.md
   cookbook/stacks-js-sending-transactions: tutorials/hello-stacks-quickstart-tutorial.md
   cookbook/verifying-a-btc-tx-was-mined: tutorials/hello-stacks-quickstart-tutorial.md
-  gaia/: stacks-in-depth/gaia.md
+  gaia: stacks-in-depth/gaia.md
   gaia/configuration: stacks-in-depth/gaia/configuration.md
   gaia/deploy-gaia-hub: stacks-in-depth/gaia/deploy-gaia-hub.md
   gaia/gaia-on-ec2: stacks-in-depth/gaia/gaia-on-ec2.md
   gaia/setup-linux: stacks-in-depth/gaia/setup-linux.md
   gaia/setup-mac: stacks-in-depth/gaia/setup-mac.md
-  glossary/: /
+  glossary: /
   intro: /
-  nakamoto/: nakamoto-upgrade/what-is-the-nakamoto-release.md
+  nakamoto: nakamoto-upgrade/what-is-the-nakamoto-release.md
   nakamoto/bitcoin-mev-mitigation: nakamoto-upgrade/nakamoto-in-10-minutes.md
   nakamoto/block-production: nakamoto-upgrade/nakamoto-in-10-minutes.md
   nakamoto/neon: nakamoto-upgrade/testnets/neon.md
   nakamoto/signer: nakamoto-upgrade/running-a-signer.md
   nakamoto/stacking: nakamoto-upgrade/stacking-flow.md
-  next-steps/: /
-  nodes-and-miners/: stacks-in-depth/nodes-and-miners.md
+  next-steps: /
+  nodes-and-miners: stacks-in-depth/nodes-and-miners.md
   nodes-and-miners/digitalocean: stacks-in-depth/nodes-and-miners/digitalocean.md
   nodes-and-miners/hosted-nodes: stacks-in-depth/nodes-and-miners/hosted-nodes.md
   nodes-and-miners/miner-costs-and-fees: stacks-in-depth/nodes-and-miners/miner-costs-and-fees.md
@@ -55,7 +55,7 @@ redirects:
   services-using-stacks/nft: /
   services-using-stacks/stacks-info-sites: /
   services-using-stacks/wallets: /
-  stacks-academy/: stacks-101/what-is-stacks.md
+  stacks-academy: stacks-101/what-is-stacks.md
   stacks-academy/accounts: stacks-101/accounts.md
   stacks-academy/authentication: stacks-101/authentication.md
   stacks-academy/bns: stacks-101/bitcoin-name-system.md
@@ -73,6 +73,6 @@ redirects:
   stacks-academy/transactions: stacks-101/transactions.md
   stacks-academy/what-is-stacks: stacks-101/what-is-stacks.md
   stacks-academy/whitepapers: stacks-101/whitepapers.md
-  tutorials/: tutorials/hello-stacks-quickstart-tutorial.md
+  tutorials: tutorials/hello-stacks-quickstart-tutorial.md
   tutorials/community-tutorials: tutorials/community-tutorials.md
   tutorials/hello-stacks: tutorials/hello-stacks-quickstart-tutorial.md
