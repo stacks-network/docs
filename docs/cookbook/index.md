@@ -15,37 +15,15 @@ Got an idea you think would make a good addition? We're always [accepting contri
 
 [Sending Bitcoin with Hiro wallet](./sending-bitcoin-with-hiro-wallet.md)
 
-Getting a Stacks address from a public key
-
 [Verifying a transaction on the BTC chain](./verifying-a-btc-tx-was-mined.md)
 
-Get Sats per STX price
-
 [Parsing a Bitcoin transaction](./parse-a-btc-tx.md)
-
-## DAOs
-
-Creating a simple DAO with ExecutorDAO
-
-Creating a BTC-backed DAO treasury
 
 ## Tokens
 
 [Creating an NFT](./creating-an-nft)
 
 [Creating a Fungible Token](./creating-an-ft.md)
-
-Minting an NFT with Bitcoin
-
-## Stacking and Mining
-
-Simple stacking pool
-
-Continuous stacking
-
-Simple mining pool
-
-Proof of PoX payout
 
 ## Frontend
 
@@ -54,8 +32,6 @@ Proof of PoX payout
 [Authentication with Stacks.js](./stacks-js-auth)
 
 [Sending transactions with Stacks.js](./stacks-js-sending-transactions)
-
-Authenticating with Sign in with Stacks
 
 ## Complete Apps
 
