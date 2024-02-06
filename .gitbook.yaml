@@ -12,9 +12,9 @@ redirects:
   docs/clarity/sample-contracts: clarity/example-contracts.md
   docs/clarity/security: clarity/decidability.md
   docs/clarity/security/decidable: clarity/decidability.md
-  docs/contribute: /
-  docs/contribute/docs: /
-  docs/contribute/translations: /
+  docs/contribute: stacks-101/what-is-stacks.md
+  docs/contribute/docs: stacks-101/what-is-stacks.md
+  docs/contribute/translations: stacks-101/what-is-stacks.md
   docs/cookbook: tutorials/hello-stacks-quickstart-tutorial.md
   docs/cookbook/creating-an-ft: tutorials/hello-stacks-quickstart-tutorial.md
   docs/cookbook/creating-an-nft: tutorials/hello-stacks-quickstart-tutorial.md
@@ -31,15 +31,15 @@ redirects:
   docs/gaia/gaia-on-ec2: stacks-in-depth/gaia/gaia-on-ec2.md
   docs/gaia/setup-linux: stacks-in-depth/gaia/setup-linux.md
   docs/gaia/setup-mac: stacks-in-depth/gaia/setup-mac.md
-  docs/glossary: /
-  docs/intro: /
+  docs/glossary: stacks-101/what-is-stacks.md
+  docs/intro: stacks-101/what-is-stacks.md
   docs/nakamoto: nakamoto-upgrade/what-is-the-nakamoto-release.md
   docs/nakamoto/bitcoin-mev-mitigation: nakamoto-upgrade/nakamoto-in-10-minutes.md
   docs/nakamoto/block-production: nakamoto-upgrade/nakamoto-in-10-minutes.md
   docs/nakamoto/neon: nakamoto-upgrade/testnets/neon.md
   docs/nakamoto/signer: nakamoto-upgrade/running-a-signer.md
   docs/nakamoto/stacking: nakamoto-upgrade/stacking-flow.md
-  docs/next-steps: /
+  docs/next-steps: stacks-101/what-is-stacks.md
   docs/nodes-and-miners: stacks-in-depth/nodes-and-miners.md
   docs/nodes-and-miners/digitalocean: stacks-in-depth/nodes-and-miners/digitalocean.md
   docs/nodes-and-miners/hosted-nodes: stacks-in-depth/nodes-and-miners/hosted-nodes.md
@@ -50,11 +50,11 @@ redirects:
   docs/nodes-and-miners/run-a-node: stacks-in-depth/nodes-and-miners/run-a-node.md
   docs/nodes-and-miners/stacks-node-configuration: stacks-in-depth/nodes-and-miners/stacks-node-configuration.md
   docs/nodes-and-miners/verify-miner: stacks-in-depth/nodes-and-miners/verify-miner.md
-  docs/services-using-stacks/defi: /
-  docs/services-using-stacks/more: /
-  docs/services-using-stacks/nft: /
-  docs/services-using-stacks/stacks-info-sites: /
-  docs/services-using-stacks/wallets: /
+  docs/services-using-stacks/defi: stacks-101/what-is-stacks.md
+  docs/services-using-stacks/more: stacks-101/what-is-stacks.md
+  docs/services-using-stacks/nft: stacks-101/what-is-stacks.md
+  docs/services-using-stacks/stacks-info-sites: stacks-101/what-is-stacks.md
+  docs/services-using-stacks/wallets: stacks-101/what-is-stacks.md
   docs/stacks-academy: stacks-101/what-is-stacks.md
   docs/stacks-academy/accounts: stacks-101/accounts.md
   docs/stacks-academy/authentication: stacks-101/authentication.md
