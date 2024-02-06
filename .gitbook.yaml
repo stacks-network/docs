@@ -41,13 +41,13 @@ redirects:
   docs/nakamoto/stacking: nakamoto-upgrade/stacking-flow.md
   docs/next-steps: stacks-101/what-is-stacks.md
   docs/nodes-and-miners: stacks-in-depth/nodes-and-miners.md
-  docs/nodes-and-miners/digitalocean: stacks-in-depth/nodes-and-miners/digitalocean.md
-  docs/nodes-and-miners/hosted-nodes: stacks-in-depth/nodes-and-miners/hosted-nodes.md
+  docs/nodes-and-miners/digitalocean: stacks-in-depth/nodes-and-miners/run-a-node-with-digital-ocean.md
+  docs/nodes-and-miners/hosted-nodes: stacks-in-depth/nodes-and-miners/run-a-node-with-a-hosted-provider.md
   docs/nodes-and-miners/miner-costs-and-fees: stacks-in-depth/nodes-and-miners/miner-costs-and-fees.md
-  docs/nodes-and-miners/miner-mainnet: stacks-in-depth/nodes-and-miners/miner-mainnet.md
-  docs/nodes-and-miners/miner-testnet: stacks-in-depth/nodes-and-miners/miner-testnet.md
-  docs/nodes-and-miners/quicknode: stacks-in-depth/nodes-and-miners/quicknode.md
-  docs/nodes-and-miners/run-a-node: stacks-in-depth/nodes-and-miners/run-a-node.md
+  docs/nodes-and-miners/miner-mainnet: stacks-in-depth/nodes-and-miners/mine-mainnet-stacks-tokens.md
+  docs/nodes-and-miners/miner-testnet: stacks-in-depth/nodes-and-miners/mine-testnet-stacks-tokens.md
+  docs/nodes-and-miners/quicknode: stacks-in-depth/nodes-and-miners/run-a-node-with-quicknode.md
+  docs/nodes-and-miners/run-a-node: stacks-in-depth/nodes-and-miners/run-a-node-with-docker.md
   docs/nodes-and-miners/stacks-node-configuration: stacks-in-depth/nodes-and-miners/stacks-node-configuration.md
   docs/nodes-and-miners/verify-miner: stacks-in-depth/nodes-and-miners/verify-miner.md
   docs/services-using-stacks/defi: stacks-101/what-is-stacks.md
