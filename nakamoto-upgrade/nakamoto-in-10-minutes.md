@@ -54,6 +54,10 @@ Stacks miners are required to commit the indexed block hash of the first block p
 
 This will anchor the Stacks chain history to Bitcoin up to the start of the previous miner's tenure, as well as all causally-dependent Bitcoin state that Stacks has processed. This ensures Bitcoin finality, resolves miner connectivity issues by putting fork prevention on stackers, and allows nodes with up-to-date copies of the Stacks chain state to identify which Stacks blocks are affected by a Bitcoin reorg and recover the affected Stacks transactions.
 
+This relationship between Stackers, miners, Bitcoin blocks, and Stacks blocks is what maintains Bitcoin finality while allowing miners to rapidly produce Stacks blocks. Bitcoin finality is achieved because at every Bitcoin block N + 1, the state of the Stacks chain as of the start of tenure N is written to Bitcoin. Even if at a future date all of the former Stackers’ signing keys were compromised, they would be unable to rewrite Stacks history for tenure N without rewriting Bitcoin history back to tenure N + 1.
+
+Because of this, Stacks transactions can be considered to have Bitcoin finality after the tenure they are a part of concludes, or Bitcoin block N + 1. As an example, if I initiate a Stacks transaction that gets confirmed by a Stacks miner, at the conclusion of that miner's tenure (the end of the current Bitcoin block) that transaction will be written to Bitcoin as part of the Stacks chain state and all future miners are required to build off of that chain tip, making reversing the transaction as difficult as reversing the corresponding Bitcoin transaction.
+
 ### Bitcoin MEV Mitigation
 
 Miner Extractable Value (MEV) has been a longstanding issue across many blockchains, including Stacks pre-Nakamoto.
