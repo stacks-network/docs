@@ -30,7 +30,7 @@ The `TenureChange` transaction encodes the following data:
 
 **TenureChange-BlockFound**
 
-_**A**** ****`TenureChange-BlockFound`**** ****transaction is induced by a winning sortition. This causes the new miner to start producing blocks, and stops the current miner from producing more blocks.**_
+_**A\*\*\*\***** ****`TenureChange-BlockFound`**** ****\*\*\*\*transaction is induced by a winning sortition. This causes the new miner to start producing blocks, and stops the current miner from producing more blocks.**_
 
 When produced, the `TenureChange-BlockFound` transaction will be made available to miners for download, so that miners can include it in their first block. Miners N and N+1 will both monitor the availability of this data in order to determine when the former must stop producing blocks and the latter may begin producing blocks. Once miner N+1 receives this data, it begins its tenure by doing the following:
 
@@ -42,7 +42,7 @@ If miner N cannot obtain or observe the `TenureChange-BlockFound` transaction, t
 
 **TenureChange-Extend**
 
-_**A**** ****`TenureChange-Extend`****, which is induced by Stackers, resets the current tenure's ongoing execution budget, thereby allowing the miner to continue producing blocks.**_
+_**A\*\*\*\***** ****`TenureChange-Extend`****, which is induced by Stackers, resets the current tenure's ongoing execution budget, thereby allowing the miner to continue producing blocks.**_
 
 The time between cryptographic sortitions (and thus tenure changes) depends on the time between two consecutive Bitcoin blocks. This can be highly variable, which complicates the task of sustaining a predictable transaction confirmation latency while also preventing a malicious miner from spamming the network with too many high-resource transactions.
 
