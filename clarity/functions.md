@@ -1,6 +1,6 @@
 # Functions
 
-#### \* (multiply)​
+## \* (multiply)​
 
 Introduced in: **Clarity 1**
 
@@ -17,10 +17,12 @@ Multiplies a variable number of integer inputs and returns the result. In the ev
 **example:**
 
 ```
-(* 2 3) ;; Returns 6(* 5 2) ;; Returns 10(* 2 2 2) ;; Returns 8
+(* 2 3) ;; Returns 6
+(* 5 2) ;; Returns 10
+(* 2 2 2) ;; Returns 8
 ```
 
-#### + (add)​
+## + (add)​
 
 Introduced in: **Clarity 1**
 
@@ -40,7 +42,7 @@ Adds a variable number of integer inputs and returns the result. In the event of
 (+ 1 2 3) ;; Returns 6
 ```
 
-#### - (subtract)​
+## - (subtract)​
 
 Introduced in: **Clarity 1**
 
@@ -57,10 +59,11 @@ Subtracts a variable number of integer inputs and returns the result. In the eve
 **example:**
 
 ```
-(- 2 1 1) ;; Returns 0(- 0 3) ;; Returns -3
+(- 2 1 1) ;; Returns 0
+(- 0 3) ;; Returns -3
 ```
 
-#### / (divide)​
+## / (divide)​
 
 Introduced in: **Clarity 1**
 
@@ -77,10 +80,12 @@ Integer divides a variable number of integer inputs and returns the result. In t
 **example:**
 
 ```
-(/ 2 3) ;; Returns 0(/ 5 2) ;; Returns 2(/ 4 2 2) ;; Returns 1
+(/ 2 3) ;; Returns 0
+(/ 5 2) ;; Returns 2
+(/ 4 2 2) ;; Returns 1
 ```
 
-#### < (less than)​
+## < (less than)​
 
 Introduced in: **Clarity 1**
 
@@ -97,10 +102,15 @@ Compares two integers, returning `true` if `i1` is less than `i2` and `false` ot
 **example:**
 
 ```
-(< 1 2) ;; Returns true(< 5 2) ;; Returns false(< "aaa" "baa") ;; Returns true(< "aa" "aaa") ;; Returns true(< 0x01 0x02) ;; Returns true(< 5 u2) ;; Throws type error
+(< 1 2) ;; Returns true
+(< 5 2) ;; Returns false
+(< "aaa" "baa") ;; Returns true
+(< "aa" "aaa") ;; Returns true
+(< 0x01 0x02) ;; Returns true
+(< 5 u2) ;; Throws type error
 ```
 
-#### <= (less than or equal)​
+## <= (less than or equal)​
 
 Introduced in: **Clarity 1**
 
@@ -117,10 +127,15 @@ Compares two integers, returning true if `i1` is less than or equal to `i2` and 
 **example:**
 
 ```
-(<= 1 1) ;; Returns true(<= 5 2) ;; Returns false(<= "aaa" "baa") ;; Returns true(<= "aa" "aaa") ;; Returns true(<= 0x01 0x02) ;; Returns true(<= 5 u2) ;; Throws type error
+(<= 1 1) ;; Returns true
+(<= 5 2) ;; Returns false
+(<= "aaa" "baa") ;; Returns true
+(<= "aa" "aaa") ;; Returns true
+(<= 0x01 0x02) ;; Returns true
+(<= 5 u2) ;; Throws type error
 ```
 
-#### > (greater than)​
+## > (greater than)​
 
 Introduced in: **Clarity 1**
 
@@ -137,10 +152,15 @@ Compares two integers, returning `true` if `i1` is greater than `i2` and false o
 **example:**
 
 ```
-(> 1 2) ;; Returns false(> 5 2) ;; Returns true(> "baa" "aaa") ;; Returns true(> "aaa" "aa") ;; Returns true(> 0x02 0x01) ;; Returns true(> 5 u2) ;; Throws type error
+(> 1 2) ;; Returns false
+(> 5 2) ;; Returns true
+(> "baa" "aaa") ;; Returns true
+(> "aaa" "aa") ;; Returns true
+(> 0x02 0x01) ;; Returns true
+(> 5 u2) ;; Throws type error
 ```
 
-#### >= (greater than or equal)​
+## >= (greater than or equal)​
 
 Introduced in: **Clarity 1**
 
@@ -157,10 +177,15 @@ Compares two integers, returning `true` if `i1` is greater than or equal to `i2`
 **example:**
 
 ```
-(>= 1 1) ;; Returns true(>= 5 2) ;; Returns true(>= "baa" "aaa") ;; Returns true(>= "aaa" "aa") ;; Returns true(>= 0x02 0x01) ;; Returns true(>= 5 u2) ;; Throws type error
+(>= 1 1) ;; Returns true
+(>= 5 2) ;; Returns true
+(>= "baa" "aaa") ;; Returns true
+(>= "aaa" "aa") ;; Returns true
+(>= 0x02 0x01) ;; Returns true
+(>= 5 u2) ;; Throws type error
 ```
 
-#### and​
+## and​
 
 Introduced in: **Clarity 1**
 
@@ -177,10 +202,12 @@ Returns `true` if all boolean inputs are `true`. Importantly, the supplied argum
 **example:**
 
 ```
-(and true false) ;; Returns false(and (is-eq (+ 1 2) 1) (is-eq 4 4)) ;; Returns false(and (is-eq (+ 1 2) 3) (is-eq 4 4)) ;; Returns true
+(and true false) ;; Returns false
+(and (is-eq (+ 1 2) 1) (is-eq 4 4)) ;; Returns false
+(and (is-eq (+ 1 2) 3) (is-eq 4 4)) ;; Returns true
 ```
 
-#### append​
+## append​
 
 Introduced in: **Clarity 1**
 
@@ -192,7 +219,7 @@ Introduced in: **Clarity 1**
 
 **description:**
 
-The `append` function takes a list and another value with the same entry type, and outputs a list of the same type with max\_len += 1.
+The `append` function takes a list and another value with the same entry type, and outputs a list of the same type with max_len += 1.
 
 **example:**
 
@@ -200,7 +227,7 @@ The `append` function takes a list and another value with the same entry type, a
 (append (list 1 2 3 4) 5) ;; Returns (1 2 3 4 5)
 ```
 
-#### as-contract​
+## as-contract​
 
 Introduced in: **Clarity 1**
 
@@ -220,7 +247,7 @@ The `as-contract` function switches the current context's `tx-sender` value to t
 (as-contract tx-sender) ;; Returns S1G2081040G2081040G2081040G208105NK8PE5.docs-test
 ```
 
-#### as-max-len?​
+## as-max-len?​
 
 Introduced in: **Clarity 1**
 
@@ -232,15 +259,18 @@ Introduced in: **Clarity 1**
 
 **description:**
 
-The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument. The function returns an optional type. If the input sequence length is less than or equal to the supplied max\_length, this returns `(some sequence)`, otherwise it returns `none`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
+The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument. The function returns an optional type. If the input sequence length is less than or equal to the supplied max_length, this returns `(some sequence)`, otherwise it returns `none`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
 
 **example:**
 
 ```
-(as-max-len? (list 2 2 2) u3) ;; Returns (some (2 2 2))(as-max-len? (list 1 2 3) u2) ;; Returns none(as-max-len? "hello" u10) ;; Returns (some "hello")(as-max-len? 0x010203 u10) ;; Returns (some 0x010203)
+(as-max-len? (list 2 2 2) u3) ;; Returns (some (2 2 2))
+(as-max-len? (list 1 2 3) u2) ;; Returns none
+(as-max-len? "hello" u10) ;; Returns (some "hello")
+(as-max-len? 0x010203 u10) ;; Returns (some 0x010203)
 ```
 
-#### asserts
+## asserts
 
 Introduced in: **Clarity 1**
 
@@ -260,7 +290,7 @@ The `asserts!` function admits a boolean argument and asserts its evaluation: if
 (asserts! (is-eq 1 1) (err 1)) ;; Returns true
 ```
 
-#### at-block​
+## at-block​
 
 Introduced in: **Clarity 1**
 
@@ -281,10 +311,12 @@ The function returns the result of evaluating `expr`.
 **example:**
 
 ```
-(define-data-var data int 1)(at-block 0x0000000000000000000000000000000000000000000000000000000000000000 block-height) ;; Returns u0(at-block (get-block-info? id-header-hash 0) (var-get data)) ;; Throws NoSuchDataVariable because `data` wasn't initialized at block height 0
+(define-data-var data int 1)
+(at-block 0x0000000000000000000000000000000000000000000000000000000000000000 block-height) ;; Returns u0
+(at-block (get-block-info? id-header-hash 0) (var-get data)) ;; Throws NoSuchDataVariable because `data` wasn't initialized at block height 0
 ```
 
-#### begin​
+## begin​
 
 Introduced in: **Clarity 1**
 
@@ -304,7 +336,7 @@ The `begin` function evaluates each of its input expressions, returning the retu
 (begin (+ 1 2) 4 5) ;; Returns 5
 ```
 
-#### bit-and​
+## bit-and​
 
 Introduced in: **Clarity 2**
 
@@ -321,10 +353,14 @@ Returns the result of bitwise and'ing a variable number of integer inputs.
 **example:**
 
 ```
-(bit-and 24 16) ;; Returns 16(bit-and 28 24 -1) ;; Returns 24(bit-and u24 u16) ;; Returns u16(bit-and -128 -64) ;; Returns -128(bit-and 28 24 -1) ;; Returns 24
+(bit-and 24 16) ;; Returns 16
+(bit-and 28 24 -1) ;; Returns 24
+(bit-and u24 u16) ;; Returns u16
+(bit-and -128 -64) ;; Returns -128
+(bit-and 28 24 -1) ;; Returns 24
 ```
 
-#### bit-not​
+## bit-not​
 
 Introduced in: **Clarity 2**
 
@@ -341,10 +377,13 @@ Returns the one's compliement (sometimes also called the bitwise compliment or n
 **example:**
 
 ```
-(bit-not 3) ;; Returns -4(bit-not u128) ;; Returns u340282366920938463463374607431768211327(bit-not 128) ;; Returns -129(bit-not -128) ;; Returns 127
+(bit-not 3) ;; Returns -4
+(bit-not u128) ;; Returns u340282366920938463463374607431768211327
+(bit-not 128) ;; Returns -129
+(bit-not -128) ;; Returns 127
 ```
 
-#### bit-or​
+## bit-or​
 
 Introduced in: **Clarity 2**
 
@@ -364,7 +403,7 @@ Returns the result of bitwise inclusive or'ing a variable number of integer inpu
 (bit-or 4 8) ;; Returns 12(bit-or 1 2 4) ;; Returns 7(bit-or 64 -32 -16) ;; Returns -16(bit-or u2 u4 u32) ;; Returns u38
 ```
 
-#### bit-shift-left​
+## bit-shift-left​
 
 Introduced in: **Clarity 2**
 
@@ -386,7 +425,7 @@ Note that there is a deliberate choice made to ignore arithmetic overflow for th
 (bit-shift-left 2 u1) ;; Returns 4(bit-shift-left 16 u2) ;; Returns 64(bit-shift-left -64 u1) ;; Returns -128(bit-shift-left u4 u2) ;; Returns u16(bit-shift-left 123 u9999999999) ;; Returns -170141183460469231731687303715884105728(bit-shift-left u123 u9999999999) ;; Returns u170141183460469231731687303715884105728(bit-shift-left -1 u7) ;; Returns -128(bit-shift-left -1 u128) ;; Returns -1
 ```
 
-#### bit-shift-right​
+## bit-shift-right​
 
 Introduced in: **Clarity 2**
 
@@ -408,7 +447,7 @@ Note that there is a deliberate choice made to ignore arithmetic overflow for th
 (bit-shift-right 2 u1) ;; Returns 1(bit-shift-right 128 u2) ;; Returns 32(bit-shift-right -64 u1) ;; Returns -32(bit-shift-right u128 u2) ;; Returns u32(bit-shift-right 123 u9999999999) ;; Returns 0(bit-shift-right u123 u9999999999) ;; Returns u0(bit-shift-right -128 u7) ;; Returns -1(bit-shift-right -256 u1) ;; Returns -128(bit-shift-right 5 u2) ;; Returns 1(bit-shift-right -5 u2) ;; Returns -2
 ```
 
-#### bit-xor​
+## bit-xor​
 
 Introduced in: **Clarity 2**
 
@@ -428,7 +467,7 @@ Returns the result of bitwise exclusive or'ing a variable number of integer inpu
 (bit-xor 1 2) ;; Returns 3(bit-xor 120 280) ;; Returns 352(bit-xor -128 64) ;; Returns -64(bit-xor u24 u4) ;; Returns u28(bit-xor 1 2 4 -1) ;; Returns -8
 ```
 
-#### buff-to-int-be​
+## buff-to-int-be​
 
 Introduced in: **Clarity 2**
 
@@ -450,7 +489,7 @@ Note: This function is only available starting with Stacks 2.1.
 (buff-to-int-be 0x01) ;; Returns 1(buff-to-int-be 0x00000000000000000000000000000001) ;; Returns 1(buff-to-int-be 0xffffffffffffffffffffffffffffffff) ;; Returns -1(buff-to-int-be 0x) ;; Returns 0
 ```
 
-#### buff-to-int-le​
+## buff-to-int-le​
 
 Introduced in: **Clarity 2**
 
@@ -472,7 +511,7 @@ Note: This function is only available starting with Stacks 2.1.
 (buff-to-int-le 0x01) ;; Returns 1(buff-to-int-le 0x01000000000000000000000000000000) ;; Returns 1(buff-to-int-le 0xffffffffffffffffffffffffffffffff) ;; Returns -1(buff-to-int-le 0x) ;; Returns 0
 ```
 
-#### buff-to-uint-be​
+## buff-to-uint-be​
 
 Introduced in: **Clarity 2**
 
@@ -494,7 +533,7 @@ Note: This function is only available starting with Stacks 2.1.
 (buff-to-uint-be 0x01) ;; Returns u1(buff-to-uint-be 0x00000000000000000000000000000001) ;; Returns u1(buff-to-uint-be 0xffffffffffffffffffffffffffffffff) ;; Returns u340282366920938463463374607431768211455(buff-to-uint-be 0x) ;; Returns u0
 ```
 
-#### buff-to-uint-le​
+## buff-to-uint-le​
 
 Introduced in: **Clarity 2**
 
@@ -516,7 +555,7 @@ Note: This function is only available starting with Stacks 2.1.
 (buff-to-uint-le 0x01) ;; Returns u1(buff-to-uint-le 0x01000000000000000000000000000000) ;; Returns u1(buff-to-uint-le 0xffffffffffffffffffffffffffffffff) ;; Returns u340282366920938463463374607431768211455(buff-to-uint-le 0x) ;; Returns u0
 ```
 
-#### concat​
+## concat​
 
 Introduced in: **Clarity 1**
 
@@ -528,7 +567,7 @@ Introduced in: **Clarity 1**
 
 **description:**
 
-The `concat` function takes two sequences of the same type, and returns a concatenated sequence of the same type, with the resulting sequence\_len = sequence1\_len + sequence2\_len. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
+The `concat` function takes two sequences of the same type, and returns a concatenated sequence of the same type, with the resulting sequence_len = sequence1_len + sequence2_len. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
 
 **example:**
 
@@ -536,7 +575,7 @@ The `concat` function takes two sequences of the same type, and returns a concat
 (concat (list 1 2) (list 3 4)) ;; Returns (1 2 3 4)(concat "hello " "world") ;; Returns "hello world"(concat 0x0102 0x0304) ;; Returns 0x01020304
 ```
 
-#### contract-call?​
+## contract-call?​
 
 Introduced in: **Clarity 1**
 
@@ -556,7 +595,7 @@ The `contract-call?` function executes the given public function of the given co
 ;; instantiate the sample-contracts/tokens.clar contract first!(as-contract (contract-call? .tokens mint! u19)) ;; Returns (ok u19)
 ```
 
-#### contract-of​
+## contract-of​
 
 Introduced in: **Clarity 1**
 
@@ -576,7 +615,7 @@ The `contract-of` function returns the principal of the contract implementing th
 (use-trait token-a-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)(define-public (forward-get-balance (user principal) (contract <token-a-trait>))  (begin    (ok (contract-of contract)))) ;; returns the principal of the contract implementing <token-a-trait>
 ```
 
-#### default-to​
+## default-to​
 
 Introduced in: **Clarity 1**
 
@@ -596,7 +635,7 @@ The `default-to` function attempts to 'unpack' the second argument: if the argum
 (define-map names-map { name: (string-ascii 12) } { id: int })(map-set names-map { name: "blockstack" } { id: 1337 })(default-to 0 (get id (map-get? names-map (tuple (name "blockstack"))))) ;; Returns 1337(default-to 0 (get id (map-get? names-map (tuple (name "non-existant"))))) ;; Returns 0
 ```
 
-#### define-constant​
+## define-constant​
 
 Introduced in: **Clarity 1**
 
@@ -618,7 +657,7 @@ Like other kinds of definition statements, `define-constant` may only be used at
 (define-constant four (+ 2 2))(+ 4 four) ;; Returns 8
 ```
 
-#### define-data-var​
+## define-data-var​
 
 Introduced in: **Clarity 1**
 
@@ -642,7 +681,7 @@ Like other kinds of definition statements, `define-data-var` may only be used at
 (define-data-var size int 0)(define-private (set-size (value int))  (var-set size value))(set-size 1)(set-size 2)
 ```
 
-#### define-fungible-token​
+## define-fungible-token​
 
 Introduced in: **Clarity 1**
 
@@ -668,7 +707,7 @@ Tokens defined using `define-fungible-token` may be used in `ft-transfer?`, `ft-
 (define-fungible-token stacks)(define-fungible-token limited-supply-stacks u100)
 ```
 
-#### define-map​
+## define-map​
 
 Introduced in: **Clarity 1**
 
@@ -692,7 +731,7 @@ Like other kinds of definition statements, `define-map` may only be used at the 
 (define-map squares { x: int } { square: int })(define-private (add-entry (x int))  (map-insert squares { x: 2 } { square: (* x x) }))(add-entry 1)(add-entry 2)(add-entry 3)(add-entry 4)(add-entry 5)
 ```
 
-#### define-non-fungible-token​
+## define-non-fungible-token​
 
 Introduced in: **Clarity 1**
 
@@ -716,7 +755,7 @@ Assets defined using `define-non-fungible-token` may be used in `nft-transfer?`,
 (define-non-fungible-token names (buff 50))
 ```
 
-#### define-private​
+## define-private​
 
 Introduced in: **Clarity 1**
 
@@ -740,7 +779,7 @@ Private functions may return any type.
 (define-private (max-of (i1 int) (i2 int))  (if (> i1 i2)      i1      i2))(max-of 4 6) ;; Returns 6
 ```
 
-#### define-public​
+## define-public​
 
 Introduced in: **Clarity 1**
 
@@ -764,7 +803,7 @@ Public functions _must_ return a ResponseType (using either `ok` or `err`). Any 
 (define-public (hello-world (input int))  (begin (print (+ 2 input))         (ok input)))
 ```
 
-#### define-read-only​
+## define-read-only​
 
 Introduced in: **Clarity 1**
 
@@ -788,7 +827,7 @@ Read-only functions may return any type. However, read-only functions may not pe
 (define-read-only (just-return-one-hundred)  (* 10 10))
 ```
 
-#### define-trait​
+## define-trait​
 
 Introduced in: **Clarity 1**
 
@@ -816,7 +855,7 @@ Like other kinds of definition statements, `define-trait` may only be used at th
 (define-trait token-trait    ((transfer? (principal principal uint) (response uint uint))     (get-balance (principal) (response uint uint))))
 ```
 
-#### element-at​
+## element-at​
 
 Introduced in: **Clarity 1**
 
@@ -836,7 +875,7 @@ The `element-at?` function returns the element at `index` in the provided sequen
 (element-at? "blockstack" u5) ;; Returns (some "s")(element-at? (list 1 2 3 4 5) u5) ;; Returns none(element-at? (list 1 2 3 4 5) (+ u1 u2)) ;; Returns (some 4)(element-at? "abcd" u1) ;; Returns (some "b")(element-at? 0xfb01 u1) ;; Returns (some 0x01)
 ```
 
-#### element-at?​
+## element-at?​
 
 Introduced in: **Clarity 2**
 
@@ -856,7 +895,7 @@ The `element-at?` function returns the element at `index` in the provided sequen
 (element-at? "blockstack" u5) ;; Returns (some "s")(element-at? (list 1 2 3 4 5) u5) ;; Returns none(element-at? (list 1 2 3 4 5) (+ u1 u2)) ;; Returns (some 4)(element-at? "abcd" u1) ;; Returns (some "b")(element-at? 0xfb01 u1) ;; Returns (some 0x01)
 ```
 
-#### err​
+## err​
 
 Introduced in: **Clarity 1**
 
@@ -876,7 +915,7 @@ The `err` function constructs a response type from the input value. Use `err` fo
 (err true) ;; Returns (err true)
 ```
 
-#### filter​
+## filter​
 
 Introduced in: **Clarity 1**
 
@@ -896,7 +935,7 @@ The `filter` function applies the input function `func` to each element of the i
 (filter not (list true false true false)) ;; Returns (false false)(define-private (is-a (char (string-utf8 1))) (is-eq char u"a"))(filter is-a u"acabd") ;; Returns u"aa"(define-private (is-zero (char (buff 1))) (is-eq char 0x00))(filter is-zero 0x00010002) ;; Returns 0x0000
 ```
 
-#### fold​
+## fold​
 
 Introduced in: **Clarity 1**
 
@@ -920,7 +959,7 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
 (fold * (list 2 2 2) 1) ;; Returns 8(fold * (list 2 2 2) 0) ;; Returns 0;; calculates (- 11 (- 7 (- 3 2)))(fold - (list 3 7 11) 2) ;; Returns 5 (define-private (concat-string (a (string-ascii 20)) (b (string-ascii 20))) (unwrap-panic (as-max-len? (concat a b) u20)))(fold concat-string "cdef" "ab")   ;; Returns "fedcab"(fold concat-string (list "cd" "ef") "ab")   ;; Returns "efcdab"(define-private (concat-buff (a (buff 20)) (b (buff 20))) (unwrap-panic (as-max-len? (concat a b) u20)))(fold concat-buff 0x03040506 0x0102)   ;; Returns 0x060504030102
 ```
 
-#### from-consensus-buff?​
+## from-consensus-buff?​
 
 Introduced in: **Clarity 2**
 
@@ -940,7 +979,7 @@ Introduced in: **Clarity 2**
 (from-consensus-buff? int 0x0000000000000000000000000000000001) ;; Returns (some 1)(from-consensus-buff? uint 0x0000000000000000000000000000000001) ;; Returns none(from-consensus-buff? uint 0x0100000000000000000000000000000001) ;; Returns (some u1)(from-consensus-buff? bool 0x0000000000000000000000000000000001) ;; Returns none(from-consensus-buff? bool 0x03) ;; Returns (some true)(from-consensus-buff? bool 0x04) ;; Returns (some false)(from-consensus-buff? principal 0x051fa46ff88886c2ef9762d970b4d2c63678835bd39d) ;; Returns (some SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)(from-consensus-buff? { abc: int, def: int } 0x0c00000002036162630000000000000000000000000000000003036465660000000000000000000000000000000004) ;; Returns (some (tuple (abc 3) (def 4)))
 ```
 
-#### ft-burn?​
+## ft-burn?​
 
 Introduced in: **Clarity 1**
 
@@ -964,7 +1003,7 @@ On a successful burn, it returns `(ok true)`. In the event of an unsuccessful bu
 (define-fungible-token stackaroo)(ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)(ft-burn? stackaroo u50 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
 
-#### ft-get-balance​
+## ft-get-balance​
 
 Introduced in: **Clarity 1**
 
@@ -984,7 +1023,7 @@ Introduced in: **Clarity 1**
 (define-fungible-token stackaroo)(ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)(ft-get-balance stackaroo 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns u100
 ```
 
-#### ft-get-supply​
+## ft-get-supply​
 
 Introduced in: **Clarity 1**
 
@@ -1004,7 +1043,7 @@ Introduced in: **Clarity 1**
 (define-fungible-token stackaroo)(ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)(ft-get-supply stackaroo) ;; Returns u100
 ```
 
-#### ft-mint?​
+## ft-mint?​
 
 Introduced in: **Clarity 1**
 
@@ -1026,7 +1065,7 @@ If a non-positive amount is provided to mint, this function returns `(err 1)`. O
 (define-fungible-token stackaroo)(ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
 
-#### ft-transfer?​
+## ft-transfer?​
 
 Introduced in: **Clarity 1**
 
@@ -1050,7 +1089,7 @@ This function returns (ok true) if the transfer is successful. In the event of a
 (define-fungible-token stackaroo)(ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)(ft-transfer? stackaroo u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)(ft-transfer? stackaroo u60 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u1)
 ```
 
-#### get​
+## get​
 
 Introduced in: **Clarity 1**
 
@@ -1070,7 +1109,7 @@ The `get` function fetches the value associated with a given key from the suppli
 (define-map names-map { name: (string-ascii 12) } { id: int })(map-insert names-map { name: "blockstack" } { id: 1337 }) ;; Returns true(get id (tuple (name "blockstack") (id 1337))) ;; Returns 1337(get id (map-get? names-map (tuple (name "blockstack")))) ;; Returns (some 1337)(get id (map-get? names-map (tuple (name "non-existent")))) ;; Returns none
 ```
 
-#### get-block-info?​
+## get-block-info?​
 
 Introduced in: **Clarity 1**
 
@@ -1108,7 +1147,7 @@ New in Stacks 2.1:
 (get-block-info? time u0) ;; Returns (some u1557860301)(get-block-info? header-hash u0) ;; Returns (some 0x374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb)(get-block-info? vrf-seed u0) ;; Returns (some 0xf490de2920c8a35fabeb13208852aa28c76f9be9b03a4dd2b3c075f7a26923b4)
 ```
 
-#### get-burn-block-info?​
+## get-burn-block-info?​
 
 Introduced in: **Clarity 2**
 
@@ -1124,20 +1163,20 @@ The `get-burn-block-info?` function fetches data for a block of the given _burnc
 
 The following `BlockInfoPropertyName` values are defined:
 
-* The `header-hash` property returns a 32-byte buffer representing the header hash of the burnchain block at burnchain height `block-height`.
-* The `pox-addrs` property returns a tuple with two items: a list of up to two PoX addresses that received a PoX payout at that block height, and the amount of burnchain tokens paid to each address (note that per the blockchain consensus rules, each PoX payout will be the same for each address in the block-commit transaction). The list will include burn addresses -- that is, the unspendable addresses that miners pay to when there are no PoX addresses left to be paid. During the prepare phase, there will be exactly one burn address reported. During the reward phase, up to two burn addresses may be reported in the event that some PoX reward slots are not claimed.
+- The `header-hash` property returns a 32-byte buffer representing the header hash of the burnchain block at burnchain height `block-height`.
+- The `pox-addrs` property returns a tuple with two items: a list of up to two PoX addresses that received a PoX payout at that block height, and the amount of burnchain tokens paid to each address (note that per the blockchain consensus rules, each PoX payout will be the same for each address in the block-commit transaction). The list will include burn addresses -- that is, the unspendable addresses that miners pay to when there are no PoX addresses left to be paid. During the prepare phase, there will be exactly one burn address reported. During the reward phase, up to two burn addresses may be reported in the event that some PoX reward slots are not claimed.
 
 The `addrs` list contains the same PoX address values passed into the PoX smart contract:
 
-* They each have type signature `(tuple (hashbytes (buff 32)) (version (buff 1)))`
-* The `version` field can be any of the following:
-  * `0x00` means this is a p2pkh address, and `hashbytes` is the 20-byte hash160 of a single public key
-  * `0x01` means this is a p2sh address, and `hashbytes` is the 20-byte hash160 of a redeemScript script
-  * `0x02` means this is a p2wpkh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wpkh witness script
-  * `0x03` means this is a p2wsh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wsh witness script
-  * `0x04` means this is a p2wpkh address, and `hashbytes` is the 20-byte hash160 of the witness script
-  * `0x05` means this is a p2wsh address, and `hashbytes` is the 32-byte sha256 of the witness script
-  * `0x06` means this is a p2tr address, and `hashbytes` is the 32-byte sha256 of the witness script
+- They each have type signature `(tuple (hashbytes (buff 32)) (version (buff 1)))`
+- The `version` field can be any of the following:
+  - `0x00` means this is a p2pkh address, and `hashbytes` is the 20-byte hash160 of a single public key
+  - `0x01` means this is a p2sh address, and `hashbytes` is the 20-byte hash160 of a redeemScript script
+  - `0x02` means this is a p2wpkh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wpkh witness script
+  - `0x03` means this is a p2wsh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wsh witness script
+  - `0x04` means this is a p2wpkh address, and `hashbytes` is the 20-byte hash160 of the witness script
+  - `0x05` means this is a p2wsh address, and `hashbytes` is the 32-byte sha256 of the witness script
+  - `0x06` means this is a p2tr address, and `hashbytes` is the 32-byte sha256 of the witness script
 
 **example:**
 
@@ -1145,7 +1184,7 @@ The `addrs` list contains the same PoX address values passed into the PoX smart 
 (get-burn-block-info? header-hash u677050) ;; Returns (some 0xe67141016c88a7f1203eca0b4312f2ed141531f59303a1c267d7d83ab6b977d8)(get-burn-block-info? pox-addrs u677050) ;; Returns (some (tuple (addrs ((tuple (hashbytes 0x395f3643cea07ec4eec73b4d9a973dcce56b9bf1) (version 0x00)) (tuple (hashbytes 0x7c6775e20e3e938d2d7e9d79ac310108ba501ddb) (version 0x01)))) (payout u123)))
 ```
 
-#### hash160​
+## hash160​
 
 Introduced in: **Clarity 1**
 
@@ -1165,7 +1204,7 @@ The `hash160` function computes `RIPEMD160(SHA256(x))` of the inputted value. If
 (hash160 0) ;; Returns 0xe4352f72356db555721651aa612e00379167b30f
 ```
 
-#### if​
+## if​
 
 Introduced in: **Clarity 1**
 
@@ -1185,7 +1224,7 @@ The `if` function admits a boolean argument and two expressions which must retur
 (if true 1 2) ;; Returns 1(if (> 1 2) 1 2) ;; Returns 2
 ```
 
-#### impl-trait​
+## impl-trait​
 
 Introduced in: **Clarity 1**
 
@@ -1209,7 +1248,7 @@ Like other kinds of definition statements, `impl-trait` may only be used at the 
 (impl-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)(define-public (get-balance (account principal))  (ok u0))(define-public (transfer? (from principal) (to principal) (amount uint))  (ok u0))
 ```
 
-#### index-of​
+## index-of​
 
 Introduced in: **Clarity 1**
 
@@ -1229,7 +1268,7 @@ The `index-of?` function returns the first index at which `item` can be found, u
 (index-of? "blockstack" "b") ;; Returns (some u0)(index-of? "blockstack" "k") ;; Returns (some u4)(index-of? "blockstack" "") ;; Returns none(index-of? (list 1 2 3 4 5) 6) ;; Returns none(index-of? 0xfb01 0x01) ;; Returns (some u1)
 ```
 
-#### index-of?​
+## index-of?​
 
 Introduced in: **Clarity 2**
 
@@ -1249,7 +1288,7 @@ The `index-of?` function returns the first index at which `item` can be found, u
 (index-of? "blockstack" "b") ;; Returns (some u0)(index-of? "blockstack" "k") ;; Returns (some u4)(index-of? "blockstack" "") ;; Returns none(index-of? (list 1 2 3 4 5) 6) ;; Returns none(index-of? 0xfb01 0x01) ;; Returns (some u1)
 ```
 
-#### int-to-ascii​
+## int-to-ascii​
 
 Introduced in: **Clarity 2**
 
@@ -1271,7 +1310,7 @@ Note: This function is only available starting with Stacks 2.1.
 (int-to-ascii 1) ;; Returns "1"(int-to-ascii u1) ;; Returns "1"(int-to-ascii -1) ;; Returns "-1"
 ```
 
-#### int-to-utf8​
+## int-to-utf8​
 
 Introduced in: **Clarity 2**
 
@@ -1293,7 +1332,7 @@ Note: This function is only available starting with Stacks 2.1.
 (int-to-utf8 1) ;; Returns u"1"(int-to-utf8 u1) ;; Returns u"1"(int-to-utf8 -1) ;; Returns u"-1"
 ```
 
-#### is-eq​
+## is-eq​
 
 Introduced in: **Clarity 1**
 
@@ -1313,7 +1352,7 @@ Compares the inputted values, returning `true` if they are all equal. Note that 
 (is-eq 1 1) ;; Returns true(is-eq true false) ;; Returns false(is-eq "abc" 234 234) ;; Throws type error(is-eq "abc" "abc") ;; Returns true(is-eq 0x0102 0x0102) ;; Returns true
 ```
 
-#### is-err​
+## is-err​
 
 Introduced in: **Clarity 1**
 
@@ -1333,7 +1372,7 @@ Introduced in: **Clarity 1**
 (is-err (ok 1)) ;; Returns false(is-err (err 1)) ;; Returns true
 ```
 
-#### is-none​
+## is-none​
 
 Introduced in: **Clarity 1**
 
@@ -1353,7 +1392,7 @@ Introduced in: **Clarity 1**
 (define-map names-map { name: (string-ascii 12) } { id: int })(map-set names-map { name: "blockstack" } { id: 1337 })(is-none (get id (map-get? names-map { name: "blockstack" }))) ;; Returns false(is-none (get id (map-get? names-map { name: "non-existant" }))) ;; Returns true
 ```
 
-#### is-ok​
+## is-ok​
 
 Introduced in: **Clarity 1**
 
@@ -1373,7 +1412,7 @@ Introduced in: **Clarity 1**
 (is-ok (ok 1)) ;; Returns true(is-ok (err 1)) ;; Returns false
 ```
 
-#### is-some​
+## is-some​
 
 Introduced in: **Clarity 1**
 
@@ -1393,7 +1432,7 @@ Introduced in: **Clarity 1**
 (define-map names-map { name: (string-ascii 12) } { id: int })(map-set names-map { name: "blockstack" } { id: 1337 })(is-some (get id (map-get? names-map { name: "blockstack" }))) ;; Returns true(is-some (get id (map-get? names-map { name: "non-existant" }))) ;; Returns false
 ```
 
-#### is-standard​
+## is-standard​
 
 Introduced in: **Clarity 2**
 
@@ -1415,7 +1454,7 @@ Note: This function is only available starting with Stacks 2.1.
 (is-standard 'STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6) ;; returns true on testnet and false on mainnet(is-standard 'STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6.foo) ;; returns true on testnet and false on mainnet(is-standard 'SP3X6QWWETNBZWGBK6DRGTR1KX50S74D3433WDGJY) ;; returns true on mainnet and false on testnet(is-standard 'SP3X6QWWETNBZWGBK6DRGTR1KX50S74D3433WDGJY.foo) ;; returns true on mainnet and false on testnet(is-standard 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; returns false on both mainnet and testnet
 ```
 
-#### keccak256​
+## keccak256​
 
 Introduced in: **Clarity 1**
 
@@ -1435,7 +1474,7 @@ The `keccak256` function computes `KECCAK256(value)` of the inputted value. Note
 (keccak256 0) ;; Returns 0xf490de2920c8a35fabeb13208852aa28c76f9be9b03a4dd2b3c075f7a26923b4
 ```
 
-#### len​
+## len​
 
 Introduced in: **Clarity 1**
 
@@ -1455,7 +1494,7 @@ The `len` function returns the length of a given sequence. Applicable sequence t
 (len "blockstack") ;; Returns u10(len (list 1 2 3 4 5)) ;; Returns u5(len 0x010203) ;; Returns u3
 ```
 
-#### let​
+## let​
 
 Introduced in: **Clarity 1**
 
@@ -1475,7 +1514,7 @@ The `let` function accepts a list of `variable name` and `expression` pairs, eva
 (let ((a 2) (b (+ 5 6 7))) (print a) (print b) (+ a b)) ;; Returns 20(let ((a 5) (c (+ a 1)) (d (+ c 1)) (b (+ a c d))) (print a) (print b) (+ a b)) ;; Returns 23
 ```
 
-#### list​
+## list​
 
 Introduced in: **Clarity 1**
 
@@ -1495,7 +1534,7 @@ The `list` function constructs a list composed of the inputted values. Each supp
 (list (+ 1 2) 4 5) ;; Returns (3 4 5)
 ```
 
-#### log2​
+## log2​
 
 Introduced in: **Clarity 1**
 
@@ -1515,7 +1554,7 @@ Returns the power to which the number 2 must be raised to to obtain the value `n
 (log2 u8) ;; Returns u3(log2 8) ;; Returns 3(log2 u1) ;; Returns u0(log2 1000) ;; Returns 9
 ```
 
-#### map​
+## map​
 
 Introduced in: **Clarity 1**
 
@@ -1535,7 +1574,7 @@ The `map` function applies the function `func` to each corresponding element of 
 (map not (list true false true false)) ;; Returns (false true false true)(map + (list 1 2 3) (list 1 2 3) (list 1 2 3)) ;; Returns (3 6 9)(define-private (a-or-b (char (string-utf8 1))) (if (is-eq char u"a") u"a" u"b"))(map a-or-b u"aca") ;; Returns (u"a" u"b" u"a")(define-private (zero-or-one (char (buff 1))) (if (is-eq char 0x00) 0x00 0x01))(map zero-or-one 0x000102) ;; Returns (0x00 0x01 0x01)
 ```
 
-#### map-delete​
+## map-delete​
 
 Introduced in: **Clarity 1**
 
@@ -1555,7 +1594,7 @@ The `map-delete` function removes the value associated with the input key for th
 (define-map names-map { name: (string-ascii 10) } { id: int })(map-insert names-map { name: "blockstack" } { id: 1337 }) ;; Returns true(map-delete names-map { name: "blockstack" }) ;; Returns true(map-delete names-map { name: "blockstack" }) ;; Returns false(map-delete names-map (tuple (name "blockstack"))) ;; Same command, using a shorthand for constructing the tuple
 ```
 
-#### map-get?​
+## map-get?​
 
 Introduced in: **Clarity 1**
 
@@ -1575,7 +1614,7 @@ The `map-get?` function looks up and returns an entry from a contract's data map
 (define-map names-map { name: (string-ascii 10) } { id: int })(map-set names-map { name: "blockstack" } { id: 1337 })(map-get? names-map (tuple (name "blockstack"))) ;; Returns (some (tuple (id 1337)))(map-get? names-map { name: "blockstack" }) ;; Same command, using a shorthand for constructing the tuple
 ```
 
-#### map-insert​
+## map-insert​
 
 Introduced in: **Clarity 1**
 
@@ -1589,7 +1628,7 @@ Introduced in: **Clarity 1**
 
 The `map-insert` function sets the value associated with the input key to the inputted value if and only if there is not already a value associated with the key in the map. If an insert occurs, the function returns `true`. If a value already existed for this key in the data map, the function returns `false`.
 
-Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX\_CLARITY\_VALUE - 1.
+Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX_CLARITY_VALUE - 1.
 
 **example:**
 
@@ -1597,7 +1636,7 @@ Note: the `value-tuple` requires 1 additional byte for storage in the materializ
 (define-map names-map { name: (string-ascii 10) } { id: int })(map-insert names-map { name: "blockstack" } { id: 1337 }) ;; Returns true(map-insert names-map { name: "blockstack" } { id: 1337 }) ;; Returns false(map-insert names-map (tuple (name "blockstack")) (tuple (id 1337))) ;; Same command, using a shorthand for constructing the tuple
 ```
 
-#### map-set​
+## map-set​
 
 Introduced in: **Clarity 1**
 
@@ -1611,7 +1650,7 @@ Introduced in: **Clarity 1**
 
 The `map-set` function sets the value associated with the input key to the inputted value. This function performs a _blind_ update; whether or not a value is already associated with the key, the function overwrites that existing association.
 
-Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX\_CLARITY\_VALUE - 1.
+Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX_CLARITY_VALUE - 1.
 
 **example:**
 
@@ -1619,7 +1658,7 @@ Note: the `value-tuple` requires 1 additional byte for storage in the materializ
 (define-map names-map { name: (string-ascii 10) } { id: int })(map-set names-map { name: "blockstack" } { id: 1337 }) ;; Returns true(map-set names-map (tuple (name "blockstack")) (tuple (id 1337))) ;; Same command, using a shorthand for constructing the tuple
 ```
 
-#### match​
+## match​
 
 Introduced in: **Clarity 1**
 
@@ -1655,7 +1694,7 @@ Note: Type checking requires that the type of both the ok and err parts of the r
 (define-private (add-10 (x (optional int)))  (match x  value (+ 10 value)  10))(add-10 (some 5)) ;; Returns 15(add-10 none) ;; Returns 10(define-private (add-or-pass-err (x (response int (string-ascii 10))) (to-add int))  (match x   value (ok (+ to-add value))   err-value (err err-value)))(add-or-pass-err (ok 5) 20) ;; Returns (ok 25)(add-or-pass-err (err "ERROR") 20) ;; Returns (err "ERROR")
 ```
 
-#### merge​
+## merge​
 
 Introduced in: **Clarity 1**
 
@@ -1675,7 +1714,7 @@ The `merge` function returns a new tuple with the combined fields, without mutat
 (define-map users { id: int } { name: (string-ascii 12), address: (optional principal) })(map-insert users { id: 1337 } { name: "john", address: none }) ;; Returns true(let ((user (unwrap-panic (map-get? users { id: 1337 }))))    (merge user { address: (some 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) })) ;; Returns (tuple (address (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)) (name "john"))
 ```
 
-#### mod​
+## mod​
 
 Introduced in: **Clarity 1**
 
@@ -1695,7 +1734,7 @@ Returns the integer remainder from integer dividing `i1` by `i2`. In the event o
 (mod 2 3) ;; Returns 2(mod 5 2) ;; Returns 1(mod 7 1) ;; Returns 0
 ```
 
-#### nft-burn?​
+## nft-burn?​
 
 Introduced in: **Clarity 1**
 
@@ -1719,7 +1758,7 @@ On a successful burn, it returns `(ok true)`. In the event of an unsuccessful bu
 (define-non-fungible-token stackaroo (string-ascii 40))(nft-mint? stackaroo "Roo" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)(nft-burn? stackaroo "Roo" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
 
-#### nft-get-owner?​
+## nft-get-owner?​
 
 Introduced in: **Clarity 1**
 
@@ -1739,7 +1778,7 @@ Introduced in: **Clarity 1**
 (define-non-fungible-token stackaroo (string-ascii 40))(nft-mint? stackaroo "Roo" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)(nft-get-owner? stackaroo "Roo") ;; Returns (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)(nft-get-owner? stackaroo "Too") ;; Returns none
 ```
 
-#### nft-mint?​
+## nft-mint?​
 
 Introduced in: **Clarity 1**
 
@@ -1765,7 +1804,7 @@ Otherwise, on successfuly mint, it returns `(ok true)`.
 (define-non-fungible-token stackaroo (string-ascii 40))(nft-mint? stackaroo "Roo" 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
 
-#### nft-transfer?​
+## nft-transfer?​
 
 Introduced in: **Clarity 1**
 
@@ -1789,7 +1828,7 @@ This function returns (ok true) if the transfer is successful. In the event of a
 (define-non-fungible-token stackaroo (string-ascii 40))(nft-mint? stackaroo "Roo" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)(nft-transfer? stackaroo "Roo" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)(nft-transfer? stackaroo "Roo" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u1)(nft-transfer? stackaroo "Stacka" 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u3)
 ```
 
-#### not​
+## not​
 
 Introduced in: **Clarity 1**
 
@@ -1809,7 +1848,7 @@ Returns the inverse of the boolean input.
 (not true) ;; Returns false(not (is-eq 1 2)) ;; Returns true
 ```
 
-#### ok​
+## ok​
 
 Introduced in: **Clarity 1**
 
@@ -1829,7 +1868,7 @@ The `ok` function constructs a response type from the input value. Use `ok` for 
 (ok 1) ;; Returns (ok 1)
 ```
 
-#### or​
+## or​
 
 Introduced in: **Clarity 1**
 
@@ -1849,7 +1888,7 @@ Returns `true` if any boolean inputs are `true`. Importantly, the supplied argum
 (or true false) ;; Returns true(or (is-eq (+ 1 2) 1) (is-eq 4 4)) ;; Returns true(or (is-eq (+ 1 2) 1) (is-eq 3 4)) ;; Returns false(or (is-eq (+ 1 2) 3) (is-eq 4 4)) ;; Returns true
 ```
 
-#### pow​
+## pow​
 
 Introduced in: **Clarity 1**
 
@@ -1863,11 +1902,11 @@ Introduced in: **Clarity 1**
 
 Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error. Note: Corner cases are handled with the following rules:
 
-* if both `i1` and `i2` are `0`, return `1`
-* if `i1` is `1`, return `1`
-* if `i1` is `0`, return `0`
-* if `i2` is `1`, return `i1`
-* if `i2` is negative or greater than `u32::MAX`, throw a runtime error
+- if both `i1` and `i2` are `0`, return `1`
+- if `i1` is `1`, return `1`
+- if `i1` is `0`, return `0`
+- if `i2` is `1`, return `i1`
+- if `i2` is negative or greater than `u32::MAX`, throw a runtime error
 
 **example:**
 
@@ -1875,7 +1914,7 @@ Returns the result of raising `i1` to the power of `i2`. In the event of an _ove
 (pow 2 3) ;; Returns 8(pow 2 2) ;; Returns 4(pow 7 1) ;; Returns 7
 ```
 
-#### principal-construct?​
+## principal-construct?​
 
 Introduced in: **Clarity 2**
 
@@ -1907,7 +1946,7 @@ Note: This function is only available starting with Stacks 2.1.
 (principal-construct? 0x1a 0xfa6bf38ed557fe417333710d6033e9419391a320) ;; Returns (ok ST3X6QWWETNBZWGBK6DRGTR1KX50S74D3425Q1TPK)(principal-construct? 0x1a 0xfa6bf38ed557fe417333710d6033e9419391a320 "foo") ;; Returns (ok ST3X6QWWETNBZWGBK6DRGTR1KX50S74D3425Q1TPK.foo)(principal-construct? 0x16 0xfa6bf38ed557fe417333710d6033e9419391a320) ;; Returns (err (tuple (error_code u0) (value (some SP3X6QWWETNBZWGBK6DRGTR1KX50S74D3433WDGJY))))(principal-construct? 0x16 0xfa6bf38ed557fe417333710d6033e9419391a320 "foo") ;; Returns (err (tuple (error_code u0) (value (some SP3X6QWWETNBZWGBK6DRGTR1KX50S74D3433WDGJY.foo))))(principal-construct? 0x   0xfa6bf38ed557fe417333710d6033e9419391a320) ;; Returns (err (tuple (error_code u1) (value none)))(principal-construct? 0x16 0xfa6bf38ed557fe417333710d6033e9419391a3)   ;; Returns (err (tuple (error_code u1) (value none)))(principal-construct? 0x20 0xfa6bf38ed557fe417333710d6033e9419391a320) ;; Returns (err (tuple (error_code u1) (value none)))(principal-construct? 0x1a 0xfa6bf38ed557fe417333710d6033e9419391a320 "") ;; Returns (err (tuple (error_code u2) (value none)))(principal-construct? 0x1a 0xfa6bf38ed557fe417333710d6033e9419391a320 "foo[") ;; Returns (err (tuple (error_code u2) (value none)))
 ```
 
-#### principal-destruct?​
+## principal-destruct?​
 
 Introduced in: **Clarity 2**
 
@@ -1939,7 +1978,7 @@ Note: This function is only available starting with Stacks 2.1.
 (principal-destruct? 'STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6) ;; Returns (ok (tuple (hash-bytes 0x164247d6f2b425ac5771423ae6c80c754f7172b0) (name none) (version 0x1a)))(principal-destruct? 'STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6.foo) ;; Returns (ok (tuple (hash-bytes 0x164247d6f2b425ac5771423ae6c80c754f7172b0) (name (some "foo")) (version 0x1a)))(principal-destruct? 'SP3X6QWWETNBZWGBK6DRGTR1KX50S74D3433WDGJY) ;; Returns (err (tuple (hash-bytes 0xfa6bf38ed557fe417333710d6033e9419391a320) (name none) (version 0x16)))(principal-destruct? 'SP3X6QWWETNBZWGBK6DRGTR1KX50S74D3433WDGJY.foo) ;; Returns (err (tuple (hash-bytes 0xfa6bf38ed557fe417333710d6033e9419391a320) (name (some "foo")) (version 0x16)))
 ```
 
-#### principal-of?​
+## principal-of?​
 
 Introduced in: **Clarity 1**
 
@@ -1961,7 +2000,7 @@ Note: Before Stacks 2.1, this function has a bug, in that the principal returned
 (principal-of? 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns (ok ST1AW6EKPGT61SQ9FNVDS17RKNWT8ZP582VF9HSCP)
 ```
 
-#### print​
+## print​
 
 Introduced in: **Clarity 1**
 
@@ -1981,7 +2020,7 @@ The `print` function evaluates and returns its input expression. On Stacks Core 
 (print (+ 1 2 3)) ;; Returns 6
 ```
 
-#### replace-at?​
+## replace-at?​
 
 Introduced in: **Clarity 2**
 
@@ -2003,7 +2042,7 @@ If the provided index is out of bounds, this functions returns `none`.
 (replace-at? u"ab" u1 u"c") ;; Returns (some u"ac")(replace-at? 0x00112233 u2 0x44) ;; Returns (some 0x00114433)(replace-at? "abcd" u3 "e") ;; Returns (some "abce")(replace-at? (list 1) u0 10) ;; Returns (some (10))(replace-at? (list (list 1) (list 2)) u0 (list 33)) ;; Returns (some ((33) (2)))(replace-at? (list 1 2) u3 4) ;; Returns none
 ```
 
-#### secp256k1-recover?​
+## secp256k1-recover?​
 
 Introduced in: **Clarity 1**
 
@@ -2023,7 +2062,7 @@ The `secp256k1-recover?` function recovers the public key used to sign the messa
 (secp256k1-recover? 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04 0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a1301) ;; Returns (ok 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110)
 ```
 
-#### secp256k1-verify​
+## secp256k1-verify​
 
 Introduced in: **Clarity 1**
 
@@ -2043,7 +2082,7 @@ The `secp256k1-verify` function verifies that the provided signature of the mess
 (secp256k1-verify 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04 0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a1301 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns true(secp256k1-verify 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04 0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a13 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns true(secp256k1-verify 0x0000000000000000000000000000000000000000000000000000000000000000 0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns false
 ```
 
-#### sha256​
+## sha256​
 
 Introduced in: **Clarity 1**
 
@@ -2063,7 +2102,7 @@ The `sha256` function computes `SHA256(x)` of the inputted value. If an integer 
 (sha256 0) ;; Returns 0x374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb
 ```
 
-#### sha512​
+## sha512​
 
 Introduced in: **Clarity 1**
 
@@ -2083,7 +2122,7 @@ The `sha512` function computes `SHA512(x)` of the inputted value. If an integer 
 (sha512 1) ;; Returns 0x6fcee9a7b7a7b821d241c03c82377928bc6882e7a08c78a4221199bfa220cdc55212273018ee613317c8293bb8d1ce08d1e017508e94e06ab85a734c99c7cc34
 ```
 
-#### sha512/256​
+## sha512/256​
 
 Introduced in: **Clarity 1**
 
@@ -2103,7 +2142,7 @@ The `sha512/256` function computes `SHA512/256(x)` (the SHA512 algorithm with th
 (sha512/256 1) ;; Returns 0x515a7e92e7c60522db968d81ff70b80818fc17aeabbec36baf0dda2812e94a86
 ```
 
-#### slice?​
+## slice?​
 
 Introduced in: **Clarity 2**
 
@@ -2123,7 +2162,7 @@ The `slice?` function attempts to return a sub-sequence of that starts at `left-
 (slice? "blockstack" u5 u10) ;; Returns (some "stack")(slice? (list 1 2 3 4 5) u5 u9) ;; Returns none(slice? (list 1 2 3 4 5) u3 u4) ;; Returns (some (4))(slice? "abcd" u1 u3) ;; Returns (some "bc")(slice? "abcd" u2 u2) ;; Returns (some "")(slice? "abcd" u3 u1) ;; Returns none
 ```
 
-#### some​
+## some​
 
 Introduced in: **Clarity 1**
 
@@ -2143,7 +2182,7 @@ The `some` function constructs a `optional` type from the input value.
 (some 1) ;; Returns (some 1)(is-none (some 2)) ;; Returns false
 ```
 
-#### sqrti​
+## sqrti​
 
 Introduced in: **Clarity 1**
 
@@ -2164,7 +2203,7 @@ Fails on a negative numbers.
 (sqrti u11) ;; Returns u3(sqrti 1000000) ;; Returns 1000(sqrti u1) ;; Returns u1(sqrti 0) ;; Returns 0
 ```
 
-#### string-to-int?​
+## string-to-int?​
 
 Introduced in: **Clarity 2**
 
@@ -2186,7 +2225,7 @@ Note: This function is only available starting with Stacks 2.1.
 (string-to-int? "1") ;; Returns (some 1)(string-to-int? u"-1") ;; Returns (some -1)(string-to-int? "a") ;; Returns none
 ```
 
-#### string-to-uint?​
+## string-to-uint?​
 
 Introduced in: **Clarity 2**
 
@@ -2208,7 +2247,7 @@ Note: This function is only available starting with Stacks 2.1.
 (string-to-uint? "1") ;; Returns (some u1)(string-to-uint? u"1") ;; Returns (some u1)(string-to-uint? "a") ;; Returns none
 ```
 
-#### stx-account​
+## stx-account​
 
 Introduced in: **Clarity 2**
 
@@ -2230,7 +2269,7 @@ This function returns a tuple with the canonical account representation for an S
 (stx-account 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns (tuple (locked u0) (unlock-height u0) (unlocked u0))(stx-account (as-contract tx-sender)) ;; Returns (tuple (locked u0) (unlock-height u0) (unlocked u1000))
 ```
 
-#### stx-burn?​
+## stx-burn?​
 
 Introduced in: **Clarity 1**
 
@@ -2254,7 +2293,7 @@ This function returns (ok true) if the transfer is successful. In the event of a
 (as-contract  (stx-burn? u60 tx-sender)) ;; Returns (ok true)(as-contract  (stx-burn? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (err u4)
 ```
 
-#### stx-get-balance​
+## stx-get-balance​
 
 Introduced in: **Clarity 1**
 
@@ -2276,7 +2315,7 @@ This function returns the STX balance, in microstacks (1 STX = 1,000,000 microst
 (stx-get-balance 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns u0(stx-get-balance (as-contract tx-sender)) ;; Returns u1000
 ```
 
-#### stx-transfer-memo?​
+## stx-transfer-memo?​
 
 Introduced in: **Clarity 2**
 
@@ -2298,7 +2337,7 @@ This function returns (ok true) if the transfer is successful, or, on an error, 
 (as-contract  (stx-transfer-memo? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 0x010203)) ;; Returns (ok true)
 ```
 
-#### stx-transfer?​
+## stx-transfer?​
 
 Introduced in: **Clarity 1**
 
@@ -2322,7 +2361,7 @@ This function returns (ok true) if the transfer is successful. In the event of a
 (as-contract  (stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (ok true)(as-contract  (stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (ok true)(as-contract  (stx-transfer? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender)) ;; Returns (err u4)
 ```
 
-#### to-consensus-buff?​
+## to-consensus-buff?​
 
 Introduced in: **Clarity 2**
 
@@ -2344,7 +2383,7 @@ If the value cannot fit as serialized into the maximum buffer size, this returns
 (to-consensus-buff? 1) ;; Returns (some 0x0000000000000000000000000000000001)(to-consensus-buff? u1) ;; Returns (some 0x0100000000000000000000000000000001)(to-consensus-buff? true) ;; Returns (some 0x03)(to-consensus-buff? false) ;; Returns (some 0x04)(to-consensus-buff? none) ;; Returns (some 0x09)(to-consensus-buff? 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns (some 0x051fa46ff88886c2ef9762d970b4d2c63678835bd39d)(to-consensus-buff? { abc: 3, def: 4 }) ;; Returns (some 0x0c00000002036162630000000000000000000000000000000003036465660000000000000000000000000000000004)
 ```
 
-#### to-int​
+## to-int​
 
 Introduced in: **Clarity 1**
 
@@ -2364,7 +2403,7 @@ Tries to convert the `uint` argument to an `int`. Will cause a runtime error and
 (to-int u238) ;; Returns 238
 ```
 
-#### to-uint​
+## to-uint​
 
 Introduced in: **Clarity 1**
 
@@ -2384,7 +2423,7 @@ Tries to convert the `int` argument to a `uint`. Will cause a runtime error and 
 (to-uint 238) ;; Returns u238
 ```
 
-#### try
+## try
 
 Introduced in: **Clarity 1**
 
@@ -2404,7 +2443,7 @@ The `try!` function attempts to 'unpack' the first argument: if the argument is 
 (define-map names-map { name: (string-ascii 12) } { id: int })(map-set names-map { name: "blockstack" } { id: 1337 })(try! (map-get? names-map { name: "blockstack" })) ;; Returns (tuple (id 1337))(define-private (checked-even (x int))  (if (is-eq (mod x 2) 0)      (ok x)      (err false)))(define-private (double-if-even (x int))  (ok (* 2 (try! (checked-even x)))))(double-if-even 10) ;; Returns (ok 20)(double-if-even 3) ;; Returns (err false)
 ```
 
-#### tuple​
+## tuple​
 
 Introduced in: **Clarity 1**
 
@@ -2426,7 +2465,7 @@ There is a shorthand using curly brackets of the form {key0: expr0, key1: expr, 
 (tuple (name "blockstack") (id 1337)) ;; using tuple    {name: "blockstack", id: 1337} ;; using curly brackets
 ```
 
-#### unwrap
+## unwrap
 
 Introduced in: **Clarity 1**
 
@@ -2446,7 +2485,7 @@ The `unwrap!` function attempts to 'unpack' the first argument: if the argument 
 (define-map names-map { name: (string-ascii 12) } { id: int })(map-set names-map { name: "blockstack" } { id: 1337 })(define-private (get-name-or-err (name (string-ascii 12)))  (let ((raw-name (unwrap! (map-get? names-map { name: name }) (err 1))))       (ok raw-name)))(get-name-or-err "blockstack") ;; Returns (ok (tuple (id 1337)))(get-name-or-err "non-existant") ;; Returns (err 1)
 ```
 
-#### unwrap-err
+## unwrap-err
 
 Introduced in: **Clarity 1**
 
@@ -2466,7 +2505,7 @@ The `unwrap-err!` function attempts to 'unpack' the first argument: if the argum
 (unwrap-err! (err 1) false) ;; Returns 1
 ```
 
-#### unwrap-err-panic​
+## unwrap-err-panic​
 
 Introduced in: **Clarity 1**
 
@@ -2486,7 +2525,7 @@ The `unwrap-err` function attempts to 'unpack' the first argument: if the argume
 (unwrap-err-panic (err 1)) ;; Returns 1(unwrap-err-panic (ok 1)) ;; Throws a runtime exception
 ```
 
-#### unwrap-panic​
+## unwrap-panic​
 
 Introduced in: **Clarity 1**
 
@@ -2506,7 +2545,7 @@ The `unwrap` function attempts to 'unpack' its argument: if the argument is an o
 (define-map names-map { name: (string-ascii 12) } { id: int })(map-set names-map { name: "blockstack" } { id: 1337 })(unwrap-panic (map-get? names-map { name: "blockstack" })) ;; Returns (tuple (id 1337))(unwrap-panic (map-get? names-map { name: "non-existant" })) ;; Throws a runtime exception
 ```
 
-#### use-trait​
+## use-trait​
 
 Introduced in: **Clarity 1**
 
@@ -2530,7 +2569,7 @@ Like other kinds of definition statements, `use-trait` may only be used at the t
 (use-trait token-a-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)(define-public (forward-get-balance (user principal) (contract <token-a-trait>))  (begin    (ok 1)))
 ```
 
-#### var-get​
+## var-get​
 
 Introduced in: **Clarity 1**
 
@@ -2550,7 +2589,7 @@ The `var-get` function looks up and returns an entry from a contract's data map.
 (define-data-var cursor int 6)(var-get cursor) ;; Returns 6
 ```
 
-#### var-set​
+## var-set​
 
 Introduced in: **Clarity 1**
 
@@ -2570,7 +2609,7 @@ The `var-set` function sets the value associated with the input variable to the 
 (define-data-var cursor int 6)(var-get cursor) ;; Returns 6(var-set cursor (+ (var-get cursor) 1)) ;; Returns true(var-get cursor) ;; Returns 7
 ```
 
-#### xor​
+## xor​
 
 Introduced in: **Clarity 1**
 
