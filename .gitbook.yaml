@@ -2,10 +2,10 @@ root: ./
 
 redirects:
   docs/clarity: clarity/overview.md
-  docs/clarity/crash-course: clarity/crash-course.md
-  docs/clarity/language-functions: clarity/language-functions.md
-  docs/clarity/language-keywords: clarity/language-keywords.md
-  docs/clarity/language-types: clarity/language-types.md
+  docs/clarity/crash-course: clarity/clarity-crash-course.md
+  docs/clarity/language-functions: clarity/functions.md
+  docs/clarity/language-keywords: clarity/keywords.md
+  docs/clarity/language-types: clarity/types.md
   docs/clarity/noteworthy-contracts/bns-contract: clarity/example-contracts/bns.md
   docs/clarity/noteworthy-contracts/stacking-contract: clarity/example-contracts/stacking.md
   docs/clarity/noteworthy-contracts/xbtc: clarity/example-contracts.md
