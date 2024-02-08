@@ -90,4 +90,4 @@ redirects:
   write-smart-contracts/language-functions: clarity/functions.md
   write-smart-contracts/overview: clarity/overview.md
   write-smart-contracts/principals: clarity/types.md
-  write-smart-contracts/tokens: clarity/overview.md
+  write-smart-contracts/tokens: https://book.clarity-lang.org/ch10-00-stacks-improvement-proposals
