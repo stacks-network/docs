@@ -1,7 +1,5 @@
 # Gaia
 
-### Introduction
-
 Apps built with the Stacks blockchain can store off-chain data using a storage system called Gaia.
 
 Gaia is a unique approach to decentralized storage that focuses primarily on user-ownership of data, rather than immutable on-chain storage. The emphasis here is on user control.
@@ -14,7 +12,9 @@ Whereas public transactional metadata is best stored on the Stacks blockchain, u
 
 Storing data off of the blockchain ensures that Stacks applications can provide users with high performance and high availability for data reads and writes without introducing central trust parties.
 
-:::tip Latest whitepaper of GAIA (May 2022) is available [here](https://dev1-gaia-hub.s3.amazonaws.com/GAIA\_Whitepaper.pdf) :::
+{% hint style="info" %}
+Latest whitepaper of GAIA (May 2022) is available [here](https://dev1-gaia-hub.s3.amazonaws.com/GAIA\_Whitepaper.pdf)
+{% endhint %}
 
 ### Understand Gaia in the Stacks architecture
 
@@ -49,7 +49,9 @@ The control of user data lies in the way that user data is accessed. When an app
 
 Because `alice.id` has access to her [zonefile](https://docs.stacks.co/references/bns-contract#name-update), she can change where her profile is stored. For example, she may do this if the current profile's service provider or storage is compromised. To change where her profile is stored, she changes her Gaia hub URL to another Gaia hub URL. If a user has sufficient compute and storage resources, a user may run their own Gaia Storage System and bypass a commercial Gaia hub provider all together.
 
-:::caution Users with existing identities cannot yet migrate their data from one hub to another. :::
+{% hint style="warning" %}
+Users with existing identities cannot yet migrate their data from one hub to another.
+{% endhint %}
 
 Applications writing directly on behalf of `alice.id` do not need to perform a lookup. Instead, the [Stacks authentication flow](https://stacks.js.org) provides Alice's chosen gaia hub URL to the application. This authentication flow _is also_ within Alice's control because Alice's wallet _must_ generate the authentication response.
 
