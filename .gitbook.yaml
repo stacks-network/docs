@@ -76,3 +76,4 @@ redirects:
   docs/tutorials: tutorials/hello-stacks-quickstart-tutorial.md
   docs/tutorials/community-tutorials: tutorials/community-tutorials.md
   docs/tutorials/hello-stacks: tutorials/hello-stacks-quickstart-tutorial.md
+  write-smart-contracts/overview: clarity/overview.md
