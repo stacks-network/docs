@@ -36,6 +36,10 @@ This symbiotic relationship between Stackers and miners is what creates the capa
 
 This elegant design creates a cooperative relationship between miners and stackers while achieving the best of both worlds with block production and transaction speed and security.
 
+Here is a diagram outlining miner and signer behavior.
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
 ### Bitcoin Finality
 
 Speaking of security, the concept of 100% Bitcoin finality is crucial to the design of Stacks. This is what turns Stacks into a true Bitcoin L2 and allows it to leverage all of the security inherent in Bitcoin.
