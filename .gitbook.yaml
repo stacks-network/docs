@@ -86,7 +86,6 @@ redirects:
   understand-stacks/stacking: stacks-101/stacking.md
   understand-stacks/testnet: stacks-101/testnet.md
   understand-stacks/transactions: stacks-101/transactions.md
-  write-smart-contracts/overview: clarity/overview.md
   write-smart-contracts/language-functions: clarity/functions.md
   write-smart-contracts/overview: clarity/overview.md
   write-smart-contracts/principals: clarity/types.md
