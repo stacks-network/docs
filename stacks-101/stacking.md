@@ -6,7 +6,7 @@ Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuabl
 
 ### Stacking vs Staking
 
-It is crucial to note that this has no impact on block production or validation. **Stacks is not a Proof-of-Stake network and **_**stacking**_** is different than **_**staking**_.
+It is crucial to note that this has no impact on block production or validation. **Stacks is not a Proof-of-Stake network and \_stacking**_\*\* is different than \*\*_**staking**\_.
 
 There are two primary differences between stacking in Stacks and staking in other PoS networks.
 
@@ -38,7 +38,7 @@ It is important to note that this control does not extend to being able to chang
 
 In order to incentivize honest behavior on the part of validators, stake can be slashed as a punishment. Since PoX stackers do not have any say in transaction validity, this punishment mechanism does not exist and is not necessary in PoX.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks network.
 
@@ -50,7 +50,7 @@ Stacking functionality is implemented as a smart contract, using Clarity. Read m
 
 The Stacking mechanism can be presented as a flow of actions:
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 1. Make API calls to get details about the upcoming reward cycle
 2. For a specific Stacks account, confirm eligibility
