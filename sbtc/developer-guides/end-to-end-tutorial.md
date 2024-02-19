@@ -1,7 +1,9 @@
 # End to End Tutorial
 
 {% hint style="warning" %}
-sBTC is under heavy development, and the developer release that this tutorial corresponds to is not being maintained. Development efforts are currently focused on Nakamoto, so everything in this tutorial is subject to change and may not work. It is highly recommended that you wait to build any sBTC functionality until development continues.
+sBTC is under heavy development, and the developer release that this tutorial corresponds to is not being maintained. Development efforts are currently focused on Nakamoto, so everything in this tutorial is subject to change and may not work. It is highly recommended that you wait to build any sBTC functionality until development continues, at least as far as the bridging functionality is concerned.
+
+The current recommended way to begin working on prototype applications that use sBTC is to take a look at the [current sBTC contract](https://github.com/stacks-network/sbtc/tree/main/romeo/asset-contract/contracts) and duplicate it in the app you are working on and work with that. Although the bridging functionality to actually mint sBTC will change, sBTC will continue to operate as a SIP-010 token, meaning you can learn, experiment, and build with it as with any other SIP-010 token.
 {% endhint %}
 
 ### Build a Basic DeFi Application using Next, Stacks.js, Clarity, and the sBTC Developer Release
