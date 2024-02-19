@@ -1,5 +1,9 @@
 # End to End Tutorial
 
+{% hint style="warning" %}
+sBTC is under heavy development, and the developer release that this tutorial corresponds to is not being maintained. Development efforts are currently focused on Nakamoto, so everything in this tutorial is subject to change and may not work. It is highly recommended that you wait to build any sBTC functionality until development continues.
+{% endhint %}
+
 ### Build a Basic DeFi Application using Next, Stacks.js, Clarity, and the sBTC Developer Release
 
 If you are looking to start building full-stack applications with the sBTC Developer Release (sBTC DR), this is the place to start. We'll walk through the entire process of building a full-stack application utilizing sBTC from start to finish.
