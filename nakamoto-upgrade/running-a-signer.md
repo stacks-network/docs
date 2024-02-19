@@ -137,6 +137,12 @@ CMD ["stacks-signer", "run", "--config", "/config/signer.toml"]
 
 ### System Requirements to Run a Signer
 
-[https://github.com/stacksfoundation/miner-docs/blob/main/stacks-blockchain.md ](https://github.com/stacksfoundation/miner-docs/blob/main/stacks-blockchain.md)[https://github.com/stacksfoundation/miner-docs/blob/main/scripts/install\_stacks.sh](https://github.com/stacksfoundation/miner-docs/blob/main/scripts/install\_stacks.sh)
+* 4 vcpu
+* 8GB memory
+* 150 GB storage (250 GB if running a Stacks node)
 
-Minimum Requirements: run a full node, run the signer binary. 1 cpu, 4gb of ram, 150GB of storage as a minimum.
+&#x20;run a full node, run the signer binary. 1 cpu, 4gb of ram, 150GB of storage as a minimum.
+
+If you are also running a Stacks node, the following guides will provide information on how to do that:
+
+[https://github.com/stacksfoundation/miner-docs/blob/main/stacks-blockchain.md ](https://github.com/stacksfoundation/miner-docs/blob/main/stacks-blockchain.md)[https://github.com/stacksfoundation/miner-docs/blob/main/scripts/install\_stacks.sh](https://github.com/stacksfoundation/miner-docs/blob/main/scripts/install\_stacks.sh)
