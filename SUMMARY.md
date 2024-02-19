@@ -13,6 +13,7 @@
   * [Transactions](nakamoto-upgrade/nakamoto-in-depth/transactions.md)
   * [Changes to PoX and Clarity](nakamoto-upgrade/nakamoto-in-depth/changes-to-pox-and-clarity.md)
   * [Financial Incentives and Security Budget](nakamoto-upgrade/nakamoto-in-depth/financial-incentives-and-security-budget.md)
+  * [What About Microblocks?](nakamoto-upgrade/nakamoto-in-depth/what-about-microblocks.md)
 * [Testnets](nakamoto-upgrade/testnets/README.md)
   * [Neon](nakamoto-upgrade/testnets/neon.md)
   * [Argon](nakamoto-upgrade/testnets/argon.md)
@@ -109,3 +110,7 @@
   * [Amazon EC2](stacks-in-depth/gaia/amazon-ec2.md)
   * [Linux](stacks-in-depth/gaia/linux.md)
   * [Mac OS](stacks-in-depth/gaia/mac-os.md)
+
+***
+
+* [Contribute](contribute.md)

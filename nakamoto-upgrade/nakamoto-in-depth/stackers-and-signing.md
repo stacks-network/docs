@@ -20,3 +20,7 @@ The weighted threshold signature is a Schnorr signature generated through a vari
 When a miner produces a block, Stackers execute a distributed signing protocol to collectively generate a single Schnorr signature for the block. Crucially, the signing protocol will succeed only if at least X% of the reward slots are accounted for in the aggregate signature. Nakamoto is currently set to use a 70% signing threshold -- at least 70% of the reward slots (by proxy, 70% of the stacked STX) must sign a block in order to append it to the Stacks blockchain.
 
 Nakamoto uses the [WSTS protocol with the FIRE extension](https://trust-machines.github.io/wsts/wsts.pdf), which admits a distributed key generation and signature generation algorithm pair whose CPU and network bandwidth complexity grows with the number of distinct Stackers. The FIRE extension enables WSTS to tolerate byzantine Stackers.
+
+Here is a diagram outlining the relationship between signing and stacking.
+
+<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
