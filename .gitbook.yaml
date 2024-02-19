@@ -63,7 +63,7 @@ redirects:
   docs/stacks-academy/authentication: stacks-101/authentication.md
   docs/stacks-academy/bns: stacks-101/bitcoin-name-system.md
   docs/stacks-academy/btc-connection: stacks-101/bitcoin-connection.md
-  docs/stacks-academy/microblocks: stacks-101/microblocks.md
+  docs/stacks-academy/microblocks: nakamoto-upgrade/nakamoto-in-depth/what-about-microblocks.md
   docs/stacks-academy/mining: stacks-101/mining.md
   docs/stacks-academy/network: stacks-101/network.md
   docs/stacks-academy/post-conditions: stacks-101/post-conditions.md
@@ -83,7 +83,7 @@ redirects:
   docs/write-smart-contracts: clarity/overview.md
   references/bns-contract: clarity/example-contracts/bns.md
   references/language-functions: clarity/functions.md
-  understand-stacks/microblocks: stacks-101/microblocks.md
+  understand-stacks/microblocks: nakamoto-upgrade/nakamoto-in-depth/what-about-microblocks.md
   understand-stacks/mining: stacks-101/mining.md
   understand-stacks/network: stacks-101/network.md
   understand-stacks/proof-of-transfer: stacks-101/proof-of-transfer.md
