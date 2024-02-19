@@ -109,3 +109,7 @@
   * [Amazon EC2](stacks-in-depth/gaia/amazon-ec2.md)
   * [Linux](stacks-in-depth/gaia/linux.md)
   * [Mac OS](stacks-in-depth/gaia/mac-os.md)
+
+***
+
+* [Contribute](contribute.md)
