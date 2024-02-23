@@ -2,7 +2,7 @@
 
 * [Start Here](README.md)
 
-## ⬆ Nakamoto Upgrade
+## ⬆️ Nakamoto Upgrade
 
 * [What is the Nakamoto Release?](nakamoto-upgrade/what-is-the-nakamoto-release.md)
 * [Nakamoto in 10 Minutes](nakamoto-upgrade/nakamoto-in-10-minutes.md)
@@ -39,7 +39,7 @@
 * [Testnet](stacks-101/testnet.md)
 * [Technical Specifications](stacks-101/technical-specifications.md)
 
-## 🛠 Tutorials
+## 🛠️ Tutorials
 
 * [Hello Stacks (Quickstart Tutorial)](tutorials/hello-stacks-quickstart-tutorial.md)
 * [Bitcoin Integration](tutorials/bitcoin-integration/README.md)
@@ -68,7 +68,7 @@
   * [Stacking](clarity/example-contracts/stacking.md)
   * [BNS](clarity/example-contracts/bns.md)
 
-## ⛓ sBTC
+## ⛓️ sBTC
 
 * [Introduction](sbtc/introduction.md)
 * [sBTC Design](sbtc/sbtc-design/README.md)
@@ -110,6 +110,17 @@
   * [Amazon EC2](stacks-in-depth/gaia/amazon-ec2.md)
   * [Linux](stacks-in-depth/gaia/linux.md)
   * [Mac OS](stacks-in-depth/gaia/mac-os.md)
+
+## 🧡 Press & Top Links
+
+* [🔶 2024](press-and-top-links/2024/README.md)
+  * [🔸 January 2024](press-and-top-links/2024/january-2024.md)
+  * [🔸 February 2024](press-and-top-links/2024/february-2024.md)
+
+## 🧡 Bitcoin Theses and Reports
+
+* [🟠 Bitcoin Theses](bitcoin-theses-and-reports/bitcoin-theses.md)
+* [📙 Bitcoin Reports](bitcoin-theses-and-reports/bitcoin-reports.md)
 
 ***
 
