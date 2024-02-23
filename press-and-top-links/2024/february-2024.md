@@ -4,13 +4,21 @@ description: Compilation in progress
 
 # 🔸 February 2024
 
-For weekly stories delivered to your inbox, subscribe to [Stacks Snacks](https://stackssnacks.com/). For quarterly ecosystem recaps, subscribe to the [Stacks Foundation newsletter](https://newsletters.stacks.org).
+_For weekly stories delivered to your inbox, subscribe to_ [_Stacks Snacks_](https://stackssnacks.com/)_. For quarterly ecosystem recaps, subscribe to the_ [_Stacks Foundation newsletter_](https://newsletters.stacks.org)_._
 
 <details>
 
 <summary>📊 <a href="https://messari.io/report/state-of-stacks-q4-2023">Messari's Q4 2023 'State of Stacks' Report</a></summary>
 
+[<mark style="background-color:orange;">https://messari.io/report/state-of-stacks-q4-2023</mark>](https://messari.io/report/state-of-stacks-q4-2023)
 
+#### Key Insights <a href="#key-insights" id="key-insights"></a>
+
+* **Stacks revenue (USD) increased 3,386% QoQ and 3,028% YoY to $637,000.** Much of this revenue was driven by inscription protocol STX20.
+* **STX’s market cap increased 203% QoQ and 598% YoY to $2.0 billion.** STX’s growth outpaced BTC and the overall crypto market.
+* **DeFi TVL (USD) increased 363% QoQ and 763% YoY to $61 million.** ALEX firmly remained the leader in TVL, but Arkadiko and StackingDAO considerably increased their own TVL dominance in Q3 and Q4.
+* **Average daily miner revenue increased 1,015% YoY to $78,000.** STX’s price increase and Stacks’ increased revenue made it significantly more profitable for Bitcoin miners to participate in Stacks’ consensus.
+* **The Nakamoto upgrade is expected in April 2024.** This update will enable faster blocks, give transactions 100% Bitcoin finality, reduce MEV, and eliminate forking on the Stacks layer to set the stage for the upcoming sBTC release.
 
 </details>
 
