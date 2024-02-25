@@ -2,7 +2,7 @@
 
 * [Start Here](README.md)
 
-## ⬆️ Nakamoto Upgrade
+## 🟧 Nakamoto Upgrade
 
 * [What is the Nakamoto Release?](nakamoto-upgrade/what-is-the-nakamoto-release.md)
 * [Nakamoto in 10 Minutes](nakamoto-upgrade/nakamoto-in-10-minutes.md)
