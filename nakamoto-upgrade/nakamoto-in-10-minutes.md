@@ -6,7 +6,11 @@ On the previous page, we outlined three primary changes to the way Stacks works 
 * **Bitcoin finality:** Once a transaction is confirmed, reversing it is at least as hard as reversing a Bitcoin transaction. The Stacks blockchain no longer forks on its own.
 * **Bitcoin Miner MEV Resistance:** This proposal alters the sortition algorithm to ensure that Bitcoin miners do not have an advantage as Stacks miners. They must spend competitive amounts of Bitcoin currency to have a chance of earning STX.
 
-Let's briefly go over how Nakamoto accomplishes each of these.
+Here is a video that covers exactly what happens to a Stacks transaction under Nakamoto rules. In it we cover exactly how Nakamoto achieves Bitcoin finality.
+
+{% embed url="https://www.youtube.com/watch?v=DFBZTSsZUOs" %}
+
+In the rest of this doc, we'll cover some of the key components of Nakamoto in a bit more detail.
 
 ### Fast Blocks
 
