@@ -1,6 +1,6 @@
 # Argon
 
-After Neon, Argon is the next public testnet slated to be released at the beginning of March. While Neon was great for demonstrating the capability of fast blocks, Argon will be much more feature complete and is meant to be a testnet for the full-on Nakamoto hard fork coming in April.
+After Neon, Argon is the next public testnet slated to be released mid-March. While Neon was great for demonstrating the capability of fast blocks, Argon will be much more feature complete and is meant to be a testnet for the full-on Nakamoto hard fork coming in April.
 
 Here are some things you can expect with Argon:
 
