@@ -35,7 +35,7 @@ As [shared in January](https://stacks.org/nakamoto-launch-window), mainnet rollo
 
 Once instantiated (Step 1), a period of at least 2 Stacking cycles will be afforded to Signers and other integration partners to register with pox-4. During this time they will ensure their Signers are ready for the progression to Activation (Step 2) where the network will depend on Signers actively validating blocks.
 
-This means that assuming there are no major bugs or issues, full Nakamoto features will activate in mid to late May with some of that depending on how quickly Signers are onboarded. The BD Working Group has noted that they expect 20+ Signers to be ready for mainnet launch, so we have every reason to believe this rollout to mainnet will be smooth on this front and we know the lineup features some of the [industry’s infrastructure leaders](https://figment.io/insights/figment-to-enable-bitcoin-l2-rewards-with-upcoming-support-of-the-stacks-layer/).
+This means that assuming there are no major bugs or issues, full Nakamoto features will activate in mid to late May with some of that depending on how quickly Signers are onboarded.&#x20;
 
 ### Visualizing the rollout
 
