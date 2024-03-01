@@ -8,7 +8,7 @@
 * This testnet will always run against Bitcoin Testnet
 * This testnet will be the ‘main’ Stacks Testnet going forward and maintained into perpetuity alongside mainnet as a service for any developer or partner starting to work with Stacks.
 
-**Status:** This testnet is due on March 25th
+**Status:** This testnet is expected on March 25th
 
 **Here are some things you can expect with the Nakamoto Testnet:**
 
