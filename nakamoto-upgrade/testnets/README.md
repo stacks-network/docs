@@ -1,7 +1,13 @@
 # Testnets
 
-There are two testnet releases of Nakamoto for developers to experiment with: Neon and Argon.
+As the work on Nakamoto has progressed, there have been different versions of testnet, often referred to by their noble gas names like Neon, Argon, etc. However, those distinctions have been more geared toward sprints and projects the core devs have broken down work into. You can still call them that if you like, but going forward, it is simpler to look at the two testnets based on what they offer.
 
-Neon is a controlled testnet (only a single block producer) designed to get the minimum functionality of Nakamoto running for people to experiment with.
+The two testnets are:
 
-Argon is a much more fully-featured testnet release that will allow developers and users to test out Nakamoto functionality much more like what the final release will be.
+{% content-ref url="neon.md" %}
+[neon.md](neon.md)
+{% endcontent-ref %}
+
+{% content-ref url="argon.md" %}
+[argon.md](argon.md)
+{% endcontent-ref %}

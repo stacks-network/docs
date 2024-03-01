@@ -1,8 +1,16 @@
-# Argon
+# Nakamoto Testnet
 
-After Neon, Argon is the next public testnet slated to be released mid-March. While Neon was great for demonstrating the capability of fast blocks, Argon will be much more feature complete and is meant to be a testnet for the full-on Nakamoto hard fork coming in April.
+**Primary Usage:** App Developers, Signers
 
-Here are some things you can expect with Argon:
+**About:**
+
+* This testnet features the standard one-week accelerated Stacking cycles that Stacks developers are familiar with on the current Stacks Testnet
+* This testnet will always run against Bitcoin Testnet
+* This testnet will be the ‘main’ Stacks Testnet going forward and maintained into perpetuity alongside mainnet as a service for any developer or partner starting to work with Stacks.
+
+**Status:** This testnet is due on March 25th
+
+**Here are some things you can expect with the Nakamoto Testnet:**
 
 * Nakamoto performance gains with existing Clarity WASM
 * All Nakamoto rules in place
@@ -12,4 +20,4 @@ Here are some things you can expect with Argon:
 * Controlled testnet upgraded with performance gains
 * Testing and audits on code complete components
 
-Check back here after Argon is released for instructions for using the testnet and getting your applications migrated.
+Check back here after the Nakamoto Testnet is released for instructions for using the testnet and getting your applications migrated.
