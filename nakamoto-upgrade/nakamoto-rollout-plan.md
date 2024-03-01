@@ -8,15 +8,13 @@ This covers the testnet and mainnet rollout sequencing for the Nakamoto upgrade.
 
 ### Two-Step Release and Signer Onboarding
 
-Core Developers and Working Groups have regularly engaged with builders and key integration partners as pieces of the codebase are wrapped up and going to audit. This ongoing dialog led to the two-step release process described here, which will afford partners, many of whom are new to Stacks, ample time to register on mainnet, troubleshoot their setups if necessary, and be ready to sign blocks upon Activation. New signers need to fully test their setup on mainnet before they can become active validators.
-
-I know folks may have been expecting the full set of Nakamoto features being released all at once in the April 15-29 launch window, but a two-step release that follows the steps taken on [testnet](testnets/) has quickly become the preferred path given how much is happening as part of this upgrade.
+Core Developers and Working Groups have regularly engaged with builders and key integration partners as pieces of the codebase are wrapped up and going to audit. This ongoing dialog led to the two-step release process described below, which will afford partners, many of whom are new to Stacks, ample time to register on mainnet, troubleshoot their setups if necessary, and be ready to sign blocks upon Activation. New signers need to fully test their setup on mainnet before they can become active validators.
 
 ### Step 1, Step 2: Instantiation & Activation
 
-The rollout will follow this two-step process, each of which is implemented via hard fork. Breaking the Nakamoto release into two forks reduces risk by allowing Core Developers an opportunity before full activation to make any final adjustments or bug fixes as they observe pox-4 in the wild and as Signers come online.
+The rollout will follow this two-step process, each of which is implemented via hard fork. Breaking the Nakamoto release into two forks reduces risk by allowing Core Developers an opportunity before full activation to make any final adjustments or bug fixes as they observe pox-4 in the wild and as Signers come online.&#x20;
 
-This strategy is the same one being used on the testnet and the rollout of the testnet is already in progress (at Step 1, Instantiation).
+This strategy is now the preferred path given how much is happening as part of this upgrade and it is the same one being used on the testnet. Further, the rollout of the testnet is already in progress (at Step 1, Instantiation).&#x20;
 
 1. **Step 1 - Instantiation:** The pox-4 contract and the majority of the Nakamoto code are shipped, but Nakamoto rules are inactive. This is so other aspects of the contract can be tested before layering on the complexity that comes with the testnet (and later mainnet) being dependent on it. Importantly, this phase also allows time for Signers to register without the network being dependent on them to sign blocks.
 2. **Step 2 - Activation:** Nakamoto rules turn active, enabling the full set of Nakamoto features including Signer-based functions, fast blocks, and Bitcoin finality. In other words, ‘the switch is flipped’!
