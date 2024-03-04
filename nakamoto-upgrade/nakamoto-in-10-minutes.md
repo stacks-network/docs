@@ -66,6 +66,22 @@ This relationship between Stackers, miners, Bitcoin blocks, and Stacks blocks is
 
 Because of this, Stacks transactions can be considered to have Bitcoin finality after the tenure they are a part of concludes, or Bitcoin block N + 1. As an example, if I initiate a Stacks transaction that gets confirmed by a Stacks miner, at the conclusion of that miner's tenure (the end of the current Bitcoin block) that transaction will be written to Bitcoin as part of the Stacks chain state and all future miners are required to build off of that chain tip, making reversing the transaction as difficult as reversing the corresponding Bitcoin transaction.
 
+#### Nakamoto Transactions and Bitcoin Reorgs
+
+If Nakamoto transactions follow Bitcoin finality, what happens if Bicoin forks?
+
+In order to answer this question, we need to distinguish between two types of Stacks transactions: Bitcoin-reliant and internal.
+
+**Bitcoin-reliant** transactions are transactions that read Bitcoin state. If Bitcoin forks, then these transactions will change. For these, you cannot do better than following Bitcoin finality. Let's say you moved BTC from L1 to L2, you have to wait for Bitcoin finality before your L2 BTC can be used (you don’t have any L2 BTC if Bitcoin forks and your L1 transaction becomes unconfirmed).
+
+**Internal** transactions don't rely on Bitcoin state, and thus won't change if Bitcoin forks. We can have faster confirmations with these because even if Bitcoin forks, signers can ensure that these are re-processed in the same order.
+
+The key takeaway is this:&#x20;
+
+Under Nakamoto Stacks transactions won’t impactfully reorganize due to a Bitcoin fork. Not only is reorging relatively infrequent, but transactions on Stacks that got reorganized due to a Bitcoin fork behave just as reorganized Bitcoin transactions do. With some future analysis, transactions purely on the L2 chain may one day be entirely unaffected.
+
+This is a nuanced and complicated concept, so if you are interested in learning more about how this works, you can take a look at the [Bitcoin Reorgs](nakamoto-in-depth/bitcoin-reorgs.md) page of the docs.
+
 ### Bitcoin MEV Mitigation
 
 Miner Extractable Value (MEV) has been a longstanding issue across many blockchains, including Stacks pre-Nakamoto.
