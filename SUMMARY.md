@@ -14,6 +14,7 @@
   * [Changes to PoX and Clarity](nakamoto-upgrade/nakamoto-in-depth/changes-to-pox-and-clarity.md)
   * [Financial Incentives and Security Budget](nakamoto-upgrade/nakamoto-in-depth/financial-incentives-and-security-budget.md)
   * [What About Microblocks?](nakamoto-upgrade/nakamoto-in-depth/what-about-microblocks.md)
+  * [Bitcoin Reorgs](nakamoto-upgrade/nakamoto-in-depth/bitcoin-reorgs.md)
 * [Nakamoto Rollout Plan](nakamoto-upgrade/nakamoto-rollout-plan.md)
 * [Testnets](nakamoto-upgrade/testnets/README.md)
   * [Pre-Launch Testnet](nakamoto-upgrade/testnets/neon.md)
