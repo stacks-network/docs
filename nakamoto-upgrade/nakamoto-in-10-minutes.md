@@ -56,9 +56,9 @@ When we talk about Stacks blocks having 100% Bitcoin finality, we mean that they
 
 That's a bold claim, so how does Stacks accomplish that?
 
-As discussed above, miners are responsible for producing Stacks blocks in their tenure, which corresponds to a single Bitcoin block. As part of their block commit transaction, which is the transaction that commits the hash of the Stacks blocks to the Bitcoin chain, miners will also be required to add an indexed block hash.
+As discussed above, miners are responsible for producing Stacks blocks in their tenure, which corresponds to a single Bitcoin block. As part of their block commit transaction, which is the transaction that previously committed the hash of the next Stacks block to the Bitcoin chain, miners will instead be required to add an indexed block hash.
 
-Stacks miners are required to commit the indexed block hash of the first block produced by the last Stacks miner in their block-commit transactions on Bitcoin. This is the SHA512/256 hash of both the consensus hash of all previously-accepted Bitcoin transactions that Stacks recognizes, as well as the hash of the block itself.
+The indexed block hash is the hash of the first block produced by the last Stacks miner in their tenure. This is the SHA512/256 hash of both the consensus hash of all previously-accepted Bitcoin transactions that Stacks recognizes, as well as the hash of the block itself.
 
 This will anchor the Stacks chain history to Bitcoin up to the start of the previous miner's tenure, as well as all causally-dependent Bitcoin state that Stacks has processed. This ensures Bitcoin finality, resolves miner connectivity issues by putting fork prevention on stackers, and allows nodes with up-to-date copies of the Stacks chain state to identify which Stacks blocks are affected by a Bitcoin reorg and recover the affected Stacks transactions.
 
