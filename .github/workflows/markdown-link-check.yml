@@ -21,5 +21,5 @@ jobs:
       uses: gaurav-nelson/github-action-markdown-link-check@v1
       with:
         use-verbose-mode: 'yes'
-        folder-path: 'docs/'
+        folder-path: './'
         config-file: '.github/workflows/.markdown-link-check_config.json'
