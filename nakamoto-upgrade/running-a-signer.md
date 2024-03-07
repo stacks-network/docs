@@ -50,7 +50,20 @@ e.g. `stacks_private_key = "7567052905c21867fff273f5c018fb254a282499008d7e818193
 
 Next, we need to add the `message_private_key`. You can choose to reuse your Stacks private key or generate a new one.
 
-The `message_private_key` needs to be base58 encoded. You can use [this tool](https://appdevtools.com/base58-encoder-decoder) to encode the private key as base58.
+The `message_private_key` needs to be base58 encoded. You can use the script below to encode the private key as base58.
+Because this is a private key *we recommend you do not* use any online tools to perform this conversion.
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install base58
+sudo bash -c 'cat <<EOF> ./encode.py
+from sys import argv
+import base58
+print(base58.b58encode(argv[1]).decode("utf-8"))
+EOF'
+python3 ./encode.py PRIVATE_KEY
+```
 
 In the base58 encoding tool, paste in your `stacks_private_key` and set "Treat input as Hex". Make sure you delete the 01 at the end or the signer will throw an error.
 
