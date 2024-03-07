@@ -50,17 +50,16 @@ e.g. `stacks_private_key = "7567052905c21867fff273f5c018fb254a282499008d7e818193
 
 Next, we need to add the `message_private_key`. You can choose to reuse your Stacks private key or generate a new one.
 
-The `message_private_key` needs to be base58 encoded. You can use the script below to encode the private key as base58.
-Because this is a private key *we recommend you do not* use any online tools to perform this conversion.
+The `message_private_key` needs to be base58 encoded. You can use the script below to encode the private key as base58. Because this is a private key _we recommend you do not_ use any online tools to perform this conversion.
 
-```
+```python
 python3 -m venv .venv
 source .venv/bin/activate
 pip3 install base58
 sudo bash -c 'cat <<EOF> ./encode.py
 from sys import argv
 import base58
-print(base58.b58encode(argv[1]).decode("utf-8"))
+print(base58.b58encode(bytes.fromhex(argv[1])).decode("utf-8"))
 EOF'
 python3 ./encode.py PRIVATE_KEY
 ```
@@ -95,8 +94,6 @@ signers = [
 	{public_key = "26jpUNnJPvzDJRJg3hfBn5s5MR4eQ4LLTokjrSDzByh4i", key_ids = [17, 18, 19, 20]}
 ]
 ```
-
-
 {% endhint %}
 
 3\. Run the signer
@@ -154,7 +151,7 @@ CMD ["stacks-signer", "run", "--config", "/config/signer.toml"]
 * 8GB memory
 * 150 GB storage (250 GB if running a Stacks node)
 
-&#x20;run a full node, run the signer binary. 1 cpu, 4gb of ram, 150GB of storage as a minimum.
+run a full node, run the signer binary. 1 cpu, 4gb of ram, 150GB of storage as a minimum.
 
 If you are also running a Stacks node, the following guides will provide information on how to do that:
 
