@@ -213,7 +213,7 @@ One of the coolest features of Clarinet is that it allows us to set up an entire
 
 This comes complete with a local block explorer and sandbox environment so we can further test our contracts.
 
-Make sure you have Docker installed and running, exit out of console with `CMD/CTRL + C` and run `clarinet integrate`.
+Make sure you have Docker installed and running, exit out of console with `CMD/CTRL + C` and run `clarinet devnet start`.
 
 It will take a few minutes to get up and running, but then we can open up our local Stacks block explorer.
 
