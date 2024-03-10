@@ -243,7 +243,7 @@ So now we need to set up our Hiro wallet extension that we set up at the beginni
 
 Go ahead and copy the mnemonic listed in the `Devnet.toml` file and use that to import your local wallet into the Hiro wallet. Then we can use that for interacting with our local Devnet chain.
 
-Once you do that, go ahead and restart `clarinet integrate`.
+Once you do that, go ahead and restart `clarinet devnet start`.
 
 Now we can go back to the sandbox and call that function. You might need to sign out of the sandbox first and reauthenticate.
 
