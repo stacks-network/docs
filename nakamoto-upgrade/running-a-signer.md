@@ -1,7 +1,7 @@
 # Running a Signer
 
 {% hint style="danger" %}
-This document intends to lay out all the steps required to run a signer on testnet after the “Argon” milestone is reached and deployed to testnet. Much of this will not work today, but is being included so that interested parties can familiarize themselves with the process as it will work after the Argon release. Argon is still in development and these instructions will change.
+This document intends to lay out all the steps required to run a signer on testnet after the Nakamoto Testnet milestone is reached and deployed to testnet on March 25th. Much of this will not work today, but is being included so that interested parties can familiarize themselves with the process as it will work after the Nakamoto Testnet release. Nakamoto is still in development and these instructions will change.
 {% endhint %}
 
 ### Step by Step Instructions
@@ -24,7 +24,7 @@ You’ll need two private keys:
 
 One way to generate a private key is using the `@stacks/cli` package. With node.js installed, run in the command line:
 
-`npx –yes @stacks/cli@latest make_keychain`
+`npx –y @stacks/cli@latest make_keychain`
 
 You’ll see output like this:
 
@@ -52,6 +52,12 @@ Next, we need to add the `message_private_key`. You can choose to reuse your Sta
 
 The `message_private_key` needs to be base58 encoded. You can use the script below to encode the private key as base58. Because this is a private key _we recommend you do not_ use any online tools to perform this conversion.
 
+{% hint style="warning" %}
+When you take the private key from the `make_keychain` output, be sure to delete the `01` at the end and use that as the input for the below script.
+
+i.e. if your private key was `51babd61341d6d70b4ca5b557467b3102ccfc93b0e6ecab5f147b52454ad133601` you should be converting `51babd61341d6d70b4ca5b557467b3102ccfc93b0e6ecab5f147b52454ad1336` to Base58.
+{% endhint %}
+
 ```python
 python3 -m venv .venv
 source .venv/bin/activate
@@ -63,8 +69,6 @@ print(base58.b58encode(bytes.fromhex(argv[1])).decode("utf-8"))
 EOF'
 python3 ./encode.py PRIVATE_KEY
 ```
-
-In the base58 encoding tool, paste in your `stacks_private_key` and set "Treat input as Hex". Make sure you delete the 01 at the end or the signer will throw an error.
 
 Take the output and add it to your signer.toml file:
 
@@ -81,7 +85,7 @@ message_private_key = "8uHp7CVqu8JWiPzW5g7FX2ZthwCKzyxVK9DfjiYjUkiy"
 ```
 
 {% hint style="info" %}
-At the moment, there are 3 other fields that need to be included, but those will be removed by the Argon release. Prior to argon, add this to the end of the config file if you want to run the signer:
+At the moment, there are 3 other fields that need to be included, but those will be removed by the Nakamoto release (March 25th). Prior to Nakamoto, add this to the end of the config file if you want to run the signer:
 
 ```toml
 stackerdb_contract_id = "ST11Z60137Y96MF89K1KKRTA3CR6B25WY1Y931668.signers-stackerdb"
@@ -108,7 +112,7 @@ Once you've run `cargo build`, go back to the folder with your `signer.toml` fil
 
 ```bash
 # replace with the location of your `stacks-core` folder:
-_STACKS_CORE_FOLDER_/target/debug/stacks-signer start --config signer.toml
+_STACKS_CORE_FOLDER_/target/debug/stacks-signer run --config signers.toml
 ```
 
 You should see output that looks like this:
