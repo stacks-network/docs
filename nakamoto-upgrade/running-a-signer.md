@@ -8,7 +8,7 @@ This document intends to lay out all the steps required to run a signer on testn
 
 #### 1. Generate TOML file
 
-Create a TOML file (`signers.toml`) with the following content:
+Create a TOML file (`signer.toml`) with the following content:
 
 ```toml
 node_host = "127.0.0.1:20443"
@@ -70,7 +70,7 @@ EOF'
 python3 ./encode.py PRIVATE_KEY
 ```
 
-Take the output and add it to your signer.toml file:
+Take the output and add it to your `signer.toml` file:
 
 `message_private_key = "8uHp7CVqu8JWiPzW5g7FX2ZthwCKzyxVK9DfjiYjUkiy"`
 
@@ -112,7 +112,7 @@ Once you've run `cargo build`, go back to the folder with your `signer.toml` fil
 
 ```bash
 # replace with the location of your `stacks-core` folder:
-_STACKS_CORE_FOLDER_/target/debug/stacks-signer run --config signers.toml
+_STACKS_CORE_FOLDER_/target/debug/stacks-signer run --config signer.toml
 ```
 
 You should see output that looks like this:
