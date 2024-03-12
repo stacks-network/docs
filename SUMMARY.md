@@ -17,8 +17,8 @@
   * [Bitcoin Reorgs](nakamoto-upgrade/nakamoto-in-depth/bitcoin-reorgs.md)
 * [Nakamoto Rollout Plan](nakamoto-upgrade/nakamoto-rollout-plan.md)
 * [Testnets](nakamoto-upgrade/testnets/README.md)
-  * [Pre-Launch Testnet](nakamoto-upgrade/testnets/neon.md)
-  * [Nakamoto Testnet](nakamoto-upgrade/testnets/argon.md)
+  * [Pre-Launch Testnet](nakamoto-upgrade/testnets/pre-launch.md)
+  * [Nakamoto Testnet](nakamoto-upgrade/testnets/nakamoto.md)
 * [Running a Signer](nakamoto-upgrade/running-a-signer.md)
 * [Stacking Flow](nakamoto-upgrade/stacking-flow.md)
 

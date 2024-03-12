@@ -4,10 +4,10 @@ As the work on Nakamoto has progressed, there have been different versions of te
 
 The two testnets are:
 
-{% content-ref url="neon.md" %}
-[neon.md](neon.md)
+{% content-ref url="pre-launch.md" %}
+[pre-launch.md](pre-launch.md)
 {% endcontent-ref %}
 
-{% content-ref url="argon.md" %}
-[argon.md](argon.md)
+{% content-ref url="nakamoto.md" %}
+[nakamoto.md](nakamoto.md)
 {% endcontent-ref %}

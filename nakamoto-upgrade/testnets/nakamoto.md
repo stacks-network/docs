@@ -1,5 +1,9 @@
 # Nakamoto Testnet
 
+{% hint style="info" %}
+The Nakamoto Testnet is currently in Pre-Launch phase until March 25th. While you can still experiment with it, frequent changes will be made. View the [Pre-Launch Testnet](pre-launch.md) doc to learn more and get started.
+{% endhint %}
+
 **Primary Usage:** App Developers, Signers
 
 **About:**
