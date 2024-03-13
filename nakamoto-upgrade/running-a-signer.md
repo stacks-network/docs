@@ -53,9 +53,7 @@ You can run the signer as a Docker container using the `blockstack/stacks-core` 
 * You’ll need a volume with at least a few GB of available storage that contains the folder your `db_path` is in. In the above example, that would be /var
 * You’ll need to include your `signer-config.toml` file
 
-An example command for running the Docker image with ”`docker run`”:
-
-Be sure to remove the comments before running, these are just for illustrative purposes.
+An example command for running the Docker image with ”`docker run`” (be sure to remove the comments before running):
 
 ```bash
 docker run -d \
@@ -67,6 +65,12 @@ docker run -d \
   --config /config.toml \
   --reward-cycle 1
 ```
+
+{% hint style="info" %}
+If you get an error saying that the manifest cannot be found, you are probably running on system architeecture other than x64 arch. Since you are using a PR release (`next`) you'll need to specify your platform with the `--platform` flag.
+
+For example, if you are running on M1 Mac, you would add `--platform=limux/amd64` to the below command.
+{% endhint %}
 
 Or, with a custom Dockerfile:
 
