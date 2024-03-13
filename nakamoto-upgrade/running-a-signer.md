@@ -10,19 +10,27 @@ This document intends to lay out all the steps required to run a signer on testn
 * 8GB memory
 * 150 GB storage (250 GB if running a Stacks node)
 
-### High-Level Process
+### Background and High-Level Process
 
-In order to run a signer, you'll need to run a signer and a Stacks node side-by-side. This doc will provide instructions on how to do both using either Docker or as a binary building from source. It will also walk through how to set up the config files to get the signer and Stacks node communicating correctly.
+In order to run a signer, you'll need to run a signer and a Stacks node side-by-side. The signer will monitor for events coming from the stacks node and is in charge of using the generated account (next section) to sign incoming Stacks blocks sent from the Stcks node.
+
+This doc will provide instructions on how to set up both using either Docker or as a binary building from source. It will also walk through how to set up the config files to get the signer and Stacks node communicating correctly.
+
+### Knowledge Prerequisites
+
+* Docker and basic knowledge of pulling and running images
+* Basic knowledge of [Stacks accounts](../stacks-101/accounts.md)
+* Basic knowledge of [stacking](../stacks-101/stacking.md) and the [Nakamoto stacking flow](stacking-flow.md)
 
 ### Preflight Setup
 
-Before you get your signer set up, you'll need to [generate a new private key on testnet](https://docs.stacks.co/stacks-101/accounts#creation).
+Before you get your signer set up, you'll need to [generate a new private key on testnet](https://docs.stacks.co/stacks-101/accounts#creation). The `stacks-cli` provides a mechanism for quickly generating a new account keychain via a simple CLI interface. The linked guide will show you how to create one of those accounts on testnet.
 
 Once you follow the instructions linked above, be sure to save the information in a secure location, you'll need it in a future step.
 
 ### Create a Configuration File
 
-Create a new file called signer-config.toml, with the following contents:
+Create a new file called `signer-config.toml`, with the following contents:
 
 ```toml
 node_host = "127.0.0.1:20443"
@@ -44,14 +52,18 @@ The definition of these fields are:
 
 ### Running the Signer
 
+There are two options for running the signer: Docker and binary. The recommended option is to use Docker. If you want to run as a binary, you will need to build `stacks-core` from source. Instructions for how to do this are contained below in the relevant section.
+
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the `blockstack/stacks-core` image. When running the Docker container, you’ll need to ensure a few things:
+You can run the signer as a Docker container using the `blockstack/stacks-core` image.&#x20;
+
+When running the Docker container, you’ll need to ensure a few things:
 
 * You'll want to use the `next` tag of the image, as that includes the signer binary
 * The port configured as the `endpoint` (in the above example, “30000”) must be exposed to your Stacks node.
 * You’ll need a volume with at least a few GB of available storage that contains the folder your `db_path` is in. In the above example, that would be /var
-* You’ll need to include your `signer-config.toml` file
+* You’ll need to include your `signer-config.toml` file as noted below with the first `-v` flag
 
 An example command for running the Docker image with ”`docker run`” (be sure to remove the comments before running):
 
@@ -84,11 +96,11 @@ CMD ["stacks-signer", "run", "--config", "/config.toml", "--reward-cycle", "1"]
 
 #### Running the Signer as a Binary
 
-{% hint style="warning" %}
-Note that the current release does not have the stacks-signer binary. If you want to run the signer as a binary right now, you'll need to [build `stacks-core` from source](https://github.com/stacks-network/stacks-core?tab=readme-ov-file#building).
-{% endhint %}
+The current release does not have the stacks-signer binary. If you want to run the signer as a binary right now, you'll need to [build `stacks-core` from source](https://github.com/stacks-network/stacks-core?tab=readme-ov-file#building).
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the ZIP file for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
+{% hint style="info" %}
+Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. After Nakamoto is officially released, you will be able to download the ZIP file for your server’s architecture and decompress it. Inside of that folder will be a `stacks-signer` binary.
+{% endhint %}
 
 After you run `cargo build`, you can then run the signer with the following command (be sure to replace `../signer-config.toml` with the actual path of your config file).
 
