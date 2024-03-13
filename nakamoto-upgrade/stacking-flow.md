@@ -31,10 +31,7 @@ The main difference with Stacking in Nakamoto is that the Signer (either solo St
 
 The `signer-signature` uses the signer’s Stacks private key and creates a signature over the message (`pox-address`, `reward-cycle`), `where pox-address` is the BTC address used for rewards, and `reward-cycle` is the current reward cycle.
 
-The exact user experiences for generating the `signer-signature` is to be determined, but there are two high-level processes that can be expected:
-
-1. Using the stacks-signer or other CLI, via a command like `stacks-signer generate-stacking-signature {pox-address} {reward-cycle}`.
-2. Using an application like a wallet or a web app. The signature is designed such that Stackers can use pre-existing standards for signing data with a wallet like [Leather](https://leather.io/) and [XVerse](https://www.xverse.app/). Stackers can also use hardware wallets to create this signature.
+These signatures are designed to use pre-existing standards for Stacks signatures, which would allow Stacks apps to build user interfaces for generating these signatures with a wallet like Leather or Xverse. We'll update this documentation when apps are updated to include this functionality.
 
 Solo Stackers will likely generate their signature as a first step while making their Stacking transaction.
 
