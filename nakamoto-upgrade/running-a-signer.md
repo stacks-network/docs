@@ -81,7 +81,7 @@ docker run -d \
 {% hint style="info" %}
 If you get an error saying that the manifest cannot be found, you are probably running on system architeecture other than x64 arch. Since you are using a PR release (`next`) you'll need to specify your platform with the `--platform` flag.
 
-For example, if you are running on M1 Mac, you would add `--platform=limux/amd64` to the below command.
+For example, if you are running on M1 Mac, you would add `--platform=linux/amd64` to the above command.
 {% endhint %}
 
 Or, with a custom Dockerfile:
