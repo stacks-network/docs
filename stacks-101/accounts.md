@@ -5,7 +5,7 @@
 Stacks 2.0 accounts are entities that own assets, like Stacks (STX) tokens. An account has an address, private key, nonce, and one or more asset balances.
 
 {% hint style="info" %}
-The encryption algorithm used in Stacks 2.0 is [**secp256k1**](https://en.bitcoinwiki.org/wiki/Secp256k1).
+The cryptographic signature algorithm used in Stacks 2.0 is [**secp256k1**](https://en.bitcoinwiki.org/wiki/Secp256k1).
 
 Additionally, [Ed25519](https://ed25519.cr.yp.to/) is also used just for the VRF (Verifiable Random Function).
 {% endhint %}
@@ -66,7 +66,7 @@ Check out the [Stacks CLI reference](https://docs.hiro.so/references/stacks-cli)
 Note that a new account automatically exists for each new private key. There is no need to manually instantiate an account on the Stacks 2.0 blockchain.
 
 {% hint style="info" %}
-Addresses are created by generating the [RIPEMD-160 hash](https://en.wikipedia.org/wiki/RIPEMD#RIPEMD-160\_hashes) of the [SHA256](https://en.bitcoinwiki.org/wiki/SHA-256) of the public key. BTC addresses are encoded with [Base58Check](https://en.bitcoin.it/wiki/Base58Check\_encoding). For Stacks addresses, [c32check](https://github.com/stacks-network/c32check) is used. Deriving an address from a public key can be done without internet access, for instance using the c32check `c32addressDecode` method.&#x20;
+Addresses are created by generating the [RIPEMD-160 hash](https://en.wikipedia.org/wiki/RIPEMD#RIPEMD-160\_hashes) of the [SHA256](https://en.bitcoinwiki.org/wiki/SHA-256) of the public key. BTC addresses are encoded with [Base58Check](https://en.bitcoin.it/wiki/Base58Check\_encoding). For Stacks addresses, [c32check](https://github.com/stacks-network/c32check) is used. Deriving an address from a public key can be done without internet access, for instance using the c32check `c32addressDecode` method.
 {% endhint %}
 
 Alternatively to the CLI creation, the [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library can be used:
