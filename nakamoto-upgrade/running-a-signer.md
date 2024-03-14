@@ -72,6 +72,8 @@ docker run -d \
   -v ./signer-config.toml:/config.toml \ # your config file, make sure you are in the same directory
   -v data_folder:/var \ # your data volume
   -p 30000:30000
+  -e RUST_BACKTRACE=full \
+  -e BLOCKSTACK_DEBUG=0 \
   blockstack/stacks-core:next \ # the docker image, currently tagged as `next`
   stacks-signer run \
   --config /config.toml \
@@ -79,7 +81,7 @@ docker run -d \
 ```
 
 {% hint style="info" %}
-If you get an error saying that the manifest cannot be found, you are probably running on system architeecture other than x64 arch. Since you are using a PR release (`next`) you'll need to specify your platform with the `--platform` flag.
+If you get an error saying that the manifest cannot be found, you are probably running on system architecture other than x64 arch. Since you are using a PR release (`next`) you'll need to specify your platform with the `--platform` flag.
 
 For example, if you are running on M1 Mac, you would add `--platform=linux/amd64` to the above command.
 {% endhint %}
@@ -169,6 +171,7 @@ docker run -d \
   -v data_folder:/var/data \ # your data volume
   -p 20443:20443 \
   -p 20444:20444 \
+  -e RUST_BACKTRACE=full \
   blockstack/stacks-core:next \ # the docker image, currently tagged as `next`
   stacks-node start --config config.toml
 ```
