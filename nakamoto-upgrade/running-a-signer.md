@@ -77,7 +77,6 @@ docker run -d \
   blockstack/stacks-core:next \ # the docker image, currently tagged as `next`
   stacks-signer run \
   --config /config.toml \
-  --reward-cycle 1
 ```
 
 {% hint style="info" %}
@@ -93,7 +92,7 @@ FROM blockstack/stacks-core:next
 COPY signer-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443
-CMD ["stacks-signer", "run", "--config", "/config.toml", "--reward-cycle", "1"]
+CMD ["stacks-signer", "run", "--config", "/config.toml"]
 ```
 
 #### Running the Signer as a Binary
@@ -107,7 +106,7 @@ Official binaries are available from the [Stacks Core releases page on Github](h
 After you run `cargo build`, you can then run the signer with the following command (be sure to replace `../signer-config.toml` with the actual path of your config file).
 
 ```bash
-stacks-signer run --config ../signer-config.toml --reward-cycle 1
+stacks-signer run --config ../signer-config.toml
 ```
 
 #### Verify the Signer is Running
