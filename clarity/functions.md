@@ -219,7 +219,7 @@ Introduced in: **Clarity 1**
 
 **description:**
 
-The `append` function takes a list and another value with the same entry type, and outputs a list of the same type with max_len += 1.
+The `append` function takes a list and another value with the same entry type, and outputs a list of the same type with max\_len += 1.
 
 **example:**
 
@@ -259,7 +259,7 @@ Introduced in: **Clarity 1**
 
 **description:**
 
-The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument. The function returns an optional type. If the input sequence length is less than or equal to the supplied max_length, this returns `(some sequence)`, otherwise it returns `none`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
+The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument. The function returns an optional type. If the input sequence length is less than or equal to the supplied max\_length, this returns `(some sequence)`, otherwise it returns `none`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
 
 **example:**
 
@@ -270,7 +270,7 @@ The `as-max-len?` function takes a sequence argument and a uint-valued, literal 
 (as-max-len? 0x010203 u10) ;; Returns (some 0x010203)
 ```
 
-## asserts
+## asserts!
 
 Introduced in: **Clarity 1**
 
@@ -602,7 +602,7 @@ Introduced in: **Clarity 1**
 
 **description:**
 
-The `concat` function takes two sequences of the same type, and returns a concatenated sequence of the same type, with the resulting sequence_len = sequence1_len + sequence2_len. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
+The `concat` function takes two sequences of the same type, and returns a concatenated sequence of the same type, with the resulting sequence\_len = sequence1\_len + sequence2\_len. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
 
 **example:**
 
@@ -629,7 +629,7 @@ The `contract-call?` function executes the given public function of the given co
 **example:**
 
 ```
-;; instantiate the sample-contracts/tokens.clar contract first!
+;; instantiate the sample-contracts/tokens.clar contract first
 (as-contract (contract-call? .tokens mint! u19)) ;; Returns (ok u19)
 ```
 
@@ -1277,20 +1277,20 @@ The `get-burn-block-info?` function fetches data for a block of the given _burnc
 
 The following `BlockInfoPropertyName` values are defined:
 
-- The `header-hash` property returns a 32-byte buffer representing the header hash of the burnchain block at burnchain height `block-height`.
-- The `pox-addrs` property returns a tuple with two items: a list of up to two PoX addresses that received a PoX payout at that block height, and the amount of burnchain tokens paid to each address (note that per the blockchain consensus rules, each PoX payout will be the same for each address in the block-commit transaction). The list will include burn addresses -- that is, the unspendable addresses that miners pay to when there are no PoX addresses left to be paid. During the prepare phase, there will be exactly one burn address reported. During the reward phase, up to two burn addresses may be reported in the event that some PoX reward slots are not claimed.
+* The `header-hash` property returns a 32-byte buffer representing the header hash of the burnchain block at burnchain height `block-height`.
+* The `pox-addrs` property returns a tuple with two items: a list of up to two PoX addresses that received a PoX payout at that block height, and the amount of burnchain tokens paid to each address (note that per the blockchain consensus rules, each PoX payout will be the same for each address in the block-commit transaction). The list will include burn addresses -- that is, the unspendable addresses that miners pay to when there are no PoX addresses left to be paid. During the prepare phase, there will be exactly one burn address reported. During the reward phase, up to two burn addresses may be reported in the event that some PoX reward slots are not claimed.
 
 The `addrs` list contains the same PoX address values passed into the PoX smart contract:
 
-- They each have type signature `(tuple (hashbytes (buff 32)) (version (buff 1)))`
-- The `version` field can be any of the following:
-  - `0x00` means this is a p2pkh address, and `hashbytes` is the 20-byte hash160 of a single public key
-  - `0x01` means this is a p2sh address, and `hashbytes` is the 20-byte hash160 of a redeemScript script
-  - `0x02` means this is a p2wpkh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wpkh witness script
-  - `0x03` means this is a p2wsh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wsh witness script
-  - `0x04` means this is a p2wpkh address, and `hashbytes` is the 20-byte hash160 of the witness script
-  - `0x05` means this is a p2wsh address, and `hashbytes` is the 32-byte sha256 of the witness script
-  - `0x06` means this is a p2tr address, and `hashbytes` is the 32-byte sha256 of the witness script
+* They each have type signature `(tuple (hashbytes (buff 32)) (version (buff 1)))`
+* The `version` field can be any of the following:
+  * `0x00` means this is a p2pkh address, and `hashbytes` is the 20-byte hash160 of a single public key
+  * `0x01` means this is a p2sh address, and `hashbytes` is the 20-byte hash160 of a redeemScript script
+  * `0x02` means this is a p2wpkh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wpkh witness script
+  * `0x03` means this is a p2wsh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wsh witness script
+  * `0x04` means this is a p2wpkh address, and `hashbytes` is the 20-byte hash160 of the witness script
+  * `0x05` means this is a p2wsh address, and `hashbytes` is the 32-byte sha256 of the witness script
+  * `0x06` means this is a p2tr address, and `hashbytes` is the 32-byte sha256 of the witness script
 
 **example:**
 
@@ -1804,7 +1804,7 @@ Introduced in: **Clarity 1**
 
 The `map-insert` function sets the value associated with the input key to the inputted value if and only if there is not already a value associated with the key in the map. If an insert occurs, the function returns `true`. If a value already existed for this key in the data map, the function returns `false`.
 
-Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX_CLARITY_VALUE - 1.
+Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX\_CLARITY\_VALUE - 1.
 
 **example:**
 
@@ -1829,7 +1829,7 @@ Introduced in: **Clarity 1**
 
 The `map-set` function sets the value associated with the input key to the inputted value. This function performs a _blind_ update; whether or not a value is already associated with the key, the function overwrites that existing association.
 
-Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX_CLARITY_VALUE - 1.
+Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX\_CLARITY\_VALUE - 1.
 
 **example:**
 
@@ -2114,11 +2114,11 @@ Introduced in: **Clarity 1**
 
 Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error. Note: Corner cases are handled with the following rules:
 
-- if both `i1` and `i2` are `0`, return `1`
-- if `i1` is `1`, return `1`
-- if `i1` is `0`, return `0`
-- if `i2` is `1`, return `i1`
-- if `i2` is negative or greater than `u32::MAX`, throw a runtime error
+* if both `i1` and `i2` are `0`, return `1`
+* if `i1` is `1`, return `1`
+* if `i1` is `0`, return `0`
+* if `i2` is `1`, return `i1`
+* if `i2` is negative or greater than `u32::MAX`, throw a runtime error
 
 **example:**
 
@@ -2679,7 +2679,7 @@ Tries to convert the `int` argument to a `uint`. Will cause a runtime error and 
 (to-uint 238) ;; Returns u238
 ```
 
-## try
+## try!
 
 Introduced in: **Clarity 1**
 
@@ -2733,7 +2733,7 @@ There is a shorthand using curly brackets of the form {key0: expr0, key1: expr, 
 {name: "blockstack", id: 1337} ;; using curly brackets
 ```
 
-## unwrap
+## unwrap!
 
 Introduced in: **Clarity 1**
 
@@ -2759,7 +2759,7 @@ The `unwrap!` function attempts to 'unpack' the first argument: if the argument 
 (get-name-or-err "non-existant") ;; Returns (err 1)
 ```
 
-## unwrap-err
+## unwrap-err!
 
 Introduced in: **Clarity 1**
 
