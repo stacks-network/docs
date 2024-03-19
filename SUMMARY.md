@@ -19,8 +19,8 @@
 * [Testnets](nakamoto-upgrade/testnets/README.md)
   * [Pre-Launch Testnet](nakamoto-upgrade/testnets/pre-launch.md)
   * [Nakamoto Testnet](nakamoto-upgrade/testnets/nakamoto.md)
-* [Running a Signer](nakamoto-upgrade/running-a-signer.md)
-* [Stacking Flow](nakamoto-upgrade/stacking-flow.md)
+* [How to Run a Signer](nakamoto-upgrade/running-a-signer.md)
+* [How to Stack](nakamoto-upgrade/stacking-flow.md)
 
 ## 🎓 Stacks 101 (Pre-Nakamoto) <a href="#stacks-101" id="stacks-101"></a>
 

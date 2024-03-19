@@ -28,7 +28,7 @@ This will be especially helpful for any developers interacting with the new pox-
 
 * API status: [https://api.nakamoto-1.hiro.so/extended/v1/status](https://api.nakamoto-1.hiro.so/extended/v1/status)
 * Burn Block endpoint. This will allow you to get the hashes of fast Stacks blocks as they are added to the chain and see their associated burn blocks. [https://api.nakamoto-1.hiro.so/extended/v2/burn-blocks](https://api.nakamoto-1.hiro.so/extended/v2/burn-blocks)
-* Pox endpoint. This allows you to get information about proof of transfer, including the currently deployed pox-4 contract. This will be helpful for anyone looking to incorporate stacking into their app. [https://api.hiro.so/v2/pox](https://api.hiro.so/v2/pox)
+* Pox endpoint. This allows you to get information about proof of transfer, including the currently deployed pox-4 contract. This will be helpful for anyone looking to incorporate stacking into their app. [https://api.nakamoto-1.hiro.so/v2/pox](https://api.nakamoto-1.hiro.so/v2/pox)
 
 #### PoX-4 Contract
 

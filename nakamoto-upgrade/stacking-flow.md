@@ -1,35 +1,55 @@
-# Stacking Flow
+# How to Stack
+
+{% hint style="danger" %}
+This document intends to lay out all the steps required to stack STX tokens on testnet after the Nakamoto Testnet milestone is reached and deployed to testnet on March 25. Pre-Launch Testnet (current testnet version) will be undergoing frequent updates, so these instructions may change.
+{% endhint %}
+
+{% hint style="info" %}
+This doc assumes you are familiar with stacking at a conceptual level. If not, you may want to read the [Stacking](../stacks-101/stacking.md) section of Stacks 101.
+{% endhint %}
 
 In Nakamoto, stacking flows have significant changes in comparison to previous versions of Stacks. Because Nakamoto requires stackers to run a signer, which validates blocks produced by Stacks miners, stackers need to provide new information when making Stacking transactions.
 
-These changes affect both solo Stacking and delegated Stacking. This document intends to outline the new flows for both cases, so that we can better understand what Stackers need to do to Stack in Nakamoto.
+These changes affect both solo Stacking and delegated Stacking. This document outlines the new flows for both cases.
+
+If you aren't familiar with the general block production process under Nakamoto and what role signers and stackers play, you may want to read [Nakamoto in 10 Minutes](nakamoto-in-10-minutes.md) to get up to speed.
 
 ### Definitions
 
-* Stacker: an entity locking their STX to receive PoX rewards. This is a broad term including solo Stackers and Stackers who use pools.
-* Solo stacker: an entity that locks their own STX and runs a signer. They don’t receive delegation.
-* Delegator: a stacker who locks their STX and delegates to a signer. They don’t run the signer.
-* Delegatee: an entity that runs a Signer and allows others to delegate their STX to them. A delegatee doesn’t need to Stack their own STX, but they can.
-* Signer: an entity that runs the stacks-signer software and participates in block validation. This can be either a solo Stacker an entity receiving delegated STX. In many cases we also refer to “signer” as the software that validates blocks. We may want to try and improve this language to be more clear.
+* **Stacker**: an entity locking their STX to receive PoX rewards. This is a broad term including solo Stackers and Stackers who use pools.
+* **Solo stacker**: an entity that locks their own STX and runs a signer. They don’t receive delegation.
+* **Delegator**: a stacker who locks their STX and delegates to a signer. They don’t run the signer.
+* **Delegatee**: an entity that runs a Signer and allows others to delegate their STX to them. A delegatee doesn’t need to Stack their own STX, but they can.
+* **Signer**: an entity that runs the stacks-signer software and participates in block validation. This can be either a solo Stacker or an entity receiving delegated STX. Depending on context, this may also refer to the signer software that validates blocks.
 
-### First, run a signer
+The following sections will walk you through how to begin operating as a stacker, including as a solo stacker, delegatee, or delegator.
+
+### Run a signer
 
 This is a necessary prerequisite to stacking.
 
 Running a signer involves setting up a hosted production environment that includes both a Stacks Node and the Stacks Signer. For more information, refer to the [running a signer doc](https://github.com/stacksfoundation/NAKA-REPO/issues/279).
 
-Once the signer software is running, the signer needs to keep track of the `stacks_private_key` that they used when configuring their signer. This will be used in subsequent Stacking transactions.
+Once the signer software is running, the signer entity needs to keep track of the `stacks_private_key` that they used when configuring their signer software. This will be used in subsequent Stacking transactions.
 
-### Signer keys and signer key signatures
+### Generate a signer key signature
 
-The main difference with Stacking in Nakamoto is that the Signer (either solo Stacker or signer running a pool) needs to include new parameters in their Stacking transactions:
+#### Overview of signer keys and signatures
+
+The main difference with Stacking in Nakamoto is that the Signer (either solo Stacker or signer running a pool) needs to include new parameters in their Stacking transactions. These are Clarity transactions that Signers will call when interacting with the `pox-4.clar` contract. Interacting with that contract is how you as a Signer actually stack your STX tokens.
+
+{% hint style="info" %}
+The current pox-4 contract address can be found by visiting the following endpoint of the Hiro API: [https://api.nakamoto-1.hiro.so/v2/pox](https://api.nakamoto-1.hiro.so/v2/pox).
+
+You can then visit the [Nakamoto explorer](https://explorer.hiro.so/txid/0xecd32c2417cbdd04f655d7073876c225f7db3bd1e4427a3483cffb42d01b6a57?chain=testnet\&api=https://api.nakamoto-1.hiro.so) to view the contract and pass in the contract id.
+
+You may want to review this contract to familiarize yourself with it. Note that this endpoint may change as testnet evolves.
+{% endhint %}
 
 1. `signer-key`: the public key that corresponds to the `stacks_private_key` their signer is using
 2. `signer-signature`: a signature that demonstrates that this Stacker actually controls their `signer-key`. Because signer keys need to be unique, this is also a safety check to ensure that other Stackers can’t use someone else’s public key.
-3. `max-amount`: The maximum amount of STX that can be locked in the transaction that uses this signature. For example, if calling stack-increase, then this parameter dictates the maximum amount of STX that can be used to add more locked STX
+3. `max-amount`: The maximum amount of STX that can be locked in the transaction that uses this signature. For example, if calling `stack-increase`, then this parameter dictates the maximum amount of STX that can be used to add more locked STX
 4. `auth-id`: a random integer that prevents re-use of a particular signature, similar to how nonces are used with transactions.
-
-### Generating a signer key signature
 
 Signer signatures are signatures created using a particular signer key. They demonstrate that the controller of that signer key is allowing a Stacker to use their signing key. The signer signature’s message hash is created using the following data:
 
@@ -43,6 +63,8 @@ Signer signatures are signatures created using a particular signer key. They dem
 #### Using the `stacks-signer` CLI
 
 At the moment, one way to generate this signature is via the stacks-signer binary, which is also used to run the signer. The command generate-stacking-signature will utilize existing configuration along with user-provided arguments to generate a signature.
+
+If you followed the instructions on [running a signer](running-a-signer.md), you should already have this binary.
 
 ```bash
 stacks-signer generate-stacking-signature \
@@ -67,14 +89,9 @@ The [@stacks/stacking](https://www.npmjs.com/package/@stacks/stacking) NPM packa
 
 #### Using web applications
 
-Future releases of Stacking web apps will allow you to generate a Signer signature using a Stacks wallet. We’ll update this section when those applications become available.
+Future releases of Stacking web apps will allow you to generate a Signer signature using a Stacks wallet.
 
-The exact user experiences for generating the `signer-signature` is to be determined, but there are two high-level processes that can be expected:
-
-1. Using the `stacks-signer` or other CLI, via a command like `stacks-signer generate-stacking-signature {pox-address} {reward-cycle}`.&#x20;
-2. Using an application like a wallet or a web app. The signature is designed such that Stackers can use pre-existing standards for signing data with a wallet like Leather and XVerse. Stackers can also use hardware wallets to create this signature.
-
-Solo Stackers will likely generate their signature as a first step while making their Stacking transaction.
+These signatures are designed to use pre-existing standards for Stacks signatures, which would allow Stacks apps to build user interfaces for generating these signatures with a wallet like Leather or Xverse. We'll update this documentation when apps are updated to include this functionality
 
 #### Using a hardware or software wallet to generate signatures
 
@@ -108,7 +125,13 @@ When the user needs to generate signatures:
    2. Your signer signature
 8. Finally, make a Stacking transaction using the signer key and signer signature.
 
+Now that you have your signer signature generated, it's time to start stacking. This process will vary depending on your chosen method. We've included instructions for solo stacking and delegated stacking below.
+
 ### Solo Stacking
+
+{% hint style="info" %}
+Note that in order to solo stack, you need to have the minimum number of STX tokens. This number can be found by visiting the pox endpoint of Hiro's API at [https://api.nakamoto-1.hiro.so/v2/pox](https://api.nakamoto-1.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX)
+{% endhint %}
 
 #### Call the function `stack-stx`
 
@@ -118,7 +141,7 @@ Just like in previous versions of PoX, Stackers call `stack-stx`, but with the n
 * PoX Address: the BTC wallet to receive Stacking rewards
 * Start burn height: the current BTC block height
 * Lock period: the number of cycles to lock for (1 minimum, 12 max)
-* Signer key: the public key that their signer is using
+* Signer key: the public key that your signer is using
 * Signer signature: the signature that proves control of this signer key
 * max-amount: This parameter is used to validate the signer signature provided. It represents the maximum number of STX that can be locked in this transaction.
 * auth-id: This parameter is used to validate the signer signature provided. auth-id is a random integer that prevents re-use of this particular signer signature.
@@ -127,7 +150,7 @@ Just like in previous versions of PoX, Stackers call `stack-stx`, but with the n
 
 In the “prepare phase” before the next stacking cycle (100 blocks), the exact set of Stackers will be selected based on the amount of STX stacked. Just like in previous versions of PoX, each Stacker will have some number of reward slots based on the amount of STX locked.
 
-It is critical that Stackers have their signer running during this period. The prepare phase is when distributed key generation (DKG) occurs, which is used when validating blocks by signers.
+**It is critical that Stackers have their signer running during this period.** The prepare phase is when distributed key generation (DKG) occurs, which is used when validating blocks by signers.
 
 In general, Stackers don’t need to do anything actively during this period, other than monitoring their Signer to ensure it’s running properly.
 
@@ -169,7 +192,7 @@ Just as in the current PoX contract, the signer calls `delegate-stack-stx` to co
 * Start burn height
 * Lock period: number of cycles to lock for. If the delegator provided the until burn height argument, then the end of these cycles cannot be past the expiration provided.
 
-This step also allows the Signer to proactively choose which Stackers they’ll accept delegation from. For “closed” pools, the signer will only call this function for approved Stackers. It is up to each signer who runs a closed pool to implement this process, but tooling will likely be created to make this easier.
+This step also allows the Signer to proactively choose which Stackers they’ll accept delegation from. For “closed” pools, the signer will only call this function for approved Stackers. It is up to each signer who runs a closed pool to implement this process.
 
 This step can happen for many Stackers before going to the next step.
 
@@ -179,6 +202,12 @@ At this point, the STX are committed to the signer, and the signer has some “a
 
 The signer cannot call this until the total number of STX committed is larger than the minimum threshold required to Stack. This threshold is a function of the total number of liquid STX. At the moment, the threshold is 90,000 STX.
 
+{% hint style="info" %}
+This number varies and can be found by visiting the pox endpoint of Hiro's API at [https://api.nakamoto-1.hiro.so/v2/pox](https://api.nakamoto-1.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX).
+
+Note that API endpoint is specifically for the current version of the Nakamoto testnet.
+{% endhint %}
+
 Once the threshold is reached, the signer calls `stack-aggregation-commit`. This is the point where the signer must provide their signer key and signer key signature. The arguments are:
 
 * Pox Address
@@ -186,7 +215,7 @@ Once the threshold is reached, the signer calls `stack-aggregation-commit`. This
 * Signer key: the public key of their signer
 * Signer signature
 
-Once this succeeds, the signer is eligible for reward slots. The number of reward slots depends on the amount of STX committed to this signer. Even if the signer commits more than the “global minimum”, the minimum amount to receive a slot depends on the amount of STX locked for each cycle. For example, in the current PoX cycle, that amount is 110,000 STX.
+Once this succeeds, the signer is eligible for reward slots. The number of reward slots depends on the amount of STX committed to this signer. Even if the signer commits more than the “global minimum”, the minimum amount to receive a slot depends on the amount of STX locked for each cycle.
 
 To act as a signer, each step up to this point must be taken before the prepare phase of the next cycle begins. It is crucial that the signer software is running.
 
@@ -214,7 +243,7 @@ The exact tooling that will be available for both solo and delegated stacking is
 
 This section describes the various transactions that signers need to make in order to be registered as a signer for a certain reward cycle. The order of operations between the automated signer and the stacking transactions that need to be done “manually” is important for ensuring that a signer is fully set up for a certain reward cycle.
 
-<figure><img src="https://lh7-us.googleusercontent.com/Rnm8NlJW_FguCYVMggcno5MANqYBb4NyA8P9swsv3ShVNyzNKgfT95T9mgKiv101EtNwd1qVpYVGOrYK5463_1iY_kdQbzwFiKmvMc4BzympR53GdmZw1VeThJkqTSd-mj2jyNjjOycnEVPVRNH4gz8" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled design (1).png" alt=""><figcaption></figcaption></figure>
 
 #### Prerequisite: ensure the signer is hosted and running
 
@@ -232,7 +261,7 @@ Each of the transactions described here are done “manually”. More specifical
 
 In order for a signer to actually be registered in a reward cycle, there need to be manual transactions made in the `pox-4` contract. While the signer software is running, it is continually polling the Stacks node and asking “am I a signer in reward cycle N?”.&#x20;
 
-If these manual transactions are confirmed, and the signer has enough STX associated with the signer’s public key, the signer will be registered as a signer.
+If these manual transactions are confirmed, and the signer has enough STX associated with the signer’s public key, the signer will be registered as a signer in the signer set.
 
 #### Solo stacking
 
@@ -264,6 +293,6 @@ The signer software is continuously polling the Stacks node to see if it is regi
 
 During the prepare phase, the signers perform DKG through StackerDB messages. Once an aggregate public key is determined, the signer automatically makes a `vote-for-aggregate-key` transaction. No out-of-band action is needed to be taken for this to occur.
 
-During Epoch 2.5, the signer must pay a STX transaction fee for this transaction to be confirmed. Critically, this means that a minimum balance must be kept in the STX address associated with the signer’s key. There is a config field called `tx_fee_ms` (transaction fee in micro-stacks) that can be optionally configured to set the fee for these transactions. If the config field is omitted, the fee defaults to 10,000 micro-stacks (0.01 STX).
+During Epoch 2.5 (Pre-Launch Testnet), the signer must pay a STX transaction fee for this transaction to be confirmed. Critically, this means that a minimum balance must be kept in the STX address associated with the signer’s key. There is a config field called `tx_fee_ms` (transaction fee in micro-stacks) that can be optionally configured to set the fee for these transactions. If the config field is omitted, the fee defaults to 10,000 micro-stacks (0.01 STX).
 
-During Epoch 3.0, the signer doesn’t need to pay fees for this transaction, so no STX balance needs to be kept in that address.
+During Epoch 3.0 (Nakamoto Testtnet), the signer doesn’t need to pay fees for this transaction, so no STX balance needs to be kept in that address.
