@@ -1,7 +1,7 @@
-# Running a Signer
+# How to Run a Signer
 
 {% hint style="danger" %}
-This document intends to lay out all the steps required to run a signer on testnet after the Nakamoto Testnet milestone is reached and deployed to testnet on March 25. Pre-Launch Testnet (current testnet version) will be undergoing frequent updates, so these instructions may change.
+This document intends to lay out all the steps required to run a signer on testnet after the Nakamoto Testnet milestone is reached and deployed to testnet on March 25. Pre-Launch Testnet (current testnet version) will be undergoing frequent updates, so these instructions may change and certain functionality may not work.
 {% endhint %}
 
 ### System Requirements to Run a Signer
@@ -14,7 +14,9 @@ This document intends to lay out all the steps required to run a signer on testn
 
 In order to run a signer, you'll need to run a signer and a Stacks node side-by-side. Specifically, you'll want to run a testnet follower node. Instructions for doing this are listed below in the "Running Your Stacks Node" section. The signer will monitor for events coming from the stacks node and is in charge of using the generated account (next section) to sign incoming Stacks blocks sent from the Stcks node.
 
-This doc will provide instructions on how to set up both using either Docker or as a binary building from source. It will also walk through how to set up the config files to get the signer and Stacks node communicating correctly.
+This doc will provide instructions on how to set up both using either Docker or building from source. Binaries will not be available in the initial release but will be released at a later date.&#x20;
+
+It will also walk through how to set up the config files to get the signer and Stacks node communicating correctly.
 
 ### Knowledge Prerequisites
 
@@ -127,11 +129,11 @@ The definition of these fields are:
 
 ### Running the Signer
 
-There are two options for running the signer: Docker and binary. The recommended option is to use Docker. If you want to run as a binary, you will need to build `stacks-core` from source. Instructions for how to do this are contained below in the relevant section.
+There are two options for running the signer: Docker and building from source. The recommended option is to use Docker. If you want to run as a binary, you will need to build `stacks-core` from source. Instructions for how to do this are contained below in the relevant section.
 
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the `blockstack/stacks-core` image.&#x20;
+You can run the signer as a Docker container using the `blockstack/stacks-core:next` image. When pulling the Docker image, be sure you are using the `next` tag, as the main branch will not have the signer binary.
 
 When running the Docker container, you’ll need to ensure a few things:
 
@@ -140,22 +142,32 @@ When running the Docker container, you’ll need to ensure a few things:
 * You’ll need a volume with at least a few GB of available storage that contains the folder your `db_path` is in. In the above example, that would be /var
 * You’ll need to include your `signer-config.toml` file as noted below with the first `-v` flag
 
-An example command for running the Docker image with ”`docker run`” (be sure to remove the comments before running):
+An example command for running the Docker image with ”`docker run`”.
+
+Be sure to replace the `STX_SIGNER_PATH` with the correct path to your config file and where you want to install and run the signer. In this example it will be doing so in the current directory.
 
 ```bash
+IMG="blockstack/stacks-core"
+VER="next"
+STX_SIGNER_PATH="./"
+STX_SIGNER_DATA="$STX_SIGNER_PATH/data"
+STX_SIGNER_CONFIG="$STX_SIGNER_PATH/signer-config.toml"
+
+mkdir -p $STX_SIGNER_DATA
+
 docker run -d \
-  -v ./signer-config.toml:/config.toml \ # your config file, make sure you are in the same directory
-  -v data_folder:/var \ # your data volume
-  -p 30000:30000
-  -e RUST_BACKTRACE=full \
-  -e BLOCKSTACK_DEBUG=0 \
-  blockstack/stacks-core:next \ # the docker image, currently tagged as `next`
-  stacks-signer run \
-  --config /config.toml \
+    -v $STX_SIGNER_CONFIG:/config.toml \
+    -v $STX_SIGNER_DATA:/var \
+    -p 30000:30000 \
+    -e RUST_BACKTRACE=full \
+    -e BLOCKSTACK_DEBUG=0 \
+    $IMG:$VER \
+    stacks-signer run \
+    --config /config.toml
 ```
 
 {% hint style="info" %}
-If you get an error saying that the manifest cannot be found, you are probably running on system architecture other than x64 arch. Since you are using a PR release (`next`) you'll need to specify your platform with the `--platform` flag.
+If you get an error saying that the manifest cannot be found or about the requested image platform not matching the host platform, you are probably running on system architecture other than x64 arch. Since you are using a PR release (`next`) you'll need to specify your platform with the `--platform` flag.
 
 For example, if you are running on M1 Mac, you would add `--platform=linux/amd64` to the above command.
 {% endhint %}
@@ -165,8 +177,7 @@ Or, with a custom Dockerfile:
 ```docker
 FROM blockstack/stacks-core:next
 COPY signer-config.toml /config.toml
-EXPOSE 20444
-EXPOSE 20443
+EXPOSE 30000
 CMD ["stacks-signer", "run", "--config", "/config.toml"]
 ```
 
@@ -240,14 +251,23 @@ You can run the Stacks node as a Docker container using the `blockstack/stacks-c
 An example for running the node’s Docker image with docker run:
 
 ```bash
+IMG="blockstack/stacks-core"
+VER="next"
+STX_NODE_PATH="./"
+STX_NODE_DATA="$STX_NODE_PATH/data"
+STX_NODE_CONFIG="$STX_NODE_PATH/node-config.toml"
+
+mkdir -p $STX_NODE_DATA
+
 docker run -d \
-  -v ./node-config.toml:/config.toml \ # your config file
-  -v data_folder:/var/data \ # your data volume
-  -p 20443:20443 \
-  -p 20444:20444 \
-  -e RUST_BACKTRACE=full \
-  blockstack/stacks-core:next \ # the docker image, currently tagged as `next`
-  stacks-node start --config config.toml
+    -v $STX_NODE_CONFIG:/config.toml \
+    -v $STX_NODE_DATA:/var \
+    -p 20433:20433 \
+    -p 20444:20444 \
+    -e RUST_BACKTRACE=full \
+    $IMG:$VER \
+    stacks-node start \
+    --config /config.toml
 ```
 
 Or, using a custom Dockerfile:
