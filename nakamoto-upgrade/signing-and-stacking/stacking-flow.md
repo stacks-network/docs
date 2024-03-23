@@ -5,14 +5,14 @@ This document intends to lay out all the steps required to stack STX tokens on t
 {% endhint %}
 
 {% hint style="info" %}
-This doc assumes you are familiar with stacking at a conceptual level. If not, you may want to read the [Stacking](../stacks-101/stacking.md) section of Stacks 101.
+This doc assumes you are familiar with stacking at a conceptual level. If not, you may want to read the [Stacking](../../stacks-101/stacking.md) section of Stacks 101.
 {% endhint %}
 
 In Nakamoto, stacking flows have significant changes in comparison to previous versions of Stacks. Because Nakamoto requires stackers to run a signer, which validates blocks produced by Stacks miners, stackers need to provide new information when making Stacking transactions.
 
 These changes affect both solo Stacking and delegated Stacking. This document outlines the new flows for both cases.
 
-If you aren't familiar with the general block production process under Nakamoto and what role signers and stackers play, you may want to read [Nakamoto in 10 Minutes](nakamoto-in-10-minutes.md) to get up to speed.
+If you aren't familiar with the general block production process under Nakamoto and what role signers and stackers play, you may want to read [Nakamoto in 10 Minutes](../nakamoto-in-10-minutes.md) to get up to speed.
 
 ### Definitions
 
@@ -243,7 +243,7 @@ The exact tooling that will be available for both solo and delegated stacking is
 
 This section describes the various transactions that signers need to make in order to be registered as a signer for a certain reward cycle. The order of operations between the automated signer and the stacking transactions that need to be done “manually” is important for ensuring that a signer is fully set up for a certain reward cycle.
 
-<figure><img src="../.gitbook/assets/Untitled design (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Untitled design (1).png" alt=""><figcaption></figcaption></figure>
 
 #### Prerequisite: ensure the signer is hosted and running
 
