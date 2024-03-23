@@ -21,8 +21,8 @@ It will also walk through how to set up the config files to get the signer and S
 ### Knowledge Prerequisites
 
 * Docker and basic knowledge of pulling and running images
-* Basic knowledge of [Stacks accounts](../stacks-101/accounts.md)
-* Basic knowledge of [stacking](../stacks-101/stacking.md) and the [Nakamoto stacking flow](stacking-flow.md)
+* Basic knowledge of [Stacks accounts](../../stacks-101/accounts.md)
+* Basic knowledge of [stacking](../../stacks-101/stacking.md) and the [Nakamoto stacking flow](stacking-flow.md)
 
 <details>
 
