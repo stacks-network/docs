@@ -16,12 +16,10 @@ The Nakamoto Testnet is currently in Pre-Launch phase until March 25th. While yo
 
 **Here are some things you can expect with the Nakamoto Testnet:**
 
-* Nakamoto performance gains with existing Clarity WASM
-* All Nakamoto rules in place
-* POX-4, Throughput gains, Lower Latency, Existing Clarity WASM
-* Clarity WASM to feature complete with full Clarinet support
-* Clarity WASM Performance benchmarking, improvements, & fuzzing
-* Controlled testnet upgraded with performance gains
+* Nakamoto performance gains with existing Clarity VM
+* All Nakamoto rules in place, this will not be activated until the Signer Onboarding is done and activation date is chosen
+* POX-4 Contract will be active
+* Clarinet with current Clarity VM’s Performance improvements
 * Testing and audits on code complete components
 
 Check back here after the Nakamoto Testnet is released for instructions for using the testnet and getting your applications migrated.
