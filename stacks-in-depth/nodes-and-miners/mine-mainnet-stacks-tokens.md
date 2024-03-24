@@ -29,13 +29,13 @@ Next, update the bitcoin configuration:
 
 ```toml
 server=1
+daemon=1
 disablewallet=0
-datadir=/bitcoin
-rpcuser=btcuser
-rpcpassword=btcpassword
-rpcallowip=0.0.0.0/0
-bind=0.0.0.0:8333
-rpcbind=0.0.0.0:8332
+rpcuser=1
+rpcpassword=1
+rpcallowip=127.0.0.1
+bind=127.0.0.1:8333
+rpcbind=127.0.0.1:8332
 dbcache=512
 banscore=1
 rpcthreads=256
@@ -49,7 +49,7 @@ txindex=1
 Finally, start bitcoin as follows (adjust the `conf` path to where it was created in the previous step, i.e. `$HOME/bitcoin.conf`):
 
 ```bash
-bitcoind -conf=$HOME/bitcoin.conf
+bitcoind  or bitcoin-qt
 ```
 
 :::note It will take a few days for the node to synchronize with Bitcoin mainnet. :::
@@ -57,12 +57,7 @@ bitcoind -conf=$HOME/bitcoin.conf
 While it's syncing, you can track the progress with `bitcoin-cli` or the logfile (will be located where the chainstate is stored, i.e. `/bitcoin/debug.log`):
 
 ```bash
-$ bitcoin-cli \
- -rpcconnect=localhost \
- -rpcport=8332 \
- -rpcuser=btcuser \
- -rpcpassword=btcpassword \
-getblockchaininfo | jq .blocks
+$ bitcoin-cli getblockchaininfo | jq .blocks
 773281
 ```
 
@@ -105,11 +100,11 @@ After this runs, you should see some JSON printed to the screen that looks like 
 The above `btcAddress` (mkRYR7KkPB1wjxNjVz3HByqAvVz8c4B6ND) will then need to be imported into the bitcoin mainnet network. :::note Be sure to replace `<btcAddress from JSON above>` with the bitcoin address in the "Generate a keychain" step :::
 
 ```bash
-bitcoin-cli \
-  -rpcport=8332 \
-  -rpcuser=btcuser \
-  -rpcpassword=btcpassword \
-importaddress <btcAddress from JSON above>
+bitcoin-cli createwallet "your-wallet-name" false false "" false false true
+```
+then import your WIF from your keychain that you created
+```
+bitcoin-cli -rpcwallet=your-wallet-name importprivkey "YOUR_PRIVATE_KEY_WIF_HERE"
 ```
 
 Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
@@ -126,22 +121,30 @@ Next, update the bitcoin configuration:
 * From the `make_keychain` step, modify the `seed` and `local_peer_seed` values with `privatekey`
 * Store the following configuration somewhere on your filesystem (ex: `$HOME/mainnet-miner-conf.toml`)
 
+
+# THEN YOU MUST ACTUALLY FUND YOUR BITCOIN MINING WALLET USING THE BTCADDRESS FROM YOUR KEYCHAIN WHICH IS NOW LINKED TO YOUR BITCOIN-QT OR BITCOIND AND CHECK FOR UTXOs AND YOUR BITCOIN-QT WALLET MUST BE RUNNING WHILE YOU USE STACKS-CORE NODE AND IT MUST BE 100% SYNCED with a CHECKMARK
+
+# when you start stacks-core node and its 100% synced it will say something like this exactly
+
+![s1](https://github.com/bitnet-io/stacks-core-bitnet/releases/download/windows%2Blinux/utxos.png)
+
 ```toml
 [node]
 working_dir = "/stacks-blockchain"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-seed = "<keychain privateKey>"
-local_peer_seed = "<keychain privateKey>"
+seed = "<keychain THAT YOU MADE WITH YOUR KEYCHAIN HERE privateKey>"
+local_peer_seed = "<keychain THAT YOU MADE WITH YOUR KEYCHAIN HERE privateKey>"
 miner = true
 bootstrap_node = "02da7a464ac770ae8337a343670778b93410f2f3fef6bea98dd1c3e9224459d36b@seed-0.mainnet.stacks.co:20444,02afeae522aab5f8c99a00ddf75fbcb4a641e052dd48836408d9cf437344b63516@seed-1.mainnet.stacks.co:20444,03652212ea76be0ed4cd83a25c06e57819993029a7b9999f7d63c36340b34a4e62@seed-2.mainnet.stacks.co:20444"
 
 [burnchain]
+wallet_name = "your-wallet-name"
 chain = "bitcoin"
 mode = "mainnet"
 peer_host = "127.0.0.1"
-username = "<bitcoin config rpcuser>"
-password = "<bitcoin config rpcpassword>"
+username = "1"
+password = "1"
 rpc_port = 8332
 peer_port = 8333
 satoshis_per_byte = 100
@@ -153,7 +156,9 @@ burn_fee_cap = 20000
 To run your miner, run this in the command line:
 
 ```bash
-stacks-node start --config=$HOME/mainnet-miner-conf.toml
+cp mainnet-miner-conf.toml Config.toml
+and edit your Config.toml
+stacks-node start --config Config.toml
 ```
 
 Your node should start. It will take some time to sync, and then your miner will be running.
@@ -163,88 +168,9 @@ Your node should start. It will take some time to sync, and then your miner will
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
 
 ```bash
-STACKS_LOG_DEBUG=1 stacks-node start --config=$HOME/mainnet-miner-conf.toml
+STACKS_LOG_DEBUG=1 stacks-node start --config Config.toml
 ```
 
-***
+Your node should start. It will take some time to sync, and then your miner will be running.
 
-### Optional: Running a Stacks Blockchain miner with Docker
-
-Alternatively, you can run a Stacks mainnet miner with Docker.
-
-:::caution Ensure you have [Docker](https://docs.docker.com/get-docker/) installed. :::
-
-#### Generate a Keychain and Get Some Tokens
-
-Generate a keychain:
-
-```bash
-docker run -i node:14-alpine npx @stacks/cli make_keychain 2>/dev/null | jq -r
-```
-
-We need to get some BTC to that address. You should be able to transfer BTC to this address using a cryptocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
-
-#### Update Stacks Blockchain Docker Configuration File
-
-Use the steps oulined above to create the configuration file
-
-#### Start the Stacks Blockchain miner with Docker
-
-:::info The ENV VARS `RUST_BACKTRACE` and `STACKS_LOG_DEBUG` are optional. If removed, debug logs will be disabled :::
-
-```bash
-docker run -d \
-  --name stacks_miner \
-  --rm \
-  --network host \
-  -e RUST_BACKTRACE="full" \
-  -e STACKS_LOG_DEBUG="1" \
-  -v "$HOME/mainnet-miner-conf.toml:/src/stacks-node/mainnet-miner-conf.toml" \
-  -v "/stacks-blockchain:/stacks-blockchain" \
-  -p 20443:20443 \
-  -p 20444:20444 \
-  blockstack/stacks-blockchain:latest \
-/bin/stacks-node start --config /src/stacks-node/mainnet-miner-conf.toml
-```
-
-You can review the node logs with this command:
-
-```bash
-docker logs -f stacks_miner
-```
-
-### Optional: Running in Kubernetes with Helm
-
-In addition, you're also able to run a Stacks miner in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/stacks-network/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
-
-Ensure you have the following prerequisites installed:
-
-* [Docker](https://docs.docker.com/get-docker/)
-* [minikube](https://minikube.sigs.k8s.io/docs/start/) (Only needed if standing up a local Kubernetes cluster)
-* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-* [helm](https://helm.sh/docs/intro/install/)
-
-#### Generate keychain and get some tokens
-
-Use the steps outlined above
-
-#### Install the chart and run the miner
-
-To install the chart with the release name `my-release` and run the node as a miner:
-
-```bash
-minikube start # Only run this if standing up a local Kubernetes cluster
-helm repo add blockstack https://charts.blockstack.xyz
-helm install my-release blockstack/stacks-blockchain \
-  --set config.node.miner=true \
-  --set config.node.seed="replace-with-your-privateKey-from-generate-keychain-step" \
-  --set config.burnchain.mode="mainnet"
-```
-
-You can review the node logs with this command:
-
-```bash
-kubectl logs -l app.kubernetes.io/name=stacks-blockchain
-```
-
-For more information on the Helm chart and configuration options, please refer to the [chart's homepage](https://github.com/stacks-network/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
+you can now also import your mnemonic phrase for your keychain directly into Leather from Hiro as the secret passphrase to manage your STX balance that you mine for
