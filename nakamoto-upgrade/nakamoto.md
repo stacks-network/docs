@@ -61,7 +61,7 @@ Be sure to [update Clarinet](https://docs.hiro.so/clarinet/getting-started) to t
 
 #### Running a signer
 
-If you are interested in running a signer, you can take a look at the [How to Run a Siger](signing-and-stacking/running-a-signer.md) doc which will get you up to speed on how to get the signer software set up using Nakamoto.
+If you are interested in running a signer, you can take a look at the [How to Run a Signer](signing-and-stacking/running-a-signer.md) doc which will get you up to speed on how to get the signer software set up using Nakamoto.
 
 #### Office Hours
 
