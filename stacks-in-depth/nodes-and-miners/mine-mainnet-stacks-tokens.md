@@ -153,9 +153,8 @@ burn_fee_cap = 20000
 To run your miner, run this in the command line:
 
 ```bash
-cp mainnet-miner-conf.toml Config.toml
-and edit your Config.toml
-stacks-node start --config Config.toml
+stacks-node start --config mainnet-miner-conf.toml
+
 ```
 
 Your node should start. It will take some time to sync, and then your miner will be running.
