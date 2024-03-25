@@ -49,7 +49,8 @@ txindex=1
 Finally, start bitcoin as follows (adjust the `conf` path to where it was created in the previous step, i.e. `$HOME/bitcoin.conf`):
 
 ```bash
-bitcoind  or bitcoin-qt
+bitcoind -conf=$HOME/bitcoin.conf
+
 ```
 
 :::note It will take a few days for the node to synchronize with Bitcoin mainnet. :::
