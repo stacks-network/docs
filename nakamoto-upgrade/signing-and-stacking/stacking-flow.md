@@ -1,11 +1,13 @@
-# How to Stack
-
-{% hint style="danger" %}
-This document intends to lay out all the steps required to stack STX tokens on testnet after the Nakamoto Testnet milestone is reached and deployed to testnet on March 25. Pre-Launch Testnet (current testnet version) will be undergoing frequent updates, so these instructions may change.
-{% endhint %}
+# How to Stack (as a signer)
 
 {% hint style="info" %}
 This doc assumes you are familiar with stacking at a conceptual level. If not, you may want to read the [Stacking](../../stacks-101/stacking.md) section of Stacks 101.
+{% endhint %}
+
+{% hint style="info" %}
+Much of the technical instructions below apply to users who are interested in either solo stacking or becoming a pool operator. Both of those types of stackers will need to run a signer.
+
+However, if you prefer to participate in a pool by delegating your STX, you do not need to also operate a signer. Simplified instructions for delegating your STX token using Leather and Lockstacks can be found in the [Nakamoto Stacking Quickstart](../nakamoto-stacking-quickstart.md) doc.
 {% endhint %}
 
 In Nakamoto, stacking flows have significant changes in comparison to previous versions of Stacks. Because Nakamoto requires stackers to run a signer, which validates blocks produced by Stacks miners, stackers need to provide new information when making Stacking transactions.
@@ -26,7 +28,7 @@ The following sections will walk you through how to begin operating as a stacker
 
 ### Run a signer
 
-This is a necessary prerequisite to stacking.
+This is a necessary prerequisite to stacking, unless you are delegating your STX tokens to a pool operator.
 
 Running a signer involves setting up a hosted production environment that includes both a Stacks Node and the Stacks Signer. For more information, refer to the [running a signer doc](https://github.com/stacksfoundation/NAKA-REPO/issues/279).
 
@@ -39,9 +41,9 @@ Once the signer software is running, the signer entity needs to keep track of th
 The main difference with Stacking in Nakamoto is that the Signer (either solo Stacker or signer running a pool) needs to include new parameters in their Stacking transactions. These are Clarity transactions that Signers will call when interacting with the `pox-4.clar` contract. Interacting with that contract is how you as a Signer actually stack your STX tokens.
 
 {% hint style="info" %}
-The current pox-4 contract address can be found by visiting the following endpoint of the Hiro API: [https://api.nakamoto-1.hiro.so/v2/pox](https://api.nakamoto-1.hiro.so/v2/pox).
+The current pox-4 contract address can be found by visiting the following endpoint of the Hiro API: [https://api.nakamoto.testnet.hiro.so/v2/pox](https://api.nakamoto.testnet.hiro.so/v2/pox).
 
-You can then visit the [Nakamoto explorer](https://explorer.hiro.so/txid/0xecd32c2417cbdd04f655d7073876c225f7db3bd1e4427a3483cffb42d01b6a57?chain=testnet\&api=https://api.nakamoto-1.hiro.so) to view the contract and pass in the contract id.
+You can then visit the [Nakamoto Explorer](https://explorer.hiro.so/?chain=testnet\&api=https://api.nakamoto.testnet.hiro.so) to view the contract and pass in the contract id.
 
 You may want to review this contract to familiarize yourself with it. Note that this endpoint may change as testnet evolves.
 {% endhint %}
@@ -130,7 +132,7 @@ Now that you have your signer signature generated, it's time to start stacking. 
 ### Solo Stacking
 
 {% hint style="info" %}
-Note that in order to solo stack, you need to have the minimum number of STX tokens. This number can be found by visiting the pox endpoint of Hiro's API at [https://api.nakamoto-1.hiro.so/v2/pox](https://api.nakamoto-1.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX)
+Note that in order to solo stack, you need to have the minimum number of STX tokens. This number can be found by visiting the pox endpoint of Hiro's API at [https://api.nakamoto.testnet.hiro.so/v2/pox](https://api.nakamoto.testnet.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX)
 {% endhint %}
 
 #### Call the function `stack-stx`
@@ -203,9 +205,7 @@ At this point, the STX are committed to the signer, and the signer has some “a
 The signer cannot call this until the total number of STX committed is larger than the minimum threshold required to Stack. This threshold is a function of the total number of liquid STX. At the moment, the threshold is 90,000 STX.
 
 {% hint style="info" %}
-This number varies and can be found by visiting the pox endpoint of Hiro's API at [https://api.nakamoto-1.hiro.so/v2/pox](https://api.nakamoto-1.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX).
-
-Note that API endpoint is specifically for the current version of the Nakamoto testnet.
+This number varies and can be found by visiting the pox endpoint of Hiro's API at [https://api.nakamoto.testnet.hiro.so/v2/pox](https://api.nakamoto.testnet.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX).
 {% endhint %}
 
 Once the threshold is reached, the signer calls `stack-aggregation-commit`. This is the point where the signer must provide their signer key and signer key signature. The arguments are:
