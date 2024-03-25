@@ -57,7 +57,7 @@ bitcoind  or bitcoin-qt
 While it's syncing, you can track the progress with `bitcoin-cli` or the logfile (will be located where the chainstate is stored, i.e. `/bitcoin/debug.log`):
 
 ```bash
-$ bitcoin-cli getblockchaininfo | jq .blocks
+$ bitcoin-cli getblockchaininfo | grep blocks
 773281
 ```
 
