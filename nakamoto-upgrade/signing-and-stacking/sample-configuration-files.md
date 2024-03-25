@@ -38,7 +38,7 @@ This is the configuration you'll need to run a Nakamoto Stacks follower node if 
 
 An overview of all Stacks node configuration options can be found in the [Stacks Node Configuration](../../stacks-in-depth/nodes-and-miners/stacks-node-configuration.md) doc.
 
-Additions necessary specifically to run a signer are the `[connection_options]` and `[[events_observer]]` sections.
+Additions necessary specifically to run a signer are the `[connection_options]` and `[[events_observer]]` sections and the `stacker = true` line. There are also a few comments detailing other lines that need to change.
 
 ```toml
 [node]
@@ -50,6 +50,7 @@ prometheus_bind = "0.0.0.0:9153"
 working_dir = "/change/me" # Change to data directory you would like to use for your node
 wait_time_for_microblocks = 0
 mine_microblocks = false
+stacker = true # required if you are running a signer
 
 [connection_options]
 block_proposal_token = "12345" # any string, must match the `auth_password` in signer config
