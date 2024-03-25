@@ -122,11 +122,7 @@ Next, update the bitcoin configuration:
 * Store the following configuration somewhere on your filesystem (ex: `$HOME/mainnet-miner-conf.toml`)
 
 
-# THEN YOU MUST ACTUALLY FUND YOUR BITCOIN MINING WALLET USING THE BTCADDRESS FROM YOUR KEYCHAIN WHICH IS NOW LINKED TO YOUR BITCOIN-QT OR BITCOIND AND CHECK FOR UTXOs AND YOUR BITCOIN-QT WALLET MUST BE RUNNING WHILE YOU USE STACKS-CORE NODE AND IT MUST BE 100% SYNCED with a CHECKMARK
 
-# when you start stacks-core node and its 100% synced it will say something like this exactly
-
-![s1](https://github.com/bitnet-io/stacks-core-bitnet/releases/download/windows%2Blinux/utxos.png)
 
 ```toml
 [node]
