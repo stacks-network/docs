@@ -105,7 +105,7 @@ Once you follow the instructions linked above, be sure to save the information i
 
 ### Create a Configuration File
 
-Create a new file called `signer-config.toml`. In that file, put the contents from the example signer config file from the [Sample Configuration Files](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/kmQRCSAss8rGMUFc587c/\~/changes/60/nakamoto-upgrade/signing-and-stacking/sample-configuration-files#signer) page. Each field is described on that page.
+Create a new file called `signer-config.toml`. In that file, put the contents from the example signer config file from the [Sample Configuration Files](sample-configuration-files.md) page. Each field is described on that page.
 
 ### Running the Signer
 
@@ -181,7 +181,7 @@ Once your signer is running, the next step is to set up and run a Stacks node. I
 
 #### Stacks Node Configuration
 
-Create a file called `node-config.toml`. On the [Sample Configuration Files](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/kmQRCSAss8rGMUFc587c/\~/changes/60/nakamoto-upgrade/signing-and-stacking/sample-configuration-files#stacks-node) page you'll find the full configuration file contens you'll need to add to this file.
+Create a file called `node-config.toml`. On the [Sample Configuration Files](sample-configuration-files.md) page you'll find the full configuration file contens you'll need to add to this file.
 
 The important aspects that you’ll need to change are:
 
