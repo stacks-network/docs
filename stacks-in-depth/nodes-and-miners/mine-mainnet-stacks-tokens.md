@@ -164,8 +164,25 @@ Your node should start. It will take some time to sync, and then your miner will
 In case you are running into issues or would like to see verbose logging, you can run your node with debug logging enabled. In the command line, run:
 
 ```bash
-STACKS_LOG_DEBUG=1 stacks-node start --config Config.toml
+STACKS_LOG_DEBUG=1 stacks-node start --config mainnet-miner-conf.toml
 ```
+
+***
+
+### Optional: Running a Stacks Blockchain miner with Docker
+
+Alternatively, you can run a Stacks mainnet miner with Docker.
+
+:::caution Ensure you have [Docker](https://docs.docker.com/get-docker/) installed. :::
+
+#### Generate a Keychain and Get Some Tokens
+
+Generate a keychain:
+
+```bash
+docker run -i node:14-alpine npx @stacks/cli make_keychain 2>/dev/null | jq -r
+```
+
 
 We need to get some BTC to that address. You should be able to transfer BTC to this address using a cryptocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
