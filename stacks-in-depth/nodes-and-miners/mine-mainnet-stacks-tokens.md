@@ -167,6 +167,73 @@ In case you are running into issues or would like to see verbose logging, you ca
 STACKS_LOG_DEBUG=1 stacks-node start --config Config.toml
 ```
 
+We need to get some BTC to that address. You should be able to transfer BTC to this address using a cryptocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
+
+#### Update Stacks Blockchain Docker Configuration File
+
+Use the steps oulined above to create the configuration file
+
+#### Start the Stacks Blockchain miner with Docker
+
+:::info The ENV VARS `RUST_BACKTRACE` and `STACKS_LOG_DEBUG` are optional. If removed, debug logs will be disabled :::
+
+```bash
+docker run -d \
+  --name stacks_miner \
+  --rm \
+  --network host \
+  -e RUST_BACKTRACE="full" \
+  -e STACKS_LOG_DEBUG="1" \
+  -v "$HOME/mainnet-miner-conf.toml:/src/stacks-node/mainnet-miner-conf.toml" \
+  -v "/stacks-blockchain:/stacks-blockchain" \
+  -p 20443:20443 \
+  -p 20444:20444 \
+  blockstack/stacks-blockchain:latest \
+/bin/stacks-node start --config /src/stacks-node/mainnet-miner-conf.toml
+```
+
+You can review the node logs with this command:
+
+```bash
+docker logs -f stacks_miner
+```
+
+### Optional: Running in Kubernetes with Helm
+
+In addition, you're also able to run a Stacks miner in a Kubernetes cluster using the [stacks-blockchain Helm chart](https://github.com/stacks-network/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
+
+Ensure you have the following prerequisites installed:
+
+* [Docker](https://docs.docker.com/get-docker/)
+* [minikube](https://minikube.sigs.k8s.io/docs/start/) (Only needed if standing up a local Kubernetes cluster)
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+* [helm](https://helm.sh/docs/intro/install/)
+
+#### Generate keychain and get some tokens
+
+Use the steps outlined above
+
+#### Install the chart and run the miner
+
+To install the chart with the release name `my-release` and run the node as a miner:
+
+```bash
+minikube start # Only run this if standing up a local Kubernetes cluster
+helm repo add blockstack https://charts.blockstack.xyz
+helm install my-release blockstack/stacks-blockchain \
+  --set config.node.miner=true \
+  --set config.node.seed="replace-with-your-privateKey-from-generate-keychain-step" \
+  --set config.burnchain.mode="mainnet"
+```
+
+You can review the node logs with this command:
+
+```bash
+kubectl logs -l app.kubernetes.io/name=stacks-blockchain
+```
+
+For more information on the Helm chart and configuration options, please refer to the [chart's homepage](https://github.com/stacks-network/stacks-blockchain/tree/master/deployment/helm/stacks-blockchain).
+
 Your node should start. It will take some time to sync, and then your miner will be running.
 
 you can now also import your mnemonic phrase for your keychain directly into Leather from Hiro as the secret passphrase to manage your STX balance that you mine for
