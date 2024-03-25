@@ -16,13 +16,13 @@
   * [What About Microblocks?](nakamoto-upgrade/nakamoto-in-depth/what-about-microblocks.md)
   * [Bitcoin Reorgs](nakamoto-upgrade/nakamoto-in-depth/bitcoin-reorgs.md)
 * [Nakamoto Rollout Plan](nakamoto-upgrade/nakamoto-rollout-plan.md)
-* [Testnets](nakamoto-upgrade/testnets/README.md)
-  * [Pre-Launch Testnet](nakamoto-upgrade/testnets/pre-launch.md)
-  * [Nakamoto Testnet](nakamoto-upgrade/testnets/nakamoto.md)
+* [Nakamoto Testnet](nakamoto-upgrade/nakamoto.md)
+* [Nakamoto Stacking Quickstart](nakamoto-upgrade/nakamoto-stacking-quickstart.md)
 * [Signing and Stacking](nakamoto-upgrade/signing-and-stacking/README.md)
   * [How to Run a Signer](nakamoto-upgrade/signing-and-stacking/running-a-signer.md)
-  * [How to Stack](nakamoto-upgrade/signing-and-stacking/stacking-flow.md)
+  * [How to Stack (as a signer)](nakamoto-upgrade/signing-and-stacking/stacking-flow.md)
   * [FAQ](nakamoto-upgrade/signing-and-stacking/faq.md)
+  * [Sample Configuration Files](nakamoto-upgrade/signing-and-stacking/sample-configuration-files.md)
 
 ## 🎓 Stacks 101 (Pre-Nakamoto) <a href="#stacks-101" id="stacks-101"></a>
 
