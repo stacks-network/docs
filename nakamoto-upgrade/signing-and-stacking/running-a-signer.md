@@ -122,18 +122,20 @@ When running the Docker container, you’ll need to ensure a few things:
 * You’ll need a volume with at least a few GB of available storage that contains the folder your `db_path` is in. In the above example, that would be /var
 * You’ll need to include your `signer-config.toml` file as noted below with the first `-v` flag
 
-An example command for running the Docker image with ”`docker run`”.
+An example command for running the Docker image with ”`docker run`” is shown below.
 
 Be sure to replace the `STX_SIGNER_PATH` with the correct path to your config file and where you want to install and run the signer. In this example it will be doing so in the current directory.
 
 ```bash
 IMG="blockstack/stacks-core"
 VER="2.5.0.0.0-rc1"
-STX_SIGNER_CONFIG="./signer-config.toml"
+STX_SIGNER_PATH="./"
+STX_SIGNER_DATA="$STX_SIGNER_PATH/data"
+STX_SIGNER_CONFIG="$STX_SIGNER_PATH/signer-config.toml"
 
 docker run -d \
     -v $STX_SIGNER_CONFIG:/config.toml \
-    -v /var/stacks \
+    -v $STX_SIGNER_DATA:/var/stacks \
     -p 30000:30000 \
     -e RUST_BACKTRACE=full \
     -e BLOCKSTACK_DEBUG=0 \
