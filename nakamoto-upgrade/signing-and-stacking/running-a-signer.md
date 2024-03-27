@@ -10,7 +10,7 @@
 
 In order to run a signer, you'll need to run a signer and a Stacks node side-by-side. Specifically, you'll want to run a testnet follower node. Instructions for doing this are listed below in the "Running Your Stacks Node" section. The signer will monitor for events coming from the stacks node and is in charge of using the generated account (next section) to sign incoming Stacks blocks sent from the Stcks node.
 
-This doc will provide instructions on how to set up both using either Docker or building from source. Binaries will not be available in the initial release but will be released at a later date.&#x20;
+This doc will provide instructions on how to set up both using either Docker or building from source. Binaries will not be available in the initial release but will be released at a later date.
 
 It will also walk through how to set up the config files to get the signer and Stacks node communicating correctly.
 
@@ -26,11 +26,9 @@ The Nakamoto release and thus the signer software you'll want to run is containe
 
 <summary>Signer Checklist</summary>
 
-
-
 Detailed steps for each of these are laid out below, but this checklist is being included as a way to quickly reference if you have taken all the appropriate actions to run a signer.
 
-### Pre-Launch Setup
+#### Pre-Launch Setup
 
 * [ ] Ensure your system meets the following requirements:
   * 4 vCPU
@@ -38,12 +36,12 @@ Detailed steps for each of these are laid out below, but this checklist is being
   * 150 GB storage (250 GB if running a Stacks node)
 * [ ] Acquire Docker and basic knowledge of Stacks accounts, stacking, and the Nakamoto stacking flow (links provided below).
 
-### Preflight Setup
+#### Preflight Setup
 
 * [ ] Generate a new private key on testnet using stacks-cli.
 * [ ] Save the generated account information securely.
 
-### Configuration Setup
+#### Configuration Setup
 
 * [ ] Create a `signer-config.toml` file with necessary configurations:
   * node\_host
@@ -54,7 +52,7 @@ Detailed steps for each of these are laid out below, but this checklist is being
   * stacks\_private\_key
 * [ ] Store `signer-config.toml` securely and note down the values used.
 
-### Running the Signer
+#### Running the Signer
 
 * [ ] Decide whether to run the signer using Docker (recommended) or as a binary.
 * [ ] If using Docker:
@@ -65,12 +63,12 @@ Detailed steps for each of these are laid out below, but this checklist is being
   * [ ] Build `stacks-core` from source or download the pre-built binary.
   * [ ] Run the signer using the command: `stacks-signer run --config <path_to_config>`.
 
-### Verify Signer Operation
+#### Verify Signer Operation
 
 * [ ] Check that the signer is listening on its configured endpoint.
 * [ ] Confirm that there are no errors and the system is ready for connections.
 
-### Setting Up the Stacks Node
+#### Setting Up the Stacks Node
 
 * [ ] Create a `node-config.toml` with the necessary settings:
   * block\_proposal\_token
@@ -83,12 +81,12 @@ Detailed steps for each of these are laid out below, but this checklist is being
   * [ ] Download the appropriate binary.
   * [ ] Run it with the command: `./stacks-node start --config <path_to_config>`.
 
-### Verify Stacks Node Operation
+#### Verify Stacks Node Operation
 
 * [ ] Check the Stacks node logs for successful connection to the signer.
 * [ ] Confirm that the node is syncing Bitcoin headers properly.
 
-### Setup Stacks Accounts
+#### Setup Stacks Accounts
 
 * [ ] Set up a “pool operator” wallet in a Stacks wallet (e.g., Leather or Xverse).
 * [ ] Fund the pool operator wallet with STX (testnet) sufficient for transaction fees.
@@ -278,4 +276,4 @@ Before the Nakamoto transition, signers need a small amount of STX to cover tran
 
 In a previous step, where you generated a keychain, an address field was included in the output. This is your signer wallet’s STX address. You can also choose to use the mnemonic to access the wallet with [Leather](https://leather.io) or [Xverse](https://www.xverse.app).
 
-Transfer funds (or use the faucet) into the signer’s wallet address. We recommend at least 100-200 STX to cover transaction fees.\
+Transfer funds (or use the faucet) into the signer’s wallet address. We recommend at least 100-200 STX to cover transaction fees.\\

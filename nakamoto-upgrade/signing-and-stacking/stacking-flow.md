@@ -296,3 +296,138 @@ During the prepare phase, the signers perform DKG through StackerDB messages. On
 During the instantiation phase (before fast blocks and full Nakamoto rules go live), the signer must pay a STX transaction fee for this transaction to be confirmed. Critically, this means that a minimum balance must be kept in the STX address associated with the signer’s key. There is a config field called `tx_fee_ms` (transaction fee in micro-stacks) that can be optionally configured to set the fee for these transactions. If the config field is omitted, the fee defaults to 10,000 micro-stacks (0.01 STX).
 
 During the Activation phase (after fast blocks and full Nakamoto rules have been activated), the signer doesn’t need to pay fees for this transaction, so no STX balance needs to be kept in that address.
+
+### Stacking with Lockstacks
+
+#### Prerequisite: generate a signature
+
+Before you can stack using Lockstacks, you'll need to make sure you have generated your signer signature. There are two ways to do this: through the CLI or using Lockstacks itself.
+
+#### Using the stacks-signer CLI
+
+If you already have your signer configured and set up, you can use the stacks-signer CLI to generate this signature. You can either SSH into your running signer or use the stacks-signer CLI locally. If using the CLI locally, you will need to ensure you have a matching configuration file located on your filesystem. Having a matching configuration file is important to ensure that the signer public key you make in Stacking transactions is the same as in your hosted signer.
+
+The CLI command is:
+
+```bash
+stacks-signer generate-stacking-signature \
+  --pox-address bc123... \
+  --reward-cycle 100 \
+  --config ./config.toml \
+  --period 12 \
+  --topic stack-stx
+```
+
+These arguments are:
+
+* pox-address: the BTC address where the signer wants to receive Stacking rewards
+* reward-cycle: For solo stacking, this must refer to the current reward cycle where the user will broadcast their Stacking transaction. For the stack-aggregation-commit transaction, used in delegated signing, this should match the reward-cycle they are using as an argument in stack-aggregation-commit.
+* config: path to a local Signer configuration file
+* period: for solo stacking, this refers to the lock-period argument the user makes in stack-stx and the extend-count argument in stack-extend. For stack-aggregation-commit, this should equal 1.
+* topic: This string is dependent on the Stacking function where the signature will be used.
+  * For stack-stx, the topic needs to be stack-stx
+  * For stack-extend, the topic needs to be stack-extend
+  * For stack-aggregation-commit, the topic needs to be agg-commit.
+
+Once the command is run, the CLI will output two fields:
+
+* Signature: 0xaaaaaaaaa
+* Public Key: 0xbbbbbb
+
+You will use both the signature and public key in Stacking transactions.
+
+#### Using Lockstacks to generate the signature
+
+{% hint style="info" %}
+At the time of writing, this has only been tested using the [Leather](https://leather.io) wallet.
+{% endhint %}
+
+You can visit [staging.lockstacks.com](http://staging.lockstacks.com) to generate a signer key signature. Make sure you’re connected to the correct network (ie Nakamoto Testnet).\
+\
+To generate a signer key signature, it’s important that you’ve logged in Leather with the same secret key that was used to [generate your signer key](running-a-signer.md#preflight-setup-1). Once you’ve setup that account on Leather, you can log in to Lockstacks.\
+\
+Click the link “Signer key signature” at the bottom of the page. This will open the “generate a signer key signature” page.
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+The fields are:
+
+* Reward cycle:&#x20;
+  * For all solo stacking transactions, this must equal the current reward cycle, not the cycle in which they will start stacking. The field defaults to the current reward cycle.
+  * For stack-aggregation-commit, this field must equal the cycle used in that function’s “reward cycle” argument. Typically, that equates to current\_cycle + 1.
+* Bitcoin address: the PoX reward address that can be used
+* Topic: the stacking function that will use this signature
+* Max amount: max amount of STX that can be used. Defaults to “max possible amount”
+* Auth ID: defaults to random int
+* Duration: must match the number of cycles used in the stacking transaction. For stack-aggregation-commit, use “1”.
+
+{% hint style="warning" %}
+Each of these fields must be exactly matched in order for the Stacking transaction to work. Future updates to Lockstacks will verify the signature before the transaction is made.
+{% endhint %}
+
+Click the “generate signature” button to popup a Leather page where you can generate the signature. Once you submit that popup, Lockstacks will have the signer key and signature you generated.
+
+After you sign that message, you'll see the information you need to share with Stackers who are delegating to you, including the signer public key and signature.
+
+You can click the “copy” icon next to “signer details to share with stackers”. This will copy a JSON string, which can be directly pasted into the Lockstacks page where you make your Stacking transaction. Alternatively, this information can be shared and entered manually.
+
+We'll cover the Lockstacks pages for actually making those transactions next.
+
+### Solo Stacking
+
+#### stack-stx
+
+To start, you'll visits Lockstacks and clicks the “Stack independently” button on the home page.
+
+This page will allow you to input the following input:
+
+* The amount of STX you want to lock
+* The duration (in number of cycles) to lock for
+* Your BTC address where you will receive Stacking rewards
+* New fields:
+  * Your signer public key
+  * Your signer key signature (this is what you generated in the previous step)
+  * Auth ID
+  * Max amount
+
+#### stack-extend
+
+If you want to extend the amount of time that your STX will be locked for, you can use the stack-extend page on Lockstacks.
+
+If you’re already stacking, the home page will provide a link to “view stacking details”. From there, you can choose to extend.
+
+On this page are the following fields:
+
+* The number of cycles you want to extend for
+* Your BTC address to receive rewards
+* New fields:
+  * Signer public key
+  * Signer key signature
+
+### Delegated stacking
+
+The first step with delegated stacking involves a stacker delegating their Stacks to a specific signer. Stackers can do this by visiting the “Stack in a pool” page on Lockstacks.
+
+Signers must provide a STX address (a “pool admin address”) that will manage delegations. This is a separate address from the signer’s private key, and this can be any address. This address is what will be used when making transactions to confirm and aggregate delegated STX.
+
+Signers can log in to LockStacks and visit [https://lockstacks.com/pool-admin](https://lockstacks.com/pool-admin?chain=mainnet) to make pool management transactions.
+
+#### delegate-stack-stx
+
+Once a user has delegated to a signer, the signer must call delegate-stack-stx for each individual stacker.
+
+There is no change to this flow in Nakamoto.
+
+#### stack-aggregation-commit
+
+Once a pool has enough delegated STX to become a signer, the pool admin needs to visit the stack-aggregation-commit page on Lockstacks. The pool admin enters the following information:
+
+* Reward cycle: the reward cycle where the admin is “commiting” delegated STX. This must be done for every individual reward cycle where the pool will be acting as a signer.
+* BTC address
+* New fields:
+  * Signer public key
+  * Signer key signature
+  * Auth ID
+  * Max amount
+
+Once this transaction has been confirmed, the signer is eligible to be a signer for an upcoming reward cycle.

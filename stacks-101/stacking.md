@@ -67,7 +67,7 @@ Keep in mind that the target duration for a reward cycles is \~2 weeks. This dur
 
 ### Stacking delegation flow
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 The Stacking flow is different for delegation use cases:
 
