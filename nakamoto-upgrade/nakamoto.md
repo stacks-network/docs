@@ -51,7 +51,7 @@ After a DKG (Distributed Key Generation) round, signer votes are submitted to th
 
 The explorer will allow you to view fast blocks as they come in. Be sure to turn on “Live updates” to see them coming in in real time. [https://explorer.hiro.so/?chain=testnet\&api=https://api.nakamoto.testnet.hiro.so](https://explorer.hiro.so/?chain=testnet\&api=https://api.nakamoto.testnet.hiro.so)
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Turn on Live Updates to view blocks coming in in real time</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>Turn on Live Updates to view blocks coming in in real time</p></figcaption></figure>
 
 #### Local Development Environment
 
