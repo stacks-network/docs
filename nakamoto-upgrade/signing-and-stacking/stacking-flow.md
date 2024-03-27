@@ -83,11 +83,11 @@ This will output the information you’ll need to make Stacking transactions, in
 
 #### Using stacks.js
 
-{% hint style="info" %}
-This functionality is built, but it’s still in [a PR in stacks.js](http://stacks.js). In that PR, the README is updated to [demonstrate how to generate a signer signature](https://github.com/hirosystems/stacks.js/blob/3c863e745d24bf6b9c5ad75d2191f861cd01fb10/packages/stacking/README.md#broadcast-the-stacking-transaction).
-{% endhint %}
+The [@stacks/stacking](https://www.npmjs.com/package/@stacks/stacking) NPM package provides interfaces to generate and use signer signatures. You'll need to use `@stacks/stacking` package version 6.13.0.
 
-The [@stacks/stacking](https://www.npmjs.com/package/@stacks/stacking) NPM package provides interfaces to generate and use signer signatures.
+There is a new function called `signPoxSignature` that will allow you to generate this signature and pass it in to the stacking function.
+
+More information and code samples can be found on [Hiro's Nakamoto docs](https://docs.hiro.so/nakamoto/stacks-js).
 
 #### Using web applications
 
@@ -182,7 +182,7 @@ The first step, where the delegator sets up their delegation to a signer, is to 
 * Amount
 * Delegate to: the STX address of the signer they’re delegating to. Note that this is different from the “signer key” used. Instead, this is the STX address that is used to make PoX transactions.
 * Until burn height: an optional argument where the delegation expires
-* Pox Address: an option BTC address that, if specified, the signer must use to accept this delegation
+* Pox Address: an optional BTC address that, if specified, the signer must use to accept this delegation
 
 #### Signer “activates” the delegation
 
@@ -202,7 +202,7 @@ This step can happen for many Stackers before going to the next step.
 
 At this point, the STX are committed to the signer, and the signer has some “aggregate balance” of committed STX. The signer is not actually eligible for rewards and signer slots until this step is called.
 
-The signer cannot call this until the total number of STX committed is larger than the minimum threshold required to Stack. This threshold is a function of the total number of liquid STX. At the moment, the threshold is 90,000 STX.
+The signer cannot call this until the total number of STX committed is larger than the minimum threshold required to Stack. This threshold is a function of the total number of liquid STX.
 
 {% hint style="info" %}
 This number varies and can be found by visiting the pox endpoint of Hiro's API at [https://api.nakamoto.testnet.hiro.so/v2/pox](https://api.nakamoto.testnet.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX).
@@ -293,6 +293,6 @@ The signer software is continuously polling the Stacks node to see if it is regi
 
 During the prepare phase, the signers perform DKG through StackerDB messages. Once an aggregate public key is determined, the signer automatically makes a `vote-for-aggregate-key` transaction. No out-of-band action is needed to be taken for this to occur.
 
-During Epoch 2.5 (Pre-Launch Testnet), the signer must pay a STX transaction fee for this transaction to be confirmed. Critically, this means that a minimum balance must be kept in the STX address associated with the signer’s key. There is a config field called `tx_fee_ms` (transaction fee in micro-stacks) that can be optionally configured to set the fee for these transactions. If the config field is omitted, the fee defaults to 10,000 micro-stacks (0.01 STX).
+During the instantiation phase (before fast blocks and full Nakamoto rules go live), the signer must pay a STX transaction fee for this transaction to be confirmed. Critically, this means that a minimum balance must be kept in the STX address associated with the signer’s key. There is a config field called `tx_fee_ms` (transaction fee in micro-stacks) that can be optionally configured to set the fee for these transactions. If the config field is omitted, the fee defaults to 10,000 micro-stacks (0.01 STX).
 
-During Epoch 3.0 (Nakamoto Testtnet), the signer doesn’t need to pay fees for this transaction, so no STX balance needs to be kept in that address.
+During the Activation phase (after fast blocks and full Nakamoto rules have been activated), the signer doesn’t need to pay fees for this transaction, so no STX balance needs to be kept in that address.
