@@ -148,7 +148,7 @@ Once imported, we need to get some BTC to that address. You should be able to tr
 
 #### Update the Stacks Blockchain Configuration File
 
-Now, we need to configure our node to use this Bitcoin keychain. Copy the [sample mainnet miner config](https://raw.githubusercontent.com/stacks-network/stacks-blockchain/master/main/stacks-node/conf/mainnet-miner-conf.toml) to your local machine in a _memorable_ location like `$HOME/mainnet-miner-conf.toml`.
+Now, we need to configure our node to use this Bitcoin keychain. Copy the [sample mainnet miner config](https://raw.githubusercontent.com/stacks-network/stacks-blockchain/master/testnet/stacks-node/conf/mainnet-miner-conf.toml) to your local machine in a _memorable_ location like `$HOME/mainnet-miner-conf.toml`.
 
 Next, update the stacks configuration:
 
