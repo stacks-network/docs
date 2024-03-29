@@ -38,7 +38,7 @@ It is important to note that this control does not extend to being able to chang
 
 In order to incentivize honest behavior on the part of validators, stake can be slashed as a punishment. Since PoX stackers do not have any say in transaction validity, this punishment mechanism does not exist and is not necessary in PoX.
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks network.
 
