@@ -68,7 +68,7 @@ This is the primary testnet with Nakamoto instantiated. Pox-4 is active but Naka
 
 This testnet is what is covered in this doc.
 
-Here is graphic outlining the differeces, click to zoom.
+Here is graphic outlining the differences, click to zoom.
 
 <img src="../.gitbook/assets/image (1).png" alt="" data-size="original">
 

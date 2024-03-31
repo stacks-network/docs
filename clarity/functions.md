@@ -372,7 +372,7 @@ Introduced in: **Clarity 2**
 
 **description:**
 
-Returns the one's compliement (sometimes also called the bitwise compliment or not operator) of `i1`, effectively reversing the bits in `i1`. In other words, every bit that is `1` in ì1`will be`0`in the result. Conversely, every bit that is`0`in`i1`will be`1\` in the result.
+Returns the one's complement (sometimes also called the bitwise compliment or not operator) of `i1`, effectively reversing the bits in `i1`. In other words, every bit that is `1` in ì1`will be`0`in the result. Conversely, every bit that is`0`in`i1`will be`1\` in the result.
 
 **example:**
 
@@ -1159,9 +1159,9 @@ Introduced in: **Clarity 1**
 
 **description:**
 
-`ft-mint?` is used to increase the token balance for the `recipient` principal for a token type defined using `define-fungible-token`. The increased token balance is _not_ transfered from another principal, but rather minted.
+`ft-mint?` is used to increase the token balance for the `recipient` principal for a token type defined using `define-fungible-token`. The increased token balance is _not_ transferred from another principal, but rather minted.
 
-If a non-positive amount is provided to mint, this function returns `(err 1)`. Otherwise, on successfuly mint, it returns `(ok true)`.
+If a non-positive amount is provided to mint, this function returns `(err 1)`. Otherwise, on successfully mint, it returns `(ok true)`.
 
 **example:**
 
