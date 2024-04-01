@@ -16,7 +16,9 @@ To participate as a miner on testnet, you must have access to a testnet bitcoin 
 
 First, download a [bitcoin binary](https://bitcoin.org/en/download), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/testnet/bitcoin.md#source-install) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/testnet/prerequisites.md#install-required-packages)).
 
+{% hint style="info" %}
 **Tip:** It is recommened to use a persistent location for the chainstate, in the steps below we're using `/bitcoin`.
+{% endhint %}
 
 #### Update the Bitcoin Configuration File
 
@@ -56,7 +58,9 @@ Finally, start `bitcoind` as follows (adjust the `conf` path to where it was cre
 bitcoind -conf=$HOME/bitcoin.conf
 ```
 
+{% hint style="info" %}
 **Note:** It will take a few hours for the node to synchronize with Bitcoin Testnet.
+{% endhint %}
 
 While it's syncing, you can track the progress with `bitcoin-cli` or the logfile (will be located where the chainstate is stored, i.e. `/bitcoin/testnet3/debug.log`):
 
@@ -66,7 +70,7 @@ $ bitcoin-cli \
  -rpcport=18332 \
  -rpcuser=btcuser \
  -rpcpassword=btcpass \
-  getblockchaininfo | jq .blocks
+getblockchaininfo | jq .blocks
 2583513
 ```
 
@@ -74,9 +78,11 @@ $ bitcoin-cli \
 
 ### Running a Stacks Blockchain miner
 
-First, download a [stacks blockchain binary](https://github.com/stacks-network/stacks-blockchain/releases/latest), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/testnet/stacks-blockchain.md#build-and-install-stacks-blockchain-from-source) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/testnet/prerequisites.md#install-required-packages)).
+First, download the latest tagged [stacks blockchain binary](https://github.com/stacks-network/stacks-blockchain/releases/latest), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/testnet/stacks-blockchain.md#build-and-install-stacks-blockchain-from-source) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/testnet/prerequisites.md#install-required-packages)).
 
+{% hint style="info" %}
 **Tip:** It is recommened to use a persistent location for the chainstate, in the steps below we're using `/stacks-blockchain`.
+{% endhint %}
 
 #### Generate a keychain
 
@@ -92,19 +98,20 @@ After this runs, you should see some JSON printed to the screen that looks like 
 
 ```json
 {
-  "mnemonic": "put cushion unique anxiety tooth brand record call toy able artwork actual disagree round drum equip surprise injury matter merge desk flash service rather",
+  "mnemonic": "spare decade dog ghost luxury churn flat lizard inch nephew nut drop huge divert mother soccer father zebra resist later twin vocal slender detail",
   "keyInfo": {
-    "privateKey": "3d17ffc45de1682a076a294753335cae5531d8ea50d3ca67a84e00cb6c84cf4d01",
-    "publicKey": "0299445e0a04d9d7b9dcf85837960c6b7da279d1dc2c1f632de2e5785b56feb885",
-    "address": "ST1P67504RRJBG85ZG7MVZX6WVEG5Q766YD97R65H",
-    "btcAddress": "mqQ4ZaxBu5CP5K8yuvMnS3PoELb52N1h8Q",
-    "wif": "cPdTdMgww2njhnekUZmHmFNKsWAjVdCR4cfvD2Y4UQhFzMmwoW33",
+    "privateKey": "ooxeemeitar4ahw0ca8anu4thae7aephahshae1pahtae5oocahthahho4ahn7eici",
+    "address": "STTXOG3AIHOHNAEH5AU6IEX9OOTOH8SEIWEI5IJ9",
+    "btcAddress": "Ook6goo1Jee5ZuPualeiqu9RiN8wooshoo",
+    "wif": "rohCie2ein2chaed9kaiyoo6zo1aeQu1yae4phooShov2oosh4ox",
     "index": 0
   }
 }
 ```
 
-**Warning:** **Do not lose this information** - we'll need to use the `privateKey`, `btcAddress` and `wif` fields in later steps.
+{% hint style="danger" %}
+**Do not lose this information** - we'll need to use the `privateKey`, `btcAddress` and `wif` fields in later steps.
+{% endhint %}
 
 The above `wif` (`cPdTdMgww2njhnekUZmHmFNKsWAjVdCR4cfvD2Y4UQhFzMmwoW33`) will then need to be imported into the bitcoin testnet network.
 
@@ -126,7 +133,9 @@ bitcoin-cli \
 
 Now, import your wif (bitcoin private key) inside the newly created wallet.
 
-**Note:** Be sure to replace `<wif from JSON above>` with the bitcoin address in the `Generate a keychain` step.
+{% hint style="info" %}
+**Note:** Be sure to replace `<wif from JSON above>` with the wif value in the `Generate a keychain` step.
+{% endhint %}
 
 ```bash
 bitcoin-cli \
@@ -136,7 +145,9 @@ bitcoin-cli \
   importprivkey <wif from JSON above>
 ```
 
+{% hint style="info" %}
 **Note:** The import may take a while, because a wallet rescan is triggered. After the import has completed successfully, you can check that the address is imported with `getaddressinfo`.
+{% endhint %}
 ```bash
 bitcoin-cli \
   -rpcconnect=127.0.0.1 \
@@ -155,7 +166,7 @@ Now, we need to configure our node to use this Bitcoin keychain. Copy the [sampl
 Next, update the stacks configuration:
 
 * **Optional, but recommended:** Use a persistent directory to store the Stacks chainstate, i.e. `working_dir = "/stacks-blockchain"`
-* From the `make_keychain` step, modify the `seed` and `local_peer_seed` values with `privatekey`
+* From the `make_keychain` step, modify the `seed` value with `privatekey`
 * Store the following configuration somewhere on your filesystem (ex: `$HOME/testnet-miner-conf.toml`)
 
 ```toml
@@ -164,7 +175,6 @@ working_dir = "/stacks-blockchain"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
 seed = "<privateKey from JSON above>"
-local_peer_seed = "<privateKey from JSON above>"
 miner = true
 bootstrap_node = "047435c194e9b01b3d7f7a2802d6684a3af68d05bbf4ec8f17021980d777691f1d51651f7f1d566532c804da506c117bbf79ad62eea81213ba58f8808b4d9504ad@testnet.stacks.co:20444"
 mine_microblocks = false
@@ -221,7 +231,9 @@ STACKS_LOG_DEBUG=1 stacks-node start --config $HOME/testnet-miner-conf.toml
 
 Alternatively, you can run a Stacks testnet miner with Docker.
 
-**Caution:** Ensure you have [Docker](https://docs.docker.com/get-docker/) installed.
+{% hint style="warning" %}
+Ensure you have [Docker](https://docs.docker.com/get-docker/) installed.
+{% endhint %}
 
 #### Generate a Keychain and Get Some Tokens
 
@@ -239,7 +251,9 @@ Use the steps oulined above to create the configuration file.
 
 #### Start the Stacks Blockchain miner with Docker
 
+{% hint style="info" %}
 **Info:** The ENV VARS `RUST_BACKTRACE` and `STACKS_LOG_DEBUG` are optional. If removed, debug logs will be disabled.
+{% endhint %}
 
 ```bash
 docker run -d \
@@ -253,7 +267,7 @@ docker run -d \
   -p 20443:20443 \
   -p 20444:20444 \
   blockstack/stacks-blockchain:latest \
-  /bin/stacks-node start --config /src/stacks-node/testnet-miner-conf.toml
+/bin/stacks-node start --config /src/stacks-node/testnet-miner-conf.toml
 ```
 
 You can review the node logs with this command:
