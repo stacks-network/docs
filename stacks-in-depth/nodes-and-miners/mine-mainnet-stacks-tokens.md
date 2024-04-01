@@ -18,7 +18,9 @@ First, download a [bitcoin binary](https://bitcoin.org/en/download), or [build f
 
 If you want to learn more about the technical details of mining, please review the mining guide:
 
+{% hint style="info" %}
 **Tip:** It is recommened to use a persistent location for the chainstate, in the steps below we're using `/bitcoin`.
+{% endhint %}
 
 #### Update the Bitcoin Configuration File
 
@@ -54,7 +56,9 @@ Finally, start `bitcoind` as follows (adjust the `conf` path to where it was cre
 bitcoind -conf=$HOME/bitcoin.conf
 ```
 
+{% hint style="info" %}
 **Note:** It will take a few hours for the node to synchronize with Bitcoin Mainnet.
+{% endhint %}
 
 While it's syncing, you can track the progress with `bitcoin-cli` or the logfile (will be located where the chainstate is stored, i.e. `/bitcoin/debug.log`):
 
@@ -64,7 +68,7 @@ $ bitcoin-cli \
  -rpcport=8332 \
  -rpcuser=btcuser \
  -rpcpassword=btcpass \
-  getblockchaininfo | jq .blocks
+getblockchaininfo | jq .blocks
 836745
 ```
 
@@ -72,9 +76,11 @@ $ bitcoin-cli \
 
 ### Running a Stacks Blockchain miner
 
-First, download a [stacks blockchain binary](https://github.com/stacks-network/stacks-blockchain/releases/latest), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/main/stacks-blockchain.md#build-and-install-stacks-blockchain-from-source) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/main/prerequisites.md#install-required-packages)).
+First, download the latest tagged [stacks blockchain binary](https://github.com/stacks-network/stacks-blockchain/releases/latest), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/main/stacks-blockchain.md#build-and-install-stacks-blockchain-from-source) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/main/prerequisites.md#install-required-packages)).
 
+{% hint style="info" %}
 **Tip:** It is recommened to use a persistent location for the chainstate, in the steps below we're using `/stacks-blockchain`.
+{% endhint %}
 
 #### Generate a keychain
 
@@ -90,19 +96,21 @@ After this runs, you should see some JSON printed to the screen that looks like 
 
 ```json
 {
-  "mnemonic": "stomach strong dog warfare drip garbage vendor among argue flash anchor change any credit purity learn gas unfold urban electric van alcohol lobster reflect",
+  "mnemonic": "spare decade dog ghost luxury churn flat lizard inch nephew nut drop huge divert mother soccer father zebra resist later twin vocal slender detail",
   "keyInfo": {
-    "privateKey": "4b48f79eea88bb20de75148ecc8e5480463048b937d9c77801b388b4e1b49d2d01",
-    "publicKey": "03a707458e468f7ee6513f8135500780576dca2b52c98ae909a538f75e4901aad5",
-    "address": "SP2D9W82GHM1V0ACDRVCDNKJV0J6NS7KJ25WHHRMH",
-    "btcAddress": "1F6YVM1E633QDUo9zgT3q7K3T9FYuKJ3RZ",
-    "wif": "Kyk49jsPGen5C1ThhyJJH4CndLk8yLESuQJVGsbbTV3FFF9CRTJG",
+    "privateKey": "ooxeemeitar4ahw0ca8anu4thae7aephahshae1pahtae5oocahthahho4ahn7eici",
+    "address": "SPTXOG3AIHOHNAEH5AU6IEX9OOTOH8SEIWEI5IJ9",
+    "btcAddress": "Ook6goo1Jee5ZuPualeiqu9RiN8wooshoo",
+    "wif": "rohCie2ein2chaed9kaiyoo6zo1aeQu1yae4phooShov2oosh4ox",
     "index": 0
   }
 }
 ```
 
-**Warning:** **Do not lose this information** - we'll need to use the `privateKey`, `btcAddress` and `wif` fields in later steps.
+
+{% hint style="danger" %}
+**Do not lose this information** - we'll need to use the `privateKey`, `btcAddress` and `wif` fields in later steps.
+{% endhint %}
 
 The above `wif` (`Kyk49jsPGen5C1ThhyJJH4CndLk8yLESuQJVGsbbTV3FFF9CRTJG`) will then need to be imported into the bitcoin mainnet network.
 
@@ -124,7 +132,9 @@ bitcoin-cli \
 
 Now, import your wif (bitcoin private key) inside the newly created wallet.
 
-**Note:** Be sure to replace `<wif from JSON above>` with the bitcoin address in the `Generate a keychain` step.
+{% hint style="info" %}
+**Note:** Be sure to replace `<wif from JSON above>` with the wif value in the `Generate a keychain` step.
+{% endhint %}
 
 ```bash
 bitcoin-cli \
@@ -134,7 +144,9 @@ bitcoin-cli \
   importprivkey <wif from JSON above>
 ```
 
+{% hint style="info" %}
 **Note:** The import may take a while, because a wallet rescan is triggered. After the import has completed successfully, you can check that the address is imported with `getaddressinfo`.
+{% endhint %}
 ```bash
 bitcoin-cli \
   -rpcconnect=127.0.0.1 \
@@ -153,7 +165,7 @@ Now, we need to configure our node to use this Bitcoin keychain. Copy the [sampl
 Next, update the stacks configuration:
 
 * **Optional, but recommended:** Use a persistent directory to store the Stacks chainstate, i.e. `working_dir = "/stacks-blockchain"`
-* From the `make_keychain` step, modify the `seed` and `local_peer_seed` values with `privatekey`
+* From the `make_keychain` step, modify the `seed` value with `privatekey`
 * Store the following configuration somewhere on your filesystem (ex: `$HOME/mainnet-miner-conf.toml`)
 
 ```toml
@@ -161,8 +173,7 @@ Next, update the stacks configuration:
 working_dir = "/stacks-blockchain"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-seed = "<privateKey from JSON above>>"
-local_peer_seed = "<privateKey from JSON above>>"
+seed = "<privateKey from JSON above>"
 miner = true
 bootstrap_node = "02da7a464ac770ae8337a343670778b93410f2f3fef6bea98dd1c3e9224459d36b@seed-0.mainnet.stacks.co:20444,02afeae522aab5f8c99a00ddf75fbcb4a641e052dd48836408d9cf437344b63516@seed-1.mainnet.stacks.co:20444,03652212ea76be0ed4cd83a25c06e57819993029a7b9999f7d63c36340b34a4e62@seed-2.mainnet.stacks.co:20444"
 mine_microblocks = false
@@ -204,7 +215,9 @@ STACKS_LOG_DEBUG=1 stacks-node start --config=$HOME/mainnet-miner-conf.toml
 
 Alternatively, you can run a Stacks mainnet miner with Docker.
 
-**Caution:** Ensure you have [Docker](https://docs.docker.com/get-docker/) installed.
+{% hint style="warning" %}
+Ensure you have [Docker](https://docs.docker.com/get-docker/) installed.
+{% endhint %}
 
 #### Generate a Keychain and Get Some Tokens
 
@@ -222,7 +235,9 @@ Use the steps oulined above to create the configuration file.
 
 #### Start the Stacks Blockchain miner with Docker
 
+{% hint style="info" %}
 **Info:** The ENV VARS `RUST_BACKTRACE` and `STACKS_LOG_DEBUG` are optional. If removed, debug logs will be disabled.
+{% endhint %}
 
 ```bash
 docker run -d \
@@ -236,7 +251,7 @@ docker run -d \
   -p 20443:20443 \
   -p 20444:20444 \
   blockstack/stacks-blockchain:latest \
-  /bin/stacks-node start --config /src/stacks-node/mainnet-miner-conf.toml
+/bin/stacks-node start --config /src/stacks-node/mainnet-miner-conf.toml
 ```
 
 You can review the node logs with this command:
@@ -244,6 +259,8 @@ You can review the node logs with this command:
 ```bash
 docker logs -f stacks_miner
 ```
+
+***
 
 ### Optional: Running in Kubernetes with Helm
 
