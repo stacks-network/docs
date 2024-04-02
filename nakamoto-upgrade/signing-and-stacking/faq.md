@@ -4,11 +4,17 @@
 
 <details>
 
-<summary>My signer says it is uninitialized</summary>
+<summary>My signer says it is uninitialized or not registered</summary>
 
 If you get a message like the following saying your signer is uninitialized, that means that it has not registered for the current or upcoming reward cycle (or the burnchain block height is not yet at the second block in the prepare phase) for the signer to know if it is registered.
 
 `Signer spawned successfully. Waiting for messages to process... INFO [1711088054.872542] [stacks-signer/src/runloop.rs:278] [signer_runloop] Running one pass for signer ID# 0. Current state: Uninitialized`
+
+This warning may also look like this:
+
+```
+WARN [1712003997.160121] [stacks-signer/src/runloop.rs:247] [signer_runloop] Signer is not registered for reward cycle 556. Waiting for confirmed registration...
+```
 
 At this point if you want your signer to do something you need someone to either delegate to you or you need to stack on your own for an upcoming reward cycle.
 
@@ -58,7 +64,42 @@ And you are inside a Docker container with default bridging mode, then localhost
 
 </details>
 
+<details>
+
+<summary> I'm getting an error a peer not connecting</summary>
+
+If you get an error about a peer not connecting that looks like the following:
+
+```
+INFO [1711988555.021567] [stackslib/src/net/neighbors/walk.rs:1015] [p2p-(0.0.0.0:20444,0.0.0.0:20443)] local.80000000://(bind=0.0.0.0:20444)(pub=Some(10.0.19.16:20444)): Failed to connect to facade0b+80000000://172.16.60.18:20444: PeerNotConnected
+```
+
+That means that your node is trying to connect to some external node on the network, but is unable to. This is common and can happen for a variety of reasons.
+
+It is not a cause for concern and doesn't impact whether or not your signer is running correctly.
+
+</details>
+
 ### Stacking
+
+<details>
+
+<summary>Why did my Stacking transaction fail?</summary>
+
+There are several reasons why your Stacking transaction might fail.
+
+The first step is to check your failed transaction and see if an error code was provided. You can check what specific error you are getting by looking directly at the pox-4 contract code, but here are some common ones.
+
+* `24` : the `start-burn-height` param was invalid
+* `35`: the signer key signature is invalid
+
+Most of the time, failed transactions are caused by incorrect data being passed into your Stacking transactions.
+
+Usually this is caused by passing an invalid signature or some other invalid parameter.
+
+Be sure to follow the instructions in the [How to Stack](stacking-flow.md) guide and ensure that all of the parameters you are passing are correct.
+
+</details>
 
 <details>
 

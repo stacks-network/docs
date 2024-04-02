@@ -41,11 +41,11 @@ Once the signer software is running, the signer entity needs to keep track of th
 The main difference with Stacking in Nakamoto is that the Signer (either solo Stacker or signer running a pool) needs to include new parameters in their Stacking transactions. These are Clarity transactions that Signers will call when interacting with the `pox-4.clar` contract. Interacting with that contract is how you as a Signer actually stack your STX tokens.
 
 {% hint style="info" %}
-The current pox-4 contract address can be found by visiting the following endpoint of the Hiro API: [https://api.nakamoto.testnet.hiro.so/v2/pox](https://api.nakamoto.testnet.hiro.so/v2/pox).
+The current pox-4 contract address can be found by visiting the following endpoint of the Hiro API: [https://api.testnet.hiro.so/v2/pox](https://api.testnet.hiro.so/v2/pox).
 
-You can then visit the [Nakamoto Explorer](https://explorer.hiro.so/?chain=testnet\&api=https://api.nakamoto.testnet.hiro.so) to view the contract and pass in the contract id.
+You can then visit the [Nakamoto Explorer](https://explorer.hiro.so/?chain=testnet) to view the contract and pass in the contract id.
 
-You may want to review this contract to familiarize yourself with it. Note that this endpoint may change as testnet evolves.
+You may want to review this contract to familiarize yourself with it.
 {% endhint %}
 
 1. `signer-key`: the public key that corresponds to the `stacks_private_key` their signer is using
@@ -62,25 +62,6 @@ Signer signatures are signatures created using a particular signer key. They dem
 * `reward-cycle`: This represents the reward cycle in which the Stacking transaction can be confirmed
 * `pox-address`: The Bitcoin address that is allowed to be used for receiving rewards
 
-#### Using the `stacks-signer` CLI
-
-At the moment, one way to generate this signature is via the stacks-signer binary, which is also used to run the signer. The command generate-stacking-signature will utilize existing configuration along with user-provided arguments to generate a signature.
-
-If you followed the instructions on [running a signer](running-a-signer.md), you should already have this binary.
-
-```bash
-stacks-signer generate-stacking-signature \
-  --pox-address {poxAddress}
-  --reward-cycle {rewardCycle}
-  --method {topic}
-  --period {period}
-  --max-amount {maxAmount}
-  --auth-id {authId}
-  --config {configFile}
-```
-
-This will output the information you’ll need to make Stacking transactions, including your signer public key and the signer signature.
-
 #### Using stacks.js
 
 The [@stacks/stacking](https://www.npmjs.com/package/@stacks/stacking) NPM package provides interfaces to generate and use signer signatures. You'll need to use `@stacks/stacking` package version 6.13.0.
@@ -89,11 +70,79 @@ There is a new function called `signPoxSignature` that will allow you to generat
 
 More information and code samples can be found on [Hiro's Nakamoto docs](https://docs.hiro.so/nakamoto/stacks-js).
 
-#### Using web applications
+#### Using the stacks-signer CLI
 
-Future releases of Stacking web apps will allow you to generate a Signer signature using a Stacks wallet.
+If you already have your signer configured and set up, you can use the stacks-signer CLI to generate this signature. You can either SSH into your running signer or use the stacks-signer CLI locally. If using the CLI locally, you will need to ensure you have a matching configuration file located on your filesystem. Having a matching configuration file is important to ensure that the signer public key you make in Stacking transactions is the same as in your hosted signer.
 
-These signatures are designed to use pre-existing standards for Stacks signatures, which would allow Stacks apps to build user interfaces for generating these signatures with a wallet like Leather or Xverse. We'll update this documentation when apps are updated to include this functionality
+The CLI command is:
+
+```bash
+stacks-signer generate-stacking-signature \
+  --pox-address bc1... \
+  --reward-cycle 100 \
+  --config ./config.toml \
+  --period 1 \
+  --topic stack-stx
+```
+
+{% hint style="warning" %}
+There is a known bug in release \`2.5.0.0.0-rc1\` that will throw an error if using a P2PKH address. This will be fixed in the next release. If you run into an error like the below, we recommend using either stacks.js or Lockstacks to generate your signature as outlined below.
+{% endhint %}
+
+These arguments are:
+
+* pox-address: the BTC address where the signer wants to receive Stacking rewards
+* reward-cycle: For solo stacking, this must refer to the current reward cycle where the user will broadcast their Stacking transaction. For the stack-aggregation-commit transaction, used in delegated signing, this should match the reward-cycle they are using as an argument in stack-aggregation-commit.
+* config: path to a local Signer configuration file
+* period: for solo stacking, this refers to the lock-period argument the user makes in stack-stx and the extend-count argument in stack-extend. **For stack-aggregation-commit, this must equal 1**.
+* topic: This string is dependent on the Stacking function where the signature will be used.
+  * For stack-stx, the topic needs to be `stack-stx`
+  * For stack-extend, the topic needs to be `stack-extend`
+  * For stack-aggregation-commit, the topic needs to be `agg-commit`
+
+Once the command is run, the CLI will output two fields:
+
+* Signature: 0xaaaaaaaaa
+* Public Key: 0xbbbbbb
+
+You will use both the signature and public key in Stacking transactions.
+
+#### Using Lockstacks to generate the signature
+
+{% hint style="info" %}
+At the time of writing, this has only been tested using the [Leather](https://leather.io) wallet.
+{% endhint %}
+
+You can visit [staging.lockstacks.com](http://staging.lockstacks.com) to generate a signer key signature. Make sure you’re connected to the correct network.\
+\
+To generate a signer key signature, it’s important that you’ve logged in Leather with the same secret key that was used to [generate your signer key](running-a-signer.md#preflight-setup-1). Once you’ve setup that account on Leather, you can log in to Lockstacks.\
+\
+Click the link “Signer key signature” at the bottom of the page. This will open the “generate a signer key signature” page.
+
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+The fields are:
+
+* Reward cycle:&#x20;
+  * For all solo stacking transactions, this must equal the current reward cycle, not the cycle in which they will start stacking. The field defaults to the current reward cycle.
+  * For stack-aggregation-commit, this field must equal the cycle used in that function’s “reward cycle” argument. Typically, that equates to current\_cycle + 1.
+* Bitcoin address: the PoX reward address that can be used
+* Topic: the stacking function that will use this signature
+* Max amount: max amount of STX that can be used. Defaults to “max possible amount”
+* Auth ID: defaults to random int
+* Duration: must match the number of cycles used in the stacking transaction. **For stack-aggregation-commit, use “1”**.
+
+{% hint style="warning" %}
+Each of these fields must be exactly matched in order for the Stacking transaction to work. Future updates to Lockstacks will verify the signature before the transaction is made.
+{% endhint %}
+
+Click the “generate signature” button to popup a Leather page where you can generate the signature. Once you submit that popup, Lockstacks will have the signer key and signature you generated.
+
+After you sign that message, you'll see the information you need to share with Stackers who are delegating to you, including the signer public key and signature.
+
+You can click the “copy” icon next to “signer details to share with stackers”. This will copy a JSON string, which can be directly pasted into the Lockstacks page where you make your Stacking transaction. Alternatively, this information can be shared and entered manually.
+
+We'll cover the Lockstacks pages for actually making those transactions in the final section of this document.
 
 #### Using a hardware or software wallet to generate signatures
 
@@ -132,7 +181,7 @@ Now that you have your signer signature generated, it's time to start stacking. 
 ### Solo Stacking
 
 {% hint style="info" %}
-Note that in order to solo stack, you need to have the minimum number of STX tokens. This number can be found by visiting the pox endpoint of Hiro's API at [https://api.nakamoto.testnet.hiro.so/v2/pox](https://api.nakamoto.testnet.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX)
+Note that in order to solo stack, you need to have the minimum number of STX tokens. This number can be found by visiting the pox endpoint of Hiro's API at [https://api.testnet.hiro.so/v2/pox](https://api.testnet.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX)
 {% endhint %}
 
 #### Call the function `stack-stx`
@@ -205,7 +254,7 @@ At this point, the STX are committed to the signer, and the signer has some “a
 The signer cannot call this until the total number of STX committed is larger than the minimum threshold required to Stack. This threshold is a function of the total number of liquid STX.
 
 {% hint style="info" %}
-This number varies and can be found by visiting the pox endpoint of Hiro's API at [https://api.nakamoto.testnet.hiro.so/v2/pox](https://api.nakamoto.testnet.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX).
+This number varies and can be found by visiting the pox endpoint of Hiro's API at [https://api.testnet.hiro.so/v2/pox](https://api.testnet.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX).
 {% endhint %}
 
 Once the threshold is reached, the signer calls `stack-aggregation-commit`. This is the point where the signer must provide their signer key and signer key signature. The arguments are:
@@ -303,75 +352,9 @@ During the Activation phase (after fast blocks and full Nakamoto rules have been
 
 Before you can stack using Lockstacks, you'll need to make sure you have generated your signer signature. There are two ways to do this: through the CLI or using Lockstacks itself.
 
-#### Using the stacks-signer CLI
+If you have not generated a signature yet, be sure to follow the above section on [generating a signature](stacking-flow.md#generate-a-signer-key-signature) before moving on.
 
-If you already have your signer configured and set up, you can use the stacks-signer CLI to generate this signature. You can either SSH into your running signer or use the stacks-signer CLI locally. If using the CLI locally, you will need to ensure you have a matching configuration file located on your filesystem. Having a matching configuration file is important to ensure that the signer public key you make in Stacking transactions is the same as in your hosted signer.
-
-The CLI command is:
-
-```bash
-stacks-signer generate-stacking-signature \
-  --pox-address bc123... \
-  --reward-cycle 100 \
-  --config ./config.toml \
-  --period 12 \
-  --topic stack-stx
-```
-
-These arguments are:
-
-* pox-address: the BTC address where the signer wants to receive Stacking rewards
-* reward-cycle: For solo stacking, this must refer to the current reward cycle where the user will broadcast their Stacking transaction. For the stack-aggregation-commit transaction, used in delegated signing, this should match the reward-cycle they are using as an argument in stack-aggregation-commit.
-* config: path to a local Signer configuration file
-* period: for solo stacking, this refers to the lock-period argument the user makes in stack-stx and the extend-count argument in stack-extend. For stack-aggregation-commit, this should equal 1.
-* topic: This string is dependent on the Stacking function where the signature will be used.
-  * For stack-stx, the topic needs to be stack-stx
-  * For stack-extend, the topic needs to be stack-extend
-  * For stack-aggregation-commit, the topic needs to be agg-commit.
-
-Once the command is run, the CLI will output two fields:
-
-* Signature: 0xaaaaaaaaa
-* Public Key: 0xbbbbbb
-
-You will use both the signature and public key in Stacking transactions.
-
-#### Using Lockstacks to generate the signature
-
-{% hint style="info" %}
-At the time of writing, this has only been tested using the [Leather](https://leather.io) wallet.
-{% endhint %}
-
-You can visit [staging.lockstacks.com](http://staging.lockstacks.com) to generate a signer key signature. Make sure you’re connected to the correct network.\
-\
-To generate a signer key signature, it’s important that you’ve logged in Leather with the same secret key that was used to [generate your signer key](running-a-signer.md#preflight-setup-1). Once you’ve setup that account on Leather, you can log in to Lockstacks.\
-\
-Click the link “Signer key signature” at the bottom of the page. This will open the “generate a signer key signature” page.
-
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
-
-The fields are:
-
-* Reward cycle:&#x20;
-  * For all solo stacking transactions, this must equal the current reward cycle, not the cycle in which they will start stacking. The field defaults to the current reward cycle.
-  * For stack-aggregation-commit, this field must equal the cycle used in that function’s “reward cycle” argument. Typically, that equates to current\_cycle + 1.
-* Bitcoin address: the PoX reward address that can be used
-* Topic: the stacking function that will use this signature
-* Max amount: max amount of STX that can be used. Defaults to “max possible amount”
-* Auth ID: defaults to random int
-* Duration: must match the number of cycles used in the stacking transaction. For stack-aggregation-commit, use “1”.
-
-{% hint style="warning" %}
-Each of these fields must be exactly matched in order for the Stacking transaction to work. Future updates to Lockstacks will verify the signature before the transaction is made.
-{% endhint %}
-
-Click the “generate signature” button to popup a Leather page where you can generate the signature. Once you submit that popup, Lockstacks will have the signer key and signature you generated.
-
-After you sign that message, you'll see the information you need to share with Stackers who are delegating to you, including the signer public key and signature.
-
-You can click the “copy” icon next to “signer details to share with stackers”. This will copy a JSON string, which can be directly pasted into the Lockstacks page where you make your Stacking transaction. Alternatively, this information can be shared and entered manually.
-
-We'll cover the Lockstacks pages for actually making those transactions next.
+There is a section specifically dedicated to using Lockstacks to generate your signature, in addition to the CLI and stacks.js package.
 
 ### Solo Stacking
 
