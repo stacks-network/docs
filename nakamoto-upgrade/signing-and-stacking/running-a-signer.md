@@ -189,7 +189,13 @@ Be sure to replace the container ID at the end with your actual container ID.
 
 You should see a message that says `Signer spawned successfully. Waiting for messages to process...`.
 
-Now your signer is up and running successfully, you can move on to settnig up your Stacks node.
+You may also see a message indicating that your signer is not registered, like this:
+
+```
+WARN [1712003997.160121] [stacks-signer/src/runloop.rs:247] [signer_runloop] Signer is not registered for reward cycle 556. Waiting for confirmed registration...
+```
+
+This means your signer is running successfully. Your next step is to begin stacking in order to get your signer registered. First, if you haven't yet, get your Stacks node up and running following the instructions below and then proceed to [How to Stack](stacking-flow.md) to get started stacking.
 
 ### Setup Your Stacks Node
 
