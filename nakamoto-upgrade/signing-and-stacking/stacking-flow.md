@@ -410,7 +410,7 @@ The first step with delegated stacking involves a stacker delegating their Stack
 
 Signers must provide a STX address (a “pool admin address”) that will manage delegations. This is a separate address from the signer’s private key, and this can be any address. This address is what will be used when making transactions to confirm and aggregate delegated STX.
 
-Signers can log in to LockStacks and visit [https://lockstacks.com/pool-admin](https://lockstacks.com/pool-admin?chain=mainnet) to make pool management transactions.
+Signers can log in to LockStacks and visit [https://staging.lockstacks.com/pool-admin](https://lockstacks.com/pool-admin?chain=mainnet)[ ](https://staging.lockstacks.com/pool-admin)to make pool management transactions.
 
 #### delegate-stack-stx
 
