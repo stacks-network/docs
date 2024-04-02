@@ -8,7 +8,7 @@ Nakamoto has been instantiated on the primary Stacks testnet. If you began exper
 
 <summary>Nakamoto Testnet Environments</summary>
 
-There are several different testnet environments available to test Nakmoto. This doc covers the primary testnet, which is the main Stacks testnet with all the existing chain state and recommended for most users.
+There are several different testnet environments available to test Nakamoto. This doc covers the primary testnet, which is the main Stacks testnet with all the existing chain state and recommended for most users.
 
 However, there are a few additional testnet environments you may want to be aware of.
 
@@ -70,7 +70,7 @@ This testnet is what is covered in this doc.
 
 Here is graphic outlining the differeces, click to zoom.
 
-<img src="../.gitbook/assets/image (1).png" alt="" data-size="original">
+<img src="../.gitbook/assets/image (1) (1).png" alt="" data-size="original">
 
 </details>
 

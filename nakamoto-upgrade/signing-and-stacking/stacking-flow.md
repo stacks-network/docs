@@ -342,7 +342,7 @@ You will use both the signature and public key in Stacking transactions.
 At the time of writing, this has only been tested using the [Leather](https://leather.io) wallet.
 {% endhint %}
 
-You can visit [staging.lockstacks.com](http://staging.lockstacks.com) to generate a signer key signature. Make sure you’re connected to the correct network (ie Nakamoto Testnet).\
+You can visit [staging.lockstacks.com](http://staging.lockstacks.com) to generate a signer key signature. Make sure you’re connected to the correct network.\
 \
 To generate a signer key signature, it’s important that you’ve logged in Leather with the same secret key that was used to [generate your signer key](running-a-signer.md#preflight-setup-1). Once you’ve setup that account on Leather, you can log in to Lockstacks.\
 \

@@ -115,7 +115,7 @@ You can run the signer as a Docker container using the [`blockstack/stacks-core:
 
 When running the Docker container, you’ll need to ensure a few things:
 
-* You'll want to use the `next` tag of the image, as that includes the signer binary
+* You'll want to use the `2.5.0.0.0-rc1` tag of the image, as that includes the signer binary
 * The port configured as the `endpoint` (in the above example, “30000”) must be exposed to your Stacks node.
 * You’ll need a volume with at least a few GB of available storage that contains the folder your `db_path` is in. In the above example, that would be /var
 * You’ll need to include your `signer-config.toml` file as noted below with the first `-v` flag
@@ -173,7 +173,23 @@ stacks-signer run --config ../signer-config.toml
 
 #### Verify the Signer is Running
 
-After the signer starts, you won’t see any activity in logs until your Stacks node starts sending events to it. You can still verify that the signer is listening on its endpoint by GET requesting the `/status` endpoint, which should return `200 OK`.
+To make sure your signer is running successfully, run `docker ps` to list your running containers.
+
+You should see something like this
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+Now check the logs of that container by running:
+
+```bash
+docker logs 877d478dfe7f
+```
+
+Be sure to replace the container ID at the end with your actual container ID.
+
+You should see a message that says `Signer spawned successfully. Waiting for messages to process...`.
+
+Now your signer is up and running successfully, you can move on to settnig up your Stacks node.
 
 ### Setup Your Stacks Node
 
@@ -227,6 +243,8 @@ CMD ["stacks-node", "start", "--config", "/config.toml"]
 ```
 
 #### Run a Stacks Node with a Binary
+
+If you do not want to use Docker, you can alternatively run the signer as a binary.
 
 Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the ZIP file for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary.
 
