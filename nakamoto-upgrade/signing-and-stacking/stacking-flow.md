@@ -431,7 +431,7 @@ The arguments are:
 * Stacker: the STX address of the delegator
 * Amount: denoted in ustx (1 stx = 1,000,000 ustx)
 * Pox Address: The BTC address for the delegator to receive stacking rewards
-* Start burn height: he current BTC block height
+* Start burn height: the current BTC block height
 * Lock period: number of cycles to lock for. If the delegator provided the until burn height argument, then the end of these cycles cannot be past the expiration provided.
 
 This step also allows the pool operator to proactively choose which Stackers they’ll accept delegation from. For “closed” pools, the pool operator will only call this function for approved Stackers. It is up to each pool operator who runs a closed pool to implement this process.

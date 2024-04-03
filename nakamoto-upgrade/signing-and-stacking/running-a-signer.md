@@ -203,13 +203,36 @@ Once your signer is running, the next step is to set up and run a Stacks node. I
 
 #### Stacks Node Configuration
 
-Create a file called `node-config.toml`. On the [Sample Configuration Files](sample-configuration-files.md) page you'll find the full configuration file contens you'll need to add to this file.
+Create a file called `node-config.toml`. On the [Sample Configuration Files](sample-configuration-files.md) page you'll find the full configuration file contents you'll need to add to this file.
 
 The important aspects that you’ll need to change are:
 
 * `working_dir`: a directory path where the node will persist data
 * `block_proposal_token`: an authentication token that your signer uses to authenticate certain requests to your node. This must match the value you used as `auth_password` in the signer’s configuration.
 * `events_observer.endpoint`: This is the host (IP address and port) where your signer is configured to listen for events. An example string would be ”`127.0.0.1:30000`” or ”`my-signer.local:30000`”
+
+#### Start with an archive
+
+If you are running your Stacks node on the primary testnet, it will be much faster to start with an archive of the chain state rather than syncing from genesis.
+
+Archives can be found from [https://archive.hiro.so](https://archive.hiro.so). For the Stacks node testnet, the latest snapshot can be found at [https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.0-rc1-latest.tar.gz](https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.0-rc1-latest.tar.gz). Note that the version is specified (2.5.0.0.0-rc1). When we update versions (ie to a new RC), that URL will need to change. You can also [browse all testnet snapshots](https://archive.hiro.so/testnet/stacks-blockchain/).
+
+You’ll want to download this on the same machine that will run the Stacks node. One way to do this is:
+
+```
+curl https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.0-rc1-latest.tar.gz -o stacks-snapshot.tar.gz
+tar -zxvf stacks-snapshot.tar.gz
+```
+
+This will decompress the snapshot and create a `xenon` folder in the same place that you downloaded the archive.
+
+For the Stacks node to use this archive, you must specify `working_dir` in your config file to be the place where you can find the `xenon` folder.
+
+For example:
+
+* The snapshot is available at /Users/blah/xenon
+* You will set working\_dir to equal ”/Users/blah”
+  * Note that the string does not include the “xenon” part
 
 #### Run a Stacks Node with Docker
 
@@ -275,6 +298,8 @@ Mar  6 19:35:08.227404 INFO Start syncing Bitcoin headers, feel free to grab a c
 
 It’s important to ensure that you see the log message `Registering event observer at XXX` with your signer’s endpoint included. Once Bitcoin headers have been synced, you may also be able to send a GET request to `/v2/info` on your Stacks node’s RPC endpoint (port 20443 by default).
 
+You may see a lot of messages while the node is syncing with Bitcoin blocks. You can check the [FAQ](faq.md) if any of these concern you, but in all likelihood you can ignore any messages until Bitcoin blocks are synced.
+
 ### Setup Your Stacks Accounts
 
 As a signer you’ll need to fund and manage two Stacks accounts:
@@ -300,4 +325,4 @@ Before the Nakamoto transition, signers need a small amount of STX to cover tran
 
 In a previous step, where you generated a keychain, an address field was included in the output. This is your signer wallet’s STX address. You can also choose to use the mnemonic to access the wallet with [Leather](https://leather.io) or [Xverse](https://www.xverse.app).
 
-Transfer funds (or use the faucet) into the signer’s wallet address. We recommend at least 100-200 STX to cover transaction fees.\\
+Transfer funds (or use the faucet) into the signer’s wallet address. We recommend at least 100-200 STX to cover transaction fees.
