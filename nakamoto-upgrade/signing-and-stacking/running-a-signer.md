@@ -253,7 +253,7 @@ STX_NODE_CONFIG="./node-config.toml"
 docker run -d \
     -v $STX_NODE_CONFIG:/config.toml \
     -v /var/stacks \
-    -p 20433:20433 \
+    -p 20443:20443 \
     -p 20444:20444 \
     -e RUST_BACKTRACE=full \
     $IMG:$VER \
