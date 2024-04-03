@@ -27,18 +27,75 @@ db_path = "/var/stacks/signer.sqlite"
 # with your private key.
 auth_password = "$your_http_auth_token"
 
-# This is the hex-encoded privateKey field from the keys you generated in the 
+# This is the privateKey field from the keys you generated in the 
 # previous step.
 stacks_private_key = "$your_stacks_private_key"
 ```
 
 ### Stacks Node
 
-This is the configuration you'll need to run a Nakamoto Stacks follower node if you are also running a signer. Be sure to change the commented lines to the appropriate data for your setup.
+This is the configuration you'll need to run a Stacks follower node if you are also running a signer. Be sure to change the commented lines to the appropriate data for your setup. If you are not familiar with the process of setting up a signer, be sure to follow the [How to Run a Signer](running-a-signer.md) guide.
 
 An overview of all Stacks node configuration options can be found in the [Stacks Node Configuration](../../stacks-in-depth/nodes-and-miners/stacks-node-configuration.md) doc.
 
 Additions necessary specifically to run a signer are the `[connection_options]` and `[[events_observer]]` sections and the `stacker = true` line. There are also a few comments detailing other lines that need to change.
+
+```toml
+[node]
+# Set this based on where you downloaded 
+# the chain state archive as described in the How to Run a Signer guide:
+working_dir = "/data-dir-somewhere"
+rpc_bind = "0.0.0.0:20443"
+p2p_bind = "0.0.0.0:20444"
+# This is the node that your node will use to begin syncing chain state
+bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
+wait_time_for_microblocks = 10000
+stacker = true
+
+[burnchain]
+chain = "bitcoin"
+mode = "xenon"
+peer_host = "bitcoind.testnet.stacks.co"
+username = "blockstack"
+password = "blockstacksystem"
+rpc_port = 18332
+peer_port = 18333
+
+# Set your auth token, which the signer uses
+# This should match the auth_password field of your signer config
+[connection_options]
+block_proposal_token = "12345"
+
+# Set your signer as an event observer
+[[events_observer]]
+# This endpoint is where your signer will communicate with your Stacks node
+endpoint = "127.0.0.1:30000"
+retry_count = 255
+include_data_events = false
+events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
+
+[[ustx_balance]]
+address = "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST319CF5WV77KYR1H3GT0GZ7B8Q4AQPY42ETP1VPF"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST221Z6TDTC5E0BYR2V624Q2ST6R0Q71T78WTAX6H"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
+amount = 10000000000000000
+```
+
+<details>
+
+<summary>Nakamoto Testnet Config</summary>
+
+If you set up your signer and node to run on the Nakamoto Testnet vs the main testnet, your config file will be a bit different.
 
 ```toml
 [node]
@@ -243,3 +300,5 @@ amount = 24378281250000
 address = "ST0D135PF2R0S4B6S4G49QZC69KF19MSZ4Z5RDF5"
 amount = 24378281250000
 ```
+
+</details>

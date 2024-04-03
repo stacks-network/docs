@@ -115,7 +115,7 @@ You can run the signer as a Docker container using the [`blockstack/stacks-core:
 
 When running the Docker container, you’ll need to ensure a few things:
 
-* You'll want to use the `next` tag of the image, as that includes the signer binary
+* You'll want to use the `2.5.0.0.0-rc1` tag of the image, as that includes the signer binary
 * The port configured as the `endpoint` (in the above example, “30000”) must be exposed to your Stacks node.
 * You’ll need a volume with at least a few GB of available storage that contains the folder your `db_path` is in. In the above example, that would be /var
 * You’ll need to include your `signer-config.toml` file as noted below with the first `-v` flag
@@ -173,7 +173,29 @@ stacks-signer run --config ../signer-config.toml
 
 #### Verify the Signer is Running
 
-After the signer starts, you won’t see any activity in logs until your Stacks node starts sending events to it. You can still verify that the signer is listening on its endpoint by GET requesting the `/status` endpoint, which should return `200 OK`.
+To make sure your signer is running successfully, run `docker ps` to list your running containers.
+
+You should see something like this
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+Now check the logs of that container by running:
+
+```bash
+docker logs 877d478dfe7f
+```
+
+Be sure to replace the container ID at the end with your actual container ID.
+
+You should see a message that says `Signer spawned successfully. Waiting for messages to process...`.
+
+You may also see a message indicating that your signer is not registered, like this:
+
+```
+WARN [1712003997.160121] [stacks-signer/src/runloop.rs:247] [signer_runloop] Signer is not registered for reward cycle 556. Waiting for confirmed registration...
+```
+
+This means your signer is running successfully. Your next step is to begin stacking in order to get your signer registered. First, if you haven't yet, get your Stacks node up and running following the instructions below and then proceed to [How to Stack](stacking-flow.md) to get started stacking.
 
 ### Setup Your Stacks Node
 
@@ -181,13 +203,36 @@ Once your signer is running, the next step is to set up and run a Stacks node. I
 
 #### Stacks Node Configuration
 
-Create a file called `node-config.toml`. On the [Sample Configuration Files](sample-configuration-files.md) page you'll find the full configuration file contens you'll need to add to this file.
+Create a file called `node-config.toml`. On the [Sample Configuration Files](sample-configuration-files.md) page you'll find the full configuration file contents you'll need to add to this file.
 
 The important aspects that you’ll need to change are:
 
 * `working_dir`: a directory path where the node will persist data
 * `block_proposal_token`: an authentication token that your signer uses to authenticate certain requests to your node. This must match the value you used as `auth_password` in the signer’s configuration.
 * `events_observer.endpoint`: This is the host (IP address and port) where your signer is configured to listen for events. An example string would be ”`127.0.0.1:30000`” or ”`my-signer.local:30000`”
+
+#### Start with an archive
+
+If you are running your Stacks node on the primary testnet, it will be much faster to start with an archive of the chain state rather than syncing from genesis.
+
+Archives can be found from [https://archive.hiro.so](https://archive.hiro.so). For the Stacks node testnet, the latest snapshot can be found at [https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.0-rc1-latest.tar.gz](https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.0-rc1-latest.tar.gz). Note that the version is specified (2.5.0.0.0-rc1). When we update versions (ie to a new RC), that URL will need to change. You can also [browse all testnet snapshots](https://archive.hiro.so/testnet/stacks-blockchain/).
+
+You’ll want to download this on the same machine that will run the Stacks node. One way to do this is:
+
+```
+curl https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.0-rc1-latest.tar.gz -o stacks-snapshot.tar.gz
+tar -zxvf stacks-snapshot.tar.gz
+```
+
+This will decompress the snapshot and create a `xenon` folder in the same place that you downloaded the archive.
+
+For the Stacks node to use this archive, you must specify `working_dir` in your config file to be the place where you can find the `xenon` folder.
+
+For example:
+
+* The snapshot is available at /Users/blah/xenon
+* You will set working\_dir to equal ”/Users/blah”
+  * Note that the string does not include the “xenon” part
 
 #### Run a Stacks Node with Docker
 
@@ -228,6 +273,8 @@ CMD ["stacks-node", "start", "--config", "/config.toml"]
 
 #### Run a Stacks Node with a Binary
 
+If you do not want to use Docker, you can alternatively run the signer as a binary.
+
 Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the ZIP file for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary.
 
 You can start the binary with:
@@ -250,6 +297,8 @@ Mar  6 19:35:08.227404 INFO Start syncing Bitcoin headers, feel free to grab a c
 ```
 
 It’s important to ensure that you see the log message `Registering event observer at XXX` with your signer’s endpoint included. Once Bitcoin headers have been synced, you may also be able to send a GET request to `/v2/info` on your Stacks node’s RPC endpoint (port 20443 by default).
+
+You may see a lot of messages while the node is syncing with Bitcoin blocks. You can check the [FAQ](faq.md) if any of these concern you, but in all likelihood you can ignore any messages until Bitcoin blocks are synced.
 
 ### Setup Your Stacks Accounts
 
@@ -276,4 +325,4 @@ Before the Nakamoto transition, signers need a small amount of STX to cover tran
 
 In a previous step, where you generated a keychain, an address field was included in the output. This is your signer wallet’s STX address. You can also choose to use the mnemonic to access the wallet with [Leather](https://leather.io) or [Xverse](https://www.xverse.app).
 
-Transfer funds (or use the faucet) into the signer’s wallet address. We recommend at least 100-200 STX to cover transaction fees.\\
+Transfer funds (or use the faucet) into the signer’s wallet address. We recommend at least 100-200 STX to cover transaction fees.
