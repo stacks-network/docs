@@ -438,6 +438,18 @@ This step also allows the pool operator to proactively choose which Stackers the
 
 This step can happen for many Stackers before going to the next step.
 
+{% hint style="info" %}
+If you look at the function source code, you'll see that the `delegate-stack-stx` function sets the stacker's reward cycle to be the _next_ reward cycle.
+
+When generating your signature and your `stack-aggregation-commit` transaction, you'll want to make sure that the reward cycles match.
+
+So if you are in cycle 557 when you call the `delegate-stack-stx` function, you'll want to pass in cycle 558 when you generate your signature and your `stack-aggregation-commit` transaction.
+
+With `stack-aggregation-commit`, the `reward-cycle` arg is saying "I'm commiting these stacks to be stacked in cycle N". But the `delegate-stack-stx` transaction gets you setup for next cycle, aka 558.
+
+Also make sure that, when you generate your signature, you use 558 as the reward cycle. in solo stacking methods, you use the current reward cycle in the signature, but not for `stack-aggregation-commit`. This is because with `stack-aggregation-commit` you can commit stacks for future cycles, not just the n+1 cycle
+{% endhint %}
+
 #### Pool operator “commits” delegated STX
 
 The next step is for the pool operator to call `stack-aggregation-commit`.
@@ -518,7 +530,7 @@ This number varies and can be found by visiting the pox endpoint of Hiro's API a
 Once the threshold is reached, the pool operator calls `stack-aggregation-commit`. This is the point where you as the pool operator must provide your signer key and signer key signature. The arguments are:
 
 * Pox Address: the BTC address tp receive rewards
-* Reward-cycle: the current reward cycle
+* Reward-cycle: the current reward cycle (see the note above on passing the correct reward cycle here)
 * Signer key: the public key of your signer (remember that this may be different than the address you are using to operate the pool, but this step is how you associate the two together)
 * Signer signature: Your generated signer signature (details on how to do this are below)
 
@@ -686,7 +698,7 @@ Signer signatures are signatures created using a particular signer key. They dem
 * `max-amount`: described above
 * `auth-id`: described above
 * `period`: a value from 0-12, which indicates how long the Stacker is allowed to lock their STX for in this particular Stacking transaction. For `agg-commit`, this must be equal to 1
-* `reward-cycle`: This represents the reward cycle in which the Stacking transaction can be confirmed
+* `reward-cycle`: This represents the reward cycle in which the Stacking transaction can be confirmed (see the note above on passing in the correct reward cycle for `stack-stx` vs `stack-aggregation-commit`)
 * `pox-address`: The Bitcoin address that is allowed to be used for receiving rewards. This corresponds to the Bitcoin address associated with your signer
 
 Now that we have an overview of role and contents of signatures, let's see how to actually generate them. You have several options available.
