@@ -34,7 +34,7 @@ stacks_private_key = "$your_stacks_private_key"
 
 ### Stacks Node
 
-This is the configuration you'll need to run a Nakamoto Stacks follower node if you are also running a signer. Be sure to change the commented lines to the appropriate data for your setup.
+This is the configuration you'll need to run a Stacks follower node if you are also running a signer. Be sure to change the commented lines to the appropriate data for your setup. If you are not familiar with the process of setting up a signer, be sure to follow the [How to Run a Signer](running-a-signer.md) guide.
 
 An overview of all Stacks node configuration options can be found in the [Stacks Node Configuration](../../stacks-in-depth/nodes-and-miners/stacks-node-configuration.md) doc.
 
@@ -42,10 +42,12 @@ Additions necessary specifically to run a signer are the `[connection_options]` 
 
 ```toml
 [node]
-# Set this based on where you downloaded the chain state archive:
+# Set this based on where you downloaded 
+# the chain state archive as described in the How to Run a Signer guide:
 working_dir = "/data-dir-somewhere"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
+# This is the node that your node will use to begin syncing chain state
 bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
 wait_time_for_microblocks = 10000
 stacker = true
@@ -60,11 +62,13 @@ rpc_port = 18332
 peer_port = 18333
 
 # Set your auth token, which the signer uses
+# This should match the auth_password field of your signer config
 [connection_options]
 block_proposal_token = "12345"
 
 # Set your signer as an event observer
 [[events_observer]]
+# This endpoint is where your signer will communicate with your Stacks node
 endpoint = "127.0.0.1:30000"
 retry_count = 255
 include_data_events = false
