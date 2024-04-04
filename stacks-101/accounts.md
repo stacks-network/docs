@@ -131,7 +131,7 @@ STX balance and nonce can be obtained through the [`GET /v2/accounts/<stx_addres
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
-curl 'https://stacks-node-api.testnet.stacks.co/v2/accounts/<stx_address>'
+curl 'https://api.testnet.hiro.so/v2/accounts/<stx_address>'
 ```
 
 Sample response:
@@ -153,7 +153,7 @@ All token balances can be obtained through the [`GET /extended/v1/address/<stx_a
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
-curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/address/<stx_address>/balances'
+curl 'https://api.testnet.hiro.so/extended/v1/address/<stx_address>/balances'
 ```
 
 Sample response:
@@ -180,7 +180,7 @@ All asset events associated with the account can be obtained through the [`GET /
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
-curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/address/<stx_address>/assets'
+curl 'https://api.testnet.hiro.so/extended/v1/address/<stx_address>/assets'
 ```
 
 Sample response:

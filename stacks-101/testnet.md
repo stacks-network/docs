@@ -33,5 +33,5 @@ Alternatively, you can use the [LearnWeb3 faucet](https://learnweb3.io/faucets).
 The hosted Stacks Blockchain API for the testnet is available at this base URL:
 
 ```shell
-https://stacks-node-api.testnet.stacks.co/
+https://api.testnet.hiro.so/
 ```

@@ -18,7 +18,7 @@ The RPC API can be used without any authorization. The basepath for the API is:
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
-https://stacks-node-api.testnet.stacks.co/
+https://api.testnet.hiro.so/
 ```
 
 {% hint style="warning" %}
