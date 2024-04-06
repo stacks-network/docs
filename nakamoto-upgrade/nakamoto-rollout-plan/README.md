@@ -39,6 +39,6 @@ This means that assuming there are no major bugs or issues, full Nakamoto featur
 
 ### Visualizing the rollout
 
-<figure><img src="../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2024-04-06 105944.png" alt=""><figcaption></figcaption></figure>
 
 **Note about sBTC Rollout:** Previous [updates](https://stacks.org/halving-on-horizon-nakamoto) mentioned targeting a launch of sBTC 2-3 months after Nakamoto Mainnet is live and stable. Once Nakamoto reaches Step 1 (Instantiation) in April, many Core Developers will turn their focus to sBTC and produce a more detailed rollout plan to share.
