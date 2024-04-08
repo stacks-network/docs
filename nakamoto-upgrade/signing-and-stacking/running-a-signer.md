@@ -197,6 +197,16 @@ WARN [1712003997.160121] [stacks-signer/src/runloop.rs:247] [signer_runloop] Sig
 
 This means your signer is running successfully. Your next step is to begin stacking in order to get your signer registered. First, if you haven't yet, get your Stacks node up and running following the instructions below and then proceed to [How to Stack](stacking-flow.md) to get started stacking.
 
+{% hint style="warning" %}
+Even after you Stack, you may still see a message that says:
+
+```
+Signer is not registered for the current reward cycle (557) or next reward cycle (558). Waiting for confirmed registration...
+```
+
+This is normal and means that you have stacked, but have not yet reach the prepare phase for your chosen reward cycle. Assuming you have met the stacking minimum, your signer will be picked up and registered during this prepare phase.
+{% endhint %}
+
 ### Setup Your Stacks Node
 
 Once your signer is running, the next step is to set up and run a Stacks node. It’s important to have the signer already running, because the node will not run unless it is able to send events to the signer.

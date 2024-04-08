@@ -878,6 +878,8 @@ Once a pool has enough delegated STX to become a signer, the pool admin needs to
 
 Once this transaction has been confirmed, the pool operator is eligible to be a signer for an upcoming reward cycle.
 
+###
+
 ### Relationship between manual stacking transactions and the running signer
 
 This section describes the various transactions that signers need to make in order to be registered as a signer for a certain reward cycle. The order of operations between the automated signer and the stacking transactions that need to be done “manually” is important for ensuring that a signer is fully set up for a certain reward cycle.
@@ -923,6 +925,16 @@ This workflow is explained more in a previous section, but the high-level workfl
 3. The pool operator makes a `stack-aggregation-commit` transaction to “commit” all of its delegated STX up to this point.
 
 Similar to solo stacking, these steps must be made before the prepare phase of an upcoming reward cycle.
+
+{% hint style="warning" %}
+Even after you Stack, you may still see a message that says:
+
+```
+Signer is not registered for the current reward cycle (557) or next reward cycle (558). Waiting for confirmed registration...
+```
+
+This is normal and means that you have stacked, but have not yet reach the prepare phase for your chosen reward cycle. Assuming you have met the stacking minimum, your signer will be picked up and registered during this prepare phase.
+{% endhint %}
 
 ### Once a signer is registered in the signer set
 
