@@ -91,8 +91,8 @@ There are several reasons why your Stacking transaction might fail.
 The first step is to check your failed transaction and see if an error code was provided. You can check what specific error you are getting by looking directly at the pox-4 contract code, but here are some common ones.
 
 * `24` : the `start-burn-height` param was invalid
-* `35`: the signer key signature is invalid
-* `4`: The stacking contract looks up partially stacked stx with the lookup key `(pox-addr, stx-address, reward-cycle`. This error means that eitehr when you generated your signature or called the agg-commit function, you passed in the wrong parameter for one of these. More information in the [stacking guide](stacking-flow.md#delegator-initiates-delegation).
+* `35`: the signer key signature is invalid. This usually means the fields from the `stacks-signer generate-stacking-signature` command and `stack-aggregation-commit` contract call don't match.
+* `4`: The stacking contract looks up partially stacked stx with the lookup key `(pox-addr, stx-address, reward-cycle`. This error means that either when you generated your signature or called the agg-commit function, you passed in the wrong parameter for one of these. More information in the [stacking guide](stacking-flow.md#delegator-initiates-delegation).
 
 Most of the time, failed transactions are caused by incorrect data being passed into your Stacking transactions.
 

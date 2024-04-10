@@ -20,6 +20,8 @@ The following sections will walk you through how to begin operating as a solo st
 
 If you are only interested in delegating your STX to a pool operator and not running your own signer, the [Stacking Quickstart](../nakamoto-stacking-quickstart.md) may be a better guide to follow.
 
+Stacking utilizes the `pox-4` contract. There is a detailed [walkthrough of the stacking contract](../../clarity/example-contracts/stacking.md) that you can look at to see what functions are being called at each phase and some common errors you may encounter.
+
 Before we get into the step-by-step of how to actually stack, it's important to make sure you have an understanding of the different roles, processes and functions involved in Stacking.
 
 ### Definitions and Roles
@@ -143,7 +145,7 @@ Just like in previous versions of PoX, Stackers call `stack-stx`, but with the n
 * Lock period: the number of cycles to lock for (1 minimum, 12 max)
 * Signer key: the **public** key that your signer is using
 * Signer signature: the signature that proves control of this signer key
-* max-amount: This parameter is used to validate the signer signature provided. It represents the maximum number of STX that can be locked in this transaction.
+* max-amount: This parameter is used to validate the signer signature provided. It represents the maximum number of ustx that can be locked in this transaction.
 * auth-id: This parameter is used to validate the signer signature provided. auth-id is a random integer that prevents re-use of this particular signer signature.
 
 #### Act as a signer
@@ -266,7 +268,7 @@ The arguments are:
 * Pox Address: the BTC address to receive rewards
 * Signer public key: the public key used for signing. This can stay the same, or you can use a new key.
 * Signer signature: a signature proving control of your signing key
-* max-amount: This parameter is used to validate the signer signature provided. It represents the maximum number of STX that can be locked in this transaction.
+* max-amount: This parameter is used to validate the signer signature provided. It represents the maximum number of ustx (1 stx = 1,000,000 ustx) that can be locked in this transaction.
 * auth-id: This parameter is used to validate the signer signature provided. auth-id is a random integer that prevents re-use of this particular signer signature.
 
 ### Pool Operator Stacking Flow
@@ -689,7 +691,7 @@ You may want to review this contract to familiarize yourself with it.
 
 1. `signer-key`: the public key that corresponds to the `stacks_private_key` your signer is using
 2. `signer-signature`: a signature that demonstrates that you actually controls your `signer-key`. Because signer keys need to be unique, this is also a safety check to ensure that other Stackers can’t use someone else’s public key
-3. `max-amount`: The maximum amount of STX that can be locked in the transaction that uses this signature. For example, if calling `stack-increase`, then this parameter dictates the maximum amount of STX that can be used to add more locked STX
+3. `max-amount`: The maximum amount of ustx (1 stx = 1,000,000 ustx) that can be locked in the transaction that uses this signature. For example, if calling `stack-increase`, then this parameter dictates the maximum amount of ustx that can be used to add more locked STX
 4. `auth-id`: a random integer that prevents re-use of a particular signature, similar to how nonces are used with transactions
 
 Signer signatures are signatures created using a particular signer key. They demonstrate that the controller of that signer key is allowing a Stacker to use their signing key. The signer signature’s message hash is created using the following data:
