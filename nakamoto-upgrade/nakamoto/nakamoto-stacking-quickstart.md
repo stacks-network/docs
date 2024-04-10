@@ -1,11 +1,11 @@
-# Nakamoto Stacking Quickstart
+# Nakamoto Stacking Quickstart (Testnet)
 
 {% hint style="info" %}
 If you are stacking as part of a pool, the below instructions should be enough for you to get started stacking on Nakamoto.
 
 If you are interested in solo stacking or becoming a pool operator, you will also need to run a signer.
 
-In that case, you'll need to first [get a signer up and running](signing-and-stacking/running-a-signer.md), and then [integrate stacking](signing-and-stacking/stacking-flow.md) using your preferred method.
+In that case, you'll need to first [get a signer up and running](../signing-and-stacking/running-a-signer.md), and then [integrate stacking](../signing-and-stacking/stacking-flow.md) using your preferred method.
 {% endhint %}
 
 The Nakamoto Testnet is currently live. If you are interested in experimenting with stacking on the testnet, you can do so now using Leather and Lockstacks.

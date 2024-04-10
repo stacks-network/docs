@@ -8,7 +8,7 @@ With [Nakamoto](../nakamoto-upgrade/nakamoto-in-10-minutes.md) approved and fast
 
 Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time and participating as consensus-critical signers. If you aren't familiar with the concept of signers in Stacks, be sure to check out the [Nakamoto Overview](../nakamoto-upgrade/nakamoto-in-10-minutes.md).
 
-This document is presented as a conceptual overview of stacking and how it works. You can also view a detailed walkthrough of [How to Stack as a Signer](../nakamoto-upgrade/signing-and-stacking/stacking-flow.md), a [Stacking Quickstart](../nakamoto-upgrade/nakamoto-stacking-quickstart.md) for those interested in delegating their STX (more on that below), and a [deep dive into the contract](../clarity/example-contracts/stacking.md).
+This document is presented as a conceptual overview of stacking and how it works. You can also view a detailed walkthrough of [How to Stack as a Signer](../nakamoto-upgrade/signing-and-stacking/stacking-flow.md), a [Stacking Quickstart](../nakamoto-upgrade/nakamoto/nakamoto-stacking-quickstart.md) for those interested in delegating their STX (more on that below), and a [deep dive into the contract](../clarity/example-contracts/stacking.md).
 
 ### Stacking vs Staking
 

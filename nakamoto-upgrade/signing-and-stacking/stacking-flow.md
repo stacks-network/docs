@@ -7,7 +7,7 @@ This doc assumes you are familiar with stacking at a conceptual level. If not, y
 {% hint style="info" %}
 Much of the technical instructions below apply to users who are interested in either solo stacking or becoming a pool operator. Both of those types of stackers will need to run a signer.
 
-However, if you prefer to participate in a pool by delegating your STX, you do not need to also operate a signer. Simplified instructions for delegating your STX token using Leather and Lockstacks can be found in the [Nakamoto Stacking Quickstart](../nakamoto-stacking-quickstart.md) doc.
+However, if you prefer to participate in a pool by delegating your STX, you do not need to also operate a signer. Simplified instructions for delegating your STX token using Leather and Lockstacks can be found in the [Nakamoto Stacking Quickstart](../nakamoto/nakamoto-stacking-quickstart.md) doc.
 {% endhint %}
 
 In Nakamoto, stacking flows have significant changes in comparison to previous versions of Stacks. Because Nakamoto requires stackers to run a signer, which validates blocks produced by Stacks miners, stackers need to provide new information when making Stacking transactions.
@@ -18,7 +18,7 @@ If you aren't familiar with the general block production process under Nakamoto 
 
 The following sections will walk you through how to begin operating as a solo stacker or pool operator.
 
-If you are only interested in delegating your STX to a pool operator and not running your own signer, the [Stacking Quickstart](../nakamoto-stacking-quickstart.md) may be a better guide to follow.
+If you are only interested in delegating your STX to a pool operator and not running your own signer, the [Stacking Quickstart](../nakamoto/nakamoto-stacking-quickstart.md) may be a better guide to follow.
 
 Stacking utilizes the `pox-4` contract. There is a detailed [walkthrough of the stacking contract](../../clarity/example-contracts/stacking.md) that you can look at to see what functions are being called at each phase and some common errors you may encounter.
 

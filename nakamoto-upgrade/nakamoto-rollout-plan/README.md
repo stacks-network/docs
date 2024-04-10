@@ -1,6 +1,13 @@
+---
+description: >-
+  Testnet and mainnet rollout sequencing for the Nakamoto upgrade. Several key
+  stepsbring more features live in a safe, step-by-step process that will give
+  builders and partners time to integrate.
+---
+
 # Nakamoto Rollout Plan
 
-This covers the testnet and mainnet rollout sequencing for the Nakamoto upgrade. There are several key steps, each of which brings more features live in a safe, step-by-step process that will give builders and partners time to integrate and test.
+The current projection for the Instantiation step of the Nakamoto rollout is \~April 15th at Bitcoin block 839,444. You can check the [real-time projection here](https://stacks-network.github.io/when-activation/2.5/). &#x20;
 
 #### **TL;DR:**
 
@@ -39,6 +46,6 @@ This means that assuming there are no major bugs or issues, full Nakamoto featur
 
 ### Visualizing the rollout
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-04-06 105944.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2024-04-10 141918.png" alt=""><figcaption></figcaption></figure>
 
 **Note about sBTC Rollout:** Previous [updates](https://stacks.org/halving-on-horizon-nakamoto) mentioned targeting a launch of sBTC 2-3 months after Nakamoto Mainnet is live and stable. Once Nakamoto reaches Step 1 (Instantiation) in April, many Core Developers will turn their focus to sBTC and produce a more detailed rollout plan to share.
