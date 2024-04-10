@@ -12,7 +12,7 @@ In this walkthrough, we'll cover the entire stacking contract from start to fini
 
 Rather than walking through the contract line by line, which you can do by simply reading the contract code and the comments, we'll instead explore it from the perspective of conducting stacking operations, incuding solo stacking, delegating, and running a pool.
 
-At the bottom you will find a list of all the errors you may run into and their explanations.
+At the bottom you will find a list of some errors you may run into and their explanations.
 
 There are a few utilities that make interacting with this contract easier including [Lockstacks](https://lockstacks.com) as a UI and the [@stacks/stacking package](https://www.npmjs.com/package/@stacks/stacking) for a JS library.
 
@@ -1692,10 +1692,6 @@ At this point, no STX have been locked. The pool operator next needs to call the
 
 #### delegate-stack-stx
 
-<details>
-
-<summary>Function source code</summary>
-
 ```clojure
 ;; As a delegate, stack the given principal's STX using partial-stacked-by-cycle
 ;; Once the delegate has stacked > minimum, the delegate should call stack-aggregation-commit
@@ -1768,8 +1764,6 @@ At this point, no STX have been locked. The pool operator next needs to call the
             unlock-burn-height: unlock-burn-height })))
 ```
 
-</details>
-
 At this point, the stacker has given their permission to the pool operator to delegate their STX on their behalf.
 
 The delegation is now in the hands of the pool operator to stack these delegated STX using the `delegate-stack-stx` function.
@@ -1809,10 +1803,6 @@ At this point this stacker's STX are considered partially stacked. We still need
 #### stack-aggregation-commit
 
 The `stack-aggregation-commit` function is just a wrapper for the private `inner-stack-aggregation-commit` function, so that is the source code included here.
-
-<details>
-
-<summary>Function source code</summary>
 
 ```clojure
 ;; Commit partially stacked STX and allocate a new PoX reward address slot.
@@ -1869,8 +1859,6 @@ The `stack-aggregation-commit` function is just a wrapper for the private `inner
         (ok pox-addr-index)))))
 ```
 
-</details>
-
 This function contains many of the same parameters as the `stack-stx` function, with a few changes:
 
 * `pox-addr` is a tuple that encodes the Bitcoin address to be used for the PoX rewards, details below
@@ -1919,4 +1907,4 @@ To fix this, check all of the data you passed in to see where the mismatch is.
 
 #### Error 4 - ERR\_STACKING\_NO\_SUCH\_PRINCIPAL
 
-The stacking contract looks up partially stacked stx with the lookup key `(pox-addr, stx-address, reward-cycle`. This error means that either when you generated your signature or called the `stack-aggregation-commit` function, you passed in the wrong parameter for one of these. More information in the [stacking guide](../../nakamoto-upgrade/signing-and-stacking/stacking-flow.md#delegator-initiates-delegation).
+The stacking contract looks up partially stacked stx (after you have called `delegate-stack-stx`) with the lookup key `(pox-addr, stx-address, reward-cycle`. This error means that either when you generated your signature or called the `stack-aggregation-commit` function, you passed in the wrong parameter for one of these. More information in the [stacking guide](../../nakamoto-upgrade/signing-and-stacking/stacking-flow.md#delegator-initiates-delegation).
