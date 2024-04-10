@@ -70,7 +70,7 @@ This testnet is what is covered in this doc.
 
 Here is graphic outlining the differeces, click to zoom.
 
-<img src="../.gitbook/assets/image (1) (1).png" alt="" data-size="original">
+<img src="../../.gitbook/assets/image (1) (1).png" alt="" data-size="original">
 
 </details>
 
@@ -98,7 +98,7 @@ There have been several updates to Hiro's products including Clarinet, Stacks.js
 
 #### Signers Voting Contract
 
-After a DKG (Distributed Key Generation) round, signer votes are submitted to this contract. For more on DKG, you can read the [Stackers and Signing](nakamoto-in-depth/stackers-and-signing.md) section of Nakamoto In-Depth.
+After a DKG (Distributed Key Generation) round, signer votes are submitted to this contract. For more on DKG, you can read the [Stackers and Signing](../nakamoto-in-depth/stackers-and-signing.md) section of Nakamoto In-Depth.
 
 [https://explorer.hiro.so/txid/0x69af1dbed501acdbc0d1c79e1ecbc17e1904edacc15cf4b39d6783e720e21c00?chain=testnet](https://explorer.hiro.so/txid/0x69af1dbed501acdbc0d1c79e1ecbc17e1904edacc15cf4b39d6783e720e21c00?chain=testnet)
 
@@ -106,7 +106,7 @@ After a DKG (Distributed Key Generation) round, signer votes are submitted to th
 
 The explorer will allow you to view fast blocks as they come in. Be sure to turn on “Live updates” to see them coming in in real time. [https://explorer.hiro.so/?chain=testnet](https://explorer.hiro.so/?chain=testnet)
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>Turn on Live Updates to view blocks coming in in real time</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption><p>Turn on Live Updates to view blocks coming in in real time</p></figcaption></figure>
 
 #### Local Development Environment
 
@@ -116,7 +116,7 @@ Be sure to [update Clarinet](https://docs.hiro.so/clarinet/getting-started) to t
 
 #### Running a signer
 
-If you are interested in running a signer, you can take a look at the [How to Run a Signer](signing-and-stacking/running-a-signer.md) doc which will get you up to speed on how to get the signer software set up using Nakamoto.
+If you are interested in running a signer, you can take a look at the [How to Run a Signer](../signing-and-stacking/running-a-signer.md) doc which will get you up to speed on how to get the signer software set up using Nakamoto.
 
 #### Office Hours
 
