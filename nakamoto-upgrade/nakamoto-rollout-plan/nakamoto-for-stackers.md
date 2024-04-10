@@ -1,11 +1,16 @@
+---
+description: >-
+  Nakamoto is set to be instantiated on mainnet on April 16th, at block 839,444.
+  Remember that Nakamoto is being rolled out in two phases, and this represents
+  the first phase.
+---
+
 # Nakamoto for Stackers
 
-Nakamoto is set to be instantiated on mainnet on April 16th, at block 839,444. Remember that Nakamoto is being rolled out in two phases, and this represents the first phase.
+Stackers, here’s what you need to be ready for the first of 2 forks that will [bring us the Nakamoto upgrade](https://docs.stacks.co/nakamoto-upgrade/nakamoto-rollout-plan)!
 
-Stackers, here’s what you need to be ready for the first of 2 forks that will [bring us the Nakamoto upgrade](https://docs.stacks.co/nakamoto-upgrade/nakamoto-rollout-plan).
-
-* Your STX will automatically unlock at Bitcoin block 839,444
-* Despite your STX being unlocked before the end of Cycle 82, you will still earn the full rewards from the cycle!
+* Your STX will automatically unlock at Bitcoin block 839,444 (approximately April 16th)
+* Despite your STX being unlocked before the end of Cycle 82, you will still earn the full rewards from the cycle.
 * There are no frozen cycles, so you can immediately re-Stack after the upgrade
 * Given the timing of the upgrade, you’ll only have about 3 days to initiate Stacking for Cycle 83.
 * The [tight turnaround](nakamoto-for-stackers.md#why-the-tight-turnaround-for-cycle-83) means that **not all Stacking providers will be ready to serve you**. Pools that will be ready for Cycle 83 will be listed here. Please message _signers@stacks.org_ if your pool will be avialable for users in Cycle 83.
