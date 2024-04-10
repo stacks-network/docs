@@ -17,6 +17,7 @@
   * [Bitcoin Reorgs](nakamoto-upgrade/nakamoto-in-depth/bitcoin-reorgs.md)
 * [Nakamoto Rollout Plan](nakamoto-upgrade/nakamoto-rollout-plan/README.md)
   * [Nakamoto for Exchanges](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-exchanges.md)
+  * [Nakamoto for Stackers & Pools](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stackers-and-pools.md)
 * [Nakamoto Testnet](nakamoto-upgrade/nakamoto.md)
 * [Nakamoto Stacking Quickstart](nakamoto-upgrade/nakamoto-stacking-quickstart.md)
 * [Signing and Stacking](nakamoto-upgrade/signing-and-stacking/README.md)
