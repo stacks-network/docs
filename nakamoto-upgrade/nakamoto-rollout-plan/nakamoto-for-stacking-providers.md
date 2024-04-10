@@ -29,9 +29,11 @@ As providers, you ultimately have as long as you need to make the Nakamoto upgra
 
 #### Cycle 83
 
-If you hope to have your Stacking pool ready for Cycle 83, you'll need to make sure that you follow the steps [outlined above](nakamoto-for-stacking-providers.md#upgrading-your-stacking-pool-or-service) as soon as possible. All Stacking now requires running a Signer, so you'll need to [follow the instructions](../signing-and-stacking/running-a-signer.md) to set it up. This is likely the newest or most difficult part, please reach out to your point of contact in the Stacks ecosystem for technical support as needed.&#x20;
+If you hope to have your Stacking pool ready for Cycle 83:&#x20;
 
-You'll need to have your upgrades done AND give enough time for your users to re-delegate to your pool before the start of cycle 83 (\~April 20th).
+* You'll need to make sure that you follow the steps [outlined above](nakamoto-for-stacking-providers.md#upgrading-your-stacking-pool-or-service) as soon as possible.&#x20;
+* All Stacking now requires running a Signer, so you'll need to [follow the instructions](../signing-and-stacking/running-a-signer.md) to set it up. This is likely the newest or most difficult part, please reach out to your point of contact in the Stacks ecosystem for technical support as needed.&#x20;
+* You'll need to have your upgrades done AND give enough time for your users to re-delegate to your pool before the start of cycle 83 (\~April 20th).
 
 #### Rewards in Cycle 83
 
