@@ -1,10 +1,10 @@
 # How to Run a Signer
 
-### System Requirements to Run a Signer
+### Minimum System Requirements to Run a Signer
 
-* 4 vcpu
-* 8GB memory
-* 150 GB storage (250 GB if running a Stacks node)
+* 8 vcpu
+* 32GB memory
+* 1 TB storage for Bitcoin node, 250 GB for Stacks node, and 1 GB for signer
 
 ### Background and High-Level Process
 
