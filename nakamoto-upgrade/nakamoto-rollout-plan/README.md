@@ -7,7 +7,7 @@ description: >-
 
 # Nakamoto Rollout Plan
 
-The current projection for the Instantiation step of the Nakamoto rollout is \~April 15th at Bitcoin block 839,444. You can check the [real-time projection here](https://stacks-network.github.io/when-activation/2.5/). &#x20;
+The current projection for the Instantiation step of the Nakamoto rollout is \~April 22nd at Bitcoin block 840,360. You can check the [real-time projection here](https://stacks-network.github.io/when-activation/2.5/). &#x20;
 
 #### **TL;DR:**
 
@@ -46,6 +46,10 @@ This means that assuming there are no major bugs or issues, full Nakamoto featur
 
 ### Visualizing the rollout
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-04-10 141918.png" alt=""><figcaption></figcaption></figure>
+<div data-full-width="true">
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 **Note about sBTC Rollout:** Previous [updates](https://stacks.org/halving-on-horizon-nakamoto) mentioned targeting a launch of sBTC 2-3 months after Nakamoto Mainnet is live and stable. Once Nakamoto reaches Step 1 (Instantiation) in April, many Core Developers will turn their focus to sBTC and produce a more detailed rollout plan to share.

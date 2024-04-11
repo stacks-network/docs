@@ -45,7 +45,7 @@ You can learn more about the 2-step rollout structure here: [.](./ "mention") in
 
 There are two steps for Nakamoto rollout exchanges should be aware of:
 
-1. **Instantiation block:** The first hard fork occurs <mark style="color:orange;">at Bitcoin block 839,444</mark> which is currently projected for \~April 16**.** At this time, exchanges will need to upgrade to the latest node software or they will not process valid blocks and users will not be able to move funds on the network.
+1. **Instantiation block:** The first hard fork occurs <mark style="color:orange;">at Bitcoin block 840,360</mark> which is currently projected for \~April 22nd. You can check the [real-time projection here](https://stacks-network.github.io/when-activation/2.5/).  At this time, exchanges will need to upgrade to the latest node software or they will not process valid blocks and users will not be able to move funds on the network.
 2. **Activation block:** The second hard fork occurs between May 15 and 29th. At this time, the Nakamoto consensus rules will activate, meaning the new Nakamoto features will be made live. Exchanges will need to repeat the upgrade process at this time. Again, no genesis sync, just a download and restart.
 
 ### Other Recommendations:
