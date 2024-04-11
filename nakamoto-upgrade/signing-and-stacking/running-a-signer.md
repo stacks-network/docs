@@ -177,7 +177,7 @@ To make sure your signer is running successfully, run `docker ps` to list your r
 
 You should see something like this
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 Now check the logs of that container by running:
 

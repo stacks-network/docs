@@ -70,7 +70,7 @@ This testnet is what is covered in this doc.
 
 Here is graphic outlining the differeces, click to zoom.
 
-<img src="../../.gitbook/assets/image (1) (1).png" alt="" data-size="original">
+<img src="../../.gitbook/assets/image (1) (1) (1).png" alt="" data-size="original">
 
 </details>
 
