@@ -665,7 +665,7 @@ If you are interested in using this method, you'll want to follow the [stacking 
 
 This is a necessary prerequisite to stacking as a solo stacker or pool operator.
 
-Running a signer involves setting up a hosted production environment that includes both a Stacks Node and the Stacks Signer. For more information, refer to the [running a signer doc](https://github.com/stacksfoundation/NAKA-REPO/issues/279).
+Running a signer involves setting up a hosted production environment that includes both a Stacks Node and the Stacks Signer. For more information, refer to the [running a signer doc](running-a-signer.md).
 
 Once the signer software is running, you'll to keep track of the `stacks_private_key` that you used when configuring your signer software. This will be used in subsequent Stacking transactions.
 
