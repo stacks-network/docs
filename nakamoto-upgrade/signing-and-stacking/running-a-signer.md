@@ -4,7 +4,7 @@
 
 * 8 vcpu
 * 32GB memory
-* 1 TB storage for Bitcoin node, 250 GB for Stacks node, and 1 GB for signer
+* 1 TB storage for Bitcoin node, 350 GB for Stacks node, and 1 GB for signer
 
 ### Background and High-Level Process
 
@@ -31,7 +31,7 @@ Detailed steps for each of these are laid out below, but this checklist is being
 * [ ] Ensure your system meets the following requirements:
   * 4 vCPU
   * 8GB memory
-  * 150 GB storage (250 GB if running a Stacks node)
+  * 150 GB storage (350 GB if running a Stacks node)
 * [ ] Acquire Docker and basic knowledge of Stacks accounts, stacking, and the Nakamoto stacking flow (links provided below).
 
 #### Preflight Setup
