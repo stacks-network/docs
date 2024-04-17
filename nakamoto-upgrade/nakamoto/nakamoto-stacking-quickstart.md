@@ -18,15 +18,15 @@ Click the menu button in the top right and select “Change network”. Then cli
 
 * Name: “Nakamoto Testnet”. This is just for labeling, and it can be any value.
 * Bitcoin API: “Testnet”
-* Stacks API: [https://api.nakamoto.testnet.hiro.so](https://explorer.hiro.so/?chain=testnet\&api=https://api.nakamoto.testnet.hiro.so)
+* Stacks API: [https://api.testnet.hiro.so](https://explorer.hiro.so/?chain=testnet\&api=https://api.testnet.hiro.so)
 * Bitcoin API URL: keep default
 * Bitcoin Network token: this is a required field but you can just type any value, like “a”
 
 ### Get Testnet STX Tokens
 
-Next, you can visit the [Nakamoto Testnet explorer](https://explorer.hiro.so/sandbox/faucet?chain=testnet\&api=https://api.nakamoto.testnet.hiro.so) to get some testnet STX tokens from the faucet.
+Next, you can visit the [Nakamoto Testnet explorer](https://explorer.hiro.so/sandbox/faucet?chain=testnet\&api=https://api.testnet.hiro.so) to get some testnet STX tokens from the faucet.
 
-Make sure you are using the Nakamot Testnet. You can verify this by ensuring that `api=https://api.nakamoto.testnet.hiro.so` is present in the URL.
+Make sure you are using the Nakamot Testnet. You can verify this by ensuring that `api=https://api.testnet.hiro.so` is present in the URL.
 
 ### Using Lockstacks
 
