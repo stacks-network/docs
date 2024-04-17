@@ -57,5 +57,5 @@ There are two steps for Nakamoto rollout exchanges should be aware of:
 
 * [Testnet documentation](https://docs.stacks.co/nakamoto-upgrade/nakamoto)
 * [API documentation](https://docs.hiro.so/nakamoto/stacks-js)
-* Binaries (coming soon)
+* Binaries (https://github.com/stacks-network/stacks-core/releases/tag/2.5.0.0.2)
 
