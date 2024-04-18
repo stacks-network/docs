@@ -728,10 +728,6 @@ stacks-signer generate-stacking-signature \
   --topic stack-stx
 ```
 
-{% hint style="warning" %}
-There is a known bug in release \`2.5.0.0.0-rc1\` that will throw an error if using a P2PKH address. This will be fixed in the next release. If you run into an error like the below, we recommend using either stacks.js or Lockstacks to generate your signature as outlined below.
-{% endhint %}
-
 These arguments are:
 
 * pox-address: the BTC address where the signer wants to receive Stacking rewards
