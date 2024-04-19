@@ -17,3 +17,10 @@ Stackers, here’s what you need to be ready for the first of 2 forks that will 
 **Reminder:** The network does not _**depend**_ on Signers for block production until the second hard fork expected in May. Learn More: [https://docs.stacks.co/nakamoto-upgrade/nakamoto-rollout-plan](https://docs.stacks.co/nakamoto-upgrade/nakamoto-rollout-plan)
 {% endhint %}
 
+
+
+## Stacks (STX) Holders
+
+The upgrade is simple for you, you don't have to do anything. No token transfers, etc. For most of you, your wallets will be upgraded automatically and you'll be on the upgraded network without even realizing there was a change.&#x20;
+
+In terms of buying/trading/withdrawing, exchanges _may_ briefly suspend STX-related activities, as they upgrade their nodes. Communicating a deposit/withdrawal suspension is the typical process, but in practice, these suspensions are either very brief or don't end up happening at all assuming their upgrade went smoothly. If an exchange decides to suspend activity. they will communicate this to you directly, again, typically these suspensions are quite brief and most exchanges don't suspend at all. If you have an issue with your exchange, please get in touch with them directly.&#x20;
