@@ -112,7 +112,7 @@ Note that at the moment the signer should only be run on testnet using these ins
 
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the [`blockstack/stacks-core:2.5.0.0.2`](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.2/images/sha256-ed20a145a8cfb6ec8a7e6f0c7d3ea25b55747b147d2cf080cbc0609ee77deb30?context=explore) image.
+You can run the signer as a Docker container using the [`blockstack/stacks-core:2.5.0.0.3`](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1\&name=2.5.0.0.3) image.
 
 When running the Docker container, you’ll need to ensure a few things:
 
@@ -126,7 +126,7 @@ Be sure to replace the `STX_SIGNER_PATH` with the correct path to your config fi
 
 ```bash
 IMG="blockstack/stacks-core"
-VER="2.5.0.0.2"
+VER="2.5.0.0.3"
 STX_SIGNER_PATH="./"
 STX_SIGNER_DATA="$STX_SIGNER_PATH/data"
 STX_SIGNER_CONFIG="$STX_SIGNER_PATH/signer-config.toml"
@@ -151,7 +151,7 @@ For example, if you are running on M1 Mac, you would add `--platform=linux/amd64
 Or, with a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:2.5.0.0.2
+FROM blockstack/stacks-core:2.5.0.0.3
 COPY signer-config.toml /config.toml
 EXPOSE 30000
 CMD ["stacks-signer", "run", "--config", "/config.toml"]
@@ -223,12 +223,12 @@ The important aspects that you’ll need to change are:
 
 If you are running your Stacks node on the primary testnet, it will be much faster to start with an archive of the chain state rather than syncing from genesis.
 
-Archives can be found from [https://archive.hiro.so](https://archive.hiro.so). For the Stacks node testnet, the latest snapshot can be found at [https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.2-latest.tar.gz](https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.2-latest.tar.gz). Note that the version is specified (2.5.0.0.2). When we update versions (ie to a new RC), that URL will need to change. You can also [browse all testnet snapshots](https://archive.hiro.so/testnet/stacks-blockchain/).
+Archives can be found from [https://archive.hiro.so](https://archive.hiro.so). For the Stacks node testnet, the latest snapshot can be found at [https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-latest.tar.gz](https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-latest.tar.gz). You can also [browse all testnet snapshots](https://archive.hiro.so/testnet/stacks-blockchain/).
 
 You’ll want to download this on the same machine that will run the Stacks node. One way to do this is:
 
 ```
-curl -# https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.2-latest.tar.gz -o stacks-snapshot.tar.gz
+curl -# https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-latest.tar.gz -o stacks-snapshot.tar.gz
 tar -zxvf stacks-snapshot.tar.gz
 ```
 
@@ -255,7 +255,7 @@ An example for running the node’s Docker image with docker run is below. Be su
 
 ```bash
 IMG="blockstack/stacks-core"
-VER="2.5.0.0.2"
+VER="2.5.0.0.3"
 STX_NODE_CONFIG="./node-config.toml"
 
 docker run -d \
@@ -272,7 +272,7 @@ docker run -d \
 Or, using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:2.5.0.0.2
+FROM blockstack/stacks-core:2.5.0.0.3
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443

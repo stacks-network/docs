@@ -7,7 +7,7 @@ description: >-
 
 # Nakamoto Rollout Plan
 
-The current projection for the Instantiation step of the Nakamoto rollout is \~April 22nd at Bitcoin block 840,360. You can check the [real-time projection here](https://stacks-network.github.io/when-activation/2.5/). &#x20;
+The current projection for the Instantiation step of the Nakamoto rollout is \~April 22nd at Bitcoin block 840,360. You can check the [real-time projection here](https://stacks-network.github.io/when-activation/2.5/). This marks the start of the Nakamoto mainnet rollout.
 
 #### **TL;DR:**
 
