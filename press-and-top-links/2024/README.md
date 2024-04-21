@@ -17,3 +17,11 @@ For weekly stories delivered to your inbox, subscribe to [Stacks Snacks](https:/
 {% content-ref url="february-2024.md" %}
 [february-2024.md](february-2024.md)
 {% endcontent-ref %}
+
+{% content-ref url="march-2024.md" %}
+[march-2024.md](march-2024.md)
+{% endcontent-ref %}
+
+{% content-ref url="april-2024.md" %}
+[april-2024.md](april-2024.md)
+{% endcontent-ref %}
