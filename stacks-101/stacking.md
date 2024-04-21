@@ -1,14 +1,14 @@
 # Stacking
 
 {% hint style="info" %}
-With [Nakamoto](../nakamoto-upgrade/nakamoto-in-10-minutes.md) approved and fast-approaching, these docs are being updated ro reflect changes in the network. Note that this document describes how stacking works post-Nakamoto, using the pox-4 contract.
+With [Nakamoto](../nakamoto-upgrade/what-is-the-nakamoto-release/nakamoto-in-10-minutes.md) approved and fast-approaching, these docs are being updated ro reflect changes in the network. Note that this document describes how stacking works post-Nakamoto, using the pox-4 contract.
 {% endhint %}
 
 ### Introduction
 
-Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time and participating as consensus-critical signers. If you aren't familiar with the concept of signers in Stacks, be sure to check out the [Nakamoto Overview](../nakamoto-upgrade/nakamoto-in-10-minutes.md).
+Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time and participating as consensus-critical signers. If you aren't familiar with the concept of signers in Stacks, be sure to check out the [Nakamoto Overview](../nakamoto-upgrade/what-is-the-nakamoto-release/nakamoto-in-10-minutes.md).
 
-This document is presented as a conceptual overview of stacking and how it works. You can also view a detailed walkthrough of [How to Stack as a Signer](../nakamoto-upgrade/signing-and-stacking/stacking-flow.md), a [Stacking Quickstart](../nakamoto-upgrade/nakamoto/nakamoto-stacking-quickstart.md) for those interested in delegating their STX (more on that below), and a [deep dive into the contract](../clarity/example-contracts/stacking.md).
+This document is presented as a conceptual overview of stacking and how it works. You can also view a detailed walkthrough of [How to Stack as a Signer](../nakamoto-upgrade/signing-and-stacking/stacking-flow.md), a [guide for stackers](../nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stackers.md) for those interested in delegating their STX (more on that below), and a [deep dive into the contract](../clarity/example-contracts/stacking.md).
 
 ### Stacking vs Staking
 
@@ -30,7 +30,7 @@ The Bitcoin yield that stackers earn is determined by a combination of the Bitco
 
 #### No slashing
 
-Although stackers do fulfill a consensus critical role in Stacks by serving as signers (more info on this in the [Nakamoto guide](../nakamoto-upgrade/nakamoto-in-10-minutes.md)), there is no concept of slashing in PoX (Proof of Transfer).
+Although stackers do fulfill a consensus critical role in Stacks by serving as signers (more info on this in the [Nakamoto guide](../nakamoto-upgrade/what-is-the-nakamoto-release/nakamoto-in-10-minutes.md)), there is no concept of slashing in PoX (Proof of Transfer).
 
 Rather, if stackers do not perform their duties as signers, they simply cannot unlock their STX tokens and will not receive their BTC rewards.
 

@@ -12,7 +12,7 @@ description: >-
 
 The Nakamoto release brings many new capabilities and improvements to the Stacks blockchain by focusing on a set of core advancements: improving transaction speed, enhancing finality guarantees for transactions, mitigating Bitcoin miner MEV (miner extractable value) opportunities that affect PoX, and boosting robustness against chain reorganizations. This strategic upgrade aims to solidify trust in the Stacks network, offer greater alignment with Bitcoin's immutable nature, and foster an environment ripe for advanced Decentralized Finance (DeFi) applications. The expected outcome is a versatile, scalable, and secure platform that closely integrates with, yet distinctly enhances, the Bitcoin ecosystem.\
 \
-Learn more: [nakamoto-in-10-minutes.md](../nakamoto-in-10-minutes.md "mention")
+Learn more: [nakamoto-in-10-minutes.md](../what-is-the-nakamoto-release/nakamoto-in-10-minutes.md "mention")
 
 </details>
 
@@ -45,12 +45,12 @@ You can learn more about the 2-step rollout structure here: [.](./ "mention") in
 
 There are two steps for Nakamoto rollout exchanges should be aware of:
 
-1. **Instantiation block:** The first hard fork occurs <mark style="color:orange;">at Bitcoin block 840,360</mark> which is currently projected for \~April 22nd. You can check the [real-time projection here](https://stacks-network.github.io/when-activation/2.5/).  At this time, exchanges will need to upgrade to the latest node software or they will not process valid blocks and users will not be able to move funds on the network.
+1. **Instantiation block:** The first hard fork occurs <mark style="color:orange;">at Bitcoin block 840,360</mark> which is currently projected for \~April 22nd. You can check the [real-time projection here](https://stacks-network.github.io/when-activation/2.5/). At this time, exchanges will need to upgrade to the latest node software or they will not process valid blocks and users will not be able to move funds on the network.
 2. **Activation block:** The second hard fork occurs between May 15 and 29th. At this time, the Nakamoto consensus rules will activate, meaning the new Nakamoto features will be made live. Exchanges will need to repeat the upgrade process at this time. Again, no genesis sync, just a download and restart.
 
 ### Other Recommendations:
 
-* With just a bit of extra work, exchanges can support the [Stacks SIP-10 token standard](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md). This allows an exchange to easily list any of a growing number of tokens built on Stacks as well as the upcoming [sBTC asset](broken-reference).
+* With just a bit of extra work, exchanges can support the [Stacks SIP-10 token standard](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md). This allows an exchange to easily list any of a growing number of tokens built on Stacks as well as the upcoming [sBTC asset](broken-reference/).
 * Exchanges that already offer staking type services to their users (programs often called Earn/Stake/etc.) should consider adding [Stacking](../../stacks-101/stacking.md) to their platform alongside other offerings. Users can earn BTC by participating in Stacks consensus through a simple pool.
 
 ### Resources:
@@ -58,7 +58,6 @@ There are two steps for Nakamoto rollout exchanges should be aware of:
 * [Testnet documentation](https://docs.stacks.co/nakamoto-upgrade/nakamoto)
 * [API documentation](https://docs.hiro.so/nakamoto/stacks-js)
 * [Binaries](https://github.com/stacks-network/stacks-core/releases/tag/2.5.0.0.2)
-* [Docker Images](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1&name=2.5.0.0.2)
+* [Docker Images](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1\&name=2.5.0.0.2)
 * [Stacks Blockchain API](https://github.com/hirosystems/stacks-blockchain-api/releases/tag/v7.10.0)
-* [Stacks Blockchain API Docker Images](https://hub.docker.com/r/hirosystems/stacks-blockchain-api/tags?page=1&name=7.10.0)
-
+* [Stacks Blockchain API Docker Images](https://hub.docker.com/r/hirosystems/stacks-blockchain-api/tags?page=1\&name=7.10.0)
