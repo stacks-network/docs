@@ -1,6 +1,6 @@
 # Nakamoto Upgrade - Start Here
 
-The Nakamoto Upgrade is a major upgrade to the Stacks blockchain that instantiates at Bitcoin block 840,360.
+The Nakamoto Upgrade is a major upgrade to the Stacks blockchain that instantiates at Bitcoin block 840,360. This marks the start of the [Nakamoto mainnet rollout](nakamoto-rollout-plan/).
 
 There are several important things to be aware of when it comes to how the Nakamoto upgrade will be rolled out and different actions you may need to take depending on your role in the ecosystem.
 
