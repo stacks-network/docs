@@ -26,7 +26,7 @@ It will also walk through how to set up the config files to get the signer and S
 
 Detailed steps for each of these are laid out below, but this checklist is being included as a way to quickly reference if you have taken all the appropriate actions to run a signer.
 
-#### Pre-Launch Setup
+**Pre-Launch Setup**
 
 * [ ] Ensure your system meets the following requirements:
   * 4 vCPU
@@ -34,12 +34,12 @@ Detailed steps for each of these are laid out below, but this checklist is being
   * 150 GB storage (350 GB if running a Stacks node)
 * [ ] Acquire Docker and basic knowledge of Stacks accounts, stacking, and the Nakamoto stacking flow (links provided below).
 
-#### Preflight Setup
+**Preflight Setup**
 
 * [ ] Generate a new private key on testnet using stacks-cli.
 * [ ] Save the generated account information securely.
 
-#### Configuration Setup
+**Configuration Setup**
 
 * [ ] Create a `signer-config.toml` file with necessary configurations:
   * node\_host
@@ -50,23 +50,22 @@ Detailed steps for each of these are laid out below, but this checklist is being
   * stacks\_private\_key
 * [ ] Store `signer-config.toml` securely and note down the values used.
 
-#### Running the Signer
+**Running the Signer**
 
 * [ ] Decide whether to run the signer using Docker (recommended) or as a binary.
 * [ ] If using Docker:
-  * [ ] Ensure the Docker image tag `next` is used.
   * [ ] Set up the necessary ports and volumes.
   * [ ] Run the Docker container with the appropriate settings.
 * [ ] If running as a binary:
   * [ ] Build `stacks-core` from source or download the pre-built binary.
   * [ ] Run the signer using the command: `stacks-signer run --config <path_to_config>`.
 
-#### Verify Signer Operation
+**Verify Signer Operation**
 
 * [ ] Check that the signer is listening on its configured endpoint.
 * [ ] Confirm that there are no errors and the system is ready for connections.
 
-#### Setting Up the Stacks Node
+**Setting Up the Stacks Node**
 
 * [ ] Create a `node-config.toml` with the necessary settings:
   * block\_proposal\_token
@@ -79,12 +78,12 @@ Detailed steps for each of these are laid out below, but this checklist is being
   * [ ] Download the appropriate binary.
   * [ ] Run it with the command: `./stacks-node start --config <path_to_config>`.
 
-#### Verify Stacks Node Operation
+**Verify Stacks Node Operation**
 
 * [ ] Check the Stacks node logs for successful connection to the signer.
 * [ ] Confirm that the node is syncing Bitcoin headers properly.
 
-#### Setup Stacks Accounts
+**Setup Stacks Accounts**
 
 * [ ] Set up a “pool operator” wallet in a Stacks wallet (e.g., Leather or Xverse).
 * [ ] Fund the pool operator wallet with STX (testnet) sufficient for transaction fees.
@@ -113,11 +112,11 @@ Note that at the moment the signer should only be run on testnet using these ins
 
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the [`blockstack/stacks-core:2.5.0.0.2`](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.2/images/sha256-ed20a145a8cfb6ec8a7e6f0c7d3ea25b55747b147d2cf080cbc0609ee77deb30?context=explore) image. When pulling the Docker image, be sure you are using the `2.5.0.0.2` tag, as the main branch will not have the signer binary.
+You can run the signer as a Docker container using the [`blockstack/stacks-core:2.5.0.0.2`](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.2/images/sha256-ed20a145a8cfb6ec8a7e6f0c7d3ea25b55747b147d2cf080cbc0609ee77deb30?context=explore) image.
 
 When running the Docker container, you’ll need to ensure a few things:
 
-* The port configured as the `endpoint` (in the above example, “30000”) must be exposed to your Stacks node.
+* The port configured as the `endpoint` (in the above example, “30000”) must be exposed to your Stacks node. Note that this endpoint should not be public, but must be exposed to your Stacks node
 * You’ll need a volume with at least a few GB of available storage that contains the folder your `db_path` is in. In the above example, that would be /var
 * You’ll need to include your `signer-config.toml` file as noted below with the first `-v` flag
 

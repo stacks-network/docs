@@ -10,7 +10,7 @@ In Nakamoto, the Stackers themselves carry out a tenure change by creating a spe
 
 In the act of producing a `TenureChange` transaction, the Stackers also internally agree to no longer sign the current miner's blocks. Thus, the act of producing a `TenureChange` atomically transfers block-production responsibilities from one miner to another. The new miner cannot orphan recently-confirmed blocks from the old miner because the `TenureChange` transaction contains within it the most recently confirmed blockId as identified by the same Stackers that produced the `TenureChange`. As a result, any new blocks that fail to build upon the latest Stacks block identified by the Signers will be verifiably invalid.
 
-<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 _Figure 3: Tenure change overview. When a new Bitcoin block arrives, Stackers begin the process of deciding the last block they will sign from miner N. When they reach quorum, they make this data available for download by miners, and wrap it in a WSTS-signed specially-crafted data payload. This information serves as a record of the tenure change, and must be incorporated in miner N+1's tenure-start block. In other words, miner N+1 cannot begin producing Stacks blocks until Stackers informs it of block X -- the block from miner N that it must build atop. Stacks-on-Bitcoin transactions are applied by miner N+1 for all Bitcoin blocks in sortitions N and earlier when its tenure begins._
 
