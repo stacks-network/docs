@@ -14,15 +14,24 @@ You can jump into and begin using Nakamoto today, here are some links to help yo
 
 There have been several updates to Hiro's products including Clarinet, Stacks.js, and the API. You can view a summary of all the changes and links to relevant documentation on [Hiro's Nakamoto Docs ](https://docs.hiro.so/nakamoto)page.
 
-#### Testnet API Endpoints
+#### API Endpoints
 
-* API status: [https://api.testnet.hiro.so/extended/](https://api.testnet.hiro.so/extended/)
-* Burn Block endpoint. This will allow you to get the hashes of fast Stacks blocks as they are added to the chain and see their associated burn blocks. [https://api.testnet.hiro.so/extended/v2/burn-blocks](https://api.testnet.hiro.so/extended/v2/burn-blocks)
-* Pox endpoint. This allows you to get information about proof of transfer, including the currently deployed pox-4 contract. This will be helpful for anyone looking to incorporate stacking into their app. [https://api.testnet.hiro.so/v2/pox](https://api.testnet.hiro.so/v2/pox)
+* API status&#x20;
+  * Tesnet: [https://api.testnet.hiro.so/extended/](https://api.testnet.hiro.so/extended/)
+  * Mainnet: [https://api.hiro.so/extended/](https://api.hiro.so/extended/)
+* Burn Block endpoint. This will allow you to get the hashes of fast Stacks blocks as they are added to the chain and see their associated burn blocks.
+  * Testnet: [https://api.testnet.hiro.so/extended/v2/burn-blocks](https://api.testnet.hiro.so/extended/v2/burn-blocks)
+  * Mainnet: [https://api.hiro.so/extended/v2/burn-blocks](https://api.hiro.so/extended/v2/burn-blocks)
+* Pox endpoint. This allows you to get information about proof of transfer, including the currently deployed pox-4 contract. This will be helpful for anyone looking to incorporate stacking into their app.
+  * Testnet: [https://api.testnet.hiro.so/v2/pox](https://api.testnet.hiro.so/v2/pox)
+  * Mainnet: [https://api.hiro.so/v2/pox](https://api.hiro.so/v2/pox)
 
 #### PoX-4 Contract
 
-`pox-4.clar` is the new stacking contract for Nakamoto. If you are interested in experimenting with proof of transfer use cases including state changes, solo stacking, and pool stacking, all the functions you’ll need can be found at the deployed contract: [https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet](https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet)
+`pox-4.clar` is the new stacking contract for Nakamoto. If you are interested in experimenting with proof of transfer use cases including state changes, solo stacking, and pool stacking, all the functions you’ll need can be found at the deployed contract:&#x20;
+
+* Testnet: [https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet](https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet)
+* Mainnet: [https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46?chain=mainnet](https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46?chain=mainnet)
 
 #### Signers Voting Contract
 
