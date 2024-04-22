@@ -754,7 +754,7 @@ Lockstacks is a web application that provides an easy-to-use interface for stack
 At the time of writing, this has only been tested using the [Leather](https://leather.io) wallet.
 {% endhint %}
 
-You can visit [staging.lockstacks.com](http://staging.lockstacks.com) to generate a signer key signature. Make sure you’re connected to the correct network.\
+You can visit [lockstacks.com](https://lockstacks.com) to generate a signer key signature. Make sure you’re connected to the correct network.\
 \
 To generate a signer key signature, it’s important that you’ve logged in Leather with the same secret key that was used to [generate your signer key](running-a-signer.md#preflight-setup-1), not the account that will serve as your pool operator address. Once you’ve setup that account on Leather, you can log in to Lockstacks.\
 \
@@ -856,7 +856,7 @@ The first step with delegated stacking involves a stacker delegating their Stack
 
 As the pool operator, you must provide a STX address (a “pool admin address”) that will manage delegations. As discussed in previous sections, this is a separate address from the signer’s private key, and this can be any address. This address is what will be used when making transactions to confirm and aggregate delegated STX.
 
-Pool operators can log in to LockStacks and visit [https://staging.lockstacks.com/pool-admin](https://lockstacks.com/pool-admin?chain=mainnet)[ ](https://staging.lockstacks.com/pool-admin)to make pool management transactions.
+Pool operators can log in to LockStacks and visit [https://lockstacks.com/pool-admin](https://lockstacks.com/pool-admin) to make pool management transactions.
 
 #### delegate-stack-stx
 
