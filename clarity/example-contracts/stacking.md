@@ -2,11 +2,7 @@
 
 Stacking is implemented as a smart contract using Clarity. You can always find the Stacking contract identifier using the Stacks Blockchain API [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get\_pox\_info).
 
-Currently stacking uses the pox-4 contract. The deployed testnet version can be [viewed in the explorer](https://explorer.hiro.so/txid/0xaf8857ee1e4b8afc72f85b85ad785e1394672743acc63f4df79fb65b5e8b9d2a?chain=testnet).
-
-{% hint style="info" %}
-Testnet currently uses pox-4. Mainnet will use pox-3 until Nakamoto is instantiated on roughly April 16.
-{% endhint %}
+Currently stacking uses the pox-4 contract. The deployed pox-4 contract can be [viewed in the explorer](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-4?chain=mainnet).
 
 In this walkthrough, we'll cover the entire stacking contract from start to finish, including descriptions of the various functions and errors, and when you might use/encounter them.
 
