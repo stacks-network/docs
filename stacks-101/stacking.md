@@ -88,7 +88,7 @@ Stacks (STX) token holders don't automatically receive stacking rewards. Instead
 * Commit to participation before a reward cycle begins
 * Commit the minimum amount of STX tokens to secure a reward slot, or pool with others to reach the minimum
 * Lock up STX tokens for a specified period
-* Provide a supported Bitcoin address to receive rewards (native segwit is not supported)
+* Provide a supported Bitcoin address to receive rewards
 * Maintain their signer software (if they are operating a signer)
 
 The following diagram describes how the minimum STX tokens per slot is determined.

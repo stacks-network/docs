@@ -1568,8 +1568,11 @@ First let's cover the needed parameters.
 * `auth-id` is a unique string to prevent re-use of this stacking transaction
 
 {% hint style="warning" %}
-It's important to make sure that these fields match what you pass in to the signer signature generation. If they don't, you will likely get error 35 (`ERR_INVALID_SIGNATURE_PUBKEY`) when trying to submit this transaction as the signer signature will not be valid.
+It's important to make sure that these fields match what you pass in to the signer signature generation. If they don't, you will likely get error 35 (`ERR_INVALID_SIGNATURE_PUBKEY`) \
+when trying to submit this transaction as the signer signature will not be valid.
 {% endhint %}
+
+#### Supported Reward Address Types
 
 {% hint style="info" %}
 For the `pox-addr` field, the `version` buffer must represent what kind of bitcoin address is being submitted. These are all the possible values you can pass here depending on your address type:
