@@ -16,6 +16,7 @@ These pools have confirmed their systems are ready to accept your Stacking calls
 
 * [Fastpool by Ryder](https://fastpool.org/)
 * [Stacking DAO](https://medium.com/@stackingdao/the-nakamoto-odyssey-20x-point-boost-on-new-deposits-and-more-567c3a509112)
+* [LISA](https://app.lisalab.io/lisa/stacking)
 
 ### 'Re-Stacking' Timeline
 
@@ -25,9 +26,9 @@ These pools have confirmed their systems are ready to accept your Stacking calls
 
 Remember that a new requirement for stackers (after [activation phase](./)) is that you will also need to function as a signer on the network to validate Stacks transactions.
 
-This means that in order to stack you need to have an operational signer running. As a solot stacker, you have two options:
+This means that in order to stack you need to have an operational signer running. As a solo stacker, you have two options:
 
-1. Switch to stacking [via a pool](https://www.stacks.co/learn/stacking)
+1. Switch to stacking [via a pool](https://www.stacks.co/learn/stacking) (this is the simplest path and most common)
 2. [Operate your own signer](../signing-and-stacking/running-a-signer.md)
 
 Solo stacking without running a signer will not work with pox-4 as you'll need to pass in a valid signer signature when calling your `stack-stx` functions. More info on how this works can be found in the [How to Stack](../signing-and-stacking/stacking-flow.md) guide.
