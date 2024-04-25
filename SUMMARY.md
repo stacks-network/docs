@@ -48,6 +48,7 @@
 
 ## 🛠️ Tutorials
 
+* [The Stack](tutorials/the-stack.md)
 * [Hello Stacks (Quickstart Tutorial)](tutorials/hello-stacks-quickstart-tutorial.md)
 * [Bitcoin Integration](tutorials/bitcoin-integration/README.md)
   * [Sending Bitcoin with Leather Wallet](tutorials/bitcoin-integration/sending-bitcoin-with-leather-wallet.md)
