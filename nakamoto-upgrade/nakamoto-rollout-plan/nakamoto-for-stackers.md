@@ -57,8 +57,6 @@ Click the menu button in the top right and select “Change network” and selec
 
 #### Using Lockstacks
 
-After you have your Leather wallet connected to the right network (and received some testnet STX from the faucet if you are on testnet), you can go to the [Lockstacks staging site](https://staging.lockstacks.com) in order to stack.
-
-The staging site ([https://staging.lockstacks.com](https://staging.lockstacks.com)) specifically has pox-4 functionality enabled.
+After you have your Leather wallet connected to the right network (and received some testnet STX from the faucet if you are on testnet), you can go to [Lockstacks](https://lockstacks.com) in order to stack.
 
 Connect your Leather wallet and stack via the UI.
