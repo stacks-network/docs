@@ -8,6 +8,7 @@ Below are sample configuration files for running a Stacks node and signer provid
 # The IP address and port where your Stacks node can be accessed. 
 # The port 20443 is the default RPC endpoint for Stacks nodes. 
 # Note that you must use an IP address - DNS hosts are not supported at this time.
+# This should be the IP address accessible via Docker, usually via a network.
 node_host = "127.0.0.1:20443"
 
 # This is the location where the signer will expose an RPC endpoint for 
@@ -98,6 +99,7 @@ This config is very similar to the testnet config, except the `network` field is
 # The IP address and port where your Stacks node can be accessed. 
 # The port 20443 is the default RPC endpoint for Stacks nodes. 
 # Note that you must use an IP address - DNS hosts are not supported at this time.
+# This should be the IP address accessible via Docker, usually via a network.
 node_host = "127.0.0.1:20443"
 
 # This is the location where the signer will expose an RPC endpoint for 

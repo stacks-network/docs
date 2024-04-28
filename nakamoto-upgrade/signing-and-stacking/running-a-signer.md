@@ -137,6 +137,7 @@ docker run -d \
     -p 30000:30000 \
     -e RUST_BACKTRACE=full \
     -e BLOCKSTACK_DEBUG=0 \
+    --name stacks-signer \
     $IMG:$VER \
     stacks-signer run \
     --config /config.toml
@@ -264,6 +265,7 @@ docker run -d \
     -p 20443:20443 \
     -p 20444:20444 \
     -e RUST_BACKTRACE=full \
+    --name stacks-node \
     $IMG:$VER \
     stacks-node start \
     --config /config.toml
