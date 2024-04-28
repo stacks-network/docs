@@ -283,7 +283,7 @@ Similar to the changes to solo Stacking, the big difference for delegation flows
 This step does not apply to pool operators/signers. It is included here to illustrate the end-to-end flow, but if you are operating as a pool operator/signer you will not perform this step. Instead, users delegate their stx to you as the pool operator.
 {% endhint %}
 
-The first step, where the delegator sets up their delegation to a pool operator, is to call `delegate-stx`. This function does not directly delegate the stx, but rather allows the pool operator to issue the stacking lock on behalf of the user calling this function.
+The first step, where the delegator sets up their delegation to a pool operator, is to call `delegate-stx`. This function does not directly delegate the stx, but rather allows the pool operator to issue the stacking lock on behalf of the user calling this function. You can think of calling this function as the delegaor giving permission to the pool operator to stack on their behalf.
 
 <details>
 
@@ -343,7 +343,7 @@ The arguments here are unchanged from previous versions of PoX:
 
 * Amount: Denoted in ustx (1 stx = 1,000,000 ustx)
 * Delegate to: the STX address of the pool operator they're delegating to. Note that this is different from the “signer key” used. Instead, this is the STX address that is used to make PoX transactions.
-* Until burn height: an optional argument where the delegation expires
+* Until burn height: an optional argument when the delegation expires. If none is used, the delegation  permission expires only when explicitly revoked.
 * Pox Address: an optional BTC address that, if specified, the signer must use to accept this delegation
 
 #### Pool operator “activates” the delegation
@@ -432,9 +432,9 @@ The arguments are:
 
 * Stacker: the STX address of the delegator
 * Amount: denoted in ustx (1 stx = 1,000,000 ustx)
-* Pox Address: The BTC address for the delegator to receive stacking rewards
-* Start burn height: the current BTC block height
-* Lock period: number of cycles to lock for. If the delegator provided the until burn height argument, then the end of these cycles cannot be past the expiration provided.
+* Pox Address: The BTC address of the pool operator where they will receive the BTC rewards
+* Start burn height: The BTC block height in which delegation can begin. This must not be in the past, so the best option here is to add 1 or 2 to the current block height when you initiate this transaction. Note that the delegation will not actively begin at this block height, but whatever reward cycle is passed in the aggregation commit function (below). That function will run a check to make sure that this start burn height falls before the chosen cycle.
+* Lock period: number of cycles to lock for. If the delegator provided the until burn height argument, then the end of these cycles cannot be past the expiration provided. Max lock period is 12
 
 This step also allows the pool operator to proactively choose which Stackers they’ll accept delegation from. For “closed” pools, the pool operator will only call this function for approved Stackers. It is up to each pool operator who runs a closed pool to implement this process.
 
@@ -454,13 +454,17 @@ Also make sure that, when you generate your signature, you use 558 as the reward
 
 #### Pool operator “commits” delegated STX
 
-The next step is for the pool operator to call `stack-aggregation-commit`.
+The next step is for the pool operator to call `stack-aggregation-commit-indexed`.
+
+{% hint style="info" %}
+In the contract source code, you'll notice a similarly named function called `stack-aggregation-commit`. This is a legacy function that makes it difficult to increas the stacking amount. We recommend using `stack-aggregation-commit-indexed`.
+{% endhint %}
 
 <details>
 
 <summary>Function source code</summary>
 
-Note that the `stack-aggregation-commit` function wraps the `inner-stack-aggregation-commit` function. The wrapped inner function is included here.
+Note that the `stack-aggregation-commit-indexed` function wraps the `inner-stack-aggregation-commit` function. The wrapped inner function is included here.
 
 Check out the [deployed contract](https://explorer.hiro.so/txid/0xaf8857ee1e4b8afc72f85b85ad785e1394672743acc63f4df79fb65b5e8b9d2a?chain=testnet) to see the flow of contract calls.
 
@@ -523,7 +527,7 @@ Check out the [deployed contract](https://explorer.hiro.so/txid/0xaf8857ee1e4b8a
 
 At this point, the STX are committed to the pool operator, and the pool operator has some “aggregate balance” of committed STX. The pool operator is not actually eligible for rewards and signer slots until this step is called.
 
-The pool operator cannot call this until the total number of STX committed is larger than the minimum threshold required to Stack. This threshold is a function of the total number of liquid STX.
+The pool operator cannot call this until the total number of STX committed is larger than the minimum threshold required to Stack. This minimum stacking threshold is a function of the total number of liquid STX.
 
 {% hint style="info" %}
 This number varies and can be found by visiting the pox endpoint of Hiro's API at [https://api.testnet.hiro.so/v2/pox](https://api.testnet.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX).
@@ -531,7 +535,7 @@ This number varies and can be found by visiting the pox endpoint of Hiro's API a
 
 Once the threshold is reached, the pool operator calls `stack-aggregation-commit`. This is the point where you as the pool operator must provide your signer key and signer key signature. The arguments are:
 
-* Pox Address: the BTC address tp receive rewards
+* Pox Address: the BTC address to receive rewards
 * Reward-cycle: the current reward cycle (see the note above on passing the correct reward cycle here)
 * Signer key: the public key of your signer (remember that this may be different than the address you are using to operate the pool, but this step is how you associate the two together)
 * Signer signature: Your generated signer signature (details on how to do this are below)
@@ -559,7 +563,7 @@ To act as a signer, each step up to this point must be taken before the prepare 
 
 #### Pool operator increases amount committed
 
-Even after the signer commits to a certain amount of STX in the previous step, the signer can increase this amount once more delegations are received. The initial steps must be taken for each Stacker (`delegate-stx` and then `delegate-stack-stx`), and then `stack-aggregation-increase` can be called.
+Even after the signer commits to a certain amount of STX in the previous step, the signer can increase this amount once more delegations are received. The initial steps must be taken for each Stacker (`delegate-stx` and then `delegate-stack-stx`), and then `stack-aggregation-increase` can be called with the index returned from the first `stack-aggregation-commit-indexed` call and a new signature..
 
 <details>
 
