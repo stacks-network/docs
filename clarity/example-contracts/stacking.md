@@ -1885,6 +1885,34 @@ We don't need to update the stacking state because we already did that in the `d
 
 All we need to do is delete and log the partially stacked STX state.
 
+### How Stacking Reward Distribution Works
+
+All of the above stacking functions take in a `pox-reward` field that corresponds to a Bitcoin address where BTC rewards will be sent. It's important to understand how these addresses are used and how reward distribution is handled in general.
+
+How Bitcoin rewards are distributed is primarily up to the discretion of the pool operator.
+
+Let's go over the role of `pox-addr` in each function and how it should be used.
+
+#### stack-stx
+
+This is the simplest option and simply corresponds to the Bitcoin address that the stacker would like to receive their rewards.
+
+#### delegate-stx
+
+In this function, which is the one that the delegator will be calling to give permission to the pool operator to stack on their behalf, the `pox-addr` argument is optional.
+
+If no `pox-addr` argument is not passed in, the pool operator determines where this delegator's rewards are sent.
+
+If a `pox-addr` is passed in, then rewards must be distributed to that address. **However, if this is passed in, the delegator must have enough STX to meet the minimum stacking amount.**
+
+The reason is because there are a finite amount of reward slots (4,000) and each `pox-addr` takes up one of these reward slots.
+
+#### delegate-stack-stx and stack-aggregation-commit
+
+In both of these functions, `pox-addr` corresponds to the address where the pool oparator would like the rewards to be sent.
+
+At this point, it is up to the pool operator to determine how to allocate rewards. In most cases, a pool operator will use a wrapper contract in order to transparently track this information on-chain, and manually send rewards out to participants according to the proportion that they delegated.
+
 ### Errors
 
 You may encounter several errors when trying to perform stacking operations. We won't cover them all in detail here, as you can see the error in the failed transaction and trace the source code to find it.

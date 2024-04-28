@@ -75,6 +75,7 @@
   * [Audited Starter Contracts](clarity/example-contracts/audited-starter-contracts.md)
   * [Stacking](clarity/example-contracts/stacking.md)
   * [BNS](clarity/example-contracts/bns.md)
+  * [Multi Send](clarity/example-contracts/multi-send.md)
 
 ## ⛓️ sBTC
 
