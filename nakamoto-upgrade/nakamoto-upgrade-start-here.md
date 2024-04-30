@@ -28,7 +28,7 @@ If you are a pool operator, you'll need to make sure you are ready to accept del
 
 ### Application Developers
 
-The instantiation phase focuses on activation the new stacking rules in pox-4. Fast blocks won't be available until the activation phase in May. This means that most developers won't need to do anything different, although there are some changes to various Hiro products and tools you should be aware of. Details on this can be found in the [Nakamoto for App Developers](nakamoto-rollout-plan/nakamoto.md) guide.
+The instantiation phase focuses on activation the new stacking rules in pox-4. Fast blocks won't be available until after Activation, projected \~August 28th. This means that most developers won't need to do anything different, although there are some changes to various Hiro products and tools you should be aware of. Details on this can be found in the [Nakamoto for App Developers](nakamoto-rollout-plan/nakamoto.md) guide.
 
 ### Exchanges
 
