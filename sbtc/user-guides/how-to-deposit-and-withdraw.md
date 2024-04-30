@@ -6,7 +6,7 @@ Depositing and withdrawing sBTC can be done in three ways:
 2. Using an sBTC enabled wallet.
 3. Using an app which integrates with sBTC natively.
 
-This guide will walk you through how to deposit and withdraw sBTC using the sBTC Brdige application.
+This guide will walk you through how to deposit and withdraw sBTC using the sBTC Bridge application.
 
 ### Preparation
 
