@@ -1,9 +1,5 @@
 # Nakamoto for Stacking Providers
 
-The current projection for the Instantiation step of the Nakamoto rollout is \~April 22nd at Bitcoin block 840,360. You can check the [real-time projection here](https://stacks-network.github.io/when-activation/2.5/).
-
-***
-
 Remember that Nakamoto is being rolled out in two phases. This represents the first phase. Understanding this process is key to understanding the information below, read it here: [.](./ "mention")
 
 ## Upgrading your Stacking pool or service
