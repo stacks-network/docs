@@ -17,6 +17,8 @@ These pools have confirmed their systems are ready to accept your Stacking calls
 * [Fastpool by Ryder](https://fastpool.org/)
 * [Stacking DAO](https://medium.com/@stackingdao/the-nakamoto-odyssey-20x-point-boost-on-new-deposits-and-more-567c3a509112)
 * [LISA](https://app.lisalab.io/lisa/stacking)
+* [PlanBetter](https://twitter.com/planbetter\_/status/1784974388426637616)
+* [Xverse](https://pool.xverse.app/)
 
 ### 'Re-Stacking' Timeline
 
