@@ -1889,7 +1889,7 @@ All we need to do is delete and log the partially stacked STX state.
 
 All of the above stacking functions take in a `pox-reward` field that corresponds to a Bitcoin address where BTC rewards will be sent. It's important to understand how these addresses are used and how reward distribution is handled in general.
 
-How Bitcoin rewards are distributed is primarily up to the discretion of the pool operator.
+How Bitcoin rewards are distributed is primarily up to the discretion of the pool operator. Since PoX reward distributions are handled using Bitcoin transactions, there is currently not an effective way to automate their distribution to individual delegated stackers.
 
 Let's go over the role of `pox-addr` in each function and how it should be used.
 
@@ -1907,9 +1907,11 @@ If a `pox-addr` is passed in, then rewards must be distributed to that address. 
 
 The reason is because there are a finite amount of reward slots (4,000) and each `pox-addr` takes up one of these reward slots.
 
+Stackers need to be able to stack the minimum in order to be eligible for one of these reward slots. A delegator may choose to delegate to a pool (even if they meet the minimum stacking requirement) if they do not want to handle the infrastructure of running a signer or the actual stacking operations, which is why this option exists.
+
 #### delegate-stack-stx and stack-aggregation-commit
 
-In both of these functions, `pox-addr` corresponds to the address where the pool oparator would like the rewards to be sent.
+In both of these functions, `pox-addr` corresponds to the address where the pool operator would like the rewards to be sent.
 
 At this point, it is up to the pool operator to determine how to allocate rewards. In most cases, a pool operator will use a wrapper contract in order to transparently track this information on-chain, and manually send rewards out to participants according to the proportion that they delegated.
 
