@@ -21,6 +21,10 @@ The reward amounts are:
 * 250 STX per block are released during the following 4 years
 * 125 STX per block are released from then on indefinitely.
 
+{% hint style="info" %}
+Note that post-Nakamoto, after fast blocs are activated, STX emissions are tied to miner tenure changes, not Stacks blocks, so the emissions schedule will remain unchanged. For more info on how Nakamoto changes block production, see [Nakamoto in 10 Minutes](../nakamoto-upgrade/what-is-the-nakamoto-release/nakamoto-in-10-minutes.md).
+{% endhint %}
+
 These "halvings" are synchronized with Bitcoin halvings.
 
 <figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
