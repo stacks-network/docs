@@ -433,7 +433,7 @@ The arguments are:
 * Stacker: the STX address of the delegator
 * Amount: denoted in ustx (1 stx = 1,000,000 ustx)
 * Pox Address: The BTC address of the pool operator where they will receive the BTC rewards
-* Start burn height: The BTC block height in which delegation can begin. This must not be in the past, so the best option here is to add 1 or 2 to the current block height when you initiate this transaction. Note that the delegation will not actively begin at this block height, but whatever reward cycle is passed in the aggregation commit function (below). That function will run a check to make sure that this start burn height falls before the chosen cycle.
+* Start burn height: The BTC block height in which delegation can begin. This field is used to ensure that an old transaction intended for an earlier cycle will fail, and also prevents callers from "post-dating" the call to a future cycle. The best option here is to add 1 or 2 to the current block height when you initiate this transaction. Note that the delegation will not actively begin at this block height, but whatever reward cycle is passed in the aggregation commit function (below).
 * Lock period: number of cycles to lock for. If the delegator provided the until burn height argument, then the end of these cycles cannot be past the expiration provided. Max lock period is 12
 
 This step also allows the pool operator to proactively choose which Stackers they’ll accept delegation from. For “closed” pools, the pool operator will only call this function for approved Stackers. It is up to each pool operator who runs a closed pool to implement this process.

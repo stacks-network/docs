@@ -7,11 +7,9 @@ description: >-
 
 # Nakamoto Rollout Plan
 
-The current projection for the Instantiation step of the Nakamoto rollout is \~April 22nd at Bitcoin block 840,360. You can check the [real-time projection here](https://stacks-network.github.io/when-activation/2.5/). This marks the start of the Nakamoto mainnet rollout.
-
 #### **TL;DR:**
 
-> As [shared in January](https://stacks.org/nakamoto-launch-window), the Nakamoto upgrade will begin rolling out between April 15 - 29 (Instantiation window) which will kick off a period of at least one month for Signer onboarding. After Signers are onboarded, Nakamoto rules will go live in the Activation window between May 15 - 29, completing the launch!
+> As [shared in January](https://stacks.org/nakamoto-launch-window), the Nakamoto upgrade will begin rolling out between April 15 - 29 (Instantiation window) which will kick off a period of Signer onboarding ([and now additional Signer/miner resiliency features](https://stacks.org/nakamoto-activation-update)). Nakamoto rules will begin going live on August 28th, completing the launch!
 
 ### Two-Step Release and Signer Onboarding
 
@@ -42,14 +40,10 @@ As [shared in January](https://stacks.org/nakamoto-launch-window), mainnet rollo
 
 Once instantiated (Step 1), a period of at least 2 Stacking cycles will be afforded to Signers and other integration partners to register with pox-4. During this time they will ensure their Signers are ready for the progression to Activation (Step 2) where the network will depend on Signers actively validating blocks.
 
-This means that assuming there are no major bugs or issues, full Nakamoto features will activate in mid to late May with some of that depending on how quickly Signers are onboarded.&#x20;
+This means that assuming there are no major bugs or issues, full Nakamoto features will activate around August 28th with some of that depending on how quickly Signers are onboarded.&#x20;
 
 ### Visualizing the rollout
 
-<div data-full-width="true">
+<figure><img src="../../.gitbook/assets/Screenshot 2024-04-30 154011.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
-
-</div>
-
-**Note about sBTC Rollout:** Previous [updates](https://stacks.org/halving-on-horizon-nakamoto) mentioned targeting a launch of sBTC 2-3 months after Nakamoto Mainnet is live and stable. Once Nakamoto reaches Step 1 (Instantiation) in April, many Core Developers will turn their focus to sBTC and produce a more detailed rollout plan to share.
+**Note about sBTC Rollout:** Previous [updates](https://stacks.org/halving-on-horizon-nakamoto) mentioned targeting a launch of sBTC 2-3 months after Nakamoto Mainnet is live and stable. Core Developers are now projecting [a faster follow](https://www.bitcoinwrites.com/p/sbtc-rollout-bootstrapping-programmable-bitcoin)!

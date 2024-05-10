@@ -14,6 +14,7 @@ Stackers, here’s what you need to know for Cycle 84 and beyond:
 
 These pools have confirmed their systems are ready to accept your Stacking calls for Cycle 84. Please read their documentation or get in **direct contact with them** for more information or support.
 
+* [Blockdaemon](https://www.blockdaemon.com/stacks)
 * [Fastpool by Ryder](https://fastpool.org/)
 * [Stacking DAO](https://medium.com/@stackingdao/the-nakamoto-odyssey-20x-point-boost-on-new-deposits-and-more-567c3a509112)
 * [LISA](https://app.lisalab.io/lisa/stacking)
