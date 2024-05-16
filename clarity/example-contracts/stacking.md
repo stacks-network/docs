@@ -2,11 +2,7 @@
 
 Stacking is implemented as a smart contract using Clarity. You can always find the Stacking contract identifier using the Stacks Blockchain API [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get\_pox\_info).
 
-Currently stacking uses the pox-4 contract. The deployed testnet version can be [viewed in the explorer](https://explorer.hiro.so/txid/0xaf8857ee1e4b8afc72f85b85ad785e1394672743acc63f4df79fb65b5e8b9d2a?chain=testnet).
-
-{% hint style="info" %}
-Testnet currently uses pox-4. Mainnet will use pox-3 until Nakamoto is instantiated on roughly April 16.
-{% endhint %}
+Currently stacking uses the pox-4 contract. The deployed pox-4 contract can be [viewed in the explorer](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-4?chain=mainnet).
 
 In this walkthrough, we'll cover the entire stacking contract from start to finish, including descriptions of the various functions and errors, and when you might use/encounter them.
 
@@ -1572,8 +1568,11 @@ First let's cover the needed parameters.
 * `auth-id` is a unique string to prevent re-use of this stacking transaction
 
 {% hint style="warning" %}
-It's important to make sure that these fields match what you pass in to the signer signature generation. If they don't, you will likely get error 35 (`ERR_INVALID_SIGNATURE_PUBKEY`) when trying to submit this transaction as the signer signature will not be valid.
+It's important to make sure that these fields match what you pass in to the signer signature generation. If they don't, you will likely get error 35 (`ERR_INVALID_SIGNATURE_PUBKEY`) \
+when trying to submit this transaction as the signer signature will not be valid.
 {% endhint %}
+
+#### Supported Reward Address Types
 
 {% hint style="info" %}
 For the `pox-addr` field, the `version` buffer must represent what kind of bitcoin address is being submitted. These are all the possible values you can pass here depending on your address type:
@@ -1885,6 +1884,36 @@ Now we take all of the delegated STX and actually add it to the reward cycle. At
 We don't need to update the stacking state because we already did that in the `delegate-stack-stx` function.
 
 All we need to do is delete and log the partially stacked STX state.
+
+### How Stacking Reward Distribution Works
+
+All of the above stacking functions take in a `pox-reward` field that corresponds to a Bitcoin address where BTC rewards will be sent. It's important to understand how these addresses are used and how reward distribution is handled in general.
+
+How Bitcoin rewards are distributed is primarily up to the discretion of the pool operator. Since PoX reward distributions are handled using Bitcoin transactions, there is currently not an effective way to automate their distribution to individual delegated stackers.
+
+Let's go over the role of `pox-addr` in each function and how it should be used.
+
+#### stack-stx
+
+This is the simplest option and simply corresponds to the Bitcoin address that the stacker would like to receive their rewards.
+
+#### delegate-stx
+
+In this function, which is the one that the delegator will be calling to give permission to the pool operator to stack on their behalf, the `pox-addr` argument is optional.
+
+If no `pox-addr` argument is not passed in, the pool operator determines where this delegator's rewards are sent.
+
+If a `pox-addr` is passed in, then rewards must be distributed to that address. **However, if this is passed in, the delegator must have enough STX to meet the minimum stacking amount.**
+
+The reason is because there are a finite amount of reward slots (4,000) and each `pox-addr` takes up one of these reward slots.
+
+Stackers need to be able to stack the minimum in order to be eligible for one of these reward slots. A delegator may choose to delegate to a pool (even if they meet the minimum stacking requirement) if they do not want to handle the infrastructure of running a signer or the actual stacking operations, which is why this option exists.
+
+#### delegate-stack-stx and stack-aggregation-commit
+
+In both of these functions, `pox-addr` corresponds to the address where the pool operator would like the rewards to be sent.
+
+At this point, it is up to the pool operator to determine how to allocate rewards. In most cases, a pool operator will use a wrapper contract in order to transparently track this information on-chain, and manually send rewards out to participants according to the proportion that they delegated.
 
 ### Errors
 

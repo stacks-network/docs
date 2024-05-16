@@ -20,7 +20,7 @@ While you _can_ run a node using these specs, it's _recommended_ to assign more 
 * ⚠️ [docker-compose](https://docs.docker.com/compose/install/) version `2.2.2` or greater is **required**
 * **4GB memory**
 * **1 Vcpu** ( _minimum of 2 Vcpu is recommended_ )
-* **250GB disk**
+* **350GB disk**
 
 {% hint style="warning" %}
 MacOS with an ARM processor is NOT recommended

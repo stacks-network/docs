@@ -7,18 +7,18 @@ This doc assumes you are familiar with stacking at a conceptual level. If not, y
 {% hint style="info" %}
 Much of the technical instructions below apply to users who are interested in either solo stacking or becoming a pool operator. Both of those types of stackers will need to run a signer.
 
-However, if you prefer to participate in a pool by delegating your STX, you do not need to also operate a signer. Simplified instructions for delegating your STX token using Leather and Lockstacks can be found in the [Nakamoto Stacking Quickstart](../nakamoto/nakamoto-stacking-quickstart.md) doc.
+However, if you prefer to participate in a pool by delegating your STX, you do not need to also operate a signer. Simplified instructions for delegating your STX token using Leather and Lockstacks can be found in the [Nakamoto for Stackers](../nakamoto-rollout-plan/nakamoto-for-stackers.md) doc.
 {% endhint %}
 
 In Nakamoto, stacking flows have significant changes in comparison to previous versions of Stacks. Because Nakamoto requires stackers to run a signer, which validates blocks produced by Stacks miners, stackers need to provide new information when making Stacking transactions.
 
 These changes affect both solo Stacking and delegated Stacking. This document outlines the new flows for both cases.
 
-If you aren't familiar with the general block production process under Nakamoto and what role signers and stackers play, you may want to read [Nakamoto in 10 Minutes](../nakamoto-in-10-minutes.md) to get up to speed.
+If you aren't familiar with the general block production process under Nakamoto and what role signers and stackers play, you may want to read [Nakamoto in 10 Minutes](../what-is-the-nakamoto-release/nakamoto-in-10-minutes.md) to get up to speed.
 
 The following sections will walk you through how to begin operating as a solo stacker or pool operator.
 
-If you are only interested in delegating your STX to a pool operator and not running your own signer, the [Stacking Quickstart](../nakamoto/nakamoto-stacking-quickstart.md) may be a better guide to follow.
+If you are only interested in delegating your STX to a pool operator and not running your own signer, the [Nakamoto for Stackers guide](../nakamoto-rollout-plan/nakamoto-for-stackers.md) may be a better guide to follow.
 
 Stacking utilizes the `pox-4` contract. There is a detailed [walkthrough of the stacking contract](../../clarity/example-contracts/stacking.md) that you can look at to see what functions are being called at each phase and some common errors you may encounter.
 
@@ -33,7 +33,7 @@ Before we get into the step-by-step of how to actually stack, it's important to 
 * **Signer**: an entity that runs the stacks-signer software and participates in block validation. This can be either a solo Stacker or an entity receiving delegated STX. Depending on context, this may also refer to the signer software that validates blocks.
 
 {% hint style="info" %}
-It's important to understand that in the context of the pool operator and signer, these are likely the same _entity_ but may not be the same S_tacks address._
+It's important to understand that in the context of the pool operator and signer, these are likely the same _entity_ but may not be the same S\_tacks address.\_
 
 This distinction will be discussed further as we cover the step-by-step process below.
 {% endhint %}
@@ -46,7 +46,7 @@ As mentioned above, there are three primary ways you can stack:
 
 This guide is focused on 1 and 2. Let's walk through the flow for each of these now, and then we'll get into the step-by-step process for actually carrying out these stacking transactions.
 
-As you read through these, it may be helpful to follow along with the functions in the [pox-4 contract](https://explorer.hiro.so/txid/0xaf8857ee1e4b8afc72f85b85ad785e1394672743acc63f4df79fb65b5e8b9d2a?chain=testnet) to get an idea of what each function is doing.
+As you read through these, it may be helpful to follow along with the functions in the [pox-4 contract](https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet) to get an idea of what each function is doing.
 
 ### Solo Stacker Flow
 
@@ -283,7 +283,7 @@ Similar to the changes to solo Stacking, the big difference for delegation flows
 This step does not apply to pool operators/signers. It is included here to illustrate the end-to-end flow, but if you are operating as a pool operator/signer you will not perform this step. Instead, users delegate their stx to you as the pool operator.
 {% endhint %}
 
-The first step, where the delegator sets up their delegation to a pool operator, is to call `delegate-stx`. This function does not directly delegate the stx, but rather allows the pool operator to issue the stacking lock on behalf of the user calling this function.
+The first step, where the delegator sets up their delegation to a pool operator, is to call `delegate-stx`. This function does not directly delegate the stx, but rather allows the pool operator to issue the stacking lock on behalf of the user calling this function. You can think of calling this function as the delegaor giving permission to the pool operator to stack on their behalf.
 
 <details>
 
@@ -343,12 +343,12 @@ The arguments here are unchanged from previous versions of PoX:
 
 * Amount: Denoted in ustx (1 stx = 1,000,000 ustx)
 * Delegate to: the STX address of the pool operator they're delegating to. Note that this is different from the “signer key” used. Instead, this is the STX address that is used to make PoX transactions.
-* Until burn height: an optional argument where the delegation expires
+* Until burn height: an optional argument when the delegation expires. If none is used, the delegation  permission expires only when explicitly revoked.
 * Pox Address: an optional BTC address that, if specified, the signer must use to accept this delegation
 
 #### Pool operator “activates” the delegation
 
-Just as in the current PoX contract, after a delegator calls the `delegate-stx` function, the pool operator calls `delegate-stack-stx` to commit the delegator’s STX.&#x20;
+Just as in the current PoX contract, after a delegator calls the `delegate-stx` function, the pool operator calls `delegate-stack-stx` to commit the delegator’s STX.
 
 <details>
 
@@ -432,9 +432,9 @@ The arguments are:
 
 * Stacker: the STX address of the delegator
 * Amount: denoted in ustx (1 stx = 1,000,000 ustx)
-* Pox Address: The BTC address for the delegator to receive stacking rewards
-* Start burn height: the current BTC block height
-* Lock period: number of cycles to lock for. If the delegator provided the until burn height argument, then the end of these cycles cannot be past the expiration provided.
+* Pox Address: The BTC address of the pool operator where they will receive the BTC rewards
+* Start burn height: The BTC block height in which delegation can begin. This field is used to ensure that an old transaction intended for an earlier cycle will fail, and also prevents callers from "post-dating" the call to a future cycle. The best option here is to add 1 or 2 to the current block height when you initiate this transaction. Note that the delegation will not actively begin at this block height, but whatever reward cycle is passed in the aggregation commit function (below).
+* Lock period: number of cycles to lock for. If the delegator provided the until burn height argument, then the end of these cycles cannot be past the expiration provided. Max lock period is 12
 
 This step also allows the pool operator to proactively choose which Stackers they’ll accept delegation from. For “closed” pools, the pool operator will only call this function for approved Stackers. It is up to each pool operator who runs a closed pool to implement this process.
 
@@ -454,13 +454,17 @@ Also make sure that, when you generate your signature, you use 558 as the reward
 
 #### Pool operator “commits” delegated STX
 
-The next step is for the pool operator to call `stack-aggregation-commit`.
+The next step is for the pool operator to call `stack-aggregation-commit-indexed`.
+
+{% hint style="info" %}
+In the contract source code, you'll notice a similarly named function called `stack-aggregation-commit`. This is a legacy function that makes it difficult to increas the stacking amount. We recommend using `stack-aggregation-commit-indexed`.
+{% endhint %}
 
 <details>
 
 <summary>Function source code</summary>
 
-Note that the `stack-aggregation-commit` function wraps the `inner-stack-aggregation-commit` function. The wrapped inner function is included here.
+Note that the `stack-aggregation-commit-indexed` function wraps the `inner-stack-aggregation-commit` function. The wrapped inner function is included here.
 
 Check out the [deployed contract](https://explorer.hiro.so/txid/0xaf8857ee1e4b8afc72f85b85ad785e1394672743acc63f4df79fb65b5e8b9d2a?chain=testnet) to see the flow of contract calls.
 
@@ -523,7 +527,7 @@ Check out the [deployed contract](https://explorer.hiro.so/txid/0xaf8857ee1e4b8a
 
 At this point, the STX are committed to the pool operator, and the pool operator has some “aggregate balance” of committed STX. The pool operator is not actually eligible for rewards and signer slots until this step is called.
 
-The pool operator cannot call this until the total number of STX committed is larger than the minimum threshold required to Stack. This threshold is a function of the total number of liquid STX.
+The pool operator cannot call this until the total number of STX committed is larger than the minimum threshold required to Stack. This minimum stacking threshold is a function of the total number of liquid STX.
 
 {% hint style="info" %}
 This number varies and can be found by visiting the pox endpoint of Hiro's API at [https://api.testnet.hiro.so/v2/pox](https://api.testnet.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX).
@@ -531,7 +535,7 @@ This number varies and can be found by visiting the pox endpoint of Hiro's API a
 
 Once the threshold is reached, the pool operator calls `stack-aggregation-commit`. This is the point where you as the pool operator must provide your signer key and signer key signature. The arguments are:
 
-* Pox Address: the BTC address tp receive rewards
+* Pox Address: the BTC address to receive rewards
 * Reward-cycle: the current reward cycle (see the note above on passing the correct reward cycle here)
 * Signer key: the public key of your signer (remember that this may be different than the address you are using to operate the pool, but this step is how you associate the two together)
 * Signer signature: Your generated signer signature (details on how to do this are below)
@@ -539,14 +543,14 @@ Once the threshold is reached, the pool operator calls `stack-aggregation-commit
 {% hint style="info" %}
 In the Definitions and Roles section at the top of this document, we described how the pool operator and signer may be the same entity, but not necessarily have the same address.
 
-Signers who are also pool operators and have stx delegated to them also need a separate keychain to make Stacking transactions such as `delegate-stack-stx` listed earlier.&#x20;
+Signers who are also pool operators and have stx delegated to them also need a separate keychain to make Stacking transactions such as `delegate-stack-stx` listed earlier.
 
 So as a signing entity operating a pool, you will have two accounts:
 
 * Your pool operator account, which you will use to conduct all of the stacking operations we have covered here
 * Your signer account, which is what you used to set up your signer. This signer public key is what you will pass in to the above aggregation commit function, and is also the key you will use when generating your signer signature
 
-If you are operating as a signer and a pool operator, you'll need a separate key because you need to have the ability to rotate your signer key when necessary.&#x20;
+If you are operating as a signer and a pool operator, you'll need a separate key because you need to have the ability to rotate your signer key when necessary.
 
 The PoX contract is designed to support rotating the signer key without needing your Stackers to un-stack and re-stack later. You cannot rotate a pool operator key without needing to wait for all delegated Stackers to un-stack and finally re-stack to the new pool operator address.
 
@@ -559,7 +563,7 @@ To act as a signer, each step up to this point must be taken before the prepare 
 
 #### Pool operator increases amount committed
 
-Even after the signer commits to a certain amount of STX in the previous step, the signer can increase this amount once more delegations are received. The initial steps must be taken for each Stacker (`delegate-stx` and then `delegate-stack-stx`), and then `stack-aggregation-increase` can be called.
+Even after the signer commits to a certain amount of STX in the previous step, the signer can increase this amount once more delegations are received. The initial steps must be taken for each Stacker (`delegate-stx` and then `delegate-stack-stx`), and then `stack-aggregation-increase` can be called with the index returned from the first `stack-aggregation-commit-indexed` call and a new signature..
 
 <details>
 
@@ -665,7 +669,7 @@ If you are interested in using this method, you'll want to follow the [stacking 
 
 This is a necessary prerequisite to stacking as a solo stacker or pool operator.
 
-Running a signer involves setting up a hosted production environment that includes both a Stacks Node and the Stacks Signer. For more information, refer to the [running a signer doc](https://github.com/stacksfoundation/NAKA-REPO/issues/279).
+Running a signer involves setting up a hosted production environment that includes both a Stacks Node and the Stacks Signer. For more information, refer to the [running a signer doc](running-a-signer.md).
 
 Once the signer software is running, you'll to keep track of the `stacks_private_key` that you used when configuring your signer software. This will be used in subsequent Stacking transactions.
 
@@ -705,7 +709,7 @@ Signer signatures are signatures created using a particular signer key. They dem
 
 Now that we have an overview of role and contents of signatures, let's see how to actually generate them. You have several options available.
 
-#### Generating your signature  with stacks.js
+#### Generating your signature with stacks.js
 
 The [@stacks/stacking](https://www.npmjs.com/package/@stacks/stacking) NPM package provides interfaces to generate and use signer signatures. You'll need to use `@stacks/stacking` package version 6.13.0.
 
@@ -727,10 +731,6 @@ stacks-signer generate-stacking-signature \
   --period 1 \
   --topic stack-stx
 ```
-
-{% hint style="warning" %}
-There is a known bug in release \`2.5.0.0.0-rc1\` that will throw an error if using a P2PKH address. This will be fixed in the next release. If you run into an error like the below, we recommend using either stacks.js or Lockstacks to generate your signature as outlined below.
-{% endhint %}
 
 These arguments are:
 
@@ -758,7 +758,7 @@ Lockstacks is a web application that provides an easy-to-use interface for stack
 At the time of writing, this has only been tested using the [Leather](https://leather.io) wallet.
 {% endhint %}
 
-You can visit [staging.lockstacks.com](http://staging.lockstacks.com) to generate a signer key signature. Make sure you’re connected to the correct network.\
+You can visit [lockstacks.com](https://lockstacks.com) to generate a signer key signature. Make sure you’re connected to the correct network.\
 \
 To generate a signer key signature, it’s important that you’ve logged in Leather with the same secret key that was used to [generate your signer key](running-a-signer.md#preflight-setup-1), not the account that will serve as your pool operator address. Once you’ve setup that account on Leather, you can log in to Lockstacks.\
 \
@@ -768,7 +768,7 @@ Click the link “Signer key signature” at the bottom of the page. This will o
 
 The fields are:
 
-* Reward cycle:&#x20;
+* Reward cycle:
   * For all solo stacking transactions, this must equal the current reward cycle, not the cycle in which they will start stacking. The field defaults to the current reward cycle.
   * For stack-aggregation-commit, this field must equal the cycle used in that function’s “reward cycle” argument. Typically, that equates to current\_cycle + 1.
 * Bitcoin address: the PoX reward address that can be used
@@ -860,7 +860,7 @@ The first step with delegated stacking involves a stacker delegating their Stack
 
 As the pool operator, you must provide a STX address (a “pool admin address”) that will manage delegations. As discussed in previous sections, this is a separate address from the signer’s private key, and this can be any address. This address is what will be used when making transactions to confirm and aggregate delegated STX.
 
-Pool operators can log in to LockStacks and visit [https://staging.lockstacks.com/pool-admin](https://lockstacks.com/pool-admin?chain=mainnet)[ ](https://staging.lockstacks.com/pool-admin)to make pool management transactions.
+Pool operators can log in to LockStacks and visit [https://lockstacks.com/pool-admin](https://lockstacks.com/pool-admin) to make pool management transactions.
 
 #### delegate-stack-stx
 
@@ -879,8 +879,6 @@ Once a pool has enough delegated STX to become a signer, the pool admin needs to
   * Max amount
 
 Once this transaction has been confirmed, the pool operator is eligible to be a signer for an upcoming reward cycle.
-
-###
 
 ### Relationship between manual stacking transactions and the running signer
 
@@ -902,7 +900,7 @@ Some of the important things to double check to ensure the signer is “running�
 
 Each of the stacking transactions described above are done “manually”. More specifically, this means that none of these transactions are executed automatically by the signer software. The transactions must be done “out of band”.
 
-In order for a signer to actually be registered in a reward cycle, there need to be manual transactions made in the `pox-4` contract. While the signer software is running, it is continually polling the Stacks node and asking “am I a signer in reward cycle N?”.&#x20;
+In order for a signer to actually be registered in a reward cycle, there need to be manual transactions made in the `pox-4` contract. While the signer software is running, it is continually polling the Stacks node and asking “am I a signer in reward cycle N?”.
 
 If these manual transactions are confirmed, and the signer has enough STX associated with the signer’s public key, the signer will be registered as a signer in the signer set.
 

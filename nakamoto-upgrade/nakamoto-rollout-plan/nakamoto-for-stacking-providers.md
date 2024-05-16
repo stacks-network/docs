@@ -1,14 +1,10 @@
 # Nakamoto for Stacking Providers
 
-The current projection for the Instantiation step of the Nakamoto rollout is \~April 22nd at Bitcoin block 840,360. You can check the [real-time projection here](https://stacks-network.github.io/when-activation/2.5/).
-
-***
-
 Remember that Nakamoto is being rolled out in two phases. This represents the first phase. Understanding this process is key to understanding the information below, read it here: [.](./ "mention")
 
 ## Upgrading your Stacking pool or service
 
-There are a few basic steps you'll need to follow to get your Stacking pool set up to work with this first Nakamoto hard fork as this fork brings us the new [pox-4 contract](../nakamoto-in-depth/changes-to-pox-and-clarity.md):
+There are a few basic steps you'll need to follow to get your Stacking pool set up to work with this first Nakamoto hard fork as this fork brings us the new [pox-4 contract](../what-is-the-nakamoto-release/nakamoto-in-depth/changes-to-pox-and-clarity.md):
 
 1. Setup a Stacks node and signer by following the [How to Run a Signer](../signing-and-stacking/running-a-signer.md) doc.
 2. Update your user-facing products and contracts to point to the new pox-4 contract
@@ -27,7 +23,7 @@ There are a few basic steps you'll need to follow to get your Stacking pool set 
 
 First, it's important to understand that on \~April 22nd, at Bitcoin block 840,360, all STX will automatically unlock from the network as part of the hard fork. This is network wide.&#x20;
 
-As providers, you ultimately have as long as you need to make the Nakamoto upgrade, however, the faster you're able to upgrade, the fewer cycles your users will miss rewards for. Though there is a tight turnaround, you can actually upgrade fast enough such that users potentially miss zero cycles ([learn more](nakamoto-for-stacking-providers.md#rewards-in-cycle-83)). Some pools have been working with the [Nakamoto Testnet](../nakamoto/) in this interest, but it is not a requirement.&#x20;
+As providers, you ultimately have as long as you need to make the Nakamoto upgrade, however, the faster you're able to upgrade, the fewer cycles your users will miss rewards for. Though there is a tight turnaround, you can actually upgrade fast enough such that users potentially miss zero cycles ([learn more](nakamoto-for-stacking-providers.md#rewards-in-cycle-83)). Some pools have been working with the [Nakamoto Testnet](nakamoto.md) in this interest, but it is not a requirement.&#x20;
 
 <figure><img src="../../.gitbook/assets/Stacking Graphic (1).png" alt=""><figcaption></figcaption></figure>
 

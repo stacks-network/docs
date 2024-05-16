@@ -4,17 +4,15 @@
 
 * 8 vcpu
 * 32GB memory
-* 1 TB storage for Bitcoin node, 250 GB for Stacks node, and 1 GB for signer
+* 1 TB storage for Bitcoin node, 350 GB for Stacks node, and 1 GB for signer
 
 ### Background and High-Level Process
 
-In order to run a signer, you'll need to run a signer and a Stacks node side-by-side. Specifically, you'll want to run a testnet follower node. Instructions for doing this are listed below in the "Running Your Stacks Node" section. The signer will monitor for events coming from the stacks node and is in charge of using the generated account (next section) to sign incoming Stacks blocks sent from the Stcks node.
+In order to run a signer, you'll need to run a signer and a Stacks node side-by-side. Specifically, you'll want to run a testnet follower node. Instructions for doing this are listed below in the "Running Your Stacks Node" section. The signer will monitor for events coming from the stacks node and is in charge of using the generated account (next section) to sign incoming Stacks blocks sent from the Stacks node.
 
 This doc will provide instructions on how to set up both using either Docker or building from source. Binaries will not be available in the initial release but will be released at a later date.
 
 It will also walk through how to set up the config files to get the signer and Stacks node communicating correctly.
-
-The Nakamoto release and thus the signer software you'll want to run is contained in the Stacks core repo Release Candidate 2.5.0.0.0, which can be found here.
 
 ### Knowledge Prerequisites
 
@@ -28,20 +26,20 @@ The Nakamoto release and thus the signer software you'll want to run is containe
 
 Detailed steps for each of these are laid out below, but this checklist is being included as a way to quickly reference if you have taken all the appropriate actions to run a signer.
 
-#### Pre-Launch Setup
+**Pre-Launch Setup**
 
 * [ ] Ensure your system meets the following requirements:
   * 4 vCPU
   * 8GB memory
-  * 150 GB storage (250 GB if running a Stacks node)
+  * 150 GB storage (350 GB if running a Stacks node)
 * [ ] Acquire Docker and basic knowledge of Stacks accounts, stacking, and the Nakamoto stacking flow (links provided below).
 
-#### Preflight Setup
+**Preflight Setup**
 
 * [ ] Generate a new private key on testnet using stacks-cli.
 * [ ] Save the generated account information securely.
 
-#### Configuration Setup
+**Configuration Setup**
 
 * [ ] Create a `signer-config.toml` file with necessary configurations:
   * node\_host
@@ -52,23 +50,22 @@ Detailed steps for each of these are laid out below, but this checklist is being
   * stacks\_private\_key
 * [ ] Store `signer-config.toml` securely and note down the values used.
 
-#### Running the Signer
+**Running the Signer**
 
 * [ ] Decide whether to run the signer using Docker (recommended) or as a binary.
 * [ ] If using Docker:
-  * [ ] Ensure the Docker image tag `next` is used.
   * [ ] Set up the necessary ports and volumes.
   * [ ] Run the Docker container with the appropriate settings.
 * [ ] If running as a binary:
   * [ ] Build `stacks-core` from source or download the pre-built binary.
   * [ ] Run the signer using the command: `stacks-signer run --config <path_to_config>`.
 
-#### Verify Signer Operation
+**Verify Signer Operation**
 
 * [ ] Check that the signer is listening on its configured endpoint.
 * [ ] Confirm that there are no errors and the system is ready for connections.
 
-#### Setting Up the Stacks Node
+**Setting Up the Stacks Node**
 
 * [ ] Create a `node-config.toml` with the necessary settings:
   * block\_proposal\_token
@@ -81,12 +78,12 @@ Detailed steps for each of these are laid out below, but this checklist is being
   * [ ] Download the appropriate binary.
   * [ ] Run it with the command: `./stacks-node start --config <path_to_config>`.
 
-#### Verify Stacks Node Operation
+**Verify Stacks Node Operation**
 
 * [ ] Check the Stacks node logs for successful connection to the signer.
 * [ ] Confirm that the node is syncing Bitcoin headers properly.
 
-#### Setup Stacks Accounts
+**Setup Stacks Accounts**
 
 * [ ] Set up a “pool operator” wallet in a Stacks wallet (e.g., Leather or Xverse).
 * [ ] Fund the pool operator wallet with STX (testnet) sufficient for transaction fees.
@@ -109,14 +106,17 @@ Create a new file called `signer-config.toml`. In that file, put the contents fr
 
 There are two options for running the signer: Docker and building from source. The recommended option is to use Docker. If you want to run as a binary, you will need to build `stacks-core` from source. Instructions for how to do this are contained below in the relevant section.
 
+{% hint style="warning" %}
+Note that at the moment the signer should only be run on testnet using these instructions. The mainnet release is still under development.
+{% endhint %}
+
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the [`blockstack/stacks-core:2.5.0.0.0-rc1` image](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1\&name=2.5.0.0.0-rc1). When pulling the Docker image, be sure you are using the `2.5.0.0.1-rc1` tag, as the main branch will not have the signer binary.
+You can run the signer as a Docker container using the [`blockstack/stacks-core:2.5.0.0.3`](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1\&name=2.5.0.0.3) image.
 
 When running the Docker container, you’ll need to ensure a few things:
 
-* You'll want to use the `2.5.0.0.0-rc1` tag of the image, as that includes the signer binary
-* The port configured as the `endpoint` (in the above example, “30000”) must be exposed to your Stacks node.
+* The port configured as the `endpoint` (in the above example, “30000”) must be exposed to your Stacks node. Note that this endpoint should not be public, but must be exposed to your Stacks node
 * You’ll need a volume with at least a few GB of available storage that contains the folder your `db_path` is in. In the above example, that would be /var
 * You’ll need to include your `signer-config.toml` file as noted below with the first `-v` flag
 
@@ -126,7 +126,7 @@ Be sure to replace the `STX_SIGNER_PATH` with the correct path to your config fi
 
 ```bash
 IMG="blockstack/stacks-core"
-VER="2.5.0.0.0-rc1"
+VER="2.5.0.0.3"
 STX_SIGNER_PATH="./"
 STX_SIGNER_DATA="$STX_SIGNER_PATH/data"
 STX_SIGNER_CONFIG="$STX_SIGNER_PATH/signer-config.toml"
@@ -137,13 +137,14 @@ docker run -d \
     -p 30000:30000 \
     -e RUST_BACKTRACE=full \
     -e BLOCKSTACK_DEBUG=0 \
+    --name stacks-signer \
     $IMG:$VER \
     stacks-signer run \
     --config /config.toml
 ```
 
 {% hint style="info" %}
-If you get an error saying that the manifest cannot be found or about the requested image platform not matching the host platform, you are probably running on system architecture other than x64 arch. Since you are using a PR release (`2.5.0.0.1-rc1`) you'll need to specify your platform with the `--platform` flag.
+If you get an error saying that the manifest cannot be found or about the requested image platform not matching the host platform, you are probably running on system architecture other than x64 arch. Since you are using a PR release you'll need to specify your platform with the `--platform` flag.
 
 For example, if you are running on M1 Mac, you would add `--platform=linux/amd64` to the above command.
 {% endhint %}
@@ -151,7 +152,7 @@ For example, if you are running on M1 Mac, you would add `--platform=linux/amd64
 Or, with a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:2.5.0.0.0-rc1
+FROM blockstack/stacks-core:2.5.0.0.3
 COPY signer-config.toml /config.toml
 EXPOSE 30000
 CMD ["stacks-signer", "run", "--config", "/config.toml"]
@@ -159,13 +160,11 @@ CMD ["stacks-signer", "run", "--config", "/config.toml"]
 
 #### Running the Signer as a Binary
 
-The current release does not have the stacks-signer binary. If you want to run the signer as a binary right now, you'll need to [build `stacks-core` from source](https://github.com/stacks-network/stacks-core?tab=readme-ov-file#building).
+If you do not want to use Docker, you can alternatively run your stacks node as a binary.
 
-{% hint style="info" %}
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. After Nakamoto is officially released, you will be able to download the ZIP file for your server’s architecture and decompress it. Inside of that folder will be a `stacks-signer` binary.
-{% endhint %}
+Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the ZIP file for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
 
-After you run `cargo build`, you can then run the signer with the following command (be sure to replace `../signer-config.toml` with the actual path of your config file).
+You can run the signer with the following command (be sure to replace `../signer-config.toml` with the actual path of your config file).
 
 ```bash
 stacks-signer run --config ../signer-config.toml
@@ -225,12 +224,12 @@ The important aspects that you’ll need to change are:
 
 If you are running your Stacks node on the primary testnet, it will be much faster to start with an archive of the chain state rather than syncing from genesis.
 
-Archives can be found from [https://archive.hiro.so](https://archive.hiro.so). For the Stacks node testnet, the latest snapshot can be found at [https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.0-rc1-latest.tar.gz](https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.0-rc1-latest.tar.gz). Note that the version is specified (2.5.0.0.0-rc1). When we update versions (ie to a new RC), that URL will need to change. You can also [browse all testnet snapshots](https://archive.hiro.so/testnet/stacks-blockchain/).
+Archives can be found from [https://archive.hiro.so](https://archive.hiro.so). For the Stacks node testnet, the latest snapshot can be found at [https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-latest.tar.gz](https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-latest.tar.gz). You can also [browse all testnet snapshots](https://archive.hiro.so/testnet/stacks-blockchain/).
 
 You’ll want to download this on the same machine that will run the Stacks node. One way to do this is:
 
 ```
-curl https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-2.5.0.0.0-rc1-latest.tar.gz -o stacks-snapshot.tar.gz
+curl -# https://archive.hiro.so/testnet/stacks-blockchain/testnet-stacks-blockchain-latest.tar.gz -o stacks-snapshot.tar.gz
 tar -zxvf stacks-snapshot.tar.gz
 ```
 
@@ -257,7 +256,7 @@ An example for running the node’s Docker image with docker run is below. Be su
 
 ```bash
 IMG="blockstack/stacks-core"
-VER="2.5.0.0.0-rc1"
+VER="2.5.0.0.3"
 STX_NODE_CONFIG="./node-config.toml"
 
 docker run -d \
@@ -266,6 +265,7 @@ docker run -d \
     -p 20443:20443 \
     -p 20444:20444 \
     -e RUST_BACKTRACE=full \
+    --name stacks-node \
     $IMG:$VER \
     stacks-node start \
     --config /config.toml
@@ -274,7 +274,7 @@ docker run -d \
 Or, using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:2.5.0.0.0-rc1
+FROM blockstack/stacks-core:2.5.0.0.3
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443
@@ -283,7 +283,7 @@ CMD ["stacks-node", "start", "--config", "/config.toml"]
 
 #### Run a Stacks Node with a Binary
 
-If you do not want to use Docker, you can alternatively run the signer as a binary.
+If you do not want to use Docker, you can alternatively run your stacks node as a binary.
 
 Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the ZIP file for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary.
 

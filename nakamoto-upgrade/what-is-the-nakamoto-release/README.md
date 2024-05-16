@@ -1,6 +1,8 @@
-# What is the Nakamoto Release?
+# What is the Nakamoto Upgrade?
 
 The Nakamoto Release is an upcoming hard fork on the Stacks network designed to bring several benefits, chief among them are increased transaction throughput and 100% Bitcoin finality.
+
+Bitcoin block 840,360 marks the start of the multi-phase [Nakamoto mainnet rollout](../nakamoto-rollout-plan/).
 
 With Nakamoto, Stacks block production would no longer be tied to miner elections. Instead, miners produce blocks at a fixed cadence, and the set of PoX Stackers rely on the miner elections to determine when the current miner should stop producing blocks and a new miner should start. This blockchain will only fork if 70% of Stackers approve the fork, and chain reorganization will be as difficult as reorganizing Bitcoin.
 
@@ -51,29 +53,3 @@ All together these changes will achieve the goals outlined, resolving key areas 
 Although Nakamoto is a breaking change, all smart contracts published prior to this its activation will be usable after it activates.
 
 Let's dive into how each of these pieces work so we can get an in-depth understanding of exactly how Nakamoto works.
-
-This portion of the documentation is broken up into several sections.
-
-### Nakamoto in 10 Minutes
-
-Interested in learning how Nakamoto works at a high level? This section will provide a brief overview of how each component works and how they contribute to the goals above without getting bogged down in the technical details
-
-### Nakamoto In-Depth
-
-This section will describe exactly how each component of Nakamoto works in detail. If you are interested in diving into all of the technical details of exactly how Nakamoto works, this section will get you there.
-
-### Testnets
-
-Neon is the currently released controlled testnet that is available for us. It actually comes with two testnets, one which uses the new ClarityWASM VM (one of the components of Nakamoto) and one that uses the current Clarity VM.
-
-Argon is the next testnet to be released, slated for late February.
-
-Neon is available to be used now, get more details on the Neon docs page.
-
-Expect frequent changes to the testnets as it will be upgraded quite often.
-
-You can track the work being done on Nakamoto [on GitHub](https://github.com/stacks-network/stacks-core/milestones?direction=asc\&sort=title\&state=open).
-
-### Running a Signer
-
-Signers play a critical role in Stacks and in this section we'll go over how you can run your own signer.

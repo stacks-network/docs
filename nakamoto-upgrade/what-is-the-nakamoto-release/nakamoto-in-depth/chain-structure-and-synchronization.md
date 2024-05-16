@@ -8,7 +8,7 @@ Miners submit their candidacy to produce blocks by sending a block-commit transa
 
 By altering the block-commit to expect the first block from the previous tenure, we make the system resilient to high network latency. Miner candidates will have approximately the time between Bitcoin blocks to obtain and process the previous miner’s blocks and submit a valid block-commit for the current Stacks tip.
 
-<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 _Figure 1: Overview of the relationship between Bitcoin blocks (and sortitions), Stacks blocks, and the inventory bitmaps exchanged by Stacks nodes. Each winning block-commit's BlockHeaderHash field no longer refers to a new Stacks block to be appended, but instead contains the index block hash of the very first Stacks block in the previous tenure. Signers force the miner to build upon the last signed Stacks block in the previous tenure by refusing to sign blocks that don’t build upon the most recently signed block. These tenure start blocks each contain a TenureChange transaction (not shown), which, among other things, identifies the number of Stacks blocks produced since the last valid start block (numbers in dark orange circles)._
 
