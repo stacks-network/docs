@@ -38,6 +38,14 @@ There aren't yet properly tagged releases for Nakamoto, so you'll need to make s
 
 </details>
 
+<details>
+
+<summary>What should the networking setup for my signer look like?</summary>
+
+Signers are intended to work with a local node. The node<->signer connection is not run over SSL, which means you can be exposed to a man-in-the-middle attack if your signer and node are hosted on separate machines. Be sure you are aware of your networking setup, especially making sure your signer isn't allowing requests from the public internet. We recommend setting up your infrastructure to either have the signer and node running locally on the same machine or use only internal networking between them.
+
+</details>
+
 ### Stacks Nodes
 
 <details>
