@@ -1,5 +1,9 @@
 # Testnet
 
+{% hint style="info" %}
+With Nakamoto on the way, you may [find this page](../nakamoto-upgrade/nakamoto-and-primary-testnet.md) covering the Nakamoto vs. Primary Testnets useful.&#x20;
+{% endhint %}
+
 ### About testnet
 
 The testnet is a separate blockchain from the Stacks mainnet analogous to a staging environnement. It's a network used by developers to test their apps, smart contracts, or changes to the protocol in a production-like environment.
