@@ -10,9 +10,9 @@ description: >-
 
 <summary>Recent Testnet History (May 2024)</summary>
 
-For the past month+, the Bitcoin Testnet slowly [became unusable](https://blog.lopp.net/griefing-bitcoin-testnet/) (learn more here). Given the Primary Stacks Testnet leverages Bitcoin to provide a realistic environment, the Stacks testnet also became unusable. To overcome this, the core developers spun up the [Nakamoto Testnet](https://explorer.hiro.so/?chain=testnet\&api=https://api.nakamoto.testnet.hiro.so) to unblock Signers and test ahead of 2.5. \
+Over the past month+, the Bitcoin Testnet has slowly become[ unusable](https://blog.lopp.net/griefing-bitcoin-testnet/). Given the Primary Stacks Testnet leverages Bitcoin to provide a realistic environment, the Stacks testnet also became unusable. To overcome this, the core developers spun up the [Nakamoto Testnet](https://explorer.hiro.so/?chain=testnet\&api=https://api.nakamoto.testnet.hiro.so) to unblock Signers and test ahead of [Nakamoto Instantiation](nakamoto-rollout-plan/). \
 \
-In the background, they have also been working to bring the Primary Testnet back in light of the Bitcoin Testnet issues. To acheieve this, they migrated the testnet to the Bitcoin Regtest network. As of May 31st, the Primary Testnet is back and ready to use.&#x20;
+In the background, they have also been working to bring the Primary Testnet back. To achieve this, they migrated the Primary Stacks testnet to the Bitcoin Regtest network. As of May 31st, the Primary Testnet is back and ready to use.&#x20;
 
 </details>
 
