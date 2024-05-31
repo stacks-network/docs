@@ -2,6 +2,10 @@
 
 Below are sample configuration files for running a Stacks node and signer provided in one place for convenience. You'll need to modify some of these according to the [How to Run a Signer](running-a-signer.md) doc.
 
+{% hint style="info" %}
+Learn more about the difference between the Nakamoto and Primary Testnets: [nakamoto-and-primary-testnet.md](../nakamoto-and-primary-testnet.md "mention")
+{% endhint %}
+
 ### Testnet Signer
 
 ```toml
@@ -33,11 +37,7 @@ auth_password = "$your_http_auth_token"
 stacks_private_key = "$your_stacks_private_key"
 ```
 
-### Nakamoto Testnet Stacks Node
-
-{% hint style="info" %}
-Note that this example configuration file applies to the Nakamoto Testnet, not the Primary Testnet. The Primary Testnet is currently undergoing a major update and it is recommended to use the Nakamoto Testnet for the time being.
-{% endhint %}
+### Nakamoto Testnet Config
 
 This is the configuration you'll need to run a Stacks follower node if you are also running a signer. Be sure to change the commented lines to the appropriate data for your setup. If you are not familiar with the process of setting up a signer, be sure to follow the [How to Run a Signer](running-a-signer.md) guide.
 
@@ -258,6 +258,89 @@ amount = 24378281250000
 [[ustx_balance]]
 address = "ST0D135PF2R0S4B6S4G49QZC69KF19MSZ4Z5RDF5"
 amount = 24378281250000
+```
+
+### Primary Testnet Config
+
+```
+[node]
+    rpc_bind = "0.0.0.0:20443"
+    p2p_bind = "0.0.0.0:20444"
+    bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30443"
+    prometheus_bind = "0.0.0.0:9153"
+    working_dir = "/hirosystems/data"
+    local_peer_seed = "{{ redacted }}"
+
+    [burnchain]
+    chain = "bitcoin"
+    mode = "krypton"
+    peer_host = "http://bitcoin.regtest.hiro.so"
+    username = "hirosystems"
+    password = "hirosystems"
+    rpc_port = 18443
+    peer_port = 18444
+    pox_prepare_length = 100
+    pox_reward_length = 900
+
+    [[events_observer]]
+    endpoint = "testnet-api-blue.testnet-api.svc.cluster.local:3700"
+    retry_count = 255
+    events_keys = ["*"]
+
+    [[ustx_balance]]
+    address = "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2"
+    amount = 10000000000000000
+
+    [[ustx_balance]]
+    address = "ST319CF5WV77KYR1H3GT0GZ7B8Q4AQPY42ETP1VPF"
+    amount = 10000000000000000
+
+    [[ustx_balance]]
+    address = "ST221Z6TDTC5E0BYR2V624Q2ST6R0Q71T78WTAX6H"
+    amount = 10000000000000000
+
+    [[ustx_balance]]
+    address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
+    amount = 10000000000000000
+
+    [fee_estimation]
+    fee_estimator = "fuzzed_weighted_median_fee_rate"
+    
+    [[burnchain.epochs]]
+    epoch_name = "1.0"
+    start_height = 0
+
+    [[burnchain.epochs]]
+    epoch_name = "2.0"
+    start_height = 0
+
+    [[burnchain.epochs]]
+    epoch_name = "2.05"
+    start_height = 1
+
+    [[burnchain.epochs]]
+    epoch_name = "2.1"
+    start_height = 2
+
+    [[burnchain.epochs]]
+    epoch_name = "2.2"
+    start_height = 3
+
+    [[burnchain.epochs]]
+    epoch_name = "2.3"
+    start_height = 4
+
+    [[burnchain.epochs]]
+    epoch_name = "2.4"
+    start_height = 5
+
+    [[burnchain.epochs]]
+    epoch_name = "2.5"
+    start_height = 6
+
+    [[burnchain.epochs]]
+    epoch_name = "3.0"
+    start_height = 2000701
 ```
 
 ### Mainnet Signer
