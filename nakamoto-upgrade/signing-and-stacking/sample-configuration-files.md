@@ -262,7 +262,7 @@ amount = 24378281250000
 
 ### Primary Testnet Config
 
-```
+```toml
 [node]
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
