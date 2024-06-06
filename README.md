@@ -26,7 +26,7 @@ If you are interested in the basics of how Stacks works, the Stacks 101 section 
 
 ### Tutorials
 
-For all you developers, we have a collection of tutorials here for you to explore, both hosted here on the docs site and some others from the community.
+Check out the Tutorials section to get some hands-on experience building on Bitcoin with Stacks.
 
 ### Clarity Reference
 
