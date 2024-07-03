@@ -51,7 +51,7 @@ As you read through these, it may be helpful to follow along with the functions 
 ### Solo Stacker Flow
 
 {% hint style="info" %}
-Note that in order to solo stack, you need to have the minimum number of STX tokens. This number can be found by visiting the pox endpoint of Hiro's API at [https://api.testnet.hiro.so/v2/pox](https://api.testnet.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX)
+Note that in order to solo stack, you need to have the minimum number of STX tokens. This number can be found by visiting the pox endpoint of Hiro's API at [https://api.mainnet.hiro.so/v2/pox](https://api.mainnet.hiro.so/v2/pox) and looking at the `min_threshold_ustx` field. (1 STX = 1,000,000 uSTX)
 {% endhint %}
 
 #### Call the function `stack-stx`
@@ -343,7 +343,7 @@ The arguments here are unchanged from previous versions of PoX:
 
 * Amount: Denoted in ustx (1 stx = 1,000,000 ustx)
 * Delegate to: the STX address of the pool operator they're delegating to. Note that this is different from the “signer key” used. Instead, this is the STX address that is used to make PoX transactions.
-* Until burn height: an optional argument when the delegation expires. If none is used, the delegation  permission expires only when explicitly revoked.
+* Until burn height: an optional argument when the delegation expires. If none is used, the delegation permission expires only when explicitly revoked.
 * Pox Address: an optional BTC address that, if specified, the signer must use to accept this delegation
 
 #### Pool operator “activates” the delegation
