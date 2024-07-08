@@ -19,7 +19,7 @@ First, download a [bitcoin binary](https://bitcoin.org/en/download), or [build f
 If you want to learn more about the technical details of mining, please review the mining guide:
 
 {% hint style="info" %}
-**Tip:** It is recommened to use a persistent location for the chainstate, in the steps below we're using `/bitcoin`.
+**Tip:** It is recommended to use a persistent location for the chainstate, in the steps below we're using `/bitcoin`.
 {% endhint %}
 
 #### Update the Bitcoin Configuration File
@@ -79,7 +79,7 @@ getblockchaininfo | jq .blocks
 First, download the latest tagged [stacks blockchain binary](https://github.com/stacks-network/stacks-blockchain/releases/latest), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/main/stacks-blockchain.md#build-and-install-stacks-blockchain-from-source) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/main/prerequisites.md#install-required-packages)).
 
 {% hint style="info" %}
-**Tip:** It is recommened to use a persistent location for the chainstate, in the steps below we're using `/stacks-blockchain`.
+**Tip:** It is recommended to use a persistent location for the chainstate, in the steps below we're using `/stacks-blockchain`.
 {% endhint %}
 
 #### Generate a keychain
@@ -121,13 +121,14 @@ bitcoin-cli \
   -rpcport=8332 \
   -rpcuser=btcuser \
   -rpcpassword=btcpass \
-  createwallet "miner" \
-  false \
-  false \
-  "" \
-  false \
-  false \
-  true
+  createwallet \
+  wallet_name="miner" \
+  disable_private_keys=false \
+  blank=false \
+  passphrase="" \
+  avoid_reuse=false \
+  descriptors=false \
+  load_on_startup=true
 ```
 
 Now, import your wif (bitcoin private key) inside the newly created wallet.
@@ -156,7 +157,7 @@ bitcoin-cli \
   getaddressinfo <btcAddress from JSON above>
 ```
 
-Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a crytpocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
+Once imported, we need to get some BTC to that address. You should be able to transfer BTC to this address using a cryptocurrency exchange such as [Coinbase](https://www.coinbase.com), [Binance](https://www.binance.com), or [Kraken](https://www.kraken.com).
 
 #### Update the Stacks Blockchain Configuration File
 
@@ -231,7 +232,7 @@ We need to get some BTC to that address. You should be able to transfer BTC to t
 
 #### Update Stacks Blockchain Docker Configuration File
 
-Use the steps oulined above to create the configuration file.
+Use the steps outlined above to create the configuration file.
 
 #### Start the Stacks Blockchain miner with Docker
 
