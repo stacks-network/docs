@@ -22,7 +22,7 @@ Those two semicolons are how we denote comments in Clarity.
 
 Then the next line down we have a public function declaration.
 
-Here is out first glimpse of Clarity's syntax, which may be new to you depending on your development background.
+Here is our first glimpse of Clarity's syntax, which may be new to you depending on your development background.
 
 For those new to Clarity, it's a little weird and uncomfortable at first, but one of the core design tenets of Clarity is simplicity and readability, and the more you work with it the more you come to appreciate the succinctness and _clarity_ (sorry) of the code you are writing.
 
@@ -69,7 +69,7 @@ This will be a persistent state variable, so this is actually getting written to
 
 So if we were to write and deploy this contract (which you can do in the Stacks Explorer if you like), as soon as it gets deployed, it will run through the contract line by line executing anything at the root level.
 
-Remember that Clarity is interpreted, not compiled, so there's not compile step when developing Clarity contracts.
+Remember that Clarity is interpreted, no compiled, so there's not compile step when developing Clarity contracts.
 
 So this `define-data-var` will be evaluated and the `count` variable will be initialized with a value of 0.
 

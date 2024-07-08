@@ -213,7 +213,7 @@ One of the coolest features of Clarinet is that it allows us to set up an entire
 
 This comes complete with a local block explorer and sandbox environment so we can further test our contracts.
 
-Make sure you have Docker installed and running, exit out of console with `CMD/CTRL + C` and run `clarinet integrate`.
+Make sure you have Docker installed and running, exit out of console with `CMD/CTRL + C` and run `clarinet devnet start`.
 
 It will take a few minutes to get up and running, but then we can open up our local Stacks block explorer.
 
@@ -247,7 +247,7 @@ Make sure you copy your secret key before you sign out. You'll need it to restor
 
 Go ahead and copy the mnemonic listed in the `Devnet.toml` file and use that to import your local wallet into the Leather wallet. Then we can use that for interacting with our local Devnet chain.
 
-Once you do that, go ahead and restart `clarinet integrate`.
+Once you do that, go ahead and restart `clarinet devnet start`.
 
 Now we can go back to the sandbox and call that function. You might need to sign out of the sandbox first and reauthenticate.
 

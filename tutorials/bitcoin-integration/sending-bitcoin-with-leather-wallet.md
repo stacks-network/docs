@@ -2,7 +2,7 @@
 
 Using Leather's web wallet, we can easily initiate a simple Bitcoin transaction using only a few lines of code.
 
-You'll need to be authenticated with the Leather wallet for this to work, with you can see how to do in the Authentication with Stacks.js tutorial.
+You'll need to be authenticated with the Leather wallet for this to work, which you can see how to do in the Authentication with Stacks.js tutorial.
 
 Once you have the wallet hooked up, you can use the Leather wallet API to initiate a simple Bitcoin transaction in your JS app like this.
 

@@ -22,6 +22,7 @@ More details of the meetings are available [here](https://github.com/stacksgov/s
 
 ### Ratified SIPSs
 
+* [x] [SIP 000:  Improvement Proposal Process](https://github.com/stacksgov/sips/blob/main/sips/sip-000/sip-000-stacks-improvement-proposal-process.md)
 * [x] [SIP 001: Burn Election](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md)
 * [x] [SIP 002: Clarity, a language for predictable smart contracts](https://github.com/stacksgov/sips/blob/main/sips/sip-002/sip-002-smart-contract-language.md)
 * [x] [SIP 003: Peer Network](https://github.com/stacksgov/sips/blob/main/sips/sip-003/sip-003-peer-network.md)
@@ -33,10 +34,15 @@ More details of the meetings are available [here](https://github.com/stacksgov/s
 * [x] [SIP 009: Standard Trait Definition for Non-Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-009/sip-009-nft-standard.md)
 * [x] [SIP 010: Standard Trait Definition for Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md)
 * [x] [SIP 012: Burn Height Selection for a Network Upgrade to Introduce New Cost-Limits](https://github.com/stacksgov/sips/blob/main/sips/sip-012/sip-012-cost-limits-network-upgrade.md)
+* [x] [SIP 013: Standard Trait Definition for Semi-Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-013/sip-013-semi-fungible-token-standard.md)
 * [x] [SIP-015: Stacks Upgrade of Proof-of-Transfer and Clarity](https://github.com/stacksgov/sips/blob/main/sips/sip-015/sip-015-network-upgrade.md)
 * [x] [SIP-016: Metadata for Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-016/sip-016-token-metadata.md)
 * [x] [SIP-018: Signed Structured Data](https://github.com/stacksgov/sips/blob/main/sips/sip-018/sip-018-signed-structured-data.md)
+* [x] [SIP-019: Notifications for Token Metadata Updates](https://github.com/stacksgov/sips/blob/main/sips/sip-019/sip-019-token-metadata-update-notifications.md)
 * [x] [SIP-020: Bitwise Operations in Clarity](https://github.com/stacksgov/sips/blob/main/sips/sip-020/sip-020-bitwise-ops.md)
+* [x] [SIP-022: Emergency Fix to PoX Stacking Increases](https://github.com/stacksgov/sips/blob/main/sips/sip-022/sip-022-emergency-pox-fix.md)
+* [x] [SIP-023: Emergency Fix to Trait Invocation Behavior](https://github.com/stacksgov/sips/blob/main/sips/sip-023/sip-023-emergency-fix-traits.md)
+* [x] [SIP-024: Emergency Fix to Data Validation and Serialization Behavior](https://github.com/stacksgov/sips/blob/main/sips/sip-024/sip-024-least-supertype-fix.md)
 
 ### How to Get Involved
 
