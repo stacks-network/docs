@@ -1,7 +1,3 @@
----
-description: Compilation in progress
----
-
 # 🔸 February 2024
 
 _For weekly stories delivered to your inbox, subscribe to_ [_Stacks Snacks_](https://stackssnacks.com/)_. For quarterly ecosystem recaps, subscribe to the_ [_Stacks Foundation newsletter_](https://newsletters.stacks.org)_._

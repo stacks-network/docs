@@ -14,7 +14,7 @@ Fee estimates can obtained through the [`GET /v2/fees/transfer`](https://docs.hi
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
-curl 'https://stacks-node-api.testnet.stacks.co/v2/fees/transfer'
+curl 'https://api.testnet.hiro.so/v2/fees/transfer'
 ```
 
 The API will respond with the fee rate (as integer):
@@ -59,7 +59,7 @@ The block time is hardcoded and will change throughout the implementation phases
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
-curl 'https://stacks-node-api.testnet.stacks.co/extended/v1/info/network_block_times'
+curl 'https://api.testnet.hiro.so/extended/v1/info/network_block_times'
 ```
 
 The API will respond with the block time (in seconds):
@@ -89,7 +89,7 @@ A read-only contract call can be done using the [`POST /v2/contracts/call-read/<
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
-curl --location --request POST 'https://stacks-node-api.testnet.stacks.co/v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>' \
+curl --location --request POST 'https://api.testnet.hiro.so/v2/contracts/call-read/<stx_address>/<contract_name>/<function_name>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "sender": "<stx_address>.<contract_name>",
@@ -124,7 +124,7 @@ The network information can be obtained using the [`GET /v2/info`](https://docs.
 
 ```bash
 # for mainnet, replace `testnet` with `mainnet`
-curl 'https://stacks-node-api.testnet.stacks.co/v2/info'
+curl 'https://api.testnet.hiro.so/v2/info'
 ```
 
 Sample response:

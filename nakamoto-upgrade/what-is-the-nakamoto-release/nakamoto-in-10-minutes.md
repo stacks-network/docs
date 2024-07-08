@@ -42,7 +42,7 @@ This elegant design creates a cooperative relationship between miners and stacke
 
 Here is a diagram outlining miner and signer behavior.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Bitcoin Finality
 
@@ -76,7 +76,7 @@ In order to answer this question, we need to distinguish between two types of St
 
 **Internal** transactions don't rely on Bitcoin state, and thus won't change if Bitcoin forks. We can have faster confirmations with these because even if Bitcoin forks, signers can ensure that these are re-processed in the same order.
 
-The key takeaway is this:&#x20;
+The key takeaway is this:
 
 Under Nakamoto Stacks transactions won’t impactfully reorganize due to a Bitcoin fork. Not only is reorging relatively infrequent, but transactions on Stacks that got reorganized due to a Bitcoin fork behave just as reorganized Bitcoin transactions do. With some future analysis, transactions purely on the L2 chain may one day be entirely unaffected.
 

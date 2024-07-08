@@ -1,14 +1,20 @@
 # Stacking
 
+{% hint style="info" %}
+With [Nakamoto](../nakamoto-upgrade/what-is-the-nakamoto-release/nakamoto-in-10-minutes.md) approved and fast-approaching, these docs are being updated ro reflect changes in the network. Note that this document describes how stacking works post-Nakamoto, using the pox-4 contract.
+{% endhint %}
+
 ### Introduction
 
-Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time.
+Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time and participating as consensus-critical signers. If you aren't familiar with the concept of signers in Stacks, be sure to check out the [Nakamoto Overview](../nakamoto-upgrade/what-is-the-nakamoto-release/nakamoto-in-10-minutes.md).
+
+This document is presented as a conceptual overview of stacking and how it works. You can also view a detailed walkthrough of [How to Stack as a Signer](../nakamoto-upgrade/signing-and-stacking/stacking-flow.md), a [guide for stackers](../nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stackers.md) for those interested in delegating their STX (more on that below), and a [deep dive into the contract](../clarity/example-contracts/stacking.md).
 
 ### Stacking vs Staking
 
-It is crucial to note that this has no impact on block production or validation. **Stacks is not a Proof-of-Stake network and \_stacking**_\*\* is different than \*\*_**staking**\_.
+While stacking on the Stacks network can be conceptually similar to staking, Stacks is not a PoS network and there are a couple key differences.
 
-There are two primary differences between stacking in Stacks and staking in other PoS networks.
+There are two primary differences between stacking in Stacks and staking in PoS networks.
 
 #### Yield generated in burnchain token
 
@@ -22,23 +28,13 @@ Stacking doesn't have any of this complex functionality, since it does not gener
 
 The Bitcoin yield that stackers earn is determined by a combination of the Bitcoin being committed by miners and the number of STX tokens that are locked up in the network.
 
-#### No effect on transaction validation or consensus mechanism
+#### No slashing
 
-The other main difference is that staking involves validators, and is tightly coupled with the operations of the network.
+Although stackers do fulfill a consensus critical role in Stacks by serving as signers (more info on this in the [Nakamoto guide](../nakamoto-upgrade/what-is-the-nakamoto-release/nakamoto-in-10-minutes.md)), there is no concept of slashing in PoX (Proof of Transfer).
 
-In both protocols stackers/stakers are earning a yield for providing a service. In PoX, that service is providing economic security by signaling what the canonical Stacks chain is (the chain with the most money locked in it is the real chain) and soon will provide the service of serving as signers for [sBTC](https://stacks.co/sbtc).
+Rather, if stackers do not perform their duties as signers, they simply cannot unlock their STX tokens and will not receive their BTC rewards.
 
-In PoS, the service stakers provide is running a validator node, which is in charge of determining what transactions are or are not valid. So in a PoX system with stacking, the yield generation process is not attached to the validity and operations of the network, whereas in PoS it is.
-
-In PoS, the entities that are locking up their tokens and earning a yield are the same entities that are in charge of determining what does and does not count as a valid transaction. This and the fact that the yield is in the same token that is locked, have large implications on a PoS chain functioning much like equities in that the entities with the largest stake have the most controlling power over the transactional operations of the chain.
-
-Here's an [article](https://krgrs.dev/why-bitcoin-is-the-biggest-opportunity-for-developers-in-2023#heading-technology-and-economic-incentives) by Stacks Foundation Developer Advocate Kenny Rogers that goes more in-depth into these economic incentives, with additional resources.
-
-It is important to note that this control does not extend to being able to change the rules of the blockchain itself, but only to vote transactions as valid or invalid.
-
-In order to incentivize honest behavior on the part of validators, stake can be slashed as a punishment. Since PoX stackers do not have any say in transaction validity, this punishment mechanism does not exist and is not necessary in PoX.
-
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks network.
 
@@ -62,12 +58,19 @@ The Stacking mechanism can be presented as a flow of actions:
 8. Display reward history, including details like earnings for previous reward cycles
 
 {% hint style="info" %}
-Keep in mind that the target duration for a reward cycles is \~2 weeks. This duration is based on the target block time of the network (10 minutes) and can be higher at times due to [confirmation time variances](https://www.blockchain.com/charts/median-confirmation-time) of the bitcoin network.
+Keep in mind that the target duration for a reward cycles is \~2 weeks. This duration is based on the target block time of the Bitcoin network (10 minutes) and can be higher at times due to [confirmation time variances](https://www.blockchain.com/charts/median-confirmation-time) of the bitcoin network.
 {% endhint %}
 
 ### Stacking delegation flow
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+There are two main ways you can stack:
+
+1. Solo stacking
+2. Delegated stacking
+
+Solo stacking follows the flow outlined above, and is where stack your own STX tokens and run your own signer. In order to operate as a solo stacker, you need to have a minimum amount of STX tokens. This minimum is dynamic and can be found by viewing the [pox endpoint of the API](https://api.testnet.hiro.so/v2/pox) in the `min_threshold_ustx` field.
+
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 The Stacking flow is different for delegation use cases:
 
@@ -85,100 +88,41 @@ Stacks (STX) token holders don't automatically receive stacking rewards. Instead
 * Commit to participation before a reward cycle begins
 * Commit the minimum amount of STX tokens to secure a reward slot, or pool with others to reach the minimum
 * Lock up STX tokens for a specified period
-* Provide a supported Bitcoin address to receive rewards (native segwit is not supported)
+* Provide a [supported Bitcoin address](../clarity/example-contracts/stacking.md#supported-reward-address-types) to receive rewards
+* Maintain their signer software (if they are operating a signer)
 
-The following diagram describes how the minimum STX tokens per slot is determined. More information on [dynamic minimums for stacking](https://stacking.club) is available at stacking.club.
+The following diagram describes how the minimum STX tokens per slot is determined.
 
 <figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
-Token holders have a variety of providers and tools to support their participation in Stacking. The Stacks website contains a [list of stacking providers and pools](https://stacks.org/stacking#earn).
+Token holders have a variety of providers and tools to support their participation in Stacking. The Stacks website contains a [list of pools and stacking options](https://www.stacks.co/learn/stacking#startstacking).
 
 ### Stacking in the PoX consensus algorithm
 
 Stacking is a built-in capability of PoX and occurs through a set of actions on the Stacks blockchain. The [full proof-of-transfer implementation details](https://github.com/stacks-network/stacks-blockchain/blob/develop/sip/sip-007-stacking-consensus.md) are in SIP-007. Below is a summary of the most relevant actions of the algorithm.
 
+{% hint style="info" %}
+Note that SIP-007 describes stacking before Nakamoto. While much of the functionality remains the same, stackers now have the additional responsibility of operating as signers as outlined in [SIP-021](https://github.com/stacksgov/sips/blob/feat/sip-021-nakamoto/sips/sip-021/sip-021-nakamoto.md).
+{% endhint %}
+
 <figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
-* Stacking happens over reward cycles with a fixed length. In each reward cycle, a set of Bitcoin addresses associated with stacking participants receive BTC rewards
-* A reward cycle consists of two phases: prepare and reward
-* During the prepare phase, miners decide on an anchor block and a reward set. Mining any descendant forks of the anchor block requires transferring mining funds to the appropriate reward addresses. The reward set is the set of Bitcoin addresses which are eligible to receive funds in the reward cycle
-* Miners register as leader candidates for a future election by sending a key transaction that burns cryptocurrency. The transaction also registers the leader's preferred chain tip (must be a descendant of the anchor block) and commitment of funds to 2 addresses from the reward set
-* Token holders register for the next rewards cycle by broadcasting a signed message that locks up associated STX tokens for a protocol-specified lockup period, specifies a Bitcoin address to receive the funds, and votes on a Stacks chain tip
-* Multiple leaders can commit to the same chain tip. The leader that wins the election and the peers who also burn for that leader collectively share the reward, proportional to how much each one burned
-* Token holders' locked up tokens automatically unlock as soon as the lockup period finishes
+Stacking happens in reward cycles of 2100 Bitcoin blocks (roughly two weeks. Reward cycles are split up into two phases: the prepare phase and the reward phase.
 
-### Bitcoin address
+The prepare phase lasts 100 Bitcoin blocks and is where the new stackers for the upcoming reward phase are selected by the PoX anchor block (see SIP-007 for details).
 
-You must provide a BTC address in one of two formats:
+Because Stacks does not fork after the Nakamoto upgrade, the PoX anchor block is always known 100 Bitcoin blocks before the start of the next reward cycle. It is the last tenure-start block that precedes prepare phase.
 
-* [Legacy (P2PKH)](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash), which starts with `1`.
-* [Segregated Witness / Segwit (P2SH)](https://en.bitcoin.it/wiki/Pay\_to\_script\_hash), which starts with `3`. The "Native Segwit" format (which starts with `bc1`), for example, is not supported.
+The PoX anchor block identifies the next Stackers. They have 100 Bitcoin blocks to prepare for signing Stacks blocks. Within this amount of time, the new Stackers would complete a Distributed Key Generation round for signing blocks. The PoX contract will require Stackers to register their block-signing keys when they stack or delegate-stack STX, so the entire network knows enough information to validate their signatures on blocks.
 
-The Stacking contract needs a special format for the Bitcoin address (the reward address). This is required to ensure that miners are able to correctly construct the Bitcoin transaction containing the reward address.
+This process is handled by [running a signer](../nakamoto-upgrade/signing-and-stacking/running-a-signer.md) and then subsequently [conducting stacking operations](../nakamoto-upgrade/signing-and-stacking/stacking-flow.md) as that signer.
 
-The address must be specified in the following format using the Clarity language:
+### How and Where to Stack
 
-```clar
-;; a tuple of a version and hashbytes buffer
-(pox-addr (tuple (version (buff 1)) (hashbytes (buff 20))))
-```
+There are several options for stacking including solo stacking, participating in a pool, using an exchange, and liquid stacking.
 
-The `version` buffer must represent what kind of bitcoin address is being submitted. It can be one of the following:
-
-```js
-SerializeP2PKH  = 0x00, // hash160(public-key), same as bitcoin's p2pkh
-SerializeP2SH   = 0x01, // hash160(multisig-redeem-script), same as bitcoin's multisig p2sh
-SerializeP2WPKH = 0x02, // hash160(segwit-program-00(p2pkh)), same as bitcoin's p2sh-p2wpkh
-SerializeP2WSH  = 0x03, // hash160(segwit-program-00(public-keys)), same as bitcoin's p2sh-p2wsh
-```
-
-The `hashbytes` are the 20 hash bytes of the bitcoin address. You can obtain that from a bitcoin library, for instance using [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib):
-
-```js
-const btc = require("bitcoinjs-lib");
-console.log(
-  "0x" +
-    btc.address
-      .fromBase58Check("1C56LYirKa3PFXFsvhSESgDy2acEHVAEt6")
-      .hash.toString("hex")
-);
-```
-
-### Choosing the right Stacking strategy
-
-[Here](https://blog.stacks.co/stacking-strategy) is an interesting article that may help you choose the right Stacking strategy.
-
-### Where to Stack?
-
-You can Stack on your own, on a pool or on an exchange:
-
-#### Stacking on your own
-
-Stacking on your own is non-custodial.
-
-Stacking on your own requires a protocol minimum (amount changes but about 100,000 STX).
-
-[Hiro Wallet](https://www.hiro.so/wallet) allows stacking on your own.
-
-#### Stacking on a pool
-
-Stacking on a pool allows Stacking without the requirement of the protocol minimum.
-
-Some available pools are:
-
-| Pool                                                | Type          | Pays rewards in | Fee | Minimum amount |
-| --------------------------------------------------- | ------------- | :-------------: | --- | :------------: |
-| [Friedger's Pool](https://pool.friedger.de/)        | Non custodial |   STX or xBTC   | No  |     40 STX     |
-| [Planbetter](https://planbetter.org/)               | Non custodial |       BTC       | 5%  |     200 STX    |
-| [Stacked](https://staking.staked.us/stacks-staking) | Non custodial |       BTC       |     |   100,000 STX  |
-| [Xverse](https://www.xverse.app/)                   | Non custodial |       BTC       | No  |     100 STX    |
-
-#### Stacking on an exchange
-
-Stacking on an exchange is custodial, meaning you are trusting the exchange with your Stacks.
-
-Several exchanges allow Stacking directly on their sites. Examples are [Okcoin](https://www.okcoin.com) and [Binance](https://www.binance.com/en/staking)
+The Stacks website has a [stacking page](https://www.stacks.co/learn/stacking) dedicated to all these different options.
 
 ### Stacking statistics
 
-You can view all sorts of Stacking data and statistics on [Stacking Club](https://stacking.club)
+You can view all sorts of Stacking data and statistics and create your own dashboards on [Ortege](https://app.ortege.ai/superset/dashboard/stacks-shack/).

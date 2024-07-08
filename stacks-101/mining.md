@@ -4,7 +4,7 @@
 
 This guide highlights some technical details related to mining on the Stacks 2.0 network.
 
-For steps on how to setup your own miner please refer to miner on testnet and miner on mainnet.
+For steps on how to setup your own miner please refer to the guides to running a miner on [mainnet](../stacks-in-depth/nodes-and-miners/mine-mainnet-stacks-tokens.md) and [testnet](../stacks-in-depth/nodes-and-miners/mine-testnet-stacks-tokens.md).
 
 ### Mining frequency
 
@@ -20,6 +20,10 @@ The reward amounts are:
 * 500 STX per block are released during the following 4 years
 * 250 STX per block are released during the following 4 years
 * 125 STX per block are released from then on indefinitely.
+
+{% hint style="info" %}
+Note that post-Nakamoto, after fast blocs are activated, STX emissions are tied to miner tenure changes, not Stacks blocks, so the emissions schedule will remain unchanged. For more info on how Nakamoto changes block production, see [Nakamoto in 10 Minutes](../nakamoto-upgrade/what-is-the-nakamoto-release/nakamoto-in-10-minutes.md).
+{% endhint %}
 
 These "halvings" are synchronized with Bitcoin halvings.
 

@@ -30,7 +30,7 @@ Let's get started by getting everything set up.
 
 ### Wallet Setup
 
-The very first thing you'll need to do is set up the Hiro wallet extension. This is how you can get STX tokens and interact with Stacks dapps. All you need to do right now is visit Hiro's [wallet page](https://wallet.hiro.so/) and install it. We'll set it up later with our dev environment.
+The very first thing you'll need to do is set up the Leather wallet extension. This is how you can get STX tokens and interact with Stacks dapps. All you need to do right now is visit [Leather's website](https://leather.io) and install it. We'll set it up later with our dev environment.
 
 ### Code Setup
 
@@ -225,9 +225,11 @@ Click on that and copy the contract name, we'll need it for the next step.
 
 Now go ahead and visit the sandbox by clicking on the 'Sandbox' link up at the top. You'll need to connect with your wallet to use it, but we can also interact with our contract here.
 
-Be sure to change your network to `Devnet` in your Hiro wallet, then connect.
+Be sure to change your network to `Devnet` in your Leather wallet, then connect.
 
-:::caution If you run into funky rendering issues, be sure to change the network URL parameter in the address bar to `testnet`. :::
+{% hint style="warning" %}
+If you run into funky rendering issues, be sure to change the network URL parameter in the address bar to `testnet`
+{% endhint %}
 
 Click on the little function symbol on the left and take the contract name you copied and paste it in the top field there, the name should be automatically populated.
 
@@ -237,17 +239,19 @@ Now we can click on that and type in a message to call the function. But if you 
 
 How do we get STX tokens in our Devnet account? Remember that `Devnet.toml` file Clarinet generates? That determines what accounts have what tokens.
 
-So now we need to set up our Hiro wallet extension that we set up at the beginning of this tutorial. If you already have an existing Hiro wallet, you'll need to sign out in order to use it with the local Clarinet Devnet.
+So now we need to set up our Leather wallet extension that we set up at the beginning of this tutorial. If you already have an existing Leather wallet, you'll need to sign out in order to use it with the local Clarinet Devnet.
 
-:::warning Make sure you copy your secret key before you sign out. You'll need it to restore your Hiro wallet when you are done developing. :::
+{% hint style="danger" %}
+Make sure you copy your secret key before you sign out. You'll need it to restore your Leather wallet when you are done developing.
+{% endhint %}
 
-Go ahead and copy the mnemonic listed in the `Devnet.toml` file and use that to import your local wallet into the Hiro wallet. Then we can use that for interacting with our local Devnet chain.
+Go ahead and copy the mnemonic listed in the `Devnet.toml` file and use that to import your local wallet into the Leather wallet. Then we can use that for interacting with our local Devnet chain.
 
 Once you do that, go ahead and restart `clarinet devnet start`.
 
 Now we can go back to the sandbox and call that function. You might need to sign out of the sandbox first and reauthenticate.
 
-When we do, you'll see the Hiro wallet pop up with a transaction confirmation. You'll also see a little notice at the top that no transfers besides fees will occur.
+When we do, you'll see the Leather wallet pop up with a transaction confirmation. You'll also see a little notice at the top that no transfers besides fees will occur.
 
 This is a cool feature of Stacks called Post Conditions. They are outside the scope of this tutorial, but you can learn more about them in the [Understanding Stacks Post Conditions](https://dev.to/stacks/understanding-stacks-post-conditions-e65) tutorial. They are another safety feature to help protect users.
 
@@ -259,7 +263,7 @@ Let's get our frontend set up so we can see how to do this with a UI and also re
 
 ### Adding a UI
 
-For this tutorial, we'll be using [Stacks.js](https://www.hiro.so/stacks-js), a JS library from Hiro that helps us interact with the Stacks chain, our Hiro wallet, and our contracts. Another option is [Micro-Stacks](https://micro-stacks.dev/), a community-created resource.
+For this tutorial, we'll be using [Stacks.js](https://www.hiro.so/stacks-js), a JS library from Hiro that helps us interact with the Stacks chain, our Leather wallet, and our contracts. Another option is [Micro-Stacks](https://micro-stacks.dev/), a community-created resource.
 
 Since this is not a React tutorial, I'm going to give you all the boilerplate at once so you can just copy and paste this into `App.jsx` and we'll add the Stacks-specific stuff together.
 
@@ -374,7 +378,7 @@ const userSession = new UserSession({ appConfig });
 
 Here we are setting up an app that needs permission to store and write data to the Stacks chain, and we are instantiating a new user session with that config option passed in.
 
-We also need to add a few details for the Hiro wallet to display to people interacting with our app. We can do that with the following line:
+We also need to add a few details for the Leather wallet to display to people interacting with our app. We can do that with the following line:
 
 ```jsx
 const appDetails = {
@@ -395,7 +399,7 @@ const connectWallet = () => {
 };
 ```
 
-Here we are using the `showConnect` function to actually trigger the Hiro wallet to show up, allowing the user to authenticate. From there we are triggering a page refresh when the authentication finishes and setting the `userSession` variable, which handles the data for our logged in user.
+Here we are using the `showConnect` function to actually trigger the Leather wallet to show up, allowing the user to authenticate. From there we are triggering a page refresh when the authentication finishes and setting the `userSession` variable, which handles the data for our logged in user.
 
 At this point you should be able to authenticate with the wallet and have the page refresh, although we can't really do anything with that yet.
 
