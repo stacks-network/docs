@@ -6,7 +6,7 @@ Note that these docs describe how Stacks _currently_ works pre-Nakamoto. There i
 
 ## Stacks Docs
 
-**Stacks is a Bitcoin L2 that brings smart contract functionality to Bitcoin, without modifying Bitcoin itself.**
+**Stacks is the leading Bitcoin L2, bringing smart contract functionality to Bitcoin, without modifying Bitcoin itself.**
 
 These docs serve as:
 

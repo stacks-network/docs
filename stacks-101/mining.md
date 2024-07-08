@@ -4,7 +4,7 @@
 
 This guide highlights some technical details related to mining on the Stacks 2.0 network.
 
-For steps on how to setup your own miner please refer to miner on testnet and miner on mainnet.
+For steps on how to setup your own miner please refer to the guides to running a miner on [mainnet](../stacks-in-depth/nodes-and-miners/mine-mainnet-stacks-tokens.md) and [testnet](../stacks-in-depth/nodes-and-miners/mine-testnet-stacks-tokens.md).
 
 ### Mining frequency
 
@@ -21,6 +21,10 @@ The reward amounts are:
 * 250 STX per block are released during the following 4 years
 * 125 STX per block are released from then on indefinitely.
 
+{% hint style="info" %}
+Note that post-Nakamoto, after fast blocs are activated, STX emissions are tied to miner tenure changes, not Stacks blocks, so the emissions schedule will remain unchanged. For more info on how Nakamoto changes block production, see [Nakamoto in 10 Minutes](../nakamoto-upgrade/what-is-the-nakamoto-release/nakamoto-in-10-minutes.md).
+{% endhint %}
+
 These "halvings" are synchronized with Bitcoin halvings.
 
 <figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
@@ -28,8 +32,6 @@ These "halvings" are synchronized with Bitcoin halvings.
 ### Transaction fees
 
 Miners receive Stacks fees for transactions mined in any block they produce.
-
-For transactions mined in microblocks, the miner that produces the microblock receives 40% of the fees, while the miner that confirms the microblock receives 60% of the fees.
 
 ### Reward maturity
 
@@ -68,11 +70,3 @@ To calculate the amount of BTC to send miners should:
 
 * Guess the price BTC/STX for the next day (100 blocks later)
 * Guess the total amount of BTCs committed by all miners
-
-### Microblocks
-
-The Stacks blockchain produces blocks at the same rate as the Bitcoin blockchain. In order to provide lower latency transactions, miners can opt to enable microblocks. Microblocks allow the current block leader to stream transactions and include their state transitions in the current epoch.
-
-If a block leader opts to produce microblocks, the next leader builds the chain tip off the last microblock that the current leader produces.
-
-The block streaming model is described in [SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md#operation-as-a-leader).

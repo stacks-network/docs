@@ -23,4 +23,4 @@ Nakamoto uses the [WSTS protocol with the FIRE extension](https://trust-machines
 
 Here is a diagram outlining the relationship between signing and stacking.
 
-<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>

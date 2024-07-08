@@ -51,17 +51,27 @@ Contains various configuration options for the stacks-node binary.
 
 #### events\_observer
 
-:::info This section is _optional_ and not required
+{% hint style="info" %}
+This section is _optional_ and not required
 
-However, if this section is added, **all** fields are required ::: Contains options for sending events emitted to the [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service.
+However, if this section is added, **all** fields are required.
+{% endhint %}
 
-\| Name | Required | Description | | ----------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | | endpoint | ✓ | Address and port to a [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service | | retry\_count | ✓ | Number of times to retry sending events to the endpoint before failing | | events\_keys | ✓ | Event keys for which to watch. The emitted node events can be restricted by account, function name and event type. Asterix ("\*") can be used to emit all events. | |
+Contains options for sending events emitted to the [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service.
+
+| Name         | Required | Description                                                                                                                                                       |
+| ------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| endpoint     | ✓        | Address and port to a [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service                                                       |
+| retry\_count | ✓        | Number of times to retry sending events to the endpoint before failing                                                                                            |
+| events\_keys | ✓        | Event keys for which to watch. The emitted node events can be restricted by account, function name and event type. Asterix ("\*") can be used to emit all events. |
 
 #### connection\_options
 
-:::info This section is _optional_ and not required.
+{% hint style="info" %}
+This section is _optional_ and not required.
 
-However, if this section is added, **all** fields are required :::
+However, if this section is added, **all** fields are required
+{% endhint %}
 
 Specifies configuration options for others connecting to the stacks node.
 
@@ -96,15 +106,15 @@ This section contains configuration options pertaining to the blockchain the sta
 
 #### ustx\_balance
 
-* `mocknet`/`testnet` only
+{% hint style="info" %}
+This section is only required for the `testnet` and `mocknet` networks.
+
+However, if this section is added, **all** fields are required.
+{% endhint %}
 
 This section contains configuration options allocating microSTX per address in the genesis block
 
 This section can repeat multiple times, but each section can only define a single address.
-
-:::info This section is only required for the `testnet` and `mocknet` networks.
-
-However, if this section is added, **all** fields are required :::
 
 | Name    | Required | Description                                                           |
 | ------- | -------- | --------------------------------------------------------------------- |
@@ -116,9 +126,9 @@ However, if this section is added, **all** fields are required :::
 ```toml
 [node]
 working_dir = "/stacks-blockchain"
-rpc_bind = "0.0.0.0:20443"
+rpc_bind = "0.0.0.0:30443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "02da7a464ac770ae8337a343670778b93410f2f3fef6bea98dd1c3e9224459d36b@seed-0.mainnet.stacks.co:20444,02afeae522aab5f8c99a00ddf75fbcb4a641e052dd48836408d9cf437344b63516@seed-1.mainnet.stacks.co:20444,03652212ea76be0ed4cd83a25c06e57819993029a7b9999f7d63c36340b34a4e62@seed-2.mainnet.stacks.co:20444"
+bootstrap_node = "02196f005965cebe6ddc3901b7b1cc1aa7a88f305bb8c5893456b8f9a605923893@seed.mainnet.hiro.so:20444,02539449ad94e6e6392d8c1deb2b4e61f80ae2a18964349bc14336d8b903c46a8c@cet.stacksnodes.org:20444,02ececc8ce79b8adf813f13a0255f8ae58d4357309ba0cedd523d9f1a306fcfb79@sgt.stacksnodes.org:20444,0303144ba518fe7a0fb56a8a7d488f950307a4330f146e1e1458fc63fb33defe96@est.stacksnodes.org:20444"
 
 [burnchain]
 chain = "bitcoin"

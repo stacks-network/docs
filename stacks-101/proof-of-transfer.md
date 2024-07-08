@@ -30,12 +30,6 @@ SIP-001 provides a full [list of reasons why Bitcoin was chosen to secure Stacks
 By the way, SIP stands for Stacks Improvement Proposal, and it's the process by which community members agree on making changes to the network, we'll look at these in a future lesson.
 {% endhint %}
 
-### Blocks and microblocks
-
-The Stacks blockchain allows for increased transaction throughput using a mechanism called microblocks. Bitcoin and Stacks progress in lockstep, and their blocks are confirmed simultaneously. On Stacks, this is referred to as an ‘anchor block’. An entire block of Stacks transactions corresponds to a single Bitcoin transaction. This significantly improves cost/byte ratio for processing Stacks transactions. Because of simultaneous block production, Bitcoin acts as a rate-limiter for creating Stacks blocks, thereby preventing denial-of-service attacks on its peer network.
-
-However, in between Stacks anchor blocks settling on the Bitcoin blockchain, there are also a varying number of microblocks that allow rapid settlement of Stacks transactions with a high degree of confidence. This allows Stacks transaction throughput to scale independently of Bitcoin, while still periodically establishing finality with the Bitcoin chain. The Stacks blockchain adopts a block streaming model whereby each leader can adaptively select and package transactions into their block as they arrive in the mempool. Therefore when an anchor block is confirmed, all of the transactions in the parent microblock stream are packaged and processed. This is an unprecedented method for achieving scalability without creating a totally separate protocol from Bitcoin.
-
 ### Unlocking Bitcoin capital
 
 In the previous section we talked about Stacks being able to allow us to build a decentralized economy on top of Bitcoin and that PoX was a key piece of being able to do that.
@@ -51,7 +45,7 @@ This is how Stacks records its history to the Bitcoin chain and why it inherits 
 Similarly, if you wanted to try and change the history of the Stacks chain, you would have to somehow modify these OP\_RETURN values in each corresponding Bitcoin block, meaning you would have to compromise Bitcoin in order to compromise the history of Stacks.
 
 {% hint style="warning" %}
-Note that this is not the same thing as saying that you need to compromise Bitcoin in order compromise Stacks at all, but simply that in order to falsify the history of the Stacks chain you would have to also falsify the history of the Bitcoin chain.&#x20;
+Note that this is not the same thing as saying that you need to compromise Bitcoin in order compromise Stacks at all, but simply that in order to falsify the history of the Stacks chain you would have to also falsify the history of the Bitcoin chain.
 {% endhint %}
 
 Additionally, part of this PoX process involves each Stacks block also knowing which Bitcoin block it is anchored to. Clarity, Stacks' smart contract language, has built-in functions for reading this data, such as [`get-block-info`](https://docs.stacks.co/docs/write-smart-contracts/clarity-language/language-functions#get-block-info), which returns, among other things, a field called `burnchain-header-hash`, which gives us the hash of the Bitcoin header corresponding to this Stacks block.

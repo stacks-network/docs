@@ -1,7 +1,5 @@
 # Run a Node with Docker
 
-
-
 ### Stacks Blockchain with Docker
 
 Run your own Stacks Blockchain node using [docker-compose](https://docs.docker.com/compose/) with just few commands using [stacks-blockchain-docker](https://github.com/stacks-network/stacks-blockchain-docker)
@@ -22,11 +20,13 @@ While you _can_ run a node using these specs, it's _recommended_ to assign more 
 * ⚠️ [docker-compose](https://docs.docker.com/compose/install/) version `2.2.2` or greater is **required**
 * **4GB memory**
 * **1 Vcpu** ( _minimum of 2 Vcpu is recommended_ )
-* **100GB disk** ( _minimum of 150GB SSD is recommended_ )
+* **350GB disk**
 
-:::caution MacOS with an ARM processor is NOT recommended
+{% hint style="warning" %}
+MacOS with an ARM processor is NOT recommended
 
-The way Docker for Mac on an Arm CPU is designed makes the I/O incredibly slow, and blockchains are _**very**_ heavy on I/O. This only seems to affect MacOS, other Arm based systems like Raspberry Pi work as expected. :::
+The way Docker for Mac on an Arm CPU is designed makes the I/O incredibly slow, and blockchains are _**very**_ heavy on I/O. This only seems to affect MacOS, other Arm based systems like Raspberry Pi work as expected.
+{% endhint %}
 
 ### **Quickstart**
 
@@ -48,25 +48,27 @@ git clone https://github.com/stacks-network/stacks-blockchain-docker && cd stack
 ./manage.sh -n <network> -a start
 ```
 
-:::note With an optional HTTP proxy on port 80:
+{% hint style="info" %}
+
+
+With an optional HTTP proxy on port 80:
 
 ```bash
 ./manage.sh -n <network> -a start -f proxy
 ```
-
-:::
+{% endhint %}
 
 ### **Accessing the services**
 
-:::tip For networks other than `mocknet`, downloading the initial headers can take several minutes. Until the headers are downloaded, the `/v2/info` endpoints won't return any data.
+{% hint style="info" %}
+For networks other than `mocknet`, downloading the initial headers can take several minutes. Until the headers are downloaded, the `/v2/info` endpoints won't return any data.
 
 Follow the logs to track the sync progress:
 
 ```bash
 ./manage.sh -n <network> -a logs
 ```
-
-:::
+{% endhint %}
 
 **stacks-blockchain**:
 
@@ -97,6 +99,8 @@ curl -sL localhost | jq -r
 
 ### Upgrades
 
-:::caution For schema-breaking upgrades to running instances of this repo, you'll need to [run an event-replay](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/docs/upgrade.md): :::
+{% hint style="warning" %}
+For schema-breaking upgrades to running instances of this repo, you'll need to [run an event-replay](https://github.com/stacks-network/stacks-blockchain-docker/blob/master/docs/upgrade.md).
+{% endhint %}
 
 ***
