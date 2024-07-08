@@ -618,7 +618,7 @@ Next it's time to actually build the transaction. To do that we need to pass i:
 * Our utxos that we fetched
 * And where to send the remaining Bitcoin change after the transaction (UTXOs can only be spent as a whole, so we need to create another transaction to send any remainder)
 
-Then we need to covnert that transaction to a PSBT. In order to use the Leather wallet, our transaction needs to be a PSBT, which we then pass to the wallet, use the wallet to sign, and then use the `sbtc` helper to broadcast it.
+Then we need to convert that transaction to a PSBT. In order to use the Leather wallet, our transaction needs to be a PSBT, which we then pass to the wallet, use the wallet to sign, and then use the `sbtc` helper to broadcast it.
 
 The next few lines are converting the transaction to the right format, calling the wallet API to sign it, and broadcasting it.
 
