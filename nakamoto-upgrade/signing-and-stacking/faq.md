@@ -177,3 +177,21 @@ No, the latest changes revolved around the signature, then about including a max
 That's correct, the PoX contract does a DKG event every cycle (every \~2 weeks). This is detailed in the [Nakamoto SIP](https://github.com/stacksgov/sips/blob/feat/sip-021-nakamoto/sips/sip-021/sip-021-nakamoto.md#stacker-turnover) where signers must register their keys.
 
 </details>
+
+<details>
+
+<summary>What are the trust assumptions involved with stacking my STX tokens and earning BTC rewards?</summary>
+
+This depends on whether you are solo stacking or delegating to a pool. In both cases, stacking your STX tokens is non-custodial, so you do not actually give up custody of your STX tokens. Rather, they are locked in your wallet at the protocol level.
+
+The trust assumptions come down to the BTC rewards, and are different for each method of stacking.
+
+#### Solo Stacking
+
+If you are solo stacking, your BTC rewards are not at risk, as you specify the reward address where BTC rewards must be sent when you call your stacking transaction. This is the case even if you are partnering with a separate entity to run the signer.
+
+#### Delegating
+
+If you are delegating, you do need to trust the pool operator with the BTC rewards. This is because rewards are distributed directly to the pool operator, and it is up to the discretion of the pool operator on how to distribute those rewards.&#x20;
+
+</details>
