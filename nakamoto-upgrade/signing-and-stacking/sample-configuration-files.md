@@ -53,7 +53,7 @@ working_dir = "/stacks-blockchain/data"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
 # This is the node that your node will use to begin syncing chain state
-bootstrap_node = "0341b2ff35b545d8e5c5d2fc8821484610ef85ce8e276214caf23d53be16fdcd65@seed.nakamoto.regtest.hiro.so:50444"
+bootstrap_node = "0341b2ff35b545d8e5c5d2fc8821484610ef85ce8e276214caf23d53be16fdcd65@seed.nakamoto.testnet.hiro.so:50444"
 wait_time_for_microblocks = 0
 mine_microblocks = false
 
