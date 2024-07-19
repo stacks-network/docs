@@ -274,7 +274,7 @@ local_peer_seed = "{{ redacted }}"
 [burnchain]
 chain = "bitcoin"
 mode = "krypton"
-peer_host = "http://bitcoin.regtest.hiro.so"
+peer_host = "bitcoin.regtest.hiro.so"
 username = "hirosystems"
 password = "hirosystems"
 rpc_port = 18443
