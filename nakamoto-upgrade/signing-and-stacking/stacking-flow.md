@@ -725,30 +725,34 @@ The CLI command is:
 
 ```bash
 stacks-signer generate-stacking-signature \
-  --pox-address bc1... \
-  --reward-cycle 100 \
-  --config ./config.toml \
+  --method stack-stx \
+  --max-amount 1000000000000 \
+  --auth-id 195591226970828652622091037492597751808 \
   --period 1 \
-  --topic stack-stx
+  --reward-cycle 100 \
+  --pox-address bc1... \
+  --config ./config.toml \
+  --json
 ```
 
-These arguments are:
+These arguments match those described in section [Overview of signer keys and signatures](#overview-of-signer-keys-and-signatures), with the addition of:
 
-* pox-address: the BTC address where the signer wants to receive Stacking rewards
-* reward-cycle: For solo stacking, this must refer to the current reward cycle where the user will broadcast their Stacking transaction. For the stack-aggregation-commit transaction, used in delegated signing, this should match the reward-cycle they are using as an argument in stack-aggregation-commit.
-* config: path to a local Signer configuration file
-* period: for solo stacking, this refers to the lock-period argument the user makes in stack-stx and the extend-count argument in stack-extend. **For stack-aggregation-commit, this must equal 1**.
-* topic: This string is dependent on the Stacking function where the signature will be used.
-  * For stack-stx, the topic needs to be `stack-stx`
-  * For stack-extend, the topic needs to be `stack-extend`
-  * For stack-aggregation-commit, the topic needs to be `agg-commit`
+* `--config`, to provide the configuration file path;
+* `--json`, to optionally output the resulting signature in JSON.
 
-Once the command is run, the CLI will output two fields:
+You can use the following command to generate a random `128` bits `auth-id`:
 
-* Signature: 0xaaaaaaaaa
-* Public Key: 0xbbbbbb
+```bash
+openssl rand -hex 16 | awk '{ print strtonum("0x"$0) }'
+```
 
-You will use both the signature and public key when calling Stacking transactions from your pool operator address as outlined above. Remember that this may be different than your signer address.
+Once the `generate-stacking-signature` command is run, the CLI will output a JSON:
+
+```json
+{"authId":"1234","maxAmount":"1234","method":"stack-stx","period":1,"poxAddress":"bc1...","rewardCycle":100,"signerKey":"aaaaaaaa","signerSignature":"bbbbbbbbbbb"}
+```
+
+You will use the JSON when calling Stacking transactions from your pool operator address as outlined above. Remember that this may be different than your signer address.
 
 #### Generating your signature with Lockstacks
 
