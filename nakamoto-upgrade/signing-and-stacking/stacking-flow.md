@@ -740,7 +740,7 @@ These arguments match those described in section [Overview of signer keys and si
 * `--config`, to provide the configuration file path;
 * `--json`, to optionally output the resulting signature in JSON.
 
-You can use the following command to generate a random `128` bits `auth-id`:
+You can use the following command to generate a random `128` bit integer as `auth-id`:
 
 ```bash
 openssl rand -hex 16 | awk '{ print strtonum("0x"$0) }'
