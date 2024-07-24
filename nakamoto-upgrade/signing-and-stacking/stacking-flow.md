@@ -743,7 +743,7 @@ These arguments match those described in section [Overview of signer keys and si
 You can use the following command to generate a random `128` bit integer as `auth-id`:
 
 ```bash
-openssl rand -hex 16 | awk '{ print strtonum("0x"$0) }'
+python3 -c 'import secrets; print(secrets.randbits(128))'
 ```
 
 Once the `generate-stacking-signature` command is run, the CLI will output a JSON:
