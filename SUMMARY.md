@@ -18,7 +18,7 @@
     * [Bitcoin Reorgs](nakamoto-upgrade/what-is-the-nakamoto-release/nakamoto-in-depth/bitcoin-reorgs.md)
 * [Nakamoto Rollout Plan](nakamoto-upgrade/nakamoto-rollout-plan/README.md)
   * [Nakamoto for Exchanges](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-exchanges.md)
-  * [Nakamoto for Stackers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stackers.md)
+  * [Nakamoto for Stackers, STX Holders](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stackers.md)
   * [Nakamoto for Stacking Providers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stacking-providers.md)
   * [Nakamoto for App Developers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto.md)
 * [Signing and Stacking](nakamoto-upgrade/signing-and-stacking/README.md)

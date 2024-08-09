@@ -1,29 +1,10 @@
-# Nakamoto for Stackers
+# Nakamoto for Stackers, STX Holders
 
-The Instantiation step of the Nakamoto rollout happened on \~April 22nd at Bitcoin block 840,360.  This means all Stacks were automatically unlocked on the network.
+## Stacking after the Nakamoto hard fork
 
-***
+The Nakamoto Activation sequence is expected to start on August 28. You can learn more about the steps here: [#nakamoto-activation-sequence](./#nakamoto-activation-sequence "mention")
 
-Stackers, here’s what you need to know for Cycle 84 and beyond:
-
-* Your STX have automatically unlocked on April 22 at Bitcoin block 840,360&#x20;
-* Despite your STX being unlocked for Cycle 83, you will still earn the full rewards from the cycle
-* There are no frozen cycles, so you can immediately re-Stack after the upgrade, meaning you have all of Cycle 83 to initiate Stacking for Cycle 84. Follow updates from your Stacking provider/pool to be notified when they are ready to receive your new Stacking calls for Cycle 84
-
-### Pools available for Stacking in Cycle 84
-
-These pools have confirmed their systems are ready to accept your Stacking calls for Cycle 84. Please read their documentation or get in **direct contact with them** for more information or support.
-
-* [Blockdaemon](https://www.blockdaemon.com/stacks)
-* [Fastpool by Ryder](https://fastpool.org/)
-* [Stacking DAO](https://medium.com/@stackingdao/the-nakamoto-odyssey-20x-point-boost-on-new-deposits-and-more-567c3a509112)
-* [LISA](https://app.lisalab.io/lisa/stacking)
-* [PlanBetter](https://twitter.com/planbetter\_/status/1784974388426637616)
-* [Xverse](https://pool.xverse.app/)
-
-### 'Re-Stacking' Timeline
-
-<figure><img src="../../.gitbook/assets/Stacking Graphic (1).png" alt=""><figcaption></figcaption></figure>
+As we approach the start of this sequence, more detail will provided to Stackers about any action they will need to take. As with most previous hard forks, it is expected Stackers will need to re-Stack or re-delegate after the hard fork is complete. Look out for more detailed instructions from your Stacking provider.&#x20;
 
 ## Solo Stacking vs Delegating
 
