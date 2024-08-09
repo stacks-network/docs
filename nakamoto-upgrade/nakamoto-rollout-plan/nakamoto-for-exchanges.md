@@ -25,28 +25,31 @@ The main thing exchanges will notice when the Nakamoto rollout is complete is th
 * For exchanges offering Stacking pools, likely increased BTC rewards thanks to MEV improvements
 
 {% hint style="info" %}
-Note: These new Nakamoto features will **not** be available on the network until the [second hard fork](nakamoto-for-exchanges.md#timeline) as described in the rollout plan. This is to allow time for Signers to onboard on the network. **Learn more:** [.](./ "mention")
+Note: These new Nakamoto features will become available when the Nakamoto Activation sequence completes. You can learn more about the sequence here: [#nakamoto-activation-sequence](./#nakamoto-activation-sequence "mention")
 {% endhint %}
 
 ### How should exchanges prepare for the upgrade?
 
-This upgrade will feel very familiar. You will be able to follow the usual process and it won’t even require a genesis sync. In addition, the corresponding API upgrade is non-schema-breaking, so no event replay is needed. In other words, the Nakamoto upgrade will look and feel like a simple hotfix update/node update vs. previous major hard forks.
+This upgrade will feel very familiar. You will be able to follow the usual node upgrade process and the corresponding API upgrade is non-schema-breaking, so no event replay is needed. In other words, the Nakamoto upgrade will look and feel like a simple hotfix update/node update.
+
+Exchanges that support native Bitcoin yield via Stacking may have extra upgrade considerations: [nakamoto-for-stacking-providers.md](nakamoto-for-stacking-providers.md "mention")
 
 **Upgrade Steps:**
 
 1. Download and install binaries/docker images which will be provided directly in your dedicated support channel and linked here when ready
 2. Restart the node
 
-Note: If you’re running a Stacking pool (Signer), you may have extra steps. Please start by visiting the documentation [here](https://docs.stacks.co/nakamoto-upgrade/running-a-signer) or getting in touch via your dedicated Telegram channel.
-
 ### Timeline
 
-You can learn more about the upcoming Nakamoto Activation sequence here: [#nakamoto-activation-sequence](./#nakamoto-activation-sequence "mention")
+Core developers expect to release binaries on or around August 28th. Exchanges can expect their usual ecosystem point of contact to provide them with detailed information and updates during the process.&#x20;
+
+The hard fork will occur **after** a series of activation steps. You can learn more about this upcoming Nakamoto Activation sequence here: [#nakamoto-activation-sequence](./#nakamoto-activation-sequence "mention").&#x20;
 
 ### Other Recommendations:
 
 * With just a bit of extra work, exchanges can support the [Stacks SIP-10 token standard](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md). This allows an exchange to easily list any of a growing number of tokens built on Stacks as well as the upcoming [sBTC asset](broken-reference/).
 * Exchanges that already offer staking type services to their users (programs often called Earn/Stake/etc.) should consider adding [Stacking](../../stacks-101/stacking.md) to their platform alongside other offerings. Users can earn BTC by participating in Stacks consensus through a simple pool.
+* The Stacks Foundation is seeking a handful of exchanges to pilot rapid BTC withdrawals via the upcoming sBTC asset, expected to closely follow the Nakamoto hard fork. Interest exchange can reach out to their usual point of contact or complete [this form](https://stacks.org/exchanges).
 
 ### Resources:
 
