@@ -60,7 +60,7 @@ We also recommend [reading the full PoX whitepaper](https://community.stacks.org
 
 ### Proof of Transfer Contracts and Technical Details
 
-The Proof of Transfer functionality is implemented on the Stacks chain via a [Clarity smart contract](https://explorer.stacks.co/txid/0xfc878ab9c29f3d822a96ee73898000579bdf69619a174e748672eabfc7cfc589). An overview of this contract is available in the docs.
+The Proof of Transfer functionality is implemented on the Stacks chain via a [Clarity smart contract](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox?chain=mainnet). An overview of this contract is available in the docs.
 
 You can see the original design for stacking and proof of transfer by reading the relevant SIP, [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md). You can also utilize [Hiro's API](https://docs.hiro.so/api#tag/Info/operation/get\_pox\_info) to get proof of transfer details including the relevant contract address.
 
