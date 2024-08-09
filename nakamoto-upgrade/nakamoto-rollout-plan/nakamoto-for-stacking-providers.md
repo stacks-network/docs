@@ -19,22 +19,6 @@ There are a few basic steps you'll need to follow to get your Stacking pool set 
 * The function `stack-aggregation-commit` now requires pool operators to provide their Signer’s public key, along with other related information. Learn more about generating Signer key signatures using the [stacks-signer CLI](https://docs.stacks.co/nakamoto-upgrade/signing-and-stacking/stacking-flow#generating-your-signature-using-the-stacks-signer-cli) or with [Lockstacks](https://docs.stacks.co/nakamoto-upgrade/signing-and-stacking/stacking-flow#generating-your-signature-with-lockstacks). Again, this entire flow is covered extensively in the [How to Stack](../signing-and-stacking/stacking-flow.md) doc.
 * Depending on your pool’s infrastructure, you may need to update any tools or automations that you use to finalize your pool’s delegations.
 
-## Timing
-
-First, it's important to understand that on \~April 22nd, at Bitcoin block 840,360, all STX will automatically unlock from the network as part of the hard fork. This is network wide.&#x20;
-
-As providers, you ultimately have as long as you need to make the Nakamoto upgrade, however, the faster you're able to upgrade, the fewer cycles your users will miss rewards for. Though there is a tight turnaround, you can actually upgrade fast enough such that users potentially miss zero cycles ([learn more](nakamoto-for-stacking-providers.md#rewards-in-cycle-83)). Some pools have been working with the [Nakamoto Testnet](nakamoto.md) in this interest, but it is not a requirement.&#x20;
-
-<figure><img src="../../.gitbook/assets/Stacking Graphic (1).png" alt=""><figcaption></figcaption></figure>
-
-#### Cycle 84
-
-If you would like to avoid your users missing a Stacking cycle, you will need to upgrade your Stacking pool ahead of Cycle 84:&#x20;
-
-* You'll need to make sure that you follow the steps [outlined above](nakamoto-for-stacking-providers.md#upgrading-your-stacking-pool-or-service) as soon as possible.&#x20;
-* All Stacking now requires running a Signer, so you'll need to [follow the instructions](../signing-and-stacking/running-a-signer.md) to set it up. This is likely the newest or most difficult part, please reach out to your point of contact in the Stacks ecosystem for technical support as needed.&#x20;
-* You'll need to have your upgrades done AND give enough time for your users to re-delegate to your pool before the start of cycle 84 (\~May 6th).
-
 
 
 {% hint style="info" %}

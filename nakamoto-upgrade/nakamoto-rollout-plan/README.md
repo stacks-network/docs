@@ -1,25 +1,19 @@
 ---
 description: >-
   Testnet and mainnet rollout sequencing for the Nakamoto upgrade. Several key
-  stepsbring more features live in a safe, step-by-step process that will give
+  steps bring more features live in a safe, step-by-step process that will give
   builders and partners time to integrate.
 ---
 
 # Nakamoto Rollout Plan
 
-#### **TL;DR:**
-
-> As [shared in January](https://stacks.org/nakamoto-launch-window), the Nakamoto upgrade will begin rolling out between April 15 - 29 (Instantiation window) which will kick off a period of Signer onboarding ([and now additional Signer/miner resiliency features](https://stacks.org/nakamoto-activation-update)). Nakamoto rules will begin going live on August 28th, startign a processs that will complete the launch!
-
-### Two-Step Release and Signer Onboarding
-
-Core Developers and Working Groups have regularly engaged with builders and key integration partners as pieces of the codebase are wrapped up and going to audit. This ongoing dialog led to the two-step release process described below, which will afford partners, many of whom are new to Stacks, ample time to register on mainnet, troubleshoot their setups if necessary, and be ready to sign blocks upon Activation. New signers need to fully test their setup on mainnet before they can become active validators.
+{% hint style="info" %}
+Nakamoto has completed step 1 of the rollout (Instantiation). Next, a hard fork that follows an Activation sequence outlined below will make Nakamot features available to the whole network.&#x20;
+{% endhint %}
 
 ### Step 1, Step 2: Instantiation & Activation
 
-The rollout will follow this two-step process, each of which is implemented via hard fork. Breaking the Nakamoto release into two forks reduces risk by allowing Core Developers an opportunity before full activation to make any final adjustments or bug fixes as they observe pox-4 in the wild and as Signers come online.&#x20;
-
-This strategy is now the preferred path given how much is happening as part of this upgrade and it is the same one being used on the testnet. Further, the rollout of the testnet is already in progress (at Step 1, Instantiation).&#x20;
+The rollout will follow this two-step process, each of which is implemented via hard fork. &#x20;
 
 1. **Step 1 - Instantiation:** The pox-4 contract and the majority of the Nakamoto code are shipped, but Nakamoto rules are inactive. This is so other aspects of the contract can be tested before layering on the complexity that comes with the testnet (and later mainnet) being dependent on it. Importantly, this phase also allows time for Signers to register without the network being dependent on them to sign blocks.
 2. **Step 2 - Activation:** A process to make Nakamoto rules live begins on August 28. Once completely rolled out, the full set of Nakamoto features including Signer-based functions, fast blocks, and Bitcoin finality. In other words, ‘the switch is flipped’!
@@ -34,16 +28,22 @@ Nakamoto rules are the logic that makes Nakamoto different than the version befo
 
 </details>
 
-### Mainnet Rollout
+### Nakamoto Activation Sequence
 
-As [shared in January](https://stacks.org/nakamoto-launch-window), mainnet rollout **will begin some time between April 15 and 29** which is currently roughly aligned with Stacking cycle 82.
+**On August 28th, the final code for Nakamoto will be shipped to network operators and the activation window will open**. Network operators will have one Stacking Cycle (Cycle 92) to upgrade. After the network has successfully handed off from Cycle 92 to Cycle 93, a final hard fork block will be chosen by core developers.\
 
-Once instantiated (Step 1), a period of at least 2 Stacking cycles will be afforded to Signers and other integration partners to register with pox-4. During this time they will ensure their Signers are ready for the progression to Activation (Step 2) where the network will depend on Signers actively validating blocks.
 
-This means that assuming there are no major bugs or issues, full Nakamoto rules will begin activating on August 28th with some of that depending on how quickly Signers are onboarded.&#x20;
+<table><thead><tr><th width="68"></th><th width="175">Step	</th><th width="316">Overview	</th><th>Date/Period</th></tr></thead><tbody><tr><td>A, B</td><td><strong>A</strong>ctivation Window Opens &#x26; <strong>B</strong>inaries Delivered</td><td>Pending no new bugs, final binaries are delivered - this is all the code Signers, Miners, and Node Operators need to run the network.</td><td>August 28th</td></tr><tr><td>C</td><td><strong>C</strong>ycle Handoff - Signers</td><td>With final code loaded on mainnet, Signers have one full Stacking cycle to make any necessary final adjustments to their setup. At the end of Cycle 92, core developers will watch for a successful ‘handoff’, meaning a successful change of the Signer sets between Stacking cycles.</td><td>Cycle 92 to Cycle 93</td></tr><tr><td>D</td><td><strong>D</strong>etermine Hard Fork Block</td><td>Once the handoff from Cycle 92 to Cycle 93 has been confirmed as successful at Block 861,500, Core Developers will pick the final hard fork block for all Nakamoto rules to go live.</td><td>During reward phase of Cycle 93</td></tr><tr><td>E</td><td><strong>E</strong>poch 3.0 - Nakamoto Rules Start</td><td>Fast blocks, full Bitcoin finality! Nakamoto rules go live at the hard fork block.</td><td>At hard fork block</td></tr></tbody></table>
 
-### Visualizing the rollout
+### Factors that could affect timelines:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-08-05 111756.png" alt=""><figcaption></figcaption></figure>
+* **Testing & Audit Results:** A top-notch group of researchers, contractors, and testers, along with security auditors from Clarity Alliance and Quantstamp, continue to hammer away at Nakamoto as they have for the past several months. This testing is ongoing, so there is always the possibility they surface an issue that needs to be addressed before the final hard fork.
+* **Signer Needs:** The ecosystem is proud to have industry leaders comprising its leading Signer network. Signers are a critical new network player so if a clear issue or unexpected need arises during activation, additional time would be taken to address it.
+* **Miner adoption:** As always, miners must choose to adopt the new code. Should they be delayed or experience issues with their setups, it could cause a delay in Activation.
+* **SIP-025 Voting:** While there is every indication Signers will approve the ongoing SIP-025 vote, we should not entirely eliminate the possibility feedback is raised which requires addressing before both Signers and core developers are comfortable with the signature scheme.
 
-**Note about sBTC Rollout:** Previous [updates](https://stacks.org/halving-on-horizon-nakamoto) mentioned targeting a launch of sBTC 2-3 months after Nakamoto Mainnet is live and stable. Core Developers are now projecting [a faster follow](https://www.bitcoinwrites.com/p/sbtc-rollout-bootstrapping-programmable-bitcoin)!
+Factors that could affect timelines:As always, core developers are committed to a safe, secure launch. As such, several factors _could_ warrant additional time added to the Nakamoto activation sequence outlined above and result in a new hard fork block being selected:\
+\
+
+
+\

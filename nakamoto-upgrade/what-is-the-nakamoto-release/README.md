@@ -1,8 +1,6 @@
 # What is the Nakamoto Upgrade?
 
-The Nakamoto Release is an upcoming hard fork on the Stacks network designed to bring several benefits, chief among them are increased transaction throughput and 100% Bitcoin finality.
-
-Bitcoin block 840,360 marks the start of the multi-phase [Nakamoto mainnet rollout](../nakamoto-rollout-plan/).
+The Nakamoto Release is an upcoming hard fork on the Stacks network designed to bring several benefits, chief among them are increased transaction throughput and 100% Bitcoin finality. Learn about the Nakamoto Activation sequence here: [#nakamoto-activation-sequence](../nakamoto-rollout-plan/#nakamoto-activation-sequence "mention")
 
 With Nakamoto, Stacks block production would no longer be tied to miner elections. Instead, miners produce blocks at a fixed cadence, and the set of PoX Stackers rely on the miner elections to determine when the current miner should stop producing blocks and a new miner should start. This blockchain will only fork if 70% of Stackers approve the fork, and chain reorganization will be as difficult as reorganizing Bitcoin.
 
