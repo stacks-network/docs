@@ -1,0 +1,29 @@
+{
+  "unversionedId": "services-using-stacks/more",
+  "id": "services-using-stacks/more",
+  "title": "Más",
+  "description": "Más servicios construidos en Stacks.",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/services-using-stacks/more.md",
+  "sourceDirName": "services-using-stacks",
+  "slug": "/services-using-stacks/more",
+  "permalink": "/es/docs/services-using-stacks/more",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/services-using-stacks/more.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Más",
+    "description": "Más servicios construidos en Stacks.",
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Wallets",
+    "permalink": "/es/docs/services-using-stacks/wallets"
+  },
+  "next": {
+    "title": "Contribuir",
+    "permalink": "/es/docs/contribute/"
+  }
+}

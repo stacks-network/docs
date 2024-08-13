@@ -1,0 +1,37 @@
+{
+  "unversionedId": "nodes-and-miners/digitalocean",
+  "id": "nodes-and-miners/digitalocean",
+  "title": "Stacks di DigitalOcean",
+  "description": "A guide to setup Stacks on DigitalOcean",
+  "source": "@site/i18n/id/docusaurus-plugin-content-docs/current/nodes-and-miners/digitalocean.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/digitalocean",
+  "permalink": "/id/docs/nodes-and-miners/digitalocean",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/digitalocean.md",
+  "tags": [
+    {
+      "label": "tutorial",
+      "permalink": "/id/docs/tags/tutorial"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Stacks di DigitalOcean",
+    "description": "A guide to setup Stacks on DigitalOcean",
+    "sidebar_position": 4,
+    "tags": [
+      "tutorial"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Run a Node with a Hosted Provider",
+    "permalink": "/id/docs/nodes-and-miners/hosted-nodes"
+  },
+  "next": {
+    "title": "Menambang token Stacks testnet",
+    "permalink": "/id/docs/nodes-and-miners/miner-testnet"
+  }
+}

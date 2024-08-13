@@ -1,0 +1,29 @@
+{
+  "unversionedId": "services-using-stacks/defi",
+  "id": "services-using-stacks/defi",
+  "title": "DeFi",
+  "description": "De-Fi sites on Stacks",
+  "source": "@site/i18n/id/docusaurus-plugin-content-docs/current/services-using-stacks/defi.md",
+  "sourceDirName": "services-using-stacks",
+  "slug": "/services-using-stacks/defi",
+  "permalink": "/id/docs/services-using-stacks/defi",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/services-using-stacks/defi.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "DeFi",
+    "description": "De-Fi sites on Stacks",
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Situs info Stacks",
+    "permalink": "/id/docs/services-using-stacks/stacks-info-sites"
+  },
+  "next": {
+    "title": "NFTs",
+    "permalink": "/id/docs/services-using-stacks/nft"
+  }
+}

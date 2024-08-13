@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/stacks-blockchain-api",
+  "id": "stacks-academy/stacks-blockchain-api",
+  "title": "Stacks Blockchain API",
+  "description": "Interacting with the Stacks 2.0 Blockchain via API",
+  "source": "@site/docs/stacks-academy/stacks-blockchain-api.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/stacks-blockchain-api",
+  "permalink": "/docs/stacks-academy/stacks-blockchain-api",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/stacks-blockchain-api.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Stacks Blockchain API",
+    "description": "Interacting with the Stacks 2.0 Blockchain via API",
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Network",
+    "permalink": "/docs/stacks-academy/network"
+  },
+  "next": {
+    "title": "Accounts",
+    "permalink": "/docs/stacks-academy/accounts"
+  }
+}

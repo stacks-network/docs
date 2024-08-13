@@ -1,0 +1,27 @@
+{
+  "unversionedId": "cookbook/creating-an-ft",
+  "id": "cookbook/creating-an-ft",
+  "title": "Creating a Fungible Token",
+  "description": "Clarity and Stacks.js code required to make a FT",
+  "source": "@site/docs/cookbook/creating-an-ft.md",
+  "sourceDirName": "cookbook",
+  "slug": "/cookbook/creating-an-ft",
+  "permalink": "/docs/cookbook/creating-an-ft",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/cookbook/creating-an-ft.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Creating a Fungible Token",
+    "description": "Clarity and Stacks.js code required to make a FT"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cookbook",
+    "permalink": "/docs/cookbook/"
+  },
+  "next": {
+    "title": "Creating an NFT",
+    "permalink": "/docs/cookbook/creating-an-nft"
+  }
+}

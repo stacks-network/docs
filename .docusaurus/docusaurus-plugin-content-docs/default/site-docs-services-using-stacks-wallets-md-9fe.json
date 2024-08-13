@@ -1,0 +1,29 @@
+{
+  "unversionedId": "services-using-stacks/wallets",
+  "id": "services-using-stacks/wallets",
+  "title": "Wallets",
+  "description": "Wallets for Stacks",
+  "source": "@site/docs/services-using-stacks/wallets.md",
+  "sourceDirName": "services-using-stacks",
+  "slug": "/services-using-stacks/wallets",
+  "permalink": "/docs/services-using-stacks/wallets",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/services-using-stacks/wallets.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Wallets",
+    "description": "Wallets for Stacks",
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "NFTs",
+    "permalink": "/docs/services-using-stacks/nft"
+  },
+  "next": {
+    "title": "More",
+    "permalink": "/docs/services-using-stacks/more"
+  }
+}

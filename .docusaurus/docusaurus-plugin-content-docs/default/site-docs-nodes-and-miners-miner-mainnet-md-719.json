@@ -1,0 +1,37 @@
+{
+  "unversionedId": "nodes-and-miners/miner-mainnet",
+  "id": "nodes-and-miners/miner-mainnet",
+  "title": "Mine mainnet Stacks tokens",
+  "description": "Set up and run a miner on Stacks Mainnet",
+  "source": "@site/docs/nodes-and-miners/miner-mainnet.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/miner-mainnet",
+  "permalink": "/docs/nodes-and-miners/miner-mainnet",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/miner-mainnet.md",
+  "tags": [
+    {
+      "label": "tutorial",
+      "permalink": "/docs/tags/tutorial"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Mine mainnet Stacks tokens",
+    "description": "Set up and run a miner on Stacks Mainnet",
+    "sidebar_position": 6,
+    "tags": [
+      "tutorial"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Mine testnet Stacks tokens",
+    "permalink": "/docs/nodes-and-miners/miner-testnet"
+  },
+  "next": {
+    "title": "Verify Miner",
+    "permalink": "/docs/nodes-and-miners/verify-miner"
+  }
+}

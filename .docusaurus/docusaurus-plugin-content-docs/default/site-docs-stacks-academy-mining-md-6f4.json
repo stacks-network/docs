@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/mining",
+  "id": "stacks-academy/mining",
+  "title": "Mining",
+  "description": "A guide to mining on Stacks 2.0",
+  "source": "@site/docs/stacks-academy/mining.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/mining",
+  "permalink": "/docs/stacks-academy/mining",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/mining.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Mining",
+    "description": "A guide to mining on Stacks 2.0",
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Proof of Transfer",
+    "permalink": "/docs/stacks-academy/proof-of-transfer"
+  },
+  "next": {
+    "title": "Microblocks",
+    "permalink": "/docs/stacks-academy/microblocks"
+  }
+}

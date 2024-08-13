@@ -1,0 +1,418 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "clarity/crash-course",
+              "path": "/docs/clarity/crash-course",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clarity/index",
+              "path": "/docs/clarity/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clarity/language-functions",
+              "path": "/docs/clarity/language-functions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clarity/language-keywords",
+              "path": "/docs/clarity/language-keywords",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clarity/language-types",
+              "path": "/docs/clarity/language-types",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clarity/noteworthy-contracts/bns-contract",
+              "path": "/docs/clarity/noteworthy-contracts/bns-contract",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clarity/noteworthy-contracts/stacking-contract",
+              "path": "/docs/clarity/noteworthy-contracts/stacking-contract",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clarity/noteworthy-contracts/xbtc",
+              "path": "/docs/clarity/noteworthy-contracts/xbtc",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clarity/sample-contracts",
+              "path": "/docs/clarity/sample-contracts",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clarity/security/decidable",
+              "path": "/docs/clarity/security/decidable",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clarity/security/index",
+              "path": "/docs/clarity/security/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "contribute/docs",
+              "path": "/docs/contribute/docs",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "contribute/index",
+              "path": "/docs/contribute/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "contribute/translations",
+              "path": "/docs/contribute/translations",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "cookbook/creating-an-ft",
+              "path": "/docs/cookbook/creating-an-ft",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "cookbook/creating-an-nft",
+              "path": "/docs/cookbook/creating-an-nft",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "cookbook/get-sats-per-stx",
+              "path": "/docs/cookbook/get-sats-per-stx",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "cookbook/index",
+              "path": "/docs/cookbook/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "cookbook/parse-a-btc-tx",
+              "path": "/docs/cookbook/parse-a-btc-tx",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "cookbook/post-conditions",
+              "path": "/docs/cookbook/post-conditions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "cookbook/sending-bitcoin-with-hiro-wallet",
+              "path": "/docs/cookbook/sending-bitcoin-with-hiro-wallet",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "cookbook/stacks-js-auth",
+              "path": "/docs/cookbook/stacks-js-auth",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "cookbook/stacks-js-sending-transactions",
+              "path": "/docs/cookbook/stacks-js-sending-transactions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "cookbook/verifying-a-btc-tx-was-mined",
+              "path": "/docs/cookbook/verifying-a-btc-tx-was-mined",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "gaia/configuration",
+              "path": "/docs/gaia/configuration",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "gaia/deploy-gaia-hub",
+              "path": "/docs/gaia/deploy-gaia-hub",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "gaia/gaia",
+              "path": "/docs/gaia/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "gaia/gaia-on-ec2",
+              "path": "/docs/gaia/gaia-on-ec2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "gaia/setup-linux",
+              "path": "/docs/gaia/setup-linux",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "gaia/setup-mac",
+              "path": "/docs/gaia/setup-mac",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "glossary/index",
+              "path": "/docs/glossary/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nakamoto/bitcoin-mev-mitigation",
+              "path": "/docs/nakamoto/bitcoin-mev-mitigation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nakamoto/block-production",
+              "path": "/docs/nakamoto/block-production",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nakamoto/clarity-wasm",
+              "path": "/docs/nakamoto/clarity-wasm",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nakamoto/index",
+              "path": "/docs/nakamoto/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nakamoto/neon",
+              "path": "/docs/nakamoto/neon",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nakamoto/signer",
+              "path": "/docs/nakamoto/signer",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "next-steps/index",
+              "path": "/docs/next-steps/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nodes-and-miners/digitalocean",
+              "path": "/docs/nodes-and-miners/digitalocean",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nodes-and-miners/hosted-nodes",
+              "path": "/docs/nodes-and-miners/hosted-nodes",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nodes-and-miners/index",
+              "path": "/docs/nodes-and-miners/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nodes-and-miners/miner-costs-and-fees",
+              "path": "/docs/nodes-and-miners/miner-costs-and-fees",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nodes-and-miners/miner-mainnet",
+              "path": "/docs/nodes-and-miners/miner-mainnet",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nodes-and-miners/miner-testnet",
+              "path": "/docs/nodes-and-miners/miner-testnet",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nodes-and-miners/quicknode",
+              "path": "/docs/nodes-and-miners/quicknode",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nodes-and-miners/run-a-node",
+              "path": "/docs/nodes-and-miners/run-a-node",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nodes-and-miners/stacks-node-configuration",
+              "path": "/docs/nodes-and-miners/stacks-node-configuration",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "nodes-and-miners/verify-miner",
+              "path": "/docs/nodes-and-miners/verify-miner",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "services-using-stacks/defi",
+              "path": "/docs/services-using-stacks/defi",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "services-using-stacks/more",
+              "path": "/docs/services-using-stacks/more",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "services-using-stacks/nft",
+              "path": "/docs/services-using-stacks/nft",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "services-using-stacks/stacks-info-sites",
+              "path": "/docs/services-using-stacks/stacks-info-sites",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "services-using-stacks/wallets",
+              "path": "/docs/services-using-stacks/wallets",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/accounts",
+              "path": "/docs/stacks-academy/accounts",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/authentication",
+              "path": "/docs/stacks-academy/authentication",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/bns",
+              "path": "/docs/stacks-academy/bns",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/btc-connection",
+              "path": "/docs/stacks-academy/btc-connection",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/index",
+              "path": "/docs/stacks-academy/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/microblocks",
+              "path": "/docs/stacks-academy/microblocks",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/mining",
+              "path": "/docs/stacks-academy/mining",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/network",
+              "path": "/docs/stacks-academy/network",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/post-conditions",
+              "path": "/docs/stacks-academy/post-conditions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/proof-of-transfer",
+              "path": "/docs/stacks-academy/proof-of-transfer",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/sips",
+              "path": "/docs/stacks-academy/sips",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/stacking",
+              "path": "/docs/stacks-academy/stacking",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/stacks-blockchain-api",
+              "path": "/docs/stacks-academy/stacks-blockchain-api",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/technical-specs",
+              "path": "/docs/stacks-academy/technical-specs",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/testnet",
+              "path": "/docs/stacks-academy/testnet",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/transactions",
+              "path": "/docs/stacks-academy/transactions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/what-is-stacks",
+              "path": "/docs/stacks-academy/what-is-stacks",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "stacks-academy/whitepapers",
+              "path": "/docs/stacks-academy/whitepapers",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "tutorials/community-tutorials",
+              "path": "/docs/tutorials/community-tutorials",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "tutorials/hello-stacks",
+              "path": "/docs/tutorials/hello-stacks",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "tutorials/index",
+              "path": "/docs/tutorials/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "tutorials/satoshis-ridge",
+              "path": "/docs/tutorials/satoshis-ridge",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/noteworthy-contracts",
+              "path": "/docs/category/noteworthy-contracts",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/services-using-stacks",
+              "path": "/docs/category/services-using-stacks",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/intro",
+                "label": "Start Here"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

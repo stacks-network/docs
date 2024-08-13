@@ -1,0 +1,27 @@
+{
+  "unversionedId": "contribute/translations",
+  "id": "contribute/translations",
+  "title": "Contribute with translations",
+  "description": "Want to help tranlating these docs to your local language?",
+  "source": "@site/i18n/id/docusaurus-plugin-content-docs/current/contribute/translations.md",
+  "sourceDirName": "contribute",
+  "slug": "/contribute/translations",
+  "permalink": "/id/docs/contribute/translations",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/contribute/translations.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Contribute with translations",
+    "description": "Want to help tranlating these docs to your local language?"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Contribute to docs",
+    "permalink": "/id/docs/contribute/docs"
+  },
+  "next": {
+    "title": "Glossary",
+    "permalink": "/id/docs/glossary/"
+  }
+}

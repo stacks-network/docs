@@ -1,0 +1,27 @@
+{
+  "unversionedId": "clarity/noteworthy-contracts/xbtc",
+  "id": "clarity/noteworthy-contracts/xbtc",
+  "title": "xBTC",
+  "description": "Wrapped BTC on Stacks",
+  "source": "@site/docs/clarity/noteworthy-contracts/xbtc.md",
+  "sourceDirName": "clarity/noteworthy-contracts",
+  "slug": "/clarity/noteworthy-contracts/xbtc",
+  "permalink": "/docs/clarity/noteworthy-contracts/xbtc",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/noteworthy-contracts/xbtc.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "xBTC",
+    "description": "Wrapped BTC on Stacks"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "BNS Contract",
+    "permalink": "/docs/clarity/noteworthy-contracts/bns-contract"
+  },
+  "next": {
+    "title": "Sample Contracts",
+    "permalink": "/docs/clarity/sample-contracts"
+  }
+}

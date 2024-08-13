@@ -1,0 +1,26 @@
+{
+  "label": "clarity",
+  "permalink": "/docs/tags/clarity",
+  "allTagsPath": "/docs/tags",
+  "count": 3,
+  "items": [
+    {
+      "id": "clarity/language-functions",
+      "title": "Functions",
+      "description": "See a detailed list of all functions for the Clarity language.",
+      "permalink": "/docs/clarity/language-functions"
+    },
+    {
+      "id": "clarity/language-keywords",
+      "title": "Keywords",
+      "description": "See a detailed list of all keywords for the Clarity language.",
+      "permalink": "/docs/clarity/language-keywords"
+    },
+    {
+      "id": "clarity/language-types",
+      "title": "Types",
+      "description": "See a detailed list of all types for the Clarity language.",
+      "permalink": "/docs/clarity/language-types"
+    }
+  ]
+}

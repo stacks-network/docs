@@ -1,0 +1,37 @@
+{
+  "unversionedId": "nodes-and-miners/run-a-node",
+  "id": "nodes-and-miners/run-a-node",
+  "title": "Run a node",
+  "description": "Set up and run a Stacks node",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/nodes-and-miners/run-a-node.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/run-a-node",
+  "permalink": "/es/docs/nodes-and-miners/run-a-node",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/run-a-node.md",
+  "tags": [
+    {
+      "label": "tutorial",
+      "permalink": "/es/docs/tags/tutorial"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Run a node",
+    "description": "Set up and run a Stacks node",
+    "sidebar_position": 1,
+    "tags": [
+      "tutorial"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Nodos y Mineros",
+    "permalink": "/es/docs/nodes-and-miners/"
+  },
+  "next": {
+    "title": "Run a Node with a Hosted Provider",
+    "permalink": "/es/docs/nodes-and-miners/hosted-nodes"
+  }
+}

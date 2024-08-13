@@ -1,0 +1,27 @@
+{
+  "unversionedId": "contribute/docs",
+  "id": "contribute/docs",
+  "title": "Contribuir a la documentación",
+  "description": "Aprende cómo se construye este sitio y cómo puedes contribuir a él.",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/contribute/docs.md",
+  "sourceDirName": "contribute",
+  "slug": "/contribute/docs",
+  "permalink": "/es/docs/contribute/docs",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/contribute/docs.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Contribuir a la documentación",
+    "description": "Aprende cómo se construye este sitio y cómo puedes contribuir a él."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Contribuir",
+    "permalink": "/es/docs/contribute/"
+  },
+  "next": {
+    "title": "Contribuye en la traducción",
+    "permalink": "/es/docs/contribute/translations"
+  }
+}

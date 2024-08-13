@@ -1,0 +1,40 @@
+{
+  "unversionedId": "gaia/setup-linux",
+  "id": "gaia/setup-linux",
+  "title": "Linux",
+  "description": "Steps to setup a GAIA hub on a Linux server (fresh install). This example is using Debian, but should work on any Linux distribution. It uses docker compose in the backgroud.",
+  "source": "@site/i18n/id/docusaurus-plugin-content-docs/current/gaia/setup-linux.md",
+  "sourceDirName": "gaia",
+  "slug": "/gaia/setup-linux",
+  "permalink": "/id/docs/gaia/setup-linux",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/gaia/setup-linux.md",
+  "tags": [
+    {
+      "label": "tutorial",
+      "permalink": "/id/docs/tags/tutorial"
+    },
+    {
+      "label": "gaia",
+      "permalink": "/id/docs/tags/gaia"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "Linux",
+    "description": "Steps to setup a GAIA hub on a Linux server (fresh install). This example is using Debian, but should work on any Linux distribution. It uses docker compose in the backgroud.",
+    "tags": [
+      "tutorial",
+      "gaia"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Amazon EC2",
+    "permalink": "/id/docs/gaia/gaia-on-ec2"
+  },
+  "next": {
+    "title": "MacOS",
+    "permalink": "/id/docs/gaia/setup-mac"
+  }
+}

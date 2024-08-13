@@ -1,0 +1,37 @@
+{
+  "unversionedId": "gaia/gaia",
+  "id": "gaia/gaia",
+  "title": "Gaia",
+  "description": "Arsitektur penyimpanan terdesentralisasi untuk data luar-rantai",
+  "source": "@site/i18n/id/docusaurus-plugin-content-docs/current/gaia/gaia.md",
+  "sourceDirName": "gaia",
+  "slug": "/gaia/",
+  "permalink": "/id/docs/gaia/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/gaia/gaia.md",
+  "tags": [
+    {
+      "label": "gaia",
+      "permalink": "/id/docs/tags/gaia"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Gaia",
+    "description": "Arsitektur penyimpanan terdesentralisasi untuk data luar-rantai",
+    "sidebar_position": 5,
+    "tags": [
+      "gaia"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Sample Contracts",
+    "permalink": "/id/docs/clarity/sample-contracts"
+  },
+  "next": {
+    "title": "Configuration",
+    "permalink": "/id/docs/gaia/configuration"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "unversionedId": "clarity/language-types",
+  "id": "clarity/language-types",
+  "title": "Types",
+  "description": "See a detailed list of all types for the Clarity language.",
+  "source": "@site/docs/clarity/language-types.md",
+  "sourceDirName": "clarity",
+  "slug": "/clarity/language-types",
+  "permalink": "/docs/clarity/language-types",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/language-types.md",
+  "tags": [
+    {
+      "label": "clarity",
+      "permalink": "/docs/tags/clarity"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Types",
+    "description": "See a detailed list of all types for the Clarity language.",
+    "sidebar_position": 2,
+    "tags": [
+      "clarity"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Clarity Crash Course",
+    "permalink": "/docs/clarity/crash-course"
+  },
+  "next": {
+    "title": "Functions",
+    "permalink": "/docs/clarity/language-functions"
+  }
+}

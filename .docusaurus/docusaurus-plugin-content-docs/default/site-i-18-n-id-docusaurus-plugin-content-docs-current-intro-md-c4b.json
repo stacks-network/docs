@@ -1,0 +1,24 @@
+{
+  "unversionedId": "intro",
+  "id": "intro",
+  "title": "Stacks Pendahuluan",
+  "description": "Selamat datang di Dokumentasi Stacks resmi yang digerakkan oleh komunitas.",
+  "source": "@site/i18n/id/docusaurus-plugin-content-docs/current/intro.md",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/id/docs/intro",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_label": "Beranda",
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Tutorials",
+    "permalink": "/id/docs/tutorials/"
+  }
+}

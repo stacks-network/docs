@@ -1,0 +1,16 @@
+{
+  "title": "Security",
+  "description": "Deeper dives into the security and safety advantages of Clarity.",
+  "slug": "/category/security",
+  "permalink": "/docs/category/security",
+  "navigation": {
+    "previous": {
+      "title": "Keywords",
+      "permalink": "/docs/clarity/language-keywords"
+    },
+    "next": {
+      "title": "Clarity",
+      "permalink": "/docs/clarity/security/"
+    }
+  }
+}

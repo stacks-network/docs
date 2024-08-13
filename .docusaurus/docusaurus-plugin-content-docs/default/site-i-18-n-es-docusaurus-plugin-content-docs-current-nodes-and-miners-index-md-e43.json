@@ -1,0 +1,29 @@
+{
+  "unversionedId": "nodes-and-miners/index",
+  "id": "nodes-and-miners/index",
+  "title": "Nodos y Mineros",
+  "description": "Nodos y Mineros",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/nodes-and-miners/index.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/",
+  "permalink": "/es/docs/nodes-and-miners/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "title": "Nodos y Mineros",
+    "description": "Nodos y Mineros",
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Next Steps",
+    "permalink": "/es/docs/next-steps/"
+  },
+  "next": {
+    "title": "Run a node",
+    "permalink": "/es/docs/nodes-and-miners/run-a-node"
+  }
+}

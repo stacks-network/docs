@@ -1,0 +1,27 @@
+{
+  "unversionedId": "cookbook/post-conditions",
+  "id": "cookbook/post-conditions",
+  "title": "Post Conditions",
+  "description": "Working with Stacks post conditions",
+  "source": "@site/docs/cookbook/post-conditions.md",
+  "sourceDirName": "cookbook",
+  "slug": "/cookbook/post-conditions",
+  "permalink": "/docs/cookbook/post-conditions",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/cookbook/post-conditions.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Post Conditions",
+    "description": "Working with Stacks post conditions"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Parse the Data from a Bitcoin Transaction",
+    "permalink": "/docs/cookbook/parse-a-btc-tx"
+  },
+  "next": {
+    "title": "Sending Bitcoin with Hiro Wallet",
+    "permalink": "/docs/cookbook/sending-bitcoin-with-hiro-wallet"
+  }
+}

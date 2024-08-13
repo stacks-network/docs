@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/network",
+  "id": "stacks-academy/network",
+  "title": "Network",
+  "description": "Guide to the Stacks 2.0 network",
+  "source": "@site/docs/stacks-academy/network.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/network",
+  "permalink": "/docs/stacks-academy/network",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/network.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Network",
+    "description": "Guide to the Stacks 2.0 network",
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Microblocks",
+    "permalink": "/docs/stacks-academy/microblocks"
+  },
+  "next": {
+    "title": "Stacks Blockchain API",
+    "permalink": "/docs/stacks-academy/stacks-blockchain-api"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "unversionedId": "nakamoto/clarity-wasm",
+  "id": "nakamoto/clarity-wasm",
+  "title": "Clarity WASM",
+  "description": "The new Clarity WASM runtime",
+  "source": "@site/docs/nakamoto/clarity-wasm.md",
+  "sourceDirName": "nakamoto",
+  "slug": "/nakamoto/clarity-wasm",
+  "permalink": "/docs/nakamoto/clarity-wasm",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nakamoto/clarity-wasm.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Clarity WASM",
+    "description": "The new Clarity WASM runtime",
+    "sidebar_label": "Clarity WASM",
+    "sidebar_position": 5,
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Running a Signer",
+    "permalink": "/docs/nakamoto/signer"
+  },
+  "next": {
+    "title": "Neon",
+    "permalink": "/docs/nakamoto/neon"
+  }
+}

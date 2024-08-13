@@ -1,0 +1,30 @@
+{
+  "unversionedId": "contribute/index",
+  "id": "contribute/index",
+  "title": "Contribute",
+  "description": "Berkontribusi pada ekosistem Stacks.",
+  "source": "@site/i18n/id/docusaurus-plugin-content-docs/current/contribute/index.md",
+  "sourceDirName": "contribute",
+  "slug": "/contribute/",
+  "permalink": "/id/docs/contribute/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/contribute/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {
+    "title": "Contribute",
+    "description": "Berkontribusi pada ekosistem Stacks.",
+    "sidebar_position": 10,
+    "sidebar_label": "Contribute"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "More",
+    "permalink": "/id/docs/services-using-stacks/more"
+  },
+  "next": {
+    "title": "Contribute to docs",
+    "permalink": "/id/docs/contribute/docs"
+  }
+}

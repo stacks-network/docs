@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/stacking",
+  "id": "stacks-academy/stacking",
+  "title": "Stacking",
+  "description": "Introduction to the reward mechanism of Proof-of-Transfer",
+  "source": "@site/docs/stacks-academy/stacking.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/stacking",
+  "permalink": "/docs/stacks-academy/stacking",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/stacking.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 11,
+  "frontMatter": {
+    "title": "Stacking",
+    "description": "Introduction to the reward mechanism of Proof-of-Transfer",
+    "sidebar_position": 11
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Post Conditions",
+    "permalink": "/docs/stacks-academy/post-conditions"
+  },
+  "next": {
+    "title": "Testnet",
+    "permalink": "/docs/stacks-academy/testnet"
+  }
+}

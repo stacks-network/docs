@@ -1,0 +1,30 @@
+{
+  "unversionedId": "tutorials/satoshis-ridge",
+  "id": "tutorials/satoshis-ridge",
+  "title": "Satoshi's Ridge (Deep Dive)",
+  "description": "A comprehensive overview of building useful Stacks dapps",
+  "source": "@site/docs/tutorials/satoshis-ridge.md",
+  "sourceDirName": "tutorials",
+  "slug": "/tutorials/satoshis-ridge",
+  "permalink": "/docs/tutorials/satoshis-ridge",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/tutorials/satoshis-ridge.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Satoshi's Ridge (Deep Dive)",
+    "description": "A comprehensive overview of building useful Stacks dapps",
+    "sidebar_position": 2,
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Hello Stacks (Quickstart)",
+    "permalink": "/docs/tutorials/hello-stacks"
+  },
+  "next": {
+    "title": "Community Tutorials",
+    "permalink": "/docs/tutorials/community-tutorials"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/sips",
+  "id": "stacks-academy/sips",
+  "title": "SIPs",
+  "description": "SIPs",
+  "source": "@site/docs/stacks-academy/sips.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/sips",
+  "permalink": "/docs/stacks-academy/sips",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/sips.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "SIPs",
+    "description": "SIPs",
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "What is Stacks?",
+    "permalink": "/docs/stacks-academy/what-is-stacks"
+  },
+  "next": {
+    "title": "Whitepapers",
+    "permalink": "/docs/stacks-academy/whitepapers"
+  }
+}

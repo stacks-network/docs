@@ -1,0 +1,30 @@
+{
+  "unversionedId": "contribute/index",
+  "id": "contribute/index",
+  "title": "Contribuir",
+  "description": "Contribuir al ecosistema de Stacks.",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/contribute/index.md",
+  "sourceDirName": "contribute",
+  "slug": "/contribute/",
+  "permalink": "/es/docs/contribute/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/contribute/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {
+    "title": "Contribuir",
+    "description": "Contribuir al ecosistema de Stacks.",
+    "sidebar_position": 10,
+    "sidebar_label": "Contribuir"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Más",
+    "permalink": "/es/docs/services-using-stacks/more"
+  },
+  "next": {
+    "title": "Contribuir a la documentación",
+    "permalink": "/es/docs/contribute/docs"
+  }
+}

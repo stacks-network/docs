@@ -1,0 +1,29 @@
+{
+  "unversionedId": "clarity/crash-course",
+  "id": "clarity/crash-course",
+  "title": "Clarity Crash Course",
+  "description": "A quick introduction to the Clarity programming language",
+  "source": "@site/docs/clarity/crash-course.md",
+  "sourceDirName": "clarity",
+  "slug": "/clarity/crash-course",
+  "permalink": "/docs/clarity/crash-course",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/crash-course.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Clarity Crash Course",
+    "description": "A quick introduction to the Clarity programming language",
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Clarity",
+    "permalink": "/docs/clarity/"
+  },
+  "next": {
+    "title": "Types",
+    "permalink": "/docs/clarity/language-types"
+  }
+}

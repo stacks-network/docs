@@ -1,0 +1,23 @@
+{
+  "unversionedId": "glossary/index",
+  "id": "glossary/index",
+  "title": "Glossary",
+  "description": "A comprehensive list of terms used within the ecosystem.",
+  "source": "@site/docs/glossary/index.md",
+  "sourceDirName": "glossary",
+  "slug": "/glossary/",
+  "permalink": "/docs/glossary/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/glossary/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Glossary",
+    "description": "A comprehensive list of terms used within the ecosystem."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Contribute with translations",
+    "permalink": "/docs/contribute/translations"
+  }
+}

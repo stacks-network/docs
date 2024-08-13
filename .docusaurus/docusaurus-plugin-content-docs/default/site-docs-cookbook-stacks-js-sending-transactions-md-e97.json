@@ -1,0 +1,27 @@
+{
+  "unversionedId": "cookbook/stacks-js-sending-transactions",
+  "id": "cookbook/stacks-js-sending-transactions",
+  "title": "Sending Transactions with Stacks.js",
+  "description": "Sending transactions with Stacks.js",
+  "source": "@site/docs/cookbook/stacks-js-sending-transactions.md",
+  "sourceDirName": "cookbook",
+  "slug": "/cookbook/stacks-js-sending-transactions",
+  "permalink": "/docs/cookbook/stacks-js-sending-transactions",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/cookbook/stacks-js-sending-transactions.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Sending Transactions with Stacks.js",
+    "description": "Sending transactions with Stacks.js"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Authentication with Stacks.js",
+    "permalink": "/docs/cookbook/stacks-js-auth"
+  },
+  "next": {
+    "title": "Verifying a BTC Transaction was Mined",
+    "permalink": "/docs/cookbook/verifying-a-btc-tx-was-mined"
+  }
+}

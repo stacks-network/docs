@@ -1,0 +1,37 @@
+{
+  "unversionedId": "nodes-and-miners/digitalocean",
+  "id": "nodes-and-miners/digitalocean",
+  "title": "Run a Node with Digital Ocean",
+  "description": "A guide to setup Stacks on DigitalOcean",
+  "source": "@site/docs/nodes-and-miners/digitalocean.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/digitalocean",
+  "permalink": "/docs/nodes-and-miners/digitalocean",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/digitalocean.md",
+  "tags": [
+    {
+      "label": "tutorial",
+      "permalink": "/docs/tags/tutorial"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Run a Node with Digital Ocean",
+    "description": "A guide to setup Stacks on DigitalOcean",
+    "sidebar_position": 2,
+    "tags": [
+      "tutorial"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Run a Node with Docker",
+    "permalink": "/docs/nodes-and-miners/run-a-node"
+  },
+  "next": {
+    "title": "Run a Node with a Hosted Provider",
+    "permalink": "/docs/nodes-and-miners/hosted-nodes"
+  }
+}

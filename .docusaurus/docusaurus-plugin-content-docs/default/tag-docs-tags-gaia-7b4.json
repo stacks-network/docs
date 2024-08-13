@@ -1,0 +1,26 @@
+{
+  "label": "gaia",
+  "permalink": "/docs/tags/gaia",
+  "allTagsPath": "/docs/tags",
+  "count": 3,
+  "items": [
+    {
+      "id": "gaia/gaia-on-ec2",
+      "title": "Amazon EC2",
+      "description": "Use a template to deploy a Gaia hub on Amazon EC2",
+      "permalink": "/docs/gaia/gaia-on-ec2"
+    },
+    {
+      "id": "gaia/gaia",
+      "title": "Gaia",
+      "description": "Decentralized storage architecture for off-chain data",
+      "permalink": "/docs/gaia/"
+    },
+    {
+      "id": "gaia/setup-linux",
+      "title": "Linux",
+      "description": "Steps to setup a GAIA hub on a Linux server (fresh install). This example is using Debian, but should work on any Linux distribution. It uses docker compose in the background.",
+      "permalink": "/docs/gaia/setup-linux"
+    }
+  ]
+}

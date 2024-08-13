@@ -1,0 +1,37 @@
+{
+  "unversionedId": "nodes-and-miners/miner-testnet",
+  "id": "nodes-and-miners/miner-testnet",
+  "title": "Menambang token Stacks testnet",
+  "description": "Menyiapkan dan menjalankan penambang di testnet Stacks 2.0",
+  "source": "@site/i18n/id/docusaurus-plugin-content-docs/current/nodes-and-miners/miner-testnet.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/miner-testnet",
+  "permalink": "/id/docs/nodes-and-miners/miner-testnet",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/miner-testnet.md",
+  "tags": [
+    {
+      "label": "tutorial",
+      "permalink": "/id/docs/tags/tutorial"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Menambang token Stacks testnet",
+    "description": "Menyiapkan dan menjalankan penambang di testnet Stacks 2.0",
+    "sidebar_position": 4,
+    "tags": [
+      "tutorial"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Stacks di DigitalOcean",
+    "permalink": "/id/docs/nodes-and-miners/digitalocean"
+  },
+  "next": {
+    "title": "Run a Node with QuickNode",
+    "permalink": "/id/docs/nodes-and-miners/quicknode"
+  }
+}

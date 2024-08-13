@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/whitepapers",
+  "id": "stacks-academy/whitepapers",
+  "title": "Whitepapers",
+  "description": "Documents detailing how different pieces of Stacks works",
+  "source": "@site/docs/stacks-academy/whitepapers.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/whitepapers",
+  "permalink": "/docs/stacks-academy/whitepapers",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/whitepapers.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Whitepapers",
+    "description": "Documents detailing how different pieces of Stacks works",
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "SIPs",
+    "permalink": "/docs/stacks-academy/sips"
+  },
+  "next": {
+    "title": "Bitcoin Connection",
+    "permalink": "/docs/stacks-academy/btc-connection"
+  }
+}

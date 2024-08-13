@@ -1,0 +1,27 @@
+{
+  "unversionedId": "gaia/configuration",
+  "id": "gaia/configuration",
+  "title": "Configuration",
+  "description": "Configuring Gaia Hub",
+  "source": "@site/docs/gaia/configuration.md",
+  "sourceDirName": "gaia",
+  "slug": "/gaia/configuration",
+  "permalink": "/docs/gaia/configuration",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/gaia/configuration.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Configuration",
+    "description": "Configuring Gaia Hub"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Gaia",
+    "permalink": "/docs/gaia/"
+  },
+  "next": {
+    "title": "Deploy Gaia Hub",
+    "permalink": "/docs/gaia/deploy-gaia-hub"
+  }
+}

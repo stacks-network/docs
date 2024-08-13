@@ -1,0 +1,37 @@
+{
+  "unversionedId": "gaia/gaia",
+  "id": "gaia/gaia",
+  "title": "Gaia",
+  "description": "Decentralized storage architecture for off-chain data",
+  "source": "@site/docs/gaia/gaia.md",
+  "sourceDirName": "gaia",
+  "slug": "/gaia/",
+  "permalink": "/docs/gaia/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/gaia/gaia.md",
+  "tags": [
+    {
+      "label": "gaia",
+      "permalink": "/docs/tags/gaia"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Gaia",
+    "description": "Decentralized storage architecture for off-chain data",
+    "sidebar_position": 6,
+    "tags": [
+      "gaia"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Miner costs and fees",
+    "permalink": "/docs/nodes-and-miners/miner-costs-and-fees"
+  },
+  "next": {
+    "title": "Configuration",
+    "permalink": "/docs/gaia/configuration"
+  }
+}

@@ -1,0 +1,542 @@
+{
+  "/__docusaurus/debug-786": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-867-73e"
+    }
+  },
+  "/__docusaurus/debug/config-aa8": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-867-73e"
+    }
+  },
+  "/__docusaurus/debug/content-13c": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-867-73e"
+    },
+    "allContent": "allContent---docusaurus-debug-content-246-9aa"
+  },
+  "/__docusaurus/debug/globalData-1b1": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-867-73e"
+    }
+  },
+  "/__docusaurus/debug/metadata-bf3": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-867-73e"
+    }
+  },
+  "/__docusaurus/debug/registry-94a": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-867-73e"
+    }
+  },
+  "/__docusaurus/debug/routes-616": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-867-73e"
+    }
+  },
+  "/blog-78e": {
+    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+    "__context": {
+      "plugin": "plugin---blog-92-d-c2d"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-766-e3c"
+      },
+      {
+        "content": "content---blogf-4-f-cd7"
+      },
+      {
+        "content": "content---blog-871-381"
+      },
+      {
+        "content": "content---blog-925-e00"
+      }
+    ],
+    "metadata": "metadata---blogb-2-b-df1"
+  },
+  "/blog/archive-511": {
+    "__comp": "__comp---theme-blog-archive-page-9-e-4-1d8",
+    "__context": {
+      "plugin": "plugin---blog-92-d-c2d"
+    },
+    "archive": "archive---blog-archiveb-2-f-393"
+  },
+  "/blog/first-blog-post-bb7": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-92-d-c2d"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-first-blog-poste-27-4a1"
+  },
+  "/blog/long-blog-post-e17": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-92-d-c2d"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-long-blog-post-736-bc7"
+  },
+  "/blog/mdx-blog-post-a16": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-92-d-c2d"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-mdx-blog-post-593-37b"
+  },
+  "/blog/tags-65e": {
+    "__comp": "__comp---theme-blog-tags-list-page-01-a-d0b",
+    "__context": {
+      "plugin": "plugin---blog-92-d-c2d"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "tags": "tags---blog-tagsa-70-da2"
+  },
+  "/blog/tags/docusaurus-d05": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-92-d-c2d"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-766-e3c"
+      },
+      {
+        "content": "content---blogf-4-f-cd7"
+      },
+      {
+        "content": "content---blog-871-381"
+      },
+      {
+        "content": "content---blog-925-e00"
+      }
+    ],
+    "tag": "tag---blog-tags-docusaurusa-80-728",
+    "listMetadata": "listMetadata---blog-tags-docusaurus-608-c09"
+  },
+  "/blog/tags/facebook-44f": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-92-d-c2d"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-766-e3c"
+      }
+    ],
+    "tag": "tag---blog-tags-facebook-031-c52",
+    "listMetadata": "listMetadata---blog-tags-facebook-096-d31"
+  },
+  "/blog/tags/hello-9a2": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-92-d-c2d"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-766-e3c"
+      },
+      {
+        "content": "content---blog-871-381"
+      }
+    ],
+    "tag": "tag---blog-tags-hello-30-a-bed",
+    "listMetadata": "listMetadata---blog-tags-hello-664-70a"
+  },
+  "/blog/tags/hola-a14": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-92-d-c2d"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-925-e00"
+      }
+    ],
+    "tag": "tag---blog-tags-holae-16-18a",
+    "listMetadata": "listMetadata---blog-tags-hola-4-c-9-a24"
+  },
+  "/blog/welcome-ddf": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-92-d-c2d"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-welcomed-9-f-ffb"
+  },
+  "/docs/tags-b9e": {
+    "__comp": "__comp---theme-doc-tags-list-page-372-89e",
+    "__context": {
+      "plugin": "plugin---docs-tags-2-fd-200"
+    },
+    "tags": "tags---docs-tags-559-5e5"
+  },
+  "/docs/tags/clarity-6c5": {
+    "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "__context": {
+      "plugin": "plugin---docs-tags-2-fd-200"
+    },
+    "tag": "tag---docs-tags-clarity-1-dc-4c7"
+  },
+  "/docs/tags/gaia-7c0": {
+    "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "__context": {
+      "plugin": "plugin---docs-tags-2-fd-200"
+    },
+    "tag": "tag---docs-tags-gaia-3-f-8-eaa"
+  },
+  "/docs/tags/tutorial-8a2": {
+    "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "__context": {
+      "plugin": "plugin---docs-tags-2-fd-200"
+    },
+    "tag": "tag---docs-tags-tutorialcf-6-93d"
+  },
+  "/search-4f4": {
+    "__comp": "__comp---theme-search-page-1-a-4-d6f",
+    "__context": {
+      "plugin": "plugin---search-7-f-0-af8"
+    }
+  },
+  "/docs-f6f": {
+    "__comp": "__comp---theme-doc-page-1-be-9be",
+    "__context": {
+      "plugin": "plugin---docs-tags-2-fd-200"
+    },
+    "versionMetadata": "versionMetadata---docs-935-398"
+  },
+  "/docs/category/noteworthy-contracts-ae0": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-noteworthy-contracts-52-a-cec"
+  },
+  "/docs/category/services-using-stacks-355": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-services-using-stacks-418-a74"
+  },
+  "/docs/clarity/-018": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clarity-7-ea-4bc"
+  },
+  "/docs/clarity/crash-course-e55": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clarity-crash-coursebbe-027"
+  },
+  "/docs/clarity/language-functions-fac": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clarity-language-functions-272-74d"
+  },
+  "/docs/clarity/language-keywords-214": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clarity-language-keywords-8-c-1-aa7"
+  },
+  "/docs/clarity/language-types-4aa": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clarity-language-types-2-ec-315"
+  },
+  "/docs/clarity/noteworthy-contracts/bns-contract-12b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clarity-noteworthy-contracts-bns-contract-034-56f"
+  },
+  "/docs/clarity/noteworthy-contracts/stacking-contract-67f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clarity-noteworthy-contracts-stacking-contractfed-655"
+  },
+  "/docs/clarity/noteworthy-contracts/xbtc-eda": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clarity-noteworthy-contracts-xbtc-29-d-a95"
+  },
+  "/docs/clarity/sample-contracts-382": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clarity-sample-contracts-561-e1d"
+  },
+  "/docs/clarity/security/-41f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clarity-security-9-b-0-73e"
+  },
+  "/docs/clarity/security/decidable-f05": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clarity-security-decidable-515-c11"
+  },
+  "/docs/contribute/-81a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-contribute-833-2ca"
+  },
+  "/docs/contribute/docs-d33": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-contribute-docs-23-e-2d7"
+  },
+  "/docs/contribute/translations-516": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-contribute-translations-47-c-937"
+  },
+  "/docs/cookbook/-ec1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-cookbook-891-db3"
+  },
+  "/docs/cookbook/creating-an-ft-e62": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-cookbook-creating-an-ft-344-3c9"
+  },
+  "/docs/cookbook/creating-an-nft-67a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-cookbook-creating-an-nftd-56-088"
+  },
+  "/docs/cookbook/get-sats-per-stx-0f5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-cookbook-get-sats-per-stx-1-bf-4d9"
+  },
+  "/docs/cookbook/parse-a-btc-tx-28c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-cookbook-parse-a-btc-tx-1-d-2-d36"
+  },
+  "/docs/cookbook/post-conditions-d5e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-cookbook-post-conditionsd-84-7ad"
+  },
+  "/docs/cookbook/sending-bitcoin-with-hiro-wallet-bc0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-cookbook-sending-bitcoin-with-hiro-wallet-2-a-7-7ae"
+  },
+  "/docs/cookbook/stacks-js-auth-343": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-cookbook-stacks-js-autha-0-a-8d3"
+  },
+  "/docs/cookbook/stacks-js-sending-transactions-a7f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-cookbook-stacks-js-sending-transactionse-97-a36"
+  },
+  "/docs/cookbook/verifying-a-btc-tx-was-mined-bbf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-cookbook-verifying-a-btc-tx-was-mined-783-1ec"
+  },
+  "/docs/gaia/-b3f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-gaia-306-a66"
+  },
+  "/docs/gaia/configuration-b3d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-gaia-configuration-2-a-4-1aa"
+  },
+  "/docs/gaia/deploy-gaia-hub-3a2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-gaia-deploy-gaia-hub-081-b06"
+  },
+  "/docs/gaia/gaia-on-ec2-ff0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-gaia-gaia-on-ec-279-d-1db"
+  },
+  "/docs/gaia/setup-linux-cce": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-gaia-setup-linuxabf-40c"
+  },
+  "/docs/gaia/setup-mac-1a8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-gaia-setup-mac-2-db-a47"
+  },
+  "/docs/glossary/-9ea": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-glossary-a-6-e-643"
+  },
+  "/docs/intro-aed": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-intro-0-e-3-be1"
+  },
+  "/docs/nakamoto/-9b9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nakamoto-c-79-269"
+  },
+  "/docs/nakamoto/bitcoin-mev-mitigation-6fc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nakamoto-bitcoin-mev-mitigationded-bc0"
+  },
+  "/docs/nakamoto/block-production-bd2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nakamoto-block-production-3-da-318"
+  },
+  "/docs/nakamoto/clarity-wasm-569": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nakamoto-clarity-wasmef-8-8a4"
+  },
+  "/docs/nakamoto/neon-4c5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nakamoto-neon-584-403"
+  },
+  "/docs/nakamoto/signer-eb7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nakamoto-signer-1-e-1-232"
+  },
+  "/docs/next-steps/-c6b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-next-steps-82-a-d9a"
+  },
+  "/docs/nodes-and-miners/-8e2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nodes-and-miners-b-63-058"
+  },
+  "/docs/nodes-and-miners/digitalocean-7c4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nodes-and-miners-digitalocean-2-e-8-359"
+  },
+  "/docs/nodes-and-miners/hosted-nodes-238": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nodes-and-miners-hosted-nodes-30-d-cd7"
+  },
+  "/docs/nodes-and-miners/miner-costs-and-fees-942": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nodes-and-miners-miner-costs-and-feesb-81-607"
+  },
+  "/docs/nodes-and-miners/miner-mainnet-8a9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nodes-and-miners-miner-mainnet-719-b1c"
+  },
+  "/docs/nodes-and-miners/miner-testnet-060": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nodes-and-miners-miner-testnetc-64-276"
+  },
+  "/docs/nodes-and-miners/quicknode-ace": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nodes-and-miners-quicknode-60-e-cf7"
+  },
+  "/docs/nodes-and-miners/run-a-node-b2d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nodes-and-miners-run-a-node-535-ae9"
+  },
+  "/docs/nodes-and-miners/stacks-node-configuration-1f4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nodes-and-miners-stacks-node-configuration-96-d-333"
+  },
+  "/docs/nodes-and-miners/verify-miner-f75": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-nodes-and-miners-verify-miner-4-f-3-04d"
+  },
+  "/docs/services-using-stacks/defi-7b9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-services-using-stacks-defi-942-704"
+  },
+  "/docs/services-using-stacks/more-502": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-services-using-stacks-mored-6-d-0e0"
+  },
+  "/docs/services-using-stacks/nft-183": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-services-using-stacks-nft-733-0b8"
+  },
+  "/docs/services-using-stacks/stacks-info-sites-191": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-services-using-stacks-stacks-info-sites-634-d15"
+  },
+  "/docs/services-using-stacks/wallets-ead": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-services-using-stacks-wallets-9-fe-0d4"
+  },
+  "/docs/stacks-academy/-5a3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-5-f-3-84b"
+  },
+  "/docs/stacks-academy/accounts-e46": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-accounts-15-c-203"
+  },
+  "/docs/stacks-academy/authentication-30a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-authenticationf-5-a-f61"
+  },
+  "/docs/stacks-academy/bns-168": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-bnsc-97-856"
+  },
+  "/docs/stacks-academy/btc-connection-09b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-btc-connection-7-ce-b0d"
+  },
+  "/docs/stacks-academy/microblocks-5cf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-microblocksae-5-5df"
+  },
+  "/docs/stacks-academy/mining-099": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-mining-6-f-4-c0b"
+  },
+  "/docs/stacks-academy/network-19f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-networkdb-4-223"
+  },
+  "/docs/stacks-academy/post-conditions-6df": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-post-conditions-1-b-4-8d3"
+  },
+  "/docs/stacks-academy/proof-of-transfer-876": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-proof-of-transfer-36-a-e8e"
+  },
+  "/docs/stacks-academy/sips-5bf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-sipse-58-5db"
+  },
+  "/docs/stacks-academy/stacking-029": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-stackingd-80-977"
+  },
+  "/docs/stacks-academy/stacks-blockchain-api-cee": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-stacks-blockchain-apiab-4-a2e"
+  },
+  "/docs/stacks-academy/technical-specs-b7a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-technical-specs-5-a-1-66c"
+  },
+  "/docs/stacks-academy/testnet-05d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-testnet-72-a-3e1"
+  },
+  "/docs/stacks-academy/transactions-049": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-transactions-858-931"
+  },
+  "/docs/stacks-academy/what-is-stacks-f7a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-what-is-stacksff-0-a5a"
+  },
+  "/docs/stacks-academy/whitepapers-191": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-stacks-academy-whitepapers-684-fda"
+  },
+  "/docs/tutorials/-159": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-fea-ed1"
+  },
+  "/docs/tutorials/community-tutorials-86f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-community-tutorials-1-bb-1ad"
+  },
+  "/docs/tutorials/hello-stacks-a64": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-hello-stacks-7-cd-3fe"
+  },
+  "/docs/tutorials/satoshis-ridge-d44": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorials-satoshis-ridgea-14-c8c"
+  },
+  "/-de3": {
+    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
+    "__context": {
+      "plugin": "plugin---0-ff-b6a"
+    },
+    "config": "config---5-e-9-4f3"
+  }
+}

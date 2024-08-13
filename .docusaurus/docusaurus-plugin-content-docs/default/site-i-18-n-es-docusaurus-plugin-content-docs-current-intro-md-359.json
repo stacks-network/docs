@@ -1,0 +1,24 @@
+{
+  "unversionedId": "intro",
+  "id": "intro",
+  "title": "Introducción de la documentación de Stacks",
+  "description": "Bienvenido a la documentación oficial de Stacks impulsada por la comunidad.",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/intro.md",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/es/docs/intro",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_label": "Inicio",
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Tutorials",
+    "permalink": "/es/docs/tutorials/"
+  }
+}

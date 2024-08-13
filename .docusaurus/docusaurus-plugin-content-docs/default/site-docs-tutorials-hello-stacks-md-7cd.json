@@ -1,0 +1,29 @@
+{
+  "unversionedId": "tutorials/hello-stacks",
+  "id": "tutorials/hello-stacks",
+  "title": "Hello Stacks (Quickstart)",
+  "description": "A quick introduction to building dapps with Stacks",
+  "source": "@site/docs/tutorials/hello-stacks.md",
+  "sourceDirName": "tutorials",
+  "slug": "/tutorials/hello-stacks",
+  "permalink": "/docs/tutorials/hello-stacks",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/tutorials/hello-stacks.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Hello Stacks (Quickstart)",
+    "description": "A quick introduction to building dapps with Stacks",
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tutorials",
+    "permalink": "/docs/tutorials/"
+  },
+  "next": {
+    "title": "Satoshi's Ridge (Deep Dive)",
+    "permalink": "/docs/tutorials/satoshis-ridge"
+  }
+}

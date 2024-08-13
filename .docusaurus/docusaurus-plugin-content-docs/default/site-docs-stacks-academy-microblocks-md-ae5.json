@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/microblocks",
+  "id": "stacks-academy/microblocks",
+  "title": "Microblocks",
+  "description": "Guide to Stacks Microblocks",
+  "source": "@site/docs/stacks-academy/microblocks.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/microblocks",
+  "permalink": "/docs/stacks-academy/microblocks",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/microblocks.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Microblocks",
+    "description": "Guide to Stacks Microblocks",
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Mining",
+    "permalink": "/docs/stacks-academy/mining"
+  },
+  "next": {
+    "title": "Network",
+    "permalink": "/docs/stacks-academy/network"
+  }
+}

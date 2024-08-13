@@ -1,0 +1,30 @@
+{
+  "unversionedId": "cookbook/index",
+  "id": "cookbook/index",
+  "title": "Cookbook",
+  "description": "Code snippets and examples for building Stacks apps",
+  "source": "@site/docs/cookbook/index.md",
+  "sourceDirName": "cookbook",
+  "slug": "/cookbook/",
+  "permalink": "/docs/cookbook/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/cookbook/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "title": "Cookbook",
+    "description": "Code snippets and examples for building Stacks apps",
+    "sidebar_label": "Cookbook",
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "MacOS",
+    "permalink": "/docs/gaia/setup-mac"
+  },
+  "next": {
+    "title": "Creating a Fungible Token",
+    "permalink": "/docs/cookbook/creating-an-ft"
+  }
+}

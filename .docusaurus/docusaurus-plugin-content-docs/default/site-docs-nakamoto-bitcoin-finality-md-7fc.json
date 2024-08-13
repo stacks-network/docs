@@ -1,0 +1,30 @@
+{
+  "unversionedId": "nakamoto/bitcoin-finality",
+  "id": "nakamoto/bitcoin-finality",
+  "title": "Bitcoin Finality",
+  "description": "How Nakamoto unlocks 100% Bitcoin finality",
+  "source": "@site/docs/nakamoto/bitcoin-finality.md",
+  "sourceDirName": "nakamoto",
+  "slug": "/nakamoto/bitcoin-finality",
+  "permalink": "/docs/nakamoto/bitcoin-finality",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nakamoto/bitcoin-finality.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "Bitcoin Finality",
+    "description": "How Nakamoto unlocks 100% Bitcoin finality",
+    "sidebar_label": "Bitcoin Finality",
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Block Production",
+    "permalink": "/docs/nakamoto/fast-blocks"
+  },
+  "next": {
+    "title": "Bitcoin MEV Mitigation",
+    "permalink": "/docs/nakamoto/bitcoin-mev-mitigation"
+  }
+}

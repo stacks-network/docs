@@ -1,0 +1,27 @@
+{
+  "unversionedId": "cookbook/stacks-js-auth",
+  "id": "cookbook/stacks-js-auth",
+  "title": "Authentication with Stacks.js",
+  "description": "Authenticating a user with Stacks.js",
+  "source": "@site/docs/cookbook/stacks-js-auth.md",
+  "sourceDirName": "cookbook",
+  "slug": "/cookbook/stacks-js-auth",
+  "permalink": "/docs/cookbook/stacks-js-auth",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/cookbook/stacks-js-auth.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Authentication with Stacks.js",
+    "description": "Authenticating a user with Stacks.js"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Sending Bitcoin with Hiro Wallet",
+    "permalink": "/docs/cookbook/sending-bitcoin-with-hiro-wallet"
+  },
+  "next": {
+    "title": "Sending Transactions with Stacks.js",
+    "permalink": "/docs/cookbook/stacks-js-sending-transactions"
+  }
+}

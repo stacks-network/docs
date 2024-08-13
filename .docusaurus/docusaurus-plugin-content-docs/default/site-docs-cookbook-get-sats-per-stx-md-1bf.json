@@ -1,0 +1,27 @@
+{
+  "unversionedId": "cookbook/get-sats-per-stx",
+  "id": "cookbook/get-sats-per-stx",
+  "title": "Get Sats per STX Price",
+  "description": "Use built-in Clarity functions to retrieve the on-chain exchange rate between BTC and STX",
+  "source": "@site/docs/cookbook/get-sats-per-stx.md",
+  "sourceDirName": "cookbook",
+  "slug": "/cookbook/get-sats-per-stx",
+  "permalink": "/docs/cookbook/get-sats-per-stx",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/cookbook/get-sats-per-stx.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Get Sats per STX Price",
+    "description": "Use built-in Clarity functions to retrieve the on-chain exchange rate between BTC and STX"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating an NFT",
+    "permalink": "/docs/cookbook/creating-an-nft"
+  },
+  "next": {
+    "title": "Parse the Data from a Bitcoin Transaction",
+    "permalink": "/docs/cookbook/parse-a-btc-tx"
+  }
+}

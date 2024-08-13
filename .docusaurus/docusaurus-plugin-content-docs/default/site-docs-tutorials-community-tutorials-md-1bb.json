@@ -1,0 +1,27 @@
+{
+  "unversionedId": "tutorials/community-tutorials",
+  "id": "tutorials/community-tutorials",
+  "title": "Community Tutorials",
+  "description": "Tutorials created by various people in the Stacks community",
+  "source": "@site/docs/tutorials/community-tutorials.md",
+  "sourceDirName": "tutorials",
+  "slug": "/tutorials/community-tutorials",
+  "permalink": "/docs/tutorials/community-tutorials",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/tutorials/community-tutorials.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Community Tutorials",
+    "description": "Tutorials created by various people in the Stacks community"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Satoshi's Ridge (Deep Dive)",
+    "permalink": "/docs/tutorials/satoshis-ridge"
+  },
+  "next": {
+    "title": "Stacks Academy",
+    "permalink": "/docs/stacks-academy/"
+  }
+}

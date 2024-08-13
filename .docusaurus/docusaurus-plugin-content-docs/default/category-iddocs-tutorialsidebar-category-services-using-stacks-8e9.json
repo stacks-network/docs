@@ -1,0 +1,16 @@
+{
+  "title": "Services using Stacks",
+  "description": "An 'always incomplete' list of services that use Stacks.",
+  "slug": "/category/services-using-stacks",
+  "permalink": "/id/docs/category/services-using-stacks",
+  "navigation": {
+    "previous": {
+      "title": "Miner costs and fees",
+      "permalink": "/id/docs/nodes-and-miners/miner-costs-and-fees"
+    },
+    "next": {
+      "title": "Situs info Stacks",
+      "permalink": "/id/docs/services-using-stacks/stacks-info-sites"
+    }
+  }
+}

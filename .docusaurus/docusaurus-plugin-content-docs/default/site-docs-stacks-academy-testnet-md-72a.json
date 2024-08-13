@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/testnet",
+  "id": "stacks-academy/testnet",
+  "title": "Testnet",
+  "description": "Test your smart contracts and apps",
+  "source": "@site/docs/stacks-academy/testnet.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/testnet",
+  "permalink": "/docs/stacks-academy/testnet",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/testnet.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 12,
+  "frontMatter": {
+    "title": "Testnet",
+    "description": "Test your smart contracts and apps",
+    "sidebar_position": 12
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Stacking",
+    "permalink": "/docs/stacks-academy/stacking"
+  },
+  "next": {
+    "title": "Technical Specifications",
+    "permalink": "/docs/stacks-academy/technical-specs"
+  }
+}

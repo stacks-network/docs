@@ -1,0 +1,29 @@
+{
+  "unversionedId": "nodes-and-miners/verify-miner",
+  "id": "nodes-and-miners/verify-miner",
+  "title": "Verify Miner",
+  "description": "Verify node is operating as miner",
+  "source": "@site/docs/nodes-and-miners/verify-miner.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/verify-miner",
+  "permalink": "/docs/nodes-and-miners/verify-miner",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/verify-miner.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "title": "Verify Miner",
+    "description": "Verify node is operating as miner",
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Mine mainnet Stacks tokens",
+    "permalink": "/docs/nodes-and-miners/miner-mainnet"
+  },
+  "next": {
+    "title": "Miner costs and fees",
+    "permalink": "/docs/nodes-and-miners/miner-costs-and-fees"
+  }
+}
