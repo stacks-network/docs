@@ -1,0 +1,35 @@
+{
+  "unversionedId": "gaia/setup-mac",
+  "id": "gaia/setup-mac",
+  "title": "MacOS",
+  "description": "MacOS for local testing/development",
+  "source": "@site/docs/gaia/setup-mac.md",
+  "sourceDirName": "gaia",
+  "slug": "/gaia/setup-mac",
+  "permalink": "/docs/gaia/setup-mac",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/gaia/setup-mac.md",
+  "tags": [
+    {
+      "label": "tutorial",
+      "permalink": "/docs/tags/tutorial"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "MacOS",
+    "description": "MacOS for local testing/development",
+    "tags": [
+      "tutorial"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Linux",
+    "permalink": "/docs/gaia/setup-linux"
+  },
+  "next": {
+    "title": "Cookbook",
+    "permalink": "/docs/cookbook/"
+  }
+}

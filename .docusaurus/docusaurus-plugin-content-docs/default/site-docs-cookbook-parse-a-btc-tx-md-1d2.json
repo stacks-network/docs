@@ -1,0 +1,27 @@
+{
+  "unversionedId": "cookbook/parse-a-btc-tx",
+  "id": "cookbook/parse-a-btc-tx",
+  "title": "Parse the Data from a Bitcoin Transaction",
+  "description": "Use the Clarity-Bitcoin library to parse a Bitcoin transaction",
+  "source": "@site/docs/cookbook/parse-a-btc-tx.md",
+  "sourceDirName": "cookbook",
+  "slug": "/cookbook/parse-a-btc-tx",
+  "permalink": "/docs/cookbook/parse-a-btc-tx",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/cookbook/parse-a-btc-tx.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Parse the Data from a Bitcoin Transaction",
+    "description": "Use the Clarity-Bitcoin library to parse a Bitcoin transaction"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Get Sats per STX Price",
+    "permalink": "/docs/cookbook/get-sats-per-stx"
+  },
+  "next": {
+    "title": "Post Conditions",
+    "permalink": "/docs/cookbook/post-conditions"
+  }
+}

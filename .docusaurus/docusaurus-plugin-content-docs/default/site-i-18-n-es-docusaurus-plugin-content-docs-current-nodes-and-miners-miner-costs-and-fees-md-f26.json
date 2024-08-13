@@ -1,0 +1,29 @@
+{
+  "unversionedId": "nodes-and-miners/miner-costs-and-fees",
+  "id": "nodes-and-miners/miner-costs-and-fees",
+  "title": "Miner costs and fees",
+  "description": "Miner Cost and Fee Estimation",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/nodes-and-miners/miner-costs-and-fees.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/miner-costs-and-fees",
+  "permalink": "/es/docs/nodes-and-miners/miner-costs-and-fees",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/miner-costs-and-fees.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "title": "Miner costs and fees",
+    "description": "Miner Cost and Fee Estimation",
+    "sidebar_position": 8
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Verify Miner",
+    "permalink": "/es/docs/nodes-and-miners/verify-miner"
+  },
+  "next": {
+    "title": "Services using Stacks",
+    "permalink": "/es/docs/category/services-using-stacks"
+  }
+}

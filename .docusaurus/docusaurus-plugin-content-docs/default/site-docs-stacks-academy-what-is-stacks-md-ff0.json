@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/what-is-stacks",
+  "id": "stacks-academy/what-is-stacks",
+  "title": "What is Stacks?",
+  "description": "An introduction to Stacks",
+  "source": "@site/docs/stacks-academy/what-is-stacks.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/what-is-stacks",
+  "permalink": "/docs/stacks-academy/what-is-stacks",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/what-is-stacks.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "What is Stacks?",
+    "description": "An introduction to Stacks",
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Stacks Academy",
+    "permalink": "/docs/stacks-academy/"
+  },
+  "next": {
+    "title": "SIPs",
+    "permalink": "/docs/stacks-academy/sips"
+  }
+}

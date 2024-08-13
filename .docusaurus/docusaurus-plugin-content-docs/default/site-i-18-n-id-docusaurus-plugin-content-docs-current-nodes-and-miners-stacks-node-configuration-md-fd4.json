@@ -1,0 +1,29 @@
+{
+  "unversionedId": "nodes-and-miners/stacks-node-configuration",
+  "id": "nodes-and-miners/stacks-node-configuration",
+  "title": "Konfigurasi Noda Stacks",
+  "description": "Parameter konfigurasi dan opsi untuk biner noda-stacks",
+  "source": "@site/i18n/id/docusaurus-plugin-content-docs/current/nodes-and-miners/stacks-node-configuration.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/stacks-node-configuration",
+  "permalink": "/id/docs/nodes-and-miners/stacks-node-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/stacks-node-configuration.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Konfigurasi Noda Stacks",
+    "description": "Parameter konfigurasi dan opsi untuk biner noda-stacks",
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Menambang token Stacks mainnet",
+    "permalink": "/id/docs/nodes-and-miners/miner-mainnet"
+  },
+  "next": {
+    "title": "Verify Miner",
+    "permalink": "/id/docs/nodes-and-miners/verify-miner"
+  }
+}

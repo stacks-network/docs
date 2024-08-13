@@ -1,0 +1,24 @@
+{
+  "unversionedId": "clarity/security/raymond_smullyan_on_undecidability",
+  "id": "clarity/security/raymond_smullyan_on_undecidability",
+  "title": "raymond_smullyan_on_undecidability",
+  "description": "A selection of Raymond Smullyan’s intuition on undecidability",
+  "source": "@site/docs/clarity/security/raymond_smullyan_on_undecidability.md",
+  "sourceDirName": "clarity/security",
+  "slug": "/clarity/security/raymond_smullyan_on_undecidability",
+  "permalink": "/docs/clarity/security/raymond_smullyan_on_undecidability",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/security/raymond_smullyan_on_undecidability.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "non-turing-complete",
+    "permalink": "/docs/clarity/security/non-turing-complete"
+  },
+  "next": {
+    "title": "Non-Turing Complete",
+    "permalink": "/docs/clarity/security/uncomputable_problems"
+  }
+}

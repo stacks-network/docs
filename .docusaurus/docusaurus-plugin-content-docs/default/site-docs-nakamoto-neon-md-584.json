@@ -1,0 +1,30 @@
+{
+  "unversionedId": "nakamoto/neon",
+  "id": "nakamoto/neon",
+  "title": "Neon",
+  "description": "How to get started with the Neon Nakamoto testnet",
+  "source": "@site/docs/nakamoto/neon.md",
+  "sourceDirName": "nakamoto",
+  "slug": "/nakamoto/neon",
+  "permalink": "/docs/nakamoto/neon",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nakamoto/neon.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Neon",
+    "description": "How to get started with the Neon Nakamoto testnet",
+    "sidebar_label": "Neon",
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Clarity WASM",
+    "permalink": "/docs/nakamoto/clarity-wasm"
+  },
+  "next": {
+    "title": "Tutorials",
+    "permalink": "/docs/tutorials/"
+  }
+}

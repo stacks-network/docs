@@ -1,0 +1,30 @@
+{
+  "unversionedId": "nakamoto/index",
+  "id": "nakamoto/index",
+  "title": "Nakamoto",
+  "description": "Overview of the Nakamoto release and how to use it",
+  "source": "@site/docs/nakamoto/index.md",
+  "sourceDirName": "nakamoto",
+  "slug": "/nakamoto/",
+  "permalink": "/docs/nakamoto/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nakamoto/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Nakamoto",
+    "description": "Overview of the Nakamoto release and how to use it",
+    "sidebar_label": "Nakamoto",
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Start Here",
+    "permalink": "/docs/intro"
+  },
+  "next": {
+    "title": "Block Production",
+    "permalink": "/docs/nakamoto/block-production"
+  }
+}

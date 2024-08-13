@@ -1,0 +1,30 @@
+{
+  "unversionedId": "nakamoto/signer",
+  "id": "nakamoto/signer",
+  "title": "Running a Signer",
+  "description": "How to run a Stacks signer",
+  "source": "@site/docs/nakamoto/signer.md",
+  "sourceDirName": "nakamoto",
+  "slug": "/nakamoto/signer",
+  "permalink": "/docs/nakamoto/signer",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nakamoto/signer.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Running a Signer",
+    "description": "How to run a Stacks signer",
+    "sidebar_label": "Running a Signer",
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Bitcoin MEV Mitigation",
+    "permalink": "/docs/nakamoto/bitcoin-mev-mitigation"
+  },
+  "next": {
+    "title": "Clarity WASM",
+    "permalink": "/docs/nakamoto/clarity-wasm"
+  }
+}

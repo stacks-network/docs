@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/proof-of-transfer",
+  "id": "stacks-academy/proof-of-transfer",
+  "title": "Proof of Transfer",
+  "description": "Understand the proof-of-transfer consensus mechanism",
+  "source": "@site/docs/stacks-academy/proof-of-transfer.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/proof-of-transfer",
+  "permalink": "/docs/stacks-academy/proof-of-transfer",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/proof-of-transfer.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "Proof of Transfer",
+    "description": "Understand the proof-of-transfer consensus mechanism",
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Bitcoin Connection",
+    "permalink": "/docs/stacks-academy/btc-connection"
+  },
+  "next": {
+    "title": "Mining",
+    "permalink": "/docs/stacks-academy/mining"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "next-steps/index",
+  "id": "next-steps/index",
+  "title": "Next Steps",
+  "description": "A guide to making a living in the Stacks world",
+  "source": "@site/docs/next-steps/index.md",
+  "sourceDirName": "next-steps",
+  "slug": "/next-steps/",
+  "permalink": "/docs/next-steps/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/next-steps/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "title": "Next Steps",
+    "description": "A guide to making a living in the Stacks world",
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Verifying a BTC Transaction was Mined",
+    "permalink": "/docs/cookbook/verifying-a-btc-tx-was-mined"
+  },
+  "next": {
+    "title": "Services using Stacks",
+    "permalink": "/docs/category/services-using-stacks"
+  }
+}

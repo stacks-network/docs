@@ -1,0 +1,29 @@
+{
+  "unversionedId": "services-using-stacks/nft",
+  "id": "services-using-stacks/nft",
+  "title": "NFTs",
+  "description": "NFTs en Stacks",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/services-using-stacks/nft.md",
+  "sourceDirName": "services-using-stacks",
+  "slug": "/services-using-stacks/nft",
+  "permalink": "/es/docs/services-using-stacks/nft",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/services-using-stacks/nft.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "NFTs",
+    "description": "NFTs en Stacks",
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "DeFi",
+    "permalink": "/es/docs/services-using-stacks/defi"
+  },
+  "next": {
+    "title": "Wallets",
+    "permalink": "/es/docs/services-using-stacks/wallets"
+  }
+}

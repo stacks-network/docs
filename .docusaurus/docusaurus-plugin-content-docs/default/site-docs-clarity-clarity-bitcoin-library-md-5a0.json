@@ -1,0 +1,29 @@
+{
+  "unversionedId": "clarity/clarity-bitcoin-library",
+  "id": "clarity/clarity-bitcoin-library",
+  "title": "Clarity <> Bitcoin Library",
+  "description": "A Clarity library for parsing Bitcoin transactions and verifying Merkle proofs",
+  "source": "@site/docs/clarity/clarity-bitcoin-library.md",
+  "sourceDirName": "clarity",
+  "slug": "/clarity/clarity-bitcoin-library",
+  "permalink": "/docs/clarity/clarity-bitcoin-library",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/clarity-bitcoin-library.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Clarity <> Bitcoin Library",
+    "description": "A Clarity library for parsing Bitcoin transactions and verifying Merkle proofs",
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Sample Contracts",
+    "permalink": "/docs/clarity/sample-contracts"
+  },
+  "next": {
+    "title": "Nodes and Miners",
+    "permalink": "/docs/nodes-and-miners/"
+  }
+}

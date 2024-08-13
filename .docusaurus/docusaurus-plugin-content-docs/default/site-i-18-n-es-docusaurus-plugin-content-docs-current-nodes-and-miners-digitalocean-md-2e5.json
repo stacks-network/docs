@@ -1,0 +1,37 @@
+{
+  "unversionedId": "nodes-and-miners/digitalocean",
+  "id": "nodes-and-miners/digitalocean",
+  "title": "Stacks en DigitalOcean",
+  "description": "Una guía para configurar Stacks en DigitalOcean",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/nodes-and-miners/digitalocean.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/digitalocean",
+  "permalink": "/es/docs/nodes-and-miners/digitalocean",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/digitalocean.md",
+  "tags": [
+    {
+      "label": "tutorial",
+      "permalink": "/es/docs/tags/tutorial"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Stacks en DigitalOcean",
+    "description": "Una guía para configurar Stacks en DigitalOcean",
+    "sidebar_position": 4,
+    "tags": [
+      "tutorial"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Run a Node with a Hosted Provider",
+    "permalink": "/es/docs/nodes-and-miners/hosted-nodes"
+  },
+  "next": {
+    "title": "Mine testnet Stacks tokens",
+    "permalink": "/es/docs/nodes-and-miners/miner-testnet"
+  }
+}

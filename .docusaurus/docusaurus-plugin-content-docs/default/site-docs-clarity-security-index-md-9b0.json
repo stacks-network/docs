@@ -1,0 +1,30 @@
+{
+  "unversionedId": "clarity/security/index",
+  "id": "clarity/security/index",
+  "title": "Clarity Security",
+  "description": "Deep dives into the different security properties of Clarity",
+  "source": "@site/docs/clarity/security/index.md",
+  "sourceDirName": "clarity/security",
+  "slug": "/clarity/security/",
+  "permalink": "/docs/clarity/security/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/security/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Clarity Security",
+    "description": "Deep dives into the different security properties of Clarity",
+    "sidebar_label": "Security",
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Keywords",
+    "permalink": "/docs/clarity/language-keywords"
+  },
+  "next": {
+    "title": "Decidability",
+    "permalink": "/docs/clarity/security/decidable"
+  }
+}

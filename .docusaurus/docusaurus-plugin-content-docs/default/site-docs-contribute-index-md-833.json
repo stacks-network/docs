@@ -1,0 +1,30 @@
+{
+  "unversionedId": "contribute/index",
+  "id": "contribute/index",
+  "title": "Contribute",
+  "description": "Contribute to the Stacks ecosystem.",
+  "source": "@site/docs/contribute/index.md",
+  "sourceDirName": "contribute",
+  "slug": "/contribute/",
+  "permalink": "/docs/contribute/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/contribute/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {
+    "title": "Contribute",
+    "description": "Contribute to the Stacks ecosystem.",
+    "sidebar_position": 10,
+    "sidebar_label": "Contribute"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "More",
+    "permalink": "/docs/services-using-stacks/more"
+  },
+  "next": {
+    "title": "Contribute to docs",
+    "permalink": "/docs/contribute/docs"
+  }
+}

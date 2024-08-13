@@ -1,0 +1,27 @@
+{
+  "unversionedId": "cookbook/verifying-a-btc-tx-was-mined",
+  "id": "cookbook/verifying-a-btc-tx-was-mined",
+  "title": "Verifying a BTC Transaction was Mined",
+  "description": "Using Clarity to verify that a Bitcoin transaction was actually mined in the blockchain",
+  "source": "@site/docs/cookbook/verifying-a-btc-tx-was-mined.md",
+  "sourceDirName": "cookbook",
+  "slug": "/cookbook/verifying-a-btc-tx-was-mined",
+  "permalink": "/docs/cookbook/verifying-a-btc-tx-was-mined",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/cookbook/verifying-a-btc-tx-was-mined.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Verifying a BTC Transaction was Mined",
+    "description": "Using Clarity to verify that a Bitcoin transaction was actually mined in the blockchain"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Sending Transactions with Stacks.js",
+    "permalink": "/docs/cookbook/stacks-js-sending-transactions"
+  },
+  "next": {
+    "title": "Next Steps",
+    "permalink": "/docs/next-steps/"
+  }
+}

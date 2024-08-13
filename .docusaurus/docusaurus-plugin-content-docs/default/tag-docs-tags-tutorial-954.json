@@ -1,0 +1,62 @@
+{
+  "label": "tutorial",
+  "permalink": "/docs/tags/tutorial",
+  "allTagsPath": "/docs/tags",
+  "count": 9,
+  "items": [
+    {
+      "id": "gaia/gaia-on-ec2",
+      "title": "Amazon EC2",
+      "description": "Use a template to deploy a Gaia hub on Amazon EC2",
+      "permalink": "/docs/gaia/gaia-on-ec2"
+    },
+    {
+      "id": "gaia/setup-linux",
+      "title": "Linux",
+      "description": "Steps to setup a GAIA hub on a Linux server (fresh install). This example is using Debian, but should work on any Linux distribution. It uses docker compose in the background.",
+      "permalink": "/docs/gaia/setup-linux"
+    },
+    {
+      "id": "gaia/setup-mac",
+      "title": "MacOS",
+      "description": "MacOS for local testing/development",
+      "permalink": "/docs/gaia/setup-mac"
+    },
+    {
+      "id": "nodes-and-miners/miner-mainnet",
+      "title": "Mine mainnet Stacks tokens",
+      "description": "Set up and run a miner on Stacks Mainnet",
+      "permalink": "/docs/nodes-and-miners/miner-mainnet"
+    },
+    {
+      "id": "nodes-and-miners/miner-testnet",
+      "title": "Mine testnet Stacks tokens",
+      "description": "Set up and run a miner on Stacks Testnet",
+      "permalink": "/docs/nodes-and-miners/miner-testnet"
+    },
+    {
+      "id": "nodes-and-miners/hosted-nodes",
+      "title": "Run a Node with a Hosted Provider",
+      "description": "A guide to setup Stacks on a hosted provider",
+      "permalink": "/docs/nodes-and-miners/hosted-nodes"
+    },
+    {
+      "id": "nodes-and-miners/digitalocean",
+      "title": "Run a Node with Digital Ocean",
+      "description": "A guide to setup Stacks on DigitalOcean",
+      "permalink": "/docs/nodes-and-miners/digitalocean"
+    },
+    {
+      "id": "nodes-and-miners/run-a-node",
+      "title": "Run a Node with Docker",
+      "description": "Set up and run a Stacks node",
+      "permalink": "/docs/nodes-and-miners/run-a-node"
+    },
+    {
+      "id": "nodes-and-miners/quicknode",
+      "title": "Run a Node with QuickNode",
+      "description": "A guide to setup Stacks on QuickNode",
+      "permalink": "/docs/nodes-and-miners/quicknode"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "unversionedId": "nodes-and-miners/run-a-node",
+  "id": "nodes-and-miners/run-a-node",
+  "title": "Run a Node with Docker",
+  "description": "Set up and run a Stacks node",
+  "source": "@site/docs/nodes-and-miners/run-a-node.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/run-a-node",
+  "permalink": "/docs/nodes-and-miners/run-a-node",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/run-a-node.md",
+  "tags": [
+    {
+      "label": "tutorial",
+      "permalink": "/docs/tags/tutorial"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Run a Node with Docker",
+    "description": "Set up and run a Stacks node",
+    "sidebar_position": 1,
+    "tags": [
+      "tutorial"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Nodes and Miners",
+    "permalink": "/docs/nodes-and-miners/"
+  },
+  "next": {
+    "title": "Run a Node with Digital Ocean",
+    "permalink": "/docs/nodes-and-miners/digitalocean"
+  }
+}

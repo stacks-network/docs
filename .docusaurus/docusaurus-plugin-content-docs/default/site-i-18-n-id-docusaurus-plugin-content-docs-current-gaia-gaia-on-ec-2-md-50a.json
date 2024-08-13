@@ -1,0 +1,40 @@
+{
+  "unversionedId": "gaia/gaia-on-ec2",
+  "id": "gaia/gaia-on-ec2",
+  "title": "Amazon EC2",
+  "description": "Use a template to deploy a Gaia hub on Amazon EC2",
+  "source": "@site/i18n/id/docusaurus-plugin-content-docs/current/gaia/gaia-on-ec2.md",
+  "sourceDirName": "gaia",
+  "slug": "/gaia/gaia-on-ec2",
+  "permalink": "/id/docs/gaia/gaia-on-ec2",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/gaia/gaia-on-ec2.md",
+  "tags": [
+    {
+      "label": "tutorial",
+      "permalink": "/id/docs/tags/tutorial"
+    },
+    {
+      "label": "gaia",
+      "permalink": "/id/docs/tags/gaia"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "Amazon EC2",
+    "description": "Use a template to deploy a Gaia hub on Amazon EC2",
+    "tags": [
+      "tutorial",
+      "gaia"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deploy Gaia Hub",
+    "permalink": "/id/docs/gaia/deploy-gaia-hub"
+  },
+  "next": {
+    "title": "Linux",
+    "permalink": "/id/docs/gaia/setup-linux"
+  }
+}

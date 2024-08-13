@@ -1,0 +1,27 @@
+{
+  "unversionedId": "contribute/docs",
+  "id": "contribute/docs",
+  "title": "Contribute to docs",
+  "description": "Learn how this site is built, and how you can contribute to it.",
+  "source": "@site/docs/contribute/docs.md",
+  "sourceDirName": "contribute",
+  "slug": "/contribute/docs",
+  "permalink": "/docs/contribute/docs",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/contribute/docs.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Contribute to docs",
+    "description": "Learn how this site is built, and how you can contribute to it."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Contribute",
+    "permalink": "/docs/contribute/"
+  },
+  "next": {
+    "title": "Contribute with translations",
+    "permalink": "/docs/contribute/translations"
+  }
+}

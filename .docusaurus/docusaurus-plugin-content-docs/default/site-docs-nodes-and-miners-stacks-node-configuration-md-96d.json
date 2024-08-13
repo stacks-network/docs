@@ -1,0 +1,29 @@
+{
+  "unversionedId": "nodes-and-miners/stacks-node-configuration",
+  "id": "nodes-and-miners/stacks-node-configuration",
+  "title": "Stacks Node Configuration",
+  "description": "Configuration parameters and options for the stacks-node binary",
+  "source": "@site/docs/nodes-and-miners/stacks-node-configuration.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/stacks-node-configuration",
+  "permalink": "/docs/nodes-and-miners/stacks-node-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/stacks-node-configuration.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Stacks Node Configuration",
+    "description": "Configuration parameters and options for the stacks-node binary",
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Run a Node with QuickNode",
+    "permalink": "/docs/nodes-and-miners/quicknode"
+  },
+  "next": {
+    "title": "Mine testnet Stacks tokens",
+    "permalink": "/docs/nodes-and-miners/miner-testnet"
+  }
+}

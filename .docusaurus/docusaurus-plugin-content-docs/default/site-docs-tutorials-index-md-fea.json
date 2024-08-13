@@ -1,0 +1,29 @@
+{
+  "unversionedId": "tutorials/index",
+  "id": "tutorials/index",
+  "title": "Tutorials",
+  "description": "Step-by-step tutorials to learn Stacks development",
+  "source": "@site/docs/tutorials/index.md",
+  "sourceDirName": "tutorials",
+  "slug": "/tutorials/",
+  "permalink": "/docs/tutorials/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/tutorials/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Tutorials",
+    "description": "Step-by-step tutorials to learn Stacks development",
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Neon",
+    "permalink": "/docs/nakamoto/neon"
+  },
+  "next": {
+    "title": "Hello Stacks (Quickstart)",
+    "permalink": "/docs/tutorials/hello-stacks"
+  }
+}

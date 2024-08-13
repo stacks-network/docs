@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/transactions",
+  "id": "stacks-academy/transactions",
+  "title": "Transactions",
+  "description": "Guide to Stacks 2.0 transactions",
+  "source": "@site/docs/stacks-academy/transactions.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/transactions",
+  "permalink": "/docs/stacks-academy/transactions",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/transactions.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "title": "Transactions",
+    "description": "Guide to Stacks 2.0 transactions",
+    "sidebar_position": 9
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Bitcoin Name System",
+    "permalink": "/docs/stacks-academy/bns"
+  },
+  "next": {
+    "title": "Post Conditions",
+    "permalink": "/docs/stacks-academy/post-conditions"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "unversionedId": "clarity/noteworthy-contracts/bns-contract",
+  "id": "clarity/noteworthy-contracts/bns-contract",
+  "title": "BNS Contract",
+  "description": "The Bitcoin Name System.",
+  "source": "@site/docs/clarity/noteworthy-contracts/bns-contract.md",
+  "sourceDirName": "clarity/noteworthy-contracts",
+  "slug": "/clarity/noteworthy-contracts/bns-contract",
+  "permalink": "/docs/clarity/noteworthy-contracts/bns-contract",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/noteworthy-contracts/bns-contract.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "BNS Contract",
+    "description": "The Bitcoin Name System."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Stacking Contract",
+    "permalink": "/docs/clarity/noteworthy-contracts/stacking-contract"
+  },
+  "next": {
+    "title": "xBTC",
+    "permalink": "/docs/clarity/noteworthy-contracts/xbtc"
+  }
+}

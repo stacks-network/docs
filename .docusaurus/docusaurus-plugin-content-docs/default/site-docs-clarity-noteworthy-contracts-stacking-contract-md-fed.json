@@ -1,0 +1,29 @@
+{
+  "unversionedId": "clarity/noteworthy-contracts/stacking-contract",
+  "id": "clarity/noteworthy-contracts/stacking-contract",
+  "title": "Stacking Contract",
+  "description": "See a detailed list of all functions and error codes of the Stacking contract.",
+  "source": "@site/docs/clarity/noteworthy-contracts/stacking-contract.md",
+  "sourceDirName": "clarity/noteworthy-contracts",
+  "slug": "/clarity/noteworthy-contracts/stacking-contract",
+  "permalink": "/docs/clarity/noteworthy-contracts/stacking-contract",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/noteworthy-contracts/stacking-contract.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Stacking Contract",
+    "description": "See a detailed list of all functions and error codes of the Stacking contract.",
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Noteworthy Contracts",
+    "permalink": "/docs/category/noteworthy-contracts"
+  },
+  "next": {
+    "title": "BNS Contract",
+    "permalink": "/docs/clarity/noteworthy-contracts/bns-contract"
+  }
+}

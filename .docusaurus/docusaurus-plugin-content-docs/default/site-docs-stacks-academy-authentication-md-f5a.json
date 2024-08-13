@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/authentication",
+  "id": "stacks-academy/authentication",
+  "title": "Authentication",
+  "description": "Register and sign in users with identities on the Stacks blockchain",
+  "source": "@site/docs/stacks-academy/authentication.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/authentication",
+  "permalink": "/docs/stacks-academy/authentication",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/authentication.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "title": "Authentication",
+    "description": "Register and sign in users with identities on the Stacks blockchain",
+    "sidebar_position": 8
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Accounts",
+    "permalink": "/docs/stacks-academy/accounts"
+  },
+  "next": {
+    "title": "Bitcoin Name System",
+    "permalink": "/docs/stacks-academy/bns"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/bns",
+  "id": "stacks-academy/bns",
+  "title": "Bitcoin Name System",
+  "description": "Binds Stacks usernames to off-chain state",
+  "source": "@site/docs/stacks-academy/bns.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/bns",
+  "permalink": "/docs/stacks-academy/bns",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/bns.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "title": "Bitcoin Name System",
+    "description": "Binds Stacks usernames to off-chain state",
+    "sidebar_position": 8
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Authentication",
+    "permalink": "/docs/stacks-academy/authentication"
+  },
+  "next": {
+    "title": "Transactions",
+    "permalink": "/docs/stacks-academy/transactions"
+  }
+}

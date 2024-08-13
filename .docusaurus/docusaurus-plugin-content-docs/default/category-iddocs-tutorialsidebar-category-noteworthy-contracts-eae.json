@@ -1,0 +1,16 @@
+{
+  "title": "Noteworthy Contracts",
+  "description": "Specific deployed Clarity Contracts worth mentioning.",
+  "slug": "/category/noteworthy-contracts",
+  "permalink": "/id/docs/category/noteworthy-contracts",
+  "navigation": {
+    "previous": {
+      "title": "Decidability",
+      "permalink": "/id/docs/clarity/security/decidable"
+    },
+    "next": {
+      "title": "Stacking Contract",
+      "permalink": "/id/docs/clarity/noteworthy-contracts/stacking-contract"
+    }
+  }
+}

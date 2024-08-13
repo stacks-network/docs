@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/accounts",
+  "id": "stacks-academy/accounts",
+  "title": "Accounts",
+  "description": "Guide to Stacks 2.0 accounts",
+  "source": "@site/docs/stacks-academy/accounts.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/accounts",
+  "permalink": "/docs/stacks-academy/accounts",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/accounts.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "title": "Accounts",
+    "description": "Guide to Stacks 2.0 accounts",
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Stacks Blockchain API",
+    "permalink": "/docs/stacks-academy/stacks-blockchain-api"
+  },
+  "next": {
+    "title": "Authentication",
+    "permalink": "/docs/stacks-academy/authentication"
+  }
+}

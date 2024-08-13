@@ -1,0 +1,27 @@
+{
+  "unversionedId": "clarity/security/uncomputable_problems",
+  "id": "clarity/security/uncomputable_problems",
+  "title": "Non-Turing Complete",
+  "description": "Exploration of the advantages of using a non-Turing complete smart contract language",
+  "source": "@site/docs/clarity/security/uncomputable_problems.md",
+  "sourceDirName": "clarity/security",
+  "slug": "/clarity/security/uncomputable_problems",
+  "permalink": "/docs/clarity/security/uncomputable_problems",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/security/uncomputable_problems.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Non-Turing Complete",
+    "description": "Exploration of the advantages of using a non-Turing complete smart contract language"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "non-turing-complete",
+    "permalink": "/docs/clarity/security/non-turing-complete"
+  },
+  "next": {
+    "title": "Noteworthy Contracts",
+    "permalink": "/docs/category/noteworthy-contracts"
+  }
+}

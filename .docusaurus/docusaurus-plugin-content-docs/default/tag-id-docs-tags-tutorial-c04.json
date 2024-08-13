@@ -1,0 +1,62 @@
+{
+  "label": "tutorial",
+  "permalink": "/id/docs/tags/tutorial",
+  "allTagsPath": "/id/docs/tags",
+  "count": 9,
+  "items": [
+    {
+      "id": "gaia/gaia-on-ec2",
+      "title": "Amazon EC2",
+      "description": "Use a template to deploy a Gaia hub on Amazon EC2",
+      "permalink": "/id/docs/gaia/gaia-on-ec2"
+    },
+    {
+      "id": "gaia/setup-linux",
+      "title": "Linux",
+      "description": "Steps to setup a GAIA hub on a Linux server (fresh install). This example is using Debian, but should work on any Linux distribution. It uses docker compose in the backgroud.",
+      "permalink": "/id/docs/gaia/setup-linux"
+    },
+    {
+      "id": "gaia/setup-mac",
+      "title": "MacOS",
+      "description": "MacOS for local testing/development",
+      "permalink": "/id/docs/gaia/setup-mac"
+    },
+    {
+      "id": "nodes-and-miners/miner-mainnet",
+      "title": "Menambang token Stacks mainnet",
+      "description": "Menyiapkan dan menjalankan penambang di mainnet Stacks 2.0",
+      "permalink": "/id/docs/nodes-and-miners/miner-mainnet"
+    },
+    {
+      "id": "nodes-and-miners/miner-testnet",
+      "title": "Menambang token Stacks testnet",
+      "description": "Menyiapkan dan menjalankan penambang di testnet Stacks 2.0",
+      "permalink": "/id/docs/nodes-and-miners/miner-testnet"
+    },
+    {
+      "id": "nodes-and-miners/run-a-node",
+      "title": "Run a node",
+      "description": "Set up and run a Stacks node",
+      "permalink": "/id/docs/nodes-and-miners/run-a-node"
+    },
+    {
+      "id": "nodes-and-miners/hosted-nodes",
+      "title": "Run a Node with a Hosted Provider",
+      "description": "A guide to setup Stacks on a hosted provider",
+      "permalink": "/id/docs/nodes-and-miners/hosted-nodes"
+    },
+    {
+      "id": "nodes-and-miners/quicknode",
+      "title": "Run a Node with QuickNode",
+      "description": "A guide to setup Stacks on QuickNode",
+      "permalink": "/id/docs/nodes-and-miners/quicknode"
+    },
+    {
+      "id": "nodes-and-miners/digitalocean",
+      "title": "Stacks di DigitalOcean",
+      "description": "A guide to setup Stacks on DigitalOcean",
+      "permalink": "/id/docs/nodes-and-miners/digitalocean"
+    }
+  ]
+}

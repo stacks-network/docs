@@ -1,0 +1,29 @@
+{
+  "unversionedId": "services-using-stacks/stacks-info-sites",
+  "id": "services-using-stacks/stacks-info-sites",
+  "title": "Sitios web con información Stacks",
+  "description": "Status and stats of the Stacks network.",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/services-using-stacks/stacks-info-sites.md",
+  "sourceDirName": "services-using-stacks",
+  "slug": "/services-using-stacks/stacks-info-sites",
+  "permalink": "/es/docs/services-using-stacks/stacks-info-sites",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/services-using-stacks/stacks-info-sites.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Sitios web con información Stacks",
+    "description": "Status and stats of the Stacks network.",
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Services using Stacks",
+    "permalink": "/es/docs/category/services-using-stacks"
+  },
+  "next": {
+    "title": "DeFi",
+    "permalink": "/es/docs/services-using-stacks/defi"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/technical-specs",
+  "id": "stacks-academy/technical-specs",
+  "title": "Technical Specifications",
+  "description": "Summary of technical specifications of Stacks 2.0",
+  "source": "@site/docs/stacks-academy/technical-specs.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/technical-specs",
+  "permalink": "/docs/stacks-academy/technical-specs",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/technical-specs.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 13,
+  "frontMatter": {
+    "title": "Technical Specifications",
+    "description": "Summary of technical specifications of Stacks 2.0",
+    "sidebar_position": 13
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Testnet",
+    "permalink": "/docs/stacks-academy/testnet"
+  },
+  "next": {
+    "title": "Clarity",
+    "permalink": "/docs/clarity/"
+  }
+}

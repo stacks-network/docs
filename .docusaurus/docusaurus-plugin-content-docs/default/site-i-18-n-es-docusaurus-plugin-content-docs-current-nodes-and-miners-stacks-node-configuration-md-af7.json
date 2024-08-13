@@ -1,0 +1,29 @@
+{
+  "unversionedId": "nodes-and-miners/stacks-node-configuration",
+  "id": "nodes-and-miners/stacks-node-configuration",
+  "title": "Configuración del nodo de Stacks",
+  "description": "Parámetros de configuración y opciones para el binario stacks-node",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/nodes-and-miners/stacks-node-configuration.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/stacks-node-configuration",
+  "permalink": "/es/docs/nodes-and-miners/stacks-node-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/stacks-node-configuration.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Configuración del nodo de Stacks",
+    "description": "Parámetros de configuración y opciones para el binario stacks-node",
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Mine mainnet Stacks tokens",
+    "permalink": "/es/docs/nodes-and-miners/miner-mainnet"
+  },
+  "next": {
+    "title": "Verify Miner",
+    "permalink": "/es/docs/nodes-and-miners/verify-miner"
+  }
+}

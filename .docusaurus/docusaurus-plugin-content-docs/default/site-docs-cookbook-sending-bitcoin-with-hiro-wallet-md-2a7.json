@@ -1,0 +1,27 @@
+{
+  "unversionedId": "cookbook/sending-bitcoin-with-hiro-wallet",
+  "id": "cookbook/sending-bitcoin-with-hiro-wallet",
+  "title": "Sending Bitcoin with Hiro Wallet",
+  "description": "Initiate a basic Bitcoin transaction with the Hiro wallet",
+  "source": "@site/docs/cookbook/sending-bitcoin-with-hiro-wallet.md",
+  "sourceDirName": "cookbook",
+  "slug": "/cookbook/sending-bitcoin-with-hiro-wallet",
+  "permalink": "/docs/cookbook/sending-bitcoin-with-hiro-wallet",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/cookbook/sending-bitcoin-with-hiro-wallet.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Sending Bitcoin with Hiro Wallet",
+    "description": "Initiate a basic Bitcoin transaction with the Hiro wallet"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Post Conditions",
+    "permalink": "/docs/cookbook/post-conditions"
+  },
+  "next": {
+    "title": "Authentication with Stacks.js",
+    "permalink": "/docs/cookbook/stacks-js-auth"
+  }
+}

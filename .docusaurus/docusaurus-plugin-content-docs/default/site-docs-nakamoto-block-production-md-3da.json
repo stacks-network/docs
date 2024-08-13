@@ -1,0 +1,30 @@
+{
+  "unversionedId": "nakamoto/block-production",
+  "id": "nakamoto/block-production",
+  "title": "Block Production",
+  "description": "How blocks are produced in Nakamoto and how this unlocks fast blocks and Bitcoin finality",
+  "source": "@site/docs/nakamoto/block-production.md",
+  "sourceDirName": "nakamoto",
+  "slug": "/nakamoto/block-production",
+  "permalink": "/docs/nakamoto/block-production",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nakamoto/block-production.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Block Production",
+    "description": "How blocks are produced in Nakamoto and how this unlocks fast blocks and Bitcoin finality",
+    "sidebar_label": "Block Production",
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Nakamoto",
+    "permalink": "/docs/nakamoto/"
+  },
+  "next": {
+    "title": "Bitcoin MEV Mitigation",
+    "permalink": "/docs/nakamoto/bitcoin-mev-mitigation"
+  }
+}

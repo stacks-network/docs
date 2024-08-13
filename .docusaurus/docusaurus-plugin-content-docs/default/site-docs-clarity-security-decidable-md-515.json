@@ -1,0 +1,30 @@
+{
+  "unversionedId": "clarity/security/decidable",
+  "id": "clarity/security/decidable",
+  "title": "Decidability",
+  "description": "An exploration of the security advantages that come with a non-Turing complete, decidable language",
+  "source": "@site/docs/clarity/security/decidable.md",
+  "sourceDirName": "clarity/security",
+  "slug": "/clarity/security/decidable",
+  "permalink": "/docs/clarity/security/decidable",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/security/decidable.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Decidability",
+    "description": "An exploration of the security advantages that come with a non-Turing complete, decidable language",
+    "sidebar_label": "Decidability",
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Security",
+    "permalink": "/docs/clarity/security/"
+  },
+  "next": {
+    "title": "Noteworthy Contracts",
+    "permalink": "/docs/category/noteworthy-contracts"
+  }
+}

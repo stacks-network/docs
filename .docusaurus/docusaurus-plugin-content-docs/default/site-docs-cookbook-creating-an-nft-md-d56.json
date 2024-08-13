@@ -1,0 +1,27 @@
+{
+  "unversionedId": "cookbook/creating-an-nft",
+  "id": "cookbook/creating-an-nft",
+  "title": "Creating an NFT",
+  "description": "Clarity and Stacks.js code required to make an NFT",
+  "source": "@site/docs/cookbook/creating-an-nft.md",
+  "sourceDirName": "cookbook",
+  "slug": "/cookbook/creating-an-nft",
+  "permalink": "/docs/cookbook/creating-an-nft",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/cookbook/creating-an-nft.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Creating an NFT",
+    "description": "Clarity and Stacks.js code required to make an NFT"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating a Fungible Token",
+    "permalink": "/docs/cookbook/creating-an-ft"
+  },
+  "next": {
+    "title": "Get Sats per STX Price",
+    "permalink": "/docs/cookbook/get-sats-per-stx"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "unversionedId": "clarity/language-functions",
+  "id": "clarity/language-functions",
+  "title": "Functions",
+  "description": "See a detailed list of all functions for the Clarity language.",
+  "source": "@site/docs/clarity/language-functions.md",
+  "sourceDirName": "clarity",
+  "slug": "/clarity/language-functions",
+  "permalink": "/id/docs/clarity/language-functions",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/language-functions.md",
+  "tags": [
+    {
+      "label": "clarity",
+      "permalink": "/id/docs/tags/clarity"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "Functions",
+    "description": "See a detailed list of all functions for the Clarity language.",
+    "sidebar_position": 3,
+    "tags": [
+      "clarity"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Types",
+    "permalink": "/id/docs/clarity/language-types"
+  },
+  "next": {
+    "title": "Keywords",
+    "permalink": "/id/docs/clarity/language-keywords"
+  }
+}

@@ -1,0 +1,973 @@
+{
+  "pluginId": "default",
+  "version": "current",
+  "label": "Next",
+  "banner": null,
+  "badge": false,
+  "noIndex": false,
+  "className": "docs-version-current",
+  "isLast": true,
+  "docsSidebars": {
+    "tutorialSidebar": [
+      {
+        "type": "link",
+        "label": "Start Here",
+        "href": "/docs/intro",
+        "docId": "intro"
+      },
+      {
+        "type": "category",
+        "label": "Nakamoto",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Block Production",
+            "href": "/docs/nakamoto/block-production",
+            "docId": "nakamoto/block-production"
+          },
+          {
+            "type": "link",
+            "label": "Bitcoin MEV Mitigation",
+            "href": "/docs/nakamoto/bitcoin-mev-mitigation",
+            "docId": "nakamoto/bitcoin-mev-mitigation"
+          },
+          {
+            "type": "link",
+            "label": "Running a Signer",
+            "href": "/docs/nakamoto/signer",
+            "docId": "nakamoto/signer"
+          },
+          {
+            "type": "link",
+            "label": "Clarity WASM",
+            "href": "/docs/nakamoto/clarity-wasm",
+            "docId": "nakamoto/clarity-wasm"
+          },
+          {
+            "type": "link",
+            "label": "Neon",
+            "href": "/docs/nakamoto/neon",
+            "docId": "nakamoto/neon"
+          }
+        ],
+        "href": "/docs/nakamoto/"
+      },
+      {
+        "type": "category",
+        "label": "Tutorials",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Hello Stacks (Quickstart)",
+            "href": "/docs/tutorials/hello-stacks",
+            "docId": "tutorials/hello-stacks"
+          },
+          {
+            "type": "link",
+            "label": "Satoshi's Ridge (Deep Dive)",
+            "href": "/docs/tutorials/satoshis-ridge",
+            "docId": "tutorials/satoshis-ridge"
+          },
+          {
+            "type": "link",
+            "label": "Community Tutorials",
+            "href": "/docs/tutorials/community-tutorials",
+            "docId": "tutorials/community-tutorials"
+          }
+        ],
+        "href": "/docs/tutorials/"
+      },
+      {
+        "type": "category",
+        "label": "Stacks Academy",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "What is Stacks?",
+            "href": "/docs/stacks-academy/what-is-stacks",
+            "docId": "stacks-academy/what-is-stacks"
+          },
+          {
+            "type": "link",
+            "label": "SIPs",
+            "href": "/docs/stacks-academy/sips",
+            "docId": "stacks-academy/sips"
+          },
+          {
+            "type": "link",
+            "label": "Whitepapers",
+            "href": "/docs/stacks-academy/whitepapers",
+            "docId": "stacks-academy/whitepapers"
+          },
+          {
+            "type": "link",
+            "label": "Bitcoin Connection",
+            "href": "/docs/stacks-academy/btc-connection",
+            "docId": "stacks-academy/btc-connection"
+          },
+          {
+            "type": "link",
+            "label": "Proof of Transfer",
+            "href": "/docs/stacks-academy/proof-of-transfer",
+            "docId": "stacks-academy/proof-of-transfer"
+          },
+          {
+            "type": "link",
+            "label": "Mining",
+            "href": "/docs/stacks-academy/mining",
+            "docId": "stacks-academy/mining"
+          },
+          {
+            "type": "link",
+            "label": "Microblocks",
+            "href": "/docs/stacks-academy/microblocks",
+            "docId": "stacks-academy/microblocks"
+          },
+          {
+            "type": "link",
+            "label": "Network",
+            "href": "/docs/stacks-academy/network",
+            "docId": "stacks-academy/network"
+          },
+          {
+            "type": "link",
+            "label": "Stacks Blockchain API",
+            "href": "/docs/stacks-academy/stacks-blockchain-api",
+            "docId": "stacks-academy/stacks-blockchain-api"
+          },
+          {
+            "type": "link",
+            "label": "Accounts",
+            "href": "/docs/stacks-academy/accounts",
+            "docId": "stacks-academy/accounts"
+          },
+          {
+            "type": "link",
+            "label": "Authentication",
+            "href": "/docs/stacks-academy/authentication",
+            "docId": "stacks-academy/authentication"
+          },
+          {
+            "type": "link",
+            "label": "Bitcoin Name System",
+            "href": "/docs/stacks-academy/bns",
+            "docId": "stacks-academy/bns"
+          },
+          {
+            "type": "link",
+            "label": "Transactions",
+            "href": "/docs/stacks-academy/transactions",
+            "docId": "stacks-academy/transactions"
+          },
+          {
+            "type": "link",
+            "label": "Post Conditions",
+            "href": "/docs/stacks-academy/post-conditions",
+            "docId": "stacks-academy/post-conditions"
+          },
+          {
+            "type": "link",
+            "label": "Stacking",
+            "href": "/docs/stacks-academy/stacking",
+            "docId": "stacks-academy/stacking"
+          },
+          {
+            "type": "link",
+            "label": "Testnet",
+            "href": "/docs/stacks-academy/testnet",
+            "docId": "stacks-academy/testnet"
+          },
+          {
+            "type": "link",
+            "label": "Technical Specifications",
+            "href": "/docs/stacks-academy/technical-specs",
+            "docId": "stacks-academy/technical-specs"
+          }
+        ],
+        "href": "/docs/stacks-academy/"
+      },
+      {
+        "type": "category",
+        "label": "Clarity",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Clarity Crash Course",
+            "href": "/docs/clarity/crash-course",
+            "docId": "clarity/crash-course"
+          },
+          {
+            "type": "link",
+            "label": "Types",
+            "href": "/docs/clarity/language-types",
+            "docId": "clarity/language-types"
+          },
+          {
+            "type": "link",
+            "label": "Functions",
+            "href": "/docs/clarity/language-functions",
+            "docId": "clarity/language-functions"
+          },
+          {
+            "type": "link",
+            "label": "Keywords",
+            "href": "/docs/clarity/language-keywords",
+            "docId": "clarity/language-keywords"
+          },
+          {
+            "type": "category",
+            "label": "Security",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "Decidability",
+                "href": "/docs/clarity/security/decidable",
+                "docId": "clarity/security/decidable"
+              }
+            ],
+            "href": "/docs/clarity/security/"
+          },
+          {
+            "type": "category",
+            "label": "Noteworthy Contracts",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "Stacking Contract",
+                "href": "/docs/clarity/noteworthy-contracts/stacking-contract",
+                "docId": "clarity/noteworthy-contracts/stacking-contract"
+              },
+              {
+                "type": "link",
+                "label": "BNS Contract",
+                "href": "/docs/clarity/noteworthy-contracts/bns-contract",
+                "docId": "clarity/noteworthy-contracts/bns-contract"
+              },
+              {
+                "type": "link",
+                "label": "xBTC",
+                "href": "/docs/clarity/noteworthy-contracts/xbtc",
+                "docId": "clarity/noteworthy-contracts/xbtc"
+              }
+            ],
+            "href": "/docs/category/noteworthy-contracts"
+          },
+          {
+            "type": "link",
+            "label": "Sample Contracts",
+            "href": "/docs/clarity/sample-contracts",
+            "docId": "clarity/sample-contracts"
+          }
+        ],
+        "href": "/docs/clarity/"
+      },
+      {
+        "type": "category",
+        "label": "Nodes and Miners",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Run a Node with Docker",
+            "href": "/docs/nodes-and-miners/run-a-node",
+            "docId": "nodes-and-miners/run-a-node"
+          },
+          {
+            "type": "link",
+            "label": "Run a Node with Digital Ocean",
+            "href": "/docs/nodes-and-miners/digitalocean",
+            "docId": "nodes-and-miners/digitalocean"
+          },
+          {
+            "type": "link",
+            "label": "Run a Node with a Hosted Provider",
+            "href": "/docs/nodes-and-miners/hosted-nodes",
+            "docId": "nodes-and-miners/hosted-nodes"
+          },
+          {
+            "type": "link",
+            "label": "Run a Node with QuickNode",
+            "href": "/docs/nodes-and-miners/quicknode",
+            "docId": "nodes-and-miners/quicknode"
+          },
+          {
+            "type": "link",
+            "label": "Stacks Node Configuration",
+            "href": "/docs/nodes-and-miners/stacks-node-configuration",
+            "docId": "nodes-and-miners/stacks-node-configuration"
+          },
+          {
+            "type": "link",
+            "label": "Mine testnet Stacks tokens",
+            "href": "/docs/nodes-and-miners/miner-testnet",
+            "docId": "nodes-and-miners/miner-testnet"
+          },
+          {
+            "type": "link",
+            "label": "Mine mainnet Stacks tokens",
+            "href": "/docs/nodes-and-miners/miner-mainnet",
+            "docId": "nodes-and-miners/miner-mainnet"
+          },
+          {
+            "type": "link",
+            "label": "Verify Miner",
+            "href": "/docs/nodes-and-miners/verify-miner",
+            "docId": "nodes-and-miners/verify-miner"
+          },
+          {
+            "type": "link",
+            "label": "Miner costs and fees",
+            "href": "/docs/nodes-and-miners/miner-costs-and-fees",
+            "docId": "nodes-and-miners/miner-costs-and-fees"
+          }
+        ],
+        "href": "/docs/nodes-and-miners/"
+      },
+      {
+        "type": "category",
+        "label": "Gaia",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Configuration",
+            "href": "/docs/gaia/configuration",
+            "docId": "gaia/configuration"
+          },
+          {
+            "type": "link",
+            "label": "Deploy Gaia Hub",
+            "href": "/docs/gaia/deploy-gaia-hub",
+            "docId": "gaia/deploy-gaia-hub"
+          },
+          {
+            "type": "link",
+            "label": "Amazon EC2",
+            "href": "/docs/gaia/gaia-on-ec2",
+            "docId": "gaia/gaia-on-ec2"
+          },
+          {
+            "type": "link",
+            "label": "Linux",
+            "href": "/docs/gaia/setup-linux",
+            "docId": "gaia/setup-linux"
+          },
+          {
+            "type": "link",
+            "label": "MacOS",
+            "href": "/docs/gaia/setup-mac",
+            "docId": "gaia/setup-mac"
+          }
+        ],
+        "href": "/docs/gaia/"
+      },
+      {
+        "type": "category",
+        "label": "Cookbook",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Creating a Fungible Token",
+            "href": "/docs/cookbook/creating-an-ft",
+            "docId": "cookbook/creating-an-ft"
+          },
+          {
+            "type": "link",
+            "label": "Creating an NFT",
+            "href": "/docs/cookbook/creating-an-nft",
+            "docId": "cookbook/creating-an-nft"
+          },
+          {
+            "type": "link",
+            "label": "Get Sats per STX Price",
+            "href": "/docs/cookbook/get-sats-per-stx",
+            "docId": "cookbook/get-sats-per-stx"
+          },
+          {
+            "type": "link",
+            "label": "Parse the Data from a Bitcoin Transaction",
+            "href": "/docs/cookbook/parse-a-btc-tx",
+            "docId": "cookbook/parse-a-btc-tx"
+          },
+          {
+            "type": "link",
+            "label": "Post Conditions",
+            "href": "/docs/cookbook/post-conditions",
+            "docId": "cookbook/post-conditions"
+          },
+          {
+            "type": "link",
+            "label": "Sending Bitcoin with Hiro Wallet",
+            "href": "/docs/cookbook/sending-bitcoin-with-hiro-wallet",
+            "docId": "cookbook/sending-bitcoin-with-hiro-wallet"
+          },
+          {
+            "type": "link",
+            "label": "Authentication with Stacks.js",
+            "href": "/docs/cookbook/stacks-js-auth",
+            "docId": "cookbook/stacks-js-auth"
+          },
+          {
+            "type": "link",
+            "label": "Sending Transactions with Stacks.js",
+            "href": "/docs/cookbook/stacks-js-sending-transactions",
+            "docId": "cookbook/stacks-js-sending-transactions"
+          },
+          {
+            "type": "link",
+            "label": "Verifying a BTC Transaction was Mined",
+            "href": "/docs/cookbook/verifying-a-btc-tx-was-mined",
+            "docId": "cookbook/verifying-a-btc-tx-was-mined"
+          }
+        ],
+        "href": "/docs/cookbook/"
+      },
+      {
+        "type": "link",
+        "label": "Next Steps",
+        "href": "/docs/next-steps/",
+        "docId": "next-steps/index"
+      },
+      {
+        "type": "category",
+        "label": "Services using Stacks",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Stacks info sites",
+            "href": "/docs/services-using-stacks/stacks-info-sites",
+            "docId": "services-using-stacks/stacks-info-sites"
+          },
+          {
+            "type": "link",
+            "label": "DeFi",
+            "href": "/docs/services-using-stacks/defi",
+            "docId": "services-using-stacks/defi"
+          },
+          {
+            "type": "link",
+            "label": "NFTs",
+            "href": "/docs/services-using-stacks/nft",
+            "docId": "services-using-stacks/nft"
+          },
+          {
+            "type": "link",
+            "label": "Wallets",
+            "href": "/docs/services-using-stacks/wallets",
+            "docId": "services-using-stacks/wallets"
+          },
+          {
+            "type": "link",
+            "label": "More",
+            "href": "/docs/services-using-stacks/more",
+            "docId": "services-using-stacks/more"
+          }
+        ],
+        "href": "/docs/category/services-using-stacks"
+      },
+      {
+        "type": "category",
+        "label": "Contribute",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Contribute to docs",
+            "href": "/docs/contribute/docs",
+            "docId": "contribute/docs"
+          },
+          {
+            "type": "link",
+            "label": "Contribute with translations",
+            "href": "/docs/contribute/translations",
+            "docId": "contribute/translations"
+          }
+        ],
+        "href": "/docs/contribute/"
+      },
+      {
+        "type": "link",
+        "label": "Glossary",
+        "href": "/docs/glossary/",
+        "docId": "glossary/index"
+      }
+    ]
+  },
+  "docs": {
+    "clarity/crash-course": {
+      "id": "clarity/crash-course",
+      "title": "Clarity Crash Course",
+      "description": "A quick introduction to the Clarity programming language",
+      "sidebar": "tutorialSidebar"
+    },
+    "clarity/index": {
+      "id": "clarity/index",
+      "title": "Clarity Overview",
+      "description": "Overview and guides for getting started with Clarity",
+      "sidebar": "tutorialSidebar"
+    },
+    "clarity/language-functions": {
+      "id": "clarity/language-functions",
+      "title": "Functions",
+      "description": "See a detailed list of all functions for the Clarity language.",
+      "sidebar": "tutorialSidebar"
+    },
+    "clarity/language-keywords": {
+      "id": "clarity/language-keywords",
+      "title": "Keywords",
+      "description": "See a detailed list of all keywords for the Clarity language.",
+      "sidebar": "tutorialSidebar"
+    },
+    "clarity/language-types": {
+      "id": "clarity/language-types",
+      "title": "Types",
+      "description": "See a detailed list of all types for the Clarity language.",
+      "sidebar": "tutorialSidebar"
+    },
+    "clarity/noteworthy-contracts/bns-contract": {
+      "id": "clarity/noteworthy-contracts/bns-contract",
+      "title": "BNS Contract",
+      "description": "The Bitcoin Name System.",
+      "sidebar": "tutorialSidebar"
+    },
+    "clarity/noteworthy-contracts/stacking-contract": {
+      "id": "clarity/noteworthy-contracts/stacking-contract",
+      "title": "Stacking Contract",
+      "description": "See a detailed list of all functions and error codes of the Stacking contract.",
+      "sidebar": "tutorialSidebar"
+    },
+    "clarity/noteworthy-contracts/xbtc": {
+      "id": "clarity/noteworthy-contracts/xbtc",
+      "title": "xBTC",
+      "description": "Wrapped BTC on Stacks",
+      "sidebar": "tutorialSidebar"
+    },
+    "clarity/sample-contracts": {
+      "id": "clarity/sample-contracts",
+      "title": "Sample Contracts",
+      "description": "Example contracts for learning and building Clarity smart contracts.",
+      "sidebar": "tutorialSidebar"
+    },
+    "clarity/security/decidable": {
+      "id": "clarity/security/decidable",
+      "title": "Decidability",
+      "description": "An exploration of the security advantages that come with a non-Turing complete, decidable language",
+      "sidebar": "tutorialSidebar"
+    },
+    "clarity/security/index": {
+      "id": "clarity/security/index",
+      "title": "Clarity Security",
+      "description": "Deep dives into the different security properties of Clarity",
+      "sidebar": "tutorialSidebar"
+    },
+    "contribute/docs": {
+      "id": "contribute/docs",
+      "title": "Contribute to docs",
+      "description": "Learn how this site is built, and how you can contribute to it.",
+      "sidebar": "tutorialSidebar"
+    },
+    "contribute/index": {
+      "id": "contribute/index",
+      "title": "Contribute",
+      "description": "Contribute to the Stacks ecosystem.",
+      "sidebar": "tutorialSidebar"
+    },
+    "contribute/translations": {
+      "id": "contribute/translations",
+      "title": "Contribute with translations",
+      "description": "Want to help translating these docs to your local language?",
+      "sidebar": "tutorialSidebar"
+    },
+    "cookbook/creating-an-ft": {
+      "id": "cookbook/creating-an-ft",
+      "title": "Creating a Fungible Token",
+      "description": "Clarity and Stacks.js code required to make a FT",
+      "sidebar": "tutorialSidebar"
+    },
+    "cookbook/creating-an-nft": {
+      "id": "cookbook/creating-an-nft",
+      "title": "Creating an NFT",
+      "description": "Clarity and Stacks.js code required to make an NFT",
+      "sidebar": "tutorialSidebar"
+    },
+    "cookbook/get-sats-per-stx": {
+      "id": "cookbook/get-sats-per-stx",
+      "title": "Get Sats per STX Price",
+      "description": "Use built-in Clarity functions to retrieve the on-chain exchange rate between BTC and STX",
+      "sidebar": "tutorialSidebar"
+    },
+    "cookbook/index": {
+      "id": "cookbook/index",
+      "title": "Cookbook",
+      "description": "Code snippets and examples for building Stacks apps",
+      "sidebar": "tutorialSidebar"
+    },
+    "cookbook/parse-a-btc-tx": {
+      "id": "cookbook/parse-a-btc-tx",
+      "title": "Parse the Data from a Bitcoin Transaction",
+      "description": "Use the Clarity-Bitcoin library to parse a Bitcoin transaction",
+      "sidebar": "tutorialSidebar"
+    },
+    "cookbook/post-conditions": {
+      "id": "cookbook/post-conditions",
+      "title": "Post Conditions",
+      "description": "Working with Stacks post conditions",
+      "sidebar": "tutorialSidebar"
+    },
+    "cookbook/sending-bitcoin-with-hiro-wallet": {
+      "id": "cookbook/sending-bitcoin-with-hiro-wallet",
+      "title": "Sending Bitcoin with Hiro Wallet",
+      "description": "Initiate a basic Bitcoin transaction with the Hiro wallet",
+      "sidebar": "tutorialSidebar"
+    },
+    "cookbook/stacks-js-auth": {
+      "id": "cookbook/stacks-js-auth",
+      "title": "Authentication with Stacks.js",
+      "description": "Authenticating a user with Stacks.js",
+      "sidebar": "tutorialSidebar"
+    },
+    "cookbook/stacks-js-sending-transactions": {
+      "id": "cookbook/stacks-js-sending-transactions",
+      "title": "Sending Transactions with Stacks.js",
+      "description": "Sending transactions with Stacks.js",
+      "sidebar": "tutorialSidebar"
+    },
+    "cookbook/verifying-a-btc-tx-was-mined": {
+      "id": "cookbook/verifying-a-btc-tx-was-mined",
+      "title": "Verifying a BTC Transaction was Mined",
+      "description": "Using Clarity to verify that a Bitcoin transaction was actually mined in the blockchain",
+      "sidebar": "tutorialSidebar"
+    },
+    "gaia/configuration": {
+      "id": "gaia/configuration",
+      "title": "Configuration",
+      "description": "Configuring Gaia Hub",
+      "sidebar": "tutorialSidebar"
+    },
+    "gaia/deploy-gaia-hub": {
+      "id": "gaia/deploy-gaia-hub",
+      "title": "Deploy Gaia Hub",
+      "description": "Steps and tutorials",
+      "sidebar": "tutorialSidebar"
+    },
+    "gaia/gaia": {
+      "id": "gaia/gaia",
+      "title": "Gaia",
+      "description": "Decentralized storage architecture for off-chain data",
+      "sidebar": "tutorialSidebar"
+    },
+    "gaia/gaia-on-ec2": {
+      "id": "gaia/gaia-on-ec2",
+      "title": "Amazon EC2",
+      "description": "Use a template to deploy a Gaia hub on Amazon EC2",
+      "sidebar": "tutorialSidebar"
+    },
+    "gaia/setup-linux": {
+      "id": "gaia/setup-linux",
+      "title": "Linux",
+      "description": "Steps to setup a GAIA hub on a Linux server (fresh install). This example is using Debian, but should work on any Linux distribution. It uses docker compose in the background.",
+      "sidebar": "tutorialSidebar"
+    },
+    "gaia/setup-mac": {
+      "id": "gaia/setup-mac",
+      "title": "MacOS",
+      "description": "MacOS for local testing/development",
+      "sidebar": "tutorialSidebar"
+    },
+    "glossary/index": {
+      "id": "glossary/index",
+      "title": "Glossary",
+      "description": "A comprehensive list of terms used within the ecosystem.",
+      "sidebar": "tutorialSidebar"
+    },
+    "intro": {
+      "id": "intro",
+      "title": "Stacks Docs",
+      "description": "Stacks is Bitcoin L2 that brings smart contract functionality to Bitcoin, without modifying Bitcoin itself.",
+      "sidebar": "tutorialSidebar"
+    },
+    "nakamoto/bitcoin-mev-mitigation": {
+      "id": "nakamoto/bitcoin-mev-mitigation",
+      "title": "Bitcoin MEV Mitigation",
+      "description": "How Nakamoto mitigates Bitcoin MEV",
+      "sidebar": "tutorialSidebar"
+    },
+    "nakamoto/block-production": {
+      "id": "nakamoto/block-production",
+      "title": "Block Production",
+      "description": "How blocks are produced in Nakamoto and how this unlocks fast blocks and Bitcoin finality",
+      "sidebar": "tutorialSidebar"
+    },
+    "nakamoto/clarity-wasm": {
+      "id": "nakamoto/clarity-wasm",
+      "title": "Clarity WASM",
+      "description": "The new Clarity WASM runtime",
+      "sidebar": "tutorialSidebar"
+    },
+    "nakamoto/index": {
+      "id": "nakamoto/index",
+      "title": "Nakamoto",
+      "description": "Overview of the Nakamoto release and how to use it",
+      "sidebar": "tutorialSidebar"
+    },
+    "nakamoto/neon": {
+      "id": "nakamoto/neon",
+      "title": "Neon",
+      "description": "How to get started with the Neon Nakamoto testnet",
+      "sidebar": "tutorialSidebar"
+    },
+    "nakamoto/signer": {
+      "id": "nakamoto/signer",
+      "title": "Running a Signer",
+      "description": "How to run a Stacks signer",
+      "sidebar": "tutorialSidebar"
+    },
+    "next-steps/index": {
+      "id": "next-steps/index",
+      "title": "Next Steps",
+      "description": "A guide to making a living in the Stacks world",
+      "sidebar": "tutorialSidebar"
+    },
+    "nodes-and-miners/digitalocean": {
+      "id": "nodes-and-miners/digitalocean",
+      "title": "Run a Node with Digital Ocean",
+      "description": "A guide to setup Stacks on DigitalOcean",
+      "sidebar": "tutorialSidebar"
+    },
+    "nodes-and-miners/hosted-nodes": {
+      "id": "nodes-and-miners/hosted-nodes",
+      "title": "Run a Node with a Hosted Provider",
+      "description": "A guide to setup Stacks on a hosted provider",
+      "sidebar": "tutorialSidebar"
+    },
+    "nodes-and-miners/index": {
+      "id": "nodes-and-miners/index",
+      "title": "Nodes and Miners",
+      "description": "Nodes and Miners",
+      "sidebar": "tutorialSidebar"
+    },
+    "nodes-and-miners/miner-costs-and-fees": {
+      "id": "nodes-and-miners/miner-costs-and-fees",
+      "title": "Miner costs and fees",
+      "description": "Miner Cost and Fee Estimation",
+      "sidebar": "tutorialSidebar"
+    },
+    "nodes-and-miners/miner-mainnet": {
+      "id": "nodes-and-miners/miner-mainnet",
+      "title": "Mine mainnet Stacks tokens",
+      "description": "Set up and run a miner on Stacks Mainnet",
+      "sidebar": "tutorialSidebar"
+    },
+    "nodes-and-miners/miner-testnet": {
+      "id": "nodes-and-miners/miner-testnet",
+      "title": "Mine testnet Stacks tokens",
+      "description": "Set up and run a miner on Stacks Testnet",
+      "sidebar": "tutorialSidebar"
+    },
+    "nodes-and-miners/quicknode": {
+      "id": "nodes-and-miners/quicknode",
+      "title": "Run a Node with QuickNode",
+      "description": "A guide to setup Stacks on QuickNode",
+      "sidebar": "tutorialSidebar"
+    },
+    "nodes-and-miners/run-a-node": {
+      "id": "nodes-and-miners/run-a-node",
+      "title": "Run a Node with Docker",
+      "description": "Set up and run a Stacks node",
+      "sidebar": "tutorialSidebar"
+    },
+    "nodes-and-miners/stacks-node-configuration": {
+      "id": "nodes-and-miners/stacks-node-configuration",
+      "title": "Stacks Node Configuration",
+      "description": "Configuration parameters and options for the stacks-node binary",
+      "sidebar": "tutorialSidebar"
+    },
+    "nodes-and-miners/verify-miner": {
+      "id": "nodes-and-miners/verify-miner",
+      "title": "Verify Miner",
+      "description": "Verify node is operating as miner",
+      "sidebar": "tutorialSidebar"
+    },
+    "services-using-stacks/defi": {
+      "id": "services-using-stacks/defi",
+      "title": "DeFi",
+      "description": "De-Fi sites on Stacks",
+      "sidebar": "tutorialSidebar"
+    },
+    "services-using-stacks/more": {
+      "id": "services-using-stacks/more",
+      "title": "More",
+      "description": "More services built on Stacks.",
+      "sidebar": "tutorialSidebar"
+    },
+    "services-using-stacks/nft": {
+      "id": "services-using-stacks/nft",
+      "title": "NFTs",
+      "description": "NFTs on Stacks",
+      "sidebar": "tutorialSidebar"
+    },
+    "services-using-stacks/stacks-info-sites": {
+      "id": "services-using-stacks/stacks-info-sites",
+      "title": "Stacks info sites",
+      "description": "Status and stats of the Stacks network.",
+      "sidebar": "tutorialSidebar"
+    },
+    "services-using-stacks/wallets": {
+      "id": "services-using-stacks/wallets",
+      "title": "Wallets",
+      "description": "Wallets for Stacks",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/accounts": {
+      "id": "stacks-academy/accounts",
+      "title": "Accounts",
+      "description": "Guide to Stacks 2.0 accounts",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/authentication": {
+      "id": "stacks-academy/authentication",
+      "title": "Authentication",
+      "description": "Register and sign in users with identities on the Stacks blockchain",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/bns": {
+      "id": "stacks-academy/bns",
+      "title": "Bitcoin Name System",
+      "description": "Binds Stacks usernames to off-chain state",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/btc-connection": {
+      "id": "stacks-academy/btc-connection",
+      "title": "Bitcoin Connection",
+      "description": "How Stacks is connected to Bitcoin",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/index": {
+      "id": "stacks-academy/index",
+      "title": "Stacks Academy",
+      "description": "An introduction to Stacks",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/microblocks": {
+      "id": "stacks-academy/microblocks",
+      "title": "Microblocks",
+      "description": "Guide to Stacks Microblocks",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/mining": {
+      "id": "stacks-academy/mining",
+      "title": "Mining",
+      "description": "A guide to mining on Stacks 2.0",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/network": {
+      "id": "stacks-academy/network",
+      "title": "Network",
+      "description": "Guide to the Stacks 2.0 network",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/post-conditions": {
+      "id": "stacks-academy/post-conditions",
+      "title": "Post Conditions",
+      "description": "What post conditions are and how they work",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/proof-of-transfer": {
+      "id": "stacks-academy/proof-of-transfer",
+      "title": "Proof of Transfer",
+      "description": "Understand the proof-of-transfer consensus mechanism",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/sips": {
+      "id": "stacks-academy/sips",
+      "title": "SIPs",
+      "description": "SIPs",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/stacking": {
+      "id": "stacks-academy/stacking",
+      "title": "Stacking",
+      "description": "Introduction to the reward mechanism of Proof-of-Transfer",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/stacks-blockchain-api": {
+      "id": "stacks-academy/stacks-blockchain-api",
+      "title": "Stacks Blockchain API",
+      "description": "Interacting with the Stacks 2.0 Blockchain via API",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/technical-specs": {
+      "id": "stacks-academy/technical-specs",
+      "title": "Technical Specifications",
+      "description": "Summary of technical specifications of Stacks 2.0",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/testnet": {
+      "id": "stacks-academy/testnet",
+      "title": "Testnet",
+      "description": "Test your smart contracts and apps",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/transactions": {
+      "id": "stacks-academy/transactions",
+      "title": "Transactions",
+      "description": "Guide to Stacks 2.0 transactions",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/what-is-stacks": {
+      "id": "stacks-academy/what-is-stacks",
+      "title": "What is Stacks?",
+      "description": "An introduction to Stacks",
+      "sidebar": "tutorialSidebar"
+    },
+    "stacks-academy/whitepapers": {
+      "id": "stacks-academy/whitepapers",
+      "title": "Whitepapers",
+      "description": "Documents detailing how different pieces of Stacks works",
+      "sidebar": "tutorialSidebar"
+    },
+    "tutorials/community-tutorials": {
+      "id": "tutorials/community-tutorials",
+      "title": "Community Tutorials",
+      "description": "Tutorials created by various people in the Stacks community",
+      "sidebar": "tutorialSidebar"
+    },
+    "tutorials/hello-stacks": {
+      "id": "tutorials/hello-stacks",
+      "title": "Hello Stacks (Quickstart)",
+      "description": "A quick introduction to building dapps with Stacks",
+      "sidebar": "tutorialSidebar"
+    },
+    "tutorials/index": {
+      "id": "tutorials/index",
+      "title": "Tutorials",
+      "description": "Step-by-step tutorials to learn Stacks development",
+      "sidebar": "tutorialSidebar"
+    },
+    "tutorials/satoshis-ridge": {
+      "id": "tutorials/satoshis-ridge",
+      "title": "Satoshi's Ridge (Deep Dive)",
+      "description": "A comprehensive overview of building useful Stacks dapps",
+      "sidebar": "tutorialSidebar"
+    }
+  }
+}

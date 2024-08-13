@@ -1,5 +1,0 @@
-files:
-  - source: /docs/**/*.md
-    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%
-  - source: /docs/**/_category_.json
-    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%

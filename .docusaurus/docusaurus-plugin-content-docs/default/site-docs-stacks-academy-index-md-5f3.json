@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/index",
+  "id": "stacks-academy/index",
+  "title": "Stacks Academy",
+  "description": "An introduction to Stacks",
+  "source": "@site/docs/stacks-academy/index.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/",
+  "permalink": "/docs/stacks-academy/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "Stacks Academy",
+    "description": "An introduction to Stacks",
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Community Tutorials",
+    "permalink": "/docs/tutorials/community-tutorials"
+  },
+  "next": {
+    "title": "What is Stacks?",
+    "permalink": "/docs/stacks-academy/what-is-stacks"
+  }
+}

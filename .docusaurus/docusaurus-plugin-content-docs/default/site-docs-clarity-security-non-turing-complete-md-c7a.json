@@ -1,0 +1,30 @@
+{
+  "unversionedId": "clarity/security/non-turing-complete",
+  "id": "clarity/security/non-turing-complete",
+  "title": "Non-Turing Complete",
+  "description": "An exploration of the security advantages that come with a non-Turing complete language",
+  "source": "@site/docs/clarity/security/non-turing-complete.md",
+  "sourceDirName": "clarity/security",
+  "slug": "/clarity/security/non-turing-complete",
+  "permalink": "/docs/clarity/security/non-turing-complete",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/security/non-turing-complete.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Non-Turing Complete",
+    "description": "An exploration of the security advantages that come with a non-Turing complete language",
+    "sidebar_label": "Non-Turing Complete",
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Security",
+    "permalink": "/docs/clarity/security/"
+  },
+  "next": {
+    "title": "Noteworthy Contracts",
+    "permalink": "/docs/category/noteworthy-contracts"
+  }
+}

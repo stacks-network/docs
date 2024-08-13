@@ -1,0 +1,27 @@
+{
+  "unversionedId": "contribute/translations",
+  "id": "contribute/translations",
+  "title": "Contribute with translations",
+  "description": "Want to help translating these docs to your local language?",
+  "source": "@site/docs/contribute/translations.md",
+  "sourceDirName": "contribute",
+  "slug": "/contribute/translations",
+  "permalink": "/docs/contribute/translations",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/contribute/translations.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Contribute with translations",
+    "description": "Want to help translating these docs to your local language?"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Contribute to docs",
+    "permalink": "/docs/contribute/docs"
+  },
+  "next": {
+    "title": "Glossary",
+    "permalink": "/docs/glossary/"
+  }
+}

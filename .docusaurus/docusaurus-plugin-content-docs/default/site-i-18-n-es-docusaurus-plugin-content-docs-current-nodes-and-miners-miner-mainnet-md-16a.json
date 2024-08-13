@@ -1,0 +1,37 @@
+{
+  "unversionedId": "nodes-and-miners/miner-mainnet",
+  "id": "nodes-and-miners/miner-mainnet",
+  "title": "Mine mainnet Stacks tokens",
+  "description": "Set up and run a miner on the Stacks 2.0 mainnet",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/nodes-and-miners/miner-mainnet.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/miner-mainnet",
+  "permalink": "/es/docs/nodes-and-miners/miner-mainnet",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/miner-mainnet.md",
+  "tags": [
+    {
+      "label": "tutorial",
+      "permalink": "/es/docs/tags/tutorial"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Mine mainnet Stacks tokens",
+    "description": "Set up and run a miner on the Stacks 2.0 mainnet",
+    "sidebar_position": 5,
+    "tags": [
+      "tutorial"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Run a Node with QuickNode",
+    "permalink": "/es/docs/nodes-and-miners/quicknode"
+  },
+  "next": {
+    "title": "Configuración del nodo de Stacks",
+    "permalink": "/es/docs/nodes-and-miners/stacks-node-configuration"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "unversionedId": "nodes-and-miners/nakamoto-signer-developer-guide",
+  "id": "nodes-and-miners/nakamoto-signer-developer-guide",
+  "title": "Run a Nakamoto Signer Node",
+  "description": "Set up and run a signer on Nakamoto",
+  "source": "@site/docs/nodes-and-miners/nakamoto-signer-developer-guide.md",
+  "sourceDirName": "nodes-and-miners",
+  "slug": "/nodes-and-miners/nakamoto-signer-developer-guide",
+  "permalink": "/docs/nodes-and-miners/nakamoto-signer-developer-guide",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/nodes-and-miners/nakamoto-signer-developer-guide.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Run a Nakamoto Signer Node",
+    "description": "Set up and run a signer on Nakamoto"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Miner costs and fees",
+    "permalink": "/docs/nodes-and-miners/miner-costs-and-fees"
+  },
+  "next": {
+    "title": "Gaia",
+    "permalink": "/docs/gaia/"
+  }
+}

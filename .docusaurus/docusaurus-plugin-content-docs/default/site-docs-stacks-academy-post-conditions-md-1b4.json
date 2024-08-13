@@ -1,0 +1,29 @@
+{
+  "unversionedId": "stacks-academy/post-conditions",
+  "id": "stacks-academy/post-conditions",
+  "title": "Post Conditions",
+  "description": "What post conditions are and how they work",
+  "source": "@site/docs/stacks-academy/post-conditions.md",
+  "sourceDirName": "stacks-academy",
+  "slug": "/stacks-academy/post-conditions",
+  "permalink": "/docs/stacks-academy/post-conditions",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/stacks-academy/post-conditions.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {
+    "title": "Post Conditions",
+    "description": "What post conditions are and how they work",
+    "sidebar_position": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Transactions",
+    "permalink": "/docs/stacks-academy/transactions"
+  },
+  "next": {
+    "title": "Stacking",
+    "permalink": "/docs/stacks-academy/stacking"
+  }
+}

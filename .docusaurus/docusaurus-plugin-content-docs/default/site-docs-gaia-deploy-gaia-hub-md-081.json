@@ -1,0 +1,27 @@
+{
+  "unversionedId": "gaia/deploy-gaia-hub",
+  "id": "gaia/deploy-gaia-hub",
+  "title": "Deploy Gaia Hub",
+  "description": "Steps and tutorials",
+  "source": "@site/docs/gaia/deploy-gaia-hub.md",
+  "sourceDirName": "gaia",
+  "slug": "/gaia/deploy-gaia-hub",
+  "permalink": "/docs/gaia/deploy-gaia-hub",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/gaia/deploy-gaia-hub.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Deploy Gaia Hub",
+    "description": "Steps and tutorials"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuration",
+    "permalink": "/docs/gaia/configuration"
+  },
+  "next": {
+    "title": "Amazon EC2",
+    "permalink": "/docs/gaia/gaia-on-ec2"
+  }
+}

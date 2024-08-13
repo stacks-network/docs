@@ -1,0 +1,29 @@
+{
+  "unversionedId": "clarity/sample-contracts",
+  "id": "clarity/sample-contracts",
+  "title": "Sample Contracts",
+  "description": "Example contracts for learning and building Clarity smart contracts.",
+  "source": "@site/docs/clarity/sample-contracts.md",
+  "sourceDirName": "clarity",
+  "slug": "/clarity/sample-contracts",
+  "permalink": "/docs/clarity/sample-contracts",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/sample-contracts.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Sample Contracts",
+    "description": "Example contracts for learning and building Clarity smart contracts.",
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "xBTC",
+    "permalink": "/docs/clarity/noteworthy-contracts/xbtc"
+  },
+  "next": {
+    "title": "Nodes and Miners",
+    "permalink": "/docs/nodes-and-miners/"
+  }
+}

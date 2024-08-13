@@ -1,0 +1,30 @@
+{
+  "unversionedId": "clarity/index",
+  "id": "clarity/index",
+  "title": "Clarity Overview",
+  "description": "Overview and guides for getting started with Clarity",
+  "source": "@site/docs/clarity/index.md",
+  "sourceDirName": "clarity",
+  "slug": "/clarity/",
+  "permalink": "/docs/clarity/",
+  "draft": false,
+  "editUrl": "https://github.com/stacks-network/docs/tree/master/docs/clarity/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Clarity Overview",
+    "description": "Overview and guides for getting started with Clarity",
+    "sidebar_label": "Clarity",
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Technical Specifications",
+    "permalink": "/docs/stacks-academy/technical-specs"
+  },
+  "next": {
+    "title": "Clarity Crash Course",
+    "permalink": "/docs/clarity/crash-course"
+  }
+}
