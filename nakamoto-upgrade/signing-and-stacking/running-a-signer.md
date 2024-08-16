@@ -36,7 +36,7 @@ Detailed steps for each of these are laid out below, but this checklist is being
 
 **Pre-Launch Setup**
 
-* [ ] Ensure your system meets the [minimum system requirements](#minimum-system-requirements).
+* [ ] Ensure your system meets the [minimum system requirements](running-a-signer.md#minimum-system-requirements).
 * [ ] Acquire Docker and basic knowledge of Stacks accounts, stacking, and the Nakamoto stacking flow (links provided below).
 
 **Preflight Setup**
@@ -117,7 +117,7 @@ Note that at the moment the signer should only be run on testnet using these ins
 
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the [`blockstack/stacks-core:2.5.0.0.3`](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1\&name=2.5.0.0.3) image.
+You can run the signer as a Docker container using the [blockstack/stacks-signer:25.0.0.5.1](https://hub.docker.com/r/blockstack/stacks-signer/tags?page=1\&name=2.5.0.0.5.1) image.
 
 When running the Docker container, you’ll need to ensure a few things:
 
@@ -130,8 +130,8 @@ An example command for running the Docker image with ”`docker run`” is shown
 Be sure to replace the `STX_SIGNER_PATH` with the correct path to your config file and where you want to install and run the signer. In this example it will be doing so in the current directory.
 
 ```bash
-IMG="blockstack/stacks-core"
-VER="2.5.0.0.3"
+IMG="blockstack/stacks-signer"
+VER="2.5.0.0.5.1"
 STX_SIGNER_PATH="./"
 STX_SIGNER_DATA="$STX_SIGNER_PATH/data"
 STX_SIGNER_CONFIG="$STX_SIGNER_PATH/signer-config.toml"
@@ -157,7 +157,7 @@ For example, if you are running on M1 Mac, you would add `--platform=linux/amd64
 Or, with a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:2.5.0.0.3
+FROM blockstack/stacks-signer:2.5.0.0.5.1
 COPY signer-config.toml /config.toml
 EXPOSE 30000
 CMD ["stacks-signer", "run", "--config", "/config.toml"]
@@ -261,7 +261,7 @@ An example for running the node’s Docker image with docker run is below. Be su
 
 ```bash
 IMG="blockstack/stacks-core"
-VER="2.5.0.0.3"
+VER="2.5.0.0.5"
 STX_NODE_CONFIG="./node-config.toml"
 
 docker run -d \
@@ -279,7 +279,7 @@ docker run -d \
 Or, using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:2.5.0.0.3
+FROM blockstack/stacks-core:2.5.0.0.5
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443
