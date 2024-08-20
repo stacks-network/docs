@@ -117,7 +117,7 @@ Note that at the moment the signer should only be run on testnet using these ins
 
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the [blockstack/stacks-signer:25.0.0.5.1](https://hub.docker.com/r/blockstack/stacks-signer/tags?page=1\&name=2.5.0.0.5.1) image.
+You can run the signer as a Docker container using the [blockstack/stacks-signer:2.5.0.0.5.1](https://hub.docker.com/r/blockstack/stacks-signer/tags?page=1\&name=2.5.0.0.5.1) image.
 
 When running the Docker container, you’ll need to ensure a few things:
 
