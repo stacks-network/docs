@@ -23,11 +23,12 @@
   * [Nakamoto for App Developers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto.md)
 * [Signing and Stacking](nakamoto-upgrade/signing-and-stacking/README.md)
   * [How to Run a Signer](nakamoto-upgrade/signing-and-stacking/running-a-signer.md)
-  * [Setting Up a Primary Testnet Node (Nakamoto Activation)](nakamoto-upgrade/signing-and-stacking/setting-up-a-primary-testnet-node-nakamoto-activation.md)
   * [How to Stack (as a signer)](nakamoto-upgrade/signing-and-stacking/stacking-flow.md)
   * [FAQ](nakamoto-upgrade/signing-and-stacking/faq.md)
   * [Sample Configuration Files](nakamoto-upgrade/signing-and-stacking/sample-configuration-files.md)
 * [Nakamoto & Primary Testnet](nakamoto-upgrade/nakamoto-and-primary-testnet.md)
+* [Nakamoto Activation Guide for Signers](nakamoto-upgrade/nakamoto-activation-guide-for-signers/README.md)
+  * [Setting Up a Primary Testnet Node (Nakamoto Activation)](nakamoto-upgrade/nakamoto-activation-guide-for-signers/setting-up-a-primary-testnet-node-nakamoto-activation.md)
 
 ## 🎓 Stacks 101 (Pre-Nakamoto) <a href="#stacks-101" id="stacks-101"></a>
 
