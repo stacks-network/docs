@@ -10,6 +10,10 @@ If you prefer to handle these yourself, step-by-step instructions are included b
 
 ### Automated Bash Script
 
+{% hint style="warning" %}
+Be sure to edit your `block_proposal_token` field here to match the `auth_password` field in your signer config.
+{% endhint %}
+
 ```bash
 STACKS_DIR="${HOME}/nakamoto-testnet"
 STACKS_RPC_PORT="40443"
@@ -34,10 +38,17 @@ prometheus_bind = "0.0.0.0:9153"
 [burnchain]
 mode = "krypton"
 peer_host = "bitcoin.regtest.hiro.so"
+username = "hirosystems"
+password = "hirosystems"
 rpc_port = 18443
 peer_port = 18444
 pox_prepare_length = 100
 pox_reward_length = 900
+
+# Set your auth token, which the signer uses
+# This should match the auth_password field of your signer config
+[connection_options]
+block_proposal_token = "12345"
 
 [[events_observer]]
 endpoint = "0.0.0.0.0:30000"
@@ -131,6 +142,8 @@ prometheus_bind = "0.0.0.0:9153"
 [burnchain]
 mode = "krypton"
 peer_host = "bitcoin.regtest.hiro.so"
+username = "hirosystems"
+password = "hirosystems"
 rpc_port = 18443
 peer_port = 18444
 pox_prepare_length = 100
@@ -141,6 +154,11 @@ endpoint = "0.0.0.0.0:30000"
 retry_count = 255
 include_data_events = false
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
+
+# Set your auth token, which the signer uses
+# This should match the auth_password field of your signer config
+[connection_options]
+block_proposal_token = "12345"
 
 [[ustx_balance]]
 address = "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2"
