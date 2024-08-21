@@ -287,6 +287,14 @@ pox_reward_length = 900
 [connection_options]
 block_proposal_token = "12345"
 
+# Set your signer as an event observer
+[[events_observer]]
+# This endpoint is where your signer will communicate with your Stacks node
+endpoint = "127.0.0.1:30000"
+retry_count = 255
+include_data_events = false
+events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
+
 [[ustx_balance]]
 address = "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2"
 amount = 10000000000000000
