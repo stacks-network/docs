@@ -282,6 +282,11 @@ peer_port = 18444
 pox_prepare_length = 100
 pox_reward_length = 900
 
+# Set your auth token, which the signer uses
+# This should match the auth_password field of your signer config
+[connection_options]
+block_proposal_token = "12345"
+
 [[ustx_balance]]
 address = "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2"
 amount = 10000000000000000
