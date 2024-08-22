@@ -95,32 +95,26 @@ start_height = 0
 
 [[burnchain.epochs]]
 epoch_name = "2.0"
-# start_height = 2000000 # real epoch start height
 start_height = 230
 
 [[burnchain.epochs]]
 epoch_name = "2.05"
-# start_height = 2104380 # real epoch start height
 start_height = 240
 
 [[burnchain.epochs]]
 epoch_name = "2.1"
-# start_height = 2422101 # real epoch start height
 start_height = 241
 
 [[burnchain.epochs]]
 epoch_name = "2.2"
-# start_height = 2431300 # real epoch start height
 start_height = 242
 
 [[burnchain.epochs]]
 epoch_name = "2.3"
-# start_height = 2431633 # real epoch start height
 start_height = 243
 
 [[burnchain.epochs]]
 epoch_name = "2.4"
-# start_height = 2432545 # real epoch start height
 start_height = 244
 
 [[burnchain.epochs]]
