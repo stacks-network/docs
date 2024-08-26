@@ -8,7 +8,7 @@ description: >-
 # Nakamoto Rollout Plan
 
 {% hint style="info" %}
-Nakamoto has completed step 1 of the rollout (Instantiation). Next, a hard fork that follows an Activation sequence outlined below will make Nakamot features available to the whole network.&#x20;
+Nakamoto has completed step 1 of the rollout (Instantiation). Next, a hard fork that follows an Activation sequence outlined below will make Nakamoto features available to the whole network.&#x20;
 {% endhint %}
 
 ### Step 1, Step 2: Instantiation & Activation
