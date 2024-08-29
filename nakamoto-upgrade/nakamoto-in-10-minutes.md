@@ -44,7 +44,7 @@ This elegant design creates a cooperative relationship between miners and stacke
 
 Here is a diagram outlining miner and signer behavior.
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Bitcoin MEV Mitigation
 

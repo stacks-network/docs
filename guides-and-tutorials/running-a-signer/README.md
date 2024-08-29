@@ -195,7 +195,7 @@ To make sure your signer is running successfully, run `docker ps` to list your r
 
 You should see something like this
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now check the logs of that container by running:
 
@@ -304,7 +304,7 @@ If when running your node you get a connection refused error that looks like thi
 
 First, be sure that you have the proper entry point specified in your `node-config.toml` file as specified in the [How to Run a Signer](./) doc.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 If you are inside a Docker container with default bridging mode, then localhost is not available, and you'll need to point to the Docker host.
 
