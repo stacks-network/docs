@@ -12,7 +12,7 @@ description: >-
 
 The Nakamoto release brings many new capabilities and improvements to the Stacks blockchain by focusing on a set of core advancements: improving transaction speed, enhancing finality guarantees for transactions, mitigating Bitcoin miner MEV (miner extractable value) opportunities that affect PoX, and boosting robustness against chain reorganizations. This strategic upgrade aims to solidify trust in the Stacks network, offer greater alignment with Bitcoin's immutable nature, and foster an environment ripe for advanced Decentralized Finance (DeFi) applications. The expected outcome is a versatile, scalable, and secure platform that closely integrates with, yet distinctly enhances, the Bitcoin ecosystem.\
 \
-Learn more: [nakamoto-in-10-minutes.md](../what-is-the-nakamoto-release/nakamoto-in-10-minutes.md "mention")
+Learn more: [nakamoto-in-10-minutes.md](../nakamoto-in-10-minutes.md "mention")
 
 </details>
 
@@ -43,12 +43,15 @@ Exchanges that support native Bitcoin yield via Stacking may have extra upgrade 
 
 Core developers expect to release binaries on or around August 28th. Exchanges can expect their usual ecosystem point of contact to provide them with detailed information and updates during the process.&#x20;
 
+1. **Instantiation block:** The first hard fork occurred <mark style="color:orange;">at Bitcoin block 840,360.</mark> If you haven't already, you will need to upgrade to the latest node software or they will not process valid blocks and users will not be able to move funds on the network.
+2. **Activation block:** The second hard fork occurs around August 28. At this time, the Nakamoto consensus rules will activate, meaning the new Nakamoto features will be made live. Exchanges will need to repeat the upgrade process at this time. Again, no genesis sync, just a download and restart.
+
 The hard fork will occur **after** a series of activation steps. You can learn more about this upcoming Nakamoto Activation sequence here: [#nakamoto-activation-sequence](./#nakamoto-activation-sequence "mention").&#x20;
 
 ### Other Recommendations:
 
 * With just a bit of extra work, exchanges can support the [Stacks SIP-10 token standard](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md). This allows an exchange to easily list any of a growing number of tokens built on Stacks as well as the upcoming [sBTC asset](broken-reference/).
-* Exchanges that already offer staking type services to their users (programs often called Earn/Stake/etc.) should consider adding [Stacking](../../stacks-101/stacking.md) to their platform alongside other offerings. Users can earn BTC by participating in Stacks consensus through a simple pool.
+* Exchanges that already offer staking type services to their users (programs often called Earn/Stake/etc.) should consider adding [Stacking](../../concepts/block-production/stacking.md) to their platform alongside other offerings. Users can earn BTC by participating in Stacks consensus through a simple pool.
 * The Stacks Foundation is seeking a handful of exchanges to pilot rapid BTC withdrawals via the upcoming sBTC asset, expected to closely follow the Nakamoto hard fork. Interest exchange can reach out to their usual point of contact or complete [this form](https://stacks.org/exchanges).
 
 ### Resources:
