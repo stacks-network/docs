@@ -123,7 +123,6 @@ start_height = 244
 epoch_name = "3.0"
 start_height = 2_000_250
 
-
 [[ustx_balance]]
 address = "ST0DZFQ1XGHC5P1BZ6B7HSWQKQJHM74JBGCSDTNA"
 amount = 10000000000000000
