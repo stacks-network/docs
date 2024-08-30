@@ -101,27 +101,28 @@ start_height = 240
 
 [[burnchain.epochs]]
 epoch_name = "2.1"
-start_height = 241
+start_height = 240
 
 [[burnchain.epochs]]
 epoch_name = "2.2"
-start_height = 242
+start_height = 241
 
 [[burnchain.epochs]]
 epoch_name = "2.3"
-start_height = 243
+start_height = 242
 
 [[burnchain.epochs]]
 epoch_name = "2.4"
-start_height = 244
+start_height = 243
 
 [[burnchain.epochs]]
 epoch_name = "2.5"
-start_height = 245
+start_height = 244
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 41111
+start_height = 2_000_250
+
 
 [[ustx_balance]]
 address = "ST0DZFQ1XGHC5P1BZ6B7HSWQKQJHM74JBGCSDTNA"
