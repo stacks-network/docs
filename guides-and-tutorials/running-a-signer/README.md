@@ -236,7 +236,7 @@ Create a file called `node-config.toml`. On the [Sample Configuration Files](../
 The important aspects that you’ll need to change are:
 
 * `working_dir`: a directory path where the node will persist data
-* `block_proposal_token`: an authentication token that your signer uses to authenticate certain requests to your node. This must match the value you used as `auth_password` in the signer’s configuration.
+* `auth_token`: an authentication token that your signer uses to authenticate certain requests to your node. This must match the value you used as `auth_password` in the signer’s configuration.
 * `events_observer.endpoint`: This is the host (IP address and port) where your signer is configured to listen for events. An example string would be ”`127.0.0.1:30000`” or ”`my-signer.local:30000`”
 
 #### Start with an archive

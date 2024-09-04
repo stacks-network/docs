@@ -11,7 +11,7 @@ If you prefer to handle these yourself, step-by-step instructions are included b
 ### Automated Bash Script
 
 {% hint style="warning" %}
-Be sure to edit your `block_proposal_token` field here to match the `auth_password` field in your signer config.
+Be sure to edit your `auth_token` (previously `block_proposal_token`) field here to match the `auth_password` field in your signer config.
 {% endhint %}
 
 ```bash
@@ -49,7 +49,7 @@ pox_reward_length = 900
 # Set your auth token, which the signer uses
 # This should match the auth_password field of your signer config
 [connection_options]
-block_proposal_token = "12345"
+auth_token = "12345"
 
 [[events_observer]]
 endpoint = "0.0.0.0.0:30000"
@@ -160,7 +160,7 @@ events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 # Set your auth token, which the signer uses
 # This should match the auth_password field of your signer config
 [connection_options]
-block_proposal_token = "12345"
+auth_token = "12345"
 
 [[ustx_balance]]
 address = "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2"
@@ -220,7 +220,7 @@ start_height = 2000701
 
 The important aspects that you’ll need to change are:
 
-`block_proposal_token`: an authentication token that your signer uses to authenticate certain requests to your node. This must match the value you used as `auth_password` in the signer’s configuration.
+`auth_token`: an authentication token that your signer uses to authenticate certain requests to your node. This must match the value you used as `auth_password` in the signer’s configuration.
 
 `events_observer.endpoint`: This is the host (IP address and port) where your signer is configured to listen for events. An example string would be ”`127.0.0.1:30000`” or ”`my-signer.local:30000`”
 

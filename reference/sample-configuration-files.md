@@ -77,7 +77,7 @@ first_burn_block_hash = "654e1e9f66701d4f8a138b46d4cf0cc26665688175bcbb1700729ef
 # Set your auth token, which the signer uses
 # This should match the auth_password field of your signer config
 [connection_options]
-block_proposal_token = "12345"
+auth_token = "12345"
 
 # Set your signer as an event observer
 [[events_observer]]
@@ -279,7 +279,7 @@ pox_reward_length = 900
 # Set your auth token, which the signer uses
 # This should match the auth_password field of your signer config
 [connection_options]
-block_proposal_token = "12345"
+auth_token = "12345"
 
 # Set your signer as an event observer
 [[events_observer]]
@@ -406,7 +406,7 @@ peer_port = 8333
 # Set your auth token, which the signer uses
 # This should match the auth_password field of your signer config
 [connection_options]
-block_proposal_token = "12345"
+auth_token = "12345"
 
 # Set your signer as an event observer
 [[events_observer]]
