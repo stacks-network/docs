@@ -94,3 +94,4 @@ redirects:
   write-smart-contracts/overview: clarity/overview.md
   write-smart-contracts/principals: clarity/types.md
   write-smart-contracts/tokens: tutorials/tokens.md
+  sbtc/introduction: concepts/sbtc.md
