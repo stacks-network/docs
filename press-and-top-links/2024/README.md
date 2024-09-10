@@ -41,3 +41,7 @@ For weekly stories delivered to your inbox, subscribe to [Stacks Snacks](https:/
 {% content-ref url="may-2024-3.md" %}
 [may-2024-3.md](may-2024-3.md)
 {% endcontent-ref %}
+
+{% content-ref url="september-2024.md" %}
+[september-2024.md](september-2024.md)
+{% endcontent-ref %}
