@@ -34,6 +34,7 @@ rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
 bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
 prometheus_bind = "0.0.0.0:9153"
+stacker = true
 
 [burnchain]
 chain = "bitcoin"
@@ -75,7 +76,7 @@ amount = 10000000000000000
 
 [fee_estimation]
 fee_estimator = "fuzzed_weighted_median_fee_rate"
-    
+
 [[burnchain.epochs]]
 epoch_name = "1.0"
 start_height = 0
@@ -180,7 +181,7 @@ amount = 10000000000000000
 
 [fee_estimation]
 fee_estimator = "fuzzed_weighted_median_fee_rate"
-    
+
 [[burnchain.epochs]]
 epoch_name = "1.0"
 start_height = 0
