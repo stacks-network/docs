@@ -1,6 +1,10 @@
-# Keywords
+# Clarity Keywords
 
-#### block-height​ <a href="#block-height" id="block-height"></a>
+### block-height​ <a href="#block-height" id="block-height"></a>
+
+{% hint style="info" %}
+The Nakamoto hard fork will introduce a few new Clarity keywords. It's important to note that even with the new [block production mechanism](../concepts/block-production/), the `block-height` keyword behavior will not change. It will simply correspond to the current tenure height. This means any Clarity contracts using this keyword will be backwards compatible after the Nakamoto Upgrade.
+{% endhint %}
 
 Introduced in: Clarity 1
 
@@ -16,7 +20,7 @@ Returns the current block height of the Stacks blockchain as an uint
 (> block-height 1000) ;; returns true if the current block-height has passed 1000 blocks.
 ```
 
-#### burn-block-height​ <a href="#burn-block-height" id="burn-block-height"></a>
+### burn-block-height​ <a href="#burn-block-height" id="burn-block-height"></a>
 
 Introduced in: Clarity 1
 
@@ -32,7 +36,7 @@ Returns the current block height of the underlying burn blockchain as a uint
 (> burn-block-height 1000) ;; returns true if the current height of the underlying burn blockchain has passed 1000 blocks.
 ```
 
-#### chain-id​ <a href="#chain-id-clarity2" id="chain-id-clarity2"></a>
+### chain-id​ <a href="#chain-id-clarity2" id="chain-id-clarity2"></a>
 
 Introduced in: Clarity 2
 
@@ -48,7 +52,7 @@ Returns the 32-bit chain ID of the blockchain running this transaction
 (print chain-id) ;; Will print 'u1' if the code is running on mainnet, and 'u2147483648' on testnet, and other values on different chains.
 ```
 
-#### contract-caller​ <a href="#contract-caller" id="contract-caller"></a>
+### contract-caller​ <a href="#contract-caller" id="contract-caller"></a>
 
 Introduced in: Clarity 1
 
@@ -64,7 +68,7 @@ Returns the caller of the current contract context. If this contract is the firs
 (print contract-caller) ;; Will print out a Stacks address of the transaction sender
 ```
 
-#### false​ <a href="#false" id="false"></a>
+### false​ <a href="#false" id="false"></a>
 
 Introduced in: Clarity 1
 
@@ -81,7 +85,7 @@ Boolean false constant.
 (or false true)  ;; Evaluates to true
 ```
 
-#### is-in-mainnet​ <a href="#is-in-mainnet-clarity2" id="is-in-mainnet-clarity2"></a>
+### is-in-mainnet​ <a href="#is-in-mainnet-clarity2" id="is-in-mainnet-clarity2"></a>
 
 Introduced in: Clarity 2
 
@@ -97,7 +101,7 @@ Returns a boolean indicating whether or not the code is running on the mainnet
 (print is-in-mainnet) ;; Will print 'true' if the code is running on the mainnet
 ```
 
-#### is-in-regtest​ <a href="#is-in-regtest" id="is-in-regtest"></a>
+### is-in-regtest​ <a href="#is-in-regtest" id="is-in-regtest"></a>
 
 Introduced in: Clarity 1
 
@@ -113,7 +117,7 @@ Returns whether or not the code is running in a regression test
 (print is-in-regtest) ;; Will print 'true' if the code is running in a regression test
 ```
 
-#### none​ <a href="#none" id="none"></a>
+### none​ <a href="#none" id="none"></a>
 
 Introduced in: Clarity 1
 
@@ -134,7 +138,31 @@ Represents the _none_ option indicating no value for a given optional (analogous
 (only-if-positive (- 3)) ;; Returns none
 ```
 
-#### stx-liquid-supply​ <a href="#stx-liquid-supply" id="stx-liquid-supply"></a>
+```
+(print stx-liquid-supply) ;; Will print out the total number of liqui
+```
+
+### **stacks-block-height**
+
+{% hint style="warning" %}
+Will be available after the Nakamoto hard fork
+{% endhint %}
+
+Introduced in: Clarity 3
+
+**output: `uint`**
+
+**description:**
+
+Returns the current Stacks block height.
+
+**example:**
+
+```
+(print stacks-block-height) ;; Will print out the current Stacks block height
+```
+
+### stx-liquid-supply​ <a href="#stx-liquid-supply" id="stx-liquid-supply"></a>
 
 Introduced in: Clarity 1
 
@@ -150,7 +178,27 @@ Returns the total number of micro-STX (uSTX) that are liquid in the system as of
 (print stx-liquid-supply) ;; Will print out the total number of liquid uSTX
 ```
 
-#### true​ <a href="#true" id="true"></a>
+### **tenure-height**
+
+{% hint style="warning" %}
+Will be available after Nakamoto hard fork
+{% endhint %}
+
+Introduced in: Clarity 3
+
+**output: `uint`**
+
+**description:**
+
+Returns the number of tenures that have passed. When the Nakamoto block-processing starts, this will be equal to the chain length.
+
+**example:**
+
+```
+(print tenure-height) ;; Will print out the current tenure height
+```
+
+### true​ <a href="#true" id="true"></a>
 
 Introduced in: Clarity 1
 
@@ -167,7 +215,7 @@ Boolean true constant.
 (or false true)  ;; Evaluates to true
 ```
 
-#### tx-sender​ <a href="#tx-sender" id="tx-sender"></a>
+### tx-sender​ <a href="#tx-sender" id="tx-sender"></a>
 
 Introduced in: Clarity 1
 
@@ -183,7 +231,7 @@ Returns the original sender of the current transaction, or if `as-contract` was 
 (print tx-sender) ;; Will print out a Stacks address of the transaction sender
 ```
 
-#### tx-sponsor?​ <a href="#tx-sponsor-clarity2" id="tx-sponsor-clarity2"></a>
+### tx-sponsor?​ <a href="#tx-sponsor-clarity2" id="tx-sponsor-clarity2"></a>
 
 Introduced in: Clarity 2
 
