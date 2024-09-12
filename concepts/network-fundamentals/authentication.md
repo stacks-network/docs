@@ -6,7 +6,7 @@ This guide explains how authentication is performed on the Stacks blockchain.
 
 Authentication provides a way for users to identify themselves to an app while retaining complete control over their credentials and personal details.
 
-Users who register for your app can subsequently authenticate to any other app with support for the [Blockchain Name System](bitcoin-name-system.md) and vice versa.
+Users who register for your app can subsequently authenticate to any other app with support for the [Bitcoin Name System](bitcoin-name-system.md) and vice versa.
 
 ### Web2 vs Web3 Authentication
 
