@@ -20,7 +20,7 @@ There are some notable differences between Primary Testnet and Nakamoto Testnet,
 * You can start onboarding your Signer, deploy contracts and test your Apps. All functionality from the previous testnet is available.
 * Old testnet data is archived and will remain [available](https://explorer.hiro.so/?chain=testnet\&api=https://api.old.testnet.hiro.so) until the end of June 2024
 * **Faucet and tSTX:**
-  * The [Faucet address](https://explorer.hiro.so/address/ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2?chain=testnet) and limits stay the same. Learn more about faucets: [Broken link](broken-reference "mention")
+  * The [Faucet address](https://explorer.hiro.so/address/ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2?chain=testnet) and limits stay the same.
   * If you need more tSTX than the current daily limit to onboard your Signer on Primary Testnet, please reach out to your main point of contact in the ecosystem.
 
 ### Configuration Files for Signers
