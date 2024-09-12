@@ -4,7 +4,7 @@ Remember that Nakamoto is being rolled out in two phases. This represents the fi
 
 ## Upgrading your Stacking pool or service
 
-There are a few basic steps you'll need to follow to get your Stacking pool set up to work with this first Nakamoto hard fork as this fork brings us the new [pox-4 contract](broken-reference):
+There are a few basic steps you'll need to follow to get your Stacking pool set up to work with this first Nakamoto hard fork as this fork brings us the new [pox-4 contract](../../example-contracts/stacking.md):
 
 1. Setup a Stacks node and signer by following the [How to Run a Signer](../../guides-and-tutorials/running-a-signer/) doc.
 2. Update your user-facing products and contracts to point to the new pox-4 contract
