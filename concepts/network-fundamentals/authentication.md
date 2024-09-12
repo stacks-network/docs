@@ -30,7 +30,7 @@ A signature can be thought of as proof that I own the private key without actual
 
 Third Web has a great [conceptual primer](https://blog.thirdweb.com/web3-auth/) on web3 authentication.
 
-For a more practical introduction, take a look at the [Quickstart tutorial ](broken-reference)and [Hiro's Stacks.js docs](https://docs.hiro.so/stacks/connect/guides/authenticate-users).
+For a more practical introduction, take a look at the [Quickstart tutorial ](../../guides-and-tutorials/hello-stacks-quickstart-tutorial.md)and [Hiro's Stacks.js docs](https://docs.hiro.so/stacks/connect/guides/authenticate-users).
 
 ### How it works
 
