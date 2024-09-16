@@ -1,5 +1,9 @@
 # Stacks Node Configuration
 
+{% hint style="info" %}
+Note that these config fields are for a Stacks follower node. If you are running a signer alongside your Stacks node, you'll want to use the sample file found on the [Signer Configuration](sample-configuration-files.md) page as it contains additional parameters needed for your signer and Stacks node to function properly.
+{% endhint %}
+
 ### Usage
 
 ```bash
