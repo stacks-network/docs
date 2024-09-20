@@ -73,20 +73,19 @@ Contains options for sending events emitted to the [stacks-blockchain-api](https
 
 {% hint style="info" %}
 This section is _optional_ and not required.
-
-However, if this section is added, **all** fields are required
 {% endhint %}
 
 Specifies configuration options for others connecting to the stacks node.
 
 | Name                                  | Required | Description                                                                                                                                                 |
 | ------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| public\_ip\_address                   | ✓        | Public IPv4 to advertise to other nodes                                                                                                                     |
-| download\_interval                    | ✓        | Time (in seconds) between attempts to download blocks                                                                                                       |
-| walk\_interval                        | ✓        | Time (in seconds) between attempts to walk the list of neighbors                                                                                            |
-| read\_only\_call\_limit\_read\_length | ✓        | Total number of bytes allowed to be read by an individual read-only function call                                                                           |
-| read\_only\_call\_limit\_read\_count  | ✓        | Total number of independent read operations permitted for an individual read-only function call                                                             |
-| read\_only\_call\_limit\_runtime      | ✓        | [Runtime cost](https://github.com/stacksgov/sips/blob/main/sips/sip-006/sip-006-runtime-cost-assessment.md) limit for an individual read-only function call |
+| public\_ip\_address                   |          | Public IPv4 to advertise to other nodes                                                                                                                     |
+| download\_interval                    |          | Time (in seconds) between attempts to download blocks                                                                                                       |
+| walk\_interval                        |          | Time (in seconds) between attempts to walk the list of neighbors                                                                                            |
+| private\_neighbors                    |          | If false, this node won't announce or accept neighbors that are behind private networks. Defaults to true.                                                  |
+| read\_only\_call\_limit\_read\_length |          | Total number of bytes allowed to be read by an individual read-only function call                                                                           |
+| read\_only\_call\_limit\_read\_count  |          | Total number of independent read operations permitted for an individual read-only function call                                                             |
+| read\_only\_call\_limit\_runtime      |          | [Runtime cost](https://github.com/stacksgov/sips/blob/main/sips/sip-006/sip-006-runtime-cost-assessment.md) limit for an individual read-only function call |
 
 #### burnchain
 
