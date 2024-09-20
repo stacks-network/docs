@@ -1,5 +1,11 @@
 # Nakamoto Activation Guide for Signers
 
+{% hint style="info" %}
+The block for Nakamoto activation has been chosen as Bitcoin block 864,864, which is currently expected on October 9th. This block is subject to change should core developers need additional time for testing or unexpected issues.
+
+Binaries will be provided roughly a week in advance and your normal upgrade procedure should apply here, you’ll want to be running the latest node and Signer software. Note that if you do not upgrade ahead of the hard fork, your nodes will be dropped from the network. Ideally, you will have Stacked for Cycle #94 ahead of time, any time now is good.
+{% endhint %}
+
 #### Testnet Activation Window (August 19)
 
 This initial phase focuses on testing Signer 3.0 readiness in a testnet environment (Primary Testnet).
