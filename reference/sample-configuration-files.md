@@ -1,5 +1,20 @@
 # Signer Configuration
 
+{% hint style="info" %}
+The block for Nakamoto activation has been chosen as Bitcoin block 864,864, which is currently expected on October 9th. This block is subject to change should core developers need additional time for testing or unexpected issues.
+
+Binaries will be provided roughly a week in advance and your normal upgrade procedure should apply here, you’ll want to be running the latest node and Signer software. Note that if you do not upgrade ahead of the hard fork, your nodes will be dropped from the network. Ideally, you will have Stacked for Cycle #94 ahead of time, any time now is good.
+{% endhint %}
+
+### Current Signer and Stacks Node Versions
+
+If you are a signer, these are the current latest versions you'll want to be running.
+
+* Signer - [2.5.0.0.5.2](https://hub.docker.com/layers/blockstack/stacks-signer/2.5.0.0.5.2/images/sha256-fc29a7c22f236f91270fb1aa58cfb4dd8dcd6b1daa0812e16df0bdc7643cb6ac?context=explore)
+* Stacks Node - [2.5.0.0.6](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.6/images/sha256-f6f17cd1399c5c4739ae34f7fc313775378f0bcbc5a985f0d7d02d008b5e9631?context=explore)
+
+### Example Configs
+
 Below are sample configuration files for running a Stacks node and signer provided in one place for convenience. You'll need to modify some of these according to the [How to Run a Signer](../guides-and-tutorials/running-a-signer/) doc.
 
 ### Testnet Signer

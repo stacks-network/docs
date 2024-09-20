@@ -1,5 +1,20 @@
 # Run a Signer
 
+{% hint style="info" %}
+The block for Nakamoto activation has been chosen as Bitcoin block 864,864, which is currently expected on October 9th. This block is subject to change should core developers need additional time for testing or unexpected issues.
+
+Binaries will be provided roughly a week in advance and your normal upgrade procedure should apply here, you’ll want to be running the latest node and Signer software. Note that if you do not upgrade ahead of the hard fork, your nodes will be dropped from the network. Ideally, you will have Stacked for Cycle #94 ahead of time, any time now is good.
+{% endhint %}
+
+{% hint style="info" %}
+### Current Signer and Stacks Node Versions
+
+For quick reference, here are the current latest versions you'll want to be running as a signer. If you don't yet have your signer up and running, this guide will walk you through that.
+
+* Signer - [2.5.0.0.5.2](https://hub.docker.com/layers/blockstack/stacks-signer/2.5.0.0.5.2/images/sha256-fc29a7c22f236f91270fb1aa58cfb4dd8dcd6b1daa0812e16df0bdc7643cb6ac?context=explore)
+* Stacks Node - [2.5.0.0.6](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.6/images/sha256-f6f17cd1399c5c4739ae34f7fc313775378f0bcbc5a985f0d7d02d008b5e9631?context=explore)
+{% endhint %}
+
 ### How to Use This Guide
 
 If you are not familiar with the concept of signing and stacking, and how they work together, be sure to check out the [Stackers and Signing concept guide](../../concepts/block-production/stackers-and-signing.md).
@@ -131,7 +146,7 @@ Note that at the moment the signer should only be run on testnet using these ins
 
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the [`blockstack/stacks-signer:2.5.0.0.5.1`](https://hub.docker.com/r/blockstack/stacks-signer/tags?page=1\&name=2.5.0.0.5.1) image.
+You can run the signer as a Docker container using the [`blockstack/stacks-signer:2.5.0.0.5.2`](https://hub.docker.com/layers/blockstack/stacks-signer/2.5.0.0.5.2/images/sha256-fc29a7c22f236f91270fb1aa58cfb4dd8dcd6b1daa0812e16df0bdc7643cb6ac?context=explore) image.
 
 When running the Docker container, you’ll need to ensure a few things:
 
@@ -145,7 +160,7 @@ Be sure to replace the `STX_SIGNER_PATH` with the correct path to your config fi
 
 ```bash
 IMG="blockstack/stacks-signer"
-VER="2.5.0.0.5.1"
+VER="2.5.0.0.5.2"
 STX_SIGNER_PATH="./"
 STX_SIGNER_DATA="$STX_SIGNER_PATH/data"
 STX_SIGNER_CONFIG="$STX_SIGNER_PATH/signer-config.toml"
@@ -171,7 +186,7 @@ For example, if you are running on M1 Mac, you would add `--platform=linux/amd64
 Or, with a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-signer:2.5.0.0.5.1
+FROM blockstack/stacks-signer:2.5.0.0.5.2
 COPY signer-config.toml /config.toml
 EXPOSE 30000
 CMD ["stacks-signer", "run", "--config", "/config.toml"]
@@ -264,7 +279,7 @@ For example:
 
 #### Run a Stacks Node with Docker
 
-You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image. When running the Docker container, you’ll need to ensure a few things:
+You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 2.5.0.0.6](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.6/images/sha256-f6f17cd1399c5c4739ae34f7fc313775378f0bcbc5a985f0d7d02d008b5e9631?context=explore). When running the Docker container, you’ll need to ensure a few things:
 
 * The port configured for `p2p_bind` must be exposed to the internet
 * The port configured for `rpc_bind` must be accessible by your signer
@@ -275,7 +290,7 @@ An example for running the node’s Docker image with docker run is below. Be su
 
 ```bash
 IMG="blockstack/stacks-core"
-VER="2.5.0.0.5"
+VER="2.5.0.0.6"
 STX_NODE_CONFIG="./node-config.toml"
 
 docker run -d \
@@ -293,7 +308,7 @@ docker run -d \
 Or, using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:2.5.0.0.5
+FROM blockstack/stacks-core:2.5.0.0.6
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443
@@ -302,7 +317,7 @@ CMD ["stacks-node", "start", "--config", "/config.toml"]
 
 If when running your node you get a connection refused error that looks like this, you may need to point to Docker.
 
-First, be sure that you have the proper entry point specified in your `node-config.toml` file as specified in the [How to Run a Signer](./) doc.
+First, be sure that you have the proper entry point specified in your `node-config.toml` file.
 
 <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
