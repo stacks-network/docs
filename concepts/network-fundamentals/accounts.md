@@ -4,7 +4,7 @@
 
 Stacks uses an accounts-based model, more similar to Ethereum, rather than a [UTXO](https://learnmeabitcoin.com/technical/transaction/utxo/) model like Bitcoin. In a UTXO model, the network operates as a ledger, with each UTXO being analagous to a cash bill.
 
-With an accounts, model, each account is associated with a balance and that balance can be added to or subtracted from.
+With an accounts-based model, each account is associated with a balance and that balance can be added to or subtracted from.
 
 Stacks accounts are entities that own assets, like Stacks (STX) tokens. An account has an address, private key, nonce, and one or more asset balances.
 
@@ -96,4 +96,3 @@ const stacksAddress = getAddressFromPrivateKey(
 ```
 
 Finally, you can generate new account using a Stacks-enabled wallet like [Leather](https://leather.io/), [Xverse](https://www.xverse.app/), or [Asigna](https://asigna.io/).
-
