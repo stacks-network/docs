@@ -40,7 +40,7 @@ Stacking functionality is implemented as a smart contract, using Clarity. Read m
 
 ### Locking and Unlocking STX
 
-One important thing to keep in mind is that when we speak of STX tokens being "locked", no transfer of STX tokens is occuring. Locking STX tokens is non-custodial, and STX tokens remain in your wallet. When you initiate a stacking transaction (described below) those tokens are locked and unsependable at the protocol level, but they do not leave the stacker's wallet.
+One important thing to keep in mind is that when we speak of STX tokens being "locked", no transfer of STX tokens is occuring. Locking STX tokens is non-custodial, and STX tokens remain in your wallet. When you initiate a stacking transaction (described below) those tokens are locked and unspendable at the protocol level, but they do not leave the stacker's wallet.
 
 At the end of the lock period, they will be automatically unlocked (spendable at the protocol level) but this occurs implicitly, there is no direct transaction that unlocks them.
 
