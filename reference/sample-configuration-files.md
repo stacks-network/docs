@@ -11,7 +11,7 @@ Binaries will be provided roughly a week in advance and your normal upgrade proc
 If you are a signer, these are the current latest versions you'll want to be running.
 
 * Signer - [2.5.0.0.5.2](https://hub.docker.com/layers/blockstack/stacks-signer/2.5.0.0.5.2/images/sha256-fc29a7c22f236f91270fb1aa58cfb4dd8dcd6b1daa0812e16df0bdc7643cb6ac?context=explore)
-* Stacks Node - [2.5.0.0.6](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.6/images/sha256-f6f17cd1399c5c4739ae34f7fc313775378f0bcbc5a985f0d7d02d008b5e9631?context=explore)
+* Stacks Node - [2.5.0.0.7](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.7/images/sha256-71d3eb305b5c1b68cd44904a7bcd6e5f92542135a7218762cdf27a46acaff69b?context=explore)
 
 ### Example Configs
 
