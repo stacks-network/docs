@@ -12,7 +12,7 @@ Binaries will be provided roughly a week in advance and your normal upgrade proc
 For quick reference, here are the current latest versions you'll want to be running as a signer. If you don't yet have your signer up and running, this guide will walk you through that.
 
 * Signer - [2.5.0.0.5.2](https://hub.docker.com/layers/blockstack/stacks-signer/2.5.0.0.5.2/images/sha256-fc29a7c22f236f91270fb1aa58cfb4dd8dcd6b1daa0812e16df0bdc7643cb6ac?context=explore)
-* Stacks Node - [2.5.0.0.6](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.6/images/sha256-f6f17cd1399c5c4739ae34f7fc313775378f0bcbc5a985f0d7d02d008b5e9631?context=explore)
+* Stacks Node - [2.5.0.0.7](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.7/images/sha256-71d3eb305b5c1b68cd44904a7bcd6e5f92542135a7218762cdf27a46acaff69b?context=explore)
 {% endhint %}
 
 ### How to Use This Guide
@@ -279,7 +279,7 @@ For example:
 
 #### Run a Stacks Node with Docker
 
-You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 2.5.0.0.6](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.6/images/sha256-f6f17cd1399c5c4739ae34f7fc313775378f0bcbc5a985f0d7d02d008b5e9631?context=explore). When running the Docker container, you’ll need to ensure a few things:
+You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 2.5.0.0.7](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.7/images/sha256-71d3eb305b5c1b68cd44904a7bcd6e5f92542135a7218762cdf27a46acaff69b?context=explore). When running the Docker container, you’ll need to ensure a few things:
 
 * The port configured for `p2p_bind` must be exposed to the internet
 * The port configured for `rpc_bind` must be accessible by your signer
@@ -290,7 +290,7 @@ An example for running the node’s Docker image with docker run is below. Be su
 
 ```bash
 IMG="blockstack/stacks-core"
-VER="2.5.0.0.6"
+VER="2.5.0.0.7"
 STX_NODE_CONFIG="./node-config.toml"
 
 docker run -d \
@@ -308,7 +308,7 @@ docker run -d \
 Or, using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:2.5.0.0.6
+FROM blockstack/stacks-core:2.5.0.0.7
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443
