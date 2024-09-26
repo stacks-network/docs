@@ -13,6 +13,30 @@ If you are a signer, these are the current latest versions you'll want to be run
 * Signer - [2.5.0.0.5.2](https://hub.docker.com/layers/blockstack/stacks-signer/2.5.0.0.5.2/images/sha256-fc29a7c22f236f91270fb1aa58cfb4dd8dcd6b1daa0812e16df0bdc7643cb6ac?context=explore)
 * Stacks Node - [2.5.0.0.6](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.6/images/sha256-f6f17cd1399c5c4739ae34f7fc313775378f0bcbc5a985f0d7d02d008b5e9631?context=explore)
 
+
+### Signer Configuration File Options
+
+The signer configuration file is a TOML file that contains the configuration options for your signer. Below are the options you can set in the signer configuration file.
+
+| Name                  | Required  | Description   |
+| :---                  | :---      | :---          |
+| node\_host            | ✓        | IP address and port where your Stacks node can be accessed. The port 20443 is the default RPC endpoint for Stacks nodes. Note that you must use an IP address - DNS hosts are not supported at this time. |
+| endpoint              | ✓        | Location where the signer will expose an RPC endpoint for receiving events from your Stacks node. |
+| stacks\_private\_key  | ✓        | Hex representation of the signer's Stacks private key used for communicating with the Stacks Node, including writing to the Stacker DB instance. |
+| network               | ✓        | Network to use. One of "mainnet",  "testnet" or "mocknet". |
+| auth\_password        | ✓        | Authorization token for HTT |
+| db\_path              | ✓        | Path to the signer's database file or :memory: for an in-memory database. |
+| metrics\_endpoint     |           | Address and port for Prometheus metrics collection. |
+| event\_timeout\_ms    |           | Time to wait (in milliseconds) for a response from the stacker-db instance. |
+| dkg\_public\_timeout\_ms |        | Timeout in (milliseconds) to gather DkgPublicShares messages. |
+| dkg\_private\_timeout\_ms |       | Timeout in (milliseconds) to gather DkgPrivateShares messages. |
+| dkg\_end\_timeout\_ms |           | Timeout in (milliseconds) to gather DkgEnd messages. |
+| nonce\_timeout\_ms    |           | Timeout in (milliseconds) to gather nonces. |
+| sign\_timeout\_ms     |           | Timeout in (milliseconds) to gather signature shares. |
+| tx\_fee\_ustx         |           | The STX tx fee to use in microSTX. If not set, will default to 10000. |
+| max\_tx\_fee\_ustx    |           | The max STX tx fee to use in microSTX when estimating fees. If not set, will use tx\_fee\_ustx. |
+
+
 ### Example Configs
 
 Below are sample configuration files for running a Stacks node and signer provided in one place for convenience. You'll need to modify some of these according to the [How to Run a Signer](../guides-and-tutorials/running-a-signer/) doc.
@@ -391,6 +415,9 @@ auth_password = "$your_http_auth_token"
 # This is the privateKey field from the keys you generated in the 
 # previous step.
 stacks_private_key = "$your_stacks_private_key"
+
+# The IP address and port where prometheus metrics can be accessed.
+metrics_endpoint = "0.0.0.0:9154"
 ```
 
 ### Mainnet Stacks Node
