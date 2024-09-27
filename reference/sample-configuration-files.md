@@ -28,6 +28,7 @@ The signer configuration file is a TOML file that contains the configuration opt
 | db\_path              | ✓        | Path to the signer's database file or :memory: for an in-memory database. |
 | metrics\_endpoint     |           | IP:PORT for Prometheus metrics collection. |
 | event\_timeout\_ms    |           | Time to wait (in milliseconds) for a response from the stacker-db instance. |
+| block\_proposal\_timeout\_ms    |           | Time to wait (in milliseconds) for a block response from miners. |
 | dkg\_public\_timeout\_ms |        | Timeout in (milliseconds) to gather DkgPublicShares messages. |
 | dkg\_private\_timeout\_ms |       | Timeout in (milliseconds) to gather DkgPrivateShares messages. |
 | dkg\_end\_timeout\_ms |           | Timeout in (milliseconds) to gather DkgEnd messages. |
