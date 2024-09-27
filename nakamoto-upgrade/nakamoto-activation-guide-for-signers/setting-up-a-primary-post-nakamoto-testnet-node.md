@@ -2,7 +2,7 @@
 
 ### **Setup A Stacks Primary Testnet Node**
 
-Once your signer is upgraded to version 2.5.0.0.5.2-rc1 ([here](https://github.com/stacks-network/stacks-core/releases/tag/signer-2.5.0.0.5.2-rc1)) you’ll need to run a primary testnet node alongside it.
+Once your signer is upgraded to version 2.5.0.0.5.2 ([here](https://github.com/stacks-network/stacks-core/releases/tag/signer-2.5.0.0.5.2)) you’ll need to run a primary testnet node alongside it.
 
 You have two options here. The first is to run the Bash script below and it will handle everything for you, including creating the configuration file, downloading and extracting a chain state archive, and getting the node up and running.
 
@@ -20,7 +20,7 @@ STACKS_RPC_PORT="40443"
 STACKS_P2P_PORT="40444"
 
 IMG="blockstack/stacks-core"
-VER="2.5.0.0.6"
+VER="2.5.0.0.7"
 STX_NODE_CONFIG="${STACKS_DIR}/Config.toml"
 
 mkdir -p ${STACKS_DIR}/data
@@ -251,7 +251,7 @@ An example for running the node’s Docker image with docker run is below. Be su
 ```bash
 IMG="blockstack/stacks-core"
 
-VER="2.5.0.0.6"
+VER="2.5.0.0.7"
 
 STX_NODE_CONFIG="./node-config.toml"
 
@@ -270,7 +270,7 @@ stacks-node start \\
 Or, using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:2.5.0.0.6
+FROM blockstack/stacks-core:2.5.0.0.7
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443
