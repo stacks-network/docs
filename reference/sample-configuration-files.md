@@ -20,13 +20,13 @@ The signer configuration file is a TOML file that contains the configuration opt
 
 | Name                  | Required  | Description   |
 | :---                  | :---      | :---          |
-| node\_host            | ✓        | IP address and port where your Stacks node can be accessed. The port 20443 is the default RPC endpoint for Stacks nodes. Note that you must use an IP address - DNS hosts are not supported at this time. |
-| endpoint              | ✓        | Location where the signer will expose an RPC endpoint for receiving events from your Stacks node. |
+| node\_host            | ✓        | IP:PORT where your Stacks node can be accessed. The port 20443 is the default RPC endpoint for Stacks nodes. Note that you must use an IP address - DNS hosts are not supported at this time. |
+| endpoint              | ✓        | IP:PORT where the signer will expose an RPC endpoint for receiving events from your Stacks node. |
 | stacks\_private\_key  | ✓        | Hex representation of the signer's Stacks private key used for communicating with the Stacks Node, including writing to the Stacker DB instance. |
 | network               | ✓        | Network to use. One of "mainnet",  "testnet" or "mocknet". |
-| auth\_password        | ✓        | Authorization token for HTT |
+| auth\_password        | ✓        | Authorization token for HTTP requests made from the signer to your Stacks node. |
 | db\_path              | ✓        | Path to the signer's database file or :memory: for an in-memory database. |
-| metrics\_endpoint     |           | Address and port for Prometheus metrics collection. |
+| metrics\_endpoint     |           | IP:PORT for Prometheus metrics collection. |
 | event\_timeout\_ms    |           | Time to wait (in milliseconds) for a response from the stacker-db instance. |
 | dkg\_public\_timeout\_ms |        | Timeout in (milliseconds) to gather DkgPublicShares messages. |
 | dkg\_private\_timeout\_ms |       | Timeout in (milliseconds) to gather DkgPrivateShares messages. |
@@ -52,7 +52,7 @@ node_host = "127.0.0.1:20443"
 
 # This is the location where the signer will expose an RPC endpoint for 
 # receiving events from your Stacks node.
-endpoint = "0.0.0.0:30000"
+endpoint = "127.0.0.1:30000"
 
 # Either “testnet” or “mainnet”
 network = "testnet"
@@ -298,7 +298,7 @@ amount = 24378281250000
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
 bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
-prometheus_bind = "0.0.0.0:9153"
+prometheus_bind = "127.0.0.1:9153"
 working_dir = "/hirosystems/data"
 local_peer_seed = "{{ redacted }}"
 # Required for nodes attached to signers, optional for other nodes
@@ -397,7 +397,7 @@ node_host = "127.0.0.1:20443"
 
 # This is the location where the signer will expose an RPC endpoint for 
 # receiving events from your Stacks node.
-endpoint = "0.0.0.0:30000"
+endpoint = "127.0.0.1:30000"
 
 # Either “testnet” or “mainnet”
 network = "mainnet"
@@ -417,7 +417,7 @@ auth_password = "$your_http_auth_token"
 stacks_private_key = "$your_stacks_private_key"
 
 # The IP address and port where prometheus metrics can be accessed.
-metrics_endpoint = "0.0.0.0:9154"
+metrics_endpoint = "127.0.0.1:9154"
 ```
 
 ### Mainnet Stacks Node
