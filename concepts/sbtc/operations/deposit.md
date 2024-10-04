@@ -1,42 +1,25 @@
 # sBTC Deposit Operation
 
-The deposit operation allows users to convert their BTC to sBTC. This process involves moving BTC from the Bitcoin blockchain to the Stacks blockchain as sBTC.
+The deposit operation enables users to convert their BTC to sBTC, effectively moving value from the Bitcoin blockchain to the Stacks blockchain. This process can be completed within a single Bitcoin block, streamlining the user experience.
 
 ## Process Overview
 
-1. An API call referencing a Bitcoin transaction initiates the deposit process.
-2. The deposit can be completed within a single Bitcoin block.
-3. The Deposit API relays deposit information to the sBTC Bootstrap Signers.
-4. sBTC Bootstrap Signers verify and process the deposit.
-5. Equivalent sBTC is minted on the Stacks blockchain.
+The deposit process begins when a user initiates an API call referencing a Bitcoin transaction. This call triggers the Deposit API, which plays a crucial role by relaying deposit information to the sBTC Bootstrap Signers. These signers are responsible for verifying and processing the deposit. Once verified, an equivalent amount of sBTC is minted on the Stacks blockchain.
 
-## Deposit API
-
-The Deposit API plays a crucial role in the deposit process:
-
-- It relays deposit information to the sBTC Bootstrap Signers.
-- It reduces the cost for deposit on rejection.
-- It simplifies the sBTC system and makes it easier to service.
+The Deposit API serves multiple purposes beyond relaying information. It reduces costs associated with deposit rejections and simplifies the overall sBTC system, making it easier to service and maintain.
 
 ## Bitcoin Deposit Requirements
 
-Deposits must meet specific requirements to be considered valid:
+For a deposit to be considered valid, it must adhere to specific requirements. The deposit must be made to a taproot address and be spendable by a consensus threshold of signers. Additionally, the deposit must follow a specific format that prevents short-term clawbacks, ensuring the security and integrity of the system.
 
-1. The deposit must pay to a taproot address.
-2. The deposit must be spendable by a consensus threshold of signers.
-3. The deposit must fit a specific format that cannot be clawed back in the short term.
+## Security Measures
 
-## Security Considerations
-
-- The sBTC Bootstrap Signers screen deposits using a dynamic blocklist to prevent malicious activities.
-- Multiple confirmations may be required before the deposit is considered final.
+To maintain the security of the sBTC system, the sBTC Bootstrap Signers employ a dynamic blocklist to screen deposits and prevent malicious activities. Depending on the circumstances, multiple confirmations may be required before a deposit is considered final, adding an extra layer of security to the process.
 
 ## User Experience
 
-From a user's perspective, the deposit process involves:
+From a user's perspective, the deposit process is straightforward. Users initiate a BTC transaction to a specified address and then wait for the transaction to be confirmed on the Bitcoin blockchain. Once confirmed, they receive the equivalent amount of sBTC in their Stacks wallet.
 
-1. Initiating a BTC transaction to a specified address.
-2. Waiting for the transaction to be confirmed on the Bitcoin blockchain.
-3. Receiving the equivalent amount of sBTC in their Stacks wallet.
+To enhance the user experience, the sBTC bridge web application provides an intuitive interface for users to track the status of their deposit operations. This allows users to stay informed throughout the process, from initiation to completion.
 
-The sBTC bridge web app provides a user-friendly interface for tracking the status of deposit operations.
+In summary, the sBTC deposit operation offers a secure and efficient method for users to convert their BTC to sBTC, leveraging the strengths of both the Bitcoin and Stacks blockchains while prioritizing security and user experience.
