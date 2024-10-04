@@ -82,7 +82,7 @@ Detailed steps for each of these are laid out below, but this checklist is being
 **Setting Up the Stacks Node**
 
 * [ ] Create a `node-config.toml` with the necessary settings:
-  * block\_proposal\_token
+  * auth\_token
   * events\_observer.endpoint (matching the signer configuration)
 * [ ] Decide whether to run the Stacks node using Docker or as a binary.
 * [ ] If using Docker:
