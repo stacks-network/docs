@@ -17,7 +17,7 @@ An sBTC operation is any action initiated within the sBTC protocol. The two prim
 
 The sBTC UTxO is the single unspent transaction output (UTxO) on the Bitcoin blockchain that holds the entire BTC balance pegged into sBTC. This UTxO is managed and maintained by the sBTC Signers.
 
-## sBTC Bootstrap Signer
+## sBTC Signer
 
 In sBTC-v1, the sBTC Bootstrap Signer Set is an entity separate from the Stacks Nakamoto signer. sBTC signer responsibilities include:
 
@@ -27,9 +27,9 @@ In sBTC-v1, the sBTC Bootstrap Signer Set is an entity separate from the Stacks 
 
 This role is specific to sBTC-v1. In future version of sBTC, Nakamoto and sBTC signers will be the same entity.
 
-## sBTC Bootstrap Signer Set
+## sBTC Signer Set
 
-The sBTC Bootstrap Signer Set is the group of all sBTC signers. This set has full democratic access to the sBTC UTxO. Key properties include:
+The sBTC Signer Set is the group of all sBTC signers. This set has full democratic access to the sBTC UTxO. Key properties include:
 
 - Selected through a community vote weighted by STX holdings
 - Responsible for maintaining the security of the peg wallet
