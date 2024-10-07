@@ -21,19 +21,15 @@ sBTC facilitates rapid movement between BTC and sBTC:
 
 sBTC adheres to the SIP-10 fungible token standard on the Stacks blockchain. This ensures wide compatibility with Stacks wallets and applications.
 
-## 5. Dynamic Blocklist
-
-The signer binary incorporates an effective screening mechanism for a dynamic blocklist. This feature helps prevent malicious activities and enhances the overall security of the system.
-
-## 6. Community Governance
+## 5. Community Governance
 
 The initial sBTC signing set is determined by a community vote, weighted by STX holdings. This approach ensures that the community has a say in the management of the sBTC system.
 
-## 7. Signer Key Rotation
+## 6. Signer Key Rotation
 
 sBTC signers have the ability to rotate their private keys, enhancing long-term security of the system.
 
-## 8. Transaction Fee Sponsorship
+## 7. Transaction Fee Sponsorship
 
 sBTC transactions on Stacks can be sponsored, allowing users to pay transaction fees in sBTC instead of STX.
 
