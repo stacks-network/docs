@@ -34,8 +34,6 @@ In sBTC, the sBTC Signer is a signer entity separate from the Stacks Nakamoto si
 - Communicating with contracts on the Stacks chain
 - Managing the sBTC UTxO
 
-In future version of sBTC, Nakamoto and sBTC signers will be the same entity.
-
 ### sBTC Signer Set
 
 The sBTC Signer Set is the group of all sBTC signers. This set has full democratic access to the sBTC UTXO. Key properties include:
