@@ -6,10 +6,6 @@ sBTC is a SIP-10 token on the Stacks blockchain that represents Bitcoin (BTC) in
 
 The primary purpose of sBTC is to bridge the Bitcoin and Stacks ecosystems, providing Bitcoin holders with access to the rich functionality of smart contracts on the Stacks blockchain without sacrificing the security and value of their BTC holdings.
 
-### Version
-
-This documentation primarily covers sBTC-v1, which is designed as a builder-first stand-in for a more decentralized version. Future versions (e.g., sBTC-v2) will introduce a more robust, open-network signer set and additional economic incentives for signers to faithfully process transactions.
-
 ### Key Benefits
 
 1. **Bitcoin Compatibility**: Allows Bitcoin holders to participate in the Stacks ecosystem without selling their BTC.
@@ -29,9 +25,6 @@ This documentation primarily covers sBTC-v1, which is designed as a builder-firs
 5. [Clarity Contracts](clarity-contracts.md)
 6. [Auxiliary Features](auxiliary-features/README.md)
    - [Transaction Fee Sponsorship](auxiliary-features/fee-sponsorship.md)
-   - [Dynamic Blocklist](auxiliary-features/dynamic-blocklist.md)
    - [Signer Wallet Rotation](auxiliary-features/signer-wallet-rotation.md)
 7. [Security Considerations](security-considerations.md)
 8. [Future Development](future-development.md)
-
-For developers and contributors, please refer to the [sBTC-v1 GitHub repository](https://github.com/stacks-network/sbtc) for the latest updates and development progress.
