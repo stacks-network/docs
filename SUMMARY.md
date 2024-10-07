@@ -48,7 +48,7 @@
   - [sBTC Operations](operations/README.md)
     - [Deposit](operations/deposit.md)
     - [Withdrawal](operations/withdrawal.md)
-  - [Peg Wallet UTxO](peg-wallet-utxo.md)
+  - [Peg Wallet UTXO](peg-wallet-utxo.md)
   - [Clarity Contracts](clarity-contracts.md)
   - [Auxiliary Features](auxiliary-features/README.md)
     - [Transaction Fee Sponsorship](auxiliary-features/fee-sponsorship.md)

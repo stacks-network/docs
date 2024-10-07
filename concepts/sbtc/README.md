@@ -56,7 +56,7 @@ Here's what we'll cover:
 2. [sBTC Operations](operations/README.md)
    - [Deposit](operations/deposit.md)
    - [Withdrawal](operations/withdrawal.md)
-3. [Peg Wallet UTxO](peg-wallet-utxo.md)
+3. [Peg Wallet UTXO](peg-wallet-utxo.md)
 4. [Clarity Contracts](clarity-contracts.md)
 5. [Auxiliary Features](auxiliary-features/README.md)
    - [Transaction Fee Sponsorship](auxiliary-features/fee-sponsorship.md)
