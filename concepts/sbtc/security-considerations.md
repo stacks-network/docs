@@ -19,11 +19,6 @@ This document outlines key security considerations for the sBTC system.
 - Signers can rotate their private keys to mitigate risks of key compromise
 - Key rotation process must be carefully coordinated to maintain peg wallet security
 
-## Dynamic Blocklist
-
-- Signers implement a dynamic blocklist to prevent processing of suspicious transactions
-- Blocklist criteria and implementation must be regularly reviewed and updated
-
 ## Smart Contract Security
 
 - All sBTC-related Clarity contracts should undergo thorough security audits
