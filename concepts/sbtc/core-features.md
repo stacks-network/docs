@@ -17,9 +17,9 @@ sBTC facilitates rapid movement between BTC and sBTC:
 - BTC to sBTC conversion can be completed within 3 Bitcoin blocks
 - sBTC to BTC conversion can be completed within 6 Bitcoin blocks
 
-## 4. SIP-10 Compatibility
+## 4. SIP-010 Compatibility
 
-sBTC adheres to the SIP-10 fungible token standard on the Stacks blockchain. This ensures wide compatibility with Stacks wallets and applications.
+sBTC adheres to the SIP-010 fungible token standard on the Stacks blockchain. This ensures wide compatibility with Stacks wallets and applications.
 
 ## 5. Community Governance
 

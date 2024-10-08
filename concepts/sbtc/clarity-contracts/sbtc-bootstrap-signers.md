@@ -1,139 +1,100 @@
 # sBTC Bootstrap Signers Contract Documentation
 
-This document provides a comprehensive overview of the sBTC Bootstrap Signers contract implemented in Clarity. The contract manages the rotation of signer keys for the sBTC system and includes utilities for multisignature address generation.
+## Overview
 
-## Table of Contents
-
-1. [Constants](#constants)
-2. [Error Codes](#error-codes)
-3. [Public Functions](#public-functions)
-4. [Read-Only Functions](#read-only-functions)
-5. [Private Functions](#private-functions)
-6. [Utility Functions](#utility-functions)
+The sBTC Bootstrap Signers contract (`sbtc-bootstrap-signers.clar`) manages the signer set for the sBTC system. It handles the rotation of signer keys and provides utilities for generating multisig addresses.
 
 ## Constants
 
-The contract defines several constants:
+- `key-size`: The required length of public keys (33 bytes).
 
-```clarity
-(define-constant key-size u33)
-```
+## Error Constants
 
-This constant sets the required length of public keys to 33 bytes.
-
-## Error Codes
-
-The contract defines several error codes for various scenarios:
-
-```clarity
-(define-constant ERR_KEY_SIZE (err u200))
-(define-constant ERR_INVALID_CALLER (err u201))
-(define-constant ERR_SIGNATURE_THRESHOLD (err u202))
-```
-
-- `ERR_KEY_SIZE`: Indicates an issue with the key size (error code 200).
-- `ERR_INVALID_CALLER`: Indicates that the function caller is not the current signer principal (error code 201).
-- `ERR_SIGNATURE_THRESHOLD`: Indicates an invalid signature threshold (error code 202).
-
-There's also a special error code prefix for individual key size errors:
-
-```clarity
-(define-constant ERR_KEY_SIZE_PREFIX (unwrap-err! ERR_KEY_SIZE (err true)))
-```
-
-This is used to generate unique error codes for each key in a list that might have an incorrect size.
+- `ERR_KEY_SIZE_PREFIX`: Prefix for key size errors in batch processing.
+- `ERR_KEY_SIZE` (u200): Indicates that a provided key is not the correct length.
+- `ERR_INVALID_CALLER` (u201): Signifies that the function caller is not the current signer principal.
+- `ERR_SIGNATURE_THRESHOLD` (u202): Indicates an invalid signature threshold (must be >50% and ≤100% of total signer keys).
 
 ## Public Functions
 
 ### rotate-keys-wrapper
 
-This function is used to rotate the keys of the signers. It's called whenever the signer set is updated.
+Rotates the keys of the signers. Called when the signer set is updated.
 
-```clarity
-(define-public (rotate-keys-wrapper
-    (new-keys (list 128 (buff 33)))
-    (new-aggregate-pubkey (buff 33))
-    (new-signature-threshold uint)
-  )
-  ;; Function body...
-)
-```
+- Parameters:
+  - `new-keys`: `(list 128 (buff 33))` - List of new signer public keys
+  - `new-aggregate-pubkey`: `(buff 33)` - New aggregate public key
+  - `new-signature-threshold`: `uint` - New signature threshold
+- Returns: `(response (buff 33) uint)`
 
-Parameters:
+Function flow:
 
-- `new-keys`: A list of up to 128 new public keys, each 33 bytes long.
-- `new-aggregate-pubkey`: The new aggregate public key, 33 bytes long.
-- `new-signature-threshold`: The new signature threshold.
+1. Validates the new signature threshold.
+2. Verifies that the caller is the current signer principal.
+3. Checks the length of each new key and the aggregate public key.
+4. Calls the sBTC Registry contract to update the keys and address.
 
-The function performs several checks:
-
-1. Verifies that the signature threshold is valid (> 50% and <= 100% of the total number of signer keys).
-2. Checks that the caller is the current signer principal.
-3. Verifies that each new key has the correct length (33 bytes).
-4. Checks that the new aggregate public key has the correct length (33 bytes).
-
-If all checks pass, it calls the `rotate-keys` function in the `.sbtc-registry` contract to update the keys and address.
-
-## Read-Only Functions
+## Read-only Functions
 
 ### pubkeys-to-spend-script
 
 Generates the p2sh redeem script for a multisig.
 
-```clarity
-(define-read-only (pubkeys-to-spend-script
-    (pubkeys (list 128 (buff 33)))
-    (m uint)
-  )
-  ;; Function body...
-)
-```
+- Parameters:
+  - `pubkeys`: `(list 128 (buff 33))` - List of public keys
+  - `m`: `uint` - Number of required signatures
+- Returns: `(buff 1024)` - The p2sh redeem script
 
 ### pubkeys-to-hash
 
 Computes the hash160 of the p2sh redeem script.
 
-```clarity
-(define-read-only (pubkeys-to-hash
-    (pubkeys (list 128 (buff 33)))
-    (m uint)
-  )
-  ;; Function body...
-)
-```
+- Parameters:
+  - `pubkeys`: `(list 128 (buff 33))` - List of public keys
+  - `m`: `uint` - Number of required signatures
+- Returns: `(buff 20)` - The hash160 of the redeem script
 
 ### pubkeys-to-principal
 
-Generates a principal given a set of pubkeys and an m-of-n threshold.
+Generates a principal (Stacks address) from a set of pubkeys and an m-of-n threshold.
 
-```clarity
-(define-read-only (pubkeys-to-principal
-    (pubkeys (list 128 (buff 33)))
-    (m uint)
-  )
-  ;; Function body...
-)
-```
+- Parameters:
+  - `pubkeys`: `(list 128 (buff 33))` - List of public keys
+  - `m`: `uint` - Number of required signatures
+- Returns: `principal` - The generated Stacks address
 
 ### pubkeys-to-bytes
 
 Concatenates a list of pubkeys into a buffer with length prefixes.
 
-```clarity
-(define-read-only (pubkeys-to-bytes (pubkeys (list 128 (buff 33))))
-  ;; Function body...
-)
-```
+- Parameters:
+  - `pubkeys`: `(list 128 (buff 33))` - List of public keys
+- Returns: `(buff 510)` - Concatenated pubkeys with length prefixes
 
 ### concat-pubkeys-fold
 
 Concatenates a pubkey buffer with a length prefix.
 
-```clarity
-(define-read-only (concat-pubkeys-fold (pubkey (buff 33)) (iterator (buff 510)))
-  ;; Function body...
-)
-```
+- Parameters:
+  - `pubkey`: `(buff 33)` - A single public key
+  - `iterator`: `(buff 510)` - Accumulator for concatenation
+- Returns: `(buff 510)` - Updated concatenated buffer
+
+### bytes-len
+
+Returns the length of a byte buffer as a single byte.
+
+- Parameters:
+  - `bytes`: `(buff 33)` - Input byte buffer
+- Returns: `(buff 1)` - Length as a single byte
+
+### uint-to-byte
+
+Converts a uint to a single byte.
+
+- Parameters:
+  - `n`: `uint` - Input number
+- Returns: `(buff 1)` - Number as a single byte
 
 ## Private Functions
 
@@ -141,48 +102,24 @@ Concatenates a pubkey buffer with a length prefix.
 
 Checks that the length of each key is exactly 33 bytes.
 
-```clarity
-(define-private (signer-key-length-check (current-key (buff 33)) (helper-response (response uint uint)))
-  ;; Function body...
-)
-```
+- Parameters:
+  - `current-key`: `(buff 33)` - Public key to check
+  - `helper-response`: `(response uint uint)` - Accumulator for error handling
+- Returns: `(response uint uint)` - Updated accumulator or error
 
-## Utility Functions
-
-The contract includes several utility functions for working with bytes and integers:
-
-### bytes-len
-
-Returns the length of a byte buffer as a single byte.
-
-```clarity
-(define-read-only (bytes-len (bytes (buff 33)))
-  ;; Function body...
-)
-```
-
-### uint-to-byte
-
-Converts a uint to a single byte.
-
-```clarity
-(define-read-only (uint-to-byte (n uint))
-  ;; Function body...
-)
-```
+## Constants
 
 ### BUFF_TO_BYTE
 
-A constant list that maps uint values (0-255) to their corresponding byte representations.
+A constant list mapping uint values (0-255) to their corresponding byte representations.
 
-```clarity
-(define-constant BUFF_TO_BYTE (list
-  0x00 0x01 0x02 0x03 ...
-))
-```
+## Interactions with Other Contracts
 
-This constant is used by the `bytes-len` and `uint-to-byte` functions to perform efficient conversions.
+- `.sbtc-registry`: Calls `get-current-signer-data` and `rotate-keys` to manage signer data.
 
-## Conclusion
+## Security Considerations
 
-This contract provides essential functionality for managing signer keys in the sBTC system. It includes robust error checking and utility functions for working with public keys and generating multisignature addresses. The contract interacts with the `.sbtc-registry` contract to update signer information when keys are rotated.
+1. Access Control: Only the current signer principal can call the key rotation function.
+2. Key Validation: Ensures all provided keys are the correct length.
+3. Signature Threshold: Enforces a minimum threshold of over 50% of signers and a maximum of 100%.
+4. Multisig Generation: Provides utilities for secure generation of multisig addresses.
