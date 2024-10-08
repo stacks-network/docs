@@ -42,22 +42,12 @@ The sBTC Signer Set is the group of all sBTC signers. This set has full democrat
 - Responsible for maintaining the security of the peg wallet
 - Ability to rotate their private keys for enhanced security
 
+### Emily API
+
+Emily is an API that helps facilitate and supervise the sBTC Bridge in addition to serving as a programmatic liaison between sBTC users and signers.
+
 ### SIP-10 Token
 
 sBTC adheres to the SIP-10 (Stacks Improvement Proposal 10) standard for fungible tokens on the Stacks blockchain. This ensures compatibility with wallets and applications that support the SIP-10 standard.
 
 Understanding these concepts is crucial for grasping the overall architecture and functionality of sBTC. In the following sections, we'll explore how these concepts come together to create sBTC.
-
-Here's what we'll cover:
-
-1. [Core Features](core-features.md)
-2. [sBTC Operations](operations/README.md)
-   - [Deposit](operations/deposit.md)
-   - [Withdrawal](operations/withdrawal.md)
-3. [Peg Wallet UTXO](peg-wallet-utxo.md)
-4. [Clarity Contracts](clarity-contracts.md)
-5. [Auxiliary Features](auxiliary-features/README.md)
-   - [Transaction Fee Sponsorship](auxiliary-features/fee-sponsorship.md)
-   - [Signer Wallet Rotation](auxiliary-features/signer-wallet-rotation.md)
-6. [Security Considerations](security-considerations.md)
-7. [Future Development](future-development.md)
