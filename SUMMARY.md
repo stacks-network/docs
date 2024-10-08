@@ -59,7 +59,6 @@
   - [Auxiliary Features](concepts/sbtc/auxiliary-features/README.md)
     - [Transaction Fee Sponsorship](concepts/sbtc/auxiliary-features/fee-sponsorship.md)
     - [Signer Wallet Rotation](concepts/sbtc/auxiliary-features/signer-wallet-rotation.md)
-  - [Security Considerations](concepts/sbtc/security-considerations.md)
   - [Walkthroughs](concepts/sbtc/walkthroughs/README.md)
     - [Signer Process Walkthrough](concepts/sbtc/walkthroughs/signer-process.md)
     - [sBTC Transaction Walkthrough](concepts/sbtc/walkthroughs/sbtc-transaction-lifecycle.md)
