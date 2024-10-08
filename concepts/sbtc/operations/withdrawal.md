@@ -4,11 +4,11 @@ The sBTC withdrawal operation enables users to convert their sBTC back to BTC. T
 
 ## Process Overview
 
-The withdrawal process begins when a user initiates a Clarity contract call. This call triggers a series of events that culminate in the user receiving BTC in their specified Bitcoin address. The process requires six Bitcoin block confirmations to complete. After these confirmations, sBTC Bootstrap Signers create the withdrawal transaction on the Bitcoin network.
+The withdrawal process begins when a user initiates a Clarity contract call. This call triggers a series of events that culminate in the user receiving BTC in their specified Bitcoin address. The process requires six Bitcoin block confirmations to complete. After these confirmations, sBTC Signers create the withdrawal transaction on the Bitcoin network.
 
 ## Withdrawal Confirmation
 
-The requirement for six block confirmations serves multiple important purposes. First, it ensures the finality of the Stacks transaction, preventing any potential reversals or conflicts. Second, it mitigates issues that could arise from potential Bitcoin forks by allowing sufficient time for network stability. Lastly, it provides sBTC Bootstrap Signers with ample time to verify and process the withdrawal request accurately.
+The requirement for six block confirmations serves multiple important purposes. First, it ensures the finality of the Stacks transaction, preventing any potential reversals or conflicts. Second, it mitigates issues that could arise from potential Bitcoin forks by allowing sufficient time for network stability. Lastly, it provides sBTC Signers with ample time to verify and process the withdrawal request accurately.
 
 ## Failure Cases
 
@@ -16,7 +16,7 @@ While some withdrawal failures can be identified and resolved before the six con
 
 ## Security Considerations
 
-The multi-block confirmation process is a crucial security measure that helps prevent double-spending attempts. By requiring multiple block confirmations, the system ensures that the withdrawal request is valid and final before processing it on the Bitcoin network. Additionally, sBTC Bootstrap Signers meticulously verify each withdrawal request before processing it, adding an extra layer of security. The system also consults a dynamic blocklist to prevent withdrawals to known malicious addresses, further enhancing the overall security of the withdrawal process.
+The multi-block confirmation process is a crucial security measure that helps prevent double-spending attempts. By requiring multiple block confirmations, the system ensures that the withdrawal request is valid and final before processing it on the Bitcoin network. Additionally, sBTC Signers verify each withdrawal request before processing it, adding an extra layer of security.
 
 ## User Experience
 

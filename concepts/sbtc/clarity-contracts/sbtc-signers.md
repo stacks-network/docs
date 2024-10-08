@@ -1,8 +1,8 @@
-# sBTC Bootstrap Signers Contract Documentation
+# sBTC Signers Contract Documentation
 
 ## Overview
 
-The sBTC Bootstrap Signers contract (`sbtc-bootstrap-signers.clar`) manages the signer set for the sBTC system. It handles the rotation of signer keys and provides utilities for generating multisig addresses.
+The sBTC Signers contract (`sbtc-bootstrap-signers.clar`) manages the signer set for the sBTC system. It handles the rotation of signer keys and provides utilities for generating multisig addresses.
 
 ## Constants
 

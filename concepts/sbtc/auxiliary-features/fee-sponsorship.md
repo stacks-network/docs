@@ -1,6 +1,6 @@
 # Transaction Fee Sponsorship
 
-Transaction Fee Sponsorship is a feature in sBTC-v1 that allows users to pay for Stacks transaction fees using sBTC instead of STX.
+Transaction Fee Sponsorship is a feature in sBTC that allows users to pay for Stacks transaction fees using sBTC instead of STX.
 
 ## Overview
 
@@ -29,10 +29,3 @@ From a user's perspective:
 1. **Improved UX**: Users don't need to hold STX to use sBTC.
 2. **Lower Barrier to Entry**: New users can start using sBTC without first acquiring STX.
 3. **Flexibility**: Provides an additional option for handling transaction fees.
-
-## Future Development
-
-While sBTC-v1 includes a basic sponsorship system, future versions may implement more advanced features:
-
-- **Dynamic Transaction Fee Market**: Allow sBTC users to choose the transaction sponsor who requires the least sBTC in return.
-- **Automated Sponsorship**: Integrate sponsorship directly into wallets and dApps for a seamless experience.
