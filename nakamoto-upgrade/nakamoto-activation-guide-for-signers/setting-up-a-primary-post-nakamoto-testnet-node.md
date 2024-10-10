@@ -51,8 +51,6 @@ auth_token = "12345"
 
 [[events_observer]]
 endpoint = "0.0.0.0.0:30000"
-retry_count = 255
-include_data_events = false
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 
 [[ustx_balance]]
@@ -148,8 +146,6 @@ pox_reward_length = 900
 
 [[events_observer]]
 endpoint = "0.0.0.0.0:30000"
-retry_count = 255
-include_data_events = false
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 
 # Set your auth token, which the signer uses
