@@ -144,6 +144,5 @@ peer_port = 8333
 
 [[events_observer]]
 endpoint = "localhost:3700"
-retry_count = 255
 events_keys = ["*"]
 ```

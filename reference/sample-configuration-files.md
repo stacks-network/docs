@@ -105,7 +105,6 @@ pox_reward_length = 900
 peer_host = "bitcoin.nakamoto.regtest.hiro.so"
 username = "hirosystems"
 password = "hirosystems"
-burnchain_op_tx_fee = 5500
 commit_anchor_block_within = 300000
 rpc_port = 18543
 peer_port = 18544
@@ -123,8 +122,6 @@ auth_token = "12345"
 [[events_observer]]
 # This endpoint is where your signer will communicate with your Stacks node
 endpoint = "127.0.0.1:30000"
-retry_count = 255
-include_data_events = false
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 
 [[burnchain.epochs]]
@@ -322,8 +319,6 @@ auth_token = "12345"
 [[events_observer]]
 # This endpoint is where your signer will communicate with your Stacks node
 endpoint = "127.0.0.1:30000"
-retry_count = 255
-include_data_events = false
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 
 [[ustx_balance]]
@@ -452,7 +447,5 @@ auth_token = "12345"
 [[events_observer]]
 # This endpoint is where your signer will communicate with your Stacks node
 endpoint = "127.0.0.1:30000"
-retry_count = 255
-include_data_events = false
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 ```
