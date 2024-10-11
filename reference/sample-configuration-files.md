@@ -158,7 +158,7 @@ start_height = 244
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 2_000_250
+start_height = 72_280
 
 [[ustx_balance]]
 address = "ST0DZFQ1XGHC5P1BZ6B7HSWQKQJHM74JBGCSDTNA"
