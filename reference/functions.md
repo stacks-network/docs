@@ -2589,7 +2589,7 @@ This function returns (ok true) if the transfer is successful, or, on an error, 
 
 Introduced in: **Clarity 1**
 
-**input:** `uint, principal, principal, buff`
+**input:** `uint, principal, principal`
 
 **output:** `(response bool uint)`
 
