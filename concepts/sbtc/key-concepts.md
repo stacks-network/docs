@@ -19,7 +19,7 @@ The sBTC UTxO is the single unspent transaction output (UTxO) on the Bitcoin blo
 
 ## sBTC Signer
 
-In sBTC-v1, the sBTC Bootstrap Signer Set is an entity separate from the Stacks Nakamoto signer. sBTC signer responsibilities include:
+In sBTC-v1, the sBTC Signer Set is an entity separate from the Stacks Nakamoto signer. sBTC signer responsibilities include:
 
 - Signing sBTC operations
 - Communicating with contracts on the Stacks chain
