@@ -7,7 +7,7 @@ Binaries will be provided roughly a week in advance and your normal upgrade proc
 {% endhint %}
 
 {% hint style="info" %}
-### Current Signer and Stacks Node Versions
+#### Current Signer and Stacks Node Versions
 
 For quick reference, here are the current latest versions you'll want to be running as a signer. If you don't yet have your signer up and running, this guide will walk you through that.
 
