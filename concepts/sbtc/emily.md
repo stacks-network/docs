@@ -6,6 +6,12 @@ Emily is an API that helps facilitate and supervise the sBTC Bridge, serving as 
 
 The Emily API is designed to track deposits and withdrawals, providing information about the status of in-flight sBTC operations. It serves two primary user groups: sBTC users and sBTC app developers.
 
+## Why Emily?
+
+The Emily API is given an indirect name because it handles more than just Deposits and Withdrawals; it can detect the health of the system and will likely be extended to handle more as user requirements mature. It was once called the “Revealer API”, which stopped making sense after a few design changes, and then “Deposit API” which also stopped making sense after a few changes. The most obvious choice “sBTC API” gives the wrong impression of what the API is responsible for as well, since the API itself isn’t managing the entirety of the protocol.
+
+Large companies name their APIs after something loosely related but ambiguous enough that extensions of the API don’t make the original name of the API misleading. Following this, we chose “Emily” after Emily Warren Roebling who was the liaison between the builders and chief engineer, her husband, of the Brooklyn bridge. She was, in effect, the supervisor of the bridge’s construction; similarly, the Emily API supervises the sBTC bridge and liaises between the users of the protocol and the sBTC signers.
+
 ## Key Features
 
 1. **Track Deposits**: Monitor the process of converting BTC to sBTC.

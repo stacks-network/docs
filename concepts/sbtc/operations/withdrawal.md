@@ -4,11 +4,15 @@ The sBTC withdrawal operation enables users to convert their sBTC back to BTC. T
 
 ## Process Overview
 
+<figure><img src="../../.gitbook/assets/withdrawal-flow.png" alt=""><figcaption></figcaption></figure>
+
 The withdrawal process begins when a user initiates a Clarity contract call. This call triggers a series of events that culminate in the user receiving BTC in their specified Bitcoin address. The process requires six Bitcoin block confirmations to complete. After these confirmations, sBTC Signers create the withdrawal transaction on the Bitcoin network.
 
 ## Withdrawal Confirmation
 
 The requirement for six block confirmations serves multiple important purposes. First, it ensures the finality of the Stacks transaction, preventing any potential reversals or conflicts. Second, it mitigates issues that could arise from potential Bitcoin forks by allowing sufficient time for network stability. Lastly, it provides sBTC Signers with ample time to verify and process the withdrawal request accurately.
+
+For more information on deposit and withdrawal confirmation times and why deposits can be so much faster than withdrawals, check out the [Deposit and Withdrawal Times](./deposit-withdrawal-times.md) doc.
 
 ## Failure Cases
 
