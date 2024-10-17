@@ -40,9 +40,6 @@ stacker = true
 chain = "bitcoin"
 mode = "krypton"
 peer_host = "bitcoin.regtest.hiro.so"
-username = "hirosystems"
-password = "hirosystems"
-rpc_port = 18443
 peer_port = 18444
 pox_prepare_length = 100
 pox_reward_length = 900
@@ -54,8 +51,6 @@ auth_token = "12345"
 
 [[events_observer]]
 endpoint = "0.0.0.0.0:30000"
-retry_count = 255
-include_data_events = false
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 
 [[ustx_balance]]
@@ -111,7 +106,7 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 2000701
+start_height = 56_457
 EOF
 
 docker run -d  \\
@@ -145,17 +140,12 @@ prometheus_bind = "0.0.0.0:9153"
 chain = "bitcoin"
 mode = "krypton"
 peer_host = "bitcoin.regtest.hiro.so"
-username = "hirosystems"
-password = "hirosystems"
-rpc_port = 18443
 peer_port = 18444
 pox_prepare_length = 100
 pox_reward_length = 900
 
 [[events_observer]]
 endpoint = "0.0.0.0.0:30000"
-retry_count = 255
-include_data_events = false
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 
 # Set your auth token, which the signer uses
@@ -216,7 +206,7 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 2000701
+start_height = 56_457
 ```
 
 The important aspects that you’ll need to change are:

@@ -22,7 +22,7 @@ Proof of Transfer (PoX) is the block production mechanism of the Stacks chain. E
 
 #### Clarity
 
-Clarity is the smart contract language that Stacks uses. it has been designed from the ground up to make it easier or developers to write safe, secure smart contracts. Additionally, since it has been purpose-built for Stacks and Bitcoin, there are built-in functions for reading Bitcoin state, which means you can use Bitcoin state to perform actions in Clarity. For example, you could set up a check to make sure a particular Bitcoin transaction has occurred before executing a mint function in Clarity, which just so happens to be what happens with the third component: sBTC.
+Clarity is the smart contract language that Stacks uses. it has been designed from the ground up to make it easier for developers to write safe, secure smart contracts. Additionally, since it has been purpose-built for Stacks and Bitcoin, there are built-in functions for reading Bitcoin state, which means you can use Bitcoin state to perform actions in Clarity. For example, you could set up a check to make sure a particular Bitcoin transaction has occurred before executing a mint function in Clarity, which just so happens to be what happens with the third component: sBTC.
 
 #### sBTC
 
