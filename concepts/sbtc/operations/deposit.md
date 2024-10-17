@@ -4,9 +4,16 @@ The deposit operation enables users to mint sBTC, anchored to the BTC they have 
 
 ## Process Overview
 
-The deposit process begins when a user initiates an API call referencing a Bitcoin transaction. This call triggers the Deposit API, which plays a crucial role by relaying deposit information to the sBTC Signers. These signers are responsible for verifying and processing the deposit. Once verified, an equivalent amount of sBTC is minted on the Stacks blockchain.
+<figure><img src="../../.gitbook/assets/deposit-flow.png" alt=""><figcaption></figcaption></figure>
 
-The Deposit API serves multiple purposes beyond relaying information. It reduces costs associated with deposit rejections and simplifies the overall sBTC system, making it easier to service and maintain.
+The deposit process begins when a user initiates specific Bitcoin transaction that has two outputs:
+
+1. Script that lets the signers spend it
+2. Time lock to allow the depositor to reclaim
+
+Next, the depositor (usually through the application they are using to deposit) initiates an API call referencing that Bitcoin transaction. This call triggers the Emily API, which plays a crucial role by relaying deposit information to the sBTC Signers. These signers are responsible for verifying and processing the deposit. Once verified, an equivalent amount of sBTC is minted on the Stacks blockchain.
+
+The deposit is usually completed within a single Bitcoin block, but is guaranteed to be completed within 3. For more information on deposit and withdrawal confirmation times and why deposits can be so fast, check out the [Deposit and Withdrawal Times](./deposit-withdrawal-times.md) doc.
 
 ## Bitcoin Deposit Requirements
 
