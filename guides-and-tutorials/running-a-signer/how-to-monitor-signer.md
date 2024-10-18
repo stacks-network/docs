@@ -66,6 +66,12 @@ stacks_signer_node_rpc_call_latencies_histogram_bucket{path="/v2/info",le="0.1"}
 # ...
 ```
 
+Also, you'll have a `/info` endpoint on the same port:
+
+```bash
+curl 127.0.0.1:30001/info
+```
+
 ### Install Alloy
 
 Follow these instructions to install [Grafana
