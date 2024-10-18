@@ -16,11 +16,16 @@ quick-start](https://grafana.com/docs/grafana-cloud/monitor-applications/applica
 Before we begin, create a [Grafana
 Cloud](https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/grafana-cloud/) account (they offer a free tier that you can use).
 
-Once done, access your dashboard, click on "Connections", "Add new connection",
-and select "Hosted Prometheus metrics". Select "Via Grafana Alloy", then on step
-2 select "Run Grafana Alloy" to generate an API token. Note the token
-`GCLOUD_RW_API_KEY` and the params `GCLOUD_HOSTED_METRICS_URL` and
-`GCLOUD_HOSTED_METRICS_ID`, we will use them later.
+Once done, access your dashboard and:
+
+1. Click on "Connections", then
+2. "Add new connection", and
+3. select "Hosted Prometheus metrics".
+4. Now select "Via Grafana Alloy", then
+5. on step 2, select "Run Grafana Alloy" to generate an API token.
+
+Note the token `GCLOUD_RW_API_KEY` and the parameters `GCLOUD_HOSTED_METRICS_URL`
+and `GCLOUD_HOSTED_METRICS_ID`, we will use them later.
 
 ### Configuring the Signer and the Stacks node
 
@@ -57,13 +62,13 @@ curl 127.0.0.1:30001/metrics
 stacks_signer_current_reward_cycle 95
 # HELP stacks_signer_node_rpc_call_latencies_histogram Time (seconds) measuring round-trip RPC call latency to the Stacks node
 # TYPE stacks_signer_node_rpc_call_latencies_histogram histogram
-# ...
+...
 stacks_signer_node_rpc_call_latencies_histogram_bucket{path="/v2/info",le="0.005"} 0
 stacks_signer_node_rpc_call_latencies_histogram_bucket{path="/v2/info",le="0.01"} 0
 stacks_signer_node_rpc_call_latencies_histogram_bucket{path="/v2/info",le="0.025"} 0
 stacks_signer_node_rpc_call_latencies_histogram_bucket{path="/v2/info",le="0.05"} 985
 stacks_signer_node_rpc_call_latencies_histogram_bucket{path="/v2/info",le="0.1"} 1194
-# ...
+...
 ```
 
 Also, you'll have a `/info` endpoint on the same port:
@@ -90,7 +95,13 @@ sudo apt-get install alloy
 
 ### Configure Alloy
 
-Edit the file `/etc/alloy/config.alloy` as follows:
+Edit the file `/etc/alloy/config.alloy` as follows, by taking care of replacing
+the placeholders related to the `prometheus` endpoint with the parameters
+obtained when creating a [Grafana Cloud account before](#creating-a-grafana-cloud-account):
+
+- `GCLOUD_HOSTED_METRICS_URL`
+- `GCLOUD_HOSTED_METRICS_ID`
+- `GCLOUD_RW_API_KEY`
 
 ```conf
 // For a full configuration reference, see https://grafana.com/docs/alloy
@@ -157,9 +168,15 @@ Metrics from your Signer and node will now start being pushed to Grafana Cloud.
 You can now start building a dashboard to visualize the metrics.
 
 1. Log-in to Grafana Cloud and create a new Dashboard.
-1. Pick the Prometheus instance you created before as the data source.
-1. Create a new panel and pick `stacks_signer_current_reward_cycle` from the
-  metrics.
+2. Pick the Prometheus instance you created before as the data source.
+3. Create a new panel and pick `stacks_signer_current_reward_cycle` from the
+   metrics.
 
 You should now be able to see Stacks' current reward cycle, as measured by the
 Signer, into the dashboard.
+
+Grafana comes with powerful data visualization tools. You can read about how to
+query and transform data
+[here](https://grafana.com/docs/grafana-cloud/visualizations/panels-visualizations/query-transform-data/),
+while here you will find examples on how to build
+[Prometheus queries](https://prometheus.io/docs/prometheus/latest/querying/basics/).
