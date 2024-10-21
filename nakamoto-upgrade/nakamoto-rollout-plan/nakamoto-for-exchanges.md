@@ -44,7 +44,7 @@ Exchanges that support native Bitcoin yield via Stacking may have extra upgrade 
 Core developers expect to release binaries on or around August 28th. Exchanges can expect their usual ecosystem point of contact to provide them with detailed information and updates during the process.&#x20;
 
 1. **Instantiation block:** The first hard fork occurred <mark style="color:orange;">at Bitcoin block 840,360.</mark> If you haven't already, you will need to upgrade to the latest node software or they will not process valid blocks and users will not be able to move funds on the network.
-2. **Activation block:** The second hard fork occurs around August 28. At this time, the Nakamoto consensus rules will activate, meaning the new Nakamoto features will be made live. Exchanges will need to repeat the upgrade process at this time. Again, no genesis sync, just a download and restart.
+2. **Activation block:** The second hard fork will occur at Bitcoin Block #867867 (\~October 29th). At this time, the Nakamoto consensus rules will activate, meaning the new Nakamoto features will be made live. Exchanges will need to repeat the upgrade process at this time. Again, no genesis sync, just a download and restart.
 
 The hard fork will occur **after** a series of activation steps. You can learn more about this upcoming Nakamoto Activation sequence here: [#nakamoto-activation-sequence](./#nakamoto-activation-sequence "mention").&#x20;
 
