@@ -221,7 +221,7 @@ sudo systemctl status alloy
 ```
 
 `node-exporter` provides a _lot_ of metrics. Poke at them through the Grafana
-Explorer or use one of they many prepared dashboard (e.g., [this
+Explorer or use one of the many prepared dashboard (e.g., [this
 one](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)) to see
 comprehensive information. Once you have a dashboard ready, you can also
-use ti configure a few alerts (e.g., on disk space, etc).
+use it to configure a few alerts (e.g., on disk space, etc).
