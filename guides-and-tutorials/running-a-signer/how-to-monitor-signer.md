@@ -180,3 +180,48 @@ query and transform data
 [here](https://grafana.com/docs/grafana-cloud/visualizations/panels-visualizations/query-transform-data/),
 while here you will find examples on how to build
 [Prometheus queries](https://prometheus.io/docs/prometheus/latest/querying/basics/).
+
+## Bonus: monitoring the host
+
+Since we are here, we can also monitor the host itself. Debian-based
+distributions make it very easy for us by using
+`[node-exporter](https://github.com/prometheus/node_exporter/tree/master)`.
+
+```bash
+sudo apt install prometheus-node-exporter
+sudo systemctl enable prometheus-node-exporter
+sudo systemctl start prometheus-node-exporter
+```
+
+This will expose metrics on port `9100` of `localhost`.
+
+We can now configure `alloy` to push them to Grafana. Edit your
+`/etc/alloy/config.alloy` file and add the following:
+
+```txt
+prometheus.scrape "default" {
+  targets = array.concat([
+
+  ...
+
+    {
+        job         = "node_exporter",
+        __address__ = "127.0.0.1:9100",
+    }
+
+  ...
+])}
+```
+
+Now reload `alloy` and check its status:
+
+```bash
+sudo systemctl reload alloy
+sudo systemctl status alloy
+```
+
+`node-exporter` provides a _lot_ of metrics. Poke at them through the Grafana
+Explorer or use one of the many prepared dashboard (e.g., [this
+one](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)) to see
+comprehensive information. Once you have a dashboard ready, you can also
+use it to configure a few alerts (e.g., on disk space, etc).
