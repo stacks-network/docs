@@ -92,7 +92,7 @@ wget https://github.com/stacks-network/stacks-core/releases/download/signer-2.5.
 unzip linux-glibc-x64.zip
 
 # Remove unwanted files
-rm ~/stacks-signer/linux-glibc-x64.zip ~/stacks-signer/provenance.json
+find ~/stacks-signer -type f ! -name 'stacks-signer' ! -name 'keychain.json' -delete
 ```
 
 {% endtab %}
@@ -110,7 +110,7 @@ wget https://github.com/stacks-network/stacks-core/releases/download/3.0.0.0.0-r
 unzip linux-glibc-x64.zip
 
 # Remove unwanted files
-find ~/stacks-signer -type f ! -name 'stacks-signer' -delete
+find ~/stacks-signer -type f ! -name 'stacks-signer' ! -name 'keychain.json' -delete
 ```
 
 {% endtab %}
