@@ -129,6 +129,6 @@
 * [🟠 Bitcoin Theses](bitcoin-theses-and-reports/bitcoin-theses.md)
 * [📙 Bitcoin Reports](bitcoin-theses-and-reports/bitcoin-reports.md)
 
----
+***
 
 * [Contribute](contribute.md)
