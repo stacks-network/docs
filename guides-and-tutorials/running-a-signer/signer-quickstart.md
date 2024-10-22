@@ -49,7 +49,7 @@ stx make_keychain -t > ~/stacks-signer/keychain.json
 
 {% endtab %}
 
-{% tabs %}
+{% endtabs %}
 
 The account file previously created looks like this:
 
@@ -70,6 +70,8 @@ The account file previously created looks like this:
 From this file, you'll need the `privateKey` value.
 
 ## Step 2 - Set Up Your Stacks Signer
+
+### Download the stacks-signer binary
 
 Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/tag/signer-2.5.0.0.5.2) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary. Currently, the latest mainnet and testnet versions that you have to use differ.
 
@@ -113,7 +115,9 @@ find ~/stacks-signer -type f ! -name 'stacks-signer' -delete
 
 {% endtab %}
 
-{% tabs %}
+{% endtabs %}
+
+### Create the configuration file
 
 Create the configuration file required to start the signer:
 
@@ -163,7 +167,7 @@ EOF
 
 {% endtab %}
 
-{% tabs %}
+{% endtabs %}
 
 ### Verify the setup
 
@@ -191,6 +195,8 @@ DKG transaction fee: 0.01 uSTX
 Metrics endpoint: 127.0.0.1:9154
 ```
 
+### Start the signer
+
 If the outputs of the previous commands are correct, you can proceed and start the signer:
 
 ```bash
@@ -198,6 +204,8 @@ If the outputs of the previous commands are correct, you can proceed and start t
 ```
 
 ## Step 3 - Set Up Your Stacks Node
+
+### Download the stacks-node binary
 
 Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest node release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary. Currently, the latest mainnet and testnet versions that you have to use differ.
 
@@ -241,7 +249,9 @@ find ~/stacks-node -type f ! -name 'stacks-node' -delete
 
 {% endtab %}
 
-{% tabs %}
+{% endtabs %}
+
+### Create the configuration file
 
 Create the configuration file required to start the node:
 
@@ -371,7 +381,7 @@ EOF
 
 {% endtab %}
 
-{% tabs %}
+{% endtabs %}
 
 ### Optional: Start the node with a data archive
 
@@ -415,7 +425,7 @@ rm testnet-stacks-blockchain-latest.tar.gz
 
 {% endtab %}
 
-{% tabs %}
+{% endtabs %}
 
 ### Verify the setup
 
@@ -437,6 +447,8 @@ INFO [1729609058.154038] [testnet/stacks-node/src/main.rs:293] [main] stacks-nod
 INFO [1729609058.154077] [testnet/stacks-node/src/main.rs:326] [main] Loading config at path /home/admin/stacks-node/node-config.toml
 INFO [1729609058.416339] [testnet/stacks-node/src/main.rs:339] [main] Loaded config!
 ```
+
+### Start the node
 
 If the outputs of the previous commands are correct, you can proceed and start the node:
 
