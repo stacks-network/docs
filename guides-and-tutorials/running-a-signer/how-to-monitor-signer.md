@@ -35,12 +35,15 @@ following lines:
 ```toml
 # signer-config.toml
 # ...
+# Adjust to 0.0.0.0:30001 if running in Docker.
 metrics_endpoint = "127.0.0.1:30001"
 ```
 
 ```toml
 # node-config.toml
+[node]
 # ...
+# Adjust to 0.0.0.0:9153 if running in Docker.
 prometheus_bind = "127.0.0.1:9153"
 ```
 
@@ -105,6 +108,9 @@ obtained when creating a [Grafana Cloud account before](#creating-a-grafana-clou
 
 ```conf
 // For a full configuration reference, see https://grafana.com/docs/alloy
+// For a default configuration, integrating all environmental variables from Grafana Cloud
+// see https://storage.googleapis.com/cloud-onboarding/alloy/config/config.alloy
+
 logging {
   level = "warn"
 }
@@ -136,10 +142,10 @@ prometheus.scrape "default" {
     ],
   )
 
-  forward_to = [prometheus.remote_write.default.receiver]
+  forward_to = [prometheus.remote_write.metrics_service.receiver]
 }
 
-prometheus.remote_write "default" {
+prometheus.remote_write "metrics_service" {
   external_labels = {"instance" = constants.hostname}
   endpoint {
     # TODO: Edit the URL below with your Grafana production URL.
@@ -181,11 +187,17 @@ query and transform data
 while here you will find examples on how to build
 [Prometheus queries](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
+[This template](https://grafana.com/grafana/dashboards/22137-stacks-signer-template/)
+will kick-start your dashboard.
+
+![A screenshot of the Grafana dashboard instantiated from the
+template](https://grafana.com/api/dashboards/22137/images/17368/image).
+
 ## Bonus: monitoring the host
 
 Since we are here, we can also monitor the host itself. Debian-based
 distributions make it very easy for us by using
-`[node-exporter](https://github.com/prometheus/node_exporter/tree/master)`.
+[`node_exporter`](https://github.com/prometheus/node_exporter/tree/master).
 
 ```bash
 sudo apt install prometheus-node-exporter
@@ -220,7 +232,7 @@ sudo systemctl reload alloy
 sudo systemctl status alloy
 ```
 
-`node-exporter` provides a _lot_ of metrics. Poke at them through the Grafana
+`node_exporter` provides a _lot_ of metrics. Poke at them through the Grafana
 Explorer or use one of the many prepared dashboard (e.g., [this
 one](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)) to see
 comprehensive information. Once you have a dashboard ready, you can also
