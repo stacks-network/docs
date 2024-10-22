@@ -135,7 +135,7 @@ cat <<EOF> ~/stacks-signer/signer-config.toml
 node_host = "127.0.0.1:20443"
 endpoint = "127.0.0.1:30000"
 network = "mainnet"
-db_path = "~/stacks-signer/data/signer.sqlite"
+db_path = "$HOME/stacks-signer/data/signer.sqlite"
 auth_password = "$AUTH_TOKEN"
 stacks_private_key = "$PRIVATE_KEY"
 metrics_endpoint = "127.0.0.1:9154"
@@ -157,7 +157,7 @@ cat <<EOF> ~/stacks-signer/signer-config.toml
 node_host = "127.0.0.1:20443"
 endpoint = "127.0.0.1:30000"
 network = "testnet"
-db_path = "~/stacks-signer/data/signer.sqlite"
+db_path = "$HOME/stacks-signer/data/signer.sqlite"
 auth_password = "$AUTH_TOKEN"
 stacks_private_key = "$PRIVATE_KEY"
 metrics_endpoint = "127.0.0.1:9154"
@@ -299,7 +299,7 @@ AUTH_TOKEN=<your_token> # Used for signer-node authentication, same token as the
 
 # Create the node's configuration file
 cat <<EOF> ~/stacks-node/node-config.toml
-working_dir = "~/stacks-node/data"
+working_dir = "$HOME/stacks-node/data"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
 bootstrap_node = "02196f005965cebe6ddc3901b7b1cc1aa7a88f305bb8c5893456b8f9a605923893@seed.mainnet.hiro.so:20444,02539449ad94e6e6392d8c1deb2b4e61f80ae2a18964349bc14336d8b903c46a8c@cet.stacksnodes.org:20444,02ececc8ce79b8adf813f13a0255f8ae58d4357309ba0cedd523d9f1a306fcfb79@sgt.stacksnodes.org:20444,0303144ba518fe7a0fb56a8a7d488f950307a4330f146e1e1458fc63fb33defe96@est.stacksnodes.org:20444"
@@ -334,7 +334,7 @@ AUTH_TOKEN=<your_token> # Used for signer-node authentication, same token as the
 # Create the node's configuration file
 cat <<EOF> ~/stacks-node/node-config.toml
 [node]
-working_dir = "~/stacks-node/data"
+working_dir = "$HOME/stacks-node/data"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
 bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
@@ -495,16 +495,16 @@ INFO [1729609058.416339] [testnet/stacks-node/src/main.rs:339] [main] Loaded con
 ~/stacks-node/stacks-node version
 
 # Output:
-INFO [1729608887.386492] [testnet/stacks-node/src/main.rs:293] [main] stacks-node 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
+INFO [1729612607.278464] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
 stacks-node 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
 
 # Verify the node's config
 ~/stacks-node/stacks-node check-config --config ~/stacks-node/node-config.toml
 
 # Output:
-INFO [1729609058.154038] [testnet/stacks-node/src/main.rs:293] [main] stacks-node 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
-INFO [1729609058.154077] [testnet/stacks-node/src/main.rs:326] [main] Loading config at path /home/admin/stacks-node/node-config.toml
-INFO [1729609058.416339] [testnet/stacks-node/src/main.rs:339] [main] Loaded config!
+INFO [1729612624.744001] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
+INFO [1729612624.744061] [testnet/stacks-node/src/main.rs:318] [main] Loading config at path /home/bowtieddevops/stacks-node/node-config.toml
+INFO [1729612624.808624] [testnet/stacks-node/src/main.rs:331] [main] Loaded config!
 ```
 
 {% endtab %}
