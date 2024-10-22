@@ -173,6 +173,10 @@ EOF
 
 To ensure the signer has been set up correctly, you can run the following commands:
 
+{% tabs %}
+
+{% tab title="Mainnet" %}
+
 ```bash
 # Verify the signer's version
 ~/stacks-signer/stacks-signer --version
@@ -189,11 +193,41 @@ Stacks node host: 127.0.0.1:20443
 Signer endpoint: 127.0.0.1:30000
 Stacks address: SP1G... # address from keychain file
 Public key: 03a3... # publicKey from keychain file
-Network: mainnet # Or testnet for testnet signers
+Network: mainnet
 Database path: ~/stacks-signer/data/signer.sqlite
 DKG transaction fee: 0.01 uSTX
 Metrics endpoint: 127.0.0.1:9154
 ```
+
+{% endtab %}
+
+{% tab title="Testnet" %}
+
+```bash
+# Verify the signer's version
+~/stacks-signer/stacks-signer --version
+
+# Output:
+stacks-signer 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
+
+# Verify the config file
+~/stacks-signer/stacks-signer check-config -c ~/stacks-signer/signer-config.toml 
+
+# Output:
+Config: 
+Stacks node host: 127.0.0.1:20443
+Signer endpoint: 127.0.0.1:30000
+Stacks address: SP1G... # address from keychain file
+Public key: 03a3... # publicKey from keychain file
+Network: testnet
+Database path: ~/stacks-signer/data/signer.sqlite
+DKG transaction fee: 0.01 uSTX
+Metrics endpoint: 127.0.0.1:9154
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 ### Start the signer
 
@@ -431,6 +465,10 @@ rm testnet-stacks-blockchain-latest.tar.gz
 
 To ensure the node has been set up correctly, you can run the following commands:
 
+{% tabs %}
+
+{% tab title="Mainnet" %}
+
 ```bash
 # Verify the node's version
 ~/stacks-node/stacks-node version
@@ -447,6 +485,31 @@ INFO [1729609058.154038] [testnet/stacks-node/src/main.rs:293] [main] stacks-nod
 INFO [1729609058.154077] [testnet/stacks-node/src/main.rs:326] [main] Loading config at path /home/admin/stacks-node/node-config.toml
 INFO [1729609058.416339] [testnet/stacks-node/src/main.rs:339] [main] Loaded config!
 ```
+
+{% endtab %}
+
+{% tab title="Testnet" %}
+
+```bash
+# Verify the node's version
+~/stacks-node/stacks-node version
+
+# Output:
+INFO [1729608887.386492] [testnet/stacks-node/src/main.rs:293] [main] stacks-node 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
+stacks-node 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
+
+# Verify the node's config
+~/stacks-node/stacks-node check-config --config ~/stacks-node/node-config.toml
+
+# Output:
+INFO [1729609058.154038] [testnet/stacks-node/src/main.rs:293] [main] stacks-node 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
+INFO [1729609058.154077] [testnet/stacks-node/src/main.rs:326] [main] Loading config at path /home/admin/stacks-node/node-config.toml
+INFO [1729609058.416339] [testnet/stacks-node/src/main.rs:339] [main] Loaded config!
+```
+
+{% endtab %}
+
+{% endtabs %}
 
 ### Start the node
 
