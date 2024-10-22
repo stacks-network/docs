@@ -220,8 +220,8 @@ Signer endpoint: 127.0.0.1:30000
 Stacks address: SP1G... # address from keychain file
 Public key: 03a3... # publicKey from keychain file
 Network: testnet
+Chain ID: 0x80000000
 Database path: ~/stacks-signer/data/signer.sqlite
-DKG transaction fee: 0.01 uSTX
 Metrics endpoint: 127.0.0.1:9154
 ```
 
