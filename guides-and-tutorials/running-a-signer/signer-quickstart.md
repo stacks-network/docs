@@ -299,6 +299,7 @@ AUTH_TOKEN=<your_token> # Used for signer-node authentication, same token as the
 
 # Create the node's configuration file
 cat <<EOF> ~/stacks-node/node-config.toml
+[node]
 working_dir = "$HOME/stacks-node/data"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
