@@ -18,7 +18,7 @@ mkdir -p ~/stacks-signer/data
 mkdir -p ~/stacks-node/data
 
 # Install needed packages
-sudo apt install -y wget unzip jq tar
+sudo apt install -y npm wget unzip jq tar
 
 # Install Stacks CLI globally
 npm install --global @stacks/cli
@@ -37,7 +37,7 @@ mkdir -p ~/stacks-signer/data
 mkdir -p ~/stacks-node/data
 
 # Install needed packages
-sudo apt install -y wget unzip jq tar
+sudo apt install -y npm wget unzip jq tar
 
 # Install Stacks CLI globally
 npm install --global @stacks/cli
