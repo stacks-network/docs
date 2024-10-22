@@ -1,13 +1,13 @@
 # Run a Signer
 
 {% hint style="info" %}
-The block for Nakamoto activation has been chosen as Bitcoin block 864,864, which is currently expected on October 9th. This block is subject to change should core developers need additional time for testing or unexpected issues.
+The block for Nakamoto activation has been chosen as Bitcoin block 867,867, which is currently expected on October 29th. This block is subject to change should core developers need additional time for testing or unexpected issues.
 
-Binaries will be provided roughly a week in advance and your normal upgrade procedure should apply here, you’ll want to be running the latest node and Signer software. Note that if you do not upgrade ahead of the hard fork, your nodes will be dropped from the network. Ideally, you will have Stacked for Cycle #94 ahead of time, any time now is good.
+Binaries will be provided roughly a week in advance and your normal upgrade procedure should apply here, you’ll want to be running the latest node and Signer software. Note that if you do not upgrade ahead of the hard fork, your nodes will be dropped from the network.
 {% endhint %}
 
 {% hint style="info" %}
-### Current Signer and Stacks Node Versions
+#### Current Signer and Stacks Node Versions
 
 For quick reference, here are the current latest versions you'll want to be running as a signer. If you don't yet have your signer up and running, this guide will walk you through that.
 

@@ -13,7 +13,6 @@ If you are a signer, these are the current latest versions you'll want to be run
 * Signer - [2.5.0.0.5.2](https://hub.docker.com/layers/blockstack/stacks-signer/2.5.0.0.5.2/images/sha256-fc29a7c22f236f91270fb1aa58cfb4dd8dcd6b1daa0812e16df0bdc7643cb6ac?context=explore)
 * Stacks Node - [2.5.0.0.7](https://hub.docker.com/layers/blockstack/stacks-core/2.5.0.0.7/images/sha256-71d3eb305b5c1b68cd44904a7bcd6e5f92542135a7218762cdf27a46acaff69b?context=explore)
 
-
 ### Signer Configuration File Options
 
 The signer configuration file is a TOML file that contains the configuration options for your signer. Below are the options you can set in the signer configuration file.
@@ -25,18 +24,9 @@ The signer configuration file is a TOML file that contains the configuration opt
 | stacks\_private\_key  | ✓        | Hex representation of the signer's Stacks private key used for communicating with the Stacks Node, including writing to the Stacker DB instance. |
 | network               | ✓        | Network to use. One of "mainnet",  "testnet" or "mocknet". |
 | auth\_password        | ✓        | Authorization token for HTTP requests made from the signer to your Stacks node. |
-| db\_path              | ✓        | Path to the signer's database file or :memory: for an in-memory database. |
-| metrics\_endpoint     |           | IP:PORT for Prometheus metrics collection. |
-| event\_timeout\_ms    |           | Time to wait (in milliseconds) for a response from the stacker-db instance. |
-| block\_proposal\_timeout\_ms    |           | Time to wait (in milliseconds) for a block response from miners. |
-| dkg\_public\_timeout\_ms |        | Timeout in (milliseconds) to gather DkgPublicShares messages. |
-| dkg\_private\_timeout\_ms |       | Timeout in (milliseconds) to gather DkgPrivateShares messages. |
-| dkg\_end\_timeout\_ms |           | Timeout in (milliseconds) to gather DkgEnd messages. |
-| nonce\_timeout\_ms    |           | Timeout in (milliseconds) to gather nonces. |
-| sign\_timeout\_ms     |           | Timeout in (milliseconds) to gather signature shares. |
-| tx\_fee\_ustx         |           | The STX tx fee to use in microSTX. If not set, will default to 10000. |
-| max\_tx\_fee\_ustx    |           | The max STX tx fee to use in microSTX when estimating fees. If not set, will use tx\_fee\_ustx. |
-
+| db\_path              | ✓        | Path to the signer's database file |
+| metrics\_endpoint     |          | IP:PORT for Prometheus metrics collection. |
+| chain\_id             |          | An optional ChainID, only used for custom networks (like Nakamoto Testnet) |
 
 ### Example Configs
 
@@ -45,30 +35,30 @@ Below are sample configuration files for running a Stacks node and signer provid
 ### Testnet Signer
 
 ```toml
-# The IP address and port where your Stacks node can be accessed. 
-# The port 20443 is the default RPC endpoint for Stacks nodes. 
+# The IP address and port where your Stacks node can be accessed.
+# The port 20443 is the default RPC endpoint for Stacks nodes.
 # Note that you must use an IP address - DNS hosts are not supported at this time.
 # This should be the IP address accessible via Docker, usually via a network.
 node_host = "127.0.0.1:20443"
 
-# This is the location where the signer will expose an RPC endpoint for 
+# This is the location where the signer will expose an RPC endpoint for
 # receiving events from your Stacks node.
 endpoint = "127.0.0.1:30000"
 
 # Either “testnet” or “mainnet”
 network = "testnet"
 
-# this is a file path where your signer will persist data. If using Docker, 
+# this is a file path where your signer will persist data. If using Docker,
 # this must be within a volume, so that data can be persisted across restarts
 db_path = "/var/stacks/signer.sqlite"
 
-# an authentication token that is used for some HTTP requests made from the 
-# signer to your Stacks node. You’ll need to use this later on when configuring 
-# your Stacks node. You create this field yourself, rather than it being generated 
+# an authentication token that is used for some HTTP requests made from the
+# signer to your Stacks node. You’ll need to use this later on when configuring
+# your Stacks node. You create this field yourself, rather than it being generated
 # with your private key.
 auth_password = "$your_http_auth_token"
 
-# This is the privateKey field from the keys you generated in the 
+# This is the privateKey field from the keys you generated in the
 # previous step.
 stacks_private_key = "$your_stacks_private_key"
 ```
@@ -83,7 +73,7 @@ Additions necessary specifically to run a signer are the `[connection_options]` 
 
 ```toml
 [node]
-# Set this based on where you downloaded 
+# Set this based on where you downloaded
 # the chain state archive as described in the How to Run a Signer guide:
 working_dir = "/stacks-blockchain/data"
 rpc_bind = "0.0.0.0:20443"
@@ -98,6 +88,7 @@ stacker = true
 [burnchain]
 chain = "bitcoin"
 mode = "krypton"
+chain_id = 0x80000100
 magic_bytes = "N3"
 poll_time_secs = 30
 pox_prepare_length = 100
@@ -109,9 +100,6 @@ commit_anchor_block_within = 300000
 rpc_port = 18543
 peer_port = 18544
 #satoshis_per_byte = 20
-first_burn_block_height = 230
-first_burn_block_timestamp = 1714513150
-first_burn_block_hash = "654e1e9f66701d4f8a138b46d4cf0cc26665688175bcbb1700729efbf759e57d"
 
 # Set your auth token, which the signer uses
 # This should match the auth_password field of your signer config
@@ -130,35 +118,35 @@ start_height = 0
 
 [[burnchain.epochs]]
 epoch_name = "2.0"
-start_height = 230
+start_height = 0
 
 [[burnchain.epochs]]
 epoch_name = "2.05"
-start_height = 240
+start_height = 1
 
 [[burnchain.epochs]]
 epoch_name = "2.1"
-start_height = 240
+start_height = 2
 
 [[burnchain.epochs]]
 epoch_name = "2.2"
-start_height = 241
+start_height = 3
 
 [[burnchain.epochs]]
 epoch_name = "2.3"
-start_height = 242
+start_height = 4
 
 [[burnchain.epochs]]
 epoch_name = "2.4"
-start_height = 243
+start_height = 5
 
 [[burnchain.epochs]]
 epoch_name = "2.5"
-start_height = 244
+start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 72_280
+start_height = 1000
 
 [[ustx_balance]]
 address = "ST0DZFQ1XGHC5P1BZ6B7HSWQKQJHM74JBGCSDTNA"
@@ -339,7 +327,7 @@ amount = 10000000000000000
 
 [fee_estimation]
 fee_estimator = "fuzzed_weighted_median_fee_rate"
-    
+
 [[burnchain.epochs]]
 epoch_name = "1.0"
 start_height = 0
@@ -382,30 +370,30 @@ start_height = 56_457
 This config is very similar to the testnet config, except the `network` field is changed.
 
 ```toml
-# The IP address and port where your Stacks node can be accessed. 
-# The port 20443 is the default RPC endpoint for Stacks nodes. 
+# The IP address and port where your Stacks node can be accessed.
+# The port 20443 is the default RPC endpoint for Stacks nodes.
 # Note that you must use an IP address - DNS hosts are not supported at this time.
 # This should be the IP address accessible via Docker, usually via a network.
 node_host = "127.0.0.1:20443"
 
-# This is the location where the signer will expose an RPC endpoint for 
+# This is the location where the signer will expose an RPC endpoint for
 # receiving events from your Stacks node.
 endpoint = "127.0.0.1:30000"
 
 # Either “testnet” or “mainnet”
 network = "mainnet"
 
-# this is a file path where your signer will persist data. If using Docker, 
+# this is a file path where your signer will persist data. If using Docker,
 # this must be within a volume, so that data can be persisted across restarts
 db_path = "/var/stacks/signer.sqlite"
 
-# an authentication token that is used for some HTTP requests made from the 
-# signer to your Stacks node. You’ll need to use this later on when configuring 
-# your Stacks node. You create this field yourself, rather than it being generated 
+# an authentication token that is used for some HTTP requests made from the
+# signer to your Stacks node. You’ll need to use this later on when configuring
+# your Stacks node. You create this field yourself, rather than it being generated
 # with your private key.
 auth_password = "$your_http_auth_token"
 
-# This is the privateKey field from the keys you generated in the 
+# This is the privateKey field from the keys you generated in the
 # previous step.
 stacks_private_key = "$your_stacks_private_key"
 
@@ -419,7 +407,7 @@ With a mainnet Stacks node config, you'll need to change the bootstrap node fiel
 
 ```toml
 [node]
-# Set this based on where you downloaded 
+# Set this based on where you downloaded
 # the chain state archive as described in the How to Run a Signer guide:
 working_dir = "/data-dir-somewhere"
 rpc_bind = "0.0.0.0:20443"
