@@ -44,7 +44,7 @@ npm install --global @stacks/cli
 
 # Generate a new account and store details in a file
 # '-t' option makes this a testnet account
-stx make_keychain -t > ~/stacks-signer/keychain.json
+stx make_keychain -t | jq > ~/stacks-signer/keychain.json
 ```
 
 {% endtab %}
