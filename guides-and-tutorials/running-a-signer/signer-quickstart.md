@@ -119,7 +119,7 @@ find ~/stacks-signer -type f ! -name 'stacks-signer' -delete
 
 ### Create the configuration file
 
-Create the configuration file required to start the signer:
+Create the configuration file required to start the signer (be sure to replace `<your_token>` and `<your_private_key>` with your auth token and private key values):
 
 {% tabs %}
 
@@ -253,7 +253,7 @@ find ~/stacks-node -type f ! -name 'stacks-node' -delete
 
 ### Create the configuration file
 
-Create the configuration file required to start the node:
+Create the configuration file required to start the node (be sure to replace `<your_token>` with your auth token value):
 
 {% tabs %}
 
