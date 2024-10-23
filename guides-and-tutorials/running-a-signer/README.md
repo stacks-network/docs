@@ -24,7 +24,7 @@ mining_key = "private key" ## may be the same as [node].seed
 **Important note**:
 Any unrecognized and uncommented config value _will_ cause the binary to panic.
 
-The output will specify which configuration key caused the panic (there may be more than one, but the message will only panic on the first unrecognized key) in the format:
+The output will specify which configuration key caused the panic (there may be more than one, but the message will only show the first unrecognized key) in the format:
 
 ```
 $ stacks-node check-config --config ./Config.toml
