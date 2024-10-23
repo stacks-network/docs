@@ -12,9 +12,10 @@ Binaries will be provided roughly a week in advance and your normal upgrade proc
 
 For quick reference, here are the current latest versions you'll want to be running as a signer. If you don't yet have your signer up and running, this guide will walk you through that.
 
-- Signer - [3.0.0.0.0](https://hub.docker.com/r/blockstack/stacks-signer/tags?page=1&name=3.0.0.0.0)
-- Stacks Node - [3.0.0.0.0](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1&name=3.0.0.0.0)
-  {% endhint %}
+- Signer - [3.0.0.0.0.0](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.0.0/images/sha256-5406912473befe62ce21f1630908b01960bae29b7bef306fd5669037ac8e112b?context=explore)
+- Stacks Node - [3.0.0.0.0](https://hub.docker.com/layers/blockstack/stacks-core/3.0.0.0.0/images/sha256-7e0ce69dff7198ce0dd0f44676f065abd6f834ed6d9a396856a36fd422ba6134?context=explore)
+
+{% endhint %}
 
 ### How to Use This Guide
 
@@ -147,7 +148,7 @@ Note that at the moment the signer should only be run on testnet using these ins
 
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the [`blockstack/stacks-signer:3.0.0.0.0`](https://hub.docker.com/r/blockstack/stacks-signer/tags?page=1&name=3.0.0.0.0) image.
+You can run the signer as a Docker container using the [`blockstack/stacks-signer:3.0.0.0.0.0`](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.0.0/images/sha256-5406912473befe62ce21f1630908b01960bae29b7bef306fd5669037ac8e112b?context=explore) image.
 
 When running the Docker container, you’ll need to ensure a few things:
 
@@ -161,7 +162,7 @@ Be sure to replace the `STX_SIGNER_PATH` with the correct path to your config fi
 
 ```bash
 IMG="blockstack/stacks-signer"
-VER="3.0.0.0.0"
+VER="3.0.0.0.0.0"
 STX_SIGNER_PATH="./"
 STX_SIGNER_DATA="$STX_SIGNER_PATH/data"
 STX_SIGNER_CONFIG="$STX_SIGNER_PATH/signer-config.toml"
@@ -187,7 +188,7 @@ For example, if you are running on M1 Mac, you would add `--platform=linux/amd64
 Or, with a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-signer:3.0.0.0.0
+FROM blockstack/stacks-signer:3.0.0.0.0.0
 COPY signer-config.toml /config.toml
 EXPOSE 30000
 CMD ["stacks-signer", "run", "--config", "/config.toml"]
@@ -280,7 +281,7 @@ For example:
 
 #### Run a Stacks Node with Docker
 
-You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 3.0.0.0.0](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1&name=3.0.0.0.0). When running the Docker container, you’ll need to ensure a few things:
+You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 3.0.0.0.0.0](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.0.0/images/sha256-5406912473befe62ce21f1630908b01960bae29b7bef306fd5669037ac8e112b?context=explore). When running the Docker container, you’ll need to ensure a few things:
 
 - The port configured for `p2p_bind` must be exposed to the internet
 - The port configured for `rpc_bind` must be accessible by your signer
