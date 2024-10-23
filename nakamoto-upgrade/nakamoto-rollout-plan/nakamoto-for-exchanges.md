@@ -58,7 +58,9 @@ The hard fork will occur **after** a series of activation steps. You can learn m
 
 * [Testnet documentation](https://docs.stacks.co/nakamoto-upgrade/nakamoto)
 * [API documentation](https://docs.hiro.so/nakamoto/stacks-js)
-* [Binaries](https://github.com/stacks-network/stacks-core/releases/tag/2.5.0.0.2)
-* [Docker Images](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1\&name=2.5.0.0.2)
+* [Core Binaries](https://github.com/stacks-network/stacks-core/releases/tag/3.0.0.0.0)
+* [Signer Binary](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.0.0.0.0.0)
+* [Core Docker Images](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1\&name=3.0.0.0.0)
+* [Signer Docker Image](https://hub.docker.com/r/blockstack/stacks-signer/tags?page=1\&name=3.0.0.0.0.0)
 * [Stacks Blockchain API](https://github.com/hirosystems/stacks-blockchain-api/releases/tag/v7.10.0)
 * [Stacks Blockchain API Docker Images](https://hub.docker.com/r/hirosystems/stacks-blockchain-api/tags?page=1\&name=7.10.0)
