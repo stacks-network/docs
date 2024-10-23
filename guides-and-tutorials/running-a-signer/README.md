@@ -37,7 +37,7 @@ WARN [1729707265.671992] [testnet/stacks-node/src/main.rs:325] [main] Invalid co
 
 For quick reference, here are the current latest versions you'll want to be running as a signer. If you don't yet have your signer up and running, this guide will walk you through that.
 
-- [Binaries](https://github.com/stacks-network/stacks-core/releases)
+- [Binaries](https://github.com/stacks-network/stacks-core/releases/latest)
 - Signer Docker Image - [3.0.0.0.0.0](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.0.0/images/sha256-5406912473befe62ce21f1630908b01960bae29b7bef306fd5669037ac8e112b?context=explore)
 - Stacks Node Docker Image - [3.0.0.0.0](https://hub.docker.com/layers/blockstack/stacks-core/3.0.0.0.0/images/sha256-7e0ce69dff7198ce0dd0f44676f065abd6f834ed6d9a396856a36fd422ba6134?context=explore)
   {% endhint %}
