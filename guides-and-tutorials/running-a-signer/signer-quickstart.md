@@ -226,7 +226,7 @@ stacker = true
 [burnchain]
 chain = "bitcoin"
 mode = "mainnet"
-peer_host = "bitcoin.stacks.org"
+peer_host = "bitcoin.mainnet.stacks.org"
 
 [connection_options]
 auth_token = "$AUTH_TOKEN"
