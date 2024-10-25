@@ -203,7 +203,7 @@ Create the configuration file required to start the node (be sure to replace `<y
 
 {% hint style="warning" %}
 
-For mainnet, we strongly recommended that you run your own bitcoin node in order to ensure you have no connection issues when downloading bitcoin blocks. A hosted bitcoin node may cause your stacks node to fall behind tip and remain unsynced.
+For mainnet, we strongly recommended that you run your own bitcoin node (you can follow [this](https://github.com/stacksfoundation/miner-docs/blob/main/bitcoin.md) guide) in order to ensure you have no connection issues when downloading bitcoin blocks. A hosted bitcoin node may cause your stacks node to fall behind tip and remain unsynced.
 
 If you run your own bitcoin node, you'll have to update `peer_host` and optionally add `rpc_port`, `peer_port`, `username` and `password` fields under the `[burnchain]` section of the node's configuration file.
 
