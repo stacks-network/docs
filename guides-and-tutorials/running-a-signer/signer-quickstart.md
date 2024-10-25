@@ -73,49 +73,20 @@ From this file, you'll need the `privateKey` value.
 
 ### Download the stacks-signer binary
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/tag/signer-2.5.0.0.5.2) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary. Currently, the latest mainnet and testnet versions that you have to use differ.
+Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.0.0.0.0.0) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
 
-Assuming a `Linux x64` machine, the commands to download and uncompress the signer binary look like this:
-
-{% tabs %}
-
-{% tab title="Mainnet" %}
+Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the signer binary look like this:
 
 ```bash
 # Enter the signer directory
 cd ~/stacks-signer
 
 # Download the signer binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/signer-2.5.0.0.5.2/linux-glibc-x64.zip
+wget https://github.com/stacks-network/stacks-core/releases/download/signer-3.0.0.0.0.0/linux-glibc-x64.zip
 
 # Unzip the signer binary archive
 unzip linux-glibc-x64.zip
-
-# Remove unwanted files
-find ~/stacks-signer -type f ! -name 'stacks-signer' ! -name 'keychain.json' -delete
 ```
-
-{% endtab %}
-
-{% tab title="Testnet" %}
-
-```bash
-# Enter the signer directory
-cd ~/stacks-signer
-
-# Download the signer binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/3.0.0.0.0-rc5/linux-glibc-x64.zip
-
-# Unzip the signer binary archive
-unzip linux-glibc-x64.zip
-
-# Remove unwanted files
-find ~/stacks-signer -type f ! -name 'stacks-signer' ! -name 'keychain.json' -delete
-```
-
-{% endtab %}
-
-{% endtabs %}
 
 ### Create the configuration file
 
@@ -173,16 +144,12 @@ EOF
 
 To ensure the signer has been set up correctly, you can run the following commands:
 
-{% tabs %}
-
-{% tab title="Mainnet" %}
-
 ```bash
 # Verify the signer's version
 ~/stacks-signer/stacks-signer --version
 
 # Output:
-stacks-signer signer-2.5.0.0.5.2 (release/signer-2.5.0.0.5.2:d441e02, release build, linux [x86_64])
+stacks-signer stacks-signer 3.0.0.0.0 (release/3.0.0.0.0:dd1ebe6, release build, linux [x86_64])
 
 # Verify the config file
 ~/stacks-signer/stacks-signer check-config -c ~/stacks-signer/signer-config.toml 
@@ -193,41 +160,11 @@ Stacks node host: 127.0.0.1:20443
 Signer endpoint: 127.0.0.1:30000
 Stacks address: SP1G... # address from keychain file
 Public key: 03a3... # publicKey from keychain file
-Network: mainnet
-Database path: ~/stacks-signer/data/signer.sqlite
-DKG transaction fee: 0.01 uSTX
+Network: mainnet # or testnet
+Chain ID: 0x1 # or 0x80000000 for testnet
+Database path: /home/admin/stacks-signer/data/signer.sqlite
 Metrics endpoint: 127.0.0.1:9154
 ```
-
-{% endtab %}
-
-{% tab title="Testnet" %}
-
-```bash
-# Verify the signer's version
-~/stacks-signer/stacks-signer --version
-
-# Output:
-stacks-signer 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
-
-# Verify the config file
-~/stacks-signer/stacks-signer check-config -c ~/stacks-signer/signer-config.toml 
-
-# Output:
-Config: 
-Stacks node host: 127.0.0.1:20443
-Signer endpoint: 127.0.0.1:30000
-Stacks address: SP1G... # address from keychain file
-Public key: 03a3... # publicKey from keychain file
-Network: testnet
-Chain ID: 0x80000000
-Database path: ~/stacks-signer/data/signer.sqlite
-Metrics endpoint: 127.0.0.1:9154
-```
-
-{% endtab %}
-
-{% endtabs %}
 
 ### Start the signer
 
@@ -241,49 +178,20 @@ If the outputs of the previous commands are correct, you can proceed and start t
 
 ### Download the stacks-node binary
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest node release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary. Currently, the latest mainnet and testnet versions that you have to use differ.
+Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest node release ZIP file](https://github.com/stacks-network/stacks-core/releases/tag/3.0.0.0.0) for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary.
 
-Assuming a `Linux x64` machine, the commands to download and uncompress the node binary look like this:
-
-{% tabs %}
-
-{% tab title="Mainnet" %}
+Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the node binary look like this:
 
 ```bash
 # Enter the node directory
 cd ~/stacks-node
 
 # Download the node binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/2.5.0.0.7/linux-glibc-x64.zip
+wget https://github.com/stacks-network/stacks-core/releases/download/3.0.0.0.0/linux-glibc-x64.zip
 
 # Unzip the node binary archive
 unzip linux-glibc-x64.zip
-
-# Remove unwanted files
-find ~/stacks-node -type f ! -name 'stacks-node' -delete
 ```
-
-{% endtab %}
-
-{% tab title="Testnet" %}
-
-```bash
-# Enter the node directory
-cd ~/stacks-node
-
-# Download the node binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/3.0.0.0.0-rc5/linux-glibc-x64.zip
-
-# Unzip the node binary archive
-unzip linux-glibc-x64.zip
-
-# Remove unwanted files
-find ~/stacks-node -type f ! -name 'stacks-node' -delete
-```
-
-{% endtab %}
-
-{% endtabs %}
 
 ### Create the configuration file
 
@@ -292,6 +200,14 @@ Create the configuration file required to start the node (be sure to replace `<y
 {% tabs %}
 
 {% tab title="Mainnet" %}
+
+{% hint style="warning" %}
+
+For mainnet, we strongly recommended that you run your own bitcoin node in order to ensure you have no connection issues when downloading bitcoin blocks. A hosted bitcoin node may cause your stacks node to fall behind tip and remain unsynced.
+
+If you run your own bitcoin node, you'll have to update `peer_host` and optionally add `rpc_port`, `peer_port`, `username` and `password` fields under the `[burnchain]` section of the node's configuration file.
+
+{% endhint %}
 
 ```bash
 # Set environment variables
@@ -303,17 +219,14 @@ cat <<EOF> ~/stacks-node/node-config.toml
 working_dir = "$HOME/stacks-node/data"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
+prometheus_bind = "127.0.0.1:9153" 
 bootstrap_node = "02196f005965cebe6ddc3901b7b1cc1aa7a88f305bb8c5893456b8f9a605923893@seed.mainnet.hiro.so:20444,02539449ad94e6e6392d8c1deb2b4e61f80ae2a18964349bc14336d8b903c46a8c@cet.stacksnodes.org:20444,02ececc8ce79b8adf813f13a0255f8ae58d4357309ba0cedd523d9f1a306fcfb79@sgt.stacksnodes.org:20444,0303144ba518fe7a0fb56a8a7d488f950307a4330f146e1e1458fc63fb33defe96@est.stacksnodes.org:20444"
 stacker = true
 
 [burnchain]
 chain = "bitcoin"
 mode = "mainnet"
-peer_host = "bitcoind.stacks.co"
-username = "blockstack"
-password = "blockstacksystem"
-rpc_port = 8332
-peer_port = 8333
+peer_host = "bitcoin.stacks.org"
 
 [connection_options]
 auth_token = "$AUTH_TOKEN"
@@ -466,51 +379,22 @@ rm testnet-stacks-blockchain-latest.tar.gz
 
 To ensure the node has been set up correctly, you can run the following commands:
 
-{% tabs %}
-
-{% tab title="Mainnet" %}
-
 ```bash
 # Verify the node's version
 ~/stacks-node/stacks-node version
 
 # Output:
-INFO [1729608887.386492] [testnet/stacks-node/src/main.rs:293] [main] stacks-node 2.5.0.0.7 (release/2.5.0.0.7:bed29bc, release build, linux [x86_64])
-stacks-node 2.5.0.0.7 (release/2.5.0.0.7:bed29bc, release build, linux [x86_64])
+INFO [1729788035.383049] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.0 (release/3.0.0.0.0:dd1ebe6, release build, linux [x86_64])
+stacks-node 3.0.0.0.0 (release/3.0.0.0.0:dd1ebe6, release build, linux [x86_64])
 
 # Verify the node's config
 ~/stacks-node/stacks-node check-config --config ~/stacks-node/node-config.toml
 
 # Output:
-INFO [1729609058.154038] [testnet/stacks-node/src/main.rs:293] [main] stacks-node 2.5.0.0.7 (release/2.5.0.0.7:bed29bc, release build, linux [x86_64])
-INFO [1729609058.154077] [testnet/stacks-node/src/main.rs:326] [main] Loading config at path /home/admin/stacks-node/node-config.toml
-INFO [1729609058.416339] [testnet/stacks-node/src/main.rs:339] [main] Loaded config!
+INFO [1729788064.913032] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.0 (release/3.0.0.0.0:dd1ebe6, release build, linux [x86_64])
+INFO [1729788064.913175] [testnet/stacks-node/src/main.rs:318] [main] Loading config at path /home/admin/stacks-node/node-config.toml
+INFO [1729788064.969551] [testnet/stacks-node/src/main.rs:331] [main] Loaded config!
 ```
-
-{% endtab %}
-
-{% tab title="Testnet" %}
-
-```bash
-# Verify the node's version
-~/stacks-node/stacks-node version
-
-# Output:
-INFO [1729612607.278464] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
-stacks-node 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
-
-# Verify the node's config
-~/stacks-node/stacks-node check-config --config ~/stacks-node/node-config.toml
-
-# Output:
-INFO [1729612624.744001] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.0-rc5 (release/3.0.0.0.0-rc5:3e4ae4f, release build, linux [x86_64])
-INFO [1729612624.744061] [testnet/stacks-node/src/main.rs:318] [main] Loading config at path /home/bowtieddevops/stacks-node/node-config.toml
-INFO [1729612624.808624] [testnet/stacks-node/src/main.rs:331] [main] Loaded config!
-```
-
-{% endtab %}
-
-{% endtabs %}
 
 ### Start the node
 
@@ -546,3 +430,6 @@ The simplest route is to solo stack. You can do that by using [Lockstacks](https
 
 If you would like to learn more about solo stacking or running a pool operator, take a look at the [Stack STX](https://docs.stacks.co/guides-and-tutorials/stack-stx) guide.
 
+## Step 7 - Monitoring
+
+If you would like to learn more about monitoring your signer and its corresponding node, you can check the [How to Monitor a Signer](https://docs.stacks.co/guides-and-tutorials/running-a-signer/how-to-monitor-signer) guide.
