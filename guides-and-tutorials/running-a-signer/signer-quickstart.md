@@ -249,7 +249,7 @@ AUTH_TOKEN=<your_token> # Used for signer-node authentication, same token as the
 cat <<EOF> ~/stacks-node/node-config.toml
 [node]
 working_dir = "$HOME/stacks-node/data"
-rpc_bind = "0.0.0.0:20443"
+rpc_bind = "127.0.0.1:20443"
 p2p_bind = "0.0.0.0:20444"
 bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
 prometheus_bind = "127.0.0.1:9153" 
