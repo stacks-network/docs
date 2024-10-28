@@ -1,7 +1,7 @@
 # Nakamoto Activation Guide for Signers
 
 {% hint style="info" %}
-The block for Nakamoto activation has been chosen as Bitcoin block 867,867, which is currently expected on October 29th. This block is subject to change should core developers need additional time for testing or unexpected issues.
+The block for Nakamoto activation has been chosen as Bitcoin block 867,867, which is currently expected on October 28th. This block is subject to change should core developers need additional time for testing or unexpected issues.
 
 Binaries will be provided roughly a week in advance and your normal upgrade procedure should apply here, you’ll want to be running the latest node and Signer software. Note that if you do not upgrade ahead of the hard fork, your nodes will be dropped from the network.
 {% endhint %}
@@ -13,7 +13,7 @@ This initial phase focuses on testing Signer 3.0 readiness in a testnet environm
 **Action Required:**
 
 1. Update stacks-node to version 3.0.0.0.0 ([here](https://github.com/stacks-network/stacks-core/releases/tag/3.0.0.0.0))
-2. Update signer to version 3.0.0.0.0.0 ([here](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.0.0.0.0.0))
+2. Update signer to version 3.0.0.0.0.1 ([here](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.0.0.0.0.1))
 3. [Run a Primary Testnet node](setting-up-a-primary-post-nakamoto-testnet-node.md) alongside your Signer
 4. Create a testnet wallet address
 5. Complete the provided form ([here](https://blocksurvey.io/signer-nakamoto-activation-upgrade-GrOV5aivQ2.z2fh3bqEyLQ?v=o))
