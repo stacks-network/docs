@@ -1,6 +1,6 @@
 # sBTC Clarity Contracts Documentation
 
-This document provides an overview and detailed explanation of the sBTC Clarity contracts. These contracts are designed to facilitate the creation, management, and transfer of sBTC tokens on the Stacks blockchain.
+This document provides an overview and detailed explanation of the [sBTC Clarity contracts](https://github.com/stacks-network/sbtc/tree/main/contracts). These contracts are designed to facilitate the creation, management, and transfer of sBTC tokens on the Stacks blockchain.
 
 ## Contracts Overview
 
@@ -68,7 +68,7 @@ This contract serves as the central registry for the sBTC protocol, managing wit
 
 ## sbtc-token
 
-This contract implements the sBTC token, following the SIP-010 fungible token standard.
+This contract implements the sBTC token, following the [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) fungible token standard.
 
 ### Key Functions
 

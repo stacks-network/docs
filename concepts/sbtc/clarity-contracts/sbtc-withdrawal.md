@@ -2,7 +2,7 @@
 
 ## Overview
 
-The sBTC Withdrawal contract (`sbtc-withdrawal.clar`) manages the withdrawal process for the sBTC system. It handles the initiation, acceptance, and rejection of withdrawal requests, ensuring proper validation and interaction with other sBTC contracts.
+The [sBTC Withdrawal contract](https://github.com/stacks-network/sbtc/blob/main/contracts/contracts/sbtc-withdrawal.clar) (`sbtc-withdrawal.clar`) manages the withdrawal process for the sBTC system. It handles the initiation, acceptance, and rejection of withdrawal requests, ensuring proper validation and interaction with other sBTC contracts.
 
 ## Constants
 
