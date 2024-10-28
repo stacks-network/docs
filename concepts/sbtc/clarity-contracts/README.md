@@ -116,4 +116,4 @@ This contract handles the withdrawal of sBTC to receive BTC.
 
 ## Conclusion
 
-These contracts work together to create a decentralized system for managing sBTC, a synthetic representation of Bitcoin on the Stacks blockchain. The contracts handle key operations such as minting sBTC through deposits, burning sBTC through withdrawals, managing the signer set, and maintaining the overall state of the protocol.
+Collectively, these contracts work together to create a decentralized system for managing sBTC, a synthetic representation of Bitcoin on the Stacks blockchain. The contracts handle key operations such as minting sBTC through deposits, burning sBTC through withdrawals, managing the signer set, and maintaining the overall state of the protocol.
