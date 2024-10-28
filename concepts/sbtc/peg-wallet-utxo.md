@@ -2,7 +2,7 @@
 
 The Peg Wallet UTXO is a fundamental element of the sBTC system, serving as the Bitcoin backing for all sBTC tokens in circulation. This system employs a Single UTXO Model, where the sBTC peg wallet is consistently represented as a single Unspent Transaction Output (UTXO) on the Bitcoin blockchain. This design choice offers simplicity and improved efficiency in managing the peg wallet.
 
-UTXO management falls under the responsibility of the Signer coordinator. This entity consolidates all deposit and withdrawal requests, creating optimized batches that can be processed within a single UTXO. The new UTXO is created by spending the amount from the previous UTXO, adding confirmed deposits, and subtracting confirmed withdrawals.
+UTXO management falls under the responsibility of the Signer set. First, a Signer coordinator constructs the UTXO. Then the Signer set collectively consolidates all deposit and withdrawal requests, creating optimized batches that can be processed within a single UTXO. The new UTXO is created by spending the amount from the previous UTXO, adding confirmed deposits, and subtracting confirmed withdrawals.
 
 The batching process is carefully optimized to maintain the single UTXO invariant while creating optimal batches. When multiple sBTC operation requests are present, the Signer coordinator groups them by approval sets. In scenarios where differing approval sets exist across active sBTC operations, the coordinator batches deposit UTXOs into groups with the maximum size per approval set.
 
