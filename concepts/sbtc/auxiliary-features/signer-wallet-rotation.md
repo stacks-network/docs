@@ -6,7 +6,7 @@ Signer Wallet Rotation is a crucial security feature in the sBTC system that all
 
 - sBTC Signers have the ability to rotate their private keys.
 - This feature enhances the long-term security of the sBTC system.
-- Key rotation is coordinated among signers and requires on-chain voting.
+- Key rotation is coordinated among signers and requires on-chain voting by the signers.
 
 ## Process
 
