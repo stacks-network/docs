@@ -87,6 +87,8 @@
 * [Run a Signer](guides-and-tutorials/running-a-signer/README.md)
   * [How to Read Signer Logs](guides-and-tutorials/running-a-signer/how-to-read-signer-logs.md)
   * [How to Monitor a Signer](guides-and-tutorials/running-a-signer/how-to-monitor-signer.md)
+  * [Best practices for running a
+    Signer](/guides-and-tutorials/running-a-signer/best-practices-to-run-a-signer.md)
 * [Stack STX](guides-and-tutorials/stack-stx/README.md)
   * [Solo Stack](guides-and-tutorials/stack-stx/stacking-flow.md)
   * [Operate a Pool](guides-and-tutorials/stack-stx/operate-a-pool.md)

@@ -1,0 +1,69 @@
+# Best practices for running a Signer
+
+The following best practices suggest how to create a resilient setup for running your Signer.
+
+tl;dr: avoid single point of failures, introduce redundancy, monitor things.
+
+### Run redundant Signer instances
+
+- Deploy two signer software instances for each signer public key.
+- These instances should have identical configurations, but be hosted on
+separate physical hosts (see *diversified hosting* below).
+
+This setup ensures that if one instance fails the other can continue operations
+without interruption.
+
+### Monitor your Signer instances
+
+See [here](https://www.notion.so/guides-and-tutorials/running-a-signer/how-to-monitor-signer.md).
+
+### Downstream components
+
+- Run a *dedicated* Bitcoin node and Stacks node per Signer.
+    - Ensure the nodes are provisioned with the minimum hardware requirements
+      described
+      [here](https://docs.stacks.co/guides-and-tutorials/running-a-signer#minimum-system-requirements).
+    - Nodes should be *exclusively dedicated* to serve the Signer. Avoid
+      re-using them to serve other clients as that may negatively affect
+      performance (no *mock-signing*, no *Stacks API nodes*).
+- If running dedicated nodes is not possible, then ensure that the Bitcoin /
+  Stacks nodes do not become single point of failures for *multiple* signers
+  depending on them.
+    - Introduce redundancy, load balancing, rely on a robust Bitcoin RPC
+      provider, etc.
+
+### Split voting power across multiple Signers
+
+- Distribute your voting power across multiple, distinct Signer public keys to
+  mitigate the risk of loss or downtime from a single compromised key.
+- Each Signer should manage a separate subset of your total voting power to
+  limit the impact of any single failure.
+
+### Monitor new software releases
+
+- Stay up-to-date with new releases, patches, and security advisories (e.g.,
+  GitHub, mailing lists, Discord).
+- Apply updates as quickly as possible, especially those addressing a security
+  vulnerability.
+
+### Upgrade procedures
+
+- Upgrading one Signer instance (of those running redundantly) at the time.
+- Test the update on one instance and, if successful, proceed to the others.
+
+### Diversified hosting
+
+- Use different provider / configuration where feasible (e.g., a self-hosted
+  instance and one in the cloud, or in two different data center regions, etc.).
+- Ensure each host has redundant power supply and network connectivity.
+
+### Redundancy in operations
+
+- Ensure that multiple, trusted users can manage and maintain signer instances.
+- Where feasible, users should span different timezones.
+
+### Backup signer keys in cold-storage
+
+- Keep an offline, secure backup of all Signer private keys (e.g., hardware
+  security modules or encrypted storage devices).
+
