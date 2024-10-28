@@ -2,7 +2,7 @@
 
 ## Overview
 
-The sBTC Registry contract (`sbtc-registry.clar`) serves as the central registry for the sBTC system. It manages withdrawal requests, completed deposits, and the current signer set. This contract is crucial for maintaining the state and coordinating operations within the sBTC ecosystem.
+The [sBTC Registry contract](https://github.com/stacks-network/sbtc/blob/main/contracts/contracts/sbtc-registry.clar) (`sbtc-registry.clar`) serves as the central registry for the sBTC system. It manages withdrawal requests, completed deposits, and the current signer set. This contract is crucial for maintaining the state and coordinating operations within the sBTC ecosystem.
 
 ## Error Constants
 

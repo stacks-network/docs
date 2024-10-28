@@ -2,7 +2,7 @@
 
 ## Overview
 
-The sBTC Token contract (`sbtc-token.clar`) implements the fungible token functionality for sBTC. It manages both unlocked and locked sBTC tokens and provides functions for minting, burning, transferring, and querying token information. sBTC is a SIP-010 standard fungible token.
+The [sBTC Token contract](https://github.com/stacks-network/sbtc/blob/main/contracts/contracts/sbtc-token.clar) (`sbtc-token.clar`) implements the fungible token functionality for sBTC. It manages both unlocked and locked sBTC tokens and provides functions for minting, burning, transferring, and querying token information. sBTC is a SIP-010 standard fungible token.
 
 ## Constants
 

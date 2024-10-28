@@ -1,6 +1,6 @@
 # Emily API
 
-Emily is an API that helps facilitate and supervise the sBTC Bridge, serving as a programmatic liaison between sBTC users and signers.
+[Emily](https://github.com/stacks-network/sbtc/tree/main/emily) is an API that helps facilitate and supervise the sBTC Bridge, serving as a programmatic liaison between sBTC users and signers.
 
 ## Overview
 
