@@ -2,7 +2,7 @@
 
 ## Overview
 
-The sBTC Deposit contract (`sbtc-deposit.clar`) manages the deposit process for the sBTC system. It handles the validation and minting of sBTC tokens when users deposit Bitcoin, and interacts with the sBTC Registry contract to update the protocol state.
+The [sBTC Deposit contract](https://github.com/stacks-network/sbtc/blob/main/contracts/contracts/sbtc-deposit.clar) (`sbtc-deposit.clar`) manages the deposit process for the sBTC system. It handles the validation and minting of sBTC tokens when users deposit Bitcoin, and interacts with the sBTC Registry contract to update the protocol state.
 
 ## Constants
 
