@@ -42,8 +42,8 @@ See [here](https://www.notion.so/guides-and-tutorials/running-a-signer/how-to-mo
 
 - Distribute your voting power across multiple, distinct Signer public keys to
   mitigate the risk of loss or downtime from a single compromised key.
-- Each Signer should manage a separate subset of your total voting power to
-  limit the impact of any single failure.
+- Each Signer should also limit voting power to a maximum amount and invite
+  Stackers to use a different Signer when the limit is reached.
 
 ### Monitor new software releases
 
