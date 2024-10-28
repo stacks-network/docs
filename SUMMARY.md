@@ -85,6 +85,7 @@
   * [Mine Mainnet Stacks Tokens](guides-and-tutorials/run-a-miner/mine-mainnet-stacks-tokens.md)
   * [Verify Miner](guides-and-tutorials/run-a-miner/verify-miner.md)
 * [Run a Signer](guides-and-tutorials/running-a-signer/README.md)
+  * [Signer Quickstart](guides-and-tutorials/running-a-signer/signer-quickstart.md)
   * [How to Read Signer Logs](guides-and-tutorials/running-a-signer/how-to-read-signer-logs.md)
   * [How to Monitor a Signer](guides-and-tutorials/running-a-signer/how-to-monitor-signer.md)
 * [Stack STX](guides-and-tutorials/stack-stx/README.md)
