@@ -1,8 +1,14 @@
 # Best practices for running a Signer
 
+{% hint style="info" %}
+**Intended audience**: solo Stackers or Stacking pool operators.
+{% endhint %}
+
 The following best practices suggest how to create a resilient setup for running your Signer.
 
+{% hint style="info" %}
 tl;dr: avoid single point of failures, introduce redundancy, monitor things.
+{% endhint %}
 
 ### Run redundant Signer instances
 
