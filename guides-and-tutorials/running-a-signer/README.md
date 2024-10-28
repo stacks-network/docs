@@ -1,7 +1,5 @@
 # Run a Signer
 
-{% include "../../.gitbook/includes/note-for-existing-signersth....md" %}
-
 ### How to Use This Guide
 
 If you are not familiar with the concept of signing and stacking, and how they work together, be sure to check out the [Stackers and Signing concept guide](../../concepts/block-production/stackers-and-signing.md).
@@ -133,7 +131,7 @@ Note that at the moment the signer should only be run on testnet using these ins
 
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the [`blockstack/stacks-signer:3.0.0.0.0.0`](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.0.0/images/sha256-5406912473befe62ce21f1630908b01960bae29b7bef306fd5669037ac8e112b?context=explore) image.
+You can run the signer as a Docker container using the [`blockstack/stacks-signer:3.0.0.0.0.1`](https://hub.docker.com/r/blockstack/stacks-signer/tags?page=1\&name=3.0.0.0.0.1) image.
 
 When running the Docker container, you’ll need to ensure a few things:
 
@@ -147,7 +145,7 @@ Be sure to replace the `STX_SIGNER_PATH` with the correct path to your config fi
 
 ```bash
 IMG="blockstack/stacks-signer"
-VER="3.0.0.0.0.0"
+VER="3.0.0.0.0.1"
 STX_SIGNER_PATH="./"
 STX_SIGNER_DATA="$STX_SIGNER_PATH/data"
 STX_SIGNER_CONFIG="$STX_SIGNER_PATH/signer-config.toml"
@@ -173,7 +171,7 @@ For example, if you are running on M1 Mac, you would add `--platform=linux/amd64
 Or, with a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-signer:3.0.0.0.0.0
+FROM blockstack/stacks-signer:3.0.0.0.0.1
 COPY signer-config.toml /config.toml
 EXPOSE 30000
 CMD ["stacks-signer", "run", "--config", "/config.toml"]

@@ -2,7 +2,7 @@
 
 ### **Setup A Stacks Primary Testnet Node**
 
-Once your signer is upgraded to version 3.0.0.0.0.0 ([here](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.0.0.0.0.0)) you’ll need to run a primary testnet node alongside it.
+Once your signer is upgraded to version 3.0.0.0.0.1 ([here](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.0.0.0.0.1)) you’ll need to run a primary testnet node alongside it.
 
 You have two options here. The first is to run the Bash script below and it will handle everything for you, including creating the configuration file, downloading and extracting a chain state archive, and getting the node up and running.
 
