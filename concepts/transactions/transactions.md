@@ -34,7 +34,7 @@ Stacks supports a set of different transaction types:
 | Contract deploy           | `smart_contract`          | Contract instantiation                                                                                                                                                                                                                                                      |
 | Contract call             | `contract_call`           | Contract call for a public, non read-only function                                                                                                                                                                                                                          |
 
-A sample of each transaction type can be found in the [Stacks Blockchain API response definition for transactions](https://docs.hiro.so/api#operation/get\_transaction\_by\_id).
+A sample of each transaction type can be found in the [Stacks Blockchain API response definition for transactions](https://docs.hiro.so/stacks/api/transactions/get-transaction).
 
 {% hint style="info" %}
 Read-only contract call calls do **not** require transactions. Read more about it in the network guide.
