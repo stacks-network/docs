@@ -346,10 +346,10 @@ For more information on the relationship between stacking and signing and how st
 As a signer you’ll need to fund and manage two Stacks accounts:
 
 1. A “pool operator” wallet, which commits delegated STX to your signer
-2. Your signer’s wallet, which needs a small amount of STX for making automated transactions during epoch 2.5
+2. Your signer’s wallet
 
 {% hint style="warning" %}
-Make sure that you are using testnet, and not mainnet, STX. You can change network settings within your wallet, and testnet STX can be [requested from a faucet](https://explorer.hiro.so/sandbox/faucet?chain=testnet).
+For testing, make sure that you are using testnet, and not mainnet, STX. You can change network settings within your wallet, and testnet STX can be [requested from a faucet](https://explorer.hiro.so/sandbox/faucet?chain=testnet).
 {% endhint %}
 
 #### Setup Your Pool Operator Wallet
@@ -358,12 +358,4 @@ You can set up your pool operator wallet using any Stacks wallet, such as [Leath
 
 Once your wallet has been created, you’ll need to fund it with enough STX to cover transaction fees. For testnet, you can use a [faucet exposed by the Stacks Explorer](https://explorer.hiro.so/sandbox/faucet?chain=testnet).
 
-Finally, share this wallet’s STX address with the parties that will be delegating STX to you.
-
-#### Fund Your Signer's STX Wallet
-
-Before the Nakamoto transition, signers need a small amount of STX to cover transaction fees. The transactions created from this wallet are all automated by the signer.
-
-In a previous step, where you generated a keychain, an address field was included in the output. This is your signer wallet’s STX address. You can also choose to use the mnemonic to access the wallet with [Leather](https://leather.io) or [Xverse](https://www.xverse.app).
-
-Transfer funds (or use the faucet) into the signer’s wallet address. We recommend at least 100-200 STX to cover transaction fees.
+Finally, share this wallet’s STX address with the parties that will be delegating STX to you. For improved user experience, you might want to use the helper contract that allows to specify a btc address for stackers ([pox4-pools](https://explorer.hiro.so/txid/SP001SFSMC2ZY76PD4M68P3WGX154XCH7NE3TYMX.pox4-pools?chain=mainnet)) and to add your pool to [lockstacks.com](https://lockstacks.com).
