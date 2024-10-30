@@ -95,18 +95,18 @@ Detailed steps for each of these are laid out below, but this checklist is being
 
 These are the **minimum required specs** to be able to run a node and signer, but it is recommended to have more than the minimum for optimal performance.
 
-#### Signer, Stacks node and Bitcoin nodes
+#### Signer, Stacks node and Bitcoin node
 
 * 4 vcpu
-* 4GB memory if running only a Stacks node
-* 10GB memory if running Stacks + Bitcoin node
-* 1+ TB storage (1TB for Bitcoin node, 350GB for Stacks node, and 100 MB for `stacks-signer`)
+* 4GB memory if running only a Stacks node and signer
+* 10GB memory if running Stacks + Bitcoin node + signer
+* 1.5+ TB storage (1TB for Bitcoin node, 350GB for Stacks node, and 50 GB for signer)
 
 #### Signer only
 
 * 1 cpu
-* 250MB memory
-* 100MB storage
+* 256MB memory
+* 50GB storage
 
 ### Preflight Setup
 
