@@ -96,7 +96,8 @@ Detailed steps for each of these are laid out below, but this checklist is being
 #### Signer, Stacks node and Bitcoin nodes
 
 * 4 vcpu
-* 4GB memory
+* 4GB memory if running only a Stacks node
+* 10GB memory if running Stacks + Bitcoin node
 * 1+ TB storage (1TB for Bitcoin node, 350GB for Stacks node, and 100 MB for `stacks-signer`)
 
 #### Signer only
