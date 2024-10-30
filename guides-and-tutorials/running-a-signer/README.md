@@ -93,6 +93,8 @@ Detailed steps for each of these are laid out below, but this checklist is being
 
 ### Minimum System Requirements
 
+These are the **minimum required specs** to be able to run a node and signer, but it is recommended to have more than the minimum for optimal performance.
+
 #### Signer, Stacks node and Bitcoin nodes
 
 * 4 vcpu
