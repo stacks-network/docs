@@ -19,9 +19,12 @@ separate physical hosts (see *diversified hosting* below).
 This setup ensures that if one instance fails the other can continue operations
 without interruption.
 
-### Monitor your Signer instances
+### Monitor your Signer and collect logs
 
-See [here](https://www.notion.so/guides-and-tutorials/running-a-signer/how-to-monitor-signer.md).
+- See
+  [here](https://www.notion.so/guides-and-tutorials/running-a-signer/how-to-monitor-signer.md)
+  on how to set up monitoring.
+- Keep 1 week of logs for both the Signer and the Stacks node.
 
 ### Downstream components
 
