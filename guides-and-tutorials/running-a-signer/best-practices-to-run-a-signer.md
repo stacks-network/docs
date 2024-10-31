@@ -24,7 +24,7 @@ without interruption.
 - See
   [here](https://www.notion.so/guides-and-tutorials/running-a-signer/how-to-monitor-signer.md)
   on how to set up monitoring.
-- Keep 1 week of logs for both the Signer and the Stacks node.
+- Retain at least 1 week of logs for both the Signer and the Stacks node.
 
 ### Downstream components
 
