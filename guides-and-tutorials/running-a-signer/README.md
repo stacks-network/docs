@@ -267,7 +267,7 @@ For example:
 
 #### Run a Stacks Node with Docker
 
-You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 3.0.0.0.0](https://hub.docker.com/layers/blockstack/stacks-core/3.0.0.0.0/images/sha256-7e0ce69dff7198ce0dd0f44676f065abd6f834ed6d9a396856a36fd422ba6134?context=repo). When running the Docker container, you’ll need to ensure a few things:
+You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 3.0.0.0.1](https://hub.docker.com/layers/blockstack/stacks-core/3.0.0.0.1/images/sha256-12463e8270f51537e5b85c069c1e246c734c47cbff37b92e0ef108d7984def7b?context=explore). When running the Docker container, you’ll need to ensure a few things:
 
 * The port configured for `p2p_bind` must be exposed to the internet
 * The port configured for `rpc_bind` must be accessible by your signer
@@ -278,7 +278,7 @@ An example for running the node’s Docker image with docker run is below. Be su
 
 ```bash
 IMG="blockstack/stacks-core"
-VER="3.0.0.0.0"
+VER="3.0.0.0.1"
 STX_NODE_CONFIG="./node-config.toml"
 
 docker run -d \
@@ -296,7 +296,7 @@ docker run -d \
 Or, using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:3.0.0.0.0
+FROM blockstack/stacks-core:3.0.0.0.1
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443

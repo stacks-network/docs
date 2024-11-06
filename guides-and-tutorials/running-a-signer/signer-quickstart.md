@@ -2,16 +2,14 @@
 
 If you want to get up and running as an active signer as quickly as possible. Here is a list of the commands you need to run and actions to take.
 
-If you are not familiar with how signing works yet, be sure to check out the [Stackers and Signing](/concepts/block-production/stackers-and-signing.md) concept guide.
+If you are not familiar with how signing works yet, be sure to check out the [Stackers and Signing](../../concepts/block-production/stackers-and-signing.md) concept guide.
 
-If you would like a more detailed walkthrough of all of these steps, take a look at the [Running a Signer](/guides-and-tutorials/running-a-signer/README.md) guide.
+If you would like a more detailed walkthrough of all of these steps, take a look at the [Running a Signer](./) guide.
 
 ## Step 1 - Prerequisites
 
 {% tabs %}
-
 {% tab title="Mainnet" %}
-
 ```bash
 # Create the required directories
 mkdir -p ~/stacks-signer/data
@@ -26,11 +24,9 @@ npm install --global @stacks/cli
 # Generate a new account and store details in a file
 stx make_keychain | jq > ~/stacks-signer/keychain.json
 ```
-
 {% endtab %}
 
 {% tab title="Testnet" %}
-
 ```bash
 # Create the required directories
 mkdir -p ~/stacks-signer/data
@@ -46,9 +42,7 @@ npm install --global @stacks/cli
 # '-t' option makes this a testnet account
 stx make_keychain -t | jq > ~/stacks-signer/keychain.json
 ```
-
 {% endtab %}
-
 {% endtabs %}
 
 The account file previously created looks like this:
@@ -93,9 +87,7 @@ unzip linux-glibc-x64.zip
 Create the configuration file required to start the signer (be sure to replace `<your_token>` and `<your_private_key>` with your auth token and private key values):
 
 {% tabs %}
-
 {% tab title="Mainnet" %}
-
 ```bash
 # Set environment variables
 AUTH_TOKEN=<your_token> # Used for signer-node authentication
@@ -113,11 +105,9 @@ metrics_endpoint = "127.0.0.1:9154"
 block_proposal_timeout_ms = 180000
 EOF
 ```
-
 {% endtab %}
 
 {% tab title="Testnet" %}
-
 ```bash
 # Set environment variables
 AUTH_TOKEN=<your_token> # Used for signer-node authentication
@@ -135,9 +125,7 @@ metrics_endpoint = "127.0.0.1:9154"
 block_proposal_timeout_ms = 180000
 EOF
 ```
-
 {% endtab %}
-
 {% endtabs %}
 
 ### Verify the setup
@@ -149,7 +137,7 @@ To ensure the signer has been set up correctly, you can run the following comman
 ~/stacks-signer/stacks-signer --version
 
 # Output:
-stacks-signer stacks-signer 3.0.0.0.0 (release/3.0.0.0.0:dd1ebe6, release build, linux [x86_64])
+stacks-signer stacks-signer 3.0.0.0.1 (release/3.0.0.0.1:dd1ebe6, release build, linux [x86_64])
 
 # Verify the config file
 ~/stacks-signer/stacks-signer check-config -c ~/stacks-signer/signer-config.toml 
@@ -187,7 +175,7 @@ Assuming a `Linux x64 glibc` machine, the commands to download and uncompress th
 cd ~/stacks-node
 
 # Download the node binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/3.0.0.0.0/linux-glibc-x64.zip
+wget https://github.com/stacks-network/stacks-core/releases/download/3.0.0.0.1/linux-glibc-x64.zip
 
 # Unzip the node binary archive
 unzip linux-glibc-x64.zip
@@ -198,15 +186,11 @@ unzip linux-glibc-x64.zip
 Create the configuration file required to start the node (be sure to replace `<your_token>` with your auth token value):
 
 {% tabs %}
-
 {% tab title="Mainnet" %}
-
 {% hint style="warning" %}
-
 For mainnet, we strongly recommended that you run your own bitcoin node (you can follow [this](https://github.com/stacksfoundation/miner-docs/blob/main/bitcoin.md) guide) in order to ensure you have no connection issues when downloading bitcoin blocks. A hosted bitcoin node may cause your stacks node to fall behind tip and remain unsynced.
 
 If you run your own bitcoin node, you'll have to update `peer_host` and optionally add `rpc_port`, `peer_port`, `username` and `password` fields under the `[burnchain]` section of the node's configuration file.
-
 {% endhint %}
 
 ```bash
@@ -236,11 +220,9 @@ endpoint = "127.0.0.1:30000"
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 EOF
 ```
-
 {% endtab %}
 
 {% tab title="Testnet" %}
-
 ```bash
 # Set environment variables
 AUTH_TOKEN=<your_token> # Used for signer-node authentication, same token as the one set up in the signer configuration
@@ -326,9 +308,7 @@ epoch_name = "3.0"
 start_height = 56_457
 EOF
 ```
-
 {% endtab %}
-
 {% endtabs %}
 
 ### Optional: Start the node with a data archive
@@ -336,9 +316,7 @@ EOF
 You can [download a chainstate archive](https://archive.hiro.so/) in order to quickly sync your node, otherwise it will take a long time to get up-to-date with the other nodes.
 
 {% tabs %}
-
 {% tab title="Mainnet" %}
-
 ```bash
 # Enter the node's datadir
 cd ~/stacks-node/data
@@ -352,11 +330,9 @@ tar -xvf mainnet-stacks-blockchain-latest.tar.gz
 # Remove the archive
 rm mainnet-stacks-blockchain-latest.tar.gz
 ```
-
 {% endtab %}
 
 {% tab title="Testnet" %}
-
 ```bash
 # Enter the node's datadir
 cd ~/stacks-node/data
@@ -370,9 +346,7 @@ tar -xvf testnet-stacks-blockchain-latest.tar.gz
 # Remove the archive
 rm testnet-stacks-blockchain-latest.tar.gz
 ```
-
 {% endtab %}
-
 {% endtabs %}
 
 ### Verify the setup
@@ -384,14 +358,14 @@ To ensure the node has been set up correctly, you can run the following commands
 ~/stacks-node/stacks-node version
 
 # Output:
-INFO [1729788035.383049] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.0 (release/3.0.0.0.0:dd1ebe6, release build, linux [x86_64])
-stacks-node 3.0.0.0.0 (release/3.0.0.0.0:dd1ebe6, release build, linux [x86_64])
+INFO [1729788035.383049] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.1 (release/3.0.0.0.1:dd1ebe6, release build, linux [x86_64])
+stacks-node 3.0.0.0.1 (release/3.0.0.0.1:dd1ebe6, release build, linux [x86_64])
 
 # Verify the node's config
 ~/stacks-node/stacks-node check-config --config ~/stacks-node/node-config.toml
 
 # Output:
-INFO [1729788064.913032] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.0 (release/3.0.0.0.0:dd1ebe6, release build, linux [x86_64])
+INFO [1729788064.913032] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.1 (release/3.0.0.0.1:dd1ebe6, release build, linux [x86_64])
 INFO [1729788064.913175] [testnet/stacks-node/src/main.rs:318] [main] Loading config at path /home/admin/stacks-node/node-config.toml
 INFO [1729788064.969551] [testnet/stacks-node/src/main.rs:331] [main] Loaded config!
 ```
