@@ -60,16 +60,21 @@ tl;dr: avoid single point of failures, introduce redundancy, monitor things.
 ### Fall-back deployments
 
 - Deploy additional Stacks nodes and Bitcoin nodes to be used as fall-back.
+  - Use the same configuration as your _active_ instances.
+  - For the Stacks node, comment out the `event_observer` section.
 - Prepare a backup Signer (same configuration) to be quickly activated, but _do
   not run it_.
   - At all times, there should be _exactly_ one Signer instance running for each
     Signer private key.
-- If an active instance (e.g., the Signer, the Stacks node or the Bitcoin node)
-  fails, you can quickly switch to the fall-back configuration to continue
-  operations.
 - These instances should be hosted on separate physical hosts (see *diversified
   hosting*) from the instances usually active in operations (serving each
   Signer).
+- If an active instance (e.g., the Signer, the Stacks node or the Bitcoin node)
+  fails, you can quickly switch to the fall-back configuration to continue
+  operations. To do that:
+  - Run the backup Signer.
+  - Enable the `event_observer` section of the Node configuration.
+  - Restart the node.
 
 ### Redundancy in operations
 
