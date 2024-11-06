@@ -3,10 +3,10 @@
 {% hint style="info" %}
 ### **Current Signer and Stacks Node Versions**
 
-**Signer - 3.0.0.0.0.1**
+**Signer - 3.0.0.0.1.0**
 
-* Docker Image
-* GitHub Release
+* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.1.0/images/sha256-3e8c05b0f7eecabfae10a4bede0a71ba99b7589a6ee32ad1c26e2672d88871ac?context=explore)
+* [GitHub Release](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.0.0.0.1.0)
 
 **Stacks Node - 3.0.0.0.1**
 
@@ -83,7 +83,7 @@ From this file, you'll need the `privateKey` value.
 
 ### Download the stacks-signer binary
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.0.0.0.0.0) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
+Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.0.0.0.1.0) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
 
 Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the signer binary look like this:
 
@@ -92,7 +92,7 @@ Assuming a `Linux x64 glibc` machine, the commands to download and uncompress th
 cd ~/stacks-signer
 
 # Download the signer binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/signer-3.0.0.0.0.0/linux-glibc-x64.zip
+wget https://github.com/stacks-network/stacks-core/releases/download/signer-3.0.0.0.1.0/linux-glibc-x64.zip
 
 # Unzip the signer binary archive
 unzip linux-glibc-x64.zip
@@ -153,7 +153,7 @@ To ensure the signer has been set up correctly, you can run the following comman
 ~/stacks-signer/stacks-signer --version
 
 # Output:
-stacks-signer stacks-signer 3.0.0.0.1 (release/3.0.0.0.1:dd1ebe6, release build, linux [x86_64])
+stacks-signer stacks-signer 3.0.0.0.1.0 (release/3.0.0.0.1.0:dd1ebe6, release build, linux [x86_64])
 
 # Verify the config file
 ~/stacks-signer/stacks-signer check-config -c ~/stacks-signer/signer-config.toml 
