@@ -50,6 +50,8 @@ tl;dr: avoid single point of failures, introduce redundancy, monitor things.
 
 - Upgrading one Signer instance at the time.
 - Test the update on one instance and, if successful, proceed to the others.
+- While your Signer is offline for upgrades, it won't sign any blocks. Ensure
+  that the downtime is as short as possible.
 
 ### Diversified hosting
 
