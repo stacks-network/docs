@@ -1,5 +1,21 @@
 # Signer Quickstart
 
+{% hint style="info" %}
+### **Current Signer and Stacks Node Versions**
+
+**Signer - 3.0.0.0.0.1**
+
+* Docker Image
+* GitHub Release
+
+**Stacks Node - 3.0.0.0.1**
+
+* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-core/3.0.0.0.1/images/sha256-12463e8270f51537e5b85c069c1e246c734c47cbff37b92e0ef108d7984def7b?context=explore)
+* [GitHub Release](https://github.com/stacks-network/stacks-core/releases/tag/3.0.0.0.1)
+{% endhint %}
+
+
+
 If you want to get up and running as an active signer as quickly as possible. Here is a list of the commands you need to run and actions to take.
 
 If you are not familiar with how signing works yet, be sure to check out the [Stackers and Signing](../../concepts/block-production/stackers-and-signing.md) concept guide.
