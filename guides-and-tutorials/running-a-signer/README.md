@@ -1,47 +1,5 @@
 # Run a Signer
 
-{% hint style="info" %}
-
-#### Note for Existing Signers
-
-The block for Nakamoto activation has been chosen as Bitcoin block 867,867, which is currently expected on October 28th. This block is subject to change should core developers need additional time for testing or unexpected issues.
-
-The 3.0 binaries (and Docker images) are provided below. Note that if you do not upgrade ahead of the hard fork, your nodes will be dropped from the network.
-
-If you have previously been running a signer, you'll want to make sure you do the following:
-
-First, upgrade your node and signer to the latest version (listed below).
-
-For miners:
-If you are currently using the config value `[miner].activated_vrf_key_path`, the saved json file will need to be removed prior to restart (it will be recreated).
-You will also need to add a new key to the miner section:
-
-```
-[miner]
-mining_key = "private key" ## may be the same as [node].seed
-```
-
-**Important note**:
-Any unrecognized and uncommented config value _will_ cause the binary to panic.
-
-The output will specify which configuration key caused the panic (there may be more than one, but the message will only show the first unrecognized key) in the format:
-
-```
-$ stacks-node check-config --config ./Config.toml
-INFO [1729707354.217841] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.0 (release/3.0.0.0.0:dd1ebe6, release build, linux [x86_64])
-INFO [1729707265.671604] [testnet/stacks-node/src/main.rs:318] [main] Loading config at path ./Config.toml
-WARN [1729707265.671992] [testnet/stacks-node/src/main.rs:325] [main] Invalid config file: Invalid toml: unknown field `foo`, expected one of `name`, `seed`, `deny_nodes`, `working_dir`, `rpc_bind`, `p2p_bind`, `p2p_address`, `data_url`, `bootstrap_node`, `local_peer_seed`, `miner`, `stacker`, `mock_mining`, `mock_mining_output_dir`, `mine_microblocks`, `microblock_frequency`, `max_microblocks`, `wait_time_for_microblocks`, `wait_time_for_blocks`, `next_initiative_delay`, `prometheus_bind`, `marf_cache_strategy`, `marf_defer_hashing`, `pox_sync_sample_secs`, `use_test_genesis_chainstate`, `always_use_affirmation_maps`, `require_affirmed_anchor_blocks`, `chain_liveness_poll_time_secs`, `stacker_dbs`, `fault_injection_block_push_fail_probability` for key `node` at line 20 column 1
-```
-
-#### Current Signer and Stacks Node Versions
-
-For quick reference, here are the current latest versions you'll want to be running as a signer. If you don't yet have your signer up and running, this guide will walk you through that.
-
-- [Binaries](https://github.com/stacks-network/stacks-core/releases/latest)
-- Signer Docker Image - [3.0.0.0.0.0](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.0.0/images/sha256-5406912473befe62ce21f1630908b01960bae29b7bef306fd5669037ac8e112b?context=explore)
-- Stacks Node Docker Image - [3.0.0.0.0](https://hub.docker.com/layers/blockstack/stacks-core/3.0.0.0.0/images/sha256-7e0ce69dff7198ce0dd0f44676f065abd6f834ed6d9a396856a36fd422ba6134?context=explore)
-  {% endhint %}
-
 ### How to Use This Guide
 
 If you are not familiar with the concept of signing and stacking, and how they work together, be sure to check out the [Stackers and Signing concept guide](../../concepts/block-production/stackers-and-signing.md).
@@ -60,9 +18,9 @@ It will also walk through how to set up the config files to get the signer and S
 
 ### Knowledge Prerequisites
 
-- Docker and basic knowledge of pulling and running images
-- Basic knowledge of [Stacks accounts](../../concepts/network-fundamentals/accounts.md)
-- Basic knowledge of [stacking](../../concepts/block-production/stacking.md) and the [Stacking flow](../stack-stx/)
+* Docker and basic knowledge of pulling and running images
+* Basic knowledge of [Stacks accounts](../../concepts/network-fundamentals/accounts.md)
+* Basic knowledge of [stacking](../../concepts/block-production/stacking.md) and the [Stacking flow](../stack-stx/)
 
 <details>
 
@@ -72,80 +30,83 @@ Detailed steps for each of these are laid out below, but this checklist is being
 
 **Pre-Launch Setup**
 
-- [ ] Ensure your system meets the [minimum system requirements](./#minimum-system-requirements).
-- [ ] Acquire Docker and basic knowledge of Stacks accounts, stacking, and the Nakamoto stacking flow (links provided below).
+* [ ] Ensure your system meets the [minimum system requirements](./#minimum-system-requirements).
+* [ ] Acquire Docker and basic knowledge of Stacks accounts, stacking, and the Nakamoto stacking flow (links provided below).
 
 **Preflight Setup**
 
-- [ ] Generate a new private key on testnet using stacks-cli.
-- [ ] Save the generated account information securely.
+* [ ] Generate a new private key on testnet using stacks-cli.
+* [ ] Save the generated account information securely.
 
 **Configuration Setup**
 
-- [ ] Create a `signer-config.toml` file with necessary configurations:
-  - node_host
-  - endpoint
-  - network
-  - db_path
-  - auth_password
-  - stacks_private_key
-- [ ] Store `signer-config.toml` securely and note down the values used.
+* [ ] Create a `signer-config.toml` file with necessary configurations:
+  * node\_host
+  * endpoint
+  * network
+  * db\_path
+  * auth\_password
+  * stacks\_private\_key
+* [ ] Store `signer-config.toml` securely and note down the values used.
 
 **Running the Signer**
 
-- [ ] Decide whether to run the signer using Docker (recommended) or as a binary.
-- [ ] If using Docker:
-  - [ ] Set up the necessary ports and volumes.
-  - [ ] Run the Docker container with the appropriate settings.
-- [ ] If running as a binary:
-  - [ ] Build `stacks-core` from source or download the pre-built binary.
-  - [ ] Run the signer using the command: `stacks-signer run --config <path_to_config>`.
+* [ ] Decide whether to run the signer using Docker (recommended) or as a binary.
+* [ ] If using Docker:
+  * [ ] Set up the necessary ports and volumes.
+  * [ ] Run the Docker container with the appropriate settings.
+* [ ] If running as a binary:
+  * [ ] Build `stacks-core` from source or download the pre-built binary.
+  * [ ] Run the signer using the command: `stacks-signer run --config <path_to_config>`.
 
 **Verify Signer Operation**
 
-- [ ] Check that the signer is listening on its configured endpoint.
-- [ ] Confirm that there are no errors and the system is ready for connections.
+* [ ] Check that the signer is listening on its configured endpoint.
+* [ ] Confirm that there are no errors and the system is ready for connections.
 
 **Setting Up the Stacks Node**
 
-- [ ] Create a `node-config.toml` with the necessary settings:
-  - auth_token
-  - events_observer.endpoint (matching the signer configuration)
-- [ ] Decide whether to run the Stacks node using Docker or as a binary.
-- [ ] If using Docker:
-  - [ ] Set up the Docker container with the correct ports and volumes.
-  - [ ] Run the Stacks node Docker container.
-- [ ] If running as a binary:
-  - [ ] Download the appropriate binary.
-  - [ ] Run it with the command: `./stacks-node start --config <path_to_config>`.
+* [ ] Create a `node-config.toml` with the necessary settings:
+  * auth\_token
+  * events\_observer.endpoint (matching the signer configuration)
+* [ ] Decide whether to run the Stacks node using Docker or as a binary.
+* [ ] If using Docker:
+  * [ ] Set up the Docker container with the correct ports and volumes.
+  * [ ] Run the Stacks node Docker container.
+* [ ] If running as a binary:
+  * [ ] Download the appropriate binary.
+  * [ ] Run it with the command: `./stacks-node start --config <path_to_config>`.
 
 **Verify Stacks Node Operation**
 
-- [ ] Check the Stacks node logs for successful connection to the signer.
-- [ ] Confirm that the node is syncing Bitcoin headers properly.
+* [ ] Check the Stacks node logs for successful connection to the signer.
+* [ ] Confirm that the node is syncing Bitcoin headers properly.
 
 **Setup Stacks Accounts**
 
-- [ ] Set up a “pool operator” wallet in a Stacks wallet (e.g., Leather or Xverse).
-- [ ] Fund the pool operator wallet with STX (testnet) sufficient for transaction fees.
-- [ ] Share the pool operator wallet’s STX address with delegating parties.
-- [ ] Fund your signer's STX wallet with enough STX to cover transaction fees (recommend at least 100-200 STX).
+* [ ] Set up a “pool operator” wallet in a Stacks wallet (e.g., Leather or Xverse).
+* [ ] Fund the pool operator wallet with STX (testnet) sufficient for transaction fees.
+* [ ] Share the pool operator wallet’s STX address with delegating parties.
+* [ ] Fund your signer's STX wallet with enough STX to cover transaction fees (recommend at least 100-200 STX).
 
 </details>
 
 ### Minimum System Requirements
 
-#### Signer, Stacks node and Bitcoin nodes
+These are the **minimum required specs** to be able to run a node and signer, but it is recommended to have more than the minimum for optimal performance.
 
-- 4 vcpu
-- 4GB memory
-- 1+ TB storage (1TB for Bitcoin node, 350GB for Stacks node, and 100 MB for `stacks-signer`)
+#### Signer, Stacks node and Bitcoin node
+
+* 4 vcpu
+* 4GB memory if running only a Stacks node and signer
+* 10GB memory if running Stacks + Bitcoin node + signer
+* 1.5+ TB storage (1TB for Bitcoin node, 350GB for Stacks node, and 50 GB for signer)
 
 #### Signer only
 
-- 1 cpu
-- 250MB memory
-- 100MB storage
+* 1 cpu
+* 256MB memory
+* 50GB storage
 
 ### Preflight Setup
 
@@ -173,13 +134,13 @@ Note that at the moment the signer should only be run on testnet using these ins
 
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the [`blockstack/stacks-signer:3.0.0.0.0.0`](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.0.0/images/sha256-5406912473befe62ce21f1630908b01960bae29b7bef306fd5669037ac8e112b?context=explore) image.
+You can run the signer as a Docker container using the [`blockstack/stacks-signer:3.0.0.0.1.0`](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.1.0/images/sha256-3e8c05b0f7eecabfae10a4bede0a71ba99b7589a6ee32ad1c26e2672d88871ac?context=explore) image.
 
 When running the Docker container, you’ll need to ensure a few things:
 
-- The port configured as the `endpoint` (in the above linked example, “30000”) must be exposed to your Stacks node. Note that this endpoint should not be public, but must be exposed to your Stacks node
-- You’ll need a volume with at least a few GB of available storage that contains the folder your `db_path` is in. In the above example, that would be /var
-- You’ll need to include your `signer-config.toml` file as noted below with the first `-v` flag
+* The port configured as the `endpoint` (in the above linked example, “30000”) must be exposed to your Stacks node. Note that this endpoint should not be public, but must be exposed to your Stacks node
+* You’ll need a volume with at least a few GB of available storage that contains the folder your `db_path` is in. In the above example, that would be /var
+* You’ll need to include your `signer-config.toml` file as noted below with the first `-v` flag
 
 An example command for running the Docker image with ”`docker run`” is shown below.
 
@@ -187,7 +148,7 @@ Be sure to replace the `STX_SIGNER_PATH` with the correct path to your config fi
 
 ```bash
 IMG="blockstack/stacks-signer"
-VER="3.0.0.0.0.0"
+VER="3.0.0.0.1.0"
 STX_SIGNER_PATH="./"
 STX_SIGNER_DATA="$STX_SIGNER_PATH/data"
 STX_SIGNER_CONFIG="$STX_SIGNER_PATH/signer-config.toml"
@@ -213,7 +174,7 @@ For example, if you are running on M1 Mac, you would add `--platform=linux/amd64
 Or, with a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-signer:3.0.0.0.0.0
+FROM blockstack/stacks-signer:3.0.0.0.1.0
 COPY signer-config.toml /config.toml
 EXPOSE 30000
 CMD ["stacks-signer", "run", "--config", "/config.toml"]
@@ -277,9 +238,9 @@ Create a file called `node-config.toml`. On the [Sample Configuration Files](../
 
 The important aspects that you’ll need to change are:
 
-- `working_dir`: a directory path where the node will persist data
-- `auth_token`: an authentication token that your signer uses to authenticate certain requests to your node. This must match the value you used as `auth_password` in the signer’s configuration.
-- `events_observer.endpoint`: This is the host (IP address and port) where your signer is configured to listen for events. An example string would be ”`127.0.0.1:30000`” or ”`my-signer.local:30000`”
+* `working_dir`: a directory path where the node will persist data
+* `auth_token`: an authentication token that your signer uses to authenticate certain requests to your node. This must match the value you used as `auth_password` in the signer’s configuration.
+* `events_observer.endpoint`: This is the host (IP address and port) where your signer is configured to listen for events. An example string would be ”`127.0.0.1:30000`” or ”`my-signer.local:30000`”
 
 #### Start with an archive
 
@@ -300,24 +261,24 @@ For the Stacks node to use this archive, you must specify `working_dir` in your 
 
 For example:
 
-- The snapshot is available at /Users/blah/xenon
-- You will set working_dir to equal ”/Users/blah”
-  - Note that the string does not include the “xenon” part
+* The snapshot is available at /Users/blah/xenon
+* You will set working\_dir to equal ”/Users/blah”
+  * Note that the string does not include the “xenon” part
 
 #### Run a Stacks Node with Docker
 
-You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 3.0.0.0.0](https://hub.docker.com/layers/blockstack/stacks-core/3.0.0.0.0/images/sha256-7e0ce69dff7198ce0dd0f44676f065abd6f834ed6d9a396856a36fd422ba6134?context=repo). When running the Docker container, you’ll need to ensure a few things:
+You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 3.0.0.0.1](https://hub.docker.com/layers/blockstack/stacks-core/3.0.0.0.1/images/sha256-12463e8270f51537e5b85c069c1e246c734c47cbff37b92e0ef108d7984def7b?context=explore). When running the Docker container, you’ll need to ensure a few things:
 
-- The port configured for `p2p_bind` must be exposed to the internet
-- The port configured for `rpc_bind` must be accessible by your signer
-- `working_dir` needs to be on a volume with 500GB-1TB of available storage
-- You’ll need to include your `node-config.toml` file
+* The port configured for `p2p_bind` must be exposed to the internet
+* The port configured for `rpc_bind` must be accessible by your signer
+* `working_dir` needs to be on a volume with 500GB-1TB of available storage
+* You’ll need to include your `node-config.toml` file
 
 An example for running the node’s Docker image with docker run is below. Be sure to run this from the same directory as your `node-config.toml` file or change the `STX_NODE_CONFIG` option.
 
 ```bash
 IMG="blockstack/stacks-core"
-VER="3.0.0.0.0"
+VER="3.0.0.0.1"
 STX_NODE_CONFIG="./node-config.toml"
 
 docker run -d \
@@ -335,7 +296,7 @@ docker run -d \
 Or, using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:3.0.0.0.0
+FROM blockstack/stacks-core:3.0.0.0.1
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443
@@ -388,10 +349,10 @@ For more information on the relationship between stacking and signing and how st
 As a signer you’ll need to fund and manage two Stacks accounts:
 
 1. A “pool operator” wallet, which commits delegated STX to your signer
-2. Your signer’s wallet, which needs a small amount of STX for making automated transactions during epoch 2.5
+2. Your signer’s wallet
 
 {% hint style="warning" %}
-Make sure that you are using testnet, and not mainnet, STX. You can change network settings within your wallet, and testnet STX can be [requested from a faucet](https://explorer.hiro.so/sandbox/faucet?chain=testnet).
+For testing, make sure that you are using testnet, and not mainnet, STX. You can change network settings within your wallet, and testnet STX can be [requested from a faucet](https://explorer.hiro.so/sandbox/faucet?chain=testnet).
 {% endhint %}
 
 #### Setup Your Pool Operator Wallet
@@ -400,12 +361,4 @@ You can set up your pool operator wallet using any Stacks wallet, such as [Leath
 
 Once your wallet has been created, you’ll need to fund it with enough STX to cover transaction fees. For testnet, you can use a [faucet exposed by the Stacks Explorer](https://explorer.hiro.so/sandbox/faucet?chain=testnet).
 
-Finally, share this wallet’s STX address with the parties that will be delegating STX to you.
-
-#### Fund Your Signer's STX Wallet
-
-Before the Nakamoto transition, signers need a small amount of STX to cover transaction fees. The transactions created from this wallet are all automated by the signer.
-
-In a previous step, where you generated a keychain, an address field was included in the output. This is your signer wallet’s STX address. You can also choose to use the mnemonic to access the wallet with [Leather](https://leather.io) or [Xverse](https://www.xverse.app).
-
-Transfer funds (or use the faucet) into the signer’s wallet address. We recommend at least 100-200 STX to cover transaction fees.
+Finally, share this wallet’s STX address with the parties that will be delegating STX to you. For improved user experience, you might want to use the helper contract that allows to specify a btc address for stackers ([pox4-pools](https://explorer.hiro.so/txid/SP001SFSMC2ZY76PD4M68P3WGX154XCH7NE3TYMX.pox4-pools?chain=mainnet)) and to add your pool to [lockstacks.com](https://lockstacks.com).

@@ -1,35 +1,48 @@
-# sBTC
+## Introduction to sBTC
 
-To understand sBTC, we first need to understand the current limitations of Bitcoin (BTC).
+sBTC is a SIP-010 token on the Stacks blockchain that represents Bitcoin (BTC) in a 1:1 ratio. It enables Bitcoin holders to participate in DeFi applications and other smart contract functionalities while maintaining a peg to the underlying Bitcoin.
 
-Bitcoin is to date the most secure and decentralized blockchain. While Bitcoin is the largest cryptocurrency by market cap, comparatively few applications exist within the Bitcoin ecosystem. Developers interested in building applications for the Bitcoin community often find it difficult or impossible to implement their logic directly on the Bitcoin chain. Although Bitcoin has a simple scripting system built in, it lacks the expressiveness of many other smart contract languages.
+### Purpose
 
-sBTC is for:
+The primary purpose of sBTC is to bridge Bitcoin to DeFi via the Stacks blockchain, providing Bitcoin holders with access to the rich functionality of smart contracts without sacrificing the security and value of their BTC holdings.
 
-* Bitcoin holders who want to participate in smart contracts.
-* Developers who want to build applications on Bitcoin.
+### Key Benefits
 
-sBTC empowers developers to build applications on Bitcoin by bridging Bitcoin and [Stacks](https://www.stacks.co/). We achieve this by introducing a fungible token (sBTC) on the Stacks blockchain. The token has the following properties:
+1. **Bitcoin Compatibility**: Allows Bitcoin holders to participate in the Stacks ecosystem without selling their BTC.
+2. **Quick Conversions**: Facilitates rapid movement between BTC and sBTC (within 3 Bitcoin blocks for deposit, 6 for withdrawal).
+3. **Decentralized Management**: Initially utilizes a set of 15 community-chosen signers for maintaining the peg wallet.
+4. **Community Governance**: Involves the community in key decisions, such as selecting the initial signing set.
 
-* **1:1 redeemability**. sBTC can always be exchanged 1:1 for BTC on the Bitcoin chain, as long as the Stacks blockchain is operational.
-* **Open membership**. Anyone can participate in the sBTC protocol. No centralized entity maintains custody over any BTC in the protocol.
+## Key Concepts
 
-Other tokens which try to achieve the same end as sBTC are
+Understanding sBTC requires familiarity with several key concepts:
 
-* [xBTC](https://www.stacks.co/blog/tokensoft-wrapped-fundamental-bitcoin-defi-building-blocks-xbtc)
+### sBTC
 
-While these tokens all achieve the same value as BTC, they maintain BTC reserves through trusted entities. sBTC is the only truly decentralized Bitcoin backed asset on Stacks.
+sBTC is a [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) token on the Stacks Blockchain that can be converted back to BTC on the Bitcoin Blockchain. The key property of sBTC is its 1:1 peg to Bitcoin, meaning 1 sBTC is always equivalent to 1 BTC.
 
-## How does sBTC work?
+### sBTC UTXO
 
-Bitcoin holders can do two things to interact with sBTC, deposit and withdraw. Both of these operations are controlled through special Bitcoin transactions.
+The sBTC UTXO is the single unspent transaction output (UTXO) on the Bitcoin blockchain that holds the entire BTC balance pegged into sBTC. This UTXO is managed and maintained by the set of sBTC Signers.
 
-To deposit BTC into sBTC, a Bitcoin holder would create a deposit transaction on the Bitcoin chain. This deposit transaction informs the protocol how much BTC the holder has deposited, and to which Stacks address the holder wishes to receive the sBTC. The sBTC system responds to the deposit transaction by minting sBTC to the given Stacks address.
+### sBTC Signer
 
-To withdraw BTC, a Bitcoin holder creates a withdrawal transaction on the Bitcoin chain. This withdrawal transaction informs the protocol how much sBTC the holder wishes to withdraw, from which stacks address the sBTC should be withdrawn and which Bitcoin address should receive the withdrawn BTC. In response to this transaction, the sBTC system burns the requested amount of sBTC from the given Stacks address and fulfills the withdrawal by issuing a BTC payment to the given BTC address with the same amount.
+In sBTC, the sBTC Signer is a signer entity separate from the Stacks Nakamoto signer. sBTC signer responsibilities include:
 
-The following diagram illustrates the deposit and withdrawal flows.
+- Signing sBTC operations
+- Communicating with the sBTC contracts on the Stacks chain
+- Managing the sBTC UTXO
 
-<figure><img src="../../.gitbook/assets/Diagram Feb 2 2024.png" alt=""><figcaption></figcaption></figure>
+### sBTC Signer Set
 
-Next let's take a deeper look at the design of sBTC.
+The sBTC Signer Set is the group of all sBTC signers. This set has full democratic access to the sBTC UTXO and is responsible for maintaining the security of the peg wallet. The signers also have the ability to rotate their private keys for enhanced security.
+
+### Emily API
+
+Emily is an API that helps facilitate and supervise the sBTC Bridge in addition to serving as a programmatic liaison between sBTC users and signers.
+
+### SIP-010 Token
+
+sBTC adheres to the [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) standard for fungible tokens on the Stacks blockchain. This ensures compatibility with wallets and applications that support the SIP-010 standard.
+
+Understanding these concepts is crucial for grasping the overall architecture and functionality of sBTC. In the following sections, we'll explore how these concepts come together to create sBTC.

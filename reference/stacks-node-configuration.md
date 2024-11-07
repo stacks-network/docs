@@ -66,7 +66,6 @@ Contains options for sending events emitted to the [stacks-blockchain-api](https
 | Name         | Required | Description                                                                                                                                                       |
 | ------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | endpoint     | ✓        | Address and port to a [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service                                                       |
-| retry\_count | ✓        | Number of times to retry sending events to the endpoint before failing                                                                                            |
 | events\_keys | ✓        | Event keys for which to watch. The emitted node events can be restricted by account, function name and event type. Asterix ("\*") can be used to emit all events. |
 
 #### connection\_options

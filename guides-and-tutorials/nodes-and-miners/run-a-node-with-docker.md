@@ -18,9 +18,11 @@ The **minimum viable requirements** are listed below.
 While you _can_ run a node using these specs, it's _recommended_ to assign more than the minimum for better performance.
 
 * ⚠️ [docker-compose](https://docs.docker.com/compose/install/) version `2.2.2` or greater is **required**
-* **4GB memory**
+* **4GB memory if running only a Stacks node**
+* **10 GB memory if running Stacks + Bitcoin node**
 * **1 Vcpu** ( _minimum of 2 Vcpu is recommended_ )
-* **350GB disk**
+* **350GB disk for Stacks node**
+* **1TB disk space for Bitcoin node**
 
 {% hint style="warning" %}
 MacOS with an ARM processor is NOT recommended
@@ -49,8 +51,6 @@ git clone https://github.com/stacks-network/stacks-blockchain-docker && cd stack
 ```
 
 {% hint style="info" %}
-
-
 With an optional HTTP proxy on port 80:
 
 ```bash
