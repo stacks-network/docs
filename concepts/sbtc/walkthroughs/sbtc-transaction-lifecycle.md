@@ -116,10 +116,3 @@ Upon successful Bitcoin transaction:
 
 1. Alice now has her 1 BTC back in her specified Bitcoin address.
 2. The withdrawn sBTC has been permanently removed from circulation.
-
-## Security Considerations Throughout the Journey
-
-* The Peg Wallet UTXO is secured by the multi-signature scheme of the sBTC Signer Set.
-* All interactions with Clarity contracts (`sbtc-deposit`, `sbtc-withdrawal`, `sbtc-token`) undergo rigorous validation.
-* The Emily API ensures data consistency through chainstate management and event-driven updates.
-* The entire process is monitored for unusual activity or potential exploits.
