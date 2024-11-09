@@ -59,15 +59,3 @@ Each sBTC operation goes through several states:
 5. Signers process the Bitcoin transaction.
 6. Signers burn sBTC on Stacks.
 7. Emily updates the withdrawal status to CONFIRMED.
-
-## API Structure
-
-Emily provides endpoints to:
-
-- Query deposits and withdrawals
-- Check operation status
-
-## Security Considerations
-
-- No sensitive user data is stored or exposed.
-- The API is designed to be resilient against potential sidecar compromises.
