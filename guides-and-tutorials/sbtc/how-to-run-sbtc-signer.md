@@ -4,9 +4,7 @@
 This documentation is for preview purposes only. The implementation is not final and should not be used in production. The configuration files, especially the docker-compose setup, will undergo significant changes. This guide is provided to give potential operators an early look at the setup process.
 {% endhint %}
 
-## System Requirements
-
-### Minimum System Requirements
+## Minimum System Requirements
 
 These are the **minimum required specs** to be able to run a sBTC signer, but it is recommended to have more than the minimum for optimal performance. Note that these are in addition to the hardware requirements for running a Stacks node, Bitcoin node, and Nakamoto signer outlined in the How to Run a Signer doc.
 
@@ -408,7 +406,7 @@ public_endpoints = []
 
 </details>
 
-## Network Protocol Details
+### Network Protocol Details
 
 The signer operates on port 4122 by default and supports both TCP and QUIC protocols for peer communication. The signer will attempt QUIC connections first for improved performance, automatically falling back to TCP if QUIC is unavailable or blocked on the network.
 
