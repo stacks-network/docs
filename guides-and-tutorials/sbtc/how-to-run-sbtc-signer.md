@@ -12,7 +12,7 @@ These are the **minimum required specs** to be able to run a sBTC signer, but it
 - 256MB memory
 - 50GB storage
 
-## Bitcoin Node Requirements
+## 1. Configure your Bitcoin node
 
 Your Bitcoin node must include these settings for sBTC signer operation:
 
@@ -91,7 +91,7 @@ This notification system creates a direct event stream:
 2. Block data publishes via ZMQ
 3. Signer processes relevant sBTC transactions
 
-## Signer Configuration
+## 2. Configure your signer
 
 The signer configuration file (`signer-config.toml`) defines the signer's operation parameters. The configuration sections include:
 
@@ -410,7 +410,7 @@ public_endpoints = []
 
 The signer operates on port 4122 by default and supports both TCP and QUIC protocols for peer communication. The signer will attempt QUIC connections first for improved performance, automatically falling back to TCP if QUIC is unavailable or blocked on the network.
 
-## Blocklist Client
+## 3. Set up your blocklist client
 
 The blocklist client provides address screening services for the signer node. It interfaces with external API services to perform risk analysis on Bitcoin addresses. Default implementation uses Chainalysis, but supports custom implementations.
 
@@ -449,7 +449,7 @@ api_key = "your-api-key"
 
 </details>
 
-## Container Setup
+## 4. Set up your container
 
 Specific instructions for running your Docker container will be added shortly, but this is an example of what the Docker compose file will look like, so you can begin to understand what you'll be running as a signer.
 
