@@ -85,7 +85,7 @@ ZeroMQ enables real-time blockchain event notifications from Bitcoin Core to the
 - `zmqpubhashblock`: Broadcasts only block hashes for lightweight block detection
 - `zmqpubrawblock`: Broadcasts complete block data for transaction processing
 
-This notification system creates a direct event stream:
+This notification system creates a direct event stream when:
 
 1. Bitcoin Core validates a new block
 2. Block data publishes via ZMQ
