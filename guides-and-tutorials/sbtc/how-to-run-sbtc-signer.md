@@ -451,7 +451,7 @@ api_key = "your-api-key"
 
 ## 4. Set up your containers
 
-Specific instructions for running your Docker container will be added shortly, but this is an example of what the Docker compose file will look like, so you can begin to understand what you'll be running as a signer.
+As we crystalize the Docker configuration, the following section displays an example of what the Docker compose file will look like, so that Signers can peek at how the system will look like.
 
 Remember, this is not production-ready yet and is only for demonstration purposes at the moment.
 
