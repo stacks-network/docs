@@ -1,7 +1,7 @@
 # How to Run a sBTC Signer
 
 {% hint style="warning" %}
-This documentation is for preview purposes only. The implementation is not final and should not be used in production. The configuration files, especially the docker-compose setup, will undergo significant changes. This guide is provided to give potential operators an early look at the setup process.
+This documentation is for preview purposes only. This should not be used in production. The configuration files and the docker-compose setup will undergo some necessary changes before release, but the setup here is very close to what will be required in production.
 {% endhint %}
 
 ## Minimum System Requirements
