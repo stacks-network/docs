@@ -95,15 +95,6 @@ This notification system creates a direct event stream when:
 
 The signer configuration file (`signer-config.toml`) defines the signer's operation parameters. The configuration sections include:
 
-### Emily API Configuration
-
-Controls connection to the Emily API server. The Emily API is designed to track deposits and withdrawals, providing information about the status of in-flight sBTC operations. It serves two primary user groups: sBTC users and sBTC app developers.
-
-```toml
-[emily]
-endpoints = ["https://emily-sbtc.com"]
-```
-
 ### Bitcoin Connection Settings
 
 Defines how the signer connects to Bitcoin Core:
@@ -122,7 +113,7 @@ Defines the signer's identity and network participation:
 [signer]
 private_key = "your-private-key"  # 32 or 33-byte hex format
 network = "mainnet"  # Network selection: mainnet, testnet, or regtest
-deployer = "SNYourDeployerAddress"  # Address that deployed sbtc contracts
+deployer = "sBTCContractDeployerAddress"  # Address that deployed sbtc contracts (this will either be provided as a default value or given directly to signers)
 ```
 
 ### P2P Network Configuration
@@ -133,6 +124,8 @@ Controls how the signer communicates with other network participants:
 [signer.p2p]
 listen_on = ["tcp://0.0.0.0:4122", "quic-v1://0.0.0.0:4122"]
 ```
+
+The signer operates on port 4122 by default and supports both TCP and QUIC protocols for peer communication. The signer will attempt QUIC connections first for improved performance, automatically falling back to TCP if QUIC is unavailable or blocked on the network.
 
 Complete reference configuration:
 
@@ -406,13 +399,11 @@ public_endpoints = []
 
 </details>
 
-### Network Protocol Details
-
-The signer operates on port 4122 by default and supports both TCP and QUIC protocols for peer communication. The signer will attempt QUIC connections first for improved performance, automatically falling back to TCP if QUIC is unavailable or blocked on the network.
-
 ## 3. Set up your blocklist client
 
 The blocklist client provides address screening services for the signer node. It interfaces with external API services to perform risk analysis on Bitcoin addresses. Default implementation uses Chainalysis, but supports custom implementations.
+
+Specifically, you'll want to use the [sanctioned addresses API](https://www.chainalysis.com/free-cryptocurrency-sanctions-screening-tools) in the `api_url` field of the `blocklist-client-config.toml` file. You can request an API key on that same page.
 
 Reference configuration:
 
