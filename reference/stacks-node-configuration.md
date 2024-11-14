@@ -49,9 +49,13 @@ Contains various configuration options for the stacks-node binary.
 | seed                         |          | The private key to use for mining. Only needed if `miner` is set to `true`                                 |
 | local\_peer\_seed            |          | The private key to use for signing P2P messages in the networking stack                                    |
 | miner                        |          | Determines whether the node is running a follower (`false`) or a miner (`true`). Defaults to `false`       |
-| mock\_miner                  |          | Simulates running a miner (typically used for debugging)                                                   |
+| mock\_mining                 |          | Simulates running a miner (typically used for debugging)                                                   |
+| mock\_mining\_output\_dir    |          | Folder for mock mining data                                                                                |
 | mine\_microblocks            |          | Determines whether the node will mine microblocks. Will only take effect if `miner` is set to `true`       |
 | prometheus\_bind             |          | Address and port for Prometheus metrics collection.                                                        |
+| deny\_nodes                  |          | List of ip addresses of nodes that should be ignored                                                       |
+| stacker                      |          | Determines whether the node is running a stacker (`true`) that issues events for signer binary             |
+
 
 #### events\_observer
 

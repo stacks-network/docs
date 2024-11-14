@@ -10,15 +10,6 @@ The following best practices suggest how to create a resilient setup for running
 tl;dr: avoid single point of failures, introduce redundancy, monitor things.
 {% endhint %}
 
-### Run redundant Signer instances
-
-- Deploy two signer software instances for each signer public key.
-- These instances should have identical configurations, but be hosted on
-separate physical hosts (see *diversified hosting* below).
-
-This setup ensures that if one instance fails the other can continue operations
-without interruption.
-
 ### Monitor your Signer and collect logs
 
 - See
@@ -57,14 +48,35 @@ without interruption.
 
 ### Upgrade procedures
 
-- Upgrading one Signer instance (of those running redundantly) at the time.
+- Upgrading one Signer instance at the time.
 - Test the update on one instance and, if successful, proceed to the others.
+- While your Signer is offline for upgrades, it won't sign any blocks. Ensure
+  that the downtime is as short as possible.
 
 ### Diversified hosting
 
 - Use different provider / configuration where feasible (e.g., a self-hosted
   instance and one in the cloud, or in two different data center regions, etc.).
 - Ensure each host has redundant power supply and network connectivity.
+
+### Fall-back deployments
+
+- Deploy additional Stacks nodes and Bitcoin nodes to be used as fall-back.
+  - Use the same configuration as your _active_ instances.
+  - For the Stacks node, comment out the `event_observer` section.
+- Prepare a backup Signer (same configuration) to be quickly activated, but _do
+  not run it_.
+  - At all times, there should be _exactly_ one Signer instance running for each
+    Signer private key.
+- These instances should be hosted on separate physical hosts (see *diversified
+  hosting*) from the instances usually active in operations (serving each
+  Signer).
+- If an active instance (e.g., the Signer, the Stacks node or the Bitcoin node)
+  fails, you can quickly switch to the fall-back configuration to continue
+  operations. To do that:
+  - Run the backup Signer.
+  - Enable the `event_observer` section of the Node configuration.
+  - Restart the node.
 
 ### Redundancy in operations
 

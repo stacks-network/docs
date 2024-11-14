@@ -1,4 +1,4 @@
-# Lifecycle of a sBTC Transaction
+# sBTC Transaction Walkthrough
 
 Let's follow the journey of 1 BTC as it moves through the sBTC system, from initial deposit to final withdrawal.
 
@@ -13,7 +13,7 @@ Alice decides to convert 1 BTC to sBTC to participate in Stacks DeFi.
 
 ### Step 2: Proof Submission
 
-1. Alice submits proof of her deposit to the Deposit API.
+1. Alice submits proof of her deposit to the Deposit API (this step is also usually done via an application's UI).
 2. The Deposit API sets the deposit status to PENDING.
 
 ### Step 3: Signer Validation
@@ -116,10 +116,3 @@ Upon successful Bitcoin transaction:
 
 1. Alice now has her 1 BTC back in her specified Bitcoin address.
 2. The withdrawn sBTC has been permanently removed from circulation.
-
-## Security Considerations Throughout the Journey
-
-- The Peg Wallet UTXO is secured by the multi-signature scheme of the sBTC Signer Set.
-- All interactions with Clarity contracts (`sbtc-deposit`, `sbtc-withdrawal`, `sbtc-token`) undergo rigorous validation.
-- The Emily API ensures data consistency through chainstate management and event-driven updates.
-- The entire process is monitored for unusual activity or potential exploits.
