@@ -449,7 +449,7 @@ api_key = "your-api-key"
 
 </details>
 
-## 4. Set up your container
+## 4. Set up your containers
 
 Specific instructions for running your Docker container will be added shortly, but this is an example of what the Docker compose file will look like, so you can begin to understand what you'll be running as a signer.
 
