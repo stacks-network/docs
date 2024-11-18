@@ -166,7 +166,7 @@ Now, we need to configure our node to use this Bitcoin keychain. Copy the [sampl
 Next, update the stacks configuration:
 
 * **Optional, but recommended:** Use a persistent directory to store the Stacks chainstate, i.e. `working_dir = "/stacks-blockchain"`
-* From the `make_keychain` step, modify the `seed` value with `privatekey`
+* From the `make_keychain` step, modify the `seed` and `mining_key` values with `privatekey`
 * Store the following configuration somewhere on your filesystem (ex: `$HOME/mainnet-miner-conf.toml`)
 
 ```toml
@@ -189,7 +189,14 @@ password = "<bitcoin config rpcpassword>"
 rpc_port = 8332
 peer_port = 8333
 satoshis_per_byte = 100
-burn_fee_cap = 20000
+burn_fee_cap = 450000
+
+[miner]
+mining_key = "<privateKey from JSON above>"
+activated_vrf_key_path = "/stacks-blockchain/saved_vrf_key.json"
+
+[connection_options]
+private_neighbors = false
 ```
 
 #### Start the Stacks Blockchain
