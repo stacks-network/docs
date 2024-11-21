@@ -68,6 +68,10 @@ Returns the caller of the current contract context. If this contract is the firs
 (print contract-caller) ;; Will print out a Stacks address of the transaction sender
 ```
 
+{% hint style="warning" %}
+Use caution when leveraging all contract calls, particularly tx-sender and contract-caller as based on the design, you can unintentionally introduce attack surface area. [Read more](https://www.setzeus.com/community-blog-posts/clarity-carefully-tx-sender).
+{% endhint %}
+
 ### false​ <a href="#false" id="false"></a>
 
 Introduced in: Clarity 1
@@ -230,6 +234,12 @@ Returns the original sender of the current transaction, or if `as-contract` was 
 ```
 (print tx-sender) ;; Will print out a Stacks address of the transaction sender
 ```
+
+{% hint style="warning" %}
+Use caution when leveraging all contract calls, particularly tx-sender and contract-caller as based on the design, you can unintentionally introduce attack surface area. [Read more](https://www.setzeus.com/community-blog-posts/clarity-carefully-tx-sender).
+{% endhint %}
+
+
 
 ### tx-sponsor?​ <a href="#tx-sponsor-clarity2" id="tx-sponsor-clarity2"></a>
 

@@ -1,8 +1,6 @@
 # What is the Nakamoto Upgrade?
 
-The Nakamoto Release is an upcoming hard fork on the Stacks network designed to bring several benefits, chief among them are increased transaction throughput and 100% Bitcoin finality. Learn about the Nakamoto Activation sequence here: [#nakamoto-activation-sequence](nakamoto-rollout-plan/#nakamoto-activation-sequence "mention")
-
-Bitcoin block 840,360 marked the start of the multi-phase [Nakamoto mainnet rollout](nakamoto-rollout-plan/).
+The Nakamoto Release is a recent hard fork on the Stacks network designed to bring several benefits, chief among them are increased transaction throughput and 100% Bitcoin finality.&#x20;
 
 With Nakamoto, Stacks block production would no longer be tied to miner elections. Instead, miners produce blocks at a fixed cadence, and the set of PoX Stackers rely on the miner elections to determine when the current miner should stop producing blocks and a new miner should start. This blockchain will only fork if 70% of Stackers approve the fork, and chain reorganization will be as difficult as reorganizing Bitcoin.
 
@@ -40,15 +38,13 @@ To address these shortcomings, Nakamoto applies three fundamental changes to the
 
 ### Nakamoto Design
 
-To achieve these goals Nakamoto will introduce the following changes to the Stacks protocol:
+To achieve these goals Nakamoto introduced the following changes to the Stacks protocol:
 
 1. **Decouple Stacks tenure changes from Bitcoin block arrivals.** In both today's system and Nakamoto, miners take turns appending blocks to the Stacks blockchain -- the next miner is selected by cryptographic sortition, and the miner has the duration of the Bitcoin block (its tenure) to announce a new block state. Nakamoto allows a miner to produce many Stacks blocks per Bitcoin block instead of one, and requiring the next miner to confirm all of them. There are no more microblocks or Bitcoin-anchored blocks; instead, there are only Nakamoto Stacks blocks. This will achieve fast block times.
 2. **Require stackers to collaborate before the next block can be produced.** Stackers will need to collectively validate, store, sign, and propagate each Nakamoto Stacks block the miner produces before the next block can be produced. Stackers must do this in order to earn their PoX payouts and unlock their STX (i.e. PoX is now treated as compensation from the miner for playing this essential role). In Nakamoto, a sortition only selects a new miner; it does not give the miner the power to unilaterally orphan confirmed transactions as it does today. This will ensure that miners do not produce forks and are able to confirm all prior Stacks blocks prior to selection.
 3. **Use stackers to police miner behavior.** A sortition causes the Stackers to carry out a tenure change by (a) agreeing on a "last-signed" block from the current miner, and (b) agreeing to only sign blocks from the new miner which descend from this last-signed block. Thus, Stackers police miner behavior -- Stackers prevent miners from mining forks during their tenure, and ensure that they begin their tenures by building atop the canonical chain tip. The new miner cannot orphan recently-confirmed transactions from the old miner because the signers who approved the tenure change are necessarily aware of all Stacks blocks that came before it. This **further prevents miners from forking the Stacks blockchain.**
 4. **Require Stacks miners to commit the indexed block hash of the first block produced by the last Stacks miner in their block-commit transactions on the Bitcoin blockchain.** This is the SHA512/256 hash of both the consensus hash of all previously-accepted Bitcoin transactions that Stacks recognizes, as well as the hash of the block itself (a block-commit today only contains the hash of the Stacks block). This will anchor the Stacks chain history to the Bitcoin up to the start of the previous miner's tenure, as well as all causally-dependent Bitcoin state that Stacks has processed. This **ensures Bitcoin finality and resolves miner connectivity issues** by putting fork prevention on Stackers.
 5. **Adopt a Bitcoin MEV solution which punishes block-commit censorship.** The probability a stacks miner wins a sortition should be altered such that omitting block commits of honest Stacks miners is not profitable to Bitcoin miners. The mechanics of this are outlined below.
-
-All together these changes will achieve the goals outlined, resolving key areas of improvement for the Stacks protocol.
 
 Although Nakamoto is a breaking change, all smart contracts published prior to this its activation will be usable after it activates.
 

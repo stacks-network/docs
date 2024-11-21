@@ -1,23 +1,28 @@
-# Nakamoto for Stackers and Pool Operators
+---
+description: >-
+  Learn how you can earn a BTC yield by locking your STX and supporting network
+  consensus
+---
 
-### Pools available for Stacking
+# Nakamoto for Stackers
 
-These pools have confirmed their systems are ready to accept your Stacking calls. Please read their documentation or get in **direct contact with them** for more information or support.
+### Learn about Stacking basics:
 
-### Different Ways to Stack STX
+{% content-ref url="../../concepts/block-production/stacking.md" %}
+[stacking.md](../../concepts/block-production/stacking.md)
+{% endcontent-ref %}
 
-## Stacking after the Nakamoto hard fork
+### Stacking Providers:
 
-The Nakamoto Activation sequence is expected to start on August 28. You can learn more about the steps here: [#nakamoto-activation-sequence](./#nakamoto-activation-sequence "mention")
+Find the current list at [stacks.co](https://www.stacks.co/learn/stacking)
 
-As we approach the start of this sequence, more detail will provided to Stackers about any action they will need to take. As with most previous hard forks, it is expected Stackers will need to re-Stack or re-delegate after the hard fork is complete. Look out for more detailed instructions from your Stacking provider.&#x20;
+### Stacking Tools
 
-Remember that a new requirement for stackers (after [activation phase](./)) is that you will also need to function as a signer on the network to validate Stacks transactions.
+Check out these valuable Stacking resources:
 
-This means that in order to stack you need to have an operational signer running. As a stacker, you have three options:
-
-1. Delegate your STX to a pool operator
-2. Operate your own signer
-3. Collaborate with an existing signer
-
-Solo stacking without running a signer will not work with pox-4 as you'll need to pass in a valid signer signature when calling your `stack-stx` functions. More info on these options and which you should use can be found in the [Stack STX guide](../../guides-and-tutorials/stack-stx/).
+* Stacking Calendar and more! [https://stacking.tools/](https://stacking.tools/)
+* Stacking Tracker: [https://www.stacking-tracker.com/](https://www.stacking-tracker.com/)
+* Lockstacks (access various pools): [https://lockstacks.com/](https://lockstacks.com/)
+* Find Stacking data:&#x20;
+  * [https://app.signal21.io/](https://app.signal21.io/)
+  * [https://app.ortege.ai/superset/dashboard/stacks/](https://app.ortege.ai/superset/dashboard/stacks/)
