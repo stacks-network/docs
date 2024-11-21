@@ -1,11 +1,5 @@
 # Nakamoto for App Developers
 
-**Here are some things currently in place:**
-
-The current testnet and mainnet (as of Bitcoin block 840,360) include the new contracts used for Signers and pox-4. This includes the new consensus rules which aren’t fully activated yet. Signers are now able to onboard and conduct distributed key generation and on-chain voting for the aggregate key, allowing them to test everything without the pressure of the network consensus requiring the real signing of blocks.
-
-Fast blocks and Bitcoin finality will not be available until activation around August 28th. Until then, application developers can go about their development process as normal, but there are a few things to be aware of depending on the functionality your app has.
-
 ### Getting Started with Nakamoto
 
 You can jump into and begin using Nakamoto today, here are some links to help you get started.

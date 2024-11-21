@@ -1,9 +1,3 @@
----
-description: >-
-  This page breaks down what exchanges should expect in terms of the upgrade and
-  timing for Nakamoto. This upgrade will be follow the standard update process.
----
-
 # Nakamoto for Exchanges
 
 <details>
@@ -24,29 +18,7 @@ The main thing exchanges will notice when the Nakamoto rollout is complete is th
 * No forking at the Stacks layer, once a transaction is confirmed in an anchor block, it is as irreversible as a Bitcoin transaction (and therefore, can update confirmation rules (number of confirmations) to match Bitcoin's)
 * For exchanges offering Stacking pools, likely increased BTC rewards thanks to MEV improvements
 
-{% hint style="info" %}
-Note: These new Nakamoto features will become available when the Nakamoto Activation sequence completes. You can learn more about the sequence here: [#nakamoto-activation-sequence](./#nakamoto-activation-sequence "mention")
-{% endhint %}
 
-### How should exchanges prepare for the upgrade?
-
-This upgrade will feel very familiar. You will be able to follow the usual node upgrade process and the corresponding API upgrade is non-schema-breaking, so no event replay is needed. In other words, the Nakamoto upgrade will look and feel like a simple hotfix update/node update.
-
-Exchanges that support native Bitcoin yield via Stacking may have extra upgrade considerations: [nakamoto-for-stacking-providers.md](nakamoto-for-stacking-providers.md "mention")
-
-**Upgrade Steps:**
-
-1. Download and install binaries/docker images which will be provided directly in your dedicated support channel and linked here when ready
-2. Restart the node
-
-### Timeline
-
-Core developers expect to release binaries on or around August 28th. Exchanges can expect their usual ecosystem point of contact to provide them with detailed information and updates during the process.&#x20;
-
-1. **Instantiation block:** The first hard fork occurred <mark style="color:orange;">at Bitcoin block 840,360.</mark> If you haven't already, you will need to upgrade to the latest node software or they will not process valid blocks and users will not be able to move funds on the network.
-2. **Activation block:** The second hard fork will occur at Bitcoin Block #867867 (\~October 29th). At this time, the Nakamoto consensus rules will activate, meaning the new Nakamoto features will be made live. Exchanges will need to repeat the upgrade process at this time. Again, no genesis sync, just a download and restart.
-
-The hard fork will occur **after** a series of activation steps. You can learn more about this upcoming Nakamoto Activation sequence here: [#nakamoto-activation-sequence](./#nakamoto-activation-sequence "mention").&#x20;
 
 ### Other Recommendations:
 

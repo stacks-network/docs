@@ -8,12 +8,12 @@
 * [What is the Nakamoto Upgrade?](nakamoto-upgrade/what-is-the-nakamoto-release.md)
 * [Nakamoto in 10 Minutes](nakamoto-upgrade/nakamoto-in-10-minutes.md)
 * [Nakamoto Rollout Plan](nakamoto-upgrade/nakamoto-rollout-plan/README.md)
+  * [Nakamoto for Stackers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stackers.md)
   * [Nakamoto for Exchanges](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-exchanges.md)
-  * [Nakamoto for Stackers and Pool Operators](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stackers.md)
   * [Nakamoto for Stacking Providers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stacking-providers.md)
   * [Nakamoto for App Developers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto.md)
-* [Nakamoto Activation Guide for Signers](nakamoto-upgrade/nakamoto-activation-guide-for-signers/README.md)
-  * [Setting Up a Primary (Post-Nakamoto) Testnet Node](nakamoto-upgrade/nakamoto-activation-guide-for-signers/setting-up-a-primary-post-nakamoto-testnet-node.md)
+* [Setting Up a Primary Nakamoto Testnet Node - Signers](nakamoto-upgrade/setting-up-a-primary-post-nakamoto-testnet-node.md)
+* [Nakamoto Activation Guide for Signers](nakamoto-upgrade/nakamoto-activation-guide-for-signers.md)
 
 ## 🧠 Concepts
 

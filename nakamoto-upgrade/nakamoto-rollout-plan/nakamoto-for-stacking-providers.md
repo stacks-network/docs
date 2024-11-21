@@ -1,6 +1,9 @@
-# Nakamoto for Stacking Providers
+---
+hidden: true
+noIndex: true
+---
 
-Remember that Nakamoto is being rolled out in two phases. This represents the first phase. Understanding this process is key to understanding the information below, read it here: [.](./ "mention")
+# Nakamoto for Stacking Providers
 
 ## Upgrading your Stacking pool or service
 
@@ -19,8 +22,3 @@ There are a few basic steps you'll need to follow to get your Stacking pool set 
 * The function `stack-aggregation-commit` now requires pool operators to provide their Signer’s public key, along with other related information. Learn more about generating Signer key signatures using the [stacks-signer CLI](https://docs.stacks.co/nakamoto-upgrade/signing-and-stacking/stacking-flow#generating-your-signature-using-the-stacks-signer-cli) or with [Lockstacks](https://docs.stacks.co/nakamoto-upgrade/signing-and-stacking/stacking-flow#generating-your-signature-with-lockstacks). Again, this entire flow is covered extensively in the [How to Stack](../../guides-and-tutorials/stack-stx/stacking-flow.md) doc.
 * Depending on your pool’s infrastructure, you may need to update any tools or automations that you use to finalize your pool’s delegations.
 
-
-
-{% hint style="info" %}
-**Reminder:** The network does not _**depend**_ on Signers for block production until the second hard fork expected in May. Learn More: [.](./ "mention")
-{% endhint %}

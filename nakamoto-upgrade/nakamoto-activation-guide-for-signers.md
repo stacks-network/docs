@@ -1,3 +1,8 @@
+---
+hidden: true
+noIndex: true
+---
+
 # Nakamoto Activation Guide for Signers
 
 {% hint style="info" %}
