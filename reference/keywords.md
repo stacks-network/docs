@@ -22,6 +22,10 @@ Returns the current block height of the Stacks blockchain as an uint
 
 ### burn-block-height​ <a href="#burn-block-height" id="burn-block-height"></a>
 
+{% hint style="warning" %}
+There is a bug in Clarity 3 when `burn-block-height` is used within an `at-block` expression. Normally, keywords executed within an `at-block` expression will return the data for that specified block. This bug causes `burn-block-height` to always return the burn block at the current chain tip, even within an `at-block` expression. This behavior affects any Clarity 3 contracts and will be fixed in a future hard fork.
+{% endhint %}
+
 Introduced in: Clarity 1
 
 **output: `uint`**
