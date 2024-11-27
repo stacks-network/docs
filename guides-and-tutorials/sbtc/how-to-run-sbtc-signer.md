@@ -1,20 +1,32 @@
 # How to Run a sBTC Signer
 
 {% hint style="warning" %}
-This documentation is for preview purposes only. This should not be used in production. The configuration files and the docker-compose setup will undergo some necessary changes before release, but the setup here is very close to what will be required in production.
+This documentation is for preview purposes only. This should not be used in production.
+{% endhint %}
+
+## Testnet configuration
+
+{% hint style="warning" %} If you are onboarding to the sBTC signers testnet,
+please see
+[here](https://github.com/stacks-network/sbtc/blob/fix/testnet_docker_compose/docker/testnet/README.md).
 {% endhint %}
 
 ## Minimum System Requirements
 
-These are the **minimum required specs** to be able to run a sBTC signer, but it is recommended to have more than the minimum for optimal performance. Note that these are in addition to the hardware requirements for running a Stacks node, Bitcoin node, and Nakamoto signer outlined in the How to Run a Signer doc.
+Below are the **minimum required specs** to be able to run a sBTC signer.
 
 - 1 cpu
 - 256MB memory
 - 50GB storage
 
+ Note that these are in _addition_ to the hardware requirements for running a
+ Stacks node and Bitcoin node outlined in the [How to Run a Signer doc](../running-a-signer/README.md).
+
 ## 1. Configure your Bitcoin node
 
 Your Bitcoin node must include these settings for sBTC signer operation:
+
+### Settings
 
 1. Required Settings:
 
@@ -23,17 +35,33 @@ Your Bitcoin node must include these settings for sBTC signer operation:
    - `zmqpubhashblock=tcp://*:28332`: ZMQ block hash notifications
    - `zmqpubrawblock=tcp://*:28332`: ZMQ raw block notifications
 
-2. Optional but Recommended:
+1. Optional but Recommended:
+
    - `coinstatsindex=1`: Enables additional index for coin statistics
 
-Reference configuration:
+### ZeroMQ (ZMQ) Configuration
+
+ZeroMQ enables real-time blockchain event notifications from Bitcoin Core to the
+sBTC signer. The two required ZMQ endpoints serve distinct purposes:
+
+- `zmqpubhashblock`: Broadcasts only block hashes for lightweight block
+  detection
+- `zmqpubrawblock`: Broadcasts complete block data for transaction processing
+
+This notification system creates a direct event stream when:
+
+1. Bitcoin Core validates a new block
+1. Block data publishes via ZMQ
+1. Signer processes relevant sBTC transactions
+
+### Reference configuration
 
 <details>
 
 <summary>bitcoin.conf example</summary>
 
 ```conf
-regtest=1 #chain=regtest
+regtest=1
 
 [regtest]
 printtoconsole=1
@@ -78,22 +106,11 @@ fallbackfee=0.00001
 
 </details>
 
-### ZeroMQ (ZMQ) Configuration
-
-ZeroMQ enables real-time blockchain event notifications from Bitcoin Core to the sBTC signer. The two required ZMQ endpoints serve distinct purposes:
-
-- `zmqpubhashblock`: Broadcasts only block hashes for lightweight block detection
-- `zmqpubrawblock`: Broadcasts complete block data for transaction processing
-
-This notification system creates a direct event stream when:
-
-1. Bitcoin Core validates a new block
-2. Block data publishes via ZMQ
-3. Signer processes relevant sBTC transactions
 
 ## 2. Configure your signer
 
-The signer configuration file (`signer-config.toml`) defines the signer's operation parameters. The configuration sections include:
+The signer configuration file (`signer-config.toml`) defines the signer's
+operation parameters. The configuration sections include:
 
 ### Bitcoin Connection Settings
 
@@ -101,7 +118,7 @@ Defines how the signer connects to Bitcoin Core:
 
 ```toml
 [bitcoin]
-rpc_endpoints = ["http://user:pass@your-bitcoin-node:4122"]
+rpc_endpoints = ["http://user:pass@your-bitcoin-node:18443"]
 block_hash_stream_endpoints = ["tcp://localhost:28332"]
 ```
 
@@ -113,7 +130,7 @@ Defines the signer's identity and network participation:
 [signer]
 private_key = "your-private-key"  # 32 or 33-byte hex format
 network = "mainnet"  # Network selection: mainnet, testnet, or regtest
-deployer = "sBTCContractDeployerAddress"  # Address that deployed sbtc contracts (this will either be provided as a default value or given directly to signers)
+deployer = "<sBTCContractDeployerAddress>"  # Address that deployed sbtc contracts (this will either be provided as a default value or given directly to signers)
 ```
 
 ### P2P Network Configuration
@@ -122,25 +139,21 @@ Controls how the signer communicates with other network participants:
 
 ```toml
 [signer.p2p]
-listen_on = ["tcp://0.0.0.0:4122", "quic-v1://0.0.0.0:4122"]
+listen_on = ["tcp://0.0.0.0:4122"]
 ```
 
-The signer operates on port 4122 by default and supports both TCP and QUIC protocols for peer communication. The signer will attempt QUIC connections first for improved performance, automatically falling back to TCP if QUIC is unavailable or blocked on the network.
+The signer operates on port 4122 by default and supports both TCP and QUIC
+protocols for peer communication. The signer will attempt QUIC connections first
+for improved performance, automatically falling back to TCP if QUIC is
+unavailable or blocked on the network.
 
-Complete reference configuration:
+### Reference configuration
 
 <details>
 
 <summary>signer-config.toml example</summary>
 
 ```toml
-# DISCLAIMER! READ!
-# This configuration file is an example of how it will likely look in production with some
-# values filled in with example placeholders like `your-private-key` and `your-bitcoin-node`.
-# The real production configuration will rely on some hardcoded values that can only be
-# known after initial seed node deployments. This file is not meant to be used as is, but one will
-# be created to be used later, and this documentation will be updated to reflect those changes.
-
 # TODO(715): Provide sane/safe configuration defaults. Re-review all of them!
 # TODO(429): Add documentation for all configuration parameters.
 
@@ -176,7 +189,7 @@ Complete reference configuration:
 # Required: true
 # Environment: SIGNER_EMILY__ENDPOINTS
 endpoints = [
-    "https://emily-sbtc.com"
+    "https://sbtc-emily.com"
 ]
 
 # !! ==============================================================================
@@ -401,11 +414,17 @@ public_endpoints = []
 
 ## 3. Set up your blocklist client
 
-The blocklist client provides address screening services for the signer node. It interfaces with external API services to perform risk analysis on Bitcoin addresses. Default implementation uses Chainalysis, but supports custom implementations.
+The blocklist client provides address screening services for the signer node. It
+interfaces with external API services to perform risk analysis on Bitcoin
+addresses. Default implementation uses Chainalysis, but supports custom
+implementations.
 
-Specifically, you'll want to use the [sanctioned addresses API](https://www.chainalysis.com/free-cryptocurrency-sanctions-screening-tools) in the `api_url` field of the `blocklist-client-config.toml` file. You can request an API key on that same page.
+Specifically, you'll want to use the [sanctioned addresses
+API](https://www.chainalysis.com/free-cryptocurrency-sanctions-screening-tools)
+in the `api_url` field of the `blocklist-client-config.toml` file. You can
+request an API key on that same page.
 
-Reference configuration:
+### Reference configuration
 
 <details>
 
@@ -442,7 +461,9 @@ api_key = "your-api-key"
 
 ## 4. Set up your containers
 
-As we crystalize the Docker configuration, the following section displays an example of what the Docker compose file will look like, so that Signers can peek at how the system will look like.
+As we crystalize the Docker configuration, the following section displays an
+example of what the Docker compose file will look like, so that Signers can peek
+at how the system will look like.
 
 Remember, this is not production-ready yet and is only for demonstration purposes at the moment.
 
