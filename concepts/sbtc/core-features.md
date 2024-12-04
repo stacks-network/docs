@@ -33,4 +33,4 @@ sBTC signers have the ability to rotate their private keys, enhancing long-term 
 
 sBTC transactions on Stacks can be sponsored, allowing users to pay transaction fees in sBTC instead of STX.
 
-These core features work together to create a secure, efficient, and user-friendly bridge between Bitcoin and the Stacks ecosystem. Let's dig into each of these features.
+These core features work together to create a secure, efficient, and user-friendly bridge between Bitcoin and the Stacks ecosystem.
