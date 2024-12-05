@@ -178,7 +178,13 @@ If the outputs of the previous commands are correct, you can proceed and start t
 ~/stacks-signer/stacks-signer run -c ~/stacks-signer/signer-config.toml
 ```
 
-## Step 3 - Set Up Your Stacks Node
+## Step 3a - Set up a Bitcoin node (Optional but strongly recommended)
+
+In order to optimize signer health and performance, we highly recommend setting up your own Bitcoin node rather than relying on a third-party node.
+
+We have created guides for running both a [full Bitcoin node](../nodes-and-miners/run-a-bitcoin-node.md) and a [pruned Bitcoin node](../nodes-and-miners/run-a-pruned-bitcoin-node.md) you can follow.
+
+## Step 3b - Set Up Your Stacks Node
 
 ### Download the stacks-node binary
 
