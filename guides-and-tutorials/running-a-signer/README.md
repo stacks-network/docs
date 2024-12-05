@@ -228,7 +228,13 @@ Signer is not registered for the current reward cycle (557) or next reward cycle
 This is normal and means that you have stacked, but have not yet reach the prepare phase for your chosen reward cycle. Assuming you have met the stacking minimum, your signer will be picked up and registered during this prepare phase.
 {% endhint %}
 
-### Setup Your Stacks Node
+### Set Up Your Bitcoin Node
+
+While optional, we strongly recommend running your own Bitcoin node in order to optimize signer health and performance.
+
+We have created guides for running both a [full Bitcoin node](https://docs.stacks.co/guides-and-tutorials/nodes-and-miners/run-a-bitcoin-node) and a [pruned Bitcoin node](https://docs.stacks.co/guides-and-tutorials/nodes-and-miners/run-a-pruned-bitcoin-node) you can follow.
+
+### Set Up Your Stacks Node
 
 Once your signer is running, the next step is to set up and run a Stacks node. It’s important to have the signer already running, because the node will not run unless it is able to send events to the signer.
 
