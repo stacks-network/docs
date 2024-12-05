@@ -7,7 +7,7 @@ before deploying it.
 {% endhint %}
 
 <details>
-<summary><strong>Testnet configuration</strong></summary>
+<summary>**Testnet configuration**</summary>
 If you are onboarding to the sBTC signers testnet, please see
 [here](https://github.com/stacks-network/sbtc/blob/fix/testnet_docker_compose/docker/testnet/README.md).
 </details>
