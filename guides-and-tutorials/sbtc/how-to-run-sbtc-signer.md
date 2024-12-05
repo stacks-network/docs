@@ -1,15 +1,16 @@
 # How to Run a sBTC Signer
 
 {% hint style="warning" %}
-This documentation is for preview purposes only. This should not be used in production.
+This documentation provides guidelines, best-practices and recommendations for
+running an sBTC Signer. Review it and adapt it to your infrastructure policy
+before deploying it.
 {% endhint %}
 
-## Testnet configuration
-
-{% hint style="warning" %} If you are onboarding to the sBTC signers testnet,
-please see
+<details>
+<summary><strong>Testnet configuration</strong></summary>
+If you are onboarding to the sBTC signers testnet, please see
 [here](https://github.com/stacks-network/sbtc/blob/fix/testnet_docker_compose/docker/testnet/README.md).
-{% endhint %}
+</details>
 
 ## Minimum System Requirements
 
@@ -19,14 +20,19 @@ Below are the **minimum required specs** to be able to run a sBTC signer.
 - 256MB memory
 - 50GB storage
 
- Note that these are in _addition_ to the hardware requirements for running a
- Stacks node and Bitcoin node outlined in the [How to Run a Signer doc](../running-a-signer/README.md).
+Note that these are in _addition_ to the hardware requirements for running a
+Stacks node and Bitcoin node outlined in the [How to Run a Signer
+doc](../running-a-signer/README.md).
 
 ## 1. Configure your Bitcoin node
 
-Your Bitcoin node must include these settings for sBTC signer operation:
+### Minimum version
+
+You will need `bitcoind` version 25 or higher.
 
 ### Settings
+
+Your Bitcoin node must include these settings for sBTC signer operation:
 
 1. Required Settings:
 
@@ -41,8 +47,10 @@ Your Bitcoin node must include these settings for sBTC signer operation:
 
 ### ZeroMQ (ZMQ) Configuration
 
-ZeroMQ enables real-time blockchain event notifications from Bitcoin Core to the
-sBTC signer. The two required ZMQ endpoints serve distinct purposes:
+The ZeroMQ configuration specified above enables real-time blockchain event
+notifications from Bitcoin Core to the sBTC signer.
+
+The two required ZMQ endpoints serve distinct purposes:
 
 - `zmqpubhashblock`: Broadcasts only block hashes for lightweight block
   detection
