@@ -30,7 +30,7 @@ This section is in progress as the core developers improve the sBTC Signer
 observability.
 {% endhint %}
 
-- Retain at least 1 days of logs for both the sBTC Signer, the Stacks node, the
+- Retain at least 1 day of logs for both the sBTC Signer, the Stacks node, and the
   Bitcoin node.
 
 ### Downstream components
