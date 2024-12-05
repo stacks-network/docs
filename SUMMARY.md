@@ -91,6 +91,8 @@
   * [Run a Node with Digital Ocean](guides-and-tutorials/nodes-and-miners/run-a-node-with-digital-ocean.md)
   * [Run a Node with a Hosted Provider](guides-and-tutorials/nodes-and-miners/run-a-node-with-a-hosted-provider.md)
   * [Run a Node with Quicknode](guides-and-tutorials/nodes-and-miners/run-a-node-with-quicknode.md)
+  * [Run a Bitcoin Node](guides-and-tutorials/nodes-and-miners/run-a-bitcoin-node.md)
+  * [Run a Pruned Bitcoin Node](guides-and-tutorials/nodes-and-miners/run-a-pruned-bitcoin-node.md)
 * [Run a Miner](guides-and-tutorials/run-a-miner/README.md)
   * [Miner Prerequisites](guides-and-tutorials/run-a-miner/miner-prerequisites.md)
   * [Miner Costs and Fees](guides-and-tutorials/run-a-miner/miner-costs-and-fees.md)
