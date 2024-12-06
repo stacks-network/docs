@@ -69,6 +69,7 @@ Additions necessary specifically to run a signer are the `[connection_options]` 
 
 ```toml
 [node]
+
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
 bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
@@ -150,7 +151,7 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 56_457
+start_height = 1900
 ```
 
 ### Mainnet Signer
