@@ -1,7 +1,7 @@
 # Signer Configuration
 
 {% hint style="info" %}
-Note that in this version, the Stacks node will not boot if it sees config values that are unused. If your node is not booting, be sure to check your logs for any messages indicating&#x20;
+Note that in this version, the Stacks node will not boot if it sees config values that are unused. If your node is not booting, be sure to check your logs for any messages indicating
 {% endhint %}
 
 ### Signer Configuration File Options
@@ -152,6 +152,10 @@ start_height = 6
 [[burnchain.epochs]]
 epoch_name = "3.0"
 start_height = 1900
+
+[[burnchain.epochs]]
+epoch_name = “3.1”
+start_height = 77_770
 ```
 
 ### Mainnet Signer

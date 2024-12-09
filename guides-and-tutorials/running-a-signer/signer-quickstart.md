@@ -3,15 +3,15 @@
 {% hint style="info" %}
 ### **Current Signer and Stacks Node Versions**
 
-**Signer - 3.0.0.0.1.0**
+**Signer - 3.1.0.0.0.0**
 
-* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.1.0/images/sha256-3e8c05b0f7eecabfae10a4bede0a71ba99b7589a6ee32ad1c26e2672d88871ac?context=explore)
-* [GitHub Release](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.0.0.0.1.0)
+* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-signer/3.1.0.0.0.0/images/sha256-bd0d116a324d621cc1dad2a16e46f773d2d34bdc70479bfb8c46feae054519df?context=explore)
+* [GitHub Release](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.0.0)
 
-**Stacks Node - 3.0.0.0.1**
+**Stacks Node - 3.1.0.0.0**
 
-* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-core/3.0.0.0.1/images/sha256-12463e8270f51537e5b85c069c1e246c734c47cbff37b92e0ef108d7984def7b?context=explore)
-* [GitHub Release](https://github.com/stacks-network/stacks-core/releases/tag/3.0.0.0.1)
+* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-core/3.1.0.0.0/images/sha256-85cd9a9da3c1dd44cd17ec25928acf461480d28002405abecbf559a8af17214d?context=explore)
+* [GitHub Release](https://github.com/stacks-network/stacks-core/releases/latest)
 {% endhint %}
 
 
@@ -92,7 +92,7 @@ Assuming a `Linux x64 glibc` machine, the commands to download and uncompress th
 cd ~/stacks-signer
 
 # Download the signer binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/signer-3.0.0.0.1.0/linux-glibc-x64.zip
+wget https://github.com/stacks-network/stacks-core/releases/download/signer-3.1.0.0.0.0/linux-glibc-x64.zip
 
 # Unzip the signer binary archive
 unzip linux-glibc-x64.zip
@@ -153,7 +153,7 @@ To ensure the signer has been set up correctly, you can run the following comman
 ~/stacks-signer/stacks-signer --version
 
 # Output:
-stacks-signer stacks-signer 3.0.0.0.1.0 (release/3.0.0.0.1.0:dd1ebe6, release build, linux [x86_64])
+stacks-signer stacks-signer 3.1.0.0.0.0 (release/3.1.0.0.0.0:dd1ebe6, release build, linux [x86_64])
 
 # Verify the config file
 ~/stacks-signer/stacks-signer check-config -c ~/stacks-signer/signer-config.toml 
@@ -197,7 +197,7 @@ Assuming a `Linux x64 glibc` machine, the commands to download and uncompress th
 cd ~/stacks-node
 
 # Download the node binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/3.0.0.0.1/linux-glibc-x64.zip
+wget https://github.com/stacks-network/stacks-core/releases/download/3.1.0.0.0/linux-glibc-x64.zip
 
 # Unzip the node binary archive
 unzip linux-glibc-x64.zip
@@ -294,7 +294,7 @@ address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
 amount = 10000000000000000
 
 [[burnchain.epochs]]
-epoch_name = "1.0"
+epoch_name = “1.0”
 start_height = 0
 
 [[burnchain.epochs]]
@@ -328,6 +328,9 @@ start_height = 6
 [[burnchain.epochs]]
 epoch_name = "3.0"
 start_height = 56_457
+
+epoch_name = “3.1”
+start_height = 77_770
 EOF
 ```
 {% endtab %}
@@ -380,14 +383,14 @@ To ensure the node has been set up correctly, you can run the following commands
 ~/stacks-node/stacks-node version
 
 # Output:
-INFO [1729788035.383049] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.1 (release/3.0.0.0.1:dd1ebe6, release build, linux [x86_64])
-stacks-node 3.0.0.0.1 (release/3.0.0.0.1:dd1ebe6, release build, linux [x86_64])
+INFO [1729788035.383049] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.1.0.0.0 (release/3.1.0.0.0:dd1ebe6, release build, linux [x86_64])
+stacks-node 3.1.0.0.0 (release/3.1.0.0.0:dd1ebe6, release build, linux [x86_64])
 
 # Verify the node's config
 ~/stacks-node/stacks-node check-config --config ~/stacks-node/node-config.toml
 
 # Output:
-INFO [1729788064.913032] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.1 (release/3.0.0.0.1:dd1ebe6, release build, linux [x86_64])
+INFO [1729788064.913032] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.1.0.0.0 (release/3.1.0.0.0:dd1ebe6, release build, linux [x86_64])
 INFO [1729788064.913175] [testnet/stacks-node/src/main.rs:318] [main] Loading config at path /home/admin/stacks-node/node-config.toml
 INFO [1729788064.969551] [testnet/stacks-node/src/main.rs:331] [main] Loaded config!
 ```
