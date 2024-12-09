@@ -10,12 +10,12 @@ Some potential vectors for signer key compromise are as follows:
 2. Signer key is compromised during generation or deployment
 3. Signer key is accidentally checked into SCM (eg Github or Gitlab)
 4. Social engineering attack against Signer community: eg a malicious link is posted to social media that harvests key material
-5. An undisclosed backdoor is discovered in the Signer binary. ~~Stacks-signer software is “backdoored”~~
+5. An undisclosed backdoor is discovered in the Signer binary.
 6. Supply chain attack against stacks-signer source code: threat actor compromises upstream dependencies of stacks-signer
 
 #### **Countermeasures**
 
-What can Signers ~~signer operators~~ do to mitigate the threat vectors identified above? Let's identify countermeasures in response to each of the threats identified above, starting with #1.
+What can Signers do to mitigate the threat vectors identified above? Let's identify countermeasures in response to each of the threats identified above, starting with #1.
 
 #### **1. Stacks-signer node is compromised and key is exfiltrated from the filesystem**
 
