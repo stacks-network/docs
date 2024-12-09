@@ -104,6 +104,7 @@
   * [How to Read Signer Logs](guides-and-tutorials/running-a-signer/how-to-read-signer-logs.md)
   * [How to Monitor a Signer](guides-and-tutorials/running-a-signer/how-to-monitor-signer.md)
   * [Best practices for running a Signer](guides-and-tutorials/running-a-signer/best-practices-to-run-a-signer.md)
+  * [OpSec Best Practices](guides-and-tutorials/running-a-signer/opsec-best-practices.md)
 * [sBTC](guides-and-tutorials/sbtc/README.md)
   * [How to Run a sBTC Signer](guides-and-tutorials/sbtc/how-to-run-sbtc-signer.md)
 * [Stack STX](guides-and-tutorials/stack-stx/README.md)
