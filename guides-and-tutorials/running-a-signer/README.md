@@ -134,7 +134,7 @@ Note that at the moment the signer should only be run on testnet using these ins
 
 #### Running the Signer with Docker
 
-You can run the signer as a Docker container using the [`blockstack/stacks-signer:3.0.0.0.1.0`](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.1.0/images/sha256-3e8c05b0f7eecabfae10a4bede0a71ba99b7589a6ee32ad1c26e2672d88871ac?context=explore) image.
+You can run the signer as a Docker container using the [`blockstack/stacks-signer:3.1.0.0.0.0`](https://hub.docker.com/layers/blockstack/stacks-signer/3.1.0.0.0.0/images/sha256-bd0d116a324d621cc1dad2a16e46f773d2d34bdc70479bfb8c46feae054519df?context=explore) image.
 
 When running the Docker container, you’ll need to ensure a few things:
 
@@ -148,7 +148,7 @@ Be sure to replace the `STX_SIGNER_PATH` with the correct path to your config fi
 
 ```bash
 IMG="blockstack/stacks-signer"
-VER="3.0.0.0.1.0"
+VER="3.1.0.0.0.0"
 STX_SIGNER_PATH="./"
 STX_SIGNER_DATA="$STX_SIGNER_PATH/data"
 STX_SIGNER_CONFIG="$STX_SIGNER_PATH/signer-config.toml"
@@ -174,7 +174,7 @@ For example, if you are running on M1 Mac, you would add `--platform=linux/amd64
 Or, with a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-signer:3.0.0.0.1.0
+FROM blockstack/stacks-signer:3.1.0.0.0.0
 COPY signer-config.toml /config.toml
 EXPOSE 30000
 CMD ["stacks-signer", "run", "--config", "/config.toml"]
@@ -273,7 +273,7 @@ For example:
 
 #### Run a Stacks Node with Docker
 
-You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 3.0.0.0.1](https://hub.docker.com/layers/blockstack/stacks-core/3.0.0.0.1/images/sha256-12463e8270f51537e5b85c069c1e246c734c47cbff37b92e0ef108d7984def7b?context=explore). When running the Docker container, you’ll need to ensure a few things:
+You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 3.1.0.0.0](https://hub.docker.com/layers/blockstack/stacks-core/3.1.0.0.0/images/sha256-85cd9a9da3c1dd44cd17ec25928acf461480d28002405abecbf559a8af17214d?context=explore). When running the Docker container, you’ll need to ensure a few things:
 
 * The port configured for `p2p_bind` must be exposed to the internet
 * The port configured for `rpc_bind` must be accessible by your signer
@@ -284,7 +284,7 @@ An example for running the node’s Docker image with docker run is below. Be su
 
 ```bash
 IMG="blockstack/stacks-core"
-VER="3.0.0.0.1"
+VER="3.1.0.0.0"
 STX_NODE_CONFIG="./node-config.toml"
 
 docker run -d \
@@ -302,7 +302,7 @@ docker run -d \
 Or, using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:3.0.0.0.1
+FROM blockstack/stacks-core:3.1.0.0.0
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443
