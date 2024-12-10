@@ -78,7 +78,7 @@ bitcoind \
 
 ### Minimum version
 
-Please ensure your Stacks version is up-to-date the latest release.
+Please ensure your Stacks version is up-to-date (using the latest release).
 
 ### Event observer
 
