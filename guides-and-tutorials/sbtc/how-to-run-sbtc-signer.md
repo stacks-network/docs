@@ -1,4 +1,4 @@
-# How to Run a sBTC Signer
+# How to Run an sBTC Signer
 
 {% hint style="warning" %}
 This documentation provides guidelines, best-practices and recommendations for
