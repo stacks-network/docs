@@ -121,7 +121,7 @@ Defines how the signer connects to Bitcoin Core:
 
 ```toml
 [bitcoin]
-rpc_endpoints = ["http://user:pass@your-bitcoin-node:18443"]
+rpc_endpoints = ["http://user:pass@your-bitcoin-node:8332"]
 block_hash_stream_endpoints = ["tcp://localhost:28332"]
 ```
 
