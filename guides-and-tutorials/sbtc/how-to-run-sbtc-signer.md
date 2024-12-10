@@ -132,8 +132,8 @@ Defines the signer's identity and network participation:
 ```toml
 [signer]
 private_key = "your-private-key"  # 32 or 33-byte hex format
-network = "mainnet"  # Network selection: mainnet, testnet, or regtest
-deployer = "<sBTCContractDeployerAddress>"  # Address that deployed sbtc contracts (this will either be provided as a default value or given directly to signers)
+network = "mainnet"
+deployer = "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4"
 ```
 
 ### P2P Network Configuration
