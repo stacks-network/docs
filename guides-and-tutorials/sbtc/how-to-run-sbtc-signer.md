@@ -28,16 +28,10 @@ You will need `bitcoind` version 25 or higher.
 
 Your Bitcoin node must include these settings for sBTC signer operation:
 
-1. Required Settings:
-
    - `txindex=1`: Transaction indexing must be enabled
    - `server=1`: RPC server must be enabled
    - `zmqpubhashblock=tcp://*:28332`: ZMQ block hash notifications
    - `zmqpubrawblock=tcp://*:28332`: ZMQ raw block notifications
-
-1. Optional, but recommended:
-
-   - `coinstatsindex=1`: Enables additional index for coin statistics
 
 ### ZeroMQ (ZMQ) Configuration
 
@@ -61,17 +55,16 @@ This notification system creates a direct event stream when:
 ```bash
 bitcoind \
   -server \
-  -datadir=$${BITCOIN_DATA} \
+  -datadir=${BITCOIN_DATA} \
   -rpcbind=0.0.0.0 \
-  -rpcuser=$${BITCOIN_RPC_USERNAME} \
-  -rpcpassword=$${BITCOIN_RPC_PASSWORD} \
-  -rpcport=$${BITCOIN_RPC_PORT} \
+  -rpcuser=${BITCOIN_RPC_USERNAME} \
+  -rpcpassword=${BITCOIN_RPC_PASSWORD} \
+  -rpcport=${BITCOIN_RPC_PORT} \
   -rpcallowip=0.0.0.0/0 \
   -rpcallowip=::/0 \
   -txindex \
-  -zmqpubhashblock="tcp://*:$${BITCOIN_ZMQ_PORT}" \
-  -zmqpubrawblock="tcp://*:$${BITCOIN_ZMQ_PORT}" \
-  -coinstatsindex
+  -zmqpubhashblock="tcp://*:${BITCOIN_ZMQ_PORT}" \
+  -zmqpubrawblock="tcp://*:${BITCOIN_ZMQ_PORT}"
 ```
 
 ## 2. Configure your Stacks node
