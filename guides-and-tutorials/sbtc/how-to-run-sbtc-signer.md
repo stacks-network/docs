@@ -28,16 +28,10 @@ You will need `bitcoind` version 25 or higher.
 
 Your Bitcoin node must include these settings for sBTC signer operation:
 
-1. Required Settings:
-
    - `txindex=1`: Transaction indexing must be enabled
    - `server=1`: RPC server must be enabled
    - `zmqpubhashblock=tcp://*:28332`: ZMQ block hash notifications
    - `zmqpubrawblock=tcp://*:28332`: ZMQ raw block notifications
-
-1. Optional, but recommended:
-
-   - `coinstatsindex=1`: Enables additional index for coin statistics
 
 ### ZeroMQ (ZMQ) Configuration
 
