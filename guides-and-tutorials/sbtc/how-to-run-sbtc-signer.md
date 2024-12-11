@@ -55,17 +55,16 @@ This notification system creates a direct event stream when:
 ```bash
 bitcoind \
   -server \
-  -datadir=$${BITCOIN_DATA} \
+  -datadir=${BITCOIN_DATA} \
   -rpcbind=0.0.0.0 \
-  -rpcuser=$${BITCOIN_RPC_USERNAME} \
-  -rpcpassword=$${BITCOIN_RPC_PASSWORD} \
-  -rpcport=$${BITCOIN_RPC_PORT} \
+  -rpcuser=${BITCOIN_RPC_USERNAME} \
+  -rpcpassword=${BITCOIN_RPC_PASSWORD} \
+  -rpcport=${BITCOIN_RPC_PORT} \
   -rpcallowip=0.0.0.0/0 \
   -rpcallowip=::/0 \
   -txindex \
-  -zmqpubhashblock="tcp://*:$${BITCOIN_ZMQ_PORT}" \
-  -zmqpubrawblock="tcp://*:$${BITCOIN_ZMQ_PORT}" \
-  -coinstatsindex
+  -zmqpubhashblock="tcp://*:${BITCOIN_ZMQ_PORT}" \
+  -zmqpubrawblock="tcp://*:${BITCOIN_ZMQ_PORT}"
 ```
 
 ## 2. Configure your Stacks node
