@@ -1,5 +1,13 @@
 # Clarity Contracts
 
+### Deployed Testnet Contracts
+
+* [sbtc-registry](https://explorer.hiro.so/txid/0xfa96a73673a97e803c7c1039f9bcf290d9727b0dfaa990f8e52fd81448bb4d09?chain=testnet)
+* [sbtc-token](https://explorer.hiro.so/txid/0x6b42a28d249045fc710a83c7cb542e73688f3e16c5b1bdb0be896f33388365f1?chain=testnet)
+* [sbtc-deposit](https://explorer.hiro.so/txid/0xa9cfdfafd575f2594e20d39c604ff54e2fc50cfb09024c90dbedcedae5b963ba?chain=testnet)
+* [sbtc-withdrawal](https://explorer.hiro.so/txid/0x9699d61100efb8c127674830cf65c3bb44b4497700a59a2688bb3cc2c52297eb?chain=testnet)
+* [sbtc-bootstrap signers](https://explorer.hiro.so/txid/0x15ef8164c493401109b75a654cbd1c3a2a4780ae061e510e52e47bd7863d5c53?chain=testnet)
+
 This graph summarizes the overall of the Clarity portion of the sBTC protocol.
 
 Throughout this section, we'll expand on each contract and its functionality.
