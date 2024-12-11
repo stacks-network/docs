@@ -292,7 +292,7 @@ You may want to review this contract to familiarize yourself with it.
 1. `signer-key`: the public key that corresponds to the `stacks_private_key` your signer is using
 2. `signer-signature`: a signature that demonstrates that you actually controls your `signer-key`. Because signer keys need to be unique, this is also a safety check to ensure that other Stackers can’t use someone else’s public key
 3. `max-amount`: The maximum amount of ustx (1 stx = 1,000,000 ustx) that can be locked in the transaction that uses this signature. For example, if calling `stack-increase`, then this parameter dictates the maximum amount of ustx that can be used to add more locked STX
-4. `auth-id`: a random integer that prevents re-use of a particular signature, similar to how nonces are used with transactions
+4. `auth-id`: a random integer that prevents re-use of a particular signature, similar to how nonces are used with transactions. Must be less than 10 characters
 
 Signer signatures are signatures created using a particular signer key. They demonstrate that the controller of that signer key is allowing a Stacker to use their signing key. The signer signature’s message hash is created using the following data:
 
@@ -327,7 +327,8 @@ The CLI command is:
 stacks-signer generate-stacking-signature \
   --method stack-stx \
   --max-amount 1000000000000 \
-  --auth-id 195591226970828652622091037492597751808 \
+  # auth-id should be a random string less than 10 characters
+  --auth-id 12345 \
   --period 1 \
   --reward-cycle 100 \
   --pox-address bc1... \
@@ -349,7 +350,7 @@ python3 -c 'import secrets; print(secrets.randbits(128))'
 Once the `generate-stacking-signature` command is run, the CLI will output a JSON:
 
 ```json
-{"authId":"1234","maxAmount":"1234","method":"stack-stx","period":1,"poxAddress":"bc1...","rewardCycle":100,"signerKey":"aaaaaaaa","signerSignature":"bbbbbbbbbbb"}
+{"authId":"1234","maxAmount":"12345","method":"stack-stx","period":1,"poxAddress":"bc1...","rewardCycle":100,"signerKey":"aaaaaaaa","signerSignature":"bbbbbbbbbbb"}
 ```
 
 You will use the JSON when calling Stacking transactions from your pool operator address as outlined above. Remember that this may be different than your signer address.
