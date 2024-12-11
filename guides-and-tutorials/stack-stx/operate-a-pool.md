@@ -466,7 +466,7 @@ The CLI command is:
 stacks-signer generate-stacking-signature \
   --method stack-stx \
   --max-amount 1000000000000 \
-  --auth-id 195591226970828652622091037492597751808 \
+  --auth-id 12345 \
   --period 1 \
   --reward-cycle 100 \
   --pox-address bc1... \
@@ -488,7 +488,7 @@ python3 -c 'import secrets; print(secrets.randbits(128))'
 Once the `generate-stacking-signature` command is run, the CLI will output a JSON:
 
 ```json
-{"authId":"1234","maxAmount":"1234","method":"stack-stx","period":1,"poxAddress":"bc1...","rewardCycle":100,"signerKey":"aaaaaaaa","signerSignature":"bbbbbbbbbbb"}
+{"authId":"12345","maxAmount":"1234","method":"stack-stx","period":1,"poxAddress":"bc1...","rewardCycle":100,"signerKey":"aaaaaaaa","signerSignature":"bbbbbbbbbbb"}
 ```
 
 You will use the JSON when calling Stacking transactions from your pool operator address as outlined above. Remember that this may be different than your signer address.
