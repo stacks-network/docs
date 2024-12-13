@@ -23,15 +23,15 @@ your sBTC Signer.
 - Optionally, allow traffic to the P2P ports of your Stacks and Bitcoin node.
 - Deny traffic to any other port and service, unless required, e.g. for SSH.
 
-### Monitor and observer your sBTC Signer
+### Monitor and observe your sBTC Signer
 
-{% hint style="info" %}
-This section is in progress as the core developers improve the sBTC Signer
-observability.
-{% endhint %}
-
-- Retain at least 1 day of logs for both the sBTC Signer, the Stacks node, and the
-  Bitcoin node.
+- Retain at least 1 day of logs for both the sBTC Signer, the Stacks node, and
+  the Bitcoin node.
+- The sBTC signer can optionally expose Prometheus metrics (see
+  `prometheus_exporter_endpoint` configuration option).
+  - You can use them to monitor its health ([this guide shows how to configure
+    Alloy to collect metrics on Grafana
+    cloud](../running-a-signer/how-to-monitor-signer.md)).
 
 ### Downstream components
 
