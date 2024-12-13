@@ -10,8 +10,8 @@ before deploying it.
 
 Below are the **minimum required specs** to be able to run a sBTC signer.
 
-- 1 cpu
-- 256MB memory
+- 2 CPU
+- 4GB memory
 - 50GB storage
 
 Note that these are in _addition_ to the hardware requirements for running a
