@@ -40,6 +40,12 @@ First, you'll need to connect your wallet to the bridge UI. Currently Leather an
 
 After your wallet is connected, choose how much BTC you would like to convert to sBTC.
 
+{% hint style="info" %}
+There are two transaction fees required to mint your sBTC. The first is set by the user manually when they initiate the deposit transaction within their wallet. The second is a fee used to consolidate the deposit UTXOs into the single signer UTXO. This separate transaction fee happens automatically and is set to a max of 80k sats. This is automatically deducted from your minted sBTC. This is not a signer fee but a regular Bitcoin transaction fee.
+{% endhint %}
+
+
+
 <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
