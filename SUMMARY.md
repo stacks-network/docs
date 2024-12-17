@@ -108,6 +108,8 @@
 * [sBTC](guides-and-tutorials/sbtc/README.md)
   * [How to Run an sBTC Signer](guides-and-tutorials/sbtc/how-to-run-sbtc-signer.md)
   * [Best practices for running an sBTC Signer](guides-and-tutorials/sbtc/best-practices-for-running-an-sbtc-signer.md)
+  * [How to Use the sBTC Bridge](guides-and-tutorials/sbtc/how-to-use-the-sbtc-bridge.md)
+  * [Earn sBTC Rewards](guides-and-tutorials/sbtc/earn-sbtc-rewards.md)
 * [Stack STX](guides-and-tutorials/stack-stx/README.md)
   * [Solo Stack](guides-and-tutorials/stack-stx/stacking-flow.md)
   * [Operate a Pool](guides-and-tutorials/stack-stx/operate-a-pool.md)

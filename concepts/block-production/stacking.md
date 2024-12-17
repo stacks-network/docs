@@ -30,7 +30,7 @@ Although stackers do fulfill a consensus critical role in Stacks by serving as s
 
 Rather, if stackers do not perform their duties as signers, they simply cannot unlock their STX tokens and will not receive their BTC rewards.
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks network.
 
@@ -48,7 +48,7 @@ At the end of the lock period, they will be automatically unlocked (spendable at
 
 The Stacking mechanism can be presented as a flow of actions:
 
-<figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 1. Make API calls to get details about the upcoming reward cycle
 2. For a specific Stacks account, confirm eligibility
@@ -72,7 +72,7 @@ There are two main ways you can stack:
 
 Solo stacking follows the flow outlined above, and is where stack your own STX tokens and run your own signer. In order to operate as a solo stacker, you need to have a minimum amount of STX tokens. This minimum is dynamic and can be found by viewing the [pox endpoint of the API](https://api.testnet.hiro.so/v2/pox) in the `min_threshold_ustx` field.
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The Stacking flow is different for delegation use cases:
 

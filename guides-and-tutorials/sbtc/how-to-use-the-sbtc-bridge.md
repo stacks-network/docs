@@ -1,0 +1,77 @@
+# How to Use the sBTC Bridge
+
+The sBTC bridge is a web application allowing you to convert your BTC into sBTC on the Stacks chain.
+
+{% hint style="warning" %}
+Ensure that you are using the bridge located at app.stacks.co. This is the only official sBTC bridge.
+{% endhint %}
+
+
+
+If you aren't familiar with sBTC, be sure to check out the [sBTC Conceptual Guide](../../concepts/sbtc/) to understand how it works.
+
+The bridge has been designed to be as simple as possible to use. In order to utilize sBTC, all you need to do is send a Bitcoin transaction using a supported wallet (like [Leather](https://leather.io/) or [Xverse](https://www.xverse.app/)).
+
+{% hint style="info" %}
+Note that only deposits are currently available. Withdrawals will be released in [Phase 2](https://bitcoinl2labs.com/sbtc-rollout), estimated in March 2025.&#x20;
+{% endhint %}
+
+There are 5 simple steps to convert your BTC to sBTC.
+
+{% stepper %}
+{% step %}
+### Connect your wallet
+
+First, you'll need to connect your wallet to the bridge UI. Currently Leather and Xverse are supported, with more on the way.
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Choose the amount to deposit
+
+After your wallet is connected, choose how much BTC you would like to convert to sBTC.
+
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Choose the Stacks address to mint to
+
+Next, enter the Stacks address you would like your sBTC minted to.
+
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Initiate the transaction
+
+After you choose your Stacks address, you'll use your connected wallet to transfer the BTC.
+
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### Receive your sBTC
+
+In the UI, you can monitor the status of your transaction to see when it has been completed, at which point you can see the sBTC in your wallet. It will go through three stages:
+
+* Pending - Your Bitcoin transaction is processing
+* Minting - Your Bitcoin transaction has processed and the sBTC signers are minting your sBTC
+* Completed - Your sBTC has been minted to your wallet
+
+{% hint style="info" %}
+If you accidentally leave the transaction page, you can view the status of your transaction by adding the `txId`, `step`, and `amount` query parameters to the bridge URL, eg. [https://app.stacks.co/?txId=1ca44721135c00a170cbec406733f25d9621e0598c011c78246c2fe173c4c9aa\&step=3\&amount=10000](https://app.stacks.co/?txId=1ca44721135c00a170cbec406733f25d9621e0598c011c78246c2fe173c4c9aa\&step=3\&amount=10000)
+
+The History tab is in progress and will make viewing previous transactions easier.
+{% endhint %}
+
+Note that you may need to enable the display of the sBTC token within your wallet by clicking on 'Manage Tokens' and enabling sBTC.
+
+<div align="left"><figure><img src="../../.gitbook/assets/image (21).png" alt="" width="188"><figcaption></figcaption></figure></div>
+{% endstep %}
+{% endstepper %}
+
+### Reclaiming BTC
+
+In the event your deposit fails, the ability to reclaim your BTC will be displayed in the UI. You can initiate this process to reclaim your BTC back to your original wallet.

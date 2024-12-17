@@ -507,7 +507,7 @@ To generate a signer key signature, it’s important that you’ve logged in Lea
 \
 Click the link “Signer key signature” at the bottom of the page. This will open the “generate a signer key signature” page.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 The fields are:
 
