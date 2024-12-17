@@ -14,4 +14,4 @@ For an in-depth overview of the technical aspects of how block production works 
 
 Here's a diagram outlining the block production process under Nakamoto rules. We'll dig into each part of this in the following docs.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
