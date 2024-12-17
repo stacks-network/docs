@@ -6,15 +6,23 @@ The sBTC bridge is a web application allowing you to convert your BTC into sBTC 
 Ensure that you are using the bridge located at app.stacks.co. This is the only official sBTC bridge.
 {% endhint %}
 
-
-
 If you aren't familiar with sBTC, be sure to check out the [sBTC Conceptual Guide](../../concepts/sbtc/) to understand how it works.
 
 The bridge has been designed to be as simple as possible to use. In order to utilize sBTC, all you need to do is send a Bitcoin transaction using a supported wallet (like [Leather](https://leather.io/) or [Xverse](https://www.xverse.app/)).
 
+Below you'll find both a video and written walkthrough of using the bridge.
+
 {% hint style="info" %}
 Note that only deposits are currently available. Withdrawals will be released in [Phase 2](https://bitcoinl2labs.com/sbtc-rollout), estimated in March 2025.&#x20;
 {% endhint %}
+
+### Video Walkthrough
+
+
+
+{% embed url="https://youtu.be/XZruuDgTo4k" %}
+
+### Written Walkthrough
 
 There are 5 simple steps to convert your BTC to sBTC.
 
