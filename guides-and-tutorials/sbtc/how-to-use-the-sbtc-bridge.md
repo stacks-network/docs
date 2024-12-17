@@ -32,7 +32,7 @@ There are 5 simple steps to convert your BTC to sBTC.
 
 First, you'll need to connect your wallet to the bridge UI. Currently Leather and Xverse are supported, with more on the way.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -40,7 +40,7 @@ First, you'll need to connect your wallet to the bridge UI. Currently Leather an
 
 After your wallet is connected, choose how much BTC you would like to convert to sBTC.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}

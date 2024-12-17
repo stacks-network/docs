@@ -28,7 +28,7 @@ When you use a Stacks wallet like the Hiro web wallet and initiate a transaction
 
 Here's what that looks like:
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In this example, if the smart contract does not transfer one fabulous-frog NFT and and take 50 STX from the user, the transaction will abort.
 
