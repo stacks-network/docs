@@ -147,6 +147,7 @@
   * [🔸 September 2024](press-and-top-links/2024/september-2024.md)
   * [🔸 October 2024](press-and-top-links/2024/october-2024.md)
   * [🔸 November 2024](press-and-top-links/2024/october-2024-1.md)
+  * [🔸 December 2024](press-and-top-links/2024/october-2024-1-1.md)
 
 ## 🧡 Bitcoin Theses and Reports
 
