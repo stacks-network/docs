@@ -53,3 +53,11 @@ For weekly stories delivered to your inbox, subscribe to [Stacks Snacks](https:/
 {% content-ref url="october-2024-1.md" %}
 [october-2024-1.md](october-2024-1.md)
 {% endcontent-ref %}
+
+{% content-ref url="october-2024-1-1.md" %}
+[october-2024-1-1.md](october-2024-1-1.md)
+{% endcontent-ref %}
+
+{% hint style="info" %}
+
+{% endhint %}
