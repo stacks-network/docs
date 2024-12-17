@@ -88,7 +88,7 @@ Note that you may need to enable the display of the sBTC token within your walle
 
 ### Reclaiming BTC
 
-If your sBTC has not been minted within 12 Bitcoin blocks, you are able to reclaim your BTC. You can do this via the bridge by visiting the reclaim page at https://app.stacks.co/reclaim?depositTxId=\[TX\_ID\_HERE] and replacing the bracketed text with your transaction ID.
+If your sBTC has not been minted within 12 Bitcoin blocks, you are able to reclaim your BTC. You can do this via the bridge by visiting the reclaim page at https://app.stacks.co/reclaim?depositTxId=\[TX\_ID\_HERE] and replacing the bracketed text with your transaction ID, eg. [https://app.stacks.co/reclaim?depositTxId=8f37f750b6646f0a217121201967170bd3cfef5f2ebd4f30f359b5e9308470c4](https://app.stacks.co/reclaim?depositTxId=8f37f750b6646f0a217121201967170bd3cfef5f2ebd4f30f359b5e9308470c4)
 
 There is an intermediate step in between depositing BTC and the sBTC signers consolidating it into the single signer UTXO. If the transaction is not picked up by signers, you can reclaim it using this UI.
 
