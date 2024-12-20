@@ -16,7 +16,7 @@ To get started, first mint your sBTC by using the bridge at [app.stacks.co](http
 {% step %}
 ### Connect your wallet
 
-After your sBTC has been minted to your wallet, visit the rewards program site at [bitcoinismore.org](../../concepts/block-production/bitcoin-reorgs.md) and connect your wallet. The click the 'Earn Rewards' button.
+After your sBTC has been minted to your wallet, visit the rewards program site at [bitcoinismore.org](https://bitcoinismore.org) and connect your wallet. The click the 'Earn Rewards' button.
 
 {% hint style="info" %}
 You may need to enable the sBTC token listing display in your wallet before it is visible. In Leather, you can do this by clicking 'Manage Tokens' and toggling on sBTC.
