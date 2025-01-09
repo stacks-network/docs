@@ -1,9 +1,3 @@
----
-description: >-
-  For weekly stories delivered to your inbox, subscribe to Stacks Snacks. For
-  quarterly ecosystem recaps, subscribe to the Stacks Foundation newsletter.
----
-
 # 🔸 December 2024
 
 | Article                                                                                                                                                                                                                                                          | Outlet/Author       |
@@ -12,3 +6,11 @@ description: >-
 | 🧡 [LearnWeb3, the Largest Educational Platform for Web3, Set to Onboard New Wave of sBTC Developers](https://www.theblock.co/post/330037/learnweb3-the-largest-educational-platform-for-web3-set-to-onboard-new-wave-of-sbtc-developers)                        | TheBlock            |
 | 🧡 [Xverse, Leading Bitcoin Ecosystem Wallet, Adopts sBTC as Preferred Scaling Solution for the Bitcoin Economy](https://www.theblock.co/post/330649/xverse-leading-bitcoin-ecosystem-wallet-adopts-sbtc-as-preferred-scaling-solution-for-the-bitcoin-economy)  | TheBlock            |
 | 🧡 [Hex Trust Expands Collaboration with Stacks Asia Foundation to Bolster sBTC Adoption](https://blockchainreporter.net/hex-trust-expands-collaboration-with-stacks-asia-foundation-to-bolster-sbtc-adoption/)                                                  | Blockchain Reporter |
+| 🧡[Fordefi, the First MPC Wallet to Fully Support Bitcoin DeFi, Joins Cohort of sBTC Backers](https://www.theblock.co/post/331016/fordefi-the-first-mpc-wallet-to-fully-support-bitcoin-defi-joins-cohort-of-sbtc-backers)                                       | TheBlock            |
+| 🧡[Travala, The #1 Bitcoin and Crypto Travel Booking Portal, Announces Support for sBTC and STX](https://www.theblock.co/post/331020/travala-the-1-bitcoin-and-crypto-travel-booking-portal-announces-support-for-sbtc-and-stx)                                  | TheBlock            |
+| 🧡[Double-dipping with sBTC on Stacks](https://blockworks.co/news/stacks-sbtc-double-dipping)                                                                                                                                                                    | Blockworks          |
+| 🧡[Bitcoin Gets DeFi Upgrade: Stacks Launches Bitcoin-Backed sBTC for Smart Contracts](https://hackernoon.com/bitcoin-gets-defi-upgrade-stacks-launches-bitcoin-backed-sbtc-for-smart-contracts)                                                                 | Hackernoon          |
+| 🧡[sBTC Launches on Stacks Mainnet, Bringing Bitcoin DeFi to Life](https://beincrypto.com/sbtc-launches-on-stacks-mainnet/)                                                                                                                                      | BeInCrypto          |
+|                                                                                                                                                                                                                                                                  |                     |
+|                                                                                                                                                                                                                                                                  |                     |
+|                                                                                                                                                                                                                                                                  |                     |
