@@ -26,7 +26,7 @@ The output will specify which configuration key caused the panic (there may be m
 
 ```
 $ stacks-node check-config --config ./Config.toml
-INFO [1729707354.217841] [testnet/stacks-node/src/main.rs:285] [main] stacks-node 3.0.0.0.0 (release/3.0.0.0.0:dd1ebe6, release build, linux [x86_64])
+INFO [1736429861.253222] [testnet/stacks-node/src/main.rs:280] [main] stacks-node 3.1.0.0.2 (release/3.1.0.0.2:56ded53, release build, linux [x86_64])
 INFO [1729707265.671604] [testnet/stacks-node/src/main.rs:318] [main] Loading config at path ./Config.toml
 WARN [1729707265.671992] [testnet/stacks-node/src/main.rs:325] [main] Invalid config file: Invalid toml: unknown field `foo`, expected one of `name`, `seed`, `deny_nodes`, `working_dir`, `rpc_bind`, `p2p_bind`, `p2p_address`, `data_url`, `bootstrap_node`, `local_peer_seed`, `miner`, `stacker`, `mock_mining`, `mock_mining_output_dir`, `mine_microblocks`, `microblock_frequency`, `max_microblocks`, `wait_time_for_microblocks`, `wait_time_for_blocks`, `next_initiative_delay`, `prometheus_bind`, `marf_cache_strategy`, `marf_defer_hashing`, `pox_sync_sample_secs`, `use_test_genesis_chainstate`, `always_use_affirmation_maps`, `require_affirmed_anchor_blocks`, `chain_liveness_poll_time_secs`, `stacker_dbs`, `fault_injection_block_push_fail_probability` for key `node` at line 20 column 1
 ```
@@ -40,6 +40,6 @@ Note that in the Stacks node config file, the `block_proposal_token` field has b
 For quick reference, here are the current latest versions you'll want to be running as a signer. If you don't yet have your signer up and running, this guide will walk you through that.
 
 * [Binaries](https://github.com/stacks-network/stacks-core/releases/latest)
-* Signer Docker Image - [3.0.0.0.0.0](https://hub.docker.com/layers/blockstack/stacks-signer/3.0.0.0.0.0/images/sha256-5406912473befe62ce21f1630908b01960bae29b7bef306fd5669037ac8e112b?context=explore)
-* Stacks Node Docker Image - [3.0.0.0.0](https://hub.docker.com/layers/blockstack/stacks-core/3.0.0.0.0/images/sha256-7e0ce69dff7198ce0dd0f44676f065abd6f834ed6d9a396856a36fd422ba6134?context=explore)
+* Signer Docker Image - [3.1.0.0.2.1](https://hub.docker.com/layers/blockstack/stacks-signer/3.1.0.0.2.1/images/sha256-351aa389597b79d9bf28bbb1feceaacca5d9f50807517c1c526d74a6cabba0fe)
+* Stacks Node Docker Image - [3.1.0.0.2](https://hub.docker.com/layers/blockstack/stacks-core/release-3.1.0.0.2/images/sha256-e7757b01667da1ac4dd045ea461f4656d96dcb134b4d8f3631d5ddd222307844)
 {% endhint %}
