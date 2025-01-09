@@ -1,5 +1,7 @@
 ---
-description: In progress
+description: >-
+  For weekly stories delivered to your inbox, subscribe to Stacks Snacks. For
+  quarterly ecosystem recaps, subscribe to the Stacks Foundation newsletter.
 ---
 
 # 🔸 December 2024
