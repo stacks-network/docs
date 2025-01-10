@@ -507,7 +507,7 @@ When the user needs to generate signatures:
    2. Your signer signature
 8. Finally, make a Stacking transaction using the signer key and signer signature.
 
-Now that you have your signer signature generated, it's time to start stacking. This process will vary depending on your chosen method. We've included instructions for solo stacking using [Lockstacks](https://lockstacks.com) below.
+Now that you have your signer signature generated, it's time to start stacking. This process will vary depending on your chosen method. We've included instructions for solo stacking using [Leather Earn](https://earn.leather.io/sign-in?chain=mainnet) below.
 
 ### Step 3: Stack your STX
 
