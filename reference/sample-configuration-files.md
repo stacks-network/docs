@@ -193,6 +193,7 @@ stacks_private_key = "$your_stacks_private_key"
 # The IP address and port where prometheus metrics can be accessed.
 metrics_endpoint = "127.0.0.1:9154"
 
+# Determining when a time-based tenure extend will be accepted
 tenure_idle_timeout_secs = 120
 ```
 
