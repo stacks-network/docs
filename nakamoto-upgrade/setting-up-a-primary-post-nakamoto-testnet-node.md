@@ -106,7 +106,11 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 56_457
+start_height = 1_900
+
+[[burnchain.epochs]]
+epoch_name = "3.1"
+start_height = 2_000
 EOF
 
 docker run -d  \\
@@ -206,7 +210,11 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 56_457
+start_height = 1_900
+
+[[burnchain.epochs]]
+epoch_name = "3.1"
+start_height = 2_000
 ```
 
 The important aspects that you’ll need to change are:
