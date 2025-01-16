@@ -88,12 +88,8 @@ events_keys = [
 
 ### Reference configuration
 
-<!---
-TODO: This needs to be updated once the PR linked here merges.
--->
-
 See
-[here](https://github.com/stacks-network/sbtc/blob/831b890a39ec6c9ee7dec44673843d46a7050950/docker/mainnet/nodes/stacks/Config.toml.in#L1).
+[here](https://github.com/stacks-network/sbtc/blob/main/docker/mainnet/nodes/stacks/Config.toml.in).
 
 
 ## 3. Configure your sBTC Signer
@@ -145,21 +141,13 @@ unavailable or blocked on the network.
 
 ### Reference configuration
 
-<!---
-TODO: This needs to be updated once the PR linked here merges.
--->
-
 See
-[here](https://github.com/stacks-network/sbtc/blob/feat/mainnet_docker_compose/docker/mainnet/sbtc-signer/signer-config.toml.in).
+[here](https://github.com/stacks-network/sbtc/blob/main/docker/mainnet/sbtc-signer/signer-config.toml.in).
 
 ## 4. Set up your containers
 
-<!---
-TODO: This needs to be updated once the PR linked here merges.
--->
-
 See
-[here](https://github.com/stacks-network/sbtc/blob/feat/mainnet_docker_compose/docker/mainnet/sbtc-signer/signer-config.toml.in)
+[here](https://github.com/stacks-network/sbtc/blob/main/docker/mainnet/docker-compose.yml)
 for a Docker Compose including all the required components.
 
 ## Monitoring
