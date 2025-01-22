@@ -189,10 +189,6 @@ Returns the total number of micro-STX (uSTX) that are liquid in the system as of
 
 ### **tenure-height**
 
-{% hint style="warning" %}
-Will be available after Nakamoto hard fork
-{% endhint %}
-
 Introduced in: Clarity 3
 
 **output: `uint`**
