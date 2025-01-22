@@ -12,7 +12,7 @@ Introduced in: Clarity 1
 
 **description:**
 
-Returns the current block height of the Stacks blockchain in Clarity 1 and 2 Upon activation of epoch 3.0, `block-height` will return the same value as `tenure-height`. In Clarity 3, `block-height` is removed and has been replaced with `stacks-block-height`.
+Returns the current block height of the Stacks blockchain in Clarity 1 and 2. Upon activation of epoch 3.0, `block-height` will return the same value as `tenure-height`. In Clarity 3, `block-height` is removed and has been replaced with `stacks-block-height`.
 
 **example:**
 
