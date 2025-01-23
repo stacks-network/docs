@@ -153,10 +153,6 @@ Represents the _none_ option indicating no value for a given optional (analogous
 
 ### **stacks-block-height**
 
-{% hint style="warning" %}
-Will be available after the Nakamoto hard fork
-{% endhint %}
-
 Introduced in: Clarity 3
 
 **output: `uint`**
