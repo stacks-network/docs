@@ -7,14 +7,14 @@ your sBTC Signer.
 
 - Prevent unauthorised access to the sBTC Signer private key.
 
-### Backup signer keys in cold-storage
+## Backup signer keys in cold-storage
 
 - Keep an offline, secure backup of your sBTC Signer private key (e.g., hardware
   security modules or encrypted storage devices).
 
 ## Backup your Postgres DB
 
-- Periodically backup the sBTC Signer Postgresql DB.
+- Periodically backup the sBTC Signer PostgreSQL DB.
 
 ## Firewall
 
@@ -23,7 +23,7 @@ your sBTC Signer.
 - Optionally, allow traffic to the P2P ports of your Stacks and Bitcoin node.
 - Deny traffic to any other port and service, unless required, e.g. for SSH.
 
-### Monitor and observe your sBTC Signer
+## Monitor and observe your sBTC Signer
 
 - Retain at least 1 day of logs for both the sBTC Signer, the Stacks node, and
   the Bitcoin node.
@@ -33,21 +33,21 @@ your sBTC Signer.
     Alloy to collect metrics on Grafana
     cloud](../running-a-signer/how-to-monitor-signer.md)).
 
-### Downstream components
+## Downstream components
 
-- Run a *dedicated* Bitcoin node and Stacks node for your sBTC Signer.
-    - Ensure the nodes are provisioned with the minimum hardware requirements
-      described [here][0].
-    - Nodes should be *exclusively dedicated* to serve the Signer. Avoid
-      re-using them to serve other clients as that may negatively affect
-      performance (no *mock-signing*, no *Stacks API nodes*).
+- Run a _dedicated_ Bitcoin node and Stacks node for your sBTC Signer.
+  - Ensure the nodes are provisioned with the minimum hardware requirements
+    described [here][0].
+  - Nodes should be _exclusively dedicated_ to serve the Signer. Avoid
+    re-using them to serve other clients as that may negatively affect
+    performance (no _mock-signing_, no _Stacks API nodes_).
 
-### Redundancy in operations
+## Redundancy in operations
 
 - Ensure that multiple, trusted users can manage and maintain your sBTC Signer instance.
 - Where feasible, users should span different timezones.
 
-### Monitor new software releases
+## Monitor new software releases
 
 - Stay up-to-date with new releases, patches, and security advisories (e.g.,
   GitHub, mailing lists, Discord).
