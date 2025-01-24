@@ -1,9 +1,27 @@
 # How to Run an sBTC Signer
 
-{% hint style="warning" %}
+{% hint style="info" %}
 This documentation provides guidelines, best-practices and recommendations for
 running an sBTC Signer. Review it and adapt it to your infrastructure policy
 before deploying it.
+{% endhint %}
+
+{% hint style="warning" %}
+Each sBTC signer will control a set of signing shares used to sign transactions
+on both Bitcoin and Stacks.
+
+Such shares will be encrypted by using the `private_key` specified in the
+Signer's config and stored in the PostgreSQL database attached to each signer.
+
+It is of the utmost importance to:
+
+1. Prevent unauthorized access to the sBTC Signer infrastructure (the signer
+   itself, its private key, and the associated PostgreSQL database);
+1. keep an offline, secure backup of the sBTC Signer private key;
+1. regularly backup the PosgreSQL database and store it in a secure location.
+
+See [here](./best-practices-for-running-an-sbtc-signer.md) for additional best
+practices to run an sBTC signer.
 {% endhint %}
 
 ## Minimum System Requirements
