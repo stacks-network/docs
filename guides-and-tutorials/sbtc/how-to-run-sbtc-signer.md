@@ -36,6 +36,10 @@ Note that these are in _addition_ to the hardware requirements for running a
 Stacks node and Bitcoin node outlined in the [How to Run a Signer
 doc](../running-a-signer/README.md).
 
+## Connection diagram
+
+![Connection Diagram](sbtc_diagram.png)
+
 ## 1. Configure your Bitcoin node
 
 ### Minimum version
