@@ -38,7 +38,7 @@ doc](../running-a-signer/README.md).
 
 ## Connection diagram
 
-![Connection Diagram](sbtc_diagram.png)
+![Connection Diagram](../../.gitbook/assets/sbtc_diagram.png)
 
 ## 1. Configure your Bitcoin node
 
