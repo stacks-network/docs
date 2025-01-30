@@ -22,7 +22,7 @@ Once done, access your dashboard and:
 2. "Add new connection", and
 3. select "Hosted Prometheus metrics".
 4. Now select "Via Grafana Alloy", then
-5. on step 2, select "Run Grafana Alloy" to generate an API token.
+5. On step 2, select "Run Grafana Alloy" to generate an API token.
 
 Note the token `GCLOUD_RW_API_KEY` and the parameters `GCLOUD_HOSTED_METRICS_URL`
 and `GCLOUD_HOSTED_METRICS_ID`, we will use them later.
@@ -47,8 +47,7 @@ metrics_endpoint = "127.0.0.1:30001"
 prometheus_bind = "127.0.0.1:9153"
 ```
 
-If you compile the application binaries yourself, remember to enable the Cargo
-feature `monitoring_prom` while building them, for example:
+The pre-compiled binaries already include the monitoring feature. However, if you are compiling the application binaries yourself, remember to enable the Cargo feature `monitoring_prom` while building them, for example:
 
 ```bash
 cargo build --features monitoring_prom,slog_json --release

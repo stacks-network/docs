@@ -64,7 +64,7 @@ One of the key use cases for Stacks is being able to directly interact with the 
 
 #### Stacking Tools
 
-The DegenLabs team has created a [suite of tools](https://stacking.tools/) to make stacking significantly easier including a signer signature generator, a solo stacking dapp to stack without needing to run a signer, and a TypeScript library for mocking stacking functions.
+The Degen Lab team has created a [suite of tools](https://stacking.tools/) to make stacking significantly easier including a signer signature generator, a solo stacking dapp to stack without needing to run a signer, and a TypeScript library for mocking stacking functions.
 
 #### Oracles and Price Feeds
 
