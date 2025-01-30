@@ -17,8 +17,8 @@ This initial phase focuses on testing Signer 3.0 readiness in a testnet environm
 
 **Action Required:**
 
-1. Update stacks-node to version 3.1.0.0.3 ([here](https://github.com/stacks-network/stacks-core/releases/tag/3.1.0.0.3))
-2. Update signer to version 3.1.0.0.3.0 ([here](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.3.0))
+1. Update stacks-node to version 3.1.0.0.4 ([here](https://github.com/stacks-network/stacks-core/releases/tag/3.1.0.0.4))
+2. Update signer to version 3.1.0.0.4.0 ([here](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.4.0))
 3. [Run a Primary Testnet node](setting-up-a-primary-post-nakamoto-testnet-node.md) alongside your Signer
 4. Create a testnet wallet address
 5. Complete the provided form ([here](https://blocksurvey.io/signer-nakamoto-activation-upgrade-GrOV5aivQ2.z2fh3bqEyLQ?v=o))
