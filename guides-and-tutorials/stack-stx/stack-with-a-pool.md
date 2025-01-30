@@ -12,11 +12,11 @@ If you do not meet this minimum, you'll need to delegate your STX to a pool oper
 
 This is a non-custodial delegation, meaning that your STX do not actually leave your wallet.
 
+Delegating your STX to a pool operator involves a few steps:
+
 {% hint style="info" %}
 Pool operators have a lot of control over exactly how they implement stacking. Usually users will be interacting with a wrapper contract that the pool operator has created to utilize the core stacking contract.
 {% endhint %}
-
-Delegating your STX to a pool operator involves a few steps:
 
 1. Find a pool to delegate to
 2. Use the pool's UI with your wallet of choice to call a delegate function with a few parameters
@@ -24,7 +24,7 @@ Delegating your STX to a pool operator involves a few steps:
 4. Pool operator will allocate rewards proportionally based on how much you have stacked
 5. Pool operator will distribute your rewards at the end of the stacking cycle
 
-Let's dig into each of these. If you want to learn more about the specific functions and the contract that handles the stacking process, be sure to take a look at the [stacking contract walkthrough](../../example-contracts/stacking.md).
+Let's dig into each of these. If you want to dig into the specific functions and the contract that handles this process, be sure to take a look at the [stacking contract walkthrough](../../example-contracts/stacking.md).
 
 ### Find a pool
 
@@ -38,7 +38,7 @@ Then you'll use your chosen pool operator's UI to call their delegation function
 
 ### Pool operator stacks tokens
 
-Once you grant permission for the pool operator to delegate, they will take over and call a separate function in the stacking contract to actually stack those delegated tokens. At this point your STX will be locked.
+Once you grant permission for the pool operator to delegate. They will take over and call a separate function in the stacking contract to actually stack those delegated tokens. At this point your STX will be locked.
 
 Depending on how the pool operator handles things, they may offer the option to automatically continue to stack your STX for up to 12 continuous cycles.
 

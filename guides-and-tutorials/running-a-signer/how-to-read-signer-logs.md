@@ -20,7 +20,7 @@ Let's go through some of the common log messages you might see, what they mean, 
 
 #### Signer uninitialized or not registered
 
-If you get a message like the following, saying that your signer is uninitialized, it means that your signer is not registered for the current or upcoming reward cycle (or the burnchain block height is not yet at the second block in the prepare phase) for the signer to know if it is registered. Your signer is running successfully, there is just another action you need to take.
+If you get a message like the following saying your signer is uninitialized, that means that it has not registered for the current or upcoming reward cycle (or the burnchain block height is not yet at the second block in the prepare phase) for the signer to know if it is registered. Your signer is running successfully, there is just another action you need to take.
 
 `Signer spawned successfully. Waiting for messages to process... INFO [1711088054.872542] [stacks-signer/src/runloop.rs:278] [signer_runloop] Running one pass for signer ID# 0. Current state: Uninitialized`
 
@@ -32,7 +32,7 @@ WARN [1712003997.160121] [stacks-signer/src/runloop.rs:247] [signer_runloop] Sig
 
 At this point if you want your signer to do something you need someone to either delegate or you need to stack on your own for an upcoming reward cycle.
 
-For more on this, be sure to check out the [How to Stack](../stack-stx/stacking-flow.md) doc.
+For more on this, be sure to check out the [How to Stack ](../stack-stx/stacking-flow.md)doc.
 
 ### Informational
 
