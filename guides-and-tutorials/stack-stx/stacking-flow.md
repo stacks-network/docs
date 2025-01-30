@@ -5,7 +5,7 @@ This doc assumes you are familiar with stacking at a conceptual level. If not, y
 The guide below applies to those who want to solo stack, meaning they meet the minimum stacking requirement and need to either run a signer or collaborate with a signer.
 
 {% hint style="info" %}
-There is a dapp created by Degen Lab for [solo stacking](https://solo.stacking.tools/) without needing a signer, as Degen Lab operates a signer. This is likely the easiest option for solo stacking. We'll cover this option below.
+There is a dapp created by DegenLabs for [solo stacking](https://solo.stacking.tools/) without needing a signer, as DegenLabs operates a signer. This is likely the easiest option for solo stacking. We'll cover this option below.
 {% endhint %}
 
 If you prefer to participate in a pool by delegating your STX, you do not need to operate a signer either. If you fall into this category, check out the [Stack with a Pool](stack-with-a-pool.md) guide.
@@ -124,7 +124,7 @@ In general, you don’t need to do anything actively during this period, other t
 
 If you do not want to operate a signer on your own, you can work with another signer. To do this, you will need to collaborate with them to get their signer key and signer signature (details in the following sections), which will have to be passed when calling the stacking functions.
 
-Rather than needing to find a signer to collaborate with, you can use the solo stacking dapp created by Degen Lab in order to use their signer to solo stack. They've created a UI that makes this process really simple.
+Rather than needing to find a signer to collaborate with, you can use the solo stacking dapp created by DegenLabs in order to use their signer to solo stack. They've created a UI that makes this process really simple.
 
 They also have a tool for you to generate a signer signature if you prefer to call the stacking functions yourself.
 
@@ -329,7 +329,7 @@ The arguments are:
 Now that you are familiar with the overall stacking flow and the different roles played, let's dive into the step-by-step guide for actually conducting the stacking process.
 
 {% hint style="info" %}
-There are several ways you can go about stacking. This guide will cover using Leather Earn, which is a stacking web application and the simplest option.
+There are several ways you can go about stacking. This guide will cover using Lockstacks, which is a stacking web application and the simplest option.
 
 Additionally, you can choose to call the stacking functions directly from the [deployed contract](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-4?chain=mainnet) in the explorer.
 
@@ -382,13 +382,12 @@ Signer signatures are signatures created using a particular signer key. They dem
 * `period`: a value between 1 and 12, which indicates the number of cycles that the Stacker is allowed to lock their STX for in this particular Stacking transaction. For `agg-commit`, this must be equal to 1
 * `reward-cycle`: This represents the reward cycle in which the Stacking transaction can be confirmed. For solo stacking operations (`stack-stx`, `stack-extend` and `stack-increase`), this has to be set as the current cycle.
 * `pox-address`: The Bitcoin address that is allowed to be used for receiving rewards. This can be set to any Bitcoin address that you have access to.
-* `config`: This represents the signer configuration file path where the `stacks_private_key` is located, and it is used for signing the generated signature.
 
 Now that we have an overview of role and contents of signatures, let's see how to actually generate them. You have several options available.
 
-**Generating your signature with Degen Lab's stacks.tools**
+**Generating your signature with Degen Labs stacks.tools**
 
-Degen Lab has a signature generation tool that will generate a signature using their signer. This is the quickest and simplest option. To generate a signature using this method, all you need to do is visit their [signature tool](https://signature.stacking.tools/) and pass in the relevant information as covered on this page.
+Degen Labs has a signature generation tool that will generate a signature using their signer. This is the quickest and simplest option. To generate a signature using this method, all you need to do is visit their [signature tool](https://signature.stacking.tools/) and pass in the relevant information as covered on this page.
 
 #### Generating your signature with stacks.js
 
@@ -420,6 +419,7 @@ stacks-signer generate-stacking-signature \
 
 These arguments match those described in section [Overview of signer keys and signatures](stacking-flow.md#overview-of-signer-keys-and-signatures), with the addition of:
 
+* `--config`, to provide the configuration file path
 * `--json`, to optionally output the resulting signature in JSON
 
 You can use the following command to generate a random `32` bit integer as `auth-id`:
@@ -436,17 +436,17 @@ Once the `generate-stacking-signature` command is run, the CLI will output a JSO
 
 You will use the JSON when calling Stacking transactions from your Stacker address as outlined above. Remember that this may be different than your signer address.
 
-#### Generating your signature with Leather Earn
+#### Generating your signature with Lockstacks
 
-Leather Earn is a web application that provides an easy-to-use interface for stacking and generating signatures. We'll cover using Leather Earn for stacking at the end of this document, here we will cover how to use it to generate a signature.
+Lockstacks is a web application that provides an easy-to-use interface for stacking and generating signatures. We'll cover using Lockstacks for stacking at the end of this document, here we will cover how to use it to generate a signature.
 
 {% hint style="info" %}
 At the time of writing, this has only been tested using the [Leather](https://leather.io) wallet.
 {% endhint %}
 
-You can visit [earn.leather.io](https://earn.leather.io) to generate a signer key signature. Make sure you’re connected to the correct network.\
+You can visit [lockstacks.com](https://lockstacks.com) to generate a signer key signature. Make sure you’re connected to the correct network.\
 \
-To generate a signer key signature, it’s important that you’ve logged in Leather with the same secret key that was used to [generate your signer key](../running-a-signer/#preflight-setup-1), not the account that will serve as your pool operator address. Once you’ve setup that account on Leather, you can log in to Leather Earn.\
+To generate a signer key signature, it’s important that you’ve logged in Leather with the same secret key that was used to [generate your signer key](../running-a-signer/#preflight-setup-1), not the account that will serve as your pool operator address. Once you’ve setup that account on Leather, you can log in to Lockstacks.\
 \
 Click the link “Signer key signature” at the bottom of the page. This will open the “generate a signer key signature” page.
 
@@ -461,19 +461,19 @@ The fields are:
 * Topic: the stacking function that will use this signature
 * Max amount: max amount of STX that can be used. Defaults to “max possible amount”
 * Auth ID: defaults to random int
-* Duration: must match the number of cycles used in the stacking transaction. **For stack-aggregation-commit-indexed, use “1”**.
+* Duration: must match the number of cycles used in the stacking transaction. **For stack-aggregation-commit, use “1”**.
 
 {% hint style="warning" %}
-Each of these fields must be exactly matched in order for the Stacking transaction to work. Future updates to Leather Earn will verify the signature before the transaction is made.
+Each of these fields must be exactly matched in order for the Stacking transaction to work. Future updates to Lockstacks will verify the signature before the transaction is made.
 {% endhint %}
 
-Click the “generate signature” button to popup a Leather page where you can generate the signature. Once you submit that popup, Leather Earn will have the signer key and signature you generated.
+Click the “generate signature” button to popup a Leather page where you can generate the signature. Once you submit that popup, Lockstacks will have the signer key and signature you generated.
 
 After you sign that message, you'll see the information you can use in your Stacking transactions, including the signer public key and signature.
 
-You can click the “copy” icon next to “signer details to share with stackers”. This will copy a JSON string, which can be directly pasted into the Leather Earn page where you make your Stacking transaction. Alternatively, this information can be entered manually.
+You can click the “copy” icon next to “signer details to share with stackers”. This will copy a JSON string, which can be directly pasted into the Lockstacks page where you make your Stacking transaction. Alternatively, this information can be entered manually.
 
-We'll cover the Leather Earn pages for actually making those transactions in the next section of this document.
+We'll cover the Lockstacks pages for actually making those transactions in the next section of this document.
 
 #### Using a hardware or software wallet to generate signatures
 
@@ -507,13 +507,13 @@ When the user needs to generate signatures:
    2. Your signer signature
 8. Finally, make a Stacking transaction using the signer key and signer signature.
 
-Now that you have your signer signature generated, it's time to start stacking. This process will vary depending on your chosen method. We've included instructions for solo stacking using [Leather Earn](https://earn.leather.io) below.
+Now that you have your signer signature generated, it's time to start stacking. This process will vary depending on your chosen method. We've included instructions for solo stacking using [Leather Earn](https://earn.leather.io/sign-in?chain=mainnet) below.
 
 ### Step 3: Stack your STX
 
 #### stack-stx
 
-To start, you'll visit [Leather Earn](https://earn.leather.io) and click the “Stack independently” button on the home page.
+To start, you'll visit [Lockstacks](https://lockstacks.com) and click the “Stack independently” button on the home page.
 
 This page will allow you to input the following input:
 
@@ -528,7 +528,7 @@ This page will allow you to input the following input:
 
 #### stack-extend
 
-If you want to extend the time that your STX will be locked for, you can use the stack-extend page on Leather Earn.
+If you want to extend the amount of time that your STX will be locked for, you can use the stack-extend page on Lockstacks.
 
 If you’re already stacking, the home page will provide a link to “view stacking details”. From there, you can choose to extend.
 
@@ -544,7 +544,7 @@ On this page are the following fields:
 
 #### stack-increase
 
-If you want to increase the amount of STX locked, you can use the stack-increase page on Leather Earn.
+If you want to increase the amount of STX locked, you can use the stack-increase page on Lockstacks.
 
 If you’re already stacking, the home page will provide a link to “view stacking details”. From there, you can choose to increase.
 
