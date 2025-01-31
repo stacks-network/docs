@@ -216,11 +216,7 @@ stacker = true
 [burnchain]
 chain = "bitcoin"
 mode = "mainnet"
-peer_host = "bitcoind.stacks.co"
-username = "blockstack"
-password = "blockstacksystem"
-rpc_port = 8332
-peer_port = 8333
+peer_host = "bitcoin.mainnet.stacks.org"
 
 # Set your auth token, which the signer uses
 # This should match the auth_password field of your signer config
