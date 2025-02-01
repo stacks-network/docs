@@ -29,7 +29,7 @@ If you run a local node, it exposes an HTTP server on port `20443`. The info end
 
 The Stacks 2.0 Blockchain API (Hiro's API) is centrally hosted. However, every running Stacks node exposes an RPC API, which allows you to interact with the underlying blockchain. Instead of using a centrally hosted API, you can directly access the RPC API of a locally hosted Node.
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml" path="/v2/contracts/interface/{contract_address}/{contract_name}" method="get" %}
+{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml" path="/v2/transactions" method="post" %}
 [https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
 {% endswagger %}
 
