@@ -33,4 +33,6 @@ The Stacks 2.0 Blockchain API (Hiro's API) is centrally hosted. However, every r
 
 {% swagger src="https://api.gitbook.com/openapi.json" path="/collections/{collectionId}" method="get" expanded="true" %} [https://api.gitbook.com/openapi.json](test 1) {% endswagger %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml" path="/v2/contracts/interface/{contract_address}/{contract_name}" method="get" %}[https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml){% endswagger %}
+{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml" path="/v2/constant_val/{contract_address}/{contract_name}/{constant_name}" method="post" %}
+[https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endswagger %}
