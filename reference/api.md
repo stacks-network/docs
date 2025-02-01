@@ -29,18 +29,24 @@ If you run a local node, it exposes an HTTP server on port `20443`. The info end
 
 The Stacks 2.0 Blockchain API (Hiro's API) is centrally hosted. However, every running Stacks node exposes an RPC API, which allows you to interact with the underlying blockchain. Instead of using a centrally hosted API, you can directly access the RPC API of a locally hosted Node.
 
-GET a specific space
-{% swagger src="https://api.gitbook.com/openapi.json" path="/spaces/{spaceId}" method="get" expanded="true" %} https://api.gitbook.com/openapi.json {% endswagger %}
+### `GET` a specific collection
 
-GET permissions for all users in a space
-{% swagger src="https://api.gitbook.com/openapi.json" path="/spaces/{spaceId}/permissions/aggregate" method="get" %} https://api.gitbook.com/openapi.json {% endswagger %}
+{% swagger src="https://api.gitbook.com/openapi.json" path="/collections/{collectionId}" method="get" expanded="true" %}
+[https://api.gitbook.com/openapi.json](https://api.gitbook.com/openapi.json)
+{% endswagger %}
 
-POST a new space in an organization
-{% swagger src="https://api.gitbook.com/openapi.json" path="/orgs/{organizationId}/spaces" method="post" expanded="true" %} https://api.gitbook.com/openapi.json {% endswagger %}
+### `GET` spaces in a collection
 
-POST a duplicate of a space
-{% swagger src="https://api.gitbook.com/openapi.json" path="/spaces/{spaceId}/duplicate" method="post" expanded="true" %} https://api.gitbook.com/openapi.json {% endswagger %}
+{% swagger src="https://api.gitbook.com/openapi.json" path="/collections/{collectionId}/spaces" method="get" %}
+[https://api.gitbook.com/openapi.json](https://api.gitbook.com/openapi.json)
+{% endswagger %}
 
-UPDATE a specific space
-{% swagger src="https://api.gitbook.com/openapi.json" path="/spaces/{spaceId}" method="patch" expanded="true" %} https://api.gitbook.com/openapi.json {% endswagger %}
+{% swagger src="https://api.gitbook.com/openapi.json" path="/collections/{collectionId}" method="get" expanded="true" %}
+[https://api.gitbook.com/openapi.json](https://api.gitbook.com/openapi.json)
+{% endswagger %}
 
+### `GET` permissions for all users in a collection
+
+{% swagger src="https://api.gitbook.com/openapi.json" path="/collections/{collectionId}/permissions/aggregate" method="get" expanded="true" %}
+[https://api.gitbook.com/openapi.json](https://api.gitbook.com/openapi.json)
+{% endswagger %}
