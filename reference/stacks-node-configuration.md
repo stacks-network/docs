@@ -140,9 +140,6 @@ bootstrap_node = "02196f005965cebe6ddc3901b7b1cc1aa7a88f305bb8c5893456b8f9a60592
 chain = "bitcoin"
 mode = "mainnet"
 peer_host = "localhost"
-username = "user"
-password = "pass"
-rpc_port = 8332
 peer_port = 8333
 
 [[events_observer]]
