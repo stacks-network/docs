@@ -176,9 +176,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./api/core-node/get-pox.schema.json
+                $ref: https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/api/core-node/get-pox.schema.json
               example:
-                $ref: ./api/core-node/get-pox.example.json
+                $ref: https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/api/core-node/get-pox.example.json
       parameters:
         - name: tip
           in: query
