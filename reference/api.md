@@ -32,6 +32,19 @@ The Stacks 2.0 Blockchain API (Hiro's API) is centrally hosted. However, every r
 
 #### /v2/contracts/interface/{contract_address}/{contract_name}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml" path="/v2/contracts/interface/{contract_address}/{contract_name}" method="get" expanded="true" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+
+{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml" path="/v2/transactions" method="post" %}
+[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml)
+{% endswagger %}
+
+{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml" path="/v2/contracts/interface/{contract_address}/{contract_name}" method="get" %}
+[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml)
+{% endswagger %}
+
+{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml" path="/v2/map_entry/{contract_address}/{contract_name}/{map_name}" method="post" %}
+[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml)
+{% endswagger %}
+
+{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml" path="/v2/contracts/source/{contract_address}/{contract_name}" method="get" %}
+[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/tags/2.4.0.1.0/docs/rpc/openapi.yaml)
 {% endswagger %}
