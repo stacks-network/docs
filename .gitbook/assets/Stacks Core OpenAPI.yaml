@@ -9,6 +9,23 @@ info:
     This is the documentation for the `stacks-node` RPC interface.
 
 paths:
+  /v2/info:
+    get:
+      summary: Get Core API info
+      description: Get Core API information
+      tags:
+        - Info
+      operationId: get_core_api_info
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ./api/core-node/get-info.schema.json
+              example:
+                $ref: ./api/core-node/get-info.example.json
+
   /v2/transactions:
     post:
       summary: Broadcast raw transaction
@@ -146,23 +163,6 @@ paths:
                 $ref: ./api/core-node/get-fee-transfer.schema.json
               example:
                 $ref: ./api/core-node/get-fee-transfer.example.json
-
-  /v2/info:
-    get:
-      summary: Get Core API info
-      description: Get Core API information
-      tags:
-        - Info
-      operationId: get_core_api_info
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: ./api/core-node/get-info.schema.json
-              example:
-                $ref: ./api/core-node/get-info.example.json
 
   /v2/pox:
     get:
