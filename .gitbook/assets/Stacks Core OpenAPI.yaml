@@ -20,11 +20,10 @@ paths:
         200:
           description: Success
           content:
-            application/json:
+            text/plain:
               schema:
-                $ref: ./api/core-node/get-info.schema.json
-              example:
-                $ref: ./api/core-node/get-info.example.json
+                type: string
+                example: 'Example v2 info'
 
   /v2/transactions:
     post:
