@@ -40,6 +40,6 @@ Note that in the Stacks node config file, the `block_proposal_token` field has b
 For quick reference, here are the current latest versions you'll want to be running as a signer. If you don't yet have your signer up and running, this guide will walk you through that.
 
 * [Binaries](https://github.com/stacks-network/stacks-core/releases/latest)
-* Signer Docker Image - [3.1.0.0.4.0](https://hub.docker.com/layers/blockstack/stacks-signer/3.1.0.0.4.0/images/sha256-847f9787e7c9fc3927944d9cb268b2857cbf6c99e33697381b32d3b984d762a7)
+* Stacks Signer Docker Image - [3.1.0.0.4.0](https://hub.docker.com/layers/blockstack/stacks-signer/3.1.0.0.4.0/images/sha256-847f9787e7c9fc3927944d9cb268b2857cbf6c99e33697381b32d3b984d762a7)
 * Stacks Node Docker Image - [3.1.0.0.4](https://hub.docker.com/layers/blockstack/stacks-core/3.1.0.0.4/images/sha256-9fd51e4d2af004d44ca6de5b889390a12e2615cb3f1f13e5ac1bfed849aa3bba)
 {% endhint %}
