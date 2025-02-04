@@ -3,14 +3,14 @@
 {% hint style="info" %}
 ### **Current Signer and Stacks Node Versions**
 
-**Stacks Signer - 3.1.0.0.4.0**
+**Stacks Signer - 3.1.0.0.5.0**
 
-* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-signer/3.1.0.0.4.0/images/sha256-847f9787e7c9fc3927944d9cb268b2857cbf6c99e33697381b32d3b984d762a7)
-* [GitHub Release](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.4.0)
+* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-signer/3.1.0.0.5.0/images/sha256-4f0c19225065754ed08594deb3d2c67dc1126558e9e50f8174a1bc1736fedb99)
+* [GitHub Release](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.5.0)
 
-**Stacks Node - 3.1.0.0.4**
+**Stacks Node - 3.1.0.0.5**
 
-* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-core/3.1.0.0.4/images/sha256-9fd51e4d2af004d44ca6de5b889390a12e2615cb3f1f13e5ac1bfed849aa3bba)
+* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-core/3.1.0.0.5/images/sha256-cf2c04b6f56d7a54c2032a13826ebb258cebe50a30b847810a279476824bd2c0)
 * [GitHub Release](https://github.com/stacks-network/stacks-core/releases/latest)
 {% endhint %}
 
@@ -83,7 +83,7 @@ From this file, you'll need the `privateKey` value.
 
 ### Download the stacks-signer binary
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.4.0) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
+Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.5.0) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
 
 Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the signer binary look like this:
 
@@ -92,7 +92,7 @@ Assuming a `Linux x64 glibc` machine, the commands to download and uncompress th
 cd ~/stacks-signer
 
 # Download the signer binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/signer-3.1.0.0.4.0/linux-glibc-x64.zip
+wget https://github.com/stacks-network/stacks-core/releases/download/signer-3.1.0.0.5.0/linux-glibc-x64.zip
 
 # Unzip the signer binary archive
 unzip linux-glibc-x64.zip
@@ -154,7 +154,7 @@ To ensure the signer has been set up correctly, you can run the following comman
 ~/stacks-signer/stacks-signer --version
 
 # Output:
-stacks-signer stacks-signer signer-3.1.0.0.4.0 (release/signer-3.1.0.0.4.0:43d4ee9, release build, linux [x86_64])
+stacks-signer stacks-signer signer-3.1.0.0.5.0 (release/signer-3.1.0.0.5.0:513dbc5, release build, linux [x86_64])
 
 # Verify the config file
 ~/stacks-signer/stacks-signer check-config -c ~/stacks-signer/signer-config.toml 
@@ -198,7 +198,7 @@ Assuming a `Linux x64 glibc` machine, the commands to download and uncompress th
 cd ~/stacks-node
 
 # Download the node binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/3.1.0.0.4/linux-glibc-x64.zip
+wget https://github.com/stacks-network/stacks-core/releases/download/3.1.0.0.5/linux-glibc-x64.zip
 
 # Unzip the node binary archive
 unzip linux-glibc-x64.zip
@@ -384,14 +384,14 @@ To ensure the node has been set up correctly, you can run the following commands
 ~/stacks-node/stacks-node version
 
 # Output:
-INFO [1737983661.892646] [testnet/stacks-node/src/main.rs:278] [main] stacks-node 3.1.0.0.4 (release/3.1.0.0.4:43d4ee9, release build, linux [x86_64])
-stacks-node 3.1.0.0.4 (release/3.1.0.0.4:43d4ee9, release build, linux [x86_64])
+INFO [1738695915.769633] [testnet/stacks-node/src/main.rs:278] [main] stacks-node 3.1.0.0.5 (release/3.1.0.0.5:513dbc5, release build, linux [x86_64])
+stacks-node 3.1.0.0.5 (release/3.1.0.0.5:513dbc5, release build, linux [x86_64])
 
 # Verify the node's config
 ~/stacks-node/stacks-node check-config --config ~/stacks-node/node-config.toml
 
 # Output:
-INFO [1737983661.892646] [testnet/stacks-node/src/main.rs:278] [main] stacks-node 3.1.0.0.4 (release/3.1.0.0.4:43d4ee9, release build, linux [x86_64])
+INFO [1738695915.769633] [testnet/stacks-node/src/main.rs:278] [main] stacks-node 3.1.0.0.5 (release/3.1.0.0.5:513dbc5, release build, linux [x86_64])
 INFO [1729788064.913175] [testnet/stacks-node/src/main.rs:318] [main] Loading config at path /home/admin/stacks-node/node-config.toml
 INFO [1729788064.969551] [testnet/stacks-node/src/main.rs:331] [main] Loaded config!
 ```
