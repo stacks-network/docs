@@ -27,7 +27,7 @@ Before we get into the step-by-step of how to actually stack, it's important to 
 
 * **Stacker**: an entity locking their STX to receive PoX rewards. This is a broad term including solo Stackers and Stackers who use pools.
 * **Solo stacker**: an entity that locks their own STX and runs a signer. They don’t receive delegation.
-* **Delegator**: a stacker who locks their STX and delegates to a signer or pool operator. They don’t run the signer.
+* **Delegator**: a stacker who locks their STX by delegating to a pool operator that runs a signer. They don’t run the signer.
 * **Pool operator**: an entity that runs a Signer and allows others to delegate their STX to them. A pool operator doesn’t need to Stack their own STX, but they can. They will also run a signer, but the pool operator and signer address may be different
 * **Signer**: an entity that runs the stacks-signer software and participates in block validation. This can be either a solo Stacker or an entity receiving delegated STX. Depending on context, this may also refer to the signer software that validates blocks.
 
@@ -45,7 +45,7 @@ As mentioned above, there are three primary ways you can stack:
 
 The following pages in this section will walk through the practical steps for stacking for all three scenarios.
 
-As you read through these, it may be helpful to follow along with the functions in the [pox-4 contract](https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet) to get an idea of what each function is doing.
+As you read through these, it may be helpful to follow along with the functions in the [pox-4 contract](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-4?chain=mainnet) to get an idea of what each function is doing.
 
 ### Solo Stack
 
@@ -61,7 +61,7 @@ If you do not meet the minimum amount of STX to solo stack, you can [delegate yo
 
 ### Relationship between manual stacking transactions and the running signer
 
-This section describes the various transactions that signers need to make in order to be registered as a signer for a certain reward cycle. The order of operations between the automated signer and the stacking transactions that need to be done “manually” is important for ensuring that a signer is fully set up for a certain reward cycle.
+This section describes the various transactions that signer entities need to make in order to be registered as a signer for a certain reward cycle. The order of operations between the automated signer and the stacking transactions that need to be done “manually” is important for ensuring that a signer is fully set up for a certain reward cycle.
 
 <figure><img src="../../.gitbook/assets/Untitled design (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -85,11 +85,11 @@ If these manual transactions are confirmed, and the signer has enough STX associ
 
 #### Solo stacking
 
-The workflow for solo stackers is more simple, because there are less stacking transactions that need to be made.
+The workflow for solo stackers is simpler, because there are less stacking transactions that need to be made.
 
 For solo stacking, the only transaction that needs to be made is `stack-stx`. Included in this transaction’s payload is the signer’s public key.
 
-In order for the signer to be registered in reward cycle N+1, the `stack-st`x transaction must be confirmed during the first 2000 blocks of reward cycle N. The last 100 blocks of cycle N (the “prepare phase”) is where DKG occurs.
+In order for the signer to be registered in reward cycle N+1, the `stack-stx` transaction must be confirmed during the first 2000 blocks of reward cycle N. The last 100 blocks of cycle N (the “prepare phase”) is where DKG occurs.
 
 The start of the prepare phase is when Stacks nodes determine the official signer set of the next reward cycle.
 
@@ -97,7 +97,7 @@ The start of the prepare phase is when Stacks nodes determine the official signe
 
 The workflow for delegated signers is more complex, because it requires more transactions.
 
-This workflow is explained more in a previous section, but the high-level workflow is:
+This workflow is explained more in detail in the [operate a pool](operate-a-pool.md) guide, but the high-level workflow is:
 
 1. Stackers delegate their STX to a pool operator
 2. The pool operator makes `delegate-stack-stx` transactions to “approve” specific stackers. This needs to be called for every individual stacker that delegates to them.
@@ -112,7 +112,3 @@ During the prepare phase before a reward cycle, Stacks nodes automatically deter
 The signer software is continuously polling the Stacks node to see if it is registered for a cycle. If the signer software finds that it is registered (by matching its public key to the signers stored in the `signers` contract) it begins performing its duties as a signer.
 
 During the prepare phase, the signers perform DKG through StackerDB messages. Once an aggregate public key is determined, the signer automatically makes a `vote-for-aggregate-key` transaction. No out-of-band action is needed to be taken for this to occur.
-
-During the instantiation phase (before fast blocks and full Nakamoto rules go live), the signer must pay a STX transaction fee for this transaction to be confirmed. Critically, this means that a minimum balance must be kept in the STX address associated with the signer’s key. There is a config field called `tx_fee_ms` (transaction fee in micro-stacks) that can be optionally configured to set the fee for these transactions. If the config field is omitted, the fee defaults to 10,000 micro-stacks (0.01 STX).
-
-During the Activation phase (after fast blocks and full Nakamoto rules have been activated), the signer doesn’t need to pay fees for this transaction, so no STX balance needs to be kept in that address.
