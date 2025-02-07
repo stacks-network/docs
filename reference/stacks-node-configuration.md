@@ -28,10 +28,9 @@ The Stacks Blockchain configuration file has multiple sections under which an op
 * connection\_options
 * burnchain
 * ustx\_balance
+* miner
 
-For reference, several configuration file examples are [available here](https://github.com/stacks-network/stacks-blockchain/tree/master/testnet/stacks-node/conf)
-
-* Example mainnet follower configuration
+For reference, several configuration file examples are [available here](https://github.com/stacks-network/stacks-core/tree/master/sample/conf).
 
 #### node
 
@@ -55,7 +54,6 @@ Contains various configuration options for the stacks-node binary.
 | prometheus\_bind             |          | Address and port for Prometheus metrics collection.                                                        |
 | deny\_nodes                  |          | List of ip addresses of nodes that should be ignored                                                       |
 | stacker                      |          | Determines whether the node is running a stacker (`true`) that issues events for signer binary             |
-
 
 #### events\_observer
 
@@ -104,11 +102,13 @@ This section contains configuration options pertaining to the blockchain the sta
 
 **Mining**
 
-| Name                          | Required | Description                                                                                        |
-| ----------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
-| burn\_fee\_cap                | ✓        | Maximum amount (in sats) of "burn commitment" to broadcast for the next block's leader election    |
-| satoshis\_per\_byte           | ✓        | [Amount (in sats) per byte](https://bitcoinfees.net/) - Used to calculate the transaction fees     |
-| commit\_anchor\_block\_within |          | Sets the time period (in milliseconds) for commitments. Only used when `mode` is set to `mocknet`. |
+| Name                             | Required | Description                                                                                        |
+| -------------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
+| burn\_fee\_cap                   | ✓        | Maximum amount (in sats) of "burn commitment" to broadcast for the next block's leader election    |
+| satoshis\_per\_byte              | ✓        | [Amount (in sats) per byte](https://bitcoinfees.net/) - Used to calculate the transaction fees     |
+| commit\_anchor\_block\_within    |          | Sets the time period (in milliseconds) for commitments. Only used when `mode` is set to `mocknet`. |
+| tenure\_extend\_cost\_threshold  |          | Percentage of block budget that must be used before attempting a time-based tenure extend          |
+| block\_rejection\_timeout\_steps |          | Define the timeout to apply while waiting for signers responses, based on the amount of rejections |
 
 #### ustx\_balance
 
