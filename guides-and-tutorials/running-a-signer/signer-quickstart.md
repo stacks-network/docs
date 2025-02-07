@@ -294,7 +294,7 @@ address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
 amount = 10000000000000000
 
 [[burnchain.epochs]]
-epoch_name = “1.0”
+epoch_name = "1.0"
 start_height = 0
 
 [[burnchain.epochs]]
@@ -329,7 +329,8 @@ start_height = 6
 epoch_name = "3.0"
 start_height = 1_900
 
-epoch_name = “3.1”
+[[burnchain.epochs]]
+epoch_name = "3.1"
 start_height = 2_000
 EOF
 ```
