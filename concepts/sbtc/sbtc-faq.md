@@ -92,7 +92,7 @@ The program is designed to increase sBTC liquidity and drive early usage of the 
 
 Here's a handy illustration to show the sBTC incentives design:
 
-![](<../../.gitbook/assets/image (1).png>)
+![](../../.gitbook/assets/sbtc-design.png)
 
 </details>
 
