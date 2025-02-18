@@ -63,6 +63,7 @@
   * [Walkthroughs](concepts/sbtc/walkthroughs/README.md)
     * [Signer Process Walkthrough](concepts/sbtc/walkthroughs/signer-process.md)
     * [sBTC Transaction Walkthrough](concepts/sbtc/walkthroughs/sbtc-transaction-lifecycle.md)
+  * [sBTC FAQ](concepts/sbtc/sbtc-faq.md)
 * [Gaia](concepts/gaia/README.md)
   * [Configuration](concepts/gaia/configuration.md)
   * [Deploy Gaia Hub](concepts/gaia/deploy-gaia-hub.md)
