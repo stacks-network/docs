@@ -384,8 +384,6 @@ Even after the signer commits to a certain amount of STX in the previous step, t
 
 </details>
 
-
-
 ### Step by Step Stacking Guide
 
 Now that you are familiar with the overall stacking flow and the different roles played, let's dive into the step-by-step guide for actually conducting the stacking process as a pool operator.
@@ -511,7 +509,7 @@ To generate a signer key signature, it’s important that you’ve logged in Lea
 \
 Click the link “Signer key signature” at the bottom of the page. This will open the “generate a signer key signature” page.
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The fields are:
 

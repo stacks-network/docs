@@ -30,7 +30,7 @@ Although stackers do fulfill a consensus critical role in Stacks by serving as s
 
 Rather, if stackers do not perform their duties as signers, they simply cannot unlock their STX tokens and will not receive their BTC rewards.
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks network.
 

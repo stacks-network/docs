@@ -369,6 +369,7 @@ You may want to review this contract to familiarize yourself with it.
 {% endhint %}
 
 Here is an overview of the fields you will need to pass. We'll cover how to get and pass these fields as we dive further into this doc:
+
 1. `signer-key`: the public key that corresponds to the `stacks_private_key` your signer is using
 2. `signer-signature`: a signature that demonstrates that you actually controls your `signer-key`. Because signer keys need to be unique, this is also a safety check to ensure that other Stackers can’t use someone else’s public key
 3. `max-amount`: The maximum amount of ustx (1 STX = 1,000,000 uSTX) that can be locked in the transaction that uses this signature. For example, if calling `stack-increase`, then this parameter dictates the maximum amount of uSTX that can be used to add more locked STX
@@ -450,7 +451,7 @@ To generate a signer key signature, it’s important that you’ve logged in Lea
 \
 Click the link “Signer key signature” at the bottom of the page. This will open the “generate a signer key signature” page.
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The fields are:
 

@@ -21,7 +21,7 @@ After your sBTC has been minted to your wallet, visit the rewards program site a
 {% hint style="info" %}
 You may need to enable the sBTC token listing display in your wallet before it is visible. In Leather, you can do this by clicking 'Manage Tokens' and toggling on sBTC.
 
-<img src="../../.gitbook/assets/image.png" alt="" data-size="original">
+<img src="../../.gitbook/assets/image (2).png" alt="" data-size="original">
 {% endhint %}
 
 <figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
