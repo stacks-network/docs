@@ -1,6 +1,6 @@
 # sBTC FAQ
 
-### sBTC Basics
+## sBTC Basics
 
 <details>
 
@@ -59,12 +59,12 @@ Partnerships with top-tier security experts have been established to ensure the 
 
 Here are the main differentiating characteristics of sBTC:
 
-* sBTC is a true Bitcoin native product
-* sBTC is backed by respected leaders in the Bitcoin community (signer network)
-* sBTC's security is provided by a decentralized network of validators/signers rather than a single custodian, removing the need to trust a single entity or exchange
-* sBTC leverages 100% Bitcoin finality
-* sBTC's technology offers optimal UX and DevEx for an L2
-* sBTC is a fully transparent project/product working in the open with public code
+- sBTC is a true Bitcoin native product
+- sBTC is backed by respected leaders in the Bitcoin community (signer network)
+- sBTC's security is provided by a decentralized network of validators/signers rather than a single custodian, removing the need to trust a single entity or exchange
+- sBTC leverages 100% Bitcoin finality
+- sBTC's technology offers optimal UX and DevEx for an L2
+- sBTC is a fully transparent project/product working in the open with public code
 
 </details>
 
@@ -76,7 +76,7 @@ Read the "[Selection of sBTC Signer Set](https://github.com/stacks-network/sbtc/
 
 </details>
 
-### sBTC Rewards Program
+## sBTC Rewards Program
 
 <details>
 
@@ -130,7 +130,7 @@ The sBTC Rewards Program, on the other hand, offers additional BTC rewards speci
 
 </details>
 
-### Using sBTC
+## Using sBTC
 
 <details>
 
@@ -166,7 +166,7 @@ A .01 BTC minimum is imposed for BTC to sBTC deposits to ensure the system does 
 
 <summary>What are the steps to use the sBTC Bridge and earn rewards?</summary>
 
-In the Stacks Documentation, find a [video](https://www.youtube.com/watch?v=XZruuDgTo4k\&t=1s) and a [more detailed walkthrough](https://docs.stacks.co/guides-and-tutorials/sbtc/how-to-use-the-sbtc-bridge).
+In the Stacks Documentation, find a [video](https://www.youtube.com/watch?v=XZruuDgTo4k&t=1s) and a [more detailed walkthrough](https://docs.stacks.co/guides-and-tutorials/sbtc/how-to-use-the-sbtc-bridge).
 
 1. Ensure BTC is accessible via one of the following non-custodial wallets: [Xverse](https://www.xverse.app), [Leather](https://leather.io), [Ledger](https://www.ledger.com/), or [Asigna](https://www.asigna.io/).
 2. To interact with the sBTC protocol and mint sBTC, head to [app.stacks.co](http://app.stacks.co) and connect your non-custodial wallet with BTC ready to deposit.
@@ -237,5 +237,52 @@ Yes. [Asigna](https://www.asigna.io) provides a multi-signature solution for sBT
 At the moment, there is no custodian support for sBTC. However, we are actively working with institutional custodians to support sBTC.
 
 Copper and BitGo already support Stacks and Stacking; however, we are working to prioritize SIP-10 and sBTC integration.
+
+</details>
+
+## sBTC Troubleshooting
+
+## sBTC Troubleshooting FAQ
+
+<details>
+
+<summary>My Bitcoin transaction confirmed, but I'm not seeing the sBTC token in my wallet.</summary>
+
+You may need to enable the display of the sBTC token within your wallet by clicking on 'Manage Tokens' and enabling sBTC.
+
+</details>
+
+<details>
+
+<summary>I received an "Errors.Invalid_Transaction" error when using an Xverse Wallet</summary>
+
+If you received a "Errors.Invalid_Transaction" error when using an Xverse Wallet, you may be using a "Nested SegWit" wallet.
+To resolve the issue, change your Xverse wallet to use the "Native SegWit".
+
+</details>
+
+<details>
+
+<summary>I minted sBTC, tried RBF, but the transaction is still stuck. How do I reclaim my BTC?</summary>
+
+You need to wait `12 Bitcoin blocks` to reclaim your BTC. After this, check the app.stacks.co status page for a `reclaim` button with directions on how to reclaim.
+
+</details>
+
+<details>
+
+<summary>sBTC still isn't showing up in wallet after 3 Bitcoin blocks. How much longer do I have to wait?</summary>
+
+BTC to sBTC conversions are typically completed within 3 Bitcoin blocks. Due to the speed of Bitcoin blocks, deposits can take up to two hours to see sBTC in your wallet.
+
+However, there may be a lag with your Leather or Xverse wallet where the sBTC will take another 20 minutes to show up in the wallet.
+
+</details>
+
+<details>
+
+<summary>I didn't receive a confirmation that I enrolled in the rewards program. How can I ensure I'm enrolled?</summary>
+
+Visit bitcoinismore.org. On the enroll page, when your wallet is linked, it will say enrolled if you are enrolled in the program.
 
 </details>
