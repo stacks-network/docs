@@ -1,6 +1,6 @@
 # sBTC FAQ
 
-## sBTC Basics
+### sBTC Basics
 
 <details>
 
@@ -59,12 +59,12 @@ Partnerships with top-tier security experts have been established to ensure the 
 
 Here are the main differentiating characteristics of sBTC:
 
-- sBTC is a true Bitcoin native product
-- sBTC is backed by respected leaders in the Bitcoin community (signer network)
-- sBTC's security is provided by a decentralized network of validators/signers rather than a single custodian, removing the need to trust a single entity or exchange
-- sBTC leverages 100% Bitcoin finality
-- sBTC's technology offers optimal UX and DevEx for an L2
-- sBTC is a fully transparent project/product working in the open with public code
+* sBTC is a true Bitcoin native product
+* sBTC is backed by respected leaders in the Bitcoin community (signer network)
+* sBTC's security is provided by a decentralized network of validators/signers rather than a single custodian, removing the need to trust a single entity or exchange
+* sBTC leverages 100% Bitcoin finality
+* sBTC's technology offers optimal UX and DevEx for an L2
+* sBTC is a fully transparent project/product working in the open with public code
 
 </details>
 
@@ -76,7 +76,7 @@ Read the "[Selection of sBTC Signer Set](https://github.com/stacks-network/sbtc/
 
 </details>
 
-## sBTC Rewards Program
+### sBTC Rewards Program
 
 <details>
 
@@ -92,7 +92,7 @@ The program is designed to increase sBTC liquidity and drive early usage of the 
 
 Here's a handy illustration to show the sBTC incentives design:
 
-![](../../.gitbook/assets/sbtc-design.png)
+<img src="../../.gitbook/assets/sbtc-design.png" alt="" data-size="original">
 
 </details>
 
@@ -130,7 +130,7 @@ The sBTC Rewards Program, on the other hand, offers additional BTC rewards speci
 
 </details>
 
-## Using sBTC
+### Using sBTC
 
 <details>
 
@@ -166,7 +166,7 @@ A .01 BTC minimum is imposed for BTC to sBTC deposits to ensure the system does 
 
 <summary>What are the steps to use the sBTC Bridge and earn rewards?</summary>
 
-In the Stacks Documentation, find a [video](https://www.youtube.com/watch?v=XZruuDgTo4k&t=1s) and a [more detailed walkthrough](https://docs.stacks.co/guides-and-tutorials/sbtc/how-to-use-the-sbtc-bridge).
+In the Stacks Documentation, find a [video](https://www.youtube.com/watch?v=XZruuDgTo4k\&t=1s) and a [more detailed walkthrough](https://docs.stacks.co/guides-and-tutorials/sbtc/how-to-use-the-sbtc-bridge).
 
 1. Ensure BTC is accessible via one of the following non-custodial wallets: [Xverse](https://www.xverse.app), [Leather](https://leather.io), [Ledger](https://www.ledger.com/), or [Asigna](https://www.asigna.io/).
 2. To interact with the sBTC protocol and mint sBTC, head to [app.stacks.co](http://app.stacks.co) and connect your non-custodial wallet with BTC ready to deposit.
@@ -240,9 +240,7 @@ Copper and BitGo already support Stacks and Stacking; however, we are working to
 
 </details>
 
-## sBTC Troubleshooting
-
-## sBTC Troubleshooting FAQ
+### sBTC Troubleshooting
 
 <details>
 
@@ -250,14 +248,15 @@ Copper and BitGo already support Stacks and Stacking; however, we are working to
 
 You may need to enable the display of the sBTC token within your wallet by clicking on 'Manage Tokens' and enabling sBTC.
 
+![](../../.gitbook/assets/image.png)
+
 </details>
 
 <details>
 
 <summary>I received an "Errors.Invalid_Transaction" error when using an Xverse Wallet</summary>
 
-If you received a "Errors.Invalid_Transaction" error when using an Xverse Wallet, you may be using a "Nested SegWit" wallet.
-To resolve the issue, change your Xverse wallet to use the "Native SegWit".
+If you received a "Errors.Invalid\_Transaction" error when using an Xverse Wallet, you may be using a "Nested SegWit" wallet. To resolve the issue, change your Xverse wallet to use the "Native SegWit".
 
 </details>
 
@@ -265,7 +264,7 @@ To resolve the issue, change your Xverse wallet to use the "Native SegWit".
 
 <summary>I minted sBTC, tried RBF, but the transaction is still stuck. How do I reclaim my BTC?</summary>
 
-You need to wait `12 Bitcoin blocks` to reclaim your BTC. After this, check the app.stacks.co status page for a `reclaim` button with directions on how to reclaim.
+You need to wait `12 Bitcoin blocks` to reclaim your BTC. After this, check the [https://app.stacks.co](https://app.stacks.co) status page for a `reclaim` button with directions on how to reclaim.
 
 </details>
 
@@ -283,6 +282,6 @@ However, there may be a lag with your Leather or Xverse wallet where the sBTC wi
 
 <summary>I didn't receive a confirmation that I enrolled in the rewards program. How can I ensure I'm enrolled?</summary>
 
-Visit bitcoinismore.org. On the enroll page, when your wallet is linked, it will say enrolled if you are enrolled in the program.
+Visit [bitcoinismore.org](https://bitcoinismore.org). On the enroll page, when your wallet is linked, it will say enrolled if you are enrolled in the program.
 
 </details>
