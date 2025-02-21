@@ -6,7 +6,7 @@
 
 <summary>What is sBTC?</summary>
 
-sBTC is a non-custodial 1:1 Bitcoin-backed asset on the Stacks Bitcoin Layer. Read more about Stacks [here](https://www.stacks.co) and sBTC [here](https://www.stacks.co/sbtc).
+sBTC is a decentralizedl 1:1 Bitcoin-backed asset on the Stacks Bitcoin Layer. Read more about Stacks [here](https://www.stacks.co) and sBTC [here](https://www.stacks.co/sbtc).
 
 </details>
 
@@ -257,14 +257,6 @@ You may need to enable the display of the sBTC token within your wallet by click
 <summary>I received an "Errors.Invalid_Transaction" error when using an Xverse Wallet</summary>
 
 If you received a "Errors.Invalid\_Transaction" error when using an Xverse Wallet, you may be using a "Nested SegWit" wallet. To resolve the issue, change your Xverse wallet to use the "Native SegWit".
-
-</details>
-
-<details>
-
-<summary>I minted sBTC, tried RBF, but the transaction is still stuck. How do I reclaim my BTC?</summary>
-
-You need to wait `12 Bitcoin blocks` to reclaim your BTC. After this, check the [https://app.stacks.co](https://app.stacks.co) status page for a `reclaim` button with directions on how to reclaim.
 
 </details>
 
