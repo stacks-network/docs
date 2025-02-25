@@ -114,6 +114,14 @@ To be eligible, you must enroll in the rewards program at bitcoinismore.org.
 
 <details>
 
+<summary>Do I need to re-enroll in the sBTC Rewards Program if I previously enrolled in the sBTC Rewards Program and have received additional sBTC?</summary>
+
+No re-enrollment is needed. The Yield smart contract will automatically calculate enrolled users updated balance, as long as the sBTC contract address remains the same.
+
+</details>
+
+<details>
+
 <summary>What level of rewards should I expect?</summary>
 
 The level of rewards users can expect will vary based on the amount of STX in the rewards pool, the PoX yield rate, and the amount of sBTC that has been minted.
