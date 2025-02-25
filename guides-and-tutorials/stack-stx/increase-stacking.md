@@ -4,7 +4,7 @@ This guide explains how to increase your stacked STX position. The process depen
 
 - **Solo Stackers** use the `stack-increase` function.
 - **Delegators** must first revoke their current delegation using `revoke-delegate-stx` and then re-delegate with a higher amount to the same pool operator using `delegate-stx`.
-- **Pool Operators** increase their delegators' locked amount by calling `delegate-stack-increase` and then stacking the increased amount with either `stack-aggregation-commit` (if not already committed) or `stack-aggregation-increase` (if the commit has already been made).
+- **Pool Operators** increase their delegators' locked amount by calling `delegate-stack-increase` and then stacking the increased amount with either `stack-aggregation-commit-indexed` (if not already committed) or `stack-aggregation-increase` (if the commit has already been made).
 
 ## Solo Stackers
 
