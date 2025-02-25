@@ -115,6 +115,7 @@
   * [Solo Stack](guides-and-tutorials/stack-stx/stacking-flow.md)
   * [Operate a Pool](guides-and-tutorials/stack-stx/operate-a-pool.md)
   * [Stack with a Pool](guides-and-tutorials/stack-stx/stack-with-a-pool.md)
+  * [Increase Stacked Position](guides-and-tutorials/stack-stx/increase-stacking.md)
   * [Stop Stacking](guides-and-tutorials/stack-stx/stop-stacking.md)
 * [Community Tutorials](guides-and-tutorials/community-tutorials.md)
 
