@@ -3,29 +3,43 @@
 The following best practices suggest how to create a resilient setup for running
 your sBTC Signer.
 
-## Protect your private key
+## Protect your private key and have a cold-storage backup
 
 - Prevent unauthorised access to the sBTC Signer private key.
-
-## Backup signer keys in cold-storage
-
 - Keep an offline, secure backup of your sBTC Signer private key (e.g., hardware
   security modules or encrypted storage devices).
 
-## Backup your Postgres DB
+## Backup your sBTC Signer PostgreSQL DB
 
-- Periodically backup the sBTC Signer PostgreSQL DB.
+- Perform daily backups of the sBTC Signer PostgreSQL DB.
+- Periodically verify the integrity of backups (e.g. by importing them into a
+  fresh PostgreSQL instance).
 
-## Firewall
+## Setup proper access control
+
+- Require hardware 2FA keys for access control (e.g., by using Yubikey) to
+  connect through SSH, to authenticate to AWS, and for every other relevant
+  action.
+- Follow the principle of _least privilege_: if you don’t need access, you don’t
+  get access; if you get access, it expires after the action is taken.
+- _Optional, but strongly recommended_: Implement a "_4-eyes_" process to access
+  critical resources (e.g., deploy a new version of the sBTC signer).
+
+## Maintain a strict firewall configuration
 
 - Allow connections to your signer `listen_on` address (used for P2P
   communication).
-- Optionally, allow traffic to the P2P ports of your Stacks and Bitcoin node.
-- Deny traffic to any other port and service, unless required, e.g. for SSH.
+- Do not expose any non-essential service to the internet: deny _all other_
+  traffic to _every other port and service_, unless required, e.g. for SSH.
+
+## Maintain a robust secrets management program
+
+- Ensure all relevant secrets are safely managed and rotated (where possible),
+  e.g. if someone leaves the team.
 
 ## Monitor and observe your sBTC Signer
 
-- Retain at least 1 day of logs for both the sBTC Signer, the Stacks node, and
+- Retain at least 7 day of logs for both the sBTC Signer, the Stacks node, and
   the Bitcoin node.
 - The sBTC signer can optionally expose Prometheus metrics (see
   `prometheus_exporter_endpoint` configuration option).
@@ -33,26 +47,27 @@ your sBTC Signer.
     Alloy to collect metrics on Grafana
     cloud](../running-a-signer/how-to-monitor-signer.md)).
 
-## Downstream components
+## Provision dedicated downstream components
 
 - Run a _dedicated_ Bitcoin node and Stacks node for your sBTC Signer.
   - Ensure the nodes are provisioned with the minimum hardware requirements
     described [here][0].
-  - Nodes should be _exclusively dedicated_ to serve the Signer. Avoid
+  - Nodes should be _exclusively dedicated_ to serve the sBTC Signer. Avoid
     re-using them to serve other clients as that may negatively affect
     performance (no _mock-signing_, no _Stacks API nodes_).
-
-## Redundancy in operations
-
-- Ensure that multiple, trusted users can manage and maintain your sBTC Signer instance.
-- Where feasible, users should span different timezones.
 
 ## Monitor new software releases
 
 - Stay up-to-date with new releases, patches, and security advisories (e.g.,
   GitHub, mailing lists, Discord).
+- Exercise vulnerability management for all packages.
 - Apply updates as quickly as possible, especially those addressing a security
   vulnerability.
+
+## Ensure redundancy in operations
+
+- Ensure that multiple, trusted users can manage and maintain your sBTC Signer instance.
+- Where feasible, users should span different timezones.
 
 ## References
 
