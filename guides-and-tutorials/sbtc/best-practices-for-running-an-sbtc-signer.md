@@ -29,7 +29,7 @@ your sBTC Signer.
 
 - Allow connections to your signer `listen_on` address (used for P2P
   communication).
-- Do not expose any non-essential service to the internet: deny _all other_
+- Do not expose any non-essential service to the internet: use a `DEFAULT DENY` policy with explicit `ALLOW`s for necessary network traffic (such as signer p2p and SSH).
   traffic to _every other port and service_, unless required, e.g. for SSH.
 
 ## Maintain a robust secrets management program
