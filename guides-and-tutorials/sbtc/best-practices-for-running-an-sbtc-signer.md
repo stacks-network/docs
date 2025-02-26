@@ -67,7 +67,8 @@ your sBTC Signer.
 ## Ensure redundancy in operations
 
 - Ensure that multiple, trusted users can manage and maintain your sBTC Signer instance.
-- Where feasible, users should span different timezones.
+- Where feasible, users should span different time zones.
+- Document your operations procedures and ensure that relevant personnel have access to them.
 
 ## References
 
