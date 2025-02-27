@@ -12,8 +12,46 @@ your sBTC Signer.
 ## Backup your sBTC Signer PostgreSQL DB
 
 - Perform daily backups of the sBTC Signer PostgreSQL DB.
-- Periodically verify the integrity of backups (e.g. by importing them into a
-  fresh PostgreSQL instance).
+- Periodically verify the integrity of backups, as instructed below.
+
+### Verifying integrity of PostgreSQL DB
+
+To verify the integrity of a backup, first import it into a fresh PostgreSQL
+instance (the database is enough, no need to spin up a Stacks / Bitcoin node or
+the sBTC signer).
+
+Then, perform the following query:
+
+```sql
+signer=> SELECT aggregate_key FROM sbtc_signer.dkg_shares;
+
+-- As of 2025-02-27, the query returns the following:
+                            aggregate_key
+----------------------------------------------------------------------
+ \x03f898f8a6ddb86dd4608dd168355ec6135fe2839222240c01942e8e7e50dd4c89
+ \x0382597db363d210e51261ed44f06048d6c07ba0ad1d5c05c8737b49c36a08156a
+ \x020b037db64f468729e9f934a9ade3afb5129c20a3b9852c77e47b9f9c6216357d
+ \x03d8c4344861fc7590fd812c24884a3bfd9374d8ba865a787ff53c9060020aa967
+(4 rows)
+```
+
+Now, ensure that the most recent `aggregate_key` (the last one) corresponds to
+the one returned by a read-only call to the
+`SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4/sbtc-registry/get-current-aggregate-pubkey`
+smart contract method:
+
+```bash
+curl 'https://api.hiro.so/v2/contracts/call-read/SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4/sbtc-registry/get-current-aggregate-pubkey' \
+           -H 'content-type: application/json' --data-raw '{"sender":"SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4","arguments":[]}'
+
+{"okay":true,"result":"0x020000002103d8c4344861fc7590fd812c24884a3bfd9374d8ba865a787ff53c9060020aa967"}⏎
+```
+
+You can discard the prefix `0x02000000210` (which is how Clarity encodes
+values). The suffix
+`3d8c4344861fc7590fd812c24884a3bfd9374d8ba865a787ff53c9060020aa967` matches the
+last row of the PostgreSQL query above (excluding `x0` which indicates hex
+encoding).
 
 ## Setup proper access control
 
