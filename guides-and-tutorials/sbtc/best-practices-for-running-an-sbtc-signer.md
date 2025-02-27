@@ -14,7 +14,7 @@ your sBTC Signer.
 - Perform daily backups of the sBTC Signer PostgreSQL DB.
 - Periodically verify the integrity of backups, as instructed below.
 
-### Verifying integrity of PostgreSQL DB
+### Verifying integrity of PostgreSQL DB backups
 
 To verify the integrity of a backup, first import it into a fresh PostgreSQL
 instance (the database is enough, no need to spin up a Stacks / Bitcoin node or
