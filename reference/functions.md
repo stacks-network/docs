@@ -2172,6 +2172,7 @@ Returns the result of raising `i1` to the power of `i2`. In the event of an _ove
 * if `i1` is `1`, return `1`
 * if `i1` is `0`, return `0`
 * if `i2` is `1`, return `i1`
+* if `i2` is `0`, return `1`
 * if `i2` is negative or greater than `u32::MAX`, throw a runtime error
 
 **example:**
