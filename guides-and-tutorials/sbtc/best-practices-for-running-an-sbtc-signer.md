@@ -23,19 +23,24 @@ the sBTC signer).
 Then, perform the following query:
 
 ```sql
-signer=> SELECT aggregate_key FROM sbtc_signer.dkg_shares;
-
--- As of 2025-02-27, the query returns the following:
-                            aggregate_key
-----------------------------------------------------------------------
- \x03f898f8a6ddb86dd4608dd168355ec6135fe2839222240c01942e8e7e50dd4c89
- \x0382597db363d210e51261ed44f06048d6c07ba0ad1d5c05c8737b49c36a08156a
- \x020b037db64f468729e9f934a9ade3afb5129c20a3b9852c77e47b9f9c6216357d
- \x03d8c4344861fc7590fd812c24884a3bfd9374d8ba865a787ff53c9060020aa967
-(4 rows)
+signer=> SELECT aggregate_key FROM sbtc_signer.dkg_shares WHERE
+dkg_shares_status = 'verified' ORDER BY created_at DESC;
 ```
 
-Now, ensure that the most recent `aggregate_key` (the last one) corresponds to
+It will return results as follows (your mileage might vary depending on the
+history of your sBTC signer, the following is provided for illustration purposes
+only):
+
+```sql
+
+                            aggregate_key
+----------------------------------------------------------------------
+ \x03d8c4344861fc7590fd812c24884a3bfd9374d8ba865a787ff53c9060020aa967
+ \x03f898f8a6ddb86dd4608dd168355ec6135fe2839222240c01942e8e7e50dd4c89
+(2 rows)
+```
+
+Now, ensure that the most recent `aggregate_key` (the first one) corresponds to
 the one returned by a read-only call to the
 `SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4/sbtc-registry/get-current-aggregate-pubkey`
 smart contract method:
@@ -103,9 +108,11 @@ encoding).
 
 ## Ensure redundancy in operations
 
-- Ensure that multiple, trusted users can manage and maintain your sBTC Signer instance.
-- Where feasible, users should span different time zones.
-- Document your operations procedures and ensure that relevant personnel have access to them.
+- Ensure that multiple, trusted system administrators can manage and maintain
+  your sBTC Signer instance.
+- Where feasible, system administrators should span different time zones.
+- Document your operations procedures and ensure that relevant personnel have
+  access to them.
 
 ## References
 
