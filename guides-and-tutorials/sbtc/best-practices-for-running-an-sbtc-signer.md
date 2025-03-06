@@ -55,7 +55,7 @@ curl 'https://api.hiro.so/v2/contracts/call-read/SM3VDXK3WZZSA84XXFKAFAF15NNZX32
 You can discard the prefix `0x02000000210` (which is how Clarity encodes
 values). The suffix
 `3d8c4344861fc7590fd812c24884a3bfd9374d8ba865a787ff53c9060020aa967` matches the
-last row of the PostgreSQL query above (excluding `x0` which indicates hex
+first row of the PostgreSQL query above (excluding `\x0` which indicates hex
 encoding).
 
 ## Setup proper access control
