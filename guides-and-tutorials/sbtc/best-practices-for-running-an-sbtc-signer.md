@@ -65,7 +65,7 @@ encoding).
   action.
 - Follow the principle of _least privilege_: if you don’t need access, you don’t
   get access; if you get access, it expires after the action is taken.
-- _Optional, but strongly recommended_: Implement a "_4-eyes_" process to access
+- _Optional, but strongly recommended_: Implement a "_4-eyes_" process (require that any activity by an individual must be controlled - reviewed, double checked - by a second individual) to access
   critical resources (e.g., deploy a new version of the sBTC signer).
 
 ## Maintain a strict firewall configuration
