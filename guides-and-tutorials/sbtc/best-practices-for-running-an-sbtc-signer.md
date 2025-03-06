@@ -49,7 +49,7 @@ smart contract method:
 curl -s 'https://api.hiro.so/v2/contracts/call-read/SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4/sbtc-registry/get-current-aggregate-pubkey' \
            -H 'content-type: application/json' --data-raw '{"sender":"SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4","arguments":[]}' | jq .result
 
-{"okay":true,"result":"0x020000002103d8c4344861fc7590fd812c24884a3bfd9374d8ba865a787ff53c9060020aa967"}⏎
+"0x020000002103d8c4344861fc7590fd812c24884a3bfd9374d8ba865a787ff53c9060020aa967"⏎
 ```
 
 You can discard the prefix `0x02000000210` (which is how Clarity encodes
