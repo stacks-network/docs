@@ -107,6 +107,7 @@ encoding).
 - Exercise vulnerability management for all packages.
 - Apply updates as quickly as possible, especially those addressing a security
   vulnerability.
+- Use inventory and patch management software, if available.
 
 ## Ensure redundancy in operations
 
