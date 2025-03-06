@@ -70,7 +70,7 @@ encoding).
 
 ## Maintain a strict firewall configuration
 
-- Allow connections to your signer `listen_on` address (used for P2P
+- Allow connections to your sBTC signer `listen_on` address (used for P2P
   communication).
 - Do not expose any non-essential service to the internet: use a `DEFAULT DENY` policy with explicit `ALLOW`s for necessary network traffic (such as signer p2p and SSH).
 
