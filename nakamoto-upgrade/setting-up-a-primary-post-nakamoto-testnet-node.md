@@ -1,4 +1,8 @@
-# Setting Up a Primary (Post-Nakamoto) Testnet Node
+---
+hidden: true
+---
+
+# Setting Up a Primary Nakamoto Testnet Node - Signers
 
 ### **Setup A Stacks Primary Testnet Node**
 
