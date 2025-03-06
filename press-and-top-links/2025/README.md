@@ -14,6 +14,6 @@ For weekly stories delivered to your inbox, subscribe to [Stacks Snacks](https:/
 [january-2024.md](january-2024.md)
 {% endcontent-ref %}
 
-{% hint style="info" %}
-
-{% endhint %}
+{% content-ref url="february-2025.md" %}
+[february-2025.md](february-2025.md)
+{% endcontent-ref %}

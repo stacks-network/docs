@@ -115,6 +115,7 @@
   * [Solo Stack](guides-and-tutorials/stack-stx/stacking-flow.md)
   * [Operate a Pool](guides-and-tutorials/stack-stx/operate-a-pool.md)
   * [Stack with a Pool](guides-and-tutorials/stack-stx/stack-with-a-pool.md)
+  * [Increase Stacked Position](guides-and-tutorials/stack-stx/increase-stacking.md)
   * [Stop Stacking](guides-and-tutorials/stack-stx/stop-stacking.md)
 * [Community Tutorials](guides-and-tutorials/community-tutorials.md)
 
@@ -152,6 +153,7 @@
   * [🔸 December 2024](press-and-top-links/2024/october-2024-1-1.md)
 * [🔶 2025](press-and-top-links/2025/README.md)
   * [🔸 January 2025](press-and-top-links/2025/january-2024.md)
+  * [🔸 February 2025](press-and-top-links/2025/february-2025.md)
 
 ## 🧡 Bitcoin Theses and Reports
 
