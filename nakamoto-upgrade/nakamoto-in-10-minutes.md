@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Nakamoto in 10 Minutes
 
 On the previous page, we outlined three primary changes to the way Stacks works that Nakamoto introduces:
