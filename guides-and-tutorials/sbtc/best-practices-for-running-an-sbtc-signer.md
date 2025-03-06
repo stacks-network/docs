@@ -81,7 +81,7 @@ encoding).
 
 ## Monitor and observe your sBTC Signer
 
-- Retain at least 7 day of logs for both the sBTC Signer, the Stacks node, and
+- Retain at least 90 days of logs for both the sBTC Signer, the Stacks node, and
   the Bitcoin node.
 - The sBTC signer can optionally expose Prometheus metrics (see
   `prometheus_exporter_endpoint` configuration option).
