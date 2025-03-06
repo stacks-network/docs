@@ -100,10 +100,13 @@ encoding).
 
 ## Monitor new software releases
 
-- Stay up-to-date with new releases, patches, and security advisories for all used operating systems, software and packages:
-  - https://www.cve.org/ is a great resource for popular software packages.
+- Stay up-to-date with new releases, patches, and security advisories for all
+  used operating systems, software and packages:
+  - [https://www.cve.org/](https://www.cve.org/) is a great resource for popular
+    software packages.
   - Subscribe to receive security notifications from your vendors.
-  - Join relevant messaging channels as applicable (i.e. on Discord, Slack, etc.).
+  - Join relevant messaging channels as applicable (i.e. on Discord, Slack,
+    etc.).
 - Exercise vulnerability management for all packages.
 - Apply updates as quickly as possible, especially those addressing a security
   vulnerability.
