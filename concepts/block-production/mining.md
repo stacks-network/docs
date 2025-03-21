@@ -87,9 +87,31 @@ It's important to note that there are two primary parties involved in the block 
 
 These two roles serve complementary relationships in the [block production process](./), and stackers drastically reduce any potential destructive power miners have over the chain.
 
-Primarily, miners cannot reorg the chain. In the worst case, all miners can do is omit (some kinds of) transactions, and all that is required to address this is to run your own miner.
+Miners cannot reorganize the chain. In the worst case, all miners can do is omit (some kinds of) transactions, and all that is required to address this is to run your own miner.
 
-Furthermore, more miners on the network would mean less BTC rewards for Stackers, as miners would have to spend more of their funds on Bitcoin L1 fees rather than sending it to the Stackers.
+Furthermore, more miners on the network would mean fewer BTC rewards for Stackers, as miners would have to spend more of their funds on Bitcoin L1 fees rather than sending it to the Stackers.
+
+{% hint style="info" %}
+**Wouldn't more miners mean more competition, meaning more rewards?**
+
+The reason more miners means fewer rewards is because miners act economically rationally, and they don't have an unlimited amount of BTC to work with.
+
+Miners are paying their PoX commitments plus their Bitcoin fees for a chance to win the coinbase (1,000 STX) plus fees for a tenure. If there are more miners, they will each pay less, because they will have a lower chance of winning. They can't pay ever-increasing amounts of BTC because at some point they will never be profitable, so there is a limit to how much BTC they can spend in order to try and win a tenure.
+
+As they pay less, the Bitcoin fee becomes a more significant portion of their expenses, and that also decreases their odds of winning the tenure.
+
+Here's a concrete example:
+
+Let's say Stacks is trading at 1,000 Sats per STX.&#x20;
+
+The total spend from all miners, if everyone is acting logically and we ignore Stacks fees, would be less than 1,000,000 Sats (1,000 STX coinbase \* 1000 Sats/STX).&#x20;
+
+If that is from 5 miners, then it could be 10,000 Sats (2,000 Sats for each transaction) going to Bitcoin fees and 990,000 Sats going to PoX.&#x20;
+
+If there are 100 miners, then it would be 200,000 Sats going to Bitcoin fees, and 800,000 Sats going to PoX.
+{% endhint %}
+
+
 
 This creates a natural economic equilibrium where:
 
