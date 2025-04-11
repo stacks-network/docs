@@ -74,6 +74,8 @@
   * [Post Conditions with Stacks.js](guides-and-tutorials/frontend/post-conditions-with-stacks.js.md)
   * [Authentication with Stacks.js](guides-and-tutorials/frontend/authentication-with-stacks.js.md)
   * [Sending Transactions with Stacks.js](guides-and-tutorials/frontend/sending-transactions-with-stacks.js.md)
+* [Testing Smart Contracts](guides-and-tutorials/testing-smart-contracts/README.md)
+  * [Fuzz Testing](guides-and-tutorials/testing-smart-contracts/fuzz-testing.md)
 * [Run a Node](guides-and-tutorials/nodes-and-miners/README.md)
   * [Run a Node with Docker](guides-and-tutorials/nodes-and-miners/run-a-node-with-docker.md)
   * [Run a Node with Digital Ocean](guides-and-tutorials/nodes-and-miners/run-a-node-with-digital-ocean.md)
