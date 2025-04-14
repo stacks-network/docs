@@ -127,5 +127,4 @@ This will add Rendezvous to your project's `node_modules` and update your `packa
 
 ## Rendezvous Docs
 
-See full docs at:
-https://stacks-network.github.io/rendezvous/
+See full docs at: [https://stacks-network.github.io/rendezvous](https://stacks-network.github.io/rendezvous/)
