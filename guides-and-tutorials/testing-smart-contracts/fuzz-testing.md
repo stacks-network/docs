@@ -61,7 +61,7 @@ An invariant is a general truth regarding your smart contract's internal state. 
 
 **How to extract an invariant?**
 
-Say that you have a counter contract, having functions to `increment` and `decrement`. In this case, you could use the Rendezvous `context` to extract an invariant regarding your smart contract's internal state:
+Say that you have a counter contract, having functions to `increment` and `decrement`. In this case, you could use the Rendezvous [`context`](https://stacks-network.github.io/rendezvous/chapter_6.html?#the-rendezvous-context) to extract an invariant regarding your smart contract's internal state:
 
 ```clarity
 (define-read-only (invariant-counter-gt-zero)
@@ -127,5 +127,4 @@ This will add Rendezvous to your project's `node_modules` and update your `packa
 
 ## Rendezvous Docs
 
-See full docs at:
-https://stacks-network.github.io/rendezvous/
+See full docs at: [https://stacks-network.github.io/rendezvous](https://stacks-network.github.io/rendezvous/)
