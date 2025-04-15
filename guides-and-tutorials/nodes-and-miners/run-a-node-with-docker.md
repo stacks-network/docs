@@ -18,7 +18,7 @@ The **minimum viable requirements** are listed below.
 While you _can_ run a node using these specs, it's _recommended_ to assign more than the minimum for better performance.
 
 * ⚠️ [docker-compose](https://docs.docker.com/compose/install/) version `2.2.2` or greater is **required**
-* **4GB memory if running only a Stacks node**
+* **8GB memory if running only a Stacks node**
 * **16 GB memory if running Stacks + Bitcoin node**
 * **1 Vcpu** ( _minimum of 2 Vcpu is recommended_ )
 * **500GB disk for Stacks node**
