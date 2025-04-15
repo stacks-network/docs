@@ -98,7 +98,7 @@ These are the **minimum required specs** to be able to run a node and signer, bu
 #### Signer, Stacks node and Bitcoin node
 
 * 4 vcpu
-* 4GB memory if running only a Stacks node and signer
+* 8GB memory if running only a Stacks node and signer
 * 16GB memory if running Stacks + Bitcoin node + signer
 * 1.5+TB storage (1TB for Bitcoin node, 500GB for Stacks node, and 50 GB for signer)
 
