@@ -12,7 +12,7 @@ While you _can_ run a node using these specs, it's _recommended_ to assign more 
 
 * ⚠️ [docker-compose](https://docs.docker.com/compose/install/) version `2.2.2` or greater is **required**
 * **4GB memory if running only a Stacks node**
-* **10 GB memory if running Stacks + Bitcoin node**
+* **16 GB memory if running Stacks + Bitcoin node**
 * **2 Vcpu**
 * **350GB disk for Stacks node**
 * **1TB disk space for Bitcoin node**
