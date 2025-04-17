@@ -59,7 +59,7 @@ Stacks network details can be queried using the [Stacks Blockchain API](https://
 
 #### Health check
 
-The [status checker](https://stacks-status.com/) is a service that provides a user interface to quickly review the health of the Stacks blockchain.
+The [status checker](https://status.stacks.org) is a service that provides a user interface to quickly review the health of the Stacks blockchain.
 
 #### Network info
 
