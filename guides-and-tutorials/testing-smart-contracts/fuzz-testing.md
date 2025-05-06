@@ -1,13 +1,12 @@
 # Fuzz Testing with Rendezvous
 
-Smart contracts on Stacks are immutable. Bugs are forever. Test early. Test
-often. Fuzzing finds edge cases that unit tests often miss.
+Smart contracts on Stacks are immutable. Bugs are forever. Test early. Test often. Fuzzing finds edge cases that unit tests often miss.
 
 ## What is Fuzz Testing?
 
-Fuzzing hits your code with random inputs. It helps uncover unexpected
-behavior and subtle bugs. Unlike unit tests, it explores paths you didn't
-think of.
+Fuzzing hits your code with random inputs. It helps uncover unexpected behavior and subtle bugs. Unlike unit tests, it explores paths you didn't think of.
+
+## What is Rendezvous?
 
 Rendezvous (`rv`) is a Clarity fuzzer. It supports:
 
