@@ -4,7 +4,7 @@
 **Intended audience**: Solo Stackers, Stacking pool operators, and node operators who need to create reliable chainstate backups.
 {% endhint %}
 
-Creating regular snapshots of your Stacks chainstate is crucial for fast recovery, redundancy, and minimizing downtime. This guide outlines best practices for creating and managing chainstate snapshots.
+Regular snapshots of your Stacks chainstate help you recover quickly when things go wrong. This guide shows you how to create and manage chainstate snapshots properly.
 
 {% hint style="warning" %}
 **Critical**: Always shut down your Stacks node properly before creating a snapshot. Creating snapshots while the node is running will result in corrupted state data.
@@ -35,8 +35,8 @@ To produce a valid chainstate backup, the node should be stopped gracefully befo
 
 There are two primary approaches for creating Stacks chainstate snapshots:
 
-1. **File-based snapshots**
-2. **Volume snapshots**
+1. **File-based snapshots** - zip up the chainstate folder
+2. **Volume snapshots** - snapshot the entire disk/volume
 
 Each method has its advantages depending on your infrastructure setup and recovery requirements.
 
@@ -72,9 +72,9 @@ if the filesystem is supported or using cloud native tools.
 
 3. **Restart the Stacks node**
 
-## Recovery Procedures
+## How to Restore
 
-### From File-Based Snapshots
+### From File Snapshots
 
 1. Stop the Stacks node
 2. Download and extract the snapshot
@@ -91,7 +91,7 @@ if the filesystem is supported or using cloud native tools.
 
 ## Example Automation Code
 
-This section contains a simplified automation script for both file-based and volume-based snapshot creation using AWS.
+Here's a simple script that handles both file and volume snapshots on AWS.
 
 ```bash
 #!/bin/bash
@@ -190,21 +190,21 @@ main() {
 main
 ```
 
-### Usage Instructions
+### How to Use
 
-1. **Configure variables**: Modify the variables at the top of the script for your environment
+1. **Edit the variables** at the top of the script for your setup
 
-2. **Set permissions**: Make the script executable with `chmod +x snapshot.sh`
+2. **Make it executable**: `chmod +x snapshot.sh`
 
-3. **Run the script**: Execute `./snapshot.sh`
+3. **Run it**: `./snapshot.sh`
 
-4. **Schedule automation using a crontab**: 
+4. **Schedule it with cron** for daily backups: 
    ```bash
    # Daily snapshot at 2 AM
    0 2 * * * /path/to/snapshot.sh
    ```
 
-### Prerequisites
+### What You Need
 
-- AWS CLI configured with appropriate permissions
-- `pzstd` installed for compression (part of zstd package)
+- AWS CLI set up with the right permissions
+- `pzstd` installed (comes with the zstd package)
