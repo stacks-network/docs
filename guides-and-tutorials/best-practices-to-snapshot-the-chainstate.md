@@ -10,111 +10,18 @@ Creating regular snapshots of your Stacks chainstate is crucial for fast recover
 **Critical**: Always shut down your Stacks node properly before creating a snapshot. Creating snapshots while the node is running will result in corrupted state data.
 {% endhint %}
 
-## Overview of Snapshot Methods
+## Shutdown Procedure
 
-There are two primary approaches for creating Stacks chainstate snapshots:
-
-1. **File-based snapshots**: Compress and store chainstate data in external storage
-2. **Volume snapshots**: Create block-level snapshots of the storage volume
-
-Each method has its advantages depending on your infrastructure setup and recovery requirements.
-
-## Method 1: File-Based Snapshots with External Storage
-
-This method involves compressing the chainstate directory and uploading it to cloud storage services.
-
-### Advantages
-- Platform agnostic
-- Easy to transfer between different environments
-- Granular control over what gets backed up
-
-### Prerequisites
-- Sufficient local disk space for compression
-- Configured cloud storage access
-- Backup automation tools or cloud providers CLI
-
-### Supported Cloud Storage Providers
-
-#### Amazon Web Services (S3)
-
-- **Service**: [Amazon S3](https://aws.amazon.com/s3/)
-- **CLI Tool**: [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-- **Storage Classes**: Standard, Standard-IA, Glacier for different cost/access patterns
-
-#### Microsoft Azure (Blob Storage)
-
-- **Service**: [Azure Blob Storage](https://azure.microsoft.com/en-us/products/storage/blobs)
-- **CLI Tool**: [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
-- **Storage Tiers**: Hot, Cool, Archive for cost optimization
-
-#### Google Cloud Platform (Cloud Storage)
-
-- **Service**: [Google Cloud Storage](https://cloud.google.com/storage)
-- **CLI Tool**: [gcloud CLI](https://cloud.google.com/sdk/docs/install)
-- **Storage Classes**: Standard, Nearline, Coldline, Archive
-
-### File-Based Snapshot Process
-
-1. **Stop the Stacks node gracefully**
-
-2. **Create compressed archive**
-
-3. **Upload to cloud storage** (examples provided in automation section below)
-
-4. **Restart the Stacks node**
-
-## Method 2: Volume-Based Snapshots
-
-This method creates block-level snapshots of the entire storage volume containing the chainstate.
-
-### Advantages
-
-- Faster backup and restore operations
-- Atomic snapshots (entire volume state at a point in time)
-- No local disk space required for compression
-- Native cloud provider integration
-
-### Supported Cloud Providers
-
-#### Amazon Web Services (EBS Snapshots)
-
-- **Service**: [Amazon EBS Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
-- **CLI**: AWS CLI or AWS Console
-
-#### Microsoft Azure (Disk Snapshots)
-
-- **Service**: [Azure Managed Disk Snapshots](https://learn.microsoft.com/en-us/azure/virtual-machines/snapshot-copy-managed-disk)
-- **CLI**: Azure CLI or Azure Portal
-
-#### Google Cloud Platform (Persistent Disk Snapshots)
-
-- **Service**: [Compute Engine Persistent Disk Snapshots](https://cloud.google.com/compute/docs/disks/snapshots)
-- **CLI**: gcloud CLI or Google Cloud Console
-
-### Volume Snapshot Process
-
-1. **Stop the Stacks node gracefully** (same as file-based method)
-
-2. **Create volume snapshot** using cloud provider tools
-
-3. **Restart the Stacks node**
-
-## Critical Shutdown Procedures
-
-{% hint style="danger" %}
-**Never create snapshots while the Stacks node is running!** This will result in corrupted chainstate data that cannot be used for recovery.
-{% endhint %}
-
-### Proper Shutdown Steps
+To produce a valid chainstate backup, the node should be stopped gracefully before making a copy. The following steps will correctly shutdown the Stacks node:
 
 1. **Check node status** before shutdown
    ```bash
-   # Verify node is responsive
+   # Verify if the node is responsive
    curl http://localhost:20443/v2/info
    ```
 
 2. **Initiate graceful shutdown**
-   - For Docker: `docker stop stacks-node` (allows at 10 seconds for graceful shutdown)
+   - For Docker: `docker stop stacks-node` (allows at least 10 seconds for graceful shutdown)
    - For systemd: `systemctl stop stacks-node`
    - For manual processes: Send SIGTERM signal
 
@@ -124,11 +31,46 @@ This method creates block-level snapshots of the entire storage volume containin
    ps aux | grep stacks-node
    ```
 
-## Snapshot Scheduling and Retention
+## Overview of Snapshot Methods
 
-### Recommended Schedule
-- **Daily snapshots**: For active production nodes
-- **Weekly snapshots**: For development or test environments
+There are two primary approaches for creating Stacks chainstate snapshots:
+
+1. **File-based snapshots**
+2. **Volume snapshots**
+
+Each method has its advantages depending on your infrastructure setup and recovery requirements.
+
+## File-Based Snapshots with External Storage
+
+This method involves compressing the chainstate directory, storing it locally or uploading it to a cloud storage services.
+
+### Steps
+
+1. **Stop the Stacks node gracefully**
+
+2. **Create compressed archive**
+
+3. **Upload to cloud storage or save it locally** (examples provided in automation section below)
+
+4. **Restart the Stacks node**
+
+## Volume-Based Snapshots
+
+This method creates block-level snapshots of the entire storage volume containing the chainstate. Can be achieved using **ZFS** tool:
+
+```bash
+zfs snapshot
+```
+
+if the filesystem is supported or using cloud native tools.
+
+### Steps
+
+1. **Stop the Stacks node gracefully**
+
+2. **Create volume snapshot** using ZFS or cloud provider tools 
+
+3. **Restart the Stacks node**
 
 ## Recovery Procedures
 
@@ -146,14 +88,6 @@ This method creates block-level snapshots of the entire storage volume containin
 3. Attach the volume to your instance
 4. Update mount points if necessary
 5. Restart the node
-
-## Monitoring and Validation
-
-### Snapshot Validation
-
-- **File integrity**: Verify checksums of compressed archives
-- **Volume consistency**: Use cloud provider validation tools
-- **Test recovery**: Periodically test snapshot restoration in a test environment
 
 ## Example Automation Code
 
@@ -264,7 +198,7 @@ main
 
 3. **Run the script**: Execute `./snapshot.sh`
 
-4. **Schedule automation**: Add to crontab for regular execution:
+4. **Schedule automation using a crontab**: 
    ```bash
    # Daily snapshot at 2 AM
    0 2 * * * /path/to/snapshot.sh
@@ -274,5 +208,3 @@ main
 
 - AWS CLI configured with appropriate permissions
 - `pzstd` installed for compression (part of zstd package)
-- `stacks-node` binary in PATH for version detection
-- Sufficient disk space in `SNAPSHOT_BASE` directory for archive creation
