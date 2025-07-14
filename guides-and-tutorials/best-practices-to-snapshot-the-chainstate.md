@@ -40,7 +40,7 @@ There are two primary approaches for creating Stacks chainstate snapshots:
 
 Each method has its advantages depending on your infrastructure setup and recovery requirements.
 
-## File-Based Snapshots with External Storage
+## File-Based Snapshots
 
 This method involves compressing the chainstate directory, storing it locally or uploading it to a cloud storage services.
 
