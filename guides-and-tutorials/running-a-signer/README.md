@@ -263,7 +263,7 @@ For example:
 
 **Warning:** It is always better to keep a local snapshot of the chain state for fast recovery and redundancy. This ensures you can quickly restore your node in case of data loss or corruption.
 
-See [here](./best-practices-to-snapshot-the-chainstate.md) for additional best practices to create a local chainstate snapshot.
+See [here](../best-practices-to-snapshot-the-chainstate.md) for additional best practices to create a local chainstate snapshot.
 {% endhint %}
 
 #### Run a Stacks Node with Docker
