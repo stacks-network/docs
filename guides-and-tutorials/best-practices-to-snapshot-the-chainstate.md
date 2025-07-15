@@ -7,7 +7,7 @@
 Regular snapshots of your Stacks chainstate help you recover quickly when things go wrong. This guide shows you how to create and manage chainstate snapshots properly.
 
 {% hint style="warning" %}
-**Critical**: Always shut down your Stacks node properly before creating a snapshot. Creating snapshots while the node is running will result in corrupted state data.
+**Critical**: Always shut down your Stacks node properly before creating a snapshot. Creating snapshots while the node is running will result in corrupted chainstate data.
 {% endhint %}
 
 ## Shutdown Procedure
@@ -23,7 +23,7 @@ To produce a valid chainstate backup, the node should be stopped gracefully befo
 2. **Initiate graceful shutdown**
    - For Docker: `docker stop stacks-node` (allows at least 10 seconds for graceful shutdown)
    - For systemd: `systemctl stop stacks-node`
-   - For manual processes: Send SIGTERM signal
+   - For manual processes: `kill $(ps aux | grep stacks-node | grep -v grep | awk '{print $2}')`
 
 3. **Verify complete shutdown**
    ```bash
@@ -35,34 +35,33 @@ To produce a valid chainstate backup, the node should be stopped gracefully befo
 
 There are two primary approaches for creating Stacks chainstate snapshots:
 
-1. **File-based snapshots** - zip up the chainstate folder
+1. **File-based snapshots** - compress up the chainstate folder
 2. **Volume snapshots** - snapshot the entire disk/volume
 
 Each method has its advantages depending on your infrastructure setup and recovery requirements.
 
 ## File-Based Snapshots
 
-This method involves compressing the chainstate directory, storing it locally or uploading it to a cloud storage services.
+This method involves compressing the chainstate directory and storing it locally, or uploading to a cloud storage service.
 
-### Steps
+### Steps (see [Example Automation Code section](#example-automation-code) below)
 
 1. **Stop the Stacks node gracefully**
 
 2. **Create compressed archive**
 
-3. **Upload to cloud storage or save it locally** (examples provided in automation section below)
+3. **Upload to cloud storage or save it locally** 
 
 4. **Restart the Stacks node**
 
 ## Volume-Based Snapshots
 
-This method creates block-level snapshots of the entire storage volume containing the chainstate. Can be achieved using **ZFS** tool:
+This method creates block-level snapshots of the entire storage volume containing the chainstate. Different filesystems have different tools:
 
-```bash
-zfs snapshot
-```
+- **ZFS**: Use `zfs snapshot` - [OpenZFS documentation](https://openzfs.github.io/openzfs-docs/man/v2.3/8/zfs-snapshot.8.html)
+- **ext4 and XFS**: Use LVM snapshots - [LVM guide](https://kerneltalks.com/disk-management/how-to-guide-lvm-snapshot/)
 
-if the filesystem is supported or using cloud native tools.
+You can also use cloud provider snapshot tools (AWS EBS, Azure Disk, GCP Persistent Disk).
 
 ### Steps
 
@@ -103,7 +102,7 @@ SNAPSHOT_DIR="/var/stacks/mainnet"           # path to chainstate directory
 SNAPSHOT_BASE="/tmp"                         # temporary directory for archives
 EBS_VOLUME_ID="vol-1234567890abcdef0"        # EBS volume ID containing chainstate
 S3_BUCKET="s3://my-stacks-snapshots"         # S3 bucket for archive storage
-SNAPSHOT_TYPE="both"                         # Options: ebs, archive, or both
+SNAPSHOT_TYPE="archive"                      # Options: ebs, archive, or both
 
 # Stop the Stacks node service gracefully
 stop_service() {
