@@ -59,7 +59,8 @@ This method involves compressing the chainstate directory and storing it locally
 This method creates block-level snapshots of the entire storage volume containing the chainstate. Different filesystems have different tools:
 
 - **ZFS**: Use `zfs snapshot` - [OpenZFS documentation](https://openzfs.github.io/openzfs-docs/man/v2.3/8/zfs-snapshot.8.html)
-- **ext4 and XFS**: Use LVM snapshots - [LVM guide](https://kerneltalks.com/disk-management/how-to-guide-lvm-snapshot/)
+- **XFS**: Use `xfsdump` - [XFS documentation](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsbackuprestore)
+- **ext4**: Use LVM snapshots - [LVM guide](https://kerneltalks.com/disk-management/how-to-guide-lvm-snapshot/)
 
 You can also use cloud provider snapshot tools (AWS EBS, Azure Disk, GCP Persistent Disk).
 
@@ -72,6 +73,8 @@ You can also use cloud provider snapshot tools (AWS EBS, Azure Disk, GCP Persist
 3. **Restart the Stacks node**
 
 ## How to Restore
+
+*After restoring the chainstate, you can check for corruption by waiting for a few blocks to download and ensuring the node syncs correctly.*
 
 ### From File Snapshots
 
