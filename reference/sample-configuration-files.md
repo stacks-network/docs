@@ -156,6 +156,10 @@ start_height = 1_900
 [[burnchain.epochs]]
 epoch_name = "3.1"
 start_height = 2_000
+
+[[burnchain.epochs]]
+epoch_name = "3.2"
+start_height = 71_525
 ```
 
 ### Mainnet Signer
