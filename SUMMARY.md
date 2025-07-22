@@ -2,19 +2,6 @@
 
 * [Start Here](README.md)
 
-## 🟧 Nakamoto Upgrade
-
-* [Nakamoto Upgrade - Start Here](nakamoto-upgrade/nakamoto-upgrade-start-here.md)
-* [What is the Nakamoto Upgrade?](nakamoto-upgrade/what-is-the-nakamoto-release.md)
-* [Nakamoto in 10 Minutes](nakamoto-upgrade/nakamoto-in-10-minutes.md)
-* [Nakamoto Rollout Plan](nakamoto-upgrade/nakamoto-rollout-plan/README.md)
-  * [Nakamoto for Stackers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stackers.md)
-  * [Nakamoto for Exchanges](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-exchanges.md)
-  * [Nakamoto for Stacking Providers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stacking-providers.md)
-  * [Nakamoto for App Developers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto.md)
-* [Setting Up a Primary Nakamoto Testnet Node - Signers](nakamoto-upgrade/setting-up-a-primary-post-nakamoto-testnet-node.md)
-* [Nakamoto Activation Guide for Signers](nakamoto-upgrade/nakamoto-activation-guide-for-signers.md)
-
 ## 🧠 Concepts
 
 * [Stacks 101](concepts/stacks-101/README.md)
@@ -30,7 +17,8 @@
   * [Authentication](concepts/network-fundamentals/authentication.md)
   * [Bitcoin Name System](concepts/network-fundamentals/bitcoin-name-system.md)
   * [SIPs](concepts/network-fundamentals/sips.md)
-  * [Technical Specifications](concepts/network-fundamentals/technical-specifications.md)
+  * [Technical Specifications](concepts/network-fundamentals/technical-specifications/README.md)
+    * [Audits](concepts/network-fundamentals/technical-specifications/audits.md)
 * [Block Production](concepts/block-production/README.md)
   * [Mining](concepts/block-production/mining.md)
   * [Signing](concepts/block-production/stackers-and-signing.md)
@@ -63,6 +51,7 @@
   * [Walkthroughs](concepts/sbtc/walkthroughs/README.md)
     * [Signer Process Walkthrough](concepts/sbtc/walkthroughs/signer-process.md)
     * [sBTC Transaction Walkthrough](concepts/sbtc/walkthroughs/sbtc-transaction-lifecycle.md)
+  * [sBTC FAQ](concepts/sbtc/sbtc-faq.md)
 * [Gaia](concepts/gaia/README.md)
   * [Configuration](concepts/gaia/configuration.md)
   * [Deploy Gaia Hub](concepts/gaia/deploy-gaia-hub.md)
@@ -86,6 +75,8 @@
   * [Post Conditions with Stacks.js](guides-and-tutorials/frontend/post-conditions-with-stacks.js.md)
   * [Authentication with Stacks.js](guides-and-tutorials/frontend/authentication-with-stacks.js.md)
   * [Sending Transactions with Stacks.js](guides-and-tutorials/frontend/sending-transactions-with-stacks.js.md)
+* [Testing Smart Contracts](guides-and-tutorials/testing-smart-contracts/README.md)
+  * [Fuzz Testing](guides-and-tutorials/testing-smart-contracts/fuzz-testing.md)
 * [Run a Node](guides-and-tutorials/nodes-and-miners/README.md)
   * [Run a Node with Docker](guides-and-tutorials/nodes-and-miners/run-a-node-with-docker.md)
   * [Run a Node with Digital Ocean](guides-and-tutorials/nodes-and-miners/run-a-node-with-digital-ocean.md)
@@ -108,10 +99,15 @@
 * [sBTC](guides-and-tutorials/sbtc/README.md)
   * [How to Run an sBTC Signer](guides-and-tutorials/sbtc/how-to-run-sbtc-signer.md)
   * [Best practices for running an sBTC Signer](guides-and-tutorials/sbtc/best-practices-for-running-an-sbtc-signer.md)
+  * [How to Use the sBTC Bridge](guides-and-tutorials/sbtc/how-to-use-the-sbtc-bridge.md)
+  * [Earn sBTC Rewards](guides-and-tutorials/sbtc/earn-sbtc-rewards.md)
 * [Stack STX](guides-and-tutorials/stack-stx/README.md)
   * [Solo Stack](guides-and-tutorials/stack-stx/stacking-flow.md)
   * [Operate a Pool](guides-and-tutorials/stack-stx/operate-a-pool.md)
   * [Stack with a Pool](guides-and-tutorials/stack-stx/stack-with-a-pool.md)
+  * [Increase Stacked Position](guides-and-tutorials/stack-stx/increase-stacking.md)
+  * [Stop Stacking](guides-and-tutorials/stack-stx/stop-stacking.md)
+* [Oracles](guides-and-tutorials/oracles.md)
 * [Community Tutorials](guides-and-tutorials/community-tutorials.md)
 
 ## 📚 Reference
@@ -145,6 +141,14 @@
   * [🔸 September 2024](press-and-top-links/2024/september-2024.md)
   * [🔸 October 2024](press-and-top-links/2024/october-2024.md)
   * [🔸 November 2024](press-and-top-links/2024/october-2024-1.md)
+  * [🔸 December 2024](press-and-top-links/2024/october-2024-1-1.md)
+* [🔶 2025](press-and-top-links/2025/README.md)
+  * [🔸 January 2025](press-and-top-links/2025/january-2024.md)
+  * [🔸 February 2025](press-and-top-links/2025/february-2025.md)
+  * [🔸 March 2025](press-and-top-links/2025/march-2025.md)
+  * [🔸 April 2025](press-and-top-links/2025/march-2025-1.md)
+  * [🔸 May 2025](press-and-top-links/2025/march-2025-2.md)
+  * [🔸 June 2025](press-and-top-links/2025/june-2025.md)
 
 ## 🧡 Bitcoin Theses and Reports
 
@@ -154,3 +158,16 @@
 ***
 
 * [Contribute](contribute.md)
+
+## 🟧 Nakamoto Upgrade
+
+* [Nakamoto Upgrade - Start Here](nakamoto-upgrade/nakamoto-upgrade-start-here.md)
+* [What is the Nakamoto Upgrade?](nakamoto-upgrade/what-is-the-nakamoto-release.md)
+* [Nakamoto in 10 Minutes](nakamoto-upgrade/nakamoto-in-10-minutes.md)
+* [Nakamoto Rollout Plan](nakamoto-upgrade/nakamoto-rollout-plan/README.md)
+  * [Nakamoto for Stackers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stackers.md)
+  * [Nakamoto for Exchanges](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-exchanges.md)
+  * [Nakamoto for Stacking Providers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stacking-providers.md)
+  * [Nakamoto for App Developers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto.md)
+* [Setting Up a Primary Nakamoto Testnet Node - Signers](nakamoto-upgrade/setting-up-a-primary-post-nakamoto-testnet-node.md)
+* [Nakamoto Activation Guide for Signers](nakamoto-upgrade/nakamoto-activation-guide-for-signers.md)

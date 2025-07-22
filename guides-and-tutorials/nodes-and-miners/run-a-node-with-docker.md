@@ -18,16 +18,16 @@ The **minimum viable requirements** are listed below.
 While you _can_ run a node using these specs, it's _recommended_ to assign more than the minimum for better performance.
 
 * ⚠️ [docker-compose](https://docs.docker.com/compose/install/) version `2.2.2` or greater is **required**
-* **4GB memory if running only a Stacks node**
-* **10 GB memory if running Stacks + Bitcoin node**
+* **8GB memory if running only a Stacks node**
+* **16 GB memory if running Stacks + Bitcoin node**
 * **1 Vcpu** ( _minimum of 2 Vcpu is recommended_ )
-* **350GB disk for Stacks node**
+* **500GB disk for Stacks node**
 * **1TB disk space for Bitcoin node**
 
 {% hint style="warning" %}
-MacOS with an ARM processor is NOT recommended
+MacOS with an ARM (M-series chip) processor is NOT recommended
 
-The way Docker for Mac on an Arm CPU is designed makes the I/O incredibly slow, and blockchains are _**very**_ heavy on I/O. This only seems to affect MacOS, other Arm based systems like Raspberry Pi work as expected.
+The way Docker for Mac on an Arm CPU is designed makes the I/O incredibly slow, and blockchains are _**very**_ heavy on I/O. This only seems to affect MacOS with the M-series chip, other Arm based systems like Raspberry Pi work as expected.
 {% endhint %}
 
 ### **Quickstart**

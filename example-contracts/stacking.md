@@ -2,7 +2,7 @@
 
 Stacking is implemented as a smart contract using Clarity. You can always find the Stacking contract identifier using the Stacks Blockchain API [`v2/pox` endpoint](https://docs.hiro.so/api#operation/get\_pox\_info).
 
-Currently stacking uses the pox-4 contract. The deployed pox-4 contract and included comments can be [viewed in the explorer](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-4?chain=mainnet).
+Currently, stacking uses the pox-4 contract. The deployed pox-4 contract and included comments can be [viewed in the explorer](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-4?chain=mainnet).
 
 In this walkthrough, we'll cover the entire stacking contract from start to finish, including descriptions of the various functions and errors, and when you might use/encounter them.
 
@@ -12,7 +12,7 @@ Rather than walking through the contract line by line, which you can do by simpl
 
 At the bottom you will find a list of some errors you may run into and their explanations.
 
-There are a few utilities that make interacting with this contract easier including [Lockstacks](https://lockstacks.com) as a UI and the [@stacks/stacking package](https://www.npmjs.com/package/@stacks/stacking) for a JS library.
+There are a few utilities that make interacting with this contract easier including [Leather Earn](https://earn.leather.io) as an UI and the [@stacks/stacking package](https://www.npmjs.com/package/@stacks/stacking) for a JS library.
 
 Hiro has a [detailed guide](https://docs.hiro.so/stacks.js/guides/how-to-integrate-stacking) available for stacking using this library as well as a [Nakamoto guide](https://docs.hiro.so/nakamoto/stacks-js) specifically for the additions made to work with `pox-4`.
 
@@ -86,14 +86,14 @@ Here's the full code for that function, then we'll dive into how it works below 
 
 First let's cover the needed parameters.
 
-* `amount-ustx` is the amount of STX you would like to lock, denoted in micro-STX, or uSTX (1 STX = 1,000,000 uSTX)
-* `pox-addr` is a tuple that encodes the Bitcoin address to be used for the PoX rewards, details below
-* `start-burn-ht` is the Bitcoin block height you would like to begin stacking. You will receive rewards in the reward cycle following `start-burn-ht`. Importantly, `start-burn-ht` may not be further into the future than the next reward cycle, and in most cases should be set to the current burn block height.
-* `lock-period` sets the number of reward cycles you would like you lock your STX for, this can be 1-12
-* `signer-sig` is a unique generatedf signature that proves ownership of this signer. Further details for its role and how to generate it can be found in the [How to Stack](../guides-and-tutorials/stack-stx/stacking-flow.md) doc
-* `signer-key` is the public key of your signer, more details in the [How to Run a Signer](../guides-and-tutorials/running-a-signer/) doc
-* `max-amount` sets the maximum amount allowed to be stacked during the provided stacking period
-* `auth-id` is a unique string to prevent re-use of this stacking transaction
+* `amount-ustx` is the amount of STX you would like to lock, denoted in micro-STX, or uSTX (1 STX = 1,000,000 uSTX).
+* `pox-addr` is a tuple that encodes the Bitcoin address to be used for the PoX rewards, details below.
+* `start-burn-ht` is the Bitcoin block height you would like to begin stacking. You will receive rewards in the reward cycle following `start-burn-ht`. Importantly, `start-burn-ht` may not be further into the future than the current reward cycle, and in most cases should be set to the current burn block height.
+* `lock-period` sets the number of reward cycles you would like you lock your STX for, this can be between 1 and 12.
+* `signer-sig` is a unique generated signature that proves ownership of this signer. Further details for its role and how to generate it can be found in the [How to Stack](../guides-and-tutorials/stack-stx/stacking-flow.md) document.
+* `signer-key` is the public key of your signer, more details in the [How to Run a Signer](../guides-and-tutorials/running-a-signer/) document.
+* `max-amount` sets the maximum amount allowed to be stacked during the provided stacking period.
+* `auth-id` is a unique string to prevent re-use of this stacking transaction.
 
 {% hint style="warning" %}
 It's important to make sure that these fields match what you pass in to the signer signature generation. If they don't, you will likely get error 35 (`ERR_INVALID_SIGNATURE_PUBKEY`) \
@@ -145,7 +145,7 @@ Finally we return the lock up information so the node can carry out the lock by 
 
 From here, the locked STX tokens will be unlocked automatically at the end of the lock period.
 
-The other option is that the stacker can call the `stack-increase` or `stack-extend` functions to either increase the amount of STX they have locked or increase the amount of time to lock them, respectively.
+The other option is that the stacker can call the `stack-increase` or `stack-extend` functions to either increase the amount of STX they have locked or extend the time to lock them, respectively.
 
 ### Delegated Stacking
 
@@ -158,7 +158,6 @@ Delegated stacking has a few additional steps to it. It is essentially a three-s
 There are also a few alternative steps here depending on the action you want to take.
 
 * Revoke delegation
-*
 
 Each of these steps has a corresponding function. Let's dig into them.
 
@@ -211,9 +210,9 @@ This function does not actually lock the STX, but just allows the pool operator 
 
 This function takes a few parameters:
 
-* `amount-ustx` is the amount the stacker is delegating denoted in uSTX
-* `delegate-to` is the Stacks address of the pool operator (or delegate) being delegated to
-* `until-burn-ht` is an optional parameter that describes when this delegation expires
+* `amount-ustx` is the amount the stacker is delegating denoted in uSTX.
+* `delegate-to` is the Stacks address of the pool operator (or delegate) being delegated to.
+* `until-burn-ht` is an optional parameter that describes when this delegation expires.
 * `pox-addr` is an optional Bitcoin address. If this is provided, the pool operator must send rewards to this address. If it is not provided, it is up to the discretion of the pool operator where to send the rewards.
 
 It first runs through a few checks to ensure that the function caller is allowed, the provided `pox-addr` is valid, and that the stacker is not already delegating.&#x20;
@@ -304,11 +303,11 @@ This function can only be called after a stacker has called their respective `de
 
 Like the other functions, this function takes in several parameters and runs through several checks before updating the contract state.
 
-* `stacker` is the principal of the stacker who has delegated their STX
-* `amount-ustx` is the amount they have delegated in uSTX
-* `pox-addr` is the Bitcoin address the rewards will be sent to. If the stacker passed this field in to their `delegate-stx` function, this must be the same value
-* `start-burn-ht` corresponds to the field passed in by the stacker
-* `lock-period` corresponds to the same field that the stacker passed in
+* `stacker` is the principal of the stacker who has delegated their STX.
+* `amount-ustx` is at most the amount of uSTX they have delegated.
+* `pox-addr` is the Bitcoin address the rewards will be sent to. If the stacker passed this field in to their `delegate-stx` function, this must be the same value.
+* `start-burn-ht` corresponds to the field passed in by the stacker.
+* `lock-period` corresponds to the number of cycles to lock the funds for. This can be at most 12, or the number of cycles left until the cycle matching `until-burn-ht` argument in `delegate-stx` (if set by delegator).
 
 Now we assign a few variables using `let` before running several checks.
 
@@ -332,9 +331,9 @@ After those checks and partial stacking, we update the `stacking-state` map and 
 
 At this point this stacker's STX are considered partially stacked. We still need to perform one more step as the pool operator in order to officially lock them.
 
-#### stack-aggregation-commit
+#### stack-aggregation-commit-indexed
 
-The `stack-aggregation-commit` function is just a wrapper for the private `inner-stack-aggregation-commit` function, so that is the source code included here.
+The `stack-aggregation-commit-indexed` function is just a wrapper for the private `inner-stack-aggregation-commit` function, so that is the source code included here.
 
 ```clojure
 ;; Commit partially stacked STX and allocate a new PoX reward address slot.
@@ -442,7 +441,7 @@ The reason is because there are a finite amount of reward slots (4,000) and each
 
 Stackers need to be able to stack the minimum in order to be eligible for one of these reward slots. A delegator may choose to delegate to a pool (even if they meet the minimum stacking requirement) if they do not want to handle the infrastructure of running a signer or the actual stacking operations, which is why this option exists.
 
-#### delegate-stack-stx and stack-aggregation-commit
+#### delegate-stack-stx and stack-aggregation-commit-indexed
 
 In both of these functions, `pox-addr` corresponds to the address where the pool operator would like the rewards to be sent.
 
@@ -469,8 +468,8 @@ To fix this, check all of the data you passed in to see where the mismatch is.
 
 #### Error 4 - ERR\_STACKING\_NO\_SUCH\_PRINCIPAL
 
-The stacking contract looks up partially stacked stx (after you have called `delegate-stack-stx`) with the lookup key `(pox-addr, stx-address, reward-cycle`. This error means that either when you generated your signature or called the `stack-aggregation-commit` function, you passed in the wrong parameter for one of these. More information in the [stacking guide](../guides-and-tutorials/stack-stx/stacking-flow.md#delegator-initiates-delegation).
+The stacking contract looks up partially stacked stx (after you have called `delegate-stack-stx`) with the lookup key `(pox-addr, stx-address, reward-cycle)`. This error means that either when you generated your signature or called the `stack-aggregation-commit` function, you passed in the wrong parameter for one of these. More information in the [stacking guide](../guides-and-tutorials/stack-stx/stacking-flow.md#delegator-initiates-delegation).
 
-#### Error 24 -&#x20;
+#### Error 24 - ERR\_INVALID\_START\_BURN\_HEIGHT;
 
-`24` : the `start-burn-height` param was invalid
+This means that the `start-burn-height` parameter parsed was invalid (in a past or future cycle, instead of the current one). This error will mostly be seen in `stack-stx` or `delegate-stack-stx` failed transactions.

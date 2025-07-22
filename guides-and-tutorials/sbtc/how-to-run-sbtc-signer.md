@@ -1,9 +1,27 @@
 # How to Run an sBTC Signer
 
-{% hint style="warning" %}
+{% hint style="info" %}
 This documentation provides guidelines, best-practices and recommendations for
 running an sBTC Signer. Review it and adapt it to your infrastructure policy
 before deploying it.
+{% endhint %}
+
+{% hint style="warning" %}
+Each sBTC signer will control a set of signing shares used to sign transactions
+on both Bitcoin and Stacks.
+
+Such shares will be encrypted by using the `private_key` specified in the
+Signer's config and stored in the PostgreSQL database attached to each signer.
+
+It is of the utmost importance to:
+
+1. Prevent unauthorized access to the sBTC Signer infrastructure (the signer
+   itself, its private key, and the associated PostgreSQL database);
+1. keep an offline, secure backup of the sBTC Signer private key;
+1. regularly backup the PosgreSQL database and store it in a secure location.
+
+See [here](./best-practices-for-running-an-sbtc-signer.md) for additional best
+practices to run an sBTC signer.
 {% endhint %}
 
 ## Minimum System Requirements
@@ -17,6 +35,10 @@ Below are the **minimum required specs** to be able to run a sBTC signer.
 Note that these are in _addition_ to the hardware requirements for running a
 Stacks node and Bitcoin node outlined in the [How to Run a Signer
 doc](../running-a-signer/README.md).
+
+## Connection diagram
+
+![Connection Diagram](../../.gitbook/assets/sbtc_diagram.png)
 
 ## 1. Configure your Bitcoin node
 
@@ -88,12 +110,8 @@ events_keys = [
 
 ### Reference configuration
 
-<!---
-TODO: This needs to be updated once the PR linked here merges.
--->
-
 See
-[here](https://github.com/stacks-network/sbtc/blob/831b890a39ec6c9ee7dec44673843d46a7050950/docker/mainnet/nodes/stacks/Config.toml.in#L1).
+[here](https://github.com/stacks-network/sbtc/blob/main/docker/mainnet/nodes/stacks/Config.toml.in).
 
 
 ## 3. Configure your sBTC Signer
@@ -145,21 +163,13 @@ unavailable or blocked on the network.
 
 ### Reference configuration
 
-<!---
-TODO: This needs to be updated once the PR linked here merges.
--->
-
 See
-[here](https://github.com/stacks-network/sbtc/blob/feat/mainnet_docker_compose/docker/mainnet/sbtc-signer/signer-config.toml.in).
+[here](https://github.com/stacks-network/sbtc/blob/main/docker/mainnet/sbtc-signer/signer-config.toml.in).
 
 ## 4. Set up your containers
 
-<!---
-TODO: This needs to be updated once the PR linked here merges.
--->
-
 See
-[here](https://github.com/stacks-network/sbtc/blob/feat/mainnet_docker_compose/docker/mainnet/sbtc-signer/signer-config.toml.in)
+[here](https://github.com/stacks-network/sbtc/blob/main/docker/mainnet/docker-compose.yml)
 for a Docker Compose including all the required components.
 
 ## Monitoring

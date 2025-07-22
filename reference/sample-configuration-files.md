@@ -151,11 +151,15 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 1900
+start_height = 1_900
 
 [[burnchain.epochs]]
-epoch_name = “3.1”
-start_height = 77_770
+epoch_name = "3.1"
+start_height = 2_000
+
+[[burnchain.epochs]]
+epoch_name = "3.2"
+start_height = 71_525
 ```
 
 ### Mainnet Signer
@@ -192,6 +196,9 @@ stacks_private_key = "$your_stacks_private_key"
 
 # The IP address and port where prometheus metrics can be accessed.
 metrics_endpoint = "127.0.0.1:9154"
+
+# Determining when a time-based tenure extend will be accepted
+tenure_idle_timeout_secs = 120
 ```
 
 ### Mainnet Stacks Node
@@ -213,11 +220,7 @@ stacker = true
 [burnchain]
 chain = "bitcoin"
 mode = "mainnet"
-peer_host = "bitcoind.stacks.co"
-username = "blockstack"
-password = "blockstacksystem"
-rpc_port = 8332
-peer_port = 8333
+peer_host = "bitcoin.mainnet.stacks.org"
 
 # Set your auth token, which the signer uses
 # This should match the auth_password field of your signer config

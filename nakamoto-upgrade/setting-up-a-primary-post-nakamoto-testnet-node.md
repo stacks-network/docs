@@ -1,8 +1,12 @@
-# Setting Up a Primary (Post-Nakamoto) Testnet Node
+---
+hidden: true
+---
+
+# Setting Up a Primary Nakamoto Testnet Node - Signers
 
 ### **Setup A Stacks Primary Testnet Node**
 
-Once your signer is upgraded to version 3.0.0.0.0.1 ([here](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.0.0.0.0.1)) you’ll need to run a primary testnet node alongside it.
+Once your signer is upgraded to version 3.1.0.0.5.0 ([here](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.5.0)) you’ll need to run a primary testnet node alongside it.
 
 You have two options here. The first is to run the Bash script below and it will handle everything for you, including creating the configuration file, downloading and extracting a chain state archive, and getting the node up and running.
 
@@ -20,7 +24,7 @@ STACKS_RPC_PORT="40443"
 STACKS_P2P_PORT="40444"
 
 IMG="blockstack/stacks-core"
-VER="3.0.0.0.0"
+VER="3.1.0.0.5"
 STX_NODE_CONFIG="${STACKS_DIR}/Config.toml"
 
 mkdir -p ${STACKS_DIR}/data
@@ -106,7 +110,15 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 56_457
+start_height = 1_900
+
+[[burnchain.epochs]]
+epoch_name = "3.1"
+start_height = 2_000
+
+[[burnchain.epochs]]
+epoch_name = "3.2"
+start_height = 71_525
 EOF
 
 docker run -d  \\
@@ -206,7 +218,15 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 56_457
+start_height = 1_900
+
+[[burnchain.epochs]]
+epoch_name = "3.1"
+start_height = 2_000
+
+[[burnchain.epochs]]
+epoch_name = "3.2"
+start_height = 71_525
 ```
 
 The important aspects that you’ll need to change are:
@@ -241,7 +261,7 @@ An example for running the node’s Docker image with docker run is below. Be su
 ```bash
 IMG="blockstack/stacks-core"
 
-VER="3.0.0.0.0"
+VER="3.1.0.0.5"
 
 STX_NODE_CONFIG="./node-config.toml"
 
@@ -260,7 +280,7 @@ stacks-node start \\
 Or, using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:3.0.0.0.0
+FROM blockstack/stacks-core:3.1.0.0.5
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443

@@ -75,6 +75,60 @@ To calculate the amount of BTC to send miners should:
 
 Stackers are in charge of both validating and appending new blocks and conducting miner tenure changes. The next section will explain how that works, and then we'll see how this process results in Bitcoin finality.
 
+### Stacks mining in practice
+
+If you take a look at [SIgnal21's mining dashboard](https://app.signal21.io/stacks/mining), you can view some interesting data about mining on the Stacks network, including BTC spent per block, STX earned per block, the total number of miners over the course of the chain's history, and the number of miners for any given block.
+
+Many people notice the seemingly small number of miners on Stacks. Without context, this can sometimes raise eyebrows. Let's dig into how mining works on Stacks so we can understand why this isn't an issue for decentralization.
+
+Stacks miners function similarly to sequencers in L2 systems in that they are only responsible for constructing and proposing new blocks, not appending them to the chain. But unlike most Ethereum L2s that operate with just a single centralized sequencer, Stacks consistently has at least 4-5 miners with open membership allowing anyone to join.
+
+It's important to note that there are two primary parties involved in the block production process on Stacks: miners and stackers.
+
+These two roles serve complementary relationships in the [block production process](./), and stackers drastically reduce any potential destructive power miners have over the chain.
+
+Miners cannot reorganize the chain. In the worst case, all miners can do is omit (some kinds of) transactions, and all that is required to address this is to run your own miner.
+
+Furthermore, more miners on the network would mean fewer BTC rewards for Stackers, as miners would have to spend more of their funds on Bitcoin L1 fees rather than sending it to the Stackers.
+
+{% hint style="info" %}
+**Wouldn't more miners mean more competition, meaning more rewards?**
+
+The reason more miners means fewer rewards is because miners act economically rationally, and they don't have an unlimited amount of BTC to work with.
+
+Miners are paying their PoX commitments plus their Bitcoin fees for a chance to win the coinbase (1,000 STX) plus fees for a tenure. If there are more miners, they will each pay less, because they will have a lower chance of winning. They can't pay ever-increasing amounts of BTC because at some point they will never be profitable, so there is a limit to how much BTC they can spend in order to try and win a tenure.
+
+As they pay less, the Bitcoin fee becomes a more significant portion of their expenses, and that also decreases their odds of winning the tenure.
+
+Here's a concrete example:
+
+Let's say Stacks is trading at 1,000 Sats per STX.&#x20;
+
+The total spend from all miners, if everyone is acting logically and we ignore Stacks fees, would be less than 1,000,000 Sats (1,000 STX coinbase \* 1000 Sats/STX).&#x20;
+
+If that is from 5 miners, then it could be 10,000 Sats (2,000 Sats for each transaction) going to Bitcoin fees and 990,000 Sats going to PoX.&#x20;
+
+If there are 100 miners, then it would be 200,000 Sats going to Bitcoin fees, and 800,000 Sats going to PoX.
+{% endhint %}
+
+
+
+This creates a natural economic equilibrium where:
+
+1. Enough miners participate to ensure blocks are produced reliably
+2. Stackers receive optimal BTC rewards
+3. The network maintains censorship resistance without unnecessary mining competition
+
+This design is intentional - by having stackers as complimentary security guarantors who receive BTC rewards via PoX, Stacks achieves security without requiring an excessive number of miners competing solely to win block production rights.
+
+Unlike other chains where miners alone determine the canonical chain, Stacks' two-party system provides stronger guarantees:
+
+* Miners cannot force invalid transactions or blocks (stackers won't sign them, and even if they did, the nodes would not accept them)
+* No miner can unilaterally reorg the chain (stackers control chain finality)
+* The 70% stacker threshold signature requirement ensures broad consensus before blocks are accepted
+
+This separation of concerns between miners and stackers is what makes Stacks uniquely secure despite having a small number of miners.
+
 ### What About Microblocks?
 
 Microblocks are a legacy feature of the previous version of Stacks that no longer exist. They were originally created as a way to improve transaction throughput, but without the functionality of Nakamoto, they never worked in practice.

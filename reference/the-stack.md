@@ -2,7 +2,7 @@
 
 New to developing on Stacks or looking for a quick reference guide for all the important components and links? You're in the right place.
 
-We'll go over all the building blocks you need to be aware of to build high-quality Stacks dapps. This page exists to serve as a reference to the Stacks developer's tool chest.
+We'll go over all the building blocks you need to be aware of to build high-quality Stacks dapps. This page exists to serve as a reference to the Stacks developer's tool chest. In addition to the tools below, stacks.co houses an index of [apps, services, and other integrations available on Stacks](https://www.stacks.co/explore/ecosystem?category=All+Teams#tools).
 
 ### Building Blocks
 
@@ -64,7 +64,11 @@ One of the key use cases for Stacks is being able to directly interact with the 
 
 #### Stacking Tools
 
-The DegenLabs team has created a [suite of tools](https://stacking.tools/) to make stacking significantly easier including a signer signature generator, a solo stacking dapp to stack without needing to run a signer, and a TypeScript library for mocking stacking functions.
+The Degen Lab team has created a [suite of tools](https://stacking.tools/) to make stacking significantly easier including a signer signature generator, a solo stacking dapp to stack without needing to run a signer, and a TypeScript library for mocking stacking functions.
+
+#### Oracles and Price Feeds
+
+DIA and Pyth provide oracle services for the Stacks layer. Find [documentation for DIA here](https://docs.diadata.org/use-nexus-product/nexus/data-delivery-usage/integrated-blockchains/stacks-price-oracles) and learn more about the [developer release of Pyth here](https://www.pyth.network/blog/developer-release-pyth-on-stacks).
 
 ### Educational Resources
 

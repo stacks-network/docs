@@ -12,12 +12,13 @@ Introduced in: Clarity 1
 
 **description:**
 
-Returns the current block height of the Stacks blockchain as an uint
+Returns the current block height of the Stacks blockchain in Clarity 1 and 2. Upon activation of epoch 3.0, `block-height` will return the same value as `tenure-height`. In Clarity 3, `block-height` is removed and has been replaced with `stacks-block-height`.
 
 **example:**
 
 ```
-(> block-height 1000) ;; returns true if the current block-height has passed 1000 blocks.
+(> block-height u1000) ;; returns true if the current block-height has passed 1000 blocks.
+
 ```
 
 ### burn-block-height​ <a href="#burn-block-height" id="burn-block-height"></a>
@@ -152,10 +153,6 @@ Represents the _none_ option indicating no value for a given optional (analogous
 
 ### **stacks-block-height**
 
-{% hint style="warning" %}
-Will be available after the Nakamoto hard fork
-{% endhint %}
-
 Introduced in: Clarity 3
 
 **output: `uint`**
@@ -187,10 +184,6 @@ Returns the total number of micro-STX (uSTX) that are liquid in the system as of
 ```
 
 ### **tenure-height**
-
-{% hint style="warning" %}
-Will be available after Nakamoto hard fork
-{% endhint %}
 
 Introduced in: Clarity 3
 

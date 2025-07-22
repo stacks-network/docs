@@ -8,7 +8,7 @@ Transactions are the fundamental unit of execution in the Stacks blockchain. Eac
 
 Transactions go through phases before being finally confirmed, and available for all, on the Stacks 2.0 network.
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 * **Generate**: Transactions are assembled according to the encoding specification.
 * **Validate and sign**: Transactions are validated to confirm they are well-formed. Required signatures are filled in.

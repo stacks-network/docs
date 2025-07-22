@@ -28,10 +28,9 @@ The Stacks Blockchain configuration file has multiple sections under which an op
 * connection\_options
 * burnchain
 * ustx\_balance
+* miner
 
-For reference, several configuration file examples are [available here](https://github.com/stacks-network/stacks-blockchain/tree/master/testnet/stacks-node/conf)
-
-* Example mainnet follower configuration
+For reference, several configuration file examples are [available here](https://github.com/stacks-network/stacks-core/tree/master/sample/conf).
 
 #### node
 
@@ -55,7 +54,6 @@ Contains various configuration options for the stacks-node binary.
 | prometheus\_bind             |          | Address and port for Prometheus metrics collection.                                                        |
 | deny\_nodes                  |          | List of ip addresses of nodes that should be ignored                                                       |
 | stacker                      |          | Determines whether the node is running a stacker (`true`) that issues events for signer binary             |
-
 
 #### events\_observer
 
@@ -104,11 +102,13 @@ This section contains configuration options pertaining to the blockchain the sta
 
 **Mining**
 
-| Name                          | Required | Description                                                                                        |
-| ----------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
-| burn\_fee\_cap                | ✓        | Maximum amount (in sats) of "burn commitment" to broadcast for the next block's leader election    |
-| satoshis\_per\_byte           | ✓        | [Amount (in sats) per byte](https://bitcoinfees.net/) - Used to calculate the transaction fees     |
-| commit\_anchor\_block\_within |          | Sets the time period (in milliseconds) for commitments. Only used when `mode` is set to `mocknet`. |
+| Name                             | Required | Description                                                                                        |
+| -------------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
+| burn\_fee\_cap                   | ✓        | Maximum amount (in sats) of "burn commitment" to broadcast for the next block's leader election    |
+| satoshis\_per\_byte              | ✓        | [Amount (in sats) per byte](https://bitcoinfees.net/) - Used to calculate the transaction fees     |
+| commit\_anchor\_block\_within    |          | Sets the time period (in milliseconds) for commitments. Only used when `mode` is set to `mocknet`. |
+| tenure\_extend\_cost\_threshold  |          | Percentage of block budget that must be used before attempting a time-based tenure extend          |
+| block\_rejection\_timeout\_steps |          | Define the timeout to apply while waiting for signers responses, based on the amount of rejections |
 
 #### ustx\_balance
 
@@ -140,12 +140,92 @@ bootstrap_node = "02196f005965cebe6ddc3901b7b1cc1aa7a88f305bb8c5893456b8f9a60592
 chain = "bitcoin"
 mode = "mainnet"
 peer_host = "localhost"
-username = "user"
-password = "pass"
-rpc_port = 8332
 peer_port = 8333
 
 [[events_observer]]
 endpoint = "localhost:3700"
 events_keys = ["*"]
+```
+
+### Example Testnet Follower Configuration
+
+```toml
+[node]
+
+rpc_bind = "0.0.0.0:20443"
+p2p_bind = "0.0.0.0:20444"
+bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
+prometheus_bind = "127.0.0.1:9153"
+working_dir = "/stacks-blockchain"
+
+[burnchain]
+chain = "bitcoin"
+mode = "krypton"
+peer_host = "bitcoin.regtest.hiro.so"
+peer_port = 18444
+pox_prepare_length = 100
+pox_reward_length = 900
+
+[[ustx_balance]]
+address = "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST319CF5WV77KYR1H3GT0GZ7B8Q4AQPY42ETP1VPF"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST221Z6TDTC5E0BYR2V624Q2ST6R0Q71T78WTAX6H"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
+amount = 10000000000000000
+
+[fee_estimation]
+fee_estimator = "fuzzed_weighted_median_fee_rate"
+
+[[burnchain.epochs]]
+epoch_name = "1.0"
+start_height = 0
+
+[[burnchain.epochs]]
+epoch_name = "2.0"
+start_height = 0
+
+[[burnchain.epochs]]
+epoch_name = "2.05"
+start_height = 1
+
+[[burnchain.epochs]]
+epoch_name = "2.1"
+start_height = 2
+
+[[burnchain.epochs]]
+epoch_name = "2.2"
+start_height = 3
+
+[[burnchain.epochs]]
+epoch_name = "2.3"
+start_height = 4
+
+[[burnchain.epochs]]
+epoch_name = "2.4"
+start_height = 5
+
+[[burnchain.epochs]]
+epoch_name = "2.5"
+start_height = 6
+
+[[burnchain.epochs]]
+epoch_name = "3.0"
+start_height = 1_900
+
+[[burnchain.epochs]]
+epoch_name = "3.1"
+start_height = 2_000
+
+[[burnchain.epochs]]
+epoch_name = "3.2"
+start_height = 71_525
 ```

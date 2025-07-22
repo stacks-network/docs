@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # What is the Nakamoto Upgrade?
 
 The Nakamoto Release is a recent hard fork on the Stacks network designed to bring several benefits, chief among them are increased transaction throughput and 100% Bitcoin finality.&#x20;

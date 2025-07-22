@@ -1,14 +1,10 @@
+---
+hidden: true
+---
+
 # Nakamoto for App Developers
 
-### Getting Started with Nakamoto
-
-You can jump into and begin using Nakamoto today, here are some links to help you get started.
-
-#### New Docs
-
-There have been several updates to Hiro's products including Clarinet, Stacks.js, and the API. You can view a summary of all the changes and links to relevant documentation on [Hiro's Nakamoto Docs ](https://docs.hiro.so/nakamoto)page.
-
-#### API Endpoints
+### API Endpoints
 
 * API status&#x20;
   * Tesnet: [https://api.testnet.hiro.so/extended/](https://api.testnet.hiro.so/extended/)
@@ -22,7 +18,7 @@ There have been several updates to Hiro's products including Clarinet, Stacks.js
 
 #### PoX-4 Contract
 
-`pox-4.clar` is the new stacking contract for Nakamoto. If you are interested in experimenting with proof of transfer use cases including state changes, solo stacking, and pool stacking, all the functions you’ll need can be found at the deployed contract:&#x20;
+`pox-4.clar` is the stacking contract. If you are interested in experimenting with proof of transfer use cases including state changes, solo stacking, and pool stacking, all the functions you’ll need can be found at the deployed contract:&#x20;
 
 * Testnet: [https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet](https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet)
 * Mainnet: [https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46?chain=mainnet](https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46?chain=mainnet)
@@ -37,7 +33,7 @@ After a DKG (Distributed Key Generation) round, signer votes are submitted to th
 
 The explorer will allow you to view fast blocks as they come in. Be sure to turn on “Live updates” to see them coming in in real time. [https://explorer.hiro.so/?chain=testnet](https://explorer.hiro.so/?chain=testnet)
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption><p>Turn on Live Updates to view blocks coming in in real time</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p>Turn on Live Updates to view blocks coming in in real time</p></figcaption></figure>
 
 #### Local Development Environment
 
