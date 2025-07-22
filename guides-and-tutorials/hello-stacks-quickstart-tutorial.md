@@ -144,7 +144,7 @@ Finally, every public function in Clarity must return a response type, which is 
 <details>
 <summary><strong>🔍 Deep Dive: Understanding the Contract Code (Optional)</strong></summary>
 
-Want to understand exactly what each part of the contract is doing? Let's walk through every function and concept used in our message board contract. I'll include links to the official documentation for each function so you can dive deeper if you want.
+Want to understand exactly what each part of the contract is doing? Let's walk through every function and concept used in our message board contract. Links to the official documentation are included for each function, so you may dive deeper if you want.
 
 ### How We Store Data on the Blockchain
 
