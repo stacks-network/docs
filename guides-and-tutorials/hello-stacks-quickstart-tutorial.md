@@ -4,7 +4,7 @@
 
 Looking to see what building on Stacks is all about? You're in the right place.
 
-This tutorial will take you from zero to a working Stacks application in just 30 minutes. You'll learn the essential tools and concepts needed to build decentralized applications on Stacks, the leading Bitcoin L2.
+This tutorial will help you build a working Stacks application in just 30 minutes. You'll learn the essential tools and concepts needed to build decentralized applications on Stacks, the leading Bitcoin L2.
 
 **What you'll build:** A simple message board where users can post messages to the blockchain and read messages from others.
 
@@ -137,7 +137,7 @@ Finally, every public function in Clarity must return a response type, which is 
 <details>
 <summary><strong>🔍 Deep Dive: Understanding the Contract Code (Optional)</strong></summary>
 
-Want to understand exactly what each part of the contract is doing? Let's walk through every function and concept used in our message board contract. I'll include links to the official documentation for each function so you can dive deeper if you want.
+Want to understand exactly what each part of the contract is doing? Let's walk through every function and concept used in our message board contract. Links to the official documentation are included for each function, so you may dive deeper if you want.
 
 ### How We Store Data on the Blockchain
 
@@ -178,19 +178,19 @@ Now let's break down the most important function, the one that actually adds mes
     (ok id)))
 ```
 
-Let me walk you through this step by step:
+Step by step, this function performs:
 
 When you call [`define-public`](../reference/functions.md#define-public), you're creating a function that anyone can call from outside the contract. The function takes one parameter called `content` that must be a UTF-8 string of maximum 280 characters.
 
 Inside the function, we use [`let`](../reference/functions.md#let) to create a local variable. This is like declaring a variable inside a function in other languages, but with Clarity's unique syntax. We're creating a variable called `id` and setting it to the current message count plus 1.
 
-Here's where Clarity might trip you up if you're coming from other languages. Notice how we write `(+ (var-get message-count) u1)` instead of something like `message-count + 1`. In Clarity, operators like `+`, `-`, `>`, and `<` are actually functions that use prefix notation. So `(+ 2 3)` means "add 2 and 3" (instead of `2 + 3` like you'd write in JavaScript or Python). This is part of Clarity's LISP-inspired syntax where everything is a function call.
+*Here's where Clarity might trip you up if you're coming from other languages.* Notice how we write `(+ (var-get message-count) u1)` instead of something like `message-count + 1`. In Clarity, operators like `+`, `-`, `>`, and `<` are actually functions that use prefix notation. So `(+ 2 3)` means "add 2 and 3" (instead of `2 + 3` like you'd write in JavaScript or Python). This is part of Clarity's LISP-inspired syntax where everything is a function call.
 
 The [`var-get`](../reference/functions.md#var-get) function reads the current value of our message counter, and [`+`](../reference/functions.md#add) adds 1 to create the next message ID.
 
 Next, we store the message content using [`map-set`](../reference/functions.md#map-set), which is like inserting a row into a database table. We store the message content with the new ID we just created.
 
-We also store who posted the message using another [`map-set`](../reference/functions.md#map-set) call. Notice how we use `tx-sender` here. This is a special variable that Clarity automatically sets to the address of whoever called the function. You can't fake this or manipulate it, which makes it perfect for tracking message authors.
+We also store who posted the message using another [`map-set`](../reference/functions.md#map-set) call (*Notice how we use `tx-sender` here*). This is a special variable that Clarity automatically sets to the address of whoever called the function. You can't fake this or manipulate it, which makes it perfect for tracking message authors.
 
 We update our message counter using [`var-set`](../reference/functions.md#var-set), and finally return [`ok`](../reference/functions.md#ok) with the new message ID. In Clarity, all public functions must return either `(ok value)` for success or `(err error)` for failure. This ensures that every function call has a predictable outcome.
 
@@ -248,7 +248,7 @@ Now that you've seen the code, let me explain some of the key concepts that make
 
 One of the most important things to understand about Clarity is its response types. Every public function must return either `(ok value)` or `(err error)`. This might seem annoying at first, but it ensures that every function call has a predictable outcome. If a function returns `err`, any changes it made to the blockchain are automatically rolled back. If it returns `ok`, the changes are committed. This prevents a lot of the bugs that plague other blockchain platforms.
 
-Clarity also uses optional types extensively. Functions like `map-get?` return `(some value)` or `none` instead of potentially null values. This forces you to handle the case where data might not exist, which eliminates an entire class of bugs that you see in other languages where developers forget to check for null values.
+Clarity also uses optional types extensively. Functions like `map-get?` return `(some value)` or `none` instead of potentially null values. This forces you to handle the case where data might not exist, which eliminates an entire class of bugs that you see in other languages where developers may neglect to check for null values.
 
 Understanding data persistence on the blockchain is another key concept. While Clarity does provide functions like `map-delete` and `map-set` that can modify or remove data, the decision of whether to make data mutable is entirely up to the contract developer. Notice how our contract doesn't have any functions to edit or delete messages. This is a deliberate design choice for our message board - we want messages to be permanent and trustworthy once posted. You could easily add update or delete functionality if your use case requires it, but for a message board, immutability makes sense.
 
