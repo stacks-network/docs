@@ -185,7 +185,7 @@ Now let's break down the most important function, the one that actually adds mes
     (ok id)))
 ```
 
-Let me walk you through this step by step:
+Step by step, this function performs:
 
 When you call [`define-public`](../reference/functions.md#define-public), you're creating a function that anyone can call from outside the contract. The function takes one parameter called `content` that must be a UTF-8 string of maximum 280 characters.
 
