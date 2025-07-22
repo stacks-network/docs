@@ -17,7 +17,8 @@
   * [Authentication](concepts/network-fundamentals/authentication.md)
   * [Bitcoin Name System](concepts/network-fundamentals/bitcoin-name-system.md)
   * [SIPs](concepts/network-fundamentals/sips.md)
-  * [Technical Specifications](concepts/network-fundamentals/technical-specifications.md)
+  * [Technical Specifications](concepts/network-fundamentals/technical-specifications/README.md)
+    * [Audits](concepts/network-fundamentals/technical-specifications/audits.md)
 * [Block Production](concepts/block-production/README.md)
   * [Mining](concepts/block-production/mining.md)
   * [Signing](concepts/block-production/stackers-and-signing.md)
@@ -106,6 +107,7 @@
   * [Stack with a Pool](guides-and-tutorials/stack-stx/stack-with-a-pool.md)
   * [Increase Stacked Position](guides-and-tutorials/stack-stx/increase-stacking.md)
   * [Stop Stacking](guides-and-tutorials/stack-stx/stop-stacking.md)
+* [Oracles](guides-and-tutorials/oracles.md)
 * [Community Tutorials](guides-and-tutorials/community-tutorials.md)
 
 ## 📚 Reference
@@ -144,6 +146,9 @@
   * [🔸 January 2025](press-and-top-links/2025/january-2024.md)
   * [🔸 February 2025](press-and-top-links/2025/february-2025.md)
   * [🔸 March 2025](press-and-top-links/2025/march-2025.md)
+  * [🔸 April 2025](press-and-top-links/2025/march-2025-1.md)
+  * [🔸 May 2025](press-and-top-links/2025/march-2025-2.md)
+  * [🔸 June 2025](press-and-top-links/2025/june-2025.md)
 
 ## 🧡 Bitcoin Theses and Reports
 

@@ -1,6 +1,6 @@
 # Earn sBTC Rewards
 
-As part of the launch of sBTC, you can enroll in the sBTC rewards program and earn \~5% real yield on your BTC, paid in sBTC.
+As part of the launch of sBTC, you can enroll in the sBTC rewards program and earn real yield on your BTC, paid in sBTC.
 
 The rewards program is non-custodial, your sBTC remains in your wallet.
 
