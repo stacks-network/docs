@@ -3,6 +3,7 @@ description: >-
   Testnet and mainnet rollout sequencing for the Nakamoto upgrade. Several key
   steps bring more features live in a safe, step-by-step process that will give
   builders and partners time to integrate.
+hidden: true
 ---
 
 # Nakamoto Rollout Plan

@@ -1,15 +1,13 @@
-# Start Here
+[![License](https://img.shields.io/github/license/stacks-network/docs)](./LICENSE)
 
-{% hint style="info" %}
-Note that there is a major upgrade taking place called the [Nakamoto Upgrade](nakamoto-upgrade/nakamoto-upgrade-start-here.md). These docs describe how Stacks works under Nakamoto rules. The Nakamoto Upgrade is currently in progress, and is scheduled to be completed in September. If you notice discrepancies in how Stacks is currently behaving and what is explained here (especially block times), that is why.
-{% endhint %}
+# Start Here
 
 ## Stacks: The TL;DR
 
 **Stacks is the leading Bitcoin L2, bringing smart contract functionality to Bitcoin, without modifying Bitcoin itself.**
 
 {% hint style="info" %}
-Want to get a guided introduction to everything you need to know to become a Stacks developer? The Stacks Primer is a 5-day email course designed to take you from brand new to building your first contract, and even how to get paid for building out your own project.&#x20;
+Want to get a guided introduction to everything you need to know to become a Stacks developer? The Stacks Primer is a 5-day email course designed to take you from brand new to building your first contract, and even how to get paid for building out your own project.
 
 [Take the Course](https://stacks.org/dev)
 {% endhint %}
@@ -26,7 +24,7 @@ Clarity is the smart contract language that Stacks uses. it has been designed fr
 
 #### sBTC
 
-sBTC is the trust-minimized 2-way Bitcoin peg on the Stacks layer. sBTC is the key to making Bitcoin programmable and bringing full smart contract functionality to Bitcoin via Stacks. sBTC is not a federation, but operates as an open-network, decentralized 2-way peg solution to bring smart contract functionality to Bitcoin with as little counterparty risk as possible. There is an entire section of these docs dedicated to explaining sBTC.
+sBTC is the trust-minimized 2-way Bitcoin peg on the Stacks layer. sBTC is the key to making Bitcoin programmable and bringing full smart contract functionality to Bitcoin via Stacks. sBTC is not a federation, but operates as an open-network, decentralized 2-way peg solution to bring smart contract functionality to Bitcoin with as little counterparty risk as possible. There is an entire section of these docs dedicated to explaining[ sBTC](concepts/sbtc/).
 
 ### How to Use These Docs
 
@@ -40,7 +38,7 @@ Looking for something specific? These docs are integrated with AI-powered semant
 
 #### Learn About Stacks
 
-Looking to learn more about exactly how Stacks works? The "[Concepts](broken-reference)" section in the left navigation is where you'll want to go. The "[What is Stacks](concepts/stacks-101/what-is-stacks.md)" page is the best place to start your learning journey. This is where you can dive deep into exactly how Stacks works and learn about all the different building blocks.
+Looking to learn more about exactly how Stacks works? The "[Concepts](broken-reference/)" section in the left navigation is where you'll want to go. The "[What is Stacks](concepts/stacks-101/what-is-stacks.md)" page is the best place to start your learning journey. This is where you can dive deep into exactly how Stacks works and learn about all the different building blocks.
 
 #### Build a Stacks Dapp
 

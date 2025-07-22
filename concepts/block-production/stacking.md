@@ -6,6 +6,11 @@ Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuabl
 
 This document is presented as a conceptual overview of stacking and how it works. You can also view the [stacking guides](../../guides-and-tutorials/stack-stx/) to get a practical guide on the different ways you can stack and how to do it and a [deep dive into the contract](../../example-contracts/stacking.md).
 
+`pox-4.clar` is the stacking contract. If you are interested in experimenting with proof of transfer use cases including state changes, solo stacking, and pool stacking, all the functions you’ll need can be found at the deployed contract:&#x20;
+
+* Testnet: [https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet](https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet)
+* Mainnet: [https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46?chain=mainnet](https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46?chain=mainnet)
+
 ### Stacking vs Staking
 
 While stacking on the Stacks network can be conceptually similar to staking, Stacks is not a PoS network and there are a couple key differences.
@@ -151,6 +156,14 @@ The Stacks website has a [stacking page](https://www.stacks.co/learn/stacking) d
 
 For detailed instructions on how to stack, view the [Stack STX guides](../../guides-and-tutorials/stack-stx/).
 
-### Stacking statistics
+You can view all sorts of Stacking data and statistics using tools in the ecosystem such as:
 
-You can view all sorts of Stacking data and statistics and create your own dashboards on [Ortege](https://app.ortege.ai/superset/dashboard/stacks-shack/).
+* [Signal21](https://app.signal21.io/)
+* [Stacking Tracker](https://www.stacking-tracker.com/)
+* [StakingRewards.com](https://www.stakingrewards.com/calculator?asset=stacks)
+* [Stacking Calendar](https://stacking.tools/)
+
+- [Signal21](https://app.signal21.io/)
+- [Stacking Tracker](https://www.stacking-tracker.com/)
+- [StakingRewards.com](https://www.stakingrewards.com/calculator?asset=stacks)
+- [Stacking Calendar](https://stacking.tools/)

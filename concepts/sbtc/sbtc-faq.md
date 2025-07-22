@@ -144,7 +144,7 @@ The sBTC Rewards Program, on the other hand, offers additional BTC rewards speci
 
 <summary>When will sBTC be available?</summary>
 
-sBTC deposits first went live on December 16, 2024, quickly hitting the 1,000 BTC cap. The second cap will go live on February 25th, 2025, with withdrawals expected in March 2025.
+sBTC deposits first went live on December 16, 2024, quickly hitting the 1,000 BTC cap. The second cap will go live on February 25th, 2025, quickly hitting the 3,000 BTC cap. Withdrawals went live on April 30, 2025.
 
 Full decentralization of the Signer set will follow in [a subsequent phase](https://bitcoinl2labs.com/sbtc-rollout), gradually expanding beyond the initial 15 community-elected signers.
 
@@ -197,16 +197,6 @@ sBTC facilitates rapid movement between BTC and sBTC.
 2. sBTC to BTC conversion can be completed within 6 Bitcoin blocks (Approximately two hours)
 
 Read more in the [Stacks Documentation](https://docs.stacks.co/concepts/sbtc/operations/deposit-withdrawal-times).
-
-</details>
-
-<details>
-
-<summary>Why is the BTC locked until March?</summary>
-
-sBTC will be rolled out over two main phases. The first phase focuses on the peg-in functionality. Phase 2 will activate the withdrawal functionality, which is expected to activate in March.
-
-For security purposes, only the deposit/peg-in functionality will be activated in phase 1. The sBTC team is taking an iterative approach to ensure greater stability at launch. For more details on the sBTC launch plan, see [here](https://bitcoinl2labs.com/sbtc-rollout).
 
 </details>
 
