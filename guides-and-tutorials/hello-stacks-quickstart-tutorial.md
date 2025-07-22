@@ -191,7 +191,7 @@ When you call [`define-public`](../reference/functions.md#define-public), you're
 
 Inside the function, we use [`let`](../reference/functions.md#let) to create a local variable. This is like declaring a variable inside a function in other languages, but with Clarity's unique syntax. We're creating a variable called `id` and setting it to the current message count plus 1.
 
-Here's where Clarity might trip you up if you're coming from other languages. Notice how we write `(+ (var-get message-count) u1)` instead of something like `message-count + 1`. In Clarity, operators like `+`, `-`, `>`, and `<` are actually functions that use prefix notation. So `(+ 2 3)` means "add 2 and 3" (instead of `2 + 3` like you'd write in JavaScript or Python). This is part of Clarity's LISP-inspired syntax where everything is a function call.
+*Here's where Clarity might trip you up if you're coming from other languages.* Notice how we write `(+ (var-get message-count) u1)` instead of something like `message-count + 1`. In Clarity, operators like `+`, `-`, `>`, and `<` are actually functions that use prefix notation. So `(+ 2 3)` means "add 2 and 3" (instead of `2 + 3` like you'd write in JavaScript or Python). This is part of Clarity's LISP-inspired syntax where everything is a function call.
 
 The [`var-get`](../reference/functions.md#var-get) function reads the current value of our message counter, and [`+`](../reference/functions.md#add) adds 1 to create the next message ID.
 
