@@ -48,14 +48,7 @@ You don't have to use Leather, two other wallets popular with Stacks users are [
 
 Clarity is Stacks' smart contract language, designed for safety and predictability. Let's write a simple message board contract.
 
-### Understanding Clarity Basics
-
-Clarity is inspired by LISP and uses a functional programming approach. Everything in Clarity is an expression wrapped in parentheses. Here are some key concepts:
-
-- **Public functions**: Can be called by anyone and modify blockchain state
-- **Read-only functions**: Can read state but not modify it
-- **Data variables**: Store single values on the blockchain
-- **Maps**: Store key-value pairs on the blockchain
+Clarity is inspired by LISP and uses a functional programming approach. Everything in Clarity is an expression wrapped in parentheses. This can be a bit overwhelming at first if you are used to languages like JavaScript or Solidity, but the learning curve is short and Clarity is a simple language to understand once you dive in and start using it.
 
 For a more detailed introduction, check out the [Clarity Crash Course](./clarity-crash-course.md) in the docs.
 
