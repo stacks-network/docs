@@ -4,7 +4,7 @@
 
 Looking to see what building on Stacks is all about? You're in the right place.
 
-This tutorial will take you from zero to a working Stacks application in just 30 minutes. You'll learn the essential tools and concepts needed to build decentralized applications on Stacks, the leading Bitcoin L2.
+This tutorial will help you build a working Stacks application in just 30 minutes. You'll learn the essential tools and concepts needed to build decentralized applications on Stacks, the leading Bitcoin L2.
 
 **What you'll build:** A simple message board where users can post messages to the blockchain and read messages from others.
 
