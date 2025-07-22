@@ -283,7 +283,7 @@ Now let's deploy your contract to the Stacks testnet so you can interact with it
 5. Click "Deploy Contract"
 6. Confirm the transaction in your wallet
 
-The deployment should only take a few seconds. Once complete, you'll see your contract address in the explorer. Here's [my transaction](https://explorer.hiro.so/txid/0x3df7b597d1bbb3ce1598b1b0e28b7cbed38345fcf3fb33ae387165e13085e5d8?chain=testnet) deploying this contract.
+The deployment should only take a few seconds. Once complete, you'll see your contract address in the explorer. Here's [an example transaction](https://explorer.hiro.so/txid/0x3df7b597d1bbb3ce1598b1b0e28b7cbed38345fcf3fb33ae387165e13085e5d8?chain=testnet) deploying this contract.
 
 ### Test Your Deployed Contract
 
