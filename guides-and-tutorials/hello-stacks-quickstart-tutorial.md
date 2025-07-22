@@ -197,7 +197,7 @@ The [`var-get`](../reference/functions.md#var-get) function reads the current va
 
 Next, we store the message content using [`map-set`](../reference/functions.md#map-set), which is like inserting a row into a database table. We store the message content with the new ID we just created.
 
-We also store who posted the message using another [`map-set`](../reference/functions.md#map-set) call. Notice how we use `tx-sender` here. This is a special variable that Clarity automatically sets to the address of whoever called the function. You can't fake this or manipulate it, which makes it perfect for tracking message authors.
+We also store who posted the message using another [`map-set`](../reference/functions.md#map-set) call (*Notice how we use `tx-sender` here*). This is a special variable that Clarity automatically sets to the address of whoever called the function. You can't fake this or manipulate it, which makes it perfect for tracking message authors.
 
 We update our message counter using [`var-set`](../reference/functions.md#var-set), and finally return [`ok`](../reference/functions.md#ok) with the new message ID. In Clarity, all public functions must return either `(ok value)` for success or `(err error)` for failure. This ensures that every function call has a predictable outcome.
 
