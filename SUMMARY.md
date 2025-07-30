@@ -107,6 +107,7 @@
   * [Stack with a Pool](guides-and-tutorials/stack-stx/stack-with-a-pool.md)
   * [Increase Stacked Position](guides-and-tutorials/stack-stx/increase-stacking.md)
   * [Stop Stacking](guides-and-tutorials/stack-stx/stop-stacking.md)
+* [Snapshot the chainstate](guides-and-tutorials/best-practices-to-snapshot-the-chainstate.md)
 * [Oracles](guides-and-tutorials/oracles.md)
 * [Community Tutorials](guides-and-tutorials/community-tutorials.md)
 
