@@ -1,652 +1,524 @@
-# Hello Stacks (Quickstart Tutorial)
+# Hello Stacks Quickstart Tutorial
 
-## Hello Stacks (Quickstart Tutorial)
+## Build Your First Stacks App in 30 Minutes
 
 Looking to see what building on Stacks is all about? You're in the right place.
 
-This tutorial is designed to take you from never having worked with Stacks before to a complete app in about an hour.
+This tutorial will help you build a working Stacks application in just 30 minutes. You'll learn the essential tools and concepts needed to build decentralized applications on Stacks, the leading Bitcoin L2.
 
-You'll be introduced to all the main concepts and tools utilized to build Stacks dapps, with further resources to continue to learn.
+**What you'll build:** A simple message board where users can post messages to the blockchain and read messages from others.
 
-It does assume a basic familiarity with blockchain and smart contract technology. If you need an intro to those things, we recommend Codecademy's [Intro to Blockchain and Crypto](https://www.codecademy.com/learn/introduction-to-blockchain-and-crypto) course to get up to speed.
+**What you'll learn:**
 
-Let's get started.
+- How to write a Clarity smart contract
+- How to deploy contracts to Stacks testnet
+- How to connect a wallet to your app
+- How to interact with contracts from a frontend
 
-### What We're Building
+**Prerequisites:**
 
-We're going to be building a very simple practice application called Hello Stacks. Hello Stacks allows users to post a message to the Stacks blockchain and automatically generates a link for others to view that message.
+- Basic familiarity with web development (HTML, CSS, JavaScript)
+- A modern web browser
+- 30 minutes of your time
 
-Here's a brief overview video of what it looks like.
+Let's get started!
 
-We'll be utilizing various tools throughout this tutorial, most of which you don't need to have prior experience with.
+## Step 1: Set Up Your Wallet (5 minutes)
 
-It will be helpful, however, for you to be familiar with JavaScript and React to be able to most effectively follow along, as that's what we're going to be using to build the frontend, along with [Vite](https://vitejs.dev/).
+First, you'll need a Stacks wallet to interact with the blockchain.
 
-You can either follow along from scratch starting in the next section, or you can download the [starter repo](https://github.com/kenrogers/hello-stacks/tree/starter-branch) with all of the dependencies already set up on GitHub.
+### Install Leather Wallet
 
-You can also view the finished code in the `master` branch of that same repo.
+1. Visit [leather.io](https://leather.io) and install the browser extension
+2. Create a new wallet or import an existing one
+3. **Important**: Switch to the **Testnet** network in your wallet settings
+4. Get testnet STX tokens from the [Stacks Testnet Faucet](https://explorer.hiro.so/sandbox/faucet?chain=testnet)
 
-Let's get started by getting everything set up.
+{% hint style="info" %}
+Testnet STX tokens are free and used for testing. They have no real value but let you experiment with Stacks development without cost.
+{% endhint %}
 
-### Wallet Setup
+Your wallet is now ready for testnet development!
 
-The very first thing you'll need to do is set up the Leather wallet extension. This is how you can get STX tokens and interact with Stacks dapps. All you need to do right now is visit [Leather's website](https://leather.io) and install it. We'll set it up later with our dev environment.
+{% hint style="info" %}
+You don't have to use Leather, two other wallets popular with Stacks users are [Xverse](https://xverse.app) and [Asigna](https://asigna.io) if you need a multisig.
+{% endhint %}
 
-### Code Setup
+## Step 2: Write Your First Clarity Contract (10 minutes)
 
-If you want to use the starter repo, you can clone that, run `yarn` and move on to the next section, titled 'Writing Our Smart Contract'.
+Clarity is Stacks' smart contract language, designed for safety and predictability. Let's write a simple message board contract.
 
-Otherwise, follow along if you want to start from scratch. If you are brand new to Stacks and are not familiar with the tooling ecosystem like Clarinet, Stacks.js, etc. I highly recommend following along to get everything set up on your own.
+Clarity is inspired by LISP and uses a functional programming approach. Everything in Clarity is an expression wrapped in parentheses. This can be a bit overwhelming at first if you are used to languages like JavaScript or Solidity, but the learning curve is short and Clarity is a simple language to understand once you dive in and start using it.
 
-:::tip Hiro also has a set of [Stacks.js starters](https://docs.hiro.so/stacksjs-starters) that you can use to quickly get up and running with a new Stacks project. We won't be using them here, but they are an excellent resource. :::
+For a more detailed introduction, check out the [Clarity Crash Course](./clarity-crash-course.md) in the docs.
 
-The first thing we need to do is scaffold a new project with Vite, the frontend build tool we'll be using.
+### Write the Contract
 
-We're going to be using [Yarn](https://yarnpkg.com/), but you can also use NPM if you prefer. I'm using Yarn version `1.22.19` for this project and running Node version 18.7.0. You'll need to have both of those installed to follow along. I'm also working on a Mac, but will provide alternative installation instructions for tools like Clarinet as we go.
+Open [Clarity Playground](https://play.hiro.so/) in your browser. This is an online IDE where you can write and test Clarity code without installing anything.
 
-:::tip We recommend [installing and using NVM](https://github.com/nvm-sh/nvm) in order to install Node and easily switch versions. :::
+Delete the existing code and replace it with this message board contract:
 
-We'll have two separate directories for our project, one to handle the smart contracts and one to handle the frontend. Let's start by creating that and changing into it.
+```clarity
+;; Simple Message Board Contract
+;; This contract allows users to post and read messages
 
-```bash
-mkdir hello-stacks && cd hello-stacks
+;; Define a map to store messages
+;; Key: message ID (uint), Value: message content (string-utf8 280)
+(define-map messages uint (string-utf8 280))
+
+;; Define a map to store message authors
+(define-map message-authors uint principal)
+
+;; Counter for message IDs
+(define-data-var message-count uint u0)
+
+;; Public function to add a new message
+(define-public (add-message (content (string-utf8 280)))
+  (let ((id (+ (var-get message-count) u1)))
+    (map-set messages id content)
+    (map-set message-authors id tx-sender)
+    (var-set message-count id)
+    (ok id)))
+
+;; Read-only function to get a message by ID
+(define-read-only (get-message (id uint))
+  (map-get? messages id))
+
+;; Read-only function to get message author
+(define-read-only (get-message-author (id uint))
+  (map-get? message-authors id))
+
+;; Read-only function to get total message count
+(define-read-only (get-message-count)
+  (var-get message-count))
+
+;; Read-only function to get the last few messages
+(define-read-only (get-recent-messages (count uint))
+  (let ((total-count (var-get message-count)))
+    (if (> count total-count)
+      (map get-message (list u1 u2 u3 u4 u5))
+      (map get-message (list
+        (- total-count (- count u1))
+        (- total-count (- count u2))
+        (- total-count (- count u3))
+        (- total-count (- count u4))
+        (- total-count (- count u5)))))))
 ```
 
-Then get our frontend scaffolded.
+### Test the Contract
 
-```bash
-yarn create vite frontend --template react
+Click "Deploy", and go to the command line in the bottom right corner and try calling the functions.
+
+We are using the [contract-call?](../reference/functions.md#contract-call) method to call the functions in the contract that we just deployed within the playground.
+
+```clarity
+;; Test adding a message
+(contract-call? .contract-1 add-message u"Hello, Stacks!")
+
+;; Test reading the message
+(contract-call? .contract-1 get-message u1)
+
+;; Test getting the count
+(contract-call? .contract-1 get-message-count)
 ```
 
-Next we are going to install Clarinet. Clarinet is a development environment for Stacks created by Hiro. It allows us to set up a local Stacks chain, easily work with Clarity smart contracts (covered next), deploy our contracts, and test them. You can think of it as similar to Hardhat in the Ethereum world.
+You should see the contract working in the evaluation panel on the right!
 
-Installation instructions vary depending on your system, so I'll refer you to the [Clarinet documentation](https://github.com/hirosystems/clarinet) to get that installed, then come back here to set up our project.
+### Key Clarity Concepts Explained
 
-Still inside the `hello-stacks` directory, let's get our Stacks folder created with the following command. You can name this whatever you want, but I like the frontend/contracts convention.
+Now that you've seen the contract in action, let's talk about the core Clarity concepts you just used. When you write `define-map`, you're creating a data structure for storing key-value pairs on the blockchain. Think of it like creating a table in a database. The `define-data-var` function creates a variable that persists on the blockchain, perfect for keeping track of counters or settings that need to survive between function calls.
 
-```bash
-clarinet new contracts
+When you declare a function with `define-public`, you're creating a function that can modify blockchain state and be called by anyone externally. This is different from `define-read-only`, which creates functions that can only read existing data without changing anything. This separation helps prevent accidental state changes and makes your contract's behavior more predictable.
+
+The `tx-sender` variable is particularly useful because it's automatically set by the blockchain to contain the address of whoever called your function. You can't fake this value, which makes it perfect for authentication. When you need to create temporary variables within a function, you'll use `let` to set up local variables that only exist during that function call.
+
+Finally, every public function in Clarity must return a response type, which is why you see `ok` wrapping our return values. This ensures that every function call has a clear success or failure outcome, making your contracts much more predictable and easier to debug.
+
+<details>
+<summary><strong>🔍 Deep Dive: Understanding the Contract Code (Optional)</strong></summary>
+
+Want to understand exactly what each part of the contract is doing? Let's walk through every function and concept used in our message board contract. Links to the official documentation are included for each function, so you may dive deeper if you want.
+
+### How We Store Data on the Blockchain
+
+Let's start with how we're storing our messages. We use [`define-map`](../reference/functions.md#define-map) to create what's essentially a database table on the blockchain:
+
+```clarity
+(define-map messages uint (string-utf8 280))
 ```
 
-After this, you should have a `contracts` directory in your project that looks like this.
+Think of this as creating a table where each message gets a unique number (the `uint` key) and the message content can be up to 280 characters (the `string-utf8 280` value). It's like having a simple database where message #1 might be "Hello World!", message #2 might be "Learning Clarity!", and so on.
 
-There's not much here yet, we'll be creating our contracts in the next section. You'll also see a folder for tests, which are not covered in this tutorial.
+We also create another map to track who wrote each message:
 
-:::note Some people don't like the `contracts/contracts` structure that results from this naming convention. It's a matter of personal preference what you want to name this top-level folder when you create the Clarinet project. :::
-
-Finally, there is a directory called `settings` which contains a few configuration files for how we can interact with each chain. We are primarily concerned with `Devnet.toml` here, as this is how we can set up our local Stacks node for testing purposes. The others mainly come into play when we deploy.
-
-The `Clarinet.toml` file also provides some configuration options for our smart contracts and Clarinet will add our contracts here when we create them.
-
-:::tip Hiro has created an excellent [Clarinet 101](https://www.youtube.com/playlist?list=PL5Ujm489LoJaAz9kUJm8lYUWdGJ2AnQTb) series on YouTube for getting up to speed on everything Clarinet has to offer. :::
-
-Now we need to install some dependencies for working with Stacks and for styling so our app looks halfway decent. I'm a big fan of Tailwind, so we'll be utilizing that in this tutorial.
-
-Let's get Tailwind installed. We'll need some additional packages from Stacks.js as well, but we'll install those as we go. First make sure you are in the `frontend` directory and install the necessary dependencies for Tailwind.
-
-```bash
-yarn add -D tailwindcss postcss autoprefixer
+```clarity
+(define-map message-authors uint principal)
 ```
 
-and initialize it with
+This links each message ID to a `principal` (that's Clarity's term for a blockchain address). So if you post message #1, we'll store your address alongside that message ID.
 
-```bash
-npx tailwindcss init -p
+Finally, we need a way to keep track of how many messages we've posted so far:
+
+```clarity
+(define-data-var message-count uint u0)
 ```
 
-Now we need to tell Tailwind where our content is coming from and change out processing mode to "Just-In-Time" by modifying the `tailwind.config.js` file to look like this.
+The [`define-data-var`](../reference/functions.md#define-data-var) creates a single variable that persists on the blockchain. We start it at `u0` (that's how you write the number 0 for unsigned integers in Clarity). The `u` prefix might look weird if you're coming from other languages, but it's just Clarity's way of saying "this is a positive integer."
 
-```js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  mode: "jit",
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
+### The Heart of Our Contract: Adding Messages
+
+Now let's break down the most important function, the one that actually adds messages to our board:
+
+```clarity
+(define-public (add-message (content (string-utf8 280)))
+  (let ((id (+ (var-get message-count) u1)))
+    (map-set messages id content)
+    (map-set message-authors id tx-sender)
+    (var-set message-count id)
+    (ok id)))
 ```
 
-Add the Tailwind directives to the `index.css` file.
+Step by step, this function performs:
 
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+When you call [`define-public`](../reference/functions.md#define-public), you're creating a function that anyone can call from outside the contract. The function takes one parameter called `content` that must be a UTF-8 string of maximum 280 characters.
+
+Inside the function, we use [`let`](../reference/functions.md#let) to create a local variable. This is like declaring a variable inside a function in other languages, but with Clarity's unique syntax. We're creating a variable called `id` and setting it to the current message count plus 1.
+
+*Here's where Clarity might trip you up if you're coming from other languages.* Notice how we write `(+ (var-get message-count) u1)` instead of something like `message-count + 1`. In Clarity, operators like `+`, `-`, `>`, and `<` are actually functions that use prefix notation. So `(+ 2 3)` means "add 2 and 3" (instead of `2 + 3` like you'd write in JavaScript or Python). This is part of Clarity's LISP-inspired syntax where everything is a function call.
+
+The [`var-get`](../reference/functions.md#var-get) function reads the current value of our message counter, and [`+`](../reference/functions.md#add) adds 1 to create the next message ID.
+
+Next, we store the message content using [`map-set`](../reference/functions.md#map-set), which is like inserting a row into a database table. We store the message content with the new ID we just created.
+
+We also store who posted the message using another [`map-set`](../reference/functions.md#map-set) call (*Notice how we use `tx-sender` here*). This is a special variable that Clarity automatically sets to the address of whoever called the function. You can't fake this or manipulate it, which makes it perfect for tracking message authors.
+
+We update our message counter using [`var-set`](../reference/functions.md#var-set), and finally return [`ok`](../reference/functions.md#ok) with the new message ID. In Clarity, all public functions must return either `(ok value)` for success or `(err error)` for failure. This ensures that every function call has a predictable outcome.
+
+### Reading Messages Back
+
+Now let's look at how we read messages back from the blockchain. Our simplest function is:
+
+```clarity
+(define-read-only (get-message (id uint))
+  (map-get? messages id))
 ```
 
-Now we need to modify our `App.jsx` file to make sure Tailwind is working.
+When you use [`define-read-only`](../reference/functions.md#define-read-only), you're creating a function that can only read data, never modify it. This is perfect for getter functions like this one.
 
-```js
-function App() {
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <h1 className="text-3xl">Hello Stacks</h1>
-    </div>
-  );
-}
+The [`map-get?`](../reference/functions.md#map-get) function looks up a message by its ID. Notice the `?` at the end of the function name. This is Clarity's convention for functions that might not find what they're looking for. If the message exists, you'll get back `(some "message content")`. If it doesn't exist, you'll get `none`. This is much safer than null pointers in other languages because you have to explicitly handle both cases.
 
-export default App;
+We have similar functions for getting the message author and the total message count:
+
+```clarity
+(define-read-only (get-message-author (id uint))
+  (map-get? message-authors id))
+
+(define-read-only (get-message-count)
+  (var-get message-count))
 ```
 
-You can also delete the `App.css` file.
+The message count function is particularly simple because it just reads our counter variable and returns it. No parameters needed since there's only one counter.
 
-Now run `yarn dev` and make sure everything is working. Your screen should look like this.
+### A More Complex Function: Getting Recent Messages
 
-Awesome! We have our set up out of the way, now we can start actually coding. We're going to start with our smart contract and learn a bit about Clarity in the process.
+Let's look at our most complex function:
 
-### Writing Our Smart Contract
-
-Clarity is a smart contract language that has been purpose-built to help developers write safe, secure smart contracts.
-
-It took a lot of the lessons learned from the Solidity hacks over the years and used them to create something much more secure and safe.
-
-Stacks smart contracts are written using Clarity and live on the Stacks chain. For a comprehensive introduction to writing Clarity contracts, I highly recommend the book, [Clarity of Mind](https://book.clarity-lang.org/). We'll go over the basics here as we write a simple smart contract, but we are only scratching the surface.
-
-Before we do that, take a minute to familiarize yourself with what makes Clarity unique and why you might want to build on it by reading just the [Introduction chapter](https://book.clarity-lang.org/ch00-00-introduction.html) of Clarity of Mind.
-
-Now that you understand why Clarity is useful, let's get started writing our first contract and go over some Clarity concepts along the way.
-
-The first thing we need to do is generate our new smart contract with Clarinet. Make sure you are in the top level `contracts` folder and generate that.
-
-```bash
-clarinet contract new hello-stacks
+```clarity
+(define-read-only (get-recent-messages (count uint))
+  (let ((total-count (var-get message-count)))
+    (if (> count total-count)
+      (map get-message (list u1 u2 u3 u4 u5))
+      (map get-message (list
+        (- total-count (- count u1))
+        (- total-count (- count u2))
+        (- total-count (- count u3))
+        (- total-count (- count u4))
+        (- total-count (- count u5)))))))
 ```
 
-That created a few things for us. First, it created a `hello-stacks_test.ts` file in the `tests` directory. This is how we can use Clarinet to test our smart contracts. We won't cover that here, but you can check out the [TDD with Clarinet](https://dev.to/stacks/test-driven-stacks-development-with-clarinet-2e4i) tutorial for more information on that.
+This function demonstrates several advanced Clarity concepts. We use [`if`](../reference/functions.md#if) for conditional logic. The [`>`](../reference/functions.md#greater-than) operator (remember, it's a function in prefix notation) compares whether the requested count is greater than our total messages.
 
-It also created our actual Clarity file, `hello-stacks.clar` inside the inner `contracts` directory. This is where we'll actually write our smart contract.
+The [`map`](../reference/functions.md#map) function applies another function to each item in a list. So `(map get-message (list u1 u2 u3))` would call `get-message` on each of the numbers 1, 2, and 3.
 
-:::tip If you use VS Code, be sure to install the [Clarity Extension](https://marketplace.visualstudio.com/items?itemName=HiroSystems.clarity-lsp) for a more enjoyable Clarity developer experience. :::
+We use [`list`](../reference/functions.md#list) to create a list of message IDs, and [`-`](../reference/functions.md#subtract) for subtraction to calculate which recent messages to fetch.
 
-If you open up the `Clarinet.toml` file, you'll also see that Clarinet added our new contract there.
+### What Makes Clarity Special
 
-Now let's open up that `hello-stacks.clar` file and get writing our contract.
+Now that you've seen the code, let me explain some of the key concepts that make Clarity different from other smart contract languages.
 
-You'll see that it set up a bit of a template we can use, with each section commented out. This is a good introduction to some of the common data structures and functions we'll be using in a Clarity contract.
+One of the most important things to understand about Clarity is its response types. Every public function must return either `(ok value)` or `(err error)`. This might seem annoying at first, but it ensures that every function call has a predictable outcome. If a function returns `err`, any changes it made to the blockchain are automatically rolled back. If it returns `ok`, the changes are committed. This prevents a lot of the bugs that plague other blockchain platforms.
 
-But we can delete it for now as we'll be writing our own and covering what each does along the way.
+Clarity also uses optional types extensively. Functions like `map-get?` return `(some value)` or `none` instead of potentially null values. This forces you to handle the case where data might not exist, which eliminates an entire class of bugs that you see in other languages where developers may neglect to check for null values.
 
-Let's look at the very basic completed Clarity smart contract, then we'll go over what each line does.
+Understanding data persistence on the blockchain is another key concept. While Clarity does provide functions like `map-delete` and `map-set` that can modify or remove data, the decision of whether to make data mutable is entirely up to the contract developer. Notice how our contract doesn't have any functions to edit or delete messages. This is a deliberate design choice for our message board - we want messages to be permanent and trustworthy once posted. You could easily add update or delete functionality if your use case requires it, but for a message board, immutability makes sense.
 
-```
-(define-public (write-message (message (string-utf8 500)))
-    (begin
-        (print message)
-        (ok "Message printed")
-    )
-)
-```
+Every operation on the blockchain has execution costs, and Clarity is designed to make these costs predictable. Simple operations like reading a variable cost very little, while complex operations cost more. This is why we [avoid unbounded loops and recursion in Clarity](../concepts/clarity/decidability.md) at the language level - they can lead to unpredictable costs and potentially infinite execution.
 
-All we are doing here is defining a new public function called `write-message`. Public means that we can call this function from anywhere, as opposed to private, which would mean only this contract could call it.
-
-Whenever we call this function, we need to pass it a `message` which is a UTF8 string with a maximum of 500 characters.
-
-Next we see a block called `begin`. In Clarity, everything is a list inside of a list, so in this function definition, what we are really doing is calling the `define-public` function and passing it to arguments.
-
-The first is the function signature, which contains the name and the arguments.
-
-The second argument is the body of the function, but this can only contain a single expression. By wrapping our function body in a `begin` block, we can pass a multi-step function as a single expression.
-
-Again, there is much more information on how Clarity works in the [Clarity Book](https://book.clarity-lang.org/), this is just a high-level introduction to get you familiar.
-
-Within this `begin` block we are doing two things. First we are bringing the contents of our message to the blockchain, this will actually post the contents of this message to the chain when we send this transaction, something we'll look at soon.
-
-Then we are returning a response of `ok`, indicating success, with the message "Message printed".
-
-Clarity requires return values in all functions. In more complex functions, we would return either a success or error message depending on what action was taken and other logic.
-
-We can test this right now using the Clarinet console. In the `contracts` folder, run `clarinet console` to open it up and write the following:
-
-```bash
-(contract-call? .hello-stacks write-message u"Hello there")
-```
-
-Here we are calling the function we just created and passing a message of "Hello there". We prefix that with a `u` to indicate this is a UTF8 string.
-
-You should get an `ok` message returned here, which indicates that our function was called successfully.
-
-### Running a Local Stacks Devnet
-
-One of the coolest features of Clarinet is that it allows us to set up an entire mock Stacks network on our local machine for testing.
-
-This comes complete with a local block explorer and sandbox environment so we can further test our contracts.
-
-Make sure you have Docker installed and running, exit out of console with `CMD/CTRL + C` and run `clarinet devnet start`.
-
-It will take a few minutes to get up and running, but then we can open up our local Stacks block explorer.
-
-:::note You can [view the live Stacks block explorer](https://explorer.stacks.co/?chain=mainnet) and switch between mainnet and testnet to get familiar with it. :::
-
-Once it finishes, visit the local block explorer at `localhost:8000`. You'll be able to see blocks as they are created and also see your `hello-stacks` contract deployment.
-
-Click on that and copy the contract name, we'll need it for the next step.
-
-Now go ahead and visit the sandbox by clicking on the 'Sandbox' link up at the top. You'll need to connect with your wallet to use it, but we can also interact with our contract here.
-
-Be sure to change your network to `Devnet` in your Leather wallet, then connect.
+The automatic sender tracking through the `tx-sender` variable gives you built-in authentication without having to implement it yourself. This variable is automatically set by the blockchain and can't be spoofed, making it perfect for knowing who called your function.
 
 {% hint style="warning" %}
-If you run into funky rendering issues, be sure to change the network URL parameter in the address bar to `testnet`
+**Important**: Be careful when using `tx-sender` vs `contract-caller` in your contracts. While `tx-sender` refers to the original transaction sender and remains constant throughout the entire transaction chain, `contract-caller` refers to the most recent principal in the transaction chain and can change with each internal function or contract call. This difference is crucial for security - malicious contracts can potentially exploit `tx-sender`'s persistent context to bypass admin checks if you're not careful. For simple contracts like our message board, `tx-sender` is appropriate, but for more complex authorization logic, consider whether you need the original sender or the immediate caller.
+
+For more details on this, check out [this excellent blog post](https://www.setzeus.com/public-blog-post/clarity-carefully-tx-sender) from Clarity developer [setzeus](https://x.com/setzeus).
 {% endhint %}
 
-Click on the little function symbol on the left and take the contract name you copied and paste it in the top field there, the name should be automatically populated.
+Clarity's type safety means every variable and parameter has an explicit type. While Clarity is an interpreted language (not compiled), it performs comprehensive static analysis at deployment time through a multi-pass analysis system. This analysis catches type mismatches, undefined variables, and other errors before your contract is deployed, preventing runtime errors that could cause your contract to fail unexpectedly. Tools like `clarinet check` use this same analysis system to catch errors during development.
 
-Hit 'Get Contract' and you should see the function we created there.
+Finally, Clarity's predictable execution model and [decidability](../concepts/clarity/decidability.md) mean that every function will terminate, and execution costs are predictable. Clarity doesn't allow recursion or unbounded loops, which makes Clarity contracts more reliable and easier to reason about than contracts written in other languages.
 
-Now we can click on that and type in a message to call the function. But if you try to do that now, you might get an error saying you don't have enough STX.
+This contract demonstrates the core patterns you'll use in most Clarity smart contracts: storing data in maps and variables, creating public functions for state changes, read-only functions for data access, and proper error handling with response types.
 
-How do we get STX tokens in our Devnet account? Remember that `Devnet.toml` file Clarinet generates? That determines what accounts have what tokens.
+</details>
 
-So now we need to set up our Leather wallet extension that we set up at the beginning of this tutorial. If you already have an existing Leather wallet, you'll need to sign out in order to use it with the local Clarinet Devnet.
+## Step 3: Deploy Your Contract (5 minutes)
 
-{% hint style="danger" %}
-Make sure you copy your secret key before you sign out. You'll need it to restore your Leather wallet when you are done developing.
+Now let's deploy your contract to the Stacks testnet so you can interact with it from a web application.
+
+### Deploy via Stacks Explorer
+
+1. Visit the [Stacks Explorer Sandbox](https://explorer.hiro.so/sandbox/deploy?chain=testnet)
+2. Connect your Leather wallet (make sure you're on testnet)
+3. Paste your contract code into the editor
+4. Give your contract a name (e.g., "message-board") or just use the default generated name
+5. Click "Deploy Contract"
+6. Confirm the transaction in your wallet
+
+The deployment should only take a few seconds. Once complete, you'll see your contract address in the explorer. Here's [an example transaction](https://explorer.hiro.so/txid/0x3df7b597d1bbb3ce1598b1b0e28b7cbed38345fcf3fb33ae387165e13085e5d8?chain=testnet) deploying this contract.
+
+### Test Your Deployed Contract
+
+1. In the explorer, find your deployed contract
+2. Scroll down a bit and click on "Available Functions" to view its functions
+3. Try calling `add-message` with a test message (you'll need to change the post conditions toggle to allow mode, there is a dedicated docs page talking about [Post Conditions on Stacks](../concepts/transactions/post-conditions.md))
+4. Call `get-message` with ID `u1` to read it back
+5. Call `get-message-count` to see the total
+
+Your contract is now live and functional on the blockchain!
+
+## Step 4: Build the Frontend (10 minutes)
+
+Let's create a simple web interface to interact with your contract.
+
+### Set Up the Project
+
+Create a new React project:
+
+```bash
+npm create vite@latest my-message-board -- --template react
+cd my-message-board
+npm install
+```
+
+Install the Stacks.js libraries:
+
+```bash
+npm install @stacks/connect @stacks/transactions @stacks/network
+```
+
+### Create the App Component
+
+Replace the contents of `src/App.jsx` with the following:
+
+{% hint style="info" %}
+Since this is a quickstart, we won't dive into a long explanation of exacly what this code is doing. We suggest going and checking out [Hiro's Docs](https://docs.hiro.so/stacks/stacks.js) in order to get a handle on how stacks.js works.
 {% endhint %}
 
-Go ahead and copy the mnemonic listed in the `Devnet.toml` file and use that to import your local wallet into the Leather wallet. Then we can use that for interacting with our local Devnet chain.
-
-Once you do that, go ahead and restart `clarinet devnet start`.
-
-Now we can go back to the sandbox and call that function. You might need to sign out of the sandbox first and reauthenticate.
-
-When we do, you'll see the Leather wallet pop up with a transaction confirmation. You'll also see a little notice at the top that no transfers besides fees will occur.
-
-This is a cool feature of Stacks called Post Conditions. They are outside the scope of this tutorial, but you can learn more about them in the [Understanding Stacks Post Conditions](https://dev.to/stacks/understanding-stacks-post-conditions-e65) tutorial. They are another safety feature to help protect users.
-
-Now we can go back to the 'Transactions' page, click on this transaction, and see the data that was written to the chain.
-
-Here you can see a lot of information about the transaction, including the fact that a print event was detected, and what content was printed.
-
-Let's get our frontend set up so we can see how to do this with a UI and also read this information from the chain.
-
-### Adding a UI
-
-For this tutorial, we'll be using [Stacks.js](https://www.hiro.so/stacks-js), a JS library from Hiro that helps us interact with the Stacks chain, our Leather wallet, and our contracts. Another option is [Micro-Stacks](https://micro-stacks.dev/), a community-created resource.
-
-Since this is not a React tutorial, I'm going to give you all the boilerplate at once so you can just copy and paste this into `App.jsx` and we'll add the Stacks-specific stuff together.
-
 ```jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { connect, disconnect, isConnected, request } from "@stacks/connect";
+import {
+  fetchCallReadOnlyFunction,
+  stringUtf8CV,
+  uintCV,
+} from "@stacks/transactions";
+import "./App.css";
+
+const network = "testnet";
+
+// Replace with your contract address
+const CONTRACT_ADDRESS = "YOUR_CONTRACT_ADDRESS_HERE";
+const CONTRACT_NAME = "message-board";
 
 function App() {
-  const [message, setMessage] = useState("");
-  const [transactionId, setTransactionId] = useState("");
-  const [currentMessage, setCurrentMessage] = useState("");
-
-  const connectWallet = () => {
-    // implement code
-  };
-
-  const handleMessageChange = (e) => {
-    setMessage(e.target.value);
-  };
-
-  const submitMessage = () => {
-    // submit transaction
-  };
-
-  const handleTransactionChange = (e) => {
-    setTransactionId(e.target.value);
-  };
-
-  const retrieveMessage = () => {
-    // submit transaction
-  };
-
-  return (
-    <div className="flex flex-col justify-center items-center h-screen gap-8">
-      <button
-        className="p-4 bg-indigo-500 rounded text-white"
-        onClick={connectWallet}
-      >
-        Connect Wallet
-      </button>
-      <h1 className="text-6xl font-black">Hello Stacks</h1>
-      <div className="flex gap-4">
-        <input
-          className="p-4 border border-indigo-500 rounded"
-          placeholder="Write message here..."
-          onChange={handleMessageChange}
-          value={message}
-        />
-        <button
-          className="p-4 bg-indigo-500 rounded text-white"
-          onClick={submitMessage}
-        >
-          Submit New Message
-        </button>
-      </div>
-      <div className="flex gap-4">
-        <input
-          className="p-4 border border-indigo-500 rounded"
-          placeholder="Paste transaction ID to look up message"
-          onChange={handleTransactionChange}
-          value={transactionId}
-        />
-        <button
-          className="p-4 bg-indigo-500 rounded text-white"
-          onClick={retrieveMessage}
-        >
-          Retrieve Message
-        </button>
-      </div>
-      {currentMessage.length > 0 ? (
-        <p className="text-2xl">{currentMessage}</p>
-      ) : (
-        ""
-      )}
-    </div>
-  );
-}
-
-export default App;
-```
-
-We've got a very basic React application set up here that will allow us to add a new message to the Stacks chain and also find the content of a message by entering the transaction ID where the message was posted.
-
-The first thing we need to do is implement the 'Connect Wallet' functionality.
-
-In order to do that, we need to add the [`@stacks/connect`](https://github.com/hirosystems/connect/tree/main/packages/connect) package with
-
-```bash
-yarn add @stacks/connect
-```
-
-:::note Some users get an error about the `regenerator-runtime` dependency being missing. If that's the case, running `yarn add regenerator-runtime` should fix the issue. :::
-
-And import a couple things from it at the top of our `App.jsx` file.
-
-```jsx
-import {
-  AppConfig,
-  UserSession,
-  AuthDetails,
-  showConnect,
-} from "@stacks/connect";
-```
-
-Now let's use `AppConfig` which is charge of setting some config options for the wallet to read and `UserSession`, which will actually handle the wallet authentication.
-
-Below the state declarations, add the following.
-
-```jsx
-const appConfig = new AppConfig(["store_write"]);
-const userSession = new UserSession({ appConfig });
-```
-
-Here we are setting up an app that needs permission to store and write data to the Stacks chain, and we are instantiating a new user session with that config option passed in.
-
-We also need to add a few details for the Leather wallet to display to people interacting with our app. We can do that with the following line:
-
-```jsx
-const appDetails = {
-  name: "Hello Stacks",
-  icon: "https://freesvg.org/img/1541103084.png",
-};
-```
-
-We'll use this when we set up the connect function, which we can do right now in the `connectWallet` function.
-
-```jsx
-const connectWallet = () => {
-  showConnect({
-    appDetails,
-    onFinish: () => window.location.reload(),
-    userSession,
-  });
-};
-```
-
-Here we are using the `showConnect` function to actually trigger the Leather wallet to show up, allowing the user to authenticate. From there we are triggering a page refresh when the authentication finishes and setting the `userSession` variable, which handles the data for our logged in user.
-
-At this point you should be able to authenticate with the wallet and have the page refresh, although we can't really do anything with that yet.
-
-First we need to get our app to be able to read that data.
-
-We'll add another state variable for our `userData`.
-
-```jsx
-const [userData, setUserData] = useState(undefined);
-```
-
-And we will also add a `useEffect` call to set this data on page load.
-
-```jsx
-useEffect(() => {
-  if (userSession.isSignInPending()) {
-    userSession.handlePendingSignIn().then((userData) => {
-      setUserData(userData);
-    });
-  } else if (userSession.isUserSignedIn()) {
-    setUserData(userSession.loadUserData());
-  }
-}, []);
-
-console.log(userData);
-```
-
-Now we have access to our authenticated user data, but we need to actually utilize it in our UI.
-
-The first thing we'll do is hide the 'Connect Wallet' button if there is currently an authenticated user. Change the code that renders our button to the following.
-
-```jsx
-{
-  !userData && (
-    <button
-      className="p-4 bg-indigo-500 rounded text-white"
-      onClick={connectWallet}
-    >
-      Connect Wallet
-    </button>
-  );
-}
-```
-
-We also want to hide the form to submit a message if we are not authenticated.
-
-```jsx
-{
-  userData && (
-    <div className="flex gap-4">
-      <input
-        className="p-4 border border-indigo-500 rounded"
-        placeholder="Write message here..."
-        onChange={handleMessageChange}
-        value={message}
-      />
-      <button
-        className="p-4 bg-indigo-500 rounded text-white"
-        onClick={submitMessage}
-      >
-        Submit New Message
-      </button>
-    </div>
-  );
-}
-```
-
-Alright, now we need to actually implement the functionality that will call our `hello-stacks` contract. To do that, we need to use Stacks.js to send a transaction, we'll do that in the `submitMessage` function.
-
-First we need to install a couple more packages.
-
-```bash
-yarn add @stacks/transactions @stacks/network
-```
-
-And import a couple things from those at the top.
-
-```jsx
-import {
-  AppConfig,
-  UserSession,
-  showConnect,
-  openContractCall,
-} from "@stacks/connect";
-import { StacksMocknet } from "@stacks/network";
-import { stringUtf8CV } from "@stacks/transactions";
-```
-
-We're importing the network we'll be calling the transaction on and a utility helper from the `transactions` package that will help to encode our data in a format that the Clarity contract can understand.
-
-Now we need to add a new constant to hold the network that we are using. In our case we want to be using `Mocknet`, which we can add using the following right under our current state declarations.
-
-```jsx
-const network = new StacksMocknet();
-```
-
-And finally we can add the code to initiate the transaction.
-
-```jsx
-const submitMessage = async (e) => {
-  e.preventDefault();
-
-  const network = new StacksMocknet();
-
-  const options = {
-    contractAddress: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
-    contractName: "hello-stacks",
-    functionName: "write-message",
-    functionArgs: [stringUtf8CV(message)],
-    network,
-    appDetails,
-    onFinish: ({ txId }) => console.log(txId),
-  };
-
-  await openContractCall(options);
-};
-```
-
-What we are doing here is calling our contract (I got the address from the local block explorer) using the `openContractCall` function and passing in some options.
-
-The contract information, the function we want to call, our function arguments, the network, the app details from earlier, and an action we want to take when we finish calling.
-
-Note that all values passed to Clarity contracts need to be converted like this. You can see what all the various options are for doing so on the [GitHub page](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions#constructing-clarity-values).
-
-And if you type a message and hit the submit button, you should see the transaction initiation window pop up.
-
-Here's our current `App.jsx` file in its entirety.
-
-```jsx
-import { useEffect, useState } from "react";
-import {
-  AppConfig,
-  UserSession,
-  showConnect,
-  openContractCall,
-} from "@stacks/connect";
-import { StacksMocknet } from "@stacks/network";
-import { stringUtf8CV } from "@stacks/transactions";
-
-function App() {
-  const [message, setMessage] = useState("");
-  const [transactionId, setTransactionId] = useState("");
-  const [currentMessage, setCurrentMessage] = useState("");
-  const [userData, setUserData] = useState(undefined);
-
-  const appConfig = new AppConfig(["store_write"]);
-  const userSession = new UserSession({ appConfig });
-  const appDetails = {
-    name: "Hello Stacks",
-    icon: "https://freesvg.org/img/1541103084.png",
-  };
+  const [connected, setConnected] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (userSession.isSignInPending()) {
-      userSession.handlePendingSignIn().then((userData) => {
-        setUserData(userData);
-      });
-    } else if (userSession.isUserSignedIn()) {
-      setUserData(userSession.loadUserData());
+    setConnected(isConnected());
+    if (isConnected()) {
+      loadMessages();
     }
   }, []);
 
-  console.log(userData);
-
-  const connectWallet = () => {
-    showConnect({
-      appDetails,
-      onFinish: () => window.location.reload(),
-      userSession,
-    });
-  };
-
-  const handleMessageChange = (e) => {
-    setMessage(e.target.value);
-  };
-
-  const submitMessage = async (e) => {
-    e.preventDefault();
-
-    const network = new StacksMocknet();
-
-    const options = {
-      contractAddress: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
-      contractName: "hello-stacks",
-      functionName: "write-message",
-      functionArgs: [stringUtf8CV(message)],
-      network,
-      appDetails,
-      onFinish: ({ txId }) => console.log(txId),
+  // Check for connection changes
+  useEffect(() => {
+    const checkConnection = () => {
+      const connectionStatus = isConnected();
+      if (connectionStatus !== connected) {
+        setConnected(connectionStatus);
+        if (connectionStatus) {
+          loadMessages();
+        }
+      }
     };
 
-    await openContractCall(options);
+    const intervalId = setInterval(checkConnection, 500);
+    return () => clearInterval(intervalId);
+  }, [connected]);
+
+  const connectWallet = async () => {
+    try {
+      await connect({
+        appDetails: {
+          name: "Message Board",
+          icon: window.location.origin + "/logo.svg",
+        },
+        onFinish: () => {
+          setConnected(true);
+          // Small delay to ensure connection is fully established
+          setTimeout(() => {
+            loadMessages();
+          }, 100);
+        },
+      });
+    } catch (error) {
+      console.error("Connection failed:", error);
+    }
   };
 
-  const handleTransactionChange = (e) => {
-    setTransactionId(e.target.value);
+  const disconnectWallet = () => {
+    disconnect();
+    setConnected(false);
+    setMessages([]);
   };
 
-  const retrieveMessage = () => {
-    // submit transaction
+  const loadMessages = async () => {
+    try {
+      // Get message count
+      const countResult = await fetchCallReadOnlyFunction({
+        contractAddress: CONTRACT_ADDRESS,
+        contractName: CONTRACT_NAME,
+        functionName: "get-message-count",
+        functionArgs: [],
+        network,
+        senderAddress: CONTRACT_ADDRESS,
+      });
+
+      const count = parseInt(countResult.value);
+
+      // Load recent messages
+      const messagePromises = [];
+      for (let i = Math.max(1, count - 4); i <= count; i++) {
+        messagePromises.push(
+          fetchCallReadOnlyFunction({
+            contractAddress: CONTRACT_ADDRESS,
+            contractName: CONTRACT_NAME,
+            functionName: "get-message",
+            functionArgs: [uintCV(i)],
+            network,
+            senderAddress: CONTRACT_ADDRESS,
+          })
+        );
+      }
+
+      const messageResults = await Promise.all(messagePromises);
+      const loadedMessages = messageResults
+        .map((result, index) => ({
+          id: count - messageResults.length + index + 1,
+          content: result.value.value,
+        }))
+        .filter((msg) => msg.content !== undefined);
+
+      setMessages(loadedMessages);
+    } catch (error) {
+      console.error("Error loading messages:", error);
+    }
+  };
+
+  const postMessage = async () => {
+    if (!newMessage.trim()) return;
+
+    setLoading(true);
+    try {
+      const result = await request("stx_callContract", {
+        contract: `${CONTRACT_ADDRESS}.${CONTRACT_NAME}`,
+        functionName: "add-message",
+        functionArgs: [stringUtf8CV(newMessage)],
+        network,
+      });
+
+      console.log("Transaction submitted:", result.txid);
+      setNewMessage("");
+
+      // Reload messages after a delay to allow the transaction to process
+      setTimeout(() => {
+        loadMessages();
+        setLoading(false);
+      }, 2000);
+    } catch (error) {
+      console.error("Error posting message:", error);
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen gap-8">
-      {!userData && (
-        <button
-          className="p-4 bg-indigo-500 rounded text-white"
-          onClick={connectWallet}
-        >
-          Connect Wallet
-        </button>
-      )}
-      <h1 className="text-6xl font-black">Hello Stacks</h1>
-      {userData && (
-        <div className="flex gap-4">
-          <input
-            className="p-4 border border-indigo-500 rounded"
-            placeholder="Write message here..."
-            onChange={handleMessageChange}
-            value={message}
-          />
-          <button
-            className="p-4 bg-indigo-500 rounded text-white"
-            onClick={submitMessage}
-          >
-            Submit New Message
+    <div className="App">
+      <header className="App-header">
+        <h1>📝 Stacks Message Board</h1>
+
+        {!connected ? (
+          <button onClick={connectWallet} className="connect-button">
+            Connect Wallet
           </button>
-        </div>
-      )}
-      <div className="flex gap-4">
-        <input
-          className="p-4 border border-indigo-500 rounded"
-          placeholder="Paste transaction ID to look up message"
-          onChange={handleTransactionChange}
-          value={transactionId}
-        />
-        <button
-          className="p-4 bg-indigo-500 rounded text-white"
-          onClick={retrieveMessage}
-        >
-          Retrieve Message
-        </button>
-      </div>
-      {currentMessage.length > 0 ? (
-        <p className="text-2xl">{currentMessage}</p>
-      ) : (
-        ""
+        ) : (
+          <button onClick={disconnectWallet} className="disconnect-button">
+            Disconnect
+          </button>
+        )}
+      </header>
+
+      {connected && (
+        <main className="App-main">
+          <div className="post-message">
+            <h2>Post a Message</h2>
+            <div className="message-input">
+              <input
+                type="text"
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+                placeholder="What's on your mind?"
+                maxLength={280}
+                disabled={loading}
+              />
+              <button
+                onClick={postMessage}
+                disabled={loading || !newMessage.trim()}
+              >
+                {loading ? "Posting..." : "Post"}
+              </button>
+            </div>
+          </div>
+
+          <div className="messages">
+            <h2>Recent Messages</h2>
+            <button onClick={loadMessages} className="refresh-button">
+              Refresh
+            </button>
+            {messages.length === 0 ? (
+              <p>No messages yet. Be the first to post!</p>
+            ) : (
+              <ul>
+                {messages.map((message) => (
+                  <li key={message.id}>
+                    <strong>Message #{message.id}:</strong> {message.content}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </main>
       )}
     </div>
   );
@@ -655,73 +527,177 @@ function App() {
 export default App;
 ```
 
-If you click 'Confirm' you should see the transaction id logged in the console and you can see the transaction in the block explorer.
+### Add Basic Styling
 
-### Retrieving Messages
+Update `src/App.css`:
 
-Now that we can write a message to the chain, we also want to add functionality so that we can retrieve a message from the chain.
+```css
+.App {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+}
 
-We'll do that by having users enter in a transaction ID and we'll query the chain for that transaction and the event data associated with it.
+.App-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
 
-The Stacks API is perfect for this, and we can query our local devnet chain directly.
+.App-header h1 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-Let's set that up in our `retrieveMessage` function.
+.connect-button,
+.disconnect-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
 
-```jsx
-const retrieveMessage = async () => {
-  const retrievedMessage = await fetch(
-    "http://localhost:3999/extended/v1/tx/events?" +
-      new URLSearchParams({
-        tx_id: transactionId,
-      })
-  );
-  const responseJson = await retrievedMessage.json();
-  setCurrentMessage(responseJson.events[0].contract_log.value.repr);
-};
+.connect-button:hover,
+.disconnect-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.post-message {
+  margin-bottom: 40px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.message-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.message-input button {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.message-input button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.messages {
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.refresh-button {
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.messages ul {
+  list-style: none;
+  padding: 0;
+}
+
+.messages li {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 10px;
+}
+
+.messages li:last-child {
+  border-bottom: none;
+}
 ```
 
-Here we are using `fetch` to call the Stacks API and passing our transaction as a query parameter to get the events and then digging down through that returned data to get the printed message.
+### Update the Contract Address
 
-You can view the documentation for this specific API call on [Hiro's website](https://docs.hiro.so/api#tag/Transactions/operation/get\_filtered\_events).
+1. Go back to the Stacks Explorer and find your deployed contract
+2. Copy the contract address (it looks like `ST1ABC...123.message-board`)
+3. Replace `YOUR_CONTRACT_ADDRESS_HERE` in the App.jsx file with your actual contract address and the contract name with the actual name
 
-If you run this you should see the message printed at the bottom of the screen.
+### Run Your App
 
-### Wrapping Up and Next Steps
+```bash
+npm run dev
+```
 
-Here we've just gone over a very simple and very brief example of a Stacks application. This was meant to give you a high level introduction to the Stacks ecosystem and how you might begin building Stacks dapps.
+Visit `http://localhost:5173` and you should see your message board app! Connect your wallet and try posting a message.
 
-There is obviously a lot more to learn, so here are a few good places to continue your learning.
+## Congratulations! 🎉
 
-#### Stacks Academy
+You've just built your first Stacks application! Here's what you accomplished:
 
-Stacks Academy is your guide to all things Stacks. This comprehensive walkthrough will cover key concepts about Stacks so you can learn everything you need to know about how it works.
+1. ✅ Wrote a Clarity smart contract with data storage and public functions
+2. ✅ Deployed the contract to Stacks testnet
+3. ✅ Built a React frontend that connects to a Stacks wallet
+4. ✅ Integrated your frontend with your smart contract
+5. ✅ Posted and read data from the blockchain
 
-View Stacks Academy
+## Next Steps
 
-#### Clarity Book
+Now that you have the basics down, here are some ways to continue your Stacks development journey:
 
-The Clarity Book, Clarity of Mind, is the go-to resource for mastering Clarity. It will teach you Clarity development from start to finish so you can begin writing high-quality Clarity smart contracts.
+### Learn More About Clarity
 
-[Read the Clarity Book](https://book.clarity-lang.org/)
+- **[Clarity Book](https://book.clarity-lang.org/)**: Comprehensive guide to Clarity development
+- **[Clarity Reference](https://docs.stacks.co/docs/clarity)**: Complete documentation of Clarity functions
+- **[Clarity Crash Course](https://docs.stacks.co/docs/clarity-crash-course)**: Quick introduction to Clarity concepts
 
-#### Clarity Universe
+### Explore Advanced Features
 
-Prefer a more immersive experience? Clarity Universe is a start-to-finish guide to learning Clarity, with self-paced option and a guided cohort-based option.
+- **Error Handling**: Learn about Clarity's `try!` and `unwrap!` functions
+- **Access Control**: Implement admin functions and permissions
+- **Token Standards**: Build fungible (SIP-010) and non-fungible (SIP-009) tokens
 
-[Enroll in Clarity Universe](https://clarity-lang.org/universe)
+### Development Tools
 
-#### Community Tutorials
+- **[Clarinet](https://github.com/hirosystems/clarinet)**: Local development environment for Clarity
+- **[Hiro Platform](https://platform.hiro.so)**: Hosted development environment
+- **[Stacks Explorer](https://explorer.stacks.co)**: View transactions and contracts on mainnet
 
-There is an ever-growing list of tutorials created by members of the Stacks community so you can learn how to accomplish different tasks and build useful things with Stacks.
+### Community Resources
 
-View Community Tutorials
+- **[Stacks Discord](https://discord.gg/stacks)**: Connect with other developers
+- **[Stacks Forum](https://forum.stacks.org)**: Ask questions and share projects
+- **[Stacks GitHub](https://github.com/stacks-network)**: Contribute to the ecosystem
 
-#### Next Steps
-
-Looking to get paid to build something awesome with Stacks? Be sure to see all the different opportunities available to you like full-time jobs, grants, the startup accelerator, and more.
-
-Next Steps
-
-#### Get Involved
-
-Finally, be sure to get involved in the Stacks community by [joining Discord](https://discord.gg/5DJaBrf) and [checking out the website](https://stacks.co) to learn more about Stacks.
+Happy building! 🚀

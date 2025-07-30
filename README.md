@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/github/license/stacks-network/docs)](./LICENSE)
+
 # Start Here
 
 ## Stacks: The TL;DR
