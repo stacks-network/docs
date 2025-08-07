@@ -58,13 +58,7 @@ Your Bitcoin node must include these settings for sBTC signer operation:
 Starting with sBTC v1.1.0, the signer uses RPC polling instead of ZeroMQ for
 block detection.
 
-The signer connects to Bitcoin Core via RPC and polls for:
-
-- New block detection
-- Transaction data retrieval
-- UTXO management
-
-This polling system operates as follows:
+The signer connects to Bitcoin Core via RPC and polls for new bitcoin blocks. This process works as follows:
 
 1. Bitcoin Core validates a new block
 1. Signer detects the block via RPC polling

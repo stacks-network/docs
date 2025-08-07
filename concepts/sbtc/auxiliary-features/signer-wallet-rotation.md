@@ -20,10 +20,9 @@ The rotation happens through an on-chain voting process. When signers agree on a
 Here's what happens during a typical rotation:
 
 1. Signers coordinate off-chain to decide on the new signer set
-2. They submit their votes on-chain for the proposed configuration
-3. When enough votes are collected, the system triggers DKG automatically
-4. Signers participate in the DKG protocol to generate new key shares
-5. The new signer set takes control of the sBTC wallet
+2. Each signer operator updates their configuration with the newly decided set
+3. Once all signers have configured the exact same set of signers, DKG occurs automatically
+4. The new signer set takes control of the sBTC wallet
 
 The Bitcoin UTXOs remain under continuous control throughout this process - there's no moment where funds are unsecured.
 
@@ -36,11 +35,3 @@ Key rotation typically happens in several scenarios:
 **Signer changes**: When someone leaves the signer set or new participants join, the configuration must be updated to reflect the new membership.
 
 **Security events**: If a key might be compromised, an emergency rotation can be initiated to secure the system.
-
-## Technical implementation
-
-The rotation system has two main components:
-
-The **rotation CLI** lets individual signers propose and vote on rotations. This tool initiates the process and coordinates with other signers.
-
-The **Clarity contracts** handle the on-chain voting and coordination. These contracts track votes, determine when consensus is reached, and trigger the DKG process.
