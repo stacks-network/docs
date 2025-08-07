@@ -1,41 +1,46 @@
 # Signer Wallet Rotation
 
-Signer Wallet Rotation is a crucial security feature in the sBTC system that allows sBTC Signers to rotate their private keys securely.
+Signer wallet rotation allows sBTC signers to update their private keys and modify the signer set composition. This mechanism is how the network maintains security over time and adapts to changing participants.
 
-## Overview
+## How it works
 
-- sBTC Signers have the ability to rotate their private keys.
-- This feature enhances the long-term security of the sBTC system.
-- Key rotation is coordinated among signers and requires on-chain voting by the signers.
+The sBTC system uses a multi-signature wallet on Bitcoin to custody BTC deposits. When the system needs to change who controls this wallet - either by rotating keys or changing the signer set - it uses the rotation mechanism.
 
-## Process
+As of v1.1.0, the system supports:
 
-1. Signers coordinate offline to initiate the key rotation process.
-2. Signers vote on-chain for the new signer set (new set of keys).
-3. Once the new signer set is determined, signers conduct a wallet handoff.
-4. The signers re-execute the Distributed Key Generation (DKG) process.
+- Adding new signers to the set
+- Removing existing signers
+- Replacing specific signers
+- Rotating keys for current signers
 
-## Implementation
+The rotation happens through an on-chain voting process. When signers agree on a new configuration, the system automatically runs a Distributed Key Generation (DKG) protocol to create new signing shares for the updated group. Once complete, control of the sBTC wallet transfers to the new configuration.
 
-The Signer Wallet Rotation process is facilitated by:
+## The rotation process
 
-1. **Signer Key Rotation CLI**: Allows individual signers to initiate a private key rotation.
-2. **Key Rotation Clarity Contracts**: Handle the on-chain aspects of the rotation process.
+Here's what happens during a typical rotation:
 
-## Security Considerations
+1. Signers coordinate off-chain to decide on the new signer set
+2. They submit their votes on-chain for the proposed configuration
+3. When enough votes are collected, the system triggers DKG automatically
+4. Signers participate in the DKG protocol to generate new key shares
+5. The new signer set takes control of the sBTC wallet
 
-- The rotation process must ensure that the sBTC UTxO remains secure throughout the transition.
-- Proper coordination among signers is crucial to prevent any disruption in sBTC operations.
-- The new keys must be thoroughly verified before being put into use.
+The Bitcoin UTXOs remain under continuous control throughout this process - there's no moment where funds are unsecured.
 
-## Benefits
+## When rotation occurs
 
-1. **Enhanced Security**: Regular key rotations reduce the risk of key compromise.
-2. **Flexibility**: Allows for the replacement of compromised or lost keys.
-3. **Continuity**: Enables long-term operation of the sBTC system with evolving security measures.
+Key rotation typically happens in several scenarios:
 
-## Best Practices
+**Regular maintenance**: Many operators rotate keys on a schedule (like every 6 months) as a security practice, similar to changing passwords periodically.
 
-- Signers should rotate their keys on a regular schedule (e.g., every 6 months).
-- Emergency rotation procedures should be in place for suspected key compromises.
-- The rotation process should be audited and tested regularly to ensure smooth execution when needed.
+**Signer changes**: When someone leaves the signer set or new participants join, the configuration must be updated to reflect the new membership.
+
+**Security events**: If a key might be compromised, an emergency rotation can be initiated to secure the system.
+
+## Technical implementation
+
+The rotation system has two main components:
+
+The **rotation CLI** lets individual signers propose and vote on rotations. This tool initiates the process and coordinates with other signers.
+
+The **Clarity contracts** handle the on-chain voting and coordination. These contracts track votes, determine when consensus is reached, and trigger the DKG process.
