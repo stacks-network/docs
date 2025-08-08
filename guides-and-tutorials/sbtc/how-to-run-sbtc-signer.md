@@ -52,25 +52,7 @@ Your Bitcoin node must include these settings for sBTC signer operation:
 
    - `txindex=1`: Transaction indexing must be enabled
    - `server=1`: RPC server must be enabled
-   - `zmqpubhashblock=tcp://*:28332`: ZMQ block hash notifications
-   - `zmqpubrawblock=tcp://*:28332`: ZMQ raw block notifications
 
-### ZeroMQ (ZMQ) Configuration
-
-The ZeroMQ configuration specified above enables real-time blockchain event
-notifications from Bitcoin Core to the sBTC signer.
-
-The two required ZMQ endpoints serve distinct purposes:
-
-- `zmqpubhashblock`: Broadcasts only block hashes for lightweight block
-  detection
-- `zmqpubrawblock`: Broadcasts complete block data for transaction processing
-
-This notification system creates a direct event stream when:
-
-1. Bitcoin Core validates a new block
-1. Block data publishes via ZMQ
-1. Signer processes relevant sBTC transactions
 
 ### Example
 
@@ -84,9 +66,7 @@ bitcoind \
   -rpcport=${BITCOIN_RPC_PORT} \
   -rpcallowip=0.0.0.0/0 \
   -rpcallowip=::/0 \
-  -txindex \
-  -zmqpubhashblock="tcp://*:${BITCOIN_ZMQ_PORT}" \
-  -zmqpubrawblock="tcp://*:${BITCOIN_ZMQ_PORT}"
+  -txindex
 ```
 
 ## 2. Configure your Stacks node
