@@ -13,7 +13,7 @@ As of v1.1.0, the system supports:
 - Replacing specific signers
 - Rotating keys for current signers
 
-The rotation happens through an on-chain voting process. When signers agree on a new configuration, the system automatically runs a Distributed Key Generation (DKG) protocol to create new signing shares for the updated group. Once complete, control of the sBTC wallet transfers to the new configuration.
+When signers agree on a new configuration, the system automatically runs a Distributed Key Generation (DKG) protocol to create new signing shares for the updated group. Once complete, control of the sBTC wallet transfers to the new configuration.
 
 ## The rotation process
 
