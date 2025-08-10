@@ -28,9 +28,7 @@ The Bitcoin UTXOs remain under continuous control throughout this process - ther
 
 ## When rotation occurs
 
-Key rotation typically happens in several scenarios:
-
-**Regular maintenance**: Many operators rotate keys on a schedule (like every 6 months) as a security practice, similar to changing passwords periodically.
+Key rotation typically happens when:
 
 **Signer changes**: When someone leaves the signer set or new participants join, the configuration must be updated to reflect the new membership.
 
