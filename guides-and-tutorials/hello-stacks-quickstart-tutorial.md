@@ -1,4 +1,4 @@
-# Hello Stacks Quickstart Tutorial
+# Developer Quickstart
 
 ## Build Your First Stacks App in 30 Minutes
 
@@ -10,16 +10,16 @@ This tutorial will help you build a working Stacks application in just 30 minute
 
 **What you'll learn:**
 
-- How to write a Clarity smart contract
-- How to deploy contracts to Stacks testnet
-- How to connect a wallet to your app
-- How to interact with contracts from a frontend
+* How to write a Clarity smart contract
+* How to deploy contracts to Stacks testnet
+* How to connect a wallet to your app
+* How to interact with contracts from a frontend
 
 **Prerequisites:**
 
-- Basic familiarity with web development (HTML, CSS, JavaScript)
-- A modern web browser
-- 30 minutes of your time
+* Basic familiarity with web development (HTML, CSS, JavaScript)
+* A modern web browser
+* 30 minutes of your time
 
 Let's get started!
 
@@ -50,7 +50,7 @@ Clarity is Stacks' smart contract language, designed for safety and predictabili
 
 Clarity is inspired by LISP and uses a functional programming approach. Everything in Clarity is an expression wrapped in parentheses. This can be a bit overwhelming at first if you are used to languages like JavaScript or Solidity, but the learning curve is short and Clarity is a simple language to understand once you dive in and start using it.
 
-For a more detailed introduction, check out the [Clarity Crash Course](./clarity-crash-course.md) in the docs.
+For a more detailed introduction, check out the [Clarity Crash Course](clarity-crash-course.md) in the docs.
 
 ### Write the Contract
 
@@ -135,11 +135,12 @@ The `tx-sender` variable is particularly useful because it's automatically set b
 Finally, every public function in Clarity must return a response type, which is why you see `ok` wrapping our return values. This ensures that every function call has a clear success or failure outcome, making your contracts much more predictable and easier to debug.
 
 <details>
+
 <summary><strong>🔍 Deep Dive: Understanding the Contract Code (Optional)</strong></summary>
 
 Want to understand exactly what each part of the contract is doing? Let's walk through every function and concept used in our message board contract. Links to the official documentation are included for each function, so you may dive deeper if you want.
 
-### How We Store Data on the Blockchain
+#### How We Store Data on the Blockchain
 
 Let's start with how we're storing our messages. We use [`define-map`](../reference/functions.md#define-map) to create what's essentially a database table on the blockchain:
 
@@ -165,7 +166,7 @@ Finally, we need a way to keep track of how many messages we've posted so far:
 
 The [`define-data-var`](../reference/functions.md#define-data-var) creates a single variable that persists on the blockchain. We start it at `u0` (that's how you write the number 0 for unsigned integers in Clarity). The `u` prefix might look weird if you're coming from other languages, but it's just Clarity's way of saying "this is a positive integer."
 
-### The Heart of Our Contract: Adding Messages
+#### The Heart of Our Contract: Adding Messages
 
 Now let's break down the most important function, the one that actually adds messages to our board:
 
@@ -184,17 +185,17 @@ When you call [`define-public`](../reference/functions.md#define-public), you're
 
 Inside the function, we use [`let`](../reference/functions.md#let) to create a local variable. This is like declaring a variable inside a function in other languages, but with Clarity's unique syntax. We're creating a variable called `id` and setting it to the current message count plus 1.
 
-*Here's where Clarity might trip you up if you're coming from other languages.* Notice how we write `(+ (var-get message-count) u1)` instead of something like `message-count + 1`. In Clarity, operators like `+`, `-`, `>`, and `<` are actually functions that use prefix notation. So `(+ 2 3)` means "add 2 and 3" (instead of `2 + 3` like you'd write in JavaScript or Python). This is part of Clarity's LISP-inspired syntax where everything is a function call.
+_Here's where Clarity might trip you up if you're coming from other languages._ Notice how we write `(+ (var-get message-count) u1)` instead of something like `message-count + 1`. In Clarity, operators like `+`, `-`, `>`, and `<` are actually functions that use prefix notation. So `(+ 2 3)` means "add 2 and 3" (instead of `2 + 3` like you'd write in JavaScript or Python). This is part of Clarity's LISP-inspired syntax where everything is a function call.
 
 The [`var-get`](../reference/functions.md#var-get) function reads the current value of our message counter, and [`+`](../reference/functions.md#add) adds 1 to create the next message ID.
 
 Next, we store the message content using [`map-set`](../reference/functions.md#map-set), which is like inserting a row into a database table. We store the message content with the new ID we just created.
 
-We also store who posted the message using another [`map-set`](../reference/functions.md#map-set) call (*Notice how we use `tx-sender` here*). This is a special variable that Clarity automatically sets to the address of whoever called the function. You can't fake this or manipulate it, which makes it perfect for tracking message authors.
+We also store who posted the message using another [`map-set`](../reference/functions.md#map-set) call (_Notice how we use `tx-sender` here_). This is a special variable that Clarity automatically sets to the address of whoever called the function. You can't fake this or manipulate it, which makes it perfect for tracking message authors.
 
 We update our message counter using [`var-set`](../reference/functions.md#var-set), and finally return [`ok`](../reference/functions.md#ok) with the new message ID. In Clarity, all public functions must return either `(ok value)` for success or `(err error)` for failure. This ensures that every function call has a predictable outcome.
 
-### Reading Messages Back
+#### Reading Messages Back
 
 Now let's look at how we read messages back from the blockchain. Our simplest function is:
 
@@ -219,7 +220,7 @@ We have similar functions for getting the message author and the total message c
 
 The message count function is particularly simple because it just reads our counter variable and returns it. No parameters needed since there's only one counter.
 
-### A More Complex Function: Getting Recent Messages
+#### A More Complex Function: Getting Recent Messages
 
 Let's look at our most complex function:
 
@@ -242,7 +243,7 @@ The [`map`](../reference/functions.md#map) function applies another function to 
 
 We use [`list`](../reference/functions.md#list) to create a list of message IDs, and [`-`](../reference/functions.md#subtract) for subtraction to calculate which recent messages to fetch.
 
-### What Makes Clarity Special
+#### What Makes Clarity Special
 
 Now that you've seen the code, let me explain some of the key concepts that make Clarity different from other smart contract languages.
 
@@ -678,26 +679,26 @@ Now that you have the basics down, here are some ways to continue your Stacks de
 
 ### Learn More About Clarity
 
-- **[Clarity Book](https://book.clarity-lang.org/)**: Comprehensive guide to Clarity development
-- **[Clarity Reference](https://docs.stacks.co/docs/clarity)**: Complete documentation of Clarity functions
-- **[Clarity Crash Course](https://docs.stacks.co/docs/clarity-crash-course)**: Quick introduction to Clarity concepts
+* [**Clarity Book**](https://book.clarity-lang.org/): Comprehensive guide to Clarity development
+* [**Clarity Reference**](https://docs.stacks.co/docs/clarity): Complete documentation of Clarity functions
+* [**Clarity Crash Course**](https://docs.stacks.co/docs/clarity-crash-course): Quick introduction to Clarity concepts
 
 ### Explore Advanced Features
 
-- **Error Handling**: Learn about Clarity's `try!` and `unwrap!` functions
-- **Access Control**: Implement admin functions and permissions
-- **Token Standards**: Build fungible (SIP-010) and non-fungible (SIP-009) tokens
+* **Error Handling**: Learn about Clarity's `try!` and `unwrap!` functions
+* **Access Control**: Implement admin functions and permissions
+* **Token Standards**: Build fungible (SIP-010) and non-fungible (SIP-009) tokens
 
 ### Development Tools
 
-- **[Clarinet](https://github.com/hirosystems/clarinet)**: Local development environment for Clarity
-- **[Hiro Platform](https://platform.hiro.so)**: Hosted development environment
-- **[Stacks Explorer](https://explorer.stacks.co)**: View transactions and contracts on mainnet
+* [**Clarinet**](https://github.com/hirosystems/clarinet): Local development environment for Clarity
+* [**Hiro Platform**](https://platform.hiro.so): Hosted development environment
+* [**Stacks Explorer**](https://explorer.stacks.co): View transactions and contracts on mainnet
 
 ### Community Resources
 
-- **[Stacks Discord](https://discord.gg/stacks)**: Connect with other developers
-- **[Stacks Forum](https://forum.stacks.org)**: Ask questions and share projects
-- **[Stacks GitHub](https://github.com/stacks-network)**: Contribute to the ecosystem
+* [**Stacks Discord**](https://discord.gg/stacks): Connect with other developers
+* [**Stacks Forum**](https://forum.stacks.org): Ask questions and share projects
+* [**Stacks GitHub**](https://github.com/stacks-network): Contribute to the ecosystem
 
 Happy building! 🚀
