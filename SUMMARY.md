@@ -151,6 +151,8 @@
   * [🔸 April 2025](press-and-top-links/2025/march-2025-1.md)
   * [🔸 May 2025](press-and-top-links/2025/march-2025-2.md)
   * [🔸 June 2025](press-and-top-links/2025/june-2025.md)
+  * [🔸 July 2025](press-and-top-links/2025/june-2025-1.md)
+  * [🔸 August 2025](press-and-top-links/2025/june-2025-2.md)
 
 ## 🧡 Bitcoin Theses and Reports
 
