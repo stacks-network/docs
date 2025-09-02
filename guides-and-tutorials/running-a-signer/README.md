@@ -261,9 +261,14 @@ For example:
 * You will set working\_dir to equal ”/Users/blah”
   * Note that the string does not include the `mainnet` part
 
+**Warning:** It is always better to keep a local snapshot of the chain state for fast recovery and redundancy. This ensures you can quickly restore your node in case of data loss or corruption.
+
+See [here](../best-practices-to-snapshot-the-chainstate.md) for additional best practices to create a local chainstate snapshot.
+{% endhint %}
+
 #### Run a Stacks Node with Docker
 
-You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 3.1.0.0.5](https://hub.docker.com/layers/blockstack/stacks-core/3.1.0.0.5/images/sha256-cf2c04b6f56d7a54c2032a13826ebb258cebe50a30b847810a279476824bd2c0). When running the Docker container, you’ll need to ensure a few things:
+You can run the Stacks node as a Docker container using the `blockstack/stacks-core` image, currently on [version 3.1.0.0.13](https://hub.docker.com/layers/blockstack/stacks-core/3.1.0.0.13/images/sha256:2f87331740c3afbe69b6e9bd572ebe991c95191731a9e135de66084871c1f2ad). When running the Docker container, you’ll need to ensure a few things:
 
 * The port configured for `p2p_bind` must be exposed to the internet
 * The port configured for `rpc_bind` must be accessible by your signer
@@ -274,7 +279,7 @@ An example for running the node’s Docker image with docker run is below. Be su
 
 ```bash
 IMG="blockstack/stacks-core"
-VER="3.1.0.0.5"
+VER="3.1.0.0.13"
 STX_NODE_CONFIG="./node-config.toml"
 
 docker run -d \
@@ -292,7 +297,7 @@ docker run -d \
 Or, using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:3.1.0.0.5
+FROM blockstack/stacks-core:3.1.0.0.13
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443

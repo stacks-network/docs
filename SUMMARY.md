@@ -97,6 +97,7 @@
   * [Best practices for running a Signer](guides-and-tutorials/running-a-signer/best-practices-to-run-a-signer.md)
   * [OpSec Best Practices](guides-and-tutorials/running-a-signer/opsec-best-practices.md)
 * [sBTC](guides-and-tutorials/sbtc/README.md)
+  * [sBTC Builder Quickstart](guides-and-tutorials/sbtc/sbtc-builder-quickstart.md)
   * [How to Run an sBTC Signer](guides-and-tutorials/sbtc/how-to-run-sbtc-signer.md)
   * [Best practices for running an sBTC Signer](guides-and-tutorials/sbtc/best-practices-for-running-an-sbtc-signer.md)
   * [How to Use the sBTC Bridge](guides-and-tutorials/sbtc/how-to-use-the-sbtc-bridge.md)
@@ -107,6 +108,7 @@
   * [Stack with a Pool](guides-and-tutorials/stack-stx/stack-with-a-pool.md)
   * [Increase Stacked Position](guides-and-tutorials/stack-stx/increase-stacking.md)
   * [Stop Stacking](guides-and-tutorials/stack-stx/stop-stacking.md)
+* [Snapshot the chainstate](guides-and-tutorials/best-practices-to-snapshot-the-chainstate.md)
 * [Oracles](guides-and-tutorials/oracles.md)
 * [Community Tutorials](guides-and-tutorials/community-tutorials.md)
 
@@ -149,6 +151,8 @@
   * [🔸 April 2025](press-and-top-links/2025/march-2025-1.md)
   * [🔸 May 2025](press-and-top-links/2025/march-2025-2.md)
   * [🔸 June 2025](press-and-top-links/2025/june-2025.md)
+  * [🔸 July 2025](press-and-top-links/2025/june-2025-1.md)
+  * [🔸 August 2025](press-and-top-links/2025/june-2025-2.md)
 
 ## 🧡 Bitcoin Theses and Reports
 

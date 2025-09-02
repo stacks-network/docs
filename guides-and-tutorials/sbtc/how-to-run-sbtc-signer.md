@@ -50,26 +50,18 @@ You will need `bitcoind` version 25 or higher.
 
 Your Bitcoin node must include these settings for sBTC signer operation:
 
-   - `txindex=1`: Transaction indexing must be enabled
-   - `server=1`: RPC server must be enabled
-   - `zmqpubhashblock=tcp://*:28332`: ZMQ block hash notifications
-   - `zmqpubrawblock=tcp://*:28332`: ZMQ raw block notifications
+- `txindex=1`: Transaction indexing must be enabled
+- `server=1`: RPC server must be enabled
 
-### ZeroMQ (ZMQ) Configuration
+### RPC-Based Block Detection
 
-The ZeroMQ configuration specified above enables real-time blockchain event
-notifications from Bitcoin Core to the sBTC signer.
+Starting with sBTC v1.1.0, the signer uses RPC polling instead of ZeroMQ for
+block detection.
 
-The two required ZMQ endpoints serve distinct purposes:
-
-- `zmqpubhashblock`: Broadcasts only block hashes for lightweight block
-  detection
-- `zmqpubrawblock`: Broadcasts complete block data for transaction processing
-
-This notification system creates a direct event stream when:
+The signer connects to Bitcoin Core via RPC and polls for new bitcoin blocks. This process works as follows:
 
 1. Bitcoin Core validates a new block
-1. Block data publishes via ZMQ
+1. Signer detects the block via RPC polling
 1. Signer processes relevant sBTC transactions
 
 ### Example
@@ -84,9 +76,7 @@ bitcoind \
   -rpcport=${BITCOIN_RPC_PORT} \
   -rpcallowip=0.0.0.0/0 \
   -rpcallowip=::/0 \
-  -txindex \
-  -zmqpubhashblock="tcp://*:${BITCOIN_ZMQ_PORT}" \
-  -zmqpubrawblock="tcp://*:${BITCOIN_ZMQ_PORT}"
+  -txindex
 ```
 
 ## 2. Configure your Stacks node
@@ -113,7 +103,6 @@ events_keys = [
 See
 [here](https://github.com/stacks-network/sbtc/blob/main/docker/mainnet/nodes/stacks/Config.toml.in).
 
-
 ## 3. Configure your sBTC Signer
 
 The signer configuration file (`signer-config.toml`) defines the signer's
@@ -133,7 +122,8 @@ Defines how the signer connects to Bitcoin Core:
 ```toml
 [bitcoin]
 rpc_endpoints = ["http://user:pass@your-bitcoin-node:8332"]
-block_hash_stream_endpoints = ["tcp://localhost:28332"]
+# Note: block_hash_stream_endpoints are no longer used as of v1.1.0
+# The signer now uses RPC polling for block detection
 ```
 
 ### Core Signer Parameters
@@ -171,6 +161,13 @@ See
 See
 [here](https://github.com/stacks-network/sbtc/blob/main/docker/mainnet/docker-compose.yml)
 for a Docker Compose including all the required components.
+
+{% hint style="warning" %}
+
+When deploying with Docker, always use [immutable image tags](https://docs.docker.com/reference/cli/docker/image/pull/#pull-an-image-by-digest-immutable-identifier) - the image digests are provided below. Verify the attestation of these images using this [guide](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds#verifying-artifact-attestations-with-the-github-cli).
+
+We publish our images on [GitHub Container Registry](https://github.com/stacks-sbtc/sbtc/pkgs/container/sbtc).
+{% endhint %}
 
 ## Monitoring
 
