@@ -14,5 +14,5 @@ While you _can_ run a node using these specs, it's _recommended_ to assign more 
 * **8GB memory if running only a Stacks node**
 * **16 GB memory if running Stacks + Bitcoin node**
 * **2 Vcpu**
-* **500GB disk for Stacks node**
+* **1TB disk for Stacks node**
 * **1TB disk space for Bitcoin node**
