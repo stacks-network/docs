@@ -27,91 +27,203 @@ If you run a local node, it exposes an HTTP server on port `20443`. The info end
 
 The Stacks 2.0 Blockchain API (Hiro's API) is centrally hosted. However, every running Stacks node exposes an RPC API, which allows you to interact with the underlying blockchain. Instead of using a centrally hosted API, you can directly access the RPC API of a locally hosted Node.
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/transactions" method="post" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/contracts/interface/{contract_address}/{contract_name}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/contracts/interface/{contract_address}/{contract_name}" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/transactions" method="post" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/map_entry/{contract_address}/{contract_name}/{map_name}" method="post" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/map_entry/{contract_address}/{contract_name}/{map_name}" method="post" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/contracts/source/{contract_address}/{contract_name}" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/blocks/upload" method="post" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/contracts/call-read/{contract_address}/{contract_name}/{function_name}" method="post" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/mempool/query" method="post" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/accounts/{principal}" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/blocks/upload/{consensus_hash}" method="post" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/fees/transaction" method="post" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/transactions/unconfirmed/{txid}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/fees/transfer" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/tenures/tip/{consensus_hash}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/info" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/tenures/fork_info/{start}/{stop}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/pox" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/neighbors" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/traits/{contract_address}/{contract_name}/{trait_contract_address}/{trait_contract_name}/{trait_name}" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/blocks/{block_id}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/clarity/marf/{clarity_marf_key}" method="post" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/headers/{quantity}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/clarity/metadata/{contract_address}/{contract_name}/{clarity_metadata_key}" method="post" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/data_var/{principal}/{contract_name}/{var_name}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v2/constant_val/{contract_address}/{contract_name}/{constant_name}" method="post" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/stackerdb/{principal}/{contract_name}/replicas" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v3/block_proposal" method="post" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/stackerdb/{principal}/{contract_name}/chunks" method="post" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v3/stacker_set/{cycle_number}" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/stackerdb/{principal}/{contract_name}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v3/blocks/{block_id}" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/stackerdb/{principal}/{contract_name}/{slot_id}/{slot_version}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v3/blocks/height/{block_height}" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/stackerdb/{principal}/{contract_name}/{slot_id}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v3/tenures/info" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/microblocks" method="post" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v3/tenures/{block_id}" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/microblocks/unconfirmed/{block_id}/{seq}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v3/sortitions/{lookup_kind}/{lookup}" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/microblocks/{microblock_id}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
-{% swagger src="https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml" path="/v3/signer/{signer}/{cycle_number}" method="get" %}
-[https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml](https://raw.githubusercontent.com/stacks-network/stacks-core/refs/heads/master/docs/rpc/openapi.yaml)
-{% endswagger %}
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/microblocks/confirmed/{block_id}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/attachments/inv" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/attachments/{hash}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/health" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/transaction/{txid}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/signer/{signer_pubkey}/{cycle_number}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/sortitions/burn_height/{height}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/sortitions/burn/{burn_header_hash}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/sortitions/consensus/{consensus_hash}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/sortitions/latest_and_last" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/sortitions" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/tenures/{block_id}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/tenures/info" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/blocks/height/{block_height}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/blocks/{block_id}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/stacker_set/{cycle_number}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/block_proposal" method="post" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/constant_val/{contract_address}/{contract_name}/{constant_name}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/clarity/metadata/{contract_address}/{contract_name}/{clarity_metadata_key}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/clarity/marf/{marf_key_hash}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/traits/{contract_address}/{contract_name}/{trait_contract_address}/{trait_contract_name}/{trait_name}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/pox" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/info" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/fees/transfer" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/fees/transaction" method="post" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/accounts/{principal}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v3/contracts/fast-call-read/{contract_address}/{contract_name}/{function_name}" method="post" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/contracts/call-read/{contract_address}/{contract_name}/{function_name}" method="post" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
+
+{% openapi-operation spec="stacks-blockchain-api" path="/v2/contracts/source/{contract_address}/{contract_name}" method="get" %}
+[OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+{% endopenapi-operation %}
 
