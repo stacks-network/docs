@@ -49,7 +49,7 @@ Partnerships with top-tier security experts have been established to ensure the 
 
 1. **Asymmetric Research:** [Asymmetric Research](https://www.asymmetric.re) is a core security contributor. Known for their rigorous research and protocol audits, Asymmetric brings security expertise to sBTC to identify and mitigate potential vulnerabilities.
 2. **ImmuneFi:** A robust bug bounty program incentivizes ethical hackers to uncover and address potential issues, adding an additional layer of defense.
-3. **3rd Party Audits:** Independent audit reports are in progress for additional security reviews, ensuring the protocol is thoroughly vetted by external experts.
+3. **3rd Party Audits:** Several third-party security audits have been conducted on the sBTC system and can be referenced on the [sBTC Audits page](sbtc-audits.md).
 
 </details>
 
