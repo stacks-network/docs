@@ -3,7 +3,7 @@
 The sBTC bridge is a web application allowing you to convert your BTC into sBTC on the Stacks chain.
 
 {% hint style="warning" %}
-Ensure that you are using the bridge located at app.stacks.co. This is the only official sBTC bridge.
+Ensure that you are using the bridge located at [sbtc.stacks.co](https://sbtc.stacks.co/). This is the only official sBTC bridge.
 {% endhint %}
 
 If you aren't familiar with sBTC, be sure to check out the [sBTC Conceptual Guide](../../concepts/sbtc/) to understand how it works.
@@ -70,12 +70,6 @@ In the UI, you can monitor the status of your transaction to see when it has bee
 * Minting - Your Bitcoin transaction has processed and the sBTC signers are minting your sBTC
 * Completed - Your sBTC has been minted to your wallet
 
-{% hint style="info" %}
-If you accidentally leave the transaction page, you can view the status of your transaction by adding the `txId`, `step`, and `amount` query parameters to the bridge URL, eg. [https://app.stacks.co/?txId=1ca44721135c00a170cbec406733f25d9621e0598c011c78246c2fe173c4c9aa\&step=3\&amount=10000](https://app.stacks.co/?txId=1ca44721135c00a170cbec406733f25d9621e0598c011c78246c2fe173c4c9aa\&step=3\&amount=10000)
-
-The History tab is in progress and will make viewing previous transactions easier.
-{% endhint %}
-
 Note that you may need to enable the display of the sBTC token within your wallet by clicking on 'Manage Tokens' and enabling sBTC.
 
 <div align="left"><figure><img src="../../.gitbook/assets/image (21).png" alt="" width="188"><figcaption></figcaption></figure></div>
@@ -84,7 +78,7 @@ Note that you may need to enable the display of the sBTC token within your walle
 
 ### Reclaiming BTC
 
-If your sBTC mint fails, you can reclaim your sBTC. You can do this via the bridge by visiting the reclaim page at https://app.stacks.co/\<TX\_ID>/reclaim and replacing the bracketed text with your transaction ID, eg. [https://app.stacks.co/8f37f750b6646f0a217121201967170bd3cfef5f2ebd4f30f359b5e9308470c4/reclaim](https://app.stacks.co/8f37f750b6646f0a217121201967170bd3cfef5f2ebd4f30f359b5e9308470c4/reclaim)&#x20;
+If your sBTC mint fails, you can reclaim your sBTC. You can do this via the bridge by visiting the reclaim page at https://sbtc.stacks.co/\<TX\_ID>/reclaim and replacing the bracketed text with your transaction ID, eg. [https://sbtc.stacks.co/8f37f750b6646f0a217121201967170bd3cfef5f2ebd4f30f359b5e9308470c4/reclaim](https://sbtc.stacks.co/8f37f750b6646f0a217121201967170bd3cfef5f2ebd4f30f359b5e9308470c4/reclaim)&#x20;
 
 There is an intermediate step in between depositing BTC and the sBTC signers consolidating it into the single signer UTXO. If the transaction is not picked up by signers, you can reclaim it using this UI. Note there is a 'Lock Time' field on the Reclaim page. That indicates the amount of blocks that must have passed in order to reclaim your BTC.
 
