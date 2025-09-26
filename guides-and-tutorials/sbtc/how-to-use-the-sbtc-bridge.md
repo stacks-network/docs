@@ -28,7 +28,7 @@ There are 5 simple steps to convert your BTC to sBTC.
 
 First, you'll need to connect your wallet to the bridge UI. Currently Leather and Xverse are supported, with more on the way.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image 41.png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -42,7 +42,7 @@ There are two transaction fees required to mint your sBTC. The first is set by t
 
 
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image 42.png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -50,7 +50,7 @@ There are two transaction fees required to mint your sBTC. The first is set by t
 
 Next, enter the Stacks address you would like your sBTC minted to.
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image 43.png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -58,7 +58,7 @@ Next, enter the Stacks address you would like your sBTC minted to.
 
 After you choose your Stacks address, you'll use your connected wallet to transfer the BTC.
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image 45.png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -72,7 +72,7 @@ In the UI, you can monitor the status of your transaction to see when it has bee
 
 Note that you may need to enable the display of the sBTC token within your wallet by clicking on 'Manage Tokens' and enabling sBTC.
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (21).png" alt="" width="188"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image 48.png" alt=""><figcaption></figcaption></figure></div>
 {% endstep %}
 {% endstepper %}
 
@@ -84,4 +84,4 @@ There is an intermediate step in between depositing BTC and the sBTC signers con
 
 This initiates a Bitcoin transaction that will transfer your BTC back to you.
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image 50.png" alt=""><figcaption></figcaption></figure>
