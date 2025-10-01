@@ -3,6 +3,9 @@ stacks-network/stacks-core
 stacks-network/rendezvous
 stacks-network/clarity-wasm
 
+# sBTC Repositories
+stacks-sbtc/sbtc
+
 # Hiro Systems Repositories
 hirosystems/clarinet
 hirosystems/stacks.js
