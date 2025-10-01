@@ -11,7 +11,6 @@ on:
         default: '6'
 
 permissions:
-  contents: write
   issues: write
 
 jobs:
