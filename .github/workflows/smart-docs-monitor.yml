@@ -1,0 +1,162 @@
+name: Smart Docs Monitor
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Run every 6 hours
+  workflow_dispatch:
+    inputs:
+      hours_back:
+        description: 'Hours to look back for merged PRs'
+        required: false
+        default: '6'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch merged PRs and create review batch
+        id: batch
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const repos = fs.readFileSync('repos-to-monitor.txt', 'utf8')
+              .split('\n')
+              .filter(line => line.trim() && !line.startsWith('#'));
+
+            const hoursBack = parseInt('${{ github.event.inputs.hours_back || '6' }}');
+            const since = new Date(Date.now() - hoursBack * 60 * 60 * 1000).toISOString();
+
+            let batchSummary = '# Merged PRs to Review\n\n';
+            let prCount = 0;
+
+            for (const repo of repos) {
+              const [owner, repoName] = repo.split('/');
+
+              try {
+                const { data: pulls } = await github.rest.pulls.list({
+                  owner,
+                  repo: repoName,
+                  state: 'closed',
+                  sort: 'updated',
+                  direction: 'desc',
+                  per_page: 30
+                });
+
+                const merged = pulls.filter(pr =>
+                  pr.merged_at &&
+                  new Date(pr.merged_at) > new Date(since)
+                );
+
+                if (merged.length > 0) {
+                  batchSummary += `## ${repo}\n\n`;
+
+                  for (const pr of merged) {
+                    batchSummary += `### PR #${pr.number}: ${pr.title}\n`;
+                    batchSummary += `- **URL:** ${pr.html_url}\n`;
+                    batchSummary += `- **Merged:** ${pr.merged_at}\n`;
+                    batchSummary += `- **Diff:** ${pr.diff_url}\n`;
+                    if (pr.body) {
+                      batchSummary += `- **Description:** ${pr.body.substring(0, 200)}...\n`;
+                    }
+                    batchSummary += '\n';
+                    prCount++;
+                  }
+                  batchSummary += '\n';
+                }
+              } catch (error) {
+                console.log(`Error with ${repo}:`, error.message);
+              }
+            }
+
+            fs.writeFileSync('pr-batch.md', batchSummary);
+            console.log(`Found ${prCount} merged PRs`);
+            core.setOutput('pr_count', prCount);
+            return prCount;
+
+      - name: Analyze with Claude and create issues
+        if: steps.batch.outputs.pr_count > 0
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            Review the merged PRs listed in `pr-batch.md` and determine which ones require documentation updates.
+
+            **Your Process:**
+
+            1. **Read pr-batch.md** to see all merged PRs
+
+            2. **For each PR:**
+               - Fetch the actual diff from the diff_url (use curl or gh api)
+               - Analyze what code/functionality changed
+               - Determine if it affects user-facing features, APIs, or workflows
+
+            3. **Review our documentation:**
+               - Check /concepts directory for all conceptual documentation
+               - Check /guides-and-tutorials directory for tutorials and how-to guides
+               - Check /reference directory for API and reference documentation
+               - Read README.md
+               - Look for setup/configuration guides
+
+            4. **Create GitHub issues for PRs needing doc updates:**
+
+               Use this format:
+
+               **Title:** `[Docs Update] [repo-name] PR #123: Brief description`
+
+               **Body:**
+
+               ## Source PR
+               - Repository: [repo-name]
+               - PR: #123 - [PR title]
+               - URL: [PR URL]
+               - Merged: [date]
+
+               ## What Changed
+               [Clear summary of the functional changes]
+
+               ## Documentation Impact
+
+               ### Files Needing Updates
+               - [ ] `/path/to/file1.md` - [What needs to change]
+               - [ ] `/path/to/file2.md` - [What needs to change]
+               - [ ] `README.md` - [What needs to change]
+
+               ## Recommended Changes
+
+               ### In `/path/to/file1.md`
+               [Specific text to add/change with examples]
+
+               ### In `README.md`
+               [Specific text to add/change with examples]
+
+               ## Priority
+               [High/Medium/Low] - [Why]
+
+               ---
+               *Auto-generated by docs sync monitor*
+
+
+               Labels: `["documentation", "auto-generated", "sync-needed", "[repo-name]"]`
+
+            5. **Optimization:**
+               - Skip PRs with only internal refactoring, tests, or CI changes
+               - Group multiple PRs affecting the same doc section into one issue if appropriate
+               - Prioritize user-facing changes (API, features, setup)
+               - Be specific - don't create vague "update docs" issues
+
+            **Important:** Only create issues for PRs that genuinely need documentation updates. Not every merged PR requires documentation changes.
+          claude_args: |
+            --max-turns 40
+            --model claude-sonnet-4-20250514
