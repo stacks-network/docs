@@ -11,6 +11,7 @@ on:
         default: '6'
 
 permissions:
+  contents: read
   issues: write
 
 jobs:
@@ -81,10 +82,11 @@ jobs:
 
             fs.writeFileSync('pr-batch.md', batchSummary);
             console.log(`Found ${prCount} merged PRs`);
+            core.setOutput('pr_count', prCount);
             return prCount;
 
       - name: Analyze with Claude and create issues
-        if: steps.batch.outputs.result > 0
+        if: steps.batch.outputs.pr_count > 0
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
