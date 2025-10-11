@@ -85,16 +85,17 @@ From this file, you'll need the `privateKey` value.
 
 ### Download the stacks-signer binary
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.5.0) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
+Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the latest signer release ZIP file for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
 
 Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the signer binary look like this:
 
 ```bash
+# The CLI examples below may show outdated release versions.
 # Enter the signer directory
 cd ~/stacks-signer
 
 # Download the signer binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/signer-3.1.0.0.5.0/linux-glibc-x64.zip
+wget https://github.com/stacks-network/stacks-core/releases/latest/download/linux-glibc-x64.zip
 
 # Unzip the signer binary archive
 unzip linux-glibc-x64.zip
@@ -107,6 +108,7 @@ Create the configuration file required to start the signer (be sure to replace `
 {% tabs %}
 {% tab title="Mainnet" %}
 ```bash
+# The CLI examples below may show outdated release versions.
 # Set environment variables
 AUTH_TOKEN=<your_token> # Used for signer-node authentication
 PRIVATE_KEY=<your_private_key> # privateKey from Step 1, this is the signer's private key
@@ -152,6 +154,7 @@ EOF
 To ensure the signer has been set up correctly, you can run the following commands:
 
 ```bash
+# The CLI examples below may show outdated release versions.
 # Verify the signer's version
 ~/stacks-signer/stacks-signer --version
 
@@ -191,16 +194,17 @@ We have created guides for running both a [full Bitcoin node](../nodes-and-miner
 
 ### Download the stacks-node binary
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest node release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary.
+Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the latest node release ZIP file for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary.
 
 Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the node binary look like this:
 
 ```bash
+# The CLI examples below may show outdated release versions.
 # Enter the node directory
 cd ~/stacks-node
 
 # Download the node binary zip
-wget https://github.com/stacks-network/stacks-core/releases/download/3.1.0.0.5/linux-glibc-x64.zip
+wget https://github.com/stacks-network/stacks-core/releases/latest/download/linux-glibc-x64.zip
 
 # Unzip the node binary archive
 unzip linux-glibc-x64.zip
@@ -219,6 +223,7 @@ If you run your own bitcoin node, you'll have to update `peer_host` and optional
 {% endhint %}
 
 ```bash
+# The CLI examples below may show outdated release versions.
 # Set environment variables
 AUTH_TOKEN=<your_token> # Used for signer-node authentication, same token as the one set up in the signer configuration
 
@@ -383,6 +388,7 @@ rm testnet-stacks-blockchain-latest.tar.gz
 To ensure the node has been set up correctly, you can run the following commands:
 
 ```bash
+# The CLI examples below may show outdated release versions.
 # Verify the node's version
 ~/stacks-node/stacks-node version
 
