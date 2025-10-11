@@ -85,7 +85,7 @@ From this file, you'll need the `privateKey` value.
 
 ### Download the stacks-signer binary
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the latest signer release ZIP file for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
+Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. The version of stacks-signer compatible with this release is included on the same release page. Download the latest signer release ZIP file for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
 
 Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the signer binary look like this:
 
