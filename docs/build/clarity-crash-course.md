@@ -1,12 +1,6 @@
 # Clarity Crash Course
 
-{% hint style="info" %}
-If you didn't read the previous section, go ahead and do that first.
-{% endhint %}
-
 ## Clarity Crash Course
-
-You now understand why Clarity exists and what problems it was designed to solve. This crash course is a quick introduction to Clarity so you can familiarize yourself with the language and syntax.
 
 This is designed for people with some programming experience who are new to Clarity. You don't need prior smart contract development experience, but if you have experience with languages like Solidity, you'll pick this up quickly.
 
