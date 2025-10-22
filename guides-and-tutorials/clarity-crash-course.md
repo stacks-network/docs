@@ -1,9 +1,5 @@
 # Clarity Crash Course
 
-You now understand why Clarity exists and what problems it was designed to solve. :::note If you didn't read the previous section, go ahead and do that first. :::
-
-Now let's do a really quick introduction to Clarity so you can familiarize yourself with the language and syntax.
-
 This crash course is designed for people who have some experience with programming but are new to Clarity. You don't need smart contract development experience, but if you do, with something like Solidity, you'll pick this up really quick.
 
 Once you've familiarized yourself with the language, if you'd like to continue your journey and master Clarity to become a smart contract developer, we recommend either the book, [Clarity of Mind](https://book.clarity-lang.org/title-page.html), or the course, [Clarity Universe](https://clarity-lang.org/universe), which has both a self-paced and guided cohort-based version.
