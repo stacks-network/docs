@@ -1,0 +1,56 @@
+# Overview
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/taking-a-look-at-recent-stacks-js-improvements">Hiro blog</a></p></figcaption></figure>
+
+## Overview
+
+Stacks.js is a collection of JavaScript libraries that enable you to build web applications on the Stacks blockchain. From wallet authentication to smart contract interactions.
+
+## Key features
+
+* **Transaction construction** - Build and broadcast all transaction types with type-safe APIs
+* **Smart contract interaction** - Deploy contracts and call functions with automatic encoding
+* **Wallet integration** - Connect to Leather, Xverse, and other Stacks wallets seamlessly
+* **Post-conditions** - Protect users with built-in asset transfer validations
+
+## Installation
+
+Stacks.js is separated into focused packages published under the `@stacks` scope. Install only what you need:
+
+```bash
+npm install @stacks/transactions
+```
+
+```bash
+npm install @stacks/connect
+```
+
+```bash
+npm install @stacks/network
+```
+
+```bash
+npm install @stacks/common
+```
+
+Available packages include:
+
+* `@stacks/api`
+* `@stacks/auth`
+* `@stacks/encryption`
+* `@stacks/network`
+* `@stacks/stacking`
+* `@stacks/transactions`
+* `@stacks/bns`
+* `@stacks/common`
+* `@stacks/profile`
+* `@stacks/storage`
+* `@stacks/wallet-sdk`
+
+
+
+{% hint style="info" %}
+Need help building with Stacks.js?
+
+Reach out to us on the **#stacks-js** channel on [Discord](https://stacks.chat/) under the Developer Tools section.
+{% endhint %}
