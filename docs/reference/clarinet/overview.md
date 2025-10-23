@@ -19,35 +19,37 @@ Clarinet is the fastest way to build, test, and deploy smart contracts on the St
 
 ## Installation
 
-{% code title="Homebrew" %}
+{% tabs %}
+{% tab title="Homebrew" %}
 ```bash
 brew install clarinet
 ```
-{% endcode %}
+{% endtab %}
 
-{% code title="Winget" %}
+{% tab title="Winget" %}
 ```bash
 winget install clarinet
 ```
-{% endcode %}
+{% endtab %}
 
-{% code title="Source" %}
+{% tab title="Source" %}
 ```bash
 sudo apt install build-essential pkg-config libssl-dev
 git clone https://github.com/hirosystems/clarinet
 cd clarinet
 cargo clarinet-install
 ```
-{% endcode %}
+{% endtab %}
 
-{% code title="Binary" %}
+{% tab title="Binary" %}
 ```bash
 wget -nv https://github.com/hirosystems/clarinet/releases/latest/download/clarinet-linux-x64-glibc.tar.gz -O clarinet-linux-x64.tar.gz
 tar -xf clarinet-linux-x64.tar.gz
 chmod +x ./clarinet
 mv ./clarinet /usr/local/bin
 ```
-{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 ## Networks
 
