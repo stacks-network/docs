@@ -1,0 +1,12 @@
+# April 2025
+
+| Article Title & Link                                                                                                                                                                                                          | Media Outlet  |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| [🧡 Experts: Gold’s Rise Doesn’t Undermine Bitcoin’s Digital Gold Status](https://news.bitcoin.com/experts-golds-rise-doesnt-undermine-bitcoins-digital-gold-status/)                                                         | Bitcoin.com   |
+| [🗞️ Veteran crypto exchange Bitfinex bets big on Bitcoin-based DeFi, deepens integration with Stacks](https://u.today/bitfinex-lists-stx-token-by-stacks-becomes-network-signer)                                             | U Today       |
+| [🟧 Bitfinex Throws Its Full Weight Behind Bitcoin’s Leading Layer-2 Stacks](https://www.coincarp.com/learn/bitfinex-throws-its-full-weight-behind-bitcoins-leading-layer-2-stacks/)                                          | Coincarp      |
+| [🚀 Hex Trust Expands Institutional Support for Stacks (STX) and sBTC Amid Growing Adoption](https://www.dlnews.com/research/external/hex-trust-expands-institutional-support-for-stacks-stx-and-sbtc-amid-growing-adoption/) | DL News       |
+| [🟧 Hermetica brings 5% yield to Bitcoin traders on Velar PerpDEX](https://crypto.news/hermetica-brings-5-yield-to-bitcoin-traders-on-velar-perpdex/)                                                                         | Crypto.News   |
+| [🗞️ BitGo Launches Institutional Support for SBTC, Expanding Bitcoin DeFi Accessibility (22 Apr)](https://www.binance.com/en/square/post/23264351434353)                                                                     | Binance       |
+| [🪙 Stacks' STX Is Week's Best Performer as Bitgo Link Seen Boosting Institutional Use](https://www.coindesk.com/markets/2025/04/25/stacks-stx-is-week-s-best-performer-as-bitgo-link-seen-boosting-institutional-use)        | Coindesk      |
+| [🚀 Stacks Asia bets big on Middle East Bitcoin boom with Abu Dhabi partnership](https://cointelegraph.com/news/stacks-asia-adgm-partnership-boosts-bitcoin-adoption-middle-east)                                             | Cointelegraph |
