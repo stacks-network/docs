@@ -17,23 +17,41 @@ Stacks.js is a collection of JavaScript libraries that enable you to build web a
 
 Stacks.js is separated into focused packages published under the `@stacks` scope. Install only what you need:
 
+{% tabs %}
+{% tab title="Transactions" %}
+{% code title="terminal" %}
 ```bash
 npm install @stacks/transactions
 ```
+{% endcode %}
+{% endtab %}
 
+{% tab title="Wallet Connections" %}
+{% code title="terminal" %}
 ```bash
 npm install @stacks/connect
 ```
+{% endcode %}
+{% endtab %}
 
+{% tab title="Network Config" %}
+{% code title="terminal" %}
 ```bash
 npm install @stacks/network
 ```
+{% endcode %}
+{% endtab %}
 
+{% tab title="Common Utils" %}
+{% code title="terminal" %}
 ```bash
 npm install @stacks/common
 ```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
-Available packages include:
+Other available packages include:
 
 * `@stacks/api`
 * `@stacks/auth`
