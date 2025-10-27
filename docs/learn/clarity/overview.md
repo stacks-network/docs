@@ -2,7 +2,7 @@
 
 <figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/write-better-smart-contracts-with-the-programming-language-clarity">Hiro blog</a></p></figcaption></figure>
 
-Clarity is a **decidable** smart contract language that optimizes for predictability and security, designed for the Stacks blockchain. Smart contracts allow developers to encode essential business logic on a blockchain.
+Clarity is a **decidable** smart contract language that optimizes for predictability and security, designed for the Stacks blockchain. Smart contracts allow developers to encode immutable business logic on a blockchain.
 
 The design decisions behind Clarity were based heavily on taking lessons learned in common Solidity exploits and creating a language that has been purpose-built for safety and security in mind.
 
