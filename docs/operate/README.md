@@ -2,7 +2,7 @@
 
 <figure><img src=".gitbook/assets/Frame 316126262 (1).jpg" alt=""><figcaption></figcaption></figure>
 
-This section walks through the technical setup steps required to run Stacks Blockchain nodes and miners. There are multiple options available for running a node, including Docker, Digital Ocean, and Render.
+This section walks through the technical setup steps required to run Stacks network nodes and miners. There are multiple options available for running a node, including Docker, Digital Ocean, and Render.
 
 Running your own Stacks node is a great way to increase the decentralization of the ecosystem and avoid relying on third-party centralized providers.
 
