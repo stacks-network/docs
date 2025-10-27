@@ -1,0 +1,31 @@
+root: ./
+
+redirects:
+
+  # nodes-and-miners to run-a-node redirects
+  guides-and-tutorials/nodes-and-miners: README.md
+  guides-and-tutorials/nodes-and-miners/run-a-node-with-docker: run-a-node/run-a-node-with-docker.md
+  guides-and-tutorials/nodes-and-miners/run-a-node-with-digital-ocean: run-a-node/run-a-node-with-digital-ocean.md
+
+  # guides-and-tutorials/run-a-miner to operate/run-a-miner redirects
+  guides-and-tutorials/run-a-miner/mine-mainnet-stacks-tokens: run-a-miner/mine-mainnet-stacks-tokens.md
+  guides-and-tutorials/run-a-miner/mine-testnet-stacks-tokens: run-a-miner/mine-testnet-stacks-tokens.md
+  guides-and-tutorials/run-a-miner/miner-costs-and-fees: run-a-miner/miner-costs-and-fees.md
+  guides-and-tutorials/run-a-miner/miner-prerequisites: run-a-miner/miner-prerequisites.md
+  guides-and-tutorials/run-a-miner/verify-miner: run-a-miner/verify-miner.md
+
+  # guides-and-tutorials/running-a-signer to operate/run-a-signer redirects
+  guides-and-tutorials/running-a-signer/best-practices-to-run-a-signer: run-a-signer/best-practices-to-run-a-signer.md
+  guides-and-tutorials/running-a-signer/how-to-monitor-signer: run-a-signer/how-to-monitor-signer.md
+  guides-and-tutorials/running-a-signer/how-to-read-signer-logs: run-a-signer/how-to-read-signer-logs.md
+  guides-and-tutorials/running-a-signer/opsec-best-practices: run-a-signer/opsec-best-practices.md
+  guides-and-tutorials/running-a-signer/signer-quickstart: run-a-signer/signer-quickstart.md
+
+  guides-and-tutorials/best-practices-to-snapshot-the-chainstate: snapshot-the-chainstate.md
+
+  # guides-and-tutorials/stack-stx to operate/stacking-stx redirects
+  guides-and-tutorials/stack-stx/increase-stacking: stacking-stx/increase-stacked-position.md
+  guides-and-tutorials/stack-stx/operate-a-pool: stacking-stx/operate-a-stacking-pool.md
+  guides-and-tutorials/stack-stx/stack-with-a-pool: stacking-stx/stack-with-a-pool.md
+  guides-and-tutorials/stack-stx/stacking-flow: stacking-stx/solo-stack.md
+  guides-and-tutorials/stack-stx/stop-stacking: stacking-stx/stop-stacking.md

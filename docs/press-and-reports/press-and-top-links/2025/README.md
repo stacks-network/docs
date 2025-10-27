@@ -1,0 +1,5 @@
+# 2025
+
+For weekly stories delivered to your inbox, subscribe to [Stacks Snacks](https://stackssnacks.com/). For quarterly ecosystem recaps, subscribe to the [Stacks Foundation newsletter](https://newsletters.stacks.org/).
+
+<table data-view="cards"><thead><tr><th>Issue</th><th data-card-target data-type="content-ref">Target</th></tr></thead><tbody><tr><td>january-2024.md</td><td><a href="broken-reference">Broken link</a></td></tr><tr><td>february-2025.md</td><td><a href="broken-reference">Broken link</a></td></tr><tr><td>march-2025.md</td><td><a href="broken-reference">Broken link</a></td></tr><tr><td>march-2025-1.md</td><td><a href="broken-reference">Broken link</a></td></tr><tr><td>march-2025-2.md</td><td><a href="broken-reference">Broken link</a></td></tr><tr><td>june-2025.md</td><td><a href="broken-reference">Broken link</a></td></tr><tr><td>june-2025-1.md</td><td><a href="broken-reference">Broken link</a></td></tr><tr><td>june-2025-2.md</td><td><a href="broken-reference">Broken link</a></td></tr><tr><td>june-2025-2-1.md</td><td><a href="broken-reference">Broken link</a></td></tr></tbody></table>

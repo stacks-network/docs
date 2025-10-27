@@ -1,0 +1,30 @@
+root: ./
+
+redirects:
+  bitcoin-theses-and-reports/bitcoin-theses: README.md
+  bitcoin-theses-and-reports/bitcoin-reports: bitcoin-theses-and-reports/bitcoin-reports.md
+
+  # 2024 press-and-top-links redirects
+  press-and-top-links/2024/january-2024: press-and-top-links/2024/january-2024.md
+  press-and-top-links/2024/february-2024: press-and-top-links/2024/february-2024.md
+  press-and-top-links/2024/march-2024: press-and-top-links/2024/march-2024.md
+  press-and-top-links/2024/april-2024: press-and-top-links/2024/april-2024.md
+  press-and-top-links/2024/may-2024: press-and-top-links/2024/may-2024.md
+  press-and-top-links/2024/june-2024: press-and-top-links/2024/june-2024.md
+  press-and-top-links/2024/july-2024: press-and-top-links/2024/july-2024.md
+  press-and-top-links/2024/august-2024: press-and-top-links/2024/august-2024.md
+  press-and-top-links/2024/september-2024: press-and-top-links/2024/september-2024.md
+  press-and-top-links/2024/october-2024: press-and-top-links/2024/october-2024.md
+  press-and-top-links/2024/november-2024: press-and-top-links/2024/november-2024.md
+  press-and-top-links/2024/december-2024: press-and-top-links/2024/december-2024.md
+  
+  # 2025 press-and-top-links redirects
+  press-and-top-links/2025/january-2025: press-and-top-links/2025/january-2025.md
+  press-and-top-links/2025/february-2025: press-and-top-links/2025/february-2025.md
+  press-and-top-links/2025/march-2025: press-and-top-links/2025/march-2025.md
+  press-and-top-links/2025/april-2025: press-and-top-links/2025/april-2025.md
+  press-and-top-links/2025/may-2025: press-and-top-links/2025/may-2025.md
+  press-and-top-links/2025/june-2025: press-and-top-links/2025/june-2025.md
+  press-and-top-links/2025/july-2025: press-and-top-links/2025/july-2025.md
+  press-and-top-links/2025/august-2025: press-and-top-links/2025/august-2025.md
+  press-and-top-links/2025/september-2025: press-and-top-links/2025/september-2025.md
