@@ -14,7 +14,7 @@ The sBTC Bridge has been designed to be as simple as possible to use. But specif
 
 If you need assistance in setting up such a transaction policy in Fordefi, check out their dedicated [docs](https://docs.fordefi.com/user-guide/policies).
 
-### Walkthrough
+### Walkthrough for minting sBTC
 
 Here are the necessary steps to convert your BTC to sBTC using Fordefi:
 
@@ -30,7 +30,7 @@ First, you'll need to make sure you have a vault for Bitcoin, and a separate vau
 {% endstep %}
 
 {% step %}
-#### Connect your Fordefi wallet
+#### Connect your Fordefi wallet extension
 
 First, you'll need to connect your Fordefi wallet to the sBTC Bridge app.
 
@@ -48,7 +48,7 @@ Next, the Fordefi extension will want you to select which Bitcoin vault, and the
 {% endstep %}
 
 {% step %}
-#### Choose the amount to deposit
+#### Choose the amount of BTC to deposit
 
 After your wallet is connected, choose how much BTC you would like to convert to sBTC.
 
@@ -82,7 +82,7 @@ If you have a transaction policy setup with certain approvals required, hitting 
 {% endstep %}
 
 {% step %}
-### Approve transaction by approvers
+#### Approve transaction by approvers
 
 Upon notice of transaction to approvers, each approver will need to approve transaction in their Fordefi mobile wallets before the completion of the final step, which is signing the transaction by the initiator.
 
@@ -92,7 +92,7 @@ Each approver will need to pull up the pending transaction in their Fordefi mobi
 {% endstep %}
 
 {% step %}
-### Sign approved transaction
+#### Sign approved transaction
 
 Once all transaction policies are satisfied and approved, the initiator will need to officially sign the transaction in their Fordefi mobile wallet.
 
@@ -102,7 +102,7 @@ This mobile signature action will then notify the sBTC Bridge app.
 {% endstep %}
 
 {% step %}
-### Receive your sBTC
+#### Receive your sBTC
 
 Back in the sBTC Bridge app UI, you can monitor the status of your transaction to see when it has been completed, at which point you can see the sBTC in your Fordefi wallet. It will go through three stages:
 
