@@ -2,7 +2,7 @@
 
 The sBTC bridge is a web application allowing you to convert your BTC into sBTC on the Stacks chain.
 
-{% hint style="warning" %}
+{% hint style="danger" %}
 Ensure that you are using the bridge located at [sbtc.stacks.co](https://sbtc.stacks.co/). This is the only official sBTC bridge.
 {% endhint %}
 

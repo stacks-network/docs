@@ -20,6 +20,7 @@
   * [How to Run sBTC Signer](sbtc/how-to-run-sbtc-signer.md)
   * [Best Practices for running an sBTC Signer](sbtc/best-practices-for-running-an-sbtc-signer.md)
   * [How to Use the sBTC Bridge](sbtc/how-to-use-the-sbtc-bridge.md)
+  * [How to Use the sBTC Bridge with Fordefi](sbtc/how-to-use-the-sbtc-bridge-1.md)
   * [How to Earn sBTC Rewards](sbtc/how-to-earn-sbtc-rewards.md)
 * [Price Oracles](price-oracles.md)
 
