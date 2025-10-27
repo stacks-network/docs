@@ -195,7 +195,7 @@ If the outputs of the previous commands are correct, you can proceed and start t
 
 In order to optimize signer health and performance, we highly recommend setting up your own Bitcoin node rather than relying on a third-party node.
 
-We have created guides for running both a [full Bitcoin node](../run-a-node/run-a-bitcoin-node.md) and a [pruned Bitcoin node](../run-a-node/run-a-pruned-bitcoin-node.md) you can follow.
+We have created guides for running both a [full Bitcoin node](../readme/run-a-bitcoin-node.md) and a [pruned Bitcoin node](../readme/run-a-pruned-bitcoin-node.md) you can follow.
 {% endstep %}
 
 {% step %}

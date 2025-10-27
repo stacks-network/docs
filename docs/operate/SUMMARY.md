@@ -1,12 +1,12 @@
 # Table of contents
 
 * [Run a Node](README.md)
-  * [Run a Node with Docker](run-a-node/run-a-node-with-docker.md)
-  * [Run a Node with Digital Ocean](run-a-node/run-a-node-with-digital-ocean.md)
-  * [Run a Node with a Hosted Provider](run-a-node/run-a-node-with-a-hosted-provider.md)
-  * [Run a Node with Quicknode](run-a-node/run-a-node-with-quicknode.md)
-  * [Run a Bitcoin Node](run-a-node/run-a-bitcoin-node.md)
-  * [Run a Pruned Bitcoin Node](run-a-node/run-a-pruned-bitcoin-node.md)
+  * [Run a Node with Docker](readme/run-a-node-with-docker.md)
+  * [Run a Node with Digital Ocean](readme/run-a-node-with-digital-ocean.md)
+  * [Run a Node with a Hosted Provider](readme/run-a-node-with-a-hosted-provider.md)
+  * [Run a Node with Quicknode](readme/run-a-node-with-quicknode.md)
+  * [Run a Bitcoin Node](readme/run-a-bitcoin-node.md)
+  * [Run a Pruned Bitcoin Node](readme/run-a-pruned-bitcoin-node.md)
 * [Run a Miner](run-a-miner/README.md)
   * [Miner Prerequisites](run-a-miner/miner-prerequisites.md)
   * [Miner Costs and Fees](run-a-miner/miner-costs-and-fees.md)
