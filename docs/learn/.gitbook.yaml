@@ -1,0 +1,61 @@
+root: ./
+
+redirects:  
+  # stacks-101 redirects
+  concepts/stacks-101/what-is-stacks: stacks-101/what-is-stacks.md
+  concepts/stacks-101/bitcoin-connection: stacks-101/bitcoin-connection.md
+  concepts/stacks-101/proof-of-transfer: stacks-101/proof-of-transfer.md
+  concepts/stacks-101/stacks-among-other-layers: stacks-101/stacks-among-other-layers.md
+  concepts/stacks-101/financial-incentive-and-security-budget: stacks-101/financial-incentive-and-security-budget.md
+  
+  # block-production redirects
+  concepts/block-production/bitcoin-finality: block-production/bitcoin-finality.md
+  concepts/block-production/bitcoin-reorgs: block-production/bitcoin-reorgs.md
+  concepts/block-production/mining: block-production/mining.md
+  concepts/block-production/stackers-and-signing: block-production/signing.md
+  concepts/block-production/stacking: block-production/stacking.md
+  
+  # clarity redirects
+  concepts/clarity/decidability: clarity/decidability.md
+  concepts/clarity/overview: clarity/overview.md
+  
+  # network-fundamentals redirects
+  concepts/network-fundamentals/accounts: network-fundamentals/accounts.md
+  concepts/network-fundamentals/authentication: network-fundamentals/authentication.md
+  concepts/network-fundamentals/bitcoin-name-system: network-fundamentals/bitcoin-name-system.md
+  concepts/network-fundamentals/mainnet-and-testnets: network-fundamentals/mainnet-and-testnets.md
+  concepts/network-fundamentals/network: network-fundamentals/network-basics.md
+  concepts/network-fundamentals/sips: network-fundamentals/sips.md
+  concepts/network-fundamentals/technical-specifications/audits: network-fundamentals/technical-specifications/audits.md
+  
+  # transactions redirects
+  concepts/transactions/post-conditions: transactions/post-conditions.md
+  concepts/transactions/transactions: transactions/how-transactions-work.md
+  
+  # sbtc redirects
+  concepts/sbtc/core-features: sbtc/core-features.md
+  concepts/sbtc/emily: sbtc/emily-api.md
+  concepts/sbtc/peg-wallet-utxo: sbtc/peg-wallet-utxo.md
+  concepts/sbtc/sbtc-audits: sbtc/sbtc-audits.md
+  concepts/sbtc/sbtc-faq: sbtc/sbtc-faq.md
+  
+  # sbtc auxiliary-features redirects
+  concepts/sbtc/auxiliary-features/fee-sponsorship: sbtc/auxiliary-features/transaction-fee-sponsorship.md
+  concepts/sbtc/auxiliary-features/signer-wallet-rotation: sbtc/auxiliary-features/signer-wallet-rotation.md
+  
+  # sbtc clarity-contracts redirects
+  concepts/sbtc/clarity-contracts/sbtc-bootstrap-signers: sbtc/clarity-contracts/sbtc-bootstrap-signers.md
+  concepts/sbtc/clarity-contracts/sbtc-deposit: sbtc/clarity-contracts/sbtc-deposit.md
+  concepts/sbtc/clarity-contracts/sbtc-registry: sbtc/clarity-contracts/sbtc-registry.md
+  concepts/sbtc/clarity-contracts/sbtc-signers: sbtc/clarity-contracts/sbtc-signers.md
+  concepts/sbtc/clarity-contracts/sbtc-token: sbtc/clarity-contracts/sbtc-token.md
+  concepts/sbtc/clarity-contracts/sbtc-withdrawal: sbtc/clarity-contracts/sbtc-withdrawal.md
+  
+  # sbtc operations redirects
+  concepts/sbtc/operations/deposit-withdrawal-times: sbtc/sbtc-operations/deposit-vs-withdrawal-times.md
+  concepts/sbtc/operations/deposit: sbtc/sbtc-operations/deposit.md
+  concepts/sbtc/operations/withdrawal: sbtc/sbtc-operations/withdrawal.md
+  
+  # sbtc walkthroughs redirects
+  concepts/sbtc/walkthroughs/sbtc-transaction-lifecycle: sbtc/walkthroughs/sbtc-transaction-walkthrough.md
+  concepts/sbtc/walkthroughs/signer-process: sbtc/walkthroughs/signer-process-walkthrough.md

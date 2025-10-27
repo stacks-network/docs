@@ -1,0 +1,17 @@
+root: ./
+
+redirects:
+
+  reference/api: rpc-api.md
+  reference/the-stack: README.md
+  reference/functions: clarity/functions.md
+  reference/keywords: clarity/keywords.md
+  reference/types: clarity/types.md
+  reference/stacks-node-configuration: stacks-node-configuration.md
+  reference/sample-configuration-files: signer-configuration.md
+  
+  # example-contracts redirects
+  example-contracts/audited-starter-contracts: clarity/example-contracts/audited-starter-contracts.md
+  example-contracts/bns: clarity/example-contracts/bns.md
+  example-contracts/multi-send: clarity/example-contracts/multi-send.md
+  example-contracts/stacking: clarity/example-contracts/stacking.md

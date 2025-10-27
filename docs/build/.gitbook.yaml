@@ -1,0 +1,36 @@
+root: ./
+
+redirects:
+  guides-and-tutorials/hello-stacks-quickstart-tutorial: README.md
+  guides-and-tutorials/clarity-crash-course: clarity-crash-course.md
+
+  # bitcoin-integration redirects
+  guides-and-tutorials/bitcoin-integration/sending-bitcoin-with-leather-wallet: bitcoin-integration/sending-bitcoin-with-leather.md
+  guides-and-tutorials/bitcoin-integration/parsing-a-bitcoin-transaction: bitcoin-integration/parsing-a-bitcoin-transaction.md
+  guides-and-tutorials/bitcoin-integration/verifying-a-bitcoin-transaction: bitcoin-integration/verifying-a-bitcoin-transaction.md
+
+  # create-tokens redirects
+  guides-and-tutorials/tokens/creating-a-nft: create-tokens/creating-a-nft.md
+  guides-and-tutorials/tokens/creating-a-fungible-token: create-tokens/creating-a-ft.md
+
+  # build-a-frontend redirects
+  guides-and-tutorials/frontend/authentication-with-stacks.js: build-a-frontend/authentication-with-stacks.js.md
+  guides-and-tutorials/frontend/post-conditions-with-stacks.js: build-a-frontend/post-conditions-with-stacks.js.md
+  guides-and-tutorials/frontend/sending-transactions-with-stacks.js: build-a-frontend/sending-transactions-with-stacks.js.md
+
+  # testing-smart-contracts redirects
+  guides-and-tutorials/testing-smart-contracts/fuzz-testing: testing-smart-contracts/fuzz-testing.md
+
+  # sbtc redirects
+  guides-and-tutorials/sbtc/best-practices-for-running-an-sbtc-signer: sbtc/best-practices-for-running-an-sbtc-signer.md
+  guides-and-tutorials/sbtc/earn-sbtc-rewards: sbtc/how-to-earn-sbtc-rewards.md
+  guides-and-tutorials/sbtc/how-to-run-sbtc-signer: sbtc/how-to-run-sbtc-signer.md
+  guides-and-tutorials/sbtc/how-to-use-the-sbtc-bridge: sbtc/how-to-use-the-sbtc-bridge.md
+  guides-and-tutorials/sbtc/sbtc-builder-quickstart: sbtc/sbtc-builder-quickstart.md
+
+  # oracles redirects
+  guides-and-tutorials/oracles: price-oracles.md
+
+  # misc.-guides redirects
+  guides-and-tutorials/build-a-borrowing-and-lending-protocol: misc.-guides/build-a-borrowing-and-lending-protocol.md
+  guides-and-tutorials/community-tutorials: misc.-guides/community-tutorials.md
