@@ -1,6 +1,6 @@
 # Audits
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/smart-contracts-cant-afford-to-fail-and-with-clarity-language-they-wont">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/smart-contracts-cant-afford-to-fail-and-with-clarity-language-they-wont">Hiro blog</a></p></figcaption></figure>
 
 _All 'high' or 'critical' issues listed in audits have either been mitigated or otherwise made obsolete, even if the report states otherwise._
 

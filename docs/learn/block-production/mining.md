@@ -1,6 +1,6 @@
 # Mining
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog">Hiro blog</a></p></figcaption></figure>
 
 {% hint style="info" %}
 This is conceptual guide that covers how mining works. For practical steps on how to setup your own miner please refer to the guides to running a miner on [mainnet](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/run-a-miner/mine-mainnet-stacks-tokens) and [testnet](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/run-a-miner/mine-testnet-stacks-tokens).
