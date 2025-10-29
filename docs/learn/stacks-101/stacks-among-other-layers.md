@@ -1,6 +1,6 @@
 # Stacks Among Other Layers
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/stacks-vs-solana-vs-polygon-how-do-they-compare-from-a-developer-perspective">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/stacks-vs-solana-vs-polygon-how-do-they-compare-from-a-developer-perspective">Hiro blog</a></p></figcaption></figure>
 
 Recently, we have seen a flurry of new "Bitcoin layers" popping up across the ecosystem as the market has finally woken up to the idea.
 

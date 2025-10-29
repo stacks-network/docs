@@ -1,6 +1,6 @@
 # Network Basics
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/understanding-nakamotos-fast-blocks-on-stacks">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/understanding-nakamotos-fast-blocks-on-stacks">Hiro blog</a></p></figcaption></figure>
 
 ### Tokens
 

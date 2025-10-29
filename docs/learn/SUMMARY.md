@@ -51,3 +51,7 @@
     * [sBTC Transaction Walkthrough](sbtc/walkthroughs/sbtc-transaction-walkthrough.md)
   * [sBTC FAQ](sbtc/sbtc-faq.md)
   * [sBTC Audits](sbtc/sbtc-audits.md)
+* [Dual Stacking](dual-stacking/README.md)
+  * [How to Start Dual Stacking](dual-stacking/how-to-start-dual-stacking.md)
+  * [Economic Model](dual-stacking/economic-model.md)
+  * [FAQ](dual-stacking/faq.md)
