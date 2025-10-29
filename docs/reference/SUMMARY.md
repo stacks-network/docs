@@ -86,6 +86,6 @@
 
 ***
 
-* [RPC-API](rpc-api.md)
+* [RPC API](rpc-api.md)
 * [Stacks Node Configuration](stacks-node-configuration.md)
 * [Signer Configuration](signer-configuration.md)
