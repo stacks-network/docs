@@ -25,7 +25,7 @@ If you run a local node, it exposes an HTTP server on port `20443`. The info end
 
 ### Stacks Node RPC API endpoints
 
-The Stacks 2.0 Blockchain RPC API is exposed by every running Stacks node. Below is a non-exhaustive list of common RPC endpoints (each entry links to the OpenAPI spec used by the Stacks node):
+The Stacks Blockchain RPC API is exposed by every running Stacks node. Below is an interactive list of common RPC endpoints.
 
 {% openapi-operation spec="stacks-blockchain-api" path="/v2/transactions" method="post" %}
 [OpenAPI stacks-blockchain-api](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
