@@ -1,6 +1,6 @@
 # Clarity
 
-<figure><img src="../.gitbook/assets/Frame 316126243.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
 Clarity is the smart contract language that Stacks uses. It has been built from the ground up to make it easier for developers to write safe, secure smart contracts. Clarity has several unique features that make it an ideal choice for writing smart contracts. We'll go over an overview of Clarity here, and highly recommend checking out the [Clarity Crash Course](https://app.gitbook.com/u/ZrQItu6D9bMKmf1HfsLTnGc05WZ2) guide to dig in and get started learning Clarity.
 
