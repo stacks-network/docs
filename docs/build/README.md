@@ -1,8 +1,3 @@
----
-cover: .gitbook/assets/stacks-devs-twitter-header.png
-coverY: 0
----
-
 # Developer Quickstart
 
 <figure><img src=".gitbook/assets/Frame 316125324.jpg" alt=""><figcaption><p>source: Hiro blog</p></figcaption></figure>

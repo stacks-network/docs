@@ -1,4 +1,4 @@
-# How to Use the sBTC Bridge
+# How to Use the sBTC Bridge with Xverse/Leather
 
 The sBTC bridge is a web application allowing you to convert your BTC into sBTC on the Stacks chain.
 
@@ -8,7 +8,7 @@ Ensure that you are using the bridge located at [sbtc.stacks.co](https://sbtc.st
 
 If you aren't familiar with sBTC, be sure to check out the [sBTC Conceptual Guide](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/sbtc) to understand how it works.
 
-The bridge has been designed to be as simple as possible to use. In order to utilize sBTC, all you need to do is send a Bitcoin transaction using a supported wallet (like [Leather](https://leather.io/) or [Xverse](https://www.xverse.app/)).
+The bridge has been designed to be as simple as possible to use. In order to utilize sBTC, all you need to do is send a Bitcoin transaction using a supported wallet (like [Leather](https://leather.io/) or [Xverse](https://www.xverse.app/)). This guide will show screenshots of Xverse but the flow is the same if using Leather as well.
 
 Below you'll find both a video and written walkthrough of using the bridge.
 
