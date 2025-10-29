@@ -19,8 +19,9 @@
   * [sBTC Builder Quickstart](sbtc/sbtc-builder-quickstart.md)
   * [How to Run sBTC Signer](sbtc/how-to-run-sbtc-signer.md)
   * [Best Practices for running an sBTC Signer](sbtc/best-practices-for-running-an-sbtc-signer.md)
-  * [How to Use the sBTC Bridge](sbtc/how-to-use-the-sbtc-bridge.md)
+  * [How to Use the sBTC Bridge with Xverse/Leather](sbtc/how-to-use-the-sbtc-bridge.md)
   * [How to Use the sBTC Bridge with Fordefi](sbtc/how-to-use-the-sbtc-bridge-with-fordefi.md)
+  * [How to Use the sBTC Bridge with Asigna](sbtc/how-to-use-the-sbtc-bridge-with-fordefi-1.md)
   * [How to Earn sBTC Rewards](sbtc/how-to-earn-sbtc-rewards.md)
 * [Price Oracles](price-oracles.md)
 
