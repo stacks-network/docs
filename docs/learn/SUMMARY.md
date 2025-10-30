@@ -57,4 +57,5 @@
     * [Dual Stack with Asigna](dual-stacking/how-to-start-dual-stacking/using-asigna.md)
     * [Dual Stack with Leather](dual-stacking/how-to-start-dual-stacking/using-leather.md)
   * [Economic Model](dual-stacking/economic-model.md)
+  * [Dual Stacking Smart Contract](dual-stacking/dual-stacking-smart-contract.md)
   * [FAQ](dual-stacking/faq.md)
