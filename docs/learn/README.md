@@ -41,7 +41,7 @@ Clarity is the smart contract language that Stacks uses. It has been designed fr
 
 #### sBTC
 
-sBTC is the trust-minimized 2-way Bitcoin peg on the Stacks layer. sBTC is the key to making Bitcoin programmable and bringing full smart contract functionality to Bitcoin via Stacks. sBTC is not a federation, but operates as an open-network, decentralized 2-way peg solution to bring smart contract functionality to Bitcoin with as little counterparty risk as possible. There is an entire section of these docs dedicated to explaining[ sBTC](broken-reference).
+sBTC is the trust-minimized 2-way Bitcoin peg on the Stacks layer. sBTC is the key to making Bitcoin programmable and bringing full smart contract functionality to Bitcoin via Stacks. sBTC is not a federation, but operates as an open-network, decentralized 2-way peg solution to bring smart contract functionality to Bitcoin with as little counterparty risk as possible. There is an entire section of these docs dedicated to explaining [sBTC](sbtc/).
 
 ### How to Use These Docs
 

@@ -13,7 +13,7 @@ NOTE: you will have until \~ Nov 4 (end of Cycle 121) to enroll, and you will co
 #### **Overview of how to start participating in Dual Stacking**
 
 1. **Mint sBTC** → 1:1 Bitcoin-backed. Enroll in dual stacking to earn baseline reward.
-2. **Stack STX** → Boost returns up to 10x (optional).
+2. **Stack STX** → Stack STX alongside your sBTC to multiply returns up to 10x.
 3. **Use in DeFi** → Deploy sBTC across protocols while still earning rewards.
 4. **Earn sBTC** → and redeem 1:1 for BTC anytime.
 
@@ -21,7 +21,7 @@ PS: your stacked STX continues to earn bitcoin while in dual stacking.
 
 ### Dual Stacking Web App
 
-The Dual Stacking Web App is the primary user interface for participating in Dual Stacking — a mechanism that allows Bitcoin holders to earn BTC-denominated yield through sBTC, and maximize that yield by either stacking STX or using sBTC in DeFi.
+The Dual Stacking Web App is the primary user interface for participating in Dual Stacking — a mechanism that allows Bitcoin holders to earn BTC-denominated rewards through sBTC, and maximize those rewards by either stacking STX or using sBTC in DeFi.
 
 {% hint style="info" %}
 The minimum to mint sBTC via the sBTC Bridge app is currently at 0.001 BTC (100,000 sats).
@@ -33,11 +33,11 @@ The minimum to enroll in Dual Stacking with your minted sBTC will be 0.0001 sBTC
 
 {% tabs %}
 {% tab title="sBTC holders" %}
-At the end of October, users participating in sBTC Rewards program will need to enroll in Dual Stacking in order to continue earning yield. This web app is the main way for them to do that.
+At the end of October, users participating in sBTC Rewards program will need to enroll in Dual Stacking in order to continue earning sBTC rewards. This web app is the main way for them to do that.
 {% endtab %}
 
 {% tab title="BTC holders" %}
-There are relatively few options to earn yield on BTC. Most options require a trade-off between security and rewards. You can have a self-custodial option that earns yield in altcoins (Babylon) or a centralized/ custodial/ high minimum requirements option that earns BTC (River, Maple). This app gives them an option to earn BTC denominated yield in an easy, permissionless and trust minimized way.
+There are relatively few options to earn yield on BTC. This app gives BTC holders an option to earn BTC denominated rewards in an easy, trust minimized way.
 {% endtab %}
 
 {% tab title="STX holders" %}
