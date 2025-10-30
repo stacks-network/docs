@@ -4,13 +4,15 @@ description: Getting starting in Dual Stacking is simple.
 
 # How to Start Dual Stacking
 
+<figure><img src="../../.gitbook/assets/Group 316124782.png" alt=""><figcaption><p><a href="http://app.stacks.co/">app.stacks.co</a></p></figcaption></figure>
+
 {% hint style="warning" %}
 Coinciding with the Dual Stacking launch, the existing sBTC Rewards Program will sunset on October 31, 2024. Starting October 30th, enroll in the Dual Stacking Rewards Contract (specific instructions to follow).&#x20;
 
 NOTE: you will have until \~ Nov 4 (end of Cycle 121) to enroll, and you will continue to earn rewards from the current program until this date.
 {% endhint %}
 
-#### **Overview of how to start participating in Dual Stacking**
+### **Overview of how to start Dual Stacking**
 
 1. **Mint sBTC** → 1:1 Bitcoin-backed. Enroll in dual stacking to earn baseline reward.
 2. **Stack STX** → Stack STX alongside your sBTC to multiply returns up to 10x.
@@ -29,7 +31,15 @@ The minimum to mint sBTC via the sBTC Bridge app is currently at 0.001 BTC (100,
 The minimum to enroll in Dual Stacking with your minted sBTC will be 0.0001 sBTC (10,000 sats).
 {% endhint %}
 
-#### Who is this app for?
+Once connected to the web app, you'll see the dashboard that lays out all the metrics regarding your rewards composition and different methods for boosting rewards. Track your balances, rewards and payouts at anytime.
+
+The 'Boost your rewards' section will layout the steps for you to enroll and boost your rewards.
+
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 75 (2).png" alt=""><figcaption></figcaption></figure></div>
+
+Use the Dual Stacking calculator for estimated rewards based on the ratio of sBTC in your wallet and STX stacked. For more details on your rewards are calculated and the math behind it, check out the section on the [reward function](../economic-model.md#reward-function-parameters).
+
+### Who is this app for?
 
 {% tabs %}
 {% tab title="sBTC holders" %}
