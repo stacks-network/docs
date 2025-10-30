@@ -14,7 +14,7 @@ The Dual Stacking Web App is the primary user interface for participating in Dua
 Ensure that you are using the official Dual Stacking app located at [app.stacks.co](https://app.stacks.co/).
 {% endhint %}
 
-For this guide, we'll walkthrough how you can use your Asigna wallet in enrolling Dual Stacking and participating in DeFi for boosted rewards. This guide assumes you have a dedicated Stacks vault setup with multi-signature in your Fordefi wallet.
+For this guide, we'll walkthrough how you can use your Asigna wallet in enrolling Dual Stacking and participating in DeFi for boosted rewards. This guide assumes you have a dedicated Stacks vault setup with multi-signature in your Asigna wallet.
 
 If you need assistance in setting up your vaults in Asigna, check out their dedicated [docs](https://asigna.gitbook.io/asigna).
 
