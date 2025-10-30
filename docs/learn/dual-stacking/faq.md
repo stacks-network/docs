@@ -127,6 +127,9 @@ Dual Stacking operates as a transparent smart contract on the Stacks network. sB
 * [\[Github\]](https://github.com/stx-labs/papers/blob/main/Dual%20Stacking%20Litepaper.pdf) Official Dual Stacking Litepaper
 * [\[Stacks Forum\]](https://forum.stacks.org/t/stacks-economic-model-unlocking-bitcoin-capital-long-term-growth/18035#dual-stacking-aligning-btc-and-stx-incentives-3) Initial Dual Stacking Announcement
 * [\[Stacks Official\]](https://www.stacks.co/dual-stacking) Dual Stacking landing page on stacks.co
+* \[[Stacks Blog](https://www.stacks.co/blog/dual-stacking-launches-on-stacks)] Official blog announcement
+* \[[Stacks Twitter](https://x.com/Stacks/status/1983900168954286342)] Official twitter announcement
+* \[[Dual Stacking App](https://app.stacks.co/)] Official Dual Stacking App
 
 #### Related Technical Resources
 
