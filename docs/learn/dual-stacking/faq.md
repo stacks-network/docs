@@ -130,4 +130,4 @@ Dual Stacking operates as a transparent smart contract on the Stacks network. sB
 
 #### Related Technical Resources
 
-* [\[Explorer\]](https://explorer.hiro.so/txid/ST25SZ23P3FDTNAEAQTXG0PD34FC51CX33K3SKPXC.yield-dual-stacking?chain=testnet) `yield-dual-stacking` testnet contract
+* [\[Explorer\]](https://explorer.hiro.so/txid/SP1HFCRKEJ8BYW4D0E3FAWHFDX8A25PPAA83HWWZ9.dual-stacking?chain=mainnet) `dual-stacking` : Main Dual Stacking Contract
