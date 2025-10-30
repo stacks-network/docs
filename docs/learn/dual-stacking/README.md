@@ -1,6 +1,5 @@
 ---
 description: An overview of the BTC-denominated rewards mechanism on Stacks
-hidden: true
 ---
 
 # Dual Stacking

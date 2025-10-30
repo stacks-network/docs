@@ -63,6 +63,8 @@ If you navigate back to your Fordefi web wallet, you'll see the transaction queu
 Within the Fordefi mobile wallet, you'll see the same transaction waiting for signing. Go ahead and sign the transaction which will then broadcast the transaction to the network.
 
 <div data-with-frame="true"><figure><img src="../../.gitbook/assets/Group 316124781.png" alt=""><figcaption><p>Complete all signatures in the Fordefi mobile wallet.</p></figcaption></figure></div>
+
+Your enroll transaction will look like this [here](https://explorer.hiro.so/txid/0x3b4ea853df54825adad3ab475d93be18c6a12f04033c665d4597984786feb608?chain=mainnet).
 {% endstep %}
 
 {% step %}

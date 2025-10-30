@@ -23,7 +23,7 @@ PS: your stacked STX continues to earn bitcoin while in dual stacking.
 
 ### Dual Stacking Web App
 
-The Dual Stacking Web App is the primary user interface for participating in Dual Stacking — a mechanism that allows Bitcoin holders to earn BTC-denominated rewards through sBTC, and maximize those rewards by either stacking STX or using sBTC in DeFi.
+The [Dual Stacking Web App](https://app.stacks.co/) is the primary user interface for participating in Dual Stacking — a mechanism that allows Bitcoin holders to earn BTC-denominated rewards through sBTC, and maximize those rewards by either stacking STX or using sBTC in DeFi.
 
 {% hint style="info" %}
 The minimum to mint sBTC via the sBTC Bridge app is currently at 0.001 BTC (100,000 sats).
