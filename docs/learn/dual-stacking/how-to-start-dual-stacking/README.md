@@ -33,11 +33,17 @@ The minimum to enroll in Dual Stacking with your minted sBTC will be 0.0001 sBTC
 
 Once connected to the web app, you'll see the dashboard that lays out all the metrics regarding your rewards composition and different methods for boosting rewards. Track your balances, rewards and payouts at anytime.
 
-The 'Boost your rewards' section will layout the steps for you to enroll and boost your rewards.
+The 'Boost your rewards' section will layout the steps for you to enroll and boost your rewards. All rewards are distributed in sBTC, redeemable 1:1 for BTC anytime.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 75 (2).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 75 (2).png" alt=""><figcaption><p>Track your balances, rewards and payouts at anytime on the Dual Stacking dashboard.</p></figcaption></figure></div>
 
-Use the Dual Stacking calculator for estimated rewards based on the ratio of sBTC in your wallet and STX stacked. For more details on your rewards are calculated and the math behind it, check out the section on the [reward function](../economic-model.md#reward-function-parameters).
+Use the Dual Stacking calculator for estimated rewards based on the ratio of sBTC in your wallet and STX stacked. For more details on how your rewards are calculated and the math behind it, check out the section on the Dual Stacking [reward function](../economic-model.md#reward-function-parameters).
+
+Start Dual Stacking now with the following wallets:
+
+* [Dual Stack with Fordefi](using-fordefi.md)
+* [Dual Stacking with Asigna](using-asigna.md)
+* [Dual Stack with Leather](using-leather.md)
 
 ### Who is this app for?
 
