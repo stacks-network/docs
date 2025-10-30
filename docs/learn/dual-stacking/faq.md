@@ -22,7 +22,7 @@ Stacks has Proof of Transfer (PoX): Consensus mechanism that channels Bitcoin fr
 
 <summary>How is this different from wrapped BTC?</summary>
 
-sBTC settles to Bitcoin L1. Rewards are paid in sBTC, redeemable for Bitcoin at any time and actual Bitcoin through PoX consensus, not platform tokens.
+Rewards are paid in sBTC, redeemable for Bitcoin at any time and actual Bitcoin through PoX consensus, not platform tokens.
 
 </details>
 
@@ -50,7 +50,9 @@ Oct 30: Dual Stacking launches and you can enroll to start earning&#x20;
 
 Nov 4: sBTC Rewards Program ends and final rewards distributed&#x20;
 
-Nov 5: First Dual Stacking rewards cycle begins\
+Nov 5: First Dual Stacking rewards cycle begins
+
+Nov 20 (estimated): First Dual Stacking rewards cycle ends, rewards distributed\
 
 
 </details>
