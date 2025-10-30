@@ -1,5 +1,9 @@
 # How to Earn sBTC Rewards
 
+{% hint style="danger" %}
+The last day for earning rewards through the sBTC Rewards Program will be on November 4, 2025. But don’t worry, you can earn even more sBTC with [Dual Stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/dual-stacking) - a new way to stack both STX and sBTC to create stronger alignment between Bitcoin capital and the Stacks network.
+{% endhint %}
+
 As part of the launch of sBTC, you can enroll in the sBTC rewards program and earn real yield on your BTC, paid in sBTC.
 
 The rewards program is non-custodial — your sBTC remains in your wallet.
@@ -10,7 +14,7 @@ There are only 3 steps to participate in the sBTC rewards.
 {% step %}
 **Mint sBTC**
 
-To get started, first mint your sBTC by using the bridge at [app.stacks.co](https://sbtc.stacks.co/).
+To get started, first mint your sBTC by using the bridge at [sbtc.stacks.co](https://sbtc.stacks.co/).
 {% endstep %}
 
 {% step %}
