@@ -162,7 +162,7 @@ jobs:
 
             **Important:**
             - Only include PRs that genuinely need documentation updates/additions/removals
-            - Save the JSON array to `issues-to-create.json`
+            - Save the JSON array to `issues-to-create.json` in the CURRENT WORKING DIRECTORY (not in a subdirectory)
             - If no issues are needed, save an empty array: []
             - Always fetch and read the actual PR diff - summaries are insufficient
           claude_args: |
