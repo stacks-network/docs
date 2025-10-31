@@ -168,6 +168,7 @@ jobs:
           claude_args: |
             --max-turns 40
             --model claude-sonnet-4-20250514
+            --allowed-tools "Bash(curl:*),Bash(gh:*),Grep,Read,Write,glob"
 
       - name: Create issues from Claude analysis
         if: steps.batch.outputs.pr_count > 0
