@@ -177,13 +177,31 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
+            const path = require('path');
 
-            if (!fs.existsSync('issues-to-create.json')) {
+            // Check both possible locations for the issues file
+            const possiblePaths = [
+              'issues-to-create.json',
+              path.join(process.cwd(), 'issues-to-create.json'),
+              path.join(process.cwd(), 'docs', 'issues-to-create.json')
+            ];
+
+            let issuesPath = null;
+            for (const p of possiblePaths) {
+              if (fs.existsSync(p)) {
+                issuesPath = p;
+                console.log(`Found issues file at: ${p}`);
+                break;
+              }
+            }
+
+            if (!issuesPath) {
               console.log('No issues file found - Claude may not have found any PRs needing docs updates');
+              console.log('Checked paths:', possiblePaths);
               return;
             }
 
-            const content = fs.readFileSync('issues-to-create.json', 'utf8');
+            const content = fs.readFileSync(issuesPath, 'utf8');
             console.log('Issues file content:', content);
 
             const issues = JSON.parse(content);
