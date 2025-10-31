@@ -162,68 +162,30 @@ jobs:
 
             **Important:**
             - Only include PRs that genuinely need documentation updates/additions/removals
-            - Save the JSON array to `issues-to-create.json` in the CURRENT WORKING DIRECTORY (not in a subdirectory)
-            - If no issues are needed, save an empty array: []
+            - Create GitHub issues DIRECTLY using the `gh issue create` command
+            - Do NOT create a JSON file - create issues immediately as you identify them
             - Always fetch and read the actual PR diff - summaries are insufficient
+            
+            **Creating Issues:**
+            For each PR that needs documentation, create an issue using:
+            ```bash
+            gh issue create \
+              --repo ${{ github.repository }} \
+              --title "[Docs Update] [repo-name] PR #123: Brief description" \
+              --body "$(cat <<'EOF'
+            ## Source PR
+            - Repository: [repo-name]
+            - PR: #123 - [PR title]
+            ...
+            EOF
+            )" \
+              --label "documentation,auto-generated,sync-needed,[repo-name],priority-[level],[docs-update|docs-new|docs-remove]"
+            ```
+            
+            After creating each issue, mark it as completed in your todo list before moving to the next one.
           claude_args: |
             --max-turns 40
             --model claude-sonnet-4-20250514
             --allowed-tools "Bash(curl:*),Bash(gh:*),Grep,Read,Write,glob"
 
-      - name: Create issues from Claude analysis
-        if: steps.batch.outputs.pr_count > 0
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const fs = require('fs');
-            const path = require('path');
 
-            // Check both possible locations for the issues file
-            const possiblePaths = [
-              'issues-to-create.json',
-              path.join(process.cwd(), 'issues-to-create.json'),
-              path.join(process.cwd(), 'docs', 'issues-to-create.json')
-            ];
-
-            let issuesPath = null;
-            for (const p of possiblePaths) {
-              if (fs.existsSync(p)) {
-                issuesPath = p;
-                console.log(`Found issues file at: ${p}`);
-                break;
-              }
-            }
-
-            if (!issuesPath) {
-              console.log('No issues file found - Claude may not have found any PRs needing docs updates');
-              console.log('Checked paths:', possiblePaths);
-              return;
-            }
-
-            const content = fs.readFileSync(issuesPath, 'utf8');
-            console.log('Issues file content:', content);
-
-            const issues = JSON.parse(content);
-
-            if (!Array.isArray(issues) || issues.length === 0) {
-              console.log('No issues to create');
-              return;
-            }
-
-            console.log(`Creating ${issues.length} issue(s)...`);
-
-            for (const issue of issues) {
-              try {
-                const result = await github.rest.issues.create({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  title: issue.title,
-                  body: issue.body,
-                  labels: issue.labels || []
-                });
-                console.log(`✓ Created issue #${result.data.number}: ${issue.title}`);
-              } catch (error) {
-                console.error(`✗ Failed to create issue "${issue.title}":`, error.message);
-              }
-            }
