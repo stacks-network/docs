@@ -90,6 +90,74 @@ This repository monitors merged PRs across all Stacks Network and Hiro Systems p
 - Performance optimizations that don't change APIs
 - Internal code comments or documentation in code
 
+### Detection Scenarios
+
+When analyzing PRs, classify documentation impact into three categories:
+
+#### 1. UPDATE Existing Docs
+**When:** Code changes make existing documentation incorrect or outdated.
+
+**Detection signals:**
+- Modified function signatures in public APIs
+- Changed CLI flag behavior or defaults
+- Updated configuration schema
+- Renamed types, methods, or modules
+- Changed setup/installation steps
+- Breaking changes that alter existing functionality
+
+**Example:**
+```
+PR changes `map-set` to require a third parameter `ttl`
+→ Search docs for "map-set" 
+→ Found in /concepts/clarity/language-functions.md
+→ Issue: UPDATE the signature and examples to include ttl parameter
+```
+
+#### 2. CREATE New Docs
+**When:** New functionality has zero documentation coverage.
+
+**Detection signals:**
+- New public functions, methods, or classes
+- New API endpoints
+- New CLI commands or subcommands
+- New configuration options
+- New features or capabilities
+- Keywords in diff: "add", "new", "introduce", "implement"
+
+**Example:**
+```
+PR adds new Clarity function `map-insert`
+→ Search docs for "map-insert", "map_insert"
+→ NOT FOUND in any documentation
+→ Issue: CREATE new section in /concepts/clarity/language-functions.md with signature, usage, examples
+```
+
+#### 3. REMOVE or DEPRECATE Docs
+**When:** Features are removed or deprecated but docs still reference them.
+
+**Detection signals:**
+- Removed functions, endpoints, or commands
+- Deprecated APIs with warnings
+- Deleted configuration options
+- Keywords in diff: "remove", "delete", "deprecate", "drop"
+- BREAKING CHANGE notices about removals
+
+**Example:**
+```
+PR removes legacy endpoint `/v1/accounts` (deprecated in favor of `/v2/accounts`)
+→ Search docs for "v1/accounts", "/v1/accounts"
+→ Found in /guides-and-tutorials/api-quickstart.md and /reference/api-endpoints.md
+→ Issue: REMOVE or DEPRECATE these references, add redirect note to v2 endpoint
+```
+
+**Search Strategy:**
+For each scenario, thoroughly search using multiple term variations:
+- Exact names (e.g., "map-insert")
+- Case variations (case-sensitive and case-insensitive)
+- Format variations (snake_case, kebab-case, camelCase)
+- Partial matches (e.g., "map" functions)
+- Related terms and synonyms
+
 ### Priority Levels
 
 **High Priority** (Document immediately):
