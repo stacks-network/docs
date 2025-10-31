@@ -170,7 +170,7 @@ jobs:
             For each PR that needs documentation, create an issue using:
             ```bash
             gh issue create \
-              --repo ${{ github.repository }} \
+              --repo stacks-network/docs \
               --title "[Docs Update] [repo-name] PR #123: Brief description" \
               --body "$(cat <<'EOF'
             ## Source PR
@@ -181,6 +181,8 @@ jobs:
             )" \
               --label "documentation,auto-generated,sync-needed,[repo-name],priority-[level],[docs-update|docs-new|docs-remove]"
             ```
+            
+            **Important:** Create issues in the stacks-network/docs repository (the upstream repo), not the fork.
             
             After creating each issue, mark it as completed in your todo list before moving to the next one.
           claude_args: |
