@@ -162,7 +162,7 @@ This will return the status of all withdrawals from the specified sender:
 
 So in total there are 2 on-chain transactions that make up the entire withdrawal (peg-out) flow:
 
-1. \[Stacks] Initial sBTC withdrawal request by the user ([example](https://app.gitbook.com/u/ZrQItu6D9bMKmf1HfsLTnGc05WZ2))
+1. \[Stacks] Initial sBTC withdrawal request by the user ([example](https://explorer.hiro.so/txid/0x4f4000a0ca61ea10e31bc7950672f57612880b6de3a61463bb98e29ca6bb6491?chain=mainnet))
 2. \[Bitcoin] Returned BTC transaction by the Signers ([example](https://mempool.space/tx/4ec2396bebb79d11be6dae3ae133cb0501d05af4ff368425fe19740d050b74dc))
 {% endstep %}
 {% endstepper %}
