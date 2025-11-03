@@ -20,12 +20,6 @@
   * [How to Use the sBTC JS Library for Bridging](sbtc/how-to-use-the-sbtc-js-library-for-bridging/README.md)
     * [Depositing: Pegging BTC into sBTC](sbtc/how-to-use-the-sbtc-js-library-for-bridging/btc-to-sbtc.md)
     * [Withdrawing: Pegging sBTC into BTC](sbtc/how-to-use-the-sbtc-js-library-for-bridging/sbtc-to-btc.md)
-  * [How to Run sBTC Signer](sbtc/how-to-run-sbtc-signer.md)
-  * [Best Practices for running an sBTC Signer](sbtc/best-practices-for-running-an-sbtc-signer.md)
-  * [How to Use the sBTC Bridge with Xverse/Leather](sbtc/how-to-use-the-sbtc-bridge.md)
-  * [How to Use the sBTC Bridge with Fordefi](sbtc/how-to-use-the-sbtc-bridge-with-fordefi.md)
-  * [How to Use the sBTC Bridge with Asigna](sbtc/how-to-use-the-sbtc-bridge-with-asigna.md)
-  * [How to Earn sBTC Rewards](sbtc/how-to-earn-sbtc-rewards.md)
 * [Price Oracles](price-oracles.md)
 
 ## Misc. Guides
