@@ -135,19 +135,19 @@ Returns the locked balance for a principal.
 
 {% stepper %}
 {% step %}
-### Access Control
+#### Access Control
 
 Protocol functions can only be called by authorized contracts, enforced through the `sbtc-registry` contract.
 {% endstep %}
 
 {% step %}
-### Ownership Verification
+#### Ownership Verification
 
 The `transfer` function checks that the sender owns the tokens being transferred.
 {% endstep %}
 
 {% step %}
-### Separate Token Tracking
+#### Separate Token Tracking
 
 The contract maintains separate tracking for locked and unlocked tokens, ensuring proper accounting.
 {% endstep %}

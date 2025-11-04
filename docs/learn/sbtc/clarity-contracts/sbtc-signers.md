@@ -31,25 +31,25 @@ Function flow:
 
 {% stepper %}
 {% step %}
-### Validate signature threshold
+#### Validate signature threshold
 
 Ensure the new signature threshold is valid (must be >50% and ≤100% of total signer keys).
 {% endstep %}
 
 {% step %}
-### Verify caller
+#### Verify caller
 
 Verify that the caller is the current signer principal.
 {% endstep %}
 
 {% step %}
-### Validate keys
+#### Validate keys
 
 Check the length of each new key and the aggregate public key (must be 33 bytes).
 {% endstep %}
 
 {% step %}
-### Update registry
+#### Update registry
 
 Call the sBTC Registry contract to update the keys and address.
 {% endstep %}

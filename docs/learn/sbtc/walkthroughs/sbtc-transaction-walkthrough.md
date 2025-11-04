@@ -6,7 +6,7 @@ Let's follow the journey of 1 BTC as it moves through the sBTC system, from init
 
 {% stepper %}
 {% step %}
-### Initiation
+#### Initiation
 
 * Alice decides to convert 1 BTC to sBTC to participate in Stacks DeFi.
 * Alice creates a deposit transaction on the Bitcoin network (typically via a UI such as the sBTC bridge or a DeFi application).
@@ -14,14 +14,14 @@ Let's follow the journey of 1 BTC as it moves through the sBTC system, from init
 {% endstep %}
 
 {% step %}
-### Proof Submission
+#### Proof Submission
 
 * Alice submits proof of her deposit to the Deposit API (usually via the application's UI).
 * The Deposit API sets the deposit status to PENDING.
 {% endstep %}
 
 {% step %}
-### Signer Validation
+#### Signer Validation
 
 The sBTC Signer Set:
 
@@ -40,7 +40,7 @@ If the deposit is accepted:
 {% endstep %}
 
 {% step %}
-### Bitcoin Transaction
+#### Bitcoin Transaction
 
 If accepted, the sBTC Signer Set:
 
@@ -54,7 +54,7 @@ If this transaction fails:
 {% endstep %}
 
 {% step %}
-### sBTC Minting
+#### sBTC Minting
 
 Upon successful Bitcoin transaction:
 
@@ -63,7 +63,7 @@ Upon successful Bitcoin transaction:
 {% endstep %}
 
 {% step %}
-### Confirmation
+#### Confirmation
 
 * The Deposit API updates the deposit status to CONFIRMED.
 * Alice now has 1 sBTC in her Stacks wallet.
@@ -86,7 +86,7 @@ Alice can now use her 1 sBTC in the Stacks ecosystem:
 
 {% stepper %}
 {% step %}
-### Initiation
+#### Initiation
 
 * Alice initiates a withdrawal by interacting with the Clarity contract on the Stacks blockchain.
 * She specifies her Bitcoin address for the withdrawal.
@@ -95,7 +95,7 @@ Alice can now use her 1 sBTC in the Stacks ecosystem:
 {% endstep %}
 
 {% step %}
-### Signer Validation
+#### Signer Validation
 
 The sBTC Signer Set:
 
@@ -114,7 +114,7 @@ If the withdrawal is accepted:
 {% endstep %}
 
 {% step %}
-### Bitcoin Transaction
+#### Bitcoin Transaction
 
 After the waiting period, if accepted:
 
@@ -128,7 +128,7 @@ If this transaction fails:
 {% endstep %}
 
 {% step %}
-### sBTC Burning and Confirmation
+#### sBTC Burning and Confirmation
 
 Upon successful Bitcoin transaction:
 
@@ -137,7 +137,7 @@ Upon successful Bitcoin transaction:
 {% endstep %}
 
 {% step %}
-### Completion
+#### Completion
 
 * Alice now has her 1 BTC back in her specified Bitcoin address.
 * The withdrawn sBTC has been permanently removed from circulation.

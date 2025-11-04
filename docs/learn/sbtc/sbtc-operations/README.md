@@ -4,13 +4,13 @@ This section covers the main operations in the sBTC system. These operations for
 
 {% stepper %}
 {% step %}
-### Deposit
+#### Deposit
 
 Converting BTC to sBTC.
 {% endstep %}
 
 {% step %}
-### Withdrawal
+#### Withdrawal
 
 Converting sBTC back to BTC.
 {% endstep %}

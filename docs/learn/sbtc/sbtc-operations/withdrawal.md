@@ -10,7 +10,7 @@ The sBTC withdrawal operation enables users to convert their sBTC back to BTC. T
 
 {% stepper %}
 {% step %}
-### Initiate withdrawal
+#### Initiate withdrawal
 
 A user initiates a Clarity contract call (via a Stacks wallet or dApp) specifying:
 
@@ -19,13 +19,13 @@ A user initiates a Clarity contract call (via a Stacks wallet or dApp) specifyin
 {% endstep %}
 
 {% step %}
-### Stacks transaction finality
+#### Stacks transaction finality
 
 The Stacks transaction must reach finality. The protocol requires six Bitcoin block confirmations before proceeding to the next step.
 {% endstep %}
 
 {% step %}
-### Signer verification and BTC release
+#### Signer verification and BTC release
 
 After confirmations, sBTC Signers verify the withdrawal request and create the withdrawal transaction on the Bitcoin network, releasing the equivalent BTC to the specified Bitcoin address.
 {% endstep %}

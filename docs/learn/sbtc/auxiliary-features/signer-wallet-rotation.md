@@ -19,25 +19,25 @@ When signers agree on a new configuration, the system automatically runs a Distr
 
 {% stepper %}
 {% step %}
-### Signers coordinate off-chain
+#### Signers coordinate off-chain
 
 Signers agree on the new signer set.
 {% endstep %}
 
 {% step %}
-### Update configuration
+#### Update configuration
 
 Each signer operator updates their configuration with the newly decided set.
 {% endstep %}
 
 {% step %}
-### DKG runs automatically
+#### DKG runs automatically
 
 Once all signers have configured the exact same set of signers, DKG occurs automatically to generate new signing shares.
 {% endstep %}
 
 {% step %}
-### New signer set takes control
+#### New signer set takes control
 
 The new signer set takes control of the sBTC wallet.
 {% endstep %}

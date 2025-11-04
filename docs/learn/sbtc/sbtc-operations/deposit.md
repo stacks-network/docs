@@ -10,13 +10,13 @@ The deposit process begins when a user initiates a specific Bitcoin transaction 
 
 {% stepper %}
 {% step %}
-### Script output
+#### Script output
 
 A script that lets the signers spend the funds.
 {% endstep %}
 
 {% step %}
-### Time-locked output
+#### Time-locked output
 
 A time lock that allows the depositor to reclaim the funds if necessary.
 {% endstep %}

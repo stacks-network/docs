@@ -12,25 +12,25 @@ As an sBTC signer, your primary responsibility is to run and maintain a signer n
 
 {% stepper %}
 {% step %}
-### Hardware setup
+#### Hardware setup
 
 Ensure your node has sufficient computational power and storage.
 {% endstep %}
 
 {% step %}
-### Software installation
+#### Software installation
 
 Install the sBTC signer node software and its dependencies.
 {% endstep %}
 
 {% step %}
-### Key management
+#### Key management
 
 The node software securely generates and stores the Bitcoin private key and corresponding public key.
 {% endstep %}
 
 {% step %}
-### Node registration
+#### Node registration
 
 Upon first run, the node automatically registers its public key with the sBTC Registry contract on the Stacks blockchain.
 {% endstep %}
@@ -42,7 +42,7 @@ Once set up, your signer node operates autonomously, performing the following ta
 
 {% stepper %}
 {% step %}
-### Monitoring Deposit Requests
+#### Monitoring Deposit Requests
 
 Your node continuously monitors for sBTC minting requests:
 
@@ -52,7 +52,7 @@ Your node continuously monitors for sBTC minting requests:
 {% endstep %}
 
 {% step %}
-### Processing Mint Requests
+#### Processing Mint Requests
 
 Upon confirming a deposit:
 
@@ -63,7 +63,7 @@ Upon confirming a deposit:
 {% endstep %}
 
 {% step %}
-### Handling Withdrawal Requests
+#### Handling Withdrawal Requests
 
 For sBTC withdrawal requests:
 

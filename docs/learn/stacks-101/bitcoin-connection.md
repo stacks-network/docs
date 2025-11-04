@@ -28,31 +28,31 @@ Users and developers organically call Stacks a Bitcoin L2, since it is a simpler
 
 {% stepper %}
 {% step %}
-### Bitcoin finality
+#### Bitcoin finality
 
 100% of the Bitcoin hashpower decides block ordering and transaction finality.
 {% endstep %}
 
 {% step %}
-### Consensus runs on Bitcoin L1
+#### Consensus runs on Bitcoin L1
 
 Stacks consensus runs on Bitcoin L1, and Stacks L2 cannot operate or survive without Bitcoin L1.
 {% endstep %}
 
 {% step %}
-### sBTC and economic unit
+#### sBTC and economic unit
 
 With the upcoming decentralized Bitcoin peg, called sBTC, most of the economy on Stacks layer will likely use BTC as the unit of economy. It is expected that most users will simply use Bitcoin in wallets and apps and then peg out their BTC to Bitcoin L1.
 {% endstep %}
 
 {% step %}
-### Data hashed and stored on Bitcoin L1
+#### Data hashed and stored on Bitcoin L1
 
 All data and transactions on Stacks are automatically hashed and permanently stored on Bitcoin L1 on every Bitcoin block. Anyone can verify that some data on Stacks is valid by checking the corresponding hash on Bitcoin L1. This compact storage of hashes on L1 is somewhat similar to rollups (although there are other differences). You can read more about this process in the [Block Production](../block-production/) section.
 {% endstep %}
 
 {% step %}
-### Contracts can read Bitcoin L1
+#### Contracts can read Bitcoin L1
 
 Contracts on Stacks layer can read Bitcoin L1 transactions and respond to them. Assets on Stacks layer can be moved simply through Bitcoin L1 transactions.
 {% endstep %}
@@ -62,19 +62,19 @@ Given all the details above, why would some people think that Stacks is not a Bi
 
 {% stepper %}
 {% step %}
-### Old security-budget material
+#### Old security-budget material
 
 The initial version of Stacks (released early 2021) had a separate security budget which changed to following 100% Bitcoin hashpower with the Nakamoto release. There is old material and blog posts floating around that still talk about the initial Stacks version. The old materials will likely get updated with time.
 {% endstep %}
 
 {% step %}
-### Ethereum L2 withdrawal definition doesn't map cleanly
+#### Ethereum L2 withdrawal definition doesn't map cleanly
 
 According to the Ethereum definition of L2s a user should be able to withdraw their base-layer assets purely by doing an L1 transaction and relying only on L1 security (this is true for Lightning for example). This definition does not apply cleanly to Bitcoin L2s because assets are not defined at Bitcoin L1 but are defined in L2s instead. The only asset where this matters is the pegged BTC asset from Bitcoin L1, given all other assets are native to L2s anyway. In the upcoming Stacks release, users can withdraw their BTC by sending just a Bitcoin L1 transaction but Bitcoin L1 cannot validate that complex transaction and a majority of peg-out signers will need to sign on the peg-out request. In an ideal world Bitcoin miners can validate such transactions but that would require a change to Bitcoin L1. Therefore, Stacks design optimizes for a method that is decentralized and can be deployed without any changes to Bitcoin L1. If in the future it is possible to make changes to Bitcoin L1 then Stacks layer security can benefit from that as well.
 {% endstep %}
 
 {% step %}
-### Healthy Bitcoin skepticism
+#### Healthy Bitcoin skepticism
 
 Bitcoin community members are generally skeptical of claims and on the lookout for people making any false marketing claims. This is generally a healthy thing for the Bitcoin ecosystem and builds up the immune system. Some such community members might be skeptical about Stacks as a Bitcoin layer or L2 until they fully read the technical details and reasoning. There is a good [Twitter thread](https://twitter.com/lopp/status/1623756872976158722?s=20) about this topic as well.
 {% endstep %}
@@ -108,13 +108,13 @@ The Stacks token (STX) is primarily meant to be used for two things:
 
 {% stepper %}
 {% step %}
-### Incentives for Stacks L2 miners
+#### Incentives for Stacks L2 miners
 
 Newly minted STX are used to incentivize decentralized block production on Stacks L2.
 {% endstep %}
 
 {% step %}
-### Incentives for peg-out signers
+#### Incentives for peg-out signers
 
 Signers participating in peg-out operations receive incentives in STX to economically align them with protocol rules.
 {% endstep %}
