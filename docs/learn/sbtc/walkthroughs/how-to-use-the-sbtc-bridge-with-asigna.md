@@ -22,7 +22,7 @@ Here are the necessary steps to convert your BTC to sBTC using Asigna:
 
 First, you'll need to make sure you have a vault for Bitcoin, and a separate vault for Stacks. In this scenario, the same 2-of-2 signature setup are applied for both vaults. Throughout the guide, we'll refer to each party of this setup as Member\_1 and Member\_2.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/Group%20316124779.png" alt=""><figcaption><p>Member_2's POV of both its Bitcoin vault and Stacks vault setup.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/Group 316124779-with-asigna.png" alt=""><figcaption><p>Member_2's POV of both its Bitcoin vault and Stacks vault setup.</p></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -30,9 +30,9 @@ First, you'll need to make sure you have a vault for Bitcoin, and a separate vau
 
 Click into the Bitcoin vault and scroll down to the 'Trending Apps' section where you'll locate the sBTC Bridge embedded app. Open this embedded app and choose the 'Asigna Multisig' wallet to connect with.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%2033%20(1).png" alt=""><figcaption><p>Locate the sBTC Bridge embedded app and open it.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 33 (1)-with-asigna.png" alt=""><figcaption><p>Locate the sBTC Bridge embedded app and open it.</p></figcaption></figure></div>
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%2035.png" alt=""><figcaption><p>Connect with the Asigna Multisig wallet option. This app will auto connect with the Bitcoin vault that is being using in this context of the embedded app. You won't need to connect to a Stacks vault but you will need a Stacks vault address to use as the receiving address of the minted sBTC.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 35-with-asigna.png" alt=""><figcaption><p>Connect with the Asigna Multisig wallet option. This app will auto connect with the Bitcoin vault that is being using in this context of the embedded app. You won't need to connect to a Stacks vault but you will need a Stacks vault address to use as the receiving address of the minted sBTC.</p></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -44,7 +44,7 @@ After your Bitcoin vault is connected, choose how much BTC you would like to con
 There are two transaction fees required to mint your sBTC. The first is when they initiate the bitcoin deposit transaction within their wallet. The second is a fee used to consolidate the deposit UTXOs into the single Signer's UTXO. This separate transaction fee happens automatically and is set to a max of 80k sats. This is automatically deducted from your minted sBTC. This is not a Signer fee but a regular bitcoin transaction fee.
 {% endhint %}
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%2036.png" alt=""><figcaption><p>Currently the minimum to peg-in is 0.001 BTC.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 36-with-asigna.png" alt=""><figcaption><p>Currently the minimum to peg-in is 0.001 BTC.</p></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -52,9 +52,9 @@ There are two transaction fees required to mint your sBTC. The first is when the
 
 Next, enter the Stacks address you would like your sBTC minted to. For this guide, we'll be using the Stacks address of the Stacks vault that is assumed to be setup by both Member\_1 and Member\_2.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%2037.png" alt=""><figcaption><p>Copy the multi-signature Stacks address from the Stacks vault setup.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 37-with-asigna.png" alt=""><figcaption><p>Copy the multi-signature Stacks address from the Stacks vault setup.</p></figcaption></figure></div>
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%2038.png" alt=""><figcaption><p>Review the inputted STX address, hit 'NEXT', and then 'CONFIRM'.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 38-with-asigna.png" alt=""><figcaption><p>Review the inputted STX address, hit 'NEXT', and then 'CONFIRM'.</p></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -62,7 +62,7 @@ Next, enter the Stacks address you would like your sBTC minted to. For this guid
 
 Depending on congestion of the Bitcoin network, choose the appropriate fee rate based on your vault's preferences for timely confirmation.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/Group%20316124780.png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/Group 316124780-with-asigna.png" alt=""><figcaption></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -76,7 +76,7 @@ Remember, this transaction is the initial peg-in transfer for your BTC to the sB
 If you have a multi-signature setup with certain signatures required, hitting 'Confirm' will not broadcast the bitcoin transaction, it will simply store this partially signed transaction in your Bitcoin vault until all required signatures are met.
 {% endhint %}
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/Group%20316124780%20(1).png" alt=""><figcaption><p>Review the transaction and hit confirm to create the partially signed bitcoin transaction where it will be waiting for the other members to sign in their respective Asigna Bitcoin vaults.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/Group 316124780 (1)-with-asigna.png" alt=""><figcaption><p>Review the transaction and hit confirm to create the partially signed bitcoin transaction where it will be waiting for the other members to sign in their respective Asigna Bitcoin vaults.</p></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -86,9 +86,9 @@ Upon notice of transaction to the other members of the multi-signature setup, ea
 
 In our case, Member\_2 will navigate to their own Bitcoin vault and find the pending partially signed bitcoin transaction waiting for signature.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%2042%20(1).png" alt=""><figcaption><p>Member_2 will locate the pending transaction and complete signature as their approval.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 42 (1)-with-asigna.png" alt=""><figcaption><p>Member_2 will locate the pending transaction and complete signature as their approval.</p></figcaption></figure></div>
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%2043%20(1).png" alt=""><figcaption><p>Member_2 will see their connected wallet, in this case Leather, popup for them to confirm transaction.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 43 (1)-with-asigna.png" alt=""><figcaption><p>Member_2 will see their connected wallet, in this case Leather, popup for them to confirm transaction.</p></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -96,7 +96,7 @@ In our case, Member\_2 will navigate to their own Bitcoin vault and find the pen
 
 Once all transaction policies are satisfied and approved, the sBTC Bridge embedded app will appear with a prompt confirming that all signatures have been gathered successfully which will then automatically prompt the broadcasting of the transaction.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%2044.png" alt=""><figcaption><p>Great! All signatures have been gathered for the transaction to be broadcasted.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 44-with-asigna.png" alt=""><figcaption><p>Great! All signatures have been gathered for the transaction to be broadcasted.</p></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -108,11 +108,11 @@ Back in the sBTC Bridge app UI, you can monitor the status of your transaction t
 * Minting - Your Bitcoin transaction has processed and the [sBTC signers are minting](https://explorer.hiro.so/txid/fef3dd3f6d4e6c89f3482fdec3816822261f29739ee81d1af6deb01d11e43961?chain=mainnet) your sBTC
 * Completed - Your sBTC has been minted to your Asigna Stacks vault wallet
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%2045%20(1).png" alt=""><figcaption><p>The bitcoin and subsequent sBTC mint transaction will take some time to be completely processed by the Signers</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 45 (1)-with-asigna.png" alt=""><figcaption><p>The bitcoin and subsequent sBTC mint transaction will take some time to be completely processed by the Signers</p></figcaption></figure></div>
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%2046.png" alt=""><figcaption><p>Once both the bitcoin and sBTC mint transactions are confirmed, the sBTC Bridge app will show a 'Completed' status</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 46-with-asigna.png" alt=""><figcaption><p>Once both the bitcoin and sBTC mint transactions are confirmed, the sBTC Bridge app will show a 'Completed' status</p></figcaption></figure></div>
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%2047.png" alt=""><figcaption><p>You'll then be able to see the sBTC balance in your Asigna Stacks vault.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 47-with-asigna.png" alt=""><figcaption><p>You'll then be able to see the sBTC balance in your Asigna Stacks vault.</p></figcaption></figure></div>
 {% endstep %}
 {% endstepper %}
 
@@ -123,6 +123,6 @@ If your sBTC mint fails, you can reclaim your sBTC. You can do this via the brid
 
 There is an intermediate step in between depositing BTC and the sBTC signers consolidating it into the single signer UTXO. If the transaction is not picked up by signers, you can reclaim it using this UI. Note there is a 'Lock Time' field on the Reclaim page. That indicates the amount of blocks that must have passed in order to reclaim your BTC.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image%20(14).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (14)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure></div>
 
 This initiates a Bitcoin transaction that will transfer your BTC back to you.
