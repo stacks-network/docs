@@ -205,19 +205,19 @@ Events are emitted via `print` statements in the contract for the actions listed
 
 {% stepper %}
 {% step %}
-### Access Control
+#### Access Control
 
 Only authorized protocol contracts can call certain functions.
 {% endstep %}
 
 {% step %}
-### Replay Prevention
+#### Replay Prevention
 
 The contract prevents replay attacks on deposits, aggregate public keys, and multi-signature addresses.
 {% endstep %}
 
 {% step %}
-### State Management
+#### State Management
 
 The contract carefully manages the state of withdrawals and the current signer set.
 {% endstep %}

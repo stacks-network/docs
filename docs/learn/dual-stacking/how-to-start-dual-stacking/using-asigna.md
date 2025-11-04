@@ -26,7 +26,7 @@ Here are the necessary steps to enroll your sBTC using Asigna:
 
 {% stepper %}
 {% step %}
-### Connect Asigna to the Dual Stacking app
+#### Connect Asigna to the Dual Stacking app
 
 Upon popup of the connect wallet modal, select the Asigna option to connect with. As per the usual flow of connecting your Asigna wallet with other Stacks apps, you'll most likely also need to connect the Asigna web wallet view with the Asigna browser extension before connecting with the app.
 
@@ -34,7 +34,7 @@ Upon popup of the connect wallet modal, select the Asigna option to connect with
 {% endstep %}
 
 {% step %}
-### Enroll now for Dual Stacking
+#### Enroll now for Dual Stacking
 
 On the dashboard, you'll be able to see stats regarding your current sBTC in wallet, sBTC in DeFi, STX currently stacked, and estimated APY you could be earning.
 
@@ -46,13 +46,13 @@ Your Asigna extension will appear with a popup asking you to review the transact
 {% endstep %}
 
 {% step %}
-### Sign transaction in Asigna web view
+#### Sign transaction in Asigna web view
 
 If you navigate back to your Asigna web wallet view, you'll see the transaction queued up for signatures. In this scenario, we have a 2-of-2 multi-signature scheme setup so we'll need to sign the transaction by both parties involved.
 
 <div data-with-frame="true"><figure><img src="../../.gitbook/assets/Group 316124783.png" alt=""><figcaption><p>The first signature of the 2-of-2 setup will need to be signed in the Asigna web wallet view.</p></figcaption></figure></div>
 
-Once the first signature is completed, the second signature will also need to take place in that respective signer's Asigna web wallet view. After signing, that same signer will then need to hit 'Execute' to complete the broadcasting of the transaction.&#x20;
+Once the first signature is completed, the second signature will also need to take place in that respective signer's Asigna web wallet view. After signing, that same signer will then need to hit 'Execute' to complete the broadcasting of the transaction.
 
 <div data-with-frame="true"><figure><img src="../../.gitbook/assets/Group 316124783 (1).png" alt=""><figcaption><p>The second signature of the 2-of-2 setup will need to be signed in the Asigna web wallet view. After all signatures are completed, hit 'Execute' to broadcast the transaction and navigate back to the Dual Stacking app.</p></figcaption></figure></div>
 
@@ -64,7 +64,7 @@ Your enroll transaction will look like this [here](https://explorer.hiro.so/txid
 {% endstep %}
 
 {% step %}
-### You are now enrolled in Dual Stacking
+#### You are now enrolled in Dual Stacking
 
 You'll notice your sBTC now enrolled in Dual Stacking and when the rewards cycle will start for your enrolled sBTC.
 
@@ -78,15 +78,15 @@ The dashboard will also provide a view of your Dual Stacking portfolio.
 {% endstep %}
 
 {% step %}
-### Boost rewards by stacking STX
+#### Boost rewards by stacking STX
 
-So what's next? You could then boost your rewards by stacking STX. Let's start by stacking STX via [StackingDAO](https://www.stackingdao.com/). StackingDAO is a popular stacking option in Stacks as it is a liquid stacking method.&#x20;
+So what's next? You could then boost your rewards by stacking STX. Let's start by stacking STX via [StackingDAO](https://www.stackingdao.com/). StackingDAO is a popular stacking option in Stacks as it is a liquid stacking method.
 
 {% hint style="info" %}
 There are other options for stacking your STX that you can find [here](https://app.leather.io/stacking).
 {% endhint %}
 
-Navigate to the StackingDAO embedded app within your Asigna web wallet view, connect your wallet, and start stacking. There are many methods to start liquid stacking or native stacking within StackingDAO. In this example, we'll use our STX to liquid stack with sBTC yield.&#x20;
+Navigate to the StackingDAO embedded app within your Asigna web wallet view, connect your wallet, and start stacking. There are many methods to start liquid stacking or native stacking within StackingDAO. In this example, we'll use our STX to liquid stack with sBTC yield.
 
 <div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 92.png" alt=""><figcaption><p>Liquid stacking with sBTC yield allows us to stay liquid and earn sBTC while stacking.</p></figcaption></figure></div>
 
@@ -102,13 +102,13 @@ Let's then boost reward with Stacks DeFi. This will help reach the maximum APY b
 {% endstep %}
 
 {% step %}
-### Deploy your sBTC to Stacks DeFi protocols
+#### Deploy your sBTC to Stacks DeFi protocols
 
 You'll notice near the bottom of the dashboard page, there is a section highlighting popular DeFi protocols in Stacks. Each one of these protocols are eligible for the boosted rewards you can realize.
 
 <div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 69.png" alt=""><figcaption></figcaption></figure></div>
 
-Let's deploy sBTC with Zest.&#x20;
+Let's deploy sBTC with Zest.
 
 {% hint style="info" %}
 As with using the embedded StackingDAO app, we'll also be using the embedded Zest app found in the Asigna web wallet view.

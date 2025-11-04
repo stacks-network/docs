@@ -20,43 +20,43 @@ For the live dual stacking contract on mainnet, check out the contract page [her
 
 {% stepper %}
 {% step %}
-### Initialization
+#### Initialization
 
 The contract is initialized once with a Stacks block height parameter that is the first one in the Bitcoin block specified, or after it, in case there aren't any STX blocks anchored to it.
 {% endstep %}
 
 {% step %}
-### Enrollment
+#### Enrollment
 
 Users can self-enroll for participation with custom reward addresses. DeFi protocols can be enrolled by admin with custom tracking, stacking, and reward addresses. All participants can opt-out or change their addresses at any time.
 {% endstep %}
 
 {% step %}
-### Snapshots and Cycles
+#### Snapshots and Cycles
 
 Anyone can trigger periodic snapshots that capture participant sBTC balances and STX stacking amounts from on-chain data based on predefined block intervals.
 {% endstep %}
 
 {% step %}
-### Ratio Computation
+#### Ratio Computation
 
 After snapshots are complete, anyone can propose a golden ratio (optimal STX/sBTC ratio), tally participant distributions, and validate if their proposal meets the 95th percentile criteria to determine the benchmark for maximum rewards.
 {% endstep %}
 
 {% step %}
-### Weight Calculation
+#### Weight Calculation
 
 Anyone can trigger participant weight calculations using the validated dual stacking formula that provides up to 10x boost (configurable) for those who meet or exceed the golden ratio.
 {% endstep %}
 
 {% step %}
-### Rewards
+#### Rewards
 
 Anyone can trigger reward distribution every cycle based on calculated weights. Administrators can update configurations like APR, yield boost multiplier, snapshot length, and number of snapshots per cycle.
 {% endstep %}
 
 {% step %}
-### Administrative Controls
+#### Administrative Controls
 
 Admins maintain protocol parameters, enroll/opt-out DeFi protocols with special address configurations, manage whitelists and blacklists, and can perform emergency operations if needed.
 {% endstep %}
@@ -118,7 +118,7 @@ The Dual Stacking smart contract operates in cycles, each divided into snapshots
 
 {% stepper %}
 {% step %}
-### Snapshot Phase (Anyone Can Execute)
+#### Snapshot Phase (Anyone Can Execute)
 
 * capture-snapshot-balances: Anyone can capture balances for enrolled users after each snapshot.
 * advance-to-next-snapshot: Anyone can transition to the next snapshot.
@@ -126,7 +126,7 @@ The Dual Stacking smart contract operates in cycles, each divided into snapshots
 {% endstep %}
 
 {% step %}
-### Ratio Validation Phase (Competitive & Permissionless)
+#### Ratio Validation Phase (Competitive & Permissionless)
 
 * propose-golden-ratio: Anyone can propose a golden ratio.
 * tally-participant-ratios: The proposer tallies participant ratios relative to their proposed ratio.
@@ -135,14 +135,14 @@ The Dual Stacking smart contract operates in cycles, each divided into snapshots
 {% endstep %}
 
 {% step %}
-### Weight Computation Phase (Anyone Can Execute)
+#### Weight Computation Phase (Anyone Can Execute)
 
 * calculate-participant-weights: Anyone can calculate participant weights using the dual stacking formula.
 * finalize-weight-computation: Anyone can finalize weight computation.
 {% endstep %}
 
 {% step %}
-### Reward Distribution Phase (Anyone Can Execute)
+#### Reward Distribution Phase (Anyone Can Execute)
 
 * set-is-distribution-enabled: Anyone can enable reward distribution by determining the available reward pool.
 * distribute-rewards: Anyone can distribute rewards to enrolled users based on their weights.
@@ -150,7 +150,7 @@ The Dual Stacking smart contract operates in cycles, each divided into snapshots
 {% endstep %}
 
 {% step %}
-### Cycle Transition (Anyone Can Execute)
+#### Cycle Transition (Anyone Can Execute)
 
 * advance-to-next-cycle: Anyone can advance to the next cycle after all rewards are distributed.
 {% endstep %}
@@ -656,4 +656,3 @@ Batch removes DeFi tracking addresses from the whitelist (admin only).
 * get-amount-stx-stacked-at-block-height
 * get-amount-stacked-at-block-height
 * get-amount-stacked-now
-

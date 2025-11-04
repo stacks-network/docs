@@ -4,19 +4,19 @@ Block production is a key concept to understand how Stacks operates under the ho
 
 {% stepper %}
 {% step %}
-### Mining
+#### Mining
 
 Miners are responsible for building and proposing new blocks on the Stacks chain.
 {% endstep %}
 
 {% step %}
-### Signing
+#### Signing
 
 Signing is the process used to validate blocks and sign sBTC deposits and withdrawals. Stackers participate in signing once they meet stacking prerequisites.
 {% endstep %}
 
 {% step %}
-### Stacking
+#### Stacking
 
 Stacking is an action performed by stackers that is a necessary prerequisite to signing. It enables participation in validation and earning rewards.
 {% endstep %}

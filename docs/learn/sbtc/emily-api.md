@@ -43,49 +43,49 @@ Each sBTC operation goes through several states:
 
 {% stepper %}
 {% step %}
-### User creates a deposit transaction on Bitcoin
+#### User creates a deposit transaction on Bitcoin
 
 User creates a deposit transaction on Bitcoin.
 {% endstep %}
 
 {% step %}
-### User submits proof of deposit to the Deposit API
+#### User submits proof of deposit to the Deposit API
 
 User submits proof of deposit to the Deposit API.
 {% endstep %}
 
 {% step %}
-### Emily records the deposit as PENDING
+#### Emily records the deposit as PENDING
 
 Emily records the deposit as PENDING.
 {% endstep %}
 
 {% step %}
-### Signers validate and vote on the deposit
+#### Signers validate and vote on the deposit
 
 Signers validate and vote on the deposit.
 {% endstep %}
 
 {% step %}
-### If accepted, Emily updates status to ACCEPTED
+#### If accepted, Emily updates status to ACCEPTED
 
 If accepted, Emily updates status to ACCEPTED.
 {% endstep %}
 
 {% step %}
-### Signers process the Bitcoin transaction
+#### Signers process the Bitcoin transaction
 
 Signers process the Bitcoin transaction.
 {% endstep %}
 
 {% step %}
-### Signers mint sBTC on Stacks
+#### Signers mint sBTC on Stacks
 
 Signers mint sBTC on Stacks.
 {% endstep %}
 
 {% step %}
-### Emily updates the deposit status to CONFIRMED
+#### Emily updates the deposit status to CONFIRMED
 
 Emily updates the deposit status to CONFIRMED.
 {% endstep %}
@@ -95,43 +95,43 @@ Emily updates the deposit status to CONFIRMED.
 
 {% stepper %}
 {% step %}
-### User initiates withdrawal through the sBTC Clarity contract
+#### User initiates withdrawal through the sBTC Clarity contract
 
 User initiates withdrawal through the sBTC Clarity contract.
 {% endstep %}
 
 {% step %}
-### Emily records the withdrawal as PENDING
+#### Emily records the withdrawal as PENDING
 
 Emily records the withdrawal as PENDING.
 {% endstep %}
 
 {% step %}
-### Signers decide to accept or reject the withdrawal
+#### Signers decide to accept or reject the withdrawal
 
 Signers decide to accept or reject the withdrawal.
 {% endstep %}
 
 {% step %}
-### If accepted, Emily updates status to ACCEPTED
+#### If accepted, Emily updates status to ACCEPTED
 
 If accepted, Emily updates status to ACCEPTED.
 {% endstep %}
 
 {% step %}
-### Signers process the Bitcoin transaction
+#### Signers process the Bitcoin transaction
 
 Signers process the Bitcoin transaction.
 {% endstep %}
 
 {% step %}
-### Signers burn sBTC on Stacks
+#### Signers burn sBTC on Stacks
 
 Signers burn sBTC on Stacks.
 {% endstep %}
 
 {% step %}
-### Emily updates the withdrawal status to CONFIRMED
+#### Emily updates the withdrawal status to CONFIRMED
 
 Emily updates the withdrawal status to CONFIRMED.
 {% endstep %}
