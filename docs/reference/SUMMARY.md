@@ -89,3 +89,16 @@
 * [RPC API](rpc-api.md)
 * [Stacks Node Configuration](stacks-node-configuration.md)
 * [Signer Configuration](signer-configuration.md)
+
+## Nakamoto Upgrade
+
+* [Nakamoto Upgrade Start Here](nakamoto-upgrade/nakamoto-upgrade-start-here.md)
+* [What is the Nakamoto Release?](nakamoto-upgrade/what-is-the-nakamoto-release.md)
+* [Nakamoto in 10 Minutes](nakamoto-upgrade/nakamoto-in-10-minutes.md)
+* [Nakamoto Rollout Plan](nakamoto-upgrade/nakamoto-rollout-plan/README.md)
+  * [Nakamoto for Stackers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stackers.md)
+  * [Nakamoto for Exchanges](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-exchanges.md)
+  * [Nakamoto for Stacking Providers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stacking-providers.md)
+  * [Nakamoto for App Developers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-app-developers.md)
+* [Nakamoto Activation Guide for Signers](nakamoto-upgrade/nakamoto-activation-guide-for-signers.md)
+* [Setting Up a Primary Post Nakamoto Testnet Node](nakamoto-upgrade/setting-up-a-primary-post-nakamoto-testnet-node.md)
