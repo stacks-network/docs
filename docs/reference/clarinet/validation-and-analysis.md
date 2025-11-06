@@ -76,13 +76,13 @@ on: [push, pull_request]
 jobs:
   sanity-checks:
     runs-on: ubuntu-latest
-    container: hirosystems/clarinet:latest
+    container: ghcr.io/stx-labs/clarinet:latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check Clarity contracts
+      - name: Check Clarity contracts check
         run: clarinet check --use-on-disk-deployment-plan
-      - name: Check formatting
-        run: clarinet format --check
+      - name: Check Clarity contracts format
+        run: clarinet fmt --check
 ```
 {% endstep %}
 {% endstepper %}

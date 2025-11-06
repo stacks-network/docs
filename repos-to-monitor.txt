@@ -7,6 +7,6 @@ stacks-network/clarity-wasm
 stacks-sbtc/sbtc
 
 # Hiro Systems Repositories
-hirosystems/clarinet
-hirosystems/stacks.js
-hirosystems/connect
+stx-labs/clarinet
+stx-labs/stacks.js
+stx-labs/connect
