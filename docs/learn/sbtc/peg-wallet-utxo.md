@@ -2,6 +2,11 @@
 
 The Peg Wallet UTXO is a fundamental element of the sBTC system, serving as the Bitcoin backing for all sBTC tokens in circulation. The system uses a Single UTXO Model: the sBTC peg wallet is consistently represented as a single Unspent Transaction Output (UTXO) on the Bitcoin blockchain. This design offers simplicity and improved efficiency in managing the peg wallet.
 
+{% hint style="info" %}
+This UTXO resides in a secure multi-signature taproot address controlled by the sBTC Signers:\
+[bc1prcs82tvrz70jk8u79uekwdfjhd0qhs2mva6e526arycu7fu25zsqhyztuy](https://mempool.space/address/bc1prcs82tvrz70jk8u79uekwdfjhd0qhs2mva6e526arycu7fu25zsqhyztuy)
+{% endhint %}
+
 ## Overview
 
 * Single UTXO Model: the peg wallet is always a single UTXO.
@@ -12,19 +17,19 @@ The Peg Wallet UTXO is a fundamental element of the sBTC system, serving as the 
 
 {% stepper %}
 {% step %}
-#### Constructing the new UTXO
+**Constructing the new UTXO**
 
 A Signer coordinator constructs the UTXO by creating a new Bitcoin output that will represent the peg wallet going forward.
 {% endstep %}
 
 {% step %}
-#### Consolidating requests into a batch
+**Consolidating requests into a batch**
 
 The Signer set collectively consolidates all deposit and withdrawal requests and creates optimized batches that can be processed within a single UTXO.
 {% endstep %}
 
 {% step %}
-#### Creating the new UTXO from the previous UTXO
+**Creating the new UTXO from the previous UTXO**
 
 The new UTXO is created by:
 
@@ -34,7 +39,7 @@ The new UTXO is created by:
 {% endstep %}
 
 {% step %}
-#### Optimizing batching with approval sets
+**Optimizing batching with approval sets**
 
 When multiple sBTC operation requests are present, the Signer coordinator groups them by approval sets. If differing approval sets exist across active operations, the coordinator batches deposit UTXOs into groups with the maximum size per approval set to preserve the single UTXO invariant while maximizing batch efficiency.
 {% endstep %}

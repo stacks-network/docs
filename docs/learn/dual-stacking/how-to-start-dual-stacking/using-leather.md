@@ -26,23 +26,23 @@ Here are the necessary steps to enroll your sBTC using Leather:
 
 {% stepper %}
 {% step %}
-#### Connect Leather to the Dual Stacking app
+**Connect Leather to the Dual Stacking app**
 
 Upon popup of the connect wallet modal, select the Leather option to connect with.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>Confirm connecting in your Leather modal popup.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption><p>Confirm connecting in your Leather modal popup.</p></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
-#### Enroll now for Dual Stacking
+**Enroll now for Dual Stacking**
 
 On the dashboard, you'll be able to see stats regarding your current sBTC in wallet, sBTC in DeFi, STX currently stacked, and estimated APY you could be earning.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure></div>
 
 Let's get started by enrolling your sBTC into Dual Stacking.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure></div>
 
 Your Leather extension will appear with a popup asking you to review the transaction for approval. This will create the transaction which you will sign and broadcast in your Leather web wallet view.
 
@@ -50,7 +50,7 @@ Your enroll transaction will look like this [here](https://explorer.hiro.so/txid
 {% endstep %}
 
 {% step %}
-#### You are now enrolled in Dual Stacking
+**You are now enrolled in Dual Stacking**
 
 You'll notice your sBTC now enrolled in Dual Stacking and when the rewards cycle will start for your enrolled sBTC.
 
@@ -58,7 +58,7 @@ You'll notice your sBTC now enrolled in Dual Stacking and when the rewards cycle
 
 The dashboard will also provide a view of your Dual Stacking portfolio. Track your balances, rewards and payouts at anytime.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure></div>
 
 Use the Dual Stacking calculator for estimated rewards based on the ratio of sBTC in your wallet and STX stacked. For more details on your rewards are calculated and the math behind it, check out the section on the [reward function](../economic-model.md#reward-function-parameters).
 
@@ -66,7 +66,7 @@ Use the Dual Stacking calculator for estimated rewards based on the ratio of sBT
 {% endstep %}
 
 {% step %}
-#### Boost rewards by stacking STX
+**Boost rewards by stacking STX**
 
 So what's next? You could then boost your rewards by stacking STX. Let's start by stacking STX via [StackingDAO](https://www.stackingdao.com/). StackingDAO is a popular stacking option in Stacks as it is a liquid stacking method.
 
@@ -88,7 +88,7 @@ Let's then boost reward with Stacks DeFi. This will help reach the maximum APY b
 {% endstep %}
 
 {% step %}
-#### Deploy your sBTC to Stacks DeFi protocols
+**Deploy your sBTC to Stacks DeFi protocols**
 
 You'll notice near the bottom of the dashboard page, there is a section highlighting popular DeFi protocols in Stacks. Each one of these protocols are eligible for the boosted rewards you can realize.
 

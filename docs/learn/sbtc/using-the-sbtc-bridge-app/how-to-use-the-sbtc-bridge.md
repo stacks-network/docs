@@ -26,7 +26,7 @@ There are 5 simple steps to convert your BTC to sBTC.
 
 First, you'll need to connect your wallet to the bridge UI. Currently Leather and Xverse are supported, with more on the way.
 
-<figure><img src="../../.gitbook/assets/image (9)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (9)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -34,7 +34,7 @@ First, you'll need to connect your wallet to the bridge UI. Currently Leather an
 
 After your wallet is connected, choose how much BTC you would like to convert to sBTC.
 
-<figure><img src="../../.gitbook/assets/image (10)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (10)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="info" %}
 There are two transaction fees required to mint your sBTC. The first is set by the user manually when they initiate the deposit transaction within their wallet. The second is a fee used to consolidate the deposit UTXOs into the single signer UTXO. This separate transaction fee happens automatically and is set to a max of 80k sats. This is automatically deducted from your minted sBTC. This is not a signer fee but a regular Bitcoin transaction fee.
@@ -46,7 +46,7 @@ There are two transaction fees required to mint your sBTC. The first is set by t
 
 Next, enter the Stacks address you would like your sBTC minted to.
 
-<figure><img src="../../.gitbook/assets/image (11)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (11)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -54,7 +54,7 @@ Next, enter the Stacks address you would like your sBTC minted to.
 
 After you choose your Stacks address, you'll use your connected wallet to transfer the BTC.
 
-<figure><img src="../../.gitbook/assets/image (12)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (12)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -68,7 +68,7 @@ In the UI, you can monitor the status of your transaction to see when it has bee
 
 Note that you may need to enable the display of the sBTC token within your wallet by clicking on 'Manage Tokens' and enabling sBTC.
 
-<figure><img src="../../.gitbook/assets/image (13)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (13)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure></div>
 {% endstep %}
 {% endstepper %}
 
@@ -78,6 +78,6 @@ If your sBTC mint fails, you can reclaim your sBTC. You can do this via the brid
 
 There is an intermediate step in between depositing BTC and the sBTC signers consolidating it into the single signer UTXO. If the transaction is not picked up by signers, you can reclaim it using this UI. Note there is a 'Lock Time' field on the Reclaim page. That indicates the amount of blocks that must have passed in order to reclaim your BTC.
 
-<figure><img src="../../.gitbook/assets/image (14)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (14)-sbtc-bridge.png" alt=""><figcaption></figcaption></figure></div>
 
 This initiates a Bitcoin transaction that will transfer your BTC back to you.

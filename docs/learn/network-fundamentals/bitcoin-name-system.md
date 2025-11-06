@@ -1,6 +1,6 @@
 # Bitcoin Name System
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/getting-started-on-chain-usernames-stacks">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/getting-started-on-chain-usernames-stacks">Hiro blog</a></p></figcaption></figure>
 
 Bitcoin Name System (BNS) is a network system that binds Stacks usernames to off-chain state without relying on any central points of control.
 
@@ -120,19 +120,19 @@ Subdomain lifecycle
 
 {% stepper %}
 {% step %}
-#### Creation
+**Creation**
 
 A subdomain-creation operation is created by the subdomain owner and encoded into a `TXT` record in an on-chain name owner's zone file. The on-chain name owner broadcasts the zone file by issuing a `NAME_UPDATE` transaction, which anchors the subdomain-creation on-chain.
 {% endstep %}
 
 {% step %}
-#### Update
+**Update**
 
 Subdomain updates are done off-chain by creating signed operations from the subdomain owner's private key. Any on-chain name owner can include these signed operations in their zone file and broadcast via `NAME_UPDATE`. Operations are ordered by a sequence number and require a valid signature that links to the previous operation's public key.
 {% endstep %}
 
 {% step %}
-#### Transfer
+**Transfer**
 
 To change the address (public key hash) owning a subdomain, the subdomain owner signs a subdomain-transfer operation and asks an on-chain name owner (typically the one who created the subdomain) to broadcast it via `NAME_UPDATE`. The broadcasting on-chain name owner's zone file must be present in the Atlas network to prove absence of conflicting operations.
 {% endstep %}

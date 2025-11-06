@@ -1,3 +1,7 @@
+---
+description: Converting BTC to sBTC.
+---
+
 # Deposit
 
 The deposit operation enables users to mint sBTC, anchored to the BTC they have placed in the threshold wallet on the Bitcoin chain. This process can be completed within a single Bitcoin block, streamlining the user experience.
@@ -10,13 +14,13 @@ The deposit process begins when a user initiates a specific Bitcoin transaction 
 
 {% stepper %}
 {% step %}
-#### Script output
+**Script output**
 
 A script that lets the signers spend the funds.
 {% endstep %}
 
 {% step %}
-#### Time-locked output
+**Time-locked output**
 
 A time lock that allows the depositor to reclaim the funds if necessary.
 {% endstep %}

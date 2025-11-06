@@ -46,7 +46,7 @@ sBTC is always backed 1:1 against BTC, and it's verifiably secure through thresh
 
 Partnerships with top-tier security experts have been established to ensure the protocol is fortified at every level:
 
-Asymmetric ResearchAsymmetric Research is a core security contributor. Known for their rigorous research and protocol audits, Asymmetric brings security expertise to sBTC to identify and mitigate potential vulnerabilities.ImmuneFiA robust bug bounty program incentivizes ethical hackers to uncover and address potential issues, adding an additional layer of defense.3rd Party AuditsSeveral third-party security audits have been conducted on the sBTC system and can be referenced on the sBTC Audits page.
+Asymmetric Research is a core security contributor. Known for their rigorous research and protocol audits, Asymmetric brings security expertise to sBTC to identify and mitigate potential vulnerabilities. ImmuneFiA robust bug bounty program incentivizes ethical hackers to uncover and address potential issues, adding an additional layer of defense. 3rd Party AuditsSeveral third-party security audits have been conducted on the sBTC system and can be referenced on the sBTC Audits page.
 
 </details>
 
