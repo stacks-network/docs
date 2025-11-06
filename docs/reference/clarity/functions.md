@@ -224,21 +224,59 @@ Takes a list and a value of the same entry type, and returns a new list with max
 
 ***
 
-## as-contract
+## as-contract?
 
-Introduced in: **Clarity 1**
+Introduced in: **Clarity 4**
 
-**input:** `A`\
-**output:** `A`\
-**signature:** `(as-contract expr)`
+{% hint style="info" %}
+The previous version of `as-contract`, introduced in Clarity 1, has changed to `as-contract?` in Clarity 4, with several new security enhancements. If you are using Clarity 1-3, the previous signature and description for `as-contract` can be found in the dropdown below.
+{% endhint %}
 
-**description:**\
-Executes `expr` with the tx-sender switched to the contract's principal and returns the result.
+<details>
+
+<summary>Previous <code>as-contract</code></summary>
+
+**input:** `A` **output:** `A` **signature:** `(as-contract expr)`
+
+**description:** Executes `expr` with the tx-sender switched to the contract's principal and returns the result.
 
 **example:**
 
-```clojure
+Copy
+
+```
 (as-contract tx-sender) ;; Returns S1G2081040G2081040G2081040G208105NK8PE5.docs-test
+```
+
+</details>
+
+**Input**:
+
+* `((with-stx|with-ft|with-nft|with-stacking)*|with-all-assets-unsafe)`: The set of allowances (at most 128) to grant during the evaluation of the body expressions. Note that `with-all-assets-unsafe` is mutually exclusive with other allowances.
+* `AnyType* A`: The Clarity expressions to be executed within the context, with the final expression returning type `A`, where `A` is not a `response`
+
+**Output**: `(response A uint)`
+
+**Signature**: `(as-contract? ((with-stx|with-ft|with-nft|with-stacking)*|with-all-assets-unsafe) expr-body1 expr-body2 ... expr-body-last)`
+
+**Description**: Switches the current context's `tx-sender` and `contract-caller` values to the contract's principal and executes the body expressions within that context, then checks the asset outflows from the contract against the granted allowances, in declaration order. If any allowance is violated, the body expressions are reverted and an error is returned. Note that the allowance setup expressions are evaluated before executing the body expressions. The final body expression cannot return a `response` value in order to avoid returning a nested `response` value from `as-contract?` (nested responses are error-prone). Returns:
+
+* `(ok x)` if the outflows are within the allowances, where `x` is the result of the final body expression and has type `A`.
+* `(err index)` if an allowance was violated, where `index` is the 0-based index of the first violated allowance in the list of granted allowances, or `u128` if an asset with no allowance caused the violation.
+
+**Example**:
+
+```
+(define-public (foo)
+  (as-contract? ()
+    (try! (stx-transfer? u1000000 tx-sender recipient))
+  )
+) ;; Returns (err u128)
+(define-public (bar)
+  (as-contract? ((with-stx u1000000))
+    (try! (stx-transfer? u1000000 tx-sender recipient))
+  )
+) ;; Returns (ok true)
 ```
 
 ***
@@ -587,6 +625,30 @@ Executes a public function on another contract (not the current contract). If th
 ```clojure
 ;; instantiate the sample-contracts/tokens.clar contract first
 (as-contract (contract-call? .tokens mint! u19)) ;; Returns (ok u19)
+```
+
+***
+
+## contract-hash?
+
+Introduced in: **Clarity 4**
+
+**Input**: `principal`
+
+**Output**: `(response (buff 32) uint)`
+
+**Signature**: `(contract-hash? contract-principal)`
+
+**Description**: Returns the SHA-512/256 hash of the code body of the contract principal specified as input, or an error if the principal is not a contract or the specified contract does not exist. Returns:
+
+* `(ok 0x<hash>)`, where `<hash>` is the SHA-512/256 hash of the code body, on success
+* `(err u1)` if the principal is not a contract principal
+* `(err u2)` if the specified contract does not exist
+
+**Example**:
+
+```
+(contract-hash? 'SP2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D96YPGZF.BNS-V2) ;; Returns (ok 0x9f8104ff869aba1205cd5e15f6404dd05675f4c3fe0817c623c425588d981c2f)
 ```
 
 ***
@@ -1715,6 +1777,42 @@ Returns a new sequence with element at `index` replaced. Returns `none` if index
 
 ***
 
+## restrict-assets?
+
+Introduced in: **Clarity 4**
+
+**Input**:
+
+* `asset-owner`: `principal`: The principal whose assets are being protected.
+* `((with-stx|with-ft|with-nft|with-stacking)*)`: The set of allowances (at most 128) to grant during the evaluation of the body expressions .
+* `AnyType* A`: The Clarity expressions to be executed within the context, with the final expression returning type `A`, where `A` is not a `response`
+
+**Output**: `(response A uint)`
+
+**Signature**: `(restrict-assets? asset-owner ((with-stx|with-ft|with-nft|with-stacking)*) expr-body1 expr-body2 ... expr-body-last)`
+
+**Description**: Executes the body expressions, then checks the asset outflows against the granted allowances, in declaration order. If any allowance is violated, the body expressions are reverted and an error is returned. Note that the `asset-owner` and allowance setup expressions are evaluated before executing the body expressions. The final body expression cannot return a `response` value in order to avoid returning a nested `response` value from `restrict-assets?` (nested responses are error-prone). Returns:
+
+* `(ok x)` if the outflows are within the allowances, where `x` is the result of the final body expression and has type `A`.
+* `(err index)` if an allowance was violated, where `index` is the 0-based index of the first violated allowance in the list of granted allowances, or `u128` if an asset with no allowance caused the violation.
+
+**Example**:
+
+```
+(define-public (foo)
+  (restrict-assets? tx-sender ()
+    (try! (stx-transfer? u1000000 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
+  )
+) ;; Returns (err u128)
+(define-public (bar)
+  (restrict-assets? tx-sender ()
+    (+ u1 u2)
+  )
+) ;; Returns (ok u3)
+```
+
+***
+
 ## secp256k1-recover?
 
 Introduced in: **Clarity 1**
@@ -1742,6 +1840,28 @@ Introduced in: **Clarity 1**
 Verifies that `signature` of `message-hash` was produced by `public-key`. Signature is 64 or 65 bytes.
 
 **example:** (see original)
+
+***
+
+## secp256r1-verify
+
+**Input**: `(buff 32), (buff 64), (buff 33)`
+
+**Output**: `bool`
+
+**Signature**: `(secp256r1-verify message-hash signature public-key)`
+
+**Description**: The `secp256r1-verify` function verifies that the provided `signature` of the `message-hash` was produced by the private key corresponding to `public-key`. The `message-hash` is the SHA-256 hash of the message. The `signature` must be 64 bytes (compact signature). Returns `true` if the signature is valid for the given `public-key` and message hash, otherwise returns `false`.
+
+**Example**:
+
+```clojure
+(secp256r1-verify 0x033510403a646d23ee4f005061c2ca6af5da7c32c83758e8e9b6ac4cc1c2153c
+  0x9608dc164b76d2e19365ffa67b48981e441d323c3109718aee245d6ac8ccd21ddadadb94303c922c0d79d131ea59a0b6ba83e1157695db01189bb4b7e9f14b72 0x037a6b62e3c8b14f1b5933f5d5ab0509a8e7d95a111b8d3b264d95bfa753b00296) ;; Returns true
+(secp256r1-verify 0x0000000000000000000000000000000000000000000000000000000000000000
+  0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  0x037a6b62e3c8b14f1b5933f5d5ab0509a8e7d95a111b8d3b264d95bfa753b00296) ;; Returns false
+```
 
 ***
 
@@ -1942,6 +2062,29 @@ Transfers STX (microstacks) from `sender` to `recipient`. `sender` must be curre
 
 ***
 
+## to-ascii?
+
+Introduced in: **Clarity 4**
+
+**Input**: `int` | `uint` | `bool` | `principal` | `(buff 524284)` | `(string-utf8 262144)`
+
+**Output**: `(response (string-ascii 1048571) uint)`
+
+**Signature**: `(to-ascii? value)`
+
+**Description**: Returns the `string-ascii` representation of the input value in an `ok` response on success. The only error condition is if the input type is `string-utf8` and the value contains non-ASCII characters, in which case, `(err u1)` is returned. Note that the limitation on the maximum sizes of `buff` and `string-utf8` inputs is due to the Clarity value size limit of 1MB. The `(string-utf8 262144)` is the maximum allowed size of a `string-utf8` value, and the `(buff 524284)` limit is chosen because the ASCII representation of a `buff` is `0x` followed by two ASCII characters per byte in the `buff`. This means that the ASCII representation of a `(buff 524284)` is `2 + 2 * 524284 = 1048570` characters at 1 byte each, and the remainder is required for the `response` value wrapping the `string-ascii`.
+
+**Example**:
+
+```clojure
+(to-ascii? true) ;; Returns (ok "true")
+(to-ascii? 42) ;; Returns (ok "42")
+(to-ascii? 'SP2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D96YPGZF) ;; Returns (ok "SP2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D96YPGZF")
+(to-ascii? 0x12345678) ;; Returns (ok "0x12345678")
+```
+
+***
+
 ## to-consensus-buff?
 
 Introduced in: **Clarity 2**
@@ -2082,6 +2225,153 @@ Introduced in: **Clarity 1**
 (define-data-var cursor int 6)
 (var-get cursor) ;; Returns 6
 (var-set cursor (+ (var-get cursor) 1)) ;; Returns true
+```
+
+***
+
+{% hint style="info" %}
+The following 5 `with-*` functions are meant to be used inside the new `restrict-assets?` function. See the tutorial on Restricting Assets in Clarity for more info on how to use this function.
+{% endhint %}
+
+## with-all-assets-unsafe
+
+Introduced in: **Clarity 4**
+
+**Input**: None
+
+**Output**: Not applicable
+
+**Signature**: `(with-all-assets-unsafe)`
+
+**Description**: Grants unrestricted access to all assets of the contract to the enclosing `as-contract?` expression. Note that this is not allowed in `restrict-assets?` and will trigger an analysis error, since usage there does not make sense (i.e. just remove the `restrict-assets?` instead). **Security Warning:** This should be used with extreme caution, as it effectively disables all asset protection for the contract. This dangerous allowance should only be used when the code executing within the `as-contract?` body is verified to be trusted through other means (e.g. checking traits against an allow list, passed in from a trusted caller), and even then the more restrictive allowances should be preferred when possible.
+
+**Example**:
+
+```clojure
+(define-public (execute-trait (trusted-trait <sample-trait>))
+  (begin
+    (asserts! (is-eq contract-caller TRUSTED_CALLER) ERR_UNTRUSTED_CALLER)
+    (as-contract? ((with-all-assets-unsafe))
+      (contract-call? trusted-trait execute)
+    )
+  )
+)
+```
+
+***
+
+## with-ft
+
+**Input**:
+
+* `contract-id`: `principal`: The contract defining the FT asset.
+* `token-name`: `(string-ascii 128)`: The name of the FT or `"*"` for any FT defined in `contract-id`.
+* `amount`: `uint`: The amount of FT to grant access to.
+
+**Output**: Not applicable
+
+**Signature**: `(with-ft contract-id token-name amount)`
+
+**Description**: Adds an outflow allowance for `amount` of the fungible token defined in `contract-id` with name `token-name` from the `asset-owner` of the enclosing `restrict-assets?` or `as-contract?` expression. Note that `token-name` should match the name used in the `define-fungible-token` call in the contract. When `"*"` is used for the token name, the allowance applies to **all** FTs defined in `contract-id`.
+
+**Example**:
+
+```clojure
+(restrict-assets? tx-sender
+  ((with-ft (contract-of token-trait) "stackaroo" u50))
+  (try! (contract-call? token-trait transfer u100 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM none))
+) ;; Returns (err u0)
+(restrict-assets? tx-sender
+  ((with-ft (contract-of token-trait) "stackaroo" u50))
+  (try! (contract-call? token-trait transfer u20 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM none))
+) ;; Returns (ok true)
+```
+
+***
+
+## with-nft
+
+**Input**:
+
+* `contract-id`: `principal`: The contract defining the NFT asset.
+* `token-name`: `(string-ascii 128)`: The name of the NFT or `"*"` for any NFT defined in `contract-id`.
+* `identifiers`: `(list 128 T)`: The identifiers of the token to grant access to.
+
+**Output**: Not applicable
+
+**Signature**: `(with-nft contract-id token-name identifiers)`
+
+**Description**: Adds an outflow allowance for the non-fungible token(s) identified by `identifiers` defined in `contract-id` with name `token-name` from the `asset-owner` of the enclosing `restrict-assets?` or `as-contract?` expression. Note that `token-name` should match the name used in the `define-non-fungible-token` call in the contract. When `"*"` is used for the token name, the allowance applies to **all** NFTs defined in `contract-id`.
+
+**Example**:
+
+```clojure
+(restrict-assets? tx-sender
+  ((with-nft (contract-of nft-trait) "stackaroo" (list u123)))
+  (try! (contract-call? nft-trait transfer u4 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
+) ;; Returns (err u0)
+(restrict-assets? tx-sender
+  ((with-nft (contract-of nft-trait) "stackaroo" (list u123)))
+  (try! (contract-call? nft-trait transfer u123 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
+) ;; Returns (ok true)
+```
+
+***
+
+## with-stacking
+
+**Input**:
+
+* `amount`: `uint`: The amount of uSTX that can be locked.
+
+**Output**: Not applicable
+
+**Signature**: `(with-stacking amount)`
+
+**Description**: Adds a stacking allowance for `amount` uSTX from the `asset-owner` of the enclosing `restrict-assets?` or `as-contract?` expression. This restricts calls to the active PoX contract that either delegate funds for stacking or stack directly, ensuring that the locked amount is limited by the amount of uSTX specified.
+
+**Example**:
+
+```clojure
+(restrict-assets? tx-sender
+  ((with-stacking u1000000000000))
+  (try! (contract-call? 'SP000000000000000000002Q6VF78.pox-4 delegate-stx
+    u1100000000000 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM none none
+  ))
+) ;; Returns (err u0)
+(restrict-assets? tx-sender
+  ((with-stacking u1000000000000))
+  (try! (contract-call? 'SP000000000000000000002Q6VF78.pox-4 delegate-stx
+    u900000000000 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM none none
+  ))
+) ;; Returns (ok true)
+```
+
+***
+
+## with-stx
+
+**Input**:
+
+* `amount`: `uint`: The amount of uSTX to grant access to.
+
+**Output**: Not applicable
+
+**Signature**: `(with-stx amount)`
+
+**Description**: Adds an outflow allowance for `amount` uSTX from the `asset-owner` of the enclosing `restrict-assets?` or `as-contract?` expression.
+
+**Example**:
+
+```
+(restrict-assets? tx-sender
+  ((with-stx u1000000))
+  (try! (stx-transfer? u2000000 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
+) ;; Returns (err u0)
+(restrict-assets? tx-sender
+  ((with-stx u1000000))
+  (try! (stx-transfer? u1000000 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
+) ;; Returns (ok true)
 ```
 
 ***
