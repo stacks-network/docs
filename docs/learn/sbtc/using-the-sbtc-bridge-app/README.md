@@ -16,6 +16,6 @@ The official sBTC Bridge app is found at [https://sbtc.stacks.co/](https://sbtc.
 
 Refer to the following guides below to learn how you can securely convert your BTC into sBTC.
 
-* [How to Use the sBTC Bridge with Xverse/Leather](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/~/changes/16/sbtc/using-the-sbtc-bridge-app/how-to-use-the-sbtc-bridge)
-* [How to Use the sBTC Bridge with Fordefi](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/~/changes/16/sbtc/using-the-sbtc-bridge-app/how-to-use-the-sbtc-bridge-with-fordefi)
-* [How to Use the sBTC Bridge with Asigna](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/~/changes/16/sbtc/using-the-sbtc-bridge-app/how-to-use-the-sbtc-bridge-with-asigna)
+* [How to Use the sBTC Bridge with Xverse/Leather](how-to-use-the-sbtc-bridge.md)
+* [How to Use the sBTC Bridge with Fordefi](how-to-use-the-sbtc-bridge-with-fordefi.md)
+* [How to Use the sBTC Bridge with Asigna](how-to-use-the-sbtc-bridge-with-asigna.md)
