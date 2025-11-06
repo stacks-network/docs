@@ -1,3 +1,7 @@
+---
+description: The Clarity contracts responsible for sBTC's logic and interactions on Stacks.
+---
+
 # Clarity Contracts
 
 ### Deployed Mainnet Contracts
@@ -31,6 +35,8 @@ State storage for maintaining upgradability across protocol.
 #### sbtc-withdrawal
 
 Interaction points for users and signers to update withdrawal request state.
+
+<figure><img src="../../.gitbook/assets/Group 316124848.png" alt=""><figcaption></figcaption></figure>
 
 ### User Types
 

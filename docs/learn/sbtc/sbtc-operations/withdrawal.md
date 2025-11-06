@@ -1,3 +1,7 @@
+---
+description: Converting sBTC back to BTC.
+---
+
 # Withdrawal
 
 The sBTC withdrawal operation enables users to convert their sBTC back to BTC. This process involves burning sBTC on the Stacks blockchain and releasing an equivalent amount of BTC on the Bitcoin blockchain.
@@ -10,7 +14,7 @@ The sBTC withdrawal operation enables users to convert their sBTC back to BTC. T
 
 {% stepper %}
 {% step %}
-#### Initiate withdrawal
+**Initiate withdrawal**
 
 A user initiates a Clarity contract call (via a Stacks wallet or dApp) specifying:
 
@@ -19,13 +23,13 @@ A user initiates a Clarity contract call (via a Stacks wallet or dApp) specifyin
 {% endstep %}
 
 {% step %}
-#### Stacks transaction finality
+**Stacks transaction finality**
 
 The Stacks transaction must reach finality. The protocol requires six Bitcoin block confirmations before proceeding to the next step.
 {% endstep %}
 
 {% step %}
-#### Signer verification and BTC release
+**Signer verification and BTC release**
 
 After confirmations, sBTC Signers verify the withdrawal request and create the withdrawal transaction on the Bitcoin network, releasing the equivalent BTC to the specified Bitcoin address.
 {% endstep %}
@@ -41,7 +45,7 @@ The six-block confirmation requirement serves multiple purposes:
 * Mitigates issues from potential Bitcoin forks by allowing time for network stability.
 * Gives sBTC Signers sufficient time to verify and process the withdrawal request accurately.
 
-For more information on deposit and withdrawal confirmation times and why deposits can be faster than withdrawals, see the [Deposit and Withdrawal Times](https://app.gitbook.com/u/ZrQItu6D9bMKmf1HfsLTnGc05WZ2) doc.
+For more information on deposit and withdrawal confirmation times and why deposits can be faster than withdrawals, see the [Deposit and Withdrawal Times](deposit-vs-withdrawal-times.md) doc.
 
 ## Failure Cases
 
