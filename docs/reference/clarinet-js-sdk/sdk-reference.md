@@ -13,7 +13,7 @@ The Clarinet JS SDK provides a comprehensive suite of helpers for testing and in
 ## Installation
 
 ```bash
-npm install @hirosystems/clarinet-sdk
+npm install @stacks/clarinet-sdk
 ```
 
 ## Initialize simulated network
@@ -29,7 +29,7 @@ initSimnet(manifestPath?: string): Promise<Simnet>
 ```
 
 ```ts
-import { initSimnet } from '@hirosystems/clarinet-sdk';
+import { initSimnet } from '@stacks/clarinet-sdk';
 
 const simnet = await initSimnet();
 ```
@@ -321,7 +321,7 @@ mineBlock(txs: Tx[]): ParsedTransactionResult[]
 ```
 
 ```ts
-import { tx } from '@hirosystems/clarinet-sdk';
+import { tx } from '@stacks/clarinet-sdk';
 import { Cl } from '@stacks/transactions';
 
 const block = simnet.mineBlock([

@@ -19,7 +19,7 @@ npm init -y
 Install the Clarinet JS SDK and its dependencies:
 
 ```bash
-npm install @hirosystems/clarinet-sdk vitest @stacks/transactions
+npm install @stacks/clarinet-sdk vitest @stacks/transactions
 ```
 
 ## Project structure
@@ -101,7 +101,7 @@ Set up Vitest so the SDK can bootstrap the testing environment:
 
 ```js
 import { defineConfig } from "vitest/config";
-import { vitestSetupFilePath } from "@hirosystems/clarinet-sdk/vitest";
+import { vitestSetupFilePath } from "@stacks/clarinet-sdk/vitest";
 
 export default defineConfig({
   test: {

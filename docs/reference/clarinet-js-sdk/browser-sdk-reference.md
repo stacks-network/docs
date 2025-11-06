@@ -6,7 +6,7 @@ The browser build of the Clarinet SDK lets you interact with simnet directly fro
 
 {% code title="Install" %}
 ```bash
-npm install @hirosystems/clarinet-sdk-browser
+npm install @stacks/clarinet-sdk-browser
 ```
 {% endcode %}
 
@@ -18,7 +18,7 @@ The browser SDK implements the same API as the Node.js Clarinet SDK. All methods
 
 {% code title="Empty session (TypeScript)" %}
 ```ts
-import { initSimnet } from '@hirosystems/clarinet-sdk-browser';
+import { initSimnet } from '@stacks/clarinet-sdk-browser';
 
 const simnet = await initSimnet();
 await simnet.initEmptySession();
@@ -35,7 +35,7 @@ For testing with an existing Clarinet project using a virtual file system:
 
 {% code title="Using a Clarinet project (TypeScript)" %}
 ```ts
-import { initSimnet } from '@hirosystems/clarinet-sdk-browser';
+import { initSimnet } from '@stacks/clarinet-sdk-browser';
 
 const simnet = await initSimnet();
 await simnet.initSession("/project", "Clarinet.toml");
@@ -57,7 +57,7 @@ Using a Clarinet project in the browser requires setting up a virtual file syste
 
 {% code title="Playground example (TypeScript)" %}
 ```ts
-import { initSimnet } from '@hirosystems/clarinet-sdk-browser';
+import { initSimnet } from '@stacks/clarinet-sdk-browser';
 import { Cl } from '@stacks/transactions';
 
 // Initialize simnet
@@ -88,7 +88,7 @@ console.log(count.result); // (ok u1)
 
 {% code title="Browser test example (TypeScript + Vitest)" %}
 ```ts
-import { initSimnet } from '@hirosystems/clarinet-sdk-browser';
+import { initSimnet } from '@stacks/clarinet-sdk-browser';
 import { expect } from 'vitest';
 
 const simnet = await initSimnet();

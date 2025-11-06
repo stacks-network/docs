@@ -10,7 +10,7 @@ So they are sent as part of the transaction when the user initiates it, meaning 
 
 Whenever you are transferring an asset (fungible or non-fungible) from one address to another, you should take advantage of post conditions.
 
-We're going to use [Stacks.js](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions#post-conditions) to familiarize ourselves with them.
+We're going to use [Stacks.js](https://github.com/stx-labs/stacks.js/tree/master/packages/transactions#post-conditions) to familiarize ourselves with them.
 
 ### STX Post Condition
 
