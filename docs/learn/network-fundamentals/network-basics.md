@@ -31,14 +31,14 @@ The API will respond with the fee rate (as integer):
 1
 ```
 
-[The Stacks Transactions JS library](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) supports fee estimation for:
+[The Stacks Transactions JS library](https://github.com/stx-labs/stacks.js/tree/master/packages/transactions) supports fee estimation for:
 
 * token transfers (`estimateTransfer`)
 * contract deploys (`estimateContractDeploy`)
 * non read-only contract calls (`estimateContractFunctionCall`)
 
 {% hint style="info" %}
-For an implementation using a different language than JavaScript, please review [this reference implementation](https://github.com/hirosystems/stacks.js/blob/master/packages/transactions/src/builders.ts#L97).
+For an implementation using a different language than JavaScript, please review [this reference implementation](https://github.com/stx-labs/stacks.js/blob/master/packages/transactions/src/builders.ts#L97).
 {% endhint %}
 
 ### Nonces

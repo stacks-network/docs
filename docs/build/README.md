@@ -669,7 +669,7 @@ Now that you have the basics down, here are some ways to continue your Stacks de
 
 ### Development Tools
 
-* [**Clarinet**](https://github.com/hirosystems/clarinet): Local development environment for Clarity
+* [**Clarinet**](https://github.com/stx-labs/clarinet): Local development environment for Clarity
 * [**Hiro Platform**](https://platform.hiro.so/): Hosted development environment
 * [**Stacks Explorer**](https://explorer.stacks.co/): View transactions and contracts on mainnet
 

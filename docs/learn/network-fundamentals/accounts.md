@@ -30,7 +30,7 @@ An account is generated from a 24-word mnemonic phrase. This is often referred t
 If the seed phrase is lost, access to the associated account cannot be restored. No person or organization can recover a lost seed phrase.
 {% endhint %}
 
-The easiest way to generate a new Stacks account is to use the [Stacks CLI](https://github.com/hirosystems/stacks.js/tree/master/packages/cli):
+The easiest way to generate a new Stacks account is to use the [Stacks CLI](https://github.com/stx-labs/stacks.js/tree/master/packages/cli):
 
 {% code title="Generate a new account (CLI)" %}
 ```bash
@@ -78,7 +78,7 @@ Note that a new account automatically exists for each new private key. There is 
 Addresses are created by generating the [RIPEMD-160 hash](https://en.wikipedia.org/wiki/RIPEMD#RIPEMD-160_hashes) of the [SHA256](https://en.bitcoinwiki.org/wiki/SHA-256) of the public key. BTC addresses are encoded with [Base58Check](https://bitcoin.it/wiki/Base58Check_encoding). For Stacks addresses, [c32check](https://github.com/stacks-network/c32check) is used. Deriving an address from a public key can be done without internet access, for instance using the c32check `c32addressDecode` method.
 {% endhint %}
 
-Alternatively to the CLI creation, the [Stacks Transactions JS](https://github.com/hirosystems/stacks.js/tree/master/packages/transactions) library can be used:
+Alternatively to the CLI creation, the [Stacks Transactions JS](https://github.com/stx-labs/stacks.js/tree/master/packages/transactions) library can be used:
 
 {% code title="Generate a private key & derive address (transactions library)" %}
 ```js

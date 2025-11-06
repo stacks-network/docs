@@ -45,12 +45,12 @@ description = "A counter smart contract"
 
 [contracts.traits]
 path = "contracts/traits.clar"
-clarity_version = 3
+clarity_version = 4
 epoch = "latest"
 
 [contracts.counter]
 path = "contracts/counter.clar"
-clarity_version = 3
+clarity_version = 4
 epoch = "latest"
 ```
 
@@ -97,19 +97,19 @@ The **package.json** defines your testing environment and dependencies:
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hirosystems/clarinet-sdk": "^3.0.2",
-    "@stacks/transactions": "^7.0.6",
-    "@types/node": "^24.0.14",
+    "@stacks/clarinet-sdk": "^3.9.1",
+    "@stacks/transactions": "^7.2.0",
+    "@types/node": "^24.4.0",
     "chokidar-cli": "^3.0.0",
-    "vitest": "^3.1.3",
-    "vitest-environment-clarinet": "^2.3.0"
+    "vitest": "^4.0.7",
+    "vitest-environment-clarinet": "^3.0.0"
   }
 }
 ```
 
 | Package                       | Purpose                                                 |
 | ----------------------------- | ------------------------------------------------------- |
-| `@hirosystems/clarinet-sdk`   | WebAssembly-compiled Clarinet for Node.js               |
+| `@stacks/clarinet-sdk`        | WebAssembly-compiled Clarinet for Node.js               |
 | `@stacks/transactions`        | Clarity value manipulation in TypeScript                |
 | `vitest`                      | Modern testing framework with native TypeScript support |
 | `vitest-environment-clarinet` | Simnet bootstrapping for tests                          |
@@ -119,9 +119,11 @@ The **package.json** defines your testing environment and dependencies:
 The **vitest.config.js** configures the testing framework:
 
 ```js
+
 /// <reference types="vitest" />
+
 import { defineConfig } from "vite";
-import { vitestSetupFilePath, getClarinetVitestsArgv } from "@hirosystems/clarinet-sdk/vitest";
+import { vitestSetupFilePath, getClarinetVitestsArgv } from "@stacks/clarinet-sdk/vitest";
 
 export default defineConfig({
   test: {
@@ -178,7 +180,7 @@ The **tsconfig.json** provides TypeScript support:
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "node_modules/@hirosystems/clarinet-sdk/vitest-helpers/src",
+    "node_modules/@stacks/clarinet-sdk/vitest-helpers/src",
     "tests"
   ]
 }
@@ -234,25 +236,5 @@ If you're encountering import errors in your tests, update your TypeScript confi
 ```
 
 This configuration ensures TypeScript understands Vite's module resolution strategy and allows importing `.ts` files directly.
-
-</details>
-
-<details>
-
-<summary>Mismatched versions</summary>
-
-All contracts in your project should use the same Clarity version and epoch to avoid compatibility issues:
-
-```toml
-[contracts.token]
-clarity_version = 3
-epoch = "latest"
-
-[contracts.pool]
-clarity_version = 3
-epoch = "latest"
-```
-
-Mismatched versions can cause deployment failures and unexpected behavior. Always upgrade all contracts together when moving to a new Clarity version.
 
 </details>

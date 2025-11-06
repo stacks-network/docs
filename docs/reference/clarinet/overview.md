@@ -35,7 +35,7 @@ winget install clarinet
 {% tab title="Source" %}
 ```bash
 sudo apt install build-essential pkg-config libssl-dev
-git clone https://github.com/hirosystems/clarinet
+git clone https://github.com/stx-labs/clarinet
 cd clarinet
 cargo clarinet-install
 ```
@@ -43,7 +43,7 @@ cargo clarinet-install
 
 {% tab title="Binary" %}
 ```bash
-wget -nv https://github.com/hirosystems/clarinet/releases/latest/download/clarinet-linux-x64-glibc.tar.gz -O clarinet-linux-x64.tar.gz
+wget -nv https://github.com/stx-labs/clarinet/releases/latest/download/clarinet-linux-x64-glibc.tar.gz -O clarinet-linux-x64.tar.gz
 tar -xf clarinet-linux-x64.tar.gz
 chmod +x ./clarinet
 mv ./clarinet /usr/local/bin
