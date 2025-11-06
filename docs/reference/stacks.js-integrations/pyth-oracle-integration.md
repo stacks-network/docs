@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Pyth Oracle Integration
 
 This guide shows how to integrate Pyth Network price feeds into a frontend application with Stacks.js.
