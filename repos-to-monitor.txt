@@ -6,7 +6,7 @@ stacks-network/clarity-wasm
 # sBTC Repositories
 stacks-sbtc/sbtc
 
-# Hiro Systems Repositories
+# Stacks Labs Repositories
 stx-labs/clarinet
 stx-labs/stacks.js
 stx-labs/connect
