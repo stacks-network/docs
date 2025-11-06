@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Pyth Oracle Integration
 
 ### What you'll learn
