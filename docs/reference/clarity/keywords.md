@@ -88,6 +88,22 @@ Use caution when leveraging all contract calls, particularly tx-sender and contr
 
 ***
 
+### current-contract
+
+Introduced in: Clarity 4
+
+output: `principal`
+
+description: Returns the principal of the current contract.
+
+example:
+
+```
+(stx-transfer? u1000000 tx-sender current-contract)
+```
+
+***
+
 ### false
 
 Introduced in: Clarity 1
@@ -184,6 +200,28 @@ example:
 
 ```clarity
 (print stacks-block-height) ;; Will print out the current Stacks block height
+```
+
+***
+
+### stacks-block-time
+
+Introduced in: Clarity 4
+
+output: `uint`
+
+description: Returns the timestamp of the current block in seconds since the Unix epoch
+
+{% hint style="info" %}
+This same timestamp can also be retrieved for previous blocks using `(get-stacks-block-info? time height)`, which exists since Clarity 3, but cannot be used for the current block.
+
+Note that `stacks-block-time` will properly account for the context of an `at-block` expression. If the `at-block` sets the context to a block that is from before Clarity 4 has activated, attempting to use `stacks-block-time` in that context will result in a runtime error.
+{% endhint %}
+
+```
+(if (> stacks-block-time 1755820800)
+  (print "after 2025-07-22")
+  (print "before 2025-07-22"))
 ```
 
 ***
