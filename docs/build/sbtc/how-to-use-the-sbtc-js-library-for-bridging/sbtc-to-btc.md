@@ -171,13 +171,28 @@ And that's all to it. You've successfully allowed your app to handle incoming sB
 
 ***
 
-### \[Insights] What are the different bitcoin address types?
+### \[Additional Insights]&#x20;
+
+### What are the different bitcoin address types?
 
 Bitcoin addresses come in several types, each serving specific purposes and providing different functionalities. Each address type has evolved to enhance security, scalability, and functionality of Bitcoin transactions in response to the network's growing needs.
 
 Check out the dedicated Hiro blog post to learn more about the why and how different bitcoin addresses are constructed:
 
 {% embed url="https://www.hiro.so/blog/understanding-the-differences-between-bitcoin-address-formats-when-developing-your-app" %}
+
+### Why does the withdrawal (peg-out) take longer to provide a bitcoin txid from the Emily API?
+
+The current flow right now goes like this:
+
+1. The user creates a withdrawal request via a contract call on Stacks. In this example, let's say the withdrawal transaction is confirmed in a Stacks block anchored to a Bitcoin block at height N.
+2. The Signers and Emily get the event from the contract call above. Emily marks the withdrawal as pending.
+3. The Signers wait until that Bitcoin block is final enough, which is at Bitcoin block N+6. When that Bitcoin block arrives they create and broadcast a sweep transaction fulfilling the withdrawal request. Then the Signers tell Emily that they have accepted the withdrawal request.
+4. Usually the sweep transaction is included in the next block, so it's confirmed at block N+7.
+5. The Signers issue the contract call finalizing the withdrawal on Stacks, and Emily finds out about the transaction fulfilling the withdrawal.
+
+Here are some useful notes about the above process: \
+When the Signers tell Emily that the withdrawal has been accepted, they don't tell her about the bitcoin transaction that it's accepted in. This is intentional, because the final transaction fulfilling the withdrawal is not known until it is confirmed. It could also be the case that the Signers attempt to fulfill the withdrawal request but end up never fulfilling it. As in, the Signers could create a transaction fulfilling the withdrawal request, where they broadcast it to the Bitcoin network, but that transaction is never confirmed and never will be. Moreover, this situation is not too unlikely; it can happen when fees spike relative to the user's max fee. The current approach sidesteps all of that UX complexity and prudently informs Emily about the transaction ID after it is known to be confirmed. Moreover, some wallets can tell you if there is a payment made out to you by just examining the Bitcoin mempool.&#x20;
 
 [^1]: ```
     type AddressInfo = {

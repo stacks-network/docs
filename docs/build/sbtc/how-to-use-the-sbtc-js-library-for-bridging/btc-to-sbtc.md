@@ -60,7 +60,7 @@ const deposit = buildSbtcDepositAddress({
 ```
 
 {% hint style="info" %}
-The `maxSignerFee` applies to the bitcoin transaction sweeping funds into, or out of, the consolidated UTXO locked exclusively by sBTC Signers' aggregate address. Depending on network congestion, specify a custom fee your users would be willing to spend. The default value will be 80,000 sats. If the actual fee spent is less than the default value, the difference will be returned.
+The `maxSignerFee` refers to the fee in the bitcoin transaction sweeping funds into, or out of, the consolidated UTXO locked exclusively by sBTC Signers' aggregate address. Depending on network congestion, specify a custom fee your users would be willing to spend. The default value will be 80,000 sats. The user's responsibility of the actual fee spent is actually deducted from the amount of sBTC that will be minted.
 {% endhint %}
 
 The `buildSbtcDepositAddress` will return with a schema of:
@@ -199,7 +199,9 @@ And that's all to it. You've successfully allowed your app to handle incoming BT
 
 ***
 
-### \[Insights] What scripts make up the custom P2TR bitcoin address?
+### \[Additional Insights]&#x20;
+
+### What scripts make up the custom P2TR bitcoin address?
 
 As mentioned above, you're not directly sending bitcoin to the public sBTC Signers' [bitcoin address](https://mempool.space/address/bc1prcs82tvrz70jk8u79uekwdfjhd0qhs2mva6e526arycu7fu25zsqhyztuy), but rather sending to a custom P2TR address where both the user and sBTC Signers have control over. Besides the default key path spend, this custom P2TR address also contains 2 sets of scripts:
 
@@ -266,3 +268,22 @@ export function buildSbtcReclaimScript(opts: {
 {% endcode %}
 
 Behind the scenes, these two script construction methods are being abstracted away by `buildSbtcDepositAddress` which you've implemented on the front-end.
+
+### How are fees dealt with?
+
+**During deposits**
+
+The `maxSignerFee` refers to the fee in the bitcoin transaction sweeping funds into the consolidated UTXO locked exclusively by sBTC Signers' aggregate address. Depending on network congestion, specify a custom fee your users would be willing to spend. The default value will be 80,000 sats. The user's responsibility of the actual fee spent (for the sweep transaction) is actually deducted from the amount of sBTC that will be minted.
+
+**During withdrawals**
+
+The fees specified in `max-fee` of the function `initiate-withdrawal-request` of the [`.sbtc-withdrawal`](https://explorer.hiro.so/txid/SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-withdrawal?chain=mainnet) contract are referring to the fees paid of the bitcoin withdrawal transaction.
+
+#### How to estimate how much in fees one should spend?
+
+If you want to estimate how much one would expect to be charged in fees, you'd have to estimate the size of the transaction (vbytes) and the current network's fee rate. Below are some estimations you could use as a benchmark:
+
+**For deposits**: \~250 vbytes times the prevailing sats per vbyte fee rate \
+**For withdrawals**: \~170 vbtytes times the prevailing sats per vbyte rate&#x20;
+
+And although many deposits and withdrawals can be combined, these values should be the maximum that a user will be charged regardless of how many other deposits or withdrawals are being serviced in a single transaction by the Signers. Meaning when more than one user's request is included in a sweep transaction on the L1, the users share the fees in proportion to their deposit or withdrawal request's actual weight on the L1.
