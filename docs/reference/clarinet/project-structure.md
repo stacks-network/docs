@@ -116,21 +116,95 @@ The **package.json** defines your testing environment and dependencies:
 
 ### Vitest configuration
 
-The **vitest.config.js** configures the testing framework:
+The **`vitest.config.ts`** (or `.js`) configures the testing framework.
+Make sure to import `defineConfig` from `vitest/config` (and not for `vite`). 
 
-```js
+This configuration will work with Vitest v4 and higher
 
-/// <reference types="vitest" />
+```ts
+import { defineConfig } from "vitest/config";
+import {
+  vitestSetupFilePath,
+  getClarinetVitestsArgv,
+} from "@stacks/clarinet-sdk/vitest";
 
-import { defineConfig } from "vite";
-import { vitestSetupFilePath, getClarinetVitestsArgv } from "@stacks/clarinet-sdk/vitest";
+/*
+  In this file, Vitest is configured so that it works seamlessly with Clarinet and the Simnet.
+
+  The `vitest-environment-clarinet` will initialise the clarinet-sdk
+  and make the `simnet` object available globally in the test files.
+
+  `vitestSetupFilePath` points to a file in the `@stacks/clarinet-sdk` package that does two things:
+    - run `before` hooks to initialize the simnet and `after` hooks to collect costs and coverage reports.
+    - load custom vitest matchers to work with Clarity values (such as `expect(...).toBeUint()`)
+
+  The `getClarinetVitestsArgv()` will parse options passed to the command `vitest run --`
+    - vitest run -- --manifest ./Clarinet.toml  # pass a custom path
+    - vitest run -- --coverage --costs          # collect coverage and cost reports
+*/
 
 export default defineConfig({
   test: {
-    environment: "clarinet", // use vitest-environment-clarinet
+    // use vitest-environment-clarinet
+    environment: "clarinet",
+    pool: "forks",
+    // clarinet handles test isolation by resetting the simnet between tests
+    isolate: false,
+    maxWorkers: 1,
+    setupFiles: [
+      vitestSetupFilePath,
+      // custom setup files can be added here
+    ],
+    environmentOptions: {
+      clarinet: {
+        ...getClarinetVitestsArgv(),
+        // add or override options
+      },
+    },
+  },
+});
+
+```
+
+This configuration enables:
+
+* **Clarinet environment**: Automatic `simnet` setup for each test
+* **Single fork mode**: Efficient test execution with proper isolation
+* **Coverage tracking**: Generate reports in multiple formats
+* **Custom setup**: Add project-specific test utilities
+
+<details>
+
+<summary>If you use Vitest 3 or lower and don't want to upgrade now, you can use this config</summary>
+
+```ts
+import { defineConfig } from "vitest/config";
+import {
+  vitestSetupFilePath,
+  getClarinetVitestsArgv,
+} from "@stacks/clarinet-sdk/vitest";
+
+/*
+  In this file, Vitest is configured so that it works seamlessly with Clarinet and the Simnet.
+
+  The `vitest-environment-clarinet` will initialise the clarinet-sdk
+  and make the `simnet` object available globally in the test files.
+
+  `vitestSetupFilePath` points to a file in the `@hirosystems/clarinet-sdk` package that does two things:
+    - run `before` hooks to initialize the simnet and `after` hooks to collect costs and coverage reports.
+    - load custom vitest matchers to work with Clarity values (such as `expect(...).toBeUint()`)
+
+  The `getClarinetVitestsArgv()` will parse options passed to the command `vitest run --`
+    - vitest run -- --manifest ./Clarinet.toml  # pass a custom path
+    - vitest run -- --coverage --costs          # collect coverage and cost reports
+*/
+
+export default defineConfig({
+  test: {
+    // use vitest-environment-clarinet
+    environment: "clarinet",
     pool: "forks",
     poolOptions: {
-      threads: { singleThread: true },
       forks: { singleFork: true },
     },
     setupFiles: [
@@ -145,14 +219,9 @@ export default defineConfig({
     },
   },
 });
+
 ```
-
-This configuration enables:
-
-* **Clarinet environment**: Automatic `simnet` setup for each test
-* **Single fork mode**: Efficient test execution with proper isolation
-* **Coverage tracking**: Generate reports in multiple formats
-* **Custom setup**: Add project-specific test utilities
+</details>
 
 ### TypeScript configuration
 
