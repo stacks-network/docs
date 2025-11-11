@@ -21,7 +21,7 @@ Key points:
 In order to get the most from this quickstart, you should familiarize yourself with Clarity, Clarinet, Stacks.js, and the Hiro Platform. These are the fundamental building blocks of building Stacks applications.
 
 * [Stacks Developer Quickstart](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/Zz9BLmTU9oydDpL3qiUh/) - For a quick holistic introduction to the Stacks development process, tools, and fundamentals
-* [Clarity Crash Course](../clarity-crash-course.md) - For a quick introduction to Clarity
+* [Clarity Crash Course](../get-started/clarity-crash-course.md) - For a quick introduction to Clarity
 * [Clarinet Docs](https://docs.hiro.so/tools/clarinet)
 * [Stacks.js Docs](https://docs.hiro.so/reference/stacks.js)
 

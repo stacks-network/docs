@@ -1,6 +1,6 @@
 # Creating a FT
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/an-overview-of-8-types-of-tokens-in-web3">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/an-overview-of-8-types-of-tokens-in-web3">Hiro blog</a></p></figcaption></figure>
 
 Much the same as creating an NFT, Clarity also makes creating a fungible token (FT) trivial as well.
 
