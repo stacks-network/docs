@@ -4,7 +4,7 @@ description: Practical guide to testing smart contracts with the Clarinet JS SDK
 
 # Overview
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/announcing-the-clarinet-sdk-a-javascript-programming-model-for-easy-smart-contract-testing">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/clarinet-sdk.png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/announcing-the-clarinet-sdk-a-javascript-programming-model-for-easy-smart-contract-testing">Hiro blog</a></p></figcaption></figure>
 
 The Clarinet JS SDK provides a powerful testing framework for Clarity smart contracts. It integrates with Vitest to let you run comprehensive tests against a simulated blockchain environment.
 

@@ -122,7 +122,7 @@ Advance the chain to test time-dependent logic:
 
 > **Tip: Console reference**
 >
-> For a complete list of console commands, see the [CLI reference](cli-reference.md).
+> For a complete list of console commands, see the [CLI reference](../../reference/clarinet/cli-reference.md).
 
 ## Common issues
 

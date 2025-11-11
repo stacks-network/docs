@@ -8,11 +8,11 @@ description: >-
 
 Clarinet is the fastest way to build, test, and deploy smart contracts on the Stacks blockchain. It gives you a local devnet, REPL, testing framework, and debugging tools to ship high-quality Clarity code with confidence.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/clarinet-diagram.png" alt=""><figcaption></figcaption></figure></div>
 
 ## Key features
 
-* [**Leverage a powerful CLI**](cli-reference.md) - Create new projects, manage your smart contracts and their dependencies using clarinet requirements, and interact with your code through the built-in REPL.
+* [**Leverage a powerful CLI**](../../reference/clarinet/cli-reference.md) - Create new projects, manage your smart contracts and their dependencies using clarinet requirements, and interact with your code through the built-in REPL.
 * [**Write unit tests with the SDK**](../clarinet-js-sdk/unit-testing.md) - Use the Clarinet SDK to write unit tests in a familiar JS environment and validate contract behavior.
 * [**Run a private blockchain environment**](local-blockchain-development.md) - Spin up a local devnet with nodes, miners, and APIs so you can test and integrate your code.
 * [**VSCode extension**](../clarinet-integrations/vscode-extension.md) - Linter, step by step debugger, helps writing smart contracts (autocompletion, documentation etc).
