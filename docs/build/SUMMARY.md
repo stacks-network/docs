@@ -1,20 +1,29 @@
 # Table of contents
 
+## Get Started
+
 * [Developer Quickstart](README.md)
-* [Clarity Crash Course](clarity-crash-course.md)
+* [Clarity Crash Course](get-started/clarity-crash-course.md)
+* [Create Tokens](get-started/create-tokens/README.md)
+  * [Creating a NFT](get-started/create-tokens/creating-a-nft.md)
+  * [Creating a FT](get-started/create-tokens/creating-a-ft.md)
+* [Testing Smart Contracts](get-started/testing-smart-contracts/README.md)
+  * [Fuzz Testing](get-started/testing-smart-contracts/fuzz-testing.md)
+* [Build a Frontend](get-started/build-a-frontend/README.md)
+  * [Post Conditions with Stacks.js](get-started/build-a-frontend/post-conditions-with-stacks.js.md)
+  * [Authentication with Stacks.js](get-started/build-a-frontend/authentication-with-stacks.js.md)
+  * [Sending Transactions with Stacks.js](get-started/build-a-frontend/sending-transactions-with-stacks.js.md)
+
+## What's New?
+
+* [✅ Clarity 4 is now LIVE! ](whats-new/clarity-4-is-now-live.md)
+
+***
+
 * [Bitcoin Integration](bitcoin-integration/README.md)
   * [Sending Bitcoin with Leather](bitcoin-integration/sending-bitcoin-with-leather.md)
   * [Verifying a Bitcoin Transaction](bitcoin-integration/verifying-a-bitcoin-transaction.md)
   * [Parsing a Bitcoin Transaction](bitcoin-integration/parsing-a-bitcoin-transaction.md)
-* [Create Tokens](create-tokens/README.md)
-  * [Creating a NFT](create-tokens/creating-a-nft.md)
-  * [Creating a FT](create-tokens/creating-a-ft.md)
-* [Build a Frontend](build-a-frontend/README.md)
-  * [Post Conditions with Stacks.js](build-a-frontend/post-conditions-with-stacks.js.md)
-  * [Authentication with Stacks.js](build-a-frontend/authentication-with-stacks.js.md)
-  * [Sending Transactions with Stacks.js](build-a-frontend/sending-transactions-with-stacks.js.md)
-* [Testing Smart Contracts](testing-smart-contracts/README.md)
-  * [Fuzz Testing](testing-smart-contracts/fuzz-testing.md)
 * [sBTC](sbtc/README.md)
   * [sBTC Builder Quickstart](sbtc/sbtc-builder-quickstart.md)
   * [How to Use the sBTC JS Library for Bridging](sbtc/how-to-use-the-sbtc-js-library-for-bridging/README.md)

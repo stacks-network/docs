@@ -1,6 +1,6 @@
 # Creating a NFT
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/breaking-down-an-order-book-contract-for-nft-marketplaces">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/breaking-down-an-order-book-contract-for-nft-marketplaces">Hiro blog</a></p></figcaption></figure>
 
 {% hint style="info" %}
 For a more in-depth discussion of NFTs in Clarity and how to create them, check out the [NFTs chapter in the Clarity book](https://book.clarity-lang.org/ch10-01-sip009-nft-standard.html).

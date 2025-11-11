@@ -27,11 +27,11 @@ Let's get started!
 
 {% stepper %}
 {% step %}
-### Step 1: Set Up Your Wallet (5 minutes)
+#### Step 1: Set Up Your Wallet (5 minutes)
 
 First, you'll need a Stacks wallet to interact with the blockchain.
 
-#### Install Leather Wallet
+**Install Leather Wallet**
 
 1. Visit [leather.io](https://leather.io/) and install the browser extension
 2. Create a new wallet or import an existing one
@@ -50,15 +50,15 @@ You don't have to use Leather, two other wallets popular with Stacks users are [
 {% endstep %}
 
 {% step %}
-### Step 2: Write Your First Clarity Contract (10 minutes)
+#### Step 2: Write Your First Clarity Contract (10 minutes)
 
 Clarity is Stacks' smart contract language, designed for safety and predictability. Let's write a simple message board contract.
 
 Clarity is inspired by LISP and uses a functional programming approach. Everything in Clarity is an expression wrapped in parentheses. This can be a bit overwhelming at first if you are used to languages like JavaScript or Solidity, but the learning curve is short and Clarity is a simple language to understand once you dive in and start using it.
 
-For a more detailed introduction, check out the [Clarity Crash Course](clarity-crash-course.md) in the docs.
+For a more detailed introduction, check out the [Clarity Crash Course](get-started/clarity-crash-course.md) in the docs.
 
-#### Write the Contract
+**Write the Contract**
 
 Open [Clarity Playground](https://play.hiro.so/) in your browser. This is an online IDE where you can write and test Clarity code without installing anything.
 
@@ -111,7 +111,7 @@ Delete the existing code and replace it with this message board contract:
         (- total-count (- count u5)))))))
 ```
 
-#### Test the Contract
+**Test the Contract**
 
 Click "Deploy", and go to the command line in the bottom right corner and try calling the functions.
 
@@ -130,7 +130,7 @@ We are using the `contract-call?` method to call the functions in the contract t
 
 You should see the contract working in the evaluation panel on the right!
 
-#### Key Clarity Concepts Explained
+**Key Clarity Concepts Explained**
 
 * `define-map`: creates a map / key-value store on-chain (like a simple table).
 * `define-data-var`: creates a single persistent variable (used for counters, settings).
@@ -245,11 +245,11 @@ Clarity's type safety and static analysis help catch issues at deploy time. This
 {% endstep %}
 
 {% step %}
-### Step 3: Deploy Your Contract (5 minutes)
+#### Step 3: Deploy Your Contract (5 minutes)
 
 Now let's deploy your contract to the Stacks testnet so you can interact with it from a web application.
 
-#### Deploy via Stacks Explorer
+**Deploy via Stacks Explorer**
 
 1. Visit the [Stacks Explorer Sandbox](https://explorer.hiro.so/sandbox/deploy?chain=testnet)
 2. Connect your Leather wallet (make sure you're on testnet)
@@ -260,11 +260,11 @@ Now let's deploy your contract to the Stacks testnet so you can interact with it
 
 The deployment should only take a few seconds. Once complete, you'll see your contract address in the explorer. Here's [an example transaction](https://explorer.hiro.so/txid/0x3df7b597d1bbb3ce1598b1b0e28b7cbed38345fcf3fb33ae387165e13085e5d8?chain=testnet) deploying this contract.
 
-#### Test Your Deployed Contract
+**Test Your Deployed Contract**
 
 1. In the explorer, find your deployed contract
 2. Scroll down a bit and click on "Available Functions" to view its functions
-3. Try calling `add-message` with a test message (you'll need to change the post conditions toggle to allow mode, there is a dedicated docs page talking about [Post Conditions](build-a-frontend/post-conditions-with-stacks.js.md) on Stacks)
+3. Try calling `add-message` with a test message (you'll need to change the post conditions toggle to allow mode, there is a dedicated docs page talking about [Post Conditions](get-started/build-a-frontend/post-conditions-with-stacks.js.md) on Stacks)
 4. Call `get-message` with ID `u1` to read it back
 5. Call `get-message-count` to see the total
 
@@ -272,11 +272,11 @@ Your contract is now live and functional on the blockchain!
 {% endstep %}
 
 {% step %}
-### Step 4: Build the Frontend (10 minutes)
+#### Step 4: Build the Frontend (10 minutes)
 
 Let's create a simple web interface to interact with your contract.
 
-#### Set Up the Project
+**Set Up the Project**
 
 Create a new React project:
 
@@ -292,7 +292,7 @@ Install the Stacks.js libraries:
 npm install @stacks/connect @stacks/transactions @stacks/network
 ```
 
-#### Create the App Component
+**Create the App Component**
 
 Replace the contents of `src/App.jsx` with the following:
 
@@ -504,7 +504,7 @@ function App() {
 export default App;
 ```
 
-#### Add Basic Styling
+**Add Basic Styling**
 
 Update `src/App.css`:
 
@@ -625,13 +625,13 @@ Update `src/App.css`:
 }
 ```
 
-#### Update the Contract Address
+**Update the Contract Address**
 
 1. Go back to the Stacks Explorer and find your deployed contract
 2. Copy the contract address (it looks like `ST1ABC...123.message-board`)
 3. Replace `YOUR_CONTRACT_ADDRESS_HERE` in the App.jsx file with your actual contract address and the contract name with the actual name
 
-#### Run Your App
+**Run Your App**
 
 ```bash
 npm run dev
@@ -678,4 +678,3 @@ Now that you have the basics down, here are some ways to continue your Stacks de
 * [**Stacks Discord**](https://discord.gg/stacks): Connect with other developers
 * [**Stacks Forum**](https://forum.stacks.org/): Ask questions and share projects
 * [**Stacks GitHub**](https://github.com/stacks-network): Contribute to the ecosystem
-
