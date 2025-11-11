@@ -4,7 +4,7 @@ Typically, we speak of `mainnet` and `testnet` as the networks of Stacks. Most w
 
 As the name suggests, `testnet` is a public network for testing. It's a separate blockchain state that holds test tokens, which have no value.
 
-For completeness we also mention `devnet`. This isn't "one" network, but how developers refer to ephemeral local networks used for testing. It is the same as `testnet`, but for local development. [Learn more](../clarinet/local-blockchain-development.md).
+For completeness we also mention `devnet`. This isn't "one" network, but how developers refer to ephemeral local networks used for testing. It is the same as `testnet`, but for local development. [Learn more](../../build/clarinet/local-blockchain-development.md).
 
 ## Setting the network
 
