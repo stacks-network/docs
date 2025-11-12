@@ -177,7 +177,7 @@ async function waitForConfirmation(txId: string, network: StacksNetwork) {
 
 {% stepper %}
 {% step %}
-### Approve spending
+#### Approve spending
 
 First, create and broadcast an approval transaction.
 
@@ -203,7 +203,7 @@ This step ensures the spender is authorized before subsequent actions.
 {% endstep %}
 
 {% step %}
-### Execute swap after approval
+#### Execute swap after approval
 
 After the approval is confirmed, execute the swap transaction.
 

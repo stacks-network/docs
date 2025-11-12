@@ -20,7 +20,7 @@ Prerequisites
 
 {% stepper %}
 {% step %}
-### Create your Chainhook predicates
+#### Create your Chainhook predicates
 
 Create predicate files in a `chainhooks/` directory alongside your contracts:
 
@@ -63,7 +63,7 @@ Example predicate for monitoring increment events:
 {% endstep %}
 
 {% step %}
-### Start devnet with Chainhooks
+#### Start devnet with Chainhooks
 
 From your project root, start devnet. Clarinet registers every predicate automatically:
 
@@ -83,7 +83,7 @@ INFO Feb  5 15:20:07.233382 2 chainhooks registered
 {% endstep %}
 
 {% step %}
-### Monitor Chainhook activity
+#### Monitor Chainhook activity
 
 Trigger contract actions and watch for Chainhook alerts:
 

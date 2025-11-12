@@ -11,7 +11,7 @@ Unit testing verifies that individual contract functions behave as expected. The
 
 {% stepper %}
 {% step %}
-### Set up your project
+#### Set up your project
 
 Create a new Clarinet project and install dependencies:
 
@@ -23,7 +23,7 @@ npm install
 {% endstep %}
 
 {% step %}
-### Create the contract
+#### Create the contract
 
 Generate a contract stub:
 
@@ -72,7 +72,7 @@ clarinet check
 {% endstep %}
 
 {% step %}
-### Write your unit test
+#### Write your unit test
 
 Create `tests/defi.test.ts` with a basic happy-path test:
 
@@ -122,7 +122,7 @@ Key calls:
 {% endstep %}
 
 {% step %}
-### Try it out
+#### Try it out
 
 Run the tests:
 
@@ -138,7 +138,7 @@ Test Files  1 passed (1)
 {% endstep %}
 
 {% step %}
-### Generate coverage reports
+#### Generate coverage reports
 
 ```bash
 npm run test:report

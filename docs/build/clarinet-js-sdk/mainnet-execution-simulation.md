@@ -55,7 +55,7 @@ use_mainnet_wallets = true  # !mark
 This is particularly useful when:
 
 * Testing against mainnet-only contracts like DEX protocols
-* Your contract includes [`(is-standard standard-or-contract-principal)`](mainnet-execution-simulation.md#) validation
+* Your contract includes [`(is-standard standard-or-contract-principal)`](mainnet-execution-simulation.md) validation
 * Simulating transactions that require mainnet address formats
 
 ## Configure API access
@@ -139,13 +139,13 @@ Solution: Check the contract exists at your block height.
 
 {% stepper %}
 {% step %}
-### Visit the playground
+#### Visit the playground
 
 Go to: https://play.hiro.so/?remote\_data=true
 {% endstep %}
 
 {% step %}
-### Run a mainnet contract call
+#### Run a mainnet contract call
 
 Example Clarity call:
 
@@ -154,4 +154,3 @@ Example Clarity call:
 ```
 {% endstep %}
 {% endstepper %}
-

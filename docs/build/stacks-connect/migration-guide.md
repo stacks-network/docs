@@ -37,7 +37,7 @@ Backwards compatibility\
 
 {% stepper %}
 {% step %}
-### Update your @stacks/connect version
+#### Update your @stacks/connect version
 
 ```bash
 npm install @stacks/connect@latest
@@ -45,7 +45,7 @@ npm install @stacks/connect@latest
 {% endstep %}
 
 {% step %}
-### Replace legacy methods with `request`
+#### Replace legacy methods with `request`
 
 Switch from `showXyz`, `openXyz`, and `doXyz` helpers to the generic `request(method, params)` API. The `request` function is async, so replace `onFinish`/`onCancel` callbacks with `await` or `.then().catch()` chains.
 
@@ -57,20 +57,20 @@ Examples:
 {% endstep %}
 
 {% step %}
-### Use `connect` instead of `showConnect` / `authenticate`
+#### Use `connect` instead of `showConnect` / `authenticate`
 
 `connect()` is an alias for `request('getAddresses', { forceWalletSelect: true })` and caches the selected address in local storage by default.
 {% endstep %}
 
 {% step %}
-### Update authentication state management
+#### Update authentication state management
 
 * Replace `UserSession.isSignedIn()` with `isConnected()`
 * Replace `UserSession.signUserOut()` with `disconnect()`
 {% endstep %}
 
 {% step %}
-### Remove legacy code
+#### Remove legacy code
 
 * Delete references to deprecated helpers (`AppConfig`, `UserSession`, etc.)
 * Remove the `@stacks/connect-react` package

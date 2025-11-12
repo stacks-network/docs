@@ -95,7 +95,7 @@ For better security and recoverability, use hierarchical deterministic (HD) wall
 
 {% stepper %}
 {% step %}
-### Generate a seed phrase
+#### Generate a seed phrase
 
 Create a new 24-word mnemonic seed phrase that can regenerate all wallet accounts.
 
@@ -119,7 +119,7 @@ Seed phrases provide a human-readable backup that can restore an entire wallet h
 {% endstep %}
 
 {% step %}
-### Create wallet from seed phrase
+#### Create wallet from seed phrase
 
 Generate a complete wallet structure from a seed phrase, including multiple accounts.
 
@@ -149,7 +149,7 @@ Each wallet can contain multiple accounts, all derived from the same seed phrase
 {% endstep %}
 
 {% step %}
-### Managing multiple accounts
+#### Managing multiple accounts
 
 HD wallets support multiple accounts from a single seed phrase, useful for organizing funds or separating concerns.
 

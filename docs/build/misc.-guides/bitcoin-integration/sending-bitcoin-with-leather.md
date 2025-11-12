@@ -1,6 +1,6 @@
 # Sending Bitcoin with Leather
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>source: <a href="https://leather.io/">leather.io</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>source: <a href="https://leather.io/">leather.io</a></p></figcaption></figure>
 
 Using Leather's web wallet, you can initiate a simple Bitcoin transaction from a JS app in a few lines of code.
 
