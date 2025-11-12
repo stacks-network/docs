@@ -19,7 +19,7 @@ description: >-
 
 {% stepper %}
 {% step %}
-### Create your project
+#### Create your project
 
 Let's start by creating a new Clarinet project. The `clarinet new` command sets up everything you need for smart contract development, including a testing framework, deployment configurations, and a local development environment:
 
@@ -44,7 +44,7 @@ Clarinet creates a complete project structure for you. Each folder serves a spec
 {% endstep %}
 
 {% step %}
-### Generate your contract
+#### Generate your contract
 
 Now that we have our project structure, let's create a smart contract. Navigate into your project directory and use Clarinet's contract generator:
 
@@ -69,7 +69,7 @@ Notice that Clarinet also updated your `Clarinet.toml` file. This configuration 
 {% endstep %}
 
 {% step %}
-### Write your contract code
+#### Write your contract code
 
 Open `contracts/counter.clar` and replace its contents with our counter implementation. This contract will maintain a separate count for each user who interacts with it:
 
@@ -99,7 +99,7 @@ Let's understand what each part does:
 {% endstep %}
 
 {% step %}
-### Validate your contract
+#### Validate your contract
 
 Before we can test our contract, let's make sure it's syntactically correct and type-safe. Clarinet's check command analyzes your contract without deploying it:
 
@@ -117,7 +117,7 @@ If you see errors instead, here are the most common issues and how to fix them:
 {% endstep %}
 
 {% step %}
-### Test in the console
+#### Test in the console
 
 Now for the exciting part—let's interact with our contract! Clarinet provides an interactive console where you can call functions and see results immediately. Start the console with:
 
@@ -139,4 +139,3 @@ u2
 ```
 {% endstep %}
 {% endstepper %}
-

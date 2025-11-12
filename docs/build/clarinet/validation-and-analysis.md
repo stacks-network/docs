@@ -45,7 +45,7 @@ Error in contracts/token.clar:15:10
 
 {% stepper %}
 {% step %}
-### Run basic checks
+#### Run basic checks
 
 Use `clarinet check` to validate your contracts and catch type/syntax errors before deployment.
 
@@ -55,7 +55,7 @@ clarinet check
 {% endstep %}
 
 {% step %}
-### Check a specific contract
+#### Check a specific contract
 
 Focus validation during development on a single contract file:
 
@@ -65,7 +65,7 @@ clarinet check contracts/nft.clar
 {% endstep %}
 
 {% step %}
-### Integrate into CI
+#### Integrate into CI
 
 Automate validation in continuous integration pipelines. Example GitHub Actions workflow:
 

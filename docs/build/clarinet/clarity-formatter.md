@@ -16,13 +16,13 @@ You can customize these defaults to match your preferences.
 
 {% stepper %}
 {% step %}
-### Clarity VS Code Extension
+#### Clarity VS Code Extension
 
 Format directly in the editor.
 {% endstep %}
 
 {% step %}
-### Clarinet CLI
+#### Clarinet CLI
 
 Format via command line, including entire projects.
 {% endstep %}

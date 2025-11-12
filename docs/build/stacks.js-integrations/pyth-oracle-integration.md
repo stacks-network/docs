@@ -16,13 +16,13 @@ This guide shows how to integrate Pyth Network price feeds into a frontend appli
 ## Prerequisites
 
 * A React or Node.js application with Stacks.js installed
-* Understanding of [Pyth oracle contracts](pyth-oracle-integration.md#)
+* Understanding of [Pyth oracle contracts](pyth-oracle-integration.md)
 
 ## Quickstart
 
 {% stepper %}
 {% step %}
-### Install dependencies
+#### Install dependencies
 
 Install the Pyth SDK alongside your existing Stacks.js packages.
 
@@ -34,7 +34,7 @@ npm install @pythnetwork/price-service-client buffer
 {% endstep %}
 
 {% step %}
-### Set up the Pyth client
+#### Set up the Pyth client
 
 Create a service that fetches Pyth price feed updates.
 
@@ -78,7 +78,7 @@ export async function fetchPriceUpdateVAA(priceFeedId: string): Promise<string> 
 {% endstep %}
 
 {% step %}
-### Build oracle-enabled transactions
+#### Build oracle-enabled transactions
 
 Use fresh price data inside a contract call.
 
@@ -126,7 +126,7 @@ export function MintWithOraclePrice() {
 {% endstep %}
 
 {% step %}
-### Add post-conditions for oracle fees
+#### Add post-conditions for oracle fees
 
 Include post-conditions that reflect oracle fees and token transfers.
 
@@ -170,4 +170,3 @@ export function MintWithPostConditions() {
 ```
 {% endstep %}
 {% endstepper %}
-

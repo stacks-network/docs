@@ -54,7 +54,7 @@ There are three common transaction flows you can build:
 
 {% stepper %}
 {% step %}
-### STX transfer
+#### STX transfer
 
 Use `stx_transferStx` to send tokens:
 
@@ -74,7 +74,7 @@ async function transferStx() {
 {% endstep %}
 
 {% step %}
-### Contract deployment
+#### Contract deployment
 
 Deploy a contract with `stx_deployContract`:
 
@@ -100,7 +100,7 @@ Contracts deploy to the Stacks address of the connected wallet.
 {% endstep %}
 
 {% step %}
-### Contract execution
+#### Contract execution
 
 Call contract functions with `stx_callContract`:
 

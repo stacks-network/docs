@@ -242,25 +242,25 @@ npm start
 
 {% stepper %}
 {% step %}
-### Generate new wallet
+#### Generate new wallet
 
 Press "Generate New Wallet". A new seed phrase appears.
 {% endstep %}
 
 {% step %}
-### Wallet address
+#### Wallet address
 
 After generation, the wallet address displays below.
 {% endstep %}
 
 {% step %}
-### Sign transaction
+#### Sign transaction
 
 A transaction is signed (not broadcast) using the generated wallet.
 {% endstep %}
 
 {% step %}
-### Confirm success
+#### Confirm success
 
 A success message confirms signing.
 {% endstep %}
@@ -287,4 +287,3 @@ const broadcastTransaction = async (transaction: StacksTransaction) => {
   // Remember to handle network selection
 };
 ```
-

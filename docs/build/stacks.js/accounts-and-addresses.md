@@ -22,7 +22,7 @@ There are several ways to obtain a Stacks address depending on your use case and
 
 {% stepper %}
 {% step %}
-### Using Stacks Connect
+#### Using Stacks Connect
 
 When building user-facing applications, you'll typically get addresses from users who connect their wallets through Stacks Connect.
 
@@ -53,7 +53,7 @@ Stacks Connect stores the connected addresses in local storage, allowing your ap
 {% endstep %}
 
 {% step %}
-### Using a seed phrase
+#### Using a seed phrase
 
 For programmatic wallet generation or when restoring accounts from backup, you can derive addresses from a seed phrase (also known as a mnemonic).
 
@@ -85,7 +85,7 @@ Each wallet can contain multiple accounts, all derived from the same seed phrase
 {% endstep %}
 
 {% step %}
-### Using a private key
+#### Using a private key
 
 If you already have a private key, you can directly derive the corresponding address without going through the wallet generation process.
 
@@ -117,7 +117,7 @@ The same private key will generate different addresses for mainnet and testnet d
 {% endstep %}
 
 {% step %}
-### Using a public key
+#### Using a public key
 
 When you only have access to a public key (for example, in a watch-only wallet scenario), you can still derive the corresponding address.
 
@@ -180,4 +180,3 @@ console.log(isValidAddress('invalid-address')); // false
 ```
 
 Always validate addresses before using them in transactions to prevent loss of funds due to typos or formatting errors.
-

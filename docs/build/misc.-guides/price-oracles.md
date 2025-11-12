@@ -1,6 +1,6 @@
 # Price Oracles
 
-<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption><p>source: Hiro</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption><p>source: Hiro</p></figcaption></figure>
 
 ## Price‑Feed Oracles on Stacks
 

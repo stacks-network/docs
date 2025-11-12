@@ -13,7 +13,7 @@ Use Stacks.js to interact with your Clarinet devnet from JavaScript applications
 
 {% stepper %}
 {% step %}
-### Install Stacks.js packages
+#### Install Stacks.js packages
 
 Add the required libraries to your frontend project:
 
@@ -23,7 +23,7 @@ npm install @stacks/transactions @stacks/network
 {% endstep %}
 
 {% step %}
-### Configure for devnet
+#### Configure for devnet
 
 Create a network helper:
 
@@ -48,7 +48,7 @@ export const accounts = {
 {% endstep %}
 
 {% step %}
-### Test STX transfers
+#### Test STX transfers
 
 Send a transfer between devnet accounts:
 
@@ -76,7 +76,7 @@ Run the transfer with `ts-node stx-transfer.ts`.
 {% endstep %}
 
 {% step %}
-### Call smart contracts
+#### Call smart contracts
 
 Interact with contracts deployed on devnet:
 
@@ -120,7 +120,7 @@ readCount().catch(console.error);
 {% endstep %}
 
 {% step %}
-### Deploy contracts programmatically
+#### Deploy contracts programmatically
 
 Deploy a contract from your application code:
 

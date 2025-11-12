@@ -21,7 +21,7 @@ Prerequisites:
 
 {% stepper %}
 {% step %}
-### Install package
+#### Install package
 
 Add Stacks Connect to your project:
 
@@ -33,7 +33,7 @@ npm install @stacks/connect
 {% endstep %}
 
 {% step %}
-### Connect and authenticate
+#### Connect and authenticate
 
 Use `connect` to initiate a wallet session and persist user data:
 
@@ -70,7 +70,7 @@ function logout() {
 {% endstep %}
 
 {% step %}
-### Access user data
+#### Access user data
 
 Read persisted addresses and request full account details:
 
@@ -96,7 +96,7 @@ console.log('Gaia URL:', account.gaiaHubUrl);
 {% endstep %}
 
 {% step %}
-### Make your first transaction
+#### Make your first transaction
 
 Request the wallet to broadcast a transfer:
 
@@ -117,4 +117,3 @@ async function sendTransaction() {
 {% endcode %}
 {% endstep %}
 {% endstepper %}
-

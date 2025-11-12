@@ -16,7 +16,7 @@
 
 ## What's New?
 
-* [✅ Clarity 4 is now LIVE! ](whats-new/clarity-4-is-now-live.md)
+* [✅ Clarity 4 is now LIVE!](whats-new/clarity-4-is-now-live.md)
 
 ## Learn Clarinet
 
@@ -79,20 +79,17 @@
 * [Pyth Oracle Integration](stacks.js-integrations/pyth-oracle-integration.md)
 * [React Native Integration](stacks.js-integrations/react-native-integration.md)
 
-***
-
-* [Bitcoin Integration](bitcoin-integration/README.md)
-  * [Sending Bitcoin with Leather](bitcoin-integration/sending-bitcoin-with-leather.md)
-  * [Verifying a Bitcoin Transaction](bitcoin-integration/verifying-a-bitcoin-transaction.md)
-  * [Parsing a Bitcoin Transaction](bitcoin-integration/parsing-a-bitcoin-transaction.md)
-* [sBTC](sbtc/README.md)
-  * [sBTC Builder Quickstart](sbtc/sbtc-builder-quickstart.md)
-  * [How to Use the sBTC JS Library for Bridging](sbtc/how-to-use-the-sbtc-js-library-for-bridging/README.md)
-    * [Depositing: Pegging BTC into sBTC](sbtc/how-to-use-the-sbtc-js-library-for-bridging/btc-to-sbtc.md)
-    * [Withdrawing: Pegging sBTC into BTC](sbtc/how-to-use-the-sbtc-js-library-for-bridging/sbtc-to-btc.md)
-* [Price Oracles](price-oracles.md)
-
 ## Misc. Guides
 
+* [sBTC](misc.-guides/sbtc/README.md)
+  * [sBTC Builder Quickstart](misc.-guides/sbtc/sbtc-builder-quickstart.md)
+  * [How to Use the sBTC JS Library for Bridging](misc.-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/README.md)
+    * [Depositing: Pegging BTC into sBTC](misc.-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/btc-to-sbtc.md)
+    * [Withdrawing: Pegging sBTC into BTC](misc.-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/sbtc-to-btc.md)
+* [Price Oracles](misc.-guides/price-oracles.md)
 * [Build a Borrowing & Lending Protocol](misc.-guides/build-a-borrowing-and-lending-protocol.md)
+* [Bitcoin Integration](misc.-guides/bitcoin-integration/README.md)
+  * [Sending Bitcoin with Leather](misc.-guides/bitcoin-integration/sending-bitcoin-with-leather.md)
+  * [Verifying a Bitcoin Transaction](misc.-guides/bitcoin-integration/verifying-a-bitcoin-transaction.md)
+  * [Parsing a Bitcoin Transaction](misc.-guides/bitcoin-integration/parsing-a-bitcoin-transaction.md)
 * [Community Tutorials](misc.-guides/community-tutorials.md)

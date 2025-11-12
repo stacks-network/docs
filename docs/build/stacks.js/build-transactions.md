@@ -38,7 +38,7 @@ Signed transactions are ready to broadcast immediately. The private key signs du
 
 {% stepper %}
 {% step %}
-### STX token transfer
+#### STX token transfer
 
 ```ts
 import { makeSTXTokenTransfer, broadcastTransaction } from '@stacks/transactions';
@@ -57,7 +57,7 @@ console.log('Transaction ID:', result.txid);
 {% endstep %}
 
 {% step %}
-### Smart contract deployment
+#### Smart contract deployment
 
 ```ts
 import { makeContractDeploy, ClarityVersion } from '@stacks/transactions';
@@ -80,7 +80,7 @@ const result = await broadcastTransaction({ transaction });
 {% endstep %}
 
 {% step %}
-### Contract function calls
+#### Contract function calls
 
 ```ts
 import { makeContractCall, Cl } from '@stacks/transactions';

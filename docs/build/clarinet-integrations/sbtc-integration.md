@@ -17,7 +17,7 @@ Clarinet can automatically wire up the official sBTC contracts so you can build 
 
 {% stepper %}
 {% step %}
-### Add sBTC to your project
+#### Add sBTC to your project
 
 Add the sBTC contracts to your project requirements:
 
@@ -35,7 +35,7 @@ Clarinet auto-funds devnet wallets with sBTC when these are present.
 {% endstep %}
 
 {% step %}
-### Create an sBTC-enabled contract
+#### Create an sBTC-enabled contract
 
 Example NFT marketplace that accepts sBTC payments:
 
@@ -63,7 +63,7 @@ Example NFT marketplace that accepts sBTC payments:
 {% endstep %}
 
 {% step %}
-### Test in the Clarinet console
+#### Test in the Clarinet console
 
 Launch the console and try the contract using auto-funded wallets:
 
@@ -79,7 +79,7 @@ clarinet console
 {% endstep %}
 
 {% step %}
-### Write unit tests
+#### Write unit tests
 
 Sample Vitest test for sBTC payments:
 
@@ -124,7 +124,7 @@ describe('NFT Marketplace', () => {
 {% endstep %}
 
 {% step %}
-### Deploy to testnet
+#### Deploy to testnet
 
 Generate a plan to confirm remapped addresses for official sBTC contracts:
 
