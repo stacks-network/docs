@@ -8,11 +8,15 @@ description: >-
 
 Clarinet is the fastest way to build, test, and deploy smart contracts on the Stacks blockchain. It gives you a local devnet, REPL, testing framework, and debugging tools to ship high-quality Clarity code with confidence.
 
+{% hint style="success" %}
+For the latest releases and versions of Clarinet, check out the open-source repo [here](https://github.com/stx-labs/clarinet).
+{% endhint %}
+
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/clarinet-diagram.png" alt=""><figcaption></figcaption></figure></div>
 
 ## Key features
 
-* [**Leverage a powerful CLI**](../../reference/clarinet/cli-reference.md) - Create new projects, manage your smart contracts and their dependencies using clarinet requirements, and interact with your code through the built-in REPL.
+* [**Leverage a powerful CLI**](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/clarinet/cli-reference) - Create new projects, manage your smart contracts and their dependencies using clarinet requirements, and interact with your code through the built-in REPL.
 * [**Write unit tests with the SDK**](../clarinet-js-sdk/unit-testing.md) - Use the Clarinet SDK to write unit tests in a familiar JS environment and validate contract behavior.
 * [**Run a private blockchain environment**](local-blockchain-development.md) - Spin up a local devnet with nodes, miners, and APIs so you can test and integrate your code.
 * [**VSCode extension**](../clarinet-integrations/vscode-extension.md) - Linter, step by step debugger, helps writing smart contracts (autocompletion, documentation etc).
@@ -53,7 +57,7 @@ mv ./clarinet /usr/local/bin
 
 ## Networks
 
-Clarinet supports different network types to cater to various development and testing needs:
+Clarinet supports different network types to cater to various development and testing needs.
 
 | Network   | Description                                                                 | Use case                                                           |
 | --------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------ |
@@ -62,7 +66,15 @@ Clarinet supports different network types to cater to various development and te
 | `testnet` | A pre-production network that offers a realistic environment for testing.   | Ideal for final testing before deploying to Mainnet.               |
 | `mainnet` | The production network where real transactions occur.                       | Use when you're ready to deploy your smart contract to production. |
 
+For a deeper understanding of when to use these networks, check out the dedicated blog post by Hiro [here](https://www.hiro.so/blog/devnet-vs-testnet-vs-mainnet-what-do-they-mean-for-web3-developers).
 
+***
+
+### Additional Resources
+
+* \[[Hiro Blog](https://www.hiro.so/blog/clarinet-roadmap-looking-to-the-future)] The Humble Beginning of Clarinet&#x20;
+
+***
 
 {% hint style="info" %}
 Help: Need help building with Clarinet?

@@ -8,6 +8,10 @@ description: Practical guide to testing smart contracts with the Clarinet JS SDK
 
 The Clarinet JS SDK provides a powerful testing framework for Clarity smart contracts. It integrates with Vitest to let you run comprehensive tests against a simulated blockchain environment.
 
+{% hint style="success" %}
+For the latest releases and versions of `@stacks/clarinet-sdk`, check out its npm page [here](https://www.npmjs.com/package/@stacks/clarinet-sdk).
+{% endhint %}
+
 ## Initial setup
 
 Create a new Node.js project (or reuse an existing one):
