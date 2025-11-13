@@ -6,6 +6,10 @@
 
 Stacks.js is a collection of JavaScript libraries that enable you to build web applications on the Stacks blockchain. From wallet authentication to smart contract interactions.
 
+{% hint style="success" %}
+For the latest releases and versions of Stacks.js packages, check out its open-source repo [here](https://github.com/stx-labs/stacks.js).
+{% endhint %}
+
 ## Key features
 
 * **Transaction construction** - Build and broadcast all transaction types with type-safe APIs
@@ -65,7 +69,7 @@ Other available packages include:
 * `@stacks/storage`
 * `@stacks/wallet-sdk`
 
-
+***
 
 {% hint style="info" %}
 Need help building with Stacks.js?
