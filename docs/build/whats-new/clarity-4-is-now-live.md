@@ -2,7 +2,7 @@
 description: Making Bitcoin Smart Contracts More Powerful
 ---
 
-# ✅ Clarity 4 is now LIVE!&#x20;
+# ✅ Clarity 4 is now LIVE!
 
 SIP-033 and SIP-034 have officially activated at Bitcoin block 923222 – bringing Clarity 4 live on Stacks, the smart contract layer secured by Bitcoin.
 
@@ -46,7 +46,7 @@ This addition enables time-based logic in smart contracts –  an essential capa
 
 #### 5. Native Passkey Integration
 
-Clarity 4 introduces two new functions enabling on-chain verification of secp256r1 signatures.
+Clarity 4 introduces a new function enabling on-chain verification of secp256r1 signatures.
 
 [`secp256r1-verify`](https://docs.stacks.co/reference/clarity/functions#secp256r1-verify)
 
