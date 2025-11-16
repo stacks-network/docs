@@ -28,6 +28,10 @@ Speaking of [Stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-prod
 
 Fungible and non-fungible tokens in Clarity are defined by [SIP-009](file:///) and [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) standards. You can learn more about how to work with these tokens in the Clarity book.
 
+#### sBTC
+
+[sBTC](https://docs.stacks.co/sbtc) is the trust-minimized 2-way peg for Bitcoin on the Stacks network. sBTC operates as a SIP-010 token and comes with a [stacks.js library](https://docs.stacks.co/build/misc.-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging) so it's easy for devs to work with. [Utilizing sBTC](https://docs.stacks.co/build/misc.-guides/sbtc/sbtc-builder-quickstart) in your contract is as simple as calling the `sbtc-token` contract's transfer function.
+
 ### Tools
 
 #### Wallets
