@@ -229,16 +229,27 @@ expect(withdrawCall.result).toBeErr(Cl.uint(401)); // err-unauthorized
 Execute the full suite:
 
 ```bash
-npm test
+npm run test
 ```
 
 Generate coverage reports:
 
 ```bash
-npm run test:coverage
+npm run test:report
 ```
 
-Coverage output includes cost analysis for your contract functions.
+This command produces:
+
+* `lcov.info` – code coverage data
+* `costs-reports.json` – gas cost analysis
+
+View the HTML report (macOS example):
+
+```bash
+brew install lcov
+genhtml lcov.info --branch-coverage -o coverage
+open coverage/index.html
+```
 
 ## Advanced usage
 
