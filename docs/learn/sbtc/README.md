@@ -7,7 +7,7 @@ description: Design of a Trustless Two-way Peg for Bitcoin
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-### For builders and developers, head to the [sBTC pages](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/sbtc) under the Build section to start integrating sBTC into your Clarity smart contracts and front-end application.
+#### For builders and developers, head to the [sBTC pages](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/misc.-guides/sbtc) under the Build section to start integrating sBTC into your Clarity smart contracts and front-end application.
 {% endhint %}
 
 ### Introduction to sBTC
@@ -19,9 +19,9 @@ sBTC is a SIP-010 token on the Stacks blockchain that represents Bitcoin (BTC) i
 The primary purpose of sBTC is to bridge Bitcoin to DeFi via the Stacks blockchain, providing Bitcoin holders with access to the rich functionality of smart contracts without sacrificing the security and value of their BTC holdings.
 
 > _Unlocking Bitcoin to be a fully programmable, productive asset would allow Bitcoin to be the_\
-> _backbone of DeFi and a more secure web3. The ability to move Bitcoin assets in and out of_\
-> _smart contracts freely and for these contracts to trustlessly write to the Bitcoin blockchain can_\
-> _unlock hundreds of billions of dollars of passive BTC for web3._ \
+> &#xNAN;_&#x62;ackbone of DeFi and a more secure web3. The ability to move Bitcoin assets in and out of_\
+> &#xNAN;_&#x73;mart contracts freely and for these contracts to trustlessly write to the Bitcoin blockchain can_\
+> &#xNAN;_&#x75;nlock hundreds of billions of dollars of passive BTC for web3._\
 > \
 > \- sBTC: Design of a Trustless Two-way Peg for Bitcoin
 
