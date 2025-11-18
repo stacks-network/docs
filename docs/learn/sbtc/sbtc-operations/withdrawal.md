@@ -8,7 +8,7 @@ The sBTC withdrawal operation enables users to convert their sBTC back to BTC. T
 
 ## Process Overview
 
-<figure><img src="../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Stacks_graphic - 65.png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeNx03RFtUIZTzKCbSnakHtStQl69RWZ7TWRYsW4KvIS2HS-93ghvu3s2U-g5PXbdeCvV_PZUZv1JL3CdPo3Zkm2ZHHmW8BDJIvMoZMFBf256K0fVH07TEazw7EPu7Wixex-inhIAwIzy4WCHwzoUbzpPph_?key=LMMtMf3zwOdkwel07ZrRiw" alt=""><figcaption></figcaption></figure>
 
