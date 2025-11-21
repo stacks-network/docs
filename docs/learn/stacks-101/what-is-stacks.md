@@ -1,6 +1,6 @@
 # What Is Stacks?
 
-<figure><img src="../.gitbook/assets/Frame 316126258.jpg" alt=""><figcaption><p>source: Hiro Blog</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Frame 316126258.jpg" alt=""><figcaption></figcaption></figure>
 
 We can get an idea of the goal and ethos behind Stacks by looking at [how Satoshi envisioned generalizing Bitcoin](https://satoshi.nakamotoinstitute.org/posts/bitcointalk/threads/244/#222) back in 2010:
 
