@@ -38,7 +38,7 @@ Upon popup of the connect wallet modal, select the Leather option to connect wit
 
 On the dashboard, you'll be able to see stats regarding your current sBTC in wallet, sBTC in DeFi, STX currently stacked, and estimated APY you could be earning.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure></div>
 
 Let's get started by enrolling your sBTC into Dual Stacking.
 

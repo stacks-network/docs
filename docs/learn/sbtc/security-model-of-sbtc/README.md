@@ -24,7 +24,7 @@ As approved by the Stacks community via [SIP-028](https://github.com/stacksgov/s
 \
 As sBTC evolves, the Signer set will transition to a fully decentralized model, further strengthening the protocol's resilience.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>source: <a href="https://bitcoinl2labs.com/sbtc-rollout#sbtc-signers">Bitcoin L2 Labs</a></p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>source: <a href="https://bitcoinl2labs.com/sbtc-rollout#sbtc-signers">Bitcoin L2 Labs</a></p></figcaption></figure></div>
 
 For more info on who the sBTC Signers are, check out this section on the Bitcoin L2 Labs website [here](https://bitcoinl2labs.com/sbtc-rollout#sbtc-signers).
 
@@ -42,7 +42,7 @@ Stacks' Bitcoin Finality mechanism aligns sBTC's security closely with Bitcoin i
 
 While the sBTC model leverages decentralization to minimize trust, other wrapped Bitcoin solutions often face centralization risks. Typically, these alternatives rely on a centralized custodian to hold the underlying BTC, introducing a significant point of failure. Such custodians act as the trust anchor in the conversion process, which can potentially lead to issues such as censorship, mismanagement, or even security breaches. As a result, these models may not fully align with the decentralized principles of Bitcoin, posing challenges to the security and autonomy intended for Bitcoin holders.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>source: <a href="https://www.stacks.co/sbtc">stacks.co</a></p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>source: <a href="https://www.stacks.co/sbtc">stacks.co</a></p></figcaption></figure></div>
 
 ***
 

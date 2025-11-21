@@ -1,6 +1,6 @@
 # Proof of Transfer (PoX)
 
-<figure><img src="../.gitbook/assets/Frame 316125325.jpg" alt=""><figcaption><p>source: Hiro blog</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Frame 316125325.jpg" alt=""><figcaption></figcaption></figure>
 
 In the previous sections, we took a look at the vision and ethos of Stacks and talked a lot about it being connected to Bitcoin and how it enables expanding functionality without modifying Bitcoin itself.
 
@@ -16,11 +16,11 @@ Proof of burn is another, less-frequently used consensus mechanism where miners 
 
 Proof of Transfer (PoX) is an extension of the proof of burn mechanism. PoX uses the proof of work cryptocurrency of an established blockchain (Bitcoin in this case) to secure a new blockchain. However, unlike proof of burn, rather than burning the cryptocurrency, miners transfer the committed cryptocurrency to some other participants in the network (Stackers in this case).
 
-<figure><img src="../.gitbook/assets/Stacks_graphic - 67.png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/Stacks_graphic - 67.png" alt=""><figcaption></figcaption></figure></div>
 
 This allows network participants to secure the PoX cryptocurrency network and earn a reward in the base cryptocurrency (BTC). Thus, PoX blockchains are anchored on their chosen PoW chain. Stacks uses Bitcoin as its anchor chain.
 
-<figure><img src="../.gitbook/assets/Stacks_graphic - 80.png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/Stacks_graphic - 80.png" alt=""><figcaption></figcaption></figure></div>
 
 ### Why Bitcoin?
 

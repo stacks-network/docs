@@ -8,7 +8,7 @@ The deposit operation enables users to mint sBTC, anchored to the BTC they have 
 
 ## Process Overview
 
-![deposit diagram](<../../.gitbook/assets/Stacks_graphic - 64.png>)
+<div data-with-frame="true"><img src="../../.gitbook/assets/Stacks_graphic - 64.png" alt="deposit diagram"></div>
 
 The deposit process begins when a user initiates a specific Bitcoin transaction that has two outputs. The depositor (usually through the application they are using to deposit) then initiates an API call referencing that Bitcoin transaction. This call triggers the Emily API, which relays deposit information to the sBTC Signers. These signers verify and process the deposit. Once verified, an equivalent amount of sBTC is minted on the Stacks blockchain.
 
