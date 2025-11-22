@@ -22,11 +22,19 @@ Testnet faucets provide you with mock Stacks (STX) tokens to test with. These te
 
 {% tabs %}
 {% tab title="Hiro" %}
-You can get testnet STX from either the [Stacks Explorer Sandbox](https://explorer.hiro.so/sandbox/faucet?chain=testnet) or the [Hiro Platform](https://platform.hiro.so/faucet), which is the recommended way.
+You can get testnet STX from the [Hiro Platform](https://platform.hiro.so/faucet), which is the recommended way.
 
-To get STX tokens from within the Hiro Platform, navigate to the "Faucet" tab at the top. You can then choose either testnet STX or sBTC, and then paste in your desired STX address to receive.
+To get STX tokens from within the Hiro Platform, navigate to the "Faucet" tab at the top. You can then choose either testnet STX or sBTC, and then paste in your desired testnet STX address to receive.
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure></div>
+{% endtab %}
+
+{% tab title="Sandbox" %}
+Using the faucet provided by the [Explorer Sandbox](https://explorer.hiro.so/sandbox/deploy?chain=testnet) is another option.
+
+You'll first need to connect your wallet to the Explorer Sandbox and hit 'Request STX'. Be sure your wallet is on the testnet network before requesting.
+
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/sandbox-faucet.png" alt=""><figcaption></figcaption></figure></div>
 {% endtab %}
 
 {% tab title="LearnWeb3" %}
