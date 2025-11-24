@@ -50,13 +50,13 @@ Say that your smart contract has a function that reverses a list of `uint`s. In 
 
 > For a property to be cosidered valid by Rendezvous, it has to comply with the following rules:
 >
-> - Function name starts with `test-`
-> - Function is declared as `public`
-> - Test passes when it returns `(ok true)`
-> - Test would be discarded if it returned `(ok false)`
-> - Test fails if it returns an error or throws an exception
+> * Function name starts with `test-`
+> * Function is declared as `public`
+> * Test passes when it returns `(ok true)`
+> * Test would be discarded if it returned `(ok false)`
+> * Test fails if it returns an error or throws an exception
 
----
+***
 
 ### Invariant Testing
 
@@ -94,37 +94,33 @@ Say that you have a counter contract, having functions to `increment` and `decre
 
 > For an invariant to be cosidered valid by Rendezvous, it has to complain to the following ruleset:
 >
-> - Function name starts with invariant-
-> - Function is declared as read-only (not public)
-> - Function returns a boolean value (true if the invariant holds, false if violated)
-> - The test can use the special context map to access execution history
+> * Function name starts with invariant-
+> * Function is declared as read-only (not public)
+> * Function returns a boolean value (true if the invariant holds, false if violated)
+> * The test can use the special context map to access execution history
 
 ## Why Test in Clarity?
 
 {% stepper %}
 {% step %}
-
 ### Same constraints as production
 
 Tests operate under the exact same constraints as production code.
 {% endstep %}
 
 {% step %}
-
 ### Better understanding of Clarity
 
 Writing tests in Clarity improves your familiarity with the language and its semantics.
 {% endstep %}
 
 {% step %}
-
 ### No need to expose internals
 
 You don't have to expose internal functions as public solely for testing.
 {% endstep %}
 
 {% step %}
-
 ### Fewer tools to manage
 
 Running tests in Clarity reduces the number of external tools and integrations you need to maintain.
