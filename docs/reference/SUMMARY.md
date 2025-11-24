@@ -22,6 +22,10 @@
 * [SDK Reference](clarinet-js-sdk/sdk-reference.md)
 * [Browser SDK Reference](clarinet-js-sdk/browser-sdk-reference.md)
 
+## Rendezvous
+
+* [Rendezvous Reference](rendezvous/reference.md)
+
 ## Stacks.js References
 
 * [@stacks/network](stacks.js-references/stacks-network.md)
