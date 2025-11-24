@@ -46,6 +46,11 @@
 * [sBTC Integration](clarinet-integrations/sbtc-integration.md)
 * [VSCode Extension](clarinet-integrations/vscode-extension.md)
 
+## Learn Rendezvous
+
+* [Overview](rendezvous/overview.md)
+* [Quickstart](rendezvous/quickstart.md)
+
 ## Learn Stacks.js
 
 * [Overview](stacks.js/overview.md)
