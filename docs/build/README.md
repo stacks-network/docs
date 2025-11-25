@@ -9,7 +9,7 @@ description: Your 0→1 guide for building a Clarity contract and app on Stacks.
 **Welcome to the Stacks Developer Quickstart Guide!**\
 This is your fast-track path for understanding what you'll need to become a Stacks developer. In this guide, you’ll build a real Clarity smart contract, wire up a functioning Stacks app, and pick up about 75% of the practical knowledge every Stacks builder needs. Whether you’re shipping your first project or leveling up your skills, this guide takes you from zero to deployed—quickly and confidently.
 
-### [​](https://docs.base.org/get-started/build-app#what-you%E2%80%99ll-achieve)What You’ll Achieve <a href="#what-youll-achieve" id="what-youll-achieve"></a>
+### What you'll achieve
 
 By the end of this quickstart, you’ll have built an onchain app by:
 
