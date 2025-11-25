@@ -4,10 +4,10 @@ Clarinet provides deployment tooling that helps you move from local development 
 
 ## Generating deployment plans
 
-Deployment plans are YAML files that describe how contracts are published or called. Generate a plan for any network:
+Deployment plans are YAML files that describe how contracts are published or called. Be sure to have a valid 24 word mnemonic seed phrase specified in the target network's `.toml` file in `settings/` and then generate a plan for any network:
 
 ```bash
-$ clarinet deployments generate --testnet
+$ clarinet deployments generate --testnet --medium-cost
 Analyzing contracts...
 Calculating deployment costs...
 Generating deployment plan
@@ -383,5 +383,3 @@ clarinet deployments check
 clarinet deployments generate --testnet
 ls contracts/
 ```
-
-##

@@ -2,6 +2,8 @@
 
 Learn how to integrate wallet connections into your Stacks application. Connecting a wallet authenticates users and enables blockchain interactions like transfers and contract calls.
 
+<figure><img src="../.gitbook/assets/stacks-connect.jpg" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/better-devex-fewer-dependencies-meet-the-new-stacks-connect">Hiro blog</a></p></figcaption></figure>
+
 {% hint style="success" %}
 For the latest releases and versions of `@stacks/connect`, check out its npm page [here](https://www.npmjs.com/package/@stacks/connect).
 {% endhint %}

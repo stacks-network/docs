@@ -1,680 +1,830 @@
+---
+description: Your 0→1 guide for building a Clarity contract and app on Stacks.
+---
+
 # Developer Quickstart
 
-<figure><img src=".gitbook/assets/Frame 316125324.jpg" alt=""><figcaption><p>source: Hiro blog</p></figcaption></figure>
+<figure><img src=".gitbook/assets/deploy-contract.jpg" alt=""><figcaption></figcaption></figure>
 
-## Build Your First Stacks App in 30 Minutes
+**Welcome to the Stacks Developer Quickstart Guide!**\
+This is your fast-track path for understanding what you'll need to become a Stacks developer. In this guide, you’ll build a real Clarity smart contract, wire up a functioning Stacks app, and pick up about 75% of the practical knowledge every Stacks builder needs. Whether you’re shipping your first project or leveling up your skills, this guide takes you from zero to deployed—quickly and confidently.
 
-Looking to see what building on Stacks is all about? You're in the right place.
+### [​](https://docs.base.org/get-started/build-app#what-you%E2%80%99ll-achieve)What You’ll Achieve <a href="#what-youll-achieve" id="what-youll-achieve"></a>
 
-This tutorial will help you build a working Stacks application in just 30 minutes. You'll learn the essential tools and concepts needed to build decentralized applications on Stacks, the leading Bitcoin L2.
+By the end of this quickstart, you’ll have built an onchain app by:
 
-What you'll build: A simple message board where users can post messages to the blockchain and read messages from others.
+* Building a Clarity smart contract with Clarinet
+* Utilize the 1:1 Bitcoin backed token, sBTC
+* Deploying your smart contract to Stacks' testnet
+* Interacting with your deployed contract from a frontend app
 
-What you'll learn:
+{% hint style="success" %}
+**Why Stacks?**
 
-* How to write a Clarity smart contract
-* How to deploy contracts to Stacks testnet
-* How to connect a wallet to your app
-* How to interact with contracts from a frontend
+Stacks is a fast, low-cost, builder-friendly layer 2 network on Bitcoin. It’s built on Bitcoin, inheriting Bitcoin’s battle-tested security. By jumping into this guide, you’re joining the Stacks community that’s bringing a global onchain economy to Bitcoin.
+{% endhint %}
 
-Prerequisites:
+### What You'll Build
 
-* Basic familiarity with web development (HTML, CSS, JavaScript)
+The app you'll build will be a message board contract. Users can add a new message to store on-chain for a fee of 1 satoshi in sBTC. Other functionality to read data from the contract will also be handled. Besides sBTC, there will be other things that'll be introduced to you such as post-conditions, Bitcoin read access, unit testing, wallet connectivity, BNS, Hiro, and more. Hopefully all this will give you a good flavor of what you can expect in the Stacks builder ecosystem.
+
+Let's start building on Bitcoin! :orange\_square:
+
+{% hint style="info" %}
+**Prerequisites**
+
+* Basic familiarity with web development
+* Basic familiarity with web3 concepts
 * A modern web browser
-* 30 minutes of your time
+* Node.js
+* Visual Studio Code or any other popular IDE
+{% endhint %}
 
-Let's get started!
+### Set Up Your Developer Environment
 
 {% stepper %}
 {% step %}
-#### Step 1: Set Up Your Wallet (5 minutes)
+#### Install Clarinet
 
-First, you'll need a Stacks wallet to interact with the blockchain.
+Clarinet is the popular CLI tool to build, test, and deploy smart contracts on the Stacks blockchain.
 
-**Install Leather Wallet**
+Below are a few different ways to install Clarinet on your machine using your terminal. Refer to the dedicated [installation](clarinet/overview.md) guide in the 'Learn Clarinet' section for more information.
 
-1. Visit [leather.io](https://leather.io/) and install the browser extension
-2. Create a new wallet or import an existing one
-3. **Important**: Switch to the **Testnet** network in your wallet settings
-4. Get testnet STX tokens from the [Stacks Testnet Faucet](https://explorer.hiro.so/sandbox/faucet?chain=testnet)
+{% tabs %}
+{% tab title="Homebrew" %}
+```bash
+brew install clarinet
+```
+{% endtab %}
 
-{% hint style="info" %}
-Testnet STX tokens are free and used for testing. They have no real value but let you experiment with Stacks development without cost.
-{% endhint %}
+{% tab title="Winget" %}
+```bash
+winget install clarinet
+```
+{% endtab %}
 
-Your wallet is now ready for testnet development!
+{% tab title="Source" %}
+```bash
+sudo apt install build-essential pkg-config libssl-dev
+git clone https://github.com/stx-labs/clarinet
+cd clarinet
+cargo clarinet-install
+```
+{% endtab %}
 
-{% hint style="info" %}
-You don't have to use Leather, two other wallets popular with Stacks users are [Xverse](https://xverse.app/) and [Asigna](https://asigna.io/) if you need a multisig.
-{% endhint %}
+{% tab title="Binary" %}
+```bash
+wget -nv https://github.com/stx-labs/clarinet/releases/latest/download/clarinet-linux-x64-glibc.tar.gz -O clarinet-linux-x64.tar.gz
+tar -xf clarinet-linux-x64.tar.gz
+chmod +x ./clarinet
+mv ./clarinet /usr/local/bin
+```
+{% endtab %}
+{% endtabs %}
 {% endstep %}
 
 {% step %}
-#### Step 2: Write Your First Clarity Contract (10 minutes)
+#### Install Clarity Extension
 
-Clarity is Stacks' smart contract language, designed for safety and predictability. Let's write a simple message board contract.
-
-Clarity is inspired by LISP and uses a functional programming approach. Everything in Clarity is an expression wrapped in parentheses. This can be a bit overwhelming at first if you are used to languages like JavaScript or Solidity, but the learning curve is short and Clarity is a simple language to understand once you dive in and start using it.
-
-For a more detailed introduction, check out the [Clarity Crash Course](get-started/clarity-crash-course.md) in the docs.
-
-**Write the Contract**
-
-Open [Clarity Playground](https://play.hiro.so/) in your browser. This is an online IDE where you can write and test Clarity code without installing anything.
-
-Delete the existing code and replace it with this message board contract:
-
-```clarity
-;; Simple Message Board Contract
-;; This contract allows users to post and read messages
-
-;; Define a map to store messages
-;; Key: message ID (uint), Value: message content (string-utf8 280)
-(define-map messages uint (string-utf8 280))
-
-;; Define a map to store message authors
-(define-map message-authors uint principal)
-
-;; Counter for message IDs
-(define-data-var message-count uint u0)
-
-;; Public function to add a new message
-(define-public (add-message (content (string-utf8 280)))
-  (let ((id (+ (var-get message-count) u1)))
-    (map-set messages id content)
-    (map-set message-authors id tx-sender)
-    (var-set message-count id)
-    (ok id)))
-
-;; Read-only function to get a message by ID
-(define-read-only (get-message (id uint))
-  (map-get? messages id))
-
-;; Read-only function to get message author
-(define-read-only (get-message-author (id uint))
-  (map-get? message-authors id))
-
-;; Read-only function to get total message count
-(define-read-only (get-message-count)
-  (var-get message-count))
-
-;; Read-only function to get the last few messages
-(define-read-only (get-recent-messages (count uint))
-  (let ((total-count (var-get message-count)))
-    (if (> count total-count)
-      (map get-message (list u1 u2 u3 u4 u5))
-      (map get-message (list
-        (- total-count (- count u1))
-        (- total-count (- count u2))
-        (- total-count (- count u3))
-        (- total-count (- count u4))
-        (- total-count (- count u5)))))))
-```
-
-**Test the Contract**
-
-Click "Deploy", and go to the command line in the bottom right corner and try calling the functions.
-
-We are using the `contract-call?` method to call the functions in the contract that we just deployed within the playground.
-
-```clarity
-;; Test adding a message
-(contract-call? .contract-1 add-message u"Hello, Stacks!")
-
-;; Test reading the message
-(contract-call? .contract-1 get-message u1)
-
-;; Test getting the count
-(contract-call? .contract-1 get-message-count)
-```
-
-You should see the contract working in the evaluation panel on the right!
-
-**Key Clarity Concepts Explained**
-
-* `define-map`: creates a map / key-value store on-chain (like a simple table).
-* `define-data-var`: creates a single persistent variable (used for counters, settings).
-* `define-public`: public function that can modify blockchain state.
-* `define-read-only`: functions that can only read state and don't modify it.
-* `tx-sender`: automatically set to the address of whoever called the function (useful for authentication).
-* `let`: create local variables inside functions.
-* All public functions return a response type: `(ok value)` or `(err error)`.
+You'll also want to install the Clarity Extension for your code editor. The official one is '[Clarity - Stacks Labs](https://marketplace.visualstudio.com/items?itemName=StacksLabs.clarity-stacks)' which is maintained by [Stacks Labs](https://stackslabs.com/).&#x20;
 
 <details>
 
-<summary><strong>🔍 Deep Dive: Understanding the Contract Code (Optional)</strong></summary>
+<summary>What is Clarity?</summary>
 
-Want to understand exactly what each part of the contract is doing? Let's walk through every function and concept used in our message board contract. Links to the official documentation are included for each function, so you may dive deeper if you want.
+Clarity is Stacks' smart contract language, designed for safety and predictability.
 
-**How We Store Data on the Blockchain**
+Clarity is inspired by LISP and uses a functional programming approach. Everything in Clarity is an expression wrapped in parentheses. This can be a bit overwhelming at first if you are used to languages like JavaScript or Solidity, but the learning curve is short and Clarity is a simple language to understand once you dive in and start using it.
 
-We use `define-map` to create what's essentially a database table on the blockchain:
+Check out the [Clarity Crash Course](get-started/clarity-crash-course.md) for a quick primer.
 
-```clarity
-(define-map messages uint (string-utf8 280))
+</details>
+
+<div data-with-frame="true"><figure><img src=".gitbook/assets/clarity-extension.png" alt=""><figcaption><p>The 'Clarity - Stacks Labs' extension as it appears in Visual Studio Code.</p></figcaption></figure></div>
+{% endstep %}
+
+{% step %}
+#### Install a Stacks wallet
+
+There are many Stacks supported wallets in the market. For this guide, we'll be using the [Leather](https://leather.io/) wallet. Leather supports Stacks, Bitcoin, and other Bitcoin related meta-protocols. Download and install its browser extension so you can interact with your smart contract later on in this guide. Make sure to switch to the **Testnet** network in your wallet settings. Later on, we'll show you how to get testnet STX and sBTC tokens that you'll use for contract interaction.
+{% endstep %}
+{% endstepper %}
+
+### Create a Clarity smart contract
+
+{% stepper %}
+{% step %}
+#### Create a new Clarinet project
+
+Let's start by creating a new Clarinet project which will house our smart contract. The `clarinet new` command sets up everything you need for smart contract development, including a testing framework, deployment configurations, and a local development environment.
+
+{% code title="terminal" %}
+```
+clarinet new my-stacks-contracts
+```
+{% endcode %}
+
+A Clarinet project will be scaffolded with the below:
+
+{% code title="terminal" expandable="true" %}
+```
+Created directory my-stacks-contracts
+Created directory contracts
+Created directory settings
+Created directory tests
+Created file Clarinet.toml
+Created file settings/Mainnet.toml
+Created file settings/Testnet.toml
+Created file settings/Devnet.toml
+Created directory .vscode
+Created file .vscode/settings.json
+Created file .vscode/tasks.json
+Created file .gitignore
+Created file .gitattributes
+Created file package.json
+Created file tsconfig.json
+Created file vitest.config.ts
+
+----------------------------
+Hint: what's next?
+Switch to the newly created directory with:
+
+  $ cd my-stacks-contracts
+
+Once you are ready to write your contracts, run the following commands:
+
+  $ clarinet contract new <contract-name>
+    Create new contract scaffolding, including test files.
+
+  $ clarinet check
+    Check contract syntax for all files in ./contracts.
+```
+{% endcode %}
+{% endstep %}
+
+{% step %}
+#### Generate your contract
+
+Now that we have our project structure, let's create a smart contract. Navigate into your project directory and use Clarinet's contract generator:
+
+```sh
+$ cd my-stacks-contracts
+$ clarinet contract new message-board
+Created file contracts/message-board.clar
+Created file tests/message-board.test.ts
+Updated Clarinet.toml with contract message-board
 ```
 
-We also create another map to track who wrote each message:
+Clarinet automatically creates both your contract file and a corresponding test file.
+{% endstep %}
+{% endstepper %}
 
-```clarity
-(define-map message-authors uint principal)
-```
+### Write your Clarity smart contract
 
-We keep a message counter with:
+{% stepper %}
+{% step %}
+#### Define constants
 
-```clarity
-(define-data-var message-count uint u0)
-```
+Open `contracts/message-board.clar` and remove its existing content. This is where we'll start writing our own Clarity smart contract.
 
-**The Heart of Our Contract: Adding Messages**
+Let's first define some constants:
 
-The primary state-changing function:
+* contract owner to establish control access
+* custom error codes to handle errors in functions
 
-```clarity
-(define-public (add-message (content (string-utf8 280)))
-  (let ((id (+ (var-get message-count) u1)))
-    (map-set messages id content)
-    (map-set message-authors id tx-sender)
+<pre data-title="message-board.clar"><code>;; Simple Message Board Contract
+;; This contract allows users to read and post messages for a fee in sBTC.
+
+;; Define contract owner
+<strong>(define-constant CONTRACT_OWNER tx-sender)
+</strong>
+;; Define error codes
+<strong>(define-constant ERR_NOT_ENOUGH_SBTC (err u1004))
+</strong><strong>(define-constant ERR_NOT_CONTRACT_OWNER (err u1005))
+</strong><strong>(define-constant ERR_BLOCK_NOT_FOUND (err u1003))
+</strong></code></pre>
+
+You'll notice in the `CONTRACT_OWNER` constant that `tx-sender` is set in place as the value. When this contract is deployed, the Clarity VM will determine who the `tx-sender` is based on who deployed the contract. This allows the hardcoded `tx-sender` to always point to the principal that deployed the contract.
+{% endstep %}
+
+{% step %}
+#### Define data storage
+
+We'll then need to define some data storage:
+
+* A map to store key-value pairs of the message id and it's related metadata
+* A data variable to count the total number of messages added
+
+<pre data-title="message-board.clar"><code>;; Define a map to store messages
+;; Each message has an ID, content, author, and Bitcoin block height timestamp
+<strong>(define-map messages
+</strong>  uint
+  {
+    message: (string-utf8 280),
+    author: principal,
+    time: uint,
+  }
+)
+
+;; Counter for total messages
+<strong>(define-data-var message-count uint u0)
+</strong></code></pre>
+{% endstep %}
+
+{% step %}
+#### Define an add message function
+
+Next up is our main function of the contract. This function allows users to add a new message to the contract for a fee of 1 satoshi in sBTC. Invoking this function will change the state of our contract and update the data storage pieces we setup before.
+
+<pre data-title="message-board.clar" data-expandable="true"><code>;; Public function to add a new message for 1 satoshi of sBTC
+;; @format-ignore
+<strong>(define-public (add-message (content (string-utf8 280)))
+</strong>  (let ((id (+ (var-get message-count) u1)))
+    (try! (restrict-assets? contract-caller 
+      ((with-ft 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token "sbtc-token" u1))
+      (unwrap!
+        ;; Charge 1 satoshi of sBTC from the caller
+        (contract-call? 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token
+          transfer u1 contract-caller current-contract none
+        )
+        ERR_NOT_ENOUGH_SBTC
+      )
+    ))
+    ;; Store the message with current Bitcoin block height
+    (map-set messages id {
+      message: content,
+      author: contract-caller,
+      time: burn-block-height,
+    })
+    ;; Update message count
     (var-set message-count id)
-    (ok id)))
+    ;; Emit event for the new message
+    (print {
+      event: "[Stacks Dev Quickstart] New Message",
+      message: content,
+      id: id,
+      author: contract-caller,
+      time: burn-block-height,
+    })
+    ;; Return the message ID
+    (ok id)
+  )
+)
+</code></pre>
+
+There's quite a lot going on in this function above that covers in-contract post-conditions, calling the official sBTC token contract, reading Bitcoin state, emitting events, and etc. We'll break it down for you:
+
+<details>
+
+<summary>Define public function and params</summary>
+
+```
+(define-public (add-message (content (string-utf8 280)))
+    ;; function body
+)
 ```
 
-Key points:
+By using the `define-public` function, we can literally create a public function where anyone can invoke.
 
-* `var-get` reads the message counter.
-* `+` uses prefix notation (LISP-style).
-* `map-set` stores the content and author.
-* `tx-sender` is the caller's address.
-* The function returns `(ok id)` on success.
+* `(add-message ... )` : the custom name of the public function
+* `(content (string-utf8 280))` : the custom paramater name and type
 
-**Reading Messages Back**
+</details>
 
-Example read-only function:
+<details>
 
-```clarity
-(define-read-only (get-message (id uint))
-  (map-get? messages id))
+<summary>Create let variable binding for next message id</summary>
+
+```
+(let ((id (+ (var-get message-count) u1)))
+    ;; body expressions
+)
 ```
 
-`map-get?` returns `(some value)` or `none`, forcing explicit handling of missing data.
+Creates a "local" variable that can be used inside the function body only. This `id` variable will be used to represent the new message id being added.
 
-Other read-only functions:
+</details>
 
-```clarity
-(define-read-only (get-message-author (id uint))
-  (map-get? message-authors id))
+<details>
 
-(define-read-only (get-message-count)
-  (var-get message-count))
+<summary>Transfer 1 satoshi of sBTC from user to the contract</summary>
+
+<pre><code>(try! (restrict-assets? contract-caller 
+  ((with-ft 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token "sbtc-token" u1))
+  (unwrap!
+    ;; Charge 1 satoshi of sBTC from the caller
+<strong>    (contract-call? 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token
+</strong>      transfer u1 contract-caller current-contract none
+    )
+    ERR_NOT_ENOUGH_SBTC
+  )
+))
+</code></pre>
+
+This snippet calls the external .`sbtc-token` contract to transfer sBTC.&#x20;
+
+The `restrict-assets?` acts as an in-contract post-condition to protect user and contract funds when calling external contracts to transfer assets.
+
+</details>
+
+<details>
+
+<summary>Store message data in mapping</summary>
+
+```
+(map-set messages id {
+  message: content,
+  author: contract-caller,
+  time: burn-block-height,
+})
 ```
 
-**A More Complex Function: Getting Recent Messages**
+The function `map-set` will allow the existing mapping of `messages` to add a new key-value pair consiting of the metadata of the new message.
 
-```clarity
-(define-read-only (get-recent-messages (count uint))
-  (let ((total-count (var-get message-count)))
-    (if (> count total-count)
-      (map get-message (list u1 u2 u3 u4 u5))
-      (map get-message (list
-        (- total-count (- count u1))
-        (- total-count (- count u2))
-        (- total-count (- count u3))
-        (- total-count (- count u4))
-        (- total-count (- count u5)))))))
+We'll be using the current Bitcoin block height (via `burn-block-height`) as a way to capture the time of when this new message was added. Through `burn-block-height` , Clarity allows us to have read access into the Bitcoin state at anytime.&#x20;
+
+</details>
+
+<details>
+
+<summary>Update the message-count variable</summary>
+
+```
+(var-set message-count id)
 ```
 
-This shows conditional logic (`if`), prefix operators, `map` to apply a function over a list, and list arithmetic to determine recent message IDs.
+Increments the existing data variable of `message-count` with the `let` id variable.
 
-**What Makes Clarity Special**
+</details>
 
-* Response types: functions return `(ok value)` or `(err error)` and state changes are reverted on `err`.
-* Optional types: `map-get?` returns `some` or `none` instead of null.
-* Static analysis at deployment time prevents many runtime errors.
-* No recursion or unbounded loops (decidability), making execution costs predictable.
-* `tx-sender` vs `contract-caller` — be cautious about which you use for authorization.
+<details>
 
-{% hint style="warning" %}
-**Important**: Be careful when using `tx-sender` vs `contract-caller` in your contracts. While `tx-sender` refers to the original transaction sender and remains constant throughout the entire transaction chain, `contract-caller` refers to the most recent principal in the transaction chain and can change with each internal function or contract call. This difference is crucial for security - malicious contracts can potentially exploit `tx-sender`'s persistent context to bypass admin checks if you're not careful. For simple contracts like our message board, `tx-sender` is appropriate, but for more complex authorization logic, consider whether you need the original sender or the immediate caller.
+<summary>Emit an event to the network</summary>
 
-For more details on this, check out [this excellent blog post](https://www.setzeus.com/public-blog-post/clarity-carefully-tx-sender) from Clarity developer [setzeus](https://x.com/setzeus).
-{% endhint %}
+```
+(print {
+  event: "[Stacks Dev Quickstart] New Message",
+  message: content,
+  id: id,
+  author: contract-caller,
+  time: burn-block-height,
+})
+```
 
-Clarity's type safety and static analysis help catch issues at deploy time. This contract demonstrates common patterns: maps, data vars, public functions, read-only queries, tx-sender usage, and predictable response types.
+The `print` function will allow us to emit a custom event to the Stacks network.
+
+Emitting events on Stacks serves several critical purposes:
+
+1. **Transparency**: Events provide an on-chain record of actions and transactions, ensuring transparency.
+2. **Notification**: They serve as a signal mechanism for users and external applications, notifying them of specific occurrences on Stacks.
+3. **State Tracking**: Developers can use events to track changes in the state of smart contracts without querying the chain continuously.
+4. **Efficient Data Handling**: By emitting events, webhook services, such as Hiro's [Chainhooks](https://docs.hiro.so/en/tools/chainhooks), can filter and handle relevant data efficiently, reducing the on-chain computation load.
+
+</details>
+
+<details>
+
+<summary>Return final response</summary>
+
+<pre><code>;; Return the message ID
+<strong>(ok id)
+</strong></code></pre>
+
+Public functions _must_ return a ResponseType (using either `ok` or `err`). In this case, we'll return a response type with an inner value of the new message id.
 
 </details>
 {% endstep %}
 
 {% step %}
-#### Step 3: Deploy Your Contract (5 minutes)
+#### Add sBTC contract requirements
 
-Now let's deploy your contract to the Stacks testnet so you can interact with it from a web application.
+Since we're working with sBTC in our local developer environment, we'll need to make sure Clarinet can recognize this. Clarinet can automatically wire up the official sBTC contracts so you can build and test sBTC flows locally.
 
-**Deploy via Stacks Explorer**
+In our case, all we'll need to do is add the [`.sbtc-deposit`](https://explorer.hiro.so/txid/SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-deposit?chain=mainnet) contract as a project requirement.
 
-1. Visit the [Stacks Explorer Sandbox](https://explorer.hiro.so/sandbox/deploy?chain=testnet)
-2. Connect your Leather wallet (make sure you're on testnet)
-3. Paste your contract code into the editor
-4. Give your contract a name (e.g., "message-board") or just use the default generated name
-5. Click "Deploy Contract"
-6. Confirm the transaction in your wallet
+{% code title="terminal" %}
+```
+clarinet requirements add SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-deposit
+```
+{% endcode %}
 
-The deployment should only take a few seconds. Once complete, you'll see your contract address in the explorer. Here's [an example transaction](https://explorer.hiro.so/txid/0x3df7b597d1bbb3ce1598b1b0e28b7cbed38345fcf3fb33ae387165e13085e5d8?chain=testnet) deploying this contract.
+You'll notice in the `add-message` public function, we're making an external contract call to the [`.sbtc-token`](https://explorer.hiro.so/txid/0xead2080826685a98886891cbd9b288d367ae19b357353c71fff4a3330da582c8?chain=mainnet) contract. This is the official sBTC token contract that contains the [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) standard `transfer` function that we are invoking.
 
-**Test Your Deployed Contract**
-
-1. In the explorer, find your deployed contract
-2. Scroll down a bit and click on "Available Functions" to view its functions
-3. Try calling `add-message` with a test message (you'll need to change the post conditions toggle to allow mode, there is a dedicated docs page talking about [Post Conditions](get-started/build-a-frontend/post-conditions-with-stacks.js.md) on Stacks)
-4. Call `get-message` with ID `u1` to read it back
-5. Call `get-message-count` to see the total
-
-Your contract is now live and functional on the blockchain!
+Check out the dedicated [sBTC integration](clarinet-integrations/sbtc-integration.md) page to learn more.
 {% endstep %}
 
 {% step %}
-#### Step 4: Build the Frontend (10 minutes)
+#### Allow contract owner to withdraw funds
 
-Let's create a simple web interface to interact with your contract.
+In the beginning of our contract, we defined a constant to store the Stacks principal of the contract owner. Having a contract owner allows for specific access control of the contract that is entitled to the owner. Let's allow the owner to be able to withdraw the accumulated sBTC fees that were sent by anyone who created a new message in the contract.
 
-**Set Up the Project**
+<pre data-expandable="true"><code>;; Withdraw function for contract owner to withdraw accumulated sBTC
+(define-public (withdraw-funds)
+  (begin
+<strong>    (asserts! (is-eq tx-sender CONTRACT_OWNER) (err u1005))
+</strong>    (let ((balance (unwrap-panic (contract-call? 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token
+        get-balance current-contract
+      ))))
+      (if (> balance u0)
+        (contract-call? 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token
+          transfer balance current-contract CONTRACT_OWNER none
+        )
+        (ok false)
+      )
+    )
+  )
+)
+</code></pre>
 
-Create a new React project:
-
-```bash
-npm create vite@latest my-message-board -- --template react
-cd my-message-board
-npm install
-```
-
-Install the Stacks.js libraries:
-
-```bash
-npm install @stacks/connect @stacks/transactions @stacks/network
-```
-
-**Create the App Component**
-
-Replace the contents of `src/App.jsx` with the following:
+You'll notice in the highlighted line that the function performs an `asserts!` check to confirm that the `tx-sender` calling the contract is in fact the `CONTRACT_OWNER` . If it is in fact the owner of the contract, the function body proceeds with transferring the balance of sBTC to the owner or else it'll throw an error that we defined earlier.
 
 {% hint style="info" %}
-Since this is a quickstart, we won't dive into a long explanation of exactly what this code is doing. We suggest going and checking out [Hiro's Docs](https://docs.hiro.so/stacks/stacks.js) in order to get a handle on how stacks.js works.
+The usage of `tx-sender` versus another Clarity keyword, `contract-caller` , is always a tricky concept because it determines who actually initiated the transaction versus who invoked the current function. Both of them can have certain implications on security based on the context of your code. Check out the dedicated [blog](https://www.setzeus.com/public-blog-post/clarity-carefully-tx-sender), written by community dev Setzeus, to learn when you should use either or.&#x20;
 {% endhint %}
+{% endstep %}
 
-```jsx
-import { useState, useEffect } from "react";
-import { connect, disconnect, isConnected, request } from "@stacks/connect";
-import {
-  fetchCallReadOnlyFunction,
-  stringUtf8CV,
-  uintCV,
-} from "@stacks/transactions";
-import "./App.css";
+{% step %}
+#### Implement read only functions
 
-const network = "testnet";
+We'll round out our contract with important read only functions that will return us needed data from the contract.
 
-// Replace with your contract address
-const CONTRACT_ADDRESS = "YOUR_CONTRACT_ADDRESS_HERE";
-const CONTRACT_NAME = "message-board";
+<pre data-expandable="true"><code>;; Read-only function to get a message by ID
+(define-read-only (get-message (id uint))
+  (map-get? messages id)
+)
 
-function App() {
-  const [connected, setConnected] = useState(false);
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+;; Read-only function to get message author
+(define-read-only (get-message-author (id uint))
+  (get author (map-get? messages id))
+)
 
-  useEffect(() => {
-    setConnected(isConnected());
-    if (isConnected()) {
-      loadMessages();
-    }
-  }, []);
+;; Read-only function to get message count at a specific Stacks block height
+(define-read-only (get-message-count-at-block (block uint))
+<strong>  (ok (at-block
+</strong>    (unwrap! (get-stacks-block-info? id-header-hash block) ERR_BLOCK_NOT_FOUND)
+    (var-get message-count)
+  ))
+)
+</code></pre>
 
-  // Check for connection changes
-  useEffect(() => {
-    const checkConnection = () => {
-      const connectionStatus = isConnected();
-      if (connectionStatus !== connected) {
-        setConnected(connectionStatus);
-        if (connectionStatus) {
-          loadMessages();
-        }
-      }
-    };
+You'll notice the usage of a `at-block` function in the highlighted line of code. The `at-block` function evaluates the inner expression _as if_ it were evaluated at the end of a specific Stacks block.
+{% endstep %}
 
-    const intervalId = setInterval(checkConnection, 500);
-    return () => clearInterval(intervalId);
-  }, [connected]);
+{% step %}
+#### Test your contract
 
-  const connectWallet = async () => {
-    try {
-      await connect({
-        appDetails: {
-          name: "Message Board",
-          icon: window.location.origin + "/logo.svg",
-        },
-        onFinish: () => {
-          setConnected(true);
-          // Small delay to ensure connection is fully established
-          setTimeout(() => {
-            loadMessages();
-          }, 100);
-        },
-      });
-    } catch (error) {
-      console.error("Connection failed:", error);
-    }
-  };
+Now with the actual writing of your contract complete, we now need to test its functionality. There's a few different ways we can go about iterating and testing the functionality of your contract.
 
-  const disconnectWallet = () => {
-    disconnect();
-    setConnected(false);
-    setMessages([]);
-  };
+* Contract interaction in the [Clarinet REPL](clarinet/contract-interaction.md)
+* Running your contract in a [local blockchain environment](clarinet/local-blockchain-development.md)
+* Fuzz testing with [Rendezvous](https://stacks-network.github.io/rendezvous/)
+* Writing unit tests with the [Clarinet JS SDK](clarinet-js-sdk/overview.md)
 
-  const loadMessages = async () => {
-    try {
-      // Get message count
-      const countResult = await fetchCallReadOnlyFunction({
-        contractAddress: CONTRACT_ADDRESS,
-        contractName: CONTRACT_NAME,
-        functionName: "get-message-count",
-        functionArgs: [],
-        network,
-        senderAddress: CONTRACT_ADDRESS,
-      });
+We'll go with unit testing for now. In your `tests` folder, open up the related `message-board.test.ts` file and let's use the unit test written below.
 
-      const count = parseInt(countResult.value);
+<pre class="language-typescript" data-title="tests/message-board.test.ts" data-line-numbers data-expandable="true"><code class="lang-typescript">import { Cl, ClarityType } from "@stacks/transactions";
+import { describe, expect, it } from "vitest";
 
-      // Load recent messages
-      const messagePromises = [];
-      for (let i = Math.max(1, count - 4); i <= count; i++) {
-        messagePromises.push(
-          fetchCallReadOnlyFunction({
-            contractAddress: CONTRACT_ADDRESS,
-            contractName: CONTRACT_NAME,
-            functionName: "get-message",
-            functionArgs: [uintCV(i)],
-            network,
-            senderAddress: CONTRACT_ADDRESS,
-          })
-        );
-      }
+const accounts = simnet.getAccounts();
+const deployer = accounts.get("deployer")!;
+const address1 = accounts.get("wallet_1")!;
 
-      const messageResults = await Promise.all(messagePromises);
-      const loadedMessages = messageResults
-        .map((result, index) => ({
-          id: count - messageResults.length + index + 1,
-          content: result.value.value,
-        }))
-        .filter((msg) => msg.content !== undefined);
+describe("example tests", () => {
+  let content = "Hello Stacks Devs!"
 
-      setMessages(loadedMessages);
-    } catch (error) {
-      console.error("Error loading messages:", error);
-    }
-  };
+<strong>  it("allows user to add a new message", () => {
+</strong>    let currentBurnBlockHeight = simnet.burnBlockHeight;
 
-  const postMessage = async () => {
-    if (!newMessage.trim()) return;
+    let confirmation = simnet.callPublicFn(
+      "stacks-dev-quickstart-message-board",
+      "add-message",
+      [Cl.stringUtf8(content)],
+      address1
+    )
 
-    setLoading(true);
-    try {
-      const result = await request("stx_callContract", {
-        contract: `${CONTRACT_ADDRESS}.${CONTRACT_NAME}`,
-        functionName: "add-message",
-        functionArgs: [stringUtf8CV(newMessage)],
-        network,
-      });
+    const messageCount = simnet.getDataVar("stacks-dev-quickstart-message-board", "message-count");
+    
+    expect(confirmation.result).toHaveClarityType(ClarityType.ResponseOk);
+    expect(confirmation.result).toBeOk(messageCount);    
+    expect(confirmation.events[1].data.value).toBeTuple({
+      author: Cl.standardPrincipal(address1),
+      event: Cl.stringAscii("[Stacks Dev Quickstart] New Message"),
+      id: messageCount,
+      message: Cl.stringUtf8(content),
+      time: Cl.uint(currentBurnBlockHeight),
+    });
+  });
 
-      console.log("Transaction submitted:", result.txid);
-      setNewMessage("");
+<strong>  it("allows contract owner to withdraw funds", () => {
+</strong>    simnet.callPublicFn(
+      "stacks-dev-quickstart-message-board",
+      "add-message",
+      [Cl.stringUtf8(content)],
+      address1
+    )
+    
+    simnet.mineEmptyBurnBlocks(2);
 
-      // Reload messages after a delay to allow the transaction to process
-      setTimeout(() => {
-        loadMessages();
-        setLoading(false);
-      }, 2000);
-    } catch (error) {
-      console.error("Error posting message:", error);
-      setLoading(false);
-    }
-  };
+    let confirmation = simnet.callPublicFn(
+      "stacks-dev-quickstart-message-board",
+      "withdraw-funds",
+      [],
+      deployer
+    )
+    
+    expect(confirmation.result).toBeOk(Cl.bool(true));
+    expect(confirmation.events[0].event).toBe("ft_transfer_event")
+    expect(confirmation.events[0].data).toMatchObject({
+      amount: '1',
+      asset_identifier: 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token::sbtc-token',
+      recipient: deployer,
+      sender: `${deployer}${".stacks-dev-quickstart-message-board"}`,
+    })
+  })
+});
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>📝 Stacks Message Board</h1>
+</code></pre>
 
-        {!connected ? (
-          <button onClick={connectWallet} className="connect-button">
-            Connect Wallet
-          </button>
-        ) : (
-          <button onClick={disconnectWallet} className="disconnect-button">
-            Disconnect
-          </button>
-        )}
-      </header>
+You'll notice we have two `it` blocks setup to test out 2 different scenarios:
 
-      {connected && (
-        <main className="App-main">
-          <div className="post-message">
-            <h2>Post a Message</h2>
-            <div className="message-input">
-              <input
-                type="text"
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                placeholder="What's on your mind?"
-                maxLength={280}
-                disabled={loading}
-              />
-              <button
-                onClick={postMessage}
-                disabled={loading || !newMessage.trim()}
-              >
-                {loading ? "Posting..." : "Post"}
-              </button>
-            </div>
-          </div>
+1. Allows user to add a new message
+2. Allows owner to withdraw sBTC funds
 
-          <div className="messages">
-            <h2>Recent Messages</h2>
-            <button onClick={loadMessages} className="refresh-button">
-              Refresh
-            </button>
-            {messages.length === 0 ? (
-              <p>No messages yet. Be the first to post!</p>
-            ) : (
-              <ul>
-                {messages.map((message) => (
-                  <li key={message.id}>
-                    <strong>Message #{message.id}:</strong> {message.content}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </main>
-      )}
-    </div>
-  );
-}
+Run the test via `npm run test` to confirm that the two scenarios are functioning as intended.
 
-export default App;
-```
-
-**Add Basic Styling**
-
-Update `src/App.css`:
-
-```css
-.App {
-  max-width: 800px;
-  width: 100%;
-  padding: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
-}
-
-.App-header {
-  text-align: center;
-  margin-bottom: 40px;
-  padding: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  color: white;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.App-header h1 {
-  color: white;
-  margin-bottom: 20px;
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.connect-button,
-.disconnect-button {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 12px 28px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.connect-button:hover,
-.disconnect-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.post-message {
-  margin-bottom: 40px;
-  padding: 20px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-}
-
-.message-input {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.message-input input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.message-input button {
-  background-color: #10b981;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.message-input button:disabled {
-  background-color: #9ca3af;
-  cursor: not-allowed;
-}
-
-.messages {
-  padding: 20px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-}
-
-.refresh-button {
-  background-color: #6b7280;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-
-.messages ul {
-  list-style: none;
-  padding: 0;
-}
-
-.messages li {
-  padding: 10px;
-  border-bottom: 1px solid #e5e7eb;
-  margin-bottom: 10px;
-}
-
-.messages li:last-child {
-  border-bottom: none;
-}
-```
-
-**Update the Contract Address**
-
-1. Go back to the Stacks Explorer and find your deployed contract
-2. Copy the contract address (it looks like `ST1ABC...123.message-board`)
-3. Replace `YOUR_CONTRACT_ADDRESS_HERE` in the App.jsx file with your actual contract address and the contract name with the actual name
-
-**Run Your App**
-
+{% code title="terminal" %}
 ```bash
-npm run dev
-```
+$ npm run test
 
-Visit `http://localhost:5173` and you should see your message board app! Connect your wallet and try posting a message.
+ ✓ tests/message-board.test.ts (2 tests) 46ms
+   ✓ message board tests (2)
+     ✓ allows user to add a new message 26ms
+     ✓ allows contract owner to withdraw funds 19ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  14:05:07
+   Duration  886ms (transform 40ms, setup 42ms, collect 8ms, tests 46ms, environment 699ms, prepare 4ms)
+```
+{% endcode %}
+
+Great! Now that your contract is working as intended, let's deploy the contract to testnet.
 {% endstep %}
 {% endstepper %}
 
-## Congratulations! 🎉
+### Get testnet faucet tokens
 
-You've just built your first Stacks application! Here's what you accomplished:
+{% stepper %}
+{% step %}
+#### Navigate to the Hiro Platform faucet
 
-* ✅ Wrote a Clarity smart contract with data storage and public functions
-* ✅ Deployed the contract to Stacks testnet
-* ✅ Built a React frontend that connects to a Stacks wallet
-* ✅ Integrated your frontend with your smart contract
-* ✅ Posted and read data from the blockchain
+[Hiro](https://www.hiro.so/platform) is a platform to build and scale Bitcoin apps, including custom data streams, onchain alerts, API key management, and more. Create an account and navigate to the top tab of 'Faucet'. On the Faucet page, you can request testnet STX and/or sBTC. We'll be needing both so fund your Leather wallet account with both.
 
-## Next Steps
+<div data-with-frame="true"><figure><img src=".gitbook/assets/sbtc-faucet.png" alt=""><figcaption></figcaption></figure></div>
 
-Now that you have the basics down, here are some ways to continue your Stacks development journey:
+Grab the testnet Stacks address from your Leather wallet and paste it in the recipient field.
 
-### Learn More About Clarity
+{% hint style="warning" %}
+**Important**: Switch to the **Testnet** network in your wallet settings
+{% endhint %}
+{% endstep %}
 
-* [**Clarity Book**](https://book.clarity-lang.org/): Comprehensive guide to Clarity development
-* [**Clarity Reference**](https://docs.stacks.co/docs/clarity): Complete documentation of Clarity functions
-* [**Clarity Crash Course**](https://docs.stacks.co/docs/clarity-crash-course): Quick introduction to Clarity concepts
+{% step %}
+#### Confirm testnet tokens in your wallet
 
-### Explore Advanced Features
+Open up your Leather extension to confirm that you've received testnet STX and sBTC. You might need to enable the viewing of the sBTC token in your wallet under 'Manage tokens'.
 
-* Error Handling: Learn about Clarity's `try!` and `unwrap!` functions
-* Access Control: Implement admin functions and permissions
-* Token Standards: Build fungible (SIP-010) and non-fungible (SIP-009) tokens
+<div data-with-frame="true"><figure><img src=".gitbook/assets/enable-sbtc-view.png" alt=""><figcaption></figcaption></figure></div>
 
-### Development Tools
+With both testnet STX and sBTC, you're ready to deploy your contract and interact with it from a front-end client.
+{% endstep %}
+{% endstepper %}
 
-* [**Clarinet**](https://github.com/stx-labs/clarinet): Local development environment for Clarity
-* [**Hiro Platform**](https://platform.hiro.so/): Hosted development environment
-* [**Stacks Explorer**](https://explorer.stacks.co/): View transactions and contracts on mainnet
+### Deploy your Clarity smart contract
 
-### Community Resources
+{% stepper %}
+{% step %}
+#### Generate testnet deployment plan
 
-* [**Stacks Discord**](https://discord.gg/stacks): Connect with other developers
-* [**Stacks Forum**](https://forum.stacks.org/): Ask questions and share projects
-* [**Stacks GitHub**](https://github.com/stacks-network): Contribute to the ecosystem
+You'll first want to input a mnemonic seed phrase in the `settings/Testnet.toml` file and specify the account derivation path that you want to use for deploying the contract. The account should be the same one you used to request testnet STX to. This will be the account that actually deploys the contract and becomes the contract owner.
+
+<pre data-title="settings/Testnet.toml"><code>[network]
+name = "testnet"
+stacks_node_rpc_address = "https://api.testnet.hiro.so"
+deployment_fee_rate = 10
+
+[accounts.deployer]
+<strong>mnemonic = "&#x3C;YOUR TESTNET MNEMONIC>"
+</strong>derivation = "m/44'/5757'/0'/0/0"
+</code></pre>
+
+Then generate a deployment plan for the testnet network. Deployment plans are YAML files that describe how contracts are published or called.
+
+{% hint style="warning" %}
+For more information on configuring deployment plans, check out the specific guide [here](clarinet/contract-deployment.md).
+{% endhint %}
+
+{% code title="terminal" %}
+```bash
+$ clarinet deployments generate --testnet --medium-cost
+Analyzing contracts...
+Calculating deployment costs...
+Generating deployment plan
+Created file deployments/default.testnet-plan.yaml
+```
+{% endcode %}
+{% endstep %}
+
+{% step %}
+#### Deploy contract to testnet
+
+Once your deployment plan is generated and configured properly, go ahead and deploy the contract to testnet.
+
+{% code title="terminal" %}
+```bash
+clarinet deployments apply --testnet
+```
+{% endcode %}
+
+If the contract was successfully deployed, you should see the below confirmation:
+
+```
+Broadcasting transactions to https://api.testnet.hiro.so
+Publish ST11V9ZN6E6VG72SHMAVM9GDE30VD3VGW5Q1W9WX3.message-board Transaction confirmed
+```
+
+{% hint style="info" %}
+A sample of the contract we just created above is already deployed to testnet [here](https://explorer.hiro.so/txid/ST11V9ZN6E6VG72SHMAVM9GDE30VD3VGW5Q1W9WX3.stacks-dev-quickstart-message-board?chain=testnet). Check out its contract page on the Stacks Explorer and directly interact with its functions.
+{% endhint %}
+{% endstep %}
+{% endstepper %}
+
+### Use stacks.js on the frontend
+
+{% stepper %}
+{% step %}
+#### Connect wallet
+
+Using [stacks.js](stacks.js/overview.md) packages on the frontend will allow our frontend app to authenticate wallets, call our contract functions, and interact with the Stacks network.&#x20;
+
+We'll first want to connect and authenticate our Leather wallet extension with our frontend app. The stacks.js monorepo contains several underlying packages specific to different use cases. The package `@stacks/connect` is the main connectivity package used in Stacks.
+
+In the snippet below, you'll notice we have 3 functions setup to handle `connectWallet` , `disconnectWallet`, and for `getBns` . All 3 functions will be integral in how we want to display the 'Connect' and 'Disconnect' button in the UI.
+
+{% hint style="info" %}
+Retrieving a wallet account's associated [BNS](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/network-fundamentals/bitcoin-name-system) is a staple of Stacks and for web3 identity. Check out [BNSv2](https://www.bnsv2.com/) for more information and for availably public API endpoints you could use.
+{% endhint %}
+
+<pre class="language-typescript" data-title="src/App.tsx" data-expandable="true"><code class="lang-typescript">import { connect, disconnect } from '@stacks/connect'
+import type { GetAddressesResult } from '@stacks/connect/dist/types/methods'
+import { useState } from 'react'
+
+function App() {
+  let [isConnected, setIsConnected] = useState&#x3C;boolean>(false)
+  let [walletInfo, setWalletInfo] = useState&#x3C;any>(null)
+  let [bns, setBns] = useState&#x3C;string>('')
+
+<strong>  async function connectWallet() {
+</strong>    let connectionResponse: GetAddressesResult = await connect()
+    let bnsName = await getBns(connectionResponse.addresses[2].address)
+
+    setIsConnected(true)
+    setWalletInfo(connectionResponse)
+    setBns(bnsName)
+  }
+
+<strong>  async function disconnectWallet() {
+</strong>    disconnect();
+  }
+  
+<strong>  async function getBns(stxAddress: string) {
+</strong>    let response = await fetch(`https://api.bnsv2.com/testnet/names/address/${stxAddress}/valid`)
+    let data = await response.json()
+
+    return data.names[0].full_name
+  }
+  
+  return (
+    &#x3C;>
+      &#x3C;h3>Stacks Dev Quickstart Message Board&#x3C;/h3>
+      {isConnected ? (
+        &#x3C;button onClick={disconnectWallet}>{
+<strong>          bns ? bns : walletInfo.addresses[2].address
+</strong>        }&#x3C;/button>
+      ) : (
+        &#x3C;button onClick={connectWallet}>connect wallet&#x3C;/button>
+      )}
+    &#x3C;/>
+  )
+}
+</code></pre>
+
+The `connect()` method comes with ability to configure how you want the wallet selector modal to appear for your app. You can decide which wallets to have only appear as an option or allow any wallet that follows the SIP-030 standard to appear as an available Stacks wallet.
+
+<div data-with-frame="true"><figure><img src=".gitbook/assets/stacks-connect-modal.png" alt=""><figcaption><p>The Stacks Connect wallet selector modal</p></figcaption></figure></div>
+{% endstep %}
+
+{% step %}
+#### Call \`add-message\` public function
+
+Next, we'll setup a `stx_callContract` to invoke the `add-message` public function of our contract. This function will accept a string content to be passed into our contract call.
+
+<pre class="language-typescript" data-expandable="true"><code class="lang-typescript">import { request } from '@stacks/connect'
+import type { TransactionResult } from '@stacks/connect/dist/types/methods'
+import { Cl, Pc } from '@stacks/transactions'
+import { useState } from 'react'
+
+function App() {
+  // ...
+  let [content, setContent] = useState&#x3C;string>('')
+
+  async function addMessage() {
+    let postCond_1 = Pc.principal('ST11V9ZN6E6VG72SHMAVM9GDE30VD3VGW5Q1W9WX3')
+      .willSendEq(1)
+      .ft('ST1F7QA2MDF17S807EPA36TSS8AMEFY4KA9TVGWXT.sbtc-token', 'sbtc-token')
+  
+<strong>    let result: TransactionResult = await request('stx_callContract', {
+</strong>      contract: 'ST11V9ZN6E6VG72SHMAVM9GDE30VD3VGW5Q1W9WX3.stacks-dev-quickstart-message-board',
+      functionName: 'add-message',
+      functionArgs: [Cl.stringUtf8(content)],
+      network: 'testnet',
+      postConditions: [postCond_1],
+      postConditionMode: 'deny',
+      sponsored: false
+    })
+  
+    setContent('')
+  }
+
+  return (
+    &#x3C;>
+      // ...
+      &#x3C;span className='input-container'>
+        &#x3C;button onClick={addMessage}>add-message&#x3C;/button>
+        &#x3C;input type="text" onChange={e => setContent(e.target.value)}/>
+      &#x3C;/span>
+    &#x3C;/>
+  )
+}
+</code></pre>
+
+You'll notice in the transaction data object that we pass into our string literal method of `stx_callContract`, that we're setting up post-conditions. [Post-Conditions](post-conditions/overview.md) for the frontend are declared to protect user assets. The `Pc` helper from `@stacks/transactions` helps us to declare post-condition statements for any type of asset and equality operator.
+
+Invoking our `addMessage` function will prompt the user's connected wallet to prompt a transaction confirmation popup. This popup will display all of the relevant information of the transaction as well as the post-condition statements that we've declared.
+
+<div data-with-frame="true"><figure><img src=".gitbook/assets/tx-confirmation-popup.png" alt=""><figcaption></figcaption></figure></div>
+{% endstep %}
+
+{% step %}
+#### Call read-only function
+
+As how we've created a few read-only functions in our contract, we'll also want to call these from the frontend to retrieve certain contract data.
+
+Let's setup a `fetchCallReadOnlyFunction` to invoke our contract's `get-message-count-at-block` read-only function. For this, we'll fetch the current Stacks block height from the Hiro API endpoint and pass that returned value into our read-only function.
+
+<pre class="language-typescript" data-expandable="true"><code class="lang-typescript">// ...
+import type { ClarityValue } from '@stacks/connect/dist/types/methods'
+import { Cl, fetchCallReadOnlyFunction } from '@stacks/transactions'
+
+function App() {
+  // ...  
+  async function getMessageCountAtBlock() {
+<strong>    let response = await fetch('https://api.testnet.hiro.so/v2/info', {
+</strong>      headers: {
+        "x-api-key": "&#x3C;HIRO_API_KEY>"
+      }
+    })
+    let data = await response.json()
+    let stacksBlockHeight = data.stacks_tip_height
+
+    let result: ClarityValue = await fetchCallReadOnlyFunction({
+      contractAddress: 'ST11V9ZN6E6VG72SHMAVM9GDE30VD3VGW5Q1W9WX3',
+      contractName: 'stacks-dev-quickstart-message-board',
+      functionName: 'get-message-count-at-block',
+<strong>      functionArgs: [Cl.uint(stacksBlockHeight)],
+</strong>      network: 'testnet',
+      senderAddress: 'ST11V9ZN6E6VG72SHMAVM9GDE30VD3VGW5Q1W9WX3',
+    })
+  }
+  
+  // ...
+</code></pre>
+
+{% hint style="info" %}
+For the complete set of available API endpoints for the Stacks network, check out the [Hiro docs](https://docs.hiro.so/). But first create an API key from the [Hiro Platform](https://platform.hiro.so/) to determine your API rate plan.
+{% endhint %}
+{% endstep %}
+{% endstepper %}
+
+And that's it, you've successfully created an sBTC powered Clarity smart contract which can be interacted with from a frontend app. There's obviously much more you can do to complete this but you've got some of the basics down pat now. Go ahead and finish creating the frontend functions to call on the other contract functions we have.&#x20;
+
+***
+
+### Further Improvements
+
+This is just the beginning. There are many ways we can improve upon this app. Here are some suggestions for you to extend the functionality of this app:
+
+* Deploy to mainnet and share your project with the community
+* Use [Chainhooks](https://docs.hiro.so/en/tools/chainhooks) to index emitted events from the contract
+* Integrate the [`sbtc`](misc.-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/) library so users can directly bridge their BTC to sBTC in-app
+* Utilize SIP-009 NFTs to uniquely identify each message for each author
