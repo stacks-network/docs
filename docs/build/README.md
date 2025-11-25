@@ -828,3 +828,27 @@ This is just the beginning. There are many ways we can improve upon this app. He
 * Use [Chainhooks](https://docs.hiro.so/en/tools/chainhooks) to index emitted events from the contract
 * Integrate the [`sbtc`](misc.-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/) library so users can directly bridge their BTC to sBTC in-app
 * Utilize SIP-009 NFTs to uniquely identify each message for each author
+
+***
+
+### Next Steps
+
+Now that you have the basics down, here are some ways to continue your Stacks development journey:
+
+**Learn More About Clarity**
+
+* [**Clarity Book**](https://book.clarity-lang.org/): Comprehensive guide to Clarity development
+* [**Clarity Reference**](https://docs.stacks.co/docs/clarity): Complete documentation of Clarity functions
+* [**Clarity Crash Course**](https://docs.stacks.co/docs/clarity-crash-course): Quick introduction to Clarity concepts
+
+**Development Tools**
+
+* [**Clarinet**](https://github.com/stx-labs/clarinet): Local development environment for Clarity
+* [**Hiro Platform**](https://platform.hiro.so/): Hosted development environment
+* [**Stacks Explorer**](https://explorer.stacks.co/): View transactions and contracts on mainnet
+
+**Community Resources**
+
+* [**Stacks Discord**](https://discord.gg/stacks): Connect with other developers
+* [**Stacks Forum**](https://forum.stacks.org/): Ask questions and share projects
+* [**Stacks GitHub**](https://github.com/stacks-network): Contribute to the ecosystem

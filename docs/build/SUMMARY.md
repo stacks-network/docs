@@ -13,7 +13,6 @@
   * [Post Conditions with Stacks.js](get-started/build-a-frontend/post-conditions-with-stacks.js.md)
   * [Authentication with Stacks.js](get-started/build-a-frontend/authentication-with-stacks.js.md)
   * [Sending Transactions with Stacks.js](get-started/build-a-frontend/sending-transactions-with-stacks.js.md)
-* [Developer Quickstart (old)](<README (1).md>)
 
 ## What's New?
 
