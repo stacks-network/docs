@@ -678,7 +678,7 @@ You can see a complete step-by-step implementation of this tutorial with commit-
 
 Now that you understand the power of Rendezvous, explore:
 
-- **More examples**: Study other smart contracts in the examples (see [Chapter 8](chapter_8.md))
+- **More examples**: Study other smart contracts in the [Examples Chapter](https://stacks-network.github.io/rendezvous/chapter_8.html) of the [Rendezvous Docs](https://stacks-network.github.io/rendezvous/)
 - **Your own contracts**: Apply Rendezvous to your projects and find bugs before they reach production
 
 ---
