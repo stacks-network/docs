@@ -1,5 +1,7 @@
 # sBTC Integration
 
+<figure><img src="../.gitbook/assets/sbtc-clarinet-testing.jpg" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/expanded-sbtc-testing-support-is-live-in-clarinet-and-the-hiro-platform">Hiro blog</a></p></figcaption></figure>
+
 Clarinet can automatically wire up the official sBTC contracts so you can build and test SIP-010 flows locally.
 
 ## What you'll learn
