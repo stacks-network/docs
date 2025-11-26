@@ -8,7 +8,6 @@
   * [Creating a NFT](get-started/create-tokens/creating-a-nft.md)
   * [Creating a FT](get-started/create-tokens/creating-a-ft.md)
 * [Testing Smart Contracts](get-started/testing-smart-contracts/README.md)
-  * [Fuzz Testing](get-started/testing-smart-contracts/fuzz-testing.md)
 * [Build a Frontend](get-started/build-a-frontend/README.md)
   * [Post Conditions with Stacks.js](get-started/build-a-frontend/post-conditions-with-stacks.js.md)
   * [Authentication with Stacks.js](get-started/build-a-frontend/authentication-with-stacks.js.md)
@@ -45,6 +44,11 @@
 * [Stacks.js Integration](clarinet-integrations/stacks.js-integration.md)
 * [sBTC Integration](clarinet-integrations/sbtc-integration.md)
 * [VSCode Extension](clarinet-integrations/vscode-extension.md)
+
+## Learn Rendezvous
+
+* [Overview](rendezvous/overview.md)
+* [Quickstart](rendezvous/quickstart.md)
 
 ## Learn Stacks.js
 

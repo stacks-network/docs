@@ -1,6 +1,14 @@
-# Fuzz Testing
+---
+description: >-
+  Rendezvous is a fuzzer for Clarity smart contracts that finds vulnerabilities
+  through stateful, randomized testing, all in Clarity.
+---
 
+# Rendezvous Fuzz Testing
+
+{% hint style="danger" %}
 Smart contracts on Stacks are immutable. Bugs are forever. Test early. Test often. Fuzzing finds edge cases that unit tests often miss.
+{% endhint %}
 
 ## What is Fuzz Testing?
 
