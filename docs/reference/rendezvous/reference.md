@@ -1,3 +1,9 @@
+---
+description: >-
+  Complete reference for Rendezvous CLI commands, configuration options, and
+  advanced usage.
+---
+
 # Rendezvous Reference
 
 This reference explains how to use Rendezvous in different situations. By the end, you'll know when and how to use its features effectively.
@@ -92,7 +98,7 @@ The `<type>` argument specifies the testing technique to use. The available opti
 - `test` – Runs property-based tests.
 - `invariant` – Runs invariant tests.
 
-For a deeper understanding of these techniques and when to use each, see [Testing Methodologies](chapter_4.md).
+For a deeper understanding of these techniques and when to use each, see [Testing Methodologies](https://stacks-network.github.io/rendezvous/chapter_4.md) chapter of the [Rendezvous Docs](https://stacks-network.github.io/rendezvous/).
 
 **Running property-based tests**
 
