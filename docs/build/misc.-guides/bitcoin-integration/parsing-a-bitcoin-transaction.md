@@ -51,13 +51,13 @@ Where `txRaw` is a string containing the raw transaction hex. Passing that buffe
 
 {% stepper %}
 {% step %}
-### Get the raw transaction hex
+#### Get the raw transaction hex
 
 Obtain the raw transaction hex from a Bitcoin block explorer API (for example, mempool or blockcypher). This is a single hex string representing the entire transaction.
 {% endstep %}
 
 {% step %}
-### Pass the hex into Clarity-Bitcoin's parser
+#### Pass the hex into Clarity-Bitcoin's parser
 
 Convert the hex string to a buffer and pass it to the `parse-tx` function (via your Stacks/Clarity call). In stacks.js:
 
@@ -65,7 +65,7 @@ Convert the hex string to a buffer and pass it to the `parse-tx` function (via y
 {% endstep %}
 
 {% step %}
-### Use the parsed result
+#### Use the parsed result
 
 `parse-tx` returns an object containing:
 

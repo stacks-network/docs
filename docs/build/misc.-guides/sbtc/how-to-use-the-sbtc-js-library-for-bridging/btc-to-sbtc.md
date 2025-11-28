@@ -34,7 +34,7 @@ This guide assumes you have a front-end bootstrapped with the Stacks Connect lib
 
 {% stepper %}
 {% step %}
-### Building the sBTC deposit address
+#### Building the sBTC deposit address
 
 You're not directly sending bitcoin to the public sBTC Signers' [bitcoin address](https://mempool.space/address/bc1prcs82tvrz70jk8u79uekwdfjhd0qhs2mva6e526arycu7fu25zsqhyztuy), but rather sending to a custom P2TR address where both the user and sBTC Signers have control over. This custom P2TR address is special because it contains tapscripts that specify which parties are able to unlock the UTXOs via a script path spend.
 
@@ -76,7 +76,7 @@ deposit {
 {% endstep %}
 
 {% step %}
-### Sign and broadcast the bitcoin transaction
+#### Sign and broadcast the bitcoin transaction
 
 Invoke the user's Stacks wallet to sign and broadcast the deposit bitcoin transaction.
 
@@ -97,7 +97,7 @@ const result = await request('sendTransfer', {
 {% endstep %}
 
 {% step %}
-### Notify the sBTC Signers
+#### Notify the sBTC Signers
 
 Immediately after the deposit bitcoin transaction is broadcasted, fetch the transaction hex and notify the sBTC Signers via the Emily API.
 
@@ -139,9 +139,9 @@ export type SbtcApiNotifyResponse = {
 {% endstep %}
 
 {% step %}
-### Confirm user's sBTC balance
+#### Confirm user's sBTC balance
 
-The user should expect to receive their newly minted sBTC in about 20 minutes, or within 1 to 2 confirmations on the Bitcoin chain. Poll the user's specified `stacksAddress` to check if they've received sBTC and display that to the user on the front-end.&#x20;
+The user should expect to receive their newly minted sBTC in about 20 minutes, or within 1 to 2 confirmations on the Bitcoin chain. Poll the user's specified `stacksAddress` to check if they've received sBTC and display that to the user on the front-end.
 
 The API client comes with a `fetchSbtcBalance` method that can help with this:
 
@@ -199,7 +199,7 @@ And that's all to it. You've successfully allowed your app to handle incoming BT
 
 ***
 
-### \[Additional Insights]&#x20;
+### \[Additional Insights]
 
 ### What scripts make up the custom P2TR bitcoin address?
 
@@ -283,7 +283,7 @@ The fees specified in `max-fee` of the function `initiate-withdrawal-request` of
 
 If you want to estimate how much one would expect to be charged in fees, you'd have to estimate the size of the transaction (vbytes) and the current network's fee rate. Below are some estimations you could use as a benchmark:
 
-**For deposits**: \~250 vbytes times the prevailing sats per vbyte fee rate \
-**For withdrawals**: \~170 vbtytes times the prevailing sats per vbyte rate&#x20;
+**For deposits**: \~250 vbytes times the prevailing sats per vbyte fee rate\
+**For withdrawals**: \~170 vbtytes times the prevailing sats per vbyte rate
 
 And although many deposits and withdrawals can be combined, these values should be the maximum that a user will be charged regardless of how many other deposits or withdrawals are being serviced in a single transaction by the Signers. Meaning when more than one user's request is included in a sweep transaction on the L1, the users share the fees in proportion to their deposit or withdrawal request's actual weight on the L1.

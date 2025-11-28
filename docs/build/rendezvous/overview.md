@@ -4,7 +4,7 @@ description: >-
   through stateful, randomized testing, all in Clarity.
 ---
 
-# Rendezvous Fuzz Testing
+# Overview
 
 {% hint style="danger" %}
 Smart contracts on Stacks are immutable. Bugs are forever. Test early. Test often. Fuzzing finds edge cases that unit tests often miss.
@@ -103,25 +103,25 @@ Say that you have a counter contract, having functions to `increment` and `decre
 
 {% stepper %}
 {% step %}
-### Same constraints as production
+#### Same constraints as production
 
 Tests operate under the exact same constraints as production code.
 {% endstep %}
 
 {% step %}
-### Better understanding of Clarity
+#### Better understanding of Clarity
 
 Writing tests in Clarity improves your familiarity with the language and its semantics.
 {% endstep %}
 
 {% step %}
-### No need to expose internals
+#### No need to expose internals
 
 You don't have to expose internal functions as public solely for testing.
 {% endstep %}
 
 {% step %}
-### Fewer tools to manage
+#### Fewer tools to manage
 
 Running tests in Clarity reduces the number of external tools and integrations you need to maintain.
 {% endstep %}

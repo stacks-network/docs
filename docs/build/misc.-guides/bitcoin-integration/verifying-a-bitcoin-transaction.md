@@ -31,25 +31,25 @@ A Merkle proof is a compact way to prove that a transaction is included in a blo
 
 {% stepper %}
 {% step %}
-### How transactions are combined into the Merkle root
+#### How transactions are combined into the Merkle root
 
 Transactions in a block are hashed and paired, then the hashes of the pairs are hashed and paired, and so on until a single hash remains — this is called the Merkle root.
 {% endstep %}
 
 {% step %}
-### Merkle root in the block header
+#### Merkle root in the block header
 
 The Merkle root is included in the block header. By providing the hashes that lead from a transaction's hash up to the Merkle root, along with the block header, one can prove that the transaction is included in that block.
 {% endstep %}
 
 {% step %}
-### Merkle proof (Merkle path)
+#### Merkle proof (Merkle path)
 
 The hashes that connect a transaction to the Merkle root are called the Merkle proof or Merkle path. By providing the Merkle proof along with the transaction hash and block header, anyone can verify that the transaction is part of that block.
 {% endstep %}
 
 {% step %}
-### Efficient decentralized verification
+#### Efficient decentralized verification
 
 This allows for efficient decentralized verification of transactions without having to download the entire blockchain. One only needs the transaction hash, Merkle proof, and block header to verify.
 {% endstep %}
