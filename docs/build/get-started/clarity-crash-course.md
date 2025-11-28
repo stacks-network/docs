@@ -1,10 +1,14 @@
 # Clarity Crash Course
 
-## Clarity Crash Course
+## Intro
 
 This is designed for people with some programming experience who are new to Clarity. You don't need prior smart contract development experience, but if you have experience with languages like Solidity, you'll pick this up quickly.
 
 Once you've familiarized yourself with the language, consider the book [Clarity of Mind](https://book.clarity-lang.org/title-page.html) or the course [Clarity Universe](https://clarity-lang.org/universe) to continue your learning.
+
+{% hint style="info" %}
+Clarity is developed as a joint effort of [Hiro PBC](https://hiro.so/), [Algorand](http://algorand.com/), and various other stakeholders, that originally targets the Stacks blockchain.
+{% endhint %}
 
 ### Your First Clarity Smart Contract
 
@@ -16,7 +20,7 @@ The initial example contains comments (two semicolons) and a public function dec
 
 {% stepper %}
 {% step %}
-### Understanding a simple expression
+#### Understanding a simple expression
 
 We can think of some constructs as function calls. For example:
 
@@ -28,13 +32,13 @@ You can refer to the [`define-read-only`](https://docs.stacks.co/docs/write-smar
 {% endstep %}
 
 {% step %}
-### Everything is an expression
+#### Everything is an expression
 
 Clarity treats everything as expressions inside expressions. Function definitions are calls to built-in functions; the function body is an expression. This uniformity helps reasoning about programs in Clarity.
 {% endstep %}
 
 {% step %}
-### Use LISP-like nesting
+#### Use LISP-like nesting
 
 Expect nested parentheses and expressions. You’ll often read code as lists inside lists, where each parentheses-enclosed group represents a call or expression.
 {% endstep %}
@@ -88,9 +92,27 @@ In Clarity, there are public, private, and read-only functions:
 * (add-number 5)\
   Calls the function with parameter 5 (this is how you can invoke the function in an interactive environment like Clarity Tools).
 
+***
+
+### Testing Your Clarity Contract
+
+{% hint style="danger" %}
+Smart contracts are immutable once deployed. Bugs are permanent. Test them thoroughly.
+{% endhint %}
+
+* [Rendezvous Fuzz Testing](../rendezvous/overview.md): Use Rendezvous to hammer your contract with random inputs. It helps expose edge cases and vulnerabilities.
+* [Unit Testing in Clarinet](/broken/pages/xKpkZWiNCO3dwHoA9AeB): Unit testing verifies that individual contract functions behave as expected.&#x20;
+
+***
+
+### Additional Resources
+
 This brief overview should get your feet wet with Clarity. For deeper learning, we recommend:
 
-* The [Clarity Book](https://book.clarity-lang.org/title-page.html)
+* [Clarity Book](https://book.clarity-lang.org/title-page.html)
 * [Clarity Universe](https://clarity-lang.org/universe)
+* \[[Stacks YT](https://youtu.be/hFqH1bJEvnw?si=yQADCvRNNjotuAga)] How Stacks' Language Clarity Enables Next Gen Smart Contracts
+* \[[StacksDevs YT](https://www.youtube.com/watch?v=WZe1DgJ1w-E)] How Stacks’ Smart Contract Language Prevents Exploitation
+* \[[Chainlink YT](https://youtu.be/OAVwd6SNJVU?si=UgfjmisBRbIYv27U)] Marvin Janssen: Clarity Smart Contracts for Stacks&#x20;
 
 If you prefer jumping into reference material and examples, the Clarity docs contain guides and sample contracts to explore.

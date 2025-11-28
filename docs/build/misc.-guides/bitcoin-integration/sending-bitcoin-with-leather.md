@@ -10,7 +10,7 @@ You must be authenticated with the Leather wallet for this to work. See the Auth
 
 {% stepper %}
 {% step %}
-### Prepare the send call
+#### Prepare the send call
 
 Use the `window.btc?.request("sendTransfer", ...)` API to initiate a transaction. Provide the destination address and the amount in satoshis.
 
@@ -34,7 +34,7 @@ const sendBitcoin = async () => {
 {% endstep %}
 
 {% step %}
-### Hook up the UI
+#### Hook up the UI
 
 Call the `sendBitcoin` function from your UI (for example, a button click).
 
@@ -46,11 +46,9 @@ Call the `sendBitcoin` function from your UI (for example, a button click).
 {% endstep %}
 
 {% step %}
-### Next steps
+#### Next steps
 
 * To verify a transaction was mined, use the returned txid and query a Bitcoin explorer or API (for example, mempool.space).
 * See the "Verifying a transaction on the BTC chain" recipe for a more complete flow using the returned transaction ID as a starting point.
-
-
 {% endstep %}
 {% endstepper %}

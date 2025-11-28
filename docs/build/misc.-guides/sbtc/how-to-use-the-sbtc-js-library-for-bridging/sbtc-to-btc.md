@@ -24,7 +24,7 @@ At the moment, the `sbtc` library does not have any direct helper methods, but a
 In this guide you'll touch on some of the steps above but its much less complex than the deposit flow. Putting together the peg-out process from sBTC into BTC will simply involve the following steps:
 
 1. Validating the withdrawal bitcoin address
-2. Contract call to `initiate-withdrawal-request`&#x20;
+2. Contract call to `initiate-withdrawal-request`
 3. Confirm BTC withdrawal
 
 {% hint style="info" %}
@@ -33,7 +33,7 @@ This guide assumes you have a front-end bootstrapped with the Stacks Connect lib
 
 {% stepper %}
 {% step %}
-### Validating the withdrawal bitcoin address
+#### Validating the withdrawal bitcoin address
 
 Validating a Bitcoin address before using it in code is essential to prevent errors and potential financial losses from incorrect or malicious addresses. It ensures compliance with types like P2PKH, P2SH, or P2TR, and adherence to network protocols. Without proper validation, there's a higher risk of failed transactions and security vulnerabilities, jeopardizing user funds and application reliability.
 
@@ -89,7 +89,7 @@ In the next step, the returned `type` and `hashbytes` are to be passed in as a t
 {% endstep %}
 
 {% step %}
-### Contract call to `initiate-withdrawal-request`&#x20;
+#### Contract call to `initiate-withdrawal-request`
 
 The function `initiate-withdrawal-request` of the [`.sbtc-withdrawal`](https://explorer.hiro.so/txid/SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-withdrawal?chain=mainnet) contract locks up `amount` + `max-fee` from the sender's account. When the withdrawal request is accepted, the signers will then send BTC `amount` of sats to the recipient and spend the fee `amount` to bitcoin miners (where fee less than or equal to max-fee). If actual fee is less than `max-fee`, then the difference will be minted back to the user when `accept-withdrawal-request` is invoked by the Signers.
 
@@ -129,9 +129,9 @@ console.log(result)
 {% endstep %}
 
 {% step %}
-### Confirm BTC withdrawal
+#### Confirm BTC withdrawal
 
-The Stacks contract call transaction will be confirmed by the Stacks network within seconds. But the actual BTC withdrawal confirmation is longer than the deposit confirmation. Usually around 6 Bitcoin block confirmations are needed.&#x20;
+The Stacks contract call transaction will be confirmed by the Stacks network within seconds. But the actual BTC withdrawal confirmation is longer than the deposit confirmation. Usually around 6 Bitcoin block confirmations are needed.
 
 After confirming the Stacks transaction, confirm that the user has received the withdrawn BTC back into their designated bitcoin address by polling the Emily API endpoint below:
 
@@ -171,7 +171,7 @@ And that's all to it. You've successfully allowed your app to handle incoming sB
 
 ***
 
-### \[Additional Insights]&#x20;
+### \[Additional Insights]
 
 ### What are the different bitcoin address types?
 
@@ -191,8 +191,8 @@ The current flow right now goes like this:
 4. Usually the sweep transaction is included in the next block, so it's confirmed at block N+7.
 5. The Signers issue the contract call finalizing the withdrawal on Stacks, and Emily finds out about the transaction fulfilling the withdrawal.
 
-Here are some useful notes about the above process: \
-When the Signers tell Emily that the withdrawal has been accepted, they don't tell her about the bitcoin transaction that it's accepted in. This is intentional, because the final transaction fulfilling the withdrawal is not known until it is confirmed. It could also be the case that the Signers attempt to fulfill the withdrawal request but end up never fulfilling it. As in, the Signers could create a transaction fulfilling the withdrawal request, where they broadcast it to the Bitcoin network, but that transaction is never confirmed and never will be. Moreover, this situation is not too unlikely; it can happen when fees spike relative to the user's max fee. The current approach sidesteps all of that UX complexity and prudently informs Emily about the transaction ID after it is known to be confirmed. Moreover, some wallets can tell you if there is a payment made out to you by just examining the Bitcoin mempool.&#x20;
+Here are some useful notes about the above process:\
+When the Signers tell Emily that the withdrawal has been accepted, they don't tell her about the bitcoin transaction that it's accepted in. This is intentional, because the final transaction fulfilling the withdrawal is not known until it is confirmed. It could also be the case that the Signers attempt to fulfill the withdrawal request but end up never fulfilling it. As in, the Signers could create a transaction fulfilling the withdrawal request, where they broadcast it to the Bitcoin network, but that transaction is never confirmed and never will be. Moreover, this situation is not too unlikely; it can happen when fees spike relative to the user's max fee. The current approach sidesteps all of that UX complexity and prudently informs Emily about the transaction ID after it is known to be confirmed. Moreover, some wallets can tell you if there is a payment made out to you by just examining the Bitcoin mempool.
 
 [^1]: ```
     type AddressInfo = {

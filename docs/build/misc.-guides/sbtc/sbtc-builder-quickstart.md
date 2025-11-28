@@ -35,21 +35,21 @@ After you create the project in the Platform, you can clone it locally and work 
 
 {% stepper %}
 {% step %}
-### Create an account
+#### Create an account
 
 Create an account at:\
 https://platform.hiro.so
 {% endstep %}
 
 {% step %}
-### Create or import a project
+#### Create or import a project
 
 * Select a template or import your own project from GitHub. There are several templates available to use as a starting point. Some have only smart contracts and some are full-stack dapp templates. Starting with one of these ensures you are building with best practices.
 * Navigate to your project dashboard
 {% endstep %}
 
 {% step %}
-### Start devnet
+#### Start devnet
 
 * Click the "Devnet" tab
 * Click "Start Devnet"
@@ -57,7 +57,7 @@ https://platform.hiro.so
 {% endstep %}
 
 {% step %}
-### Connect your wallet
+#### Connect your wallet
 
 * Your devnet wallets are automatically funded with STX and sBTC
 * Use the provided wallet addresses within the templates
@@ -71,7 +71,7 @@ If you would prefer to have your devnet running locally instead of in the Platfo
 
 {% stepper %}
 {% step %}
-### Install Clarinet (version 3.x)
+#### Install Clarinet (version 3.x)
 
 ```bash
 brew install clarinet
@@ -79,7 +79,7 @@ brew install clarinet
 {% endstep %}
 
 {% step %}
-### Create a new project
+#### Create a new project
 
 ```bash
 clarinet new my-sbtc-project
@@ -88,7 +88,7 @@ cd my-sbtc-project
 {% endstep %}
 
 {% step %}
-### Add sBTC requirements
+#### Add sBTC requirements
 
 ```bash
 clarinet requirements add SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-deposit
@@ -98,7 +98,7 @@ This automatically includes the sBTC token contract in your Clarinet context so 
 {% endstep %}
 
 {% step %}
-### Start devnet
+#### Start devnet
 
 ```bash
 clarinet devnet start
