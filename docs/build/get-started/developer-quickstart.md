@@ -192,7 +192,7 @@ Let's first define some constants:
 * contract owner to establish control access
 * custom error codes to handle errors in functions
 
-<pre data-title="message-board.clar"><code>;; Simple Message Board Contract
+<pre class="language-clarity" data-title="message-board.clar"><code class="lang-clarity">;; Simple Message Board Contract
 ;; This contract allows users to read and post messages for a fee in sBTC.
 
 ;; Define contract owner
@@ -215,7 +215,7 @@ We'll then need to define some data storage:
 * A map to store key-value pairs of the message id and it's related metadata
 * A data variable to count the total number of messages added
 
-<pre data-title="message-board.clar"><code>;; Define a map to store messages
+<pre class="language-clarity" data-title="message-board.clar"><code class="lang-clarity">;; Define a map to store messages
 ;; Each message has an ID, content, author, and Bitcoin block height timestamp
 <strong>(define-map messages
 </strong>  uint
@@ -236,7 +236,7 @@ We'll then need to define some data storage:
 
 Next up is our main function of the contract. This function allows users to add a new message to the contract for a fee of 1 satoshi in sBTC. Invoking this function will change the state of our contract and update the data storage pieces we setup before.
 
-<pre data-title="message-board.clar" data-expandable="true"><code>;; Public function to add a new message for 1 satoshi of sBTC
+<pre class="language-clarity" data-title="message-board.clar" data-expandable="true"><code class="lang-clarity">;; Public function to add a new message for 1 satoshi of sBTC
 ;; @format-ignore
 <strong>(define-public (add-message (content (string-utf8 280)))
 </strong>  (let ((id (+ (var-get message-count) u1)))
@@ -278,7 +278,7 @@ There's quite a lot going on in this function above that covers in-contract post
 
 <summary>Define public function and params</summary>
 
-```
+```clarity
 (define-public (add-message (content (string-utf8 280)))
     ;; function body
 )
@@ -295,7 +295,7 @@ By using the `define-public` function, we can literally create a public function
 
 <summary>Create let variable binding for next message id</summary>
 
-```
+```clarity
 (let ((id (+ (var-get message-count) u1)))
     ;; body expressions
 )
@@ -309,7 +309,7 @@ Creates a "local" variable that can be used inside the function body only. This 
 
 <summary>Transfer 1 satoshi of sBTC from user to the contract</summary>
 
-<pre><code>(try! (restrict-assets? contract-caller 
+<pre class="language-clarity"><code class="lang-clarity">(try! (restrict-assets? contract-caller 
   ((with-ft 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token "sbtc-token" u1))
   (unwrap!
     ;; Charge 1 satoshi of sBTC from the caller
@@ -331,7 +331,7 @@ The `restrict-assets?` acts as an in-contract post-condition to protect user and
 
 <summary>Store message data in mapping</summary>
 
-```
+```clarity
 (map-set messages id {
   message: content,
   author: contract-caller,
@@ -349,7 +349,7 @@ We'll be using the current Bitcoin block height (via `burn-block-height`) as a w
 
 <summary>Update the message-count variable</summary>
 
-```
+```clarity
 (var-set message-count id)
 ```
 
@@ -361,7 +361,7 @@ Increments the existing data variable of `message-count` with the `let` id varia
 
 <summary>Emit an event to the network</summary>
 
-```
+```clarity
 (print {
   event: "[Stacks Dev Quickstart] New Message",
   message: content,
@@ -386,7 +386,7 @@ Emitting events on Stacks serves several critical purposes:
 
 <summary>Return final response</summary>
 
-<pre><code>;; Return the message ID
+<pre class="language-clarity"><code class="lang-clarity">;; Return the message ID
 <strong>(ok id)
 </strong></code></pre>
 
@@ -418,7 +418,7 @@ Check out the dedicated [sBTC integration](../clarinet-integrations/sbtc-integra
 
 In the beginning of our contract, we defined a constant to store the Stacks principal of the contract owner. Having a contract owner allows for specific access control of the contract that is entitled to the owner. Let's allow the owner to be able to withdraw the accumulated sBTC fees that were sent by anyone who created a new message in the contract.
 
-<pre data-expandable="true"><code>;; Withdraw function for contract owner to withdraw accumulated sBTC
+<pre class="language-clarity" data-expandable="true"><code class="lang-clarity">;; Withdraw function for contract owner to withdraw accumulated sBTC
 (define-public (withdraw-funds)
   (begin
 <strong>    (asserts! (is-eq tx-sender CONTRACT_OWNER) (err u1005))
@@ -448,7 +448,7 @@ The usage of `tx-sender` versus another Clarity keyword, `contract-caller` , is 
 
 We'll round out our contract with important read only functions that will return us needed data from the contract.
 
-<pre data-expandable="true"><code>;; Read-only function to get a message by ID
+<pre class="language-clarity" data-expandable="true"><code class="lang-clarity">;; Read-only function to get a message by ID
 (define-read-only (get-message (id uint))
   (map-get? messages id)
 )

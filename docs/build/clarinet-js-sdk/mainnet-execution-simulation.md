@@ -139,13 +139,13 @@ Solution: Check the contract exists at your block height.
 
 {% stepper %}
 {% step %}
-#### Visit the playground
+**Visit the playground**
 
-Go to: https://play.hiro.so/?remote\_data=true
+Go to: [https://play.hiro.so/?remote\_data=true](https://play.hiro.so/?remote_data=true)
 {% endstep %}
 
 {% step %}
-#### Run a mainnet contract call
+**Run a mainnet contract call**
 
 Example Clarity call:
 
