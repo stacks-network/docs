@@ -37,7 +37,7 @@ We all have different styles of learning. If you've already got a good concept o
 | Learning smart contract development                                                       | [Clarity Crash Course](get-started/clarity-crash-course.md)                      |
 | Preferring a structured, guided course that shows you every step to build full-stack apps | [Stacks Developer Degree](https://learnweb3.io/degrees/stacks-developer-degree/) |
 | Wanting to integrate sBTC in your app                                                     | [sBTC guides](misc.-guides/sbtc/)                                                |
-| Launching a token                                                                         | [Create Tokens](get-started/create-tokens/)                                      |
+| Launching a token                                                                         | [Create Tokens](get-started/create-a-token/)                                     |
 | Interested in security / auditing                                                         | [Stacks Bug Bounties](https://immunefi.com/bug-bounty/stacks/information/)       |
 
 ### Still got questions?

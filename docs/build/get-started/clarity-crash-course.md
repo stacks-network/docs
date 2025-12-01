@@ -234,6 +234,7 @@ This brief overview should get your feet wet with Clarity. For deeper learning, 
 * [Clarity Universe](https://clarity-lang.org/universe)
 * [Clarity Playground](https://play.hiro.so/)
 * [Clarity Camp](https://learn.stacks.org/course/clarity-camp)
+* \[[StacksGov](https://github.com/stacksgov/sips/blob/main/sips/sip-002/sip-002-smart-contract-language.md)] SIP-002 The Clarity Smart Contract Language
 * \[[Hiro Blog](https://www.hiro.so/blog/web3-programming-languages-clarity-vs-solidity)] Web3 Programming Languages: Clarity vs. Solidity
 * \[[Stacks YT](https://youtu.be/hFqH1bJEvnw?si=yQADCvRNNjotuAga)] How Stacks' Language Clarity Enables Next Gen Smart Contracts
 * \[[StacksDevs YT](https://www.youtube.com/watch?v=WZe1DgJ1w-E)] How Stacks’ Smart Contract Language Prevents Exploitation
