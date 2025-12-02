@@ -4,14 +4,15 @@ description: Welcome to the Stacks' builder docs.
 
 # Introduction
 
-{% hint style="info" %}
-**Join us every week during the Stacks DevRel office hours livestream on our** [**@StacksDevs**](https://x.com/StacksDevs) **twitter!**
+<div data-with-frame="true"><figure><img src=".gitbook/assets/build-intro.png" alt=""><figcaption></figcaption></figure></div>
 
-* Discussions on product releases
-* Live demos
-* Community builder spotlights
-* and more!
-{% endhint %}
+<details>
+
+<summary><strong>Join us every week during the Stacks DevRel office hours livestream!</strong></summary>
+
+Follow and enable notifications for [@StacksDevs](https://x.com/StacksDevs) on Twitter to catch alerts for our weekly livestreams. Office Hours are the easiest way to stay in the loop on product drops, live demos, community builder spotlights, and more. Stay up-to-date with release discussions, real-time walkthroughs, and builder highlights that matter.
+
+</details>
 
 {% hint style="success" %}
 Stacks ranks #5 among all crypto ecosystems for new developers in 2025! \[source: Electric Capital]
@@ -21,7 +22,7 @@ Stacks ranks #5 among all crypto ecosystems for new developers in 2025! \[source
 
 Stacks is a fast, low-cost, builder-friendly layer 2 network on Bitcoin. It’s built on Bitcoin, inheriting Bitcoin’s battle-tested security. By jumping into our docs, you’re joining the Stacks builder community that’s bringing a global onchain economy to Bitcoin.
 
-If you're here on this page, hopefully you've already gotten a good sense of _what_ Stacks' purpose is, if not, head to the [Learn](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/) section. Or if you're still on the edge of _why_ you should build with Stacks, head to [Why Build with Stacks](get-started/why-build-with-stacks.md).
+If you're here on this page, hopefully you've already gotten a good sense of _what_ Stacks' purpose is, if not, head to the [Learn](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/) section. Or if you're still on the edge of _why_ you should build with Stacks, head to [Why Build with Stacks](get-started/introduction/why-build-with-stacks.md).
 
 ### Pick your learning path
 
@@ -31,14 +32,14 @@ We all have different styles of learning. If you've already got a good concept o
 
 ### Who should use what
 
-| If you are…                                                                               | First check out...                                                               |
-| ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| Completely new to building with Stacks                                                    | [Developer Quickstart](get-started/developer-quickstart.md)                      |
-| Learning smart contract development                                                       | [Clarity Crash Course](get-started/clarity-crash-course.md)                      |
-| Preferring a structured, guided course that shows you every step to build full-stack apps | [Stacks Developer Degree](https://learnweb3.io/degrees/stacks-developer-degree/) |
-| Wanting to integrate sBTC in your app                                                     | [sBTC guides](misc.-guides/sbtc/)                                                |
-| Launching a token                                                                         | [Create Tokens](get-started/create-a-token/)                                     |
-| Interested in security / auditing                                                         | [Stacks Bug Bounties](https://immunefi.com/bug-bounty/stacks/information/)       |
+| If you are…                                                                               | First check out...                                                                                                |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Completely new to building with Stacks                                                    | [Developer Quickstart](get-started/developer-quickstart.md)                                                       |
+| Learning smart contract development                                                       | [Clarity Crash Course](get-started/clarity-crash-course.md), [Learn Clarinet](/broken/pages/UK5Kgh2MHLoQvfoFVnLr) |
+| Preferring a structured, guided course that shows you every step to build full-stack apps | [Stacks Developer Degree](https://learnweb3.io/degrees/stacks-developer-degree/)                                  |
+| Wanting to integrate sBTC in your app                                                     | [sBTC guides](misc.-guides/sbtc/)                                                                                 |
+| Launching a token                                                                         | [Create Tokens](get-started/create-a-token/)                                                                      |
+| Interested in security / auditing                                                         | [Stacks Bug Bounties](https://immunefi.com/bug-bounty/stacks/information/)                                        |
 
 ### Still got questions?
 

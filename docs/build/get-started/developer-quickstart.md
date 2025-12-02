@@ -837,18 +837,17 @@ Now that you have the basics down, here are some ways to continue your Stacks de
 
 **Learn More About Clarity**
 
+* [**Clarity Crash Course**](https://docs.stacks.co/docs/clarity-crash-course): Quick introduction to Clarity concepts
 * [**Clarity Book**](https://book.clarity-lang.org/): Comprehensive guide to Clarity development
 * [**Clarity Reference**](https://docs.stacks.co/docs/clarity): Complete documentation of Clarity functions
-* [**Clarity Crash Course**](https://docs.stacks.co/docs/clarity-crash-course): Quick introduction to Clarity concepts
 
 **Development Tools**
 
 * [**Clarinet**](https://github.com/stx-labs/clarinet): Local development environment for Clarity
 * [**Hiro Platform**](https://platform.hiro.so/): Hosted development environment
-* [**Stacks Explorer**](https://explorer.stacks.co/): View transactions and contracts on mainnet
+* [**Stacks Explorer**](https://explorer.stacks.co/): View transactions and contracts
 
 **Community Resources**
 
 * [**Stacks Discord**](https://discord.gg/stacks): Connect with other developers
 * [**Stacks Forum**](https://forum.stacks.org/): Ask questions and share projects
-* [**Stacks GitHub**](https://github.com/stacks-network): Contribute to the ecosystem

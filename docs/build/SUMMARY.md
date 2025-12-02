@@ -3,7 +3,7 @@
 ## Get Started
 
 * [Introduction](README.md)
-* [Why Build with Stacks](get-started/why-build-with-stacks.md)
+  * [Why Build with Stacks](get-started/introduction/why-build-with-stacks.md)
 * [Developer Quickstart](get-started/developer-quickstart.md)
 * [Clarity Crash Course](get-started/clarity-crash-course.md)
 * [Create a Token](get-started/create-a-token/README.md)
