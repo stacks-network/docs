@@ -26,18 +26,18 @@
 
 * [Rendezvous Reference](rendezvous/reference.md)
 
-## Stacks.js References
+## Stacks.js
 
-* [@stacks/network](stacks.js-references/stacks-network.md)
-* [@stacks/connect](stacks.js-references/stacks-connect.md)
-* [@stacks/transactions](stacks.js-references/stacks-transactions.md)
-* [sbtc](stacks.js-references/sbtc.md)
+* [@stacks/network](stacks.js/stacks-network.md)
+* [@stacks/connect](stacks.js/stacks-connect.md)
+* [@stacks/transactions](stacks.js/stacks-transactions.md)
+* [sbtc](stacks.js/sbtc.md)
 
-***
+## Infrastructure
 
-* [RPC API](rpc-api.md)
-* [Stacks Node Configuration](stacks-node-configuration.md)
-* [Signer Configuration](signer-configuration.md)
+* [Stacks Node Configuration](infrastructure/stacks-node-configuration.md)
+* [Signer Configuration](infrastructure/signer-configuration.md)
+* [RPC API](infrastructure/rpc-api.md)
 
 ## Nakamoto Upgrade
 

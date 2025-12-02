@@ -24,7 +24,7 @@ The signer configuration file is a TOML file that contains the configuration opt
 
 #### Example Configs
 
-Below are sample configuration files for running a Stacks node and signer provided in one place for convenience. You'll need to modify some of these according to the [How to Run a Signer](broken-reference) doc.
+Below are sample configuration files for running a Stacks node and signer provided in one place for convenience. You'll need to modify some of these according to the [How to Run a Signer](/broken/pages/261edd335c0b98fb052ad55906fbf90832800453) doc.
 
 #### Testnet Signer
 
@@ -63,9 +63,9 @@ stacks_private_key = "$your_stacks_private_key"
 Note that the `block_proposal_token` field has changed to `auth_token` in the Stacks node configuration file.
 {% endhint %}
 
-This is the configuration you'll need to run a Stacks follower node if you are also running a signer. Be sure to change the commented lines to the appropriate data for your setup. If you are not familiar with the process of setting up a signer, be sure to follow the [How to Run a Signer](broken-reference) guide.
+This is the configuration you'll need to run a Stacks follower node if you are also running a signer. Be sure to change the commented lines to the appropriate data for your setup. If you are not familiar with the process of setting up a signer, be sure to follow the [How to Run a Signer](/broken/pages/261edd335c0b98fb052ad55906fbf90832800453) guide.
 
-An overview of all Stacks node configuration options can be found in the [Stacks Node Configuration](broken-reference) doc.
+An overview of all Stacks node configuration options can be found in the [Stacks Node Configuration](/broken/pages/79a6d21c88b879210b9f2036268ace38ae6a02af) doc.
 
 Additions necessary specifically to run a signer are the `[connection_options]` and `[[events_observer]]` sections and the `stacker = true` line. There are also a few comments detailing other lines that need to change.
 
