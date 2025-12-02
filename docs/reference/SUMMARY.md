@@ -2,6 +2,12 @@
 
 * [Developer Stack](README.md)
 
+## Node Operations
+
+* [Stacks Node Configuration](node-operations/stacks-node-configuration.md)
+* [Signer Configuration](node-operations/signer-configuration.md)
+* [RPC API](node-operations/rpc-api.md)
+
 ## Clarity
 
 * [Functions](clarity/functions.md)
@@ -32,12 +38,6 @@
 * [@stacks/connect](stacks.js/stacks-connect.md)
 * [@stacks/transactions](stacks.js/stacks-transactions.md)
 * [sbtc](stacks.js/sbtc.md)
-
-## Infrastructure
-
-* [Stacks Node Configuration](infrastructure/stacks-node-configuration.md)
-* [Signer Configuration](infrastructure/signer-configuration.md)
-* [RPC API](infrastructure/rpc-api.md)
 
 ## Nakamoto Upgrade
 
