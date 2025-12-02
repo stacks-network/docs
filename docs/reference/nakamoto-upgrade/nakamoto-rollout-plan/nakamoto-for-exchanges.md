@@ -6,7 +6,7 @@
 
 The Nakamoto release brings many new capabilities and improvements to the Stacks blockchain by focusing on a set of core advancements: improving transaction speed, enhancing finality guarantees for transactions, mitigating Bitcoin miner MEV (miner extractable value) opportunities that affect PoX, and boosting robustness against chain reorganizations. This strategic upgrade aims to solidify trust in the Stacks network, offer greater alignment with Bitcoin's immutable nature, and foster an environment ripe for advanced Decentralized Finance (DeFi) applications. The expected outcome is a versatile, scalable, and secure platform that closely integrates with, yet distinctly enhances, the Bitcoin ecosystem.
 
-Learn more: [Broken link](broken-reference "mention")
+Learn more: [Broken link](/broken/pages/fac008cad2409afc8de86501f205ee51e148b5af "mention")
 
 </details>
 
