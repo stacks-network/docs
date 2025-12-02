@@ -1,12 +1,14 @@
-# Implementing Post Conditions
+---
+description: Learn how to add post-conditions to protect your Stacks transactions.
+---
 
-Learn how to add post-conditions to protect your Stacks transactions.
+# Implementing Post-Conditions
 
 Post-conditions are a powerful security feature in Stacks that protect users from unexpected transaction outcomes. This tutorial will walk you through implementing post-conditions in your applications to ensure transactions behave exactly as users expect.
 
 ## What you'll learn
 
-* Construct post-conditions using the Pc helper API
+* Construct post-conditions using the `Pc` helper API
 * Add post-conditions to different transaction types
 * Configure post-condition modes for transaction security
 * Implement post-conditions for STX, fungible tokens, and NFTs
@@ -224,4 +226,3 @@ const tx = await makeContractCall({
   postConditionMode: PostConditionMode.Deny,
 });
 ```
-

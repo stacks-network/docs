@@ -76,3 +76,9 @@ Need help building with Stacks.js?
 
 Reach out to us on the **#stacks-js** channel on [Discord](https://stacks.chat/) under the Developer Tools section.
 {% endhint %}
+
+***
+
+### Additional Resources
+
+* \[[stacks.js.org](https://stacks.js.org/)] For a complete list of definitions on types, methods, classes, & etc.
