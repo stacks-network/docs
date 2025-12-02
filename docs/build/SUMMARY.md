@@ -11,9 +11,9 @@
   * [Non-Fungible Tokens](get-started/create-a-token/non-fungible-tokens.md)
   * [Semi-Fungible Tokens](get-started/create-a-token/semi-fungible-tokens.md)
 * [Build a Frontend](get-started/build-a-frontend/README.md)
-  * [Post Conditions with Stacks.js](get-started/build-a-frontend/post-conditions-with-stacks.js.md)
-  * [Authentication with Stacks.js](get-started/build-a-frontend/authentication-with-stacks.js.md)
-  * [Sending Transactions with Stacks.js](get-started/build-a-frontend/sending-transactions-with-stacks.js.md)
+  * [Authentication](get-started/build-a-frontend/authentication.md)
+  * [Post-Conditions](get-started/build-a-frontend/post-conditions.md)
+  * [Sending Transactions](get-started/build-a-frontend/sending-transactions.md)
 
 ## What's New?
 
@@ -78,7 +78,7 @@
 ## Post-Conditions
 
 * [Overview](post-conditions/overview.md)
-* [Implementing Post Conditions](post-conditions/implementing-post-conditions.md)
+* [Implementing Post-Conditions](post-conditions/implementation.md)
 
 ## Stacks.js Integrations
 
