@@ -1,5 +1,7 @@
 # Table of contents
 
+* [Stacks Brand Kit](https://stacks.co/brand)
+
 ## Bitcoin Theses & Reports
 
 * [Bitcoin Theses](README.md)
