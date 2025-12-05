@@ -151,6 +151,9 @@ npm install @stacks/rendezvous
 
 This will add Rendezvous to your project's `node_modules` and update your `package.json`.
 
-## Rendezvous Docs
+***
 
-See full docs at: [https://stacks-network.github.io/rendezvous](https://stacks-network.github.io/rendezvous/)
+### Additional Resources
+
+* \[[Github](https://stacks-network.github.io/rendezvous/)] Rendezvous repo
+* \[[Youtube @jofawole](https://youtu.be/deWQxCEy9_M?si=bBpUoKGpJvFLFu_9)] How to Use Rendezvous to Fuzz Clarity Contracts
