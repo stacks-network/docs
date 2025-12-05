@@ -80,3 +80,4 @@ Understanding these concepts is crucial for grasping the overall architecture an
 * \[[sBTC Whitepaper](https://stacks-network.github.io/stacks/sbtc.pdf)] The official sBTC whitepaper
 * \[[Stacks Foundation](https://stacks.org/sbtc-on-mainnet)] Official sBTC launch announcement (December 2024)
 * \[[Bitcoin Writes](https://www.bitcoinwrites.com/)] Weekly sBTC Updates (last update: August 2024)
+* \[[Hiro Blog](https://www.hiro.so/blog/who-are-the-sbtc-signers-breaking-down-sip-028)] Who Are the sBTC Signers: Breaking Down SIP-028

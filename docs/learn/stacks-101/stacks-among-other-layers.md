@@ -1,6 +1,6 @@
 # Stacks Among Other Layers
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption><p>image source: <a href="https://www.hiro.so/blog/stacks-vs-solana-vs-polygon-how-do-they-compare-from-a-developer-perspective">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/bitcoin-layer-2s.jpg" alt=""><figcaption></figcaption></figure>
 
 Recently, we have seen a flurry of new "Bitcoin layers" popping up across the ecosystem as the market has finally woken up to the idea.
 
@@ -79,3 +79,10 @@ This image broadly means developers can build sovereign rollups on Bitcoin today
 One important nuance here is the cost required to effectively run a rollup on Bitcoin as discussed in the Galaxy research report linked in the first section.
 
 Now we have a solid grasp of how Stacks works and how it fits in among other layers. Let's begin to dig into some of the technical implementation details and see how Stacks actually works.
+
+***
+
+Additional Resources
+
+* \[[Hiro Blog](https://www.hiro.so/blog/building-on-bitcoin-project-comparison)] Building on Bitcoin: a Comparison of Bitcoin Projects
+* \[[Hiro Books](https://www.hiro.so/books/a-beginners-guide-to-bitcoin-layers)] A Beginner's Guide to Bitcoin Layers

@@ -49,3 +49,4 @@ While the sBTC model leverages decentralization to minimize trust, other wrapped
 #### Resources
 
 * \[[Stacks Roadmap](https://stacksroadmap.com/#sbtc)] Upcoming technical advancements and security designs for sBTC
+* \[[Hiro Blog](https://www.hiro.so/blog/sbtc-vs-wbtc-a-comparison-of-tokenized-bitcoin)] sBTC vs WBTC: A Comparison of Tokenized Bitcoin&#x20;
