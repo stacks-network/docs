@@ -12,6 +12,12 @@ Check out the official blog announcement of Dual Stacking [here](https://www.sta
 
 Dual Stacking enables Bitcoin holders to earn Bitcoin-denominated rewards through Stacks' [Proof of Transfer](../stacks-101/proof-of-transfer.md) consensus. Rewards are paid in [sBTC](../sbtc/).\
 \
-Dual Stacking is the only way to earn Bitcoin rewards while stacking Bitcoin. Other blockchains pay rewards in their native token (ETH, SOL, etc.). They have no mechanism to generate real Bitcoin. **Stacks'  Proof of Transfer (PoX)** is the architectural difference that makes Bitcoin earning Bitcoin rewards possible.\
+Dual Stacking is the only way to earn Bitcoin rewards while stacking Bitcoin. Other blockchains pay rewards in their native token (ETH, SOL, etc.). They have no mechanism to generate real Bitcoin. **Stacks' Proof of Transfer (PoX)** is the architectural difference that makes Bitcoin earning Bitcoin rewards possible.\
 \
 As more BTC enters the Stacks network, rates will adjust. But the multiplier effect remains: pairing STX with your BTC and deploying sBTC into DeFi always amplify your returns.
+
+***
+
+Additional Resources
+
+* \[[Stacks YT](https://youtu.be/bfWPr_qMQmc?si=A9R2OKRHZ-N6Uwhe)] Dual Stacking Explained: Earn Bitcoin on Your Bitcoin

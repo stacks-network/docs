@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Start Here](README.md)
+* [Introduction](README.md)
 * [Stacks 101](stacks-101/README.md)
   * [What Is Stacks?](stacks-101/what-is-stacks.md)
   * [The Bitcoin Connection](stacks-101/bitcoin-connection.md)
