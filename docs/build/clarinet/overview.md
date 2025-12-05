@@ -72,7 +72,8 @@ For a deeper understanding of when to use these networks, check out the dedicate
 
 ### Additional Resources
 
-* \[[Hiro Blog](https://www.hiro.so/blog/clarinet-roadmap-looking-to-the-future)] The Humble Beginning of Clarinet&#x20;
+* \[[Hiro Blog](https://www.hiro.so/blog/clarinet-roadmap-looking-to-the-future)] The Humble Beginning of Clarinet
+* \[[zed.dev](https://zed.dev/extensions?query=clarity)] Zed extension for Clarity
 
 ***
 
