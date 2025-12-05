@@ -30,7 +30,3 @@
   * [July 2025](press-and-top-links/2025/july-2025.md)
   * [August 2025](press-and-top-links/2025/august-2025.md)
   * [September 2025](press-and-top-links/2025/september-2025.md)
-
-## Stacks Brand
-
-* [Stacks Brand](stacks-brand/stacks-brand.md)
