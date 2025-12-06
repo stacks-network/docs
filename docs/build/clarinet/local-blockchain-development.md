@@ -205,6 +205,78 @@ epoch_2_4 = 0     # Pox-4 from genesis
 epoch_3_0 = 101   # Nakamoto activation at block 101
 ```
 
+### Custom node/signer images
+
+Clarinet runs Devnet with specific tags for each Docker image. For example, Clarinet v3.10.0 uses the following images:
+
+* stacks node: `blockstack/stacks-blockchain:3.3.0.0.1-alpine`
+* stacks signer: `blockstack/stacks-signer:3.3.0.0.1.0-alpine`
+
+We recommend Devnet users let Clarinet handle it and use the default version. This ensures that your Clarinet version can handle and properly configure the images it uses.
+
+In some cases, you may need to use other images. Clarinet lets you do this by configuring it in `settings/Devnet.toml`. For example, if you don't want to run the `alpine` images:
+
+```toml
+# setting/Devnet.toml
+[network]
+name = "devnet"
+deployment_fee_rate = 10
+
+# ...
+
+[devnet]
+stacks_node_image_url = "blockstack/stacks-blockchain:3.3.0.0.1"
+stacks_signer_image_url = "blockstack/stacks-signer:3.3.0.0.1.0"
+```
+
+<details>
+
+<summary>Build an image locally and use it</summary>
+
+* Clone the stacks-core repository (or a fork) and checkout the desired branch.
+
+```
+git clone git@github.com:stacks-network/stacks-core.git
+cd stacks-core
+git checkout develop
+```
+
+* Build the Docker image `stacks-node:local`:
+
+```
+docker build -t stacks-node:local -f ./Dockerfile ./
+```
+
+* Clarinet needs the image to be available in a registry. You can host a local one and push the image to it.
+
+```
+docker run -d -e REGISTRY_HTTP_ADDR=0.0.0.0:5001 -p 5001:5001 --name registry registry:2
+docker tag stacks-node:local localhost:5001/stacks-node:local
+docker push localhost:5001/stacks-node:local
+```
+
+* Set the image to be used:
+
+```
+# setting/Devnet.toml
+[network]
+name = "devnet"
+deployment_fee_rate = 10
+
+# ...
+
+[devnet]
+stacks_node_image_url = "localhost:5001/stacks-node:local"
+```
+
+* Then start Devnet:
+
+```
+clarinet devnet sta
+```
+
+</details>
+
 ### Package deployment
 
 Create reusable devnet configurations:
@@ -401,3 +473,7 @@ clarinet deployments apply --devnet
 </details>
 
 ***
+
+### Additional Resources
+
+* \[[Hiro Blog](https://www.hiro.so/blog/5-ways-to-interact-with-devnet-in-the-hiro-platform)] 5 Ways to Interact With Devnet in the Hiro Platform&#x20;

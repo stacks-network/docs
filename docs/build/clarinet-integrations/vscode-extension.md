@@ -1,5 +1,9 @@
 # VSCode Extension
 
+{% hint style="info" %}
+The [VSCode extension](https://marketplace.visualstudio.com/items?itemName=StacksLabs.clarity-stacks) for Clarity is now published under the Stacks Labs organization.
+{% endhint %}
+
 ## Features
 
 ### Smart auto-completion
@@ -76,25 +80,25 @@ When implementing traits (like SIP-009 NFTs or SIP-010 tokens), the extension ve
 
 {% stepper %}
 {% step %}
-#### Set breakpoints
+**Set breakpoints**
 
 Set breakpoints by clicking line numbers in the editor.
 {% endstep %}
 
 {% step %}
-#### Start debugging
+**Start debugging**
 
 Press `F5` or use Run → Start Debugging to begin a debugging session.
 {% endstep %}
 
 {% step %}
-#### Step through code
+**Step through code**
 
 Step through code line-by-line to follow execution.
 {% endstep %}
 
 {% step %}
-#### Inspect state
+**Inspect state**
 
 Inspect variables and stack state while paused at breakpoints.
 {% endstep %}
@@ -114,3 +118,9 @@ Visual debugging requires VS Code Desktop and Clarinet installed locally.
 | Documentation         | External lookup | Inline hover docs       |
 | Debugging             | Console only    | Visual debugger         |
 | Cross-file navigation | Manual          | Jump to definition      |
+
+***
+
+### Additional Resources
+
+* \[[zed.dev](https://zed.dev/extensions?query=clarity)] Zed extension for Clarity
