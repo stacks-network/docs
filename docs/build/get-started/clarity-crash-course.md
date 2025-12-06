@@ -193,7 +193,7 @@ Great! You just interacted with your first Clarity smart contract. Hopefully thi
 
 ### Read Access into Bitcoin
 
-Smart contracts on the Stacks layer can read Bitcoin state and can be triggered by standard Bitcoin transactions. This is because Stacks nodes also run Bitcoin nodes as part of consensus, and they read and index Bitcoin state.
+Clarity smart contracts on the Stacks layer can also read Bitcoin state and can be triggered by standard Bitcoin transactions. This is because Stacks nodes also run Bitcoin nodes as part of consensus, and they read and index Bitcoin state.
 
 Reading Bitcoin state in Clarity is made by possible by the built-in function: `get-burn-block-info?`  and the keyword `burn-block-height` .
 
@@ -210,6 +210,74 @@ Reading Bitcoin state in Clarity is made by possible by the built-in function: `
 (get-burn-block-info? header-hash u677050)
 ;; Returns (some 0xe671...)
 ```
+
+<details>
+
+<summary>Verifying bitcoin transactions in Clarity</summary>
+
+One of the most popular Clarity contracts that leverages read access into Bitcoin is the `clarity-bitcoin-lib` contract, maintained by Friedger. This contract intakes data of a bitcoin transaction and will verify that it was indeed mined in a Bitcoin block.
+
+For more info: [https://github.com/friedger/clarity-bitcoin](https://github.com/friedger/clarity-bitcoin)
+
+</details>
+
+***
+
+### Flexible and secure modularization
+
+Many DAOs of the major Stacks apps implement a familiar contract design and architecture. This familiarity is inspired by the [ExecutorDAO](https://github.com/MarvinJanssen/executor-dao) framework, written by Marvin Janssen. This ExecutorDAO framework leverages the flexibility of having modularization in your smart contracts by compartmentalizing duties.
+
+The core tenets of the ExecutorDAO framework that make this possible are:
+
+1. Proposals are smart contracts.
+2. The core executes, the extensions give form.
+3. Ownership control happens via sending context.
+
+{% tabs %}
+{% tab title="Main DAO contract" %}
+The main DAO contract acts as the core contract where its sole purpose is to execute proposals and to keep a list of authorised extensions.
+
+{% code title="dao.clar" expandable="true" %}
+```clarity
+(use-trait proposal-trait .proposal-trait.proposal-trait)
+(use-trait extension-trait .extension-trait.extension-trait)
+
+;; ...
+
+;; --- Authorisation check
+(define-private (is-self-or-extension)
+	(ok (asserts! (or (is-eq tx-sender (as-contract tx-sender)) (is-extension contract-caller)) err-unauthorised))
+)
+
+;; ...
+
+;; --- Admin function to execute proposals
+(define-public (execute (proposal <proposal-trait>) (sender principal))
+	(begin
+		(try! (is-self-or-extension))
+		(asserts! (map-insert executed-proposals (contract-of proposal) block-height) err-already-executed)
+		(print {event: "execute", proposal: proposal})
+		(as-contract (contract-call? proposal execute sender))
+	)
+)
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="A proposal extension contract" %}
+This proposal contract updates the whitelist of an example `.nft-escrow` contract that is owned by the main DAO contract. This proposal contract implements the `proposal-trait` and is passed into the main DAO contract's `execute` function for final approved execution.
+
+{% code title="proposal.clar" %}
+```clarity
+(impl-trait .proposal-trait.proposal-trait)
+
+(define-public (execute (sender principal))
+	(contract-call? .nft-escrow set-whitelisted .some-nft true)
+)
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 ***
 
