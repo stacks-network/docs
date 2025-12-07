@@ -826,7 +826,7 @@ This is just the beginning. There are many ways we can improve upon this app. He
 
 * Deploy to mainnet and share your project with the community
 * Use [Chainhooks](https://docs.hiro.so/en/tools/chainhooks) to index emitted events from the contract
-* Integrate the [`sbtc`](../misc.-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/) library so users can directly bridge their BTC to sBTC in-app
+* Integrate the [`sbtc`](../more-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/) library so users can directly bridge their BTC to sBTC in-app
 * Utilize SIP-009 NFTs to uniquely identify each message for each author
 
 ***
