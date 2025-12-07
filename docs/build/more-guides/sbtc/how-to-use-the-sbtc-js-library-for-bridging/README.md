@@ -11,7 +11,7 @@ Currently, the official [sBTC Bridge app](https://sbtc.stacks.co/) provides user
 The [`sbtc`](https://www.npmjs.com/package/sbtc) npm library was built to abstract away the complexities of the bridging process of sBTC.
 
 {% hint style="info" %}
-Check out the `sbtc` reference [section](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/stacks.js-references/sbtc) for definitions, configurations, and more examples.
+Check out the `sbtc` reference [section](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/stacks.js/sbtc) for definitions, configurations, and more examples.
 {% endhint %}
 
 #### **Architecture**

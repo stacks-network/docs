@@ -41,7 +41,6 @@
 
 ## Clarinet Integrations
 
-* [Pyth Oracle Integration](clarinet-integrations/pyth-oracle-integration.md)
 * [Chainhook Integration](clarinet-integrations/chainhook-integration.md)
 * [Stacks.js Integration](clarinet-integrations/stacks.js-integration.md)
 * [sBTC Integration](clarinet-integrations/sbtc-integration.md)
@@ -82,20 +81,20 @@
 
 ## Stacks.js Integrations
 
-* [Pyth Oracle Integration](stacks.js-integrations/pyth-oracle-integration.md)
 * [React Native Integration](stacks.js-integrations/react-native-integration.md)
 
-## Misc. Guides
+## More Guides
 
-* [sBTC](misc.-guides/sbtc/README.md)
-  * [sBTC Builder Quickstart](misc.-guides/sbtc/sbtc-builder-quickstart.md)
-  * [How to Use the sBTC JS Library for Bridging](misc.-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/README.md)
-    * [Depositing: Pegging BTC into sBTC](misc.-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/btc-to-sbtc.md)
-    * [Withdrawing: Pegging sBTC into BTC](misc.-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/sbtc-to-btc.md)
-* [Price Oracles](misc.-guides/price-oracles.md)
-* [Build a Borrowing & Lending Protocol](misc.-guides/build-a-borrowing-and-lending-protocol.md)
-* [Bitcoin Integration](misc.-guides/bitcoin-integration/README.md)
-  * [Sending Bitcoin with Leather](misc.-guides/bitcoin-integration/sending-bitcoin-with-leather.md)
-  * [Verifying a Bitcoin Transaction](misc.-guides/bitcoin-integration/verifying-a-bitcoin-transaction.md)
-  * [Parsing a Bitcoin Transaction](misc.-guides/bitcoin-integration/parsing-a-bitcoin-transaction.md)
-* [Community Tutorials](misc.-guides/community-tutorials.md)
+* [sBTC](more-guides/sbtc/README.md)
+  * [sBTC Builder Quickstart](more-guides/sbtc/sbtc-builder-quickstart.md)
+  * [How to Use the sBTC JS Library for Bridging](more-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/README.md)
+    * [Depositing: Pegging BTC into sBTC](more-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/btc-to-sbtc.md)
+    * [Withdrawing: Pegging sBTC into BTC](more-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/sbtc-to-btc.md)
+* [Price Oracles](more-guides/price-oracles/README.md)
+  * [Using Pyth with Stacks](more-guides/price-oracles/pyth.md)
+* [Build a Borrowing & Lending Protocol](more-guides/build-a-borrowing-and-lending-protocol.md)
+* [Bitcoin Integration](more-guides/bitcoin-integration/README.md)
+  * [Sending Bitcoin with Leather](more-guides/bitcoin-integration/sending-bitcoin-with-leather.md)
+  * [Verifying a Bitcoin Transaction](more-guides/bitcoin-integration/verifying-a-bitcoin-transaction.md)
+  * [Parsing a Bitcoin Transaction](more-guides/bitcoin-integration/parsing-a-bitcoin-transaction.md)
+* [Community Tutorials](more-guides/community-tutorials.md)
