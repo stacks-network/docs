@@ -104,6 +104,22 @@ const stacksAddress = getAddressFromPrivateKey(
 
 Finally, you can generate new account using a Stacks-enabled wallet like [Leather](https://leather.io/), [Xverse](https://www.xverse.app/), or [Asigna](https://asigna.io/).
 
+### Handling different formats
+
+It's common for new Stacks developers to get tripped up on the different ways when specifying Stacks' principal (aka addresses) in their development.
+
+Here's a breakdown of dealing with principals in 3 different use cases.
+
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/handling-principal-formats.jpeg" alt=""><figcaption></figcaption></figure></div>
+
+### The Stacks and Bitcoin address connection
+
+What makes Stacks beautifully connected to its L1 settlement layer, Bitcoin, is their many shared aspects. One being how both utilize a similar address generation scheme based on the P2PKH format, which allows for both a Bitcoin & Stacks address to share the same public key hash. If you base58check decode a legacy bitcoin address, you can reveal the public key hash, which can then be used to generate its respective c32check encoded Stacks address.
+
+Programmatically, you could also use a method called `b58ToC32`, from the `c32check` library, which can abstract the conversion for you.
+
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/bitcoin-stacks-address-connection.jpeg" alt=""><figcaption></figcaption></figure></div>
+
 ***
 
 ### Additional Resources
