@@ -205,6 +205,8 @@ And that's all to it. You've successfully allowed your app to handle incoming BT
 
 As mentioned above, you're not directly sending bitcoin to the public sBTC Signers' [bitcoin address](https://mempool.space/address/bc1prcs82tvrz70jk8u79uekwdfjhd0qhs2mva6e526arycu7fu25zsqhyztuy), but rather sending to a custom P2TR address where both the user and sBTC Signers have control over. Besides the default key path spend, this custom P2TR address also contains 2 sets of scripts:
 
+<div data-with-frame="true"><figure><img src="../../../.gitbook/assets/custom-taproot-deposit-address.jpeg" alt=""><figcaption></figcaption></figure></div>
+
 #### Deposit script
 
 The deposit script is used by the sBTC Signers to "sweep" the deposited UTXO into their aggregate bitcoin address used to hold the entire balance of deposited bitcoin. So in a way they are consolidating all UTXOs into one single UTXO.
