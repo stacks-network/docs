@@ -4,7 +4,7 @@ description: Leverage Stacks.js with Turnkey's embedded wallet solutions
 
 # Signing with Turnkey
 
-[Turnkey’s embedded wallet](https://docs.turnkey.com/embedded-wallets/overview) makes STX & sBTC transactions seamless, secure, and user-friendly, letting your users experience Bitcoin-native apps without friction.
+[Turnkey’s embedded wallet](https://docs.turnkey.com/embedded-wallets/overview) makes STX & sBTC transactions seamless, secure, and user-friendly, letting your users experience Bitcoin-native apps without friction. Using external embedded wallet/signing solutions with Stacks comes down to properly passing in a hashed transaction payload to a provided signing method. We'll show you how to derive that hashed transaction payload in this guide.
 
 {% hint style="info" %}
 Currently, Turnkey does not natively support Stacks, but can be simply integrated together using the example below. Work is in progress for native Stacks support in Turnkey.
@@ -33,7 +33,6 @@ Simplified step-by-step process of what this example script is showing:
 Signing Stacks transactions works with either Turnkey's Server or React SDKs
 {% endhint %}
 
-{% code expandable="true" %}
 ```typescript
 import { Turnkey as TurnkeyServerSDK } from "@turnkey/sdk-server";
 import {
@@ -145,7 +144,6 @@ const handleBroadcastTx = async () => {
   await handleBroadcastTx();
 })();
 ```
-{% endcode %}
 
 ### **Components of a ECDSA signature**
 
