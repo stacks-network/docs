@@ -14,6 +14,19 @@ Currently, Turnkey does not natively support Stacks, but can be simply integrate
 
 Turnkey supports Stacks address derivation with `ADDRESS_FORMAT_COMPRESSED` and `ADDRESS_FORMAT_UNCOMPRESSED` address formats. Stacks addresses are derived from the secp256k1 curve, which Turnkey fully supports.
 
+{% hint style="info" %}
+Use a secp256k1 generated public key to derive Stacks addresses and sign Stacks transactions. In most cases with Turnkey, using an Ethereum account's public key would satisfy this.
+{% endhint %}
+
+```typescript
+import { publicKeyToAddress } from "@stacks/transactions"
+
+const stxAddress = publicKeyToAddress(matchingAccount?.publicKey!)
+
+// STX address: SP1Z6MYME47PW04D1J15K368XZE02VWQ2A5SRC4HV
+// publicKey: 03169b8f8bbad2cc6435893c5f255cd5201d272befa8556c82136bf9b36aa0d778
+```
+
 ### Transaction construction and signing
 
 A sample script that demonstrates how to sign a Stacks transaction with Turnkey. Stacks uses the secp256k1 cryptographic curve for transaction signing, but there some specific data formatting that takes place for the signing process.
