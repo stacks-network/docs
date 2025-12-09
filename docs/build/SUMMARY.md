@@ -19,7 +19,7 @@
 
 * [✅ Clarity 4 is now LIVE!](whats-new/clarity-4-is-now-live.md)
 
-## Learn Clarinet
+## Learn Clarinet <a href="#clarinet" id="clarinet"></a>
 
 * [Overview](clarinet/overview.md)
 * [Quickstart](clarinet/quickstart.md)
@@ -31,6 +31,11 @@
 * [Local Blockchain Development](clarinet/local-blockchain-development.md)
 * [Contract Deployment](clarinet/contract-deployment.md)
 * [FAQ](clarinet/faq.md)
+* [Integrations](clarinet/integrations/README.md)
+  * [Clarity VSCode Extension](clarinet/integrations/clarity-vscode-extension.md)
+  * [Chainhook Integration](clarinet/integrations/chainhook.md)
+  * [Stacks.js Integration](clarinet/integrations/stacks.js.md)
+  * [sBTC Integration](clarinet/integrations/sbtc.md)
 
 ## Clarinet JS SDK
 
@@ -39,19 +44,12 @@
 * [Integration Testing](clarinet-js-sdk/integration-testing.md)
 * [Mainnet Execution Simulation](clarinet-js-sdk/mainnet-execution-simulation.md)
 
-## Clarinet Integrations
-
-* [Chainhook Integration](clarinet-integrations/chainhook-integration.md)
-* [Stacks.js Integration](clarinet-integrations/stacks.js-integration.md)
-* [sBTC Integration](clarinet-integrations/sbtc-integration.md)
-* [VSCode Extension](clarinet-integrations/vscode-extension.md)
-
-## Learn Rendezvous
+## Learn Rendezvous <a href="#rendezvous" id="rendezvous"></a>
 
 * [Overview](rendezvous/overview.md)
 * [Quickstart](rendezvous/quickstart.md)
 
-## Learn Stacks.js
+## Learn Stacks.js <a href="#stacks.js" id="stacks.js"></a>
 
 * [Overview](stacks.js/overview.md)
 * [Accounts & Addresses](stacks.js/accounts-and-addresses.md)
@@ -65,6 +63,7 @@
 * [Encoding & Decoding](stacks.js/encoding-and-decoding.md)
 * [Network Configuration](stacks.js/network-configuration.md)
 * [Unit Conversion](stacks.js/unit-conversion.md)
+* [React Native Integration](stacks.js/react-native-integration.md)
 
 ## Stacks Connect
 
@@ -79,10 +78,6 @@
 * [Overview](post-conditions/overview.md)
 * [Implementing Post-Conditions](post-conditions/implementation.md)
 
-## Stacks.js Integrations
-
-* [React Native Integration](stacks.js-integrations/react-native-integration.md)
-
 ## More Guides
 
 * [sBTC](more-guides/sbtc/README.md)
@@ -92,10 +87,9 @@
     * [Withdrawing: Pegging sBTC into BTC](more-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/sbtc-to-btc.md)
 * [Price Oracles](more-guides/price-oracles/README.md)
   * [Using Pyth with Stacks](more-guides/price-oracles/pyth.md)
-* [Build a Borrowing & Lending Protocol](more-guides/build-a-borrowing-and-lending-protocol.md)
 * [Bitcoin Integration](more-guides/bitcoin-integration/README.md)
   * [Sending Bitcoin with Leather](more-guides/bitcoin-integration/sending-bitcoin-with-leather.md)
   * [Verifying a Bitcoin Transaction](more-guides/bitcoin-integration/verifying-a-bitcoin-transaction.md)
   * [Parsing a Bitcoin Transaction](more-guides/bitcoin-integration/parsing-a-bitcoin-transaction.md)
-* [Community Tutorials](more-guides/community-tutorials.md)
 * [c32check](more-guides/c32check.md)
+* [Community Tutorials](more-guides/community-tutorials.md)

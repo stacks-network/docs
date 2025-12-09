@@ -11,7 +11,9 @@ description: Build powerful apps, secured by Bitcoin.
 <summary><strong>New to building with Stacks? Check out these weekly virtual meets!</strong></summary>
 
 * **Stacks DevRel office hours**: Follow and enable notifications for [@StacksDevs](https://x.com/StacksDevs) on Twitter to catch alerts for our weekly livestreams every Thursday at 10am EST. Office Hours are the easiest way to stay in the loop on product drops, live demos, community builder spotlights, and more. Stay up-to-date with release discussions, real-time walkthroughs, and builder highlights that matter.
-* **Clarity Working Group (Clarity WG)** : An open, developer-focused initiative dedicated to supporting builders across the Stacks ecosystem. The group brings together experienced Clarity engineers (“Clarity giga chads”), auditors, educators, grant project teams, and new developers to collaborate, learn, and advance smart contract development on Bitcoin. Check out the calendar [link](https://www.addevent.com/event/yc0x95fky8y4) to join every other Tuesday.
+* **Clarity Working Group**: An open, developer-focused initiative dedicated to supporting builders across the Stacks ecosystem. The group brings together experienced Clarity engineers (“Clarity giga chads”), auditors, educators, grant project teams, and new developers to collaborate, learn, and advance smart contract development on Bitcoin. Check out the calendar [link](https://www.addevent.com/event/yc0x95fky8y4) to join every other Tuesday.
+* **AI BTC Working Group:** Join the **AI BTC Working Group**'s (WG) weekly meeting on AIBTC's twitter account, where they delve into the exciting intersection of AI and Bitcoin. Check out the calendar [link](https://www.addevent.com/event/c3qjy462xr82) to join every Thursday.
+* **Runes Capsule Webinars:** Join a weekly deep-dive into Runes Capsule architecture, Bitcoin bridging, and trust minimized design patterns on Stacks. Check out this [link](https://calendar.google.com/calendar/u/0/r?cid=b247d75eb1a11dc3ebbf0c62eb4a1c83b4a53d4d2f903eaa19d685f28f087f92%40group.calendar.google.com) to join every Sundays.
 
 </details>
 

@@ -294,6 +294,15 @@ Smart contracts are immutable once deployed. Bugs are permanent. Test them thoro
 
 ***
 
+### Auditing Clarity Smart Contracts
+
+Auditors provide an independent, expert review of your smart contracts to identify vulnerabilities, logic flaws, edge cases, or design risks that might be missed during development. Here are a few Clarity smart contract auditors that are part of the Stacks community.
+
+* [Clarity Alliance](https://x.com/ClarAllianceSec)
+* [SetDev](https://x.com/setdevbtc)
+
+***
+
 ### Additional Resources
 
 This brief overview should get your feet wet with Clarity. For deeper learning, we recommend:
@@ -308,5 +317,6 @@ This brief overview should get your feet wet with Clarity. For deeper learning, 
 * \[[StacksDevs YT](https://www.youtube.com/watch?v=WZe1DgJ1w-E)] How Stacks’ Smart Contract Language Prevents Exploitation
 * \[[Chainlink YT](https://youtu.be/OAVwd6SNJVU?si=UgfjmisBRbIYv27U)] Marvin Janssen: Clarity Smart Contracts for Stacks&#x20;
 * [100+ Days of Clarity video series by Setzeus](https://youtube.com/playlist?list=PLFHm9eE6H5uhNQ4cUXRE-4HkXF1ekS0ZG\&si=q0NmD-e9_QBomK3a)
+* \[[waits.dev](https://waits.dev/writing/clarity-vs-solidity)] Clarity vs Solidity
 
 If you prefer jumping into Clarity's reference materials for definitions on all its types, functions, and keywords, head to [Clarity's Reference section](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/clarity/functions) of the docs.

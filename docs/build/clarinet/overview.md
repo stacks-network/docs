@@ -30,7 +30,7 @@ For the latest releases and versions of Clarinet, check out the open-source repo
 * [**Leverage a powerful CLI**](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/clarinet/cli-reference) - Create new projects, manage your smart contracts and their dependencies using clarinet requirements, and interact with your code through the built-in REPL.
 * [**Write unit tests with the SDK**](../clarinet-js-sdk/unit-testing.md) - Use the Clarinet SDK to write unit tests in a familiar JS environment and validate contract behavior.
 * [**Run a private blockchain environment**](local-blockchain-development.md) - Spin up a local devnet with nodes, miners, and APIs so you can test and integrate your code.
-* [**VSCode extension**](../clarinet-integrations/vscode-extension.md) - Linter, step by step debugger, helps writing smart contracts (autocompletion, documentation etc).
+* [**VSCode extension**](integrations/clarity-vscode-extension.md) - Linter, step by step debugger, helps writing smart contracts (autocompletion, documentation etc).
 
 ## Installation
 

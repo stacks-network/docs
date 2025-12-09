@@ -410,7 +410,7 @@ clarinet requirements add SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-deposit
 
 You'll notice in the `add-message` public function, we're making an external contract call to the [`.sbtc-token`](https://explorer.hiro.so/txid/0xead2080826685a98886891cbd9b288d367ae19b357353c71fff4a3330da582c8?chain=mainnet) contract. This is the official sBTC token contract that contains the [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) standard `transfer` function that we are invoking.
 
-Check out the dedicated [sBTC integration](../clarinet-integrations/sbtc-integration.md) page to learn more.
+Check out the dedicated [sBTC integration](../clarinet/integrations/sbtc.md) page to learn more.
 {% endstep %}
 
 {% step %}
