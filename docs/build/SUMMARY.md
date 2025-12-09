@@ -29,6 +29,8 @@
 * [Validation and Analysis](clarinet/validation-and-analysis.md)
 * [Clarity Formatter](clarinet/clarity-formatter.md)
 * [Local Blockchain Development](clarinet/local-blockchain-development.md)
+* [Unit Testing](clarinet/testing-with-clarinet-sdk.md)
+* [Mainnet Execution Simulation](clarinet/mainnet-execution-simulation.md)
 * [Contract Deployment](clarinet/contract-deployment.md)
 * [FAQ](clarinet/faq.md)
 * [Integrations](clarinet/integrations/README.md)
@@ -36,13 +38,6 @@
   * [Chainhook Integration](clarinet/integrations/chainhook.md)
   * [Stacks.js Integration](clarinet/integrations/stacks.js.md)
   * [sBTC Integration](clarinet/integrations/sbtc.md)
-
-## Clarinet JS SDK
-
-* [Overview](clarinet-js-sdk/overview.md)
-* [Unit Testing](clarinet-js-sdk/unit-testing.md)
-* [Integration Testing](clarinet-js-sdk/integration-testing.md)
-* [Mainnet Execution Simulation](clarinet-js-sdk/mainnet-execution-simulation.md)
 
 ## Learn Rendezvous <a href="#rendezvous" id="rendezvous"></a>
 
