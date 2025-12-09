@@ -82,6 +82,7 @@
     * [Withdrawing: Pegging sBTC into BTC](more-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging/sbtc-to-btc.md)
 * [Price Oracles](more-guides/price-oracles/README.md)
   * [Using Pyth with Stacks](more-guides/price-oracles/pyth.md)
+* [Signing with Turnkey](more-guides/signing-with-turnkey.md)
 * [Bitcoin Integration](more-guides/bitcoin-integration/README.md)
   * [Sending Bitcoin with Leather](more-guides/bitcoin-integration/sending-bitcoin-with-leather.md)
   * [Verifying a Bitcoin Transaction](more-guides/bitcoin-integration/verifying-a-bitcoin-transaction.md)
