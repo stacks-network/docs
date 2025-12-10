@@ -1,12 +1,12 @@
 ---
-description: Making Bitcoin Smart Contracts More Powerful
+description: November 2025
 ---
 
-# ✅ Clarity 4 is now LIVE!
+# Clarity 4 is now LIVE!
 
 SIP-033 and SIP-034 have officially activated at Bitcoin block 923222 – bringing Clarity 4 live on Stacks, the smart contract layer secured by Bitcoin.
 
-This upgrade introduces Version 4 of the Clarity smart contract language, marking a major step forward for the Stacks ecosystem. For users, it delivers safer, smarter contracts with enhanced built-in protections.&#x20;
+This upgrade introduces Version 4 of the Clarity smart contract language, marking a major step forward for the Stacks ecosystem. For users, it delivers safer, smarter contracts with enhanced built-in protections.
 
 For builders, it unlocks five powerful new functions that make developing secure, flexible, and Bitcoin-native DeFi applications easier than ever.
 
@@ -34,7 +34,7 @@ Clarity 4 adds a function to convert simple values like booleans or principals i
 
 [`to-ascii?`](https://docs.stacks.co/reference/clarity/functions#to-ascii)
 
-This makes it easier to generate readable, string-based messages –  a useful tool for developers building cross-chain features and integrations.
+This makes it easier to generate readable, string-based messages – a useful tool for developers building cross-chain features and integrations.
 
 #### 4. Get the Timestamp of the Current Block
 
@@ -42,7 +42,7 @@ A new keyword lets developers retrieve the timestamp of the current block.
 
 [`stacks-block-time`](https://docs.stacks.co/reference/clarity/keywords#stacks-block-time)
 
-This addition enables time-based logic in smart contracts –  an essential capability for building features like yield schedules, lockups, or expiration conditions in DeFi applications.
+This addition enables time-based logic in smart contracts – an essential capability for building features like yield schedules, lockups, or expiration conditions in DeFi applications.
 
 #### 5. Native Passkey Integration
 

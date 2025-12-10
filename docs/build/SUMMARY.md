@@ -17,7 +17,8 @@
 
 ## What's New?
 
-* [✅ Clarity 4 is now LIVE!](whats-new/clarity-4-is-now-live.md)
+* [Clarinet was migrated to Stacks Labs](whats-new/clarinet-was-migrated-to-stacks-labs.md)
+* [Clarity 4 is now LIVE!](whats-new/clarity-4-is-now-live.md)
 
 ## Learn Clarinet <a href="#clarinet" id="clarinet"></a>
 
