@@ -4,6 +4,8 @@ description: Generating and decoding addresses on the Stacks blockchain.
 
 # c32check
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacks-bitcoin-address.png" alt=""><figcaption></figcaption></figure></div>
+
 {% hint style="info" %}
 For the c32check open-source repo: [https://github.com/stacks-network/c32check](https://github.com/stacks-network/c32check)
 {% endhint %}

@@ -1,7 +1,11 @@
+---
+description: Integrate sBTC in your app
+---
+
 # sBTC
 
-The guides in this section provide step-by-step instructions for interacting with sBTC, including operating as a signer and (coming soon) developer guides on how to interact with sBTC as an application developer.
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/sbtc-integrations.png" alt=""><figcaption></figcaption></figure></div>
 
-{% hint style="info" %}
-In order to run an sBTC signer you must be one of the [approved signers](https://github.com/stacks-network/sbtc/discussions/624) described in [SIP-028](https://github.com/andrerserrano/sips/blob/main/sips/sip-028/sip-028-sbtc_peg.md).
-{% endhint %}
+Integrating **sBTC** lets apps use real Bitcoin in smart contracts, unlocking programmable BTC without needing wrapped or custodial assets. It enables fast, low-fee interactions anchored to Bitcoin security while still benefiting from expressive on-chain logic on Stacks. For developers, sBTC dramatically expands what’s possible with Bitcoin—powering lending, trading, gaming, and new user experiences backed by the world’s hardest money.
+
+The guides in this section provide step-by-step instructions for interacting with sBTC, including developer guides on how to interact with sBTC and how to bridge BTC into sBTC.
