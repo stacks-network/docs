@@ -23,7 +23,7 @@ For the latest releases and versions of Clarinet, check out the open-source repo
 * The Clarinet repository now belongs to the stx-labs organization.
 * The NPM packages are now published under the `@stacks` organization.
 * The VSCode extension is now published under the Stacks Labs organization.
-* Check out the [discussion](https://github.com/stx-labs/clarinet/discussions/2055) to see how to migrate older projects.
+* Check out the [announcement](../whats-new/clarinet-was-migrated-to-stacks-labs.md) to see how to migrate older projects.
 {% endupdate %}
 {% endupdates %}
 
