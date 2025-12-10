@@ -14,6 +14,8 @@ For the latest releases and versions of Clarinet, check out the open-source repo
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/clarinet-diagram.png" alt=""><figcaption></figcaption></figure></div>
 
+#### Announcements
+
 {% updates format="full" %}
 {% update date="2025-11-05" %}
 ## Clarinet was migrated to Stacks Labs
