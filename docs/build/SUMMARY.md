@@ -14,6 +14,12 @@
   * [Authentication](get-started/build-a-frontend/authentication.md)
   * [Post-Conditions](get-started/build-a-frontend/post-conditions.md)
   * [Sending Transactions](get-started/build-a-frontend/sending-transactions.md)
+* [Use Cases](get-started/use-cases/README.md)
+  * [Payments](get-started/use-cases/payments.md)
+  * [Art](get-started/use-cases/art.md)
+  * [DeFi](get-started/use-cases/defi.md)
+  * [Gaming](get-started/use-cases/gaming.md)
+  * [AI](get-started/use-cases/ai.md)
 
 ## What's New?
 
