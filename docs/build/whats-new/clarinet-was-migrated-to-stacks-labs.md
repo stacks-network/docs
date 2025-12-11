@@ -1,5 +1,5 @@
 ---
-description: November 5th, 2025
+description: November 5, 2025
 ---
 
 # Clarinet was migrated to Stacks Labs

@@ -14,11 +14,18 @@
   * [Authentication](get-started/build-a-frontend/authentication.md)
   * [Post-Conditions](get-started/build-a-frontend/post-conditions.md)
   * [Sending Transactions](get-started/build-a-frontend/sending-transactions.md)
+* [Use Cases](get-started/use-cases/README.md)
+  * [Payments](get-started/use-cases/payments.md)
+  * [Art](get-started/use-cases/art.md)
+  * [DeFi](get-started/use-cases/defi.md)
+  * [Gaming](get-started/use-cases/gaming.md)
+  * [AI](get-started/use-cases/ai.md)
 
 ## What's New?
 
-* [Clarinet was migrated to Stacks Labs](whats-new/clarinet-was-migrated-to-stacks-labs.md)
+* [Deploy using encrypted mnemonics](whats-new/deploy-using-encrypted-mnemonics.md)
 * [Clarity 4 is now LIVE!](whats-new/clarity-4-is-now-live.md)
+* [Clarinet was migrated to Stacks Labs](whats-new/clarinet-was-migrated-to-stacks-labs.md)
 
 ## Learn Clarinet <a href="#clarinet" id="clarinet"></a>
 
