@@ -290,7 +290,7 @@ Smart contracts are immutable once deployed. Bugs are permanent. Test them thoro
 {% endhint %}
 
 * [Rendezvous Fuzz Testing](../rendezvous/overview.md): Use Rendezvous to hammer your contract with random inputs. It helps expose edge cases and vulnerabilities.
-* [Unit Testing in Clarinet](/broken/pages/xKpkZWiNCO3dwHoA9AeB): Unit testing verifies that individual contract functions behave as expected.&#x20;
+* [Unit Testing in Clarinet](../clarinet/testing-with-clarinet-sdk.md): Unit testing verifies that individual contract functions behave as expected.&#x20;
 
 ***
 
