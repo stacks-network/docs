@@ -26,7 +26,7 @@ Speaking of [Stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-prod
 
 #### SIP-009 and SIP-010 Tokens
 
-Fungible and non-fungible tokens in Clarity are defined by [SIP-009](file:///) and [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) standards. You can learn more about how to work with these tokens in the Clarity book.
+Fungible and non-fungible tokens in Clarity are defined by [SIP-009](https://github.com/stacksgov/sips/blob/main/sips/sip-009/sip-009-nft-standard.md) and [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) standards. You can learn more about how to work with these tokens in the Clarity book.
 
 #### sBTC
 
