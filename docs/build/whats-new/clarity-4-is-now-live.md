@@ -1,5 +1,5 @@
 ---
-description: November 2025
+description: November 18, 2025
 ---
 
 # Clarity 4 is now LIVE!

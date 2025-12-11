@@ -23,8 +23,9 @@
 
 ## What's New?
 
-* [Clarinet was migrated to Stacks Labs](whats-new/clarinet-was-migrated-to-stacks-labs.md)
+* [Deploy using encrypted mnemonics](whats-new/deploy-using-encrypted-mnemonics.md)
 * [Clarity 4 is now LIVE!](whats-new/clarity-4-is-now-live.md)
+* [Clarinet was migrated to Stacks Labs](whats-new/clarinet-was-migrated-to-stacks-labs.md)
 
 ## Learn Clarinet <a href="#clarinet" id="clarinet"></a>
 
