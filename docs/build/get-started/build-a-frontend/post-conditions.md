@@ -15,7 +15,7 @@ Put simply, post conditions are a set of conditions that must be met before a us
 They are sent as part of the transaction when the user initiates it, meaning we need to implement post-conditions on the frontend. Whenever you are transferring an asset (fungible or non-fungible) from one address to another, you should take advantage of post conditions.
 
 {% hint style="info" %}
-Head to the dedicated section on [post-conditions](/broken/pages/0KPrPPKItMGZZL2u4tiF) for more in-depth information.
+Head to the dedicated section on [post-conditions](../../../learn/transactions/post-conditions.md) for more in-depth information.
 {% endhint %}
 
 We're going to use [stacks.js](https://github.com/stx-labs/stacks.js/tree/master/packages/transactions#post-conditions) to familiarize ourselves with constructing post-conditions on the frontend. And there are several different ways to construct post-conditions based on asset type.
@@ -103,5 +103,5 @@ After transaction confirmation and broadcasting, users are also able to see what
 
 ### Additional Resources
 
-* \[[Post-Conditions](/broken/pages/0KPrPPKItMGZZL2u4tiF)] Dedicated section on post-conditions in these docs
+* \[[Post-Conditions](../../../learn/transactions/post-conditions.md)] Dedicated section on post-conditions in these docs
 * \[[Hiro YT](https://youtu.be/xXgQB8NfdEY?si=eSZp4tlLOCkkqGRS)] ELI5: Post-Conditions on Stacks
