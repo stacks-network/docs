@@ -1,0 +1,26 @@
+File,Line,Link Text,Target,Resolved Path
+docs/press-and-reports/press-and-top-links/2024/README.md,12,Broken link,/broken/pages/cd2e8707fe40b8a43e40923a688434e9aaf4922e,/broken/pages/cd2e8707fe40b8a43e40923a688434e9aaf4922e
+docs/press-and-reports/press-and-top-links/2024/README.md,16,Broken link,/broken/pages/29b9f8cda45db86fe5031ee567341583324e2f6b,/broken/pages/29b9f8cda45db86fe5031ee567341583324e2f6b
+docs/press-and-reports/press-and-top-links/2024/README.md,20,Broken link,/broken/pages/e7761aa2c81d3c8245dbc54570199f1aebd91325,/broken/pages/e7761aa2c81d3c8245dbc54570199f1aebd91325
+docs/press-and-reports/press-and-top-links/2024/README.md,24,Broken link,/broken/pages/bbb9712e169fccb44833d8d9f0d98ad2bccd62f2,/broken/pages/bbb9712e169fccb44833d8d9f0d98ad2bccd62f2
+docs/press-and-reports/press-and-top-links/2024/README.md,28,Broken link,/broken/pages/aec6e9d8a50d144e48a1dfdc8af0e834cd9af457,/broken/pages/aec6e9d8a50d144e48a1dfdc8af0e834cd9af457
+docs/press-and-reports/press-and-top-links/2024/README.md,32,Broken link,/broken/pages/629cc20de749db943380bddf1d69842a2863033c,/broken/pages/629cc20de749db943380bddf1d69842a2863033c
+docs/press-and-reports/press-and-top-links/2024/README.md,36,Broken link,/broken/pages/cf07211cab8be8b227dee91931874e3fe5792b8d,/broken/pages/cf07211cab8be8b227dee91931874e3fe5792b8d
+docs/press-and-reports/press-and-top-links/2024/README.md,40,Broken link,/broken/pages/1fc9a3503ea5c373fb758dc9be7401b5f70501d4,/broken/pages/1fc9a3503ea5c373fb758dc9be7401b5f70501d4
+docs/press-and-reports/press-and-top-links/2024/README.md,44,Broken link,/broken/pages/db2a454141ac04ca7ea4bc2666e5af5fab4deb68,/broken/pages/db2a454141ac04ca7ea4bc2666e5af5fab4deb68
+docs/press-and-reports/press-and-top-links/2024/README.md,48,Broken link,/broken/pages/4050fecb50c952b844915fafb1b214eb349e1931,/broken/pages/4050fecb50c952b844915fafb1b214eb349e1931
+docs/press-and-reports/press-and-top-links/2024/README.md,52,Broken link,/broken/pages/68a55e4003881342d50a527d6f8e683cd5803dde,/broken/pages/68a55e4003881342d50a527d6f8e683cd5803dde
+docs/press-and-reports/press-and-top-links/2024/README.md,56,Broken link,/broken/pages/bd6ef1fe15c0f8e10163ba8857053effe9eb20da,/broken/pages/bd6ef1fe15c0f8e10163ba8857053effe9eb20da
+docs/operate/run-a-signer/README.md,339,Stack STX,broken-reference,/Users/macbook/docs/docs/operate/run-a-signer/broken-reference
+docs/operate/stacking-stx/solo-stack.md,471,generate your signer key,broken-reference,/Users/macbook/docs/docs/operate/stacking-stx/broken-reference
+docs/build/README.md,45,Learn Clarinet,/broken/pages/UK5Kgh2MHLoQvfoFVnLr,/broken/pages/UK5Kgh2MHLoQvfoFVnLr
+docs/build/get-started/build-a-frontend/sending-transactions.md,88,[Learn Stacks.js,/broken/pages/dH5waQhE6Vb7rhcrUG7z,/broken/pages/dH5waQhE6Vb7rhcrUG7z
+docs/reference/node-operations/stacks-node-configuration.md,4,Signer Configuration,/broken/pages/8ea1fa91cfa819c25f545b0aca9bfc16c8c3ad28,/broken/pages/8ea1fa91cfa819c25f545b0aca9bfc16c8c3ad28
+docs/reference/node-operations/signer-configuration.md,27,How to Run a Signer,/broken/pages/261edd335c0b98fb052ad55906fbf90832800453,/broken/pages/261edd335c0b98fb052ad55906fbf90832800453
+docs/reference/node-operations/signer-configuration.md,66,How to Run a Signer,/broken/pages/261edd335c0b98fb052ad55906fbf90832800453,/broken/pages/261edd335c0b98fb052ad55906fbf90832800453
+docs/reference/node-operations/signer-configuration.md,68,Stacks Node Configuration,/broken/pages/79a6d21c88b879210b9f2036268ace38ae6a02af,/broken/pages/79a6d21c88b879210b9f2036268ace38ae6a02af
+docs/reference/nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-exchanges.md,9,Broken link,/broken/pages/fac008cad2409afc8de86501f205ee51e148b5af "mention",/broken/pages/fac008cad2409afc8de86501f205ee51e148b5af "mention"
+docs/reference/clarity/example-contracts/stacking.md,19,familiarize yourself with that first,/broken/pages/3df1d5b76fd4f047544069a38895455776fc228f,/broken/pages/3df1d5b76fd4f047544069a38895455776fc228f
+docs/reference/clarity/example-contracts/stacking.md,95,How to Stack,/broken/pages/930b16324611cdbf3451ca2b306ada93a1be367e,/broken/pages/930b16324611cdbf3451ca2b306ada93a1be367e
+docs/reference/clarity/example-contracts/stacking.md,96,How to Run a Signer,/broken/pages/5baf2f4c67696dbef7258f50d4cbf103b3e014d1,/broken/pages/5baf2f4c67696dbef7258f50d4cbf103b3e014d1
+docs/reference/clarity/example-contracts/stacking.md,416,stacking guide,/broken/pages/930b16324611cdbf3451ca2b306ada93a1be367e#delegator-initiates-delegation,/broken/pages/930b16324611cdbf3451ca2b306ada93a1be367e
