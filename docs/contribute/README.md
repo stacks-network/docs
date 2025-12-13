@@ -12,15 +12,17 @@ Because of this two-way sync, you can contribute to the documentation in one of 
 
 {% stepper %}
 {% step %}
+
 ### Fork the repo and create a PR
 
-You can fork the docs repo, add your change, and then create a PR to be merged into the main docs.
+You can fork the docs repo, make your changes, and then create a PR to be merged into the main docs.
 {% endstep %}
 
 {% step %}
+
 ### Create an issue
 
-You can create an issue, and someone that works on the docs will take a look and implement it if it is a necessary change.
+You can create an issue, and someone who works on the docs will take a look and implement it if it's a necessary change.
 {% endstep %}
 {% endstepper %}
 

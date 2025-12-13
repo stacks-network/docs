@@ -7,16 +7,16 @@ description: Your 0→1 guide for building a Clarity contract and app on Stacks.
 <figure><img src="../.gitbook/assets/Frame 316125324 (1).jpg" alt=""><figcaption></figcaption></figure>
 
 **Welcome to the Stacks Developer Quickstart Guide!**\
-This is your fast-track path for understanding what you'll need to become a Stacks developer. In this guide, you’ll build a real Clarity smart contract, wire up a functioning Stacks app, and pick up about 75% of the practical knowledge every Stacks builder needs. Whether you’re shipping your first project or leveling up your skills, this guide takes you from zero to deployed—quickly and confidently.
+This guide helps you become a Stacks developer quickly. You'll build a real Clarity smart contract, create a working Stacks app, and learn about 75% of the practical knowledge needed. From zero to deployed—fast and confidently.
 
 ### What you'll achieve
 
 By the end of this quickstart, you’ll have built an onchain app by:
 
-* Building a Clarity smart contract with Clarinet
-* Utilize the 1:1 Bitcoin backed token, sBTC
-* Deploying your smart contract to Stacks' testnet
-* Interacting with your deployed contract from a frontend app
+- Building a Clarity smart contract with Clarinet
+- Utilize the 1:1 Bitcoin backed token, sBTC
+- Deploying your smart contract to Stacks' testnet
+- Interacting with your deployed contract from a frontend app
 
 {% hint style="success" %}
 **Why Stacks?**
@@ -26,19 +26,19 @@ Stacks is a fast, low-cost, builder-friendly layer 2 network on Bitcoin. It’s 
 
 ### What You'll Build
 
-The app you'll build will be a message board contract. Users can add a new message to store on-chain for a fee of 1 satoshi in sBTC. Other functionality to read data from the contract will also be handled. Besides sBTC, there will be other things that'll be introduced to you such as post-conditions, Bitcoin read access, unit testing, wallet connectivity, BNS, Hiro, and more. Hopefully all this will give you a good flavor of what you can expect in the Stacks builder ecosystem.
+You'll build a message board contract. Users add messages on-chain for 1 satoshi in sBTC. It includes read functions. You'll learn about sBTC, post-conditions, Bitcoin read access, unit testing, wallet connectivity, BNS, Hiro, and more. This gives a good taste of the Stacks ecosystem.
 
-Let's start building on Bitcoin! :orange\_square:
+Let's start building on Bitcoin! :orange_square:
 
 {% hint style="info" %}
 **Prerequisites**
 
-* Basic familiarity with web development
-* Basic familiarity with web3 concepts
-* A modern web browser
-* Node.js
-* Visual Studio Code or any other popular IDE
-{% endhint %}
+- Basic familiarity with web development
+- Basic familiarity with web3 concepts
+- A modern web browser
+- Node.js
+- Visual Studio Code or any other popular IDE
+  {% endhint %}
 
 ### Set Up Your Developer Environment
 
@@ -52,33 +52,41 @@ Below are a few different ways to install Clarinet on your machine using your te
 
 {% tabs %}
 {% tab title="Homebrew" %}
+
 ```bash
 brew install clarinet
 ```
+
 {% endtab %}
 
 {% tab title="Winget" %}
+
 ```bash
 winget install clarinet
 ```
+
 {% endtab %}
 
 {% tab title="Source" %}
+
 ```bash
 sudo apt install build-essential pkg-config libssl-dev
 git clone https://github.com/stx-labs/clarinet
 cd clarinet
 cargo clarinet-install
 ```
+
 {% endtab %}
 
 {% tab title="Binary" %}
+
 ```bash
 wget -nv https://github.com/stx-labs/clarinet/releases/latest/download/clarinet-linux-x64-glibc.tar.gz -O clarinet-linux-x64.tar.gz
 tar -xf clarinet-linux-x64.tar.gz
 chmod +x ./clarinet
 mv ./clarinet /usr/local/bin
 ```
+
 {% endtab %}
 {% endtabs %}
 {% endstep %}
@@ -119,14 +127,17 @@ There are many Stacks supported wallets in the market. For this guide, we'll be 
 Let's start by creating a new Clarinet project which will house our smart contract. The `clarinet new` command sets up everything you need for smart contract development, including a testing framework, deployment configurations, and a local development environment.
 
 {% code title="terminal" %}
+
 ```
 clarinet new my-stacks-contracts
 ```
+
 {% endcode %}
 
 A Clarinet project will be scaffolded with the below:
 
 {% code title="terminal" expandable="true" %}
+
 ```
 Created directory my-stacks-contracts
 Created directory contracts
@@ -159,6 +170,7 @@ Once you are ready to write your contracts, run the following commands:
   $ clarinet check
     Check contract syntax for all files in ./contracts.
 ```
+
 {% endcode %}
 {% endstep %}
 
@@ -189,8 +201,8 @@ Open `contracts/message-board.clar` and remove its existing content. This is whe
 
 Let's first define some constants:
 
-* contract owner to establish control access
-* custom error codes to handle errors in functions
+- contract owner to establish control access
+- custom error codes to handle errors in functions
 
 <pre class="language-clarity" data-title="message-board.clar"><code class="lang-clarity">;; Simple Message Board Contract
 ;; This contract allows users to read and post messages for a fee in sBTC.
@@ -212,8 +224,8 @@ You'll notice in the `CONTRACT_OWNER` constant that `tx-sender` is set in place 
 
 We'll then need to define some data storage:
 
-* A map to store key-value pairs of the message id and it's related metadata
-* A data variable to count the total number of messages added
+- A map to store key-value pairs of the message id and it's related metadata
+- A data variable to count the total number of messages added
 
 <pre class="language-clarity" data-title="message-board.clar"><code class="lang-clarity">;; Define a map to store messages
 ;; Each message has an ID, content, author, and Bitcoin block height timestamp
@@ -229,6 +241,7 @@ We'll then need to define some data storage:
 ;; Counter for total messages
 <strong>(define-data-var message-count uint u0)
 </strong></code></pre>
+
 {% endstep %}
 
 {% step %}
@@ -286,8 +299,8 @@ There's quite a lot going on in this function above that covers in-contract post
 
 By using the `define-public` function, we can literally create a public function where anyone can invoke.
 
-* `(add-message ... )` : the custom name of the public function
-* `(content (string-utf8 280))` : the custom paramater name and type
+- `(add-message ... )` : the custom name of the public function
+- `(content (string-utf8 280))` : the custom parameter name and type
 
 </details>
 
@@ -339,7 +352,7 @@ The `restrict-assets?` acts as an in-contract post-condition to protect user and
 })
 ```
 
-The function `map-set` will allow the existing mapping of `messages` to add a new key-value pair consiting of the metadata of the new message.
+The function `map-set` will allow the existing mapping of `messages` to add a new key-value pair consisting of the metadata of the new message.
 
 We'll be using the current Bitcoin block height (via `burn-block-height`) as a way to capture the time of when this new message was added. Through `burn-block-height` , Clarity allows us to have read access into the Bitcoin state at anytime.
 
@@ -403,9 +416,11 @@ Since we're working with sBTC in our local developer environment, we'll need to 
 In our case, all we'll need to do is add the [`.sbtc-deposit`](https://explorer.hiro.so/txid/SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-deposit?chain=mainnet) contract as a project requirement.
 
 {% code title="terminal" %}
+
 ```
 clarinet requirements add SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-deposit
 ```
+
 {% endcode %}
 
 You'll notice in the `add-message` public function, we're making an external contract call to the [`.sbtc-token`](https://explorer.hiro.so/txid/0xead2080826685a98886891cbd9b288d367ae19b357353c71fff4a3330da582c8?chain=mainnet) contract. This is the official sBTC token contract that contains the [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) standard `transfer` function that we are invoking.
@@ -475,10 +490,10 @@ You'll notice the usage of a `at-block` function in the highlighted line of code
 
 Now with the actual writing of your contract complete, we now need to test its functionality. There's a few different ways we can go about iterating and testing the functionality of your contract.
 
-* Contract interaction in the [Clarinet REPL](../clarinet/contract-interaction.md)
-* Running your contract in a [local blockchain environment](../clarinet/local-blockchain-development.md)
-* Fuzz testing with [Rendezvous](https://stacks-network.github.io/rendezvous/)
-* Writing unit tests with the [Clarinet JS SDK](/broken/pages/I1W2xGQYVmPwMEEfqje6)
+- Contract interaction in the [Clarinet REPL](../clarinet/contract-interaction.md)
+- Running your contract in a [local blockchain environment](../clarinet/local-blockchain-development.md)
+- Fuzz testing with [Rendezvous](https://stacks-network.github.io/rendezvous/)
+- Writing unit tests with the [Clarinet JS SDK](/broken/pages/I1W2xGQYVmPwMEEfqje6)
 
 We'll go with unit testing for now. In your `tests` folder, open up the related `message-board.test.ts` file and let's use the unit test written below.
 
@@ -553,6 +568,7 @@ You'll notice we have two `it` blocks setup to test out 2 different scenarios:
 Run the test via `npm run test` to confirm that the two scenarios are functioning as intended.
 
 {% code title="terminal" %}
+
 ```bash
 $ npm run test
 
@@ -566,6 +582,7 @@ $ npm run test
    Start at  14:05:07
    Duration  886ms (transform 40ms, setup 42ms, collect 8ms, tests 46ms, environment 699ms, prepare 4ms)
 ```
+
 {% endcode %}
 
 Great! Now that your contract is working as intended, let's deploy the contract to testnet.
@@ -625,6 +642,7 @@ For more information on configuring deployment plans, check out the specific gui
 {% endhint %}
 
 {% code title="terminal" %}
+
 ```bash
 $ clarinet deployments generate --testnet --medium-cost
 Analyzing contracts...
@@ -632,6 +650,7 @@ Calculating deployment costs...
 Generating deployment plan
 Created file deployments/default.testnet-plan.yaml
 ```
+
 {% endcode %}
 {% endstep %}
 
@@ -641,9 +660,11 @@ Created file deployments/default.testnet-plan.yaml
 Once your deployment plan is generated and configured properly, go ahead and deploy the contract to testnet.
 
 {% code title="terminal" %}
+
 ```bash
 clarinet deployments apply --testnet
 ```
+
 {% endcode %}
 
 If the contract was successfully deployed, you should see the below confirmation:
@@ -818,18 +839,18 @@ For the complete set of available API endpoints for the Stacks network, check ou
 
 And that's it, you've successfully created an sBTC powered Clarity smart contract which can be interacted with from a frontend app. There's obviously much more you can do to complete this but you've got some of the basics down pat now. Go ahead and finish creating the frontend functions to call on the other contract functions we have.
 
-***
+---
 
 ### Further Improvements
 
 This is just the beginning. There are many ways we can improve upon this app. Here are some suggestions for you to extend the functionality of this app:
 
-* Deploy to mainnet and share your project with the community
-* Use [Chainhooks](https://docs.hiro.so/en/tools/chainhooks) to index emitted events from the contract
-* Integrate the [`sbtc`](../more-guides/sbtc/bridging-bitcoin/) library so users can directly bridge their BTC to sBTC in-app
-* Utilize SIP-009 NFTs to uniquely identify each message for each author
+- Deploy to mainnet and share your project with the community
+- Use [Chainhooks](https://docs.hiro.so/en/tools/chainhooks) to index emitted events from the contract
+- Integrate the [`sbtc`](../more-guides/sbtc/bridging-bitcoin/) library so users can directly bridge their BTC to sBTC in-app
+- Utilize SIP-009 NFTs to uniquely identify each message for each author
 
-***
+---
 
 ### Next Steps
 
@@ -837,17 +858,17 @@ Now that you have the basics down, here are some ways to continue your Stacks de
 
 **Learn More About Clarity**
 
-* [**Clarity Crash Course**](https://docs.stacks.co/docs/clarity-crash-course): Quick introduction to Clarity concepts
-* [**Clarity Book**](https://book.clarity-lang.org/): Comprehensive guide to Clarity development
-* [**Clarity Reference**](https://docs.stacks.co/docs/clarity): Complete documentation of Clarity functions
+- [**Clarity Crash Course**](https://docs.stacks.co/docs/clarity-crash-course): Quick introduction to Clarity concepts
+- [**Clarity Book**](https://book.clarity-lang.org/): Comprehensive guide to Clarity development
+- [**Clarity Reference**](https://docs.stacks.co/docs/clarity): Complete documentation of Clarity functions
 
 **Development Tools**
 
-* [**Clarinet**](https://github.com/stx-labs/clarinet): Local development environment for Clarity
-* [**Hiro Platform**](https://platform.hiro.so/): Hosted development environment
-* [**Stacks Explorer**](https://explorer.stacks.co/): View transactions and contracts
+- [**Clarinet**](https://github.com/stx-labs/clarinet): Local development environment for Clarity
+- [**Hiro Platform**](https://platform.hiro.so/): Hosted development environment
+- [**Stacks Explorer**](https://explorer.stacks.co/): View transactions and contracts
 
 **Community Resources**
 
-* [**Stacks Discord**](https://discord.gg/stacks): Connect with other developers
-* [**Stacks Forum**](https://forum.stacks.org/): Ask questions and share projects
+- [**Stacks Discord**](https://discord.gg/stacks): Connect with other developers
+- [**Stacks Forum**](https://forum.stacks.org/): Ask questions and share projects
