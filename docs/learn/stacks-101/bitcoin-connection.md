@@ -8,23 +8,23 @@ That's a big promise, but how does Stacks actually deliver on it? And what makes
 
 Before we get into the technical details of how Stacks works, it's important to get a high-level overview of the problem it's solving and how it actually does that. We'll dive deeper into some of these topics as we go through the docs, but it's good to get a high-level picture to bring everything together.
 
-This topic is a bit of a rabbit hole, and this section is pretty long, but it will give you an in-depth understanding of exactly the problem Stacks is looking to solve, and how it solves it.
+This topic is deep, and the section is long, but it provides an in-depth understanding of the problem Stacks solves and how.
 
 Let's get into it.
 
 ### Is Stacks a Bitcoin L2?
 
-Stacks is a Bitcoin layer for smart contracts. The classification as a layer-1 (L1) or layer-2 (L2) or sidechain really depends on the definition used. With that said, generally speaking L1 chains are sovereign meaning that (a) they have their own security budget, and (b) they can survive without the need for any other L1 chain. L2 chains typically do not have their own security budget and share the security of the underlying L1 chain, and they cannot live without the underlying L1 chain. There are many different design mechanisms that L2s can use, and we cover several of them and how Stacks compares in the [Stacks Among Other Bitcoin Layers](stacks-among-other-layers.md) section.
+Stacks is a Bitcoin layer for smart contracts. Classification as L1, L2, or sidechain depends on the definition. Generally, L1 chains are sovereign with their own security budget and can survive independently. L2 chains share the L1's security and can't survive without it. We cover different L2 designs and Stacks' comparison in [Stacks Among Other Bitcoin Layers](stacks-among-other-layers.md).
 
-The initial release of Stacks in early 2021 had a separate security budget from Bitcoin L1. Even though the Stacks layer could not function without Bitcoin L1, the developers working on the project described it as a different system that does not fit neatly into existing classifications, sometimes using the term layer 1.5 (see [this Decrypt article](https://decrypt.co/82019/bitcoin-defi-thing-says-stacks-founder-muneeb-ali) for example).
+The initial Stacks release in early 2021 had its own security budget separate from Bitcoin L1. Though it couldn't function without Bitcoin, developers called it a unique system, sometimes 'layer 1.5' (see [Decrypt article](https://decrypt.co/82019/bitcoin-defi-thing-says-stacks-founder-muneeb-ali)).
 
-The upcoming planned release of Stacks, called the Nakamoto release, will no longer have a separate security budget from Bitcoin. Instead, a 100% of Bitcoin hashpower will determine finality on Stacks layer. After the next upgrade, to reorg Stacks blocks/transactions the attacker will need to reorg Bitcoin L1 itself (which is very hard to do and therefore a great security property for a Bitcoin layer to have). More details in the [Stacks paper](https://stacks.co/stacks.pdf).
+The upcoming Nakamoto release will eliminate Stacks' separate security budget. 100% of Bitcoin's hash power will determine Stacks' finality. To reorganize Stacks blocks, an attacker must reorganize Bitcoin L1 itself—a hard task providing strong security. See the [Stacks paper](https://stacks.co/stacks.pdf) for details.
 
-The definition of [L2 used in Ethereum](https://ethereum.org/en/layer-2/) and other newer ecosystems is different and focuses on the ability to withdraw assets using only L1 security and L1 miners. According to that definition Stacks layer is not a clear L2, given the set of peg-out signers determine if users can withdraw sBTC. Bitcoin cannot support such verification without changes to Bitcoin L1 (which may happen in the future). The Ethereum L2 definition also does not apply that cleanly to Bitcoin L2s, given new assets are issued on L2s when it comes to Bitcoin and not issued on L1 (only BTC is the L1 asset). Therefore, using the definition of security of withdrawing assets is not directly applicable given assets are defined and used on L2s and not withdrawn out to Bitcoin L1 anyway (with the exception of BTC itself). Rather, what becomes more important is "settlement on Bitcoin" i.e., is contract data and state secured by 100% of Bitcoin's hashpower or not.
+The [Ethereum L2 definition](https://ethereum.org/en/layer-2/) focuses on withdrawing assets using only L1 security. By this, Stacks isn't a clear L2 because peg-out signers control sBTC withdrawals. Bitcoin can't verify this without L1 changes. Also, assets are issued on L2s, not L1 (except BTC). So, 'settlement on Bitcoin' matters more—is data secured by 100% of Bitcoin's hash power?
 
-Remember that L2s on Bitcoin also have to serve the additional purpose of expanding both functionality and scalability, which means L2s accomplish fundamentally different goals depending on the functionality of the L1.
+Bitcoin L2s expand functionality and scalability, so their goals differ based on the L1's capabilities.
 
-Users and developers organically call Stacks a Bitcoin L2, since it is a simpler concept to understand. There are certain properties of Stacks layer that also help the concept of Stacks as a Bitcoin L2:
+Users and developers call Stacks a Bitcoin L2 for simplicity. Key properties support this:
 
 {% stepper %}
 {% step %}
@@ -58,19 +58,19 @@ Contracts on Stacks layer can read Bitcoin L1 transactions and respond to them. 
 {% endstep %}
 {% endstepper %}
 
-Given all the details above, why would some people think that Stacks is not a Bitcoin L2? There are a couple of reasons this question comes up often:
+Why do some think Stacks isn't a Bitcoin L2? Common reasons:
 
 {% stepper %}
 {% step %}
 **Old security-budget material**
 
-The initial version of Stacks (released early 2021) had a separate security budget which changed to following 100% Bitcoin hashpower with the Nakamoto release. There is old material and blog posts floating around that still talk about the initial Stacks version. The old materials will likely get updated with time.
+The initial Stacks version (released early 2021) had a separate security budget, which changed to following 100% Bitcoin hash power with the Nakamoto release. Old materials and blog posts still reference the initial version but will likely be updated.
 {% endstep %}
 
 {% step %}
 **Ethereum L2 withdrawal definition doesn't map cleanly**
 
-According to the Ethereum definition of L2s a user should be able to withdraw their base-layer assets purely by doing an L1 transaction and relying only on L1 security (this is true for Lightning for example). This definition does not apply cleanly to Bitcoin L2s because assets are not defined at Bitcoin L1 but are defined in L2s instead. The only asset where this matters is the pegged BTC asset from Bitcoin L1, given all other assets are native to L2s anyway. In the upcoming Stacks release, users can withdraw their BTC by sending just a Bitcoin L1 transaction but Bitcoin L1 cannot validate that complex transaction and a majority of peg-out signers will need to sign on the peg-out request. In an ideal world Bitcoin miners can validate such transactions but that would require a change to Bitcoin L1. Therefore, Stacks design optimizes for a method that is decentralized and can be deployed without any changes to Bitcoin L1. If in the future it is possible to make changes to Bitcoin L1 then Stacks layer security can benefit from that as well.
+The Ethereum L2 definition requires withdrawing base-layer assets via an L1 transaction using only L1 security (true for Lightning). This doesn't apply cleanly to Bitcoin L2s because assets are defined on L2s, not L1. The only relevant asset is pegged BTC. In the upcoming Stacks release, users withdraw BTC with a Bitcoin L1 transaction, but L1 can't validate it, requiring majority peg-out signer approval. Bitcoin miners could validate if L1 changes, but Stacks optimizes for decentralization without L1 changes. Future L1 upgrades could improve this.
 {% endstep %}
 
 {% step %}
@@ -80,31 +80,31 @@ Bitcoin community members are generally skeptical of claims and on the lookout f
 {% endstep %}
 {% endstepper %}
 
-Why don't we use the term 'sidechain' for Stacks then? Sidechains in Bitcoin typically have a different security budget from Bitcoin L1, typically as a subset of Bitcoin miners who participate in the sidechain (they don't follow 100% Bitcoin finality), their consensus runs on the sidechain (vs running on Bitcoin L1), and they don't publish their data/hashes on Bitcoin L1. The Stacks layer does not fit that definition cleanly given the consensus runs on Bitcoin L1, it follows Bitcoin finality, and publishes data/hashes on L1.
+Why not call Stacks a sidechain? Sidechains usually have separate security budgets, subset of miners, consensus on the sidechain, and don't publish data on Bitcoin L1. Stacks doesn't fit: consensus on Bitcoin L1, follows Bitcoin finality, publishes data on L1.
 
 Can Stacks layer work with rollups?
 
-Yes! There is already an active R\&D effort to integrate rollups with the Stacks layer. Both with the Stacks layer and sovereign rollups the technically challenging part is how to get BTC in and out of the Stacks layer or the sovereign rollup. The decentralized BTC peg, [sBTC](../sbtc/), applies to both the Stacks layer and sovereign rollups. Without modifying Bitcoin L1, an sBTC-like design with a decentralized open-membership group of signers is the most trust-minimized way to move BTC in and out of Bitcoin layers. Once the necessary upgrades to Bitcoin L1 can be made to enable validity rollups i.e., Bitcoin L1 can enforce BTC withdrawal from a layer, then the Stacks layer can also upgrade to benefit from it.
+Yes! There's active R\&D to integrate rollups with Stacks. The challenge is moving BTC in and out. The decentralized [sBTC](../sbtc/) peg works for both Stacks and sovereign rollups. Without Bitcoin L1 changes, sBTC's decentralized signers provide the most trust-minimized way. Future Bitcoin upgrades for validity rollups could let Stacks benefit too.
 
-Given a trust-minimized asset like sBTC is needed for sovereign rollups, with the launch of sBTC such sovereign rollups become even more interesting to deploy. The Stacks layer can potentially provide the decentralized group of signers for a trust-minimized BTC asset that can be used in a sovereign rollup, and DA comes directly from Bitcoin L1 e.g., with Ordinals.
+With sBTC, sovereign rollups become more appealing. Stacks could provide decentralized signers for trust-minimized BTC in rollups, with data availability from Bitcoin L1 via Ordinals.
 
 ### Why Does Stacks Need a Token?
 
-This brings us to a central philosophical conversation in the world of crypto and Bitcoin, whether or not blockchains need tokens.
+This leads to a key debate in crypto and Bitcoin: do blockchains need tokens?
 
-Let's start by looking at the fundamental reason why tokens exist: to fund the maintenance and forward progress of a blockchain.
+Tokens exist to fund blockchain maintenance and progress.
 
-Bitcoin is a token. It is a cryptocurrency that is used to incentivize miners to add new blocks to the chain. In Bitcoin's case, mining rewards are set on a predefined schedule, and once those mining rewards run out, the chain will need to survive on transaction fees alone.
+Bitcoin is a token that incentivizes miners to add blocks. Rewards follow a schedule; after they end, the chain relies on fees.
 
-The purpose of a blockchain is to have a permanent historical record of every transaction that has ever occurred on the chain. Blockchains are basically ledgers. The token aspect is used as an incentive mechanism to secure and maintain the chain.
+Blockchains maintain permanent transaction records. Tokens incentivize securing and maintaining the chain.
 
-This is why networks like Lightning and other P2P networks don't need tokens, they don't need to maintain a historical record. Channel-based solutions like Lightning rely on users opening 2-of-2 multisigs with each other. Once those channels are closed, the state disappears. When we are talking about a system that is supposed to maintain a global financial system, it is important for the maintenance of that system to be incentivized correctly.
+Networks like Lightning don't need tokens because they don't maintain historical records. Channels use multisigs; state disappears when closed. For global financial systems, incentives are crucial.
 
-Let's look at this concept in the context of Stacks and its goals. Stacks seeks to provide smart contract functionality to Bitcoin, to serve as the programming rails for building a decentralized economy on top of Bitcoin.
+In Stacks' context, it provides smart contracts for Bitcoin, serving as rails for a decentralized economy.
 
-Many Bitcoin community members are skeptical of new tokens and rightly so. There are countless projects out there that force the use of a token on their project and in many cases a token is actually not needed. The Stacks project was started by Bitcoin builders who have a long history of building apps & protocols on Bitcoin L1 without any token (e.g., BNS launched in 2015 on Bitcoin L1 which was one of the largest protocols using OP\_RETURN on Bitcoin L1). So why did a bunch of Bitcoin builders decide to have a separate token for Stacks L2? Great question! Let's dig into the details.
+Bitcoin community members are rightly skeptical of new tokens. Many projects force tokens unnecessarily. Stacks' founders are Bitcoin builders with history of tokenless apps (e.g., BNS in 2015 using OP_RETURN). Why a token for Stacks L2? Let's explore.
 
-The Stacks token (STX) is primarily meant to be used for two things:
+The STX token serves two main purposes:
 
 {% stepper %}
 {% step %}
@@ -120,46 +120,46 @@ Signers participating in peg-out operations receive incentives in STX to economi
 {% endstep %}
 {% endstepper %}
 
-The only way to remove the token is to build Stacks as a federated network like Liquid. In a federation the pre-selected group of companies control the mining and block production and a pre-selected group of companies need to be trusted for peg-out transactions.
+To remove the token, Stacks would need a federated network like Liquid, where pre-selected companies control mining and peg-outs.
 
-Stacks developers wanted to design an open and permissionless system. The only way to have a decentralized mining process is through incentives. As mentioned above, this is how Bitcoin works as well, where newly minted BTC are used as incentives to mine new blocks and anyone in the world can decide to become a miner. Anyone with BTC can mine the Stacks L2 chain, it is open and permissionless.
+Stacks' developers aimed for an open, permissionless system. Decentralized mining requires incentives, like Bitcoin's new BTC for miners. Anyone with BTC can mine Stacks L2.
 
-Similarly, the way sBTC is designed is that the group of signers is open and permissionless (unlike a federation). These signers have economic incentives to correctly follow the protocol for peg-out requests. In a federation, users need to blindly trust the pre-set federation members to get their BTC out of the federation and back on Bitcoin L1. Stacks developers wanted to have an open, permissionless, and decentralized way to move BTC from Bitcoin L1 to Stacks L2 and back. This is made possible through economic incentives i.e., need for a token.
+sBTC's signers are open and permissionless, incentivized to follow protocol. Federations require trusting pre-set members for peg-outs. Stacks' developers wanted decentralized BTC movement, enabled by economic incentives—a token.
 
 {% hint style="info" %}
 With more and more Bitcoin layers emerging, there is some nuance in this federated vs open network design. Some protocols like Botanix's Spiderchain offer an open network but have different incentive mechanisms. We dig into these in detail in the [Stacks Among Other Layers](stacks-among-other-layers.md) section.
 {% endhint %}
 
-Other than these two reasons, STX is also used to pay gas fees for transactions. However, once the upcoming sBTC peg is live most of the economy of Stacks L2 is expected to follow a Bitcoin standard and work using BTC as the economic unit. It is expected that users will mostly interact just with Bitcoin and use BTC in wallets and apps (gas fees can be paid with BTC using atomic swaps in the background). It is important to note that BTC cannot be used for mining incentives on Stacks L2 because the only way to incentivize decentralized block production is through newly minted assets by the protocol (similar to how Bitcoin works itself) i.e., need for a token.
+STX also pays gas fees. With sBTC, the economy will use BTC as the unit. Users will interact with Bitcoin, paying fees with BTC via atomic swaps. BTC can't incentivize mining; only new protocol assets can, like in Bitcoin—hence the token.
 
 ### The Symbiotic Relationship Between Stacks and Bitcoin
 
-Stacks and Bitcoin complement each other. Stacks leverages the extreme decentralization of Bitcoin, its PoW consensus mechanism, and its value as a cryptocurrency.
+Stacks and Bitcoin complement each other. Stacks uses Bitcoin's decentralization, PoW, and value.
 
-But Stacks also complements Bitcoin by unlocking additional use cases, thereby increasing its value over time. This also helps to solve the additional problem of the future maintainability of Bitcoin after the coinbase rewards are gone and Bitcoin has to function on transaction fees alone.
+Stacks complements Bitcoin by enabling new use cases, increasing its value. This helps Bitcoin's long-term maintenance after mining rewards end, relying on fees.
 
-If Bitcoin is seen as only a store of value, the economic density, meaning how much value is being exchanged, of each transaction will be minimal. But if Bitcoin is the underlying foundation for an entire decentralized economy, those [transactions become much more valuable](https://twitter.com/muneeb/status/1506976317618728963), increasing transaction fees. This is a crucial incentive for miners to continue securing the network as coinbase rewards drop.
+If Bitcoin is just a store of value, transactions have low economic density. As a foundation for a decentralized economy, transactions gain value, boosting fees. This incentivizes miners as rewards decrease.
 
 ### Reading from Bitcoin State
 
-One of the things that gives the Stacks chain its superpowers in connecting with Bitcoin is not only how it connects to Bitcoin at a protocol level, discussed above, but also how we can utilize that Bitcoin at a programmatic level.
+Stacks' superpower is programmatic Bitcoin access, beyond protocol connection.
 
-That's where Clarity comes in. Clarity is the smart contract language for Stacks, and is how we actually build out a lot of the functionality we are talking about here.
+Clarity, Stacks' smart contract language, enables this functionality.
 
-One of the often-touted features of Clarity is that it has access to the state of the Bitcoin chain built in, but how does it actually do that? Because of Stacks' PoX mechanism, every Stacks block is connected to a Bitcoin block, and can query Bitcoin block header hashes with the [`get-burn-block-info?` function](https://github.com/stacksgov/sips/blob/feat/sip-015/sips/sip-015/sip-015-network-upgrade.md#new-method-get-burn-block-info).
+Clarity accesses Bitcoin state via Stacks' PoX. Each Stacks block links to a Bitcoin block, querying header hashes with [`get-burn-block-info?`](https://github.com/stacksgov/sips/blob/feat/sip-015/sips/sip-015/sip-015-network-upgrade.md#new-method-get-burn-block-info).
 
-This function allows us to pass in a Bitcoin block height and get back the header hash. The [`burn-block-height` Clarity keyword](https://docs.stacks.co/docs/write-smart-contracts/clarity-language/language-keywords#burn-block-height) will give us the current block height of the Bitcoin chain.
+It takes a Bitcoin block height and returns the header hash. [`burn-block-height`](https://docs.stacks.co/docs/write-smart-contracts/clarity-language/language-keywords#burn-block-height) gives the current Bitcoin block height.
 
-However, `get-burn-block-info?` only returns data of the Bitcoin block at that height if it has already been processed and was created after the launch of the Stacks chain. So if we want to evaluate whether or not something happened on Bitcoin, we have to wait at least one block later to do so.
+`get-burn-block-info?` returns data only for processed blocks after Stacks' launch. To check Bitcoin events, wait at least one block.
 
-This is step 1 of Clarity contracts being able to serve as the programming layer for Bitcoin. When a BTC transaction is initiated, the first thing that needs to happen is that a Clarity contract needs to become aware of it. This can happen manually by utilizing Clarity functions discussed above with the [BTC library](https://explorer.stacks.co/txid/0x8b112f2b50c1fa864997b7496aaad1e3940700309a3fdcc6c07f1c6f8b9cfb7b?chain=mainnet), as [Catamaran Swaps](https://docs.catamaranswaps.org/en/latest/catamaran.html) do.
+This is the first step for Clarity as Bitcoin's programming layer. For a BTC transaction, the Clarity contract must detect it. This can be manual using Clarity functions and the [BTC library](https://explorer.stacks.co/txid/0x8b112f2b50c1fa864997b7496aaad1e3940700309a3fdcc6c07f1c6f8b9cfb7b?chain=mainnet), like [Catamaran Swaps](https://docs.catamaranswaps.org/en/latest/catamaran.html).
 
 {% hint style="info" %}
 Note that this process is made easier by the additional Clarity functions added in 2.1, like the `get-burn-block-info?` function we looked at above.
 {% endhint %}
 
-Or we can automate (albeit at a cost of some centralization in our dapp) using an event-based architecture using something like Hiro's [chainhooks](https://www.hiro.so/blog/meet-4-new-features-in-clarinet#setting-up-trigger-actions-with-chainhooks), which will allow us to automatically trigger a Clarity contract call when a certain BTC transaction is initiated.
+Automation is possible with event-based architecture, like Hiro's [chainhooks](https://www.hiro.so/blog/meet-4-new-features-in-clarinet#setting-up-trigger-actions-with-chainhooks), triggering Clarity calls on BTC transactions (with some centralization).
 
-This is the first component of using Stacks to build Bitcoin dapps, the read access to Bitcoin chain.
+This is the first component for building Bitcoin dApps on Stacks: read access to the Bitcoin chain.
 
-Next up, let's dig a bit deeper into how exactly Stacks is "built on Bitcoin" by taking a look at Stacks' block production mechanism, Proof of Transfer.
+Next, let's explore how Stacks is 'built on Bitcoin' through its block production: Proof of Transfer.
