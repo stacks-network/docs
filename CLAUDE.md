@@ -28,19 +28,20 @@ This repository monitors merged PRs across all Stacks Network and Hiro Systems p
 ## Documentation Structure
 
 ### Primary Documentation Sections
-- `/concepts/` - Conceptual documentation about Stacks, PoX, Clarity, sBTC
-- `/guides-and-tutorials/` - Hands-on tutorials and how-to guides
-- `/reference/` - API reference and technical specifications
+- `/docs/learn/` - Conceptual documentation (Stacks 101, sBTC, Block Production)
+- `/docs/build/` - Developer guides, tutorials, and tools (Clarinet, Stacks.js)
+- `/docs/operate/` - Node operators, miners, and signers guides
+- `/docs/reference/` - API reference and technical specifications
 - `README.md` - Quick start and overview
 
 ### Key Documentation Areas
-- **Stacks blockchain concepts** - `/concepts/stacks-101/`
-- **sBTC documentation** - `/concepts/sbtc/`
-- **Clarity language** - `/concepts/clarity/`
-- **Node operations** - `/guides-and-tutorials/nodes-and-miners/`
-- **Signer operations** - `/guides-and-tutorials/running-a-signer/`
-- **Stacking guides** - `/guides-and-tutorials/stack-stx/`
-- **Developer quickstart** - `/guides-and-tutorials/hello-stacks-quickstart-tutorial.md`
+- **Stacks blockchain concepts** - `/docs/learn/stacks-101/`
+- **sBTC documentation** - `/docs/learn/sbtc/`
+- **Clarity language** - `/docs/learn/clarity/`
+- **Node operations** - `/docs/operate/run-a-node/`
+- **Signer operations** - `/docs/operate/run-a-signer/`
+- **Stacking guides** - `/docs/operate/stacking-stx/`
+- **Developer quickstart** - `/docs/build/get-started/developer-quickstart.md`
 
 ## Review Process
 
@@ -58,13 +59,13 @@ This repository monitors merged PRs across all Stacks Network and Hiro Systems p
    - Does this break existing functionality?
 
 3. **Check documentation** - Search our docs for related content:
-   - Use `grep -r "relevant_term" concepts/ guides-and-tutorials/ reference/`
+   - Use `grep -r "relevant_term" docs/learn/ docs/build/ docs/operate/ docs/reference/`
    - Look for mentions of changed functions, APIs, or concepts
    - Check if tutorials reference affected code
 
 4. **Be specific** - Point to exact files and sections that need updates
    - Don't say "update the Clarity docs"
-   - Say "update `/concepts/clarity/language-functions.md` line 145 to reflect new `map-set` signature"
+   - Say "update `/docs/reference/clarity/functions.md` line 145 to reflect new `map-set` signature"
 
 ### What Requires Documentation
 
@@ -193,13 +194,13 @@ Added a new Clarity built-in function `map-insert` that inserts a key-value pair
 ## Documentation Impact
 
 ### Files Needing Updates
-- [ ] `/concepts/clarity/language-functions.md` - Add documentation for map-insert function
-- [ ] `/guides-and-tutorials/clarity-hello-world.md` - Update map operations example
-- [ ] `/reference/clarity-language-reference.md` - Add to function reference table
+- [ ] `/docs/learn/clarity/overview.md` - Add documentation for map-insert function
+- [ ] `/docs/build/get-started/clarity-crash-course.md` - Update map operations example
+- [ ] `/docs/reference/clarity/functions.md` - Add to function reference table
 
 ## Recommended Changes
 
-### In `/concepts/clarity/language-functions.md`
+### In `/docs/learn/clarity/overview.md`
 
 **Section: Map Functions**
 

@@ -103,9 +103,9 @@ jobs:
                - Determine if it affects user-facing features, APIs, or workflows
 
             3. **Review our documentation:**
-               - Check /concepts directory for all conceptual documentation
-               - Check /guides-and-tutorials directory for tutorials and how-to guides
-               - Check /reference directory for API and reference documentation
+               - Check /docs/learn directory for all conceptual documentation
+               - Check /docs/build and /docs/operate directories for tutorials and guides
+               - Check /docs/reference directory for API and reference documentation
                - Read README.md
                - Look for setup/configuration guides
 

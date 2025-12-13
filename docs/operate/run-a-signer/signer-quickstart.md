@@ -18,7 +18,7 @@ If you want to get up and running as an active signer as quickly as possible, he
 
 If you are not familiar with how signing works yet, be sure to check out the [Signing concept guide](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/signing).
 
-If you would like a more detailed walkthrough of all of these steps, take a look at the [Running a Signer](file:///) guide.
+If you would like a more detailed walkthrough of all of these steps, take a look at the [Running a Signer](README.md) guide.
 
 {% hint style="danger" %}
 The CLI examples below may show outdated release versions. For the latest releases, always refer to the links above in the top info block.

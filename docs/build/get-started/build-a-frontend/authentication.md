@@ -66,4 +66,4 @@ function App() {
 
 The `connect()` method comes with the ability to configure how you want the wallet selector modal to appear for your app. You can decide which wallets to have only appear as an option or allow any wallet that follows the SIP-030 standard to appear as an available Stacks wallet.
 
-For the complete guides check out the [Stacks Connect](/broken/pages/JLRpUuDHPMxXaInZ9Vll) section.
+For the complete guides check out the [Stacks Connect](../../stacks.js/overview.md) section.
