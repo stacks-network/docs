@@ -98,3 +98,7 @@
   * [Parsing a Bitcoin Transaction](more-guides/bitcoin-integration/parsing-a-bitcoin-transaction.md)
 * [c32check](more-guides/c32check.md)
 * [Community Tutorials](more-guides/community-tutorials.md)
+
+***
+
+* [Stacks Devtools Ecosystem](stacks-devtools-ecosystem.md)
