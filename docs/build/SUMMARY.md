@@ -73,6 +73,7 @@
 * [Message Signing](stacks-connect/message-signing.md)
 * [Migration Guide](stacks-connect/migration-guide.md)
 * [Wallet Support](stacks-connect/wallet-support.md)
+* [Wallet Implementation](stacks-connect/wallet-implementation.md)
 
 ## Post-Conditions
 
