@@ -88,6 +88,7 @@
     * [Withdrawing: Pegging sBTC into BTC](more-guides/sbtc/bridging-bitcoin/sbtc-to-btc.md)
 * [Price Oracles](more-guides/price-oracles/README.md)
   * [Using Pyth with Stacks](more-guides/price-oracles/pyth.md)
+  * [Using DIA with Stacks](more-guides/price-oracles/dia.md)
 * [Onboarding](more-guides/onboarding/README.md)
   * [Signing with Turnkey](more-guides/onboarding/signing-with-turnkey.md)
 * [Bitcoin Integration](more-guides/bitcoin-integration/README.md)
