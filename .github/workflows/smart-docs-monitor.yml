@@ -2,13 +2,13 @@ name: Smart Docs Monitor
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Run every 6 hours
+    - cron: '0 0 * * *'  # Run every 24 hours at midnight UTC
   workflow_dispatch:
     inputs:
       hours_back:
         description: 'Hours to look back for merged PRs'
         required: false
-        default: '6'
+        default: '24'
 
 permissions:
   contents: read
@@ -36,7 +36,7 @@ jobs:
               .split('\n')
               .filter(line => line.trim() && !line.startsWith('#'));
 
-            const hoursBack = parseInt('${{ github.event.inputs.hours_back || '6' }}');
+            const hoursBack = parseInt('${{ github.event.inputs.hours_back || '24' }}');
             const since = new Date(Date.now() - hoursBack * 60 * 60 * 1000).toISOString();
 
             let batchSummary = '# Merged PRs to Review\n\n';
@@ -170,7 +170,7 @@ jobs:
             For each PR that needs documentation, create an issue using:
             ```bash
             gh issue create \
-              --repo kenny-stacks/docs \
+              --repo stacks-network/docs \
               --title "[Docs Update] [repo-name] PR #123: Brief description" \
               --body "$(cat <<'EOF'
             ## Source PR
@@ -182,7 +182,7 @@ jobs:
               --label "documentation,auto-generated,sync-needed,[repo-name],priority-[level],[docs-update|docs-new|docs-remove]"
             ```
             
-            **Important:** Create issues in the kenny-stacks/docs repository (this fork) for testing.
+            **Important:** Create issues in the stacks-network/docs repository.
             
             After creating each issue, mark it as completed in your todo list before moving to the next one.
           claude_args: |
