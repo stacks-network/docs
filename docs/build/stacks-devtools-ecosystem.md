@@ -47,6 +47,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 * [**Signal21**](https://signal21.io/) - Data analytics platform for the Bitcoin Economy: on-chain visibility into Bitcoin L1, L2s, and Dapps.
 * [**Velar Devtools**](https://docs.velar.com/velar/developers) - Velar SDK and APIs allowing developers to implement token swaps, manage liquidity, and interact with the Velar DEX/DeFi ecosystem.
 * [**Bitflow Devtools**](https://docs.bitflow.finance/bitflow-documentation/developers/overview) - Documentation on Bitflow's SDKs and contracts for interacting with Bitflow's DeFi ecosystem.
+* [**Chainhooks-Go-Client**](https://github.com/tony1908/chainhooks-client-go) - A comprehensive Go client library for interacting with the Hiro Chainhooks API.
 
 ### Testing & Simulation
 
