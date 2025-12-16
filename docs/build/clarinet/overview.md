@@ -6,6 +6,8 @@ description: >-
 
 # Overview
 
+Clarinet is a development framework and Clarity runtime packaged as a command line tool, designed to facilitate smart contract understanding, development, testing and deployment. It contains a suite of tools for building, testing, and deploying Clarity smart contracts for the Stacks blockchain.
+
 Clarinet is the fastest way to build, test, and deploy smart contracts on the Stacks blockchain. It gives you a local devnet, REPL, testing framework, and debugging tools to ship high-quality Clarity code with confidence.
 
 {% hint style="success" %}

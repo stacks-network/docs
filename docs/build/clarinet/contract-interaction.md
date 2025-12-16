@@ -1,10 +1,21 @@
 # Contract Interaction
 
-Clarinet provides powerful tools for interacting with your contracts during development. The console gives you an interactive REPL where you can call functions, inspect state, and debug issues in real time.
+Clarinet provides powerful tools for interacting with your contracts during development. The console gives you an interactive REPL where you can call functions, inspect state, and debug issues in real time. This interactive REPL environment in the console is also referred to as the simnet.
+
+<details>
+
+<summary>What is a simnet?</summary>
+
+* Simnet is a lightweight environment optimized for fast feedback loops, introspection and portability.
+* Simnet focuses on letting you quickly iterate on your code and test the code of the contract itself through unit testing. It’s a good preliminary debugging step before introducing the additional variables that come with a fully-fledged blockchain environment.
+* Simnet enables you to create a bunch of reports about contract analysis, execution costs, and more and is a useful tool for unit testing your smart contracts.
+* In simnet, the blockchain environment is simulated and can be run anywhere (in the terminal with clarinet console, web browsers, GitHub actions, etc).
+
+</details>
 
 ## Starting the console
 
-Use `clarinet console` to launch an interactive session with your contracts deployed to a local simulated blockchain:
+Use `clarinet console` to launch an interactive session with your contracts deployed to a local simulated blockchain REPL. This is also referred to as simnet.
 
 ```bash
 clarinet console
