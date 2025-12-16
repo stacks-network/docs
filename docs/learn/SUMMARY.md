@@ -26,7 +26,6 @@
   * [How Transactions Work](transactions/how-transactions-work.md)
   * [Post Conditions](transactions/post-conditions.md)
 * [Clarity](clarity/README.md)
-  * [Overview](clarity/overview.md)
   * [Decidability](clarity/decidability.md)
 * [sBTC](sbtc/README.md)
   * [Core Features](sbtc/core-features.md)
