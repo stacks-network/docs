@@ -1,20 +1,22 @@
+---
+description: A smart contract language built to be readable and predictable.
+---
+
 # Clarity
 
 <figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
-Clarity is the smart contract language that Stacks uses. It has been built from the ground up to make it easier for developers to write safe, secure smart contracts. Clarity has several unique features that make it an ideal choice for writing smart contracts. We'll go over an overview of Clarity here, and highly recommend checking out the [Clarity Crash Course](https://app.gitbook.com/u/ZrQItu6D9bMKmf1HfsLTnGc05WZ2) guide to dig in and get started learning Clarity.
+{% hint style="info" %}
+Head to the [Clarity Crash Course](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/get-started/clarity-crash-course) to build your first Clarity smart contract.
+{% endhint %}
 
-Clarity is a **decidable** smart contract language that optimizes for predictability and security, designed for the Stacks blockchain. Smart contracts allow developers to encode essential business logic on a blockchain.
+Clarity is a **decidable** smart contract language that optimizes for predictability and security, designed for the Stacks blockchain. It has been built from the ground up to make it easier for developers to write safe, secure smart contracts. Clarity has several unique features that make it an ideal choice for writing smart contracts.
 
 The design decisions behind Clarity were based heavily on taking lessons learned in common Solidity exploits and creating a language that has been purpose-built for safety and security in mind.
 
-These docs serve primarily as a reference for the functions and keywords that you can use in Clarity.
-
-In order to learn Clarity, we recommend diving into the [Clarity of Mind](https://book.clarity-lang.org/), an online book to teach you everything you need to know to build robust smart contracts, or joining a [Clarity Camp](https://clarity-lang.org/universe#camp), the cohort-based immersive Clarity experience.
-
 ### What makes Clarity different
 
-The following section is an excerpt from the book, [Clarity of Mind](https://book.clarity-lang.org/ch00-00-introduction.html):
+The following section is an excerpt from the Clarity book, [Clarity of Mind](https://book.clarity-lang.org/ch00-00-introduction.html):
 
 The number of smart contract languages grows by the year. Choosing a first language can be challenging, especially for a beginner. The choice is largely dictated by the ecosystem you are interested in, although some languages are applicable to more than just one platform. Each language has its own upsides and downsides and it is out of the scope of this book to look at all of them. Instead, we will focus on what sets Clarity apart and why it is a prime choice if you require the utmost security and transparency.
 
