@@ -1,6 +1,19 @@
 # Local Blockchain Development
 
-Clarinet ships with a complete local blockchain environment so you can build, test, and debug smart contracts without deploying to a public network.
+Clarinet ships with a complete local blockchain environment so you can build, test, and debug smart contracts without deploying to a public network. This local blockchain environment is what is referred to as a devnet.&#x20;
+
+<details>
+
+<summary>What is a devnet?</summary>
+
+* A devnet refers to a local blockchain development environment in which your smart contracts and front end application can interact with simulated blockchain entities.&#x20;
+* With a devnet, your smart contract application can interact with simulated blockchain entities (miners, nodes, and a stream of mined blocks), all within your local machine.
+* When devnets simulate a blockchain environment, the entities created—the other contracts, transactions, or nodes—resemble the conditions your application will inhabit once in production.&#x20;
+* Devnets enable you to create different blockchain configurations.
+* You can share a simnet environment with other devs and collaborate with them.
+* You can start a devnet at an arbitrary block height with a specified network upgrade at a later block, and with many simulated users, to see how your application responds.
+
+</details>
 
 ## Starting your local blockchain
 

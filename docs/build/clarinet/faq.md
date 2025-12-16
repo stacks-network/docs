@@ -16,7 +16,7 @@ To test with sBTC tokens, add the mainnet sBTC contract as a requirement and min
   // The sBTC multisig address that can mint\
   `const sbtcDeployer = "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4";`\
   // Mint sBTC to your test wallet\
-  `const mintTx = simnet.callPublicFn(  "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",  "mint",  [Cl.uint(1000000), Cl.principal(wallet1)],  sbtcDeployer);`\
+  `const mintTx = simnet.callPublicFn( "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token", "mint", [Cl.uint(1000000), Cl.principal(wallet1)], sbtcDeployer);`\
   \
   This approach lets you work with sBTC in unit tests without complex Bitcoin transaction simulation.
 
@@ -168,5 +168,23 @@ Block 140: Should transition to 3.0
 ```
 
 The Clarinet team is working on improving epoch transition stability and plans to allow starting devnet in epoch 3.0.
+
+</details>
+
+<details>
+
+<summary>What's the difference between simnet and devnet?</summary>
+
+A simnet is a lightweight environment optimized for fast feedback loops, introspection and portability. The scenarios you would use simnet would be during Clarinet console interaction, unit testing, and execution costs reporting.
+
+A devnet refers to a local blockchain development environment in which your smart contracts and front end application can interact with simulated blockchain entities. The scenarios you would use devnet is during your front end development, interaction with web wallets, and creating custom blockchain configurations for testing.
+
+|                     | Simnet                                                                                     | Devnet                                                                                                            |
+| ------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| Testing Scope       | good for unit/integration tests                                                            | good for end to end testing with deployment, real multi-contract interactions with wallets, web interactions, etc |
+| State Persistence   | no persistent state, resets with each run                                                  | persistent state, can retain data across sessions                                                                 |
+| Network Behavior    | does not simulate real network behavior (ie you control block heights and mining manually) | simulates network behavior automatically like block progress, txs, etc                                            |
+| Consensus Mechanism | not applicable, operates in a simulated context                                            | can implement and test against consensus rules                                                                    |
+| Transaction Fees    | no tx fees or gas                                                                          | can simulate these in real world scenarios                                                                        |
 
 </details>
