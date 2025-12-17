@@ -18,9 +18,9 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 
 * [**Clarinet**](https://github.com/stx-labs/clarinet) **\[StacksLabs]** – A local Clarity smart contract development environment with testing and deployment tools, designed to help you build, debug, and iterate on Stacks contracts quickly.
 * [**Clarity Playground**](https://github.com/stx-labs/clarity-playground) **\[StacksLabs]** - Run Clarity code in the browser with the Clarinet SDK.
-* [**Clarity-WASM**](https://github.com/stx-labs/clarity-wasm) **\[StacksLabs]** - `clar2wasm` is a compiler for generating WebAssembly from Clarity.
 * [**Clarity-Zed**](https://github.com/stx-labs/clarity-zed) **\[StacksLabs]** - Clarity Language Support for Zed editor.
 * [**Stacks Pyth Bridge**](https://github.com/stx-labs/stacks-pyth-bridge) **\[StacksLabs]** - The Pyth protocol integration is available as a beta on both testnet and mainnet networks for Stacks, to help developers test, give feedback, and ensure the reliability and stability of the integration.
+* [**Clarity-WASM**](https://github.com/stx-labs/clarity-wasm) **\[StacksLabs]** - `clar2wasm` is a compiler for generating WebAssembly from Clarity.
 
 <details>
 
@@ -41,10 +41,10 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 
 <summary>Community &#x26; Experimental</summary>
 
+* [**Clarigen**](https://www.clarigen.dev/) - Clarigen is a developer tool that automatically generates TypeScript-friendly clients that can interact with Clarity smart contracts.
 * [**Stacks.js Starters**](https://github.com/stx-labs/stacks.js-starters) **\[StacksLabs]** - Quickly bootstrap frontend applications with Stacks.js on top of multiple JavaScript frameworks as the foundation.
 * [**SecondLayer**](https://github.com/ryanwaits/secondlayer) - Generate fully typed contract interfaces, functions, and React hooks for Clarity smart contracts.
 * [**Clarity-types**](https://github.com/ryanwaits/clarity-types) - Strict TypeScript types for Clarity ABI properties and values.
-* [**Clarigen**](https://github.com/hstove/clarigen) - Clarigen is a developer tool that automatically generates TypeScript-friendly clients that can interact with Clarity smart contracts.
 * [**Stacks Kit**](https://github.com/karkigrishmin/stacks-kit) - React toolkit for Stacks blockchain. Think RainbowKit, but for Bitcoin L2.
 * [**Stacks.rs**](https://github.com/52/stacks.rs) - A Rust toolkit to interact with the Stacks Blockchain.
 * [**StacksPy**](https://github.com/rohitverma007/stackspy) - Python Library to interact with the Stacks blockchain.
@@ -124,14 +124,14 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 
 ### Core
 
-* [**Stacks Core**](https://github.com/stx-labs/stacks-core) **\[StacksLabs]** - Reference implementation of the Stacks blockchain in Rust.
-* [**Stacks-Monitoring**](https://github.com/alexlmiller/stacks-monitoring) - Observability stack for Stacks blockchain nodes and signers - dashboards, alerts, and log processing.
+* [**Stacks Core**](https://github.com/stacks-network/stacks-core) **\[StacksLabs]** - Reference implementation of the Stacks blockchain in Rust.
+* [**Stacks Blockchain Docker**](https://github.com/stacks-network/stacks-blockchain-docker) **\[StacksLabs]** - Run your own Stacks Blockchain node with Docker.
 
 <details>
 
 <summary>Community &#x26; Experimental</summary>
 
-* [**Stacks Blockchain Docker**](https://github.com/stacks-network/stacks-blockchain-docker) - Run your own Stacks Blockchain node with Docker.
+* [**Stacks-Monitoring**](https://github.com/alexlmiller/stacks-monitoring) - Observability stack for Stacks blockchain nodes and signers - dashboards, alerts, and log processing.
 
 </details>
 
