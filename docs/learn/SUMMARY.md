@@ -48,7 +48,6 @@
   * [Walkthroughs](sbtc/walkthroughs/README.md)
     * [Signer Process Walkthrough](sbtc/walkthroughs/signer-process-walkthrough.md)
     * [sBTC Transaction Walkthrough](sbtc/walkthroughs/sbtc-transaction-walkthrough.md)
-    * [How to Earn sBTC Rewards](sbtc/walkthroughs/how-to-earn-sbtc-rewards.md)
   * [Using the sBTC Bridge App](sbtc/using-the-sbtc-bridge-app/README.md)
     * [How to Use the sBTC Bridge with Xverse/Leather](sbtc/using-the-sbtc-bridge-app/how-to-use-the-sbtc-bridge.md)
     * [How to Use the sBTC Bridge with Fordefi](sbtc/using-the-sbtc-bridge-app/how-to-use-the-sbtc-bridge-with-fordefi.md)
