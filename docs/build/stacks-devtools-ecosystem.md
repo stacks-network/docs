@@ -27,15 +27,15 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 
 * [**Stacks.js**](https://github.com/stx-labs/stacks.js) **\[StacksLabs]** – A JavaScript/Typescript library that makes it easy to interact with the Stacks blockchain, including authentication, transactions, and smart contract calls from web apps.
 * [**Stacks.js Starters**](https://github.com/stx-labs/stacks.js-starters) **\[StacksLabs]** - Quickly bootstrap frontend applications with Stacks.js on top of multiple JavaScript frameworks as the foundation.
-* [**Clarity-Go**](https://github.com/stx-labs/clarity-go) **\[StacksLabs]** - A Go library for decoding Clarity values from their binary serialization format used by the Stacks blockchain.
 * [**SecondLayer**](https://github.com/ryanwaits/secondlayer) - Generate fully typed contract interfaces, functions, and React hooks for Clarity smart contracts.
 * [**Clarity-types**](https://github.com/ryanwaits/clarity-types) - Strict TypeScript types for Clarity ABI properties and values.
 * [**Clarigen**](https://github.com/hstove/clarigen) - Clarigen is a developer tool that automatically generates TypeScript-friendly clients that can interact with Clarity smart contracts.
+* [**Stacks Kit**](https://github.com/karkigrishmin/stacks-kit) - React toolkit for Stacks blockchain. Think RainbowKit, but for Bitcoin L2.
+* [**Clarity-Go**](https://github.com/stx-labs/clarity-go) **\[StacksLabs]** - A Go library for decoding Clarity values from their binary serialization format used by the Stacks blockchain.
 * [**Stacks.rs**](https://github.com/52/stacks.rs) - A Rust toolkit to interact with the Stacks Blockchain.
 * [**StacksPy**](https://github.com/rohitverma007/stackspy) - Python Library to interact with the Stacks blockchain.
-* [**x402-Stacks**](https://github.com/tony1908/x402Stacks) - A TypeScript library for implementing the x402 payment protocol on Stacks blockchain.&#x20;
-* [**AIBTC**](https://github.com/aibtcdev) - AI agent tooling for Stacks.
 * [**Bitcoin TX Proof**](https://github.com/kenrogers/bitcoin-tx-proof) - A TypeScript library for generating Bitcoin transaction proofs, including witness data and merkle proofs. This package helps developers verify Bitcoin transactions in Clarity.
+* [**Clarity Bitcoin Client**](https://github.com/BigMarketDao/clarity-bitcoin-client) - TypeScript library for interacting with the `clarity-bitcoin-lib` contract on Stacks.
 
 ### Indexing & Data
 
@@ -43,11 +43,14 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 * [**Token Metadata APIs**](https://github.com/hirosystems/token-metadata-api) **\[Hiro] -** Fetch metadata for every token on Stacks and effortlessly put tokens into your app. Verify and display tokens in your app, for everything from DeFi to NFTs.&#x20;
 * [**Bitcoin Indexer**](https://github.com/hirosystems/bitcoin-indexer) **\[Hiro] -** Index Bitcoin meta-protocols like Ordinals, BRC-20, and Runes.
 * [**Chainhooks**](https://github.com/hirosystems/chainhook) **\[Hiro]** – A notification service for dApps that triggers webhooks on specific blockchain events, helping you respond to transactions, contract calls, and chain reorganizations in real time.
+* [**Chainhooks-Go-Client**](https://github.com/tony1908/chainhooks-client-go) - A comprehensive Go client library for interacting with the Hiro Chainhooks API.
 * [**BNS**](https://www.bnsv2.com/docs) - [API](https://github.com/Strata-Labs/bnsv2-api) and [SDK](https://github.com/Strata-Labs/bns-v2-sdk) documentation for BNSv2, covering how to programmatically register, resolve, and manage Bitcoin Name System identities using on-chain contracts and developer libraries.
 * [**Signal21**](https://signal21.io/) - Data analytics platform for the Bitcoin Economy: on-chain visibility into Bitcoin L1, L2s, and Dapps.
 * [**Velar Devtools**](https://docs.velar.com/velar/developers) - Velar SDK and APIs allowing developers to implement token swaps, manage liquidity, and interact with the Velar DEX/DeFi ecosystem.
 * [**Bitflow Devtools**](https://docs.bitflow.finance/bitflow-documentation/developers/overview) - Documentation on Bitflow's SDKs and contracts for interacting with Bitflow's DeFi ecosystem.
-* [**Chainhooks-Go-Client**](https://github.com/tony1908/chainhooks-client-go) - A comprehensive Go client library for interacting with the Hiro Chainhooks API.
+* [**x402-Stacks**](https://github.com/tony1908/x402Stacks) - A TypeScript library for implementing the x402 payment protocol on Stacks blockchain.&#x20;
+* [**StacksAgent MCP**](https://github.com/kai-builder/stacksagent-mcp) - A Model Context Protocol (MCP) server that enables Claude Desktop to interact with the Stacks blockchain.
+* [**AIBTC**](https://github.com/aibtcdev) - AI agent tooling for Stacks.
 
 ### Testing & Simulation
 
