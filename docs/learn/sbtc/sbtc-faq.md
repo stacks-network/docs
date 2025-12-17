@@ -159,9 +159,9 @@ We are actively working with institutional custodians, staking providers, and ot
 
 <details>
 
-<summary>Why is there a .01 BTC minimum for BTC to sBTC deposits?</summary>
+<summary>Why is there a .001 BTC minimum for BTC to sBTC deposits?</summary>
 
-A .01 BTC minimum is imposed for BTC to sBTC deposits to ensure the system does not get spammed by many smaller transactions. We are exploring reducing the deposit minimum for future phases.
+A .001 BTC minimum is imposed for BTC to sBTC deposits to ensure the system does not get spammed by many smaller transactions. We are exploring reducing the deposit minimum for future phases.
 
 </details>
 
