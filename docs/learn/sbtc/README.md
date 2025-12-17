@@ -7,10 +7,10 @@ description: Design of a Trustless Two-way Peg for Bitcoin
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="info" %}
-#### For builders and developers, head to the [sBTC pages](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/more-guides/sbtc) under the Build section to start integrating sBTC into your Clarity smart contracts and front-end application.
+For builders and developers, head to the [sBTC guides](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/more-guides/sbtc) under the Build section to start integrating sBTC into your Clarity smart contracts and front-end application.
 {% endhint %}
 
-### Introduction to sBTC
+### Introduction
 
 sBTC is a SIP-010 token on the Stacks blockchain that represents Bitcoin (BTC) in a 1:1 ratio. It enables Bitcoin holders to participate in DeFi applications and other smart contract functionalities while maintaining a peg to the underlying Bitcoin.
 
@@ -32,7 +32,7 @@ The primary purpose of sBTC is to bridge Bitcoin to DeFi via the Stacks blockcha
 3. **Decentralized Management**: Initially utilizes a set of 15 community-chosen signers for maintaining the peg wallet.
 4. **Community Governance**: Involves the community in key decisions, such as selecting the initial signing set.
 
-### Key Concepts of sBTC
+### Key Concepts
 
 Understanding sBTC requires familiarity with several key concepts:
 
@@ -75,7 +75,7 @@ Understanding these concepts is crucial for grasping the overall architecture an
 
 ***
 
-#### Extra Resources
+#### Additional Resources
 
 * \[[sBTC Whitepaper](https://stacks-network.github.io/stacks/sbtc.pdf)] The official sBTC whitepaper
 * \[[Stacks Foundation](https://stacks.org/sbtc-on-mainnet)] Official sBTC launch announcement (December 2024)

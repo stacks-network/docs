@@ -73,66 +73,6 @@ Read the "[Selection of sBTC Signer Set](https://github.com/stacks-network/sbtc/
 
 </details>
 
-### sBTC Rewards Program
-
-<details>
-
-<summary>Where does the yield paid in BTC come from?</summary>
-
-The sBTC Rewards Program is powered by a group of Stackers "Stacking" STX to a designated reward address, contributing their BTC rewards to the program.
-
-When Stacking STX, Stackers receive BTC through Stack's [Proof-of-Transfer](https://docs.stacks.co/concepts/stacks-101/proof-of-transfer) (PoX) consensus mechanism. For example, over a given 2-week period, the Stacks protocol has historically [distributed around 10% APY to Stackers](https://www.stacking-tracker.com/), paid in BTC.
-
-To enable the sBTC Rewards Program, these stackers contribute the corresponding Proof of Transfer BTC rewards to the sBTC incentive pool. This BTC from the incentive pool is directly deposited into a smart contract that bridges the BTC to sBTC and distributes the rewards pro rata to sBTC holders.
-
-The program is designed to increase sBTC liquidity and drive early usage of the protocol.
-
-Here's a handy illustration to show the sBTC incentives design:
-
-</details>
-
-<details>
-
-<summary>How are rewards distributed?</summary>
-
-sBTC is automatically distributed every two weeks to the STX address used to enroll in your non-custodial wallet.
-
-</details>
-
-<details>
-
-<summary>What do I have to do to be eligible for rewards?</summary>
-
-To be eligible, you must enroll in the rewards program at bitcoinismore.org.
-
-</details>
-
-<details>
-
-<summary>Do I need to re-enroll in the sBTC Rewards Program if I previously enrolled in the sBTC Rewards Program and have received additional sBTC?</summary>
-
-No re-enrollment is needed. The Yield smart contract will automatically calculate enrolled users updated balance, as long as the sBTC contract address remains the same.
-
-</details>
-
-<details>
-
-<summary>What level of rewards should I expect?</summary>
-
-The level of rewards users can expect will vary based on the amount of STX in the rewards pool, the PoX yield rate, and the amount of sBTC that has been minted.
-
-</details>
-
-<details>
-
-<summary>What is the difference between PoX Rewards and the sBTC Rewards Program?</summary>
-
-PoX Bitcoin rewards are earned by Stackers who lock up their STX tokens to secure the Stacks network, a process that has been ongoing since the launch of Stacks.
-
-The sBTC Rewards Program, on the other hand, offers additional BTC rewards specifically for early adopters who hold sBTC without requiring them to participate in network consensus or lock up any tokens.
-
-</details>
-
 ### Using sBTC
 
 <details>
@@ -169,9 +109,7 @@ A .001 BTC minimum is imposed for BTC to sBTC deposits to ensure the system does
 
 <summary>What are the steps to use the sBTC Bridge and earn rewards?</summary>
 
-In the Stacks Documentation, find a [video](https://www.youtube.com/watch?v=XZruuDgTo4k\&t=1s) and a [more detailed walkthrough](https://docs.stacks.co/guides-and-tutorials/sbtc/how-to-use-the-sbtc-bridge).
-
-Ensure BTC is accessible in a supported walletEnsure BTC is accessible via one of the following non-custodial wallets: Xverse, Leather, Ledger, or Asigna.Connect your wallet to the sBTC appTo interact with the sBTC protocol and mint sBTC, head to app.stacks.co and connect your non-custodial wallet with BTC ready to deposit.Enter BTC amountEnter the BTC amount to convert to sBTC (app.stacks.co will guide you through this step).Provide your Stacks receiving addressEnter your Stacks receiving address to initiate the transfer (app.stacks.co will guide you through this step).Enroll in the rewards programAfter your sBTC has been minted to your wallet, visit the rewards program site at bitcoinismore.org and connect your wallet. Then click the 'Earn Rewards' button. Read more in the Stacks Documentation.Start earningSeamlessly start earning sBTC rewards. sBTC is automatically paid every two weeks to the STX address used to enroll in your non-custodial wallet.Note: There is an initial lock-up period until withdrawals are activated in March. Following the lock-up period, sBTC can always be withdrawn.
+In the Stacks Documentation, find a [video](https://www.youtube.com/watch?v=XZruuDgTo4k\&t=1s) and a more detailed [walkthrough](using-the-sbtc-bridge-app/).
 
 </details>
 
@@ -250,13 +188,5 @@ If you received a "Errors.Invalid\_Transaction" error when using an Xverse Walle
 BTC to sBTC conversions are typically completed within 3 Bitcoin blocks. Due to the speed of Bitcoin blocks, deposits can take up to two hours to see sBTC in your wallet.
 
 However, there may be a lag with your Leather or Xverse wallet where the sBTC will take another 20 minutes to show up in the wallet.
-
-</details>
-
-<details>
-
-<summary>I didn't receive a confirmation that I enrolled in the rewards program. How can I ensure I'm enrolled?</summary>
-
-Visit [bitcoinismore.org](https://bitcoinismore.org/). On the enroll page, when your wallet is linked, it will say enrolled if you are enrolled in the program.
 
 </details>
