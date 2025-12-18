@@ -26,10 +26,11 @@ For more info on xReserve, check out the dedicated Circle docs [here](https://de
 
 ### Discover more of USDCx
 
-<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4>Operations</h4></td><td><a href="operations.md">operations.md</a></td></tr><tr><td><h4>Contracts</h4></td><td><a href="contracts/">contracts</a></td></tr><tr><td><h4>Bridge App</h4></td><td><a href="bridge-app/">bridge-app</a></td></tr><tr><td><h4>Security</h4></td><td><a href="/broken/pages/lpi1fDfEzVNhJIl6VUWP">Broken link</a></td></tr><tr><td><h4>FAQ</h4></td><td><a href="faq.md">faq.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4>Operations</h4></td><td><a href="operations.md">operations.md</a></td></tr><tr><td><h4>Contracts</h4></td><td><a href="contracts/">contracts</a></td></tr><tr><td><h4>Bridge App</h4></td><td><a href="bridge-app/">bridge-app</a></td></tr><tr><td><h4>FAQ</h4></td><td><a href="faq.md">faq.md</a></td></tr></tbody></table>
 
 ***
 
 ### Additional Resources
 
-* \[[Stacks Blog](https://www.stacks.co/blog/stacks-circle-xreserve-usdc)] Stacks to integrate Circle xReserve for USDC interoperability&#x20;
+* \[[Stacks Blog](https://www.stacks.co/blog/usdcx-launch-stacks-bitcoin-defi)] USDCx Launches on Stacks: Bitcoin Gets Its Top Tier Stablecoin
+* \[[Circle Blog](https://www.circle.com/blog/usdcx-on-stacks-now-available-via-circle-xreserve)] USDCx on Stacks now available via Circle xReserve
