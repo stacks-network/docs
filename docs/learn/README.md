@@ -1,5 +1,4 @@
 ---
-description: 'Stacks: The leading Bitcoin L2.'
 layout:
   width: default
   title:

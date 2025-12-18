@@ -69,7 +69,6 @@
     * [Contracts](bridging/usdcx/contracts/README.md)
       * [usdcx-v1](bridging/usdcx/contracts/usdcx-v1.md)
       * [usdcx-token](bridging/usdcx/contracts/usdcx-token.md)
-    * [Bridge App](bridging/usdcx/bridge-app/README.md)
+    * [USDCx Bridge App](bridging/usdcx/bridge-app/README.md)
       * [Migrating aeUSDC](bridging/usdcx/bridge-app/migrating-aeusdc.md)
-    * [Security](bridging/usdcx/security.md)
     * [FAQ](bridging/usdcx/faq.md)

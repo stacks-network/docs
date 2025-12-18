@@ -2,6 +2,14 @@
 
 <details>
 
+<summary>What's the purpose of having stablecoins on Stacks?</summary>
+
+Stablecoins make capital move. They enable institutions to lend and borrow, and they give users access to liquidity without leaving the Bitcoin economy.
+
+</details>
+
+<details>
+
 <summary>Why is it USDCx and not native USDC on Stacks?</summary>
 
 USDCx is a 1:1 USDC-backed stablecoin issued through Circle xReserve and native to Stacks. xReserve provides cryptographic attestations for deposits and minting, while Circle Gateway and CCTP handle cross-chain movement. The result is USDC on Stacks without third-party bridges, wrapped assets, or fragmented liquidity.
@@ -12,9 +20,17 @@ With this setup, Stacks now has a fully USDC-backed stablecoin that plugs direct
 
 <details>
 
-<summary>What's the purpose of having stablecoins on Stacks?</summary>
+<summary>Which networks are supported for USDCx interoperabiity?</summary>
 
-Stablecoins make capital move. They enable institutions to lend and borrow, and they give users access to liquidity without leaving the Bitcoin economy.
+Currently, interoperability is between Ethereum and Stacks. Other Circle/CCTP-compatible networks will be added in the future.
+
+</details>
+
+<details>
+
+<summary>How is USDCx different from aeUSDC?</summary>
+
+aeUSDC on Stacks is a bridged form of USDC managed by Allbridge. Now that USDCx is live on Stacks, aeUSDC holders should upgrade to USDCx for better liquidity, better UX and improved trust assumptions. aeUSDC was first released in 2023. It will be gradually depreciated in favor of USDCx.
 
 </details>
 
@@ -30,5 +46,13 @@ With USDCx, developers get a reliable dollar rail to build with, users get predi
 * Simplified user experience with Circle-managed reserves
 * Institutional confidence and proven infrastructure
 * Bitcoin capital flowing freely to where it's most productive
+
+</details>
+
+<details>
+
+<summary>What will happen to aeUSDC?</summary>
+
+aeUSDC will be gradually depreciated in favor of USDCx. Now that USDCx is live on Stacks, aeUSDC holders should upgrade to USDCx for better liquidity, better UX and improved trust assumptions.
 
 </details>
