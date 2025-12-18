@@ -1,6 +1,6 @@
 # usdcx-token
 
-{% code title="usdcx-token.clar" lineNumbers="true" expandable="true" %}
+{% code title=".usdcx" lineNumbers="true" expandable="true" %}
 ```clarity
 ;; USDCx token
 ;;
@@ -14,7 +14,7 @@
 ;; - `pause`: Allowed to pause and unpause the protocol
 ;;
 
-(impl-trait 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.sip-010-trait-ft-standard.sip-010-trait)
+(impl-trait 'SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE.sip-010-trait-ft-standard.sip-010-trait)
 
 ;; `tx-sender` or `contract-caller` tried to move a token it does not own.
 (define-constant ERR_NOT_OWNER (err u4))
@@ -313,7 +313,7 @@
 ```
 {% endcode %}
 
-## **USDCx Contract Summary**
+## **USDCx-Token Contract Summary**
 
 This contract implements **USDCx**, a SIP-010 fungible token on Stacks with a **role-based access control system** and **pause functionality** for protocol safety. It exposes the standard SIP-010 interface for transfers, supply queries, and metadata, while providing protocol-only functions for minting, burning, governance updates, and pausing.
 

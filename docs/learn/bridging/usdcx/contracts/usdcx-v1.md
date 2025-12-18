@@ -1,6 +1,6 @@
 # usdcx-v1
 
-{% code title="usdcx-v1.clar" lineNumbers="true" expandable="true" %}
+{% code title=".usdcx-v1" lineNumbers="true" expandable="true" %}
 ```clarity
 ;; USDCx v1
 ;;
@@ -44,12 +44,17 @@
 (define-constant ERR_INVALID_DEPOSIT_REMOTE_RECIPIENT_LENGTH (err u115))
 ;; The withdrawal amount is less than the minimum withdrawal amount.
 (define-constant ERR_INVALID_WITHDRAWAL_AMOUNT_TOO_LOW (err u116))
+;; The native domain is not the supported value (currently only 0)
+(define-constant ERR_INVALID_NATIVE_DOMAIN (err u117))
 
 ;; Magic bytes for deposit encoding
 (define-constant DEPOSIT_INTENT_MAGIC 0x5a2e0acd)
 
 ;; Supported version for parsing deposit intents
 (define-constant DEPOSIT_INTENT_VERSION u1)
+
+;; Supported native-domain for withdrawals
+(define-constant ETHEREUM_NATIVE_DOMAIN u0)
 
 ;; Allowed `domain` for deposits
 (define-constant DOMAIN u10003)
@@ -152,9 +157,7 @@
   )
   (begin
     ;; #[filter(public-key, enabled)]
-    (try! (contract-call? 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.usdcx
-      validate-protocol-caller 0x00 contract-caller
-    ))
+    (try! (contract-call? .usdcx validate-protocol-caller 0x00 contract-caller))
     (map-set circle-attestors public-key enabled)
     (ok true)
   )
@@ -225,14 +228,11 @@
   )
 )
 
-;; 32-byte encoded version of the `'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.usdcx` contract address.
+;; 32-byte encoded version of the `.usdcx` contract address.
 ;; This must be used in deposit intents as the `remote-token` field.
 (define-read-only (get-valid-remote-token)
   (concat 0x00000000
-    (unwrap-panic (as-max-len?
-      (unwrap-panic (to-consensus-buff? 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.usdcx))
-      u28
-    ))
+    (unwrap-panic (as-max-len? (unwrap-panic (to-consensus-buff? .usdcx)) u28))
   )
 )
 
@@ -298,15 +298,13 @@
     ;; mint to the recipient
     (if (is-eq mint-amount u0)
       true
-      (try! (contract-call? 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.usdcx
-        protocol-mint mint-amount (get remote-recipient parsed-intent)
+      (try! (contract-call? .usdcx protocol-mint mint-amount
+        (get remote-recipient parsed-intent)
       ))
     )
     (if (is-eq fee-amount u0)
       true
-      (try! (contract-call? 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.usdcx
-        protocol-mint fee-amount tx-sender
-      ))
+      (try! (contract-call? .usdcx protocol-mint fee-amount tx-sender))
     )
     (map-set used-nonces (get nonce parsed-intent) true)
     (print {
@@ -325,9 +323,7 @@
 ;; Can only be called by a caller with the custom role `0x04` role.
 (define-public (set-min-withdrawal-amount (new-min-withdrawal-amount uint))
   (begin
-    (try! (contract-call? 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.usdcx
-      validate-protocol-caller 0x04 contract-caller
-    ))
+    (try! (contract-call? .usdcx validate-protocol-caller 0x04 contract-caller))
     (var-set min-withdrawal-amount new-min-withdrawal-amount)
     (ok true)
   )
@@ -342,6 +338,8 @@
 ;; This function burns USDCx from the caller's account and emits a `burn` event.
 ;;
 ;; The amount must be greater than or equal to the minimum withdrawal amount.
+;;
+;; `native-domain` must be a supported value (currently only `ETHEREUM_NATIVE_DOMAIN` (u0)).
 (define-public (burn
     (amount uint)
     (native-domain uint)
@@ -351,9 +349,10 @@
     (asserts! (>= amount (var-get min-withdrawal-amount))
       ERR_INVALID_WITHDRAWAL_AMOUNT_TOO_LOW
     )
-    (try! (contract-call? 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.usdcx
-      protocol-burn amount tx-sender
-    ))
+    (asserts! (is-eq native-domain ETHEREUM_NATIVE_DOMAIN)
+      ERR_INVALID_NATIVE_DOMAIN
+    )
+    (try! (contract-call? .usdcx protocol-burn amount tx-sender))
     (print {
       topic: "burn",
       native-domain: native-domain,
@@ -368,7 +367,7 @@
 ```
 {% endcode %}
 
-## **USDCx v1 Contract Summary**
+## **USDCx-v1 Contract Summary**
 
 The `usdcx-v1` contract implements the **USDC xReserve protocol** for moving USDC between Stacks and external chains. It serves as the **primary entry point for minting and burning USDCx** based on Circle-issued deposit intents.
 
