@@ -10,7 +10,7 @@
 * [Network Fundamentals](network-fundamentals/README.md)
   * [Network Basics](network-fundamentals/network-basics.md)
   * [Mainnet and Testnets](network-fundamentals/mainnet-and-testnets.md)
-  * [Accounts](network-fundamentals/accounts.md)
+  * [Wallets & Accounts](network-fundamentals/wallets-and-accounts.md)
   * [Authentication](network-fundamentals/authentication.md)
   * [Bitcoin Name System](network-fundamentals/bitcoin-name-system.md)
   * [SIPs](network-fundamentals/sips.md)

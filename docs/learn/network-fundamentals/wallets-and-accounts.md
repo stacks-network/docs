@@ -1,30 +1,56 @@
-# Accounts
+# Wallets & Accounts
 
-<figure><img src="../.gitbook/assets/Frame 316126255.jpg" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/Frame 316126255.jpg" alt=""><figcaption></figcaption></figure></div>
+
+{% hint style="info" %}
+For the technical breakdown and standard for how wallets/accounts are generated in Stacks, check out [**SIP-005 standard**](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md) that outlines all of this.
+{% endhint %}
 
 ### Introduction
 
-Stacks uses an accounts-based model, more similar to Ethereum, rather than a [UTXO](https://learnmeabitcoin.com/technical/transaction/utxo/) model like Bitcoin. In a UTXO model, the network operates as a ledger, with each UTXO being analagous to a cash bill.
+Stacks wallets are software or hardware tools for storing cryptocurrencies, NFTs, and other digital assets. They are also used for establishing on-chain identity in decentralized applications (dApps). These wallets cryptographically store and manage each user’s identity and funds through a single blockchain address, which leverage public-key cryptography.&#x20;
 
-With an accounts-based model, each account is associated with a balance and that balance can be added to or subtracted from.
+#### Purpose of a Stacks wallet
 
-Stacks accounts are entities that own assets, like Stacks (STX) tokens. An account has an address, private key, nonce, and one or more asset balances.
+* Establish User Identity
+* Store Assets
+* Display Balances
+* Sign Transactions
+* Sign Messages
+* Participate in the Bitcoin Economy
+
+Wallets in Stacks consists of accounts, which uses an accounts-based model, rather than a UTXO model like Bitcoin. This model is simpler than the UTXO model and has a more traditional concept of “balance”, similar to what you would encounter at a bank. In this model, each address has a single “balance” figure for a given token that increases/decreases as transactions are sent to/from that account. This is what most Web3 ecosystems use. In a UTXO model, the network operates as a ledger, with each UTXO being analogous to a cash bill.
+
+#### Components of a Stacks account
+
+* **Private Key** - The private key is an alphanumeric code that is paired to a single public key on a 1:1 basis. Never share your private key with anyone. A private key is how you prove ownership of a public key and how you can spend assets held by that particular key-pair.\
+  \
+  Example private key in Stacks (32 bytes appended with a 0x01 byte):\
+  `5a4133fec2cf923d37238d3ba2fcd2ee9c8dce882c22218fd210d8a02ceb2c7401`
+* **Public Key** - The public key is derived mathematically from the private key. It can be shared safely and is used by the network to verify signatures created by the private key, without revealing the private key itself.\
+  \
+  Example public key in Stacks (compressed format):\
+  `02e8eb87862945d369511fdcce326ffef9a01b68c7d070e3ce685a5cbb9b1ecfc5`
+* **Address (Principal)** - The address is a shorter, user-friendly representation derived from the public key. It’s what you share to receive sBTC, STX, tokens, or NFTs on Stacks, and it acts as the on-chain identifier for the user.\
+  \
+  Example public address in Stacks (c32check encoding):\
+  `SPM9G3CNGSCTB4956290NESM0MR9W9CCEPVEPSQC`
 
 {% hint style="info" %}
-The cryptographic signature algorithm used in Stacks is [**secp256k1**](https://en.bitcoinwiki.org/wiki/Secp256k1).
+The private/public key generation uses the cryptographic **secp256k1** curve.
 
-Additionally, [Ed25519](https://ed25519.cr.yp.to/) is also used just for the VRF (Verifiable Random Function).
+The cryptographic signature algorithm used in Stacks is **ECDSA** over **secp256k1**.
 {% endhint %}
 
-Assets cannot leave an account without an action from the account owner. All changes to assets (and the balances of the account) require a corresponding transaction.
+Stacks accounts are entities that own assets, like Stacks (STX) tokens. An account has an address, private key, nonce, and one or more asset balances. Assets cannot leave an account without an action from the account owner. All changes to assets (and the balances of the account) require a corresponding transaction.
 
-{% hint style="info" %}
-The transaction type doesn't need to be a token transfer - contract deploy and contract call transactions can change the balances of an account
-{% endhint %}
+All Stacks wallets also support Bitcoin addresses, enabling seamless participation across both the Stacks and Bitcoin ecosystems.
+
+***
 
 ### Creation
 
-An account is generated from a 24-word mnemonic phrase. This is often referred to as the **seed phrase**. The seed phrase provides access to Stacks accounts.
+An wallet's accounts are generated from a 24-word mnemonic phrase conforming to the BIP39 standard. This is often referred to as the **seed phrase**. The seed phrase provides access to Stacks accounts.
 
 {% hint style="danger" %}
 If the seed phrase is lost, access to the associated account cannot be restored. No person or organization can recover a lost seed phrase.
@@ -104,19 +130,23 @@ const stacksAddress = getAddressFromPrivateKey(
 
 Finally, you can generate new account using a Stacks-enabled wallet like [Leather](https://leather.io/), [Xverse](https://www.xverse.app/), or [Asigna](https://asigna.io/).
 
+***
+
 ### Handling different formats
 
-It's common for new Stacks developers to get tripped up on the different ways when specifying Stacks' principal (aka addresses) in their development.
+It's common for new Stacks developers to get tripped up on the different ways when specifying Stacks' principals (aka addresses) in their development.
 
 Here's a breakdown of dealing with principals in 3 different use cases.
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/handling-principal-formats.jpeg" alt=""><figcaption></figcaption></figure></div>
 
+***
+
 ### The Stacks and Bitcoin address connection
 
 What makes Stacks beautifully connected to its L1 settlement layer, Bitcoin, is their many shared aspects. One being how both utilize a similar address generation scheme based on the P2PKH format, which allows for both a Bitcoin & Stacks address to share the same public key hash. If you base58check decode a legacy bitcoin address, you can reveal the public key hash, which can then be used to generate its respective c32check encoded Stacks address.
 
-Programmatically, you could also use a method called `b58ToC32`, from the `c32check` library, which can abstract the conversion for you.
+Programmatically, you could also use a method called `b58ToC32`, from the `c32check` javascript library, which can abstract the conversion for you.
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/bitcoin-stacks-address-connection.jpeg" alt=""><figcaption></figcaption></figure></div>
 
@@ -126,3 +156,5 @@ Programmatically, you could also use a method called `b58ToC32`, from the `c32ch
 
 * \[[Hiro Blog](https://www.hiro.so/blog/understanding-the-differences-between-bitcoin-address-formats-when-developing-your-app)] Understanding the Differences Between Bitcoin Address Formats When Developing Your App
 * \[[Hiro Blog](https://www.hiro.so/blog/how-every-stacks-address-has-a-corresponding-bitcoin-address)] How Every Stacks Address Has a Corresponding Bitcoin Address&#x20;
+* \[[Hiro Blog](https://www.hiro.so/blog/an-intro-to-web3-wallets-for-web3-founders)] An Intro to Web3 Wallets for Web3 Founders
+* \[[Hiro Blog](https://www.hiro.so/blog/why-web3-needs-bitcoin-centric-wallet-standards)] Why Web3 Needs Bitcoin-Centric Wallet Standards
