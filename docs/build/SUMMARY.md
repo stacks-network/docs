@@ -92,10 +92,9 @@
   * [Using DIA with Stacks](more-guides/price-oracles/dia.md)
 * [Onboarding](more-guides/onboarding/README.md)
   * [Signing with Turnkey](more-guides/onboarding/signing-with-turnkey.md)
-* [Bitcoin Integration](more-guides/bitcoin-integration/README.md)
-  * [Sending Bitcoin with Leather](more-guides/bitcoin-integration/sending-bitcoin-with-leather.md)
-  * [Verifying a Bitcoin Transaction](more-guides/bitcoin-integration/verifying-a-bitcoin-transaction.md)
-  * [Parsing a Bitcoin Transaction](more-guides/bitcoin-integration/parsing-a-bitcoin-transaction.md)
+* [Verifying Bitcoin Transactions in Clarity](more-guides/verify-bitcoin-transactions-clarity/README.md)
+  * [Creating a Bitcoin Transaction](more-guides/verify-bitcoin-transactions-clarity/creating-btc-tx.md)
+  * [Parsing a Bitcoin Transaction](more-guides/verify-bitcoin-transactions-clarity/parsing-a-bitcoin-transaction.md)
 * [c32check](more-guides/c32check.md)
 * [Community Tutorials](more-guides/community-tutorials.md)
 
