@@ -188,6 +188,6 @@ jobs:
           claude_args: |
             --max-turns 40
             --model claude-sonnet-4-20250514
-            --allowed-tools "Bash(curl:*),Bash(gh:*),Grep,Read,Write,glob"
+            --allowed-tools "Bash,Grep,Read,Write,glob"
 
 
