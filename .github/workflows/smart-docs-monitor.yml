@@ -170,7 +170,7 @@ jobs:
             For each PR that needs documentation, create an issue using:
             ```bash
             gh issue create \
-              --repo kenny-stacks/docs \
+              --repo stacks-network/docs \
               --title "[Docs Update] [repo-name] PR #123: Brief description" \
               --body "$(cat <<'EOF'
             ## Source PR
@@ -182,7 +182,7 @@ jobs:
               --label "documentation,auto-generated,sync-needed,[repo-name],priority-[level],[docs-update|docs-new|docs-remove]"
             ```
             
-            **Important:** Create issues in the kenny-stacks/docs repository (this fork) for testing.
+            **Important:** Create issues in the stacks-network/docs repository.
             
             After creating each issue, mark it as completed in your todo list before moving to the next one.
           claude_args: |
