@@ -26,7 +26,7 @@ Here are the necessary steps to enroll your sBTC using Fordefi:
 
 {% stepper %}
 {% step %}
-### Connect Fordefi to the Dual Stacking app
+**Connect Fordefi to the Dual Stacking app**
 
 Upon popup of the connect wallet modal, select the Fordefi option to connect with. As per the usual flow of connecting your Fordefi wallet with other Stacks apps, it'll prompt you to first select your Bitcoin vault, and then your Stacks vault.
 
@@ -36,7 +36,7 @@ Upon popup of the connect wallet modal, select the Fordefi option to connect wit
 {% endstep %}
 
 {% step %}
-### Enroll now for Dual Stacking
+**Enroll now for Dual Stacking**
 
 On the dashboard, you'll be able to see stats regarding your current sBTC in wallet, sBTC in DeFi, STX currently stacked, and estimated APY you could be earning.
 
@@ -46,7 +46,7 @@ Let's get started by enrolling your sBTC into Dual Stacking.
 {% endstep %}
 
 {% step %}
-### Create transaction
+**Create transaction**
 
 Your Fordefi extension will appear with a popup asking you to review the transaction for creation. This will create the transaction which you will later sign and broadcast in your Fordefi mobile wallet.
 
@@ -54,7 +54,7 @@ Your Fordefi extension will appear with a popup asking you to review the transac
 {% endstep %}
 
 {% step %}
-### Sign transaction in Fordefi mobile app
+**Sign transaction in Fordefi mobile app**
 
 If you navigate back to your Fordefi web wallet, you'll see the transaction queued up for signatures. Depending on the transaction policy that is setup with your Fordefi vaults, you may need to instruct the designated approvers to all confirm and sign the transaction in their Fordefi mobile wallets.
 
@@ -68,7 +68,7 @@ Your enroll transaction will look like this [here](https://explorer.hiro.so/txid
 {% endstep %}
 
 {% step %}
-### You are now enrolled in Dual Stacking
+**You are now enrolled in Dual Stacking**
 
 You'll notice your sBTC now enrolled in Dual Stacking and when the rewards cycle will start for your enrolled sBTC.
 
@@ -80,15 +80,15 @@ The dashboard will also provide a view of your Dual Stacking portfolio.
 {% endstep %}
 
 {% step %}
-### Boost rewards by stacking STX
+**Boost rewards by stacking STX**
 
-So what's next? You could then boost your rewards by stacking STX. Let's start by stacking STX via [StackingDAO](https://www.stackingdao.com/). StackingDAO is a popular stacking option in Stacks as it is a liquid stacking method.&#x20;
+So what's next? You could then boost your rewards by stacking STX. Let's start by stacking STX via [StackingDAO](https://www.stackingdao.com/). StackingDAO is a popular stacking option in Stacks as it is a liquid stacking method.
 
 {% hint style="info" %}
 There are other options for stacking your STX that you can find [here](https://app.leather.io/stacking).
 {% endhint %}
 
-Navigate to the StackingDAO app, connect your wallet, and start stacking. There are many methods to start liquid stacking or native stacking within StackingDAO. In this example, we'll use our STX to liquid stack with sBTC yield.&#x20;
+Navigate to the StackingDAO app, connect your wallet, and start stacking. There are many methods to start liquid stacking or native stacking within StackingDAO. In this example, we'll use our STX to liquid stack with sBTC yield.
 
 <div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 67.png" alt=""><figcaption><p>Liquid stacking with sBTC yield allows us to stay liquid and earn sBTC while stacking.</p></figcaption></figure></div>
 
@@ -100,7 +100,7 @@ Let's then boost reward with Stacks DeFi. This will help reach the maximum APY b
 {% endstep %}
 
 {% step %}
-### Deploy your sBTC to Stacks DeFi protocols
+**Deploy your sBTC to Stacks DeFi protocols**
 
 You'll notice near the bottom of the dashboard page, there is a section highlighting popular DeFi protocols in Stacks. Each one of these protocols are eligible for the boosted rewards you can realize.
 
@@ -112,7 +112,7 @@ Let's deploy sBTC with Zest. Supplying sBTC in Zest will provide users with a su
 
 After deploying sBTC into Zest, navigate back to the Dual Stacking web app to see your current estimated APY and rewards composition.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 75 (1).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 75 (1) (1).png" alt=""><figcaption></figcaption></figure></div>
 
 Check back on the Dual Stacking dashboard to stay current with your rewards and rewards composition. All rewards are distributed in sBTC, redeemable 1:1 for BTC anytime.
 {% endstep %}

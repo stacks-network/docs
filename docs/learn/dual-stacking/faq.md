@@ -24,6 +24,12 @@ Stacks has Proof of Transfer (PoX): Consensus mechanism that channels Bitcoin fr
 
 Rewards are paid in sBTC, redeemable for Bitcoin at any time and actual Bitcoin through PoX consensus, not platform tokens.
 
+{% hint style="info" %}
+**What is sBTC?**
+
+sBTC is a [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) token on Stacks that can be converted back to BTC on Bitcoin. The key property of sBTC is its 1:1 peg to Bitcoin, meaning 1 sBTC is always equivalent to 1 BTC.
+{% endhint %}
+
 </details>
 
 <details>
@@ -46,14 +52,13 @@ Coinciding with the Dual Stacking launch, the existing sBTC Rewards Program will
 
 **Key Dates to be aware of:**
 
-Oct 30: Dual Stacking launches and you can enroll to start earning&#x20;
+Oct 30: Dual Stacking launches and you can enroll to start earning
 
-Nov 4: sBTC Rewards Program ends and final rewards distributed&#x20;
+Nov 4: sBTC Rewards Program ends and final rewards distributed
 
 Nov 5: First Dual Stacking rewards cycle begins
 
-Nov 20 (estimated): First Dual Stacking rewards cycle ends, rewards distributed\
-
+Nov 20 (estimated): First Dual Stacking rewards cycle ends, rewards distributed\\
 
 </details>
 

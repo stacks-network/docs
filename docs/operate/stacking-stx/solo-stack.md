@@ -335,7 +335,7 @@ Additionally, you can choose to call the stacking functions directly from the [d
 
 The fields and process will be the same, but the UI will differ.
 
-Finally, you can stack using JS and the [@stacks/stacking](https://github.com/hirosystems/stacks.js/tree/main/packages/stacking) package if you prefer. Again, the functions and parameters will be the same, you will just be writing your JS code directly instead of using a UI.
+Finally, you can stack using JS and the [@stacks/stacking](https://github.com/stx-labs/stacks.js/tree/main/packages/stacking) package if you prefer. Again, the functions and parameters will be the same, you will just be writing your JS code directly instead of using a UI.
 
 If you are interested in using this method, you'll want to follow the [stacking guide](https://docs.hiro.so/stacks.js/guides/how-to-integrate-stacking) created by Hiro, and be sure to integrate the new parameters described in [Hiro's Nakamoto update doc](https://docs.hiro.so/nakamoto/stacks-js).
 {% endhint %}

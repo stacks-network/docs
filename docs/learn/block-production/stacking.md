@@ -2,7 +2,7 @@
 
 ### Introduction
 
-Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time and participating as consensus-critical signers. If you aren't familiar with the concept of signers in Stacks, be sure to check out the [Signing section](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/block-production/signing). This document is a conceptual overview of stacking and how it works.
+Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time and participating as consensus-critical signers. If you aren't familiar with the concept of signers in Stacks, be sure to check out the [Signing section](signing.md). This document is a conceptual overview of stacking and how it works.
 
 `pox-4.clar` is the stacking contract. If you are interested in experimenting with proof of transfer use cases including state changes, solo stacking, and pool stacking, all the functions you’ll need can be found at the deployed contract:
 
@@ -49,49 +49,49 @@ The Stacking mechanism can be presented as a flow of actions:
 
 {% stepper %}
 {% step %}
-### Make API calls to get details about the upcoming reward cycle
+#### Make API calls to get details about the upcoming reward cycle
 
 Query the network to discover the upcoming cycle parameters and timing.
 {% endstep %}
 
 {% step %}
-### Confirm eligibility for a specific Stacks account
+#### Confirm eligibility for a specific Stacks account
 
 Verify the account meets the minimum requirements and is eligible to participate.
 {% endstep %}
 
 {% step %}
-### Confirm the BTC reward address and lockup duration
+#### Confirm the BTC reward address and lockup duration
 
 Specify the Bitcoin address to receive payouts and input the desired lockup period.
 {% endstep %}
 
 {% step %}
-### Broadcast the stacking transaction to lock STX
+#### Broadcast the stacking transaction to lock STX
 
 The transaction is broadcast and the STX tokens are locked. This must happen before the prepare phase of the next reward cycle (the last 100 Bitcoin blocks of the ongoing reward phase).
 {% endstep %}
 
 {% step %}
-### Reward cycles execute and BTC rewards are sent
+#### Reward cycles execute and BTC rewards are sent
 
 The stacking mechanism executes reward cycles and sends out rewards to the configured BTC reward address.
 {% endstep %}
 
 {% step %}
-### Monitor unlocking timing and rewards during lockup
+#### Monitor unlocking timing and rewards during lockup
 
 During the lockup period, you can obtain details about unlocking timing, expected rewards, and more.
 {% endstep %}
 
 {% step %}
-### Tokens are released after the lockup period
+#### Tokens are released after the lockup period
 
 Once the lockup period has passed, the tokens become spendable again.
 {% endstep %}
 
 {% step %}
-### Display reward history
+#### Display reward history
 
 Show historical details like earnings for previous reward cycles.
 {% endstep %}
@@ -107,13 +107,13 @@ There are two main ways you can stack: solo stacking and delegated stacking.
 
 {% stepper %}
 {% step %}
-### Solo stacking
+#### Solo stacking
 
 Solo stacking follows the general stacking flow. You stack your own STX tokens and run your own signer. To operate as a solo stacker, you must have a minimum amount of STX tokens. This minimum is dynamic and can be found by viewing the [pox endpoint of the API](https://api.testnet.hiro.so/v2/pox) in the `min_threshold_ustx` field.
 {% endstep %}
 
 {% step %}
-### Delegated stacking
+#### Delegated stacking
 
 <figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 

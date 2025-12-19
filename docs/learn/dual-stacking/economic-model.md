@@ -4,7 +4,7 @@ description: Understanding the economics behind Dual Stacking.
 
 # Economic Model
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>Users stake BTC, STX, or both to earn BTC-denominated rewards (via sBTC and BTC).</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption><p>Users stake BTC, STX, or both to earn BTC-denominated rewards (via sBTC and BTC).</p></figcaption></figure>
 
 Dual Stacking introduces an economic model in which BTC-denominated rewards scale with the participant’s ratio of sBTC to stacked STX as well as sBTC deployed in DeFi. This creates a direct link between Bitcoin capital and the growth of the Stacks ecosystem.
 
@@ -40,7 +40,7 @@ To describe the reward function more precisely, we’ll define some terms:
 * 𝑆<sub>𝑖</sub> − 𝐴𝑚𝑜𝑢𝑛𝑡 𝑜𝑓 𝑆𝑇𝑋 𝑡ℎ𝑒 𝑖𝑡ℎ 𝑢𝑠𝑒𝑟 𝑙𝑜𝑐𝑘𝑠 𝑖𝑛 𝑎 𝑆𝑡𝑎𝑐𝑘𝑖𝑛𝑔 𝑐𝑦𝑐𝑙𝑒
 * 𝑑<sub>𝑖</sub> = 𝑆<sub>𝑖</sub> _/_ 𝐵<sub>𝑖</sub> − 𝐴𝑚𝑜𝑢𝑛𝑡 𝑜𝑓 𝑆𝑇𝑋 𝑝𝑒𝑟 𝐵𝑇𝐶 𝑡ℎ𝑒 𝑖𝑡ℎ 𝑢𝑠𝑒𝑟 𝑙𝑜𝑐𝑘𝑠 𝑖𝑛 𝑎 𝑆𝑡𝑎𝑐𝑘𝑖𝑛𝑔 𝑐𝑦𝑐𝑙𝑒
 * 𝐷 − 𝑀𝑎𝑥 𝑟𝑒𝑓𝑒𝑟𝑒𝑛𝑐𝑒 𝑑<sub>𝑖</sub> , 𝑤ℎ𝑖𝑐ℎ 𝑖𝑠 𝑠𝑒𝑡 𝑡𝑜 𝑡ℎ𝑒 95𝑡ℎ 𝑝𝑒𝑟𝑐𝑒𝑛𝑡𝑖𝑙𝑒 𝑜𝑓 𝐵𝑇𝐶𝑤𝑒𝑖𝑔ℎ𝑡𝑒𝑑 𝑑<sub>𝑖</sub>
-* 𝑀 −  𝑟𝑒𝑤𝑎𝑟𝑑𝑠 𝑏𝑜𝑜𝑠𝑡 𝑚𝑢𝑙𝑡𝑖𝑝𝑙𝑖𝑒𝑟 𝑚𝑖𝑛𝑢𝑠 𝑜𝑛𝑒
+* 𝑀 − 𝑟𝑒𝑤𝑎𝑟𝑑𝑠 𝑏𝑜𝑜𝑠𝑡 𝑚𝑢𝑙𝑡𝑖𝑝𝑙𝑖𝑒𝑟 𝑚𝑖𝑛𝑢𝑠 𝑜𝑛𝑒
 
 The first step in our reward function is to determine a normalized ratio, 𝑟<sub>𝑖</sub> , for all users:
 

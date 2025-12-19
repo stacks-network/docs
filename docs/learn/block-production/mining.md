@@ -117,19 +117,19 @@ This creates a natural economic equilibrium where:
 
 {% stepper %}
 {% step %}
-### Enough miners participate to ensure blocks are produced reliably
+#### Enough miners participate to ensure blocks are produced reliably
 
 Content as above describing reliability.
 {% endstep %}
 
 {% step %}
-### Stackers receive optimal BTC rewards
+#### Stackers receive optimal BTC rewards
 
 Content as above describing rewards optimization.
 {% endstep %}
 
 {% step %}
-### The network maintains censorship resistance without unnecessary mining competition
+#### The network maintains censorship resistance without unnecessary mining competition
 
 Content as above describing censorship resistance.
 {% endstep %}

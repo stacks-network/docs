@@ -2,6 +2,12 @@
 
 * [Developer Stack](README.md)
 
+## Node Operations
+
+* [Stacks Node Configuration](node-operations/stacks-node-configuration.md)
+* [Signer Configuration](node-operations/signer-configuration.md)
+* [RPC API](node-operations/rpc-api.md)
+
 ## Clarity
 
 * [Functions](clarity/functions.md)
@@ -15,77 +21,33 @@
 
 ## Clarinet
 
-* [Overview](clarinet/overview.md)
-* [Quickstart](clarinet/quickstart.md)
-* [Project Structure](clarinet/project-structure.md)
-* [Project Development](clarinet/project-development.md)
-* [Contract Interaction](clarinet/contract-interaction.md)
-* [Validation and Analysis](clarinet/validation-and-analysis.md)
-* [Clarity Formatter](clarinet/clarity-formatter.md)
-* [Local Blockchain Development](clarinet/local-blockchain-development.md)
-* [Contract Deployment](clarinet/contract-deployment.md)
 * [CLI Reference](clarinet/cli-reference.md)
-* [FAQ](clarinet/faq.md)
 
 ## Clarinet JS SDK
 
-* [Overview](clarinet-js-sdk/overview.md)
-* [Unit Testing](clarinet-js-sdk/unit-testing.md)
-* [Integration Testing](clarinet-js-sdk/integration-testing.md)
-* [Mainnet Execution Simulation](clarinet-js-sdk/mainnet-execution-simulation.md)
 * [SDK Reference](clarinet-js-sdk/sdk-reference.md)
 * [Browser SDK Reference](clarinet-js-sdk/browser-sdk-reference.md)
 
-## Clarinet Integrations
+## Rendezvous
 
-* [Pyth Oracle Integration](clarinet-integrations/pyth-oracle-integration.md)
-* [Chainhook Integration](clarinet-integrations/chainhook-integration.md)
-* [Stacks.js Integration](clarinet-integrations/stacks.js-integration.md)
-* [sBTC Integration](clarinet-integrations/sbtc-integration.md)
-* [VSCode Extension](clarinet-integrations/vscode-extension.md)
+* [Rendezvous Reference](rendezvous/reference.md)
 
 ## Stacks.js
 
-* [Overview](stacks.js/overview.md)
-* [Accounts & Addresses](stacks.js/accounts-and-addresses.md)
-* [Private Keys](stacks.js/private-keys.md)
-* [Networks](stacks.js/networks.md)
-* [Read Only Calls](stacks.js/read-only-calls.md)
-* [Build Transactions](stacks.js/build-transactions.md)
-* [Contract Calls](stacks.js/contract-calls.md)
-* [Contract Deployment](stacks.js/contract-deployment.md)
-* [Address Validation](stacks.js/address-validation.md)
-* [Encoding & Decoding](stacks.js/encoding-and-decoding.md)
-* [Network Configuration](stacks.js/network-configuration.md)
-* [Unit Conversion](stacks.js/unit-conversion.md)
+* [@stacks/network](stacks.js/stacks-network.md)
+* [@stacks/connect](stacks.js/stacks-connect.md)
+* [@stacks/transactions](stacks.js/stacks-transactions.md)
+* [sbtc](stacks.js/sbtc.md)
 
-## Stacks Connect
+## Nakamoto Upgrade
 
-* [Connect Wallet](stacks-connect/connect-wallet.md)
-* [Broadcast Transactions](stacks-connect/broadcast-transactions.md)
-* [Message Signing](stacks-connect/message-signing.md)
-* [Migration Guide](stacks-connect/migration-guide.md)
-* [Wallet Support](stacks-connect/wallet-support.md)
-
-## Post-Conditions
-
-* [Overview](post-conditions/overview.md)
-* [Implementing Post Conditions](post-conditions/implementing-post-conditions.md)
-
-## Stacks.js Integrations
-
-* [Pyth Oracle Integration](stacks.js-integrations/pyth-oracle-integration.md)
-* [React Native Integration](stacks.js-integrations/react-native-integration.md)
-
-## Stacks.js References
-
-* [@stacks/network](stacks.js-references/stacks-network.md)
-* [@stacks/connect](stacks.js-references/stacks-connect.md)
-* [@stacks/transactions](stacks.js-references/stacks-transactions.md)
-* [sbtc](stacks.js-references/sbtc.md)
-
-***
-
-* [RPC API](rpc-api.md)
-* [Stacks Node Configuration](stacks-node-configuration.md)
-* [Signer Configuration](signer-configuration.md)
+* [Nakamoto Upgrade Start Here](nakamoto-upgrade/nakamoto-upgrade-start-here.md)
+* [What is the Nakamoto Release?](nakamoto-upgrade/what-is-the-nakamoto-release.md)
+* [Nakamoto in 10 Minutes](nakamoto-upgrade/nakamoto-in-10-minutes.md)
+* [Nakamoto Rollout Plan](nakamoto-upgrade/nakamoto-rollout-plan/README.md)
+  * [Nakamoto for Stackers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stackers.md)
+  * [Nakamoto for Exchanges](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-exchanges.md)
+  * [Nakamoto for Stacking Providers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-stacking-providers.md)
+  * [Nakamoto for App Developers](nakamoto-upgrade/nakamoto-rollout-plan/nakamoto-for-app-developers.md)
+* [Nakamoto Activation Guide for Signers](nakamoto-upgrade/nakamoto-activation-guide-for-signers.md)
+* [Setting Up a Primary Post Nakamoto Testnet Node](nakamoto-upgrade/setting-up-a-primary-post-nakamoto-testnet-node.md)

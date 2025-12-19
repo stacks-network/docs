@@ -36,19 +36,19 @@ Use a stepper for multi-step setup instructions.
 
 {% stepper %}
 {% step %}
-### Prepare environment
+#### Prepare environment
 
 Describe prerequisites and environment setup.
 {% endstep %}
 
 {% step %}
-### Install dependencies
+#### Install dependencies
 
 Commands and configuration.
 {% endstep %}
 
 {% step %}
-### Start the signer
+#### Start the signer
 
 Service start commands, verification steps.
 {% endstep %}

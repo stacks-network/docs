@@ -30,13 +30,13 @@
 
 {% stepper %}
 {% step %}
-### Prepare phase
+#### Prepare phase
 
 An "anchor block" is chosen. The qualifying set of addresses ("reward set") is determined based on the snapshot of the chain at the anchor block. Length of prepare phase is 100 blocks. Stacking commitments need to be confirmed before this phase starts.
 {% endstep %}
 
 {% step %}
-### Reward phase
+#### Reward phase
 
 Miner BTC commitments are distributed amongst the reward set. Reward cycle length is 2000 BTC blocks (\~2 weeks).
 {% endstep %}
@@ -66,19 +66,19 @@ Miner BTC commitments are distributed amongst the reward set. Reward cycle lengt
 
 {% stepper %}
 {% step %}
-### Originating account
+#### Originating account
 
 The account that creates, authorizes and sends the transaction.
 {% endstep %}
 
 {% step %}
-### Paying account
+#### Paying account
 
 The account that is billed by the leader for the cost of validating and executing the transaction.
 {% endstep %}
 
 {% step %}
-### Sending account
+#### Sending account
 
 The account that identifies who is currently executing the transaction: this can change as a transaction executes via the `as-contract` Clarity function.
 {% endstep %}

@@ -96,31 +96,31 @@ Helper function to process individual withdrawals in the batch operation.
 
 {% stepper %}
 {% step %}
-### Access Control
+#### Access Control
 
 Only the current signer principal can accept or reject withdrawal requests.
 {% endstep %}
 
 {% step %}
-### Dust Limit
+#### Dust Limit
 
 Enforces a minimum withdrawal amount to prevent spam and ensure economic viability.
 {% endstep %}
 
 {% step %}
-### Fee Management
+#### Fee Management
 
 Ensures that the actual fee doesn't exceed the maximum fee set by the user.
 {% endstep %}
 
 {% step %}
-### Address Validation
+#### Address Validation
 
 Implements thorough validation of Bitcoin address formats.
 {% endstep %}
 
 {% step %}
-### State Management
+#### State Management
 
 Prevents double-processing of withdrawal requests.
 {% endstep %}

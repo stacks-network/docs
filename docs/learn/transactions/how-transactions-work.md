@@ -14,37 +14,37 @@ Transactions go through phases before being finally confirmed, and available for
 
 {% stepper %}
 {% step %}
-### Generate
+#### Generate
 
 Transactions are assembled according to the encoding specification.
 {% endstep %}
 
 {% step %}
-### Validate and sign
+#### Validate and sign
 
 Transactions are validated to confirm they are well-formed. Required signatures are filled in.
 {% endstep %}
 
 {% step %}
-### Broadcast
+#### Broadcast
 
 Transactions are sent to a node.
 {% endstep %}
 
 {% step %}
-### Register
+#### Register
 
 A miner receives transactions, verifies, and adds them to the ["mempool,"](https://academy.binance.com/en/glossary/mempool) a holding area for all the pending transactions.
 {% endstep %}
 
 {% step %}
-### Process
+#### Process
 
 Miners review the mempool and select transactions for the next block to be mined. Depending on the transaction type, different actions can happen during this step. For example, post-conditions could be verified for a token transfer, smart-contract defined tokens could be minted, or an attempt to call an existing smart contract method could be made.
 {% endstep %}
 
 {% step %}
-### Confirm
+#### Confirm
 
 Miners successfully propose blocks with a set of transactions. The transactions inside are successfully propagated to the network when the stackers approve them.
 {% endstep %}

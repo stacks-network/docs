@@ -35,7 +35,7 @@ Processes a single deposit request.
 
 {% stepper %}
 {% step %}
-### Validation and authorization
+#### Validation and authorization
 
 1. Verifies that the caller is the current signer principal.
 2. Checks that the deposit amount is above the dust limit.
@@ -43,13 +43,13 @@ Processes a single deposit request.
 {% endstep %}
 
 {% step %}
-### Replay protection
+#### Replay protection
 
 4. Ensures the deposit hasn't been processed before (prevents replay).
 {% endstep %}
 
 {% step %}
-### Execution
+#### Execution
 
 5. Mints sBTC tokens to the recipient via `.sbtc-token`'s `protocol-mint`.
 6. Updates the deposit state in the sBTC Registry contract via `.sbtc-registry`'s `complete-deposit`.
@@ -68,13 +68,13 @@ Processes multiple deposit requests in a single transaction.
 
 {% stepper %}
 {% step %}
-### Authorization
+#### Authorization
 
 1. Verifies that the caller is the current signer principal.
 {% endstep %}
 
 {% step %}
-### Batch processing
+#### Batch processing
 
 2. Iterates through the list of deposits, processing each one using the `complete-individual-deposits-helper` function.
 {% endstep %}
@@ -95,19 +95,19 @@ Helper function to process individual deposits within the batch operation.
 
 {% stepper %}
 {% step %}
-### Call deposit wrapper
+#### Call deposit wrapper
 
 1. Calls `complete-deposit-wrapper` for the individual deposit.
 {% endstep %}
 
 {% step %}
-### Success handling
+#### Success handling
 
 2. If successful, increments the processed deposit count.
 {% endstep %}
 
 {% step %}
-### Error handling
+#### Error handling
 
 3. If an error occurs, it's propagated with additional index information (using `ERR_DEPOSIT_INDEX_PREFIX` or related error constants).
 {% endstep %}

@@ -4,13 +4,13 @@ This section covers additional features that enhance the functionality and secur
 
 {% stepper %}
 {% step %}
-### Transaction Fee Sponsorship
+#### Transaction Fee Sponsorship
 
 Allowing sBTC transactions to be sponsored.
 {% endstep %}
 
 {% step %}
-### Signer Wallet Rotation
+#### Signer Wallet Rotation
 
 Enabling secure key rotation for sBTC Signers.
 {% endstep %}
