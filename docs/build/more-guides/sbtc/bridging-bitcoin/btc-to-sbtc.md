@@ -1,8 +1,12 @@
 # Depositing: Pegging BTC into sBTC
 
+## Intro
+
 This guides shows how you can integrate the deposit (peg-in) flow from your front-end app to allow users to peg BTC into sBTC on the Stacks network. For more information about sBTC and an explainer of its architecture, check out the general sBTC section [here](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/sbtc) in the Learn category.
 
-### Breakdown of the deposit (peg-in) flow
+<details>
+
+<summary>Full breakdown of the deposit (peg-in) flow explained</summary>
 
 * **Create Deposit (Bitcoin) Transaction:**
   * Structure a Bitcoin transaction to send funds to the group of signers.
@@ -21,6 +25,16 @@ This guides shows how you can integrate the deposit (peg-in) flow from your fron
   * The minted sBTC is sent to the depositor's designated Stacks address, completing the deposit process.
   * sBTC is SIP-010 compatible and will show up in Stacks wallets and explorers.
 
+</details>
+
+### tl;dr
+
+* We'll be implementing the deposit (peg-in) flow of bridging BTC into sBTC on a front-end app using the `sbtc` js library.
+* The flow consists of building a P2TR deposit address, sending BTC to that address, and then notifying the sBTC Signers of this deposit transaction.
+* Implementing this flow within your app is great for UX/UI control and supporting programmable bitcoin.
+
+### Steps
+
 In this guide you'll touch on some of the steps above but its much simpler than you'd expect. Using the `sbtc` and `@stacks/connect` libraries, putting together the peg-in process from BTC into sBTC will simply involve the following steps:
 
 1. Building the sBTC deposit address
@@ -28,8 +42,66 @@ In this guide you'll touch on some of the steps above but its much simpler than 
 3. Notifying the sBTC signers
 4. Confirm user's sBTC balance
 
+### Key Tools To Use
+
+* **sbtc**: A Javascript/Typescript package for integrating your own peg-in/out sbtc bridging flow.
+* **Stacks Connect**: A front-end library for authenticating and interacting with Stacks-supported wallets.
+
+***
+
+## Complete Code
+
+If you’d like to skip the step-by-step walkthrough, here’s the complete code used in this guide.
+
+{% code expandable="true" %}
+```typescript
+import { buildSbtcDepositAddress, MAINNET, SbtcApiClientMainnet } from 'sbtc';
+import { request } from '@stacks/connect';
+
+const client = new SbtcApiClientMainnet();
+
+// 1. Build the sBTC deposit address
+const deposit = buildSbtcDepositAddress({
+  stacksAddress: "SP3K8PV6FRTHH84PKRW98JPMHY5RSM27HRKST7CEB", // the address to send/mint the sBTC to
+  signersPublicKey: await client.fetchSignersPublicKey(), // the aggregated public key of the signers
+  reclaimLockTime: 950, // default locktime for reclaiming failed deposits
+  reclaimPublicKey: btcPubKey.value, // public key for reclaiming failed deposits
+  network: MAINNET,
+  maxSignerFee: 1000 // max fee the signers can charge for processing the subsequent sweep tx
+});
+
+console.log('Deposit Script:', deposit.depositScript);
+console.log('Reclaim Script:', deposit.reclaimScript);
+console.log('P2TR Output:', deposit.trOut);
+
+// 2. Sign and broadcast the transaction to the deposit address
+const result = await request('sendTransfer', {
+  recipients: [
+    {
+      address: deposit.address,
+      amount: 100_000,
+    },
+  ],
+})
+
+console.log('Transaction sent:', result);
+
+let transaction: string;  
+await new Promise(resolve => setTimeout(resolve, 5000));
+transaction = await client.fetchTxHex(result.txid);
+
+// 3. Notify the sBTC signers
+let response = await client.notifySbtc({ transaction, ...deposit });
+console.log('Notify response:', response);
+```
+{% endcode %}
+
+***
+
+## Walkthrough
+
 {% hint style="info" %}
-This guide assumes you have a front-end bootstrapped with the Stacks Connect library for wallet interactions. Head to the guides for Stacks Connect before continuing with this guide.
+This guide assumes you have a front-end bootstrapped with the Stacks Connect library for wallet interactions. Head to the Stacks Connect guides before continuing with this guide.
 {% endhint %}
 
 {% stepper %}
@@ -199,7 +271,7 @@ And that's all to it. You've successfully allowed your app to handle incoming BT
 
 ***
 
-### \[Additional Insights]
+## Additional Insights
 
 ### What scripts make up the custom P2TR bitcoin address?
 

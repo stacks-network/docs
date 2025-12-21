@@ -1,8 +1,12 @@
 # Withdrawing: Pegging sBTC into BTC
 
+## Intro
+
 This guides shows how you can integrate the withdrawal (peg-out) flow from your front-end app to allow users to peg sBTC back into BTC on the Bitcoin network. For more information about sBTC and an explainer of its architecture, check out the general sBTC section [here](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/sbtc) in the Learn category.
 
-### Breakdown of the withdrawal (peg-in) flow
+<details>
+
+<summary>Full breakdown of the withdrawal (peg-in) flow explained</summary>
 
 * **Validate and deconstruct bitcoin address**
   * Validate user's inputted bitcoin address, to be used to receive BTC, is a valid bitcoin address.
@@ -17,15 +21,116 @@ This guides shows how you can integrate the withdrawal (peg-out) flow from your 
 * **Receive BTC (Bitcoin):** (_no action required_)
   * The returned BTC is sent to the depositor's designated bitcoin address, completing the withdrawal process.
 
+</details>
+
 {% hint style="info" %}
 At the moment, the `sbtc` library does not have any direct helper methods, but as you'll see in the guide, it's relatively straightforward to do it without any abstraction methods.
 {% endhint %}
+
+### Steps
 
 In this guide you'll touch on some of the steps above but its much less complex than the deposit flow. Putting together the peg-out process from sBTC into BTC will simply involve the following steps:
 
 1. Validating the withdrawal bitcoin address
 2. Contract call to `initiate-withdrawal-request`
 3. Confirm BTC withdrawal
+
+### Key Tools To Use
+
+* **sbtc**: A Javascript/Typescript package for integrating your own peg-in/out sbtc bridging flow.
+* **Stacks Connect**: A front-end library for authenticating and interacting with Stacks-supported wallets.
+* [**bitcoin-address-validation**](https://www.npmjs.com/package/bitcoin-address-validation): Validate Bitcoin addresses - P2WSH, P2WPKH, P2PKH, P2SH and P2TR.
+* [**bitcoinjs-lib**](https://www.npmjs.com/package/bitcoinjs-lib): A javascript Bitcoin library for node.js and browsers.
+
+***
+
+## Complete Code
+
+If you’d like to skip the step-by-step walkthrough, here’s the complete code used in this guide.
+
+{% code expandable="true" %}
+```typescript
+import { request } from '@stacks/connect';
+import { Cl, Pc } from '@stacks/transactions';
+import { AddressType, getAddressInfo } from "bitcoin-address-validation";
+import * as bitcoin from "bitcoinjs-lib";
+
+function deconstructBtcAdd(address: string) {
+
+    const typeMapping = {
+    [AddressType.p2pkh]: "0x00",
+    [AddressType.p2sh]: "0x01",
+    [AddressType.p2wpkh]: "0x04",
+    [AddressType.p2wsh]: "0x05",
+    [AddressType.p2tr]: "0x06",
+  };
+
+  const addressInfo = getAddressInfo(address);
+  
+  const { bech32 } = addressInfo;
+  let hash: Uint8Array;
+  if (bech32) {
+    hash = bitcoin.address.fromBech32(address).data;
+  } else {
+    hash = bitcoin.address.fromBase58Check(address).hash;
+  }
+
+  const type = typeMapping[addressInfo.type];
+  if (!type) {
+    throw new Error(`Unsupported address type: ${addressInfo.type}`);
+  }
+
+  return {
+    type,
+    hash,
+  };
+}
+
+async function pegOutBtc() {
+  // Deconstruct the BTC address into type and hash
+  let { type, hash } = deconstructBtcAdd(btcAddress.value)
+
+  // Prepare Clarity contract call arguments
+  let amount = 100000
+  let recipient = {
+    version: Cl.bufferFromHex(type),
+    hashbytes: Cl.buffer(hash)
+  }
+  let maxFee = 3000
+
+  // Prepare post-condition: ensure the correct amount of sBTC is sent
+  let postCond_1 = Pc.principal(stxAddress.value)
+    .willSendEq(amount + maxFee)
+    .ft('SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token', 'sbtc-token')
+
+  // Call the contract to initiate the withdrawal
+  let result = await request('stx_callContract', {
+    contract: 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-withdrawal',
+    functionName: 'initiate-withdrawal-request',
+    functionArgs: [Cl.uint(amount), Cl.tuple(recipient), Cl.uint(maxFee)],
+    postConditions: [postCond_1],
+    postConditionMode: 'deny',
+    network: "mainnet",
+  })
+
+  console.log(result);
+}
+
+async function confirmWithdrawal() {
+  let withdrawalRequestId = await fetch(`https://sbtc-emily.com/withdrawal/sender/${stxAddress.value}`).then(response => {
+    // @ts-ignore
+    return response.withdrawals[0].requestId
+  })
+
+  let withdrawalInfo = await fetch(`https://sbtc-emily.com/withdrawal/${withdrawalRequestId}`)
+  console.log(withdrawalInfo);
+}
+```
+{% endcode %}
+
+***
+
+## Walkthrough
 
 {% hint style="info" %}
 This guide assumes you have a front-end bootstrapped with the Stacks Connect library for wallet interactions. Head to the guides for Stacks Connect before continuing with this guide.
@@ -171,7 +276,7 @@ And that's all to it. You've successfully allowed your app to handle incoming sB
 
 ***
 
-### \[Additional Insights]
+## Additional Insights
 
 ### What are the different bitcoin address types?
 
