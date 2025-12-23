@@ -96,6 +96,8 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 * [**Sign-In with Stacks**](https://github.com/pradel/sign-in-with-stacks/) - A library for creating and verifying Sign-In with Stacks messages.
 * [**sBTC Pay**](https://github.com/STX-CITY/sbtc-pay) - A complete "Stripe for sBTC" payment gateway that enables businesses to easily accept Bitcoin payments via sBTC on Stacks blockchain.
 * [**Bolt Protocol**](https://github.com/ronoel/bolt-protocol) - Bolt Protocol is a next-generation framework designed to enable near-instant transactions on the Bitcoin network and enable users to pay fees directly in sBTC.
+* [**Multisig CLI**](https://github.com/hirosystems/multisig-cli/) - Command line utility written in NodeJS for creating and signing Stacks multisig transactions with a Ledger device
+* [**Stacks Address Generator**](https://github.com/ECBSJ/stacks-address-generator) - Simple web app to quickly generate Stacks addresses
 
 </details>
 
