@@ -4,7 +4,7 @@ description: Learn how post-conditions protect users from unexpected transaction
 
 # Overview
 
-<figure><img src="../.gitbook/assets/post-conditions.jpg" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/a-developers-guide-to-post-conditions">Hiro Blog</a></p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/post-conditions.jpg" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/a-developers-guide-to-post-conditions">Hiro Blog</a></p></figcaption></figure></div>
 
 ### What are post-conditions?
 

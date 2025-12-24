@@ -230,6 +230,7 @@ You could also fetch the deposit data from the API client. This will return data
 
 {% code expandable="true" %}
 ```typescript
+// https://sbtc-emily.com/deposit/<initial-deposit-txid>
 let depositInfo = await client.fetchDeposit(txid) // txid of initial bitcoin deposit
 
 // example depositInfo result below

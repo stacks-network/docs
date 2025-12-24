@@ -1,6 +1,6 @@
 # Sending Transactions
 
-<figure><img src="../../.gitbook/assets/send-transactions.jpg" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/send-transactions.jpg" alt=""><figcaption></figcaption></figure></div>
 
 Any Stacks app is going to require sending transactions at some point, so how do we do that?
 

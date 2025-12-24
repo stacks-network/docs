@@ -96,7 +96,6 @@
   * [Creating a Bitcoin Transaction](more-guides/verify-bitcoin-transactions-clarity/creating-btc-tx.md)
   * [Parsing a Bitcoin Transaction](more-guides/verify-bitcoin-transactions-clarity/parsing-a-bitcoin-transaction.md)
 * [c32check](more-guides/c32check.md)
-* [Community Tutorials](more-guides/community-tutorials.md)
 
 ***
 

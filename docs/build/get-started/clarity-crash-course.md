@@ -6,7 +6,7 @@ description: >-
 
 # Clarity Crash Course
 
-<figure><img src="../.gitbook/assets/clarity.jpg" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/write-better-smart-contracts-with-the-programming-language-clarity">Hiro Blog</a></p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/clarity.jpg" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/write-better-smart-contracts-with-the-programming-language-clarity">Hiro Blog</a></p></figcaption></figure></div>
 
 ### Intro
 

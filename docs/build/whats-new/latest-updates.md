@@ -4,6 +4,26 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### Stacks Blockchain API v8.13.6 is live
+
+_December 22, 2025_
+
+\[Hiro] This is a required upgrade for all API users (incl. partners & exchanges): adds support for smart contracts deployed with empty source code.
+
+It's an easy upgrade: no DB migrations, and fully compatible with the current chainstate.
+
+See more in Hiro's release notes [here](https://github.com/hirosystems/stacks-blockchain-api/releases/tag/v8.13.6).
+
+***
+
+### USDCx now live on mainnet
+
+_December 18, 2025_
+
+New docs section dedicated to the launch of USDCx is now live [here](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/bridging/usdcx). Learn about its interoperable architecture with Circle's xReserve and discover the Clarity contracts behind the new USDCx token.
+
+***
+
 ### Stacks Miners — Please Update ASAP!
 
 _December 12, 2025_

@@ -16,19 +16,6 @@ For the latest releases and versions of Clarinet, check out the open-source repo
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/clarinet-diagram.png" alt=""><figcaption></figcaption></figure></div>
 
-#### Announcements
-
-{% updates format="full" %}
-{% update date="2025-11-05" %}
-## Clarinet was migrated to Stacks Labs
-
-* The Clarinet repository now belongs to the stx-labs organization.
-* The NPM packages are now published under the `@stacks` organization.
-* The VSCode extension is now published under the Stacks Labs organization.
-* Check out the [announcement](/broken/pages/MJwczGlRXtiBGKy9CNxu) to see how to migrate older projects.
-{% endupdate %}
-{% endupdates %}
-
 ## Key features
 
 * [**Leverage a powerful CLI**](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/clarinet/cli-reference) - Create new projects, manage your smart contracts and their dependencies using clarinet requirements, and interact with your code through the built-in REPL.

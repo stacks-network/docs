@@ -1,6 +1,6 @@
 # Overview
 
-<figure><img src="../.gitbook/assets/stacksjs-learn.png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/taking-a-look-at-recent-stacks-js-improvements">Hiro blog</a></p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacksjs-learn.png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/taking-a-look-at-recent-stacks-js-improvements">Hiro blog</a></p></figcaption></figure></div>
 
 ## Overview
 

@@ -4,7 +4,7 @@ description: Your 0→1 guide for building a Clarity contract and app on Stacks.
 
 # Developer Quickstart
 
-<figure><img src="../.gitbook/assets/Frame 316125324 (1).jpg" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/Frame 316125324 (1).jpg" alt=""><figcaption></figcaption></figure></div>
 
 **Welcome to the Stacks Developer Quickstart Guide!**\
 This is your fast-track path for understanding what you'll need to become a Stacks developer. In this guide, you’ll build a real Clarity smart contract, wire up a functioning Stacks app, and pick up about 75% of the practical knowledge every Stacks builder needs. Whether you’re shipping your first project or leveling up your skills, this guide takes you from zero to deployed—quickly and confidently.
