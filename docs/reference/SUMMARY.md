@@ -6,7 +6,19 @@
 
 * [Stacks Node Configuration](node-operations/stacks-node-configuration.md)
 * [Signer Configuration](node-operations/signer-configuration.md)
-* [RPC API](node-operations/rpc-api.md)
+* [RPC API (old)](node-operations/rpc-api-old.md)
+* [RPC API Endpoints](node-operations/rpc-api/README.md)
+  * ```yaml
+    type: builtin:openapi
+    props:
+      models: false
+      downloadLink: false
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: stacks-blockchain-api-dereferenced
+    ```
 
 ## Clarity
 

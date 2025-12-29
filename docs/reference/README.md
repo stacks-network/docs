@@ -10,7 +10,7 @@ We'll go over all the building blocks you need to be aware of to build high-qual
 
 #### Clarity
 
-[Clarity](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/clarity/overview) is the smart contract language on Stacks. If you want to build the next decentralized social network, DeFi protocol, or any other Stacks dapp, you'll need to know Clarity.
+[Clarity](/broken/spaces/H74xqoobupBWwBsVMJhK/pages/f5e52a03a2c80c85f49f56d1684b87757fb9ec73) is the smart contract language on Stacks. If you want to build the next decentralized social network, DeFi protocol, or any other Stacks dapp, you'll need to know Clarity.
 
 #### Post Conditions
 

@@ -1,4 +1,8 @@
-# RPC-API
+---
+hidden: true
+---
+
+# RPC API (old)
 
 ### Introduction
 
