@@ -81,7 +81,7 @@ Any token contract that wants to conform to the SIP-010 fungible token standard 
 (define-constant TOKEN_SYMBOL "CC")
 (define-constant TOKEN_DECIMALS u6) ;; 6 units displayed past decimal, e.g. 1.000_000 = 1 token
 
-(define-data-var token_uri (string-utf8 256) u"https://hiro.so") ;; utf-8 string with token metadata host
+(define-data-var token-uri (string-utf8 256) u"https://hiro.so") ;; utf-8 string with token metadata host
 
 ;; SIP-010 function: Get the token balance of a specified principal
 (define-read-only (get-balance (who principal))
@@ -110,7 +110,7 @@ Any token contract that wants to conform to the SIP-010 fungible token standard 
 
 ;; SIP-010 function: Returns the URI containing token metadata
 (define-read-only (get-token-uri)
-  (ok (some (var-get token_uri)))
+  (ok (some (var-get token-uri)))
 )
 
 ;; Properly updates token URI by emitting a SIP-019 token metadata update notification
