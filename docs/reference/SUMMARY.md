@@ -1,10 +1,8 @@
 # Table of contents
 
-* [Developer Stack](README.md)
-
 ## Node Operations
 
-* [Stacks Node Configuration](node-operations/stacks-node-configuration.md)
+* [Stacks Node Configuration](README.md)
 * [Signer Configuration](node-operations/signer-configuration.md)
 * [RPC API (old)](node-operations/rpc-api-old.md)
 * [RPC API Endpoints](node-operations/rpc-api/README.md)

@@ -1,103 +1,235 @@
-# Developer Stack
+# Stacks Node Configuration
 
-<figure><img src=".gitbook/assets/Frame 316124591.jpg" alt=""><figcaption><p>source: <a href="https://youtu.be/6Y1wj4FahhM?si=MeRoxOa20ImL6uw1">Hiro Youtube</a></p></figcaption></figure>
+{% hint style="info" %}
+Note that these config fields are for a Stacks follower node. If you are running a signer alongside your Stacks node, you'll want to use the sample file found on the [Signer Configuration](/broken/pages/8ea1fa91cfa819c25f545b0aca9bfc16c8c3ad28) page as it contains additional parameters needed for your signer and Stacks node to function properly.
+{% endhint %}
 
-New to developing on Stacks or looking for a quick reference guide for all the important components and links? You're in the right place.
+### Usage
 
-We'll go over all the building blocks you need to be aware of to build high-quality Stacks dapps. This page exists to serve as a reference to the Stacks developer's tool chest. In addition to the tools below, stacks.co houses an index of [apps, services, and other integrations available on Stacks](https://www.stacks.co/explore/ecosystem?category=All+Teams#tools).
+```bash
+stacks-node sub-command [--subcommand-option <value>]
+```
 
-### Building Blocks
+#### Subcommands
 
-#### Clarity
+* `mocknet`: start a mocknet instance using defaults
+* `testnet`: start a testnet instance using defaults (chainstate is not persistent)
+* `mainnet`: start a mainnet instance using defaults (chainstate is not persistent)
+* `start`: combined with `--config`, starts an instance with a specified configuration file
+* `version`: displays binary version
+* `help`: displays the help message
 
-[Clarity](/broken/spaces/H74xqoobupBWwBsVMJhK/pages/f5e52a03a2c80c85f49f56d1684b87757fb9ec73) is the smart contract language on Stacks. If you want to build the next decentralized social network, DeFi protocol, or any other Stacks dapp, you'll need to know Clarity.
+### Configuration File Options
 
-#### Post Conditions
+The Stacks Blockchain configuration file has multiple sections under which an option may be placed.
 
-[Post conditions](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/transactions/post-conditions) are a cool feature of the Stacks blockchain that allow you to verify the legitimacy of a transaction on the client side before it is executed. This adds an additional layer of defense against malicious smart contracts.
+* node
+* events\_observer
+* connection\_options
+* burnchain
+* ustx\_balance
+* miner
 
-#### Proof of Transfer
+For reference, several configuration file examples are [available here](https://github.com/stacks-network/stacks-core/tree/master/sample/conf).
 
-[PoX](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/stacks-101/proof-of-transfer) is the unique consensus mechanism of Stacks that facilitates new block production and also allows Stackers to earn real Bitcoin yield by participating in locking their STX tokens.
+#### node
 
-#### Stacking
+Contains various configuration options for the stacks-node binary.
 
-Speaking of [Stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/stacking), it's the mechanism that helps to secure the Stacks chain and allows Stackers to earn real Bitcoin yield transferred by miners.
+| Name                         | Required | Description                                                                                                |
+| ---------------------------- | -------- | ---------------------------------------------------------------------------------------------------------- |
+| rpc\_bind                    | ✓        | IPv4 address and port to open for RPC connections                                                          |
+| p2p\_bind                    | ✓        | IPv4 address and port to open for P2P connections                                                          |
+| working\_dir                 |          | Absolute path to the directory where chainstate data will be stored                                        |
+| data\_url                    |          | IPv4 address and port for incoming RPC connections                                                         |
+| p2p\_address                 |          | IPv4 address and port for incoming P2P connections                                                         |
+| bootstrap\_node              |          | Public key, IPv4 address, and port to bootstrap the chainstate                                             |
+| wait\_time\_for\_microblocks |          | The amount of time in ms to wait before trying to mine a block after catching up to the anchored chain tip |
+| seed                         |          | The private key to use for mining. Only needed if `miner` is set to `true`                                 |
+| local\_peer\_seed            |          | The private key to use for signing P2P messages in the networking stack                                    |
+| miner                        |          | Determines whether the node is running a follower (`false`) or a miner (`true`). Defaults to `false`       |
+| mock\_mining                 |          | Simulates running a miner (typically used for debugging)                                                   |
+| mock\_mining\_output\_dir    |          | Folder for mock mining data                                                                                |
+| mine\_microblocks            |          | Determines whether the node will mine microblocks. Will only take effect if `miner` is set to `true`       |
+| prometheus\_bind             |          | Address and port for Prometheus metrics collection.                                                        |
+| deny\_nodes                  |          | List of ip addresses of nodes that should be ignored                                                       |
+| stacker                      |          | Determines whether the node is running a stacker (`true`) that issues events for signer binary             |
 
-#### SIP-009 and SIP-010 Tokens
+#### events\_observer
 
-Fungible and non-fungible tokens in Clarity are defined by [SIP-009](file:///) and [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) standards. You can learn more about how to work with these tokens in the Clarity book.
+{% hint style="info" %}
+This section is _optional_ and not required
 
-#### sBTC
+However, if this section is added, **all** fields are required.
+{% endhint %}
 
-[sBTC](https://docs.stacks.co/sbtc) is the trust-minimized 2-way peg for Bitcoin on the Stacks network. sBTC operates as a SIP-010 token and comes with a [stacks.js library](https://docs.stacks.co/build/misc.-guides/sbtc/how-to-use-the-sbtc-js-library-for-bridging) so it's easy for devs to work with. [Utilizing sBTC](https://docs.stacks.co/build/misc.-guides/sbtc/sbtc-builder-quickstart) in your contract is as simple as calling the `sbtc-token` contract's transfer function.
+Contains options for sending events emitted to the [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service.
 
-### Tools
+| Name         | Required | Description                                                                                                                                                       |
+| ------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| endpoint     | ✓        | Address and port to a [stacks-blockchain-api](https://github.com/hirosystems/stacks-blockchain-api) service                                                       |
+| events\_keys | ✓        | Event keys for which to watch. The emitted node events can be restricted by account, function name and event type. Asterix ("\*") can be used to emit all events. |
 
-#### Wallets
+#### connection\_options
 
-Wallets are a key tool in any web3 ecosystem, and Stacks is no different. There are several options available including:
+{% hint style="info" %}
+This section is _optional_ and not required.
+{% endhint %}
 
-* [Leather](https://leather.io/)
-* [Xverse](https://www.xverse.app/)
-* [Asigna](https://asigna.io/)
+Specifies configuration options for others connecting to the stacks node.
 
-#### Platform
+| Name                                  | Required | Description                                                                                                                                                 |
+| ------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| public\_ip\_address                   |          | Public IPv4 to advertise to other nodes                                                                                                                     |
+| download\_interval                    |          | Time (in seconds) between attempts to download blocks                                                                                                       |
+| walk\_interval                        |          | Time (in seconds) between attempts to walk the list of neighbors                                                                                            |
+| private\_neighbors                    |          | If false, this node won't announce or accept neighbors that are behind private networks. Defaults to true.                                                  |
+| read\_only\_call\_limit\_read\_length |          | Total number of bytes allowed to be read by an individual read-only function call                                                                           |
+| read\_only\_call\_limit\_read\_count  |          | Total number of independent read operations permitted for an individual read-only function call                                                             |
+| read\_only\_call\_limit\_runtime      |          | [Runtime cost](https://github.com/stacksgov/sips/blob/main/sips/sip-006/sip-006-runtime-cost-assessment.md) limit for an individual read-only function call |
 
-The [Hiro Platform](https://www.hiro.so/platform) is your all-in-one cloud development environment for Stacks development, and is integrated with most of the tools listed below.
+#### burnchain
 
-It's by far the easiest way to get up and running quickly. Plus, they have SSH integration.
+This section contains configuration options pertaining to the blockchain the stacks-node binds to on the backend for proof-of-transfer (BTC).
 
-#### Explorer
+| Name       | Required | Description                                                                                                           |
+| ---------- | -------- | --------------------------------------------------------------------------------------------------------------------- |
+| chain      | ✓        | The blockchain stacks-node binds to on the backend for proof-of-transfer. Only value supported: `bitcoin`             |
+| mode       | ✓        | The profile or test phase of which to run stacks-node. Valid values are \[ `mocknet`, `testnet`, `xenon`, `mainnet` ] |
+| peer\_host |          | FQDN of the host running the backend Bitcoin blockchain                                                               |
+| rpc\_port  |          | RPC port of `peer_host`                                                                                               |
+| peer\_port |          | P2P port of `peer_host`                                                                                               |
 
-Every developer needs a block explorer to take a look at information about blocks and transactions being submitted to the chain. You have two choices here: the [Hiro Explorer](https://explorer.hiro.so/) and [STXScan](https://stxscan.co/).
+**Mining**
 
-#### API
+| Name                             | Required | Description                                                                                        |
+| -------------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
+| burn\_fee\_cap                   | ✓        | Maximum amount (in sats) of "burn commitment" to broadcast for the next block's leader election    |
+| satoshis\_per\_byte              | ✓        | [Amount (in sats) per byte](https://bitcoinfees.net/) - Used to calculate the transaction fees     |
+| commit\_anchor\_block\_within    |          | Sets the time period (in milliseconds) for commitments. Only used when `mode` is set to `mocknet`. |
+| tenure\_extend\_cost\_threshold  |          | Percentage of block budget that must be used before attempting a time-based tenure extend          |
+| block\_rejection\_timeout\_steps |          | Define the timeout to apply while waiting for signers responses, based on the amount of rejections |
 
-If you want to interact with or read data from the chain, there's a good chance the [Hiro API](https://docs.hiro.so/stacks-blockchain-api) has an endpoint for that.
+#### ustx\_balance
 
-#### Stacks.js
+{% hint style="info" %}
+This section is only required for the `testnet` and `mocknet` networks.
 
-[Stacks.js](https://www.hiro.so/stacks-js) is the de-facto JavaScript library for the Stacks ecosystem. There are several packages here that will help you build robust frontends for your applications.
+However, if this section is added, **all** fields are required.
+{% endhint %}
 
-#### Clarinet
+This section contains configuration options allocating microSTX per address in the genesis block
 
-All good developer tooling needs a robust, easy-to-use development environment. Enter [Clarinet](https://www.hiro.so/clarinet). Clarinet provides everything you need to write, test, and deploy Clarity smart contracts, including a fully-featured local devnet blockchain.
+This section can repeat multiple times, but each section can only define a single address.
 
-#### Chainhook
+| Name    | Required | Description                                                           |
+| ------- | -------- | --------------------------------------------------------------------- |
+| address | ✓        | Address which maintains a microSTX balance                            |
+| amount  | ✓        | The balance of microSTX given to the address at the start of the node |
 
-One of the key use cases for Stacks is being able to directly interact with the Bitcoin chain. Hiro's [Chainhook](https://docs.hiro.so/chainhook) makes this easier by providing an IFTTT system for responding and reacting to events on both the Bitcoin and Stacks chains.
+### Example Mainnet Follower Configuration
 
-#### Stacking Tools
+{% code title="stacks-node-mainnet.toml" %}
+```toml
+[node]
+working_dir = "/stacks-blockchain"
+rpc_bind = "0.0.0.0:30443"
+p2p_bind = "0.0.0.0:20444"
+bootstrap_node = "02196f005965cebe6ddc3901b7b1cc1aa7a88f305bb8c5893456b8f9a605923893@seed.mainnet.hiro.so:20444,02539449ad94e6e6392d8c1deb2b4e61f80ae2a18964349bc14336d8b903c46a8c@cet.stacksnodes.org:20444,02ececc8ce79b8adf813f13a0255f8ae58d4357309ba0cedd523d9f1a306fcfb79@sgt.stacksnodes.org:20444,0303144ba518fe7a0fb56a8a7d488f950307a4330f146e1e1458fc63fb33defe96@est.stacksnodes.org:20444"
 
-The Degen Lab team has created a [suite of tools](https://stacking.tools/) to make stacking significantly easier including a signer signature generator, a solo stacking dapp to stack without needing to run a signer, and a TypeScript library for mocking stacking functions.
+[burnchain]
+chain = "bitcoin"
+mode = "mainnet"
+peer_host = "localhost"
+peer_port = 8333
 
-#### Oracles and Price Feeds
+[[events_observer]]
+endpoint = "localhost:3700"
+events_keys = ["*"]
+```
+{% endcode %}
 
-DIA and Pyth provide oracle services for the Stacks layer. Find [documentation for DIA here](https://docs.diadata.org/use-nexus-product/nexus/data-delivery-usage/integrated-blockchains/stacks-price-oracles) and learn more about the [developer release of Pyth here](https://www.pyth.network/blog/developer-release-pyth-on-stacks).
+### Example Testnet Follower Configuration
 
-### Educational Resources
+{% code title="stacks-node-testnet.toml" %}
+```toml
+[node]
 
-#### Docs
+rpc_bind = "0.0.0.0:20443"
+p2p_bind = "0.0.0.0:20444"
+bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
+prometheus_bind = "127.0.0.1:9153"
+working_dir = "/stacks-blockchain"
 
-These docs you are currently looking at are a great place to get a comprehensive view of all things in the Stacks ecosystem, as well as providing some links out to additional resources you'll find helpful.
+[burnchain]
+chain = "bitcoin"
+mode = "krypton"
+peer_host = "bitcoin.regtest.hiro.so"
+peer_port = 18444
+pox_prepare_length = 100
+pox_reward_length = 900
 
-#### Hiro Docs
+[[ustx_balance]]
+address = "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2"
+amount = 10000000000000000
 
-Hiro is a key player in the Stacks ecosystem, providing several developer tools to make your life easier. They also publish excellent [guides and docs](https://docs.hiro.so/) to make using these tools a breeze.
+[[ustx_balance]]
+address = "ST319CF5WV77KYR1H3GT0GZ7B8Q4AQPY42ETP1VPF"
+amount = 10000000000000000
 
-#### Clarity Book
+[[ustx_balance]]
+address = "ST221Z6TDTC5E0BYR2V624Q2ST6R0Q71T78WTAX6H"
+amount = 10000000000000000
 
-The [Clarity Book](https://book.clarity-lang.org/) is the go-to resource for learning how to be a Clarity developer. In it you'll not only get the basics of Clarity but go through several practice projects and learn best practices.
+[[ustx_balance]]
+address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
+amount = 10000000000000000
 
-#### LearnWeb3
+[fee_estimation]
+fee_estimator = "fuzzed_weighted_median_fee_rate"
 
-LearnWeb3 is one of the best education providers in the game. They have recently begun publishing courses as part of their [Stacks Developer Degree](https://learnweb3.io/degrees/stacks-developer-degree/). LearnWeb3 courses will teach you everything you need to know about building Stacks Dapps.
+[[burnchain.epochs]]
+epoch_name = "1.0"
+start_height = 0
 
-#### EasyA
+[[burnchain.epochs]]
+epoch_name = "2.0"
+start_height = 0
 
-[EasyA](https://www.easya.io/) is a mobile app with a Stacks course built in. The EasyA app allows you to learn on the go and is a great way to learn the basics of Stacks and Clarity development all directly in their app.
+[[burnchain.epochs]]
+epoch_name = "2.05"
+start_height = 1
 
-#### Bitcoin Primer
+[[burnchain.epochs]]
+epoch_name = "2.1"
+start_height = 2
 
-If you're new to Bitcoin, interested in how it works, and how you can build Stacks dapps that interact with it, the [Bitcoin Primer](https://start.bitcoinprimer.dev/) is a great place to start.
+[[burnchain.epochs]]
+epoch_name = "2.2"
+start_height = 3
+
+[[burnchain.epochs]]
+epoch_name = "2.3"
+start_height = 4
+
+[[burnchain.epochs]]
+epoch_name = "2.4"
+start_height = 5
+
+[[burnchain.epochs]]
+epoch_name = "2.5"
+start_height = 6
+
+[[burnchain.epochs]]
+epoch_name = "3.0"
+start_height = 1_900
+
+[[burnchain.epochs]]
+epoch_name = "3.1"
+start_height = 2_000
+
+[[burnchain.epochs]]
+epoch_name = "3.2"
+start_height = 71_525
+```
+{% endcode %}
