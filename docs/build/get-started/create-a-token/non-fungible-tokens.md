@@ -140,7 +140,7 @@ This is the Clarity code we need in order to create an NFT, with one additional 
 The token contract example above is passing in an already deployed trait on mainnet into the `impl-trait` function. You can use this same deployed trait for your own NFT contract as well.
 
 {% hint style="success" %}
-Deployed SIP-010 trait contracts you can directly implement in your custom token contract:
+Deployed SIP-009 trait contracts you can directly implement in your custom token contract:
 
 * \[mainnet] SP2PABAF9FTAJYNFZH93XENAJ8FVY99RRM50D2JG9.nft-trait
 * \[testnet] ST1NXBK3K5YYMD6FD41MVNP3JS1GABZ8TRVX023PT.nft-trait
