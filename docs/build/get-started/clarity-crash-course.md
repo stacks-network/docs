@@ -303,6 +303,80 @@ Auditors provide an independent, expert review of your smart contracts to identi
 
 ***
 
+### Deploying Clarity Smart Contracts
+
+When you deploy a Clarity smart contract, you're uploading its code to the Stacks blockchain, making it immutable and publicly accessible. Deployment involves submitting a transaction that includes the smart contract code and specific parameters. Once deployed, the contract's logic is fixed, providing transparency and security by ensuring that no further changes can be made.
+
+{% hint style="warning" %}
+Do note that not all methods below will support the latest Clarity version.
+{% endhint %}
+
+Here are a few different ways to deploy a Clarity smart contract:
+
+<details>
+
+<summary>Clarinet</summary>
+
+Clarinet is the CLI tool for all things Clarity contract development. Deploying contracts via Clarinet is by far the most conventional and common method. Using Clarinet also provides a myriad amount of configuration options for how you want your deployment to look like.
+
+Check out the dedicated guide [here](../clarinet/contract-deployment.md) to learn how you can deploy contracts with Clarinet.
+
+</details>
+
+<details>
+
+<summary>Stacks.js</summary>
+
+Stacks.js is the frontend javascript library for interacting with the Stacks network. Many token launchpads, that enable no-code solutions for deploying a token, utilize Stacks.js for deploying contracts on the frontend or backend script.
+
+Check out the dedicated guide [here](../stacks.js/contract-deployment.md) to learn how you can deploy contracts with Stacks.js.
+
+</details>
+
+<details>
+
+<summary>Stacks Explorer Sandbox</summary>
+
+The Sandbox in the [Stacks Explorer](https://explorer.stacks.co/) is an interactive Clarity code editor allowing you to write contracts, call functions of existing contracts, and also deploy contracts directly.
+
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/sandbox-deployment.png" alt=""><figcaption></figcaption></figure></div>
+
+</details>
+
+<details>
+
+<summary>Hiro Platform</summary>
+
+The [Hiro Platform](https://platform.hiro.so/) is a hosted developer experience that enables you to create and deploy Clarity smart contracts directly from a web browser.
+
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/platform-deployment.jpg" alt=""><figcaption></figcaption></figure></div>
+
+</details>
+
+***
+
+### Smart Contract Monitoring & Alerts
+
+Utilize tools that provide the event-driven infrastructure developers need to observe, index, and react to on-chain activity.
+
+<details>
+
+<summary>Contract Monitoring</summary>
+
+The [Contract Monitoring](https://platform.hiro.so/contract-monitoring) features, available in the Hiro Platform, enable you to set alerts when specific functions are called in your smart contracts. This enables you to detect and respond to suspicious contract activities, enhancing the security of your app throughout the contract lifecycle.
+
+</details>
+
+<details>
+
+<summary>Chainhooks</summary>
+
+[Chainhooks](https://docs.hiro.so/tools/chainhook) indexes Stacks & Bitcoin data, exposes queryable APIs, tracks contract state and transactions. You simply describe your chainhook filters and consume webhooks. The service handles queueing, retries, tier limits, observability, and parity between testnet and mainnet.
+
+</details>
+
+***
+
 ### Additional Resources
 
 This brief overview should get your feet wet with Clarity. For deeper learning, we recommend:
