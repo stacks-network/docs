@@ -585,5 +585,3 @@ Once a pool has enough delegated STX to become a signer, the pool admin needs to
   * Max amount
 
 Once this transaction has been confirmed, the pool operator is eligible to be a signer for an upcoming reward cycle.
-
-For more on the relationship between automated signing and manual stacking transactions, be sure to check out the main [Stack STX](file:///) doc.

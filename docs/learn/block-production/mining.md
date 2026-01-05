@@ -87,7 +87,7 @@ Stacks miners function similarly to sequencers in L2 systems in that they are on
 
 It's important to note that there are two primary parties involved in the block production process on Stacks: miners and stackers.
 
-These two roles serve complementary relationships in the [block production process](file:///), and stackers drastically reduce any potential destructive power miners have over the chain.
+These two roles serve complementary relationships in the block production process, and stackers drastically reduce any potential destructive power miners have over the chain.
 
 Miners cannot reorganize the chain. In the worst case, all miners can do is omit (some kinds of) transactions, and all that is required to address this is to run your own miner.
 

@@ -85,4 +85,4 @@ let response = await request('stx_transferSip10Ft', {
 
 ### Additional Resources
 
-* \[[Learn Stacks.js](/broken/pages/dH5waQhE6Vb7rhcrUG7z)] Head to the Learn Stacks.js section to see more examples&#x20;
+* \[[Learn Stacks.js](../../stacks.js/overview.md)] Head to the Learn Stacks.js section to see more examples&#x20;
