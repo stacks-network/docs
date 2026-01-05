@@ -37,19 +37,19 @@ tl;dr: avoid single point of failures, introduce redundancy, monitor things.
 
 {% stepper %}
 {% step %}
-### Test one instance first
+#### Test one instance first
 
 Upgrade one Signer instance at a time. Test the update on a single instance and verify functionality before proceeding to others.
 {% endstep %}
 
 {% step %}
-### Roll out gradually
+#### Roll out gradually
 
 If the test is successful, proceed to upgrade the remaining instances one-by-one.
 {% endstep %}
 
 {% step %}
-### Minimize downtime
+#### Minimize downtime
 
 While a Signer is offline for upgrades, it won't sign any blocks. Ensure that the downtime is as short as possible.
 {% endstep %}
@@ -73,19 +73,19 @@ To switch to the fall-back configuration quickly if an active instance fails, fo
 
 {% stepper %}
 {% step %}
-### Run the backup Signer
+#### Run the backup Signer
 
 Start the prepared backup Signer instance.
 {% endstep %}
 
 {% step %}
-### Enable event observer
+#### Enable event observer
 
 Enable the `event_observer` section of the Stacks node configuration.
 {% endstep %}
 
 {% step %}
-### Restart the node
+#### Restart the node
 
 Restart the Stacks node so it runs with the enabled `event_observer`.
 {% endstep %}

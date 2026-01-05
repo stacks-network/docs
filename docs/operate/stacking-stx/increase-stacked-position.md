@@ -95,7 +95,7 @@ Delegators have to increase their delegated amount in two steps.
 
 {% stepper %}
 {% step %}
-### Revoke Your Current Delegation
+#### Revoke Your Current Delegation
 
 Before increasing your delegation, cancel your current delegation through the `revoke-delegate-stx` function, so that you can delegate an increased amount of STX afterwards.
 
@@ -121,7 +121,7 @@ Before increasing your delegation, cancel your current delegation through the `r
 {% endstep %}
 
 {% step %}
-### Delegate with a Higher Amount
+#### Delegate with a Higher Amount
 
 After revoking, call the `delegate-stx` function with your new, higher amount. This function does not directly delegate the STX, but rather allows the pool operator to issue the stacking lock on behalf of the user calling this function.
 
@@ -302,15 +302,13 @@ Arguments:
 * Pox Address: the BTC address of the pool operator where they will receive the BTC rewards. If the delegator has set his own BTC address in the `delegate-stx` call, this address will have to be the same one.
 * Increase by: the amount of uSTX to add to the delegator's locked amount.
 
-
-
 ## Stack the Increased Amount
 
 Once the locked amount is updated, the operator must commit the change. There are two functions that can be used to stack the increased amount:
 
 {% stepper %}
 {% step %}
-#### If the Commit Has Not Yet Been Made: stack-aggregation-commit-indexed
+**If the Commit Has Not Yet Been Made: stack-aggregation-commit-indexed**
 
 This function stacks the total locked amount for an upcoming reward cycle. Note that the `stack-aggregation-commit-indexed` function wraps the `inner-stack-aggregation-commit` function. The wrapped inner function is included here.
 
@@ -386,7 +384,7 @@ Arguments:
 {% endstep %}
 
 {% step %}
-#### If the Commit Has Already Been Made: stack-aggregation-increase
+**If the Commit Has Already Been Made: stack-aggregation-increase**
 
 If you have previously committed an amount, you can further increase the stacked position by calling `stack-aggregation-increase`. This function adds an additional amount of STX to the already committed delegation.
 

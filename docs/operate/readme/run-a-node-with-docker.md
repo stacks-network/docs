@@ -33,7 +33,7 @@ The `<network>` placeholder used below can be replaced with one of:
 
 {% stepper %}
 {% step %}
-### Clone the repository
+#### Clone the repository
 
 Clone the stacks-blockchain-docker repository locally and change into the directory:
 
@@ -45,7 +45,7 @@ git clone https://github.com/stacks-network/stacks-blockchain-docker && cd stack
 {% endstep %}
 
 {% step %}
-### Start the services
+#### Start the services
 
 Start the docker-compose services for the chosen network:
 

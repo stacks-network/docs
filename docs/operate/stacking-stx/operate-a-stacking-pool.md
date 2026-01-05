@@ -528,7 +528,7 @@ Use the following stepper for the recommended workflow for setting up a wallet t
 
 {% stepper %}
 {% step %}
-### Generate the keypair and configure signer
+#### Generate the keypair and configure signer
 
 1. Use @stacks/cli to generate the keychain and private key.
    * Typically, when using a hardware wallet, it’s better to generate the mnemonic on the hardware wallet. For this use case, however, the signer software needs the private key, and hardware wallets (by design) don’t allow exporting private keys.
@@ -539,7 +539,7 @@ Use the following stepper for the recommended workflow for setting up a wallet t
 {% endstep %}
 
 {% step %}
-### When you need to generate signatures
+#### When you need to generate signatures
 
 1. Setup your wallet with your signer key’s private key. Either:
    * Setup your Leather wallet with a Ledger hardware wallet

@@ -39,19 +39,19 @@ Below are the primary ways you can stack:
 
 {% stepper %}
 {% step %}
-### Solo stacking
+#### Solo stacking
 
 If you meet the minimum and want to [solo stack](solo-stack.md), you will either need to run a signer, collaborate with an existing one, or use [stacking.tools](https://stacking.tools/). This guide will walk you through all options.
 {% endstep %}
 
 {% step %}
-### Operate a pool
+#### Operate a pool
 
 You can also [operate a pool](operate-a-stacking-pool.md) and have others delegate their STX to you. If you are a pool operator, you will need to run a signer, collaborate with an existing one, or use [stacking.tools](https://stacking.tools/).
 {% endstep %}
 
 {% step %}
-### Stack with a pool
+#### Stack with a pool
 
 If you do not meet the minimum amount of STX to solo stack, you can [delegate your STX to a pool operator ](stack-with-a-pool.md)and have them stack on your behalf. The minimum stacking amount is dynamic and can be found by visiting the https://api.hiro.so/v2/pox endpoint and looking at the `min_threshold_ustx` field. Note it is denoted in uSTX (1 STX = 1,000,000 uSTX). This is the most common stacking scenario.
 {% endstep %}
@@ -99,19 +99,19 @@ This workflow is explained more in detail in the [operate a pool](operate-a-stac
 
 {% stepper %}
 {% step %}
-### Stackers delegate their STX to a pool operator
+#### Stackers delegate their STX to a pool operator
 
 Stackers delegate their STX to a pool operator.
 {% endstep %}
 
 {% step %}
-### The pool operator approves specific stackers
+#### The pool operator approves specific stackers
 
 The pool operator makes `delegate-stack-stx` transactions to “approve” specific stackers. This needs to be called for every individual stacker that delegates to them.
 {% endstep %}
 
 {% step %}
-### The pool operator commits delegated STX
+#### The pool operator commits delegated STX
 
 The pool operator makes a `stack-aggregation-commit` transaction to “commit” all of its delegated STX up to this point.
 {% endstep %}

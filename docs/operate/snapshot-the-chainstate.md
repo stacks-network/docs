@@ -16,7 +16,7 @@ To produce a valid chainstate backup, the node should be stopped gracefully befo
 
 {% stepper %}
 {% step %}
-### Check node status before shutdown
+#### Check node status before shutdown
 
 ```bash
 # Verify if the node is responsive
@@ -25,7 +25,7 @@ curl http://localhost:20443/v2/info
 {% endstep %}
 
 {% step %}
-### Initiate graceful shutdown
+#### Initiate graceful shutdown
 
 * For Docker: `docker stop stacks-node` (allows at least 10 seconds for graceful shutdown)
 * For systemd: `systemctl stop stacks-node`
@@ -37,7 +37,7 @@ kill $(ps aux | grep stacks-node | grep -v grep | awk '{print $2}')
 {% endstep %}
 
 {% step %}
-### Verify complete shutdown
+#### Verify complete shutdown
 
 ```bash
 # Ensure no stacks-node processes are running

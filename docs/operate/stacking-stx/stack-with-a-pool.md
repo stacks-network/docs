@@ -20,13 +20,13 @@ Delegating your STX to a pool operator involves a few steps:
 
 {% stepper %}
 {% step %}
-### Find a pool
+#### Find a pool
 
 The first step is to find a stacking pool you would like to stack with. Pool operators have a lot of control over exactly how they implement stacking and reward distribution, and they all do things a bit differently, so it's important to do your research. The Stacks website has a great [page on stacking](https://www.stacks.co/learn/stacking) that links to several pool operators for you to research.
 {% endstep %}
 
 {% step %}
-### Use the pool's UI to call the delegate function
+#### Use the pool's UI to call the delegate function
 
 After you've chosen your pool operator, you'll need to get set up with a [Stacks-compatible wallet](https://www.stacks.co/explore/ecosystem?category=All+Teams#wallets) like Leather, Xverse, or Asigna.
 
@@ -34,7 +34,7 @@ Then you'll use your chosen pool operator's UI to call their delegation function
 {% endstep %}
 
 {% step %}
-### Pool operator stacks tokens
+#### Pool operator stacks tokens
 
 Once you grant permission for the pool operator to delegate, they will take over and call a separate function in the stacking contract to actually stack those delegated tokens. At this point your STX will be locked.
 
@@ -42,7 +42,7 @@ Depending on how the pool operator handles things, they may offer the option to 
 {% endstep %}
 
 {% step %}
-### Pool operator allocates rewards
+#### Pool operator allocates rewards
 
 Next, the pool operator will track what proportion of rewards you should earn based on the proportion of STX you delegated. If distributing rewards directly in Bitcoin, the pool operator will need to take custody of the Bitcoin and manually distribute it.
 
@@ -50,7 +50,7 @@ This is why it is important to do your research and stack with a pool operator w
 {% endstep %}
 
 {% step %}
-### Pool operator distributes rewards
+#### Pool operator distributes rewards
 
 Finally, the pool operator will distribute those rewards to you in either BTC or STX, depending on the model they use.
 {% endstep %}

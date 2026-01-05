@@ -23,7 +23,7 @@ Two options here — either are fine but it's recommended to mount the chainstat
 
 {% stepper %}
 {% step %}
-### Separate disks for chainstate(s) and OS
+#### Separate disks for chainstate(s) and OS
 
 * mount a dedicated disk for bitcoin at `/bitcoin` of 1TB
 * mount a dedicated disk for stacks-blockchain at `/stacks-blockchain` of at least 100GB
@@ -31,7 +31,7 @@ Two options here — either are fine but it's recommended to mount the chainstat
 {% endstep %}
 
 {% step %}
-### Combined Disk for all data
+#### Combined Disk for all data
 
 * root volume `/` of at least 1TB
 {% endstep %}

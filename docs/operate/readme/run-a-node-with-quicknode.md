@@ -4,13 +4,13 @@
 
 {% stepper %}
 {% step %}
-### Create a QuickNode account
+#### Create a QuickNode account
 
 Sign up on QuickNode: https://www.quicknode.com/signup
 {% endstep %}
 
 {% step %}
-### Create an endpoint
+#### Create an endpoint
 
 Once signed in, click "Create an endpoint". Select:
 
@@ -22,13 +22,13 @@ After that you'll have an API endpoint URL you can use to connect to Stacks.
 {% endstep %}
 
 {% step %}
-### Install the Stacks network package
+#### Install the Stacks network package
 
 Install the `@stacks/network` package in your frontend project.
 {% endstep %}
 
 {% step %}
-### Import the network class
+#### Import the network class
 
 In your frontend code, import the network class:
 
@@ -40,7 +40,7 @@ import { StacksTestnet } from "@stacks/network";
 {% endstep %}
 
 {% step %}
-### Configure the network with your QuickNode endpoint
+#### Configure the network with your QuickNode endpoint
 
 Create the network instance using your QuickNode endpoint URL:
 
@@ -54,7 +54,7 @@ Replace \<QUICKNODE\_ENDPOINT\_HERE> with the full endpoint URL provided by Quic
 {% endstep %}
 
 {% step %}
-### Use with @stacks/transactions
+#### Use with @stacks/transactions
 
 You can now call transactions and other Stacks RPC methods as you normally would using the `@stacks/transactions` library, passing the `network` instance where required.
 

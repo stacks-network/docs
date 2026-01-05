@@ -17,19 +17,19 @@ Once done, access your dashboard and follow these steps:
 
 {% stepper %}
 {% step %}
-### Add a new connection
+#### Add a new connection
 
 Click on "Connections", then "Add new connection".
 {% endstep %}
 
 {% step %}
-### Select Hosted Prometheus metrics
+#### Select Hosted Prometheus metrics
 
 Select "Hosted Prometheus metrics".
 {% endstep %}
 
 {% step %}
-### Choose via Grafana Alloy
+#### Choose via Grafana Alloy
 
 Select "Via Grafana Alloy", then on step 2 choose "Run Grafana Alloy" to generate an API token.
 {% endstep %}

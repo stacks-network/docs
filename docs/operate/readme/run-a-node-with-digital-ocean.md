@@ -10,37 +10,37 @@ Build code is hosted on this [Github repository](https://github.com/stacksfounda
 
 {% stepper %}
 {% step %}
-### Create the Droplet from the Marketplace
+#### Create the Droplet from the Marketplace
 
 Go to the [Stacks Blockchain page](https://marketplace.digitalocean.com/apps/stacks-blockchain) in DigitalOcean's marketplace. Click on `Create Stacks Blockchain Droplet`.
 {% endstep %}
 
 {% step %}
-### Choose plan and region
+#### Choose plan and region
 
 Choose a plan (it will only allow you to select a droplet that meets the minimum requirements) and your preferred datacenter region.
 {% endstep %}
 
 {% step %}
-### Authentication
+#### Authentication
 
 Enter a root password or [enable SSH keys](https://docs.digitalocean.com/products/droplets/how-to/add-ssh-keys/) if you prefer.
 {% endstep %}
 
 {% step %}
-### Create the Droplet
+#### Create the Droplet
 
 You can leave the rest of the options as they are and click on `Create Droplet`.
 {% endstep %}
 
 {% step %}
-### Wait for creation
+#### Wait for creation
 
 You will need to wait a few seconds for the droplet to get created. Once created click on it to see more information.
 {% endstep %}
 
 {% step %}
-### Access the Droplet
+#### Access the Droplet
 
 Congratulations! You are now running the Stacks Blockchain. You can click on `Console` for a terminal window to open or login using SSH to the public IP you've been assigned to with user `root`.
 {% endstep %}

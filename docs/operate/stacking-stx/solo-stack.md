@@ -372,25 +372,25 @@ Here is an overview of the fields you will need to pass. We'll cover how to get 
 
 {% stepper %}
 {% step %}
-### signer-key
+#### signer-key
 
 The public key that corresponds to the `stacks_private_key` your signer is using.
 {% endstep %}
 
 {% step %}
-### signer-signature
+#### signer-signature
 
 A signature that demonstrates that you actually control your `signer-key`. Because signer keys need to be unique, this is also a safety check to ensure that other Stackers can’t use someone else’s public key.
 {% endstep %}
 
 {% step %}
-### max-amount
+#### max-amount
 
 The maximum amount of uSTX (1 STX = 1,000,000 uSTX) that can be locked in the transaction that uses this signature. For example, if calling `stack-increase`, this parameter dictates the maximum amount of uSTX that can be used to add more locked STX.
 {% endstep %}
 
 {% step %}
-### auth-id
+#### auth-id
 
 A random integer that prevents the re-use of a particular signature, similar to how nonces are used with transactions. Must be less than 14 characters.
 {% endstep %}
@@ -468,7 +468,7 @@ At the time of writing, this has only been tested using the [Leather](https://le
 {% endhint %}
 
 You can visit [earn.leather.io](https://earn.leather.io/) to generate a signer key signature. Make sure you’re connected to the correct network.\
-To generate a signer key signature, it’s important that you’ve logged in Leather with the same secret key that was used to [generate your signer key](broken-reference), not the account that will serve as your pool operator address. Once you’ve setup that account on Leather, you can log in to Leather Earn.\
+To generate a signer key signature, it’s important that you’ve logged in Leather with the same secret key that was used to [generate your signer key](broken-reference/), not the account that will serve as your pool operator address. Once you’ve setup that account on Leather, you can log in to Leather Earn.\
 Click the link “Signer key signature” at the bottom of the page. This will open the “generate a signer key signature” page.
 
 The fields are:

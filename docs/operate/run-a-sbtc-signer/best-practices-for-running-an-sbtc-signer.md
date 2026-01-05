@@ -1,4 +1,4 @@
-# Best Practices for running an sBTC Signer
+# Best Practices for Running a sBTC Signer
 
 The following best practices suggest how to create a resilient setup for running your sBTC Signer.
 
@@ -16,13 +16,13 @@ The following best practices suggest how to create a resilient setup for running
 
 {% stepper %}
 {% step %}
-### Import the backup
+#### Import the backup
 
 Import the backup into a fresh PostgreSQL instance. The database alone is sufficient — you do not need to spin up a Stacks or Bitcoin node or the sBTC signer.
 {% endstep %}
 
 {% step %}
-### Run the verification query
+#### Run the verification query
 
 Execute the following query:
 
@@ -51,7 +51,7 @@ The most recent `aggregate_key` is the first row.
 {% endstep %}
 
 {% step %}
-### Compare with the on-chain aggregate key
+#### Compare with the on-chain aggregate key
 
 Fetch the current aggregate pubkey from the sbtc-registry contract and compare it to the most recent `aggregate_key` from the DB query:
 
@@ -118,4 +118,3 @@ You can use Prometheus metrics to monitor signer health. For example, see how Al
 * Ensure that multiple, trusted system administrators can manage and maintain your sBTC Signer instance.
 * Where feasible, system administrators should span different time zones.
 * Document your operations procedures and ensure that relevant personnel have access to them.
-

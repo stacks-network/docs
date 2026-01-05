@@ -24,7 +24,7 @@ The CLI examples below may show outdated release versions. For the latest releas
 
 {% stepper %}
 {% step %}
-### Prerequisites
+#### Prerequisites
 
 {% tabs %}
 {% tab title="Mainnet" %}
@@ -84,9 +84,9 @@ From this file, you'll need the `privateKey` value.
 {% endstep %}
 
 {% step %}
-### Set Up Your Stacks Signer
+#### Set Up Your Stacks Signer
 
-#### Download the stacks-signer binary
+**Download the stacks-signer binary**
 
 Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
 
@@ -104,7 +104,7 @@ wget https://github.com/stacks-network/stacks-core/releases/latest/download/linu
 unzip linux-glibc-x64.zip
 ```
 
-#### Create the configuration file
+**Create the configuration file**
 
 Create the configuration file required to start the signer (be sure to replace `<your_token>` and `<your_private_key>` with your auth token and private key values):
 
@@ -152,7 +152,7 @@ EOF
 {% endtab %}
 {% endtabs %}
 
-#### Verify the setup
+**Verify the setup**
 
 To ensure the signer has been set up correctly, you can run the following commands:
 
@@ -179,7 +179,7 @@ Database path: /home/admin/stacks-signer/data/signer.sqlite
 Metrics endpoint: 127.0.0.1:9154
 ```
 
-#### Start the signer
+**Start the signer**
 
 If the outputs of the previous commands are correct, you can proceed and start the signer:
 
@@ -189,7 +189,7 @@ If the outputs of the previous commands are correct, you can proceed and start t
 {% endstep %}
 
 {% step %}
-### Optional: Set up a Bitcoin node (strongly recommended)
+#### Optional: Set up a Bitcoin node (strongly recommended)
 
 In order to optimize signer health and performance, we highly recommend setting up your own Bitcoin node rather than relying on a third-party node.
 
@@ -197,9 +197,9 @@ We have created guides for running both a [full Bitcoin node](../readme/run-a-bi
 {% endstep %}
 
 {% step %}
-### Set Up Your Stacks Node
+#### Set Up Your Stacks Node
 
-#### Download the stacks-node binary
+**Download the stacks-node binary**
 
 Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest node release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary.
 
@@ -217,7 +217,7 @@ wget https://github.com/stacks-network/stacks-core/releases/latest/download/linu
 unzip linux-glibc-x64.zip
 ```
 
-#### Create the configuration file
+**Create the configuration file**
 
 Create the configuration file required to start the node (be sure to replace `<your_token>` with your auth token value):
 
@@ -352,7 +352,7 @@ EOF
 {% endtab %}
 {% endtabs %}
 
-#### Optional: Start the node with a data archive
+**Optional: Start the node with a data archive**
 
 You can [download a chainstate archive](https://archive.hiro.so/) in order to quickly sync your node, otherwise it will take a long time to get up-to-date with the other nodes.
 
@@ -390,7 +390,7 @@ rm testnet-stacks-blockchain-latest.tar.gz
 {% endtab %}
 {% endtabs %}
 
-#### Verify the setup
+**Verify the setup**
 
 To ensure the node has been set up correctly, you can run the following commands:
 
@@ -412,7 +412,7 @@ INFO [1729788064.913175] [testnet/stacks-node/src/main.rs:318] [main] Loading co
 INFO [1729788064.969551] [testnet/stacks-node/src/main.rs:331] [main] Loaded config!
 ```
 
-#### Start the node
+**Start the node**
 
 If the outputs of the previous commands are correct, you can proceed and start the node:
 
@@ -422,7 +422,7 @@ If the outputs of the previous commands are correct, you can proceed and start t
 {% endstep %}
 
 {% step %}
-### Generate your signer signature
+#### Generate your signer signature
 
 In order to stack, you'll need your signer signature. The fields required are further explained in the [Generate a signer key signature](https://docs.stacks.co/guides-and-tutorials/stack-stx/stacking-flow#step-2-generate-a-signer-key-signature) guide.
 
@@ -444,7 +444,7 @@ The generated JSON can be then copy-pasted directly in the [Leather Earn](https:
 {% endstep %}
 
 {% step %}
-### Start stacking
+#### Start stacking
 
 The simplest route is to solo stack. You can do that by using [Leather Earn](https://earn.leather.io/). Click on the 'Stack Independently' button and follow the instructions there.
 
@@ -452,7 +452,7 @@ If you would like to learn more about solo stacking or running a pool operator, 
 {% endstep %}
 
 {% step %}
-### Monitoring
+#### Monitoring
 
 If you would like to learn more about monitoring your signer and its corresponding node, you can check the [How to Monitor a Signer](https://docs.stacks.co/guides-and-tutorials/running-a-signer/how-to-monitor-signer) guide.
 {% endstep %}

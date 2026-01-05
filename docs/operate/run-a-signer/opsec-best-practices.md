@@ -19,7 +19,7 @@ What can Signers do to mitigate the threat vectors identified above? Let's ident
 
 {% stepper %}
 {% step %}
-### Run the stacks-signer on a separate system from the stacks-node
+#### Run the stacks-signer on a separate system from the stacks-node
 
 This reduces discoverability of the signer. Systems running the stacks-node participate in the peer-to-peer network and are more easily enumerated. If an attacker can't find your stacks-signer, they can't attack it directly.
 
@@ -29,7 +29,7 @@ Note: Running the stacks-signer on a separate system is an option, but not stric
 {% endstep %}
 
 {% step %}
-### Run the stacks-signer as a separate user from the stacks-node
+#### Run the stacks-signer as a separate user from the stacks-node
 
 When resource constraints prevent separate workloads, run the stacks-signer under a distinct unprivileged user account from the stacks-node. Ensure exclusive ownership and restrictive permissions for each user's configuration files.
 
@@ -37,7 +37,7 @@ Example: the user running the signer binary (e.g., signer) should own the signer
 {% endstep %}
 
 {% step %}
-### Harden the systemd configuration for the stacks-signer
+#### Harden the systemd configuration for the stacks-signer
 
 Hardening systemd can reduce blast radius if an attacker gains control of the stacks-signer process. An example stacks-signer.service systemd unit is shown below. This unit prevents certain filesystem writes and otherwise restricts the process.
 
@@ -90,13 +90,13 @@ Read more about systemd hardening: https://www.ctrl.blog/entry/systemd-service-h
 {% endstep %}
 
 {% step %}
-### Restrict access to unnecessary ports and protocols
+#### Restrict access to unnecessary ports and protocols
 
 The stacks-signer requires outbound TCP access to the stacks-node, but typically no other inbound network exposure is needed (except for OS updates and administrative access). Restrict network access to the minimum required for operation.
 {% endstep %}
 
 {% step %}
-### Harden the operating system
+#### Harden the operating system
 
 A few practical OS hardening measures:
 

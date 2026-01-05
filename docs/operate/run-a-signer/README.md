@@ -15,12 +15,12 @@ This doc provides instructions to set up both using either Docker or the release
 ### Knowledge Prerequisites
 
 * Docker and basic knowledge of pulling and running images
-* Basic knowledge of [Stacks accounts](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/network-fundamentals/accounts)
+* Basic knowledge of [Stacks accounts](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/network-fundamentals/wallets-and-accounts)
 * Basic knowledge of [stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/stacking) and the stacking flow
 
 {% stepper %}
 {% step %}
-### Signer Checklist — Pre-Launch Setup
+#### Signer Checklist — Pre-Launch Setup
 
 Quick reference of major setup steps prior to launching a signer.
 
@@ -29,14 +29,14 @@ Quick reference of major setup steps prior to launching a signer.
 {% endstep %}
 
 {% step %}
-### Signer Checklist — Preflight Setup
+#### Signer Checklist — Preflight Setup
 
 * Generate a new private key using stacks-cli (see Preflight Setup).
 * Save the generated account information securely.
 {% endstep %}
 
 {% step %}
-### Signer Checklist — Configuration Setup
+#### Signer Checklist — Configuration Setup
 
 * Create a `signer-config.toml` file with necessary configurations:
   * node\_host
@@ -49,7 +49,7 @@ Quick reference of major setup steps prior to launching a signer.
 {% endstep %}
 
 {% step %}
-### Signer Checklist — Running the Signer
+#### Signer Checklist — Running the Signer
 
 * Decide whether to run the signer using Docker (recommended) or as a binary.
 * If using Docker:
@@ -61,14 +61,14 @@ Quick reference of major setup steps prior to launching a signer.
 {% endstep %}
 
 {% step %}
-### Signer Checklist — Verify Signer Operation
+#### Signer Checklist — Verify Signer Operation
 
 * Check that the signer is listening on its configured endpoint.
 * Confirm that there are no errors and that the system is ready for connections.
 {% endstep %}
 
 {% step %}
-### Signer Checklist — Setting Up the Stacks Node
+#### Signer Checklist — Setting Up the Stacks Node
 
 * Create a `node-config.toml`, include:
   * connection\_options.sauth\_token
@@ -77,14 +77,14 @@ Quick reference of major setup steps prior to launching a signer.
 {% endstep %}
 
 {% step %}
-### Signer Checklist — Verify Stacks Node Operation
+#### Signer Checklist — Verify Stacks Node Operation
 
 * Check Stacks node logs for successful connection to the signer.
 * Confirm the node is syncing Bitcoin headers properly.
 {% endstep %}
 
 {% step %}
-### Signer Checklist — Setup Stacks Accounts
+#### Signer Checklist — Setup Stacks Accounts
 
 * Set up a pool operator wallet in a Stacks wallet (e.g., Leather or Xverse).
 * Fund the pool operator wallet with sufficient STX for transaction fees.
@@ -122,7 +122,7 @@ Signers are intended to work with a local node. The node<->signer connection is 
 
 ## Create a Configuration File
 
-Create a file named `signer-config.toml`. Populate it with the example signer config file contents from the [Sample Configuration Files](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/signer-configuration) page. Each field is described on that page.
+Create a file named `signer-config.toml`. Populate it with the example signer config file contents from the [Sample Configuration Files](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/node-operations/signer-configuration) page. Each field is described on that page.
 
 ***
 
@@ -239,7 +239,7 @@ Start the Stacks node after the signer is running — the node will not run unle
 
 ### Stacks Node Configuration
 
-Create `node-config.toml`. See the [Sample Configuration Files](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/signer-configuration) page for the full contents.
+Create `node-config.toml`. See the [Sample Configuration Files](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/node-operations/signer-configuration) page for the full contents.
 
 Important fields to change:
 
@@ -336,7 +336,7 @@ You may see many logs while syncing; refer to How to Read the Signer Logs if con
 ## Setup Your Stacks Accounts
 
 {% hint style="info" %}
-For more on stacking and signing relationship, see the [Stack STX](broken-reference) guide.
+For more on stacking and signing relationship, see the [Stack STX](broken-reference/) guide.
 {% endhint %}
 
 As a signer you’ll manage two Stacks accounts:

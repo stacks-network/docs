@@ -2,7 +2,7 @@
 
 {% stepper %}
 {% step %}
-### Requirements
+#### Requirements
 
 This guide is written for a Unix based system. It's reasonable to expect some modifications will be required for other operating systems.
 
@@ -23,7 +23,7 @@ When started, the Bitcoin node will take several days to reach chain tip.
 {% endstep %}
 
 {% step %}
-### Add bitcoin user and set file ownership
+#### Add bitcoin user and set file ownership
 
 Run the following commands:
 
@@ -38,7 +38,7 @@ $ sudo chown -R bitcoin:bitcoin /bitcoin /etc/bitcoin/
 {% endstep %}
 
 {% step %}
-### Bitcoin config
+#### Bitcoin config
 
 Below is a sample config used to sync a bitcoin node - feel free to adjust as needed.
 
@@ -107,7 +107,7 @@ disablewallet=1
 {% endstep %}
 
 {% step %}
-### Systemd unit file
+#### Systemd unit file
 
 Reference: https://github.com/bitcoin/bitcoin/blob/master/contrib/init/bitcoind.service
 
@@ -198,7 +198,7 @@ WantedBy=multi-user.target
 {% endstep %}
 
 {% step %}
-### Enable and start the Bitcoin service
+#### Enable and start the Bitcoin service
 
 Run:
 
@@ -212,7 +212,7 @@ $ sudo systemctl start bitcoin.service
 {% endstep %}
 
 {% step %}
-### Track sync progress
+#### Track sync progress
 
 {% hint style="info" %}
 Once started, you may track the sync progress:

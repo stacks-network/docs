@@ -18,7 +18,7 @@ If you're stacking with a pool (where you delegate your STX via the `delegate-st
 
 {% stepper %}
 {% step %}
-### Revoke Delegation
+#### Revoke Delegation
 
 Before your STX can be unlocked, you must cancel the delegation with the pool operator. This is done by calling the `revoke-delegate-stx` function through the pool's interface, or within the [pox-4](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-4?chain=mainnet) contract.
 
@@ -50,7 +50,7 @@ Failing to revoke your delegation will mean that you continue to allow the pool 
 {% endstep %}
 
 {% step %}
-### Wait for Funds to Unlock
+#### Wait for Funds to Unlock
 
 After revoking your delegation, your STX tokens will still remain locked until the last stacking cycle chosen by the pool operator completes. The unlock occurs automatically at the predefined unlock burn height for that cycle.
 

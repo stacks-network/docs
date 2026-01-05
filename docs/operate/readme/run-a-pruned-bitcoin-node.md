@@ -36,7 +36,7 @@ What this means is that in practice, a stacks-blockchain node:
 
 {% stepper %}
 {% step %}
-### Add bitcoin user and set file ownership
+#### Add bitcoin user and set file ownership
 
 ```shell
 $ sudo mkdir -p /bitcoin/mainnet
@@ -47,7 +47,7 @@ $ sudo chown -R bitcoin:bitcoin /bitcoin /etc/bitcoin/
 {% endstep %}
 
 {% step %}
-### Bitcoin Config
+#### Bitcoin Config
 
 Below is a sample config used to sync a pruned bitcoin node - feel free to adjust as needed.
 
@@ -136,7 +136,7 @@ disablewallet=1
 {% endstep %}
 
 {% step %}
-### Systemd unit file
+#### Systemd unit file
 
 ref: https://github.com/bitcoin/bitcoin/blob/master/contrib/init/bitcoind.service
 
@@ -223,7 +223,7 @@ WantedBy=multi-user.target
 {% endstep %}
 
 {% step %}
-### Enable and start the Bitcoin service
+#### Enable and start the Bitcoin service
 
 ```shell
 $ sudo systemctl daemon-reload
@@ -233,7 +233,7 @@ $ sudo systemctl start bitcoin.service
 {% endstep %}
 
 {% step %}
-### Track sync progress
+#### Track sync progress
 
 {% hint style="info" %}
 Once started, you may track the sync progress:
