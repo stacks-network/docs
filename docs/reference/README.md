@@ -1,7 +1,7 @@
 # Stacks Node Configuration
 
 {% hint style="info" %}
-Note that these config fields are for a Stacks follower node. If you are running a signer alongside your Stacks node, you'll want to use the sample file found on the [Signer Configuration](/broken/pages/8ea1fa91cfa819c25f545b0aca9bfc16c8c3ad28) page as it contains additional parameters needed for your signer and Stacks node to function properly.
+Note that these config fields are for a Stacks follower node. If you are running a signer alongside your Stacks node, you'll want to use the sample file found in the [Signer Configuration](node-operations/signer-configuration.md) page as it contains additional parameters needed for your signer and Stacks node to function properly.
 {% endhint %}
 
 ### Usage

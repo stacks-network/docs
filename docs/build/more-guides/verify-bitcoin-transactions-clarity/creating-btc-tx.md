@@ -5,7 +5,7 @@ For usage with the `clarity-bitcoin-lib` contract or if you just want to learn h
 Using Stacks Connect and with a Stacks-supported wallet, you can initiate a simple Bitcoin transaction from a frontend app in a few lines of code. With this Bitcoin transaction, you can then use to verify it's inclusion in a Bitcoin block through Clarity.
 
 {% hint style="info" %}
-Check out the [Stacks Connect](/broken/pages/JLRpUuDHPMxXaInZ9Vll) guides for more info on setup and wallet connection.
+Check out the [Stacks Connect](../../stacks-connect/connect-wallet.md) guides for more info on setup and wallet connection.
 {% endhint %}
 
 {% stepper %}

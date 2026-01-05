@@ -14,10 +14,6 @@ There are a few utilities that make interacting with this contract easier includ
 
 Hiro has a [detailed guide](https://docs.hiro.so/stacks.js/guides/how-to-integrate-stacking) available for stacking using this library as well as a [Nakamoto guide](https://docs.hiro.so/nakamoto/stacks-js) specifically for the additions made to work with `pox-4`.
 
-### Prerequisites
-
-If you are not familiar with stacking as a concept, it will be useful to [familiarize yourself with that first](/broken/pages/3df1d5b76fd4f047544069a38895455776fc228f) before diving into the contract.
-
 ***
 
 ## Solo Stacking
@@ -92,8 +88,8 @@ First let's cover the needed parameters.
 * `pox-addr` is a tuple that encodes the Bitcoin address to be used for the PoX rewards, details below.
 * `start-burn-ht` is the Bitcoin block height you would like to begin stacking. You will receive rewards in the reward cycle following `start-burn-ht`. Importantly, `start-burn-ht` may not be further into the future than the current reward cycle, and in most cases should be set to the current burn block height.
 * `lock-period` sets the number of reward cycles you would like you lock your STX for, this can be between 1 and 12.
-* `signer-sig` is a unique generated signature that proves ownership of this signer. Further details for its role and how to generate it can be found in the [How to Stack](/broken/pages/930b16324611cdbf3451ca2b306ada93a1be367e) document.
-* `signer-key` is the public key of your signer, more details in the [How to Run a Signer](/broken/pages/5baf2f4c67696dbef7258f50d4cbf103b3e014d1) document.
+* `signer-sig` is a unique generated signature that proves ownership of this signer.
+* `signer-key` is the public key of your signer.
 * `max-amount` sets the maximum amount allowed to be stacked during the provided stacking period.
 * `auth-id` is a unique string to prevent re-use of this stacking transaction.
 
@@ -413,7 +409,7 @@ How to fix: verify that the signer signature was generated using the exact same 
 
 This error means the contract lookup for a partially stacked entry failed. The stacking contract looks up partially stacked STX (after `delegate-stack-stx`) by the key `(pox-addr, stx-address, reward-cycle)`. If any of those parameters are wrong when generating the signature or calling `stack-aggregation-commit`, the lookup will fail.
 
-How to fix: check that the `pox-addr`, `stacker` principal (stx address), and `reward-cycle` values match exactly what was used in `delegate-stack-stx` / the signature generation. See the [stacking guide](/broken/pages/930b16324611cdbf3451ca2b306ada93a1be367e#delegator-initiates-delegation) for delegation flow details.
+How to fix: check that the `pox-addr`, `stacker` principal (stx address), and `reward-cycle` values match exactly what was used in `delegate-stack-stx` / the signature generation.
 
 </details>
 
