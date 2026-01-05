@@ -148,19 +148,19 @@ Delegated stacking is essentially a multi-step process where delegators give poo
 
 {% stepper %}
 {% step %}
-### Step: Delegator delegates their STX to a pool operator
+#### Step: Delegator delegates their STX to a pool operator
 
 The delegator calls `delegate-stx` to record that they delegate a given amount to a specific pool operator. This does not lock the STX — it only records the delegation permission.
 {% endstep %}
 
 {% step %}
-### Step: Pool operator stacks delegated STX (partial)
+#### Step: Pool operator stacks delegated STX (partial)
 
 The pool operator calls `delegate-stack-stx` for each delegator they will lock on behalf of. This marks those STX as partially stacked (not yet in the official reward set).
 {% endstep %}
 
 {% step %}
-### Step: Pool operator commits aggregated locks
+#### Step: Pool operator commits aggregated locks
 
 When the pool operator has aggregated enough delegated STX, they call `stack-aggregation-commit-indexed` (wraps `inner-stack-aggregation-commit`) to commit the aggregated stake into the reward set for the reward cycle.
 {% endstep %}

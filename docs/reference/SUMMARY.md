@@ -7,10 +7,10 @@
 * [RPC API (old)](node-operations/rpc-api-old.md)
 * [RPC API Endpoints](node-operations/rpc-api/README.md)
   * ```yaml
-    type: builtin:openapi
     props:
       models: false
       downloadLink: false
+    type: builtin:openapi
     dependencies:
       spec:
         ref:
