@@ -4,19 +4,19 @@ Block production is a key concept to understand how Stacks operates under the ho
 
 {% stepper %}
 {% step %}
-#### Mining
+**Mining**
 
 Miners are responsible for building and proposing new blocks on the Stacks chain.
 {% endstep %}
 
 {% step %}
-#### Signing
+**Signing**
 
 Signing is the process used to validate blocks and sign sBTC deposits and withdrawals. Stackers participate in signing once they meet stacking prerequisites.
 {% endstep %}
 
 {% step %}
-#### Stacking
+**Stacking**
 
 Stacking is an action performed by stackers that is a necessary prerequisite to signing. It enables participation in validation and earning rewards.
 {% endstep %}
@@ -32,4 +32,4 @@ https://github.com/stacksgov/sips/blob/feat/sip-021-nakamoto/sips/sip-021/sip-02
 
 Here's a diagram outlining the block production process under Nakamoto rules. The following docs dig into each part in detail.
 
-<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>

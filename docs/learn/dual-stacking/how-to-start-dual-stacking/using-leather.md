@@ -30,7 +30,7 @@ Here are the necessary steps to enroll your sBTC using Leather:
 
 Upon popup of the connect wallet modal, select the Leather option to connect with.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption><p>Confirm connecting in your Leather modal popup.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption><p>Confirm connecting in your Leather modal popup.</p></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -38,11 +38,11 @@ Upon popup of the connect wallet modal, select the Leather option to connect wit
 
 On the dashboard, you'll be able to see stats regarding your current sBTC in wallet, sBTC in DeFi, STX currently stacked, and estimated APY you could be earning.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure></div>
 
 Let's get started by enrolling your sBTC into Dual Stacking.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure></div>
 
 Your Leather extension will appear with a popup asking you to review the transaction for approval. This will create the transaction which you will sign and broadcast in your Leather web wallet view.
 
@@ -58,11 +58,11 @@ You'll notice your sBTC now enrolled in Dual Stacking and when the rewards cycle
 
 The dashboard will also provide a view of your Dual Stacking portfolio. Track your balances, rewards and payouts at anytime.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure></div>
 
 Use the Dual Stacking calculator for estimated rewards based on the ratio of sBTC in your wallet and STX stacked. For more details on your rewards are calculated and the math behind it, check out the section on the [reward function](../economic-model.md#reward-function-parameters).
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -100,7 +100,7 @@ Let's deploy sBTC with Zest. Supplying sBTC in Zest will provide users with a su
 
 After deploying sBTC into Zest, navigate back to the Dual Stacking web app to see your current estimated APY and rewards composition.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption><p>View a breakdown of rewards per reward cycle.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption><p>View a breakdown of rewards per reward cycle.</p></figcaption></figure></div>
 
 Check back on the Dual Stacking dashboard to stay current with your rewards and rewards composition. Depending on when your rewards cycle start for your enrollment, you'll see the rewards breakdown in the middle section. All rewards are distributed in sBTC, redeemable 1:1 for BTC anytime.
 {% endstep %}

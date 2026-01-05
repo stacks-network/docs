@@ -45,53 +45,53 @@ At the end of the lock period, they will be automatically unlocked (spendable at
 
 The Stacking mechanism can be presented as a flow of actions:
 
-<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
 
 {% stepper %}
 {% step %}
-#### Make API calls to get details about the upcoming reward cycle
+**Make API calls to get details about the upcoming reward cycle**
 
 Query the network to discover the upcoming cycle parameters and timing.
 {% endstep %}
 
 {% step %}
-#### Confirm eligibility for a specific Stacks account
+**Confirm eligibility for a specific Stacks account**
 
 Verify the account meets the minimum requirements and is eligible to participate.
 {% endstep %}
 
 {% step %}
-#### Confirm the BTC reward address and lockup duration
+**Confirm the BTC reward address and lockup duration**
 
 Specify the Bitcoin address to receive payouts and input the desired lockup period.
 {% endstep %}
 
 {% step %}
-#### Broadcast the stacking transaction to lock STX
+**Broadcast the stacking transaction to lock STX**
 
 The transaction is broadcast and the STX tokens are locked. This must happen before the prepare phase of the next reward cycle (the last 100 Bitcoin blocks of the ongoing reward phase).
 {% endstep %}
 
 {% step %}
-#### Reward cycles execute and BTC rewards are sent
+**Reward cycles execute and BTC rewards are sent**
 
 The stacking mechanism executes reward cycles and sends out rewards to the configured BTC reward address.
 {% endstep %}
 
 {% step %}
-#### Monitor unlocking timing and rewards during lockup
+**Monitor unlocking timing and rewards during lockup**
 
 During the lockup period, you can obtain details about unlocking timing, expected rewards, and more.
 {% endstep %}
 
 {% step %}
-#### Tokens are released after the lockup period
+**Tokens are released after the lockup period**
 
 Once the lockup period has passed, the tokens become spendable again.
 {% endstep %}
 
 {% step %}
-#### Display reward history
+**Display reward history**
 
 Show historical details like earnings for previous reward cycles.
 {% endstep %}
@@ -107,15 +107,15 @@ There are two main ways you can stack: solo stacking and delegated stacking.
 
 {% stepper %}
 {% step %}
-#### Solo stacking
+**Solo stacking**
 
 Solo stacking follows the general stacking flow. You stack your own STX tokens and run your own signer. To operate as a solo stacker, you must have a minimum amount of STX tokens. This minimum is dynamic and can be found by viewing the [pox endpoint of the API](https://api.testnet.hiro.so/v2/pox) in the `min_threshold_ustx` field.
 {% endstep %}
 
 {% step %}
-#### Delegated stacking
+**Delegated stacking**
 
-<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
 
 Delegated stacking differs:
 
@@ -138,7 +138,7 @@ Stacks (STX) token holders don't automatically receive stacking rewards. To part
 * Provide a supported Bitcoin address to receive rewards
 * Maintain their signer software (if they operate a signer)
 
-<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
 
 Token holders have a variety of providers and tools to support their participation in stacking. The Stacks website contains a [list of pools and stacking options](https://www.stacks.co/learn/stacking#startstacking).
 
@@ -150,7 +150,7 @@ Stacking is a built-in capability of PoX and occurs through a set of actions on 
 Note that SIP-007 describes stacking before Nakamoto. While much of the functionality remains the same, stackers now have the additional responsibility of operating as signers as outlined in [SIP-021](https://github.com/stacksgov/sips/blob/feat/sip-021-nakamoto/sips/sip-021/sip-021-nakamoto.md).
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 
 Stacking happens in reward cycles of 2100 Bitcoin blocks (roughly two weeks). Reward cycles are split into two phases: the prepare phase and the reward phase.
 

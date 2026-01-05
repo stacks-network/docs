@@ -1,6 +1,6 @@
 # SIPs
 
-<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/announcing-hiros-token-metadata-api">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (25).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/announcing-hiros-token-metadata-api">Hiro blog</a></p></figcaption></figure>
 
 ### Stacks Improvement Proposals (SIPs)
 

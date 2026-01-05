@@ -1,6 +1,6 @@
 # Mainnet and Testnets
 
-<figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption><p>image source: <a href="https://www.hiro.so/blog/what-are-blockchain-layers">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption><p>image source: <a href="https://www.hiro.so/blog/what-are-blockchain-layers">Hiro blog</a></p></figcaption></figure>
 
 Stacks has both a mainnet and a testnet for different purposes. Mainnet and testnet are two completely different networks and tokens cannot be transferred between one or the other.
 
@@ -40,6 +40,6 @@ You'll first need to connect your wallet to the Explorer Sandbox and hit 'Reques
 {% tab title="LearnWeb3" %}
 Alternatively, you can use the [LearnWeb3 faucet](https://learnweb3.io/faucets).
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (45).png" alt=""><figcaption></figcaption></figure></div>
 {% endtab %}
 {% endtabs %}

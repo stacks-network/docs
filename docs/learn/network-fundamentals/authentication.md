@@ -1,6 +1,6 @@
 # Authentication
 
-<figure><img src="../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/how-to-authenticate-your-users">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/how-to-authenticate-your-users">Hiro blog</a></p></figcaption></figure>
 
 ### Introduction
 
@@ -58,19 +58,19 @@ The authenticator generates the app private key from the user's identity address
 
 {% stepper %}
 {% step %}
-#### It is used to create credentials that give the app access to a storage bucket in the user's Gaia hub
+**It is used to create credentials that give the app access to a storage bucket in the user's Gaia hub**
 
 This allows the app to access the user's app-specific storage in their Gaia hub.
 {% endstep %}
 
 {% step %}
-#### It is used in the end-to-end encryption of files stored for the app in the user's Gaia storage
+**It is used in the end-to-end encryption of files stored for the app in the user's Gaia storage**
 
 This key is used to encrypt files so only the app (with the derived key) can decrypt them.
 {% endstep %}
 
 {% step %}
-#### It serves as a cryptographic secret that apps can use to perform other cryptographic functions
+**It serves as a cryptographic secret that apps can use to perform other cryptographic functions**
 
 Apps can use this deterministic secret for additional cryptographic operations tied to the user's identity and domain.
 {% endstep %}

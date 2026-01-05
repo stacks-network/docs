@@ -1,6 +1,6 @@
 # Mining
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog">Hiro blog</a></p></figcaption></figure>
 
 {% hint style="info" %}
 This is conceptual guide that covers how mining works. For practical steps on how to setup your own miner please refer to the guides to running a miner on [mainnet](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/run-a-miner/mine-mainnet-stacks-tokens) and [testnet](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/run-a-miner/mine-testnet-stacks-tokens).
@@ -27,7 +27,7 @@ The reward amounts are:
 
 These "halvings" are synchronized with Bitcoin halvings.
 
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
 
 ### Transaction fees
 
@@ -43,7 +43,7 @@ Miners commit Bitcoin to **two** addresses in every leader block commit. The amo
 
 For more detailed information on this process, read [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md), which describes proof of transfer in detail.
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
 
 PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of sending the committed Bitcoin to a burn address, it's transferred to eligible STX holders that participate in the stacking protocol.
 
@@ -51,7 +51,7 @@ PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of sen
 A PoX miner can only receive newly minted STX tokens when they transfer Bitcoin to eligible owners of STX tokens
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
 
 Miners run Stacks nodes with mining enabled to participate in the PoX mechanism. The node implements the PoX mechanism, which ensures proper handling and incentives through four key phases:
 
@@ -117,19 +117,19 @@ This creates a natural economic equilibrium where:
 
 {% stepper %}
 {% step %}
-#### Enough miners participate to ensure blocks are produced reliably
+**Enough miners participate to ensure blocks are produced reliably**
 
 Content as above describing reliability.
 {% endstep %}
 
 {% step %}
-#### Stackers receive optimal BTC rewards
+**Stackers receive optimal BTC rewards**
 
 Content as above describing rewards optimization.
 {% endstep %}
 
 {% step %}
-#### The network maintains censorship resistance without unnecessary mining competition
+**The network maintains censorship resistance without unnecessary mining competition**
 
 Content as above describing censorship resistance.
 {% endstep %}

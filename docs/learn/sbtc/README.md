@@ -4,7 +4,7 @@ description: Design of a Trustless Two-way Peg for Bitcoin
 
 # sBTC
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="info" %}
 For builders and developers, head to the [sBTC guides](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/more-guides/sbtc) under the Build section to start integrating sBTC into your Clarity smart contracts and front-end application.

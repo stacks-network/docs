@@ -1,6 +1,6 @@
 # Financial Incentive And Security Budget
 
-<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption><p>image source: <a href="https://www.hiro.so/blog/securing-web3-apps-through-bitcoin-an-overview-of-stacks-consensus-mechanism">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption><p>image source: <a href="https://www.hiro.so/blog/securing-web3-apps-through-bitcoin-an-overview-of-stacks-consensus-mechanism">Hiro blog</a></p></figcaption></figure>
 
 In order to reorg the Stacks chain, someone must take control of at least 70% of the STX that are currently Stacked and conduct a 51% attack on Bitcoin itself. If acquired at market prices, then at the time of this writing, that amounts to spending nearly $1 billion USD in only the STX stacked.
 

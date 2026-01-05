@@ -72,7 +72,7 @@ Rollups are generally considered layer-2 (L2) technology that runs on top of a l
 
 Most of the rollups work on Ethereum uses Ethereum L1 both as a data availability layer, and for consensus, i.e., the validity of rollup transactions is determined by logic running on Ethereum L1. Newer systems, [like Celestia](https://celestia.org/), are taking a more modular approach and are separating DA from consensus. One interesting aspect of separating DA is that more established and durable chains like Bitcoin can be used for DA as well. Below is an interesting comparison of sidechains and two types of rollups possible on Bitcoin (John Light posted this [on Twitter](https://twitter.com/lightcoin/status/1630301411962388481?s=20)):
 
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
 This image broadly means developers can build sovereign rollups on Bitcoin today, but you'll need a "trusted" setup for moving BTC in and out of the rollup. In fact, people are already doing this -- see the recent [Rollkit announcement](https://rollkit.dev/blog/sovereign-rollups-on-bitcoin/). To build validity rollups, meaning Bitcoin L1 enforces BTC withdrawals from the rollup, you'll need modifications to Bitcoin L1. See [this overview](https://bitcoinrollups.org/) for more details.
 

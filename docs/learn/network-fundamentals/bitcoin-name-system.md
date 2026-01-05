@@ -1,6 +1,6 @@
 # Bitcoin Name System
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/getting-started-on-chain-usernames-stacks">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/getting-started-on-chain-usernames-stacks">Hiro blog</a></p></figcaption></figure>
 
 Bitcoin Name System (BNS) is a network system that binds Stacks usernames to off-chain state without relying on any central points of control.
 

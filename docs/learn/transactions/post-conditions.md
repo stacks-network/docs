@@ -1,6 +1,6 @@
 # Post Conditions
 
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/a-developers-guide-to-post-conditions">Hiro blog</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (29).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/a-developers-guide-to-post-conditions">Hiro blog</a></p></figcaption></figure>
 
 Post conditions are one of the most interesting and unique aspects of Stacks.
 
@@ -30,7 +30,7 @@ When you use a Stacks wallet like the Hiro web wallet and initiate a transaction
 
 Here's what that looks like:
 
-<figure><img src="../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 
 In this example, if the smart contract does not transfer one fabulous-frog NFT and and take 50 STX from the user, the transaction will abort.
 
