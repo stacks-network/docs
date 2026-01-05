@@ -25,7 +25,7 @@ Stacks ranks #5 among all crypto ecosystems for new developers in 2025! \[source
 
 Stacks is a fast, low-cost, builder-friendly layer 2 network on Bitcoin. It’s built on Bitcoin, inheriting Bitcoin’s battle-tested security. By jumping into our docs, you’re joining the Stacks builder community that’s bringing a global onchain economy to Bitcoin.
 
-If you're here on this page, hopefully you've already gotten a good sense of _what_ Stacks' purpose is, if not, head to the [Learn](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/) section. Or if you're still on the edge of _why_ you should build with Stacks, head to [Why Build with Stacks](get-started/introduction/why-build-with-stacks.md).
+If you're here on this page, hopefully you've already gotten a good sense of _what_ Stacks' purpose is, if not, head to the [Learn](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/) section. Or if you're still on the edge of _why_ you should build with Stacks, head to [Why Build with Stacks](get-started/readme/why-build-with-stacks.md).
 
 ***
 

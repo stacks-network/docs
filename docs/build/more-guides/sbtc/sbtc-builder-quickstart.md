@@ -145,7 +145,7 @@ You can test out this contract by either using the UI within the Platform to cal
 
 Once you do that you'll see that your devnet accounts have automatically been funded with sBTC.
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 Once you are ready to deploy to testnet, you can do so by editing your deployment plan as outlined in [this guide](https://docs.hiro.so/tools/clarinet/sbtc-integration).
 
