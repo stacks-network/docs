@@ -4,6 +4,14 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### Multiple network URLs supported in RPC-API playground
+
+_December 29, 2025_
+
+The API playground in the [RPC-API reference](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/node-operations/rpc-api) now supports testnet and mainnet. Use the interactive API playground to test API calls on mainnet, testnet, devnet, or for your own locally running Stacks node.
+
+***
+
 ### Stacks Blockchain API v8.13.6 is live
 
 _December 22, 2025_

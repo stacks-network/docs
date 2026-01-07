@@ -2,7 +2,7 @@
 description: A Devtools Catalog for Building with Stacks
 ---
 
-# Stacks Devtools Ecosystem
+# Stacks Devtools Catalog
 
 <div data-with-frame="true"><figure><img src=".gitbook/assets/devtools-ecosystem.png" alt=""><figcaption></figcaption></figure></div>
 
@@ -10,7 +10,7 @@ Discover the full range of developer tools available for building on Stacks.&#x2
 
 This page aggregates all open-sourced developer & experimental tools for building on Stacks. **Tools vary in scope, maturity, and maintenance status.** Whether you’re developing smart contracts, integrating wallets, querying blockchain data, or experimenting with new ideas, this page helps you find the resources to accelerate your projects and navigate the Stacks devtooling ecosystem.
 
-{% hint style="info" %}
+{% hint style="success" %}
 Official Stacks devtools are built and maintained by either **Stacks Labs** or **Hiro**.
 {% endhint %}
 

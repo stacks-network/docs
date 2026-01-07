@@ -99,4 +99,4 @@
 
 ***
 
-* [Stacks Devtools Ecosystem](stacks-devtools-ecosystem.md)
+* [Stacks Devtools Catalog](stacks-devtools-catalog.md)

@@ -50,7 +50,7 @@ We all have different styles of learning. If you've already got a good concept o
 | Launching a token                                                                         | [Create Tokens](get-started/create-a-token/)                                                                                                                                                         |
 | Interested in security / auditing / grants                                                | [Stacks Bug Bounties](https://immunefi.com/bug-bounty/stacks/information/), [Stacks Foundation](https://stacks.org/grants)                                                                           |
 | Curious about current use cases                                                           | [Use Cases](get-started/use-cases/)                                                                                                                                                                  |
-| Searching for a complete list of devtools                                                 | [Stacks Devtools Ecosystem](stacks-devtools-ecosystem.md)                                                                                                                                            |
+| Searching for a complete list of devtools                                                 | [Stacks Devtools Ecosystem](stacks-devtools-catalog.md)                                                                                                                                              |
 
 ***
 
