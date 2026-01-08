@@ -95,6 +95,7 @@
 * [Verifying Bitcoin Transactions in Clarity](more-guides/verify-bitcoin-transactions-clarity/README.md)
   * [Creating a Bitcoin Transaction](more-guides/verify-bitcoin-transactions-clarity/creating-btc-tx.md)
   * [Parsing a Bitcoin Transaction](more-guides/verify-bitcoin-transactions-clarity/parsing-a-bitcoin-transaction.md)
+* [Bridging USDCx](more-guides/bridging-usdcx.md)
 * [c32check](more-guides/c32check.md)
 
 ***
