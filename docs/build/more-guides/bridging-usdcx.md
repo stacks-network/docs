@@ -6,7 +6,7 @@ Current work is underway to abstract this entire flow via Circle's Bridge Kit SD
 
 ## Intro
 
-[USDCx](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/bridging/usdcx) bridges USDC into Stacks, integrating a stablecoin into its decentralized ecosystem via Circle's xReserve protocol. This enables asset transfer from Ethereum and enhances Stacks' DeFi offerings. Users access Stacks' DeFi, maintaining stable assets, increasing liquidity, and providing a reliable option for transactions and investments.
+[USDCx](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/bridging/usdcx) on Stacks opens up stablecoin liquidity into its decentralized ecosystem via Circle's xReserve protocol. This enables asset transfers from Ethereum and enhances Stacks' DeFi offerings. Users access Stacks' DeFi, maintaining stable assets, increasing liquidity, and providing a reliable option for transactions and investments.
 
 ### tl;dr
 
@@ -18,25 +18,25 @@ Current work is underway to abstract this entire flow via Circle's Bridge Kit SD
 
 **Deposit**
 
-1. Setup contract ABIs
-2. Setup wallet and public clients
-3. Check native ETH and USDC balance
-4. Prepare deposit params
-5. Approve xReserve to spend&#x20;
-6. Execute deposit to remote chain
+1. Setup USDC and xReserve's Solidity contract ABIs
+2. Setup wallet and public clients to communicate with the Ethereum network
+3. Check native ETH and USDC balances on a user's wallet.
+4. Prepare deposit params before initiating deposit request.
+5. Approve xReserve as a spender of your USDC.
+6. Execute deposit to the remote chain Stacks.
 
 ### Key Tools To Use
 
-* viem
-* @stacks/transactions
+* [viem](https://viem.sh/) - A Typescript-first library that interfaces with Ethereum.
+* [stacks.js](/broken/pages/dH5waQhE6Vb7rhcrUG7z) - A js library that helps developers build Stacks apps by handling transactions, wallet authentication, and smart contract interactions.
 
 ***
 
 ## Complete Code
 
-#### Deposit
-
 If you want to jump straight to the full implementation, the complete working code used in this guide is shown below.
+
+#### Deposit
 
 {% tabs %}
 {% tab title="index.ts" %}
@@ -271,9 +271,10 @@ PRIVATE_KEY=<YOUR_PRIVATE_KEY>
 
 ## Walkthrough (Deposit)
 
-Before beginning, make sure you've:
+Before beginning, make sure you:
 
-* Created a wallet on Ethereum Sepolia.
+* Create a wallet on Ethereum Sepolia.
+* Create a Stacks testnet wallet.
 * Get testnet USDC from the [Circle Faucet](https://faucet.circle.com/).
 * Get testnet ETH from a public [Ethereum Sepolia faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia).
 
@@ -325,12 +326,10 @@ You can examine the USDC, xReserve, and the other contracts related to USDCx on 
 Replace `YOUR_STACKS_TESTNET_ADDRESS` with the wallet that should receive minted USDCx on Stacks testnet.
 
 {% hint style="success" %}
-Stacks' domain id of `10003` is constant for all networks.
+Stacks' domain id, used for the xReserve protocol, of `10003` is constant for all networks.
 {% endhint %}
 
-{% code title="index.ts" expandable="true" %}
-```typescript
-// --snip--
+<pre class="language-typescript" data-title="index.ts" data-expandable="true"><code class="lang-typescript">// --snip--
 
 // ============ Configuration constants ============
 const config = {
@@ -344,12 +343,11 @@ const config = {
 
   // Deposit parameters for Stacks
   STACKS_DOMAIN: 10003, // Stacks domain ID
-  STACKS_RECIPIENT: "YOUR_STACKS_TESTNET_ADDRESS", // Address to receive minted USDCx on Stacks
-  DEPOSIT_AMOUNT: "1.00",
+<strong>  STACKS_RECIPIENT: "YOUR_STACKS_TESTNET_ADDRESS", // Address to receive minted USDCx on Stacks
+</strong>  DEPOSIT_AMOUNT: "1.00",
   MAX_FEE: "0",
 };
-```
-{% endcode %}
+</code></pre>
 {% endstep %}
 
 {% step %}
@@ -456,17 +454,20 @@ if (nativeBalance === 0n)
 
 Prepares the deposit parameters by converting USDC amounts to the correct decimal format (6 decimals), encoding the Stacks recipient address into bytes32 format, and setting empty hookData for the cross-chain transaction.
 
+{% hint style="info" %}
+Stacks addresses need to be reformatted and encoded to bytes32 on the Ethereum side. Special helper methods are needed for this encoding.
+{% endhint %}
+
 {% tabs %}
 {% tab title="index.ts" %}
-```typescript
-// --snip--
+<pre class="language-typescript"><code class="lang-typescript">// --snip--
 
 // Prepare deposit params (USDC has 6 decimals)
 const value = parseUnits(config.DEPOSIT_AMOUNT, 6);
 const maxFee = parseUnits(config.MAX_FEE, 6);
-const remoteRecipient = bytes32FromBytes(remoteRecipientCoder.encode(config.STACKS_RECIPIENT));
-const hookData = "0x";
-```
+<strong>const remoteRecipient = bytes32FromBytes(remoteRecipientCoder.encode(config.STACKS_RECIPIENT));
+</strong>const hookData = "0x";
+</code></pre>
 {% endtab %}
 
 {% tab title="helpers.ts" %}
@@ -550,9 +551,7 @@ if (usdcBalance < value) {
 
 Executes two sequential transactions: first approves the xReserve contract to spend the specified USDC amount and waits for confirmation, then calls the `depositToRemote` function to initiate the cross-chain bridge transfer to the Stacks recipient.
 
-{% code title="index.ts" expandable="true" %}
-```typescript
-// --snip--
+<pre class="language-typescript" data-title="index.ts" data-expandable="true"><code class="lang-typescript">// --snip--
 
 // Approve xReserve to spend USDC
 const approveTxHash = await client.writeContract({
@@ -571,8 +570,8 @@ console.log("✅ Approval confirmed");
 const depositTxHash = await client.writeContract({
   address: `0x${config.X_RESERVE_CONTRACT}`,
   abi: X_RESERVE_ABI,
-  functionName: "depositToRemote",
-  args: [
+<strong>  functionName: "depositToRemote",
+</strong>  args: [
     value,
     config.STACKS_DOMAIN,
     remoteRecipient,
@@ -581,8 +580,9 @@ const depositTxHash = await client.writeContract({
     hookData,
   ],
 });
-```
-{% endcode %}
+</code></pre>
+
+After some time, Stacks attestation service should receive the request and mint the equivalent value in USDCx on Stacks.
 
 These are example transactions on testnet:
 
