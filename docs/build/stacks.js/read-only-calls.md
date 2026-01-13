@@ -7,22 +7,26 @@ Read-only function calls allow you to query data from smart contracts without cr
 Call a read-only function to get contract data without any transaction fees:
 
 ```ts
-import { fetchCallReadOnlyFunction, cvToValue } from '@stacks/transactions';
+import { fetchCallReadOnlyFunction, type ClarityValue, cvToString } from '@stacks/transactions';
 
-const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
-const contractName = 'my-contract';
-const functionName = 'get-balance';
+const contractAddress = 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4';
+const contractName = 'sbtc-token';
+const functionName = 'get-total-supply';
 
-const response = await fetchCallReadOnlyFunction({
-  contractAddress,
+const response: ClarityValue = await fetchCallReadOnlyFunction({
   contractName,
+  contractAddress,
   functionName,
   functionArgs: [],
-  senderAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
+  senderAddress: 'SP2W7056R74EXF6GMGYXEKP6T5NT0FPQET74HXSCS',
 });
 
-const balance = cvToValue(response);
-console.log('Balance:', balance);
+console.log(response);
+// { type: 'ok', 
+//   value: { type: 'uint', value: 452551588021n } 
+// }
+console.log(cvToString(response))
+// (ok u452551588021)
 ```
 
 ## Passing function arguments

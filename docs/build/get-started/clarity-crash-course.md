@@ -15,7 +15,7 @@ This is designed for people with some programming experience who are new to Clar
 Once you've briefly familiarized yourself with the language, consider the [Clarity Book](https://book.clarity-lang.org/) or the course [Clarity Universe](https://clarity-lang.org/universe) to continue your learning.
 
 {% hint style="info" %}
-Clarity is developed as a joint effort of [Hiro PBC](https://hiro.so/), [Algorand](http://algorand.com/), and various other stakeholders, that originally targets the Stacks blockchain.
+Clarity is developed as a joint effort of [Hiro PBC](https://hiro.so/), [Algorand](http://algorand.com/), and various other stakeholders, that originally targets the Stacks blockchain. The Clarity source code can be found in the stacks-core repo [here](https://github.com/stacks-network/stacks-core).
 {% endhint %}
 
 ### Your First Clarity Smart Contract
@@ -53,13 +53,13 @@ Clarity's syntax is inspired by LISP: everything is an expression wrapped in par
 
 {% stepper %}
 {% step %}
-#### Everything in parentheses is an expression
+**Everything in parentheses is an expression**
 
 Clarity treats everything as expressions inside parentheses. Function definitions are calls to built-in functions; the function body is an expression. This uniformity helps reasoning about programs in Clarity.
 {% endstep %}
 
 {% step %}
-#### Uses LISP-like nesting
+**Uses LISP-like nesting**
 
 Expect nested parentheses and expressions. You’ll often read code as lists inside lists, where each parentheses-enclosed group represents a call or expression.
 {% endstep %}
@@ -143,7 +143,7 @@ Follow the steps below to interact with your counter contract:
 
 {% stepper %}
 {% step %}
-#### Call the read-only \`get-count\` function
+**Call the read-only \`get-count\` function**
 
 In the bottom right Clarity command console, paste in the below command to call your `get-count` function to see the current `count` value.
 
@@ -157,7 +157,7 @@ The console should return an initial value of `u0` since we haven't incremented 
 {% endstep %}
 
 {% step %}
-#### Call the public \`increment\` function
+**Call the public \`increment\` function**
 
 Now let's finally increment our count value. In the bottom right Clarity command console, paste in the below command to call your `increment` function, which will increment the `count` value by 1.
 
@@ -171,7 +171,7 @@ The console should return a value of `(ok true)` . This means the public functio
 {% endstep %}
 
 {% step %}
-#### Call our \`get-count\` function again
+**Call our \`get-count\` function again**
 
 To see if our count value was really incremented, let's call our read-only `get-count` function once again.
 
@@ -195,7 +195,7 @@ Great! You just interacted with your first Clarity smart contract. Hopefully thi
 
 Clarity smart contracts on the Stacks layer can also read Bitcoin state and can be triggered by standard Bitcoin transactions. This is because Stacks nodes also run Bitcoin nodes as part of consensus, and they read and index Bitcoin state.
 
-Reading Bitcoin state in Clarity is made by possible by the built-in function: `get-burn-block-info?`  and the keyword `burn-block-height` .
+Reading Bitcoin state in Clarity is made by possible by the built-in function: `get-burn-block-info?` and the keyword `burn-block-height` .
 
 * `burn-block-height` : This keyword returns the current block height of the underlying burnchain: Bitcoin. Check out the example snippet below:
 
@@ -283,14 +283,14 @@ This proposal contract updates the whitelist of an example `.nft-escrow` contrac
 
 ### Testing Clarity Smart Contracts
 
-Once you get to writing more advanced smart contracts, properly testing them is paramount to protecting anyone who interacts with your contract.&#x20;
+Once you get to writing more advanced smart contracts, properly testing them is paramount to protecting anyone who interacts with your contract.
 
 {% hint style="danger" %}
 Smart contracts are immutable once deployed. Bugs are permanent. Test them thoroughly.
 {% endhint %}
 
 * [Rendezvous Fuzz Testing](../rendezvous/overview.md): Use Rendezvous to hammer your contract with random inputs. It helps expose edge cases and vulnerabilities.
-* [Unit Testing in Clarinet](../clarinet/testing-with-clarinet-sdk.md): Unit testing verifies that individual contract functions behave as expected.&#x20;
+* [Unit Testing in Clarinet](../clarinet/testing-with-clarinet-sdk.md): Unit testing verifies that individual contract functions behave as expected.
 
 ***
 
@@ -389,7 +389,7 @@ This brief overview should get your feet wet with Clarity. For deeper learning, 
 * \[[Hiro Blog](https://www.hiro.so/blog/web3-programming-languages-clarity-vs-solidity)] Web3 Programming Languages: Clarity vs. Solidity
 * \[[Stacks YT](https://youtu.be/hFqH1bJEvnw?si=yQADCvRNNjotuAga)] How Stacks' Language Clarity Enables Next Gen Smart Contracts
 * \[[StacksDevs YT](https://www.youtube.com/watch?v=WZe1DgJ1w-E)] How Stacks’ Smart Contract Language Prevents Exploitation
-* \[[Chainlink YT](https://youtu.be/OAVwd6SNJVU?si=UgfjmisBRbIYv27U)] Marvin Janssen: Clarity Smart Contracts for Stacks&#x20;
+* \[[Chainlink YT](https://youtu.be/OAVwd6SNJVU?si=UgfjmisBRbIYv27U)] Marvin Janssen: Clarity Smart Contracts for Stacks
 * [100+ Days of Clarity video series by Setzeus](https://youtube.com/playlist?list=PLFHm9eE6H5uhNQ4cUXRE-4HkXF1ekS0ZG\&si=q0NmD-e9_QBomK3a)
 * \[[waits.dev](https://waits.dev/writing/clarity-vs-solidity)] Clarity vs Solidity
 

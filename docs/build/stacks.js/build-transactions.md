@@ -1,6 +1,6 @@
 # Build Transactions
 
-Learn how to build transactions programmatically for complete control over blockchain interactions.
+Learn how to build transactions programmatically for complete control over network interactions.
 
 ## Objectives
 
@@ -10,7 +10,7 @@ Learn how to build transactions programmatically for complete control over block
 
 ## Transaction types
 
-Stacks supports five primary transaction types, each serving a specific purpose.
+Stacks supports five primary transaction types, each serving a specific purpose. Three of the five primary transaction types will be commonly used amongst developers.
 
 ```ts
 // STX Transfer - Send native tokens
@@ -32,13 +32,52 @@ interface TransactionOptions {
 }
 ```
 
+`StacksTransactionWire` is the low-level transaction class that represents a **Stacks transaction in its exact wire (on-chain) format**. It is responsible for constructing, signing, verifying, and serializing transactions exactly as they are transmitted over the network and validated by Stacks nodes.
+
+{% code expandable="true" %}
+```typescript
+export declare class StacksTransactionWire {
+    transactionVersion: TransactionVersion;
+    chainId: ChainId;
+    auth: Authorization;
+    payload: PayloadWire;
+    postConditionMode: PostConditionMode;
+    postConditions: LengthPrefixedList<PostConditionWire>;
+    anchorMode: AnchorMode;
+    constructor({ auth, payload, postConditions, postConditionMode, transactionVersion, chainId, network, }: {
+        payload: PayloadInput;
+        auth: Authorization;
+        postConditions?: LengthPrefixedList<PostConditionWire>;
+        postConditionMode?: PostConditionMode;
+        transactionVersion?: TransactionVersion;
+        chainId?: ChainId;
+    } & NetworkParam);
+    signBegin(): string;
+    verifyBegin(): string;
+    verifyOrigin(): string;
+    signNextOrigin(sigHash: string, privateKey: PrivateKey): string;
+    signNextSponsor(sigHash: string, privateKey: PrivateKey): string;
+    appendPubkey(publicKey: PublicKey): void;
+    appendPubkey(publicKey: PublicKeyWire): void;
+    signAndAppend(condition: SpendingConditionOpts, curSigHash: string, authType: AuthType, privateKey: PrivateKey): string;
+    txid(): string;
+    setSponsor(sponsorSpendingCondition: SpendingConditionOpts): void;
+    setFee(amount: IntegerType): void;
+    setNonce(nonce: IntegerType): void;
+    setSponsorNonce(nonce: IntegerType): void;
+    serialize(): Hex;
+    serializeBytes(): Uint8Array;
+}
+```
+{% endcode %}
+
 ## Building signed transactions
 
 Signed transactions are ready to broadcast immediately. The private key signs during creation.
 
 {% stepper %}
 {% step %}
-#### STX token transfer
+**STX token transfer**
 
 ```ts
 import { makeSTXTokenTransfer, broadcastTransaction } from '@stacks/transactions';
@@ -57,7 +96,7 @@ console.log('Transaction ID:', result.txid);
 {% endstep %}
 
 {% step %}
-#### Smart contract deployment
+**Smart contract deployment**
 
 ```ts
 import { makeContractDeploy, ClarityVersion } from '@stacks/transactions';
@@ -72,7 +111,8 @@ const transaction = await makeContractDeploy({
   codeBody: contractCode,
   senderKey: 'your-private-key-hex',
   network: 'testnet',
-  clarityVersion: ClarityVersion.Clarity3,
+  clarityVersion: ClarityVersion.Clarity4,
+  senderKey: 'your-private-key-hex',
 });
 
 const result = await broadcastTransaction({ transaction });
@@ -80,7 +120,7 @@ const result = await broadcastTransaction({ transaction });
 {% endstep %}
 
 {% step %}
-#### Contract function calls
+**Contract function calls**
 
 ```ts
 import { makeContractCall, Cl } from '@stacks/transactions';
@@ -102,11 +142,10 @@ const transaction = await makeContractCall({
 Create unsigned transactions for multi-signature workflows or offline signing.
 
 ```ts
-import { makeUnsignedSTXTokenTransfer, TransactionSigner } from '@stacks/transactions';
-import { publicKeyFromPrivate } from '@stacks/encryption';
+import { makeUnsignedSTXTokenTransfer, TransactionSigner, privateKeyToPublic, broadcastTransaction } from '@stacks/transactions';
 
 // Create unsigned transaction
-const publicKey = publicKeyFromPrivate('your-private-key');
+const publicKey = privateKeyToPublic('your-private-key');
 
 const unsignedTx = await makeUnsignedSTXTokenTransfer({
   recipient: 'ST2CY5V39NHDPWSXMW9QDT3HC3GD6Q6XX4CFRK9AG',
@@ -120,6 +159,7 @@ const signer = new TransactionSigner(unsignedTx);
 signer.signOrigin('your-private-key');
 
 const signedTx = signer.transaction;
+let result = await broadcastTransaction({ transaction: signedTx });
 ```
 
 ## Sponsored transactions
@@ -133,7 +173,7 @@ const userTx = await makeContractCall({
   contractName: 'my-contract',
   functionName: 'transfer',
   functionArgs: [Cl.principal('ST2CY5V39NHDPWSXMW9QDT3HC3GD6Q6XX4CFRK9AG')],
-  senderKey: 'user-private-key',
+  publicKey: 'user-public-key',
   sponsored: true,
   fee: 0n, // User doesn't pay
   network: 'testnet',

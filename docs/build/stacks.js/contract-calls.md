@@ -10,18 +10,16 @@ Execute a simple contract function by creating a transaction with the required p
 import { 
   makeContractCall,
   broadcastTransaction,
-  AnchorMode
 } from '@stacks/transactions';
 
 async function callContract() {
   const txOptions = {
-    contractAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-    contractName: 'my-contract',
-    functionName: 'transfer',
+    contractAddress: 'SPQR8VS42ZCYH73W1T495CDCESYD360Y1D2N0AMJ',
+    contractName: 'counter',
+    functionName: 'increment',
     functionArgs: [],
     senderKey: 'your-private-key',
-    network: 'testnet',
-    anchorMode: AnchorMode.Any,
+    network: 'mainnet',
   };
   
   const transaction = await makeContractCall(txOptions);
@@ -44,18 +42,19 @@ import {
 } from '@stacks/transactions';
 
 const functionArgs = [
-  Cl.principal('ST2CY5V39NHDPWSXMW9QDT3HC3GD6Q6XX4CFRK9AG'), // recipient
-  Cl.uint(1000000), // amount
-  Cl.buffer(Buffer.from('Transfer memo', 'utf-8')), // memo
+  Cl.principal('SPMWCPXZJRDW3RP3NVQYAJHM71V2FMV9CMKR6GBR'), // sender
+  Cl.principal('SP3M2E9AJMCDK8F4W8781S7B7A4NRAZRZV0D2C3AD'), // recipient
+  Cl.uint(5000000), // amount
+  Cl.none(), // memo
 ];
 
 const txOptions = {
-  contractAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-  contractName: 'sip-010-token',
+  contractAddress: 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4',
+  contractName: 'sbtc-token',
   functionName: 'transfer',
   functionArgs,
   senderKey: 'your-private-key',
-  network: "testnet",
+  network: "mainnet",
 };
 
 const transaction = await makeContractCall(txOptions);
@@ -94,31 +93,6 @@ const successResponse = Cl.ok(Cl.uint(100));
 const errorResponse = Cl.err(Cl.uint(404));
 ```
 
-## Contract call with STX transfer
-
-Some contracts require STX to be sent along with the function call, such as when minting NFTs or paying for services.
-
-```ts
-async function mintNFT() {
-  const mintPrice = 1000000; // 1 STX
-  
-  const txOptions = {
-    contractAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-    contractName: 'nft-collection',
-    functionName: 'mint',
-    functionArgs: [],
-    senderKey: 'your-private-key',
-    network: new StacksTestnet(),
-    anchorMode: AnchorMode.Any,
-    // Attach STX to the contract call
-    amount: mintPrice,
-  };
-  
-  const transaction = await makeContractCall(txOptions);
-  return broadcastTransaction(transaction, network);
-}
-```
-
 ## Handling contract responses
 
 Process transaction results and contract responses:
@@ -130,13 +104,12 @@ async function executeAndMonitor() {
     contractAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
     contractName: 'my-contract',
     functionName: 'process',
-    functionArgs: [uintCV(100)],
+    functionArgs: [Cl.uint(100)],
     senderKey: 'your-private-key',
     network: new StacksTestnet(),
-    anchorMode: AnchorMode.Any,
   });
   
-  const broadcastResponse = await broadcastTransaction(transaction, network);
+  const broadcastResponse = await broadcastTransaction({ transaction, network });
   const txId = broadcastResponse.txid;
   
   // Wait for confirmation
@@ -172,58 +145,3 @@ async function waitForConfirmation(txId: string, network: StacksNetwork) {
   throw new Error('Transaction confirmation timeout');
 }
 ```
-
-## Multi-step contract interactions
-
-{% stepper %}
-{% step %}
-#### Approve spending
-
-First, create and broadcast an approval transaction.
-
-```ts
-const approveTx = await makeContractCall({
-  contractAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-  contractName: 'token',
-  functionName: 'approve',
-  functionArgs: [
-    standardPrincipalCV('ST2CY5V39NHDPWSXMW9QDT3HC3GD6Q6XX4CFRK9AG'),
-    uintCV(1000000),
-  ],
-  senderKey: 'your-private-key',
-  network: new StacksTestnet(),
-  anchorMode: AnchorMode.Any,
-});
-
-const approveResult = await broadcastTransaction(approveTx, network);
-await waitForConfirmation(approveResult.txid, network);
-```
-
-This step ensures the spender is authorized before subsequent actions.
-{% endstep %}
-
-{% step %}
-#### Execute swap after approval
-
-After the approval is confirmed, execute the swap transaction.
-
-```ts
-const swapTx = await makeContractCall({
-  contractAddress: 'ST2CY5V39NHDPWSXMW9QDT3HC3GD6Q6XX4CFRK9AG',
-  contractName: 'dex',
-  functionName: 'swap-tokens',
-  functionArgs: [
-    standardPrincipalCV('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM'),
-    uintCV(1000000),
-  ],
-  senderKey: 'your-private-key',
-  network: new StacksTestnet(),
-  anchorMode: AnchorMode.Any,
-});
-
-return broadcastTransaction(swapTx, network);
-```
-
-This step performs the token swap that depends on the prior approval.
-{% endstep %}
-{% endstepper %}

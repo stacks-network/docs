@@ -13,8 +13,7 @@ Validate Stacks addresses:
 {% code title="basic-validation.ts" %}
 ```ts
 import { 
-  validateStacksAddress,
-  validateContractName
+  validateStacksAddress
 } from '@stacks/transactions';
 
 // Validate standard addresses
@@ -26,13 +25,6 @@ console.log('Valid testnet:', isValidTestnet); // true
 
 const isInvalid = validateStacksAddress('invalid-address');
 console.log('Valid:', isInvalid); // false
-
-// Validate contract names
-const validContract = validateContractName('my-contract');
-console.log('Valid contract name:', validContract); // true
-
-const invalidContract = validateContractName('My Contract!');
-console.log('Valid contract name:', invalidContract); // false
 ```
 {% endcode %}
 
@@ -84,71 +76,6 @@ function getAddressInfo(address: string): {
 // Usage
 const info = getAddressInfo('SP2J6Y09JMFWWZCT4VJX0BA5W7A9HZP5EX96Y6VZY.my-contract');
 console.log(info); // { type: 'contract', network: 'mainnet' }
-```
-{% endcode %}
-
-## Address generation
-
-Generate addresses from keys:
-
-{% code title="address-generation.ts" %}
-```ts
-import {
-  makeRandomPrivKey,
-  getPublicKey,
-  getAddressFromPrivateKey,
-  getAddressFromPublicKey,
-  TransactionVersion,
-  AddressHashMode
-} from '@stacks/transactions';
-
-// Generate new random address
-function generateNewAddress(network: 'mainnet' | 'testnet') {
-  const privateKey = makeRandomPrivKey();
-  const publicKey = getPublicKey(privateKey);
-  
-  const version = network === 'mainnet' 
-    ? TransactionVersion.Mainnet 
-    : TransactionVersion.Testnet;
-  
-  const address = getAddressFromPrivateKey(privateKey, version);
-  
-  return {
-    privateKey,
-    publicKey,
-    address,
-  };
-}
-
-// Generate address from existing private key
-function getAddressFromKey(privateKey: string, network: 'mainnet' | 'testnet') {
-  const version = network === 'mainnet'
-    ? TransactionVersion.Mainnet
-    : TransactionVersion.Testnet;
-    
-  return getAddressFromPrivateKey(privateKey, version);
-}
-
-// Generate multisig address
-function generateMultisigAddress(
-  publicKeys: string[],
-  signaturesRequired: number,
-  network: 'mainnet' | 'testnet'
-) {
-  const version = network === 'mainnet'
-    ? TransactionVersion.Mainnet
-    : TransactionVersion.Testnet;
-    
-  const hashMode = AddressHashMode.SerializeP2SH;
-  
-  // Implementation depends on multisig setup
-  // This is a simplified example
-  return getAddressFromPublicKey(
-    publicKeys[0], // Simplified - real implementation needs all keys
-    version,
-    hashMode
-  );
-}
 ```
 {% endcode %}
 
@@ -371,74 +298,6 @@ function AddressDisplay({ address }: { address: string }) {
     <div className="address-display" onClick={copyToClipboard}>
       <code>{formatted}</code>
       {copied && <span>✓ Copied</span>}
-    </div>
-  );
-}
-```
-{% endcode %}
-
-## Input validation hooks
-
-React hooks for address inputs:
-
-{% code title="useAddressInput.tsx" %}
-```ts
-import { useState, useCallback } from 'react';
-
-function useAddressInput(options?: {
-  network?: 'mainnet' | 'testnet';
-  allowContracts?: boolean;
-}) {
-  const [value, setValue] = useState('');
-  const [error, setError] = useState<string | null>(null);
-  const [isValid, setIsValid] = useState(false);
-  
-  const validate = useCallback((address: string) => {
-    if (!address) {
-      setError(null);
-      setIsValid(false);
-      return;
-    }
-    
-    const validator = new AddressValidator();
-    const result = validator.validate(address, options);
-    
-    setError(result.reason || null);
-    setIsValid(result.valid);
-  }, [options]);
-  
-  const handleChange = useCallback((newValue: string) => {
-    setValue(newValue);
-    validate(newValue);
-  }, [validate]);
-  
-  return {
-    value,
-    error,
-    isValid,
-    setValue: handleChange,
-    validate,
-  };
-}
-
-// Usage in component
-function AddressInput() {
-  const address = useAddressInput({ 
-    network: 'mainnet',
-    allowContracts: false 
-  });
-  
-  return (
-    <div>
-      <input
-        value={address.value}
-        onChange={(e) => address.setValue(e.target.value)}
-        placeholder="Enter Stacks address"
-        className={address.error ? 'error' : ''}
-      />
-      {address.error && (
-        <span className="error-message">{address.error}</span>
-      )}
     </div>
   );
 }

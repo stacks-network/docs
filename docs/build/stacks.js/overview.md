@@ -2,13 +2,13 @@
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/stacksjs-learn.png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/taking-a-look-at-recent-stacks-js-improvements">Hiro blog</a></p></figcaption></figure></div>
 
-## Overview
-
-Stacks.js is a collection of JavaScript libraries that enable you to build web applications on the Stacks blockchain. From wallet authentication to smart contract interactions.
-
 {% hint style="success" %}
 For the latest releases and versions of Stacks.js packages, check out its open-source repo [here](https://github.com/stx-labs/stacks.js).
 {% endhint %}
+
+## Overview
+
+Stacks.js is a comprehensive collection of JavaScript libraries designed to empower developers in creating sophisticated web applications on the Stacks network. These libraries facilitate a wide range of functionalities, from seamless wallet authentication to robust interactions with smart contracts. By leveraging Stacks.js, developers can efficiently build decentralized applications (dApps) that harness the full potential of the Stacks ecosystem.
 
 ## Key features
 
@@ -57,7 +57,6 @@ npm install @stacks/common
 
 Other available packages include:
 
-* `@stacks/api`
 * `@stacks/auth`
 * `@stacks/encryption`
 * `@stacks/network`
@@ -65,8 +64,6 @@ Other available packages include:
 * `@stacks/transactions`
 * `@stacks/bns`
 * `@stacks/common`
-* `@stacks/profile`
-* `@stacks/storage`
 * `@stacks/wallet-sdk`
 
 ***
@@ -81,4 +78,4 @@ Reach out to us on the **#stacks-js** channel on [Discord](https://stacks.chat/)
 
 ### Additional Resources
 
-* \[[stacks.js.org](https://stacks.js.org/)] For a complete list of definitions on types, methods, classes, & etc.
+* \[[stacks.js.org](https://stacks.js.org/)] For a complete exhaustive list of definitions on types, methods, classes, & etc.

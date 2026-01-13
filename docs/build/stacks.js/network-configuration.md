@@ -11,25 +11,15 @@ Stacks.js supports multiple networks—mainnet for production, testnet for devel
 Configure standard networks:
 
 ```ts
-import {
-  StacksMainnet,
-  StacksTestnet,
-  StacksMocknet
-} from '@stacks/network';
+import { STACKS_MAINNET, STACKS_TESTNET, STACKS_DEVNET } from '@stacks/network'
 
-// Production network
-const mainnet = new StacksMainnet();
-console.log('Mainnet API:', mainnet.coreApiUrl);
-// https://api.hiro.so
+const mainnetApi = STACKS_MAINNET.client.baseUrl;
+// https://api.mainnet.hiro.so
 
-// Test network
-const testnet = new StacksTestnet();
-console.log('Testnet API:', testnet.coreApiUrl);
+const testnetApi = STACKS_TESTNET.client.baseUrl;
 // https://api.testnet.hiro.so
 
-// Local development network
-const mocknet = new StacksMocknet();
-console.log('Mocknet API:', mocknet.coreApiUrl);
+const devnetApi = STACKS_DEVNET.client.baseUrl;
 // http://localhost:3999
 ```
 

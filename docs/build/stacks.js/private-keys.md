@@ -1,6 +1,6 @@
 # Private Keys
 
-Stacks applications can work with two different account types: web wallets (like Hiro Wallet or Xverse) that users control, or local accounts you manage the private keys directly.
+Stacks applications can work with either web wallets (such as Leather Wallet or Xverse) that users control, or local accounts you manage the private keys directly.
 
 ## Web wallets (user-controlled)
 
@@ -72,22 +72,19 @@ Private keys in Stacks are 256-bit numbers, typically represented as 64-characte
 
 Stacks.js supports multiple private key formats for different use cases.
 
+{% hint style="info" %}
+Stacks-formatted private keys append a trailing `0x01` to the 32-byte private key to indicate that the derived public key must be encoded in compressed form.
+{% endhint %}
+
 ```ts
 import { PrivateKey } from '@stacks/transactions';
 
 // Hex string format (most common)
-const hexKey = 'f5a31c1268a1e37d4edaa05c7d11183c5fbf...';
+const uncompressedKey = 'f5a31c1268a1e37d4edaa05c7d11183c5fbf...';
 
 // Compressed format with suffix
 const compressedKey = 'f5a31c1268a1e37d4edaa05c7d11183c5fbf...01';
-
-// Create from raw bytes
-const bytes = new Uint8Array(32); // 32 bytes = 256 bits
-crypto.getRandomValues(bytes);
-const privateKeyFromBytes = PrivateKey.fromBytes(bytes);
 ```
-
-The compressed format includes a suffix byte (01) that indicates the key should use compressed public key encoding.
 
 ## Wallet generation with seed phrases
 
@@ -95,7 +92,7 @@ For better security and recoverability, use hierarchical deterministic (HD) wall
 
 {% stepper %}
 {% step %}
-#### Generate a seed phrase
+**Generate a seed phrase**
 
 Create a new 24-word mnemonic seed phrase that can regenerate all wallet accounts.
 
@@ -119,7 +116,7 @@ Seed phrases provide a human-readable backup that can restore an entire wallet h
 {% endstep %}
 
 {% step %}
-#### Create wallet from seed phrase
+**Create wallet from seed phrase**
 
 Generate a complete wallet structure from a seed phrase, including multiple accounts.
 
@@ -137,9 +134,7 @@ async function setupWallet() {
   
   // Access the first account
   const account = wallet.accounts[0];
-  console.log('STX address:', account.address);
   console.log('STX private key:', account.stxPrivateKey);
-  console.log('Data private key:', account.dataPrivateKey);
   
   return wallet;
 }
@@ -149,7 +144,7 @@ Each wallet can contain multiple accounts, all derived from the same seed phrase
 {% endstep %}
 
 {% step %}
-#### Managing multiple accounts
+**Managing multiple accounts**
 
 HD wallets support multiple accounts from a single seed phrase, useful for organizing funds or separating concerns.
 
@@ -174,7 +169,7 @@ async function createMultipleAccounts() {
   
   // Each account has its own keys and address
   wallet.accounts.forEach((account, index) => {
-    console.log(`Account ${index}:`, account.address);
+    console.log(`Account ${index}:`, account.stxPrivateKey);
   });
 }
 ```

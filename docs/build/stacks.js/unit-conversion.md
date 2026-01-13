@@ -1,6 +1,6 @@
 # Unit Conversion
 
-Learn how to convert between different unit denominations in Stacks. The blockchain uses microSTX as its base unit, where 1 STX = 1,000,000 microSTX. Proper unit conversion is essential for displaying amounts to users and processing transactions.
+Learn how to convert between different unit denominations in Stacks. Stacks uses microSTX as its base unit, where 1 STX = 1,000,000 microSTX. Proper unit conversion is essential for displaying amounts to users and processing transactions.
 
 ## Basic conversions
 
@@ -160,67 +160,5 @@ const formatted = StxFormatter.format(123456789n, {
 }); // "123.46 STX"
 
 const compact = StxFormatter.compact(1234567890000n); // "1.23K STX"
-```
-{% endcode %}
-
-## Input validation
-
-Validate and sanitize user input for amount fields.
-
-{% code title="amount-input.ts" %}
-```ts
-class AmountInput {
-  static validate(input: string, options?: {
-    decimals?: number;
-    min?: string;
-    max?: string;
-  }): { valid: boolean; error?: string } {
-    // Check format
-    if (!/^\d*\.?\d*$/.test(input)) {
-      return { valid: false, error: 'Invalid number format' };
-    }
-    
-    // Check decimal places
-    const parts = input.split('.');
-    if (parts[1] && parts[1].length > (options?.decimals || 6)) {
-      return { valid: false, error: `Maximum ${options?.decimals || 6} decimal places` };
-    }
-    
-    // Check range
-    if (options?.min) {
-      const value = parseFloat(input);
-      if (value < parseFloat(options.min)) {
-        return { valid: false, error: `Minimum amount is ${options.min}` };
-      }
-    }
-    
-    return { valid: true };
-  }
-  
-  static sanitize(input: string, decimals = 6): string {
-    let sanitized = input.replace(/[^\d.]/g, '');
-    const parts = sanitized.split('.');
-    
-    if (parts.length > 2) {
-      sanitized = parts[0] + '.' + parts.slice(1).join('');
-    }
-    
-    if (parts[1] && parts[1].length > decimals) {
-      sanitized = parts[0] + '.' + parts[1].slice(0, decimals);
-    }
-    
-    return sanitized;
-  }
-}
-
-// Validation examples
-const result1 = AmountInput.validate('123.456', { 
-  decimals: 6, 
-  min: '0.000001' 
-}); // { valid: true }
-
-const result2 = AmountInput.validate('123.4567890', { 
-  decimals: 6 
-}); // { valid: false, error: 'Maximum 6 decimal places' }
 ```
 {% endcode %}
