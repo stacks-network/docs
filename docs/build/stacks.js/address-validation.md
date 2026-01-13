@@ -85,6 +85,16 @@ Work with contract principals:
 
 {% code title="contract-address.ts" %}
 ```ts
+import { validateStacksAddress } from '@stacks/transactions';
+
+// Validate contract name (alphanumeric, hyphens, underscores, max 40 chars)
+function validateContractName(name: string): boolean {
+  if (!name || name.length === 0 || name.length > 40) {
+    return false;
+  }
+  return /^[a-zA-Z]([a-zA-Z0-9]|[-_])*$/.test(name);
+}
+
 // Parse contract address components
 function parseContractAddress(contractAddress: string): {
   principal: string;
@@ -105,25 +115,6 @@ function parseContractAddress(contractAddress: string): {
   return { principal, contractName, isValid };
 }
 
-// Build contract address
-function buildContractAddress(principal: string, contractName: string): string {
-  if (!validateStacksAddress(principal)) {
-    throw new Error('Invalid principal address');
-  }
-  
-  if (!validateContractName(contractName)) {
-    throw new Error('Invalid contract name');
-  }
-  
-  return `${principal}.${contractName}`;
-}
-
-// Validate full contract identifier
-function validateContractAddress(address: string): boolean {
-  const { isValid } = parseContractAddress(address);
-  return isValid;
-}
-
 // Usage
 const parsed = parseContractAddress('SP2J6Y09JMFWWZCT4VJX0BA5W7A9HZP5EX96Y6VZY.my-token');
 console.log(parsed); 
@@ -133,7 +124,7 @@ console.log(parsed);
 
 ## Address conversion utilities
 
-Convert between formats and networks:
+Convert between Stacks and Bitcoin address formats:
 
 {% code title="conversion-utils.ts" %}
 ```ts
@@ -185,71 +176,6 @@ function isSameAddress(addr1: string, addr2: string): boolean {
 
 ## Advanced validation patterns
 
-### Comprehensive address validator
-
-Create a robust validation system:
-
-{% code title="address-validator.ts" %}
-```ts
-class AddressValidator {
-  private cache = new Map<string, boolean>();
-  
-  validate(address: string, options?: {
-    network?: 'mainnet' | 'testnet';
-    allowContracts?: boolean;
-    allowMultisig?: boolean;
-  }): { valid: boolean; reason?: string } {
-    // Check cache
-    const cacheKey = `${address}-${JSON.stringify(options)}`;
-    if (this.cache.has(cacheKey)) {
-      return { valid: this.cache.get(cacheKey)! };
-    }
-    
-    // Basic validation
-    if (!validateStacksAddress(address)) {
-      return { valid: false, reason: 'Invalid address format' };
-    }
-    
-    const info = getAddressInfo(address);
-    
-    // Check network if specified
-    if (options?.network && info.network !== options.network) {
-      return { 
-        valid: false, 
-        reason: `Address is for ${info.network}, expected ${options.network}` 
-      };
-    }
-    
-    // Check contract addresses
-    if (info.type === 'contract' && !options?.allowContracts) {
-      return { valid: false, reason: 'Contract addresses not allowed' };
-    }
-    
-    // Check multisig
-    if (info.type === 'multisig' && !options?.allowMultisig) {
-      return { valid: false, reason: 'Multisig addresses not allowed' };
-    }
-    
-    // Cache result
-    this.cache.set(cacheKey, true);
-    
-    return { valid: true };
-  }
-  
-  validateBatch(addresses: string[], options?: any): Map<string, boolean> {
-    const results = new Map<string, boolean>();
-    
-    for (const address of addresses) {
-      const { valid } = this.validate(address, options);
-      results.set(address, valid);
-    }
-    
-    return results;
-  }
-}
-```
-{% endcode %}
-
 ### Address formatting
 
 Format addresses for display:
@@ -300,68 +226,6 @@ function AddressDisplay({ address }: { address: string }) {
       {copied && <span>✓ Copied</span>}
     </div>
   );
-}
-```
-{% endcode %}
-
-## Security considerations
-
-Implement secure address handling:
-
-{% code title="security.ts" %}
-```ts
-// Sanitize user input
-function sanitizeAddress(input: string): string {
-  // Remove whitespace and common separators
-  return input.trim().replace(/[\s\-_]/g, '');
-}
-
-// Verify address ownership
-async function verifyAddressOwnership(
-  address: string,
-  signature: string,
-  message: string
-): Promise<boolean> {
-  try {
-    // Verify the signature matches the address
-    const verified = verifyMessageSignature({
-      message,
-      signature,
-      publicKey: await getPublicKeyFromAddress(address),
-    });
-    
-    return verified;
-  } catch {
-    return false;
-  }
-}
-
-// Validate address for specific use case
-function validateRecipientAddress(
-  address: string,
-  options: {
-    blockList?: string[];
-    allowList?: string[];
-    requireMainnet?: boolean;
-  }
-): { valid: boolean; reason?: string } {
-  // Check blocklist
-  if (options.blockList?.includes(address)) {
-    return { valid: false, reason: 'Address is blocked' };
-  }
-  
-  // Check allowlist
-  if (options.allowList && !options.allowList.includes(address)) {
-    return { valid: false, reason: 'Address not in allowlist' };
-  }
-  
-  // Check network
-  const info = getAddressInfo(address);
-  if (options.requireMainnet && info.network !== 'mainnet') {
-    return { valid: false, reason: 'Mainnet address required' };
-  }
-  
-  return { valid: true };
 }
 ```
 {% endcode %}
@@ -424,21 +288,6 @@ const isValid = validateStacksAddress(userInput);
 const info = getAddressInfo(userInput);
 if (info.network !== 'mainnet') {
   throw new Error('Please use a mainnet address');
-}
-```
-{% endcode %}
-
-Assuming address format:
-
-{% code title="bad-vs-good-parse.ts" %}
-```ts
-// Bad: Assuming standard address
-const [principal, contract] = address.split('.');
-
-// Good: Proper validation
-const parsed = parseContractAddress(address);
-if (!parsed.isValid) {
-  throw new Error('Invalid contract address');
 }
 ```
 {% endcode %}

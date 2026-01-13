@@ -13,48 +13,89 @@ Configure standard networks:
 ```ts
 import { STACKS_MAINNET, STACKS_TESTNET, STACKS_DEVNET } from '@stacks/network'
 
-const mainnetApi = STACKS_MAINNET.client.baseUrl;
-// https://api.mainnet.hiro.so
+console.log(STACKS_MAINNET)
+{
+  chainId: 1,
+  transactionVersion: 0,
+  peerNetworkId: 385875968,
+  magicBytes: 'X2',
+  bootAddress: 'SP000000000000000000002Q6VF78',
+  addressVersion: { singleSig: 22, multiSig: 20 },
+  client: { baseUrl: 'https://api.mainnet.hiro.so' }
+}
 
-const testnetApi = STACKS_TESTNET.client.baseUrl;
-// https://api.testnet.hiro.so
+console.log(STACKS_TESTNET)
+{
+  chainId: 2147483648,
+  transactionVersion: 128,
+  peerNetworkId: 4278190080,
+  magicBytes: 'T2',
+  bootAddress: 'ST000000000000000000002AMW42H',
+  addressVersion: { singleSig: 26, multiSig: 21 },
+  client: { baseUrl: 'https://api.testnet.hiro.so' }
+}
 
-const devnetApi = STACKS_DEVNET.client.baseUrl;
-// http://localhost:3999
+console.log(STACKS_DEVNET)
+{
+  chainId: 2147483648,
+  transactionVersion: 128,
+  peerNetworkId: 4278190080,
+  magicBytes: 'id',
+  bootAddress: 'ST000000000000000000002AMW42H',
+  addressVersion: { singleSig: 26, multiSig: 21 },
+  client: { baseUrl: 'http://localhost:3999' }
+}
 ```
 
 ## Custom network configuration
 
-Create networks with custom endpoints:
+Create a network with an API key:
+
+```typescript
+import { createNetwork } from '@stacks/network'
+
+// Create a network with options object
+const network = createNetwork({
+  network: 'mainnet',
+  apiKey: 'my-api-key',
+});
+```
+
+Create networks with custom node URLs and middleware:
 
 ```ts
-import { StacksNetwork } from '@stacks/network';
+import { createNetwork } from '@stacks/network'
+import { createApiKeyMiddleware, createFetchFn, FetchMiddleware } from '@stacks/common'
 
-// Custom mainnet configuration
-const customMainnet = new StacksMainnet({
-  url: 'https://my-custom-node.com',
-  fetchFn: fetch, // Custom fetch implementation
-});
-
-// Custom testnet with specific endpoints
-const customTestnet = new StacksTestnet({
-  url: 'https://my-testnet-node.com:3999',
-});
-
-// Fully custom network
-class CustomNetwork extends StacksNetwork {
-  constructor() {
-    super({
-      url: 'https://custom-stacks-node.com',
-      networkType: 'mainnet', // or 'testnet', 'mocknet'
-    });
+let loggingMiddleware: FetchMiddleware = {
+  pre: (context) => {
+    console.log('Before request:', context);
+    // Optionally modify the request
+    return { ... }
+  },
+  post: async (context) => {
+    console.log('After request:', context.response.status);
+    // Optionally modify the response
+    return { ... }
   }
+};
 
-  // Override methods as needed
-  getBroadcastApiUrl() {
-    return `${this.coreApiUrl}/custom/broadcast`;
-  }
-}
+let apiKeyMiddleware = createApiKeyMiddleware({
+    apiKey: 'YOUR-API-KEY',
+})
+
+let customFetchFn = createFetchFn(apiKeyMiddleware, loggingMiddleware)
+
+// Pass your customNetwork into any function that accepts a `network` param
+export const customNetwork = createNetwork(
+    {
+        network: 'mainnet',
+        client: {
+            baseUrl: 'https://my-custom-mainnet-node',
+            fetch: customFetchFn
+        }
+    }
+)
 ```
 
 ## Environment-based configuration
@@ -65,36 +106,29 @@ Manage networks across environments:
 // config/network.ts
 import {
   StacksNetwork,
-  StacksMainnet,
-  StacksTestnet,
-  StacksMocknet
+  STACKS_MAINNET,
+  STACKS_TESTNET,
+  STACKS_DEVNET,
 } from '@stacks/network';
 
 interface NetworkConfig {
   network: StacksNetwork;
-  apiUrl: string;
-  wsUrl?: string;
   explorerUrl: string;
   faucetUrl?: string;
 }
 
 const configs: Record<string, NetworkConfig> = {
   production: {
-    network: new StacksMainnet(),
-    apiUrl: 'https://api.hiro.so',
-    wsUrl: 'wss://api.hiro.so',
-    explorerUrl: 'https://explorer.hiro.so',
+    network: STACKS_MAINNET,
+    explorerUrl: 'https://explorer.stacks.co',
   },
   staging: {
-    network: new StacksTestnet(),
-    apiUrl: 'https://api.testnet.hiro.so',
-    wsUrl: 'wss://api.testnet.hiro.so',
-    explorerUrl: 'https://explorer.hiro.so/?chain=testnet',
+    network: STACKS_TESTNET,
+    explorerUrl: 'https://explorer.stacks.co/?chain=testnet',
     faucetUrl: 'https://api.testnet.hiro.so/extended/v1/faucets/stx',
   },
   development: {
-    network: new StacksMocknet(),
-    apiUrl: 'http://localhost:3999',
+    network: STACKS_DEVNET,
     explorerUrl: 'http://localhost:8000',
   },
 };
@@ -105,7 +139,7 @@ export function getNetworkConfig(): NetworkConfig {
 }
 
 // Usage
-const { network, apiUrl } = getNetworkConfig();
+const { network } = getNetworkConfig();
 ```
 
 ## Network detection and validation
@@ -238,244 +272,13 @@ Set up network based on chain identifier:
 function getNetworkByChainId(chainId: number): StacksNetwork {
   switch (chainId) {
     case 1: // Mainnet
-      return new StacksMainnet();
+      return STACKS_MAINNET;
     case 2147483648: // Testnet
-      return new StacksTestnet();
+      return STACKS_TESTNET;
     default:
       throw new Error(`Unknown chain ID: ${chainId}`);
   }
 }
-
-// Dynamic network from wallet
-async function getNetworkFromWallet(): Promise<StacksNetwork> {
-  const userData = userSession.loadUserData();
-  const address = userData.profile.stxAddress.testnet;
-
-  // Determine network from address prefix
-  if (address.startsWith('SP') || address.startsWith('SM')) {
-    return new StacksMainnet();
-  } else if (address.startsWith('ST') || address.startsWith('SN')) {
-    return new StacksTestnet();
-  }
-
-  throw new Error('Unable to determine network from address');
-}
-```
-
-### Multi-network support
-
-Support multiple networks simultaneously:
-
-```ts
-class NetworkManager {
-  private networks: Map<string, StacksNetwork> = new Map();
-  private currentNetwork: string = 'testnet';
-
-  constructor() {
-    this.networks.set('mainnet', new StacksMainnet());
-    this.networks.set('testnet', new StacksTestnet());
-    this.networks.set('devnet', new StacksMocknet());
-  }
-
-  getNetwork(name?: string): StacksNetwork {
-    const networkName = name || this.currentNetwork;
-    const network = this.networks.get(networkName);
-
-    if (!network) {
-      throw new Error(`Unknown network: ${networkName}`);
-    }
-
-    return network;
-  }
-
-  setCurrentNetwork(name: string): void {
-    if (!this.networks.has(name)) {
-      throw new Error(`Unknown network: ${name}`);
-    }
-    this.currentNetwork = name;
-  }
-
-  addCustomNetwork(name: string, url: string): void {
-    const network = new StacksNetwork({ url });
-    this.networks.set(name, network);
-  }
-}
-
-// Usage
-const manager = new NetworkManager();
-const mainnet = manager.getNetwork('mainnet');
-manager.setCurrentNetwork('mainnet');
-```
-
-## Network connection monitoring
-
-Monitor network health and status:
-
-```ts
-class NetworkMonitor {
-  private network: StacksNetwork;
-  private isHealthy = true;
-  private listeners: Set<(healthy: boolean) => void> = new Set();
-
-  constructor(network: StacksNetwork) {
-    this.network = network;
-    this.startMonitoring();
-  }
-
-  private async startMonitoring() {
-    setInterval(async () => {
-      try {
-        const response = await fetch(
-          `${this.network.coreApiUrl}/v2/info`,
-          { signal: AbortSignal.timeout(5000) }
-        );
-
-        const wasHealthy = this.isHealthy;
-        this.isHealthy = response.ok;
-
-        if (wasHealthy !== this.isHealthy) {
-          this.notifyListeners();
-        }
-      } catch (error) {
-        const wasHealthy = this.isHealthy;
-        this.isHealthy = false;
-
-        if (wasHealthy) {
-          this.notifyListeners();
-        }
-      }
-    }, 30000); // Check every 30 seconds
-  }
-
-  onHealthChange(callback: (healthy: boolean) => void): () => void {
-    this.listeners.add(callback);
-    return () => this.listeners.delete(callback);
-  }
-
-  private notifyListeners() {
-    this.listeners.forEach(callback => callback(this.isHealthy));
-  }
-
-  async waitForHealth(timeout = 60000): Promise<void> {
-    const start = Date.now();
-
-    while (!this.isHealthy && Date.now() - start < timeout) {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-    }
-
-    if (!this.isHealthy) {
-      throw new Error('Network unhealthy after timeout');
-    }
-  }
-}
-```
-
-## WebSocket configuration
-
-Set up real-time connections:
-
-```ts
-interface WebSocketConfig {
-  url: string;
-  reconnectInterval: number;
-  maxReconnectAttempts: number;
-}
-
-class StacksWebSocketClient {
-  private ws: WebSocket | null = null;
-  private config: WebSocketConfig;
-  private reconnectAttempts = 0;
-
-  constructor(network: StacksNetwork) {
-    this.config = {
-      url: this.getWebSocketUrl(network),
-      reconnectInterval: 5000,
-      maxReconnectAttempts: 10,
-    };
-  }
-
-  private getWebSocketUrl(network: StacksNetwork): string {
-    const apiUrl = network.coreApiUrl;
-    return apiUrl.replace('https://', 'wss://').replace('http://', 'ws://');
-  }
-
-  connect(): void {
-    this.ws = new WebSocket(this.config.url);
-
-    this.ws.onopen = () => {
-      console.log('WebSocket connected');
-      this.reconnectAttempts = 0;
-    };
-
-    this.ws.onclose = () => {
-      this.handleReconnect();
-    };
-
-    this.ws.onerror = (error) => {
-      console.error('WebSocket error:', error);
-    };
-  }
-
-  private handleReconnect(): void {
-    if (this.reconnectAttempts < this.config.maxReconnectAttempts) {
-      setTimeout(() => {
-        this.reconnectAttempts++;
-        this.connect();
-      }, this.config.reconnectInterval);
-    }
-  }
-
-  subscribe(event: string, callback: (data: any) => void): void {
-    if (!this.ws) throw new Error('WebSocket not connected');
-
-    this.ws.send(JSON.stringify({
-      method: 'subscribe',
-      params: { event }
-    }));
-
-    this.ws.onmessage = (message) => {
-      const data = JSON.parse(message.data);
-      if (data.event === event) {
-        callback(data);
-      }
-    };
-  }
-}
-```
-
-## Testing with different networks
-
-Set up tests across networks:
-
-```ts
-import { describe, it, beforeEach } from 'vitest';
-
-describe('Cross-network tests', () => {
-  const networks = [
-    { name: 'mainnet', network: new StacksMainnet() },
-    { name: 'testnet', network: new StacksTestnet() },
-  ];
-
-  networks.forEach(({ name, network }) => {
-    describe(`${name} tests`, () => {
-      it('should connect to network', async () => {
-        const response = await fetch(`${network.coreApiUrl}/v2/info`);
-        expect(response.ok).toBe(true);
-      });
-
-      it('should have correct chain ID', async () => {
-        const response = await fetch(`${network.coreApiUrl}/v2/info`);
-        const info = await response.json();
-
-        if (name === 'mainnet') {
-          expect(info.network_id).toBe(1);
-        } else {
-          expect(info.network_id).toBe(2147483648);
-        }
-      });
-    });
-  });
-});
 ```
 
 ## Best practices
