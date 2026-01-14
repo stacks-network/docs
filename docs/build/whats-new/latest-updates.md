@@ -4,6 +4,22 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### Multiple language support for Learn
+
+_January 9, 2026_
+
+The [Learn](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/) section now supports Chinese and Spanish, helping more developers access clear explanations of how Stacks works. You can switch languages using the selector in the top-right corner of the Learn pages.
+
+***
+
+### Bridging USDCx developer guide
+
+_January 8, 2026_
+
+Developers can now programmatically integrate the USDCx bridging flow into their app. Deposits are initiated on Ethereum and automatically minted on Stacks, while withdrawals are initiated on Stacks and settled on Ethereum. Check out the guide [here](../more-guides/bridging-usdcx.md) and start enabling stablecoin liquidity across the Stacks DeFi ecosystem.
+
+***
+
 ### Multiple network URLs supported in RPC-API playground
 
 _December 29, 2025_
