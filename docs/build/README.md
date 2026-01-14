@@ -29,6 +29,71 @@ If you're here on this page, hopefully you've already gotten a good sense of _wh
 
 ***
 
+### How to use these docs
+
+The Stacks documentation is organized into a set of top-level sections, each aligned to a distinct stage of a developer’s journey—from learning core concepts to building applications and operating infrastructure.
+
+<details>
+
+<summary><strong>Learn</strong></summary>
+
+**How does the Stacks network work?**\
+The [Learn](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/) section focuses on building a strong conceptual foundation. It explains how Stacks functions as a Bitcoin layer 2, providing clarity and context around the network’s design and mechanics.
+
+Topics include Proof of Transfer (PoX), Bitcoin finality, block production, the transaction lifecycle, and more. If you want a deep understanding of how Stacks anchors to Bitcoin and why it works the way it does, this is the best place to start.
+
+</details>
+
+<details>
+
+<summary><strong>Build</strong></summary>
+
+**How do you build on Stacks?**\
+The Build section (you're on it!) is for developers—both new and experienced—who want to start writing, deploying, and interacting with Stacks applications.
+
+It includes curated quick starts for smart contract development with Clarinet and frontend development with Stacks.js, along with step-by-step guides covering common use cases such as integrating sBTC, onboarding users, working with price oracles, and more.
+
+If you’re new to building on Stacks, this section provides a practical, hands-on introduction to the ecosystem.
+
+</details>
+
+<details>
+
+<summary><strong>Operate</strong></summary>
+
+**How do you run Stacks infrastructure?**\
+The [Operate](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/) section is designed for node operators and infrastructure providers. It covers how to run and manage Stacks nodes, signers, and miners.
+
+If you’re responsible for operating or maintaining Stacks-related infrastructure, this section contains the resources you’ll need.
+
+</details>
+
+<details>
+
+<summary><strong>Reference</strong></summary>
+
+**Where do you look up technical details?**\
+The [Reference](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/node-operations/readme) section contains authoritative technical documentation for Stacks devtools and APIs. This includes function and type definitions for Clarity and Stacks.js, API endpoint schemas, and interactive API playgrounds.
+
+If you’re an experienced Stacks developer looking to quickly reference a specific method, type, or API response, this section is built for fast lookup and precision.
+
+</details>
+
+<details>
+
+<summary><strong>Tutorials</strong></summary>
+
+**Looking for a more guided, learning-first experience?**\
+The [Tutorials](https://app.gitbook.com/s/skGYu79qDNfITOqDNU3s/) section is designed for readers who want structured, long-form lessons rather than quick answers.
+
+These tutorials provide step-by-step walkthroughs alongside in-depth explanations of the underlying concepts. The goal isn’t just to help you complete a task, but to help you understand _why_ things work the way they do as you build.
+
+If you’re completely new to Stacks—or prefer a classroom-style, concept-driven learning experience—this section is the best place to start.
+
+</details>
+
+***
+
 ### Pick your learning path
 
 We all have different styles of learning. If you've already got a good concept of web3 fundamentals and want to get a quick taste of what the DevEx is like on Stacks, then check out the [Developer Quickstart](get-started/developer-quickstart.md). Or find the path that clicks for you — and if bandwidth allows, tackle them all!
@@ -41,16 +106,16 @@ We all have different styles of learning. If you've already got a good concept o
 
 ### Who should use what
 
-| If you are…                                                                               | First check out...                                                                                                                                                                                   |
-| ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Completely new to building with Stacks                                                    | [Developer Quickstart](get-started/developer-quickstart.md)                                                                                                                                          |
-| Learning smart contract development                                                       | [Clarity Crash Course](get-started/clarity-crash-course.md), [Learn Clarinet](/broken/pages/UK5Kgh2MHLoQvfoFVnLr)                                                                                    |
-| Preferring a structured, guided course that shows you every step to build full-stack apps | [Stacks Developer Degree](https://learnweb3.io/degrees/stacks-developer-degree/), [Bitcoin Primer](https://app.gitbook.com/s/pJEGnyzUL9M4FaVMEB15/), [EasyA](https://www.easya.io/challenges/stacks) |
-| Wanting to integrate sBTC in your app                                                     | [sBTC guides](more-guides/sbtc/)                                                                                                                                                                     |
-| Launching a token                                                                         | [Create Tokens](get-started/create-a-token/)                                                                                                                                                         |
-| Interested in security / auditing / grants                                                | [Stacks Bug Bounties](https://immunefi.com/bug-bounty/stacks/information/), [Stacks Foundation](https://stacks.org/grants)                                                                           |
-| Curious about current use cases                                                           | [Use Cases](get-started/use-cases/)                                                                                                                                                                  |
-| Searching for a complete list of devtools                                                 | [Stacks Devtools Ecosystem](stacks-devtools-catalog.md)                                                                                                                                              |
+| If you are…                                                                               | First check out...                                                                                                                                                                                                              |
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Completely new to building with Stacks                                                    | [Developer Quickstart](get-started/developer-quickstart.md)                                                                                                                                                                     |
+| Learning smart contract development                                                       | [Clarity Crash Course](get-started/clarity-crash-course.md), [Learn Clarinet](/broken/pages/UK5Kgh2MHLoQvfoFVnLr)                                                                                                               |
+| Preferring a structured, guided course that shows you every step to build full-stack apps | [Stacks Developer Degree](https://learnweb3.io/degrees/stacks-developer-degree/), [Bitcoin Primer](https://app.gitbook.com/s/skGYu79qDNfITOqDNU3s/bitcoin-primer/introduction), [EasyA](https://www.easya.io/challenges/stacks) |
+| Wanting to integrate sBTC in your app                                                     | [sBTC guides](more-guides/sbtc/)                                                                                                                                                                                                |
+| Launching a token                                                                         | [Create Tokens](get-started/create-a-token/)                                                                                                                                                                                    |
+| Interested in security / auditing / grants                                                | [Stacks Bug Bounties](https://immunefi.com/bug-bounty/stacks/information/), [Stacks Foundation](https://stacks.org/grants)                                                                                                      |
+| Curious about current use cases                                                           | [Use Cases](get-started/use-cases/)                                                                                                                                                                                             |
+| Searching for a complete list of devtools                                                 | [Stacks Devtools Ecosystem](stacks-devtools-catalog.md)                                                                                                                                                                         |
 
 ***
 
