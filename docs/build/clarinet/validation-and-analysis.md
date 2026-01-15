@@ -1,6 +1,6 @@
 # Validation and Analysis
 
-Clarinet provides powerful tools for validating, analyzing, and debugging your smart contracts. From static type checking to real-time cost analysis, you can ensure your contracts are correct and efficient before deployment.
+Clarinet provides powerful tools for validating, analyzing, linting, and debugging your smart contracts. From static type checking to real-time cost analysis, you can ensure your contracts are correct and efficient before deployment.
 
 Contract validation spans static analysis, runtime debugging, and cost optimization. Each discipline helps you gain confidence in contract behavior.
 
@@ -45,7 +45,7 @@ Error in contracts/token.clar:15:10
 
 {% stepper %}
 {% step %}
-#### Run basic checks
+**Run basic checks**
 
 Use `clarinet check` to validate your contracts and catch type/syntax errors before deployment.
 
@@ -55,7 +55,7 @@ clarinet check
 {% endstep %}
 
 {% step %}
-#### Check a specific contract
+**Check a specific contract**
 
 Focus validation during development on a single contract file:
 
@@ -65,7 +65,7 @@ clarinet check contracts/nft.clar
 {% endstep %}
 
 {% step %}
-#### Integrate into CI
+**Integrate into CI**
 
 Automate validation in continuous integration pipelines. Example GitHub Actions workflow:
 
@@ -98,6 +98,65 @@ Clarinet validates multiple aspects of your contracts:
 | **Response consistency** | `ok`/`err` branches return the same types          |
 | **Variable scope**       | Variables defined before use                       |
 | **Function visibility**  | Proper use of public, private, and read-only       |
+
+### Linter analysis
+
+Clarinet includes a built-in linter as part of `clarinet check` to help identify common mistakes, inefficiencies, and unused code in Clarity contracts. Linters play an important role in improving code quality by surfacing issues early in development and encouraging clearer, more maintainable contracts.
+
+Clarinet currently provides a set of lints focused on **dead code analysis**. These lints detect declarations and expressions that have no effect on contract execution and can be configured individually.
+
+The following lints are available:
+
+| **Identifier**      | **Description**                                                                  |
+| ------------------- | -------------------------------------------------------------------------------- |
+| `unused_const`      | Detects unused `define-constant` declarations.                                   |
+| `unused_data_var`   | Detects `define-data-var` declarations that are never written.                   |
+| `unused_map`        | Detects `define-map` declarations that are never accessed.                       |
+| `unused_private_fn` | Detects private functions that are never called.                                 |
+| `unused_token`      | Detects fungible and non-fungible tokens that are never minted.                  |
+| `unused_trait`      | Detects traits imported with `use-trait` that are never used as parameter types. |
+| `unused_binding`    | Detects unused function parameters and `let` bindings.                           |
+
+In addition, the **`noop`** lint detects expressions that have no effect, such as: `(is-eq 1)`
+
+#### Bypassing the Linter
+
+In some cases, code may appear unused but may be used in a way the linter can't see. Examples include private functions used only in tests, or bindings whose evaluation has side effects.
+
+Clarinet follows a convention similar to Rust: identifiers with a trailing `_` might generate other kinds of warnings for them but the linter will allow them to be unused.
+
+{% hint style="info" %}
+Note: _prefixing_ identifiers with `_` is not currently supported, only _suffixing_ is.
+{% endhint %}
+
+Individual lints can also be disabled for a specific line using Clarity’s annotation syntax:
+
+```clarity
+;; #[allow(lint_name)]
+```
+
+#### Configuration
+
+All non-style/non-cosmetic lints are enabled by default at the `warning` level and can be customized in `Clarinet.toml`.
+
+**Individual lint configuration**
+
+```toml
+[repl.analysis.lints]
+noop = true # Defaults to "warning"
+unused_const = "warning"
+unused_data_var = "error"
+unused_map = false
+```
+
+**Lint group configuration**
+
+```toml
+[repl.analysis.lint_groups]
+all = true      # Sets the default level to "warning" for all lints
+style = "notice" # Cosmetic lints only generate notices
+unused = "error" # Enforces removal of unused code
+```
 
 ## Runtime analysis
 
@@ -237,5 +296,3 @@ Master interactive debugging to identify issues quickly:
 (contract-call? .vesting claim)
 ;; (ok {claimed: u2500, remaining: u7500})
 ```
-
-##

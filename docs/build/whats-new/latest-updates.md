@@ -4,6 +4,93 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### Catch Dead Code Early with Clarity Linting
+
+_Janurary 14, 2026_
+
+The latest Clarinet [v3.13.0](https://github.com/stx-labs/clarinet/releases/tag/v3.13.0) release includes a built-in Clarity linter to `clarinet check`, enabling dead code analysis and no-op detection, with configurable lint levels and inline overrides. The initial release focuses on identifying unused code and expressions that have no effect on execution. Lint behavior can be customized globally or per rule via `Clarinet.toml`.
+
+<details>
+
+<summary>Details</summary>
+
+Today, Clarinet introduces a built-in **Clarity linter** as part of `clarinet check`, designed to help developers catch common mistakes, eliminate dead code, and improve overall contract quality earlier in the development cycle.
+
+This first release focuses on **dead code analysis**, surfacing declarations and expressions that have no effect on contract execution and are often sources of bugs, confusion, or unnecessary complexity.
+
+#### Dead Code Analysis (Available Today)
+
+The initial lint set includes **seven configurable lints**, each targeting a specific class of unused code:
+
+| Identifier          | Description                                                                    |
+| ------------------- | ------------------------------------------------------------------------------ |
+| `unused_const`      | Detects unused `define-constant` declarations                                  |
+| `unused_data_var`   | Detects `define-data-var` values that are never written to                     |
+| `unused_map`        | Detects `define-map` declarations that are never accessed                      |
+| `unused_private_fn` | Detects private functions that are never called                                |
+| `unused_token`      | Detects fungible and non-fungible tokens that are never minted                 |
+| `unused_trait`      | Detects traits imported via `use-trait` that are never used as parameter types |
+| `unused_binding`    | Detects unused function arguments and `let` bindings                           |
+
+In addition, Clarinet includes the **`noop`** lint (contributed by GitHub user [0xalpharush](https://github.com/0xalpharush)), which flags expressions that have no effect, such as: `(is-eq 1)`
+
+#### Suppressing Lints
+
+Some unused code is intentional—for example, private functions used only in tests or bindings whose evaluation has side effects.
+
+To handle these cases, Clarinet supports:
+
+#### Identifier-based suppression
+
+Appending a trailing `_` to an identifier might generate other kinds of warnings but the linter will allow them to be unused, following a convention similar to Rust. (Note: _prefixing_ identifiers with `_` is not yet supported.)
+
+#### Line-level suppression
+
+Individual lints can also be disabled on a per-line basis using Clarity annotations:
+
+```clarity
+;; #[allow(lint_name)]
+```
+
+#### Configuration
+
+All non-style/non-cosmetic lints are enabled by default at `warning` level. Style lints may be enabled by default at `notice` eventually.
+
+**Configure individual lints**
+
+```toml
+[repl.analysis.lints]
+noop = true # Defaults to "warning"
+unused_const = "warning"
+unused_data_var = "error"
+unused_map = false
+```
+
+**Configure lint groups**
+
+```toml
+[repl.analysis.lint_groups]
+all = true       # Sets default level to "warning" for all lints
+style = "notice" # Cosmetic lints generate notices only
+unused = "error" # Enforces removal of unused code
+```
+
+#### What’s Next
+
+This release lays the foundation for a broader linting system in Clarinet. Upcoming work includes:
+
+* **Style lints** for consistent and idiomatic Clarity code
+* **Performance lints** to surface inefficient patterns
+* **Safety lints** to help identify potentially dangerous constructs
+
+If you have ideas for additional lints, feedback can be shared via the [Clarinet GitHub issue](https://github.com/stx-labs/clarinet/issues/2028) or in the community Discord.
+
+Navigate to the Clarinet section on [this](../clarinet/validation-and-analysis.md).
+
+</details>
+
+***
+
 ### Multiple language support for Learn
 
 _January 9, 2026_
