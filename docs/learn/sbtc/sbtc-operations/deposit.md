@@ -26,7 +26,7 @@ A time lock that allows the depositor to reclaim the funds if necessary.
 {% endstep %}
 {% endstepper %}
 
-The deposit is usually completed within a single Bitcoin block, but is guaranteed to be completed within 3. For more information on deposit and withdrawal confirmation times and why deposits can be so fast, check out the [Deposit and Withdrawal Times](deposit-vs-withdrawal-times.md) doc.
+For more information on deposit and withdrawal confirmation times and why deposits can be so fast, check out the [Deposit and Withdrawal Times](deposit-vs-withdrawal-times.md) doc.
 
 ## Bitcoin Deposit Requirements
 
