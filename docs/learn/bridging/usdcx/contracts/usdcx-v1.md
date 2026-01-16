@@ -403,4 +403,4 @@ The `.usdcx-v1` contract keeps a `circle-attestors` map to keep track of public 
 
 To withdrawal USDCx to another chain, users call `burn`. The specified amount of USDCx is burned from their Stacks account. A `print` event is emitted, which is used for triggering a burn attestation off-chain.
 
-The `.usdcx-v1` contract stores a minimum amount variable. Users must withdrawal at least this amount, or the burn fails. Accounts with the role `0x04` can update this variable.
+The `.usdcx-v1` contract stores a minimum amount variable. Users must withdraw at least this amount, or the burn fails. Accounts with the role `0x04` can update this variable.
