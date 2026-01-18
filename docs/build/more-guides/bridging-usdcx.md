@@ -25,10 +25,17 @@ Current work is underway to abstract this entire flow via Circle's Bridge Kit SD
 5. Approve xReserve as a spender of your USDC.
 6. Execute deposit to the remote chain Stacks.
 
+**Withdrawal**
+
+1. Prepare contract call arguments
+2. Invoke `burn` function from the `.usdcx-v1` contract
+
 ### Key Tools To Use
 
 * [viem](https://viem.sh/) - A Typescript-first library that interfaces with Ethereum.
 * [stacks.js](/broken/pages/dH5waQhE6Vb7rhcrUG7z) - A js library that helps developers build Stacks apps by handling transactions, wallet authentication, and smart contract interactions.
+* [Circle Faucet](https://faucet.circle.com/) - Get testnet USDC
+* [Ethereum Sepolia faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) - Get testnet ETH
 
 ***
 
@@ -36,38 +43,40 @@ Current work is underway to abstract this entire flow via Circle's Bridge Kit SD
 
 If you want to jump straight to the full implementation, the complete working code used in this guide is shown below.
 
-#### Deposit
-
 {% tabs %}
 {% tab title="index.ts" %}
 This script bridges USDC from Ethereum Sepolia testnet to Stacks testnet by first approving the xReserve contract to spend USDC, then calling `depositToRemote` to initiate the cross-chain transfer. It encodes the Stacks recipient address into the bytes32 format required by the Ethereum contract and submits both transactions to the Sepolia network. The Stacks attestation service will receive this event and mint the equivalent amount to the specified Stacks address.
 
-{% code expandable="true" %}
-```typescript
-import "dotenv/config";
+<pre class="language-typescript" data-expandable="true"><code class="lang-typescript">import "dotenv/config";
 import {
   createWalletClient,
   createPublicClient,
   http,
   parseUnits,
+  pad
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { sepolia } from "viem/chains";
 import { bytes32FromBytes, remoteRecipientCoder } from "./helpers";
+import { makeContractCall, Cl, Pc, broadcastTransaction } from '@stacks/transactions'
 
 // ============ Configuration constants ============
 const config = {
   // Public Ethereum Sepolia RPC and your private wallet key
   ETH_RPC_URL: process.env.RPC_URL || "https://ethereum-sepolia.publicnode.com",
-  PRIVATE_KEY: process.env.PRIVATE_KEY, 
+  PRIVATE_KEY: process.env.ETHEREUM_PRIVATE_KEY, 
 
   // Contract addresses on testnet
   X_RESERVE_CONTRACT: "008888878f94C0d87defdf0B07f46B93C1934442",
   ETH_USDC_CONTRACT: "1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+  STACKS_USDC:
+    "0x00000000061a6d78de7b0625dfbfc16c3a8a5735f6dc3dc3f2ce057573646378",
 
   // Deposit parameters for Stacks
   STACKS_DOMAIN: 10003, // Stacks domain ID
+  ETHEREUM_DOMAIN: 0, // Ethereum domain ID
   STACKS_RECIPIENT: "ST1F1M4YP67NV360FBYR28V7C599AC46F8C4635SH", // Address to receive minted USDCx on Stacks
+  ETHEREUM_RECIPIENT: "9F685cc614148f35efC238F5DFC977e08ed6bA86", // Address to receive withdrawn USDC on Ethereum
   DEPOSIT_AMOUNT: "1.00",
   MAX_FEE: "0",
 };
@@ -111,8 +120,8 @@ const ERC20_ABI = [
 ];
 
 
-async function main() {
-  if (!config.PRIVATE_KEY) {
+<strong>async function deposit() {
+</strong>  if (!config.PRIVATE_KEY) {
     throw new Error("PRIVATE_KEY must be set in your .env file");
   }
 
@@ -165,7 +174,7 @@ async function main() {
       Number(usdcBalance) / 1e6
     ).toFixed(6)} USDC)`,
   );
-  if (usdcBalance < value) {
+  if (usdcBalance &#x3C; value) {
     throw new Error(
       `Insufficient USDC balance. Required: ${(Number(value) / 1e6).toFixed(
         6,
@@ -207,13 +216,33 @@ async function main() {
   );
 }
 
-// ============ Call the main function ============
-main().catch((error) => {
-  console.error("❌ Error:", error);
-  process.exit(1);
-});
-```
-{% endcode %}
+<strong>async function withdraw() {
+</strong>  let amount = 4800000 // in micro USDCx (6 decimals)
+
+  let functionArgs = [
+    Cl.uint(amount), // amount in micro USDC
+    Cl.uint(config.ETHEREUM_DOMAIN), // native domain for Ethereum
+    Cl.bufferFromHex(pad(`0x${config.ETHEREUM_RECIPIENT}`, { size: 32 })) // native recipient
+  ]
+
+  let postCondition_1 = Pc.principal(config.STACKS_RECIPIENT)
+    .willSendEq(amount)
+    .ft('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.usdcx', 'usdcx-token')
+
+  let transaction = await makeContractCall({
+    contractName: 'usdcx-v1',
+    contractAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
+    functionName: 'burn',
+    functionArgs,
+    network: 'testnet',
+    postConditions: [postCondition_1],
+    postConditionMode: 'deny',
+    senderKey: process.env.STACKS_PRIVATE_KEY,
+  })
+
+  let result = await broadcastTransaction({transaction, network: 'testnet'})
+}
+</code></pre>
 {% endtab %}
 
 {% tab title="helpers.ts" %}
@@ -275,8 +304,6 @@ Before beginning, make sure you:
 
 * Create a wallet on Ethereum Sepolia.
 * Create a Stacks testnet wallet.
-* Get testnet USDC from the [Circle Faucet](https://faucet.circle.com/).
-* Get testnet ETH from a public [Ethereum Sepolia faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia).
 
 {% stepper %}
 {% step %}
@@ -590,3 +617,64 @@ These are example transactions on testnet:
 * Stacks: [Minting USDCx](https://explorer.hiro.so/txid/0x12ad17401bf89d1bb1489623203b489b059609187eae2c5cebb898a89bdb926f?chain=testnet\&tab=overview)
 {% endstep %}
 {% endstepper %}
+
+***
+
+## Walkthrough (Withdrawal)
+
+{% hint style="danger" %}
+**Limit:** Up to **50 burn intents per request** (max **10 per batch**, max **5 batches**). Submitting more than 50 intents in a single transaction request may lead to failed processing and **risk of fund loss**.
+{% endhint %}
+
+{% stepper %}
+{% step %}
+### Prepare contract call arguments
+
+Before invoking the `burn` function of the `.usdcx-v1` contract, you'll need to determine the amount of USDCx to withdraw and the native recipient address that'll receive the USDC on the other chain.
+
+An Ethereum address is technically only 20 bytes but the `native-recipient` needs to be a 32 byte buffer. Pad left the address to 32 bytes.
+
+```typescript
+let amount = 4800000 // in micro USDCx (6 decimals)
+
+let functionArgs = [
+  Cl.uint(amount), // amount in micro USDC
+  Cl.uint(config.ETHEREUM_DOMAIN), // native domain for Ethereum
+  Cl.bufferFromHex(pad(`0x${config.ETHEREUM_RECIPIENT}`, { size: 32 })) // native recipient
+]
+
+let postCondition_1 = Pc.principal(config.STACKS_RECIPIENT)
+  .willSendEq(amount)
+  .ft('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.usdcx', 'usdcx-token')
+```
+{% endstep %}
+
+{% step %}
+### Execute withdrawal
+
+Prepare the contract call transaction to invoke the `burn` function and broadcast the transaction payload.
+
+```typescript
+let transaction = await makeContractCall({
+  contractName: 'usdcx-v1',
+  contractAddress: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
+  functionName: 'burn',
+  functionArgs,
+  network: 'testnet',
+  postConditions: [postCondition_1],
+  postConditionMode: 'deny',
+  senderKey: process.env.STACKS_PRIVATE_KEY,
+})
+
+let result = await broadcastTransaction({transaction, network: 'testnet'})
+```
+
+The Stacks network's attestation service passes the burn intent message and signature to xReserve, managed by Circle. xReserve verifies the burn and issues a withdrawal attestation to release USDC to the user’s wallet.
+{% endstep %}
+{% endstepper %}
+
+***
+
+## Additional Resources
+
+* \[[StacksDevs Livestream](https://x.com/StacksDevs/status/2011817589782249600)] A technical breakdown by the main builder behind Stacks' USDCx

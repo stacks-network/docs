@@ -1,5 +1,6 @@
 ---
 description: Generating and decoding addresses on the Stacks blockchain.
+hidden: true
 ---
 
 # c32check
