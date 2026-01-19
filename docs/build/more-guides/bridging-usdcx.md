@@ -675,6 +675,14 @@ The Stacks network's attestation service passes the burn intent message and sign
 
 ***
 
+## Additional Insights
+
+What can developers expect regarding timing, fees, and minimum amounts?
+
+<table><thead><tr><th width="106.2578125">Network</th><th width="111.6484375">Action</th><th width="158.0234375">Time</th><th width="210.48828125">Fee</th><th>Min. Amount</th></tr></thead><tbody><tr><td>Mainnet</td><td>Peg-in</td><td>~15 minutes</td><td>~ETH gas</td><td>10 USDC</td></tr><tr><td></td><td>Peg-out</td><td>~60 minutes</td><td>~STX fees + $4.80</td><td>4.80 USDCx</td></tr><tr><td>Testnet</td><td>Peg-in</td><td>~15 minutes</td><td>~ETH gas</td><td>1 USDC</td></tr><tr><td></td><td>Peg-out</td><td>~25 minutes</td><td>~STX fees + $4.80</td><td>4.80 USDCx</td></tr></tbody></table>
+
+***
+
 ## Additional Resources
 
 * \[[StacksDevs Livestream](https://x.com/StacksDevs/status/2011817589782249600)] A technical breakdown by the main builder behind Stacks' USDCx
