@@ -2,60 +2,355 @@
 
 <figure><picture><source srcset="../.gitbook/assets/pox-light.png" media="(prefers-color-scheme: dark)"><img src="../.gitbook/assets/pox.png" alt=""></picture><figcaption></figcaption></figure>
 
-In the previous sections, we took a look at the vision and ethos of Stacks and talked a lot about it being connected to Bitcoin and how it enables expanding functionality without modifying Bitcoin itself.
+## Introduction
 
-In this section, we'll run through the block production mechanism that makes that happen, Proof of Transfer.
+Proof of Transfer (PoX) is the innovative consensus mechanism that powers Stacks, enabling it to function as a Bitcoin Layer 2 while maintaining deep security and economic ties to Bitcoin. This groundbreaking approach allows Stacks to expand Bitcoin's functionality without requiring any modifications to Bitcoin itself.
 
-This section will be a conceptual overview of Proof of Transfer. For more details on exactly how block production happens at a technical level, check out the section on [Block Production](../block-production/).
+This guide provides a comprehensive overview of how Proof of Transfer works, why it matters, and how the Nakamoto upgrade has fundamentally strengthened Stacks' connection to Bitcoin.
 
-Consensus algorithms for blockchains require compute or financial resources to secure the blockchain. The general practice of decentralized consensus is to make it practically infeasible for any single malicious actor to have enough computing power or ownership stake to attack the network.
+For technical implementation details about block production, see the [Block Production](../block-production/) section.
 
-Popular consensus mechanisms in modern blockchains include proof of work, in which nodes dedicate computing resources, and proof of stake, in which nodes dedicate financial resources to secure the network.
+---
 
-Proof of burn is another, less-frequently used consensus mechanism where miners compete by ‘burning’ (destroying) a proof of work cryptocurrency as a proxy for computing resources.
+## Understanding Blockchain Consensus
 
-Proof of Transfer (PoX) is an extension of the proof of burn mechanism. PoX uses the proof of work cryptocurrency of an established blockchain (Bitcoin in this case) to secure a new blockchain. However, unlike proof of burn, rather than burning the cryptocurrency, miners transfer the committed cryptocurrency to some other participants in the network (Stackers in this case).
+Before diving into Proof of Transfer, it's helpful to understand the landscape of blockchain consensus mechanisms.
+
+Consensus algorithms require participants to commit resources—computational or financial—to secure a blockchain. The goal is to make it economically or computationally infeasible for any single malicious actor to attack the network.
+
+### Common Consensus Mechanisms
+
+**Proof of Work (PoW)** — Nodes dedicate computing resources to solve cryptographic puzzles. Bitcoin pioneered this approach, creating the most secure and battle-tested blockchain network.
+
+**Proof of Stake (PoS)** — Nodes stake financial resources (native tokens) to participate in consensus and earn rewards. Validators with more stake have greater influence.
+
+**Proof of Burn** — A less common approach where miners compete by "burning" (permanently destroying) cryptocurrency as a proxy for computing resources, demonstrating economic commitment.
+
+---
+
+## What is Proof of Transfer?
+
+Proof of Transfer extends the proof of burn concept with a crucial innovation: instead of destroying cryptocurrency, miners transfer Bitcoin to other network participants (Stackers).
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/Stacks_graphic - 67.png" alt=""><figcaption></figcaption></figure></div>
 
-This allows network participants to secure the PoX cryptocurrency network and earn a reward in the base cryptocurrency (BTC). Thus, PoX blockchains are anchored on their chosen PoW chain. Stacks uses Bitcoin as its anchor chain.
+### The PoX Cycle
+
+In Stacks' Proof of Transfer mechanism:
+
+1. **Miners** commit Bitcoin to mine Stacks blocks and earn STX rewards
+2. **Stackers** lock their STX tokens to support consensus
+3. The Bitcoin committed by miners is distributed to Stackers as yield
+4. Each Stacks block is cryptographically anchored to Bitcoin
+
+This creates a virtuous cycle where both miners and Stackers are economically aligned with Bitcoin's security and value.
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/Stacks_graphic - 80.png" alt=""><figcaption></figcaption></figure></div>
 
-### Why Bitcoin?
+### Key Benefits
 
-There are a number of reasons that Stacks chose Bitcoin as the blockchain to power consensus. It's the oldest blockchain protocol, having launched in 2009, and has become a recognized asset outside of the cryptocurrency community. BTC has held the highest market capitalization of any cryptocurrency for the past decade.
+**Bitcoin-Native Security** — Stacks blocks are cryptographically anchored to Bitcoin, inheriting its immutability and security properties.
 
-Bitcoin champions simplicity and stability, and has stood the test of time. Influencing or attacking the network is infeasible or impractical for any potential hackers. It's one of the only cryptocurrencies to capture public attention. Bitcoin is a household name, and is recognized as an asset by governments, large corporations, and legacy banking institutions. Lastly, Bitcoin is largely considered a reliable store of value, and provides extensive infrastructure to support the PoX consensus mechanism.
+**Productive Bitcoin** — BTC holders can earn yield by participating in Stacks consensus, making their Bitcoin productive without selling or wrapping it.
 
-SIP-001 provides a full [list of reasons why Bitcoin was chosen to secure Stacks](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
+**Sustainable Mining** — Miners use existing Bitcoin rather than requiring massive energy expenditure for separate proof of work.
 
-{% hint style="info" %}
-By the way, SIP stands for Stacks Improvement Proposal, and it's the process by which community members agree on making changes to the network. Reading the SIPs in detail is an excellent way to familiarize yourself with Stacks at the implementation level. All of the SIPs are available in the [SIPs section](../network-fundamentals/sips.md) of the docs.
-{% endhint %}
+**No Bitcoin Modification** — The entire system operates without requiring any changes to the Bitcoin protocol.
 
-### Unlocking Bitcoin capital
+---
 
-In the previous section we talked about Stacks being able to allow us to build a decentralized economy on top of Bitcoin and that PoX was a key piece of being able to do that.
+## Why Bitcoin?
 
-The reason is two-fold. First, as a part of this PoX mining process we have covered here, a hash of each Stacks block is recorded to the OP\_RETURN opcode of a Bitcoin transaction. If you aren't familiar, the OP\_RETURN opcode allows us to store up to 40 bytes of arbitrary data in a Bitcoin transaction.
+Stacks chose Bitcoin as its anchor chain for compelling technical, economic, and philosophical reasons.
 
-{% hint style="info" %}
-This [Stack Exchange answer](https://bitcoin.stackexchange.com/questions/29554/explanation-of-what-an-op-return-transaction-looks-like) gives a good overview of the reasoning and history of this opcode.
-{% endhint %}
+### Technical Excellence
 
-This is the first part of how Stacks inherits Bitcoin's security: its history is anchored block-by-block to the Bitcoin chain. Anyone can use merkle roots to verify these hashes to determine if the history is correct.
+**Unparalleled Security** — Bitcoin has operated continuously since 2009 without successful attacks, demonstrating the most robust security model in blockchain history.
 
-Additionally, after the Nakamoto Upgrade, Stacks no longer forks on its own. Miners are required at a protocol level to build atop the last mined Stacks blocks, meaning that **Stacks is secured by both 100% of Bitcoin's hashrate in addition to the Stacks security budget from its miners.** We'll get into this process in more detail in the [Block Production](../block-production/) section.
+**Battle-Tested Stability** — Over 15 years of operation have proven Bitcoin's resistance to attacks, network disruptions, and protocol vulnerabilities.
 
-Additionally, part of this PoX process involves each Stacks block also knowing which Bitcoin block it is anchored to. Clarity, Stacks' smart contract language, has built-in functions for reading this data, such as [`get-block-info`](https://docs.stacks.co/docs/write-smart-contracts/clarity-language/language-functions#get-block-info), which returns, among other things, a field called `burnchain-header-hash`, which gives us the hash of the Bitcoin header corresponding to this Stacks block.
+**Massive Hashpower** — Bitcoin commands the largest proof-of-work network in the world, making chain reorganizations economically impractical.
 
-This allows us to do really interesting things like trigger certain things to happen in a Clarity contract by watching the chain and verifying whether or not certain transactions occurred. You can see this in action in [Catamaran Swaps](https://docs.catamaranswaps.org/en/latest/catamaran.html), with other interesting projects like [Zest](https://www.zestprotocol.com/) seeking to expand on this functionality.
+### Economic Strength
 
-The ultimate goal of all this is to enable the vision of web3, building a decentralized economy and enabling true user ownership of assets and data, on top of Bitcoin as a settlement layer, and using Bitcoin as a base decentralized money.
+**Dominant Market Position** — Bitcoin has maintained the highest market capitalization among all cryptocurrencies for over a decade.
 
-### Proof of Transfer Contracts and Technical Details
+**Global Recognition** — Bitcoin is recognized as a legitimate asset class by governments, corporations, and financial institutions worldwide.
 
-The Proof of Transfer functionality is implemented on the Stacks chain via a [Clarity smart contract](https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46?chain=mainnet). An overview of this contract is available in the docs.
+**Store of Value** — Bitcoin is widely considered "digital gold," providing a stable foundation for building economic systems.
 
-You can see the original design for stacking and proof of transfer by reading the relevant SIP, [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md). You can also utilize [Hiro's API](https://docs.hiro.so/api#tag/Info/operation/get_pox_info) to get proof of transfer details including the relevant contract address.
+**Deep Liquidity** — Extensive infrastructure supports Bitcoin trading, custody, and integration across financial systems.
+
+### Philosophical Alignment
+
+**Simplicity and Stability** — Bitcoin's conservative approach to protocol changes aligns with Stacks' goal of building on a reliable foundation.
+
+**Decentralization** — Bitcoin's distributed network and open participation model embody true decentralization.
+
+**Proven Track Record** — Bitcoin's longevity and resilience make it the ideal base layer for long-term applications.
+
+For a comprehensive analysis of why Bitcoin was selected, see [SIP-001](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md).
+
+> **About SIPs**: Stacks Improvement Proposals (SIPs) are the formal process through which the community proposes and agrees on network changes. Reading SIPs in detail is an excellent way to understand Stacks at the implementation level. View all SIPs in the [SIPs section](../network-fundamentals/sips.md).
+
+---
+
+## The Nakamoto Upgrade: 100% Bitcoin Finality
+
+In October 2024, Stacks activated the Nakamoto upgrade—the most significant enhancement to the network since its mainnet launch in 2021. This upgrade fundamentally strengthened Stacks' connection to Bitcoin.
+
+### What Changed
+
+**Bitcoin Finality** — Stacks transactions now achieve 100% Bitcoin finality, meaning that once confirmed, reversing a Stacks transaction requires reversing Bitcoin itself—making Stacks essentially reorg-proof.
+
+**Faster Blocks** — Block production is no longer tied 1:1 to Bitcoin blocks. Stacks now produces blocks approximately every 6 seconds, dramatically improving transaction speed and user experience.
+
+**Enhanced Security Model** — Stacks is now secured by 100% of Bitcoin's hashrate in addition to the Stacks security budget from its miners.
+
+**MEV Resistance** — The upgrade includes protections against miner extractable value (MEV), ensuring a fairer and more transparent network.
+
+### Technical Implementation
+
+**Signer Network** — The Nakamoto upgrade introduced a new role called Signers, who validate blocks and ensure consensus alignment with Bitcoin.
+
+**Tenure-Based Mining** — Miners are assigned "tenures"—periods during which they can produce multiple Stacks blocks that are ultimately settled on Bitcoin.
+
+**Two-Phase Rollout** — The upgrade was implemented in two phases (Instantiation and Activation) to ensure network stability and give participants time to integrate.
+
+### Impact on PoX
+
+The Nakamoto upgrade significantly enhanced the Proof of Transfer mechanism:
+
+- **Upgraded PoX Contract** — The pox-4 contract introduced improvements to the stacking protocol
+- **Increased Yields** — Average stacking yields increased from as low as 2% before the upgrade to over 10% in recent cycles
+- **Stronger Bitcoin Anchoring** — Every Stacks block is now more tightly coupled to Bitcoin's security guarantees
+
+---
+
+## How Stacks Inherits Bitcoin's Security
+
+Proof of Transfer creates multiple layers of security inheritance from Bitcoin.
+
+### 1. Cryptographic Anchoring
+
+Every Stacks block records a hash to Bitcoin's blockchain using the OP_RETURN opcode, which allows up to 40 bytes of arbitrary data in Bitcoin transactions.
+
+> For background on OP_RETURN, see this [Stack Exchange explanation](https://bitcoin.stackexchange.com/questions/29554/explanation-of-what-an-op-return-transaction-looks-like).
+
+This means:
+- Stacks' history is permanently recorded on Bitcoin block-by-block
+- Anyone can verify Stacks block hashes using merkle proofs
+- The integrity of Stacks' history depends on Bitcoin's immutability
+
+### 2. Fork Resistance
+
+After the Nakamoto upgrade, Stacks achieves true Bitcoin finality:
+
+- **No Independent Forks** — Stacks can no longer fork on its own
+- **Bitcoin-Level Security** — Reorganizing Stacks would require reorganizing Bitcoin itself, which is computationally and economically infeasible
+- **Miner Requirements** — Miners must build atop the last mined Stacks blocks at the protocol level
+
+### 3. Dual Security Budget
+
+Stacks benefits from two security layers:
+
+1. **Bitcoin's Hashpower** — 100% of Bitcoin's mining power secures the ordering and finality of Stacks transactions
+2. **Stacks Mining** — Additional economic security from miners committing Bitcoin to produce Stacks blocks
+
+---
+
+## Unlocking Bitcoin Capital
+
+Proof of Transfer doesn't just secure Stacks—it enables entirely new possibilities for Bitcoin.
+
+### Reading Bitcoin State
+
+Stacks blocks track which Bitcoin block they're anchored to, enabling powerful cross-chain functionality.
+
+Clarity, Stacks' smart contract language, includes built-in functions like [`get-block-info`](https://docs.stacks.co/docs/write-smart-contracts/clarity-language/language-functions#get-block-info), which returns:
+
+- `burnchain-header-hash` — The Bitcoin block hash corresponding to a Stacks block
+- Other Bitcoin-related metadata
+
+This enables smart contracts to:
+- Verify Bitcoin transactions occurred
+- Trigger actions based on Bitcoin state
+- Create Bitcoin-aware decentralized applications
+
+### Real-World Applications
+
+**Catamaran Swaps** — Enables atomic swaps between Bitcoin and Stacks by verifying Bitcoin transactions in Clarity contracts. See the [Catamaran documentation](https://docs.catamaranswaps.org/en/latest/catamaran.html).
+
+**Zest Protocol** — A Bitcoin-native lending protocol that leverages PoX and Bitcoin verification. Learn more at [zestprotocol.com](https://www.zestprotocol.com/).
+
+**sBTC** — A decentralized, trustless Bitcoin peg that allows BTC to move between Bitcoin and Stacks (more on this below).
+
+---
+
+## sBTC: Programmable Bitcoin
+
+sBTC represents the culmination of Stacks' vision to make Bitcoin fully programmable while maintaining its security properties.
+
+### What is sBTC?
+
+sBTC is a 1:1 Bitcoin-backed asset that enables Bitcoin to be used in smart contracts and decentralized applications on Stacks. Unlike centralized alternatives like wBTC, sBTC is secured by a decentralized network of validators (Signers) rather than a single custodian.
+
+### Launch Timeline
+
+**Phase 0: Testnet** — Completed November 22, 2024
+
+**Phase 1: Bitcoin Deposits** — Launched December 17, 2024, enabling users to deposit BTC and mint sBTC
+
+**Phase 2: Bitcoin Withdrawals** — Expected March 2025, enabling full two-way functionality
+
+**Phase 3: Full Decentralization** — Transition to a fully open, permissionless Signer network with expanded participation beyond the initial 15 community-elected signers
+
+### Current Status
+
+The initial 1,000 BTC cap was reached in just four days after launch. The next milestone includes expanding the cap by an additional 2,000 BTC, with plans to eventually remove the cap entirely.
+
+### Key Features
+
+**1:1 Bitcoin Backing** — Every sBTC is backed by exactly 1 BTC locked in the protocol
+
+**Decentralized Security** — Secured by a network of Signers requiring 70% consensus for transaction approval, maintaining balance between liveness and security
+
+**Bitcoin Finality** — Leverages Stacks' 100% Bitcoin finality for maximum security
+
+**Yield Opportunities** — Early adopters can earn approximately 5% annual Bitcoin rewards, paid in sBTC, simply by enrolling and holding the asset
+
+### Use Cases
+
+**DeFi Applications** — Use Bitcoin in lending, borrowing, and liquidity provision without selling it
+
+**Bitcoin-Collateralized Stablecoins** — Create stablecoins backed by BTC
+
+**DAO Treasuries** — Enable DAOs to hold and deploy BTC trustlessly
+
+**NFTs and dApps** — Access faster, cheaper Bitcoin-backed transactions for digital assets
+
+### Technical Implementation
+
+sBTC builds on the Proof of Transfer mechanism:
+
+- **Signer Network** — 14 of 15 elected Signers currently secure the sBTC network, operating independently from Stacks Signers for safety and operational clarity
+- **Smart Contract Integration** — Enables programmatic BTC transfers to and from Bitcoin addresses
+- **Security Audits** — Partnerships with Asymmetric Research, Immunefi, and other security providers ensure robust protocol security
+
+---
+
+## The Bigger Vision
+
+The ultimate goal of Proof of Transfer and sBTC is to enable Web3's vision of a decentralized economy built on Bitcoin.
+
+### Bitcoin as Settlement Layer
+
+Stacks positions Bitcoin as the foundation for:
+- **Decentralized Finance** — Financial applications without intermediaries
+- **True Ownership** — User control of assets and data
+- **Programmable Money** — Smart contracts leveraging Bitcoin's security
+
+### Unlocking Bitcoin's Potential
+
+Stacks 2.0 brought the ability to "read" Bitcoin state through Clarity. sBTC completes the vision by adding the "write" piece, creating a fully expressive Bitcoin layer that can unlock hundreds of billions in Bitcoin capital.
+
+This transforms Bitcoin from a passive store of value into an active foundation for the decentralized economy.
+
+---
+
+## Technical Resources
+
+### Smart Contracts
+
+The Proof of Transfer functionality is implemented via a [Clarity smart contract on-chain](https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46?chain=mainnet).
+
+The current version (pox-4) was introduced with the Nakamoto upgrade and includes enhanced stacking features.
+
+### APIs and Tools
+
+**Hiro API** — Access PoX details including contract addresses, stacker information, and miner data via [Hiro's API](https://docs.hiro.so/api#tag/Info/operation/get_pox_info).
+
+**Explorer** — View real-time PoX activity on the [Stacks Explorer](https://explorer.hiro.so/).
+
+**Stacking Dashboard** — Monitor stacking participation and rewards on community-built dashboards.
+
+### Documentation
+
+**SIP-007** — The original design for Stacking and Proof of Transfer. Read [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md) for complete technical details.
+
+**SIP-028** — Establishes criteria and selection process for sBTC Signers who secure the sBTC protocol.
+
+**SIP-029** — Revises the STX emissions schedule to align with Bitcoin's halving cycle.
+
+**Nakamoto Documentation** — Comprehensive technical documentation on the Nakamoto upgrade and its implications.
+
+---
+
+## Participate in PoX
+
+### As a Stacker
+
+Lock STX tokens to earn Bitcoin rewards:
+1. Choose between solo stacking or joining a stacking pool
+2. Lock your STX for reward cycles
+3. Earn BTC distributed from miners
+
+### As a Miner
+
+Commit Bitcoin to mine Stacks blocks:
+1. Run a Stacks mining node
+2. Participate in block production
+3. Earn STX rewards for successful blocks
+
+### As a Signer
+
+Support network consensus (requires technical expertise):
+1. Run a Signer node
+2. Validate blocks and maintain network security
+3. Participate in the decentralized governance of Stacks
+
+For detailed guides on participation, see the [Operate](../operate/) section.
+
+---
+
+## Looking Forward
+
+Proof of Transfer continues to evolve as Stacks grows:
+
+**Performance Improvements** — Core developers are working toward consistent sub-10 second transaction times, with the goal of making Stacks the fastest Bitcoin L2 while maintaining decentralization and security.
+
+**Stacking Enhancements** — Proposed improvements to simplify the stacking process and increase yields for both individuals and pool operators.
+
+**sBTC Expansion** — Progressive removal of deposit caps, institutional custody integration, and exchange listings to make sBTC widely accessible.
+
+**Data Availability** — Ongoing research into using Bitcoin as a full data availability layer for enhanced verifiability.
+
+These improvements, collectively known as the "Satoshi Upgrades," ensure Stacks remains the leading Bitcoin Layer 2 solution.
+
+---
+
+## Conclusion
+
+Proof of Transfer represents a paradigm shift in how blockchains can leverage Bitcoin's security and capital. By creating economic alignment between Stacks and Bitcoin, PoX enables:
+
+- True Bitcoin-native security through cryptographic anchoring
+- Productive use of Bitcoin through stacking yields
+- Programmable Bitcoin through smart contracts and sBTC
+- A decentralized economy built on the world's most secure blockchain
+
+The Nakamoto upgrade and sBTC launch mark crucial milestones in realizing this vision, bringing us closer to a world where Bitcoin powers not just a store of value, but an entire decentralized economy.
+
+---
+
+## Additional Resources
+
+- [Stacks Whitepaper](https://stacks.org/sbtc-nakamoto) — The Nakamoto Release with sBTC
+- [sBTC Documentation](https://www.stacks.co/sbtc) — Complete guide to sBTC
+- [Nakamoto Upgrade Details](https://docs.stacks.co/nakamoto-upgrade/) — Technical documentation
+- [Stacks Roadmap](https://www.stacks.co/roadmap) — Future development plans
+- [Community Forum](https://forum.stacks.org/) — Join the discussion
+
+[Base Learn]: https://base.org/learn
+[Block Production]: ../block-production/
+[SIPs section]: ../network-fundamentals/sips.md
+[Operate]: ../operate/
