@@ -32,6 +32,10 @@ For the live dual stacking contract on mainnet, check out the contract page [her
 **Initialization**
 
 The contract is initialized once with a Stacks block height parameter that is the first one in the Bitcoin block specified, or after it, in case there aren't any STX blocks anchored to it.
+
+**Note:** As of the v2.0.2 upgrade, enrollment status is now more clearly displayed in the web app dashboard at app.stacks.co.
+{% endstep %}
+
 {% endstep %}
 
 {% step %}
