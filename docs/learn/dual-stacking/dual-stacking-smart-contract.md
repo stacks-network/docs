@@ -57,3 +57,6 @@ Anyone can trigger periodic snapshots that capture participant sBTC balances and
 
 After snapshots are complete, anyone can propose a golden ratio (optimal STX/sBTC ratio), tally participant distributions, and validate if their proposal meets the 95th percentile criteria to determine the benchmark for maximum rewards.
 {% endstep %}
+
+{% step %}
+**Weight Calculation**
