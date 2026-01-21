@@ -26,3 +26,7 @@ For the live dual stacking contract on mainnet, check out the contract page [her
 * Self-service enrollment: Users can enroll, opt-out, and manage their participation independently.
 
 ### Main Operations
+
+{% stepper %}
+{% step %}
+**Initialization**
