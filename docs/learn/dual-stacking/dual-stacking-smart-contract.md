@@ -45,3 +45,6 @@ Users can self-enroll for participation with custom reward addresses. DeFi proto
 
 **Note:** As of the v2.0.2 upgrade, enrollment status is now more clearly displayed in the web app dashboard at app.stacks.co.
 {% endstep %}
+
+{% step %}
+**Snapshots and Cycles**
