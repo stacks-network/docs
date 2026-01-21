@@ -60,3 +60,5 @@ After snapshots are complete, anyone can propose a golden ratio (optimal STX/sBT
 
 {% step %}
 **Weight Calculation**
+Anyone can trigger participant weight calculations using the validated dual stacking formula that provides up to 10x boost (configurable) for those who meet or exceed the golden ratio.
+{% endstep %}
