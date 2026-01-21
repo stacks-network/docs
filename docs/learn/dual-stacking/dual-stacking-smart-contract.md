@@ -36,3 +36,5 @@ The contract is initialized once with a Stacks block height parameter that is th
 
 {% step %}
 **Enrollment**
+
+Users can self-enroll for participation with custom reward addresses. DeFi protocols can be enrolled by admin with custom tracking, stacking, and reward addresses. All participants can opt-out or change their addresses at any time.
