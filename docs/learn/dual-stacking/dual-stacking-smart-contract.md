@@ -51,3 +51,6 @@ Users can self-enroll for participation with custom reward addresses. DeFi proto
 
 Anyone can trigger periodic snapshots that capture participant sBTC balances and STX stacking amounts from on-chain data based on predefined block intervals.
 {% endstep %}
+
+{% step %}
+**Ratio Computation**
