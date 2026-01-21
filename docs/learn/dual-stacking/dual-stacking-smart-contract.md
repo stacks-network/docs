@@ -24,3 +24,5 @@ For the live dual stacking contract on mainnet, check out the contract page [her
 * Competitive ratio discovery: Multiple participants can propose different golden ratios; the system validates based on mathematical criteria (95th percentile), not admin approval.
 * Transparent execution: All operations are executed on-chain with verifiable results and public event logs.
 * Self-service enrollment: Users can enroll, opt-out, and manage their participation independently.
+
+### Main Operations
