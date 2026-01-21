@@ -16,3 +16,5 @@ For the live dual stacking contract on mainnet, check out the contract page [her
 - Automatic migration for existing v1 participants (no action required if previously enrolled)
 - Enhanced dashboard metrics and real-time reward calculations
 {% endhint %}
+
+### Decentralized Architecture
