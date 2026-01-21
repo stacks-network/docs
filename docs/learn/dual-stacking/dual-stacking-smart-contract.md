@@ -42,3 +42,6 @@ The contract is initialized once with a Stacks block height parameter that is th
 **Enrollment**
 
 Users can self-enroll for participation with custom reward addresses. DeFi protocols can be enrolled by admin with custom tracking, stacking, and reward addresses. All participants can opt-out or change their addresses at any time.
+
+**Note:** As of the v2.0.2 upgrade, enrollment status is now more clearly displayed in the web app dashboard at app.stacks.co.
+{% endstep %}
