@@ -30,3 +30,6 @@ For the live dual stacking contract on mainnet, check out the contract page [her
 {% stepper %}
 {% step %}
 **Initialization**
+
+The contract is initialized once with a Stacks block height parameter that is the first one in the Bitcoin block specified, or after it, in case there aren't any STX blocks anchored to it.
+{% endstep %}
