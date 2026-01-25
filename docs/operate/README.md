@@ -1,6 +1,6 @@
 # Run a Node
 
-<figure><img src=".gitbook/assets/Frame 316126262 (1).jpg" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src=".gitbook/assets/Frame 316126262 (1).jpg" alt=""><figcaption></figcaption></figure></div>
 
 This section walks through the technical setup steps required to run Stacks network nodes and miners. There are multiple options available for running a node, including Docker, Digital Ocean, and Render.
 

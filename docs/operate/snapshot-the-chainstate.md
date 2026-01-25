@@ -1,5 +1,7 @@
 # Snapshot the Chainstate
 
+<div data-with-frame="true"><figure><img src=".gitbook/assets/snapshot-chainstate.png" alt=""><figcaption></figcaption></figure></div>
+
 {% hint style="info" %}
 **Intended audience**: Solo Stackers, Stacking pool operators, and node operators who need to create reliable chainstate backups.
 {% endhint %}

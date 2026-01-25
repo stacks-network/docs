@@ -1,5 +1,7 @@
 # Run a Bitcoin Node
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/run-a-bitcoin-node.png" alt=""><figcaption></figcaption></figure></div>
+
 {% stepper %}
 {% step %}
 #### Requirements
