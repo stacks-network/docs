@@ -1,6 +1,6 @@
 # Authentication
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/authentication.jpg" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/navigating-the-tension-between-web3-privacy-and-data-transparency">Hiro Blog</a></p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/authentication.jpg" alt=""><figcaption></figcaption></figure></div>
 
 Authenticating (connecting wallets) with a Stacks-supported wallet is a common task when building Stacks apps. On a web2 app, authentication usually means sending credentials to a central provider, which then verifies you and controls access. In web3, authentication uses a wallet and cryptographic signatures with libraries like stacks.js, letting users prove identity without a central party holding the keys.
 

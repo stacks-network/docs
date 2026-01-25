@@ -4,6 +4,8 @@ description: Use cases of DeFi on Stacks
 
 # DeFi
 
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/bitcoin-defi.png" alt=""><figcaption></figcaption></figure></div>
+
 Stacks enables users to put their BTC to work in trust-minimized ways: borrowing against it, providing liquidity, earning yield, or participating in programmable financial products that settle on Bitcoin. This ecosystem gives builders the foundation to extend Bitcoin from a passive store of value into an active financial layer.
 
 Here are some powerful demonstrations of unlocking DeFi for Bitcoin:

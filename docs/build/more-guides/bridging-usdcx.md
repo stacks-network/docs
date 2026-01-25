@@ -1,5 +1,7 @@
 # Bridging USDCx
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/bridging-usdcx.png" alt=""><figcaption></figcaption></figure></div>
+
 {% hint style="info" %}
 Current work is underway to abstract this entire flow via Circle's Bridge Kit SDK.
 {% endhint %}

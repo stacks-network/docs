@@ -4,7 +4,7 @@ description: A guide to help you create your own fungible tokens
 
 # Fungible Tokens
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/an-overview-of-8-types-of-tokens-in-web3">Hiro blog</a></p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure></div>
 
 Creating a fungible token on Stacks can happen a few different ways — using no-code launchpads or writing your own Clarity smart contract. This guide helps you pick the best path for your goals and gives you the implementation details to ship confidently, whether you’re deploying with clicks or code.
 
@@ -14,7 +14,7 @@ For developers who want full control over their token implementation, here’s h
 
 {% stepper %}
 {% step %}
-#### Define SIP-010 fungible token trait
+**Define SIP-010 fungible token trait**
 
 <details>
 
@@ -59,7 +59,7 @@ All we are doing here is defining the function signatures for functions we'll ne
 {% endstep %}
 
 {% step %}
-#### Implement SIP-010 trait in token contract
+**Implement SIP-010 trait in token contract**
 
 Any token contract that wants to conform to the SIP-010 fungible token standard for Stacks needs to have this trait "implemented" in their token contract. See the below minimal token contract example of how this is done.
 

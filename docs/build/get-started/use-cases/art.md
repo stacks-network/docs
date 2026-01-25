@@ -4,6 +4,8 @@ description: Use cases of art on Stacks
 
 # Art
 
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/art.png" alt=""><figcaption></figcaption></figure></div>
+
 Unlock expressive, Bitcoin-secured digital art with NFT assets — all backed by fast, low-cost execution on Stacks. The Stacks ecosystem brings programmability, provenance, and creative tooling to Bitcoin, giving artists and collectors the speed, flexibility, and cultural richness they’ve always wanted _without leaving Bitcoin_. Stacks expands what Bitcoin culture can be: native digital ownership, programmable collectibles, onchain storytelling, and communities that form directly around Bitcoin-secured art.
 
 Here are the creative use cases artists are exploring today:

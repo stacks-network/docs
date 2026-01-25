@@ -14,6 +14,7 @@
   * [Authentication](get-started/build-a-frontend/authentication.md)
   * [Post-Conditions](get-started/build-a-frontend/post-conditions.md)
   * [Sending Transactions](get-started/build-a-frontend/sending-transactions.md)
+* [Path to Production](get-started/path-to-production.md)
 * [Use Cases](get-started/use-cases/README.md)
   * [Payments](get-started/use-cases/payments.md)
   * [Art](get-started/use-cases/art.md)

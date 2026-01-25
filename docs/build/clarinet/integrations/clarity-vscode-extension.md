@@ -1,4 +1,6 @@
-# VSCode Extension
+# Clarity VSCode Extension
+
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/clarity-vsc-extension.png" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="info" %}
 The [VSCode extension](https://marketplace.visualstudio.com/items?itemName=StacksLabs.clarity-stacks) for Clarity is now published under the Stacks Labs organization.

@@ -1,5 +1,7 @@
 # Accounts & Addresses
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/acounts-and-addresses.png" alt=""><figcaption></figcaption></figure></div>
+
 Stacks uses the concept of an "account" to represent a user's identity. An account is identified by a unique address derived from the account's public key.
 
 {% hint style="info" %}

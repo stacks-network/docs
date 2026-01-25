@@ -4,6 +4,8 @@ description: Use cases of payments on Stacks
 
 # Payments
 
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/payments.png" alt=""><figcaption></figcaption></figure></div>
+
 Enable fast, Bitcoin-settled transactions using assets like sBTC and STX, with developer tooling support and easy wallet integrations. Stacks brings the liquidity, speed, and logic of modern payments to Bitcoin — fast digital transfers, smarter payment rules, and the UX digital payments deserve.
 
 Here are the payment use cases developers are building with today:

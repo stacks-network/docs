@@ -1,6 +1,6 @@
 # Overview
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacksjs-learn.png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/taking-a-look-at-recent-stacks-js-improvements">Hiro blog</a></p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacksjs-learn.png" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="success" %}
 For the latest releases and versions of Stacks.js packages, check out its open-source repo [here](https://github.com/stx-labs/stacks.js).

@@ -4,6 +4,8 @@ description: Use cases of gaming on Stacks
 
 # Gaming
 
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/gaming.png" alt=""><figcaption></figcaption></figure></div>
+
 Gaming is one of the most powerful entry points for bringing millions of new users into the Bitcoin ecosystem, and Stacks unlocks this opportunity with onchain logic secured by Bitcoin itself. By enabling fast, low-cost transactions, expressive smart contracts, and asset ownership through NFTs and fungible tokens, Stacks gives game developers the tools to build richer in-game economies, verifiable digital ownership, and player-driven marketplaces—all anchored to Bitcoin’s security. This combination lets games move beyond simple collectibles and into fully programmable, decentralized worlds where players truly own their assets and developers can design deeper incentives, interoperable items, and sustainable onchain economies.
 
 Here are some powerful examples of how Stacks is unlocking on-chain gaming for Bitcoin:

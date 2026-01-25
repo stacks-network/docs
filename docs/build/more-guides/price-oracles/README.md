@@ -4,7 +4,7 @@ description: Leverage real-time market price data in your Clarity smart contract
 
 # Price Oracles
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure></div>
 
 Smart contracts written in **Clarity** run in a deterministic sandbox: they can read data in the Stacks and Bitcoin chainstate, but _nothing else_. Whenever your dApp needs the latest **BTC/USD**, **STX/BTC**, or any other market price, you’ll rely on an **oracle** to bring that data on‑chain in a verifiable way.
 

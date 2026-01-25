@@ -1,5 +1,7 @@
 # Mainnet Execution Simulation
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/mainnet-execution-simulation.png" alt=""><figcaption></figcaption></figure></div>
+
 Mainnet execution simulation (MXS) lets you test your Clarity contracts against real mainnet data without deploying experimental code. You can reproduce historical state, validate complex integrations, and debug edge cases while keeping the speed of local development.
 
 ## What you'll learn

@@ -4,7 +4,7 @@ description: A guide to help you create your own non-fungible tokens
 
 # Non-Fungible Tokens
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/breaking-down-an-order-book-contract-for-nft-marketplaces">Hiro blog</a></p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure></div>
 
 Create an NFT with Stacks because it builds **on Bitcoin** — inheriting the security and permanence of the most durable chain via Proof-of-Transfer. Clarity smart contracts make logic easy to audit, reducing the guessing and attack surface common in NFT projects. Plus, Stacks NFTs tap into a Bitcoin-aligned community that values ownership, longevity, and real on-chain utility.
 
@@ -14,7 +14,7 @@ For developers who want full control over their token implementation, here’s h
 
 {% stepper %}
 {% step %}
-#### Define SIP-009 non-fungible token trait
+**Define SIP-009 non-fungible token trait**
 
 <details>
 
@@ -50,7 +50,7 @@ All we are doing here is defining the function signatures for functions we'll ne
 {% endstep %}
 
 {% step %}
-#### Implement SIP-009 trait in NFT contract
+**Implement SIP-009 trait in NFT contract**
 
 Any NFT contract that wants to conform to the SIP-009 non-fungible token standard for Stacks needs to have this trait "implemented" in their NFT contract. See the below minimal NFT contract example of how this is done.
 

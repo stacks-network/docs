@@ -4,7 +4,7 @@ description: Interact with your contracts with a proper frontend app
 
 # Build a Frontend
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/build-a-frontend.jpg" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/3-reasons-the-future-of-apps-will-be-decentralized">Hiro Blog</a></p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/build-a-frontend.jpg" alt=""><figcaption></figcaption></figure></div>
 
 A major part of building full-stack Stacks applications is creating a well designed UI with a solid UX. One of your primary tools for this is stacks.js, a JavaScript/Typescript library that simplifies working with contracts, wallets, and the Stacks network.
 

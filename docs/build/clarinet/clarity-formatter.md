@@ -1,5 +1,7 @@
 # Clarity Formatter
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/clarity-formatting.png" alt=""><figcaption></figcaption></figure></div>
+
 The Clarity formatter automatically shapes your smart contract code to follow standardized style rules. Consistent formatting improves readability and makes collaboration easier across teams.
 
 ## Formatting philosophy
@@ -16,13 +18,13 @@ You can customize these defaults to match your preferences.
 
 {% stepper %}
 {% step %}
-#### Clarity VS Code Extension
+**Clarity VS Code Extension**
 
 Format directly in the editor.
 {% endstep %}
 
 {% step %}
-#### Clarinet CLI
+**Clarinet CLI**
 
 Format via command line, including entire projects.
 {% endstep %}

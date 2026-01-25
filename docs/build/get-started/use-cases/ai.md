@@ -4,6 +4,8 @@ description: Use cases of AI on Stacks
 
 # AI
 
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/ai.png" alt=""><figcaption></figcaption></figure></div>
+
 AI on **Stacks** enables verifiable, Bitcoin-secured AI applications. Developers can build decentralized AI marketplaces, create AI agents that safely manage sBTC under smart-contract rules, and generate verifiable inference receipts for trust and compliance. By combining Bitcoin security with Clarity and sBTC, Stacks provides a powerful foundation for trusted, permissionless, AI-powered apps.
 
 Here are some powerful examples of how **Stacks is unlocking on-chain AI experiences secured by Bitcoin:**

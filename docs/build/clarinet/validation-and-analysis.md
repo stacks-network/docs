@@ -1,5 +1,7 @@
 # Validation and Analysis
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/validation-and-analysis.png" alt=""><figcaption></figcaption></figure></div>
+
 Clarinet provides powerful tools for validating, analyzing, linting, and debugging your smart contracts. From static type checking to real-time cost analysis, you can ensure your contracts are correct and efficient before deployment.
 
 Contract validation spans static analysis, runtime debugging, and cost optimization. Each discipline helps you gain confidence in contract behavior.
