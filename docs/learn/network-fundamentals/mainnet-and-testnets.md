@@ -1,6 +1,6 @@
 # Mainnet and Testnets
 
-<figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption><p>image source: <a href="https://www.hiro.so/blog/what-are-blockchain-layers">Hiro blog</a></p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure></div>
 
 Stacks has both a mainnet and a testnet for different purposes. Mainnet and testnet are two completely different networks and tokens cannot be transferred between one or the other.
 

@@ -1,6 +1,6 @@
 # Audits
 
-<figure><img src="../../.gitbook/assets/image (26).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/smart-contracts-cant-afford-to-fail-and-with-clarity-language-they-wont">Hiro blog</a></p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure></div>
 
 #### Audits are just part of the story
 

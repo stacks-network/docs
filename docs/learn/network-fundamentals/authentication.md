@@ -1,6 +1,6 @@
 # Authentication
 
-<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/how-to-authenticate-your-users">Hiro blog</a></p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure></div>
 
 ### Introduction
 

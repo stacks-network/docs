@@ -1,5 +1,7 @@
 # Block Production
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/block-production.png" alt=""><figcaption></figcaption></figure></div>
+
 Block production is a key concept to understand how Stacks operates under the hood. This section walks through the three main actions that need to happen for the Stacks chain to operate.
 
 {% stepper %}

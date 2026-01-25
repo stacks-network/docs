@@ -4,7 +4,7 @@ description: An overview of the BTC-denominated rewards mechanism on Stacks
 
 # Dual Stacking
 
-<figure><img src="../.gitbook/assets/dual-stacking.png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/dual-stacking.png" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="info" %}
 Check out the official blog announcement of Dual Stacking [here](https://www.stacks.co/blog/dual-stacking-launches-on-stacks).

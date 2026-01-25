@@ -1,5 +1,7 @@
 # Bitcoin Finality
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/bitcoin-finality.png" alt=""><figcaption></figcaption></figure></div>
+
 The concept of 100% Bitcoin finality is crucial to the design of Stacks. This is what turns Stacks into a true Bitcoin L2 and allows it to leverage all of the security inherent in Bitcoin.
 
 Finality refers to the point at which transactions are irreversible. Once a blockchain reaches finality, it is nearly impossible to change the ledger's history without undertaking extraordinary measures that are often computationally and economically prohibitive.

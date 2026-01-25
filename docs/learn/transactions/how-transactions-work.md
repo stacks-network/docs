@@ -1,6 +1,6 @@
 # How Transactions Work
 
-<figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/dissecting-a-transaction-signature-on-stacks">Hiro blog</a></p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure></div>
 
 ### Introduction
 
@@ -10,7 +10,7 @@ Transactions are the fundamental unit of execution in the Stacks blockchain. Eac
 
 Transactions go through phases before being finally confirmed, and available for all, on the Stacks 2.0 network.
 
-<figure><img src="../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure></div>
 
 {% stepper %}
 {% step %}

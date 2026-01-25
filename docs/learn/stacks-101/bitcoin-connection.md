@@ -1,6 +1,6 @@
 # The Bitcoin Connection
 
-<figure><img src="../.gitbook/assets/Frame 316126254.jpg" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/Frame 316126254.jpg" alt=""><figcaption></figcaption></figure></div>
 
 In the previous section, we described Stacks as bringing smart contract functionality to Bitcoin, without modifying Bitcoin itself, and explained a bit about how the chain works.
 

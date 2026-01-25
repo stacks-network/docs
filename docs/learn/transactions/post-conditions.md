@@ -1,6 +1,6 @@
 # Post Conditions
 
-<figure><img src="../.gitbook/assets/image (29).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/a-developers-guide-to-post-conditions">Hiro blog</a></p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (29).png" alt=""><figcaption><p>source: <a href="https://www.hiro.so/blog/a-developers-guide-to-post-conditions">Hiro blog</a></p></figcaption></figure></div>
 
 Post conditions are one of the most interesting and unique aspects of Stacks.
 

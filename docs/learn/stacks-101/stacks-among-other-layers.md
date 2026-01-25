@@ -1,6 +1,6 @@
 # Stacks Among Other Layers
 
-<figure><img src="../.gitbook/assets/bitcoin-layer-2s.jpg" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/bitcoin-layer-2s.jpg" alt=""><figcaption></figcaption></figure></div>
 
 Recently, we have seen a flurry of new "Bitcoin layers" popping up across the ecosystem as the market has finally woken up to the idea.
 

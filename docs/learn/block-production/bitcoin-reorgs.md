@@ -1,5 +1,7 @@
 # Bitcoin Reorgs
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/bitcoin-reorgs.png" alt=""><figcaption></figcaption></figure></div>
+
 Under Nakamoto Stacks transactions don’t impactfully reorganize due to a Bitcoin fork. Not only is reorging relatively infrequent, but transactions on Stacks that got reorganized due to a Bitcoin fork behave just as reorganized Bitcoin transactions do. With some future analysis, transactions purely on the L2 chain may one day be entirely unaffected.
 
 Understanding this concept fundamentally comes down to understanding finality on post-Nakamoto Stacks.

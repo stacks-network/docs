@@ -4,7 +4,7 @@ description: A smart contract language built to be readable and predictable.
 
 # Clarity
 
-<figure><img src="../.gitbook/assets/image (46).png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/clarity-cover.png" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="info" %}
 Head to the [Clarity Crash Course](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/get-started/clarity-crash-course) to build your first Clarity smart contract.
