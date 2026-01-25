@@ -34,4 +34,4 @@ https://github.com/stacksgov/sips/blob/feat/sip-021-nakamoto/sips/sip-021/sip-02
 
 Here's a diagram outlining the block production process under Nakamoto rules. The following docs dig into each part in detail.
 
-<figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure></div>

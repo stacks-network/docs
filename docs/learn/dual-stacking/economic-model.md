@@ -4,7 +4,7 @@ description: Understanding the economics behind Dual Stacking.
 
 # Economic Model
 
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption><p>Users stake BTC, STX, or both to earn BTC-denominated rewards (via sBTC and BTC).</p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption><p>Users stake BTC, STX, or both to earn BTC-denominated rewards (via sBTC and BTC).</p></figcaption></figure></div>
 
 Dual Stacking introduces an economic model in which BTC-denominated rewards scale with the participant’s ratio of sBTC to stacked STX as well as sBTC deployed in DeFi. This creates a direct link between Bitcoin capital and the growth of the Stacks ecosystem.
 

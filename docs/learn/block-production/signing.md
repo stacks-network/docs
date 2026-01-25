@@ -14,7 +14,7 @@ This new behavior prevents forks from arising. If a miner builds a block atop a 
 ### Stacker Signing
 
 {% hint style="info" %}
-You can view a list of all of the [active signers](https://explorer.hiro.so/signers?chain=mainnet) on Hiro's block explorer.
+You can view a list of all of the [active signers](https://explorer.hiro.so/signers?chain=mainnet) on the Stacks block explorer.
 {% endhint %}
 
 We'll cover how stacking works in the Stacking section and the sBTC signing in the sBTC section; here we'll cover the signing process as it relates to Stacks block production.
@@ -29,7 +29,7 @@ Nakamoto uses the [WSTS protocol with the FIRE extension](https://trust-machines
 
 Here is a diagram outlining the relationship between signing and stacking.
 
-<figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacking-vs-signing.png" alt=""><figcaption></figcaption></figure></div>
 
 ### Validating and Appending New Blocks
 

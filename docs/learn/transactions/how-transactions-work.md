@@ -10,7 +10,7 @@ Transactions are the fundamental unit of execution in the Stacks blockchain. Eac
 
 Transactions go through phases before being finally confirmed, and available for all, on the Stacks 2.0 network.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacks-transaction-lifecycle.png" alt=""><figcaption></figcaption></figure></div>
 
 {% stepper %}
 {% step %}

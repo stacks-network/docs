@@ -4,6 +4,8 @@ description: The Clarity contracts responsible for sBTC's logic and interactions
 
 # Clarity Contracts
 
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/sbtc-contracts-diagram.png" alt=""><figcaption></figcaption></figure></div>
+
 ### Deployed Mainnet Contracts
 
 * [sbtc-token](https://explorer.hiro.so/txid/SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token?chain=mainnet)
@@ -11,10 +13,6 @@ description: The Clarity contracts responsible for sBTC's logic and interactions
 * [sbtc-deposit](https://explorer.hiro.so/txid/SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-deposit?chain=mainnet)
 * [sbtc-withdrawal](https://explorer.hiro.so/txid/SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-withdrawal?chain=mainnet)
 * [sbtc-bootstrap-signers](https://explorer.hiro.so/txid/SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-bootstrap-signers?chain=mainnet)
-
-This graph summarizes the Clarity portion of the sBTC protocol.
-
-<figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe6LEEESrk6Az-iRR5ZeEuqOQvBESKtFvBIjSYPhAjLZ2LpEwM-UOnSWn4b6hFFv0uFnysxL6wO-BVgJaPTAdYUkbvBenJrY8rY-YrGT9CSwqdCl2kuS5ZhNheumR-yBPAOHtccAt1eOD4dU5Zi-14gBgwv?key=uPKXlfIDnNUlnyka_NtgIw" alt=""><figcaption></figcaption></figure>
 
 ### sBTC Clarity Contracts
 
