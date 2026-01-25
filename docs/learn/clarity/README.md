@@ -1,59 +1,106 @@
+# Clarity: A Decidable Smart Contract Language
+
+Clarity is a **decidable** smart contract language optimized for predictability and security, purpose-built for the Stacks blockchain. Designed from the ground up to address common vulnerabilities found in other smart contract languages, Clarity prioritizes developer safety and contract transparency.
+
+## What Makes Clarity Unique
+
+### Security by Design
+
+Clarity's architecture stems from analyzing real-world smart contract failures. Historical incidents like the Parity bug (resulting in millions lost) and The DAO hack (requiring Ethereum's controversial hard fork) informed Clarity's core design principles. The language prevents these vulnerabilities at the language level rather than relying on developer vigilance.
+
+### Interpreted, Not Compiled
+
+Clarity code deploys to the blockchain exactly as written—no compilation to bytecode. This approach offers two critical advantages:
+
+- **No Compiler Risk**: Eliminates potential bugs or vulnerabilities introduced during compilation
+- **Full Transparency**: Anyone can read and verify exactly what a smart contract does before interacting with it
+
+If you wouldn't sign a legal contract you can't read, why trust compiled bytecode?
+
+### Decidability
+
+Clarity is decidable, meaning you can determine with certainty what any program will do before execution. Key benefits include:
+
+- **Guaranteed Termination**: Programs will always halt in finite steps—no infinite loops
+- **Complete Static Analysis**: Calculate exact execution costs before runtime
+- **No Mid-Execution Failures**: Transactions never "run out of gas" partway through
+
+### Built-in Security Features
+
+**No Reentrancy**  
+Reentrancy attacks (where contracts call back into themselves maliciously) are impossible. Clarity treats reentrancy as an anti-feature and blocks it at the language level.
+
+**Automatic Overflow/Underflow Protection**  
+Arithmetic operations that overflow or underflow automatically abort transactions, preventing contract exploits or frozen states.
+
+**Native Token Support**  
+Fungible and non-fungible token creation is built directly into the language. No need to manually manage balance sheets, supply tracking, or token events.
+
+**Post Conditions (Stacks-Specific)**  
+Users can attach assertions to transactions specifying required state changes. If conditions aren't met after execution (e.g., "exactly 500 STX must transfer"), the entire transaction reverts—protecting users from unexpected outcomes.
+
+**Mandatory Error Handling**  
+All public contract calls return response types indicating success or failure. Contracts **must** handle these responses—invalid contracts that ignore errors cannot deploy. Silent failures (common in languages like Solidity) are impossible.
+
+### Composition Over Inheritance
+
+Clarity uses traits instead of class inheritance, allowing:
+
+- **Flexible Interfaces**: Contracts implement multiple traits without complex inheritance trees
+- **Explicit Behavior**: No hidden inherited logic to debug
+- **Clearer Contract Structure**: Understand contract capabilities at a glance
+
+### Bitcoin Integration
+
+Clarity smart contracts can read Bitcoin blockchain state directly, enabling:
+
+- Bitcoin transactions as smart contract triggers
+- Built-in secp256k1 signature verification
+- Key recovery functions for Bitcoin-compatible cryptography
+
+## Updated Features
+
+### Enhanced Type System
+
+Clarity now supports more sophisticated type definitions including optional types, tuple structures, and buffer operations for handling binary data efficiently.
+
+### Improved Function Capabilities
+
+Modern Clarity includes advanced function patterns:
+
+- **Map Functions**: Process lists with built-in functional programming tools
+- **Filter Operations**: Efficiently query and filter data structures
+- **Fold Operations**: Aggregate data with customizable reduction logic
+
+### Expanded Standard Library
+
+The language now includes extensive built-in functions for:
+
+- String manipulation (ASCII and UTF-8)
+- Advanced cryptographic operations
+- Principal (address) validation and conversion
+- Block and transaction data access
+
+### Optimized Storage Patterns
+
+Updated best practices for data storage include:
+
+- **Data Maps**: Key-value storage for efficient lookups
+- **Data Variables**: Simple global state management
+- **NFT and FT Assets**: Native token primitives with automatic compliance
+
+### Developer Tooling
+
+The Clarity ecosystem has expanded with:
+
+- **Clarinet**: Local development environment with testing framework
+- **Clarity REPL**: Interactive console for rapid prototyping
+- **Static Analysis Tools**: Automated security and optimization checks
+
+## Getting Started
+
+Head to the Clarity Crash Course to build your first secure smart contract and experience these features firsthand.
+
 ---
-description: A smart contract language built to be readable and predictable.
----
 
-# Clarity
-
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/clarity-cover.png" alt=""><figcaption></figcaption></figure></div>
-
-{% hint style="info" %}
-Head to the [Clarity Crash Course](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/get-started/clarity-crash-course) to build your first Clarity smart contract.
-{% endhint %}
-
-Clarity is a **decidable** smart contract language that optimizes for predictability and security, designed for the Stacks blockchain. It has been built from the ground up to make it easier for developers to write safe, secure smart contracts. Clarity has several unique features that make it an ideal choice for writing smart contracts.
-
-The design decisions behind Clarity were based heavily on taking lessons learned in common Solidity exploits and creating a language that has been purpose-built for safety and security in mind.
-
-### What makes Clarity different
-
-The following section is an excerpt from the Clarity book, [Clarity of Mind](https://book.clarity-lang.org/ch00-00-introduction.html):
-
-The number of smart contract languages grows by the year. Choosing a first language can be challenging, especially for a beginner. The choice is largely dictated by the ecosystem you are interested in, although some languages are applicable to more than just one platform. Each language has its own upsides and downsides and it is out of the scope of this book to look at all of them. Instead, we will focus on what sets Clarity apart and why it is a prime choice if you require the utmost security and transparency.
-
-One of the core precepts of Clarity is that it is secure by design. The design process was guided by examining common pitfalls, mistakes, and vulnerabilities in the field of smart contract engineering as a whole. There are countless real world examples of where developer failure led to the loss or theft of vast amounts of tokens. To name two big ones: an issue that has become known as the Parity bug led to the irreparable loss of millions of dollars worth of Ethereum. Second, the hacking of The DAO (a "Decentralized Autonomous Organization") caused financial damage so great that the Ethereum Foundation decided to issue a contentious hard fork that undid the theft. These and many other mistakes could have been prevented in the design of the language itself.
-
-#### Clarity is interpreted, not compiled
-
-Clarity code is interpreted and committed to the chain exactly as written. Solidity and other languages are compiled to byte-code before it is submitted to the chain. The danger of compiled smart contract languages is two-fold: first, a compiler adds a layer of complexity. A bug in the compiler may lead to different byte-code than was intended and thus carries the risk of introducing a vulnerability. Second, byte-code is not human-readable, which makes it very hard to verify what the smart contract is actually doing. Ask yourself, would you sign a contract you cannot read? If your answer is no, then why should it be any different for smart contracts? With Clarity, what you see is what you get.
-
-#### Clarity is decidable
-
-A decidable language has the property that from the code itself, you can know with certainty what the program will do. This avoids issues like the halting problem. With Clarity you know for sure that given any input, the program will halt in a finite number of steps. In simple terms: it is guaranteed that program execution will end. Decidability also allows for complete static analysis of the call graph so you get an accurate picture of the exact cost before execution. There is no way for a Clarity call to "run out of gas" in the middle of the call. We explore this idea more, along with a discussion on Turing completeness, in the security deep dive on decidability.
-
-#### Clarity does not permit reentrancy
-
-Reentrancy is a situation where one smart contract calls into another, which then calls back into the first contract—the call "re-enters" the same logic. It may allow an attacker to trigger multiple token withdrawals before the contract has had a chance to update its internal balance sheet. Clarity's design considers reentrancy an anti-feature and disallows it on the language level.
-
-#### Clarity guards against overflow and underflows
-
-Overflows and underflows happen when a calculation results in a number that is either too large or too small to be stored, respectively. These events throw smart contracts into disarray and may intentionally be triggered in poorly written contracts by attackers. Usually this leads to a situation where the contract is either frozen or drained of tokens. Overflows and underflows of any kind automatically cause a transaction to be aborted in Clarity.
-
-#### Support for custom tokens is built-in
-
-Issuance of custom fungible and non-fungible tokens is a popular use-case for smart contracts. Custom token features are built into the Clarity language. Developers do not need to worry about creating an internal balance sheet, managing supply, and emitting token events. Creating custom tokens is covered in depth in later chapters.
-
-#### On Stacks, transactions are secured by post conditions
-
-In order to further safeguard user tokens, post conditions can be attached to transactions to assert the chain state has changed in a certain way once the transaction has completed. For example, a user calling into a smart contract may attach a post condition that states that after the call completes, exactly 500 STX should have been transferred from one address to another. If the post condition check fails, then the entire transaction is reverted. Since custom token support is built right into Clarity, post conditions can also be used to guard any other token in the same way.
-
-#### Returned responses cannot be left unchecked
-
-Public contract calls must return a so-called response that indicates success or failure. Any contract that calls another contract is required to properly handle the response. Clarity contracts that fail to do so are invalid and cannot be deployed on the network. Other languages like Solidity permit the use of low level calls without requiring the return value to be checked. For example, a token transfer can fail silently if the developer forgets to check the result. In Clarity it is not possible to ignore errors, although that obviously does prevent buggy error handling on behalf of the developer. Responses and error handling are covered extensively in the chapters on functions and control flow.
-
-#### Composition over inheritance
-
-Clarity adopts a composition over inheritance. It means that Clarity smart contracts do not inherit from one another like you see in languages like Solidity. Developers instead define traits which are then implemented by different smart contracts. It allows contracts to conform to different interfaces with greater flexibility. There is no need to worry about complex class trees and contracts with implicit inherited behavior.
-
-#### Access to the base chain: Bitcoin
-
-Clarity smart contracts can read the state of the Bitcoin base chain. It means you can use Bitcoin transactions as a trigger in your smart contracts! Clarity also features a number of built-in functions to verify secp256k1 signatures and recover keys.
+Clarity represents a fundamental rethinking of smart contract development—prioritizing security, transparency, and predictability over flexibility that often leads to vulnerabilities. Whether you're building DeFi protocols, NFT platforms, or Bitcoin-integrated applications, Clarity provides the safeguards needed for production-grade smart contracts.
