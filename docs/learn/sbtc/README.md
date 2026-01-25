@@ -1,83 +1,96 @@
----
-description: Design of a Trustless Two-way Peg for Bitcoin
----
-
-# sBTC
+# sBTC: Bitcoin's Gateway to Smart Contracts
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/sbtc-cover.png" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="info" %}
-For builders and developers, head to the [sBTC guides](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/more-guides/sbtc) under the Build section to start integrating sBTC into your Clarity smart contracts and front-end application.
+Developers: Jump to the [sBTC integration guides](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/more-guides/sbtc) to start building with sBTC in your Clarity smart contracts and applications.
 {% endhint %}
 
-### Introduction
+## Overview
 
-sBTC is a SIP-010 token on the Stacks blockchain that represents Bitcoin (BTC) in a 1:1 ratio. It enables Bitcoin holders to participate in DeFi applications and other smart contract functionalities while maintaining a peg to the underlying Bitcoin.
+sBTC is a wrapped Bitcoin asset on Stacks that maintains a 1:1 peg with Bitcoin. As a SIP-010 compliant token, sBTC enables Bitcoin holders to access decentralized finance and smart contract capabilities while preserving their Bitcoin exposure.
 
-#### Purpose
+### The Vision
 
-The primary purpose of sBTC is to bridge Bitcoin to DeFi via the Stacks blockchain, providing Bitcoin holders with access to the rich functionality of smart contracts without sacrificing the security and value of their BTC holdings.
-
-> _Unlocking Bitcoin to be a fully programmable, productive asset would allow Bitcoin to be the_\
-> &#xNAN;_&#x62;ackbone of DeFi and a more secure web3. The ability to move Bitcoin assets in and out of_\
-> &#xNAN;_&#x73;mart contracts freely and for these contracts to trustlessly write to the Bitcoin blockchain can_\
-> &#xNAN;_&#x75;nlock hundreds of billions of dollars of passive BTC for web3._\
-> \
+> _Making Bitcoin a fully programmable, productive asset transforms it into the foundation of DeFi and a more secure web3. Enabling seamless movement of Bitcoin in and out of smart contracts—with trustless writes to the Bitcoin blockchain—unlocks hundreds of billions in previously passive BTC for the decentralized web._
+>
 > \- sBTC: Design of a Trustless Two-way Peg for Bitcoin
 
-#### Key Benefits
+### Core Advantages
 
-1. **Bitcoin Compatibility**: Allows Bitcoin holders to participate in the Stacks ecosystem without selling their BTC.
-2. **Quick Conversions**: Facilitates rapid movement between BTC and sBTC (within 3 Bitcoin blocks for deposit, 6 for withdrawal).
-3. **Decentralized Management**: Initially utilizes a set of 15 community-chosen signers for maintaining the peg wallet.
-4. **Community Governance**: Involves the community in key decisions, such as selecting the initial signing set.
+**Native Bitcoin Access**  
+Participate in Stacks DeFi without converting or selling your BTC holdings.
 
-### Key Concepts
+**Fast Conversions**  
+Deposit sBTC within 3 Bitcoin blocks; withdraw within 6 blocks—enabling responsive trading and DeFi strategies.
 
-Understanding sBTC requires familiarity with several key concepts:
+**Decentralized Infrastructure**  
+A distributed set of 15 community-selected signers manages the peg wallet, eliminating single points of failure.
 
-**sBTC**
+**Community-Driven Governance**  
+The Stacks community participates in critical decisions including signer selection and protocol upgrades.
 
-sBTC is a [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) token on the Stacks Blockchain that can be converted back to BTC on the Bitcoin Blockchain. The key property of sBTC is its 1:1 peg to Bitcoin, meaning 1 sBTC is always equivalent to 1 BTC.
+## Core Architecture
 
-**sBTC UTXO**
+### sBTC Token
 
-The sBTC UTXO is the single unspent transaction output (UTXO) on the Bitcoin blockchain that holds the entire BTC balance pegged into sBTC. This UTXO is managed and maintained by the set of sBTC Signers.
+sBTC implements the [SIP-010 fungible token standard](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md), ensuring compatibility across Stacks wallets and DeFi protocols. The fundamental property: **1 sBTC always equals 1 BTC**.
 
-This UTXO resides in a secure multi-signature taproot address controlled by the sBTC Signers:\
+### sBTC UTXO
+
+All BTC backing sBTC is held in a single unspent transaction output on Bitcoin. This UTXO exists at a secure multi-signature taproot address controlled collectively by the sBTC Signers:
+
 [bc1prcs82tvrz70jk8u79uekwdfjhd0qhs2mva6e526arycu7fu25zsqhyztuy](https://mempool.space/address/bc1prcs82tvrz70jk8u79uekwdfjhd0qhs2mva6e526arycu7fu25zsqhyztuy)
 
-**sBTC Signer**
+This design consolidates security monitoring while maintaining transparency—anyone can verify the peg's backing on-chain.
 
-In sBTC, the sBTC Signer is a signer entity separate from the Stacks Nakamoto signer. sBTC signer responsibilities include:
+### sBTC Signers
 
-* Signing sBTC operations
-* Communicating with the sBTC contracts on the Stacks chain
-* Managing the sBTC UTXO
+sBTC Signers operate independently from Stacks' Nakamoto signers. Their responsibilities include:
 
-**sBTC Signer Set**
+* Authorizing deposit and withdrawal operations
+* Interfacing with sBTC smart contracts on Stacks
+* Securing and maintaining the Bitcoin UTXO
+* Rotating private keys to enhance security
 
-The sBTC Signer Set is the group of all sBTC signers. This set has full democratic access to the sBTC UTXO and is responsible for maintaining the security of the peg wallet. The signers also have the ability to rotate their private keys for enhanced security.
+Learn more about the current signer set at [Bitcoin L2 Labs](https://bitcoinl2labs.com/sbtc-rollout#sbtc-signers).
 
-For more info on who the sBTC Signers are, check out this section on the Bitcoin L2 Labs website [here](https://bitcoinl2labs.com/sbtc-rollout#sbtc-signers).
+### sBTC Signer Set
 
-**Emily API**
+The complete group of sBTC Signers functions as a democratic collective with shared UTXO access. This distributed model ensures:
 
-Emily is an API that helps facilitate and supervise the sBTC Bridge in addition to serving as a programmatic liaison between sBTC users and signers.
+- No single entity controls the peg
+- Signers can independently verify operations
+- Key rotation capabilities for ongoing security
+- Resilience against individual signer failures
 
-**SIP-010 Token**
+### Emily API
 
-sBTC adheres to the [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md) standard for fungible tokens on the Stacks blockchain. This ensures compatibility with wallets and applications that support the SIP-010 standard.
+Emily serves as the coordination layer between users and signers. This API:
+
+- Facilitates deposit and withdrawal requests
+- Monitors operation status
+- Provides programmatic access to bridge functionality
+- Supervises transaction flow between Bitcoin and Stacks
+
+### SIP-010 Compliance
+
+Adhering to the SIP-010 standard means sBTC works seamlessly with:
+
+- Stacks wallets supporting fungible tokens
+- DEXs and DeFi protocols on Stacks
+- Block explorers and analytics tools
+- Standard token interfaces and conventions
 
 <figure><img src="../.gitbook/assets/Group 316124848.png" alt=""><figcaption></figcaption></figure>
 
-Understanding these concepts is crucial for grasping the overall architecture and functionality of sBTC. In the following sections, we'll explore how these concepts come together to create sBTC.
+These components work together to create a trustless bridge between Bitcoin's security and Stacks' programmability, enabling a new class of Bitcoin-native applications.
 
-***
+---
 
-#### Additional Resources
+## Additional Resources
 
-* \[[sBTC Whitepaper](https://stacks-network.github.io/stacks/sbtc.pdf)] The official sBTC whitepaper
-* \[[Stacks Foundation](https://stacks.org/sbtc-on-mainnet)] Official sBTC launch announcement (December 2024)
-* \[[Bitcoin Writes](https://www.bitcoinwrites.com/)] Weekly sBTC Updates (last update: August 2024)
-* \[[Hiro Blog](https://www.hiro.so/blog/who-are-the-sbtc-signers-breaking-down-sip-028)] Who Are the sBTC Signers: Breaking Down SIP-028
+* [sBTC Whitepaper](https://stacks-network.github.io/stacks/sbtc.pdf) - Technical design specification
+* [Stacks Foundation](https://stacks.org/sbtc-on-mainnet) - Official mainnet launch announcement (December 2024)
+* [Bitcoin Writes](https://www.bitcoinwrites.com/) - Weekly sBTC development updates (archived through August 2024)
+* [Hiro Blog](https://www.hiro.so/blog/who-are-the-sbtc-signers-breaking-down-sip-028) - Deep dive on SIP-028 and signer selection
