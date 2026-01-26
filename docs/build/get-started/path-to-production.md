@@ -100,6 +100,10 @@ If your contract relies heavily on already deployed external contracts or other 
 ### Crowdsource community testing/review
 
 To effectively crowdsource community beta testing for your application in Stacks, engage with various online platforms where Stacks developers and users congregate. Utilize places such as the Stacks community Forum or Discord channels to reach out to potential testers. Leverage social media platforms and GitHub repositories to announce the beta testing phase, inviting users to contribute feedback. Offer incentives such as exclusive early access features or branded merchandise to motivate participation and gather diverse insights that can enhance the robustness of your app.
+
+* [**Stacks Discord**](https://discord.gg/stacks): Connect with other developers and our team
+* [**Stacks Forum**](https://forum.stacks.org/): Ask questions and share projects
+* [**Stacks Twitter**](https://x.com/StacksDevs)**:** Follow us on Twitter and ask us questions there
 {% endstep %}
 
 {% step %}
@@ -107,9 +111,7 @@ To effectively crowdsource community beta testing for your application in Stacks
 
 Paying for formal smart contract auditors is an essential investment for ensuring the security and reliability of your blockchain application. By engaging reputable audit firms, you can gain a comprehensive understanding of potential risks and strategies to mitigate them, thus enhancing the trustworthiness of your application.
 
-* [**Clarity Alliance**](https://x.com/ClarAllianceSec)
-* [**SetDev**](https://x.com/setdevbtc)
-* [**Immunefi**](https://immunefi.com/)
+* [**List of professional auditors**](https://www.stacks.co/explore/ecosystem?category=Auditors#tools)
 {% endstep %}
 {% endstepper %}
 

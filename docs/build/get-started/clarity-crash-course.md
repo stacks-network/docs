@@ -298,8 +298,7 @@ Smart contracts are immutable once deployed. Bugs are permanent. Test them thoro
 
 Auditors provide an independent, expert review of your smart contracts to identify vulnerabilities, logic flaws, edge cases, or design risks that might be missed during development. Here are a few Clarity smart contract auditors that are part of the Stacks community.
 
-* [Clarity Alliance](https://x.com/ClarAllianceSec)
-* [SetDev](https://x.com/setdevbtc)
+* [**List of professional auditors**](https://www.stacks.co/explore/ecosystem?category=Auditors#tools)
 
 ***
 

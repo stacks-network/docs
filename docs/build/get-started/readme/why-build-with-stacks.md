@@ -1,5 +1,6 @@
 ---
 description: Diving into the question of why we're all here
+hidden: true
 ---
 
 # Why Build with Stacks
