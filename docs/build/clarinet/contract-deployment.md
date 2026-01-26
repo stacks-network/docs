@@ -2,12 +2,20 @@
 
 Clarinet provides deployment tooling that helps you move from local development to production networks. Whether you're testing on devnet, staging on testnet, or launching on mainnet, Clarinet streamlines the process.
 
+## Important organizational changes
+
+As of November 2025, the Clarinet repository now belongs to the **stx-labs** organization. Key migration notes:
+
+* NPM packages are now published under the **@stacks** organization
+* VSCode extension is now published under the **Stacks Labs** organization
+* Check the [official announcement](https://github.com/stx-labs/clarinet) for migration guidance
+
 ## Generating deployment plans
 
-Deployment plans are YAML files that describe how contracts are published or called. Be sure to have a valid 24 word mnemonic seed phrase specified in the target network's `.toml` file in `settings/` and then generate a plan for any network:
+Deployment plans are YAML files that describe how contracts are published or called. Be sure to have a valid 24-word mnemonic seed phrase specified in the target network's `.toml` file in `settings/` and then generate a plan for any network:
 
 ```bash
-$ clarinet deployments generate --testnet --medium-cost
+$ clarinet deployments generate --testnet
 Analyzing contracts...
 Calculating deployment costs...
 Generating deployment plan
@@ -92,7 +100,7 @@ requirements = [
 ]
 ```
 
-During deployment Clarinet downloads the contract, remaps the principal for devnet, and ensures the requirement is available before your contracts deploy.
+During deployment, Clarinet downloads the contract, remaps the principal for devnet, and ensures the requirement is available before your contracts deploy.
 
 ## Deploying to different networks
 
@@ -117,21 +125,31 @@ See [local development](local-blockchain-development.md) for more devnet configu
 {% hint style="info" %}
 Prerequisites:
 
-* Request testnet STX from the faucet
+* Request testnet STX from the [Stacks Explorer faucet](https://explorer.hiro.so/sandbox/faucet?chain=testnet)
 * Configure your account in `settings/Testnet.toml`
 * Validate contracts with `clarinet check`
 {% endhint %}
 
-Generate a deployment plan with cost estimation:
+Generate a deployment plan:
 
 ```bash
-clarinet deployments generate --testnet --medium-cost
+clarinet deployments generate --testnet
 ```
 
 Deploy to testnet:
 
 ```bash
 clarinet deployments apply --testnet
+```
+
+Expected output:
+
+```bash
+Applying deployment to testnet
+✔ Broadcasting transaction for token.clar
+Transaction ID: 0x3d4f5...
+Contract: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.token
+✔ All contracts deployed successfully
 ```
 
 ### Mainnet
@@ -165,34 +183,13 @@ Prefer a hardware wallet for deployment
 Create a mainnet plan:
 
 ```bash
-clarinet deployments generate --mainnet --high-cost
+clarinet deployments generate --mainnet
 ```
 
 Deploy with confirmation:
 
 ```bash
 clarinet deployments apply --mainnet
-```
-
-## Cost estimation and optimization
-
-Choose the right fee level for your deployment:
-
-```bash
-clarinet deployments generate --testnet --manual-cost
-```
-
-Fee options:
-
-* `--low-cost` – minimize fees, slower confirmation
-* `--medium-cost` – balanced approach
-* `--high-cost` – priority inclusion
-* `--manual-cost` – interactive selection
-
-Analyze costs before deploying:
-
-```bash
-clarinet deployments generate --testnet --medium-cost
 ```
 
 ## Advanced deployment configurations
@@ -300,9 +297,9 @@ Example contract initialization batch:
 
 ### Encrypted mnemonics
 
-`clarinet 3.11.0` contains support for encrypted mnemonics. This feature gives users the option to encrypt the mnemonic seed phrase in their deployment files, so if a user's machine is compromised by a filesystem reading vulnerability, the seed phrase is not leaked to the attacker.
+Clarinet 3.11.0 introduced support for encrypted mnemonics. This feature allows you to encrypt the mnemonic seed phrase in deployment files, protecting it from being leaked if your machine is compromised by a filesystem reading vulnerability.
 
-To use this feature, a user must first run `clarinet deployments encrypt`, which will prompt the user for the seed phrase and a password, then print the encrypted mnemonic to the console. The user can then put the resulting ciphertext into their deployment config file using the key `encrypted_mnemonic`. The next time the user runs `clarinet deployments apply`, they will be prompted for the password, and the mnemonic will be decrypted for use in that session.
+To use this feature, run `clarinet deployments encrypt`, which will prompt you for the seed phrase and a password, then print the encrypted mnemonic to the console. You can then put the resulting ciphertext into your deployment config file using the key `encrypted_mnemonic`. The next time you run `clarinet deployments apply`, you'll be prompted for the password, and the mnemonic will be decrypted for use in that session.
 
 For example, if your `settings/Mainnet.toml` file looks like this:
 
@@ -350,36 +347,68 @@ Enter password to decrypt mnemonic for account deployer:
 ```
 {% endcode %}
 
+## Environment variables
+
+Clarinet supports environment variables for configuration. All environment variables are prefixed with `CLARINET_`:
+
+```bash
+export CLARINET_MODE=development
+clarinet deployments apply --testnet
+```
+
+## Checking deployment formatting
+
+Validate that deployment plans are properly formatted:
+
+```bash
+clarinet deployments check
+```
+
+Use in CI/CD pipelines to ensure deployment plans meet standards:
+
+```yaml
+jobs:
+  sanity-checks:
+    runs-on: ubuntu-latest
+    container: ghcr.io/stx-labs/clarinet:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Clarity contracts
+        run: clarinet check --use-on-disk-deployment-plan
+      - name: Check Clarity contracts format
+        run: clarinet fmt --check
+```
+
 ## Common issues
 
 ### Insufficient STX balance
 
-**Error**: “Insufficient STX balance for deployment”
+**Error**: "Insufficient STX balance for deployment"
 
 Solutions:
 
 {% stepper %}
 {% step %}
-Request testnet STX from the faucet
+Request testnet STX from the [faucet](https://explorer.hiro.so/sandbox/faucet?chain=testnet)
 {% endstep %}
 
 {% step %}
-Reduce the fee rate with `--low-cost`
-{% endstep %}
-
-{% step %}
-Check your balance:
+Check your balance in the console:
 
 ```bash
 clarinet console --testnet
 stx-account 'ST2CY5V39NHDPWSXMW9QDT3HC3GD6Q6XX4CFRK9AG
 ```
 {% endstep %}
+
+{% step %}
+Ensure sufficient STX in your deployment account
+{% endstep %}
 {% endstepper %}
 
 ### Contract already exists
 
-**Error**: “Contract `token` already deployed at this address”
+**Error**: "Contract `token` already deployed at this address"
 
 Solutions:
 
@@ -399,19 +428,20 @@ On testnet, switch to a fresh account
 
 ### Network connection failures
 
-**Error**: “Failed to connect to testnet node”
+**Error**: "Failed to connect to testnet node"
 
 Check your network settings:
 
 ```toml
 [network]
 name = "testnet"
-node_rpc_address = "https://stacks-node-api.testnet.stacks.co"
+node_rpc_address = "https://api.testnet.hiro.so"
 ```
 
 Alternative endpoints:
 
-* Hiro: `https://api.testnet.hiro.so`
+* Hiro: `https://api.hiro.so` (mainnet)
+* Hiro testnet: `https://api.testnet.hiro.so`
 * Your own node
 
 Debug the connection:
@@ -435,3 +465,10 @@ clarinet deployments check
 clarinet deployments generate --testnet
 ls contracts/
 ```
+
+## Additional resources
+
+* **Stacks Documentation**: Visit [docs.stacks.co](https://docs.stacks.co) for comprehensive guides
+* **Clarinet Repository**: Check [stx-labs/clarinet](https://github.com/stx-labs/clarinet) for latest releases
+* **Discord Support**: Join the #clarinet channel on [Discord](https://stacks.chat) under Developer Tools
+* **Clarity Book**: Learn more about Clarity at the [Clarity Book](https://book.clarity-lang.org)
