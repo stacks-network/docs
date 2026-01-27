@@ -342,16 +342,6 @@ The Sandbox in the [Stacks Explorer](https://explorer.stacks.co/) is an interact
 
 </details>
 
-<details>
-
-<summary>Hiro Platform</summary>
-
-The [Hiro Platform](https://platform.hiro.so/) is a hosted developer experience that enables you to create and deploy Clarity smart contracts directly from a web browser.
-
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/platform-deployment.jpg" alt=""><figcaption></figcaption></figure></div>
-
-</details>
-
 ***
 
 ### Smart Contract Monitoring & Alerts

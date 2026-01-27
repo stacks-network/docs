@@ -486,7 +486,3 @@ clarinet deployments apply --devnet
 </details>
 
 ***
-
-### Additional Resources
-
-* \[[Hiro Blog](https://www.hiro.so/blog/5-ways-to-interact-with-devnet-in-the-hiro-platform)] 5 Ways to Interact With Devnet in the Hiro Platform&#x20;

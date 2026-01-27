@@ -176,7 +176,7 @@ You can also add your own unstandardized methods to your wallet. However, the mi
 
 ### Stacks Wallet Template
 
-**Build your own Stacks wallet with the Wallet Template in the Hiro Platform**
+**Build your own Stacks wallet with the Wallet Template**
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/wallet-extension-template.png" alt=""><figcaption></figcaption></figure></div>
 
@@ -184,13 +184,12 @@ This template is a Chrome extension that comes with basic wallet functionalities
 
 It’s important to have an ecosystem that boasts a plethora of diverse wallet providers for different use cases, and learning how to build a wallet is a great entry point to Web3 and the Stacks ecosystem. Check out this [article](https://www.hiro.so/blog/an-intro-to-web3-wallets-for-web3-founders) to learn more about the importance of web3 wallets for web3 founders.
 
-Head to the [Hiro Platform](https://platform.hiro.so/) to start building with this template.
+Check out the wallet template [here](https://github.com/hirosystems/platform-template-stacks-wallet).
 
 ***
 
 ### Additional Resources
 
-* \[[Hiro Platform](https://platform.hiro.so/templates/wallet-extension)] Stacks Wallet Extension Template
 * \[[Hiro YT](https://www.youtube.com/watch?v=PdluvfFPWoU)] Build Your Own Bitcoin L2 Wallet Browser Extension
 * \[[Github repo](https://github.com/hirosystems/platform-template-stacks-wallet)] Open-source repo of the Stacks wallet extension template
 * \[[WBIP](https://wbips.netlify.app/)] Stacks Wallet BIPs

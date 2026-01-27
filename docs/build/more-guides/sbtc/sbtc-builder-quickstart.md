@@ -25,46 +25,6 @@ In order to get the most from this quickstart, you should familiarize yourself w
 * [Clarinet Docs](https://docs.hiro.so/tools/clarinet)
 * [Stacks.js Docs](https://docs.hiro.so/reference/stacks.js)
 
-Choose your preferred development environment:
-
-#### Hiro Platform (Recommended)
-
-The fastest way to start building with sBTC is using the Hiro Platform's hosted devnet. The Platform integrates with your GitHub account. You can either import an existing project from GitHub or start with a Platform template and have it synced with your GitHub account.
-
-After you create the project in the Platform, you can clone it locally and work with the Platform's cloud devnet by connecting your API key as described in the template's README files. This will allow you to work on your code locally but let Platform handle the complexities of actually running the devnet.
-
-{% stepper %}
-{% step %}
-#### Create an account
-
-Create an account at:\
-https://platform.hiro.so
-{% endstep %}
-
-{% step %}
-#### Create or import a project
-
-* Select a template or import your own project from GitHub. There are several templates available to use as a starting point. Some have only smart contracts and some are full-stack dapp templates. Starting with one of these ensures you are building with best practices.
-* Navigate to your project dashboard
-{% endstep %}
-
-{% step %}
-#### Start devnet
-
-* Click the "Devnet" tab
-* Click "Start Devnet"
-* Wait for status to show "Active"
-{% endstep %}
-
-{% step %}
-#### Connect your wallet
-
-* Your devnet wallets are automatically funded with STX and sBTC
-* Use the provided wallet addresses within the templates
-* The platform templates are automatically connected to Devnet, and there are instructions in the READMEs of the templates for how to connect your frontend to your Devnet instance
-{% endstep %}
-{% endstepper %}
-
 #### Local with Clarinet
 
 If you would prefer to have your devnet running locally instead of in the Platform cloud, you can run one yourself.

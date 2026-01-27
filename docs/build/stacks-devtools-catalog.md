@@ -106,7 +106,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 ### Monitoring & Analytics
 
 * [**Explorer**](https://github.com/stx-labs/explorer) **\[StacksLabs] -** Explore transactions and accounts on the Stacks blockchain. Clone any contract and experiment in your browser with the Explorer sandbox.
-* [**Platform**](https://www.hiro.so/platform) **\[Hiro]** – Manage API keys, Chainhooks, and analyze onchain data streams in one command center. Also houses ready-to-use starter templates for different use case applications.
+* [**Platform**](https://www.hiro.so/platform) **\[Hiro]** – Manage API keys, Chainhooks, and analyze onchain data streams in one command center.
 
 <details>
 

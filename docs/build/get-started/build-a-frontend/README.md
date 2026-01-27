@@ -28,6 +28,5 @@ Access the latest Stacks brand design resources at [stacks.co/brand](https://sta
 
 ### Additional Resources
 
-* \[[Hiro Blog](https://www.hiro.so/blog/rich-app-templates-in-the-hiro-platform)] Rich App Templates in the Hiro Platform: Accelerating Web3 Development
 * \[[Hiro Blog](https://www.hiro.so/blog/lean-devops-strategies-for-your-web3-project)] Lean DevOps Strategies for Your Web3 Project
 * \[[Hiro Blog](https://www.hiro.so/blog/introducing-stacks-js-starters-launch-a-frontend-in-just-a-few-clicks)] Introducing Stacks.js Starters: Launch a Frontend in Just a Few Clicks

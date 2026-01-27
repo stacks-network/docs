@@ -550,37 +550,6 @@ A Clarity implementation for parsing Bitcoin Runes protocol data. Check out the 
 ;; --snip--
 </code></pre>
 
-#### Bitcoin Transaction Enabled NFT
-
-This contract example implements a basic NFT collection that is mintable only upon a user's bitcoin transaction. You can find this template available in the [Hiro Platform](https://platform.hiro.so/).
-
-<pre class="language-clarity" data-expandable="true"><code class="lang-clarity">;; --snip--
-
-;; Mint a new NFT if a specific bitcoin transaction has been mined.
-(define-public (mint (recipient principal) (height uint) (tx (buff 1024)) (header (buff 80)) (proof { tx-index: uint, hashes: (list 14 (buff 32)), tree-depth: uint}))
-    (let
-        (
-            ;; Create the new token ID by incrementing the last minted ID.
-            (token-id (+ (var-get last-token-id) u1))
-            ;; Calls external contract function to confirm mined status on the supplied bitcoin transaction data. Will return (ok txid)
-<strong>            (tx-was-mined (contract-call? 'SP2PABAF9FTAJYNFZH93XENAJ8FVY99RRM50D2JG9.clarity-bitcoin-lib-v7 was-tx-mined-compact height tx header proof))
-</strong>        )
-        ;; Only the contract owner can mint.
-        (asserts! (is-eq tx-sender contract-owner) err-owner-only)
-        ;; Confirms if supplied bitcoin transaction data has been mined or not.
-        (asserts! (is-ok tx-was-mined) err-tx-not-mined)
-        ;; Mint the NFT and send it to the given recipient.
-        (try! (nft-mint? Your-NFT-Name token-id recipient))
-        ;; Update the last minted token ID.
-        (var-set last-token-id token-id)
-        ;; Return a success status and the newly minted NFT ID.
-        (ok token-id)
-    )
-)
-
-;; --snip--
-</code></pre>
-
 ***
 
 ## Additional Resources

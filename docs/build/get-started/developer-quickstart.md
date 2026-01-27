@@ -844,7 +844,7 @@ Now that you have the basics down, here are some ways to continue your Stacks de
 **Development Tools**
 
 * [**Clarinet**](https://github.com/stx-labs/clarinet): Local development environment for Clarity
-* [**Hiro Platform**](https://platform.hiro.so/): Hosted development environment
+* [**Hiro Platform**](https://platform.hiro.so/): API management
 * [**Stacks Explorer**](https://explorer.stacks.co/): View transactions and contracts
 
 **Community Resources**
