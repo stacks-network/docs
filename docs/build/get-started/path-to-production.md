@@ -76,6 +76,8 @@ While contracts are immutable once deployed, you can deploy new versions of your
 ### Private Key Management
 
 You’d be surprised how many hacks stem from simple security breaches. Make sure you securely manage your private keys related to your project. That includes things like always using hardware wallets, regularly rotate keys, enforce access controls for who on your team can use keys, and consider implementing a multi-sig for your treasury or other sensitive operations.
+
+* [**Encrypted Mnemonics**](../clarinet/contract-deployment.md#encrypted-mnemonics): Learn how you can safely encrypt private keys when deploying locally.
 {% endstep %}
 
 {% step %}
