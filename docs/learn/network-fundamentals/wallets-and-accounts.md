@@ -23,6 +23,8 @@ Wallets in Stacks consists of accounts, which uses an accounts-based model, rath
 
 #### Components of a Stacks account
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacks-address-generation-flowchart.png" alt=""><figcaption></figcaption></figure></div>
+
 * **Private Key** - The private key is an alphanumeric code that is paired to a single public key on a 1:1 basis. Never share your private key with anyone. A private key is how you prove ownership of a public key and how you can spend assets held by that particular key-pair.\
   \
   Example private key in Stacks (32 bytes appended with a 0x01 byte):\
