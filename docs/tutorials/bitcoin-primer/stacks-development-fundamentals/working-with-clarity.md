@@ -129,3 +129,17 @@ Add a read-only function to retrieve donation messages:
 This returns `(ok (some "message"))` if a message exists, or `(ok none)` if not.
 {% endstep %}
 {% endstepper %}
+
+## Next Steps
+
+Now that you've learned to work with Clarity functions, optional values, and maps, you can:
+
+1. **Learn Testing**: Write comprehensive tests for your contracts in the [Testing Clarity Contracts](./testing-clarity-contracts.md) guide
+2. **Deploy Your Contract**: Follow the [Deploying Stacks Apps](./deploying-stacks-apps.md) guide to get your contract on testnet or mainnet
+3. **Build the Frontend**: Connect your contract to a web application in [Frontend with Stacks.js](./frontend-with-stacks.js.md)
+
+## Additional Resources
+
+- [Clarity Language Reference](../../../reference/clarity/) - Complete reference for all Clarity functions and keywords
+- [Clarity Best Practices](../../../build/guides/) - Learn security patterns and optimization techniques
+- [Example Contracts](../../../build/get-started/) - Explore more complete contract examples
