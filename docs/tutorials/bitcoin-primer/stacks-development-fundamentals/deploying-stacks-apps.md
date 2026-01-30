@@ -2,11 +2,37 @@
 
 Finally, we need to deploy our new fundraising dapp.
 
-We won't cover deploying the frontend in this guide, as that is up to the user. Vercel is a solid option for Next apps.
+## Deploying the Frontend
 
-Just make sure you have appropriately handled your environment variables. You'll want to make sure that you set up your environment variables in your Vercel deployments so they use the appropriate network.
+We won't cover deploying the frontend in detail in this guide, as that is up to the user and depends on your chosen framework. However, here are some recommended options:
 
-You can create multiple environments in Vercel and set these to correspond to different branches of your repo, so you can have a dev branch the connects to testnet and a production branch that connects to mainnet.
+- **Vercel** (recommended for Next.js apps) - Easy deployment with GitHub integration
+- **Netlify** - Great for static sites and modern web apps
+- **Cloudflare Pages** - Fast global CDN with zero configuration
+
+### Environment Variables Best Practices
+
+Make sure you have appropriately handled your environment variables. You'll want to ensure your deployments use the appropriate Stacks network.
+
+You can create multiple environments and set these to correspond to different branches of your repo:
+
+| Environment | Branch | Network | Purpose |
+|-------------|--------|---------|---------|
+| Development | `dev` | Testnet | Testing new features |
+| Staging | `staging` | Testnet | Pre-production validation |
+| Production | `main` | Mainnet | Live application |
+
+**Example environment variables:**
+```bash
+# Development (.env.local)
+NEXT_PUBLIC_NETWORK=testnet
+NEXT_PUBLIC_API_URL=https://api.testnet.hiro.so
+
+# Production (.env.production)
+NEXT_PUBLIC_NETWORK=mainnet
+NEXT_PUBLIC_API_URL=https://api.hiro.so
+```
+
 
 ### Deploying your contracts
 
