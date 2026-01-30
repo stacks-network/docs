@@ -1,5 +1,18 @@
 # Testing Clarity Contracts
 
+## Prerequisites
+
+Before starting this tutorial, you should have:
+
+- ✅ Basic understanding of TypeScript/JavaScript
+- ✅ Clarinet installed and configured
+- ✅ Completed the [Working with Clarity](./working-with-clarity.md) tutorial
+- ✅ A Stacks project set up with Clarinet
+
+If you haven't set up Clarinet yet, see the [Clarinet guides](../../../build/clarinet/) in the Build section.
+
+## Overview
+
 Now we need to modify our tests to make sure we handled this new message functionality.
 
 There are two sections of the docs to check to understand how to write Clarity unit tests.
