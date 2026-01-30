@@ -4,9 +4,9 @@ Now we need to modify our tests to make sure we handled this new message functio
 
 There are two sections of the docs to check to understand how to write Clarity unit tests.
 
-The first is the series of [Clarinet JS SDK guides](https://docs.stacks.co/clarinet-js-sdk/overview) in the Build section. These will show you how to work with the SDK to write your tests.
+The first is the series of Clarinet JS SDK guides in the Build section. These will show you how to work with the SDK to write your tests.
 
-The second is the [Clarinet JS SDK reference](https://docs.stacks.co/reference/clarinet-js-sdk/sdk-reference) section. This will show you all of the available functions you can use to write your tests.
+The second is the Clarinet JS SDK reference section. This will show you all of the available functions you can use to write your tests.
 
 Let's make a few modifications to our test file.
 
