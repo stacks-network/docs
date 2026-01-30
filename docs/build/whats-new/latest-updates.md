@@ -4,9 +4,27 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### Start Cookin' with the Cookbook
+
+_January 30, 2026_
+
+The [Cookbook](https://app.gitbook.com/s/uholC0CdufHxYs050O3V/) contains detailed coding snippets known as recipes. Recipes are focused and reusable. They are designed to be referenced, copied, and adapted.
+
+This section provides focused, reusable Clarity and Stacks.js code snippets that solve common problems or demonstrate specific patterns—designed to be referenced, copied, and adapted rather than read end-to-end.
+
+***
+
+### New 'Path To Production' Guide
+
+_January 26, 2026_
+
+Are you a new developer looking for security resources and best practices for when you're ready for testing or deploying? This page provides an outline of checklist items that you can use to further battle-test your contracts. Head to the [**Path To Production**](../get-started/path-to-production.md) guide to see what steps you can take to harden your project before mainnet production.
+
+***
+
 ### Catch Dead Code Early with Clarity Linting
 
-_Janurary 14, 2026_
+_January 14, 2026_
 
 The latest Clarinet [v3.13.0](https://github.com/stx-labs/clarinet/releases/tag/v3.13.0) release includes a built-in Clarity linter to `clarinet check`, enabling dead code analysis and no-op detection, with configurable lint levels and inline overrides. The initial release focuses on identifying unused code and expressions that have no effect on execution. Lint behavior can be customized globally or per rule via `Clarinet.toml`.
 
