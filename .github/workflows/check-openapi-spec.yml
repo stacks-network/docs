@@ -1,0 +1,244 @@
+name: Check Stacks Node RPC OpenAPI Spec Updates
+
+on:
+  schedule:
+    - cron: '0 0 */2 * *'  # Every 2 days at midnight UTC
+  workflow_dispatch:  # Manual trigger for testing
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write  # Allow creating issues
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      # Restore the previously cached spec (if exists)
+      - name: Restore cached OpenAPI spec
+        id: cache-restore
+        uses: actions/cache/restore@v3
+        with:
+          path: openapi-previous.yaml
+          key: openapi-spec-cache
+      
+      # Download the latest spec with error handling
+      - name: Download latest OpenAPI spec
+        id: download
+        run: |
+          echo "🔄 Downloading OpenAPI spec..."
+          
+          HTTP_CODE=$(curl -w "%{http_code}" -o openapi-new.yaml -s \
+            https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml)
+          
+          if [ "$HTTP_CODE" -ne 200 ]; then
+            echo "❌ Failed to download OpenAPI spec. HTTP status: $HTTP_CODE"
+            echo "error=true" >> $GITHUB_OUTPUT
+            echo "error_message=Failed to download OpenAPI spec (HTTP $HTTP_CODE)" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+          
+          # Verify the file is valid YAML
+          if ! python3 -c "import yaml; yaml.safe_load(open('openapi-new.yaml'))" 2>/dev/null; then
+            echo "❌ Downloaded file is not valid YAML"
+            echo "error=true" >> $GITHUB_OUTPUT
+            echo "error_message=Downloaded file is not valid YAML" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+          
+          echo "✅ Successfully downloaded valid OpenAPI spec"
+          echo "error=false" >> $GITHUB_OUTPUT
+      
+      # Check if it changed
+      - name: Check for changes
+        if: steps.download.outputs.error != 'true'
+        id: check
+        run: |
+          if [ -f openapi-previous.yaml ]; then
+            echo "📦 Found cached previous spec"
+            if ! diff -q openapi-new.yaml openapi-previous.yaml > /dev/null; then
+              echo "changed=true" >> $GITHUB_OUTPUT
+              echo "✅ Spec has changed!"
+            else
+              echo "changed=false" >> $GITHUB_OUTPUT
+              echo "ℹ️ No changes detected"
+            fi
+          else
+            echo "⚠️ No previous spec found (first run or cache expired)"
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "first_run=true" >> $GITHUB_OUTPUT
+            echo "Treating as changed to establish baseline"
+          fi
+      
+      # Get upstream commit information
+      - name: Get upstream commits
+        if: steps.check.outputs.changed == 'true' && steps.download.outputs.error != 'true'
+        id: commits
+        continue-on-error: true  # Don't fail workflow if this step fails
+        run: |
+          echo "🔍 Fetching upstream commits..."
+          
+          # Get the 5 most recent commits affecting the OpenAPI file
+          COMMITS_JSON=$(curl -s "https://api.github.com/repos/stacks-network/stacks-core/commits?path=docs/rpc/openapi.yaml&per_page=5")
+          
+          # Check if API call was successful
+          if echo "$COMMITS_JSON" | jq -e '. | length > 0' >/dev/null 2>&1; then
+            # Extract commit info and format as markdown
+            echo "### Recent Commits Affecting OpenAPI Spec" > commits.md
+            echo "" >> commits.md
+            
+            echo "$COMMITS_JSON" | jq -r '.[] | 
+              "- **[\(.commit.message | split("\n")[0])](\(.html_url))**\n" +
+              "  - Author: \(.commit.author.name)\n" +
+              "  - Date: \(.commit.author.date[:10])\n" +
+              "  - SHA: `\(.sha[:7])`\n"
+            ' >> commits.md
+            
+            # Get the most recent commit SHA for reference
+            LATEST_SHA=$(echo "$COMMITS_JSON" | jq -r '.[0].sha[:7]')
+            echo "latest_sha=$LATEST_SHA" >> $GITHUB_OUTPUT
+            
+            # Get the commit message of the most recent change
+            LATEST_MESSAGE=$(echo "$COMMITS_JSON" | jq -r '.[0].commit.message' | head -n 1)
+            echo "latest_message=$LATEST_MESSAGE" >> $GITHUB_OUTPUT
+            
+            echo "✅ Successfully fetched commit information"
+          else
+            echo "⚠️ Could not fetch commit information (API may be rate limited)"
+            echo "No commit information available" > commits.md
+            echo "latest_sha=unknown" >> $GITHUB_OUTPUT
+            echo "latest_message=Unknown" >> $GITHUB_OUTPUT
+          fi
+      
+      # Report error via GitHub Issue if download failed
+      - name: Create error issue
+        if: steps.download.outputs.error == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '❌ OpenAPI Spec Check Failed',
+              body: `Failed to check the OpenAPI spec.
+              
+              **Error:** ${{ steps.download.outputs.error_message }}
+              
+              **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+              
+              **Source URL:** https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml
+              
+              Please check:
+              - Is the upstream repository accessible?
+              - Is the file path correct?
+              - Are there any network issues?
+              
+              The workflow will retry on the next scheduled run.`,
+              labels: ['openapi-update', 'automation', 'error']
+            });
+      
+      # Alert via GitHub Issue with commit info
+      - name: Create GitHub Issue alert
+        if: steps.check.outputs.changed == 'true' && steps.download.outputs.error != 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            let commitInfo = '';
+            let isFirstRun = '${{ steps.check.outputs.first_run }}' === 'true';
+            
+            // Read commit information (may not exist if step failed)
+            if (fs.existsSync('commits.md')) {
+              commitInfo = fs.readFileSync('commits.md', 'utf8');
+            } else {
+              commitInfo = '_Commit information unavailable_';
+            }
+            
+            const latestSha = '${{ steps.commits.outputs.latest_sha }}' || 'unknown';
+            const latestMessage = '${{ steps.commits.outputs.latest_message }}' || 'Unknown';
+            
+            const firstRunNote = isFirstRun ? '\n\n> **Note:** This is the first run. No previous version to compare against.\n' : '';
+            
+            const body = `The upstream OpenAPI spec has been updated.
+            
+            **Source:** https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml
+            
+            **Latest Commit:** \`${latestSha}\` - ${latestMessage}
+            
+            **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            ${firstRunNote}
+            ---
+            
+            ${commitInfo}
+            
+            ---
+            
+            ### Next Steps:
+            1. Download the updated spec from the [workflow artifacts](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            2. Review the [commit history](https://github.com/stacks-network/stacks-core/commits/master/docs/rpc/openapi.yaml) for context
+            3. Run dereferencing process (see [DEREFERENCING_STEPS.md](../blob/main/DEREFERENCING_STEPS.md))
+            4. Fix circular references if needed
+            5. Update GitBook documentation
+            
+            ### Quick Commands:
+            \`\`\`bash
+            # Download and dereference
+            npx @redocly/cli bundle https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml -o openapi-dereferenced.yaml --dereferenced
+            
+            # Search for circular references
+            grep -n "\\*ref_0" openapi-dereferenced.yaml
+            
+            # View specific commit (if available)
+            git show ${latestSha}
+            \`\`\``;
+            
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 OpenAPI Spec Updated - ' + latestMessage,
+              body: body,
+              labels: ['openapi-update', 'automation']
+            });
+      
+      # Save the new spec to cache for next run
+      - name: Save new spec to cache
+        if: steps.check.outputs.changed == 'true' && steps.download.outputs.error != 'true'
+        uses: actions/cache/save@v3
+        with:
+          path: openapi-new.yaml
+          key: openapi-spec-cache
+      
+      # Upload artifacts for manual download
+      - name: Upload spec as artifacts
+        if: steps.check.outputs.changed == 'true' && steps.download.outputs.error != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: openapi-spec-${{ github.run_number }}
+          path: |
+            openapi-new.yaml
+            openapi-previous.yaml
+            commits.md
+          retention-days: 30
+      
+      # Final status summary
+      - name: Workflow summary
+        if: always()
+        run: |
+          echo "## Workflow Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.download.outputs.error }}" == "true" ]; then
+            echo "❌ **Status:** Failed to download OpenAPI spec" >> $GITHUB_STEP_SUMMARY
+            echo "- Error: ${{ steps.download.outputs.error_message }}" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.check.outputs.changed }}" == "true" ]; then
+            echo "✅ **Status:** OpenAPI spec changed" >> $GITHUB_STEP_SUMMARY
+            echo "- Issue created with details" >> $GITHUB_STEP_SUMMARY
+            echo "- Artifacts uploaded" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ **Status:** No changes detected" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Next check:** In 2 days" >> $GITHUB_STEP_SUMMARY

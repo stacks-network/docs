@@ -22,6 +22,7 @@ Below are the current main Spaces that make up the docs:
 - **Operate**: Setup and configuration guides on running Stacks nodes, miners, and signers.
 - **Reference**: Clarity language details, protocol specs, SDK & APIs definitions, and other tooling references.
 - **Tutorials**: End-to-end learning walkthroughs on building complete applications with Stacks. 
+- **Cookbook**: Collection of reusable Clarity and Stacks.js code snippets that solve common problems.
 
 Besides the actual content, each Space consists of:
 
@@ -32,3 +33,7 @@ Besides the actual content, each Space consists of:
 What kinds of changes are we looking for?
 
 If you see a typo, a missing guide or tutorial, an unclear explanation, or really anything else you think could improve the quality of the documentation, please feel free to open an issue or create a pull request.
+
+Curate contributions that **adds new value** to the docs. 
+
+We will not accept contributions that are deemed as redundant, such as rewording of existing content. There is no need to run our docs through an LLM for the purpose of rearranging or reformatting the content if the general substance of the what the content is trying to convey is the same.
