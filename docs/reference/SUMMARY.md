@@ -23,11 +23,6 @@
 * [Functions](clarity/functions.md)
 * [Keywords](clarity/keywords.md)
 * [Types](clarity/types.md)
-* [Example Contracts](clarity/example-contracts/README.md)
-  * [multi send](clarity/example-contracts/multi-send.md)
-  * [audited starter contracts](clarity/example-contracts/audited-starter-contracts.md)
-  * [stacking](clarity/example-contracts/stacking.md)
-  * [bns](clarity/example-contracts/bns.md)
 
 ## Clarinet
 
