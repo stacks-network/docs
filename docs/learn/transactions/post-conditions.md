@@ -32,6 +32,6 @@ Here's what that looks like:
 
 <figure><img src="../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 
-In this example, if the smart contract does not transfer one fabulous-frog NFT and and take 50 STX from the user, the transaction will abort.
+In this example, if the smart contract does not transfer one fabulous-frog NFT and take 50 STX from the user, the transaction will abort.
 
 You can learn more about how post conditions work in [SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-post-conditions) and how to utilize them in your applications in Hiro's excellent [post conditions tutorial](https://docs.hiro.so/stacks/stacks.js/guides/post-conditions).

@@ -212,7 +212,7 @@ You'll notice in the `CONTRACT_OWNER` constant that `tx-sender` is set in place 
 
 We'll then need to define some data storage:
 
-* A map to store key-value pairs of the message id and it's related metadata
+* A map to store key-value pairs of the message id and its related metadata
 * A data variable to count the total number of messages added
 
 <pre class="language-clarity" data-title="message-board.clar"><code class="lang-clarity">;; Define a map to store messages
