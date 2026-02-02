@@ -1,7 +1,3 @@
----
-description: A Devtools Catalog for Building with Stacks
----
-
 # Stacks Devtools Catalog
 
 <div data-with-frame="true"><figure><img src=".gitbook/assets/devtools-ecosystem.png" alt=""><figcaption></figcaption></figure></div>
@@ -98,6 +94,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 * [**Bolt Protocol**](https://github.com/ronoel/bolt-protocol) - Bolt Protocol is a next-generation framework designed to enable near-instant transactions on the Bitcoin network and enable users to pay fees directly in sBTC.
 * [**Multisig CLI**](https://github.com/hirosystems/multisig-cli/) - Command line utility written in NodeJS for creating and signing Stacks multisig transactions with a Ledger device
 * [**Stacks Address Generator**](https://github.com/ECBSJ/stacks-address-generator) - Simple web app to quickly generate Stacks addresses
+* [**Stacks Electrum Plugin**](https://github.com/rafa-stacks/stacks-electrum-plugin) - An Electrum wallet plugin for composing Stacks blockchain transactions via Bitcoin `OP_RETURN` encoding, as defined in SIP-001 and SIP-007.
 
 </details>
 
@@ -139,4 +136,4 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 
 ***
 
-If you’ve built a Stacks devtool you’d like included, reach out to us via GitHub or Discord with a brief description and link, and we’ll review it for addition to this devtools list.
+If you’ve built a Stacks-related devtool you’d like included, reach out to us via GitHub or Discord with a brief description and link, and we’ll review it for addition to this devtools list.

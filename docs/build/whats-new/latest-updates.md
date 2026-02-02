@@ -109,6 +109,14 @@ Navigate to the Clarinet section on [this](../clarinet/validation-and-analysis.m
 
 ***
 
+### Completion of dimension-specific tenure extension
+
+_January 12, 2026_
+
+\[[Stacks Core 3.3.0.0.4](https://github.com/stacks-network/stacks-core/releases/tag/3.3.0.0.4)] With dimension-specific tenure extensions, Stacks can extend block limits per dimension (likeruntimeandread\_countbudgets) instead of stopping early. This ensures DeFi protocols can process critical flows during high-volatility periods. Hear Alex Huth talk about this during the latest DevRel office hours [here](https://x.com/StacksDevs/status/2017601390345130421).
+
+***
+
 ### Multiple language support for Learn
 
 _January 9, 2026_
