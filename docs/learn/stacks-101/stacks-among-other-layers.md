@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Stacks Among Other Layers
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/bitcoin-layer-2s.jpg" alt=""><figcaption></figcaption></figure></div>
@@ -6,11 +10,11 @@ Recently, we have seen a flurry of new "Bitcoin layers" popping up across the ec
 
 However, not all Bitcoin layers are made equal. While a large chunk of these projects are vaporware riding the hype train, there are several projects that are making a good faith effort to grow the Bitcoin economy and build on top of Bitcooin using various approaches.
 
-The [Bitcoin Layers project](https://www.bitcoinlayers.org/) is an excellent place to begin learning about these different layers. In addition, here we've broken down how Stacks compares to some of the most promising Bitcoin L2 solutions so you can begin to learn about them all and make an educated decision on which to use.
+Here we've broken down how Stacks compares to some of the most promising Bitcoin L2 solutions so you can begin to learn about them all and make an educated decision on which to use.
 
 ### What is a Bitcoin Layer?
 
-It's important to define terms, especially in a new and evolving ecosystem like web3, and an even newer and more rapidly evolving subecosystem like Bitcoin layers.
+It's important to define terms, especially in a new and evolving ecosystem like web3, and an even newer and more rapidly evolving sub-ecosystem like Bitcoin layers.
 
 For the purpose of this document and comparison, we can use the following definition of a Bitcoin layer: A Bitcoin layer is a separate distributed computing system built either alongside or on top of Bitcoin for the purpose of enhancing its scalability, functionality, or both.
 
@@ -72,9 +76,9 @@ Rollups are generally considered layer-2 (L2) technology that runs on top of a l
 
 Most of the rollups work on Ethereum uses Ethereum L1 both as a data availability layer, and for consensus, i.e., the validity of rollup transactions is determined by logic running on Ethereum L1. Newer systems, [like Celestia](https://celestia.org/), are taking a more modular approach and are separating DA from consensus. One interesting aspect of separating DA is that more established and durable chains like Bitcoin can be used for DA as well. Below is an interesting comparison of sidechains and two types of rollups possible on Bitcoin (John Light posted this [on Twitter](https://twitter.com/lightcoin/status/1630301411962388481?s=20)):
 
-<figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure></div>
 
-This image broadly means developers can build sovereign rollups on Bitcoin today, but you'll need a "trusted" setup for moving BTC in and out of the rollup. In fact, people are already doing this -- see the recent [Rollkit announcement](https://rollkit.dev/blog/sovereign-rollups-on-bitcoin/). To build validity rollups, meaning Bitcoin L1 enforces BTC withdrawals from the rollup, you'll need modifications to Bitcoin L1. See [this overview](https://bitcoinrollups.org/) for more details.
+This image broadly means developers can build sovereign rollups on Bitcoin today, but you'll need a "trusted" setup for moving BTC in and out of the rollup. In fact, people are already doing this -- see the recent [Rollkit announcement](https://rollkit.dev/blog/sovereign-rollups-on-bitcoin/). To build validity rollups, meaning Bitcoin L1 enforces BTC withdrawals from the rollup, you'll need modifications to Bitcoin L1.
 
 One important nuance here is the cost required to effectively run a rollup on Bitcoin as discussed in the Galaxy research report linked in the first section.
 

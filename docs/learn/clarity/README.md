@@ -16,7 +16,7 @@ The design decisions behind Clarity were based heavily on taking lessons learned
 
 ### What makes Clarity different
 
-The following section is an excerpt from the Clarity book, [Clarity of Mind](https://book.clarity-lang.org/ch00-00-introduction.html):
+The following section is an excerpt from the [Clarity book](https://book.clarity-lang.org/ch00-00-introduction.html):
 
 The number of smart contract languages grows by the year. Choosing a first language can be challenging, especially for a beginner. The choice is largely dictated by the ecosystem you are interested in, although some languages are applicable to more than just one platform. Each language has its own upsides and downsides and it is out of the scope of this book to look at all of them. Instead, we will focus on what sets Clarity apart and why it is a prime choice if you require the utmost security and transparency.
 
