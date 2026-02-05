@@ -112,6 +112,74 @@ curl -sL localhost | jq -r
 ```
 {% endcode %}
 
+### Run behind a proxy (rate limiting)
+
+If you plan to expose HTTP endpoints publicly, put a reverse proxy in front of the Stacks node RPC (`20443`) and Stacks API (`3999`). This is the right place to terminate TLS, add basic rate limits, and reduce abuse.
+
+{% hint style="warning" %}
+Do not proxy the P2P port (`20444`) — it is not HTTP. Keep it open to peers as needed, and only proxy HTTP endpoints.
+{% endhint %}
+
+Below are minimal examples; tune the limits for your traffic. If the node is only for internal use, bind the services to `localhost` or use an allowlist instead.
+
+{% code title="Nginx example (HTTP)" %}
+```nginx
+# /etc/nginx/conf.d/stacks.conf
+limit_req_zone $binary_remote_addr zone=stacks_rpc:10m rate=5r/s;
+limit_req_zone $binary_remote_addr zone=stacks_api:10m rate=10r/s;
+limit_conn_zone $binary_remote_addr zone=stacks_conn:10m;
+
+server {
+  listen 80;
+  server_name <your-domain>;
+
+  location /v2/ {
+    limit_conn stacks_conn 20;
+    limit_req zone=stacks_rpc burst=20 nodelay;
+    proxy_pass http://127.0.0.1:20443;
+  }
+
+  location /extended/ {
+    limit_conn stacks_conn 20;
+    limit_req zone=stacks_api burst=40 nodelay;
+    proxy_pass http://127.0.0.1:3999;
+  }
+
+  location / {
+    limit_conn stacks_conn 20;
+    limit_req zone=stacks_api burst=40 nodelay;
+    proxy_pass http://127.0.0.1:3999;
+  }
+}
+```
+{% endcode %}
+
+{% code title="HAProxy example (HTTP)" %}
+```haproxy
+frontend fe_stacks
+  bind *:80
+  mode http
+  option httplog
+  acl is_rpc path_beg /v2/
+  use_backend be_rpc if is_rpc
+  default_backend be_api
+
+backend be_rpc
+  mode http
+  stick-table type ip size 100k expire 10m store http_req_rate(10s)
+  http-request track-sc0 src
+  http-request deny if { sc_http_req_rate(0) gt 50 }
+  server stacks_rpc 127.0.0.1:20443 check
+
+backend be_api
+  mode http
+  stick-table type ip size 100k expire 10m store http_req_rate(10s)
+  http-request track-sc0 src
+  http-request deny if { sc_http_req_rate(0) gt 100 }
+  server stacks_api 127.0.0.1:3999 check
+```
+{% endcode %}
+
 ### Upgrades
 
 {% hint style="warning" %}
