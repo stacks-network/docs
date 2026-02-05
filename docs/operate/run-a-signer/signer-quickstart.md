@@ -184,6 +184,9 @@ Metrics endpoint: 127.0.0.1:9154
 If the outputs of the previous commands are correct, you can proceed and start the signer:
 
 ```bash
+# Start the signer process
+# -c or --config: Path to your TOML configuration file
+# This command runs the signer in the foreground - consider using a process manager like systemd for production
 ~/stacks-signer/stacks-signer run -c ~/stacks-signer/signer-config.toml
 ```
 {% endstep %}
@@ -429,16 +432,18 @@ In order to stack, you'll need your signer signature. The fields required are fu
 The command to generate a signature looks like this:
 
 ```bash
+# Generate a cryptographic signature for stacking operations
 ~/stacks-signer/stacks-signer generate-stacking-signature \
-  --method stack-stx \
-  --max-amount 1000000000000 \
-  --auth-id 195591226970828652622091037492597751808 \
-  --period 12 \
-  --reward-cycle 100 \
-  --pox-address 19tg... \
-  --config ~/stacks-signer/signer-config.toml \
-  --json
+  --method stack-stx \           # Stacking method to use
+  --max-amount 1000000000000 \   # Maximum amount of STX you plan to stack (in microSTX)
+  --auth-id 195591226970828652622091037492597751808 \ # Unique authorization ID (random large number)
+  --period 12 \                  # Number of reward cycles to stack for
+  --reward-cycle 100 \            # The reward cycle when stacking begins
+  --pox-address 19tg... \        # Your Bitcoin address for receiving rewards
+  --config ~/stacks-signer/signer-config.toml \ # Path to signer config file
+  --json                         # Output in JSON format for easy copy-paste
 ```
+
 
 The generated JSON can be then copy-pasted directly in the [Leather Earn](https://earn.leather.io/) website mentioned in the next step.
 {% endstep %}
