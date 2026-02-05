@@ -32,3 +32,7 @@ Besides the actual content, each Space consists of:
 What kinds of changes are we looking for?
 
 If you see a typo, a missing guide or tutorial, an unclear explanation, or really anything else you think could improve the quality of the documentation, please feel free to open an issue or create a pull request.
+
+## Reporting Issues
+
+If you find a bug in the documentation or have a feature request, please [open an issue](https://github.com/stacks-network/docs/issues/new) describing the problem or suggestion.
