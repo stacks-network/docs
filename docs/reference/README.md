@@ -231,5 +231,9 @@ start_height = 2_000
 [[burnchain.epochs]]
 epoch_name = "3.2"
 start_height = 71_525
+
+[[burnchain.epochs]]
+epoch_name = "3.3"
+start_height = 108_800
 ```
 {% endcode %}
