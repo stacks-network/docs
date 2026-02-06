@@ -118,6 +118,86 @@ What should the networking setup look like?
 Signers are intended to work with a local node. The node<->signer connection is not run over SSL, which means you can be exposed to a man-in-the-middle attack if your signer and node are hosted on separate machines. Ensure your signer isn't allowing requests from the public internet. We recommend having the signer and node running locally on the same machine or using internal networking between them.
 {% endhint %}
 
+### Optional: TLS between signer and node on separate hosts
+
+If your signer and node must run on separate hosts, you can encrypt node<->signer traffic with local reverse proxies on each host. This keeps Stacks config values as `IP:PORT` while wrapping cross-host traffic in HTTPS.
+
+Traffic paths:
+
+* `stacks-node -> local proxy on node host -> HTTPS -> proxy on signer host -> signer endpoint`
+* `stacks-signer -> local proxy on signer host -> HTTPS -> proxy on node host -> node RPC`
+
+Example config values with this pattern:
+
+```toml
+# signer-config.toml
+node_host = "127.0.0.1:21443"
+endpoint = "127.0.0.1:30000"
+```
+
+```toml
+# node-config.toml
+[[events_observer]]
+endpoint = "127.0.0.1:31000"
+events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
+```
+
+Nginx example on the node host:
+
+```nginx
+# Forward local node->signer event traffic over HTTPS
+server {
+  listen 127.0.0.1:31000;
+  location / {
+    proxy_pass https://signer.example.com:3443;
+    proxy_ssl_server_name on;
+    proxy_ssl_verify on;
+    proxy_ssl_trusted_certificate /etc/nginx/certs/ca.pem;
+  }
+}
+
+# Accept TLS from signer-side proxy and forward to local stacks-node RPC
+server {
+  listen 2443 ssl;
+  ssl_certificate /etc/nginx/certs/node.crt;
+  ssl_certificate_key /etc/nginx/certs/node.key;
+  location / {
+    proxy_pass http://127.0.0.1:20443;
+  }
+}
+```
+
+Nginx example on the signer host:
+
+```nginx
+# Forward local signer->node RPC traffic over HTTPS
+server {
+  listen 127.0.0.1:21443;
+  location / {
+    proxy_pass https://node.example.com:2443;
+    proxy_ssl_server_name on;
+    proxy_ssl_verify on;
+    proxy_ssl_trusted_certificate /etc/nginx/certs/ca.pem;
+  }
+}
+
+# Accept TLS from node-side proxy and forward to local signer endpoint
+server {
+  listen 3443 ssl;
+  ssl_certificate /etc/nginx/certs/signer.crt;
+  ssl_certificate_key /etc/nginx/certs/signer.key;
+  location / {
+    proxy_pass http://127.0.0.1:30000;
+  }
+}
+```
+
+Validation checklist:
+
+* From signer host, confirm proxied node RPC is reachable: `curl -sS http://127.0.0.1:21443/v2/info`
+* Confirm each TLS listener presents the expected certificate using `openssl s_client`
+* Verify node logs continue to show event observer registration without connection errors
+
 ***
 
 ## Create a Configuration File
