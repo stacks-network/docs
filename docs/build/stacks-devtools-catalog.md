@@ -110,6 +110,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 <summary>Community &#x26; Experimental</summary>
 
 * [**STXER**](https://stxer.xyz/) - Community built explorer, debugger and simulator for Stacks transactions.
+* [**DeFi Sentinel**](https://github.com/serayd61/stacks-defi-sentinel) - Real-time DeFi monitoring dashboard for Stacks with whale alerts, DEX tracking, portfolio analytics, and Chainhooks integration.
 
 </details>
 
