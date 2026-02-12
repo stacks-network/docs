@@ -22,6 +22,14 @@ The signer configuration file is a TOML file that contains the configuration opt
 | metrics\_endpoint            |          | IP:PORT for Prometheus metrics collection.                                                                                                                                                                                                                                                    |
 | chain\_id                    |          | An optional ChainID, only used for custom networks (like Nakamoto Testnet)                                                                                                                                                                                                                    |
 
+{% hint style="info" %}
+Need encrypted traffic between signer and node on separate hosts?
+
+`node_host` and `events_observer.endpoint` should remain `IP:PORT` values (not `https://...` URLs). Use local loopback proxy endpoints in these fields and have your proxy layer handle TLS to the remote host.
+
+See the [Run a Signer guide](../../operate/run-a-signer/) for a full HTTPS proxy example.
+{% endhint %}
+
 #### Example Configs
 
 Below are sample configuration files for running a Stacks node and signer provided in one place for convenience. You'll need to modify some of these according to the [How to Run a Signer](/broken/pages/261edd335c0b98fb052ad55906fbf90832800453) doc.
