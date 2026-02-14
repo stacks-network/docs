@@ -137,5 +137,30 @@ $ (contract-call? .counter count-up)
 $ (contract-call? .counter get-count tx-sender)
 u2
 ```
+
+{% hint style="info" %}
+**Exiting the Console**: To exit the Clarinet console, type `exit` or press `Ctrl+C`. Your contract state will be reset when you restart the console.
+{% endhint %}
 {% endstep %}
 {% endstepper %}
+
+***
+
+## Common Beginner Mistakes
+
+| Mistake | Solution |
+| ------- | -------- |
+| Forgetting the `.` prefix when calling contracts | Always use `.contract-name` format for local contracts |
+| Using wrong types (e.g., `1` instead of `u1`) | Use `u` prefix for unsigned integers in Clarity |
+| Missing parentheses | Every Clarity expression must be wrapped in parentheses |
+
+***
+
+## Next Steps
+
+Now that you've built your first counter contract, here are some recommended paths to continue learning:
+
+* **[Project Development](project-development.md)** - Learn about the full Clarinet development workflow
+* **[Unit Testing](testing-with-clarinet-sdk.md)** - Write comprehensive tests for your contracts
+* **[Contract Deployment](contract-deployment.md)** - Deploy your contracts to testnet and mainnet
+* **[Clarity Crash Course](../get-started/clarity-crash-course.md)** - Deep dive into Clarity language fundamentals
