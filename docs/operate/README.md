@@ -18,3 +18,29 @@ While you can run a node using these specs, it's recommended to assign more than
 * **1 TB disk** for Stacks node
 * **1 TB disk** for Bitcoin node
 {% endhint %}
+
+***
+
+## Quick Troubleshooting Tips
+
+| Issue | Solution |
+| ----- | -------- |
+| Node not syncing | Check your internet connection and firewall settings. Ensure ports 20443 and 20444 are open. |
+| Out of disk space | Increase disk allocation or prune old chainstate data. |
+| Connection timeouts | Verify your `bootstrap_node` configuration is correct and reachable. |
+| High memory usage | Consider running only the Stacks node without a local Bitcoin node. |
+
+## Community Support
+
+* **Discord**: Join the [Stacks Discord](https://stacks.chat/) and ask in the #node-operators channel
+* **Forum**: Post questions on the [Stacks Forum](https://forum.stacks.org/)
+* **GitHub Issues**: Report bugs at [stacks-network/stacks-core](https://github.com/stacks-network/stacks-core/issues)
+
+## Health Check Recommendations
+
+Monitor your node's health regularly by checking:
+
+1. **Sync status**: Compare your node's block height with the [Stacks Explorer](https://explorer.hiro.so/)
+2. **RPC endpoint**: Test with `curl http://localhost:20443/v2/info`
+3. **Peer connections**: Verify your node has active peer connections
+4. **Disk usage**: Ensure you have at least 100GB free space for growth
