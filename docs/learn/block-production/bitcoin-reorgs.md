@@ -2,17 +2,17 @@
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/bitcoin-reorgs.png" alt=""><figcaption></figcaption></figure></div>
 
-Under Nakamoto Stacks transactions don’t impactfully reorganize due to a Bitcoin fork. Not only is reorging relatively infrequent, but transactions on Stacks that got reorganized due to a Bitcoin fork behave just as reorganized Bitcoin transactions do. With some future analysis, transactions purely on the L2 chain may one day be entirely unaffected.
+Stacks transactions don’t impactfully reorganize due to a Bitcoin fork. Not only is reorging relatively infrequent, but transactions on Stacks that got reorganized due to a Bitcoin fork behave just as reorganized Bitcoin transactions do. With some future analysis, transactions purely on the L2 chain may one day be entirely unaffected.
 
 Understanding this concept fundamentally comes down to understanding finality on post-Nakamoto Stacks.
 
 {% hint style="info" %}
-Under Nakamoto the Stacks chain won’t fork on its own. It is designed not to fork with only special exceptions, and it’s entirely infeasible for Stacks to fork on its own if even 31% of Stackers don’t want it to fork, and even then it would likely only happen within the span of a single tenure.
+Stacks won’t fork on its own. It is designed not to fork with only special exceptions, and it’s entirely infeasible for Stacks to fork on its own if even 31% of Stackers don’t want it to fork, and even then it would likely only happen within the span of a single tenure.
 
-The only case in which Stacks forks post-Nakamoto is if Bitcoin forks cause it to fork.
+The only case in which Stacks forks is if Bitcoin forks cause it to fork.
 {% endhint %}
 
-Under Nakamoto, instead of winning the right to make a single block, miners win the right to make a ton of blocks, and during that time we say they’re under “tenure”. Every single Stacks block produced in a tenure requires at least 70% of Stackers to approve (sign) it for it to be included in the Stacks blockchain. The Stackers are watching the Bitcoin blockchain and will only sign blocks from the miner that won the latest sortition.
+Instead of winning the right to make a single block, miners win the right to make a ton of blocks, and during that time we say they’re under “tenure”. Every single Stacks block produced in a tenure requires at least 70% of Stackers to approve (sign) it for it to be included in the Stacks blockchain. The Stackers are watching the Bitcoin blockchain and will only sign blocks from the miner that won the latest sortition.
 
 Now, let’s imagine that Bitcoin reorganizes itself and the Stackers were watching a Bitcoin fork that is now sub-optimal. The Stackers would essentially go back in time to the latest common sortition between the fork that they were watching and the new best Bitcoin fork and start signing the blocks within the tenures from there. Note that 70% of the Stackers will be doing the same thing all at once, and the moment 70% agree to start signing from the latest tenure on the new Bitcoin fork there’s a new singularly optimal Stacks blockchain.
 

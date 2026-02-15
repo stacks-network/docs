@@ -14,7 +14,7 @@ This is your fast-track path for understanding what you'll need to become a Stac
 By the end of this quickstart, you’ll have built an onchain app by:
 
 * Building a Clarity smart contract with Clarinet
-* Utilize the 1:1 Bitcoin backed token, sBTC
+* Utilize the 1:1 Bitcoin-backed token, sBTC
 * Deploying your smart contract to Stacks' testnet
 * Interacting with your deployed contract from a frontend app
 
@@ -287,7 +287,7 @@ There's quite a lot going on in this function above that covers in-contract post
 By using the `define-public` function, we can literally create a public function where anyone can invoke.
 
 * `(add-message ... )` : the custom name of the public function
-* `(content (string-utf8 280))` : the custom paramater name and type
+* `(content (string-utf8 280))` : the custom parameter name and type
 
 </details>
 
@@ -339,7 +339,7 @@ The `restrict-assets?` acts as an in-contract post-condition to protect user and
 })
 ```
 
-The function `map-set` will allow the existing mapping of `messages` to add a new key-value pair consiting of the metadata of the new message.
+The function `map-set` will allow the existing mapping of `messages` to add a new key-value pair consisting of the metadata of the new message.
 
 We'll be using the current Bitcoin block height (via `burn-block-height`) as a way to capture the time of when this new message was added. Through `burn-block-height` , Clarity allows us to have read access into the Bitcoin state at anytime.
 

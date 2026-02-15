@@ -2,7 +2,7 @@
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure></div>
 
-In order to reorg the Stacks chain, someone must take control of at least 70% of the STX that are currently Stacked and conduct a 51% attack on Bitcoin itself. If acquired at market prices, then at the time of this writing, that amounts to spending nearly $1 billion USD in only the STX stacked.
+In order to reorg the Stacks chain, someone must take control of at least 70% of the STX that are currently Stacked and conduct a 51% attack on Bitcoin itself.
 
 In addition to this, because of how Stacks achieves Bitcoin finality by not allowing forks, Stacks security budget reaches 51% of Bitcoin's mining power because in order to reverse the chain state you would need to reverse the Bitcoin chain state as well.
 

@@ -15,11 +15,11 @@ The SIPs are located in the [stacksgov/sips](https://github.com/stacksgov/sips) 
 Anyone in the Stacks community can submit a SIP.
 
 {% hint style="info" %}
-Stacks Improvement Proposals Community Calls Add the [weekly community SIP call](https://www.addevent.com/event/wS15955379) to your calendar.
+Stacks Improvement Proposals Community Calls. Add the [weekly community SIP call](https://www.addevent.com/event/wS15955379) to your calendar.
 
-SIP Meeting calls are recorded and available [here](https://www.youtube.com/playlist?list=PLg717Ri_rTnx5kuaWqp3cUAtwQk_yzslT)
+SIP Meeting calls are recorded and available [here](https://www.youtube.com/playlist?list=PLg717Ri_rTnx5kuaWqp3cUAtwQk_yzslT).
 
-More details of the meetings are available [here](https://github.com/stacksgov/sips/issues/79)
+More details of the meetings are available [here](https://github.com/stacksgov/sips/issues/79).
 {% endhint %}
 
 ### Ratified SIPSs
