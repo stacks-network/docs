@@ -4,6 +4,25 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### Deprecation notices for Hiro's Chainhooks v1 & L1 APIs
+
+_February 6th, 2026_
+
+\[Hiro] **Chainhooks V2 is now available.** This is a huge upgrade with more capability, better performance, and much greater reliability. But it also means that Hiro is **deprecating their hosted Chainhooks v1 on March 9th**, so if you’re using Chainhooks via the Hiro Platform, now is the time to upgrade. Self hosted Chainhook instances aren’t affected by this.
+
+**L1 Bitcoin APIs shutting down March 9th.** Hiro is also deprecating their Ordinals, BRC-20, Runes, and Bitcoin Indexer APIs. They've partnered with Xverse to provide a smooth migration path for these use cases, and have put together a detailed migration guide to help you transition.
+
+<details>
+
+<summary>Details</summary>
+
+* Chainhooks v2 announcement [blog post](https://www.hiro.so/blog/chainhooks-v2-is-now-generally-available)
+* Hiro's L1 metaprotocol APIs deprecation [blog post](https://www.hiro.so/blog/upcoming-deprecation-of-ordinals-runes-and-brc-20-apis)
+
+</details>
+
+***
+
 ### Start Cookin' with the Cookbook
 
 _January 30, 2026_
