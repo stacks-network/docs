@@ -2,6 +2,13 @@
 
 * [Welcome to Tutorials](README.md)
 
+## Chainhooks DeFi Monitor
+
+* [Building a DeFi Monitor](chainhooks-defi/README.md)
+  * [Introduction to Chainhooks](chainhooks-defi/introduction.md)
+  * [Setting Up the Project](chainhooks-defi/setup.md)
+  * [Creating Predicates](chainhooks-defi/predicates.md)
+
 ## Bitcoin Primer
 
 * [Introduction](bitcoin-primer/introduction.md)
