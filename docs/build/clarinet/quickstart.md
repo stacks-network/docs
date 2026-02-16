@@ -154,13 +154,4 @@ u2
 | Using wrong types (e.g., `1` instead of `u1`) | Use `u` prefix for unsigned integers in Clarity |
 | Missing parentheses | Every Clarity expression must be wrapped in parentheses |
 
-***
 
-## Next Steps
-
-Now that you've built your first counter contract, here are some recommended paths to continue learning:
-
-* **[Project Development](project-development.md)** - Learn about the full Clarinet development workflow
-* **[Unit Testing](testing-with-clarinet-sdk.md)** - Write comprehensive tests for your contracts
-* **[Contract Deployment](contract-deployment.md)** - Deploy your contracts to testnet and mainnet
-* **[Clarity Crash Course](../get-started/clarity-crash-course.md)** - Deep dive into Clarity language fundamentals

@@ -1,15 +1,5 @@
 # Stacks Node Configuration
 
-## Quick Reference
-
-| I want to... | Jump to... |
-| ------------ | ---------- |
-| Run a mainnet follower | [Example Mainnet Configuration](#example-mainnet-follower-configuration) |
-| Run a testnet node | [Example Testnet Configuration](#example-testnet-follower-configuration) |
-| Configure mining | [Mining Options](#mining) |
-| Set up event observers | [Events Observer](#events_observer) |
-| Configure network options | [Connection Options](#connection_options) |
-
 {% hint style="info" %}
 Note that these config fields are for a Stacks follower node. If you are running a signer alongside your Stacks node, you'll want to use the sample file found in the [Signer Configuration](node-operations/signer-configuration.md) page as it contains additional parameters needed for your signer and Stacks node to function properly.
 {% endhint %}
