@@ -4,13 +4,58 @@ description: The complete reference guide to all Clarity functions.
 
 # Functions
 
+## Understanding Clarity Function Costs
+
+Clarity function costs determine the computational resources required to execute each operation on the Stacks blockchain. Understanding these costs helps you:
+
+- **Optimize smart contracts** by choosing efficient operations
+- **Predict transaction fees** more accurately before deployment
+- **Avoid hitting block limits** by understanding which functions are expensive
+- **Make informed architecture decisions** when designing contracts
+
+### Cost Dimensions
+
+Clarity costs are measured across five dimensions:
+
+| Dimension | Description |
+|-----------|-------------|
+| **Runtime** | CPU cycles consumed (primary cost component) |
+| **Read Count** | Number of read operations from chain state |
+| **Read Length** | Bytes read from chain state |
+| **Write Count** | Number of write operations to chain state |
+| **Write Length** | Bytes written to chain state |
+
+### Cost Types
+
+- **Static**: Fixed cost regardless of input (e.g., `168 runtime`)
+- **Linear**: `cost = a × n + b` where n is input size (e.g., `11n + 125`)
+- **NLogN**: `cost = a × n × log₂(n) + b` (e.g., `4n×log₂(n) + 1736`)
+
+### Cost Notation
+
+Throughout this reference, costs are shown as:
+
+```
+**cost:** <formula> runtime units [+ I/O costs if applicable]
+```
+
+Where `n` typically represents:
+- Number of arguments for variadic functions
+- Size in bytes for buffer/string operations
+- Number of elements for list operations
+
+> **Note**: Cost values are from Clarity 4 (Nakamoto upgrade). Costs may vary between Clarity versions.
+
+---
+
 ## \* (multiply)
 
 Introduced in: **Clarity 1**
 
 **input:** `int, ... | uint, ...`\
 **output:** `int | uint`\
-**signature:** `(* i1 i2...)`
+**signature:** `(* i1 i2...)`\
+**cost:** `13n + 125` runtime (where n = number of arguments)
 
 **description:**\
 Multiplies a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.
@@ -31,7 +76,8 @@ Introduced in: **Clarity 1**
 
 **input:** `int, ... | uint, ...`\
 **output:** `int | uint`\
-**signature:** `(+ i1 i2...)`
+**signature:** `(+ i1 i2...)`\
+**cost:** `11n + 125` runtime (where n = number of arguments)
 
 **description:**\
 Adds a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.
@@ -50,7 +96,8 @@ Introduced in: **Clarity 1**
 
 **input:** `int, ... | uint, ...`\
 **output:** `int | uint`\
-**signature:** `(- i1 i2...)`
+**signature:** `(- i1 i2...)`\
+**cost:** `11n + 125` runtime (where n = number of arguments)
 
 **description:**\
 Subtracts a variable number of integer inputs and returns the result. In the event of an _underflow_, throws a runtime error.
@@ -70,7 +117,8 @@ Introduced in: **Clarity 1**
 
 **input:** `int, ... | uint, ...`\
 **output:** `int | uint`\
-**signature:** `(/ i1 i2...)`
+**signature:** `(/ i1 i2...)`\
+**cost:** `13n + 125` runtime (where n = number of arguments)
 
 **description:**\
 Integer divides a variable number of integer inputs and returns the result. In the event of division by zero, throws a runtime error.
@@ -89,9 +137,10 @@ Integer divides a variable number of integer inputs and returns the result. In t
 
 Introduced in: **Clarity 1**
 
-**input:** `int, int | uint, uint | string-ascii, string-ascii | string-utf8, string-utf8 | buff, buff`\
+**input:** `int, int | uint, uint`\
 **output:** `bool`\
-**signature:** `(< i1 i2)`
+**signature:** `(< i1 i2)`\
+**cost:** `7n + 128` runtime (where n = min input size in bytes)
 
 **description:**\
 Compares two integers (or other comparable types), returning `true` if `i1` is less than `i2` and `false` otherwise. i1 and i2 must be of the same type.
@@ -116,9 +165,10 @@ Compares two integers (or other comparable types), returning `true` if `i1` is l
 
 Introduced in: **Clarity 1**
 
-**input:** `int, int | uint, uint | string-ascii, string-ascii | string-utf8, string-utf8 | buff, buff`\
+**input:** `int, int | uint, uint`\
 **output:** `bool`\
-**signature:** `(<= i1 i2)`
+**signature:** `(<= i1 i2)`\
+**cost:** `7n + 128` runtime (where n = min input size in bytes)
 
 **description:**\
 Compares two values, returning `true` if `i1` is less than or equal to `i2`. Types must match. Same type support notes as `<`.
@@ -142,7 +192,8 @@ Introduced in: **Clarity 1**
 
 **input:** `int, int | uint, uint | string-ascii, string-ascii | string-utf8, string-utf8 | buff, buff`\
 **output:** `bool`\
-**signature:** `(> i1 i2)`
+**signature:** `(> i1 i2)`\
+**cost:** `7n + 128` runtime (where n = min input size in bytes)
 
 **description:**\
 Compares two values, returning `true` if `i1` is greater than `i2`. Types must match. Same type support notes as `<`.
@@ -166,7 +217,8 @@ Introduced in: **Clarity 1**
 
 **input:** `int, int | uint, uint | string-ascii, string-ascii | string-utf8, string-utf8 | buff, buff`\
 **output:** `bool`\
-**signature:** `(>= i1 i2)`
+**signature:** `(>= i1 i2)`\
+**cost:** `7n + 128` runtime (where n = min input size in bytes)
 
 **description:**\
 Compares two values, returning `true` if `i1` is greater than or equal to `i2`. Types must match. Same type support notes as `<`.
@@ -190,7 +242,8 @@ Introduced in: **Clarity 1**
 
 **input:** `bool, ...`\
 **output:** `bool`\
-**signature:** `(and b1 b2 ...)`
+**signature:** `(and b1 b2 ...)`\
+**cost:** `3n + 120` runtime (where n = number of arguments)
 
 **description:**\
 Returns `true` if all boolean inputs are `true`. Arguments are evaluated in-order and lazily (short-circuits on `false`).
@@ -211,7 +264,8 @@ Introduced in: **Clarity 1**
 
 **input:** `list A, A`\
 **output:** `list`\
-**signature:** `(append (list 1 2 3 4) 5)`
+**signature:** `(append (list 1 2 3 4) 5)`\
+**cost:** `73n + 285` runtime (where n = max(list entry type size, appended value type size) in bytes)
 
 **description:**\
 Takes a list and a value of the same entry type, and returns a new list with max\_len += 1 (effectively appending the value).
@@ -287,7 +341,8 @@ Introduced in: **Clarity 1**
 
 **input:** `sequence_A, uint`\
 **output:** `(optional sequence_A)`\
-**signature:** `(as-max-len? sequence max_length)`
+**signature:** `(as-max-len? sequence max_length)`\
+**cost:** `475` runtime (static)
 
 **description:**\
 The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument. The function returns an optional type. If the input sequence length is less than or equal to the supplied max\_length, this returns `(some sequence)`, otherwise it returns `none`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
@@ -309,7 +364,8 @@ Introduced in: **Clarity 1**
 
 **input:** `bool, C`\
 **output:** `bool`\
-**signature:** `(asserts! bool-expr thrown-value)`
+**signature:** `(asserts! bool-expr thrown-value)`\
+**cost:** `128` runtime (static)
 
 **description:**\
 The `asserts!` function admits a boolean argument and asserts its evaluation: if bool-expr is `true`, `asserts!` returns `true` and proceeds in the program execution. If the supplied argument is returning a false value, `asserts!` _returns_ `thrown-value` and exits the current control-flow.
@@ -328,7 +384,8 @@ Introduced in: **Clarity 1**
 
 **input:** `(buff 32), A`\
 **output:** `A`\
-**signature:** `(at-block id-block-hash expr)`
+**signature:** `(at-block id-block-hash expr)`\
+**cost:** `1327` runtime + 1 read (static)
 
 **description:**\
 The `at-block` function evaluates the expression `expr` _as if_ it were evaluated at the end of the block indicated by the _block-hash_ argument. The `expr` closure must be read-only.
@@ -353,7 +410,8 @@ Introduced in: **Clarity 1**
 
 **input:** `AnyType, ... A`\
 **output:** `A`\
-**signature:** `(begin expr1 expr2 expr3 ... expr-last)`
+**signature:** `(begin expr1 expr2 expr3 ... expr-last)`\
+**cost:** `151` runtime (static)
 
 **description:**\
 Evaluates each expression in order and returns the value of the last expression. Note: intermediary statements returning a response type must be checked.
@@ -372,7 +430,8 @@ Introduced in: **Clarity 2**
 
 **input:** `int, ... | uint, ...`\
 **output:** `int | uint`\
-**signature:** `(bit-and i1 i2...)`
+**signature:** `(bit-and i1 i2...)`\
+**cost:** `15n + 129` runtime (where n = number of arguments)
 
 **description:**\
 Bitwise AND across a variable number of integer inputs.
@@ -394,7 +453,8 @@ Introduced in: **Clarity 2**
 
 **input:** `int | uint`\
 **output:** `int | uint`\
-**signature:** `(bit-not i1)`
+**signature:** `(bit-not i1)`\
+**cost:** `147` runtime (static)
 
 **description:**\
 Returns the one's complement (bitwise NOT) of `i1`.
@@ -416,7 +476,8 @@ Introduced in: **Clarity 2**
 
 **input:** `int, ... | uint, ...`\
 **output:** `int | uint`\
-**signature:** `(bit-or i1 i2...)`
+**signature:** `(bit-or i1 i2...)`\
+**cost:** `15n + 129` runtime (where n = number of arguments)
 
 **description:**\
 Bitwise inclusive OR across a variable number of integer inputs.
@@ -438,7 +499,8 @@ Introduced in: **Clarity 2**
 
 **input:** `int, uint | uint, uint`\
 **output:** `int | uint`\
-**signature:** `(bit-shift-left i1 shamt)`
+**signature:** `(bit-shift-left i1 shamt)`\
+**cost:** `167` runtime (static)
 
 **description:**\
 Shifts all the bits in `i1` to the left by the number of places specified in `shamt` modulo 128 (the bit width of Clarity integers).
@@ -465,7 +527,8 @@ Introduced in: **Clarity 2**
 
 **input:** `int, uint | uint, uint`\
 **output:** `int | uint`\
-**signature:** `(bit-shift-right i1 shamt)`
+**signature:** `(bit-shift-right i1 shamt)`\
+**cost:** `167` runtime (static)
 
 **description:**\
 Shifts all the bits in `i1` to the right by the number of places specified in `shamt` modulo 128 (the bit width of Clarity integers). When `i1` is a `uint` (unsigned), new bits are filled with zeros. When `i1` is an `int` (signed), the sign is preserved, meaning that new bits are filled with the value of the previous sign-bit.
@@ -491,7 +554,8 @@ Introduced in: **Clarity 2**
 
 **input:** `int, ... | uint, ...`\
 **output:** `int | uint`\
-**signature:** `(bit-xor i1 i2...)`
+**signature:** `(bit-xor i1 i2...)`\
+**cost:** `15n + 129` runtime (where n = number of arguments)
 
 **description:**\
 Bitwise exclusive OR across a variable number of integer inputs.
@@ -514,7 +578,8 @@ Introduced in: **Clarity 2**
 
 **input:** `(buff 16)`\
 **output:** `int`\
-**signature:** `(buff-to-int-be (buff 16))`
+**signature:** `(buff-to-int-be (buff 16))`\
+**cost:** `141` runtime (static)
 
 **description:**\
 Converts a byte buffer to a signed integer use a big-endian encoding. The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as this function uses a big-endian encoding, the input behaves as if it is zero-padded on the _left_.
@@ -536,7 +601,8 @@ Introduced in: **Clarity 2**
 
 **input:** `(buff 16)`\
 **output:** `int`\
-**signature:** `(buff-to-int-le (buff 16))`
+**signature:** `(buff-to-int-le (buff 16))`\
+**cost:** `141` runtime (static)
 
 **description:**\
 Converts a byte buffer to a signed integer use a little-endian encoding. The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as this function uses a little-endian encoding, the input behaves as if it is zero-padded on the _right_.
@@ -558,7 +624,8 @@ Introduced in: **Clarity 2**
 
 **input:** `(buff 16)`\
 **output:** `uint`\
-**signature:** `(buff-to-uint-be (buff 16))`
+**signature:** `(buff-to-uint-be (buff 16))`\
+**cost:** `141` runtime (static)
 
 **description:**\
 Converts a byte buffer to an unsigned integer use a big-endian encoding. The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as this function uses a big-endian encoding, the input behaves as if it is zero-padded on the _left_.
@@ -580,7 +647,8 @@ Introduced in: **Clarity 2**
 
 **input:** `(buff 16)`\
 **output:** `uint`\
-**signature:** `(buff-to-uint-le (buff 16))`
+**signature:** `(buff-to-uint-le (buff 16))`\
+**cost:** `141` runtime (static)
 
 **description:**\
 Converts a byte buffer to an unsigned integer use a little-endian encoding.. The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as this function uses a little-endian encoding, the input behaves as if it is zero-padded on the _right_.
@@ -602,7 +670,8 @@ Introduced in: **Clarity 1**
 
 **input:** `sequence_A, sequence_A`\
 **output:** `sequence_A`\
-**signature:** `(concat sequence1 sequence2)`
+**signature:** `(concat sequence1 sequence2)`\
+**cost:** `37n + 220` runtime (where n = total sequence length: elements for lists, bytes for buffers/strings)
 
 **description:**\
 Concatenates two sequences of the same type. Applicable to `(list A)`, `buff`, `string-ascii`, `string-utf8`.
@@ -623,7 +692,8 @@ Introduced in: **Clarity 1**
 
 **input:** `ContractName, PublicFunctionName, Arg0, ...`\
 **output:** `(response A B)`\
-**signature:** `(contract-call? .contract-name function-name arg0 arg1 ...)`
+**signature:** `(contract-call? .contract-name function-name arg0 arg1 ...)`\
+**cost:** `134` runtime (static, plus callee costs)
 
 **description:**\
 The `contract-call?` function executes the given public function of the given contract. You _may not_ use this function to call a public function defined in the current contract. If the public function returns _err_, any database changes resulting from calling `contract-call?` are aborted. If the function returns _ok_, database changes occurred.
@@ -667,7 +737,8 @@ Introduced in: **Clarity 1**
 
 **input:** `Trait`\
 **output:** `principal`\
-**signature:** `(contract-of .contract-name)`
+**signature:** `(contract-of trait-reference)`\
+**cost:** `13400` runtime (static)
 
 **description:**\
 Returns the principal of the contract implementing the trait.
@@ -689,7 +760,8 @@ Introduced in: **Clarity 1**
 
 **input:** `A, (optional A)`\
 **output:** `A`\
-**signature:** `(default-to default-value option-value)`
+**signature:** `(default-to default-value option-value)`\
+**cost:** `268` runtime (static)
 
 **description:**\
 The `default-to` function attempts to 'unpack' the second argument: if the argument is a `(some ...)` option, it returns the inner value of the option. If the second argument is a `(none)` value, `default-to` it returns the value of `default-value`.
@@ -942,7 +1014,8 @@ Introduced in: **Clarity 2**
 
 **input:** `sequence_A, uint`\
 **output:** `(optional A)`\
-**signature:** `(element-at? sequence index)`
+**signature:** `(element-at? sequence index)`\
+**cost:** `498` runtime (static)
 
 **description:**\
 The `element-at?` function returns the element at `index` in the provided sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. In Clarity1, `element-at` must be used (without the `?`). The `?` is added in Clarity2 for consistency -- built-ins that return responses or optionals end in `?`. The Clarity1 spelling is left as an alias in Clarity2 for backwards compatibility.
@@ -965,7 +1038,8 @@ Introduced in: **Clarity 1**
 
 **input:** `A`\
 **output:** `(response A B)`\
-**signature:** `(err value)`
+**signature:** `(err value)`\
+**cost:** `199` runtime (static)
 
 **description:**\
 Constructs an `err` response. Use for returning errors from public functions; indicates DB changes should be rolled back.
@@ -984,7 +1058,8 @@ Introduced in: **Clarity 1**
 
 **input:** `Function(A) -> bool, sequence_A`\
 **output:** `sequence_A`\
-**signature:** `(filter func sequence)`
+**signature:** `(filter func sequence)`\
+**cost:** `407` runtime (static)
 
 **description:**\
 The `filter` function applies the input function `func` to each element of the input sequence, and returns the same sequence with any elements removed for which `func` returned `false`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. The `func` argument must be a literal function name.
@@ -1009,7 +1084,8 @@ Introduced in: **Clarity 1**
 
 **input:** `Function(A, B) -> B, sequence_A, B`\
 **output:** `B`\
-**signature:** `(fold func sequence_A initial_B)`
+**signature:** `(fold func sequence_A initial_B)`\
+**cost:** `460` runtime (static)
 
 **description:**\
 The `fold` function condenses `sequence_A` into a value of type `B` by recursively applies the function `func` to each element of the input sequence _and_ the output of a previous application of `func`.
@@ -1044,7 +1120,8 @@ Introduced in: **Clarity 2**
 
 **input:** `type-signature(t), buff`\
 **output:** `(optional t)`\
-**signature:** `(from-consensus-buff? type-signature buffer)`
+**signature:** `(from-consensus-buff? type-signature buffer)`\
+**cost:** `3n×log₂(n) + 185` runtime (where n = buffer size)
 
 **description:**\
 `from-consensus-buff?` is a special function that will deserialize a buffer into a Clarity value, using the SIP-005 serialization of the Clarity value. The type that `from-consensus-buff?` tries to deserialize into is provided by the first parameter to the function. If it fails to deserialize the type, the method returns `none`.
@@ -1070,7 +1147,8 @@ Introduced in: **Clarity 1**
 
 **input:** `TokenName, uint, principal`\
 **output:** `(response bool uint)`\
-**signature:** `(ft-burn? token-name amount sender)`
+**signature:** `(ft-burn? token-name amount sender)`\
+**cost:** `549` runtime + 2 reads + 2 writes
 
 **description:**\
 Burns (destroys) `amount` of `token-name` from `sender`'s balance. On success returns `(ok true)`. Error `(err u1)` - insufficient balance or non-positive amount.
@@ -1091,7 +1169,8 @@ Introduced in: **Clarity 1**
 
 **input:** `TokenName, principal`\
 **output:** `uint`\
-**signature:** `(ft-get-balance token-name principal)`
+**signature:** `(ft-get-balance token-name principal)`\
+**cost:** `479` runtime + 1 read
 
 **description:**\
 Returns the `token-name` balance for `principal`. Token must be defined with `define-fungible-token`.
@@ -1112,7 +1191,8 @@ Introduced in: **Clarity 1**
 
 **input:** `TokenName`\
 **output:** `uint`\
-**signature:** `(ft-get-supply token-name)`
+**signature:** `(ft-get-supply token-name)`\
+**cost:** `420` runtime + 1 read
 
 **description:**\
 Returns circulating supply for the `token-name`. Token must be defined with `define-fungible-token`.
@@ -1133,7 +1213,8 @@ Introduced in: **Clarity 1**
 
 **input:** `TokenName, uint, principal`\
 **output:** `(response bool uint)`\
-**signature:** `(ft-mint? token-name amount recipient)`
+**signature:** `(ft-mint? token-name amount recipient)`\
+**cost:** `1479` runtime + 2 reads + 2 writes
 
 **description:**\
 Mints `amount` of `token-name` to `recipient`. Non-positive amount returns `(err 1)`. On success returns `(ok true)`.
@@ -1153,7 +1234,8 @@ Introduced in: **Clarity 1**
 
 **input:** `TokenName, uint, principal, principal`\
 **output:** `(response bool uint)`\
-**signature:** `(ft-transfer? token-name amount sender recipient)`
+**signature:** `(ft-transfer? token-name amount sender recipient)`\
+**cost:** `549` runtime + 2 reads + 2 writes
 
 **description:**\
 Transfers `amount` of `token-name` from `sender` to `recipient` (token must be defined in contract). Anyone can call; proper guards are expected. Returns `(ok true)` on success. Error codes: `(err u1)` insufficient balance, `(err u2)` sender==recipient, `(err u3)` non-positive amount.
@@ -1174,7 +1256,8 @@ Introduced in: **Clarity 1**
 
 **input:** `KeyName, (tuple) | (optional (tuple))`\
 **output:** `A`\
-**signature:** `(get key-name tuple)`
+**signature:** `(get key-name tuple)`\
+**cost:** `4n×log₂(n) + 1736` runtime (where n = number of tuple keys)
 
 **description:**\
 Fetches value associated with `key-name` from a tuple. If an optional tuple is supplied and is `none`, returns `none`.
@@ -1319,7 +1402,8 @@ Introduced in: **Clarity 1**
 
 **input:** `buff|uint|int`\
 **output:** `(buff 20)`\
-**signature:** `(hash160 value)`
+**signature:** `(hash160 value)`\
+**cost:** `1n + 188` runtime (where n = serialized input size in bytes)
 
 **description:**\
 Computes RIPEMD160(SHA256(x)). If input is an integer, it is hashed over its little-endian representation.
@@ -1338,7 +1422,8 @@ Introduced in: **Clarity 1**
 
 **input:** `bool, A, A`\
 **output:** `A`\
-**signature:** `(if bool1 expr1 expr2)`
+**signature:** `(if bool1 expr1 expr2)`\
+**cost:** `168` runtime (static)
 
 **description:**\
 Conditional expression: evaluates and returns `expr1` if `bool1` is true, otherwise `expr2`. Both exprs must return the same type.
@@ -1379,7 +1464,8 @@ Introduced in: **Clarity 2**
 
 **input:** `sequence_A, A`\
 **output:** `(optional uint)`\
-**signature:** `(index-of? sequence item)`
+**signature:** `(index-of? sequence item)`\
+**cost:** `1n + 211` runtime (where n = serialized size of sequence + item in bytes)
 
 **description:**\
 Returns first index of `item` in sequence using `is-eq`. Returns `none` if not found or if empty string/buffer. In Clarity 1, `index-of` must be used (without the `?`). The `?` is added in Clarity 2 for consistency -- built-ins that return responses or optionals end in `?`. The Clarity 1 spelling is left as an alias in Clarity 2 for backwards compatibility.
@@ -1402,7 +1488,8 @@ Introduced in: **Clarity 2**
 
 **input:** `int | uint`\
 **output:** `(string-ascii 40)`\
-**signature:** `(int-to-ascii (int|uint))`
+**signature:** `(int-to-ascii (int|uint))`\
+**cost:** `147` runtime (static)
 
 **description:**\
 Converts an integer to its ASCII string representation. Available starting Stacks 2.1.
@@ -1422,7 +1509,8 @@ Introduced in: **Clarity 2**
 
 **input:** `int | uint`\
 **output:** `(string-utf8 40)`\
-**signature:** `(int-to-utf8 (int|uint))`
+**signature:** `(int-to-utf8 (int|uint))`\
+**cost:** `181` runtime (static)
 
 **description:**\
 Converts an integer to its UTF-8 string representation. Available starting Stacks 2.1.
@@ -1442,7 +1530,8 @@ Introduced in: **Clarity 1**
 
 **input:** `A, A, ...`\
 **output:** `bool`\
-**signature:** `(is-eq v1 v2...)`
+**signature:** `(is-eq v1 v2...)`\
+**cost:** `7n + 151` runtime (where n = total serialized input size in bytes)
 
 **description:**\
 Returns `true` if all inputs are equal. Unlike `and`, does not short-circuit. All arguments must be the same type.
@@ -1483,7 +1572,8 @@ Introduced in: **Clarity 2**
 
 **input:** `principal`\
 **output:** `bool`\
-**signature:** `(is-standard standard-or-contract-principal)`
+**signature:** `(is-standard standard-or-contract-principal)`\
+**cost:** `127` runtime (static)
 
 **description:**\
 Tests whether a principal matches the current network type (mainnet vs testnet) and therefore can spend tokens on that network. Available starting Stacks 2.1.
@@ -1502,7 +1592,8 @@ Introduced in: **Clarity 1**
 
 **input:** `buff|uint|int`\
 **output:** `(buff 32)`\
-**signature:** `(keccak256 value)`
+**signature:** `(keccak256 value)`\
+**cost:** `1n + 127` runtime (where n = serialized input size in bytes)
 
 **description:**\
 Computes KECCAK256(value). If input is an integer, it is hashed over its little-endian representation.
@@ -1521,7 +1612,8 @@ Introduced in: **Clarity 1**
 
 **input:** `sequence_A`\
 **output:** `uint`\
-**signature:** `(len sequence)`
+**signature:** `(len sequence)`\
+**cost:** `429` runtime (static)
 
 **description:**\
 Returns length of a sequence. Applies to `(list A)`, `buff`, `string-ascii`, `string-utf8`.
@@ -1542,7 +1634,8 @@ Introduced in: **Clarity 1**
 
 **input:** `((name1 AnyType) ...), AnyType, ... A`\
 **output:** `A`\
-**signature:** `(let ((name1 expr1) ...) expr-body1 ... expr-body-last)`
+**signature:** `(let ((name1 expr1) ...) expr-body1 ... expr-body-last)`\
+**cost:** `117n + 178` runtime (where n = number of bindings)
 
 **description:**\
 Binds sequential variables then evaluates the body expressions in that context. Returns last body expression's value.
@@ -1564,7 +1657,8 @@ Introduced in: **Clarity 1**
 
 **input:** `A, ...`\
 **output:** `(list A)`\
-**signature:** `(list expr1 expr2 expr3 ...)`
+**signature:** `(list expr1 expr2 expr3 ...)`\
+**cost:** `14n + 164` runtime (where n = total list size in bytes)
 
 **description:**\
 Constructs a list from supplied values (must be same type).
@@ -1583,7 +1677,8 @@ Introduced in: **Clarity 1**
 
 **input:** `int | uint`\
 **output:** `int | uint`\
-**signature:** `(log2 n)`
+**signature:** `(log2 n)`\
+**cost:** `133` runtime (static)
 
 **description:**\
 Returns floor(log2(n)). Fails on negative numbers.
@@ -1603,7 +1698,8 @@ Introduced in: **Clarity 1**
 
 **input:** `Function(A, B, ..., N) -> X, sequence_A, sequence_B, ...`\
 **output:** `(list X)`\
-**signature:** `(map func sequence_A sequence_B ...)`
+**signature:** `(map func sequence_A sequence_B ...)`\
+**cost:** `1198n + 3067` runtime (where n = number of arguments)
 
 **description:**\
 Applies `func` to each corresponding element of input sequences and returns a list of results. `func` must be a literal function name. Output is always a list.
@@ -1726,7 +1822,8 @@ Introduced in: **Clarity 1**
 
 **input:** `(optional A) name expression expression | (response A B) name expression name expression`\
 **output:** `C`\
-**signature:** `(match opt-input some-binding-name some-branch none-branch) | (match-resp input ok-binding-name ok-branch err-binding-name err-branch)`
+**signature:** `(match opt-input some-binding-name some-branch none-branch) | (match-resp input ok-binding-name ok-branch err-binding-name err-branch)`\
+**cost:** `264` runtime (static)
 
 **description:**\
 Destructures `optional` and `response` types and evaluates only the matching branch. See original for type-checking caveats.
@@ -1750,7 +1847,8 @@ Introduced in: **Clarity 1**
 
 **input:** `tuple, tuple`\
 **output:** `tuple`\
-**signature:** `(merge tuple { key1: val1 })`
+**signature:** `(merge tuple { key1: val1 })`\
+**cost:** `4n + 408` runtime (where n = serialized size of both input tuples in bytes)
 
 **description:**\
 Returns a new tuple combining fields (non-mutating).
@@ -1767,9 +1865,10 @@ Returns a new tuple combining fields (non-mutating).
 
 Introduced in: **Clarity 1**
 
-**input:** `int, int | uint, uint | string-ascii, string-ascii | string-utf8, string-utf8 | buff, buff`\
+**input:** `int, int | uint, uint`\
 **output:** `int | uint`\
-**signature:** `(mod i1 i2)`
+**signature:** `(mod i1 i2)`\
+**cost:** `141` runtime (static)
 
 **description:**\
 Returns remainder of integer division; division by zero throws runtime error.
@@ -1900,7 +1999,8 @@ Introduced in: **Clarity 1**
 
 **input:** `bool`\
 **output:** `bool`\
-**signature:** `(not b1)`
+**signature:** `(not b1)`\
+**cost:** `138` runtime (static)
 
 **description:**\
 Returns the inverse of the boolean input.
@@ -1920,7 +2020,8 @@ Introduced in: **Clarity 1**
 
 **input:** `A`\
 **output:** `(response A B)`\
-**signature:** `(ok value)`
+**signature:** `(ok value)`\
+**cost:** `199` runtime (static)
 
 **description:**\
 The `ok` function constructs a response type from the input value. Use `ok` for creating return values in public functions. An _ok_ value indicates that any database changes during the processing of the function should materialize.
@@ -1939,7 +2040,8 @@ Introduced in: **Clarity 1**
 
 **input:** `bool, ...`\
 **output:** `bool`\
-**signature:** `(or b1 b2 ...)`
+**signature:** `(or b1 b2 ...)`\
+**cost:** `3n + 120` runtime (where n = number of arguments)
 
 **description:**\
 Returns `true` if any boolean inputs are `true`. Importantly, the supplied arguments are evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `true`, the function short-circuits, and no subsequent arguments are evaluated.
@@ -1956,9 +2058,10 @@ Returns `true` if any boolean inputs are `true`. Importantly, the supplied argum
 
 Introduced in: **Clarity 1**
 
-**input:** `int, int | uint, uint | string-ascii, string-ascii | string-utf8, string-utf8 | buff, buff`\
+**input:** `int, int | uint, uint`\
 **output:** `int | uint`\
-**signature:** `(pow i1 i2)`
+**signature:** `(pow i1 i2)`\
+**cost:** `143` runtime (static)
 
 **description:**\
 Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error. Note: Corner cases are handled with the following rules:
@@ -2057,7 +2160,8 @@ Introduced in: **Clarity 1**
 
 **input:** `(buff 33)`\
 **output:** `(response principal uint)`\
-**signature:** `(principal-of? public-key)`
+**signature:** `(principal-of? public-key)`\
+**cost:** `984` runtime (static)
 
 **description:**\
 The `principal-of?` function returns the principal derived from the provided public key. If the `public-key` is invalid, it will return the error code `(err u1).`.
@@ -2078,7 +2182,8 @@ Introduced in: **Clarity 1**
 
 **input:** `A`\
 **output:** `A`\
-**signature:** `(print expr)`
+**signature:** `(print expr)`\
+**cost:** `15n + 1458` runtime (where n = output size in bytes)
 
 **description:**\
 The `print` function evaluates and returns its input expression. On Stacks Core nodes configured for development (as opposed to production mining nodes), this function prints the resulting value to `STDOUT` (standard output).
@@ -2097,7 +2202,8 @@ Introduced in: **Clarity 2**
 
 **input:** `sequence_A, uint, A`\
 **output:** `(optional sequence_A)`\
-**signature:** `(replace-at? sequence index element)`
+**signature:** `(replace-at? sequence index element)`\
+**cost:** `1n + 561` runtime (where n = sequence type size (max) in bytes)
 
 **description:**\
 The `replace-at?` function takes in a sequence, an index, and an element, and returns a new sequence with the data at the index position replaced with the given element. The given element's type must match the type of the sequence, and must correspond to a single index of the input sequence. The return type on success is the same type as the input sequence.
@@ -2159,7 +2265,8 @@ Introduced in: **Clarity 1**
 
 **input:** `(buff 32), (buff 65)`\
 **output:** `(response (buff 33) uint)`\
-**signature:** `(secp256k1-recover? message-hash signature)`
+**signature:** `(secp256k1-recover? message-hash signature)`\
+**cost:** `8655` runtime (static)
 
 **description:**\
 The `secp256k1-recover?` function recovers the public key used to sign the message which sha256 is `message-hash` with the provided `signature`. If the signature does not match, it will return the error code `(err u1).`. If the signature is invalid, it will return the error code `(err u2).`. The signature includes 64 bytes plus an additional recovery id (00..03) for a total of 65 bytes.
@@ -2178,7 +2285,8 @@ Introduced in: **Clarity 1**
 
 **input:** `(buff 32), (buff 64) | (buff 65), (buff 33)`\
 **output:** `bool`\
-**signature:** `(secp256k1-verify message-hash signature public-key)`
+**signature:** `(secp256k1-verify message-hash signature public-key)`\
+**cost:** `8349` runtime (static)
 
 **description:**\
 The `secp256k1-verify` function verifies that the provided signature of the message-hash was signed with the private key that generated the public key. The `message-hash` is the `sha256` of the message. The signature includes 64 bytes plus an optional additional recovery id (00..03) for a total of 64 or 65 bytes.
@@ -2287,7 +2395,8 @@ Introduced in: **Clarity 2**
 
 **input:** `sequence_A, uint, uint`\
 **output:** `(optional sequence_A)`\
-**signature:** `(slice? sequence left-position right-position)`
+**signature:** `(slice? sequence left-position right-position)`\
+**cost:** `448` runtime (static)
 
 **description:**\
 The `slice?` function attempts to return a sub-sequence of that starts at `left-position` (inclusive), and ends at `right-position` (non-inclusive). If `left_position`==`right_position`, the function returns an empty sequence. If either `left_position` or `right_position` are out of bounds OR if `right_position` is less than `left_position`, the function returns `none`.
@@ -2311,7 +2420,8 @@ Introduced in: **Clarity 1**
 
 **input:** `A`\
 **output:** `(optional A)`\
-**signature:** `(some value)`
+**signature:** `(some value)`\
+**cost:** `199` runtime (static)
 
 **description:**\
 The `some` function constructs a `optional` type from the input value.
@@ -2331,7 +2441,8 @@ Introduced in: **Clarity 1**
 
 **input:** `int | uint`\
 **output:** `int | uint`\
-**signature:** `(sqrti n)`
+**signature:** `(sqrti n)`\
+**cost:** `142` runtime (static)
 
 **description:**\
 Returns the largest integer that is less than or equal to the square root of `n`.\
@@ -2406,7 +2517,8 @@ Introduced in: **Clarity 2**
 
 **input:** `principal`\
 **output:** `(tuple (locked uint) (unlock-height uint) (unlocked uint))`\
-**signature:** `(stx-account owner)`
+**signature:** `(stx-account owner)`\
+**cost:** `4654` runtime + 1 read (static)
 
 **description:**\
 `stx-account` is used to query the STX account of the `owner` principal.
@@ -2427,7 +2539,8 @@ Introduced in: **Clarity 1**
 
 **input:** `uint, principal`\
 **output:** `(response bool uint)`\
-**signature:** `(stx-burn? amount sender)`
+**signature:** `(stx-burn? amount sender)`\
+**cost:** `4640` runtime + 1 read + 1 write
 
 **description:**\
 `stx-burn?` decreases the `sender` principal's STX holdings by `amount`, specified in microstacks, by destroying the STX. The `sender` principal _must_ be equal to the current context's `tx-sender`.
@@ -2451,7 +2564,8 @@ Introduced in: **Clarity 1**
 
 **input:** `principal`\
 **output:** `uint`\
-**signature:** `(stx-get-balance owner)`
+**signature:** `(stx-get-balance owner)`\
+**cost:** `4294` runtime + 1 read (static)
 
 **description:**\
 `stx-get-balance` is used to query the STX balance of the `owner` principal.
@@ -2473,7 +2587,8 @@ Introduced in: **Clarity 2**
 
 **input:** `uint, principal, principal, buff`\
 **output:** `(response bool uint)`\
-**signature:** `(stx-transfer-memo? amount sender recipient memo)`
+**signature:** `(stx-transfer-memo? amount sender recipient memo)`\
+**cost:** `4709` runtime + 1 read + 1 write
 
 **description:**\
 Same as `stx-transfer?` but includes a `memo` buffer. Returns same error codes as `stx-transfer?`.
@@ -2492,7 +2607,8 @@ Introduced in: **Clarity 1**
 
 **input:** `uint, principal, principal`\
 **output:** `(response bool uint)`\
-**signature:** `(stx-transfer? amount sender recipient)`
+**signature:** `(stx-transfer? amount sender recipient)`\
+**cost:** `4640` runtime + 1 read + 1 write
 
 **description:**\
 `stx-transfer?` is used to increase the STX balance for the `recipient` principal by debiting the `sender` principal by `amount`, specified in microstacks. The `sender` principal _must_ be equal to the current context's `tx-sender`.
@@ -2540,7 +2656,8 @@ Introduced in: **Clarity 2**
 
 **input:** `any`\
 **output:** `(optional buff)`\
-**signature:** `(to-consensus-buff? value)`
+**signature:** `(to-consensus-buff? value)`\
+**cost:** `1n + 233` runtime (where n = serialized size in bytes)
 
 **description:**\
 `to-consensus-buff?` is a special function that will serialize any Clarity value into a buffer, using the SIP-005 serialization of the Clarity value. Not all values can be serialized: some value's consensus serialization is too large to fit in a Clarity buffer (this is because of the type prefix in the consensus serialization).
@@ -2567,7 +2684,8 @@ Introduced in: **Clarity 1**
 
 **input:** `uint`\
 **output:** `int`\
-**signature:** `(to-int u)`
+**signature:** `(to-int u)`\
+**cost:** `135` runtime (static)
 
 **description:**\
 Tries to convert the `uint` argument to an `int`. Will cause a runtime error and abort if the supplied argument is >= `pow(2, 127)`
@@ -2586,7 +2704,8 @@ Introduced in: **Clarity 1**
 
 **input:** `int`\
 **output:** `uint`\
-**signature:** `(to-uint i)`
+**signature:** `(to-uint i)`\
+**cost:** `135` runtime (static)
 
 **description:**\
 Tries to convert the `int` argument to a `uint`. Will cause a runtime error and abort if the supplied argument is negative.
@@ -2605,7 +2724,8 @@ Introduced in: **Clarity 1**
 
 **input:** `(optional A) | (response A B)`\
 **output:** `A`\
-**signature:** `(try! option-input)`
+**signature:** `(try! option-input)`\
+**cost:** `240` runtime (static)
 
 **description:**\
 The `try!` function attempts to 'unpack' the first argument: if the argument is an option type, and the argument is a `(some ...)` option, `try!` returns the inner value of the option. If the argument is a response type, and the argument is an `(ok ...)` response, `try!` returns the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `none` value, `try!` _returns_ either `none` or the `(err ...)` value from the current function and exits the current control-flow.
@@ -2634,7 +2754,8 @@ Introduced in: **Clarity 1**
 
 **input:** `(key-name A), ...`\
 **output:** `(tuple (key-name A) ...)`\
-**signature:** `(tuple (key0 expr0) (key1 expr1) ...)`
+**signature:** `(tuple (key0 expr0) (key1 expr1) ...)`\
+**cost:** `10n×log₂(n) + 1876` runtime (where n = number of tuple keys)
 
 **description:**\
 The `tuple` special form constructs a typed tuple from the supplied key and expression pairs. A `get` function can use typed tuples as input to select specific values from a given tuple. Key names may not appear multiple times in the same tuple definition. Supplied expressions are evaluated and associated with the expressions' paired key name.
@@ -2973,9 +3094,10 @@ Introduced in: **Clarity 4**
 
 Introduced in: **Clarity 1**
 
-**input:** `int, int | uint, uint | string-ascii, string-ascii | string-utf8, string-utf8 | buff, buff`\
+**input:** `int, int | uint, uint`\
 **output:** `int | uint`\
-**signature:** `(xor i1 i2)`
+**signature:** `(xor i1 i2)`\
+**cost:** `15n + 129` runtime (where n = number of arguments)
 
 **description:**\
 Returns the result of bitwise exclusive or'ing `i1` with `i2`.
