@@ -38,7 +38,7 @@ Hiro has also created a Clarity VS Code extension which makes it much easier to 
 
 ### Terminal
 
-You'll also want a terminal of some kind. You can use the built-in terminal provided by Cursor or you can download a standalone termainl such as [Warp](https://warp.dev).
+You'll also want a terminal of some kind. You can use the built-in terminal provided by Cursor or you can download a standalone terminal such as [Warp](https://warp.dev).
 
 ### Node
 
