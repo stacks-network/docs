@@ -143,7 +143,7 @@ Solution: Check the contract exists at your block height.
 {% step %}
 **Visit the playground**
 
-Go to: [https://play.hiro.so/?remote\_data=true](https://play.hiro.so/?remote_data=true)
+Go to: [https://play.stackslabs.com/?remote\_data=true](https://play.stackslabs.com/?remote_data=true)
 {% endstep %}
 
 {% step %}

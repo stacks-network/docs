@@ -30,10 +30,6 @@ There are two primary ways to migrate aeUSDC tokens to USDCx. We’ll explain bo
 
 <summary>Swap via Bitflow's Conversion Pool</summary>
 
-{% hint style="warning" %}
-Please note, the first aeUSDC:USDCx pool will be available in early January via Bitflow. This pool is not yet live.
-{% endhint %}
-
 aeUSDC holders can use the aeUSDC/USDC pool on Bitflow. This is the fastest and cheapest way to migrate to USDCx.
 
 * Navigate to Swaps in the [Bitflow app](https://app.bitflow.finance/trade).&#x20;
@@ -47,7 +43,7 @@ aeUSDC holders can use the aeUSDC/USDC pool on Bitflow. This is the fastest and 
 
 <details>
 
-<summary><strong>Bridge via Allbridge Classic</strong></summary>
+<summary>Bridge via Allbridge Classic</summary>
 
 Users can bridge aeUSDC back to Ethereum and then bridge back to mint USDCx on Stacks.
 

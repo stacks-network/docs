@@ -27,7 +27,7 @@ The reward amounts are:
 
 These "halvings" are synchronized with Bitcoin halvings.
 
-<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure></div>
 
 ### Transaction fees
 
@@ -37,7 +37,7 @@ Miners receive Stacks fees for transactions mined in any block they produce.
 
 Block rewards and transaction fees take 100 blocks on the Bitcoin blockchain to mature. After successfully mining a block your rewards appear in your Stacks account after \~24 hours.
 
-### Mining with proof-of-transfer
+### Mining with Proof-of-Transfer
 
 Miners commit Bitcoin to **two** addresses in every leader block commit. The amount committed to each address must be the same. The addresses are chosen from the current reward set of stacking participants. Addresses are chosen using a verifiable-random-function, and determining the correct two addresses for a given block requires monitoring the Stacks chain.
 
@@ -48,7 +48,7 @@ For more detailed information on this process, read [SIP-007](https://github.com
 PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of sending the committed Bitcoin to a burn address, it's transferred to eligible STX holders that participate in the stacking protocol.
 
 {% hint style="info" %}
-A PoX miner can only receive newly minted STX tokens when they transfer Bitcoin to eligible owners of STX tokens
+A PoX miner can only receive newly minted STX tokens when they transfer Bitcoin to eligible owners of STX tokens.
 {% endhint %}
 
 <figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
@@ -64,11 +64,9 @@ Miners run Stacks nodes with mining enabled to participate in the PoX mechanism.
 
 The miner who is selected to mine the next block is chosen depending on the amount of BTC the miners sent, that is, transferred or burnt.
 
-The probability for a miner to mine the next block is determined using a variation of the Assumed Total Commitment with Carryforward (ATC-C) MEV mitigation strategy described in [this document](https://github.com/stacksgov/sips/blob/feat/sip-021-nakamoto/sips/sip-021/MEV-Report.pdf) to allocate block rewards to miners. The probability a miner will win the sortition and be granted the current tenure will be based on a function that accounts for the total block commit spend on the blocks leading up to the current sortition.
+The probability for a miner to mine the next block is determined using a variation of the Assumed Total Commitment with Carryforward (ATC-C) MEV mitigation strategy, described in this [document](https://github.com/stacksgov/sips/blob/main/sips/sip-021/MEV-Report.pdf), to allocate block rewards to miners. The probability a miner will win the sortition and be granted the current tenure will be based on a function that accounts for the total block commit spend on the blocks leading up to the current sortition.
 
-You can read more about this in the [MEV section of SIP-021](https://github.com/stacksgov/sips/blob/feat/sip-021-nakamoto/sips/sip-021/sip-021-nakamoto.md#block-reward-distribution-and-mev).
-
-While there is no minimum BTC commitment enforced by the protocol, in practice, there's a floor constrained by [dust](https://unchained-capital.com/blog/dust-thermodynamics/): basically, if the fees for a transaction exceed the value of the spent output, it's considered dust. How dust is [calculated](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.cpp#L14) depends on a number of factors, we've found 5,500 satoshis to be good lower bound per [output](https://learnmeabitcoin.com/technical/output). Bitcoin transactions from Stacks miners contain two outputs (for Proof-of-Transfer), so a commitment of at least 11,000 satoshis / block is recommended.
+While there is no minimum BTC commitment enforced by the protocol, in practice, there's a floor constrained by dust: basically, if the fees for a transaction exceed the value of the spent output, it's considered dust. How dust is [calculated](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.cpp#L14) depends on a number of factors, we've found 5,500 satoshis to be good lower bound per output. Bitcoin transactions from Stacks miners contain two outputs (for Proof-of-Transfer), so a commitment of at least 11,000 satoshis / block is recommended.
 
 To calculate the amount of BTC to send miners should:
 
@@ -93,8 +91,9 @@ Miners cannot reorganize the chain. In the worst case, all miners can do is omit
 
 Furthermore, more miners on the network would mean fewer BTC rewards for Stackers, as miners would have to spend more of their funds on Bitcoin L1 fees rather than sending it to the Stackers.
 
-{% hint style="info" %}
-**Wouldn't more miners mean more competition, meaning more rewards?**
+<details>
+
+<summary><strong>Wouldn't more miners mean more competition, meaning more rewards?</strong></summary>
 
 The reason more miners means fewer rewards is because miners act economically rationally, and they don't have an unlimited amount of BTC to work with.
 
@@ -111,7 +110,8 @@ The total spend from all miners, if everyone is acting logically and we ignore S
 If that is from 5 miners, then it could be 10,000 Sats (2,000 Sats for each transaction) going to Bitcoin fees and 990,000 Sats going to PoX.
 
 If there are 100 miners, then it would be 200,000 Sats going to Bitcoin fees, and 800,000 Sats going to PoX.
-{% endhint %}
+
+</details>
 
 This creates a natural economic equilibrium where:
 
@@ -145,8 +145,12 @@ Unlike other chains where miners alone determine the canonical chain, Stacks' tw
 
 This separation of concerns between miners and stackers is what makes Stacks uniquely secure despite having a small number of miners.
 
-### What About Microblocks?
+<details>
+
+<summary>What happened to microblocks?</summary>
 
 Microblocks are a legacy feature of the previous version of Stacks that no longer exist. They were originally created as a way to improve transaction throughput, but without the functionality of Nakamoto, they never worked in practice.
 
 Instead of microblocks, Nakamoto instead utilizes a block production structure that creates Stacks blocks at a rapid cadence as described here.
+
+</details>

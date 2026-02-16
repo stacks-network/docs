@@ -59,6 +59,7 @@ The Single UTXO Model is designed to balance simplicity and operational efficien
 
 * The single UTXO is managed by the sBTC Bootstrap Signer Set, which requires a threshold of signers to approve any spending (multi-signature).
 * Regular audits and continuous monitoring are essential to ensure the UTXO accurately represents the total sBTC in circulation at all times.
+* The UTXO, held by the Signers' bitcoin address, is only spendable via a [key path spend](https://github.com/stacks-sbtc/sbtc/blob/7d8b2cb508f7068373ced808f6e9d28c92387b28/signer/src/keys.rs#L439-L441). This means there are no hidden taproot script path spends.
 
 {% hint style="warning" %}
 Security is paramount: multi-signature approval, audits, and monitoring are core controls to protect the peg wallet.

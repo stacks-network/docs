@@ -4,11 +4,11 @@
 
 ### Introduction
 
-Transactions are the fundamental unit of execution in the Stacks blockchain. Each transaction is originated from a Stacks account, and is retained in the Stacks blockchain history for eternity. This guide helps you understand Stacks transactions.
+Transactions are the fundamental unit of execution in Stacks. Each transaction is originated from a Stacks account, and is retained in the Stacks network history for eternity. This guide helps you understand Stacks transactions.
 
 ### Lifecycle
 
-Transactions go through phases before being finally confirmed, and available for all, on the Stacks 2.0 network.
+Transactions go through phases before being finally confirmed.
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/stacks-transaction-lifecycle.png" alt=""><figcaption></figcaption></figure></div>
 
@@ -34,7 +34,7 @@ Transactions are sent to a node.
 {% step %}
 **Register**
 
-A miner receives transactions, verifies, and adds them to the ["mempool,"](https://academy.binance.com/en/glossary/mempool) a holding area for all the pending transactions.
+A miner receives transactions, verifies, and adds them to the mempool, a holding area for all the pending transactions.
 {% endstep %}
 
 {% step %}
@@ -66,9 +66,3 @@ Stacks supports a set of different transaction types:
 | Token transfer            | `token_transfer`          | Asset transfer from a sender to a recipient                                                                                                                                                                                                                                 |
 | Contract deploy           | `smart_contract`          | Contract instantiation                                                                                                                                                                                                                                                      |
 | Contract call             | `contract_call`           | Contract call for a public, non read-only function                                                                                                                                                                                                                          |
-
-A sample of each transaction type can be found in the [Stacks Blockchain API response definition for transactions](https://docs.hiro.so/stacks/api/transactions/get-transaction).
-
-{% hint style="info" %}
-Read-only contract call calls do **not** require transactions. Read more about it in the network guide.
-{% endhint %}

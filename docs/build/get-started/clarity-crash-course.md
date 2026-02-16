@@ -20,7 +20,7 @@ Clarity is developed as a joint effort of [Hiro PBC](https://hiro.so/), [Algoran
 
 ### Your First Clarity Smart Contract
 
-We're going to walkthrough a basic Clarity smart contract using the [Clarity Playground](https://play.hiro.so/), an online REPL environment where you can write and run Clarity code in the browser. Visit that link and it will open up a new example contract for you on the left view, with an interactive REPL on the right view.
+We're going to walkthrough a basic Clarity smart contract using the [Clarity Playground](https://play.stackslabs.com/), an online REPL environment where you can write and run Clarity code in the browser. Visit that link and it will open up a new example contract for you on the left view, with an interactive REPL on the right view.
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/clarity-playground.png" alt=""><figcaption><p>The example counter contract provided when visiting the Clarity Playground</p></figcaption></figure></div>
 
@@ -372,7 +372,7 @@ This brief overview should get your feet wet with Clarity. For deeper learning, 
 
 * [Clarity Book](https://book.clarity-lang.org/title-page.html)
 * [Clarity Universe](https://clarity-lang.org/universe)
-* [Clarity Playground](https://play.hiro.so/)
+* [Clarity Playground](https://play.stackslabs.com/)
 * [Clarity Camp](https://learn.stacks.org/course/clarity-camp)
 * \[[StacksGov](https://github.com/stacksgov/sips/blob/main/sips/sip-002/sip-002-smart-contract-language.md)] SIP-002 The Clarity Smart Contract Language
 * \[[Hiro Blog](https://www.hiro.so/blog/web3-programming-languages-clarity-vs-solidity)] Web3 Programming Languages: Clarity vs. Solidity

@@ -24,14 +24,14 @@ It's important to note that post conditions do not live in smart contracts. They
 
 The problem they help address is a user interacting with a malicious smart contract that attempts to do something the user does not expect.
 
-But rather than simply being a UI feature of a wallet, these post conditions are built into the Stacks blockchain itself and are enforced at the protocol level.
+But rather than simply being a UI feature of a wallet, these post conditions are built into the Stacks network itself and are enforced at the protocol level.
 
-When you use a Stacks wallet like the Hiro web wallet and initiate a transaction, the wallet will display the post conditions set by the developer and tell the user exactly what is going to happen. If the action taken by the smart contract matches, the transaction goes through fine, otherwise it aborts.
+When you use a Stacks wallet and initiate a transaction, the wallet will display the post conditions set by the developer and tell the user exactly what is going to happen. If the action taken by the smart contract matches, the transaction goes through fine, otherwise it aborts.
 
 Here's what that looks like:
 
-<figure><img src="../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure></div>
 
-In this example, if the smart contract does not transfer one fabulous-frog NFT and and take 50 STX from the user, the transaction will abort.
+In this example, if the smart contract does not transfer one fabulous-frog NFT and take 50 STX from the user, the transaction will abort.
 
-You can learn more about how post conditions work in [SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-post-conditions) and how to utilize them in your applications in Hiro's excellent [post conditions tutorial](https://docs.hiro.so/stacks/stacks.js/guides/post-conditions).
+You can learn more about how post conditions work in [SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-post-conditions).

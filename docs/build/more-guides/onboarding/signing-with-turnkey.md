@@ -8,6 +8,8 @@ description: Leverage Stacks.js with Turnkey's embedded wallet solutions
 
 {% hint style="info" %}
 Currently, Turnkey does not natively support Stacks, but can be simply integrated together using the example below. Work is in progress for native Stacks support in Turnkey.
+
+The solution of this guide is also compatible with other external embedded wallet solutions such as with Privy. Check out this example of using Privy [here](https://github.com/STX-CITY/privy-stacks-integration-demo/tree/main/src).
 {% endhint %}
 
 ### Address derivation

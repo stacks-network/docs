@@ -55,7 +55,7 @@ If you’re responsible for operating or maintaining Stacks-related infrastructu
 {% endtab %}
 
 {% tab title="Reference" %}
-**Where do you look up technical details?**\
+**Where do you look up technical details such as types, definitions, and configuration?**\
 The [Reference](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/node-operations/readme) section contains authoritative technical documentation for Stacks devtools and APIs. This includes function and type definitions for Clarity and Stacks.js, API endpoint schemas, and interactive API playgrounds.
 
 If you’re an experienced Stacks developer looking to quickly reference a specific method, type, or API response, this section is built for fast lookup and precision.
@@ -68,6 +68,13 @@ The [Tutorials](https://app.gitbook.com/s/skGYu79qDNfITOqDNU3s/) section is desi
 These tutorials provide step-by-step walkthroughs alongside in-depth explanations of the underlying concepts. The goal isn’t just to help you complete a task, but to help you understand _why_ things work the way they do as you build.
 
 If you’re a complete beginner and prefer a classroom-style, concept-driven learning experience—this section is the best place to start.
+{% endtab %}
+
+{% tab title="Cookbook" %}
+**Looking for a specific code snippet?**\
+The [Cookbook](https://app.gitbook.com/s/uholC0CdufHxYs050O3V/) section is for developers beyond the exploratory phase who require a specific, concrete code solution quickly for an existing application.This section provides focused, reusable Clarity and Stacks.js code snippets that solve common problems or demonstrate specific patterns—designed to be referenced, copied, and adapted rather than read end-to-end.
+
+There is also a subsection of example Clarity contracts where you'll find **starter contracts** that demonstrate common patterns and best practices in Clarity, as well as **notable production contracts** currently used by popular Stacks applications.
 {% endtab %}
 {% endtabs %}
 

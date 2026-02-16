@@ -21,10 +21,10 @@ You can view testnet activity using the official [Stacks explorer](https://explo
 Testnet faucets provide you with mock Stacks (STX) tokens to test with. These testnet STX have no value and are not the same as STX on mainnet. There are a couple of different options for getting testnet STX.
 
 {% tabs %}
-{% tab title="Hiro" %}
-You can get testnet STX from the [Hiro Platform](https://platform.hiro.so/faucet), which is the recommended way.
+{% tab title="Platform" %}
+You can get testnet STX from the [Platform](https://platform.hiro.so/faucet), which is the recommended way.
 
-To get STX tokens from within the Hiro Platform, navigate to the "Faucet" tab at the top. You can then choose either testnet STX or sBTC, and then paste in your desired testnet STX address to receive.
+To get STX tokens from within the Platform, navigate to the "Faucet" tab at the top. You can then choose either testnet STX or sBTC, and then paste in your desired testnet STX address to receive.
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure></div>
 {% endtab %}

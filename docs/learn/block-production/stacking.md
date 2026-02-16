@@ -6,8 +6,8 @@ Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuabl
 
 `pox-4.clar` is the stacking contract. If you are interested in experimenting with proof of transfer use cases including state changes, solo stacking, and pool stacking, all the functions you’ll need can be found at the deployed contract:
 
-* Testnet: https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet
-* Mainnet: https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46?chain=mainnet
+* Testnet: [ST000000000000000000002AMW42H.pox-4](https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet)
+* Mainnet: [SP000000000000000000002Q6VF78.pox-4](https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46?chain=mainnet)
 
 ### Stacking vs Staking
 
@@ -32,7 +32,7 @@ Rather, if stackers do not perform their duties as signers, they simply cannot u
 Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks network.
 
 {% hint style="info" %}
-Stacking functionality is implemented as a smart contract, using Clarity. Read more about [the contract](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/clarity/example-contracts/stacking).
+Stacking functionality is implemented as a smart contract, using Clarity. Read more about [the contract](/broken/spaces/GVj1Z9vMuEOMe7oH7Wnq/pages/fc4fa1c229d8cb4deedf49de6dc1de0dc0b1ed72).
 {% endhint %}
 
 ### Locking and Unlocking STX
