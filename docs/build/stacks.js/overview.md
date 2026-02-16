@@ -76,14 +76,13 @@ Here's a simple example of reading data from a smart contract:
 
 ```typescript
 import { fetchCallReadOnlyFunction } from '@stacks/transactions';
-import { STACKS_MAINNET } from '@stacks/network';
 
 const result = await fetchCallReadOnlyFunction({
   contractAddress: 'SP2C1WREHGM75C7TGFAEJPFKTFTEGZKF6F9D4RK2D',
   contractName: 'my-contract',
   functionName: 'get-counter',
   functionArgs: [],
-  network: STACKS_MAINNET,
+  network: 'mainnet',
   senderAddress: 'SP2C1WREHGM75C7TGFAEJPFKTFTEGZKF6F9D4RK2D',
 });
 

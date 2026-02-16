@@ -43,18 +43,3 @@ const address = privateKeyToAddress(privateKey, 'devnet');
 For more advanced workflows, pass a custom network configuration object. See the `@stacks/network` package for details.
 {% endhint %}
 
-***
-
-## Network API Endpoints
-
-Each network has its own set of API endpoints:
-
-| Network | API Base URL | Explorer |
-| ------- | ------------ | -------- |
-| Mainnet | `https://api.hiro.so` | [explorer.hiro.so](https://explorer.hiro.so/) |
-| Testnet | `https://api.testnet.hiro.so` | [explorer.hiro.so/?chain=testnet](https://explorer.hiro.so/?chain=testnet) |
-| Devnet | `http://localhost:3999` | Local Clarinet explorer |
-
-{% hint style="warning" %}
-**Rate Limits**: Public API endpoints have rate limits. For production applications, consider using [Hiro Platform](https://www.hiro.so/platform) for higher limits and API key management.
-{% endhint %}

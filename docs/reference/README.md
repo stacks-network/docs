@@ -110,7 +110,7 @@ This section contains configuration options pertaining to the blockchain the sta
 | rpc\_port  |          | RPC port of `peer_host`                                                                                               |
 | peer\_port |          | P2P port of `peer_host`                                                                                               |
 
-**Mining**
+#### Mining
 
 | Name                             | Required | Description                                                                                        |
 | -------------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
