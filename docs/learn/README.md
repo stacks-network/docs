@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
 # Introduction
 
 <div data-with-frame="true"><figure><picture><source srcset=".gitbook/assets/bitcoin-stacks.png" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/bitcoin-stacks-dark.png" alt=""></picture><figcaption></figcaption></figure></div>
