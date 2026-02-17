@@ -1,75 +1,132 @@
 # How to Build on Bitcoin
 
-Until now, developers and users who wanted to build decentralized tools and to build an open, permissionless, decentralized economy didn't have much choice other than Ethereum or other chains like Solana, Avalanche, NEAR, etc.
+Until recently, developers and users wanting to build decentralized applications and an open, permissionless economy had limited options beyond Ethereum and other chains like Solana, Avalanche, and NEAR.
 
-Sure, we can build apps that utilize Bitcoin, but not at much more than the saving and payment level. I'm not discounting the importance of these things, but they aren't of much interest to developers and they aren't enough on which to build an economy.
+While we can build apps that utilize Bitcoin, their functionality is largely limited to saving and payments. These are important capabilities, but they don't provide the foundation needed to build a complete decentralized economy.
 
-We can't create a decentralized financial system using only Bitcoin. If you want to do things with your Bitcoin other than buy, hold, or pay (and even that is tough), you need to use centralized services and trusted intermediaries, or bridge over to other ecosystems.
+## The Challenge: Bitcoin's Limited Programmability
 
-If we want decentralized money, we also need the infrastructure and tools utilizing that money to be decentralized as well.
+We cannot create a comprehensive decentralized financial system using Bitcoin alone. If you want to do more with your Bitcoin than buy, hold, or pay (and even payments can be challenging), you must rely on centralized services, trusted intermediaries, or bridge to other ecosystems.
 
-What are some examples of this? Many DeFi tools tend to function much like ponzis, but how we can recreate existing financial instruments and come up with new ones that not only utilize Bitcoin as the money but also run on rails that are decentralized as well?
+For truly decentralized money, we need the infrastructure and tools that utilize that money to also be decentralized.
 
-Can we use Bitcoin in order to create decentralized financial products that are built on real money instead of thin air?
+## Use Cases for Bitcoin Smart Contracts
 
-A decent framework for understanding the use cases here is to think of anything that utilizes a contractual agreement between two parties. Once you start to think about this, you realize that almost every interaction you have in your daily life involves something like this.
+### Recreating Financial Instruments
 
-The majority of these are "handshake agreements" between two trusted parties, but a significant chunk of them are more official agreements with paperwork and terms laid out between two parties that may or may not have a personal relationship.
+How can we recreate existing financial instruments and develop new ones that not only utilize Bitcoin as money but also run on decentralized infrastructure?
 
-Or look at any existing financial instrument like loans and investments. How can we build these on decentralized rails so that they are accessible to everyone?
+Can we use Bitcoin to create decentralized financial products built on sound money rather than speculative assets?
 
-These are good examples of where smart contracts can help.
+### Contractual Agreements
 
-Loans are a prime example. If you want to borrow or lend Bitcoin in exchange for interest, you currently have to go through a centralized entity and custody your Bitcoin. If we can make that system decentralized as well, we unlock a whole new category of activity, utilizing Bitcoin, but without having to go through centralized entities.
+A useful framework for understanding these use cases is to consider anything involving a contractual agreement between two parties. When you examine your daily life through this lens, you'll realize that nearly every interaction involves some form of agreement.
 
-We can use things like DLCs to recreate some of this functionality, but DLCs are still relatively limited in what they can accomplish.
+Many of these are informal "handshake agreements" between trusted parties, but a significant portion are formal contracts with explicit terms between parties who may or may not have personal relationships.
 
-Remember that Bitcoin itself is designed to create a form of money that is permissionless and trust-minimized. Smart contracts are a way for us to take the actions that we actually take with that money and make them decentralized and trust-minimized as well.
+### Financial Products
 
-So how can we unlock robust smart contract functionality for Bitcoin without modifying the crucial properties that make it so secure and decentralized?
+Consider existing financial instruments like loans and investments. How can we build these on decentralized infrastructure to make them accessible to everyone?
 
-That's where Bitcoin layers come in.
+Smart contracts excel at enabling these use cases.
 
-This will be the main focus of the second half of this course, as we go in-depth into how to build things on Bitcoin using the Stacks L2 and the Clarity smart contract language.
+#### Example: Decentralized Lending
 
-For now, let's get a high-level overview of the earlier claim that we can build apps with comparable functionality to Ethereum on Bitcoin without modifying the core protocol.
+Loans are a prime example. If you want to borrow or lend Bitcoin in exchange for interest, you currently must go through a centralized entity that custodies your Bitcoin. Making this system decentralized unlocks an entirely new category of economic activity that uses Bitcoin without requiring centralized intermediaries.
 
-### Bitcoin's Limited Functionality
+While technologies like Discreet Log Contracts (DLCs) can recreate some of this functionality, they remain relatively limited in scope.
 
-The first thing we need to understand is that Bitcoin does have some fundamental programming ability utilizing its programming language, Script.
+### Preserving Bitcoin's Core Values
 
-However, what you can do with it is limited. We'll be covering this in great detail in future lessons, but you can't fundamentally trigger certain actions to happen based on Bitcoin transactions, you can't utilize any real-world data from oracles, and you can't create a robust state management system.
+Bitcoin itself is designed to create permissionless, trust-minimized money. Smart contracts extend this philosophy by making the actions we take with that money equally decentralized and trust-minimized.
 
-Outside of very limited use cases like DLCs or HTLCs, you can't write expressive smart contracts on Bitcoin.
+The critical question becomes: How can we unlock robust smart contract functionality for Bitcoin without modifying the crucial properties that make it secure and decentralized?
 
-Similarly, Bitcoin can handle only a few transactions per second, so the transactions don't scale well. Again, this is by design as it helps to keep the requirements to run a full node very low, increasing decentralization.
+**That's where Bitcoin layers come in.**
 
-Bitcoin layers can solve both of these problems. For now, we'll take a brief look at two of them: Lightning for scaling and Stacks for smart contracts.
+This will be the main focus of the second half of this course as we explore how to build on Bitcoin using the Stacks L2 and the Clarity smart contract language.
 
-### Bitcoin Layer 2 Solutions
+For now, let's examine the high-level concept that we can build applications with comparable functionality to Ethereum on Bitcoin without modifying the core protocol.
 
-#### Lightning <a href="#heading-lightning" id="heading-lightning"></a>
+## Understanding Bitcoin's Constraints
 
-Lightning is a P2P scaling solution for Bitcoin that utilizes Bitcoin's native script language and HTLCs to create a payment solution that can handle more transactions per second than the Visa network.
+### Script: Bitcoin's Programming Language
 
-It allows users to open channels with each other, make a series of transactions, and then write them all back to the main chain as a single batch transaction.
+Bitcoin has fundamental programming capability through its scripting language, Script. However, what you can accomplish with Script is inherently limited.
 
-Individual transactions occur off-chain on the P2P Lightning network and then settle back to Bitcoin. This allows for much faster transactions and a high capacity but fundamentally does not expand the functionality of Bitcoin.
+We'll cover this in detail in future lessons, but the key limitations include:
 
-That's where things like Stacks come in.
+- You cannot trigger arbitrary actions based on Bitcoin transactions
+- You cannot integrate real-world data from oracles
+- You cannot create a robust state management system
 
-Lightning is very interesting and will likely play a key role in the growth, evolution, and adoption of Bitcoin as usage grows, but it suffers from some key shortcomings that need to be overcome (things like liquidity issues) and doesn't enable us to build decentralized financial systems or more complex programming systems.
+Outside of very limited use cases like DLCs (Discreet Log Contracts) or HTLCs (Hash Time-Locked Contracts), you cannot write expressive smart contracts on Bitcoin.
 
-#### Stacks <a href="#heading-stacks" id="heading-stacks"></a>
+### Scalability Constraints
 
-Where Lightning allows the Bitcoin network to scale as far as the capacity for payments, Stacks is what expands the functionality and allows us to write smart contracts.
+Bitcoin can process only a few transactions per second, limiting scalability. This is by design—it keeps the requirements to run a full node very low, which increases decentralization.
 
-We'll cover Stacks in detail in the second half of this course, but the short version is that Stacks is a blockchain protocol that is connected to Bitcoin via its proof of transfer consensus mechanism.
+Bitcoin layers can address both the programmability and scalability challenges. Let's briefly examine two approaches: Lightning for scaling and Stacks for smart contracts.
 
-It has its own token but is anchored to Bitcoin and can't exist without Bitcoin.
+## Bitcoin Layer 2 Solutions
 
-It allows for fully expressive smart contract functionality using a language called Clarity, which is designed for security and safety.
+### Lightning
 
-The takeaway is that Stacks allows us to write smart contracts for Bitcoin, and with sBTC, allows us to do this _using_ Bitcoin itself, so Stacks can function more like an invisible programming layer, all done in a trust-minimized and decentralized manner.
+Lightning is a peer-to-peer scaling solution for Bitcoin that utilizes Bitcoin's native Script language and HTLCs to create a payment network capable of handling more transactions per second than the Visa network.
 
-The key takeaway is that it allows us to create the same level of functionality on Ethereum but on Bitcoin, without changing any of the things that make Bitcoin resilient.
+**How it works:**
+
+1. Users open payment channels with each other
+2. Multiple transactions occur off-chain within these channels
+3. All transactions settle back to the main Bitcoin chain as a single batch transaction
+
+Individual transactions occur off-chain on the peer-to-peer Lightning network and then settle to Bitcoin. This enables much faster transactions and higher throughput but fundamentally does not expand Bitcoin's functionality beyond payments.
+
+**Limitations:**
+
+While Lightning is innovative and will likely play a key role in Bitcoin's growth and adoption as usage scales, it faces challenges that need to be addressed:
+
+- Liquidity constraints in payment channels
+- Does not enable complex decentralized financial systems
+- Limited to payment-related use cases
+
+That's where solutions like Stacks become essential.
+
+### Stacks
+
+Where Lightning scales Bitcoin's payment capacity, Stacks expands Bitcoin's functionality by enabling smart contracts.
+
+We'll cover Stacks in detail in the second half of this course, but here's the essential overview:
+
+**What is Stacks?**
+
+Stacks is a blockchain protocol connected to Bitcoin via its Proof of Transfer (PoX) consensus mechanism. It has its own token (STX) but is fundamentally anchored to Bitcoin and cannot exist independently.
+
+**Key Features:**
+
+- **Fully expressive smart contracts** using Clarity, a language designed for security and predictability
+- **Bitcoin integration** through sBTC, allowing you to use actual Bitcoin in smart contracts
+- **Trust-minimized and decentralized** architecture that preserves Bitcoin's core values
+
+**The sBTC Advantage:**
+
+With sBTC, Stacks enables smart contract functionality _using Bitcoin itself_ as the asset. This allows Stacks to function as a programmability layer for Bitcoin, maintaining a trust-minimized and decentralized approach.
+
+## The Bottom Line
+
+Stacks enables the same level of functionality available on Ethereum but for Bitcoin—without changing any of the properties that make Bitcoin resilient, secure, and decentralized.
+
+This is how we build a complete Bitcoin economy while preserving what makes Bitcoin valuable: its security, decentralization, and trustless nature.
+
+---
+
+### What's Next
+
+In the following sections, we'll dive deep into:
+
+- How Stacks works technically
+- The Clarity smart contract language
+- Building your first Bitcoin application
+- Best practices for Bitcoin development
+
+Let's begin building the decentralized economy on Bitcoin.
