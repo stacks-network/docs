@@ -19,37 +19,9 @@ The Stacks layer for smart contracts has the following innovations that make it 
 **K**: Knowledge of full Bitcoin state; read from Bitcoin.\
 **S**: Scalable, fast transactions that settle on Bitcoin.
 
-#### All of this is accomplished by three core components:
-
-{% stepper %}
-{% step %}
-#### Proof of Transfer
-
-Proof of Transfer (PoX) is the block production mechanism of the Stacks chain. Essentially, it attempts to recreate the block production patterns of PoW programmatically. Stacks miners spend BTC for a chance to mine new Stacks blocks. Under the hood, this block production mechanism anchors Stacks blocks to Bitcoin blocks, making it as hard to reverse a Stacks block as it is to reverse a Bitcoin block. That's a big claim, and we unpack it in further detail in the sections on Nakamoto block production.
-
-[Learn more about PoX](stacks-101/proof-of-transfer.md)
-{% endstep %}
-
-{% step %}
-#### Clarity
-
-Clarity is the smart contract language that Stacks uses. It has been designed from the ground up to make it easier for developers to write safe, secure smart contracts. Additionally, since it has been purpose-built for Stacks and Bitcoin, there are built-in functions for reading Bitcoin state, which means you can use Bitcoin state to perform actions in Clarity. For example, you could set up a check to make sure a particular Bitcoin transaction has occurred before executing a mint function in Clarity, which just so happens to be what happens with the third component: sBTC.
-
-[Learn more about Clarity](clarity/)
-{% endstep %}
-
-{% step %}
-#### sBTC
-
-sBTC is the trust-minimized 2-way Bitcoin peg on the Stacks layer. sBTC is the key to making Bitcoin programmable and bringing full smart contract functionality to Bitcoin via Stacks. sBTC is not a federation, but operates as an open-network, decentralized 2-way peg solution to bring smart contract functionality to Bitcoin with as little counterparty risk as possible.
-
-[Learn more about sBTC](sbtc/)
-{% endstep %}
-{% endstepper %}
-
 ***
 
-### Why you need to learn the fundamentals of Stacks?
+### Why learn the fundamentals of Stacks?
 
 Stacks fundamentals give you the intuition to build apps that are safer, more Bitcoin-aligned, and more future-proof. A developer who learns the basics doesn’t just write Clarity—they build apps that actually _feel like_ Bitcoin apps.
 
