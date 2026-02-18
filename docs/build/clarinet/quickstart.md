@@ -137,5 +137,19 @@ $ (contract-call? .counter count-up)
 $ (contract-call? .counter get-count tx-sender)
 u2
 ```
+
+{% hint style="info" %}
+**Exiting the Console**: To exit the Clarinet console, type `exit` or press `Ctrl+C`. Your contract state will be reset when you restart the console.
+{% endhint %}
 {% endstep %}
 {% endstepper %}
+
+***
+
+## Common Beginner Mistakes
+
+{% hint style="info" %}
+For a deeper dive into common pitfalls and how to avoid them, check out this blog post: [5 Common Clarity Development Mistakes and How to Fix Them](https://dev.to/rajuice/5-common-clarity-development-mistakes-and-how-to-fix-them-3dl).
+{% endhint %}
+
+**A quick note on the `.` prefix**: In the Clarinet console, the `.` before a contract name (e.g., `.counter`) is shorthand for the fully qualified contract identifier. When you deploy contracts locally, they are deployed under your default deployer address. Writing `.counter` tells Clarity to look for the `counter` contract deployed by the current transaction sender. Without the `.` prefix, Clarity cannot resolve which contract you are referencing, and the call will fail with an `UnknownContract` error. This is one of the most common mistakes new Clarity developers encounter.

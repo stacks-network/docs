@@ -57,14 +57,37 @@ npm install @stacks/common
 
 Other available packages include:
 
-* `@stacks/auth`
-* `@stacks/encryption`
-* `@stacks/network`
-* `@stacks/stacking`
-* `@stacks/transactions`
-* `@stacks/bns`
-* `@stacks/common`
-* `@stacks/wallet-sdk`
+| Package | Description |
+| ------- | ----------- |
+| `@stacks/auth` | Authentication and identity management for Stacks applications |
+| `@stacks/encryption` | Encryption utilities for secure data handling |
+| `@stacks/network` | Network configuration for mainnet, testnet, and devnet |
+| `@stacks/stacking` | Stacking (PoX) operations and delegation management |
+| `@stacks/transactions` | Transaction building, signing, and broadcasting |
+| `@stacks/bns` | Bitcoin Name System (BNS) name registration and lookup |
+| `@stacks/common` | Shared utilities and types across Stacks.js packages |
+| `@stacks/wallet-sdk` | HD wallet generation and account derivation |
+
+***
+
+## Quick Example
+
+Here's a simple example of reading data from a smart contract:
+
+```typescript
+import { fetchCallReadOnlyFunction } from '@stacks/transactions';
+
+const result = await fetchCallReadOnlyFunction({
+  contractAddress: 'SP2C1WREHGM75C7TGFAEJPFKTFTEGZKF6F9D4RK2D',
+  contractName: 'my-contract',
+  functionName: 'get-counter',
+  functionArgs: [],
+  network: 'mainnet',
+  senderAddress: 'SP2C1WREHGM75C7TGFAEJPFKTFTEGZKF6F9D4RK2D',
+});
+
+console.log(result);
+```
 
 ***
 

@@ -32,3 +32,27 @@ Besides the actual content, each Space consists of:
 What kinds of changes are we looking for?
 
 If you see a typo, a missing guide or tutorial, an unclear explanation, or really anything else you think could improve the quality of the documentation, please feel free to open an issue or create a pull request.
+
+### Contribution Guidelines
+
+When contributing, please:
+
+1. **Create a descriptive PR title** that summarizes your changes
+2. **Reference any related issues** in your PR description
+3. **Ensure markdown formatting is correct** before submitting
+4. **Keep changes focused** - one PR should address one topic
+
+### Quick Links
+
+| Resource | Link |
+| -------- | ---- |
+| Live Documentation | [docs.stacks.co](https://docs.stacks.co) |
+| Stacks Explorer | [explorer.hiro.so](https://explorer.hiro.so) |
+| Developer Discord | [stacks.chat](https://stacks.chat) |
+| Stacks Forum | [forum.stacks.org](https://forum.stacks.org) |
+| Stacks Foundation | [stacks.org](https://stacks.org) |
+
+### Get Help
+
+- Join the **#documentation** channel on [Discord](https://stacks.chat) for questions about contributing
+- Tag `@docs-maintainers` on GitHub for urgent documentation issues

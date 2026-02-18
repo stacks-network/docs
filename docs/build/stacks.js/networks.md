@@ -42,3 +42,4 @@ const address = privateKeyToAddress(privateKey, 'devnet');
 {% hint style="info" %}
 For more advanced workflows, pass a custom network configuration object. See the `@stacks/network` package for details.
 {% endhint %}
+
