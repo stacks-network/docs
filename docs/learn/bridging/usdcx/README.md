@@ -32,6 +32,8 @@ For more info on xReserve, check out the dedicated Circle docs [here](https://de
 
 ### Security Audits
 
+{% file src="../../.gitbook/assets/USDCx Security Review.pdf" %}
+
 {% file src="../../.gitbook/assets/USDCX _ Final Audit.pdf" %}
 
 ***

@@ -369,7 +369,7 @@ The current version of the `clarity-bitcoin-lib` is version 7. Click [here](http
 ```
 {% endcode %}
 
-So after you've fetched the bitcoin tx metadata and have removed the witness data from the original transaction hex, let's go ahead and prepare the metadata into it's Clarity parameter values.
+So after you've fetched the bitcoin tx metadata and have removed the witness data from the original transaction hex, let's go ahead and prepare the metadata into its Clarity parameter values.
 
 {% code expandable="true" %}
 ```typescript

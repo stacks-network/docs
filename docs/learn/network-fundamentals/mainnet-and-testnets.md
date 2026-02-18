@@ -26,7 +26,7 @@ You can get testnet STX from the [Platform](https://platform.hiro.so/faucet), wh
 
 To get STX tokens from within the Platform, navigate to the "Faucet" tab at the top. You can then choose either testnet STX or sBTC, and then paste in your desired testnet STX address to receive.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure></div>
 {% endtab %}
 
 {% tab title="Sandbox" %}
