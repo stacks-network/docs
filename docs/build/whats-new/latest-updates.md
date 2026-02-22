@@ -4,11 +4,21 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### Improved Deployment Plan Format
+
+_February 14th, 2026_
+
+\[[**Clarinet**](https://github.com/stx-labs/clarinet/releases/tag/v3.14.0)] The latest release of Clarinet (v3.14.0) comes with many small improvements. You'll also notice that the structure of the Deployment plans has changed slightly. The old format is still supported and Clarinet will automatically migrate to the new one. This is to help us bring more improvement to deployment plans in the future. You have nothing to do, but don't be surprised by this change.
+
+Reminder: we are still seeing a lot of downloads on the deprecated NPM package `@hirosystems/clarinet-sdk`, only the new `@stacks/clarinet-sdk` is maintained.
+
+***
+
 ### Deprecation notices for Hiro's Chainhooks v1 & L1 APIs
 
 _February 6th, 2026_
 
-\[Hiro] **Chainhooks V2 is now available.** This is a huge upgrade with more capability, better performance, and much greater reliability. But it also means that Hiro is **deprecating their hosted Chainhooks v1 on March 9th**, so if you’re using Chainhooks via the Hiro Platform, now is the time to upgrade. Self hosted Chainhook instances aren’t affected by this.
+\[**Hiro**] **Chainhooks V2 is now available.** This is a huge upgrade with more capability, better performance, and much greater reliability. But it also means that Hiro is **deprecating their hosted Chainhooks v1 on March 9th**, so if you’re using Chainhooks via the Hiro Platform, now is the time to upgrade. Self hosted Chainhook instances aren’t affected by this.
 
 **L1 Bitcoin APIs shutting down March 9th.** Hiro is also deprecating their Ordinals, BRC-20, Runes, and Bitcoin Indexer APIs. They've partnered with Xverse to provide a smooth migration path for these use cases, and have put together a detailed migration guide to help you transition.
 
@@ -132,7 +142,7 @@ Navigate to the Clarinet section on [this](../clarinet/validation-and-analysis.m
 
 _January 12, 2026_
 
-\[[Stacks Core 3.3.0.0.4](https://github.com/stacks-network/stacks-core/releases/tag/3.3.0.0.4)] With dimension-specific tenure extensions, Stacks can extend block limits per dimension (likeruntimeandread\_countbudgets) instead of stopping early. This ensures DeFi protocols can process critical flows during high-volatility periods. Hear Alex Huth talk about this during the latest DevRel office hours [here](https://x.com/StacksDevs/status/2017601390345130421).
+\[[**Stacks Core 3.3.0.0.4**](https://github.com/stacks-network/stacks-core/releases/tag/3.3.0.0.4)] With dimension-specific tenure extensions, Stacks can extend block limits per dimension (likeruntimeandread\_countbudgets) instead of stopping early. This ensures DeFi protocols can process critical flows during high-volatility periods. Hear Alex Huth talk about this during the latest DevRel office hours [here](https://x.com/StacksDevs/status/2017601390345130421).
 
 ***
 
@@ -164,7 +174,7 @@ The API playground in the [RPC-API reference](https://app.gitbook.com/s/GVj1Z9vM
 
 _December 22, 2025_
 
-\[Hiro] This is a required upgrade for all API users (incl. partners & exchanges): adds support for smart contracts deployed with empty source code.
+\[**Hiro**] This is a required upgrade for all API users (incl. partners & exchanges): adds support for smart contracts deployed with empty source code.
 
 It's an easy upgrade: no DB migrations, and fully compatible with the current chainstate.
 

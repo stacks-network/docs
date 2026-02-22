@@ -66,6 +66,7 @@ async function transferStx() {
     recipient: 'ST2EB9WEQNR9P0K28D2DC352TM75YG3K0GT7V13CV',
     amount: '100',
     memo: 'Reimbursement',
+    network: 'devnet' // or "testnet", "mainnet"
   });
 
   console.log('Transaction ID:', response.txId);
@@ -87,7 +88,8 @@ async function deployContract() {
   const response = await request('stx_deployContract', {
     name: 'my-contract',
     clarityCode: codeBody,
-    clarityVersion: 3,
+    clarityVersion: 4,
+    network: 'devnet' // or "testnet", "mainnet"
   });
 
   console.log('Transaction ID:', response.txId);
@@ -120,6 +122,7 @@ async function callContract() {
     contractName: 'my-contract',
     functionName: 'say-hi',
     functionArgs: [],
+    network: 'devnet' // or "testnet", "mainnet"
   });
 
   console.log('Transaction ID:', response.txId);
@@ -160,6 +163,7 @@ async function handleTransaction() {
   const response = await request('stx_transferStx', {
     recipient: 'ST2EB9WEQNR9P0K28D2DC352TM75YG3K0GT7V13CV',
     amount: '100',
+    network: 'devnet' // or "testnet", "mainnet"
   });
 
   const explorerUrl = `https://explorer.stacks.co/txid/${response.txId}`;

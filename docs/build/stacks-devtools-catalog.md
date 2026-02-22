@@ -55,7 +55,6 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 
 * [**Stacks Blockchain APIs**](https://github.com/hirosystems/stacks-blockchain-api) **\[Hiro]** – High-performance APIs to query blockchain data, explore blocks, transactions, smart contracts, and more, without running your own node.
 * [**Token Metadata APIs**](https://github.com/hirosystems/token-metadata-api) **\[Hiro] -** Fetch metadata for every token on Stacks and effortlessly put tokens into your app. Verify and display tokens in your app, for everything from DeFi to NFTs.&#x20;
-* [**Bitcoin Indexer**](https://github.com/hirosystems/bitcoin-indexer) **\[Hiro] -** Index Bitcoin meta-protocols like Ordinals, BRC-20, and Runes.
 * [**Chainhooks**](https://github.com/hirosystems/chainhook) **\[Hiro]** – A notification service for dApps that triggers webhooks on specific blockchain events, helping you respond to transactions, contract calls, and chain reorganizations in real time.
 
 <details>
@@ -66,6 +65,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 * [**BNS**](https://www.bnsv2.com/docs) - [API](https://github.com/Strata-Labs/bnsv2-api) and [SDK](https://github.com/Strata-Labs/bns-v2-sdk) documentation for BNSv2, covering how to programmatically register, resolve, and manage Bitcoin Name System identities using on-chain contracts and developer libraries.
 * [**Signal21**](https://signal21.io/) - Data analytics platform for the Bitcoin Economy: on-chain visibility into Bitcoin L1, L2s, and Dapps.
 * [**Velar Devtools**](https://docs.velar.com/velar/developers) - Velar SDK and APIs allowing developers to implement token swaps, manage liquidity, and interact with the Velar DEX/DeFi ecosystem.
+* [**Bitcoin Indexer**](https://github.com/hirosystems/bitcoin-indexer) **-** Index Bitcoin meta-protocols like Ordinals, BRC-20, and Runes.
 * [**Bitflow Devtools**](https://docs.bitflow.finance/bitflow-documentation/developers/overview) - Documentation on Bitflow's SDKs and contracts for interacting with Bitflow's DeFi ecosystem.
 * [**x402-Stacks**](https://github.com/tony1908/x402Stacks) - A TypeScript library for implementing the x402 payment protocol on Stacks blockchain.&#x20;
 * [**StacksAgent MCP**](https://github.com/kai-builder/stacksagent-mcp) - A Model Context Protocol (MCP) server that enables Claude Desktop to interact with the Stacks blockchain.
@@ -115,7 +115,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 
 ***
 
-### Docs & Education
+### Docs & Standards
 
 * [**Hiro Docs**](https://docs.hiro.so/) **\[Hiro]** - Official Hiro developer documentation website.
 * [**Stacks Docs**](https://docs.stacks.co/) **\[StacksLabs]** - Official Stacks developer documentation website.
@@ -131,6 +131,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 <summary>Community &#x26; Experimental</summary>
 
 * [**Stacks-Monitoring**](https://github.com/alexlmiller/stacks-monitoring) - Observability stack for Stacks blockchain nodes and signers - dashboards, alerts, and log processing.
+* [**Stacks Academy**](https://simone-stacks.github.io/stacks-academy/introduction.html) - A comprehensive guide to the `stacks-core` Rust codebase, covering every major subsystem from foundational types through Nakamoto consensus and the signer architecture.
 
 </details>
 
