@@ -23,6 +23,23 @@ MacOS with an ARM (M-series chip) processor is NOT recommended
 The way Docker for Mac on an Arm CPU is designed makes the I/O incredibly slow, and blockchains are _**very**_ heavy on I/O. This only seems to affect MacOS with the M-series chip, other Arm based systems like Raspberry Pi work as expected.
 {% endhint %}
 
+### Storage
+
+A fully synced Stacks node can use significant disk space and will continue to grow. If your boot drive doesn't have enough room, mount a dedicated disk and symlink the `persistent-data` directory before starting the node:
+
+{% code title="Point persistent-data to an external disk" %}
+```bash
+# If persistent-data already exists, move its contents first
+mv persistent-data/mainnet /mnt/stacks-data/mainnet
+rmdir persistent-data
+
+# Create the symlink
+ln -s /mnt/stacks-data persistent-data
+```
+{% endcode %}
+
+The Docker volumes write to `persistent-data/mainnet/`, so the symlink redirects all chainstate, database, and event data to the external disk transparently.
+
 ### Quickstart
 
 The `<network>` placeholder used below can be replaced with one of:
@@ -33,7 +50,7 @@ The `<network>` placeholder used below can be replaced with one of:
 
 {% stepper %}
 {% step %}
-### Clone the repository
+#### Clone the repository
 
 Clone the stacks-blockchain-docker repository locally and change into the directory:
 
@@ -45,7 +62,7 @@ git clone https://github.com/stacks-network/stacks-blockchain-docker && cd stack
 {% endstep %}
 
 {% step %}
-### Start the services
+#### Start the services
 
 Start the docker-compose services for the chosen network:
 
@@ -54,6 +71,15 @@ Start the docker-compose services for the chosen network:
 ./manage.sh -n <network> -a start
 ```
 {% endcode %}
+
+{% hint style="warning" %}
+**macOS users:** The `manage.sh` script uses GNU sed syntax that is incompatible with macOS BSD sed. If you encounter `sed: bad flag in substitute command` errors, install GNU sed and prepend it to your PATH:
+
+```bash
+brew install gnu-sed
+PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH" ./manage.sh -n <network> -a start
+```
+{% endhint %}
 
 {% hint style="info" %}
 With an optional HTTP proxy on port 80:

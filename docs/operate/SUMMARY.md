@@ -7,6 +7,7 @@
   * [Run a Node with Quicknode](readme/run-a-node-with-quicknode.md)
   * [Run a Bitcoin Node](readme/run-a-bitcoin-node.md)
   * [Run a Pruned Bitcoin Node](readme/run-a-pruned-bitcoin-node.md)
+  * [Run a Node Behind a Proxy](readme/run-a-node-behind-a-proxy.md)
 * [Run a Miner](run-a-miner/README.md)
   * [Miner Prerequisites](run-a-miner/miner-prerequisites.md)
   * [Miner Costs and Fees](run-a-miner/miner-costs-and-fees.md)
