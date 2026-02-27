@@ -1,7 +1,7 @@
 ---
 id: decentralized-stacking-pool
 title: "Building a Decentralized Stacking Pool with pox-4"
-description: "A deep-dive, end-to-end tutorial on building a complete pool operator wrapper contract using pox-4, covering delegation flows, signer authorization, aggregation commits, and reward distribution."
+description: "A deep-dive, end-to-end tutorial on building a complete pool operator wrapper contract using pox-4, covering and including delegation flows, signer authorization, aggregation commits, and reward distribution."
 slug: /tutorials/stacking/decentralized-pool
 ---
 
