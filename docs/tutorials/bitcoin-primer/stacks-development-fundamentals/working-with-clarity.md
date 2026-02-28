@@ -129,3 +129,31 @@ Add a read-only function to retrieve donation messages:
 This returns `(ok (some "message"))` if a message exists, or `(ok none)` if not.
 {% endstep %}
 {% endstepper %}
+
+## Common Clarity Errors
+
+As you work with Clarity, you might encounter these common issues:
+
+### 1. Type Mismatch
+**Error:** `analysis error: Type signature mismatch`
+**Cause:** Trying to combine different types (e.g., adding a `uint` and an `int`).
+**Fix:** Ensure types match. Use `uint` vs `int` functions correctly.
+```clarity
+;; ❌ Error
+(+ u10 5) 
+
+;; ✅ Fix
+(+ u10 u5)
+```
+
+### 2. Unchecked Data
+**Error:** `analysis error: Intermediate expression value is not used`
+**Cause:** Calling a function that returns a `response` (like `stx-transfer?`) without handling the result.
+**Fix:** Use `try!` or `unwrap!` to handle the response.
+```clarity
+;; ❌ Error
+(stx-transfer? amount tx-sender recipient)
+
+;; ✅ Fix
+(try! (stx-transfer? amount tx-sender recipient))
+```
