@@ -39,8 +39,7 @@
 ## Stacks.js
 
 * [@stacks/network](stacks.js/stacks-network.md)
-* [@stacks/connect](stacks.js/stacks-connect.md)
-* [Stacks Connect](stacks.js/stacks-connect/README.md)
+* [@stacks/connect](stacks.js/stacks-connect/README.md)
   * [Connection](stacks.js/stacks-connect/connection/README.md)
     * [connect](stacks.js/stacks-connect/connection/connect.md)
     * [disconnect](stacks.js/stacks-connect/connection/disconnect.md)
