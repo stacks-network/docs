@@ -38,7 +38,7 @@ ln -s /mnt/stacks-data persistent-data
 ```
 {% endcode %}
 
-The Docker volumes write to `persistent-data/mainnet/`, so the symlink redirects all chainstate, database, and event data to the external disk transparently.
+The Docker volumes write to `persistent-data/<network>/`, so the symlink redirects all chainstate, database, and event data to the external disk transparently.
 
 ### Quickstart
 
