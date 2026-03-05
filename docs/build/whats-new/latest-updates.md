@@ -4,6 +4,14 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### Enhanced Linting, JSON Output, and Performance Improvements
+
+_March 3rd, 2026_
+
+[**\[Clarinet v3.14.0\]**](https://github.com/stx-labs/clarinet/releases/tag/v3.14.1) This Clarinet release adds powerful new linting capabilities including improved noop detection, an `unnecessary_as_max_len` lint rule, and JSON output formatting via `clarinet check --output=<format>`. The update also includes important bug fixes for linter false positives and devnet timing issues, plus a 15% performance improvement in the clarinet-format tool.
+
+***
+
 ### Fetch Deposit and Withdrawal Status for USDCx Bridging
 
 _March 2nd, 2026_
@@ -58,6 +66,14 @@ _February 6th, 2026_
 * Hiro's L1 metaprotocol APIs deprecation [blog post](https://www.hiro.so/blog/upcoming-deprecation-of-ordinals-runes-and-brc-20-apis)
 
 </details>
+
+***
+
+### Enhanced Block Production and New Block Simulation Capabilities
+
+_February 4th, 2026_
+
+[**\[Stacks Core 3.3.0.0.5\]**](https://github.com/stacks-network/stacks-core/releases/tag/3.3.0.0.5) This Stacks Core release (3.3.0.0.2) introduces a new block simulation endpoint and improves block validation while fixing critical bugs to ensure more stable block production. Key updates include enhanced burn-view calculations, streamlined validation tools, and compatibility with stacks-signer 3.3.0.0.5.0.
 
 ***
 

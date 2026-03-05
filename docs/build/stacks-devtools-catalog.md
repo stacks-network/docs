@@ -41,6 +41,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 * [**Stacks.js Starters**](https://github.com/stx-labs/stacks.js-starters) **\[StacksLabs]** - Quickly bootstrap frontend applications with Stacks.js on top of multiple JavaScript frameworks as the foundation.
 * [**SecondLayer**](https://github.com/ryanwaits/secondlayer) - Generate fully typed contract interfaces, functions, and React hooks for Clarity smart contracts.
 * [**Clarity-types**](https://github.com/ryanwaits/clarity-types) - Strict TypeScript types for Clarity ABI properties and values.
+* [**Clarity-ABItypes**](https://github.com/pradel/clarity-abitype) - Strict TypeScript types for Clarity ABIs. Provides utilities and type definitions for Clarity smart contract ABIs on the Stacks blockchain.
 * [**Stacks Kit**](https://github.com/karkigrishmin/stacks-kit) - React toolkit for Stacks blockchain. Think RainbowKit, but for Bitcoin L2.
 * [**Stacks.rs**](https://github.com/52/stacks.rs) - A Rust toolkit to interact with the Stacks Blockchain.
 * [**StacksPy**](https://github.com/rohitverma007/stackspy) - Python Library to interact with the Stacks blockchain.
