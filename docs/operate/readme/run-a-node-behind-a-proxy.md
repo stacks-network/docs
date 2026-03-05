@@ -31,7 +31,7 @@ The **P2P ports** (20444, 8333) use custom binary protocols for peer-to-peer com
 
 ## Configure the Stacks node
 
-Before setting up the proxy, configure your Stacks node so its RPC endpoint is not directly reachable from the public internet. The proxy will be the only public-facing service.
+Before setting up the proxy, configure your Stacks node so its RPC endpoint is not directly reachable from the public internet (i.e. for stacks-node configuration -`rpc_bind = "127.0.0.1:30443"`). The proxy will be the only public-facing service.
 
 Since the proxy needs to listen on the standard public ports (e.g. `20443`), the node itself must bind to **different** ports to avoid conflicts. The examples below use offset ports (`30443`, `33999`) for the node's RPC and API, while the proxy owns the public-facing ports (`20443`, `3999`). P2P stays on its standard port and is not proxied.
 
