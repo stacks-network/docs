@@ -15,13 +15,13 @@ This guide provides minimal, production-tested configurations for two popular re
 
 A Stacks node deployment typically exposes the following services:
 
-| Service     | Default Port                     | Protocol | Proxy?          |
-| ----------- | -------------------------------- | -------- | --------------- |
-| Stacks RPC  | 20443                            | HTTP     | Yes             |
-| Stacks P2P  | 20444                            | TCP      | No              |
-| Stacks API  | 3999                             | HTTP     | Yes, if running |
-| Bitcoin RPC | 8332 (mainnet) / 18332 (testnet) | HTTP     | Yes, if exposed |
-| Bitcoin P2P | 8333                             | TCP      | No              |
+| Service     | Default Port | Protocol | Proxy?          |
+| ----------- | ------------ | -------- | --------------- |
+| Stacks RPC  | 20443        | HTTP     | Yes             |
+| Stacks P2P  | 20444        | TCP      | No              |
+| Stacks API  | 3999         | HTTP     | Yes, if running |
+| Bitcoin RPC | 8332         | HTTP     | Yes, if exposed |
+| Bitcoin P2P | 8333         | TCP      | No              |
 
 {% hint style="info" %}
 The **P2P ports** (20444, 8333) use custom binary protocols for peer-to-peer communication, not HTTP. You can leave them open directly to the network. The proxy configurations below focus on the **RPC/API ports** which serve HTTP traffic and are the primary target for abuse.
