@@ -82,6 +82,14 @@ Inter-container communication (e.g. the API receiving events from the blockchain
 
 Nginx can serve as a reverse proxy with rate limiting using the `limit_req` module. The configuration below rate-limits the Stacks RPC and Stacks API endpoints.
 
+**Rate limit parameters explained:**
+
+- **`rate=5r/s`** — allows a sustained average of 5 requests per second per client IP. Requests beyond this rate are delayed or rejected.
+- **`burst=20`** — permits up to 20 requests to queue above the base rate before Nginx starts rejecting. This absorbs short traffic spikes without immediately dropping legitimate requests.
+- **`nodelay`** — queued burst requests are forwarded immediately rather than being spaced out over time. Without `nodelay`, excess requests would be throttled to match the base rate.
+
+The Stacks API zone uses a higher rate (`10r/s`) and larger burst (`40`) because API endpoints typically see more traffic than the node RPC.
+
 {% code title="Install Nginx" %}
 
 ```bash
@@ -257,22 +265,15 @@ curl -s localhost:20443/v2/info | jq
 
 ## Firewall considerations
 
-Ensure that only the proxy's listening ports and the P2P ports are reachable from the public internet. The node's RPC should only be accessible via the proxy (localhost).
+A host-level firewall adds defense in depth: only the proxy's listening ports and the P2P ports should be reachable from the public internet, while the node's RPC stays accessible only via the proxy (localhost). How you configure this depends on your environment — cloud providers, bare-metal hosts, and container setups all handle firewalling differently.
 
-{% code title="UFW example" %}
+{% hint style="info" %}
+Refer to your provider's or operating system's firewall documentation for specifics:
 
-```bash
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw allow 22/tcp              # SSH
-sudo ufw allow 20443/tcp           # Stacks RPC (via proxy)
-sudo ufw allow 20444/tcp           # Stacks P2P (direct)
-sudo ufw allow 8333/tcp            # Bitcoin P2P (direct)
-sudo ufw enable
-```
-
-{% endcode %}
-
-{% hint style="warning" %}
-**Docker users:** Docker manipulates `iptables` directly and bypasses UFW rules. If your node runs in Docker, bind container ports to `127.0.0.1` explicitly (e.g. `-p 127.0.0.1:20443:20443`) or use the `DOCKER-USER` iptables chain to enforce restrictions. See the [Docker documentation](https://docs.docker.com/engine/network/packet-filtering-firewalls/) for details.
+- **AWS** — [Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
+- **GCP** — [VPC Firewall Rules](https://cloud.google.com/firewall/docs/firewalls)
+- **Azure** — [Network Security Groups](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview)
+- **Digital Ocean** — [Cloud Firewalls](https://docs.digitalocean.com/products/networking/firewalls/)
+- **Linux (bare metal)** — [UFW](https://help.ubuntu.com/community/UFW), [iptables](https://wiki.archlinux.org/title/Iptables), or [nftables](https://wiki.nftables.org/)
+- **Docker** — Docker manipulates `iptables` directly and can bypass host firewall rules. See the [Docker packet filtering docs](https://docs.docker.com/engine/network/packet-filtering-firewalls/) for how to enforce restrictions.
 {% endhint %}

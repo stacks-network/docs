@@ -72,15 +72,6 @@ Start the docker-compose services for the chosen network:
 ```
 {% endcode %}
 
-{% hint style="warning" %}
-**macOS users:** The `manage.sh` script uses GNU sed syntax that is incompatible with macOS BSD sed. If you encounter `sed: bad flag in substitute command` errors, install GNU sed and prepend it to your PATH:
-
-```bash
-brew install gnu-sed
-PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH" ./manage.sh -n <network> -a start
-```
-{% endhint %}
-
 {% hint style="info" %}
 With an optional HTTP proxy on port 80:
 
