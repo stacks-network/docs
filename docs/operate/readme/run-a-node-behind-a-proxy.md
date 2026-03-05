@@ -8,7 +8,7 @@ If you plan to run a Stacks node with publicly accessible RPC endpoints, it is s
 
 This guide provides minimal, production-tested configurations for two popular reverse proxies. **Choose one — you do not need both:**
 
-- [**Nginx**](#nginx) — simpler configuration, widely known, good baseline rate limiting.
+- [**Nginx**](#nginx) — simpler configuration, widely used, good baseline rate limiting.
 - [**HAProxy**](#haproxy) — more advanced abuse detection via stick tables, HTTP proxying with automatic IP blocking.
 
 ### Ports overview
