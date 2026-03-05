@@ -275,7 +275,7 @@ curl -s localhost:20443/v2/info | jq
 
 ## Firewall considerations
 
-A host-level firewall adds defense in depth: only the proxy's listening ports and the P2P ports should be reachable from the public internet, while the node's RPC stays accessible only via the proxy (localhost). How you configure this depends on your environment — cloud providers, bare-metal hosts, and container setups all handle firewalling differently.
+Additionally, a host-level firewall adds defense in depth: only the proxy's listening ports and the P2P ports should be reachable from the public internet, while the node's RPC stays accessible only via the proxy (localhost). How you configure this depends on your environment — cloud providers, bare-metal hosts, and container setups all handle firewalling differently.
 
 {% hint style="info" %}
 Refer to your provider's or operating system's firewall documentation for specifics:
