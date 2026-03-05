@@ -15,13 +15,13 @@ This guide provides minimal, production-tested configurations for two popular re
 
 A Stacks node deployment typically exposes the following services:
 
-| Service     | Default Port | Protocol | Proxy?          |
-| ----------- | ------------ | -------- | --------------- |
-| Stacks RPC  | 20443        | HTTP     | Yes             |
-| Stacks P2P  | 20444        | TCP      | No              |
-| Stacks API  | 3999         | HTTP     | Yes, if running |
-| Bitcoin RPC | 8332         | HTTP     | Yes, if exposed |
-| Bitcoin P2P | 8333         | TCP      | No              |
+| Service     | Default Port                     | Protocol | Proxy?          |
+| ----------- | -------------------------------- | -------- | --------------- |
+| Stacks RPC  | 20443                            | HTTP     | Yes             |
+| Stacks P2P  | 20444                            | TCP      | No              |
+| Stacks API  | 3999                             | HTTP     | Yes, if running |
+| Bitcoin RPC | 8332 (mainnet) / 18332 (testnet) | HTTP     | Yes, if exposed |
+| Bitcoin P2P | 8333                             | TCP      | No              |
 
 {% hint style="info" %}
 The **P2P ports** (20444, 8333) use custom binary protocols for peer-to-peer communication, not HTTP. You can leave them open directly to the network. The proxy configurations below focus on the **RPC/API ports** which serve HTTP traffic and are the primary target for abuse.
@@ -112,6 +112,9 @@ server {
     location / {
         limit_req zone=stacks_rpc burst=20 nodelay;
         proxy_pass http://127.0.0.1:30443;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
 
@@ -122,6 +125,9 @@ server {
     location / {
         limit_req zone=stacks_api burst=40 nodelay;
         proxy_pass http://127.0.0.1:33999;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
 ```
@@ -192,8 +198,12 @@ defaults
     timeout http-request 10s
 
 # -------------------------------------------
-# Abuse tracking table
-# Keeps 100k entries, each expiring after 30m
+# Abuse tracking table (shared across all frontends)
+# Keeps 100k entries, each expiring after 30m.
+# All frontends share this table, so a client that
+# exceeds the rate limit on any service is blocked
+# from all services. To isolate rate limits per
+# service, create separate stick-table backends.
 # -------------------------------------------
 backend Abuse
     stick-table type ip size 100K expire 30m store gpc0,http_req_rate(10s)
@@ -228,7 +238,7 @@ backend stacks_api_back
 # Bitcoin RPC (optional, if you expose it)
 # -------------------------------------------
 frontend btc_rpc
-    bind *:18332
+    bind *:8332
     http-request track-sc0 src table Abuse
     http-request deny deny_status 429 if { src_get_gpc0(Abuse) gt 0 }
     http-request deny deny_status 429 if { src_http_req_rate(Abuse) ge 25 } { src_inc_gpc0(Abuse) ge 0 }
