@@ -4,7 +4,7 @@
 Running a publicly accessible node exposes your infrastructure to the open internet. The proxy configurations below are starting points, not complete security solutions. **Do this at your own risk.** You are responsible for securing and maintaining your own infrastructure.
 {% endhint %}
 
-If you plan to run a Stacks node with publicly accessible RPC endpoints, it is strongly recommended to place the node behind a reverse proxy with rate limiting. Without rate limiting, a public node can be overwhelmed by excessive requests, leading to degraded performance or denial of service.
+If you plan to run a Stacks node with publicly accessible RPC endpoints, it is strongly recommended at a minimum to place the node behind a reverse proxy with rate limiting. Without rate limiting, a public node can be overwhelmed by excessive requests, leading to degraded performance or denial of service.
 
 This guide provides minimal, production-tested configurations for two popular reverse proxies. **Choose one — you do not need both:**
 
