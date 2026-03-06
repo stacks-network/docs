@@ -15,11 +15,7 @@ The SIPs are located in the [stacksgov/sips](https://github.com/stacksgov/sips) 
 Anyone in the Stacks community can submit a SIP.
 
 {% hint style="info" %}
-Stacks Improvement Proposals Community Calls. Add the [weekly community SIP call](https://www.addevent.com/event/wS15955379) to your calendar.
-
-SIP Meeting calls are recorded and available [here](https://www.youtube.com/playlist?list=PLg717Ri_rTnx5kuaWqp3cUAtwQk_yzslT).
-
-More details of the meetings are available [here](https://github.com/stacksgov/sips/issues/79).
+Stacks Improvement Proposals Community Calls: Add the [weekly community SIP call](https://www.addevent.com/event/wS15955379) to your calendar.
 {% endhint %}
 
 ### Ratified SIPSs
@@ -44,13 +40,27 @@ More details of the meetings are available [here](https://github.com/stacksgov/s
 * [x] [SIP-020: Bitwise Operations in Clarity](https://github.com/stacksgov/sips/blob/main/sips/sip-020/sip-020-bitwise-ops.md)
 * [x] [SIP-022: Emergency Fix to PoX Stacking Increases](https://github.com/stacksgov/sips/blob/main/sips/sip-022/sip-022-emergency-pox-fix.md)
 * [x] [SIP-023: Emergency Fix to Trait Invocation Behavior](https://github.com/stacksgov/sips/blob/main/sips/sip-023/sip-023-emergency-fix-traits.md)
-* [x] [SIP-024: Emergency Fix to Data Validation and Serialization Behavior](https://github.com/stacksgov/sips/blob/main/sips/sip-024/sip-024-least-supertype-fix.md)
+* [x] [SIP-024:](https://github.com/stacksgov/sips/blob/main/sips/sip-024/sip-024-least-supertype-fix.md) Emergency Fix to Data Validation and Serialization Behavior
+* [x] [SIP-025](https://github.com/stacksgov/sips/blob/main/sips/sip-025/sip-025-iterating-towards-weighted-schnorr-threshold-signatures.md): Iterating Towards WSTS
+* [x] [SIP-027](https://github.com/stacksgov/sips/blob/main/sips/sip-027/sip-027-non-sequential-multisig-transactions.md): Non-sequential Multisig Transactions
+* [x] [SIP-028](https://github.com/stacksgov/sips/blob/main/sips/sip-028/sip-028-sbtc_peg.md): Signer Criteria for sBTC, A Decentralized and Programmable Asset Backed 1:1 with BTC
+* [x] [SIP-029](https://github.com/stacksgov/sips/blob/main/sips/sip-029/sip-029-halving-alignment.md): Bootstrapping sBTC Liquidity and Nakamoto Signer Incentives
+* [x] [SIP-031](https://github.com/stacksgov/sips/blob/main/sips/sip-031/sip-031.md): Five-Year Stacks Growth Emissions
+* [x] [SIP-033](https://github.com/stacksgov/sips/blob/main/sips/sip-033/sip-033-clarity4.md): Clarity Smart Contract Language, version 4
+* [x] [SIP-034](https://github.com/stacksgov/sips/blob/main/sips/sip-034/sip-034.md): Dimension-Specific Tenure Extend Variants
+* [x] [SIP-035](https://github.com/stacksgov/sips/blob/main/sips/sip-035/sip-secp256r1-verify.md): Clarification of Clarity's `secp256r1-verify` Behavior
 
 ### How to Get Involved
 
 There are several ways you can get involved with the SIP process:
 
-* **Join the weekly SIP Meeting call** listed [here](https://community.stacks.org/events).
+* **Join the weekly SIP Meeting call**, [here](https://community.stacks.org/events).
 * **SIP Editor**. SIP editors help SIP authors make sure their SIPs are well-formed and follow the right process. They help get SIPs ready for deep review by advancing it them from Draft to Accepted status. If you want to become a SIP editor, open an issue with your name and email to ask to be added to the list of SIP editors.
 * **Join a CAB** (Consideration Advisory Board). SIPs fall under the purview of one or more considerations. A full list is in [this github](https://github.com/stacksgov/sips/tree/main/considerations) directory. Currently they are: Diversity, Economics, Ethics, Governance and Technical. Members of SIP consideration advisory boards use their domain expertise to give Accepted SIPs a deep read, and give the authors any/all feedback to help make the SIP workable. If you want to join a board, reach out to the board's chairperson via the listed contact information.
 * **Steering Committee**. The Steering Committee organizes the consideration advisory boards and votes to advance Recommended SIPs to Activation-in-Progress status, and then to either Ratified or Rejected status. Once they are in the process of being activated, they use a SIP's Activation section to determine whether or not the Stacks ecosystem has ratified or rejected the SIP. Joining this committee requires the consent of the Stacks Foundation board.
+
+***
+
+### Additional Resources
+
+* [\[Stacks Community YT\]](https://www.youtube.com/playlist?list=PLg717Ri_rTnx5kuaWqp3cUAtwQk_yzslT) Recorded SIP Meeting calls (legacy)
