@@ -32,7 +32,15 @@ Bitcoin Name Service (BNS) is a decentralized identity protocol that originally 
 
 That means BNS predates ENS by multiple years!
 
-BNS is represented by the flagship .btc namespace but has many others including .id, .locker, .app and more.
+BNS is represented by the popular .btc namespace but has many others including .id, .locker, .app and more. Anyone can create a new namespace and have users register names within that. Currently there are 97 namespaces and over 360,000 names registered on BNS \[as of March 2026]!
+
+| Top Namespaces \[as of March 2026] | Names registered under the namespace |
+| ---------------------------------- | ------------------------------------ |
+| .btc                               | 302,999                              |
+| .stx                               | 21,861                               |
+| .app                               | 12,445                               |
+| .id                                | 12,053                               |
+| .stacks                            | 3,961                                |
 
 The benefit of a BNS name is simple: Rather than sending crypto to a long STX or BTC address, you can use a human-readable name like muneeb.btc instead.
 
