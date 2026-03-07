@@ -16,7 +16,7 @@
           kind: openapi
           spec: stacks-node-rpc-api-dereferenced-new
     ```
-* [USDCx](api/usdcx/README.md)
+* [USDCx Bridge](api/usdcx-bridge/README.md)
   * ```yaml
     type: builtin:openapi
     props:
@@ -28,7 +28,7 @@
           kind: openapi
           spec: usdcx-api
     ```
-* [sBTC](api/sbtc/README.md)
+* [sBTC Bridge](api/sbtc-bridge/README.md)
   * ```yaml
     type: builtin:openapi
     props:
