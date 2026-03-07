@@ -4,6 +4,14 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### sBTC APIs, BNSv2, and new Stacks.js Reference section
+
+_March 7th, 2026_
+
+The API section now includes the sBTC bridge's [Emily APIs](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/sbtc-bridge), allowing you to track peg-in and peg-out statuses directly within the Stacks docs. We've also updated the [BNS section](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/network-fundamentals/bitcoin-name-system) to reflect the canonical BNSv2 protocol, ensuring you have accurate informational context for the latest naming system. Finally, the [Stacks.js reference](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/stacks.js) pages have been completely overhauled with an exhaustive list of function and type definitions, making it easier than ever to find exactly what you need.
+
+***
+
 ### Enhanced Linting, JSON Output, and Performance Improvements
 
 _March 3rd, 2026_
@@ -21,7 +29,7 @@ _March 2nd, 2026_
 * Fetch withdrawal status for a USDCx burn event:\
   [https://api.usdc-on-stacks.com/testnet/withdrawals/0x5dfcc46c8e284132b702bb976b5b7d1f170d9c49f3b963fa0127ea348a228912/1](https://api.usdc-on-stacks.com/testnet/withdrawals/0x5dfcc46c8e284132b702bb976b5b7d1f170d9c49f3b963fa0127ea348a228912/1)
 
-Navigate to the USDCx API section [here](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/usdcx).
+Navigate to the USDCx API section [here](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/usdcx-bridge).
 
 ***
 
@@ -210,7 +218,7 @@ Developers can now programmatically integrate the USDCx bridging flow into their
 
 _December 29, 2025_
 
-The API playground in the [RPC-API reference](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/node-operations/rpc-api) now supports testnet and mainnet. Use the interactive API playground to test API calls on mainnet, testnet, devnet, or for your own locally running Stacks node.
+The API playground in the [RPC-API reference](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/stacks-node-rpc) now supports testnet and mainnet. Use the interactive API playground to test API calls on mainnet, testnet, devnet, or for your own locally running Stacks node.
 
 ***
 

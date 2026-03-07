@@ -34,7 +34,7 @@
 * [stacks.js](/broken/pages/dH5waQhE6Vb7rhcrUG7z) - A js library that helps developers build Stacks apps by handling transactions, wallet authentication, and smart contract interactions.
 * [Circle Faucet](https://faucet.circle.com/) - Get testnet USDC
 * [Ethereum Sepolia faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) - Get testnet ETH
-* [USDCx API](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/usdcx) - Fetch deposit and withdrawal status
+* [USDCx API](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/usdcx-bridge) - Fetch deposit and withdrawal status
 
 ***
 
