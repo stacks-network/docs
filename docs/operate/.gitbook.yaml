@@ -4,8 +4,8 @@ redirects:
 
   # nodes-and-miners to run-a-node redirects
   guides-and-tutorials/nodes-and-miners: README.md
-  guides-and-tutorials/nodes-and-miners/run-a-node-with-docker: run-a-node/run-a-node-with-docker.md
-  guides-and-tutorials/nodes-and-miners/run-a-node-with-digital-ocean: run-a-node/run-a-node-with-digital-ocean.md
+  guides-and-tutorials/nodes-and-miners/run-a-node-with-docker: readme/run-a-node-with-docker.md
+  guides-and-tutorials/nodes-and-miners/run-a-node-with-digital-ocean: readme/run-a-node-with-digital-ocean.md
 
   # guides-and-tutorials/run-a-miner to operate/run-a-miner redirects
   guides-and-tutorials/run-a-miner/mine-mainnet-stacks-tokens: run-a-miner/mine-mainnet-stacks-tokens.md
