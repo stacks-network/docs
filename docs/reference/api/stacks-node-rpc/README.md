@@ -1,4 +1,4 @@
-# RPC API Endpoints
+# Stacks Node RPC
 
 {% hint style="info" %}
 For the complete OpenAPI spec, navigate [here](https://raw.githubusercontent.com/stacks-network/stacks-core/master/docs/rpc/openapi.yaml).
@@ -20,5 +20,3 @@ The RPC API can be used without any authorization. The basepath for the hosted A
 # for mainnet, replace `testnet` with `mainnet`
 https://api.testnet.hiro.so/
 ```
-
-The Stacks Node RPC API endpoints can also be accessed via Hiro's docs [here](https://docs.hiro.so/apis/stacks-node-rpc-api).

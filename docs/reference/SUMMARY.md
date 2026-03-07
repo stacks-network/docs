@@ -1,10 +1,34 @@
 # Table of contents
 
-## Node Operations
+* [Introduction](README.md)
 
-* [Stacks Node Configuration](README.md)
-* [Signer Configuration](node-operations/signer-configuration.md)
-* [RPC API Endpoints](node-operations/rpc-api/README.md)
+## APIs <a href="#api" id="api"></a>
+
+* [Stacks Node RPC](api/stacks-node-rpc/README.md)
+  * ```yaml
+    props:
+      models: true
+      downloadLink: false
+    type: builtin:openapi
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: stacks-node-rpc-api-dereferenced-new
+    ```
+* [USDCx](api/usdcx/README.md)
+  * ```yaml
+    type: builtin:openapi
+    props:
+      models: false
+      downloadLink: false
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: usdcx-api
+    ```
+* [sBTC](api/sbtc/README.md)
   * ```yaml
     type: builtin:openapi
     props:
@@ -14,7 +38,7 @@
       spec:
         ref:
           kind: openapi
-          spec: stacks-node-rpc-api-dereferenced-new
+          spec: sbtc-emily-api
     ```
 
 ## Clarity
@@ -31,6 +55,11 @@
 
 * [SDK Reference](clarinet-js-sdk/sdk-reference.md)
 * [Browser SDK Reference](clarinet-js-sdk/browser-sdk-reference.md)
+
+## Node Operations
+
+* [Stacks Node Configuration](<README (1).md>)
+* [Signer Configuration](node-operations/signer-configuration.md)
 
 ## Rendezvous
 
