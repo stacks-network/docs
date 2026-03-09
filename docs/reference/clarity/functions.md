@@ -2195,6 +2195,14 @@ The `secp256k1-verify` function verifies that the provided signature of the mess
 
 ## secp256r1-verify
 
+{% hint style="danger" %}
+There is a bug that causes `secp256r1-verify` to double-hash the `message-hash` param that is passed in. That means `message-hash` is again SHA256 hashed, and the resulting hash is used to verify the signature.&#x20;
+
+This behavior will be fixed in the upcoming Clarity 5 version.
+{% endhint %}
+
+Introduced in: **Clarity 4**
+
 **Input**: `(buff 32), (buff 64), (buff 33)`
 
 **Output**: `bool`
@@ -2402,6 +2410,10 @@ Note: This function is only available starting with Stacks 2.1.
 
 ## stx-account
 
+{% hint style="danger" %}
+There is a bug when `stx-account` is used within an `at-block` expression. Normally, keywords or functions executed within an `at-block` expression will return the historical data for that specified block. This bug causes `stx-account` to possibly return an incorrect value inside of an `at-block` since the incorrect burn block height is used to determine the locked status of the STX. This only affects accounts that had locked tokens (i.e. were stacking or delegating). This behavior will be fixed in the upcoming Clarity 5 version.
+{% endhint %}
+
 Introduced in: **Clarity 2**
 
 **input:** `principal`\
@@ -2446,6 +2458,10 @@ This function returns (ok true) if the transfer is successful. In the event of a
 ***
 
 ## stx-get-balance
+
+{% hint style="danger" %}
+There is a bug when `stx-get-balance` is used within an `at-block` expression. Normally, keywords or functions executed within an `at-block` expression will return the historical data for that specified block. This bug causes `stx-get-balance` to possibly return an incorrect value inside of an `at-block` since the incorrect burn block height is used to determine the locked status of the STX. This only affects accounts that had locked tokens (i.e. were stacking or delegating). This behavior will be fixed in the upcoming Clarity 5 version.
+{% endhint %}
 
 Introduced in: **Clarity 1**
 

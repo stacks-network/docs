@@ -1,10 +1,34 @@
 # Table of contents
 
-## Node Operations
+* [Introduction](README.md)
 
-* [Stacks Node Configuration](README.md)
-* [Signer Configuration](node-operations/signer-configuration.md)
-* [RPC API Endpoints](node-operations/rpc-api/README.md)
+## APIs <a href="#api" id="api"></a>
+
+* [Stacks Node RPC](api/stacks-node-rpc/README.md)
+  * ```yaml
+    props:
+      models: true
+      downloadLink: false
+    type: builtin:openapi
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: stacks-node-rpc-api-dereferenced-new
+    ```
+* [USDCx Bridge](api/usdcx-bridge/README.md)
+  * ```yaml
+    type: builtin:openapi
+    props:
+      models: false
+      downloadLink: false
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: usdcx-api
+    ```
+* [sBTC Bridge](api/sbtc-bridge/README.md)
   * ```yaml
     type: builtin:openapi
     props:
@@ -14,7 +38,7 @@
       spec:
         ref:
           kind: openapi
-          spec: stacks-node-rpc-api-dereferenced-new
+          spec: sbtc-emily-api
     ```
 
 ## Clarity
@@ -32,15 +56,177 @@
 * [SDK Reference](clarinet-js-sdk/sdk-reference.md)
 * [Browser SDK Reference](clarinet-js-sdk/browser-sdk-reference.md)
 
+## Node Operations
+
+* [Stacks Node Configuration](<README (1).md>)
+* [Signer Configuration](node-operations/signer-configuration.md)
+
 ## Rendezvous
 
 * [Rendezvous Reference](rendezvous/reference.md)
 
 ## Stacks.js
 
-* [@stacks/network](stacks.js/stacks-network.md)
-* [@stacks/connect](stacks.js/stacks-connect.md)
-* [@stacks/transactions](stacks.js/stacks-transactions.md)
+* [@stacks/wallet-sdk](stacks.js/stacks-wallet/README.md)
+  * [Generation](stacks.js/stacks-wallet/generation/README.md)
+    * [randomSeedPhrase](stacks.js/stacks-wallet/generation/randomSeedPhrase.md)
+    * [generateWallet](stacks.js/stacks-wallet/generation/generateWallet.md)
+    * [generateNewAccount](stacks.js/stacks-wallet/generation/generateNewAccount.md)
+  * [Derivation](stacks.js/stacks-wallet/derivation/README.md)
+    * [deriveWalletKeys](stacks.js/stacks-wallet/derivation/deriveWalletKeys.md)
+    * [deriveConfigPrivateKey](stacks.js/stacks-wallet/derivation/deriveConfigPrivateKey.md)
+    * [deriveSalt](stacks.js/stacks-wallet/derivation/deriveSalt.md)
+    * [deriveStxPrivateKey](stacks.js/stacks-wallet/derivation/deriveStxPrivateKey.md)
+    * [deriveDataPrivateKey](stacks.js/stacks-wallet/derivation/deriveDataPrivateKey.md)
+    * [deriveAccount](stacks.js/stacks-wallet/derivation/deriveAccount.md)
+    * [derivePrivateKeyByType](stacks.js/stacks-wallet/derivation/derivePrivateKeyByType.md)
+    * [selectStxDerivation](stacks.js/stacks-wallet/derivation/selectStxDerivation.md)
+    * [DerivationType](stacks.js/stacks-wallet/derivation/DerivationType.md)
+  * [Accounts](stacks.js/stacks-wallet/accounts/README.md)
+    * [getStxAddress](stacks.js/stacks-wallet/accounts/getStxAddress.md)
+    * [getAccountDisplayName](stacks.js/stacks-wallet/accounts/getAccountDisplayName.md)
+    * [getAppPrivateKey](stacks.js/stacks-wallet/accounts/getAppPrivateKey.md)
+    * [Account](stacks.js/stacks-wallet/accounts/Account.md)
+    * [Wallet](stacks.js/stacks-wallet/accounts/Wallet.md)
+    * [WalletKeys](stacks.js/stacks-wallet/accounts/WalletKeys.md)
+* [@stacks/network](stacks.js/stacks-network/README.md)
+  * [Network](stacks.js/stacks-network/network/README.md)
+    * [STACKS\_MAINNET](stacks.js/stacks-network/network/STACKS_MAINNET.md)
+    * [STACKS\_TESTNET](stacks.js/stacks-network/network/STACKS_TESTNET.md)
+    * [STACKS\_DEVNET](stacks.js/stacks-network/network/STACKS_DEVNET.md)
+    * [STACKS\_MOCKNET](stacks.js/stacks-network/network/STACKS_MOCKNET.md)
+    * [StacksNetwork](stacks.js/stacks-network/network/StacksNetwork.md)
+    * [StacksNetworkName](stacks.js/stacks-network/network/StacksNetworkName.md)
+    * [NetworkClientParam](stacks.js/stacks-network/network/NetworkClientParam.md)
+  * [Functions](stacks.js/stacks-network/functions/README.md)
+    * [networkFromName](stacks.js/stacks-network/functions/networkFromName.md)
+    * [createNetwork](stacks.js/stacks-network/functions/createNetwork.md)
+    * [clientFromNetwork](stacks.js/stacks-network/functions/clientFromNetwork.md)
+  * [Constants](stacks.js/stacks-network/constants/README.md)
+    * [ChainId](stacks.js/stacks-network/constants/ChainId.md)
+    * [PeerNetworkId](stacks.js/stacks-network/constants/PeerNetworkId.md)
+    * [TransactionVersion](stacks.js/stacks-network/constants/TransactionVersion.md)
+    * [AddressVersion](stacks.js/stacks-network/constants/AddressVersion.md)
+* [@stacks/connect](stacks.js/stacks-connect/README.md)
+  * [Connection](stacks.js/stacks-connect/connection/README.md)
+    * [connect](stacks.js/stacks-connect/connection/connect.md)
+    * [disconnect](stacks.js/stacks-connect/connection/disconnect.md)
+    * [isConnected](stacks.js/stacks-connect/connection/isConnected.md)
+  * [Request](stacks.js/stacks-connect/request/README.md)
+    * [request](stacks.js/stacks-connect/request/request.md)
+    * [requestRaw](stacks.js/stacks-connect/request/requestRaw.md)
+    * [ConnectRequestOptions](stacks.js/stacks-connect/request/ConnectRequestOptions.md)
+  * [Methods](stacks.js/stacks-connect/methods/README.md)
+    * [getAddresses](stacks.js/stacks-connect/methods/getAddresses.md)
+    * [sendTransfer](stacks.js/stacks-connect/methods/sendTransfer.md)
+    * [signPsbt](stacks.js/stacks-connect/methods/signPsbt.md)
+    * [stx\_callContract](stacks.js/stacks-connect/methods/stx_callContract.md)
+    * [stx\_deployContract](stacks.js/stacks-connect/methods/stx_deployContract.md)
+    * [stx\_getAccounts](stacks.js/stacks-connect/methods/stx_getAccounts.md)
+    * [stx\_getAddresses](stacks.js/stacks-connect/methods/stx_getAddresses.md)
+    * [stx\_signMessage](stacks.js/stacks-connect/methods/stx_signMessage.md)
+    * [stx\_signStructuredMessage](stacks.js/stacks-connect/methods/stx_signStructuredMessage.md)
+    * [stx\_signTransaction](stacks.js/stacks-connect/methods/stx_signTransaction.md)
+    * [stx\_transferSip10Ft](stacks.js/stacks-connect/methods/stx_transferSip10Ft.md)
+    * [stx\_transferSip9Nft](stacks.js/stacks-connect/methods/stx_transferSip9Nft.md)
+    * [stx\_transferStx](stacks.js/stacks-connect/methods/stx_transferStx.md)
+    * [stx\_updateProfile](stacks.js/stacks-connect/methods/stx_updateProfile.md)
+  * [Storage](stacks.js/stacks-connect/storage/README.md)
+    * [getLocalStorage](stacks.js/stacks-connect/storage/getLocalStorage.md)
+    * [clearLocalStorage](stacks.js/stacks-connect/storage/clearLocalStorage.md)
+    * [StorageData](stacks.js/stacks-connect/storage/StorageData.md)
+  * [Errors](stacks.js/stacks-connect/errors/README.md)
+    * [JsonRpcError](stacks.js/stacks-connect/errors/JsonRpcError.md)
+    * [JsonRpcErrorCode](stacks.js/stacks-connect/errors/JsonRpcErrorCode.md)
+  * [Providers](stacks.js/stacks-connect/providers/README.md)
+    * [DEFAULT\_PROVIDERS](stacks.js/stacks-connect/providers/DEFAULT_PROVIDERS.md)
+* [@stacks/transactions](stacks.js/stacks-transactions/README.md)
+  * [Builders](stacks.js/stacks-transactions/builders/README.md)
+    * [makeSTXTokenTransfer](stacks.js/stacks-transactions/builders/makeSTXTokenTransfer.md)
+    * [makeUnsignedSTXTokenTransfer](stacks.js/stacks-transactions/builders/makeUnsignedSTXTokenTransfer.md)
+    * [makeContractDeploy](stacks.js/stacks-transactions/builders/makeContractDeploy.md)
+    * [makeUnsignedContractDeploy](stacks.js/stacks-transactions/builders/makeUnsignedContractDeploy.md)
+    * [makeContractCall](stacks.js/stacks-transactions/builders/makeContractCall.md)
+    * [makeUnsignedContractCall](stacks.js/stacks-transactions/builders/makeUnsignedContractCall.md)
+    * [sponsorTransaction](stacks.js/stacks-transactions/builders/sponsorTransaction.md)
+  * [Clarity Values](stacks.js/stacks-transactions/clarity-values/README.md)
+    * [bool](stacks.js/stacks-transactions/clarity-values/bool.md)
+    * [int](stacks.js/stacks-transactions/clarity-values/int.md)
+    * [uint](stacks.js/stacks-transactions/clarity-values/uint.md)
+    * [principal](stacks.js/stacks-transactions/clarity-values/principal.md)
+    * [contractPrincipal](stacks.js/stacks-transactions/clarity-values/contractPrincipal.md)
+    * [standardPrincipal](stacks.js/stacks-transactions/clarity-values/standardPrincipal.md)
+    * [list](stacks.js/stacks-transactions/clarity-values/list.md)
+    * [stringAscii](stacks.js/stacks-transactions/clarity-values/stringAscii.md)
+    * [stringUtf8](stacks.js/stacks-transactions/clarity-values/stringUtf8.md)
+    * [buffer](stacks.js/stacks-transactions/clarity-values/buffer.md)
+    * [bufferFromHex](stacks.js/stacks-transactions/clarity-values/bufferFromHex.md)
+    * [bufferFromAscii](stacks.js/stacks-transactions/clarity-values/bufferFromAscii.md)
+    * [bufferFromUtf8](stacks.js/stacks-transactions/clarity-values/bufferFromUtf8.md)
+    * [none](stacks.js/stacks-transactions/clarity-values/none.md)
+    * [some](stacks.js/stacks-transactions/clarity-values/some.md)
+    * [ok](stacks.js/stacks-transactions/clarity-values/ok.md)
+    * [error](stacks.js/stacks-transactions/clarity-values/error.md)
+    * [tuple](stacks.js/stacks-transactions/clarity-values/tuple.md)
+    * [serialize](stacks.js/stacks-transactions/clarity-values/serialize.md)
+    * [deserialize](stacks.js/stacks-transactions/clarity-values/deserialize.md)
+    * [stringify](stacks.js/stacks-transactions/clarity-values/stringify.md)
+    * [parse](stacks.js/stacks-transactions/clarity-values/parse.md)
+  * [Post Conditions](stacks.js/stacks-transactions/post-conditions/README.md)
+    * [principal](stacks.js/stacks-transactions/post-conditions/principal.md)
+    * [origin](stacks.js/stacks-transactions/post-conditions/origin.md)
+    * [fromHex](stacks.js/stacks-transactions/post-conditions/fromHex.md)
+    * [postConditionToHex](stacks.js/stacks-transactions/post-conditions/postConditionToHex.md)
+  * [Keys](stacks.js/stacks-transactions/keys/README.md)
+    * [getAddressFromPrivateKey](stacks.js/stacks-transactions/keys/getAddressFromPrivateKey.md)
+    * [getAddressFromPublicKey](stacks.js/stacks-transactions/keys/getAddressFromPublicKey.md)
+    * [privateKeyToPublic](stacks.js/stacks-transactions/keys/privateKeyToPublic.md)
+    * [randomPrivateKey](stacks.js/stacks-transactions/keys/randomPrivateKey.md)
+    * [compressPublicKey](stacks.js/stacks-transactions/keys/compressPublicKey.md)
+    * [uncompressPublicKey](stacks.js/stacks-transactions/keys/uncompressPublicKey.md)
+    * [isPrivateKeyCompressed](stacks.js/stacks-transactions/keys/isPrivateKeyCompressed.md)
+    * [isPublicKeyCompressed](stacks.js/stacks-transactions/keys/isPublicKeyCompressed.md)
+    * [signMessageHashRsv](stacks.js/stacks-transactions/keys/signMessageHashRsv.md)
+    * [privateKeyToAddress](stacks.js/stacks-transactions/keys/privateKeyToAddress.md)
+    * [publicKeyToAddress](stacks.js/stacks-transactions/keys/publicKeyToAddress.md)
+  * [Network](stacks.js/stacks-transactions/network/README.md)
+    * [broadcastTransaction](stacks.js/stacks-transactions/network/broadcastTransaction.md)
+    * [fetchNonce](stacks.js/stacks-transactions/network/fetchNonce.md)
+    * [fetchFeeEstimate](stacks.js/stacks-transactions/network/fetchFeeEstimate.md)
+    * [fetchFeeEstimateTransaction](stacks.js/stacks-transactions/network/fetchFeeEstimateTransaction.md)
+    * [fetchAbi](stacks.js/stacks-transactions/network/fetchAbi.md)
+    * [fetchCallReadOnlyFunction](stacks.js/stacks-transactions/network/fetchCallReadOnlyFunction.md)
+    * [fetchContractMapEntry](stacks.js/stacks-transactions/network/fetchContractMapEntry.md)
+  * [Signing](stacks.js/stacks-transactions/signing/README.md)
+    * [TransactionSigner](stacks.js/stacks-transactions/signing/TransactionSigner.md)
+    * [StacksTransactionWire](stacks.js/stacks-transactions/signing/StacksTransactionWire.md)
+    * [deserializeTransaction](stacks.js/stacks-transactions/signing/deserializeTransaction.md)
+    * [signStructuredData](stacks.js/stacks-transactions/signing/signStructuredData.md)
+    * [encodeStructuredData](stacks.js/stacks-transactions/signing/encodeStructuredData.md)
+  * [Utilities](stacks.js/stacks-transactions/utilities/README.md)
+    * [cvToJSON](stacks.js/stacks-transactions/utilities/cvToJSON.md)
+    * [cvToValue](stacks.js/stacks-transactions/utilities/cvToValue.md)
+    * [cvToString](stacks.js/stacks-transactions/utilities/cvToString.md)
+    * [cvToHex](stacks.js/stacks-transactions/utilities/cvToHex.md)
+    * [hexToCV](stacks.js/stacks-transactions/utilities/hexToCV.md)
+    * [parseReadOnlyResponse](stacks.js/stacks-transactions/utilities/parseReadOnlyResponse.md)
+    * [validateStacksAddress](stacks.js/stacks-transactions/utilities/validateStacksAddress.md)
+    * [isClarityName](stacks.js/stacks-transactions/utilities/isClarityName.md)
+    * [isClarityType](stacks.js/stacks-transactions/utilities/isClarityType.md)
+    * [verifySignature](stacks.js/stacks-transactions/utilities/verifySignature.md)
+  * [Types & Constants](stacks.js/stacks-transactions/types/README.md)
+    * [PostConditionMode](stacks.js/stacks-transactions/types/PostConditionMode.md)
+    * [ClarityVersion](stacks.js/stacks-transactions/types/ClarityVersion.md)
+    * [AddressHashMode](stacks.js/stacks-transactions/types/AddressHashMode.md)
+    * [AuthType](stacks.js/stacks-transactions/types/AuthType.md)
+    * [ClarityType](stacks.js/stacks-transactions/types/ClarityType.md)
+    * [ClarityValue](stacks.js/stacks-transactions/types/ClarityValue.md)
+    * [FungibleConditionCode](stacks.js/stacks-transactions/types/FungibleConditionCode.md)
+    * [NonFungibleConditionCode](stacks.js/stacks-transactions/types/NonFungibleConditionCode.md)
+    * [PayloadType](stacks.js/stacks-transactions/types/PayloadType.md)
+    * [PostConditionType](stacks.js/stacks-transactions/types/PostConditionType.md)
+    * [PostCondition](stacks.js/stacks-transactions/types/PostCondition.md)
+    * [NoEstimateAvailableError](stacks.js/stacks-transactions/types/NoEstimateAvailableError.md)
 * [sbtc](stacks.js/sbtc.md)
 
 ## Nakamoto Upgrade

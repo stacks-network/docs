@@ -46,3 +46,7 @@ Under Nakamoto Stacks, transactions won’t impactfully reorganize due to a Bitc
 If you are interested in learning more about how this works, see the [Bitcoin Reorgs](bitcoin-reorgs.md) page of the docs.
 
 </details>
+
+***
+
+{% embed url="https://youtu.be/w2mA3ajOoNQ?si=IK8w4Kxd6v0acdDB" %}

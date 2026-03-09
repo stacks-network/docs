@@ -1,22 +1,117 @@
 # Mining
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/mining-section-cover.png" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="info" %}
-This is conceptual guide that covers how mining works. For practical steps on how to setup your own miner please refer to the guides to running a miner on [mainnet](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/run-a-miner/mine-mainnet-stacks-tokens) and [testnet](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/run-a-miner/mine-testnet-stacks-tokens).
+**Builder Resources**
+
+* For running your own Stacks miner, [here](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/run-a-miner).
+* For data analytics on Stacks mining, [here](https://app.signal21.io/stacks/mining).
 {% endhint %}
 
-### Miner Tenures
+#### The Big Picture
 
-In previous version of Stacks (before the Nakamoto Upgrade), Stacks miners would mine new Stacks blocks at a one-to-one cadence with Bitcoin blocks.
+* PoX selects a randomized single-leader block miner once per BTC block
+* PoX incentivizes miners to make STX blocks and earn STX rewards + tx fees
+* Miners send _block commit_ transactions on Bitcoin L1.
+* Block commits include: (block hash, VRF seed) pair
+* Deterministic but unpredictable winner at each Bitcoin block
+* PoX disincentivizes BTC L1 miners from interfering via ATC-C
 
-After Nakamoto, this is no longer the case. Under Nakamoto rules, miners are instead selected for a tenure that corresponds to a Bitcoin block. During this tenure, miners build and propose several Stacks blocks (roughly every 10 seconds) and stackers will approve and append them (next section).
+***
 
-To be considered for a tenure, a miner must have a block commit included in a Bitcoin block. If a miner wishes to update their commitment after submission, they may use Bitcoin Replace-By-Fee.
+## Intro
 
-### Coinbase rewards
+Stacks mining is built around a simple but powerful idea: miners spend Bitcoin to earn the right to produce new Stacks blocks. Rather than introducing an entirely separate consensus mechanism, Stacks adapts and extends Bitcoin’s existing Proof of Work. In this sense, Stacks leverages Bitcoin’s security and economic weight to secure a layer built on top of it.
 
-Miners receive coinbase rewards for tenures they win.
+When miners commit BTC as part of the mining process, that Bitcoin is not burned or wasted. Instead, it is transferred to Stackers — STX holders who lock up their tokens to help validate and sign blocks. This flow of Bitcoin from miners to Stackers is the core innovation behind Proof of Transfer (PoX). The “transfer” of BTC is what anchors Stacks to Bitcoin’s security while aligning incentives between miners and network participants.
+
+## Mining Flow Breakdown
+
+In the previous version of Stacks (before the Nakamoto Upgrade), Stacks miners would mine new Stacks blocks at a one-to-one cadence with Bitcoin blocks. After Nakamoto, this is no longer the case. Under Nakamoto rules, miners are instead selected for a tenure that corresponds to a Bitcoin block. During this tenure, miners build and propose multiple Stacks blocks (roughly every 10 seconds) and stackers will approve and append them.
+
+{% hint style="info" %}
+[What was the Nakamoto Upgrade?](what-was-the-nakamoto-upgrade.md)
+{% endhint %}
+
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/mining-flow.png" alt=""><figcaption></figcaption></figure></div>
+
+Miners run Stacks nodes with mining enabled to participate in the PoX mechanism. The node implements the PoX mechanism, which ensures proper handling and incentives through four key phases:
+
+1. **Registration**: miners register for a future election by sending consensus data to the network
+2. **Commitment**: registered miners transfer Bitcoin to participate in the election. Committed BTC are sent to a set participating STX token holders, aka stackers.
+3. **Election**: a verifiable random function chooses one miner for a new tenure to write blocks on the Stacks blockchain
+4. **Assembly**: the elected miner writes the new blocks by pulling transactions from the mempool and collects rewards in form of new STX tokens
+
+## Miner Selection Process
+
+As opposed to a block race, as in PoW, Stacks utilizes a single-leader election process called a cryptographic sortition. That is facilitated through an embedded verifiable random function state in Bitcoin transactions. This in turn allows for deterministic but unpredictable winners at each Bitcoin block.
+
+<details>
+
+<summary>What is a cryptographic sortition?</summary>
+
+A cryptographic sortition is a process of randomly selecting one or more entities from a set using cryptography. This is a decentralized and verifiable way to select participants for a variety of tasks, such as consensus protocols, lotteries, and auctions.
+
+More specifically, miner sortition in the context of Stacks is the weighted cryptographic sortition process by which a miner candidate is selected as the next miner (leader).
+
+</details>
+
+First off, every Stacks miner must register a VRF public key in a bitcoin transaction. Once they do that, they can then issue _block commit_ transactions on Bitcoin. Block commit transactions on bitcoin contain:
+
+`(block hash, VRF seed) pair`
+
+These block commit transactions not only contains a pointer to the block stream they intend to produce, but also includes all the relevant info to re-seed the next VRF for the next sortition. Miners cannot tamper with the VRF seed. This is enforced by the property:&#x20;
+
+`VRF seed = hash(VRF proof)`&#x20;
+
+And that VRF proof can only be generated by the miner's VRF private key.
+
+<details>
+
+<summary>How do block commits relate to each other?</summary>
+
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/mining-leader-election-flow.png" alt=""><figcaption></figcaption></figure></div>
+
+</details>
+
+{% hint style="info" %}
+To be considered for a tenure, a miner must have a block commit included in a Bitcoin block. If a miner wishes to update their commitment after submission, they may use Bitcoin's Replace-By-Fee.
+{% endhint %}
+
+### Probability to mine next block
+
+The miner who is selected to mine the next block is chosen depending on the amount of BTC the miners transfer. The probability for a miner to mine the next block is determined using a variation of the Assumed Total Commitment with Carryforward (ATC-C) [MEV](https://github.com/stacksgov/sips/blob/main/sips/sip-021/MEV-Report.pdf) mitigation strategy to allocate block rewards to miners. The probability a miner will win the sortition and be granted the current tenure will be based on a function that accounts for the total block commit spend on the blocks leading up to the current sortition.
+
+While there is no minimum BTC commitment enforced by the protocol, in practice, there's a floor constrained by dust: basically, if the fees for a transaction exceed the value of the spent output, it's considered dust. How dust is [calculated](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.cpp#L14) depends on a number of factors, we've found 5,500 satoshis to be a good lower bound per output. Bitcoin transactions from Stacks miners contain two outputs (for Proof-of-Transfer), so a commitment of at least 11,000 satoshis / block is recommended.
+
+To calculate the amount of BTC to send, miners should:
+
+* Guess the price BTC/STX for the next day (100 blocks later)
+* Guess the total amount of bitcoin committed by all miners
+
+{% hint style="info" %}
+Stackers are in charge of both validating and appending new blocks and conducting miner tenure changes. The next section will explain how that works, and then we'll see how this process results in Bitcoin finality.
+{% endhint %}
+
+### Block Commit Transactions (on Bitcoin)
+
+Miners commit Bitcoin to **two** addresses in every leader block commit transaction. The amount committed to each address must be the same. The addresses are chosen from the current reward set of stacking participants. Addresses are chosen using a verifiable-random-function, and determining the correct two addresses for a given block requires monitoring the Stacks chain.
+
+<figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
+
+<details>
+
+<summary>What does a block commit transaction actually look like?</summary>
+
+* Watch this [clip](https://youtube.com/shorts/HPRsn-aSYrg?si=Y7hA7_9BeHFxV0zz) describing what goes into a block commit transaction on Bitcoin.
+* Check out a previous block commit transaction on Bitcoin [here](https://mempool.space/tx/42834cb7ec9ca3e2b51e2ff16bd809ae049c925ed8d3da099c9ce3d5292d2a91).
+
+</details>
+
+## Miner rewards
+
+Miners receive Stacks blocks' coinbase rewards for tenures they win.
 
 The reward amounts are:
 
@@ -27,55 +122,15 @@ The reward amounts are:
 
 These "halvings" are synchronized with Bitcoin halvings.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure></div>
+#### Transaction fees
 
-### Transaction fees
+Miners also receive Stacks fees for transactions mined in any block they produce.
 
-Miners receive Stacks fees for transactions mined in any block they produce.
-
-### Reward maturity
+#### Reward maturity
 
 Block rewards and transaction fees take 100 blocks on the Bitcoin blockchain to mature. After successfully mining a block your rewards appear in your Stacks account after \~24 hours.
 
-### Mining with Proof-of-Transfer
-
-Miners commit Bitcoin to **two** addresses in every leader block commit. The amount committed to each address must be the same. The addresses are chosen from the current reward set of stacking participants. Addresses are chosen using a verifiable-random-function, and determining the correct two addresses for a given block requires monitoring the Stacks chain.
-
-For more detailed information on this process, read [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md), which describes proof of transfer in detail.
-
-<figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
-
-PoX mining is a modification of Proof-of-Burn (PoB) mining, where instead of sending the committed Bitcoin to a burn address, it's transferred to eligible STX holders that participate in the stacking protocol.
-
-{% hint style="info" %}
-A PoX miner can only receive newly minted STX tokens when they transfer Bitcoin to eligible owners of STX tokens.
-{% endhint %}
-
-<figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
-
-Miners run Stacks nodes with mining enabled to participate in the PoX mechanism. The node implements the PoX mechanism, which ensures proper handling and incentives through four key phases:
-
-* Registration: miners register for a future election by sending consensus data to the network
-* Commitment: registered miners transfer Bitcoin to participate in the election. Committed BTC are sent to a set participating STX token holders
-* Election: a verifiable random function chooses one miner for a new tenure to write blocks on the Stacks blockchain
-* Assembly: the elected miner writes the new blocks by pulling transactions from the mempool and collects rewards in form of new STX tokens
-
-### Probability to mine next block
-
-The miner who is selected to mine the next block is chosen depending on the amount of BTC the miners sent, that is, transferred or burnt.
-
-The probability for a miner to mine the next block is determined using a variation of the Assumed Total Commitment with Carryforward (ATC-C) MEV mitigation strategy, described in this [document](https://github.com/stacksgov/sips/blob/main/sips/sip-021/MEV-Report.pdf), to allocate block rewards to miners. The probability a miner will win the sortition and be granted the current tenure will be based on a function that accounts for the total block commit spend on the blocks leading up to the current sortition.
-
-While there is no minimum BTC commitment enforced by the protocol, in practice, there's a floor constrained by dust: basically, if the fees for a transaction exceed the value of the spent output, it's considered dust. How dust is [calculated](https://github.com/bitcoin/bitcoin/blob/master/src/policy/policy.cpp#L14) depends on a number of factors, we've found 5,500 satoshis to be good lower bound per output. Bitcoin transactions from Stacks miners contain two outputs (for Proof-of-Transfer), so a commitment of at least 11,000 satoshis / block is recommended.
-
-To calculate the amount of BTC to send miners should:
-
-* Guess the price BTC/STX for the next day (100 blocks later)
-* Guess the total amount of BTCs committed by all miners
-
-Stackers are in charge of both validating and appending new blocks and conducting miner tenure changes. The next section will explain how that works, and then we'll see how this process results in Bitcoin finality.
-
-### Stacks mining in practice
+## Stacks mining in practice
 
 If you take a look at [SIgnal21's mining dashboard](https://app.signal21.io/stacks/mining), you can view some interesting data about mining on the Stacks network, including BTC spent per block, STX earned per block, the total number of miners over the course of the chain's history, and the number of miners for any given block.
 
@@ -83,9 +138,7 @@ Many people notice the seemingly small number of miners on Stacks. Without conte
 
 Stacks miners function similarly to sequencers in L2 systems in that they are only responsible for constructing and proposing new blocks, not appending them to the chain. But unlike most Ethereum L2s that operate with just a single centralized sequencer, Stacks consistently has at least 4-5 miners with open membership allowing anyone to join.
 
-It's important to note that there are two primary parties involved in the block production process on Stacks: miners and stackers.
-
-These two roles serve complementary relationships in the block production process, and stackers drastically reduce any potential destructive power miners have over the chain.
+It's important to note that there are two primary parties involved in the block production process on Stacks: miners and stackers. These two roles serve complementary relationships in the block production process, and stackers drastically reduce any potential destructive power miners have over the chain.
 
 Miners cannot reorganize the chain. In the worst case, all miners can do is omit (some kinds of) transactions, and all that is required to address this is to run your own miner.
 
@@ -118,20 +171,14 @@ This creates a natural economic equilibrium where:
 {% stepper %}
 {% step %}
 **Enough miners participate to ensure blocks are produced reliably**
-
-Content as above describing reliability.
 {% endstep %}
 
 {% step %}
 **Stackers receive optimal BTC rewards**
-
-Content as above describing rewards optimization.
 {% endstep %}
 
 {% step %}
 **The network maintains censorship resistance without unnecessary mining competition**
-
-Content as above describing censorship resistance.
 {% endstep %}
 {% endstepper %}
 
@@ -154,3 +201,24 @@ Microblocks are a legacy feature of the previous version of Stacks that no longe
 Instead of microblocks, Nakamoto instead utilizes a block production structure that creates Stacks blocks at a rapid cadence as described here.
 
 </details>
+
+## Bitcoin MEV Mitigation
+
+Miner Extractable Value (MEV) has been a longstanding issue across many blockchains, including Stacks pre-Nakamoto.
+
+MEV refers to the potential profit miners can extract from the manipulation of transaction inclusion and ordering within the blocks they produce, which can lead to unfair practices and diminished trust in the network.
+
+Specifically in pre-Nakamoto releases of Stacks, Bitcoin miners with a significant percentage of Bitcoin’s hashrate had the ability to censor commitment transactions of other Stacks miners ensuring they were able to win the block rewards and fees of Stacks blocks where they were also the winner of the Bitcoin block as a Bitcoin miner.
+
+The Nakamoto system uses a variation of the Assumed Total Commitment with Carryforward (ATC-C) [MEV](https://github.com/stacksgov/sips/blob/main/sips/sip-021/MEV-Report.pdf) mitigation strategy to allocate block rewards to miners. The probability a miner will win the block and be granted the current tenure will be based on a function that accounts for the total block commit spend on the blocks leading up to the current block.
+
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/ATCC-formula.png" alt=""><figcaption></figcaption></figure></div>
+
+The ATC solution leaves the option for a block to have no valid winner. The TenureChange-Extend transaction mitigates the majority of adverse effects caused by a missed block.
+
+***
+
+### Additional Resources
+
+* \[[Stacks YT](https://youtu.be/F31B-my510A?si=E0SRw0bbhuevB4kj)] The Stacks & Bitcoin Miners Relationship
+* \[[Stacks YT](https://youtu.be/bhVyM5CYoh4?si=3bQl8Q_iJ_3z5jX-)] Long Term Security Budget & Miner Incentives for Bitcoin

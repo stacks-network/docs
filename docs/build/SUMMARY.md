@@ -79,7 +79,8 @@
 ## Post-Conditions
 
 * [Overview](post-conditions/overview.md)
-* [Implementing Post-Conditions](post-conditions/implementation.md)
+* [Implementation](post-conditions/implementation.md)
+* [Examples](post-conditions/examples.md)
 
 ## More Guides
 

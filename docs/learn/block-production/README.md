@@ -1,6 +1,6 @@
 # Block Production
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/block-production.png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/block-production-cover.png" alt=""><figcaption></figcaption></figure></div>
 
 Block production is a key concept to understand how Stacks operates under the hood. This section walks through the three main actions that need to happen for the Stacks network to operate.
 
@@ -25,10 +25,6 @@ Stacking is an action performed by stackers that is a necessary prerequisite to 
 {% endstepper %}
 
 There are two primary parties in Stacks block production: miners and stackers. Miners build and propose new blocks, while stackers validate those blocks and sign sBTC deposits and withdrawals. Stacking enables stackers to participate in signing.
-
-{% hint style="info" %}
-For an in-depth technical overview of block production after the Nakamoto Upgrade, see [SIP-021](https://github.com/stacksgov/sips/blob/main/sips/sip-021/sip-021-nakamoto.md).
-{% endhint %}
 
 Here's a diagram outlining the current block production process. The following docs dig into each part in detail.
 

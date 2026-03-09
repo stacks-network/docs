@@ -4,10 +4,6 @@ description: The complete reference guide to all Clarity keywords.
 
 # Keywords
 
-{% hint style="info" %}
-The Nakamoto hard fork will introduce a few new Clarity keywords. It's important to note that even with the new block production mechanism, the `block-height` keyword behavior will not change. It will simply correspond to the current tenure height. This means any Clarity contracts using this keyword will be backwards compatible after the Nakamoto Upgrade.
-{% endhint %}
-
 ### block-height
 
 Introduced in: Clarity 1
@@ -28,8 +24,8 @@ example:
 
 ### burn-block-height
 
-{% hint style="warning" %}
-There is a bug in Clarity 3 when `burn-block-height` is used within an `at-block` expression. Normally, keywords executed within an `at-block` expression will return the data for that specified block. This bug causes `burn-block-height` always to return the burn block at the current chain tip, even within an `at-block` expression. This behavior affects any Clarity 3 contracts and will be fixed in a future hard fork.
+{% hint style="danger" %}
+There is a bug in Clarity 3 when `burn-block-height` is used within an `at-block` expression. Normally, keywords executed within an `at-block` expression will return the data for that specified block. This bug causes `burn-block-height` always to return the burn block at the current chain tip, even within an `at-block` expression. This behavior affects any Clarity 3 contracts and will be fixed in the upcoming Clarity 5 version.
 {% endhint %}
 
 Introduced in: Clarity 1

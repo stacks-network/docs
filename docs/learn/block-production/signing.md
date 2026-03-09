@@ -1,23 +1,39 @@
 # Signing
 
-Stackers play an essential role in the Nakamoto system that had previously been the responsibility of miners. Before, miners both decided the contents of blocks, and decided whether or not to include them in the chain (i.e. by deciding whether or not to confirm them). In this system each actor has the following responsibilities necessary to make the system function reliably without forks:
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/signing-cover.png" alt=""><figcaption></figcaption></figure></div>
+
+{% hint style="info" %}
+**Builder Resources**
+
+* To operate as a Signer, [here](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/run-a-signer).
+* To view a full list of active Signers, [here](https://explorer.hiro.so/signers?chain=mainnet).
+{% endhint %}
+
+#### The Big Picture
+
+* Signers validate and sign proposed Stacks blocks.
+* They are selected from eligible Stackers each cycle.
+* A 70% threshold of signatures is required for a block to be accepted.
+* They verify block correctness before signing.
+* Signing helps prevent invalid or conflicting blocks.
+* Their role strengthens finality and network security.
+
+***
+
+## Intro
+
+Stackers, that also operate as a Signer, play an essential role in the Stacks network (post-Nakamoto upgrade) that had previously been the responsibility of miners. Before, miners both decided the contents of blocks, and decided whether or not to include them in the chain (i.e. by deciding whether or not to confirm them). In this system each actor has the following responsibilities necessary to make the system function reliably without forks:
 
 * **Miners** decide the contents of blocks.
-* **Stackers** decide whether or not the block is included in the chain.
+* **Signers** decide whether or not the block is included in the chain.
 
 The bulk of the complexity of the Nakamoto changes is in separating these two concerns while ensuring that both mining and Stacking remain open-membership processes. **Crucially, anyone can become a miner and anyone can become a Stacker, just as before.** The most substantial changes are in getting miners and Stackers to work together in their new roles to achieve this proposal's goals.
 
-The key idea is that Stackers are required to acknowledge and validate a miner's block before it can be appended to the chain. To do so, Stackers must first agree on the canonical chain tip, and then apply (and roll back) the block on this chain tip to determine its validity. Once Stackers agree that the block is both canonical and valid, they collectively sign it and replicate it to the rest of the Stacks peer network. Only at this point do nodes append the block to their chain histories.
+The key idea is that Stackers, as Signers, are required to acknowledge and validate a miner's block before it can be appended to the chain. To do so, Stackers must first agree on the canonical chain tip, and then apply (and roll back) the block on this chain tip to determine its validity. Once Stackers agree that the block is both canonical and valid, they collectively sign it and replicate it to the rest of the Stacks peer network. Only at this point do nodes append the block to their chain histories.
 
 This new behavior prevents forks from arising. If a miner builds a block atop a stale tip, Stackers will refuse to sign the block. If Stackers cannot agree on the canonical Stacks tip, then no block will be appended in the first place. While this behavior creates a new failure mode for Stacks -- namely, the chain can halt indefinitely if Stackers cannot agree on the chain tip -- this is mitigated by having a large and diverse body of Stackers such that enough of them are online at all times to meet quorum and incentivizing them via PoX rewards to act as such.
 
-### Stacker Signing
-
-{% hint style="info" %}
-You can view a list of all of the [active signers](https://explorer.hiro.so/signers?chain=mainnet) on the Stacks block explorer.
-{% endhint %}
-
-We'll cover how stacking works in the Stacking section and the sBTC signing in the sBTC section; here we'll cover the signing process as it relates to Stacks block production.
+## Stacker Signing
 
 The means by which Stackers agree on the canonical chain tip and agree to append blocks is tied to PoX. In each reward cycle, a Stacker clinches one or more reward slots; there are at most 4,000 reward slots per reward cycle. Stackers vote to accept blocks by producing a weighted threshold signature over the block. The signature must represent a substantial fraction of the total STX locked in PoX (the threshold), and each Stacker's share of the signature (its weight) is proportional to the fraction of locked STX it owns.
 
@@ -31,11 +47,13 @@ Here is a diagram outlining the relationship between signing and stacking.
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/stacking-vs-signing.png" alt=""><figcaption></figcaption></figure></div>
 
-### Validating and Appending New Blocks
+***
 
-When miners are selected for a new tenure, they begin building new blocks from transactions in the mempool. They then send those blocks to stackers for approval. Stackers must approve the blocks with a quorum of at least 70% for them to be appended to the chain.
+## Validating and Appending New Blocks
 
-Stackers will approve a block based on several properties:
+When miners are selected for a new tenure, they begin building new blocks from transactions in the mempool. They then send those blocks to signers for approval. Signers must approve the blocks with a quorum of at least 70% for them to be appended to the chain.
+
+Signers will approve a block based on several properties:
 
 * The block is well-formed
   * It has the correct version and mainnet/testnet flag
@@ -54,9 +72,9 @@ Stackers will approve a block based on several properties:
 
 The properties marked with \* are collectively how Stacks ensures Bitcoin finality. By adhering to these properties, it ensures that miners are only able to append blocks if they build atop the correct chain tip, which also anchors the history to Bitcoin.
 
-Stackers, by validating these rules, ensure Bitcoin finality. We'll talk about this more in the next section.
+Signers, by validating these rules, ensure Bitcoin finality.
 
-### Conducting Miner Tenure Changes
+## Conducting Miner Tenure Changes
 
 The other primary signing responsibility in block production involves conducting tenure change transactions. As discussed in the mining section, miners will submit a `block-commit` transaction on the Bitcoin chain to initiate mining. If they are selected, stackers will detect that and create a `tenure-change` transaction.
 
@@ -79,3 +97,9 @@ This process is then repeated over and over as new miners are elected for tenure
 Be sure to take a look at [SIP-021](https://github.com/stacksgov/sips/blob/feat/sip-021-nakamoto/sips/sip-021/sip-021-nakamoto.md) to get a detailed description of exactly what happens under the hood during these processes.
 
 Next up, let's dig a little deeper into this idea of Bitcoin finality and how the Stacks block production mechanism achieves it.
+
+***
+
+### Additional Resources
+
+* \[[StacksDevs YT](https://youtu.be/5F73LQXf3eg?si=t7VmBp0VJp6h2VEa)] Stacks Nakamoto Release Signer Workshop

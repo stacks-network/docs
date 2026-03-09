@@ -15,9 +15,9 @@ The current version of the `clarity-bitcoin-lib` is version 7. Click [here](http
 One of the unique features of the Stack chain and the Clarity language is that it allows for using read-only functions to trustlessly validate on-chain Bitcoin activity from Clarity smart contracts. This enables developers to build applications that **react to real Bitcoin activity** — such as deposits, transfers, and proofs of inclusion — without relying on off-chain indexers or oracles. In this guide, you’ll learn how to verify Bitcoin transactions in Clarity and safely bridge Bitcoin state into on-chain logic.
 
 > _Knowledge of Bitcoin state: has knowledge of the full Bitcoin state; it can trustlessly read_\
-> _Bitcoin transactions and state changes and execute smart contracts triggered by Bitcoin_\
-> _transactions. The Bitcoin read functionality helps to keep the decentralized peg state_\
-> _consistent with BTC locked on Bitcoin L1, amongst other things. **- Stacks Whitepaper**_
+> &#xNAN;_&#x42;itcoin transactions and state changes and execute smart contracts triggered by Bitcoin_\
+> &#xNAN;_&#x74;ransactions. The Bitcoin read functionality helps to keep the decentralized peg state_\
+> &#xNAN;_&#x63;onsistent with BTC locked on Bitcoin L1, amongst other things. **- Stacks Whitepaper**_
 
 ### tl;dr
 
@@ -227,7 +227,7 @@ This is a snippet of the contract function we invoke to verify a bitcoin transac
 
 {% stepper %}
 {% step %}
-### Fetch bitcoin transaction metadata
+#### Fetch bitcoin transaction metadata
 
 Using mempool.space's APIs and with a bitcoin txid, fetch the required bitcoin transaction metadata needed for Clarity.
 
@@ -326,7 +326,7 @@ Learn how to create and broadcast a bitcoin transaction on the frontend [here](c
 {% endstep %}
 
 {% step %}
-### Prepare metadata as Clarity arguments
+#### Prepare metadata as Clarity arguments
 
 Let's circle back to the `was-tx-mined-compact` function of the `clarity-bitcoin-lib` contract for a second and analyze the order/type of parameters.
 
@@ -339,7 +339,7 @@ You can see that it intakes the parameters with a certain typing and order:
 
 In short, the `was-tx-mined-compact` function takes the block height, the transaction hex, the block header, and a merkle proof, and determines that:
 
-* the block header corresponds to the block that was mined at the given Bitcoin height&#x20;
+* the block header corresponds to the block that was mined at the given Bitcoin height
 * the transaction's merkle proof links it to the block header's merkle root.
 
 {% hint style="info" %}
@@ -426,19 +426,19 @@ let functionArgs = [
 
 A Merkle proof is a mathematically efficient and compact manner to prove that a transaction is included in a block in the Bitcoin blockchain.
 
-#### How transactions are combined into the Merkle root
+**How transactions are combined into the Merkle root**
 
 Transactions in a block are hashed and paired, then the hashes of the pairs are hashed and paired, and so on until a single hash remains — this is called the Merkle root.
 
-#### Merkle root in the block header
+**Merkle root in the block header**
 
 The Merkle root is included in the block header. By providing the hashes that lead from a transaction's hash up to the Merkle root, along with the block header, one can prove that the transaction is included in that block.
 
-#### Merkle proof (Merkle path)
+**Merkle proof (Merkle path)**
 
 The hashes that connect a transaction to the Merkle root are called the Merkle proof or Merkle path. By providing the Merkle proof along with the transaction hash and block header, anyone can verify that the transaction is part of that block.
 
-#### Efficient decentralized verification
+**Efficient decentralized verification**
 
 This allows for efficient decentralized verification of transactions without having to download the entire blockchain. One only needs the transaction hash, Merkle proof, and block header to verify.
 
@@ -448,7 +448,7 @@ This allows for efficient decentralized verification of transactions without hav
 
 <summary>Why are we removing the witness data from the original tx hex?</summary>
 
-The `clarity-bitcoin-lib` contract's  `was-tx-mined-compact` function only accepts a non-witness transaction hex. Usually only legacy bitcoin transactions are deemed as non-witness transactions. The contract also has a dedicated function for bitcoin transactions with witness data called `was-segwit-tx-mined-compact` .
+The `clarity-bitcoin-lib` contract's `was-tx-mined-compact` function only accepts a non-witness transaction hex. Usually only legacy bitcoin transactions are deemed as non-witness transactions. The contract also has a dedicated function for bitcoin transactions with witness data called `was-segwit-tx-mined-compact` .
 
 But you could still verify any transaction type in `was-tx-mined-compact` by simply removing the witness data from the original tx hex.
 
@@ -456,7 +456,7 @@ But you could still verify any transaction type in `was-tx-mined-compact` by sim
 {% endstep %}
 
 {% step %}
-### Invoke \`was-tx-mined-compact\` function
+#### Invoke \`was-tx-mined-compact\` function
 
 Construct a read-only function call, pass in the contract call options, and await the results. If the bitcoin transaction in question is indeed mined in an existing Bitcoin block, the contract will return a response that looks like:
 

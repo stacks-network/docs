@@ -4,13 +4,57 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### sBTC APIs, BNSv2, and new Stacks.js Reference section
+
+_March 7th, 2026_
+
+The API section now includes the sBTC bridge's [Emily APIs](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/sbtc-bridge), allowing you to track peg-in and peg-out statuses directly within the Stacks docs. We've also updated the [BNS section](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/network-fundamentals/bitcoin-name-system) to reflect the canonical BNSv2 protocol, ensuring you have accurate informational context for the latest naming system. Finally, the [Stacks.js reference](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/stacks.js) pages have been completely overhauled with an exhaustive list of function and type definitions, making it easier than ever to find exactly what you need.
+
+***
+
+### Enhanced Linting, JSON Output, and Performance Improvements
+
+_March 3rd, 2026_
+
+[**\[Clarinet v3.14.0\]**](https://github.com/stx-labs/clarinet/releases/tag/v3.14.1) This Clarinet release adds powerful new linting capabilities including improved noop detection, an `unnecessary_as_max_len` lint rule, and JSON output formatting via `clarinet check --output=<format>`. The update also includes important bug fixes for linter false positives and devnet timing issues, plus a 15% performance improvement in the clarinet-format tool.
+
+***
+
+### Fetch Deposit and Withdrawal Status for USDCx Bridging
+
+_March 2nd, 2026_
+
+**\[USDCx]** Deposit and withdrawal status endpoints for USDCx give applications a reliable way to track the lifecycle of cross-chain transfers between Stacks and other networks. Instead of manually monitoring multiple transactions and bridge events, developers can query a single endpoint to see whether a deposit or withdrawal is pending, verified, failed, or completed.
+
+* Fetch withdrawal status for a USDCx burn event:\
+  [https://api.usdc-on-stacks.com/testnet/withdrawals/0x5dfcc46c8e284132b702bb976b5b7d1f170d9c49f3b963fa0127ea348a228912/1](https://api.usdc-on-stacks.com/testnet/withdrawals/0x5dfcc46c8e284132b702bb976b5b7d1f170d9c49f3b963fa0127ea348a228912/1)
+
+Navigate to the USDCx API section [here](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/usdcx-bridge).
+
+***
+
+### Query PoX Activity on Bitcoin with new API endpoints
+
+_February 26th, 2026_
+
+\[**Stacks API**] The new PoX-related Bitcoin transactions endpoints are now easily discoverable and indexable for applications interacting with Stacks. These endpoints expose Bitcoin-layer activity that participates in Stacks’ Proof of Transfer (PoX) so apps don’t need to manually scan and decode raw Bitcoin blocks.
+
+* Get all Bitcoin PoX transactions in a Bitcoin block:\
+  [https://api.hiro.so/extended/v2/burn-blocks/938020/pox-transactions](https://api.hiro.so/extended/v2/burn-blocks/938020/pox-transactions)
+* Get all Bitcoin PoX transactions for a Bitcoin address:\
+  [https://api.hiro.so/extended/v2/addresses/bc1qs5env6vx638xfrpx3jvrtvslke6gf5wdgjpye9kw9462289nyyqsvw3vyw/pox-transactions](https://api.hiro.so/extended/v2/addresses/bc1qs5env6vx638xfrpx3jvrtvslke6gf5wdgjpye9kw9462289nyyqsvw3vyw/pox-transactions)
+
+***
+
 ### Improved Deployment Plan Format
 
 _February 14th, 2026_
 
 \[[**Clarinet**](https://github.com/stx-labs/clarinet/releases/tag/v3.14.0)] The latest release of Clarinet (v3.14.0) comes with many small improvements. You'll also notice that the structure of the Deployment plans has changed slightly. The old format is still supported and Clarinet will automatically migrate to the new one. This is to help us bring more improvement to deployment plans in the future. You have nothing to do, but don't be surprised by this change.
 
-Reminder: we are still seeing a lot of downloads on the deprecated NPM package `@hirosystems/clarinet-sdk`, only the new `@stacks/clarinet-sdk` is maintained.
+{% hint style="warning" %}
+**Reminder**: we are still seeing a lot of downloads on the deprecated NPM package `@hirosystems/clarinet-sdk`, only the new `@stacks/clarinet-sdk` is maintained.
+{% endhint %}
 
 ***
 
@@ -30,6 +74,14 @@ _February 6th, 2026_
 * Hiro's L1 metaprotocol APIs deprecation [blog post](https://www.hiro.so/blog/upcoming-deprecation-of-ordinals-runes-and-brc-20-apis)
 
 </details>
+
+***
+
+### Enhanced Block Production and New Block Simulation Capabilities
+
+_February 4th, 2026_
+
+[**\[Stacks Core 3.3.0.0.5\]**](https://github.com/stacks-network/stacks-core/releases/tag/3.3.0.0.5) This Stacks Core release (3.3.0.0.2) introduces a new block simulation endpoint and improves block validation while fixing critical bugs to ensure more stable block production. Key updates include enhanced burn-view calculations, streamlined validation tools, and compatibility with stacks-signer 3.3.0.0.5.0.
 
 ***
 
@@ -166,7 +218,7 @@ Developers can now programmatically integrate the USDCx bridging flow into their
 
 _December 29, 2025_
 
-The API playground in the [RPC-API reference](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/node-operations/rpc-api) now supports testnet and mainnet. Use the interactive API playground to test API calls on mainnet, testnet, devnet, or for your own locally running Stacks node.
+The API playground in the [RPC-API reference](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/stacks-node-rpc) now supports testnet and mainnet. Use the interactive API playground to test API calls on mainnet, testnet, devnet, or for your own locally running Stacks node.
 
 ***
 

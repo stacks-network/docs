@@ -1,6 +1,6 @@
 # Tokens
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/tokens-network-fundamentals-cover.png" alt=""><figcaption></figcaption></figure></div>
 
 ### STX
 

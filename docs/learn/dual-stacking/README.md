@@ -10,15 +10,6 @@ description: An overview of the BTC-denominated rewards mechanism on Stacks
 Check out the official blog announcement of Dual Stacking [here](https://www.stacks.co/blog/dual-stacking-launches-on-stacks).
 {% endhint %}
 
-{% hint style="danger" %}
-Dual Stacking contracts will be upgraded on Dec 15. This upgrade enables more flexible reward parameters and allows users to view their sBTC holdings and corresponding rewards within the Dual Stacking app.
-
-1. If you enrolled in Dual Stacking you'll be moved over automatically with no action needed.
-2. If you did not enroll in the web app but were receiving Dual Stacking rewards through a participating app, you need to enroll on the web app.
-
-To check your enrollment status go to [app.stacks.co](https://app.stacks.co/).
-{% endhint %}
-
 Dual Stacking enables Bitcoin holders to earn Bitcoin-denominated rewards through Stacks' [Proof of Transfer](../stacks-101/proof-of-transfer.md) consensus. Rewards are paid in [sBTC](../sbtc/).
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/dual-stacking-model.png" alt=""><figcaption></figcaption></figure></div>

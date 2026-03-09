@@ -2,23 +2,17 @@
 description: Learn how to add post-conditions to protect your Stacks transactions.
 ---
 
-# Implementing Post-Conditions
+# Implementation
 
 Post-conditions are a powerful security feature in Stacks that protect users from unexpected transaction outcomes. This tutorial will walk you through implementing post-conditions in your applications to ensure transactions behave exactly as users expect.
 
-## What you'll learn
+### What you'll learn
 
 * Construct post-conditions using the `Pc` helper API
 * Add post-conditions to different transaction types
 * Configure post-condition modes for transaction security
 * Implement post-conditions for STX, fungible tokens, and NFTs
 * Handle semi-fungible tokens (SFTs) with post-conditions
-
-## Prerequisites
-
-* Basic understanding of Stacks transactions
-* Stacks.js library installed (`npm install @stacks/transactions`)
-* A development environment set up for Stacks
 
 ## Constructing post-conditions
 
@@ -34,7 +28,9 @@ const postCondition = Pc
   .ustx();
 ```
 
-The Pc helper uses method chaining for intuitive condition building. Your IDE will provide auto-completion for available methods at each step.
+The `Pc` helper uses method chaining for intuitive condition building. Your IDE will provide auto-completion for available methods at each step.
+
+***
 
 ## Available transfer methods
 
@@ -84,9 +80,11 @@ Pc.principal(address).willSendAsset().nft(...);
 Pc.principal(address).willNotSendAsset().nft(...);
 ```
 
+***
+
 ## Setting the post-condition mode
 
-The post-condition mode determines how the Stacks blockchain handles asset transfers not explicitly covered by your post-conditions. This is a critical security setting.
+The post-condition mode determines how the Stacks protocol handles asset transfers not explicitly covered by your post-conditions. This is a critical security setting.
 
 ```ts
 import { PostConditionMode, makeContractCall } from '@stacks/transactions';
@@ -104,6 +102,8 @@ Mode options:
 
 * PostConditionMode.Deny (default): Transaction fails if any unspecified transfers occur
 * PostConditionMode.Allow: Transaction allows transfers beyond specified post-conditions
+
+***
 
 ## Common implementation patterns
 

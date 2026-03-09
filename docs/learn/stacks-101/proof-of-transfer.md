@@ -139,3 +139,4 @@ A walkthrough of the current PoX 4 contract is available in the [Example Contrac
 * \[[SIP-021](https://github.com/stacksgov/sips/blob/main/sips/sip-021/sip-021-nakamoto.md)] Nakamoto Upgrade: Fast and reliable blocks
 * \[[Stacks Developers YT](https://youtu.be/YynwIJIXJWw?si=9DXsd9PzMN14xt-L)] PoX: Under the Hood
 * \[[Stacks Developers YT](https://youtu.be/4UJ3ZK8JsrI?si=m8VSVIuCwIyOe3pe)] How Do Developers Test the Stacks Network?
+* \[[Hiro YT](https://youtu.be/2Bmo1cK0C8k?si=uiYaXudIhjxkNaS6)] A Breakdown of Stacks' Proof of Transfer Smart Contract

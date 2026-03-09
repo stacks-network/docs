@@ -2,10 +2,6 @@
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/bridging-usdcx.png" alt=""><figcaption></figcaption></figure></div>
 
-{% hint style="info" %}
-Current work is underway to abstract this entire flow via Circle's Bridge Kit SDK.
-{% endhint %}
-
 ## Intro
 
 [USDCx](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/bridging/usdcx) on Stacks opens up stablecoin liquidity into its decentralized ecosystem via Circle's xReserve protocol. This enables asset transfers from Ethereum and enhances Stacks' DeFi offerings. Users access Stacks' DeFi, maintaining stable assets, increasing liquidity, and providing a reliable option for transactions and investments.
@@ -38,6 +34,7 @@ Current work is underway to abstract this entire flow via Circle's Bridge Kit SD
 * [stacks.js](/broken/pages/dH5waQhE6Vb7rhcrUG7z) - A js library that helps developers build Stacks apps by handling transactions, wallet authentication, and smart contract interactions.
 * [Circle Faucet](https://faucet.circle.com/) - Get testnet USDC
 * [Ethereum Sepolia faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) - Get testnet ETH
+* [USDCx API](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/usdcx-bridge) - Fetch deposit and withdrawal status
 
 ***
 
@@ -672,6 +669,11 @@ let result = await broadcastTransaction({transaction, network: 'testnet'})
 ```
 
 The Stacks network's attestation service passes the burn intent message and signature to xReserve, managed by Circle. xReserve verifies the burn and issues a withdrawal attestation to release USDC to the user’s wallet.
+
+These are example transactions on testnet:
+
+* Stacks: [Burning USDCx](https://explorer.hiro.so/txid/0x5dfcc46c8e284132b702bb976b5b7d1f170d9c49f3b963fa0127ea348a228912?chain=testnet)
+* Ethereum: [Withdrawing USDC](https://sepolia.etherscan.io/tx/0x61efdc2ac2c7aac2cacd9a307288983e51bd99fd53e31e29ebe530df09fb2042)
 {% endstep %}
 {% endstepper %}
 

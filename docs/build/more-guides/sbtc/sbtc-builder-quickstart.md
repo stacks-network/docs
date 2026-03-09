@@ -1,6 +1,6 @@
 # sBTC Builder Quickstart
 
-<figure><img src="../../.gitbook/assets/Frame 316126251.jpg" alt=""><figcaption><p>source: Hiro</p></figcaption></figure>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/Frame 316126251.jpg" alt=""><figcaption></figcaption></figure></div>
 
 Get up and running with sBTC in 30 minutes or less. This guide covers the essentials for working with sBTC as a SIP-010 token in your smart contracts.
 
@@ -22,8 +22,8 @@ In order to get the most from this quickstart, you should familiarize yourself w
 
 * [Stacks Developer Quickstart](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/Zz9BLmTU9oydDpL3qiUh/) - For a quick holistic introduction to the Stacks development process, tools, and fundamentals
 * [Clarity Crash Course](../../get-started/clarity-crash-course.md) - For a quick introduction to Clarity
-* [Clarinet Docs](https://docs.hiro.so/tools/clarinet)
-* [Stacks.js Docs](https://docs.hiro.so/reference/stacks.js)
+* [Clarinet Docs](/broken/pages/UK5Kgh2MHLoQvfoFVnLr)
+* [Stacks.js Docs](/broken/pages/dH5waQhE6Vb7rhcrUG7z)
 
 #### Local with Clarinet
 
@@ -107,7 +107,7 @@ Once you do that you'll see that your devnet accounts have automatically been fu
 
 <figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
-Once you are ready to deploy to testnet, you can do so by editing your deployment plan as outlined in [this guide](https://docs.hiro.so/tools/clarinet/sbtc-integration).
+Once you are ready to deploy to testnet, you can do so by editing your deployment plan as outlined in this [guide](../../clarinet/contract-deployment.md).
 
 ### Conclusion
 

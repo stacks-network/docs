@@ -16,6 +16,18 @@ description: Build powerful apps, secured by Bitcoin.
 
 </details>
 
+<details>
+
+<summary><strong>Join the Stackers community!</strong></summary>
+
+Stackers is a community of people building on Bitcoin with Stacks.
+
+The purpose of the Stackers community comes down to guided paths for learning and starting a project on Stacks, developer support from community members, and the best place to hear about new events, initiatives, and opportunities to build.
+
+Join the [Stackers](https://www.skool.com/stackers)!
+
+</details>
+
 {% hint style="info" %}
 Stacks ranks #5 among all crypto ecosystems for new developers in 2025! \[source: [Electric Capital](https://x.com/Stacks/status/1978563911948370403)]
 {% endhint %}
@@ -101,7 +113,7 @@ We all have different styles of learning. If you've already got a good concept o
 | Launching a token                                                                         | [Create Tokens](get-started/create-a-token/)                                                                                                                                                                                    |
 | Interested in security / auditing / grants                                                | [Stacks Bug Bounties](https://immunefi.com/bug-bounty/stacks/information/), [Stacks Foundation](https://stacks.org/grants)                                                                                                      |
 | Curious about current use cases                                                           | [Use Cases](get-started/use-cases/)                                                                                                                                                                                             |
-| Searching for a complete list of devtools                                                 | [Stacks Devtools Ecosystem](stacks-devtools-catalog.md)                                                                                                                                                                         |
+| Searching for a complete list of devtools                                                 | [Stacks Devtools Catalog](stacks-devtools-catalog.md)                                                                                                                                                                           |
 
 ***
 
@@ -112,3 +124,4 @@ We know, it's a lot. But we, along with our large community, are always more tha
 * [**Stacks Discord**](https://discord.gg/stacks): Connect with other developers and our team
 * [**Stacks Forum**](https://forum.stacks.org/): Ask questions and share projects
 * [**Stacks Twitter**](https://x.com/StacksDevs)**:** Follow us on Twitter and ask us questions there&#x20;
+* [**Stackers**](https://www.skool.com/stackers): A community to hear about new events, initiatives, and opportunities to build.
