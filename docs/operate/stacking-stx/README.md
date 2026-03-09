@@ -15,7 +15,7 @@ These changes affect both solo Stacking and delegated Stacking. This document ou
 
 The following sections will walk you through how to begin operating as a solo stacker.
 
-Stacking utilizes the `pox-4` contract. There is a detailed [walkthrough of the stacking contract](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/clarity/example-contracts/stacking) that you can look at to see what functions are being called at each phase and some common errors you may encounter. This will be especially useful for pool operators who need to call these functions.
+Stacking utilizes the `pox-4` contract. There is a detailed [walkthrough of the stacking contract](/broken/spaces/GVj1Z9vMuEOMe7oH7Wnq/pages/fc4fa1c229d8cb4deedf49de6dc1de0dc0b1ed72) that you can look at to see what functions are being called at each phase and some common errors you may encounter. This will be especially useful for pool operators who need to call these functions.
 
 This doc is also useful if you run into errors when calling stacking functions, as it both walks through several common error scenarios and walks through each function call so you can more easily trace what might be happening.
 

@@ -1,5 +1,7 @@
 # Run a Signer
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/run-a-signer-cover.png" alt=""><figcaption></figcaption></figure></div>
+
 ### How to Use This Guide
 
 If you are not familiar with the concept of signing and stacking, and how they work together, be sure to check out the [Stackers and Signing concept guide](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/signing).

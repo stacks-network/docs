@@ -56,7 +56,7 @@ Finally, the pool operator will distribute those rewards to you in either BTC or
 {% endstep %}
 {% endstepper %}
 
-If you want to learn more about the specific functions and the contract that handles the stacking process, be sure to take a look at the [stacking contract walkthrough](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/clarity/example-contracts/stacking).
+If you want to learn more about the specific functions and the contract that handles the stacking process, be sure to take a look at the [stacking contract walkthrough](/broken/spaces/GVj1Z9vMuEOMe7oH7Wnq/pages/fc4fa1c229d8cb4deedf49de6dc1de0dc0b1ed72).
 
 ### Liquid Stacking
 

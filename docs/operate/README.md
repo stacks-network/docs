@@ -1,20 +1,11 @@
-# Run a Node
+# Introduction
 
-<div data-with-frame="true"><figure><img src=".gitbook/assets/Frame 316126262 (1).jpg" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src=".gitbook/assets/operate-cover.png" alt=""><figcaption></figcaption></figure></div>
 
-This section walks through the technical setup steps required to run Stacks network nodes and miners. There are multiple options available for running a node, including Docker, Digital Ocean, and Render.
+This section covers the infrastructure needed to participate in the Stacks network. It includes setup guides for running Stacks nodes, miners, and signers, along with instructions for operating a Bitcoin node for those contributing to both networks. It also provides configuration steps for sBTC Signers to enable secure transactions between Bitcoin and Stacks.
 
-Running your own Stacks node is a great way to increase the decentralization of the ecosystem and avoid relying on third-party centralized providers.
+***
 
-## Minimum viable requirements
+### Learn to operate...
 
-While you can run a node using these specs, it's recommended to assign more than the minimum for better performance.
-
-{% hint style="warning" %}
-* ⚠️ docker-compose version `2.2.2` or greater is **required** — https://docs.docker.com/compose/install/
-* **8 GB memory** if running only a Stacks node
-* **16 GB memory** if running Stacks + Bitcoin node
-* **2 vCPU**
-* **1 TB disk** for Stacks node
-* **1 TB disk** for Bitcoin node
-{% endhint %}
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4>Stacks Node</h4></td><td><a href="run-a-node/">run-a-node</a></td></tr><tr><td><h4>Stacks Miner</h4></td><td><a href="run-a-miner/">run-a-miner</a></td></tr><tr><td><h4>Stacks Signer</h4></td><td><a href="run-a-signer/">run-a-signer</a></td></tr><tr><td><h4>Bitcoin Node</h4></td><td><a href="run-a-node/run-a-bitcoin-node.md">run-a-bitcoin-node.md</a></td></tr><tr><td><h4>sBTC Signer</h4></td><td><a href="run-a-sbtc-signer/">run-a-sbtc-signer</a></td></tr><tr><td><h4>Snapshot the chainstate</h4></td><td><a href="snapshot-the-chainstate.md">snapshot-the-chainstate.md</a></td></tr><tr><td><h4>Stacking STX</h4></td><td><a href="stacking-stx/">stacking-stx</a></td></tr></tbody></table>

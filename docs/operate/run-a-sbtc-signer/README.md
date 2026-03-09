@@ -1,5 +1,7 @@
 # Run a sBTC Signer
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/sbtc-signers-cover.png" alt=""><figcaption></figcaption></figure></div>
+
 {% hint style="info" %}
 This documentation provides guidelines, best-practices and recommendations for running an sBTC Signer. Review it and adapt it to your infrastructure policy before deploying it.
 {% endhint %}
