@@ -39,7 +39,7 @@ Returns the current block height of the underlying burn blockchain as a uint
 example:
 
 ```clarity
-(> burn-block-height 1000) ;; returns true if the current height of the underlying burn blockchain has passed 1000 blocks.
+(> burn-block-height u1000) ;; returns true if the current height of the underlying burn blockchain has passed 1000 blocks.
 ```
 
 ***

@@ -709,7 +709,7 @@ The `default-to` function attempts to 'unpack' the second argument: if the argum
 
 Introduced in: **Clarity 1**
 
-**input:** `MethodSignature, MethodBody`\
+**input:** `ConstName, Expression`\
 **output:** `Not Applicable`\
 **signature:** `(define-constant name expression)`
 
