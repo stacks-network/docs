@@ -4,6 +4,14 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### Chainstate shrinkage, Signer global state, and more security fixes
+
+_March 9th, 2026_
+
+[**\[Stacks Core 3.3.0.0.6\]**](https://github.com/stacks-network/stacks-core/releases/tag/3.3.0.0.6) This release contains two major infra upgrades: chainstate shrinkage (>20% reduction in daily growth) and the Signer state machine activation (better block production under load). This release also contains several bugfixes and improvements to the stacks-node and stacks-signer binaries, ensuring more consistent block production. Please upgrade if you are a node operator and signer.
+
+***
+
 ### sBTC APIs, BNSv2, and new Stacks.js Reference section
 
 _March 7th, 2026_
