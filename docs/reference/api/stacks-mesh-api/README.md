@@ -4,13 +4,13 @@
 For the complete OpenAPI spec, [here](https://raw.githubusercontent.com/stx-labs/stacks-mesh-api/refs/heads/master/packages/api/openapi.yaml).
 {% endhint %}
 
-A [Mesh API](https://docs.cdp.coinbase.com/mesh/docs/welcome/) (formerly Rosetta API) implementation for the [Stacks](https://www.stacks.co/) network. It provides a standardized set of endpoints for reading blockchain data, constructing transactions, and interacting with smart contracts, all through a single JSON-RPC interface that communicates directly with a Stacks node.
+A Mesh API (formerly Rosetta API) implementation for the Stacks network. It provides a standardized set of endpoints for reading blockchain data, constructing transactions, and interacting with smart contracts, all through a single JSON-RPC interface that communicates directly with a Stacks node.
 
 <details>
 
 <summary>Who is this API for?</summary>
 
-Rosetta (now rebranded as Mesh) is an open standard originally developed by [Coinbase](https://github.com/coinbase/mesh-specifications) to provide a unified interface for reading data from blockchains. It defines a common set of endpoints that blockchain nodes implement, allowing exchanges and other institutions to write a single parser that works across multiple chains.
+Mesh (formerly branded as Rosetta) is an open standard originally developed by [Coinbase](https://github.com/coinbase/mesh-specifications) to provide a unified interface for reading data from blockchains. It defines a common set of endpoints that blockchain nodes implement, **allowing exchanges and other institutions** to write a single parser that works across multiple chains.
 
 Rosetta/Mesh is primarily designed for self-hosted infrastructure (such as exchange backends) rather than as a publicly hosted API for general consumption.
 
@@ -430,3 +430,9 @@ npm run test:construction -w @stacks/mesh-api
 ```
 
 The construction tests spin up a Stacks node in Docker and run the full transaction lifecycle against it using the [mesh-cli](https://github.com/coinbase/mesh-cli) (Rosetta CLI) validator.
+
+***
+
+### Additional Resources
+
+* \[[Github](https://github.com/stx-labs/stacks-mesh-api)] Stacks Mesh API
