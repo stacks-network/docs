@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 
-## APIs <a href="#api" id="api"></a>
+## API
 
 * [Stacks Node RPC](api/stacks-node-rpc/README.md)
   * ```yaml
@@ -15,6 +15,18 @@
         ref:
           kind: openapi
           spec: stacks-node-rpc-api-dereferenced-new
+    ```
+* [Stacks Mesh API](api/stacks-mesh-api/README.md)
+  * ```yaml
+    type: builtin:openapi
+    props:
+      models: true
+      downloadLink: false
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: stacks-mesh-api
     ```
 * [USDCx Bridge](api/usdcx-bridge/README.md)
   * ```yaml
@@ -228,6 +240,7 @@
     * [PostCondition](stacks.js/stacks-transactions/types/PostCondition.md)
     * [NoEstimateAvailableError](stacks.js/stacks-transactions/types/NoEstimateAvailableError.md)
 * [sbtc](stacks.js/sbtc.md)
+* [c32check](stacks.js/c32check.md)
 
 ## Nakamoto Upgrade
 

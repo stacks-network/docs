@@ -6,6 +6,14 @@ For the complete OpenAPI spec, navigate [here](https://raw.githubusercontent.com
 
 The Stacks Node RPC API is exposed by every running Stacks node. It allows you to query the Stacks blockchain and interact with smart contracts. It was built to maintain pageable materialized views of the Stacks network.
 
+<details>
+
+<summary>Who is this API for?</summary>
+
+The Stacks Node RPC API is designed for developers who want to self-host their own Stacks node and API to achieve a more decentralized setup. It is ideal for those seeking greater control over their connection to the Stacks network, allowing them to run their own infrastructure. These RPC API endpoints, by default, are available when running your own Stacks node.
+
+</details>
+
 {% hint style="warning" %}
 If you run a local Stacks node, it exposes an HTTP server on port `20443`. The info endpoint would be `localhost:20443/v2/info`.
 {% endhint %}
