@@ -32,7 +32,7 @@ on Stacks automatically follows the Bitcoin forks.
 
 <summary><strong>Trust-minimized Bitcoin peg</strong></summary>
 
-Trust-minimized Bitcoin peg: lays the foundation for a novel decentralized, noncustodial, Bitcoin-pegged asset, sBTC, so smart contracts can run much faster and more\
+Trust-minimized Bitcoin peg: lays the foundation for a novel decentralized, Bitcoin-pegged asset, sBTC, so smart contracts can run much faster and more\
 cheaply using the Bitcoin-pegged asset with minimal counterparty risk. This also enables\
 contracts on the Stacks layer to write to Bitcoin through the peg-out transactions without\
 needing to rely on a centralized, closed set of entities. Atomic swaps and assets: Stacks\
