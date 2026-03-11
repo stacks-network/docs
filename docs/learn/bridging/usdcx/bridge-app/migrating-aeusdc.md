@@ -39,6 +39,8 @@ aeUSDC holders can use the aeUSDC/USDC pool on Bitflow. This is the fastest and 
 * Select USDCx as the “To” token.
 * Click “Swap” button to initiate the swap. You’ll need to sign the transaction requests from your wallet in order to complete the transaction.
 
+{% embed url="https://x.com/katemparkman/status/2031419834903212277" %}
+
 </details>
 
 <details>
