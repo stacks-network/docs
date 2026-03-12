@@ -268,7 +268,7 @@ docker run -d \
   -v "/stacks-blockchain:/stacks-blockchain" \
   -p 20443:20443 \
   -p 20444:20444 \
-  blockstack/stacks-blockchain:latest \
+  blockstack/stacks-core:latest \
 /bin/stacks-node start --config /src/stacks-node/testnet-miner-conf.toml
 ```
 

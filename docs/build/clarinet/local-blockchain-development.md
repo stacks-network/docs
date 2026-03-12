@@ -222,8 +222,8 @@ epoch_3_0 = 101   # Nakamoto activation at block 101
 
 Clarinet runs Devnet with specific tags for each Docker image. For example, Clarinet v3.10.0 uses the following images:
 
-* stacks node: `blockstack/stacks-blockchain:3.3.0.0.1-alpine`
-* stacks signer: `blockstack/stacks-signer:3.3.0.0.1.0-alpine`
+* stacks node: `blockstack/stacks-core:3.3.0.0.6-alpine`
+* stacks signer: `blockstack/stacks-signer:3.3.0.0.6.0-alpine`
 
 We recommend Devnet users let Clarinet handle it and use the default version. This ensures that your Clarinet version can handle and properly configure the images it uses.
 
@@ -238,8 +238,8 @@ deployment_fee_rate = 10
 # ...
 
 [devnet]
-stacks_node_image_url = "blockstack/stacks-blockchain:3.3.0.0.1"
-stacks_signer_image_url = "blockstack/stacks-signer:3.3.0.0.1.0"
+stacks_node_image_url = "blockstack/stacks-core:3.3.0.0.6"
+stacks_signer_image_url = "blockstack/stacks-signer:3.3.0.0.6.0"
 ```
 
 <details>
