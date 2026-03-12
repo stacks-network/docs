@@ -4,6 +4,22 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### Clarity Plugin for Claude Code
+
+_March 11th, 2026_
+
+A [Clarity plugin](https://github.com/stx-labs/clarity-claude-plugin) for Claude Code is now available via the Stacks Labs Claude plugin marketplace. Install it with two commands and Claude Code will be aware of the Clarity CLI and have access to the Clarity LSP — meaning the agent can actually use the CLI as part of its workflow. More detailed skills around the JS SDK, devnet, deployments, and more are on the roadmap.
+
+***
+
+### Stacks Mesh API for exchanges and institutions
+
+_March 10th, 2026_
+
+[**\[API\]**](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/stacks-mesh-api) Previously, the Hiro Stacks Blockchain API included an embedded Rosetta implementation, but this was removed due to inefficiency. The standalone Mesh API implementation replaces that prior integration. Mesh (formerly branded as Rosetta) is an open standard originally developed by Coinbase to provide a unified interface for reading data from blockchains. It defines a common set of endpoints that blockchain nodes implement, **allowing exchanges and other institutions** to write a single parser that works across multiple chains.
+
+***
+
 ### Chainstate shrinkage, Signer global state, and more security fixes
 
 _March 9th, 2026_

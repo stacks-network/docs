@@ -23,6 +23,8 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 <summary>Community &#x26; Experimental</summary>
 
 * [**Clarity Deployed Contracts**](https://github.com/boomcrypto/clarity-deployed-contracts) - Browse the source code of all deployed Clarity contracts on Stacks' mainnet and testnet.
+* [**Clarity Claude Plugin**](https://github.com/stx-labs/clarity-claude-plugin) **\[StacksLabs]** - Clarity plugin for Claude Code
+* [**Stacks Starter**](https://github.com/kenny-stacks/stacks-starter) - A vibe code ready starter kit for building Stacks apps
 
 </details>
 

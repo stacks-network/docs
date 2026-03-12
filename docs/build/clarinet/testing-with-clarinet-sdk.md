@@ -403,6 +403,22 @@ export default defineConfig({
 });
 ```
 
+### Generating Deployment Plans
+
+{% code expandable="true" %}
+```typescript
+import { generateDeployement } from "@stacks/clarinet-sdk";
+
+// Generate a simnet deployment plan from your Clarinet.toml
+// without starting a full simnet session
+const success = await generateDeployement("./Clarinet.toml");
+
+if (success) {
+  console.log("Deployment plan generated at deployments/default.simnet-plan.yaml");
+}
+```
+{% endcode %}
+
 ## Advanced testing patterns
 
 Test error conditions:

@@ -101,23 +101,63 @@ Clarinet validates multiple aspects of your contracts:
 | **Variable scope**       | Variables defined before use                       |
 | **Function visibility**  | Proper use of public, private, and read-only       |
 
+<details>
+
+<summary><code>clarinet check --output=&#x3C;format></code></summary>
+
+Add `--output=<format>` option to `clarinet check` to print diagnostics as JSON or other formats. This will make it easier for LLMs and other software to utilize the output of `clarinet check` . Current supported formats are `standard` , `json` , `jsonpretty` .
+
+{% code title="" expandable="true" %}
+```
+> clarinet check --output=json
+
+{
+  "success": true,
+  "diagnostics": {
+    "/home/user/git/stx-labs/stacks-wormhole-ntt/.cache/requirements/SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-registry.clar": [
+      {
+        "level": "Warning",
+        "message": "constant `ERR_INVALID_REQUEST_ID` never used",
+        "spans": [
+          {
+            "start_line": 5,
+            "start_column": 1,
+            "end_line": 5,
+            "end_column": 51
+          }
+        ],
+        "suggestion": "Remove this expression"
+      },
+      {
+        "level": "Warning",
+        "message": "constant `governance-role` is not SCREAMING_SNAKE_CASE: IllegalCharacter(103)",
+        "spans": [
+          {
+            "start_line": 9,
+            "start_column": 1,
+            "end_line": 9,
+            "end_column": 38
+          }
+        ],
+        "suggestion": "Remove the illegal character 'g'"
+      }
+    ]
+  }
+}
+```
+{% endcode %}
+
+</details>
+
 ### Linter analysis
 
 Clarinet includes a built-in linter as part of `clarinet check` to help identify common mistakes, inefficiencies, and unused code in Clarity contracts. Linters play an important role in improving code quality by surfacing issues early in development and encouraging clearer, more maintainable contracts.
 
-Clarinet currently provides a set of lints focused on **dead code analysis**. These lints detect declarations and expressions that have no effect on contract execution and can be configured individually.
+Clarinet currently provides a set of lints focused on dead code analysis and for style/correctness. These lints detect declarations and expressions that have no effect on contract execution and can be configured individually.
 
 The following lints are available:
 
-| **Identifier**      | **Description**                                                                  |
-| ------------------- | -------------------------------------------------------------------------------- |
-| `unused_const`      | Detects unused `define-constant` declarations.                                   |
-| `unused_data_var`   | Detects `define-data-var` declarations that are never written.                   |
-| `unused_map`        | Detects `define-map` declarations that are never accessed.                       |
-| `unused_private_fn` | Detects private functions that are never called.                                 |
-| `unused_token`      | Detects fungible and non-fungible tokens that are never minted.                  |
-| `unused_trait`      | Detects traits imported with `use-trait` that are never used as parameter types. |
-| `unused_binding`    | Detects unused function parameters and `let` bindings.                           |
+<table data-header-hidden><thead><tr><th></th><th></th><th data-hidden></th></tr></thead><tbody><tr><td><strong>Identifier</strong></td><td><strong>Description</strong></td><td><strong>Lint Group</strong></td></tr><tr><td><code>unused_const</code></td><td>Detects unused <code>define-constant</code> declarations.</td><td><code>unused</code></td></tr><tr><td><code>unused_data_var</code></td><td>Detects <code>define-data-var</code> declarations that are never written.</td><td><code>unused</code></td></tr><tr><td><code>unused_map</code></td><td>Detects <code>define-map</code> declarations that are never accessed.</td><td><code>unused</code></td></tr><tr><td><code>unused_private_fn</code></td><td>Detects private functions that are never called.</td><td><code>unused</code></td></tr><tr><td><code>unused_token</code></td><td>Detects fungible and non-fungible tokens that are never minted.</td><td><code>unused</code></td></tr><tr><td><code>unused_trait</code></td><td>Detects traits imported with <code>use-trait</code> that are never used as parameter types.</td><td><code>unused</code></td></tr><tr><td><code>unused_binding</code></td><td>Detects unused function parameters and <code>let</code> bindings.</td><td><code>unused</code></td></tr><tr><td><code>error_const</code></td><td>Detects error constants that could use idiomatic patterns</td><td><code>style</code></td></tr><tr><td><code>case_const</code></td><td>Detects constants that don't follow naming conventions</td><td><code>style</code></td></tr><tr><td><code>unnecessary_public</code></td><td>Detects public functions that could be private</td><td><code>style</code></td></tr><tr><td><code>unnecessary_as_max_len</code></td><td>Detects unnecessary <code>as-max-len?</code> usage</td><td><code>style</code></td></tr></tbody></table>
 
 In addition, the **`noop`** lint detects expressions that have no effect, such as: `(is-eq 1)`
 
@@ -134,7 +174,7 @@ Note: _prefixing_ identifiers with `_` is not currently supported, only _suffixi
 Individual lints can also be disabled for a specific line using Clarity’s annotation syntax:
 
 ```clarity
-;; #[allow(lint_name)]
+;; #[allow(lint_name_1, lint_name_2, ...)]
 ```
 
 #### Configuration
