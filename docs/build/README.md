@@ -61,7 +61,7 @@ It includes curated quick starts for smart contract development with Clarinet an
 
 {% tab title="Operate" %}
 **How do you run Stacks infrastructure?**\
-The [Operate](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/) section is designed for node operators and infrastructure providers. It covers how to run and manage Stacks nodes, signers, and miners.
+The [Operate](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/run-a-node) section is designed for node operators and infrastructure providers. It covers how to run and manage Stacks nodes, signers, and miners.
 
 If you’re responsible for operating or maintaining Stacks-related infrastructure, this section contains the resources you’ll need.
 {% endtab %}
