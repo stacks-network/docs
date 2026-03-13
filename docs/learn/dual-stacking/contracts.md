@@ -7,7 +7,7 @@ The Dual Stacking contract enables participants to earn boosted sBTC rewards by 
 {% hint style="info" %}
 For the live dual stacking contract on mainnet, check out the contract page [here](https://explorer.hiro.so/txid/SP1HFCRKEJ8BYW4D0E3FAWHFDX8A25PPAA83HWWZ9.dual-stacking-v1?chain=mainnet).
 
-On December 15, 2025, the dual stacking contract will be upgraded to [`.dual-stacking-v2_0_2`](https://explorer.hiro.so/txid/SP1HFCRKEJ8BYW4D0E3FAWHFDX8A25PPAA83HWWZ9.dual-stacking-v2_0_2?chain=mainnet)
+On December 15, 2025, the dual stacking contract was upgraded to [`.dual-stacking-v2_0_2`](https://explorer.hiro.so/txid/SP1HFCRKEJ8BYW4D0E3FAWHFDX8A25PPAA83HWWZ9.dual-stacking-v2_0_2?chain=mainnet)
 {% endhint %}
 
 ### Decentralized Architecture
