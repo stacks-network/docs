@@ -42,7 +42,6 @@
 * [FAQ](clarinet/faq.md)
 * [Integrations](clarinet/integrations/README.md)
   * [Clarity VSCode Extension](clarinet/integrations/clarity-vscode-extension.md)
-  * [Chainhook Integration](clarinet/integrations/chainhook.md)
   * [Stacks.js Integration](clarinet/integrations/stacks.js.md)
   * [sBTC Integration](clarinet/integrations/sbtc.md)
 
