@@ -4,6 +4,14 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### More Linting, Less Friction
+
+_March 12th, 2026_
+
+[**\[Clarinet 3.15.0\]**](https://github.com/stx-labs/clarinet/releases/tag/v3.15.0) This release brings some solid quality-of-life improvements to Clarinet. On the analysis side, there's now static code analysis via CodeLens, static cost analysis, and two new linter rules covering `at-block` and `case_binding`. Diagnostics now run with and without simnet environment code during both `clarinet check` and the LSP. Devnet gets some love too — Docker containers are now grouped, logging is improved in `--no-dashboard` mode, and the orchestrator has been refactored for better reliability. Under the hood, Chainhooks v1 has been removed, dependencies have been updated, and a fix lands for correctly traversing Clarity 4's `as-contract?`.
+
+***
+
 ### Clarity Plugin for Claude Code
 
 _March 11th, 2026_
