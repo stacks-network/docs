@@ -126,7 +126,9 @@ Dual Stacking operates as a transparent smart contract on the Stacks network. sB
 
 </details>
 
-#### External Resources
+***
+
+### Additional Resources
 
 * [\[Twitter\]](https://x.com/andrerserrano/status/1977845457226178757) Dual Stacking Litepaper Announcement from Andre Serrano
 * [\[Github\]](https://github.com/stx-labs/papers/blob/main/Dual%20Stacking%20Litepaper.pdf) Official Dual Stacking Litepaper
@@ -135,7 +137,4 @@ Dual Stacking operates as a transparent smart contract on the Stacks network. sB
 * \[[Stacks Blog](https://www.stacks.co/blog/dual-stacking-launches-on-stacks)] Official blog announcement
 * \[[Stacks Twitter](https://x.com/Stacks/status/1983900168954286342)] Official twitter announcement
 * \[[Dual Stacking App](https://app.stacks.co/)] Official Dual Stacking App
-
-#### Related Technical Resources
-
 * [\[Explorer\]](https://explorer.hiro.so/txid/SP1HFCRKEJ8BYW4D0E3FAWHFDX8A25PPAA83HWWZ9.dual-stacking-v1?chain=mainnet) `dual-stacking-v1` : Main Dual Stacking Contract

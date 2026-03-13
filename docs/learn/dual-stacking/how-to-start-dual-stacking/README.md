@@ -4,13 +4,7 @@ description: Getting starting in Dual Stacking is simple.
 
 # How to Start Dual Stacking
 
-<figure><img src="../../.gitbook/assets/Group 316124782.png" alt=""><figcaption><p><a href="http://app.stacks.co/">app.stacks.co</a></p></figcaption></figure>
-
-{% hint style="warning" %}
-Coinciding with the Dual Stacking launch, the existing sBTC Rewards Program will sunset on October 31, 2024. Starting October 30th, enroll in the Dual Stacking Rewards Contract (specific instructions to follow).
-
-NOTE: you will have until \~ Nov 4 (end of Cycle 121) to enroll, and you will continue to earn rewards from the current program until this date.
-{% endhint %}
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/Group 316124782.png" alt=""><figcaption><p><a href="http://app.stacks.co/">app.stacks.co</a></p></figcaption></figure></div>
 
 ### **Overview of how to start Dual Stacking**
 
