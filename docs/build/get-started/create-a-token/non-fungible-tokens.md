@@ -4,7 +4,7 @@ description: A guide to help you create your own non-fungible tokens
 
 # Non-Fungible Tokens
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure></div>
 
 Create an NFT with Stacks because it builds **on Bitcoin** — inheriting the security and permanence of the most durable chain via Proof-of-Transfer. Clarity smart contracts make logic easy to audit, reducing the guessing and attack surface common in NFT projects. Plus, Stacks NFTs tap into a Bitcoin-aligned community that values ownership, longevity, and real on-chain utility.
 

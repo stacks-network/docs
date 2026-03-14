@@ -8,7 +8,58 @@ description: Check out the latest Stacks developer updates
 
 _March 12th, 2026_
 
-[**\[Clarinet 3.15.0\]**](https://github.com/stx-labs/clarinet/releases/tag/v3.15.0) This release brings some solid quality-of-life improvements to Clarinet. On the analysis side, there's now static code analysis via CodeLens, static cost analysis, and two new linter rules covering `at-block` and `case_binding`. Diagnostics now run with and without simnet environment code during both `clarinet check` and the LSP. Devnet gets some love too — Docker containers are now grouped, logging is improved in `--no-dashboard` mode, and the orchestrator has been refactored for better reliability. Under the hood, Chainhooks v1 has been removed, dependencies have been updated, and a fix lands for correctly traversing Clarity 4's `as-contract?`.
+[**\[Clarinet 3.15.0\]**](https://github.com/stx-labs/clarinet/releases/tag/v3.15.0) This release brings some solid quality-of-life improvements to Clarinet. On the analysis side, there's now static code analysis via CodeLens, and two new linter rules covering `at-block` and `case_binding`. Diagnostics now run with and without the `#[env(simnet)]` annotation during both `clarinet check` and the LSP. Devnet gets some love too — Docker containers are now grouped, logging is improved in `--no-dashboard` mode, and the orchestrator has been refactored for better reliability. Under the hood, Chainhooks v1 has been removed, dependencies have been updated, and a fix lands for correctly traversing Clarity 4's `as-contract?`.
+
+<details>
+
+<summary>Details</summary>
+
+`at-block` **Lint Warning**
+
+A SIP is currently up for vote that would remove the `at-block` function starting in Epoch 3.4. If it passes, any deployed contract calling `at-block` will start throwing runtime errors after Epoch 3.4 activates, and new contracts using it will be rejected at deployment entirely. To get ahead of this, Clarinet now flags any use of `at-block` in your code with a lint warning. If you have contracts using `at-block`, now is the time to audit and refactor. Vote and learn more [here](https://ballot.gg/67a34537-0375-4046-a4b7-432e8dfd4eb3/1MP9LjMBZRKXWq3tRio6nGwFyUoboozEQx).
+
+**Static Cost Analysis via CodeLens**
+
+You can now see the static max cost of your Clarity functions directly in your editor, displayed inline just above each function definition. No more manually invoking a function and digging through terminal output to get a cost estimate — the analysis is just there, passively, as you write.
+
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure></div>
+
+**Improved `devnet start --no-dashboard` Logging**
+
+Running devnet without the dashboard used to be pretty useless in practice — it would print container status updates, stop once the Bitcoin node was ready, and then go quiet, giving you no visibility into what was actually happening as the chain progressed. That's been fixed. The logs now surface the full chain of events as devnet runs, making it actually usable for local development workflows and, importantly, for AI agents running devnet headlessly in automated pipelines.
+
+{% code title="example" expandable="true" %}
+```
+Mar 05 17:51:49.870 DEBG Bitcoin block #145 received
+Mar 05 17:51:49.870 INFO bitcoin-node - mining blocks (chain_tip = #145)
+Mar 05 17:51:51.187 WARN Stacks reorg received
+Mar 05 17:51:51.187 INFO stacks-node - mining blocks (chain_tip = #38)
+Mar 05 17:51:51.187 INFO Stacks block #38 mined including 2 transactions
+Mar 05 17:51:51.187 INFO Local Devnet network ready
+Mar 05 17:51:57.252 DEBG Bitcoin block #146 received
+Mar 05 17:51:57.252 INFO bitcoin-node - mining blocks (chain_tip = #146)
+Mar 05 17:51:58.554 INFO   ok deploy ST000000000000000000002AMW42H.sip-031 [(ok true)]
+Mar 05 17:51:58.554 INFO stacks-node - mining blocks (chain_tip = #39)
+Mar 05 17:51:58.554 INFO Stacks block #39 mined including 3 transactions
+Mar 05 17:52:01.459 DEBG Bitcoin block #147 received
+Mar 05 17:52:01.459 INFO bitcoin-node - mining blocks (chain_tip = #147)
+Mar 05 17:52:02.807 INFO stacks-node - mining blocks (chain_tip = #40)
+Mar 05 17:52:02.807 INFO Stacks block #40 mined including 2 transactions
+Mar 05 17:52:06.748 DEBG Bitcoin block #148 received
+Mar 05 17:52:06.748 INFO bitcoin-node - mining blocks (chain_tip = #148)
+Mar 05 17:52:08.070 INFO   ok deploy ST000000000000000000002AMW42H.costs-4 [(ok true)]
+```
+{% endcode %}
+
+**`case_binding` Linter Rule**
+
+Clarity convention is `kebab-case`. The new `case_binding` lint rule enforces this on `let` bindings and function argument names, so things like `camelCaseVar` or `snake_case_arg` will now generate a diagnostic. If you have a specific binding you want to opt out of the check, you can suppress it with a `#[allow(case_binding)]` comment on the line above.
+
+**Simnet-Only Code Annotations**
+
+Clarinet now supports a `#[env(simnet)]` annotation that lets you mark functions or expressions as simnet-only. Annotated code gets stripped out automatically when deploying to other networks, so test helpers like faucets never accidentally make it to mainnet. To keep things safe, `clarinet check` and the LSP now run two validation passes: one with the simnet code included and one without, catching any cases where production code accidentally depends on a simnet-only function.
+
+</details>
 
 ***
 
