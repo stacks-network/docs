@@ -31,7 +31,7 @@
       spec:
         ref:
           kind: openapi
-          spec: stacks-blockchain-api
+          spec: stacks-blockchain-api-dereferenced
     ```
 * [Stacks Mesh API](api/stacks-mesh-api/README.md)
   * ```yaml
