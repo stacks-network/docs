@@ -35,5 +35,9 @@ curl -L 'https://api.hiro.so/extended' -H 'Accept: application/json'
 For more usage examples, see [Usage](usage.md).
 
 {% hint style="warning" %}
-All Stacks Blockchain API responses include rate limit headers that help you monitor your API usage. If you need help building with the Stacks Blockchain API, reach out on the **#api** channel on [Discord](https://stacks.chat/) under the Hiro Developer Tools section. There's also a [weekly office hours](https://www.addevent.com/event/kI22007085) call every Wednesday at 1pm ET.
+All Stacks Blockchain API responses include rate limit headers that help you monitor your API usage.
+{% endhint %}
+
+{% hint style="info" %}
+Need help building with the Stacks Blockchain API? Reach out on the **#api** channel on [Discord](https://stacks.chat/) under the Hiro Developer Tools section.
 {% endhint %}

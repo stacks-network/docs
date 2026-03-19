@@ -11,7 +11,7 @@ description: Understand the architecture of the Stacks Blockchain API.
 The `stacks-node` has its own minimal set of http endpoints referred to as `RPC endpoints`.
 
 - The `stacks-blockchain-api` allows clients to access RPC endpoints by proxying requests to a load-balanced pool of `stacks-nodes`.
-- For more details on RPC endpoints, see: [RPC Endpoints Documentation](https://github.com/blockstack/stacks-blockchain/blob/master/docs/rpc-endpoints.md)
+- For more details on RPC endpoints, see: [RPC Endpoints Documentation](https://github.com/stacks-network/stacks-core/blob/master/docs/rpc-endpoints.md)
 - Common RPC endpoints include:
   - `POST /v2/transactions` - Broadcast a transaction
   - `GET /v2/pox` - Retrieve current Proof of Transfer (PoX) relevant information
@@ -24,9 +24,9 @@ The `stacks-node` has its own minimal set of http endpoints referred to as `RPC 
 The Stacks Blockchain API implements additional endpoints that provide data unavailable directly from Stacks nodes due to various constraints.
 
 - The `stacks-node` may not persist certain data or may not serve it efficiently to many clients. For instance, while it can return the current STX balance of an account, it cannot provide a history of account transactions.
-- The API implements the Rosetta specification by Coinbase, an open standard designed to simplify blockchain deployment and interaction. More information can be found at [Rosetta API](https://www.rosetta-api.org/).
-- The API includes support for the Blockchain Naming System (BNS) endpoints. Details are available at [BNS Documentation](https://docs.stacks.co/clarity/example-contracts/bns).
-- For Express.js routes, see the directory `/src/api/routes`.
+- The API implements the [Mesh](https://github.com/coinbase/mesh-specifications) specification (formerly Rosetta) by Coinbase, an open standard designed to simplify blockchain deployment and interaction.
+- The API includes support for the Blockchain Naming System (BNS) endpoints.
+- For Express.js routes, see [`/src/api/routes`](https://github.com/hirosystems/stacks-blockchain-api/tree/master/src/api/routes) in the API repo.
 
 The API creates an "event observer" http server which listens for events from a stacks-node "event emitter".
 
@@ -39,13 +39,13 @@ Byproducts of executed transactions such as:
   - Smart-contract log data
   - Execution cost data
 
-The API processes and stores these events as relational data in PostgreSQL. For the "event observer" code, see `/src/event-stream`.
+The API processes and stores these events as relational data in PostgreSQL. For the "event observer" code, see [`/src/event-stream`](https://github.com/hirosystems/stacks-blockchain-api/tree/master/src/event-stream) in the API repo.
 
 ## OpenAPI and JSON Schema
 
 All http endpoints and responses are defined in OpenAPI and JSON Schema.
 
-- See `/docs/openapi.yaml`
+- See [`/docs/openapi.yaml`](https://github.com/hirosystems/stacks-blockchain-api/blob/master/docs/openapi.yaml) in the API repo
 - These are used to auto-generate the docs at https://hirosystems.github.io/stacks-blockchain-api/
 - JSON Schemas are converted into TypeScript interfaces, which are used internally by the db controller module to transform SQL query results into the correct object shapes.
 - OpenAPI and JSON Schemas are also used to generate a standalone `@stacks/blockchain-api-client`.

@@ -6,7 +6,7 @@ description: Learn how to paginate through lists.
 
 To make API responses more compact, lists returned by the API are paginated. For lists, the response body includes:
 
-- `limit`: The number of list items return per response
+- `limit`: The number of list items returned per response
 - `offset`: The number of elements to skip (starting from 0)
 - `total`: The number of all available list items
 - `results`: The array of list items (length of array equals the set limit)
