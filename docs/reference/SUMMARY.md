@@ -16,6 +16,23 @@
           kind: openapi
           spec: stacks-node-rpc-api-dereferenced-new
     ```
+* [Stacks Blockchain API](api/stacks-blockchain-api/README.md)
+  * [Usage](api/stacks-blockchain-api/usage.md)
+  * [Architecture](api/stacks-blockchain-api/architecture.md)
+  * [Pagination](api/stacks-blockchain-api/pagination.md)
+  * [Nonce Handling](api/stacks-blockchain-api/nonce-handling.md)
+  * [Requesting Proofs](api/stacks-blockchain-api/requesting-proofs.md)
+  * ```yaml
+    props:
+      models: true
+      downloadLink: false
+    type: builtin:openapi
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: stacks-blockchain-api
+    ```
 * [Stacks Mesh API](api/stacks-mesh-api/README.md)
   * ```yaml
     type: builtin:openapi
