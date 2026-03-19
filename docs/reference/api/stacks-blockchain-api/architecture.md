@@ -45,7 +45,7 @@ The API processes and stores these events as relational data in PostgreSQL. For 
 
 All http endpoints and responses are defined in OpenAPI and JSON Schema.
 
-- See [`/docs/openapi.yaml`](https://github.com/hirosystems/stacks-blockchain-api/blob/master/docs/openapi.yaml) in the API repo
+- See [`openapi.yaml`](https://github.com/hirosystems/stacks-blockchain-api/blob/master/openapi.yaml) in the API repo
 - These are used to auto-generate the docs at https://hirosystems.github.io/stacks-blockchain-api/
 - JSON Schemas are converted into TypeScript interfaces, which are used internally by the db controller module to transform SQL query results into the correct object shapes.
 - OpenAPI and JSON Schemas are also used to generate a standalone `@stacks/blockchain-api-client`.
