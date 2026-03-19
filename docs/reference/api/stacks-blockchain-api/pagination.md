@@ -44,8 +44,7 @@ Here is a sample response:
       "events": [],
       "tx_type": "coinbase",
       "coinbase_payload": {}
-    },
-    {}
+    }
   ]
 }
 ```

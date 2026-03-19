@@ -4,21 +4,19 @@
 For the complete OpenAPI spec, navigate [here](https://raw.githubusercontent.com/hirosystems/stacks-blockchain-api/master/openapi.yaml).
 {% endhint %}
 
-The Stacks API provides comprehensive access to Stacks blockchain data through a high-performance REST interface. Built on cached responses and optimized indexing, it delivers transaction data, smart contract information, account balances, and block details with minimal latency.
+The Stacks Blockchain API is a REST API developed and hosted by [Hiro](https://www.hiro.so/) that extends the [Stacks Node RPC API](../stacks-node-rpc/) with additional indexed endpoints. While every Stacks node exposes a minimal set of RPC endpoints (account balances, contract calls, transaction broadcasting), the Blockchain API continuously ingests and indexes on-chain activity into a PostgreSQL database, making it possible to query transaction history, token transfers, smart contract events, and paginated lists of blocks — data that is not directly available from a Stacks node alone.
+
+The public base URL is `https://api.hiro.so`. No infrastructure setup is required, so you can start querying immediately.
 
 <details>
 
 <summary>Who is this API for?</summary>
 
-The Stacks Blockchain API is a hosted, indexed REST API that caches and indexes on-chain data so you can query it efficiently. It is distinct from the [Stacks Node RPC API](../stacks-node-rpc/), which exposes only the minimal set of endpoints built into every Stacks node.
+The Stacks Blockchain API is the recommended API for wallets, dApps, explorers, and general developers who need rich query capabilities without running their own node. It proxies all standard [Stacks Node RPC](../stacks-node-rpc/) endpoints and adds the `/extended/` family of indexed endpoints on top.
 
-If you need rich query capabilities (transaction history, token transfers, smart contract events, paginated lists, etc.) without running your own infrastructure, the Stacks Blockchain API is the right choice.
+If you need a more decentralized setup or want direct access to the raw node RPC without a third-party service, see the [Stacks Node RPC API](../stacks-node-rpc/). For exchange or institutional integrations using the Coinbase Mesh standard, see the [Stacks Mesh API](../stacks-mesh-api/).
 
 </details>
-
-{% hint style="info" %}
-This API is developed and hosted by [Hiro](https://www.hiro.so/). The public base URL is `https://api.hiro.so`.
-{% endhint %}
 
 ### Key features
 

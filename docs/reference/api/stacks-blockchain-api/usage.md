@@ -4,7 +4,7 @@ description: Learn the basics of using the Stacks Blockchain API.
 
 # Basic usage
 
-The Stacks API is built on REST principles, enforcing HTTPS for all requests to ensure data security, integrity, and privacy.
+The Stacks Blockchain API is built on REST principles, enforcing HTTPS for all requests to ensure data security, integrity, and privacy.
 
 ## Base URL
 
@@ -23,7 +23,7 @@ curl -L 'https://api.hiro.so/extended' \
 
 ## Authentication
 
-If you are using an api-key, replace `$HIRO_API_KEY` with your secret API key.
+If you are using an API key, replace `$HIRO_API_KEY` with your secret API key.
 
 ```bash
 curl -L 'https://api.hiro.so/extended' \
@@ -33,7 +33,7 @@ curl -L 'https://api.hiro.so/extended' \
 
 ## Response codes
 
-The Stacks API uses standard HTTP response codes to indicate request success or failure.
+The Stacks Blockchain API uses standard HTTP response codes to indicate request success or failure.
 
 | Code | Description |
 |------|-------------|

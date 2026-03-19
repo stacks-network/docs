@@ -4,7 +4,7 @@ description: Understand proof requests from API endpoints.
 
 # Requesting proofs
 
-Several endpoints will request the [MARF Merkle Proof](https://github.com/stacksgov/sips/blob/main/sips/sip-004/sip-004-materialized-view.md#marf-merkle-proofs) by default.
+Several endpoints return the [MARF Merkle Proof](https://github.com/stacksgov/sips/blob/main/sips/sip-004/sip-004-materialized-view.md#marf-merkle-proofs) by default.
 
 Provided with the proof, a client can verify the value, cumulative energy spent, and the number of confirmations for the response value provided by the API.
 
