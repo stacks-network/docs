@@ -81,6 +81,27 @@
 * [Implementation](post-conditions/implementation.md)
 * [Examples](post-conditions/examples.md)
 
+## Chainhooks
+
+* [Overview](chainhooks/overview.md)
+* [Quickstart](chainhooks/quickstart.md)
+* [Create Chainhooks](chainhooks/create.md)
+* [Fetch Chainhooks](chainhooks/fetch.md)
+* [Update Chainhooks](chainhooks/update.md)
+* [Evaluate Chainhooks](chainhooks/evaluate.md)
+* [Manage Secrets](chainhooks/secrets.md)
+* [FAQ](chainhooks/faq.md)
+* [Migration Guide](chainhooks/migration.md)
+* [Reference](chainhooks/reference/README.md)
+  * [Filters](chainhooks/reference/filters.md)
+  * [Options](chainhooks/reference/options.md)
+  * [Payload Anatomy](chainhooks/reference/payload-anatomy.md)
+
+## Contract Monitoring
+
+* [Overview](contract-monitoring/README.md)
+* [Create an Alert](contract-monitoring/create-alert.md)
+
 ## More Guides
 
 * [sBTC](more-guides/sbtc/README.md)
@@ -96,6 +117,10 @@
 * [Verifying Bitcoin Transactions in Clarity](more-guides/verify-bitcoin-transactions-clarity/README.md)
   * [Creating a Bitcoin Transaction](more-guides/verify-bitcoin-transactions-clarity/creating-btc-tx.md)
   * [Parsing a Bitcoin Transaction](more-guides/verify-bitcoin-transactions-clarity/parsing-a-bitcoin-transaction.md)
+* [Build an NFT Marketplace](more-guides/build-an-nft-marketplace.md)
+* [Build a Decentralized Kickstarter](more-guides/build-a-decentralized-kickstarter.md)
+* [No-Loss Lottery](more-guides/no-loss-lottery.md)
+* [Using Clarity Values](more-guides/using-clarity-values.md)
 * [Bridging USDCx](more-guides/bridging-usdcx.md)
 * [c32check](more-guides/c32check.md)
 

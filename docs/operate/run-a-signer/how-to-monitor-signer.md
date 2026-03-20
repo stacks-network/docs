@@ -1,5 +1,9 @@
 # How to Monitor Signer
 
+{% hint style="info" %}
+For Hiro-hosted, indexed signer participation data, see the [Signer Metrics API reference](../../reference/api/signer-metrics-api/README.md).
+{% endhint %}
+
 We will use [Grafana Cloud](https://grafana.com/) to observe and monitor both the Signer and its corresponding Stacks node.
 
 ## Requirements

@@ -4,6 +4,9 @@
 
 ## API
 
+* [API Keys](api/api-keys.md)
+* [Rate Limits](api/rate-limits.md)
+* [Response Headers](api/response-headers.md)
 * [Stacks Node RPC](api/stacks-node-rpc/README.md)
   * ```yaml
     props:
@@ -15,6 +18,62 @@
         ref:
           kind: openapi
           spec: stacks-node-rpc-api-dereferenced-new
+    ```
+* [Stacks Blockchain API](api/stacks-blockchain-api/README.md)
+  * [Usage](api/stacks-blockchain-api/usage.md)
+  * [Architecture](api/stacks-blockchain-api/architecture.md)
+  * [Pagination](api/stacks-blockchain-api/pagination.md)
+  * [Nonce Handling](api/stacks-blockchain-api/nonce-handling.md)
+  * [Requesting Proofs](api/stacks-blockchain-api/requesting-proofs.md)
+  * ```yaml
+    props:
+      models: true
+      downloadLink: false
+    type: builtin:openapi
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: stacks-blockchain-api-dereferenced
+    ```
+* [Chainhooks API](api/chainhooks-api/README.md)
+  * [Usage](api/chainhooks-api/usage.md)
+  * ```yaml
+    props:
+      models: true
+      downloadLink: false
+    type: builtin:openapi
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: chainhooks-api
+    ```
+* [Token Metadata API](api/token-metadata-api/README.md)
+  * [Usage](api/token-metadata-api/usage.md)
+  * ```yaml
+    props:
+      models: true
+      downloadLink: false
+    type: builtin:openapi
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: token-metadata-api
+    ```
+* [Signer Metrics API](api/signer-metrics-api/README.md)
+  * [Usage](api/signer-metrics-api/usage.md)
+  * ```yaml
+    props:
+      models: true
+      downloadLink: false
+    type: builtin:openapi
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: signer-metrics-api
     ```
 * [Stacks Mesh API](api/stacks-mesh-api/README.md)
   * ```yaml

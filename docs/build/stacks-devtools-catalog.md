@@ -57,8 +57,8 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 ### Indexing & Data
 
 * [**Stacks Blockchain APIs**](https://github.com/hirosystems/stacks-blockchain-api) **\[Hiro]** – High-performance APIs to query blockchain data, explore blocks, transactions, smart contracts, and more, without running your own node.
-* [**Token Metadata APIs**](https://github.com/hirosystems/token-metadata-api) **\[Hiro] -** Fetch metadata for every token on Stacks and effortlessly put tokens into your app. Verify and display tokens in your app, for everything from DeFi to NFTs.&#x20;
-* [**Chainhooks**](https://github.com/hirosystems/chainhook) **\[Hiro]** – A notification service for dApps that triggers webhooks on specific blockchain events, helping you respond to transactions, contract calls, and chain reorganizations in real time.
+* [**Token Metadata APIs**](https://github.com/stx-labs/token-metadata-api) **\[Hiro] -** Fetch metadata for every token on Stacks and effortlessly put tokens into your app. Verify and display tokens in your app, for everything from DeFi to NFTs.&#x20;
+* [**Chainhooks**](chainhooks/overview.md) **\[Hiro]** – A notification service for dApps that triggers webhooks on specific blockchain events, helping you respond to transactions, contract calls, and chain reorganizations in real time.
 
 <details>
 
@@ -68,7 +68,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 * [**BNS**](https://www.bnsv2.com/docs) - [API](https://github.com/Strata-Labs/bnsv2-api) and [SDK](https://github.com/Strata-Labs/bns-v2-sdk) documentation for BNSv2, covering how to programmatically register, resolve, and manage Bitcoin Name System identities using on-chain contracts and developer libraries.
 * [**Signal21**](https://signal21.io/) - Data analytics platform for the Bitcoin Economy: on-chain visibility into Bitcoin L1, L2s, and Dapps.
 * [**Velar Devtools**](https://docs.velar.com/velar/developers) - Velar SDK and APIs allowing developers to implement token swaps, manage liquidity, and interact with the Velar DEX/DeFi ecosystem.
-* [**Bitcoin Indexer**](https://github.com/hirosystems/bitcoin-indexer) **-** Index Bitcoin meta-protocols like Ordinals, BRC-20, and Runes.
+* **Bitcoin Indexer** **\[Deprecated]** - Deprecated in March 2026 and not part of the active Stacks docs migration.
 * [**Bitflow Devtools**](https://docs.bitflow.finance/bitflow-documentation/developers/overview) - Documentation on Bitflow's SDKs and contracts for interacting with Bitflow's DeFi ecosystem.
 * [**x402-Stacks**](https://github.com/tony1908/x402Stacks) - A TypeScript library for implementing the x402 payment protocol on Stacks blockchain.&#x20;
 * [**StacksAgent MCP**](https://github.com/kai-builder/stacksagent-mcp) - A Model Context Protocol (MCP) server that enables Claude Desktop to interact with the Stacks blockchain.
@@ -95,7 +95,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 * [**Sign-In with Stacks**](https://github.com/pradel/sign-in-with-stacks/) - A library for creating and verifying Sign-In with Stacks messages.
 * [**sBTC Pay**](https://github.com/STX-CITY/sbtc-pay) - A complete "Stripe for sBTC" payment gateway that enables businesses to easily accept Bitcoin payments via sBTC on Stacks blockchain.
 * [**Bolt Protocol**](https://github.com/ronoel/bolt-protocol) - Bolt Protocol is a next-generation framework designed to enable near-instant transactions on the Bitcoin network and enable users to pay fees directly in sBTC.
-* [**Multisig CLI**](https://github.com/hirosystems/multisig-cli/) - Command line utility written in NodeJS for creating and signing Stacks multisig transactions with a Ledger device
+* [**Multisig CLI**](https://github.com/stx-labs/multisig-cli/) - Command line utility written in NodeJS for creating and signing Stacks multisig transactions with a Ledger device
 * [**Stacks Address Generator**](https://github.com/ECBSJ/stacks-address-generator) - Simple web app to quickly generate Stacks addresses
 * [**Stacks Electrum Plugin**](https://github.com/rafa-stacks/stacks-electrum-plugin) - An Electrum wallet plugin for composing Stacks blockchain transactions via Bitcoin `OP_RETURN` encoding, as defined in SIP-001 and SIP-007.
 
@@ -107,6 +107,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 
 * [**Explorer**](https://github.com/stx-labs/explorer) **\[StacksLabs] -** Explore transactions and accounts on the Stacks blockchain. Clone any contract and experiment in your browser with the Explorer sandbox.
 * [**Platform**](https://www.hiro.so/platform) **\[Hiro]** – Manage API keys, Chainhooks, and analyze onchain data streams in one command center.
+* [**Contract Monitoring**](contract-monitoring/README.md) **\[Hiro]** – Configure indexed contract alerts in Hiro Platform and route them to email or Slack.
 
 <details>
 
@@ -120,7 +121,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 
 ### Docs & Standards
 
-* [**Hiro Docs**](https://docs.hiro.so/) **\[Hiro]** - Official Hiro developer documentation website.
+* [**Hiro APIs on Stacks Docs**](../reference/api/stacks-blockchain-api/README.md) **\[Hiro]** - Hiro-hosted APIs are being consolidated into the Stacks docs experience.
 * [**Stacks Docs**](https://docs.stacks.co/) **\[StacksLabs]** - Official Stacks developer documentation website.
 * [**SIPs**](https://github.com/stacksgov/sips) - Community-submitted Stacks Improvement Proposals (SIPs).
 
