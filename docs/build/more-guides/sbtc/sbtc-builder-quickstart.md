@@ -22,8 +22,8 @@ In order to get the most from this quickstart, you should familiarize yourself w
 
 * [Stacks Developer Quickstart](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/Zz9BLmTU9oydDpL3qiUh/) - For a quick holistic introduction to the Stacks development process, tools, and fundamentals
 * [Clarity Crash Course](../../get-started/clarity-crash-course.md) - For a quick introduction to Clarity
-* [Clarinet Docs](/broken/pages/UK5Kgh2MHLoQvfoFVnLr)
-* [Stacks.js Docs](/broken/pages/dH5waQhE6Vb7rhcrUG7z)
+* [Clarinet Docs](../../clarinet/overview.md)
+* [Stacks.js Docs](../../stacks.js/overview.md)
 
 #### Local with Clarinet
 

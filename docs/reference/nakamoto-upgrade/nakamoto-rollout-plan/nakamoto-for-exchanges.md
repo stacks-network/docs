@@ -6,7 +6,7 @@
 
 The Nakamoto release brings many new capabilities and improvements to the Stacks blockchain by focusing on a set of core advancements: improving transaction speed, enhancing finality guarantees for transactions, mitigating Bitcoin miner MEV (miner extractable value) opportunities that affect PoX, and boosting robustness against chain reorganizations. This strategic upgrade aims to solidify trust in the Stacks network, offer greater alignment with Bitcoin's immutable nature, and foster an environment ripe for advanced Decentralized Finance (DeFi) applications. The expected outcome is a versatile, scalable, and secure platform that closely integrates with, yet distinctly enhances, the Bitcoin ecosystem.
 
-Learn more: [Broken link](/broken/pages/fac008cad2409afc8de86501f205ee51e148b5af "mention")
+Learn more: [What is the Nakamoto Release?](../what-is-the-nakamoto-release.md)
 
 </details>
 
@@ -27,7 +27,7 @@ The main thing exchanges will notice when the Nakamoto rollout is complete is th
 ### Resources
 
 * [Testnet documentation](https://docs.stacks.co/nakamoto-upgrade/nakamoto)
-* [API documentation](https://docs.hiro.so/nakamoto/stacks-js)
+* [API documentation](../../api/stacks-blockchain-api/README.md)
 * [Stacks Core Binaries](https://github.com/stacks-network/stacks-core/releases/latest)
 * [Stacks Signer Binary](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.5.0)
 * [Stacks Core Docker Images](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1\&name=3.1.0.0.5)
