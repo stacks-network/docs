@@ -8,14 +8,14 @@ In order to prevent "stuck" transactions, you must track the next available nonc
 Stacks Blockchain API provides an endpoint to make nonce handling simpler when using the following command:
 
 ```bash
-curl 'https://api.testnet.hiro.so/extended/v1/address/<principal>/nonces'
+curl 'https://api.hiro.so/extended/v1/address/SP3XXK8BG5X7CRH7W07RRJK3JZJXJ799WX3Y0SMCR/nonces'
 ```
 
 ```json
 {
-  "last_executed_tx_nonce": 5893,
-  "last_mempool_tx_nonce": null,
-  "possible_next_nonce": 5894,
+  "last_executed_tx_nonce": 2789412,
+  "last_mempool_tx_nonce": 2789413,
+  "possible_next_nonce": 2789414,
   "detected_missing_nonces": []
 }
 ```

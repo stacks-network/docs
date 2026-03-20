@@ -26,7 +26,7 @@ The Stacks Blockchain API implements additional endpoints that provide data unav
 - The `stacks-node` may not persist certain data or may not serve it efficiently to many clients. For instance, while it can return the current STX balance of an account, it cannot provide a history of account transactions.
 - The API previously included an embedded Rosetta implementation, but this was removed in favor of the standalone [Stacks Mesh API](../stacks-mesh-api/).
 - The API includes support for the Blockchain Naming System (BNS) endpoints.
-- For Express.js routes, see [`/src/api/routes`](https://github.com/hirosystems/stacks-blockchain-api/tree/master/src/api/routes) in the API repo.
+- For routes, see [`/src/api/routes`](https://github.com/hirosystems/stacks-blockchain-api/tree/master/src/api/routes) in the API repo.
 
 The API creates an "event observer" http server which listens for events from a stacks-node "event emitter".
 
@@ -46,7 +46,7 @@ The API processes and stores these events as relational data in PostgreSQL. For 
 All http endpoints and responses are defined in OpenAPI and JSON Schema.
 
 - See [`openapi.yaml`](https://github.com/hirosystems/stacks-blockchain-api/blob/master/openapi.yaml) in the API repo
-- These are used to auto-generate the docs at https://hirosystems.github.io/stacks-blockchain-api/
+- These are used to auto-generate the docs at https://docs.stacks.co/reference/api/stacks-blockchain-api
 - JSON Schemas are converted into TypeScript interfaces, which are used internally by the db controller module to transform SQL query results into the correct object shapes.
 - OpenAPI and JSON Schemas are also used to generate a standalone `@stacks/blockchain-api-client`.
 
