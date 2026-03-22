@@ -27,7 +27,7 @@ The main thing exchanges will notice when the Nakamoto rollout is complete is th
 ### Resources
 
 * [Testnet documentation](https://docs.stacks.co/nakamoto-upgrade/nakamoto)
-* [API documentation](../../api/stacks-blockchain-api/README.md)
+* [API documentation](../../api/stacks-mesh-api/README.md)
 * [Stacks Core Binaries](https://github.com/stacks-network/stacks-core/releases/latest)
 * [Stacks Signer Binary](https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.5.0)
 * [Stacks Core Docker Images](https://hub.docker.com/r/blockstack/stacks-core/tags?page=1\&name=3.1.0.0.5)
