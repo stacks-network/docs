@@ -168,7 +168,7 @@ CMD ["stacks-signer", "run", "--config", "/config.toml"]
 
 ### Running the Signer as a Binary
 
-Download the pre-built binaries from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases), unzip the archive for your architecture. Inside is a `stacks-signer` binary.
+Download the pre-built binaries from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases), unzip the archive for your architecture. It includes the `stacks-signer` binary.
 
 Run the signer:
 
