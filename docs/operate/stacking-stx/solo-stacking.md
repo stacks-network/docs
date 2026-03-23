@@ -20,7 +20,7 @@ Before you begin, make sure you have:
 
 1. **A running signer** or a signer you are collaborating with. See the [Run a Signer](../run-a-signer/) guide.
 2. **A signer key signature** for the stacking transaction you want to make. See [Generate a Signer Signature](generate-signer-signature.md).
-3. **Sufficient STX** — at or above the minimum stacking threshold.
+3. **Sufficient STX**: at or above the minimum stacking threshold.
 
 {% hint style="info" %}
 There are several ways to make stacking transactions. This guide covers using [Leather Earn](https://earn.leather.io/), which is the simplest option. You can also call the stacking functions directly from the [deployed contract](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-4?chain=mainnet) in the explorer, or use the [@stacks/stacking](https://github.com/stx-labs/stacks.js/tree/main/packages/stacking) NPM package.
@@ -366,7 +366,7 @@ If you're already stacking, the home page will show a link to "view stacking det
 
 ## Stop Stacking
 
-When stacking solo, your STX is locked for a fixed period defined when you initiated stacking or extended the lock period. **No additional action is required to stop stacking** — your tokens unlock automatically when the lock period expires.
+When stacking solo, your STX is locked for a fixed period defined when you initiated stacking or extended the lock period. **No additional action is required to stop stacking.** Your tokens unlock automatically when the lock period expires.
 
 {% hint style="info" %}
 Both the `stack-stx` and `stack-extend` functions emit an event that includes the `unlock-burn-height` field. This is the burn block height at which your tokens will be automatically unlocked.
@@ -383,6 +383,6 @@ To avoid your position being extended, simply do not call `stack-extend` before 
 
 ## How Signer Registration Works
 
-In the prepare phase before the next stacking cycle (last 100 blocks), the signer set is selected based on the amount of STX stacked. For solo stackers, the only transaction needed is `stack-stx` — once it is confirmed during the first 2000 blocks of the current reward cycle, your signer will be registered in the next cycle's signer set.
+In the prepare phase before the next stacking cycle (last 100 blocks), the signer set is selected based on the amount of STX stacked. For solo stackers, the only transaction needed is `stack-stx`. Once it is confirmed during the first 2000 blocks of the current reward cycle, your signer will be registered in the next cycle's signer set.
 
-It is critical that your signer is running during the prepare phase. This is when DKG occurs, and the signer automatically participates — no manual action required beyond monitoring.
+It is critical that your signer is running during the prepare phase. This is when DKG occurs, and the signer automatically participates. No manual action is required beyond monitoring.

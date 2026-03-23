@@ -4,7 +4,7 @@
 
 ### How to Use This Guide
 
-This guide is a step-by-step walkthrough for setting up and running a signer. It covers only the signer infrastructure — the signer software and the Stacks node it connects to.
+This guide is a step-by-step walkthrough for setting up and running a signer. It covers only the signer infrastructure: the signer software and the Stacks node it connects to.
 
 If you are not familiar with the concept of signing, be sure to check out the [Stackers and Signing concept guide](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/signing).
 
@@ -21,7 +21,7 @@ This doc provides instructions to set up both using either Docker or the release
 
 {% stepper %}
 {% step %}
-#### Signer Checklist — Pre-Launch Setup
+#### Signer Checklist: Pre-Launch Setup
 
 Quick reference of major setup steps prior to launching a signer.
 
@@ -30,14 +30,14 @@ Quick reference of major setup steps prior to launching a signer.
 {% endstep %}
 
 {% step %}
-#### Signer Checklist — Preflight Setup
+#### Signer Checklist: Preflight Setup
 
 * Generate a new private key using stacks-cli (see Preflight Setup).
 * Save the generated account information securely.
 {% endstep %}
 
 {% step %}
-#### Signer Checklist — Configuration Setup
+#### Signer Checklist: Configuration Setup
 
 * Create a `signer-config.toml` file with necessary configurations:
   * node\_host
@@ -50,7 +50,7 @@ Quick reference of major setup steps prior to launching a signer.
 {% endstep %}
 
 {% step %}
-#### Signer Checklist — Running the Signer
+#### Signer Checklist: Running the Signer
 
 * Decide whether to run the signer using Docker (recommended) or as a binary.
 * If using Docker:
@@ -62,14 +62,14 @@ Quick reference of major setup steps prior to launching a signer.
 {% endstep %}
 
 {% step %}
-#### Signer Checklist — Verify Signer Operation
+#### Signer Checklist: Verify Signer Operation
 
 * Check that the signer is listening on its configured endpoint.
 * Confirm that there are no errors and that the system is ready for connections.
 {% endstep %}
 
 {% step %}
-#### Signer Checklist — Setting Up the Stacks Node
+#### Signer Checklist: Setting Up the Stacks Node
 
 * Create a `node-config.toml`, include:
   * connection\_options.sauth\_token
@@ -78,7 +78,7 @@ Quick reference of major setup steps prior to launching a signer.
 {% endstep %}
 
 {% step %}
-#### Signer Checklist — Verify Stacks Node Operation
+#### Signer Checklist: Verify Stacks Node Operation
 
 * Check Stacks node logs for successful connection to the signer.
 * Confirm the node is syncing Bitcoin headers properly.
@@ -168,7 +168,7 @@ CMD ["stacks-signer", "run", "--config", "/config.toml"]
 
 ### Running the Signer as a Binary
 
-Download the pre-built binaries from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases), unzip the archive for your architecture — inside is a `stacks-signer` binary.
+Download the pre-built binaries from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases), unzip the archive for your architecture. Inside is a `stacks-signer` binary.
 
 Run the signer:
 
@@ -225,7 +225,7 @@ Guides:
 
 ## Set Up Your Stacks Node
 
-Start the Stacks node after the signer is running — the node will not run unless it can send events to the signer.
+Start the Stacks node after the signer is running. The node will not run unless it can send events to the signer.
 
 ### Stacks Node Configuration
 
@@ -292,7 +292,7 @@ EXPOSE 20443
 CMD ["stacks-node", "start", "--config", "/config.toml"]
 ```
 
-If you get connection refused errors, you may need to point `events_observer.endpoint` to the Docker signer container. If using default Docker bridge mode, `localhost` inside the container is not the host — point the endpoint to the Docker host or the signer container hostname accordingly.
+If you get connection refused errors, you may need to point `events_observer.endpoint` to the Docker signer container. If using default Docker bridge mode, `localhost` inside the container is not the host. Point the endpoint to the Docker host or the signer container hostname accordingly.
 
 ### Run a Stacks Node with a Binary
 

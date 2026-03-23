@@ -1,6 +1,6 @@
 # Operate a Pool
 
-This guide covers how to operate a stacking pool — accepting delegated STX from stackers, committing them to reward cycles, and managing the pool's stacked position.
+This guide covers how to operate a stacking pool: accepting delegated STX from stackers, committing them to reward cycles, and managing the pool's stacked position.
 
 {% hint style="info" %}
 This guide assumes you are familiar with stacking at a conceptual level. If not, read the [Stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/stacking) concept guide first.
@@ -13,14 +13,14 @@ If you want to delegate your STX to a pool instead, see the [Stack with a Pool](
 ## Prerequisites
 
 1. **A running signer** or a signer you are collaborating with. See the [Run a Signer](../run-a-signer/) guide.
-2. **A pool operator wallet** — a separate STX address used to manage delegations and make stacking transactions. This is different from your signer key. See [Key and Address Rotation](key-and-address-rotation.md) for why this separation matters.
-3. **Funding** — your pool operator wallet needs enough STX to cover transaction fees.
+2. **A pool operator wallet**: a separate STX address used to manage delegations and make stacking transactions. This is different from your signer key. See [Key and Address Rotation](key-and-address-rotation.md) for why this separation matters.
+3. **Funding**: your pool operator wallet needs enough STX to cover transaction fees.
 
 {% hint style="info" %}
 As a pool operator, you should have two separate accounts:
 
-* **Pool operator account** — used for all stacking operations (`delegate-stack-stx`, `stack-aggregation-commit-indexed`, etc.).
-* **Signer account** — the key used to configure your signer. The signer public key is what you pass into the aggregation commit function.
+* **Pool operator account**: used for all stacking operations (`delegate-stack-stx`, `stack-aggregation-commit-indexed`, etc.).
+* **Signer account**: the key used to configure your signer. The signer public key is what you pass into the aggregation commit function.
 
 This separation is recommended because you can rotate a signer key without disrupting delegations, but you cannot rotate a pool operator key without delegators needing to un-stack and re-delegate. See [Key and Address Rotation](key-and-address-rotation.md) for more details.
 {% endhint %}
@@ -476,4 +476,4 @@ The pool operator calls `stack-aggregation-commit-indexed` to commit all delegat
 {% endstep %}
 {% endstepper %}
 
-All steps must be completed before the prepare phase of the target reward cycle. During the prepare phase, DKG occurs and the signer is automatically registered — no manual action needed beyond monitoring.
+All steps must be completed before the prepare phase of the target reward cycle. During the prepare phase, DKG occurs and the signer is automatically registered. No manual action is needed beyond monitoring.

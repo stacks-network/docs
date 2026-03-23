@@ -8,7 +8,7 @@ Both [solo stacking](solo-stacking.md) and delegated stacking ([Stack with a Poo
 
 ## Overview
 
-Signer signatures are created using a particular signer key. They demonstrate that the controller of that signer key is allowing a stacker (or pool operator) to use their signing key in a stacking transaction. Because signer keys must be unique across the network, this also prevents other stackers from using someone else's key.
+Signer signatures are created using your signer key. They demonstrate that the controller of that signer key is allowing a stacker (or pool operator) to use their signing key in a stacking transaction. Because signer keys must be unique across the network, this also prevents other stackers from using someone else's key.
 
 {% hint style="info" %}
 The current pox-4 contract address can be found at [https://api.mainnet.hiro.so/v2/pox](https://api.mainnet.hiro.so/v2/pox). You can view the contract in the [Stacks Explorer](https://explorer.hiro.so/?chain=mainnet).
@@ -40,7 +40,7 @@ The maximum amount of uSTX (1 STX = 1,000,000 uSTX) that can be locked in the tr
 {% step %}
 #### auth-id
 
-A random integer that prevents re-use of a particular signature, similar to how nonces are used with transactions. Must be less than 14 characters.
+A random integer that prevents the same signature from being reused, similar to how nonces are used with transactions. Must be less than 14 characters.
 {% endstep %}
 {% endstepper %}
 
@@ -49,11 +49,11 @@ A random integer that prevents re-use of a particular signature, similar to how 
 The signer signature's message hash is created using the following data:
 
 * **`method`**: the stacking function that is allowed to use this signature. Valid options:
-  * `stack-stx` — for solo stacking
-  * `stack-extend` — for extending a solo stacking lock
-  * `stack-increase` — for increasing a solo stacking position
-  * `agg-commit` — for `stack-aggregation-commit-indexed` (pool operators)
-  * `agg-increase` — for `stack-aggregation-increase` (pool operators)
+  * `stack-stx`: for solo stacking
+  * `stack-extend`: for extending a solo stacking lock
+  * `stack-increase`: for increasing a solo stacking position
+  * `agg-commit`: for `stack-aggregation-commit-indexed` (pool operators)
+  * `agg-increase`: for `stack-aggregation-increase` (pool operators)
 * **`max-amount`**: the maximum uSTX allowed (described above)
 * **`auth-id`**: the random integer (described above)
 * **`period`**: a value between 1 and 12 indicating how many cycles the stacker is allowed to lock for. For `agg-commit`, this must equal 1.
@@ -134,7 +134,7 @@ More information and code samples can be found on [Hiro's Nakamoto docs](https:/
 
 ### Using Degen Lab's stacking.tools
 
-Degen Lab provides a [signature generation tool](https://signature.stacking.tools/) that generates signatures using their signer. This is the quickest and simplest option — visit the tool and enter the relevant parameters.
+Degen Lab provides a [signature generation tool](https://signature.stacking.tools/) that generates signatures using their signer. This is the quickest and simplest option. Visit the tool and enter the relevant parameters.
 
 ### Using Leather Earn
 
@@ -187,7 +187,7 @@ If you used [@stacks/cli](https://docs.hiro.so/get-started/command-line-interfac
    * Import your mnemonic into Leather, XVerse, or another Stacks wallet
 2. Open an app with stacking signature functionality (e.g., Leather Earn)
 3. Connect your wallet (sign in)
-4. Enter your PoX address and submit — the app will prompt you to sign
+4. Enter your PoX address and submit. The app will prompt you to sign
 5. Confirm the signature (if using a Ledger, confirm on the device)
 6. The app displays your signer key and signature
 7. Use the signer key and signature in your stacking transaction

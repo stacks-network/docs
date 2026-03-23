@@ -50,6 +50,8 @@ How to rotate your signer key, Bitcoin reward address, and pool operator key. In
 {% endstep %}
 {% endstepper %}
 
+If you do not meet the minimum amount of STX to solo stack, you can [delegate your STX to a pool operator](stack-with-a-pool.md) and have them stack on your behalf. This is the most common stacking scenario.
+
 {% hint style="info" %}
 The minimum stacking threshold is dynamic and can be found at the [pox endpoint](https://api.mainnet.hiro.so/v2/pox) under `min_threshold_ustx` (1 STX = 1,000,000 uSTX).
 {% endhint %}

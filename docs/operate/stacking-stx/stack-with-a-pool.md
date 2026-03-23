@@ -1,12 +1,12 @@
 # Stack with a Pool
 
-This guide covers delegated stacking from the **delegator** perspective — how to delegate your STX to a pool, increase your delegation, revoke it, and stop stacking.
+This guide covers delegated stacking from the **delegator** perspective: how to delegate your STX to a pool, increase your delegation, revoke it, and stop stacking.
 
 {% hint style="info" %}
 This guide assumes you are familiar with stacking at a conceptual level. If not, read the [Stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/stacking) concept guide first.
 {% endhint %}
 
-Delegating is the most common stacking scenario. It applies when you do not meet the minimum STX threshold to solo stack and want a pool operator to stack on your behalf. This is a **non-custodial** delegation — your STX do not leave your wallet.
+Delegating is the most common stacking scenario. It applies when you do not meet the minimum STX threshold to solo stack and want a pool operator to stack on your behalf. This is a **non-custodial** delegation. Your STX do not leave your wallet.
 
 The minimum stacking amount is dynamic and can be found at the [pox endpoint](https://api.mainnet.hiro.so/v2/pox) under `min_threshold_ustx` (1 STX = 1,000,000 uSTX).
 
@@ -24,13 +24,13 @@ If you want to operate a pool instead, see the [Operate a Pool](operate-a-pool.m
 {% step %}
 #### Find a pool
 
-The Stacks website has a [page on stacking](https://www.stacks.co/learn/stacking) that links to several pool operators. Do your research — operators differ in reward distribution, fees, and trust models.
+The Stacks website has a [page on stacking](https://www.stacks.co/learn/stacking) that links to several pool operators. Do your research, as operators differ in reward distribution, fees, and trust models.
 {% endstep %}
 
 {% step %}
 #### Call `delegate-stx`
 
-Use your pool operator's UI or call the function directly to delegate. This does not lock your STX — it gives the pool operator **permission** to stack on your behalf.
+Use your pool operator's UI or call the function directly to delegate. This does not lock your STX. It gives the pool operator **permission** to stack on your behalf.
 
 <details>
 
