@@ -4,9 +4,9 @@
 
 ### How to Use This Guide
 
-If you are not familiar with the concept of signing and stacking, and how they work together, be sure to check out the [Stackers and Signing concept guide](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/signing).
+This guide is a step-by-step walkthrough for setting up and running a signer. It covers only the signer infrastructure — the signer software and the Stacks node it connects to.
 
-This guide is a step-by-step walkthrough for setting up and running a signer. If you need to troubleshoot your signer setup, see the Signer Troubleshooting section. If you need to Stack your STX, or have questions about how that process works, check out the Stack STX guide.
+If you are not familiar with the concept of signing, be sure to check out the [Stackers and Signing concept guide](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/signing).
 
 ### Background and High-Level Process
 
@@ -18,7 +18,6 @@ This doc provides instructions to set up both using either Docker or the release
 
 * Docker and basic knowledge of pulling and running images
 * Basic knowledge of [Stacks accounts](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/network-fundamentals/wallets-and-accounts)
-* Basic knowledge of [stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/stacking) and the stacking flow
 
 {% stepper %}
 {% step %}
@@ -27,7 +26,7 @@ This doc provides instructions to set up both using either Docker or the release
 Quick reference of major setup steps prior to launching a signer.
 
 * Ensure your system meets the [minimum system requirements](./#minimum-system-requirements).
-* Acquire Docker and basic knowledge of Stacks accounts, stacking, and the Nakamoto stacking flow (links above).
+* Acquire Docker and basic knowledge of Stacks accounts (links above).
 {% endstep %}
 
 {% step %}
@@ -83,15 +82,6 @@ Quick reference of major setup steps prior to launching a signer.
 
 * Check Stacks node logs for successful connection to the signer.
 * Confirm the node is syncing Bitcoin headers properly.
-{% endstep %}
-
-{% step %}
-#### Signer Checklist — Setup Stacks Accounts
-
-* Set up a pool operator wallet in a Stacks wallet (e.g., Leather or Xverse).
-* Fund the pool operator wallet with sufficient STX for transaction fees.
-* Share the pool operator wallet’s STX address with delegating parties.
-* Fund your signer's STX wallet with enough STX to cover transaction fees (recommend at least 100–200 STX).
 {% endstep %}
 {% endstepper %}
 
@@ -163,8 +153,6 @@ docker run -d \
     --config /config.toml
 ```
 
-Hint about platform mismatch:
-
 {% hint style="info" %}
 If you get an error about the manifest not found or the image platform not matching the host platform, you probably are running on an architecture other than x64. Add `--platform=linux/amd64` to the command (for example, on M1 Mac).
 {% endhint %}
@@ -216,10 +204,10 @@ You may also see a warning like:
 WARN [1712003997.160121] [stacks-signer/src/runloop.rs:247] [signer_runloop] Signer is not registered for reward cycle 556. Waiting for confirmed registration...
 ```
 
-This means your signer is running and awaiting registration; proceed to set up the Stacks node and begin stacking.
+This means your signer is running and awaiting registration; proceed to set up the Stacks node and then begin stacking.
 
 {% hint style="warning" %}
-Even after you Stack, you may still see messages saying the signer is not registered for the current or next reward cycle. This is normal until the prepare phase for your chosen reward cycle; assuming you meet the stacking minimum, the signer will be registered during that phase.
+You may see messages saying the signer is not registered for the current or next reward cycle. This is normal until the prepare phase for your chosen reward cycle; assuming you meet the stacking minimum, the signer will be registered during that phase.
 {% endhint %}
 
 ***
@@ -335,29 +323,6 @@ You may see many logs while syncing; refer to How to Read the Signer Logs if con
 
 ***
 
-## Setup Your Stacks Accounts
+## Next Steps: Stacking
 
-{% hint style="info" %}
-For more on stacking and signing relationship, see the [Stack STX](broken-reference/) guide.
-{% endhint %}
-
-As a signer you’ll manage two Stacks accounts:
-
-1. A “pool operator” wallet, which commits delegated STX to your signer
-2. Your signer’s wallet
-
-{% hint style="warning" %}
-For testing, make sure you are using testnet (not mainnet). Testnet STX can be [requested from a faucet](https://explorer.hiro.so/sandbox/faucet?chain=testnet).
-{% endhint %}
-
-### Setup Your Pool Operator Wallet
-
-Set up a pool operator wallet using any Stacks wallet, such as [Leather](https://leather.io/) or [Xverse](https://www.xverse.app/). You may generate a new account or use an existing one. Leather supports Ledger hardware wallets if you prefer.
-
-Fund the wallet with enough STX to cover transaction fees (testnet: faucet at https://explorer.hiro.so/sandbox/faucet?chain=testnet).
-
-Share this wallet’s STX address with parties that will delegate STX to you. For improved UX, you might use the helper contract allowing a BTC address for stackers ([pox4-pools](https://explorer.hiro.so/txid/SP001SFSMC2ZY76PD4M68P3WGX154XCH7NE3TYMX.pox4-pools?chain=mainnet)) and add your pool to [earn.leather.io](https://earn.leather.io/).
-
-***
-
-If you need more detailed troubleshooting or further setup examples (config snippets, sample signer-config.toml or node-config.toml), let me know which files or examples you'd like converted or added.
+Once your signer and Stacks node are running and verified, the next step is to stack STX to register your signer for a reward cycle. See the [Stacking STX](../stacking-stx/) guide for complete instructions on solo stacking, delegated stacking, generating signer signatures, and managing your keys.

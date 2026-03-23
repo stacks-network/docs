@@ -43,7 +43,7 @@ WARN [1712003997.160121] [stacks-signer/src/runloop.rs:247] [signer_runloop] Sig
 Action:
 
 * If you want the signer to participate, either delegate to it or stack on your own for an upcoming reward cycle.
-* For more details on stacking and registration, see the How to Stack doc: ../stack-stx/stacking-flow.md
+* For more details on stacking and registration, see the [Stacking STX](../stacking-stx/) guide.
 
 ## Informational
 

@@ -53,7 +53,7 @@ ConditionPathExists=/etc/stacks/signer
 ConditionFileNotEmpty=/etc/stacks/signer/signer-config.toml
 
 [Service]
-ExecStart=/usr/local/bin/stacks-signer run --config /home/etc/stacks/signer/signer-config.toml
+ExecStart=/usr/local/bin/stacks-signer run --config /etc/stacks/signer/signer-config.toml
 User={{ svc_user }}
 Group={{ svc_user }}
 Type=simple

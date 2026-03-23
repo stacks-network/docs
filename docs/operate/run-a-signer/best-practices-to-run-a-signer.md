@@ -96,6 +96,103 @@ Restart the Stacks node so it runs with the enabled `event_observer`.
 * Ensure that multiple, trusted users can manage and maintain signer instances.
 * Where feasible, users should span different timezones.
 
+### Auto-restart configuration
+
+Configure your signer and Stacks node to automatically restart on failure to minimize downtime.
+
+#### Docker
+
+Use the `--restart` flag when running containers to enable automatic restarts:
+
+```bash
+docker run -d \
+    --restart unless-stopped \
+    -v $STX_SIGNER_CONFIG:/config.toml \
+    -v $STX_SIGNER_DATA:/var/stacks \
+    -p 30000:30000 \
+    -e RUST_BACKTRACE=full \
+    -e BLOCKSTACK_DEBUG=0 \
+    --name stacks-signer \
+    $IMG:$VER \
+    stacks-signer run \
+    --config /config.toml
+```
+
+The `unless-stopped` policy restarts the container automatically if it crashes or the host reboots, but not if you explicitly stop it. Apply the same policy to your Stacks node container.
+
+#### systemd
+
+If running as a binary, create a systemd service unit to handle automatic restarts. Example for the signer:
+
+{% code title="/etc/systemd/system/stacks-signer.service" %}
+```ini
+[Unit]
+Description=Stacks Signer
+After=network.target
+StartLimitBurst=3
+StartLimitIntervalSec=300
+ConditionFileIsExecutable=/usr/local/bin/stacks-signer
+ConditionPathExists=/etc/stacks/signer
+ConditionFileNotEmpty=/etc/stacks/signer/signer-config.toml
+
+[Service]
+ExecStart=/usr/local/bin/stacks-signer run --config /etc/stacks/signer/signer-config.toml
+User=stacks-signer
+Group=stacks-signer
+Type=simple
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=600
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
+```
+{% endcode %}
+
+Example for the Stacks node:
+
+{% code title="/etc/systemd/system/stacks-node.service" %}
+```ini
+[Unit]
+Description=Stacks Node
+After=network.target
+StartLimitBurst=3
+StartLimitIntervalSec=300
+ConditionFileIsExecutable=/usr/local/bin/stacks-node
+ConditionFileNotEmpty=/etc/stacks/node/node-config.toml
+
+[Service]
+ExecStart=/usr/local/bin/stacks-node start --config /etc/stacks/node/node-config.toml
+User=stacks-node
+Group=stacks-node
+Type=simple
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=600
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
+```
+{% endcode %}
+
+Enable and start the services:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable stacks-signer.service stacks-node.service
+sudo systemctl start stacks-signer.service
+sudo systemctl start stacks-node.service
+```
+
+Check their status at any time:
+
+```bash
+sudo systemctl status stacks-signer.service
+sudo systemctl status stacks-node.service
+```
+
 ### Backup signer keys in cold-storage
 
 * Keep an offline, secure backup of all Signer private keys (e.g., hardware security modules or encrypted storage devices).

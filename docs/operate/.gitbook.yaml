@@ -24,8 +24,16 @@ redirects:
   guides-and-tutorials/best-practices-to-snapshot-the-chainstate: snapshot-the-chainstate.md
 
   # guides-and-tutorials/stack-stx to operate/stacking-stx redirects
-  guides-and-tutorials/stack-stx/increase-stacking: stacking-stx/increase-stacked-position.md
-  guides-and-tutorials/stack-stx/operate-a-pool: stacking-stx/operate-a-stacking-pool.md
+  guides-and-tutorials/stack-stx/increase-stacking: stacking-stx/solo-stacking.md
+  guides-and-tutorials/stack-stx/operate-a-pool: stacking-stx/operate-a-pool.md
   guides-and-tutorials/stack-stx/stack-with-a-pool: stacking-stx/stack-with-a-pool.md
-  guides-and-tutorials/stack-stx/stacking-flow: stacking-stx/solo-stack.md
-  guides-and-tutorials/stack-stx/stop-stacking: stacking-stx/stop-stacking.md
+  guides-and-tutorials/stack-stx/stacking-flow: stacking-stx/solo-stacking.md
+  guides-and-tutorials/stack-stx/stop-stacking: stacking-stx/solo-stacking.md
+
+  # Old stacking-stx paths to new structure
+  stacking-stx/solo-stack: stacking-stx/solo-stacking.md
+  stacking-stx/operate-a-stacking-pool: stacking-stx/operate-a-pool.md
+  stacking-stx/stack-with-a-pool: stacking-stx/stack-with-a-pool.md
+  stacking-stx/delegated-stacking: stacking-stx/stack-with-a-pool.md
+  stacking-stx/increase-stacked-position: stacking-stx/solo-stacking.md
+  stacking-stx/stop-stacking: stacking-stx/solo-stacking.md
