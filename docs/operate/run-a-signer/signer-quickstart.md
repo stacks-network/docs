@@ -430,6 +430,8 @@ If you would like to learn more about monitoring your signer and its correspondi
 {% step %}
 #### Next Steps: Stacking
 
-Once your signer and Stacks node are running and verified, the next step is to stack STX to register your signer for a reward cycle. See the [Stacking STX](../stacking-stx/) guide for complete instructions on solo stacking, delegated stacking, generating signer signatures, and managing your keys.
+Once your signer and Stacks node are running and verified, the next step is to stack STX to register your signer for a reward cycle. See the [Stacking STX](../stacking-stx/) guide for complete instructions on solo stacking, delegated stacking, and managing your keys.
+
+You will need to [generate a signer signature](../stacking-stx/generate-signer-signature.md) before making any stacking transaction.
 {% endstep %}
 {% endstepper %}
