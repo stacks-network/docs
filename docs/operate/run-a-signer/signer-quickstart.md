@@ -16,7 +16,7 @@
 
 If you want to get up and running as an active signer as quickly as possible, here is a list of the commands you need to run and actions to take.
 
-If you are not familiar with how signing works yet, be sure to check out the [Signing concept guide](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/signing).
+If you are not familiar with how signing works yet, be sure to check out the [Signing concept guide](../../learn/block-production/signing.md).
 
 {% hint style="danger" %}
 The CLI examples below may show outdated release versions. For the latest releases, always refer to the links above in the top info block.
@@ -88,7 +88,7 @@ From this file, you'll need the `privateKey` value.
 
 **Download the stacks-signer binary**
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
+Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases/latest). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
 
 Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the signer binary look like this:
 
@@ -201,7 +201,7 @@ We have created guides for running both a [full Bitcoin node](../run-a-node/run-
 
 **Download the stacks-node binary**
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases). Each release includes pre-built binaries. Download the [latest node release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary.
+Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases/latest). Each release includes pre-built binaries. Download the [latest node release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary.
 
 Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the node binary look like this:
 

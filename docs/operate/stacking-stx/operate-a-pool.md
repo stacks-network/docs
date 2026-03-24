@@ -3,7 +3,7 @@
 This guide covers how to operate a stacking pool: accepting delegated STX from stackers, committing them to reward cycles, and managing the pool's stacked position.
 
 {% hint style="info" %}
-This guide assumes you are familiar with stacking at a conceptual level. If not, read the [Stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/stacking) concept guide first.
+This guide assumes you are familiar with stacking at a conceptual level. If not, read the [Stacking](../../learn/block-production/stacking.md) concept guide first.
 {% endhint %}
 
 If you want to delegate your STX to a pool instead, see the [Stack with a Pool](stack-with-a-pool.md) guide.

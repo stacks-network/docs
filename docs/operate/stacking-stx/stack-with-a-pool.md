@@ -3,7 +3,7 @@
 This guide covers delegated stacking from the **delegator** perspective: how to delegate your STX to a pool, increase your delegation, revoke it, and stop stacking.
 
 {% hint style="info" %}
-This guide assumes you are familiar with stacking at a conceptual level. If not, read the [Stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/stacking) concept guide first.
+This guide assumes you are familiar with stacking at a conceptual level. If not, read the [Stacking](../../learn/block-production/stacking.md) concept guide first.
 {% endhint %}
 
 Delegating is the most common stacking scenario. It applies when you do not meet the minimum STX threshold to solo stack and want a pool operator to stack on your behalf. This is a **non-custodial** delegation. Your STX do not leave your wallet.

@@ -193,6 +193,13 @@ sudo systemctl status stacks-signer.service
 sudo systemctl status stacks-node.service
 ```
 
+View logs with:
+
+```bash
+journalctl -xefu stacks-signer
+journalctl -xefu stacks-node
+```
+
 ### Backup signer keys in cold-storage
 
 * Keep an offline, secure backup of all Signer private keys (e.g., hardware security modules or encrypted storage devices).

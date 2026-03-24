@@ -6,18 +6,18 @@
 
 This guide is a step-by-step walkthrough for setting up and running a signer. It covers only the signer infrastructure: the signer software and the Stacks node it connects to.
 
-If you are not familiar with the concept of signing, be sure to check out the [Stackers and Signing concept guide](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/signing).
+If you are not familiar with the concept of signing, be sure to check out the [Stackers and Signing concept guide](../../learn/block-production/signing.md).
 
 ### Background and High-Level Process
 
 To run a signer you'll run a signer and a Stacks node side-by-side. Specifically, run a follower node. The signer monitors events from the Stacks node and uses the generated account (see Preflight Setup) to sign incoming Stacks blocks sent from the Stacks node.
 
-This doc provides instructions to set up both using either Docker or the release binaries available in the [stacks core releases](https://github.com/stacks-network/stacks-core/releases) repository, and how to configure them so the signer and Stacks node communicate correctly.
+This doc provides instructions to set up both using either Docker or the release binaries available in the [stacks core releases](https://github.com/stacks-network/stacks-core/releases/latest) repository, and how to configure them so the signer and Stacks node communicate correctly.
 
 ### Knowledge Prerequisites
 
 * Docker and basic knowledge of pulling and running images
-* Basic knowledge of [Stacks accounts](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/network-fundamentals/wallets-and-accounts)
+* Basic knowledge of [Stacks accounts](../../learn/network-fundamentals/wallets-and-accounts.md)
 
 {% stepper %}
 {% step %}
@@ -114,13 +114,13 @@ Signers are intended to work with a local node. The node<->signer connection is 
 
 ## Create a Configuration File
 
-Create a file named `signer-config.toml`. Populate it with the example signer config file contents from the [Sample Configuration Files](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/node-operations/signer-configuration) page. Each field is described on that page.
+Create a file named `signer-config.toml`. Populate it with the example signer config file contents from the [Sample Configuration Files](../../reference/node-operations/signer-configuration.md) page. Each field is described on that page.
 
 ***
 
 ## Running the Signer
 
-Two options: Docker (recommended) or binary. Binaries are available on the [Stacks Core releases page](https://github.com/stacks-network/stacks-core/releases).
+Two options: Docker (recommended) or binary. Binaries are available on the [Stacks Core releases page](https://github.com/stacks-network/stacks-core/releases/latest).
 
 ### Running the Signer with Docker
 
@@ -168,7 +168,7 @@ CMD ["stacks-signer", "run", "--config", "/config.toml"]
 
 ### Running the Signer as a Binary
 
-Download the pre-built binaries from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases), unzip the archive for your architecture. It includes the `stacks-signer` binary.
+Download the pre-built binaries from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases/latest), unzip the archive for your architecture. It includes the `stacks-signer` binary.
 
 Run the signer:
 
@@ -229,7 +229,7 @@ Start the Stacks node after the signer is running. The node will not run unless 
 
 ### Stacks Node Configuration
 
-Create `node-config.toml`. See the [Sample Configuration Files](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/node-operations/signer-configuration) page for the full contents.
+Create `node-config.toml`. See the [Sample Configuration Files](../../reference/node-operations/signer-configuration.md) page for the full contents.
 
 Important fields to change:
 
@@ -296,7 +296,7 @@ If you get connection refused errors, you may need to point `events_observer.end
 
 ### Run a Stacks Node with a Binary
 
-Download the pre-built `stacks-node` binary from the [Stacks Core releases](https://github.com/stacks-network/stacks-core/releases).
+Download the pre-built `stacks-node` binary from the [Stacks Core releases](https://github.com/stacks-network/stacks-core/releases/latest).
 
 Start the node:
 

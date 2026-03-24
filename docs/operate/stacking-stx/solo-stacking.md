@@ -3,7 +3,7 @@
 This guide covers everything you need to stack independently as a solo stacker: starting, extending, increasing, and stopping your stacking position.
 
 {% hint style="info" %}
-This guide assumes you are familiar with stacking at a conceptual level. If not, read the [Stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/stacking) concept guide first.
+This guide assumes you are familiar with stacking at a conceptual level. If not, read the [Stacking](../../learn/block-production/stacking.md) concept guide first.
 {% endhint %}
 
 Solo stacking requires meeting the minimum STX threshold and either running a signer or collaborating with one. The minimum amount is dynamic and can be found at the [pox endpoint](https://api.mainnet.hiro.so/v2/pox) under `min_threshold_ustx` (1 STX = 1,000,000 uSTX).

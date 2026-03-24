@@ -1,6 +1,6 @@
 # Stacking STX
 
-Stacking is the process of locking STX tokens to support the network's consensus and earn BTC rewards. If you aren't familiar with how stacking works, read the [Stacking](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/stacking) and [Stackers and Signing](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/block-production/signing) concept guides first.
+Stacking is the process of locking STX tokens to support the network's consensus and earn BTC rewards. If you aren't familiar with how stacking works, read the [Stacking](../../learn/block-production/stacking.md) and [Stackers and Signing](../../learn/block-production/signing.md) concept guides first.
 
 Stacking utilizes the `pox-4` contract. You can view it on the [Explorer](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-4?chain=mainnet) and review the detailed [stacking contract walkthrough](/broken/spaces/GVj1Z9vMuEOMe7oH7Wnq/pages/fc4fa1c229d8cb4deedf49de6dc1de0dc0b1ed72) to understand what each function does.
 
