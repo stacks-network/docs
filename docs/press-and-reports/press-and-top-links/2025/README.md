@@ -2,4 +2,46 @@
 
 For weekly stories delivered to your inbox, subscribe to [Stacks Snacks](https://stackssnacks.com/). For quarterly ecosystem recaps, subscribe to the [Stacks Foundation newsletter](https://newsletters.stacks.org/).
 
-<table data-view="cards"><thead><tr><th>Issue</th><th data-card-target data-type="content-ref">Target</th></tr></thead><tbody><tr><td>january-2024.md</td><td><a href="/broken/pages/3397988268e7e9cfe7865579259cc3cb68109fe4">Broken link</a></td></tr><tr><td>february-2025.md</td><td><a href="/broken/pages/d25fa9955b22a0dbc03fbd451d72c87b06cc857c">Broken link</a></td></tr><tr><td>march-2025.md</td><td><a href="/broken/pages/ca615f65ea8a50d1ae03f9fb13b41bb10bb5e12e">Broken link</a></td></tr><tr><td>march-2025-1.md</td><td><a href="/broken/pages/b93ec446bef158c77fb12bfc5dba6d6b409c74d4">Broken link</a></td></tr><tr><td>march-2025-2.md</td><td><a href="/broken/pages/b7c1145a395e6afe0380520317322eba7ae6dd22">Broken link</a></td></tr><tr><td>june-2025.md</td><td><a href="/broken/pages/7627ee2dcff8e9ea989b8640a271bc2ee0ac88cf">Broken link</a></td></tr><tr><td>june-2025-1.md</td><td><a href="/broken/pages/7cdb783024b45ee18da6c1fb81cb0e7eea02985d">Broken link</a></td></tr><tr><td>june-2025-2.md</td><td><a href="/broken/pages/e2cd511cd9d9c32b0830c6b57b4d27a5fe46c5d7">Broken link</a></td></tr><tr><td>june-2025-2-1.md</td><td><a href="/broken/pages/c8792a3555695035ab578c03c8829f1b9d54c7d5">Broken link</a></td></tr></tbody></table>
+{% content-ref url="january-2025.md" %}
+[January 2025](january-2025.md)
+{% endcontent-ref %}
+
+{% content-ref url="february-2025.md" %}
+[February 2025](february-2025.md)
+{% endcontent-ref %}
+
+{% content-ref url="march-2025.md" %}
+[March 2025](march-2025.md)
+{% endcontent-ref %}
+
+{% content-ref url="april-2025.md" %}
+[April 2025](april-2025.md)
+{% endcontent-ref %}
+
+{% content-ref url="may-2025.md" %}
+[May 2025](may-2025.md)
+{% endcontent-ref %}
+
+{% content-ref url="june-2025.md" %}
+[June 2025](june-2025.md)
+{% endcontent-ref %}
+
+{% content-ref url="july-2025.md" %}
+[July 2025](july-2025.md)
+{% endcontent-ref %}
+
+{% content-ref url="august-2025.md" %}
+[August 2025](august-2025.md)
+{% endcontent-ref %}
+
+{% content-ref url="september-2025.md" %}
+[September 2025](september-2025.md)
+{% endcontent-ref %}
+
+{% content-ref url="september-2025-1.md" %}
+[September 2025 Update 1](september-2025-1.md)
+{% endcontent-ref %}
+
+{% content-ref url="september-2025-2.md" %}
+[September 2025 Update 2](september-2025-2.md)
+{% endcontent-ref %}
