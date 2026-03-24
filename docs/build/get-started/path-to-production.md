@@ -131,7 +131,7 @@ To ensure a smooth deployment process, adopt lean DevOps strategies, which inclu
 {% step %}
 ### Monitor contract activity
 
-* [**Chainhooks**](https://docs.hiro.so/en/tools/chainhooks): Chainhooks is a webhook service for the Stacks blockchain that lets you register event streams and define precise filters to capture on-chain data as it happens.
+* [**Chainhooks**](../chainhooks/overview.md): Chainhooks is a webhook service for the Stacks blockchain that lets you register event streams and define precise filters to capture on-chain data as it happens.
 {% endstep %}
 
 {% step %}

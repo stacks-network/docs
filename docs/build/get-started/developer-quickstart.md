@@ -378,7 +378,7 @@ Emitting events on Stacks serves several critical purposes:
 1. **Transparency**: Events provide an on-chain record of actions and transactions, ensuring transparency.
 2. **Notification**: They serve as a signal mechanism for users and external applications, notifying them of specific occurrences on Stacks.
 3. **State Tracking**: Developers can use events to track changes in the state of smart contracts without querying the chain continuously.
-4. **Efficient Data Handling**: By emitting events, webhook services, such as Hiro's [Chainhooks](https://docs.hiro.so/en/tools/chainhooks), can filter and handle relevant data efficiently, reducing the on-chain computation load.
+4. **Efficient Data Handling**: By emitting events, webhook services, such as Hiro's [Chainhooks](../chainhooks/overview.md), can filter and handle relevant data efficiently, reducing the on-chain computation load.
 
 </details>
 
@@ -811,7 +811,7 @@ function App() {
 </code></pre>
 
 {% hint style="info" %}
-For the complete set of available API endpoints for the Stacks network, check out the [Hiro docs](https://docs.hiro.so/). But first create an API key from the [Hiro Platform](https://platform.hiro.so/) to determine your API rate plan.
+For indexed Stacks API endpoints, see the [Stacks Blockchain API reference](../../reference/api/stacks-blockchain-api/README.md). Create an API key in [Hiro Platform](https://platform.hiro.so/) and review [API Keys](../../reference/api/api-keys.md) and [Rate Limits](../../reference/api/rate-limits.md) before you ship to production.
 {% endhint %}
 {% endstep %}
 {% endstepper %}
@@ -825,7 +825,7 @@ And that's it, you've successfully created an sBTC powered Clarity smart contrac
 This is just the beginning. There are many ways we can improve upon this app. Here are some suggestions for you to extend the functionality of this app:
 
 * Deploy to mainnet and share your project with the community
-* Use [Chainhooks](https://docs.hiro.so/en/tools/chainhooks) to index emitted events from the contract
+* Use [Chainhooks](../chainhooks/overview.md) to index emitted events from the contract
 * Integrate the [`sbtc`](../more-guides/sbtc/bridging-bitcoin/) library so users can directly bridge their BTC to sBTC in-app
 * Utilize SIP-009 NFTs to uniquely identify each message for each author
 
