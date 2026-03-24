@@ -81,6 +81,12 @@
 * [Implementation](post-conditions/implementation.md)
 * [Examples](post-conditions/examples.md)
 
+## Hiro Platform
+
+* [Overview](hiro-platform/README.md)
+* [Contract Monitoring](hiro-platform/contract-monitoring/README.md)
+  * [Create an Alert](hiro-platform/contract-monitoring/create-alert.md)
+
 ## More Guides
 
 * [sBTC](more-guides/sbtc/README.md)
