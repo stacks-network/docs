@@ -69,6 +69,12 @@
           kind: openapi
           spec: sbtc-emily-api
     ```
+* [Chainhooks API](api/chainhooks-api/README.md)
+  * [Usage](api/chainhooks-api/usage.md)
+* [Signer Metrics API](api/signer-metrics-api/README.md)
+  * [Usage](api/signer-metrics-api/usage.md)
+* [Token Metadata API](api/token-metadata-api/README.md)
+  * [Usage](api/token-metadata-api/usage.md)
 
 ## Hiro-Hosted APIs
 

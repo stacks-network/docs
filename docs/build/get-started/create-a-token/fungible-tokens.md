@@ -240,7 +240,7 @@ If you plan on updating your token's metadata in the future, you should definite
 ;; ...
 ```
 
-Hiro’s [Token Metadata API](https://www.hiro.so/token-metadata-api) watches for that specific print event (specifically the notification of "token-metadata-update") on the network and auto-updates the API’s database to reflect a change in the existing token’s metadata.
+Hiro’s [Token Metadata API](../../../reference/api/token-metadata-api/) watches for that specific print event (specifically the notification of "token-metadata-update") on the network and auto-updates the API’s database to reflect a change in the existing token’s metadata.
 
 If your token contract did not implement this print event, you could use the helper contract below to invoke a function that'll emit the same print event notification. Just invoke the `ft-metadata-update-notify` function of this contract below:
 

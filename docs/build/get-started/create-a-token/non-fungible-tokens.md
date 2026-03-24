@@ -186,7 +186,7 @@ If you plan on updating your NFT's metadata in the future, you should definitely
 ;; ...
 </code></pre>
 
-Hiro’s [Token Metadata API](https://www.hiro.so/token-metadata-api) watches for that specific print event (specifically the notification of "token-metadata-update") on the network and auto-updates the API’s database to reflect a change in the existing NFT’s metadata.
+Hiro’s [Token Metadata API](../../../reference/api/token-metadata-api/) watches for that specific print event (specifically the notification of "token-metadata-update") on the network and auto-updates the API’s database to reflect a change in the existing NFT’s metadata.
 
 If your NFT contract did not implement this print event, you could use the helper contract below to invoke a function that'll emit the same print event notification. Just invoke the `nft-metadata-update-notify` function of this contract below:
 

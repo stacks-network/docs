@@ -1,5 +1,9 @@
 # How to Monitor Signer
 
+{% hint style="info" %}
+For programmatic monitoring of signer behavior, block acceptance rates, and PoX cycle metrics via REST API, see the [Signer Metrics API reference](../../reference/api/signer-metrics-api/).
+{% endhint %}
+
 We will use [Grafana Cloud](https://grafana.com/) to observe and monitor both the Signer and its corresponding Stacks node.
 
 ## Requirements
