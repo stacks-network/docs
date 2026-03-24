@@ -70,6 +70,15 @@
           spec: sbtc-emily-api
     ```
 
+## Hiro-Hosted APIs
+
+* [API Keys](api/api-keys.md)
+* [Rate Limits](api/rate-limits.md)
+* [Response Headers](api/response-headers.md)
+* Chainhooks API
+* Signer Metrics API
+* Token Metadata API
+
 ## Clarity
 
 * [Functions](clarity/functions.md)
