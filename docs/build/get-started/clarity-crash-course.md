@@ -360,7 +360,7 @@ The [Contract Monitoring](https://platform.hiro.so/contract-monitoring) features
 
 <summary>Chainhooks</summary>
 
-[Chainhooks](https://docs.hiro.so/tools/chainhook) indexes Stacks & Bitcoin data, exposes queryable APIs, tracks contract state and transactions. You simply describe your chainhook filters and consume webhooks. The service handles queueing, retries, tier limits, observability, and parity between testnet and mainnet.
+[Chainhooks](../chainhooks/overview.md) indexes Stacks & Bitcoin data, exposes queryable APIs, tracks contract state and transactions. You simply describe your chainhook filters and consume webhooks. The service handles queueing, retries, tier limits, observability, and parity between testnet and mainnet.
 
 </details>
 

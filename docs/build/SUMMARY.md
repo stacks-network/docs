@@ -81,6 +81,22 @@
 * [Implementation](post-conditions/implementation.md)
 * [Examples](post-conditions/examples.md)
 
+## Chainhooks <a href="#chainhooks" id="chainhooks"></a>
+
+* [Overview](chainhooks/overview.md)
+* [Introduction](chainhooks/quickstart.md)
+* [Create Chainhooks](chainhooks/create.md)
+* [Fetch Chainhooks](chainhooks/fetch.md)
+* [Edit Chainhooks](chainhooks/update.md)
+* [Replay a Block](chainhooks/evaluate.md)
+* [Manage Secrets](chainhooks/secrets.md)
+* [Migration Guide](chainhooks/migration.md)
+* [FAQ](chainhooks/faq.md)
+* [Reference](chainhooks/reference/README.md)
+  * [Filters](chainhooks/reference/filters.md)
+  * [Options](chainhooks/reference/options.md)
+  * [Payload Anatomy](chainhooks/reference/payload-anatomy.md)
+
 ## More Guides
 
 * [sBTC](more-guides/sbtc/README.md)
