@@ -33,3 +33,9 @@
   * [Testing Clarity Contracts](bitcoin-primer/stacks-development-fundamentals/testing-clarity-contracts.md)
   * [Frontend with Stacks.js](bitcoin-primer/stacks-development-fundamentals/frontend-with-stacks.js.md)
   * [Deploying Stacks Apps](bitcoin-primer/stacks-development-fundamentals/deploying-stacks-apps.md)
+
+## Hiro Guides
+
+* [Build an NFT Marketplace](build-an-nft-marketplace.md)
+* [Build a Decentralized Kickstarter](build-a-decentralized-kickstarter.md)
+* [Build a No-Loss Lottery Pool](no-loss-lottery.md)

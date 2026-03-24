@@ -20,6 +20,7 @@
   * [Build an ft pc](stacks.js/cryptography-and-security/build-an-ft-pc.md)
   * [Build an nft pc](stacks.js/cryptography-and-security/build-an-nft-pc.md)
   * [Build a STX pc](stacks.js/cryptography-and-security/build-a-stx-pc.md)
+* [Using Clarity Values](stacks.js/using-clarity-values.md)
 
 ## Clarity
 
