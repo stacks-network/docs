@@ -14,12 +14,12 @@ Contract monitoring lets you track smart contract events in real-time and receiv
 | **Contract Monitoring** | No-code, UI-based alerts for specific contract function calls on mainnet |
 | **Chainhooks** | Advanced, programmable event monitoring with custom predicates and self-hosted infrastructure |
 
-Contract monitoring is ideal when you want quick, no-code alerts for contract activity. For more complex event-driven workflows, consider [Chainhooks](https://docs.hiro.so/tools/chainhooks).
+Contract monitoring is ideal when you want quick, no-code alerts for contract activity. For more complex event-driven workflows, consider [Chainhooks](../../chainhooks/overview.md).
 
 ## Next steps
 
 - [Create an alert](create-alert.md): Set up your first alert for function calls.
-- [Chainhooks](https://docs.hiro.so/tools/chainhooks): Learn more about Chainhooks and how they differ from contract monitoring.
+- [Chainhooks](../../chainhooks/overview.md): Learn more about Chainhooks and how they differ from contract monitoring.
 
 {% hint style="info" %}
 ### Need help with contract monitoring?
