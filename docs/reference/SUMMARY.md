@@ -87,7 +87,7 @@
 
 ## Node Operations
 
-* [Stacks Node Configuration](<README (1).md>)
+* [Stacks Node Configuration](stacks-node-configuration.md)
 * [Signer Configuration](node-operations/signer-configuration.md)
 
 ## Rendezvous

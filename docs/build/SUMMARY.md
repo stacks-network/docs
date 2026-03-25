@@ -26,7 +26,7 @@
 
 * [Latest Updates](whats-new/latest-updates.md)
 
-## Learn Clarinet <a href="#clarinet" id="clarinet"></a>
+## Clarinet <a href="#clarinet" id="clarinet"></a>
 
 * [Overview](clarinet/overview.md)
 * [Quickstart](clarinet/quickstart.md)
@@ -45,12 +45,12 @@
   * [Stacks.js Integration](clarinet/integrations/stacks.js.md)
   * [sBTC Integration](clarinet/integrations/sbtc.md)
 
-## Learn Rendezvous <a href="#rendezvous" id="rendezvous"></a>
+## Rendezvous <a href="#rendezvous" id="rendezvous"></a>
 
 * [Overview](rendezvous/overview.md)
 * [Quickstart](rendezvous/quickstart.md)
 
-## Learn Stacks.js <a href="#stacks.js" id="stacks.js"></a>
+## Stacks.js <a href="#stacks.js" id="stacks.js"></a>
 
 * [Overview](stacks.js/overview.md)
 * [Accounts & Addresses](stacks.js/accounts-and-addresses.md)

@@ -46,7 +46,7 @@ Recipes optimize for clarity and speed. They may omit production concerns like r
 
 ### Jump right in
 
-<table data-view="cards"><thead><tr><th>Recipes</th><th data-card-target data-type="content-ref">Browse</th></tr></thead><tbody><tr><td><strong>Stacks.js</strong><br>Transactions, reads, auth, and app integration.</td><td><a href="/broken/spaces/uholC0CdufHxYs050O3V/pages/PbYb0GukRhiS4qCHdRal">Broken link</a></td></tr><tr><td><strong>Clarity</strong><br>Common contract patterns and implementation snippets.</td><td><a href="/broken/spaces/uholC0CdufHxYs050O3V/pages/aOjs4gC5WzIpifbjuGsn">Broken link</a></td></tr><tr><td><strong>Example Contracts</strong><br>Curated examples of notable mainnet contracts and reference implementations.</td><td><a href="clarity/example-contracts/">example-contracts</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th>Recipes</th><th data-card-target data-type="content-ref">Browse</th></tr></thead><tbody><tr><td><strong>Stacks.js</strong><br>Transactions, reads, auth, and app integration.</td><td><a href="stacks.js/">Stacks.js Recipes</a></td></tr><tr><td><strong>Clarity</strong><br>Common contract patterns and implementation snippets.</td><td><a href="clarity/">Clarity Recipes</a></td></tr><tr><td><strong>Example Contracts</strong><br>Curated examples of notable mainnet contracts and reference implementations.</td><td><a href="clarity/example-contracts/">example-contracts</a></td></tr></tbody></table>
 
 ### Conventions and placeholders
 
