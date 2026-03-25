@@ -39,7 +39,7 @@ To ensure your app or smart contract is production-ready, we pulled together a s
 {% step %}
 ### Specific Clarity/Stacks.js best practices
 
-* [**Post-conditions**](/broken/pages/0KPrPPKItMGZZL2u4tiF): Post conditions are an additional safety feature built into the Stacks chain itself that help to protect end users. Rather than being a function of Clarity smart contracts, they are implemented on the client side and meant to be an additional failsafe against malicious contracts.
+* [**Post-conditions**](../post-conditions/overview.md): Post conditions are an additional safety feature built into the Stacks chain itself that help to protect end users. Rather than being a function of Clarity smart contracts, they are implemented on the client side and meant to be an additional failsafe against malicious contracts.
 * [**Usage of `tx-sender` vs `contract-caller`**](https://www.setzeus.com/public-blog-post/clarity-carefully-tx-sender) : The usage of `tx-sender` versus another Clarity keyword, `contract-caller` , is always a tricky concept because it determines who actually initiated the transaction versus who invoked the current function. Both of them can have certain implications on security based on the context of your code.
 * Write meaningful error codes to improve error handling
 * Adopt a modular contract design approach
@@ -68,7 +68,7 @@ While contracts are immutable once deployed, you can deploy new versions of your
 ### Implement comprehensive testing tools
 
 * [**Unit tests**](../clarinet/testing-with-clarinet-sdk.md)
-* [**Fuzzing**](/broken/pages/h06OJd7RHqUk2Dq7DHwJ)
+* [**Fuzzing**](../rendezvous/overview.md)
 * [**Devnet**](../clarinet/local-blockchain-development.md)
 {% endstep %}
 
