@@ -37,5 +37,4 @@
 ## Hiro Guides
 
 * [Build an NFT Marketplace](build-an-nft-marketplace.md)
-* [Build a Decentralized Kickstarter](build-a-decentralized-kickstarter.md)
 * [Build a No-Loss Lottery Pool](no-loss-lottery.md)
