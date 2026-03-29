@@ -2,33 +2,40 @@
 
 # The Official Stacks Docs
 
-The Stacks documentation serves as the comprehensive resource for understanding and building on Stacks, a Bitcoin Layer 2 that enables fast, low-cost transactions and full-featured smart contracts secured by Bitcoin. These docs guide three main audiences: developers looking to build apps and deploy smart contracts with tools like Clarity and Stacks.js; operators running nodes, miners, and signers to support network infrastructure; and learners seeking to understand how Stacks activates the Bitcoin economy through its unique technical architecture. With sections covering everything from beginner quickstarts to advanced technical references, the docs aim to empower the global builder community to create a Bitcoin-native onchain economy.
+The Stacks documentation serves as a comprehensive resource for understanding and building on Stacks, a Bitcoin Layer 2 that enables fast, low-cost transactions and fully featured smart contracts secured by Bitcoin.
+
+These docs are designed for three main audiences:
+- Developers looking to build applications and deploy smart contracts using tools like Clarity and Stacks.js
+- Operators running nodes, miners, and signers to support network infrastructure
+- Learners who want to understand how Stacks activates the Bitcoin economy through its unique architecture
+
+With sections ranging from beginner quickstarts to advanced technical references, the documentation aims to empower a global community of builders to create a Bitcoin-native on-chain economy.
 
 ## Contribute to the Stacks Docs
 
-The Stacks docs are built using GitBook with a two-way sync with the [docs repository on GitHub](https://github.com/stacks-network/docs). 
+The Stacks docs are built using GitBook, with two-way synchronization with the [docs repository on GitHub](https://github.com/stacks-network/docs).
 
-Because of this two-way sync, you can contribute to the documentation in one of two ways:
+Because of this two-way sync, you can contribute to the documentation in two ways:
 
-1. You can fork the docs repo, add your change, and then create a PR to be merged into the main docs
-2. You can create an issue, and someone that works on the docs will take a look and implement it if it is a necessary change
+1. Fork the docs repository, make your changes, and create a pull request
+2. Open an issue, and a maintainer will review and implement it if necessary
 
-All of the content files are markdown files. The structure and layout of the docs are based on Gitbook's Spaces. Each Space represents a top-level navigation section of the public docs website.
+All content files are written in Markdown. The structure and layout of the docs are based on GitBook Spaces, where each Space represents a top-level navigation section of the public documentation website.
 
-Below are the current main Spaces that make up the docs:
+Below are the main Spaces that make up the docs:
 
-- **Learn**: Technical explainers and concept breakdowns on different aspects of Stacks.
-- **Build**: Developer quickstarts, How-To guides, integration examples, Clarinet guides, Stacks.js guides, etc.
-- **Operate**: Setup and configuration guides on running Stacks nodes, miners, and signers.
-- **Reference**: Clarity language details, protocol specs, SDK & APIs definitions, and other tooling references.
-- **Tutorials**: End-to-end learning walkthroughs on building complete applications with Stacks. 
+- **Learn**: Technical explanations and conceptual breakdowns of different aspects of Stacks
+- **Build**: Developer quickstarts, how-to guides, integration examples, Clarinet guides, and Stacks.js guides
+- **Operate**: Setup and configuration guides for running Stacks nodes, miners, and signers
+- **Reference**: Clarity language details, protocol specifications, SDK and API definitions, and tooling references
+- **Tutorials**: End-to-end walkthroughs for building complete applications on Stacks
 
-Besides the actual content, each Space consists of:
+In addition to content files, each Space includes:
 
-- `.gitbook`: Folder for assets such as images, pdfs, etc.
-- `README.md`: Acts as the landing page of the Space's section.
+- `.gitbook`: Folder for assets such as images and PDFs
+- `README.md`: Landing page for the section
 - `SUMMARY.md`: Table of contents
 
-What kinds of changes are we looking for?
+### What kinds of contributions are welcome?
 
-If you see a typo, a missing guide or tutorial, an unclear explanation, or really anything else you think could improve the quality of the documentation, please feel free to open an issue or create a pull request.
+If you notice a typo, a missing guide, an unclear explanation, or anything that could improve the quality of the documentation, feel free to open an issue or submit a pull request.
