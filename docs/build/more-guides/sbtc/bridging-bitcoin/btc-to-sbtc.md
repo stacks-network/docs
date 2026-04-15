@@ -108,7 +108,7 @@ This guide assumes you have a front-end bootstrapped with the Stacks Connect lib
 {% step %}
 #### Building the sBTC deposit address
 
-You're not directly sending bitcoin to the public sBTC Signers' [bitcoin address](https://mempool.space/address/bc1prcs82tvrz70jk8u79uekwdfjhd0qhs2mva6e526arycu7fu25zsqhyztuy), but rather sending to a custom P2TR address where both the user and sBTC Signers have control over. This custom P2TR address is special because it contains tapscripts that specify which parties are able to unlock the UTXOs via a script path spend.
+You're not directly sending bitcoin to the public sBTC Signers' [bitcoin address](https://mempool.space/address/bc1p6ys2ervatu00766eeqfmverzegg9fkprn3xjn0ppn70h53qu5vus3yzl0x), but rather sending to a custom P2TR address where both the user and sBTC Signers have control over. This custom P2TR address is special because it contains tapscripts that specify which parties are able to unlock the UTXOs via a script path spend.
 
 The construction of these tapscripts is what ultimately generates the custom P2TR address that the user will be sending their UTXOs to. Constructing tapscripts, or bitcoin scripts in general, are complex and tricky. The `sbtc` library provides useful methods for abstracting away the complexities of working with taproot related functions.
 
@@ -276,7 +276,7 @@ And that's all to it. You've successfully allowed your app to handle incoming BT
 
 ### What scripts make up the custom P2TR bitcoin address?
 
-As mentioned above, you're not directly sending bitcoin to the public sBTC Signers' [bitcoin address](https://mempool.space/address/bc1prcs82tvrz70jk8u79uekwdfjhd0qhs2mva6e526arycu7fu25zsqhyztuy), but rather sending to a custom P2TR address where both the user and sBTC Signers have control over. Besides the default key path spend, this custom P2TR address also contains 2 sets of scripts:
+As mentioned above, you're not directly sending bitcoin to the public sBTC Signers' [bitcoin address](https://mempool.space/address/bc1p6ys2ervatu00766eeqfmverzegg9fkprn3xjn0ppn70h53qu5vus3yzl0x), but rather sending to a custom P2TR address where both the user and sBTC Signers have control over. Besides the default key path spend, this custom P2TR address also contains 2 sets of scripts:
 
 <div data-with-frame="true"><figure><img src="../../../.gitbook/assets/custom-taproot-deposit-address.jpeg" alt=""><figcaption></figcaption></figure></div>
 
