@@ -331,6 +331,10 @@ The `asserts!` function admits a boolean argument and asserts its evaluation: if
 
 ## at-block
 
+{% hint style="danger" %}
+Deprecated in Clarity 5.
+{% endhint %}
+
 Introduced in: **Clarity 1**
 
 **input:** `(buff 32), A`\
