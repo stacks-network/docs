@@ -332,7 +332,7 @@ The `asserts!` function admits a boolean argument and asserts its evaluation: if
 ## at-block
 
 {% hint style="danger" %}
-Deprecated in Clarity 5.
+Beginning in epoch 3.4, `at-block` has been disabled: any execution reaching a call to `at-block` will result in a runtime error and new contracts containing `at-block` will be rejected. See [SIP-042](https://github.com/francesco-stacks/sips/blob/da24c8fffc2501b8999d5fd169e364895283dc98/sips/sip-042/sip-042.md) for details.
 {% endhint %}
 
 Introduced in: **Clarity 1**
