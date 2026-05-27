@@ -13,6 +13,8 @@ Post-conditions are a powerful security feature in Stacks that protect users fro
 * Configure post-condition modes for transaction security
 * Implement post-conditions for STX, fungible tokens, and NFTs
 * Handle semi-fungible tokens (SFTs) with post-conditions
+* Use Originator mode to protect only the transaction sender's assets (SIP-040)
+* Use the MAY SEND token condition to optionally cover an NFT/SFT transfer (SIP-040)
 
 ## Constructing post-conditions
 
@@ -78,7 +80,14 @@ Pc.principal(address).willSendAsset().nft(...);
 
 // Ensure NFT is NOT sent
 Pc.principal(address).willNotSendAsset().nft(...);
+
+// Ensure NFT MAY be sent (covers the asset in Deny/Originator allowlist
+// without requiring it to actually move). SIP-040, epoch 3.4+.
+Pc.principal(address).willMaybeSendAsset().nft(...);
+
 ```
+
+Use `willMaybeSendAsset()` when an NFT/SFT transfer is conditional inside the contract and you want the transaction to succeed whether or not it moves. Available from Stacks epoch 3.4 (SIP-040).
 
 ***
 
@@ -98,10 +107,29 @@ const tx = await makeContractCall({
 });
 ```
 
+```ts
+import { Pc, PostConditionMode, makeContractCall } from '@stacks/transactions';
+
+// Originator mode: protect only the sender's assets in a multi-hop contract call
+const tx = await makeContractCall({
+  // ... other transaction properties
+  postConditionMode: PostConditionMode.Originator,
+  postConditions: [
+    // Only constrain the origin account's outflows
+    Pc.principal(senderAddress).willSendLte(1_000_000).ustx(),
+    Pc.principal(senderAddress).willSendLte(50_000_000)
+      .ft('SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335.usdcx', 'usdcx'),
+  ],
+});
+```
+
 Mode options:
 
 * PostConditionMode.Deny (default): Transaction fails if any unspecified transfers occur
+* PostConditionMode.Originator: Transaction fails only if unspecified transfers originate from the transaction's origin account; transfers between other principals are allowed (SIP-040, epoch 3.4+, live since March 2026)
 * PostConditionMode.Allow: Transaction allows transfers beyond specified post-conditions
+
+`Originator` mode is intended for DeFi-style contract calls where intermediate asset routing between contracts is unpredictable. It applies `Deny`-style protection to the origin account's assets while permitting movements between other principals.
 
 ***
 
@@ -154,6 +182,7 @@ const tx = await makeContractCall({
   postConditions: [ftCondition],
   // ... other properties
 });
+
 ```
 
 ### NFT transfer post-conditions
@@ -203,6 +232,31 @@ const sftFtCondition = Pc
   .willSendEq(500)
   .ft('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.sft-contract', 'sft-token');
 ```
+
+#### Originator-mode post-conditions for DeFi (SIP-040)
+
+When calling a contract that routes assets through several intermediate contracts, listing every hop in `Deny` mode is brittle. `Originator` mode restricts only the sender's own outflows and allows asset movement between other principals.
+
+```ts
+import { Pc, PostConditionMode, makeContractCall } from '@stacks/transactions';
+
+const tx = await makeContractCall({
+  contractAddress: 'SP000...router',
+  contractName: 'multi-hop-swap',
+  functionName: 'swap',
+  functionArgs: [ /* ... */ ],
+  postConditionMode: PostConditionMode.Originator,
+  postConditions: [
+    // Cap STX leaving the sender
+    Pc.origin().willSendLte(1_000_000).ustx(),
+    // Cap USDCx leaving the sender
+    Pc.origin().willSendLte(100_000_000)
+      .ft('SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335.usdcx', 'usdcx'),
+  ],
+});
+```
+
+`Pc.origin()` is a convenience that binds the post-condition to the transaction's origin account (the signer of the standard authorization structure, not `tx-sender`, and unaffected by `as-contract?`).
 
 ## Multiple post-conditions
 
