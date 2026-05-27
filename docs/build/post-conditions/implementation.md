@@ -233,6 +233,25 @@ const sftFtCondition = Pc
   .ft('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.sft-contract', 'sft-token');
 ```
 
+Multi-bin withdrawals (Bitflow DLMM, concentrated-liquidity pools) typically produce one `willMaybeSendAsset()` post-condition per affected bin. The position SFT for each bin may be burned (transferred to the contract) or kept depending on the remaining liquidity after the call. Pairing each per-bin condition with `willSendLte` conditions on the underlying FTs gives the signer a precise upper bound on what can leave their account while allowing the contract to skip burns for bins that retain liquidity.
+
+```ts
+// SFT-as-NFT with MAY SEND — for contracts that may or may not transfer
+// a specific token-id depending on runtime state (e.g. DLMM/CLMM pools
+// where a bin's position SFT is burned only if its liquidity reaches zero).
+const sftBinCondition = Pc
+  .principal(senderAddress)
+  .willMaybeSendAsset()
+  .nft(
+    'SP000...pool.dlmm-position::position',
+    Cl.tuple({
+      'pool-id': Cl.uint(1),
+      'bin-id': Cl.uint(8421),
+      owner: Cl.principal(senderAddress),
+    })
+  );
+```
+
 #### Originator-mode post-conditions for DeFi (SIP-040)
 
 When calling a contract that routes assets through several intermediate contracts, listing every hop in `Deny` mode is brittle. `Originator` mode restricts only the sender's own outflows and allows asset movement between other principals.
