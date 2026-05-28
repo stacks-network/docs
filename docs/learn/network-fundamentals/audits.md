@@ -14,7 +14,7 @@ For any project, layers of security are crucial. Audits represent one layer, whi
 * Bitcoin L2 Labs' [whitehat security program](https://bitcoinl2-labs.github.io/2024/06/04/orange-hats.html)
 * Stacks Foundation's partnership with Staking Defense League
 * Stacks Founation's ongoing [Immunefi bug bounty program](https://immunefi.com/bug-bounty/stacks/information/)
-* Dedicated Stacks Foundation Residents focused exclusively on fuzz and penetration testing (created [Rendezvous](https://stacks-network.github.io/rendezvous/))
+* Dedicated Stacks Foundation Residents focused exclusively on fuzz and penetration testing (created [Rendezvous](https://stx-labs.github.io/rendezvous/))
 
 {% hint style="warning" %}
 _All 'high' or 'critical' issues listed in audits have either been mitigated or otherwise made obsolete, even if the report states otherwise._

@@ -246,21 +246,13 @@ The main functions and state of the contract are now covered by tests. Line cove
 
 Rendezvous lets you test a broader range of inputs, not just specific examples. Let's see how to write your first property-based test and why it matters.
 
-### Create the Test File
-
-Create the Rendezvous test file:
-
-```bash
-touch contracts/stx-defi.tests.clar
-```
-
 ### Add an Ice-Breaker Test
 
-Before writing any meaningful properties, it's a good idea to check that Rendezvous can run. Add a simple "always-true" test to verify your setup.
-Open `contracts/stx-defi.tests.clar` and add an always-true test:
+Before writing any meaningful properties, it's a good idea to check that Rendezvous can run. Add a simple "always-true" test, annotated with `#[env(simnet)]`, to the end of `contracts/stx-defi.clar`:
 
 ```clarity
-(define-public (test-always-true)
+;; #[env(simnet)]
+(define-private (test-always-true)
   (ok true)
 )
 ```
@@ -316,15 +308,14 @@ If you see similar output, your setup works. You're ready to write a **real prop
 
 ### Define a Borrowing Property
 
-You want to test that **borrowing always updates the loan amount correctly**:
+You want to test that **borrowing always updates the loan amount correctly**. Add this to the end of `contracts/stx-defi.clar`:
 
 ```clarity
-;; stx-defi.tests.clar
-
+;; #[env(simnet)]
 ;; Property: Borrowing should always update the loan amount correctly.
 ;; The new loan amount should equal the old loan amount plus the borrowed
 ;; amount.
-(define-public (test-borrow (amount uint))
+(define-private (test-borrow (amount uint))
   (let (
       ;; Record the loan amount before performing any action that would end up
       ;; changing the internal state of the smart contract. Query the loans map
@@ -353,8 +344,8 @@ You want to test that **borrowing always updates the loan amount correctly**:
 
 Rendezvous:
 
-1. Injects all property-based tests directly into the deployed contract.
-2. Detects all public `test-*` functions automatically.
+1. Deploys the contract with all `#[env(simnet)]`-annotated test functions included.
+2. Detects all private `test-*` functions automatically.
 3. Generates a random sequence to call each test.
 4. Produces random argument values for each function parameter.
 5. Randomly selects senders from settings/Devnet.toml.
@@ -378,13 +369,14 @@ Let's address them one by one.
 
 ### Handle Preconditions
 
-**First, you need deposits.** You can create a helper function that Rendezvous will pick up during property-based testing runs. This helper will allow deposits to be created so other tests can check properties that require deposits:
+**First, you need deposits.** You can create a helper function that Rendezvous will pick up during property-based testing runs. Add this to `contracts/stx-defi.clar`:
 
 ```clarity
+;; #[env(simnet)]
 ;; This is a helper function that will eventually be picked up during
 ;; property-based-testing runs. It allows creating deposits in the smart
 ;; contract so other tests can check properties requiring a deposit.
-(define-public (test-deposit-helper (amount uint))
+(define-private (test-deposit-helper (amount uint))
   (let (
       ;; Call the deposit function and ignore the result.
       (deposit-result (deposit amount))
@@ -394,13 +386,14 @@ Let's address them one by one.
 )
 ```
 
-**Next, add discard logic to the borrow test.** A test is discarded when it returns `(ok false)`. Wrap the core test logic in a conditional that checks for invalid preconditions (the three cases listed above) and returns `(ok false)` to discard those cases:
+**Next, add discard logic to the borrow test.** A test is discarded when it returns `(ok false)`. Replace the previous `test-borrow` with this version that checks for invalid preconditions (the three cases listed above) and returns `(ok false)` to discard those cases:
 
 ```clarity
+;; #[env(simnet)]
 ;; Property: Borrowing should always update the loan amount correctly.
 ;; The new loan amount should equal the old loan amount plus the borrowed
 ;; amount.
-(define-public (test-borrow (amount uint))
+(define-private (test-borrow (amount uint))
   (if (or
       ;; If amount is 0, the STX transfer performed in the borrow operation
       ;; would fail, resulting in a false negative.
@@ -479,7 +472,7 @@ Seed : 1880056597
 
 Counterexample:
 - Test Contract : stx-defi
-- Test Function : test-borrow (public)
+- Test Function : test-borrow (private)
 - Arguments     : [1]
 - Caller        : wallet_8
 - Outputs       : {"type":{"response":{"ok":"bool","error":{"string-ascii":{"length":33}}}}}
@@ -678,17 +671,17 @@ You can see a complete step-by-step implementation of this tutorial with commit-
 
 Now that you understand the power of Rendezvous, explore:
 
-- **More examples**: Study other smart contracts in the [Examples Chapter](https://stacks-network.github.io/rendezvous/chapter_8.html) of the [Rendezvous Docs](https://stacks-network.github.io/rendezvous/)
+- **More examples**: Study other smart contracts in the [Examples Chapter](https://stx-labs.github.io/rendezvous/chapter_8.html) of the [Rendezvous Docs](https://stx-labs.github.io/rendezvous/)
 - **Your own contracts**: Apply Rendezvous to your projects and find bugs before they reach production
 
 ---
 
 ## Get Involved
 
-**Found this tutorial useful?** Star the [Rendezvous repository on GitHub](https://github.com/stacks-network/rendezvous) to show your support!
+**Found this tutorial useful?** Star the [Rendezvous repository on GitHub](https://github.com/stx-labs/rendezvous) to show your support!
 
 Have questions, found a bug, or want to contribute? We'd love to hear from you:
 
-- **Open an issue** on [GitHub](https://github.com/stacks-network/rendezvous/issues)
+- **Open an issue** on [GitHub](https://github.com/stx-labs/rendezvous/issues)
 - **Reach out** with questions or feedback
 - **Share your findings** — contribute examples of bugs you've caught to show others how powerful advanced testing techniques can be

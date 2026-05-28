@@ -80,7 +80,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 
 ### Testing & Simulation
 
-* [**Rendezvous**](https://stacks-network.github.io/rendezvous/) - A smart contract fuzzer for Clarity.
+* [**Rendezvous**](https://stx-labs.github.io/rendezvous/) - A smart contract fuzzer for Clarity.
 
 ***
 
