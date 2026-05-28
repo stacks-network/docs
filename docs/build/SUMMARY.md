@@ -37,6 +37,7 @@
 * [Clarity Formatter](clarinet/clarity-formatter.md)
 * [Local Blockchain Development](clarinet/local-blockchain-development.md)
 * [Unit Testing](clarinet/testing-with-clarinet-sdk.md)
+* [Simnet-only code](clarinet/simnet-only-code.md)
 * [Mainnet Execution Simulation](clarinet/mainnet-execution-simulation.md)
 * [Contract Deployment](clarinet/contract-deployment.md)
 * [FAQ](clarinet/faq.md)
