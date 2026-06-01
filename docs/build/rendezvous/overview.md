@@ -28,10 +28,11 @@ A property is a universal truth about your smart contract's state, functions, et
 
 **How to extract a property?**
 
-Say that your smart contract has a function that reverses a list of `uint`s. In this case, one property can be that "reversing a list twice returns the original list". The property will look like this:
+Say that your smart contract has a function that reverses a list of `uint`s. In this case, one property can be that "reversing a list twice returns the original list". You write the property directly inside your contract, marked as [simnet-only code](../clarinet/simnet-only-code.md):
 
 ```clarity
-(define-public (test-reverse-list (seq (list 127 uint)))
+;; #[env(simnet)]
+(define-private (test-reverse-list (seq (list 127 uint)))
   (begin
     (asserts!
       (is-eq seq
@@ -48,10 +49,11 @@ Say that your smart contract has a function that reverses a list of `uint`s. In 
 
 **Making your property valid for Rendezvous**
 
-> For a property to be cosidered valid by Rendezvous, it has to comply with the following rules:
+> For a property to be considered valid by Rendezvous, it has to comply with the following rules:
 >
+> * Function lives in the contract file, annotated with `;; #[env(simnet)]`
 > * Function name starts with `test-`
-> * Function is declared as `public`
+> * Function is declared as `private`
 > * Test passes when it returns `(ok true)`
 > * Test would be discarded if it returned `(ok false)`
 > * Test fails if it returns an error or throws an exception
@@ -68,9 +70,10 @@ An invariant is a general truth regarding your smart contract's internal state. 
 
 **How to extract an invariant?**
 
-Say that you have a counter contract, having functions to `increment` and `decrement`. In this case, you could use the Rendezvous [`context`](https://stacks-network.github.io/rendezvous/chapter_6.html?#the-rendezvous-context) to extract an invariant regarding your smart contract's internal state:
+Say that you have a counter contract, having functions to `increment` and `decrement`. In this case, you could use the Rendezvous [`context`](https://stx-labs.github.io/rendezvous/chapter_6.html#the-rendezvous-context) to extract an invariant regarding your smart contract's internal state:
 
 ```clarity
+;; #[env(simnet)]
 (define-read-only (invariant-counter-gt-zero)
   (let
     (
@@ -92,12 +95,17 @@ Say that you have a counter contract, having functions to `increment` and `decre
 
 **Making your invariant valid for Rendezvous**
 
-> For an invariant to be cosidered valid by Rendezvous, it has to complain to the following ruleset:
+> For an invariant to be considered valid by Rendezvous, it has to comply with the following ruleset:
 >
-> * Function name starts with invariant-
-> * Function is declared as read-only (not public)
+> * Function lives in the contract file, annotated with `;; #[env(simnet)]`
+> * Function name starts with `invariant-`
+> * Function is declared as `read-only`
 > * Function returns a boolean value (true if the invariant holds, false if violated)
-> * The test can use the special context map to access execution history
+> * The test can use the special `context` map to access execution history
+
+{% hint style="info" %}
+Invariant testing requires the `context` map and a `update-context` private function in your contract (both annotated with `;; #[env(simnet)]`). Rendezvous uses them to track how many times each public function has been called. See the [Rendezvous Reference](https://stx-labs.github.io/rendezvous/chapter_6.html#the-rendezvous-context) for the exact definitions.
+{% endhint %}
 
 ## Why Test in Clarity?
 
@@ -129,14 +137,13 @@ Running tests in Clarity reduces the number of external tools and integrations y
 
 ## Getting Started
 
-Put tests next to contracts. Rendezvous will find them.
+Write your tests directly inside your contract, marked as [simnet-only code](../clarinet/simnet-only-code.md) with the `;; #[env(simnet)]` annotation. Clarinet strips this code when deploying to real networks, so it never reaches mainnet — and Rendezvous picks it up automatically during testing.
 
 ```
 my-project/
 ├── Clarinet.toml
 ├── contracts/
-│   ├── my-contract.clar       # Contract
-│   ├── my-contract.tests.clar # Tests
+│   └── my-contract.clar       # Contract + its #[env(simnet)] tests
 └── settings/
     └── Devnet.toml
 ```
@@ -155,5 +162,7 @@ This will add Rendezvous to your project's `node_modules` and update your `packa
 
 ### Additional Resources
 
-* \[[Github](https://stacks-network.github.io/rendezvous/)] Rendezvous repo
-* \[[Youtube @jofawole](https://youtu.be/deWQxCEy9_M?si=bBpUoKGpJvFLFu_9)] How to Use Rendezvous to Fuzz Clarity Contracts
+* \[[GitHub](https://github.com/stx-labs/rendezvous)] Rendezvous repository
+* \[[Rendezvous Book](https://stx-labs.github.io/rendezvous/)] Full documentation
+* \[[Library API](https://stx-labs.github.io/rendezvous/chapter_9.html)] Drive the testing loop yourself from TypeScript
+* \[[YouTube @jofawole](https://youtu.be/deWQxCEy9_M?si=bBpUoKGpJvFLFu_9)] How to Use Rendezvous to Fuzz Clarity Contracts

@@ -38,6 +38,10 @@ This reference explains how to use Rendezvous in different situations. By the en
   - [Example](#example-1)
   - [Adding More Implementations](#adding-more-implementations)
 
+[Library API](#library-api)
+  - [getContractFunction](#getcontractfunction)
+  - [strategyFor](#strategyfor)
+
 ---
 
 ## Running Rendezvous
@@ -45,7 +49,7 @@ This reference explains how to use Rendezvous in different situations. By the en
 To run Rendezvous, use the following command:
 
 ```bash
-rv <path-to-clarinet-project> <contract-name> <type> [--seed] [--runs] [--bail] [--dial]
+rv <path-to-clarinet-project> <contract-name> <type> [--config] [--seed] [--runs] [--regr] [--bail] [--dial]
 ```
 
 Let's break down each part of the command.
@@ -58,8 +62,7 @@ Consider this example Clarinet project structure:
 root
 ├── Clarinet.toml
 ├── contracts
-│   ├── contract.clar
-│   ├── contract.tests.clar
+│   └── contract.clar
 └── settings
     └── Devnet.toml
 ```
@@ -98,15 +101,11 @@ The `<type>` argument specifies the testing technique to use. The available opti
 - `test` – Runs property-based tests.
 - `invariant` – Runs invariant tests.
 
-For a deeper understanding of these techniques and when to use each, see [Testing Methodologies](https://stacks-network.github.io/rendezvous/chapter_4.md) chapter of the [Rendezvous Docs](https://stacks-network.github.io/rendezvous/).
+For a deeper understanding of these techniques and when to use each, see the [Testing Methodologies](https://stx-labs.github.io/rendezvous/chapter_4.html) chapter of the [Rendezvous Docs](https://stx-labs.github.io/rendezvous/).
 
 **Running property-based tests**
 
-To run property-based tests for the `contract` contract, ensure that your test functions are defined in:
-
-```
-./root/contracts/contract.tests.clar
-```
+Property-based testing requires one or more **test functions** (e.g. `test-xyz`) in the contract file (`contract.clar`), annotated with `;; #[env(simnet)]`.
 
 Then, execute:
 
@@ -117,15 +116,14 @@ rv ./root contract test
 This tells Rendezvous to:
 
 - Load the **Clarinet project** located in `./root`.
-- Target the **contract** named `contract` as defined in `Clarinet.toml` by executing **property-based tests** defined in `contract.tests.clar`.
+- Target the **contract** named `contract` as defined in `Clarinet.toml` by executing **property-based tests** defined within the contract.
 
 **Running invariant tests**
 
-To run invariant tests for the `contract` contract, ensure that your invariant functions are defined in:
+Invariant testing requires two things in the contract file (`contract.clar`), both annotated with `;; #[env(simnet)]`:
 
-```
-./root/contracts/contract.tests.clar
-```
+1. One or more **invariant functions** (e.g. `invariant-xyz`).
+2. The **Rendezvous context** — the `context` map and `update-context` function (see [The Rendezvous Context](#the-rendezvous-context)).
 
 To run invariant tests, use:
 
@@ -201,7 +199,7 @@ Dialers allow you to define **pre- and post-execution functions** using JavaScri
 rv root contract invariant --dial=./custom-dialer.js
 ```
 
-A good example of a dialer can be found in the Rendezvous repository, within the example Clarinet project, inside the [sip010.js file](https://github.com/stacks-network/rendezvous/blob/272b9247cdfcd5d12da89254e622e712d6e29e5e/example/sip010.js).
+A good example of a dialer can be found in the Rendezvous repository, within the example Clarinet project, inside the [sip010.cjs file](https://github.com/stx-labs/rendezvous/blob/12b3e4cc011c0029522b54e0e02342f9d47600eb/example/sip010.cjs).
 
 In that file, you’ll find a **post-dialer** designed as a **sanity check** for SIP-010 token contracts. It ensures that the `transfer` function correctly emits the required **print event** containing the `memo`, as specified in [SIP-010](https://github.com/stacksgov/sips/blob/6ea251726353bd1ad1852aabe3d6cf1ebfe02830/sips/sip-010/sip-010-fungible-token-standard.md?plain=1#L69).
 
@@ -269,6 +267,87 @@ async function postTransferSip010PrintEvent(context) {
 
 This dialer ensures that any SIP-010 token contract properly emits the **memo print event** during transfers, helping to catch deviations from the standard.
 
+**5. Regression Testing**
+
+Rendezvous automatically saves failing test cases to prevent regressions. When a test fails, its seed and configuration are persisted to disk. On subsequent runs, you can replay these failures to ensure bugs stay fixed.
+
+By default, Rendezvous runs fresh random tests:
+
+```bash
+rv root contract test
+```
+
+To verify that previously discovered bugs remain fixed, use the `--regr` flag:
+
+```bash
+rv root contract test --regr
+```
+
+Rendezvous loads all saved failures for the contract and replays them using their original seeds.
+
+**How Failure Persistence Works**
+
+When Rendezvous detects a failure, it automatically saves the test configuration to:
+
+```
+.rendezvous-regressions/<contract-address>.<contract-name>.json
+```
+
+For example, failures in the `counter` contract deployed by `ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM` would be saved to:
+
+```
+.rendezvous-regressions/ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.counter.json
+```
+
+The regression file stores failures grouped by test type (`test` vs `invariant`). Each failure record includes:
+
+- `seed` – The random seed that triggered the failure.
+- `numRuns` – Number of test iterations needed for the failure to occur.
+- `timestamp` – When the failure was discovered (Unix timestamp in milliseconds).
+- `dial` (optional) – Path to the dialer file used during the test.
+
+Failures are sorted by timestamp in descending order, with the most recent first. To clear saved regressions for a contract, delete its regression file (or edit it to remove specific failures while keeping others).
+
+**6. Using a Config File**
+
+Instead of passing options as CLI flags, you can provide a JSON config file with `--config`. When a config file is used, **all run options come from the file exclusively** — CLI flags like `--seed` or `--runs` are ignored.
+
+```bash
+rv root contract test --config=rv.config.json
+```
+
+A config file is a JSON object with optional fields:
+
+```json
+{
+  "accounts": [
+    {
+      "name": "whale_1",
+      "address": "SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE"
+    }
+  ],
+  "accounts_mode": "overwrite",
+  "seed": 42,
+  "runs": 500,
+  "bail": true,
+  "dial": "./sip010.cjs"
+}
+```
+
+| Field           | Type             | Description                                             |
+| --------------- | ---------------- | ------------------------------------------------------- |
+| `accounts`      | array of objects | Custom accounts (`name` and `address` fields required). |
+| `accounts_mode` | string           | `"overwrite"` (default) or `"concatenate"`.             |
+| `seed`          | integer          | Seed for replay functionality.                          |
+| `runs`          | positive integer | Number of test iterations.                              |
+| `bail`          | boolean          | Stop on first failure.                                  |
+| `regr`          | boolean          | Run regression tests only.                              |
+| `dial`          | string           | Path to custom dialers file.                            |
+
+The `accounts` field lets you define custom accounts (for example, mainnet "whale" addresses) for testing. By default (`"overwrite"` mode), these replace the `Devnet.toml` accounts entirely. With `"concatenate"` mode, config accounts are merged with the existing Devnet accounts — if a name appears in both, the config account's address takes precedence.
+
+Rendezvous warns if the config file contains unrecognized keys (e.g. a typo like `"sedd"` instead of `"seed"`), and also warns if CLI flags are passed alongside `--config`.
+
 ### Summary
 
 | Argument/Option              | Description                                                                      | Example                                           |
@@ -279,6 +358,9 @@ This dialer ensures that any SIP-010 token contract properly emits the **memo pr
 | `--runs=<num>`               | Sets the number of test iterations (default: 100).                               | `rv root contract test --runs=500`                |
 | `--seed=<num>`               | Uses a specific seed for reproducibility.                                        | `rv root contract test --seed=12345`              |
 | `--dial=<file>`              | Loads JavaScript dialers from a file for pre/post-processing.                    | `rv root contract test --dial=./custom-dialer.js` |
+| `--regr`                     | Run regression tests only (replay saved failures).                               | `rv root contract test --regr`                    |
+| `--bail`                     | Stop after the first failure.                                                     | `rv root contract test --bail`                    |
+| `--config=<file>`            | Uses a JSON config file for all run options.                                     | `rv root contract test --config=rv.config.json`   |
 
 ---
 
@@ -286,15 +368,11 @@ This dialer ensures that any SIP-010 token contract properly emits the **memo pr
 
 Rendezvous makes **property-based tests** and **invariant tests** first-class. Tests are written in the same language as the system under test. This helps developers master the contract language. It also pushes boundaries—programmers shape their thoughts first, then express them using the language's tools.
 
-When Rendezvous initializes a **Simnet session** using a given Clarinet project, it **does not modify any contract** listed in Clarinet.toml—except for the **target contract**. During testing, Rendezvous updates the target contract by merging:
-
-1. **The original contract source code**
-2. **The test contract** (which includes property-based tests and invariants)
-3. **The Rendezvous context**, which helps track function calls and execution details
+When Rendezvous initializes a **Simnet session** using a given Clarinet project, it deploys the contracts as defined in `Clarinet.toml`. The contract source, its test functions, and the **context** all live in the same file — the test code is marked simnet-only with the `;; #[env(simnet)]` annotation, so it is included during Simnet testing but stripped on deployment to real networks.
 
 ### Example
 
-Let’s say we have a contract named `checker` with the following source:
+Let’s say we have a contract named `checker`. The contract source, test functions, and **context** all live in the same `checker.clar` file:
 
 ```clarity
 ;; checker.clar
@@ -302,53 +380,39 @@ Let’s say we have a contract named `checker` with the following source:
 (define-public (check-it (flag bool))
   (if flag (ok 1) (err u100))
 )
-```
 
-And its test contract, `checker.tests`:
-
-```clarity
-;; checker.tests.clar
-
-(define-public (test-1)
-  (ok true)
-)
-
-(define-read-only (invariant-1)
-  true
-)
-```
-
-When Rendezvous runs the tests, it **automatically generates a modified contract** that includes the original contract, the tests, and an additional **context** for tracking execution. The final contract source deployed in the Simnet session will look like this:
-
-```
-(define-public (check-it (flag bool))
-  (if flag (ok 1) (err u100))
-)
-
+;; #[env(simnet)]
 (define-map context (string-ascii 100) {
     called: uint
     ;; other data
   }
 )
 
-(define-public (update-context (function-name (string-ascii 100)) (called uint))
+;; #[env(simnet)]
+(define-private (update-context (function-name (string-ascii 100)) (called uint))
   (ok (map-set context function-name {called: called}))
 )
 
-(define-public (test-1)
+;; #[env(simnet)]
+(define-private (test-1)
   (ok true)
 )
 
+;; #[env(simnet)]
 (define-read-only (invariant-1)
   true
 )
 ```
 
-While the original contract source and test functions are familiar, the **context** is new. Let's take a closer look at it.
+The `;; #[env(simnet)]` annotation ensures the test functions and context are only deployed during Simnet testing. While the contract source and test functions are familiar, the **context** is new. Let's take a closer look at it.
 
 ## The Rendezvous Context
 
-Rendezvous introduces a **context** to track function calls and execution details during testing. This allows for better tracking of execution details and invariant validation.
+Rendezvous uses a **context** to track function calls and execution details during invariant testing. This allows for better tracking of execution details and invariant validation.
+
+{% hint style="warning" %}
+Every contract tested with Rendezvous **invariant testing** must include the `context` map and the `update-context` private function (both annotated with `;; #[env(simnet)]`). During invariant testing, Rendezvous calls public functions and uses `update-context` to track successful executions, which lets invariants reason about how many times each function has been called. If these are missing during invariant testing, Rendezvous throws a runtime error. The context is **not** required for property-based testing.
+{% endhint %}
 
 ### How the Context Works
 
@@ -357,12 +421,14 @@ When a function is successfully executed during a test, Rendezvous records its e
 Here’s how the context is structured:
 
 ```clarity
+;; #[env(simnet)]
 (define-map context (string-ascii 100) {
     called: uint
     ;; Additional fields can be added here
 })
 
-(define-public (update-context (function-name (string-ascii 100)) (called uint))
+;; #[env(simnet)]
+(define-private (update-context (function-name (string-ascii 100)) (called uint))
   (ok (map-set context function-name {called: called}))
 )
 ```
@@ -422,7 +488,7 @@ A **separate function** determines whether a test should run.
   (> n u1)  ;; Only allow tests where n > 1
 )
 
-(define-public (test-add (n uint))
+(define-private (test-add (n uint))
   (let
     ((counter-before (get-counter)))
     (try! (add n))
@@ -441,7 +507,7 @@ Instead of using a separate function, **the test itself decides whether to run**
 **In-place discarding example**
 
 ```clarity
-(define-public (test-add (n uint))
+(define-private (test-add (n uint))
   (let
     ((counter-before (get-counter)))
     (ok
@@ -478,7 +544,7 @@ Some smart contracts need a special `Clarinet.toml` file to allow Rendezvous to 
 
 A great example is the **sBTC contract suite**.
 
-For testing the [`sbtc-token`](https://github.com/stacks-network/sbtc/blob/b624e4a8f08eb589a435719b200873e8aa5b3305/contracts/contracts/sbtc-token.clar#L30-L35) contract, the `sbtc-registry` authorization function [`is-protocol-caller`](https://github.com/stacks-network/sbtc/blob/b624e4a8f08eb589a435719b200873e8aa5b3305/contracts/contracts/sbtc-registry.clar#L361-L369) is **too restrictive**. Normally, it only allows calls from protocol contracts, making it **impossible to directly test certain state transitions** in `sbtc-token`.
+For testing the [`sbtc-token`](https://github.com/stacks-sbtc/sbtc/blob/b624e4a8f08eb589a435719b200873e8aa5b3305/contracts/contracts/sbtc-token.clar#L30-L35) contract, the `sbtc-registry` authorization function [`is-protocol-caller`](https://github.com/stacks-sbtc/sbtc/blob/b624e4a8f08eb589a435719b200873e8aa5b3305/contracts/contracts/sbtc-registry.clar#L361-L369) is **too restrictive**. Normally, it only allows calls from protocol contracts, making it **impossible to directly test certain state transitions** in `sbtc-token`.
 
 To work around this, you need two things:
 
@@ -549,10 +615,72 @@ This process allows Rendezvous to create meaningful state transitions and valida
 
 ### Example
 
-The `example` Clarinet project demonstrates this feature. The [send-tokens](https://github.com/stacks-network/rendezvous/blob/9c02aa7c2571b3795debc657bd433fd9bf7f19eb/example/contracts/send-tokens.clar) contract contains [one public function](https://github.com/stacks-network/rendezvous/blob/9c02aa7c2571b3795debc657bd433fd9bf7f19eb/example/contracts/send-tokens.clar#L3-L7) and [one property-based test](https://github.com/stacks-network/rendezvous/blob/9c02aa7c2571b3795debc657bd433fd9bf7f19eb/example/contracts/send-tokens.tests.clar#L24-L47) that both accept trait references.
+The `example` Clarinet project demonstrates this feature. The [send-tokens](https://github.com/stx-labs/rendezvous/blob/1e9fe78b07d8cd971843634f3915186295efb414/example/contracts/send-tokens.clar) contract contains one public function and one property-based test that both accept trait references.
 
-To enable testing, the project includes [rendezvous-token](https://github.com/stacks-network/rendezvous/blob/9c02aa7c2571b3795debc657bd433fd9bf7f19eb/example/contracts/rendezvous-token.clar), which implements the required trait.
+To enable testing, the project includes [rendezvous-token](https://github.com/stx-labs/rendezvous/blob/1e9fe78b07d8cd971843634f3915186295efb414/example/contracts/rendezvous-token.clar), which implements the required trait.
 
 ### Adding More Implementations
 
 You can include multiple eligible trait implementations in your project. Adding more implementations allows Rendezvous to introduce greater randomness during testing and increases behavioral diversity. If a function that accepts a trait implementation parameter is called X times, those calls are distributed across the available implementations. As the number of implementations grows, Rendezvous has more options to choose from on each call, producing a wider range of behaviors — and uncovering edge cases that may be missed when relying on a single implementation.
+
+## Library API
+
+Beyond the `rv` CLI, Rendezvous can be used as a **TypeScript library** for building custom property-based testing strategies. You import its argument-generation capabilities directly and compose your own [fast-check](https://github.com/dubzzz/fast-check) properties — useful when you need full control over the testing loop (custom assertions, stateful setups, multi-contract interactions, or integration with Vitest/Jest).
+
+Rendezvous ships with TypeScript declarations. It relies on `fast-check` and `@stacks/clarinet-sdk` (both already dependencies).
+
+### getContractFunction
+
+`getContractFunction(simnet, contractName, functionName, deployer?)`
+
+Retrieves a function interface from a deployed contract, enriched with trait-reference data when applicable. Throws if the contract or function is not found.
+
+| Parameter      | Type     | Description                                                |
+| -------------- | -------- | ---------------------------------------------------------- |
+| `simnet`       | `Simnet` | The simnet instance from `initSimnet`.                     |
+| `contractName` | `string` | The contract name (e.g., `"counter"`).                     |
+| `functionName` | `string` | The function name (e.g., `"increment"`).                   |
+| `deployer`     | `string` | Optional. Deployer address. Defaults to `simnet.deployer`. |
+
+**Returns:** `EnrichedContractInterfaceFunction`
+
+### strategyFor
+
+`strategyFor(simnet, fn, allAddresses?, projectTraitImplementations?)`
+
+Returns an `fc.Arbitrary<ClarityValue[]>` ready for use with `simnet.callPublicFn`, `simnet.callReadOnlyFn`, or `simnet.callPrivateFn`. It handles all Clarity types automatically: `uint`, `int`, `bool`, `principal`, `buff`, `string-ascii`, `string-utf8`, `list`, `tuple`, `optional`, `response`, and `trait_reference` (including recursive and nested structures such as a list of tuples or an optional of a response).
+
+| Parameter                     | Type                                     | Description                                                                                  |
+| ----------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `simnet`                      | `Simnet`                                 | The simnet instance.                                                                         |
+| `fn`                          | `EnrichedContractInterfaceFunction`      | Function interface from `getContractFunction`.                                              |
+| `allAddresses`                | `string[]`                               | Optional. Addresses for principal-typed arguments. Defaults to every account in the simnet. |
+| `projectTraitImplementations` | `Record<string, ImplementedTraitType[]>` | Optional. Trait implementations keyed by trait. Defaults to extracting them from the simnet. |
+
+**Returns:** `fc.Arbitrary<ClarityValue[]>`
+
+### Example
+
+```ts
+import { initSimnet } from "@stacks/clarinet-sdk";
+import { getContractFunction, strategyFor } from "@stacks/rendezvous";
+import fc from "fast-check";
+
+const simnet = await initSimnet("./Clarinet.toml");
+const add = getContractFunction(simnet, "counter", "add");
+const arb = strategyFor(simnet, add);
+
+fc.assert(
+  fc.property(arb, (args) => {
+    const { result } = simnet.callPublicFn(
+      `${simnet.deployer}.counter`,
+      "add",
+      args,
+      simnet.deployer,
+    );
+    return result.type !== "err";
+  }),
+);
+```
+
+For the full Library API reference — including custom deployers, restricting the principal pool, and the complete supported-type table — see the [Library API chapter](https://stx-labs.github.io/rendezvous/chapter_9.html) of the Rendezvous Book.

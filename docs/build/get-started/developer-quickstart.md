@@ -477,7 +477,7 @@ Now with the actual writing of your contract complete, we now need to test its f
 
 * Contract interaction in the [Clarinet REPL](../clarinet/contract-interaction.md)
 * Running your contract in a [local blockchain environment](../clarinet/local-blockchain-development.md)
-* Fuzz testing with [Rendezvous](https://stacks-network.github.io/rendezvous/)
+* Fuzz testing with [Rendezvous](https://stx-labs.github.io/rendezvous/)
 * Writing unit tests with the [Clarinet JS SDK](../clarinet/testing-with-clarinet-sdk.md)
 
 We'll go with unit testing for now. In your `tests` folder, open up the related `message-board.test.ts` file and let's use the unit test written below.
