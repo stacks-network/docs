@@ -46,7 +46,7 @@ The Stacks documentation is organized into a set of top-level sections, each ali
 {% tabs %}
 {% tab title="Learn" %}
 **How does the Stacks network&#x20;**_**actually**_**&#x20;work?**\
-The [Learn](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/) section focuses on building a strong academic foundation. It explains how Stacks functions as a Bitcoin layer 2, providing clarity and context around the network’s design and mechanics.
+The [Learn](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/) section focuses on building a strong academic foundation. It explains how Stacks functions as a Bitcoin layer 2, providing clarity and context around the network’s design and mechanics.
 
 Topics include Proof of Transfer (PoX), Bitcoin finality, block production, the transaction lifecycle, and more. If you want a deep understanding of how Stacks anchors to Bitcoin and why it works the way it does, this is the best place to start.
 {% endtab %}
@@ -74,7 +74,7 @@ If you’re an experienced Stacks developer looking to quickly reference a speci
 
 {% tab title="Tutorials" %}
 **Looking for a more guided, lesson-oriented experience?**\
-The [Tutorials](https://app.gitbook.com/s/skGYu79qDNfITOqDNU3s/) section is designed for complete beginner developers who want structured, long-form lessons rather than quick answers.
+The [Tutorials](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/skGYu79qDNfITOqDNU3s/) section is designed for complete beginner developers who want structured, long-form lessons rather than quick answers.
 
 These tutorials provide step-by-step walkthroughs alongside in-depth explanations of the underlying concepts. The goal isn’t just to help you complete a task, but to help you understand _why_ things work the way they do as you build.
 
@@ -83,7 +83,7 @@ If you’re a complete beginner and prefer a classroom-style, concept-driven lea
 
 {% tab title="Cookbook" %}
 **Looking for a specific code snippet?**\
-The [Cookbook](https://app.gitbook.com/s/uholC0CdufHxYs050O3V/) section is for developers beyond the exploratory phase who require a specific, concrete code solution quickly for an existing application.This section provides focused, reusable Clarity and Stacks.js code snippets that solve common problems or demonstrate specific patterns—designed to be referenced, copied, and adapted rather than read end-to-end.
+The [Cookbook](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/uholC0CdufHxYs050O3V/) section is for developers beyond the exploratory phase who require a specific, concrete code solution quickly for an existing application.This section provides focused, reusable Clarity and Stacks.js code snippets that solve common problems or demonstrate specific patterns—designed to be referenced, copied, and adapted rather than read end-to-end.
 
 There is also a subsection of example Clarity contracts where you'll find **starter contracts** that demonstrate common patterns and best practices in Clarity, as well as **notable production contracts** currently used by popular Stacks applications.
 {% endtab %}
@@ -95,9 +95,7 @@ There is also a subsection of example Clarity contracts where you'll find **star
 
 We all have different styles of learning. If you've already got a good concept of web3 fundamentals and want to get a quick taste of what the DevEx is like on Stacks, then check out the [Developer Quickstart](get-started/developer-quickstart.md). Or find the path that clicks for you — and if bandwidth allows, tackle them all!
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><strong>Try the Developer Quickstart</strong></h4></td><td>Your 0→1 guide for building a Clarity contract and app on Stacks.</td><td><a href="get-started/developer-quickstart.md">developer-quickstart.md</a></td></tr><tr><td><h4><strong>Start Learning Clarity</strong></h4></td><td>An easy starting point for learning smart contracts.</td><td><a href="get-started/clarity-crash-course.md">clarity-crash-course.md</a></td></tr><tr><td><h4><strong>Bitcoin Primer Tutorial</strong></h4></td><td>A comprehensive end-to-end experience to building full-stack dApps on Bitcoin.</td><td><a href="https://app.gitbook.com/s/skGYu79qDNfITOqDNU3s/bitcoin-primer">Bitcoin Primer</a></td></tr><tr><td><h4><strong>Earn a Stacks Developer Degree</strong></h4></td><td>A hands-on Stacks bootcamp by LearnWeb3.</td><td><a href="https://learnweb3.io/degrees/stacks-developer-degree/">https://learnweb3.io/degrees/stacks-developer-degree/</a></td></tr><tr><td><h4><strong>Watch Our Hands-On Videos</strong></h4></td><td>Developer insights and workshops from the Stacks ecosystem</td><td><a href="https://www.youtube.com/@stacks-developers">https://www.youtube.com/@stacks-developers</a></td></tr><tr><td><h4><strong>Clarity Development Using Clarinet</strong></h4></td><td>The smart contract toolkit for Stacks</td><td><a href="/broken/pages/UK5Kgh2MHLoQvfoFVnLr">Broken link</a></td></tr></tbody></table>
-
-
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><strong>Try the Developer Quickstart</strong></h4></td><td>Your 0→1 guide for building a Clarity contract and app on Stacks.</td><td><a href="get-started/developer-quickstart.md">developer-quickstart.md</a></td></tr><tr><td><h4><strong>Start Learning Clarity</strong></h4></td><td>An easy starting point for learning smart contracts.</td><td><a href="get-started/clarity-crash-course.md">clarity-crash-course.md</a></td></tr><tr><td><h4><strong>Bitcoin Primer Tutorial</strong></h4></td><td>A comprehensive end-to-end experience to building full-stack dApps on Bitcoin.</td><td><a href="https://app.gitbook.com/s/skGYu79qDNfITOqDNU3s/bitcoin-primer">Bitcoin Primer</a></td></tr><tr><td><h4><strong>Earn a Stacks Developer Degree</strong></h4></td><td>A hands-on Stacks bootcamp by LearnWeb3.</td><td><a href="https://learnweb3.io/degrees/stacks-developer-degree/">https://learnweb3.io/degrees/stacks-developer-degree/</a></td></tr><tr><td><h4><strong>Watch Our Hands-On Videos</strong></h4></td><td>Developer insights and workshops from the Stacks ecosystem</td><td><a href="https://www.youtube.com/@stacks-developers">https://www.youtube.com/@stacks-developers</a></td></tr><tr><td><h4><strong>Clarity Development Using Clarinet</strong></h4></td><td>The smart contract toolkit for Stacks</td><td><a href="https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/clarinet">Learn Clarinet</a></td></tr></tbody></table>
 
 ***
 
@@ -106,11 +104,11 @@ We all have different styles of learning. If you've already got a good concept o
 | If you are…                                                                               | First check out...                                                                                                                                                                                                              |
 | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Completely new to building with Stacks                                                    | [Developer Quickstart](get-started/developer-quickstart.md)                                                                                                                                                                     |
-| Learning smart contract development                                                       | [Clarity Crash Course](get-started/clarity-crash-course.md), [Learn Clarinet](/broken/pages/UK5Kgh2MHLoQvfoFVnLr)                                                                                                               |
+| Learning smart contract development                                                       | [Clarity Crash Course](get-started/clarity-crash-course.md), [Learn Clarinet](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/clarinet)                                                                                          |
 | Preferring a structured, guided course that shows you every step to build full-stack apps | [Stacks Developer Degree](https://learnweb3.io/degrees/stacks-developer-degree/), [Bitcoin Primer](https://app.gitbook.com/s/skGYu79qDNfITOqDNU3s/bitcoin-primer/introduction), [EasyA](https://www.easya.io/challenges/stacks) |
 | Wanting to integrate sBTC in your app                                                     | [sBTC guides](more-guides/sbtc/)                                                                                                                                                                                                |
 | Launching a token                                                                         | [Create Tokens](get-started/create-a-token/)                                                                                                                                                                                    |
-| Interested in security / auditing / grants                                                | [Stacks Bug Bounties](https://immunefi.com/bug-bounty/stacks/information/), [Stacks Foundation](https://stacks.org/grants)                                                                                                      |
+| Interested in security / auditing / grants                                                | [Stacks Bug Bounties](https://immunefi.com/bug-bounty/stacks/information/), [Ecosystem Bounties](https://stacks.foundation/grants#bounties)                                                                                     |
 | Curious about current use cases                                                           | [Use Cases](get-started/use-cases/)                                                                                                                                                                                             |
 | Searching for a complete list of devtools                                                 | [Stacks Devtools Catalog](stacks-devtools-catalog.md)                                                                                                                                                                           |
 
@@ -122,5 +120,5 @@ We know, it's a lot. But we, along with our large community, are always more tha
 
 * [**Stacks Discord**](https://discord.gg/stacks): Connect with other developers and our team
 * [**Stacks Forum**](https://forum.stacks.org/): Ask questions and share projects
-* [**Stacks Twitter**](https://x.com/StacksDevs)**:** Follow us on Twitter and ask us questions there&#x20;
+* [**Stacks Twitter**](https://x.com/StacksDevs)**:** Follow us on Twitter and ask us questions there
 * [**Stackers**](https://www.skool.com/stackers): A community to hear about new events, initiatives, and opportunities to build.

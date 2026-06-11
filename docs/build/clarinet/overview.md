@@ -77,6 +77,7 @@ For a deeper understanding of when to use these networks, check out the dedicate
 ### Additional Resources
 
 * \[[Hiro Blog](https://www.hiro.so/blog/clarinet-roadmap-looking-to-the-future)] The Humble Beginning of Clarinet
+* \[[LabSTX](https://www.labstx.online/)]: Browser-based alternative to installing and running Clarinet locally
 
 ***
 
