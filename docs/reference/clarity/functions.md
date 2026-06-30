@@ -2907,13 +2907,13 @@ The `var-set` function sets the value associated with the input variable to the 
 
 ***
 
-## with-\*
+
+
+## with-all-assets-unsafe
 
 {% hint style="info" %}
 The following 5 `with-*` functions are meant to be used to protect assets inside `restrict-assets?` or `as-contract?` expressions.
 {% endhint %}
-
-## with-all-assets-unsafe
 
 Introduced in: **Clarity 4**
 
