@@ -16,7 +16,9 @@ output: `uint`
 
 description:
 
-Returns the current block height of the Stacks blockchain in Clarity 1 and 2. Upon activation of epoch 3.0, `block-height` will return the same value as `tenure-height`. In Clarity 3, `block-height` is removed and has been replaced with `stacks-block-height`.
+Returns the current block height of the Stacks blockchain in Clarity 1 and 2.
+Upon activation of epoch 3.0, `block-height` will return the same value as `tenure-height`.
+In Clarity 3, `block-height` is removed and has been replaced with `stacks-block-height`.
 
 example:
 
@@ -28,22 +30,18 @@ example:
 
 ### burn-block-height
 
-{% hint style="danger" %}
-There is a bug in Clarity 3 when `burn-block-height` is used within an `at-block` expression. Normally, keywords executed within an `at-block` expression will return the data for that specified block. This bug causes `burn-block-height` always to return the burn block at the current chain tip, even within an `at-block` expression. This behavior affects any Clarity 3 contracts and will be fixed in the upcoming Clarity 5 version.
-{% endhint %}
-
 Introduced in: Clarity 1
 
 output: `uint`
 
 description:
 
-Returns the current block height of the underlying burn blockchain as a uint
+Returns the current block height of the underlying burn blockchain.
 
 example:
 
 ```clarity
-(> burn-block-height u1000) ;; returns true if the current height of the underlying burn blockchain has passed 1000 blocks.
+(> burn-block-height u832000) ;; returns true if the current height of the underlying burn blockchain has passed 832,000 blocks.
 ```
 
 ***
@@ -74,17 +72,16 @@ output: `principal`
 
 description:
 
-Returns the caller of the current contract context. If this contract is the first one called by a signed transaction, the caller will be equal to the signing principal. If `contract-call?` was used to invoke a function from a new contract, `contract-caller` changes to the _calling_ contract's principal. If `as-contract` is used to change the `tx-sender` context, `contract-caller` _also_ changes to the same contract principal.
+Returns the caller of the current contract context. If this contract is the first one called by a signed transaction,
+the caller will be equal to the signing principal. If `contract-call?` was used to invoke a function from a new contract, `contract-caller`
+changes to the _calling_ contract's principal. If `as-contract` is used to change the `tx-sender` context, `contract-caller` _also_ changes
+to the same contract principal.
 
 example:
 
 ```clarity
 (print contract-caller) ;; Will print out a Stacks address of the transaction sender
 ```
-
-{% hint style="warning" %}
-Use caution when leveraging all contract calls, particularly tx-sender and contract-caller as based on the design, you can unintentionally introduce attack surface area. [Read more](https://www.setzeus.com/community-blog-posts/clarity-carefully-tx-sender).
-{% endhint %}
 
 ***
 
@@ -94,12 +91,14 @@ Introduced in: Clarity 4
 
 output: `principal`
 
-description: Returns the principal of the current contract.
+description:
+
+Returns the principal of the current contract.
 
 example:
 
-```
-(stx-transfer? u1000000 tx-sender current-contract)
+```clarity
+(print current-contract) ;; Will print out the Stacks address of the current contract
 ```
 
 ***
@@ -180,10 +179,6 @@ example:
 (only-if-positive (- 3)) ;; Returns none
 ```
 
-```clarity
-(print stx-liquid-supply) ;; Will print out the total number of liqui
-```
-
 ***
 
 ### stacks-block-height
@@ -194,34 +189,36 @@ output: `uint`
 
 description:
 
-Returns the current Stacks block height.
+Returns the current block height of the Stacks blockchain.
 
 example:
 
 ```clarity
-(print stacks-block-height) ;; Will print out the current Stacks block height
+(<= stacks-block-height u500000) ;; returns true if the current block-height has not passed 500,000 blocks.
 ```
 
 ***
 
 ### stacks-block-time
 
+{% hint style="info" %}
+This same timestamp can also be retrieved for previous blocks using `(get-stacks-block-info? time height)`, which exists since Clarity 3, but cannot be used for the current block.
+{% endhint %}
+
 Introduced in: Clarity 4
 
 output: `uint`
 
-description: Returns the timestamp of the current block in seconds since the Unix epoch
+description:
 
-{% hint style="info" %}
-This same timestamp can also be retrieved for previous blocks using `(get-stacks-block-info? time height)`, which exists since Clarity 3, but cannot be used for the current block.
+Returns the Unix timestamp (in seconds) of the current Stacks block. Introduced
+in Clarity 4. Provides access to the timestamp of the current block, which is
+not available with `get-stacks-block-info?`.
 
-Note that `stacks-block-time` will properly account for the context of an `at-block` expression. If the `at-block` sets the context to a block that is from before Clarity 4 has activated, attempting to use `stacks-block-time` in that context will result in a runtime error.
-{% endhint %}
+example:
 
-```
-(if (> stacks-block-time 1755820800)
-  (print "after 2025-07-22")
-  (print "before 2025-07-22"))
+```clarity
+(>= stacks-block-time u1755820800) ;; returns true if current block timestamp is at or after 2025-07-22.
 ```
 
 ***
@@ -252,12 +249,13 @@ output: `uint`
 
 description:
 
-Returns the number of tenures that have passed. When the Nakamoto block-processing starts, this will be equal to the chain length.
+Returns the number of tenures that have passed.
+At the start of epoch 3.0, `tenure-height` will return the same value as `block-height`, then it will continue to increase as each tenures passes.
 
 example:
 
 ```clarity
-(print tenure-height) ;; Will print out the current tenure height
+(< tenure-height u140000) ;; returns true if the current tenure-height has passed 140,000 blocks.
 ```
 
 ***
@@ -283,23 +281,24 @@ example:
 
 ### tx-sender
 
+{% hint style="warning" %}
+Use caution when leveraging tx-sender, as based on the design, you can unintentionally introduce attack surface area. [Read more](https://www.setzeus.com/community-blog-posts/clarity-carefully-tx-sender).
+{% endhint %}
+
 Introduced in: Clarity 1
 
 output: `principal`
 
 description:
 
-Returns the original sender of the current transaction, or if `as-contract` was called to modify the sending context, it returns that contract principal.
+Returns the original sender of the current transaction, or if `as-contract` was called to modify the sending context, it returns that
+contract principal.
 
 example:
 
 ```clarity
 (print tx-sender) ;; Will print out a Stacks address of the transaction sender
 ```
-
-{% hint style="warning" %}
-Use caution when leveraging all contract calls, particularly tx-sender and contract-caller as based on the design, you can unintentionally introduce attack surface area. [Read more](https://www.setzeus.com/community-blog-posts/clarity-carefully-tx-sender).
-{% endhint %}
 
 ***
 
@@ -318,3 +317,5 @@ example:
 ```clarity
 (print tx-sponsor?) ;; Will print out an optional value containing the Stacks address of the transaction sponsor
 ```
+
+***
