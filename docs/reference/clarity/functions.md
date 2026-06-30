@@ -2907,6 +2907,8 @@ The `var-set` function sets the value associated with the input variable to the 
 
 ***
 
+## with-\*
+
 {% hint style="info" %}
 The following 5 `with-*` functions are meant to be used to protect assets inside `restrict-assets?` or `as-contract?` expressions.
 {% endhint %}
